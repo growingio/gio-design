@@ -1,0 +1,55 @@
+.gio-modal {
+  .ant-modal-content {
+    border-radius: 2px;
+    .ant-modal-close-x {
+      // position: relative;
+      // top: 10px;
+      width: 66px;
+      height: 66px;
+      line-height: 66px;
+      font-size: 16px;
+    }
+    .ant-modal-header {
+      padding: 22px 0px;
+      background-color: #FAFAFA;
+      .ant-modal-title {
+        font-family: "PingFang SC";
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+        color: #666666;
+      }
+    }
+  }
+  &__step-back {
+    position: absolute;
+    height: 66px;
+    top: 0px;
+    line-height: 66px;
+  }
+  &--overflow-y-scroll {
+    height: calc(~'100% - 106px');
+    .ant-modal-body {
+      overflow: scroll;
+    }
+    & > .ant-modal-content{
+      height: calc(~'100% - 60px');
+      background-color: transparent;
+      box-shadow: none;
+      & > .ant-modal-footer {
+        background-color: #fff;
+      }
+      & > .ant-modal-body {
+        max-height: calc(~'100% - 114px');
+        min-height: 400px!important;
+        background-color: #fff;
+        & > .gio-modal__step-container { 
+          width: 100%;
+          max-height: calc(~'100% - 114px');
+          min-height: 368px!important;
+          overflow: scroll;
+        }
+      }
+    }
+  }
+}

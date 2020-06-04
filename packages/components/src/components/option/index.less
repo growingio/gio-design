@@ -1,0 +1,27 @@
+@root: gio-option;
+
+.@{root} {
+  font-size: 14px;
+  color: #333;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  left: 0;
+  padding-left: 15px;
+  &:hover {
+    background-color: #F2F2F2;
+  }
+  &--checked {
+    background-color: #FFEDEA!important;
+  }
+  &--disabled {
+    color: #ccc;
+    cursor: not-allowed;
+  }
+  .gio-icon-wrapper {
+    position: absolute;
+    right: 15px;
+  }
+}

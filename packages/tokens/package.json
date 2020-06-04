@@ -1,0 +1,21 @@
+{
+  "name": "@gio-design/tokens",
+  "version": "0.2.21",
+  "description": "GrowingIO Design System Design Tokens",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "files": [
+    "README.md",
+    "dist"
+  ],
+  "scripts": {
+    "build": "rm -r tmp ||: && npx gulp && npx style-dictionary build && npx tsc --declaration dist/index.ts",
+    "prepublish": "yarn build"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-yaml": "^2.0.4",
+    "style-dictionary": "^2.8.2",
+    "typescript": "^3.9.3"
+  }
+}

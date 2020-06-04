@@ -1,0 +1,21 @@
+@import '~@gio-design/tokens/dist/tokens.less';
+
+.gio-pagination {
+
+  .ant-pagination-item-link,
+  li {
+    background-color: @background-color-pagination-base;
+    border-radius: @border-radius-circle;
+    border: 0;
+  }
+
+  .ant-pagination-item-active {
+    a {
+      background-color: @background-color-pagination-base;
+      border-radius: @border-radius-circle;
+      border: 0;
+      background-color: @background-color-pagination-active;
+      color: #FFF
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.gio-side-panel-wrapper {
+  @z-index-modal: 3;
+
+  &.ant-modal-wrap {
+    position: static;
+  }
+
+  .gio-side-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
+    height: 100%;
+    z-index: @z-index-modal;
+
+    &.rightIn-enter {
+      transform: translate3d(420px, 0, 0);
+    }
+    &.rightIn-enter.rightIn-enter-active {
+      transform: translate3d(0, 0, 0);
+      transition-duration: 300ms;
+    }
+    &.rightIn-leave.rightIn-leave-active {
+      transform: translate3d(420px, 0, 0);
+      transition-duration: 300ms;
+    }
+    &.rightIn-appear {
+      transform: translate3d(420px, 0, 0);
+    }
+    &.rightIn-appear.rightIn-appear-active {
+      transform: translate3d(0, 0, 0);
+      transition-duration: 300ms;
+    }
+
+
+    .btn-close {
+      position: absolute;
+      right: 20px;
+      top: 25px;
+      cursor: pointer;
+    }
+
+    .ant-modal-content {
+      height: 100%;
+      .ant-modal-body {
+        height: calc(100% - 53px);
+        overflow-y: auto;
+      }
+    }
+    .ant-modal-header {
+      display: none;
+    }
+  }
+}

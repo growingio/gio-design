@@ -1,0 +1,54 @@
+// {{comment}}
+// super duper
+import React, {Component} from 'react';
+
+export default class Icon extends Component {
+
+  static propTypes = {
+    className: React.PropTypes.string,
+    color: React.PropTypes.string,
+    kind: React.PropTypes.oneOf([
+      {%- for icon in icons %}
+      '{{icon.name}}',
+      {%- endfor %}
+    ]).isRequired,
+    size: React.PropTypes.number,
+    height: React.PropTypes.number,
+    width: React.PropTypes.number,
+  };
+
+  static defaultPropTypes = {
+    size: 32,
+    color: '#000'
+  }
+
+  render() {
+    const {kind, color, size, display, ...containerProps} = this.props;
+    const inheritedStyle = containerProps.style;
+    const propsWithoutStyle = {...containerProps};
+
+    delete propsWithoutStyle.style;
+
+    return (
+      <div
+        style={[
+          inheritedStyle
+        ]}
+      >
+        {this.renderIcon()}
+      </div>
+    );
+  }
+
+
+  renderIcon() {
+    const {color, kind, size, height, width, onClick, style, className} = this.props;
+
+    switch (kind) {
+      default: return null;
+      {% for icon in icons -%}
+        case ('{{icon.name}}'): return ({{icon.svg}});
+      {% endfor -%}
+    }
+  }
+}

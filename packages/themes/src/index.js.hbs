@@ -1,0 +1,9 @@
+'use strict';
+
+{{#each themes}}
+var {{this}} = require('./{{this}}');
+{{/each}}
+
+{{#each themes}}
+module.exports.{{this}} = {{this}};
+{{/each}}

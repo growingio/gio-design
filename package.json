@@ -1,0 +1,60 @@
+{
+  "name": "growingio-design",
+  "version": "1.0.0",
+  "description": "A React UI library and GrowingIO Design System",
+  "main": "index.js",
+  "repository": "https://github.com/growingio/gio-design.git",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/@gio-design/tokens",
+      "**/@gio-design/tokens/**",
+      "**/@gio-design/themes",
+      "**/@gio-design/themes/**",
+      "**/@gio-design/react-svg-icon-generator/**",
+      "website/"
+    ]
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.0.2",
+    "@typescript-eslint/parser": "^3.0.2",
+    "babel-eslint": "^10.1.0",
+    "commitizen": "^4.1.2",
+    "cz-lerna-changelog": "^2.0.2",
+    "eslint": "^7.1.0",
+    "eslint-config-alloy": "^3.7.2",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "husky": "^4.2.5",
+    "lerna": "^3.16.4",
+    "lint-staged": "^10.2.7",
+    "prettier": "^2.0.5"
+  },
+  "scripts": {
+    "start": "npx lerna run --scope @gio-design/components start --stream",
+    "start:website": "npx lerna run --scope website start --stream",
+    "start:playground": "npx lerna run --scope playground start --stream",
+    "clean": "npx lerna clean",
+    "build": "yarn build:tokens && yarn build:themes && yarn build:icon-generator && yarn build:icon && yarn build:components",
+    "build:playground": "yarn workspace playground build",
+    "build:website": "yarn workspace website docs:build",
+    "build:tokens": "yarn workspace @gio-design/tokens build",
+    "build:themes": "yarn workspace @gio-design/themes build",
+    "build:icon": "yarn workspace @gio-design/icon build",
+    "build:components": "yarn workspace @gio-design/components build",
+    "build:icon-generator": "yarn workspace @gio-design/react-svg-icon-generator build",
+    "publish": "npx lerna publish",
+    "lint:components": "eslint packages/components/src --ext .js,.jsx,.ts,.tsx",
+    "cm": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    }
+  }
+}

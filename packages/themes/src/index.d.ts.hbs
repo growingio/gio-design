@@ -1,0 +1,19 @@
+export interface ITheme {
+{{#each props}}
+  {{this}}: string;
+{{/each}}
+}
+
+export interface IThemes {
+{{#each themes}}
+  {{this}}: ITheme;
+{{/each}}
+}
+
+{{#each themes}}
+export const {{this}}: ITheme;
+{{/each}}
+
+declare const themes: IThemes;
+
+export default themes;

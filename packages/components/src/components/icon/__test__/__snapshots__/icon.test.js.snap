@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon renders correctly 1`] = `
+initialize {
+  "0": Object {
+    "attribs": Object {
+      "class": "gio-icon-wrapper x",
+      "fill": "",
+      "name": "gicon-alert",
+      "style": "fill:rgb(255, 70, 66)",
+    },
+    "children": Array [
+      Object {
+        "attribs": Object {
+          "class": "gio-icon gio-gicon-alert",
+          "style": "width:12px;height:12px;overflow:hidden;vertical-align:-0.15em;cursor:pointer",
+        },
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "href": "#gicon-alert",
+            },
+            "children": Array [],
+            "name": "use",
+            "namespace": "http://www.w3.org/2000/svg",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "href": "http://www.w3.org/1999/xlink",
+            },
+            "x-attribsPrefix": Object {
+              "href": "xlink",
+            },
+          },
+        ],
+        "name": "svg",
+        "namespace": "http://www.w3.org/2000/svg",
+        "next": null,
+        "parent": [Circular],
+        "prev": null,
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+          "style": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+          "style": undefined,
+        },
+      },
+    ],
+    "name": "span",
+    "namespace": "http://www.w3.org/1999/xhtml",
+    "next": null,
+    "parent": null,
+    "prev": null,
+    "root": Object {
+      "attribs": Object {},
+      "children": Array [
+        [Circular],
+      ],
+      "name": "root",
+      "namespace": "http://www.w3.org/1999/xhtml",
+      "next": null,
+      "parent": null,
+      "prev": null,
+      "type": "root",
+      "x-attribsNamespace": Object {},
+      "x-attribsPrefix": Object {},
+    },
+    "type": "tag",
+    "x-attribsNamespace": Object {
+      "class": undefined,
+      "fill": undefined,
+      "name": undefined,
+      "style": undefined,
+    },
+    "x-attribsPrefix": Object {
+      "class": undefined,
+      "fill": undefined,
+      "name": undefined,
+      "style": undefined,
+    },
+  },
+  "_root": [Circular],
+  "length": 1,
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;

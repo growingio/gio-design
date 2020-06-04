@@ -1,0 +1,105 @@
+/* eslint-disable */
+// {{comment}}
+{% if radium %}
+import Radium from 'radium';
+{%- endif %}
+{% if reactPureRender %}
+import React, {PureComponent as Component} from 'react';
+{%- else %}
+import React, {Component} from 'react';
+{%- endif %}
+import PropTypes from 'prop-types';
+
+const iconList = [
+  {%- for icon in icons %}
+  '{{icon.name}}',
+  {%- endfor %}
+]
+
+{% if radium %}
+class {{componentName}} extends Component {
+{%- else %}
+export default class {{componentName}} extends Component {
+{%- endif %}
+
+  static propTypes = {
+    className: PropTypes.string,
+    {%- if useColorProp %}
+    color: PropTypes.string,
+    {%- endif %}
+    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    kind: PropTypes.oneOf([
+      {%- for icon in icons %}
+      '{{icon.name}}',
+      {%- endfor %}
+    ]).isRequired,
+    onClick: PropTypes.func,
+    preview: PropTypes.bool,
+    size: PropTypes.number,
+    style: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.object
+    ]),
+    wrapperStyle: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.object
+    ])
+  };
+
+  static defaultProps = {
+    {%- if useColorProp %}
+    color: '#000',
+    {%- endif %}
+    size: 32
+  }
+
+  render() {
+    const {kind, preview} = this.props
+
+    return preview ?
+      this.renderPreview() :
+      this.renderIcon(kind)
+  }
+
+  renderPreview() {
+    return (
+      <div>
+        {iconList.map(kind => this.renderPreviewKind(kind))}
+      </div>
+    )
+  }
+
+  renderIcon(kind) {
+    const {wrapperStyle} = this.props;
+
+    if (wrapperStyle)
+      return <div style={wrapperStyle}>{this.getIcon(kind)}</div>
+
+    return this.getIcon(kind)
+  }
+
+  renderPreviewKind(kind) {
+    return (
+      <div key={kind}>
+        <h3>&lt;Icon kind="{kind}" /&gt;</h3>
+        {this.renderIcon(kind)}
+      </div>
+    )
+  }
+
+  getIcon(kind) {
+    const {height, {{ 'color, ' if useColorProp }}onClick, size, style, width, className, ...rest} = this.props;
+
+    switch (kind) {
+      default: return null;
+      {% for icon in icons -%}
+        case ('{{icon.name}}'): return ({{icon.svg | safe}});
+      {% endfor -%}
+    }
+  }
+}
+
+{% if radium %}
+export default Radium({{componentName}})
+{%- endif %}

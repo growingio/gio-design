@@ -1,0 +1,30 @@
+{
+  "source": ["tmp/**/*.json"],
+  "platforms": {
+    "less": {
+      "transformGroup": "less",
+      "buildPath": "dist/",
+      "files": [{
+        "destination": "tokens.less",
+        "format": "less/variables"
+      }]
+    },
+    "js": {
+      "transforms": ["name/cti/camel"],
+      "transformGroup": "js",
+      "buildPath": "dist/",
+      "files": [{
+        "destination": "index.ts",
+        "format": "javascript/es6"
+      }]
+    },
+    "json": {
+      "transformGroup": "less",
+      "buildPath": "dist/",
+      "files": [{
+        "destination": "tokens.json",
+        "format": "json/flat"
+      }]
+    }
+  }
+}

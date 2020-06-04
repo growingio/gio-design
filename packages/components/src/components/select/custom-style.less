@@ -1,0 +1,213 @@
+@import '~@gio-design/tokens/dist/tokens.less';
+
+.scrollbar-mixin() {
+  &::-webkit-scrollbar {
+    width: 11px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 10px 10px transparent;
+    border: solid 3px transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 10px 10px #cfcfcf;
+    border-radius: 5px!important;
+    border-left: solid 3px transparent;
+    border-right: solid 3px transparent;
+    background-color: initial!important;
+  }
+}
+
+.gio-select {
+  @secondary-color: #220968;
+  @input-box-shadow: rgba(102, 102, 102, .5);
+  @secondary-color-20-pct: fade(@secondary-color, 20);
+  @disabled-font-color: #c3c3c3;
+  @bg-light-color: #f7f7f7;
+  @light-gray: #ebebeb;
+
+  min-width: 64px;
+  color: @color-select-base;
+
+  &.ant-select-open .ant-select-selection {
+    border-color: @border-color-select-base;
+    box-shadow: 0 0 0 2px @secondary-color-20-pct;
+
+    .ant-select-arrow svg {
+      transform: rotate(180deg);
+    };
+  }
+
+  &.ant-select-focused .ant-select-selection,
+  .ant-select-selection:focus {
+    border-color: @border-color-select-focus;
+    box-shadow: 0 0 4px 0 @input-box-shadow;
+  }
+
+  .ant-select-selection {
+    font-size: 14px;
+    min-height: 32px;
+    border: 1px solid @light-gray;
+
+    .scrollbar-mixin();
+
+    &__rendered {
+      margin: 0 8px;
+    }
+
+    &:hover {
+      border-color: @border-color-select-base;
+    }
+
+    &:focus {
+      border-color: @border-color-select-focus;
+    }
+
+    &.ant-select-selection--multiple {
+      max-height: 100px;
+      overflow-y: auto;
+
+      .ant-select-selection__choice {
+        margin: 5px 5px 0 0;
+        height: 22px;
+        background-color: @bg-light-color;
+
+        &__remove {
+        font-size: 18px;
+        right: 0;
+        }
+      }
+    }
+
+    .ant-select-arrow {
+      top: 50%;
+      transform: translateY(-55%);
+      margin: 0;
+      color: @color-select-base;
+      font-size: 16px;
+
+      svg {
+        transition: transform 0.3s ease;
+      }
+    }
+  }
+
+  .ant-select-selection-selected-value {
+    font-weight: normal;
+    padding-right: 30px;
+  }
+
+  &.ant-select-disabled {
+    .ant-select-selection {
+      color: @disabled-font-color;
+      background-color: @light-gray;
+      border-color: @light-gray;
+      .ant-select-arrow {
+        color: @disabled-font-color;
+      }
+    }
+  }
+
+  &-ghost {
+    .ant-select-selection {
+      border: none;
+      background-color: transparent;
+      &:focus {
+        box-shadow: none;
+        background-color: @background-color-select-ghost-hover;
+      }
+
+      &:hover {
+        background-color: @background-color-select-ghost-hover;
+      }
+    }
+
+    &.ant-select-focused {
+      .ant-select-selection {
+        background-color: @background-color-select-ghost-hover;
+      }
+    }
+
+    &.ant-select-disabled {
+      .ant-select-selection {
+        background-color: @palette-gray-3;
+      }
+    }
+  }
+}
+
+.gio-select-dropdown {
+  @menu-hover-color: #F2F2F2;
+  @menu-icon-hover-color: #ddd;
+  @checkbox-color: #3A9AFC;
+  @group-title-color: #7F7583;
+  @group-title-border-color: #E2E2E2;
+
+  font-size: 14px;
+
+  .ant-select-dropdown-menu {
+    max-height: 265px;
+    .scrollbar-mixin();
+
+    .ant-select-dropdown-menu-item-group {
+      &:not(:first-child){
+        .ant-select-dropdown-menu-item-group-title {
+          border-top: 2px solid @group-title-border-color;
+        }
+      }
+
+      .ant-select-dropdown-menu-item-group-title,
+      .ant-select-dropdown-menu-item {
+        text-align: left;
+      }
+
+      .ant-select-dropdown-menu-item-group-title {
+        margin: 5px 8px 0 16px;
+        padding: 12px 0 8px;
+        color: @group-title-color;
+        font-weight: 500;
+        line-height: 12px;
+
+        .gio-icon {
+          cursor: default!important;
+        }
+      }
+    }
+
+    .ant-select-dropdown-menu-item {
+      margin: 2px 0;
+      padding: 9px 8px 10px 16px;
+
+      &-active:not(.ant-select-dropdown-menu-item-disabled) {
+        background-color: #fafafa;
+      }
+
+      &:hover {
+        background-color: @menu-hover-color;
+      }
+
+      &.ant-select-dropdown-menu-item-selected {
+        font-weight: 500;
+      }
+
+      .ant-checkbox-wrapper {
+        margin-right: 10px;
+
+        .ant-checkbox-checked .ant-checkbox-inner {
+          background-color: @checkbox-color;
+          border-color: @checkbox-color;
+        }
+      }
+    }
+  }
+
+  &.ant-select-dropdown--multiple {
+    .ant-select-dropdown-menu-item {
+      &:after,
+      &:hover:after {
+        color: transparent
+      }
+    }
+  }
+}

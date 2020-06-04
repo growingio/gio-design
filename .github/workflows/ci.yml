@@ -1,0 +1,32 @@
+name: Continuous Integration
+on:
+  pull_request:
+    types: [opened, synchronize]
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+      
+      - name: Build packages
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build
+      
+      - name: Build website
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build:website
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.1
+        with:
+          publish-dir: './packages/website/dist'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
