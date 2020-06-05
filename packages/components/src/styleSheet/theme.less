@@ -1,13 +1,36 @@
-//Background Color
-@gr-default-bg: #F5F6F8;
-@blue-6: #ea6947;
+// The prefix to use for components classes
+@component-prefix: 'gio';
+
+
+
 //Color
-@gr-primary-color         : #ea6947;
+@gr-primary-color         : #3867F4;
 @gr-second-primary-color  : #75697a;
 @gr-success-color         : #87d068;
 @gr-error-color           : #d63969;
 @gr-warning-color         : #fac450;
 @gr-fengche-color         : #ea6947;
+
+@background-color-base: hsv(0, 0, 96%); // Default grey background color
+
+// Base Border Color
+@border-color-base: hsv(0, 0, 85%); 
+@border-color-split: hsv(0, 0, 94%); // split border inside a component
+@border-color-inverse: #fff;;
+@border-width-base: 1px; // width of the border for a component
+@border-style-base: solid; // style of a components border
+
+//Background Color
+@gr-default-bg: #fff;
+@blue-6: #ea6947;
+
+// Disabled states
+@disabled-color: fade(#000, 25%);
+@disabled-bg: @background-color-base;
+@disabled-color-dark: fade(#fff, 35%);
+@disabled-border-color: #d9d9d9;
+
+// Animation
 
 // ------ Base & Require ------
 @gr-body-background       : #fbfbfb;
@@ -45,5 +68,3 @@
 @gr-overlay-shadow         : 0 0 4px rgba(0, 0, 0, 0.17);
 @gr-panel-shadow           : @gr-overlay-shadow;
 
-@gr-app-common-padding     : 15px 15px 20px 15px;
-@gr-app-min-width          : 1000px;
