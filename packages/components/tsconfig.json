@@ -19,7 +19,10 @@
       "dom"
     ]
   },
-  "exclude": ["./lib", "./node_modules"],
+  "exclude": [
+    "./lib",
+    "./node_modules"
+  ],
   "formatCodeOptions": {
     "indentSize": 2,
     "tabSize": 2
