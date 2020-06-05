@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "yarn svg-icon && rollup -c && yarn gen-list",
-    "svg-icon": "yarn svg-icon-generate --svgDir assets --destination dist/Icon.js --keepFillColor true --radium false",
+    "svg-icon": "if [ ! -d dist ]; then mkdir dist; fi && yarn svg-icon-generate --svgDir assets --destination dist/Icon.js --keepFillColor true --radium false",
     "test": "echo \"Error: run tests from root\" && exit 1",
     "gen-list": "node scripts/gen-list.js"
   },
