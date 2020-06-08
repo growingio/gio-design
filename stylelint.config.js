@@ -1,19 +1,9 @@
 module.exports = {
   extends: ['stylelint-config-standard', 'stylelint-config-rational-order', 'stylelint-prettier/recommended'],
-  plugins: [
-    'stylelint-order',
-    'stylelint-config-rational-order/plugin',
-    'stylelint-declaration-block-no-ignored-properties',
-  ],
+  plugins: ['stylelint-order', 'stylelint-declaration-block-no-ignored-properties'],
   rules: {
-    'order/properties-order': [[], { severity: 'warning' }],
-    'plugin/rational-order': [
-      true,
-      {
-        severity: 'warning',
-      },
-    ],
     'plugin/declaration-block-no-ignored-properties': true,
     'declaration-empty-line-before': null,
+    'no-descending-specificity': null,
   },
 };
