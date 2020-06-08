@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/no-require-imports */
 const pinyinMatch = require('pinyin-match');
 

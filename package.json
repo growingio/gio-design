@@ -59,6 +59,7 @@
     "lint": "yarn lint:components",
     "lint:components": "eslint packages/components/src --ext .js,.jsx,.ts,.tsx",
     "lint:style": "stylelint 'packages/components/src/**/*.{css,less}' --syntax less",
+    "lint-fix:components": "yarn run lint:components --fix",
     "lint-fix:style": "yarn run lint:style --fix",
     "cm": "git-cz",
     "test": "yarn test:components",

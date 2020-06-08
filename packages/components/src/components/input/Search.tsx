@@ -12,7 +12,7 @@ interface Props extends SearchProps {
 
 export default class Search extends React.Component<Props> {
   public static defaultProps: Partial<Props> = {
-    onSearch: () => void 0,
+    onSearch: () => undefined,
   };
 
   public handleSearch = (e: ChangeEvent<HTMLInputElement>) =>
@@ -25,7 +25,7 @@ export default class Search extends React.Component<Props> {
         size='large'
         {...props}
         onChange={this.handleSearch}
-        onSearch={void 0}
+        onSearch={undefined}
         className={classnames('gio-input', 'gio-input-search', {
           'gio-input-inverse': inverse,
           'gio-input-disabled': disabled,

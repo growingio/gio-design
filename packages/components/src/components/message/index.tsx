@@ -39,6 +39,7 @@ newInstance(
   (n: any) => (notifier = n)
 );
 
+// eslint-disable-next-line max-params
 const notice = (content: string, type: NoticeType, customDuration?: number, shouldRenderCloseBtn = false) => {
   const key = Date.now();
   let duration = DURATION[type.toUpperCase() as 'SUCCESS' | 'ERROR' | 'WARNING'];
