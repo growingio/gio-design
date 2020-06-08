@@ -58,8 +58,8 @@
     "publish": "npx lerna publish",
     "lint": "yarn lint:components",
     "lint:components": "eslint packages/components/src --ext .js,.jsx,.ts,.tsx",
-    "lint:style": "stylelint packages/components/src/**/*.less --syntax less",
-    "lint-fix:style": "yarn run lint:style -- --fix",
+    "lint:style": "stylelint 'packages/components/src/**/*.{css,less}' --syntax less",
+    "lint-fix:style": "yarn run lint:style --fix",
     "cm": "git-cz",
     "test": "yarn test:components",
     "test:components": "yarn workspace @gio-design/components test"

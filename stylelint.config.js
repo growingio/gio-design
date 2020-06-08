@@ -10,7 +10,6 @@ module.exports = {
     'plugin/rational-order': [
       true,
       {
-        'empty-line-between-groups': true,
         severity: 'warning',
       },
     ],
