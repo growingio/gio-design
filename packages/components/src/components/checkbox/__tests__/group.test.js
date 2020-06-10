@@ -5,28 +5,14 @@ import Checkbox, { CheckboxGroup } from '../index';
 describe('CheckboxGroup', () => {
   it('should work basically', () => {
     const onChange = jest.fn();
-    const wrapper = mount(
-      <CheckboxGroup options={['Apple', 'Pear', 'Orange']} onChange={onChange} />,
-    );
-    wrapper
-      .find('.gio-checkbox-input')
-      .at(0)
-      .simulate('change');
+    const wrapper = mount(<CheckboxGroup options={['Apple', 'Pear', 'Orange']} onChange={onChange} />);
+    wrapper.find('.gio-checkbox-input').at(0).simulate('change');
     expect(onChange).toHaveBeenCalledWith(['Apple']);
-    wrapper
-      .find('.gio-checkbox-input')
-      .at(1)
-      .simulate('change');
+    wrapper.find('.gio-checkbox-input').at(1).simulate('change');
     expect(onChange).toHaveBeenCalledWith(['Apple', 'Pear']);
-    wrapper
-      .find('.gio-checkbox-input')
-      .at(2)
-      .simulate('change');
+    wrapper.find('.gio-checkbox-input').at(2).simulate('change');
     expect(onChange).toHaveBeenCalledWith(['Apple', 'Pear', 'Orange']);
-    wrapper
-      .find('.gio-checkbox-input')
-      .at(1)
-      .simulate('change');
+    wrapper.find('.gio-checkbox-input').at(1).simulate('change');
     expect(onChange).toHaveBeenCalledWith(['Apple', 'Orange']);
   });
 
@@ -38,18 +24,10 @@ describe('CheckboxGroup', () => {
       { label: 'Pear', value: 'Pear' },
     ];
 
-    const groupWrapper = mount(
-      <CheckboxGroup options={options} onChange={onChangeGroup} disabled />,
-    );
-    groupWrapper
-      .find('.gio-checkbox-input')
-      .at(0)
-      .simulate('change');
+    const groupWrapper = mount(<CheckboxGroup options={options} onChange={onChangeGroup} disabled />);
+    groupWrapper.find('.gio-checkbox-input').at(0).simulate('change');
     expect(onChangeGroup).not.toHaveBeenCalled();
-    groupWrapper
-      .find('.gio-checkbox-input')
-      .at(1)
-      .simulate('change');
+    groupWrapper.find('.gio-checkbox-input').at(1).simulate('change');
     expect(onChangeGroup).not.toHaveBeenCalled();
   });
 
@@ -62,21 +40,15 @@ describe('CheckboxGroup', () => {
     ];
 
     const groupWrapper = mount(<CheckboxGroup options={options} onChange={onChangeGroup} />);
-    groupWrapper
-      .find('.gio-checkbox-input')
-      .at(0)
-      .simulate('change');
+    groupWrapper.find('.gio-checkbox-input').at(0).simulate('change');
     expect(onChangeGroup).toHaveBeenCalledWith(['Apple']);
-    groupWrapper
-      .find('.gio-checkbox-input')
-      .at(1)
-      .simulate('change');
+    groupWrapper.find('.gio-checkbox-input').at(1).simulate('change');
     expect(onChangeGroup).toHaveBeenCalledWith(['Apple']);
   });
 
   it('all children should have a name property', () => {
-    const wrapper = mount(<CheckboxGroup name="checkboxgroup" options={['Yes', 'No']} />);
-    wrapper.find('input[type="checkbox"]').forEach(el => {
+    const wrapper = mount(<CheckboxGroup name='checkboxgroup' options={['Yes', 'No']} />);
+    wrapper.find('input[type="checkbox"]').forEach((el) => {
       expect(el.props().name).toEqual('checkboxgroup');
     });
   });
@@ -87,7 +59,7 @@ describe('CheckboxGroup', () => {
       { label: 'Orange', value: 'Orange' },
     ];
 
-    const wrapper = render(<CheckboxGroup prefixCls="my-checkbox" options={options} />);
+    const wrapper = render(<CheckboxGroup prefixCls='my-checkbox' options={options} />);
 
     expect(wrapper).toMatchSnapshot();
   });
@@ -97,13 +69,10 @@ describe('CheckboxGroup', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <CheckboxGroup>
-        <Checkbox value="my" onChange={onChange} />
-      </CheckboxGroup>,
+        <Checkbox value='my' onChange={onChange} />
+      </CheckboxGroup>
     );
-    wrapper
-      .find('.gio-checkbox-input')
-      .at(0)
-      .simulate('change');
+    wrapper.find('.gio-checkbox-input').at(0).simulate('change');
     expect(onChange).toHaveBeenCalled();
     expect(onChange.mock.calls[0][0].target.value).toEqual('my');
   });
@@ -115,17 +84,14 @@ describe('CheckboxGroup', () => {
       <CheckboxGroup defaultValue={[1]} onChange={onChange}>
         <Checkbox key={1} value={1} />
         <Checkbox key={2} value={2} />
-      </CheckboxGroup>,
+      </CheckboxGroup>
     );
 
     wrapper.setProps({
       children: [<Checkbox key={2} value={2} />],
     });
 
-    wrapper
-      .find('.gio-checkbox-input')
-      .at(0)
-      .simulate('change');
+    wrapper.find('.gio-checkbox-input').at(0).simulate('change');
 
     expect(onChange).toHaveBeenCalledWith([2]);
   });
@@ -139,28 +105,16 @@ describe('CheckboxGroup', () => {
         <Checkbox key={2} value={2} />
         <Checkbox key={3} value={3} />
         <Checkbox key={4} value={4} />
-      </CheckboxGroup>,
+      </CheckboxGroup>
     );
 
-    wrapper
-      .find('.gio-checkbox-input')
-      .at(0)
-      .simulate('change');
+    wrapper.find('.gio-checkbox-input').at(0).simulate('change');
     expect(onChange).toHaveBeenCalledWith([1]);
-    wrapper
-      .find('.gio-checkbox-input')
-      .at(1)
-      .simulate('change');
+    wrapper.find('.gio-checkbox-input').at(1).simulate('change');
     expect(onChange).toHaveBeenCalledWith([1, 2]);
-    wrapper
-      .find('.gio-checkbox-input')
-      .at(0)
-      .simulate('change');
+    wrapper.find('.gio-checkbox-input').at(0).simulate('change');
     expect(onChange).toHaveBeenCalledWith([2]);
-    wrapper
-      .find('.gio-checkbox-input')
-      .at(0)
-      .simulate('change');
+    wrapper.find('.gio-checkbox-input').at(0).simulate('change');
     expect(onChange).toHaveBeenCalledWith([1, 2]);
   });
 });

@@ -1,11 +1,7 @@
 import * as React from 'react';
 
-export interface ConfigProviderProps {
-
-}
-
 export interface ConfigConsumerProps {
-  getPrefixCls: (suffixCls: string, customizePrefixCls?: string) => string
+  getPrefixCls: (suffixCls: string, customizePrefixCls?: string) => string;
 }
 
 export const ConfigContext = React.createContext<ConfigConsumerProps>({
