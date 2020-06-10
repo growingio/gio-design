@@ -36,6 +36,7 @@
   },
   "scripts": {
     "start": "npx lerna run --scope @gio-design/components start --stream",
+    "install": "npx lerna bootstrap",
     "start:website": "npx lerna run --scope website start --stream",
     "start:playground": "npx lerna run --scope playground start --stream",
     "clean": "npx lerna clean",
