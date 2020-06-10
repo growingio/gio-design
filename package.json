@@ -51,7 +51,8 @@
     "lint": "yarn lint:components",
     "lint:components": "eslint packages/components/src --ext .js,.jsx,.ts,.tsx",
     "cm": "git-cz",
-    "test": "yarn test:components"
+    "test": "yarn test:components",
+    "test:components": "yarn workspace @gio-design/components test"
   },
   "config": {
     "commitizen": {
