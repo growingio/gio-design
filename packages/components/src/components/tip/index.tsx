@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-no-script-url */
 import * as React from 'react';
 import Checkbox from '../checkbox';
-import './style/index.less';
 
 interface TipProps {
   message: React.ReactNode;
@@ -12,11 +11,11 @@ interface TipProps {
 const Tip: React.FC<TipProps> = ({ message, name }) => {
   name = `gio-tip::${name}`;
   const [vanish, setVanish] = React.useState(false);
-  const [visible, setVisible] = React.useState(localStorage.getItem(name) !== 'true');
+  const [visible, setVisible] = React.useState(window.localStorage.getItem(name) !== 'true');
 
   const hide = React.useCallback(() => {
     if (vanish) {
-      localStorage.setItem(name, 'true');
+      window.localStorage.setItem(name, 'true');
     }
     setVisible(false);
   }, [vanish]);

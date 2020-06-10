@@ -5,9 +5,6 @@ import Icon from '@gio-design/icon';
 import { Moment } from 'moment';
 import { DatePickerProps } from 'antd/lib/date-picker/interface';
 
-import 'antd/lib/date-picker/style/index.css';
-import './custom-style.less';
-
 export interface Props extends DatePickerProps {
   startOfDay?: boolean;
 }

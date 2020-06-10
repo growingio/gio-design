@@ -4,9 +4,6 @@ import { Button as AntButton } from 'antd';
 import Icon from './icon';
 import classnames from 'classnames';
 
-import 'antd/lib/button/style/index.css';
-import './custom-style.less';
-
 export interface Props extends ButtonProps {
   type?: 'primary';
   size?: 'large';

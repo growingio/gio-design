@@ -1,7 +1,6 @@
 import React, { ReactNode, PureComponent } from 'react';
 import Tooltip from '../tooltip';
 import { TooltipPlacement } from 'antd/lib/tooltip';
-import './index.less';
 
 interface P {
   line?: number;

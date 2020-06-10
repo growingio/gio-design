@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Steps as AntdSteps } from 'antd';
-import 'antd/lib/steps/style/index.css';
 
 export const Step = AntdSteps.Step;
 

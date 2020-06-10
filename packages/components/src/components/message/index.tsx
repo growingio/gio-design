@@ -3,8 +3,6 @@ import notification from 'rc-notification';
 import Link from '../link';
 import Icon from '@gio-design/icon';
 
-import './custom-style.less';
-
 const DURATION: {
   SUCCESS: number;
   ERROR: number;

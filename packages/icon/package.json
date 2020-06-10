@@ -3,19 +3,20 @@
   "version": "0.0.32",
   "description": "GrowingIO Design System Icons",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "es/index.js",
+  "module": "./es/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "index.js",
-    "index.d.ts",
-    "dist"
+    "es",
+    "package.json"
   ],
   "scripts": {
-    "build": "yarn svg-icon && rollup -c && yarn gen-list",
-    "svg-icon": "if [ ! -d dist ]; then mkdir dist; fi && yarn svg-icon-generate --svgDir assets --destination dist/Icon.js --keepFillColor true --radium false",
+    "build": "yarn svg-icon && gio-rewire lib compile && yarn gen-list && yarn clearTempFile",
+    "svg-icon": "if [ ! -d temp ]; then mkdir temp; fi && yarn svg-icon-generate --svgDir assets --destination src/Icon.jsx --keepFillColor true --radium false",
+    "clearTempFile": "rm ./src/Icon.jsx",
     "test": "echo \"Error: run tests from root\" && exit 1",
     "gen-list": "node scripts/gen-list.js"
   },
@@ -25,9 +26,13 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@gio-design/react-svg-icon-generator": "0.5.9",
-    "rollup-plugin-babel": "^4.3.3"
+    "rollup-plugin-babel": "^4.3.3",
+    "gio-rewire": "^1.0.2"
   },
   "dependencies": {
     "radium": "^0.25.2"
+  },
+  "peerDependencies": {
+    
   }
 }

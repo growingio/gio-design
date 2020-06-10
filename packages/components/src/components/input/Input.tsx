@@ -5,9 +5,6 @@ import { Props as RangeProps } from './Range';
 import classnames from 'classnames';
 import { InputNumberProps } from 'antd/lib/input-number';
 import { omit } from 'lodash';
-import 'antd/lib/input/style/index.css';
-import 'antd/lib/input-number/style/index.css';
-import './custom-style.less';
 export interface InputProps {
   className?: string;
   disabled?: boolean;
