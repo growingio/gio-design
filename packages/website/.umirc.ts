@@ -7,4 +7,4 @@ export default {
   hash: true,
   exportStatic: {},
   ssr: {}
-});
+};
