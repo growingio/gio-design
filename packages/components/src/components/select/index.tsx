@@ -6,10 +6,6 @@ import Icon from '@gio-design/icon';
 import isContain from '../../utils/pinyinHelper';
 import { blurActiveElement } from '../../utils/helpers';
 
-import 'antd/lib/select/style/index.css';
-import 'antd/lib/style/index.css';
-import './custom-style.less';
-
 export const OptGroup = AntSelect.OptGroup;
 export const Option = AntSelect.Option;
 

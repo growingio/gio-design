@@ -13,3 +13,4 @@ lerna-debug.log
 es
 lib
 dist
+src/Icon.jsx

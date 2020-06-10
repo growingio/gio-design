@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Menu as AntMenu } from 'antd';
 import { MenuProps } from 'antd/lib/menu';
-import 'antd/lib/menu/style/index.css';
 
 export interface GioMenuProps {
   [key: string]: any;

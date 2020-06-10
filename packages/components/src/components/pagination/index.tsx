@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Pagination as AtndPagination } from 'antd';
 import { PaginationProps } from 'antd/lib/pagination';
 import classnames from 'classnames';
-import 'antd/lib/pagination/style/index.css';
-import './custom-style.less';
 
 export interface PropsType extends PaginationProps {
   type?: 'primary';

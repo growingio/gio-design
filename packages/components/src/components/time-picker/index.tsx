@@ -1,6 +1,4 @@
 import * as React from 'react';
-import 'antd/lib/time-picker/style/index.css';
-import './index.less';
 
 import { TimePicker as AntdTimePicker } from 'antd';
 export interface TimePickerProps {

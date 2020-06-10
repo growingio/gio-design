@@ -4,9 +4,6 @@ import Button from '../button';
 import Icon from '../icon';
 import cn from 'classnames';
 
-import 'antd/lib/modal/style/index.css';
-import './index.less';
-
 export interface ModalProps {
   visible: boolean;
   closable?: boolean;

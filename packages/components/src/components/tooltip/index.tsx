@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Tooltip as AtndTooltip } from 'antd';
 
-import 'antd/lib/tooltip/style/index.css';
-
 export interface PropsType {
   title: React.ReactNode;
   arrowPointAtCenter?: boolean;
