@@ -20,7 +20,7 @@ export interface CheckboxProps {
    */
   defaultChecked?: boolean;
   /**
-   * 指定当前是否选中	
+   * 指定当前是否选中
    */
   checked?: boolean;
   /**
@@ -37,11 +37,11 @@ export interface CheckboxProps {
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
-  prefixCls: customizePrefixCls, 
-  className, 
-  children, 
-  style, 
-  indeterminate, 
+  prefixCls: customizePrefixCls,
+  className,
+  children,
+  style,
+  indeterminate,
   onChange,
   ...restProps
 }) => {
@@ -50,26 +50,29 @@ const Checkbox: React.FC<CheckboxProps> = ({
   const { getPrefixCls } = React.useContext(ConfigContext);
   const checkGroup = React.useContext(CheckboxGroupContext);
 
-  const handleChange = React.useCallback((e: CheckboxChangeEvent) => {
-    if (onChange) onChange(e);
-    checkGroup && checkGroup.toggleOption && checkGroup.toggleOption({ label: children, value: restProps.value })
-  }, [onChange]);
+  const handleChange = React.useCallback(
+    (e: CheckboxChangeEvent) => {
+      if (onChange) onChange(e);
+      checkGroup?.toggleOption?.({ label: children, value: restProps.value });
+    },
+    [onChange]
+  );
 
   const prefixCls = getPrefixCls('checkbox', customizePrefixCls);
   const checkProps: CheckboxProps = { ...restProps };
-  
+
   if (checkGroup) {
     checkProps.name = checkGroup.name;
     checkProps.onChange = handleChange;
-    checkProps.checked = !!checkGroup.selectedValues.find(_ => _ === restProps.value);
+    checkProps.checked = !!checkGroup.selectedValues.find((_) => _ === restProps.value);
     checkProps.disabled = checkProps.disabled || checkGroup.disabled;
   }
 
   React.useEffect(() => {
-    (checkGroup) && checkGroup.registerValue(restProps.value);
+    checkGroup?.registerValue(restProps.value);
     return () => {
-      checkGroup && checkGroup.unRegisterValue(restProps.value);
-    }
+      checkGroup?.unRegisterValue(restProps.value);
+    };
   }, [restProps.value]);
 
   const checkboxCls = classNames(className, {
@@ -81,16 +84,13 @@ const Checkbox: React.FC<CheckboxProps> = ({
   });
 
   return (
-    <label
-      className={checkboxCls}
-      style={style}
-    >
-      <RcCheckbox 
-        {...checkProps as any}
+    <label className={checkboxCls} style={style}>
+      <RcCheckbox
+        {...(checkProps as any)}
         prefixCls={prefixCls}
         ref={rcCheckbox}
         type='checkbox'
-        className={checkboxClass} 
+        className={checkboxClass}
         onChange={handleChange}
       />
       {children !== undefined ? <span>{children}</span> : null}

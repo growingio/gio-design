@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CheckboxOptionType, CheckboxValueType } from './interface';
 
 export interface CheckboxGroupContextProps {
-  toggleOption?: (option: CheckboxOptionType) => void
+  toggleOption?: (option: CheckboxOptionType) => void;
   name?: string;
   disabled?: boolean;
   selectedValues: CheckboxValueType[];
