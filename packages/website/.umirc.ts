@@ -5,5 +5,6 @@ export default {
   favicon: 'https://www.growingio.com/vassets/images/ab6cf9a60362c74acf9c252fa35ea7cc-favicon.png',
   locales: [['zh-CN', '简体中文'], ['en-US', 'English']],
   hash: true,
-  exportStatic: {}
-}
+  exportStatic: {},
+  ssr: {}
+};

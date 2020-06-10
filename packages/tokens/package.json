@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -r tmp ||: && npx gulp && npx style-dictionary build && npx tsc --declaration dist/index.ts",
+    "build": "if [ -d tmp ]; then rm -r tmp; fi && npx gulp && npx style-dictionary build && npx tsc --declaration dist/index.ts",
     "prepublish": "yarn build"
   },
   "devDependencies": {

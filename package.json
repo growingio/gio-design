@@ -14,8 +14,7 @@
       "**/@gio-design/tokens/**",
       "**/@gio-design/themes",
       "**/@gio-design/themes/**",
-      "**/@gio-design/react-svg-icon-generator/**",
-      "website/"
+      "**/@gio-design/react-svg-icon-generator/**"
     ]
   },
   "license": "MIT",
@@ -49,8 +48,10 @@
     "build:components": "yarn workspace @gio-design/components build",
     "build:icon-generator": "yarn workspace @gio-design/react-svg-icon-generator build",
     "publish": "npx lerna publish",
+    "lint": "yarn lint:components",
     "lint:components": "eslint packages/components/src --ext .js,.jsx,.ts,.tsx",
-    "cm": "git-cz"
+    "cm": "git-cz",
+    "test": "yarn test:components"
   },
   "config": {
     "commitizen": {

@@ -56,7 +56,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "file-loader": "^4.0.0",
     "gulp": "^4.0.2",
-    "gio-rewire": "^1.0.1",
+    "gio-rewire": "^1.0.2",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-template": "^6.2.0",
     "jest": "^24.8.0",
