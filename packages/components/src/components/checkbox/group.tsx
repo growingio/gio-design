@@ -59,7 +59,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 
   const [selected, updateSelected] = React.useState(() => defaultValue || emptyValue);
 
-  const refValue = React.useRef(value || emptyValue);
+  const refValue = React.useRef(value);
   // update outside maintained state
   if (refValue.current !== value && value) {
     refValue.current = value;
@@ -75,7 +75,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
           return newSelected;
         });
       } else {
-        const newSelected = merge(refValue.current, option, registeredValuesRef.current);
+        const newSelected = merge(refValue.current || emptyValue, option, registeredValuesRef.current);
         onChange(newSelected);
       }
     },

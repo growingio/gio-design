@@ -6,5 +6,4 @@ export default {
   locales: [['zh-CN', '简体中文'], ['en-US', 'English']],
   hash: true,
   exportStatic: {},
-  ssr: {}
 };

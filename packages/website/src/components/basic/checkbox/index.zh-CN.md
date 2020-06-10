@@ -7,19 +7,14 @@ group:
   title: 基础组件
 ---
 
-# 基础用法
+# Checkbox 多选框
 
-<code src='./demo/basic.tsx' />
+<code src='./demo/basic.tsx' title='基础用法' />
 
-# CheckboxGroup 
-<code src='./demo/group.tsx' />
+<code src='./demo/group.tsx' title='CheckboxGroup' />
 
-## API
-
-## 属性
-
-
-#### Checkbox
+## 参数说明
+### Checkbox
 
 | 参数            | 说明                                    | 类型              | 默认值 |
 | -------------- | --------------------------------------- | ----------------- | ------ |
@@ -33,7 +28,7 @@ group:
 | id             | input[type="checkbox"] 的 name 属性      | string | -        |        |
 | name           | input[type="checkbox"] 的 name 属性      | string | -        |        |
 
-#### Checkbox Group
+### Checkbox Group
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- | --- |
