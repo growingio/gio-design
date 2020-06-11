@@ -11,7 +11,7 @@ interface Props {
 }
 
 const style = {
-  margin: 0,
+  marginRight: 0,
 };
 
 const noop = () => {};
