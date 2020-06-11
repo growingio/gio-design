@@ -1,6 +1,4 @@
-import { defineConfig } from 'dumi';
-
-export default defineConfig({
+export default {
   mode: 'site',
   title: 'GrowingIO Design',
   logo: 'https://avatars1.githubusercontent.com/u/10370210?s=400&v=4',
@@ -8,5 +6,4 @@ export default defineConfig({
   locales: [['zh-CN', '简体中文'], ['en-US', 'English']],
   hash: true,
   exportStatic: {},
-  ssr: {}
-});
+};

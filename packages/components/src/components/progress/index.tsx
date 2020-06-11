@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Progress as AtndProgress } from 'antd';
-import 'antd/lib/progress/style/index.css';
 
 interface PropsType {
   format?: (percent: number) => string;

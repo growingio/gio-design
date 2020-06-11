@@ -17,10 +17,15 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Install
+      - name: Bootstrap
         uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: install
+          cmd: bootstrap
+
+      - name: Build packages
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build
 
       - name: Lint
         uses: borales/actions-yarn@v2.0.0
@@ -31,8 +36,3 @@ jobs:
         uses: borales/actions-yarn@v2.0.0
         with:
           cmd: test
-
-      - name: Build packages
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: build

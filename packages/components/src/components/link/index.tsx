@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import './custom-style.less';
 
 const noop = (): undefined => void 0;
 

@@ -4,8 +4,6 @@ import { noop } from 'lodash';
 import Block from '../../utils/Block';
 import Margin from '../../utils/Margin';
 
-import './index.less';
-
 interface OptionProps {
   checked?: boolean;
   onClick?: (value: any) => void;

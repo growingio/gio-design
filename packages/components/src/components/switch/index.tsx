@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Switch } from 'antd';
-import 'antd/lib/switch/style/index.css';
 
 export interface SwitchProps {
   size?: 'default' | 'small';

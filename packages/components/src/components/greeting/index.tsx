@@ -1,7 +1,6 @@
 import React from 'react';
 import notification from 'rc-notification';
 import GIOIcon from '../icon';
-import './index.less';
 
 // const notifier = notification.newInstance({
 //   prefixCls: 'gio-greeting',

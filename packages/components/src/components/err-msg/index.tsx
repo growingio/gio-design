@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './index.less';
 import Icon from '../icon';
 
 export interface InputProps {

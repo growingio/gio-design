@@ -1,5 +1,5 @@
 import React, { PureComponent, ReactNode } from 'react';
-import './index.less';
+
 import { noop } from 'lodash';
 import Checkbox from '../../checkbox';
 import Gap from '../../../utils/gap';

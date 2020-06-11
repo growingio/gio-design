@@ -1,6 +1,5 @@
 import React, { CSSProperties } from 'react';
 import Modal from '../modal';
-import './custom-style.less';
 
 interface SidePanelProps {
   children?: Element;
