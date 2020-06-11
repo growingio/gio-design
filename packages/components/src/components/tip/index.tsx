@@ -9,7 +9,7 @@ interface TipProps {
 }
 
 const Tip: React.FC<TipProps> = ({ message, name }) => {
-  const tipName = `gio-tip::${name}`;
+  // const tipName = `gio-tip::${name}`;
   const [vanish, setVanish] = React.useState(false);
   const [visible, setVisible] = React.useState(window.localStorage.getItem(name) !== 'true');
 
