@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './playground.less';
+// import './playground.less';
 import { JsonEditor } from 'jsoneditor-react';
 import ace from 'brace';
 import 'brace/mode/json';

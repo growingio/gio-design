@@ -3,6 +3,7 @@
   "version": "0.4.35",
   "description": "GrowingIO Design System Components",
   "module": "./es/index.js",
+  "types": "./es/index.d.ts",
   "files": [
     "build",
     "lib",

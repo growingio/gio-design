@@ -39,6 +39,7 @@
     "bootstrap": "npx lerna bootstrap",
     "start:website": "npx lerna run --scope website start --stream",
     "start:playground": "npx lerna run --scope playground start --stream",
+    "start:components": "npx lerna run --scope @gio-design/components watch --stream",
     "clean": "npx lerna clean",
     "build": "yarn build:tokens && yarn build:themes && yarn build:icon-generator && yarn build:icon && yarn build:components",
     "build:playground": "yarn workspace playground build",

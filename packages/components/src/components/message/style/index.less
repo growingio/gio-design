@@ -1,0 +1,82 @@
+@import '~@gio-design/tokens/dist/tokens.less';
+
+@message-prefix-cls: gio-message;
+
+.@{message-prefix-cls} {
+
+  position: fixed;
+  top: 16px;
+  left: 0;
+  z-index: 2147483647;
+  width: 100%;
+  pointer-events: none;
+
+  &-notice {
+    padding: 8px;
+    text-align: center;
+    &:first-child {
+      margin-top: -8px;
+    }
+  }
+
+  &-notice-content {
+    display: inline-block;
+    padding: 9px 60px;
+    background-color: #fff;;
+    box-shadow: 0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08), 0 9px 28px 8px rgba(0,0,0,.05);
+    border-radius: 2px;
+    pointer-events: all;
+    font-size: 14px;
+    line-height: 22px;
+    color: #313e75;
+  }
+
+  &-success &-icon svg {
+    color: #008A56;
+  }
+
+  &-error &-icon svg {
+    color: #F21300;
+  }
+
+  &-warning &-icon svg {
+    color: #FAAD14;
+  }
+
+  &-icon {
+    position: relative;
+    top: -1px;
+    margin-right: 8px;
+  }
+
+  &-notice.move-up-leave.move-up-leave-active {
+    animation-name: MessageMoveOut;
+    animation-duration: 0.3s;
+  }
+}
+
+@keyframes MessageMoveOut {
+  0% {
+    max-height: 150px;
+    padding: 8px;
+    opacity: 1;
+  }
+  100% {
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+
+.@{message-prefix-cls}-rtl {
+  direction: rtl;
+
+  span {
+    direction: rtl;
+  }
+
+  &-icon {
+    margin-right: 0;
+    margin-left: 8px;
+  }
+}

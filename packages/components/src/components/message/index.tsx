@@ -1,118 +1,194 @@
 import * as React from 'react';
-import notification from 'rc-notification';
-import Link from '../link';
+import classNames from 'classnames';
+import Notification from 'rc-notification';
 import Icon from '@gio-design/icon';
 
-const DURATION: {
-  SUCCESS: number;
-  ERROR: number;
-  HASACTION: number;
-  WARNING: number;
-} = {
-  SUCCESS: 1,
-  ERROR: 2,
-  HASACTION: 3,
-  WARNING: 2,
-};
+let defaultDuration = 2;
+let defaultTop: number;
+let messageInstance: any;
+let key = 1;
+let prefixCls = 'gio-message';
+let transitionName = 'move-up';
+let getContainer: () => HTMLElement;
+let maxCount: number;
+let rtl = false;
 
-interface INameToValueMap<T> {
-  [key: string]: T;
+function getMessageInstance(callback: (i: any) => void) {
+  if (messageInstance) {
+    callback(messageInstance);
+    return;
+  }
+  Notification.newInstance(
+    {
+      prefixCls,
+      transitionName,
+      style: { top: defaultTop }, // 覆盖原来的样式
+      getContainer,
+      maxCount,
+    },
+    (instance: any) => {
+      if (messageInstance) {
+        callback(messageInstance);
+        return;
+      }
+      messageInstance = instance;
+      callback(instance);
+    }
+  );
 }
 
-const iconMap: INameToValueMap<string> = {
+type NoticeType = 'success' | 'error' | 'warning';
+
+export type ThenableArgument = (val: any) => void;
+
+export interface MessageType {
+  then: (fill: ThenableArgument, reject: ThenableArgument) => Promise<void>;
+  promise: Promise<void>;
+  (): void;
+}
+
+export interface ArgsProps {
+  content: React.ReactNode;
+  duration: number | null;
+  type: NoticeType;
+  onClose?: () => void;
+  icon?: React.ReactNode;
+  key?: string | number;
+  style?: React.CSSProperties;
+  className?: string;
+}
+
+const iconMap = {
   success: 'check-circle',
   error: 'close-circle',
   warning: 'warning-circle',
 };
 
-type NoticeType = 'success' | 'error' | 'warning';
+function notice(args: ArgsProps): MessageType {
+  const duration = args.duration !== undefined ? args.duration : defaultDuration;
+  const iconType = iconMap[args.type];
 
-// 由于 gatsby 与 frontend-app 的 webpack 版本不兼容，在 gatsby 升级之前暂时采用这种写法
-const newInstance = notification.__esModule ? notification.default.newInstance : notification.newInstance;
+  const messageClass = classNames(`${prefixCls}-custom-content`, {
+    [`${prefixCls}-${args.type}`]: args.type,
+    [`${prefixCls}-rtl`]: rtl === true,
+  });
 
-let notifier: any = null;
-newInstance(
-  {
-    prefixCls: 'gio-message',
-    transitionName: 'move-up',
-  },
-  (n: any) => (notifier = n)
-);
-
-const notice = (content: string, type: NoticeType, customDuration?: number, shouldRenderCloseBtn = false) => {
-  const key = Date.now();
-  let duration = DURATION[type.toUpperCase() as 'SUCCESS' | 'ERROR' | 'WARNING'];
-  let shouldRenderCloseButton = shouldRenderCloseBtn;
-  const result: number[] = [];
-  for (let i = 0; i < content.length; i++) {
-    if (content[i] === '#') {
-      result.push(i);
-    }
-  }
-  const hasAction = result.length === 2;
-
-  return new Promise((resolve) => {
-    const close = () => {
-      notifier.removeNotice(key);
-      resolve('close');
+  const target = args.key || key++;
+  const closePromise = new Promise((resolve) => {
+    const callback = () => {
+      if (typeof args.onClose === 'function') {
+        args.onClose();
+      }
+      return resolve(true);
     };
-
-    const action = () => {
-      notifier.removeNotice(key);
-      resolve('action');
-    };
-
-    let actionContent: React.ReactElement<any> | null = null;
-    if (hasAction) {
-      duration = DURATION.HASACTION;
-      shouldRenderCloseButton = true;
-      actionContent = (
-        <span>
-          <span>{content.substring(0, result[0])}</span>
-          {/* <a className='gio-message-action' onClick={action}>{content.substring(result[0] + 1, result[1])}</a>*/}
-          <Link inverse className='gio-message-action' onClick={action}>
-            {content.substring(result[0] + 1, result[1])}
-          </Link>
-          <span>{content.substring(result[1] + 1)}</span>
-        </span>
-      );
-    }
-    if (customDuration !== undefined) {
-      duration = customDuration;
-    }
-    notifier.notice({
-      key,
-      closable: shouldRenderCloseButton,
-      onClose: close,
-      duration,
-      content: (
-        <div className={`gio-message-inner gio-message-${type}`}>
-          <span className='gio-message-notice-icon'>
-            <Icon type={iconMap[type]} width={18} height={18} />
-          </span>
-          {hasAction ? actionContent : content}
-          {shouldRenderCloseButton ? (
-            <span className='gio-message-notice-close' onClick={close}>
-              <Icon type='close' />
-            </span>
-          ) : null}
-        </div>
-      ),
+    getMessageInstance((instance) => {
+      instance.notice({
+        key: target,
+        duration,
+        style: args.style || {},
+        className: args.className,
+        content: (
+          <div className={messageClass}>
+            {args.icon ||
+              (iconType && (
+                <span className={`${prefixCls}-icon`}>
+                  <Icon width={16} height={16} type={iconType} />
+                </span>
+              ))}
+            <span>{args.content}</span>
+          </div>
+        ),
+        onClose: callback,
+      });
     });
   });
+  const result: any = () => {
+    if (messageInstance) {
+      messageInstance.removeNotice(target);
+    }
+  };
+  result.then = (filled: ThenableArgument, rejected: ThenableArgument) => closePromise.then(filled, rejected);
+  result.promise = closePromise;
+  return result;
+}
+
+type ConfigContent = React.ReactNode | string;
+type ConfigDuration = number | (() => void);
+type JointContent = ConfigContent | ArgsProps;
+export type ConfigOnClose = () => void;
+
+function isArgsProps(content: JointContent): content is ArgsProps {
+  return Object.prototype.toString.call(content) === '[object Object]' && !!(content as ArgsProps).content;
+}
+
+export interface ConfigOptions {
+  top?: number;
+  duration?: number;
+  prefixCls?: string;
+  getContainer?: () => HTMLElement;
+  transitionName?: string;
+  maxCount?: number;
+  rtl?: boolean;
+}
+
+const api: any = {
+  open: notice,
+  config(options: ConfigOptions) {
+    if (options.top !== undefined) {
+      defaultTop = options.top;
+      messageInstance = null; // delete messageInstance for new defaultTop
+    }
+    if (options.duration !== undefined) {
+      defaultDuration = options.duration;
+    }
+    if (options.prefixCls !== undefined) {
+      prefixCls = options.prefixCls;
+    }
+    if (options.getContainer !== undefined) {
+      getContainer = options.getContainer;
+    }
+    if (options.transitionName !== undefined) {
+      transitionName = options.transitionName;
+      messageInstance = null; // delete messageInstance for new transitionName
+    }
+    if (options.maxCount !== undefined) {
+      maxCount = options.maxCount;
+      messageInstance = null;
+    }
+    if (options.rtl !== undefined) {
+      rtl = options.rtl;
+    }
+  },
+  destroy() {
+    if (messageInstance) {
+      messageInstance.destroy();
+      messageInstance = null;
+    }
+  },
 };
 
-const success = (content: string, duration?: number, shouldRenderCloseBtn?: boolean) =>
-  notice(content, 'success', duration, shouldRenderCloseBtn);
-const error = (content: string, duration?: number, shouldRenderCloseBtn?: boolean) =>
-  notice(content, 'error', duration, shouldRenderCloseBtn);
-const warning = (content: string, duration?: number, shouldRenderCloseBtn?: boolean) =>
-  notice(content, 'warning', duration, shouldRenderCloseBtn);
-const destory = () => {
-  if (notifier) {
-    notifier.destroy();
-  }
-};
-const message = { success, error, destory, warning };
+['success', 'warning', 'error'].forEach((type) => {
+  api[type] = (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => {
+    if (isArgsProps(content)) {
+      return api.open({ ...content, type });
+    }
 
-export default message;
+    if (typeof duration === 'function') {
+      onClose = duration;
+      duration = undefined;
+    }
+
+    return api.open({ content, duration, type, onClose });
+  };
+});
+
+export interface MessageApi {
+  success: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
+  error: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
+  warning: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
+  open: (args: ArgsProps) => MessageType;
+  config: (options: ConfigOptions) => void;
+  destroy: () => void;
+}
+
+export default api as MessageApi;
