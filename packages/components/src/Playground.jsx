@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './playground.less';
 import { JsonEditor } from 'jsoneditor-react';
 import ace from 'brace';
 import 'brace/mode/json';
@@ -22,7 +21,7 @@ import Message from './components/message';
 // import Popconfirm from './components/popconfirm';
 // import Popover from './components/popover';
 // import Progress from './components/progress';
-// import Radio from './components/radio';
+import Radio from './components/radio';
 import Select from './components/select';
 // import Switch from './components/switch';
 // import Textarea from './components/textarea';
@@ -37,6 +36,7 @@ const InputNumber = Input.InputNumber;
 
 const defaultProps = {
   title: 'aaaaa',
+  radio: '',
 };
 class App extends React.Component {
   constructor(props) {
@@ -103,6 +103,54 @@ class App extends React.Component {
             <IconButton type='filter' />
             <IconButton type='filter' disabled />
             <IconButton type='down' />
+          </div>
+          <div>
+            <h1>Radio</h1>
+            <h2>Normal/Disabled/Disabled Checked Radio</h2>
+            <Radio>Normal</Radio>
+            <Radio disabled>Disabled</Radio>
+            <Radio defaultChecked disabled>
+              Checked Disabled
+            </Radio>
+            <h2>Radio Group horizontal</h2>
+            <Radio.Group
+              defaultValue='inOption'
+              value={this.state.radio}
+              onChange={(e) => this.setState({ radio: e.target.value })}
+              options={[
+                {
+                  label: 'inOption',
+                  value: 'inOption',
+                },
+                {
+                  label: 'disabled',
+                  value: 'disabled',
+                },
+              ]}
+            >
+              <Radio value='child'>child</Radio>
+            </Radio.Group>
+            <h2>Radio Group vertical</h2>
+            <Radio.Group
+              direction='vertical'
+              options={[
+                {
+                  label: 'inOption',
+                  value: 'inOption',
+                },
+                {
+                  label: 'disabled',
+                  value: 'disabled',
+                },
+              ]}
+            >
+              <Radio value='child'>child</Radio>
+            </Radio.Group>
+            <h2>Radio Group with invalid options</h2>
+            <Radio.Group options={[{ label: 'opA', value: 'opA', disabled: true }, 'opC', null, undefined]}>
+              <Radio value='a'>A</Radio>
+              <div>div</div>
+            </Radio.Group>
           </div>
           <div style={{ width: 300 }}>
             <h1>Input</h1>
