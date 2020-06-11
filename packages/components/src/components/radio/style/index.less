@@ -1,8 +1,7 @@
 @import '../../../stylesheet/theme.less';
 @import '../../../stylesheet/mixin/index.less';
 
-@color-primary: #1248E9;
-@color-hover: #3867f4;
+@color-primary: #3867f4;
 @color-text: #313E75;
 
 @color-background-normal: #ffffff;
@@ -81,26 +80,24 @@
     &::after{
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      top: 50%;
+      left: 50%;
       display: block;
       margin: auto;
-      height: 4px;
-      width: 4px;
+      height: 5px;
+      width: 5px;
       background-color: @color-background-normal;
       border-radius: 50%;
       box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2);
       opacity: 0;
-      transform: scale(0);
+      transform: scale(0) translate(-50%, -50%);
       transition: all @radio-duration ease-in-out;
     }
   }
 
   &:hover {
     .@{gio-radio-prefix}-inner{
-      border-color: @color-hover;
+      border-color: @color-primary;
     }
   }
 }
@@ -113,7 +110,7 @@
     box-shadow: none;
     &::after{
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) translate(-50%, -50%);
       transition: all @radio-duration ease-in-out
     }
   }
