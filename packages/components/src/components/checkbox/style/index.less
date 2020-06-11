@@ -1,38 +1,39 @@
 @import '../../../stylesheet/theme.less';
 @import '../../../stylesheet/mixin/index.less';
 
-@radio-prefix-cls: ~'@{component-prefix}-checkbox';
-@radio-inner-prefix-cls: ~'@{radio-prefix-cls}-inner';
-@group-prefix-cls: ~'@{radio-prefix-cls}-group';
+@checkbox-prefix-cls: ~'@{component-prefix}-checkbox';
+@checkbox-inner-prefix-cls: ~'@{checkbox-prefix-cls}-inner';
+@group-prefix-cls: ~'@{checkbox-prefix-cls}-group';
 
-.@{radio-prefix-cls} {
-  * {
-    box-sizing: border-box;
+.@{checkbox-prefix-cls} {
+  .@{checkbox-prefix-cls}-wrapper:hover &-inner,
+  &:hover &-inner,
+  &-input:focus + &-inner {
+    border-color: @checkbox-border-color-checked;
   }
+
   position: relative;
   &-wrapper {
+    .reset-component();
     position: relative;
     display: inline-block;
-    margin-right: 8px;
+    margin-right: 16px;
     white-space: nowrap;
     cursor: pointer;
   }
 
   &-input {
-    margin-right: 8px;
     display: none;
   }
 
-  .@{radio-inner-prefix-cls} {
+  .@{checkbox-inner-prefix-cls} {
     position: relative;
-    top: 0;
-    left: 0;
     width: 16px;
     height: 16px;
-    border-radius: 3px;;
-    background-color:@gr-default-bg;
-    border: @border-width-base @border-style-base @border-color-base;
-    transition: all .3s;
+    border-radius: 3px;
+    background-color: @background-color-base;
+    border: @checkbox-border;
+    transition: all 0.3s;
     display: inline-block;
     margin-right: 8px;
     vertical-align: text-bottom;
@@ -41,25 +42,28 @@
     transition: all 0.3s;
 
     &::after {
+      @factor: 12px;
+      @check-width: (16px / 14) * 5px;
+      @check-height: (16px / 14) * 8px;
       position: absolute;
-      top: 50%;
-      left: 22%;
+      top: 40%;
+      left: 20%;
       display: table;
-      width: 5px;
-      height: 9px;
-      border: 2px solid #fff;
+      width: @check-width;
+      height: @check-height;
+      border: 1px solid #fff;
       border-top: 0;
       border-left: 0;
-      transform: rotate(45deg) scale(1) translate(-50%,-50%);
+      transform: rotate(45deg) scale(1) translate(-50%, -50%);
       opacity: 1;
-      transition: all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
+      transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
     }
   }
 
   &-checked {
-    .@{radio-inner-prefix-cls} {
-      border-color: @gr-primary-color;
-      background-color: @gr-primary-color;
+    .@{checkbox-inner-prefix-cls} {
+      border-color: @checkbox-border-color-checked;
+      background-color: @checkbox-background-color-checked;
       &::after {
         content: ' ';
       }
@@ -67,30 +71,32 @@
   }
 
   &-disabled {
-    .@{radio-inner-prefix-cls} {
-      background-color: @disabled-bg;
-      border-color: @disabled-border-color!important;
+    .@{checkbox-inner-prefix-cls} {
+      background-color: @checkbox-background-color-disabled;
+      border-color: @checkbox-border-color-disabled !important;
       cursor: not-allowed;
 
       &::after {
-        border-color: rgba(0,0,0,.25);
+        border-color: rgba(0, 0, 0, 0.25);
       }
     }
 
     & + span {
-      color: @disabled-color;
+      color: @text-color-disabled;
       cursor: not-allowed;
+      opacity: 0.3;
     }
   }
 
   &-indeterminate {
-    .@{radio-inner-prefix-cls} {
+    .@{checkbox-inner-prefix-cls} {
       &::after {
-        transform: translate(-50%,-50%) scale(1);
+        transform: translate(-50%, -50%) scale(1);
         top: 50%;
         left: 50%;
-        width:70%;
+        width: 70%;
         height: 0;
+        border-right: 0;
       }
     }
   }
