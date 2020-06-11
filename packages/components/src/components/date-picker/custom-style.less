@@ -1,19 +1,15 @@
 @import '~@gio-design/tokens/dist/tokens.less';
 
 .gio-date-picker {
-
-  &:hover input,
-  input:focus {
-    border-color: @border-color-input-default-active!important;
-    box-shadow: @box-shadow-input-default-base!important;
-  }
-
   input {
+    padding-left: 40px;
     border: 1px solid @border-color-input-default-base;
   }
 
-  input {
-    padding-left: 40px;
+  &:hover input,
+  input:focus {
+    border-color: @border-color-input-default-active !important;
+    box-shadow: @box-shadow-input-default-base !important;
   }
 
   .gio-date-picker-icon {

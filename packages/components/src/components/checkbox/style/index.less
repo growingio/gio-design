@@ -19,23 +19,22 @@
   }
 
   &-input {
-    margin-right: 8px;
     display: none;
+    margin-right: 8px;
   }
 
   .@{radio-inner-prefix-cls} {
     position: relative;
     top: 0;
     left: 0;
+    display: inline-block;
     width: 16px;
     height: 16px;
-    border-radius: 3px;;
-    background-color:@gr-default-bg;
-    border: @border-width-base @border-style-base @border-color-base;
-    transition: all .3s;
-    display: inline-block;
     margin-right: 8px;
     vertical-align: text-bottom;
+    background-color: @gr-default-bg;
+    border: @border-width-base @border-style-base @border-color-base;
+    border-radius: 3px;
 
     border-collapse: separate;
     transition: all 0.3s;
@@ -50,16 +49,16 @@
       border: 2px solid #fff;
       border-top: 0;
       border-left: 0;
-      transform: rotate(45deg) scale(1) translate(-50%,-50%);
+      transform: rotate(45deg) scale(1) translate(-50%, -50%);
       opacity: 1;
-      transition: all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
+      transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
     }
   }
 
   &-checked {
     .@{radio-inner-prefix-cls} {
-      border-color: @gr-primary-color;
       background-color: @gr-primary-color;
+      border-color: @gr-primary-color;
       &::after {
         content: ' ';
       }
@@ -69,11 +68,11 @@
   &-disabled {
     .@{radio-inner-prefix-cls} {
       background-color: @disabled-bg;
-      border-color: @disabled-border-color!important;
+      border-color: @disabled-border-color !important;
       cursor: not-allowed;
 
       &::after {
-        border-color: rgba(0,0,0,.25);
+        border-color: rgba(0, 0, 0, 0.25);
       }
     }
 
@@ -86,11 +85,11 @@
   &-indeterminate {
     .@{radio-inner-prefix-cls} {
       &::after {
-        transform: translate(-50%,-50%) scale(1);
         top: 50%;
         left: 50%;
-        width:70%;
+        width: 70%;
         height: 0;
+        transform: translate(-50%, -50%) scale(1);
       }
     }
   }

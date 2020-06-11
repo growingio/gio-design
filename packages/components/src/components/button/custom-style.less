@@ -1,28 +1,28 @@
 @import '~@gio-design/tokens/dist/tokens.less';
 
-button[ant-click-animating-without-extra-node]:after {
+button[ant-click-animating-without-extra-node]::after {
   border: 0 none;
   opacity: 0;
-  animation:none 0 ease 0 1 normal;
+  animation: none 0 ease 0 1 normal;
 }
 
 .gio-button {
   &,
   &:focus {
-    border: none;
     padding: 0 16px;
-    background-color: @background-color-button-default-base;
     color: @color-button-default-base;
+    background-color: @background-color-button-default-base;
+    border: none;
   }
 
   &[disabled] {
-    opacity: .4;
+    opacity: 0.4;
   }
 
   &:hover {
-    background-color: @background-color-button-default-hover;
-    box-shadow: 0 0 4px 0 rgba(163,173,200,0.94);
     color: @color-button-default-hover;
+    background-color: @background-color-button-default-hover;
+    box-shadow: 0 0 4px 0 rgba(163, 173, 200, 0.94);
   }
 
   &:active {
@@ -30,7 +30,7 @@ button[ant-click-animating-without-extra-node]:after {
   }
 
   &-primary {
-    @color-button-primary: #FFF;
+    @color-button-primary: #fff;
 
     &,
     &:focus {
@@ -39,9 +39,9 @@ button[ant-click-animating-without-extra-node]:after {
     }
 
     &:hover {
-      background-color: @background-color-button-primary-hover;
-      box-shadow: 0 0 4px 0 rgba(163,173,200,0.94);
       color: @color-button-primary;
+      background-color: @background-color-button-primary-hover;
+      box-shadow: 0 0 4px 0 rgba(163, 173, 200, 0.94);
     }
 
     &:active {
@@ -56,21 +56,21 @@ button[ant-click-animating-without-extra-node]:after {
 
 .gio-icon-button {
   display: inline-block;
-  padding: 0;
   width: 22px;
   height: 22px;
+  padding: 0;
   line-height: 20px;
   text-align: center;
+  border-radius: @border-radius-medium;
   cursor: pointer;
   transition: all 0.2s ease;
-  border-radius: @border-radius-medium;
 
   &:not(&-disabled):hover {
-    box-shadow: 0 0 4px 0 rgba(163,173,200,0.94);
+    box-shadow: 0 0 4px 0 rgba(163, 173, 200, 0.94);
   }
 
   &-disabled {
-    opacity: @opacity-disabled;
     cursor: not-allowed;
+    opacity: @opacity-disabled;
   }
 }

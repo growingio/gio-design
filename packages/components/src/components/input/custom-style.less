@@ -9,23 +9,23 @@
   .gio-input:focus {
     float: left;
     width: 50px;
+    background-color: transparent;
     border: none;
     box-shadow: none;
-    background-color: transparent;
   }
 
   &-wrapper {
     width: 101%;
     background-color: white;
-    border-radius: @border-radius-medium;
     border: 1px solid @border-color-input-default-base;
+    border-radius: @border-radius-medium;
     transition: all 0.2s ease;
 
-    &:after {
-      content: ' ';
-      height: 0;
+    &::after {
       display: block;
       clear: both;
+      height: 0;
+      content: ' ';
     }
   }
 
@@ -42,21 +42,22 @@
     .gio-input-range-wrapper,
     input {
       color: #c3c3c3;
-      background-color: @palette-gray-3!important;
+      background-color: @palette-gray-3 !important;
     }
   }
 }
 
 .gio-input input,
 .gio-input {
-  /*.gio-input类名可以施加在一个span元素上，input是他的子元素，比如搜索输入框。也可以施加在一个input元素上，比如普通的输入框。 */
-  padding: 0 16px;
-  border-radius: @border-radius-medium;
-  border: 1px solid @border-color-input-default-base;
-  color: @palette-font-4;
   height: 40px;
+
+  /* .gio-input类名可以施加在一个span元素上，input是他的子元素，比如搜索输入框。也可以施加在一个input元素上，比如普通的输入框。 */
+  padding: 0 16px;
+  color: @palette-font-4;
   font-size: 14px;
   vertical-align: middle;
+  border: 1px solid @border-color-input-default-base;
+  border-radius: @border-radius-medium;
 
   &-small {
     height: 32px;
@@ -74,61 +75,66 @@
 
   &[disabled] {
     color: @color-input-default-base;
-    background-color: #FFF;
+    background-color: #fff;
     opacity: @opacity-input-disabled;
   }
 
   &:hover {
-    box-shadow: @box-shadow-input-default-base;
     border-color: @border-color-input-default-base;
+    box-shadow: @box-shadow-input-default-base;
   }
 
   &:focus,
   &:active:not(:disabled) {
-    box-shadow: @box-shadow-input-default-base;
     border-color: @border-color-input-default-active;
+    box-shadow: @box-shadow-input-default-base;
   }
- 
+
   &-inverse {
-    &, &[disabled] {
+    &,
+    &[disabled] {
       background-color: @background-color-input-inverse-base;
     }
   }
 
   &.gio-input--error {
-    border-color: @color-error!important;
+    border-color: @color-error !important;
     &:hover {
-      border-color: @color-error!important;
+      border-color: @color-error !important;
     }
     &:focus,
     &:active {
-      border-color: @color-error!important;
+      border-color: @color-error !important;
       box-shadow: @box-shadow-card;
     }
   }
-  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: @color-prompt!important;
+  &::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: @color-prompt !important;
   }
-  &::-moz-placeholder { /* Firefox 19+ */
-    color: @color-prompt!important;
+  &::-moz-placeholder {
+    /* Firefox 19+ */
+    color: @color-prompt !important;
   }
-  &:-ms-input-placeholder { /* IE 10+ */
-    color: @color-prompt!important;
+  &:-ms-input-placeholder {
+    /* IE 10+ */
+    color: @color-prompt !important;
   }
-  &:-moz-placeholder { /* Firefox 18- */
-    color: @color-prompt!important;
+  &:-moz-placeholder {
+    /* Firefox 18- */
+    color: @color-prompt !important;
   }
 }
 
 /* 对应了使用antd提供的Form组件的情况。当输入出错时input元素的一个父元素会被加上一个‘has-error’类 */
-.has-error input.gio-input{
+.has-error input.gio-input {
   border-color: @color-error;
   &:hover {
     border-color: @color-error;
   }
   &:focus,
   &:active {
-    border-color: @border-color-error!important;
+    border-color: @border-color-error !important;
     box-shadow: @box-shadow-card;
   }
 }
@@ -141,18 +147,16 @@
     &,
     &:hover,
     &:focus {
-      padding: 0 30px 0 16px;
       height: 100%;
+      padding: 0 30px 0 16px;
       color: @color-input-default-base;
     }
   }
 
   &:hover input {
-    & {
-      border-color: @border-color-input-default-base!important;
-    }
+    border-color: @border-color-input-default-base !important;
     &:focus {
-      border-color: @border-color-input-default-focus!important;
+      border-color: @border-color-input-default-focus !important;
     }
   }
 
@@ -168,7 +172,7 @@
   }
 
   .ant-input-suffix .anticon-search {
-    display: none!important;
+    display: none !important;
   }
   .ant-input-suffix .anticon-close-circle {
     margin-right: 5px;
@@ -183,14 +187,14 @@
 
 .gio-input-number {
   padding: 0;
-  outline: none;
   border: 1px solid @border-color-input-default-base;
+  outline: none;
   .ant-input-number-input-wrap {
+    padding: 0 11px;
     border-radius: 4px;
     outline: none;
-    padding: 0 11px;
     input {
-      padding: 0px;
+      padding: 0;
     }
   }
 
@@ -204,7 +208,7 @@
 
   &:focus,
   &:active:not(:disabled) {
-    border-color: @border-color-input-default-active!important;
+    border-color: @border-color-input-default-active !important;
   }
 
   &.gio-input-disabled input {
@@ -212,13 +216,15 @@
   }
 
   &.gio-input-inverse {
-    .ant-input-number-input-wrap, input {
+    .ant-input-number-input-wrap,
+    input {
       background-color: @background-color-input-inverse-base;
     }
   }
 
   &.gio-input-disabled {
-    .ant-input-number-input-wrap, input {
+    .ant-input-number-input-wrap,
+    input {
       color: #c3c3c3;
       background-color: @palette-gray-3;
     }
@@ -227,7 +233,7 @@
 
 .ant-input-number {
   &-focused {
+    border-color: @border-color-input-default-active !important;
     box-shadow: @box-shadow-input-default-base;
-    border-color: @border-color-input-default-active!important;
   }
 }

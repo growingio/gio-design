@@ -3,7 +3,8 @@
 .docz
 .rpt2_cache
 .tmp
-.vscode
+.vscode/*
+!.vscode/settings.json
 build
 .umi
 dist
