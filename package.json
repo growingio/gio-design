@@ -36,6 +36,7 @@
   },
   "scripts": {
     "start": "npx lerna run --scope @gio-design/components start --stream",
+    "bootstrap": "npx lerna bootstrap",
     "start:website": "npx lerna run --scope website start --stream",
     "start:playground": "npx lerna run --scope playground start --stream",
     "clean": "npx lerna clean",
@@ -51,7 +52,8 @@
     "lint": "yarn lint:components",
     "lint:components": "eslint packages/components/src --ext .js,.jsx,.ts,.tsx",
     "cm": "git-cz",
-    "test": "yarn test:components"
+    "test": "yarn test:components",
+    "test:components": "yarn workspace @gio-design/components test"
   },
   "config": {
     "commitizen": {

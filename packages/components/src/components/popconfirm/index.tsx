@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Popconfirm as AntdPopconfirm } from 'antd';
 import { PopconfirmProps } from 'antd/lib/popconfirm';
 import 'antd/lib/popconfirm/style/css.js';
-import './index.less';
 
 export interface Props {
   cancelText?: string;

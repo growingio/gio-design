@@ -10,7 +10,6 @@ initialize {
       Object {
         "attribs": Object {
           "class": "ant-time-picker-input",
-          "id": "",
           "placeholder": "Select time",
           "type": "text",
           "value": "",
@@ -174,14 +173,12 @@ initialize {
         "type": "tag",
         "x-attribsNamespace": Object {
           "class": undefined,
-          "id": undefined,
           "placeholder": undefined,
           "type": undefined,
           "value": undefined,
         },
         "x-attribsPrefix": Object {
           "class": undefined,
-          "id": undefined,
           "placeholder": undefined,
           "type": undefined,
           "value": undefined,
@@ -332,7 +329,6 @@ initialize {
         "prev": Object {
           "attribs": Object {
             "class": "ant-time-picker-input",
-            "id": "",
             "placeholder": "Select time",
             "type": "text",
             "value": "",
@@ -346,14 +342,12 @@ initialize {
           "type": "tag",
           "x-attribsNamespace": Object {
             "class": undefined,
-            "id": undefined,
             "placeholder": undefined,
             "type": undefined,
             "value": undefined,
           },
           "x-attribsPrefix": Object {
             "class": undefined,
-            "id": undefined,
             "placeholder": undefined,
             "type": undefined,
             "value": undefined,

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Tag as AntdTag } from 'antd';
-import 'antd/lib/tag/style/index.css';
 
 export interface PropsType {
   closable?: boolean;

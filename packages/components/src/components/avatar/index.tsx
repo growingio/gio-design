@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Avatar as AntdAvatar } from 'antd';
 import classNames from 'classnames';
-import 'antd/lib/avatar/style/index.css';
-import './style.less';
 
 interface IAvatarProps {
   icon?: string;

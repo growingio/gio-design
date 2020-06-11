@@ -1,0 +1,97 @@
+@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/mixin/index.less';
+
+@radio-prefix-cls: ~'@{component-prefix}-checkbox';
+@radio-inner-prefix-cls: ~'@{radio-prefix-cls}-inner';
+@group-prefix-cls: ~'@{radio-prefix-cls}-group';
+
+.@{radio-prefix-cls} {
+  * {
+    box-sizing: border-box;
+  }
+  position: relative;
+  &-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-right: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  &-input {
+    margin-right: 8px;
+    display: none;
+  }
+
+  .@{radio-inner-prefix-cls} {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;;
+    background-color:@gr-default-bg;
+    border: @border-width-base @border-style-base @border-color-base;
+    transition: all .3s;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: text-bottom;
+
+    border-collapse: separate;
+    transition: all 0.3s;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 22%;
+      display: table;
+      width: 5px;
+      height: 9px;
+      border: 2px solid #fff;
+      border-top: 0;
+      border-left: 0;
+      transform: rotate(45deg) scale(1) translate(-50%,-50%);
+      opacity: 1;
+      transition: all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
+    }
+  }
+
+  &-checked {
+    .@{radio-inner-prefix-cls} {
+      border-color: @gr-primary-color;
+      background-color: @gr-primary-color;
+      &::after {
+        content: ' ';
+      }
+    }
+  }
+
+  &-disabled {
+    .@{radio-inner-prefix-cls} {
+      background-color: @disabled-bg;
+      border-color: @disabled-border-color!important;
+      cursor: not-allowed;
+
+      &::after {
+        border-color: rgba(0,0,0,.25);
+      }
+    }
+
+    & + span {
+      color: @disabled-color;
+      cursor: not-allowed;
+    }
+  }
+
+  &-indeterminate {
+    .@{radio-inner-prefix-cls} {
+      &::after {
+        transform: translate(-50%,-50%) scale(1);
+        top: 50%;
+        left: 50%;
+        width:70%;
+        height: 0;
+      }
+    }
+  }
+}

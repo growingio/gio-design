@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox render 1`] = `
+<label
+  className="custom gio-checkbox-wrapper"
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  <span
+    className="gio-checkbox gio-checkbox-indeterminate gio-checkbox-checked gio-checkbox-disabled"
+    style={Object {}}
+  >
+    <input
+      checked={true}
+      className="gio-checkbox-input"
+      disabled={true}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="checkbox"
+    />
+    <span
+      className="gio-checkbox-inner"
+    />
+  </span>
+</label>
+`;

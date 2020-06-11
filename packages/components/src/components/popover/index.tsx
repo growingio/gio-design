@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Popover as AtndPopover } from 'antd';
-import 'antd/lib/popover/style/index.css';
+import AtndPopover from 'antd/lib/popover';
 
 export interface PropsType {
   content: string | React.ReactNode;
