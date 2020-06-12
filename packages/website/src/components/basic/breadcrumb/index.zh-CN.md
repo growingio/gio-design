@@ -10,7 +10,6 @@ group:
 # Breadcrumb 面包屑
 
 <code src='./demo/basic.tsx' title='配置 routes' />
-<code src='./demo/breadcrumbItem.tsx' title='Breadcrumb.Item' />
 
 ## 参数说明
 ### Breadcrumb
