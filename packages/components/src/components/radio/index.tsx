@@ -1,14 +1,8 @@
-import { Radio } from 'antd';
-import { assign } from 'lodash';
-import RButton from './Button';
-import RGroup from './Group';
+import Radio from './Radio';
+import RadioGroup from './Group';
 
-assign(Radio, {
-  Button: RButton,
-  Group: RGroup,
-});
+Radio.Group = RadioGroup;
 
-export const Button = Radio.Button;
-export const Group = Radio.Group;
+export { RadioGroup };
 
 export default Radio;

@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const noop = (): undefined => void 0;
+const noop = (): undefined => undefined;
 
 export interface Props {
   inverse?: boolean;

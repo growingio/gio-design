@@ -15,6 +15,10 @@ export interface ModalProps {
   disableOk?: boolean;
   showCancel?: boolean;
   onCancel?: (e?: React.MouseEvent<any>) => void;
+  /**
+   * Todo: 区分清楚这里的返回值类型
+   */
+  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   onOk?: () => void | Promise<any>;
   footer?: React.ReactNode;
   children: React.ReactNode;

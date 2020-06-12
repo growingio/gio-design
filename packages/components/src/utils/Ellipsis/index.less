@@ -1,22 +1,22 @@
 .gio-ui-ellipsis {
-    word-break: break-all;
-    text-overflow: ellipsis;
-    display: inline-block;
-    display: -webkit-box;
+  display: inline-block;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-line-clamp: 2;
+  &__line--2 {
     -webkit-line-clamp: 2;
-    overflow: hidden;
-    &__line--2 {
-        -webkit-line-clamp: 2;
-    }
-    &__line--1 {
-        -webkit-line-clamp: 1;
-    }
+  }
+  &__line--1 {
+    -webkit-line-clamp: 1;
+  }
 }
 .gio-ui-single-line-ellipsis {
-    display: inline-block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal;
-    width: 100%;
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-wrap: normal;
 }

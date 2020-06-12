@@ -9,9 +9,9 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: 0;
-    height: 100%;
     z-index: @z-index-modal;
+    height: 100%;
+    padding: 0;
 
     &.rightIn-enter {
       transform: translate3d(420px, 0, 0);
@@ -32,11 +32,10 @@
       transition-duration: 300ms;
     }
 
-
     .btn-close {
       position: absolute;
-      right: 20px;
       top: 25px;
+      right: 20px;
       cursor: pointer;
     }
 

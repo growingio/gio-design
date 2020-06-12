@@ -3,7 +3,8 @@
 .docz
 .rpt2_cache
 .tmp
-.vscode
+.vscode/*
+!.vscode/settings.json
 build
 .umi
 dist
@@ -19,3 +20,4 @@ lerna-debug.log
 junit.xml
 report.*.json
 yarn-error.log
+.temp.less
