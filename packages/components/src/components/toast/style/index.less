@@ -49,9 +49,10 @@
     margin-right: 3px;
   }
 
-  // &-notice.move-up-enter.move-up-enter-active {
-  //   animation-name: MessageMoveEnter;
-  // }
+  &-notice.move-up-enter.move-up-enter-active {
+    animation-name: MessageMoveEnter;
+    animation-duration: 1s;
+  }
 
   &-notice.move-up-leave.move-up-leave-active {
     animation-name: MessageMoveOut;
@@ -59,19 +60,33 @@
   }
 }
 
-// @keyframes MessageMoveEnter {
-//   0% {
-//     transform: translateY(-100%);
-//     transform-origin: 0 0;
-//     opacity: 0;
-//   }
-
-//   100% {
-//     transform: translateY(0%);
-//     transform-origin: 0 0;
-//     opacity: 1;
-//   }
-// }
+@keyframes MessageMoveEnter {
+  0% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  20%, 53%, 80% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transform: translateY(0px);
+  }
+  40%, 43% {
+    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translateY(-10px);
+  }
+  70% {
+    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    transform: translateY(-5px);
+  }
+  90% {
+    transform: translateY(-1px);
+  }
+}
 
 @keyframes MessageMoveOut {
   0% {
