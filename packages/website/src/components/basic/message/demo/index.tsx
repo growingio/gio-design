@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Message, Button } from '@gio-design/components';
+import { Toast, Button } from '@gio-design/components';
 import '@gio-design/components/es/components/button/custom-style.css';
-import '@gio-design/components/es/components/message/style/index.css';
+import '@gio-design/components/es/components/toast/style/index.css';
 
 const SuccessMessage = () => (
   <span>
@@ -12,19 +12,19 @@ const SuccessMessage = () => (
 
 export default () => {
   const handleSuccess = () => {
-    Message.success('操作成功！');
+    Toast.success('操作成功！');
   };
 
   const handleFail = () => {
-    Message.error('操作失败！');
+    Toast.error('操作失败！');
   };
 
   const handleWarn = () => {
-    Message.warning('警告，怪兽即将入侵！');
+    Toast.warning('警告，怪兽即将入侵！');
   };
 
   const handleSuccessDiy = () => {
-    Message.success(<SuccessMessage />);
+    Toast.success(<SuccessMessage />);
   };
 
   return (

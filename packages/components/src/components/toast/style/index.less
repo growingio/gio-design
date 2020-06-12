@@ -23,8 +23,8 @@
     display: inline-block;
     padding: 9px 60px;
     background-color: #fff;;
-    box-shadow: 0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08), 0 9px 28px 8px rgba(0,0,0,.05);
-    border-radius: 2px;
+    box-shadow: 0 3px 6px -4px rgba(223,226,237,0.8), 0 6px 16px 0 rgba(223,226,237,0.8), 0 9px 28px 8px rgba(223,226,237,0.8);
+    border-radius: 4px;
     pointer-events: all;
     font-size: 14px;
     line-height: 22px;
@@ -49,11 +49,29 @@
     margin-right: 3px;
   }
 
+  // &-notice.move-up-enter.move-up-enter-active {
+  //   animation-name: MessageMoveEnter;
+  // }
+
   &-notice.move-up-leave.move-up-leave-active {
     animation-name: MessageMoveOut;
     animation-duration: 0.3s;
   }
 }
+
+// @keyframes MessageMoveEnter {
+//   0% {
+//     transform: translateY(-100%);
+//     transform-origin: 0 0;
+//     opacity: 0;
+//   }
+
+//   100% {
+//     transform: translateY(0%);
+//     transform-origin: 0 0;
+//     opacity: 1;
+//   }
+// }
 
 @keyframes MessageMoveOut {
   0% {

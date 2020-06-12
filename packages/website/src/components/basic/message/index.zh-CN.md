@@ -1,5 +1,5 @@
 ---
-title: Message
+title: Toast
 nav:
   order: 1
   title: 组件
@@ -19,9 +19,9 @@ group:
 
 # API
 组件提供了一些静态方法，使用方法和参数如下：
-- message.success(content, [duration], onClose)
-- message.error(content, [duration], onClose)
-- message.warning(content, [duration], onClose)
+- Toast.success(content, [duration], onClose)
+- Toast.error(content, [duration], onClose)
+- Toast.warning(content, [duration], onClose)
 
 ## 参数说明
 
@@ -33,16 +33,16 @@ group:
 
 
 组件同时提供 promise 接口。
-- message[level](content, [duration]).then(afterClose)
-- message[level](content, [duration], onClose).then(afterClose)
+- Toast[level](content, [duration]).then(afterClose)
+- Toast[level](content, [duration], onClose).then(afterClose)
 
-其中 `message[level]` 是组件已经提供的静态方法。`then` 接口返回值是 Promise。
+其中 `Toast[level]` 是组件已经提供的静态方法。`then` 接口返回值是 Promise。
 
 也可以对象的形式传递参数：
-- message.open(config)
-- message.success(config)
-- message.error(config)
-- message.warning(config)
+- Toast.open(config)
+- Toast.success(config)
+- Toast.error(config)
+- Toast.warning(config)
 
 `config` 对象属性如下：
 
@@ -59,8 +59,8 @@ group:
 
 ## 全局方法
 还提供了全局配置和全局销毁方法：
-- message.config(options)
-- message.destroy()
+- Toast.config(options)
+- Toast.destroy()
 
 | 参数            | 说明                                    | 类型              | 默认值 |
 | -------------- | --------------------------------------- | ----------------- | ------ |
