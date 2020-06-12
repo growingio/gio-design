@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [opened, synchronize]
 jobs:
-  setup:
+  run:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
@@ -19,32 +19,20 @@ jobs:
         uses: borales/actions-yarn@v2.0.0
         with:
           cmd: bootstrap
-
-  build:
-    needs: setup
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Build packages
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: build
-      - name: Build website
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: build:website
-
-  lint:
-    needs: setup
-    runs-on: ubuntu-18.04
       - name: Lint
         uses: borales/actions-yarn@v2.0.0
         with:
           cmd: lint
-
-  test:
-    needs: setup
-    runs-on: ubuntu-18.04
+      - name: Build packages
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build
       - name: Test
         uses: borales/actions-yarn@v2.0.0
         with:
           cmd: test
+      - name: Build website
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build:website
+      
