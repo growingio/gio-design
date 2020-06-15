@@ -27,21 +27,21 @@ export default () => {
   };
 
   const handleInfo = () => {
-    Toast.info('This is info message.');
+    Toast.info('这是一条温馨提示~');
   };
 
   return (
     <div>
-      <a onClick={handleSuccess}>success</a>
+      <a onClick={handleSuccess}>成功</a>
       <br />
       <br />
-      <a onClick={handleFail}>error</a>
+      <a onClick={handleFail}>失败</a>
       <br />
       <br />
-      <a onClick={handleWarn}>warning</a>
+      <a onClick={handleWarn}>警告</a>
       <br />
       <br />
-      <a onClick={handleInfo}>info</a>
+      <a onClick={handleInfo}>提示</a>
       <br />
       <br />
       <a onClick={handleSuccessDiy}>成功，去看看</a>
