@@ -1,5 +1,5 @@
 ---
-title: Toast
+title: Toast 全局提示
 nav:
   order: 1
   title: 组件
@@ -7,17 +7,17 @@ group:
   title: 基础组件
 ---
 
-# 何时使用
+## 何时使用
 - 可提供成功、警告和错误等反馈信息。
 - 顶部居中显示并自动消失，是一种不打断用户操作的轻量级提示方式。
 
 
-# 代码演示
+## 代码演示
 
 <code src='./demo/index.tsx' title='基础用法' />
 
 
-# API
+## API
 组件提供了一些静态方法，使用方法和参数如下：
 - Toast.success(content, [duration], onClose)
 - Toast.error(content, [duration], onClose)
