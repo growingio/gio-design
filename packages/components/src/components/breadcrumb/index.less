@@ -1,0 +1,31 @@
+.gio-breadcrumb {
+  height: 22px;
+  color: #313e75;
+  font-size: 14px;
+
+  &-item.gio-breadcrumb-item-link {
+    .gio-breadcrumb-item-link-target {
+      cursor: pointer;
+
+      &:hover {
+        color: #2867f4;
+      }
+    }
+  }
+
+  a {
+    color: #313e75;
+
+    &:hover {
+      color: #2867f4;
+    }
+  }
+
+  &-separator {
+    display: inline-block;
+    box-sizing: content-box;
+    width: 16px;
+    padding: 0 8px;
+    text-align: center;
+  }
+}

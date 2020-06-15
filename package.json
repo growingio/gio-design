@@ -32,7 +32,14 @@
     "husky": "^4.2.5",
     "lerna": "^3.16.4",
     "lint-staged": "^10.2.7",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "stylelint": "^13.6.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.3.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-prettier": "^1.1.2"
   },
   "scripts": {
     "start": "npx lerna run --scope @gio-design/components start --stream",
@@ -52,6 +59,9 @@
     "publish": "npx lerna publish",
     "lint": "yarn lint:components",
     "lint:components": "eslint packages/components/src --ext .js,.jsx,.ts,.tsx",
+    "lint:style": "stylelint 'packages/components/src/**/*.{css,less}' --syntax less",
+    "lint-fix:components": "yarn run lint:components --fix",
+    "lint-fix:style": "yarn run lint:style --fix",
     "cm": "git-cz",
     "test": "yarn test:components",
     "test:components": "yarn workspace @gio-design/components test"

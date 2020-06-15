@@ -1,0 +1,177 @@
+@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/mixin/index.less';
+
+@color-primary: #3867f4;
+@color-text: #313e75;
+
+@color-background-normal: #ffffff;
+@color-background-disabled: #f7f8fc;
+
+@color-border-normal: #a3adc8;
+@color-border-checked: #1248e9;
+@color-border-disabled: #dfe2ed;
+
+@radio-duration: 0.3s;
+@radio-normal-shadow: inset -0.5px 1px 2px 0 rgba(163, 173, 200, 0.8);
+@radio-hover-shadow: @radio-normal-shadow, 0 2px 4px 0 rgba(223, 226, 237, 1);
+
+@gio-radio-prefix: ~'@{component-prefix}-radio';
+@gio-radio-input: ~'@{gio-radio-prefix}-input'; // input
+@gio-radio-inner: ~'@{gio-radio-prefix}-inner'; // inner
+@gio-radio-checked: ~'@{gio-radio-prefix}-checked'; // checked
+@gio-radio-disabled: ~'@{gio-radio-prefix}-disabled'; // disabled
+@gio-radio__wrapper: ~'@{gio-radio-prefix}__wrapper'; // wrapper
+@gio-radio__group: ~'@{gio-radio-prefix}__group'; // group
+
+.@{gio-radio__wrapper} {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:not(&--disabled):hover {
+    & :not(.@{gio-radio-checked}) {
+      .@{gio-radio-prefix}-inner {
+        border-color: @color-primary;
+        box-shadow: @radio-hover-shadow;
+      }
+    }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+}
+
+// normal
+.@{gio-radio-prefix} {
+  position: relative;
+  top: 0;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: none;
+  cursor: pointer;
+
+  &-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+  }
+
+  & + * {
+    display: inline-block;
+    padding: 0 8px;
+    color: @color-text;
+    font-size: 14px;
+    line-height: 22px;
+    vertical-align: middle;
+  }
+
+  &-inner {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    display: block;
+    background-color: @color-background-normal;
+    border: 0.5px solid;
+    border-color: @color-border-normal;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50%;
+    box-shadow: @radio-normal-shadow;
+    transform: scale(0.5);
+    transition: all @radio-duration;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 5px;
+      height: 5px;
+      margin: auto;
+      background-color: @color-background-normal;
+      border-radius: 50%;
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+      transform: scale(0) translate(-25%, -25%);
+      opacity: 0;
+      transition: all @radio-duration ease-in-out;
+      content: '';
+    }
+  }
+}
+
+// checked
+.@{gio-radio-checked} {
+  .@{gio-radio-inner} {
+    background-color: @color-primary;
+    border-color: @color-border-checked;
+    box-shadow: none;
+    &::after {
+      transform: scale(2) translate(-25%, -25%);
+      opacity: 1;
+      transition: all @radio-duration ease-in-out;
+    }
+  }
+}
+
+// disabled
+.@{gio-radio-disabled} {
+  &,
+  .@{gio-radio-input} {
+    cursor: not-allowed;
+  }
+
+  .@{gio-radio-inner} {
+    background-color: @color-background-disabled;
+    border-color: @color-border-disabled;
+    box-shadow: none;
+
+    &::after {
+      background-color: #dfe2ed;
+      box-shadow: 0 1px 1px 0 rgba(223, 226, 237, 0.6);
+    }
+  }
+
+  & + * {
+    opacity: 0.4;
+  }
+}
+
+// radio group
+.@{gio-radio__group} {
+  display: inline-flex;
+  justify-content: flex-start;
+
+  &--horizontal {
+    flex-direction: row;
+    align-items: center;
+
+    .@{gio-radio__wrapper} {
+      margin-right: 16px;
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .@{gio-radio__wrapper} {
+      margin-bottom: 16px;
+    }
+  }
+}

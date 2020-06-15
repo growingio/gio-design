@@ -1,9 +1,8 @@
-@import '~@gio-design/tokens/dist/tokens.less';
+@import '../../../stylesheet/theme.less';
 
-@message-prefix-cls: gio-message;
+@toast-prefix-cls: ~'@{component-prefix}-toast';
 
-.@{message-prefix-cls} {
-
+.@{toast-prefix-cls} {
   position: fixed;
   top: 16px;
   left: 0;
@@ -22,25 +21,29 @@
   &-notice-content {
     display: inline-block;
     padding: 9px 60px;
-    background-color: #fff;;
-    box-shadow: 0 3px 6px -4px rgba(223,226,237,0.8), 0 6px 16px 0 rgba(223,226,237,0.8), 0 9px 28px 8px rgba(223,226,237,0.8);
-    border-radius: 4px;
-    pointer-events: all;
+    color: #313e75;
     font-size: 14px;
     line-height: 22px;
-    color: #313e75;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 14px 0 rgba(223, 226, 237, 0.8);
+    pointer-events: all;
   }
 
   &-success &-icon svg {
-    color: #008A56;
+    color: #008a56;
   }
 
   &-error &-icon svg {
-    color: #F21300;
+    color: #f21300;
   }
 
   &-warning &-icon svg {
-    color: #FAAD14;
+    color: #f8af48;
+  }
+
+  &-info &-icon svg {
+    color: #3867f4;
   }
 
   &-icon {
@@ -62,29 +65,12 @@
 
 @keyframes MessageMoveEnter {
   0% {
-    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
     transform: translateY(-100%);
     opacity: 0;
   }
   100% {
-    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    transform: translateY(0px);
+    transform: translateY(0%);
     opacity: 1;
-  }
-  20%, 53%, 80% {
-    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    transform: translateY(0px);
-  }
-  40%, 43% {
-    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-    transform: translateY(-10px);
-  }
-  70% {
-    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-    transform: translateY(-5px);
-  }
-  90% {
-    transform: translateY(-1px);
   }
 }
 
@@ -101,7 +87,7 @@
   }
 }
 
-.@{message-prefix-cls}-rtl {
+.@{toast-prefix-cls}-rtl {
   direction: rtl;
 
   span {

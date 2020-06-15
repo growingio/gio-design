@@ -7,7 +7,7 @@ let defaultDuration = 2;
 let defaultTop: number;
 let messageInstance: any;
 let key = 1;
-let prefixCls = 'gio-message';
+let prefixCls = 'gio-toast';
 let transitionName = 'move-up';
 let getContainer: () => HTMLElement;
 let maxCount: number;
@@ -37,7 +37,7 @@ function getMessageInstance(callback: (i: any) => void) {
   );
 }
 
-type NoticeType = 'success' | 'error' | 'warning';
+type NoticeType = 'success' | 'error' | 'warning' | 'info';
 
 export type ThenableArgument = (val: any) => void;
 
@@ -61,7 +61,8 @@ export interface ArgsProps {
 const iconMap = {
   success: 'check-circle',
   error: 'close-circle',
-  warning: 'warning-circle',
+  warning: 'warning',
+  info: 'information',
 };
 
 function notice(args: ArgsProps): MessageType {
@@ -167,15 +168,15 @@ const api: any = {
   },
 };
 
-['success', 'warning', 'error'].forEach((type) => {
+['success', 'warning', 'error', 'info'].forEach((type) => {
   api[type] = (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => {
     if (isArgsProps(content)) {
       return api.open({ ...content, type });
     }
 
     if (typeof duration === 'function') {
-      onClose = duration;
-      duration = undefined;
+      onClose = duration; // eslint-disable-line
+      duration = undefined; // eslint-disable-line
     }
 
     return api.open({ content, duration, type, onClose });
@@ -186,6 +187,7 @@ export interface MessageApi {
   success: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
   error: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
   warning: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
+  info: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
   open: (args: ArgsProps) => MessageType;
   config: (options: ConfigOptions) => void;
   destroy: () => void;
