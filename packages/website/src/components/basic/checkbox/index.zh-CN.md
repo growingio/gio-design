@@ -11,9 +11,15 @@ group:
 
 <code src='./demo/basic.tsx' title='基础用法' />
 
-<code src='./demo/group.tsx' title='CheckboxGroup' />
-
 <code src='./demo/hoz-group.tsx' title='纵向排列' />
+
+<code src='./demo/vertical-group.tsx' title='横向排列' />
+
+<code src='./demo/partial.tsx' title='部分选中' />
+
+<code src='./demo/group.tsx' title='CheckboxGroup' desc="整体禁止，内部自维护数据，外部传入"/>
+
+<code src='./demo/number-item-group.tsx' title='数字类型的值' />
 
 ## 参数说明
 

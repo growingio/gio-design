@@ -1,34 +1,11 @@
 import * as React from 'react';
-import Checkbox, { CheckboxProps } from './checkbox';
+import Checkbox from './checkbox';
 import { ConfigContext } from '../config-provider';
 import classNames from 'classnames';
 import CheckboxGroupContext from './CheckboxGroupContext';
+import { CheckboxOptionType, CheckboxValueType, CheckboxGroupProps } from './interface';
 
-type CheckboxValueType = string | number | boolean;
-
-export interface CheckboxOptionType {
-  label: React.ReactNode;
-  value: CheckboxValueType;
-  disabled?: boolean;
-  onChange?: CheckboxProps['onChange'];
-}
-
-export interface CheckboxGroupProps {
-  defaultValue: CheckboxValueType[];
-  disabled?: boolean;
-  name: string;
-  value?: CheckboxValueType[];
-  onChange: (value: CheckboxValueType[]) => void;
-  options?: Array<CheckboxOptionType>;
-  style?: React.CSSProperties;
-  direction?: 'horizontal' | 'vertical';
-}
-
-function merge(
-  selected: CheckboxValueType[],
-  option: CheckboxOptionType,
-  registeredValues: CheckboxValueType[]
-): CheckboxValueType[] {
+function merge<T>(selected: T[], option: CheckboxOptionType<T>, registeredValues: T[]): T[] {
   const optionIndex = selected.indexOf(option.value);
   const newSelected = [...selected].filter((val) => registeredValues.indexOf(val) !== -1);
   if (optionIndex === -1) {
@@ -39,9 +16,11 @@ function merge(
   return newSelected;
 }
 
-const emptyValue: CheckboxValueType[] = [];
-const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
+const emptyValue: any[] = [];
+
+function CheckboxGroup<T extends CheckboxValueType>({
   options = [],
+  prefixCls: customizePrefixCls,
   defaultValue,
   value,
   onChange,
@@ -49,27 +28,29 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   name,
   direction = 'horizontal',
   children,
-}) => {
-  const registeredValuesRef = React.useRef<CheckboxValueType[]>([]);
+}: CheckboxGroupProps<T>) {
+  const registeredValuesRef = React.useRef<T[]>([]);
 
-  const registerValue = React.useCallback((value: CheckboxValueType) => {
+  const registerValue = React.useCallback((value: T) => {
     registeredValuesRef.current.push(value);
   }, []);
 
-  const unRegisterValue = React.useCallback((value: CheckboxValueType) => {
+  const unRegisterValue = React.useCallback((value: T) => {
     registeredValuesRef.current = registeredValuesRef.current.filter((_) => _ !== value);
   }, []);
 
-  const [selected, updateSelected] = React.useState(() => defaultValue || emptyValue);
+  // self maintained state
+  const [selected, updateSelected] = React.useState<T[]>(() => defaultValue || emptyValue);
 
   const refValue = React.useRef(value);
+
   // update outside maintained state
   if (refValue.current !== value && value) {
     refValue.current = value;
   }
 
   const toggleOption = React.useCallback(
-    (option: CheckboxOptionType) => {
+    (option: CheckboxOptionType<T>) => {
       if (value === undefined) {
         // self maintained state
         updateSelected((selected) => {
@@ -86,8 +67,8 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   );
 
   const { getPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = getPrefixCls('checkbox');
-  const selectedValues = refValue.current || selected || emptyValue;
+  const prefixCls = getPrefixCls('checkbox', customizePrefixCls);
+  const selectedValues = refValue.current || selected || (emptyValue as T[]);
   let customChildren = children;
   if (options.length > 0) {
     customChildren = options
@@ -102,7 +83,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
       })
       .map((option) => (
         <Checkbox
-          prefixCls={prefixCls}
+          prefixCls={customizePrefixCls}
           key={option.value.toString()}
           disabled={'disabled' in option ? option.disabled : disabled}
           value={option.value}
@@ -121,6 +102,6 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
       <div className={cls}>{customChildren}</div>
     </CheckboxGroupContext.Provider>
   );
-};
+}
 
-export default React.memo(CheckboxGroup);
+export default CheckboxGroup;

@@ -21,7 +21,6 @@ export default () => {
       defaultValue={defaultValue}
       value={state}
       onChange={handleChange}
-      direction="vertical"
     >
       <Checkbox value="Apple">Apple</Checkbox>
       <Checkbox value="Pear">Pear</Checkbox>
