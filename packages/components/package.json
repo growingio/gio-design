@@ -3,6 +3,7 @@
   "version": "20.6.1",
   "description": "GrowingIO Design System Components",
   "module": "./es/index.js",
+  "types": "./es/index.d.ts",
   "files": [
     "build",
     "lib",
