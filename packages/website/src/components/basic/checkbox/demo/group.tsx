@@ -26,7 +26,11 @@ export default () => {
         options={options}
         onChange={handleChange}
       />
-      <CheckboxGroup defaultValue={['Apple', 'Orange']} value={state} onChange={updateState}>
+      <CheckboxGroup
+        defaultValue={['Apple', 'Orange']}
+        value={state}
+        onChange={updateState}
+      >
         <Checkbox value="Apple">Apple</Checkbox>
         <Checkbox value="Pear">Pear</Checkbox>
         <Checkbox value="Orange">Orange</Checkbox>

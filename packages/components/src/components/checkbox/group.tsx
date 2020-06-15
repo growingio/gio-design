@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Checkbox, { CheckboxProps } from './checkbox';
 import { ConfigContext } from '../config-provider';
+import classNames from 'classnames';
 import CheckboxGroupContext from './CheckboxGroupContext';
 
 type CheckboxValueType = string | number | boolean;
@@ -20,6 +21,7 @@ export interface CheckboxGroupProps {
   onChange: (value: CheckboxValueType[]) => void;
   options?: Array<CheckboxOptionType>;
   style?: React.CSSProperties;
+  direction?: 'horizontal' | 'vertical';
 }
 
 function merge(
@@ -45,6 +47,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   onChange,
   disabled = false,
   name,
+  direction = 'horizontal',
   children,
 }) => {
   const registeredValuesRef = React.useRef<CheckboxValueType[]>([]);
@@ -111,9 +114,11 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
       ));
   }
 
+  const cls = classNames(`${prefixCls}-group`, `${prefixCls}-group--${direction}`);
+
   return (
     <CheckboxGroupContext.Provider value={{ toggleOption, selectedValues, name, registerValue, unRegisterValue }}>
-      <div className={`${prefixCls}-group`}>{customChildren}</div>
+      <div className={cls}>{customChildren}</div>
     </CheckboxGroupContext.Provider>
   );
 };
