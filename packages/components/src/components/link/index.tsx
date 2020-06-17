@@ -17,33 +17,39 @@ const Link: React.FC<TLinkProps> = ({
     [`${prefixCls}--disabled`]: disabled,
   });
 
-  if (component === 'a') {
-    return (
-      <a href={to} className={cls} {...otherProps}>
-        {children}
-      </a>
-    );
-  }
-
   // TODO: 明确 e 的类型 e: React.MouseEvent<typeof component>
   const handleClick = (e: any) => {
-    if (otherProps.onClick && !disabled) {
+    if (disabled) {
+      e.preventDefault();
+      return;
+    }
+
+    if (otherProps.onClick) {
       otherProps.onClick(e);
       return;
     }
-    if (to && !disabled) {
+
+    if (to) {
       window.location.href = to;
     }
   };
 
-  const cloneComponentProps = {
+  const componentProps = {
     className: cls,
     ...otherProps,
     onClick: handleClick,
   };
 
+  if (component === 'a') {
+    return (
+      <a href={to} {...componentProps}>
+        {children}
+      </a>
+    );
+  }
+
   const ComponentProp = component;
-  return <ComponentProp {...cloneComponentProps}>{children}</ComponentProp>;
+  return <ComponentProp {...componentProps}>{children}</ComponentProp>;
 };
 
 export default Link;
