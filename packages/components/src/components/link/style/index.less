@@ -1,0 +1,40 @@
+@import '../../../stylesheet/theme.less';
+
+@gio-link-prefix: ~'@{component-prefix}-link';
+@gio-link-disabled: ~'@{gio-link-prefix}--disabled';
+
+// normal
+.@{gio-link-prefix} {
+  display: inline-block;
+  margin-right: 8px;
+  margin-left: 8px;
+  color: #1248e9;
+  font-size: 14px;
+  line-height: 22px;
+  text-decoration: underline;
+  vertical-align: middle;
+  cursor: pointer;
+
+  &:hover {
+    color: @gr-primary-color;
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: #313e75;
+  }
+}
+
+// disabled
+.@{gio-link-disabled} {
+  color: #adb2c2;
+  cursor: not-allowed;
+
+  &.@{gio-link-prefix} {
+    &:hover,
+    &:active {
+      color: #adb2c2;
+      text-decoration: underline;
+    }
+  }
+}

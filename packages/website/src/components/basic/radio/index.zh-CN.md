@@ -1,7 +1,7 @@
 ---
 title: Radio 单选框
 nav:
-  order: 2
+  order: 1
   title: 组件
 group:
   title: 基础组件
