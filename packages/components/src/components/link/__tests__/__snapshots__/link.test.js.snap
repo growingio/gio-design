@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Link should render correctly 1`] = `
+<a
+  className="gio-customized-link gio-link gio-link--disabled"
+  href="https://www.growingio.com"
+>
+  GrowingIO
+</a>
+`;

@@ -27,11 +27,11 @@ const Link: React.FC<TLinkProps> = ({
 
   // TODO: 明确 e 的类型 e: React.MouseEvent<typeof component>
   const handleClick = (e: any) => {
-    if (otherProps.onClick) {
+    if (otherProps.onClick && !disabled) {
       otherProps.onClick(e);
       return;
     }
-    if (to) {
+    if (to && !disabled) {
       window.location.href = to;
     }
   };

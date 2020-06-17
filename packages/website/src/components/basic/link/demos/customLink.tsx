@@ -9,14 +9,14 @@ const CustomLinkRoot: React.FC<{}> = ({ children, ...props }) => (
 export default () => (
   <div>
     <div>
-      <Link component="div" to="www.growingio.com">
+      <Link component="div" to="https://www.growingio.com">
         Element Div
       </Link>
     </div>
     <div>
       <Link
         component={CustomLinkRoot}
-        to="www.growingio.com"
+        to="https://www.growingio.com"
         onClick={() => {
           console.log('===Log Start===');
           console.log('click on custom link element');
@@ -24,6 +24,11 @@ export default () => (
         }}
       >
         Custom Element
+      </Link>
+    </div>
+    <div>
+      <Link component={CustomLinkRoot} to="https://www.growingio.com" disabled>
+        Disabled Custom Element
       </Link>
     </div>
   </div>

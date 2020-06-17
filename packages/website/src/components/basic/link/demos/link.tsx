@@ -5,10 +5,15 @@ import '@gio-design/components/es/components/link/style/css.js';
 export default () => (
   <div>
     <div>
-      <Link to="www.growingio.com">GrowingIO</Link>
+      <Link to="https://www.growingio.com">GrowingIO</Link>
     </div>
     <div>
-      <Link disabled to="www.growingio.com">
+      <Link to="https://www.growingio.com" target="__blank">
+        Open GrowingIO with a new blank tab
+      </Link>
+    </div>
+    <div>
+      <Link disabled to="https://www.growingio.com">
         Disabled
       </Link>
     </div>

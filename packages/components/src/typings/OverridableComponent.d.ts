@@ -21,7 +21,7 @@ export type BaseProps<M extends OverridableTypeMap> =
 & CommonProps<M>;
 
 /**
- * Props if `component={Component}` is NOT used.
+ * 没有使用 `component={Component}` 时的 Props 定义
  */
 // prettier-ignore
 export type DefaultComponentProps<M extends OverridableTypeMap> =
