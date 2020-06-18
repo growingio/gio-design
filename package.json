@@ -19,6 +19,8 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^3.0.2",
     "@typescript-eslint/parser": "^3.0.2",
     "babel-eslint": "^10.1.0",
@@ -46,6 +48,7 @@
     "bootstrap": "npx lerna bootstrap",
     "start:website": "npx lerna run --scope website start --stream",
     "start:playground": "npx lerna run --scope playground start --stream",
+    "start:components": "npx lerna run --scope @gio-design/components watch --stream",
     "clean": "npx lerna clean",
     "build": "yarn build:tokens && yarn build:themes && yarn build:icon-generator && yarn build:icon && yarn build:components",
     "build:playground": "yarn workspace playground build",

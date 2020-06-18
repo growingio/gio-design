@@ -1,8 +1,9 @@
 {
   "name": "@gio-design/components",
-  "version": "0.4.35",
+  "version": "20.6.1",
   "description": "GrowingIO Design System Components",
   "module": "./es/index.js",
+  "types": "./es/index.d.ts",
   "files": [
     "build",
     "lib",
@@ -20,7 +21,7 @@
   },
   "dependencies": {
     "@gio-design/icon": "^0.0.32",
-    "@gio-design/tokens": "0.2.21",
+    "@gio-design/tokens": "^0.2.21",
     "@types/classnames": "^2.2.9",
     "@types/lodash": "^4.14.136",
     "@types/react": "^16.8.23",
