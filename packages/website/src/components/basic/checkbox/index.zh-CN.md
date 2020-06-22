@@ -1,7 +1,7 @@
 ---
 title: Checkbox 多选框
 nav:
-  order: 1
+  order: 2
   title: 组件
 group:
   title: 基础组件

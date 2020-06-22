@@ -1,7 +1,7 @@
 ---
 title: Link 链接
 nav:
-  order: 1
+  order: 2
   title: 组件
 group:
   title: 基础组件
