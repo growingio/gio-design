@@ -1,0 +1,101 @@
+@import '../../../stylesheet/theme.less';
+
+@toast-prefix-cls: ~'@{component-prefix}-toast';
+
+.@{toast-prefix-cls} {
+  position: fixed;
+  top: 16px;
+  left: 0;
+  z-index: 2147483647;
+  width: 100%;
+  pointer-events: none;
+
+  &-notice {
+    padding: 8px;
+    text-align: center;
+    &:first-child {
+      margin-top: -8px;
+    }
+  }
+
+  &-notice-content {
+    display: inline-block;
+    padding: 9px 60px;
+    color: #313e75;
+    font-size: 14px;
+    line-height: 22px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 14px 0 rgba(223, 226, 237, 0.8);
+    pointer-events: all;
+  }
+
+  &-success &-icon svg {
+    color: #008a56;
+  }
+
+  &-error &-icon svg {
+    color: #f21300;
+  }
+
+  &-warning &-icon svg {
+    color: #f8af48;
+  }
+
+  &-info &-icon svg {
+    color: #3867f4;
+  }
+
+  &-icon {
+    position: relative;
+    top: -1px;
+    margin-right: 3px;
+  }
+
+  &-notice.move-up-enter.move-up-enter-active {
+    animation-name: MessageMoveEnter;
+    animation-duration: 1s;
+  }
+
+  &-notice.move-up-leave.move-up-leave-active {
+    animation-name: MessageMoveOut;
+    animation-duration: 0.3s;
+  }
+}
+
+@keyframes MessageMoveEnter {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes MessageMoveOut {
+  0% {
+    max-height: 150px;
+    padding: 8px;
+    opacity: 1;
+  }
+  100% {
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+
+.@{toast-prefix-cls}-rtl {
+  direction: rtl;
+
+  span {
+    direction: rtl;
+  }
+
+  &-icon {
+    margin-right: 0;
+    margin-left: 8px;
+  }
+}
