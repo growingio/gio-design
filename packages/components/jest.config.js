@@ -11,10 +11,8 @@ module.exports = {
   // explicitly include any node libs using ESM modules
   // "node_modules/?!(<ESM module here>|<another here>|<etc...>)"
   // transformIgnorePatterns: ['node_modules/?!(@gio-design\/icon)', '!(@gio-design/icon)'],
-  transformIgnorePatterns: [
-    "/node_modules/(?!@gio-design\/icon).+\\.js$"
-  ],
-  
+  transformIgnorePatterns: ['/node_modules/(?!@gio-design/icon).+\\.js$'],
+
   setupFilesAfterEnv: ['<rootDir>/enzyme-adapter.js'],
 
   moduleNameMapper: {

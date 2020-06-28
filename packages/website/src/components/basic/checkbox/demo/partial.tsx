@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Checkbox, {
   CheckboxGroup,
 } from '@gio-design/components/es/components/checkbox';
@@ -12,28 +12,19 @@ const options = [
 
 export default () => {
   const [state, updateState] = React.useState(['Apple']);
-  const handleChange = (args: any) => {
-    console.log(args);
+  const handleChange = (value: string[]) => {
+    updateState(value);
   };
+  const defaultValue = ['Apple', 'Orange'];
   return (
     <>
+      <Checkbox checked={state.length > 0} indeterminate={state.length < 3}>
+        All Selected
+      </Checkbox>
       <CheckboxGroup
-        defaultValue={['Apple']}
-        options={options}
-        onChange={handleChange}
-        disabled
-      />
-      <br />
-      <CheckboxGroup
-        defaultValue={['Apple']}
-        options={options}
-        onChange={handleChange}
-      />
-      <br />
-      <CheckboxGroup
-        defaultValue={['Apple', 'Orange']}
+        defaultValue={defaultValue}
         value={state}
-        onChange={updateState}
+        onChange={handleChange}
       >
         <Checkbox value="Apple">Apple</Checkbox>
         <Checkbox value="Pear">Pear</Checkbox>
