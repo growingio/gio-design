@@ -3,38 +3,7 @@ import classNames from 'classnames';
 import RcCheckbox from 'rc-checkbox';
 import { ConfigContext } from '../config-provider';
 import CheckboxGroupContext from './CheckboxGroupContext';
-
-type CheckboxChangeEvent = React.ChangeEvent<HTMLInputElement>;
-export interface CheckboxProps {
-  /**
-   * 是否部分选中
-   */
-  indeterminate?: boolean;
-  prefixCls?: string;
-  /**
-   * 自定义 className
-   */
-  className?: string;
-  /**
-   * 初始是否选中
-   */
-  defaultChecked?: boolean;
-  /**
-   * 指定当前是否选中
-   */
-  checked?: boolean;
-  /**
-   * 是否禁止
-   */
-  disabled?: boolean;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-
-  value?: any;
-  children?: React.ReactNode;
-  id?: string;
-  name?: string;
-  style?: React.CSSProperties;
-}
+import { CheckboxProps } from './interface';
 
 const Checkbox: React.FC<CheckboxProps> = ({
   prefixCls: customizePrefixCls,
@@ -51,7 +20,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   const checkGroup = React.useContext(CheckboxGroupContext);
 
   const handleChange = React.useCallback(
-    (e: CheckboxChangeEvent) => {
+    (e) => {
       if (onChange) onChange(e);
       checkGroup?.toggleOption?.({ label: children, value: restProps.value });
     },
@@ -77,9 +46,11 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
   const checkboxCls = classNames(className, {
     [`${prefixCls}-wrapper`]: true,
+    [`${prefixCls}-wrapper-disabled`]: checkProps.disabled,
   });
 
   const checkboxClass = classNames({
+    [`${prefixCls}-cool`]: !(checkProps.disabled || checkProps.checked || checkProps.indeterminate),
     [`${prefixCls}-indeterminate`]: indeterminate,
   });
 
