@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Radio should render correctly 1`] = `
+<div>
+  <div
+    className="gio-switch gio-switch-checked gio-switch-disabled gio-customized-switch"
+    onClick={[Function]}
+    style={
+      Object {
+        "background": null,
+        "borderColor": null,
+      }
+    }
+  >
+    <div
+      className="gio-switch-handle"
+      style={
+        Object {
+          "background": null,
+        }
+      }
+    />
+  </div>
+</div>
+`;

@@ -30,6 +30,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
   const changeStatus = () => {
     !props.disabled && setStatus(!status);
     props.onChange && props.onChange(status ? inactiveValue : activeValue);
+    props.onClick && props.onClick(status ? inactiveValue : activeValue);
   };
 
   return (
