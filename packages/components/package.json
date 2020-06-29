@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/components",
-  "version": "20.6.1",
+  "version": "20.6.2",
   "description": "GrowingIO Design System Components",
   "module": "./es/index.js",
   "types": "./es/index.d.ts",
