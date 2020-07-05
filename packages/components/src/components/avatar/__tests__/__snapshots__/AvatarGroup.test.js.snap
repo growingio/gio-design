@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing AvatarGroup should be stable 1`] = `
+<div
+  className="gio-avatar-group"
+>
+  <span
+    className="gio-avatar gio-avatar-df"
+  >
+    <img
+      onError={[Function]}
+      src="test-file-stub"
+    />
+  </span>
+  <span
+    className="gio-avatar gio-avatar-df"
+  >
+    <span
+      style={
+        Object {
+          "transform": "scale(1) translateX(-50%)",
+        }
+      }
+    >
+      P
+    </span>
+  </span>
+  <span
+    className="gio-avatar gio-avatar-df"
+  >
+    <img
+      onError={[Function]}
+      src="test-file-stub"
+    />
+  </span>
+  <span
+    className="gio-avatar gio-avatar-df"
+  >
+    <span
+      style={
+        Object {
+          "transform": "scale(1) translateX(-50%)",
+        }
+      }
+    >
+      L
+    </span>
+  </span>
+  <span
+    className="gio-avatar-rest gio-avatar gio-avatar-df"
+  >
+    <span
+      style={
+        Object {
+          "transform": "scale(1) translateX(-50%)",
+        }
+      }
+    >
+      2+
+    </span>
+  </span>
+</div>
+`;
