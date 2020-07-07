@@ -2,9 +2,9 @@
 
 @avatar-prefix-cls: ~'@{component-prefix}-avatar';
 
-@avatar-bg-color: #EBEDF5;
-@avatar-bg-hover-color: #1248E9;
-@avatar-font-color: #A3ADC8;
+@avatar-bg-color: #ebedf5;
+@avatar-bg-hover-color: #1248e9;
+@avatar-font-color: #a3adc8;
 @avatar-font-weight: 600;
 
 .@{avatar-prefix-cls} {
@@ -93,20 +93,19 @@
 
   &-rest {
     &:hover {
-      background-color: #1248E9;
-      color: #FFFFFF;
+      background-color: @avatar-bg-hover-color;
+      color: #ffffff;
     }
   }
 
   &-group {
     .@{avatar-prefix-cls} {
-      border: 1.5px solid #FFFFFF;
+      border: 1.5px solid #ffffff;
 
       &:hover {
         box-shadow: 0 0 6px 0 rgba(223, 226, 237, 0.94);
         position: relative;
         z-index: 1;
-        transition: box-shadow 1s;
       }
     }
 
