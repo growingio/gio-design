@@ -22,7 +22,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
         }
       }
     >
-      P
+      p
     </span>
   </span>
   <span
@@ -43,7 +43,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
         }
       }
     >
-      L
+      l
     </span>
   </span>
   <span

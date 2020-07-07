@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from 'react';
 import classNames from 'classnames';
 import { AvatarProps } from './interface';
 import { ConfigContext } from '../config-provider';
+import Icon from '@gio-design/icon';
 
 const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
   const { className, size = 'default', droppable = false, children, src, omit = true } = props;
@@ -21,7 +22,6 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
 
   const prefixCls = getPrefixCls('avatar');
   const classString = classNames(className, prefixCls, {
-    [`${prefixCls}-droppable`]: droppable,
     [`${prefixCls}-sm`]: size === 'small',
     [`${prefixCls}-df`]: size === 'default',
     [`${prefixCls}-lg`]: size === 'large',
@@ -32,18 +32,23 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
     transform: `scale(${scale}) translateX(-50%)`,
   };
 
+  const renderMore = () => {
+    if (droppable) {
+      return (
+        <div className={classNames({ [`${prefixCls}-droppable`]: droppable })}>
+          <Icon type='more' size={16} color='#FFFFFF' style={{ marginRight: 0 }} />
+        </div>
+      );
+    }
+    return null;
+  };
+
   const renderAvatar = () => {
     if (!!src && isImgExist) {
       return <img src={src} onError={() => setIsImgExist(false)} />;
     }
     if (children !== undefined && typeof children === 'string') {
-      const firstChar = children.trim()[0];
-      const prefixUserName =
-        omit && typeof children === 'string'
-          ? /[a-z]/.test(firstChar)
-            ? firstChar.toUpperCase()
-            : firstChar
-          : children;
+      const prefixUserName = omit && typeof children === 'string' ? children.trim()[0] : children.trim();
       return (
         <span ref={childrenRef} style={childrenStyle}>
           {prefixUserName}
@@ -54,6 +59,7 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
   };
   return (
     <span ref={nodeRef} className={classString}>
+      {renderMore()}
       {renderAvatar()}
     </span>
   );

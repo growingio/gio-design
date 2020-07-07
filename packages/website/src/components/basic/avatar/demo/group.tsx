@@ -9,7 +9,7 @@
 import React from 'react';
 import { AvatarGroup } from '@gio-design/components';
 import '@gio-design/components/es/components/avatar/style/index.css';
-import image from './icon.png';
+import image from './Avatar.png';
 
 export default () => {
   const users = [
