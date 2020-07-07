@@ -1,7 +1,3 @@
-/**
- * title: Avatar 基本用法
- * desc: 头像有四种尺寸可选，分别为24px, 32px, 56px, 80px，默认为32px。
- */
 import React from 'react';
 import { Avatar } from '@gio-design/components';
 import '@gio-design/components/es/components/avatar/style/index.css';

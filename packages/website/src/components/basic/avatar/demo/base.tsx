@@ -1,7 +1,3 @@
-/**
- * title: Avatar 仅展示
- * desc: 当用户未设置头像时，显示该用户名称的首个文字或大写字母。
- */
 import React from 'react';
 import { Avatar } from '@gio-design/components';
 import '@gio-design/components/es/components/avatar/style/index.css';

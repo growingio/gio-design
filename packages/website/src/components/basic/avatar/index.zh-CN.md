@@ -17,7 +17,7 @@ group:
 
 ### 仅展示
 
-<code src='./demo/base.tsx' />
+<code src='./demo/base.tsx' title='Avatar 仅展示' desc='当用户未设置头像时，显示该用户名称的首个文字、数字或字母。' />
 
 ### 尺寸
 
@@ -25,11 +25,11 @@ group:
 
 ### 可展开操作
 
-<code src='./demo/hover.tsx' />
+<code src='./demo/hover.tsx' title='Avatar 可展开操作' desc='hover头像显示icon，click头像展开下来菜单（等Dropdown设计与实现完成再添加该功能）' />
 
 ### 重叠展示
 
-<code src='./demo/group.tsx' />
+<code src='./demo/group.tsx' title='Avatar 重叠展示' desc='可设置组显示数量，默认为4。当用户未设置头像时，显示该用户名称的首个文字数字或字母。hover头像时头像前置，并显示tooltip。（tooltip设计与实现后完成再添加该功能）点击最后一项展开包含其余用户头像的Dropdown（Dropdown设计与实现后完成再添加该功能）' />
 
 ## 参数说明
 
