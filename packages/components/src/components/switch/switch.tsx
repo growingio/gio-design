@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import classnames from 'classnames';
 
 interface SwitchProps {
-  // autoFocus?: boolean;
-  // checked?: boolean;
   suffixContent?: boolean;
   defaultChecked?: boolean;
   disabled?: boolean;
@@ -19,8 +17,8 @@ interface SwitchProps {
 }
 
 const Switch: React.FC<SwitchProps> = (props) => {
-  const activeColor = props.activeColor ? props.activeColor : null;
-  const inactiveColor = props.inactiveColor ? props.inactiveColor : null;
+  const activeColor = props.activeColor;
+  const inactiveColor = props.inactiveColor;
 
   const inactiveValue = props.inactiveValue ? props.inactiveValue : false;
   const activeValue = props.activeValue ? props.activeValue : true;
