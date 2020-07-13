@@ -13,13 +13,7 @@ describe('Testing Radio', () => {
   });
 
   it('should render correctly', () => {
-    const domTree = renderer
-      .create(
-        <Switch className='gio-customized-switch' disabled defaultChecked>
-          Test
-        </Switch>
-      )
-      .toJSON();
+    const domTree = renderer.create(<Switch className='gio-customized-switch' disabled defaultChecked />).toJSON();
     expect(domTree).toMatchSnapshot();
   });
 

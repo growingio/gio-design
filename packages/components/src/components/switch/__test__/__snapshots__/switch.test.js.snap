@@ -7,8 +7,8 @@ exports[`Testing Radio should render correctly 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "background": null,
-        "borderColor": null,
+        "background": undefined,
+        "borderColor": undefined,
       }
     }
   >
@@ -16,7 +16,7 @@ exports[`Testing Radio should render correctly 1`] = `
       className="gio-switch-handle"
       style={
         Object {
-          "background": null,
+          "background": undefined,
         }
       }
     />
