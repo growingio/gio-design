@@ -1,0 +1,199 @@
+@import '../../../stylesheet/theme.less';
+@tab-prefix-cls: ~'@{component-prefix}-tabs';
+
+@tab-active-color: #FFFFFF;
+@tab-active-boxShadow: 0 0 6px 0 rgba(223,226,237,0.8);
+@tab-active-fontColor: #1248E9;
+
+@tab-normal-color: #F7F8FC;
+@tab-normal-fontColor: #313E75;
+
+@tab-hover-color:  #EBEDF5;
+@tab-hover-fontColor: #313E75;
+
+@tab-disable-fontColor: #ADB2C8;
+
+@tab-click-color: #F1F2FA;
+
+.@{tab-prefix-cls} {
+  font-weight: 400;
+  &-sm{
+    .@{tab-prefix-cls}-tab{
+      height: 30px;
+    }
+    &.@{tab-prefix-cls}-block{
+      .@{tab-prefix-cls}-nav-list{
+        .@{tab-prefix-cls}-ink-bar{
+          height: 30px;
+        } 
+      }
+    }
+  }
+  &-md{
+    .@{tab-prefix-cls}-tab{
+      height: 36px;
+    }
+    &.@{tab-prefix-cls}-block{
+      .@{tab-prefix-cls}-nav-list{
+        .@{tab-prefix-cls}-ink-bar{
+          height: 36px;
+        } 
+      }
+    }
+  }
+  &-lg{
+    .@{tab-prefix-cls}-tab{
+      height: 40px;
+    }
+    &.@{tab-prefix-cls}-block{
+      .@{tab-prefix-cls}-nav-list{
+        .@{tab-prefix-cls}-ink-bar{
+          height: 40px;
+        } 
+      }
+    }
+  }
+  &-nav{
+    height: 40px;
+    margin-bottom: 16px;
+  }
+  &-nav-wrap{
+  }
+  &-nav-list{
+    border-radius: 4px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-tab{
+    cursor: pointer;
+    display: inline-flex;
+    color: @tab-normal-fontColor;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    background-clip: padding-box;
+    border-radius: 3px;
+    padding: 0px 16px;
+    line-height: 22px;
+    font-size: 14px;
+    outline: none;
+    &-btn{
+      outline: none;
+    }
+    &:hover{
+      background-color: @tab-hover-color;
+    }
+    &:active{
+      background-color: @tab-click-color;
+    }
+  }
+  &-tab-active{
+    color: @tab-active-fontColor;
+    &:hover{
+      background-color:  transparent;
+      color: @tab-active-fontColor;
+    }
+    svg{
+      color: @tab-normal-fontColor;
+    } 
+  }
+  &-tab-disabled{
+    color: @tab-disable-fontColor;
+    cursor: not-allowed;
+    &:hover{
+      background-color: @tab-hover-color;
+    }
+    svg{
+      color: @tab-disable-fontColor;
+    }
+  }
+
+  &-block{
+    .@{tab-prefix-cls}-nav-list{
+      background-color: @tab-normal-color;
+      padding: 1px;
+      .@{tab-prefix-cls}-tab{
+        margin-left: 1px;
+        border: none;
+        position: relative;
+        z-index: 1;
+        &:first-child{
+          margin-left: 0;
+        }
+        &-disabled{
+          &:hover{
+            background-color: @tab-hover-color;
+          }
+        }
+      }
+      .@{tab-prefix-cls}-ink-bar{
+        position: absolute;
+        top: 0;
+        box-shadow: @tab-active-boxShadow;
+        background-color: @tab-active-color;
+        z-index: 0;
+        border-radius: 3px;
+        position: absolute;
+        margin-top: 1px;
+        transition: all .2s ease-in-out;
+        background-clip: content-box;
+      }
+    }
+  }
+
+  &-line{
+    .@{tab-prefix-cls}-tab{
+      border: none;
+      transition: background-color .25s;
+      &:not(:first-child){
+        margin: 0;
+        margin-left: 8px;
+      }
+      &-active{
+        background-color: #FFFFFF;
+      }
+      &-disabled{
+        background-color: transparent;  
+        &:hover{
+          background-color: @tab-hover-color;
+        }
+      }
+    }
+    .@{tab-prefix-cls}-ink-bar{
+      height: 2px;
+      top: 100%;
+      background-color: @tab-active-fontColor;
+      border-radius: 3px;
+      position: absolute;
+      transition: width .2s,left .2s,right .2s;
+    }
+  }
+  &-content-holder{
+    -webkit-box-flex: 1;
+    -ms-flex: auto;
+    flex: auto;
+    min-width: 0;
+    min-height: 0;
+  }
+  &-content{
+    width: 100%;
+    display: flex;
+  }
+  &-tabpane{
+    width: 100%;
+    flex: none;
+    outline: none;
+  }
+  &-extra-content{
+    position: relative;
+    div{
+      height: 1px;
+      width: 100%;
+      position: absolute;
+    }
+  }
+}
+
+
