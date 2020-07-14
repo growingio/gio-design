@@ -20,6 +20,11 @@ export default () => {
       </Checkbox>
       <br />
       <br />
+      <Checkbox indeterminate disabled>
+        Part Checked And Disabled
+      </Checkbox>
+      <br />
+      <br />
       <Checkbox checked>Checked</Checkbox>
       <br />
       <br />

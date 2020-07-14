@@ -14,6 +14,194 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
+              "class": "my-checkbox-icon my-checkbox-icon-cool",
+              "viewBox": "0 0 10 7",
+              "xmlns": "http://www.w3.org/2000/svg",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {},
+                "children": Array [
+                  Object {
+                    "attribs": Object {},
+                    "children": Array [
+                      Object {
+                        "attribs": Object {
+                          "d": "M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z",
+                        },
+                        "children": Array [],
+                        "name": "path",
+                        "namespace": "http://www.w3.org/2000/svg",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {
+                          "d": undefined,
+                        },
+                        "x-attribsPrefix": Object {
+                          "d": undefined,
+                        },
+                      },
+                    ],
+                    "name": "g",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
+                  },
+                ],
+                "name": "g",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {},
+                "x-attribsPrefix": Object {},
+              },
+            ],
+            "name": "svg",
+            "namespace": "http://www.w3.org/2000/svg",
+            "next": Object {
+              "attribs": Object {
+                "class": "my-checkbox my-checkbox-cool",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "class": "my-checkbox-input",
+                    "type": "checkbox",
+                    "value": "Apple",
+                  },
+                  "children": Array [],
+                  "name": "input",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": Object {
+                    "attribs": Object {
+                      "class": "my-checkbox-inner",
+                    },
+                    "children": Array [],
+                    "name": "span",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": [Circular],
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
+                  },
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                    "type": undefined,
+                    "value": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                    "type": undefined,
+                    "value": undefined,
+                  },
+                },
+                Object {
+                  "attribs": Object {
+                    "class": "my-checkbox-inner",
+                  },
+                  "children": Array [],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": Object {
+                    "attribs": Object {
+                      "class": "my-checkbox-input",
+                      "type": "checkbox",
+                      "value": "Apple",
+                    },
+                    "children": Array [],
+                    "name": "input",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": [Circular],
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                      "type": undefined,
+                      "value": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                      "type": undefined,
+                      "value": undefined,
+                    },
+                  },
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {},
+                "children": Array [
+                  Object {
+                    "data": "Apple",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {},
+                "x-attribsPrefix": Object {},
+              },
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+              "viewBox": undefined,
+              "xmlns": "http://www.w3.org/2000/xmlns/",
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+              "viewBox": undefined,
+              "xmlns": "",
+            },
+          },
+          Object {
+            "attribs": Object {
               "class": "my-checkbox my-checkbox-cool",
             },
             "children": Array [
@@ -123,7 +311,75 @@ initialize {
               "x-attribsPrefix": Object {},
             },
             "parent": [Circular],
-            "prev": null,
+            "prev": Object {
+              "attribs": Object {
+                "class": "my-checkbox-icon my-checkbox-icon-cool",
+                "viewBox": "0 0 10 7",
+                "xmlns": "http://www.w3.org/2000/svg",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {},
+                  "children": Array [
+                    Object {
+                      "attribs": Object {},
+                      "children": Array [
+                        Object {
+                          "attribs": Object {
+                            "d": "M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z",
+                          },
+                          "children": Array [],
+                          "name": "path",
+                          "namespace": "http://www.w3.org/2000/svg",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "tag",
+                          "x-attribsNamespace": Object {
+                            "d": undefined,
+                          },
+                          "x-attribsPrefix": Object {
+                            "d": undefined,
+                          },
+                        },
+                      ],
+                      "name": "g",
+                      "namespace": "http://www.w3.org/2000/svg",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
+                    },
+                  ],
+                  "name": "g",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
+                },
+              ],
+              "name": "svg",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "viewBox": undefined,
+                "xmlns": "http://www.w3.org/2000/xmlns/",
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "viewBox": undefined,
+                "xmlns": "",
+              },
+            },
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
@@ -239,7 +495,75 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": [Circular],
               "parent": [Circular],
-              "prev": null,
+              "prev": Object {
+                "attribs": Object {
+                  "class": "my-checkbox-icon my-checkbox-icon-cool",
+                  "viewBox": "0 0 10 7",
+                  "xmlns": "http://www.w3.org/2000/svg",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {},
+                    "children": Array [
+                      Object {
+                        "attribs": Object {},
+                        "children": Array [
+                          Object {
+                            "attribs": Object {
+                              "d": "M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z",
+                            },
+                            "children": Array [],
+                            "name": "path",
+                            "namespace": "http://www.w3.org/2000/svg",
+                            "next": null,
+                            "parent": [Circular],
+                            "prev": null,
+                            "type": "tag",
+                            "x-attribsNamespace": Object {
+                              "d": undefined,
+                            },
+                            "x-attribsPrefix": Object {
+                              "d": undefined,
+                            },
+                          },
+                        ],
+                        "name": "g",
+                        "namespace": "http://www.w3.org/2000/svg",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
+                      },
+                    ],
+                    "name": "g",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
+                  },
+                ],
+                "name": "svg",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                  "xmlns": "http://www.w3.org/2000/xmlns/",
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                  "xmlns": "",
+                },
+              },
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
@@ -260,6 +584,194 @@ initialize {
             "class": "my-checkbox-wrapper",
           },
           "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "my-checkbox-icon my-checkbox-icon-cool",
+                "viewBox": "0 0 10 7",
+                "xmlns": "http://www.w3.org/2000/svg",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {},
+                  "children": Array [
+                    Object {
+                      "attribs": Object {},
+                      "children": Array [
+                        Object {
+                          "attribs": Object {
+                            "d": "M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z",
+                          },
+                          "children": Array [],
+                          "name": "path",
+                          "namespace": "http://www.w3.org/2000/svg",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "tag",
+                          "x-attribsNamespace": Object {
+                            "d": undefined,
+                          },
+                          "x-attribsPrefix": Object {
+                            "d": undefined,
+                          },
+                        },
+                      ],
+                      "name": "g",
+                      "namespace": "http://www.w3.org/2000/svg",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
+                    },
+                  ],
+                  "name": "g",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
+                },
+              ],
+              "name": "svg",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": Object {
+                "attribs": Object {
+                  "class": "my-checkbox my-checkbox-cool",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "class": "my-checkbox-input",
+                      "type": "checkbox",
+                      "value": "Orange",
+                    },
+                    "children": Array [],
+                    "name": "input",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": Object {
+                      "attribs": Object {
+                        "class": "my-checkbox-inner",
+                      },
+                      "children": Array [],
+                      "name": "span",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": [Circular],
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "class": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "class": undefined,
+                      },
+                    },
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                      "type": undefined,
+                      "value": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                      "type": undefined,
+                      "value": undefined,
+                    },
+                  },
+                  Object {
+                    "attribs": Object {
+                      "class": "my-checkbox-inner",
+                    },
+                    "children": Array [],
+                    "name": "span",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": Object {
+                      "attribs": Object {
+                        "class": "my-checkbox-input",
+                        "type": "checkbox",
+                        "value": "Orange",
+                      },
+                      "children": Array [],
+                      "name": "input",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": [Circular],
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "class": undefined,
+                        "type": undefined,
+                        "value": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "class": undefined,
+                        "type": undefined,
+                        "value": undefined,
+                      },
+                    },
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": Object {
+                  "attribs": Object {},
+                  "children": Array [
+                    Object {
+                      "data": "Orange",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": [Circular],
+                  "type": "tag",
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
+                },
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "viewBox": undefined,
+                "xmlns": "http://www.w3.org/2000/xmlns/",
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "viewBox": undefined,
+                "xmlns": "",
+              },
+            },
             Object {
               "attribs": Object {
                 "class": "my-checkbox my-checkbox-cool",
@@ -371,7 +883,75 @@ initialize {
                 "x-attribsPrefix": Object {},
               },
               "parent": [Circular],
-              "prev": null,
+              "prev": Object {
+                "attribs": Object {
+                  "class": "my-checkbox-icon my-checkbox-icon-cool",
+                  "viewBox": "0 0 10 7",
+                  "xmlns": "http://www.w3.org/2000/svg",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {},
+                    "children": Array [
+                      Object {
+                        "attribs": Object {},
+                        "children": Array [
+                          Object {
+                            "attribs": Object {
+                              "d": "M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z",
+                            },
+                            "children": Array [],
+                            "name": "path",
+                            "namespace": "http://www.w3.org/2000/svg",
+                            "next": null,
+                            "parent": [Circular],
+                            "prev": null,
+                            "type": "tag",
+                            "x-attribsNamespace": Object {
+                              "d": undefined,
+                            },
+                            "x-attribsPrefix": Object {
+                              "d": undefined,
+                            },
+                          },
+                        ],
+                        "name": "g",
+                        "namespace": "http://www.w3.org/2000/svg",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
+                      },
+                    ],
+                    "name": "g",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
+                  },
+                ],
+                "name": "svg",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                  "xmlns": "http://www.w3.org/2000/xmlns/",
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                  "xmlns": "",
+                },
+              },
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
@@ -487,7 +1067,75 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": [Circular],
                 "parent": [Circular],
-                "prev": null,
+                "prev": Object {
+                  "attribs": Object {
+                    "class": "my-checkbox-icon my-checkbox-icon-cool",
+                    "viewBox": "0 0 10 7",
+                    "xmlns": "http://www.w3.org/2000/svg",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {},
+                      "children": Array [
+                        Object {
+                          "attribs": Object {},
+                          "children": Array [
+                            Object {
+                              "attribs": Object {
+                                "d": "M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z",
+                              },
+                              "children": Array [],
+                              "name": "path",
+                              "namespace": "http://www.w3.org/2000/svg",
+                              "next": null,
+                              "parent": [Circular],
+                              "prev": null,
+                              "type": "tag",
+                              "x-attribsNamespace": Object {
+                                "d": undefined,
+                              },
+                              "x-attribsPrefix": Object {
+                                "d": undefined,
+                              },
+                            },
+                          ],
+                          "name": "g",
+                          "namespace": "http://www.w3.org/2000/svg",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "tag",
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
+                        },
+                      ],
+                      "name": "g",
+                      "namespace": "http://www.w3.org/2000/svg",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
+                    },
+                  ],
+                  "name": "svg",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": [Circular],
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                    "viewBox": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                    "viewBox": undefined,
+                    "xmlns": "",
+                  },
+                },
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
@@ -529,6 +1177,194 @@ initialize {
           "class": "my-checkbox-wrapper",
         },
         "children": Array [
+          Object {
+            "attribs": Object {
+              "class": "my-checkbox-icon my-checkbox-icon-cool",
+              "viewBox": "0 0 10 7",
+              "xmlns": "http://www.w3.org/2000/svg",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {},
+                "children": Array [
+                  Object {
+                    "attribs": Object {},
+                    "children": Array [
+                      Object {
+                        "attribs": Object {
+                          "d": "M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z",
+                        },
+                        "children": Array [],
+                        "name": "path",
+                        "namespace": "http://www.w3.org/2000/svg",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {
+                          "d": undefined,
+                        },
+                        "x-attribsPrefix": Object {
+                          "d": undefined,
+                        },
+                      },
+                    ],
+                    "name": "g",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
+                  },
+                ],
+                "name": "g",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {},
+                "x-attribsPrefix": Object {},
+              },
+            ],
+            "name": "svg",
+            "namespace": "http://www.w3.org/2000/svg",
+            "next": Object {
+              "attribs": Object {
+                "class": "my-checkbox my-checkbox-cool",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "class": "my-checkbox-input",
+                    "type": "checkbox",
+                    "value": "Orange",
+                  },
+                  "children": Array [],
+                  "name": "input",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": Object {
+                    "attribs": Object {
+                      "class": "my-checkbox-inner",
+                    },
+                    "children": Array [],
+                    "name": "span",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": [Circular],
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
+                  },
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                    "type": undefined,
+                    "value": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                    "type": undefined,
+                    "value": undefined,
+                  },
+                },
+                Object {
+                  "attribs": Object {
+                    "class": "my-checkbox-inner",
+                  },
+                  "children": Array [],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": Object {
+                    "attribs": Object {
+                      "class": "my-checkbox-input",
+                      "type": "checkbox",
+                      "value": "Orange",
+                    },
+                    "children": Array [],
+                    "name": "input",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": [Circular],
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                      "type": undefined,
+                      "value": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                      "type": undefined,
+                      "value": undefined,
+                    },
+                  },
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {},
+                "children": Array [
+                  Object {
+                    "data": "Orange",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {},
+                "x-attribsPrefix": Object {},
+              },
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+              "viewBox": undefined,
+              "xmlns": "http://www.w3.org/2000/xmlns/",
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+              "viewBox": undefined,
+              "xmlns": "",
+            },
+          },
           Object {
             "attribs": Object {
               "class": "my-checkbox my-checkbox-cool",
@@ -640,7 +1476,75 @@ initialize {
               "x-attribsPrefix": Object {},
             },
             "parent": [Circular],
-            "prev": null,
+            "prev": Object {
+              "attribs": Object {
+                "class": "my-checkbox-icon my-checkbox-icon-cool",
+                "viewBox": "0 0 10 7",
+                "xmlns": "http://www.w3.org/2000/svg",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {},
+                  "children": Array [
+                    Object {
+                      "attribs": Object {},
+                      "children": Array [
+                        Object {
+                          "attribs": Object {
+                            "d": "M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z",
+                          },
+                          "children": Array [],
+                          "name": "path",
+                          "namespace": "http://www.w3.org/2000/svg",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "tag",
+                          "x-attribsNamespace": Object {
+                            "d": undefined,
+                          },
+                          "x-attribsPrefix": Object {
+                            "d": undefined,
+                          },
+                        },
+                      ],
+                      "name": "g",
+                      "namespace": "http://www.w3.org/2000/svg",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
+                    },
+                  ],
+                  "name": "g",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
+                },
+              ],
+              "name": "svg",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "viewBox": undefined,
+                "xmlns": "http://www.w3.org/2000/xmlns/",
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "viewBox": undefined,
+                "xmlns": "",
+              },
+            },
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
@@ -756,7 +1660,75 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": [Circular],
               "parent": [Circular],
-              "prev": null,
+              "prev": Object {
+                "attribs": Object {
+                  "class": "my-checkbox-icon my-checkbox-icon-cool",
+                  "viewBox": "0 0 10 7",
+                  "xmlns": "http://www.w3.org/2000/svg",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {},
+                    "children": Array [
+                      Object {
+                        "attribs": Object {},
+                        "children": Array [
+                          Object {
+                            "attribs": Object {
+                              "d": "M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z",
+                            },
+                            "children": Array [],
+                            "name": "path",
+                            "namespace": "http://www.w3.org/2000/svg",
+                            "next": null,
+                            "parent": [Circular],
+                            "prev": null,
+                            "type": "tag",
+                            "x-attribsNamespace": Object {
+                              "d": undefined,
+                            },
+                            "x-attribsPrefix": Object {
+                              "d": undefined,
+                            },
+                          },
+                        ],
+                        "name": "g",
+                        "namespace": "http://www.w3.org/2000/svg",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
+                      },
+                    ],
+                    "name": "g",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
+                  },
+                ],
+                "name": "svg",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                  "xmlns": "http://www.w3.org/2000/xmlns/",
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                  "xmlns": "",
+                },
+              },
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
@@ -779,6 +1751,194 @@ initialize {
             "class": "my-checkbox-wrapper",
           },
           "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "my-checkbox-icon my-checkbox-icon-cool",
+                "viewBox": "0 0 10 7",
+                "xmlns": "http://www.w3.org/2000/svg",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {},
+                  "children": Array [
+                    Object {
+                      "attribs": Object {},
+                      "children": Array [
+                        Object {
+                          "attribs": Object {
+                            "d": "M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z",
+                          },
+                          "children": Array [],
+                          "name": "path",
+                          "namespace": "http://www.w3.org/2000/svg",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "tag",
+                          "x-attribsNamespace": Object {
+                            "d": undefined,
+                          },
+                          "x-attribsPrefix": Object {
+                            "d": undefined,
+                          },
+                        },
+                      ],
+                      "name": "g",
+                      "namespace": "http://www.w3.org/2000/svg",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
+                    },
+                  ],
+                  "name": "g",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
+                },
+              ],
+              "name": "svg",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": Object {
+                "attribs": Object {
+                  "class": "my-checkbox my-checkbox-cool",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "class": "my-checkbox-input",
+                      "type": "checkbox",
+                      "value": "Apple",
+                    },
+                    "children": Array [],
+                    "name": "input",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": Object {
+                      "attribs": Object {
+                        "class": "my-checkbox-inner",
+                      },
+                      "children": Array [],
+                      "name": "span",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": [Circular],
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "class": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "class": undefined,
+                      },
+                    },
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                      "type": undefined,
+                      "value": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                      "type": undefined,
+                      "value": undefined,
+                    },
+                  },
+                  Object {
+                    "attribs": Object {
+                      "class": "my-checkbox-inner",
+                    },
+                    "children": Array [],
+                    "name": "span",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": Object {
+                      "attribs": Object {
+                        "class": "my-checkbox-input",
+                        "type": "checkbox",
+                        "value": "Apple",
+                      },
+                      "children": Array [],
+                      "name": "input",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": [Circular],
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "class": undefined,
+                        "type": undefined,
+                        "value": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "class": undefined,
+                        "type": undefined,
+                        "value": undefined,
+                      },
+                    },
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": Object {
+                  "attribs": Object {},
+                  "children": Array [
+                    Object {
+                      "data": "Apple",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": [Circular],
+                  "type": "tag",
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
+                },
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "viewBox": undefined,
+                "xmlns": "http://www.w3.org/2000/xmlns/",
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "viewBox": undefined,
+                "xmlns": "",
+              },
+            },
             Object {
               "attribs": Object {
                 "class": "my-checkbox my-checkbox-cool",
@@ -890,7 +2050,75 @@ initialize {
                 "x-attribsPrefix": Object {},
               },
               "parent": [Circular],
-              "prev": null,
+              "prev": Object {
+                "attribs": Object {
+                  "class": "my-checkbox-icon my-checkbox-icon-cool",
+                  "viewBox": "0 0 10 7",
+                  "xmlns": "http://www.w3.org/2000/svg",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {},
+                    "children": Array [
+                      Object {
+                        "attribs": Object {},
+                        "children": Array [
+                          Object {
+                            "attribs": Object {
+                              "d": "M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z",
+                            },
+                            "children": Array [],
+                            "name": "path",
+                            "namespace": "http://www.w3.org/2000/svg",
+                            "next": null,
+                            "parent": [Circular],
+                            "prev": null,
+                            "type": "tag",
+                            "x-attribsNamespace": Object {
+                              "d": undefined,
+                            },
+                            "x-attribsPrefix": Object {
+                              "d": undefined,
+                            },
+                          },
+                        ],
+                        "name": "g",
+                        "namespace": "http://www.w3.org/2000/svg",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
+                      },
+                    ],
+                    "name": "g",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
+                  },
+                ],
+                "name": "svg",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                  "xmlns": "http://www.w3.org/2000/xmlns/",
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                  "xmlns": "",
+                },
+              },
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
@@ -1006,7 +2234,75 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": [Circular],
                 "parent": [Circular],
-                "prev": null,
+                "prev": Object {
+                  "attribs": Object {
+                    "class": "my-checkbox-icon my-checkbox-icon-cool",
+                    "viewBox": "0 0 10 7",
+                    "xmlns": "http://www.w3.org/2000/svg",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {},
+                      "children": Array [
+                        Object {
+                          "attribs": Object {},
+                          "children": Array [
+                            Object {
+                              "attribs": Object {
+                                "d": "M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z",
+                              },
+                              "children": Array [],
+                              "name": "path",
+                              "namespace": "http://www.w3.org/2000/svg",
+                              "next": null,
+                              "parent": [Circular],
+                              "prev": null,
+                              "type": "tag",
+                              "x-attribsNamespace": Object {
+                                "d": undefined,
+                              },
+                              "x-attribsPrefix": Object {
+                                "d": undefined,
+                              },
+                            },
+                          ],
+                          "name": "g",
+                          "namespace": "http://www.w3.org/2000/svg",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "tag",
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
+                        },
+                      ],
+                      "name": "g",
+                      "namespace": "http://www.w3.org/2000/svg",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
+                    },
+                  ],
+                  "name": "svg",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": [Circular],
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                    "viewBox": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                    "viewBox": undefined,
+                    "xmlns": "",
+                  },
+                },
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
