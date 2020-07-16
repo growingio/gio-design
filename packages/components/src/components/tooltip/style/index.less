@@ -1,0 +1,284 @@
+@import '../../../stylesheet/theme.less';
+
+@tooltip-prefix-cls: ~'@{component-prefix}-tooltip';
+@tooltip-bg-color: rgba(36, 46, 89, 0.96);
+@tooltip-distance: 6px;
+@tooltip-arrow-width: 12px;
+@tooltip-arrow-offset: 14px;
+
+.@{tooltip-prefix-cls}{
+  max-width: 500px;
+  position: absolute;
+  z-index: 100;
+
+  &-hidden {
+    display: none;
+  }
+
+  &-content {
+    display: inline-block;
+    position: relative;
+  }
+
+  &-inner {
+    color: #FFFFFF;
+    text-align: left;
+    text-decoration: none;
+    word-wrap: break-word;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 22px;
+    border-radius: 4px;
+    background-color: @tooltip-bg-color;
+    padding: 8px 16px;
+    .gio-link{
+      color: #FFFFFF;
+    }
+  }
+
+  &-arrow {
+    position: absolute;
+    display: block;
+    pointer-events: none;
+    height: 12px;
+    width: 12px;
+    &-content {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 0px;
+      height: 0px;
+      border: @tooltip-arrow-width/2 solid;
+      pointer-events: auto;
+
+    }
+  }
+
+  &-placement-top,
+  &-placement-topLeft,
+  &-placement-topRight {
+    padding-bottom: @tooltip-distance;
+    .@{tooltip-prefix-cls}-arrow {
+      bottom: -@tooltip-arrow-width;
+      &-content {
+        border-color: @tooltip-bg-color transparent transparent transparent;
+      }
+    }
+  }
+
+  &-placement-right,
+  &-placement-rightTop,
+  &-placement-rightBottom {
+    padding-left: @tooltip-distance;
+    .@{tooltip-prefix-cls}-arrow {
+      left: -@tooltip-arrow-width;
+      &-content {
+        border-color: transparent @tooltip-bg-color transparent transparent;
+      }
+    }
+  }
+
+  &-placement-bottom,
+  &-placement-bottomLeft,
+  &-placement-bottomRight {
+    padding-top: @tooltip-distance;
+    .@{tooltip-prefix-cls}-arrow {
+      top: -@tooltip-arrow-width;
+      &-content {
+        border-color: transparent transparent @tooltip-bg-color transparent;
+      }
+    }
+  }
+
+  &-placement-left,
+  &-placement-leftTop,
+  &-placement-leftBottom {
+    padding-right: @tooltip-distance;
+    .@{tooltip-prefix-cls}-arrow {
+      right: -@tooltip-arrow-width;
+      &-content {
+        border-color: transparent transparent transparent @tooltip-bg-color;
+      }
+    }
+  }
+
+  &-placement-top &-arrow, 
+  &-placement-bottom &-arrow {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &-placement-topLeft &-arrow, 
+  &-placement-bottomLeft &-arrow {
+    left: @tooltip-arrow-offset;
+  }
+
+  &-placement-topRight &-arrow, 
+  &-placement-bottomRight &-arrow {
+    right: @tooltip-arrow-offset;
+  }
+
+  &-placement-leftBottom &-arrow, 
+  &-placement-rightBottom &-arrow {
+    bottom: @tooltip-arrow-offset;
+  }
+
+  &-placement-leftTop &-arrow, 
+  &-placement-rightTop &-arrow,
+  &-placement-left &-arrow, 
+  &-placement-right &-arrow {
+    top: @tooltip-arrow-offset;
+  }
+}
+
+.spread-transition {
+  &-enter, &-appear {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+    opacity: 0;
+    &&-active{
+      &.@{tooltip-prefix-cls}-placement-top,
+      &.@{tooltip-prefix-cls}-placement-topLeft,
+      &.@{tooltip-prefix-cls}-placement-topRight{
+        animation-name: spreadTransitionTopIn;
+      }
+      &.@{tooltip-prefix-cls}-placement-right,
+      &.@{tooltip-prefix-cls}-placement-rightTop,
+      &.@{tooltip-prefix-cls}-placement-rightBottom{
+        animation-name: spreadTransitionRightIn;
+      }
+      &.@{tooltip-prefix-cls}-placement-bottom,
+      &.@{tooltip-prefix-cls}-placement-bottomLeft,
+      &.@{tooltip-prefix-cls}-placement-bottomRight {
+        animation-name: spreadTransitionBottomIn;
+      }
+    
+      &.@{tooltip-prefix-cls}-placement-left,
+      &.@{tooltip-prefix-cls}-placement-leftTop,
+      &.@{tooltip-prefix-cls}-placement-leftBottom {
+        animation-name: spreadTransitionLeftIn;
+      }
+      animation-play-state: running;
+    }
+  }
+  &-leave{
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+    &&-active{
+      &.@{tooltip-prefix-cls}-placement-top,
+      &.@{tooltip-prefix-cls}-placement-topLeft,
+      &.@{tooltip-prefix-cls}-placement-topRight{
+        animation-name: spreadTransitionTopOut;
+      }
+      &.@{tooltip-prefix-cls}-placement-right,
+      &.@{tooltip-prefix-cls}-placement-rightTop,
+      &.@{tooltip-prefix-cls}-placement-rightBottom{
+        animation-name: spreadTransitionRightOut;
+      }
+      &.@{tooltip-prefix-cls}-placement-bottom,
+      &.@{tooltip-prefix-cls}-placement-bottomLeft,
+      &.@{tooltip-prefix-cls}-placement-bottomRight {
+        animation-name: spreadTransitionBottomOut;
+      }
+      &.@{tooltip-prefix-cls}-placement-left,
+      &.@{tooltip-prefix-cls}-placement-leftTop,
+      &.@{tooltip-prefix-cls}-placement-leftBottom {
+        animation-name: spreadTransitionLeftOut;
+      }
+      animation-play-state: running;
+      pointer-events: none;
+    }
+  }
+}
+
+@keyframes spreadTransitionTopIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes spreadTransitionTopOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spreadTransitionBottomIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes spreadTransitionBottomOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@keyframes spreadTransitionLeftIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes spreadTransitionLeftOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes spreadTransitionRightIn {
+  0% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes spreadTransitionRightOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+}
