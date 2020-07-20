@@ -20,12 +20,12 @@ export default () => {
     </>
   );
   return (
-    <>
+    <div className="tabs-display">
       <Tabs size="small">{renderPane()}</Tabs>
       <hr />
       <Tabs size="middle">{renderPane()}</Tabs>
       <hr />
       <Tabs size="large">{renderPane()}</Tabs>
-    </>
+    </div>
   );
 };

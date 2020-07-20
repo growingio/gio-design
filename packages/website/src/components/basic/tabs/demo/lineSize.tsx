@@ -21,7 +21,7 @@ export default () => {
   );
 
   return (
-    <>
+    <div className="tabs-display">
       <Tabs type="line" size="small">
         {renderPane()}
       </Tabs>
@@ -33,6 +33,6 @@ export default () => {
       <Tabs type="line" size="large">
         {renderPane()}
       </Tabs>
-    </>
+    </div>
   );
 };
