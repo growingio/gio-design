@@ -31,6 +31,15 @@
     border-radius: 4px;
     background-color: @tooltip-bg-color;
     padding: 8px 16px;
+    display: inline-block;
+    min-width: 40px;
+    &-title {
+      vertical-align: middle;
+      &::before{
+        content: ' ';
+        display: inline-block;
+      }
+    }
     .gio-link{
       color: #FFFFFF;
     }

@@ -5,13 +5,22 @@ import { ConfigContext } from '../config-provider';
 import Link from '../link';
 
 const Tooltip = (props: TooltipProps) => {
-  const { title, tooltipLink, children, placement = 'top', trigger = 'hover', overlay, ...rest } = props;
+  const {
+    title,
+    tooltipLink,
+    placement = 'top',
+    trigger = 'hover',
+    prefixCls: customizePrefixCls,
+    overlay,
+    children,
+    ...rest
+  } = props;
   const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('tooltip');
+  const prefixCls = getPrefixCls('tooltip', customizePrefixCls);
 
   const defaultOverlay = () => (
     <>
-      <span style={{ verticalAlign: 'middle' }}>{title}</span>
+      <span className={`${prefixCls}-inner-title`}>{title}</span>
       {tooltipLink && (
         <Link component='a' to={tooltipLink.link}>
           {tooltipLink.name}
