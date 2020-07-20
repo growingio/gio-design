@@ -6,7 +6,7 @@ export interface TooltipLink {
   link: string;
 }
 export interface TooltipProps extends Partial<RcTooltipProps> {
-  title: React.ReactNode | ReactRender;
+  title?: React.ReactNode | ReactRender;
   tooltipLink?: TooltipLink;
   children?: React.ReactElement;
   placement?: string;
