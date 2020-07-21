@@ -21,9 +21,9 @@ const Tooltip = (props: TooltipProps) => {
   const defaultOverlay = () => (
     <>
       <span className={`${prefixCls}-inner-title`}>{title}</span>
-      {tooltipLink && (
+      {tooltipLink?.link && (
         <Link component='a' to={tooltipLink.link}>
-          {tooltipLink.name}
+          {tooltipLink.name || tooltipLink.link}
         </Link>
       )}
     </>
