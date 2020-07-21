@@ -1,30 +1,37 @@
 {
-  "source": ["tmp/**/*.json"],
+  "source": [
+    "properties/**/*.json"
+  ],
   "platforms": {
     "less": {
       "transformGroup": "less",
       "buildPath": "dist/",
-      "files": [{
-        "destination": "tokens.less",
-        "format": "less/variables"
-      }]
+      "files": [
+        {
+          "destination": "variables.less",
+          "format": "less/variables"
+        }
+      ]
     },
-    "js": {
-      "transforms": ["name/cti/camel"],
+    "es": {
       "transformGroup": "js",
       "buildPath": "dist/",
-      "files": [{
-        "destination": "index.ts",
-        "format": "javascript/es6"
-      }]
+      "files": [
+        {
+          "destination": "index.js",
+          "format": "javascript/es6"
+        }
+      ]
     },
-    "json": {
-      "transformGroup": "less",
+    "typings": {
+      "transformGroup": "js",
       "buildPath": "dist/",
-      "files": [{
-        "destination": "tokens.json",
-        "format": "json/flat"
-      }]
+      "files": [
+        {
+          "destination": "index.d.ts",
+          "format": "typings/es6"
+        }
+      ]
     }
   }
 }

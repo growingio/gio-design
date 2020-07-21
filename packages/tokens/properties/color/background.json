@@ -1,0 +1,10 @@
+{
+  "color": {
+    "background": {
+      "avatar": {
+        "normal": "{palette.gray.3.value}",
+        "hover": "{palette.blue.7.value}"
+      }
+    }
+  }
+}

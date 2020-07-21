@@ -1,21 +1,22 @@
 {
   "name": "@gio-design/tokens",
-  "version": "0.2.21",
-  "description": "GrowingIO Design System Design Tokens",
+  "version": "20.7.0",
+  "description": "GrowingIO Design System Tokens",
   "main": "dist/index.js",
-  "license": "MIT",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "README.md",
-    "dist"
+    "dist",
+    "properties"
   ],
   "scripts": {
-    "build": "if [ -d tmp ]; then rm -r tmp; fi && npx gulp && npx style-dictionary build && npx tsc --declaration dist/index.ts",
-    "prepublish": "yarn build"
+    "build": "npx style-dictionary build --config ./config.js",
+    "clean": "rm -rf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "",
+  "license": "Apache-2.0",
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-yaml": "^2.0.4",
-    "style-dictionary": "^2.8.2",
-    "typescript": "^3.9.3"
+    "style-dictionary": "2.9.0"
   }
 }
