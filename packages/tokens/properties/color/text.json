@@ -19,6 +19,9 @@
         "click": {
           "value": "{palette.dark.1.value}"
         }
+      },
+      "tooltip": {
+        "value": "{palette.white.value}"
       }
     }
   }

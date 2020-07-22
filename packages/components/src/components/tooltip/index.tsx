@@ -3,6 +3,7 @@ import RcTooltip from 'rc-tooltip';
 import { TooltipProps } from './interface';
 import { ConfigContext } from '../config-provider';
 import Link from '../link';
+import getPlacements from './placements';
 
 const Tooltip = (props: TooltipProps) => {
   const {
@@ -13,12 +14,13 @@ const Tooltip = (props: TooltipProps) => {
     prefixCls: customizePrefixCls,
     overlay,
     children,
+    arrowPointAtCenter,
     ...rest
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('tooltip', customizePrefixCls);
 
-  const defaultOverlay = () => (
+  const tooltipOverlay = () => (
     <>
       <span className={`${prefixCls}-inner-title`}>{title}</span>
       {tooltipLink?.link && (
@@ -29,7 +31,14 @@ const Tooltip = (props: TooltipProps) => {
     </>
   );
 
-  const getOverlay = () => overlay || defaultOverlay();
+  const setCursor = (child: React.ReactElement) => {
+    if (trigger === 'click' || (Array.isArray(trigger) && trigger.includes('click'))) {
+      return React.cloneElement(child, { style: { cursor: 'pointer' } });
+    }
+    return child;
+  };
+
+  const getOverlay = () => overlay || tooltipOverlay();
 
   return (
     <RcTooltip
@@ -39,9 +48,10 @@ const Tooltip = (props: TooltipProps) => {
       transitionName='spread-transition'
       arrowContent={<span className={`${prefixCls}-arrow-content`} />}
       overlay={getOverlay()}
+      builtinPlacements={getPlacements({ arrowPointAtCenter })}
       {...rest}
     >
-      {children}
+      {setCursor(children)}
     </RcTooltip>
   );
 };

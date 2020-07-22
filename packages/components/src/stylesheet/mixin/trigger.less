@@ -53,10 +53,15 @@
     left: 50%;
     transform: translateX(-50%);
   }
+  &-placement-left &-arrow,
+  &-placement-right &-arrow {
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
   &-placement-topLeft &-arrow,
   &-placement-bottomLeft &-arrow {
-    left: @arrow-offset;
+    left: @arrow-offset; 
   }
 
   &-placement-topRight &-arrow,
@@ -70,9 +75,7 @@
   }
 
   &-placement-leftTop &-arrow,
-  &-placement-rightTop &-arrow,
-  &-placement-left &-arrow,
-  &-placement-right &-arrow {
+  &-placement-rightTop &-arrow {
     top: @arrow-offset;
   }
 }

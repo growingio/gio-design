@@ -2,8 +2,18 @@
   "color": {
     "background": {
       "avatar": {
-        "normal": "{palette.gray.3.value}",
-        "hover": "{palette.blue.7.value}"
+        "normal": {
+          "value": "{palette.gray.3.value}"
+        },
+        "hover": {
+          "value": "{palette.blue.7.value}"
+        }
+      },
+      "tooltip": {
+        "value": "rgba(36, 46, 89, 0.96)"
+      },
+      "popover": {
+        "value": "{palette.white.value}"
       }
     }
   }

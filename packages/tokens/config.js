@@ -8,4 +8,24 @@ StyleDictionary.registerFormat({
   formatter: typingsES6Template,
 });
 
+StyleDictionary.registerTransform({
+  name: 'shadow/complex',
+  type: 'value',
+  matcher: (prop) => prop.attributes.type === 'shadow',
+  transformer: (prop) => prop.original.value,
+});
+
+StyleDictionary.registerTransformGroup({
+  name: 'less',
+  transforms: [
+    'attribute/cti',
+    'name/cti/kebab',
+    'time/seconds',
+    'content/icon',
+    'size/rem',
+    'color/hex8',
+    'shadow/complex',
+  ],
+});
+
 StyleDictionary.buildAllPlatforms();
