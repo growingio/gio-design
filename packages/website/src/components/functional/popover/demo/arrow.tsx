@@ -1,5 +1,5 @@
 import React from 'react';
-import { Popover, Checkbox, CheckboxGroup, Link } from '@gio-design/components';
+import { Popover } from '@gio-design/components';
 import '@gio-design/components/es/components/popover/style/index.css';
 import './index.less';
 import image from './2vcode.png';

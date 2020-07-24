@@ -4,7 +4,8 @@ nav:
   order: 2
   title: 组件
 group:
-  title: 基础组件
+  title: 功能组件
+  order: 2
 ---
 
 # Popover 气泡卡片
