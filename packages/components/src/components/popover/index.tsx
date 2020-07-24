@@ -8,19 +8,14 @@ const Popover: React.FC<PopoverProps> = (props: PopoverProps) => {
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('popover', customizePrefixCls);
 
-  const customOverlay = () => {
-    if (!contentArea && !footerArea) {
-      return null;
-    }
-    return (
-      <>
-        {contentArea && <div className={`${prefixCls}-inner-content`}>{contentArea}</div>}
-        {footerArea && <div className={`${prefixCls}-inner-footer`}>{footerArea}</div>}
-      </>
-    );
-  };
+  const popoverOverlay = () => (
+    <>
+      {contentArea && <div className={`${prefixCls}-inner-content`}>{contentArea}</div>}
+      {footerArea && <div className={`${prefixCls}-inner-footer`}>{footerArea}</div>}
+    </>
+  );
   return (
-    <Tooltip prefixCls={prefixCls} overlay={customOverlay()} {...rest}>
+    <Tooltip prefixCls={prefixCls} overlay={popoverOverlay()} {...rest}>
       {children}
     </Tooltip>
   );

@@ -1,17 +1,64 @@
-.gio-popover-inner-content {
-  .displayInput {
-    display: block;
-    height: 30px;
-    width: 220px;
-    border: 1px solid #dcdfed;
-    border-radius: 4px;
-    background-color: #ffffff;
-    &:focus {
-      outline: none;
+.gio-popover-inner {
+  &-content {
+    .displayInput {
+      display: block;
+      height: 30px;
+      width: 220px;
+      border: 1px solid #dcdfed;
+      border-radius: 4px;
+      background-color: #ffffff;
+      &:focus {
+        outline: none;
+      }
+    }
+    .title {
+      color: #313e75;
+      font-size: 14px;
+    }
+    .desc {
+      color: #a3adc8;
+      font-size: 12px;
+      width: 220px;
+      margin-top: 8px;
+      margin-bottom: 0px;
+    }
+  }
+  &-footer {
+    .button {
+      height: 30px;
+      border-radius: 4px;
+      background-color: #3867f4;
+      color: #ffffff;
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: 22px;
+      display: inline-block;
+      padding: 4px 16px;
+    }
+    .centerButton {
+      .button;
+      width: 108px;
+      margin: 0 auto;
+      display: block;
+    }
+    .rightButton {
+      .button;
+      float: right;
     }
   }
 }
+
+@button-width: 100px;
 .popoverSpan {
+  display: inline-block;
+  padding: 5px 8px;
+  border: 1px solid #adadad;
+  text-align: center;
+  margin: 10px;
+  width: @button-width;
+}
+
+.popoverSpanInLine {
   display: inline-block;
   padding: 5px 8px;
   border: 1px solid #adadad;
@@ -19,14 +66,30 @@
   margin: 10px;
 }
 
-.button {
-  height: 30px;
-  border-radius: 4px;
-  background-color: #3867f4;
-  color: #ffffff;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: 22px;
-  display: inline-block;
-  padding: 4px 16px;
+.popover-top {
+  margin-left: @button-width;
+  & > .tooltipSpan {
+    margin: 0 10px;
+  }
+}
+
+.popover-left {
+  float: left;
+  width: @button-width;
+  & > .tooltipSpan {
+    margin: 10px 0;
+  }
+}
+.popover-buttom {
+  margin-left: @button-width;
+  & > .tooltipSpan {
+    margin: 0 10px;
+  }
+}
+.popover-right {
+  width: @button-width;
+  margin-left: 450px;
+  & > .tooltipSpan {
+    margin: 10px 0;
+  }
 }

@@ -6,6 +6,7 @@
 @popover-arrow-width: 12px;
 @distance: 6px;
 @popover-offset: 20px;
+@popover-duration: 10ms;
 
 .@{popover-prefix-cls}{
   margin: auto;
@@ -17,15 +18,15 @@
   }
 
   &-content {
-    display: inline-block;
     position: relative;
   }
 
   &-inner {
     box-shadow: @shadow-popover;
-    border-radius: 2px;
+    border-radius: 4px;
     background-color: @color-background-popover;
-    display: inline-block;
+    display: block;
+    overflow: hidden;
     &-content{
       margin: 20px;
       position: relative;
@@ -60,4 +61,4 @@
   .trigger-placement(@popover-prefix-cls, @color-background-popover, @popover-arrow-width, @distance, @popover-offset);
 }
 
-.trigger-transition(@popover-prefix-cls);
+.trigger-transition(@popover-prefix-cls, @popover-duration);

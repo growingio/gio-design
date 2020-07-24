@@ -19,6 +19,8 @@ group:
 
 <code src='./demo/arrow.tsx' title='箭头指向' desc='设置了 arrowPointAtCenter 后，箭头将指向目标元素的中心。' >
 
+<code src='./demo/placement.tsx' title='位置' desc='位置有12个方向，通过 placement 进行设置' >
+
 ## 参数说明
 
 | 参数            | 说明         | 类型                         | 默认值 |

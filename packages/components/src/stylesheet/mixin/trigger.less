@@ -80,10 +80,10 @@
   }
 }
 
-.trigger-transition(@prefix-cls){
+.trigger-transition(@prefix-cls, @duration){
   .spread-transition {
     &-enter, &-appear {
-      animation-duration: 0.5s;
+      animation-duration: @duration;
       animation-fill-mode: both;
       animation-play-state: paused;
       opacity: 0;
@@ -113,7 +113,7 @@
       }
     }
     &-leave{
-      animation-duration: 0.5s;
+      animation-duration: @duration;
       animation-fill-mode: both;
       animation-play-state: paused;
       &&-active{
