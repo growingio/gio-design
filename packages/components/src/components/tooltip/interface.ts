@@ -8,6 +8,6 @@ export interface TooltipLink {
 export interface TooltipProps extends Partial<RcTooltipProps> {
   title?: React.ReactNode | ReactRender;
   tooltipLink?: TooltipLink;
-  children?: React.ReactElement;
-  placement?: string;
+  arrowPointAtCenter?: boolean;
+  children: React.ReactElement;
 }
