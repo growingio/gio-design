@@ -1,5 +1,5 @@
 ---
-title: Switch 开关
+title: Toggles 开关
 nav:
   order: 3
   title: 组件
@@ -7,25 +7,24 @@ group:
   title: 基础组件
 ---
 
-# Switch 开关
+# Toggles 开关
 
-- 用于在多个备选项中选中单个状态
+- 表示两种相互对立的状态间的切换，多用于触发「开/关」。
 
-- Radio 所有选项默认可见，方便用户在比较中选择，因此选项不宜过多。
 
 ## 代码演示
 
 ### 基础用法
 
-<code src='./demo/switch.tsx' title='基础用法' desc='最简单的用法' />
+<code src='./demo/toggles.tsx' title='基础用法' desc='最简单的用法' />
 
-<code src='./demo/switchDisabled.tsx' title='不可用' desc='Switch失效状态' />
+<code src='./demo/togglesDisabled.tsx' title='不可用' desc='Toggles失效状态' />
 
-<code src='./demo/switchSuffix.tsx' title='文字' desc='带有文字' />
+<code src='./demo/togglesSuffix.tsx' title='文字' desc='带有文字' />
 
-<code src='./demo/switchBackgroundColor.tsx' title='背景色' desc='可以修改背景色' />
+<code src='./demo/togglesBackgroundColor.tsx' title='背景色' desc='可以修改背景色' />
 
-<code src='./demo/switchActiveValue.tsx' title='选中值' desc='可以自定义打开，关闭返回的值' />
+<code src='./demo/togglesActiveValue.tsx' title='选中值' desc='可以自定义打开，关闭返回的值' />
 
 ## API
 

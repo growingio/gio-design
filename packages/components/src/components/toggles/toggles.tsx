@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 
-interface SwitchProps {
+interface TogglesProps {
   suffixContent?: boolean;
   defaultChecked?: boolean;
   disabled?: boolean;
@@ -16,7 +16,7 @@ interface SwitchProps {
   inactiveColor?: string;
 }
 
-const Switch: React.FC<SwitchProps> = (props) => {
+const Toggles: React.FC<TogglesProps> = (props) => {
   const activeColor = props.activeColor;
   const inactiveColor = props.inactiveColor;
 
@@ -35,19 +35,19 @@ const Switch: React.FC<SwitchProps> = (props) => {
     <div>
       <div
         className={classnames(
-          'gio-switch',
-          { 'gio-switch-checked': status },
-          { 'gio-switch-disabled': props.disabled },
+          'gio-toggles',
+          { 'gio-toggles-checked': status },
+          { 'gio-toggles-disabled': props.disabled },
           props.className
         )}
         style={{ background: status ? activeColor : inactiveColor, borderColor: activeColor }}
         onClick={changeStatus}
       >
-        <div className='gio-switch-handle' style={{ background: status ? inactiveColor : activeColor }} />
+        <div className='gio-toggles-handle' style={{ background: status ? inactiveColor : activeColor }} />
       </div>
       {props.suffixContent && <span className='suffixContent'>{status ? '开' : '关'}</span>}
     </div>
   );
 };
 
-export default Switch;
+export default Toggles;

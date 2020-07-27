@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Switch from '@gio-design/components/es/components/switch';
-import '@gio-design/components/es/components/switch/style/index.less';
+import Toggles from '@gio-design/components/es/components/toggles';
+import '@gio-design/components/es/components/toggles/style/index.less';
 
 export default () => {
   const status = {
@@ -10,5 +10,5 @@ export default () => {
     console.log('change-test', val);
     console.log('fhsihfisd', status);
   };
-  return <Switch onChange={change} checked={status.a} />;
+  return <Toggles onChange={change} checked={status.a} />;
 };
