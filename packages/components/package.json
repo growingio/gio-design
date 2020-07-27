@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@gio-design/icon": "^0.0.32",
-    "@gio-design/tokens": "^0.2.21",
+    "@gio-design/tokens": "^20.7.0",
     "@types/classnames": "^2.2.9",
     "@types/lodash": "^4.14.136",
     "@types/react": "^16.8.23",
@@ -33,6 +33,9 @@
     "pinyin-match": "^1.0.8",
     "rc-checkbox": "^2.2.0",
     "rc-notification": "^3.3.1",
+    "rc-tabs": "^11.5.2",
+    "rc-tooltip": "^4.2.1",
+    "rc-util": "^5.0.5",
     "react-use": "^15.1.1",
     "shallowequal": "^1.1.0"
   },
@@ -41,6 +44,7 @@
     "@babel/plugin-proposal-class-properties": "^7.5.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.2",
     "@babel/plugin-transform-modules-commonjs": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",

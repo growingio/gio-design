@@ -1,0 +1,28 @@
+{
+  "color": {
+    "text": {
+      "avatar": {
+        "normal": {
+          "value": "{palette.gray.6.value}"
+        },
+        "hover": {
+          "value": "{palette.white.value}"
+        }
+      },
+      "breadcrumb": {
+        "normal": {
+          "value": "{palette.dark.1.value}"
+        },
+        "hover": {
+          "value": "{palette.blue.6.value}"
+        },
+        "click": {
+          "value": "{palette.dark.1.value}"
+        }
+      },
+      "tooltip": {
+        "value": "{palette.white.value}"
+      }
+    }
+  }
+}

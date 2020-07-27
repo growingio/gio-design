@@ -18,7 +18,10 @@ export default () => {
   const defaultValue = ['Apple', 'Orange'];
   return (
     <>
-      <Checkbox checked={state.length > 0} indeterminate={state.length < 3}>
+      <Checkbox
+        checked={state.length > 0}
+        indeterminate={state.length < 3 && state.length > 0}
+      >
         All Selected
       </Checkbox>
       <CheckboxGroup
