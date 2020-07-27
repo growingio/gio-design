@@ -6,14 +6,14 @@ import { ConfigContext } from '../config-provider';
 import _ from 'lodash';
 
 const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
-  const { number = 5, users = [], className } = props;
+  const { number = 5, users = [], className, placement = 'bottom' } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('avatar');
 
   let children = null;
   const renderAvatarGroup = (users: UserAvatarType[]) =>
     users.map((user, idx) => (
-      <Avatar key={idx} {...user}>
+      <Avatar key={idx} {...user} displayTooltip={true} placement={placement}>
         {user.name}
       </Avatar>
     ));
