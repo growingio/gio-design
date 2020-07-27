@@ -1,0 +1,125 @@
+@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/mixin/index.less';
+@import './mixin';
+
+@btn-prefix-cls: ~'@{component-prefix}-btn';
+@iconfont-css-prefix: anticon;
+// // for compatible
+@btn-aid-color: @text-color-base;
+@btn-aid-bg: none;
+@btn-aid-border: none;
+
+// Button styles
+// -----------------------------
+.@{btn-prefix-cls} {
+  line-height: @line-height-base;
+
+  .btn;
+  .btn-default;
+  > span {
+    display: inline-block;
+  }
+
+  &-main {
+    .btn-main;
+  }
+
+  &-aid {
+    .btn-aid;
+  }
+
+  &-text {
+    .btn-text;
+  }
+
+  &-icon-only {
+    .btn-square(@btn-prefix-cls);
+    vertical-align: -0.5px;
+  }
+
+  &::before {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    z-index: 1;
+    display: none;
+    background: @component-background;
+    border-radius: inherit;
+    opacity: 0.35;
+    transition: opacity 0.2s;
+    content: '';
+    pointer-events: none;
+  }
+
+  .@{iconfont-css-prefix} {
+    transition: margin-left 0.3s @ease-in-out;
+    &.@{iconfont-css-prefix}-plus,
+    &.@{iconfont-css-prefix}-minus {
+      > svg {
+        shape-rendering: optimizeSpeed;
+      }
+    }
+  }
+
+  &&-loading {
+    position: relative;
+    &:not([disabled]) {
+      pointer-events: none;
+    }
+
+    &::before {
+      display: block;
+    }
+  }
+
+  & > &-loading-icon {
+    transition: all 0.3s @ease-in-out;
+
+    .@{iconfont-css-prefix} {
+      padding-right: @margin-xs;
+    }
+
+    &:only-child {
+      .@{iconfont-css-prefix} {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &:focus > span,
+  &:active > span {
+    position: relative;
+  }
+
+  > svg + span,
+  > span + svg {
+    margin-left: @margin-xs;
+  }
+
+  > .@{iconfont-css-prefix} + span,
+  > span + .@{iconfont-css-prefix} {
+    margin-left: @margin-xs;
+  }
+
+  &-background-ghost {
+    color: @btn-default-ghost-color;
+    background: @btn-default-ghost-bg !important;
+    border-color: @btn-default-ghost-border;
+  }
+
+  &-background-ghost&-text {
+  }
+
+  &-block {
+    width: 100%;
+  }
+
+  &:empty {
+    display: inline-block;
+    width: 0;
+    visibility: hidden;
+    content: '\a0';
+  }
+}

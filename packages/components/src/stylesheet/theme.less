@@ -1,10 +1,25 @@
 // The prefix to use for components classes
 @component-prefix: 'gio';
 
+@line-height-base: 1.66667;
+// @mode: compact;
+@font-size-base: 14px;
+@font-size-lg: @font-size-base + 2px;
+@ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+// vertical margins
+@margin-lg: 24px; // containers
+@margin-md: 16px; // small containers and buttons
+@margin-sm: 12px; // Form controls and items
+@margin-xs: 8px; // small items
+@margin-xss: 4px; // more small
+
 //Color
 @primary-color: #3867f4;
+@primary-color-active: #1248e9;
 @black: #000;
 @white: #fff;
+@component-background: #fff;
 
 // Status Color
 @error-color: #ffebee;
@@ -25,10 +40,11 @@
 //Background Color
 @background-color-base: #fff;
 @background-color-disabled: #f7f8fc;
+@background-color-disabled: #f7f8fc;
 
 // Disabled states
 @disabled-color: fade(#000, 25%);
-@disabled-bg: @background-color-base;
+@disabled-bg: @background-color-disabled;
 @disabled-color-dark: fade(#fff, 35%);
 @disabled-border-color: #d9d9d9;
 
@@ -82,3 +98,64 @@
 @checkbox-background-color-disabled: @background-color-disabled;
 @checkbox-border-color-disabled: @border-color-disabled;
 @checkbox-border: @border-width-base @border-style-base @border-color-base;
+
+// Buttons
+@btn-font-weight: 400;
+@btn-border-radius-base: 4px;
+@btn-border-radius-sm: 4px;
+@btn-border-width: @border-width-base;
+@btn-border-style: @border-style-base;
+@btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+@btn-main-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+@btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+
+@btn-main-color: #fff;
+@btn-main-bg: @primary-color;
+@btn-main-bg-hover: @primary-color-active;
+@btn-main-bg-click: #6D8EF0;
+
+@btn-default-color: @text-color-base;
+@btn-default-bg: #F7F8FC;
+@btn-default-bg-hover: #EBEDF5;
+@btn-default-bg-click: #F1F2F8;
+@btn-default-border: #F7F8FC;
+
+// @btn-danger-color: #fff;
+// @btn-danger-bg: @error-color;
+// @btn-danger-border: @error-color;
+
+@btn-disable-color: #ADB2C8;
+@btn-disable-bg: @disabled-bg;
+@btn-disable-border: @border-color-base;
+@btn-default-ghost-color: @component-background;
+@btn-default-ghost-bg: transparent;
+@btn-default-ghost-border: transparent;
+
+@btn-font-size-lg: @font-size-lg;
+@btn-font-size-sm: @font-size-base;
+@btn-padding-horizontal-base: 20px;
+@btn-padding-horizontal-lg: 20px;
+@btn-padding-horizontal-sm: 16px;
+
+@btn-height-base: 36px;
+@btn-height-lg: 40px;
+@btn-height-sm: 30px;
+
+// @btn-circle-size: @btn-height-base;
+// @btn-circle-size-lg: @btn-height-lg;
+// @btn-circle-size-sm: @btn-height-sm;
+
+@btn-square-size: 32px;
+@btn-square-size-lg: @btn-height-lg;
+@btn-square-size-sm: @btn-height-sm;
+@btn-square-only-icon-size: @font-size-base + 2px;
+@btn-square-only-icon-size-sm: @font-size-base;
+@btn-square-only-icon-size-lg: @btn-font-size-lg + 2px;
+
+// @btn-group-border: @primary-5;
+
+@btn-link-hover-bg: transparent;
+@btn-text-hover-bg: rgba(8, 8, 8, 0.018);
+@btn-text-color: #89A4F4;
+@btn-text-color-hover: #1248E9;
+@btn-text-color-hover: #1248E9;
