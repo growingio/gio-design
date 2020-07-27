@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Switch from '@gio-design/components/es/components/switch';
-import '@gio-design/components/es/components/switch/style/index.less';
+import Toggles from '@gio-design/components/es/components/toggles';
+import '@gio-design/components/es/components/toggles/style/index.less';
 
 export default () => {
-  return <Switch activeColor="#000" inactiveColor="#fff" />;
+  return <Toggles activeColor="#000" inactiveColor="#fff" />;
 };

@@ -1,13 +1,13 @@
 import * as React from 'react';
-import Switch from '@gio-design/components/es/components/switch';
-import '@gio-design/components/es/components/switch/style/index.less';
+import '@gio-design/components/es/components/toggles/style/index.less';
+import Toggles from '@gio-design/components/es/components/toggles';
 
 export default () => {
   return (
     <div>
-      <Switch disabled />
+      <Toggles disabled />
       <br />
-      <Switch disabled checked />
+      <Toggles disabled defaultChecked />
     </div>
   );
 };

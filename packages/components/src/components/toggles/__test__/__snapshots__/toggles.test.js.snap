@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing Radio should render correctly 1`] = `
+exports[`Testing Toggles should render correctly 1`] = `
 <div>
   <div
-    className="gio-switch gio-switch-checked gio-switch-disabled gio-customized-switch"
+    className="gio-toggles gio-toggles-checked gio-toggles-disabled gio-customized-Toggles"
     onClick={[Function]}
     style={
       Object {
@@ -13,7 +13,7 @@ exports[`Testing Radio should render correctly 1`] = `
     }
   >
     <div
-      className="gio-switch-handle"
+      className="gio-toggles-handle"
       style={
         Object {
           "background": undefined,
