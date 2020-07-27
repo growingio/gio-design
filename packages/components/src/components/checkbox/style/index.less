@@ -3,8 +3,12 @@
 
 @checkbox-prefix-cls: ~'@{component-prefix}-checkbox';
 @checkbox-inner-prefix-cls: ~'@{checkbox-prefix-cls}-inner';
+@checkbox-icon-cls: ~'@{checkbox-prefix-cls}-icon';
 @group-prefix-cls: ~'@{checkbox-prefix-cls}-group';
 @checkbox-wrapper-cls: ~'@{checkbox-prefix-cls}-wrapper';
+
+@check-width: (32px / 14) * 5px;
+@check-height: (32px / 14) * 8px;
 
 .@{checkbox-wrapper-cls} {
   .reset-component();
@@ -34,11 +38,30 @@
       }
     }
   }
+}
 
+.@{checkbox-icon-cls} {
+  width: 10px;
+  position: absolute;
+  left: 3px;
+  top: 8px;
+  z-index: 999;
+  fill: #fff;
+  transform: scale(0);
+  transition: all .5s;
+  &-checked {
+    transform: scale(1);
+    transition: all .5s cubic-bezier(.12,.4,.29,1.46);
+  }
+  &-disabled {
+    fill:  #DFE2ED;
+  }
+  &-indeterminate {
+    display: none;
+  }
 }
 
 .@{checkbox-prefix-cls} {
-
 
   position: relative;
 
@@ -64,26 +87,28 @@
     left: -50%;
     display: block;
     border-radius: 8px;
-    transform: scale(0.5)  translateZ(0);
+    transform: scale(0.5);
     border-collapse: separate;
     transition: all 0.9s;
     z-index: 1;
 
-
+    /**
+     * 部分选中的横线
+     */
     &::after {
-      position: absolute;
-      top: 45%;
-      left: 22%;
-      display: table;
-      border-width: 0;
-      border-style: solid;
-      border-color: #fff;
-      width:0;
-      height: 0;
-      transform: rotate(45deg) translate(-50%, -50%);
-      opacity: 1;
+      width: 0;
       content: ' ';
-      transition: all .5s cubic-bezier(.12,.4,.29,1.46) .1s;
+      background-color: #fff;
+      top: 50%;
+      left: 20%;
+      margin-top: -1px;
+      height: 2px;
+      display: block;
+      position: relative;
+      border-radius: 1px;
+      width: 60%;
+      transform: scale(0);
+      // transition: all .5s;
     }
   }
 
@@ -91,16 +116,6 @@
     .@{checkbox-inner-prefix-cls} {
       border-color: @checkbox-border-color-checked;
       background-color: @checkbox-background-color-checked;
-      &::after {
-        transform: rotate(45deg) translate(-50%, -50%);
-        transition: all .5s cubic-bezier(.12,.4,.29,1.46) .1s;
-        @factor: 12px;
-        @check-width: (32px / 14) * 5px;
-        @check-height: (32px / 14) * 8px;
-        width: @check-width;
-        height: @check-height;
-        border-width: 0 2px 2px 0;
-      }
     }
   }
 
@@ -112,31 +127,26 @@
     }
   }
 
+  &-indeterminate {
+    .@{checkbox-inner-prefix-cls} {
+      &::after {
+        transform: scale(1);
+        transition: all .5s;
+      }
+    }
+  }
   &-disabled {
     .@{checkbox-inner-prefix-cls} {
       background-color: @checkbox-background-color-disabled;
       border-color: @checkbox-border-color-disabled !important;
       &::after {
-        border-color: #DFE2ED;
+        background-color: #DFE2ED;
       }
     }
 
     & + span {
       color: @text-color-disabled;
       opacity: 0.3;
-    }
-  }
-
-  &-indeterminate {
-    .@{checkbox-inner-prefix-cls} {
-      &::after {
-        transform: rotate(0deg) translate(-50%, -50%);
-        top: 50%;
-        left: 50%;
-        width: 60%;
-        height: 0;
-        border-right: 0;
-      }
     }
   }
 

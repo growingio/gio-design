@@ -1,0 +1,64 @@
+@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/mixin/trigger.less';
+@import '~@gio-design/tokens/dist/variables.less';
+
+@popover-prefix-cls: ~'@{component-prefix}-popover';
+@popover-arrow-width: 12px;
+@distance: 6px;
+@popover-offset: 20px;
+@popover-duration: 10ms;
+
+.@{popover-prefix-cls}{
+  margin: auto;
+  position: absolute;
+  z-index: 100;
+  
+  &-hidden {
+    display: none;
+  }
+
+  &-content {
+    position: relative;
+  }
+
+  &-inner {
+    box-shadow: @shadow-popover;
+    border-radius: 4px;
+    background-color: @color-background-popover;
+    display: block;
+    overflow: hidden;
+    &-content{
+      margin: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    &-footer {
+      margin: -4px 20px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+  }
+
+  &-arrow {
+    position: absolute;
+    display: block;
+    pointer-events: none;
+    height: 12px;
+    width: 12px;
+    &-content {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 0px;
+      height: 0px;
+      border: @popover-arrow-width/2 solid;
+      pointer-events: auto;
+    }
+  }
+  .trigger-placement(@popover-prefix-cls, @color-background-popover, @popover-arrow-width, @distance, @popover-offset);
+}
+
+.trigger-transition(@popover-prefix-cls, @popover-duration);
