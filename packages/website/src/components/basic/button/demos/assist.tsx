@@ -8,47 +8,35 @@ export default () => (
   <div className="button-demo">
     <div className="list">
       <div className="item">
-        <Button icon={<Icon type="filter" />} type="assist" size="large">
+        <Button type="assist" size="large">
           辅助按钮
         </Button>
       </div>
       <div className="item">
-        <Button
-          icon={<Icon type="filter" />}
-          type="assist"
-          size="large"
-          disabled={true}
-        >
-          辅助按钮
+        <Button type="assist" size="large" disabled={true}>
+          禁用
         </Button>
       </div>
     </div>
     <div className="list">
       <div className="item">
-        <Button icon={<Icon type="filter" />} type="assist">
-          辅助按钮
-        </Button>
+        <Button type="assist">辅助按钮</Button>
       </div>
       <div className="item">
-        <Button icon={<Icon type="filter" />} type="assist" disabled={true}>
-          辅助按钮
+        <Button type="assist" disabled={true}>
+          禁用
         </Button>
       </div>
     </div>
     <div className="list">
       <div className="item">
-        <Button icon={<Icon type="filter" />} type="assist" size="small">
+        <Button type="assist" size="small">
           辅助按钮
         </Button>
       </div>
       <div className="item">
-        <Button
-          icon={<Icon type="filter" />}
-          type="assist"
-          size="small"
-          disabled={true}
-        >
-          辅助按钮
+        <Button type="assist" size="small" disabled={true}>
+          禁用
         </Button>
       </div>
     </div>

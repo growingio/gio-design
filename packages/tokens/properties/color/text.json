@@ -57,13 +57,13 @@
         },
         "assist": {
           "normal": {
-            "value": "{palette.blue.3.value}"
+            "value": "{palette.dark.1.value}"
           },
           "hover": {
-            "value": "{palette.blue.7.value}"
+            "value": "{palette.dark.1.value}"
           },
           "click": {
-            "value": "{palette.blue.7.value}"
+            "value": "{palette.dark.1.value}"
           },
           "disable": {
             "value": "{palette.gray.5.value}"

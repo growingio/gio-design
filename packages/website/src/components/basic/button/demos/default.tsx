@@ -31,15 +31,15 @@ export default () => {
       <div className="list">
         <div className="item">
           <Button type="default" size="large">
-            Assist
+            次要按钮
           </Button>
         </div>
         <div className="item">
           <Button disabled={true} size="large">
-            Disabled
+            禁用
           </Button>
         </div>
-        <div className="item">
+        {/* <div className="item">
           <Button loading={true} size="large">
             Loading
           </Button>
@@ -57,16 +57,16 @@ export default () => {
           <Button icon={<Icon type="plus-circle" />} size="large">
             新建
           </Button>
-        </div>
+        </div> */}
       </div>
       <div className="list">
         <div className="item">
-          <Button type="default">Assist</Button>
+          <Button type="default">次要按钮</Button>
         </div>
         <div className="item">
-          <Button disabled={true}>Disabled</Button>
+          <Button disabled={true}>禁用</Button>
         </div>
-        <div className="item">
+        {/* <div className="item">
           <Button loading={true}>Loading</Button>
         </div>
         <div className="item">
@@ -76,20 +76,20 @@ export default () => {
         </div>
         <div className="item">
           <Button icon={<Icon type="plus-circle" />}>新建</Button>
-        </div>
+        </div> */}
       </div>
       <div className="list">
         <div className="item">
           <Button type="default" size="small">
-            Assist
+            次要按钮
           </Button>
         </div>
         <div className="item">
           <Button disabled={true} size="small">
-            Disabled
+            禁用
           </Button>
         </div>
-        <div className="item">
+        {/* <div className="item">
           <Button loading={true} size="small">
             Loading
           </Button>
@@ -107,7 +107,7 @@ export default () => {
           <Button icon={<Icon type="plus-circle" />} size="small">
             新建
           </Button>
-        </div>
+        </div> */}
       </div>
       <div className="list">
         <div className="item">
@@ -116,13 +116,13 @@ export default () => {
         <div className="item">
           <Button disabled={true} icon={<Icon type="filter" />} />
         </div>
-        <div className="item">
+        {/* <div className="item">
           <Button
             icon={<Icon type="filter" />}
             loading={loadings[3]}
             onClick={() => enterLoading(3)}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

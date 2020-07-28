@@ -26,15 +26,15 @@ export default () => {
       <div className="list">
         <div className="item">
           <Button type="primary" size="large">
-            Primary
+            主要按钮
           </Button>
         </div>
         <div className="item">
           <Button type="primary" size="large" disabled={true}>
-            Disabled
+            禁用
           </Button>
         </div>
-        <div className="item">
+        {/* <div className="item">
           <Button type="primary" size="large" loading={true}>
             Loading
           </Button>
@@ -57,18 +57,18 @@ export default () => {
           >
             新建
           </Button>
-        </div>
+        </div> */}
       </div>
       <div className="list">
         <div className="item">
-          <Button type="primary">Primary</Button>
+          <Button type="primary">主要按钮</Button>
         </div>
         <div className="item">
           <Button type="primary" disabled={true}>
-            Disabled
+            禁用
           </Button>
         </div>
-        <div className="item">
+        {/* <div className="item">
           <Button type="primary" loading={true}>
             Loading
           </Button>
@@ -86,20 +86,20 @@ export default () => {
           <Button icon={<Icon type="plus-circle" />} type="primary">
             新建
           </Button>
-        </div>
+        </div> */}
       </div>
       <div className="list">
         <div className="item">
           <Button type="primary" size="small">
-            Primary
+            主要按钮
           </Button>
         </div>
         <div className="item">
           <Button type="primary" size="small" disabled={true}>
-            Disabled
+            禁用
           </Button>
         </div>
-        <div className="item">
+        {/* <div className="item">
           <Button type="primary" size="small" loading={true}>
             Loading
           </Button>
@@ -122,7 +122,7 @@ export default () => {
           >
             新建
           </Button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
