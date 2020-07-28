@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "website",
-  "version": "20.6.1",
+  "version": "20.6.2",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -25,9 +25,9 @@
     ]
   },
   "dependencies": {
-    "@gio-design/components": "^20.6.1",
+    "@gio-design/components": "^20.6.2",
     "@gio-design/icon": "^0.0.32",
-    "@gio-design/tokens": "^0.2.21",
+    "@gio-design/tokens": "^20.7.0",
     "eslint-plugin-eslint-comments": "3.2.0",
     "eslint-plugin-import": "^2.21.1",
     "eslint-plugin-jest": "23.13.2",

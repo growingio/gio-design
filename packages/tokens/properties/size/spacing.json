@@ -1,0 +1,36 @@
+{
+  "size": {
+    "spacing": {
+      "none": {
+        "value": "0rem"
+      },
+      "xxxs": {
+        "value": "0.125rem"
+      },
+      "xxs": {
+        "value": "0.25rem"
+      },
+      "xs": {
+        "value": "0.5rem"
+      },
+      "s": {
+        "value": "0.75rem"
+      },
+      "m": {
+        "value": "1rem"
+      },
+      "l": {
+        "value": "1.25rem"
+      },
+      "xl": {
+        "value": "1.5rem"
+      },
+      "xxl": {
+        "value": "2rem"
+      },
+      "xxxl": {
+        "value": "2.5rem"
+      }
+    }
+  }
+}

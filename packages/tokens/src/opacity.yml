@@ -1,8 +1,0 @@
-opacity:
-  disabled:
-    value: 0.4
-  input:
-    disabled:
-      value: 0.4
-    read-only:
-      value: 0.8

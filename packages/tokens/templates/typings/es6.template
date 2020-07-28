@@ -1,0 +1,10 @@
+/**
+ * Do not edit directly
+ * Generated on <%= new Date().toUTCString() %>
+ */
+
+declare module '@gio-design/tokens' {
+<% _.each(allProperties, function(property) {
+%>  export const <%= property.name %>: <%= isNaN(property.value) ? 'string' : 'number' %>;
+<% }); %>
+}

@@ -1,0 +1,71 @@
+@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/mixin/trigger.less';
+@import '~@gio-design/tokens/dist/variables.less';
+
+@tooltip-prefix-cls: ~'@{component-prefix}-tooltip';
+@tooltip-distance: 6px;
+@tooltip-arrow-width: 12px;
+@tooltip-arrow-offset: 14px;
+@tooltip-duration: 0.5s;
+
+.@{tooltip-prefix-cls}{
+  max-width: 500px;
+  position: absolute;
+  z-index: 100;
+
+  &-hidden {
+    display: none;
+  }
+
+  &-content {
+    position: relative;
+  }
+
+  &-inner {
+    color: @color-text-tooltip;
+    text-align: left;
+    text-decoration: none;
+    word-wrap: break-word;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 22px;
+    border-radius: 4px;
+    background-color: @color-background-tooltip;
+    padding: 8px 16px;
+    display: inline-block;
+    min-width: 40px;
+    &-title {
+      vertical-align: middle;
+      &::before{
+        content: ' ';
+        display: inline-block;
+      }
+    }
+    .gio-link{
+      color: @color-text-tooltip;
+    }
+  }
+
+  &-arrow {
+    position: absolute;
+    display: block;
+    pointer-events: none;
+    height: 12px;
+    width: 12px;
+    &-content {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 0px;
+      height: 0px;
+      border: @tooltip-arrow-width/2 solid;
+      pointer-events: auto;
+    }
+  }
+  .trigger-placement(@tooltip-prefix-cls, @color-background-tooltip, @tooltip-arrow-width, @tooltip-distance, @tooltip-arrow-offset);
+}
+
+.trigger-transition(@tooltip-prefix-cls, @tooltip-duration);
