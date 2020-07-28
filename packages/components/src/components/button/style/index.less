@@ -1,13 +1,15 @@
+@import '~@gio-design/tokens/dist/variables.less';
 @import '../../../stylesheet/theme.less';
 @import '../../../stylesheet/mixin/index.less';
+
 @import './mixin';
 
 @btn-prefix-cls: ~'@{component-prefix}-btn';
 @iconfont-css-prefix: anticon;
-// // for compatible
-@btn-aid-color: @text-color-base;
-@btn-aid-bg: none;
-@btn-aid-border: none;
+// for compatible
+@btn-assist-color: @text-color-base;
+@btn-assist-bg: none;
+@btn-assist-border: none;
 
 // Button styles
 // -----------------------------
@@ -20,12 +22,12 @@
     display: inline-block;
   }
 
-  &-main {
-    .btn-main;
+  &-primary {
+    .btn-primary;
   }
 
-  &-aid {
-    .btn-aid;
+  &-assist {
+    .btn-assist;
   }
 
   &-text {
@@ -45,7 +47,7 @@
     left: -1px;
     z-index: 1;
     display: none;
-    background: @component-background;
+    background: #FFF;
     border-radius: inherit;
     opacity: 0.35;
     transition: opacity 0.2s;
@@ -104,9 +106,9 @@
   }
 
   &-background-ghost {
-    color: @btn-default-ghost-color;
-    background: @btn-default-ghost-bg !important;
-    border-color: @btn-default-ghost-border;
+    color: @color-text-button-default-ghost;
+    background: @color-background-button-default-ghost !important;
+    border-color: @color-border-button-default-ghost;
   }
 
   &-background-ghost&-text {

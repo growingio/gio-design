@@ -30,27 +30,8 @@ export default () => {
     <div className="button-demo">
       <div className="list">
         <div className="item">
-          <Button type="default">Minor</Button>
-        </div>
-        <div className="item">
-          <Button disabled={true}>Disabled</Button>
-        </div>
-        <div className="item">
-          <Button loading={true}>Loading</Button>
-        </div>
-        <div className="item">
-          <Button loading={loadings[0]} onClick={() => enterLoading(0)}>
-            Click me!
-          </Button>
-        </div>
-        <div className="item">
-          <Button icon={<Icon type="plus-circle" />}>新建</Button>
-        </div>
-      </div>
-      <div className="list">
-        <div className="item">
           <Button type="default" size="large">
-            Minor
+            Assist
           </Button>
         </div>
         <div className="item">
@@ -80,8 +61,27 @@ export default () => {
       </div>
       <div className="list">
         <div className="item">
+          <Button type="default">Assist</Button>
+        </div>
+        <div className="item">
+          <Button disabled={true}>Disabled</Button>
+        </div>
+        <div className="item">
+          <Button loading={true}>Loading</Button>
+        </div>
+        <div className="item">
+          <Button loading={loadings[0]} onClick={() => enterLoading(0)}>
+            Click me!
+          </Button>
+        </div>
+        <div className="item">
+          <Button icon={<Icon type="plus-circle" />}>新建</Button>
+        </div>
+      </div>
+      <div className="list">
+        <div className="item">
           <Button type="default" size="small">
-            Minor
+            Assist
           </Button>
         </div>
         <div className="item">

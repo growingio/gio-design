@@ -11,6 +11,6 @@ export const ConfigContext = React.createContext<ConfigConsumerProps>({
   getPrefixCls: (suffixCls: string, customizePrefixCls?: string) => {
     if (customizePrefixCls) return customizePrefixCls;
 
-    return `gio-${suffixCls}`;
+    return suffixCls ? `gio-${suffixCls}` : 'gio';
   },
 });

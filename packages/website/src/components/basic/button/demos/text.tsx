@@ -8,18 +8,6 @@ export default () => (
   <div className="button-demo">
     <div className="list">
       <div className="item">
-        <Button icon={<Icon type="plus-circle" />} type="text">
-          文本按钮
-        </Button>
-      </div>
-      <div className="item">
-        <Button icon={<Icon type="plus-circle" />} type="text" disabled={true}>
-          文本按钮
-        </Button>
-      </div>
-    </div>
-    <div className="list">
-      <div className="item">
         <Button icon={<Icon type="plus-circle" />} size="large" type="text">
           文本按钮
         </Button>
@@ -31,6 +19,18 @@ export default () => (
           type="text"
           disabled={true}
         >
+          文本按钮
+        </Button>
+      </div>
+    </div>
+    <div className="list">
+      <div className="item">
+        <Button icon={<Icon type="plus-circle" />} type="text">
+          文本按钮
+        </Button>
+      </div>
+      <div className="item">
+        <Button icon={<Icon type="plus-circle" />} type="text" disabled={true}>
           文本按钮
         </Button>
       </div>

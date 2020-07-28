@@ -8,26 +8,14 @@ export default () => (
   <div className="button-demo">
     <div className="list">
       <div className="item">
-        <Button icon={<Icon type="filter" />} type="aid">
-          辅助按钮
-        </Button>
-      </div>
-      <div className="item">
-        <Button icon={<Icon type="filter" />} type="aid" disabled={true}>
-          辅助按钮
-        </Button>
-      </div>
-    </div>
-    <div className="list">
-      <div className="item">
-        <Button icon={<Icon type="filter" />} type="aid" size="large">
+        <Button icon={<Icon type="filter" />} type="assist" size="large">
           辅助按钮
         </Button>
       </div>
       <div className="item">
         <Button
           icon={<Icon type="filter" />}
-          type="aid"
+          type="assist"
           size="large"
           disabled={true}
         >
@@ -37,14 +25,26 @@ export default () => (
     </div>
     <div className="list">
       <div className="item">
-        <Button icon={<Icon type="filter" />} type="aid" size="small">
+        <Button icon={<Icon type="filter" />} type="assist">
+          辅助按钮
+        </Button>
+      </div>
+      <div className="item">
+        <Button icon={<Icon type="filter" />} type="assist" disabled={true}>
+          辅助按钮
+        </Button>
+      </div>
+    </div>
+    <div className="list">
+      <div className="item">
+        <Button icon={<Icon type="filter" />} type="assist" size="small">
           辅助按钮
         </Button>
       </div>
       <div className="item">
         <Button
           icon={<Icon type="filter" />}
-          type="aid"
+          type="assist"
           size="small"
           disabled={true}
         >

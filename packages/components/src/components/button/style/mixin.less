@@ -17,7 +17,7 @@
   border-radius: @border-radius;
 }
 
-.button-disabled(@color: @btn-disable-color; @background: @btn-disable-bg; @border: @btn-disable-bg) {
+.button-disabled(@color: @color-text-button-disable; @background: @color-background-button-disable; @border: @color-border-button-disable) {
   &[disabled] {
     &,
     &:hover,
@@ -31,19 +31,18 @@
   }
 }
 
-.button-variant-main(@color; @background) {
+.button-variant-primary(@color; @background) {
   .button-color(@color; @background; @background);
   
-  text-shadow: @btn-text-shadow;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
   box-shadow: none;
 
-  &:hover,
-  &:focus {
-    .button-color(@color; @btn-main-bg-hover; @btn-main-bg-hover);
+  &:hover {
+    .button-color(@color; @color-background-button-primary-hover; @color-border-button-primary-hover);
   }
 
   &:active {
-    .button-color(@color; @btn-main-bg-click; @btn-main-bg-click);
+    .button-color(@color; @color-background-button-primary-click; @color-border-button-primary-click);
   }
 
   .button-disabled();
@@ -51,28 +50,26 @@
 
 .button-variant-other(@color; @background; @border) {
   .button-color(@color; @background; @border); 
-  &:hover,
-  &:focus {
-    .button-color(@color; @btn-default-bg-hover; @btn-default-bg-hover);
+  &:hover {
+    .button-color(@color; @color-background-button-default-hover; @color-border-button-default-hover);
   }
   &:active {
-    .button-color(@color; @btn-default-bg-click; @btn-default-bg-click);
+    .button-color(@color; @color-background-button-default-click; @color-border-button-default-click);
   }
   .button-disabled();
 }
 
-.button-variant-aid() {
-  .button-color(@btn-aid-color; @btn-aid-bg; @btn-aid-border);
+.button-variant-assist() {
+  .button-color(@color-text-button-assist-normal; @color-background-button-assist-normal; @color-border-button-assist-normal);
   text-shadow: none;
   border: none;
-  &:hover,
-  &:focus {
-    .button-color(@btn-aid-color; @btn-default-bg-hover; @btn-default-bg-hover);
+  &:hover {
+    .button-color(@color-text-button-assist-hover; @color-background-button-assist-hover; @color-border-button-default-hover);
   }
   &:active {
-    .button-color(@btn-aid-color; @btn-default-bg-click; @btn-default-bg-click);
+    .button-color(@color-text-button-assist-click; @color-background-button-assist-click; @color-border-button-default-click);
   }
-  .button-disabled(@btn-disable-color; @btn-aid-bg; @btn-aid-border);
+  .button-disabled(@color-text-button-assist-disable; @color-background-button-assist-normal; @color-border-button-assist-normal);
 }
 
 .button-color(@color; @background; @border) {
@@ -143,37 +140,37 @@
     .button-size(@btn-height-sm; @btn-padding-horizontal-sm; @btn-font-size-sm; @btn-border-radius-sm);
   }
 }
-// main button style
-.btn-main() {
-  .button-variant-main(@btn-main-color, @btn-main-bg);
+// primary button style
+.btn-primary() {
+  .button-variant-primary(@color-text-button-primary-normal; @color-background-button-primary-normal);
 }
 // default button style
 .btn-default() {
-  .button-variant-other(@btn-default-color; @btn-default-bg; @btn-default-bg);
+  .button-variant-other(@color-text-button-default-normal; @color-background-button-default-normal; @color-border-button-default-normal);
 }
-// aid button style
-.btn-aid() {
-  .button-variant-aid();
+// assist button style
+.btn-assist() {
+  .button-variant-assist();
 }
 
 // text button style
 .btn-text() {
-  .button-color(@btn-text-color; transparent; transparent);
+  .button-color(@color-text-button-normal; transparent; transparent);
   box-shadow: none;
   &:hover,
   &:focus {
-    color: @btn-text-color-hover;
+    color: @color-text-button-hover;
     background: transparent;
     border-color: transparent;
   }
 
   &:active {
-    color: @btn-text-color-hover;
+    color: @color-text-button-click;
     background: transparent;
     border-color: transparent;
   }
 
-  .button-disabled(@btn-disable-color; transparent; transparent);
+  .button-disabled(@color-text-button-disable; transparent; transparent);
 }
 
 // square button: the content only contains icon

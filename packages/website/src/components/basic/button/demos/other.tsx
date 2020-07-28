@@ -25,7 +25,7 @@ export default () => (
     </div>
     <div className="list list-border">
       <div className="item">
-        <Button icon={<Icon type="plus-circle" />} block={true} type="main">
+        <Button icon={<Icon type="plus-circle" />} block={true} type="primary">
           块按钮
         </Button>
       </div>
@@ -35,7 +35,7 @@ export default () => (
         </Button>
       </div>
       <div className="item">
-        <Button icon={<Icon type="plus-circle" />} block={true} type="aid">
+        <Button icon={<Icon type="plus-circle" />} block={true} type="assist">
           块按钮
         </Button>
       </div>

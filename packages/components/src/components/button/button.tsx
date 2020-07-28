@@ -2,12 +2,13 @@ import * as React from 'react';
 import classNames from 'classnames';
 import omit from 'omit.js';
 import { ConfigContext } from '../config-provider';
-import SizeContext, { SizeType } from '../config-provider/SizeContext';
+import SizeContext from '../config-provider/SizeContext';
 import LoadingIcon from './LoadingIcon';
+import { ButtonType, NativeButtonProps, ButtonProps } from './interface';
 
 const { isValidElement } = React;
-const tuple = <T extends string[]>(...args: T) => args;
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
+const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
 
 function replaceElement(element: React.ReactNode, replacement: React.ReactNode, props: any): React.ReactNode {
   if (!isValidElement(element)) return replacement;
@@ -19,15 +20,12 @@ function cloneElement(element: React.ReactNode, props?: any): React.ReactElement
   return replaceElement(element, element, props) as React.ReactElement;
 }
 
-const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
-const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
 function isString(str: any) {
   return typeof str === 'string';
 }
 
 function isUnborderedButtonType(type: ButtonType | undefined) {
-  // return type === 'text' || type === 'link';
-  return false;
+  return false && type === 'text';
 }
 
 // Insert one space between two chinese characters automatically.
@@ -79,42 +77,6 @@ function spaceChildren(children: React.ReactNode, needInserted: boolean) {
   return React.Children.map(childList, (child) => insertSpace(child as React.ReactChild, needInserted));
 }
 
-const ButtonTypes = tuple('default', 'main', 'aid', 'text');
-export type ButtonType = typeof ButtonTypes[number];
-const ButtonShapes = tuple('circle', 'circle-outline', 'round');
-export type ButtonShape = typeof ButtonShapes[number];
-const ButtonHTMLTypes = tuple('submit', 'button', 'reset');
-export type ButtonHTMLType = typeof ButtonHTMLTypes[number];
-
-export interface BaseButtonProps {
-  type?: ButtonType;
-  icon?: React.ReactNode;
-  // shape?: ButtonShape;
-  size?: SizeType;
-  loading?: boolean | { delay?: number };
-  prefixCls?: string;
-  className?: string;
-  ghost?: boolean;
-  // danger?: boolean;
-  block?: boolean;
-  children?: React.ReactNode;
-}
-
-export type AnchorButtonProps = {
-  href: string;
-  target?: string;
-  onClick?: React.MouseEventHandler<HTMLElement>;
-} & BaseButtonProps &
-  Omit<React.AnchorHTMLAttributes<any>, 'type' | 'onClick'>;
-
-export type NativeButtonProps = {
-  htmlType?: ButtonHTMLType;
-  onClick?: React.MouseEventHandler<HTMLElement>;
-} & BaseButtonProps &
-  Omit<React.ButtonHTMLAttributes<any>, 'type' | 'onClick'>;
-
-export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
-
 interface CompoundedComponent extends React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLElement>> {
   // Group: typeof Group;
   __ANT_BUTTON: boolean;
@@ -127,8 +89,8 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
     loading,
     prefixCls: customizePrefixCls,
     type,
-    danger,
-    shape,
+    // danger,
+    // shape,
     size: customizeSize,
     className,
     children,
@@ -139,7 +101,6 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
   } = props;
 
   const size = React.useContext(SizeContext);
-
   const [innerLoading, setLoading] = React.useState<Loading>(!!loading);
   const [hasTwoCNChar, setHasTwoCNChar] = React.useState(false);
   const { getPrefixCls, autoInsertSpaceInButton, direction } = React.useContext(ConfigContext);
@@ -217,14 +178,14 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
 
   const classes = classNames(prefixCls, className, {
     [`${prefixCls}-${type}`]: type,
-    [`${prefixCls}-${shape}`]: shape,
+    // [`${prefixCls}-${shape}`]: shape,
     [`${prefixCls}-${sizeCls}`]: sizeCls,
     [`${prefixCls}-icon-only`]: !children && children !== 0 && iconType,
     [`${prefixCls}-background-ghost`]: ghost && !isUnborderedButtonType(type),
     [`${prefixCls}-loading`]: innerLoading,
     [`${prefixCls}-two-chinese-chars`]: hasTwoCNChar && autoInsertSpace,
     [`${prefixCls}-block`]: block,
-    [`${prefixCls}-dangerous`]: !!danger,
+    // [`${prefixCls}-dangerous`]: !!danger,
     [`${prefixCls}-rtl`]: direction === 'rtl',
   });
 
@@ -260,12 +221,6 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
   );
 
   return buttonNode;
-
-  // if (isUnborderedButtonType(type)) {
-  //   return buttonNode;
-  // }
-
-  // return <Wave>{buttonNode}</Wave>;
 };
 
 const Button = React.forwardRef<unknown, ButtonProps>(InternalButton) as CompoundedComponent;
@@ -275,7 +230,7 @@ Button.displayName = 'Button';
 Button.defaultProps = {
   loading: false,
   ghost: false,
-  // block: false,
+  block: false,
   htmlType: 'button' as ButtonProps['htmlType'],
 };
 

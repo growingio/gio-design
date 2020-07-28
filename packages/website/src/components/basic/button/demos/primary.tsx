@@ -25,52 +25,23 @@ export default () => {
     <div className="button-demo">
       <div className="list">
         <div className="item">
-          <Button type="main">Main</Button>
+          <Button type="primary" size="large">
+            Primary
+          </Button>
         </div>
         <div className="item">
-          <Button type="main" disabled={true}>
+          <Button type="primary" size="large" disabled={true}>
             Disabled
           </Button>
         </div>
         <div className="item">
-          <Button type="main" loading={true}>
+          <Button type="primary" size="large" loading={true}>
             Loading
           </Button>
         </div>
         <div className="item">
           <Button
-            type="main"
-            loading={loadings[0]}
-            onClick={() => enterLoading(0)}
-          >
-            Click me!
-          </Button>
-        </div>
-        <div className="item">
-          <Button icon={<Icon type="plus-circle" />} type="main">
-            新建
-          </Button>
-        </div>
-      </div>
-      <div className="list">
-        <div className="item">
-          <Button type="main" size="large">
-            Main
-          </Button>
-        </div>
-        <div className="item">
-          <Button type="main" size="large" disabled={true}>
-            Disabled
-          </Button>
-        </div>
-        <div className="item">
-          <Button type="main" size="large" loading={true}>
-            Loading
-          </Button>
-        </div>
-        <div className="item">
-          <Button
-            type="main"
+            type="primary"
             size="large"
             loading={loadings[1]}
             onClick={() => enterLoading(1)}
@@ -79,30 +50,63 @@ export default () => {
           </Button>
         </div>
         <div className="item">
-          <Button icon={<Icon type="plus-circle" />} size="large" type="main">
+          <Button
+            icon={<Icon type="plus-circle" />}
+            size="large"
+            type="primary"
+          >
             新建
           </Button>
         </div>
       </div>
       <div className="list">
         <div className="item">
-          <Button type="main" size="small">
-            Main
-          </Button>
+          <Button type="primary">Primary</Button>
         </div>
         <div className="item">
-          <Button type="main" size="small" disabled={true}>
+          <Button type="primary" disabled={true}>
             Disabled
           </Button>
         </div>
         <div className="item">
-          <Button type="main" size="small" loading={true}>
+          <Button type="primary" loading={true}>
             Loading
           </Button>
         </div>
         <div className="item">
           <Button
-            type="main"
+            type="primary"
+            loading={loadings[0]}
+            onClick={() => enterLoading(0)}
+          >
+            Click me!
+          </Button>
+        </div>
+        <div className="item">
+          <Button icon={<Icon type="plus-circle" />} type="primary">
+            新建
+          </Button>
+        </div>
+      </div>
+      <div className="list">
+        <div className="item">
+          <Button type="primary" size="small">
+            Primary
+          </Button>
+        </div>
+        <div className="item">
+          <Button type="primary" size="small" disabled={true}>
+            Disabled
+          </Button>
+        </div>
+        <div className="item">
+          <Button type="primary" size="small" loading={true}>
+            Loading
+          </Button>
+        </div>
+        <div className="item">
+          <Button
+            type="primary"
             size="small"
             loading={loadings[2]}
             onClick={() => enterLoading(2)}
@@ -111,7 +115,11 @@ export default () => {
           </Button>
         </div>
         <div className="item">
-          <Button icon={<Icon type="plus-circle" />} size="small" type="main">
+          <Button
+            icon={<Icon type="plus-circle" />}
+            size="small"
+            type="primary"
+          >
             新建
           </Button>
         </div>
