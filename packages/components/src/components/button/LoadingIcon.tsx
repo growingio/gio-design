@@ -30,7 +30,6 @@ export default function LoadingIcon({ prefixCls, loading, existIcon }: LoadingIc
   return (
     <CSSMotion
       visible={visible}
-      // We do not really use this motionName
       motionName={`${prefixCls}-loading-icon-motion`}
       removeOnLeave
       onAppearStart={getCollapsedWidth}
