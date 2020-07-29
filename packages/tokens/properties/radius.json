@@ -15,6 +15,9 @@
       },
       "pill": {
         "value": "50%"
+      },
+      "button": {
+        "value": "{radius.border.small.value}"
       }
     }
   }

@@ -3,7 +3,7 @@
     "font": {
       "button": {
         "large": {
-          "value": "{size.font.16.value}"
+          "value": "{size.font.14.value}"
         },
         "default": {
           "value": "{size.font.14.value}"

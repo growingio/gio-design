@@ -6,18 +6,6 @@ import './index.less';
 
 export default () => (
   <div className="button-demo">
-    <div className="list" style={{ backgroundColor: '#313E75' }}>
-      <div className="item">
-        <Button ghost={true} type="text">
-          幽灵按钮
-        </Button>
-      </div>
-      <div className="item">
-        <Button type="text" disabled={true} ghost={true}>
-          幽灵按钮
-        </Button>
-      </div>
-    </div>
     <div className="list list-border">
       <div className="item">
         <Button block={true} type="primary">

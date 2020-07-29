@@ -9,6 +9,9 @@
       },
       "medium": {
         "value": 500
+      },
+      "button": {
+        "value": "{weight.font.regular.value}"
       }
     }
   }
