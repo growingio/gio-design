@@ -81,6 +81,9 @@
         "disable": {
           "value": "{palette.gray.5.value}"
         }
+      },
+      "loading": {
+        "value": "{palette.dark.1.value}"
       }
     }
   }

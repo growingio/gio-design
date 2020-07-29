@@ -69,6 +69,16 @@
         "disable": {
           "value": "{palette.gray.1.value}"
         }
+      },
+      "loading": {
+        "animation": {
+          "0": {
+            "value": "{palette.blue.7.value}"
+          },
+          "100": {
+            "value": "#581AE5"
+          }
+        }
       }
     }
   }
