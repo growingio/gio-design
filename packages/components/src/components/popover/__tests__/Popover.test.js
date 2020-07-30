@@ -15,14 +15,6 @@ describe('Testing Popover', () => {
     </Popover>
   );
 
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    jest.useRealTimers();
-  });
-
   it('should be stable', () => {
     const wrapper = render(getPopover());
     expect(wrapper).toMatchSnapshot();
@@ -57,7 +49,7 @@ describe('Testing Popover', () => {
     expect(wrapper.find('.gio-popover-inner').exists('.gio-popover-inner-content')).toBe(false);
   });
 
-  it('should be render rightly', () => {
+  it('should be render rightly', (done) => {
     const wrapper = mount(getPopover());
     wrapper.setProps({ trigger: 'click' });
     wrapper.setProps({ placement: 'topLeft' });
@@ -69,6 +61,7 @@ describe('Testing Popover', () => {
     expect(wrapper.exists('.overlayClassName')).toBe(true);
     waitForComponentToPaint(wrapper).then(() => {
       expect(wrapper.exists('.gio-popover-placement-topLeft')).toBe(true);
+      done();
     });
   });
 });
