@@ -1,7 +1,9 @@
 {
   "color": {
     "border": {
-      "avatar": "{palette.white.value}"
+      "avatar": {
+        "value": "{palette.white.value}"
+      }
     }
   }
 }

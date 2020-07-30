@@ -1,11 +1,22 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
+import Tooltip from '../tooltip';
 import classNames from 'classnames';
 import { AvatarProps } from './interface';
 import { ConfigContext } from '../config-provider';
 import Icon from '@gio-design/icon';
 
 const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
-  const { className, size = 'default', droppable = false, children, src, omit = true } = props;
+  const {
+    className,
+    size = 'default',
+    droppable = false,
+    children: userName,
+    src,
+    omit = true,
+    displayTooltip = false,
+    prefixCls: customizePrefixCls,
+    placement = 'bottom',
+  } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const [isImgExist, setIsImgExist] = useState<Boolean>(src !== undefined);
   const [scale, setScale] = useState<number>(1);
@@ -18,9 +29,9 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
       const childrenWidth = childrenRef.current.offsetWidth;
       setScale(nodeWidth - 8 < childrenWidth ? (nodeWidth - 8) / childrenWidth : 1);
     }
-  }, [children]);
+  }, [userName]);
 
-  const prefixCls = getPrefixCls('avatar');
+  const prefixCls = getPrefixCls('avatar', customizePrefixCls);
   const classString = classNames(className, prefixCls, {
     [`${prefixCls}-sm`]: size === 'small',
     [`${prefixCls}-df`]: size === 'default',
@@ -47,8 +58,8 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
     if (!!src && isImgExist) {
       return <img src={src} onError={() => setIsImgExist(false)} />;
     }
-    if (children !== undefined && typeof children === 'string') {
-      const prefixUserName = omit && typeof children === 'string' ? children.trim()[0] : children.trim();
+    if (userName !== undefined && typeof userName === 'string') {
+      const prefixUserName = omit && typeof userName === 'string' ? userName.trim()[0] : userName.trim();
       return (
         <span ref={childrenRef} style={childrenStyle}>
           {prefixUserName}
@@ -57,7 +68,17 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
     }
     return null;
   };
-  return (
+
+  const renderTooltip = (child: React.ReactElement) =>
+    displayTooltip ? (
+      <Tooltip title={userName?.trim()} placement={placement}>
+        {child}
+      </Tooltip>
+    ) : (
+      child
+    );
+
+  return renderTooltip(
     <span ref={nodeRef} className={classString}>
       {renderMore()}
       {renderAvatar()}

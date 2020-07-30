@@ -81,7 +81,7 @@
 }
 
 .trigger-transition(@prefix-cls, @duration){
-  .spread-transition {
+  .@{prefix-cls}.spread-transition {
     &-enter, &-appear {
       animation-duration: @duration;
       animation-fill-mode: both;
