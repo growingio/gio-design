@@ -37,7 +37,7 @@
 .button-variant-primary(@color; @background) {
   .button-color(@color; @background; @background);
   
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  text-shadow: none;
   box-shadow: none;
 
   &:hover {
@@ -105,6 +105,7 @@
   background-image: none;
   border: 1px solid transparent;
   box-shadow: none;
+  text-shadow: none;
   cursor: pointer;
   transition: all 0.3s @ease-in-out;
   user-select: none;
@@ -136,10 +137,10 @@
       pointer-events: none;
     }
   }
-  &-lg {
+  &-large {
     .button-size(@btn-height-lg; @size-spacing-l; @size-font-button-large; @radius-border-button);
   }
-  &-sm {
+  &-small {
     .button-size(@btn-height-sm; @size-spacing-m; @size-font-button-small; @radius-border-button);
   }
 }
@@ -147,8 +148,8 @@
 .btn-primary() {
   .button-variant-primary(@color-text-button-primary-normal; @color-background-button-primary-normal);
 }
-// default button style
-.btn-default() {
+// secondary button style
+.btn-secondary() {
   .button-variant-other(@color-text-button-default-normal; @color-background-button-default-normal; @color-border-button-default-normal);
 }
 // assist button style

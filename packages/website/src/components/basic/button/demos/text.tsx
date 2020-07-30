@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '@gio-design/components/es/components/button';
 import '@gio-design/components/es/components/button/style/css.js';
-import Icon from '@gio-design/icon';
 import './index.less';
 
 export default () => (

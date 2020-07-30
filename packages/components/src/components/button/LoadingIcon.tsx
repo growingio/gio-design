@@ -1,49 +1,27 @@
 import * as React from 'react';
-import classNames from 'classnames';
-import CSSMotion from 'rc-animate/lib/CSSMotion';
-import LoadingOutlined from '@ant-design/icons/LoadingOutlined';
+import Icon from '@gio-design/icon';
 
 export interface LoadingIconProps {
   prefixCls: string;
   existIcon: boolean;
-  loading?: boolean | object;
+  loading?: boolean;
 }
 
-const getCollapsedWidth = () => ({ width: 0, opacity: 0, transform: 'scale(0)' });
-const getRealWidth = (node: HTMLElement) => ({
-  width: node.scrollWidth,
-  opacity: 1,
-  transform: 'scale(1)',
-});
-
 export default function LoadingIcon({ prefixCls, loading, existIcon }: LoadingIconProps) {
-  const visible = !!loading;
-
+  console.log(existIcon, loading);
   if (existIcon) {
     return (
       <span className={`${prefixCls}-loading-icon`}>
-        <LoadingOutlined />
+        <Icon type='reload' />
       </span>
     );
   }
-
-  return (
-    <CSSMotion
-      visible={visible}
-      motionName={`${prefixCls}-loading-icon-motion`}
-      removeOnLeave
-      onAppearStart={getCollapsedWidth}
-      onAppearActive={getRealWidth}
-      onEnterStart={getCollapsedWidth}
-      onEnterActive={getRealWidth}
-      onLeaveStart={getRealWidth}
-      onLeaveActive={getCollapsedWidth}
-    >
-      {({ className, style }: { className: string; style: React.CSSProperties }, ref: any) => (
-        <span className={`${prefixCls}-loading-icon`} style={style} ref={ref}>
-          <LoadingOutlined className={classNames(className)} />
-        </span>
-      )}
-    </CSSMotion>
-  );
+  if (loading) {
+    return (
+      <span className={`${prefixCls}-loading-icon`}>
+        <Icon type='reload' />
+      </span>
+    );
+  }
+  return null;
 }
