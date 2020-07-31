@@ -8,7 +8,6 @@ export interface LoadingIconProps {
 }
 
 export default function LoadingIcon({ prefixCls, loading, existIcon }: LoadingIconProps) {
-  console.log(existIcon, loading);
   if (existIcon) {
     return (
       <span className={`${prefixCls}-loading-icon`}>
