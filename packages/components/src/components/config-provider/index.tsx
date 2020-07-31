@@ -2,6 +2,7 @@ import * as React from 'react';
 
 export interface ConfigConsumerProps {
   getPrefixCls: (suffixCls: string, customizePrefixCls?: string) => string;
+  autoInsertSpaceInButton?: boolean;
 }
 
 export const ConfigContext = React.createContext<ConfigConsumerProps>({
@@ -9,6 +10,6 @@ export const ConfigContext = React.createContext<ConfigConsumerProps>({
   getPrefixCls: (suffixCls: string, customizePrefixCls?: string) => {
     if (customizePrefixCls) return customizePrefixCls;
 
-    return `gio-${suffixCls}`;
+    return suffixCls ? `gio-${suffixCls}` : 'gio';
   },
 });
