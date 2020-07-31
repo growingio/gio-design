@@ -43,4 +43,4 @@ group:
 | ------------ | ---------------- | ----------------- | ------- |
 | **tab**      | 选项卡头显示文字 | string\|ReactNode |         |
 | **disabled** | 选项卡禁用       | boolean           | `false` |
-| **type**     | 用 Icon 显示     | string            |         |
+| **icon**     | 用 Icon 显示     | ReactNode         |         |

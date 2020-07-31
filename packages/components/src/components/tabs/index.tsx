@@ -1,4 +1,4 @@
 import Tabs from './Tabs';
-export default Tabs;
-export { TabPane } from 'rc-tabs';
+export { default as TabPane } from './TabPane';
 export { TabProps, TabPaneProps } from './interface';
+export default Tabs;
