@@ -62,12 +62,13 @@ describe('Testing Avatar', () => {
     expect(wrapper.find('.gio-tooltip-inner-title').text()).toBe('这是一个很长的文字');
   });
 
-  test('props placement', () => {
+  test('props placement', (done) => {
     const wrapper = mount(<Avatar displayTooltip={true}>这是一个很长的文字</Avatar>);
     wrapper.setProps({ placement: 'top' });
     wrapper.find('.gio-avatar').at(0).simulate('mouseenter');
     waitForComponentToPaint(wrapper).then(() => {
       expect(wrapper.exists('.gio-tooltip-placement-top')).toBe(true);
+      done();
     });
   });
 });

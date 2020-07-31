@@ -70,12 +70,13 @@ describe('Testing AvatarGroup', () => {
     expect(wrapper.last().exists('.gio-avatar-rest')).toBe(true);
   });
 
-  test('props placement', () => {
+  test('props placement', (done) => {
     const wrapper = mount(<AvatarGroup users={users} number={4} />);
     wrapper.setProps({ placement: 'top' });
     wrapper.find('.gio-avatar').at(0).simulate('mouseenter');
     waitForComponentToPaint(wrapper).then(() => {
       expect(wrapper.exists('.gio-tooltip-placement-top')).toBe(true);
+      done();
     });
   });
 });

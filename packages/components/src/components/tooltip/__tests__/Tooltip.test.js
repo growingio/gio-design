@@ -15,14 +15,6 @@ describe('Testing Tooltip', () => {
     </Tooltip>
   );
 
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    jest.useRealTimers();
-  });
-
   it('should be stable', () => {
     const wrapper = render(getTooltip());
     expect(wrapper).toMatchSnapshot();
@@ -64,12 +56,12 @@ describe('Testing Tooltip', () => {
     expect(wrapper.exists('.gio-tooltip-inner')).toBe(true);
   });
 
-  test('props placement', () => {
+  test('props placement', (done) => {
     const wrapper = mount(getTooltip());
-    wrapper.setProps({ visible: true });
-    wrapper.setProps({ placement: 'topLeft' });
-    waitForComponentToPaint(wrapper).then(() => {
+    wrapper.setProps({ visible: true, placement: 'topLeft' });
+    waitForComponentToPaint(wrapper, 2000).then(() => {
       expect(wrapper.exists('.gio-tooltip-placement-topLeft')).toBe(true);
+      done();
     });
   });
 
@@ -91,7 +83,7 @@ describe('Testing Tooltip', () => {
     expect(called).toBe(true);
   });
 
-  it('should be render rightly', () => {
+  it('should be render rightly', (done) => {
     const wrapper = mount(getTooltip());
     wrapper.setProps({ trigger: 'click' });
     wrapper.setProps({ placement: 'topLeft' });
@@ -108,6 +100,7 @@ describe('Testing Tooltip', () => {
     expect(wrapper.exists('.overlayClassName')).toBe(true);
     waitForComponentToPaint(wrapper).then(() => {
       expect(wrapper.exists('.gio-tooltip-placement-topLeft')).toBe(true);
+      done();
     });
   });
 });
