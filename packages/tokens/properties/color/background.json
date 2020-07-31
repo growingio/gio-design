@@ -6,7 +6,12 @@
           "value": "{palette.gray.3.value}"
         },
         "hover": {
-          "value": "{palette.blue.7.value}"
+          "dropdown": {
+            "value": "rgba(0, 0, 0, 0.4)"
+          },
+          "rest": {
+            "value": "{palette.blue.7.value}"
+          }
         }
       },
       "tooltip": {

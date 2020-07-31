@@ -12,6 +12,12 @@
       },
       "button": {
         "value": "{weight.font.regular.value}"
+      },
+      "semi-bold": {
+        "value": 600
+      },
+      "bold": {
+        "value": 700
       }
     }
   }
