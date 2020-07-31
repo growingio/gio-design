@@ -79,6 +79,14 @@
             "value": "#581AE5"
           }
         }
+      },
+      "skeleton": {
+        "normal": {
+          "value": "#F7F8FC"
+        },
+        "active": {
+          "value": "linear-gradient(90deg,#f2f2f2 25%,#e6e6e6 37%,#f2f2f2 63%)"
+        }
       }
     }
   }
