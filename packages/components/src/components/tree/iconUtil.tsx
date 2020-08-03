@@ -2,7 +2,6 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { CaretDownFilled } from '@gio-design/icons';
 import { GioTreeNodeProps } from './Tree';
-import { isValidElement, cloneElement } from 'React';
 
 export default function renderSwitcherIcon(
   prefixCls: string,
@@ -13,9 +12,9 @@ export default function renderSwitcherIcon(
     return null;
   }
   const switcherCls = `${prefixCls}-switcher-icon`;
-  if (isValidElement(switcherIcon)) {
-    return cloneElement(switcherIcon, {
-      className: classNames(switcherIcon.props.className || '', switcherCls),
+  if (React.isValidElement(switcherIcon)) {
+    return React.cloneElement(switcherIcon, {
+      className: classNames(switcherIcon?.props.className || '', switcherCls),
     });
   }
 
