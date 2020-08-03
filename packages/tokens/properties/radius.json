@@ -18,9 +18,12 @@
       },
       "button": {
         "value": "{radius.border.small.value}"
+<<<<<<< HEAD
       },
       "tree": {
         "value": "{radius.border.small.value}"
+=======
+>>>>>>> 44746851d2abf01f2d13ee8a8ba90943ae263d6f
       }
     }
   }
