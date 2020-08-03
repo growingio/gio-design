@@ -1,25 +1,21 @@
 @import '../../../stylesheet/theme.less';
+@import '~@gio-design/tokens/dist/variables.less';
 
 @avatar-prefix-cls: ~'@{component-prefix}-avatar';
 
-@avatar-bg-color: #ebedf5;
-@avatar-bg-hover-color: #1248e9;
-@avatar-font-color: #a3adc8;
-@avatar-font-weight: 600;
-
 .@{avatar-prefix-cls} {
   border-radius: 100%;
-  background-color: @avatar-bg-color;
+  background-color: @color-background-avatar-normal;
   display: inline-block;
   overflow: hidden;
   opacity: 1;
-  color: @avatar-font-color;
-  font-weight: @avatar-font-weight;
+  color: @color-text-avatar-normal;
+  font-weight: @weight-font-semi-bold;
   position: relative;
 
   &:hover {
     .@{avatar-prefix-cls}-droppable {
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: @color-background-avatar-hover-dropdown;
 
       svg {
         transform: scale(1);
@@ -92,17 +88,17 @@
 
   &-rest {
     &:hover {
-      background-color: @avatar-bg-hover-color;
-      color: #ffffff;
+      background-color: @color-background-avatar-hover-rest;
+      color: @color-text-avatar-hover;
     }
   }
 
   &-group {
     .@{avatar-prefix-cls} {
-      border: 1.5px solid #ffffff;
+      border: 1.5px solid @color-border-avatar;
 
       &:hover {
-        box-shadow: 0 0 6px 0 rgba(223, 226, 237, 0.94);
+        box-shadow: @shadow-avatar;
         position: relative;
         z-index: 1;
       }

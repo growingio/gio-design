@@ -15,6 +15,7 @@ dist
 **/dist/*.css
 **/dist/*.map
 lib
+es
 node_modules
 lerna-debug.log
 junit.xml
