@@ -17,8 +17,8 @@ interface TogglesProps {
 }
 
 const Toggles: React.FC<TogglesProps> = (props) => {
-  const activeColor = props.activeColor;
-  const inactiveColor = props.inactiveColor;
+  const { activeColor } = props;
+  const { inactiveColor } = props;
 
   const inactiveValue = props.inactiveValue ? props.inactiveValue : false;
   const activeValue = props.activeValue ? props.activeValue : true;
