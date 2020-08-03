@@ -9,9 +9,9 @@ StyleDictionary.registerFormat({
 });
 
 StyleDictionary.registerTransform({
-  name: 'shadow/complex',
+  name: 'supportCompositeValue',
   type: 'value',
-  matcher: (prop) => prop.attributes.type === 'shadow',
+  matcher: (prop) => prop.attributes.type === 'shadow' || 'background',
   transformer: (prop) => prop.original.value,
 });
 
@@ -24,7 +24,7 @@ StyleDictionary.registerTransformGroup({
     'content/icon',
     'size/rem',
     'color/hex8',
-    'shadow/complex',
+    'supportCompositeValue',
   ],
 });
 
