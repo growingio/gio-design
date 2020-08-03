@@ -17,6 +17,20 @@
       "tooltip": {
         "value": "rgba(36, 46, 89, 0.96)"
       },
+      "tabs": {
+        "normal": {
+          "value": "{palette.gray.1.value}"
+        },
+        "hover": {
+          "value": "{palette.gray.3.value}"
+        },
+        "active": {
+          "value": "{palette.white.value}"
+        },
+        "click": {
+          "value": "#F1F2FA"
+        }
+      },
       "popover": {
         "value": "{palette.white.value}"
       },

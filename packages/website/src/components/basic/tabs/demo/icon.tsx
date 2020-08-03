@@ -1,20 +1,21 @@
 import React from 'react';
 import { Tabs, TabPane } from '@gio-design/components';
 import '@gio-design/components/es/components/tabs/style/index.css';
+import { AppFilled, App, AppsFilled, Calendar } from '@gio-design/icons';
 
 export default () => {
   const renderPane = () => (
     <>
-      <TabPane type="icon" key="1">
+      <TabPane icon={<AppFilled />} key="1">
         1111
       </TabPane>
-      <TabPane type="bar-chart" key="2">
+      <TabPane icon={<App />} key="2">
         2222
       </TabPane>
-      <TabPane type="table-chart" key="3">
+      <TabPane icon={<AppsFilled />} key="3">
         3333
       </TabPane>
-      <TabPane disabled type="copy" key="4">
+      <TabPane disabled icon={<Calendar />} key="4">
         4444
       </TabPane>
     </>
