@@ -81,6 +81,20 @@
         "disable": {
           "value": "{palette.gray.5.value}"
         }
+      },
+      "tree": {
+        "normal": {
+          "value": "{palette.dark.1.value}"
+        },
+        "disable": {
+          "value": "{palette.gray.5.value}"
+        },
+        "selected": {
+          "value": "{palette.blue.7.value}"
+        },
+        "switcher": {
+          "value": "{palette.gray.10.value}"
+        }
       }
     }
   }
