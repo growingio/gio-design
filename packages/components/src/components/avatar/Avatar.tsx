@@ -3,7 +3,7 @@ import Tooltip from '../tooltip';
 import classNames from 'classnames';
 import { AvatarProps } from './interface';
 import { ConfigContext } from '../config-provider';
-import Icon from '@gio-design/icon';
+import { More } from '@gio-design/icons';
 
 const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
   const {
@@ -47,7 +47,7 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
     if (droppable) {
       return (
         <div className={classNames({ [`${prefixCls}-droppable`]: droppable })}>
-          <Icon type='more' size={16} color='#FFFFFF' style={{ marginRight: 0 }} />
+          <More width={16} height={16} color='#FFFFFF' />
         </div>
       );
     }

@@ -10,3 +10,4 @@ export { default as Setting } from './Setting';
 export { default as LoadingOutlinedWhite } from './LoadingOutlinedWhite';
 export { default as LoadingOutlinedBlack } from './LoadingOutlinedBlack';
 export { default as Warning } from './Warning';
+export { default as More } from './More';
