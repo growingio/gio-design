@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { CaretDownFilled } from '@gio-design/icons';
-import { GioTreeNodeProps } from '../Tree';
+import { GioTreeNodeProps } from './Tree';
 import { isValidElement, cloneElement } from 'React';
 
 export default function renderSwitcherIcon(
