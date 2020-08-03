@@ -1,0 +1,86 @@
+@import '~@gio-design/tokens/dist/variables.less';
+@import '../../../stylesheet/theme.less';
+@import './mixin.less';
+
+@gio-sign: ~'@{component-prefix}-sign';
+@gio-sign-number: ~'@{gio-sign}__number';
+@gio-sign-dot: ~'@{gio-sign}__dot';
+
+.placeSign {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  transform: scale(1) translate(50%, -50%);
+  transform-origin: 100% 0;
+  opacity: 1;
+  transition: @transition;
+}
+
+// Dot
+.@{gio-sign-dot} {
+  .placeSign();
+  .background.default();
+  border-radius: @radius-border-circle;
+
+  // status
+  &--normal {
+    .background.normal();
+  }
+  &--warning {
+    .background.warning();
+  }
+  &--error {
+    .background.error();
+  }
+  &--disabled {
+    .background.disabled();
+  }
+
+  // size
+  &--medium {
+    .square(8px);
+  }
+  &--small {
+    .square(6px);
+  }
+}
+
+// Number
+.@{gio-sign-number} {
+  position: relative;
+  height: 16px;
+  padding: 0 4px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 8px;
+
+  .placeSign();
+  .background.default();
+}
+
+// wrapper
+.@{gio-sign} {
+  position: relative;
+  display: inline-block;
+
+  &--no-children {
+    .@{gio-sign-dot},
+    .@{gio-sign-number} {
+      position: relative;
+      top: auto;
+      transform: scale(1) translate(0, 0);
+      transform-origin: 50% 50%;
+    }
+  }
+
+  &--hide {
+    &.@{gio-sign-dot},
+    &.@{gio-sign-number} {
+      transform: scale(0) translate(50%, -50%);
+      opacity: 0;
+      transition: @transition;
+    }
+  }
+}

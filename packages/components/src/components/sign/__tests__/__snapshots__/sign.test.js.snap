@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Sign should render dot sign correctly 1`] = `
+<span
+  className="gio-customized-sign gio-sign"
+>
+  <span>
+    Dot
+  </span>
+  <sup
+    className="gio-sign__dot gio-sign__dot--default gio-sign__dot--medium"
+  />
+</span>
+`;
+
+exports[`Testing Sign should render number sign correctly 1`] = `
+<span
+  className="gio-customized-sign gio-sign"
+>
+  <span>
+    Number
+  </span>
+  <span
+    className="gio-sign__number"
+  >
+    99+
+  </span>
+</span>
+`;

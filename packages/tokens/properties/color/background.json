@@ -176,6 +176,23 @@
       },
       "popconfirm": {
         "value": "{palette.white.value}"
+      },
+      "sign": {
+        "default": {
+          "value": "{palette.red.3.value}"
+        },
+        "normal": {
+          "value": "rgba(0, 191, 180, 1)"
+        },
+        "warning": {
+          "value": "rgb(237, 144, 20, 1)"
+        },
+        "error": {
+          "value": "{palette.red.3.value}"
+        },
+        "disabled": {
+          "value": "{palette.gray.5.value}"
+        }
       }
     }
   }
