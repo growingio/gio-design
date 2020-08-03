@@ -1,0 +1,87 @@
+@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/mixin/trigger.less';
+@import '~@gio-design/tokens/dist/variables.less';
+
+@popconfirm-prefix-cls: ~'@{component-prefix}-popconfirm';
+@popconfirm-arrow-width: 12px;
+@popconfirm-distance: 6px;
+@popconfirm-offset: 20px;
+@popconfirm-duration: 10ms;
+
+.@{popconfirm-prefix-cls} {
+  margin: auto;
+  position: absolute;
+  z-index: 100;
+
+  &-hidden {
+    display: none;
+  }
+
+  &-content {
+    position: relative;
+    background-color: @color-background-popconfirm;
+    box-shadow: @shadow-popconfirm;
+    border-radius: 4px;
+  }
+
+  &-inner {
+    padding: 20px 20px 16px;
+    position: relative;
+    line-height: 22px;
+
+    &::after {
+      content: ' ';
+      display: block;
+      height: 0;
+      clear: both;
+    }
+
+    &-title {
+      display: inline-block;
+      color: @color-text-popconfirm-title;
+      font-size: @size-font-14;
+      letter-spacing: 0;
+      margin-left: 24px;
+      font-weight: @weight-font-medium;
+      padding-bottom: 12px;
+    }
+    &-desc {
+      color: @color-text-popconfirm-desc;
+      font-size: @size-font-14;
+      margin-left: 24px;
+      letter-spacing: 0;
+    }
+
+    &-btns {
+      padding-top: 24px;
+      float: right;
+
+      button:first-child {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  &-arrow {
+    position: absolute;
+    pointer-events: none;
+    height: 12px;
+    width: 12px;
+    &-content {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 0px;
+      height: 0px;
+      border: @popconfirm-arrow-width / 2 solid;
+      pointer-events: auto;
+    }
+  }
+
+  .trigger-placement(@popconfirm-prefix-cls, @color-background-popconfirm, @popconfirm-arrow-width, @popconfirm-distance, @popconfirm-offset);
+}
+
+.trigger-transition(@popconfirm-prefix-cls, @popconfirm-duration);

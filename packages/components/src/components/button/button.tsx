@@ -26,7 +26,7 @@ function isString(str: any) {
 
 function insertSpace(child: React.ReactChild, needInserted: boolean) {
   if (child === null || child === undefined) {
-    return;
+    return null;
   }
   const SPACE = needInserted ? ' ' : '';
   if (
