@@ -19,7 +19,7 @@ group:
 
 <code src='./demos/dot.tsx' title='圆点（小红点）' desc='没有数字，可选用不同的颜色标记状态，绿色表示正常、黄色表示警告、红色表示错误、灰色表示不可用。' />
 
-<code src='./demos/dotSize.tsx' title='不同尺寸的红点' desc='红点分为默认 `normal` 尺寸和 `small` 尺寸。`small` 尺寸用于更新提示。' />
+<code src='./demos/dotSize.tsx' title='不同尺寸的红点' desc='红点分为默认的 `middle` 尺寸和 `small` 尺寸。`small` 尺寸用于更新提示。' />
 
 ## API
 
@@ -46,4 +46,4 @@ group:
 | 参数   | 说明     | 类型                                                        | 默认值    |
 | ------ | -------- | ----------------------------------------------------------- | --------- |
 | status | 圆点状态 | `default` \| `normal` \| `warning` \| `error` \| `disabled` | `default` |
-| size   | 圆点大小 | `medium` \| `small`                                         | `medium`  |
+| size   | 圆点大小 | `middle` \| `small`                                         | `middle`  |

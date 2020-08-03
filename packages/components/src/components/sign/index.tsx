@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, Children } from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../config-provider';
 import { ISignProps } from './interface';
 import Number from './Number';
 import Dot from './Dot';
@@ -14,13 +15,14 @@ const Sign: React.FC<ISignProps> = ({
   showZero = false,
   magnitude = 100,
   status = 'default',
-  size = 'medium',
+  size = 'middle',
   children,
 }) => {
-  const prefix = customPrefixCls ? customPrefixCls : 'gio-sign';
+  const { getPrefixCls } = useContext(ConfigContext);
+  const prefix = getPrefixCls('sign', customPrefixCls);
 
   const cls = classnames(className, prefix, {
-    [`${prefix}--no-children`]: React.Children.count(children) === 0,
+    [`${prefix}--no-children`]: Children.count(children) === 0,
   });
 
   return (

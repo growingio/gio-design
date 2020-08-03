@@ -4,7 +4,7 @@ export type TSignVariant = 'number' | 'dot';
 
 export type TDotSignStatus = 'default' | 'normal' | 'warning' | 'error' | 'disabled';
 
-export type TDotSignSize = 'medium' | 'small';
+export type TDotSignSize = 'middle' | 'small';
 
 export type TMagnitude = 10 | 100;
 

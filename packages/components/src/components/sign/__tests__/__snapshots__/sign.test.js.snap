@@ -8,7 +8,7 @@ exports[`Testing Sign should render dot sign correctly 1`] = `
     Dot
   </span>
   <sup
-    className="gio-sign__dot gio-sign__dot--default gio-sign__dot--medium"
+    className="gio-sign__dot gio-sign__dot--default gio-sign__dot--middle"
   />
 </span>
 `;
