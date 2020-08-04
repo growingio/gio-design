@@ -1,0 +1,103 @@
+@import '../../../stylesheet/theme.less';
+
+.gio-alert {
+  width: 100%;
+  border-radius: 6px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  transition: all ease 0.8s;
+
+  & .gio-alert-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    color: #fff;
+    align-self: flex-start;
+    flex-shrink: 0;
+  }
+
+  & .gio-alert-content {
+    flex: 1;
+    // flex-grow: 0;
+    // flex-basis: auto;
+    // width: calc(100% - 48px);
+    margin: 0 8px;
+    font-family: 'PingFang SC Medium';
+    color: @text-color-base;
+    font-size: @text-font-size-base;
+    line-height: 22px;
+
+    & .gio-alert-content-title {
+      width: 100%;
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      // white-space: nowrap;
+    }
+
+    & .gio-alert-content-description {
+      width: 100%;
+      letter-spacing: 0;
+    }
+  }
+
+  & .gio-alert-closeIcon {
+    // width: 16px;
+    // height: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: flex-start;
+    flex-shrink: 0;
+  }
+}
+
+.gio-alert-close {
+  display: none;
+}
+
+.info {
+  background-color: #f7f8fc;
+
+  & .gio-alert-closeIcon {
+    color: #5c4e61;
+  }
+
+  & .gio-alert-icon {
+    color: #5c4e61;
+  }
+}
+
+.success {
+  background-color: @success-color;
+  & .gio-alert-closeIcon {
+    color: #00875a;
+  }
+
+  & .gio-alert-icon {
+    color: #00875a;
+  }
+}
+
+.warning {
+  background-color: @warning-color;
+  & .gio-alert-closeIcon {
+    color: #ff991f;
+  }
+
+  & .gio-alert-icon {
+    color: #aaa49b;
+  }
+}
+
+.error {
+  background-color: @error-color;
+  & .gio-alert-closeIcon {
+    color: #de350b;
+  }
+
+  & .gio-alert-icon {
+    color: #de350b;
+  }
+}
