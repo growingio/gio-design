@@ -34,11 +34,7 @@ const Toggles: React.FC<TogglesProps> = (props) => {
   return (
     <div className={classnames({ 'gio-toggles-disabled': props.disabled })}>
       <div
-        className={classnames(
-          'gio-toggles',
-          { 'gio-toggles-checked': status },
-          props.className
-        )}
+        className={classnames('gio-toggles', { 'gio-toggles-checked': status }, props.className)}
         style={{ background: status ? activeColor : inactiveColor, borderColor: activeColor }}
         onClick={changeStatus}
       >
