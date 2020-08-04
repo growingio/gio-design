@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { CaretDownFilled } from '@gio-design/icons';
+import { CaretDownOutlined } from '@gio-design/icons';
 import { GioTreeNodeProps } from './Tree';
 
 export default function renderSwitcherIcon(
@@ -22,5 +22,5 @@ export default function renderSwitcherIcon(
     return switcherIcon;
   }
 
-  return <CaretDownFilled className={switcherCls} />;
+  return <CaretDownOutlined className={switcherCls} />;
 }

@@ -117,6 +117,17 @@
             "value": "{palette.dark.1.value}"
           }
         }
+      },
+      "loading": {
+        "value": "{palette.dark.1.value}"
+      },
+      "popconfirm": {
+        "title": {
+          "value": "{palette.dark.3.value}"
+        },
+        "desc": {
+          "value": "{palette.dark.1.value}"
+        }
       }
     }
   }
