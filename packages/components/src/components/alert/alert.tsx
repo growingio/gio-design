@@ -54,7 +54,7 @@ const Alert: React.FC<AlertProps> = (props) => {
 
   return (
     <div>
-      <div className={classnames('gio-alert', alertStatus ? getType() : 'gio-alert-close')}>
+      <div className={classnames('gio-alert', alertStatus ? `gio-alert-${getType()}` : 'gio-alert-close')}>
         <div className='gio-alert-icon' style={{ display: showIcon ? 'block' : 'none' }}>
           {icon ? icon : getIcon()}
         </div>
