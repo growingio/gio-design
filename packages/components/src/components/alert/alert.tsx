@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import classnames from 'classnames';
 
-import { CheckCircleFilled, Warning, InformationFilled, CloseCircleFilled } from '@gio-design/icons';
+import { CheckCircleFilled, Warning, InformationFilled, CloseCircleFilled, Close } from '@gio-design/icons';
 
 interface AlertProps {
   afterClose?: any;
@@ -70,7 +70,7 @@ const Alert: React.FC<AlertProps> = (props) => {
           </div>
         </div>
         <div className='gio-alert-closeIcon' style={{ display: closeable ? 'block' : 'none' }} onClick={closeAlert}>
-          {colseText ? colseText : <Icon type='close'></Icon>}
+          {colseText ? colseText : <Close />}
         </div>
       </div>
     </div>
