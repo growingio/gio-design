@@ -26,3 +26,14 @@
   width: @size;
   height: @size;
 }
+
+.place() {
+  position: absolute;
+  display: inline-block;
+  opacity: 1;
+  transition: @transition;
+}
+
+.transform(@scale, @x, @y) {
+  transform: scale(@scale) translate(@x, @y);
+}

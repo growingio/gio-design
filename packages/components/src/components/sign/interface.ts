@@ -8,8 +8,11 @@ export type TDotSignSize = 'middle' | 'small';
 
 export type TMagnitude = 10 | 100;
 
+export type TPlacement = 'top' | 'right' | 'bottom' | 'left' | 'rightTop' | 'rightBottom' | 'leftTop' | 'leftBottom';
+
 export interface ISignCommonProps {
   prefixCls?: string;
+  className?: string;
   style?: CSSProperties;
   visible?: boolean;
 }
@@ -33,5 +36,5 @@ export interface ISignDotProps extends ISignCommonProps {
 export interface ISignProps extends ISignNumberProps, ISignDotProps {
   // 设置 Sign 的变体类型，默认 number
   variant?: TSignVariant;
-  className?: string;
+  placement?: TPlacement;
 }
