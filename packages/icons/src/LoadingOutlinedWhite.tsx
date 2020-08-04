@@ -1,17 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 
-function LoadingOutlinedWhite(props: React.SVGProps<SVGSVGElement>) {
+function SvgLoadingOutlinedWhite(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg width='16px' height='16px' viewBox='0 0 16 16' {...props}>
-      <g stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
-        <g transform='translate(0.500000, 0.500000)' stroke='#FFFFFF'>
-          <circle opacity='0.4' cx='7.5' cy='7.5' r='7.5' />
-          <path d='M15,7.5 C15,3.35786438 11.6421356,0 7.5,0' strokeLinecap='round' />
-        </g>
+    <svg width='1em' height='1em' viewBox='0 0 16 16' {...props}>
+      <g transform='translate(.5 .5)' stroke='#FFF' fill='none' fillRule='evenodd'>
+        <circle opacity={0.4} cx={7.5} cy={7.5} r={7.5} />
+        <path d='M15 7.5A7.5 7.5 0 007.5 0' strokeLinecap='round' />
       </g>
     </svg>
   );
 }
 
-const MemoLoadingOutlinedWhite = React.memo(LoadingOutlinedWhite);
-export default MemoLoadingOutlinedWhite;
+const MemoSvgLoadingOutlinedWhite = React.memo(SvgLoadingOutlinedWhite);
+export default MemoSvgLoadingOutlinedWhite;

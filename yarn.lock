@@ -1827,11 +1827,6 @@
   resolved "https://registry.yarnpkg.com/@formatjs/macro/-/macro-0.2.8.tgz#e43228e02d0159817734ad80cc0326cfefaeeb6c"
   integrity sha512-5IBdn5+D8VGdi6Px0M/PidtqzHVrOj3dVJdV+YmWNRaWHdSvBd1wUd0gMcZnQXAxN+RzlGS/ddfOxFkjSlyQuA==
 
-"@gio-design/icons@^20.7.0":
-  version "20.7.0"
-  resolved "https://repo.growingio.com/repository/npm-group/@gio-design/icons/-/icons-20.7.0.tgz#dea69b2c98d3ccdfb670fe4e74629f9f7106849a"
-  integrity sha512-+UPB7r/CRXzAjVPyebdSifLKsvRYpROGsk048W7NvSLOczgezhpIINGXDeodJYpIa1AtezX6fwjkvxZE9h1S8g==
-
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"

@@ -2,7 +2,7 @@ import React, { ReactNode, useState } from 'react';
 import classnames from 'classnames';
 
 import Icon from '@gio-design/icon';
-import { CheckCircleFilled,AppFilled } from '@gio-design/icons';
+import { CheckCircleFilled, Warning, InformationFilled, CloseCircleFilled } from '@gio-design/icons';
 
 interface AlertProps {
   afterClose?: any;
@@ -38,13 +38,13 @@ const Alert: React.FC<AlertProps> = (props) => {
     const { type } = props;
     switch (type) {
       case 'success':
-        return (<CheckCircleFilled />);
+        return <CheckCircleFilled />;
       case 'warning':
-        return 'exclamation-circle';
+        return <Warning />;
       case 'error':
-        return 'close-circle';
+        return <CloseCircleFilled />;
       default:
-        return 'info-circle';
+        return <InformationFilled />;
     }
   };
 
@@ -57,8 +57,7 @@ const Alert: React.FC<AlertProps> = (props) => {
     <div>
       <div className={classnames('gio-alert', alertStatus ? getType() : 'gio-alert-close')}>
         <div className='gio-alert-icon' style={{ display: showIcon ? 'block' : 'none' }}>
-          {/* {icon ? icon : <Icon type={getIcon()}></Icon>} */}
-          <CheckCircleFilled />
+          {icon ? icon : getIcon()}
         </div>
         <div className='gio-alert-content'>
           <div
