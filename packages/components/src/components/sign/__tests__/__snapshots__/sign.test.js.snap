@@ -4,12 +4,12 @@ exports[`Testing Sign should render dot sign correctly 1`] = `
 <span
   className="gio-customized-sign gio-sign"
 >
+  <span
+    className="gio-sign__dot gio-sign--right-top gio-sign__dot--default gio-sign__dot--middle"
+  />
   <span>
     Dot
   </span>
-  <sup
-    className="gio-sign__dot gio-sign__dot--default gio-sign__dot--middle"
-  />
 </span>
 `;
 
@@ -17,13 +17,13 @@ exports[`Testing Sign should render number sign correctly 1`] = `
 <span
   className="gio-customized-sign gio-sign"
 >
-  <span>
-    Number
-  </span>
   <span
-    className="gio-sign__number"
+    className="gio-sign__number gio-sign--right-top"
   >
     99+
+  </span>
+  <span>
+    Number
   </span>
 </span>
 `;

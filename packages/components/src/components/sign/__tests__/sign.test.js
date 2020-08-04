@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import Sign from '..';
 
@@ -34,23 +34,38 @@ describe('Testing Sign', () => {
     expect(domTree).toMatchSnapshot();
   });
 
-  it('should hide.', () => {
+  it('should toggle hide correctly.', () => {
     const wrapper = mount(
-      <Sign className='gio-customized-sign' variant='dot' visible={false}>
+      <Sign className='gio-customized-sign' variant='dot' visible={true}>
         <span>Dot</span>
       </Sign>
     );
-
-    expect(wrapper.find('.gio-sign__dot').at(0).hasClass('gio-sign--hide')).toBe(true);
+    expect(wrapper.exists('.gio-sign--hide')).toBe(false);
+    wrapper.setProps({ visible: false });
+    expect(wrapper.exists('.gio-sign--hide')).toBe(true);
+    wrapper.setProps({ visible: true });
+    expect(wrapper.exists('.gio-sign--hide')).toBe(false);
   });
 
-  it('should has error class.', () => {
+  it('should switch status correctly.', () => {
     const wrapper = mount(
-      <Sign className='gio-customized-sign' variant='dot' status='error'>
+      <Sign className='gio-customized-sign' variant='dot'>
         <span>Dot</span>
       </Sign>
     );
 
-    expect(wrapper.find('.gio-sign__dot').at(0).hasClass('gio-sign__dot--error')).toBe(true);
+    expect(wrapper.exists('.gio-sign__dot--default')).toBe(true);
+    wrapper.setProps({ status: 'normal' });
+    expect(wrapper.exists('.gio-sign__dot--normal')).toBe(true);
+    expect(wrapper.exists('.gio-sign__dot--default')).toBe(false);
+    wrapper.setProps({ status: 'error' });
+    expect(wrapper.exists('.gio-sign__dot--error')).toBe(true);
+    expect(wrapper.exists('.gio-sign__dot--default')).toBe(false);
+    wrapper.setProps({ status: 'warning' });
+    expect(wrapper.exists('.gio-sign__dot--warning')).toBe(true);
+    expect(wrapper.exists('.gio-sign__dot--default')).toBe(false);
+    wrapper.setProps({ status: 'disabled' });
+    expect(wrapper.exists('.gio-sign__dot--disabled')).toBe(true);
+    expect(wrapper.exists('.gio-sign__dot--default')).toBe(false);
   });
 });
