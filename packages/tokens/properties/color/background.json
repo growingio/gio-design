@@ -17,6 +17,20 @@
       "tooltip": {
         "value": "rgba(36, 46, 89, 0.96)"
       },
+      "tabs": {
+        "normal": {
+          "value": "{palette.gray.1.value}"
+        },
+        "hover": {
+          "value": "{palette.gray.3.value}"
+        },
+        "active": {
+          "value": "{palette.white.value}"
+        },
+        "click": {
+          "value": "#F1F2FA"
+        }
+      },
       "popover": {
         "value": "{palette.white.value}"
       },
@@ -92,6 +106,27 @@
           "new": { "value": "{palette.red.2.value}" },
           "grayscale": { "value": "{palette.purple.1.value}" }
         }
+      },
+      "loading": {
+        "animation": {
+          "0": {
+            "value": "{palette.blue.7.value}"
+          },
+          "100": {
+            "value": "#581AE5"
+          }
+        }
+      },
+      "skeleton": {
+        "normal": {
+          "value": "#F7F8FC"
+        },
+        "active": {
+          "value": "linear-gradient(90deg,#f2f2f2 25%,#e6e6e6 37%,#f2f2f2 63%)"
+        }
+      },
+      "popconfirm": {
+        "value": "{palette.white.value}"
       }
     }
   }

@@ -6,5 +6,5 @@ export interface TabProps extends Pick<RcTabsProps, 'prefixCls' | 'onChange' | '
 }
 
 export interface TabPaneProps extends Pick<RcTabPaneProps, 'tab' | 'disabled' | allWaysHave> {
-  type?: string;
+  icon?: React.ReactNode;
 }

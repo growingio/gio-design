@@ -1,19 +1,6 @@
 @import '../../../stylesheet/theme.less';
+@import '~@gio-design/tokens/dist/variables.less';
 @tab-prefix-cls: ~'@{component-prefix}-tabs';
-
-@tab-active-color: #FFFFFF;
-@tab-active-boxShadow: 0 0 6px 0 rgba(223,226,237,0.8);
-@tab-active-fontColor: #1248E9;
-
-@tab-normal-color: #F7F8FC;
-@tab-normal-fontColor: #313E75;
-
-@tab-hover-color:  #EBEDF5;
-@tab-hover-fontColor: #313E75;
-
-@tab-disable-fontColor: #ADB2C8;
-
-@tab-click-color: #F1F2FA;
 
 .@{tab-prefix-cls} {
   font-weight: 400;
@@ -68,7 +55,7 @@
   &-tab{
     cursor: pointer;
     display: inline-flex;
-    color: @tab-normal-fontColor;
+    color: @color-text-tabs-normal;
     background-color: transparent;
     justify-content: center;
     align-items: center;
@@ -81,38 +68,39 @@
     outline: none;
     &-btn{
       outline: none;
+      line-height: 0;
     }
     &:hover{
-      background-color: @tab-hover-color;
+      background-color: @color-background-tabs-hover;
     }
     &:active{
-      background-color: @tab-click-color;
+      background-color: @color-background-tabs-click;
     }
   }
   &-tab-active{
-    color: @tab-active-fontColor;
+    
     &:hover{
       background-color:  transparent;
-      color: @tab-active-fontColor;
+      color: @color-text-tabs-active;
     }
     svg{
-      color: @tab-normal-fontColor;
+      color: @color-text-tabs-normal;
     } 
   }
   &-tab-disabled{
-    color: @tab-disable-fontColor;
+    color: @color-text-tabs-disable;
     cursor: not-allowed;
     &:hover{
-      background-color: @tab-hover-color;
+      background-color: @color-background-tabs-hover;
     }
     svg{
-      color: @tab-disable-fontColor;
+      color: @color-text-tabs-disable;
     }
   }
 
   &-block{
     .@{tab-prefix-cls}-nav-list{
-      background-color: @tab-normal-color;
+      background-color: @color-background-tabs-normal;
       padding: 1px;
       .@{tab-prefix-cls}-tab{
         margin-left: 1px;
@@ -124,15 +112,15 @@
         }
         &-disabled{
           &:hover{
-            background-color: @tab-hover-color;
+            background-color: @color-background-tabs-hover;
           }
         }
       }
       .@{tab-prefix-cls}-ink-bar{
         position: absolute;
         top: 0;
-        box-shadow: @tab-active-boxShadow;
-        background-color: @tab-active-color;
+        box-shadow: @shadow-tabs;
+        background-color: @color-background-tabs-active;
         z-index: 0;
         border-radius: 3px;
         position: absolute;
@@ -157,14 +145,14 @@
       &-disabled{
         background-color: transparent;  
         &:hover{
-          background-color: @tab-hover-color;
+          background-color: @color-background-tabs-hover;
         }
       }
     }
     .@{tab-prefix-cls}-ink-bar{
       height: 2px;
       top: 100%;
-      background-color: @tab-active-fontColor;
+      background-color: @color-text-tabs-active;
       border-radius: 3px;
       position: absolute;
       transition: width .2s,left .2s,right .2s;
