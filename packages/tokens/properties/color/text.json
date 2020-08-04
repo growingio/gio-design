@@ -23,6 +23,17 @@
       "tooltip": {
         "value": "{palette.white.value}"
       },
+      "tabs": {
+        "normal": {
+          "value": "{palette.dark.1.value}"
+        },
+        "active": {
+          "value": "{palette.blue.7.value}"
+        },
+        "disable": {
+          "value": "{palette.gray.5.value}"
+        }
+      },
       "button": {
         "primary": {
           "normal": {
@@ -94,6 +105,17 @@
         },
         "switcher": {
           "value": "{palette.gray.10.value}"
+        },
+        "loading": {
+          "value": "{palette.dark.1.value}"
+        },
+        "popconfirm": {
+          "title": {
+            "value": "{palette.dark.3.value}"
+          },
+          "desc": {
+            "value": "{palette.dark.1.value}"
+          }
         }
       }
     }

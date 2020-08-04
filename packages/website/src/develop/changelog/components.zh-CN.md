@@ -9,6 +9,11 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.8.0
+
+- 🆗 新增[Button 按钮](/components/basic/button)组件。 [#43](https://github.com/growingio/gio-design/pull/43)
+- 👤 `Avatar 头像` 组件增加 `displayTooltip` 参数。 [#36](https://github.com/growingio/gio-design/pull/36)
+
 ## 20.7.0
 
 - 👤 新增[Avatar 头像](/components/functional/avatar)组件。 [#26](https://github.com/growingio/gio-design/pull/26)
