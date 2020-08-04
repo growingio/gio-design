@@ -19,13 +19,12 @@
 
   &-content {
     position: relative;
+    box-shadow: @shadow-popover;
+    background-color: @color-background-popover;
+    border-radius: 4px;
   }
 
   &-inner {
-    box-shadow: @shadow-popover;
-    border-radius: 4px;
-    background-color: @color-background-popover;
-    display: block;
     overflow: hidden;
     &-content{
       margin: 20px;
@@ -41,7 +40,6 @@
 
   &-arrow {
     position: absolute;
-    display: block;
     pointer-events: none;
     height: 12px;
     width: 12px;

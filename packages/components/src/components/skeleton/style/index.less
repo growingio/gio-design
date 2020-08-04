@@ -1,0 +1,70 @@
+@import '../../../stylesheet/theme.less';
+@import '~@gio-design/tokens/dist/variables.less';
+
+@skeleton-prefix-cls: ~'@{component-prefix}-skeleton';
+
+.@{skeleton-prefix-cls}{
+  display: table;
+  width: 100%;
+  &-header{
+    display: table-cell;
+    vertical-align: top;
+    padding-right: 16px;
+  }
+  & &-avatar{
+    margin: 0;
+    background-color: @color-background-skeleton-normal;
+  }
+  &-content{
+    padding-top: 18px;
+    display: table-cell;
+    vertical-align: top;
+    width: 100%;
+  }
+  &-title{
+    width: 38%;
+    height: 24px;
+    background-color: @color-background-skeleton-normal;
+  }
+  &-paragraph{
+    overflow: hidden;
+    p{
+      height: 24px;
+      background-color: @color-background-skeleton-normal;
+    }
+    p:not(:last-child){
+      margin: 32px 0;
+    }
+  }
+  &-image{
+    height: 200px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: #F7F8FC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-active{
+    .@{skeleton-prefix-cls}{
+      &-avatar, &-title, &-paragraph > p{
+        .skeleton-color();
+      }
+    }
+  }
+
+  .skeleton-color() {
+    background-image: @color-background-skeleton-active;
+    background-size: 400% 100%;
+    animation: ~'@{skeleton-prefix-cls}-loading' 1.2s ease infinite;
+  }
+  
+  @keyframes ~"@{skeleton-prefix-cls}-loading" {
+    0% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
+}
