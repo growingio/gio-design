@@ -10,7 +10,7 @@ async function waitForComponentToPaint(wrapper, amount = 500) {
 
 describe('Testing popconfirm', () => {
   const getPopconfirm = () => (
-    <Popconfirm title='确定要删除……吗？' desc='删除物品属性后，相关数据将停止计算，历史数据保留。'>
+    <Popconfirm title="确定要删除……吗？" desc="删除物品属性后，相关数据将停止计算，历史数据保留。">
       <span>Test</span>
     </Popconfirm>
   );

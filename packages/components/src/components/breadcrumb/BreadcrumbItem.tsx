@@ -13,11 +13,11 @@ export interface BreadcrumbItemProps {
 const BreadcrumbItem: React.FC<BreadcrumbItemProps> = (props: BreadcrumbItemProps) => {
   const { href, children, separator, isLastItem } = props;
   const link = href ? (
-    <a className='gio-breadcrumb-item-link-target' {...props}>
+    <a className="gio-breadcrumb-item-link-target" {...props}>
       {children}
     </a>
   ) : (
-    <span className='gio-breadcrumb-item-link-target' {...props}>
+    <span className="gio-breadcrumb-item-link-target" {...props}>
       {children}
     </span>
   );

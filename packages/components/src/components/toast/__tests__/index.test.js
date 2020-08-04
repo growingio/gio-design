@@ -84,7 +84,7 @@ describe('toast', () => {
   });
 
   it('should allow custom icon', () => {
-    Toast.open({ content: 'Message', icon: <Icon type='check-circle' /> });
+    Toast.open({ content: 'Message', icon: <Icon type="check-circle" /> });
     expect(document.querySelectorAll('.cls-check-circle-2').length).toBe(1);
   });
 

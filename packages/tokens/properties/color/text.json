@@ -145,6 +145,7 @@
           "grayscale": {
             "value": "{palette.purple.2.value}"
           }
+        }
       },
       "loading": {
         "value": "{palette.dark.1.value}"
