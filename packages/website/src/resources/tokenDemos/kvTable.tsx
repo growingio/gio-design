@@ -12,13 +12,7 @@ const KVTable = ({ type, data }: KVTableProps) => {
   const rows = Object.keys(data).map((key: string) => (
     <tr key={key} style={{ height: 40 }}>
       <td>{key}</td>
-      <td>
-        {/^#/.test(data[key].toString()) ? (
-          <ColorBlock value={data[key].toString()} />
-        ) : (
-          data[key]
-        )}
-      </td>
+      <td>{/^#/.test(data[key].toString()) ? <ColorBlock value={data[key].toString()} /> : data[key]}</td>
       <td>{data[key]}</td>
     </tr>
   ));
