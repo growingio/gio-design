@@ -84,6 +84,20 @@
           "value": "{palette.gray.1.value}"
         }
       },
+      "tree": {
+        "normal": {
+          "value": "{palette.white.value}"
+        },
+        "hover": {
+          "value": "{palette.gray.1.value}"
+        },
+        "active": {
+          "value": "{palette.gray.1.value}"
+        },
+        "disable": {
+          "value": "{palette.gray.1.value}"
+        }
+      },
       "loading": {
         "animation": {
           "0": {
