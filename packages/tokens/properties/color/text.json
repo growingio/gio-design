@@ -22,6 +22,87 @@
       },
       "tooltip": {
         "value": "{palette.white.value}"
+      },
+      "tabs": {
+        "normal": {
+          "value": "{palette.dark.1.value}"
+        },
+        "active": {
+          "value": "{palette.blue.7.value}"
+        },
+        "disable": {
+          "value": "{palette.gray.5.value}"
+        }
+      },
+      "button": {
+        "primary": {
+          "normal": {
+            "value": "{palette.white.value}"
+          },
+          "hover": {
+            "value": "{palette.white.value}"
+          },
+          "click": {
+            "value": "{palette.white.value}"
+          },
+          "disable": {
+            "value": "{palette.gray.5.value}"
+          }
+        },
+        "default": {
+          "normal": {
+            "value": "{palette.dark.1.value}"
+          },
+          "hover": {
+            "value": "{palette.dark.1.value}"
+          },
+          "click": {
+            "value": "{palette.dark.1.value}"
+          },
+          "disable": {
+            "value": "{palette.gray.5.value}"
+          },
+          "ghost": {
+            "value": "{palette.white.value}"
+          }
+        },
+        "assist": {
+          "normal": {
+            "value": "{palette.dark.1.value}"
+          },
+          "hover": {
+            "value": "{palette.dark.1.value}"
+          },
+          "click": {
+            "value": "{palette.dark.1.value}"
+          },
+          "disable": {
+            "value": "{palette.gray.5.value}"
+          }
+        },
+        "normal": {
+          "value": "{palette.blue.3.value}"
+        },
+        "hover": {
+          "value": "{palette.blue.7.value}"
+        },
+        "click": {
+          "value": "{palette.blue.6.value}"
+        },
+        "disable": {
+          "value": "{palette.gray.5.value}"
+        }
+      },
+      "loading": {
+        "value": "{palette.dark.1.value}"
+      },
+      "popconfirm": {
+        "title": {
+          "value": "{palette.dark.3.value}"
+        },
+        "desc": {
+          "value": "{palette.dark.1.value}"
+        }
       }
     }
   }

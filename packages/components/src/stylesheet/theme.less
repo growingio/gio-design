@@ -1,10 +1,25 @@
 // The prefix to use for components classes
 @component-prefix: 'gio';
 
+@line-height-base: 1.66667;
+// @mode: compact;
+@font-size-base: 14px;
+@font-size-lg: @font-size-base + 2px;
+@ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+// vertical margins
+@margin-lg: 24px; // containers
+@margin-md: 16px; // small containers and buttons
+@margin-sm: 12px; // Form controls and items
+@margin-xs: 8px; // small items
+@margin-xss: 4px; // more small
+
 //Color
 @primary-color: #3867f4;
+@primary-color-active: #1248e9;
 @black: #000;
 @white: #fff;
+@component-background: #fff;
 
 // Status Color
 @error-color: #ffebee;
@@ -28,7 +43,7 @@
 
 // Disabled states
 @disabled-color: fade(#000, 25%);
-@disabled-bg: @background-color-base;
+@disabled-bg: @background-color-disabled;
 @disabled-color-dark: fade(#fff, 35%);
 @disabled-border-color: #d9d9d9;
 

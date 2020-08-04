@@ -1,12 +1,12 @@
 import React from 'react';
-import Icon from '@gio-design/icon';
+import { App, AppsFilled, Calendar, Setting } from '@gio-design/icons';
+import './basic.less';
 
 export default () => (
-  <>
-    <Icon type='android' />
-    <Icon type='ios' />
-    <Icon type='desktop' />
-    <Icon type='wechat' />
-    <Icon type='alipay' />
-  </>
+  <div className="icon-list">
+    <App />
+    <AppsFilled />
+    <Calendar />
+    <Setting />
+  </div>
 );

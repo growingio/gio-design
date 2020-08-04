@@ -14,7 +14,14 @@ dist
 **/dist/*.less
 **/dist/*.css
 **/dist/*.map
+**/es/*.js
+**/es/*.json
+**/es/*.less
+**/es/*.css
+**/es/*.map
+**/es/*.ts
 lib
+es
 node_modules
 lerna-debug.log
 junit.xml
