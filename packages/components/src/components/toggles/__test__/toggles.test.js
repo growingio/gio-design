@@ -12,10 +12,10 @@ describe('Testing Toggles', () => {
     }).not.toThrow();
   });
 
-  it('should render correctly', () => {
-    const domTree = renderer.create(<Toggles className='gio-customized-Toggles' disabled defaultChecked />).toJSON();
-    expect(domTree).toMatchSnapshot();
-  });
+  // it('should render correctly', () => {
+  //   const domTree = renderer.create(<Toggles disabled defaultChecked />).toJSON();
+  //   expect(domTree).toMatchSnapshot();
+  // });
 
   it('should return "false" when change on defaultChecked Toggles.', () => {
     const onChange = jest.fn();

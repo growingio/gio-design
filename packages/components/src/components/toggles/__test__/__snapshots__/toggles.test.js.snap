@@ -3,7 +3,7 @@
 exports[`Testing Toggles should render correctly 1`] = `
 <div>
   <div
-    className="gio-toggles gio-toggles-checked gio-toggles-disabled gio-customized-Toggles"
+    className="gio-toggles gio-toggles-checked gio-toggles-disabled"
     onClick={[Function]}
     style={
       Object {
