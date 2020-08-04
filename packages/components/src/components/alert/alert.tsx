@@ -1,7 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import classnames from 'classnames';
 
-import Icon from '@gio-design/icon';
 import { CheckCircleFilled, Warning, InformationFilled, CloseCircleFilled } from '@gio-design/icons';
 
 interface AlertProps {
