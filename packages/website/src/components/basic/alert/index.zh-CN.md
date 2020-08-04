@@ -29,20 +29,20 @@ group:
 
 ## API
 
-### Switch
+### Alert
 
-| 参数        | 说明                                                         | 类型                    | 默认值 |
-| ----------- | ------------------------------------------------------------ | ----------------------- | ------ |
-| closeable   | 默认不现实关闭按钮                                           | boolean                 | -      |
-| closeText   | 自定义关闭按钮                                               | string \| ReactNode     | -      |
-| description | 警告提示的辅助性文字介绍                                     | string \| ReactNode     | -      |
-| icon        | 自定义图标，showIcon 为 true 时有效                          | ReacNode                | -      |
-| message     | 警告提示内容                                                 | string \| ReactNode     | -      |
-| showIcon    | 是否显示辅助图标                                             | boolean                 | false  |
-| type        | 指定警告提示的样式，有四种选择 success、info、warning、error | string                  | info   |
+| 参数        | 说明                                                         | 类型                | 默认值 |
+| ----------- | ------------------------------------------------------------ | ------------------- | ------ |
+| closeable   | 默认不现实关闭按钮                                           | boolean             | -      |
+| closeText   | 自定义关闭按钮                                               | string \| ReactNode | -      |
+| description | 警告提示的辅助性文字介绍                                     | string \| ReactNode | -      |
+| icon        | 自定义图标，showIcon 为 true 时有效                          | ReacNode            | -      |
+| message     | 警告提示内容                                                 | string \| ReactNode | -      |
+| showIcon    | 是否显示辅助图标                                             | boolean             | false  |
+| type        | 指定警告提示的样式，有四种选择 success、info、warning、error | string              | info   |
 
 ### 方法
 
-| 名称     | 描述           |
-| -------- | -------------- |
-| onClose     | 关闭时触发的回调函数      |
+| 名称    | 描述                 |
+| ------- | -------------------- |
+| onClose | 关闭时触发的回调函数 |
