@@ -2,11 +2,13 @@
   width: 40px;
   height: 20px;
   border-radius: 10px;
-  border: solid 1px #a3adc8;
+  border: 0.5px solid #a3adc8;
+  background-color: #fff;
   display: inline-block;
   position: relative;
   cursor: pointer;
   transition: all ease 0.4s;
+  box-shadow: inset -0.5px 0 2px 0 rgba(163, 173, 200, 0.8);
 
   .gio-toggles-handle {
     width: 14px;
@@ -31,11 +33,6 @@
   }
 }
 
-.gio-toggles-disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
 .suffixContent {
   height: 20px;
   line-height: 20px;
@@ -47,3 +44,55 @@
   font-family: 'PingFang SC Regular';
   user-select: none;
 }
+
+.gio-toggles-disabled {
+  .gio-toggles {
+    cursor: not-allowed;
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    border: 0.5px solid #a3adc8;
+    background-color: #ebedf5;
+    display: inline-block;
+    position: relative;
+    transition: all ease 0.4s;
+    box-shadow: inset -0.5px 0 2px 0 rgba(163, 173, 200, 0.8);
+
+    .gio-toggles-handle {
+      width: 14px;
+      height: 14px;
+      border-radius: 7px;
+      margin: 2px;
+      background-color: #A3ADC8;
+      position: absolute;
+      left: 0px;
+      transition: all ease 0.4s;
+      box-shadow: -0.5px 0 1px 0 rgba(163,173,200,0.5)
+    }
+  }
+
+  .gio-toggles-checked {
+    background-color: rgba(18, 72, 233, 0.5);
+    border: 0.5px solid rgba(56,103,244,0.5);
+  
+    .gio-toggles-handle {
+      left: 100%;
+      margin-left: -16px;
+      background-color: #fff;
+    }
+  }
+
+  .suffixContent {
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px;
+    margin-left: 8px;
+    color: #ADB2C8;
+    font-family: 'PingFang SC Regular';
+    user-select: none;
+  }
+}
+
+
