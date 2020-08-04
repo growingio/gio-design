@@ -1,0 +1,53 @@
+@import '../../../stylesheet/theme.less';
+
+@input-prefix-cls: ~'@{component-prefix}-input';
+
+.@{input-prefix-cls} {
+  &-label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #313e75;
+    font-weight: 500;
+  }
+
+  &-content {
+    border: 1px solid #dcdfed;
+    border-radius: 4px;
+    padding: 9px 16px;
+    font-size: 14px;
+    color: #313e75;
+    background-color: #fff;
+
+    &-hidden {
+      color: #242e59;
+      font-weight: 500;
+      font-size: 20px;
+      &:hover {
+        background-color: #f7f8fc;
+        cursor: pointer;
+      }
+    }
+
+    &-error {
+      border-color: #ec134b;
+    }
+
+    &:focus {
+      border-color: #1248e9;
+      box-shadow: 0 0 6px 0 rgba(223, 226, 237, 0.8);
+    }
+  }
+
+  &-expand {
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 28px;
+
+    &-error {
+      font-size: 12px;
+      color: #ec134b;
+    }
+  }
+}
