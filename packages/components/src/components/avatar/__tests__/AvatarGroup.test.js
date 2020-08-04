@@ -3,7 +3,12 @@ import AvatarGroup from '../AvatarGroup';
 import '@gio-design/components/es/components/avatar/style/index.css';
 import image from './icon.jpeg';
 import renderer from 'react-test-renderer';
+import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
+
+async function waitForComponentToPaint(wrapper, amount = 500) {
+  await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
+}
 
 describe('Testing AvatarGroup', () => {
   const users = [
@@ -55,7 +60,7 @@ describe('Testing AvatarGroup', () => {
       wrapper
         .childAt(0)
         .children()
-        .filterWhere((n) => n.childAt(0).childAt(0).type() === 'img')
+        .filterWhere((n) => n.find('.gio-avatar').childAt(0).type() === 'img')
     ).toHaveLength(2);
   });
 
@@ -63,5 +68,15 @@ describe('Testing AvatarGroup', () => {
     const wrapper = mount(<AvatarGroup users={users} number={4} />).childAt(0);
     expect(wrapper.find('.gio-avatar')).toHaveLength(4);
     expect(wrapper.last().exists('.gio-avatar-rest')).toBe(true);
+  });
+
+  test('props placement', (done) => {
+    const wrapper = mount(<AvatarGroup users={users} number={4} />);
+    wrapper.setProps({ placement: 'top' });
+    wrapper.find('.gio-avatar').at(0).simulate('mouseenter');
+    waitForComponentToPaint(wrapper).then(() => {
+      expect(wrapper.exists('.gio-tooltip-placement-top')).toBe(true);
+      done();
+    });
   });
 });
