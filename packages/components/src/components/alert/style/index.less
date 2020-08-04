@@ -61,43 +61,52 @@
   background-color: #f7f8fc;
 
   & .gio-alert-closeIcon {
-    color: #5c4e61;
+    svg {
+      fill: #5c4e61;
+    }
   }
 
   & .gio-alert-icon {
-    color: #5c4e61;
+    svg {
+      fill: #5c4e61;
+    }
   }
 }
 
 .success {
   background-color: @success-color;
   & .gio-alert-closeIcon {
-    color: #00875a;
+    fill: #00875a;
   }
 
   & .gio-alert-icon {
-    color: #00875a;
+    fill: #00875a;
   }
 }
 
 .warning {
   background-color: @warning-color;
   & .gio-alert-closeIcon {
-    color: #ff991f;
+    svg {
+      fill: #ff991f;
+    }
+    
   }
 
   & .gio-alert-icon {
-    color: #aaa49b;
+    svg {
+      fill: #ff991f;
+    }
   }
 }
 
 .error {
   background-color: @error-color;
   & .gio-alert-closeIcon {
-    color: #de350b;
+    fill: #de350b;
   }
 
   & .gio-alert-icon {
-    color: #de350b;
+    fill: #de350b;
   }
 }
