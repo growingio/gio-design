@@ -1,0 +1,127 @@
+@import '../../../stylesheet/fontSize.less';
+@import '../../../stylesheet//radius.less';
+@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/textColor.less';
+@import '~@gio-design/tokens/dist/variables.less';
+
+@tag-prefix-cls: ~'@{component-prefix}-tag';
+@tag-padding: 8px;
+
+@tag-font-size: @default-font-size-2;
+@tag-line-height: 20px;
+
+@tag-font-size-prorupt: @default-font-size-3;
+@tag-line-height-prorupt: 24px;
+
+@tag-font-size-large: @default-font-size-3;
+@tag-line-height-large: 32px;
+
+.@{tag-prefix-cls}{
+  display: inline-block;
+  color: @color-text-tag-sign-regular;
+  background-color: @color-background-tag-sign;
+  border-radius: @border-radius-medium;
+  padding-left: @tag-padding;
+  padding-right: @tag-padding;
+  font-size: @tag-font-size;
+  line-height: @tag-line-height;
+  cursor: default;
+
+  &-status {
+    &-success {
+      color: @color-text-tag-sign-inline;
+    }
+    &-warning {
+      color: @color-text-tag-sign-ready;
+    }
+    &-error {
+      color: @color-background-tag-status-error;
+    }
+    &-draft {
+      color:@color-text-tag-sign-draft;
+    }
+    &-offline {
+      color: @color-text-tag-sign-offline;
+    }
+  }
+
+  &-prorupt {
+    font-size: @tag-font-size-prorupt;
+    line-height: @tag-line-height-prorupt;
+  }
+
+  &-prorupt&-status {
+    &-success {
+      color: @default-color-text-inverse;
+      background-color: @color-background-tag-status-success;
+    }
+    &-warning {
+      color: @default-color-text-inverse;
+      background-color: @color-background-tag-status-warning;
+    }
+    &-error {
+      color: @default-color-text-inverse;
+      background-color: @color-background-tag-status-error;
+    }
+    &-draft {
+      color: @default-color-text-inverse;
+      background-color: @color-text-tag-sign-draft;
+    }
+    &-offline {
+      color: @default-color-text-inverse;
+      background-color: @color-text-tag-sign-offline;
+    }
+  }
+
+  &-large {
+    font-size: @tag-font-size-large;
+    line-height: @tag-line-height-large;
+  }
+
+  &-color {
+    &-beta {
+      color: @color-text-tag-version-beta;
+      background-color: @color-background-tag-version-beta;
+    }
+    &-new {
+      color: @color-text-tag-version-new;
+      background-color: @color-background-tag-version-new;
+    }
+    &-grayscale {
+      color: @color-text-tag-version-grayscale;
+      background-color: @color-background-tag-version-grayscale;
+    }
+    &-blue {
+      color: @color-text-tag-filter-blue;
+      background-color: @color-background-tag-filter-blue;
+    }
+  }
+
+  &-delete-toggle & {
+    &-close {
+      display: none;
+    }
+  }
+
+  &-delete-toggle:hover {
+    background-color: @color-background-tag-filter-hover;
+  }
+
+  &-delete-toggle:hover & {
+    &-close {
+      display: inline;
+    }
+  }
+
+  &-close {
+    vertical-align: middle;
+    margin-left: @tag-padding;
+    margin-bottom: 2px;
+    cursor: pointer;
+  }
+
+  &-disabled {
+    color: @color-text-tag-filter-disable!important;
+    background-color: @color-background-tag-filter-disable!important;
+  }
+}
