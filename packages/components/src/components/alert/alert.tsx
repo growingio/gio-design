@@ -49,7 +49,7 @@ const Alert: React.FC<AlertProps> = (props) => {
 
   const closeAlert = () => {
     setAlertStatus(false);
-    onClose && onClose();
+    onClose?.();
   };
 
   return (
