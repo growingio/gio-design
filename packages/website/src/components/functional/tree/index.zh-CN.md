@@ -1,5 +1,5 @@
 ---
-title: Tree 树
+title: Tree 树形组件
 nav:
   order: 2
   title: 组件
@@ -8,17 +8,17 @@ group:
   order: 2
 ---
 
-# Tree 树
+# 树形控件 - Tree
 
 ## 何时使用
 
-多层次的结构列表。
+文件夹、组织架构、生物分类、国家地区等等，世间万物的大多数结构都是树形结构。使用 树控件 可以完整展现其中的层级关系，并具有展开收起选择等交互功能。
 
 ## 代码演示
 
-<code src='./demos/index.tsx' title='基础' />
+<code src='./demos/index.tsx' title='基础' desc='最简单的用法，展示可选中，禁用，默认展开等功能。'/>
 
-<code src='./demos/icon.tsx' title='带Icon的树形控件' />
+<code src='./demos/icon.tsx' title='带Icon的树形控件' desc='可以针对不同的节点定制图标。' />
 
 
 ## 参数说明
