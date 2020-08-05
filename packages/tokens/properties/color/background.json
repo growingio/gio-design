@@ -121,7 +121,7 @@
       },
       "alert": {
         "info": {
-          "value": "{palette.gray.10.value}"
+          "value": "{palette.blue.8.value}"
         },
         "success": {
           "value": "{palette.green.4.value}"
