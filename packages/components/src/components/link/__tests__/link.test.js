@@ -11,7 +11,7 @@ describe('Test Link', () => {
   });
 
   it('should mount and unmount Link with no error.', () => {
-    const wrapper = mount(<Link to='https://www.growingio.com'>GrowingIO</Link>);
+    const wrapper = mount(<Link to="https://www.growingio.com">GrowingIO</Link>);
     expect(() => {
       wrapper.setProps({});
       wrapper.unmount();
@@ -21,7 +21,7 @@ describe('Test Link', () => {
   it('should render correctly', () => {
     const domTree = renderer
       .create(
-        <Link className='gio-customized-link' to='https://www.growingio.com' disabled>
+        <Link className="gio-customized-link" to="https://www.growingio.com" disabled>
           GrowingIO
         </Link>
       )
@@ -31,7 +31,7 @@ describe('Test Link', () => {
 
   it('should render with custom component `div`', () => {
     const wrapper = shallow(
-      <Link to='https://www.growingio.com' component='div'>
+      <Link to="https://www.growingio.com" component="div">
         Custom Component
       </Link>
     );
@@ -42,7 +42,7 @@ describe('Test Link', () => {
     const onClick = jest.fn();
 
     const wrapper = mount(
-      <Link to='https://www.growingio.com' component='div' onClick={onClick}>
+      <Link to="https://www.growingio.com" component="div" onClick={onClick}>
         Custom Component
       </Link>
     );
@@ -56,7 +56,7 @@ describe('Test Link', () => {
     global.window.location = { href: '' };
 
     const wrapper = mount(
-      <Link component='div' to='https://www.growingio.com'>
+      <Link component="div" to="https://www.growingio.com">
         GrowingIO
       </Link>
     );

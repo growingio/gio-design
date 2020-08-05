@@ -21,5 +21,5 @@
     "indentSize": 2,
     "tabSize": 2
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/typings/index.d.ts", "src/components/switch/index.tsx"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/typings/index.d.ts", "src/components/tag/__tests__/Tag.test.js"]
 }

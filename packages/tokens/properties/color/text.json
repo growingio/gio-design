@@ -93,6 +93,60 @@
           "value": "{palette.gray.5.value}"
         }
       },
+      "tag": {
+        "sign": {
+          "regular": {
+            "value": "{palette.dark.1.value}"
+          },
+          "inline": {
+            "value": "{palette.green.3.value}"
+          },
+          "ready": {
+            "value": "{palette.orange.2.value}"
+          },
+          "offline": {
+            "value": "{palette.gray.7.value}"
+          },
+          "draft": {
+            "value": "{palette.gray.6.value}"
+          }
+        },
+        "status": {
+          "button": {
+            "value": "{palette.white.value}"
+          },
+          "table": {
+            "normal": {
+              "value": "{palette.dark.1.value}"
+            },
+            "disable": {
+              "value": "{palette.gray.5.value}"
+            }
+          }
+        },
+        "filter": {
+          "light": {
+            "value": "{palette.dark.1.value}"
+          },
+          "blue": {
+            "value": "{palette.white.value}"
+          },
+          "disable": {
+            "value": "{palette.gray.5.value}"
+          }
+        },
+        "version": {
+          "beta": {
+            "value": "{palette.blue.5.value}"
+          },
+          "new": {
+            "value": "{palette.red.3.value}"
+          },
+          "grayscale": {
+            "value": "{palette.purple.2.value}"
+          }
+        }
+      },
       "tree": {
         "normal": {
           "value": "{palette.dark.1.value}"

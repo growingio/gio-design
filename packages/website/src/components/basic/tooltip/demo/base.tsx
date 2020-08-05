@@ -13,11 +13,7 @@ export default () => (
       >
         <span className="tooltipSpan">TopLeft</span>
       </Tooltip>
-      <Tooltip
-        title="这里是提示文案。"
-        tooltipLink={{ name: '点击这里', link: 'www.growingio.com' }}
-        placement="top"
-      >
+      <Tooltip title="这里是提示文案。" tooltipLink={{ name: '点击这里', link: 'www.growingio.com' }} placement="top">
         <span className="tooltipSpan">Top</span>
       </Tooltip>
       <Tooltip
@@ -37,11 +33,7 @@ export default () => (
       >
         <span className="tooltipSpan">LeftTop</span>
       </Tooltip>
-      <Tooltip
-        title="这里是提示文案。"
-        tooltipLink={{ name: '点击这里', link: 'www.growingio.com' }}
-        placement="left"
-      >
+      <Tooltip title="这里是提示文案。" tooltipLink={{ name: '点击这里', link: 'www.growingio.com' }} placement="left">
         <span className="tooltipSpan">Left</span>
       </Tooltip>
       <Tooltip
@@ -60,11 +52,7 @@ export default () => (
       >
         <span className="tooltipSpan">RightTop</span>
       </Tooltip>
-      <Tooltip
-        title="这里是提示文案。"
-        tooltipLink={{ name: '点击这里', link: 'www.growingio.com' }}
-        placement="right"
-      >
+      <Tooltip title="这里是提示文案。" tooltipLink={{ name: '点击这里', link: 'www.growingio.com' }} placement="right">
         <span className="tooltipSpan">Right</span>
       </Tooltip>
       <Tooltip
