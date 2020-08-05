@@ -58,16 +58,38 @@ export interface ArgsProps {
   className?: string;
 }
 
+const iconStyle: React.CSSProperties = {
+  width: '16px',
+  height: '16px',
+  verticalAlign: 'text-bottom',
+};
+
 const iconMap = {
-  success: CheckCircleFilled,
-  error: CloseCircleFilled,
-  warning: WarningFilled,
-  info: InformationFilled,
+  success: (
+    <span className={`${prefixCls}-icon`}>
+      <CheckCircleFilled color='#008a56' style={iconStyle} />
+    </span>
+  ),
+  error: (
+    <span className={`${prefixCls}-icon`}>
+      <CloseCircleFilled color='#f21300' style={iconStyle} />
+    </span>
+  ),
+  warning: (
+    <span className={`${prefixCls}-icon`}>
+      <WarningFilled color='#f8af48' style={iconStyle} />
+    </span>
+  ),
+  info: (
+    <span className={`${prefixCls}-icon`}>
+      <InformationFilled color='#3867f4' style={iconStyle} />
+    </span>
+  ),
 };
 
 function notice(args: ArgsProps): MessageType {
   const duration = args.duration !== undefined ? args.duration : defaultDuration;
-  const Icon = iconMap[args.type];
+  const icon = iconMap[args.type] || null;
 
   const messageClass = classNames(`${prefixCls}-custom-content`, {
     [`${prefixCls}-${args.type}`]: args.type,
@@ -90,11 +112,7 @@ function notice(args: ArgsProps): MessageType {
         className: args.className,
         content: (
           <div className={messageClass}>
-            {args.icon || !!Icon ? (
-              <span className={`${prefixCls}-icon`}>
-                <Icon />
-              </span>
-            ) : null}
+            {args.icon || icon}
             <span>{args.content}</span>
           </div>
         ),
