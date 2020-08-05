@@ -6,6 +6,7 @@ export { default as CaretDownOutlined } from './CaretDownOutlined';
 export { default as CheckCircleFilled } from './CheckCircleFilled';
 export { default as CheckSquareFilled } from './CheckSquareFilled';
 export { default as Check } from './Check';
+export { default as Close } from './Close'
 export { default as LoadingOutlinedBlack } from './LoadingOutlinedBlack';
 export { default as LoadingOutlinedWhite } from './LoadingOutlinedWhite';
 export { default as More } from './More';

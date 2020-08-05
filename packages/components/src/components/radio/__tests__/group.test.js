@@ -10,8 +10,8 @@ describe('Testing Radio', () => {
         options={[{ label: 'opA', value: 'opA', disabled: true }, { label: 'opB', value: 'opB' }, 'opC', 'opD']}
         {...props}
       >
-        <Radio value='a'>A</Radio>
-        <Radio value='b' disabled>
+        <Radio value="a">A</Radio>
+        <Radio value="b" disabled>
           B
         </Radio>
       </Radio.Group>
@@ -34,7 +34,7 @@ describe('Testing Radio', () => {
   it('should only render valid options.', () => {
     const wrapper = mount(
       <Radio.Group options={[{ label: 'opA', value: 'opA' }, 'opC', null, undefined]}>
-        <Radio value='a'>A</Radio>
+        <Radio value="a">A</Radio>
         <div>div</div>
       </Radio.Group>
     );
@@ -98,8 +98,8 @@ describe('Testing Radio', () => {
     const onGroupChange = jest.fn();
     const wrapper = mount(
       <Radio.Group disabled onChange={onGroupChange}>
-        <Radio value='a'>A</Radio>
-        <Radio value='b'>B</Radio>
+        <Radio value="a">A</Radio>
+        <Radio value="b">B</Radio>
       </Radio.Group>
     );
 
@@ -113,13 +113,13 @@ describe('Testing Radio', () => {
 
     const wrapper = mount(
       <Radio.Group onChange={onGroupChange}>
-        <Radio value='A' onChange={onChange}>
+        <Radio value="A" onChange={onChange}>
           A
         </Radio>
-        <Radio value='B' onChange={onChange}>
+        <Radio value="B" onChange={onChange}>
           B
         </Radio>
-        <Radio value='C' onChange={onChange}>
+        <Radio value="C" onChange={onChange}>
           C
         </Radio>
       </Radio.Group>

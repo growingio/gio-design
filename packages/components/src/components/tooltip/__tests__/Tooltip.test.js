@@ -10,7 +10,7 @@ async function waitForComponentToPaint(wrapper, amount = 500) {
 
 describe('Testing Tooltip', () => {
   const getTooltip = () => (
-    <Tooltip title='This is a test' tooltipLink={{ name: '点击这里', link: 'https://www.growingio.com' }}>
+    <Tooltip title="This is a test" tooltipLink={{ name: '点击这里', link: 'https://www.growingio.com' }}>
       <span>Test</span>
     </Tooltip>
   );
