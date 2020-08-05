@@ -55,21 +55,21 @@ const Alert: React.FC<AlertProps> = (props) => {
   return (
     <div>
       <div className={classnames('gio-alert', alertStatus ? `gio-alert-${getType()}` : 'gio-alert-close')}>
-        <div className='gio-alert-icon' style={{ display: showIcon ? 'block' : 'none' }}>
+        <div className="gio-alert-icon" style={{ display: showIcon ? 'block' : 'none' }}>
           {icon ? icon : getIcon()}
         </div>
-        <div className='gio-alert-content'>
+        <div className="gio-alert-content">
           <div
-            className='gio-alert-content-title'
+            className="gio-alert-content-title"
             style={{ display: message ? 'block' : 'none', marginBottom: description ? '8px' : '0' }}
           >
             {message ? message : null}
           </div>
-          <div className='gio-alert-content-description' style={{ display: description ? 'block' : 'none' }}>
+          <div className="gio-alert-content-description" style={{ display: description ? 'block' : 'none' }}>
             {description ? description : null}
           </div>
         </div>
-        <div className='gio-alert-closeIcon' style={{ display: closeable ? 'block' : 'none' }} onClick={closeAlert}>
+        <div className="gio-alert-closeIcon" style={{ display: closeable ? 'block' : 'none' }} onClick={closeAlert}>
           {colseText ? colseText : <Close />}
         </div>
       </div>
