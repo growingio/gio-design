@@ -3,6 +3,7 @@ import * as React from 'react';
 export interface ConfigConsumerProps {
   getPrefixCls: (suffixCls: string, customizePrefixCls?: string) => string;
   autoInsertSpaceInButton?: boolean;
+  virtual?: boolean;
 }
 
 export const ConfigContext = React.createContext<ConfigConsumerProps>({
