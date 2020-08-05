@@ -54,7 +54,7 @@
     "build:tokens": "yarn workspace @gio-design/tokens build",
     "build:themes": "yarn workspace @gio-design/themes build",
     "build:icon": "yarn workspace @gio-design/icon build",
-    "build:icons": "yarn workspace @gio-design/icons build",
+    "build:icons": "yarn workspace @gio-design/icons generate && yarn workspace @gio-design/icons build",
     "build:components": "yarn workspace @gio-design/components build",
     "build:icon-generator": "yarn workspace @gio-design/react-svg-icon-generator build",
     "publish": "npx lerna publish",
