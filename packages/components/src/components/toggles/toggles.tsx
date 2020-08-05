@@ -40,7 +40,7 @@ const Toggles: React.FC<TogglesProps> = (props) => {
       >
         <div className='gio-toggles-handle' style={{ background: status ? inactiveColor : activeColor }} />
       </div>
-      {props.suffixContent && <span className='suffixContent'>{status ? '开' : '关'}</span>}
+      {props.suffixContent && <span className='gio-toggles-suffixContent'>{status ? '开' : '关'}</span>}
     </div>
   );
 };
