@@ -38,9 +38,12 @@ const Toggles: React.FC<TogglesProps> = (props) => {
         style={{ background: status ? activeColor : inactiveColor, borderColor: activeColor }}
         onClick={changeStatus}
       >
-        <div className='gio-toggles-handle' style={{ background: status ? inactiveColor : activeColor }} />
+        <div
+          className={classnames('gio-toggles-handle')}
+          style={{ background: status ? inactiveColor : activeColor }}
+        />
       </div>
-      {props.suffixContent && <span className='gio-toggles-suffixContent'>{status ? '开' : '关'}</span>}
+      {props.suffixContent && <span className={classnames('gio-toggles-suffixContent')}>{status ? '开' : '关'}</span>}
     </div>
   );
 };
