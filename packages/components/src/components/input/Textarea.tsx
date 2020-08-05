@@ -17,7 +17,7 @@ const TextArea: React.FC<TextAreaProps> = ({
 
   ...restInputProps
 }) => {
-  const contentClass = React.useMemo(() => `${prefixCls}-content${!!errorMsg ? '-error' : ''}`, [errorMsg]);
+  const contentClass = React.useMemo(() => `${prefixCls}-content${errorMsg ? '-error' : ''}`, [errorMsg]);
 
   return (
     <BaseInput showOpt={showOpt} errorMsg={errorMsg} label={label} wrapStyle={wrapStyle}>

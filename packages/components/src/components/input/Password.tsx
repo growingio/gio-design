@@ -22,7 +22,7 @@ const Password: React.FC<InputProps> = ({
 }) => {
   const [visible, setVisible] = React.useState(false);
 
-  const contentClass = React.useMemo(() => `${prefixCls}-content${!!errorMsg ? '-error' : ''}`, [errorMsg]);
+  const contentClass = React.useMemo(() => `${prefixCls}-content${errorMsg ? '-error' : ''}`, [errorMsg]);
 
   const handleOnPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13 && onPressEnter) {

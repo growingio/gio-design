@@ -15,13 +15,13 @@ export { Password };
 export { TextArea };
 
 export default class extends React.Component<InputProps> {
-  static InputNumber: React.FC<InputNumberProps> = InputNumber;
+  public static InputNumber: React.FC<InputNumberProps> = InputNumber;
 
-  static InputHidden: React.FC<InputProps> = InputHidden;
+  public static InputHidden: React.FC<InputProps> = InputHidden;
 
-  static Password: React.FC<InputProps> = Password;
+  public static Password: React.FC<InputProps> = Password;
 
-  static TextArea: React.FC<TextAreaProps> = TextArea;
+  public static TextArea: React.FC<TextAreaProps> = TextArea;
 
   public constructor(props: InputProps) {
     super(props);
