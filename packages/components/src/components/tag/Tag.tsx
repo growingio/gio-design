@@ -12,7 +12,7 @@ export const isPredifinedColor = (color?: string) => Object.keys(TagColor).inclu
 
 export const isPredifinedStatus = (type?: string) => Object.keys(TagStatus).includes(type || '');
 
-export const isPersistClose = (closable = false, persistCloseIcon = false) => closable && persistCloseIcon;
+export const isToggleClose = (closable = false, persistCloseIcon = false) => closable && !persistCloseIcon;
 
 export const getTypeClass = (prefix = 'tag', type?: TagTypeKey, closable = false) =>
   classnames({ [`${prefix}-prorupt`]: isProrupt(type, closable), [`${prefix}-large`]: isLarge(type) });
@@ -23,8 +23,8 @@ export const getStatusClass = (prefix = 'tag', status?: TagStatusKey) =>
 export const getColorClass = (prefix = 'tag', color?: string) =>
   classnames({ [`${prefix}-color-${color}`]: isPredifinedColor(color) });
 
-export const getDeleteToggleClass = (prefix = 'tag', isPersistClose = true) =>
-  classnames({ [`${prefix}-delete-toggle`]: !isPersistClose });
+export const getDeleteToggleClass = (prefix = 'tag', isToggleClose = false) =>
+  classnames({ [`${prefix}-delete-toggle`]: isToggleClose });
 
 export const getDisabledClass = (prefix = 'tag', disabled = false) => classnames({ [`${prefix}-disabled`]: disabled });
 
@@ -52,7 +52,7 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props) 
         getTypeClass(prefix, type, closable),
         getStatusClass(prefix, status),
         getColorClass(prefix, color),
-        getDeleteToggleClass(prefix, isPersistClose(closable, persistCloseIcon)),
+        getDeleteToggleClass(prefix, isToggleClose(closable, persistCloseIcon)),
         getDisabledClass(prefix, disabled),
         className
       )}

@@ -12,8 +12,8 @@ group:
 
 ## 基本用法
 
-<code src='./demos/basic.tsx' title='基础标记' desc='用于常规的标记。' />
-<code src='./demos/prorupt.tsx' title='突出标记' desc='当状态信息需要特别显示出来时。' />
+<code src='./demos/basic.tsx' title='基础标签' desc='用于常规的标记。' />
+<code src='./demos/prorupt.tsx' title='突出标签' desc='当状态信息需要特别显示出来时。' />
 <code src='./demos/version.tsx' title='版本信息' />
 
 ## 可关闭的标签

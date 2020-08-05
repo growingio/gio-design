@@ -1,3 +1,4 @@
+@import '../../../stylesheet/font.less';
 @import '../../../stylesheet/fontSize.less';
 @import '../../../stylesheet//radius.less';
 @import '../../../stylesheet/theme.less';
@@ -25,6 +26,8 @@
   padding-right: @tag-padding;
   font-size: @tag-font-size;
   line-height: @tag-line-height;
+  font-family: @font-family;
+  font-weight: @weight-font-medium;
   cursor: default;
 
   &-status {
@@ -48,6 +51,7 @@
   &-prorupt {
     font-size: @tag-font-size-prorupt;
     line-height: @tag-line-height-prorupt;
+    font-weight: @weight-font-regular;
   }
 
   &-prorupt&-status {
@@ -82,18 +86,22 @@
     &-beta {
       color: @color-text-tag-version-beta;
       background-color: @color-background-tag-version-beta;
+      font-weight: @weight-font-medium;
     }
     &-new {
       color: @color-text-tag-version-new;
       background-color: @color-background-tag-version-new;
+      font-weight: @weight-font-medium;
     }
     &-grayscale {
       color: @color-text-tag-version-grayscale;
       background-color: @color-background-tag-version-grayscale;
+      font-weight: @weight-font-medium;
     }
     &-blue {
       color: @color-text-tag-filter-blue;
       background-color: @color-background-tag-filter-blue;
+      font-weight: @weight-font-medium;
     }
   }
 

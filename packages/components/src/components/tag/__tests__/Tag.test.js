@@ -5,7 +5,7 @@ import {
   isLarge,
   isPredifinedColor,
   isPredifinedStatus,
-  isPersistClose,
+  isToggleClose,
   getTypeClass,
   getStatusClass,
   getColorClass,
@@ -67,8 +67,10 @@ describe('Tag condition functions', () => {
     expect(isPredifinedStatus('asdljalksdj')).toBe(false);
   });
   it('isPersistClose', () => {
-    expect(isPersistClose(false, true)).toBe(false);
-    expect(isPersistClose(true, true)).toBe(true);
+    expect(isToggleClose(true, true)).toBe(false);
+    expect(isToggleClose(true, false)).toBe(true);
+    expect(isToggleClose(false, true)).toBe(false);
+    expect(isToggleClose(false, false)).toBe(false);
   });
 });
 
@@ -86,7 +88,8 @@ describe('Tag conditional classes functions', () => {
     expect(getColorClass(prefix, 'beta')).toBe('gio-tag-color-beta');
   });
   it('getDeleteToggleClass', () => {
-    expect(getDeleteToggleClass(prefix, false)).toBe('gio-tag-delete-toggle');
+    expect(getDeleteToggleClass(prefix, true)).toBe('gio-tag-delete-toggle');
+    expect(getDeleteToggleClass(prefix, false)).toBe('');
   });
   it('getDisabledClass', () => {
     expect(getDisabledClass(prefix, true)).toBe('gio-tag-disabled');
