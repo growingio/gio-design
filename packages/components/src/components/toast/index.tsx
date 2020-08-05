@@ -67,7 +67,7 @@ const iconMap = {
 
 function notice(args: ArgsProps): MessageType {
   const duration = args.duration !== undefined ? args.duration : defaultDuration;
-  const Icon = iconMap[args.type] || null;
+  const Icon = iconMap[args.type];
 
   const messageClass = classNames(`${prefixCls}-custom-content`, {
     [`${prefixCls}-${args.type}`]: args.type,
@@ -90,11 +90,7 @@ function notice(args: ArgsProps): MessageType {
         className: args.className,
         content: (
           <div className={messageClass}>
-            {args.icon || (
-              <span className={`${prefixCls}-icon`}>
-                <Icon />
-              </span>
-            )}
+            {args.icon || <span className={`${prefixCls}-icon`}>{!!Icon ? <Icon /> : null}</span>}
             <span>{args.content}</span>
           </div>
         ),
