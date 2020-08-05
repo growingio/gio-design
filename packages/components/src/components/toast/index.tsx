@@ -90,7 +90,11 @@ function notice(args: ArgsProps): MessageType {
         className: args.className,
         content: (
           <div className={messageClass}>
-            {args.icon || <span className={`${prefixCls}-icon`}>{!!Icon ? <Icon /> : null}</span>}
+            {args.icon || !!Icon ? (
+              <span className={`${prefixCls}-icon`}>
+                <Icon />
+              </span>
+            ) : null}
             <span>{args.content}</span>
           </div>
         ),
