@@ -29,7 +29,7 @@ describe('Testing Toggles', () => {
   it('toggles with suffixContent', () => {
     const wrapper = mount(<Toggles defaultChecked suffixContent />);
     // expect(wrapper.find('.suffixContent').text()).to.equals('开');
-    expect(wrapper.exists('.suffixContent')).toBe(true);
-    expect(wrapper.find('.suffixContent').text()).toEqual('开');
+    expect(wrapper.exists('.gio-toggles-suffixContent')).toBe(true);
+    expect(wrapper.find('.gio-toggles-suffixContent').text()).toEqual('开');
   });
 });
