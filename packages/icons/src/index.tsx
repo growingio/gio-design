@@ -12,4 +12,6 @@ export { default as More } from './More';
 export { default as SettingFilled } from './SettingFilled';
 export { default as Setting } from './Setting';
 export { default as Warning } from './Warning';
-
+export { default as InformationFilled } from './InformationFilled';
+export { default as CloseCircleFilled } from './CloseCircleFilled';
+export { default as Close } from './Close';
