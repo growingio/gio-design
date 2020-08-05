@@ -118,6 +118,20 @@
       },
       "popconfirm": {
         "value": "{palette.white.value}"
+      },
+      "alert": {
+        "info": {
+          "value": "{palette.gray.10.value}"
+        },
+        "success": {
+          "value": "{palette.green.4.value}"
+        },
+        "warning": {
+          "value": "{palette.red.4.value}"
+        },
+        "error": {
+          "value": "{palette.red.5.value}"
+        }
       }
     }
   }

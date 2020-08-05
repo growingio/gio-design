@@ -1,3 +1,4 @@
+@import '~@gio-design/tokens/dist/variables.less';
 @import '../../../stylesheet/theme.less';
 
 .gio-alert {
@@ -20,21 +21,17 @@
 
   & .gio-alert-content {
     flex: 1;
-    // flex-grow: 0;
-    // flex-basis: auto;
-    // width: calc(100% - 48px);
     margin: 0 8px;
     font-family: 'PingFang SC Medium';
     color: @text-color-base;
-    font-size: @text-font-size-base;
+    font-size: @size-font-16;
     line-height: 22px;
 
     & .gio-alert-content-title {
       width: 100%;
-      font-weight: 500;
+      font-weight: @weight-font-medium;
       overflow: hidden;
       text-overflow: ellipsis;
-      // white-space: nowrap;
     }
 
     & .gio-alert-content-description {
@@ -44,9 +41,7 @@
   }
 
   & .gio-alert-closeIcon {
-    // width: 16px;
-    // height: 16px;
-    font-weight: 600;
+    font-weight: @weight-font-semi-bold;
     cursor: pointer;
     align-self: flex-start;
     flex-shrink: 0;
@@ -58,17 +53,17 @@
 }
 
 .gio-alert-info {
-  background-color: #f7f8fc;
+  background-color: @palette-gray-1;
 
   & .gio-alert-closeIcon {
     svg {
-      fill: #5c4e61;
+      fill: @color-background-alert-info;
     }
   }
 
   & .gio-alert-icon {
     svg {
-      fill: #5c4e61;
+      fill: @color-background-alert-info;
     }
   }
 }
@@ -76,11 +71,11 @@
 .gio-alert-success {
   background-color: @success-color;
   & .gio-alert-closeIcon {
-    fill: #00875a;
+    fill: @color-background-alert-success;
   }
 
   & .gio-alert-icon {
-    fill: #00875a;
+    fill: @color-background-alert-success;
   }
 }
 
@@ -88,13 +83,13 @@
   background-color: @warning-color;
   & .gio-alert-closeIcon {
     svg {
-      fill: #ff991f;
+      fill: @color-background-alert-warning;
     }
   }
 
   & .gio-alert-icon {
     svg {
-      fill: #ff991f;
+      fill: @color-background-alert-warning;
     }
   }
 }
@@ -102,10 +97,10 @@
 .gio-alert-error {
   background-color: @error-color;
   & .gio-alert-closeIcon {
-    fill: #de350b;
+    fill: @color-background-alert-error;
   }
 
   & .gio-alert-icon {
-    fill: #de350b;
+    fill: @color-background-alert-error;
   }
 }
