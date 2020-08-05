@@ -1,10 +1,12 @@
+@import '~@gio-design/tokens/dist/variables.less';
+
 .gio-toggles {
   cursor: not-allowed;
   width: 40px;
   height: 20px;
   border-radius: 10px;
   border: 0.5px solid #a3adc8;
-  background-color: #fff;
+  background-color: @color-background-toggles-toggles;
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -16,7 +18,7 @@
     height: 14px;
     border-radius: 7px;
     margin: 2px;
-    background-color: #1248e9;
+    background-color: @color-background-toggles-handle;
     position: absolute;
     left: 0px;
     transition: all ease 0.4s;
@@ -24,13 +26,13 @@
 }
 
 .gio-toggles-checked {
-  background-color: #3867f4;
+  background-color: @color-background-toggles-toggles-checked;
   border: solid 1px #1248e9;
 
   .gio-toggles-handle {
     left: 100%;
     margin-left: -16px;
-    background-color: #fff;
+    background-color: @color-background-toggles-handle-checked;
   }
 }
 
@@ -41,7 +43,7 @@
   vertical-align: top;
   font-size: 14px;
   margin-left: 8px;
-  color: #313e75;
+  color: @color-background-toggles-toggles-suffix-content;
   font-family: 'PingFang SC Regular';
   user-select: none;
 }
@@ -49,7 +51,7 @@
 .gio-toggles-disabled {
   .gio-toggles {
     border: 0.5px solid #a3adc8;
-    background-color: #ebedf5;
+    background-color: @color-background-toggles-disable-toggles;
 
     .gio-toggles-handle {
       background-color: #a3adc8;
@@ -58,11 +60,11 @@
   }
 
   .gio-toggles-checked {
-    background-color: rgba(18, 72, 233, 0.5);
+    background-color: @color-background-toggles-disable-toggles-checked;
     border: 0.5px solid rgba(56, 103, 244, 0.5);
   }
 
   .gio-toggles-suffixContent {
-    color: #adb2c8;
+    color: @color-background-toggles-disable-toggles-suffix-content;
   }
 }

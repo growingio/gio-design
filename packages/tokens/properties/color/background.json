@@ -102,6 +102,32 @@
           "value": "linear-gradient(90deg,#f2f2f2 25%,#e6e6e6 37%,#f2f2f2 63%)"
         }
       },
+      "toggles": {
+        "toggles": {
+          "value": "{palette.white.value}"
+        },
+        "toggles-checked": {
+          "value": "{palette.blue.6.value}"
+        },
+        "handle": {
+          "value": "{palette.blue.7.value}"
+        },
+        "handle-checked": {
+          "value": "{palette.white.value}"
+        },
+        "disable-toggles": {
+          "value": "{palette.gray.3.value}"
+        },
+        "disable-toggles-checked": {
+          "value": "rgba(18, 72, 233, 0.5)"
+        },
+        "disable-toggles-suffixContent": {
+          "value": "{palette.gray.5.value}"
+        },
+        "toggles-suffixContent": {
+          "value": "{palette.dark.1}"
+        }
+      },
       "popconfirm": {
         "value": "{palette.white.value}"
       }
