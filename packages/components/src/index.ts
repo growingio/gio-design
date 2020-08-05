@@ -8,6 +8,7 @@ export { default as Tabs, TabPane } from './components/tabs';
 export { default as Tooltip } from './components/tooltip';
 export { default as Popover } from './components/popover';
 export { default as Button } from './components/button';
+export { default as Tag } from './components/tag';
 export { default as Loading } from './components/loading';
 export { default as Skeleton } from './components/skeleton';
 export { default as Popconfirm } from './components/popconfirm';

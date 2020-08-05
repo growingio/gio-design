@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from '@gio-design/components';
 import '@gio-design/components/es/components/link/style/css.js';
 
-const CustomLinkRoot: React.FC<{}> = ({ children, ...props }) => (
-  <span {...props}>{children}</span>
-);
+const CustomLinkRoot: React.FC<{}> = ({ children, ...props }) => <span {...props}>{children}</span>;
 
 export default () => (
   <div>
