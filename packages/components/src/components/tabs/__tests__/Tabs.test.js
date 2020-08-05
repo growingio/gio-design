@@ -11,16 +11,16 @@ async function waitForComponentToPaint(wrapper, amount = 500) {
 describe('Testing Tabs', () => {
   const getTabs = () => (
     <Tabs ref={React.createRef()}>
-      <TabPane tab='我的' key='1'>
+      <TabPane tab="我的" key="1">
         111
       </TabPane>
-      <TabPane tab='全部' key='2'>
+      <TabPane tab="全部" key="2">
         222
       </TabPane>
-      <TabPane tab='共享' key='3'>
+      <TabPane tab="共享" key="3">
         333
       </TabPane>
-      <TabPane disabled tab='预置' key='4'>
+      <TabPane disabled tab="预置" key="4">
         444
       </TabPane>
     </Tabs>

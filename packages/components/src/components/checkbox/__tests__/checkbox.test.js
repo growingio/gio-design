@@ -6,7 +6,7 @@ import renderer from 'react-test-renderer';
 describe('Checkbox', () => {
   it('render', () => {
     const wrapper = renderer
-      .create(<Checkbox checked indeterminate disabled className='custom' style={{ color: 'red' }} />)
+      .create(<Checkbox checked indeterminate disabled className="custom" style={{ color: 'red' }} />)
       .toJSON();
     expect(wrapper).toMatchSnapshot();
   });
