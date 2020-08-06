@@ -182,6 +182,11 @@
         "desc": {
           "value": "{palette.dark.1.value}"
         }
+      },
+      "alert": {
+        "content": {
+          "value": "{palette.dark.1.value}"
+        }
       }
     }
   }
