@@ -104,7 +104,12 @@
       },
       "toggles": {
         "toggles": {
-          "value": "{palette.white.value}"
+          "default": {
+            "value": "{palette.white.value}"
+          },
+          "suffixContent": {
+            "value": "{palette.dark.1}"
+          }
         },
         "toggles-checked": {
           "value": "{palette.blue.6.value}"
@@ -115,17 +120,21 @@
         "handle-checked": {
           "value": "{palette.white.value}"
         },
-        "disable-toggles": {
-          "value": "{palette.gray.3.value}"
-        },
-        "disable-toggles-checked": {
-          "value": "rgba(18, 72, 233, 0.5)"
-        },
-        "disable-toggles-suffixContent": {
-          "value": "{palette.gray.5.value}"
-        },
-        "toggles-suffixContent": {
-          "value": "{palette.dark.1}"
+        "disable": {
+          "toggles": {
+            "default": {
+              "value": "{palette.gray.3.value}"
+            },
+            "suffixContent": {
+              "value": "{palette.gray.5.value}"
+            },
+            "checked": {
+              "value": "rgba(18, 72, 233, 0.5)"
+            },
+            "handle": {
+              "value": "{palette.gray.10.value}"
+            }
+          }
         }
       },
       "popconfirm": {
