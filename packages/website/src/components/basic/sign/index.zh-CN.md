@@ -21,8 +21,6 @@ group:
 
 <code src='./demos/dotSize.tsx' title='不同尺寸的红点' desc='红点分为默认的 `middle` 尺寸和 `small` 尺寸。`small` 尺寸用于更新提示。' />
 
-<code src='./demos/placement.tsx' title='Sign 标记位置' desc='可用 `placement` prop 控制 Sign 出现的不同位置。同时可用 `visible` prop 手动控制显示。' />
-
 ## API
 
 ### 通用 Props
