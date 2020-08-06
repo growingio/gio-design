@@ -3,7 +3,7 @@
 .gio-alert {
   width: 100%;
   border-radius: 6px;
-  padding: 8px 16px;
+  padding: 16px 16px;
   display: flex;
   align-items: center;
   margin: 12px 0;
@@ -22,7 +22,7 @@
     margin: 0 8px;
     font-family: @font-family;
     color: @color-text-alert-content;
-    font-size: @size-font-16;
+    font-size: @size-font-14;
     line-height: 22px;
 
     & .gio-alert-content-title {
@@ -100,5 +100,12 @@
 
   & .gio-alert-icon {
     fill: @color-background-alert-error-icon;
+  }
+}
+
+.gio-alert-small {
+  padding: 8px 16px;
+  & .gio-alert-content {
+    font-size: @size-font-12;
   }
 }

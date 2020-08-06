@@ -19,7 +19,11 @@ group:
 
 <code src='./demo/alertStyle.tsx' title='四种样式' desc='共有四种样式 success、info、warning、error' />
 
+<code src='./demo/alertSize.tsx' title='四种样式' desc='共有四种样式 success、info、warning、error' />
+
 <code src='./demo/alertDecription.tsx' title='含有辅助性文字介绍' desc='含有辅助性蚊子介绍的警告提示' />
+
+<code src='./demo/alertOnlyDecription.tsx' title='只有辅助性文字介绍' desc='含有辅助性蚊子介绍的警告提示' />
 
 <code src='./demo/alertClose.tsx' title='可关闭的警告提示' desc='显示关闭按钮，点击可关闭警告提示' />
 
@@ -40,6 +44,7 @@ group:
 | message     | 警告提示内容                                                 | string \| ReactNode | -      |
 | showIcon    | 是否显示辅助图标                                             | boolean             | false  |
 | type        | 指定警告提示的样式，有四种选择 success、info、warning、error | string              | info   |
+| size        | 规定 alert 尺寸，有两种选择 middle、small                    | string              | middle |
 
 ### 方法
 
