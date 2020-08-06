@@ -1,0 +1,310 @@
+@import '~@gio-design/tokens/dist/variables.less';
+@import '../../../stylesheet/theme.less';
+@import './mixin.less';
+
+@gio-menu-prefix: ~'@{component-prefix}-menu';
+@gio-menu-icon: ~'@{gio-menu-prefix}__icon';
+
+.@{gio-menu-prefix} {
+  margin-bottom: 0;
+  padding-right: 0;
+  padding-left: 0;
+  color: @color-text-menu-normal;
+  font-size: @size-font-16;
+  line-height: 0;
+  list-style: none;
+  outline: none;
+
+  &-hidden {
+    display: none;
+  }
+
+  &-overflowed-submenu {
+    border-radius: 4px;
+  }
+
+  &-collapse {
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+  }
+
+  &-item-group-list {
+    margin: 0;
+    padding: 0;
+  }
+
+  &-item-group-title {
+    padding: 0 10px;
+    color: @palette-gray-6;
+    line-height: 1.5;
+  }
+
+  &-item-active,
+  &-submenu-active > &-submenu-title {
+    background-color: @color-background-menu-hover;
+  }
+
+  &-item-selected {
+    color: @color-text-menu-active;
+    font-weight: 500;
+    background-color: @color-background-menu-active;
+    // fix chrome render bug
+    transform: translateZ(0);
+  }
+
+  &-submenu-selected {
+    color: @palette-gray-6;
+    background-color: @color-background-menu-active;
+  }
+
+  &-horizontal&-sub {
+    min-width: 160px;
+    margin-top: 0;
+  }
+
+  &-item,
+  &-submenu-title {
+    position: relative;
+    display: block;
+    margin: 0;
+    white-space: nowrap;
+    border-radius: 4px;
+    cursor: pointer;
+
+    // Disabled state sets text to gray and nukes hover/tab effects
+    &.@{gio-menu-prefix}-item-disabled,
+    &.@{gio-menu-prefix}-submenu-disabled {
+      color: @palette-gray-6 !important;
+      cursor: not-allowed;
+    }
+  }
+  & > &-item-divider {
+    height: 1px;
+    margin: 1px 0;
+    padding: 0;
+    overflow: hidden;
+    line-height: 0;
+    background-color: @palette-gray-6;
+  }
+
+  &-submenu {
+    &-popup {
+      position: absolute;
+
+      .submenu-title-wrapper {
+        padding-right: 20px;
+      }
+    }
+    > .@{gio-menu-prefix} {
+      padding: 4px 0;
+      background-color: @palette-white;
+      box-shadow: 0 0 4px @palette-gray-5;
+    }
+    & .@{gio-menu-prefix}-item {
+      height: 40px;
+      padding: 0 24px;
+      line-height: 40px;
+    }
+  }
+
+  .@{gio-menu-prefix}-submenu-title,
+  .@{gio-menu-prefix}-item {
+    .@{gio-menu-icon} {
+      width: 16px;
+      height: 16px;
+      margin-right: 12px;
+
+      &::before {
+        width: 0;
+        height: 100%;
+        content: '';
+      }
+
+      & * {
+        display: inline-block;
+        vertical-align: middle;
+        fill: currentColor;
+      }
+
+      & + span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  // 水平模式
+  &-horizontal {
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border: none;
+    box-shadow: none;
+
+    & > .@{gio-menu-prefix}-item,
+    & > .@{gio-menu-prefix}-submenu > .@{gio-menu-prefix}-submenu-title {
+      margin-right: 4px;
+      padding: 0 24px;
+      line-height: 40px;
+    }
+
+    & > .@{gio-menu-prefix}-submenu,
+    & > .@{gio-menu-prefix}-item {
+      display: inline-block;
+      vertical-align: bottom;
+
+      &-active {
+        background-color: @color-background-menu-hover;
+      }
+    }
+
+    &::after {
+      display: block;
+      clear: both;
+      height: 0;
+      content: '\20';
+    }
+  }
+
+  // 垂直模式
+  &-inline {
+    padding: 0 8px;
+    font-size: @size-font-14;
+
+    & > .@{gio-menu-prefix}-item,
+    & > .@{gio-menu-prefix}-submenu > .@{gio-menu-prefix}-submenu-title {
+      height: 40px;
+      line-height: 40px;
+    }
+
+    & > .@{gio-menu-prefix}-item {
+      margin-top: 16px;
+    }
+
+    & > .@{gio-menu-prefix}-submenu {
+      padding-top: 16px;
+      color: @palette-gray-6;
+
+      & > .@{gio-menu-prefix}-submenu-title {
+        cursor: unset;
+      }
+
+      & > .@{gio-menu-prefix}-sub {
+        padding-top: 4px;
+        & > .@{gio-menu-prefix}-item {
+          margin-top: 4px;
+          padding-left: 44px !important;
+        }
+      }
+    }
+
+    & .@{gio-menu-prefix}-item-selected {
+      background-color: @color-background-menu-hover;
+    }
+  }
+
+  &-sub&-inline {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  &-open {
+    &-slide-up-enter,
+    &-slide-up-appear {
+      .effect();
+      opacity: 0;
+      animation-play-state: paused;
+      animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
+    }
+
+    &-slide-up-leave {
+      .effect();
+      opacity: 1;
+      animation-play-state: paused;
+      animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+    }
+
+    &-slide-up-enter&-slide-up-enter-active,
+    &-slide-up-appear&-slide-up-appear-active {
+      animation-name: gioMenuOpenSlideUpIn;
+      animation-play-state: running;
+    }
+
+    &-slide-up-leave&-slide-up-leave-active {
+      animation-name: gioMenuOpenSlideUpOut;
+      animation-play-state: running;
+    }
+
+    @keyframes gioMenuOpenSlideUpIn {
+      0% {
+        transform: scaleY(0);
+        transform-origin: 0% 0%;
+        opacity: 0;
+      }
+      100% {
+        transform: scaleY(1);
+        transform-origin: 0% 0%;
+        opacity: 1;
+      }
+    }
+    @keyframes gioMenuOpenSlideUpOut {
+      0% {
+        transform: scaleY(1);
+        transform-origin: 0% 0%;
+        opacity: 1;
+      }
+      100% {
+        transform: scaleY(0);
+        transform-origin: 0% 0%;
+        opacity: 0;
+      }
+    }
+
+    &-zoom-enter,
+    &-zoom-appear {
+      opacity: 0;
+      animation-play-state: paused;
+      animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
+      .effect();
+    }
+
+    &-zoom-leave {
+      .effect();
+      animation-play-state: paused;
+      animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+    }
+
+    &-zoom-enter&-zoom-enter-active,
+    &-zoom-appear&-zoom-appear-active {
+      animation-name: gioMenuOpenZoomIn;
+      animation-play-state: running;
+    }
+
+    &-zoom-leave&-zoom-leave-active {
+      animation-name: gioMenuOpenZoomOut;
+      animation-play-state: running;
+    }
+
+    @keyframes gioMenuOpenZoomIn {
+      0% {
+        transform: scale(0, 0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1, 1);
+        opacity: 1;
+      }
+    }
+    @keyframes gioMenuOpenZoomOut {
+      0% {
+        transform: scale(1, 1);
+      }
+      100% {
+        transform: scale(0, 0);
+        opacity: 0;
+      }
+    }
+  }
+}
