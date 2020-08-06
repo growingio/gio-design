@@ -144,16 +144,36 @@
       },
       "alert": {
         "info": {
-          "value": "{palette.blue.8.value}"
+          "icon": {
+            "value": "{palette.blue.8.value}"
+          },
+          "default": {
+            "value": "{palette.gray.1.value}"
+          }
         },
         "success": {
-          "value": "{palette.green.4.value}"
+          "icon": {
+            "value": "{palette.green.4.value}"
+          },
+          "default": {
+            "value": "{palette.green.1.value}"
+          }
         },
         "warning": {
-          "value": "{palette.red.4.value}"
+          "icon": {
+            "value": "{palette.red.4.value}"
+          },
+          "default": {
+            "value": "{palette.orange.1.value}"
+          }
         },
         "error": {
-          "value": "{palette.red.5.value}"
+          "icon": {
+            "value": "{palette.red.5.value}"
+          },
+          "default": {
+            "value": "{palette.red.6.value}"
+          }
         }
       }
     }
