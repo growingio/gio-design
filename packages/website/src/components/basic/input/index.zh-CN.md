@@ -70,7 +70,7 @@ group:
 
 | 参数         | 说明                             | 类型                    | 默认值                     |
 | ------------ | -------------------------------- | ----------------------- | -------------------------- |
-| value        | 值                               | string                  | 必填                       |
+| value        | 值                               | number                  | 必填                       |
 | onChange     | 修改值时触发的回调函数           | Function(value: number) | 必填                       |
 | onPressEnter | 按下回车时的回调                 | Function(e)             | -                          |
 | disabled     | 是否禁用                         | boolean                 | false                      |
