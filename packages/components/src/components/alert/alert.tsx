@@ -18,20 +18,7 @@ interface AlertProps {
 
 const Alert: React.FC<AlertProps> = (props) => {
   const [alertStatus, setAlertStatus] = useState(true);
-  const { message, description, closeable, showIcon, colseText, onClose, icon } = props;
-
-  const getType = () => {
-    const { type } = props;
-    switch (type) {
-      case 'success':
-      case 'info':
-      case 'warning':
-      case 'error':
-        return type;
-      default:
-        return 'info';
-    }
-  };
+  const { message, description, closeable, showIcon, colseText, onClose, icon, type = 'info' } = props;
 
   const getIcon = () => {
     const { type } = props;
@@ -54,7 +41,7 @@ const Alert: React.FC<AlertProps> = (props) => {
 
   return (
     <div>
-      <div className={classnames('gio-alert', alertStatus ? `gio-alert-${getType()}` : 'gio-alert-close')}>
+      <div className={classnames('gio-alert', alertStatus ? `gio-alert-${type}` : 'gio-alert-close')}>
         <div className="gio-alert-icon" style={{ display: showIcon ? 'block' : 'none' }}>
           {icon ? icon : getIcon()}
         </div>

@@ -71,8 +71,5 @@
     "commitizen": {
       "path": "./node_modules/cz-lerna-changelog"
     }
-  },
-  "dependencies": {
-    "@gio-design/icons": "^20.7.0"
   }
 }
