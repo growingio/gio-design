@@ -15,7 +15,7 @@ describe('Testing Sign', () => {
   it('should render number sign correctly', () => {
     const domTree = renderer
       .create(
-        <Sign className='gio-customized-sign' count={100} magnitude={100}>
+        <Sign className="gio-customized-sign" count={100} magnitude={100}>
           <span>Number</span>
         </Sign>
       )
@@ -26,7 +26,7 @@ describe('Testing Sign', () => {
   it('should render dot sign correctly', () => {
     const domTree = renderer
       .create(
-        <Sign className='gio-customized-sign' variant='dot'>
+        <Sign className="gio-customized-sign" variant="dot">
           <span>Dot</span>
         </Sign>
       )
@@ -36,7 +36,7 @@ describe('Testing Sign', () => {
 
   it('should toggle hide correctly.', () => {
     const wrapper = mount(
-      <Sign className='gio-customized-sign' variant='dot' visible={true}>
+      <Sign className="gio-customized-sign" variant="dot" visible={true}>
         <span>Dot</span>
       </Sign>
     );
@@ -49,7 +49,7 @@ describe('Testing Sign', () => {
 
   it('should switch status correctly.', () => {
     const wrapper = mount(
-      <Sign className='gio-customized-sign' variant='dot'>
+      <Sign className="gio-customized-sign" variant="dot">
         <span>Dot</span>
       </Sign>
     );
