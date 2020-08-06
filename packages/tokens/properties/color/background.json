@@ -132,7 +132,7 @@
               "value": "rgba(18, 72, 233, 0.5)"
             },
             "handle": {
-              "value": "{palette.gray.10.value}"
+              "value": "{palette.gray.6.value}"
             }
           }
         }
