@@ -18,7 +18,7 @@ const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
       </Avatar>
     ));
   const renderAvatarRest = (users: UserAvatarType[]) => (
-    <Avatar className={`${prefixCls}-rest`} omit={false}>{`${users.length}+`}</Avatar>
+    <Avatar className={`${prefixCls}-rest`} omit={false}>{`+${users.length}`}</Avatar>
   );
   const classString = classNames(className, `${prefixCls}-group`);
 

@@ -51,7 +51,7 @@ describe('Testing AvatarGroup', () => {
     expect(wrapper.at(2).childAt(0).type()).toBe('img');
     expect(wrapper.at(3).childAt(0).type()).toBe('span');
     expect(wrapper.at(3).childAt(0).text()).toBe('l');
-    expect(wrapper.at(4).childAt(0).text()).toBe(`${users.length - 4}+`);
+    expect(wrapper.at(4).childAt(0).text()).toBe(`+${users.length - 4}`);
   });
 
   it('should have two character avatars', () => {
