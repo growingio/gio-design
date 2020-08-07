@@ -19,8 +19,6 @@ group:
 
 <code src='./demo/alertStyle.tsx' title='四种样式' desc='共有四种样式 success、info、warning、error' />
 
-<code src='./demo/alertSize.tsx' title='四种样式' desc='共有四种样式 success、info、warning、error' />
-
 <code src='./demo/alertDecription.tsx' title='含有辅助性文字介绍' desc='含有辅助性蚊子介绍的警告提示' />
 
 <code src='./demo/alertOnlyDecription.tsx' title='只有辅助性文字介绍' desc='含有辅助性蚊子介绍的警告提示' />
