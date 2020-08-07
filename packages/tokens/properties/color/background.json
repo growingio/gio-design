@@ -139,6 +139,41 @@
           "value": "linear-gradient(90deg,#f2f2f2 25%,#e6e6e6 37%,#f2f2f2 63%)"
         }
       },
+      "toggles": {
+        "toggles": {
+          "default": {
+            "value": "{palette.white.value}"
+          },
+          "suffixContent": {
+            "value": "{palette.dark.1}"
+          }
+        },
+        "toggles-checked": {
+          "value": "{palette.blue.6.value}"
+        },
+        "handle": {
+          "value": "{palette.blue.7.value}"
+        },
+        "handle-checked": {
+          "value": "{palette.white.value}"
+        },
+        "disable": {
+          "toggles": {
+            "default": {
+              "value": "{palette.gray.3.value}"
+            },
+            "suffixContent": {
+              "value": "{palette.gray.5.value}"
+            },
+            "checked": {
+              "value": "rgba(18, 72, 233, 0.5)"
+            },
+            "handle": {
+              "value": "{palette.gray.6.value}"
+            }
+          }
+        }
+      },
       "popconfirm": {
         "value": "{palette.white.value}"
       },
@@ -174,6 +209,23 @@
           "default": {
             "value": "{palette.red.6.value}"
           }
+        }
+      }
+      "sign": {
+        "default": {
+          "value": "{palette.red.3.value}"
+        },
+        "normal": {
+          "value": "rgba(0, 191, 180, 1)"
+        },
+        "warning": {
+          "value": "rgb(237, 144, 20, 1)"
+        },
+        "error": {
+          "value": "{palette.red.3.value}"
+        },
+        "disabled": {
+          "value": "{palette.gray.5.value}"
         }
       }
     }

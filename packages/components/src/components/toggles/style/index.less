@@ -1,0 +1,77 @@
+@import '~@gio-design/tokens/dist/variables.less';
+@import '../../../stylesheet/theme.less';
+.gio-toggles {
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
+  border: @color-border-toggles-default;
+  background-color: @color-background-toggles-toggles-default;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: all ease 0.4s;
+  box-shadow: @shadow-toggles-default-toggles;
+
+  .gio-toggles-handle {
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    margin: 2px;
+    background-color: @color-background-toggles-handle;
+    position: absolute;
+    left: 0px;
+    transition: all ease 0.4s;
+    box-shadow: @shadow-toggles-default-handle;
+  }
+}
+
+.gio-toggles-checked {
+  background-color: @color-background-toggles-toggles-checked;
+  border: @color-border-toggles-checked;
+  box-shadow: none;
+  .gio-toggles-handle {
+    left: 100%;
+    margin-left: -16px;
+    background-color: @color-background-toggles-handle-checked;
+    box-shadow: @shadow-toggles-default-checked-handle;
+  }
+}
+
+.gio-toggles-suffixContent {
+  height: 20px;
+  line-height: 20px;
+  display: inline-block;
+  vertical-align: top;
+  font-size: @size-font-14;
+  margin-left: 8px;
+  color: @color-background-toggles-toggles-suffix-content;
+  font-family: @font-family;
+  user-select: none;
+}
+
+.gio-toggles-disabled {
+  .gio-toggles {
+    cursor: not-allowed;
+    border: @color-border-toggles-disable-default;
+    background-color: @color-background-toggles-disable-toggles-default;
+
+    .gio-toggles-handle {
+      background-color: @color-background-toggles-disable-toggles-handle;
+      box-shadow: @shadow-toggles-disable-handle;
+    }
+  }
+
+  .gio-toggles-checked {
+    background-color: @color-background-toggles-disable-toggles-checked;
+    border: @color-border-toggles-disable-checked;
+
+    .gio-toggles-handle {
+      background-color: @white;
+      box-shadow: @shadow-toggles-disable-handle;
+    }
+  }
+
+  .gio-toggles-suffixContent {
+    color: @color-background-toggles-disable-toggles-suffix-content;
+  }
+}

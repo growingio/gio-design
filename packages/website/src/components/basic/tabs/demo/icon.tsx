@@ -1,12 +1,12 @@
 import React from 'react';
 import { Tabs, TabPane } from '@gio-design/components';
 import '@gio-design/components/es/components/tabs/style/index.css';
-import { AppFilled, App, AppsFilled, Calendar } from '@gio-design/icons';
+import { Warning, App, AppsFilled, Calendar } from '@gio-design/icons';
 
 export default () => {
   const renderPane = () => (
     <>
-      <TabPane icon={<AppFilled />} key="1">
+      <TabPane icon={<Warning />} key="1">
         1111
       </TabPane>
       <TabPane icon={<App />} key="2">
@@ -22,11 +22,11 @@ export default () => {
   );
   return (
     <div className="tabs-display">
-      <Tabs size="small">{renderPane()}</Tabs>
+      <Tabs size="large">{renderPane()}</Tabs>
       <hr />
       <Tabs size="middle">{renderPane()}</Tabs>
       <hr />
-      <Tabs size="large">{renderPane()}</Tabs>
+      <Tabs size="small">{renderPane()}</Tabs>
     </div>
   );
 };
