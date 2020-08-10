@@ -40,7 +40,7 @@ stages:
               gitHubConnection: 'growingio'
               repositoryName: '$(Build.Repository.Name)'
               id: '$(System.PullRequest.PullRequestNumber)'
-              comment: 'Deploy preview for (gio-design)[https://deploy-preview-$(System.PullRequest.PullRequestNumber)--gio-design.surge.sh] ready!'
+              comment: 'Deploy preview for ready!\nhttps://deploy-preview-$(System.PullRequest.PullRequestNumber)--gio-design.surge.sh'
 
       - job: deploy_preview_failed
         dependsOn: deploy_preview
