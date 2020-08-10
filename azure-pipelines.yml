@@ -1,4 +1,4 @@
-name: GrowingIO Design
+name: GrowingIO Design Preview
 
 trigger: none
 
@@ -31,12 +31,12 @@ stages:
           - script: yarn build:website
             displayName: 'Build website'
           - script: |
-              export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-gio-design.surge.sh
+              export DEPLOY_DOMAIN=https://preview-$(System.PullRequest.PullRequestNumber)-gio-design.surge.sh
               echo "Deploy to $DEPLOY_DOMAIN"
-              npx surge --project ./packages/website/dist --domain $DEPLOY_DOMAIN
+              npx surge --project ./packages/website/dist --domain $DEPLOY_DOMAIN --token $(SURGE_TOKEN)
             displayName: 'Deploy Site'
           - script: |
-              export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-ant-design.surge.sh
+              export DEPLOY_DOMAIN=https://preview-$(System.PullRequest.PullRequestNumber)-ant-design.surge.sh
               echo "$DEPLOY_DOMAIN"
             displayName: 'Update comment on github'
       - job: Build_Site_Failed
