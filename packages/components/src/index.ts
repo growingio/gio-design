@@ -12,3 +12,4 @@ export { default as Input, InputNumber, InputHidden, Password, TextArea } from '
 export { default as Loading } from './components/loading';
 export { default as Skeleton } from './components/skeleton';
 export { default as Popconfirm } from './components/popconfirm';
+export { default as Drawer } from './components/drawer';
