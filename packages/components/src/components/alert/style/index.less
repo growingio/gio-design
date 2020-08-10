@@ -1,0 +1,117 @@
+@import '~@gio-design/tokens/dist/variables.less';
+
+.gio-alert {
+  width: 100%;
+  border-radius: 6px;
+  padding: 16px 16px;
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  transition: all ease 0.8s;
+
+  & .gio-alert-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    align-self: flex-start;
+    flex-shrink: 0;
+    padding-top: 3px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  & .gio-alert-content {
+    flex: 1;
+    margin: 0 8px;
+    font-family: @font-family;
+    color: @color-text-alert-content;
+    font-size: @size-font-14;
+    line-height: 22px;
+
+    & .gio-alert-content-title {
+      width: 100%;
+      font-weight: @weight-font-medium;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    & .gio-alert-content-description {
+      width: 100%;
+      letter-spacing: 0;
+    }
+  }
+
+  & .gio-alert-closeIcon {
+    font-weight: @weight-font-semi-bold;
+    cursor: pointer;
+    align-self: flex-start;
+    flex-shrink: 0;
+  }
+}
+
+.gio-alert-close {
+  display: none;
+}
+
+.gio-alert-info {
+  background-color: @color-background-alert-info-default;
+
+  & .gio-alert-closeIcon {
+    svg {
+      fill: @color-background-alert-info-icon;
+    }
+  }
+
+  & .gio-alert-icon {
+    svg {
+      fill: @color-background-alert-info-icon;
+    }
+  }
+}
+
+.gio-alert-success {
+  background-color: @color-background-alert-success-default;
+  & .gio-alert-closeIcon {
+    fill: @color-background-alert-success-icon;
+  }
+
+  & .gio-alert-icon {
+    fill: @color-background-alert-success-icon;
+  }
+}
+
+.gio-alert-warning {
+  background-color: @color-background-alert-warning-default;
+  & .gio-alert-closeIcon {
+    svg {
+      fill: @color-background-alert-warning-icon;
+    }
+  }
+
+  & .gio-alert-icon {
+    svg {
+      fill: @color-background-alert-warning-icon;
+    }
+  }
+}
+
+.gio-alert-error {
+  background-color: @color-background-alert-error-default;
+  & .gio-alert-closeIcon {
+    fill: @color-background-alert-error-icon;
+  }
+
+  & .gio-alert-icon {
+    fill: @color-background-alert-error-icon;
+  }
+}
+
+.gio-alert-small {
+  padding: 8px 16px;
+  & .gio-alert-content {
+    font-size: @size-font-12;
+  }
+}

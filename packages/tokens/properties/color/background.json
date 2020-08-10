@@ -177,6 +177,40 @@
       "popconfirm": {
         "value": "{palette.white.value}"
       },
+      "alert": {
+        "info": {
+          "icon": {
+            "value": "{palette.blue.8.value}"
+          },
+          "default": {
+            "value": "{palette.gray.1.value}"
+          }
+        },
+        "success": {
+          "icon": {
+            "value": "{palette.green.4.value}"
+          },
+          "default": {
+            "value": "{palette.green.1.value}"
+          }
+        },
+        "warning": {
+          "icon": {
+            "value": "{palette.red.4.value}"
+          },
+          "default": {
+            "value": "{palette.orange.1.value}"
+          }
+        },
+        "error": {
+          "icon": {
+            "value": "{palette.red.5.value}"
+          },
+          "default": {
+            "value": "{palette.red.6.value}"
+          }
+        }
+      },
       "sign": {
         "default": {
           "value": "{palette.red.3.value}"
