@@ -53,10 +53,7 @@ const Alert: React.FC<AlertProps> = (props) => {
           {icon ? icon : getIcon()}
         </div>
         <div className="gio-alert-content">
-          <div
-            className="gio-alert-content-title"
-            style={{ display: message ? 'block' : 'none', marginBottom: description ? '8px' : '0' }}
-          >
+          <div className="gio-alert-content-title" style={{ display: message ? 'block' : 'none' }}>
             {message ? message : null}
           </div>
           <div className="gio-alert-content-description" style={{ display: description ? 'block' : 'none' }}>
