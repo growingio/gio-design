@@ -1,0 +1,155 @@
+@import '~@gio-design/tokens/dist/variables.less';
+@import '../../../stylesheet/theme.less';
+@import './mixin.less';
+
+@gio-sign: ~'@{component-prefix}-sign';
+@gio-sign-number: ~'@{gio-sign}__number';
+@gio-sign-dot: ~'@{gio-sign}__dot';
+@gio-sign-hide: ~'@{gio-sign}--hide';
+
+// Dot
+.@{gio-sign-dot} {
+  .place();
+  .background.default();
+  border-radius: @radius-border-circle;
+
+  // status
+  &--normal {
+    .background.normal();
+  }
+  &--warning {
+    .background.warning();
+  }
+  &--error {
+    .background.error();
+  }
+  &--disabled {
+    .background.disabled();
+    & ~ * {
+      color: @color-background-sign-disabled;
+    }
+  }
+
+  // size
+  &--middle {
+    .square(8px);
+  }
+  &--small {
+    .square(6px);
+  }
+}
+
+// Number
+.@{gio-sign-number} {
+  height: 16px;
+  padding: 0 4px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 8px;
+
+  .place();
+  .background.default();
+}
+
+// wrapper
+.@{gio-sign} {
+  position: relative;
+  display: inline-block;
+  color: @palette-dark-1;
+
+  &--no-children {
+    .@{gio-sign-dot},
+    .@{gio-sign-number} {
+      position: relative;
+      top: auto;
+      transform: scale(1) translate(0, 0);
+      transform-origin: 50% 50%;
+    }
+  }
+
+  &--hide {
+    &.@{gio-sign-dot},
+    &.@{gio-sign-number} {
+      opacity: 0;
+      transition: @transition;
+    }
+  }
+
+  &--top {
+    top: 0;
+    left: 50%;
+    .transform(1, -50%, -50%);
+    transform-origin: 0 0;
+    &.@{gio-sign-hide} {
+      .transform(0, -50%, -50%);
+    }
+  }
+
+  &--right {
+    top: 50%;
+    right: 0;
+    .transform(1, 50%, -50%);
+    transform-origin: 100% 0;
+    &.@{gio-sign-hide} {
+      .transform(0, 50%, -50%);
+    }
+  }
+  &--bottom {
+    bottom: 0;
+    left: 50%;
+    .transform(1, -50%, 50%);
+    transform-origin: 0 100%;
+    &.@{gio-sign-hide} {
+      .transform(0, -50%, 50%);
+    }
+  }
+  &--left {
+    top: 50%;
+    left: 0;
+    .transform(1, -50%, -50%);
+    transform-origin: 0 0;
+    &.@{gio-sign-hide} {
+      .transform(0, -50%, -50%);
+    }
+  }
+
+  &--right-top {
+    top: 0;
+    right: 0;
+    .transform(1, 50%, -50%);
+    transform-origin: 100% 0;
+    &.@{gio-sign-hide} {
+      .transform(0, 50%, -50%);
+    }
+  }
+
+  &--right-bottom {
+    right: 0;
+    bottom: 0;
+    .transform(1, 50%, 50%);
+    transform-origin: 100% 100%;
+    &.@{gio-sign-hide} {
+      .transform(0, 50%, 50%);
+    }
+  }
+  &--left-top {
+    top: 0;
+    left: 0;
+    .transform(1, -50%, -50%);
+    transform-origin: 0 0;
+    &.@{gio-sign-hide} {
+      .transform(0, -50%, -50%);
+    }
+  }
+
+  &--left-bottom {
+    bottom: 0;
+    left: 0;
+    .transform(1, -50%, 50%);
+    transform-origin: 0% 100%;
+    &.@{gio-sign-hide} {
+      .transform(0, -50%, 50%);
+    }
+  }
+}

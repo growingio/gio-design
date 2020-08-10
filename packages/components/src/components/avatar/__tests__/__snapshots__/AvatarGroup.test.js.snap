@@ -64,7 +64,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
         }
       }
     >
-      2+
+      +2
     </span>
   </span>
 </div>

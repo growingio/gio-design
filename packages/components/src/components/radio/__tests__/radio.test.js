@@ -15,7 +15,7 @@ describe('Testing Radio', () => {
   it('should render correctly', () => {
     const domTree = renderer
       .create(
-        <Radio className='gio-customized-radio' disabled defaultChecked>
+        <Radio className="gio-customized-radio" disabled defaultChecked>
           Test
         </Radio>
       )

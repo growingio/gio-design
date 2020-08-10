@@ -14,22 +14,12 @@
     "declaration": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "lib": [
-      "es2015",
-      "dom"
-    ]
+    "lib": ["es2015", "dom"]
   },
-  "exclude": [
-    "./lib",
-    "./node_modules"
-  ],
+  "exclude": ["./lib", "./node_modules"],
   "formatCodeOptions": {
     "indentSize": 2,
     "tabSize": 2
   },
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "./src/typings/index.d.ts"
-  ]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/typings/index.d.ts", "src/components/tag/__tests__/Tag.test.js"]
 }

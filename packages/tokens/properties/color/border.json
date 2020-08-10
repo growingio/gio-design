@@ -53,6 +53,22 @@
         "disable": {
           "value": "{palette.gray.1.value}"
         }
+      },
+      "toggles": {
+        "default": {
+          "value": "0.5px solid #a3adc8"
+        },
+        "checked": {
+          "value": "solid 1px #1248e9"
+        },
+        "disable": {
+          "default": {
+            "value": "0.5px solid #a3adc8"
+          },
+          "checked": {
+            "value": "0.5px solid rgba(56, 103, 244, 0.5)"
+          }
+        }
       }
     }
   }

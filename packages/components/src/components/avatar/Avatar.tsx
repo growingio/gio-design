@@ -47,7 +47,7 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
     if (droppable) {
       return (
         <div className={classNames({ [`${prefixCls}-droppable`]: droppable })}>
-          <More width={16} height={16} color='#FFFFFF' />
+          <More width={16} height={16} color="#FFFFFF" />
         </div>
       );
     }

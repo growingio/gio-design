@@ -1,7 +1,5 @@
 import * as React from 'react';
-import Checkbox, {
-  CheckboxGroup,
-} from '@gio-design/components/es/components/checkbox';
+import Checkbox, { CheckboxGroup } from '@gio-design/components/es/components/checkbox';
 import '@gio-design/components/es/components/checkbox/style/css.js';
 
 const options = [
@@ -17,12 +15,7 @@ export default () => {
   };
   const defaultValue = ['Apple', 'Orange'];
   return (
-    <CheckboxGroup
-      defaultValue={defaultValue}
-      value={state}
-      onChange={handleChange}
-      direction="vertical"
-    >
+    <CheckboxGroup defaultValue={defaultValue} value={state} onChange={handleChange} direction="vertical">
       <Checkbox value="Apple">Apple</Checkbox>
       <Checkbox value="Pear">Pear</Checkbox>
       <Checkbox value="Orange">Orange</Checkbox>

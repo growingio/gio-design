@@ -11,14 +11,14 @@ export default function LoadingIcon({ prefixCls, loading, existIcon }: LoadingIc
   if (existIcon) {
     return (
       <span className={`${prefixCls}-loading-icon`}>
-        <Icon type='reload' />
+        <Icon type="reload" />
       </span>
     );
   }
   if (loading) {
     return (
       <span className={`${prefixCls}-loading-icon`}>
-        <Icon type='reload' />
+        <Icon type="reload" />
       </span>
     );
   }
