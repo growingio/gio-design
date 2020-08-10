@@ -67,22 +67,22 @@ const iconStyle: React.CSSProperties = {
 const iconMap = {
   success: (
     <span className={`${prefixCls}-icon`}>
-      <CheckCircleFilled color='#008a56' style={iconStyle} />
+      <CheckCircleFilled color="#008a56" style={iconStyle} />
     </span>
   ),
   error: (
     <span className={`${prefixCls}-icon`}>
-      <CloseCircleFilled color='#f21300' style={iconStyle} />
+      <CloseCircleFilled color="#f21300" style={iconStyle} />
     </span>
   ),
   warning: (
     <span className={`${prefixCls}-icon`}>
-      <WarningFilled color='#f8af48' style={iconStyle} />
+      <WarningFilled color="#f8af48" style={iconStyle} />
     </span>
   ),
   info: (
     <span className={`${prefixCls}-icon`}>
-      <InformationFilled color='#3867f4' style={iconStyle} />
+      <InformationFilled color="#3867f4" style={iconStyle} />
     </span>
   ),
 };

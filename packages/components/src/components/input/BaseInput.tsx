@@ -30,16 +30,16 @@ const BaseInput: React.FC<BaseInputProps> = ({
       <div>
         {showOpt && (
           <Button
-            type='secondary'
-            icon={<Close color='#f21300' style={iconStyle} />}
+            type="secondary"
+            icon={<Close color="#f21300" style={iconStyle} />}
             onClick={onCancel}
             style={{ marginRight: '4px' }}
           />
         )}
         {showOpt && (
           <Button
-            type='secondary'
-            icon={<Check color='#008a56' style={iconStyle} />}
+            type="secondary"
+            icon={<Check color="#008a56" style={iconStyle} />}
             onClick={onOk}
             disabled={!!errorMsg}
           />

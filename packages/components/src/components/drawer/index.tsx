@@ -225,7 +225,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
         // eslint-disable-next-line react/button-has-type
         <button
           onClick={onClose}
-          aria-label='Close'
+          aria-label="Close"
           className={`${prefixCls}-close`}
           style={
             {

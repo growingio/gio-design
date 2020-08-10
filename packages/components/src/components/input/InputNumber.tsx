@@ -49,7 +49,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
     <BaseInput showOpt={showOpt} errorMsg={errorMsg} label={label} wrapStyle={wrapStyle}>
       <span className={`${prefixCls}-opt`}>
         <input
-          type='text'
+          type="text"
           value={value}
           onChange={handleChange}
           onKeyDown={handleOnPressEnter}
@@ -61,13 +61,13 @@ const InputNumber: React.FC<InputNumberProps> = ({
         />
         <div className={`${prefixCls}-opt-arrow`}>
           <Button
-            type='text'
+            type="text"
             onClick={handleAdd}
             disabled={value >= max || disabled || !!errorMsg}
             icon={<UpFilled className={`${prefixCls}-opt-arrow-up`} />}
           />
           <Button
-            type='text'
+            type="text"
             onClick={handleDecrease}
             disabled={value <= min || disabled || !!errorMsg}
             icon={<DownFilled className={`${prefixCls}-opt-arrow-down`} />}
