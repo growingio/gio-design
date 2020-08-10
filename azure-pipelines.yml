@@ -1,0 +1,48 @@
+name: GrowingIO Design
+
+trigger: none
+
+pr:
+  autoCancel: true
+  branches:
+    exclude:
+      - gh-pages
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage: site
+    jobs:
+      - job: Build_Site
+        steps:
+          - checkout: self
+            displayName: 'Checkout'
+            clean: true
+            fetchDepth: 1
+          - task: NodeTool@0
+            displayName: 'Install Node.js'
+            inputs:
+              versionSpec: '12.13.1'
+          - script: yarn bootstrap
+            displayName: 'Bootstrap all packages'
+          - script: yarn build
+            displayName: 'Build all packages'
+          - script: yarn build:website
+            displayName: 'Build website'
+          - script: |
+              export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-gio-design.surge.sh
+              echo "Deploy to $DEPLOY_DOMAIN"
+              npx surge --project ./packages/website/dist --domain $DEPLOY_DOMAIN
+            displayName: 'Deploy Site'
+          - script: |
+              export DEPLOY_DOMAIN=https://preview-${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}-ant-design.surge.sh
+              echo "$DEPLOY_DOMAIN"
+            displayName: 'Update comment on github'
+      - job: Build_Site_Failed
+        dependsOn: Build_Site
+        condition: failed()
+        steps:
+          - script: |
+              echo "build site failed"
+            displayName: 'Comment on github'
