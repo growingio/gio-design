@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Menu, { MenuItem } from '@gio-design/components/es/components/menu';
 import '@gio-design/components/es/components/menu/style/css.js';
+import './demo.less';
 
 export default () => {
   const [selectedKey, setSelectedKey] = useState('menu-1');
@@ -13,7 +14,7 @@ export default () => {
   };
 
   return (
-    <Menu selectedKey={selectedKey} onClick={handleClick}>
+    <Menu className="demo-menu-horizontal" selectedKey={selectedKey} onClick={handleClick}>
       <MenuItem key="menu-1">看板</MenuItem>
       <MenuItem key="menu-2">分析</MenuItem>
       <MenuItem key="menu-3">运营</MenuItem>

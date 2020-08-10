@@ -109,26 +109,22 @@
 
   .@{gio-menu-prefix}-submenu-title,
   .@{gio-menu-prefix}-item {
+    & > span {
+      display: inline-block;
+      vertical-align: middle;
+    }
     .@{gio-menu-icon} {
-      width: 16px;
-      height: 16px;
       margin-right: 12px;
 
-      &::before {
-        width: 0;
-        height: 100%;
-        content: '';
+      & > svg {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
       }
 
       & * {
-        display: inline-block;
-        vertical-align: middle;
         fill: currentColor;
-      }
-
-      & + span {
-        display: inline-block;
-        vertical-align: middle;
       }
     }
   }
@@ -143,6 +139,7 @@
 
     & > .@{gio-menu-prefix}-item,
     & > .@{gio-menu-prefix}-submenu > .@{gio-menu-prefix}-submenu-title {
+      height: 40px;
       margin-right: 4px;
       padding: 0 24px;
       line-height: 40px;
@@ -190,7 +187,6 @@
       }
 
       & > .@{gio-menu-prefix}-sub {
-        padding-top: 4px;
         & > .@{gio-menu-prefix}-item {
           margin-top: 4px;
           padding-left: 44px !important;
