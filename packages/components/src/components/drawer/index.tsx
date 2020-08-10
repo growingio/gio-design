@@ -60,8 +60,8 @@ export interface IDrawerState {
 
 const defaultPushState: PushState = { distance: 180 };
 class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerState> {
-  public static defaultProps = {
-    width: 256,
+  public static defaultProps: any = {
+    width: 480,
     height: 256,
     closable: true,
     placement: 'right' as placementType,
@@ -69,6 +69,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     mask: true,
     keyboard: true,
     push: defaultPushState,
+    level: null,
   };
 
   public readonly state = {
@@ -162,7 +163,6 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   };
 
   private getOffsetStyle() {
-    debugger;
     const { placement, width, height, visible, mask } = this.props;
     if (!visible && !mask) {
       return {};

@@ -21,6 +21,8 @@ group:
 
 <code src='./demo/index.tsx' title='基础用法' />
 
+<code src='./demo/customPosition.tsx' title='自定义位置' />
+
 ## API
 
 | 参数               | 说明                                                                             | 类型                                                   | 默认值               | 版本   |
