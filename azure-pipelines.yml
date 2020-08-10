@@ -35,12 +35,12 @@ stages:
               npx surge --project ./packages/website/dist --domain $DEPLOY_DOMAIN --token $(SURGE_TOKEN)
             displayName: 'Deploy website'
           - task: GitHubComment@0
-            displayName: 'Comment on PR'
+            displayName: 'Comment preview site on PR'
             inputs:
               gitHubConnection: 'growingio'
               repositoryName: '$(Build.Repository.Name)'
               id: '$(System.PullRequest.PullRequestNumber)'
-              comment: 'Deploy preview for ready!\nhttps://deploy-preview-$(System.PullRequest.PullRequestNumber)--gio-design.surge.sh'
+              comment: 'Deploy preview for ready! https://deploy-preview-$(System.PullRequest.PullRequestNumber)--gio-design.surge.sh'
 
       - job: deploy_preview_failed
         dependsOn: deploy_preview
