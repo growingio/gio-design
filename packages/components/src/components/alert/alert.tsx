@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import classnames from 'classnames';
 
-import { CheckCircleFilled, Warning, InformationFilled, CloseCircleFilled, Close } from '@gio-design/icons';
+import { CheckCircleFilled, WarningFilled, InformationFilled, CloseCircleFilled, Close } from '@gio-design/icons';
 
 interface AlertProps {
   afterClose?: any;
@@ -27,7 +27,7 @@ const Alert: React.FC<AlertProps> = (props) => {
       case 'success':
         return <CheckCircleFilled />;
       case 'warning':
-        return <Warning />;
+        return <WarningFilled />;
       case 'error':
         return <CloseCircleFilled />;
       default:

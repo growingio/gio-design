@@ -41,7 +41,7 @@ group:
 | bodyStyle          | 可用于设置 Drawer 内容部分的样式                                                 | CSSProperties                                          | -                    |
 | title              | 标题                                                                             | string \| ReactNode                                    | -                    |
 | visible            | Drawer 是否可见                                                                  | boolean                                                | -                    |
-| width              | 宽度                                                                             | string \| number                                       | 256                  |
+| width              | 宽度                                                                             | string \| number                                       | 480                  |
 | height             | 高度, 在 `placement` 为 `top` 或 `bottom` 时使用                                 | string \| number                                       | 256                  |
 | className          | 对话框外层容器的类名                                                             | string                                                 | -                    |
 | zIndex             | 设置 Drawer 的 `z-index`                                                         | number                                                 | 1000                 |
