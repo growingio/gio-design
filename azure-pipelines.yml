@@ -21,7 +21,7 @@ stages:
             clean: true
             fetchDepth: 1
           - task: NodeTool@0
-            displayName: 'Install Node.js'
+            displayName: 'Install Node@12.x'
             inputs:
               versionSpec: '12.13.1'
           - script: yarn bootstrap
@@ -34,11 +34,15 @@ stages:
               export DEPLOY_DOMAIN=https://preview-$(System.PullRequest.PullRequestNumber)-gio-design.surge.sh
               echo "Deploy to $DEPLOY_DOMAIN"
               npx surge --project ./packages/website/dist --domain $DEPLOY_DOMAIN --token $(SURGE_TOKEN)
-            displayName: 'Deploy Site'
-          - script: |
-              export DEPLOY_DOMAIN=https://preview-$(System.PullRequest.PullRequestNumber)-ant-design.surge.sh
-              echo "$DEPLOY_DOMAIN"
-            displayName: 'Update comment on github'
+            displayName: 'Deploy website'
+          - task: GitHubComment@0
+            displayName: 'Comment on PR'
+            inputs:
+              gitHubConnection: 'growingio'
+              repositoryName: '$(Build.Repository.Name)'
+              id: '$(System.PullRequest.PullRequestNumber)'
+              comment: 'Deploy preview for (gio-design)[https://preview-$(System.PullRequest.PullRequestNumber)-gio-design.surge.sh] ready!'
+
       - job: Build_Site_Failed
         dependsOn: Build_Site
         condition: failed()
