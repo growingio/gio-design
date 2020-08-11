@@ -1,3 +1,4 @@
+@import '~@gio-design/tokens/dist/variables.less';
 @import '../../../stylesheet/theme.less';
 
 @gio-link-prefix: ~'@{component-prefix}-link';
@@ -8,7 +9,7 @@
   display: inline-block;
   margin-right: 8px;
   margin-left: 8px;
-  color: #1248e9;
+  color: @color-text-link-normal;
   font-size: 14px;
   line-height: 22px;
   text-decoration: underline;
@@ -16,24 +17,24 @@
   cursor: pointer;
 
   &:hover {
-    color: @gr-link-color;
+    color: @color-text-link-hover;
     text-decoration: underline;
   }
 
   &:active {
-    color: #313e75;
+    color: @color-text-link-click;
   }
 }
 
 // disabled
 .@{gio-link-disabled} {
-  color: #adb2c2;
+  color: @color-text-link-disable;
   cursor: not-allowed;
 
   &.@{gio-link-prefix} {
     &:hover,
     &:active {
-      color: #adb2c2;
+      color: @color-text-link-disable;
       text-decoration: underline;
     }
   }
