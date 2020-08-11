@@ -9,9 +9,14 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.8.2
+
+- 🆕 新增[Alert 警告提示](/components/basic/alert)组件。 [#52](https://github.com/growingio/gio-design/pull/52)
+- 🆕 新增[Input 输入框](/components/basic/input)组件。 [#55](https://github.com/growingio/gio-design/pull/55)
+
 ## 20.8.1
 
-- 🆕 新增[Toggles 开关](/components/basic/toggles)组件。 [#52](https://github.com/growingio/gio-design/pull/34)
+- 🆕 新增[Toggles 开关](/components/basic/toggles)组件。 [#52](https://github.com/growingio/gio-design/pull/52)
 - 🆕 新增[Loading 加载中](/components/basic/loading)组件。 [#39](https://github.com/growingio/gio-design/pull/39)
 - 🆕 新增[Skeleton 骨架图](/components/basic/skeleton)组件。 [#46](https://github.com/growingio/gio-design/pull/46)
 - 🆕 新增[Popconfirm 气泡确认框](/components/functional/popconfirm)组件。 [#49](https://github.com/growingio/gio-design/pull/49)
