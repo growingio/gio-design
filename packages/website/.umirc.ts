@@ -8,6 +8,4 @@ export default {
     ['en-US', 'English'],
   ],
   hash: true,
-  exportStatic: {},
-  ssr: {},
 };

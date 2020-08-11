@@ -23,7 +23,7 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Build packages and website
-        run: yarn bootstrap && yarn build && yarn build:website
+        run: yarn bootstrap && yarn build && yarn workspace website build:gh-pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -35,7 +35,7 @@ jobs:
           DINGTALK_ACCESS_TOKEN: ${{ secrets.DINGTALK_ACCESS_TOKEN }}
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
           MSGTYPE: markdown
-          TITLE: 'GrowingIO Design deploy succeeded'
+          TITLE: GrowingIO Design deploy succeeded
           TEXT: |
-            - (GrowingIO Design)[https://growingio.design]
-            - (GrowingIO Design on GitHub Pages)[https://growingio.github.io/gio-design]
+            - [GrowingIO Design](https://growingio.design)
+            - [GrowingIO Design on GitHub Pages](https://growingio.github.io/gio-design/)

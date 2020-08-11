@@ -48,7 +48,7 @@
     "start:components": "npx lerna run --scope @gio-design/components watch --stream",
     "clean": "npx lerna clean",
     "build": "yarn build:tokens && yarn build:themes && yarn build:icon-generator && yarn build:icon && yarn build:icons && yarn build:components",
-    "build:website": "yarn workspace website docs:build",
+    "build:website": "yarn workspace website build",
     "build:tokens": "yarn workspace @gio-design/tokens build",
     "build:themes": "yarn workspace @gio-design/themes build",
     "build:icon": "yarn workspace @gio-design/icon build",
