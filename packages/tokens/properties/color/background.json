@@ -271,6 +271,28 @@
         "checkedDisable": {
           "value": "{palette.gray.3.value}"
         }
+      },
+      "pagination": {
+        "normal": {
+          "value": "{palette.gray.1.value}"
+        },
+        "hover": {
+          "value": "{palette.gray.3.value}"
+        },
+        "click": {
+          "value": "{palette.gray.2.value}"
+        },
+        "active": {
+          "value": "{palette.blue.5.value}"
+        },
+        "disabled-active": {
+          "value": "{palette.gray.4.value}"
+        },
+        "quick-jumper": {
+          "normal": {
+            "value": "{palette.white.value}"
+          }
+        }
       }
     }
   }
