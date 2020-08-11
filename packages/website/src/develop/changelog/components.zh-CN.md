@@ -9,6 +9,17 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.8.1
+
+- 🆕 新增[Toggles 开关](/components/basic/toggles)组件。 [#52](https://github.com/growingio/gio-design/pull/34)
+- 🆕 新增[Loading 加载中](/components/basic/loading)组件。 [#39](https://github.com/growingio/gio-design/pull/39)
+- 🆕 新增[Skeleton 骨架图](/components/basic/skeleton)组件。 [#46](https://github.com/growingio/gio-design/pull/46)
+- 🆕 新增[Popconfirm 气泡确认框](/components/functional/popconfirm)组件。 [#49](https://github.com/growingio/gio-design/pull/49)
+- 🆕 新增[Tree 树形组件](/components/functional/tree)组件。 [#51](https://github.com/growingio/gio-design/pull/51)
+- 🆕 新增[Sign 标记](/components/basic/sign)组件。 [#52](https://github.com/growingio/gio-design/pull/52)
+- 🆕 新增[Tag 标签](/components/basic/tag)组件。 [#54](https://github.com/growingio/gio-design/pull/54)
+- 🐛 头像组最后一项文本使用 “+n” 格式。 [#58](https://github.com/growingio/gio-design/pull/58)
+
 ## 20.8.0
 
 - 🆗 新增[Button 按钮](/components/basic/button)组件。 [#43](https://github.com/growingio/gio-design/pull/43)

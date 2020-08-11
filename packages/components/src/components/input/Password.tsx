@@ -54,7 +54,7 @@ const Password: React.FC<InputProps> = ({
           {...restInputProps}
         />
         <span className={`${prefixCls}-opt-view`}>
-          <Button type='text' disabled={disabled} icon={visible ? <View /> : <Unview />} onClick={toggleVisible} />
+          <Button type="text" disabled={disabled} icon={visible ? <View /> : <Unview />} onClick={toggleVisible} />
         </span>
       </span>
     </BaseInput>

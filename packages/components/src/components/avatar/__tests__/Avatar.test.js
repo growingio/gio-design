@@ -36,16 +36,16 @@ describe('Testing Avatar', () => {
     const wrapper = mount(<Avatar src={image}>li</Avatar>).children();
     expect(wrapper.childAt(0).type()).toBe('img');
     expect(wrapper.childAt(0).text()).not.toBe('l');
-    const noSrcWrapper = mount(<Avatar size='small'>li</Avatar>).children();
+    const noSrcWrapper = mount(<Avatar size="small">li</Avatar>).children();
     expect(noSrcWrapper.childAt(0).type()).toBe('span');
     expect(noSrcWrapper.childAt(0).text()).toBe('l');
   });
 
   test('props size', () => {
-    expect(mount(<Avatar size='small' />).exists('.gio-avatar-sm')).toBe(true);
+    expect(mount(<Avatar size="small" />).exists('.gio-avatar-sm')).toBe(true);
     expect(mount(<Avatar />).exists('.gio-avatar-df')).toBe(true);
-    expect(mount(<Avatar size='large' />).exists('.gio-avatar-lg')).toBe(true);
-    expect(mount(<Avatar size='huge' />).exists('.gio-avatar-hg')).toBe(true);
+    expect(mount(<Avatar size="large" />).exists('.gio-avatar-lg')).toBe(true);
+    expect(mount(<Avatar size="huge" />).exists('.gio-avatar-hg')).toBe(true);
   });
 
   test('props omit', () => {

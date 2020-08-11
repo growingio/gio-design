@@ -10,7 +10,7 @@ async function waitForComponentToPaint(wrapper, amount = 500) {
 
 describe('Testing Popover', () => {
   const getPopover = () => (
-    <Popover contentArea='content' footerArea='footer'>
+    <Popover contentArea="content" footerArea="footer">
       <span>Test</span>
     </Popover>
   );

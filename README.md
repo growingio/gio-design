@@ -1,95 +1,23 @@
 # GrowingIO Design
 
+一套 React UI 组件库和 GrowingIO 设计系统。
+
 ## Getting Started
 
-```
-yarn install
-```
-
-GIO-Design
+安装依赖：
 
 ```
-yarn start
+yarn bootstrap
 ```
 
-Documentation
+生成组件库：
+
+```
+yarn build
+```
+
+启动预览网站：
 
 ```
 yarn start:website
 ```
-
-文档目录 `packages/website/src`
-
-Clean
-
-```
-# node_modules
-npx lerna clean
-```
-
-Add dependency
-
-```
-# all packages
-yarn workspaces add [dependency]
-# package
-yarn workspaces add [package] [dependency]
-# local dependency
-yarn workspaces add [package] [local-dependency@version]
-# root
-yarn add -W [dependency]
-```
-
-Commit Changes
-
-```
-yarn cm
-```
-
-根据命令行提示选择以及填写 commit 信息，禁止直接使用 `git commit` 命令
-
-## Packages
-
-- @gio-design/tokens
-- @gio-design/components
-
-## Repositories
-
-- playground
-
-- website
-
-## Create
-
-lerna create [package-name]
-
-## Build
-
-```
-yarn install
-yarn build
-```
-
-gst
-
-## Publish component
-
-```
-cd packages/components
-yarn build
-(npx) lerna publish
-```
-
-## Publish icon/token/theme
-
-```
-yarn build
-(npx) lerna publish
-```
-
-## References
-
-[Lerna](https://lerna.js.org/)
-[Yarn Workspace](https://yarnpkg.com/lang/en/docs/workspaces/)
-[nohoist in Workspaces](https://yarnpkg.com/blog/2018/02/15/nohoist/)
-[GrowingIO Design](https://growingio.design)

@@ -22,11 +22,11 @@ export default () => {
 
   return (
     <div className="tabs-display">
-      <Tabs size="small">{renderPane()}</Tabs>
+      <Tabs size="large">{renderPane()}</Tabs>
       <hr />
       <Tabs size="middle">{renderPane()}</Tabs>
       <hr />
-      <Tabs size="large">{renderPane()}</Tabs>
+      <Tabs size="small">{renderPane()}</Tabs>
     </div>
   );
 };
