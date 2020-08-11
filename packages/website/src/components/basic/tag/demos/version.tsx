@@ -5,13 +5,13 @@ import './index.less';
 
 const Basics = () => (
   <>
-    <Tag className="tag" color="beta">
+    <Tag className="tag_website_demo_tag" color="beta">
       Beta
     </Tag>
-    <Tag className="tag" color="new">
+    <Tag className="tag_website_demo_tag" color="new">
       New
     </Tag>
-    <Tag className="tag" color="grayscale">
+    <Tag className="tag_website_demo_tag" color="grayscale">
       灰度
     </Tag>
   </>
