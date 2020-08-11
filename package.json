@@ -10,9 +10,7 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/@gio-design/icon/**",
-      "**/@gio-design/themes/**",
-      "**/@gio-design/react-svg-icon-generator/**"
+      "**/@gio-design/themes/**"
     ]
   },
   "license": "Apache-2.0",
@@ -47,11 +45,10 @@
     "start:website": "npx lerna run --scope website start --stream",
     "start:components": "npx lerna run --scope @gio-design/components watch --stream",
     "clean": "npx lerna clean",
-    "build": "yarn build:tokens && yarn build:themes && yarn build:icon-generator && yarn build:icon && yarn build:icons && yarn build:components",
+    "build": "yarn build:tokens && yarn build:themes && yarn build:icons && yarn build:components",
     "build:website": "yarn workspace website build",
     "build:tokens": "yarn workspace @gio-design/tokens build",
     "build:themes": "yarn workspace @gio-design/themes build",
-    "build:icon": "yarn workspace @gio-design/icon build",
     "build:icons": "yarn workspace @gio-design/icons build",
     "build:components": "yarn workspace @gio-design/components build",
     "build:icon-generator": "yarn workspace @gio-design/react-svg-icon-generator build",
