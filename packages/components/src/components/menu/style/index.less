@@ -1,5 +1,5 @@
 @import '~@gio-design/tokens/dist/variables.less';
-@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/index.less';
 @import './mixin.less';
 
 @gio-menu-prefix: ~'@{component-prefix}-menu';
@@ -35,7 +35,7 @@
 
   &-item-group-title {
     padding: 0 10px;
-    color: @palette-gray-6;
+    color: @color-text-menu-sub-menu;
     line-height: 1.5;
   }
 
@@ -53,7 +53,7 @@
   }
 
   &-submenu-selected {
-    color: @palette-gray-6;
+    color: @color-text-menu-sub-menu;
     background-color: @color-background-menu-active;
   }
 
@@ -74,7 +74,7 @@
     // Disabled state sets text to gray and nukes hover/tab effects
     &.@{gio-menu-prefix}-item-disabled,
     &.@{gio-menu-prefix}-submenu-disabled {
-      color: @palette-gray-6 !important;
+      color: @color-text-menu-disable !important;
       cursor: not-allowed;
     }
   }
@@ -84,7 +84,7 @@
     padding: 0;
     overflow: hidden;
     line-height: 0;
-    background-color: @palette-gray-6;
+    background-color: @color-text-menu-sub-menu;
   }
 
   &-submenu {
@@ -97,7 +97,7 @@
     }
     > .@{gio-menu-prefix} {
       padding: 4px 0;
-      background-color: @palette-white;
+      background-color: @color-background-menu-normal;
       box-shadow: 0 0 4px @palette-gray-5;
     }
     & .@{gio-menu-prefix}-item {
