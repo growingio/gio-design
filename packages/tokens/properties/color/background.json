@@ -89,22 +89,46 @@
           "value": "{palette.gray.1.value}"
         },
         "status": {
-          "success": { "value": "{palette.green.2.value}" },
-          "warning": { "value": "{palette.orange.3.value}" },
-          "error": { "value": "{palette.red.3.value}" },
-          "disable": { "value": "{palette.gray.5.value}" }
+          "success": {
+            "value": "{palette.green.2.value}"
+          },
+          "warning": {
+            "value": "{palette.orange.3.value}"
+          },
+          "error": {
+            "value": "{palette.red.3.value}"
+          },
+          "disable": {
+            "value": "{palette.gray.5.value}"
+          }
         },
         "filter": {
-          "normal": { "value": "{palette.gray.1.value}" },
-          "hover": { "value": "{palette.gray.3.value}" },
-          "click": { "value": "#F1F2F8" },
-          "disable": { "value": "#F7F8FB" },
-          "blue": { "value": "{palette.blue.7.value}" }
+          "normal": {
+            "value": "{palette.gray.1.value}"
+          },
+          "hover": {
+            "value": "{palette.gray.3.value}"
+          },
+          "click": {
+            "value": "#F1F2F8"
+          },
+          "disable": {
+            "value": "#F7F8FB"
+          },
+          "blue": {
+            "value": "{palette.blue.7.value}"
+          }
         },
         "version": {
-          "beta": { "value": "{palette.blue.1.value}" },
-          "new": { "value": "{palette.red.2.value}" },
-          "grayscale": { "value": "{palette.purple.1.value}" }
+          "beta": {
+            "value": "{palette.blue.1.value}"
+          },
+          "new": {
+            "value": "{palette.red.2.value}"
+          },
+          "grayscale": {
+            "value": "{palette.purple.1.value}"
+          }
         }
       },
       "tree": {
