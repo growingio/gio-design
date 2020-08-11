@@ -20,7 +20,7 @@
     "test:xunit": "JEST_JUNIT_CLASSNAME=\"{filename}\" jest --ci --testResultsProcessor=jest-junit"
   },
   "dependencies": {
-    "@gio-design/icon": "^0.0.32",
+    "@gio-design/icons": "^20.8.0",
     "@gio-design/tokens": "^20.8.1",
     "@types/classnames": "^2.2.9",
     "@types/lodash": "^4.14.136",
