@@ -1,4 +1,5 @@
 @import '../../../stylesheet/theme.less';
+@import '~@gio-design/tokens/dist/variables.less';
 
 @input-prefix-cls: ~'@{component-prefix}-input';
 
@@ -7,61 +8,70 @@
 
   &-label {
     margin-bottom: 8px;
-    font-size: 14px;
-    color: #313e75;
-    font-weight: 500;
+    font-size: @size-font-14;
+    color: @palette-dark-1;
+    font-weight: @weight-font-medium;
   }
 
   &-content,
   &-content-error,
   &-content-hidden {
     padding: 9px 16px;
-    font-size: 14px;
-    color: #313e75;
-    background-color: #fff;
-    border: 1px solid #dcdfed;
-    border-radius: 4px;
+    font-size: @size-font-14;
+    color: @palette-dark-1;
+    background-color: @palette-white;
+    border: 1px solid @palette-gray-11;
+    border-radius: @radius-border-small;
     outline: none;
     width: 100%;
     transition: all 0.3s ease-in-out;
   }
 
   &-content-hidden {
-    color: #242e59;
-    font-weight: 500;
-    font-size: 20px;
+    color: @palette-dark-3;
+    font-weight: @weight-font-medium;
+    font-size: @size-font-20;
     border: none;
     &:hover {
-      background-color: #f7f8fc;
+      background-color: @palette-gray-1;
       cursor: pointer;
     }
     &:disabled {
       cursor: not-allowed;
     }
+    &::placeholder {
+      color: @palette-gray-12;
+    }
   }
 
   &-content-error {
-    border-color: #ec134b;
+    border-color: @palette-red-3;
+    &:disabled {
+      cursor: not-allowed;
+    }
+    &::placeholder {
+      color: @palette-gray-12;
+    }
   }
 
   &-content {
     &::placeholder {
-      color: #a3adc8;
+      color: @palette-gray-12;
     }
 
     &:hover {
-      border-color: #1248e9;
+      border-color: @palette-blue-7;
       box-shadow: none;
     }
 
     &:focus {
-      border-color: #1248e9;
-      box-shadow: 0 0 6px 0 rgba(223, 226, 237, 0.8);
+      border-color: @palette-blue-7;
+      box-shadow: @shadow-tabs;
     }
 
     &:disabled {
-      border-color: #f7f8fc;
-      background-color: #f7f8fc;
+      border-color: @palette-gray-11;
+      background-color: @palette-gray-1;
       cursor: not-allowed;
     }
   }
@@ -77,6 +87,14 @@
       position: absolute;
       right: 8px;
       top: -4px;
+
+      & > button {
+        color: @palette-gray-5;
+
+        &:hover {
+          color: @palette-blue-7;
+        }
+      }
     }
 
     &-arrow {
@@ -89,6 +107,11 @@
       & > button {
         width: 16px;
         height: 16px;
+        color: @palette-gray-5;
+
+        &:hover {
+          color: @palette-blue-7;
+        }
       }
 
       &-up {
@@ -109,8 +132,8 @@
     height: 28px;
 
     &-error {
-      font-size: 12px;
-      color: #ec134b;
+      font-size: @size-font-12;
+      color: @palette-red-3;
     }
   }
 }

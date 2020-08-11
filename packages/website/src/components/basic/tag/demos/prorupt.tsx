@@ -5,13 +5,13 @@ import './index.less';
 
 const Prorupts = () => (
   <>
-    <Tag className="tag" type="prorupt" status="success">
+    <Tag className="tag_website_demo_tag" type="prorupt" status="success">
       正常
     </Tag>
-    <Tag className="tag" type="prorupt" status="warning">
+    <Tag className="tag_website_demo_tag" type="prorupt" status="warning">
       不确定
     </Tag>
-    <Tag className="tag" type="prorupt" status="error">
+    <Tag className="tag_website_demo_tag" type="prorupt" status="error">
       错误
     </Tag>
   </>
