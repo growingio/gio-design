@@ -164,36 +164,39 @@
         }
       },
       "toggles": {
-        "toggles": {
-          "default": {
-            "value": "{palette.white.value}"
+        "checked": {
+          "normal": {
+            "rectangle": {
+              "value": "{palette.blue.4.value}"
+            },
+            "knob": {
+              "value": "{palette.white.value}"
+            }
           },
-          "suffixContent": {
-            "value": "{palette.dark.1}"
+          "disabled": {
+            "rectangle": {
+              "value": "rgba(18,72,233,0.5)"
+            },
+            "knob": {
+              "value": "{palette.white.value}"
+            }
           }
         },
-        "toggles-checked": {
-          "value": "{palette.blue.6.value}"
-        },
-        "handle": {
-          "value": "{palette.blue.7.value}"
-        },
-        "handle-checked": {
-          "value": "{palette.white.value}"
-        },
-        "disable": {
-          "toggles": {
-            "default": {
+        "unchecked": {
+          "normal": {
+            "rectangle": {
+              "value": "{palette.white.value}"
+            },
+            "knob": {
+              "value": "{palette.blue.5.value}"
+            }
+          },
+          "disabled": {
+            "rectangle": {
               "value": "{palette.gray.3.value}"
             },
-            "suffixContent": {
-              "value": "{palette.gray.5.value}"
-            },
-            "checked": {
-              "value": "rgba(18, 72, 233, 0.5)"
-            },
-            "handle": {
-              "value": "{palette.gray.6.value}"
+            "knob": {
+              "value": "{palette.gray.12.value}"
             }
           }
         }

@@ -273,6 +273,14 @@
         "subMenu": {
           "value": "{palette.black.3.value}"
         }
+      },
+      "toggles": {
+        "normal": {
+          "value": "{palette.black.6.value}"
+        },
+        "disabled": {
+          "value": "{palette.gray.11.value}"
+        }
       }
     }
   }
