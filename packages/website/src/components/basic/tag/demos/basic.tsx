@@ -5,17 +5,17 @@ import './index.less';
 
 const Basics = () => (
   <>
-    <Tag className="tag">超管</Tag>
-    <Tag className="tag" status="success">
+    <Tag className="tag_website_demo_tag">超管</Tag>
+    <Tag className="tag_website_demo_tag" status="success">
       已上线
     </Tag>
-    <Tag className="tag" status="warning">
+    <Tag className="tag_website_demo_tag" status="warning">
       待上线
     </Tag>
-    <Tag className="tag" status="draft">
+    <Tag className="tag_website_demo_tag" status="draft">
       草稿
     </Tag>
-    <Tag className="tag" status="offline">
+    <Tag className="tag_website_demo_tag" status="offline">
       已结束
     </Tag>
   </>
