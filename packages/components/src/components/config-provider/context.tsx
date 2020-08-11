@@ -70,7 +70,7 @@ export function withConfigConsumer<ExportProps extends BasicExportProps>(config:
     )) as React.FC<ExportProps> & ComponentDef;
 
     const cons: ConstructorProps = Component.constructor as ConstructorProps;
-    const name = (cons && cons.displayName) || Component.name || 'Component';
+    const name = cons?.displayName || Component.name || 'Component';
 
     SFC.displayName = `withConfigConsumer(${name})`;
 
