@@ -64,7 +64,5 @@ module.exports = {
 
     // 关闭 禁止 this 关键字在类或类对象之外出现
     '@typescript-eslint/no-invalid-this': OFF,
-
-    '@typescript-eslint/prefer-optional-chain': OFF,
   },
 };
