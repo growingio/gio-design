@@ -10,12 +10,12 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/@gio-design/themes",
+      "**/@gio-design/icon/**",
       "**/@gio-design/themes/**",
       "**/@gio-design/react-svg-icon-generator/**"
     ]
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
@@ -45,11 +45,9 @@
     "start": "npx lerna run --scope @gio-design/components start --stream",
     "bootstrap": "npx lerna bootstrap",
     "start:website": "npx lerna run --scope website start --stream",
-    "start:playground": "npx lerna run --scope playground start --stream",
     "start:components": "npx lerna run --scope @gio-design/components watch --stream",
     "clean": "npx lerna clean",
     "build": "yarn build:tokens && yarn build:themes && yarn build:icon-generator && yarn build:icon && yarn build:icons && yarn build:components",
-    "build:playground": "yarn workspace playground build",
     "build:website": "yarn workspace website docs:build",
     "build:tokens": "yarn workspace @gio-design/tokens build",
     "build:themes": "yarn workspace @gio-design/themes build",
@@ -57,6 +55,7 @@
     "build:icons": "yarn workspace @gio-design/icons build",
     "build:components": "yarn workspace @gio-design/components build",
     "build:icon-generator": "yarn workspace @gio-design/react-svg-icon-generator build",
+    "g:icons": "yarn workspace @gio-design/icons generate",
     "publish": "npx lerna publish",
     "lint": "yarn lint:components",
     "lint:components": "eslint packages/components/src --ext .js,.jsx,.ts,.tsx",

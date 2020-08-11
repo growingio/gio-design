@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { isBoolean, isUndefined } from 'lodash';
-import { Warning } from '@gio-design/icons';
+import { WarningFilled } from '@gio-design/icons';
 import Tooltip from '../tooltip';
 import Button from '../button';
 import { ConfigContext } from '../config-provider';
@@ -51,13 +51,13 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
 
   const popConfirmOverlay = () => (
     <>
-      {icon || <Warning width={16} height={16} color='#F7AF48' style={{ position: 'absolute', top: '22px' }} />}
+      {icon || <WarningFilled width={16} height={16} color="#F7AF48" style={{ position: 'absolute', top: '22px' }} />}
       <div className={`${prefixCls}-inner-title`}>{title}</div>
       {desc && <div className={`${prefixCls}-inner-desc`}>{desc}</div>}
       <div className={`${prefixCls}-inner-btns`}>
         <Button
-          size='small'
-          type='secondary'
+          size="small"
+          type="secondary"
           onClick={(e) => {
             shouldUpdateLocalVisible(false);
             onCancel?.(e);
@@ -66,7 +66,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
           {cancelText}
         </Button>
         <Button
-          size='small'
+          size="small"
           onClick={(e) => {
             shouldUpdateLocalVisible(false);
             onConfirm?.(e);
@@ -88,7 +88,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
       }}
       overlayInnerStyle={{ width: desc ? 400 : 260 }}
       overlay={popConfirmOverlay()}
-      trigger='click'
+      trigger="click"
       {...rest}
     >
       {children}

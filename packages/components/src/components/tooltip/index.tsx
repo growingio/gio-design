@@ -24,7 +24,7 @@ const Tooltip = (props: TooltipProps) => {
     <>
       <span className={`${prefixCls}-inner-title`}>{title}</span>
       {tooltipLink?.link && (
-        <Link component='a' to={tooltipLink.link}>
+        <Link component="a" to={tooltipLink.link}>
           {tooltipLink.name || tooltipLink.link}
         </Link>
       )}
@@ -45,7 +45,7 @@ const Tooltip = (props: TooltipProps) => {
       prefixCls={prefixCls}
       placement={placement}
       trigger={trigger}
-      transitionName='spread-transition'
+      transitionName="spread-transition"
       arrowContent={<span className={`${prefixCls}-arrow-content`} />}
       overlay={getOverlay()}
       builtinPlacements={getPlacements({ arrowPointAtCenter })}

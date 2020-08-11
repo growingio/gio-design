@@ -47,7 +47,7 @@ describe('CheckboxGroup', () => {
   });
 
   it('all children should have a name property', () => {
-    const wrapper = mount(<CheckboxGroup name='checkboxgroup' options={['Yes', 'No']} />);
+    const wrapper = mount(<CheckboxGroup name="checkboxgroup" options={['Yes', 'No']} />);
     wrapper.find('input[type="checkbox"]').forEach((el) => {
       expect(el.props().name).toEqual('checkboxgroup');
     });
@@ -59,7 +59,7 @@ describe('CheckboxGroup', () => {
       { label: 'Orange', value: 'Orange' },
     ];
 
-    const wrapper = render(<CheckboxGroup prefixCls='my-checkbox' options={options} />);
+    const wrapper = render(<CheckboxGroup prefixCls="my-checkbox" options={options} />);
 
     expect(wrapper).toMatchSnapshot();
   });
@@ -69,7 +69,7 @@ describe('CheckboxGroup', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <CheckboxGroup>
-        <Checkbox value='my' onChange={onChange} />
+        <Checkbox value="my" onChange={onChange} />
       </CheckboxGroup>
     );
     wrapper.find('.gio-checkbox-input').at(0).simulate('change');

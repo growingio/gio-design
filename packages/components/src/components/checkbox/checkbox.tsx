@@ -64,10 +64,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
   return (
     <label className={checkboxCls} style={style}>
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 7' className={checkboxIconClass}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 7" className={checkboxIconClass}>
         <g>
           <g>
-            <path d='M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z' />
+            <path d="M3.5,7a.47.47,0,0,1-.35-.15l-3-3a.48.48,0,0,1,0-.7.48.48,0,0,1,.7,0L3.5,5.79,9.15.15a.48.48,0,0,1,.7,0,.48.48,0,0,1,0,.7l-6,6A.47.47,0,0,1,3.5,7Z" />
           </g>
         </g>
       </svg>
@@ -75,7 +75,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         {...(checkProps as any)}
         prefixCls={prefixCls}
         ref={rcCheckbox}
-        type='checkbox'
+        type="checkbox"
         className={checkboxClass}
         onChange={handleChange}
       />

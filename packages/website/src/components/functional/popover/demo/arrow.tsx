@@ -12,9 +12,7 @@ export default () => (
       footerArea={<span className="centerButton">下载二维码</span>}
       arrowPointAtCenter={true}
     >
-      <span className="popoverSpanInLine">
-        Arrow points to center / 箭头指向中心
-      </span>
+      <span className="popoverSpanInLine">Arrow points to center / 箭头指向中心</span>
     </Popover>
     <Popover
       placement="topLeft"
