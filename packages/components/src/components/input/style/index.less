@@ -1,0 +1,116 @@
+@import '../../../stylesheet/theme.less';
+
+@input-prefix-cls: ~'@{component-prefix}-input';
+
+.@{input-prefix-cls} {
+  width: 300px;
+
+  &-label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #313e75;
+    font-weight: 500;
+  }
+
+  &-content,
+  &-content-error,
+  &-content-hidden {
+    padding: 9px 16px;
+    font-size: 14px;
+    color: #313e75;
+    background-color: #fff;
+    border: 1px solid #dcdfed;
+    border-radius: 4px;
+    outline: none;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &-content-hidden {
+    color: #242e59;
+    font-weight: 500;
+    font-size: 20px;
+    border: none;
+    &:hover {
+      background-color: #f7f8fc;
+      cursor: pointer;
+    }
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &-content-error {
+    border-color: #ec134b;
+  }
+
+  &-content {
+    &::placeholder {
+      color: #a3adc8;
+    }
+
+    &:hover {
+      border-color: #1248e9;
+      box-shadow: none;
+    }
+
+    &:focus {
+      border-color: #1248e9;
+      box-shadow: 0 0 6px 0 rgba(223, 226, 237, 0.8);
+    }
+
+    &:disabled {
+      border-color: #f7f8fc;
+      background-color: #f7f8fc;
+      cursor: not-allowed;
+    }
+  }
+
+  &-opt {
+    & > input {
+      padding-right: 44px;
+    }
+
+    position: relative;
+
+    &-view {
+      position: absolute;
+      right: 8px;
+      top: -4px;
+    }
+
+    &-arrow {
+      position: absolute;
+      right: 16px;
+      top: -11px;
+      display: flex;
+      flex-direction: column;
+
+      & > button {
+        width: 16px;
+        height: 16px;
+      }
+
+      &-up {
+        vertical-align: text-bottom;
+      }
+
+      &-down {
+        vertical-align: top;
+      }
+    }
+  }
+
+  &-expand {
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 28px;
+
+    &-error {
+      font-size: 12px;
+      color: #ec134b;
+    }
+  }
+}

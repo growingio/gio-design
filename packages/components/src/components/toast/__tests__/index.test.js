@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
 import React from 'react';
 import { mount } from 'enzyme';
-import Icon from '@gio-design/icon';
+import { Check } from '@gio-design/icons';
 import Toast from '..';
 
 describe('toast', () => {
@@ -84,8 +84,8 @@ describe('toast', () => {
   });
 
   it('should allow custom icon', () => {
-    Toast.open({ content: 'Message', icon: <Icon type="check-circle" /> });
-    expect(document.querySelectorAll('.cls-check-circle-2').length).toBe(1);
+    Toast.open({ content: 'Message', icon: <Check /> });
+    expect(document.querySelectorAll('#check_svg__check').length).toBe(1);
   });
 
   it('should have no icon', () => {

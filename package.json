@@ -55,6 +55,7 @@
     "build:icons": "yarn workspace @gio-design/icons build",
     "build:components": "yarn workspace @gio-design/components build",
     "build:icon-generator": "yarn workspace @gio-design/react-svg-icon-generator build",
+    "g:icons": "yarn workspace @gio-design/icons generate",
     "publish": "npx lerna publish",
     "lint": "yarn lint:components",
     "lint:components": "eslint packages/components/src --ext .js,.jsx,.ts,.tsx",

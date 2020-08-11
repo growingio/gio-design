@@ -59,7 +59,7 @@ describe('Testing Popover', () => {
     expect(wrapper.find('.gio-popover-inner').exists('.gio-popover-inner-content')).toBe(true);
     expect(wrapper.find('.gio-popover-inner').exists('.gio-popover-inner-footer')).toBe(true);
     expect(wrapper.exists('.overlayClassName')).toBe(true);
-    waitForComponentToPaint(wrapper).then(() => {
+    waitForComponentToPaint(wrapper, 1000).then(() => {
       expect(wrapper.exists('.gio-popover-placement-topLeft')).toBe(true);
       done();
     });

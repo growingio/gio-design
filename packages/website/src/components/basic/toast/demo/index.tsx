@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Toast } from '@gio-design/components';
+import { Button } from '@gio-design/components';
 import '@gio-design/components/es/components/toast/style/index.css';
 
 const SuccessMessage = () => (
@@ -32,19 +33,19 @@ export default () => {
 
   return (
     <div>
-      <a onClick={handleSuccess}>成功</a>
+      <Button onClick={handleSuccess}>成功</Button>
       <br />
       <br />
-      <a onClick={handleFail}>失败</a>
+      <Button onClick={handleFail}>失败</Button>
       <br />
       <br />
-      <a onClick={handleWarn}>警告</a>
+      <Button onClick={handleWarn}>警告</Button>
       <br />
       <br />
-      <a onClick={handleInfo}>提示</a>
+      <Button onClick={handleInfo}>提示</Button>
       <br />
       <br />
-      <a onClick={handleSuccessDiy}>成功，去看看</a>
+      <Button onClick={handleSuccessDiy}>成功，去看看</Button>
     </div>
   );
 };
