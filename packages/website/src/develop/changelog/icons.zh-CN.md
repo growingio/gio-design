@@ -11,7 +11,7 @@ nav:
 
 ## 20.8.0
 
-- 🆕 新增 `LoadingOutlinedBlack` 和 `LoadingOutlinedWhite` 图标。 [#39](https://github.com/growingio/gio-design/pull/39)
+- 🆕 新增 `LoadingBlackOutlined` 和 `LoadingWhiteOutlined` 图标。 [#39](https://github.com/growingio/gio-design/pull/39)
 - 🆕 新增 `Warning` 图标。 [#49](https://github.com/growingio/gio-design/pull/49)
 - 🆕 新增 `CaretDownOutlined` 图标。 [#51](https://github.com/growingio/gio-design/pull/51)
 

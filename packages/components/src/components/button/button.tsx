@@ -144,6 +144,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
     [`${prefixCls}-block`]: block,
   });
 
+  /* eslint-disable prettier/prettier */
   const iconNode =
     icon && !innerLoading ? (
       icon

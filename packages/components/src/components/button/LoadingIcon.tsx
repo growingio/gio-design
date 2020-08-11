@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ButtonType } from './interface';
-import { LoadingOutlinedWhite, LoadingOutlinedBlack } from '@gio-design/icons';
+import { LoadingBlackOutlined, LoadingWhiteOutlined } from '@gio-design/icons';
 
 export interface LoadingIconProps {
   prefixCls: string;
@@ -12,9 +12,9 @@ export interface LoadingIconProps {
 export default function LoadingIcon({ prefixCls, loading, existIcon, type }: LoadingIconProps) {
   let loadingIcon;
   if (type === 'primary') {
-    loadingIcon = <LoadingOutlinedWhite />;
+    loadingIcon = <LoadingWhiteOutlined />;
   } else {
-    loadingIcon = <LoadingOutlinedBlack />;
+    loadingIcon = <LoadingBlackOutlined />;
   }
 
   if (existIcon || loading) {
