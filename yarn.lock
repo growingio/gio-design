@@ -4512,10 +4512,10 @@
     umi-webpack-bundle-analyzer "3.5.0"
     zlib "1.0.5"
 
-"@umijs/preset-dumi@1.0.31":
-  version "1.0.31"
-  resolved "https://registry.yarnpkg.com/@umijs/preset-dumi/-/preset-dumi-1.0.31.tgz#2fa2d4d22a5356523d4e078ca37e4c2896e86b89"
-  integrity sha512-rGYUPtRKUPUvb7xaYxlPYIIL7+FnTTLrEbgriRAYR6SBnja45VrETcN/3DmQPt49Srd3VLV+0dsMqAF+fZK5aA==
+"@umijs/preset-dumi@1.0.34":
+  version "1.0.34"
+  resolved "https://registry.yarnpkg.com/@umijs/preset-dumi/-/preset-dumi-1.0.34.tgz#a956c665676ab70dbfb34e7937794dd14a68b2a3"
+  integrity sha512-Ou6J+S7sfW+ZP1fnsGIzjYVaR97OPtHgyP+JNJMXapVyE9ytyM8sjpxs1yI3Vvqp6FH8NeligD1e5o3G5EkrRA==
   dependencies:
     "@babel/core" "^7.7.2"
     "@babel/generator" "^7.7.2"
@@ -9338,12 +9338,12 @@ drag-tracker@^1.0.0:
   resolved "https://registry.yarnpkg.com/drag-tracker/-/drag-tracker-1.0.0.tgz#9bd33d380bc3056db69bd5b3cf6e062fec58bd64"
   integrity sha1-m9M9OAvDBW22m9Wzz24GL+xYvWQ=
 
-dumi@1.0.31:
-  version "1.0.31"
-  resolved "https://registry.yarnpkg.com/dumi/-/dumi-1.0.31.tgz#2eff014a9a2f941a4818f00a966963513a1281ee"
-  integrity sha512-Wqz9Zwn/Dy5Q7lTHSNbg5OEETMIdFvQUxKQcDeKaREqvHwMMFxEr/2sygWFsc/k4Zq1XxqCBpE+6vuknm0wLRA==
+dumi@1.0.34:
+  version "1.0.34"
+  resolved "https://registry.yarnpkg.com/dumi/-/dumi-1.0.34.tgz#6e071006dcdb6f09ba8963cc08aa776cb9e7f4f4"
+  integrity sha512-nvd2VedZazLioOK7NYufrAJM8+G7sdOD/XGxQNQOwKhrEDhiHLY/YLv0xznD14bQsJJYz/kJ1EZhM9Oj8BQeLg==
   dependencies:
-    "@umijs/preset-dumi" "1.0.31"
+    "@umijs/preset-dumi" "1.0.34"
     umi "^3.0.0"
 
 duplexer3@^0.1.4:
@@ -15509,7 +15509,7 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@^10.0.7, lint-staged@^10.2.7:
+lint-staged@^10.2.7:
   version "10.2.9"
   resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.2.9.tgz#6013ecfa80829cd422446b545fd30a96bca3098c"
   integrity sha512-ziRAuXEqvJLSXg43ezBpHxRW8FOJCXISaXU//BWrxRrp5cBdRkIx7g5IsB3OI45xYGE0S6cOacfekSjDyDKF2g==
@@ -19594,15 +19594,6 @@ rc-gesture@~0.0.18, rc-gesture@~0.0.22:
   integrity sha512-6G6qrCE0MUTXyjh/powj91XkjRjoFL4HiJLPU5lALXHvGX+/efcUjGYUrHrrw0mwQdmrmg4POqnY/bibns+G3g==
   dependencies:
     babel-runtime "6.x"
-
-rc-input-number@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/rc-input-number/-/rc-input-number-6.0.0.tgz#0c0af57c8183f3ca6b87f7edf6fed3bd5a3ba16f"
-  integrity sha512-vbe+g7HvR/joknSnvLkBTi9N9I+LsV4kljfuog8WNiS7OAF3aEN0QcHSOQ4+xk6+Hx9P1tU63z2+TyEx8W/j2Q==
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "^2.2.5"
-    rc-util "^5.0.1"
 
 rc-input-number@~5.0.0:
   version "5.0.0"
