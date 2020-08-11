@@ -4,7 +4,7 @@
 @import './mixin';
 
 @btn-prefix-cls: ~'@{component-prefix}-btn';
-@iconfont-css-prefix: anticon;
+@iconfont-css-prefix: gioicon;
 // for compatible
 @btn-assist-color: @text-color-base;
 @btn-assist-bg: none;
@@ -34,11 +34,6 @@
     .btn-text;
   }
 
-  &-icon-only {
-    .btn-square(@btn-prefix-cls);
-    vertical-align: -0.5px;
-  }
-
   &::before {
     position: absolute;
     top: -1px;
@@ -47,7 +42,6 @@
     left: -1px;
     z-index: 1;
     display: none;
-    background: #FFF;
     border-radius: inherit;
     opacity: 0.35;
     transition: opacity 0.2s;
@@ -77,17 +71,19 @@
   }
 
   & > &-loading-icon {
-    transition: all 0.3s @ease-in-out;
-
-    .@{iconfont-css-prefix} {
-      padding-right: @margin-xs;
+    margin-right: @margin-xs;
+    svg {
+      -webkit-animation: loadingCircle 1s infinite linear;
+      animation: loadingCircle 1s infinite linear;
     }
-
     &:only-child {
-      .@{iconfont-css-prefix} {
-        padding-right: 0;
-      }
+      margin-right: 0;
     }
+  }
+
+  &-icon-only {
+    .btn-square(@btn-prefix-cls);
+    vertical-align: -0.5px;
   }
 
   &:focus > span,
@@ -109,6 +105,12 @@
     color: @color-text-button-default-ghost;
     background: @color-background-button-default-ghost !important;
     border-color: @color-border-button-default-ghost;
+    svg {
+      color: @color-text-button-default-ghost;
+      path {
+        fill: @color-text-button-default-ghost;
+      }
+    }
   }
 
   &-background-ghost&-text {
