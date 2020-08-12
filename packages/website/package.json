@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "website",
-  "version": "20.8.1",
+  "version": "20.8.2",
   "scripts": {
     "start": "dumi dev",
     "build": "UMI_ENV=production dumi build",
@@ -15,9 +15,9 @@
   "dependencies": {
     "@babel/helper-skip-transparent-expression-wrappers": "^7.11.0",
     "@babel/plugin-syntax-logical-assignment-operators": "^7.10.4",
-    "@gio-design/components": "^20.8.1",
-    "@gio-design/icons": "^20.8.0",
-    "@gio-design/tokens": "^20.8.1",
+    "@gio-design/components": "^20.8.2",
+    "@gio-design/icons": "^20.8.1",
+    "@gio-design/tokens": "^20.8.2",
     "eslint-plugin-eslint-comments": "3.2.0",
     "eslint-plugin-import": "^2.21.1",
     "eslint-plugin-jest": "23.13.2",
