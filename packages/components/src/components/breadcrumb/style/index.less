@@ -1,6 +1,8 @@
+@import '~@gio-design/tokens/dist/variables.less';
+
 .gio-breadcrumb {
   height: 22px;
-  color: #313e75;
+  color: @color-text-breadcrumb-normal;
   font-size: 14px;
 
   &-item.gio-breadcrumb-item-link {
@@ -8,16 +10,16 @@
       cursor: pointer;
 
       &:hover {
-        color: #2867f4;
+        color: @color-text-breadcrumb-hover;
       }
     }
   }
 
   a {
-    color: #313e75;
+    color: @color-text-breadcrumb-normal;
 
     &:hover {
-      color: #2867f4;
+      color: @color-text-breadcrumb-hover;
     }
   }
 
