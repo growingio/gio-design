@@ -63,9 +63,11 @@ export default () => {
         mask={true}
         footer={showFooter ? renderFooter() : null}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <div style={{ width: '100%', height: '100%', padding: '16px', border: '1px dashed #DCDFED' }}>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </div>
       </Drawer>
     </>
   );
