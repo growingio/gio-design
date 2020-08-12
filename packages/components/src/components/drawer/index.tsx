@@ -1,5 +1,6 @@
 import * as React from 'react';
 import RcDrawer from 'rc-drawer';
+import { omit } from 'lodash';
 // @ts-ignore
 import getScrollBarSize from 'rc-util/lib/getScrollBarSize';
 import { Close } from '@gio-design/icons';
@@ -8,7 +9,6 @@ import classNames from 'classnames';
 import { ConfigConsumerProps } from '../config-provider';
 import { withConfigConsumer, ConfigConsumer } from '../config-provider/context';
 import { tuple } from '../../utils/type';
-import _omit from '../../utils/omit';
 
 const DrawerContext = React.createContext<Drawer | null>(null);
 
@@ -295,7 +295,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
             <DrawerContext.Provider value={this}>
               <RcDrawer
                 handler={false}
-                {..._omit(rest as any, [
+                {...omit(rest as any, [
                   'zIndex',
                   'style',
                   'closable',
