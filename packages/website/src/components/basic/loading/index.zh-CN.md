@@ -23,7 +23,8 @@ group:
 <code src='./demos/wrapper.tsx' title='赋予内容加载状态' desc='可以直接把内容嵌入到Loading中，将现有容器变为加载状态。' />
 <code src='./demos/debounce.tsx' title='延时' desc='延迟显示 loading 效果。当 spinning 状态在 delay 时间内结束，则不显示 loading 状态。' />
 <code src='./demos/indicator.tsx' title='自定义符号' desc='替换默认的加载图形，可以是任意的元素' />
-## API
+
+## 参数说明
 
 | 参数          | 说明                               | 类型                           | 默认值      |
 | ------------- | ---------------------------------- | ------------------------------ | ----------- |
