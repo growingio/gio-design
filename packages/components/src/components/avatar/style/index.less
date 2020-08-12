@@ -4,14 +4,14 @@
 @avatar-prefix-cls: ~'@{component-prefix}-avatar';
 
 .@{avatar-prefix-cls} {
-  border-radius: 100%;
-  background-color: @color-background-avatar-normal;
+  position: relative;
   display: inline-block;
   overflow: hidden;
-  opacity: 1;
   color: @color-text-avatar-normal;
   font-weight: @weight-font-semi-bold;
-  position: relative;
+  background-color: @color-background-avatar-normal;
+  border-radius: 100%;
+  opacity: 1;
 
   &:hover {
     .@{avatar-prefix-cls}-droppable {
@@ -24,73 +24,73 @@
   }
 
   &-droppable {
-    text-align: center;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
-    background-color: transparent;
     width: 100%;
     height: 100%;
+    text-align: center;
+    background-color: transparent;
     cursor: pointer;
     transition: all 0.3s;
 
     svg {
+      vertical-align: middle;
       transform: scale(0);
       transition: all 0.3s;
-      vertical-align: middle;
     }
   }
 
   span {
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    height: 100%;
     position: absolute;
     left: 50%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    white-space: nowrap;
     transform-origin: 0 center;
   }
 
   img {
+    position: relative;
+    display: block;
     width: 100%;
     height: 100%;
-    display: block;
-    position: relative;
   }
 
   &-sm {
     width: 24px;
     height: 24px;
-    line-height: 24px;
     font-size: 12px;
+    line-height: 24px;
   }
 
   &-df {
     width: 32px;
     height: 32px;
-    line-height: 32px;
     font-size: 12px;
+    line-height: 32px;
   }
 
   &-lg {
     width: 56px;
     height: 56px;
-    line-height: 56px;
     font-size: 16px;
+    line-height: 56px;
   }
 
   &-hg {
     width: 80px;
     height: 80px;
-    line-height: 80px;
     font-size: 20px;
+    line-height: 80px;
   }
 
   &-rest {
     &:hover {
-      background-color: @color-background-avatar-hover-rest;
       color: @color-text-avatar-hover;
+      background-color: @color-background-avatar-hover-rest;
     }
   }
 
@@ -99,9 +99,9 @@
       border: 1.5px solid @color-border-avatar;
 
       &:hover {
-        box-shadow: @shadow-avatar;
         position: relative;
         z-index: 1;
+        box-shadow: @shadow-avatar;
       }
     }
 

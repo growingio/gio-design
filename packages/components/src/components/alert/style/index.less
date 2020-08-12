@@ -1,21 +1,21 @@
 @import '~@gio-design/tokens/dist/variables.less';
 
 .gio-alert {
-  width: 100%;
-  border-radius: 6px;
-  padding: 16px 16px;
   display: flex;
   align-items: center;
+  width: 100%;
   margin: 12px 0;
+  padding: 16px 16px;
+  border-radius: 6px;
   transition: all ease 0.8s;
 
   & .gio-alert-icon {
+    flex-shrink: 0;
+    align-self: flex-start;
     width: 16px;
     height: 16px;
-    border-radius: 8px;
-    align-self: flex-start;
-    flex-shrink: 0;
     padding-top: 3px;
+    border-radius: 8px;
 
     svg {
       width: 16px;
@@ -26,15 +26,15 @@
   & .gio-alert-content {
     flex: 1;
     margin: 0 8px;
-    font-family: @font-family;
     color: @color-text-alert-content;
     font-size: @size-font-14;
+    font-family: @font-family;
     line-height: 22px;
 
     & .gio-alert-content-title {
       width: 100%;
-      font-weight: @weight-font-medium;
       overflow: hidden;
+      font-weight: @weight-font-medium;
       text-overflow: ellipsis;
     }
 
@@ -45,10 +45,10 @@
   }
 
   & .gio-alert-closeIcon {
+    flex-shrink: 0;
+    align-self: flex-start;
     font-weight: @weight-font-semi-bold;
     cursor: pointer;
-    align-self: flex-start;
-    flex-shrink: 0;
   }
 }
 
