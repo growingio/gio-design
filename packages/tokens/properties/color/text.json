@@ -25,7 +25,7 @@
       },
       "tabs": {
         "normal": {
-          "value": "{palette.dark.1.value}"
+          "value": "{palette.black.6.value}"
         },
         "active": {
           "value": "{palette.blue.7.value}"
@@ -159,28 +159,17 @@
         },
         "switcher": {
           "value": "{palette.gray.10.value}"
-        },
-        "loading": {
-          "value": "{palette.dark.1.value}"
-        },
-        "popconfirm": {
-          "title": {
-            "value": "{palette.dark.3.value}"
-          },
-          "desc": {
-            "value": "{palette.dark.1.value}"
-          }
         }
       },
       "loading": {
-        "value": "{palette.dark.1.value}"
+        "value": "{palette.black.6.value}"
       },
       "popconfirm": {
         "title": {
-          "value": "{palette.dark.3.value}"
+          "value": "{palette.black.7.value}"
         },
         "desc": {
-          "value": "{palette.dark.1.value}"
+          "value": "{palette.black.6.value}"
         }
       },
       "alert": {

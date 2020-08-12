@@ -15,6 +15,6 @@ nav:
 
 ## 各个库更新日志
 
-- [@gio-design/components @ 20.8.1](/develop/changelog/components)
-- [@gio-design/icons @ 20.8.0](/develop/changelog/icons)
-- [@gio-design/tokens @ 20.8.1](/develop/changelog/tokens)
+- [@gio-design/components](/develop/changelog/components)
+- [@gio-design/icons](/develop/changelog/icons)
+- [@gio-design/tokens](/develop/changelog/tokens)
