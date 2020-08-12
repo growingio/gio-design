@@ -13,3 +13,4 @@ export { default as Tag } from './components/tag';
 export { default as Loading } from './components/loading';
 export { default as Skeleton } from './components/skeleton';
 export { default as Popconfirm } from './components/popconfirm';
+export { default as Progress } from './components/progress';
