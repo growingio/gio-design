@@ -5,7 +5,6 @@ nav:
   title: 组件
 group:
   title: 基础组件
-  order: 9
 ---
 
 # Progress 进度条
