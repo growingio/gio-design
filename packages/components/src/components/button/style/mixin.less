@@ -107,13 +107,14 @@
   box-shadow: none;
   text-shadow: none;
   cursor: pointer;
-  transition: all 0.3s @ease-in-out;
   user-select: none;
   touch-action: manipulation;
   svg {
     width: 16px;
     height: 16px;
     margin-right: 0 !important;
+    position: relative;
+    top: 3px;
   }
   .button-size(@btn-height-base; @size-spacing-l; @size-font-button-default; @radius-border-button);
   > .@{iconfont-css-prefix} {
@@ -147,35 +148,69 @@
 // primary button style
 .btn-primary() {
   .button-variant-primary(@color-text-button-primary-normal; @color-background-button-primary-normal);
+  svg {
+    color: @color-text-button-primary-normal;
+    path {
+      fill: @color-text-button-primary-normal;
+    }
+  }
 }
 // secondary button style
 .btn-secondary() {
   .button-variant-other(@color-text-button-default-normal; @color-background-button-default-normal; @color-border-button-default-normal);
+  svg {
+    color: @color-text-button-default-normal;
+    path {
+      fill: @color-text-button-default-normal;
+    }
+  }
 }
 // assist button style
 .btn-assist() {
   .button-variant-assist();
+  svg {
+    color: @color-text-button-assist-normal;
+    path {
+      fill: @color-text-button-assist-normal;
+    }
+  }
 }
 
 // text button style
 .btn-text() {
   .button-color(@color-text-button-normal; transparent; transparent);
+  svg {
+    color: @color-text-button-normal;
+    path {
+      fill: @color-text-button-normal;
+    }
+  }
   box-shadow: none;
   &:hover {
     color: @color-text-button-hover;
     background: transparent;
     border-color: transparent;
+    svg {
+      color: @color-text-button-hover;
+      path {
+        fill: @color-text-button-hover;
+      }
+    }
   }
 
   &:active {
     color: @color-text-button-click;
     background: transparent;
     border-color: transparent;
+    svg {
+      color: @color-text-button-click;
+      path {
+        fill: @color-text-button-click;
+      }
+    }
   }
 
   .button-disabled(@color-text-button-disable; transparent; transparent);
-
-  .button-size(@btn-height-base; @size-spacing-l; @size-font-button-default; @radius-border-button);
 }
 
 // square button: the content only contains icon

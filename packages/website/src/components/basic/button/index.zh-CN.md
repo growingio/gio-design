@@ -30,7 +30,7 @@ group:
 | --- | --- | --- | --- |
 | type | 设置按钮类型，可选值为 `primary` `secondary` `assist` `text` 或者不设 | string | - |
 | icon | 设置按钮的图标组件 | ReactNode | - |
-| size | 设置按钮大小（text类型的button size属性无效） | `large` \| `middle` \| `small` | - |
+| size | 设置按钮大小 | `large` \| `middle` \| `small` | - |
 | loading | 设置按钮载入状态 | boolean | false |
 | ghost | 幽灵属性，使按钮背景透明 | boolean | false |
 | block | 将按钮宽度调整为其父宽度的选项 | boolean | false |
