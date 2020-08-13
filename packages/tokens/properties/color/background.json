@@ -137,7 +137,7 @@
             "value": "{palette.red.1.value}"
           },
           "grayscale": {
-            "value": "{palette.purple.1.value}"
+            "value": "{palette.gray.1.value}"
           }
         }
       },

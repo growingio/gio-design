@@ -102,16 +102,16 @@
             "value": "{palette.black.6.value}"
           },
           "inline": {
-            "value": "{palette.green.6.value}"
+            "value": "{palette.green.5.value}"
           },
           "processing": {
-            "value": "{palette.yellow.6.value}"
+            "value": "{palette.yellow.5.value}"
           },
           "offline": {
             "value": "{palette.black.4.value}"
           },
           "draft": {
-            "value": "{palette.black.2.value}"
+            "value": "{palette.black.3.value}"
           }
         },
         "status": {
@@ -158,8 +158,8 @@
           "new": {
             "value": "{palette.red.3.value}"
           },
-          "greyscale": {
-            "value": "{palette.purple.2.value}"
+          "grayscale": {
+            "value": "{palette.black.5.value}"
           }
         }
       },
