@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Button from '@gio-design/components/es/components/button';
 import '@gio-design/components/es/components/button/style/css.js';
-import { PlusCircleFilled, FilterOutlined } from '@gio-design/icons';
-import Icon from '@gio-design/icon';
+import { PlusCircleFilled } from '@gio-design/icons';
 import './index.less';
 
 export default () => {
@@ -35,17 +34,17 @@ export default () => {
           </Button>
         </div>
         <div className="item">
-          <Button type="secondary" size="small" loading={true}>
+          <Button type="secondary" size="large" loading={true}>
             加载中
           </Button>
         </div>
         <div className="item">
-          <Button type="secondary" size="small" loading={loadings[1]} onClick={() => enterLoading(1)}>
+          <Button type="secondary" size="large" loading={loadings[1]} onClick={() => enterLoading(1)}>
             点击!
           </Button>
         </div>
         <div className="item">
-          <Button icon={<PlusCircleFilled />} size="small" type="secondary">
+          <Button icon={<PlusCircleFilled />} size="large" type="secondary">
             新建
           </Button>
         </div>
@@ -60,17 +59,17 @@ export default () => {
           </Button>
         </div>
         <div className="item">
-          <Button type="secondary" size="small" loading={true}>
+          <Button type="secondary" loading={true}>
             加载中
           </Button>
         </div>
         <div className="item">
-          <Button type="secondary" size="small" loading={loadings[2]} onClick={() => enterLoading(2)}>
+          <Button type="secondary" loading={loadings[2]} onClick={() => enterLoading(2)}>
             点击!
           </Button>
         </div>
         <div className="item">
-          <Button icon={<PlusCircleFilled />} size="small" type="secondary">
+          <Button icon={<PlusCircleFilled />} type="secondary">
             新建
           </Button>
         </div>
@@ -100,17 +99,6 @@ export default () => {
           <Button icon={<PlusCircleFilled />} size="small" type="secondary">
             新建
           </Button>
-        </div>
-      </div>
-      <div className="list">
-        <div className="item">
-          <Button type="secondary" icon={<FilterOutlined />} />
-        </div>
-        <div className="item">
-          <Button type="secondary" disabled={true} icon={<FilterOutlined />} />
-        </div>
-        <div className="item">
-          <Button type="secondary" icon={<FilterOutlined />} loading={loadings[4]} onClick={() => enterLoading(4)} />
         </div>
       </div>
     </div>
