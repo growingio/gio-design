@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Breadcrumb } from '@gio-design/components';
-import '@gio-design/components/es/components/checkbox/style/css.js';
+import '@gio-design/components/es/components/breadcrumb/style/css.js';
 
 export default () => {
   const routes = [

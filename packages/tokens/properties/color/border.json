@@ -89,6 +89,13 @@
         "checkedDisable": {
           "value": "{palette.gray.4.value}"
         }
+      },
+      "pagination": {
+        "quick-jumper": {
+          "disabled": {
+            "value": "{palette.gray.4.value}"
+          }
+        }
       }
     }
   }

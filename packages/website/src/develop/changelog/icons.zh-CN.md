@@ -9,6 +9,12 @@ nav:
 
 # @gio-design/icons 更新日志
 
+## 20.8.1
+
+- 📛 `Loading` 图标名称更新为 `LoadingBlackOutlined` 和 `LoadingWhiteOutlined`。 [#71](https://github.com/growingio/gio-design/pull/71)
+- 📛 `Warning` 图标名称更新为 `WarningFilled`。 [#55](https://github.com/growingio/gio-design/pull/55)
+- 🆕 新增 `Defeat` `DownFilled` `informationCircle` `QuestionCircle` `Succeed` `Unview` `UpFilled` `View` `Wait` `WarningCircle` 图标。 [#55](https://github.com/growingio/gio-design/pull/55)
+
 ## 20.8.0
 
 - 🆕 新增 `LoadingOutlinedBlack` 和 `LoadingOutlinedWhite` 图标。 [#39](https://github.com/growingio/gio-design/pull/39)
