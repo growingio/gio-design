@@ -24,16 +24,16 @@
     .@{custom-tree-node-prefix-cls} {
       display: flex;
       align-items: flex-start;
-      padding: 0;
-      outline: none;
       width: 100%;
       height: 40px;
-      line-height: 40px;
-      border-radius: @radius-border-tree;
       margin: 2px 0;
-      font-size: 14px;
+      padding: 0;
       color: @color-text-tree-normal;
       font-weight: 400;
+      font-size: 14px;
+      line-height: 40px;
+      border-radius: @radius-border-tree;
+      outline: none;
       &:hover {
         background-color: @color-background-tree-hover;
       }
@@ -87,21 +87,13 @@
       width: 14px;
       height: 14px;
       margin: 0;
+      margin: 2px 8px 0;
       line-height: 40px;
       text-align: center;
-      margin: 2px 8px 0;
-      color: @color-text-tree-switcher;
       cursor: pointer;
 
       &-noop {
         cursor: default;
-      }
-
-      svg.@{custom-tree-prefix-cls}-switcher-icon {
-        color: @color-text-tree-switcher;
-        path {
-          fill: @color-text-tree-switcher;
-        }
       }
 
       &_close {
@@ -118,8 +110,8 @@
 
       .@{custom-tree-prefix-cls}-title {
         overflow: hidden;
-        text-overflow: ellipsis;
         white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       // Icon
@@ -127,8 +119,8 @@
         display: inline-block;
         width: 16px;
         height: 16px;
-        line-height: 16px;
         margin: 2px 8px 0 0;
+        line-height: 16px;
         text-align: center;
         vertical-align: middle;
         &:empty {
