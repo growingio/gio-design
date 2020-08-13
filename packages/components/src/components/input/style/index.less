@@ -8,22 +8,22 @@
 
   &-label {
     margin-bottom: 8px;
-    font-size: @size-font-14;
     color: @palette-dark-1;
     font-weight: @weight-font-medium;
+    font-size: @size-font-14;
   }
 
   &-content,
   &-content-error,
   &-content-hidden {
+    width: 100%;
     padding: 9px 16px;
-    font-size: @size-font-14;
     color: @palette-dark-1;
+    font-size: @size-font-14;
     background-color: @palette-white;
     border: 1px solid @palette-gray-11;
     border-radius: @radius-border-small;
     outline: none;
-    width: 100%;
     transition: all 0.3s ease-in-out;
   }
 
@@ -70,8 +70,8 @@
     }
 
     &:disabled {
-      border-color: @palette-gray-11;
       background-color: @palette-gray-1;
+      border-color: @palette-gray-11;
       cursor: not-allowed;
     }
   }
@@ -85,7 +85,6 @@
 
     &-view {
       position: absolute;
-      right: 8px;
       top: -4px;
 
       & > button {
@@ -99,8 +98,8 @@
 
     &-arrow {
       position: absolute;
-      right: 16px;
       top: -11px;
+      right: 16px;
       display: flex;
       flex-direction: column;
 
@@ -125,15 +124,15 @@
   }
 
   &-expand {
-    margin-top: 4px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     height: 28px;
+    margin-top: 4px;
 
     &-error {
-      font-size: @size-font-12;
       color: @palette-red-3;
+      font-size: @size-font-12;
     }
   }
 }
