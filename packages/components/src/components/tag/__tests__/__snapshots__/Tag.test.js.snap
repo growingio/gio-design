@@ -2,6 +2,6 @@
 
 exports[`<Tag /> renders <Tag /> components 1`] = `
 <span
-  className="gio-tag"
+  className="gio-tag gio-tag-size-small gio-tag-type-normal"
 />
 `;

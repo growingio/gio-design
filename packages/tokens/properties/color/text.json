@@ -95,44 +95,57 @@
       },
       "tag": {
         "sign": {
-          "regular": {
-            "value": "{palette.dark.1.value}"
+          "normal": {
+            "value": "{palette.black.6.value}"
           },
           "inline": {
-            "value": "{palette.green.3.value}"
+            "value": "{palette.green.6.value}"
           },
-          "ready": {
-            "value": "{palette.orange.2.value}"
+          "processing": {
+            "value": "{palette.yellow.6.value}"
           },
           "offline": {
-            "value": "{palette.gray.7.value}"
+            "value": "{palette.black.4.value}"
           },
           "draft": {
-            "value": "{palette.gray.6.value}"
+            "value": "{palette.black.2.value}"
           }
         },
         "status": {
           "button": {
             "value": "{palette.white.value}"
           },
-          "table": {
-            "normal": {
-              "value": "{palette.dark.1.value}"
-            },
-            "disable": {
-              "value": "{palette.gray.5.value}"
-            }
+          "dot": {
+            "value": "{palette.black.6.value}"
+          },
+          "disable": {
+            "value": "{palette.black.2.value}"
           }
         },
         "filter": {
           "light": {
-            "value": "{palette.dark.1.value}"
+            "l": {
+              "value": "{palette.black.6.value}"
+            },
+            "s": {
+              "value": "{palette.black.6.value}"
+            }
           },
-          "blue": {
-            "value": "{palette.white.value}"
+          "dark": {
+            "l": {
+              "value": "{palette.white.value}"
+            },
+            "s": {
+              "value": "{palette.white.value}"
+            }
           },
           "disable": {
-            "value": "{palette.gray.5.value}"
+            "l": {
+              "value": "{palette.black.2.value}"
+            },
+            "s": {
+              "value": "{palette.black.2.value}"
+            }
           }
         },
         "version": {
@@ -142,7 +155,7 @@
           "new": {
             "value": "{palette.red.3.value}"
           },
-          "grayscale": {
+          "greyscale": {
             "value": "{palette.purple.2.value}"
           }
         }
