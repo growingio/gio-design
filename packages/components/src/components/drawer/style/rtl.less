@@ -1,0 +1,16 @@
+@import '../../../stylesheet/theme.less';
+
+@drawer-prefix-cls: ~'@{component-prefix}-drawer';
+
+.@{drawer-prefix-cls} {
+  &-rtl {
+    direction: rtl;
+  }
+
+  &-close {
+    .@{drawer-prefix-cls}-rtl & {
+      right: auto;
+      left: 0;
+    }
+  }
+}

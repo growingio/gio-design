@@ -48,12 +48,12 @@ const InputHidden: React.FC<InputProps> = ({
 
   const handleOnOk = () => {
     setAllowClear(false);
-    onOk && onOk();
+    onOk?.();
   };
 
   const handleOnCancel = () => {
     setAllowClear(false);
-    onCancel && onCancel();
+    onCancel?.();
   };
 
   return (

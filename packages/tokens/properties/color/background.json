@@ -37,16 +37,16 @@
       "button": {
         "primary": {
           "normal": {
-            "value": "{palette.blue.6.value}"
-          },
-          "hover": {
-            "value": "{palette.blue.7.value}"
-          },
-          "click": {
             "value": "{palette.blue.4.value}"
           },
+          "hover": {
+            "value": "{palette.blue.5.value}"
+          },
+          "click": {
+            "value": "{palette.blue.3.value}"
+          },
           "disable": {
-            "value": "{palette.gray.8.value}"
+            "value": "{palette.gray.1.value}"
           }
         },
         "default": {
@@ -54,16 +54,13 @@
             "value": "{palette.gray.1.value}"
           },
           "hover": {
-            "value": "{palette.gray.3.value}"
+            "value": "{palette.gray.4.value}"
           },
           "click": {
-            "value": "{palette.gray.9.value}"
+            "value": "{palette.gray.3.value}"
           },
           "disable": {
-            "value": "{palette.gray.8.value}"
-          },
-          "ghost": {
-            "value": "transparent"
+            "value": "{palette.gray.1.value}"
           }
         },
         "assist": {
@@ -74,7 +71,7 @@
             "value": "{palette.gray.3.value}"
           },
           "click": {
-            "value": "{palette.gray.9.value}"
+            "value": "{palette.gray.2.value}"
           },
           "disable": {
             "value": "{palette.white.value}"

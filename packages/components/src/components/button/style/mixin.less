@@ -14,8 +14,8 @@
 
 .button-size(@height; @padding-horizontal; @font-size; @border-radius) {
   height: @height;
-  padding-left: @padding-horizontal;
   padding-right: @padding-horizontal;
+  padding-left: @padding-horizontal;
   font-size: @font-size;
   border-radius: @border-radius;
 }
@@ -30,6 +30,12 @@
 
       text-shadow: none;
       box-shadow: none;
+    }
+    svg {
+      color: @color-text-button-icon-disable !important;
+      path {
+        fill: @color-text-button-icon-disable !important;
+      }
     }
   }
 }
@@ -102,10 +108,10 @@
   font-weight: @weight-font-button;
   white-space: nowrap;
   text-align: center;
+  text-shadow: none;
   background-image: none;
   border: 1px solid transparent;
   box-shadow: none;
-  text-shadow: none;
   cursor: pointer;
   user-select: none;
   touch-action: manipulation;
@@ -219,18 +225,24 @@
   & > * {
     font-size: @size-font-button-only-icon-default;
   }
-  &.@{btnClassName}-lg {
+  &.@{btnClassName}-large {
     .square(@btn-square-size-lg);
     .button-size(@btn-square-size-lg; 0; @size-font-button-only-icon-large; @radius-border-button);
     & > * {
       font-size: @size-font-button-only-icon-large;
     }
+    svg {
+      .square(@btn-square-size-lg - 16px);
+    }
   }
-  &.@{btnClassName}-sm {
+  &.@{btnClassName}-small {
     .square(@btn-square-size-sm);
     .button-size(@btn-square-size-sm; 0; @size-font-button-only-icon-small; @radius-border-button);
     & > * {
       font-size: @size-font-button-only-icon-small;
+    }
+    svg {
+      .square(@btn-square-size-sm - 16px) !important;
     }
   }
 }

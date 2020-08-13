@@ -1,7 +1,7 @@
 {
   "name": "@gio-design/tokens",
   "version": "20.8.2",
-  "description": "GrowingIO Design System Tokens",
+  "description": "GrowingIO Design tokens",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,7 +14,7 @@
     "clean": "rm -rf dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
   "license": "Apache-2.0",
   "devDependencies": {
     "style-dictionary": "2.9.0"
