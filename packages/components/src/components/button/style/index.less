@@ -84,6 +84,10 @@
 
   &-icon-only {
     .btn-square(@btn-prefix-cls);
+    padding: 7px !important;
+    svg {
+      vertical-align: baseline !important;
+    }
   }
 
   &:focus > span,
@@ -111,9 +115,6 @@
         fill: @color-text-button-default-ghost;
       }
     }
-  }
-
-  &-background-ghost&-text {
   }
 
   &-block {

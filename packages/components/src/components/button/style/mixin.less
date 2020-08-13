@@ -31,6 +31,12 @@
       text-shadow: none;
       box-shadow: none;
     }
+    svg {
+      color: @color-text-button-icon-disable !important;
+      path {
+        fill: @color-text-button-icon-disable !important;
+      }
+    }
   }
 }
 
@@ -219,18 +225,24 @@
   & > * {
     font-size: @size-font-button-only-icon-default;
   }
-  &.@{btnClassName}-lg {
+  &.@{btnClassName}-large {
     .square(@btn-square-size-lg);
     .button-size(@btn-square-size-lg; 0; @size-font-button-only-icon-large; @radius-border-button);
     & > * {
       font-size: @size-font-button-only-icon-large;
     }
+    svg {
+      .square(@btn-square-size-lg - 16px);
+    }
   }
-  &.@{btnClassName}-sm {
+  &.@{btnClassName}-small {
     .square(@btn-square-size-sm);
     .button-size(@btn-square-size-sm; 0; @size-font-button-only-icon-small; @radius-border-button);
     & > * {
       font-size: @size-font-button-only-icon-small;
+    }
+    svg {
+      .square(@btn-square-size-sm - 16px) !important;
     }
   }
 }

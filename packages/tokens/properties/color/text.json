@@ -46,7 +46,7 @@
             "value": "{palette.white.value}"
           },
           "disable": {
-            "value": "{palette.gray.5.value}"
+            "value": "{palette.black.2.value}"
           }
         },
         "default": {
@@ -60,7 +60,7 @@
             "value": "{palette.dark.1.value}"
           },
           "disable": {
-            "value": "{palette.gray.5.value}"
+            "value": "{palette.black.2.value}"
           },
           "ghost": {
             "value": "{palette.white.value}"
@@ -77,20 +77,23 @@
             "value": "{palette.dark.1.value}"
           },
           "disable": {
-            "value": "{palette.gray.5.value}"
+            "value": "{palette.black.2.value}"
           }
         },
         "normal": {
-          "value": "{palette.blue.3.value}"
+          "value": "{palette.blue.4.value}"
         },
         "hover": {
-          "value": "{palette.blue.7.value}"
+          "value": "{palette.blue.5.value}"
         },
         "click": {
-          "value": "{palette.blue.6.value}"
+          "value": "{palette.blue.3.value}"
         },
         "disable": {
           "value": "{palette.gray.5.value}"
+        },
+        "icon-disable": {
+          "value": "{palette.black.2.value}"
         }
       },
       "tag": {
