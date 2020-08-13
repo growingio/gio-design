@@ -27,7 +27,7 @@ export default () => {
           <Button size="large">主要按钮</Button>
         </div>
         <div className="item">
-          <Button type="primary" size="large" disabled={true}>
+          <Button type="primary" icon={<PlusCircleFilled />} size="large" disabled={true}>
             禁用
           </Button>
         </div>
