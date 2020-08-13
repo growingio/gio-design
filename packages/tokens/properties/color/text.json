@@ -279,7 +279,7 @@
           "value": "{palette.black.6.value}"
         },
         "disabled": {
-          "value": "{palette.gray.11.value}"
+          "value": "{palette.black.2.value}"
         }
       }
     }
