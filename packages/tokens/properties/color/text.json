@@ -159,9 +159,6 @@
         },
         "selected": {
           "value": "{palette.blue.7.value}"
-        },
-        "switcher": {
-          "value": "{palette.gray.10.value}"
         }
       },
       "loading": {
