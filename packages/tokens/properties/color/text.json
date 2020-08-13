@@ -273,6 +273,17 @@
         "subMenu": {
           "value": "{palette.black.3.value}"
         }
+      },
+      "pagination": {
+        "normal": {
+          "value": "{palette.black.6.value}"
+        },
+        "active": {
+          "value": "{palette.white.value}"
+        },
+        "disabled": {
+          "value": "{palette.black.2.value}"
+        }
       }
     }
   }
