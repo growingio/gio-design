@@ -71,10 +71,10 @@
   }
 
   & > &-loading-icon {
-    margin-right: @margin-xs;
     height: 16px;
+    margin-right: @margin-xs;
     svg {
-      -webkit-animation: loadingCircle 1s infinite linear;
+      -webkit-animation: loadingcircle 1s infinite linear;
       animation: loadingCircle 1s infinite linear;
     }
     &:only-child {
@@ -107,8 +107,8 @@
 
   &-background-ghost {
     color: @color-text-button-default-ghost;
-    background: @color-background-button-default-ghost !important;
-    border-color: @color-border-button-default-ghost;
+    background: transparent !important;
+    border-color: transparent;
     svg {
       color: @color-text-button-default-ghost;
       path {

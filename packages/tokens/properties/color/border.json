@@ -31,9 +31,6 @@
           },
           "disable": {
             "value": "{palette.gray.1.value}"
-          },
-          "ghost": {
-            "value": "transparent"
           }
         },
         "assist": {
