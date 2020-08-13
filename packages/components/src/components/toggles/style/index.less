@@ -1,27 +1,28 @@
 @import '~@gio-design/tokens/dist/variables.less';
 @import '../../../stylesheet/theme.less';
 .gio-toggles {
+  position: relative;
+  display: inline-block;
   width: 40px;
   height: 20px;
   border-radius: 10px;
   border: @color-border-toggles-normal-default;
   background-color: @color-background-toggles-off-normal;
-  display: inline-block;
-  position: relative;
   cursor: pointer;
   transition: all ease 0.4s;
   box-shadow: @shadow-toggles-normal-unchecked-rectangle;
 
+
   .gio-toggles-handle {
+    position: absolute;
     width: 14px;
     height: 14px;
-    border-radius: 7px;
     margin: 2px;
     background-color: @color-background-toggles-knob-off-normal;
-    position: absolute;
     left: 0px;
     transition: all ease 0.4s;
     box-shadow: @shadow-toggles-normal-unchecked-knob;
+
   }
 }
 
@@ -38,14 +39,14 @@
 }
 
 .gio-toggles-suffixContent {
-  height: 20px;
-  line-height: 20px;
   display: inline-block;
-  vertical-align: top;
-  font-size: @size-font-14;
+  height: 20px;
   margin-left: 8px;
   color: @color-text-toggles-normal;
+  font-size: @size-font-14;
   font-family: @font-family;
+  line-height: 20px;
+  vertical-align: top;
   user-select: none;
 }
 
@@ -54,6 +55,7 @@
     cursor: not-allowed;
     border: @color-border-toggles-disable-default;
     background-color: @color-background-toggles-off-disable;
+
 
     .gio-toggles-handle {
       background-color: @color-background-toggles-knob-off-disable;

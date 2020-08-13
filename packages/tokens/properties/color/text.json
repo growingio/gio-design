@@ -11,13 +11,13 @@
       },
       "breadcrumb": {
         "normal": {
-          "value": "{palette.dark.1.value}"
+          "value": "{palette.black.6.value}"
         },
         "hover": {
-          "value": "{palette.blue.6.value}"
+          "value": "{palette.blue.5.value}"
         },
         "click": {
-          "value": "{palette.dark.1.value}"
+          "value": "{palette.black.6.value}"
         }
       },
       "tooltip": {
@@ -280,6 +280,17 @@
         },
         "disabled": {
           "value": "{palette.gray.11.value}"
+        }
+      },
+      "pagination": {
+        "normal": {
+          "value": "{palette.black.6.value}"
+        },
+        "active": {
+          "value": "{palette.white.value}"
+        },
+        "disabled": {
+          "value": "{palette.black.2.value}"
         }
       }
     }

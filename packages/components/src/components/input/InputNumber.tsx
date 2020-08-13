@@ -63,13 +63,13 @@ const InputNumber: React.FC<InputNumberProps> = ({
           <Button
             type="text"
             onClick={handleAdd}
-            disabled={value >= max || disabled || !!errorMsg}
+            disabled={value >= max || disabled}
             icon={<UpFilled className={`${prefixCls}-opt-arrow-up`} />}
           />
           <Button
             type="text"
             onClick={handleDecrease}
-            disabled={value <= min || disabled || !!errorMsg}
+            disabled={value <= min || disabled}
             icon={<DownFilled className={`${prefixCls}-opt-arrow-down`} />}
           />
         </div>
