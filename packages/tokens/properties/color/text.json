@@ -277,6 +277,14 @@
           "value": "{palette.black.3.value}"
         }
       },
+      "toggles": {
+        "normal": {
+          "value": "{palette.black.6.value}"
+        },
+        "disabled": {
+          "value": "{palette.black.2.value}"
+        }
+      },
       "pagination": {
         "normal": {
           "value": "{palette.black.6.value}"

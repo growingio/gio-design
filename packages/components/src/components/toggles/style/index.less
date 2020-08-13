@@ -5,35 +5,36 @@
   display: inline-block;
   width: 40px;
   height: 20px;
-  background-color: @color-background-toggles-toggles-default;
-  border: @color-border-toggles-default;
   border-radius: 10px;
-  box-shadow: @shadow-toggles-default-toggles;
+  border: @color-border-toggles-normal-default;
+  background-color: @color-background-toggles-off-normal;
   cursor: pointer;
   transition: all ease 0.4s;
+  box-shadow: @shadow-toggles-normal-unchecked-rectangle;
+
 
   .gio-toggles-handle {
     position: absolute;
-    left: 0;
     width: 14px;
     height: 14px;
     margin: 2px;
-    background-color: @color-background-toggles-handle;
-    border-radius: 7px;
-    box-shadow: @shadow-toggles-default-handle;
+    background-color: @color-background-toggles-knob-off-normal;
+    left: 0px;
     transition: all ease 0.4s;
+    box-shadow: @shadow-toggles-normal-unchecked-knob;
+
   }
 }
 
 .gio-toggles-checked {
-  background-color: @color-background-toggles-toggles-checked;
-  border: @color-border-toggles-checked;
+  background-color: @color-background-toggles-on-normal;
+  border: @color-border-toggles-normal-checked;
   box-shadow: none;
   .gio-toggles-handle {
     left: 100%;
     margin-left: -16px;
-    background-color: @color-background-toggles-handle-checked;
-    box-shadow: @shadow-toggles-default-checked-handle;
+    background-color: @color-background-toggles-knob-on-normal;
+    box-shadow: @shadow-toggles-normal-checked-knob;
   }
 }
 
@@ -41,7 +42,7 @@
   display: inline-block;
   height: 20px;
   margin-left: 8px;
-  color: @color-background-toggles-toggles-suffix-content;
+  color: @color-text-toggles-normal;
   font-size: @size-font-14;
   font-family: @font-family;
   line-height: 20px;
@@ -51,27 +52,27 @@
 
 .gio-toggles-disabled {
   .gio-toggles {
-    background-color: @color-background-toggles-disable-toggles-default;
-    border: @color-border-toggles-disable-default;
     cursor: not-allowed;
+    border: @color-border-toggles-disable-default;
+    background-color: @color-background-toggles-off-disable;
+
 
     .gio-toggles-handle {
-      background-color: @color-background-toggles-disable-toggles-handle;
-      box-shadow: @shadow-toggles-disable-handle;
+      background-color: @color-background-toggles-knob-off-disable;
+      box-shadow: @shadow-toggles-disable-knob;
     }
   }
 
   .gio-toggles-checked {
-    background-color: @color-background-toggles-disable-toggles-checked;
+    background-color: @color-background-toggles-on-disable;
     border: @color-border-toggles-disable-checked;
 
     .gio-toggles-handle {
-      background-color: @white;
-      box-shadow: @shadow-toggles-disable-handle;
+      background-color: @color-background-toggles-knob-on-disable;
     }
   }
 
   .gio-toggles-suffixContent {
-    color: @color-background-toggles-disable-toggles-suffix-content;
+    color: @color-text-toggles-disabled;
   }
 }
