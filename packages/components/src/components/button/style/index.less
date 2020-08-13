@@ -17,7 +17,7 @@
 
   .btn;
   .btn-primary;
-  
+
   > span {
     display: inline-block;
   }
@@ -71,9 +71,10 @@
   }
 
   & > &-loading-icon {
+    height: 16px;
     margin-right: @margin-xs;
     svg {
-      -webkit-animation: loadingCircle 1s infinite linear;
+      -webkit-animation: loadingcircle 1s infinite linear;
       animation: loadingCircle 1s infinite linear;
     }
     &:only-child {
@@ -83,7 +84,6 @@
 
   &-icon-only {
     .btn-square(@btn-prefix-cls);
-    vertical-align: -0.5px;
   }
 
   &:focus > span,

@@ -11,13 +11,13 @@
       },
       "breadcrumb": {
         "normal": {
-          "value": "{palette.dark.1.value}"
+          "value": "{palette.black.6.value}"
         },
         "hover": {
-          "value": "{palette.blue.6.value}"
+          "value": "{palette.blue.5.value}"
         },
         "click": {
-          "value": "{palette.dark.1.value}"
+          "value": "{palette.black.6.value}"
         }
       },
       "tooltip": {
@@ -25,7 +25,7 @@
       },
       "tabs": {
         "normal": {
-          "value": "{palette.dark.1.value}"
+          "value": "{palette.black.6.value}"
         },
         "active": {
           "value": "{palette.blue.7.value}"
@@ -159,33 +159,130 @@
         },
         "switcher": {
           "value": "{palette.gray.10.value}"
-        },
-        "loading": {
-          "value": "{palette.dark.1.value}"
-        },
-        "popconfirm": {
-          "title": {
-            "value": "{palette.dark.3.value}"
-          },
-          "desc": {
-            "value": "{palette.dark.1.value}"
-          }
         }
       },
       "loading": {
-        "value": "{palette.dark.1.value}"
+        "value": "{palette.black.6.value}"
       },
       "popconfirm": {
         "title": {
-          "value": "{palette.dark.3.value}"
+          "value": "{palette.black.7.value}"
         },
         "desc": {
-          "value": "{palette.dark.1.value}"
+          "value": "{palette.black.6.value}"
         }
       },
       "alert": {
         "content": {
           "value": "{palette.dark.1.value}"
+        }
+      },
+      "checkbox": {
+        "primary": {
+          "normal": {
+            "value": "{palette.white.value}"
+          },
+          "hover": {
+            "value": "{palette.white.value}"
+          },
+          "click": {
+            "value": "{palette.white.value}"
+          },
+          "disable": {
+            "value": "{palette.black.2.value}"
+          }
+        },
+        "secondary": {
+          "normal": {
+            "value": "{palette.black.6.value}"
+          },
+          "hover": {
+            "value": "{palette.black.6.value}"
+          },
+          "click": {
+            "value": "{palette.black.6.value}"
+          },
+          "disable": {
+            "value": "{palette.black.2.value}"
+          }
+        },
+        "subtle": {
+          "a": {
+            "normal": {
+              "value": "{palette.black.6.value}"
+            },
+            "hover": {
+              "value": "{palette.black.6.value}"
+            },
+            "click": {
+              "value": "{palette.black.6.value}"
+            },
+            "disable": {
+              "value": "{palette.black.2.value}"
+            }
+          },
+          "b": {
+            "normal": {
+              "value": "{palette.blue.4.value}"
+            },
+            "hover": {
+              "value": "{palette.blue.5.value}"
+            },
+            "click": {
+              "value": "{palette.blue.3.value}"
+            },
+            "disable": {
+              "value": "{palette.black.2.value}"
+            }
+          }
+        }
+      },
+      "link": {
+        "normal": {
+          "value": "{palette.blue.5.value}"
+        },
+        "hover": {
+          "value": "{palette.blue.6.value}"
+        },
+        "click": {
+          "value": "{palette.blue.4.value}"
+        },
+        "disable": {
+          "value": "{palette.black.2.value}"
+        },
+        "contrast": {
+          "value": "{palette.white.value}"
+        }
+      },
+      "menu": {
+        "normal": {
+          "value": "{palette.black.7.value}"
+        },
+        "hover": {
+          "value": "{palette.black.7.value}"
+        },
+        "click": {
+          "value": "{palette.black.7.value}"
+        },
+        "active": {
+          "value": "{palette.blue.5.value}"
+        },
+        "disable": {
+          "value": "{palette.black.2.value}"
+        },
+        "subMenu": {
+          "value": "{palette.black.3.value}"
+        }
+      },
+      "pagination": {
+        "normal": {
+          "value": "{palette.black.6.value}"
+        },
+        "active": {
+          "value": "{palette.white.value}"
+        },
+        "disabled": {
+          "value": "{palette.black.2.value}"
         }
       }
     }

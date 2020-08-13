@@ -69,6 +69,33 @@
             "value": "0.5px solid rgba(56, 103, 244, 0.5)"
           }
         }
+      },
+      "checkbox": {
+        "normal": {
+          "value": "{palette.gray.7.value}"
+        },
+        "hover": {
+          "value": "{palette.blue.5.value}"
+        },
+        "active": {
+          "value": "{palette.blue.5.value}"
+        },
+        "partCheck": {
+          "value": "{palette.blue.5.value}"
+        },
+        "disable": {
+          "value": "{palette.gray.4.value}"
+        },
+        "checkedDisable": {
+          "value": "{palette.gray.4.value}"
+        }
+      },
+      "pagination": {
+        "quick-jumper": {
+          "disabled": {
+            "value": "{palette.gray.4.value}"
+          }
+        }
       }
     }
   }
