@@ -11,7 +11,7 @@ export default () => {
   return (
     <div>
       <Input.InputNumber
-        placeholder="input content"
+        placeholder="请输入…"
         value={inputValue}
         onChange={setInputValue}
         label="Normal"
@@ -21,7 +21,7 @@ export default () => {
       />
 
       <Input.InputNumber
-        placeholder="input content"
+        placeholder="请输入…"
         value={inputValue2}
         onChange={setInputValue2}
         label="Disabled"
@@ -30,19 +30,14 @@ export default () => {
       />
 
       <Input.InputNumber
-        placeholder="have error"
         value={inputValue3}
         onChange={setInputValue3}
         label="Error"
-        errorMsg="Error Message"
+        errorMsg="错误提示信息"
         wrapStyle={{ marginBottom: '30px' }}
       />
 
-      <Input.InputNumber
-        placeholder="input content without label."
-        value={inputValue4}
-        onChange={setInputValue4}
-      />
+      <Input.InputNumber placeholder="这是一个没有label的Input" value={inputValue4} onChange={setInputValue4} />
     </div>
   );
 };

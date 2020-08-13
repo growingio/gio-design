@@ -18541,6 +18541,15 @@ rc-dialog@~8.0.0:
     rc-animate "3.x"
     rc-util "^5.0.1"
 
+rc-drawer@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/rc-drawer/-/rc-drawer-4.1.0.tgz#d7bf0bc030300b62d282bc04e053b9acad6b08b4"
+  integrity sha512-kjeQFngPjdzAFahNIV0EvEBoIKMOnvUsAxpkSPELoD/1DuR4nLafom5ryma+TIxGwkFJ92W6yjsMi1U9aiOTeQ==
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "^2.2.6"
+    rc-util "^5.0.1"
+
 rc-drawer@~4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/rc-drawer/-/rc-drawer-4.0.1.tgz#eb13505021a8822380f9904b0e5c66e291bb9b64"

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Toast } from '@gio-design/components';
-import { Button } from '@gio-design/components';
+import { Toast, Button } from '@gio-design/components';
 import '@gio-design/components/es/components/toast/style/index.css';
 
 const SuccessMessage = () => (
