@@ -272,6 +272,17 @@
           "value": "{palette.gray.3.value}"
         }
       },
+      "menu": {
+        "normal": {
+          "value": "{palette.white.value}"
+        },
+        "hover": {
+          "value": "{palette.gray.1.value}"
+        },
+        "active": {
+          "value": "{palette.white.value}"
+        }
+      },
       "pagination": {
         "normal": {
           "value": "{palette.gray.1.value}"
