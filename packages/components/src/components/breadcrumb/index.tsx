@@ -1,5 +1,4 @@
 import Breadcrumb from './Breadcrumb';
-import './index.less';
 
 export { BreadcrumbProps } from './Breadcrumb';
 export { BreadcrumbItemProps } from './BreadcrumbItem';

@@ -16,8 +16,14 @@ yarn bootstrap
 yarn build
 ```
 
+watch 模式：
+
+```
+yarn watch
+```
+
 启动预览网站：
 
 ```
-yarn start:website
+yarn start
 ```
