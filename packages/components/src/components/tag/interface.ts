@@ -1,34 +1,8 @@
-export enum TagType {
-  'normal',
-  'prorupt',
-  'large',
-}
-
-export enum TagStatus {
-  'success',
-  'warning',
-  'error',
-  'offline',
-  'draft',
-}
-
-export enum TagColor {
-  'beta',
-  'new',
-  'grayscale',
-  'blue',
-}
-
-export type TagTypeKey = keyof typeof TagType;
-
-export type TagStatusKey = keyof typeof TagStatus;
-
-export type TagColorKey = keyof typeof TagColor;
-
 export interface TagProps {
-  type?: TagTypeKey;
-  status?: TagStatusKey;
-  color?: TagColorKey | string;
+  type?: 'normal' | 'prorupt';
+  status?: 'success' | 'warning' | 'error' | 'offline' | 'draft';
+  size?: 'small' | 'medium' | 'large';
+  color?: 'beta' | 'new' | 'grayscale' | 'blue';
   closable?: boolean;
   disabled?: boolean;
   persistCloseIcon?: boolean;

@@ -87,33 +87,46 @@
         },
         "status": {
           "success": {
-            "value": "{palette.green.2.value}"
+            "value": "{palette.green.5.value}"
           },
           "warning": {
-            "value": "{palette.orange.3.value}"
+            "value": "{palette.yellow.5.value}"
           },
           "error": {
-            "value": "{palette.red.3.value}"
+            "value": "{palette.red.5.value}"
           },
           "disable": {
             "value": "{palette.gray.5.value}"
           }
         },
         "filter": {
-          "normal": {
-            "value": "{palette.gray.1.value}"
+          "light": {
+            "normal": {
+              "value": "{palette.gray.1.value}"
+            },
+            "hover": {
+              "value": "{palette.gray.3.value}"
+            },
+            "click": {
+              "value": "{palette.gray.2.value}"
+            },
+            "disable": {
+              "value": "{palette.gray.1.value}"
+            }
           },
-          "hover": {
-            "value": "{palette.gray.3.value}"
-          },
-          "click": {
-            "value": "#F1F2F8"
-          },
-          "disable": {
-            "value": "#F7F8FB"
-          },
-          "blue": {
-            "value": "{palette.blue.7.value}"
+          "dark": {
+            "normal": {
+              "value": "{palette.blue.4.value}"
+            },
+            "hover": {
+              "value": "{palette.blue.5.value}"
+            },
+            "click": {
+              "value": "{palette.blue.3.value}"
+            },
+            "disable": {
+              "value": "{palette.gray.1.value}"
+            }
           }
         },
         "version": {
@@ -121,10 +134,10 @@
             "value": "{palette.blue.1.value}"
           },
           "new": {
-            "value": "{palette.red.2.value}"
+            "value": "{palette.red.1.value}"
           },
           "grayscale": {
-            "value": "{palette.purple.1.value}"
+            "value": "{palette.gray.1.value}"
           }
         }
       },
@@ -161,36 +174,37 @@
         }
       },
       "toggles": {
-        "toggles": {
-          "default": {
+        "off": {
+          "normal": {
             "value": "{palette.white.value}"
           },
-          "suffixContent": {
-            "value": "{palette.dark.1}"
+          "disable": {
+            "value": "{palette.gray.3.value}"
           }
         },
-        "toggles-checked": {
-          "value": "{palette.blue.6.value}"
+        "on": {
+          "normal": {
+            "value": "{palette.blue.4.value}"
+          },
+          "disable": {
+            "value": "{palette.blue.5.value}"
+          }
         },
-        "handle": {
-          "value": "{palette.blue.7.value}"
-        },
-        "handle-checked": {
-          "value": "{palette.white.value}"
-        },
-        "disable": {
-          "toggles": {
-            "default": {
-              "value": "{palette.gray.3.value}"
+        "knob": {
+          "off": {
+            "normal": {
+              "value": "{palette.blue.5.value}"
             },
-            "suffixContent": {
-              "value": "{palette.gray.5.value}"
+            "disable": {
+              "value": "{palette.gray.7.value}"
+            }
+          },
+          "on": {
+            "normal": {
+              "value": "{palette.white.value}"
             },
-            "checked": {
-              "value": "rgba(18, 72, 233, 0.5)"
-            },
-            "handle": {
-              "value": "{palette.gray.6.value}"
+            "disable": {
+              "value": "{palette.white.value}"
             }
           }
         }
@@ -199,37 +213,17 @@
         "value": "{palette.white.value}"
       },
       "alert": {
-        "info": {
-          "icon": {
-            "value": "{palette.blue.8.value}"
-          },
-          "default": {
-            "value": "{palette.gray.1.value}"
-          }
+        "information": {
+          "value": "{palette.gray.1.value}"
         },
         "success": {
-          "icon": {
-            "value": "{palette.green.4.value}"
-          },
-          "default": {
-            "value": "{palette.green.1.value}"
-          }
+          "value": "{palette.green.1.value}"
         },
         "warning": {
-          "icon": {
-            "value": "{palette.red.4.value}"
-          },
-          "default": {
-            "value": "{palette.orange.1.value}"
-          }
+          "value": "{palette.yellow.1.value}"
         },
         "error": {
-          "icon": {
-            "value": "{palette.red.5.value}"
-          },
-          "default": {
-            "value": "{palette.red.6.value}"
-          }
+          "value": "{palette.red.1.value}"
         }
       },
       "sign": {
