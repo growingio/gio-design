@@ -18,13 +18,13 @@ group:
 
 <code src='./demo/Input.tsx' title='基础用法' />
 
-<code src='./demo/Password.tsx' title='密码输入框' />
+<!-- <code src='./demo/Password.tsx' title='密码输入框' /> -->
 
-<code src='./demo/InputNumber.tsx' title='数字输入框' />
+<!-- <code src='./demo/InputNumber.tsx' title='数字输入框' /> -->
 
 <code src='./demo/TextArea.tsx' title='多行文本输入框' />
 
-<code src='./demo/InputHidden.tsx' title='隐藏的文本修改输入框' />
+<!-- <code src='./demo/InputHidden.tsx' title='隐藏的文本修改输入框' /> -->
 
 ## API
 
