@@ -295,6 +295,25 @@
             "value": "{palette.white.value}"
           }
         }
+      },
+      "table": {
+        "head": {
+          "value": "{palette.gray.1.value}"
+        },
+        "body": {
+          "value": "{palette.white.value}"
+        },
+        "hover": {
+          "value": "{palette.gray.3.value}"
+        },
+        "arrow": {
+          "normal": {
+            "value": "{palette.black.4.value}"
+          },
+          "active": {
+            "value": "{palette.blue.5.value}"
+          }
+        }
       }
     }
   }
