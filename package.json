@@ -54,8 +54,7 @@
     "lint:style": "stylelint 'packages/components/src/**/*.{css,less}' --syntax less",
     "lint-fix:components": "yarn run lint:components --fix",
     "lint-fix:style": "yarn run lint:style --fix",
-    "test": "yarn test:components",
-    "test:components": "yarn workspace @gio-design/components test",
+    "test": "yarn workspace @gio-design/components test",
     "version": "npx lerna version --no-private --no-git-tag-version",
     "publish": "npx lerna publish from-package --yes"
   },
