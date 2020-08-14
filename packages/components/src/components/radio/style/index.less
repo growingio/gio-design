@@ -1,15 +1,5 @@
-@import '../../../stylesheet/theme.less';
-@import '../../../stylesheet/mixin/index.less';
-
-@color-primary: #3867f4;
-@color-text: #313e75;
-
-@color-background-normal: #ffffff;
-@color-background-disabled: #f7f8fc;
-
-@color-border-normal: #a3adc8;
-@color-border-checked: #1248e9;
-@color-border-disabled: #dfe2ed;
+@import '~@gio-design/tokens/dist/variables.less';
+@import '../../../stylesheet/index.less';
 
 @radio-duration: 0.3s;
 @radio-normal-shadow: inset -0.5px 1px 2px 0 rgba(163, 173, 200, 0.8);
@@ -32,7 +22,7 @@
   &:not(&--disabled):hover {
     & :not(.@{gio-radio-checked}) {
       .@{gio-radio-prefix}-inner {
-        border-color: @color-primary;
+        border-color: @color-border-checkbox-hover;
         box-shadow: @radio-hover-shadow;
       }
     }
@@ -73,7 +63,7 @@
   & + * {
     display: inline-block;
     padding: 0 8px;
-    color: @color-text;
+    color: @color-text-checkbox-secondary-normal;
     font-size: 14px;
     line-height: 22px;
     vertical-align: middle;
@@ -86,9 +76,9 @@
     bottom: -50%;
     left: -50%;
     display: block;
-    background-color: @color-background-normal;
+    background-color: @color-background-checkbox-normal;
     border: 0.5px solid;
-    border-color: @color-border-normal;
+    border-color: @color-border-checkbox-normal;
     border-style: solid;
     border-width: 1px;
     border-radius: 50%;
@@ -104,7 +94,7 @@
       width: 5px;
       height: 5px;
       margin: auto;
-      background-color: @color-background-normal;
+      background-color: @color-background-checkbox-normal;
       border-radius: 50%;
       box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
       transform: scale(0) translate(-25%, -25%);
@@ -118,8 +108,8 @@
 // checked
 .@{gio-radio-checked} {
   .@{gio-radio-inner} {
-    background-color: @color-primary;
-    border-color: @color-border-checked;
+    background-color: @color-background-checkbox-active;
+    border-color: @color-border-checkbox-active;
     box-shadow: none;
     &::after {
       transform: scale(2) translate(-25%, -25%);
@@ -137,8 +127,8 @@
   }
 
   .@{gio-radio-inner} {
-    background-color: @color-background-disabled;
-    border-color: @color-border-disabled;
+    background-color: @color-background-checkbox-disable;
+    border-color: @color-border-checkbox-disable;
     box-shadow: none;
 
     &::after {

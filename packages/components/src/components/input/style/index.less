@@ -8,22 +8,22 @@
 
   &-label {
     margin-bottom: 8px;
-    font-size: @size-font-14;
     color: @palette-dark-1;
     font-weight: @weight-font-medium;
+    font-size: @size-font-14;
   }
 
   &-content,
   &-content-error,
   &-content-hidden {
+    width: 100%;
     padding: 9px 16px;
-    font-size: @size-font-14;
     color: @palette-dark-1;
+    font-size: @size-font-14;
     background-color: @palette-white;
-    border: 1px solid @palette-gray-11;
+    border: 1px solid @color-border-input-normal;
     border-radius: @radius-border-small;
     outline: none;
-    width: 100%;
     transition: all 0.3s ease-in-out;
   }
 
@@ -40,38 +40,38 @@
       cursor: not-allowed;
     }
     &::placeholder {
-      color: @palette-gray-12;
+      color: @palette-gray-1;
     }
   }
 
   &-content-error {
-    border-color: @palette-red-3;
+    border-color: @color-border-input-error;
     &:disabled {
       cursor: not-allowed;
     }
     &::placeholder {
-      color: @palette-gray-12;
+      color: @palette-gray-1;
     }
   }
 
   &-content {
     &::placeholder {
-      color: @palette-gray-12;
+      color: @palette-gray-1;
     }
 
     &:hover {
-      border-color: @palette-blue-7;
+      border-color: @color-border-input-hover;
       box-shadow: none;
     }
 
     &:focus {
-      border-color: @palette-blue-7;
+      border-color: @color-border-input-active;
       box-shadow: @shadow-tabs;
     }
 
     &:disabled {
-      border-color: @palette-gray-11;
       background-color: @palette-gray-1;
+      border-color: @color-border-input-disable;
       cursor: not-allowed;
     }
   }
@@ -85,8 +85,8 @@
 
     &-view {
       position: absolute;
+      top: -8px;
       right: 8px;
-      top: -4px;
 
       & > button {
         color: @palette-gray-5;
@@ -99,41 +99,33 @@
 
     &-arrow {
       position: absolute;
+      top: -14px;
       right: 16px;
-      top: -11px;
       display: flex;
       flex-direction: column;
 
       & > button {
-        width: 16px;
-        height: 16px;
+        width: 16px !important;
+        height: 16px !important;
         color: @palette-gray-5;
 
         &:hover {
           color: @palette-blue-7;
         }
       }
-
-      &-up {
-        vertical-align: text-bottom;
-      }
-
-      &-down {
-        vertical-align: top;
-      }
     }
   }
 
   &-expand {
-    margin-top: 4px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     height: 28px;
+    margin-top: 4px;
 
     &-error {
-      font-size: @size-font-12;
       color: @palette-red-3;
+      font-size: @size-font-12;
     }
   }
 }

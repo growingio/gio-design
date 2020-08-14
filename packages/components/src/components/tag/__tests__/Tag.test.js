@@ -32,11 +32,11 @@ describe('<Tag />', () => {
     expect(tree.hasClass('test-custom-tag')).toBe(true);
   });
 
-  it('should have "gio-delete-toggle', () => {
+  it('should have "gio-tag-closable-toggle', () => {
     const tree = shallow(<Tag closable={true} persistCloseIcon={false} />);
     tree.simulate('hover');
-    expect(tree.hasClass('gio-tag-delete-toggle')).toBe(true);
-    expect(tree.exists('.gio-tag-close')).toBe(true);
+    expect(tree.hasClass('gio-tag-closable-toggle')).toBe(true);
+    expect(tree.exists('.gio-tag-closable-icon')).toBe(true);
   });
 
   it('should onClose call back', () => {
@@ -44,54 +44,15 @@ describe('<Tag />', () => {
       expect(true).toBe(true);
     };
     const tree = shallow(<Tag closable={true} persistCloseIcon={true} onClose={onClose} />);
-    tree.find('.gio-tag-close').simulate('click');
+    tree.find('.gio-tag-closable-icon').simulate('click');
   });
 });
 
 describe('Tag condition functions', () => {
-  it('isProrupt', () => {
-    expect(isProrupt('prorupt', false)).toBe(true);
-    expect(isProrupt('normal', true)).toBe(true);
-  });
-  it('isLarge', () => {
-    expect(isLarge('large')).toBe(true);
-  });
-  it('isPredifinedColor', () => {
-    expect(isPredifinedColor('beta')).toBe(true);
-    expect(isPredifinedColor('new')).toBe(true);
-    expect(isPredifinedColor('asdljalksdj')).toBe(false);
-  });
-  it('isPredifinedStatus', () => {
-    expect(isPredifinedStatus('success')).toBe(true);
-    expect(isPredifinedStatus('warning')).toBe(true);
-    expect(isPredifinedStatus('asdljalksdj')).toBe(false);
-  });
   it('isPersistClose', () => {
     expect(isToggleClose(true, true)).toBe(false);
     expect(isToggleClose(true, false)).toBe(true);
     expect(isToggleClose(false, true)).toBe(false);
     expect(isToggleClose(false, false)).toBe(false);
-  });
-});
-
-describe('Tag conditional classes functions', () => {
-  const prefix = 'gio-tag';
-  it('getTypeClass', () => {
-    expect(getTypeClass(prefix, 'normal')).toBe('');
-    expect(getTypeClass(prefix, 'prorupt', true)).toBe('gio-tag-prorupt');
-    expect(getTypeClass(prefix, 'large', true)).toBe('gio-tag-prorupt gio-tag-large');
-  });
-  it('getStatusClass', () => {
-    expect(getStatusClass(prefix, 'success')).toBe('gio-tag-status-success');
-  });
-  it('getColorClass', () => {
-    expect(getColorClass(prefix, 'beta')).toBe('gio-tag-color-beta');
-  });
-  it('getDeleteToggleClass', () => {
-    expect(getDeleteToggleClass(prefix, true)).toBe('gio-tag-delete-toggle');
-    expect(getDeleteToggleClass(prefix, false)).toBe('');
-  });
-  it('getDisabledClass', () => {
-    expect(getDisabledClass(prefix, true)).toBe('gio-tag-disabled');
   });
 });

@@ -1,135 +1,132 @@
-@import '../../../stylesheet/font.less';
-@import '../../../stylesheet/fontSize.less';
-@import '../../../stylesheet//radius.less';
 @import '../../../stylesheet/theme.less';
-@import '../../../stylesheet/textColor.less';
 @import '~@gio-design/tokens/dist/variables.less';
 
 @tag-prefix-cls: ~'@{component-prefix}-tag';
-@tag-padding: 8px;
+@tag-padding: @size-spacing-xs;
 
-@tag-font-size: @default-font-size-2;
-@tag-line-height: 20px;
-
-@tag-font-size-prorupt: @default-font-size-3;
-@tag-line-height-prorupt: 24px;
-
-@tag-font-size-large: @default-font-size-3;
-@tag-line-height-large: 32px;
-
-.@{tag-prefix-cls}{
+.@{tag-prefix-cls} {
   display: inline-block;
-  color: @color-text-tag-sign-regular;
-  background-color: @color-background-tag-sign;
-  border-radius: @border-radius-medium;
-  padding-left: @tag-padding;
   padding-right: @tag-padding;
-  font-size: @tag-font-size;
-  line-height: @tag-line-height;
+  padding-left: @tag-padding;
+  color: @color-text-tag-sign-normal;
   font-family: @font-family;
-  font-weight: @weight-font-medium;
+  background-color: @color-background-tag-sign;
+  border-radius: @radius-border-small;
   cursor: default;
+
+  &-size {
+    &-small {
+      font-weight: @weight-font-medium;
+      font-size: @size-font-12;
+      line-height: 20px;
+    }
+
+    &-medium {
+      font-weight: @weight-font-regular;
+      font-size: @size-font-14;
+      line-height: 24px;
+    }
+
+    &-large {
+      font-weight: @weight-font-regular;
+      font-size: @size-font-14;
+      line-height: 32px;
+    }
+  }
 
   &-status {
     &-success {
       color: @color-text-tag-sign-inline;
     }
+    &-success.@{tag-prefix-cls}-type-prorupt {
+      background-color: @color-background-tag-status-success;
+    }
     &-warning {
-      color: @color-text-tag-sign-ready;
+      color: @color-text-tag-sign-processing;
+    }
+    &-warning.@{tag-prefix-cls}-type-prorupt {
+      background-color: @color-background-tag-status-warning;
     }
     &-error {
       color: @color-background-tag-status-error;
     }
+    &-error.@{tag-prefix-cls}-type-prorupt {
+      background-color: @color-background-tag-status-error;
+    }
     &-draft {
-      color:@color-text-tag-sign-draft;
+      color: @color-text-tag-sign-draft;
     }
     &-offline {
       color: @color-text-tag-sign-offline;
     }
   }
 
-  &-prorupt {
-    font-size: @tag-font-size-prorupt;
-    line-height: @tag-line-height-prorupt;
-    font-weight: @weight-font-regular;
-  }
-
-  &-prorupt&-status {
-    &-success {
-      color: @default-color-text-inverse;
-      background-color: @color-background-tag-status-success;
+  &-type {
+    &-prorupt {
+      color: @color-text-tag-status-button;
     }
-    &-warning {
-      color: @default-color-text-inverse;
-      background-color: @color-background-tag-status-warning;
-    }
-    &-error {
-      color: @default-color-text-inverse;
-      background-color: @color-background-tag-status-error;
-    }
-    &-draft {
-      color: @default-color-text-inverse;
-      background-color: @color-text-tag-sign-draft;
-    }
-    &-offline {
-      color: @default-color-text-inverse;
-      background-color: @color-text-tag-sign-offline;
-    }
-  }
-
-  &-large {
-    font-size: @tag-font-size-large;
-    line-height: @tag-line-height-large;
   }
 
   &-color {
     &-beta {
       color: @color-text-tag-version-beta;
       background-color: @color-background-tag-version-beta;
-      font-weight: @weight-font-medium;
     }
     &-new {
       color: @color-text-tag-version-new;
       background-color: @color-background-tag-version-new;
-      font-weight: @weight-font-medium;
     }
     &-grayscale {
       color: @color-text-tag-version-grayscale;
       background-color: @color-background-tag-version-grayscale;
-      font-weight: @weight-font-medium;
     }
     &-blue {
-      color: @color-text-tag-filter-blue;
-      background-color: @color-background-tag-filter-blue;
-      font-weight: @weight-font-medium;
+      color: @color-background-tag-filter-dark-normal;
+      background-color: @color-background-tag-filter-dark-normal;
     }
   }
 
-  &-delete-toggle & {
-    &-close {
-      display: none;
+  &-closable {
+    background-color: @color-background-tag-filter-light-normal;
+    &:hover {
+      background-color: @color-background-tag-filter-light-hover;
     }
-  }
-
-  &-delete-toggle:hover {
-    background-color: @color-background-tag-filter-hover;
-  }
-
-  &-delete-toggle:hover & {
-    &-close {
-      display: inline;
+    &:focus {
+      background-color: @color-background-tag-filter-light-click;
     }
-  }
 
-  &-close {
-    vertical-align: middle;
-    margin-left: @tag-padding;
-    margin-bottom: 2px;
-    cursor: pointer;
-  }
+    &.@{tag-prefix-cls}-type-prorupt {
+      background-color: @color-background-tag-filter-dark-normal;
+      &:hover {
+        background-color: @color-background-tag-filter-dark-hover;
+      }
+      &:focus {
+        background-color: @color-background-tag-filter-dark-click;
+      }
+    }
 
-  &-disabled {
-    color: @color-text-tag-filter-disable!important;
-    background-color: @color-background-tag-filter-disable!important;
+    &-icon {
+      margin-bottom: 2px;
+      margin-left: @tag-padding;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    &-toggle & {
+      &-icon {
+        display: none;
+      }
+    }
+
+    &-toggle:hover & {
+      &-icon {
+        display: inline;
+      }
+    }
+
+    &-disabled {
+      color: @color-text-tag-filter-disable-l !important;
+      background-color: @color-background-tag-filter-dark-disable !important;
+    }
   }
 }

@@ -1,0 +1,81 @@
+@import '~@gio-design/tokens/dist/variables.less';
+@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/radius.less';
+
+@progress-prefix-cls: ~'@{component-prefix}-progress';
+
+@progress-height: 16px;
+
+// progress无token 暂时使用色值 之后替换为新版color palette值
+@progress-text-color: #242E59;
+@progress-trail-bg-color: #EBEDF5;
+@progress-trail-border-color: #DFE2ED;
+@progress-trail-bg-shadow-color: #DCDFED;
+@progress-active-bg-color: #3867F4;
+@progress-active-bg-shadow-color: #1248E9;
+@progress-success-bg-color: #0BA471;
+@progress-success-bg-shadow-color:#00875A;
+@progress-exception-bg-color: #DE350B;
+@progress-exception-bg-shadow-color: #BC2B07;
+
+.@{progress-prefix-cls}{ 
+  display: flex;
+  align-items: center;
+  color: @progress-text-color;
+  font-size: @size-font-16;
+  font-weight:  @weight-font-regular;
+  &-trail {
+    flex-basis: 100%;
+    background-color: @progress-trail-bg-color;
+    border: 0.5px solid @progress-trail-border-color;
+    box-shadow: inset 0 0 3px @progress-trail-bg-shadow-color;
+    height: @progress-height;
+    border-radius: @border-radius-pill;
+    overflow: hidden;
+  }
+
+  &-stroke {
+    width: 0;
+    height: 100%;
+    transition: all .4s cubic-bezier(.08,.82,.17,1) 0s;
+  }
+
+  &-active {
+    background-color: @progress-active-bg-color;
+    box-shadow: inset 0 0 5px @progress-active-bg-shadow-color;
+  }
+
+  &-success {
+    background-color: @progress-success-bg-color;
+    box-shadow: inset 0 0 5px @progress-success-bg-shadow-color;
+    &-icon {
+      vertical-align: text-top;
+      color:  @progress-success-bg-color
+    }
+  }
+
+  &-exception {
+    background-color: @progress-exception-bg-color;
+    box-shadow: inset 0 0 5px @progress-exception-bg-shadow-color;
+    &-icon {
+      vertical-align: text-top;
+      color:  @progress-exception-bg-color;
+      margin-top: 1.5px;
+    }
+  }
+
+  &-info {
+    margin-left: @size-spacing-m;
+    white-space: nowrap;
+    width: 6rem;
+  }
+
+  &-text {
+    vertical-align: middle;
+  }
+
+  &-icon {
+    vertical-align: middle;
+    margin-left: @size-spacing-xs;
+  }
+}

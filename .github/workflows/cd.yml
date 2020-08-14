@@ -1,0 +1,41 @@
+name: Continuous Deployment
+on:
+  push:
+    branches:
+      - master
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '1'
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Build packages and website
+        run: yarn bootstrap && yarn build && yarn workspace website build:gh-pages
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./packages/website/dist
+      - name: Sending deploy succeeded message
+        uses: x-actions/dingtalk@master
+        env:
+          DINGTALK_ACCESS_TOKEN: ${{ secrets.DINGTALK_ACCESS_TOKEN }}
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+          MSGTYPE: markdown
+          TITLE: GrowingIO Design deploy succeeded
+          TEXT: |
+            - [GrowingIO Design](https://growingio.design)
+            - [GrowingIO Design on GitHub Pages](https://growingio.github.io/gio-design/)

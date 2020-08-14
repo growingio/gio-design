@@ -25,12 +25,13 @@ group:
 
 ### Checkbox
 
-| 参数             | 说明                      | 类型                                                             | 默认值   |
-| ---------------- | ------------------------- | ---------------------------------------------------------------- | -------- |
-| type             | 类型                      | `TagType` : `normal`, `prorupt`, `large`                         | `normal` |
-| status           | 状态                      | `TagStatus` : `success`, `warning`, `error`， `offline`, `draft` | -        |
-| color            | 预定义的颜色搭配          | `TagColor` : `beta`, `new`, `grayscale`, `blue`                  | -        |
-| disabled         | 失效                      | `boolean`                                                        | false    |
-| closable         | 显示可关闭图标            | `boolean`                                                        | false    |
-| persistCloseIcon | 关闭图标是否由 hover 触发 | `boolean`                                                        | true     |
-| onClose          | 点击关闭图标的回调        | `(event) => void`                                                | -        |
+| 参数             | 说明                      | 类型                                                          | 默认值   |
+| ---------------- | ------------------------- | ------------------------------------------------------------- | -------- |
+| type             | 类型                      | `string` : `normal`, `prorupt`                                | `normal` |
+| size             | 大小                      | `string` : `small`, `medium`, `large`                         | `large`  |
+| status           | 状态                      | `string` : `success`, `warning`, `error`， `offline`, `draft` | -        |
+| color            | 预定义的颜色搭配          | `string` : `beta`, `new`, `grayscale`                         | -        |
+| disabled         | 失效                      | `boolean`                                                     | false    |
+| closable         | 显示可关闭图标            | `boolean`                                                     | false    |
+| persistCloseIcon | 关闭图标是否由 hover 触发 | `boolean`                                                     | true     |
+| onClose          | 点击关闭图标的回调        | `(event) => void`                                             | -        |

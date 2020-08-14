@@ -13,23 +13,33 @@
       "value": "0 0 6px 0 rgba(223,226,237,0.8)"
     },
     "toggles": {
-      "default": {
-        "toggles": {
-          "value": "inset -0.5px 0 2px 0 rgba(163, 173, 200, 0.8)"
-        },
-        "handle": {
-          "value": "0.5px 1px 1px 0 rgba(0,0,0,0.2)"
+      "normal": {
+        "unchecked": {
+          "rectangle": {
+            "value": "inset -0.5px 0 2px 0 rgba(163, 173, 200, 0.8)"
+          },
+          "knob": {
+            "value": "0.5px 1px 1px 0 rgba(0,0,0,0.2)"
+          }
         },
         "checked": {
-          "handle": {
+          "knob": {
             "value": "0.5px 1px 3px 0 rgba(0,0,0,0.4)"
           }
         }
       },
       "disable": {
-        "handle": {
+        "knob": {
           "value": "-0.5px 0 1px 0 rgba(163, 173, 200, 0.5)"
         }
+      }
+    },
+    "pagination": {
+      "button": {
+        "value": "0 0 4px 0 rgba(163,173,200,0.94)"
+      },
+      "input": {
+        "value": "0 0 6px 0 rgba(223,226,237,0.8)"
       }
     }
   }

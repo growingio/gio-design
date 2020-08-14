@@ -8,11 +8,6 @@
   "workspaces": {
     "packages": [
       "packages/*"
-    ],
-    "nohoist": [
-      "**/@gio-design/icon/**",
-      "**/@gio-design/themes/**",
-      "**/@gio-design/react-svg-icon-generator/**"
     ]
   },
   "license": "Apache-2.0",
@@ -42,29 +37,25 @@
     "stylelint-prettier": "^1.1.2"
   },
   "scripts": {
-    "start": "npx lerna run --scope @gio-design/components start --stream",
+    "cm": "git-cz",
     "bootstrap": "npx lerna bootstrap",
-    "start:website": "npx lerna run --scope website start --stream",
-    "start:components": "npx lerna run --scope @gio-design/components watch --stream",
     "clean": "npx lerna clean",
-    "build": "yarn build:tokens && yarn build:themes && yarn build:icon-generator && yarn build:icon && yarn build:icons && yarn build:components",
-    "build:website": "yarn workspace website docs:build",
+    "start": "yarn workspace website start",
+    "watch": "yarn workspace @gio-design/components watch",
+    "build": "yarn build:tokens && yarn build:icons && yarn build:components",
     "build:tokens": "yarn workspace @gio-design/tokens build",
-    "build:themes": "yarn workspace @gio-design/themes build",
-    "build:icon": "yarn workspace @gio-design/icon build",
     "build:icons": "yarn workspace @gio-design/icons build",
     "build:components": "yarn workspace @gio-design/components build",
-    "build:icon-generator": "yarn workspace @gio-design/react-svg-icon-generator build",
+    "build:website": "yarn workspace website build",
     "g:icons": "yarn workspace @gio-design/icons generate",
-    "publish": "npx lerna publish",
     "lint": "yarn lint:components",
     "lint:components": "eslint packages/components/src --ext .js,.jsx,.ts,.tsx",
     "lint:style": "stylelint 'packages/components/src/**/*.{css,less}' --syntax less",
     "lint-fix:components": "yarn run lint:components --fix",
     "lint-fix:style": "yarn run lint:style --fix",
-    "cm": "git-cz",
     "test": "yarn test:components",
-    "test:components": "yarn workspace @gio-design/components test"
+    "test:components": "yarn workspace @gio-design/components test",
+    "publish": "npx lerna publish"
   },
   "config": {
     "commitizen": {

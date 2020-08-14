@@ -144,8 +144,13 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
     [`${prefixCls}-block`]: block,
   });
 
+  /* eslint-disable prettier/prettier */
   const iconNode =
-    icon && !innerLoading ? icon : <LoadingIcon existIcon={!!icon} prefixCls={prefixCls} loading={innerLoading} />;
+    icon && !innerLoading ? (
+      icon
+    ) : (
+        <LoadingIcon existIcon={!!icon} type={type} prefixCls={prefixCls} loading={innerLoading} />
+      );
 
   const kids = children || children === 0 ? spaceChildren(children, isNeedInserted() && autoInsertSpace) : null;
 
