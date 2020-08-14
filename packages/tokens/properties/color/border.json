@@ -95,6 +95,23 @@
             "value": "{palette.gray.4.value}"
           }
         }
+      },
+      "input": {
+        "normal": {
+          "value": "{palette.gray.4.value}"
+        },
+        "hover": {
+          "value": "{palette.blue.5.value}"
+        },
+        "active": {
+          "value": "{palette.blue.5.value}"
+        },
+        "disable": {
+          "value": "{palette.gray.4.value}"
+        },
+        "error": {
+          "value": "{palette.red.3.value}"
+        }
       }
     }
   }

@@ -21,7 +21,7 @@
     color: @palette-dark-1;
     font-size: @size-font-14;
     background-color: @palette-white;
-    border: 1px solid @palette-gray-11;
+    border: 1px solid @color-border-input-normal;
     border-radius: @radius-border-small;
     outline: none;
     transition: all 0.3s ease-in-out;
@@ -40,38 +40,38 @@
       cursor: not-allowed;
     }
     &::placeholder {
-      color: @palette-gray-12;
+      color: @palette-gray-1;
     }
   }
 
   &-content-error {
-    border-color: @palette-red-3;
+    border-color: @color-border-input-error;
     &:disabled {
       cursor: not-allowed;
     }
     &::placeholder {
-      color: @palette-gray-12;
+      color: @palette-gray-1;
     }
   }
 
   &-content {
     &::placeholder {
-      color: @palette-gray-12;
+      color: @palette-gray-1;
     }
 
     &:hover {
-      border-color: @palette-blue-7;
+      border-color: @color-border-input-hover;
       box-shadow: none;
     }
 
     &:focus {
-      border-color: @palette-blue-7;
+      border-color: @color-border-input-active;
       box-shadow: @shadow-tabs;
     }
 
     &:disabled {
       background-color: @palette-gray-1;
-      border-color: @palette-gray-11;
+      border-color: @color-border-input-disable;
       cursor: not-allowed;
     }
   }
@@ -85,7 +85,8 @@
 
     &-view {
       position: absolute;
-      top: -4px;
+      top: -8px;
+      right: 8px;
 
       & > button {
         color: @palette-gray-5;
@@ -98,27 +99,19 @@
 
     &-arrow {
       position: absolute;
-      top: -11px;
+      top: -14px;
       right: 16px;
       display: flex;
       flex-direction: column;
 
       & > button {
-        width: 16px;
-        height: 16px;
+        width: 16px !important;
+        height: 16px !important;
         color: @palette-gray-5;
 
         &:hover {
           color: @palette-blue-7;
         }
-      }
-
-      &-up {
-        vertical-align: text-bottom;
-      }
-
-      &-down {
-        vertical-align: top;
       }
     }
   }
