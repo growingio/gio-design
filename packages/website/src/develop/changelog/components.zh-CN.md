@@ -9,6 +9,15 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.8.3
+
+- 🆕 新增[Pagination 分页](/components/functional/pagination)组件。 [#57](https://github.com/growingio/gio-design/pull/57)
+- 🆕 新增[Menu 菜单](/components/basic/menu)组件。 [#60](https://github.com/growingio/gio-design/pull/60)
+- 🆕 新增[Progress 进度条](/components/basic/progress)组件。 [#62](https://github.com/growingio/gio-design/pull/62)
+- 🆕 新增[Drawer 抽屉](/components/basic/drawer)组件。 [#64](https://github.com/growingio/gio-design/pull/64)
+- 🆕 按钮组件新增图标按钮类型。 [#92](https://github.com/growingio/gio-design/pull/92)
+- 🐛 修正输入框组件的 tokens。 [#98](https://github.com/growingio/gio-design/pull/98)
+
 ## 20.8.2
 
 - 🆕 新增[Alert 警告提示](/components/basic/alert)组件。 [#52](https://github.com/growingio/gio-design/pull/52)

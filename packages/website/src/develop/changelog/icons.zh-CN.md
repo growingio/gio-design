@@ -9,6 +9,10 @@ nav:
 
 # @gio-design/icons 更新日志
 
+## 20.8.2
+
+- 🆕 新增 `LeftDoubleOutlined`、`LeftOutlined`、`RightDoubleOutlined`、`RightOutlined` 图标。 [#57](https://github.com/growingio/gio-design/pull/57)
+
 ## 20.8.1
 
 - 📛 `Loading` 图标名称更新为 `LoadingBlackOutlined` 和 `LoadingWhiteOutlined`。 [#71](https://github.com/growingio/gio-design/pull/71)
