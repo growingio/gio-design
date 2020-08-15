@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "website",
-  "version": "20.8.2",
+  "version": "1.0.0",
   "scripts": {
     "start": "dumi dev",
     "build": "UMI_ENV=production dumi build",
@@ -15,7 +15,7 @@
   "dependencies": {
     "@babel/helper-skip-transparent-expression-wrappers": "^7.11.0",
     "@babel/plugin-syntax-logical-assignment-operators": "^7.10.4",
-    "@gio-design/components": "^20.8.2",
+    "@gio-design/components": "^20.8.3",
     "@gio-design/icons": "^20.8.1",
     "@gio-design/tokens": "^20.8.2",
     "eslint-plugin-eslint-comments": "3.2.0",
