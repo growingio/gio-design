@@ -27,11 +27,17 @@
         "normal": {
           "value": "{palette.black.6.value}"
         },
-        "active": {
-          "value": "{palette.blue.7.value}"
-        },
         "disable": {
-          "value": "{palette.gray.5.value}"
+          "value": "{palette.black.2.value}"
+        },
+        "active": {
+          "value": "{palette.blue.5.value}"
+        },
+        "active-hover": {
+          "value": "{palette.blue.6.value}"
+        },
+        "active-click": {
+          "value": "{palette.blue.4.value}"
         }
       },
       "button": {

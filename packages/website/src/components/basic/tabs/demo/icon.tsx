@@ -1,22 +1,35 @@
 import React from 'react';
 import { Tabs, TabPane } from '@gio-design/components';
 import '@gio-design/components/es/components/tabs/style/index.css';
-import { WarningFilled, App, AppsFilled, Calendar } from '@gio-design/icons';
+import {
+  BarChartHorizontalOutlined,
+  BarChartOutlined,
+  DotChartOutlined,
+  LineChartOutlined,
+  NumberChartOutlined,
+  TableChartOutlined,
+} from '@gio-design/icons';
 
 export default () => {
   const renderPane = () => (
     <>
-      <TabPane icon={<WarningFilled />} key="1">
+      <TabPane icon={<LineChartOutlined />} key="1">
         1111
       </TabPane>
-      <TabPane icon={<App />} key="2">
+      <TabPane icon={<BarChartOutlined />} key="2">
         2222
       </TabPane>
-      <TabPane icon={<AppsFilled />} key="3">
+      <TabPane icon={<BarChartHorizontalOutlined />} key="3">
         3333
       </TabPane>
-      <TabPane disabled icon={<Calendar />} key="4">
+      <TabPane disabled icon={<TableChartOutlined />} key="4">
         4444
+      </TabPane>
+      <TabPane disabled icon={<NumberChartOutlined />} key="5">
+        5555
+      </TabPane>
+      <TabPane icon={<DotChartOutlined />} key="6">
+        6666
       </TabPane>
     </>
   );
