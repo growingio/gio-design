@@ -3,22 +3,31 @@ on:
   pull_request:
     types: [opened, synchronize]
 jobs:
-  run:
-    strategy:
-      matrix:
-        node_version: [10.x, 12.x]
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
+  scan:
+    name: Code Scanning
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - run: git checkout HEAD^2
+        if: ${{ github.event_name == 'pull_request' }}
+      - name: Detect Secrets
+        uses: zricethezav/gitleaks-action@master
+  install:
+    name: Install dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
         uses: actions/checkout@v2
         with:
           fetch-depth: '1'
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node_version }}
-      - name: Restore lerna
+          node-version: 12.x
+      - name: Cache Node.js modules
         uses: actions/cache@v2
         with:
           path: |
@@ -26,10 +35,76 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Bootstrap
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn bootstrap
+  lint:
+    name: Lint Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '1'
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Restore Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Lint
         run: yarn lint
+  build:
+    name: Build Packages
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '1'
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Restore Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Build
+        run: yarn build
+  test:
+    name: Test Coverage
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '1'
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Restore Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Build
         run: yarn build
       - name: Test
-        run: yarn test
+        run: yarn test --coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          directory: ./packages/components/coverage/

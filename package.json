@@ -27,6 +27,7 @@
     "husky": "^4.2.5",
     "lerna": "^3.16.4",
     "lint-staged": "^10.2.7",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.0.5",
     "stylelint": "^13.6.0",
     "stylelint-config-prettier": "^8.0.1",
@@ -53,9 +54,9 @@
     "lint:style": "stylelint 'packages/components/src/**/*.{css,less}' --syntax less",
     "lint-fix:components": "yarn run lint:components --fix",
     "lint-fix:style": "yarn run lint:style --fix",
-    "test": "yarn test:components",
-    "test:components": "yarn workspace @gio-design/components test",
-    "publish": "npx lerna publish"
+    "test": "yarn workspace @gio-design/components test",
+    "version": "npx lerna version --no-private --no-git-tag-version",
+    "publish": "npx lerna publish from-package --yes"
   },
   "config": {
     "commitizen": {

@@ -28,7 +28,7 @@
           "value": "{palette.white.value}"
         },
         "click": {
-          "value": "#F1F2FA"
+          "value": "{palette.gray.2.value}"
         }
       },
       "popover": {

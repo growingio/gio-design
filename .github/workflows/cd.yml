@@ -7,7 +7,7 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v2
         with:
           fetch-depth: '1'
@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Restore lerna
+      - name: Restore Node.js modules
         uses: actions/cache@v2
         with:
           path: |
@@ -24,6 +24,12 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Build packages and website
         run: yarn bootstrap && yarn build && yarn workspace website build:gh-pages
+      - name: Test
+        run: yarn test --coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          directory: ./packages/components/coverage/
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
