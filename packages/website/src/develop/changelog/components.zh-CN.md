@@ -9,6 +9,10 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.8.4
+
+- 🆕 新增[Tabnav 标签导航](/components/basic/tabnav)组件。 [#105](https://github.com/growingio/gio-design/pull/105)
+
 ## 20.8.3
 
 - 🆕 新增[Pagination 分页](/components/functional/pagination)组件。 [#57](https://github.com/growingio/gio-design/pull/57)
