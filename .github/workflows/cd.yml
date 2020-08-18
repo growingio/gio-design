@@ -47,8 +47,8 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Build packages and website
-        run: yarn bootstrap && yarn build && yarn workspace website build:gh-pages
+      - name: Build packages
+        run: yarn build
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov
@@ -84,8 +84,8 @@ jobs:
           MSGTYPE: markdown
           TITLE: GrowingIO Design deploy succeeded
           TEXT: |
-            ## GrowingIO Design deploy succeeded\n\n
-            ${{ github.event.head_commit.message }}\n\n
+            ## GrowingIO Design deploy succeeded
+            ${{ github.event.head_commit.message }}
             - [GrowingIO Design](https://growingio.design)
             - [GrowingIO Design on GitHub Pages](https://www.growingio.design)
   deploy_github:
