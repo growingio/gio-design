@@ -78,7 +78,7 @@ jobs:
             packages/website/dist
           key: website-${{ github.sha }}
       - name: Deploy
-        run: npx surge --project ./packages/website/dist --domain ${{ SURGE_DOMAIN }} --token $(SURGE_TOKEN)
+        run: npx surge --project ./packages/website/dist --domain ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
       - name: Sending deploy succeeded message
         uses: x-actions/dingtalk@master
         env:
