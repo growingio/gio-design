@@ -33,6 +33,7 @@ const Pagination = (props: PaginationProps) => {
   }, [current]);
 
   const shouldShowQuickJumper = useMemo(() => showQuickJumper && pageNumber > 10, [showQuickJumper, pageNumber]);
+  const shouldShowOption = useMemo(() => shouldShowQuickJumper, [shouldShowQuickJumper]);
   const generateSuccessionArray = (start: number, end: number) => Array.from(new Array(end + 1).keys()).slice(start);
   const offset = 5;
   const offsetRadius = Math.floor(offset / 2);
@@ -171,7 +172,7 @@ const Pagination = (props: PaginationProps) => {
         })}
         onClick={() => prevDisabled || handleClick(localCurrent - 1)}
       >
-        <LeftOutlined />
+        <LeftOutlined width={16} height={16} />
       </li>
       {renderPage()}
       <li
@@ -180,9 +181,9 @@ const Pagination = (props: PaginationProps) => {
         })}
         onClick={() => nextDisabled || handleClick(localCurrent + 1)}
       >
-        <RightOutlined />
+        <RightOutlined width={16} height={16} />
       </li>
-      <li className={`${prefixCls}-options`}>{shouldShowQuickJumper && renderInput()}</li>
+      {shouldShowOption && <li className={`${prefixCls}-options`}>{shouldShowQuickJumper && renderInput()}</li>}
     </ul>
   );
 };
