@@ -6,10 +6,7 @@ on:
 jobs:
   install:
     name: Install dependencies
-    if: ｜
-      startsWith(github.event.head_commit.message, 'feat') ||
-      startsWith(github.event.head_commit.message, 'fix') ||
-      startsWith(github.event.head_commit.message, 'docs')
+    if: startsWith(github.event.head_commit.message, 'feat') || startsWith(github.event.head_commit.message, 'fix') || startsWith(github.event.head_commit.message, 'docs')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
