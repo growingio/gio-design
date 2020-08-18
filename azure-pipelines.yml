@@ -12,42 +12,47 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-  - stage: deploy
+  - stage: preview
+    displayName: Preview
     jobs:
-      - job: deploy_preview
+      - job: deploy
+        displayName: Deploy pull request
         steps:
           - checkout: self
-            displayName: 'Checkout'
             clean: true
             fetchDepth: 1
-          - task: NodeTool@0
-            displayName: 'Install Node@12.x'
+            displayName: Checkout repository
+          - task: UseNode@1
             inputs:
-              versionSpec: '12.13.1'
+              version: 12.x
+            displayName: Setup Node.js
           - script: yarn bootstrap
-            displayName: 'Bootstrap all packages'
+            displayName: Bootstrap
           - script: yarn build
-            displayName: 'Build all packages'
+            displayName: Build all packages
           - script: yarn build:website
-            displayName: 'Build website'
+            displayName: Build website
           - script: |
               export DEPLOY_DOMAIN=https://deploy-preview-$(System.PullRequest.PullRequestNumber)--gio-design.surge.sh
               npx surge --project ./packages/website/dist --domain $DEPLOY_DOMAIN --token $(SURGE_TOKEN)
-            displayName: 'Deploy website'
+            displayName: Deploy website
+      - job: deploy_succeeded_comment
+        displayName: Comment preview website link
+        dependsOn: deploy
+        condition: succeeded()
+        steps:
           - task: GitHubComment@0
-            displayName: 'Comment preview site on PR'
             inputs:
               gitHubConnection: 'growingio'
               repositoryName: '$(Build.Repository.Name)'
               id: '$(System.PullRequest.PullRequestNumber)'
-              comment: 'Deploy preview for ready! https://deploy-preview-$(System.PullRequest.PullRequestNumber)--gio-design.surge.sh'
-
-      - job: deploy_preview_failed
-        dependsOn: deploy_preview
+              comment: 'Deploy preview for ready! ✅ https://deploy-preview-$(System.PullRequest.PullRequestNumber)--gio-design.surge.sh'
+      - job: deploy_failed_comment
+        displayName: Comment failed information
+        dependsOn: deploy
         condition: failed()
         steps:
           - task: GitHubComment@0
-            displayName: 'Comment on PR'
             inputs:
               gitHubConnection: 'growingio'
               repositoryName: '$(Build.Repository.Name)'
