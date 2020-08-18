@@ -4,7 +4,35 @@ on:
     branches:
       - master
 jobs:
-  run:
+  install:
+    name: Install dependencies
+    if: ｜
+      startsWith(github.event.head_commit.message, 'feat') ||
+      startsWith(github.event.head_commit.message, 'fix') ||
+      startsWith(github.event.head_commit.message, 'docs')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '1'
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Bootstrap
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn bootstrap
+  build:
+    name: Build Packages
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -30,11 +58,27 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           directory: ./packages/components/coverage/
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Cahce website
+        uses: actions/cache@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./packages/website/dist
+          path: |
+            packages/website/dist
+          key: website-${{ github.sha }}
+      - name: Build website
+        run: yarn build:website
+  deploy_surge:
+    name: Deploying website to Surge
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restore website
+        uses: actions/cache@v2
+        with:
+          path: |
+            packages/website/dist
+          key: website-${{ github.sha }}
+      - name: Deploy
+        run: npx surge --project ./packages/website/dist --domain ${{ SURGE_DOMAIN }} --token $(SURGE_TOKEN)
       - name: Sending deploy succeeded message
         uses: x-actions/dingtalk@master
         env:
@@ -43,5 +87,23 @@ jobs:
           MSGTYPE: markdown
           TITLE: GrowingIO Design deploy succeeded
           TEXT: |
+            ## GrowingIO Design deploy succeeded\n\n
+            ${{ github.event.head_commit.message }}\n\n
             - [GrowingIO Design](https://growingio.design)
-            - [GrowingIO Design on GitHub Pages](https://growingio.github.io/gio-design/)
+            - [GrowingIO Design on GitHub Pages](https://www.growingio.design)
+  deploy_github:
+    name: Deploying website to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restore website
+        uses: actions/cache@v2
+        with:
+          path: |
+            packages/website/dist
+          key: website-${{ github.sha }}
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./packages/website/dist
