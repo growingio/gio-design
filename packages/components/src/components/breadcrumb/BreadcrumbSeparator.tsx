@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface BreadcrumbSeparatorProps {
-  separator?: string;
+  separator?: React.ReactNode;
 }
 
 const BreadcrumbSeparator: React.FC<BreadcrumbSeparatorProps> = (props: BreadcrumbSeparatorProps) => {

@@ -2,19 +2,22 @@ import React from 'react';
 import classNames from 'classnames';
 import BreadcrumbItem from './BreadcrumbItem';
 import BreadcrumbSeparator from './BreadcrumbSeparator';
+import { ConfigContext } from '../config-provider';
 
 export interface Route {
   path: string;
   breadcrumbName: string;
+  children?: Omit<Route, 'children'>[];
 }
 
 export interface BreadcrumbProps {
+  prefixCls?: string;
   routes?: Route[];
   params?: any;
-  separator?: string;
+  style?: React.CSSProperties;
+  separator?: React.ReactNode;
   className?: string;
   itemRender?: (route: Route, params: any, routes: Array<Route>, paths: Array<string>) => React.ReactNode;
-  children?: React.ReactNode;
 }
 
 function getBreadcrumbName(route: Route, params: any) {
@@ -36,7 +39,7 @@ function isLastItem(route: Route, routes: Route[]) {
 /* eslint-disable-next-line */
 function defaultItemRender(route: Route, params: any, routes: Route[], paths: string[]) {
   const name = getBreadcrumbName(route, params);
-  return isLastItem(route, routes) ? <span>{name}</span> : <a href={`#/${paths.join('/')}`}>{name}</a>;
+  return isLastItem(route, routes) ? <span>{name}</span> : <a href={`/${paths.join('/')}`}>{name}</a>;
 }
 
 const getPath = (path: string, params: any) => {
@@ -52,9 +55,21 @@ interface BreadcrumbInterface extends React.FC<BreadcrumbProps> {
   Separator: typeof BreadcrumbSeparator;
 }
 
-const Breadcrumb: BreadcrumbInterface = (props: BreadcrumbProps) => {
-  const { routes, separator = '/', itemRender = defaultItemRender, params = {}, children } = props;
+const Breadcrumb: BreadcrumbInterface = ({
+  prefixCls: customizePrefixCls,
+  separator = '/',
+  style,
+  className,
+  routes,
+  children,
+  itemRender = defaultItemRender,
+  params = {},
+  ...restProps
+}) => {
+  const { getPrefixCls } = React.useContext(ConfigContext);
+
   let crumbs;
+  const prefixCls = getPrefixCls('breadcrumb', customizePrefixCls);
   if (routes && routes.length > 0) {
     const paths: string[] = [];
     crumbs = routes.map((route: Route) => {
@@ -63,14 +78,8 @@ const Breadcrumb: BreadcrumbInterface = (props: BreadcrumbProps) => {
       if (path) {
         paths.push(path);
       }
-
       return (
-        <BreadcrumbItem
-          separator={separator}
-          key={path || route.breadcrumbName}
-          {...route}
-          isLastItem={isLastItem(route, routes)}
-        >
+        <BreadcrumbItem separator={separator} key={path || route.breadcrumbName}>
           {itemRender(route, params, routes, paths)}
         </BreadcrumbItem>
       );
@@ -78,7 +87,11 @@ const Breadcrumb: BreadcrumbInterface = (props: BreadcrumbProps) => {
   } else if (children) {
     crumbs = children;
   }
-  return <div className={classNames(props.className, 'gio-breadcrumb')}>{crumbs}</div>;
+  return (
+    <div className={classNames(className, prefixCls)} style={style} {...restProps}>
+      {crumbs}
+    </div>
+  );
 };
 
 Breadcrumb.Item = BreadcrumbItem;
