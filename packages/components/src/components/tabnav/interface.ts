@@ -7,9 +7,12 @@ export interface TabNavProps {
   type?: 'block' | 'line';
   size?: 'large' | 'middle' | 'small' | 'xs';
   onChange?: (_key: RefKey) => void;
+  defaultActiveKey?: string;
+  activeKey?: string;
 }
 
 export interface TabNavItemProps {
+  prefixCls?: string;
   children?: React.ReactNode;
   key?: string | number;
   className?: string;
