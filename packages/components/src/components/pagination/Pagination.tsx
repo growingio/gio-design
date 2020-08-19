@@ -6,21 +6,20 @@ import Input from '../input';
 import { ConfigContext } from '../config-provider';
 import { PaginationProps } from './interface';
 
-const Pagination = (props: PaginationProps) => {
-  const {
-    prefixCls: customizePrefixCls,
-    defaultCurrent = 1,
-    disabled,
-    pageSize = 10,
-    current,
-    className,
-    style,
-    total = 0,
-    showTotal = (total: number) => `总共 ${total.toLocaleString()} 条`,
-    onChange,
-    showQuickJumper = false,
-  } = props;
-
+const Pagination = ({
+  prefixCls: customizePrefixCls,
+  defaultCurrent = 1,
+  disabled,
+  pageSize = 10,
+  current,
+  className,
+  style,
+  total = 0,
+  showTotal = (total: number) => `总共 ${total.toLocaleString()} 条`,
+  onChange,
+  showQuickJumper = false,
+  hideOnSinglePage = false,
+}: PaginationProps) => {
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('pagination', customizePrefixCls);
   const pageNumber = useMemo(() => Math.ceil(total / pageSize), [total, pageSize]);
@@ -157,6 +156,10 @@ const Pagination = (props: PaginationProps) => {
       页
     </div>
   );
+
+  if (hideOnSinglePage && pageNumber <= 1) {
+    return null;
+  }
 
   return (
     <ul
