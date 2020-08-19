@@ -36,6 +36,7 @@ group:
 | loading | 设置按钮载入状态 | boolean | false |
 | ghost | 幽灵属性，使按钮背景透明 | boolean | false |
 | block | 将按钮宽度调整为其父宽度的选项 | boolean | false |
+| tooltipProps | 按钮的tooltip | {title: string, placement: 同tooltip的placement } | - |
 
 ## 按钮尺寸
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import Tooltip from '../tooltip';
 import { ConfigContext } from '../config-provider';
 import SizeContext from '../config-provider/SizeContext';
 import LoadingIcon from './LoadingIcon';
@@ -75,6 +76,7 @@ interface CompoundedComponent extends React.ForwardRefExoticComponent<ButtonProp
 
 const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
   const {
+    tooltipProps,
     loading,
     prefixCls: customizePrefixCls,
     type,
@@ -155,12 +157,17 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
   const kids = children || children === 0 ? spaceChildren(children, isNeedInserted() && autoInsertSpace) : null;
 
   const { htmlType, ...otherProps } = rest;
+
   const buttonNode = (
     <button {...otherProps} ref={buttonRef} type={htmlType} className={classes} onClick={handleClick}>
       {iconNode}
       {kids}
     </button>
   );
+
+  if (tooltipProps) {
+    return <Tooltip title={tooltipProps.title} placement={tooltipProps.placement}><div style={{ display: 'inline-flex' }}>{buttonNode}</div></Tooltip>
+  }
 
   return buttonNode;
 };

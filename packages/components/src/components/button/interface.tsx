@@ -1,4 +1,5 @@
 import { SizeType } from '../config-provider/SizeContext';
+import { TooltipProps } from '../tooltip/interface';
 
 export type ButtonType = 'primary' | 'secondary' | 'assist' | 'text';
 export type ButtonHTMLType = 'submit' | 'button' | 'reset';
@@ -13,6 +14,7 @@ export interface BaseButtonProps {
   ghost?: boolean;
   block?: boolean;
   children?: React.ReactNode;
+  tooltipProps?: Omit<TooltipProps, 'children'>;
 }
 
 export type ButtonProps = {
