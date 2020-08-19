@@ -22,14 +22,15 @@ group:
 
 ## 参数说明
 
-| 参数                | 说明                                         | 类型                     | 默认值                                                 |
-| ------------------- | -------------------------------------------- | ------------------------ | ------------------------------------------------------ |
-| **disabled**        | 禁用分页组件                                 | boolean                  | false                                                  |
-| **prefixCls**       | 设置组件 CSS 类前缀                          | string                   | gio-pagination                                         |
-| **defaultCurrent**  | 设置默认页                                   | number                   | 1                                                      |
-| **current**         | 设置当前页                                   | number                   |                                                        |
-| **total**           | 数据总数                                     | number                   | 0                                                      |
-| **pageSize**        | 每页条数                                     | number                   | 10                                                     |
-| **onChange**        | 页码改变的回调，参数是改变后的页码及每页条数 | function(page, pageSize) |                                                        |
-| **showTotal**       | 用于显示数据总量和当前数据顺序               | function(total, range)   | (total: number) => `总共 ${total.toLocaleString()} 条` |
-| **showQuickJumper** | 用于快速跳转                                 | boolean                  | false                                                  |
+| 参数                 | 说明                                         | 类型                     | 默认值                                                 |
+| -------------------- | -------------------------------------------- | ------------------------ | ------------------------------------------------------ |
+| **disabled**         | 禁用分页组件                                 | boolean                  | false                                                  |
+| **prefixCls**        | 设置组件 CSS 类前缀                          | string                   | gio-pagination                                         |
+| **defaultCurrent**   | 设置默认页                                   | number                   | 1                                                      |
+| **current**          | 设置当前页                                   | number                   |                                                        |
+| **total**            | 数据总数                                     | number                   | 0                                                      |
+| **pageSize**         | 每页条数                                     | number                   | 10                                                     |
+| **onChange**         | 页码改变的回调，参数是改变后的页码及每页条数 | function(page, pageSize) |                                                        |
+| **showTotal**        | 用于显示数据总量和当前数据顺序               | function(total, range)   | (total: number) => `总共 ${total.toLocaleString()} 条` |
+| **showQuickJumper**  | 用于快速跳转                                 | boolean                  | false                                                  |
+| **hideOnSinglePage** | 只有一页时是否隐藏分页器                     | boolean                  | false                                                  |

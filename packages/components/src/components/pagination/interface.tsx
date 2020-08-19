@@ -10,4 +10,5 @@ export interface PaginationProps {
   onChange?: (page: number, pageSize: number) => void;
   showTotal?: (total: number, range: [number, number]) => React.ReactNode;
   showQuickJumper?: boolean;
+  hideOnSinglePage?: boolean;
 }
