@@ -63,8 +63,8 @@ jobs:
           key: website-${{ github.sha }}
       - name: Build website
         run: yarn build:website
-  deploy_surge:
-    name: Deploying website to Surge
+  deploy_netlify:
+    name: Deploying website to Netlify
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -75,7 +75,7 @@ jobs:
             packages/website/dist
           key: website-${{ github.sha }}
       - name: Deploy
-        run: npx surge --project ./packages/website/dist --domain ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
+        run: npx netlify deploy --prod --dir ./packages/website/dist --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --site ${{ secrets.NETLIFY_SITE_ID }}
       - name: Sending deploy succeeded message
         uses: x-actions/dingtalk@master
         env:
@@ -87,7 +87,7 @@ jobs:
             ## GrowingIO Design deploy succeeded
             ${{ github.event.head_commit.message }}
             - [GrowingIO Design](https://growingio.design)
-            - [GrowingIO Design on GitHub Pages](https://www.growingio.design)
+            - [GrowingIO Design on GitHub Pages](https://mirror.growingio.design)
   deploy_github:
     name: Deploying website to GitHub Pages
     needs: build
