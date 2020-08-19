@@ -9,7 +9,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-tabnav-item",
+          "class": "gio-tabnav-item gio-tabnav-item-active",
         },
         "children": Array [
           Object {
@@ -350,7 +350,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-tabnav-item",
+            "class": "gio-tabnav-item gio-tabnav-item-active",
           },
           "children": Array [
             Object {
@@ -539,7 +539,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
-              "class": "gio-tabnav-item",
+              "class": "gio-tabnav-item gio-tabnav-item-active",
             },
             "children": Array [
               Object {
@@ -726,7 +726,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "gio-tabnav-item",
+                "class": "gio-tabnav-item gio-tabnav-item-active",
               },
               "children": Array [
                 Object {
@@ -915,7 +915,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "gio-tabnav-item",
+                  "class": "gio-tabnav-item gio-tabnav-item-active",
                 },
                 "children": Array [
                   Object {

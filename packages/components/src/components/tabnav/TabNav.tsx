@@ -13,13 +13,12 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
     type = 'block',
     size = 'large',
     onChange,
+    onTabClick,
     activeKey,
-    defaultActiveKey,
+    defaultActiveKey = '',
   } = props;
 
-  const [localActiveKey, setLocalActiveKey] = useState<string | number | null>(
-    activeKey ? activeKey : defaultActiveKey || null
-  );
+  const [localActiveKey, setLocalActiveKey] = useState<string | number>(activeKey ? activeKey : defaultActiveKey);
   const [inkStyle, setInkStyle] = useState<{ left?: number; width?: number }>({});
   const wrapperRefKey = useRef<symbol>(Symbol('tabNav'));
   const [setRef, getRef] = useRefs<HTMLDivElement>();
@@ -37,8 +36,8 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
     const _tabNavKeys: (string | number)[] = [];
     const _tabNavChildren = toArray(children).map((node: React.ReactElement<TabNavItemProps>, index) => {
       if (React.isValidElement(node) && node.type === TabNav.Item) {
-        const { className, key, disabled, onClick, ...rest } = node.props;
-        const _key = isNil(key) ? index.toString() : key;
+        const { className, disabled, onClick, ...rest } = node.props;
+        const _key = isNil(node.key) ? index : node.key;
         _tabNavKeys.push(_key);
         return (
           <TabNav.Item
@@ -48,13 +47,18 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
             })}
             prefixCls={prefixCls}
             disabled={disabled}
-            key={index}
+            key={_key}
             ref={setRef(_key)}
             onClick={(e) => {
               if (!disabled) {
-                setLocalActiveKey(_key);
-                onChange?.(_key);
                 onClick?.(e);
+                onTabClick?.(_key);
+                if (isNil(activeKey)) {
+                  setLocalActiveKey(_key);
+                }
+                if (localActiveKey !== _key) {
+                  onChange?.(_key);
+                }
               }
             }}
             {...rest}
@@ -64,13 +68,19 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
       return null;
     });
     return [_tabNavKeys, _tabNavChildren];
-  }, [children, localActiveKey]);
+  }, [children, localActiveKey, onChange, onTabClick]);
 
-  useEffect(() => {
+  useMemo(() => {
     if (!tabNavKeys.includes(localActiveKey)) {
       setLocalActiveKey(tabNavKeys[0]);
     }
   }, []);
+
+  useMemo(() => {
+    if (!isNil(activeKey) && tabNavKeys.includes(activeKey)) {
+      setLocalActiveKey(activeKey);
+    }
+  }, [activeKey]);
 
   useEffect(() => {
     if (!isNil(getRef(localActiveKey)?.current) && !isNil(getRef(wrapperRefKey.current)?.current)) {

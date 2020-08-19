@@ -46,6 +46,15 @@
         background-color: @color-background-tabs-hover;
       }
     }
+    &-active&-disabled {
+      color: @color-text-tabs-active;
+      &:hover {
+        color: @color-text-tabs-active-hover;
+      }
+      &:active {
+        color: @color-text-tabs-active-click;
+      }
+    }
   }
 
   &-block &-item {
@@ -76,6 +85,13 @@
       &:hover {
         background-color: @color-background-tabs-hover;
       }
+    }
+  }
+
+  &-line &-item-active&-item-disabled {
+    background-color: @color-background-tabs-active;
+    &:hover {
+      background-color: @color-background-tabs-active;
     }
   }
 

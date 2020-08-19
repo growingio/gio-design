@@ -1,4 +1,3 @@
-export type RefKey = React.Key | Symbol | null;
 export interface TabNavProps {
   prefixCls?: string;
   className?: string;
@@ -6,9 +5,10 @@ export interface TabNavProps {
   children?: React.ReactNode;
   type?: 'block' | 'line';
   size?: 'large' | 'middle' | 'small' | 'xs';
-  onChange?: (_key: RefKey) => void;
-  defaultActiveKey?: string;
-  activeKey?: string;
+  onTabClick?: (_key: string | number) => void;
+  onChange?: (_key: string | number) => void;
+  defaultActiveKey?: string | number;
+  activeKey?: string | number;
 }
 
 export interface TabNavItemProps {
