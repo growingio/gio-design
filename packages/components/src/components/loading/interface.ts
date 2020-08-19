@@ -4,7 +4,7 @@ export interface LoadingProps {
   title?: false | string;
   delay?: number;
   prefixCls?: string;
-  children?: React.ReactDOM;
+  children?: React.ReactChild;
   className?: string;
   style?: React.CSSProperties;
   size?: 'small' | 'middle' | 'large';

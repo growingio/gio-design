@@ -36,6 +36,7 @@
     "rc-notification": "^3.3.1",
     "rc-tabs": "^11.5.2",
     "rc-tooltip": "^4.2.1",
+    "rc-upload": "^3.2.0",
     "rc-util": "^5.0.5",
     "react-use": "^15.1.1",
     "shallowequal": "^1.1.0"
@@ -50,7 +51,8 @@
     "ts-import-plugin": "^1.6.1",
     "ts-jest": "^26.1.0",
     "tslib": "^2.0.0",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "xhr-mock": "^2.5.1"
   },
   "peerDependencies": {
     "react": "^16.8.6",
