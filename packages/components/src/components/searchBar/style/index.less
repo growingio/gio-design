@@ -4,16 +4,52 @@
 @import '../../input/style/index.less';
 
 @select-prefix-cls: ~'@{component-prefix}-select';
+@iconfont-css-prefix: ~'@{component-prefix}-icon';
+
 @select-height-without-border: @input-height-base - 2 * @border-width-base;
 @select-dropdown-edge-child-vertical-padding: 16px 24px;
-
+@select-clear-background: @palette-white;
 @control-padding-horizontal: 12px;
+@zindex-dropdown: 10000;
+@select-dropdown-bg: @palette-white;
+@box-shadow-base: 0 6px 14px 0 rgba(223, 226, 237, 0.8);
+@select-dropdown-height: 240px;
+@select-dropdown-vertical-padding: 9px 0;
+@text-color: @palette-black-6;
+@select-dropdown-font-size: @size-font-14;
+@select-item-active-bg: @color-background-tree-hover;
+@select-item-selected-color: @palette-blue-5;
+@select-item-selected-bg: @color-background-tree-hover;
+@select-multiple-padding: 9px;
+@input-padding-vertical-base: 16px;
+@select-background: @palette-white;
+@border-width-base: 1px;
+@border-style-base: solid;
+@select-border-color: @palette-gray-4;
+@input-disabled-bg: @palette-gray-4;
+@select-multiple-disabled-background: @palette-gray-4;
+@select-multiple-item-spacing-half: 5px;
+@select-multiple-item-height: 30px;
+@select-multiple-item-border-width: 1px;
+@padding-xs: 10px;
+@select-selection-item-bg: @palette-gray-4;
+@select-selection-item-border-color: @palette-gray-4;
+@select-multiple-item-disabled-color: @palette-gray-4;
+@select-multiple-item-disabled-border-color: @palette-gray-4;
+@input-padding-horizontal: 9px;
+@input-padding-horizontal-m: 9px;
+@input-padding-horizontal-base: 9px;
+@input-padding-horizontal-lg: 9px;
+@input-padding-horizontal-sm: 9px;
+@select-multiple-item-height-lg: 30px;
+@select-single-item-height-lg: 30px;
+@selection-item-padding: 5px;
 
-.select-selector() {
+.select-selector {
   position: relative;
   background-color: @select-background;
   border: @border-width-base @border-style-base @select-border-color;
-  border-radius: @border-radius-base;
+  border-radius: @radius-border-medium;
   transition: all 0.3s @ease-in-out;
 
   input {
@@ -28,9 +64,9 @@
     }
   }
 
-  .@{select-prefix-cls}-focused& {
-    .active();
-  }
+  // .@{select-prefix-cls}-focused& {
+  //   .active();
+  // }
 
   .@{select-prefix-cls}-disabled& {
     color: @disabled-color;
@@ -154,9 +190,6 @@
     &::before {
       display: block;
     }
-    &:hover {
-      color: @text-color-secondary;
-    }
 
     .@{select-prefix-cls}:hover & {
       opacity: 1;
@@ -179,7 +212,7 @@
     // https://github.com/ant-design/ant-design/issues/11843
     font-variant: initial;
     background-color: @select-dropdown-bg;
-    border-radius: @border-radius-base;
+    border-radius: @radius-border-medium;
     outline: none;
     box-shadow: @box-shadow-base;
 
@@ -219,7 +252,6 @@
     color: @text-color;
     font-weight: normal;
     font-size: @select-dropdown-font-size;
-    line-height: @select-dropdown-line-height;
   }
 
   &-item-empty {
@@ -235,7 +267,6 @@
 
     // =========== Group ============
     &-group {
-      color: @text-color-secondary;
       font-size: @size-font-14;
       cursor: default;
     }
@@ -261,7 +292,6 @@
 
       &-selected:not(&-disabled) {
         color: @select-item-selected-color;
-        font-weight: @select-item-selected-font-weight;
         background-color: @select-item-selected-bg;
 
         .@{select-prefix-cls}-item-option-state {
@@ -346,7 +376,7 @@
       line-height: @select-multiple-item-height - @select-multiple-item-border-width * 2;
       background: @select-selection-item-bg;
       border: 1px solid @select-selection-item-border-color;
-      border-radius: @border-radius-base;
+      border-radius: @radius-border-medium;
       cursor: default;
       transition: font-size 0.3s, line-height 0.3s, height 0.3s;
       user-select: none;
@@ -369,7 +399,6 @@
       &-remove {
         .iconfont-mixin();
         display: inline-block;
-        color: @text-color-secondary;
         font-weight: bold;
         font-size: @size-font-14;
         line-height: inherit;
