@@ -295,6 +295,17 @@
             "value": "{palette.white.value}"
           }
         }
+      },
+      "banner": {
+        "normal": {
+          "value": "{palette.blue.3.value}"
+        },
+        "alert": {
+          "value": "{palette.yellow.3.value}"
+        },
+        "hover": {
+          "value": "{palette.white.value}"
+        }
       }
     }
   }

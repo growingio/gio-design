@@ -311,6 +311,14 @@
         "disabled": {
           "value": "{palette.black.2.value}"
         }
+      },
+      "banner": {
+        "normal": {
+          "value": "{palette.white.value}"
+        },
+        "alert": {
+          "value": "{palette.black.6.value}"
+        }
       }
     }
   }
