@@ -1,14 +1,11 @@
 import React from 'react';
+import classNames from 'classnames';
 import { TabPaneProps } from './interface';
-import { TabPane as RcTabPane } from 'rc-tabs';
 
-const TabPane = (props: TabPaneProps) => {
-  const { icon, tab, children, ...rest } = props;
-  return (
-    <RcTabPane tab={icon ? icon : tab} {...rest}>
-      {children}
-    </RcTabPane>
-  );
-};
+const TabPane = ({ children, prefixCls, style, className }: TabPaneProps) => (
+  <div className={classNames(`${prefixCls}-tabpane`, className)} style={style}>
+    {children}
+  </div>
+);
 
 export default TabPane;

@@ -14,7 +14,6 @@ export interface TabNavProps {
 export interface TabNavItemProps {
   prefixCls?: string;
   children?: React.ReactNode;
-  key?: string | number;
   className?: string;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLDivElement>;

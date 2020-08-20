@@ -13,22 +13,22 @@ import {
 export default () => {
   const renderPane = () => (
     <>
-      <TabPane icon={<LineChartOutlined />} key="1">
+      <TabPane tab={<LineChartOutlined />} key="1">
         1111
       </TabPane>
-      <TabPane icon={<BarChartOutlined />} key="2">
+      <TabPane tab={<BarChartOutlined />} key="2">
         2222
       </TabPane>
-      <TabPane icon={<BarChartHorizontalOutlined />} key="3">
+      <TabPane tab={<BarChartHorizontalOutlined />} key="3">
         3333
       </TabPane>
-      <TabPane disabled icon={<TableChartOutlined />} key="4">
+      <TabPane disabled tab={<TableChartOutlined />} key="4">
         4444
       </TabPane>
-      <TabPane disabled icon={<NumberChartOutlined />} key="5">
+      <TabPane disabled tab={<NumberChartOutlined />} key="5">
         5555
       </TabPane>
-      <TabPane icon={<DotChartOutlined />} key="6">
+      <TabPane tab={<DotChartOutlined />} key="6">
         6666
       </TabPane>
     </>

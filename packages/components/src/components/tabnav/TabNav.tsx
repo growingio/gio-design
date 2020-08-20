@@ -83,12 +83,6 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   }, [activeKey]);
 
   useEffect(() => {
-    if (!isNil(activeKey) && tabNavKeys.includes(activeKey)) {
-      setLocalActiveKey(activeKey);
-    }
-  }, [activeKey]);
-
-  useEffect(() => {
     if (!isNil(getRef(localActiveKey)?.current) && !isNil(getRef(wrapperRefKey.current)?.current)) {
       const { left, width } = getRef(localActiveKey)!.current!.getBoundingClientRect();
       const wrapperLeft = getRef(wrapperRefKey.current)!.current!.getBoundingClientRect().left;
