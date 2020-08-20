@@ -41,6 +41,14 @@
       "input": {
         "value": "0 0 6px 0 rgba(223,226,237,0.8)"
       }
+    },
+    "table": {
+      "right-shadow": {
+        "value": "inset 10px 0 8px -8px rgba(36, 33, 33, 0.15)"
+      },
+      "left-shadow": {
+        "value": "inset -10px 0 8px -8px rgba(36, 33, 33, 0.15)"
+      }
     }
   }
 }
