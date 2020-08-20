@@ -11,17 +11,9 @@ const Loading: React.FC<LoadingProps> = (props: LoadingProps) => {
   const shouldLoading = useDebounceLoading(loading, delay);
 
   const renderLoadingElement = () => {
-    const { indicator, rotate = true } = props;
+    const { indicator } = props;
     if (indicator) {
-      return (
-        <span
-          className={classNames(`${prefixCls}-indicator`, {
-            [`${prefixCls}-indicator-rotate`]: rotate,
-          })}
-        >
-          {indicator}
-        </span>
-      );
+      return <span className={`${prefixCls}-indicator`}>{indicator}</span>;
     }
     return (
       <span className={`${prefixCls}-strip`}>

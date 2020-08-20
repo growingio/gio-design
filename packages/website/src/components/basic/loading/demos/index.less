@@ -2,6 +2,14 @@
   .gio-loading {
     margin: 0 20px;
   }
+  .gio-loading-indicator > svg {
+    animation: loadingCircle 1s infinite linear;
+    @keyframes loadingCircle {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
   .gio-btn {
     margin: 10px;
     .gio-loading {
