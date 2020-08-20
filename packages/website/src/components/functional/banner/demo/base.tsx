@@ -1,5 +1,5 @@
 import React from 'react';
-import Banner from '@gio-design/components/es/components/Banner';
+import Banner from '@gio-design/components/es/components/banner';
 import Button from '@gio-design/components/es/components/button';
 import '@gio-design/components/es/components/banner/style/index.css';
 
