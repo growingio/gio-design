@@ -49,6 +49,11 @@ describe('Testing Pagination', () => {
     expect(wrapper.exists('.gio-pagination-options-quick-jumper')).toBe(true);
   });
 
+  test('props hideOnSinglePage', () => {
+    const wrapper = mount(<Pagination hideOnSinglePage={true} total={10} />);
+    expect(wrapper.exists('.gio-pagination')).toBe(false);
+  });
+
   test('porps onChange', () => {
     const onChange = jest.fn();
     const wrapper = mount(<Pagination onChange={onChange} total={1100} />);

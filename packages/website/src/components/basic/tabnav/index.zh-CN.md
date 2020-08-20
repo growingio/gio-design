@@ -24,13 +24,16 @@ group:
 
 ### TabNav
 
-| 参数      | 说明                 | 类型                                   | 默认值  |
-| --------- | -------------------- | -------------------------------------- | ------- |
-| prefixCls | 替代组件的类前缀     | string                                 | -       |
-| children  | 子元素               | TabNav.Item[]                          | -       |
-| type      | 标签导航按钮样式     | 'block' \| 'line'                      | 'block' |
-| size      | 标签导航尺寸         | 'large' \| 'middle' \| 'small' \| 'xs' | 'large' |
-| onChange  | 标签激活改变时的回调 | (\_key: React.Key) => void             | -       |
+| 参数             | 说明                                  | 类型                                   | 默认值       |
+| ---------------- | ------------------------------------- | -------------------------------------- | ------------ |
+| prefixCls        | 替代组件的类前缀                      | string                                 | 'gio-tabnav' |
+| children         | 子元素                                | TabNav.Item[]                          | -            |
+| type             | 标签导航按钮样式                      | 'block' \| 'line'                      | 'block'      |
+| size             | 标签导航尺寸                          | 'large' \| 'middle' \| 'small' \| 'xs' | 'large'      |
+| onChange         | 标签激活改变时的回调                  | (\_key: string \| number) => void      | -            |
+| onTabClick       | 标签被点击时的回调                    | (\_key: string \| number) => void      | -            |
+| activeKey        | 开启受控模式，当前激活 tab 面板的 key | string \| number                       | -            |
+| defaultActiveKey | 初始化选中面板的 key                  | string \| number                       | -            |
 
 ### TabNav.Item
 
