@@ -4,7 +4,7 @@
 
 .@{tabnav-prefix-cls} {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   border-radius: 4px;
   user-select: none;
   &-item {
@@ -46,6 +46,15 @@
         background-color: @color-background-tabs-hover;
       }
     }
+    &-active&-disabled {
+      color: @color-text-tabs-active;
+      &:hover {
+        color: @color-text-tabs-active-hover;
+      }
+      &:active {
+        color: @color-text-tabs-active-click;
+      }
+    }
   }
 
   &-block &-item {
@@ -79,17 +88,33 @@
     }
   }
 
+  &-line &-item-active&-item-disabled {
+    background-color: @color-background-tabs-active;
+    &:hover {
+      background-color: @color-background-tabs-active;
+    }
+  }
+
   &-block {
     padding: 1px;
     background-color: @color-background-tabs-normal;
+  }
+  &-lg {
+    height: 42px;
   }
   &-lg &-item,
   &-block&-lg &-ink-bar {
     height: 40px;
   }
+  &-md {
+    height: 38px;
+  }
   &-md &-item,
   &-block&-md &-ink-bar {
     height: 36px;
+  }
+  &-sm {
+    height: 32px;
   }
   &-sm &-item,
   &-block&-sm &-ink-bar {

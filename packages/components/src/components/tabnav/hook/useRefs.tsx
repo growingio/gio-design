@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { RefKey } from '../interface';
+type RefKey = string | number | Symbol;
 
 export default function useRefs<RefType>(): [
   (key: RefKey, ref?: React.RefObject<RefType>) => React.RefObject<RefType> | undefined,
