@@ -19,3 +19,4 @@ export { default as Pagination } from './components/pagination';
 export { default as TabNav } from './components/tabnav';
 export { default as Upload } from './components/upload';
 export { default as Table } from './components/table';
+export { default as Modal, StepModal, IModalProps, IStepModalProps, TModalSize, IStep } from './components/modal';

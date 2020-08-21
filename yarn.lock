@@ -17639,6 +17639,14 @@ rc-collapse@~2.0.0:
     react-is "^16.7.0"
     shallowequal "^1.1.0"
 
+rc-dialog@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.npm.taobao.org/rc-dialog/download/rc-dialog-8.1.0.tgz?cache=0&sync_timestamp=1594264518864&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frc-dialog%2Fdownload%2Frc-dialog-8.1.0.tgz#393910963bb05ac19d6d136620bd09622f1d677a"
+  integrity sha1-OTkQljuwWsGdbRNmIL0JYi8dZ3o=
+  dependencies:
+    rc-animate "3.x"
+    rc-util "^5.0.1"
+
 rc-dialog@~8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/rc-dialog/-/rc-dialog-8.0.0.tgz#fe0658ad9e9eddbbdabf91ba6104e39c1e9f9195"
