@@ -49,7 +49,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       return null;
     }
 
-    return <div></div>;
+    return <div>123</div>;
   };
 
   return (
