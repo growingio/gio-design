@@ -1,22 +1,29 @@
-/**
- * Template for React SVG
- *
- * Converts the given SVG into a TypeScript-compatible React component
- */
-function template({ template }, opts, { imports, componentName, props, jsx, exports }) {
-  const typeScriptTpl = template.smart({ plugins: ['typescript'] });
+function template({ template }, opts, { imports, componentName, jsx, exports }) {
+  const plugins = ['jsx'];
+  if (opts.typescript) {
+    plugins.push('typescript');
+  }
+  const typeScriptTpl = template.smart({ plugins });
+  return typeScriptTpl.ast`${imports}
+import Wrapper from './Wrapper';
+import { IconProps } from './interface';
 
-  return typeScriptTpl.ast`
-  import React from 'react';
-
-  type SvgIconProps = {
-  } & React.SVGProps<SVGSVGElement>;
-
-  const ${componentName} = (props: SvgIconProps): JSX.Element => (
+function ${componentName}(wrapperProps: IconProps) {
+  const { rotating, color, size, ...restProps } = wrapperProps;
+  const props = {
+    color,
+    className: rotating ? 'gio-icon-svg gio-icon-rotating' : 'gio-icon-svg',
+    width: !size ? '1rem' : size,
+    height: !size ? '1rem' : size,
+  };
+  const file = (
     ${jsx}
   );
-
-  ${exports}
+  return (
+    <Wrapper {...restProps} icon={file} />
+  );
+}
+${exports}
   `;
 }
 

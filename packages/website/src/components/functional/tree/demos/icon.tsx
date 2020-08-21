@@ -1,7 +1,7 @@
 import React from 'react';
 import Tree from '@gio-design/components/es/components/tree';
 import '@gio-design/components/es/components/tree/style/css.js';
-import { App, Setting, Check } from '@gio-design/icons';
+import { AppOutlined, Setting, Check } from '@gio-design/icons';
 import './index.less';
 
 const treeData = [
@@ -57,12 +57,10 @@ const Demo: React.FC<{}> = () => {
         <Tree
           defaultExpandedKeys={['0-0-0', '0-0-1']}
           defaultSelectedKeys={['0-0-1']}
-          onSelect={(selectedKeys: string[], info: any) =>
-            onSelect(selectedKeys, info)
-          }
+          onSelect={onSelect}
           treeData={treeData}
           showIcon
-          icon={<App />}
+          icon={<AppOutlined />}
         />
       </div>
     </div>

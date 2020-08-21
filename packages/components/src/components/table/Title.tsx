@@ -84,8 +84,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
               className={`${prefixCls}-column-filter-inner-btn`}
               icon={
                 <FilterFilled
-                  width={16}
-                  height={16}
+                  size="16px"
                   className={classNames(`${prefixCls}-column-filter-icon`, { active: filteredKeys.length > 0 })}
                 />
               }
@@ -104,7 +103,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
     return (
       <span className={`${prefixCls}-column-title-info`}>
         <Tooltip title={info}>
-          <QuestionCircleOutlined width={16} height={16} />
+          <QuestionCircleOutlined size="16px" />
         </Tooltip>
       </span>
     );
