@@ -22,7 +22,7 @@ group:
 
 <code src='./demo/maskClose.tsx' title='点击 mask 关闭 Modal ' desc='没有任何 Footer 的时候, 点击 mask 可关闭 Modal。'/>
 
-<code src='./demo/size.tsx' title='不同 size 的 Modal ' desc='Modal 分为 small, middle, full 三种形态。当屏幕宽度小于 820px时，small 弹窗变为full 弹窗。当屏幕宽度小于 1200px 时，middle 弹窗变为 full 弹窗。'/>
+<code src='./demo/size.tsx' title='不同 size 的 Modal ' desc='Modal 分为 small, middle, full 三种形态。当屏幕宽度小于 820px时，small 弹窗变为full 弹窗。当屏幕宽度小于 1200px 时，middle 弹窗变为 full 弹窗。small 和 middle 尺寸的 Modal 在视口高度足够时，最大高度为 600px。当视口高度不足时，会固定上下距离各 100px。内容超出 body 高度时 body 进行滚动。'/>
 
 <code src='./demo/asyncConfirm.tsx' title='pending 状态的 Modal ' desc='设置 pending props，Modal 会进入 pending 状态，确认和关闭将不可用。需要注意的是，如果同时设置的 closeAfterOk，那么 onOk 需要返回一个 Promise，否则 onClose 会立即执行'/>
 

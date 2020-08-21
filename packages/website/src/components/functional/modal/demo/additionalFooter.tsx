@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button } from '@gio-design/components';
+import { PlusCircleFilled } from '@gio-design/icons';
 import '@gio-design/components/es/components/modal/style/index.css';
 
 export default () => {
@@ -21,9 +22,14 @@ export default () => {
         }}
         additionalFooter={
           <div style={{ textAlign: 'left' }}>
-            <a target="_blank" href="https://www.growingio.com">
-              访问 GrowingIO{' '}
-            </a>
+            <Button
+              icon={<PlusCircleFilled />}
+              style={{ marginLeft: 0 }}
+              type="text"
+              onClick={() => console.log('点击新建')}
+            >
+              新建
+            </Button>
           </div>
         }
       >
