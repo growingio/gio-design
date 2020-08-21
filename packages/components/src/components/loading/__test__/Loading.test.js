@@ -59,4 +59,10 @@ describe('Testing Loading', () => {
       done();
     });
   });
+
+  test('props blurColor', () => {
+    const wrapper = mount(getLoading());
+    wrapper.setProps({ blurColor: 'black' });
+    expect(wrapper.exists('.gio-loading')).toBe(true);
+  });
 });

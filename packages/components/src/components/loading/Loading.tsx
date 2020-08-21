@@ -38,13 +38,13 @@ const Loading: React.FC<LoadingProps> = (props: LoadingProps) => {
   };
 
   const renderLoadingContainer = () => {
-    const { children } = props;
+    const { children, blurColor = 'white' } = props;
     if (children) {
       return (
         <div className={`${prefixCls}-wrapper-loading`}>
           {renderLoadingElementByPosition()}
           <div
-            className={classNames(`${prefixCls}-container`, {
+            className={classNames(`${prefixCls}-container`, `${prefixCls}-container-blur-${blurColor}`, {
               [`${prefixCls}-container-loading`]: shouldLoading,
             })}
           >
