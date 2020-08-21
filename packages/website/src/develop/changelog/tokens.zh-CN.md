@@ -9,6 +9,13 @@ nav:
 
 # @gio-design/tokens 更新日志
 
+## 20.8.3
+
+- 🆕 更新 `Toggles 开关` 相关的 `Tokens`。 [#76](https://github.com/growingio/gio-design/pull/76)
+- 🆕 更新 `Button 按钮`组件的 `Tokens`。 [#92](https://github.com/growingio/gio-design/pull/92)
+- 🆕 更新 `Tag 标签`组件的 `Tokens`。 [#93](https://github.com/growingio/gio-design/pull/93)
+- 🆕 更新 `Input 输入框`组件的 `Tokens`。 [#98](https://github.com/growingio/gio-design/pull/98)
+
 ## 20.8.2
 
 - 🆕 为色板中添加新颜色，更新 `Link 链接`、`Radio 单选框` 和 `Sign 标记` 三个组件的 `Tokens`。 [#69](https://github.com/growingio/gio-design/pull/69)

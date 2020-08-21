@@ -3,7 +3,7 @@ import BreadcrumbSeparator from './BreadcrumbSeparator';
 import classnames from 'classnames';
 
 export interface BreadcrumbItemProps {
-  separator?: string;
+  separator?: React.ReactNode;
   href?: string;
   onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLSpanElement>;
   children?: React.ReactNode;
@@ -12,15 +12,16 @@ export interface BreadcrumbItemProps {
 
 const BreadcrumbItem: React.FC<BreadcrumbItemProps> = (props: BreadcrumbItemProps) => {
   const { href, children, separator, isLastItem } = props;
+  /* eslint-disable prettier/prettier */
   const link = href ? (
     <a className="gio-breadcrumb-item-link-target" {...props}>
       {children}
     </a>
   ) : (
-    <span className="gio-breadcrumb-item-link-target" {...props}>
-      {children}
-    </span>
-  );
+      <span className="gio-breadcrumb-item-link-target" {...props}>
+        {children}
+      </span>
+    );
 
   if (children) {
     return (

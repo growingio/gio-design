@@ -29,13 +29,15 @@ group:
 
 ### Tabs
 
-| 参数           | 说明             | 类型                       | 默认值  |
-| -------------- | ---------------- | -------------------------- | ------- |
-| **type**       | 标签页样式       | 'line'\|'block'            | `block` |
-| **size**       | 设置头像的链接   | 'small'\|'middle'\|'large' | `large` |
-| **onChange**   | 切换面板的回调   | Function(activeKey) {}     |         |
-| **onTabClick** | tab 被点击的回调 | Function                   |         |
-| **children**   | 标签面板组件     | TabPane[]                  |         |
+| 参数                 | 说明                                  | 类型                       | 默认值  |
+| -------------------- | ------------------------------------- | -------------------------- | ------- |
+| **type**             | 标签页样式                            | 'line'\|'block'            | `block` |
+| **size**             | 设置头像的链接                        | 'small'\|'middle'\|'large' | `large` |
+| **onChange**         | 切换面板的回调                        | Function(activeKey) {}     |         |
+| **onTabClick**       | tab 被点击的回调                      | Function                   |         |
+| **children**         | 标签面板组件                          | TabPane[]                  |         |
+| **activeKey**        | 开启受控模式，当前激活 tab 面板的 key | string \| number           | -       |
+| **defaultActiveKey** | 初始化选中面板的 key                  | string \| number           | -       |
 
 ### TabPane
 
@@ -43,4 +45,3 @@ group:
 | ------------ | ---------------- | ----------------- | ------- |
 | **tab**      | 选项卡头显示文字 | string\|ReactNode |         |
 | **disabled** | 选项卡禁用       | boolean           | `false` |
-| **icon**     | 用 Icon 显示     | ReactNode         |         |

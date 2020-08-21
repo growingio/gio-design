@@ -23,6 +23,8 @@ group:
 
 <code src='./demos/text.tsx' title='文本按钮' desc='适用于列表内添加多个内容时。' />
 
+<code src='./demos/icon.tsx' title='图标按钮' desc='暂无' />
+
 <code src='./demos/other.tsx' title='扩展按钮' />
 
 ## 参数说明

@@ -36,4 +36,3 @@ group:
 | prefixCls     | 替换类前缀                         | string                         |             |
 | size          | 设置默认指示符号大小               | 'small' \| 'middle' \| 'large' | 'large'     |
 | indicator     | 自定义指示符号                     | React.Element                  |             |
-| rotate        | 设置自定义指示符号是否旋转         | boolean                        | true        |

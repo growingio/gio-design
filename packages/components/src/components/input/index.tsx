@@ -7,6 +7,7 @@ import TextArea from './TextArea';
 import { InputProps, InputNumberProps, TextAreaProps } from './types';
 
 export { InputNumber, InputHidden, Password, TextArea };
+export { InputProps } from './types';
 
 export default class extends React.Component<InputProps> {
   public static InputNumber: React.FC<InputNumberProps> = InputNumber;

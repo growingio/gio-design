@@ -1,0 +1,36 @@
+@import '~@gio-design/tokens/dist/variables.less';
+
+.gio-breadcrumb {
+  height: 22px;
+  color: @color-text-breadcrumb-normal;
+  font-size: 14px;
+
+  &-item.gio-breadcrumb-item-link {
+    .gio-breadcrumb-item-link-target {
+      cursor: pointer;
+
+      &:hover {
+        color: @color-text-breadcrumb-hover;
+      }
+    }
+  }
+
+  a {
+    color: @color-text-breadcrumb-normal;
+
+    &:hover {
+      color: @color-text-breadcrumb-hover;
+    }
+  }
+
+  &-separator {
+    display: inline-block;
+    box-sizing: content-box;
+    width: 16px;
+    padding: 0 8px;
+    text-align: center;
+  }
+  & > span:last-child &-separator {
+    display: none;
+  }
+}

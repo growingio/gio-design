@@ -7,16 +7,16 @@
       "button": {
         "primary": {
           "normal": {
-            "value": "{palette.blue.6.value}"
-          },
-          "hover": {
-            "value": "{palette.blue.7.value}"
-          },
-          "click": {
             "value": "{palette.blue.4.value}"
           },
+          "hover": {
+            "value": "{palette.blue.5.value}"
+          },
+          "click": {
+            "value": "{palette.blue.3.value}"
+          },
           "disable": {
-            "value": "{palette.gray.8.value}"
+            "value": "{palette.gray.1.value}"
           }
         },
         "default": {
@@ -24,16 +24,13 @@
             "value": "{palette.gray.1.value}"
           },
           "hover": {
-            "value": "{palette.gray.3.value}"
+            "value": "{palette.gray.4.value}"
           },
           "click": {
-            "value": "{palette.gray.9.value}"
+            "value": "{palette.gray.3.value}"
           },
           "disable": {
-            "value": "{palette.gray.8.value}"
-          },
-          "ghost": {
-            "value": "transparent"
+            "value": "{palette.gray.1.value}"
           }
         },
         "assist": {
@@ -44,7 +41,7 @@
             "value": "{palette.gray.3.value}"
           },
           "click": {
-            "value": "{palette.gray.9.value}"
+            "value": "{palette.gray.2.value}"
           },
           "disable": {
             "value": "{palette.white.value}"
@@ -55,11 +52,13 @@
         }
       },
       "toggles": {
-        "default": {
-          "value": "0.5px solid #a3adc8"
-        },
-        "checked": {
-          "value": "solid 1px #1248e9"
+        "normal": {
+          "default": {
+            "value": "0.5px solid #a3adc8"
+          },
+          "checked": {
+            "value": "solid 1px #1248e9"
+          }
         },
         "disable": {
           "default": {
@@ -89,6 +88,33 @@
         "checkedDisable": {
           "value": "{palette.gray.4.value}"
         }
+      },
+      "pagination": {
+        "quick-jumper": {
+          "disabled": {
+            "value": "{palette.gray.4.value}"
+          }
+        }
+      },
+      "input": {
+        "normal": {
+          "value": "{palette.gray.4.value}"
+        },
+        "hover": {
+          "value": "{palette.blue.5.value}"
+        },
+        "active": {
+          "value": "{palette.blue.5.value}"
+        },
+        "disable": {
+          "value": "{palette.gray.4.value}"
+        },
+        "error": {
+          "value": "{palette.red.3.value}"
+        }
+      },
+      "table": {
+        "value": "{palette.gray.6.value}"
       }
     }
   }
