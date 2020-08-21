@@ -1,9 +1,9 @@
 export { default as AppFilled } from './AppFilled';
-export { default as App } from './App';
+export { default as AppOutlined } from './AppOutlined';
 export { default as AppsFilled } from './AppsFilled';
 export { default as BarChartHorizontalOutlined } from './BarChartHorizontalOutlined';
 export { default as BarChartOutlined } from './BarChartOutlined';
-export { default as Calendar } from './Calendar';
+export { default as CalendarOutlined } from './CalendarOutlined';
 export { default as CaretDownOutlined } from './CaretDownOutlined';
 export { default as CheckCircleFilled } from './CheckCircleFilled';
 export { default as CheckSquareFilled } from './CheckSquareFilled';
@@ -48,3 +48,4 @@ export { default as View } from './View';
 export { default as Wait } from './Wait';
 export { default as WarningCircle } from './WarningCircle';
 export { default as WarningFilled } from './WarningFilled';
+export { IconProps } from './interface';
