@@ -4,7 +4,7 @@ import InputNumber from './InputNumber';
 import InputHidden from './InputHidden';
 import Password from './Password';
 import TextArea from './TextArea';
-import { InputProps, InputNumberProps, TextAreaProps } from './types';
+import { InputProps, InputNumberProps, TextAreaProps } from './interfaces';
 
 export { InputNumber, InputHidden, Password, TextArea };
 

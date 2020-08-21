@@ -2,7 +2,7 @@ import * as React from 'react';
 import BaseInput, { prefixCls } from './BaseInput';
 import Button from '../button';
 import { View, Unview } from '@gio-design/icons';
-import { InputProps } from './types';
+import { InputProps } from './interfaces';
 
 const Password: React.FC<InputProps> = ({
   value,
@@ -12,6 +12,7 @@ const Password: React.FC<InputProps> = ({
   maxLength,
   placeholder = '',
   inputStyle,
+  size,
 
   showOpt,
   errorMsg = '',

@@ -2,7 +2,7 @@ import * as React from 'react';
 import BaseInput, { prefixCls } from './BaseInput';
 import Button from '../button';
 import { UpFilled, DownFilled } from '@gio-design/icons';
-import { InputNumberProps } from './types';
+import { InputNumberProps } from './interfaces';
 
 const InputNumber: React.FC<InputNumberProps> = ({
   value,

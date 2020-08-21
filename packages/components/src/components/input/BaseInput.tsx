@@ -1,9 +1,17 @@
 import * as React from 'react';
-import { BaseInputProps } from './types';
 import Button from '../button';
 import { Close, Check } from '@gio-design/icons';
 
 export const prefixCls = 'gio-input';
+
+export interface BaseInputProps {
+  showOpt?: boolean;
+  errorMsg?: string;
+  label?: string;
+  wrapStyle?: React.CSSProperties;
+  onOk?: () => void;
+  onCancel?: () => void;
+}
 
 const iconStyle: React.CSSProperties = {
   width: '16px',

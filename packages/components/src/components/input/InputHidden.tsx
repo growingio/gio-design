@@ -1,6 +1,6 @@
 import * as React from 'react';
 import BaseInput, { prefixCls } from './BaseInput';
-import { InputProps } from './types';
+import { InputProps } from './interfaces';
 
 const InputHidden: React.FC<InputProps> = ({
   value,
@@ -11,6 +11,7 @@ const InputHidden: React.FC<InputProps> = ({
   maxLength,
   placeholder = '',
   inputStyle,
+  size,
 
   errorMsg = '',
   label = '',
