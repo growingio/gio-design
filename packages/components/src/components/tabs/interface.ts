@@ -1,10 +1,21 @@
-import { TabsProps as RcTabsProps, TabPaneProps as RcTabPaneProps } from 'rc-tabs';
-type allWaysHave = 'children' | 'className' | 'style';
-export interface TabProps extends Pick<RcTabsProps, 'prefixCls' | 'onChange' | 'onTabClick' | allWaysHave> {
+export interface TabProps {
   type?: 'line' | 'block';
   size?: 'small' | 'middle' | 'large';
+  onTabClick?: (key: string | number) => void;
+  onChange?: (key: string | number) => void;
+  activeKey?: string;
+  defaultActiveKey?: string;
+  children?: React.ReactNode;
+  prefixCls?: string;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-export interface TabPaneProps extends Pick<RcTabPaneProps, 'tab' | 'disabled' | allWaysHave> {
-  icon?: React.ReactNode;
+export interface TabPaneProps {
+  tab?: React.ReactNode;
+  disabled?: boolean;
+  children?: React.ReactNode;
+  prefixCls?: string;
+  className?: string;
+  style?: React.CSSProperties;
 }
