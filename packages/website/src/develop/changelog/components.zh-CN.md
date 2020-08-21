@@ -9,9 +9,19 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.8.5
+
+- 🆕 新增[Modal Dialog 弹窗](/components/functional/modal)组件。 [#137](https://github.com/growingio/gio-design/pull/137)
+- 🆕 新增[Table 列表](/components/functional/modal)组件。 [#99](https://github.com/growingio/gio-design/pull/99)
+- 🆕 新增[Upload 上传](/components/functional/modal)组件。 [#106](https://github.com/growingio/gio-design/pull/106)
+- 🆕 `TabNav 标签导航`组件添加`activeKey defaultActiveKey` 参数 [#133](https://github.com/growingio/gio-design/pull/133)
+- 🆕 `Tabs 标签页`组件添加`activeKey defaultActiveKey` 参数 [#134](https://github.com/growingio/gio-design/pull/134)
+- 🆕 `Pagination 分页`组件添加`hideOnSinglePage` 参数 [#129](https://github.com/growingio/gio-design/pull/129)
+- 🆕 `Breadcrumb 面包屑`组件重构 [#132](https://github.com/growingio/gio-design/pull/132)
+
 ## 20.8.4
 
-- 🆕 新增[Tabnav 标签导航](/components/basic/tabnav)组件。 [#105](https://github.com/growingio/gio-design/pull/105)
+- 🆕 新增[TabNav 标签导航](/components/basic/tabnav)组件。 [#105](https://github.com/growingio/gio-design/pull/105)
 
 ## 20.8.3
 

@@ -17903,20 +17903,6 @@ rc-table@~7.7.2:
     rc-util "^5.0.0"
     shallowequal "^1.1.0"
 
-rc-tabs@^11.5.2:
-  version "11.5.2"
-  resolved "https://registry.yarnpkg.com/rc-tabs/-/rc-tabs-11.5.2.tgz#d529a5a7de5b756d68864f4b5cc8b628a91d6267"
-  integrity sha512-NCDDrlHAoJTs0nsMGCfkIZQd4KMbXlUaLh34oUhwytotUZnVtBufYIRTTujsrFHMPh3fG1JnrhfWphUtQ79NqQ==
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "2.x"
-    raf "^3.4.1"
-    rc-dropdown "^3.1.0"
-    rc-menu "^8.2.1"
-    rc-resize-observer "^0.2.1"
-    rc-trigger "^4.2.1"
-    rc-util "^5.0.0"
-
 rc-tabs@~11.2.0:
   version "11.2.4"
   resolved "https://registry.yarnpkg.com/rc-tabs/-/rc-tabs-11.2.4.tgz#6004f8f3edc176318bfdd71695fd5e6bed7338ff"
