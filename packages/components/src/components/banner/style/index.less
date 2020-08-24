@@ -8,26 +8,30 @@
   align-items: center;
   width: 100%;
   height: 48px;
-  padding: 13px 64px;
   background-color: @color-background-banner-normal;
   transition: all ease 0.8s;
 
   &-content {
     flex: 1;
+    margin: 0 64px;
     color: @color-text-banner-normal;
     font-size: @size-font-14;
     font-family: @font-family;
     line-height: 22px;
   }
 
+  &-content-button {
+    margin: 0 154px 0 64px;
+  }
+
   &-button {
-    position: relative;
-    left: 15px;
+    position: absolute;
+    right: 64px;
   }
 
   &-closeIcon {
-    position: relative;
-    left: 40px;
+    position: absolute;
+    right: 20px;
     width: 24px;
     height: 24px;
     color: @color-text-banner-normal;
@@ -56,6 +60,10 @@
   .@{banner-prefix-cls}-closeIcon {
     color: @color-text-banner-alert;
   }
+}
+
+.@{banner-prefix-cls}-alert-hover {
+  background-color: @color-background-banner-alert-hover;
 }
 
 .@{banner-prefix-cls}-close {

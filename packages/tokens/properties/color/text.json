@@ -317,14 +317,15 @@
           "value": "{palette.white.value}"
         },
         "alert": {
-          "table": {
-            "head": {
-              "value": "{palette.black.7.value}"
-            },
-            "body": {
-              "value": "{palette.black.6.value}"
-            }
-          }
+          "value": "{palette.black.7.value}"
+        }
+      },
+      "table": {
+        "head": {
+          "value": "{palette.black.7.value}"
+        },
+        "body": {
+          "value": "{palette.black.6.value}"
         }
       },
       "table": {

@@ -4,12 +4,13 @@ import { Tag, Button } from '@gio-design/components';
 import '@gio-design/components/es/components/banner/style/index.css';
 
 const normalContent = (
-  <div>
-    <Tag color="beta" size="small" style={{ margin: '0 8px' }}>
+  <>
+    <Tag color="beta" size="small" style={{ margin: '0 8px 0 0' }}>
       试用中
     </Tag>
-    试用14天后结束
-  </div>
+    <span>试用14天后结束</span>
+    <span style={{ float: 'right', margin: '0 8px 0 0' }}>客服专线：010-50914714</span>
+  </>
 );
 const button = (
   <Button type="secondary" size="small">
