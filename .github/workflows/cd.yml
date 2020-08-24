@@ -6,7 +6,7 @@ on:
 jobs:
   install:
     name: Install dependencies
-    if: startsWith(github.event.head_commit.message, 'feat') || startsWith(github.event.head_commit.message, 'fix') || startsWith(github.event.head_commit.message, 'docs')
+    if: ${{ !(startsWith(github.event.head_commit.message, 'chore') || startsWith(github.event.head_commit.message, 'style')) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

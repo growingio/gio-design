@@ -2,7 +2,7 @@ name: Publishing Packages
 on:
   release:
     types:
-      - created
+      - published
 jobs:
   install:
     name: Install dependencies
