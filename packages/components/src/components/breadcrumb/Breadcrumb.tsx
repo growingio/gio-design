@@ -3,22 +3,10 @@ import classNames from 'classnames';
 import BreadcrumbItem from './BreadcrumbItem';
 import BreadcrumbSeparator from './BreadcrumbSeparator';
 import { ConfigContext } from '../config-provider';
-
-export interface Route {
-  path: string;
-  breadcrumbName: string;
-  children?: Omit<Route, 'children'>[];
-}
-
-export interface BreadcrumbProps {
-  prefixCls?: string;
-  routes?: Route[];
-  params?: any;
-  style?: React.CSSProperties;
-  separator?: React.ReactNode;
-  className?: string;
-  itemRender?: (route: Route, params: any, routes: Array<Route>, paths: Array<string>) => React.ReactNode;
-}
+import toArray from 'rc-util/lib/Children/toArray';
+import { cloneElement } from '../../utils/reactNode';
+import devWarning from '../../utils/devWarning';
+import { Route, BreadcrumbProps } from './interface';
 
 function getBreadcrumbName(route: Route, params: any) {
   if (!route.breadcrumbName) {
@@ -85,7 +73,22 @@ const Breadcrumb: BreadcrumbInterface = ({
       );
     });
   } else if (children) {
-    crumbs = children;
+    crumbs = toArray(children).map((element: any, index) => {
+      if (!element) {
+        return element;
+      }
+
+      /* eslint-disable-next-line */
+      devWarning(element.type && (element.type.__ANT_BREADCRUMB_ITEM === true || element.type.__ANT_BREADCRUMB_SEPARATOR === true),
+        'Breadcrumb',
+        "Only accepts Breadcrumb.Item and Breadcrumb.Separator as it's children"
+      );
+
+      return cloneElement(element, {
+        separator,
+        key: index,
+      });
+    });
   }
   return (
     <div className={classNames(className, prefixCls)} style={style} {...restProps}>
