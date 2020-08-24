@@ -112,6 +112,9 @@
         "error": {
           "value": "{palette.red.3.value}"
         }
+      },
+      "table": {
+        "value": "{palette.gray.6.value}"
       }
     }
   }

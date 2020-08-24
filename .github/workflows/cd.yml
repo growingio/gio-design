@@ -4,7 +4,9 @@ on:
     branches:
       - master
 jobs:
-  run:
+  install:
+    name: Install dependencies
+    if: startsWith(github.event.head_commit.message, 'feat') || startsWith(github.event.head_commit.message, 'fix') || startsWith(github.event.head_commit.message, 'docs')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -12,7 +14,30 @@ jobs:
         with:
           fetch-depth: '1'
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.1
+        with:
+          node-version: 12.x
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Bootstrap
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn bootstrap
+  build:
+    name: Build Packages
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '1'
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.1
         with:
           node-version: 12.x
       - name: Restore Node.js modules
@@ -22,19 +47,40 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Build packages and website
-        run: yarn bootstrap && yarn build && yarn workspace website build:gh-pages
+      - name: Build packages
+        run: yarn build
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
           directory: ./packages/components/coverage/
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Cahce website
+        uses: actions/cache@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./packages/website/dist
+          path: |
+            packages/website/dist
+          key: website-${{ github.sha }}
+      - name: Build website
+        run: yarn build:website
+  deploy_netlify:
+    name: Deploying website to Netlify
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restore website
+        uses: actions/cache@v2
+        with:
+          path: |
+            packages/website/dist
+          key: website-${{ github.sha }}
+      - name: Deploy
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --prod --dir ./packages/website/dist
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
       - name: Sending deploy succeeded message
         uses: x-actions/dingtalk@master
         env:
@@ -43,5 +89,23 @@ jobs:
           MSGTYPE: markdown
           TITLE: GrowingIO Design deploy succeeded
           TEXT: |
+            ## GrowingIO Design deploy succeeded
+            ${{ github.event.head_commit.message }}
             - [GrowingIO Design](https://growingio.design)
-            - [GrowingIO Design on GitHub Pages](https://growingio.github.io/gio-design/)
+            - [GrowingIO Design on GitHub Pages](https://mirror.growingio.design)
+  deploy_github:
+    name: Deploying website to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restore website
+        uses: actions/cache@v2
+        with:
+          path: |
+            packages/website/dist
+          key: website-${{ github.sha }}
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./packages/website/dist

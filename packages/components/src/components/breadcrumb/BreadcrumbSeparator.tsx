@@ -1,8 +1,5 @@
 import React from 'react';
-
-export interface BreadcrumbSeparatorProps {
-  separator?: string;
-}
+import { BreadcrumbSeparatorProps } from './interface';
 
 const BreadcrumbSeparator: React.FC<BreadcrumbSeparatorProps> = (props: BreadcrumbSeparatorProps) => {
   const { separator = '/' } = props;

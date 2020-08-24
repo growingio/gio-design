@@ -50,9 +50,6 @@
   &-indicator{
     display: inline-block;
     vertical-align: middle;
-    &-rotate{
-      animation: loadingCircle 1s infinite linear;
-    }
   }
   &-strip{
     display: inline-block;
@@ -124,12 +121,6 @@
 
   @keyframes loadingLarge{
     .createLoadingKeyFrames(40px);
-  }
-
-  @keyframes loadingCircle{
-    100% {
-      transform: rotate(360deg);
-    }
   }
 
   .createLoadingKeyFrames(@max-height){

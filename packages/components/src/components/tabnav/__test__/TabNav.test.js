@@ -1,11 +1,6 @@
 import React from 'react';
 import TabNav from '../index';
-import { act } from 'react-dom/test-utils';
 import { mount, render, shallow } from 'enzyme';
-
-async function waitForComponentToPaint(wrapper, amount = 500) {
-  await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
-}
 
 describe('Testing TabNav', () => {
   const getTabNav = () => (
@@ -47,23 +42,51 @@ describe('Testing TabNav', () => {
     expect(wrapper.exists('.gio-tabnav-sm')).toBe(true);
   });
 
-  it('should be render rightly', (done) => {
-    const wrapper = mount(getTabNav());
-    waitForComponentToPaint(wrapper).then(() => {
-      expect(wrapper.find('.gio-tabnav').children()).toHaveLength(5);
-      expect(wrapper.find('.gio-tabnav').childAt(0).exists('.gio-tabnav-item-active')).toBe(true);
-      expect(wrapper.find('.gio-tabnav').childAt(3).exists('.gio-tabnav-item-disabled')).toBe(true);
-      done();
-    });
+  test('prop defaultActiveKey', () => {
+    const wrapper = mount(
+      <TabNav defaultActiveKey={1}>
+        <TabNav.Item>111</TabNav.Item>
+        <TabNav.Item>222</TabNav.Item>
+        <TabNav.Item>333</TabNav.Item>
+        <TabNav.Item disabled>444</TabNav.Item>
+      </TabNav>
+    );
+    expect(wrapper.find('.gio-tabnav').childAt(1).exists('.gio-tabnav-item-active')).toBe(true);
   });
 
-  it('should be render content rightly', (done) => {
+  test('prop activeKey', () => {
+    const wrapper = mount(getTabNav());
+    wrapper.setProps({ activeKey: 1 });
+    expect(wrapper.find('.gio-tabnav').childAt(1).exists('.gio-tabnav-item-active')).toBe(true);
+    wrapper.setProps({ activeKey: 2 });
+    expect(wrapper.find('.gio-tabnav').childAt(2).exists('.gio-tabnav-item-active')).toBe(true);
+    wrapper.find('.gio-tabnav-item').at(1).simulate('click');
+    expect(wrapper.find('.gio-tabnav-item').at(1).exists('.gio-tabnav-item-active')).toBe(false);
+  });
+
+  test('prop onChange and onTabClick', () => {
+    const onChange = jest.fn();
+    const onTabClick = jest.fn();
+    const wrapper = mount(getTabNav());
+    wrapper.setProps({ onChange, onTabClick });
+    wrapper.find('.gio-tabnav-item').at(1).simulate('click');
+    expect(onChange).not.toHaveBeenCalled();
+    expect(onTabClick).toHaveBeenCalled();
+    wrapper.find('.gio-tabnav-item').at(2).simulate('click');
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it('should be render rightly', () => {
+    const wrapper = mount(getTabNav());
+    expect(wrapper.find('.gio-tabnav').children()).toHaveLength(5);
+    expect(wrapper.find('.gio-tabnav').childAt(0).exists('.gio-tabnav-item-active')).toBe(true);
+    expect(wrapper.find('.gio-tabnav').childAt(3).exists('.gio-tabnav-item-disabled')).toBe(true);
+  });
+
+  it('should be render content rightly', () => {
     const wrapper = mount(getTabNav());
     expect(wrapper.find('.gio-tabnav-item-active').at(0).text()).toBe('111');
     wrapper.find('.gio-tabnav').childAt(1).simulate('click');
-    waitForComponentToPaint(wrapper).then(() => {
-      expect(wrapper.find('.gio-tabnav-item-active').at(0).text()).toBe('222');
-      done();
-    });
+    expect(wrapper.find('.gio-tabnav-item-active').at(0).text()).toBe('222');
   });
 });

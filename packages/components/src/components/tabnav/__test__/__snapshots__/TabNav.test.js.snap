@@ -9,11 +9,13 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-tabnav-item",
+          "class": "gio-tabnav-item gio-tabnav-item-active",
         },
         "children": Array [
           Object {
-            "attribs": Object {},
+            "attribs": Object {
+              "class": "gio-tabnav-item-btn",
+            },
             "children": Array [
               Object {
                 "data": "111",
@@ -29,8 +31,12 @@ initialize {
             "parent": [Circular],
             "prev": null,
             "type": "tag",
-            "x-attribsNamespace": Object {},
-            "x-attribsPrefix": Object {},
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
           },
         ],
         "name": "div",
@@ -41,7 +47,9 @@ initialize {
           },
           "children": Array [
             Object {
-              "attribs": Object {},
+              "attribs": Object {
+                "class": "gio-tabnav-item-btn",
+              },
               "children": Array [
                 Object {
                   "data": "222",
@@ -57,8 +65,12 @@ initialize {
               "parent": [Circular],
               "prev": null,
               "type": "tag",
-              "x-attribsNamespace": Object {},
-              "x-attribsPrefix": Object {},
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
             },
           ],
           "name": "div",
@@ -69,7 +81,9 @@ initialize {
             },
             "children": Array [
               Object {
-                "attribs": Object {},
+                "attribs": Object {
+                  "class": "gio-tabnav-item-btn",
+                },
                 "children": Array [
                   Object {
                     "data": "333",
@@ -85,8 +99,12 @@ initialize {
                 "parent": [Circular],
                 "prev": null,
                 "type": "tag",
-                "x-attribsNamespace": Object {},
-                "x-attribsPrefix": Object {},
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
               },
             ],
             "name": "div",
@@ -98,7 +116,9 @@ initialize {
               },
               "children": Array [
                 Object {
-                  "attribs": Object {},
+                  "attribs": Object {
+                    "class": "gio-tabnav-item-btn",
+                  },
                   "children": Array [
                     Object {
                       "data": "444",
@@ -114,8 +134,12 @@ initialize {
                   "parent": [Circular],
                   "prev": null,
                   "type": "tag",
-                  "x-attribsNamespace": Object {},
-                  "x-attribsPrefix": Object {},
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
                 },
               ],
               "name": "div",
@@ -186,7 +210,9 @@ initialize {
         },
         "children": Array [
           Object {
-            "attribs": Object {},
+            "attribs": Object {
+              "class": "gio-tabnav-item-btn",
+            },
             "children": Array [
               Object {
                 "data": "222",
@@ -202,8 +228,12 @@ initialize {
             "parent": [Circular],
             "prev": null,
             "type": "tag",
-            "x-attribsNamespace": Object {},
-            "x-attribsPrefix": Object {},
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
           },
         ],
         "name": "div",
@@ -214,7 +244,9 @@ initialize {
           },
           "children": Array [
             Object {
-              "attribs": Object {},
+              "attribs": Object {
+                "class": "gio-tabnav-item-btn",
+              },
               "children": Array [
                 Object {
                   "data": "333",
@@ -230,8 +262,12 @@ initialize {
               "parent": [Circular],
               "prev": null,
               "type": "tag",
-              "x-attribsNamespace": Object {},
-              "x-attribsPrefix": Object {},
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
             },
           ],
           "name": "div",
@@ -243,7 +279,9 @@ initialize {
             },
             "children": Array [
               Object {
-                "attribs": Object {},
+                "attribs": Object {
+                  "class": "gio-tabnav-item-btn",
+                },
                 "children": Array [
                   Object {
                     "data": "444",
@@ -259,8 +297,12 @@ initialize {
                 "parent": [Circular],
                 "prev": null,
                 "type": "tag",
-                "x-attribsNamespace": Object {},
-                "x-attribsPrefix": Object {},
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
               },
             ],
             "name": "div",
@@ -308,11 +350,13 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-tabnav-item",
+            "class": "gio-tabnav-item gio-tabnav-item-active",
           },
           "children": Array [
             Object {
-              "attribs": Object {},
+              "attribs": Object {
+                "class": "gio-tabnav-item-btn",
+              },
               "children": Array [
                 Object {
                   "data": "111",
@@ -328,8 +372,12 @@ initialize {
               "parent": [Circular],
               "prev": null,
               "type": "tag",
-              "x-attribsNamespace": Object {},
-              "x-attribsPrefix": Object {},
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
             },
           ],
           "name": "div",
@@ -359,7 +407,9 @@ initialize {
         },
         "children": Array [
           Object {
-            "attribs": Object {},
+            "attribs": Object {
+              "class": "gio-tabnav-item-btn",
+            },
             "children": Array [
               Object {
                 "data": "333",
@@ -375,8 +425,12 @@ initialize {
             "parent": [Circular],
             "prev": null,
             "type": "tag",
-            "x-attribsNamespace": Object {},
-            "x-attribsPrefix": Object {},
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
           },
         ],
         "name": "div",
@@ -388,7 +442,9 @@ initialize {
           },
           "children": Array [
             Object {
-              "attribs": Object {},
+              "attribs": Object {
+                "class": "gio-tabnav-item-btn",
+              },
               "children": Array [
                 Object {
                   "data": "444",
@@ -404,8 +460,12 @@ initialize {
               "parent": [Circular],
               "prev": null,
               "type": "tag",
-              "x-attribsNamespace": Object {},
-              "x-attribsPrefix": Object {},
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
             },
           ],
           "name": "div",
@@ -447,7 +507,9 @@ initialize {
           },
           "children": Array [
             Object {
-              "attribs": Object {},
+              "attribs": Object {
+                "class": "gio-tabnav-item-btn",
+              },
               "children": Array [
                 Object {
                   "data": "222",
@@ -463,8 +525,12 @@ initialize {
               "parent": [Circular],
               "prev": null,
               "type": "tag",
-              "x-attribsNamespace": Object {},
-              "x-attribsPrefix": Object {},
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
             },
           ],
           "name": "div",
@@ -473,11 +539,13 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
-              "class": "gio-tabnav-item",
+              "class": "gio-tabnav-item gio-tabnav-item-active",
             },
             "children": Array [
               Object {
-                "attribs": Object {},
+                "attribs": Object {
+                  "class": "gio-tabnav-item-btn",
+                },
                 "children": Array [
                   Object {
                     "data": "111",
@@ -493,8 +561,12 @@ initialize {
                 "parent": [Circular],
                 "prev": null,
                 "type": "tag",
-                "x-attribsNamespace": Object {},
-                "x-attribsPrefix": Object {},
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
               },
             ],
             "name": "div",
@@ -533,7 +605,9 @@ initialize {
         },
         "children": Array [
           Object {
-            "attribs": Object {},
+            "attribs": Object {
+              "class": "gio-tabnav-item-btn",
+            },
             "children": Array [
               Object {
                 "data": "444",
@@ -549,8 +623,12 @@ initialize {
             "parent": [Circular],
             "prev": null,
             "type": "tag",
-            "x-attribsNamespace": Object {},
-            "x-attribsPrefix": Object {},
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
           },
         ],
         "name": "div",
@@ -580,7 +658,9 @@ initialize {
           },
           "children": Array [
             Object {
-              "attribs": Object {},
+              "attribs": Object {
+                "class": "gio-tabnav-item-btn",
+              },
               "children": Array [
                 Object {
                   "data": "333",
@@ -596,8 +676,12 @@ initialize {
               "parent": [Circular],
               "prev": null,
               "type": "tag",
-              "x-attribsNamespace": Object {},
-              "x-attribsPrefix": Object {},
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
             },
           ],
           "name": "div",
@@ -610,7 +694,9 @@ initialize {
             },
             "children": Array [
               Object {
-                "attribs": Object {},
+                "attribs": Object {
+                  "class": "gio-tabnav-item-btn",
+                },
                 "children": Array [
                   Object {
                     "data": "222",
@@ -626,8 +712,12 @@ initialize {
                 "parent": [Circular],
                 "prev": null,
                 "type": "tag",
-                "x-attribsNamespace": Object {},
-                "x-attribsPrefix": Object {},
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
               },
             ],
             "name": "div",
@@ -636,11 +726,13 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "gio-tabnav-item",
+                "class": "gio-tabnav-item gio-tabnav-item-active",
               },
               "children": Array [
                 Object {
-                  "attribs": Object {},
+                  "attribs": Object {
+                    "class": "gio-tabnav-item-btn",
+                  },
                   "children": Array [
                     Object {
                       "data": "111",
@@ -656,8 +748,12 @@ initialize {
                   "parent": [Circular],
                   "prev": null,
                   "type": "tag",
-                  "x-attribsNamespace": Object {},
-                  "x-attribsPrefix": Object {},
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
                 },
               ],
               "name": "div",
@@ -715,7 +811,9 @@ initialize {
           },
           "children": Array [
             Object {
-              "attribs": Object {},
+              "attribs": Object {
+                "class": "gio-tabnav-item-btn",
+              },
               "children": Array [
                 Object {
                   "data": "444",
@@ -731,8 +829,12 @@ initialize {
               "parent": [Circular],
               "prev": null,
               "type": "tag",
-              "x-attribsNamespace": Object {},
-              "x-attribsPrefix": Object {},
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
             },
           ],
           "name": "div",
@@ -745,7 +847,9 @@ initialize {
             },
             "children": Array [
               Object {
-                "attribs": Object {},
+                "attribs": Object {
+                  "class": "gio-tabnav-item-btn",
+                },
                 "children": Array [
                   Object {
                     "data": "333",
@@ -761,8 +865,12 @@ initialize {
                 "parent": [Circular],
                 "prev": null,
                 "type": "tag",
-                "x-attribsNamespace": Object {},
-                "x-attribsPrefix": Object {},
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
               },
             ],
             "name": "div",
@@ -775,7 +883,9 @@ initialize {
               },
               "children": Array [
                 Object {
-                  "attribs": Object {},
+                  "attribs": Object {
+                    "class": "gio-tabnav-item-btn",
+                  },
                   "children": Array [
                     Object {
                       "data": "222",
@@ -791,8 +901,12 @@ initialize {
                   "parent": [Circular],
                   "prev": null,
                   "type": "tag",
-                  "x-attribsNamespace": Object {},
-                  "x-attribsPrefix": Object {},
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
                 },
               ],
               "name": "div",
@@ -801,11 +915,13 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "gio-tabnav-item",
+                  "class": "gio-tabnav-item gio-tabnav-item-active",
                 },
                 "children": Array [
                   Object {
-                    "attribs": Object {},
+                    "attribs": Object {
+                      "class": "gio-tabnav-item-btn",
+                    },
                     "children": Array [
                       Object {
                         "data": "111",
@@ -821,8 +937,12 @@ initialize {
                     "parent": [Circular],
                     "prev": null,
                     "type": "tag",
-                    "x-attribsNamespace": Object {},
-                    "x-attribsPrefix": Object {},
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
                   },
                 ],
                 "name": "div",

@@ -311,6 +311,14 @@
         "disabled": {
           "value": "{palette.black.2.value}"
         }
+      },
+      "table": {
+        "head": {
+          "value": "{palette.black.7.value}"
+        },
+        "body": {
+          "value": "{palette.black.6.value}"
+        }
       }
     }
   }

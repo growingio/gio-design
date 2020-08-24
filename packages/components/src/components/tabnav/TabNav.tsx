@@ -7,9 +7,18 @@ import { TabNavProps, TabNavItemProps } from './interface';
 import useRefs from './hook/useRefs';
 
 const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
-  const { children, prefixCls: customizePrefixCls, type = 'block', size = 'large', onChange } = props;
+  const {
+    children,
+    prefixCls: customizePrefixCls,
+    type = 'block',
+    size = 'large',
+    onChange,
+    onTabClick,
+    activeKey,
+    defaultActiveKey = '',
+  } = props;
 
-  const [activeKey, setActiveKey] = useState<string | number | null>(null);
+  const [localActiveKey, setLocalActiveKey] = useState<string | number>(activeKey ? activeKey : defaultActiveKey);
   const [inkStyle, setInkStyle] = useState<{ left?: number; width?: number }>({});
   const wrapperRefKey = useRef<symbol>(Symbol('tabNav'));
   const [setRef, getRef] = useRefs<HTMLDivElement>();
@@ -23,48 +32,63 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
     [`${prefixCls}-xs`]: size === 'xs' && type === 'block',
   });
 
-  const tabNavChildren = useMemo(
-    () =>
-      toArray(children).map((node: React.ReactElement<TabNavItemProps>, index) => {
-        if (React.isValidElement(node) && node.type === TabNav.Item) {
-          const { className, key, disabled, onClick, ...rest } = node.props;
-          const _key = isNil(node.key) ? index.toString() : node.key;
-          return (
-            <TabNav.Item
-              className={classNames(className, `${prefixCls}-item`, {
-                [`${prefixCls}-item-active`]: activeKey === _key,
-                [`${prefixCls}-item-disabled`]: disabled,
-              })}
-              disabled={disabled}
-              key={index}
-              ref={setRef(_key)}
-              onClick={(e) => {
-                if (!disabled) {
-                  setActiveKey(_key);
-                  onChange?.(_key);
-                  onClick?.(e);
+  const [tabNavKeys, tabNavChildren] = useMemo(() => {
+    const _tabNavKeys: (string | number)[] = [];
+    const _tabNavChildren = toArray(children).map((node: React.ReactElement<TabNavItemProps>, index) => {
+      if (React.isValidElement(node) && node.type === TabNav.Item) {
+        const { className, disabled, onClick, ...rest } = node.props;
+        const _key = isNil(node.key) ? index : node.key;
+        _tabNavKeys.push(_key);
+        return (
+          <TabNav.Item
+            className={classNames(className, `${prefixCls}-item`, {
+              [`${prefixCls}-item-active`]: localActiveKey === _key,
+              [`${prefixCls}-item-disabled`]: disabled,
+            })}
+            prefixCls={prefixCls}
+            disabled={disabled}
+            key={_key}
+            ref={setRef(_key)}
+            onClick={(e) => {
+              if (!disabled) {
+                onClick?.(e);
+                onTabClick?.(_key);
+                if (isNil(activeKey)) {
+                  setLocalActiveKey(_key);
                 }
-              }}
-              {...rest}
-            />
-          );
-        }
-        return null;
-      }),
-    [children, activeKey]
-  );
+                if (localActiveKey !== _key) {
+                  onChange?.(_key);
+                }
+              }
+            }}
+            {...rest}
+          />
+        );
+      }
+      return null;
+    });
+    return [_tabNavKeys, _tabNavChildren];
+  }, [children, localActiveKey, onChange, onTabClick]);
 
-  useEffect(() => {
-    setActiveKey(tabNavChildren[0]!.key);
+  useMemo(() => {
+    if (!tabNavKeys.includes(localActiveKey)) {
+      setLocalActiveKey(tabNavKeys[0]);
+    }
   }, []);
 
+  useMemo(() => {
+    if (!isNil(activeKey) && tabNavKeys.includes(activeKey)) {
+      setLocalActiveKey(activeKey);
+    }
+  }, [activeKey]);
+
   useEffect(() => {
-    if (!isNil(getRef(activeKey)?.current) && !isNil(getRef(wrapperRefKey.current)?.current)) {
-      const { left, width } = getRef(activeKey)!.current!.getBoundingClientRect();
+    if (!isNil(getRef(localActiveKey)?.current) && !isNil(getRef(wrapperRefKey.current)?.current)) {
+      const { left, width } = getRef(localActiveKey)!.current!.getBoundingClientRect();
       const wrapperLeft = getRef(wrapperRefKey.current)!.current!.getBoundingClientRect().left;
       setInkStyle({ left: left - wrapperLeft, width });
     }
-  }, [activeKey, tabNavChildren]);
+  }, [localActiveKey, tabNavChildren]);
 
   return (
     <div className={classString} ref={setRef(wrapperRefKey.current, ref)}>
@@ -74,10 +98,12 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   );
 };
 
-TabNav.Item = React.forwardRef(({ children, ...rest }: TabNavItemProps, ref: React.RefObject<HTMLDivElement>) => (
-  <div ref={ref} {...rest}>
-    <div>{children}</div>
-  </div>
-));
+TabNav.Item = React.forwardRef(
+  ({ prefixCls, children, ...rest }: TabNavItemProps, ref: React.RefObject<HTMLDivElement>) => (
+    <div ref={ref} {...rest}>
+      <div className={`${prefixCls}-item-btn`}>{children}</div>
+    </div>
+  )
+);
 
 export default TabNav;

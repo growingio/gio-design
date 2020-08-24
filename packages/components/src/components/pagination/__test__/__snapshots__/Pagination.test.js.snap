@@ -29,9 +29,9 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
-                "height": "1em",
+                "height": "16",
                 "viewBox": "0 0 14 14",
-                "width": "1em",
+                "width": "16",
               },
               "children": Array [
                 Object {
@@ -894,9 +894,9 @@ initialize {
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "height": "1em",
+                                "height": "16",
                                 "viewBox": "0 0 14 14",
-                                "width": "1em",
+                                "width": "16",
                               },
                               "children": Array [
                                 Object {
@@ -1438,9 +1438,9 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
-              "height": "1em",
+              "height": "16",
               "viewBox": "0 0 14 14",
-              "width": "1em",
+              "width": "16",
             },
             "children": Array [
               Object {
@@ -2303,9 +2303,9 @@ initialize {
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "height": "1em",
+                              "height": "16",
                               "viewBox": "0 0 14 14",
-                              "width": "1em",
+                              "width": "16",
                             },
                             "children": Array [
                               Object {
@@ -3504,9 +3504,9 @@ initialize {
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "height": "1em",
+                            "height": "16",
                             "viewBox": "0 0 14 14",
-                            "width": "1em",
+                            "width": "16",
                           },
                           "children": Array [
                             Object {
@@ -4019,9 +4019,9 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
-                "height": "1em",
+                "height": "16",
                 "viewBox": "0 0 14 14",
-                "width": "1em",
+                "width": "16",
               },
               "children": Array [
                 Object {
@@ -4913,9 +4913,9 @@ initialize {
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "height": "1em",
+                          "height": "16",
                           "viewBox": "0 0 14 14",
-                          "width": "1em",
+                          "width": "16",
                         },
                         "children": Array [
                           Object {
@@ -5435,9 +5435,9 @@ initialize {
             "children": Array [
               Object {
                 "attribs": Object {
-                  "height": "1em",
+                  "height": "16",
                   "viewBox": "0 0 14 14",
-                  "width": "1em",
+                  "width": "16",
                 },
                 "children": Array [
                   Object {
@@ -6322,9 +6322,9 @@ initialize {
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "height": "1em",
+                        "height": "16",
                         "viewBox": "0 0 14 14",
-                        "width": "1em",
+                        "width": "16",
                       },
                       "children": Array [
                         Object {
@@ -6851,9 +6851,9 @@ initialize {
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "height": "1em",
+                    "height": "16",
                     "viewBox": "0 0 14 14",
-                    "width": "1em",
+                    "width": "16",
                   },
                   "children": Array [
                     Object {
@@ -7731,9 +7731,9 @@ initialize {
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "height": "1em",
+                      "height": "16",
                       "viewBox": "0 0 14 14",
-                      "width": "1em",
+                      "width": "16",
                     },
                     "children": Array [
                       Object {
@@ -8267,9 +8267,9 @@ initialize {
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "height": "1em",
+                      "height": "16",
                       "viewBox": "0 0 14 14",
-                      "width": "1em",
+                      "width": "16",
                     },
                     "children": Array [
                       Object {
@@ -9140,9 +9140,9 @@ initialize {
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "height": "1em",
+                    "height": "16",
                     "viewBox": "0 0 14 14",
-                    "width": "1em",
+                    "width": "16",
                   },
                   "children": Array [
                     Object {
@@ -9683,9 +9683,9 @@ initialize {
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "height": "1em",
+                        "height": "16",
                         "viewBox": "0 0 14 14",
-                        "width": "1em",
+                        "width": "16",
                       },
                       "children": Array [
                         Object {
@@ -10549,9 +10549,9 @@ initialize {
             "children": Array [
               Object {
                 "attribs": Object {
-                  "height": "1em",
+                  "height": "16",
                   "viewBox": "0 0 14 14",
-                  "width": "1em",
+                  "width": "16",
                 },
                 "children": Array [
                   Object {
@@ -11099,9 +11099,9 @@ initialize {
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "height": "1em",
+                          "height": "16",
                           "viewBox": "0 0 14 14",
-                          "width": "1em",
+                          "width": "16",
                         },
                         "children": Array [
                           Object {
@@ -11421,9 +11421,9 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
-                "height": "1em",
+                "height": "16",
                 "viewBox": "0 0 14 14",
-                "width": "1em",
+                "width": "16",
               },
               "children": Array [
                 Object {
@@ -12515,9 +12515,9 @@ initialize {
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "height": "1em",
+                            "height": "16",
                             "viewBox": "0 0 14 14",
-                            "width": "1em",
+                            "width": "16",
                           },
                           "children": Array [
                             Object {
@@ -12830,9 +12830,9 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
-              "height": "1em",
+              "height": "16",
               "viewBox": "0 0 14 14",
-              "width": "1em",
+              "width": "16",
             },
             "children": Array [
               Object {
@@ -13931,9 +13931,9 @@ initialize {
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "height": "1em",
+                              "height": "16",
                               "viewBox": "0 0 14 14",
-                              "width": "1em",
+                              "width": "16",
                             },
                             "children": Array [
                               Object {
@@ -14466,9 +14466,9 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
-                "height": "1em",
+                "height": "16",
                 "viewBox": "0 0 14 14",
-                "width": "1em",
+                "width": "16",
               },
               "children": Array [
                 Object {
@@ -15347,9 +15347,9 @@ initialize {
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "height": "1em",
+                                "height": "16",
                                 "viewBox": "0 0 14 14",
-                                "width": "1em",
+                                "width": "16",
                               },
                               "children": Array [
                                 Object {

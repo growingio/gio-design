@@ -24,7 +24,7 @@ jobs:
         with:
           fetch-depth: '1'
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.1
         with:
           node-version: 12.x
       - name: Cache Node.js modules
@@ -39,6 +39,7 @@ jobs:
         run: yarn bootstrap
   lint:
     name: Lint Checks
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -46,7 +47,7 @@ jobs:
         with:
           fetch-depth: '1'
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.1
         with:
           node-version: 12.x
       - name: Restore Node.js modules
@@ -68,7 +69,7 @@ jobs:
         with:
           fetch-depth: '1'
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.1
         with:
           node-version: 12.x
       - name: Restore Node.js modules
@@ -78,6 +79,26 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Cahce @gio-design/tokens
+        uses: actions/cache@v2
+        with:
+          path: |
+            packages/tokens/dist
+          key: tokens-${{ github.sha }}
+      - name: Cahce @gio-design/icons
+        uses: actions/cache@v2
+        with:
+          path: |
+            packages/icons/dist
+            packages/icons/es
+          key: icons-${{ github.sha }}
+      - name: Cahce @gio-design/components
+        uses: actions/cache@v2
+        with:
+          path: |
+            packages/components/dist
+            packages/components/es
+          key: components-${{ github.sha }}
       - name: Build
         run: yarn build
   test:
@@ -90,7 +111,7 @@ jobs:
         with:
           fetch-depth: '1'
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.1
         with:
           node-version: 12.x
       - name: Restore Node.js modules
@@ -100,8 +121,26 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Build
-        run: yarn build
+      - name: Restore @gio-design/tokens
+        uses: actions/cache@v2
+        with:
+          path: |
+            packages/tokens/dist
+          key: tokens-${{ github.sha }}
+      - name: Restore @gio-design/icons
+        uses: actions/cache@v2
+        with:
+          path: |
+            packages/icons/dist
+            packages/icons/es
+          key: icons-${{ github.sha }}
+      - name: Restore @gio-design/components
+        uses: actions/cache@v2
+        with:
+          path: |
+            packages/components/dist
+            packages/components/es
+          key: components-${{ github.sha }}
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov
