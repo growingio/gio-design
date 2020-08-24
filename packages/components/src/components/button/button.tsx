@@ -4,21 +4,10 @@ import { ConfigContext } from '../config-provider';
 import SizeContext from '../config-provider/SizeContext';
 import LoadingIcon from './LoadingIcon';
 import { ButtonProps } from './interface';
-
-const { isValidElement } = React;
+import { cloneElement } from '../../utils/reactNode';
 
 const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
-
-function replaceElement(element: React.ReactNode, replacement: React.ReactNode, props: any): React.ReactNode {
-  if (!isValidElement(element)) return replacement;
-
-  return React.cloneElement(element, typeof props === 'function' ? props() : props);
-}
-
-function cloneElement(element: React.ReactNode, props?: any): React.ReactElement {
-  return replaceElement(element, element, props) as React.ReactElement;
-}
 
 function isString(str: any) {
   return typeof str === 'string';

@@ -1,14 +1,7 @@
 import React from 'react';
 import BreadcrumbSeparator from './BreadcrumbSeparator';
 import classnames from 'classnames';
-
-export interface BreadcrumbItemProps {
-  separator?: React.ReactNode;
-  href?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLSpanElement>;
-  children?: React.ReactNode;
-  isLastItem?: boolean;
-}
+import { BreadcrumbItemProps } from './interface';
 
 const BreadcrumbItem: React.FC<BreadcrumbItemProps> = (props: BreadcrumbItemProps) => {
   const { href, children, separator, isLastItem } = props;

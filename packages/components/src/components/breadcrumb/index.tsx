@@ -1,7 +1,6 @@
 import Breadcrumb from './Breadcrumb';
 
-export { BreadcrumbProps } from './Breadcrumb';
-export { BreadcrumbItemProps } from './BreadcrumbItem';
+export { BreadcrumbProps, BreadcrumbItemProps } from './interface';
 
 export { BreadcrumbItem, BreadcrumbSeparator } from './Breadcrumb';
 
