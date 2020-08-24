@@ -1,17 +1,9 @@
-import React, { useState, ReactNode, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import useHover from '../../utils/hooks/useHover';
 import { Close } from '@gio-design/icons';
 import { ConfigContext } from '../config-provider';
+import { BannerProps } from './interface';
 import className from 'classnames';
-
-export interface BannerProps {
-  type?: 'normal' | 'alert';
-  content?: string | ReactNode;
-  closeable?: boolean;
-  onClose?: () => void;
-  button?: ReactNode;
-  prefixCls?: string;
-}
 
 const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   const { type = 'normal', content, closeable = true, onClose, button, prefixCls: customizePrefixCls } = props;
