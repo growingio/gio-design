@@ -57,7 +57,9 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Lint
+      - name: Lint pull request title
+        run: echo "${{ github.event.pull_request.title }}" | npx commitlint
+      - name: Lint codes
         run: yarn lint
   build:
     name: Build Packages
@@ -103,6 +105,7 @@ jobs:
         run: yarn build
   test:
     name: Test Coverage
+    if: ${{ !(startsWith(github.event.pull_request.title, 'chore') || startsWith(github.event.pull_request.title, 'docs')) }}
     needs: build
     runs-on: ubuntu-latest
     steps:
