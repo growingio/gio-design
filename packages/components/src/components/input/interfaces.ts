@@ -3,7 +3,9 @@ import * as React from 'react';
 export interface InputProps {
   value: string;
   type?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (value: string) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   readOnly?: boolean;
@@ -16,16 +18,16 @@ export interface InputProps {
   [key: string]: any;
 }
 
-export type InputNumberProps = Pick<InputProps, 'onPressEnter' | 'disabled' | 'placeholder' | 'inputStyle'> & {
-  value: number;
-  onChange: (value: number) => void;
+export interface InputNumberProps extends InputProps {
   max?: number;
   min?: number;
-  [key: string]: any;
-};
+}
 
-export type TextAreaProps = Pick<InputProps, 'value' | 'disabled' | 'maxLength' | 'placeholder' | 'inputStyle' | 'wrapStyle'> & {
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+export type TextAreaProps = Pick<
+  InputProps,
+  'value' | 'disabled' | 'maxLength' | 'placeholder' | 'inputStyle' | 'wrapStyle'
+> & {
+  onChange: (value: string) => void;
   resize?: boolean;
   [key: string]: any;
 };

@@ -1,7 +1,18 @@
 import * as React from 'react';
 import { SearchBar } from '@gio-design/components';
-import '@gio-design/components/es/components/drawer/style/index.less';
+import '@gio-design/components/es/components/searchBar/style/index.less';
 
 export default () => {
-  return <div></div>;
+  const [value, setValue] = React.useState('');
+
+  return (
+    <SearchBar
+      showStorage={true}
+      showClear={true}
+      allowClearStorage={true}
+      value={value}
+      onChange={setValue}
+      id="demo1"
+    />
+  );
 };

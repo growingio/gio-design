@@ -13,24 +13,19 @@ export default () => {
         placeholder="请输入…"
         size="small"
         value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={setInputValue}
         wrapStyle={{ display: 'block', marginBottom: '20px' }}
       />
 
       <Input
         placeholder="禁止输入"
         value={inputValue2}
-        onChange={(e) => setInputValue2(e.target.value)}
+        onChange={setInputValue2}
         disabled={true}
         wrapStyle={{ display: 'block', marginBottom: '20px' }}
       />
 
-      <Input
-        value={inputValue3}
-        size="large"
-        onChange={(e) => setInputValue3(e.target.value)}
-        wrapStyle={{ display: 'block' }}
-      />
+      <Input value={inputValue3} size="large" onChange={setInputValue3} wrapStyle={{ display: 'block' }} />
     </div>
   );
 };
