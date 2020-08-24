@@ -8900,9 +8900,9 @@ eslint-config-airbnb@^17.1.0:
     object.entries "^1.1.0"
 
 eslint-config-alloy@^3.7.2:
-  version "3.7.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-alloy/-/eslint-config-alloy-3.7.2.tgz#da3b932d8cc897c46e0d77592fc150c63787bf13"
-  integrity sha512-hNeAQNwvYcI4DVlzvBspVB7OkFrplIBCAeCCwR9GZ9SR8Wb3wKTjGnafgAX8aRsLjLwf0zbxifuXtfzZ7SYT8Q==
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/eslint-config-alloy/-/eslint-config-alloy-3.7.4.tgz#bb61fe25c9aa939029a3aa36302d8e22762d2fca"
+  integrity sha512-NGK5mr4mpsky5pEfMIxK/x6dFzOWW72KQ0S4vzIWasZvAfoU++8T4SAqmKOD/LfUO5zQGbZb6CEpXY0N/9ndKA==
 
 eslint-config-prettier@^4.1.0:
   version "4.3.0"
