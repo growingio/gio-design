@@ -2,7 +2,7 @@
 
 exports[`Testing Banner should be stable 1`] = `
 <div
-  className="gio-banner gio-banner-normal  "
+  className="gio-banner gio-banner-normal gio-banner-closeable"
 >
   <div
     className="gio-banner-content"
@@ -23,8 +23,6 @@ exports[`Testing Banner should be stable 1`] = `
   >
     <svg
       height="1em"
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       viewBox="0 0 14 14"
       width="1em"
     >
