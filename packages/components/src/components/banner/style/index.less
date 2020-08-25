@@ -13,11 +13,12 @@
 
   &-content {
     flex: 1;
+    height: 30px;
     margin: 0 64px;
     color: @color-text-banner-normal;
     font-size: @size-font-14;
     font-family: @font-family;
-    line-height: 22px;
+    line-height: 30px;
   }
 
   &-content-button {
@@ -25,12 +26,12 @@
   }
 
   &-button {
-    position: absolute;
+    position: relative;
     right: 64px;
   }
 
   &-closeIcon {
-    position: absolute;
+    position: relative;
     right: 20px;
     width: 24px;
     height: 24px;
@@ -62,10 +63,12 @@
   }
 }
 
-.@{banner-prefix-cls}-alert-hover {
-  background-color: @color-background-banner-alert-hover;
-}
-
 .@{banner-prefix-cls}-close {
   display: none;
+}
+
+.@{banner-prefix-cls}-closeable {
+  .@{banner-prefix-cls}-content {
+    margin: 0 40px 0 64px;
+  }
 }

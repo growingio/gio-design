@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import useHover from '../../utils/hooks/useHover';
 import { Close } from '@gio-design/icons';
 import { ConfigContext } from '../config-provider';
 import { BannerProps } from './interface';
@@ -14,11 +13,16 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
     setVisible(false);
     onClose?.();
   };
-  const [isHover, hoverHandlers] = useHover();
-  const hoverAlertCls = isHover && type !== 'normal' ? `${prefixCls}-${type}-hover` : ' ';
 
   return (
-    <div className={className(`${prefixCls}`, `${prefixCls}-${type}`, hoverAlertCls, !visible && `${prefixCls}-close`)}>
+    <div
+      className={className(
+        `${prefixCls}`,
+        `${prefixCls}-${type}`,
+        closeable && `${prefixCls}-closeable`,
+        !visible && `${prefixCls}-close`
+      )}
+    >
       <div className={className(`${prefixCls}-content`, button && `${prefixCls}-content-button`)}> {content}</div>
       <div className={className(`${prefixCls}-button`)}>{button}</div>
       <div
@@ -26,7 +30,7 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
         style={{ display: closeable ? 'block' : 'none' }}
         onClick={onCloseBanner}
       >
-        <Close {...hoverHandlers} />
+        <Close />
       </div>
     </div>
   );
