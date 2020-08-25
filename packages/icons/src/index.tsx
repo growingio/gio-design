@@ -37,6 +37,7 @@ export { default as PlusOutlined } from './PlusOutlined';
 export { default as QuestionCircleOutlined } from './QuestionCircleOutlined';
 export { default as RightDoubleOutlined } from './RightDoubleOutlined';
 export { default as RightOutlined } from './RightOutlined';
+export { default as Search } from './Search';
 export { default as SettingFilled } from './SettingFilled';
 export { default as Setting } from './Setting';
 export { default as Succeed } from './Succeed';

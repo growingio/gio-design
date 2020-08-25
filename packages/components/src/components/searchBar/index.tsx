@@ -22,10 +22,12 @@ export interface SearchBarProps {
 }
 
 const getStorage = (key: string): string[] => {
+  const empty: string[] = [];
   try {
-    return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : [];
+    // @ts-ignore
+    return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : empty;
   } catch (error) {
-    return [];
+    return empty;
   }
 };
 
