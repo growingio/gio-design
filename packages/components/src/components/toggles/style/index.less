@@ -12,7 +12,6 @@
   transition: all ease 0.4s;
   box-shadow: @shadow-toggles-normal-unchecked-rectangle;
 
-
   .gio-toggles-handle {
     position: absolute;
     width: 14px;
@@ -21,8 +20,8 @@
     background-color: @color-background-toggles-knob-off-normal;
     left: 0px;
     transition: all ease 0.4s;
+    border-radius: @radius-border-pill;
     box-shadow: @shadow-toggles-normal-unchecked-knob;
-
   }
 }
 
@@ -55,7 +54,6 @@
     cursor: not-allowed;
     border: @color-border-toggles-disable-default;
     background-color: @color-background-toggles-off-disable;
-
 
     .gio-toggles-handle {
       background-color: @color-background-toggles-knob-off-disable;
