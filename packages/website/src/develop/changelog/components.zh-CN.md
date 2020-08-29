@@ -9,6 +9,12 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.8.6
+
+- 🆕 新增[Banner 横幅](/components/functional/banner)组件。 [#136](https://github.com/growingio/gio-design/pull/136)
+- 🆕 `加载中` 组件新增 `蒙层颜色` 参数。 [#143](https://github.com/growingio/gio-design/pull/143)
+- 🐛 修复 `开关` 组件的边框半径。 [#145](https://github.com/growingio/gio-design/pull/145)
+
 ## 20.8.5
 
 - 🆕 新增[Modal Dialog 弹窗](/components/functional/modal)组件。 [#137](https://github.com/growingio/gio-design/pull/137)

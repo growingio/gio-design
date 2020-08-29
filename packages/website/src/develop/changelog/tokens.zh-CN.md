@@ -9,6 +9,12 @@ nav:
 
 # @gio-design/tokens 更新日志
 
+## 20.8.4
+
+- 🆕 新增 `横幅` 组件的 `Tokens`。 [#136](https://github.com/growingio/gio-design/pull/136)
+- 🆕 `加载中` 组件新增 `蒙层颜色` 相关的 `Tokens`。 [#143](https://github.com/growingio/gio-design/pull/143)
+- 🆕 `开关` 组件新增 `边框半径` 相关的 `Tokens`。 [#145](https://github.com/growingio/gio-design/pull/145)
+
 ## 20.8.3
 
 - 🆕 更新 `Toggles 开关` 相关的 `Tokens`。 [#76](https://github.com/growingio/gio-design/pull/76)
