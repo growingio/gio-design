@@ -3,12 +3,10 @@ import React, { useState, ReactText } from 'react';
 import * as GIOIcons from '@gio-design/icons';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { TabNav, Toast } from '@gio-design/components';
-import outLinedSrc from './assets/outlined.svg';
-import filledSrc from './assets/filled.svg';
+import { Outlined, Filled } from './svgs';
 
 import '@gio-design/components/es/components/toast/style/index.css';
 import '@gio-design/components/es/components/tabnav/style/index.css';
-
 import './index.less';
 
 const allIcons: {
@@ -53,16 +51,16 @@ export default () => {
 
   const iconKeys = filterIcons(Object.keys(allIcons), iconType);
   return (
-    <div>
-      <div>
+    <div className="gio-icon-list">
+      <div className="gio-icon-list-header">
         <TabNav activeKey={iconType} onChange={onIconTypeChange}>
           <TabNav.Item key="outlined">
-            <img src={outLinedSrc} />
-            <span style={{ marginLeft: 6, verticalAlign: 'middle' }}>Outlined</span>
+            <Outlined />
+            <span className="gio-tabnav__title">Outlined</span>
           </TabNav.Item>
           <TabNav.Item key="filled">
-            <img src={filledSrc} />
-            <span style={{ marginLeft: 6, verticalAlign: 'middle' }}>Filled</span>
+            <Filled />
+            <span className="gio-tabnav__title">Filled</span>
           </TabNav.Item>
         </TabNav>
       </div>
