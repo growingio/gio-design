@@ -13,8 +13,6 @@ jobs:
           fetch-depth: 2
       - run: git checkout HEAD^2
         if: ${{ github.event_name == 'pull_request' }}
-      - name: Detect Secrets
-        uses: zricethezav/gitleaks-action@master
   install:
     name: Install dependencies
     runs-on: ubuntu-latest
