@@ -40,7 +40,7 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
   });
 
   const childrenStyle: React.CSSProperties = {
-    transform: `scale(${scale}) translateX(-50%)`,
+    transform: `scale(${scale})`,
   };
 
   const renderMore = () => {
