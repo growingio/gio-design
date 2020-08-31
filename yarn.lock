@@ -17728,9 +17728,9 @@ rc-collapse@~2.0.0:
     shallowequal "^1.1.0"
 
 rc-dialog@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.npm.taobao.org/rc-dialog/download/rc-dialog-8.1.0.tgz?cache=0&sync_timestamp=1594264518864&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frc-dialog%2Fdownload%2Frc-dialog-8.1.0.tgz#393910963bb05ac19d6d136620bd09622f1d677a"
-  integrity sha1-OTkQljuwWsGdbRNmIL0JYi8dZ3o=
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/rc-dialog/-/rc-dialog-8.1.1.tgz#ce54bd78e940c030b69d3acfc87874536966a27b"
+  integrity sha512-ToyHiMlV94z8LfnmeKoVvu04Pd9+HdwwSHhY2a8IWeYGA5Cjk1WyIZvS+njCsm8rSMM4NqPqFkMZA0N/Iw0NrQ==
   dependencies:
     rc-animate "3.x"
     rc-util "^5.0.1"
@@ -18093,26 +18093,10 @@ rc-util@4.x, rc-util@^4.0.4, rc-util@^4.15.3, rc-util@^4.4.0:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.1.0"
 
-rc-util@^5.0.0, rc-util@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.0.1.tgz#26a5515ca080b82f5cb7f3b6319966824a928476"
-  integrity sha512-vzpgfdC6FGkrRFQ7NuipR1C/+kNDfber8eIEnuTR9q875Jg+/YO9xd7CG0dCxV/SK30jnMhMsj0rmMEzPHUVyA==
-  dependencies:
-    react-is "^16.12.0"
-    shallowequal "^1.1.0"
-
-rc-util@^5.0.4:
+rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.4, rc-util@^5.0.5:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.0.6.tgz#2b828bc87a818a66384b813f76a561ad4609e9b0"
   integrity sha512-uLGxF9WjbpJSjd6iDnIjl8ZeMUglpcuh1DwO26aaXh++yAmlB6eIAJMUwwJCuqJvo4quCvsDPg1VkqHILc4U0A==
-  dependencies:
-    react-is "^16.12.0"
-    shallowequal "^1.1.0"
-
-rc-util@^5.0.5:
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.0.5.tgz#d29d626edc931fbf8b45b4aa48fb9e44ce2300bd"
-  integrity sha512-zLIdNm6qz+hQbB5T1fmzHFFgPuRl3uB2eS2iLR/mewUWvgC3l7NzRYRVlHoCEEFVUkKEEsHuJXG1J52FInl5lA==
   dependencies:
     react-is "^16.12.0"
     shallowequal "^1.1.0"
