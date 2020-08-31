@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import classnames from 'classnames';
 import Loading from '../../loading';
-import { LoadingBlackOutlined } from '@gio-design/icons';
+import { LoadingOutlined } from '@gio-design/icons';
 import Input from '../../input';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import Preview from '../Preview';
@@ -25,26 +25,26 @@ const InputTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, inputUpload
   if (file?.error) {
     errorMsg = typeof file.error === 'string' ? file.error : '未知错误类型，请查看控制台';
   }
-
+  /* eslint-disable */
   return (
     <span className={inputWrapperCls}>
       {hideInput ? (
-        <Loading loading={file?.status === STATUS_UPLOADING} indicator={<LoadingBlackOutlined />} title={false}>
+        <Loading loading={file?.status === STATUS_UPLOADING} indicator={<LoadingOutlined rotating />} title={false}>
           <span className={inputPreviewCls} onClick={handlePreviewClick}>
             {file?.status === STATUS_SUCCESS && <Preview file={file} />}
             <span>{file?.name ?? 'Web Image'}</span>
           </span>
         </Loading>
       ) : (
-        <Input
-          placeholder="请输入图片的 URL"
-          {...triggerProps}
-          onChange={handleChange}
-          errorMsg={errorMsg}
-          onPressEnter={handlePressEnter}
-          value={url}
-        />
-      )}
+          <Input
+            placeholder="请输入图片的 URL"
+            {...triggerProps}
+            onChange={handleChange}
+            errorMsg={errorMsg}
+            onPressEnter={handlePressEnter}
+            value={url}
+          />
+        )}
     </span>
   );
 };
