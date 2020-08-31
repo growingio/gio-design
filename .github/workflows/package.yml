@@ -4,66 +4,8 @@ on:
     types:
       - published
 jobs:
-  install:
-    name: Install dependencies
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.1.1
-        with:
-          node-version: 12.x
-      - name: Cache node modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Bootstrap
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: yarn bootstrap
-
-  build:
-    name: Build packages
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.1.1
-        with:
-          node-version: 12.x
-      - name: Restore node modules from cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Cache packages
-        uses: actions/cache@v2
-        with:
-          path: |
-            packages/components/dist
-            packages/components/es
-            packages/icons/dist
-            packages/icons/es
-            packages/tokens/dist
-          key: packages-${{ github.sha }}
-      - name: Build packages
-        run: yarn build
-
   publish_npm:
     name: Publishing packages to the npm registry
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -89,33 +31,3 @@ jobs:
         run: yarn run publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  publish_github:
-    name: Publishing packages to the GitHub Packages
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.1.1
-        with:
-          node-version: 12.x
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@growingio'
-      - name: Restore packages from cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            packages/components/dist
-            packages/components/es
-            packages/icons/dist
-            packages/icons/es
-            packages/tokens/dist
-          key: packages-${{ github.sha }}
-      - name: Publish from package
-        run: yarn run publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
