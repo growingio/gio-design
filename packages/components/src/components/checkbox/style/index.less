@@ -1,4 +1,4 @@
-@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/index.less';
 @import '../../../stylesheet/mixin/index.less';
 
 @checkbox-prefix-cls: ~'@{component-prefix}-checkbox';
@@ -6,6 +6,12 @@
 @checkbox-icon-cls: ~'@{checkbox-prefix-cls}-icon';
 @group-prefix-cls: ~'@{checkbox-prefix-cls}-group';
 @checkbox-wrapper-cls: ~'@{checkbox-prefix-cls}-wrapper';
+
+@checkbox-background-color-checked: #1248e9;
+@checkbox-border-color-checked: #1248e9;
+@checkbox-background-color-disabled: @background-color-disabled;
+@checkbox-border-color-disabled: @border-color-disabled;
+@checkbox-border: @border-width-base @border-style-base @border-color-base;
 
 @check-width: (32px / 14) * 5px;
 @check-height: (32px / 14) * 8px;
@@ -25,7 +31,7 @@
       &-cool {
         .@{checkbox-inner-prefix-cls} {
           border-color: @checkbox-border-color-checked;
-          box-shadow: inset -0.5px 1px 2px 0 rgba(163,173,200,0.8), 0 2px 4px 0 rgba(223,226,237,0.94);
+          box-shadow: inset -0.5px 1px 2px 0 rgba(163, 173, 200, 0.8), 0 2px 4px 0 rgba(223, 226, 237, 0.94);
         }
       }
     }
@@ -34,27 +40,27 @@
   .@{checkbox-prefix-cls} {
     &-cool {
       .@{checkbox-inner-prefix-cls} {
-        box-shadow: inset -0.5px 1px 2px 0 rgba(163,173,200,0.8);
+        box-shadow: inset -0.5px 1px 2px 0 rgba(163, 173, 200, 0.8);
       }
     }
   }
 }
 
 .@{checkbox-icon-cls} {
-  width: 10px;
   position: absolute;
-  left: 3px;
   top: 8px;
+  left: 3px;
   z-index: 999;
-  fill: #fff;
+  width: 10px;
   transform: scale(0);
-  transition: all .5s;
+  transition: all 0.5s;
+  fill: #fff;
   &-checked {
     transform: scale(1);
-    transition: all .5s cubic-bezier(.12,.4,.29,1.46);
+    transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
   }
   &-disabled {
-    fill:  #DFE2ED;
+    fill: #dfe2ed;
   }
   &-indeterminate {
     display: none;
@@ -62,7 +68,6 @@
 }
 
 .@{checkbox-prefix-cls} {
-
   position: relative;
 
   &-input {
@@ -70,55 +75,51 @@
     margin-right: 8px;
   }
 
+  display: inline-block;
   width: 16px;
   height: 16px;
-  display: inline-block;
   margin-right: 8px;
   vertical-align: text-bottom;
 
   .@{checkbox-inner-prefix-cls} {
-    background-color: @background-color-base;
-    border: @border-width-base @border-style-base @border-color-base;
-
     position: absolute;
     top: -50%;
     right: -50%;
     bottom: -50%;
     left: -50%;
-    display: block;
-    border-radius: 8px;
-    transform: scale(0.5);
-    border-collapse: separate;
-    transition: all 0.9s;
     z-index: 1;
+    display: block;
+    background-color: @background-color-base;
+    border: @border-width-base @border-style-base @border-color-base;
+    border-radius: 8px;
+    border-collapse: separate;
+    transform: scale(0.5);
+    transition: all 0.9s;
 
     /**
      * 部分选中的横线
      */
     &::after {
-      width: 0;
-      content: ' ';
-      background-color: #fff;
+      position: relative;
       top: 50%;
       left: 20%;
-      margin-top: -1px;
-      height: 2px;
       display: block;
-      position: relative;
-      border-radius: 1px;
       width: 60%;
+      height: 2px;
+      margin-top: -1px;
+      background-color: #fff;
+      border-radius: 1px;
       transform: scale(0);
-      // transition: all .5s;
+      content: ' ';
     }
   }
 
   &-checked {
     .@{checkbox-inner-prefix-cls} {
-      border-color: @checkbox-border-color-checked;
       background-color: @checkbox-background-color-checked;
+      border-color: @checkbox-border-color-checked;
     }
   }
-
 
   &-disabled&-checked {
     & + span {
@@ -131,7 +132,7 @@
     .@{checkbox-inner-prefix-cls} {
       &::after {
         transform: scale(1);
-        transition: all .5s;
+        transition: all 0.5s;
       }
     }
   }
@@ -140,7 +141,7 @@
       background-color: @checkbox-background-color-disabled;
       border-color: @checkbox-border-color-disabled !important;
       &::after {
-        background-color: #DFE2ED;
+        background-color: #dfe2ed;
       }
     }
 
@@ -152,20 +153,20 @@
 
   &-cool {
     .@{checkbox-inner-prefix-cls} {
-      box-shadow: inset -0.5px 1px 2px 0 rgba(163,173,200,0.8);
+      box-shadow: inset -0.5px 1px 2px 0 rgba(163, 173, 200, 0.8);
     }
   }
 }
 
 .@{group-prefix-cls} {
   &--vertical {
-    .@{checkbox-wrapper-cls}{
-      margin-bottom: 16px;
+    .@{checkbox-wrapper-cls} {
       display: block;
+      margin-bottom: 16px;
     }
   }
   &--horizontal {
-    .@{checkbox-wrapper-cls}{
+    .@{checkbox-wrapper-cls} {
       margin-right: 24px;
     }
   }
