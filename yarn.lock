@@ -17968,9 +17968,9 @@ rc-switch@~3.2.0:
     rc-util "^5.0.1"
 
 rc-table@^7.9.1:
-  version "7.9.1"
-  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-7.9.1.tgz#c189ecc55feb3c992ff6b8d407e5d3bc29b5ef3b"
-  integrity sha512-13qznljCzbm9DKqqU1MThKKlC2HeHumTfBwFeOvP9SR/d7JFpppJT8ZPDzWw5l6qs1J3CZl+rF4KuhHCjSMilA==
+  version "7.9.6"
+  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-7.9.6.tgz#e15dff9d04d933da25e3e7ac60f0e2070dea0fff"
+  integrity sha512-NYLGgXquZtYMaZ44GyDR2zaMCQ4ujf2YLVOtz1Fj9Xc/dg9In1kTkVNtZC2UpuXboPWbh6pP9ycD5d55Zp1jDA==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.5"
@@ -18093,26 +18093,10 @@ rc-util@4.x, rc-util@^4.0.4, rc-util@^4.15.3, rc-util@^4.4.0:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.1.0"
 
-rc-util@^5.0.0, rc-util@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.0.1.tgz#26a5515ca080b82f5cb7f3b6319966824a928476"
-  integrity sha512-vzpgfdC6FGkrRFQ7NuipR1C/+kNDfber8eIEnuTR9q875Jg+/YO9xd7CG0dCxV/SK30jnMhMsj0rmMEzPHUVyA==
-  dependencies:
-    react-is "^16.12.0"
-    shallowequal "^1.1.0"
-
-rc-util@^5.0.4:
+rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.4, rc-util@^5.0.5:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.0.6.tgz#2b828bc87a818a66384b813f76a561ad4609e9b0"
   integrity sha512-uLGxF9WjbpJSjd6iDnIjl8ZeMUglpcuh1DwO26aaXh++yAmlB6eIAJMUwwJCuqJvo4quCvsDPg1VkqHILc4U0A==
-  dependencies:
-    react-is "^16.12.0"
-    shallowequal "^1.1.0"
-
-rc-util@^5.0.5:
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.0.5.tgz#d29d626edc931fbf8b45b4aa48fb9e44ce2300bd"
-  integrity sha512-zLIdNm6qz+hQbB5T1fmzHFFgPuRl3uB2eS2iLR/mewUWvgC3l7NzRYRVlHoCEEFVUkKEEsHuJXG1J52FInl5lA==
   dependencies:
     react-is "^16.12.0"
     shallowequal "^1.1.0"
