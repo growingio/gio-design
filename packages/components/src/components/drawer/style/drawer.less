@@ -1,5 +1,4 @@
-@import '../../../stylesheet/theme.less';
-@import '~@gio-design/tokens/dist/variables.less';
+@import '../../../stylesheet/index.less';
 
 @drawer-prefix-cls: ~'@{component-prefix}-drawer';
 @picker-prefix-cls: ~'@{component-prefix}-picker';
@@ -27,7 +26,7 @@
 @border-radius-base: 5px;
 
 .@{drawer-prefix-cls} {
-  @drawer-header-close-padding: ceil((@drawer-header-close-size - @font-size-lg) / 2);
+  @drawer-header-close-padding: ceil((@drawer-header-close-size - @size-font-16) / 2);
 
   position: fixed;
   z-index: @zindex-modal;
@@ -155,7 +154,7 @@
     margin: 0;
     color: @palette-black-6;
     font-weight: 500;
-    font-size: @font-size-lg;
+    font-size: @size-font-16;
     line-height: 22px;
   }
 
@@ -177,7 +176,7 @@
     padding: @drawer-header-close-padding;
     color: @palette-black-6;
     font-weight: 700;
-    font-size: @font-size-lg;
+    font-size: @size-font-16;
     font-style: normal;
     line-height: 1;
     text-align: center;
