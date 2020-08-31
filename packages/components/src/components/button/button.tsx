@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider';
 import SizeContext from '../config-provider/SizeContext';
-import LoadingIcon from './LoadingIcon';
+import { LoadingOutlined } from '@gio-design/icons';
 import { ButtonProps } from './interface';
 import { cloneElement } from '../../utils/reactNode';
 
@@ -133,13 +133,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
     [`${prefixCls}-block`]: block,
   });
 
-  /* eslint-disable prettier/prettier */
-  const iconNode =
-    icon && !innerLoading ? (
-      icon
-    ) : (
-        <LoadingIcon existIcon={!!icon} type={type} prefixCls={prefixCls} loading={innerLoading} />
-      );
+  const iconNode = icon && !innerLoading ? icon : innerLoading ? <LoadingOutlined rotating /> : null;
 
   const kids = children || children === 0 ? spaceChildren(children, isNeedInserted() && autoInsertSpace) : null;
 
