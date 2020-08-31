@@ -4,7 +4,7 @@ import toArray from 'rc-util/lib/Children/toArray';
 import { isNil } from 'lodash';
 import { ConfigContext } from '../config-provider';
 import { TabNavProps, TabNavItemProps } from './interface';
-import useRefs from './hook/useRefs';
+import useRefs from '../../utils/hooks/useRefs';
 
 const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   const {

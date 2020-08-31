@@ -3,7 +3,7 @@ import { isBoolean } from 'lodash';
 import classNames from 'classnames';
 import { ConfigContext } from '../config-provider';
 import Avatar from '../avatar';
-import useDebounceLoading from '../../utils/hooks/debounceLoading';
+import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
 import { SkeletonProps } from './interface';
 import SkeletonImage from './Image';
 
