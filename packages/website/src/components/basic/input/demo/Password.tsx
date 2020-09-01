@@ -13,7 +13,7 @@ export default () => {
         placeholder="请输入…"
         value={inputValue}
         onChange={setInputValue}
-        wrapStyle={{ marginBottom: '20px' }}
+        wrapStyle={{ marginBottom: '20px', display: 'block' }}
       />
 
       <Input.Password
@@ -21,7 +21,7 @@ export default () => {
         value={inputValue2}
         onChange={setInputValue2}
         disabled={true}
-        wrapStyle={{ marginBottom: '20px' }}
+        wrapStyle={{ marginBottom: '20px', display: 'block' }}
       />
 
       <Input.Password value={inputValue3} onChange={setInputValue3} disabled={true} />

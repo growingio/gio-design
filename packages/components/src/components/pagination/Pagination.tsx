@@ -175,7 +175,7 @@ const Pagination = ({
         })}
         onClick={() => prevDisabled || handleClick(localCurrent - 1)}
       >
-        <LeftOutlined width={16} height={16} />
+        <LeftOutlined size="16px" />
       </li>
       {renderPage()}
       <li
@@ -184,7 +184,7 @@ const Pagination = ({
         })}
         onClick={() => nextDisabled || handleClick(localCurrent + 1)}
       >
-        <RightOutlined width={16} height={16} />
+        <RightOutlined size="16px" />
       </li>
       {shouldShowOption && <li className={`${prefixCls}-options`}>{shouldShowQuickJumper && renderInput()}</li>}
     </ul>

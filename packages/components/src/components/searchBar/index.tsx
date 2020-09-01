@@ -1,25 +1,10 @@
 import * as React from 'react';
 import Input from '../input';
 import Button from '../button';
-import { CloseCircleFilled, Search } from '@gio-design/icons';
+import { SearchBarProps } from './interfaces';
+import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
 
 export const prefixCls = 'gio-searchbar';
-
-export interface SearchBarProps {
-  showStorage?: boolean;
-  storageNum?: number;
-  allowClearStorage?: boolean;
-  showClear?: boolean;
-  disabled?: boolean;
-  size?: 'large' | 'medium' | 'small';
-  inputStyle?: React.CSSProperties;
-  inputWrapStyle?: React.CSSProperties;
-  wrapStyle?: React.CSSProperties;
-
-  value: string;
-  onChange: (value: string) => void;
-  id: string;
-}
 
 const getStorage = (key: string): string[] => {
   const empty: string[] = [];
@@ -70,7 +55,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   onChange,
   id,
 }) => {
-  const storageKey = React.useMemo(() => `gio-searchbar-storage-${id}`, [id]);
+  const storageKey = React.useMemo(() => `${prefixCls}-storage-${id}`, [id]);
 
   const [searchStorage, setSearchStorage] = React.useState(getStorage(storageKey));
   const [showDropdown, setShowDropdown] = React.useState(false);
@@ -106,9 +91,11 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   const renderSuffix = () => {
     if (value) {
-      return showClear ? <CloseCircleFilled onClick={handleClearValue} /> : null;
+      return showClear ? (
+        <CloseCircleFilled className={`${prefixCls}-suffix-close`} onClick={handleClearValue} />
+      ) : null;
     }
-    return <Search />;
+    return <SearchOutlined className={`${prefixCls}-suffix-search`} />;
   };
 
   const renderStorage = () => {

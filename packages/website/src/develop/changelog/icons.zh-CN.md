@@ -9,6 +9,10 @@ nav:
 
 # @gio-design/icons 更新日志
 
+## 20.8.4
+
+- 📛 更新 `图标` 组件，在 `svg` 外面加一层 `span`。 [#154](https://github.com/growingio/gio-design/pull/154)
+
 ## 20.8.3
 
 - 🆕 新增 `Upload`、`Picture`、`FileCsv`、`FileDoc`、`FilePdf`、 `FileXlsx`、`File`、`Delete` 图标。 [#106](https://github.com/growingio/gio-design/pull/106)

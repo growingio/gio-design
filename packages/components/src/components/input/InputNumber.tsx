@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Input, { prefixCls } from './Input';
-import Button from '../button';
 import { UpFilled, DownFilled } from '@gio-design/icons';
 import { InputNumberProps } from './interfaces';
 
@@ -10,8 +9,23 @@ const InputNumber: React.FC<InputNumberProps> = ({
   max = Number.MAX_SAFE_INTEGER,
   min = -Number.MAX_SAFE_INTEGER,
   disabled = false,
+  readOnly = false,
   ...rest
 }) => {
+  const addDisabled = React.useMemo(() => Number(value) >= max || disabled || readOnly, [
+    value,
+    max,
+    disabled,
+    readOnly,
+  ]);
+
+  const decreaseDisabled = React.useMemo(() => Number(value) <= min || disabled || readOnly, [
+    value,
+    min,
+    disabled,
+    readOnly,
+  ]);
+
   const handleChange = (value: string) => {
     const v = Number(value);
     if (isNaN(v) || v < min || v > max) {
@@ -21,28 +35,30 @@ const InputNumber: React.FC<InputNumberProps> = ({
   };
 
   const handleAdd = () => {
-    onChange(String(Number(value) + 1));
+    if (!addDisabled) {
+      onChange(String(Number(value) + 1));
+    }
   };
 
   const handleDecrease = () => {
-    onChange(String(Number(value) - 1));
+    if (!decreaseDisabled) {
+      onChange(String(Number(value) - 1));
+    }
   };
 
   const renderSuffix = () => (
-    <div className={`${prefixCls}-opt-arrow`}>
-      <Button
-        type="text"
-        size="small"
+    <div className={`${prefixCls}-container-suffix-iconGroup`}>
+      <UpFilled
+        className={`${prefixCls}-container-suffix-iconGroup-top ${prefixCls}-container-suffix-icon${
+          addDisabled ? '-disabled' : ''
+        }`}
         onClick={handleAdd}
-        disabled={Number(value) >= max || disabled}
-        icon={<UpFilled />}
       />
-      <Button
-        type="text"
-        size="small"
+      <DownFilled
+        className={`${prefixCls}-container-suffix-iconGroup-bottom ${prefixCls}-container-suffix-icon${
+          decreaseDisabled ? '-disabled' : ''
+        }`}
         onClick={handleDecrease}
-        disabled={Number(value) <= min || disabled}
-        icon={<DownFilled />}
       />
     </div>
   );

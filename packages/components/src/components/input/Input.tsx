@@ -32,7 +32,7 @@ const Input: React.FC<InputProps> = ({
     `${prefixCls}-content`,
     {
       [`${prefixCls}-content-medium`]: size === 'medium',
-      [`${prefixCls}-content-larget`]: size === 'large',
+      [`${prefixCls}-content-large`]: size === 'large',
       [`${prefixCls}-content-small`]: size === 'small',
     },
     {

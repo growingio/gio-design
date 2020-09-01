@@ -40,14 +40,14 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
   });
 
   const childrenStyle: React.CSSProperties = {
-    transform: `scale(${scale}) translateX(-50%)`,
+    transform: `scale(${scale})`,
   };
 
   const renderMore = () => {
     if (droppable) {
       return (
         <div className={classNames({ [`${prefixCls}-droppable`]: droppable })}>
-          <More width={16} height={16} color="#FFFFFF" />
+          <More size="16px" color="#FFFFFF" />
         </div>
       );
     }

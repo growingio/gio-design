@@ -1,15 +1,23 @@
 import * as React from 'react';
+import Wrapper from './Wrapper';
+import { IconProps } from './interface';
 
-function SvgInformationFilled(props: React.SVGProps<SVGSVGElement>) {
-  return (
+function SvgInformationFilled(wrapperProps: IconProps) {
+  const { rotating, color, size, ...restProps } = wrapperProps;
+  const props = {
+    color,
+    className: rotating ? 'gio-icon-svg gio-icon-rotating' : 'gio-icon-svg',
+    width: !size ? '1rem' : size,
+    height: !size ? '1rem' : size,
+  };
+  const file = (
     <svg
       viewBox="0 0 59 59"
       fillRule="evenodd"
       clipRule="evenodd"
       strokeLinejoin="round"
       strokeMiterlimit={1.414}
-      width="1em"
-      height="1em"
+      fill="currentColor"
       {...props}
     >
       <path
@@ -18,7 +26,7 @@ function SvgInformationFilled(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
+  return <Wrapper {...restProps} icon={file} />;
 }
 
-const MemoSvgInformationFilled = React.memo(SvgInformationFilled);
-export default MemoSvgInformationFilled;
+export default SvgInformationFilled;

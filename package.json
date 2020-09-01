@@ -56,7 +56,7 @@
     "lint-fix:style": "yarn run lint:style --fix",
     "test": "yarn workspace @gio-design/components test",
     "version": "npx lerna version --no-private --no-git-tag-version",
-    "publish": "npx lerna publish from-package --yes"
+    "publish": "npx lerna publish from-package --no-verify-access --yes"
   },
   "config": {
     "commitizen": {

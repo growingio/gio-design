@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Input from './Input';
-import { View, Unview } from '@gio-design/icons';
+import Input, { prefixCls } from './Input';
+import { ViewOutlined, UnviewOutlined } from '@gio-design/icons';
 import { InputProps } from './interfaces';
 
 const Password: React.FC<InputProps> = (props) => {
@@ -14,7 +14,12 @@ const Password: React.FC<InputProps> = (props) => {
     }
   };
 
-  const renderSuffix = () => (visible ? <View onClick={toggleVisible} /> : <Unview onClick={toggleVisible} />);
+  const renderSuffix = () =>
+    visible ? (
+      <ViewOutlined className={`${prefixCls}-container-suffix-icon`} onClick={toggleVisible} />
+    ) : (
+      <UnviewOutlined className={`${prefixCls}-container-suffix-icon`} onClick={toggleVisible} />
+    );
 
   return <Input {...props} type={visible ? 'text' : 'password'} suffix={renderSuffix()} />;
 };

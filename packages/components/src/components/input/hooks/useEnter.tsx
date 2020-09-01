@@ -19,7 +19,7 @@ const useEnter: UseEnter = (value, onChange) => {
 
   useDebounce(
     () => {
-      onChange(realTimeValue);
+      onChange?.(realTimeValue);
     },
     delay,
     [realTimeValue]

@@ -74,36 +74,36 @@
       position: absolute;
       top: 8px;
       right: 15px;
-    }
 
-    &-view {
-      position: absolute;
-      top: 8px;
-      right: 15px;
+      &-iconGroup {
+        display: flex;
+        flex-direction: column;
 
-      & > button {
-        color: @palette-gray-5;
+        &-top {
+          position: relative;
+          top: -2px;
+        }
 
-        &:hover {
-          color: @palette-blue-7;
+        &-bottom {
+          position: relative;
+          top: -8px;
         }
       }
-    }
 
-    &-arrow {
-      position: absolute;
-      top: -14px;
-      right: 16px;
-      display: flex;
-      flex-direction: column;
-
-      & > button {
-        width: 16px !important;
-        height: 16px !important;
-        color: @palette-gray-5;
+      &-icon {
+        color: @palette-gray-6;
 
         &:hover {
-          color: @palette-blue-7;
+          color: @color-background-button-primary-hover;
+          cursor: pointer;
+        }
+
+        &-disabled {
+          color: @palette-gray-6;
+          &:hover {
+            color: @palette-gray-6;
+            cursor: not-allowed;
+          }
         }
       }
     }
