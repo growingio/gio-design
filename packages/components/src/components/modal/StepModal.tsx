@@ -45,7 +45,7 @@ const StepModal: React.FC<IStepModalProps> = ({
   const handleClose = async (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     const container = document.querySelector('.gio-modal-close');
     const target: HTMLElement = e.target as HTMLElement;
-    const isCloseIcon = container.contains(target) || target.classList.contains('gio-modal-close');
+    const isCloseIcon = container?.contains(target) || target.classList.contains('gio-modal-close');
 
     if (isFirstStep || isCloseIcon) {
       onClose?.(e);
