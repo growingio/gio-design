@@ -1540,7 +1540,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.1", "@babel/runtime@^7.4.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.6":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.4.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.6":
   version "7.11.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
   integrity sha512-TeWkU52so0mPtDcaCTxNBI/IHiz0pZgr8VEFqXFtZWpYD08ZB6FaSwVAS8MKRQAP3bYKiVjwysOJgMFY28o6Tw==
@@ -17826,16 +17826,6 @@ rc-menu@^8.5.1:
     resize-observer-polyfill "^1.5.0"
     shallowequal "^1.1.0"
 
-rc-motion@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/rc-motion/-/rc-motion-1.0.2.tgz#b8aec288642298d74ddc9ac1773e1b600aaa1c25"
-  integrity sha512-FDmC9ZdzsXerlTZ+YLu+l5erjkMU98s85SFHdQac+pMy6zQ10RuON6Ntv3ZwP0+qY/YlIsK+0uMXIWOJ9LaLIg==
-  dependencies:
-    "@babel/runtime" "^7.11.1"
-    classnames "^2.2.1"
-    raf "^3.4.1"
-    rc-util "^5.0.6"
-
 rc-notification@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/rc-notification/-/rc-notification-3.3.1.tgz#0baa3e70f8d40ab015ce8fa78c260c490fc7beb4"
@@ -17916,19 +17906,6 @@ rc-select@^10.1.0, rc-select@~10.4.0:
     rc-virtual-list "^1.1.2"
     warning "^4.0.3"
 
-rc-select@^11.1.5:
-  version "11.1.5"
-  resolved "https://registry.yarnpkg.com/rc-select/-/rc-select-11.1.5.tgz#df73e9b7c56da547ba012d4eb95c46e5fb158216"
-  integrity sha512-PQ502UZo/bGecEv3yyK7GqDhS/kN3EUwGLeBOG6M8A7lODwPJBEYJho8TGtS1YhJFBETzKQ85Ya7wsC73Bc+2w==
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "2.x"
-    rc-motion "^1.0.1"
-    rc-trigger "^4.3.0"
-    rc-util "^5.0.1"
-    rc-virtual-list "^2.1.5"
-    warning "^4.0.3"
-
 rc-slider@~8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/rc-slider/-/rc-slider-8.2.0.tgz#ae37d17144cad60e1da6eac0ee4ffcfea0b0a6e8"
@@ -18004,20 +17981,6 @@ rc-table@~7.7.2:
     rc-resize-observer "^0.2.0"
     rc-util "^5.0.0"
     shallowequal "^1.1.0"
-
-rc-tabs@^11.5.2:
-  version "11.6.1"
-  resolved "https://registry.yarnpkg.com/rc-tabs/-/rc-tabs-11.6.1.tgz#a31a277b12f807cc7bdc31476c0d21124ce93e14"
-  integrity sha512-fJZUOmwBo2E4WTbucCSZO/N1ZK+d9K/QchgDeycTIqxl5D/xtX0Dw/vC2DFi140OFjAy2JL7H0EmsSeOFfCgzw==
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "2.x"
-    raf "^3.4.1"
-    rc-dropdown "^3.1.0"
-    rc-menu "^8.2.1"
-    rc-resize-observer "^0.2.1"
-    rc-trigger "^4.2.1"
-    rc-util "^5.0.0"
 
 rc-tabs@~11.2.0:
   version "11.2.4"
@@ -18145,14 +18108,6 @@ rc-util@^5.0.5:
     react-is "^16.12.0"
     shallowequal "^1.1.0"
 
-rc-util@^5.0.6, rc-util@^5.0.7:
-  version "5.0.7"
-  resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.0.7.tgz#125c3a2fd917803afbb685f9eadc789b085dc813"
-  integrity sha512-nr98b5aMqqvIqxm16nF+zC3K3f81r+HsflT5E9Encr5itRwV7Vo/5GjJMNds/WiFV33rilq7vzb3xeAbCycmwg==
-  dependencies:
-    react-is "^16.12.0"
-    shallowequal "^1.1.0"
-
 rc-virtual-list@^1.1.0, rc-virtual-list@^1.1.2:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/rc-virtual-list/-/rc-virtual-list-1.1.5.tgz#6edf7222830c7dd732f62698c8468b7f08ac8dec"
@@ -18161,15 +18116,6 @@ rc-virtual-list@^1.1.0, rc-virtual-list@^1.1.2:
     classnames "^2.2.6"
     raf "^3.4.1"
     rc-util "^5.0.0"
-
-rc-virtual-list@^2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/rc-virtual-list/-/rc-virtual-list-2.1.5.tgz#f065e9835e16c612525e884662a886a25e4ff793"
-  integrity sha512-4jcNyR74cHfEEk25xjVfjYh6RsgK22XRApz0VpMPyygUnEpm0+44w3OP8S9vsFq3QAWUpOmW4kwp3ESJ917aaw==
-  dependencies:
-    classnames "^2.2.6"
-    rc-resize-observer "^0.2.3"
-    rc-util "^5.0.7"
 
 rc@^1.2.8:
   version "1.2.8"

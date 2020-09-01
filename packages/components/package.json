@@ -35,8 +35,6 @@
     "rc-drawer": "^4.1.0",
     "rc-menu": "^8.5.1",
     "rc-notification": "^3.3.1",
-    "rc-select": "^11.1.5",
-    "rc-tabs": "^11.5.2",
     "rc-table": "^7.9.1",
     "rc-tooltip": "^4.2.1",
     "rc-upload": "^3.2.0",
