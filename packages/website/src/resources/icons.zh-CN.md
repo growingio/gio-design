@@ -7,7 +7,11 @@ nav:
 
 # Icon 图标
 
-语义化的矢量图形。使用图标组件，你需要安装 `@gio-design/icons` 图标组件包：
+基于 `SVG` 的 `React` 图标库。
+
+## 如何使用
+
+使用图标组件，你需要安装 `@gio-design/icons` 图标组件包：
 
 ```bash
 npm install --save @gio-design/icons

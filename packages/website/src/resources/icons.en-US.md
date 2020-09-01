@@ -6,7 +6,11 @@ nav:
 
 # Icon
 
-Semantic vector graphics. Before use icons, you need to install `@gio-design/icons` package:
+`React` Icons library based on `SVG`.
+
+## Usage
+
+Before use icons, you need to install `@gio-design/icons` package:
 
 ```bash
 npm install --save @gio-design/icons
