@@ -34,6 +34,7 @@ const StepModal: React.FC<IStepModalProps> = ({
       // 因为 handleClose 在 afterClose 执行时无法很好判断触发点，导致出错
       if (closeAfterOk) {
         onClose?.(e);
+        setCurStepAt(0);
       }
     } else {
       await Promise.resolve(onNext?.());
@@ -42,11 +43,13 @@ const StepModal: React.FC<IStepModalProps> = ({
   };
 
   const handleClose = async (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    const targetClassList = (e.target as HTMLElement).classList.value;
-    const isCloseIcon = /^gio\-modal(\_\_|\-)close$/.test(targetClassList);
+    const container = document.querySelector('.gio-modal-close');
+    const target: HTMLElement = e.target as HTMLElement;
+    const isCloseIcon = container.contains(target) || target.classList.contains('gio-modal-close');
 
     if (isFirstStep || isCloseIcon) {
       onClose?.(e);
+      setCurStepAt(0);
     } else {
       await handleBack();
     }
