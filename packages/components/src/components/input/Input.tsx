@@ -31,9 +31,7 @@ const Input: React.FC<InputProps> = ({
   const inputClass = classNames(
     `${prefixCls}-content`,
     {
-      [`${prefixCls}-content-medium`]: size === 'medium',
-      [`${prefixCls}-content-large`]: size === 'large',
-      [`${prefixCls}-content-small`]: size === 'small',
+      [`${prefixCls}-content-${size}`]: !!size,
     },
     {
       [`${prefixCls}-content-suffix`]: !!suffix,
