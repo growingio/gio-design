@@ -28,3 +28,4 @@ export { default as Toggles } from './components/toggles';
 export { default as Tooltip } from './components/tooltip';
 export { default as Tree } from './components/tree';
 export { default as Upload } from './components/upload';
+export { default as List } from './components/list';
