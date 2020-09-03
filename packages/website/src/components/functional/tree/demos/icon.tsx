@@ -1,7 +1,7 @@
 import React from 'react';
 import Tree from '@gio-design/components/es/components/tree';
 import '@gio-design/components/es/components/tree/style/css.js';
-import { AppOutlined, Setting, Check } from '@gio-design/icons';
+import { AppOutlined, Setting, CheckOutlined } from '@gio-design/icons';
 import './index.less';
 
 const treeData = [
@@ -23,7 +23,7 @@ const treeData = [
           {
             title: 'Ruby开发',
             key: '0-0-0-1',
-            icon: <Check />,
+            icon: <CheckOutlined />,
           },
         ],
       },

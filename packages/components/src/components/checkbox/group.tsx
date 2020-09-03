@@ -60,7 +60,7 @@ function CheckboxGroup<T extends CheckboxValueType>({
         });
       } else {
         const newSelected = merge(refValue.current || emptyValue, option, registeredValuesRef.current);
-        onChange(newSelected);
+        onChange?.(newSelected);
       }
     },
     [onChange]
