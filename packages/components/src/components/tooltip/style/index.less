@@ -7,10 +7,10 @@
 @tooltip-arrow-offset: 14px;
 @tooltip-duration: 0.5s;
 
-.@{tooltip-prefix-cls}{
-  max-width: 500px;
+.@{tooltip-prefix-cls} {
   position: absolute;
   z-index: 100;
+  max-width: 500px;
 
   &-hidden {
     display: none;
@@ -21,26 +21,26 @@
   }
 
   &-inner {
+    display: inline-block;
+    min-width: 40px;
+    padding: 8px 16px;
     color: @color-text-tooltip;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0;
     text-align: left;
     text-decoration: none;
     word-wrap: break-word;
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: 22px;
-    border-radius: 4px;
     background-color: @color-background-tooltip;
-    padding: 8px 16px;
-    display: inline-block;
-    min-width: 40px;
+    border-radius: 4px;
     &-title {
       vertical-align: middle;
-      &::before{
-        content: ' ';
+      &::before {
         display: inline-block;
+        content: ' ';
       }
     }
-    .gio-link{
+    .gio-link {
       color: @color-text-tooltip;
     }
   }
@@ -48,19 +48,19 @@
   &-arrow {
     position: absolute;
     display: block;
-    pointer-events: none;
-    height: 12px;
     width: 12px;
+    height: 12px;
+    pointer-events: none;
     &-content {
       position: absolute;
-      margin: auto;
       top: 0;
-      left: 0;
       right: 0;
       bottom: 0;
-      width: 0px;
-      height: 0px;
-      border: @tooltip-arrow-width/2 solid;
+      left: 0;
+      width: 0;
+      height: 0;
+      margin: auto;
+      border: @tooltip-arrow-width / 2 solid;
       pointer-events: auto;
     }
   }
