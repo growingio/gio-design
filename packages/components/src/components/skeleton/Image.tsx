@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ConfigContext } from '../config-provider';
-import useDebounceLoading from '../../utils/hooks/debounceLoading';
+import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
 import { SkeletonImageProps } from './interface';
 
 const SkeletonImage = (props: SkeletonImageProps) => {
