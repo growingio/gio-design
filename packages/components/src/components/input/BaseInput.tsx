@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseInputProps } from './types';
 import Button from '../button';
-import { Close, Check } from '@gio-design/icons';
+import { Close, CheckOutlined } from '@gio-design/icons';
 
 export const prefixCls = 'gio-input';
 
@@ -39,7 +39,7 @@ const BaseInput: React.FC<BaseInputProps> = ({
         {showOpt && (
           <Button
             type="secondary"
-            icon={<Check color="#008a56" style={iconStyle} />}
+            icon={<CheckOutlined color="#008a56" style={iconStyle} />}
             onClick={onOk}
             disabled={!!errorMsg}
           />

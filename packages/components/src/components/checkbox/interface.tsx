@@ -8,11 +8,11 @@ export interface CheckboxOptionType<T> {
 }
 
 export interface CheckboxGroupProps<T extends CheckboxValueType> {
-  defaultValue: T[];
+  defaultValue?: T[];
   disabled?: boolean;
   name?: string;
   value?: T[];
-  onChange: (value: T[]) => void;
+  onChange?: (value: T[]) => void;
   options?: Array<CheckboxOptionType<T>>;
   style?: React.CSSProperties;
   direction?: 'horizontal' | 'vertical';
