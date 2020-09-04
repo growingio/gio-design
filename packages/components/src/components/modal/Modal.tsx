@@ -16,7 +16,6 @@ const Modal: React.FC<IModalProps> = ({
   wrapClassName,
   useBack,
   title,
-  footer,
   additionalFooter,
   onBack,
   closeAfterOk,
@@ -43,7 +42,10 @@ const Modal: React.FC<IModalProps> = ({
   });
 
   const useOkBtn = !!onOk && typeof onOk === 'function';
-  const hasFooter = useOkBtn || !dropCloseButton || footer || additionalFooter;
+  let useFooter = useOkBtn || !dropCloseButton || !!additionalFooter;
+  if (restProps === false || restProps === null || ('footer' in restProps && restProps === undefined)) {
+    useFooter = false;
+  }
   const okBtnProps: ButtonProps = {
     loading: pending,
     disabled: pending,
@@ -75,7 +77,7 @@ const Modal: React.FC<IModalProps> = ({
       <RcDialog
         keyboard={true}
         {...restProps}
-        maskClosable={!hasFooter}
+        maskClosable={!useFooter}
         onClose={handleClose}
         transitionName="zoom"
         maskTransitionName="fade"
@@ -85,13 +87,13 @@ const Modal: React.FC<IModalProps> = ({
         closeIcon={<Close className={closeCls} />}
         title={<Title onBack={onBack} useBack={useBack} title={title} />}
         footer={
-          hasFooter && (
+          useFooter && (
             <Footer
               okText={okText}
               closeText={closeText}
               okButtonProps={okBtnProps}
               closeButtonProps={closeBtnProps}
-              footer={footer}
+              footer={restProps.footer}
               additionalFooter={additionalFooter}
               onOk={handleOk}
               onClose={handleClose}
