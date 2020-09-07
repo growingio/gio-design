@@ -1,6 +1,6 @@
 import { TooltipProps as RcTooltipProps } from 'rc-tooltip/lib/Tooltip';
 
-export type ReactRender = () => React.ReactNode;
+type ReactRender = () => React.ReactNode;
 export interface TooltipLink {
   name?: string;
   link: string;

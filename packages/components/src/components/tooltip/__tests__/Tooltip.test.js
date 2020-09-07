@@ -49,6 +49,21 @@ describe('Testing Tooltip', () => {
     ).toHaveLength(1);
   });
 
+  test('title content should be render', (done) => {
+    const wrapper = mount(getTooltip());
+    wrapper.setProps({ visible: true });
+    wrapper.setProps({ title: '' });
+    waitForComponentToPaint(wrapper).then(() => {
+      expect(wrapper.exists('.gio-tooltip')).toBe(false);
+      done();
+    });
+    wrapper.setProps({ title: null });
+    waitForComponentToPaint(wrapper).then(() => {
+      expect(wrapper.exists('.gio-tooltip')).toBe(false);
+      done();
+    });
+  });
+
   test('props trigger', () => {
     const wrapper = mount(getTooltip());
     wrapper.setProps({ trigger: 'click' });
