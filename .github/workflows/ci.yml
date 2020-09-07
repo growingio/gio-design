@@ -27,10 +27,11 @@ jobs:
       - name: Lint codes
         uses: github/super-linter@v3
         env:
-          VALIDATE_ALL_CODEBASE: false
           CSS_FILE_NAME: stylelint.config.js
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.js
+          VALIDATE_JAVASCRIPT_STANDARD: false
           TYPESCRIPT_ES_CONFIG_FILE: .eslintrc.js
+          VALIDATE_TYPESCRIPT_STANDARD: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   install:
     name: Install dependencies
