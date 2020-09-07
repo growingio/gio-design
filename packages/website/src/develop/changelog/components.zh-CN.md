@@ -15,7 +15,6 @@ nav:
 - 🐛 `CheckBox`组件更新`props`和`text margin`。[#181](https://github.com/growingio/gio-design/pull/181)
 - 🐛 更新`Modal`组件，处理`StepModal`相关问题，设置`footer`属性以及修复了一些其他问题。[#176](https://github.com/growingio/gio-design/pull/176)
 - 🐛 修复了`Button`组件的一些问题。[#174](https://github.com/growingio/gio-design/pull/174)
-- 🛠 更新字体相关的 `tokens`。[#173](https://github.com/growingio/gio-design/pull/173)
 
 ## 20.8.6
 
