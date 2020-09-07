@@ -5,10 +5,12 @@ export type IStringOrHtmlElement = string | HTMLElement;
 
 export type TModalSize = 'small' | 'middle' | 'full';
 
+export type TStepNoParamFn = () => void;
+
 export interface ITitleProps {
   title?: ReactNode;
   useBack?: boolean;
-  onBack?: () => void;
+  onBack?: TStepNoParamFn;
 }
 
 export interface IFooterProps {
@@ -61,19 +63,44 @@ export interface IModalProps extends ITitleProps, Omit<IFooterProps, 'useOk' | '
   focusTriggerAfterClose?: boolean;
 }
 
+export type TStepChange = (nextStep: string) => void;
+
+export interface IStepModalNodeRenderProps {
+  step: IStep;
+  push: TStepChange;
+  pop: TStepNoParamFn;
+}
+
+export type TStepModalNodeRender = ReactNode | ((renderProps: IStepModalNodeRenderProps) => ReactNode);
+
 export interface IStep {
+  // 当前 Step 的唯一标识
+  key: string;
+  // 当前 Step 的上一步
+  return: string | null;
+  // 多分支路径下，当前步骤是否是默认的下一步
+  firstNextInTier?: boolean;
+  // 下一步 回调
+  onNext?: TStepNoParamFn;
+  // 上一步 回调
+  onBack?: TStepNoParamFn;
   // 当前步骤 Modal 的 Title
-  title?: ReactNode;
+  title?: TStepModalNodeRender;
   // 当前步骤 Modal 的 Body
-  content?: ReactNode;
+  content?: TStepModalNodeRender;
   // 当前步骤 Modal 的 Footer
-  footer?: ReactNode;
-  // 下一步
-  onNext?: () => void;
-  // 上一步
-  onBack?: () => void;
+  footer?: TStepModalNodeRender;
+}
+
+export interface IStepInner extends IStep {
+  next?: string[];
+}
+
+export interface IStepMap {
+  [key: string]: IStepInner;
 }
 
 export interface IStepModalProps extends IModalProps {
   steps?: IStep[];
+  onStepChange?: (step: string) => void;
 }
