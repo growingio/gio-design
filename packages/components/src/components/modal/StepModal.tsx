@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Modal from './Modal';
-import { IStepModalProps, IStep } from './interface';
+import { stepArray2Map, clarifyRender } from './utils';
+import { IStepModalProps, IStepInner, TStepChange } from './interface';
 
 const StepModal: React.FC<IStepModalProps> = ({
   steps = [],
@@ -13,18 +14,27 @@ const StepModal: React.FC<IStepModalProps> = ({
   children,
   ...modalProps
 }) => {
-  const [curStepAt, setCurStepAt] = useState(0);
-  const curStep: IStep = steps[curStepAt];
+  const { stepMap, firstStep } = useMemo(() => stepArray2Map(steps), [steps]);
+  const [stepStack, setStepStack] = useState<string[]>([firstStep]);
+  const curStepOnShow = stepStack[stepStack.length - 1];
+
+  const curStep: IStepInner = stepMap[curStepOnShow];
   const { onNext, onBack } = curStep;
-  const isLastStep: boolean = curStepAt === steps.length - 1;
-  const isFirstStep: boolean = curStepAt === 0;
+  const isLastStep: boolean = !curStep.next || (curStep.next && curStep.next.length === 0);
+  const isFirstStep: boolean = curStep.key === firstStep;
 
   const textOk = isLastStep ? okText ?? '确定' : '下一步';
   const textClose = isFirstStep ? closeText ?? '取消' : '上一步';
 
+  const handlePush: TStepChange = (step) => setStepStack((cur) => [...cur, step]);
+
+  const handlePop = () => setStepStack((curStepStack) => curStepStack.slice(0, curStepStack.length - 1));
+
+  const handleReset = () => setStepStack([firstStep]);
+
   const handleBack = async () => {
     await Promise.resolve(onBack?.());
-    setCurStepAt(curStepAt - 1);
+    handlePop();
   };
 
   const handleOk = async (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -34,11 +44,12 @@ const StepModal: React.FC<IStepModalProps> = ({
       // 因为 handleClose 在 afterClose 执行时无法很好判断触发点，导致出错
       if (closeAfterOk) {
         onClose?.(e);
-        setCurStepAt(0);
+        handleReset();
       }
     } else {
       await Promise.resolve(onNext?.());
-      setCurStepAt(curStepAt + 1);
+      const nextStep = curStep?.next?.[0] ?? '';
+      handlePush(nextStep);
     }
   };
 
@@ -49,18 +60,27 @@ const StepModal: React.FC<IStepModalProps> = ({
 
     if (isFirstStep || isCloseIcon) {
       onClose?.(e);
-      setCurStepAt(0);
+      handleReset();
     } else {
       await handleBack();
     }
   };
 
+  const stepProp = {
+    step: curStep,
+    push: handlePush,
+    pop: handlePop,
+  };
+  const Title = clarifyRender(curStep.title, stepProp, title);
+  const Content = clarifyRender(curStep.content, stepProp, children);
+  const Footer = clarifyRender(curStep.footer, stepProp, false);
+
   return (
     <Modal
       {...modalProps}
       closeAfterOk={false}
-      title={curStep.title ?? title}
-      footer={curStep.footer}
+      title={Title}
+      footer={Footer}
       useBack={!isFirstStep}
       onBack={handleBack}
       okText={textOk}
@@ -68,7 +88,7 @@ const StepModal: React.FC<IStepModalProps> = ({
       onOk={handleOk}
       onClose={handleClose}
     >
-      {curStep.content ?? children}
+      {Content}
     </Modal>
   );
 };

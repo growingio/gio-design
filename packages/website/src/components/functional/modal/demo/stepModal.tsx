@@ -4,19 +4,25 @@ import '@gio-design/components/es/components/modal/style/index.css';
 
 const steps: IStep[] = [
   {
-    // title: '步骤 1',
+    key: '1',
+    return: null,
+    title: '步骤 1',
     content: 'Step One',
     onNext: () => console.log('step 1 onNext.'),
     onBack: () => console.log('step 1 onBack.'),
   },
   {
+    key: '2',
+    return: '1',
     title: '步骤 2',
     content: 'Step Two',
     onNext: () => console.log('step 2 onNext.'),
   },
   {
+    key: '3',
+    return: '2',
     title: '步骤 3',
-    // content: 'Step Three',
+    content: 'Step Three',
     onNext: () => console.log('step 3 onNext.'),
     onBack: () => console.log('step 3 onBack.'),
   },
