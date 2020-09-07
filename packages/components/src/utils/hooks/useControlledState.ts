@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 
-const useControlledState = <T>(controlledState: T | undefined, empty: T): [T, (_state: T) => void] => {
+const useControlledState = <T>(
+  controlledState: T | (() => T) | undefined,
+  empty: T
+): [T, (_state: T | (() => T), force?: boolean) => void] => {
   const [_controlledState, setControlledState] = useState<T>(controlledState === undefined ? empty : controlledState);
 
   useEffect(() => {
@@ -9,8 +12,8 @@ const useControlledState = <T>(controlledState: T | undefined, empty: T): [T, (_
     }
   }, [controlledState]);
 
-  const setState = (_state: T) => {
-    if (controlledState === undefined) {
+  const setState = (_state: T | (() => T), force = false) => {
+    if (controlledState === undefined || force) {
       setControlledState(_state);
     }
   };
