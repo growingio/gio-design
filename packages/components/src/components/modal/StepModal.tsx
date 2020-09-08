@@ -5,13 +5,16 @@ import { IStepModalProps, IStepInner, TStepChange } from './interface';
 
 const StepModal: React.FC<IStepModalProps> = ({
   steps = [],
-  okText,
-  closeText,
   onOk,
   onClose,
   closeAfterOk,
   title,
   children,
+  okText,
+  closeText,
+  additionalFooter,
+  okButtonProps,
+  closeButtonProps,
   ...modalProps
 }) => {
   const { stepMap, firstStep } = useMemo(() => stepArray2Map(steps), [steps]);
@@ -23,8 +26,8 @@ const StepModal: React.FC<IStepModalProps> = ({
   const isLastStep: boolean = !curStep.next || (curStep.next && curStep.next.length === 0);
   const isFirstStep: boolean = curStep.key === firstStep;
 
-  const textOk = isLastStep ? okText ?? '确定' : '下一步';
-  const textClose = isFirstStep ? closeText ?? '取消' : '上一步';
+  const textOk = isLastStep ? okText ?? '确定' : curStep.nextText ?? '下一步';
+  const textClose = isFirstStep ? closeText ?? '取消' : curStep.backText ?? '上一步';
 
   const handlePush: TStepChange = (step) => setStepStack((cur) => [...cur, step]);
 
@@ -78,10 +81,13 @@ const StepModal: React.FC<IStepModalProps> = ({
   return (
     <Modal
       {...modalProps}
+      additionalFooter={curStep.additionalFooter || additionalFooter}
+      okButtonProps={curStep.nextButtonProps || okButtonProps}
+      closeButtonProps={curStep.backButtonProps || closeButtonProps}
       closeAfterOk={false}
       title={Title}
       footer={Footer}
-      useBack={!isFirstStep}
+      useBack={!isFirstStep && !curStep.backButtonProps?.disabled}
       onBack={handleBack}
       okText={textOk}
       closeText={textClose}

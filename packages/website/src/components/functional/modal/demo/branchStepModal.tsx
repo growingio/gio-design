@@ -81,6 +81,13 @@ const steps: IStep[] = [
     firstNextInTier: true,
     title: '步骤 2-2',
     content: '步骤 2 - 2',
+    backButtonProps: {
+      disabled: true,
+    },
+    nextButtonProps: {
+      disabled: true,
+    },
+    nextText: '自定义下一步',
     onNext: () => console.log('step 2-2 onNext.'),
   },
   {
