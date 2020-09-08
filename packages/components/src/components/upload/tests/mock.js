@@ -2,7 +2,7 @@ import mock from 'xhr-mock';
 
 export function setup() {
   mock.setup();
-  mock.post('/upload', (req, res) => {
+  mock.post('http://upload.com', (req, res) => {
     req.headers({
       'content-length': 100,
     });
