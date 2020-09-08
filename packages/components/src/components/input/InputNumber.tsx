@@ -1,83 +1,69 @@
 import * as React from 'react';
-import BaseInput, { prefixCls } from './BaseInput';
-import Button from '../button';
+import Input, { prefixCls } from './Input';
 import { UpFilled, DownFilled } from '@gio-design/icons';
-import { InputNumberProps } from './types';
+import { InputProps } from './interfaces';
 
-const InputNumber: React.FC<InputNumberProps> = ({
+const InputNumber: React.FC<InputProps> = ({
   value,
   onChange,
-  onPressEnter,
-  disabled = false,
-  placeholder = '',
-  inputStyle,
   max = Number.MAX_SAFE_INTEGER,
   min = -Number.MAX_SAFE_INTEGER,
-
-  showOpt,
-  errorMsg = '',
-  label = '',
-  wrapStyle,
-
-  ...restInputProps
+  disabled = false,
+  readOnly = false,
+  ...rest
 }) => {
-  const contentClass = React.useMemo(() => `${prefixCls}-content${errorMsg ? '-error' : ''}`, [errorMsg]);
+  const addDisabled = React.useMemo(() => Number(value) >= max || disabled || readOnly, [
+    value,
+    max,
+    disabled,
+    readOnly,
+  ]);
 
-  const handleOnPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.keyCode === 13 && onPressEnter) {
-      onPressEnter(e);
-    }
-  };
+  const decreaseDisabled = React.useMemo(() => Number(value) <= min || disabled || readOnly, [
+    value,
+    min,
+    disabled,
+    readOnly,
+  ]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Number(e.target.value);
-    if (isNaN(value) || value < min || value > max) {
+  const handleChange = (value: string) => {
+    const v = Number(value);
+    if (isNaN(v) || v < min || v > max) {
       return;
     }
     onChange(value);
   };
 
   const handleAdd = () => {
-    onChange(value + 1);
+    if (!addDisabled) {
+      onChange(String(Number(value) + 1));
+    }
   };
 
   const handleDecrease = () => {
-    onChange(value - 1);
+    if (!decreaseDisabled) {
+      onChange(String(Number(value) - 1));
+    }
   };
 
-  return (
-    <BaseInput showOpt={showOpt} errorMsg={errorMsg} label={label} wrapStyle={wrapStyle}>
-      <span className={`${prefixCls}-opt`}>
-        <input
-          type="text"
-          value={value}
-          onChange={handleChange}
-          onKeyDown={handleOnPressEnter}
-          disabled={disabled}
-          placeholder={placeholder}
-          style={inputStyle}
-          className={contentClass}
-          {...restInputProps}
-        />
-        <div className={`${prefixCls}-opt-arrow`}>
-          <Button
-            type="text"
-            size="small"
-            onClick={handleAdd}
-            disabled={value >= max || disabled}
-            icon={<UpFilled />}
-          />
-          <Button
-            type="text"
-            size="small"
-            onClick={handleDecrease}
-            disabled={value <= min || disabled}
-            icon={<DownFilled />}
-          />
-        </div>
-      </span>
-    </BaseInput>
+  const renderSuffix = () => (
+    <div className={`${prefixCls}-container-suffix-iconGroup`}>
+      <UpFilled
+        className={`${prefixCls}-container-suffix-iconGroup-top ${prefixCls}-container-suffix-icon${
+          addDisabled ? '-disabled' : ''
+        }`}
+        onClick={handleAdd}
+      />
+      <DownFilled
+        className={`${prefixCls}-container-suffix-iconGroup-bottom ${prefixCls}-container-suffix-icon${
+          decreaseDisabled ? '-disabled' : ''
+        }`}
+        onClick={handleDecrease}
+      />
+    </div>
   );
+
+  return <Input {...rest} suffix={renderSuffix()} value={value} onChange={handleChange} disabled={disabled} />;
 };
 
 export default InputNumber;

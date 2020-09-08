@@ -15,16 +15,10 @@ const InputTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, inputUpload
 
   const hideInput = file?.status === STATUS_SUCCESS || file?.status === STATUS_UPLOADING;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setUrl(e.target.value);
-
   const handlePressEnter = () => onInputUpload(inputUploadType, url);
 
   const handlePreviewClick = () => onRemove();
 
-  let errorMsg = '';
-  if (file?.error) {
-    errorMsg = typeof file.error === 'string' ? file.error : '未知错误类型，请查看控制台';
-  }
   /* eslint-disable */
   return (
     <span className={inputWrapperCls}>
@@ -36,15 +30,14 @@ const InputTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, inputUpload
           </span>
         </Loading>
       ) : (
-          <Input
-            placeholder="请输入图片的 URL"
-            {...triggerProps}
-            onChange={handleChange}
-            errorMsg={errorMsg}
-            onPressEnter={handlePressEnter}
-            value={url}
-          />
-        )}
+        <Input
+          placeholder="请输入图片的 URL"
+          {...triggerProps}
+          onChange={setUrl}
+          onPressEnter={handlePressEnter}
+          value={url}
+        />
+      )}
     </span>
   );
 };

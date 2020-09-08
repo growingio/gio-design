@@ -1,20 +1,24 @@
 @import '../../../stylesheet/index.less';
 
+@input-height-lg: 40px;
+@input-height-base: 36px;
+@input-height-sm: 30px;
+
 @input-prefix-cls: ~'@{component-prefix}-input';
 
 .@{input-prefix-cls} {
   width: 300px;
+  display: inline-block;
 
-  &-label {
-    margin-bottom: 8px;
-    color: @palette-black-6;
-    font-weight: @weight-font-medium;
-    font-size: @size-font-14;
+  &-textarea {
+    height: 80px;
+
+    &-noresize {
+      resize: none;
+    }
   }
 
-  &-content,
-  &-content-error,
-  &-content-hidden {
+  &-content {
     width: 100%;
     padding: 9px 16px;
     color: @palette-black-6;
@@ -24,36 +28,23 @@
     border-radius: @radius-border-small;
     outline: none;
     transition: all 0.3s ease-in-out;
-  }
 
-  &-content-hidden {
-    color: @palette-black-7;
-    font-weight: @weight-font-medium;
-    font-size: @size-font-20;
-    border: none;
-    &:hover {
-      background-color: @palette-gray-1;
-      cursor: pointer;
+    &-medium {
+      height: @input-height-base;
     }
-    &:disabled {
-      cursor: not-allowed;
-    }
-    &::placeholder {
-      color: @palette-black-1;
-    }
-  }
 
-  &-content-error {
-    border-color: @color-border-input-error;
-    &:disabled {
-      cursor: not-allowed;
+    &-large {
+      height: @input-height-lg;
     }
-    &::placeholder {
-      color: @palette-black-1;
-    }
-  }
 
-  &-content {
+    &-small {
+      height: @input-height-sm;
+    }
+
+    &-suffix {
+      padding-right: 44px;
+    }
+
     &::placeholder {
       color: @palette-black-1;
     }
@@ -75,56 +66,45 @@
     }
   }
 
-  &-opt {
-    & > input {
-      padding-right: 44px;
-    }
-
+  &-container {
     position: relative;
 
-    &-view {
+    &-suffix {
       position: absolute;
-      top: -8px;
-      right: 8px;
+      top: 8px;
+      right: 15px;
 
-      & > button {
-        color: @palette-gray-5;
+      &-iconGroup {
+        display: flex;
+        flex-direction: column;
 
-        &:hover {
-          color: @palette-blue-7;
+        &-top {
+          position: relative;
+          top: -2px;
+        }
+
+        &-bottom {
+          position: relative;
+          top: -8px;
         }
       }
-    }
 
-    &-arrow {
-      position: absolute;
-      top: -14px;
-      right: 16px;
-      display: flex;
-      flex-direction: column;
-
-      & > button {
-        width: 16px !important;
-        height: 16px !important;
-        color: @palette-gray-5;
+      &-icon {
+        color: @palette-gray-6;
 
         &:hover {
-          color: @palette-blue-7;
+          color: @color-background-button-primary-hover;
+          cursor: pointer;
+        }
+
+        &-disabled {
+          color: @palette-gray-6;
+          &:hover {
+            color: @palette-gray-6;
+            cursor: not-allowed;
+          }
         }
       }
-    }
-  }
-
-  &-expand {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 28px;
-    margin-top: 4px;
-
-    &-error {
-      color: @palette-red-3;
-      font-size: @size-font-12;
     }
   }
 }

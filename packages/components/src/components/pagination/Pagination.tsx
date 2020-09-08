@@ -150,7 +150,7 @@ const Pagination = ({
         style={{ display: 'inline-block' }}
         value={inputValue}
         disabled={disabled}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={setInputValue}
         onPressEnter={handleInputPressEnter}
       />
       页
