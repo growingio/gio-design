@@ -9,18 +9,15 @@ const Input: React.FC<InputProps> = ({
   value,
   type = 'text',
   onChange,
-  onFocus,
-  onBlur,
   onPressEnter,
   disabled = false,
   readOnly = false,
-  maxLength,
   placeholder = '',
   inputStyle,
   size = 'medium',
   suffix,
   wrapStyle,
-  ...restInputProps
+  ...rest
 }) => {
   const { realTimeValue, handleOnChange } = useEnter(value, onChange);
 
@@ -59,15 +56,12 @@ const Input: React.FC<InputProps> = ({
         type={type}
         value={realTimeValue}
         onChange={handleOnChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
         onKeyDown={handleOnPressEnter}
         disabled={disabled}
         readOnly={readOnly}
-        maxLength={maxLength}
         placeholder={placeholder}
         style={inputStyle}
-        {...restInputProps}
+        {...rest}
       />
       {renderSuffix()}
     </div>

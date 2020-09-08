@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/components",
-  "version": "20.8.6",
+  "version": "20.9.0",
   "description": "GrowingIO Design components",
   "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
   "module": "./es/index.js",
@@ -20,8 +20,8 @@
     "test:xunit": "JEST_JUNIT_CLASSNAME=\"{filename}\" jest --ci --testResultsProcessor=jest-junit"
   },
   "dependencies": {
-    "@gio-design/icons": "^20.8.4",
-    "@gio-design/tokens": "^20.8.4",
+    "@gio-design/icons": "^20.9.0",
+    "@gio-design/tokens": "^20.9.0",
     "@types/classnames": "^2.2.9",
     "@types/lodash": "^4.14.136",
     "@types/react": "^16.8.23",

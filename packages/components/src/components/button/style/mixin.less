@@ -105,7 +105,7 @@
 .btn() {
   position: relative;
   display: inline-block;
-  font-weight: @weight-font-button;
+  font-weight: @weight-font-regular;
   white-space: nowrap;
   text-align: center;
   text-shadow: none;
@@ -115,13 +115,15 @@
   cursor: pointer;
   user-select: none;
   touch-action: manipulation;
-  svg {
-    width: 16px;
-    height: 16px;
-    margin-right: 0 !important;
-    vertical-align: -3px;
+  .gio-icon {
+    svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 0 !important;
+      vertical-align: -1px;
+    }
   }
-  .button-size(@btn-height-base; @size-spacing-l; @size-font-button-default; @radius-border-button);
+  .button-size(@btn-height-base; @size-spacing-l; @size-font-14; @radius-border-small);
   > .@{iconfont-css-prefix} {
     line-height: 1;
   }
@@ -144,10 +146,10 @@
     }
   }
   &-large {
-    .button-size(@btn-height-lg; @size-spacing-l; @size-font-button-large; @radius-border-button);
+    .button-size(@btn-height-lg; @size-spacing-l; @size-font-14; @radius-border-small);
   }
   &-small {
-    .button-size(@btn-height-sm; @size-spacing-m; @size-font-button-small; @radius-border-button);
+    .button-size(@btn-height-sm; @size-spacing-m; @size-font-14; @radius-border-small);
   }
 }
 // primary button style
@@ -183,6 +185,7 @@
 
 // text button style
 .btn-text() {
+  padding: 0 !important;
   .button-color(@color-text-button-normal; transparent; transparent);
   svg {
     color: @color-text-button-normal;
@@ -221,15 +224,15 @@
 // square button: the content only contains icon
 .btn-square(@btnClassName: btn) {
   .square(@btn-square-size);
-  .button-size(@btn-square-size; 0; @size-font-button-only-icon-default; @radius-border-button);
+  .button-size(@btn-square-size; 0; @size-font-16; @radius-border-small);
   & > * {
-    font-size: @size-font-button-only-icon-default;
+    font-size: @size-font-16;
   }
   &.@{btnClassName}-large {
     .square(@btn-square-size-lg);
-    .button-size(@btn-square-size-lg; 0; @size-font-button-only-icon-large; @radius-border-button);
+    .button-size(@btn-square-size-lg; 0; @size-font-18; @radius-border-small);
     & > * {
-      font-size: @size-font-button-only-icon-large;
+      font-size: @size-font-18;
     }
     svg {
       .square(@btn-square-size-lg - 16px);
@@ -237,9 +240,9 @@
   }
   &.@{btnClassName}-small {
     .square(@btn-square-size-sm);
-    .button-size(@btn-square-size-sm; 0; @size-font-button-only-icon-small; @radius-border-button);
+    .button-size(@btn-square-size-sm; 0; @size-font-14; @radius-border-small);
     & > * {
-      font-size: @size-font-button-only-icon-small;
+      font-size: @size-font-14;
     }
     svg {
       .square(@btn-square-size-sm - 16px) !important;

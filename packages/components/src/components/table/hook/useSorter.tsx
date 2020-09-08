@@ -1,14 +1,6 @@
 import React, { useMemo, useCallback } from 'react';
-import { ColumnsType, ColumnGroupType, ColumnType, SortOrder } from '../interface';
+import { ColumnsType, ColumnGroupType, ColumnType, SortOrder, SortState } from '../interface';
 import { get, isUndefined, clone } from 'lodash';
-
-export interface SortState<RecordType> {
-  column: ColumnType<RecordType>;
-  key: string;
-  sortPriorityOrder: number | undefined;
-  sortDirections: SortOrder[];
-  sortOrder: SortOrder;
-}
 
 const collectSortStates = <RecordType,>(columns: ColumnsType<RecordType> = []): SortState<RecordType>[] => {
   const sortStates: SortState<RecordType>[] = [];
@@ -73,7 +65,7 @@ const useSorter = <RecordType,>(
   ]);
 
   // sortted data
-  const sorttedData: RecordType[] = useMemo(() => {
+  const sortedData: RecordType[] = useMemo(() => {
     const cloneSortStates = clone(activeSortStates).sort((a, b) => b.sortPriorityOrder! - a.sortPriorityOrder!);
 
     const cloneData = clone(data);
@@ -99,7 +91,7 @@ const useSorter = <RecordType,>(
     });
   }, [columns, activeSortStates, data]);
 
-  return [sortStates, updateSorterStates, sorttedData];
+  return [sortStates, updateSorterStates, sortedData];
 };
 
 export default useSorter;

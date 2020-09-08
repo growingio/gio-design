@@ -9,6 +9,11 @@ nav:
 
 # @gio-design/tokens 更新日志
 
+## 20.9.0
+
+- 🆕 更新字体相关的 `tokens`。[#173](https://github.com/growingio/gio-design/pull/173)
+- 🆕 更新 `Checkbox` 的 `Tokens`，并在样式中引用。[#181](https://github.com/growingio/gio-design/pull/181)
+
 ## 20.8.4
 
 - 🆕 新增 `横幅` 组件的 `Tokens`。 [#136](https://github.com/growingio/gio-design/pull/136)

@@ -13,6 +13,26 @@ jobs:
           fetch-depth: 2
       - run: git checkout HEAD^2
         if: ${{ github.event_name == 'pull_request' }}
+  lint:
+    name: Lint Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '1'
+      - name: Lint commits count
+        if: ${{ github.event.pull_request.commits > 3 }}
+        run: echo "::error the commits of pull request should not be more than 3"
+      - name: Lint codes
+        uses: github/super-linter@v3
+        env:
+          CSS_FILE_NAME: stylelint.config.js
+          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.js
+          VALIDATE_JAVASCRIPT_STANDARD: false
+          TYPESCRIPT_ES_CONFIG_FILE: .eslintrc.js
+          VALIDATE_TYPESCRIPT_STANDARD: false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   install:
     name: Install dependencies
     runs-on: ubuntu-latest
@@ -35,30 +55,6 @@ jobs:
       - name: Bootstrap
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn bootstrap
-  lint:
-    name: Lint Checks
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.1.1
-        with:
-          node-version: 12.x
-      - name: Restore Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Lint pull request title
-        run: echo "${{ github.event.pull_request.title }}" | npx commitlint
-      - name: Lint codes
-        run: yarn lint
   build:
     name: Build Packages
     needs: install
@@ -79,26 +75,16 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Cahce @gio-design/tokens
-        uses: actions/cache@v2
-        with:
-          path: |
-            packages/tokens/dist
-          key: tokens-${{ github.sha }}
-      - name: Cahce @gio-design/icons
-        uses: actions/cache@v2
-        with:
-          path: |
-            packages/icons/dist
-            packages/icons/es
-          key: icons-${{ github.sha }}
-      - name: Cahce @gio-design/components
+      - name: Cache packages
         uses: actions/cache@v2
         with:
           path: |
             packages/components/dist
             packages/components/es
-          key: components-${{ github.sha }}
+            packages/icons/dist
+            packages/icons/es
+            packages/tokens/dist
+          key: packages-${{ github.sha }}
       - name: Build
         run: yarn build
   test:
@@ -122,26 +108,16 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Restore @gio-design/tokens
-        uses: actions/cache@v2
-        with:
-          path: |
-            packages/tokens/dist
-          key: tokens-${{ github.sha }}
-      - name: Restore @gio-design/icons
-        uses: actions/cache@v2
-        with:
-          path: |
-            packages/icons/dist
-            packages/icons/es
-          key: icons-${{ github.sha }}
-      - name: Restore @gio-design/components
+      - name: Restore packages from cache
         uses: actions/cache@v2
         with:
           path: |
             packages/components/dist
             packages/components/es
-          key: components-${{ github.sha }}
+            packages/icons/dist
+            packages/icons/es
+            packages/tokens/dist
+          key: packages-${{ github.sha }}
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov

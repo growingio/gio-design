@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import useDebounceLoading from '../../utils/hooks/debounceLoading';
+import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
 import { ConfigContext } from '../config-provider';
 import { LoadingProps } from './interface';
 

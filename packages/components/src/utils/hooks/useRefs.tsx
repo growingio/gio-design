@@ -3,7 +3,8 @@ type RefKey = string | number | Symbol;
 
 export default function useRefs<RefType>(): [
   (key: RefKey, ref?: React.RefObject<RefType>) => React.RefObject<RefType> | undefined,
-  (key: RefKey) => React.RefObject<RefType> | undefined
+  (key: RefKey) => React.RefObject<RefType> | undefined,
+  React.MutableRefObject<Map<RefKey, React.RefObject<RefType>>>
 ] {
   const cacheRefs = useRef(new Map<RefKey, React.RefObject<RefType>>());
 
@@ -18,5 +19,5 @@ export default function useRefs<RefType>(): [
     return cacheRefs.current.get(key);
   }
 
-  return [setRef, getRef];
+  return [setRef, getRef, cacheRefs];
 }

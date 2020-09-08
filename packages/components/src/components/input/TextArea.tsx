@@ -9,11 +9,10 @@ const TextArea: React.FC<TextAreaProps> = ({
   onChange,
   disabled = false,
   resize = false,
-  maxLength,
   placeholder = '',
   inputStyle,
   wrapStyle,
-  ...restInputProps
+  ...rest
 }) => {
   const { realTimeValue, handleOnChange } = useEnter(value, onChange);
 
@@ -28,10 +27,9 @@ const TextArea: React.FC<TextAreaProps> = ({
         value={realTimeValue}
         onChange={handleOnChange}
         disabled={disabled}
-        maxLength={maxLength}
         placeholder={placeholder}
         style={inputStyle}
-        {...restInputProps}
+        {...rest}
       />
     </div>
   );

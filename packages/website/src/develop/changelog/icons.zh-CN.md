@@ -8,6 +8,8 @@ nav:
 ---
 
 # @gio-design/icons 更新日志
+## 20.9.0
+- 📛 `Check` 图标重名为 `CheckOutlined`。[#181](https://github.com/growingio/gio-design/pull/181)
 
 ## 20.8.4
 

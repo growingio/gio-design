@@ -4,25 +4,14 @@ import { UpFilled, DownFilled, FilterFilled, QuestionCircleOutlined } from '@gio
 import Button from '../button';
 import Tooltip from '../tooltip';
 import FilterPopover from './FilterPopover';
-import { ColumnType, SortOrder } from './interface';
-import { SortState } from './hook/useSorter';
-import { FilterState } from './hook/useFilter';
+import { SortOrder, TitleProps } from './interface';
 import { isUndefined } from 'lodash';
-
-interface TitleProps<RecordType> {
-  prefixCls: string;
-  sorterState?: SortState<RecordType>;
-  filterState?: FilterState<RecordType>;
-  column: ColumnType<RecordType>;
-  updateSorterStates: (sortState: SortState<RecordType>) => void;
-  updateFilterStates: (filterState: FilterState<RecordType>) => void;
-}
 
 const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): SortOrder =>
   current === null ? sortDirections[0] : sortDirections[sortDirections.indexOf(current) + 1];
 
 const Title = <RecordType,>(props: TitleProps<RecordType>) => {
-  const { prefixCls, column } = props;
+  const { prefixCls, column, onTriggerStateUpdate } = props;
 
   const renderSorter = () => {
     const { sorterState, updateSorterStates } = props;
@@ -37,6 +26,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
         ...sorterState,
         sortOrder: getNextSortDirection(sortDirections, sorterOrder),
       });
+      onTriggerStateUpdate();
     };
     return (
       <span className={classNames(`${prefixCls}-column-sorter`)}>
@@ -72,8 +62,10 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
       return null;
     }
     const { filteredKeys, filters } = filterState;
-    const handleFilterPopoverClick = (newFilteredKeys: string[]) =>
+    const handleFilterPopoverClick = (newFilteredKeys: string[]) => {
       updateFilterStates({ ...filterState, filteredKeys: newFilteredKeys });
+      onTriggerStateUpdate();
+    };
 
     return (
       <span className={classNames(`${prefixCls}-column-filter`)}>

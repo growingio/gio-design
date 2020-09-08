@@ -20,7 +20,7 @@ group:
 
 <code src='./demo/additionalFooter.tsx' title='额外 Footer' desc='有额外自定义 Footer 的 Modal。'/>
 
-<code src='./demo/maskClose.tsx' title='点击 mask 关闭 Modal ' desc='没有任何 Footer 的时候, 点击 mask 可关闭 Modal。'/>
+<code src='./demo/maskClose.tsx'/>
 
 <code src='./demo/size.tsx' />
 

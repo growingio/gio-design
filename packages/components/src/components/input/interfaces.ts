@@ -1,33 +1,21 @@
 import * as React from 'react';
 
-export interface InputProps {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'onChange'> {
   value: string;
-  type?: string;
   onChange: (value: string) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  disabled?: boolean;
-  readOnly?: boolean;
-  maxLength?: number;
-  placeholder?: string;
   inputStyle?: React.CSSProperties;
   wrapStyle?: React.CSSProperties;
   size?: 'large' | 'medium' | 'small';
   suffix?: React.ReactNode;
-  [key: string]: any;
 }
 
-export interface InputNumberProps extends InputProps {
-  max?: number;
-  min?: number;
-}
-
-export type TextAreaProps = Pick<
-  InputProps,
-  'value' | 'disabled' | 'maxLength' | 'placeholder' | 'inputStyle' | 'wrapStyle'
-> & {
+export interface TextAreaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange'> {
+  value: string;
   onChange: (value: string) => void;
   resize?: boolean;
-  [key: string]: any;
-};
+  inputStyle?: React.CSSProperties;
+  wrapStyle?: React.CSSProperties;
+}

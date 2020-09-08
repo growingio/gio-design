@@ -2,6 +2,7 @@
 @table-prefix-cls: ~'@{component-prefix}-table';
 
 .@{table-prefix-cls} {
+  font-size: @size-font-14;
   &-title {
     margin-bottom: 20px;
     color: @color-text-table-head;
@@ -31,6 +32,8 @@
     height: 50px;
     color: @color-text-table-head;
     font-weight: @weight-font-medium;
+    line-height: 20px;
+    vertical-align: middle;
   }
 
   &-thead > tr:first-child > &-cell {
@@ -44,7 +47,8 @@
   }
 
   &-thead > tr > &-cell {
-    padding: 16px;
+    padding: 15px;
+    vertical-align: middle;
     background-color: @color-background-table-head;
     border: 0.5px solid @color-border-table;
     border-top: 0;
@@ -60,6 +64,7 @@
 
   &-tbody > tr {
     height: 50px;
+    line-height: 20px;
     &:hover {
       td {
         background-color: @color-background-table-hover;
@@ -202,24 +207,36 @@
       }
     }
   }
-}
 
-.@{table-prefix-cls}-wrapper {
-  &::after {
-    display: block;
-    clear: both;
-    content: '';
+  &-placeholder &-cell {
+    &:hover {
+      background-color: unset;
+    }
   }
-}
+  &-wrapper {
+    &::after {
+      display: block;
+      clear: both;
+      content: '';
+    }
+  }
+  &-pagination {
+    float: right;
+    margin: 16px 0;
+  }
 
-.@{table-prefix-cls}-pagination {
-  float: right;
-  margin: 16px 0;
-}
+  &-filter-popover {
+    .gio-checkbox-wrapper {
+      display: block;
+      height: 40px;
+    }
+  }
 
-.@{table-prefix-cls}-filter-popover {
-  .gio-checkbox-wrapper {
-    display: block;
-    height: 40px;
+  &-empty {
+    color: @color-text-table-empty;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-align: center;
   }
 }

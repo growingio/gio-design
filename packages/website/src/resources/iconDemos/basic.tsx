@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppOutlined, AppsFilled, CalendarOutlined, LoadingBlackOutlined } from '@gio-design/icons';
+import { AppOutlined, AppsFilled, CalendarOutlined, LoadingOutlined } from '@gio-design/icons';
 import './basic.less';
 
 export default () => (
@@ -7,6 +7,6 @@ export default () => (
     <AppOutlined />
     <AppsFilled color="red" />
     <CalendarOutlined />
-    <LoadingBlackOutlined rotating />
+    <LoadingOutlined rotating />
   </div>
 );

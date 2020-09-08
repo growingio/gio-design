@@ -8,6 +8,8 @@ nav:
 ---
 
 # @gio-design/icons Change Log
+## 20.9.0
+- 📛 Rename `Check` icon to `CeckOutlined`。[#181](https://github.com/growingio/gio-design/pull/181)
 
 ## 20.8.4
 

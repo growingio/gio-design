@@ -3,7 +3,7 @@ import { Table } from '@gio-design/components';
 import '@gio-design/components/es/components/table/style/index.css';
 import './index.less';
 
-const dataSource = [
+const dataSource: any[] = [
   {
     key: '1',
     name: '列表文本',

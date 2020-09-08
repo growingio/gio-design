@@ -1,14 +1,6 @@
 import { useMemo, useCallback, useState } from 'react';
-import { ColumnsType, ColumnGroupType, ColumnType } from '../interface';
+import { ColumnsType, ColumnGroupType, FilterState } from '../interface';
 import { get, isUndefined } from 'lodash';
-
-export interface FilterState<RecordType> {
-  column: ColumnType<RecordType>;
-  key: string;
-  filteredKeys: string[];
-  onFilter?: (value: string, record: RecordType) => boolean;
-  filters?: string[];
-}
 
 const collectFilterStates = <RecordType,>(columns: ColumnsType<RecordType> = []): FilterState<RecordType>[] => {
   const filterStates: FilterState<RecordType>[] = [];
