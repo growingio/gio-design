@@ -1,6 +1,5 @@
 import React from 'react';
 import Popconfirm from '../index';
-import '@gio-design/components/es/components/Tabs/style/index.css';
 import { act } from 'react-dom/test-utils';
 import { mount, render } from 'enzyme';
 

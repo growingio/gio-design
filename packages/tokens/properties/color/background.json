@@ -220,6 +220,9 @@
       "popconfirm": {
         "value": "{palette.white.value}"
       },
+      "dropdown": {
+        "value": "{palette.white.value}"
+      },
       "alert": {
         "information": {
           "value": "{palette.gray.1.value}"
