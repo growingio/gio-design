@@ -6,24 +6,24 @@
   position: relative;
 
   &-dropdown {
-    min-width: 300px;
-    height: 240px;
-    background-color: @palette-white;
-    overflow-y: auto;
     position: absolute;
-    padding: 8px;
     top: 45px;
     left: 0;
+    z-index: 10000;
+    min-width: 300px;
+    height: 240px;
+    padding: 8px;
+    overflow-y: auto;
+    background-color: @palette-white;
     border-radius: @radius-border-medium;
     box-shadow: 0 6px 14px 0 rgba(223, 226, 237, 0.8);
-    z-index: 10000;
 
     &-clear {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       height: 40px;
       padding: 9px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       &-text {
         color: @palette-black-2;
         font-size: @size-font-12;
@@ -39,9 +39,9 @@
 
       &:hover,
       &-active {
+        color: @palette-blue-5;
         background-color: @palette-gray-1;
         border-radius: @radius-border-medium;
-        color: @palette-blue-5;
       }
     }
   }
