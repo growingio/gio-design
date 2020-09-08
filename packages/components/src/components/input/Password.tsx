@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Input, { prefixCls } from './Input';
 import { ViewOutlined, UnviewOutlined } from '@gio-design/icons';
+import Input, { prefixCls } from './Input';
 import { InputProps } from './interfaces';
 
 const Password: React.FC<InputProps> = (props) => {

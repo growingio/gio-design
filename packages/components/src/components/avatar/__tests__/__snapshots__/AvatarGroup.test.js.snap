@@ -10,6 +10,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
     onMouseLeave={[Function]}
   >
     <img
+      alt="avatar"
       onError={[Function]}
       src="test-file-stub"
     />
@@ -35,6 +36,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
     onMouseLeave={[Function]}
   >
     <img
+      alt="avatar"
       onError={[Function]}
       src="test-file-stub"
     />

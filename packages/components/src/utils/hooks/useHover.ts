@@ -31,7 +31,7 @@ export function useHover({ delay = 0, onEnter, onLeave }: HoverOptions = {}): [b
         trigger();
       }
     },
-    [delay, actions, onEnter]
+    [delay, actions, onEnter],
   );
   const leave = useCallback(
     (e: MouseEvent) => {
@@ -49,7 +49,7 @@ export function useHover({ delay = 0, onEnter, onLeave }: HoverOptions = {}): [b
         trigger();
       }
     },
-    [delay, actions, onLeave]
+    [delay, actions, onLeave],
   );
   return [
     inHover,

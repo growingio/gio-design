@@ -26,7 +26,9 @@ const Loading: React.FC<LoadingProps> = (props: LoadingProps) => {
   };
 
   const renderLoadingElementByPosition = () => {
-    const { titlePosition = 'bottom', title = '加载中...', size = 'large', className, style } = props;
+    const {
+      titlePosition = 'bottom', title = '加载中...', size = 'large', className, style,
+    } = props;
     return shouldLoading ? (
       <div className={classNames(`${prefixCls}`, `${prefixCls}-${size}`, className)} style={style}>
         {renderLoadingElement()}

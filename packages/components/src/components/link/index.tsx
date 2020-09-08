@@ -11,7 +11,7 @@ const Link: React.FC<TLinkProps> = ({
   children,
   ...otherProps
 }) => {
-  const prefixCls = customPrefixCls ? customPrefixCls : 'gio-link';
+  const prefixCls = customPrefixCls || 'gio-link';
 
   const cls = classnames(className, prefixCls, {
     [`${prefixCls}--disabled`]: disabled,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { PaginationProps } from '../pagination/interface';
+
 export type AlignType = 'left' | 'center' | 'right';
 export type SortOrder = 'descend' | 'ascend' | null;
 

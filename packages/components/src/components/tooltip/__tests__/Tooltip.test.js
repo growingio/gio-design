@@ -45,7 +45,7 @@ describe('Testing Tooltip', () => {
       wrapper
         .find('.gio-tooltip-inner')
         .find('a')
-        .filterWhere((item) => item.prop('href') === 'https://www.growingio.com/about')
+        .filterWhere((item) => item.prop('href') === 'https://www.growingio.com/about'),
     ).toHaveLength(1);
   });
 
@@ -110,7 +110,7 @@ describe('Testing Tooltip', () => {
       wrapper
         .find('.gio-tooltip-inner')
         .find('a')
-        .filterWhere((item) => item.prop('href') === 'https://www.growingio.com')
+        .filterWhere((item) => item.prop('href') === 'https://www.growingio.com'),
     ).toHaveLength(1);
     expect(wrapper.exists('.overlayClassName')).toBe(true);
     waitForComponentToPaint(wrapper).then(() => {

@@ -25,7 +25,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       if (onChange) onChange(e);
       checkGroup?.toggleOption?.({ label: children, value: restProps.value });
     },
-    [onChange]
+    [onChange],
   );
 
   const prefixCls = getPrefixCls('checkbox', customizePrefixCls);

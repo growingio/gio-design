@@ -1,13 +1,15 @@
 import React, { useState, useContext } from 'react';
 import classnames from 'classnames';
-import Loading from '../../loading';
 import { LoadingOutlined } from '@gio-design/icons';
+import Loading from '../../loading';
 import Input from '../../input';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import Preview from '../Preview';
 import { UploadPrefixClsContext } from '../UploadContext';
 
-const InputTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, inputUploadType, onRemove, onInputUpload }) => {
+const InputTrigger: React.FC<ITriggerProps> = ({
+  triggerProps, file, inputUploadType, onRemove, onInputUpload,
+}) => {
   const [url, setUrl] = useState<string>('');
   const prefixCls = useContext(UploadPrefixClsContext);
   const inputWrapperCls = classnames(`${prefixCls}__input`);

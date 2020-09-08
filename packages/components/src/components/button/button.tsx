@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { LoadingOutlined } from '@gio-design/icons';
 import { ConfigContext } from '../config-provider';
 import SizeContext from '../config-provider/SizeContext';
-import { LoadingOutlined } from '@gio-design/icons';
 import { ButtonProps } from './interface';
 import { cloneElement } from '../../utils/reactNode';
 
@@ -19,10 +19,10 @@ function insertSpace(child: React.ReactChild, needInserted: boolean) {
   }
   const SPACE = needInserted ? ' ' : '';
   if (
-    typeof child !== 'string' &&
-    typeof child !== 'number' &&
-    isString(child.type) &&
-    isTwoCNChar(child.props.children)
+    typeof child !== 'string'
+    && typeof child !== 'number'
+    && isString(child.type)
+    && isTwoCNChar(child.props.children)
   ) {
     return cloneElement(child, {
       children: child.props.children.split('').join(SPACE),
@@ -31,9 +31,8 @@ function insertSpace(child: React.ReactChild, needInserted: boolean) {
   if (typeof child === 'string') {
     if (isTwoCNChar(child)) {
       return <span>{child.split('').join(SPACE)}</span>;
-    } else {
-      return <span>{child}</span>;
     }
+    return <span>{child}</span>;
   }
   return child;
 }

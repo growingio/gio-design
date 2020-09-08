@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Checkbox from '..';
 import renderer from 'react-test-renderer';
+import Checkbox from '..';
 
 describe('Checkbox', () => {
   it('render', () => {

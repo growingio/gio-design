@@ -66,7 +66,7 @@ describe('Testing Tabs', () => {
         <TabPane disabled tab="预置" key="3">
           444
         </TabPane>
-      </Tabs>
+      </Tabs>,
     );
     expect(wrapper.find('.gio-tabnav').childAt(1).exists('.gio-tabnav-item-active')).toBe(true);
   });

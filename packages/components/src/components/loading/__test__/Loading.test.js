@@ -1,7 +1,7 @@
 import React from 'react';
-import Loading from '../Loading';
 import { mount, render } from 'enzyme';
 import { act } from 'react-dom/test-utils';
+import Loading from '../Loading';
 
 async function waitForComponentToPaint(wrapper, amount = 500) {
   await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));

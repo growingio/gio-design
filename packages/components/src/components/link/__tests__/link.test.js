@@ -23,7 +23,7 @@ describe('Test Link', () => {
       .create(
         <Link className="gio-customized-link" to="https://www.growingio.com" disabled>
           GrowingIO
-        </Link>
+        </Link>,
       )
       .toJSON();
     expect(domTree).toMatchSnapshot();
@@ -33,7 +33,7 @@ describe('Test Link', () => {
     const wrapper = shallow(
       <Link to="https://www.growingio.com" component="div">
         Custom Component
-      </Link>
+      </Link>,
     );
     expect(wrapper.name()).toEqual('div');
   });
@@ -44,7 +44,7 @@ describe('Test Link', () => {
     const wrapper = mount(
       <Link to="https://www.growingio.com" component="div" onClick={onClick}>
         Custom Component
-      </Link>
+      </Link>,
     );
 
     wrapper.simulate('click');
@@ -58,7 +58,7 @@ describe('Test Link', () => {
     const wrapper = mount(
       <Link component="div" to="https://www.growingio.com">
         GrowingIO
-      </Link>
+      </Link>,
     );
     wrapper.simulate('click');
     expect(window.location.href).toEqual('https://www.growingio.com');

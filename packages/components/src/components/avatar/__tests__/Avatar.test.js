@@ -1,10 +1,10 @@
 import React from 'react';
 import Avatar from '../Avatar';
 import '@gio-design/components/es/components/avatar/style/index.css';
-import image from './icon.jpeg';
 import renderer from 'react-test-renderer';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
+import image from './icon.jpeg';
 
 async function waitForComponentToPaint(wrapper, amount = 500) {
   await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
@@ -56,14 +56,14 @@ describe('Testing Avatar', () => {
   });
 
   test('props displayTooltip', () => {
-    const wrapper = mount(<Avatar displayTooltip={true}>这是一个很长的文字</Avatar>);
+    const wrapper = mount(<Avatar displayTooltip>这是一个很长的文字</Avatar>);
     expect(wrapper.find('.gio-avatar').at(0).text()).toBe('这');
     wrapper.find('.gio-avatar').at(0).simulate('mouseenter');
     expect(wrapper.find('.gio-tooltip-inner-title').text()).toBe('这是一个很长的文字');
   });
 
   test('props placement', (done) => {
-    const wrapper = mount(<Avatar displayTooltip={true}>这是一个很长的文字</Avatar>);
+    const wrapper = mount(<Avatar displayTooltip>这是一个很长的文字</Avatar>);
     wrapper.setProps({ placement: 'top' });
     wrapper.find('.gio-avatar').at(0).simulate('mouseenter');
     waitForComponentToPaint(wrapper).then(() => {

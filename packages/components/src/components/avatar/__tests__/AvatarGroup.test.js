@@ -1,10 +1,10 @@
 import React from 'react';
 import AvatarGroup from '../AvatarGroup';
 import '@gio-design/components/es/components/avatar/style/index.css';
-import image from './icon.jpeg';
 import renderer from 'react-test-renderer';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
+import image from './icon.jpeg';
 
 async function waitForComponentToPaint(wrapper, amount = 500) {
   await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
@@ -60,7 +60,7 @@ describe('Testing AvatarGroup', () => {
       wrapper
         .childAt(0)
         .children()
-        .filterWhere((n) => n.find('.gio-avatar').childAt(0).type() === 'img')
+        .filterWhere((n) => n.find('.gio-avatar').childAt(0).type() === 'img'),
     ).toHaveLength(2);
   });
 

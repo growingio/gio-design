@@ -1,6 +1,6 @@
 import React from 'react';
-import Pagination from '../Pagination';
 import { mount, render } from 'enzyme';
+import Pagination from '../Pagination';
 
 describe('Testing Pagination', () => {
   it('should be stable', () => {
@@ -45,12 +45,12 @@ describe('Testing Pagination', () => {
   });
 
   test('props showQuickJumper', () => {
-    const wrapper = mount(<Pagination showQuickJumper={true} total={1100} />);
+    const wrapper = mount(<Pagination showQuickJumper total={1100} />);
     expect(wrapper.exists('.gio-pagination-options-quick-jumper')).toBe(true);
   });
 
   test('props hideOnSinglePage', () => {
-    const wrapper = mount(<Pagination hideOnSinglePage={true} total={10} />);
+    const wrapper = mount(<Pagination hideOnSinglePage total={10} />);
     expect(wrapper.exists('.gio-pagination')).toBe(false);
   });
 

@@ -36,7 +36,7 @@ describe('Testing Radio', () => {
       <Radio.Group options={[{ label: 'opA', value: 'opA' }, 'opC', null, undefined]}>
         <Radio value="a">A</Radio>
         <div>div</div>
-      </Radio.Group>
+      </Radio.Group>,
     );
 
     expect(wrapper.find('.gio-radio-input').length).toBe(3);
@@ -46,7 +46,7 @@ describe('Testing Radio', () => {
     const wrapper = mount(
       createRadioGroupMixed({
         name: 'gioRadio',
-      })
+      }),
     );
 
     wrapper.find('input[type="radio"]').forEach((el) => {
@@ -58,7 +58,7 @@ describe('Testing Radio', () => {
     const wrapper = mount(
       createRadioGroupMixed({
         direction: 'vertical',
-      })
+      }),
     );
 
     expect(wrapper.find('.gio-radio__group').at(0).hasClass('gio-radio__group--vertical')).toBe(true);
@@ -69,7 +69,7 @@ describe('Testing Radio', () => {
     const wrapper = mount(
       createRadioGroupMixed({
         onChange,
-      })
+      }),
     );
 
     wrapper.find('.gio-radio-input').at(0).simulate('change');
@@ -100,7 +100,7 @@ describe('Testing Radio', () => {
       <Radio.Group disabled onChange={onGroupChange}>
         <Radio value="a">A</Radio>
         <Radio value="b">B</Radio>
-      </Radio.Group>
+      </Radio.Group>,
     );
 
     wrapper.find('.gio-radio-input').at(0).simulate('change');
@@ -122,7 +122,7 @@ describe('Testing Radio', () => {
         <Radio value="C" onChange={onChange}>
           C
         </Radio>
-      </Radio.Group>
+      </Radio.Group>,
     );
     const radios = wrapper.find('.gio-radio-input');
 

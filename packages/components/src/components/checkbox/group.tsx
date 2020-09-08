@@ -1,7 +1,7 @@
 import * as React from 'react';
+import classNames from 'classnames';
 import Checkbox from './checkbox';
 import { ConfigContext } from '../config-provider';
-import classNames from 'classnames';
 import CheckboxGroupContext from './CheckboxGroupContext';
 import { CheckboxOptionType, CheckboxValueType, CheckboxGroupProps } from './interface';
 
@@ -63,7 +63,7 @@ function CheckboxGroup<T extends CheckboxValueType>({
         onChange?.(newSelected);
       }
     },
-    [onChange]
+    [onChange],
   );
 
   const { getPrefixCls } = React.useContext(ConfigContext);
@@ -98,7 +98,15 @@ function CheckboxGroup<T extends CheckboxValueType>({
   const cls = classNames(`${prefixCls}-group`, `${prefixCls}-group--${direction}`);
 
   return (
-    <CheckboxGroupContext.Provider value={{ toggleOption, selectedValues, name, registerValue, unRegisterValue }}>
+    <CheckboxGroupContext.Provider
+      value={{
+        toggleOption,
+        selectedValues,
+        name,
+        registerValue,
+        unRegisterValue,
+      }}
+    >
       <div className={cls}>{customChildren}</div>
     </CheckboxGroupContext.Provider>
   );

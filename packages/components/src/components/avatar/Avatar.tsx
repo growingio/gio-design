@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import Tooltip from '../tooltip';
 import classNames from 'classnames';
+import { More } from '@gio-design/icons';
+import Tooltip from '../tooltip';
 import { AvatarProps } from './interface';
 import { ConfigContext } from '../config-provider';
-import { More } from '@gio-design/icons';
 
 const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
   const {
@@ -18,7 +18,7 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
     placement = 'bottom',
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
-  const [isImgExist, setIsImgExist] = useState<Boolean>(src !== undefined);
+  const [isImgExist, setIsImgExist] = useState<boolean>(src !== undefined);
   const [scale, setScale] = useState<number>(1);
   const nodeRef = useRef<HTMLSpanElement>(null);
   const childrenRef = useRef<HTMLSpanElement>(null);
@@ -56,7 +56,7 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
 
   const renderAvatar = () => {
     if (!!src && isImgExist) {
-      return <img src={src} onError={() => setIsImgExist(false)} />;
+      return <img alt="avatar" src={src} onError={() => setIsImgExist(false)} />;
     }
     if (userName !== undefined && typeof userName === 'string') {
       const prefixUserName = omit && typeof userName === 'string' ? userName.trim()[0] : userName.trim();

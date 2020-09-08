@@ -1,5 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import RcTable from 'rc-table';
+import { cloneDeep, isUndefined, get } from 'lodash';
+import { compose } from 'lodash/fp';
 import { ConfigContext } from '../config-provider';
 import useSorter from './hook/useSorter';
 import useFilter from './hook/useFilter';
@@ -8,11 +10,9 @@ import useSelection from './hook/useSelection';
 import useEllipsisTooltip from './hook/useEllipsisTooltip';
 import Title from './Title';
 import { TableProps, ColumnsType, ColumnGroupType } from './interface';
-import { cloneDeep, isUndefined, get } from 'lodash';
-import { compose } from 'lodash/fp';
 import Empty from './Empty';
 
-const Table = <RecordType,>(props: TableProps<RecordType>) => {
+const Table = <RecordType, >(props: TableProps<RecordType>) => {
   const {
     prefixCls: customizePrefixCls,
     title,
@@ -33,36 +33,35 @@ const Table = <RecordType,>(props: TableProps<RecordType>) => {
   const [transformShowIndexPipeline, activePaginationedState, paginationedData, PaginationComponent] = usePagination(
     filtedData,
     pagination,
-    showIndex
+    showIndex,
   );
   const [transformSelectionPipeline] = useSelection(paginationedData, rowSelection);
   const [transformEllipsisTooltipPipeline] = useEllipsisTooltip();
 
   const onTriggerStateUpdate = () => onChange?.(activePaginationedState, activeSorterStates, activeFilterStates);
 
-  const renderTitle = (columns: ColumnsType<RecordType>) =>
-    columns.map((column) => {
-      const sortState = activeSorterStates.find(({ key }) => key === column.key);
-      const filterState = activeFilterStates.find(({ key }) => key === column.key);
-      if (sortState || filterState || !isUndefined(column.info)) {
-        const oldColumn = cloneDeep(column);
-        column.title = (
-          <Title
-            sorterState={sortState}
-            filterState={filterState}
-            prefixCls={prefixCls}
-            column={oldColumn}
-            updateSorterStates={updateSorterStates}
-            updateFilterStates={updateFilterStates}
-            onTriggerStateUpdate={onTriggerStateUpdate}
-          />
-        );
-      }
-      if (get(column, 'children')) {
-        (column as ColumnGroupType<RecordType>).children = renderTitle(get(column, 'children'));
-      }
-      return column;
-    });
+  const renderTitle = (columns: ColumnsType<RecordType>) => columns.map((column) => {
+    const sortState = activeSorterStates.find(({ key }) => key === column.key);
+    const filterState = activeFilterStates.find(({ key }) => key === column.key);
+    if (sortState || filterState || !isUndefined(column.info)) {
+      const oldColumn = cloneDeep(column);
+      column.title = (
+        <Title
+          sorterState={sortState}
+          filterState={filterState}
+          prefixCls={prefixCls}
+          column={oldColumn}
+          updateSorterStates={updateSorterStates}
+          updateFilterStates={updateFilterStates}
+          onTriggerStateUpdate={onTriggerStateUpdate}
+        />
+      );
+    }
+    if (get(column, 'children')) {
+      (column as ColumnGroupType<RecordType>).children = renderTitle(get(column, 'children'));
+    }
+    return column;
+  });
 
   const transformColumns = useMemo(() => renderTitle(cloneDeep(columns)), [
     activeSorterStates,
@@ -73,7 +72,7 @@ const Table = <RecordType,>(props: TableProps<RecordType>) => {
   const composedColumns = compose(
     transformEllipsisTooltipPipeline,
     transformSelectionPipeline,
-    transformShowIndexPipeline
+    transformShowIndexPipeline,
   )(transformColumns);
 
   const emptyElement = emptyText || (

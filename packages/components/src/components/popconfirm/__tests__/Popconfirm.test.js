@@ -63,7 +63,12 @@ describe('Testing popconfirm', () => {
 
   test('prop okText and cancelText', (done) => {
     const wrapper = mount(getPopconfirm());
-    wrapper.setProps({ title: 'title text', okText: 'ok', cancelText: 'cancel', visible: true });
+    wrapper.setProps({
+      title: 'title text',
+      okText: 'ok',
+      cancelText: 'cancel',
+      visible: true,
+    });
     waitForComponentToPaint(wrapper).then(() => {
       expect(wrapper.find('.gio-popconfirm-inner-btns').childAt(0).childAt(0).text()).toBe('cancel');
       expect(wrapper.find('.gio-popconfirm-inner-btns').childAt(1).childAt(0).text()).toBe('ok');
@@ -75,7 +80,12 @@ describe('Testing popconfirm', () => {
     const onConfirm = jest.fn();
     const onCancel = jest.fn();
     const wrapper = mount(getPopconfirm());
-    wrapper.setProps({ title: 'title text', onConfirm, onCancel, visible: true });
+    wrapper.setProps({
+      title: 'title text',
+      onConfirm,
+      onCancel,
+      visible: true,
+    });
     waitForComponentToPaint(wrapper).then(() => {
       wrapper.find('.gio-popconfirm-inner-btns').childAt(0).simulate('click');
       expect(onCancel).toHaveBeenCalled();

@@ -8,7 +8,9 @@ import { SkeletonProps } from './interface';
 import SkeletonImage from './Image';
 
 const Skeleton = (props: SkeletonProps) => {
-  const { prefixCls: customizePrefixCls, delay = 0, loading = true, children, active = true } = props;
+  const {
+    prefixCls: customizePrefixCls, delay = 0, loading = true, children, active = true,
+  } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('skeleton', customizePrefixCls);
   const shouldLoading = useDebounceLoading(loading, delay);
