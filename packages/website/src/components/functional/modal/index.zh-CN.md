@@ -90,3 +90,8 @@ group:
 | footer          | 当前步骤 Modal 的 Footer                 | React.ReactNode | -      | 否   |
 | onNext          | 下一步                                   | `() => void`    | -      | 否   |
 | onBack          | 上一步                                   | `() => void`    | -      | 否   |
+| additionalFooter          | 除了 `OkButton` 及 `CloseButton`外的自定义 Footer | React.ReactNode   | -      | 否   |
+| nextButtonProps          | 传递给下一步按钮的 props                          | ButtonProps      | -      | 否   |
+| backButtonProps          | 传递给上一步的 props                          | ButtonProps      | -      | 否   |
+| nextText          | 传递给下一步按钮的显示文案                                    |  string    | -      | 否   |
+| backText          | 传递给上一步按钮的显示文案                                    |  string    | -      | 否   |

@@ -90,6 +90,16 @@ export interface IStep {
   content?: TStepModalNodeRender;
   // 当前步骤 Modal 的 Footer
   footer?: TStepModalNodeRender;
+  // 同 Modal.footer
+  additionalFooter?: ReactNode;
+  // 下一步按钮的 props
+  nextButtonProps?: ButtonProps;
+  // 上一步按钮的 props
+  backButtonProps?: ButtonProps;
+  // 下一步按钮的 text
+  nextText?: string;
+  // 上一步按钮的 text
+  backText?: string;
 }
 
 export interface IStepInner extends IStep {
