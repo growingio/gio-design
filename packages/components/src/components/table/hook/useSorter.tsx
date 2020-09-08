@@ -1,8 +1,10 @@
 import React, { useMemo, useCallback } from 'react';
-import { ColumnsType, ColumnGroupType, ColumnType, SortOrder, SortState } from '../interface';
 import { get, isUndefined, clone } from 'lodash';
+import {
+  ColumnsType, ColumnGroupType, ColumnType, SortOrder, SortState,
+} from '../interface';
 
-const collectSortStates = <RecordType,>(columns: ColumnsType<RecordType> = []): SortState<RecordType>[] => {
+const collectSortStates = <RecordType, >(columns: ColumnsType<RecordType> = []): SortState<RecordType>[] => {
   const sortStates: SortState<RecordType>[] = [];
 
   const pushState = (column: ColumnType<RecordType>, sortOrder: SortOrder) => {
@@ -26,13 +28,13 @@ const collectSortStates = <RecordType,>(columns: ColumnsType<RecordType> = []): 
   return sortStates;
 };
 
-const useSorter = <RecordType,>(
+const useSorter = <RecordType, >(
   columns: ColumnsType<RecordType>,
-  data: RecordType[]
+  data: RecordType[],
 ): [SortState<RecordType>[], (sortState: SortState<RecordType>) => void, RecordType[]] => {
   // record all sorter states
   const [sortStates, setSortStates] = React.useState<SortState<RecordType>[]>(
-    useMemo(() => collectSortStates(columns), [columns])
+    useMemo(() => collectSortStates(columns), [columns]),
   );
 
   // update sorter states action
@@ -53,10 +55,10 @@ const useSorter = <RecordType,>(
             _sortState.sortOrder = sortState.sortOrder;
           }
           return _sortState;
-        })
+        }),
       );
     },
-    [sortStates]
+    [sortStates],
   );
 
   // filter active sorter states

@@ -50,25 +50,24 @@ const Group: React.FC<IRadioGroupProps> = (props) => {
     }
   };
 
-  const getChildrenRadios = () =>
-    filterChildren(children, (child) => {
-      if (React.isValidElement(child)) {
-        if (typeof child.type !== 'object' || (child.type as typeof Radio).componentType !== 'GIO_RADIO') {
-          console.error(
-            'Warning: Children wrapped by RadioGroup component should be a Radio. Please check the Radio Component in your RadioGroup.'
-          );
-          return false;
-        }
-        if (!Reflect.has(child.props, 'value')) {
-          console.error(
-            'Warning: Radio wrapped by RadioGroup component which has no "value" prop will not be rendered. Please check the Radio Component in your RadioGroup.'
-          );
-          return false;
-        }
-        return true;
+  const getChildrenRadios = () => filterChildren(children, (child) => {
+    if (React.isValidElement(child)) {
+      if (typeof child.type !== 'object' || (child.type as typeof Radio).componentType !== 'GIO_RADIO') {
+        console.error(
+          'Warning: Children wrapped by RadioGroup component should be a Radio. Please check the Radio Component in your RadioGroup.',
+        );
+        return false;
       }
-      return false;
-    });
+      if (!Reflect.has(child.props, 'value')) {
+        console.error(
+          'Warning: Radio wrapped by RadioGroup component which has no "value" prop will not be rendered. Please check the Radio Component in your RadioGroup.',
+        );
+        return false;
+      }
+      return true;
+    }
+    return false;
+  });
 
   const radioRender = () => {
     let renderedChildren: React.ReactNodeArray = [];

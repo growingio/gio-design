@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Input, { prefixCls } from './Input';
 import { UpFilled, DownFilled } from '@gio-design/icons';
+import Input, { prefixCls } from './Input';
 import { InputProps } from './interfaces';
 
 const InputNumber: React.FC<InputProps> = ({

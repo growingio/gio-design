@@ -97,7 +97,9 @@ interface CompoundedComponent extends React.ForwardRefExoticComponent<TreeProps 
 
 const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
   const { getPrefixCls, virtual } = React.useContext(ConfigContext);
-  const { prefixCls: customizePrefixCls, className, showIcon, children, switcherIcon } = props;
+  const {
+    prefixCls: customizePrefixCls, className, showIcon, children, switcherIcon,
+  } = props;
 
   const newProps = { ...props };
   const prefixCls = getPrefixCls('tree', customizePrefixCls);

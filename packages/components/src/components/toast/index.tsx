@@ -1,7 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import Notification from 'rc-notification';
-import { CheckCircleFilled, CloseCircleFilled, WarningFilled, InformationFilled } from '@gio-design/icons';
+import {
+  CheckCircleFilled, CloseCircleFilled, WarningFilled, InformationFilled,
+} from '@gio-design/icons';
 
 let defaultDuration = 2;
 let defaultTop: number;
@@ -33,7 +35,7 @@ function getMessageInstance(callback: (i: any) => void) {
       }
       messageInstance = instance;
       callback(instance);
-    }
+    },
   );
 }
 
@@ -196,7 +198,12 @@ const api: any = {
       duration = undefined; // eslint-disable-line
     }
 
-    return api.open({ content, duration, type, onClose });
+    return api.open({
+      content,
+      duration,
+      type,
+      onClose,
+    });
   };
 });
 

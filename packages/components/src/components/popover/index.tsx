@@ -4,7 +4,9 @@ import { PopoverProps } from './interface';
 import { ConfigContext } from '../config-provider';
 
 const Popover: React.FC<PopoverProps> = (props: PopoverProps) => {
-  const { children, contentArea, footerArea, prefixCls: customizePrefixCls, ...rest } = props;
+  const {
+    children, contentArea, footerArea, prefixCls: customizePrefixCls, ...rest
+  } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('popover', customizePrefixCls);
 

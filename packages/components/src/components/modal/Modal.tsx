@@ -75,7 +75,7 @@ const Modal: React.FC<IModalProps> = ({
   return (
     <ModalPrefixClsContext.Provider value={prefix}>
       <RcDialog
-        keyboard={true}
+        keyboard
         {...restProps}
         maskClosable={!useFooter}
         onClose={handleClose}

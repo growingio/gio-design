@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
+import toArray from 'rc-util/lib/Children/toArray';
 import BreadcrumbItem from './BreadcrumbItem';
 import BreadcrumbSeparator from './BreadcrumbSeparator';
 import { ConfigContext } from '../config-provider';
-import toArray from 'rc-util/lib/Children/toArray';
 import { cloneElement } from '../../utils/reactNode';
 import devWarning from '../../utils/devWarning';
 import { Route, BreadcrumbProps } from './interface';
@@ -15,7 +15,7 @@ function getBreadcrumbName(route: Route, params: any) {
   const paramsKeys = Object.keys(params).join('|');
   const name = route.breadcrumbName.replace(
     new RegExp(`:(${paramsKeys})`, 'g'),
-    (replacement, key) => params[key] || replacement
+    (replacement, key) => params[key] || replacement,
   );
   return name;
 }
@@ -81,8 +81,7 @@ const Breadcrumb: BreadcrumbInterface = ({
       /* eslint-disable-next-line */
       devWarning(element.type && (element.type.__ANT_BREADCRUMB_ITEM === true || element.type.__ANT_BREADCRUMB_SEPARATOR === true),
         'Breadcrumb',
-        "Only accepts Breadcrumb.Item and Breadcrumb.Separator as it's children"
-      );
+        "Only accepts Breadcrumb.Item and Breadcrumb.Separator as it's children");
 
       return cloneElement(element, {
         separator,

@@ -11,12 +11,14 @@ interface CompoundedRadio extends React.ForwardRefExoticComponent<IRadioProps & 
 }
 
 const InnerRadio: React.ForwardRefRenderFunction<unknown, IRadioProps> = (
-  { type = 'radio', prefixCls: customPrefixCls, className, style, children, ...restProps },
-  ref
+  {
+    type = 'radio', prefixCls: customPrefixCls, className, style, children, ...restProps
+  },
+  ref,
 ) => {
   const groupContext = useContext(RadioGroupContext);
 
-  const prefixCls = customPrefixCls ? customPrefixCls : 'gio-radio';
+  const prefixCls = customPrefixCls || 'gio-radio';
 
   const wrapperCls = classnames(className, `${prefixCls}__wrapper`, {
     [`${prefixCls}__wrapper--checked`]: restProps.checked,

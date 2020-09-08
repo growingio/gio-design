@@ -1,16 +1,17 @@
 import React from 'react';
 import classNames from 'classnames';
-import { UpFilled, DownFilled, FilterFilled, QuestionCircleOutlined } from '@gio-design/icons';
+import {
+  UpFilled, DownFilled, FilterFilled, QuestionCircleOutlined,
+} from '@gio-design/icons';
+import { isUndefined } from 'lodash';
 import Button from '../button';
 import Tooltip from '../tooltip';
 import FilterPopover from './FilterPopover';
 import { SortOrder, TitleProps } from './interface';
-import { isUndefined } from 'lodash';
 
-const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): SortOrder =>
-  current === null ? sortDirections[0] : sortDirections[sortDirections.indexOf(current) + 1];
+const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): SortOrder => (current === null ? sortDirections[0] : sortDirections[sortDirections.indexOf(current) + 1]);
 
-const Title = <RecordType,>(props: TitleProps<RecordType>) => {
+const Title = <RecordType, >(props: TitleProps<RecordType>) => {
   const { prefixCls, column, onTriggerStateUpdate } = props;
 
   const renderSorter = () => {
@@ -35,7 +36,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
             prefixCls={`${prefixCls}`}
             className={`${prefixCls}-column-sorter-inner-btn`}
             type="text"
-            icon={
+            icon={(
               <>
                 <UpFilled
                   className={classNames(`${prefixCls}-column-sorter-up`, {
@@ -48,7 +49,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
                   })}
                 />
               </>
-            }
+            )}
             onClick={handleSorterChange}
           />
         </span>
@@ -74,12 +75,12 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
             <Button
               type="assist"
               className={`${prefixCls}-column-filter-inner-btn`}
-              icon={
+              icon={(
                 <FilterFilled
                   size="16px"
                   className={classNames(`${prefixCls}-column-filter-icon`, { active: filteredKeys.length > 0 })}
                 />
-              }
+              )}
             />
           </FilterPopover>
         </span>

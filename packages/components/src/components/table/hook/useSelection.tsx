@@ -1,19 +1,23 @@
 import React, { useMemo, useCallback } from 'react';
+import {
+  get, intersection, isUndefined, difference, union,
+} from 'lodash';
 import { ColumnsType, RowSelection, ColumnType } from '../interface';
 import Checkbox from '../../checkbox';
-import { get, intersection, isUndefined, difference, union } from 'lodash';
 import useControlledState from '../../../utils/hooks/useControlledState';
 
-const useSelection = <RecordType,>(
+const useSelection = <RecordType, >(
   data: RecordType[],
-  rowSelection: RowSelection<RecordType> | undefined
+  rowSelection: RowSelection<RecordType> | undefined,
 ): [(columns: ColumnsType<RecordType>) => ColumnsType<RecordType>] => {
-  const { onChange, selectedRowKeys, columnWidth = 50, fixed } = rowSelection || {};
+  const {
+    onChange, selectedRowKeys, columnWidth = 50, fixed,
+  } = rowSelection || {};
   const [localSelectedRowKeys, setLocalSelectedRowKeys] = useControlledState<string[]>(selectedRowKeys, []);
   const currentPageRowKeys = useMemo(() => data.map((item) => get(item, 'key')), [data]);
   const allChecked = useMemo(
     () => intersection(localSelectedRowKeys, currentPageRowKeys).length === currentPageRowKeys.length,
-    [currentPageRowKeys, localSelectedRowKeys]
+    [currentPageRowKeys, localSelectedRowKeys],
   );
   const atLeastOneChecked = useMemo(() => intersection(currentPageRowKeys, localSelectedRowKeys).length > 0, [
     currentPageRowKeys,
@@ -22,7 +26,7 @@ const useSelection = <RecordType,>(
   const partChecked = useMemo(() => !allChecked && atLeastOneChecked, [allChecked, atLeastOneChecked]);
   const getSelectRows = useCallback(
     (_selectedRowKeys) => data.filter((item) => _selectedRowKeys.includes(get(item, 'key'))),
-    [data]
+    [data],
   );
 
   const selectionColumn: ColumnType<RecordType> = {
@@ -62,7 +66,7 @@ const useSelection = <RecordType,>(
 
   const transformSelectionPipeline = useCallback(
     (columns: ColumnsType<RecordType>) => (!isUndefined(rowSelection) ? [selectionColumn, ...columns] : columns),
-    [selectionColumn, rowSelection]
+    [selectionColumn, rowSelection],
   );
 
   return [transformSelectionPipeline];

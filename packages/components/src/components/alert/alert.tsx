@@ -17,7 +17,7 @@ interface AlertProps {
   size?: string;
 }
 
-const Alert: React.FC<AlertProps> = (props) => {
+const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   const [alertStatus, setAlertStatus] = useState(true);
   const { message, description, closeable, showIcon, colseText, onClose, icon, type = 'info', size = 'middle' } = props;
 
@@ -50,18 +50,18 @@ const Alert: React.FC<AlertProps> = (props) => {
         )}
       >
         <div className="gio-alert-icon" style={{ display: showIcon ? 'block' : 'none' }}>
-          {icon ? icon : getIcon()}
+          {icon || getIcon()}
         </div>
         <div className="gio-alert-content">
           <div className="gio-alert-content-title" style={{ display: message ? 'block' : 'none' }}>
-            {message ? message : null}
+            {message || null}
           </div>
           <div className="gio-alert-content-description" style={{ display: description ? 'block' : 'none' }}>
-            {description ? description : null}
+            {description || null}
           </div>
         </div>
         <div className="gio-alert-closeIcon" style={{ display: closeable ? 'block' : 'none' }} onClick={closeAlert}>
-          {colseText ? colseText : <Close />}
+          {colseText || <Close />}
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ const useDebounceLoading = (loading: boolean, delay: number) => {
   const [shouldLoading, setShouldLoading] = useState<boolean>(loading);
   const debounceFunc = useCallback(
     debounce((_loading: boolean) => setShouldLoading(_loading), delay),
-    [delay]
+    [delay],
   );
   useEffect(() => {
     if (shouldLoading && !loading) {

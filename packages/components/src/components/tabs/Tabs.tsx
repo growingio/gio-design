@@ -21,7 +21,7 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
     onChange,
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
-  const [localActiveKey, setLocalActiveKey] = useState<string | number>(activeKey ? activeKey : defaultActiveKey);
+  const [localActiveKey, setLocalActiveKey] = useState<string | number>(activeKey || defaultActiveKey);
   const prefixCls = getPrefixCls('tabs', customizePrefixCls);
   const classString = classNames(prefixCls, className, {
     [`${prefixCls}-${type}`]: true,
@@ -34,11 +34,13 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
     const _tabItem: JSX.Element[] = [];
     const _tabPane = toArray(children).map((node: React.ReactElement<TabPaneProps>) => {
       if (React.isValidElement(node) && node.type === TabPane) {
-        const { tab, className: paneClassName, disabled, style: paneStyle, ...restProps } = node.props;
+        const {
+          tab, className: paneClassName, disabled, style: paneStyle, ...restProps
+        } = node.props;
         _tabItem.push(
           <TabNav.Item key={node.key} disabled={disabled}>
             {tab}
-          </TabNav.Item>
+          </TabNav.Item>,
         );
         return (
           <TabPane

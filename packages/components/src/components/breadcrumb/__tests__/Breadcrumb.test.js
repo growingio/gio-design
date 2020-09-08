@@ -19,11 +19,11 @@ describe('Breadcrumb', () => {
     mount(
       <Breadcrumb>
         <MyCom />
-      </Breadcrumb>
+      </Breadcrumb>,
     );
     expect(errorSpy.mock.calls).toHaveLength(1);
     expect(errorSpy.mock.calls[0][0]).toMatch(
-      "Warning: [gio: Breadcrumb] Only accepts Breadcrumb.Item and Breadcrumb.Separator as it's children"
+      "Warning: [gio: Breadcrumb] Only accepts Breadcrumb.Item and Breadcrumb.Separator as it's children",
     );
   });
 
@@ -33,7 +33,7 @@ describe('Breadcrumb', () => {
         {null}
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         {undefined}
-      </Breadcrumb>
+      </Breadcrumb>,
     );
     expect(errorSpy).not.toHaveBeenCalled();
     expect(wrapper).toMatchSnapshot();
@@ -45,7 +45,7 @@ describe('Breadcrumb', () => {
         <Breadcrumb.Item />
         <Breadcrumb.Item>xxx</Breadcrumb.Item>
         <Breadcrumb.Item>yyy</Breadcrumb.Item>
-      </Breadcrumb>
+      </Breadcrumb>,
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -59,7 +59,7 @@ describe('Breadcrumb', () => {
           <Breadcrumb.Item href="">Application Center</Breadcrumb.Item>
           <Breadcrumb.Separator />
         </>
-      </Breadcrumb>
+      </Breadcrumb>,
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -110,7 +110,7 @@ describe('Breadcrumb', () => {
       <Breadcrumb data-custom="custom">
         <Breadcrumb.Item data-custom="custom-item">xxx</Breadcrumb.Item>
         <Breadcrumb.Item>yyy</Breadcrumb.Item>
-      </Breadcrumb>
+      </Breadcrumb>,
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -126,7 +126,7 @@ describe('Breadcrumb', () => {
         {0}
         {null}
         {undefined}
-      </Breadcrumb>
+      </Breadcrumb>,
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -142,7 +142,7 @@ describe('Breadcrumb', () => {
         <Breadcrumb.Item>Location</Breadcrumb.Item>
         <MockComponent />
         <Breadcrumb.Item>Application Center</Breadcrumb.Item>
-      </Breadcrumb>
+      </Breadcrumb>,
     );
     expect(wrapper).toMatchSnapshot();
   });

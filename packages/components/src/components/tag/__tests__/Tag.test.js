@@ -33,7 +33,7 @@ describe('<Tag />', () => {
   });
 
   it('should have "gio-tag-closable-toggle', () => {
-    const tree = shallow(<Tag closable={true} persistCloseIcon={false} />);
+    const tree = shallow(<Tag closable persistCloseIcon={false} />);
     tree.simulate('hover');
     expect(tree.hasClass('gio-tag-closable-toggle')).toBe(true);
     expect(tree.exists('.gio-tag-closable-icon')).toBe(true);
@@ -43,7 +43,7 @@ describe('<Tag />', () => {
     const onClose = (e) => {
       expect(true).toBe(true);
     };
-    const tree = shallow(<Tag closable={true} persistCloseIcon={true} onClose={onClose} />);
+    const tree = shallow(<Tag closable persistCloseIcon onClose={onClose} />);
     tree.find('.gio-tag-closable-icon').simulate('click');
   });
 });

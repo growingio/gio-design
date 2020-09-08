@@ -1,7 +1,13 @@
-import React, { useContext, useMemo, useState, useRef } from 'react';
+import React, {
+  useContext, useMemo, useState, useRef,
+} from 'react';
 import classNames from 'classnames';
-import { isFunction, isNumber, isNaN, isUndefined } from 'lodash';
-import { LeftOutlined, LeftDoubleOutlined, RightOutlined, RightDoubleOutlined, More } from '@gio-design/icons';
+import {
+  isFunction, isNumber, isNaN, isUndefined,
+} from 'lodash';
+import {
+  LeftOutlined, LeftDoubleOutlined, RightOutlined, RightDoubleOutlined, More,
+} from '@gio-design/icons';
 import Input from '../input';
 import { ConfigContext } from '../config-provider';
 import { PaginationProps } from './interface';
@@ -53,9 +59,11 @@ const Pagination = ({
           return [1, ...successionArray, nextSymbol.current, pageNumber];
         }
         return [1, prevSymbol.current, ...successionArray, nextSymbol.current, pageNumber];
-      } else if (localCurrent + offsetRadius >= pageNumber) {
+      }
+      if (localCurrent + offsetRadius >= pageNumber) {
         return [1, prevSymbol.current, ...generateSuccessionArray(pageNumber - offset + 1, pageNumber)];
-      } else if (localCurrent - offsetRadius <= 1) {
+      }
+      if (localCurrent - offsetRadius <= 1) {
         return [...generateSuccessionArray(1, offset), nextSymbol.current, pageNumber];
       }
     }
@@ -91,47 +99,46 @@ const Pagination = ({
     );
   }, [total, showTotal]);
 
-  const renderPage = () =>
-    generatePageArray.map((page: number | symbol) => {
-      if (typeof page === 'number') {
-        return (
-          <li
-            className={classNames(`${prefixCls}-item`, {
-              [`${prefixCls}-item-active`]: page === localCurrent,
-            })}
-            key={page}
-            onClick={() => handleClick(page)}
-          >
-            {page}
-          </li>
-        );
-      }
-      if (Object.is(page, prevSymbol.current)) {
-        return (
-          <li
-            key="prev"
-            className={classNames(`${prefixCls}-jump-prev`)}
-            onClick={() => handleClick(localCurrent - offset)}
-          >
-            <More className="more" />
-            <LeftDoubleOutlined className="double" color="#0044F2" />
-          </li>
-        );
-      }
-      if (Object.is(page, nextSymbol.current)) {
-        return (
-          <li
-            key="next"
-            className={classNames(`${prefixCls}-jump-next`)}
-            onClick={() => handleClick(localCurrent + offset)}
-          >
-            <More className="more" />
-            <RightDoubleOutlined className="double" color="#0044F2" />
-          </li>
-        );
-      }
-      return null;
-    });
+  const renderPage = () => generatePageArray.map((page: number | symbol) => {
+    if (typeof page === 'number') {
+      return (
+        <li
+          className={classNames(`${prefixCls}-item`, {
+            [`${prefixCls}-item-active`]: page === localCurrent,
+          })}
+          key={page}
+          onClick={() => handleClick(page)}
+        >
+          {page}
+        </li>
+      );
+    }
+    if (Object.is(page, prevSymbol.current)) {
+      return (
+        <li
+          key="prev"
+          className={classNames(`${prefixCls}-jump-prev`)}
+          onClick={() => handleClick(localCurrent - offset)}
+        >
+          <More className="more" />
+          <LeftDoubleOutlined className="double" color="#0044F2" />
+        </li>
+      );
+    }
+    if (Object.is(page, nextSymbol.current)) {
+      return (
+        <li
+          key="next"
+          className={classNames(`${prefixCls}-jump-next`)}
+          onClick={() => handleClick(localCurrent + offset)}
+        >
+          <More className="more" />
+          <RightDoubleOutlined className="double" color="#0044F2" />
+        </li>
+      );
+    }
+    return null;
+  });
 
   const handleInputPressEnter = (e: any) => {
     const transformValue = Number(e.target.value);
