@@ -1,8 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import * as React from 'react';
 import Breadcrumb from '@gio-design/components/es/components/breadcrumb';
 import '@gio-design/components/es/components/breadcrumb/style/css.js';
 
-export default () => {
+export default (): React.ReactNode => {
   const routes = [
     {
       path: 'components',

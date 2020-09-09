@@ -1,10 +1,41 @@
 import React from 'react';
+import _ from 'lodash';
 import { mount, render } from 'enzyme';
 import Breadcrumb from '../index';
 
 describe('Breadcrumb', () => {
-  /* eslint-disable prettier/prettier */
-  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => { });
+  const errorSpy = jest.spyOn(console, 'error').mockImplementation(_.noop);
+  const routes = [
+    {
+      path: 'index',
+      breadcrumbName: 'home',
+    },
+    {
+      path: 'first',
+      breadcrumbName: 'first',
+      children: [
+        {
+          path: '/general',
+          breadcrumbName: 'General',
+        },
+        {
+          path: '/layout',
+          breadcrumbName: 'Layout',
+        },
+        {
+          path: '/navigation',
+          breadcrumbName: 'Navigation',
+        },
+      ],
+    },
+    {
+      path: 'second',
+      breadcrumbName: 'second',
+    },
+    {
+      path: 'third',
+    },
+  ];
 
   afterEach(() => {
     errorSpy.mockReset();
@@ -19,11 +50,11 @@ describe('Breadcrumb', () => {
     mount(
       <Breadcrumb>
         <MyCom />
-      </Breadcrumb>,
+      </Breadcrumb>
     );
     expect(errorSpy.mock.calls).toHaveLength(1);
     expect(errorSpy.mock.calls[0][0]).toMatch(
-      "Warning: [gio: Breadcrumb] Only accepts Breadcrumb.Item and Breadcrumb.Separator as it's children",
+      "Warning: [gio: Breadcrumb] Only accepts Breadcrumb.Item and Breadcrumb.Separator as it's children"
     );
   });
 
@@ -33,7 +64,7 @@ describe('Breadcrumb', () => {
         {null}
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         {undefined}
-      </Breadcrumb>,
+      </Breadcrumb>
     );
     expect(errorSpy).not.toHaveBeenCalled();
     expect(wrapper).toMatchSnapshot();
@@ -45,7 +76,7 @@ describe('Breadcrumb', () => {
         <Breadcrumb.Item />
         <Breadcrumb.Item>xxx</Breadcrumb.Item>
         <Breadcrumb.Item>yyy</Breadcrumb.Item>
-      </Breadcrumb>,
+      </Breadcrumb>
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -59,44 +90,18 @@ describe('Breadcrumb', () => {
           <Breadcrumb.Item href="">Application Center</Breadcrumb.Item>
           <Breadcrumb.Separator />
         </>
-      </Breadcrumb>,
+      </Breadcrumb>
     );
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render a menu', () => {
-    const routes = [
-      {
-        path: 'index',
-        breadcrumbName: 'home',
-      },
-      {
-        path: 'first',
-        breadcrumbName: 'first',
-        children: [
-          {
-            path: '/general',
-            breadcrumbName: 'General',
-          },
-          {
-            path: '/layout',
-            breadcrumbName: 'Layout',
-          },
-          {
-            path: '/navigation',
-            breadcrumbName: 'Navigation',
-          },
-        ],
-      },
-      {
-        path: 'second',
-        breadcrumbName: 'second',
-      },
-      {
-        path: 'third',
-      },
-    ];
+  it('should render routes', () => {
     const wrapper = render(<Breadcrumb routes={routes} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render routes with params', () => {
+    const wrapper = render(<Breadcrumb routes={routes} params={{ first: 1, last: 1 }} />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -110,7 +115,7 @@ describe('Breadcrumb', () => {
       <Breadcrumb data-custom="custom">
         <Breadcrumb.Item data-custom="custom-item">xxx</Breadcrumb.Item>
         <Breadcrumb.Item>yyy</Breadcrumb.Item>
-      </Breadcrumb>,
+      </Breadcrumb>
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -126,7 +131,7 @@ describe('Breadcrumb', () => {
         {0}
         {null}
         {undefined}
-      </Breadcrumb>,
+      </Breadcrumb>
     );
     expect(wrapper).toMatchSnapshot();
   });
@@ -142,7 +147,7 @@ describe('Breadcrumb', () => {
         <Breadcrumb.Item>Location</Breadcrumb.Item>
         <MockComponent />
         <Breadcrumb.Item>Application Center</Breadcrumb.Item>
-      </Breadcrumb>,
+      </Breadcrumb>
     );
     expect(wrapper).toMatchSnapshot();
   });
