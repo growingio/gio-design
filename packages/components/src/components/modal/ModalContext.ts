@@ -1,3 +1,5 @@
 import { createContext } from 'react';
 
-export const ModalPrefixClsContext = createContext('gio-modal');
+const ModalPrefixClsContext = createContext('gio-modal');
+
+export default ModalPrefixClsContext;

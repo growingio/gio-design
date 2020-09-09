@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     'no-use-before-define': 0,
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'react/jsx-props-no-spreading': [2, {html: 'enforce', custom: 'ignore', explicitSpread: 'ignore'}],
     'import/no-unresolved': 0,
     'import/extensions': [0, 'never'],
   },

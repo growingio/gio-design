@@ -11,6 +11,7 @@ export const stepArray2Map = (steps: IStep[]): { stepMap: IStepMap; firstStep: s
   const stepMap: IStepMap = {};
   let firstStep = '';
 
+  // eslint-disable-next-line no-restricted-syntax
   for (const step of stepsInnerArray) {
     stepMap[step.key] = step;
     if (step.return === null || step.return === undefined) {
@@ -28,8 +29,8 @@ export const stepArray2Map = (steps: IStep[]): { stepMap: IStepMap; firstStep: s
 export const clarifyRender = (
   render: TStepModalNodeRender,
   renderProps: IStepModalNodeRenderProps,
-  fallback: any = ''
-) => {
+  fallback: unknown = ''
+): React.ReactNode => {
   if (render === undefined || render === null) {
     return fallback;
   }
