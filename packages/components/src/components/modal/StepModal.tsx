@@ -16,7 +16,7 @@ const StepModal: React.FC<IStepModalProps> = ({
   okButtonProps,
   closeButtonProps,
   ...modalProps
-}) => {
+}: IStepModalProps) => {
   const { stepMap, firstStep } = useMemo(() => stepArray2Map(steps), [steps]);
   const [stepStack, setStepStack] = useState<string[]>([firstStep]);
   const curStepOnShow = stepStack[stepStack.length - 1];

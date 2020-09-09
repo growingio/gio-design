@@ -22,7 +22,7 @@ export interface IFooterProps {
   closeButtonProps?: ButtonProps;
   okText?: string;
   closeText?: string;
-  onOk?: ((e: React.MouseEvent<HTMLElement>) => void) | ((e: React.MouseEvent<HTMLElement>) => Promise<any>);
+  onOk?: ((e: React.MouseEvent<HTMLElement>) => void) | ((e: React.MouseEvent<HTMLElement>) => Promise<unknown>);
   onClose?: (e: React.MouseEvent<HTMLElement>) => void;
   useOk: boolean;
   useClose: boolean;
@@ -33,15 +33,15 @@ export interface IModalProps extends ITitleProps, Omit<IFooterProps, 'useOk' | '
   className?: string;
   wrapClassName?: string;
   style?: CSSProperties;
-  wrapStyle?: {};
-  bodyStyle?: {};
-  maskStyle?: {};
-  bodyProps?: any;
-  maskProps?: any;
-  wrapProps?: any;
+  wrapStyle?: Record<string, unknown>;
+  bodyStyle?: Record<string, unknown>;
+  maskStyle?: Record<string, unknown>;
+  bodyProps?: Record<string, unknown>;
+  maskProps?: Record<string, unknown>;
+  wrapProps?: Record<string, unknown>;
   zIndex?: number;
   closeIcon?: ReactNode;
-  children?: any;
+  children?: unknown;
   // 按 ESC 键是否可以关闭 Modal
   keyboard?: boolean;
   // Modal 的尺寸
@@ -53,7 +53,7 @@ export interface IModalProps extends ITitleProps, Omit<IFooterProps, 'useOk' | '
   // 组件 pending 状态
   pending?: boolean;
   // 执行 close 后紧接着执行的操作
-  afterClose?: () => any;
+  afterClose?: () => void;
   // 点击 Ok 后是否要紧接着执行 close
   closeAfterOk?: boolean;
   // 是否在 Modal 关闭后销毁

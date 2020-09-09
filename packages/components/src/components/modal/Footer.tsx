@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import classnames from 'classnames';
 import Button from '../button';
 import { IFooterProps } from './interface';
-import { ModalPrefixClsContext } from './ModalContext';
+import ModalPrefixClsContext from './ModalContext';
 
 const Footer: React.FC<IFooterProps> = ({
   footer,
@@ -15,7 +15,7 @@ const Footer: React.FC<IFooterProps> = ({
   useClose,
   onOk,
   onClose,
-}) => {
+}: IFooterProps) => {
   const prefix = useContext(ModalPrefixClsContext);
   const cls = classnames(`${prefix}__footer`);
   const additionCls = classnames(`${prefix}__footer-additional`);

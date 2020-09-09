@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { LeftOutlined } from '@gio-design/icons';
 import { ITitleProps } from './interface';
-import { ModalPrefixClsContext } from './ModalContext';
+import ModalPrefixClsContext from './ModalContext';
 
-const Title: React.FC<ITitleProps> = ({ onBack, title, useBack }) => {
+const Title: React.FC<ITitleProps> = ({ onBack, title, useBack }: ITitleProps) => {
   const prefix = useContext(ModalPrefixClsContext);
   const titleCls = classnames(`${prefix}__title`, {
     [`${prefix}__step-title`]: useBack,
@@ -16,7 +16,7 @@ const Title: React.FC<ITitleProps> = ({ onBack, title, useBack }) => {
   return (
     <>
       {useBack && (
-        <span className={backCls} onClick={handleBack}>
+        <span className={backCls} onClick={handleBack} aria-hidden="true">
           <LeftOutlined />
         </span>
       )}

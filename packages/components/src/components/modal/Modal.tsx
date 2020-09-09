@@ -5,7 +5,7 @@ import { Close } from '@gio-design/icons';
 import { ButtonProps } from '../button';
 import { ConfigContext } from '../config-provider';
 import { IModalProps } from './interface';
-import { ModalPrefixClsContext } from './ModalContext';
+import ModalPrefixClsContext from './ModalContext';
 import Title from './Title';
 import Footer from './Footer';
 
@@ -28,7 +28,7 @@ const Modal: React.FC<IModalProps> = ({
   onClose,
   pending,
   ...restProps
-}) => {
+}: IModalProps) => {
   const { getPrefixCls } = useContext(ConfigContext);
   const prefix = getPrefixCls('modal', customPrefixCls);
   const modalCls = classnames(className, {
@@ -66,9 +66,9 @@ const Modal: React.FC<IModalProps> = ({
     }
   };
 
-  const handleClose = (e: any) => {
+  const handleClose = (e: React.SyntheticEvent<HTMLElement, Event>) => {
     if (!pending) {
-      onClose?.(e);
+      onClose?.(e as React.MouseEvent<HTMLElement, MouseEvent>);
     }
   };
 
