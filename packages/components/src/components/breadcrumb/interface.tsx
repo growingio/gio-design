@@ -7,7 +7,6 @@ export interface BreadcrumbItemProps {
   href?: string;
   onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLSpanElement>;
   children?: React.ReactNode;
-  isLastItem?: boolean;
 }
 
 export interface Route {
@@ -24,4 +23,5 @@ export interface BreadcrumbProps {
   separator?: React.ReactNode;
   className?: string;
   itemRender?: (route: Route, params: any, routes: Array<Route>, paths: Array<string>) => React.ReactNode;
+  children?: React.ReactNode;
 }

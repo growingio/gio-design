@@ -18,10 +18,10 @@ module.exports = {
   plugins: ['prettier', '@typescript-eslint'],
   // Rewrite style
   rules: {
-    'no-use-before-define': 0,
-    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
-    'react/jsx-props-no-spreading': [2, {html: 'enforce', custom: 'ignore', explicitSpread: 'ignore'}],
-    'import/no-unresolved': 0,
-    'import/extensions': [0, 'never'],
+    'no-use-before-define': 'off',
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'react/jsx-props-no-spreading': ['error', { html: 'enforce', custom: 'ignore', explicitSpread: 'ignore' }],
+    'import/no-unresolved': 'off',
+    'import/extensions': ['off', 'never'],
   },
 };

@@ -1,32 +1,37 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import classnames from 'classnames';
 import BreadcrumbSeparator from './BreadcrumbSeparator';
 import { BreadcrumbItemProps } from './interface';
 
-const BreadcrumbItem: React.FC<BreadcrumbItemProps> = (props: BreadcrumbItemProps) => {
-  const {
-    href, children, separator, isLastItem,
-  } = props;
-  /* eslint-disable prettier/prettier */
-  const link = href ? (
-    <a className="gio-breadcrumb-item-link-target" {...props}>
-      {children}
-    </a>
-  ) : (
-    <span className="gio-breadcrumb-item-link-target" {...props}>
-      {children}
-    </span>
-  );
+interface BreadcrumbItemInterface extends React.FC<BreadcrumbItemProps> {
+  GIO_BREADCRUMB_ITEM: boolean;
+}
+
+const BreadcrumbItem: BreadcrumbItemInterface = (props: BreadcrumbItemProps) => {
+  const { children, separator, ...restProps } = props;
+  const link =
+    'href' in restProps ? (
+      <a className="gio-breadcrumb-item-link-target" {...restProps}>
+        {children}
+      </a>
+    ) : (
+      <span className="gio-breadcrumb-item-link-target" {...restProps}>
+        {children}
+      </span>
+    );
 
   if (children) {
     return (
-      <span className={classnames('gio-breadcrumb-item', !isLastItem && 'gio-breadcrumb-item-link')}>
+      <span className={classnames('gio-breadcrumb-item', 'gio-breadcrumb-item-link')}>
         {link}
-        {!isLastItem && <BreadcrumbSeparator separator={separator} />}
+        {separator && separator !== '' && <BreadcrumbSeparator separator={separator} />}
       </span>
     );
   }
   return null;
 };
+
+BreadcrumbItem.GIO_BREADCRUMB_ITEM = true;
 
 export default BreadcrumbItem;
