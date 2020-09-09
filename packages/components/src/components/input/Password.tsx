@@ -1,34 +1,10 @@
 import * as React from 'react';
-import BaseInput, { prefixCls } from './BaseInput';
-import Button from '../button';
-import { View, Unview } from '@gio-design/icons';
-import { InputProps } from './types';
+import { ViewOutlined, UnviewOutlined } from '@gio-design/icons';
+import Input, { prefixCls } from './Input';
+import { InputProps } from './interfaces';
 
-const Password: React.FC<InputProps> = ({
-  value,
-  onChange,
-  onPressEnter,
-  disabled = false,
-  maxLength,
-  placeholder = '',
-  inputStyle,
-
-  showOpt,
-  errorMsg = '',
-  label = '',
-  wrapStyle,
-
-  ...restInputProps
-}) => {
+const Password: React.FC<InputProps> = (props) => {
   const [visible, setVisible] = React.useState(false);
-
-  const contentClass = React.useMemo(() => `${prefixCls}-content${errorMsg ? '-error' : ''}`, [errorMsg]);
-
-  const handleOnPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.keyCode === 13 && onPressEnter) {
-      onPressEnter(e);
-    }
-  };
 
   const toggleVisible = () => {
     if (visible) {
@@ -38,27 +14,14 @@ const Password: React.FC<InputProps> = ({
     }
   };
 
-  return (
-    <BaseInput showOpt={showOpt} errorMsg={errorMsg} label={label} wrapStyle={wrapStyle}>
-      <span className={`${prefixCls}-opt`}>
-        <input
-          type={visible ? 'text' : 'password'}
-          value={value}
-          onChange={onChange}
-          onKeyDown={handleOnPressEnter}
-          disabled={disabled}
-          maxLength={maxLength}
-          placeholder={placeholder}
-          style={inputStyle}
-          className={contentClass}
-          {...restInputProps}
-        />
-        <span className={`${prefixCls}-opt-view`}>
-          <Button type="text" disabled={disabled} icon={visible ? <View /> : <Unview />} onClick={toggleVisible} />
-        </span>
-      </span>
-    </BaseInput>
-  );
+  const renderSuffix = () =>
+    visible ? (
+      <ViewOutlined className={`${prefixCls}-container-suffix-icon`} onClick={toggleVisible} />
+    ) : (
+      <UnviewOutlined className={`${prefixCls}-container-suffix-icon`} onClick={toggleVisible} />
+    );
+
+  return <Input {...props} type={visible ? 'text' : 'password'} suffix={renderSuffix()} />;
 };
 
 export default Password;

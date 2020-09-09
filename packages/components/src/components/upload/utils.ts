@@ -1,5 +1,5 @@
-import { IRcFile, IUploadFile, STATUS_NOT_YET } from './interface';
 import moment from 'moment';
+import { IRcFile, IUploadFile, STATUS_NOT_YET } from './interface';
 
 export const getUid = () => `gio-upload-${moment().valueOf()}`;
 

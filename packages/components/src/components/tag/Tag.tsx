@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { TagProps } from './interface';
-import { ConfigContext } from '../config-provider';
 import { Close } from '@gio-design/icons';
 import classnames from 'classnames';
+import { TagProps } from './interface';
+import { ConfigContext } from '../config-provider';
 
 export const isToggleClose = (closable = false, persistCloseIcon = false) => closable && !persistCloseIcon;
 
@@ -35,7 +35,7 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props) 
         classnames({ [`${prefix}-closable`]: closable }),
         classnames({ [`${prefix}-closable-toggle`]: isToggleClose(closable, persistCloseIcon) }),
         classnames({ [`${prefix}-closable-disabled`]: disabled }),
-        className
+        className,
       )}
       {...restProps}
     >

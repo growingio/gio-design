@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { ProgressProps, ProgressStatus } from './interface';
 import { CheckCircleFilled, CloseCircleFilled } from '@gio-design/icons';
+import { ProgressProps, ProgressStatus } from './interface';
 import { ConfigContext } from '../config-provider';
 
-const defaultFormat = (percent?: number) => Math.round((percent || 0) * 100) / 100 + '%';
+const defaultFormat = (percent?: number) => `${Math.round((percent || 0) * 100) / 100}%`;
 const statusIcons = [null, CheckCircleFilled, CloseCircleFilled];
 
 const getStatusIcon = (status: string, prefix: string) => {
@@ -12,7 +12,9 @@ const getStatusIcon = (status: string, prefix: string) => {
 };
 
 const Progress: React.FC<ProgressProps> = (props) => {
-  const { percent, status = 'active', format = defaultFormat, customizePrefixCls } = props;
+  const {
+    percent, status = 'active', format = defaultFormat, customizePrefixCls,
+  } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('progress', customizePrefixCls);
 

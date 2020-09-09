@@ -1,27 +1,26 @@
-@import '~@gio-design/tokens/dist/variables.less';
-@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/index.less';
 .gio-toggles {
   position: relative;
   display: inline-block;
   width: 40px;
   height: 20px;
-  border-radius: 10px;
-  border: @color-border-toggles-normal-default;
   background-color: @color-background-toggles-off-normal;
+  border: @color-border-toggles-normal-default;
+  border-radius: 10px;
+  box-shadow: @shadow-toggles-normal-unchecked-rectangle;
   cursor: pointer;
   transition: all ease 0.4s;
-  box-shadow: @shadow-toggles-normal-unchecked-rectangle;
 
   .gio-toggles-handle {
     position: absolute;
+    left: 0;
     width: 14px;
     height: 14px;
     margin: 2px;
     background-color: @color-background-toggles-knob-off-normal;
-    left: 0px;
-    transition: all ease 0.4s;
     border-radius: @radius-border-pill;
     box-shadow: @shadow-toggles-normal-unchecked-knob;
+    transition: all ease 0.4s;
   }
 }
 
@@ -43,7 +42,7 @@
   margin-left: 8px;
   color: @color-text-toggles-normal;
   font-size: @size-font-14;
-  font-family: @font-family;
+  font-family: @font-family-primary;
   line-height: 20px;
   vertical-align: top;
   user-select: none;
@@ -51,9 +50,9 @@
 
 .gio-toggles-disabled {
   .gio-toggles {
-    cursor: not-allowed;
-    border: @color-border-toggles-disable-default;
     background-color: @color-background-toggles-off-disable;
+    border: @color-border-toggles-disable-default;
+    cursor: not-allowed;
 
     .gio-toggles-handle {
       background-color: @color-background-toggles-knob-off-disable;

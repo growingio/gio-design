@@ -10,6 +10,7 @@ const columns = [
     dataIndex: 'a',
     key: 'a',
     width: 200,
+    sorter: (a, b) => a.a - b.a,
   },
   {
     title: 'B',
@@ -31,4 +32,14 @@ const columns = [
   },
 ];
 
-export default () => <Table dataSource={dataSource} columns={columns} />;
+export default () => (
+  <Table
+    dataSource={dataSource}
+    columns={columns}
+    onChange={(p, s, f) => {
+      console.log(p, s, f);
+    }}
+    showIndex
+    rowSelection={{}}
+  />
+);

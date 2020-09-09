@@ -1,8 +1,17 @@
 import * as React from 'react';
+import Wrapper from './Wrapper';
+import { IconProps } from './interface';
 
-function SvgRightOutlined(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 14 14" width="1em" height="1em" {...props}>
+function SvgRightOutlined(wrapperProps: IconProps) {
+  const { rotating, color, size, ...restProps } = wrapperProps;
+  const props = {
+    color,
+    className: rotating ? 'gio-icon-svg gio-icon-rotating' : 'gio-icon-svg',
+    width: !size ? '1rem' : size,
+    height: !size ? '1rem' : size,
+  };
+  const file = (
+    <svg viewBox="0 0 14 14" fill="currentColor" {...props}>
       <defs>
         <style />
       </defs>
@@ -18,7 +27,7 @@ function SvgRightOutlined(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
+  return <Wrapper {...restProps} icon={file} />;
 }
 
-const MemoSvgRightOutlined = React.memo(SvgRightOutlined);
-export default MemoSvgRightOutlined;
+export default SvgRightOutlined;

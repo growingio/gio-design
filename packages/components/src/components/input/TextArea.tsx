@@ -1,37 +1,37 @@
 import * as React from 'react';
-import BaseInput, { prefixCls } from './BaseInput';
-import { TextAreaProps } from './types';
+import classNames from 'classnames';
+import useEnter from './hooks/useEnter';
+import { prefixCls } from './Input';
+import { TextAreaProps } from './interfaces';
 
 const TextArea: React.FC<TextAreaProps> = ({
   value,
   onChange,
   disabled = false,
-  maxLength,
+  resize = false,
   placeholder = '',
   inputStyle,
-
-  showOpt,
-  errorMsg = '',
-  label = '',
   wrapStyle,
-
-  ...restInputProps
+  ...rest
 }) => {
-  const contentClass = React.useMemo(() => `${prefixCls}-content${errorMsg ? '-error' : ''}`, [errorMsg]);
+  const { realTimeValue, handleOnChange } = useEnter(value, onChange);
+
+  const inputClass = classNames(`${prefixCls}-content`, `${prefixCls}-textarea`, {
+    [`${prefixCls}-textarea-noresize`]: !resize,
+  });
 
   return (
-    <BaseInput showOpt={showOpt} errorMsg={errorMsg} label={label} wrapStyle={wrapStyle}>
+    <div className={prefixCls} style={wrapStyle}>
       <textarea
-        value={value}
-        onChange={onChange}
+        className={inputClass}
+        value={realTimeValue}
+        onChange={handleOnChange}
         disabled={disabled}
-        maxLength={maxLength}
         placeholder={placeholder}
         style={inputStyle}
-        className={contentClass}
-        {...restInputProps}
+        {...rest}
       />
-    </BaseInput>
+    </div>
   );
 };
 

@@ -1,20 +1,24 @@
-import React, { useMemo, useState, useCallback } from 'react';
-import { ColumnsType, RowSelection } from '../interface';
+import React, { useMemo, useCallback } from 'react';
+import {
+  get, intersection, isUndefined, difference, union,
+} from 'lodash';
+import { ColumnsType, RowSelection, ColumnType } from '../interface';
 import Checkbox from '../../checkbox';
-import { get, isEqual, intersection, isUndefined, difference, union } from 'lodash';
+import useControlledState from '../../../utils/hooks/useControlledState';
 
-const useSelection = <RecordType,>(
-  columns: ColumnsType<RecordType>,
+const useSelection = <RecordType, >(
   data: RecordType[],
-  rowSelection: RowSelection<RecordType> | undefined
-): [ColumnsType<RecordType>] => {
-  const { onChange } = rowSelection || {};
-  const [localSelectedRowKeys, setLocalSelectedRowKeys] = useState<string[]>([]);
+  rowSelection: RowSelection<RecordType> | undefined,
+): [(columns: ColumnsType<RecordType>) => ColumnsType<RecordType>] => {
+  const {
+    onChange, selectedRowKeys, columnWidth = 50, fixed,
+  } = rowSelection || {};
+  const [localSelectedRowKeys, setLocalSelectedRowKeys] = useControlledState<string[]>(selectedRowKeys, []);
   const currentPageRowKeys = useMemo(() => data.map((item) => get(item, 'key')), [data]);
-  const allChecked = useMemo(() => isEqual(localSelectedRowKeys, currentPageRowKeys), [
-    currentPageRowKeys,
-    localSelectedRowKeys,
-  ]);
+  const allChecked = useMemo(
+    () => intersection(localSelectedRowKeys, currentPageRowKeys).length === currentPageRowKeys.length,
+    [currentPageRowKeys, localSelectedRowKeys],
+  );
   const atLeastOneChecked = useMemo(() => intersection(currentPageRowKeys, localSelectedRowKeys).length > 0, [
     currentPageRowKeys,
     localSelectedRowKeys,
@@ -22,23 +26,27 @@ const useSelection = <RecordType,>(
   const partChecked = useMemo(() => !allChecked && atLeastOneChecked, [allChecked, atLeastOneChecked]);
   const getSelectRows = useCallback(
     (_selectedRowKeys) => data.filter((item) => _selectedRowKeys.includes(get(item, 'key'))),
-    [data]
+    [data],
   );
 
-  const selectionColumn = {
+  const selectionColumn: ColumnType<RecordType> = {
     title: (
       <Checkbox
         checked={atLeastOneChecked}
         indeterminate={partChecked}
         onChange={(e) => {
-          const latestLocalSelectedRowKeys = e.target.checked ? currentPageRowKeys : [];
+          const latestLocalSelectedRowKeys = e.target.checked
+            ? union(localSelectedRowKeys, currentPageRowKeys)
+            : difference(localSelectedRowKeys, currentPageRowKeys);
           setLocalSelectedRowKeys(latestLocalSelectedRowKeys);
           onChange?.(latestLocalSelectedRowKeys, getSelectRows(latestLocalSelectedRowKeys));
         }}
       />
     ),
+    fixed,
     key: 'selection',
-    width: 48,
+    align: 'center',
+    width: columnWidth,
     render: (value: string) => {
       const key = get(value, 'key');
       return (
@@ -56,11 +64,12 @@ const useSelection = <RecordType,>(
     },
   };
 
-  const transitionColumn = useMemo(() => [selectionColumn, ...columns], [columns, selectionColumn]);
-  if (isUndefined(rowSelection)) {
-    return [columns];
-  }
-  return [transitionColumn];
+  const transformSelectionPipeline = useCallback(
+    (columns: ColumnsType<RecordType>) => (!isUndefined(rowSelection) ? [selectionColumn, ...columns] : columns),
+    [selectionColumn, rowSelection],
+  );
+
+  return [transformSelectionPipeline];
 };
 
 export default useSelection;

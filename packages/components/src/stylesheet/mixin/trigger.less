@@ -1,5 +1,4 @@
 .trigger-placement(@prefix-cls, @backgroundColor, @arrow-width: 12px, @distance: 6px, @arrow-offset: 14px) {
-  
   &-placement-top,
   &-placement-topLeft,
   &-placement-topRight {
@@ -61,7 +60,7 @@
 
   &-placement-topLeft &-arrow,
   &-placement-bottomLeft &-arrow {
-    left: @arrow-offset; 
+    left: @arrow-offset;
   }
 
   &-placement-topRight &-arrow,
@@ -80,22 +79,23 @@
   }
 }
 
-.trigger-transition(@prefix-cls, @duration){
+.trigger-transition(@prefix-cls, @duration) {
   .@{prefix-cls}.spread-transition {
-    &-enter, &-appear {
-      animation-duration: @duration;
-      animation-fill-mode: both;
-      animation-play-state: paused;
+    &-enter,
+    &-appear {
       opacity: 0;
-      &&-active{
+      animation-duration: @duration;
+      animation-play-state: paused;
+      animation-fill-mode: both;
+      &&-active {
         &.@{prefix-cls}-placement-top,
         &.@{prefix-cls}-placement-topLeft,
-        &.@{prefix-cls}-placement-topRight{
+        &.@{prefix-cls}-placement-topRight {
           animation-name: spreadTransitionTopIn;
         }
         &.@{prefix-cls}-placement-right,
         &.@{prefix-cls}-placement-rightTop,
-        &.@{prefix-cls}-placement-rightBottom{
+        &.@{prefix-cls}-placement-rightBottom {
           animation-name: spreadTransitionRightIn;
         }
         &.@{prefix-cls}-placement-bottom,
@@ -103,7 +103,6 @@
         &.@{prefix-cls}-placement-bottomRight {
           animation-name: spreadTransitionBottomIn;
         }
-      
         &.@{prefix-cls}-placement-left,
         &.@{prefix-cls}-placement-leftTop,
         &.@{prefix-cls}-placement-leftBottom {
@@ -112,19 +111,19 @@
         animation-play-state: running;
       }
     }
-    &-leave{
+    &-leave {
       animation-duration: @duration;
-      animation-fill-mode: both;
       animation-play-state: paused;
-      &&-active{
+      animation-fill-mode: both;
+      &&-active {
         &.@{prefix-cls}-placement-top,
         &.@{prefix-cls}-placement-topLeft,
-        &.@{prefix-cls}-placement-topRight{
+        &.@{prefix-cls}-placement-topRight {
           animation-name: spreadTransitionTopOut;
         }
         &.@{prefix-cls}-placement-right,
         &.@{prefix-cls}-placement-rightTop,
-        &.@{prefix-cls}-placement-rightBottom{
+        &.@{prefix-cls}-placement-rightBottom {
           animation-name: spreadTransitionRightOut;
         }
         &.@{prefix-cls}-placement-bottom,
@@ -144,90 +143,89 @@
   }
 }
 
-
 @keyframes spreadTransitionTopIn {
   0% {
-    opacity: 0;
     transform: translateY(-10px);
+    opacity: 0;
   }
   100% {
+    transform: translateY(0);
     opacity: 1;
-    transform: translateY(0px);
   }
 }
 
 @keyframes spreadTransitionTopOut {
   0% {
+    transform: translateY(0);
     opacity: 1;
-    transform: translateY(0px);
   }
   100% {
-    opacity: 0;
     transform: translateY(-10px);
+    opacity: 0;
   }
 }
 
 @keyframes spreadTransitionBottomIn {
   0% {
-    opacity: 0;
     transform: translateY(10px);
+    opacity: 0;
   }
   100% {
+    transform: translateY(0);
     opacity: 1;
-    transform: translateY(0px);
   }
 }
 
 @keyframes spreadTransitionBottomOut {
   0% {
+    transform: translateY(0);
     opacity: 1;
-    transform: translateY(0px);
   }
   100% {
-    opacity: 0;
     transform: translateY(10px);
+    opacity: 0;
   }
 }
 @keyframes spreadTransitionLeftIn {
   0% {
-    opacity: 0;
     transform: translateX(-10px);
+    opacity: 0;
   }
   100% {
+    transform: translateX(0);
     opacity: 1;
-    transform: translateX(0px);
   }
 }
 
 @keyframes spreadTransitionLeftOut {
   0% {
+    transform: translateX(0);
     opacity: 1;
-    transform: translateX(0px);
   }
   100% {
-    opacity: 0;
     transform: translateX(-10px);
+    opacity: 0;
   }
 }
 
 @keyframes spreadTransitionRightIn {
   0% {
-    opacity: 0;
     transform: translateX(10px);
+    opacity: 0;
   }
   100% {
+    transform: translateX(0);
     opacity: 1;
-    transform: translateX(0px);
   }
 }
 
 @keyframes spreadTransitionRightOut {
   0% {
+    transform: translateX(0);
     opacity: 1;
-    transform: translateX(0px);
   }
   100% {
-    opacity: 0;
     transform: translateX(10px);
+    opacity: 0;
   }
 }

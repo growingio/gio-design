@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/icons",
-  "version": "20.8.3",
+  "version": "20.9.0",
   "description": "GrowingIO Design semantic vector icons",
   "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
   "homepage": "https://growingio.design/resources/icons",
@@ -18,7 +18,7 @@
     "url": "git+https://github.com/growingio/gio-design.git"
   },
   "scripts": {
-    "generate": "npx @svgr/cli --out-dir src svgs",
+    "generate": "npx @svgr/cli --template templates/svgTemplate.ts --out-dir src svgs",
     "build": "gio-rewire lib compile",
     "watch": "gio-rewire lib compile --watch",
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -29,5 +29,8 @@
   "devDependencies": {
     "@svgr/cli": "^5.4.0",
     "gio-rewire": "^1.0.4"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import Table from '../index';
 import { mount, render } from 'enzyme';
+import Table from '../index';
 
 const dataSource = [
   {

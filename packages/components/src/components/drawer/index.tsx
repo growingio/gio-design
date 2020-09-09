@@ -163,7 +163,9 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   };
 
   private getOffsetStyle() {
-    const { placement, width, height, visible, mask } = this.props;
+    const {
+      placement, width, height, visible, mask,
+    } = this.props;
     if (!visible && !mask) {
       return {};
     }
@@ -177,7 +179,9 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   }
 
   private getRcDrawerStyle = () => {
-    const { zIndex, placement, mask, style } = this.props;
+    const {
+      zIndex, placement, mask, style,
+    } = this.props;
     const { push } = this.state;
     // 当无 mask 时，将 width 应用到外层容器上
     const offsetStyle = mask ? {} : this.getOffsetStyle();
@@ -190,7 +194,9 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   };
 
   private renderHeader() {
-    const { title, prefixCls, closable, headerStyle } = this.props;
+    const {
+      title, prefixCls, closable, headerStyle,
+    } = this.props;
     if (!title && !closable) {
       return null;
     }
@@ -219,7 +225,9 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   }
 
   private renderCloseIcon() {
-    const { closable, closeIcon = <Close />, prefixCls, onClose } = this.props;
+    const {
+      closable, closeIcon = <Close />, prefixCls, onClose,
+    } = this.props;
     return (
       closable && (
         // eslint-disable-next-line react/button-has-type
@@ -241,7 +249,9 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
 
   // render drawer body dom
   private renderBody = () => {
-    const { bodyStyle, drawerStyle, prefixCls, visible } = this.props;
+    const {
+      bodyStyle, drawerStyle, prefixCls, visible,
+    } = this.props;
     if (this.destroyClose && !visible) {
       return null;
     }
@@ -282,7 +292,9 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     return (
       <ConfigConsumer>
         {({ getPopupContainer, getPrefixCls }) => {
-          const { prefixCls: customizePrefixCls, placement, className, mask, direction, visible, ...rest } = this.props;
+          const {
+            prefixCls: customizePrefixCls, placement, className, mask, direction, visible, ...rest
+          } = this.props;
 
           const prefixCls = getPrefixCls('select', customizePrefixCls);
           const drawerClassName = classNames(className, {

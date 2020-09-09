@@ -6,7 +6,7 @@ import { GioTreeNodeProps } from './Tree';
 export default function renderSwitcherIcon(
   prefixCls: string,
   switcherIcon: React.ReactNode | null | undefined,
-  { isLeaf }: GioTreeNodeProps
+  { isLeaf }: GioTreeNodeProps,
 ) {
   if (isLeaf) {
     return null;

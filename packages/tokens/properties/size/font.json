@@ -20,22 +20,22 @@
         "value": "1.25rem"
       },
       "24": {
-        "value": "2rem"
+        "value": "1.5rem"
       },
       "28": {
-        "value": "2.5rem"
+        "value": "1.75rem"
       },
       "30": {
-        "value": "2.75rem"
+        "value": "1.875rem"
       },
       "32": {
-        "value": "3rem"
+        "value": "2rem"
       },
       "38": {
-        "value": "3.75rem"
+        "value": "2.375rem"
       },
       "42": {
-        "value": "4.25rem"
+        "value": "2.625rem"
       }
     }
   }

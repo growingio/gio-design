@@ -1,7 +1,9 @@
 {
   "font": {
     "family": {
-      "value": "PingFang SC",
+      "primary": {
+        "value": "PingFang SC"
+      },
       "din": {
         "value": "DIN Alternate"
       }

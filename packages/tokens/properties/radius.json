@@ -15,12 +15,6 @@
       },
       "pill": {
         "value": "50%"
-      },
-      "button": {
-        "value": "{radius.border.small.value}"
-      },
-      "tree": {
-        "value": "{radius.border.small.value}"
       }
     }
   }

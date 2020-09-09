@@ -1,6 +1,6 @@
 import React from 'react';
-import TabNav from '../index';
 import { mount, render, shallow } from 'enzyme';
+import TabNav from '../index';
 
 describe('Testing TabNav', () => {
   const getTabNav = () => (
@@ -49,7 +49,7 @@ describe('Testing TabNav', () => {
         <TabNav.Item>222</TabNav.Item>
         <TabNav.Item>333</TabNav.Item>
         <TabNav.Item disabled>444</TabNav.Item>
-      </TabNav>
+      </TabNav>,
     );
     expect(wrapper.find('.gio-tabnav').childAt(1).exists('.gio-tabnav-item-active')).toBe(true);
   });

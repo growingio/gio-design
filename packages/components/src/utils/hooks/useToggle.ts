@@ -10,7 +10,7 @@ export interface Actions<T = IState> {
 
 function useToggle<D extends IState = IState, R extends IState = IState>(
   defaultValue: D = false as D,
-  reverseValue?: R
+  reverseValue?: R,
 ) {
   const [state, setState] = useState<D | R>(defaultValue);
   const resetValue = useMemo(() => (reverseValue === undefined ? !defaultValue : reverseValue) as D | R, [

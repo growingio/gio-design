@@ -220,6 +220,9 @@
       "popconfirm": {
         "value": "{palette.white.value}"
       },
+      "dropdown": {
+        "value": "{palette.white.value}"
+      },
       "alert": {
         "information": {
           "value": "{palette.gray.1.value}"
@@ -255,20 +258,11 @@
         "normal": {
           "value": "{palette.white.value}"
         },
-        "hover": {
-          "value": "{palette.white.value}"
-        },
-        "active": {
+        "checked": {
           "value": "{palette.blue.5.value}"
         },
-        "partCheck": {
-          "value": "{palette.blue.5.value}"
-        },
-        "disable": {
-          "value": "{palette.gray.3.value}"
-        },
-        "checkedDisable": {
-          "value": "{palette.gray.3.value}"
+        "disabled": {
+          "value": "{palette.gray.1.value}"
         }
       },
       "menu": {

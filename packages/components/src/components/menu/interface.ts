@@ -1,4 +1,6 @@
-import { MenuProps, MenuItemProps, SubMenuProps, MenuItemGroupProps } from 'rc-menu';
+import {
+  MenuProps, MenuItemProps, SubMenuProps, MenuItemGroupProps,
+} from 'rc-menu';
 /**
  * 当前 gio-design 中设计的 menu 不需要用到所有 rc-menu 的能力，因此只使用 rc-menu 的部分接口
  * 未来视设计及规划情况开放或增加

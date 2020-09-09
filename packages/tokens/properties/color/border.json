@@ -76,16 +76,10 @@
         "hover": {
           "value": "{palette.blue.5.value}"
         },
-        "active": {
+        "checked": {
           "value": "{palette.blue.5.value}"
         },
-        "partCheck": {
-          "value": "{palette.blue.5.value}"
-        },
-        "disable": {
-          "value": "{palette.gray.4.value}"
-        },
-        "checkedDisable": {
+        "disabled": {
           "value": "{palette.gray.4.value}"
         }
       },

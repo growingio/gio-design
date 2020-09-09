@@ -25,7 +25,12 @@ describe('Testing Upload', () => {
   it('return promise in beforeUpload', async (done) => {
     const props = {
       action: '/upload',
-      beforeUpload: () => new Promise((resolve) => setTimeout(() => resolve('success'), 100)),
+      beforeUpload: () =>
+        new Promise((resolve) =>
+          setTimeout(() => {
+            resolve('success');
+          }, 100)
+        ),
       onSuccess: (res, file) => {
         if (file.status !== 'uploading') {
           done();

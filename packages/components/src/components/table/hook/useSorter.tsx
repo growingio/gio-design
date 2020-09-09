@@ -1,16 +1,10 @@
 import React, { useMemo, useCallback } from 'react';
-import { ColumnsType, ColumnGroupType, ColumnType, SortOrder } from '../interface';
 import { get, isUndefined, clone } from 'lodash';
+import {
+  ColumnsType, ColumnGroupType, ColumnType, SortOrder, SortState,
+} from '../interface';
 
-export interface SortState<RecordType> {
-  column: ColumnType<RecordType>;
-  key: string;
-  sortPriorityOrder: number | undefined;
-  sortDirections: SortOrder[];
-  sortOrder: SortOrder;
-}
-
-const collectSortStates = <RecordType,>(columns: ColumnsType<RecordType> = []): SortState<RecordType>[] => {
+const collectSortStates = <RecordType, >(columns: ColumnsType<RecordType> = []): SortState<RecordType>[] => {
   const sortStates: SortState<RecordType>[] = [];
 
   const pushState = (column: ColumnType<RecordType>, sortOrder: SortOrder) => {
@@ -34,13 +28,13 @@ const collectSortStates = <RecordType,>(columns: ColumnsType<RecordType> = []): 
   return sortStates;
 };
 
-const useSorter = <RecordType,>(
+const useSorter = <RecordType, >(
   columns: ColumnsType<RecordType>,
-  data: RecordType[]
+  data: RecordType[],
 ): [SortState<RecordType>[], (sortState: SortState<RecordType>) => void, RecordType[]] => {
   // record all sorter states
   const [sortStates, setSortStates] = React.useState<SortState<RecordType>[]>(
-    useMemo(() => collectSortStates(columns), [columns])
+    useMemo(() => collectSortStates(columns), [columns]),
   );
 
   // update sorter states action
@@ -61,10 +55,10 @@ const useSorter = <RecordType,>(
             _sortState.sortOrder = sortState.sortOrder;
           }
           return _sortState;
-        })
+        }),
       );
     },
-    [sortStates]
+    [sortStates],
   );
 
   // filter active sorter states
@@ -73,7 +67,7 @@ const useSorter = <RecordType,>(
   ]);
 
   // sortted data
-  const sorttedData: RecordType[] = useMemo(() => {
+  const sortedData: RecordType[] = useMemo(() => {
     const cloneSortStates = clone(activeSortStates).sort((a, b) => b.sortPriorityOrder! - a.sortPriorityOrder!);
 
     const cloneData = clone(data);
@@ -99,7 +93,7 @@ const useSorter = <RecordType,>(
     });
   }, [columns, activeSortStates, data]);
 
-  return [sortStates, updateSorterStates, sorttedData];
+  return [sortStates, updateSorterStates, sortedData];
 };
 
 export default useSorter;

@@ -1,19 +1,18 @@
-@import '~@gio-design/tokens/dist/variables.less';
-@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/index.less';
 
 @import './mixin';
 
 @btn-prefix-cls: ~'@{component-prefix}-btn';
-@iconfont-css-prefix: gioicon;
+@iconfont-css-prefix: gio-icon;
 // for compatible
-@btn-assist-color: @text-color-base;
-@btn-assist-bg: none;
-@btn-assist-border: none;
+// @btn-assist-color: @text-color-base;
+// @btn-assist-bg: none;
+// @btn-assist-border: none;
 
 // Button styles
 // -----------------------------
 .@{btn-prefix-cls} {
-  line-height: @line-height-base;
+  line-height: 1.5715;
 
   .btn;
   .btn-primary;
@@ -73,10 +72,6 @@
   & > &-loading-icon {
     height: 16px;
     margin-right: @margin-xs;
-    svg {
-      -webkit-animation: loadingcircle 1s infinite linear;
-      animation: loadingCircle 1s infinite linear;
-    }
     &:only-child {
       margin-right: 0;
     }
@@ -85,19 +80,21 @@
   &-icon-only {
     .btn-square(@btn-prefix-cls);
     padding: 7px !important;
-    svg {
-      vertical-align: baseline !important;
+    .@{iconfont-css-prefix} {
+      line-height: 0;
+      vertical-align: unset;
+      svg {
+        vertical-align: bottom !important;
+      }
+    }
+    &.gio-btn-assist {
+      padding: 8px !important;
     }
   }
 
   &:focus > span,
   &:active > span {
     position: relative;
-  }
-
-  > svg + span,
-  > span + svg {
-    margin-left: @margin-xs;
   }
 
   > .@{iconfont-css-prefix} + span,

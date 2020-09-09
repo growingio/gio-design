@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
-import { File, FileCsv, FileDoc, FilePdf, FileXlsx, CheckCircleFilled } from '@gio-design/icons';
+import {
+  File, FileCsv, FileDoc, FilePdf, FileXlsx, CheckCircleFilled,
+} from '@gio-design/icons';
 import { UploadPrefixClsContext } from './UploadContext';
 import { IPreviewProps, IUploadFile } from './interface';
 
@@ -46,7 +48,9 @@ export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file }) => {
       {getFileLogo(file)}
       <div className={fileNameCls}>{file?.name}</div>
       <div>
-        <CheckCircleFilled color="#008a56" style={iconStyle} /> 上传成功！
+        <CheckCircleFilled color="#008a56" style={iconStyle} />
+        {' '}
+        上传成功！
       </div>
     </div>
   );
