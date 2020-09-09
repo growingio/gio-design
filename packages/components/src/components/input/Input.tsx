@@ -17,8 +17,9 @@ const Input: React.FC<InputProps> = ({
   size = 'medium',
   suffix,
   wrapStyle,
+  forwardRef,
   ...rest
-}) => {
+}: InputProps) => {
   const { realTimeValue, handleOnChange } = useEnter(value, onChange);
 
   const wrapClass = classNames(prefixCls, {
@@ -61,6 +62,7 @@ const Input: React.FC<InputProps> = ({
         readOnly={readOnly}
         placeholder={placeholder}
         style={inputStyle}
+        ref={forwardRef}
         {...rest}
       />
       {renderSuffix()}

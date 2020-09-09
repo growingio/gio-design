@@ -12,8 +12,9 @@ const TextArea: React.FC<TextAreaProps> = ({
   placeholder = '',
   inputStyle,
   wrapStyle,
+  forwardRef,
   ...rest
-}) => {
+}: TextAreaProps) => {
   const { realTimeValue, handleOnChange } = useEnter(value, onChange);
 
   const inputClass = classNames(`${prefixCls}-content`, `${prefixCls}-textarea`, {
@@ -29,6 +30,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         disabled={disabled}
         placeholder={placeholder}
         style={inputStyle}
+        ref={forwardRef}
         {...rest}
       />
     </div>
