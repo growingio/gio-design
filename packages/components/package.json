@@ -30,6 +30,7 @@
     "classnames": "^2.2.6",
     "lodash": "^4.17.14",
     "rc-animate": "^3.1.0",
+    "rc-calendar": "9.1.2",
     "rc-checkbox": "^2.2.0",
     "rc-dialog": "^8.1.0",
     "rc-drawer": "^4.1.0",

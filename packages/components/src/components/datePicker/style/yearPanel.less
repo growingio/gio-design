@@ -1,0 +1,143 @@
+@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/mixin/index.less';
+@import '~@gio-design/tokens/dist/variables.less';
+
+@date-picker-prefix-cls: ~'@{component-prefix}-date-picker';
+
+.@{date-picker-prefix-cls}-year-panel {
+  left: 0;
+  top: 32px;
+  bottom: 0;
+  right: 0;
+  background: @palette-white;
+  z-index: 10;
+  height: 216px;
+  position: absolute;
+  outline: none;
+
+  > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.@{date-picker-prefix-cls}-year-panel-hidden {
+  display: none;
+}
+
+.@{date-picker-prefix-cls}-year-panel-header {
+  height: 34px;
+  line-height: 34px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  border: 1px solid @color-background-date-picker-hover;
+
+  > a {
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.@{date-picker-prefix-cls}-year-panel-prev-decade-btn, .@{date-picker-prefix-cls}-year-panel-next-decade-btn {
+  position: absolute;
+  top: 0;
+}
+
+.@{date-picker-prefix-cls}-year-panel-next-decade-btn {
+  &:after {
+    content: '»'
+  }
+}
+
+.@{date-picker-prefix-cls}-year-panel-prev-decade-btn {
+  user-select: none;
+  left: 0;
+
+  &:after {
+    content: '«'
+  }
+}
+
+.@{date-picker-prefix-cls}-year-panel .@{date-picker-prefix-cls}-year-panel-decade-select {
+  width: 180px;
+  pointer-events: none;
+  color: @color-text-date-picker-year-normal;
+}
+
+.@{date-picker-prefix-cls}-year-panel-decade-select-arrow {
+  display: none;
+}
+
+.@{date-picker-prefix-cls}-year-panel-next-decade-btn {
+  user-select: none;
+  right: 0;
+}
+
+.@{date-picker-prefix-cls}-year-panel-body {
+  border-left: 1px solid @color-background-date-picker-hover;
+  border-right: 1px solid @color-background-date-picker-hover;
+  flex: 1;
+}
+
+.@{date-picker-prefix-cls}-year-panel-footer {
+  border-top: 1px solid @color-background-date-picker-hover;
+  line-height: 38px;
+}
+
+.@{date-picker-prefix-cls}-year-panel-table {
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+  border-collapse: separate;
+}
+
+.@{date-picker-prefix-cls}-year-panel-cell {
+  text-align: center;
+  color: @color-text-date-picker-normal;
+}
+
+.@{date-picker-prefix-cls}-year-panel-year {
+  display: block;
+  width: 46px;
+  margin: auto;
+  color: @color-text-date-picker-normal;
+  border-radius: 4px 4px;
+  height: 25px;
+  padding: 0;
+  background: transparent;
+  line-height: 25px;
+  text-align: center;
+
+  &:hover {
+    background: @color-background-date-picker-hover;
+    color: @color-text-date-picker-normal;
+    cursor: pointer;
+  }
+}
+
+.@{date-picker-prefix-cls}-year-panel-selected-cell .@{date-picker-prefix-cls}-year-panel-year {
+  background: @color-background-date-picker-active;
+  color: @palette-white;
+
+  &:hover {
+    background: @color-background-date-picker-active;
+    color: @palette-white;
+  }
+}
+
+.@{date-picker-prefix-cls}-year-panel-last-decade-cell, .@{date-picker-prefix-cls}-year-panel-next-decade-cell {
+  .@{date-picker-prefix-cls}-year-panel-year{
+    user-select: none;
+    -webkit-user-select: none;
+    color: rgba(0, 0, 0, 0.25);
+  }
+}

@@ -337,23 +337,21 @@
           }
         }
       },
-      "table": {
-        "head": {
+      "datePicker": {
+        "normal": {
           "value": "{palette.gray.1.value}"
-        },
-        "body": {
-          "value": "{palette.white.value}"
         },
         "hover": {
           "value": "{palette.gray.3.value}"
         },
-        "arrow": {
-          "normal": {
-            "value": "{palette.black.4.value}"
-          },
-          "active": {
-            "value": "{palette.blue.5.value}"
-          }
+        "click": {
+          "value": "{palette.gray.2.value}"
+        },
+        "active": {
+          "value": "{palette.blue.5.value}"
+        },
+        "disabled-active": {
+          "value": "{palette.gray.4.value}"
         }
       }
     }
