@@ -158,7 +158,7 @@ const Upload: React.FC<IUploadProps> = ({
           ac = action as string;
         }
 
-        let data: Record<string, unknown>;
+        let data: Record<string, string | Blob>;
         if (typeof restProps.data === 'function') {
           data = restProps.data(uploadFile);
         } else {

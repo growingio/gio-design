@@ -88,7 +88,7 @@ export interface IUploadProps<T = any> {
   // 是否允许上传文件夹
   directory?: boolean;
   // 上传所需额外参数或返回上传额外参数的方法
-  data?: Record<string, unknown> | ((file: IUploadFile<T>) => Record<string, unknown>);
+  data?: Record<string, string | Blob> | ((file: IUploadFile<T>) => Record<string, string | Blob>);
   // 额外的上传请求头部
   headers?: IHttpRequestHeader;
   // 接受上传的文件类型，具体查看https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#accept
@@ -145,7 +145,7 @@ export interface IActionsProps {
 }
 
 export interface IXhrOption {
-  data: Record<string, unknown>;
+  data: Record<string, string | Blob>;
   file: File;
   withCredentials: boolean;
   action: string;
