@@ -29,7 +29,7 @@ export const stepArray2Map = (steps: IStep[]): { stepMap: IStepMap; firstStep: s
 export const clarifyRender = (
   render: TStepModalNodeRender,
   renderProps: IStepModalNodeRenderProps,
-  fallback: unknown = ''
+  fallback: React.ReactNode = ''
 ): React.ReactNode => {
   if (render === undefined || render === null) {
     return fallback;

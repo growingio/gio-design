@@ -41,7 +41,7 @@ export interface IModalProps extends ITitleProps, Omit<IFooterProps, 'useOk' | '
   wrapProps?: Record<string, unknown>;
   zIndex?: number;
   closeIcon?: ReactNode;
-  children?: unknown;
+  children?: ReactNode;
   // 按 ESC 键是否可以关闭 Modal
   keyboard?: boolean;
   // Modal 的尺寸
