@@ -176,6 +176,12 @@ group:
 | **showIndex**    | 设置显示序号                                                                                                       | boolean                                | false                |
 | **emptyText**    | 设置搜索无结果时的样式                                                                                             | React.ReactNode                        | -                    |
 | **onChange**     | 触发分页、排序、过滤时的回调                                                                                       | (pagination, sorter, filters,) => void | -                    |
+| **rowKey**       | 表格行 key 的取值，可以是字符串或一个函数                                                                          | string \| function(record): string     | 数据的 key 字段      |
+| **rowClassName** | 表格行的类名                                                                                                       | function(record, index): string        | -                    |
+| **onRow**        | 设置行属性                                                                                                         | function(record, index)                | -                    |
+| **onHeaderRow**  | 设置头部行属性                                                                                                     | function(column, index)                | -                    |
+| **showHover**    | 是否显示 hover 效果                                                                                                | boolean                                | true                 |
+| **showHeader**   | 是否显示 table head                                                                                                | boolean                                | true                 |
 
 ### Column
 
@@ -184,6 +190,7 @@ group:
 | 参数                  | 说明                                         | 类型                                     | 默认值                  |
 | --------------------- | -------------------------------------------- | ---------------------------------------- | ----------------------- |
 | **key**               | 列唯一标识                                   | string                                   | 列序号                  |
+| **className**         | 列样式类名                                   | string                                   | -                       |
 | **dataIndex**         | 列数据在数据项中对应的路径                   | string                                   | -                       |
 | **fixed**             | 固定列                                       | 'left' \| 'right' \|boolean              | -                       |
 | **align**             | 对齐方式                                     | 'left' \| 'center' \| 'right'            | 'left'                  |
@@ -199,6 +206,7 @@ group:
 | **onFilter**          | 自定义筛选规则                               | (record: RecordType) => boolean          | -                       |
 | **filterDropdown**    | 自定义筛选菜单，可以用来覆盖默认菜单(还未做) | React.ReactNode                          | -                       |
 | **render**            | 每一列的渲染函数                             | function(text, record, index) {}         | -                       |
+| **onHeaderCell**      | 设置头部单元格属性                           | function(column)                         | -                       |
 
 ### RowSelection
 
