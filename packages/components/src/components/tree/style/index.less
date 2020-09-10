@@ -4,9 +4,9 @@
 @tree-prefix-cls: ~'@{component-prefix}-tree';
 @tree-node-prefix-cls: ~'@{tree-prefix-cls}-treenode';
 
-.antTreeFn(@tree-prefix-cls);
+.gioTreeFn(@tree-prefix-cls);
 
-.antTreeFn(@custom-tree-prefix-cls) {
+.gioTreeFn(@custom-tree-prefix-cls) {
   @custom-tree-node-prefix-cls: ~'@{custom-tree-prefix-cls}-treenode';
   .@{custom-tree-prefix-cls} {
     .reset-component;
@@ -96,8 +96,10 @@
       }
 
       &_close {
-        svg.@{custom-tree-prefix-cls}-switcher-icon {
-          transform: rotate(-90deg);
+        .@{custom-tree-prefix-cls}-switcher-icon {
+          svg {
+            transform: rotate(-90deg);
+          }
         }
       }
     }

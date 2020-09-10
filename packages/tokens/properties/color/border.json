@@ -109,6 +109,11 @@
       },
       "table": {
         "value": "{palette.gray.6.value}"
+      },
+      "select": {
+        "focused": {
+          "value": "{palette.blue.5.value}"
+        }
       }
     }
   }
