@@ -19,6 +19,8 @@ const Footer: React.FC<IFooterProps> = ({
   const prefix = useContext(ModalPrefixClsContext);
   const cls = classnames(`${prefix}__footer`);
   const additionCls = classnames(`${prefix}__footer-additional`);
+  const closeBtnCls = classnames(`${prefix}__btn-close`, closeButtonProps?.className ?? '');
+  const okBtnCls = classnames(`${prefix}__btn-ok`, okButtonProps?.className ?? '');
 
   if (footer) {
     return <div className={cls}>{footer}</div>;
@@ -29,12 +31,12 @@ const Footer: React.FC<IFooterProps> = ({
       <div className={additionCls}>{additionalFooter}</div>
       <div>
         {useClose && (
-          <Button type="secondary" {...closeButtonProps} onClick={onClose}>
+          <Button type="secondary" {...closeButtonProps} className={closeBtnCls} onClick={onClose}>
             {closeText ?? '取消'}
           </Button>
         )}
         {useOk && (
-          <Button type="primary" {...okButtonProps} onClick={onOk}>
+          <Button type="primary" {...okButtonProps} className={okBtnCls} onClick={onOk}>
             {okText ?? '确定'}
           </Button>
         )}
