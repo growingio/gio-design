@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import moment, { Moment } from 'moment';
 
-import DatePicker from '@gio-design/components/es/components/datePicker';
-import '@gio-design/components/es/components/datePicker/style/index.css';
+import DatePicker from '@gio-design/components/es/components/date-picker';
+import '@gio-design/components/es/components/date-picker/style/index.css';
 
 const Demo = () => {
   const [time, setTime] = useState(moment(new Date()));

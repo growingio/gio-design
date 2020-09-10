@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import moment, { Moment } from 'moment';
 
-import { DateRangePicker } from '@gio-design/components/es/components/datePicker';
-import '@gio-design/components/es/components/datePicker/style/index.css';
+import { DateRangePicker } from '@gio-design/components/es/components/date-picker';
+import '@gio-design/components/es/components/date-picker/style/index.css';
 
 const Demo = () => {
   const [time, setTime] = useState([moment(new Date()), moment(new Date())]);
@@ -17,7 +17,7 @@ const Demo = () => {
 
   return (
     <div style={{ boxSizing: 'border-box', position: 'relative', display: 'block', lineHeight: 1.5, marginBottom: 22 }}>
-      <DateRangePicker value={time} onChange={onChange} onSelect={onSelect} format={format} showFooter={true} />
+      <DateRangePicker value={time} onChange={onChange} onSelect={onSelect} format={format} showFooter />
     </div>
   );
 };

@@ -1,10 +1,9 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount, render } from 'enzyme';
-import DatePicker from '..';
 import moment from 'moment';
-import Calendar from 'rc-calendar';
 import { noop } from 'lodash';
+import DatePicker from '..';
 
 const format = 'YYYY/MM/DD';
 const VALUE = moment([2015, 5, 1]);
@@ -27,7 +26,7 @@ describe('DatePicker', () => {
       onChange={noop}
       onSelect={noop}
       format={format}
-      showFooter={true}
+      showFooter
       disabledDate={disabledDate}
     />
   );

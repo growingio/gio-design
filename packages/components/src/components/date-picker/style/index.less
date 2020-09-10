@@ -15,7 +15,7 @@
     box-shadow: none;
   }
   span.@{date-picker-prefix-cls}-split {
-    color: rgba(0,0,0,0.2);
+    color: rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -29,18 +29,18 @@
 
 .@{date-picker-prefix-cls} {
   position: relative;
-  width: 256px;
   top: 50px;
+  width: 256px;
   font-size: 12px;
   line-height: 1.5;
   text-align: left;
   list-style: none;
   background-color: @palette-white;
   background-clip: padding-box;
-  border: 1px solid  @color-background-date-picker-hover;
+  border: 1px solid @color-background-date-picker-hover;
   border-radius: 3px;
   outline: none;
-  box-shadow: 0 1px 5px  @color-background-date-picker-hover;
+  box-shadow: 0 1px 5px @color-background-date-picker-hover;
 
   &-date-panel,
   &-panel {
@@ -52,10 +52,9 @@
     margin: 0 15px;
   }
 
-
   .@{date-picker-prefix-cls}-input {
-    height: 48px;
     width: 253px;
+    height: 48px;
     font-size: 14px;
   }
 
@@ -88,8 +87,8 @@
       text-align: center;
 
       &:hover {
-        background-color: @color-background-date-picker-hover;
         color: @color-text-date-picker-normal;
+        background-color: @color-background-date-picker-hover;
         cursor: pointer;
       }
     }
@@ -124,8 +123,8 @@
     line-height: 24px;
 
     &:hover {
-      background-color: @color-background-date-picker-hover;
       color: @color-text-date-picker-normal;
+      background-color: @color-background-date-picker-hover;
       cursor: pointer;
     }
     &.@{date-picker-prefix-cls}-time-status:hover {
@@ -149,8 +148,8 @@
     cursor: pointer;
 
     &:hover {
-      background-color: @color-background-date-picker-hover;
       color: @color-text-date-picker-normal;
+      background-color: @color-background-date-picker-hover;
     }
   }
 
@@ -172,14 +171,14 @@
 
   &-body {
     height: 217px;
-    border: 1px solid  @color-background-date-picker-hover;
     padding: 11px 13px;
+    border: 1px solid @color-background-date-picker-hover;
   }
 
   table {
     width: 100%;
-    height: 100%;
     max-width: 100%;
+    height: 100%;
     border-collapse: collapse;
   }
 
@@ -228,20 +227,20 @@
     border-radius: 4px 4px;
 
     &:hover {
+      color: @color-text-date-picker-normal;
       background: @color-background-date-picker-hover;
       cursor: pointer;
-      color: @color-text-date-picker-normal;
     }
   }
 
   &-selected-day &-date {
-    background: @color-background-date-picker-active;
     color: @color-text-date-picker-active;
+    background: @color-background-date-picker-active;
   }
 
   &-selected-date &-date {
     color: @palette-white;
-    background:@color-background-date-picker-active;
+    background: @color-background-date-picker-active;
     &:hover {
       background: @color-background-date-picker-active;
     }
@@ -256,7 +255,6 @@
     background: @color-text-date-picker-disable;
     border-radius: 0;
     cursor: not-allowed;
-
   }
 
   &-disabled-cell-first-of-row &-date {
@@ -324,8 +322,8 @@
   overflow: hidden;
 
   &-part {
-    width: 224px;
     position: relative;
+    width: 224px;
 
     .@{date-picker-prefix-cls}-time-picker {
       top: 69px;
@@ -341,9 +339,8 @@
     float: left;
     .@{date-picker-prefix-cls}-time-picker-panel {
       &-select:last-child {
-        border-right: 1px solid  @color-background-date-picker-hover;
+        border-right: 1px solid @color-background-date-picker-hover;
       }
-
     }
   }
 
@@ -353,38 +350,36 @@
       left: 21px;
 
       &-select:first-child {
-        border-left: 1px solid  @color-background-date-picker-hover;
+        border-left: 1px solid @color-background-date-picker-hover;
       }
     }
   }
 
   &-middle {
-    display: none;
     position: absolute;
-    margin-left: -10px;
-    text-align: center;
+    display: none;
     height: @input-box-height;
+    margin-left: -10px;
     line-height: @input-box-height;
+    text-align: center;
   }
   .@{date-picker-prefix-cls}-date-panel::after {
-    content:".";
-    display:block;
-    height:0;
-    clear:both;
-    visibility:hidden;
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+    content: '.';
   }
 
   .@{date-picker-prefix-cls}-input-wrap {
     display: none;
     height: @input-box-height;
   }
-  .@{date-picker-prefix-cls}-input,
   .@{date-picker-prefix-cls}-input {
-    width:253px;
+    width: 253px;
     height: 58px;
     font-size: 14px;
   }
-
 
   &.@{date-picker-prefix-cls}-week-number {
     width: 574px;
@@ -430,19 +425,5 @@
 
   &-bottom {
     text-align: right;
-  }
-
-  .@{date-picker-prefix-cls}-footer{
-    padding: 12px 0;
-    margin: 0 15px;
-    &-btn {
-      padding: 10px 12px 10px 0;
-    }
-  }
-  .@{date-picker-prefix-cls}-ok-btn {
-    position: static;
-  }
-  .@{date-picker-prefix-cls}-today-btn {
-    float: left;
   }
 }
