@@ -22,7 +22,7 @@ import AvatarTrigger from './triggers/AvatarTrigger';
 import DragTrigger from './triggers/DragTrigger';
 import { imageFile2DataUrl, fileToObject, getEmptyFileObj, fetchImageFileFromUrl } from './utils';
 import xhrRequest from './xhrRequest';
-import UploadPrefixClsContext from './UploadContext';
+import { UploadPrefixClsContext } from './UploadContext';
 
 const triggerMap: ITriggerMap = {
   button: ButtonTrigger,

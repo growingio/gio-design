@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { Delete, Upload } from '@gio-design/icons';
-import UploadPrefixClsContext from './UploadContext';
+import { UploadPrefixClsContext } from './UploadContext';
 import { IActionsProps, STATUS_SUCCESS } from './interface';
 
 const Actions: React.FC<IActionsProps> = ({

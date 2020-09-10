@@ -1,5 +1,4 @@
 import { createContext } from 'react';
 
-const UploadPrefixClsContext = createContext('gio-upload');
-
-export default UploadPrefixClsContext;
+// eslint-disable-next-line import/prefer-default-export
+export const UploadPrefixClsContext = createContext('gio-upload');

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { File, FileCsv, FileDoc, FilePdf, FileXlsx, CheckCircleFilled } from '@gio-design/icons';
-import UploadPrefixClsContext from './UploadContext';
+import { UploadPrefixClsContext } from './UploadContext';
 import { IPreviewProps, IUploadFile } from './interface';
 
 const getFileLogo = (file: IUploadFile) => {
