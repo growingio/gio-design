@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from 'react';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
-import RcDatePicker from 'rc-calendar/lib/picker';
+import RcDatePicker from 'rc-calendar/lib/Picker';
 import RcRangeCalendar from 'rc-calendar/lib/RangeCalendar';
 import classNames from 'classnames';
 import moment, { Moment } from 'moment';
