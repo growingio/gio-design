@@ -14,10 +14,7 @@ const Demo = () => {
   };
 
   const disabledDate = (value: Moment) => {
-    const date = moment();
-    date.hour(0);
-    date.minute(0);
-    date.second(0);
+    const date = moment(new Date()).add(-1, 'days')
     return value.isBefore(date); // can not select days before today
   };
 
@@ -30,7 +27,7 @@ const Demo = () => {
         onChange={onChange}
         onSelect={onSelect}
         format={format}
-        showFooter={true}
+        showFooter
         disabledDate={disabledDate}
       />
     </div>

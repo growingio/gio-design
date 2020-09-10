@@ -2,18 +2,18 @@ import React, { useContext, useRef, useState } from 'react';
 import RcCalendar from 'rc-calendar';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/picker';
-import Input from '../input';
-import Button from '../button';
 import { debounce } from 'lodash';
 import classNames from 'classnames';
-import { ConfigContext } from '../config-provider';
 import moment, { Moment } from 'moment';
+import Input from '../input';
+import Button from '../button';
+import { ConfigContext } from '../config-provider';
 import { DatePickerProps } from './interface';
 
 moment.locale('zh-cn');
 
 const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
-  const { prefixCls: customizePrefixCls, format = 'YYYY-MM-DD', value, defaultValue, showFooter, disabledDate } = props;
+  const { prefixCls: customizePrefixCls, format = 'YYYY/MM/DD', value, defaultValue, showFooter, disabledDate } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('date-picker', customizePrefixCls);
 
@@ -39,8 +39,8 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
     [`${prefixCls}-no-footer`]: !showFooter,
   });
 
-  const debounceTimeChange = debounce((e: React.ChangeEvent<HTMLInputElement>): void => {
-    const value = moment(e.target.value, props.format);
+  const debounceTimeChange = debounce((e: string): void => {
+    const value = moment(e, props.format);
     if (value.isValid()) {
       setLocalValue(value);
     } else {
@@ -48,9 +48,9 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
     }
   }, 1000);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    e.persist();
-    setInputTime(e.target.value);
+  const handleInputChange = (e: string): void => {
+    // e.persist();
+    setInputTime(e);
     debounceTimeChange(e);
   };
 
@@ -111,7 +111,7 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
           <>
             <Input
               placeholder="请输入…"
-              style={{ height: '48px', width: '253px', zIndex: '10002', position: 'relative' }}
+              style={{ height: '48px', width: '253px', zIndex: Number(10002), position: 'relative' }}
               value={inputTime || value.format(format)}
               onChange={handleInputChange}
               onClick={() => setOpen(true)}

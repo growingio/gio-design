@@ -3,11 +3,11 @@ import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/picker';
 import RcRangeCalendar from 'rc-calendar/lib/RangeCalendar';
 import classNames from 'classnames';
+import moment, { Moment } from 'moment';
+import { debounce } from 'lodash';
 import { ConfigContext } from '../config-provider';
 import Button from '../button';
 import Input from '../input';
-import moment, { Moment } from 'moment';
-import { debounce } from 'lodash';
 import { DateRangePickerProps } from './interface';
 
 const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerProps) => {
@@ -35,8 +35,8 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     setTimeRange(value);
   };
 
-  const debounceLeftChange = debounce((e: React.ChangeEvent<HTMLInputElement>): void => {
-    const value = moment(e.target.value, props.format);
+  const debounceLeftChange = debounce((e: string): void => {
+    const value = moment(e, props.format);
     if (value.isValid() && value.isBefore(timeRange[1])) {
       setTimeRange([value, timeRange[1]]);
     } else {
@@ -44,8 +44,8 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     }
   }, 1000);
 
-  const debounceRightChange = debounce((e: React.ChangeEvent<HTMLInputElement>): void => {
-    const value = moment(e.target.value, props.format);
+  const debounceRightChange = debounce((e: string): void => {
+    const value = moment(e, props.format);
     if (value.isValid() && value.isAfter(timeRange[0])) {
       setTimeRange([timeRange[0], value]);
     } else {
@@ -53,15 +53,15 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     }
   }, 1000);
 
-  const handleLeftInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    e.persist();
-    setLeftInputTimeRange(e.target.value);
+  const handleLeftInputChange = (e: string): void => {
+    // e.persist();
+    setLeftInputTimeRange(e);
     debounceLeftChange(e);
   };
 
-  const handleRightInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    e.persist();
-    setRightInputTimeRange(e.target.value);
+  const handleRightInputChange = (e: string): void => {
+    // e.persist();
+    setRightInputTimeRange(e);
     debounceRightChange(e);
   };
 
@@ -137,7 +137,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
               onChange={handleLeftInputChange}
               value={leftInputTimeRange || `${formatDate(value[0])}`}
               onClick={() => setOpen(true)}
-              inputStyle={{ position: 'relative', zIndex: 1002 }}
+              inputStyle={{ position: 'relative', zIndex: Number(1002) }}
               wrapStyle={{ width: '120px' }}
             />
             <span className={`${prefixCls}-split`}>—</span>
@@ -146,7 +146,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
               onChange={handleRightInputChange}
               value={rightInputTimeRange || `${formatDate(value[1])}`}
               onClick={() => setOpen(true)}
-              inputStyle={{ position: 'relative', zIndex: 1002 }}
+              inputStyle={{ position: 'relative', zIndex: Number(1002) }}
               wrapStyle={{ width: '120px' }}
             />
             <div ref={calendarContainerRef} />
