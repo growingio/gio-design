@@ -8,7 +8,14 @@ nav:
 ---
 
 # @gio-design/icons Change Log
+
+## 20.9.1
+
+- 📛 Rename `View`、`Unview` to `ViewOutlined`、`unviewOutlined`, add `SearchOutlined` icon. [#153](https://github.com/growingio/gio-design/pull/153)
+- 🆕 Add `DragMove` icon. [#178](https://github.com/growingio/gio-design/pull/178)
+
 ## 20.9.0
+
 - 📛 Rename `Check` icon to `CeckOutlined`。[#181](https://github.com/growingio/gio-design/pull/181)
 
 ## 20.8.4
