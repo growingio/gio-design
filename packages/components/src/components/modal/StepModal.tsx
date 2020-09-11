@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Modal from './Modal';
 import { stepArray2Map, clarifyRender } from './utils';
 import { IStepModalProps, IStepInner, TStepChange } from './interface';
@@ -19,8 +19,13 @@ const StepModal: React.FC<IStepModalProps> = ({
 }: IStepModalProps) => {
   const { stepMap, firstStep } = useMemo(() => stepArray2Map(steps), [steps]);
   const [stepStack, setStepStack] = useState<string[]>([firstStep]);
-  const curStepOnShow = stepStack[stepStack.length - 1];
 
+  useEffect(() => {
+    // 传入的 steps 发生改变后需要重置 stepStack
+    setStepStack([firstStep]);
+  }, [stepMap, firstStep]);
+
+  const curStepOnShow = stepStack[stepStack.length - 1];
   const curStep: IStepInner = stepMap[curStepOnShow];
   const { onNext, onBack } = curStep;
   const isLastStep: boolean = !curStep.next || (curStep.next && curStep.next.length === 0);
