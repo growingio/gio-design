@@ -9,6 +9,17 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.9.1
+
+- 🆕 新增 `SearchBar` 组件。[#153](https://github.com/growingio/gio-design/pull/153)
+- 🆕 新增 `List` 组件。[#178](https://github.com/growingio/gio-design/pull/178)
+- 🆕 `StepModal` 组件支持分支路径。[#192](https://github.com/growingio/gio-design/pull/192)
+- 🐛 当 `title` 参数不应该被显示时，隐藏 `Tooltip`。[#193](https://github.com/growingio/gio-design/pull/193)
+- 🐛 添加 `alert` 中 `icon` 的颜色。[#193](https://github.com/growingio/gio-design/pull/193)
+- 🆕 新增 `下拉菜单` 组件。[#196](https://github.com/growingio/gio-design/pull/196)
+- 🐛 为输入框新增 `forwardRef`。 [#197](https://github.com/growingio/gio-design/pull/197)
+- 🐛 修正 `CheckBox` 被用于 `Table` 时”对号“不居中。 [#200](https://github.com/growingio/gio-design/pull/200)
+
 ## 20.9.0
 
 - 🐛 更新`Table`组件，修复了一些问题。[#180](https://github.com/growingio/gio-design/pull/180)

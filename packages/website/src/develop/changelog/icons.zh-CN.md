@@ -8,7 +8,14 @@ nav:
 ---
 
 # @gio-design/icons 更新日志
+
+## 20.9.1
+
+- 📛 `View`、`Unview` 图标重名为 `ViewOutlined`、`unviewOutlined`，新增 `SearchOutlined` 图标。[#153](https://github.com/growingio/gio-design/pull/153)
+- 🆕 新增 `DragMove` 图标。 [#178](https://github.com/growingio/gio-design/pull/178)
+
 ## 20.9.0
+
 - 📛 `Check` 图标重名为 `CheckOutlined`。[#181](https://github.com/growingio/gio-design/pull/181)
 
 ## 20.8.4
