@@ -6,7 +6,7 @@ import Radio from './Radio';
 import { RadioGroupProvider } from './context';
 import { IRadioGroupProps, IRadioChangeEvent } from './interface';
 
-const Group: React.FC<IRadioGroupProps> = (props) => {
+const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
   const {
     className,
     name,
@@ -38,7 +38,7 @@ const Group: React.FC<IRadioGroupProps> = (props) => {
     if (value !== undefined || value !== prevSelectedValue) {
       setSelectedValue(value);
     }
-  }, [value]);
+  }, [value, prevSelectedValue]);
 
   const handleChange = (e: IRadioChangeEvent) => {
     if (!Reflect.has(props, 'value')) {
@@ -50,24 +50,25 @@ const Group: React.FC<IRadioGroupProps> = (props) => {
     }
   };
 
-  const getChildrenRadios = () => filterChildren(children, (child) => {
-    if (React.isValidElement(child)) {
-      if (typeof child.type !== 'object' || (child.type as typeof Radio).componentType !== 'GIO_RADIO') {
-        console.error(
-          'Warning: Children wrapped by RadioGroup component should be a Radio. Please check the Radio Component in your RadioGroup.',
-        );
-        return false;
+  const getChildrenRadios = () =>
+    filterChildren(children, (child) => {
+      if (React.isValidElement(child)) {
+        if (typeof child.type !== 'object' || (child.type as typeof Radio).componentType !== 'GIO_RADIO') {
+          console.error(
+            'Warning: Children wrapped by RadioGroup component should be a Radio. Please check the Radio Component in your RadioGroup.'
+          );
+          return false;
+        }
+        if (!Reflect.has(child.props, 'value')) {
+          console.error(
+            'Warning: Radio wrapped by RadioGroup component which has no "value" prop will not be rendered. Please check the Radio Component in your RadioGroup.'
+          );
+          return false;
+        }
+        return true;
       }
-      if (!Reflect.has(child.props, 'value')) {
-        console.error(
-          'Warning: Radio wrapped by RadioGroup component which has no "value" prop will not be rendered. Please check the Radio Component in your RadioGroup.',
-        );
-        return false;
-      }
-      return true;
-    }
-    return false;
-  });
+      return false;
+    });
 
   const radioRender = () => {
     let renderedChildren: React.ReactNodeArray = [];

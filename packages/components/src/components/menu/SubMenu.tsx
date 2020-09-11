@@ -3,7 +3,7 @@ import { SubMenu as RcSubMenu } from 'rc-menu';
 import { ISubMenuProps } from './interface';
 import MenuTitle from './MenuTitle';
 
-const SubMenu: React.FC<ISubMenuProps> = (props) => {
+const SubMenu: React.FC<ISubMenuProps> = (props: ISubMenuProps) => {
   const { icon, title, ...restProps } = props;
 
   const renderTitle = () => <MenuTitle title={title} icon={icon} />;

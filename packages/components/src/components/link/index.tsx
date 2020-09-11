@@ -10,7 +10,7 @@ const Link: React.FC<TLinkProps> = ({
   className,
   children,
   ...otherProps
-}) => {
+}: TLinkProps) => {
   const prefixCls = customPrefixCls || 'gio-link';
 
   const cls = classnames(className, prefixCls, {

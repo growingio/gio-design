@@ -22,7 +22,7 @@ const Sign: React.FC<ISignProps> = ({
   status = 'default',
   size = 'middle',
   children,
-}) => {
+}: ISignProps) => {
   const { getPrefixCls } = useContext(ConfigContext);
   const prefix = getPrefixCls('sign', customPrefixCls);
   const noChildren = Children.count(children) === 0;
