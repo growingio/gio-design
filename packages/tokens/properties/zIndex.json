@@ -1,0 +1,19 @@
+{
+  "zindex": {
+    "table-fixed": {
+      "value": 2
+    },
+    "popover": {
+      "value": 1030
+    },
+    "dropdown": {
+      "value": 1050
+    },
+    "popconfirm": {
+      "value": 1060
+    },
+    "tooltip": {
+      "value": 1070
+    }
+  }
+}
