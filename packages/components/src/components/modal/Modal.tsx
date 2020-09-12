@@ -43,7 +43,10 @@ const Modal: React.FC<IModalProps> = ({
 
   const useOkBtn = !!onOk && typeof onOk === 'function';
   let useFooter = useOkBtn || !dropCloseButton || !!additionalFooter;
-  if (restProps === false || restProps === null || ('footer' in restProps && restProps === undefined)) {
+  if (
+    'footer' in restProps &&
+    (restProps.footer === undefined || restProps.footer === false || restProps.footer === null)
+  ) {
     useFooter = false;
   }
   const okBtnProps: ButtonProps = {
