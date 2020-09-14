@@ -44,6 +44,7 @@ export { default as RightOutlined } from './RightOutlined';
 export { default as SearchOutlined } from './SearchOutlined';
 export { default as SettingFilled } from './SettingFilled';
 export { default as Setting } from './Setting';
+export { default as StopWatchOutlined } from './StopWatchOutlined';
 export { default as Succeed } from './Succeed';
 export { default as TableChartOutlined } from './TableChartOutlined';
 export { default as UnviewOutlined } from './UnviewOutlined';
