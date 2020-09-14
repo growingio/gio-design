@@ -111,7 +111,7 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
           <>
             <Input
               placeholder="请输入…"
-              style={{ height: '48px', width: '253px', zIndex: Number(10002), position: 'relative' }}
+              style={{ height: '40px', width: '253px', zIndex: Number(10002), position: 'relative' }}
               value={inputTime || value.format(format)}
               onChange={handleInputChange}
               onClick={() => setOpen(true)}

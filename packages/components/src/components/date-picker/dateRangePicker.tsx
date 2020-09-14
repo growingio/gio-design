@@ -137,8 +137,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
               onChange={handleLeftInputChange}
               value={leftInputTimeRange || `${formatDate(value[0])}`}
               onClick={() => setOpen(true)}
-              inputStyle={{ position: 'relative', zIndex: Number(1002) }}
-              wrapStyle={{ width: '120px' }}
+              style={{ width: '118px', height: '38px', position: 'relative', zIndex: Number(1002) }}
             />
             <span className={`${prefixCls}-split`}>—</span>
             <Input
@@ -146,8 +145,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
               onChange={handleRightInputChange}
               value={rightInputTimeRange || `${formatDate(value[1])}`}
               onClick={() => setOpen(true)}
-              inputStyle={{ position: 'relative', zIndex: Number(1002) }}
-              wrapStyle={{ width: '120px' }}
+              style={{ width: '118px', height: '38px', position: 'relative', zIndex: Number(1002) }}
             />
             <div ref={calendarContainerRef} />
           </div>
