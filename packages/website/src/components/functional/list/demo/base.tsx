@@ -8,8 +8,6 @@ const options = [
   { value: 'd', label: '选择事件d', disabled: true },
 ];
 
-const disabledOptions = [{ id: 'b' }, { id: 'd' }];
-
 const WrapperStyle = {
   padding: '12px 8px',
   display: 'inline-block',
