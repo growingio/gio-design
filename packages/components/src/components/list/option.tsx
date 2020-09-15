@@ -22,11 +22,16 @@ const SelectOption = (props: OptionProps) => {
   } = props;
 
   const ref = useRef(null);
-  const handleSelect = useCallback(() => {
-    if (onSelect) {
-      onSelect(option);
-    }
-  }, [option]);
+  const handleSelect = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      e.stopPropagation();
+      e.preventDefault();
+      if (onSelect) {
+        onSelect(option);
+      }
+    },
+    [option]
+  );
 
   const renderContent = () => (
     <div
@@ -44,7 +49,7 @@ const SelectOption = (props: OptionProps) => {
       {showGroupCheckBox && <span style={{ width: 25 }} />}
       {isMultiple && !allowDuplicate && (
         <>
-          <Checkbox checked={isSelected} disabled={disabled} onClick={noop} />
+          <Checkbox checked={isSelected} disabled={disabled} onChange={noop} />
           <span style={{ width: 10 }} />
         </>
       )}

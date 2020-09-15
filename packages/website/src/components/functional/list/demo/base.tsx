@@ -18,6 +18,6 @@ const WrapperStyle = {
 
 export default () => (
   <div style={WrapperStyle}>
-    <List dataSource={options} height={176} width={170} />
+    <List dataSource={options} height={176} width={170} onChange={console.log} />
   </div>
 );
