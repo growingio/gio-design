@@ -56,7 +56,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   const [selection, _setSelection] = useState(
     new Set(Array.isArray(defaultSelection) ? defaultSelection : [defaultSelection])
   );
-  const [extraOptions, setExtraOptions] = useState([]);
+  const [extraOptions, setExtraOptions] = useState<Option[]>([]);
   // options { value: index } hashtable;
   const [extendedOptions, optionHash] = useMemo(() => {
     const interalExtendedOptions = options.concat(extraOptions);
@@ -70,8 +70,8 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
   const [inputWidth, setInputWidth] = useState(2);
-  const inputRef = useRef(null);
-  const inputWidthRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const inputWidthRef = useRef<HTMLDivElement>(null);
 
   const filteredOptions = filter(extendedOptions, searchPredicate(input));
   const hasExactMatch = some(extendedOptions, (option) => option.label === input);
@@ -81,7 +81,9 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   }
 
   useEffect(() => {
-    setInputWidth(inputWidthRef.current?.getBoundingClientRect().width + 4);
+    if (inputWidthRef.current) {
+      setInputWidth(inputWidthRef.current?.getBoundingClientRect().width + 4);
+    }
   }, [input]);
 
   const setSelection = (newSelection: string[] | Set<string>) => {
