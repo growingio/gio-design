@@ -4,6 +4,7 @@ import Checkbox from '../checkbox';
 import { OptionProps } from './interface';
 import Tooltip from '../tooltip';
 import './style/option.less';
+import { noop } from 'lodash';
 
 const SelectOption = (props: OptionProps) => {
   const {
@@ -43,7 +44,7 @@ const SelectOption = (props: OptionProps) => {
       {showGroupCheckBox && <span style={{ width: 25 }} />}
       {isMultiple && !allowDuplicate && (
         <>
-          <Checkbox checked={isSelected} disabled={disabled} />
+          <Checkbox checked={isSelected} disabled={disabled} onClick={noop} />
           <span style={{ width: 10 }} />
         </>
       )}

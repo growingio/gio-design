@@ -69,7 +69,7 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
       labelRenderer,
       rowHeight,
     } = this.props;
-    if (this.state.options && this.state.options.length) {
+    if (this.state?.options?.length) {
       return (
         <div className="gio-select-core">
           <SelectList

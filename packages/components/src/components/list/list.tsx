@@ -143,7 +143,7 @@ class SelectList extends React.Component<SelectListProps, {}> {
       value = isMultiple ? [...(this.props.value || []), selectedValue] : selectedValue;
     }
     if (onChange) {
-      onChange(value);
+      onChange(option);
     }
   };
 
