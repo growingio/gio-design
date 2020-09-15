@@ -1,13 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useMemo, useEffect } from 'react';
 import RcTooltip from 'rc-tooltip';
+import { isFunction } from 'lodash';
 import { TooltipProps } from './interface';
 import { ConfigContext } from '../config-provider';
 import Link from '../link';
 import getPlacements from './placements';
 import useControlledState from '../../utils/hooks/useControlledState';
-import { isFunction } from 'lodash';
 
-const Tooltip = (props: TooltipProps) => {
+const Tooltip = (props: TooltipProps): React.ReactNode => {
   const {
     title,
     tooltipLink,
@@ -51,7 +52,7 @@ const Tooltip = (props: TooltipProps) => {
 
   const setCursor = (child: React.ReactElement) => {
     if (trigger === 'click' || (Array.isArray(trigger) && trigger.includes('click'))) {
-      return React.cloneElement(child, { style: { cursor: 'pointer' } });
+      return React.cloneElement(child, { style: { ...child.props.style, cursor: 'pointer' } });
     }
     return child;
   };
