@@ -13,6 +13,12 @@
   border-radius: @radius-border-small;
   cursor: default;
 
+  &-label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   &-size {
     &-small {
       font-weight: @weight-font-medium;
@@ -86,6 +92,8 @@
   }
 
   &-closable {
+    display: inline-flex;
+    align-items: center;
     background-color: @color-background-tag-filter-light-normal;
     &:hover {
       background-color: @color-background-tag-filter-light-hover;
@@ -105,7 +113,6 @@
     }
 
     &-icon {
-      margin-bottom: 2px;
       margin-left: @tag-padding;
       vertical-align: middle;
       cursor: pointer;
