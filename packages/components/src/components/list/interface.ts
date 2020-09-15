@@ -1,5 +1,7 @@
 import { ReactNode, CSSProperties } from 'react';
 
+type ListValueType = string | string[];
+
 export interface IBaseListProps {
   dataSource: Option[];
   isMultiple?: boolean;
@@ -11,6 +13,8 @@ export interface IBaseListProps {
   prefixCls?: string;
   labelRenderer?: (option: Option, isGruop: false) => ReactNode;
   rowHeight?: number | ((option: Option) => number);
+  onSelect?: (selectedValue: string, value: ListValueType, option: Option) => void;
+  onDeselect?: (selectedValue: string, value: ListValueType, option: Option) => void;
 }
 
 export interface Option {
@@ -45,8 +49,8 @@ export interface SelectCoreProps {
   onSearch?: (keyword: string) => void;
   renderFetchButton?: () => React.ReactNode;
   getGroupIcon?: (group: string) => React.ReactNode;
-  onSelect?: (value: any, selectedValue: any) => void;
-  onDeselect?: (value: any, selectedValue: any) => void;
+  onSelect?: IBaseListProps['onSelect'];
+  onDeselect?: IBaseListProps['onDeselect'];
   labelRenderer?: (option: any, isGroup?: boolean) => any;
   showCheckAllBox?: boolean;
 }

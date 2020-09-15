@@ -23,7 +23,16 @@ export default () => (
     </div>
     <div style={{ display: 'inline-block', width: 20 }} />
     <div style={WrapperStyle}>
-      <List dataSource={options} height={264} width={170} isMultiple={true} value={['a', 'c']} />
+      <List
+        dataSource={options}
+        height={264}
+        width={170}
+        isMultiple={true}
+        value={['a', 'c']}
+        onSelect={console.log.bind(null, 'onSelect')}
+        onDeselect={console.log.bind(null, 'onDeselect')}
+        onChange={console.log}
+      />
     </div>
   </>
 );
