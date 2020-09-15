@@ -5,7 +5,7 @@ type ListValueType = string | string[];
 export interface IBaseListProps {
   dataSource: Option[];
   isMultiple?: boolean;
-  onChange?: (option: Option) => void;
+  onChange?: (value: any) => void;
   value?: any;
   width?: number;
   height?: number;

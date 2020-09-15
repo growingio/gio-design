@@ -2,7 +2,7 @@ import React, { useState, useContext, useMemo, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 
 import { UpFilled, DownFilled } from '@gio-design/icons';
-import { intersection, filter, some } from 'lodash';
+import { filter, intersection } from 'lodash';
 import Dropdown from '../dropdown';
 import Input from '../input';
 import Tag from '../tag';
@@ -58,13 +58,17 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   );
   const [extraOptions, setExtraOptions] = useState<Option[]>([]);
   // options { value: index } hashtable;
-  const [extendedOptions, optionHash] = useMemo(() => {
+  const [extendedOptions, optionHash, LabelHash] = useMemo(() => {
     const interalExtendedOptions = options.concat(extraOptions);
-    const internalOptionHash = interalExtendedOptions.reduce((map, option, index) => {
-      map.set(option.value, index);
-      return map;
-    }, new Map());
-    return [interalExtendedOptions, internalOptionHash];
+    const [internalOptionValueHash, internalOptionLabelHash] = interalExtendedOptions.reduce(
+      (maps, option, index) => {
+        maps[0].set(option.value, index);
+        maps[1].set(option.label, true);
+        return maps;
+      },
+      [new Map(), new Map()]
+    );
+    return [interalExtendedOptions, internalOptionValueHash, internalOptionLabelHash];
   }, [options, extraOptions]);
   const [isFocused, setFocused] = useState(false);
   const [open, setOpen] = useState(false);
@@ -74,7 +78,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   const inputWidthRef = useRef<HTMLDivElement>(null);
 
   const filteredOptions = filter(extendedOptions, searchPredicate(input));
-  const hasExactMatch = some(extendedOptions, (option) => option.label === input);
+  const hasExactMatch = LabelHash.get(input);
 
   if (!hasExactMatch && input) {
     filteredOptions.push(freeInputOption(input));
@@ -89,6 +93,10 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   const setSelection = (newSelection: string[] | Set<string>) => {
     const optSelection = new Set(newSelection);
     _setSelection(optSelection);
+    if (!multiple) {
+      setOpen(false);
+      inputRef.current?.blur();
+    }
     setExtraOptions(
       intersection(
         Array.from(newSelection),
@@ -96,46 +104,50 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
       ).map((value) => freeInputOption(value))
     );
     clearInput();
-    if (!multiple) {
-      setOpen(false);
-    }
     if (onChange) {
       const selectedOptions = Array.from(selection).map((value) => extendedOptions[optionHash.get(value)]);
       onChange(multiple ? selectedOptions : selectedOptions[0]);
     }
   };
 
-  const addSelection = (value: string) => {
-    if (!optionHash.has(value)) {
-      addExtraOptions(value);
-    }
-    if (!multiple) {
-      selection.clear();
-    }
-    selection.add(value);
-    setSelection(selection);
+  const onSelectChange = (value: string | string[]) => {
+    setSelection(Array.isArray(value) ? value : [value]);
   };
 
-  const onSelected = (option: Option | Option[]) => {
-    const values = multiple ? (option as Option[]) : [option as Option];
-    setSelection(values.map((o) => o.value));
+  const onSelected = (value: string) => {
+    if (optionHash.get(value) === undefined) {
+      addExtraOptions(value);
+    }
   };
 
   const addExtraOptions = (value: string) => {
-    extraOptions.push(freeInputOption(value));
-    setExtraOptions(extraOptions);
+    if (!hasExactMatch) {
+      extraOptions.push(freeInputOption(value));
+      setExtraOptions([...extraOptions]);
+    }
   };
 
   const onSelectionKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!input.length && [46, 8].includes(e.keyCode) && selection.size > 0 && multiple) {
-      const selectionArr = Array.from(selection);
-      selectionArr.pop();
-      setSelection(selectionArr);
-    } else if (input.length && e.keyCode === 13) {
-      if (!hasExactMatch) {
-        addSelection(input);
-      }
-      clearInput();
+    switch (e.keyCode) {
+      // delete key
+      case 8:
+      case 46:
+        if (!input.length) {
+          const selectionArr = Array.from(selection);
+          selectionArr.pop();
+          setSelection(selectionArr);
+        }
+        break;
+      // enter key
+      case 13:
+        if (input) {
+          addExtraOptions(input);
+          setSelection(multiple ? selection.add(input) : [input]);
+          clearInput();
+        }
+        break;
+      default:
+        break;
     }
   };
 
@@ -165,7 +177,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   const onTagCloseClick = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     const key = e.currentTarget?.getAttribute('data-key') || '';
     selection.delete(key);
-    setSelection(new Set(selection));
+    setSelection(selection);
   };
 
   const renderSingleValue = () => (
@@ -230,10 +242,11 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     <List
       value={Array.from(selection)}
       dataSource={filteredOptions}
-      onChange={onSelected}
+      onChange={onSelectChange}
       isMultiple={multiple}
       labelRenderer={labelRenderer(input, prefix)}
       width={Math.max(width || 0, 160)}
+      onSelect={onSelected}
     />
   );
 
