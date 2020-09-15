@@ -45,11 +45,19 @@ const StepThreeContent: React.FC<{
     pop();
   };
 
+  const toOtherBranch = () => {
+    push('4');
+  };
+
   return (
     <div>
       {children}
       <Button type="text" size="small" style={{ marginLeft: 5 }} onClick={back}>
         Back to 2-2
+      </Button>
+      |
+      <Button type="text" size="small" style={{ marginLeft: 5 }} onClick={toOtherBranch}>
+        to other branch
       </Button>
     </div>
   );
@@ -73,6 +81,12 @@ const steps: IStep[] = [
     return: '1',
     title: '步骤 2-1',
     content: '步骤 2 - 1',
+    backButtonProps: {
+      disabled: true,
+    },
+    nextButtonProps: {
+      disabled: true,
+    },
     onNext: () => console.log('step 2-1 onNext.'),
   },
   {
@@ -81,12 +95,6 @@ const steps: IStep[] = [
     firstNextInTier: true,
     title: '步骤 2-2',
     content: '步骤 2 - 2',
-    backButtonProps: {
-      disabled: true,
-    },
-    nextButtonProps: {
-      disabled: true,
-    },
     nextText: '自定义下一步',
     onNext: () => console.log('step 2-2 onNext.'),
   },
@@ -94,13 +102,21 @@ const steps: IStep[] = [
     key: '3',
     return: '2-2',
     title: '步骤 3',
+    wayout: true,
     content: ({ step, push, pop }) => (
       <StepThreeContent step={step} push={push} pop={pop}>
-        Step Three
+        Step Three, the end
       </StepThreeContent>
     ),
     onNext: () => console.log('step 3 onNext.'),
     onBack: () => console.log('step 3 onBack.'),
+  },
+  {
+    key: '4',
+    return: '3',
+    title: '另一个分支',
+    content: '只能back',
+    footer: false,
   },
 ];
 
