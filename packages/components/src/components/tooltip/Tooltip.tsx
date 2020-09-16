@@ -8,7 +8,7 @@ import Link from '../link';
 import getPlacements from './placements';
 import useControlledState from '../../utils/hooks/useControlledState';
 
-const Tooltip = (props: TooltipProps): React.ReactNode => {
+const Tooltip = (props: TooltipProps): JSX.Element => {
   const {
     title,
     tooltipLink,
