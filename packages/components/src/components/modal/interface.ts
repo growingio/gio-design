@@ -80,6 +80,8 @@ export interface IStep {
   return: string | null;
   // 多分支路径下，当前步骤是否是默认的下一步
   firstNextInTier?: boolean;
+  // 多分支路径下的出口标识
+  wayout?: boolean;
   // 下一步 回调
   onNext?: TStepNoParamFn;
   // 上一步 回调

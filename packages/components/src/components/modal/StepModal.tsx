@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
+import { isEqual } from 'lodash';
 import Modal from './Modal';
 import { stepArray2Map, clarifyRender } from './utils';
 import { IStepModalProps, IStepInner, TStepChange } from './interface';
@@ -17,18 +18,27 @@ const StepModal: React.FC<IStepModalProps> = ({
   closeButtonProps,
   ...modalProps
 }: IStepModalProps) => {
-  const { stepMap, firstStep } = useMemo(() => stepArray2Map(steps), [steps]);
+  const [stepObj, setStepObj] = useState(() => stepArray2Map(steps));
+  const { stepMap, firstStep } = stepObj;
   const [stepStack, setStepStack] = useState<string[]>([firstStep]);
+  const [stepMapKey, setStepMapKey] = useState<string[]>(Object.keys(stepMap));
 
   useEffect(() => {
-    // 传入的 steps 发生改变后需要重置 stepStack
-    setStepStack([firstStep]);
-  }, [stepMap, firstStep]);
-
+    // eslint-disable-next-line no-underscore-dangle
+    const _stepObj = stepArray2Map(steps);
+    setStepObj(_stepObj);
+    // steps改变但key不变时，不做变更
+    if (!isEqual(Object.keys(_stepObj.stepMap), stepMapKey)) {
+      // 传入的 steps 发生改变后需要重置 stepStack
+      setStepStack([_stepObj.firstStep]);
+      setStepMapKey(Object.keys(_stepObj.stepMap));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [steps]);
   const curStepOnShow = stepStack[stepStack.length - 1];
   const curStep: IStepInner = stepMap[curStepOnShow];
   const { onNext, onBack } = curStep;
-  const isLastStep: boolean = !curStep.next || (curStep.next && curStep.next.length === 0);
+  const isLastStep: boolean = !curStep.next || (curStep.next && curStep.next.length === 0) || !!curStep.wayout;
   const isFirstStep: boolean = curStep.key === firstStep;
 
   const textOk = isLastStep ? okText ?? '确定' : curStep.nextText ?? '下一步';
@@ -81,7 +91,7 @@ const StepModal: React.FC<IStepModalProps> = ({
   };
   const Title = clarifyRender(curStep.title, stepProp, title);
   const Content = clarifyRender(curStep.content, stepProp, children);
-  const Footer = clarifyRender(curStep.footer, stepProp, false);
+  const Footer = clarifyRender(curStep.footer, stepProp, undefined);
 
   return (
     <Modal
