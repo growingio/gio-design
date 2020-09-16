@@ -87,10 +87,10 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
 
   const renderFooter = () => (
     <>
-      <Button onClick={onCancel} type="secondary" size="small" style={{ margin: ' 0 10px 0 0 ' }}>
+      <Button onClick={onCancel} type="secondary" size="middle" style={{ margin: ' 0 12px 0 0 ' }}>
         取消
       </Button>
-      <Button onClick={onConfirm} size="small">
+      <Button onClick={onConfirm} size="middle">
         确定
       </Button>
     </>

@@ -17,7 +17,7 @@ initialize {
             "attribs": Object {
               "class": "gio-input-content gio-input-content-medium",
               "placeholder": "请输入…",
-              "style": "height:48px;width:253px;z-index:10002;position:relative",
+              "style": "height:40px;width:253px;z-index:10002;position:relative",
               "type": "text",
               "value": "",
             },
@@ -87,7 +87,7 @@ initialize {
               "attribs": Object {
                 "class": "gio-input-content gio-input-content-medium",
                 "placeholder": "请输入…",
-                "style": "height:48px;width:253px;z-index:10002;position:relative",
+                "style": "height:40px;width:253px;z-index:10002;position:relative",
                 "type": "text",
                 "value": "",
               },

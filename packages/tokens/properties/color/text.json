@@ -341,6 +341,9 @@
         "disable": {
           "value": "{palette.gray.1.value}"
         },
+        "disable-date": {
+          "value": "#D8DEE8"
+        },
         "normal": {
           "value": "{palette.black.6.value}"
         },

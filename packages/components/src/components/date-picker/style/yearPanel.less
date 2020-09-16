@@ -5,12 +5,12 @@
 
 .@{date-picker-prefix-cls}-year-panel {
   position: absolute;
-  top: 32px;
+  top: 37px;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 10;
-  height: 241px;
+  height: 240px;
   background: @palette-white;
   outline: none;
 
@@ -27,16 +27,16 @@
 
 .@{date-picker-prefix-cls}-year-panel-header {
   position: relative;
-  height: 34px;
-  line-height: 34px;
+  height: 39px;
+  line-height: 39px;
   text-align: center;
   border: 1px solid @color-background-date-picker-hover;
+  border-radius: 4px 4px 0 0;
   -webkit-user-select: none;
   user-select: none;
 
   > a {
     display: inline-block;
-    width: 30px;
     font-weight: bold;
     text-align: center;
 
@@ -53,26 +53,52 @@
 }
 
 .@{date-picker-prefix-cls}-year-panel-next-decade-btn {
-  right: 0;
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
   user-select: none;
   &::after {
-    content: '»';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    content: url('../../../assets/images/nextYear.svg');
+  }
+  &:hover {
+    color: @color-text-date-picker-normal;
+    background-color: @color-background-date-picker-hover;
+    border-radius: 4px;
   }
 }
 
 .@{date-picker-prefix-cls}-year-panel-prev-decade-btn {
-  left: 0;
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
   user-select: none;
 
   &::after {
-    content: '«';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    content: url('../../../assets/images/previousYear.svg');
+  }
+  &:hover {
+    color: @color-text-date-picker-normal;
+    background-color: @color-background-date-picker-hover;
+    border-radius: 4px;
   }
 }
 
 .@{date-picker-prefix-cls}-year-panel .@{date-picker-prefix-cls}-year-panel-decade-select {
   width: 180px;
   color: @color-text-date-picker-year-normal;
-  pointer-events: none;
+  line-height: 22px;
 }
 
 .@{date-picker-prefix-cls}-year-panel-decade-select-arrow {
@@ -81,8 +107,10 @@
 
 .@{date-picker-prefix-cls}-year-panel-body {
   flex: 1;
+  padding: 8px 9px;
   border-right: 1px solid @color-background-date-picker-hover;
   border-left: 1px solid @color-background-date-picker-hover;
+  border-radius: 0 0 4px 4px;
 }
 
 .@{date-picker-prefix-cls}-year-panel-footer {
@@ -104,12 +132,12 @@
 
 .@{date-picker-prefix-cls}-year-panel-year {
   display: block;
-  width: 46px;
-  height: 25px;
+  width: 60px;
+  height: 30px;
   margin: auto;
   padding: 0;
   color: @color-text-date-picker-normal;
-  line-height: 25px;
+  line-height: 30px;
   text-align: center;
   background: transparent;
   border-radius: 4px 4px;

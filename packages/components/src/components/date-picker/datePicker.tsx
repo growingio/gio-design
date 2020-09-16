@@ -10,7 +10,11 @@ import Button from '../button';
 import { ConfigContext } from '../config-provider';
 import { DatePickerProps } from './interface';
 
-moment.locale('zh-cn');
+moment.locale('zh-cn', {
+  months: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
+  monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
+  weekdaysMin: '日_一_二_三_四_五_六'.split('_'),
+});
 
 const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   const { prefixCls: customizePrefixCls, format = 'YYYY/MM/DD', value, defaultValue, showFooter, disabledDate } = props;
@@ -70,10 +74,10 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
 
   const renderFooter = () => (
     <>
-      <Button type="secondary" size="small" onClick={onCancel} style={{ margin: ' 0 10px 0 0 ' }}>
+      <Button type="secondary" size="middle" onClick={onCancel} style={{ margin: ' 0 10px 0 0 ' }}>
         取消
       </Button>
-      <Button size="small" onClick={onConfirm}>
+      <Button size="middle" onClick={onConfirm}>
         确定
       </Button>
     </>
