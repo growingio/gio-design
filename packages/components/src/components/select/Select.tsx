@@ -25,7 +25,7 @@ const freeInputOption = (value: string): Option => ({
   groupLabel: '自由输入',
 });
 
-const labelRenderer = (input: string, prefix: string) => (option: Option, isGroup: boolean) => {
+const defaultLabelRenderer = (input: string, prefix: string) => (option: Option, isGroup: boolean) => {
   if (isGroup) return option.label;
   const index = option.label.indexOf(input);
   return (
@@ -49,6 +49,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     size = 'medium',
     searchable = false,
     searchPredicate = defaultSearchPredicate,
+    labelRenderer = defaultLabelRenderer,
     width,
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);

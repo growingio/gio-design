@@ -9,6 +9,7 @@ export interface SelectProps<VT = Option> {
   defaultSelection?: string | string[];
   searchable?: boolean;
   searchPredicate?: (input: string) => _.ListIterateeCustom<VT, boolean>;
+  labelRenderer?: (input: string) => (option: Option, isGroup: boolean) => React.ReactNode;
   onChange?: (option: VT[] | VT) => void;
   customizePrefixCls?: string;
   width?: number;
