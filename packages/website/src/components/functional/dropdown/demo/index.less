@@ -1,0 +1,67 @@
+.avatar-content {
+  width: 280px;
+  height: 323px;
+  letter-spacing: 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 14px 0 rgba(223, 226, 237, 0.8);
+  &-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    background-color: #f5f7fc;
+    &-name {
+      color: #313e75;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 22px;
+    }
+    &-email {
+      color: #a3adc8;
+      font-size: 12px;
+      line-height: 20px;
+    }
+    &-link {
+      margin: 8px 0;
+      color: #1248e9;
+      font-size: 14px;
+      line-height: 24px;
+      text-decoration: underline;
+    }
+  }
+  &-version {
+    height: 56px;
+    margin: 16px 8px 8px;
+    overflow: hidden;
+    border-radius: 4px;
+    &-title {
+      margin: 7px 0 0 16px;
+      color: #313e75;
+      font-size: 14px;
+      line-height: 22px;
+    }
+    &-content {
+      margin-left: 16px;
+      color: #a3adc8;
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+  hr {
+    margin: 0 16px;
+    border-top: 1px solid #dcdfed;
+  }
+  &-logout {
+    height: 40px;
+    margin: 8px 8px 16px;
+    padding: 9px 16px;
+    color: #313e75;
+    font-size: 14px;
+    line-height: 22px;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background-color: #f7f8fc;
+    }
+  }
+}
