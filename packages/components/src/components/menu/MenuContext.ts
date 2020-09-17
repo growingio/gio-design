@@ -1,3 +1,5 @@
 import { createContext } from 'react';
 
-export const MenuPrefixClsContext = createContext('gio-menu');
+const MenuPrefixClsContext = createContext('gio-menu');
+
+export default MenuPrefixClsContext;

@@ -24,6 +24,7 @@ export interface IRadioGroupProps {
   onChange?: IRadioProps['onChange'];
   name?: string;
   options?: Array<TRadioGroupOption | string>;
+  children?: React.ReactNode;
 }
 
 export interface IRadioGroupContext extends Pick<TRadioGroupOption, 'value' | 'disabled'> {

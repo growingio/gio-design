@@ -4,8 +4,9 @@ import { More } from '@gio-design/icons';
 import Tooltip from '../tooltip';
 import { AvatarProps } from './interface';
 import { ConfigContext } from '../config-provider';
+import composeRef from '../../utils/composeRef';
 
-const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
+const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProps, ref: React.Ref<HTMLSpanElement>) => {
   const {
     className,
     size = 'default',
@@ -16,12 +17,15 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
     displayTooltip = false,
     prefixCls: customizePrefixCls,
     placement = 'bottom',
+    ...rest
   } = props;
+
   const { getPrefixCls } = useContext(ConfigContext);
   const [isImgExist, setIsImgExist] = useState<boolean>(src !== undefined);
   const [scale, setScale] = useState<number>(1);
   const nodeRef = useRef<HTMLSpanElement>(null);
   const childrenRef = useRef<HTMLSpanElement>(null);
+  const mergedRef = composeRef(ref, nodeRef);
 
   useEffect(() => {
     if (nodeRef.current && childrenRef.current) {
@@ -79,11 +83,11 @@ const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
     );
 
   return renderTooltip(
-    <span ref={nodeRef} className={classString}>
+    <span ref={mergedRef} className={classString} {...rest}>
       {renderMore()}
       {renderAvatar()}
     </span>
   );
-};
+});
 
 export default Avatar;

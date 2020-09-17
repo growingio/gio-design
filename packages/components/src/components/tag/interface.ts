@@ -6,6 +6,8 @@ export interface TagProps {
   closable?: boolean;
   disabled?: boolean;
   persistCloseIcon?: boolean;
-  onClose?: (e: React.MouseEvent<SVGElement>) => void;
+  onClose?: (e: React.MouseEvent<HTMLSpanElement>) => void;
   customizePrefixCls?: string;
+  children: React.ReactNode;
+  className: string;
 }

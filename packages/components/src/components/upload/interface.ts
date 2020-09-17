@@ -30,14 +30,14 @@ export interface IProgress extends ProgressEvent {
 export interface IRcCustomRequestOptions {
   action: string;
   filename: string;
-  data: object;
+  data: Record<string, unknown>;
   file: IRcFile;
   headers: IHttpRequestHeader;
   withCredentials: boolean;
   method: TRequestMethod;
   onProgress: (event: IProgress, file: IRcFile) => void;
-  onError: (error: Error, response: object) => void;
-  onSuccess: (response: object, file: IRcFile) => void;
+  onError: (error: Error, response: Record<string, unknown>) => void;
+  onSuccess: (response: Record<string, unknown>, file: IRcFile) => void;
 }
 
 // 在 IRcFile 的基础上新增了一些字段，但是为了易读重写一遍
@@ -88,7 +88,7 @@ export interface IUploadProps<T = any> {
   // 是否允许上传文件夹
   directory?: boolean;
   // 上传所需额外参数或返回上传额外参数的方法
-  data?: object | ((file: IUploadFile<T>) => object);
+  data?: Record<string, string | Blob> | ((file: IUploadFile<T>) => Record<string, string | Blob>);
   // 额外的上传请求头部
   headers?: IHttpRequestHeader;
   // 接受上传的文件类型，具体查看https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#accept
@@ -100,7 +100,7 @@ export interface IUploadProps<T = any> {
   // 上传过程中 回调
   onProgress?: (event: IProgress, file: IRcFile) => void;
   // 上传成功 回调
-  onSuccess?: (response: object, file: IUploadFile) => void;
+  onSuccess?: (response: Record<string, unknown>, file: IUploadFile) => void;
   // 上传出错 回调
   onError?: (error: Error, file: IUploadFile) => void;
   // 删除已上传图片 回调
@@ -113,6 +113,7 @@ export interface IUploadProps<T = any> {
   openFileDialogOnClick?: boolean;
   // 在上传之前转换文件
   transformFile?: TTransformFileHandler;
+  children?: React.ReactNode;
 }
 
 export interface ITriggerProps {
@@ -144,7 +145,7 @@ export interface IActionsProps {
 }
 
 export interface IXhrOption {
-  data: object;
+  data: Record<string, string | Blob>;
   file: File;
   withCredentials: boolean;
   action: string;
@@ -152,6 +153,6 @@ export interface IXhrOption {
   method: string;
   filename: string;
   onProgress: (event: IProgress) => void;
-  onSuccess: (body: object, xhr: XMLHttpRequest) => void;
-  onError: (event: Error, body: object) => void;
+  onSuccess: (body: Record<string, unknown>, xhr: XMLHttpRequest) => void;
+  onError: (event: Error, body: Record<string, unknown>) => void;
 }

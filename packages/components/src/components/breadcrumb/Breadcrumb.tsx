@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
@@ -15,7 +17,7 @@ function getBreadcrumbName(route: Route, params: any) {
   const paramsKeys = Object.keys(params).join('|');
   const name = route.breadcrumbName.replace(
     new RegExp(`:(${paramsKeys})`, 'g'),
-    (replacement, key) => params[key] || replacement,
+    (replacement, key) => params[key] || replacement
   );
   return name;
 }
@@ -24,7 +26,6 @@ function isLastItem(route: Route, routes: Route[]) {
   return routes.indexOf(route) === routes.length - 1;
 }
 
-/* eslint-disable-next-line */
 function defaultItemRender(route: Route, params: any, routes: Route[], paths: string[]) {
   const name = getBreadcrumbName(route, params);
   return isLastItem(route, routes) ? <span>{name}</span> : <a href={`/${paths.join('/')}`}>{name}</a>;
@@ -53,7 +54,7 @@ const Breadcrumb: BreadcrumbInterface = ({
   itemRender = defaultItemRender,
   params = {},
   ...restProps
-}) => {
+}: BreadcrumbProps) => {
   const { getPrefixCls } = React.useContext(ConfigContext);
 
   let crumbs;
@@ -78,10 +79,11 @@ const Breadcrumb: BreadcrumbInterface = ({
         return element;
       }
 
-      /* eslint-disable-next-line */
-      devWarning(element.type && (element.type.__ANT_BREADCRUMB_ITEM === true || element.type.__ANT_BREADCRUMB_SEPARATOR === true),
+      devWarning(
+        element.type && (element.type.GIO_BREADCRUMB_ITEM === true || element.type.GIO_BREADCRUMB_SEPARATOR === true),
         'Breadcrumb',
-        "Only accepts Breadcrumb.Item and Breadcrumb.Separator as it's children");
+        "Only accepts Breadcrumb.Item and Breadcrumb.Separator as it's children"
+      );
 
       return cloneElement(element, {
         separator,

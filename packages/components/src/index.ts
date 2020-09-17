@@ -10,7 +10,15 @@ export { default as Input } from './components/input';
 export { default as Link } from './components/link';
 export { default as Loading } from './components/loading';
 export { default as Menu } from './components/menu';
-export { default as Modal, StepModal, IModalProps, IStepModalProps, TModalSize, IStep } from './components/modal';
+export {
+  default as Modal,
+  StepModal,
+  IModalProps,
+  IStepModalProps,
+  TModalSize,
+  IStep,
+  TStepChange,
+} from './components/modal';
 export { default as Pagination } from './components/pagination';
 export { default as Popconfirm } from './components/popconfirm';
 export { default as Popover } from './components/popover';
@@ -28,3 +36,5 @@ export { default as Toggles } from './components/toggles';
 export { default as Tooltip } from './components/tooltip';
 export { default as Tree } from './components/tree';
 export { default as Upload } from './components/upload';
+export { default as List } from './components/list';
+export { default as Select } from './components/select';

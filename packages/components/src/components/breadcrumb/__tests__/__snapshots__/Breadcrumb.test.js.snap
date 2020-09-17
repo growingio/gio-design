@@ -15,7 +15,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "",
             },
             "children": Array [
               Object {
@@ -28,74 +27,9 @@ initialize {
             ],
             "name": "span",
             "namespace": "http://www.w3.org/1999/xhtml",
-            "next": Object {
-              "attribs": Object {
-                "class": "gio-breadcrumb-separator",
-              },
-              "children": Array [],
-              "name": "span",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": [Circular],
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
-              },
-            },
-            "parent": [Circular],
-            "prev": null,
-            "type": "tag",
-            "x-attribsNamespace": Object {
-              "class": undefined,
-              "separator": undefined,
-            },
-            "x-attribsPrefix": Object {
-              "class": undefined,
-              "separator": undefined,
-            },
-          },
-          Object {
-            "attribs": Object {
-              "class": "gio-breadcrumb-separator",
-            },
-            "children": Array [],
-            "name": "span",
-            "namespace": "http://www.w3.org/1999/xhtml",
             "next": null,
             "parent": [Circular],
-            "prev": Object {
-              "attribs": Object {
-                "class": "gio-breadcrumb-item-link-target",
-                "separator": "",
-              },
-              "children": Array [
-                Object {
-                  "data": "Location",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "text",
-                },
-              ],
-              "name": "span",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": [Circular],
-              "parent": [Circular],
-              "prev": null,
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-                "separator": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
-                "separator": undefined,
-              },
-            },
+            "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
@@ -123,7 +57,6 @@ initialize {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
                   "href": "",
-                  "separator": "",
                 },
                 "children": Array [
                   Object {
@@ -134,87 +67,19 @@ initialize {
                     "type": "text",
                   },
                 ],
-                "name": "span",
+                "name": "a",
                 "namespace": "http://www.w3.org/1999/xhtml",
-                "next": Object {
-                  "attribs": Object {
-                    "class": "gio-breadcrumb-separator",
-                  },
-                  "children": Array [],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": [Circular],
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
+                "next": null,
                 "parent": [Circular],
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
                   "href": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
                   "href": undefined,
-                  "separator": undefined,
-                },
-              },
-              Object {
-                "attribs": Object {
-                  "class": "gio-breadcrumb-separator",
-                },
-                "children": Array [],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": null,
-                "parent": [Circular],
-                "prev": Object {
-                  "attribs": Object {
-                    "class": "gio-breadcrumb-item-link-target",
-                    "href": "",
-                    "separator": "",
-                  },
-                  "children": Array [
-                    Object {
-                      "data": "Application Center",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": [Circular],
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                    "href": undefined,
-                    "separator": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                    "href": undefined,
-                    "separator": undefined,
-                  },
-                },
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
                 },
               },
             ],
@@ -284,7 +149,6 @@ initialize {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
                 "href": "",
-                "separator": "",
               },
               "children": Array [
                 Object {
@@ -295,87 +159,19 @@ initialize {
                   "type": "text",
                 },
               ],
-              "name": "span",
+              "name": "a",
               "namespace": "http://www.w3.org/1999/xhtml",
-              "next": Object {
-                "attribs": Object {
-                  "class": "gio-breadcrumb-separator",
-                },
-                "children": Array [],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": null,
-                "parent": [Circular],
-                "prev": [Circular],
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                },
-              },
+              "next": null,
               "parent": [Circular],
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
                 "href": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
                 "href": undefined,
-                "separator": undefined,
-              },
-            },
-            Object {
-              "attribs": Object {
-                "class": "gio-breadcrumb-separator",
-              },
-              "children": Array [],
-              "name": "span",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": Object {
-                "attribs": Object {
-                  "class": "gio-breadcrumb-item-link-target",
-                  "href": "",
-                  "separator": "",
-                },
-                "children": Array [
-                  Object {
-                    "data": "Application Center",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "text",
-                  },
-                ],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": [Circular],
-                "parent": [Circular],
-                "prev": null,
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                  "href": undefined,
-                  "separator": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                  "href": undefined,
-                  "separator": undefined,
-                },
-              },
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
               },
             },
           ],
@@ -418,7 +214,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "",
               },
               "children": Array [
                 Object {
@@ -431,74 +226,9 @@ initialize {
               ],
               "name": "span",
               "namespace": "http://www.w3.org/1999/xhtml",
-              "next": Object {
-                "attribs": Object {
-                  "class": "gio-breadcrumb-separator",
-                },
-                "children": Array [],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": null,
-                "parent": [Circular],
-                "prev": [Circular],
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                },
-              },
-              "parent": [Circular],
-              "prev": null,
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-                "separator": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
-                "separator": undefined,
-              },
-            },
-            Object {
-              "attribs": Object {
-                "class": "gio-breadcrumb-separator",
-              },
-              "children": Array [],
-              "name": "span",
-              "namespace": "http://www.w3.org/1999/xhtml",
               "next": null,
               "parent": [Circular],
-              "prev": Object {
-                "attribs": Object {
-                  "class": "gio-breadcrumb-item-link-target",
-                  "separator": "",
-                },
-                "children": Array [
-                  Object {
-                    "data": "Location",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "text",
-                  },
-                ],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": [Circular],
-                "parent": [Circular],
-                "prev": null,
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                  "separator": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                  "separator": undefined,
-                },
-              },
+              "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
@@ -538,7 +268,6 @@ initialize {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
               "href": "",
-              "separator": "",
             },
             "children": Array [
               Object {
@@ -549,87 +278,19 @@ initialize {
                 "type": "text",
               },
             ],
-            "name": "span",
+            "name": "a",
             "namespace": "http://www.w3.org/1999/xhtml",
-            "next": Object {
-              "attribs": Object {
-                "class": "gio-breadcrumb-separator",
-              },
-              "children": Array [],
-              "name": "span",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": [Circular],
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
-              },
-            },
+            "next": null,
             "parent": [Circular],
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
               "href": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
               "href": undefined,
-              "separator": undefined,
-            },
-          },
-          Object {
-            "attribs": Object {
-              "class": "gio-breadcrumb-separator",
-            },
-            "children": Array [],
-            "name": "span",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": null,
-            "parent": [Circular],
-            "prev": Object {
-              "attribs": Object {
-                "class": "gio-breadcrumb-item-link-target",
-                "href": "",
-                "separator": "",
-              },
-              "children": Array [
-                Object {
-                  "data": "Application Center",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "text",
-                },
-              ],
-              "name": "span",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": [Circular],
-              "parent": [Circular],
-              "prev": null,
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-                "href": undefined,
-                "separator": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
-                "href": undefined,
-                "separator": undefined,
-              },
-            },
-            "type": "tag",
-            "x-attribsNamespace": Object {
-              "class": undefined,
-            },
-            "x-attribsPrefix": Object {
-              "class": undefined,
             },
           },
         ],
@@ -671,7 +332,6 @@ initialize {
               Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "",
                 },
                 "children": Array [
                   Object {
@@ -684,74 +344,9 @@ initialize {
                 ],
                 "name": "span",
                 "namespace": "http://www.w3.org/1999/xhtml",
-                "next": Object {
-                  "attribs": Object {
-                    "class": "gio-breadcrumb-separator",
-                  },
-                  "children": Array [],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": [Circular],
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-                "parent": [Circular],
-                "prev": null,
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                  "separator": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                  "separator": undefined,
-                },
-              },
-              Object {
-                "attribs": Object {
-                  "class": "gio-breadcrumb-separator",
-                },
-                "children": Array [],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
                 "next": null,
                 "parent": [Circular],
-                "prev": Object {
-                  "attribs": Object {
-                    "class": "gio-breadcrumb-item-link-target",
-                    "separator": "",
-                  },
-                  "children": Array [
-                    Object {
-                      "data": "Location",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": [Circular],
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                    "separator": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                    "separator": undefined,
-                  },
-                },
+                "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
@@ -808,7 +403,6 @@ initialize {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
                 "href": "",
-                "separator": "",
               },
               "children": Array [
                 Object {
@@ -819,87 +413,19 @@ initialize {
                   "type": "text",
                 },
               ],
-              "name": "span",
+              "name": "a",
               "namespace": "http://www.w3.org/1999/xhtml",
-              "next": Object {
-                "attribs": Object {
-                  "class": "gio-breadcrumb-separator",
-                },
-                "children": Array [],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": null,
-                "parent": [Circular],
-                "prev": [Circular],
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                },
-              },
+              "next": null,
               "parent": [Circular],
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
                 "href": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
                 "href": undefined,
-                "separator": undefined,
-              },
-            },
-            Object {
-              "attribs": Object {
-                "class": "gio-breadcrumb-separator",
-              },
-              "children": Array [],
-              "name": "span",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": Object {
-                "attribs": Object {
-                  "class": "gio-breadcrumb-item-link-target",
-                  "href": "",
-                  "separator": "",
-                },
-                "children": Array [
-                  Object {
-                    "data": "Application Center",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "text",
-                  },
-                ],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": [Circular],
-                "parent": [Circular],
-                "prev": null,
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                  "href": undefined,
-                  "separator": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                  "href": undefined,
-                  "separator": undefined,
-                },
-              },
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
               },
             },
           ],
@@ -924,7 +450,6 @@ initialize {
                 Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "",
                   },
                   "children": Array [
                     Object {
@@ -937,74 +462,9 @@ initialize {
                   ],
                   "name": "span",
                   "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": Object {
-                    "attribs": Object {
-                      "class": "gio-breadcrumb-separator",
-                    },
-                    "children": Array [],
-                    "name": "span",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": [Circular],
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                    },
-                  },
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                    "separator": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                    "separator": undefined,
-                  },
-                },
-                Object {
-                  "attribs": Object {
-                    "class": "gio-breadcrumb-separator",
-                  },
-                  "children": Array [],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
                   "next": null,
                   "parent": [Circular],
-                  "prev": Object {
-                    "attribs": Object {
-                      "class": "gio-breadcrumb-item-link-target",
-                      "separator": "",
-                    },
-                    "children": Array [
-                      Object {
-                        "data": "Location",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "text",
-                      },
-                    ],
-                    "name": "span",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": [Circular],
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                      "separator": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                      "separator": undefined,
-                    },
-                  },
+                  "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
@@ -1150,7 +610,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -1194,11 +653,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -1221,7 +678,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -1240,11 +696,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -1323,7 +777,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -1367,11 +820,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -1394,7 +845,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -1413,11 +863,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -1439,7 +887,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -1483,11 +930,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -1510,7 +955,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -1529,11 +973,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -1576,7 +1018,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -1620,11 +1061,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -1647,7 +1086,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -1666,11 +1104,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -1694,7 +1130,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -1738,11 +1173,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -1765,7 +1198,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -1784,11 +1216,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -1860,7 +1290,7 @@ initialize {
 }
 `;
 
-exports[`Breadcrumb should render a menu 1`] = `
+exports[`Breadcrumb should render routes 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
@@ -1875,7 +1305,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -1938,11 +1367,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -1965,7 +1392,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -2003,11 +1429,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -2029,7 +1453,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -2092,11 +1515,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -2119,7 +1540,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -2157,11 +1577,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -2183,7 +1601,6 @@ initialize {
               Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -2246,11 +1663,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               Object {
@@ -2273,7 +1688,6 @@ initialize {
                 "prev": Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "/",
                   },
                   "children": Array [
                     Object {
@@ -2311,11 +1725,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                 },
                 "type": "tag",
@@ -2337,7 +1749,6 @@ initialize {
                 Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "/",
                   },
                   "children": Array [
                     Object {
@@ -2386,11 +1797,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                 },
                 Object {
@@ -2413,7 +1822,6 @@ initialize {
                   "prev": Object {
                     "attribs": Object {
                       "class": "gio-breadcrumb-item-link-target",
-                      "separator": "/",
                     },
                     "children": Array [
                       Object {
@@ -2437,11 +1845,9 @@ initialize {
                     "type": "tag",
                     "x-attribsNamespace": Object {
                       "class": undefined,
-                      "separator": undefined,
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
-                      "separator": undefined,
                     },
                   },
                   "type": "tag",
@@ -2504,7 +1910,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -2567,11 +1972,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -2594,7 +1997,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -2632,11 +2034,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -2658,7 +2058,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -2721,11 +2120,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -2748,7 +2145,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -2786,11 +2182,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -2812,7 +2206,6 @@ initialize {
               Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -2861,11 +2254,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               Object {
@@ -2888,7 +2279,6 @@ initialize {
                 "prev": Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "/",
                   },
                   "children": Array [
                     Object {
@@ -2912,11 +2302,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                 },
                 "type": "tag",
@@ -2960,7 +2348,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -3023,11 +2410,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -3050,7 +2435,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -3088,11 +2472,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -3133,7 +2515,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -3196,11 +2577,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -3223,7 +2602,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -3261,11 +2639,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -3287,7 +2663,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -3336,11 +2711,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -3363,7 +2736,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -3387,11 +2759,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -3425,7 +2795,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -3488,11 +2857,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -3515,7 +2882,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -3553,11 +2919,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -3581,7 +2945,6 @@ initialize {
               Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -3644,11 +3007,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               Object {
@@ -3671,7 +3032,6 @@ initialize {
                 "prev": Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "/",
                   },
                   "children": Array [
                     Object {
@@ -3709,11 +3069,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                 },
                 "type": "tag",
@@ -3762,7 +3120,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -3811,11 +3168,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -3838,7 +3193,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -3862,11 +3216,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -3890,7 +3242,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -3953,11 +3304,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -3980,7 +3329,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -4018,11 +3366,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -4046,7 +3392,6 @@ initialize {
               Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -4109,11 +3454,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               Object {
@@ -4136,7 +3479,6 @@ initialize {
                 "prev": Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "/",
                   },
                   "children": Array [
                     Object {
@@ -4174,11 +3516,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                 },
                 "type": "tag",
@@ -4202,7 +3542,6 @@ initialize {
                 Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "/",
                   },
                   "children": Array [
                     Object {
@@ -4265,11 +3604,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                 },
                 Object {
@@ -4292,7 +3629,6 @@ initialize {
                   "prev": Object {
                     "attribs": Object {
                       "class": "gio-breadcrumb-item-link-target",
-                      "separator": "/",
                     },
                     "children": Array [
                       Object {
@@ -4330,11 +3666,2475 @@ initialize {
                     "type": "tag",
                     "x-attribsNamespace": Object {
                       "class": undefined,
-                      "separator": undefined,
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
-                      "separator": undefined,
+                    },
+                  },
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
+      },
+    ],
+    "name": "div",
+    "namespace": "http://www.w3.org/1999/xhtml",
+    "next": null,
+    "parent": null,
+    "prev": null,
+    "root": Object {
+      "attribs": Object {},
+      "children": Array [
+        [Circular],
+      ],
+      "name": "root",
+      "namespace": "http://www.w3.org/1999/xhtml",
+      "next": null,
+      "parent": null,
+      "prev": null,
+      "type": "root",
+      "x-attribsNamespace": Object {},
+      "x-attribsPrefix": Object {},
+    },
+    "type": "tag",
+    "x-attribsNamespace": Object {
+      "class": undefined,
+    },
+    "x-attribsPrefix": Object {
+      "class": undefined,
+    },
+  },
+  "_root": [Circular],
+  "length": 1,
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;
+
+exports[`Breadcrumb should render routes with params 1`] = `
+initialize {
+  "0": Object {
+    "attribs": Object {
+      "class": "gio-breadcrumb",
+    },
+    "children": Array [
+      Object {
+        "attribs": Object {
+          "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+        },
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "class": "gio-breadcrumb-item-link-target",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "href": "/index",
+                },
+                "children": Array [
+                  Object {
+                    "data": "home",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "a",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "href": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "href": undefined,
+                },
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-separator",
+              },
+              "children": Array [
+                Object {
+                  "data": "/",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          Object {
+            "attribs": Object {
+              "class": "gio-breadcrumb-separator",
+            },
+            "children": Array [
+              Object {
+                "data": "/",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "text",
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-item-link-target",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "href": "/index",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "home",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "href": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "href": undefined,
+                  },
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+        ],
+        "name": "span",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-item-link-target",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "href": "/index/first",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "first",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "href": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "href": undefined,
+                  },
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-separator",
+                },
+                "children": Array [
+                  Object {
+                    "data": "/",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-separator",
+              },
+              "children": Array [
+                Object {
+                  "data": "/",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-item-link-target",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "href": "/index/first",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "first",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "a",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "href": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "href": undefined,
+                    },
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+          ],
+          "name": "span",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": Object {
+            "attribs": Object {
+              "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-item-link-target",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "href": "/index/first/second",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "second",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "a",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "href": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "href": undefined,
+                    },
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": Object {
+                  "attribs": Object {
+                    "class": "gio-breadcrumb-separator",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "/",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": [Circular],
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-separator",
+                },
+                "children": Array [
+                  Object {
+                    "data": "/",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": Object {
+                  "attribs": Object {
+                    "class": "gio-breadcrumb-item-link-target",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "href": "/index/first/second",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "second",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "a",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "href": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "href": undefined,
+                      },
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": [Circular],
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "class": "gio-breadcrumb-item-link-target",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {},
+                      "children": Array [],
+                      "name": "span",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": Object {
+                    "attribs": Object {
+                      "class": "gio-breadcrumb-separator",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "/",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "span",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": [Circular],
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
+                  },
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+                Object {
+                  "attribs": Object {
+                    "class": "gio-breadcrumb-separator",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "/",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": Object {
+                    "attribs": Object {
+                      "class": "gio-breadcrumb-item-link-target",
+                    },
+                    "children": Array [
+                      Object {
+                        "attribs": Object {},
+                        "children": Array [],
+                        "name": "span",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
+                      },
+                    ],
+                    "name": "span",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": [Circular],
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
+                  },
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": [Circular],
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": null,
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+        },
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "class": "gio-breadcrumb-item-link-target",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "href": "/index/first",
+                },
+                "children": Array [
+                  Object {
+                    "data": "first",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "a",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "href": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "href": undefined,
+                },
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-separator",
+              },
+              "children": Array [
+                Object {
+                  "data": "/",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          Object {
+            "attribs": Object {
+              "class": "gio-breadcrumb-separator",
+            },
+            "children": Array [
+              Object {
+                "data": "/",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "text",
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-item-link-target",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "href": "/index/first",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "first",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "href": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "href": undefined,
+                  },
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+        ],
+        "name": "span",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-item-link-target",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "href": "/index/first/second",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "second",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "href": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "href": undefined,
+                  },
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-separator",
+                },
+                "children": Array [
+                  Object {
+                    "data": "/",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-separator",
+              },
+              "children": Array [
+                Object {
+                  "data": "/",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-item-link-target",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "href": "/index/first/second",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "second",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "a",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "href": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "href": undefined,
+                    },
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+          ],
+          "name": "span",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": Object {
+            "attribs": Object {
+              "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-item-link-target",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {},
+                    "children": Array [],
+                    "name": "span",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": Object {
+                  "attribs": Object {
+                    "class": "gio-breadcrumb-separator",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "/",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": [Circular],
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-separator",
+                },
+                "children": Array [
+                  Object {
+                    "data": "/",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": Object {
+                  "attribs": Object {
+                    "class": "gio-breadcrumb-item-link-target",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {},
+                      "children": Array [],
+                      "name": "span",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": [Circular],
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": [Circular],
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-item-link-target",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "href": "/index",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "home",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "href": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "href": undefined,
+                  },
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-separator",
+                },
+                "children": Array [
+                  Object {
+                    "data": "/",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-separator",
+              },
+              "children": Array [
+                Object {
+                  "data": "/",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-item-link-target",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "href": "/index",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "home",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "a",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "href": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "href": undefined,
+                    },
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+          ],
+          "name": "span",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": null,
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+        },
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "class": "gio-breadcrumb-item-link-target",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "href": "/index/first/second",
+                },
+                "children": Array [
+                  Object {
+                    "data": "second",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "a",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "href": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "href": undefined,
+                },
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-separator",
+              },
+              "children": Array [
+                Object {
+                  "data": "/",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          Object {
+            "attribs": Object {
+              "class": "gio-breadcrumb-separator",
+            },
+            "children": Array [
+              Object {
+                "data": "/",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "text",
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-item-link-target",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "href": "/index/first/second",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "second",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "href": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "href": undefined,
+                  },
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+        ],
+        "name": "span",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-item-link-target",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {},
+                  "children": Array [],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-separator",
+                },
+                "children": Array [
+                  Object {
+                    "data": "/",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-separator",
+              },
+              "children": Array [
+                Object {
+                  "data": "/",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-item-link-target",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {},
+                    "children": Array [],
+                    "name": "span",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+          ],
+          "name": "span",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": null,
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-item-link-target",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "href": "/index/first",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "first",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "href": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "href": undefined,
+                  },
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-separator",
+                },
+                "children": Array [
+                  Object {
+                    "data": "/",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-separator",
+              },
+              "children": Array [
+                Object {
+                  "data": "/",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-item-link-target",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "href": "/index/first",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "first",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "a",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "href": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "href": undefined,
+                    },
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+          ],
+          "name": "span",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": Object {
+            "attribs": Object {
+              "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-item-link-target",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "href": "/index",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "home",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "a",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "href": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "href": undefined,
+                    },
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": Object {
+                  "attribs": Object {
+                    "class": "gio-breadcrumb-separator",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "/",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": [Circular],
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-separator",
+                },
+                "children": Array [
+                  Object {
+                    "data": "/",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": Object {
+                  "attribs": Object {
+                    "class": "gio-breadcrumb-item-link-target",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "href": "/index",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "home",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "a",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "href": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "href": undefined,
+                      },
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": [Circular],
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": [Circular],
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+        },
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "class": "gio-breadcrumb-item-link-target",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {},
+                "children": Array [],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {},
+                "x-attribsPrefix": Object {},
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-separator",
+              },
+              "children": Array [
+                Object {
+                  "data": "/",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          Object {
+            "attribs": Object {
+              "class": "gio-breadcrumb-separator",
+            },
+            "children": Array [
+              Object {
+                "data": "/",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "text",
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-item-link-target",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {},
+                  "children": Array [],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+        ],
+        "name": "span",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": null,
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-item-link-target",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "href": "/index/first/second",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "second",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "href": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "href": undefined,
+                  },
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-separator",
+                },
+                "children": Array [
+                  Object {
+                    "data": "/",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-separator",
+              },
+              "children": Array [
+                Object {
+                  "data": "/",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-item-link-target",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "href": "/index/first/second",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "second",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "a",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "href": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "href": undefined,
+                    },
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+          ],
+          "name": "span",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": Object {
+            "attribs": Object {
+              "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-item-link-target",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "href": "/index/first",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "first",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "a",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "href": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "href": undefined,
+                    },
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": Object {
+                  "attribs": Object {
+                    "class": "gio-breadcrumb-separator",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "/",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": [Circular],
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              Object {
+                "attribs": Object {
+                  "class": "gio-breadcrumb-separator",
+                },
+                "children": Array [
+                  Object {
+                    "data": "/",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": Object {
+                  "attribs": Object {
+                    "class": "gio-breadcrumb-item-link-target",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "href": "/index/first",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "first",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "a",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "href": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "href": undefined,
+                      },
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": [Circular],
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": [Circular],
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "class": "gio-breadcrumb-item gio-breadcrumb-item-link",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "class": "gio-breadcrumb-item-link-target",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "href": "/index",
+                      },
+                      "children": Array [
+                        Object {
+                          "data": "home",
+                          "next": null,
+                          "parent": [Circular],
+                          "prev": null,
+                          "type": "text",
+                        },
+                      ],
+                      "name": "a",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "href": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "href": undefined,
+                      },
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": Object {
+                    "attribs": Object {
+                      "class": "gio-breadcrumb-separator",
+                    },
+                    "children": Array [
+                      Object {
+                        "data": "/",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
+                    "name": "span",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": [Circular],
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
+                    },
+                  },
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                  },
+                },
+                Object {
+                  "attribs": Object {
+                    "class": "gio-breadcrumb-separator",
+                  },
+                  "children": Array [
+                    Object {
+                      "data": "/",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": Object {
+                    "attribs": Object {
+                      "class": "gio-breadcrumb-item-link-target",
+                    },
+                    "children": Array [
+                      Object {
+                        "attribs": Object {
+                          "href": "/index",
+                        },
+                        "children": Array [
+                          Object {
+                            "data": "home",
+                            "next": null,
+                            "parent": [Circular],
+                            "prev": null,
+                            "type": "text",
+                          },
+                        ],
+                        "name": "a",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {
+                          "href": undefined,
+                        },
+                        "x-attribsPrefix": Object {
+                          "href": undefined,
+                        },
+                      },
+                    ],
+                    "name": "span",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": [Circular],
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "class": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "class": undefined,
                     },
                   },
                   "type": "tag",
@@ -4437,7 +6237,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -4481,11 +6280,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -4508,7 +6305,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -4527,11 +6323,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -4568,85 +6362,9 @@ initialize {
                   ],
                   "name": "span",
                   "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": Object {
-                    "attribs": Object {
-                      "class": "gio-breadcrumb-separator",
-                    },
-                    "children": Array [
-                      Object {
-                        "data": "/",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "text",
-                      },
-                    ],
-                    "name": "span",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": [Circular],
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                    },
-                  },
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-                Object {
-                  "attribs": Object {
-                    "class": "gio-breadcrumb-separator",
-                  },
-                  "children": Array [
-                    Object {
-                      "data": "/",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
                   "next": null,
                   "parent": [Circular],
-                  "prev": Object {
-                    "attribs": Object {
-                      "class": "gio-breadcrumb-item-link-target",
-                    },
-                    "children": Array [
-                      Object {
-                        "data": "Mock Node",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "text",
-                      },
-                    ],
-                    "name": "span",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": [Circular],
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                    },
-                  },
+                  "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
@@ -4680,7 +6398,6 @@ initialize {
               Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -4724,11 +6441,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               Object {
@@ -4751,7 +6466,6 @@ initialize {
                 "prev": Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "/",
                   },
                   "children": Array [
                     Object {
@@ -4770,11 +6484,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                 },
                 "type": "tag",
@@ -4838,85 +6550,9 @@ initialize {
                 ],
                 "name": "span",
                 "namespace": "http://www.w3.org/1999/xhtml",
-                "next": Object {
-                  "attribs": Object {
-                    "class": "gio-breadcrumb-separator",
-                  },
-                  "children": Array [
-                    Object {
-                      "data": "/",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": [Circular],
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-                "parent": [Circular],
-                "prev": null,
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                },
-              },
-              Object {
-                "attribs": Object {
-                  "class": "gio-breadcrumb-separator",
-                },
-                "children": Array [
-                  Object {
-                    "data": "/",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "text",
-                  },
-                ],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
                 "next": null,
                 "parent": [Circular],
-                "prev": Object {
-                  "attribs": Object {
-                    "class": "gio-breadcrumb-item-link-target",
-                  },
-                  "children": Array [
-                    Object {
-                      "data": "Mock Node",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": [Circular],
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
+                "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
@@ -4950,7 +6586,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -4994,11 +6629,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -5021,7 +6654,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -5040,11 +6672,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -5078,7 +6708,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -5122,11 +6751,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -5149,7 +6776,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -5168,11 +6794,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -5209,7 +6833,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -5253,11 +6876,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -5280,7 +6901,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -5299,11 +6919,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -5342,85 +6960,9 @@ initialize {
                   ],
                   "name": "span",
                   "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": Object {
-                    "attribs": Object {
-                      "class": "gio-breadcrumb-separator",
-                    },
-                    "children": Array [
-                      Object {
-                        "data": "/",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "text",
-                      },
-                    ],
-                    "name": "span",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": [Circular],
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                    },
-                  },
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                  },
-                },
-                Object {
-                  "attribs": Object {
-                    "class": "gio-breadcrumb-separator",
-                  },
-                  "children": Array [
-                    Object {
-                      "data": "/",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
                   "next": null,
                   "parent": [Circular],
-                  "prev": Object {
-                    "attribs": Object {
-                      "class": "gio-breadcrumb-item-link-target",
-                    },
-                    "children": Array [
-                      Object {
-                        "data": "Mock Node",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "text",
-                      },
-                    ],
-                    "name": "span",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": [Circular],
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                    },
-                  },
+                  "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
@@ -5456,7 +6998,6 @@ initialize {
               Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -5500,11 +7041,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               Object {
@@ -5527,7 +7066,6 @@ initialize {
                 "prev": Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "/",
                   },
                   "children": Array [
                     Object {
@@ -5546,11 +7084,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                 },
                 "type": "tag",
@@ -5641,7 +7177,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -5685,11 +7220,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -5712,7 +7245,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -5731,11 +7263,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -5757,7 +7287,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -5801,11 +7330,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -5828,7 +7355,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -5847,11 +7373,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -5873,7 +7397,6 @@ initialize {
               Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -5917,11 +7440,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               Object {
@@ -5944,7 +7465,6 @@ initialize {
                 "prev": Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "/",
                   },
                   "children": Array [
                     Object {
@@ -5963,11 +7483,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                 },
                 "type": "tag",
@@ -6026,7 +7544,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -6070,11 +7587,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -6097,7 +7612,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -6116,11 +7630,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -6142,7 +7654,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -6186,11 +7697,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -6213,7 +7722,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -6232,11 +7740,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -6276,7 +7782,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -6320,11 +7825,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -6347,7 +7850,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -6366,11 +7868,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -6411,7 +7911,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -6455,11 +7954,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -6482,7 +7979,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -6501,11 +7997,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -6535,7 +8029,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -6579,11 +8072,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -6606,7 +8097,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -6625,11 +8115,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -6653,7 +8141,6 @@ initialize {
               Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -6697,11 +8184,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               Object {
@@ -6724,7 +8209,6 @@ initialize {
                 "prev": Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "/",
                   },
                   "children": Array [
                     Object {
@@ -6743,11 +8227,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                 },
                 "type": "tag",
@@ -6800,7 +8282,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -6844,11 +8325,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -6871,7 +8350,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -6890,11 +8368,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -6918,7 +8394,6 @@ initialize {
               Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -6962,11 +8437,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               Object {
@@ -6989,7 +8462,6 @@ initialize {
                 "prev": Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "/",
                   },
                   "children": Array [
                     Object {
@@ -7008,11 +8480,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                 },
                 "type": "tag",
@@ -7036,7 +8506,6 @@ initialize {
                 Object {
                   "attribs": Object {
                     "class": "gio-breadcrumb-item-link-target",
-                    "separator": "/",
                   },
                   "children": Array [
                     Object {
@@ -7080,11 +8549,9 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "separator": undefined,
                   },
                 },
                 Object {
@@ -7107,7 +8574,6 @@ initialize {
                   "prev": Object {
                     "attribs": Object {
                       "class": "gio-breadcrumb-item-link-target",
-                      "separator": "/",
                     },
                     "children": Array [
                       Object {
@@ -7126,11 +8592,9 @@ initialize {
                     "type": "tag",
                     "x-attribsNamespace": Object {
                       "class": undefined,
-                      "separator": undefined,
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
-                      "separator": undefined,
                     },
                   },
                   "type": "tag",
@@ -7229,7 +8693,6 @@ initialize {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
               "data-custom": "custom-item",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -7274,12 +8737,10 @@ initialize {
             "x-attribsNamespace": Object {
               "class": undefined,
               "data-custom": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
               "data-custom": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -7303,7 +8764,6 @@ initialize {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
                 "data-custom": "custom-item",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -7323,12 +8783,10 @@ initialize {
               "x-attribsNamespace": Object {
                 "class": undefined,
                 "data-custom": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
                 "data-custom": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -7350,7 +8808,6 @@ initialize {
             Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -7394,11 +8851,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -7421,7 +8876,6 @@ initialize {
               "prev": Object {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -7440,11 +8894,9 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",
@@ -7487,7 +8939,6 @@ initialize {
           Object {
             "attribs": Object {
               "class": "gio-breadcrumb-item-link-target",
-              "separator": "/",
             },
             "children": Array [
               Object {
@@ -7531,11 +8982,9 @@ initialize {
             "type": "tag",
             "x-attribsNamespace": Object {
               "class": undefined,
-              "separator": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
-              "separator": undefined,
             },
           },
           Object {
@@ -7558,7 +9007,6 @@ initialize {
             "prev": Object {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -7577,11 +9025,9 @@ initialize {
               "type": "tag",
               "x-attribsNamespace": Object {
                 "class": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
-                "separator": undefined,
               },
             },
             "type": "tag",
@@ -7606,7 +9052,6 @@ initialize {
               "attribs": Object {
                 "class": "gio-breadcrumb-item-link-target",
                 "data-custom": "custom-item",
-                "separator": "/",
               },
               "children": Array [
                 Object {
@@ -7651,12 +9096,10 @@ initialize {
               "x-attribsNamespace": Object {
                 "class": undefined,
                 "data-custom": undefined,
-                "separator": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
                 "data-custom": undefined,
-                "separator": undefined,
               },
             },
             Object {
@@ -7680,7 +9123,6 @@ initialize {
                 "attribs": Object {
                   "class": "gio-breadcrumb-item-link-target",
                   "data-custom": "custom-item",
-                  "separator": "/",
                 },
                 "children": Array [
                   Object {
@@ -7700,12 +9142,10 @@ initialize {
                 "x-attribsNamespace": Object {
                   "class": undefined,
                   "data-custom": undefined,
-                  "separator": undefined,
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
                   "data-custom": undefined,
-                  "separator": undefined,
                 },
               },
               "type": "tag",

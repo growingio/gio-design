@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
 import classNames from 'classnames';
 import { LoadingOutlined } from '@gio-design/icons';
@@ -9,7 +10,7 @@ import { cloneElement } from '../../utils/reactNode';
 const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
 
-function isString(str: any) {
+function isString(str: unknown) {
   return typeof str === 'string';
 }
 
@@ -104,6 +105,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
 
   React.useEffect(() => {
     fixTwoCNChar();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [buttonRef]);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
@@ -132,12 +134,19 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
     [`${prefixCls}-block`]: block,
   });
 
-  const iconNode = icon && !innerLoading ? icon : innerLoading ? <LoadingOutlined rotating /> : null;
+  let iconNode = null;
+
+  if (icon && !innerLoading) {
+    iconNode = icon;
+  } else if (innerLoading) {
+    iconNode = <LoadingOutlined rotating />
+  }
 
   const kids = children || children === 0 ? spaceChildren(children, isNeedInserted() && autoInsertSpace) : null;
 
   const { htmlType, ...otherProps } = rest;
   const buttonNode = (
+    // eslint-disable-next-line react/button-has-type
     <button {...otherProps} ref={buttonRef} type={htmlType} className={classes} onClick={handleClick}>
       {iconNode}
       {kids}
@@ -158,6 +167,7 @@ Button.defaultProps = {
 
 Button.displayName = 'Button';
 
+// eslint-disable-next-line no-underscore-dangle
 Button.__GIO_BUTTON = true;
 
 export default Button;

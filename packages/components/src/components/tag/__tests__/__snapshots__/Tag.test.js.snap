@@ -3,5 +3,10 @@
 exports[`<Tag /> renders <Tag /> components 1`] = `
 <span
   className="gio-tag gio-tag-size-medium gio-tag-type-normal"
-/>
+  onClick={[Function]}
+>
+  <span
+    className="gio-tag-label"
+  />
+</span>
 `;

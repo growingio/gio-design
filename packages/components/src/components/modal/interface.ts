@@ -5,10 +5,12 @@ export type IStringOrHtmlElement = string | HTMLElement;
 
 export type TModalSize = 'small' | 'middle' | 'full';
 
+export type TStepNoParamFn = () => void;
+
 export interface ITitleProps {
   title?: ReactNode;
   useBack?: boolean;
-  onBack?: () => void;
+  onBack?: TStepNoParamFn;
 }
 
 export interface IFooterProps {
@@ -20,7 +22,7 @@ export interface IFooterProps {
   closeButtonProps?: ButtonProps;
   okText?: string;
   closeText?: string;
-  onOk?: ((e: React.MouseEvent<HTMLElement>) => void) | ((e: React.MouseEvent<HTMLElement>) => Promise<any>);
+  onOk?: ((e: React.MouseEvent<HTMLElement>) => void) | ((e: React.MouseEvent<HTMLElement>) => Promise<unknown>);
   onClose?: (e: React.MouseEvent<HTMLElement>) => void;
   useOk: boolean;
   useClose: boolean;
@@ -31,15 +33,15 @@ export interface IModalProps extends ITitleProps, Omit<IFooterProps, 'useOk' | '
   className?: string;
   wrapClassName?: string;
   style?: CSSProperties;
-  wrapStyle?: {};
-  bodyStyle?: {};
-  maskStyle?: {};
-  bodyProps?: any;
-  maskProps?: any;
-  wrapProps?: any;
+  wrapStyle?: Record<string, unknown>;
+  bodyStyle?: Record<string, unknown>;
+  maskStyle?: Record<string, unknown>;
+  bodyProps?: Record<string, unknown>;
+  maskProps?: Record<string, unknown>;
+  wrapProps?: Record<string, unknown>;
   zIndex?: number;
   closeIcon?: ReactNode;
-  children?: any;
+  children?: ReactNode;
   // 按 ESC 键是否可以关闭 Modal
   keyboard?: boolean;
   // Modal 的尺寸
@@ -51,7 +53,7 @@ export interface IModalProps extends ITitleProps, Omit<IFooterProps, 'useOk' | '
   // 组件 pending 状态
   pending?: boolean;
   // 执行 close 后紧接着执行的操作
-  afterClose?: () => any;
+  afterClose?: () => void;
   // 点击 Ok 后是否要紧接着执行 close
   closeAfterOk?: boolean;
   // 是否在 Modal 关闭后销毁
@@ -61,19 +63,56 @@ export interface IModalProps extends ITitleProps, Omit<IFooterProps, 'useOk' | '
   focusTriggerAfterClose?: boolean;
 }
 
+export type TStepChange = (nextStep: string) => void;
+
+export interface IStepModalNodeRenderProps {
+  step: IStep;
+  push: TStepChange;
+  pop: TStepNoParamFn;
+}
+
+export type TStepModalNodeRender = ReactNode | ((renderProps: IStepModalNodeRenderProps) => ReactNode);
+
 export interface IStep {
+  // 当前 Step 的唯一标识
+  key: string;
+  // 当前 Step 的上一步
+  return: string | null;
+  // 多分支路径下，当前步骤是否是默认的下一步
+  firstNextInTier?: boolean;
+  // 多分支路径下的出口标识
+  wayout?: boolean;
+  // 下一步 回调
+  onNext?: TStepNoParamFn;
+  // 上一步 回调
+  onBack?: TStepNoParamFn;
   // 当前步骤 Modal 的 Title
-  title?: ReactNode;
+  title?: TStepModalNodeRender;
   // 当前步骤 Modal 的 Body
-  content?: ReactNode;
+  content?: TStepModalNodeRender;
   // 当前步骤 Modal 的 Footer
-  footer?: ReactNode;
-  // 下一步
-  onNext?: () => void;
-  // 上一步
-  onBack?: () => void;
+  footer?: TStepModalNodeRender;
+  // 同 Modal.footer
+  additionalFooter?: ReactNode;
+  // 下一步按钮的 props
+  nextButtonProps?: ButtonProps;
+  // 上一步按钮的 props
+  backButtonProps?: ButtonProps;
+  // 下一步按钮的 text
+  nextText?: string;
+  // 上一步按钮的 text
+  backText?: string;
+}
+
+export interface IStepInner extends IStep {
+  next?: string[];
+}
+
+export interface IStepMap {
+  [key: string]: IStepInner;
 }
 
 export interface IStepModalProps extends IModalProps {
   steps?: IStep[];
+  onStepChange?: (step: string) => void;
 }

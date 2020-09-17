@@ -10,22 +10,52 @@
     font-size: @size-font-16;
     line-height: 24px;
   }
+
   & &-container {
     position: relative;
-    overflow: auto hidden;
-    border: 0.5px solid @color-border-table;
-    border-top: 0;
-    border-radius: @radius-border-small;
     table {
       position: relative;
       width: 100%;
       font-size: @size-font-14;
       line-height: 20px;
       letter-spacing: 0;
-      border: 0;
-      border-collapse: separate;
+      border-style: hidden;
+      border-radius: 4px;
+      border-collapse: collapse;
       border-spacing: 0;
+      // hack
+      box-shadow: 0 0 0 1px @color-border-table;
     }
+  }
+  // hack
+  &-fixed-header &-container,
+  &-fixed-column &-container {
+    border: 0.5px solid @color-border-table;
+    border-radius: @radius-border-small;
+  }
+
+  &-fixed-header &-container > &-header {
+    border-bottom: 0.5px solid @color-border-table;
+  }
+
+  &-fixed-header &-container > &-body > table {
+    border-style: hidden;
+    box-shadow: unset;
+  }
+
+  &-fixed-header &-container > &-header,
+  &-fixed-column &-container > &-content {
+    border-top-left-radius: @radius-border-small;
+    border-top-right-radius: @radius-border-small;
+  }
+  &-fixed-header &-container > &-body,
+  &-fixed-column &-container > &-content {
+    border-bottom-right-radius: @radius-border-small;
+    border-bottom-left-radius: @radius-border-small;
+  }
+  &-fixed-header &-container &-tbody > tr:nth-child(2) > td,
+  &-fixed-column &-container &-tbody > tr:nth-child(2) > td {
+    border-top: unset;
   }
 
   &-thead > tr {
@@ -37,7 +67,6 @@
   }
 
   &-thead > tr:first-child > &-cell {
-    border-top: 0.5px solid @color-border-table;
     &:first-child {
       border-top-left-radius: @radius-border-small;
     }
@@ -47,46 +76,43 @@
   }
 
   &-thead > tr > &-cell {
-    padding: 15px;
+    padding: 16px;
     vertical-align: middle;
     background-color: @color-background-table-head;
     border: 0.5px solid @color-border-table;
-    border-top: 0;
-    border-left: 0;
-    &:last-child {
-      border-right: 0;
-    }
-  }
-
-  &-tbody {
-    color: @color-text-table-body;
   }
 
   &-tbody > tr {
     height: 50px;
+    color: @color-text-table-body;
     line-height: 20px;
-    &:hover {
-      td {
-        background-color: @color-background-table-hover;
-        transition: background-color 0.3s ease-in-out;
-      }
+  }
+
+  &-tbody > tr:last-child > &-cell {
+    &:first-child {
+      border-bottom-left-radius: @radius-border-small;
     }
-    &:last-child > td {
-      border-bottom: unset;
-      &:first-child {
-        border-bottom-left-radius: @radius-border-small;
-      }
-      &:last-child {
-        border-bottom-right-radius: @radius-border-small;
-      }
+    &:last-child {
+      border-bottom-right-radius: @radius-border-small;
     }
   }
 
   &-tbody > tr > &-cell {
     padding: 16px;
     background-color: @color-background-table-body;
-    border: 0;
+    border-top: 0.5px solid @color-border-table;
+    border-right: unset;
     border-bottom: 0.5px solid @color-border-table;
+    border-left: unset;
+  }
+
+  &-showHover &-tbody > tr {
+    &:hover {
+      td {
+        background-color: @color-background-table-hover;
+        transition: background-color 0.3s ease-in-out;
+      }
+    }
   }
 
   &-cell {
@@ -101,7 +127,7 @@
     }
     &-fix-left,
     &-fix-right {
-      z-index: 1;
+      z-index: @zindex-table-fixed;
     }
     &-fix-left-last {
       &::after {
@@ -120,14 +146,20 @@
       &::after {
         position: absolute;
         top: 0;
-        bottom: -1px;
-        left: -1px;
+        bottom: 0;
+        left: 0;
         width: 20px;
         transform: translateX(-100%);
         transition: box-shadow 0.3s;
         content: '';
         pointer-events: none;
       }
+    }
+  }
+  // hack
+  &-thead &-cell-fix-right-first {
+    &::after {
+      left: -1px;
     }
   }
 

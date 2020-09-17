@@ -20,9 +20,7 @@ import CardTrigger from './triggers/CardTrigger';
 import InputTrigger from './triggers/InputTrigger';
 import AvatarTrigger from './triggers/AvatarTrigger';
 import DragTrigger from './triggers/DragTrigger';
-import {
-  imageFile2DataUrl, fileToObject, getEmptyFileObj, fetchImageFileFromUrl,
-} from './utils';
+import { imageFile2DataUrl, fileToObject, getEmptyFileObj, fetchImageFileFromUrl } from './utils';
 import xhrRequest from './xhrRequest';
 import { UploadPrefixClsContext } from './UploadContext';
 
@@ -52,7 +50,7 @@ const Upload: React.FC<IUploadProps> = ({
   openFileDialogOnClick = true,
   children,
   ...restProps
-}) => {
+}: IUploadProps) => {
   const [file, setFile] = useState<IUploadFile>(getEmptyFileObj());
 
   const rcUploadRef = useRef(null);
@@ -67,38 +65,39 @@ const Upload: React.FC<IUploadProps> = ({
 
   const Trigger = triggerMap[type];
 
-  const handleBeforeUpload = (file: IRcFile, fileList: IRcFile[]) => beforeUpload?.(file, fileList);
+  const handleBeforeUpload = (fileBeforeUpload: IRcFile, fileList: IRcFile[]) =>
+    beforeUpload?.(fileBeforeUpload, fileList);
 
-  const handleStart = (file: IRcFile) => {
+  const handleStart = (fileOnStart: IRcFile) => {
     const uploadFile: IUploadFile = {
-      ...fileToObject(file),
+      ...fileToObject(fileOnStart),
       status: STATUS_UPLOADING,
     };
     setFile(uploadFile);
     onStart?.(uploadFile);
   };
 
-  const handleProgress = (step: IProgress, file: IRcFile) => {
+  const handleProgress = (step: IProgress, fileOnProgress: IRcFile) => {
     const progressFile: IUploadFile = {
-      ...fileToObject(file),
+      ...fileToObject(fileOnProgress),
       status: STATUS_UPLOADING,
       percent: step.percent,
     };
     setFile(progressFile);
-    onProgress?.(step, file);
+    onProgress?.(step, fileOnProgress);
   };
 
-  const handleSuccess = async (response: object, file: IRcFile) => {
+  const handleSuccess = async (response: Record<string, unknown>, fileOnSuccess: IRcFile) => {
     let dataUrl = '';
     const uploadFile: IUploadFile = {
-      ...fileToObject(file),
+      ...fileToObject(fileOnSuccess),
       response,
       status: STATUS_SUCCESS,
     };
 
     try {
-      if (file.type.startsWith('image/')) {
-        dataUrl = await imageFile2DataUrl(file);
+      if (fileOnSuccess.type.startsWith('image/')) {
+        dataUrl = await imageFile2DataUrl(fileOnSuccess);
         uploadFile.dataUrl = dataUrl;
       }
     } catch (error) {
@@ -109,12 +108,12 @@ const Upload: React.FC<IUploadProps> = ({
     onSuccess?.(response, uploadFile);
   };
 
-  const handleError = (error: Error, response: any, file: IRcFile) => {
+  const handleError = (error: Error, response: any, fileOnError: IRcFile) => {
     if (type !== 'input') {
       Toast.error('上传失败！');
     }
     const errorFile: IUploadFile = {
-      ...fileToObject(file),
+      ...fileToObject(fileOnError),
       error,
       response,
       status: STATUS_ERROR,
@@ -134,13 +133,13 @@ const Upload: React.FC<IUploadProps> = ({
     });
   };
 
-  const handleInputUpload = async (type: TInputUploadType = 'url', url: string) => {
+  const handleInputUpload = async (uploadType: TInputUploadType = 'url', url: string) => {
     const uploadFile = {
       ...file,
       type: 'image',
       name: 'web-image',
     };
-    if (type === 'url') {
+    if (uploadType === 'url') {
       uploadFile.dataUrl = url;
       uploadFile.status = STATUS_SUCCESS;
       setFile(uploadFile);
@@ -159,7 +158,7 @@ const Upload: React.FC<IUploadProps> = ({
           ac = action as string;
         }
 
-        let data: object;
+        let data: Record<string, string | Blob>;
         if (typeof restProps.data === 'function') {
           data = restProps.data(uploadFile);
         } else {
@@ -174,8 +173,8 @@ const Upload: React.FC<IUploadProps> = ({
           withCredentials: restProps.withCredentials ?? false,
           method: restProps.method || 'post',
           onProgress: (e: IProgress) => handleProgress(e, originFile),
-          onSuccess: (res: object) => handleSuccess(res, originFile),
-          onError: (err: Error, res: object) => handleError(err, res, originFile),
+          onSuccess: (res: Record<string, unknown>) => handleSuccess(res, originFile),
+          onError: (err: Error, res: Record<string, unknown>) => handleError(err, res, originFile),
         });
       } catch (error) {
         setFile({ ...file, error });

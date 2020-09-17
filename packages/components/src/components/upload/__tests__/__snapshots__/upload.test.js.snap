@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing Upload match snapshot should match snapshot 1`] = `
+exports[`Testing Upload mount match snapshot should match snapshot 1`] = `
 <div
   className="gio-customized-upload gio-upload gio-upload--disabled"
 >
@@ -58,7 +58,7 @@ exports[`Testing Upload match snapshot should match snapshot 1`] = `
 </div>
 `;
 
-exports[`Testing Upload match snapshot should match snapshot 2`] = `
+exports[`Testing Upload mount match snapshot should match snapshot 2`] = `
 <div
   className="gio-customized-upload gio-upload gio-upload--disabled"
 >
@@ -116,7 +116,7 @@ exports[`Testing Upload match snapshot should match snapshot 2`] = `
 </div>
 `;
 
-exports[`Testing Upload match snapshot should match snapshot 3`] = `
+exports[`Testing Upload mount match snapshot should match snapshot 3`] = `
 <div
   className="gio-customized-upload gio-upload gio-upload--disabled"
 >
@@ -174,7 +174,7 @@ exports[`Testing Upload match snapshot should match snapshot 3`] = `
 </div>
 `;
 
-exports[`Testing Upload match snapshot should match snapshot 4`] = `
+exports[`Testing Upload mount match snapshot should match snapshot 4`] = `
 <div
   className="gio-customized-upload gio-upload gio-upload--disabled"
 >
@@ -232,7 +232,7 @@ exports[`Testing Upload match snapshot should match snapshot 4`] = `
 </div>
 `;
 
-exports[`Testing Upload match snapshot should match snapshot 5`] = `
+exports[`Testing Upload mount match snapshot should match snapshot 5`] = `
 <div
   className="gio-customized-upload gio-upload gio-upload--disabled"
 >

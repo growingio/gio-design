@@ -28,7 +28,9 @@ group:
 
 ### StepModal
 
-<code src='./demo/stepModal.tsx' title='StepModal ' desc='内部可以进行分步骤进行的 Modal。'/>
+<!-- <code src='./demo/stepModal.tsx' title='StepModal ' desc='内部可以进行分步骤进行的 Modal。'/> -->
+
+<code src='./demo/branchStepModal.tsx' />
 
 ## 参数说明
 
@@ -78,10 +80,18 @@ group:
 
 #### IStep
 
-| 参数    | 说明                     | 类型            | 默认值 |
-| ------- | ------------------------ | --------------- | ------ |
-| title   | 当前步骤 Modal 的 Title  | React.ReactNode | -      |
-| content | 当前步骤 Modal 的 Body   | React.ReactNode | -      |
-| footer  | 当前步骤 Modal 的 Footer | React.ReactNode | -      |
-| onNext  | 下一步                   | `() => void`    | -      |
-| onBack  | 上一步                   | `() => void`    | -      |
+| 参数            | 说明                                     | 类型            | 默认值 | 必填 |
+| --------------- | ---------------------------------------- | --------------- | ------ | ---- |
+| key             | 当前 Step 的唯一标识                     | string          | -      | 是   |
+| return          | 当前 Step 的上一步                       | string          | -      | 是   |
+| firstNextInTier | 多分支路径下，当前步骤是否是默认的下一步 | boolean         | -      | 否   |
+| title           | 当前步骤 Modal 的 Title                  | React.ReactNode | -      | 否   |
+| content         | 当前步骤 Modal 的 Body                   | React.ReactNode | -      | 否   |
+| footer          | 当前步骤 Modal 的 Footer                 | React.ReactNode | -      | 否   |
+| onNext          | 下一步                                   | `() => void`    | -      | 否   |
+| onBack          | 上一步                                   | `() => void`    | -      | 否   |
+| additionalFooter          | 除了 `OkButton` 及 `CloseButton`外的自定义 Footer | React.ReactNode   | -      | 否   |
+| nextButtonProps          | 传递给下一步按钮的 props                          | ButtonProps      | -      | 否   |
+| backButtonProps          | 传递给上一步的 props                          | ButtonProps      | -      | 否   |
+| nextText          | 传递给下一步按钮的显示文案                                    |  string    | -      | 否   |
+| backText          | 传递给上一步按钮的显示文案                                    |  string    | -      | 否   |

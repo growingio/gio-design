@@ -2,7 +2,7 @@ import React, { useCallback, useContext, Children } from 'react';
 import RcMenu from 'rc-menu';
 import classnames from 'classnames';
 import { ConfigContext } from '../config-provider';
-import { MenuPrefixClsContext } from './MenuContext';
+import MenuPrefixClsContext from './MenuContext';
 import { IMenuProps, TMenuMode } from './interface';
 
 const transform2RcMode = (mode: TMenuMode) => (mode === 'vertical' ? 'inline' : 'horizontal');
@@ -14,7 +14,7 @@ const getOpenKeys = (mode: TMenuMode, children: React.ReactNode) => {
   return Children.map(children, (_: any) => (_.type.displayName === 'GIODesignSubMenu' ? _.key : null));
 };
 
-const Menu: React.FC<IMenuProps> = (props) => {
+const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
   const {
     mode = 'horizontal',
     prefixCls,
@@ -40,11 +40,14 @@ const Menu: React.FC<IMenuProps> = (props) => {
     spreadProps.openKeys = openKeys;
   }
 
-  const handleClick = useCallback((e) => {
-    if (onClick && typeof onClick === 'function') {
-      onClick(e);
-    }
-  }, []);
+  const handleClick = useCallback(
+    (e) => {
+      if (onClick && typeof onClick === 'function') {
+        onClick(e);
+      }
+    },
+    [onClick]
+  );
 
   return (
     <MenuPrefixClsContext.Provider value={prefix}>

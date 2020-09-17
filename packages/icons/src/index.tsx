@@ -16,6 +16,7 @@ export { default as Delete } from './Delete';
 export { default as DesktopFilled } from './DesktopFilled';
 export { default as DotChartOutlined } from './DotChartOutlined';
 export { default as DownFilled } from './DownFilled';
+export { default as DragMove } from './DragMove';
 export { default as FileCsv } from './FileCsv';
 export { default as FileDoc } from './FileDoc';
 export { default as FilePdf } from './FilePdf';

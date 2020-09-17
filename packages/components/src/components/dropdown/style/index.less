@@ -8,7 +8,7 @@
 
 .@{dropdown-prefix-cls} {
   position: absolute;
-  z-index: 100;
+  z-index: @zindex-dropdown;
   margin: auto;
 
   &-hidden {
@@ -17,7 +17,6 @@
 
   &-content {
     position: relative;
-    padding: 16px 8px 12px;
     background-color: @color-background-dropdown;
     border-radius: 4px;
     box-shadow: @shadow-dropdown;

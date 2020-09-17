@@ -146,7 +146,7 @@
           "value": "{palette.white.value}"
         },
         "hover": {
-          "value": "{palette.gray.1.value}"
+          "value": "{palette.gray.3.value}"
         },
         "active": {
           "value": "{palette.gray.1.value}"
@@ -263,6 +263,9 @@
         },
         "disabled": {
           "value": "{palette.gray.1.value}"
+        },
+        "selection-item": {
+          "value": "{palette.gray.1.value}"
         }
       },
       "menu": {
@@ -346,6 +349,11 @@
         },
         "disabled-active": {
           "value": "{palette.gray.4.value}"
+        }
+      },
+      "input": {
+        "disable": {
+          "value": "{palette.gray.1.value}"
         }
       }
     }

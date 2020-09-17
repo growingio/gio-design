@@ -11,7 +11,7 @@ const InputNumber: React.FC<InputProps> = ({
   disabled = false,
   readOnly = false,
   ...rest
-}) => {
+}: InputProps) => {
   const addDisabled = React.useMemo(() => Number(value) >= max || disabled || readOnly, [
     value,
     max,
