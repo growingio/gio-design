@@ -146,7 +146,7 @@
           "value": "{palette.white.value}"
         },
         "hover": {
-          "value": "{palette.gray.1.value}"
+          "value": "{palette.gray.3.value}"
         },
         "active": {
           "value": "{palette.gray.1.value}"
@@ -263,6 +263,9 @@
         },
         "disabled": {
           "value": "{palette.gray.1.value}"
+        },
+        "selection-item": {
+          "value": "{palette.gray.1.value}"
         }
       },
       "menu": {
@@ -310,25 +313,6 @@
         },
         "hover": {
           "value": "{palette.white.value}"
-        }
-      },
-      "table": {
-        "head": {
-          "value": "{palette.gray.1.value}"
-        },
-        "body": {
-          "value": "{palette.white.value}"
-        },
-        "hover": {
-          "value": "{palette.gray.3.value}"
-        },
-        "arrow": {
-          "normal": {
-            "value": "{palette.black.4.value}"
-          },
-          "active": {
-            "value": "{palette.blue.5.value}"
-          }
         }
       },
       "table": {
