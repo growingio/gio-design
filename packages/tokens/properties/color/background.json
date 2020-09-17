@@ -333,6 +333,11 @@
             "value": "{palette.blue.5.value}"
           }
         }
+      },
+      "input": {
+        "disable": {
+          "value": "{palette.gray.1.value}"
+        }
       }
     }
   }
