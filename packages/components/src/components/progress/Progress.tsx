@@ -11,10 +11,8 @@ const getStatusIcon = (status: string, prefix: string) => {
   return Icon && <Icon className={`${prefix}-${status}-icon`} />;
 };
 
-const Progress: React.FC<ProgressProps> = (props) => {
-  const {
-    percent, status = 'active', format = defaultFormat, customizePrefixCls,
-  } = props;
+const Progress: React.FC<ProgressProps> = (props: ProgressProps) => {
+  const { percent, status = 'active', format = defaultFormat, customizePrefixCls } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('progress', customizePrefixCls);
 

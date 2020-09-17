@@ -25,6 +25,8 @@ const freeInputOption = (value: string): Option => ({
   groupLabel: '自由输入',
 });
 
+const defaultListRowHeight = 44;
+
 const defaultLabelRenderer = (input: string, prefix: string) => (option: Option, isGroup: boolean) => {
   if (isGroup) return option.label;
   const index = option.label.indexOf(input);
@@ -50,6 +52,8 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     searchable = false,
     searchPredicate = defaultSearchPredicate,
     labelRenderer = defaultLabelRenderer,
+    listHeight,
+    listRowHeight = defaultListRowHeight,
     width,
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
@@ -59,17 +63,19 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   );
   const [extraOptions, setExtraOptions] = useState<Option[]>([]);
   // options { value: index } hashtable;
-  const [extendedOptions, optionHash, LabelHash] = useMemo(() => {
+  const [extendedOptions, optionHash, LabelHash, groupCount] = useMemo(() => {
+    const groupKeys = new Map();
     const interalExtendedOptions = options.concat(extraOptions);
     const [internalOptionValueHash, internalOptionLabelHash] = interalExtendedOptions.reduce(
       (maps, option, index) => {
         maps[0].set(option.value, index);
         maps[1].set(option.label, true);
+        groupKeys.set(option.groupValue, true);
         return maps;
       },
       [new Map(), new Map()]
     );
-    return [interalExtendedOptions, internalOptionValueHash, internalOptionLabelHash];
+    return [interalExtendedOptions, internalOptionValueHash, internalOptionLabelHash, groupKeys.size];
   }, [options, extraOptions]);
   const [isFocused, setFocused] = useState(false);
   const [open, setOpen] = useState(false);
@@ -248,6 +254,8 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
       labelRenderer={labelRenderer(input, prefix)}
       width={Math.max(width || 0, 160)}
       onSelect={onSelected}
+      height={listHeight || (filteredOptions.length + groupCount) * defaultListRowHeight}
+      rowHeight={listRowHeight}
     />
   );
 

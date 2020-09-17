@@ -13,6 +13,8 @@ export interface SelectProps<VT = Option> {
   onChange?: (option: VT[] | VT) => void;
   customizePrefixCls?: string;
   width?: number;
+  listHeight?: number;
+  listRowHeight?: number;
 }
 
 export { Option };
