@@ -31,18 +31,18 @@ const InputNumber: React.FC<InputProps> = ({
     if (isNaN(v) || v < min || v > max) {
       return;
     }
-    onChange(value);
+    onChange?.(value);
   };
 
   const handleAdd = () => {
     if (!addDisabled) {
-      onChange(String(Number(value) + 1));
+      onChange?.(String(Number(value) + 1));
     }
   };
 
   const handleDecrease = () => {
     if (!decreaseDisabled) {
-      onChange(String(Number(value) - 1));
+      onChange?.(String(Number(value) - 1));
     }
   };
 
