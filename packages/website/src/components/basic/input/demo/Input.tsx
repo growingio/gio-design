@@ -21,7 +21,7 @@ export default () => {
         placeholder="禁止输入"
         value={inputValue2}
         onChange={setInputValue2}
-        disabled={true}
+        disabled
         wrapStyle={{ display: 'block', marginBottom: '20px' }}
       />
 

@@ -6,7 +6,7 @@ interface UseEnterResult {
   handleOnChange: (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
 }
 
-type UseEnter = (value: string, onChange: (e: string) => void) => UseEnterResult;
+type UseEnter = (value: string | undefined, onChange: ((e: string) => void) | undefined) => UseEnterResult;
 
 const delay = 500;
 
@@ -14,7 +14,9 @@ const useEnter: UseEnter = (value, onChange) => {
   const [realTimeValue, setRealTimeValue] = React.useState('');
 
   React.useEffect(() => {
-    setRealTimeValue(value);
+    if (typeof value === 'string') {
+      setRealTimeValue(value);
+    }
   }, [value]);
 
   useDebounce(
