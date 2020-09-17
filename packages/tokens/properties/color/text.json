@@ -330,6 +330,32 @@
         "empty": {
           "value": "#a3adc8"
         }
+      },
+      "datePicker": {
+        "active": {
+          "value": "{palette.white.value}"
+        },
+        "through": {
+          "value": "{palette.blue.1.value}"
+        },
+        "disable": {
+          "value": "{palette.gray.1.value}"
+        },
+        "disable-date": {
+          "value": "#D8DEE8"
+        },
+        "normal": {
+          "value": "{palette.black.6.value}"
+        },
+        "year-normal": {
+          "value": "{palette.blue.4.value}"
+        },
+        "year-hover": {
+          "value": "{palette.blue.5.value}"
+        },
+        "year-click": {
+          "value": "{palette.blue.3.value}"
+        }
       }
     }
   }

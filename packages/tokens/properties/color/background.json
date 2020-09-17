@@ -334,6 +334,23 @@
           }
         }
       },
+      "datePicker": {
+        "normal": {
+          "value": "{palette.gray.1.value}"
+        },
+        "hover": {
+          "value": "{palette.gray.3.value}"
+        },
+        "click": {
+          "value": "{palette.gray.2.value}"
+        },
+        "active": {
+          "value": "{palette.blue.5.value}"
+        },
+        "disabled-active": {
+          "value": "{palette.gray.4.value}"
+        }
+      },
       "input": {
         "disable": {
           "value": "{palette.gray.1.value}"
