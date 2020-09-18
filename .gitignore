@@ -29,3 +29,4 @@ report.*.json
 yarn-error.log
 .temp.less
 coverage
+.importjs.js
