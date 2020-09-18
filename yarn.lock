@@ -3835,7 +3835,6 @@
     regexpp "^2.0.1"
     tsutils "^3.7.0"
 
-
 "@typescript-eslint/eslint-plugin@^4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.1.0.tgz#7d309f60815ff35e9627ad85e41928d7b7fd443f"
@@ -3865,7 +3864,6 @@
     "@typescript-eslint/typescript-estree" "2.34.0"
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
-
 
 "@typescript-eslint/experimental-utils@4.1.0":
   version "4.1.0"
@@ -3908,7 +3906,6 @@
     "@typescript-eslint/experimental-utils" "2.34.0"
     "@typescript-eslint/typescript-estree" "2.34.0"
     eslint-visitor-keys "^1.1.0"
-
 
 "@typescript-eslint/parser@^4.1.0":
   version "4.1.0"
@@ -3964,7 +3961,6 @@
     lodash "^4.17.15"
     semver "^7.3.2"
     tsutils "^3.17.1"
-
 
 "@typescript-eslint/typescript-estree@4.0.1":
   version "4.0.1"
@@ -8110,7 +8106,6 @@ eslint-config-airbnb@^17.1.0:
     object.assign "^4.1.0"
     object.entries "^1.1.0"
 
-
 eslint-config-airbnb@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-18.2.0.tgz#8a82168713effce8fc08e10896a63f1235499dcd"
@@ -8201,7 +8196,6 @@ eslint-plugin-import@^2.18.2, eslint-plugin-import@^2.21.1, eslint-plugin-import
     resolve "^1.17.0"
     tsconfig-paths "^3.9.0"
 
-
 eslint-plugin-jest@24.0.0:
   version "24.0.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-24.0.0.tgz#6b1c460c529104c7d16d889e76fe708b281c4d14"
@@ -8238,7 +8232,6 @@ eslint-plugin-markdown@^1.0.0:
     object-assign "^4.0.1"
     remark-parse "^5.0.0"
     unified "^6.1.2"
-
 
 eslint-plugin-prettier@^3.1.4:
   version "3.1.4"
@@ -8427,7 +8420,6 @@ eslint@^5.16.0:
     strip-json-comments "^2.0.1"
     table "^5.2.3"
     text-table "^0.2.0"
-
 
 eslint@^7.8.1:
   version "7.8.1"
@@ -10715,24 +10707,6 @@ inquirer@^6.2.0, inquirer@^6.2.2:
     rxjs "^6.4.0"
     string-width "^2.1.0"
     strip-ansi "^5.1.0"
-    through "^2.3.6"
-
-inquirer@^7.0.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.1.0.tgz#1298a01859883e17c7264b82870ae1034f92dd29"
-  dependencies:
-    ansi-escapes "^4.2.1"
-    chalk "^3.0.0"
-    cli-cursor "^3.1.0"
-    cli-width "^2.0.0"
-    external-editor "^3.0.3"
-    figures "^3.0.0"
-    lodash "^4.17.15"
-    mute-stream "0.0.8"
-    run-async "^2.4.0"
-    rxjs "^6.5.3"
-    string-width "^4.1.0"
-    strip-ansi "^6.0.0"
     through "^2.3.6"
 
 insert-css@^2.0.0:
@@ -15898,14 +15872,14 @@ rc-dropdown@^3.1.0, rc-dropdown@~3.1.2:
     classnames "^2.2.6"
     rc-trigger "^4.0.0"
 
-rc-dropdown@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.npm.taobao.org/rc-dropdown/download/rc-dropdown-3.1.2.tgz#5199bd532ac8519813a347d194ab4b0cee702333"
-  integrity sha1-UZm9UyrIUZgTo0fRlKtLDO5wIzM=
+rc-field-form@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/rc-field-form/-/rc-field-form-1.11.0.tgz#e53f93d3a7e8e14853fdfbe76f976be9c635038f"
+  integrity sha512-Rz9M4Q7jAPzWeQV7tD7QWZsIT9kygjALZRvwjstFu1yKOcsxQnRc6AOkKKEo5Cj1EsJk40oKvX/dVDKNUCDv7Q==
   dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "^2.2.6"
-    rc-trigger "^4.0.0"
+    "@babel/runtime" "^7.8.4"
+    async-validator "^3.0.3"
+    rc-util "^5.0.0"
 
 rc-field-form@~1.4.1:
   version "1.4.4"
@@ -16507,7 +16481,6 @@ react-tween-state@^0.1.5:
 react-universal-interface@^0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/react-universal-interface/-/react-universal-interface-0.6.2.tgz#5e8d438a01729a4dbbcbeeceb0b86be146fe2b3b"
-
 
 react-use@^15.3.3:
   version "15.3.3"
@@ -18620,7 +18593,6 @@ strong-log-transformer@^2.0.0:
     duplexer "^0.1.1"
     minimist "^1.2.0"
     through "^2.3.4"
-
 
 style-dictionary@2.10.1:
   version "2.10.1"
