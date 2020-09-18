@@ -15861,6 +15861,15 @@ rc-dropdown@^3.1.0, rc-dropdown@~3.1.2:
     classnames "^2.2.6"
     rc-trigger "^4.0.0"
 
+rc-field-form@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/rc-field-form/-/rc-field-form-1.11.0.tgz#e53f93d3a7e8e14853fdfbe76f976be9c635038f"
+  integrity sha512-Rz9M4Q7jAPzWeQV7tD7QWZsIT9kygjALZRvwjstFu1yKOcsxQnRc6AOkKKEo5Cj1EsJk40oKvX/dVDKNUCDv7Q==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    async-validator "^3.0.3"
+    rc-util "^5.0.0"
+
 rc-field-form@~1.4.1:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/rc-field-form/-/rc-field-form-1.4.4.tgz#3689d19a8acd2bb9fe7ff43275bc42170d62f20d"
