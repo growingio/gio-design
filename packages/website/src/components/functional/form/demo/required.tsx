@@ -1,46 +1,45 @@
 import '@gio-design/components/es/components/form/style/index.css';
 
-import './index.less';
-
-import React from 'react';
+import React, { useRef, useState } from 'react';
 
 import { Form, Input, Button } from '@gio-design/components';
+import { FormInstance } from '@gio-design/components/es/components/form';
 
-const { Item } = Form;
+const { Item, useForm } = Form;
 
 export default (): JSX.Element => {
+  const [form] = useForm();
+  const ref = useRef();
+  const onFinish = (formData: any) => {
+    console.log(formData);
+    console.log(form);
+  };
+  const onReset = () => {
+    form.resetFields();
+  };
+
   return (
-    <Form name="required" requiredMark>
-      <Item name="name1" label="必填" required>
+    <Form name="required" onFinish={onFinish} form={form}>
+      <Item name="name" label="必填" required rules={[{ required: true, message: 'Please input your username!' }]}>
         <Input placeholder="请输入用户名" />
       </Item>
-
       <Item name="name2" label="非必填">
         <Input placeholder="请输入用户名" />
       </Item>
-      <Item name="name3" label="非必填">
+      <Item name="name3" label="选填" required="option">
         <Input placeholder="请输入密码" />
       </Item>
-
-      <Item name="name4" label="非必填">
-        <Input placeholder="请输入密码" />
-      </Item>
-
-      <Item name="name5" label="非必填">
-        <Input placeholder="请输入密码" />
-      </Item>
-
-      <Item name="name6" label="非必填">
-        <Input placeholder="请输入密码" />
-      </Item>
-
-      <Item name="name7" label="非必填">
+      <Item name="name4" label="选填" required="option" requireMarker="（自定提示）">
         <Input placeholder="请输入密码" />
       </Item>
 
       <Item>
-        <Button>提交</Button>
-        <Button type="secondary">取消</Button>
+        <div>
+          <Button htmlType="submit">提交</Button>
+          <Button htmlType="reset" type="secondary" onClick={onReset}>
+            重置
+          </Button>
+        </div>
       </Item>
     </Form>
   );

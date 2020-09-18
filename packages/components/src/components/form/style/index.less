@@ -21,10 +21,8 @@
     color: if(@hasMsg, @@color, '');
   }
 
-  .@{field-prefix-cls}-children-icon {
-    .@{icon-prefix-cls} {
-      color: if(@hasIcon, @@color, '');
-    }
+  .@{icon-prefix-cls} {
+    color: if(@hasIcon, @@color, '');
   }
 }
 
@@ -33,39 +31,39 @@
   display: flex;
   margin-bottom: 20px;
 
-  &&-has-error,
-  &&-has-help,
-  &&-has-feedback {
+  &-has-error,
+  &-has-help,
+  &-has-feedback {
     margin-bottom: 0;
   }
 
-  & &-label {
+  &-required &-label::after {
+    content: '*';
+    color: red;
+    margin-left: 0.5em;
+  }
+
+  &-label {
     font-size: @font-size-base;
     font-weight: @weight-font-medium;
     line-height: @text-lint-height-base;
-    padding-right: 12px;
+    padding-right: 8px;
 
     > label {
       display: inline-flex;
       align-items: center;
       height: @size-field-normal;
     }
-
-    &-required .@{field-prefix-cls}-label-marker {
-      color: red;
-      margin-left: 0.5em;
-    }
   }
 
-  & &-control {
+  &-control {
     &-input {
       position: relative;
       display: inline-flex;
       align-items: center;
-      min-height: @size-field-normal;
-      width: 100%;
+      height: @size-field-normal;
 
-      .@{field-prefix-cls}-children-icon {
+      .@{icon-prefix-cls} {
         position: absolute;
         display: inline-flex;
         align-items: center;
@@ -121,12 +119,12 @@
   }
 
   // layouts
-  &-horizontal {
+  &-horizon {
     .@{field-prefix-cls} {
       flex-direction: row;
 
       &-label {
-        min-width: 120px;
+        min-width: 80px;
         text-align: right;
       }
     }

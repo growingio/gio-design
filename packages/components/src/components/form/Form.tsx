@@ -4,23 +4,19 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 
 import { ConfigContext } from '../config-provider';
-import { FormContext, WidthProperty, FormLabelAlign, RequiredMark } from './context';
-import { SizeContextProvider, SizeType } from '../config-provider/SizeContext';
+import { FormContext, WidthProperty, FormLabelAlign } from './context';
 
-export type FormLayout = 'horizontal' | 'vertical' | 'inline';
+export type FormLayout = 'horizon' | 'vertical' | 'inline';
 
 export interface Props<Values = any> extends Omit<RcFormProps<Values>, 'form'> {
   prefixCls?: string;
   className?: string;
   name?: string;
   labelWidth?: WidthProperty;
-  inputWidth?: WidthProperty;
+  controlWidth?: WidthProperty;
   labelAlign?: FormLabelAlign;
   form?: FormInstance<Values>;
   layout?: FormLayout;
-  size?: SizeType;
-  colon?: boolean;
-  requiredMark?: RequiredMark;
 }
 
 const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props, ref) => {
@@ -28,14 +24,11 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
     name,
     prefixCls: customizePrefixCls,
     className,
-    layout = 'horizontal',
+    layout = 'vertical',
     labelWidth,
-    inputWidth,
+    controlWidth,
     labelAlign,
-    size,
     form,
-    colon = false,
-    requiredMark = true,
     ...restProps
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
@@ -52,19 +45,15 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
     name,
     layout,
     labelWidth,
-    inputWidth,
+    controlWidth,
     labelAlign,
-    requiredMark,
-    colon,
   };
 
   React.useImperativeHandle(ref, () => wrapForm);
 
   return (
     <FormContext.Provider value={formContextValues}>
-      <SizeContextProvider size={size}>
-        <RcForm {...restProps} id={name} className={cls} form={wrapForm} />
-      </SizeContextProvider>
+      <RcForm {...restProps} id={name} className={cls} form={wrapForm} />
     </FormContext.Provider>
   );
 };

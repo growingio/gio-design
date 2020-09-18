@@ -6,7 +6,7 @@ export type FormItemFeedbackType = 'validating' | 'error' | 'warning' | 'success
 export interface Props {
   prefixCls?: string;
   className?: string;
-  inputWidth?: string | number;
+  controlWidth?: string | number;
   afterInput?: React.ReactNode;
   help?: React.ReactNode;
   hasFeedback?: boolean;
@@ -26,7 +26,7 @@ const iconMap = {
 const ItemControl: React.FC<Props> = (props: Props) => {
   const {
     prefixCls,
-    inputWidth,
+    controlWidth,
     afterInput,
     help,
     hasFeedback,
@@ -46,7 +46,7 @@ const ItemControl: React.FC<Props> = (props: Props) => {
   const icon = customIcon || innerIcon;
 
   return (
-    <div className={`${prefixCls}-control`} style={{ width: inputWidth }}>
+    <div className={`${prefixCls}-control`} style={{ width: controlWidth }}>
       <div className={`${prefixCls}-control-input`}>
         {children}
         {icon}

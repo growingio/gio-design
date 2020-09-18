@@ -1,34 +1,26 @@
 import '@gio-design/components/es/components/form/style/index.css';
 
-import './index.less';
+import React, { useRef, useState } from 'react';
 
-import React from 'react';
-
-import { Form, Button, Input, Toggles } from '@gio-design/components';
+import { Form, Input, Button } from '@gio-design/components';
+import { FormInstance } from '@gio-design/components/es/components/form';
 
 const { Item, useForm } = Form;
 
-interface Props {
-  name: string;
-}
-
-export default ({ name = 'base' }): JSX.Element => {
+export default (): JSX.Element => {
   const [form] = useForm();
+  const ref = useRef();
   const onFinish = (formData: any) => {
     console.log(formData);
+    console.log(form);
   };
   const onReset = () => {
     form.resetFields();
   };
 
   return (
-    <Form name={name} onFinish={onFinish} form={form}>
-      <Item
-        name="username"
-        label="用户名"
-        required
-        rules={[{ required: true, message: 'Please input your username!' }]}
-      >
+    <Form name="base" onFinish={onFinish} form={form}>
+      <Item name="name" label="用户名" required rules={[{ required: true, message: 'Please input your username!' }]}>
         <Input placeholder="请输入用户名" />
       </Item>
       <Item name="password" label="密码" required rules={[{ required: true, message: 'Please input your password!' }]}>

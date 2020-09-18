@@ -1,7 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
-
-import { RequiredMark } from './context';
 
 export interface Props {
   label?: string;
@@ -9,52 +6,29 @@ export interface Props {
   prefixCls: string;
   labelWidth?: string | number;
   afterLabel?: React.ReactNode;
-  required?: boolean;
-  requiredMark?: RequiredMark;
-  marker?: React.ReactNode;
-  colon?: string;
-  htmlFor?: string;
+  required?: boolean | 'option';
+  requireMarker?: React.ReactNode;
 }
 
 const ItemLabel: React.FC<Props> = (props: Props) => {
-  const {
-    prefixCls,
-    label,
-    labelWidth,
-    fieldId,
-    afterLabel,
-    required,
-    requiredMark,
-    marker,
-    colon,
-    htmlFor = fieldId,
-  } = props;
-  const isRequired = required && (requiredMark === true || requiredMark === undefined);
-  const isOptional = !required && requiredMark === 'optional';
-  const innerMarker = isOptional ? '（选填）' : '*';
-  const mergedRequiredMarker = marker !== undefined ? marker : innerMarker;
-  const cls = classNames(
-    `${prefixCls}-label`,
-    isRequired && `${prefixCls}-label-required`,
-    isOptional && `${prefixCls}-label-optional`
-  );
+  const { prefixCls, label, labelWidth, fieldId, afterLabel, required, requireMarker = '（选填）' } = props;
+  const isOption = required === 'option';
 
   let labelChild: React.ReactNode = label;
-  if (isRequired || isOptional) {
+  if (isOption) {
     labelChild = (
-      <>
+      <div className={`${prefixCls}-label-option`}>
         <span className={`${prefixCls}-label-content`}>{label}</span>
-        <span className={`${prefixCls}-label-marker`}>{mergedRequiredMarker}</span>
-      </>
+        <span className={`${prefixCls}-label-marker`}>{requireMarker}</span>
+      </div>
     );
   }
 
   return (
-    <div className={cls} style={{ width: labelWidth }}>
+    <div className={`${prefixCls}-label`} style={{ width: labelWidth }}>
       {label && (
-        <label title={label} htmlFor={htmlFor}>
+        <label title={label} htmlFor={fieldId}>
           {labelChild}
-          {colon}
         </label>
       )}
       {afterLabel}
