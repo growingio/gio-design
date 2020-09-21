@@ -9,6 +9,10 @@ nav:
 
 # @gio-design/tokens 更新日志
 
+## 20.9.2
+
+- 🆕 从整体设计 z-index 层级。[#205](https://github.com/growingio/gio-design/pull/205)
+
 ## 20.9.0
 
 - 🆕 更新字体相关的 `tokens`。[#173](https://github.com/growingio/gio-design/pull/173)
