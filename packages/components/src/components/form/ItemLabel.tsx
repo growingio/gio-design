@@ -1,4 +1,7 @@
 import React from 'react';
+import classNames from 'classnames';
+
+import { RequiredMark } from './context';
 
 export interface Props {
   label?: string;
@@ -6,26 +9,35 @@ export interface Props {
   prefixCls: string;
   labelWidth?: string | number;
   afterLabel?: React.ReactNode;
-  required?: boolean | 'option';
-  requireMarker?: React.ReactNode;
+  required?: boolean;
+  requiredMark?: RequiredMark;
+  marker?: React.ReactNode;
 }
 
 const ItemLabel: React.FC<Props> = (props: Props) => {
-  const { prefixCls, label, labelWidth, fieldId, afterLabel, required, requireMarker = '（选填）' } = props;
-  const isOption = required === 'option';
+  const { prefixCls, label, labelWidth, fieldId, afterLabel, required, requiredMark, marker } = props;
+  const isRequired = required && (requiredMark === true || requiredMark === undefined);
+  const isOptional = !required && requiredMark === 'optional';
+  const innerMarker = isOptional ? '（选填）' : '*';
+  const mergedRequiredMarker = marker !== undefined ? marker : innerMarker;
+  const cls = classNames(
+    `${prefixCls}-label`,
+    isRequired && `${prefixCls}-label-required`,
+    isOptional && `${prefixCls}-label-optional`
+  );
 
   let labelChild: React.ReactNode = label;
-  if (isOption) {
+  if (isRequired || isOptional) {
     labelChild = (
-      <div className={`${prefixCls}-label-option`}>
+      <>
         <span className={`${prefixCls}-label-content`}>{label}</span>
-        <span className={`${prefixCls}-label-marker`}>{requireMarker}</span>
-      </div>
+        <span className={`${prefixCls}-label-marker`}>{mergedRequiredMarker}</span>
+      </>
     );
   }
 
   return (
-    <div className={`${prefixCls}-label`} style={{ width: labelWidth }}>
+    <div className={cls} style={{ width: labelWidth }}>
       {label && (
         <label title={label} htmlFor={fieldId}>
           {labelChild}
