@@ -3,11 +3,11 @@ import '@gio-design/components/es/components/form/style/index.css';
 import React from 'react';
 
 import { Form, Input } from '@gio-design/components';
-import { FormItemMessageType } from '@gio-design/components/es/components/form/Item';
+import { FormItemFeedbackType } from '@gio-design/components/es/components/form';
 
 const { Item } = Form;
 
-const messageTypes: FormItemMessageType[] = ['validating', 'warning', 'error', 'success'];
+const messageTypes: FormItemFeedbackType[] = ['validating', 'warning', 'error', 'success'];
 
 export default (): JSX.Element => {
   return (
