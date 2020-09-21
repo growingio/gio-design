@@ -9,5 +9,5 @@ export interface TagProps {
   onClose?: (e: React.MouseEvent<HTMLSpanElement>) => void;
   customizePrefixCls?: string;
   children: React.ReactNode;
-  className: string;
+  className?: string;
 }
