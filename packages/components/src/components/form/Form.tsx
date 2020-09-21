@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 
 import { ConfigContext } from '../config-provider';
-import { FormContext, WidthProperty, FormLabelAlign } from './context';
+import { FormContext, WidthProperty, FormLabelAlign, RequiredMark } from './context';
 
 export type FormLayout = 'horizon' | 'vertical' | 'inline';
 
@@ -17,6 +17,7 @@ export interface Props<Values = any> extends Omit<RcFormProps<Values>, 'form'> {
   labelAlign?: FormLabelAlign;
   form?: FormInstance<Values>;
   layout?: FormLayout;
+  requiredMark?: RequiredMark;
 }
 
 const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props, ref) => {
@@ -29,6 +30,7 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
     controlWidth,
     labelAlign,
     form,
+    requiredMark,
     ...restProps
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
@@ -47,6 +49,7 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
     labelWidth,
     controlWidth,
     labelAlign,
+    requiredMark,
   };
 
   React.useImperativeHandle(ref, () => wrapForm);

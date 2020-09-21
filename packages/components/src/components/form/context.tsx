@@ -9,12 +9,15 @@ export type WidthProperty = number | string;
 
 export type FormLabelAlign = 'left' | 'right';
 
+export type RequiredMark = boolean | 'optional';
+
 export interface FormContextProps {
   name?: string;
   layout?: FormLayout;
   labelAlign?: FormLabelAlign;
   labelWidth?: WidthProperty;
   controlWidth?: WidthProperty;
+  requiredMark?: RequiredMark;
 }
 
 export const FormContext = React.createContext<FormContextProps>({

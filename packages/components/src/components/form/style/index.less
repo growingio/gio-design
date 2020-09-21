@@ -31,19 +31,13 @@
   display: flex;
   margin-bottom: 20px;
 
-  &-has-error,
-  &-has-help,
-  &-has-feedback {
+  &&-has-error,
+  &&-has-help,
+  &&-has-feedback {
     margin-bottom: 0;
   }
 
-  &-required &-label::after {
-    content: '*';
-    color: red;
-    margin-left: 0.5em;
-  }
-
-  &-label {
+  & &-label {
     font-size: @font-size-base;
     font-weight: @weight-font-medium;
     line-height: @text-lint-height-base;
@@ -54,9 +48,14 @@
       align-items: center;
       height: @size-field-normal;
     }
+
+    &-required .@{field-prefix-cls}-label-marker {
+      color: red;
+      margin-left: 0.5em;
+    }
   }
 
-  &-control {
+  & &-control {
     &-input {
       position: relative;
       display: inline-flex;

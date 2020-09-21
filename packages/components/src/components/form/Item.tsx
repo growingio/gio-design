@@ -24,8 +24,8 @@ export interface Props extends Omit<FieldProps, 'children'> {
   hasFeedback?: boolean;
   feedback?: React.ReactNode;
   feedbackType?: FormItemFeedbackType;
-  required?: boolean | 'option';
-  requireMarker?: React.ReactNode;
+  required?: boolean;
+  marker?: React.ReactNode;
   icon?: React.ReactNode;
 }
 
@@ -45,13 +45,13 @@ const Item: React.FC<Props> = (props: Props) => {
     trigger = 'onChange',
     validateTrigger,
     required = false,
-    requireMarker,
+    marker,
     icon,
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('field', customizePrefixCls);
   const [hasReseted, setHasReseted] = useState(false);
-  const { name: formName, labelWidth, controlWidth } = useContext(FormContext);
+  const { name: formName, labelWidth, controlWidth, requiredMark } = useContext(FormContext);
   const { validateTrigger: contextValidateTrigger = 'onChange' } = useContext(FieldContext);
   const mergedValidateTrigger = validateTrigger === undefined ? contextValidateTrigger : validateTrigger;
 
@@ -70,9 +70,9 @@ const Item: React.FC<Props> = (props: Props) => {
         const hasHelp = !!help;
         const mergedFeedbackType = hasError ? 'error' : feedbackType;
         const mergedFeedback = feedback ? toArray(feedback) : errors;
+        const mergedRequired = required === true && (requiredMark === true || requiredMark === undefined);
         const cls = classNames(prefixCls, className, {
-          [`${prefixCls}-required`]: required === true,
-          [`${prefixCls}-option`]: required === 'option',
+          [`${prefixCls}-required`]: mergedRequired,
           [`${prefixCls}-has-error`]: hasError,
           [`${prefixCls}-has-feedback`]: hasFeedback,
           [`${prefixCls}-has-help`]: hasHelp,
@@ -92,8 +92,8 @@ const Item: React.FC<Props> = (props: Props) => {
           triggers.forEach((eventName) => {
             childProps[eventName] = (...args: unknown[]) => {
               setHasReseted(false);
-              if (control[eventName]) control[eventName](...args);
-              if (children.props[eventName]) children.props[eventName](...args);
+              control[eventName]?.(...args);
+              children.props[eventName]?.(...args); // orignal event handler
             };
           });
 
@@ -108,7 +108,7 @@ const Item: React.FC<Props> = (props: Props) => {
 
         return (
           <div className={cls} data-message-type={mergedFeedbackType}>
-            <ItemLabel {...{ label, prefixCls, fieldId, required, afterLabel, labelWidth, requireMarker }} />
+            <ItemLabel {...{ label, prefixCls, fieldId, required, afterLabel, labelWidth, requiredMark, marker }} />
             <ItemControl
               {...{
                 prefixCls,
