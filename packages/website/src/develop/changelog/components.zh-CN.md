@@ -9,6 +9,32 @@ nav:
 
 # @gio-design/components 更新日志
 
+- 💄 从整体设计 z-index 层级。[#205](https://github.com/growingio/gio-design/pull/205)
+- Modal
+  - 🐛 修复 Modal footer 设置无效问题；修复 StepModal steps 变更 stepStack 未重置问题[#207](https://github.com/growingio/gio-design/pull/207)
+  - 🐛 修复分步骤弹窗组件 footer 显示逻辑。修复 steps props 变更造成崩溃的问题。修复 steps 路径不能满足某些情况的问题。[#226](https://github.com/growingio/gio-design/pull/226)
+- Avatar
+  - 🐛 修复 avatar 组件不能触发 Dropdown 的 bug。[#208](https://github.com/growingio/gio-design/pull/208)
+- Dropdown
+  - 📖 添加 Dropdown demo.[#209](https://github.com/growingio/gio-design/pull/209)
+- List
+  - 🐛 修复点击 checkbox 触发两次问题。[#219](https://github.com/growingio/gio-design/pull/219)
+  - 🆕 新增 onSelect 和 onDeselect props。[#223](https://github.com/growingio/gio-design/pull/223)
+- Select
+  - 🆕 新增 Select 组件。[#221](https://github.com/growingio/gio-design/pull/221)
+- Tooltip
+  - 🐛 修复 tooltip 子组件 style 参数被覆盖问题.[#224](https://github.com/growingio/gio-design/pull/224)
+- Checkbox
+  - 💄 提升 .gio-checkbox-icon-indeterminate 样式优先级。[#228](https://github.com/growingio/gio-design/pull/227)
+- Input
+  - 🆕 组件 value 和 onChange 参数改为可选。[#228](https://github.com/growingio/gio-design/pull/228)
+- Table
+  - 🆕 更新组件 props。[#203](https://github.com/growingio/gio-design/pull/203)
+- TreeSelect
+  - 🆕 新增 TreeSelect 组件。[#202](https://github.com/growingio/gio-design/pull/202)
+- DatePicker
+  - 🆕 新增 DatePicker 组件。[#199](https://github.com/growingio/gio-design/pull/199)
+
 ## 20.9.1
 
 - 🆕 新增 `SearchBar` 组件。[#153](https://github.com/growingio/gio-design/pull/153)
