@@ -9,6 +9,8 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.9.2
+
 - 💄 从整体设计 z-index 层级。[#205](https://github.com/growingio/gio-design/pull/205)
 - Modal
   - 🐛 修复 Modal footer 设置无效问题；修复 StepModal steps 变更 stepStack 未重置问题[#207](https://github.com/growingio/gio-design/pull/207)
