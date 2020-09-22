@@ -21,12 +21,12 @@ export interface Props extends Omit<FieldProps, 'children'> {
   afterInput?: React.ReactNode;
   children?: ChildrenType;
   help?: React.ReactNode;
-  hasFeedback?: boolean;
   feedback?: React.ReactNode;
   feedbackType?: FormItemFeedbackType;
   required?: boolean;
   marker?: React.ReactNode;
-  icon?: React.ReactNode;
+  feedbackIcon?: React.ReactNode;
+  htmlFor?: string;
 }
 
 const Item: React.FC<Props> = (props: Props) => {
@@ -37,7 +37,6 @@ const Item: React.FC<Props> = (props: Props) => {
     label,
     help,
     feedback,
-    hasFeedback = !!feedback,
     feedbackType,
     afterLabel,
     afterInput,
@@ -46,12 +45,13 @@ const Item: React.FC<Props> = (props: Props) => {
     validateTrigger,
     required = false,
     marker,
-    icon,
+    feedbackIcon,
+    htmlFor,
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('field', customizePrefixCls);
   const [hasReseted, setHasReseted] = useState(false);
-  const { name: formName, labelWidth, controlWidth, requiredMark } = useContext(FormContext);
+  const { name: formName, layout, labelWidth, inputWidth, requiredMark, colon } = useContext(FormContext);
   const { validateTrigger: contextValidateTrigger = 'onChange' } = useContext(FieldContext);
   const mergedValidateTrigger = validateTrigger === undefined ? contextValidateTrigger : validateTrigger;
 
@@ -66,6 +66,7 @@ const Item: React.FC<Props> = (props: Props) => {
     >
       {(control, meta, form) => {
         const { errors } = meta;
+        const hasFeedback = !!feedback;
         const hasError = !hasReseted && errors.length > 0;
         const hasHelp = !!help;
         const mergedFeedbackType = hasError ? 'error' : feedbackType;
@@ -108,21 +109,29 @@ const Item: React.FC<Props> = (props: Props) => {
 
         return (
           <div className={cls} data-message-type={mergedFeedbackType}>
-            <ItemLabel {...{ label, prefixCls, fieldId, required, afterLabel, labelWidth, requiredMark, marker }} />
-            <ItemControl
-              {...{
-                prefixCls,
-                childNode,
-                controlWidth,
-                afterInput,
-                help,
-                feedback: mergedFeedback,
-                hasFeedback,
-                feedbackType,
-                children: childNode,
-                icon,
-              }}
+            <ItemLabel
+              label={label}
+              prefixCls={prefixCls}
+              fieldId={fieldId}
+              required={required}
+              afterLabel={afterLabel}
+              labelWidth={labelWidth}
+              requiredMark={requiredMark}
+              marker={marker}
+              htmlFor={htmlFor}
+              colon={colon && layout === 'horizontal' ? ':' : ''}
             />
+            <ItemControl
+              prefixCls={prefixCls}
+              inputWidth={inputWidth}
+              afterInput={afterInput}
+              help={help}
+              feedback={mergedFeedback}
+              feedbackType={feedbackType}
+              icon={feedbackIcon}
+            >
+              {childNode}
+            </ItemControl>
           </div>
         );
       }}

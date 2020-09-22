@@ -10,27 +10,27 @@ const { Item } = Form;
 
 export default (): JSX.Element => {
   return (
-    <Form name="required" requiredMark>
+    <Form name="optional" requiredMark="optional">
       <Item name="name1" label="必填" required>
         <Input placeholder="请输入用户名" />
       </Item>
 
-      <Item name="name2" label="非必填">
+      <Item name="name2" label="必填" required>
         <Input placeholder="请输入用户名" />
       </Item>
-      <Item name="name3" label="非必填">
+      <Item name="name3" label="必填" required>
         <Input placeholder="请输入密码" />
       </Item>
 
-      <Item name="name4" label="非必填">
+      <Item name="name4" label="必填" required>
         <Input placeholder="请输入密码" />
       </Item>
 
-      <Item name="name5" label="非必填">
+      <Item name="name5" label="必填" required>
         <Input placeholder="请输入密码" />
       </Item>
 
-      <Item name="name6" label="非必填">
+      <Item name="name6" label="必填" required>
         <Input placeholder="请输入密码" />
       </Item>
 
