@@ -5,18 +5,21 @@ import classNames from 'classnames';
 
 import { ConfigContext } from '../config-provider';
 import { FormContext, WidthProperty, FormLabelAlign, RequiredMark } from './context';
+import { SizeContextProvider, SizeType } from '../config-provider/SizeContext';
 
-export type FormLayout = 'horizon' | 'vertical' | 'inline';
+export type FormLayout = 'horizontal' | 'vertical' | 'inline';
 
 export interface Props<Values = any> extends Omit<RcFormProps<Values>, 'form'> {
   prefixCls?: string;
   className?: string;
   name?: string;
   labelWidth?: WidthProperty;
-  controlWidth?: WidthProperty;
+  inputWidth?: WidthProperty;
   labelAlign?: FormLabelAlign;
   form?: FormInstance<Values>;
   layout?: FormLayout;
+  size?: SizeType;
+  colon?: boolean;
   requiredMark?: RequiredMark;
 }
 
@@ -25,12 +28,14 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
     name,
     prefixCls: customizePrefixCls,
     className,
-    layout = 'vertical',
+    layout = 'horizontal',
     labelWidth,
-    controlWidth,
+    inputWidth,
     labelAlign,
+    size,
     form,
-    requiredMark,
+    colon = false,
+    requiredMark = true,
     ...restProps
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
@@ -47,16 +52,19 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
     name,
     layout,
     labelWidth,
-    controlWidth,
+    inputWidth,
     labelAlign,
     requiredMark,
+    colon,
   };
 
   React.useImperativeHandle(ref, () => wrapForm);
 
   return (
     <FormContext.Provider value={formContextValues}>
-      <RcForm {...restProps} id={name} className={cls} form={wrapForm} />
+      <SizeContextProvider size={size}>
+        <RcForm {...restProps} id={name} className={cls} form={wrapForm} />
+      </SizeContextProvider>
     </FormContext.Provider>
   );
 };

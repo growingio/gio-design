@@ -12,10 +12,23 @@ export interface Props {
   required?: boolean;
   requiredMark?: RequiredMark;
   marker?: React.ReactNode;
+  colon?: string;
+  htmlFor?: string;
 }
 
 const ItemLabel: React.FC<Props> = (props: Props) => {
-  const { prefixCls, label, labelWidth, fieldId, afterLabel, required, requiredMark, marker } = props;
+  const {
+    prefixCls,
+    label,
+    labelWidth,
+    fieldId,
+    afterLabel,
+    required,
+    requiredMark,
+    marker,
+    colon,
+    htmlFor = fieldId,
+  } = props;
   const isRequired = required && (requiredMark === true || requiredMark === undefined);
   const isOptional = !required && requiredMark === 'optional';
   const innerMarker = isOptional ? '（选填）' : '*';
@@ -39,8 +52,9 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
   return (
     <div className={cls} style={{ width: labelWidth }}>
       {label && (
-        <label title={label} htmlFor={fieldId}>
+        <label title={label} htmlFor={htmlFor}>
           {labelChild}
+          {colon}
         </label>
       )}
       {afterLabel}
