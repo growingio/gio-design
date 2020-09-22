@@ -16,8 +16,9 @@ export interface FormContextProps {
   layout?: FormLayout;
   labelAlign?: FormLabelAlign;
   labelWidth?: WidthProperty;
-  controlWidth?: WidthProperty;
+  inputWidth?: WidthProperty;
   requiredMark?: RequiredMark;
+  colon?: boolean;
 }
 
 export const FormContext = React.createContext<FormContextProps>({

@@ -1,34 +1,46 @@
 import '@gio-design/components/es/components/form/style/index.css';
 
-import React, { useRef, useState } from 'react';
+import './index.less';
 
-import { Form, Input, Button, Radio } from '@gio-design/components';
-import { FormInstance } from '@gio-design/components/es/components/form';
+import React from 'react';
 
-const { Item, useForm } = Form;
-const { Group } = Radio;
+import { Form, Input, Button } from '@gio-design/components';
+
+const { Item } = Form;
 
 export default (): JSX.Element => {
-  const [requiredMark, setRequiredMark] = useState(true);
-  const onChange = (e: any) => {
-    setRequiredMark(e.target.value);
-  };
-
   return (
-    <Form name="required" requiredMark={requiredMark} initialValues={{ requiredMark }}>
-      <Item name="requiredMark" label="requiredMark">
-        <Group onChange={onChange}>
-          <Radio value={true}>required</Radio>
-          <Radio value="optional">optional</Radio>
-          <Radio value={false}>hidden</Radio>
-        </Group>
-      </Item>
-
-      <Item name="name1" label="非必填" required>
+    <Form name="required" requiredMark>
+      <Item name="name1" label="必填" required>
         <Input placeholder="请输入用户名" />
       </Item>
-      <Item name="name2" label="选填">
+
+      <Item name="name2" label="非必填">
+        <Input placeholder="请输入用户名" />
+      </Item>
+      <Item name="name3" label="非必填">
         <Input placeholder="请输入密码" />
+      </Item>
+
+      <Item name="name4" label="非必填">
+        <Input placeholder="请输入密码" />
+      </Item>
+
+      <Item name="name5" label="非必填">
+        <Input placeholder="请输入密码" />
+      </Item>
+
+      <Item name="name6" label="非必填">
+        <Input placeholder="请输入密码" />
+      </Item>
+
+      <Item name="name7" label="非必填">
+        <Input placeholder="请输入密码" />
+      </Item>
+
+      <Item>
+        <Button>提交</Button>
+        <Button type="secondary">取消</Button>
       </Item>
     </Form>
   );
