@@ -9,7 +9,27 @@ const options = [
 ];
 
 export default () => (
-  <Dropdown overlay={<List dataSource={options} width={144} height={176} />}>
+  <Dropdown
+    overlay={
+      <List
+        dataSource={options}
+        width={144}
+        height={225}
+        rowHeight={56}
+        labelRenderer={(option: any, isGroup: boolean) => {
+          if (isGroup) {
+            return option.name;
+          }
+          return (
+            <div style={{ display: 'flex', flexDirection: 'column', padding: '7px 0' }}>
+              <span style={{ fontSize: '14px', lineHeight: '20px' }}>{option.label}</span>
+              <span style={{ fontSize: '14px', lineHeight: '20px' }}>{option.description}</span>
+            </div>
+          );
+        }}
+      />
+    }
+  >
     <Button type="secondary">更多操作</Button>
   </Dropdown>
 );
