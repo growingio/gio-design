@@ -1,8 +1,10 @@
 import '@gio-design/components/es/components/form/style/index.css';
 
-import React from 'react';
+import './index.less';
 
-import { Form, Input } from '@gio-design/components';
+import React, { useState } from 'react';
+
+import { Form, Input, Toggles } from '@gio-design/components';
 import { FormItemFeedbackType } from '@gio-design/components/es/components/form';
 
 const { Item } = Form;
@@ -11,7 +13,7 @@ const messageTypes: FormItemFeedbackType[] = ['validating', 'warning', 'error', 
 
 export default (): JSX.Element => {
   return (
-    <Form name="message" layout="horizon">
+    <Form name="message" labelWidth={120}>
       <Item name="help" label="help" help="这是一个 help 类型的提示信息">
         <Input />
       </Item>

@@ -4,26 +4,24 @@ import './index.less';
 
 import React from 'react';
 
-import { Form, Input, Button } from '@gio-design/components';
+import { Form, Input, Button, Alert } from '@gio-design/components';
+import { InformationFilled } from '@gio-design/icons';
 
-const { Item, useForm } = Form;
+const { Item } = Form;
 
-interface Props {
-  name: string;
-}
-
-export default ({ name = 'base' }): JSX.Element => {
-  const [form] = useForm();
-  const onFinish = (formData: any) => {
-    console.log(formData);
-    console.log(form);
-  };
-  const onReset = () => {
-    form.resetFields();
-  };
-
+export default (): JSX.Element => {
   return (
-    <Form name={name} onFinish={onFinish} form={form}>
+    <Form name="alert" labelWidth={120} style={{ width: 480 }}>
+      <Alert
+        // prettier-ignore
+        message={(
+          <div>
+            <InformationFilled />
+            <span> 现在定义的是页面 www.growingio.com/features/，查询条件为 id=9785&#x26;campaign=9785。</span>
+          </div>
+        )}
+      />
+
       <Item
         name="username"
         label="用户名"
@@ -39,7 +37,7 @@ export default ({ name = 'base' }): JSX.Element => {
       <Item>
         <div>
           <Button htmlType="submit">提交</Button>
-          <Button htmlType="reset" type="secondary" onClick={onReset}>
+          <Button htmlType="reset" type="secondary">
             重置
           </Button>
         </div>
