@@ -14,9 +14,9 @@ const options = values.map((value, index) => ({
 
 const Basics = (): React.ReactNode => (
   <>
-    <Select options={options} searchable width={200} />
+    <Select options={options} searchable width={200} onChange={console.log} />
     <br />
-    <Select options={options} multiple searchable width={200} />
+    <Select options={options} multiple searchable width={200} onChange={console.log} />
   </>
 );
 

@@ -112,7 +112,9 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     );
     clearInput();
     if (onChange) {
-      const selectedOptions = Array.from(selection).map((value) => extendedOptions[optionHash.get(value)]);
+      const selectedOptions = Array.from(optSelection).map(
+        (value) => extendedOptions[optionHash.get(value)] || freeInputOption(value)
+      );
       onChange(multiple ? selectedOptions : selectedOptions[0]);
     }
   };
