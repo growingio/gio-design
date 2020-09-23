@@ -4,7 +4,7 @@ import './index.less';
 
 import React from 'react';
 
-import { Form, Input, Button } from '@gio-design/components';
+import { Form, Button, Input, Toggles } from '@gio-design/components';
 
 const { Item, useForm } = Form;
 
@@ -16,7 +16,6 @@ export default ({ name = 'base' }): JSX.Element => {
   const [form] = useForm();
   const onFinish = (formData: any) => {
     console.log(formData);
-    console.log(form);
   };
   const onReset = () => {
     form.resetFields();
