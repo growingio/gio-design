@@ -27,9 +27,20 @@ export interface Props extends Omit<FieldProps, 'children'> {
   marker?: React.ReactNode;
   feedbackIcon?: React.ReactNode;
   htmlFor?: string;
+  labelWidth?: string | number;
+  inputWidth?: string | number;
+  colon?: boolean;
 }
 
 const Item: React.FC<Props> = (props: Props) => {
+  const {
+    layout,
+    requiredMark,
+    name: formName,
+    labelWidth: _labelWidth,
+    inputWidth: _inputWidth,
+    colon: _colon,
+  } = useContext(FormContext);
   const {
     prefixCls: customizePrefixCls,
     className,
@@ -47,27 +58,21 @@ const Item: React.FC<Props> = (props: Props) => {
     marker,
     feedbackIcon,
     htmlFor,
+    labelWidth = _labelWidth, // set default value to formContext value
+    inputWidth = _inputWidth,
+    colon = _colon,
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('field', customizePrefixCls);
-  const [hasReseted, setHasReseted] = useState(false);
-  const { name: formName, layout, labelWidth, inputWidth, requiredMark, colon } = useContext(FormContext);
   const { validateTrigger: contextValidateTrigger = 'onChange' } = useContext(FieldContext);
   const mergedValidateTrigger = validateTrigger === undefined ? contextValidateTrigger : validateTrigger;
 
   return (
-    <Field
-      {...props}
-      trigger={trigger}
-      validateTrigger={mergedValidateTrigger}
-      onReset={() => {
-        setHasReseted(true);
-      }}
-    >
+    <Field {...props} trigger={trigger} validateTrigger={mergedValidateTrigger}>
       {(control, meta, form) => {
         const { errors } = meta;
         const hasFeedback = !!feedback;
-        const hasError = !hasReseted && errors.length > 0;
+        const hasError = errors.length > 0;
         const hasHelp = !!help;
         const mergedFeedbackType = hasError ? 'error' : feedbackType;
         const mergedFeedback = feedback ? toArray(feedback) : errors;
@@ -92,9 +97,8 @@ const Item: React.FC<Props> = (props: Props) => {
 
           triggers.forEach((eventName) => {
             childProps[eventName] = (...args: unknown[]) => {
-              setHasReseted(false);
               control[eventName]?.(...args);
-              children.props[eventName]?.(...args); // orignal event handler
+              children.props[eventName]?.(...args); // execute the orignal event handler
             };
           });
 
