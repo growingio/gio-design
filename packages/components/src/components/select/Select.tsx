@@ -233,7 +233,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
                 style={{ width: inputWidth }}
                 className={classnames(`${prefix}-input`, `${prefix}-item`)}
                 value={input}
-                onChange={onInputChange}
+                onChange={(e) => onInputChange(e.target.value)}
                 tabIndex={-1}
                 onKeyDown={onSelectionKeyDown}
               />

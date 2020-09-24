@@ -6,6 +6,9 @@ export default () => {
   const [inputValue, setInputValue] = React.useState('');
   const [inputValue2, setInputValue2] = React.useState('');
   const [inputValue3, setInputValue3] = React.useState('333');
+  const onChange = (e: React.FocusEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
 
   return (
     <div>
@@ -13,7 +16,7 @@ export default () => {
         placeholder="请输入…"
         size="small"
         value={inputValue}
-        onChange={setInputValue}
+        onChange={onChange}
         wrapStyle={{ display: 'block', marginBottom: '20px' }}
       />
 
