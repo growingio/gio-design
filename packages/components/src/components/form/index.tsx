@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { FormItemFeedbackType } from './ItemControl';
-import Form, { Props as FormProps, FormLayout, FormInstance, List, useForm, FormProvider } from './form';
+import Form, { Props as FormProps, FormLayout, FormInstance, List, useForm, FormProvider } from './Form';
 import Item from './Item';
 
 const InternalForm = React.forwardRef<FormInstance, FormProps>(Form);
