@@ -5,13 +5,16 @@
 @field-prefix-cls: ~'@{component-prefix}-field';
 @input-prefix-cls: ~'@{component-prefix}-input';
 
-@info-color: @palette-gray-5;
-@validating-color: @palette-blue-5;
-@warning-color: @palette-yellow-5;
+@info-color: @palette-black-3;
+@validating-color: @palette-black-3;
+@warning-color: @palette-yellow-6;
 @error-color: @palette-red-3;
-@success-color: @palette-green-5;
+@success-color: @palette-green-6;
 
-.message-type(@type, @hasBorder: true, @hasMsg: true, @hasIcon: true) {
+@field-gap: 20px;
+@field-gap-large: 24px;
+
+.message-type(@type, @hasMsg: true, @hasBorder: false, @hasIcon: false) {
   @color: ~'@{type}-color';
   .@{input-prefix-cls}-content {
     border-color: if(@hasBorder, @@color, '');
@@ -31,7 +34,11 @@
 // field style
 .@{field-prefix-cls} {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: @field-gap;
+
+  .@{form-prefix-cls}-large & {
+    margin-bottom: @field-gap-large;
+  }
 
   &&-has-error,
   &&-has-help,
@@ -52,8 +59,8 @@
     }
 
     &-required .@{field-prefix-cls}-label-marker {
-      color: red;
-      margin-left: 0.5em;
+      color: @palette-red-3;
+      // margin-left: 0.5em;
     }
   }
 
@@ -84,21 +91,25 @@
 
   &-feedback,
   &-help {
-    min-height: 20px;
+    min-height: @field-gap;
+
+    .@{form-prefix-cls}-large & {
+      min-height: @field-gap-large;
+    }
   }
 
   &[data-message-type='validating'] {
-    .message-type(validating, false, false);
+    .message-type(validating);
   }
 
   &[data-message-type='warning'] {
     .message-type(warning);
   }
   &[data-message-type='error'] {
-    .message-type(error);
+    .message-type(error, true, true);
   }
   &[data-message-type='success'] {
-    .message-type(success, false);
+    .message-type(success);
   }
 }
 

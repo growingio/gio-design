@@ -1,8 +1,11 @@
-import { renderHook } from '@testing-library/react-hooks';
 import { act } from 'react-dom/test-utils';
-import { waitFor } from '@testing-library/react';
 import React from 'react';
+
 import { mount } from 'enzyme';
+import { renderHook } from '@testing-library/react-hooks';
+import { waitFor } from '@testing-library/react';
+
+import { FormProvider } from '../context';
 import Form from '..';
 
 const { Item, useForm } = Form;
@@ -42,7 +45,7 @@ describe('<Form />', () => {
     expect(wrapper.find('.gio-field input')).toHaveLength(1);
   });
 
-  it('can validate form field', async function () {
+  it('can validate form field', async function testfn() {
     const { result } = renderHook(() => useForm());
     const [form] = result.current;
 
@@ -71,5 +74,28 @@ describe('<Form />', () => {
       expect(form.getFieldError('username')).toHaveLength(0);
       // expect(wrapper.find('.gio-field-message').text()).toEqual('');
     });
+  });
+
+  it('can wrapped in FormProvider', (done) => {
+    const onFormChange = (name: string) => {
+      expect(name).toEqual('form1');
+      done();
+    };
+    const wrapper = mount(
+      <FormProvider onFormChange={onFormChange}>
+        <Form name="form1">
+          <Item>
+            <input type="text" />
+          </Item>
+        </Form>
+        <Form name="form2">
+          <Item>
+            <input type="text" />
+          </Item>
+        </Form>
+      </FormProvider>
+    );
+
+    wrapper.find('#form1 input').simulate('change', { target: { value: '123' } });
   });
 });

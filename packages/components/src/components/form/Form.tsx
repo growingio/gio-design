@@ -43,6 +43,7 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
   const cls = classNames(
     prefixCls,
     className,
+    `${prefixCls}-${size || 'middle'}`,
     `${prefixCls}-${layout}`,
     !!labelAlign && `${prefixCls}-label-${labelAlign}`
   );
@@ -63,7 +64,7 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
   return (
     <FormContext.Provider value={formContextValues}>
       <SizeContextProvider size={size}>
-        <RcForm {...restProps} id={name} className={cls} form={wrapForm} />
+        <RcForm {...restProps} id={name} name={name} className={cls} form={wrapForm} />
       </SizeContextProvider>
     </FormContext.Provider>
   );

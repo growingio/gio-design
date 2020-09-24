@@ -43,7 +43,10 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
   if (isRequired || isOptional) {
     labelChild = (
       <>
-        <span className={`${prefixCls}-label-content`}>{label}</span>
+        <span className={`${prefixCls}-label-content`}>
+          {label}
+          {colon}
+        </span>
         <span className={`${prefixCls}-label-marker`}>{mergedRequiredMarker}</span>
       </>
     );
@@ -54,7 +57,6 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
       {label && (
         <label title={label} htmlFor={htmlFor}>
           {labelChild}
-          {colon}
         </label>
       )}
       {afterLabel}
