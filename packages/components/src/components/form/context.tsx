@@ -26,6 +26,8 @@ export const FormContext = React.createContext<FormContextProps>({
   layout: 'vertical',
 });
 
+// FormContext.displayName = 'FormContext';
+
 export type FormProviderProps = Omit<RcFormProviderProps, 'validateMessages'>;
 
 export const FormProvider: React.FC<FormProviderProps> = (props) => {

@@ -123,7 +123,7 @@ const Item: React.FC<Props> = (props: Props) => {
               requiredMark={requiredMark}
               marker={marker}
               htmlFor={htmlFor}
-              colon={colon && layout === 'horizontal' ? ':' : ''}
+              colon={colon && layout === 'horizontal' ? '：' : ''}
             />
             <ItemControl
               prefixCls={prefixCls}
