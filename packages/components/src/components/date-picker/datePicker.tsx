@@ -52,10 +52,10 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
     }
   }, 1000);
 
-  const handleInputChange = (e: string): void => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     // e.persist();
-    setInputTime(e);
-    debounceTimeChange(e);
+    setInputTime(e.target.value);
+    debounceTimeChange(e.target.value);
   };
 
   const onConfirm = () => {

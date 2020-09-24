@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { UpFilled, DownFilled } from '@gio-design/icons';
 import Input, { prefixCls } from './Input';
-import { InputProps } from './interfaces';
+import { InputNumberProps } from './interfaces';
 
-const InputNumber: React.FC<InputProps> = ({
+const InputNumber: React.FC<InputNumberProps> = ({
   value,
   onChange,
   max = Number.MAX_SAFE_INTEGER,
@@ -11,7 +11,7 @@ const InputNumber: React.FC<InputProps> = ({
   disabled = false,
   readOnly = false,
   ...rest
-}: InputProps) => {
+}: InputNumberProps) => {
   const addDisabled = React.useMemo(() => Number(value) >= max || disabled || readOnly, [
     value,
     max,
@@ -26,12 +26,12 @@ const InputNumber: React.FC<InputProps> = ({
     readOnly,
   ]);
 
-  const handleChange = (value: string) => {
-    const v = Number(value);
-    if (isNaN(v) || v < min || v > max) {
+  const handleChange = (current: string) => {
+    const v = Number(current);
+    if (Number.isNaN(v) || v < min || v > max) {
       return;
     }
-    onChange?.(value);
+    onChange?.(current);
   };
 
   const handleAdd = () => {
@@ -63,7 +63,15 @@ const InputNumber: React.FC<InputProps> = ({
     </div>
   );
 
-  return <Input {...rest} suffix={renderSuffix()} value={value} onChange={handleChange} disabled={disabled} />;
+  return (
+    <Input
+      {...rest}
+      suffix={renderSuffix()}
+      value={value}
+      onChange={(e) => handleChange(e.target.value)}
+      disabled={disabled}
+    />
+  );
 };
 
 export default InputNumber;
