@@ -1,7 +1,7 @@
 import React from 'react';
-import Skeleton from '../index';
 import { act } from 'react-dom/test-utils';
 import { mount, render, shallow } from 'enzyme';
+import Skeleton from '../index';
 
 async function waitForComponentToPaint(wrapper, amount = 500) {
   await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
@@ -30,7 +30,7 @@ describe('Testing Skeleton', () => {
     const wrapper = mount(
       <Skeleton avatar loading={false}>
         children
-      </Skeleton>
+      </Skeleton>,
     );
     wrapper.setProps({ delay: 1000, loading: true });
     expect(wrapper.exists('.gio-skeleton')).toBe(false);

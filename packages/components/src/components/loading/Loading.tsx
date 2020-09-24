@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import useDebounceLoading from '../../utils/hooks/debounceLoading';
+import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
 import { ConfigContext } from '../config-provider';
 import { LoadingProps } from './interface';
 
@@ -26,7 +26,9 @@ const Loading: React.FC<LoadingProps> = (props: LoadingProps) => {
   };
 
   const renderLoadingElementByPosition = () => {
-    const { titlePosition = 'bottom', title = '加载中...', size = 'large', className, style } = props;
+    const {
+      titlePosition = 'bottom', title = '加载中...', size = 'large', className, style,
+    } = props;
     return shouldLoading ? (
       <div className={classNames(`${prefixCls}`, `${prefixCls}-${size}`, className)} style={style}>
         {renderLoadingElement()}
@@ -38,13 +40,13 @@ const Loading: React.FC<LoadingProps> = (props: LoadingProps) => {
   };
 
   const renderLoadingContainer = () => {
-    const { children } = props;
+    const { children, blurColor = 'white' } = props;
     if (children) {
       return (
         <div className={`${prefixCls}-wrapper-loading`}>
           {renderLoadingElementByPosition()}
           <div
-            className={classNames(`${prefixCls}-container`, {
+            className={classNames(`${prefixCls}-container`, `${prefixCls}-container-blur-${blurColor}`, {
               [`${prefixCls}-container-loading`]: shouldLoading,
             })}
           >

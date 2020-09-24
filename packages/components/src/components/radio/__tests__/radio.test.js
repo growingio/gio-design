@@ -17,7 +17,7 @@ describe('Testing Radio', () => {
       .create(
         <Radio className="gio-customized-radio" disabled defaultChecked>
           Test
-        </Radio>
+        </Radio>,
       )
       .toJSON();
     expect(domTree).toMatchSnapshot();

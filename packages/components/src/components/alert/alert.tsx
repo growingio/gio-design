@@ -17,21 +17,33 @@ interface AlertProps {
   size?: string;
 }
 
-const Alert: React.FC<AlertProps> = (props) => {
+const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   const [alertStatus, setAlertStatus] = useState(true);
-  const { message, description, closeable, showIcon, colseText, onClose, icon, type = 'info', size = 'middle' } = props;
+  const {
+    message,
+    description,
+    closeable,
+    showIcon = false,
+    colseText,
+    onClose,
+    icon,
+    type = 'info',
+    size = 'middle',
+  } = props;
 
   const getIcon = () => {
-    const { type } = props;
+    const { type, showIcon } = props;
     switch (type) {
       case 'success':
-        return <CheckCircleFilled />;
+        return <CheckCircleFilled color="#00875A" />;
       case 'warning':
-        return <WarningFilled />;
+        return <WarningFilled color="#FF991F" />;
       case 'error':
-        return <CloseCircleFilled />;
+        return <CloseCircleFilled color="#DE350B" />;
+      case 'info':
+        return <InformationFilled color="#0052CC" />;
       default:
-        return <InformationFilled />;
+        return showIcon ? icon || <InformationFilled color="#0052CC" /> : null;
     }
   };
 
@@ -50,18 +62,18 @@ const Alert: React.FC<AlertProps> = (props) => {
         )}
       >
         <div className="gio-alert-icon" style={{ display: showIcon ? 'block' : 'none' }}>
-          {icon ? icon : getIcon()}
+          {getIcon()}
         </div>
         <div className="gio-alert-content">
           <div className="gio-alert-content-title" style={{ display: message ? 'block' : 'none' }}>
-            {message ? message : null}
+            {message || null}
           </div>
           <div className="gio-alert-content-description" style={{ display: description ? 'block' : 'none' }}>
-            {description ? description : null}
+            {description || null}
           </div>
         </div>
         <div className="gio-alert-closeIcon" style={{ display: closeable ? 'block' : 'none' }} onClick={closeAlert}>
-          {colseText ? colseText : <Close />}
+          {colseText || <Close />}
         </div>
       </div>
     </div>

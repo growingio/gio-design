@@ -15,6 +15,7 @@ export interface ISignCommonProps {
   className?: string;
   style?: CSSProperties;
   visible?: boolean;
+  children?: React.ReactNode;
 }
 
 export interface ISignNumberProps extends ISignCommonProps {

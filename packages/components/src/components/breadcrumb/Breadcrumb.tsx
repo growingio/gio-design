@@ -1,24 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import classNames from 'classnames';
+import toArray from 'rc-util/lib/Children/toArray';
 import BreadcrumbItem from './BreadcrumbItem';
 import BreadcrumbSeparator from './BreadcrumbSeparator';
 import { ConfigContext } from '../config-provider';
-
-export interface Route {
-  path: string;
-  breadcrumbName: string;
-  children?: Omit<Route, 'children'>[];
-}
-
-export interface BreadcrumbProps {
-  prefixCls?: string;
-  routes?: Route[];
-  params?: any;
-  style?: React.CSSProperties;
-  separator?: React.ReactNode;
-  className?: string;
-  itemRender?: (route: Route, params: any, routes: Array<Route>, paths: Array<string>) => React.ReactNode;
-}
+import { cloneElement } from '../../utils/reactNode';
+import devWarning from '../../utils/devWarning';
+import { Route, BreadcrumbProps } from './interface';
 
 function getBreadcrumbName(route: Route, params: any) {
   if (!route.breadcrumbName) {
@@ -36,7 +26,6 @@ function isLastItem(route: Route, routes: Route[]) {
   return routes.indexOf(route) === routes.length - 1;
 }
 
-/* eslint-disable-next-line */
 function defaultItemRender(route: Route, params: any, routes: Route[], paths: string[]) {
   const name = getBreadcrumbName(route, params);
   return isLastItem(route, routes) ? <span>{name}</span> : <a href={`/${paths.join('/')}`}>{name}</a>;
@@ -65,7 +54,7 @@ const Breadcrumb: BreadcrumbInterface = ({
   itemRender = defaultItemRender,
   params = {},
   ...restProps
-}) => {
+}: BreadcrumbProps) => {
   const { getPrefixCls } = React.useContext(ConfigContext);
 
   let crumbs;
@@ -85,7 +74,22 @@ const Breadcrumb: BreadcrumbInterface = ({
       );
     });
   } else if (children) {
-    crumbs = children;
+    crumbs = toArray(children).map((element: any, index) => {
+      if (!element) {
+        return element;
+      }
+
+      devWarning(
+        element.type && (element.type.GIO_BREADCRUMB_ITEM === true || element.type.GIO_BREADCRUMB_SEPARATOR === true),
+        'Breadcrumb',
+        "Only accepts Breadcrumb.Item and Breadcrumb.Separator as it's children"
+      );
+
+      return cloneElement(element, {
+        separator,
+        key: index,
+      });
+    });
   }
   return (
     <div className={classNames(className, prefixCls)} style={style} {...restProps}>

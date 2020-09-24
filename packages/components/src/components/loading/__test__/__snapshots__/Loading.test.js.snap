@@ -657,7 +657,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-loading-container gio-loading-container-loading",
+            "class": "gio-loading-container gio-loading-container-blur-white gio-loading-container-loading",
           },
           "children": Array [
             Object {
@@ -693,7 +693,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-loading-container gio-loading-container-loading",
+          "class": "gio-loading-container gio-loading-container-blur-white gio-loading-container-loading",
         },
         "children": Array [
           Object {

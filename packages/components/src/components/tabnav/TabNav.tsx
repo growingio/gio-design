@@ -1,10 +1,12 @@
-import React, { useContext, useMemo, useState, useEffect, useRef } from 'react';
+import React, {
+  useContext, useMemo, useState, useEffect, useRef,
+} from 'react';
 import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
 import { isNil } from 'lodash';
 import { ConfigContext } from '../config-provider';
 import { TabNavProps, TabNavItemProps } from './interface';
-import useRefs from './hook/useRefs';
+import useRefs from '../../utils/hooks/useRefs';
 
 const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   const {
@@ -18,7 +20,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
     defaultActiveKey = '',
   } = props;
 
-  const [localActiveKey, setLocalActiveKey] = useState<string | number>(activeKey ? activeKey : defaultActiveKey);
+  const [localActiveKey, setLocalActiveKey] = useState<string | number>(activeKey || defaultActiveKey);
   const [inkStyle, setInkStyle] = useState<{ left?: number; width?: number }>({});
   const wrapperRefKey = useRef<symbol>(Symbol('tabNav'));
   const [setRef, getRef] = useRefs<HTMLDivElement>();
@@ -36,7 +38,9 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
     const _tabNavKeys: (string | number)[] = [];
     const _tabNavChildren = toArray(children).map((node: React.ReactElement<TabNavItemProps>, index) => {
       if (React.isValidElement(node) && node.type === TabNav.Item) {
-        const { className, disabled, onClick, ...rest } = node.props;
+        const {
+          className, disabled, onClick, ...rest
+        } = node.props;
         const _key = isNil(node.key) ? index : node.key;
         _tabNavKeys.push(_key);
         return (
@@ -103,7 +107,7 @@ TabNav.Item = React.forwardRef(
     <div ref={ref} {...rest}>
       <div className={`${prefixCls}-item-btn`}>{children}</div>
     </div>
-  )
+  ),
 );
 
 export default TabNav;

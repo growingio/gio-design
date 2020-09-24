@@ -1,41 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo, useCallback } from 'react';
-import { ColumnsType, ColumnGroupType, ColumnType, SortOrder } from '../interface';
-import { get, isUndefined, clone } from 'lodash';
+import { get, isUndefined, clone, has } from 'lodash';
+import { InnerColumnsType, SortState } from '../interface';
 
-export interface SortState<RecordType> {
-  column: ColumnType<RecordType>;
-  key: string;
-  sortPriorityOrder: number | undefined;
-  sortDirections: SortOrder[];
-  sortOrder: SortOrder;
-}
-
-const collectSortStates = <RecordType,>(columns: ColumnsType<RecordType> = []): SortState<RecordType>[] => {
+const collectSortStates = <RecordType,>(columns: InnerColumnsType<RecordType> = []): SortState<RecordType>[] => {
   const sortStates: SortState<RecordType>[] = [];
-
-  const pushState = (column: ColumnType<RecordType>, sortOrder: SortOrder) => {
-    const { key, sortPriorityOrder, sortDirections = ['ascend', 'descend', null] } = column;
-    sortStates.push({
-      column,
-      key,
-      sortPriorityOrder,
-      sortDirections,
-      sortOrder,
-    });
-  };
-
   columns.forEach((column) => {
-    if ((column as ColumnGroupType<RecordType>).children) {
+    if (has(column, 'children')) {
       sortStates.push(...collectSortStates(get(column, 'children')));
     } else if (column.sorter) {
-      pushState(column, column.defaultSortOrder || null);
+      const { key, sortPriorityOrder, sortDirections = ['ascend', 'descend', null] } = column;
+      sortStates.push({
+        column,
+        key,
+        sortPriorityOrder,
+        sortDirections,
+        sortOrder: column.defaultSortOrder || null,
+      });
     }
   });
   return sortStates;
 };
 
 const useSorter = <RecordType,>(
-  columns: ColumnsType<RecordType>,
+  columns: InnerColumnsType<RecordType>,
   data: RecordType[]
 ): [SortState<RecordType>[], (sortState: SortState<RecordType>) => void, RecordType[]] => {
   // record all sorter states
@@ -45,22 +33,21 @@ const useSorter = <RecordType,>(
 
   // update sorter states action
   const updateSorterStates = useCallback(
-    (sortState: SortState<RecordType>) => {
+    (incomingSortState: SortState<RecordType>) => {
       setSortStates(
         sortStates.map((_sortState) => {
+          const innerSortState = _sortState;
           // if updata cloumn have not sortPriorityOrder, clear all active sortOrder state.
-          if (isUndefined(sortState.sortPriorityOrder)) {
-            _sortState.sortOrder = null;
-          } else {
+          if (isUndefined(incomingSortState.sortPriorityOrder)) {
+            innerSortState.sortOrder = null;
             // only update sortOrder which cloumn have not sortPriorityOrder.
-            if (isUndefined(_sortState.sortPriorityOrder)) {
-              _sortState.sortOrder = null;
-            }
+          } else if (isUndefined(innerSortState.sortPriorityOrder)) {
+            innerSortState.sortOrder = null;
           }
-          if (_sortState.key === sortState.key) {
-            _sortState.sortOrder = sortState.sortOrder;
+          if (innerSortState.key === incomingSortState.key) {
+            innerSortState.sortOrder = incomingSortState.sortOrder;
           }
-          return _sortState;
+          return innerSortState;
         })
       );
     },
@@ -73,7 +60,8 @@ const useSorter = <RecordType,>(
   ]);
 
   // sortted data
-  const sorttedData: RecordType[] = useMemo(() => {
+  const sortedData: RecordType[] = useMemo(() => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const cloneSortStates = clone(activeSortStates).sort((a, b) => b.sortPriorityOrder! - a.sortPriorityOrder!);
 
     const cloneData = clone(data);
@@ -81,6 +69,7 @@ const useSorter = <RecordType,>(
       return cloneData;
     }
     return cloneData.sort((record1, record2) => {
+      // eslint-disable-next-line no-restricted-syntax
       for (const sorterState of cloneSortStates) {
         const {
           column: { sorter },
@@ -99,7 +88,7 @@ const useSorter = <RecordType,>(
     });
   }, [columns, activeSortStates, data]);
 
-  return [sortStates, updateSorterStates, sorttedData];
+  return [sortStates, updateSorterStates, sortedData];
 };
 
 export default useSorter;

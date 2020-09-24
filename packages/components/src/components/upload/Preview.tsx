@@ -30,13 +30,13 @@ const iconStyle = {
   verticalAlign: 'text-bottom',
 };
 
-const Preview: React.FC<IPreviewProps> = ({ file, size = 32 }) => {
+const Preview: React.FC<IPreviewProps> = ({ file, size = 32 }: IPreviewProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
   const cls = classnames(`${prefixCls}__preview`);
-  return <img src={file?.dataUrl ?? ''} className={cls} style={{ width: size, height: size }} />;
+  return <img src={file?.dataUrl ?? ''} className={cls} style={{ width: size, height: size }} alt="" />;
 };
 
-export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file }) => {
+export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file }: IPreviewProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
   const cls = classnames(`${prefixCls}__preview-file`);
   const fileNameCls = classnames(`${prefixCls}__preview-file-name`);
@@ -46,7 +46,8 @@ export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file }) => {
       {getFileLogo(file)}
       <div className={fileNameCls}>{file?.name}</div>
       <div>
-        <CheckCircleFilled color="#008a56" style={iconStyle} /> 上传成功！
+        <CheckCircleFilled color="#008a56" style={iconStyle} />
+        上传成功！
       </div>
     </div>
   );

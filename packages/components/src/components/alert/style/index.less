@@ -1,4 +1,4 @@
-@import '~@gio-design/tokens/dist/variables.less';
+@import '../../../stylesheet/index.less';
 
 .gio-alert {
   display: flex;
@@ -9,18 +9,11 @@
   border-radius: 6px;
   transition: all ease 0.8s;
 
-  & .gio-alert-icon {
+  & &-icon {
     flex-shrink: 0;
     align-self: flex-start;
-    width: 16px;
-    height: 16px;
-    padding-top: 3px;
-    border-radius: 8px;
-
-    svg {
-      width: 16px;
-      height: 16px;
-    }
+    height: 100%;
+    padding-top: 1px;
   }
 
   & .gio-alert-content {
@@ -28,7 +21,7 @@
     margin: 0 8px;
     color: @color-text-alert-content;
     font-size: @size-font-14;
-    font-family: @font-family;
+    font-family: @font-family-primary;
     line-height: 22px;
 
     & .gio-alert-content-title {

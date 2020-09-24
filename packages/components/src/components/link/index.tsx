@@ -10,15 +10,14 @@ const Link: React.FC<TLinkProps> = ({
   className,
   children,
   ...otherProps
-}) => {
-  const prefixCls = customPrefixCls ? customPrefixCls : 'gio-link';
+}: TLinkProps) => {
+  const prefixCls = customPrefixCls || 'gio-link';
 
   const cls = classnames(className, prefixCls, {
     [`${prefixCls}--disabled`]: disabled,
   });
 
-  // TODO: 明确 e 的类型 e: React.MouseEvent<typeof component>
-  const handleClick = (e: any) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     if (disabled) {
       e.preventDefault();
       return;

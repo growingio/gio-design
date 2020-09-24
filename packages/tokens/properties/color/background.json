@@ -146,7 +146,7 @@
           "value": "{palette.white.value}"
         },
         "hover": {
-          "value": "{palette.gray.1.value}"
+          "value": "{palette.gray.3.value}"
         },
         "active": {
           "value": "{palette.gray.1.value}"
@@ -162,6 +162,14 @@
           },
           "100": {
             "value": "#581AE5"
+          }
+        },
+        "blur": {
+          "white": {
+            "value": "rgba(255, 255, 255, 0.4)"
+          },
+          "black": {
+            "value": "rgba(0, 0, 0, 0.4)"
           }
         }
       },
@@ -212,6 +220,9 @@
       "popconfirm": {
         "value": "{palette.white.value}"
       },
+      "dropdown": {
+        "value": "{palette.white.value}"
+      },
       "alert": {
         "information": {
           "value": "{palette.gray.1.value}"
@@ -247,20 +258,14 @@
         "normal": {
           "value": "{palette.white.value}"
         },
-        "hover": {
-          "value": "{palette.white.value}"
-        },
-        "active": {
+        "checked": {
           "value": "{palette.blue.5.value}"
         },
-        "partCheck": {
-          "value": "{palette.blue.5.value}"
+        "disabled": {
+          "value": "{palette.gray.1.value}"
         },
-        "disable": {
-          "value": "{palette.gray.3.value}"
-        },
-        "checkedDisable": {
-          "value": "{palette.gray.3.value}"
+        "selection-item": {
+          "value": "{palette.gray.1.value}"
         }
       },
       "menu": {
@@ -296,6 +301,20 @@
           }
         }
       },
+      "banner": {
+        "normal": {
+          "value": "{palette.blue.3.value}"
+        },
+        "alert": {
+          "value": "{palette.yellow.3.value}"
+        },
+        "alert-hover": {
+          "value": "{palette.yellow.2.value}"
+        },
+        "hover": {
+          "value": "{palette.white.value}"
+        }
+      },
       "table": {
         "head": {
           "value": "{palette.gray.1.value}"
@@ -313,6 +332,28 @@
           "active": {
             "value": "{palette.blue.5.value}"
           }
+        }
+      },
+      "datePicker": {
+        "normal": {
+          "value": "{palette.gray.1.value}"
+        },
+        "hover": {
+          "value": "{palette.gray.3.value}"
+        },
+        "click": {
+          "value": "{palette.gray.2.value}"
+        },
+        "active": {
+          "value": "{palette.blue.5.value}"
+        },
+        "disabled-active": {
+          "value": "{palette.gray.4.value}"
+        }
+      },
+      "input": {
+        "disable": {
+          "value": "{palette.gray.1.value}"
         }
       }
     }

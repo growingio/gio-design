@@ -1,5 +1,4 @@
-@import '../../../stylesheet/theme.less';
-@import '~@gio-design/tokens/dist/variables.less';
+@import '../../../stylesheet/index.less';
 
 @pagination-prefix-cls: ~'@{component-prefix}-pagination';
 
@@ -84,7 +83,7 @@
     .pagination-button;
     color: @color-text-pagination-normal;
     line-height: 30px;
-    svg {
+    .gio-icon {
       vertical-align: middle;
     }
   }
@@ -115,7 +114,7 @@
       .pagination-item;
       position: relative;
       color: @color-text-pagination-disabled;
-      svg {
+      .gio-icon {
         position: absolute;
         top: 0;
         right: 0;

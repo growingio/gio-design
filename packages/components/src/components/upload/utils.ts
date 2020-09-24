@@ -1,5 +1,5 @@
-import { IRcFile, IUploadFile, STATUS_NOT_YET } from './interface';
 import moment from 'moment';
+import { IRcFile, IUploadFile, STATUS_NOT_YET } from './interface';
 
 export const getUid = () => `gio-upload-${moment().valueOf()}`;
 
@@ -68,7 +68,8 @@ export const dataUrl2ImageFile = (dataUrl = ''): File => {
   const bstr = atob(arr[1] ?? '');
   let n = bstr.length;
   const u8arr = new Uint8Array(n);
-  while (n--) {
+  while (n) {
+    n -= 1;
     u8arr[n] = bstr.charCodeAt(n);
   }
   return new File([u8arr], 'web-image', { type: mime });
@@ -110,7 +111,7 @@ export const fetchImageFileFromUrl = (
       .catch((err) => reject(err));
   });
 
-export const isOnlyAcceptImg = (accept?: string) =>
+export const isOnlyAcceptImg = (accept?: string): boolean =>
   accept
     ? accept
         .split(',')
@@ -118,13 +119,13 @@ export const isOnlyAcceptImg = (accept?: string) =>
         .filter((_) => !/((image\/)|\.)(dwg|dxf|gif|jp2|jpeg|jpg|jpe|png|svf|tif|tiff)|image\/\*/.test(_)).length === 0
     : false;
 
-export const isImageFile = (file: IUploadFile) => file.type.startsWith('image/');
+export const isImageFile = (file: IUploadFile): boolean => file.type.startsWith('image/');
 
 /**
  * 暂时没有用起来，文件头在处理 docx/xlsx 等微软文件时候的区分方法暂时没写
  * @param file
  */
-export const getFileType = (file: File | Blob) =>
+export const getFileType = (file: File | Blob): Promise<string | undefined> =>
   new Promise((resolve) => {
     const fr = new FileReader();
 

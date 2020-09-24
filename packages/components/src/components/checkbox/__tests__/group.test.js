@@ -70,7 +70,7 @@ describe('CheckboxGroup', () => {
     const wrapper = mount(
       <CheckboxGroup>
         <Checkbox value="my" onChange={onChange} />
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
     wrapper.find('.gio-checkbox-input').at(0).simulate('change');
     expect(onChange).toHaveBeenCalled();
@@ -84,7 +84,7 @@ describe('CheckboxGroup', () => {
       <CheckboxGroup defaultValue={[1]} onChange={onChange}>
         <Checkbox key={1} value={1} />
         <Checkbox key={2} value={2} />
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
 
     wrapper.setProps({
@@ -105,7 +105,7 @@ describe('CheckboxGroup', () => {
         <Checkbox key={2} value={2} />
         <Checkbox key={3} value={3} />
         <Checkbox key={4} value={4} />
-      </CheckboxGroup>
+      </CheckboxGroup>,
     );
 
     wrapper.find('.gio-checkbox-input').at(0).simulate('change');

@@ -1,0 +1,45 @@
+.gio-icon {
+  display: inline-block;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.gio-icon > * {
+  line-height: 1;
+}
+
+.gio-icon svg {
+  display: inline-block;
+}
+
+.gio-icon::before {
+  display: none;
+}
+
+.gio-icon-rotating,
+.gio-icon-rotating::before {
+  display: inline-block;
+  -webkit-animation: rotating 1s linear infinite;
+  animation: rotating 1s linear infinite;
+}
+
+@-webkit-keyframes rotating {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

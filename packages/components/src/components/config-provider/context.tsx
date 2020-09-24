@@ -54,7 +54,7 @@ interface ConstructorProps {
 }
 export function withConfigConsumer<ExportProps extends BasicExportProps>(config: ConsumerConfig) {
   return function withConfigConsumerFunc<ComponentDef>(
-    Component: IReactComponent
+    Component: IReactComponent,
   ): React.FC<ExportProps> & ComponentDef {
     // Wrap with ConfigConsumer. Since we need compatible with react 15, be care when using ref methods
     const SFC = ((props: ExportProps) => (

@@ -6,7 +6,7 @@ on:
 jobs:
   install:
     name: Install dependencies
-    if: startsWith(github.event.head_commit.message, 'feat') || startsWith(github.event.head_commit.message, 'fix') || startsWith(github.event.head_commit.message, 'docs')
+    if: ${{ !(startsWith(github.event.head_commit.message, 'chore') || startsWith(github.event.head_commit.message, 'style')) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -47,6 +47,16 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Cache packages
+        uses: actions/cache@v2
+        with:
+          path: |
+            packages/components/dist
+            packages/components/es
+            packages/icons/dist
+            packages/icons/es
+            packages/tokens/dist
+          key: packages-${{ github.sha }}
       - name: Build packages
         run: yarn build
       - name: Test

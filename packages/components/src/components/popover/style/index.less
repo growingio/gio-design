@@ -1,6 +1,5 @@
-@import '../../../stylesheet/theme.less';
+@import '../../../stylesheet/index.less';
 @import '../../../stylesheet/mixin/trigger.less';
-@import '~@gio-design/tokens/dist/variables.less';
 
 @popover-prefix-cls: ~'@{component-prefix}-popover';
 @popover-arrow-width: 12px;
@@ -8,51 +7,51 @@
 @popover-offset: 20px;
 @popover-duration: 10ms;
 
-.@{popover-prefix-cls}{
-  margin: auto;
+.@{popover-prefix-cls} {
   position: absolute;
-  z-index: 100;
-  
+  z-index: @zindex-popover;
+  margin: auto;
+
   &-hidden {
     display: none;
   }
 
   &-content {
     position: relative;
-    box-shadow: @shadow-popover;
     background-color: @color-background-popover;
     border-radius: 4px;
+    box-shadow: @shadow-popover;
   }
 
   &-inner {
     overflow: hidden;
-    &-content{
-      margin: 20px;
+    &-content {
       position: relative;
+      margin: 20px;
       overflow: hidden;
     }
     &-footer {
-      margin: -4px 20px 16px;
       position: relative;
+      margin: -4px 20px 16px;
       overflow: hidden;
     }
   }
 
   &-arrow {
     position: absolute;
-    pointer-events: none;
-    height: 12px;
     width: 12px;
+    height: 12px;
+    pointer-events: none;
     &-content {
       position: absolute;
-      margin: auto;
       top: 0;
-      left: 0;
       right: 0;
       bottom: 0;
-      width: 0px;
-      height: 0px;
-      border: @popover-arrow-width/2 solid;
+      left: 0;
+      width: 0;
+      height: 0;
+      margin: auto;
+      border: @popover-arrow-width / 2 solid;
       pointer-events: auto;
     }
   }

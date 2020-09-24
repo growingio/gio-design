@@ -22,6 +22,7 @@ group:
 <code src='./demos/size.tsx' title='尺寸' desc='可以设置可以设置三种尺寸' />
 <code src='./demos/wrapper.tsx' title='赋予内容加载状态' desc='可以直接把内容嵌入到Loading中，将现有容器变为加载状态。' />
 <code src='./demos/debounce.tsx' title='延时' desc='延迟显示 loading 效果。当 spinning 状态在 delay 时间内结束，则不显示 loading 状态。' />
+<code src='./demos/blurColor.tsx' title='设置模糊蒙层颜色' desc='支持两种蒙层颜色' />
 <code src='./demos/indicator.tsx' title='自定义符号' desc='替换默认的加载图形，可以是任意的元素' />
 
 ## 参数说明
@@ -36,3 +37,4 @@ group:
 | prefixCls     | 替换类前缀                         | string                         |             |
 | size          | 设置默认指示符号大小               | 'small' \| 'middle' \| 'large' | 'large'     |
 | indicator     | 自定义指示符号                     | React.Element                  |             |
+| blurColor     | 设置模糊蒙层颜色                   | 'white' \| 'block'             | 'white'     |

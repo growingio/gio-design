@@ -3,7 +3,7 @@ import { Item as RcMenuItem } from 'rc-menu';
 import { IMenuItemProps } from './interface';
 import MenuTitle from './MenuTitle';
 
-const MenuItem: React.FC<IMenuItemProps> = (props) => {
+const MenuItem: React.FC<IMenuItemProps> = (props: IMenuItemProps) => {
   const { icon, children, ...restProps } = props;
 
   return (

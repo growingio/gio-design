@@ -5,7 +5,7 @@ import { Close } from '@gio-design/icons';
 import { ButtonProps } from '../button';
 import { ConfigContext } from '../config-provider';
 import { IModalProps } from './interface';
-import { ModalPrefixClsContext } from './ModalContext';
+import ModalPrefixClsContext from './ModalContext';
 import Title from './Title';
 import Footer from './Footer';
 
@@ -16,7 +16,6 @@ const Modal: React.FC<IModalProps> = ({
   wrapClassName,
   useBack,
   title,
-  footer,
   additionalFooter,
   onBack,
   closeAfterOk,
@@ -29,7 +28,7 @@ const Modal: React.FC<IModalProps> = ({
   onClose,
   pending,
   ...restProps
-}) => {
+}: IModalProps) => {
   const { getPrefixCls } = useContext(ConfigContext);
   const prefix = getPrefixCls('modal', customPrefixCls);
   const modalCls = classnames(className, {
@@ -43,7 +42,10 @@ const Modal: React.FC<IModalProps> = ({
   });
 
   const useOkBtn = !!onOk && typeof onOk === 'function';
-  const hasFooter = useOkBtn || !dropCloseButton || footer || additionalFooter;
+  let useFooter = useOkBtn || !dropCloseButton || !!additionalFooter;
+  if ('footer' in restProps && (restProps.footer === false || restProps.footer === null)) {
+    useFooter = false;
+  }
   const okBtnProps: ButtonProps = {
     loading: pending,
     disabled: pending,
@@ -64,18 +66,18 @@ const Modal: React.FC<IModalProps> = ({
     }
   };
 
-  const handleClose = (e: any) => {
+  const handleClose = (e: React.SyntheticEvent<HTMLElement, Event>) => {
     if (!pending) {
-      onClose?.(e);
+      onClose?.(e as React.MouseEvent<HTMLElement, MouseEvent>);
     }
   };
 
   return (
     <ModalPrefixClsContext.Provider value={prefix}>
       <RcDialog
-        keyboard={true}
+        keyboard
         {...restProps}
-        maskClosable={!hasFooter}
+        maskClosable={!useFooter}
         onClose={handleClose}
         transitionName="zoom"
         maskTransitionName="fade"
@@ -85,13 +87,13 @@ const Modal: React.FC<IModalProps> = ({
         closeIcon={<Close className={closeCls} />}
         title={<Title onBack={onBack} useBack={useBack} title={title} />}
         footer={
-          hasFooter && (
+          useFooter && (
             <Footer
               okText={okText}
               closeText={closeText}
               okButtonProps={okBtnProps}
               closeButtonProps={closeBtnProps}
-              footer={footer}
+              footer={restProps.footer}
               additionalFooter={additionalFooter}
               onOk={handleOk}
               onClose={handleClose}

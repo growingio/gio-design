@@ -17,7 +17,7 @@ describe('Testing Sign', () => {
       .create(
         <Sign className="gio-customized-sign" count={100} magnitude={100}>
           <span>Number</span>
-        </Sign>
+        </Sign>,
       )
       .toJSON();
     expect(domTree).toMatchSnapshot();
@@ -28,7 +28,7 @@ describe('Testing Sign', () => {
       .create(
         <Sign className="gio-customized-sign" variant="dot">
           <span>Dot</span>
-        </Sign>
+        </Sign>,
       )
       .toJSON();
     expect(domTree).toMatchSnapshot();
@@ -36,9 +36,9 @@ describe('Testing Sign', () => {
 
   it('should toggle hide correctly.', () => {
     const wrapper = mount(
-      <Sign className="gio-customized-sign" variant="dot" visible={true}>
+      <Sign className="gio-customized-sign" variant="dot" visible>
         <span>Dot</span>
-      </Sign>
+      </Sign>,
     );
     expect(wrapper.exists('.gio-sign--hide')).toBe(false);
     wrapper.setProps({ visible: false });
@@ -51,7 +51,7 @@ describe('Testing Sign', () => {
     const wrapper = mount(
       <Sign className="gio-customized-sign" variant="dot">
         <span>Dot</span>
-      </Sign>
+      </Sign>,
     );
 
     expect(wrapper.exists('.gio-sign__dot--default')).toBe(true);

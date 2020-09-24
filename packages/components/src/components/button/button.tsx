@@ -1,26 +1,16 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
 import classNames from 'classnames';
+import { LoadingOutlined } from '@gio-design/icons';
 import { ConfigContext } from '../config-provider';
 import SizeContext from '../config-provider/SizeContext';
-import LoadingIcon from './LoadingIcon';
 import { ButtonProps } from './interface';
-
-const { isValidElement } = React;
+import { cloneElement } from '../../utils/reactNode';
 
 const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
 
-function replaceElement(element: React.ReactNode, replacement: React.ReactNode, props: any): React.ReactNode {
-  if (!isValidElement(element)) return replacement;
-
-  return React.cloneElement(element, typeof props === 'function' ? props() : props);
-}
-
-function cloneElement(element: React.ReactNode, props?: any): React.ReactElement {
-  return replaceElement(element, element, props) as React.ReactElement;
-}
-
-function isString(str: any) {
+function isString(str: unknown) {
   return typeof str === 'string';
 }
 
@@ -30,10 +20,10 @@ function insertSpace(child: React.ReactChild, needInserted: boolean) {
   }
   const SPACE = needInserted ? ' ' : '';
   if (
-    typeof child !== 'string' &&
-    typeof child !== 'number' &&
-    isString(child.type) &&
-    isTwoCNChar(child.props.children)
+    typeof child !== 'string'
+    && typeof child !== 'number'
+    && isString(child.type)
+    && isTwoCNChar(child.props.children)
   ) {
     return cloneElement(child, {
       children: child.props.children.split('').join(SPACE),
@@ -42,9 +32,8 @@ function insertSpace(child: React.ReactChild, needInserted: boolean) {
   if (typeof child === 'string') {
     if (isTwoCNChar(child)) {
       return <span>{child.split('').join(SPACE)}</span>;
-    } else {
-      return <span>{child}</span>;
     }
+    return <span>{child}</span>;
   }
   return child;
 }
@@ -116,6 +105,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
 
   React.useEffect(() => {
     fixTwoCNChar();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [buttonRef]);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
@@ -144,18 +134,19 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
     [`${prefixCls}-block`]: block,
   });
 
-  /* eslint-disable prettier/prettier */
-  const iconNode =
-    icon && !innerLoading ? (
-      icon
-    ) : (
-        <LoadingIcon existIcon={!!icon} type={type} prefixCls={prefixCls} loading={innerLoading} />
-      );
+  let iconNode = null;
+
+  if (icon && !innerLoading) {
+    iconNode = icon;
+  } else if (innerLoading) {
+    iconNode = <LoadingOutlined rotating />
+  }
 
   const kids = children || children === 0 ? spaceChildren(children, isNeedInserted() && autoInsertSpace) : null;
 
   const { htmlType, ...otherProps } = rest;
   const buttonNode = (
+    // eslint-disable-next-line react/button-has-type
     <button {...otherProps} ref={buttonRef} type={htmlType} className={classes} onClick={handleClick}>
       {iconNode}
       {kids}
@@ -176,6 +167,7 @@ Button.defaultProps = {
 
 Button.displayName = 'Button';
 
+// eslint-disable-next-line no-underscore-dangle
 Button.__GIO_BUTTON = true;
 
 export default Button;

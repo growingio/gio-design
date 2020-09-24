@@ -4,7 +4,13 @@ import { Delete, Upload } from '@gio-design/icons';
 import { UploadPrefixClsContext } from './UploadContext';
 import { IActionsProps, STATUS_SUCCESS } from './interface';
 
-const Actions: React.FC<IActionsProps> = ({ useDelete = true, useUpload, file, onRemove, placement = 'center' }) => {
+const Actions: React.FC<IActionsProps> = ({
+  useDelete = true,
+  useUpload,
+  file,
+  onRemove,
+  placement = 'center',
+}: IActionsProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
   const cls = classnames(`${prefixCls}__actions`, {
     [`${prefixCls}__actions--center`]: placement === 'center',
@@ -25,7 +31,7 @@ const Actions: React.FC<IActionsProps> = ({ useDelete = true, useUpload, file, o
   };
 
   return (
-    <span className={cls} onClick={handleStopPropagation}>
+    <span className={cls} onClick={handleStopPropagation} aria-hidden="true">
       <span className={iconContainerCls}>
         {useUpload && <Upload className={iconCls} />}
         {useDelete && <Delete className={iconCls} onClick={handleRemove} />}

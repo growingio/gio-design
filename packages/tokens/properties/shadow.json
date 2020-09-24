@@ -3,10 +3,21 @@
     "avatar": {
       "value": "0 0 6px 0 rgba(223, 226, 237, 0.94)"
     },
+    "checkbox": {
+      "inbound": {
+        "value": "inset -0.5px 1px 2px 0 rgba(163, 173, 200, 0.8)"
+      },
+      "hover": {
+        "value": "inset -0.5px 1px 2px 0 rgba(163, 173, 200, 0.8), 0 2px 4px 0 rgba(223, 226, 237, 0.94)"
+      }
+    },
     "popover": {
       "value": "0 2px 14px 0 rgba(223, 226, 237, 0.8)"
     },
     "popconfirm": {
+      "value": "0 2px 14px 0 rgba(223, 226, 237, 0.8)"
+    },
+    "dropdown": {
       "value": "0 2px 14px 0 rgba(223, 226, 237, 0.8)"
     },
     "tabs": {

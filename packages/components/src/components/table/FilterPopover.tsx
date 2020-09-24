@@ -11,30 +11,31 @@ interface FilterPopoverProps {
 }
 
 const FilterPopover = (props: FilterPopoverProps) => {
-  const { prefixCls, children, onClick, filters = [] } = props;
+  const {
+    prefixCls, children, onClick, filters = [],
+  } = props;
   const [selectFilterKey, setSelectFilterKey] = useState<string[]>([]);
   const filterCheckbox = useMemo(
-    () =>
-      filters.map((item: string, index: number) => (
-        <Checkbox value={item} key={index}>
-          {item}
-        </Checkbox>
-      )),
-    [filters]
+    () => filters.map((item: string, index: number) => (
+      <Checkbox value={item} key={index}>
+        {item}
+      </Checkbox>
+    )),
+    [filters],
   );
   return (
     <Popover
       arrowContent={null}
       placement="bottomLeft"
       trigger="click"
-      contentArea={
+      contentArea={(
         <div className={`${prefixCls}-filter-popover`}>
           <CheckboxGroup defaultValue={selectFilterKey} value={selectFilterKey} onChange={setSelectFilterKey}>
             {filterCheckbox}
           </CheckboxGroup>
         </div>
-      }
-      footerArea={
+      )}
+      footerArea={(
         <Button
           onClick={() => {
             onClick(selectFilterKey);
@@ -42,7 +43,7 @@ const FilterPopover = (props: FilterPopoverProps) => {
         >
           确定
         </Button>
-      }
+      )}
     >
       {children}
     </Popover>

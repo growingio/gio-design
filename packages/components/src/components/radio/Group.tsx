@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
-import { usePrevious } from 'react-use';
+import usePrevious from '../../utils/hooks/usePrevious';
 import filterChildren from '../../utils/filterChildren';
 import Radio from './Radio';
 import { RadioGroupProvider } from './context';
 import { IRadioGroupProps, IRadioChangeEvent } from './interface';
 
-const Group: React.FC<IRadioGroupProps> = (props) => {
+const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
   const {
     className,
     name,
@@ -38,10 +38,10 @@ const Group: React.FC<IRadioGroupProps> = (props) => {
     if (value !== undefined || value !== prevSelectedValue) {
       setSelectedValue(value);
     }
-  }, [value]);
+  }, [value, prevSelectedValue]);
 
   const handleChange = (e: IRadioChangeEvent) => {
-    if (!Reflect.has(props, value)) {
+    if (!Reflect.has(props, 'value')) {
       setSelectedValue(e.target.value);
     }
 

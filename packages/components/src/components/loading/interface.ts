@@ -9,4 +9,5 @@ export interface LoadingProps {
   style?: React.CSSProperties;
   size?: 'small' | 'middle' | 'large';
   indicator?: React.ReactElement;
+  blurColor?: 'white' | 'black';
 }

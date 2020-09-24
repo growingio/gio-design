@@ -1,20 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useMemo, useCallback, useState } from 'react';
-import { ColumnsType, ColumnGroupType, ColumnType } from '../interface';
-import { get, isUndefined } from 'lodash';
+import { get, isUndefined, has } from 'lodash';
+import { InnerColumnsType, FilterState } from '../interface';
 
-export interface FilterState<RecordType> {
-  column: ColumnType<RecordType>;
-  key: string;
-  filteredKeys: string[];
-  onFilter?: (value: string, record: RecordType) => boolean;
-  filters?: string[];
-}
-
-const collectFilterStates = <RecordType,>(columns: ColumnsType<RecordType> = []): FilterState<RecordType>[] => {
+const collectFilterStates = <RecordType,>(columns: InnerColumnsType<RecordType> = []): FilterState<RecordType>[] => {
   const filterStates: FilterState<RecordType>[] = [];
   columns.forEach((column) => {
-    if ((column as ColumnGroupType<RecordType>).children) {
-      filterStates.push(...collectFilterStates((column as ColumnGroupType<RecordType>).children));
+    if (has(column, 'children')) {
+      filterStates.push(...collectFilterStates(get(column, 'children')));
     } else if (column.filters || column.filterDropdown) {
       const { key, filters = [], onFilter } = column;
       filterStates.push({
@@ -30,7 +23,7 @@ const collectFilterStates = <RecordType,>(columns: ColumnsType<RecordType> = [])
 };
 
 const useFilter = <RecordType,>(
-  columns: ColumnsType<RecordType>,
+  columns: InnerColumnsType<RecordType>,
   data: RecordType[]
 ): [FilterState<RecordType>[], (filterState: FilterState<RecordType>) => void, RecordType[]] => {
   // record all filter states

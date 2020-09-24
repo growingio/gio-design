@@ -1,6 +1,9 @@
 import * as React from 'react';
-import BaseInput, { prefixCls } from './BaseInput';
-import { InputProps } from './types';
+import classNames from 'classnames';
+import useEnter from './hooks/useEnter';
+import { InputProps } from './interfaces';
+
+export const prefixCls = 'gio-input';
 
 const Input: React.FC<InputProps> = ({
   value,
@@ -8,18 +11,30 @@ const Input: React.FC<InputProps> = ({
   onChange,
   onPressEnter,
   disabled = false,
-  maxLength,
+  readOnly = false,
   placeholder = '',
   inputStyle,
-
-  showOpt,
-  errorMsg = '',
-  label = '',
+  size = 'medium',
+  suffix,
   wrapStyle,
+  forwardRef,
+  ...rest
+}: InputProps) => {
+  const { realTimeValue, handleOnChange } = useEnter(value, onChange);
 
-  ...restInputProps
-}) => {
-  const contentClass = React.useMemo(() => `${prefixCls}-content${errorMsg ? '-error' : ''}`, [errorMsg]);
+  const wrapClass = classNames(prefixCls, {
+    [`${prefixCls}-container`]: !!suffix,
+  });
+
+  const inputClass = classNames(
+    `${prefixCls}-content`,
+    {
+      [`${prefixCls}-content-${size}`]: !!size,
+    },
+    {
+      [`${prefixCls}-content-suffix`]: !!suffix,
+    }
+  );
 
   const handleOnPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13 && onPressEnter) {
@@ -27,21 +42,31 @@ const Input: React.FC<InputProps> = ({
     }
   };
 
+  const renderSuffix = () => {
+    if (!suffix) {
+      return null;
+    }
+
+    return <div className={`${prefixCls}-container-suffix`}>{suffix}</div>;
+  };
+
   return (
-    <BaseInput showOpt={showOpt} errorMsg={errorMsg} label={label} wrapStyle={wrapStyle}>
+    <div className={wrapClass} style={wrapStyle}>
       <input
+        className={inputClass}
         type={type}
-        value={value}
-        onChange={onChange}
+        value={realTimeValue}
+        onChange={handleOnChange}
         onKeyDown={handleOnPressEnter}
         disabled={disabled}
-        maxLength={maxLength}
+        readOnly={readOnly}
         placeholder={placeholder}
         style={inputStyle}
-        className={contentClass}
-        {...restInputProps}
+        ref={forwardRef}
+        {...rest}
       />
-    </BaseInput>
+      {renderSuffix()}
+    </div>
   );
 };
 

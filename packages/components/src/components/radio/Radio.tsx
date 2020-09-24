@@ -11,12 +11,12 @@ interface CompoundedRadio extends React.ForwardRefExoticComponent<IRadioProps & 
 }
 
 const InnerRadio: React.ForwardRefRenderFunction<unknown, IRadioProps> = (
-  { type = 'radio', prefixCls: customPrefixCls, className, style, children, ...restProps },
+  { type = 'radio', prefixCls: customPrefixCls, className, style, children, ...restProps }: IRadioProps,
   ref
 ) => {
   const groupContext = useContext(RadioGroupContext);
 
-  const prefixCls = customPrefixCls ? customPrefixCls : 'gio-radio';
+  const prefixCls = customPrefixCls || 'gio-radio';
 
   const wrapperCls = classnames(className, `${prefixCls}__wrapper`, {
     [`${prefixCls}__wrapper--checked`]: restProps.checked,
@@ -45,6 +45,7 @@ const InnerRadio: React.ForwardRefRenderFunction<unknown, IRadioProps> = (
   }
 
   return (
+    // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label
       className={wrapperCls}
       style={style}

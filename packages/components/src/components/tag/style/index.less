@@ -1,5 +1,4 @@
-@import '../../../stylesheet/theme.less';
-@import '~@gio-design/tokens/dist/variables.less';
+@import '../../../stylesheet/index.less';
 
 @tag-prefix-cls: ~'@{component-prefix}-tag';
 @tag-padding: @size-spacing-xs;
@@ -9,10 +8,16 @@
   padding-right: @tag-padding;
   padding-left: @tag-padding;
   color: @color-text-tag-sign-normal;
-  font-family: @font-family;
+  font-family: @font-family-primary;
   background-color: @color-background-tag-sign;
   border-radius: @radius-border-small;
   cursor: default;
+
+  &-label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 
   &-size {
     &-small {
@@ -87,6 +92,8 @@
   }
 
   &-closable {
+    display: inline-flex;
+    align-items: center;
     background-color: @color-background-tag-filter-light-normal;
     &:hover {
       background-color: @color-background-tag-filter-light-hover;
@@ -106,7 +113,6 @@
     }
 
     &-icon {
-      margin-bottom: 2px;
       margin-left: @tag-padding;
       vertical-align: middle;
       cursor: pointer;

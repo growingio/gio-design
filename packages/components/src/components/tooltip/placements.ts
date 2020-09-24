@@ -97,14 +97,14 @@ export default function getPlacements(config: PlacementsConfig) {
   Object.keys(placementMap).forEach((key) => {
     placementMap[key] = arrowPointAtCenter
       ? {
-          ...placementMap[key],
-          overflow: getOverflowOptions(autoAdjustOverflow),
-          targetOffset,
-        }
+        ...placementMap[key],
+        overflow: getOverflowOptions(autoAdjustOverflow),
+        targetOffset,
+      }
       : {
-          ...placements[key],
-          overflow: getOverflowOptions(autoAdjustOverflow),
-        };
+        ...placements[key],
+        overflow: getOverflowOptions(autoAdjustOverflow),
+      };
 
     placementMap[key].ignoreShake = true;
   });

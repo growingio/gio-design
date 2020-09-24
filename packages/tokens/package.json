@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/tokens",
-  "version": "20.8.3",
+  "version": "20.9.1",
   "description": "GrowingIO Design tokens",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -17,6 +17,6 @@
   "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
   "license": "Apache-2.0",
   "devDependencies": {
-    "style-dictionary": "2.9.0"
+    "style-dictionary": "2.10.1"
   }
 }

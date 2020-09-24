@@ -27,7 +27,7 @@ group:
 | **title**       | 提示文字                     | string \| ReactNode \| () => ReactNode |        |
 | **tooltipLink** | 设置头像的链接以及链接的文字 | { name?: string, link: string }        |
 
-以下 API 为 Tooltip、Popconfirm、Popover 共享的 API。
+以下 API 为 Tooltip、Popconfirm、Popover、Dropdown（无 arrowPointAtCenter 参数） 共享的 API。
 
 | 参数                     | 说明                                                                                                                                           | 类型                              | 默认值                |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | --------------------- |

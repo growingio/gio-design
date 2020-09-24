@@ -1,22 +1,23 @@
 import React, { useContext } from 'react';
-import Avatar from './Avatar';
 import classNames from 'classnames';
+import _ from 'lodash';
+import Avatar from './Avatar';
 import { AvatarGroupProps, UserAvatarType } from './interface';
 import { ConfigContext } from '../config-provider';
-import _ from 'lodash';
 
 const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
-  const { number = 5, users = [], className, placement = 'bottom' } = props;
+  const {
+    number = 5, users = [], className, placement = 'bottom',
+  } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('avatar');
 
   let children = null;
-  const renderAvatarGroup = (users: UserAvatarType[]) =>
-    users.map((user, idx) => (
-      <Avatar key={idx} {...user} displayTooltip={true} placement={placement}>
-        {user.name}
-      </Avatar>
-    ));
+  const renderAvatarGroup = (users: UserAvatarType[]) => users.map((user, idx) => (
+    <Avatar key={idx} {...user} displayTooltip placement={placement}>
+      {user.name}
+    </Avatar>
+  ));
   const renderAvatarRest = (users: UserAvatarType[]) => (
     <Avatar className={`${prefixCls}-rest`} omit={false}>{`+${users.length}`}</Avatar>
   );

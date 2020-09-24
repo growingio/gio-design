@@ -67,9 +67,7 @@ const Demo: React.FC<{}> = () => {
         <Tree
           defaultExpandedKeys={['0-0-0', '0-0-1']}
           defaultSelectedKeys={['0-0-1']}
-          onSelect={(selectedKeys: string[], info: any) =>
-            onSelect(selectedKeys, info)
-          }
+          onSelect={(selectedKeys: any[], info: any) => onSelect(selectedKeys, info)}
           selectedKeys={keys}
           treeData={treeData}
         />

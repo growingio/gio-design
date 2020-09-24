@@ -32,9 +32,10 @@ export interface GioTreeNodeProps {
   selectable?: boolean;
   icon?: ((treeNode: GioTreeNodeAttribute) => React.ReactNode) | React.ReactNode;
   children?: React.ReactNode;
-  [customProp: string]: any;
+  [customProp: string]: unknown;
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export type GioTreeNode = React.Component<GioTreeNodeProps, {}>;
 
 export interface GioTreeNodeBaseEvent {
@@ -86,7 +87,7 @@ export interface TreeProps extends Omit<RcTreeProps, 'prefixCls'> {
   style?: React.CSSProperties;
   showIcon?: boolean;
   icon?: ((nodeProps: GioTreeNodeAttribute) => React.ReactNode) | React.ReactNode;
-  switcherIcon?: React.ReactElement<any>;
+  switcherIcon?: React.ReactElement<unknown>;
   prefixCls?: string;
   children?: React.ReactNode;
 }
@@ -95,9 +96,11 @@ interface CompoundedComponent extends React.ForwardRefExoticComponent<TreeProps 
   TreeNode: typeof TreeNode;
 }
 
-const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
+const Tree = React.forwardRef<RcTree, TreeProps>((props: TreeProps, ref) => {
   const { getPrefixCls, virtual } = React.useContext(ConfigContext);
-  const { prefixCls: customizePrefixCls, className, showIcon, children, switcherIcon } = props;
+  const {
+    prefixCls: customizePrefixCls, className, showIcon, children, switcherIcon,
+  } = props;
 
   const newProps = { ...props };
   const prefixCls = getPrefixCls('tree', customizePrefixCls);

@@ -51,7 +51,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
 
   const popConfirmOverlay = () => (
     <>
-      {icon || <WarningFilled width={16} height={16} color="#F7AF48" style={{ position: 'absolute', top: '22px' }} />}
+      {icon || <WarningFilled size="16px" color="#F7AF48" style={{ position: 'absolute', top: '22px' }} />}
       <div className={`${prefixCls}-inner-title`}>{title}</div>
       {desc && <div className={`${prefixCls}-inner-desc`}>{desc}</div>}
       <div className={`${prefixCls}-inner-btns`}>

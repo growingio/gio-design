@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import { IXhrOption, IProgress } from './interface';
 
 function getError(option: IXhrOption, xhr: XMLHttpRequest) {
