@@ -9,6 +9,12 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.9.3
+
+- 🐛 修复部分组件无法按需加载问题。[#253] (https://github.com/growingio/gio-design/pull/253)
+- Input
+  - 🐛 input 的 value 和 onChange 非必需 [#255] (https://github.com/growingio/gio-design/pull/255)
+
 ## 20.9.2
 
 - 💄 从整体设计 z-index 层级。[#205](https://github.com/growingio/gio-design/pull/205)
