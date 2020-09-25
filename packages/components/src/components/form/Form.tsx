@@ -40,13 +40,7 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('form', customizePrefixCls);
-  const cls = classNames(
-    prefixCls,
-    className,
-    `${prefixCls}-${size || 'middle'}`,
-    `${prefixCls}-${layout}`,
-    !!labelAlign && `${prefixCls}-label-${labelAlign}`
-  );
+  const cls = classNames(prefixCls, className, `${prefixCls}-${size || 'middle'}`, `${prefixCls}-${layout}`);
   // @TODO: wrap form with custom functions
   const [wrapForm] = useForm(form);
   const formContextValues = {

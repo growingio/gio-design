@@ -5,7 +5,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 
 import { ConfigContext } from '../config-provider';
-import { FormContext } from './context';
+import { FormContext, FormLabelAlign } from './context';
 import { toArray } from './util';
 import ItemControl, { FormItemFeedbackType } from './ItemControl';
 import ItemLabel from './ItemLabel';
@@ -30,6 +30,7 @@ export interface Props extends Omit<FieldProps, 'children'> {
   labelWidth?: string | number;
   inputWidth?: string | number;
   colon?: boolean;
+  labelAlign?: FormLabelAlign;
 }
 
 const Item: React.FC<Props> = (props: Props) => {
@@ -40,6 +41,7 @@ const Item: React.FC<Props> = (props: Props) => {
     labelWidth: _labelWidth,
     inputWidth: _inputWidth,
     colon: _colon,
+    labelAlign: _labelAlign,
   } = useContext(FormContext);
   const {
     prefixCls: customizePrefixCls,
@@ -61,6 +63,7 @@ const Item: React.FC<Props> = (props: Props) => {
     labelWidth = _labelWidth, // set default value to formContext value
     inputWidth = _inputWidth,
     colon = _colon,
+    labelAlign = _labelAlign,
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('field', customizePrefixCls);
@@ -115,6 +118,7 @@ const Item: React.FC<Props> = (props: Props) => {
           <div className={cls} data-message-type={mergedFeedbackType}>
             <ItemLabel
               label={label}
+              labelAlign={labelAlign}
               prefixCls={prefixCls}
               fieldId={fieldId}
               required={required}

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { RequiredMark } from './context';
+import { FormLabelAlign, RequiredMark } from './context';
 
 export interface Props {
   label?: string;
@@ -14,6 +14,7 @@ export interface Props {
   marker?: React.ReactNode;
   colon?: string;
   htmlFor?: string;
+  labelAlign?: FormLabelAlign;
 }
 
 const ItemLabel: React.FC<Props> = (props: Props) => {
@@ -28,6 +29,7 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
     marker,
     colon,
     htmlFor = fieldId,
+    labelAlign,
   } = props;
   const isRequired = required && (requiredMark === true || requiredMark === undefined);
   const isOptional = !required && requiredMark === 'optional';
@@ -36,7 +38,8 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
   const cls = classNames(
     `${prefixCls}-label`,
     isRequired && `${prefixCls}-label-required`,
-    isOptional && `${prefixCls}-label-optional`
+    isOptional && `${prefixCls}-label-optional`,
+    labelAlign && `${prefixCls}-label-${labelAlign}`
   );
 
   let labelChild: React.ReactNode = label;

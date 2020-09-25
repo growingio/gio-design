@@ -51,6 +51,12 @@
     font-weight: @weight-font-medium;
     line-height: @text-lint-height-base;
     padding-right: 12px;
+    text-align: right;
+
+    // label-align
+    &.@{field-prefix-cls}-label-left {
+      text-align: left;
+    }
 
     > label {
       display: inline-flex;
@@ -115,14 +121,6 @@
 
 // form layouts
 .@{form-prefix-cls} {
-  // label-align
-  &&-label-left {
-    .@{field-prefix-cls} {
-      &-label {
-        text-align: left;
-      }
-    }
-  }
   &&-label-right {
     .@{field-prefix-cls} {
       &-label {
