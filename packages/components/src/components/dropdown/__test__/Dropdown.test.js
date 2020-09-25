@@ -10,7 +10,7 @@ async function waitForComponentToPaint(wrapper, amount = 500) {
 
 describe('Testing dropdown', () => {
   const getDropdown = () => (
-    <Dropdown overlay="Dropdown 内容主体">
+    <Dropdown overlay={<div>Dropdown 内容主体</div>}>
       <Button>Test</Button>
     </Dropdown>
   );
@@ -23,7 +23,7 @@ describe('Testing dropdown', () => {
   it('should be mount, setProps, unmount with no error', () => {
     expect(() => {
       const wrapper = mount(getDropdown());
-      wrapper.setProps({ overlay: 'overlay update' });
+      wrapper.setProps({ overlay: <div>overlay update</div> });
       wrapper.setProps({ trigger: 'hover' });
       wrapper.setProps({ visible: 'true' });
       wrapper.unmount();

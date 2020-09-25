@@ -22,7 +22,7 @@ export default () => {
       visible={visible}
       onVisibleChange={setVisible}
       overlay={
-        <>
+        <div>
           <SearchBar
             id="demo"
             value={searchvalue}
@@ -59,7 +59,7 @@ export default () => {
               确定
             </Button>
           </div>
-        </>
+        </div>
       }
     >
       <Button type="assist" icon={<FilterOutlined />} />
