@@ -196,7 +196,7 @@ group:
 | name             | 表单名称                                                                                                 | string                                                                                              | -          |
 | layout           | 表单布局                                                                                                 | `horizontal` \| `vertical` \| `inline`                                                              | horizontal |
 | colon            | 配置 Form.Item 的 colon 的默认值。表示是否显示 label 后面的冒号 (只有在属性 layout 为 horizontal 时有效) | boolean                                                                                             | false      |
-| labelAlign       | label 标签的文本对齐方式                                                                                 | `left` \| `right`                                                                                   | right      |
+| labelAlign       | label 标签的文本对齐方式                                                                                 | `left` \| `right`                                                                                   | -          |
 | size             | 设置字段组件的尺寸（仅限 giod 组件）                                                                     | `small` \| `middle` \| `large`                                                                      | -          |
 | labelWidth       | label 标签的宽度（width）                                                                                | number \| string                                                                                    | -          |
 | inputWidth       | input 控制项标签的宽度（width）                                                                          | number \| string                                                                                    | -          |
@@ -221,6 +221,7 @@ group:
 | trigger           | 设置收集字段值变更的时机                                                                                            | string                                            | string    | `onChange` |
 | required          | 必填样式设置。如不设置，则会根据校验规则自动生成                                                                    | boolean                                           | false     |
 | htmlFor           | 设置子元素 label htmlFor 属性                                                                                       | string                                            | -         |
+| labelAlign        | 设置 label 标签的文本对齐方式                                                                                       | `left` \| `right`                                 | -         |
 | initialValue      | 设置子元素默认值，如果与 Form 的 initialValues 冲突则以 Form 为准                                                   | string                                            | -         |
 | labelWidth        | 设置子元素 label 标签的宽度                                                                                         | string \| number                                  | -         |
 | rules             | 校验规则，设置字段的校验逻辑。点击[此处](https://ant.design/components/form-cn/#components-form-demo-basic)查看示例 | [Rule[]](#rule)                                   | -         |
