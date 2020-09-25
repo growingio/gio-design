@@ -53,16 +53,16 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     }
   }, 1000);
 
-  const handleLeftInputChange = (e: string): void => {
+  const handleLeftInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     // e.persist();
-    setLeftInputTimeRange(e);
-    debounceLeftChange(e);
+    setLeftInputTimeRange(e.target.value);
+    debounceLeftChange(e.target.value);
   };
 
-  const handleRightInputChange = (e: string): void => {
+  const handleRightInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     // e.persist();
-    setRightInputTimeRange(e);
-    debounceRightChange(e);
+    setRightInputTimeRange(e.target.value);
+    debounceRightChange(e.target.value);
   };
 
   const CalendarCls = classNames(classNames, {

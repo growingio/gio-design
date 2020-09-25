@@ -15,6 +15,7 @@ group:
 向下弹出的列表。当页面上的操作命令过多时，用此组件可以收纳操作元素。点击或移入触点，会出现一个下拉菜单。可在列表中进行选择，并执行相应的命令。
 
 [1] 用于收罗一组命令操作。
+
 [2] Select 用于选择，而 Dropdown 是命令集合。
 
 ## 应用场景
@@ -33,6 +34,7 @@ group:
 ## 代码演示
 
 [1] 当页面上的操作命令过多时，常使用 Dropdown 收纳操作元素。
+
 [2] 点击触点，出现下拉菜单，在列表中选择相应的命令执行，点击相应命令后自动收起列表，点击区域为整条列表项，点击空白处列表收起。
 
 <code src='./demo/base.tsx' title='自定义内容样式' />
@@ -46,9 +48,11 @@ group:
 
 ## 参数说明
 
-| 参数          | 说明                                                                                                                                           | 类型             | 默认值   |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | -------- |
-| **placement** | 气泡框位置, 可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom` | string           | `bottom` |
-| **trigger**   | 触发行为，可选 hover,focus,click,contextMenu                                                                                                   | string\|string[] | `click`  |
+| 参数          | 说明                                                                                                                                           | 类型                               | 默认值   |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | -------- |
+| **placement** | 气泡框位置, 可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom` | string                             | `bottom` |
+| **trigger**   | 触发行为，可选 hover,focus,click,contextMenu                                                                                                   | string\|string[]                   | `click`  |
+| **overlay**   | 下拉区域                                                                                                                                       | ReactElement \| () => ReactElement | -        |
 
+注意，请确保 overlay 的元素能接受 onClick 事件，否则点击下拉区域不会关闭下拉菜单。
 更多参数参考[Tooltip](/components/basic/tooltip)

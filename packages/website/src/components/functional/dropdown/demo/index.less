@@ -1,6 +1,6 @@
 .avatar-content {
   width: 280px;
-  height: 323px;
+  height: 300px;
   letter-spacing: 0;
   border-radius: 6px;
   box-shadow: 0 2px 14px 0 rgba(223, 226, 237, 0.8);
@@ -9,14 +9,16 @@
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
-    background-color: #f5f7fc;
+    background-color: #f7f8fc;
     &-name {
+      margin: 8px 0 0;
       color: #313e75;
       font-weight: 500;
       font-size: 14px;
       line-height: 22px;
     }
     &-email {
+      margin-bottom: unset;
       color: #a3adc8;
       font-size: 12px;
       line-height: 20px;
@@ -49,6 +51,7 @@
   }
   hr {
     margin: 0 16px;
+    border: unset;
     border-top: 1px solid #dcdfed;
   }
   &-logout {

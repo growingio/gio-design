@@ -59,6 +59,36 @@ jobs:
           key: packages-${{ github.sha }}
       - name: Build packages
         run: yarn build
+  other:
+    name: Upload test coverage and build website
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '1'
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.1
+        with:
+          node-version: 12.x
+      - name: Restore Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Restore packages from cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            packages/components/dist
+            packages/components/es
+            packages/icons/dist
+            packages/icons/es
+            packages/tokens/dist
+          key: packages-${{ github.sha }}
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov
@@ -75,7 +105,7 @@ jobs:
         run: yarn build:website
   deploy_netlify:
     name: Deploying website to Netlify
-    needs: build
+    needs: other
     runs-on: ubuntu-latest
     steps:
       - name: Restore website
@@ -105,7 +135,7 @@ jobs:
             - [GrowingIO Design on GitHub Pages](https://mirror.growingio.design)
   deploy_github:
     name: Deploying website to GitHub Pages
-    needs: build
+    needs: other
     runs-on: ubuntu-latest
     steps:
       - name: Restore website
