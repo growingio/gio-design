@@ -1,0 +1,25 @@
+@import '../../../stylesheet/index.less';
+@prefixClass: ~'@{component-prefix}-time-picker';
+
+.@{prefixClass}-panel {
+  &-input {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    border: 1px solid transparent;
+    outline: 0;
+    cursor: auto;
+
+    &-wrap {
+      position: relative;
+      box-sizing: border-box;
+      padding: 6px;
+      border-bottom: 1px solid #e9e9e9;
+    }
+
+    &-invalid {
+      border-color: red;
+    }
+  }
+}
