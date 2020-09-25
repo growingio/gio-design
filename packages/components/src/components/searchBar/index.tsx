@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
 import Input from '../input';
 import Button from '../button';
 import { SearchBarProps } from './interfaces';
-import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
 
 export const prefixCls = 'gio-searchbar';
 
@@ -71,9 +71,9 @@ const SearchBar: React.FC<SearchBarProps> = ({
     setSearchStorage(newValue);
   };
 
-  const handleChange = (v: string) => {
-    onChange(v);
-    const newValue = findStorage(storageKey, v);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.value);
+    const newValue = findStorage(storageKey, e.target.value);
     setSearchStorage(newValue);
   };
 
@@ -82,7 +82,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    // eslint-disable-next-line no-shadow
+    const { value } = e.target;
     setTimeout(() => {
       setStorage(storageKey, value);
       setShowDropdown(false);
@@ -104,10 +105,14 @@ const SearchBar: React.FC<SearchBarProps> = ({
     }
 
     return (
-      <div className={prefixCls + '-dropdown'}>
+      <div className={`${prefixCls}-dropdown`}>
         {allowClearStorage && (
-          <div className={prefixCls + '-dropdown-clear'}>
-            <span className={prefixCls + '-dropdown-clear-text'}>显示最近{storageNum}条搜索记录</span>
+          <div className={`${prefixCls}-dropdown-clear`}>
+            <span className={`${prefixCls}-dropdown-clear-text`}>
+              显示最近
+              {storageNum}
+              条搜索记录
+            </span>
             <Button type="text" onClick={handleClearStorage}>
               清除
             </Button>
@@ -118,7 +123,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
             onClick={() => {
               onChange(item);
             }}
-            className={prefixCls + '-dropdown-item'}
+            className={`${prefixCls}-dropdown-item`}
             key={item}
           >
             {item}

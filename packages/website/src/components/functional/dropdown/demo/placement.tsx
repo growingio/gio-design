@@ -9,13 +9,13 @@ const options = [
 
 export default () => (
   <>
-    <Dropdown visible overlay={<List dataSource={options} width={144} height={88} />} placement="bottomRight">
+    <Dropdown overlay={<List dataSource={options} width={144} height={88} />} placement="bottomRight">
       <Button type="assist" icon={<More />} style={{ marginLeft: '64px' }} />
     </Dropdown>
-    <Dropdown visible overlay={<List dataSource={options} width={144} height={88} />} placement="bottom">
+    <Dropdown overlay={<List dataSource={options} width={144} height={88} />} placement="bottom">
       <Button type="assist" icon={<More />} style={{ margin: '0px 128px' }} />
     </Dropdown>
-    <Dropdown visible overlay={<List dataSource={options} width={144} height={88} />} placement="bottomLeft">
+    <Dropdown overlay={<List dataSource={options} width={144} height={88} />} placement="bottomLeft">
       <Button type="assist" icon={<More />} />
     </Dropdown>
   </>

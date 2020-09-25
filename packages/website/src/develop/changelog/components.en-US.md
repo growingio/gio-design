@@ -9,6 +9,12 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.9.3
+
+- 🐛 fix some components can't be loaded on demand bug. [#253] (https://github.com/growingio/gio-design/pull/253)
+- Input
+  - 🐛 input and value and onChange not necessary [#255] (https://github.com/growingio/gio-design/pull/255)
+
 ## 20.9.2
 
 - 💄 Design z-index display.[#205](https://github.com/growingio/gio-design/pull/205)

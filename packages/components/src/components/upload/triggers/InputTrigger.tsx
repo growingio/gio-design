@@ -7,9 +7,7 @@ import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import Preview from '../Preview';
 import { UploadPrefixClsContext } from '../UploadContext';
 
-const InputTrigger: React.FC<ITriggerProps> = ({
-  triggerProps, file, inputUploadType, onRemove, onInputUpload,
-}) => {
+const InputTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, inputUploadType, onRemove, onInputUpload }) => {
   const [url, setUrl] = useState<string>('');
   const prefixCls = useContext(UploadPrefixClsContext);
   const inputWrapperCls = classnames(`${prefixCls}__input`);
@@ -35,7 +33,7 @@ const InputTrigger: React.FC<ITriggerProps> = ({
         <Input
           placeholder="请输入图片的 URL"
           {...triggerProps}
-          onChange={setUrl}
+          onChange={(e) => setUrl(e.target.value)}
           onPressEnter={handlePressEnter}
           value={url}
         />

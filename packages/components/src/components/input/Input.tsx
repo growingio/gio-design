@@ -1,14 +1,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import useEnter from './hooks/useEnter';
-import { InputProps } from './interfaces';
+import { InputProps, InputNumberProps, TextAreaProps } from './interfaces';
 
 export const prefixCls = 'gio-input';
 
-const Input: React.FC<InputProps> = ({
-  value,
+const InputFC: React.FC<InputProps> = ({
   type = 'text',
-  onChange,
   onPressEnter,
   disabled = false,
   readOnly = false,
@@ -20,8 +17,6 @@ const Input: React.FC<InputProps> = ({
   forwardRef,
   ...rest
 }: InputProps) => {
-  const { realTimeValue, handleOnChange } = useEnter(value, onChange);
-
   const wrapClass = classNames(prefixCls, {
     [`${prefixCls}-container`]: !!suffix,
   });
@@ -37,7 +32,7 @@ const Input: React.FC<InputProps> = ({
   );
 
   const handleOnPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.keyCode === 13 && onPressEnter) {
+    if (e.key === 'Enter' && onPressEnter) {
       onPressEnter(e);
     }
   };
@@ -55,19 +50,30 @@ const Input: React.FC<InputProps> = ({
       <input
         className={inputClass}
         type={type}
-        value={realTimeValue}
-        onChange={handleOnChange}
         onKeyDown={handleOnPressEnter}
         disabled={disabled}
         readOnly={readOnly}
         placeholder={placeholder}
         style={inputStyle}
         ref={forwardRef}
+        // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       />
       {renderSuffix()}
     </div>
   );
 };
+
+class Input extends React.Component<InputProps> {
+  public static InputNumber: React.FC<InputNumberProps>;
+
+  public static Password: React.FC<InputProps>;
+
+  public static TextArea: React.FC<TextAreaProps>;
+
+  public render(): React.ReactNode {
+    return <InputFC {...this.props} />;
+  }
+}
 
 export default Input;
