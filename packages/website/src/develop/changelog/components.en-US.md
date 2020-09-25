@@ -9,6 +9,20 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.9.5
+- TimePicker
+  - 🆕 add TimePicker component [#258] (https://github.com/growingio/gio-design/pull/258)
+- Table
+  - 🐛 when table dataSource update, all state of pagination should be reset.[#251] (https://github.com/growingio/gio-design/pull/251)
+- Dropdown
+  - 🐛 auto close after click overlay element. change overlay type from ReactNode to ReactElement. [#252] (https://github.com/growingio/gio-design/pull/252)
+  - 📖 continue perfecting Dropdown demo [#249] (https://github.com/growingio/gio-design/pull/249)
+- Checkbox
+  - 💄 advance .gio-checkbox-icon-indeterminate style priority。[#232] (https://github.com/growingio/gio-design/pull/232)
+- Select
+  - 🐛 fix onChange bug。[#231] (https://github.com/growingio/gio-design/pull/231)
+
+
 ## 20.9.3
 
 - 🐛 fix some components can't be loaded on demand bug. [#253] (https://github.com/growingio/gio-design/pull/253)

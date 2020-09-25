@@ -9,6 +9,19 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.9.5
+- TimePicker
+  - 🆕 新增事件选择器组件 [#258] (https://github.com/growingio/gio-design/pull/258)
+- Table
+  - 🐛 当table的DataSource改变的时候，所有列表分页的状态都应该被重置。[#251] (https://github.com/growingio/gio-design/pull/251)
+- Dropdown
+  - 🐛 点击overlay元素后，自动关闭下拉菜单。将overlay的类型从ReactNode更改为ReactElement。 [#252] (https://github.com/growingio/gio-design/pull/252)
+  - 📖 继续完善Dropdown Demo [#249] (https://github.com/growingio/gio-design/pull/249)
+- Checkbox
+  - 💄 提升 .gio-checkbox-icon-indeterminate 样式优先级。[#232] (https://github.com/growingio/gio-design/pull/232)
+- Select
+  - 🐛 修复 onChange bug。[#231] (https://github.com/growingio/gio-design/pull/231)
+
 ## 20.9.3
 
 - 🐛 修复部分组件无法按需加载问题。[#253] (https://github.com/growingio/gio-design/pull/253)
