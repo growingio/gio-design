@@ -28,7 +28,9 @@ const renderAvatarContent = () => {
 export default () => {
   return (
     <Dropdown overlay={renderAvatarContent}>
-      <Avatar src={image}>1111</Avatar>
+      <Avatar droppable src={image}>
+        1111
+      </Avatar>
     </Dropdown>
   );
 };
