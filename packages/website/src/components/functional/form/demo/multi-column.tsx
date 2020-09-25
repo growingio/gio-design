@@ -5,11 +5,12 @@ const { Item } = Form;
 
 const items = [...new Array(6)];
 
-const MultiColumn: React.FC = (props) => {
+const MultiColumn: React.FC = () => {
   return (
     <Form layout="inline">
       {items.map((_, i) => (
-        <Item key={i} label={`label-${i}`}>
+        // eslint-disable-next-line react/no-array-index-key
+        <Item key={i} label={`label-${i}`} name={`inline-${i}`}>
           <Input />
         </Item>
       ))}
