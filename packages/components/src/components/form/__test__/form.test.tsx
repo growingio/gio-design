@@ -84,12 +84,12 @@ describe('<Form />', () => {
     const wrapper = mount(
       <FormProvider onFormChange={onFormChange}>
         <Form name="form1">
-          <Item>
+          <Item name="name">
             <input type="text" />
           </Item>
         </Form>
         <Form name="form2">
-          <Item>
+          <Item name="name">
             <input type="text" />
           </Item>
         </Form>

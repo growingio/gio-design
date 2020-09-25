@@ -1,4 +1,5 @@
 import { Field, FormInstance } from 'rc-field-form';
+import { Meta } from 'rc-field-form/lib/interface';
 import { FieldProps } from 'rc-field-form/lib/Field';
 import FieldContext from 'rc-field-form/lib/FieldContext';
 import React, { useContext } from 'react';
@@ -70,22 +71,59 @@ const Item: React.FC<Props> = (props: Props) => {
   const { validateTrigger: contextValidateTrigger = 'onChange' } = useContext(FieldContext);
   const mergedValidateTrigger = validateTrigger === undefined ? contextValidateTrigger : validateTrigger;
 
+  const renderLayout = (childNode: React.ReactNode, meta?: Meta, fieldId?: string) => {
+    const { errors = [] } = meta || {};
+    const hasFeedback = !!feedback;
+    const hasError = errors.length > 0;
+    const hasHelp = !!help;
+    const mergedFeedbackType = hasError ? 'error' : feedbackType;
+    const mergedFeedback = feedback ? toArray(feedback) : errors;
+    const mergedRequired = required === true && (requiredMark === true || requiredMark === undefined);
+    const cls = classNames(prefixCls, className, {
+      [`${prefixCls}-required`]: mergedRequired,
+      [`${prefixCls}-has-error`]: hasError,
+      [`${prefixCls}-has-feedback`]: hasFeedback,
+      [`${prefixCls}-has-help`]: hasHelp,
+    });
+
+    return (
+      <div className={cls} data-message-type={mergedFeedbackType}>
+        <ItemLabel
+          label={label}
+          labelAlign={labelAlign}
+          prefixCls={prefixCls}
+          fieldId={fieldId}
+          required={required}
+          afterLabel={afterLabel}
+          labelWidth={labelWidth}
+          requiredMark={requiredMark}
+          marker={marker}
+          htmlFor={htmlFor}
+          colon={colon && layout === 'horizontal' ? '：' : ''}
+        />
+        <ItemControl
+          prefixCls={prefixCls}
+          inputWidth={inputWidth}
+          afterInput={afterInput}
+          help={help}
+          feedback={mergedFeedback}
+          feedbackType={feedbackType}
+          icon={feedbackIcon}
+        >
+          {childNode}
+        </ItemControl>
+      </div>
+    );
+  };
+
+  // 没传 name 进行 merge control 会影响到 input 的 defaultValue
+  if (!name && typeof children !== 'function') {
+    return renderLayout(children);
+  }
+
   return (
     <Field {...props} trigger={trigger} validateTrigger={mergedValidateTrigger}>
       {(control, meta, form) => {
-        const { errors } = meta;
-        const hasFeedback = !!feedback;
-        const hasError = errors.length > 0;
-        const hasHelp = !!help;
-        const mergedFeedbackType = hasError ? 'error' : feedbackType;
-        const mergedFeedback = feedback ? toArray(feedback) : errors;
-        const mergedRequired = required === true && (requiredMark === true || requiredMark === undefined);
-        const cls = classNames(prefixCls, className, {
-          [`${prefixCls}-required`]: mergedRequired,
-          [`${prefixCls}-has-error`]: hasError,
-          [`${prefixCls}-has-feedback`]: hasFeedback,
-          [`${prefixCls}-has-help`]: hasHelp,
-        });
         const mergedName = name && meta ? meta.name : [];
         const fieldId = mergedName.length ? [formName, ...mergedName].filter((d) => !!d).join('_') : undefined;
 
@@ -114,34 +152,7 @@ const Item: React.FC<Props> = (props: Props) => {
           childNode = children;
         }
 
-        return (
-          <div className={cls} data-message-type={mergedFeedbackType}>
-            <ItemLabel
-              label={label}
-              labelAlign={labelAlign}
-              prefixCls={prefixCls}
-              fieldId={fieldId}
-              required={required}
-              afterLabel={afterLabel}
-              labelWidth={labelWidth}
-              requiredMark={requiredMark}
-              marker={marker}
-              htmlFor={htmlFor}
-              colon={colon && layout === 'horizontal' ? '：' : ''}
-            />
-            <ItemControl
-              prefixCls={prefixCls}
-              inputWidth={inputWidth}
-              afterInput={afterInput}
-              help={help}
-              feedback={mergedFeedback}
-              feedbackType={feedbackType}
-              icon={feedbackIcon}
-            >
-              {childNode}
-            </ItemControl>
-          </div>
-        );
+        return renderLayout(childNode, meta, fieldId);
       }}
     </Field>
   );
