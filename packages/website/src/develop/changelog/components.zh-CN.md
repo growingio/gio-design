@@ -10,8 +10,7 @@ nav:
 # @gio-design/components 更新日志
 
 ## 20.9.5
-- TimePicker
-  - 🆕 新增事件选择器组件 [#258] (https://github.com/growingio/gio-design/pull/258)
+
 - Table
   - 🐛 当table的DataSource改变的时候，所有列表分页的状态都应该被重置。[#251] (https://github.com/growingio/gio-design/pull/251)
 - Dropdown
@@ -22,14 +21,11 @@ nav:
 - Select
   - 🐛 修复 onChange bug。[#231] (https://github.com/growingio/gio-design/pull/231)
 
-## 20.9.3
+## 20.9.4
 
 - 🐛 修复部分组件无法按需加载问题。[#253] (https://github.com/growingio/gio-design/pull/253)
 - Input
   - 🐛 input 的 value 和 onChange 非必需 [#255] (https://github.com/growingio/gio-design/pull/255)
-
-## 20.9.2
-
 - 💄 从整体设计 z-index 层级。[#205](https://github.com/growingio/gio-design/pull/205)
 - Modal
   - 🐛 修复 Modal footer 设置无效问题；修复 StepModal steps 变更 stepStack 未重置问题[#207](https://github.com/growingio/gio-design/pull/207)
