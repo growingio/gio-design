@@ -10,8 +10,7 @@ nav:
 # @gio-design/components Change Log
 
 ## 20.9.5
-- TimePicker
-  - 🆕 add TimePicker component [#258] (https://github.com/growingio/gio-design/pull/258)
+
 - Table
   - 🐛 when table dataSource update, all state of pagination should be reset.[#251] (https://github.com/growingio/gio-design/pull/251)
 - Dropdown
