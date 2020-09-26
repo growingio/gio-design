@@ -22,14 +22,11 @@ nav:
   - 🐛 fix onChange bug。[#231] (https://github.com/growingio/gio-design/pull/231)
 
 
-## 20.9.3
+## 20.9.4
 
 - 🐛 fix some components can't be loaded on demand bug. [#253] (https://github.com/growingio/gio-design/pull/253)
 - Input
   - 🐛 input and value and onChange not necessary [#255] (https://github.com/growingio/gio-design/pull/255)
-
-## 20.9.2
-
 - 💄 Design z-index display.[#205](https://github.com/growingio/gio-design/pull/205)
 - Modal
   - 🐛 Fix footer bug in Modal. Fix reset bug of StepModal. [#207](https://github.com/growingio/gio-design/pull/207)
