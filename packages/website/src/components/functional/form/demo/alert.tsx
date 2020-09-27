@@ -36,10 +36,10 @@ export default (): JSX.Element => {
 
       <Item>
         <div>
-          <Button htmlType="submit">提交</Button>
           <Button htmlType="reset" type="secondary">
             重置
           </Button>
+          <Button htmlType="submit">提交</Button>
         </div>
       </Item>
     </Form>

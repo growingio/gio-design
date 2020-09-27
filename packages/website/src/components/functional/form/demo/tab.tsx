@@ -6,7 +6,7 @@ import { Tabs, TabPane } from '@gio-design/components';
 
 import InputsForm from './inputs';
 
-const Tab: React.FC<Props> = () => {
+const Tab: React.FC = () => {
   return (
     <Tabs type="line">
       {[1, 2, 3].map((n) => (

@@ -5,8 +5,6 @@ import React from 'react';
 
 import { FormLayout } from './Form';
 
-export type WidthProperty = number | string;
-
 export type FormLabelAlign = 'left' | 'right';
 
 export type RequiredMark = boolean | 'optional';
@@ -15,8 +13,8 @@ export interface FormContextProps {
   name?: string;
   layout?: FormLayout;
   labelAlign?: FormLabelAlign;
-  labelWidth?: WidthProperty;
-  inputWidth?: WidthProperty;
+  labelWidth?: number;
+  inputWidth?: number;
   requiredMark?: RequiredMark;
   colon?: boolean;
 }

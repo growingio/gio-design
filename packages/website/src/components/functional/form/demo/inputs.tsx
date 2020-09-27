@@ -31,7 +31,7 @@ const Inputs: React.FC<Props> = ({ name, size }: Props) => {
   };
 
   return (
-    <Form form={form} name={name} size={size} initialValues={{ radio: 0, select: 0 }}>
+    <Form form={form} name={name} size={size} initialValues={{ radio: 0, select: 0 }} layout="vertical">
       <Item name="input" label="Input">
         <Input />
       </Item>
@@ -43,7 +43,7 @@ const Inputs: React.FC<Props> = ({ name, size }: Props) => {
         </Group>
       </Item>
       <Item name="select" label="Select">
-        <Select options={options} />
+        <Select options={options} width={300} />
       </Item>
       <Item name="toggles" label="Toggles" valuePropName="checked">
         <Toggles />

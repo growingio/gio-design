@@ -25,13 +25,14 @@ export default () => {
         afterClose={() => {
           form.resetFields();
         }}
+        style={{ width: 460 }}
       >
-        <Form name="modal" form={form} layout="horizontal">
+        <Form name="modal" form={form} labelWidth={80}>
           <Item label="用户名" name="username">
             <Input />
           </Item>
           <Item label="密码" name="password">
-            <Input type="password" />
+            <Input.Password type="password" />
           </Item>
         </Form>
       </Modal>

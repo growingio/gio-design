@@ -35,18 +35,20 @@ export default (): JSX.Element => {
         </Group>
       </Item>
 
-      <Item name="labelAlign" label="Label align">
-        <Group value={labelAlign} onChange={(e) => setLabelAlign(e.target.value)}>
-          <Radio value="left">left</Radio>
-          <Radio value="right">right</Radio>
-        </Group>
-      </Item>
+      {layout === 'horizontal' && (
+        <Item name="labelAlign" label="标签对齐方式">
+          <Group value={labelAlign} onChange={(e) => setLabelAlign(e.target.value)}>
+            <Radio value="left">left</Radio>
+            <Radio value="right">right</Radio>
+          </Group>
+        </Item>
+      )}
 
       <Item label="用户名" required>
-        <Input name="username" value={name} onChange={setName} />
+        <Input name="username" value={name} onChange={(e) => setName(e.target.value)} />
       </Item>
       <Item label="密码" required>
-        <Input name="password" value={pass} onChange={setPass} />
+        <Input.Password name="password" value={pass} onChange={(e) => setPass(e.target.value)} />
       </Item>
     </Form>
   );

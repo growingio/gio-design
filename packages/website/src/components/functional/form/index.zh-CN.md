@@ -211,23 +211,23 @@ group:
 
 ### Form.Item
 
-| 参数              | 说明                                                                                                                | 类型                                              | 默认值    |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | --------- |
-| label             | label 标签的文本                                                                                                    | string \| ReactNode                               | -         |
-| name              | 字段名，支持数组                                                                                                    | [NamePath](#namepath)                             | -         |
-| valuePropName     | 子节点的值的属性，如 Switch 的是 'checked'。该属性为 getValueProps 的封装，自定义 `getValueProps` 后会失效          | string                                            | -         |
-| getValueFromEvent | 设置如何将 event 的值转换成字段值                                                                                   | `(..args: any[]) => any`                          | -         |
-| validateTrigger   | 设置字段校验的时机                                                                                                  | string                                            | string[]  | `onChange` |
-| trigger           | 设置收集字段值变更的时机                                                                                            | string                                            | string    | `onChange` |
-| required          | 必填样式设置。如不设置，则会根据校验规则自动生成                                                                    | boolean                                           | false     |
-| htmlFor           | 设置子元素 label htmlFor 属性                                                                                       | string                                            | -         |
-| labelAlign        | 设置 label 标签的文本对齐方式                                                                                       | `left` \| `right`                                 | -         |
-| initialValue      | 设置子元素默认值，如果与 Form 的 initialValues 冲突则以 Form 为准                                                   | string                                            | -         |
-| labelWidth        | 设置子元素 label 标签的宽度                                                                                         | string \| number                                  | -         |
-| rules             | 校验规则，设置字段的校验逻辑。点击[此处](https://ant.design/components/form-cn/#components-form-demo-basic)查看示例 | [Rule[]](#rule)                                   | -         |
-| help              | 帮助信息                                                                                                            | string                                            | ReactNode | - |
-| feedback          | 自定义校验结果提示信息，如不设置则会根据校验规则自动生成                                                            | string \| ReactNode                               | -         |
-| feedbackType      | 自定义校验结果类型                                                                                                  | `validating` \| `error` \| `warning` \| `success` | -         |
+| 参数              | 说明                                                                                                                | 类型                                              | 默认值   |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | -------- |
+| label             | label 标签的文本                                                                                                    | string \| ReactNode                               | -        |
+| name              | 字段名，支持数组                                                                                                    | [NamePath](#namepath)                             | -        |
+| valuePropName     | 子节点的值的属性，如 Switch 的是 'checked'。该属性为 getValueProps 的封装，自定义 `getValueProps` 后会失效          | string                                            | -        |
+| getValueFromEvent | 设置如何将 event 的值转换成字段值                                                                                   | `(..args: any[]) => any`                          | -        |
+| validateTrigger   | 设置字段校验的时机                                                                                                  | string                                            | string[] | `onChange` |
+| trigger           | 设置收集字段值变更的时机                                                                                            | string                                            | string   | `onChange` |
+| required          | 必填样式设置。如不设置，则会根据校验规则自动生成                                                                    | boolean                                           | false    |
+| htmlFor           | 设置子元素 label htmlFor 属性                                                                                       | string                                            | -        |
+| labelAlign        | 设置 label 标签的文本对齐方式                                                                                       | `left` \| `right`                                 | -        |
+| initialValue      | 设置子元素默认值，如果与 Form 的 initialValues 冲突则以 Form 为准                                                   | string                                            | -        |
+| labelWidth        | 设置子元素 label 标签的宽度                                                                                         | string \| number                                  | -        |
+| rules             | 校验规则，设置字段的校验逻辑。点击[此处](https://ant.design/components/form-cn/#components-form-demo-basic)查看示例 | [Rule[]](#rule)                                   | -        |
+| help              | 帮助信息                                                                                                            | string \| ReactNode                               | -        |
+| feedback          | 自定义校验结果提示信息，如不设置则会根据校验规则自动生成                                                            | string \| ReactNode                               | -        |
+| feedbackType      | 自定义校验结果类型                                                                                                  | `validating` \| `error` \| `warning` \| `success` | -        |
 
 ### NamePath
 
