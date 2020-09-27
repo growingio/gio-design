@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 
 import { ConfigContext } from '../config-provider';
-import { FormContext, WidthProperty, FormLabelAlign, RequiredMark } from './context';
+import { FormContext, FormLabelAlign, RequiredMark } from './context';
 import { SizeContextProvider, SizeType } from '../config-provider/SizeContext';
 
 export type FormLayout = 'horizontal' | 'vertical' | 'inline';
@@ -13,8 +13,8 @@ export interface Props<Values = any> extends Omit<RcFormProps<Values>, 'form'> {
   prefixCls?: string;
   className?: string;
   name?: string;
-  labelWidth?: WidthProperty;
-  inputWidth?: WidthProperty;
+  labelWidth?: number;
+  inputWidth?: number;
   labelAlign?: FormLabelAlign;
   form?: FormInstance<Values>;
   layout?: FormLayout;

@@ -6,7 +6,7 @@ export type FormItemFeedbackType = 'validating' | 'error' | 'warning' | 'success
 export interface Props {
   prefixCls?: string;
   className?: string;
-  inputWidth?: string | number;
+  inputWidth?: number;
   afterInput?: React.ReactNode;
   help?: React.ReactNode;
   hasFeedback?: boolean;

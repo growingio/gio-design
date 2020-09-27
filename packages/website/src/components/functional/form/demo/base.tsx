@@ -14,42 +14,35 @@ interface Props {
 
 export default ({ name = 'base' }: Props): JSX.Element => {
   const [form] = useForm();
-  const onFinish = (formName: string, formData: any) => {
-    console.log(formName, formData);
+  const onFinish = (formData: any) => {
+    console.log(formData);
   };
   const onReset = () => {
     form.resetFields();
   };
 
   return (
-    <FormProvider onFormFinish={onFinish}>
-      <Form name={name} form={form}>
-        <Item
-          name="username"
-          label="用户名"
-          required
-          rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-          <Input placeholder="请输入用户名" />
-        </Item>
-        <Item
-          name="password"
-          label="密码"
-          required
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input type="password" placeholder="请输入密码" />
-        </Item>
+    <Form name={name} form={form} layout="vertical" onFinish={onFinish}>
+      <Item
+        name="username"
+        label="用户名"
+        required
+        rules={[{ required: true, message: 'Please input your username!' }]}
+      >
+        <Input placeholder="请输入用户名" />
+      </Item>
+      <Item name="password" label="密码" required rules={[{ required: true, message: 'Please input your password!' }]}>
+        <Input.Password placeholder="请输入密码" />
+      </Item>
 
-        <Item>
-          <div>
-            <Button htmlType="submit">提交</Button>
-            <Button htmlType="reset" type="secondary" onClick={onReset}>
-              重置
-            </Button>
-          </div>
-        </Item>
-      </Form>
-    </FormProvider>
+      <Item>
+        <div>
+          <Button htmlType="reset" type="secondary" onClick={onReset}>
+            重置
+          </Button>
+          <Button htmlType="submit">提交</Button>
+        </div>
+      </Item>
+    </Form>
   );
 };

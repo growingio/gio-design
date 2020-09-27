@@ -28,8 +28,8 @@ export interface Props extends Omit<FieldProps, 'children'> {
   marker?: React.ReactNode;
   feedbackIcon?: React.ReactNode;
   htmlFor?: string;
-  labelWidth?: string | number;
-  inputWidth?: string | number;
+  labelWidth?: number;
+  inputWidth?: number;
   colon?: boolean;
   labelAlign?: FormLabelAlign;
 }
