@@ -14,7 +14,7 @@ import Title from './Title';
 import { TableProps, ColumnsType, ColumnGroupType, InnerColumnsType } from './interface';
 import Empty from './Empty';
 
-const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactNode => {
+const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement => {
   const {
     prefixCls: customizePrefixCls,
     title,
