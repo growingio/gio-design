@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import RcTable from 'rc-table';
 import classNames from 'classnames';
 import { cloneDeep, isUndefined, get, has, join } from 'lodash';
@@ -49,11 +49,17 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
 
   const [activeSorterStates, updateSorterStates, sortedData] = useSorter(innerColumns, dataSource);
   const [activeFilterStates, updateFilterStates, filtedData] = useFilter(innerColumns, sortedData);
-  const [transformShowIndexPipeline, activePaginationedState, paginationedData, PaginationComponent] = usePagination(
-    filtedData,
-    pagination,
-    showIndex
-  );
+  const [
+    transformShowIndexPipeline,
+    activePaginationedState,
+    paginationedData,
+    PaginationComponent,
+    resetPagination,
+  ] = usePagination(filtedData, pagination, showIndex);
+
+  useEffect(() => {
+    resetPagination();
+  }, [dataSource]);
 
   const [transformSelectionPipeline] = useSelection(paginationedData, rowSelection);
   const [transformEllipsisTooltipPipeline] = useEllipsisTooltip();
