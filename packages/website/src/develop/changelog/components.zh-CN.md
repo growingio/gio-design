@@ -9,23 +9,28 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.9.6
+
+- Link
+  - 🐛 修复打包过程中找不到 Link 组件引用的类型文件问题。 [#262](https://github.com/growingio/gio-design/pull/262)
+
 ## 20.9.5
 
 - Table
-  - 🐛 当table的DataSource改变的时候，所有列表分页的状态都应该被重置。[#251] (https://github.com/growingio/gio-design/pull/251)
+  - 🐛 当 table 的 DataSource 改变的时候，所有列表分页的状态都应该被重置。[#251](https://github.com/growingio/gio-design/pull/251)
 - Dropdown
-  - 🐛 点击overlay元素后，自动关闭下拉菜单。将overlay的类型从ReactNode更改为ReactElement。 [#252] (https://github.com/growingio/gio-design/pull/252)
-  - 📖 继续完善Dropdown Demo [#249] (https://github.com/growingio/gio-design/pull/249)
+  - 🐛 点击 overlay 元素后，自动关闭下拉菜单。将 overlay 的类型从 ReactNode 更改为 ReactElement。 [#252](https://github.com/growingio/gio-design/pull/252)
+  - 📖 继续完善 Dropdown Demo [#249](https://github.com/growingio/gio-design/pull/249)
 - Checkbox
-  - 💄 提升 .gio-checkbox-icon-indeterminate 样式优先级。[#232] (https://github.com/growingio/gio-design/pull/232)
+  - 💄 提升 .gio-checkbox-icon-indeterminate 样式优先级。[#232](https://github.com/growingio/gio-design/pull/232)
 - Select
-  - 🐛 修复 onChange bug。[#231] (https://github.com/growingio/gio-design/pull/231)
+  - 🐛 修复 onChange bug。[#231](https://github.com/growingio/gio-design/pull/231)
 
 ## 20.9.4
 
-- 🐛 修复部分组件无法按需加载问题。[#253] (https://github.com/growingio/gio-design/pull/253)
+- 🐛 修复部分组件无法按需加载问题。[#253](https://github.com/growingio/gio-design/pull/253)
 - Input
-  - 🐛 input 的 value 和 onChange 非必需 [#255] (https://github.com/growingio/gio-design/pull/255)
+  - 🐛 input 的 value 和 onChange 非必需 [#255](https://github.com/growingio/gio-design/pull/255)
 - 💄 从整体设计 z-index 层级。[#205](https://github.com/growingio/gio-design/pull/205)
 - Modal
   - 🐛 修复 Modal footer 设置无效问题；修复 StepModal steps 变更 stepStack 未重置问题[#207](https://github.com/growingio/gio-design/pull/207)

@@ -9,6 +9,10 @@ nav:
 
 # @gio-design/icons 更新日志
 
+## 20.9.3
+
+- 🆕 新增`BoxFilled`、 `EditOutlined`、 `ExplainOutlined`、`Filter2Outlined`、 `LockOutlined`、 `UnlockOutlined` 图标。 [#265](https://github.com/growingio/gio-design/pull/265)
+
 ## 20.9.1
 
 - 📛 `View`、`Unview` 图标重名为 `ViewOutlined`、`unviewOutlined`，新增 `SearchOutlined` 图标。[#153](https://github.com/growingio/gio-design/pull/153)
