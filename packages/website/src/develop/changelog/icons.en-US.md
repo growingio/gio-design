@@ -9,6 +9,10 @@ nav:
 
 # @gio-design/icons Change Log
 
+## 20.9.3
+
+- 🆕 add `BoxFilled`、 `EditOutlined`、 `ExplainOutlined`、`Filter2Outlined`、 `LockOutlined`、 `UnlockOutlined` icon. [#265](https://github.com/growingio/gio-design/pull/265)
+
 ## 20.9.1
 
 - 📛 Rename `View`、`Unview` to `ViewOutlined`、`unviewOutlined`, add `SearchOutlined` icon. [#153](https://github.com/growingio/gio-design/pull/153)
