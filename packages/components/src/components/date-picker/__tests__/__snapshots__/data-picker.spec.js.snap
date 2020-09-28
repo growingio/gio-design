@@ -17,7 +17,7 @@ initialize {
             "attribs": Object {
               "class": "gio-input-content gio-input-content-medium",
               "placeholder": "请输入…",
-              "style": "height:40px;width:253px;z-index:10002;position:relative",
+              "style": "height:40px;width:253px",
               "type": "text",
               "value": "2015/06/01",
             },
@@ -47,7 +47,9 @@ initialize {
         "name": "div",
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
-          "attribs": Object {},
+          "attribs": Object {
+            "class": "gio-date-picker-wrapper",
+          },
           "children": Array [],
           "name": "div",
           "namespace": "http://www.w3.org/1999/xhtml",
@@ -55,8 +57,12 @@ initialize {
           "parent": [Circular],
           "prev": [Circular],
           "type": "tag",
-          "x-attribsNamespace": Object {},
-          "x-attribsPrefix": Object {},
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
         },
         "parent": [Circular],
         "prev": null,
@@ -71,7 +77,9 @@ initialize {
         },
       },
       Object {
-        "attribs": Object {},
+        "attribs": Object {
+          "class": "gio-date-picker-wrapper",
+        },
         "children": Array [],
         "name": "div",
         "namespace": "http://www.w3.org/1999/xhtml",
@@ -87,7 +95,7 @@ initialize {
               "attribs": Object {
                 "class": "gio-input-content gio-input-content-medium",
                 "placeholder": "请输入…",
-                "style": "height:40px;width:253px;z-index:10002;position:relative",
+                "style": "height:40px;width:253px",
                 "type": "text",
                 "value": "2015/06/01",
               },
@@ -130,8 +138,12 @@ initialize {
           },
         },
         "type": "tag",
-        "x-attribsNamespace": Object {},
-        "x-attribsPrefix": Object {},
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
       },
     ],
     "name": "div",
