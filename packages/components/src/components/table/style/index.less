@@ -59,11 +59,12 @@
   }
 
   &-thead > tr {
-    height: 50px;
     color: @color-text-table-head;
     font-weight: @weight-font-medium;
-    line-height: 20px;
     vertical-align: middle;
+    & > td {
+      height: 50px;
+    }
   }
 
   &-thead > tr:first-child > &-cell {
@@ -83,9 +84,10 @@
   }
 
   &-tbody > tr {
-    height: 50px;
     color: @color-text-table-body;
-    line-height: 20px;
+    & > td {
+      height: 50px;
+    }
   }
 
   &-tbody > tr:last-child > &-cell {
