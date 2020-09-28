@@ -16144,9 +16144,11 @@ rc-tooltip@^3.4.2:
     rc-trigger "^2.2.2"
 
 rc-tooltip@^4.0.0, rc-tooltip@^4.2.1, rc-tooltip@~4.2.0:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/rc-tooltip/-/rc-tooltip-4.2.1.tgz#c1a2d5017ee03a771a9301c0dfdb46dfdf8fef94"
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/rc-tooltip/-/rc-tooltip-4.2.3.tgz#f6fb2a6d9e76ef64295a1d9b5a1618f8634c0645"
+  integrity sha512-7ySkaPGeqLLM4a/QYrKQ280aDthPxyvjJqQMstWX/AWX7/b1p23HIdHXdjBkziuvcnvXkW4lgZdFTVsylDiX1w==
   dependencies:
+    "@babel/runtime" "^7.11.2"
     rc-trigger "^4.2.1"
 
 rc-tree-select@4.1.2:
