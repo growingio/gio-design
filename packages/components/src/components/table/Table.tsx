@@ -26,6 +26,7 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
     emptyText = null,
     onChange,
     showHover = true,
+    rowKey,
     ...rest
   } = props;
 
@@ -61,7 +62,9 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
     resetPagination();
   }, [dataSource]);
 
-  const [transformSelectionPipeline] = useSelection(paginationedData, rowSelection);
+  const [transformSelectionPipeline] = useSelection(paginationedData, rowSelection, {
+    rowKey,
+  });
   const [transformEllipsisTooltipPipeline] = useEllipsisTooltip();
 
   const onTriggerStateUpdate = () => onChange?.(activePaginationedState, activeSorterStates, activeFilterStates);
@@ -122,6 +125,7 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
         columns={composedColumns}
         data={paginationedData}
         emptyText={emptyElement}
+        rowKey={rowKey}
         {...rest}
       />
       <PaginationComponent onTriggerStateUpdate={onTriggerStateUpdate} />

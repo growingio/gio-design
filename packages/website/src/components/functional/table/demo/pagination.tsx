@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from '@gio-design/components';
 import '@gio-design/components/es/components/table/style/index.css';
 
-const dataSource = Array.from({ length: 1000 }, (_, key) => ({ key, a: key, b: key, c: key, d: key }));
+const dataSource = Array.from({ length: 1000 }, (_, key) => ({ a: key, b: key, c: key, d: key }));
 
 const columns = [
   {
@@ -36,6 +36,7 @@ export default () => (
   <Table
     dataSource={dataSource}
     columns={columns}
+    rowKey={(record) => record.a.toString()}
     onChange={(p, s, f) => {
       console.log(p, s, f);
     }}
