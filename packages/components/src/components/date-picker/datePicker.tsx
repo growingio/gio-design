@@ -86,7 +86,6 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   const calendar = (
     <RcCalendar
       locale={zhCN}
-      style={{ zIndex: 10001 }}
       timePicker={null}
       format={format}
       defaultValue={defaultValue}
@@ -115,14 +114,14 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
           <>
             <Input
               placeholder="请输入…"
-              style={{ height: '40px', width: '253px', zIndex: Number(10002), position: 'relative' }}
+              style={{ height: '40px', width: '253px' }}
               value={inputTime || value.format(format)}
               onChange={handleInputChange}
               onClick={() => setOpen(true)}
               wrapStyle={{ marginBottom: '20px' }}
               ref={inputRef}
             />
-            <div ref={calendarContainerRef} />
+            <div ref={calendarContainerRef} className={classNames(`${prefixCls}-wrapper`)} />
           </>
         )}
       </RcDatePicker>
