@@ -36,6 +36,7 @@
     "rc-checkbox": "^2.2.0",
     "rc-dialog": "^8.1.0",
     "rc-drawer": "^4.1.0",
+    "rc-field-form": "^1.11.0",
     "rc-menu": "^8.5.1",
     "rc-notification": "^3.3.1",
     "rc-table": "^7.9.1",
@@ -51,6 +52,11 @@
     "shallowequal": "^1.1.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.0.4",
+    "@testing-library/react-hooks": "^3.4.1",
+    "@types/enzyme": "^3.10.6",
+    "@types/jest": "^26.0.14",
+    "@types/react-test-renderer": "^16.9.3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "gio-rewire": "^1.0.4",

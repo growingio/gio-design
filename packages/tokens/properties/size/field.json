@@ -1,0 +1,15 @@
+{
+  "size": {
+    "field": {
+      "small": {
+        "value": "30px"
+      },
+      "normal": {
+        "value": "36px"
+      },
+      "large": {
+        "value": "40px"
+      }
+    }
+  }
+}
