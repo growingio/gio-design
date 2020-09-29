@@ -10,14 +10,12 @@ initialize {
       Object {
         "attribs": Object {
           "class": "gio-input",
-          "style": "margin-bottom:20px",
         },
         "children": Array [
           Object {
             "attribs": Object {
               "class": "gio-input-content gio-input-content-medium",
               "placeholder": "请输入…",
-              "style": "height:40px;width:253px",
               "type": "text",
               "value": "2015/06/01",
             },
@@ -31,14 +29,12 @@ initialize {
             "x-attribsNamespace": Object {
               "class": undefined,
               "placeholder": undefined,
-              "style": undefined,
               "type": undefined,
               "value": undefined,
             },
             "x-attribsPrefix": Object {
               "class": undefined,
               "placeholder": undefined,
-              "style": undefined,
               "type": undefined,
               "value": undefined,
             },
@@ -69,11 +65,9 @@ initialize {
         "type": "tag",
         "x-attribsNamespace": Object {
           "class": undefined,
-          "style": undefined,
         },
         "x-attribsPrefix": Object {
           "class": undefined,
-          "style": undefined,
         },
       },
       Object {
@@ -88,14 +82,12 @@ initialize {
         "prev": Object {
           "attribs": Object {
             "class": "gio-input",
-            "style": "margin-bottom:20px",
           },
           "children": Array [
             Object {
               "attribs": Object {
                 "class": "gio-input-content gio-input-content-medium",
                 "placeholder": "请输入…",
-                "style": "height:40px;width:253px",
                 "type": "text",
                 "value": "2015/06/01",
               },
@@ -109,14 +101,12 @@ initialize {
               "x-attribsNamespace": Object {
                 "class": undefined,
                 "placeholder": undefined,
-                "style": undefined,
                 "type": undefined,
                 "value": undefined,
               },
               "x-attribsPrefix": Object {
                 "class": undefined,
                 "placeholder": undefined,
-                "style": undefined,
                 "type": undefined,
                 "value": undefined,
               },
@@ -130,11 +120,9 @@ initialize {
           "type": "tag",
           "x-attribsNamespace": Object {
             "class": undefined,
-            "style": undefined,
           },
           "x-attribsPrefix": Object {
             "class": undefined,
-            "style": undefined,
           },
         },
         "type": "tag",

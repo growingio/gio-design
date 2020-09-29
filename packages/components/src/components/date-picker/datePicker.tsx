@@ -114,11 +114,9 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
           <>
             <Input
               placeholder="请输入…"
-              style={{ height: '40px', width: '253px' }}
               value={inputTime || value.format(format)}
               onChange={handleInputChange}
               onClick={() => setOpen(true)}
-              wrapStyle={{ marginBottom: '20px' }}
               ref={inputRef}
             />
             <div ref={calendarContainerRef} className={classNames(`${prefixCls}-wrapper`)} />

@@ -12,10 +12,24 @@
   z-index: @zindex-dropdown;
 }
 
+.gio-input {
+  width: 253px;
+  height: 40px;
+}
+
 .@{date-picker-prefix-cls}-range-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 252px;
   border: 1px solid @color-border-input-normal;
   border-radius: 0.25rem;
   transition: all 0.3s ease-in-out;
+
+  .gio-input {
+    width: 118px;
+    height: 38px;
+  }
 
   .gio-input-content {
     border: none;
