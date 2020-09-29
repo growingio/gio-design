@@ -165,23 +165,23 @@ group:
 
 ### Table
 
-| 参数             | 说明                                                                                                               | 类型                                   | 默认值               |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------- | -------------------- |
-| **title**        | 列表标题                                                                                                           | string                                 |                      |
-| **columns**      | 列表列的配置描述，具体项见下表                                                                                     | ColumnsType[]                          | -                    |
-| **dataSource**   | 数据数组                                                                                                           | object[]                               | -                    |
-| **pagination**   | 设置分页 ，默认开启，设置为 false 时关闭分页。具体参数可见[pagination](/components/functional/pagination#参数说明) | PaginationProps \| false               | {}                   |
-| **rowSelection** | 设置行选择功能                                                                                                     | RowSelection                           | -                    |
-| **scroll**       | 设置 table 横向纵向滚动                                                                                            | { x: number, y:number}                 | { x: false, y:false} |
-| **showIndex**    | 设置显示序号                                                                                                       | boolean                                | false                |
-| **emptyText**    | 设置搜索无结果时的样式                                                                                             | React.ReactNode                        | -                    |
-| **onChange**     | 触发分页、排序、过滤时的回调                                                                                       | (pagination, sorter, filters,) => void | -                    |
-| **rowKey**       | 表格行 key 的取值，可以是字符串或一个函数                                                                          | string \| function(record): string     | 数据的 key 字段      |
-| **rowClassName** | 表格行的类名                                                                                                       | function(record, index): string        | -                    |
-| **onRow**        | 设置行属性                                                                                                         | function(record, index)                | -                    |
-| **onHeaderRow**  | 设置头部行属性                                                                                                     | function(column, index)                | -                    |
-| **showHover**    | 是否显示 hover 效果                                                                                                | boolean                                | true                 |
-| **showHeader**   | 是否显示 table head                                                                                                | boolean                                | true                 |
+| 参数             | 说明                                           | 类型                                   | 默认值               |
+| ---------------- | ---------------------------------------------- | -------------------------------------- | -------------------- |
+| **title**        | 列表标题                                       | string                                 |                      |
+| **columns**      | 列表列的配置描述，具体项见下表                 | ColumnsType[]                          | -                    |
+| **dataSource**   | 数据数组                                       | object[]                               | -                    |
+| **pagination**   | 设置分页 ，默认开启，设置为 false 时关闭分页。 | PaginationProps \| false               | {}                   |
+| **rowSelection** | 设置行选择功能                                 | RowSelection                           | -                    |
+| **scroll**       | 设置 table 横向纵向滚动                        | { x: number, y:number}                 | { x: false, y:false} |
+| **showIndex**    | 设置显示序号                                   | boolean                                | false                |
+| **emptyText**    | 设置搜索无结果时的样式                         | React.ReactNode                        | -                    |
+| **onChange**     | 触发分页、排序、过滤时的回调                   | (pagination, sorter, filters,) => void | -                    |
+| **rowKey**       | 表格行 key 的取值，可以是字符串或一个函数      | string \| function(record): string     | 数据的 key 字段      |
+| **rowClassName** | 表格行的类名                                   | function(record, index): string        | -                    |
+| **onRow**        | 设置行属性                                     | function(record, index)                | -                    |
+| **onHeaderRow**  | 设置头部行属性                                 | function(column, index)                | -                    |
+| **showHover**    | 是否显示 hover 效果                            | boolean                                | true                 |
+| **showHeader**   | 是否显示 table head                            | boolean                                | true                 |
 
 ### Column
 
@@ -216,3 +216,7 @@ group:
 | **columnWidth**     | 设置选择列宽                       | number \| string                                                | 48     |
 | **onChange**        | 选择项改变时触发的回调函数         | (selectedRowKeys: string[], selectedRows: RecordType[]) => void | -      |
 | **fixed**           | 固定选择列                         | 'left' \| 'right' \|boolean                                     | -      |
+
+### Pagination
+
+具体参数可见[pagination](/components/functional/pagination#参数说明)， 目前是通过 total 字段来判断分页是否受控。通过设置 total 以及其他字段用来做服务端分页。

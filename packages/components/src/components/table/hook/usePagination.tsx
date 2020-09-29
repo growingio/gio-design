@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useMemo, useCallback, useEffect } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { isUndefined } from 'lodash';
 import Pagination, { PaginationProps } from '../../pagination';
 import { ColumnType, ColumnsType, PaginationState } from '../interface';
@@ -13,19 +13,22 @@ const usePagination = <RecordType,>(
   (columns: ColumnsType<RecordType>) => ColumnsType<RecordType>,
   PaginationState,
   RecordType[],
-  (props: { onTriggerStateUpdate: () => void }) => JSX.Element | null
+  (props: { onTriggerStateUpdate: () => void }) => JSX.Element | null,
+  () => void
 ] => {
   const { current, pageSize, total, ...rest } = pagination || {};
   const [localCurrent, setLocalCurrent] = useControlledState<number>(current, 1);
-  const [localPageSize] = useControlledState<number>(pageSize, 10);
+  const [localPageSize, setLocalPageSize] = useControlledState<number>(pageSize, 10);
   const [controlledTotal, setControlledTotal] = useControlledState<number>(total, data.length);
 
   // when dataSource update && unControlled, Pagination update.
-  useEffect(() => {
+  const resetPagination = () => {
     if (isUndefined(total)) {
       setControlledTotal(data.length, true);
+      setLocalCurrent(1, true);
+      setLocalPageSize(10, true);
     }
-  }, [data.length, total]);
+  };
 
   // 通过total字段是否受控判断是否后端分页。
   const paginationData = useMemo(
@@ -71,9 +74,9 @@ const usePagination = <RecordType,>(
     />
   );
   if (pagination === false) {
-    return [transformShowIndexPipeline, activePaginationState, data, () => null];
+    return [transformShowIndexPipeline, activePaginationState, data, () => null, resetPagination];
   }
-  return [transformShowIndexPipeline, activePaginationState, paginationData, PaginationComponent];
+  return [transformShowIndexPipeline, activePaginationState, paginationData, PaginationComponent, resetPagination];
 };
 
 export default usePagination;

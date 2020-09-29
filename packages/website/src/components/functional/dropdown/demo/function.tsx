@@ -18,7 +18,7 @@ export default () => {
   return (
     <Dropdown
       overlay={
-        <>
+        <div>
           <SearchBar
             id="demo"
             value={searchvalue}
@@ -31,7 +31,7 @@ export default () => {
               新建活动
             </Button>
           </div>
-        </>
+        </div>
       }
     >
       <Button type="secondary">这是一个 Select</Button>

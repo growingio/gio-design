@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import RcTable from 'rc-table';
 import classNames from 'classnames';
 import { cloneDeep, isUndefined, get, has, join } from 'lodash';
@@ -14,7 +14,7 @@ import Title from './Title';
 import { TableProps, ColumnsType, ColumnGroupType, InnerColumnsType } from './interface';
 import Empty from './Empty';
 
-const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactNode => {
+const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement => {
   const {
     prefixCls: customizePrefixCls,
     title,
@@ -26,6 +26,7 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactNode => {
     emptyText = null,
     onChange,
     showHover = true,
+    rowKey,
     ...rest
   } = props;
 
@@ -49,13 +50,21 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactNode => {
 
   const [activeSorterStates, updateSorterStates, sortedData] = useSorter(innerColumns, dataSource);
   const [activeFilterStates, updateFilterStates, filtedData] = useFilter(innerColumns, sortedData);
-  const [transformShowIndexPipeline, activePaginationedState, paginationedData, PaginationComponent] = usePagination(
-    filtedData,
-    pagination,
-    showIndex
-  );
+  const [
+    transformShowIndexPipeline,
+    activePaginationedState,
+    paginationedData,
+    PaginationComponent,
+    resetPagination,
+  ] = usePagination(filtedData, pagination, showIndex);
 
-  const [transformSelectionPipeline] = useSelection(paginationedData, rowSelection);
+  useEffect(() => {
+    resetPagination();
+  }, [dataSource]);
+
+  const [transformSelectionPipeline] = useSelection(paginationedData, rowSelection, {
+    rowKey,
+  });
   const [transformEllipsisTooltipPipeline] = useEllipsisTooltip();
 
   const onTriggerStateUpdate = () => onChange?.(activePaginationedState, activeSorterStates, activeFilterStates);
@@ -116,6 +125,7 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactNode => {
         columns={composedColumns}
         data={paginationedData}
         emptyText={emptyElement}
+        rowKey={rowKey}
         {...rest}
       />
       <PaginationComponent onTriggerStateUpdate={onTriggerStateUpdate} />

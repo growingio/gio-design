@@ -9,14 +9,28 @@ nav:
 
 # @gio-design/components Change Log
 
-## 20.9.3
+## 20.9.6
 
-- 🐛 fix some components can't be loaded on demand bug. [#253] (https://github.com/growingio/gio-design/pull/253)
+- Link
+  - 🐛 Fix the problem that the type file referenced by the Link component cannot be found during the packaging process. [#262](https://github.com/growingio/gio-design/pull/262)
+
+## 20.9.5
+
+- Table
+  - 🐛 when table dataSource update, all state of pagination should be reset.[#251](https://github.com/growingio/gio-design/pull/251)
+- Dropdown
+  - 🐛 auto close after click overlay element. change overlay type from ReactNode to ReactElement. [#252](https://github.com/growingio/gio-design/pull/252)
+  - 📖 continue perfecting Dropdown demo [#249](https://github.com/growingio/gio-design/pull/249)
+- Checkbox
+  - 💄 advance .gio-checkbox-icon-indeterminate style priority。[#232](https://github.com/growingio/gio-design/pull/232)
+- Select
+  - 🐛 fix onChange bug。[#231](https://github.com/growingio/gio-design/pull/231)
+
+## 20.9.4
+
+- 🐛 fix some components can't be loaded on demand bug. [#253](https://github.com/growingio/gio-design/pull/253)
 - Input
-  - 🐛 input and value and onChange not necessary [#255] (https://github.com/growingio/gio-design/pull/255)
-
-## 20.9.2
-
+  - 🐛 input and value and onChange not necessary [#255](https://github.com/growingio/gio-design/pull/255)
 - 💄 Design z-index display.[#205](https://github.com/growingio/gio-design/pull/205)
 - Modal
   - 🐛 Fix footer bug in Modal. Fix reset bug of StepModal. [#207](https://github.com/growingio/gio-design/pull/207)

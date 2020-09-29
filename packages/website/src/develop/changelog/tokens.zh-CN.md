@@ -9,7 +9,7 @@ nav:
 
 # @gio-design/tokens 更新日志
 
-## 20.9.2
+## 20.9.3
 
 - 🆕 从整体设计 z-index 层级。[#205](https://github.com/growingio/gio-design/pull/205)
 
