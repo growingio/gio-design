@@ -1,3 +1,5 @@
+import '@gio-design/components/es/components/form/style/index.css';
+
 import React from 'react';
 import { Form, Input } from '@gio-design/components';
 

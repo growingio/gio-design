@@ -1,3 +1,5 @@
+import '@gio-design/components/es/components/form/style/index.css';
+
 import React, { useState } from 'react';
 
 import { Modal, Button, Form, Input } from '@gio-design/components';
@@ -25,9 +27,9 @@ export default () => {
         afterClose={() => {
           form.resetFields();
         }}
-        style={{ width: 460 }}
+        style={{ width: 380 }}
       >
-        <Form name="modal" form={form} labelWidth={80}>
+        <Form name="modal" form={form} labelWidth={60} layout="vertical">
           <Item label="用户名" name="username">
             <Input />
           </Item>

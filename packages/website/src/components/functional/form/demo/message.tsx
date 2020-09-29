@@ -9,11 +9,11 @@ import { FormItemFeedbackType } from '@gio-design/components/es/components/form'
 
 const { Item } = Form;
 
-const messageTypes: FormItemFeedbackType[] = ['validating', 'warning', 'error', 'success'];
+const messageTypes: FormItemFeedbackType[] = ['error', 'validating', 'warning', 'success'];
 
 export default (): JSX.Element => {
   return (
-    <Form name="message" labelWidth={120}>
+    <Form name="message" labelWidth={120} layout="vertical">
       {messageTypes.map((msg) => (
         <Item key={msg} name={msg} label={msg} feedback={`这是一个 ${msg} 类型的提示信息`} feedbackType={msg}>
           <Input placeholder={`${msg} 类型的提示信息`} name="name" id={msg} />

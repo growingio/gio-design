@@ -1,3 +1,5 @@
+import '@gio-design/components/es/components/form/style/index.css';
+
 import React, { useState } from 'react';
 
 import { Radio, Form } from '@gio-design/components';

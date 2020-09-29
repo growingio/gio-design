@@ -1,11 +1,13 @@
+import '@gio-design/components/es/components/form/style/index.css';
+
 import './index.less';
 
 import React, { useState } from 'react';
 
 import { Form, Input, Radio, Select, Toggles, Upload, Button } from '@gio-design/components';
+import { SizeType } from '@gio-design/components/es/components/config-provider/SizeContext';
 import Checkbox, { CheckboxGroup } from '@gio-design/components/es/components/checkbox';
 import DatePicker from '@gio-design/components/es/components/date-picker';
-import { SizeType } from '@gio-design/components/es/components/config-provider/SizeContext';
 import moment, { Moment } from 'moment';
 
 import { props, action } from '../../upload/demos/commonSets';

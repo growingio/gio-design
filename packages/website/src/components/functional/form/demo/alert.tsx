@@ -5,7 +5,6 @@ import './index.less';
 import React from 'react';
 
 import { Form, Input, Button, Alert } from '@gio-design/components';
-import { InformationFilled } from '@gio-design/icons';
 
 const { Item } = Form;
 
@@ -13,11 +12,15 @@ export default (): JSX.Element => {
   return (
     <Form name="alert" labelWidth={120} style={{ width: 480 }}>
       <Alert
+        showIcon
         // prettier-ignore
         message={(
           <div>
-            <InformationFilled />
-            <span> 现在定义的是页面 www.growingio.com/features/，查询条件为 id=9785&#x26;campaign=9785。</span>
+            <span>现在定义的是页面 </span>
+            <a href="#alert">www.growingio.com/features/</a>
+            <span>，查询条件为</span>
+            <a href="#alert">id=9785&#x26;campaign=9785</a>
+            <span>。</span>
           </div>
         )}
       />

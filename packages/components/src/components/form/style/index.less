@@ -5,11 +5,12 @@
 @field-prefix-cls: ~'@{component-prefix}-field';
 @input-prefix-cls: ~'@{component-prefix}-input';
 
-@info-color: @palette-black-3;
-@validating-color: @palette-black-3;
-@warning-color: @palette-yellow-6;
-@error-color: @palette-red-3;
-@success-color: @palette-green-6;
+// form tokens map
+@info-color: @color-font-form-notes;
+@validating-color: @color-font-form-notes;
+@warning-color: @color-font-form-warning;
+@error-color: @color-font-form-error;
+@success-color: @color-font-form-active;
 
 @field-gap: 20px;
 @field-gap-large: 24px;
@@ -52,6 +53,8 @@
     line-height: @text-lint-height-base;
     padding-right: 12px;
     text-align: right;
+    color: @color-font-form-label;
+    flex-shrink: 0;
 
     // label-align
     &.@{field-prefix-cls}-label-left {
@@ -65,16 +68,13 @@
     }
 
     &-required .@{field-prefix-cls}-label-marker {
-      color: @palette-red-3;
+      color: @color-font-form-required;
       // margin-left: 0.5em;
-    }
-
-    .@{field-prefix-cls}-label-content {
-      color: @palette-black-7;
     }
   }
 
   & &-control {
+    flex: 1;
     &-input {
       position: relative;
       display: inline-flex;

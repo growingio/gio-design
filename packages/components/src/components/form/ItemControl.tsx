@@ -50,8 +50,8 @@ const ItemControl: React.FC<Props> = (props: Props) => {
       <div className={`${prefixCls}-control-input`}>
         {children}
         {icon}
+        {afterInput}
       </div>
-      {afterInput}
       <div className={`${prefixCls}-message`}>
         {help && <div className={`${prefixCls}-help`}>{help}</div>}
 
