@@ -1,3 +1,5 @@
+import '@gio-design/components/es/components/form/style/index.css';
+
 import React, { useState } from 'react';
 
 import { DownFilled, UpFilled } from '@gio-design/icons';

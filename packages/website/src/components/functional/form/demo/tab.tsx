@@ -1,3 +1,5 @@
+import '@gio-design/components/es/components/form/style/index.css';
+
 import './index.less';
 
 import React from 'react';
