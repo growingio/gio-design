@@ -9,6 +9,21 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.9.7
+
+- Table [#267](https://github.com/growingio/gio-design/pull/267)
+  - 🐛 update table return type from ReactNode to ReactElement.
+  - 🐛 fix rowKey not effect rowSelection.
+  - 🐛 resetPagination should depend on source data.
+  - 🐛 set table height.
+- Loading
+  - 🐛 fix loading mask style error. [#279](https://github.com/growingio/gio-design/pull/279)
+- Form
+  - 🆕 add gio-form functional component. [#254](https://github.com/growingio/gio-design/pull/254)
+- DatePicker
+  - 🛠 refactor icon & zIndex. [#276](https://github.com/growingio/gio-design/pull/276)
+  - 🐛 When the time range is selected in the same month, the panels of the two months should not be synchronized. [#240](https://github.com/growingio/gio-design/pull/240)
+
 ## 20.9.6
 
 - Link
