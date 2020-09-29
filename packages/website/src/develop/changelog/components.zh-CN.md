@@ -9,6 +9,21 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.9.7
+
+- Table [#267](https://github.com/growingio/gio-design/pull/267)
+  - 🐛 将 table 返回类型 ReactNode 改为 ReactElement。
+  - 🐛 修复设置 rowKey 后 rowSelection 不能正常使用的问题。
+  - 🐛 重置列表分页状态应该依赖于源数据的变化。
+  - 🐛 设置 table 高度.
+- Loading
+  - 🐛 修复 loading 的 蒙层样式错误。 [#279](https://github.com/growingio/gio-design/pull/279)
+- Form
+  - 🆕 添加 gio-form 功能组件。[#254](https://github.com/growingio/gio-design/pull/254)
+- DatePicker
+  - 🛠 重构 icon & zIndex。 [#276](https://github.com/growingio/gio-design/pull/276)
+  - 🐛 时间范围选择同一个月的的时候，两个月份 panel 不应该同步。 [#240](https://github.com/growingio/gio-design/pull/240)
+
 ## 20.9.6
 
 - Link

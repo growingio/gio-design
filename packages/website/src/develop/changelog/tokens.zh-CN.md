@@ -9,6 +9,11 @@ nav:
 
 # @gio-design/tokens 更新日志
 
+## 20.9.4
+
+- 🆕 更新 palette red token [#268](https://github.com/growingio/gio-design/pull/268)
+- 🆕 更新 spacing token [#277](https://github.com/growingio/gio-design/pull/277)
+
 ## 20.9.3
 
 - 🆕 从整体设计 z-index 层级。[#205](https://github.com/growingio/gio-design/pull/205)

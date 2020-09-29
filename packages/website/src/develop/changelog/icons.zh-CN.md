@@ -9,6 +9,11 @@ nav:
 
 # @gio-design/icons 更新日志
 
+## 20.9.4
+
+- 🆕 新增 `CleanOutlined`、`DownOutlined`、`EnlargeOutlined`、`FullScreenOutlined`、`LocationRecoveryOutlined`、`MapChartOutlined`、`MessageFilled`、`PopupWindowFilled`、`PushMsgFilled`、`QuitOutlined`、`ShrinkOutlined`、`StartFilled`、`UpOutlined`、`UserFilled`、`UserOutlined` 图标。[#281](https://github.com/growingio/gio-design/pull/281)
+- 📛 `Delete`、`Upload` 图标重命名为 `DeleteOutlined`、`UploadOutlined`。 [#281](https://github.com/growingio/gio-design/pull/281)
+
 ## 20.9.3
 
 - 🆕 新增`BoxFilled`、 `EditOutlined`、 `ExplainOutlined`、`Filter2Outlined`、 `LockOutlined`、 `UnlockOutlined` 图标。 [#265](https://github.com/growingio/gio-design/pull/265)
