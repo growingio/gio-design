@@ -6,10 +6,30 @@
 
 @date-picker-prefix-cls: ~'@{component-prefix}-date-picker';
 
+.@{date-picker-prefix-cls}-wrapper {
+  position: absolute;
+  top: 45px;
+  z-index: @zindex-dropdown;
+}
+
+.gio-input {
+  width: 253px;
+  height: 40px;
+}
+
 .@{date-picker-prefix-cls}-range-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 252px;
   border: 1px solid @color-border-input-normal;
   border-radius: 0.25rem;
   transition: all 0.3s ease-in-out;
+
+  .gio-input {
+    width: 118px;
+    height: 38px;
+  }
 
   .gio-input-content {
     border: none;
@@ -59,6 +79,10 @@
     outline-color: @color-background-date-picker-active;
   }
 
+  .@{date-picker-prefix-cls}-date-panel:focus {
+    outline: none;
+  }
+
   &-week-number {
     width: 286px;
 
@@ -99,10 +123,11 @@
       height: 24px;
 
       &::after {
-        display: inline-block;
-        width: 5px;
-        height: 5px;
-        content: url('../../../assets/images/previousMonth.svg');
+        //display: inline-block;
+        //width: 5px;
+        //height: 5px;
+        //content: url('../../../assets/images/previousMonth.svg');
+        content: '‹';
       }
     }
 
@@ -114,10 +139,11 @@
       height: 24px;
 
       &::after {
-        display: inline-block;
-        width: 5px;
-        height: 5px;
-        content: url('../../../assets/images/nextMonth.svg');
+        //display: inline-block;
+        //width: 5px;
+        //height: 5px;
+        //content: url('../../../assets/images/nextMonth.svg');
+        content: '›';
       }
     }
   }
@@ -171,10 +197,11 @@
     right: 0;
 
     &::after {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      content: url('../../../assets/images/nextYear.svg');
+      //display: inline-block;
+      //width: 8px;
+      //height: 8px;
+      //content: url('../../../assets/images/nextYear.svg');
+      content: '»';
     }
   }
 
@@ -185,10 +212,11 @@
     height: 24px;
 
     &::after {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      content: url('../../../assets/images/previousYear.svg');
+      //display: inline-block;
+      //width: 8px;
+      //height: 8px;
+      //content: url('../../../assets/images/previousYear.svg');
+      content: '«';
     }
   }
 
@@ -464,7 +492,7 @@
   .@{date-picker-prefix-cls}-year-panel,
   .@{date-picker-prefix-cls}-month-panel,
   .@{date-picker-prefix-cls}-decade-panel {
-    top: @input-box-height;
+    top: 53px;
   }
   .@{date-picker-prefix-cls}-month-panel .@{date-picker-prefix-cls}-year-panel {
     top: 0;

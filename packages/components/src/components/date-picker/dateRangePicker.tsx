@@ -118,7 +118,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   return (
     <div className={classNames('')}>
       <RcDatePicker
-        style={{ zIndex: 1001 }}
         animation="slide-up"
         calendar={calendar}
         value={timeRange}
@@ -130,14 +129,13 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
         {({ value }: { value: Array<Moment> }) => (
           <div
             className={classNames(`${prefixCls}-range-input`)}
-            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '252px' }}
           >
             <Input
               placeholder="please select"
               onChange={handleLeftInputChange}
               value={leftInputTimeRange || `${formatDate(value[0])}`}
               onClick={() => setOpen(true)}
-              style={{ width: '118px', height: '38px', position: 'relative', zIndex: Number(1002) }}
+
             />
             <span className={`${prefixCls}-split`}>—</span>
             <Input
@@ -145,9 +143,8 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
               onChange={handleRightInputChange}
               value={rightInputTimeRange || `${formatDate(value[1])}`}
               onClick={() => setOpen(true)}
-              style={{ width: '118px', height: '38px', position: 'relative', zIndex: Number(1002) }}
             />
-            <div ref={calendarContainerRef} />
+            <div ref={calendarContainerRef} className={classNames(`${prefixCls}-wrapper`)} />
           </div>
         )}
       </RcDatePicker>
