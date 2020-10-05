@@ -16194,8 +16194,9 @@ rc-switch@~3.2.0:
     rc-util "^5.0.1"
 
 rc-table@^7.9.1:
-  version "7.9.1"
-  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-7.9.1.tgz#c189ecc55feb3c992ff6b8d407e5d3bc29b5ef3b"
+  version "7.10.0"
+  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-7.10.0.tgz#70f6ef91278e6616ca9af9461281633ab8e7ab73"
+  integrity sha512-nuHRirgaxPBxlVK6pbA9JmWfhpS7wv40rs3zfRxccAIVIkT+su85mBoriZpcs2Y5iXRXpPAzh/E9Ldq28d+7Wg==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.5"
