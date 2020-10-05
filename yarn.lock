@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@ahooksjs/use-request@^2.0.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@ahooksjs/use-request/-/use-request-2.6.0.tgz#7f7fbc1182df80db47d61e500468644b2ea43596"
+  integrity sha512-RW11mqoAhg2uh9gA7Ws3eruGw2gH7qm/6eBSUlV2GvGkA2c0txLACIYElY3NfgT+g+JZQ0JhhpJTqVAx00HqJg==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    lodash.throttle "^4.1.1"
+
 "@ant-design/colors@^3.1.0":
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@ant-design/colors/-/colors-3.2.2.tgz#5ad43d619e911f3488ebac303d606e66a8423903"
@@ -2947,6 +2955,11 @@
   dependencies:
     "@types/node" ">= 8"
 
+"@qixian.cs/path-to-regexp@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@qixian.cs/path-to-regexp/-/path-to-regexp-6.1.0.tgz#6b84ad01596332aba95fa29d2e70104698cd5c45"
+  integrity sha512-2jIiLiVZB1jnY7IIRQKtoV8Gnr7XIhk4mC88ONGunZE3hYt5IHUG4BE/6+JiTBjjEWQLBeWnZB8hGpppkufiVw==
+
 "@react-dnd/asap@^4.0.0":
   version "4.0.0"
   resolved "https://registry.npmjs.org/@react-dnd/asap/-/asap-4.0.0.tgz#b300eeed83e9801f51bd66b0337c9a6f04548651"
@@ -3654,9 +3667,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-helmet@6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-6.0.0.tgz#5b74e44a12662ffb12d1c97ee702cf4e220958cf"
+"@types/react-helmet@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-6.1.0.tgz#af586ed685f4905e2adc7462d1d65ace52beee7a"
+  integrity sha512-PYRoU1XJFOzQ3BHvWL1T8iDNbRjdMDJMT5hFmZKGbsq09kbSqJy61uwEpTrbTNWDopVphUT34zUSVLK9pjsgYQ==
   dependencies:
     "@types/react" "*"
 
@@ -4291,48 +4305,55 @@
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@umijs/plugin-analytics/-/plugin-analytics-0.2.2.tgz#575fd231d4327ea13413217aa1b5fc6bdd89465e"
 
-"@umijs/plugin-antd@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@umijs/plugin-antd/-/plugin-antd-0.6.0.tgz#a55f80ec9f717d4e7bc87773e380e1e6a028c899"
+"@umijs/plugin-antd@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-antd/-/plugin-antd-0.8.0.tgz#0dae96f2aada81dbd494ee19f9329f1a63cff1ff"
+  integrity sha512-Pz9DOd6kwYvAQUGbKfyVnezCROGLLQzwfi6QFvMnsCh1iV2g1Kfk0tg3hEbzsUkXHPgeMLx+qj7KQFwHWWM1+w==
   dependencies:
     antd "^4.1.3"
     antd-mobile "^2.3.1"
 
-"@umijs/plugin-crossorigin@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@umijs/plugin-crossorigin/-/plugin-crossorigin-1.1.0.tgz#369a594812276458aa0a9284681349179b73662d"
+"@umijs/plugin-crossorigin@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-crossorigin/-/plugin-crossorigin-1.1.1.tgz#0e5ffb8013c95470fce79cfbd6a29a9ad58df4c9"
+  integrity sha512-2ryOjsGqgRv6YqSHqHRqvPc6cg0JSYAnqr9OB2bOjZVAQevFpovetHGDXxIKzUtb09MwrrSQvaH9K7uGZtACow==
 
-"@umijs/plugin-dva@0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@umijs/plugin-dva/-/plugin-dva-0.7.2.tgz#268a6c1d5eaa3f7824496480f4323260bd0d008b"
+"@umijs/plugin-dva@0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-dva/-/plugin-dva-0.9.1.tgz#08588b80ff9867e256368aa91923ac48c0a01602"
+  integrity sha512-ZaaZnrqFu9fRtyl7Ah8WN3RJHpJb4PM2ZH7BC0+BqMbEVOyUQkBgf4cy/ddkJ1skbKQVlHN1ZQIiaB6q1nxJww==
   dependencies:
     babel-plugin-dva-hmr "^0.4.2"
     dva "^2.6.0-beta.20"
-    dva-immer "^0.4.19"
+    dva-immer "^0.5.0"
     dva-loading "^3.0.20"
 
-"@umijs/plugin-helmet@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@umijs/plugin-helmet/-/plugin-helmet-1.0.2.tgz#9db9d1d257778f94d12587dd6b717af91970e4c9"
+"@umijs/plugin-helmet@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-helmet/-/plugin-helmet-1.1.1.tgz#841aea37b5076b51c2f332659bf9c671cf63794d"
+  integrity sha512-S2MyqjLddQ4o9jTqfEdEsZhhmHTPUlqoLYdsMtbaTUlfChnQ/ed+3WCwuF5bkVVqhea+Yi4ctxPa+k3xBUhmcg==
   dependencies:
-    "@types/react-helmet" "6.0.0"
-    react-helmet "6.0.0"
+    "@types/react-helmet" "^6.1.0"
+    react-helmet "^6.1.0"
 
 "@umijs/plugin-initial-state@2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@umijs/plugin-initial-state/-/plugin-initial-state-2.2.1.tgz#cd7592aa90b6b369bd0df297254320088397ff67"
 
-"@umijs/plugin-layout@0.11.7":
-  version "0.11.7"
-  resolved "https://registry.yarnpkg.com/@umijs/plugin-layout/-/plugin-layout-0.11.7.tgz#9bb91fdab2d3f024083e5134f47ad93d7fb2444c"
+"@umijs/plugin-layout@0.12.2":
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-layout/-/plugin-layout-0.12.2.tgz#729930e82a62a930950d2e466de6fa350190c1c0"
+  integrity sha512-EqdhzLS9+wS80ZpAFK04aZUCaiU3IWKfaLh2j8qWh4C0cTRtmLRBgake6suV8AHIQj3NPwohsq2s55Qt/S/sLw==
   dependencies:
+    "@umijs/route-utils" "^1.0.7"
     antd "^4.1.2"
     lodash "^4.17.15"
     path-to-regexp "1.x"
 
-"@umijs/plugin-locale@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@umijs/plugin-locale/-/plugin-locale-0.7.0.tgz#e82e0a5bf82b24457eb2653144947cba20da2815"
+"@umijs/plugin-locale@0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-locale/-/plugin-locale-0.10.2.tgz#8ed5ec62d5fd6690a196ab71e379e1626139ac49"
+  integrity sha512-vr9vY5aaOBJKsBibdATYMOoupstgEylN5fJXW30nIU+ZZviaFh9H6G6Fkk7nAj81DbFZ7WE1xWVq5A6UyDWAWw==
   dependencies:
     "@ant-design/icons" "^4.1.0"
     "@formatjs/intl-pluralrules" "^1.5.0"
@@ -4342,17 +4363,19 @@
     react-intl "3.12.0"
     warning "^4.0.3"
 
-"@umijs/plugin-model@2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@umijs/plugin-model/-/plugin-model-2.3.1.tgz#a485e521656e829fb4845274f86f89f170fb6a96"
+"@umijs/plugin-model@2.5.4":
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-model/-/plugin-model-2.5.4.tgz#7b91d1886195793a2a97b0b2d7994c72b7604719"
+  integrity sha512-5r4U+HpNlZ8a7dtrwhObHDbwIj6EmUecU9v9SgrcUnEFjNk375MFTvEeFgM5ZmES0LFEKSJfmolvrNiT1uNfcw==
   dependencies:
     fast-deep-equal "3.1.1"
 
-"@umijs/plugin-request@2.3.2":
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/@umijs/plugin-request/-/plugin-request-2.3.2.tgz#2343d21ccd09bdbbe39d6aee9340e0f87313fdd4"
+"@umijs/plugin-request@2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@umijs/plugin-request/-/plugin-request-2.5.0.tgz#3b222be9400c3c21ac84bdeefbd4103e48690748"
+  integrity sha512-fC0zLMmMP0PGqFtI6pyb8fJd9HovMuNPUSrjDH2YFcyyd0m9FOdjnuL2VcfvHBI1RcpfdW6LJ/dxw+ggeeoyaQ==
   dependencies:
-    "@umijs/use-request" "^1.2.0"
+    "@ahooksjs/use-request" "^2.0.0"
     umi-request "^1.2.14"
 
 "@umijs/plugin-test@1.0.0":
@@ -4444,20 +4467,21 @@
     unist-util-visit-parents "^3.0.1"
 
 "@umijs/preset-react@1.x":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@umijs/preset-react/-/preset-react-1.5.6.tgz#db2c7a910747bc27cc8614cfab5de042f00d96ec"
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/@umijs/preset-react/-/preset-react-1.6.8.tgz#d4b61d8f6e08b3ebf806e235675031520283950b"
+  integrity sha512-7zRH/k3/tyru/E37IwyBHW8TpS3su8CsZsjUBSx3E6B5zKDvATy5tJhGe9soxhkakBdN41icdZQfarqI8Lp/nA==
   dependencies:
     "@umijs/plugin-access" "2.3.1"
     "@umijs/plugin-analytics" "0.2.2"
-    "@umijs/plugin-antd" "0.6.0"
-    "@umijs/plugin-crossorigin" "1.1.0"
-    "@umijs/plugin-dva" "0.7.2"
-    "@umijs/plugin-helmet" "1.0.2"
+    "@umijs/plugin-antd" "0.8.0"
+    "@umijs/plugin-crossorigin" "1.1.1"
+    "@umijs/plugin-dva" "0.9.1"
+    "@umijs/plugin-helmet" "1.1.1"
     "@umijs/plugin-initial-state" "2.2.1"
-    "@umijs/plugin-layout" "0.11.7"
-    "@umijs/plugin-locale" "0.7.0"
-    "@umijs/plugin-model" "2.3.1"
-    "@umijs/plugin-request" "2.3.2"
+    "@umijs/plugin-layout" "0.12.2"
+    "@umijs/plugin-locale" "0.10.2"
+    "@umijs/plugin-model" "2.5.4"
+    "@umijs/plugin-request" "2.5.0"
     "@umijs/plugin-test" "1.0.0"
 
 "@umijs/renderer-mpa@3.2.3":
@@ -4481,6 +4505,16 @@
     react "^16.13.1"
     react-dom "^16.13.1"
     react-router-config "5.1.1"
+
+"@umijs/route-utils@^1.0.7":
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/@umijs/route-utils/-/route-utils-1.0.32.tgz#9ea4d353027ba57e0fca018bfb9f19949ecfe354"
+  integrity sha512-ej/HoeTyJbO3OBlLH3NQqGAO4LDUuUZgN1wv+TZqIGPtAEcavml42jF2+hEM18aKdq3ToTliF1CvsKBx/mCpyg==
+  dependencies:
+    "@qixian.cs/path-to-regexp" "^6.1.0"
+    hash.js "^1.1.7"
+    lodash.isequal "^4.5.0"
+    memoize-one "^5.1.1"
 
 "@umijs/runtime@3.2.3":
   version "3.2.3"
@@ -4541,14 +4575,6 @@
     "@umijs/server" "3.2.3"
     "@umijs/utils" "3.2.3"
     webpack-chain "6.4.0"
-
-"@umijs/use-request@^1.2.0":
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/@umijs/use-request/-/use-request-1.4.3.tgz#bc5fadc4cb07d796eb35f09838d6a15cb12802f7"
-  dependencies:
-    lodash.debounce "^4.0.8"
-    lodash.throttle "^4.1.1"
-    umi-request "^1.2.17"
 
 "@umijs/utils@3.2.3":
   version "3.2.3"
@@ -7867,12 +7893,13 @@ dva-core@2.0.2:
     redux-saga "^0.16.0"
     warning "^3.0.0"
 
-dva-immer@^0.4.19:
-  version "0.4.19"
-  resolved "https://registry.yarnpkg.com/dva-immer/-/dva-immer-0.4.19.tgz#aabb52bcf69cea26f1a08a9c5b0670486e063011"
+dva-immer@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/dva-immer/-/dva-immer-0.5.0.tgz#cc949b20aae266f0a1ab76385ae567dd14a16ffa"
+  integrity sha512-pyKL35pxO6xXYzMtkXc9z4F2BmMbx6dyoEQxuXcxAVoOJMRTjt04RVoCxv/uwuYs8CBVdsj73P7gGCzV5i5cRg==
   dependencies:
     "@babel/runtime" "^7.0.0"
-    immer "^2.1.1"
+    immer "^7.0.5"
 
 dva-loading@^3.0.20:
   version "3.0.20"
@@ -10243,7 +10270,7 @@ hash-base@^3.0.0:
     readable-stream "^3.6.0"
     safe-buffer "^5.2.0"
 
-hash.js@^1.0.0, hash.js@^1.0.3:
+hash.js@^1.0.0, hash.js@^1.0.3, hash.js@^1.1.7:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/hash.js/-/hash.js-1.1.7.tgz#0babca538e8d4ee4a0f8988d68866537a003cf42"
   dependencies:
@@ -10612,9 +10639,10 @@ immer@6.0.3:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/immer/-/immer-6.0.3.tgz#94d5051cd724668160a900d66d85ec02816f29bd"
 
-immer@^2.1.1:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/immer/-/immer-2.1.5.tgz#0389947455c5a2c7a47f1e6f415c9d1a62a1ebed"
+immer@^7.0.5:
+  version "7.0.9"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-7.0.9.tgz#28e7552c21d39dd76feccd2b800b7bc86ee4a62e"
+  integrity sha512-Vs/gxoM4DqNAYR7pugIxi0Xc8XAun/uy7AQu4fLLqaTBHxjOP9pJ266Q9MWA/ly4z6rAFZbvViOtihxUZ7O28A==
 
 immutable@^3.8.1:
   version "3.8.2"
@@ -13257,6 +13285,11 @@ mem@^5.0.0:
     map-age-cleaner "^0.1.3"
     mimic-fn "^2.1.0"
     p-is-promise "^2.1.0"
+
+memoize-one@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-5.1.1.tgz#047b6e3199b508eaec03504de71229b8eb1d75c0"
+  integrity sha512-HKeeBpWvqiVJD57ZUAsJNm71eHTykffzcLZVYWiVfQeI1rJtuEaS7hQiEpWfVVk18donPwJEcFKIkCmPJNOhHA==
 
 memoizee@0.4.X, memoizee@^0.4.14:
   version "0.4.14"
@@ -16422,17 +16455,19 @@ react-error-overlay@6.0.7:
   version "6.0.7"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.7.tgz#1dcfb459ab671d53f660a991513cb2f0a0553108"
 
-react-fast-compare@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
+react-fast-compare@^3.1.1:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
+  integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
 
-react-helmet@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-6.0.0.tgz#fcb93ebaca3ba562a686eb2f1f9d46093d83b5f8"
+react-helmet@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
+  integrity sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==
   dependencies:
     object-assign "^4.1.1"
     prop-types "^15.7.2"
-    react-fast-compare "^2.0.4"
+    react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
 react-intl@3.12.0:
@@ -19602,7 +19637,7 @@ umask@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/umask/-/umask-1.1.0.tgz#f29cebf01df517912bb58ff9c4e50fde8e33320d"
 
-umi-request@^1.2.14, umi-request@^1.2.17:
+umi-request@^1.2.14:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/umi-request/-/umi-request-1.3.3.tgz#9f053a3bbf7c8e89765ca8e3c0118f1cb8481f11"
   dependencies:
