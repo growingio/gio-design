@@ -1,9 +1,10 @@
 /* eslint jsx-a11y/no-noninteractive-element-to-interactive-role: 0 */
 import React, { Component } from 'react';
 import classNames from 'classnames';
-const raf = require('raf').default;
+// const raf = require('./utils/raf').default;
+import raf from 'raf';
 import { SelectProps } from './interface';
-
+console.log(raf, 'raf');
 const scrollTo = (element: HTMLElement, to: number, duration: number) => {
   // jump to target if duration zero
   if (duration <= 0) {
