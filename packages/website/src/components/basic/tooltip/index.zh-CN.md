@@ -31,7 +31,7 @@ group:
 
 | 参数                     | 说明                                                                                                                                           | 类型                              | 默认值                |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | --------------------- |
-| **getPopupContainer**    | 浮层渲染父节点，默认渲染到 body 上                                                                                                             | function(triggerNode)             | `() => document.body` |
+| **getTooltipContainer**  | 浮层渲染父节点，默认渲染到 body 上                                                                                                             | function(triggerNode)             | `() => document.body` |
 | **overlayClassName**     | 添加 className                                                                                                                                 | string                            | `''`                  |
 | **placement**            | 气泡框位置, 可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom` | string                            | `'top'`               |
 | **trigger**              | 触发行为，可选 hover,focus,click,contextMenu                                                                                                   | string\|string[]                  | `hover`               |
