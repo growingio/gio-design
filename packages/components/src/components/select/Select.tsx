@@ -55,6 +55,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     listHeight,
     listRowHeight = defaultListRowHeight,
     width,
+    getContainer,
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefix = getPrefixCls('select', customizePrefixCls);
@@ -269,6 +270,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
       placement="bottomLeft"
       overlay={list}
       overlayClassName={`${prefix}-dropdown`}
+      getTooltipContainer={getContainer}
     >
       {trigger}
     </Dropdown>

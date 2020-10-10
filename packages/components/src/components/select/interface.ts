@@ -15,6 +15,7 @@ export interface SelectProps<VT = Option> {
   width?: number;
   listHeight?: number;
   listRowHeight?: number;
+  getContainer?: (node: HTMLElement) => HTMLElement;
 }
 
 export { Option };
