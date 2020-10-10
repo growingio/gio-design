@@ -1,0 +1,27 @@
+@import '../../../stylesheet/index.less';
+
+@gio-space: ~'@{component-prefix}-space';
+
+.@{gio-space} {
+  display: inline-flex;
+  flex-direction: row;
+
+  &&-vertical {
+    flex-direction: column;
+  }
+
+  &&-align {
+    &-center {
+      align-items: center;
+    }
+    &-start {
+      align-items: flex-start;
+    }
+    &-end {
+      align-items: flex-end;
+    }
+    &-baseline {
+      align-items: baseline;
+    }
+  }
+}
