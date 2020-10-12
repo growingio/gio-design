@@ -61,6 +61,7 @@ export { default as SettingFilled } from './SettingFilled';
 export { default as Setting } from './Setting';
 export { default as ShrinkOutlined } from './ShrinkOutlined';
 export { default as StartFilled } from './StartFilled';
+export { default as StopWatchOutlined } from './StopWatchOutlined';
 export { default as Succeed } from './Succeed';
 export { default as TableChartOutlined } from './TableChartOutlined';
 export { default as UnlockOutlined } from './UnlockOutlined';
