@@ -35,6 +35,7 @@
     border: none;
     box-shadow: none;
   }
+
   span.@{date-picker-prefix-cls}-split {
     color: rgba(0, 0, 0, 0.2);
   }
@@ -100,7 +101,7 @@
     -webkit-user-select: none;
     user-select: none;
 
-    > a {
+    >a {
       display: inline-block;
       width: 30px;
       padding: 0 5px;
@@ -164,6 +165,7 @@
       background-color: @color-background-date-picker-hover;
       cursor: pointer;
     }
+
     &.@{date-picker-prefix-cls}-time-status:hover {
       color: @color-text-date-picker-normal;
       cursor: pointer;
@@ -251,6 +253,7 @@
     color: #313e75;
     line-height: 24px;
     text-align: center;
+
     .@{date-picker-prefix-cls}-column-header-inner {
       display: block;
       font-weight: normal;
@@ -328,6 +331,7 @@
   &-selected-date &-date {
     color: @palette-white;
     background: @color-background-date-picker-active;
+
     &:hover {
       background: @color-background-date-picker-active;
     }
@@ -364,6 +368,7 @@
 
     &-show-ok {
       text-align: right;
+
       .@{date-picker-prefix-cls} {
         &-footer-btn {
           padding-right: 12px;
@@ -373,12 +378,17 @@
           margin-left: 0;
           padding: 0 12px;
         }
+
         &-today-btn {
           float: left;
           padding-left: 12px;
         }
       }
     }
+  }
+
+  &-extra-footer {
+    text-align: left;
   }
 
   &-footer-btn {
@@ -412,6 +422,7 @@
 
     .@{date-picker-prefix-cls}-time-picker {
       top: 69px;
+
       &-panel {
         &-select {
           width: 77px;
@@ -422,6 +433,7 @@
 
   &-left {
     float: left;
+
     .@{date-picker-prefix-cls}-time-picker-panel {
       &-select:last-child {
         border-right: 1px solid @color-background-date-picker-hover;
@@ -431,6 +443,7 @@
 
   &-right {
     float: right;
+
     .@{date-picker-prefix-cls}-time-picker-panel {
       left: 21px;
 
@@ -448,6 +461,7 @@
     line-height: @input-box-height;
     text-align: center;
   }
+
   .@{date-picker-prefix-cls}-date-panel::after {
     display: block;
     clear: both;
@@ -460,6 +474,7 @@
     display: none;
     height: @input-box-height;
   }
+
   .@{date-picker-prefix-cls}-input {
     width: 253px;
     height: 58px;
@@ -472,8 +487,10 @@
     .@{date-picker-prefix-cls}-range {
       &-part {
         width: 286px;
+
         .@{date-picker-prefix-cls}-time-picker {
           top: 69px;
+
           &-panel {
             &-select {
               width: 89px;
@@ -481,6 +498,7 @@
           }
         }
       }
+
       &-right {
         .@{date-picker-prefix-cls}-time-picker-panel {
           left: 36px;
@@ -494,9 +512,11 @@
   .@{date-picker-prefix-cls}-decade-panel {
     top: 53px;
   }
+
   .@{date-picker-prefix-cls}-month-panel .@{date-picker-prefix-cls}-year-panel {
     top: 0;
   }
+
   .@{date-picker-prefix-cls}-decade-panel-table,
   .@{date-picker-prefix-cls}-year-panel-table,
   .@{date-picker-prefix-cls}-month-panel-table {

@@ -23,7 +23,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
 
   const onSelect = (value: Array<Moment>): void => {
     setTimeRange(value);
-    // props?.onSelect(value);
+    props?.onSelect(value);
     !showFooter && setOpen(false);
   };
 
@@ -87,6 +87,15 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
 
   const renderFooter = () => (
     <>
+      {
+        props.renderExtraFooter && (
+          <div className={classNames(`${prefixCls}-extra-footer`)}>
+            {
+              props.renderExtraFooter()
+            }
+          </div>
+        )
+      }
       <Button onClick={onCancel} type="secondary" size="middle" style={{ margin: ' 0 12px 0 0 ' }}>
         取消
       </Button>
@@ -103,7 +112,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
       locale={zhCN}
       format={format}
       defaultValue={defaultValue}
-      value={timeRange}
+      // value={timeRange}
       onSelect={onSelect}
       onPanelChange={onPanelChange}
       showToday={false}
