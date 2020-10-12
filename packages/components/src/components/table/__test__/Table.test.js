@@ -81,7 +81,7 @@ const columns = [
   },
 ];
 
-describe('Testing Tabs', () => {
+describe('Testing Table', () => {
   const getTable = () => <Table title="列表标题" dataSource={dataSource} columns={columns} pagination={false} />;
 
   it('should be stable', () => {
@@ -123,5 +123,40 @@ describe('Testing Tabs', () => {
     expect(wrapper.exists('.gio-table-column-title-info')).toBe(true);
     expect(wrapper.exists('.gio-table-column-filter')).toBe(true);
     expect(wrapper.exists('.gio-table-column-sorter')).toBe(true);
+  });
+
+  test('when dataSource update and page count less than current, pagination reset', () => {
+    const data10 = Array.from({ length: 10 }, (_, key) => ({ a: key, key }));
+    const data20 = Array.from({ length: 20 }, (_, key) => ({ a: key, key }));
+
+    const wrapper = mount(
+      <Table
+        title="列表标题"
+        dataSource={data20}
+        columns={[
+          {
+            title: 'a',
+            dataIndex: 'a',
+          },
+        ]}
+        pagination={{
+          pageSize: 5,
+        }}
+      />
+    );
+    // update
+    wrapper.find('.gio-pagination-item').at(3).simulate('click');
+    wrapper.setProps({ dataSource: data10 });
+    expect(() => {
+      expect(wrapper.find('.gio-pagination-item').first().text()).toBe('1');
+      expect(wrapper.find('.gio-pagination-total-text').first().text()).toBe(`总共 ${Number(10).toLocaleString()} 条`);
+    });
+    // not update
+    wrapper.find('.gio-pagination-item').at(1).simulate('click');
+    wrapper.setProps({ dataSource: data20 });
+    expect(() => {
+      expect(wrapper.find('.gio-pagination-item-active').first().text()).toBe('2');
+      expect(wrapper.find('.gio-pagination-total-text').first().text()).toBe(`总共 ${Number(20).toLocaleString()} 条`);
+    });
   });
 });
