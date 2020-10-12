@@ -18684,10 +18684,10 @@ strong-log-transformer@^2.0.0:
     minimist "^1.2.0"
     through "^2.3.4"
 
-style-dictionary@2.10.1:
-  version "2.10.1"
-  resolved "https://registry.yarnpkg.com/style-dictionary/-/style-dictionary-2.10.1.tgz#7c8bd31c265d5169ef40fc47fada97d21a249927"
-  integrity sha512-AsAeRIpA82zHRql1mg6yvBsLmi+seymwYcShdmnyhbwjBRmOlJ0pj9QlBWH5MWAUBwzR4IndS1aSzgxeqmH5Kg==
+style-dictionary@2.10.2:
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/style-dictionary/-/style-dictionary-2.10.2.tgz#9150dfcdc1492e1cd5f0f0a73e2bc6ada349c09b"
+  integrity sha512-1GgtokijUl46tFXFGMmGPioO9xMzTBcCRfufYUZ61OxYRUEDT93M7Y9YxD+udgrHN2pYRrS/CiToM4jARBTccQ==
   dependencies:
     chalk "^4.0.0"
     commander "^5.1.0"
