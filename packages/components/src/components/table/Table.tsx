@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import RcTable from 'rc-table';
 import classNames from 'classnames';
 import { cloneDeep, isUndefined, get, has, join } from 'lodash';
@@ -58,16 +58,17 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
     resetPagination,
   ] = usePagination(filtedData, pagination, showIndex);
 
-  useEffect(() => {
-    resetPagination();
-  }, [dataSource]);
-
   const [transformSelectionPipeline] = useSelection(paginationedData, rowSelection, {
     rowKey,
   });
   const [transformEllipsisTooltipPipeline] = useEllipsisTooltip();
 
-  const onTriggerStateUpdate = () => onChange?.(activePaginationedState, activeSorterStates, activeFilterStates);
+  const onTriggerStateUpdate = (reset: boolean = false) => {
+    if (reset) {
+      resetPagination();
+    }
+    onChange?.(activePaginationedState, activeSorterStates, activeFilterStates);
+  };
 
   const renderTitle = (_columns: ColumnsType<RecordType>) =>
     _columns.map((column) => {

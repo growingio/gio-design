@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback, useEffect } from 'react';
 import { isUndefined } from 'lodash';
 import Pagination, { PaginationProps } from '../../pagination';
 import { ColumnType, ColumnsType, PaginationState } from '../interface';
@@ -18,17 +18,22 @@ const usePagination = <RecordType,>(
 ] => {
   const { current, pageSize, total, ...rest } = pagination || {};
   const [localCurrent, setLocalCurrent] = useControlledState<number>(current, 1);
-  const [localPageSize, setLocalPageSize] = useControlledState<number>(pageSize, 10);
+  const [localPageSize] = useControlledState<number>(pageSize, 10);
   const [controlledTotal, setControlledTotal] = useControlledState<number>(total, data.length);
 
   // when dataSource update && unControlled, Pagination update.
   const resetPagination = () => {
     if (isUndefined(total)) {
       setControlledTotal(data.length, true);
-      setLocalCurrent(1, true);
-      setLocalPageSize(10, true);
+      if (Math.ceil(data.length / localPageSize) < localCurrent) {
+        setLocalCurrent(1, true);
+      }
     }
   };
+
+  useEffect(() => {
+    resetPagination();
+  }, [data.length]);
 
   // 通过total字段是否受控判断是否后端分页。
   const paginationData = useMemo(
