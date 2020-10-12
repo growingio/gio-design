@@ -50,7 +50,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   inputStyle,
   inputWrapStyle,
   wrapStyle,
-
+  placeholder,
   value,
   onChange,
   id,
@@ -142,6 +142,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         wrapStyle={inputWrapStyle}
         suffix={renderSuffix()}
         value={value}
+        placeholder={placeholder}
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
