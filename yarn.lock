@@ -15885,13 +15885,14 @@ rc-animate@2.x, rc-animate@^2.4.4:
     react-lifecycles-compat "^3.0.4"
 
 rc-animate@3.x, rc-animate@^3.0.0, rc-animate@^3.1.0, rc-animate@~3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/rc-animate/-/rc-animate-3.1.0.tgz#051b689c2c7194e4c8ae016d32a0e5f9de6c8baa"
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/rc-animate/-/rc-animate-3.1.1.tgz#defdd863f56816c222534e4dc68feddecd081386"
+  integrity sha512-8wg2Zg3EETy0k/9kYuis30NJNQg1D6/WSQwnCiz6SvyxQXNet/rVraRz3bPngwY6rcU2nlRvoShiYOorXyF7Sg==
   dependencies:
     "@ant-design/css-animation" "^1.7.2"
     classnames "^2.2.6"
     raf "^3.4.0"
-    rc-util "^5.0.1"
+    rc-util "^4.15.3"
 
 rc-calendar@9.15.11:
   version "9.15.11"
