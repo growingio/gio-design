@@ -9,6 +9,23 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.10.0
+
+- RangePicker
+  - 🆕 新增功能组件 RangePicker [#296](https://github.com/growingio/gio-design/pull/296)
+- TimePicker
+  - 🆕 新增功能组件 TimePicker. [#292](https://github.com/growingio/gio-design/pull/292)
+- Table
+  - 重构分页相关业务逻辑. [#295](https://github.com/growingio/gio-design/pull/295)
+- Select
+  - 新增获取渲染实例参数 getContainer. [#291](https://github.com/growingio/gio-design/pull/291)
+- SearchBar
+  - 新增占位符参数 placeholder. [#290](https://github.com/growingio/gio-design/pull/290)
+- Menu
+  - 对于没有 icon 的 MenuItem, 移除外层 span 包裹。 [#284](https://github.com/growingio/gio-design/pull/284)
+- Checkbox
+  - 修复样式错误 [#232](https://github.com/growingio/gio-design/pull/232)
+
 ## 20.9.7
 
 - Table [#267](https://github.com/growingio/gio-design/pull/267)

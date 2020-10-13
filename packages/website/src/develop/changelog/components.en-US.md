@@ -9,6 +9,23 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.10.0
+
+- RangePicker
+  - 🆕 functional component RangePicerk. [#296](https://github.com/growingio/gio-design/pull/296)
+- TimePicker
+  - 🆕 functional component TimePicker. [#292](https://github.com/growingio/gio-design/pull/292)
+- Table
+  - refactor pagnation related logic. [#295](https://github.com/growingio/gio-design/pull/295)
+- Select
+  - add getContainer to component's props. [#291](https://github.com/growingio/gio-design/pull/291)
+- SearchBar
+  - add placeholder to component's props. [#290](https://github.com/growingio/gio-design/pull/290)
+- Menu
+  - remove <span> wrapper of children element for MenuItem without icon. [#284](https://github.com/growingio/gio-design/pull/284)
+- Checkbox
+  - fix style realated error [#232](https://github.com/growingio/gio-design/pull/232)
+
 ## 20.9.7
 
 - Table [#267](https://github.com/growingio/gio-design/pull/267)
