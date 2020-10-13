@@ -9,7 +9,7 @@ nav:
 
 # @gio-design/components 更新日志
 
-## 20.10.0
+## 20.10.1
 
 - TimePicker
   - 🆕 新增功能组件 TimePicker. [#292](https://github.com/growingio/gio-design/pull/292)
