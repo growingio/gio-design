@@ -24,7 +24,7 @@ nav:
 - SearchBar
   - add placeholder to component's props. [#290](https://github.com/growingio/gio-design/pull/290)
 - Menu
-  - remove <span> wrapper of children element for MenuItem without icon. [#284](https://github.com/growingio/gio-design/pull/284)
+  - remove `span` wrapper of children element for MenuItem without icon. [#284](https://github.com/growingio/gio-design/pull/284)
 - Checkbox
   - fix style realated error [#232](https://github.com/growingio/gio-design/pull/232)
 
