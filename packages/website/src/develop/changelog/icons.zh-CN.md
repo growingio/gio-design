@@ -9,6 +9,10 @@ nav:
 
 # @gio-design/icons 更新日志
 
+## 20.10.1
+
+- 🆕 新增 `StopWatchOutlined` [#292](https://github.com/growingio/gio-design/pull/292)
+
 ## 20.9.4
 
 - 🆕 新增 `CleanOutlined`、`DownOutlined`、`EnlargeOutlined`、`FullScreenOutlined`、`LocationRecoveryOutlined`、`MapChartOutlined`、`MessageFilled`、`PopupWindowFilled`、`PushMsgFilled`、`QuitOutlined`、`ShrinkOutlined`、`StartFilled`、`UpOutlined`、`UserFilled`、`UserOutlined` 图标。[#281](https://github.com/growingio/gio-design/pull/281)

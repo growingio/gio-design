@@ -9,7 +9,7 @@ nav:
 
 # @gio-design/components Change Log
 
-## 20.10.0
+## 20.10.1
 
 - TimePicker
   - 🆕 functional component TimePicker. [#292](https://github.com/growingio/gio-design/pull/292)
