@@ -48,13 +48,13 @@
   }
 
   & &-label {
-    font-size: @font-size-base;
-    font-weight: @weight-font-medium;
-    line-height: @text-lint-height-base;
-    padding-right: 12px;
-    text-align: right;
-    color: @color-font-form-label;
     flex-shrink: 0;
+    padding-right: 12px;
+    color: @color-font-form-label;
+    font-weight: @weight-font-medium;
+    font-size: @font-size-base;
+    line-height: @text-lint-height-base;
+    text-align: right;
 
     // label-align
     &.@{field-prefix-cls}-label-left {
@@ -79,24 +79,24 @@
       position: relative;
       display: inline-flex;
       align-items: center;
-      min-height: @size-field-normal;
       width: 100%;
+      min-height: @size-field-normal;
 
       .@{field-prefix-cls}-children-icon {
         position: absolute;
+        top: 0;
+        right: 0;
         display: inline-flex;
         align-items: center;
-        right: 0;
-        top: 0;
-        height: @size-field-normal;
         width: 24px;
+        height: @size-field-normal;
       }
     }
   }
 
   &-message {
-    font-size: @size-font-12;
     color: @info-color;
+    font-size: @size-font-12;
   }
 
   &-feedback,
