@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef, useState,useEffect } from 'react';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/Picker';
 import RcRangeCalendar from 'rc-calendar/lib/RangeCalendar';
@@ -11,7 +11,7 @@ import Input from '../input';
 import { DateRangePickerProps } from './interface';
 
 const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerProps) => {
-  const { prefixCls: customizePrefixCls, format = 'YYYY/MM/DD', value, defaultValue, showFooter } = props;
+  const { prefixCls: customizePrefixCls, format = 'YYYY/MM/DD', value, defaultValue, showFooter, disabledDate } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('date-picker', customizePrefixCls);
 
@@ -20,13 +20,14 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   const [timeRange, setTimeRange] = useState(value);
   const [leftInputTimeRange, setLeftInputTimeRange] = useState('');
   const [rightInputTimeRange, setRightInputTimeRange] = useState('');
-
+  useEffect(() => {
+    setTimeRange(value);
+  }, [value])
   const onSelect = (value: Array<Moment>): void => {
     setTimeRange(value);
     props?.onSelect(value);
     !showFooter && setOpen(false);
   };
-
   const onChange = (value: Array<Moment>): void => {
     setTimeRange(value);
   };
@@ -112,6 +113,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
       locale={zhCN}
       format={format}
       defaultValue={defaultValue}
+      disabledDate={disabledDate}
       // value={timeRange}
       onSelect={onSelect}
       onPanelChange={onPanelChange}
