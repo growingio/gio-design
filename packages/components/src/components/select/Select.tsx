@@ -65,8 +65,8 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   const defaultValues = defaultValue || defaultSelection;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefix = getPrefixCls('select', customizePrefixCls);
-  const [_selection, _setSelection] = useState(new Set(concat([], defaultValues)));
-  const value = new Set(concat([], _value));
+  const [_selection, _setSelection] = useState(new Set(concat<string>([], defaultValues)));
+  const value = new Set(concat<string>([], _value || []));
   const selection = _value ? value : _selection;
   const [extraOptions, setExtraOptions] = useState<Option[]>([]);
   // options { value: index } hashtable;
