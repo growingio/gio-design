@@ -24,4 +24,5 @@ export interface DateRangePickerProps {
   onSelect: (v: Array<Moment>) => void;
   defaultValue?: Array<Moment>;
   renderExtraFooter?: () => React.ReactNode;
+  disabledDate?: (current: Moment) => boolean;
 }
