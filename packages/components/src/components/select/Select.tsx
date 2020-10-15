@@ -46,7 +46,9 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     multiple = false,
     options,
     value: _value,
-    defaultValue,
+    // deprecated;
+    defaultSelection,
+    defaultValue = defaultSelection,
     customizePrefixCls,
     onChange,
     size = 'medium',
@@ -57,12 +59,9 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     listRowHeight = defaultListRowHeight,
     width,
     getContainer,
-
-    // deprecated;
-    defaultSelection = [],
   } = props;
 
-  const defaultValues = defaultValue || defaultSelection;
+  const defaultValues = defaultValue || [];
   const { getPrefixCls } = useContext(ConfigContext);
   const prefix = getPrefixCls('select', customizePrefixCls);
   const [_selection, _setSelection] = useState(new Set(concat<string>([], defaultValues)));
