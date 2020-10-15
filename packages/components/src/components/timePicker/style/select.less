@@ -10,9 +10,7 @@
   margin-left: -1px;
   padding: 0 8px 10px;
   overflow-y: auto;
-  font-size: 12px;
-  border: 1px solid #dcdfed;
-  border-width: 0 1px;
+  font-size: @size-font-12;
 
   &-active {
     overflow-y: auto;
@@ -20,7 +18,7 @@
 
   &:first-child {
     margin-left: 0;
-    border-left: 0;
+    border-right: 1px solid @palette-gray-4;
   }
 
   &:last-child {
@@ -40,7 +38,7 @@
     height: 30px;
     margin: 0;
     margin: 4px 0;
-    font-size: 14px;
+    font-size: @size-font-14;
     line-height: 30px;
     text-align: center;
     list-style: none;
@@ -49,19 +47,20 @@
     user-select: none;
 
     &:hover {
-      background-color: #f7f8fc;
+      background-color: @palette-gray-1;
       border-radius: 4px;
     }
   }
 
   li&-option-selected {
-    color: #1248e9;
-    font-weight: 500;
-    background-color: #f7f8fc;
+    color: @palette-blue-5;
+    font-weight: @weight-font-medium;
+    background-color: @palette-gray-1;
+    border-radius: 4px;
   }
 
   li&-option-disabled {
-    color: #ccc;
+    color: @palette-black-2;
     &:hover {
       background: transparent;
       cursor: not-allowed;

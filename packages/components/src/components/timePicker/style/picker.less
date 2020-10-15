@@ -9,7 +9,7 @@
     height: 40px;
     padding: 9px 20px;
     color: #666;
-    font-size: 14px;
+    font-size: @size-font-14;
     line-height: 1.5;
     background-color: #fff;
     background-image: none;
@@ -20,27 +20,27 @@
     transition: border 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), background 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
       box-shadow 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     &:hover {
-      border: 1px solid #1248e9;
+      border: 1px solid @palette-blue-5;
     }
     &:active,
     &:focus {
-      border: 1px solid #1248e9;
+      border: 1px solid @palette-blue-5;
       box-shadow: 0 0 6px 0 #c0c4d3;
     }
     &::placeholder {
       height: 22px;
-      color: #dbdee8;
+      color: @palette-black-1;
       font-size: 14px;
       line-height: 22px;
       letter-spacing: 0;
     }
     &[disabled] {
-      color: #ccc;
-      background: #f7f7f7;
+      color: @palette-black-2;
+      background: @palette-white;
       cursor: not-allowed;
     }
     &-focus {
-      border: 1px solid #1248e9;
+      border: 1px solid @palette-blue-5;
       box-shadow: 0 0 6px 0 #c0c4d3;
     }
   }
