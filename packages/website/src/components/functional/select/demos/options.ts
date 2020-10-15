@@ -4,7 +4,7 @@ const values = ['all', 'online', 'pending', 'off', 'draft'];
 const options = values.map((value, index) => ({
   value,
   label: labels[index],
-  groupKey: 'platform',
+  groupValue: 'platform',
   groupLabel: '应用平台',
 }));
 

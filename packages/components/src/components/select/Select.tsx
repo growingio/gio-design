@@ -2,7 +2,7 @@ import React, { useState, useContext, useMemo, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 
 import { UpFilled, DownFilled } from '@gio-design/icons';
-import { filter, intersection } from 'lodash';
+import { filter, intersection, concat } from 'lodash';
 import Dropdown from '../dropdown';
 import Input from '../input';
 import Tag from '../tag';
@@ -45,8 +45,9 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   const {
     multiple = false,
     options,
+    value: _value,
+    defaultValue,
     customizePrefixCls,
-    defaultSelection = [],
     onChange,
     size = 'medium',
     searchable = false,
@@ -56,12 +57,17 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     listRowHeight = defaultListRowHeight,
     width,
     getContainer,
+
+    // deprecated;
+    defaultSelection = [],
   } = props;
+
+  const defaultValues = defaultValue || defaultSelection;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefix = getPrefixCls('select', customizePrefixCls);
-  const [selection, _setSelection] = useState(
-    new Set(Array.isArray(defaultSelection) ? defaultSelection : [defaultSelection])
-  );
+  const [_selection, _setSelection] = useState(new Set(concat([], defaultValues)));
+  const value = new Set(concat([], _value));
+  const selection = _value ? value : _selection;
   const [extraOptions, setExtraOptions] = useState<Option[]>([]);
   // options { value: index } hashtable;
   const [extendedOptions, optionHash, LabelHash, groupCount] = useMemo(() => {
@@ -71,7 +77,9 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
       (maps, option, index) => {
         maps[0].set(option.value, index);
         maps[1].set(option.label, true);
-        groupKeys.set(option.groupValue, true);
+        if (option.groupLabel !== undefined) {
+          groupKeys.set(option.groupLabel, true);
+        }
         return maps;
       },
       [new Map(), new Map()]
@@ -109,30 +117,30 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
       intersection(
         Array.from(newSelection),
         extraOptions.map((option) => option.value)
-      ).map((value) => freeInputOption(value))
+      ).map((v) => freeInputOption(v))
     );
     clearInput();
     if (onChange) {
       const selectedOptions = Array.from(optSelection).map(
-        (value) => extendedOptions[optionHash.get(value)] || freeInputOption(value)
+        (v) => extendedOptions[optionHash.get(v)] || freeInputOption(v)
       );
       onChange(multiple ? selectedOptions : selectedOptions[0]);
     }
   };
 
-  const onSelectChange = (value: string | string[]) => {
-    setSelection(Array.isArray(value) ? value : [value]);
+  const onSelectChange = (v: string | string[]) => {
+    setSelection(Array.isArray(v) ? v : [v]);
   };
 
-  const onSelected = (value: string) => {
-    if (optionHash.get(value) === undefined) {
-      addExtraOptions(value);
+  const onSelected = (v: string) => {
+    if (optionHash.get(v) === undefined) {
+      addExtraOptions(v);
     }
   };
 
-  const addExtraOptions = (value: string) => {
+  const addExtraOptions = (v: string) => {
     if (!hasExactMatch) {
-      extraOptions.push(freeInputOption(value));
+      extraOptions.push(freeInputOption(v));
       setExtraOptions([...extraOptions]);
     }
   };
@@ -161,8 +169,8 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     }
   };
 
-  const onInputChange = (value: string) => {
-    setInput(value);
+  const onInputChange = (v: string) => {
+    setInput(v);
   };
 
   const clearInput = () => {
@@ -197,16 +205,9 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   );
 
   const renderMultipleValue = () =>
-    Array.from(selection).map((value) => (
-      <Tag
-        key={value}
-        data-key={value}
-        className={`${prefix}-item`}
-        closable
-        persistCloseIcon
-        onClose={onTagCloseClick}
-      >
-        {extendedOptions[optionHash.get(value)]?.label}
+    Array.from(selection).map((v) => (
+      <Tag key={v} data-key={v} className={`${prefix}-item`} closable persistCloseIcon onClose={onTagCloseClick}>
+        {extendedOptions[optionHash.get(v)]?.label}
       </Tag>
     ));
 

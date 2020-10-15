@@ -27,6 +27,8 @@ group:
 
 | 参数          | 说明                                                | 类型                                                                      | 默认值                |
 | ------------- | --------------------------------------------------- | ------------------------------------------------------------------------- | --------------------- |
+| value         | 选中值                                              | `string`                                                                  | `string[]`            |
+| defaultValue  | 默认选中值                                          | `string`                                                                  | `string[]`            |
 | size          | select 的大小                                       | `small` , `medium` , `large`                                              | `medium`              |
 | options       | 同 list Options                                     | `Options[]`                                                               | -                     |
 | multiple      | 多选                                                | `boolean`                                                                 | `false`               |
