@@ -1,7 +1,5 @@
-/* eslint jsx-a11y/no-noninteractive-element-to-interactive-role: 0 */
 import React, { Component } from 'react';
 import classNames from 'classnames';
-// const raf = require('./utils/raf').default;
 import raf from 'raf';
 import { SelectProps } from './interface';
 

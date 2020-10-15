@@ -1,9 +1,7 @@
-// import 'rc-time-picker/assets/index.css';
 import React, { useContext } from 'react';
 import TimePicker from './TimePicker';
 import { TimePickerProps } from './interface';
 import { ConfigContext } from '../config-provider';
-import './style/index.less';
 import { StopWatchOutlined, CloseCircleFilled } from '@gio-design/icons';
 
 export default ({ prefixCls: customizePrefixCls, ...props }: TimePickerProps) => {
@@ -14,7 +12,7 @@ export default ({ prefixCls: customizePrefixCls, ...props }: TimePickerProps) =>
     <>
       <TimePicker
         prefixCls={prefixCls}
-        inputIcon={<StopWatchOutlined />}
+        inputIcon={<StopWatchOutlined color="#5C4E61" />}
         clearIcon={<CloseCircleFilled />}
         {...props}
       />
