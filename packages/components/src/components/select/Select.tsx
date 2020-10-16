@@ -199,7 +199,9 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
 
   const renderSingleValue = () => (
     <div className={`${prefix}-item`}>
-      {!input ? extendedOptions[optionHash.get(Array.from(selection)[0])]?.label : null}
+      <span className={`${prefix}-item-text`}>
+        {!input ? extendedOptions[optionHash.get(Array.from(selection)[0])]?.label : null}
+      </span>
     </div>
   );
 
