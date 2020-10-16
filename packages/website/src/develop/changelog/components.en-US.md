@@ -9,6 +9,18 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.10.3
+
+- Select
+  - fix overflow text not elipsised [#319](https://github.com/growingio/gio-design/pull/319)
+  - add value, defaultValue to component's props，allow select fully controlled by passing value. [#317](https://github.com/growingio/gio-design/pull/317)
+- Form
+  - fix stylint [#318](https://github.com/growingio/gio-design/pull/318)
+- DatePiker
+  - add disalbedData to component's props [#314](https://github.com/growingio/gio-design/pull/314/)
+- TimePicker
+  - fix style [#307](https://github.com/growingio/gio-design/pull/307)
+
 ## 20.10.2
 
 - TimePicker
