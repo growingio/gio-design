@@ -9,7 +9,7 @@ nav:
 
 # @gio-design/icons Change Log
 
-## 20.10.3
+## 20.10.4
 
 - 🆕 add [#319](https://github.com/growingio/gio-design/pull/319)
 

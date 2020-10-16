@@ -9,7 +9,7 @@ nav:
 
 # @gio-design/components 更新日志
 
-## 20.10.3
+## 20.10.4
 
 - Select
   - 修复超出长度换行问题 [#319](https://github.com/growingio/gio-design/pull/319)
