@@ -9,7 +9,7 @@ nav:
 
 # @gio-design/components Change Log
 
-## 20.10.3
+## 20.10.4
 
 - Select
   - fix overflow text not elipsised [#319](https://github.com/growingio/gio-design/pull/319)
