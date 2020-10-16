@@ -9,6 +9,20 @@ nav:
 
 # @gio-design/icons 更新日志
 
+## 20.10.3
+
+- 🆕 新增 [#319](https://github.com/growingio/gio-design/pull/319)
+
+  - `EventOutlined`
+  - `FileOutlined`
+  - `RefreshOutlined`
+  - `TagOutlined`
+  - `TimeOutlined`
+
+- 修改 [#319](https://github.com/growingio/gio-design/pull/319)
+
+  - `UserOutlined`
+
 ## 20.10.2
 
 - 🆕 新增 `StopWatchOutlined` [#292](https://github.com/growingio/gio-design/pull/292)

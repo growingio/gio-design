@@ -9,6 +9,18 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.10.3
+
+- Select
+  - 修复超出长度换行问题 [#319](https://github.com/growingio/gio-design/pull/319)
+  - 增加 value, defaultValue 参数，允许通过 value 控制 select. [#317](https://github.com/growingio/gio-design/pull/317)
+- Form
+  - 修复 stylint [#318](https://github.com/growingio/gio-design/pull/318)
+- DatePiker
+  - 新增 disalbedData 方法 [#314](https://github.com/growingio/gio-design/pull/314/)
+- TimePicker
+  - 样式修复 [#307](https://github.com/growingio/gio-design/pull/307)
+
 ## 20.10.2
 
 - TimePicker
