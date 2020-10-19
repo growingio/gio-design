@@ -15915,12 +15915,13 @@ rc-cascader@~1.2.0:
     rc-util "^5.0.1"
     warning "^4.0.1"
 
-rc-checkbox@^2.2.0, rc-checkbox@~2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/rc-checkbox/-/rc-checkbox-2.2.0.tgz#a0ce95c34f05e0eb882664174518cd4baa36dce9"
+rc-checkbox@^2.2.0:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/rc-checkbox/-/rc-checkbox-2.3.1.tgz#2a61bc43017c783bd2e9f1a67553bf8efe7aa4d3"
+  integrity sha512-i290/iTqmZ0WtI2UPIryqT9rW6O99+an4KeZIyZDH3r+Jbb6YdddaWNdzq7g5m9zaNhJvgjf//wJtC4fvve2Tg==
   dependencies:
-    babel-runtime "^6.23.0"
-    classnames "2.x"
+    "@babel/runtime" "^7.10.1"
+    classnames "^2.2.1"
 
 rc-checkbox@~2.0.0:
   version "2.0.3"
@@ -15930,6 +15931,13 @@ rc-checkbox@~2.0.0:
     classnames "2.x"
     prop-types "15.x"
     rc-util "^4.0.4"
+
+rc-checkbox@~2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/rc-checkbox/-/rc-checkbox-2.2.0.tgz#a0ce95c34f05e0eb882664174518cd4baa36dce9"
+  dependencies:
+    babel-runtime "^6.23.0"
+    classnames "2.x"
 
 rc-collapse@~1.9.1:
   version "1.9.3"
