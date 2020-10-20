@@ -27,7 +27,7 @@ export { default as Radio, RadioGroup } from './components/radio';
 export { default as Sign } from './components/sign';
 export { default as Skeleton } from './components/skeleton';
 export { default as Table } from './components/table';
-export { default as TabNav } from './components/tabnav';
+export { default as TabNav } from './components/tab-nav';
 export { default as SearchBar } from './components/search-bar';
 export { default as Tabs, TabPane } from './components/tabs';
 export { default as Tag } from './components/tag';
