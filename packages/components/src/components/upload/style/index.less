@@ -33,6 +33,17 @@
       }
     }
   }
+  &--success-border {
+    & .@{gio-upload-card},
+    & .@{gio-upload-avatar},
+    & .@{gio-upload-drag} {
+      border: 1px solid #dcdfed;
+
+      &:hover .@{gio-upload-actions} {
+        opacity: 1;
+      }
+    }
+  }
 
   &--disabled {
     & .@{gio-upload-card},

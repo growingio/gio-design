@@ -33,6 +33,7 @@ const triggerMap: ITriggerMap = {
 };
 
 const Upload: React.FC<IUploadProps> = ({
+  successBorder = false,
   style,
   prefixCls: customPrefixCls,
   className,
@@ -57,7 +58,11 @@ const Upload: React.FC<IUploadProps> = ({
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('upload', customPrefixCls);
 
-  const rootCls = classnames(className, prefixCls, {
+  const rootCls = classnames(className, prefixCls, successBorder ? {
+    [`${prefixCls}--disabled`]: disabled,
+    [`${prefixCls}--success-border`]: file?.status === STATUS_SUCCESS,
+    [`${prefixCls}--error`]: file?.status === STATUS_ERROR,
+    } : {
     [`${prefixCls}--disabled`]: disabled,
     [`${prefixCls}--success`]: file?.status === STATUS_SUCCESS,
     [`${prefixCls}--error`]: file?.status === STATUS_ERROR,
@@ -94,7 +99,7 @@ const Upload: React.FC<IUploadProps> = ({
       response,
       status: STATUS_SUCCESS,
     };
-
+    
     try {
       if (fileOnSuccess.type.startsWith('image/')) {
         dataUrl = await imageFile2DataUrl(fileOnSuccess);
