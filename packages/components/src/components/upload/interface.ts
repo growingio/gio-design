@@ -65,6 +65,8 @@ export interface IInnerTriggerProps {
 }
 
 export interface IUploadProps<T = any> {
+  // 上传的图片是否显示边框
+  successBorder ?: boolean;
   // upload 组件展现类型
   type?: TUploadType;
   // input 时希望使用 file 还是直接使用 url

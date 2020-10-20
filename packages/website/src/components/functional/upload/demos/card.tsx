@@ -5,7 +5,7 @@ import { props, action } from './commonSets';
 
 export default () => (
   <div>
-    <Upload type="card" style={{ margin: '0 5px' }} action={action} {...props} />
-    <Upload type="card" style={{ margin: '0 5px' }} {...props} />
+    <Upload type="card" style={{ margin: '0 5px' }} action={action} {...props} successBorder />
+    <Upload type="card" style={{ margin: '0 5px' }} {...props} successBorder />
   </div>
 );
