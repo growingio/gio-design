@@ -1,0 +1,59 @@
+@import '../../../stylesheet/index.less';
+
+@component-cls: ~'@{component-prefix}-grid';
+
+.@{component-cls} {
+  display: flex;
+  flex-wrap: var(--gio-grid-wrap, wrap);
+  box-sizing: border-box;
+  flex-direction: var(--gio-grid-direction, row);
+  justify-content: var(--gio-grid-justify, flex-start);
+  align-items: var(--gio-grid-align-items, stretch);
+  align-content: var(--gio-grid-align-content, stretch);
+
+  --gio-grid-gap-size: calc(var(--gio-grid-gap, 0) * 8px);
+
+  &[data-container='true'] {
+    position: relative;
+    width: 100%;
+  }
+
+  .normal-gap {
+    width: calc(100% * var(--gio-grid-span) / 12 - var(--gio-grid-gap-size));
+
+    &[data-gap='true'] {
+      > * {
+        --gio-grid-item-marign: calc(var(--gio-grid-gap-size) / 2);
+        margin: var(--gio-grid-item-marign);
+      }
+    }
+  }
+
+  .css-grid-gap {
+    gap: var(--gio-grid-gap-size);
+    width: calc((100% + var(--gio-grid-gap-size)) / 12 * var(--gio-grid-span) - var(--gio-grid-gap-size));
+
+    &[data-gap='true'] {
+      --gio-grid-item-marign: unset;
+      // > * {
+      //   margin: unset !important;
+      // }
+    }
+  }
+
+  &[data-collapse='false'] {
+    .normal-gap();
+
+    > [data-gap] {
+      .normal-gap();
+    }
+  }
+
+  &[data-collapse='true'] {
+    .css-grid-gap();
+
+    > [data-gap] {
+      .css-grid-gap();
+    }
+  }
+}
