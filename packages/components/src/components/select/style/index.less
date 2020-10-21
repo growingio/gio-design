@@ -2,6 +2,7 @@
 
 @gio-prefix: ~'@{component-prefix}';
 @select-prefix-cls: ~'@{component-prefix}-select';
+@select-input-fontSize: 14px;
 
 .@{select-prefix-cls} {
   position: relative;
@@ -43,6 +44,7 @@
     max-width: 100%;
     margin-top: 7px;
     margin-left: 8px;
+    font-size: @select-input-fontSize;
     &-text {
       overflow: hidden;
       white-space: nowrap;
