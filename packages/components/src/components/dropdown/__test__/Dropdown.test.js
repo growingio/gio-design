@@ -1,12 +1,8 @@
 import React from 'react';
 import Dropdown from '../index';
 import Button from '../../button';
-import { act } from 'react-dom/test-utils';
+import { waitForComponentToPaint } from '../../../utils/test';
 import { mount, render } from 'enzyme';
-
-async function waitForComponentToPaint(wrapper, amount = 500) {
-  await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
-}
 
 describe('Testing dropdown', () => {
   const getDropdown = () => (

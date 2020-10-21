@@ -242,11 +242,10 @@
     }
   }
 
-  &-placeholder &-cell {
-    &:hover {
-      background-color: unset;
-    }
+  &-showHover &-placeholder:hover > &-cell {
+    background-color: unset;
   }
+
   &-wrapper {
     &::after {
       display: block;
