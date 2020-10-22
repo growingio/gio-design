@@ -42,14 +42,17 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
     labelAlign && `${prefixCls}-label-${labelAlign}`
   );
 
-  let labelChild: React.ReactNode = label;
+  let labelChild: React.ReactNode = (
+    <>
+      {label}
+      {colon}
+    </>
+  );
+
   if (isRequired || isOptional) {
     labelChild = (
       <>
-        <span className={`${prefixCls}-label-content`}>
-          {label}
-          {colon}
-        </span>
+        <span className={`${prefixCls}-label-content`}>{labelChild}</span>
         <span className={`${prefixCls}-label-marker`}>{mergedRequiredMarker}</span>
       </>
     );

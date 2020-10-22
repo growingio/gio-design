@@ -29,6 +29,19 @@ describe('<Item />', () => {
     expect(wrapper.find('label').getElement().props.htmlFor).toEqual('password');
   });
 
+  it('should render a colon', () => {
+    const wrapper = mount(
+      <Item name="username" label="username" colon>
+        <input type="number" />
+      </Item>
+    );
+
+    expect(wrapper.find('label').text()).toBe('username：');
+
+    wrapper.setProps({ required: true });
+    expect(wrapper.find('label').text()).toBe('username：*');
+  });
+
   it('accept render props', () => {
     const wrapper = mount(<Item>{() => <input type="text" />}</Item>);
 

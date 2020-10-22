@@ -6,7 +6,7 @@ import React from 'react';
 
 import { Form, Button, Input } from '@gio-design/components';
 
-const { Item, useForm, FormProvider } = Form;
+const { Item, useForm } = Form;
 
 interface Props {
   name: string;

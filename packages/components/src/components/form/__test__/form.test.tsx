@@ -36,13 +36,14 @@ describe('<Form />', () => {
 
   it('render formItem', () => {
     const wrapper = mount(
-      <Form>
-        <Item>
+      <Form colon>
+        <Item label="username">
           <input type="text" />
         </Item>
       </Form>
     );
     expect(wrapper.find('.gio-field input')).toHaveLength(1);
+    expect(wrapper.find('.gio-field label').text()).toBe('username：');
   });
 
   it('can validate form field', async function testfn() {
@@ -97,5 +98,7 @@ describe('<Form />', () => {
     );
 
     wrapper.find('#form1 input').simulate('change', { target: { value: '123' } });
+
+    expect(wrapper.find('#form1 input').prop('value')).toBe('123');
   });
 });
