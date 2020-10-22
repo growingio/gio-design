@@ -30,7 +30,7 @@ const Grid: React.FC<GridProps> = (props: React.PropsWithChildren<GridProps>) =>
       justify,
       alignItems,
       alignContent,
-      span: isNumber(span) ? clip(0, 12, span) : span,
+      span: isNumber(span) ? clip(0, 12, span as number) : span,
       gap,
       wrap,
     },

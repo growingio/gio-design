@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import Grid from '..';
 
-let container = null as HTMLDivElement;
+let container: HTMLDivElement;
 beforeEach(() => {
   // 创建一个 DOM 元素作为渲染目标
   container = document.createElement('div');
@@ -14,7 +14,7 @@ afterEach(() => {
   // 退出时进行清理
   unmountComponentAtNode(container);
   container.remove();
-  container = null;
+  container = (undefined as unknown) as HTMLDivElement;
 });
 
 describe('<Grid />', () => {

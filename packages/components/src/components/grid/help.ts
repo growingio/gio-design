@@ -1,4 +1,5 @@
 import isNil from 'lodash/isNil';
+import isNaN from 'lodash/isNaN';
 import keys from 'lodash/keys';
 import kebabCase from 'lodash/kebabCase';
 
@@ -11,14 +12,21 @@ export const getAttrName = (cls: string, prefix?: string): string => {
   return `${prefix}-${kebabCase(cls)}`;
 };
 
-interface ObjType<T = unknown> {
-  [key: string]: T;
+interface ObjType {
+  [key: string]: undefined | number | string | boolean;
 }
 
-export const dataMap = <T extends ObjType = ObjType>(obj: T, prefixCls: string): ObjType => {
-  const cls: ObjType = {};
+type Ret<T> = {
+  [P in keyof T]: string | boolean;
+};
+
+const falsely = <T>(o: T) => isNil(o) || isNaN(o);
+
+export const dataMap = <T extends ObjType = ObjType>(obj: T, prefixCls: string): Ret<T> => {
+  const cls = {} as Ret<T>;
   keys(obj).forEach((key) => {
-    cls[getAttrName(key, prefixCls)] = isNil(obj[key]) ? false : obj[key].toString();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    cls[getAttrName(key, prefixCls) as keyof Ret<T>] = falsely(obj[key]) ? false : obj[key]!.toString();
   });
 
   return cls;
@@ -28,4 +36,4 @@ export const clip = (min: number, max: number, value: number): number => {
   return Math.max(min, Math.min(max, value));
 };
 
-export const isNumber = (n: unknown): boolean => typeof n === 'number';
+export const isNumber = <T = unknown>(n: T): boolean => typeof n === 'number';

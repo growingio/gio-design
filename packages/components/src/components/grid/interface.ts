@@ -5,7 +5,7 @@ interface ComponentProps {
   style?: React.CSSProperties;
 }
 
-export interface GridProps<C extends ElementType = ElementType<unknown>> extends ComponentProps {
+export interface GridProps<C extends ElementType = ElementType> extends ComponentProps {
   prefixCls?: string;
   component?: C;
 

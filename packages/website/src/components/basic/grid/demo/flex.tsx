@@ -12,7 +12,7 @@ const options = {
   alignItems: ['flex-start', 'center', 'flex-end', 'stretch', 'baseline'],
   alignContent: ['stretch', 'center', 'flex-start', 'flex-end', 'space-between', 'space-around'],
   wrap: ['wrap', 'nowrap', 'wrap-reverse'],
-};
+} as const;
 
 type Options = typeof options;
 type OptionKey = keyof Options;
@@ -25,7 +25,7 @@ const initState = {} as InitState;
 
 optionKeys.forEach((key) => {
   const [value] = options[key];
-  initState[key] = value;
+  (initState[key] as InitState[OptionKey]) = value;
 });
 
 const Base = (): JSX.Element => {
@@ -48,7 +48,7 @@ const Base = (): JSX.Element => {
           {optionKeys.map((key) => (
             <Item key={key} name={key} label={`${key}:`}>
               <RadioGroup>
-                {options[key].map((d) => (
+                {(options[key] as readonly string[]).map((d) => (
                   <Radio key={d} value={d}>
                     {d}
                   </Radio>
