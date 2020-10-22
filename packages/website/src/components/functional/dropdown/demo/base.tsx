@@ -4,7 +4,7 @@ import '@gio-design/components/es/components/dropdown/style/index.css';
 
 export default () => (
   <Dropdown
-    overlay={
+    overlay={(
       <div
         style={{
           width: 294,
@@ -19,7 +19,7 @@ export default () => (
       >
         内容区域
       </div>
-    }
+    )}
     placement="bottomRight"
   >
     <Button type="secondary">更多操作</Button>
