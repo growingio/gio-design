@@ -6,7 +6,7 @@ import './style.less';
 
 const Base = (): JSX.Element => {
   return (
-    <Grid collapse container gap={1} className="box">
+    <Grid collapse container gap={1} className="demo">
       <Grid span={12}>span=12</Grid>
       <Grid span={3} gap={1} collapse container>
         <Grid span={12}>span=12</Grid>

@@ -4,11 +4,11 @@ import kebabCase from 'lodash/kebabCase';
 
 export default {};
 
-export const getAttrName = (cls: string, prefixCls?: string): string => {
-  if (!prefixCls) {
-    return cls;
-  }
-  return `${prefixCls}-${kebabCase(cls)}`;
+export const getAttrName = (cls: string, prefix?: string): string => {
+  // if (!prefix) {
+  //   return cls;
+  // }
+  return `${prefix}-${kebabCase(cls)}`;
 };
 
 interface ObjType<T = unknown> {
