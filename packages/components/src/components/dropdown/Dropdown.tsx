@@ -1,11 +1,12 @@
 import React, { useContext, cloneElement } from 'react';
+import { isFunction } from 'lodash';
 import Tooltip from '../tooltip';
 import { DropdownProps } from './interface';
 import { ConfigContext } from '../config-provider';
 import useControlledState from '../../utils/hooks/useControlledState';
-import { isFunction } from 'lodash';
 
 const Dropdown = (props: DropdownProps) => {
+  const placementList = ['top','bottom','topLeft','topRight','bottomLeft','bottomRight'];
   const {
     children,
     prefixCls: customizePrefixCls,
@@ -33,7 +34,7 @@ const Dropdown = (props: DropdownProps) => {
     <Tooltip
       prefixCls={prefixCls}
       trigger={trigger}
-      placement={placement}
+      placement={placementList.includes(placement) ? placement : 'bottom'}
       visible={controlledVisible}
       overlay={getOverlay()}
       onVisibleChange={(_visible) => {
