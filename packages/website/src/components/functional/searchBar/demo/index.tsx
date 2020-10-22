@@ -5,5 +5,15 @@ import '@gio-design/components/es/components/search-bar/style/index.less';
 export default () => {
   const [value, setValue] = React.useState('');
 
-  return <SearchBar showStorage showClear allowClearStorage value={value} onChange={setValue} id="demo1" />;
+  return (
+    <SearchBar
+      showStorage
+      showClear
+      allowClearStorage
+      value={value}
+      onChange={setValue}
+      id="demo1"
+      size="medium"
+    />
+  );
 };

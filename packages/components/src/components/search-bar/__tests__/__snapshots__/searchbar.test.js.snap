@@ -29,7 +29,7 @@ initialize {
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon gio-searchbar-suffix-search",
+                    "class": "gio-icon gio-searchbar-suffix-search-large",
                   },
                   "children": Array [
                     Object {
@@ -304,7 +304,7 @@ initialize {
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-icon gio-searchbar-suffix-search",
+                  "class": "gio-icon gio-searchbar-suffix-search-large",
                 },
                 "children": Array [
                   Object {
