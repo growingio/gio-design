@@ -6,7 +6,7 @@ import './style.less';
 
 const Base = (): JSX.Element => {
   return (
-    <Grid className="box">
+    <Grid className="demo">
       <Grid className="box" span={12}>
         span=12
       </Grid>

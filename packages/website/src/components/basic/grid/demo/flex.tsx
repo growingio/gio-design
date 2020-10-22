@@ -11,17 +11,17 @@ const options = {
   justify: ['flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly'],
   alignItems: ['flex-start', 'center', 'flex-end', 'stretch', 'baseline'],
   alignContent: ['stretch', 'center', 'flex-start', 'flex-end', 'space-between', 'space-around'],
-  wrap: ['nowrap', 'wrap', 'wrap-reverse'],
+  wrap: ['wrap', 'nowrap', 'wrap-reverse'],
 };
 
-type OptionKey = keyof typeof options;
-const optionKeys = Object.keys(options) as OptionKey[];
+type Options = typeof options;
+type OptionKey = keyof Options;
+const optionKeys = Object.keys(options) as Array<OptionKey>;
 
-interface InitState {
-  [key: string]: string;
-}
-
-const initState: InitState = {};
+type InitState = {
+  [P in OptionKey]: Options[P][number];
+};
+const initState = {} as InitState;
 
 optionKeys.forEach((key) => {
   const [value] = options[key];
@@ -30,11 +30,11 @@ optionKeys.forEach((key) => {
 
 const Base = (): JSX.Element => {
   const [formData, setFormData] = useState(initState);
-  const onValuesChange = (value: any) => setFormData({ ...formData, ...value });
+  const onValuesChange = (value: Partial<InitState>) => setFormData({ ...formData, ...value });
 
   return (
-    <div>
-      <Grid container gap={1} {...formData} className="box">
+    <div className="flex-props">
+      <Grid container gap={1} {...(formData as unknown)} className="box demo">
         <Grid span={12}>span=12</Grid>
         <Grid span={3}>span=3</Grid>
         <Grid span={3}>span=6</Grid>
@@ -48,7 +48,7 @@ const Base = (): JSX.Element => {
           {optionKeys.map((key) => (
             <Item key={key} name={key} label={`${key}:`}>
               <RadioGroup>
-                {options[key as OptionKey].map((d) => (
+                {options[key].map((d) => (
                   <Radio key={d} value={d}>
                     {d}
                   </Radio>
