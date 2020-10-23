@@ -22,8 +22,8 @@ export interface IFooterProps {
   closeButtonProps?: ButtonProps;
   okText?: string;
   closeText?: string;
-  onOk?: ((e: React.MouseEvent<HTMLElement>) => void) | ((e: React.MouseEvent<HTMLElement>) => Promise<unknown>);
-  onClose?: (e: React.MouseEvent<HTMLElement>) => void;
+  onOk?: (e: React.MouseEvent<HTMLElement>) => void | Promise<unknown>;
+  onClose?: (e: React.MouseEvent<HTMLElement>) => void | Promise<unknown>;
   useOk: boolean;
   useClose: boolean;
 }
@@ -71,7 +71,7 @@ export interface IStepModalNodeRenderProps {
   pop: TStepNoParamFn;
 }
 
-export type TStepModalNodeRender = ReactNode | ((renderProps: IStepModalNodeRenderProps) => ReactNode);
+export type TModalNodeRender = ReactNode | ((renderProps: IStepModalNodeRenderProps) => ReactNode);
 
 export interface IStep {
   // 当前 Step 的唯一标识
@@ -87,11 +87,11 @@ export interface IStep {
   // 上一步 回调
   onBack?: TStepNoParamFn;
   // 当前步骤 Modal 的 Title
-  title?: TStepModalNodeRender;
+  title?: TModalNodeRender;
   // 当前步骤 Modal 的 Body
-  content?: TStepModalNodeRender;
+  content?: TModalNodeRender;
   // 当前步骤 Modal 的 Footer
-  footer?: TStepModalNodeRender;
+  footer?: TModalNodeRender;
   // 同 Modal.footer
   additionalFooter?: ReactNode;
   // 下一步按钮的 props
@@ -115,4 +115,41 @@ export interface IStepMap {
 export interface IStepModalProps extends IModalProps {
   steps?: IStep[];
   onStepChange?: (step: string) => void;
+}
+
+export type TModalStaticFuncType = 'confirm' | 'info' | 'success' | 'warn' | 'error';
+
+export interface IModalStaticFuncConfig extends Omit<IModalProps, 'visible' | 'onOk' | 'onClose' | 'pending'> {
+  content?: ReactNode;
+  // 函数式调用类型
+  type?: TModalStaticFuncType;
+  // 函数式调用时的前缀 icon
+  icon?: ReactNode;
+  // 是否显示取消按钮
+  showClose?: boolean;
+  onOk?: () => void | Promise<unknown>;
+  onClose?: () => void | Promise<unknown>;
+}
+
+export interface IModalStaticFuncReturn {
+  destroy: () => void;
+  update: (config: IModalStaticFuncConfig) => void;
+}
+
+export interface ICalloutModalProps extends IModalStaticFuncConfig {
+  visible: boolean;
+  close: (...args: any[]) => void;
+  afterClose?: () => void;
+}
+
+export interface IModalStaticFunc {
+  (config: IModalStaticFuncConfig): IModalStaticFuncReturn;
+}
+
+export interface IModalStaticFunctions {
+  info: IModalStaticFunc;
+  success: IModalStaticFunc;
+  error: IModalStaticFunc;
+  warn: IModalStaticFunc;
+  confirm: IModalStaticFunc;
 }

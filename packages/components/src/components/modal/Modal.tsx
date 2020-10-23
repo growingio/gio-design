@@ -84,8 +84,9 @@ const Modal: React.FC<IModalProps> = ({
         prefixCls={prefix}
         className={modalCls}
         wrapClassName={wrapperCls}
+        closable={title !== false}
         closeIcon={<Close className={closeCls} />}
-        title={<Title onBack={onBack} useBack={useBack} title={title} />}
+        title={title !== false && <Title onBack={onBack} useBack={useBack} title={title} />}
         footer={
           useFooter && (
             <Footer

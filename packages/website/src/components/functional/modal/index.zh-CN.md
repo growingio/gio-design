@@ -32,6 +32,14 @@ group:
 
 <code src='./demo/branchStepModal.tsx' />
 
+### 函数式调用
+
+<code src='./demo/calllout.tsx' title='函数式调用确认 Modal' desc='使用 `Modal.confirm()` 可以快捷地弹出确认框。`onClose`/`onOk` 返回一个 `Promise` 可以延迟关闭。'/>
+
+<code src='./demo/functionCallModal.tsx' title='信息提示' desc='各种类型的信息提示，默认只提供一个按钮用于关闭。'/>
+
+<code src='./demo/reference.tsx' title='返回引用' />
+
 ## 参数说明
 
 ### Modal
@@ -80,18 +88,36 @@ group:
 
 #### IStep
 
-| 参数            | 说明                                     | 类型            | 默认值 | 必填 |
-| --------------- | ---------------------------------------- | --------------- | ------ | ---- |
-| key             | 当前 Step 的唯一标识                     | string          | -      | 是   |
-| return          | 当前 Step 的上一步                       | string          | -      | 是   |
-| firstNextInTier | 多分支路径下，当前步骤是否是默认的下一步 | boolean         | -      | 否   |
-| title           | 当前步骤 Modal 的 Title                  | React.ReactNode | -      | 否   |
-| content         | 当前步骤 Modal 的 Body                   | React.ReactNode | -      | 否   |
-| footer          | 当前步骤 Modal 的 Footer                 | React.ReactNode | -      | 否   |
-| onNext          | 下一步                                   | `() => void`    | -      | 否   |
-| onBack          | 上一步                                   | `() => void`    | -      | 否   |
-| additionalFooter          | 除了 `OkButton` 及 `CloseButton`外的自定义 Footer | React.ReactNode   | -      | 否   |
-| nextButtonProps          | 传递给下一步按钮的 props                          | ButtonProps      | -      | 否   |
-| backButtonProps          | 传递给上一步的 props                          | ButtonProps      | -      | 否   |
-| nextText          | 传递给下一步按钮的显示文案                                    |  string    | -      | 否   |
-| backText          | 传递给上一步按钮的显示文案                                    |  string    | -      | 否   |
+| 参数             | 说明                                              | 类型            | 默认值 | 必填 |
+| ---------------- | ------------------------------------------------- | --------------- | ------ | ---- |
+| key              | 当前 Step 的唯一标识                              | string          | -      | 是   |
+| return           | 当前 Step 的上一步                                | string          | -      | 是   |
+| firstNextInTier  | 多分支路径下，当前步骤是否是默认的下一步          | boolean         | -      | 否   |
+| title            | 当前步骤 Modal 的 Title                           | React.ReactNode | -      | 否   |
+| content          | 当前步骤 Modal 的 Body                            | React.ReactNode | -      | 否   |
+| footer           | 当前步骤 Modal 的 Footer                          | React.ReactNode | -      | 否   |
+| onNext           | 下一步                                            | `() => void`    | -      | 否   |
+| onBack           | 上一步                                            | `() => void`    | -      | 否   |
+| additionalFooter | 除了 `OkButton` 及 `CloseButton`外的自定义 Footer | React.ReactNode | -      | 否   |
+| nextButtonProps  | 传递给下一步按钮的 props                          | ButtonProps     | -      | 否   |
+| backButtonProps  | 传递给上一步的 props                              | ButtonProps     | -      | 否   |
+| nextText         | 传递给下一步按钮的显示文案                        | string          | -      | 否   |
+| backText         | 传递给上一步按钮的显示文案                        | string          | -      | 否   |
+
+#### Modal.staticMethod()
+
+挂载在 Modal 下的静态方法包括：
+
+- `Modal.confirm`
+- `Modal.info`
+- `Modal.success`
+- `Modal.warn`
+- `Modal.error`
+
+函数参数 `IModalStaticFuncConfig` 继承自 `Modal Props` ， 除去 `visible`, `pending` 不可用，新增配置项如下：
+
+| 参数      | 说明                  | 类型            | 默认值 | 必填 |
+| --------- | --------------------- | --------------- | ------ | ---- |
+| content   | Modal 内容            | React.ReactNode | -      | 否   |
+| icon      | Modal Title 中的 Icon | React.ReactNode | -      | 否   |
+| showClose | 是否显示关闭按钮      | React.ReactNode | -      | 否   |
