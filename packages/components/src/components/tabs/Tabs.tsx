@@ -1,9 +1,10 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useContext, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
 import { isNil } from 'lodash';
 import { ConfigContext } from '../config-provider';
-import TabNav from '../tabnav';
+import TabNav from '../tab-nav';
 import TabPane from './TabPane';
 import { TabProps, TabPaneProps } from './interface';
 
@@ -34,13 +35,11 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
     const _tabItem: JSX.Element[] = [];
     const _tabPane = toArray(children).map((node: React.ReactElement<TabPaneProps>) => {
       if (React.isValidElement(node) && node.type === TabPane) {
-        const {
-          tab, className: paneClassName, disabled, style: paneStyle, ...restProps
-        } = node.props;
+        const { tab, className: paneClassName, disabled, style: paneStyle, ...restProps } = node.props;
         _tabItem.push(
           <TabNav.Item key={node.key} disabled={disabled}>
             {tab}
-          </TabNav.Item>,
+          </TabNav.Item>
         );
         return (
           <TabPane

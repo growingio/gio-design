@@ -1,8 +1,9 @@
 import React from 'react';
 import { TabNav } from '@gio-design/components';
-import '@gio-design/components/es/components/tabnav/style/index.css';
+import '@gio-design/components/es/components/tab-nav/style/index.css';
 import './index.less';
-const Item = TabNav.Item;
+
+const { Item } = TabNav;
 
 const renderItem = () => (
   <>
