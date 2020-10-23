@@ -9,6 +9,20 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.10.5
+
+- Alert
+  - Unit test of alert component is added [#339](https://github.com/growingio/gio-design/pull/339)
+- Dropdown
+  - Fixed the placement direction problem in the Dropdown component. From 12 directions to 6 directions, the default direction is down [#333](https://github.com/growingio/gio-design/pull/333/)
+- Upload
+  - An optional parameter successBorder is added to the upload component to control whether the border is displayed after the image is uploaded successfully. The default value is false [#331](https://github.com/growingio/gio-design/pull/331)
+- Select
+  - The text size in the input selection box of the select component is defined [#337](https://github.com/growingio/gio-design/pull/337)
+- Components
+  - change folder name from camel case to kebab case [#329](https://github.com/growingio/gio-design/pull/329)
+
+
 ## 20.10.4
 
 - Select

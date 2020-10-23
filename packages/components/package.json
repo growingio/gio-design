@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/components",
-  "version": "20.10.4",
+  "version": "20.10.5",
   "description": "GrowingIO Design components",
   "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
   "module": "./es/index.js",
