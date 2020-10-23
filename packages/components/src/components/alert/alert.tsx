@@ -5,7 +5,6 @@ import { CheckCircleFilled, WarningFilled, InformationFilled, CloseCircleFilled,
 
 interface AlertProps {
   afterClose?: any;
-  // banner?: boolean;
   closeable?: boolean;
   colseText?: string | ReactNode;
   description?: string | ReactNode;

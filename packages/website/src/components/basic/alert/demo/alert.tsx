@@ -7,6 +7,6 @@ export default () => {
     <Alert
       type="success"
       message="Success Text"
-   />
+    />
   );
 };
