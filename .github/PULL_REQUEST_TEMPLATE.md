@@ -1,11 +1,3 @@
----
-name: Release
-about: Create new version and release
-title: ''
-labels: '📃 documentation'
-assignees: ''
----
-
 ## @gio-design/package@version
 
 - 组件 1

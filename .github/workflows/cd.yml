@@ -59,6 +59,22 @@ jobs:
           key: packages-${{ github.sha }}
       - name: Build packages
         run: yarn build
+  release:
+    name: Create release
+    if: ${{ startsWith(github.event.head_commit.message, 'docs(release)') }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: ${{ github.event.pull_request.body }}
+          draft: false
+          prerelease: false
   other:
     name: Upload test coverage and build website
     needs: build
