@@ -10,6 +10,7 @@ export const toArray = <T>(obj: T | T[] | false): T[] => {
 
 export const hasValidName = (name?: NamePath): boolean => {
   if (name === null) {
+    // eslint-disable-next-line no-console
     console.warn('Form.Item', '`null` is passed as `name` property');
   }
   return !(name === undefined || name === null);
