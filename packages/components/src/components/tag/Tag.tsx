@@ -19,7 +19,7 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
     persistCloseIcon = true,
     className,
     customizePrefixCls,
-    ...restProps
+    style,
   } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefix = getPrefixCls('tag', customizePrefixCls);
@@ -44,8 +44,9 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
         classnames({ [`${prefix}-closable-disabled`]: disabled }),
         className
       )}
+      aria-hidden="true"
       onClick={onCloseClick}
-      {...restProps}
+      style={style}
     >
       <span className={`${prefix}-label`}>{children}</span>
       {closable && !disabled ? (

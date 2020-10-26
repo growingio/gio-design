@@ -10,4 +10,5 @@ export interface TagProps {
   customizePrefixCls?: string;
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
