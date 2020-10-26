@@ -7,7 +7,7 @@ import { UploadPrefixClsContext } from '../UploadContext';
 import Preview from '../Preview';
 import Actions from '../Actions';
 
-const CardTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, onRemove }) => {
+const CardTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, onRemove }: ITriggerProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
   const cls = classnames(triggerProps?.className, `${prefixCls}__card`);
 

@@ -8,9 +8,7 @@ import Preview, { PreviewForNotImage } from '../Preview';
 import Actions from '../Actions';
 import { isOnlyAcceptImg, isImageFile } from '../utils';
 
-const DragTrigger: React.FC<ITriggerProps> = ({
-  triggerProps, file, accept, onRemove,
-}) => {
+const DragTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, accept, onRemove }: ITriggerProps) => {
   const [dragState, setDragState] = useState('');
   const prefixCls = useContext(UploadPrefixClsContext);
   const cls = classnames(triggerProps?.className, `${prefixCls}__drag`, {

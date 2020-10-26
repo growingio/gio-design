@@ -7,7 +7,13 @@ import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import Preview from '../Preview';
 import { UploadPrefixClsContext } from '../UploadContext';
 
-const InputTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, inputUploadType, onRemove, onInputUpload }) => {
+const InputTrigger: React.FC<ITriggerProps> = ({
+  triggerProps,
+  file,
+  inputUploadType,
+  onRemove,
+  onInputUpload,
+}: ITriggerProps) => {
   const [url, setUrl] = useState<string>('');
   const prefixCls = useContext(UploadPrefixClsContext);
   const inputWrapperCls = classnames(`${prefixCls}__input`);
@@ -19,12 +25,11 @@ const InputTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, inputUpload
 
   const handlePreviewClick = () => onRemove();
 
-  /* eslint-disable */
   return (
     <span className={inputWrapperCls}>
       {hideInput ? (
         <Loading loading={file?.status === STATUS_UPLOADING} indicator={<LoadingOutlined rotating />} title={false}>
-          <span className={inputPreviewCls} onClick={handlePreviewClick}>
+          <span className={inputPreviewCls} onClick={handlePreviewClick} aria-hidden="true">
             {file?.status === STATUS_SUCCESS && <Preview file={file} />}
             <span>{file?.name ?? 'Web Image'}</span>
           </span>
