@@ -9,6 +9,19 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.10.5
+
+- Grid
+  - 🆕 新增Grid组件 [#338](https://github.com/growingio/gio-design/pull/338)
+- Form
+  - 🐛修复colon不渲染的问题 [#340](https://github.com/growingio/gio-design/pull/340)
+- Dropdown
+  - 💄placement由12个方向改为只有上下6个方向可选，默认方向为下 [#333](https://github.com/growingio/gio-design/pull/333/)
+- Upload
+  - 🆕增加一个可选参数successBorder，控制图片上传成功后边框是否显示 [#331](https://github.com/growingio/gio-design/pull/331)
+- Select
+  - 💄定义了select组件中input选择框内的文字尺寸 [#337](https://github.com/growingio/gio-design/pull/337)
+
 ## 20.10.4
 
 - Select
