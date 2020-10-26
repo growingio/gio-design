@@ -101,4 +101,18 @@ describe('<Form />', () => {
 
     expect(wrapper.find('#form1 input').prop('value')).toBe('123');
   });
+
+  it('should transparent colon and requiredMark to Form.Item', () => {
+    const wrapper = mount(
+      <Form colon requiredMark>
+        <Item colon className="test1" label="label1" required />
+        <Item colon className="test2" label="label2" required />
+        <Item colon className="test3" label="label3" />
+      </Form>
+    );
+
+    expect(wrapper.find('.test1 label').text()).toBe('label1：*');
+    expect(wrapper.find('.test2 label').text()).toBe('label2：*');
+    expect(wrapper.find('.test3 label').text()).toBe('label3：');
+  });
 });
