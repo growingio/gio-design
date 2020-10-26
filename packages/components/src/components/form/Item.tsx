@@ -38,7 +38,6 @@ export interface Props extends Omit<FieldProps, 'children'> {
 
 const Item: React.FC<Props> = (props: Props) => {
   const {
-    layout,
     requiredMark,
     name: formName,
     labelWidth: _labelWidth,
@@ -101,7 +100,7 @@ const Item: React.FC<Props> = (props: Props) => {
           requiredMark={requiredMark}
           marker={marker}
           htmlFor={htmlFor}
-          colon={colon && layout === 'horizontal' ? '：' : ''}
+          colon={colon ? '：' : ''}
         />
         <ItemControl
           prefixCls={prefixCls}
