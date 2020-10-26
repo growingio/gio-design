@@ -2,6 +2,7 @@
 
 exports[`<Tag /> renders <Tag /> components 1`] = `
 <span
+  aria-hidden="true"
   className="gio-tag gio-tag-size-medium gio-tag-type-normal"
   onClick={[Function]}
 >
