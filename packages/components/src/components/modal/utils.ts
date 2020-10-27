@@ -1,4 +1,4 @@
-import { IStep, IStepMap, IStepInner, TStepModalNodeRender, IStepModalNodeRenderProps } from './interface';
+import { IStep, IStepMap, IStepInner, TModalNodeRender, IStepModalNodeRenderProps } from './interface';
 
 export const stepArray2Map = (steps: IStep[]): { stepMap: IStepMap; firstStep: string } => {
   const stepsInnerArray: IStepInner[] = [];
@@ -27,7 +27,7 @@ export const stepArray2Map = (steps: IStep[]): { stepMap: IStepMap; firstStep: s
 };
 
 export const clarifyRender = (
-  render: TStepModalNodeRender,
+  render: TModalNodeRender,
   renderProps: IStepModalNodeRenderProps,
   fallback: React.ReactNode = ''
 ): React.ReactNode => {

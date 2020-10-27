@@ -18,6 +18,10 @@ export {
   TModalSize,
   IStep,
   TStepChange,
+  IModalStaticFuncConfig,
+  IModalStaticFuncReturn,
+  TModalStaticFuncType,
+  IModalStaticFunc,
 } from './components/modal';
 export { default as Pagination } from './components/pagination';
 export { default as Popconfirm } from './components/popconfirm';
