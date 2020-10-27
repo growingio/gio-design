@@ -71,9 +71,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: ${{ github.event.pull_request.body }}
-          draft: false
+          release_name: gio-design@${{ github.ref }}
+          body: ${{ github.event.head_commit.message }}
+          draft: true
           prerelease: false
   other:
     name: Upload test coverage and build website
