@@ -2,7 +2,7 @@
 
 exports[`Testing Radio should render correctly 1`] = `
 <label
-  className="gio-customized-radio gio-radio__wrapper gio-radio__wrapper--disabled"
+  className="gio-customized-radio gio-radio__wrapper gio-radio__wrapper--middle gio-radio__wrapper--disabled"
 >
   <span
     className="gio-radio gio-radio-checked gio-radio-disabled"
@@ -21,7 +21,9 @@ exports[`Testing Radio should render correctly 1`] = `
       className="gio-radio-inner"
     />
   </span>
-  <span>
+  <span
+    className="gio-customized-radio gio-radio__label"
+  >
     Test
   </span>
 </label>
