@@ -23,7 +23,16 @@ export { default as Pagination } from './components/pagination';
 export { default as Popconfirm } from './components/popconfirm';
 export { default as Popover } from './components/popover';
 export { default as Progress } from './components/progress';
-export { default as Radio, RadioGroup } from './components/radio';
+export {
+  default as Radio,
+  RadioGroup,
+  RadioButton,
+  IRadioProps,
+  IRadioGroupProps,
+  TRadioGroupOption,
+  IRadioChangeEvent,
+  IRadioChangeEventTarget,
+} from './components/radio';
 export { default as Sign } from './components/sign';
 export { default as Skeleton } from './components/skeleton';
 export { default as Table } from './components/table';

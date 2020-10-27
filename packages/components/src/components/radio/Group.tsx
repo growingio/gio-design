@@ -1,13 +1,22 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-console */
+import React, { useState, useEffect, useContext } from 'react';
 import classnames from 'classnames';
 import usePrevious from '../../utils/hooks/usePrevious';
 import filterChildren from '../../utils/filterChildren';
+import { ConfigContext } from '../config-provider';
 import Radio from './Radio';
+import RadioButton from './RadioButton';
 import { RadioGroupProvider } from './context';
 import { IRadioGroupProps, IRadioChangeEvent } from './interface';
 
+const RadioTypeMap = {
+  radio: Radio,
+  button: RadioButton,
+};
+
 const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
   const {
+    prefixCls: customPrefixCls,
     className,
     name,
     direction = 'horizontal',
@@ -17,7 +26,12 @@ const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
     onChange,
     children,
     options,
+    size,
+    buttonStyle = 'outlined',
+    radioType = 'radio',
   } = props;
+  const { getPrefixCls } = useContext(ConfigContext);
+
   /**
    * 首次渲染完成前 defaultValue 会默认覆盖 value
    */
@@ -53,7 +67,7 @@ const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
   const getChildrenRadios = () =>
     filterChildren(children, (child) => {
       if (React.isValidElement(child)) {
-        if (typeof child.type !== 'object' || (child.type as typeof Radio).componentType !== 'GIO_RADIO') {
+        if (typeof child.type !== 'object' || !(child.type as typeof Radio).componentType.startsWith('GIO_RADIO')) {
           console.error(
             'Warning: Children wrapped by RadioGroup component should be a Radio. Please check the Radio Component in your RadioGroup.'
           );
@@ -72,27 +86,33 @@ const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
 
   const radioRender = () => {
     let renderedChildren: React.ReactNodeArray = [];
+    const RadioComponent = RadioTypeMap[radioType];
     if (options && options.length > 0) {
       renderedChildren = options
         .filter((_) => !!_)
         .map((opt) => {
           if (typeof opt === 'string') {
             return (
-              <Radio key={`gio-radio-option-${opt}`} disabled={disabled} value={opt} checked={selectedValue === opt}>
+              <RadioComponent
+                key={`gio-radio-option-${opt}`}
+                disabled={disabled}
+                value={opt}
+                checked={selectedValue === opt}
+              >
                 {opt}
-              </Radio>
+              </RadioComponent>
             );
           }
 
           return (
-            <Radio
+            <RadioComponent
               key={`gio-radio-option-${opt.value}`}
               disabled={disabled || opt.disabled}
               value={opt.value}
               checked={selectedValue === opt.value}
             >
               {opt.label}
-            </Radio>
+            </RadioComponent>
           );
         });
     }
@@ -104,14 +124,24 @@ const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
     return renderedChildren;
   };
 
-  const wrapperCls = classnames(className, 'gio-radio__group', `gio-radio__group--${direction}`, {
-    'gio-radio__group--disabled': disabled,
-  });
+  const prefixCls = getPrefixCls('radio', customPrefixCls);
+  const radioGroupClsBase = `${prefixCls}__group`;
+  const wrapperCls = classnames(
+    className,
+    radioGroupClsBase,
+    `${radioGroupClsBase}--${direction}`,
+    `${radioGroupClsBase}--${buttonStyle}`,
+    {
+      [`${radioGroupClsBase}--disabled`]: disabled,
+    }
+  );
 
   return (
     <div className={wrapperCls}>
       <RadioGroupProvider
         value={{
+          size,
+          prefixCls,
           disabled,
           name,
           value: selectedValue,

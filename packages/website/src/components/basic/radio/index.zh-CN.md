@@ -32,6 +32,14 @@ group:
 
 <code src='./demos/radioGroupFilter.tsx' title='Radio.Group - valid' desc='不合法的 options 与 Child 将会被自动剔除' />
 
+### 按钮样式单选框
+
+<code src='./demos/radioButton.tsx'/>
+
+<code src='./demos/radioButtonSize.tsx' title='按钮 Radio 大小' desc='large/middle/small 三种组合，可以和表单输入框进行对应配合。' />
+
+<code src='./demos/radioButtonStyle.tsx'/>
+
 ## API
 
 ### Radio
@@ -47,6 +55,14 @@ group:
 | prefixCls      | 替代 Radio 组件 class 的 gio-radio 前缀 | string                        | -      |
 | name           | input[type="radio"] 的 name 属性        | string                        | -      |
 
+### RadioButton
+
+> RadioButton 其他 props 继承自 Radio。因此不再重复说明。
+
+| 参数 | 说明        | 类型                           | 默认值   |
+| ---- | ----------- | ------------------------------ | -------- |
+| size | button 尺寸 | `small` \| `middle` \| `large` | `middle` |
+
 ### RadioGroup
 
 > 在使用 RadioGroup 时可以混用 options 配置与内嵌 Radio，同时 null, undefined 以及其他类型的 DOM 与组件将被过滤。
@@ -55,6 +71,7 @@ group:
 
 | 参数         | 说明                                                   | 类型                              | 默认值     |
 | ------------ | ------------------------------------------------------ | --------------------------------- | ---------- |
+| prefixCls    | 替代 RadioGroup 组件 class 的 gio-radio 前缀           | string                            | -          |
 | className    | 自定义 className                                       | string                            | -          |
 | defaultValue | 默认选中的选项                                         | string                            | -          |
 | disabled     | 整组失效                                               | boolean                           | false      |  |
@@ -63,3 +80,6 @@ group:
 | value        | 指定选中的选项                                         | string                            | \[]        |
 | onChange     | 变化时回调函数                                         | Function(checkedRadio)            | -          |
 | direction    | RadioGroup 的排列方向为水平还是垂直                    | 'horizontal'                      | 'vertical' | 'horizontal' |
+| radioType    | 当使用 options 时采用的 Radio 类型                     | `radio` \| `button`               | `radio`    |
+| buttonStyle  | RadioButton 选中时的样式类型                           | `outlined` \| `filled`            | `outlined` |
+| size         | RadioButton 的尺寸                                     | `small` \| `middle` \| `large`    | `middle`   |

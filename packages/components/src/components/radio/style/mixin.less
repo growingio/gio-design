@@ -1,0 +1,33 @@
+@radio-button-height-base: 36px;
+@radio-button-height-lg: 40px;
+@radio-button-height-sm: 30px;
+@radio-button-square-size: 32px;
+@radio-button-square-size-lg: @radio-button-height-lg;
+@radio-button-square-size-sm: @radio-button-height-sm;
+
+.radio-button-size(@height; @padding-horizontal; @font-size) {
+  height: @height;
+  padding: 0 @padding-horizontal;
+  font-size: @font-size;
+  line-height: @height;
+}
+
+.radio-radius-left(@radius) {
+  border-top-left-radius: @radius;
+  border-bottom-left-radius: @radius;
+}
+
+.radio-radius-right(@radius) {
+  border-top-right-radius: @radius;
+  border-bottom-right-radius: @radius;
+}
+
+.radio-radius-top(@radius) {
+  border-top-left-radius: @radius;
+  border-top-right-radius: @radius;
+}
+
+.radio-radius-bottom(@radius) {
+  border-bottom-right-radius: @radius;
+  border-bottom-left-radius: @radius;
+}

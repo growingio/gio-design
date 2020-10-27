@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
 import RcCheckbox from 'rc-checkbox';
 import classnames from 'classnames';
+import { ConfigContext } from '../config-provider';
+import SizeContext from '../config-provider/SizeContext';
 import RadioGroup from './Group';
+import RadioButton from './RadioButton';
 import RadioGroupContext from './context';
 import { IRadioProps, IRadioChangeEvent } from './interface';
 
 interface CompoundedRadio extends React.ForwardRefExoticComponent<IRadioProps & React.RefAttributes<HTMLElement>> {
   Group: typeof RadioGroup;
+  Button: typeof RadioButton;
   componentType: string;
 }
 
@@ -15,13 +19,18 @@ const InnerRadio: React.ForwardRefRenderFunction<unknown, IRadioProps> = (
   ref
 ) => {
   const groupContext = useContext(RadioGroupContext);
+  const { getPrefixCls } = useContext(ConfigContext);
+  const configSize = React.useContext(SizeContext);
 
-  const prefixCls = customPrefixCls || 'gio-radio';
-
-  const wrapperCls = classnames(className, `${prefixCls}__wrapper`, {
+  const groupSize = groupContext?.size;
+  const size = groupSize ?? configSize ?? 'middle';
+  const groupPrefixCls = groupContext?.prefixCls ?? '';
+  const prefixCls = getPrefixCls('radio', customPrefixCls ?? groupPrefixCls);
+  const wrapperCls = classnames(className, `${prefixCls}__wrapper`, `${prefixCls}__wrapper--${size}`, {
     [`${prefixCls}__wrapper--checked`]: restProps.checked,
     [`${prefixCls}__wrapper--disabled`]: restProps.disabled,
   });
+  const labelCls = classnames(className, `${prefixCls}__label`);
 
   const handleChange = (e: IRadioChangeEvent) => {
     if (restProps.onChange) {
@@ -53,7 +62,7 @@ const InnerRadio: React.ForwardRefRenderFunction<unknown, IRadioProps> = (
       onMouseLeave={restProps.onMouseLeave}
     >
       <RcCheckbox type={type} {...rcProps} prefixCls={prefixCls} ref={ref as any} />
-      {children ? <span>{children}</span> : null}
+      {children ? <span className={labelCls}>{children}</span> : null}
     </label>
   );
 };
