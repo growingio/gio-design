@@ -23,5 +23,7 @@ module.exports = {
     'react/jsx-props-no-spreading': ['error', { html: 'enforce', custom: 'ignore', explicitSpread: 'ignore' }],
     'import/no-unresolved': 'off',
     'import/extensions': ['off', 'never'],
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
   },
 };
