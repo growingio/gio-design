@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useMemo, useEffect } from 'react';
 import RcTooltip from 'rc-tooltip';
 import { isFunction } from 'lodash';
@@ -15,6 +14,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     placement = 'top',
     trigger = 'hover',
     visible,
+    disabled = false,
     onVisibleChange,
     prefixCls: customizePrefixCls,
     overlay,
@@ -31,17 +31,19 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
   );
 
   const isNoTitle = useMemo(() => !computedTitle && computedTitle !== 0, [computedTitle]);
-  const visbleShouldBeControl = useMemo(() => isNoTitle && !computedOverlay, [isNoTitle, computedOverlay]);
+  const isNoOverlay = useMemo(() => !computedOverlay && computedOverlay !== 0, [computedOverlay]);
+  const isNoContent = useMemo(() => isNoTitle && isNoOverlay, [isNoTitle, isNoOverlay]);
+
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('tooltip', customizePrefixCls);
 
   useEffect(() => {
-    setControlledVisible(!visbleShouldBeControl && controlledVisible, true);
-  }, [visbleShouldBeControl, controlledVisible]);
+    setControlledVisible(!isNoContent && controlledVisible, true);
+  }, [isNoContent, controlledVisible]);
 
   const tooltipOverlay = isNoTitle ? null : (
     <>
-      <span className={`${prefixCls}-inner-title`}>{title}</span>
+      <span className={`${prefixCls}-inner-title`}>{computedTitle}</span>
       {tooltipLink?.link && (
         <Link component="a" to={tooltipLink.link}>
           {tooltipLink.name || tooltipLink.link}
@@ -68,14 +70,14 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
       arrowContent={<span className={`${prefixCls}-arrow-content`} />}
       overlay={getOverlay()}
       builtinPlacements={getPlacements({ arrowPointAtCenter })}
-      visible={controlledVisible}
+      visible={controlledVisible && !disabled && !isNoContent}
       onVisibleChange={(_visible) => {
-        setControlledVisible(visbleShouldBeControl ? false : _visible);
-        if (!visbleShouldBeControl) {
+        setControlledVisible(_visible);
+        if (!isNoContent) {
           onVisibleChange?.(_visible);
         }
       }}
-      destroyTooltipOnHide={visbleShouldBeControl || destroyTooltipOnHide}
+      destroyTooltipOnHide={isNoContent || destroyTooltipOnHide}
       {...rest}
     >
       {setCursor(children)}
