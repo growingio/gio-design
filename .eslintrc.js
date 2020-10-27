@@ -19,9 +19,11 @@ module.exports = {
   // Rewrite style
   rules: {
     'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': [1],
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'react/jsx-props-no-spreading': ['error', { html: 'enforce', custom: 'ignore', explicitSpread: 'ignore' }],
     'import/no-unresolved': 'off',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/extensions': ['off', 'never'],
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],

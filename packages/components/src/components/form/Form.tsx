@@ -9,7 +9,7 @@ import { SizeContextProvider, SizeType } from '../config-provider/SizeContext';
 
 export type FormLayout = 'horizontal' | 'vertical' | 'inline';
 
-export interface Props<Values = any> extends Omit<RcFormProps<Values>, 'form'> {
+export interface Props<Values = unknown> extends Omit<RcFormProps<Values>, 'form'> {
   prefixCls?: string;
   className?: string;
   name?: string;

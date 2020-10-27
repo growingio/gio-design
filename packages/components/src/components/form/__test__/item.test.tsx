@@ -1,6 +1,9 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
+import { waitFor } from '@testing-library/react';
 import Item from '../Item';
+import Form from '..';
 
 describe('<Item />', () => {
   it('render correctly', () => {
@@ -42,9 +45,33 @@ describe('<Item />', () => {
     expect(wrapper.find('label').text()).toBe('username：*');
   });
 
-  it('accept render props', () => {
+  it('accept accept a function as children', () => {
     const wrapper = mount(<Item>{() => <input type="text" />}</Item>);
 
     expect(wrapper.find('.gio-field input')).toHaveLength(1);
+  });
+
+  it('should accept text as children', () => {
+    const wrapper = mount(<Item name="text">abc</Item>);
+
+    expect(wrapper.find('.gio-field').text()).toBe('abc');
+  });
+
+  it('should pass custom trigger', () => {
+    const wrapper = mount(
+      <Form>
+        <Item name="username" validateTrigger="onFocus" rules={[{ required: true, message: 'validate message' }]}>
+          <input type="text" />
+        </Item>
+      </Form>
+    );
+
+    act(() => {
+      wrapper.find('input').simulate('focus');
+    });
+
+    waitFor(() => {
+      expect(wrapper.find('.gio-field-message').text()).toBe('validate message');
+    });
   });
 });
