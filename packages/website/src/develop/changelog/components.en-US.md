@@ -9,6 +9,20 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.10.5
+
+- Grid
+  - 🆕add gio-grid component [#338](https://github.com/growingio/gio-design/pull/338)
+- Form
+  - 🐛fix colon not render issue [#340](https://github.com/growingio/gio-design/pull/340)
+- Dropdown
+  - 💄Fixed the placement direction problem in the Dropdown component. From 12 directions to 6 directions, the default direction is down [#333](https://github.com/growingio/gio-design/pull/333/)
+- Upload
+  - 🆕An optional parameter successBorder is added to the upload component to control whether the border is displayed after the image is uploaded successfully. The default value is false [#331](https://github.com/growingio/gio-design/pull/331)
+- Select
+  - 💄The text size in the input selection box of the select component is defined [#337](https://github.com/growingio/gio-design/pull/337)
+
+
 ## 20.10.4
 
 - Select
