@@ -9,16 +9,6 @@ nav:
 
 # @gio-design/icons 更新日志
 
-## 20.10.5
-
-- 🆕 新增[#349](https://github.com/growingio/gio-design/pull/349)
-
-  - `CopyOutlined`
-  - `DownloadOutlined`
-  - `InformationCircleOutlined`
-  - `SequenceOutlined`
-  - `ShareOutlined`
-
 ## 20.10.4
 
 - 🆕 新增 [#319](https://github.com/growingio/gio-design/pull/319)
