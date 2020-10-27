@@ -36,6 +36,7 @@ group:
 | **placement**            | 气泡框位置, 可选 `top` `left` `right` `bottom` `topLeft` `topRight` `bottomLeft` `bottomRight` `leftTop` `leftBottom` `rightTop` `rightBottom` | string                            | `'top'`               |
 | **trigger**              | 触发行为，可选 hover,focus,click,contextMenu                                                                                                   | string\|string[]                  | `hover`               |
 | **visible**              | 用于手动控制浮层显隐                                                                                                                           | boolean                           | `false`               |
+| **disabled**             | 当 disabled 为 true 时，触发行为不会显示气泡框                                                                                                 | boolean                           | `false`               |
 | **onVisibleChange**      | 显示隐藏的回调                                                                                                                                 | (visible) => void                 |                       |
 | **destroyTooltipOnHide** | 关闭后是否销毁 Tooltip，当 keepParent 为 false 时销毁父容器                                                                                    | boolean\|{ keepParent?: boolean } | `false`               |
 | **arrowPointAtCenter**   | 箭头是否指向目标元素中心                                                                                                                       | boolean                           | `false`               |

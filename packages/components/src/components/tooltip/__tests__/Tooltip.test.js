@@ -3,6 +3,7 @@ import Tooltip from '../index';
 import '@gio-design/components/es/components/Tabs/style/index.css';
 import { act } from 'react-dom/test-utils';
 import { mount, render } from 'enzyme';
+import { getOverflowOptions } from '../placements';
 
 async function waitForComponentToPaint(wrapper, amount = 500) {
   await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
@@ -45,8 +46,15 @@ describe('Testing Tooltip', () => {
       wrapper
         .find('.gio-tooltip-inner')
         .find('a')
-        .filterWhere((item) => item.prop('href') === 'https://www.growingio.com/about'),
+        .filterWhere((item) => item.prop('href') === 'https://www.growingio.com/about')
     ).toHaveLength(1);
+  });
+
+  test('props disabled', () => {
+    const wrapper = mount(getTooltip());
+    wrapper.setProps({ disabled: true, title: '测试disabled' });
+    wrapper.find('span').at(0).simulate('mouseenter');
+    expect(wrapper.exists('.gio-tooltip')).toBe(false);
   });
 
   test('title content should be render', (done) => {
@@ -110,12 +118,24 @@ describe('Testing Tooltip', () => {
       wrapper
         .find('.gio-tooltip-inner')
         .find('a')
-        .filterWhere((item) => item.prop('href') === 'https://www.growingio.com'),
+        .filterWhere((item) => item.prop('href') === 'https://www.growingio.com')
     ).toHaveLength(1);
     expect(wrapper.exists('.overlayClassName')).toBe(true);
     waitForComponentToPaint(wrapper).then(() => {
       expect(wrapper.exists('.gio-tooltip-placement-topLeft')).toBe(true);
       done();
     });
+  });
+
+  test('getOverflowOptions function', () => {
+    const result1 = getOverflowOptions({ adjustX: 1 });
+    expect(result1.adjustX).toBe(1);
+    expect(result1.adjustY).toBe(0);
+    const result2 = getOverflowOptions(true);
+    expect(result2.adjustX).toBe(1);
+    expect(result2.adjustY).toBe(1);
+    const result3 = getOverflowOptions(false);
+    expect(result3.adjustX).toBe(0);
+    expect(result3.adjustY).toBe(0);
   });
 });
