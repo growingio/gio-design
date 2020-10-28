@@ -49,14 +49,14 @@ const InputFC: React.FC<InputProps> = ({
 
   const [inputValue, setInputValue] = React.useState(value)
 
-  const inputOnChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value)
-    onChange && onChange(e)
-  }
+  const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    onChange && onChange(e);
+  };
 
   React.useEffect(() => {
     setInputValue(value)
-  }, [value])
+  }, [value]);
 
   return (
     <div className={wrapClass} style={wrapStyle}>
