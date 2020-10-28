@@ -119,7 +119,7 @@ describe('<Form />', () => {
   it('should accept a ref', () => {
     const {
       result: { current: formRef },
-    } = renderHook(() => useRef(null as FormInstance<unknown>));
+    } = renderHook(() => useRef((null as unknown) as FormInstance<unknown>));
     mount(<Form ref={formRef} />);
 
     expect(typeof formRef.current.getFieldError).toBe('function');
