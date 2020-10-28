@@ -5,7 +5,7 @@ export type IStringOrHtmlElement = string | HTMLElement;
 
 export type TModalSize = 'small' | 'middle' | 'full';
 
-export type TStepNoParamFn = () => void;
+export type TStepNoParamFn = () => void | Promise<unknown>;
 
 export interface ITitleProps {
   title?: ReactNode;
@@ -112,7 +112,7 @@ export interface IStepMap {
   [key: string]: IStepInner;
 }
 
-export interface IStepModalProps extends IModalProps {
+export interface IStepModalProps extends Omit<IModalProps, 'pending'> {
   steps?: IStep[];
   onStepChange?: (step: string) => void;
 }

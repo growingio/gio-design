@@ -24,13 +24,15 @@ group:
 
 <code src='./demo/size.tsx' />
 
-<code src='./demo/asyncConfirm.tsx' title='pending 状态的 Modal ' desc='设置 pending props，Modal 会进入 pending 状态，确认和关闭将不可用。需要注意的是，如果同时设置的 closeAfterOk，那么 onOk 需要返回一个 Promise，否则 onClose 会立即执行'/>
+<code src='./demo/asyncConfirm.tsx'/>
 
 ### StepModal
 
-<!-- <code src='./demo/stepModal.tsx' title='StepModal ' desc='内部可以进行分步骤进行的 Modal。'/> -->
+<code src='./demo/stepModal.tsx' title='StepModal ' desc='内部可以进行分步骤进行的 Modal。'/>
 
 <code src='./demo/branchStepModal.tsx' />
+
+<code src='./demo/asyncStepModal.tsx' />
 
 ### 函数式调用
 
@@ -80,7 +82,7 @@ group:
 
 ### StepModal
 
-`StepModal` 在 `Modal` 基础上增加了 `steps` prop
+`StepModal` 在 `Modal` 基础上增加了 `steps` prop, 去掉了 `pending` prop
 
 | 参数  | 说明     | 类型              | 默认值 |
 | ----- | -------- | ----------------- | ------ |
