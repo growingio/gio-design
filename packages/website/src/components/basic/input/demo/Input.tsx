@@ -9,6 +9,12 @@ export default () => {
   const onChange = (e: React.FocusEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
+  const onChange2 = (e: React.FocusEvent<HTMLInputElement>) => {
+    setInputValue2(e.target.value);
+  }
+  const onChange3 = (e: React.FocusEvent<HTMLInputElement>) => {
+    setInputValue3(e.target.value);
+  }
 
   return (
     <div>
@@ -23,12 +29,12 @@ export default () => {
       <Input
         placeholder="禁止输入"
         value={inputValue2}
-        onChange={setInputValue2}
+        onChange={onChange2}
         disabled
         wrapStyle={{ display: 'block', marginBottom: '20px' }}
       />
 
-      <Input value={inputValue3} size="large" onChange={setInputValue3} wrapStyle={{ display: 'block' }} />
+      <Input value={inputValue3} size="large" onChange={onChange3} wrapStyle={{ display: 'block' }} />
     </div>
   );
 };

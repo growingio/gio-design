@@ -6,6 +6,7 @@ export const prefixCls = 'gio-input';
 
 const InputFC: React.FC<InputProps> = ({
   type = 'text',
+  value = '',
   onPressEnter,
   disabled = false,
   readOnly = false,
@@ -50,6 +51,7 @@ const InputFC: React.FC<InputProps> = ({
       <input
         className={inputClass}
         type={type}
+        value={value === null ? '' : value}
         onKeyDown={handleOnPressEnter}
         disabled={disabled}
         readOnly={readOnly}
