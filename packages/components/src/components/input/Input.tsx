@@ -46,12 +46,19 @@ const InputFC: React.FC<InputProps> = ({
     return <div className={`${prefixCls}-container-suffix`}>{suffix}</div>;
   };
 
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (typeof rest.onChange === 'function') {
+      rest.onChange(e)
+    }
+  }
+
   return (
     <div className={wrapClass} style={wrapStyle}>
       <input
         className={inputClass}
         type={type}
         value={value ?? ''}
+        onChange={onChange}
         onKeyDown={handleOnPressEnter}
         disabled={disabled}
         readOnly={readOnly}
