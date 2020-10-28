@@ -10,7 +10,7 @@ async function waitForComponentToPaint(wrapper, amount = 500) {
 
 describe('Testing dropdown', () => {
   const getDropdown = () => (
-    <Dropdown overlay={<div>Dropdown 内容主体</div>}>
+    <Dropdown overlay={<div id="overlay-content">Dropdown 内容主体</div>}>
       <Button>Test</Button>
     </Dropdown>
   );
@@ -40,5 +40,13 @@ describe('Testing dropdown', () => {
       expect(wrapper.exists('.gio-dropdown-placement-topLeft')).toBe(true);
       done();
     });
+  });
+
+  it('will be close after click', () => {
+    const wrapper = mount(getDropdown());
+    wrapper.setProps({ destroyTooltipOnHide: true });
+    wrapper.find('button').at(0).simulate('click');
+    wrapper.find('#overlay-content').simulate('click');
+    expect(wrapper.exists('.gio-dropdown-inner')).toBe(false);
   });
 });

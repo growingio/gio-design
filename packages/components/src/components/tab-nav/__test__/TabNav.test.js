@@ -49,7 +49,7 @@ describe('Testing TabNav', () => {
         <TabNav.Item>222</TabNav.Item>
         <TabNav.Item>333</TabNav.Item>
         <TabNav.Item disabled>444</TabNav.Item>
-      </TabNav>,
+      </TabNav>
     );
     expect(wrapper.find('.gio-tabnav').childAt(1).exists('.gio-tabnav-item-active')).toBe(true);
   });
@@ -88,5 +88,18 @@ describe('Testing TabNav', () => {
     expect(wrapper.find('.gio-tabnav-item-active').at(0).text()).toBe('111');
     wrapper.find('.gio-tabnav').childAt(1).simulate('click');
     expect(wrapper.find('.gio-tabnav-item-active').at(0).text()).toBe('222');
+  });
+
+  it('only render TabNav.Item', () => {
+    const wrapper = mount(
+      <TabNav defaultActiveKey={1}>
+        <TabNav.Item>111</TabNav.Item>
+        <TabNav.Item>222</TabNav.Item>
+        <TabNav.Item>333</TabNav.Item>
+        <TabNav.Item disabled>444</TabNav.Item>
+        <div className="norender-div">我不会被渲染</div>
+      </TabNav>
+    );
+    expect(wrapper.exists('.norender-div')).toBe(false);
   });
 });
