@@ -3,7 +3,7 @@ import { Input } from '@gio-design/components';
 import '@gio-design/components/es/components/input/style/index.css';
 
 export default () => {
-  const [inputValue, setInputValue] = React.useState();
+  const [inputValue, setInputValue] = React.useState<any | undefined>();
   const [inputValue2, setInputValue2] = React.useState('');
   const [inputValue3, setInputValue3] = React.useState('333');
   const onChange = (e: React.FocusEvent<HTMLInputElement>) => {

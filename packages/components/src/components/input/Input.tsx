@@ -6,8 +6,7 @@ export const prefixCls = 'gio-input';
 
 const InputFC: React.FC<InputProps> = ({
   type = 'text',
-  value = '',
-  onChange,
+  value,
   onPressEnter,
   disabled = false,
   readOnly = false,
@@ -47,24 +46,12 @@ const InputFC: React.FC<InputProps> = ({
     return <div className={`${prefixCls}-container-suffix`}>{suffix}</div>;
   };
 
-  const [inputValue, setInputValue] = React.useState(value)
-
-  const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-    onChange && onChange(e);
-  };
-
-  React.useEffect(() => {
-    setInputValue(value)
-  }, [value]);
-
   return (
     <div className={wrapClass} style={wrapStyle}>
       <input
         className={inputClass}
         type={type}
-        value={inputValue ?? ''}
-        onChange={inputOnChange}
+        value={value ?? ''}
         onKeyDown={handleOnPressEnter}
         disabled={disabled}
         readOnly={readOnly}
