@@ -11,10 +11,10 @@ export default () => {
   };
   const onChange2 = (e: React.FocusEvent<HTMLInputElement>) => {
     setInputValue2(e.target.value);
-  }
+  };
   const onChange3 = (e: React.FocusEvent<HTMLInputElement>) => {
     setInputValue3(e.target.value);
-  }
+  };
 
   return (
     <div>
