@@ -48,6 +48,10 @@ describe('Testing Avatar', () => {
     expect(mount(<Avatar size="huge" />).exists('.gio-avatar-hg')).toBe(true);
   });
 
+  test('prop droppable', () => {
+    expect(mount(<Avatar size="small" droppable />).exists('.gio-avatar-droppable')).toBe(true);
+  });
+
   test('props omit', () => {
     const wrapper = mount(<Avatar>这是一个很长的文字</Avatar>);
     expect(wrapper.childAt(0).text()).toBe('这');
