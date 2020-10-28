@@ -7,6 +7,5 @@ export interface PopconfirmProps extends Omit<TooltipProps, 'title' | 'tooltipLi
   onConfirm?: Function;
   okText?: string;
   cancelText?: string;
-  disabled?: boolean;
   icon?: React.ReactNode;
 }
