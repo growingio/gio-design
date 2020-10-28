@@ -137,18 +137,7 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      - name: Sending deploy succeeded message
-        uses: x-actions/dingtalk@master
-        env:
-          DINGTALK_ACCESS_TOKEN: ${{ secrets.DINGTALK_ACCESS_TOKEN }}
-          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
-          MSGTYPE: markdown
-          TITLE: GrowingIO Design deploy succeeded
-          TEXT: |
-            ## GrowingIO Design deploy succeeded
-            ${{ github.event.head_commit.message }}
-            - [GrowingIO Design](https://growingio.design)
-            - [GrowingIO Design on GitHub Pages](https://mirror.growingio.design)
+
   deploy_github:
     name: Deploying website to GitHub Pages
     needs: other
