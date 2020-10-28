@@ -71,6 +71,7 @@ describe('get props with type correctly.', () => {
 });
 
 describe('Modal.staticFunc triggers correctly.', () => {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
   afterEach(() => {
@@ -82,11 +83,11 @@ describe('Modal.staticFunc triggers correctly.', () => {
     errorSpy.mockRestore();
   });
 
-  function $$(className: string) {
-    return document.body.querySelectorAll(className) as any;
+  function $$(className) {
+    return document.body.querySelectorAll(className);
   }
 
-  function open(args?: any) {
+  function open(args) {
     jest.useFakeTimers();
     confirm({
       title: 'Confirm Modal',
@@ -103,9 +104,6 @@ describe('Modal.staticFunc triggers correctly.', () => {
       content: 'some descriptions',
     });
     jest.runAllTimers();
-    console.log('===Log Start===');
-    console.log(document.querySelector('.gio-modal-callout__title'));
-    console.log('---Log End---');
     expect(document.querySelector('.gio-modal-callout__title')).toBe(null);
     jest.useRealTimers();
   });
