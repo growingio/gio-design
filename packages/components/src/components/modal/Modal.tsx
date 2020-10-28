@@ -59,9 +59,14 @@ const Modal: React.FC<IModalProps> = ({
   const handleOk = async (e: React.MouseEvent<HTMLElement>) => {
     if (onOk && typeof onOk === 'function') {
       e.persist();
-      await Promise.resolve(onOk(e));
-      if (closeAfterOk) {
-        onClose?.(e);
+      try {
+        await Promise.resolve(onOk(e));
+        if (closeAfterOk) {
+          onClose?.(e);
+        }
+      } catch (error) {
+        const err = error ?? 'onOk 执行 reject 或抛出错误。';
+        console.error(err);
       }
     }
   };
