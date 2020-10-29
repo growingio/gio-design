@@ -74,4 +74,16 @@ describe('<Item />', () => {
       expect(wrapper.find('.gio-field-message').text()).toBe('validate message');
     });
   });
+
+  it('should accept custom help msg', () => {
+    const wrapper = mount(<Item help="help msg" />);
+
+    expect(wrapper.find('.gio-field-help').text()).toBe('help msg');
+  });
+
+  it('should accept custom feedback msg', () => {
+    const wrapper = mount(<Item feedback="feedback msg" feedbackType="warning" />);
+
+    expect(wrapper.find('.gio-field-message').text()).toBe('feedback msg');
+  });
 });

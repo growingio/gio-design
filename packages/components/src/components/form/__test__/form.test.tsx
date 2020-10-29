@@ -1,12 +1,12 @@
 import { act } from 'react-dom/test-utils';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { mount } from 'enzyme';
 import { renderHook } from '@testing-library/react-hooks';
 import { waitFor } from '@testing-library/react';
 
 import { FormProvider } from '../context';
-import Form from '..';
+import Form, { FormInstance } from '..';
 
 const { Item, useForm } = Form;
 
@@ -114,5 +114,14 @@ describe('<Form />', () => {
     expect(wrapper.find('.test1 label').text()).toBe('label1：*');
     expect(wrapper.find('.test2 label').text()).toBe('label2：*');
     expect(wrapper.find('.test3 label').text()).toBe('label3：');
+  });
+
+  it('should accept a ref', () => {
+    const {
+      result: { current: formRef },
+    } = renderHook(() => useRef((null as unknown) as FormInstance<unknown>));
+    mount(<Form ref={formRef} />);
+
+    expect(typeof formRef.current.getFieldError).toBe('function');
   });
 });
