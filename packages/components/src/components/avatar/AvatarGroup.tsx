@@ -6,25 +6,24 @@ import { AvatarGroupProps, UserAvatarType } from './interface';
 import { ConfigContext } from '../config-provider';
 
 const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
-  const {
-    number = 5, users = [], className, placement = 'bottom',
-  } = props;
+  const { number = 5, users = [], className, placement = 'bottom' } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('avatar');
 
   let children = null;
-  const renderAvatarGroup = (users: UserAvatarType[]) => users.map((user, idx) => (
-    <Avatar key={idx} {...user} displayTooltip placement={placement}>
-      {user.name}
-    </Avatar>
-  ));
+  const renderAvatarGroup = (users: UserAvatarType[]) =>
+    users.map((user, idx) => (
+      <Avatar key={idx} {...user} displayTooltip placement={placement}>
+        {user.name}
+      </Avatar>
+    ));
   const renderAvatarRest = (users: UserAvatarType[]) => (
     <Avatar className={`${prefixCls}-rest`} omit={false}>{`+${users.length}`}</Avatar>
   );
   const classString = classNames(className, `${prefixCls}-group`);
 
   if (users.length === 0) {
-    children = null;
+    return null;
   } else if (users.length <= number) {
     children = renderAvatarGroup(users);
   } else {
