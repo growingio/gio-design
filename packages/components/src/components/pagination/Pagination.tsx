@@ -5,6 +5,7 @@ import { LeftOutlined, LeftDoubleOutlined, RightOutlined, RightDoubleOutlined, M
 import Input from '../input';
 import { ConfigContext } from '../config-provider';
 import { PaginationProps } from './interface';
+import { generatePageArray } from './ until';
 
 const Pagination = ({
   prefixCls: customizePrefixCls,
@@ -33,36 +34,57 @@ const Pagination = ({
 
   const shouldShowQuickJumper = useMemo(() => showQuickJumper && pageNumber > 10, [showQuickJumper, pageNumber]);
   const shouldShowOption = useMemo(() => shouldShowQuickJumper, [shouldShowQuickJumper]);
-  const generateSuccessionArray = (start: number, end: number) => Array.from(new Array(end + 1).keys()).slice(start);
   const offset = 5;
-  const offsetRadius = Math.floor(offset / 2);
 
   const prevSymbol = useRef<symbol>(Symbol('prev'));
   const nextSymbol = useRef<symbol>(Symbol('next'));
   const prevDisabled = localCurrent <= 1;
   const nextDisabled = localCurrent >= pageNumber;
 
-  const generatePageArray: (number | symbol)[] = useMemo(() => {
-    if (pageNumber > 10) {
-      if (localCurrent + offsetRadius < pageNumber && localCurrent - offsetRadius > 1) {
-        const successionArray = generateSuccessionArray(localCurrent - offsetRadius, localCurrent + offsetRadius);
-        if (localCurrent + offsetRadius + 1 === pageNumber) {
-          return [1, prevSymbol.current, ...successionArray, pageNumber];
+  const pagination = useMemo(
+    () =>
+      generatePageArray(localCurrent, pageNumber, offset, prevSymbol, nextSymbol).map((page: number | symbol) => {
+        if (typeof page === 'number') {
+          return (
+            <li
+              className={classNames(`${prefixCls}-item`, {
+                [`${prefixCls}-item-active`]: page === localCurrent,
+              })}
+              key={page}
+              onClick={() => handleClick(page)}
+            >
+              {page}
+            </li>
+          );
         }
-        if (localCurrent - offsetRadius - 1 === 1) {
-          return [1, ...successionArray, nextSymbol.current, pageNumber];
+        if (Object.is(page, prevSymbol.current)) {
+          return (
+            <li
+              key="prev"
+              className={classNames(`${prefixCls}-jump-prev`)}
+              onClick={() => handleClick(localCurrent - offset)}
+            >
+              <More className="more" />
+              <LeftDoubleOutlined className="double" color="#0044F2" />
+            </li>
+          );
         }
-        return [1, prevSymbol.current, ...successionArray, nextSymbol.current, pageNumber];
-      }
-      if (localCurrent + offsetRadius >= pageNumber) {
-        return [1, prevSymbol.current, ...generateSuccessionArray(pageNumber - offset + 1, pageNumber)];
-      }
-      if (localCurrent - offsetRadius <= 1) {
-        return [...generateSuccessionArray(1, offset), nextSymbol.current, pageNumber];
-      }
-    }
-    return generateSuccessionArray(1, pageNumber);
-  }, [pageNumber, localCurrent]);
+        if (Object.is(page, nextSymbol.current)) {
+          return (
+            <li
+              key="next"
+              className={classNames(`${prefixCls}-jump-next`)}
+              onClick={() => handleClick(localCurrent + offset)}
+            >
+              <More className="more" />
+              <RightDoubleOutlined className="double" color="#0044F2" />
+            </li>
+          );
+        }
+        return null;
+      }),
+    [localCurrent, pageNumber]
+  );
 
   const handleClick = (toPage: number) => {
     if (isNumber(toPage) && !Object.is(toPage, localCurrent) && !disabled) {
@@ -91,55 +113,14 @@ const Pagination = ({
         ])}
       </li>
     );
-  }, [total, showTotal]);
-
-  const renderPage = () =>
-    generatePageArray.map((page: number | symbol) => {
-      if (typeof page === 'number') {
-        return (
-          <li
-            className={classNames(`${prefixCls}-item`, {
-              [`${prefixCls}-item-active`]: page === localCurrent,
-            })}
-            key={page}
-            onClick={() => handleClick(page)}
-          >
-            {page}
-          </li>
-        );
-      }
-      if (Object.is(page, prevSymbol.current)) {
-        return (
-          <li
-            key="prev"
-            className={classNames(`${prefixCls}-jump-prev`)}
-            onClick={() => handleClick(localCurrent - offset)}
-          >
-            <More className="more" />
-            <LeftDoubleOutlined className="double" color="#0044F2" />
-          </li>
-        );
-      }
-      if (Object.is(page, nextSymbol.current)) {
-        return (
-          <li
-            key="next"
-            className={classNames(`${prefixCls}-jump-next`)}
-            onClick={() => handleClick(localCurrent + offset)}
-          >
-            <More className="more" />
-            <RightDoubleOutlined className="double" color="#0044F2" />
-          </li>
-        );
-      }
-      return null;
-    });
+  }, [total, showTotal, localCurrent, pageSize]);
 
   const handleInputPressEnter = (e: any) => {
     const transformValue = Number(e.target.value);
     if (!isNaN(transformValue)) {
       if (transformValue >= 1 && transformValue <= pageNumber) {
         setLocalCurrent(transformValue);
+        onChange?.(transformValue, pageSize);
       }
     }
     setInputValue('');
@@ -179,7 +160,7 @@ const Pagination = ({
       >
         <LeftOutlined size="16px" />
       </li>
-      {renderPage()}
+      {pagination}
       <li
         className={classNames(`${prefixCls}-next`, {
           [`${prefixCls}-disabled`]: nextDisabled,
