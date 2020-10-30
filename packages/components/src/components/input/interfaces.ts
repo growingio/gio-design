@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+type InputPropsSuper = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
+
+export interface InputProps extends Omit<InputPropsSuper, 'prefix'> {
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
