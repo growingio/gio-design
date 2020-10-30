@@ -14,6 +14,8 @@ const InputFC: React.FC<InputProps> = ({
   prefix,
   suffix,
   style,
+  wrapStyle,
+  inputStyle,
   forwardRef,
   ...rest
 }: InputProps) => {
@@ -58,8 +60,18 @@ const InputFC: React.FC<InputProps> = ({
     }
   }
 
+  const outerStyle = style !== undefined ? style : wrapStyle
+  const innerStyle = style !== undefined ? {} : inputStyle
+  if (wrapStyle !== undefined || inputStyle !== undefined) {
+    console.warn(
+      'The latest version of Input only accept "style" for inline-style setting, ' +
+      'please fix your code because the deprecated parameter "wrapStyle" and "inputStyle" ' +
+      'will be removed in the future version'
+    )
+  }
+
   return (
-    <div className={wrapClass} style={style}>
+    <div className={wrapClass} style={outerStyle}>
       {renderPrefix()}
       <input
         className={inputClass}
@@ -67,6 +79,7 @@ const InputFC: React.FC<InputProps> = ({
         value={rest.value ?? ''}
         onChange={onChange}
         onKeyDown={handleOnPressEnter}
+        style={innerStyle}
         disabled={disabled}
         readOnly={readOnly}
         placeholder={placeholder}

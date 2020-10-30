@@ -7,6 +7,8 @@ export interface InputProps extends Omit<InputPropsSuper, 'prefix'> {
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   style?: React.CSSProperties;
+  wrapStyle?: React.CSSProperties;
+  inputStyle?: React.CSSProperties;
   size?: 'large' | 'medium' | 'small';
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
@@ -23,6 +25,8 @@ export interface InputNumberProps extends Omit<InputProps, 'onChange'> {
 export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   resize?: boolean;
   style?: React.CSSProperties;
+  wrapStyle?: React.CSSProperties;
+  inputStyle?: React.CSSProperties;
   forwardRef?:
     | React.RefObject<HTMLTextAreaElement>
     | React.MutableRefObject<HTMLTextAreaElement>
