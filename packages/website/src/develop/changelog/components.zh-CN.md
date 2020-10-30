@@ -9,8 +9,29 @@ nav:
 
 # @gio-design/components 更新日志
 
-## 20.10.5
+## 20.10.6
 
+- component
+  - 🆕 avatar, card类型的 Upload 支持 placeholderImg 展示 [#379](https://github.com/growingio/gio-design/pull/379)
+  - 🛎 StepModal 的 onNext, onBack 支持异步调用，可打断下一步的执行 [#378](https://github.com/growingio/gio-design/pull/378)
+- popconfirm
+  - 去掉跟disabled相关的代码 [#377](https://github.com/growingio/gio-design/pull/377)
+- avatar
+  - ✅ 提升组件单元测试率 [#373](https://github.com/growingio/gio-design/pull/373)
+- pagination
+  - ✅ 提升组件单元测试率 [#372](https://github.com/growingio/gio-design/pull/372)
+- form
+  - ✅ 提升组件单元测试率 [#371](https://github.com/growingio/gio-design/pull/371)
+  - 🛎 fix lint issue [#364](https://github.com/growingio/gio-design/pull/364) [#363](https://github.com/growingio/gio-design/pull/363)
+- radio
+  - 🆕 新增Radio.Button [#368](https://github.com/growingio/gio-design/pull/368)
+- tootip
+  - 🆕 新增 disabled 参数 [#367](https://github.com/growingio/gio-design/pull/367)
+- Tag
+  - 🛎 fix stylelint [#357](https://github.com/growingio/gio-design/pull/357) 
+
+## 20.10.5
+  
 - Grid
   - 🆕 新增Grid组件 [#338](https://github.com/growingio/gio-design/pull/338)
 - Form

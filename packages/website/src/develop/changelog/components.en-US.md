@@ -9,6 +9,27 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.10.6
+
+- component
+  - 🆕 support placholderImg in avatar and card Upload [#379](https://github.com/growingio/gio-design/pull/379)
+  - 🛎 support async function in StepModal's step change [#378](https://github.com/growingio/gio-design/pull/378)
+- popconfirm
+  - remove code associated with disabled [#377](https://github.com/growingio/gio-design/pull/377)
+- avatar
+  - ✅  improve test coverage [#373](https://github.com/growingio/gio-design/pull/373)
+- pagination
+  - ✅  improve test coverage [#372](https://github.com/growingio/gio-design/pull/372)
+- form
+  - ✅  improve test coverage [#371](https://github.com/growingio/gio-design/pull/371)
+  - 🛎 fix lint issue [#364](https://github.com/growingio/gio-design/pull/364) [#363](https://github.com/growingio/gio-design/pull/363)
+- radio
+  - 🆕 add Radio.Button [#368](https://github.com/growingio/gio-design/pull/368)
+- tootip
+  - 🆕 add disabled parameter [#367](https://github.com/growingio/gio-design/pull/367)
+- Tag
+  - 🛎 fix stylelint [#357](https://github.com/growingio/gio-design/pull/357) 
+
 ## 20.10.5
 
 - Grid
