@@ -13,7 +13,7 @@ export default () => {
         value={inputValue}
         onChange={setInputValue}
         resize={false}
-        wrapStyle={{ marginBottom: '20px', display: 'block' }}
+        style={{ marginBottom: '20px', display: 'block' }}
       />
 
       <Input.TextArea
@@ -22,7 +22,7 @@ export default () => {
         onChange={setInputValue2}
         disabled={true}
         resize={true}
-        wrapStyle={{ display: 'block' }}
+        style={{ display: 'block' }}
       />
     </div>
   );

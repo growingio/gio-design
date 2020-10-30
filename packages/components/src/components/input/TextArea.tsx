@@ -7,8 +7,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   disabled = false,
   resize = false,
   placeholder = '',
-  inputStyle,
-  wrapStyle,
+  style,
   forwardRef,
   ...rest
 }: TextAreaProps) => {
@@ -17,12 +16,11 @@ const TextArea: React.FC<TextAreaProps> = ({
   });
 
   return (
-    <div className={prefixCls} style={wrapStyle}>
+    <div className={prefixCls} style={style}>
       <textarea
         className={inputClass}
         disabled={disabled}
         placeholder={placeholder}
-        style={inputStyle}
         ref={forwardRef}
         {...rest}
       />

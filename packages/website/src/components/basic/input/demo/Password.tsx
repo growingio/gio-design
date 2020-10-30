@@ -12,19 +12,19 @@ export default () => {
       <Input.Password
         placeholder="请输入…"
         value={inputValue}
-        onChange={setInputValue}
-        wrapStyle={{ marginBottom: '20px', display: 'block' }}
+        onChange={e => setInputValue(e.target.value)}
+        style={{ marginBottom: '20px', display: 'block' }}
       />
 
       <Input.Password
         placeholder="请输入…"
         value={inputValue2}
-        onChange={setInputValue2}
+        onChange={e => setInputValue2(e.target.value)}
         disabled={true}
-        wrapStyle={{ marginBottom: '20px', display: 'block' }}
+        style={{ marginBottom: '20px', display: 'block' }}
       />
 
-      <Input.Password value={inputValue3} onChange={setInputValue3} disabled={true} />
+      <Input.Password value={inputValue3} onChange={e => setInputValue3(e.target.value)} disabled={true} />
     </div>
   );
 };

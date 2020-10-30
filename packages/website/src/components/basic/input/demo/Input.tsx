@@ -23,7 +23,7 @@ export default () => {
         size="small"
         value={inputValue}
         onChange={onChange}
-        wrapStyle={{ display: 'block', marginBottom: '20px' }}
+        style={{ display: 'block', marginBottom: '20px' }}
       />
 
       <Input
@@ -31,10 +31,10 @@ export default () => {
         value={inputValue2}
         onChange={onChange2}
         disabled
-        wrapStyle={{ display: 'block', marginBottom: '20px' }}
+        style={{ display: 'block', marginBottom: '20px' }}
       />
 
-      <Input value={inputValue3} size="large" onChange={onChange3} wrapStyle={{ display: 'block' }} />
+      <Input value={inputValue3} size="large" onChange={onChange3} style={{ display: 'block' }} />
     </div>
   );
 };

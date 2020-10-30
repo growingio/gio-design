@@ -6,15 +6,14 @@ export const prefixCls = 'gio-input';
 
 const InputFC: React.FC<InputProps> = ({
   type = 'text',
-  value,
   onPressEnter,
   disabled = false,
   readOnly = false,
   placeholder = '',
-  inputStyle,
   size = 'medium',
+  prefix,
   suffix,
-  wrapStyle,
+  style,
   forwardRef,
   ...rest
 }: InputProps) => {
@@ -46,6 +45,13 @@ const InputFC: React.FC<InputProps> = ({
     return <div className={`${prefixCls}-container-suffix`}>{suffix}</div>;
   };
 
+  const renderPrefix = () => {
+    if (!prefix) {
+      return null;
+    }
+    return <div className={`${prefixCls}-container-prefix`}>{prefix}</div>
+  }
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof rest.onChange === 'function') {
       rest.onChange(e)
@@ -53,17 +59,17 @@ const InputFC: React.FC<InputProps> = ({
   }
 
   return (
-    <div className={wrapClass} style={wrapStyle}>
+    <div className={wrapClass} style={style}>
+      {renderPrefix()}
       <input
         className={inputClass}
         type={type}
-        value={value ?? ''}
+        value={rest.value ?? ''}
         onChange={onChange}
         onKeyDown={handleOnPressEnter}
         disabled={disabled}
         readOnly={readOnly}
         placeholder={placeholder}
-        style={inputStyle}
         ref={forwardRef}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
