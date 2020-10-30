@@ -5,7 +5,6 @@ export interface SearchBarProps {
   showClear?: boolean;
   disabled?: boolean;
   size?: 'large' | 'medium' | 'small';
-  inputStyle?: React.CSSProperties;
   inputWrapStyle?: React.CSSProperties;
   wrapStyle?: React.CSSProperties;
   placeholder?: string;
