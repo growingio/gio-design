@@ -116,6 +116,7 @@ export interface IUploadProps<T = any> {
   // 在上传之前转换文件
   transformFile?: TTransformFileHandler;
   children?: React.ReactNode;
+  placeholderImg?: string;
 }
 
 export interface ITriggerProps {
@@ -128,6 +129,7 @@ export interface ITriggerProps {
   disabled?: boolean;
   triggerProps?: IInnerTriggerProps;
   children?: React.ReactNode;
+  placeholderImg?: string;
 }
 
 export type ITriggerMap = {
