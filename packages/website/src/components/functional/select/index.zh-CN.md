@@ -17,9 +17,11 @@ group:
 
 ## 单选
 
-<code src='./demos/single.tsx' title='单选' desc='单选' >
-<code src='./demos/multiple.tsx' title='多选' desc='多选' >
-<code src='./demos/search.tsx' title='可搜索' desc='可搜索' >
+<code src='./demos/single.tsx' title='单选' desc='大小，无边框' >
+<code src='./demos/auto.tsx' title='单选' desc='紧凑型，自动宽度' >
+<code src='./demos/highlight.tsx' title='单选' desc='不可选项， 搜索高亮' >
+<code src='./demos/multiple.tsx' title='多选' desc='搜索' >
+<code src='./demos/freeinput.tsx' title='多选' desc='自由输入' >
 
 ## 多选
 

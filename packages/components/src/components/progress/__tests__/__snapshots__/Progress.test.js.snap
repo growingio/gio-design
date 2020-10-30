@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Progress /> render active Tag Component 1`] = `
+exports[`<Progress /> render active progress Component 1`] = `
 <div
   className="gio-progress"
 >
@@ -31,7 +31,7 @@ exports[`<Progress /> render active Tag Component 1`] = `
 </div>
 `;
 
-exports[`<Progress /> render active Tag Component 2`] = `
+exports[`<Progress /> render error progress Component 1`] = `
 <div
   className="gio-progress"
 >
@@ -94,7 +94,7 @@ exports[`<Progress /> render active Tag Component 2`] = `
 </div>
 `;
 
-exports[`<Progress /> render sucess Tag Component 1`] = `
+exports[`<Progress /> render sucess progress Component 1`] = `
 <div
   className="gio-progress"
 >

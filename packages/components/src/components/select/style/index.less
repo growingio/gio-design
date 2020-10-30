@@ -8,9 +8,10 @@
   position: relative;
   display: inline-block;
   overflow: hidden;
-  border: 1px solid @color-border-input-normal;
+  border: 1px solid transparent;
   border-radius: @radius-border-small;
   outline: none;
+  transition: all 0.2s;
   &-selector {
     width: 100%;
     min-height: 34px;
@@ -19,6 +20,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     border-radius: @radius-border-small;
+    transition: all 0.2s;
     &::-webkit-scrollbar {
       width: 2px;
       background-color: transparent;
@@ -34,10 +36,22 @@
     line-height: 24px;
   }
 
+  &-bordered {
+    border: 1px solid @color-border-input-normal;
+  }
+
+  &:not(&-bordered):hover {
+    background-color: @color-background-button-default-hover;
+  }
+
   &-arrow {
     position: absolute;
-    top: 10px;
+    top: 0;
     right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 
   &-item {
@@ -45,6 +59,7 @@
     margin-top: 7px;
     margin-left: 8px;
     font-size: @select-input-fontSize;
+    transition: margin 0.2s;
     &-text {
       overflow: hidden;
       white-space: nowrap;
@@ -69,10 +84,6 @@
         margin-top: 3px;
         margin-left: 4px;
       }
-
-      &-arrow {
-        top: 6px;
-      }
     }
   }
 
@@ -92,10 +103,6 @@
         margin-top: 8px;
         margin-left: 8px;
       }
-
-      &-arrow {
-        top: 10px;
-      }
     }
   }
 
@@ -104,9 +111,13 @@
     border: @color-border-input-disable;
   }
 
-  &-focused {
+  &-focused&-bordered {
     border: 1px solid @color-border-input-active;
     box-shadow: @shadow-tabs;
+  }
+
+  &-focused:not(&-bordered) {
+    background-color: @color-background-button-default-hover;
   }
 
   &-input {
@@ -165,5 +176,17 @@
 
   &-search-highlight {
     background-color: #ffcf3c;
+  }
+
+  &-not-found {
+    width: 100%;
+    color: #a3adc8;
+    text-align: center;
+    &-icon {
+      margin-bottom: 40px;
+    }
+
+    &-text {
+    }
   }
 }

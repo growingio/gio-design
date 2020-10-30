@@ -6,7 +6,7 @@ import { ConfigContext } from '../config-provider';
 import useControlledState from '../../utils/hooks/useControlledState';
 
 const Dropdown = (props: DropdownProps) => {
-  const placementList = ['top','bottom','topLeft','topRight','bottomLeft','bottomRight'];
+  const placementList = ['top', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'];
   const {
     children,
     prefixCls: customizePrefixCls,
