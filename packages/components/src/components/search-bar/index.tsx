@@ -47,7 +47,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
   showClear = false,
   disabled = false,
   size = 'medium',
-  inputStyle,
   inputWrapStyle,
   wrapStyle,
   placeholder,
@@ -138,8 +137,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       <Input
         disabled={disabled}
         size={size}
-        inputStyle={inputStyle}
-        wrapStyle={inputWrapStyle}
+        style={inputWrapStyle}
         suffix={renderSuffix()}
         value={value}
         placeholder={placeholder}
