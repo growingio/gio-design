@@ -3,7 +3,8 @@ import Tooltip from '../index';
 import '@gio-design/components/es/components/Tabs/style/index.css';
 import { act } from 'react-dom/test-utils';
 import { mount, render } from 'enzyme';
-import { getOverflowOptions } from '../placements';
+import getPlacements, { getOverflowOptions } from '../placements';
+import { isEqual } from 'lodash';
 
 async function waitForComponentToPaint(wrapper, amount = 500) {
   await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
@@ -137,5 +138,14 @@ describe('Testing Tooltip', () => {
     const result3 = getOverflowOptions(false);
     expect(result3.adjustX).toBe(0);
     expect(result3.adjustY).toBe(0);
+  });
+
+  test('getPlacements function', () => {
+    const placements = getPlacements({ arrowPointAtCenter: true });
+    expect(placements.top.points).not.toBeUndefined();
+    expect(placements.top.offset).not.toBeUndefined();
+    expect(placements.top.overflow).not.toBeUndefined();
+    expect(placements.top.targetOffset).not.toBeUndefined();
+    expect(isEqual(getPlacements({ arrowPointAtCenter: false }).topLeft.offset, placements.topLeft.offset)).toBe(false);
   });
 });

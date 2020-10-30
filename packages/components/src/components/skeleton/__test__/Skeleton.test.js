@@ -1,6 +1,6 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { mount, render, shallow } from 'enzyme';
+import { mount, render } from 'enzyme';
 import Skeleton from '../index';
 
 async function waitForComponentToPaint(wrapper, amount = 500) {
@@ -30,7 +30,7 @@ describe('Testing Skeleton', () => {
     const wrapper = mount(
       <Skeleton avatar loading={false}>
         children
-      </Skeleton>,
+      </Skeleton>
     );
     wrapper.setProps({ delay: 1000, loading: true });
     expect(wrapper.exists('.gio-skeleton')).toBe(false);
@@ -57,6 +57,10 @@ describe('Testing Skeleton', () => {
     const wrapper = mount(<Skeleton>children</Skeleton>);
     wrapper.setProps({ paragraph: { row: 5 } });
     expect(wrapper.find('.gio-skeleton-paragraph').children()).toHaveLength(5);
+    wrapper.setProps({ paragraph: false, title: false });
+    expect(wrapper.exists('.gio-skeleton-paragraph')).toBe(false);
+    expect(wrapper.exists('.gio-skeleton-title')).toBe(false);
+    expect(wrapper.exists('.gio-skeleton-content')).toBe(false);
   });
 
   test('props active', () => {
@@ -64,8 +68,13 @@ describe('Testing Skeleton', () => {
     expect(wrapper.exists('.gio-skeleton-active')).toBe(true);
   });
 
-  test('Skeleton Image', () => {
-    const wrapper = mount(<Skeleton.Image active>children</Skeleton.Image>);
+  test('Skeleton Image', (done) => {
+    const wrapper = mount(<Skeleton.Image loading>children</Skeleton.Image>);
     expect(wrapper.exists('.gio-skeleton-image')).toBe(true);
+    wrapper.setProps({ loading: false });
+    waitForComponentToPaint(wrapper, 1000).then(() => {
+      expect(wrapper.exists('.gio-skeleton-image')).toBe(false);
+      done();
+    });
   });
 });
