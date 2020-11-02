@@ -66,7 +66,7 @@ describe('Testing Tabs', () => {
         <TabPane disabled tab="预置" key="3">
           444
         </TabPane>
-      </Tabs>,
+      </Tabs>
     );
     expect(wrapper.find('.gio-tabnav').childAt(1).exists('.gio-tabnav-item-active')).toBe(true);
   });
@@ -105,5 +105,26 @@ describe('Testing Tabs', () => {
     expect(wrapper.find('.gio-tabs-tabpane-active').at(0).text()).toBe('111');
     wrapper.find('.gio-tabnav-item').at(2).simulate('click');
     expect(wrapper.find('.gio-tabs-tabpane-active').at(0).text()).toBe('222');
+  });
+
+  it('only render TabPane', () => {
+    const wrapper = mount(
+      <Tabs defaultActiveKey="1">
+        <TabPane tab="我的" key="0">
+          111
+        </TabPane>
+        <TabPane tab="全部" key="1">
+          222
+        </TabPane>
+        <TabPane tab="共享" key="2">
+          333
+        </TabPane>
+        <TabPane disabled tab="预置" key="3">
+          444
+        </TabPane>
+        <div className="norender-div">我不会被渲染</div>
+      </Tabs>
+    );
+    expect(wrapper.exists('.norender-div')).toBe(false);
   });
 });

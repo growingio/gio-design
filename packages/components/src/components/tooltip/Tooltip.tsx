@@ -19,7 +19,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     prefixCls: customizePrefixCls,
     overlay,
     children,
-    arrowPointAtCenter,
+    arrowPointAtCenter = false,
     destroyTooltipOnHide,
     ...rest
   } = props;

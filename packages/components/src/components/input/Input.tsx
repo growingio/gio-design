@@ -10,10 +10,12 @@ const InputFC: React.FC<InputProps> = ({
   disabled = false,
   readOnly = false,
   placeholder = '',
-  inputStyle,
   size = 'medium',
+  prefix,
   suffix,
+  style,
   wrapStyle,
+  inputStyle,
   forwardRef,
   ...rest
 }: InputProps) => {
@@ -45,16 +47,42 @@ const InputFC: React.FC<InputProps> = ({
     return <div className={`${prefixCls}-container-suffix`}>{suffix}</div>;
   };
 
+  const renderPrefix = () => {
+    if (!prefix) {
+      return null;
+    }
+    return <div className={`${prefixCls}-container-prefix`}>{prefix}</div>
+  }
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (typeof rest.onChange === 'function') {
+      rest.onChange(e)
+    }
+  }
+
+  const outerStyle = style !== undefined ? style : wrapStyle
+  const innerStyle = style !== undefined ? {} : inputStyle
+  if (wrapStyle !== undefined || inputStyle !== undefined) {
+    console.warn(
+      'The latest version of Input only accept "style" for inline-style setting, ' +
+      'please fix your code because the deprecated parameter "wrapStyle" and "inputStyle" ' +
+      'will be removed in the future version'
+    )
+  }
+
   return (
-    <div className={wrapClass} style={wrapStyle}>
+    <div className={wrapClass} style={outerStyle}>
+      {renderPrefix()}
       <input
         className={inputClass}
         type={type}
+        value={rest.value ?? ''}
+        onChange={onChange}
         onKeyDown={handleOnPressEnter}
+        style={innerStyle}
         disabled={disabled}
         readOnly={readOnly}
         placeholder={placeholder}
-        style={inputStyle}
         ref={forwardRef}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}

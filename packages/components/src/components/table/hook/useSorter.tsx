@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback } from 'react';
+import { useShallowCompareEffect } from 'react-use';
 import { get, isUndefined, clone, has } from 'lodash';
 import { InnerColumnsType, SortState } from '../interface';
 
-const collectSortStates = <RecordType,>(columns: InnerColumnsType<RecordType> = []): SortState<RecordType>[] => {
+export const collectSortStates = <RecordType,>(columns: InnerColumnsType<RecordType> = []): SortState<RecordType>[] => {
   const sortStates: SortState<RecordType>[] = [];
   columns.forEach((column) => {
     if (has(column, 'children')) {
@@ -27,9 +28,11 @@ const useSorter = <RecordType,>(
   data: RecordType[]
 ): [SortState<RecordType>[], (sortState: SortState<RecordType>) => void, RecordType[]] => {
   // record all sorter states
-  const [sortStates, setSortStates] = React.useState<SortState<RecordType>[]>(
-    useMemo(() => collectSortStates(columns), [columns])
-  );
+  const [sortStates, setSortStates] = useState<SortState<RecordType>[]>(collectSortStates(columns));
+
+  useShallowCompareEffect(() => {
+    setSortStates(collectSortStates(columns));
+  }, [columns]);
 
   // update sorter states action
   const updateSorterStates = useCallback(
@@ -55,7 +58,7 @@ const useSorter = <RecordType,>(
   );
 
   // filter active sorter states
-  const activeSortStates = useMemo(() => sortStates.filter((state: SortState<RecordType>) => state.sortOrder), [
+  const activeSortStates = useMemo(() => sortStates.filter((state: SortState<RecordType>) => !!state.sortOrder), [
     sortStates,
   ]);
 
@@ -86,7 +89,7 @@ const useSorter = <RecordType,>(
       }
       return 0;
     });
-  }, [columns, activeSortStates, data]);
+  }, [activeSortStates, data]);
 
   return [sortStates, updateSorterStates, sortedData];
 };

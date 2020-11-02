@@ -37,11 +37,12 @@ export interface ColumnGroupType<RecordType> extends Omit<ColumnType<RecordType>
 
 export type ColumnsType<RecordType> = (ColumnGroupType<RecordType> | ColumnType<RecordType>)[];
 
-interface InnerColumnType<RecordType> extends ColumnType<RecordType> {
+export interface InnerColumnType<RecordType> extends ColumnType<RecordType> {
   key: string;
 }
-interface InnerColumnGroupType<RecordType> extends ColumnGroupType<RecordType> {
+export interface InnerColumnGroupType<RecordType> extends ColumnGroupType<RecordType> {
   key: string;
+  children: InnerColumnsType<RecordType>;
 }
 
 export type InnerColumnsType<RecordType> = (InnerColumnType<RecordType> | InnerColumnGroupType<RecordType>)[];

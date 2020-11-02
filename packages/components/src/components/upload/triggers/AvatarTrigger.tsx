@@ -6,14 +6,20 @@ import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import { UploadPrefixClsContext } from '../UploadContext';
 import Actions from '../Actions';
 
-const CardTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, onRemove, children }: ITriggerProps) => {
+const AvatarTrigger: React.FC<ITriggerProps> = ({
+  triggerProps,
+  file,
+  onRemove,
+  children,
+  placeholderImg = '',
+}: ITriggerProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
   const cls = classnames(triggerProps?.className, `${prefixCls}__avatar`);
 
   return (
     <Loading loading={file?.status === STATUS_UPLOADING} size="small" title="上传中">
       <span className={cls}>
-        <Avatar src={file?.dataUrl ?? ''} size="huge">
+        <Avatar src={file?.dataUrl ?? placeholderImg} size="huge">
           {children as string}
         </Avatar>
         <Actions file={file} useUpload useDelete={file?.status === STATUS_SUCCESS} onRemove={onRemove} />
@@ -22,4 +28,4 @@ const CardTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, onRemove, ch
   );
 };
 
-export default CardTrigger;
+export default AvatarTrigger;
