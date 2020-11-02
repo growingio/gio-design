@@ -16374,7 +16374,7 @@ react-dnd-html5-backend@^11.1.3:
 
 react-dnd@*, react-dnd@^11.1.3:
   version "11.1.3"
-  resolved "https://repo.growingio.com/repository/npm-group/react-dnd/-/react-dnd-11.1.3.tgz#f9844f5699ccc55dfc81462c2c19f726e670c1af"
+  resolved "https://registry.yarnpkg.com/react-dnd/-/react-dnd-11.1.3.tgz#f9844f5699ccc55dfc81462c2c19f726e670c1af"
   integrity sha512-8rtzzT8iwHgdSC89VktwhqdKKtfXaAyC4wiqp0SywpHG12TTLvfOoL6xNEIUWXwIEWu+CFfDn4GZJyynCEuHIQ==
   dependencies:
     "@react-dnd/shallowequal" "^2.0.0"
