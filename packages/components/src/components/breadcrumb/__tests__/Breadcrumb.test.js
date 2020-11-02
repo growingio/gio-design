@@ -101,7 +101,7 @@ describe('Breadcrumb', () => {
   });
 
   it('should render routes with params', () => {
-    const wrapper = render(<Breadcrumb routes={routes} params={{ first: 1, last: 1 }} />);
+    const wrapper = render(<Breadcrumb routes={routes} params={{ first: 1, last: 1 }} />); 
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -151,4 +151,25 @@ describe('Breadcrumb', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('can replace the content after :',() => {
+    const route = [
+      {
+        path: 'components',
+        breadcrumbName: '首页',
+      },
+      {
+        path: 'basic',
+        breadcrumbName: '一级面:包屑',
+      },
+      {
+        path: 'breadcrumb',
+        breadcrumbName: '二级面包屑',
+      },
+    ]
+    const wrapper = render(
+      <Breadcrumb routes={route} params={{面:'背',包:'条'}} />
+    )
+    expect(wrapper).toMatchSnapshot();
+  })
 });
