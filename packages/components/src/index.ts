@@ -41,7 +41,7 @@ export { default as Tooltip } from './components/tooltip';
 export { default as Tree } from './components/tree';
 export { default as Upload } from './components/upload';
 export { default as List } from './components/list';
-export { default as Select } from './components/select';
+export { default as Select, SelectOptions } from './components/select';
 export { default as Form, FormLayout } from './components/form';
 export { default as TimePicker } from './components/time-picker';
 export { default as Grid } from './components/grid';
