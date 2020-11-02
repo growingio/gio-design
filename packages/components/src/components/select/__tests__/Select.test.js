@@ -183,11 +183,3 @@ describe('independent function should work as expected', () => {
     expect(tree.find('.select-search-highlight').text()).toBe('s');
   });
 });
-
-describe('1', () => {
-  it('should have correct classes', () => {
-    const tree = shallow(<Select />);
-    tree.setProps({ options });
-    expect(1);
-  });
-});

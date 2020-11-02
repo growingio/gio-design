@@ -40,7 +40,7 @@
     border: 1px solid @color-border-input-normal;
   }
 
-  &:not(&-bordered):hover {
+  &:not(&-bordered):not(&-disabled):hover {
     background-color: @color-background-button-default-hover;
   }
 
@@ -107,8 +107,14 @@
   }
 
   &-disabled {
+    & > * {
+      pointer-events: none;
+    }
+    color: #d3d7e7;
+    text-shadow: none;
     background: @color-background-input-disable;
-    border: @color-border-input-disable;
+    border-color: @color-border-input-disable;
+    cursor: not-allowed !important;
   }
 
   &-focused&-bordered {

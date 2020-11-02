@@ -33,7 +33,10 @@ export const CustomOption = (value: string, withGroup = false, id = customOption
       };
 
 // provide search matching hightlight;
-export const defaultLabelRenderer = (input: string, prefix: string) => (option: Option, isGroup: boolean) => {
+export const defaultLabelRenderer = (input: string, prefix: string) => (
+  option: Option,
+  isGroup: boolean
+): React.ReactNode => {
   if (isGroup) return option.label;
   const index = option.label.indexOf(input);
   return (
@@ -142,19 +145,23 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   }, [options]);
 
   useEffect(() => {
-    setFocused(visible);
-    if (visible) {
-      if (inputRef.current) {
-        inputRef.current.focus();
+    if (!disabled) {
+      setFocused(visible);
+      if (visible) {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
       }
     }
-  }, [visible]);
+  }, [visible, disabled]);
 
   const onVisibleChange = (optVisible: boolean) => {
-    setVisbile(optVisible);
-    if (!optVisible) {
-      setTimeout(clearInput, 0);
-      inputRef.current?.blur();
+    if (!disabled) {
+      setVisbile(optVisible);
+      if (!optVisible) {
+        setTimeout(clearInput, 0);
+        inputRef.current?.blur();
+      }
     }
   };
 
@@ -263,7 +270,11 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     if (!multiple) {
       onVisibleChange(false);
     }
-    inputRef.current?.focus();
+    if (multiple) {
+      inputRef.current?.focus();
+    } else {
+      inputRef.current?.blur();
+    }
     clearInput();
     onSelect?.(selectedValue, option);
   };
@@ -272,7 +283,11 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     if (!multiple) {
       onVisibleChange(false);
     }
-    inputRef.current?.focus();
+    if (multiple) {
+      inputRef.current?.focus();
+    } else {
+      inputRef.current?.blur();
+    }
     onDeselect?.(selectedValue, option);
   };
 
@@ -291,7 +306,13 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
 
   const renderMultipleValue = () =>
     (value as Array<string>)?.map((v) => (
-      <Tag key={v} className={`${prefix}-item`} closable persistCloseIcon onClose={(e) => onTagCloseClick(e, v)}>
+      <Tag
+        key={v}
+        className={`${prefix}-item`}
+        persistCloseIcon
+        onClose={(e) => onTagCloseClick(e, v)}
+        disabled={disabled}
+      >
         {optionLabelRenderer(v, getOptionByValue(v))}
       </Tag>
     ));
@@ -317,10 +338,9 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
 
   const trigger = (
     <div
-      role="combobox"
+      role={disabled ? undefined : 'combobox'}
       aria-expanded={visible}
       aria-controls="expandable"
-      tabIndex={0}
       className={classnames(`${prefix}`, `${prefix}-${size}`, {
         [`${prefix}-single`]: !multiple,
         [`${prefix}-focused`]: isFocused,
@@ -328,13 +348,14 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
         [`${prefix}-bordered`]: bordered,
         className,
       })}
+      aria-disabled={disabled}
       style={style}
       ref={selectorRef}
     >
       <div className={`${prefix}-selector`}>
         <div className={classnames(`${prefix}-values-wrapper`)}>
           {multiple ? renderMultipleValue() : renderSingleValue()}
-          {searchable && renderSearchInput()}
+          {searchable && !disabled && renderSearchInput()}
         </div>
       </div>
       <div className={`${prefix}-arrow`}>{arrowComponent}</div>
