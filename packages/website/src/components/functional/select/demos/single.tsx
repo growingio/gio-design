@@ -4,7 +4,7 @@ import '@gio-design/components/es/components/select/style/index.css';
 import '@gio-design/components/es/components/radio/style/css.js';
 
 import { SizeType } from '@gio-design/components/es/components/config-provider/SizeContext';
-import options from './options';
+import options, { optionsWithoutGroup } from './options';
 
 const Basics = (): React.ReactNode => {
   const [size, setSize] = useState<SizeType>('middle');
@@ -18,7 +18,7 @@ const Basics = (): React.ReactNode => {
         </Radio.Group>
       </div>
       <div>
-        <Select options={options} size={size} style={{ width: 140 }} />
+        <Select options={optionsWithoutGroup} size={size} style={{ width: 140 }} />
       </div>
     </>
   );
