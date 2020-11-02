@@ -1,11 +1,7 @@
 import React from 'react';
 import { mount, render } from 'enzyme';
-import { act } from 'react-dom/test-utils';
+import { waitForComponentToPaint } from '../../../utils/test';
 import Loading from '../Loading';
-
-async function waitForComponentToPaint(wrapper, amount = 500) {
-  await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
-}
 
 describe('Testing Loading', () => {
   const getLoading = () => <Loading>这是一个测试</Loading>;

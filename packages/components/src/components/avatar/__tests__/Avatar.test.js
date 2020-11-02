@@ -2,13 +2,9 @@ import React from 'react';
 import Avatar from '../Avatar';
 import '@gio-design/components/es/components/avatar/style/index.css';
 import renderer from 'react-test-renderer';
-import { act } from 'react-dom/test-utils';
+import { waitForComponentToPaint } from '../../../utils/test';
 import { mount } from 'enzyme';
 import image from './icon.jpeg';
-
-async function waitForComponentToPaint(wrapper, amount = 500) {
-  await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
-}
 
 describe('Testing Avatar', () => {
   it('should be stable', () => {
