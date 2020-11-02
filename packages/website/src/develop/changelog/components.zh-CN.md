@@ -9,6 +9,20 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.10.6
+
+- component
+  - 🆕 avatar, card类型的 Upload 支持 placeholderImg 展示 [#379](https://github.com/growingio/gio-design/pull/379)
+  - 🛎 StepModal 的 onNext, onBack 支持异步调用，可打断下一步的执行 [#378](https://github.com/growingio/gio-design/pull/378)
+- popconfirm
+  - 去掉跟disabled相关的代码 [#377](https://github.com/growingio/gio-design/pull/377)
+- tootip
+  - 🆕 新增 disabled 参数 [#367](https://github.com/growingio/gio-design/pull/367)
+- input
+  - 修改Input组件为受控组件，以及相关website demo，unit test, 样式不再固定为300px [#374](https://github.com/growingio/gio-design/pull/374)
+- Table
+  - 修复当Table内容为空时，鼠标hover 会变色的问题。定义当设置ellipsis时与render方法之间的关系。[#334](https://github.com/growingio/gio-design/pull/334)
+
 ## 20.10.5
 
 - Grid
