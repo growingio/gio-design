@@ -310,6 +310,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
         key={v}
         className={`${prefix}-item`}
         persistCloseIcon
+        closable
         onClose={(e) => onTagCloseClick(e, v)}
         disabled={disabled}
       >
