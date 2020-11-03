@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, render } from 'enzyme';
-import { FilterOutlined } from '@gio-design/icons'
+import { FilterOutlined,PlusCircleFilled } from '@gio-design/icons'
 import Button from '..';
 
 describe('Testing button',() => {
@@ -8,23 +8,18 @@ describe('Testing button',() => {
   it('should have two chars',() => {
     const wrapper = mount(
       <Button htmlType="submit">
-        <span>提交</span>
+        <div>
+          <PlusCircleFilled />
+          提交
+        </div>
       </Button>
     )
-    expect(wrapper.exists('.gio-btn-two-chinese-chars')).toBe(false);
+    expect(wrapper.exists('.gio-btn-two-chinese-chars')).toBe(true);
+    wrapper.setProps({children:"提交"});
+    expect(wrapper).toMatchSnapshot();
   })
 
-  it('test',() => {
-    const wrapper = mount(
-      <Button>
-        点击
-      </Button>
-    )
-    wrapper.setProps({icon:<FilterOutlined />})
-    expect(wrapper.find('.gio-btn').text()).toBe("点击");
-  })
-
-  it('add.',() => {
+  it('Button have some children and when children is number,null,undefined.',() => {
     const num = 132;
     const wrapper = render(
       <div>
@@ -51,7 +46,7 @@ describe('Testing button',() => {
     expect(wrapper).toMatchSnapshot();
   })
 
-  it('buttons.',() => {
+  it('some types button.',() => {
       const wrapper = render(
         <div>
           <Button size="large">主要按钮</Button>
@@ -66,23 +61,7 @@ describe('Testing button',() => {
       expect(wrapper).toMatchSnapshot();
   })
 
-  it('button have icon and children.',() => {
-    const wrapper = render(
-      <div>
-        <Button icon={<FilterOutlined />} size="large" type="assist">
-          <span>过滤条件</span>
-        </Button>
-        <Button type="primary" disabled>
-          <div>禁用</div>
-          禁用
-          <div>禁用</div>
-        </Button>
-      </div>
-    )
-    expect(wrapper).toMatchSnapshot();
-  })
-
-  it('without text.',() => {
+  it('button without text.',() => {
     const wrapper = render(
       <div>
         <Button loading={false} icon={<FilterOutlined />} />
@@ -143,5 +122,4 @@ describe('Testing button',() => {
     wrapper.find('.gio-btn').simulate('change');
     expect(changeMock).toBeCalled();
   })
-
 })
