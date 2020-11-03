@@ -38,14 +38,12 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>, {}> {
     );
   }
 
-  public focus() {
-    this.selectRef.current && this.selectRef.current.focus();
+  public blur() {
+    this.selectRef.current && this.selectRef.current.blur();
   }
 
-  public blur() {
-    if (this.selectRef.current) {
-      this.selectRef.current.blur();
-    }
+  public focus() {
+    this.selectRef.current && this.selectRef.current.focus();
   }
 
   public renderTreeSelect = ({
