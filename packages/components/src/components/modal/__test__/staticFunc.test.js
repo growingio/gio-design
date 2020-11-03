@@ -89,13 +89,14 @@ describe('Modal.staticFunc triggers correctly.', () => {
 
   function open(args) {
     jest.useFakeTimers();
-    confirm({
+    const modal = confirm({
       title: 'Confirm Modal',
       content: 'descriptions',
       ...args,
     });
     jest.runAllTimers();
     jest.useRealTimers();
+    return modal;
   }
 
   it('should not render title when title not defined', () => {
@@ -132,9 +133,15 @@ describe('Modal.staticFunc triggers correctly.', () => {
     expect(onOk.mock.calls.length).toBe(1);
   });
 
-  it('should allow Modal.confirm without onClose and onOk been set', () => {
+  it('should allow Modal.confirm close without onClose been set', () => {
     open();
     $$('.gio-btn')[0].click();
+    expect(errorSpy).not.toHaveBeenCalled();
+  });
+
+  it('should allow Modal.confirm close without onOk been set', () => {
+    open();
+    $$('.gio-btn-primary')[0].click();
     expect(errorSpy).not.toHaveBeenCalled();
   });
 
@@ -158,5 +165,36 @@ describe('Modal.staticFunc triggers correctly.', () => {
     await sleep();
 
     expect(errorSpy).toHaveBeenCalledWith(error);
+  });
+
+  it('should update Modal title', async () => {
+    const modal = open({
+      title: 'init title',
+    });
+    modal.update({
+      title: 'new title',
+    });
+    await sleep();
+    expect(document.querySelector('.gio-modal-callout__title').textContent).toBe('new title');
+  });
+
+  it('could be destroy', () => {
+    jest.useFakeTimers();
+    ['info', 'success', 'warn', 'error'].forEach((type) => {
+      const instance = Modal[type]({
+        title: 'title',
+        content: 'content',
+      });
+      act(() => {
+        jest.runAllTimers();
+      });
+      expect($$(`.gio-modal-callout--${type}`)).toHaveLength(1);
+      instance.destroy();
+      act(() => {
+        jest.runAllTimers();
+      });
+      expect($$(`.gio-modal-callout--${type}`)).toHaveLength(0);
+    });
+    jest.useRealTimers();
   });
 });

@@ -23,7 +23,7 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
-                "class": "gio-modal gio-modal-callout gio-modal--small zoom-appear",
+                "class": "gio-modal gio-modal-callout gio-modal-callout--confirm gio-modal--small zoom-appear",
                 "role": "document",
               },
               "children": Array [
@@ -3401,7 +3401,7 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
-              "class": "gio-modal gio-modal-callout gio-modal--small zoom-appear",
+              "class": "gio-modal gio-modal-callout gio-modal-callout--confirm gio-modal--small zoom-appear",
               "role": "document",
             },
             "children": Array [

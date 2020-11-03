@@ -11,6 +11,9 @@ export default () => {
     Modal.confirm({
       title: 'Confirm',
       content: 'Confirm Content',
+      afterClose: () => {
+        console.log('afterClose');
+      },
     });
   };
 
@@ -26,6 +29,9 @@ export default () => {
             resolve();
           }, 2000);
         }),
+      afterClose: () => {
+        console.log('afterClose');
+      },
     });
   };
 
@@ -41,6 +47,9 @@ export default () => {
             resolve();
           }, 2000);
         }),
+      afterClose: () => {
+        console.log('afterClose');
+      },
     });
   };
 
