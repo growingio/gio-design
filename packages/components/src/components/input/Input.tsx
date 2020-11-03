@@ -76,11 +76,11 @@ const InputFC: React.FC<InputProps> = ({
   }
 
   if (typeof prefixWidth === 'number') {
-    innerStyle.paddingLeft = prefixWidth
+    innerStyle.paddingLeft = prefixWidth;
   }
 
   if (typeof suffixWidth === 'number') {
-    innerStyle.paddingRight = suffixWidth
+    innerStyle.paddingRight = suffixWidth;
   }
 
   return (
