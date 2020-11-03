@@ -11,7 +11,9 @@ export interface InputProps extends Omit<InputPropsSuper, 'prefix'> {
   inputStyle?: React.CSSProperties;
   size?: 'large' | 'medium' | 'small';
   prefix?: React.ReactNode;
+  prefixWidth?: number;
   suffix?: React.ReactNode;
+  suffixWidth?: number;
   forwardRef?:
     | React.RefObject<HTMLInputElement>
     | React.MutableRefObject<HTMLInputElement>

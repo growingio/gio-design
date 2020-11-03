@@ -44,6 +44,10 @@
       padding-right: 44px;
     }
 
+    &-prefix {
+      padding-left: 50px;
+    }
+
     &::placeholder {
       color: @palette-black-1;
     }
@@ -69,9 +73,16 @@
     position: relative;
 
     &-suffix {
-      position: absolute;
-      top: 8px;
       right: 15px;
+    }
+
+    &-prefix {
+      left: 15px;
+    }
+
+    &-suffix, &-prefix {
+      position: absolute;
+      top: 7px;
 
       &-iconGroup {
         display: flex;

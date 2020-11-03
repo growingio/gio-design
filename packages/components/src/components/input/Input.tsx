@@ -12,7 +12,9 @@ const InputFC: React.FC<InputProps> = ({
   placeholder = '',
   size = 'medium',
   prefix,
+  prefixWidth,
   suffix,
+  suffixWidth,
   style,
   wrapStyle,
   inputStyle,
@@ -20,7 +22,7 @@ const InputFC: React.FC<InputProps> = ({
   ...rest
 }: InputProps) => {
   const wrapClass = classNames(prefixCls, {
-    [`${prefixCls}-container`]: !!suffix,
+    [`${prefixCls}-container`]: !!suffix || !!prefix,
   });
 
   const inputClass = classNames(
@@ -30,7 +32,10 @@ const InputFC: React.FC<InputProps> = ({
     },
     {
       [`${prefixCls}-content-suffix`]: !!suffix,
-    }
+    },
+    {
+      [`${prefixCls}-content-prefix`]: !!prefix,
+    },
   );
 
   const handleOnPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -68,6 +73,14 @@ const InputFC: React.FC<InputProps> = ({
       'please fix your code because the deprecated parameter "wrapStyle" and "inputStyle" ' +
       'will be removed in the future version'
     )
+  }
+
+  if (typeof prefixWidth === 'number') {
+    innerStyle.paddingLeft = prefixWidth
+  }
+
+  if (typeof suffixWidth === 'number') {
+    innerStyle.paddingRight = suffixWidth
   }
 
   return (
