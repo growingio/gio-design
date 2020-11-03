@@ -14,9 +14,7 @@ export default function renderSwitcherIcon(
   }
   const switcherCls = `${prefixCls}-switcher-icon`;
   if (React.isValidElement(switcherIcon)) {
-    return React.cloneElement(switcherIcon, {
-      className: classNames(switcherIcon?.props.className || '', switcherCls),
-    });
+    return React.cloneElement(switcherIcon, { className: classNames(switcherIcon.props.className || '', switcherCls) });
   }
 
   if (switcherIcon) {
