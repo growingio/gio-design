@@ -18,19 +18,21 @@ export default function callout(config: IModalStaticFuncConfig): IModalStaticFun
     });
   }
 
-  function destroy() {
+  function destroy(originAfterClose: () => void) {
     const unmountResult = ReactDOM.unmountComponentAtNode(container);
 
     if (unmountResult && container.parentNode) {
       container.parentNode.removeChild(container);
     }
+
+    originAfterClose?.();
   }
 
   function close(...args: any[]) {
     props = {
       ...props,
       visible: false,
-      afterClose: destroy.bind(this, ...args),
+      afterClose: destroy.bind(this, props.afterClose, ...args),
     };
     render(props);
   }
