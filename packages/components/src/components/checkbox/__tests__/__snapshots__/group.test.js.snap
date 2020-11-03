@@ -4427,3 +4427,7 @@ initialize {
   },
 }
 `;
+
+exports[`CheckboxGroup set defaultValue and value 1`] = `ReactWrapper {}`;
+
+exports[`CheckboxGroup set defaultValue and value 2`] = `ReactWrapper {}`;
