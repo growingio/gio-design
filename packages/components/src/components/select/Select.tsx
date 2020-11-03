@@ -255,13 +255,9 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
           if (Array.isArray(value)) {
             value.push(input);
             onValueChange([...(value as Array<string>)]);
-          } else {
-            onValueChange(multiple ? [input] : input);
           }
         }
         clearInput();
-        break;
-      default:
         break;
     }
   };

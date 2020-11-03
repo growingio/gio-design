@@ -72,6 +72,9 @@ describe('<Select />', () => {
     act(() => {
       tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: '全' } });
     });
+    act(() => {
+      tree.find('input.gio-select-input.gio-select-item').simulate('click');
+    });
     expect(dropdown.querySelectorAll('.gio-select-option')).toHaveLength(4);
     tree.unmount();
   });
@@ -86,16 +89,6 @@ describe('<Select multiple/>', () => {
   it('renders <Select multiple/> components', () => {
     const tree = renderer.create(<Select defaultValue={['all']} options={optionsWithOutGroup} multiple />).toJSON();
     expect(tree).toMatchSnapshot();
-  });
-
-  it('should have correct classes', () => {
-    const tree = shallow(<Select options={options} />);
-    tree.setProps({ size: 'small' });
-    expect(tree.find('.gio-select-small').exists()).toBeTruthy();
-    tree.setProps({ size: 'middle' });
-    expect(tree.find('.gio-select-middle').exists()).toBeTruthy();
-    tree.setProps({ size: 'large' });
-    expect(tree.find('.gio-select-large').exists()).toBeTruthy();
   });
 
   it('select dropdown should display correct search result', () => {
@@ -117,7 +110,7 @@ describe('<Select multiple/>', () => {
   });
 });
 
-describe('callback functions should work as expected', () => {
+describe('<Select /> callback functions should work as expected', () => {
   const onChange = (v, o) => {
     expect(v).toBe('all');
     expect(o).toMatchObject({ label: '全部', value: 'all' });
@@ -146,6 +139,7 @@ describe('callback functions should work as expected', () => {
         onDeselect={onDeSelect}
         onSearch={onSearch}
         searchable
+        allowCustomOption
       />
     );
     act(() => {
@@ -158,6 +152,160 @@ describe('callback functions should work as expected', () => {
       document.querySelector('.gio-select-dropdown .gio-select-option').click();
     });
     tree.unmount();
+  });
+});
+
+describe('<Select Multiple /> callback functions should work as expected on multiple mode', () => {
+  const onChange = (v, o) => {
+    expect(v).toEqual(['online', 'all']);
+    expect(o).toEqual([
+      { value: 'online', label: '已上线' },
+      { value: 'all', label: '全部' },
+    ]);
+  };
+
+  const onSelect = (v, o) => {
+    expect(v).toBe('all');
+    expect(o).toMatchObject({ label: '全部', value: 'all' });
+  };
+
+  const onDeSelect = (v, o) => {
+    expect(v).toBe('all');
+    expect(o).toMatchObject({ label: '全部', value: 'all' });
+  };
+
+  const onSearch = (i) => {
+    expect(i).toBe('全部');
+  };
+
+  it('onChange, onSelect, onDeselect, OnSearch', () => {
+    const tree = mount(
+      <Select
+        multiple
+        options={optionsWithOutGroup}
+        onChange={onChange}
+        onSelect={onSelect}
+        onDeselect={onDeSelect}
+        onSearch={onSearch}
+        searchable
+        defaultValue={['online']}
+      />
+    );
+    act(() => {
+      tree.simulate('click');
+    });
+    act(() => {
+      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: '全部' } });
+    });
+    act(() => {
+      document.querySelector('.gio-select-dropdown .gio-select-option').click();
+    });
+    tree.unmount();
+  });
+});
+
+describe('<Select allowCustomOptions multiple/> can create option by presee enter, and unselect by press delete key', () => {
+  it('should be able to create by enter', () => {
+    const tree = mount(<Select multiple allowCustomOption searchable options={options} defaultValue={['all']} />);
+    act(() => {
+      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: 'test' } });
+    });
+    act(() => {
+      tree.find('input.gio-select-input.gio-select-item').simulate('keydown', { keyCode: 13 });
+    });
+    expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(2);
+    act(() => {
+      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: '' } });
+    });
+    act(() => {
+      tree.find('input.gio-select-input.gio-select-item').simulate('keydown', { keyCode: 46 });
+    });
+    expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(1);
+    act(() => {
+      tree.unmount();
+    });
+  });
+});
+
+describe('<Select /> when press delete key will unselect current option', () => {
+  it('should be able to create by enter', () => {
+    const tree = mount(<Select searchable options={options} defaultValue={'all'} />);
+    act(() => {
+      tree.find('input.gio-select-input.gio-select-item').simulate('keydown', { keyCode: 46 });
+    });
+    expect(tree.render().find('.gio-select-values-wrapper').children('.gio-select-item-text').text()).toBe('');
+    act(() => {
+      tree.unmount();
+    });
+  });
+});
+
+describe('<Select /> when press delete key will unselect current option', () => {
+  it('should be able to create by enter', () => {
+    const onDeSelect = (v, o) => {
+      expect(v).toBe('all');
+      expect(o).toMatchObject({ label: '全部', value: 'all' });
+    };
+
+    const tree = mount(<Select multiple searchable options={options} defaultValue={['all']} onDeselect={onDeSelect} />);
+
+    act(() => {
+      tree.find('.gio-tag .gio-tag-closable-icon').at(0).simulate('click');
+    });
+
+    expect(tree.render().find('.gio-select-values-wrapper').children()).toHaveLength(2);
+    act(() => {
+      tree.unmount();
+    });
+  });
+});
+
+describe('<Select /> deselect list', () => {
+  it('should be able to create by enter', () => {
+    const onDeSelect = (v, o) => {
+      expect(v).toBe('all');
+      expect(o).toMatchObject({ label: '全部', value: 'all' });
+    };
+
+    const tree = mount(
+      <Select multiple searchable options={optionsWithOutGroup} defaultValue={['all']} onDeselect={onDeSelect} />
+    );
+    act(() => {
+      tree.simulate('click');
+    });
+    act(() => {
+      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: '全部' } });
+    });
+    act(() => {
+      document.querySelector('.gio-select-dropdown').querySelectorAll('.gio-select-option')[0].click();
+    });
+    tree.unmount();
+  });
+});
+
+describe('<Select /> deselect list', () => {
+  it('should be able to create by enter', () => {
+    const tree = mount(
+      <Select searchable options={optionsWithOutGroup} defaultValue={'all'} onDeselect={onDeSelect} />
+    );
+
+    const onDeSelect = (v, o) => {
+      expect(v).toBe('all');
+      expect(o).toMatchObject({ label: '全部', value: 'all' });
+      act(() => {
+        tree.unmount();
+      });
+    };
+
+    act(() => {
+      tree.simulate('click');
+    });
+    act(() => {
+      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: '全部' } });
+    });
+    act(() => {
+      document.querySelector('.gio-select-dropdown').querySelectorAll('.gio-select-option')[0].click();
+    });
   });
 });
 
