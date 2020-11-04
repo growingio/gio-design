@@ -1,11 +1,7 @@
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 import { mount, render } from 'enzyme';
+import { waitForComponentToPaint } from '../../../utils/test';
 import Skeleton from '../index';
-
-async function waitForComponentToPaint(wrapper, amount = 500) {
-  await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
-}
 
 describe('Testing Skeleton', () => {
   it('should be stable', () => {

@@ -4,6 +4,20 @@ import { ColumnsType, RowSelection, ColumnType } from '../interface';
 import Checkbox from '../../checkbox';
 import useControlledState from '../../../utils/hooks/useControlledState';
 
+export const getRowKey = <RecordType,>(row: RecordType, rowKey?: string | ((record: RecordType) => string)) => {
+  if (rowKey) {
+    if (isFunction(rowKey)) {
+      return rowKey(row);
+    }
+    if (isString(rowKey)) {
+      if (isString(get(row, rowKey))) {
+        return get(row, rowKey);
+      }
+    }
+  }
+  return get(row, 'key');
+};
+
 const useSelection = <RecordType,>(
   data: RecordType[],
   rowSelection: RowSelection<RecordType> | undefined,
@@ -14,20 +28,8 @@ const useSelection = <RecordType,>(
   const { onChange, selectedRowKeys, columnWidth = 50, fixed } = rowSelection || {};
   const { rowKey } = config;
 
-  const getRowKey = (row: RecordType) => {
-    if (rowKey) {
-      if (isFunction(rowKey)) {
-        return rowKey(row);
-      }
-      if (isString(rowKey)) {
-        return rowKey;
-      }
-    }
-    return get(row, 'key');
-  };
-
   const [localSelectedRowKeys, setLocalSelectedRowKeys] = useControlledState<string[]>(selectedRowKeys, []);
-  const currentPageRowKeys = useMemo(() => data.map((item) => getRowKey(item)), [data]);
+  const currentPageRowKeys = useMemo(() => data.map((item) => getRowKey(item, rowKey)), [data]);
   const allChecked = useMemo(
     () => intersection(localSelectedRowKeys, currentPageRowKeys).length === currentPageRowKeys.length,
     [currentPageRowKeys, localSelectedRowKeys]
@@ -38,7 +40,7 @@ const useSelection = <RecordType,>(
   ]);
   const partChecked = useMemo(() => !allChecked && atLeastOneChecked, [allChecked, atLeastOneChecked]);
   const getSelectRows = useCallback(
-    (_selectedRowKeys) => data.filter((item) => _selectedRowKeys.includes(getRowKey(item))),
+    (_selectedRowKeys) => data.filter((item) => _selectedRowKeys.includes(getRowKey(item, rowKey))),
     [data]
   );
 
@@ -61,7 +63,7 @@ const useSelection = <RecordType,>(
     align: 'center',
     width: columnWidth,
     render: (...rest) => {
-      const key = getRowKey(rest[1]);
+      const key = getRowKey(rest[1], rowKey);
       return (
         <Checkbox
           checked={localSelectedRowKeys.includes(key)}

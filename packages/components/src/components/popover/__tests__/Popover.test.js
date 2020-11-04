@@ -1,12 +1,8 @@
 import React from 'react';
 import Popover from '../index';
 import '@gio-design/components/es/components/Tabs/style/index.css';
-import { act } from 'react-dom/test-utils';
+import { waitForComponentToPaint } from '../../../utils/test';
 import { mount, render } from 'enzyme';
-
-async function waitForComponentToPaint(wrapper, amount = 500) {
-  await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
-}
 
 describe('Testing Popover', () => {
   const getPopover = () => (

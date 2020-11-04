@@ -67,6 +67,31 @@ describe('Modal snapshot match', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
+  it('should match Modal with custom Footer snapshot.', () => {
+    const wrapper = mount(
+      <Modal
+        visible
+        title="title"
+        onClose={() => {
+          console.log('close');
+        }}
+        onOk={() => console.log('ok')}
+        afterClose={() => {
+          console.log('after close');
+        }}
+        footer={
+          // eslint-disable-next-line react/jsx-wrap-multilines
+          <div style={{ textAlign: 'left' }}>
+            <span>新建</span>
+          </div>
+        }
+      >
+        有自定义 Footer 的 Modal
+      </Modal>
+    );
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
   it('should be a small Modal.', () => {
     const wrapper = mount(
       <Modal
@@ -155,5 +180,16 @@ describe('Modal Test.', () => {
     expect(onClose).toHaveBeenCalled();
     wrapper.find('.gio-modal__btn-ok').at(0).simulate('click');
     expect(onClose).toHaveBeenCalled();
+  });
+
+  it('should stop call onClose.', () => {
+    const onClose = jest.fn();
+    const wrapper = mount(
+      <Modal visible title="title" content="content" onClose={onClose} onOk={() => Promise.reject('reject')}>
+        Default Modal
+      </Modal>
+    );
+    wrapper.find('.gio-modal__btn-ok').at(0).simulate('click');
+    expect(onClose).not.toHaveBeenCalled();
   });
 });

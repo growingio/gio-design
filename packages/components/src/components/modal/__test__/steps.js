@@ -3,9 +3,6 @@ import React from 'react';
 import Button from '../../button';
 
 const StepOneContent = ({ children, step, push, pop }) => {
-  console.log('===Log Start===');
-  console.log(step);
-  console.log('---Log End---');
   const handleNext1 = () => {
     push('2-1');
   };
@@ -114,5 +111,74 @@ export const steps = [
     content: 'Step Three',
     onNext: () => console.log('step 3 onNext.'),
     onBack: () => console.log('step 3 onBack.'),
+  },
+];
+
+export const mixedSteps = [
+  {
+    key: '1',
+    return: null,
+    title: '步骤 1',
+    content: 'Step One',
+    onNext: () => console.log('step 1 onNext.'),
+    onBack: () =>
+      new Promise((resolve) => {
+        console.log('step 1 onBack.');
+        resolve('next step in step 1.');
+      }),
+  },
+  {
+    key: '2',
+    return: '1',
+    title: '步骤 2',
+    content: 'Step Two',
+    onNext: () =>
+      new Promise((resolve) => {
+        setTimeout(() => {
+          resolve('next step in step 2.');
+        }, 2000);
+      }),
+  },
+  {
+    key: '3',
+    return: '2',
+    title: '步骤 3',
+    content: 'Step Three',
+  },
+];
+
+export const stepsOne = [
+  {
+    key: '1',
+    return: null,
+    title: '步骤 1',
+    content: 'Step One',
+    onNext: () => console.log('step 1 onNext.'),
+    onBack: () => console.log('step 1 onBack.'),
+  },
+  {
+    key: '2',
+    return: '1',
+    title: '步骤 2',
+    content: 'Step Two',
+    onNext: () => console.log('step 2 onNext.'),
+  },
+];
+
+export const stepsTwo = [
+  {
+    key: 'one',
+    return: null,
+    title: '步骤 1',
+    content: 'Step One',
+    onNext: () => console.log('step 1 onNext.'),
+    onBack: () => console.log('step 1 onBack.'),
+  },
+  {
+    key: 'two',
+    return: 'one',
+    title: '步骤 2',
+    content: 'Step Two',
+    onNext: () => console.log('step 2 onNext.'),
   },
 ];

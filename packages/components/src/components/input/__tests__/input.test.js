@@ -18,6 +18,7 @@ describe('Input', () => {
 describe('Input.Password', () => {
   it('should change type when click', () => {
     const wrapper = mount(<Input.Password />);
+    expect(wrapper.render()).toMatchSnapshot();
     wrapper.find('input').simulate('change', { target: { value: '111' } });
     expect(wrapper.render()).toMatchSnapshot();
     wrapper.find('.gio-input-container-suffix-icon').at(0).simulate('click');
@@ -30,6 +31,7 @@ describe('Input.Password', () => {
 describe('Input.InputNumber', () => {
   it('should change type when click', () => {
     const wrapper = mount(<Input.InputNumber onChange={() => {}} />);
+    expect(wrapper.render()).toMatchSnapshot();
     wrapper.find('input').simulate('change', { target: { value: 1 } });
     expect(wrapper.render()).toMatchSnapshot();
     wrapper.find('.gio-input-container-suffix-iconGroup-top').at(0).simulate('click');

@@ -30,7 +30,7 @@ const CalloutModal: React.FC<ICalloutModalProps> = ({
   const prefixCls = getPrefixCls('modal', customPrefixCls);
 
   const calloutPrefixCls = `${prefixCls}-callout`;
-  const calloutModalClassName = classnames(className, calloutPrefixCls);
+  const calloutModalClassName = classnames(className, calloutPrefixCls, `${calloutPrefixCls}--${type}`);
   const calloutModalWrapClassName = classnames(wrapClassName, `${calloutPrefixCls}__wrapper`);
   const iconCls = classnames(`${calloutPrefixCls}__icon`, `${calloutPrefixCls}__icon--${type}`);
 

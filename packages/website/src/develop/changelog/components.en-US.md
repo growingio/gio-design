@@ -9,6 +9,20 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.10.6
+
+- component
+  - 🆕 support placholderImg in avatar and card Upload [#379](https://github.com/growingio/gio-design/pull/379)
+  - 🛎 support async function in StepModal's step change [#378](https://github.com/growingio/gio-design/pull/378)
+- popconfirm
+  - remove code associated with disabled [#377](https://github.com/growingio/gio-design/pull/377)
+- tootip
+  - 🆕 add disabled parameter [#367](https://github.com/growingio/gio-design/pull/367)
+- input
+  - change Input component is controlled component，and other website demo，unit test. and style parameter fix [#374](https://github.com/growingio/gio-design/pull/374)
+- Table
+  - Fix mouse hover will change color when the table content is empty. Define the relationship with the render method when ellipsis。[#334](https://github.com/growingio/gio-design/pull/334)
+
 ## 20.10.5
 
 - Grid

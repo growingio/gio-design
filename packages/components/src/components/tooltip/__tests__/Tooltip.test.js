@@ -1,14 +1,11 @@
 import React from 'react';
 import Tooltip from '../index';
 import '@gio-design/components/es/components/Tabs/style/index.css';
-import { act } from 'react-dom/test-utils';
 import { mount, render } from 'enzyme';
 import getPlacements, { getOverflowOptions } from '../placements';
 import { isEqual } from 'lodash';
+import { waitForComponentToPaint } from '../../../utils/test';
 
-async function waitForComponentToPaint(wrapper, amount = 500) {
-  await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
-}
 
 describe('Testing Tooltip', () => {
   const getTooltip = () => (

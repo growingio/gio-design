@@ -7,8 +7,9 @@ const TextArea: React.FC<TextAreaProps> = ({
   disabled = false,
   resize = false,
   placeholder = '',
-  inputStyle,
+  style,
   wrapStyle,
+  inputStyle,
   forwardRef,
   ...rest
 }: TextAreaProps) => {
@@ -16,13 +17,23 @@ const TextArea: React.FC<TextAreaProps> = ({
     [`${prefixCls}-textarea-noresize`]: !resize,
   });
 
+  const outerStyle = style !== undefined ? style : wrapStyle
+  const innerStyle = style !== undefined ? {} : inputStyle
+  if (wrapStyle !== undefined || inputStyle !== undefined) {
+    console.warn(
+      'The latest version of Input only accept "style" for inline-style setting, ' +
+      'please fix your code because the deprecated parameter "wrapStyle" and "inputStyle" ' +
+      'will be removed in the future version'
+    )
+  }
+
   return (
-    <div className={prefixCls} style={wrapStyle}>
+    <div className={prefixCls} style={outerStyle}>
       <textarea
         className={inputClass}
         disabled={disabled}
         placeholder={placeholder}
-        style={inputStyle}
+        style={innerStyle}
         ref={forwardRef}
         {...rest}
       />
