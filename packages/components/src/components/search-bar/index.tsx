@@ -111,7 +111,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
     }
 
     return (
-      <div className={`${prefixCls}-dropdown`}>
+      <div className={`${prefixCls}-dropdown`} style={{width:inputWrapStyle && inputWrapStyle.width ? inputWrapStyle.width : "253px"}}>
         {allowClearStorage && (
           <div className={`${prefixCls}-dropdown-clear`}>
             <span className={`${prefixCls}-dropdown-clear-text`}>
