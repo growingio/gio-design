@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DatePicker should match snapshot 1`] = `
+exports[`DatePicker ui test should match snapshot 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
