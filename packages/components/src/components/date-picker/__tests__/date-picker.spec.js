@@ -73,6 +73,7 @@ describe('DatePicker action Test', () => {
       />
     );
     act(() => {
+
       wrapper.find('.gio-input-content').simulate('click');
     })
     waitComponentRender(wrapper).then(() => {
