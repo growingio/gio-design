@@ -8,4 +8,10 @@ const options = values.map((value, index) => ({
   groupLabel: '应用平台',
 }));
 
+const optionsWithoutGroup = values.map((value, index) => ({
+  value,
+  label: labels[index],
+}));
+
+export { optionsWithoutGroup };
 export default options;

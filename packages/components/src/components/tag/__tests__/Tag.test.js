@@ -1,17 +1,6 @@
 import React from 'react';
 import Tag from '../index';
-import {
-  isProrupt,
-  isLarge,
-  isPredifinedColor,
-  isPredifinedStatus,
-  isToggleClose,
-  getTypeClass,
-  getStatusClass,
-  getColorClass,
-  getDeleteToggleClass,
-  getDisabledClass,
-} from '../Tag';
+import { isToggleClose } from '../Tag';
 import '@gio-design/components/es/components/Tag/style/index.css';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
@@ -19,6 +8,16 @@ import { shallow } from 'enzyme';
 describe('<Tag />', () => {
   it('renders <Tag /> components', () => {
     const tree = renderer.create(<Tag />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders <Tag /> components', () => {
+    const tree = renderer.create(<Tag type="prorupt" size="small" />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders <Tag /> components', () => {
+    const tree = renderer.create(<Tag type="normal" size="large" />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -54,5 +53,6 @@ describe('Tag condition functions', () => {
     expect(isToggleClose(true, false)).toBe(true);
     expect(isToggleClose(false, true)).toBe(false);
     expect(isToggleClose(false, false)).toBe(false);
+    expect(isToggleClose()).toBe(false);
   });
 });

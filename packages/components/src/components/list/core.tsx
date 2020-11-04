@@ -34,7 +34,7 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
       };
     }
 
-    return state;
+    return { ...state, options: nextProps.options };
   }
 
   public state: State = {
