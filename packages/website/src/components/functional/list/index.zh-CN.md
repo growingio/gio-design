@@ -53,7 +53,7 @@ group:
 | dataSource    | `list`数据源            | Option[]                                                                    |
 | isMultiple    | 是否多选                | boolean                                                                     | false    |
 | onChange      | 选中触发的回调          | (option: value) => void                                                     | noop     |
-| width         | 列表宽度                | number                                                                      | -        |
+| width         | 列表宽度                | number \| string                                                            | -        |
 | height        | 列表高度                | number                                                                      | 400      |
 | wrapStyle     | 包裹样式                | React.CSSProperties                                                         | -        |
 | prefixCls     | 前缀`className`样式类名 | string                                                                      | gio-list |

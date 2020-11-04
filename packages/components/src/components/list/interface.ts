@@ -7,7 +7,7 @@ export interface IBaseListProps {
   isMultiple?: boolean;
   onChange?: (value: any) => void;
   value?: any;
-  width?: number;
+  width?: number | string;
   height?: number;
   wrapStyle?: CSSProperties;
   prefixCls?: string;
@@ -37,7 +37,7 @@ export interface SelectCoreProps {
   isMultiple: boolean;
   allowDuplicate?: boolean;
   max?: number;
-  width?: number;
+  width?: number | string;
   height?: number;
   rowHeight?: number | ((option: any) => number);
   isLoading?: boolean;
@@ -65,7 +65,7 @@ export interface SelectListProps {
   allowDuplicate?: boolean;
   required?: boolean;
   max?: number;
-  width: number;
+  width: number | string;
   height: number;
   rowHeight: number | ((option: any) => number);
   onSelect?: (value: any, selectedValue?: any | any[], option?: any) => void;
