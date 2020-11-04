@@ -96,13 +96,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         <CloseCircleFilled className={`${prefixCls}-suffix-close`} onClick={handleClearValue} />
       ) : null;
     }
-    if(size === "large"){
-      return <SearchOutlined className={`${prefixCls}-suffix-search-large`} />;
-    }
-    if(size === "small"){
-      return <SearchOutlined className={`${prefixCls}-suffix-search-small`} />;
-    }
-    return <SearchOutlined className={`${prefixCls}-suffix-search`} />;
+    return <SearchOutlined className={`${prefixCls}-suffix-search-${size}`} />;
   };
 
   const renderStorage = () => {
