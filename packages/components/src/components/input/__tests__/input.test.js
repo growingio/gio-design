@@ -8,6 +8,42 @@ describe('Input', () => {
     expect(wrapper.render()).toMatchSnapshot();
   });
 
+  it('should support prefix and suffix element', () => {
+    const wrapper = mount(
+      <Input
+        value="www.growingio.com"
+        prefix={<span className="prefix-path">http://</span>}
+        prefixWidth={100}
+        suffix={<span className="suffix-path">/index.html</span>}
+        suffixWidth={60}
+      />
+    );
+    expect(wrapper.render()).toMatchSnapshot();
+    expect(wrapper.find('.gio-input-container-prefix span').hasClass('prefix-path')).toBe(true);
+    expect(wrapper.find('.gio-input-container-suffix span').hasClass('suffix-path')).toBe(true);
+    expect(wrapper.find('input').prop('style').paddingLeft).toBe(100);
+    expect(wrapper.find('input').prop('style').paddingRight).toBe(60);
+    expect(
+      wrapper.find('.gio-input-container-prefix').text() +
+      wrapper.find('.gio-input-content').prop('value') +
+      wrapper.find('.gio-input-container-suffix').text()
+    ).toBe('http://www.growingio.com/index.html');
+  });
+
+  it('should run onChange when input accept change event', () => {
+    let val = '';
+    const wrapper = mount(
+      <Input onChange={e => (val = e.target.value)} onPressEnter={e => (val = 'press enter')} />
+    );
+    expect(wrapper.render()).toMatchSnapshot();
+    wrapper.find('input').simulate('change', { target: { value: '123' } });
+    expect(wrapper.render()).toMatchSnapshot();
+    expect(val).toBe('123');
+    wrapper.find('input').simulate('keydown', { key: 'Enter' });
+    expect(wrapper.render()).toMatchSnapshot();
+    expect(val).toBe('press enter');
+  });
+
   it('should support size', () => {
     const wrapper = mount(<Input size="large" />);
     expect(wrapper.find('input').hasClass('gio-input-content-large')).toBe(true);

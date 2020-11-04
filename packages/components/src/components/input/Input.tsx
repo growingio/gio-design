@@ -6,6 +6,7 @@ export const prefixCls = 'gio-input';
 
 const InputFC: React.FC<InputProps> = ({
   type = 'text',
+  onChange,
   onPressEnter,
   disabled = false,
   readOnly = false,
@@ -59,14 +60,14 @@ const InputFC: React.FC<InputProps> = ({
     return <div className={`${prefixCls}-container-prefix`}>{prefix}</div>
   }
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (typeof rest.onChange === 'function') {
-      rest.onChange(e)
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (typeof onChange === 'function') {
+      onChange(e)
     }
   }
 
-  const outerStyle = style !== undefined ? style : wrapStyle
-  const innerStyle = style !== undefined ? {} : inputStyle
+  const outerStyle = style !== undefined ? style : (wrapStyle || {})
+  const innerStyle = style !== undefined ? {} : (inputStyle || {})
   if (wrapStyle !== undefined || inputStyle !== undefined) {
     console.warn(
       'The latest version of Input only accept "style" for inline-style setting, ' +
@@ -90,7 +91,7 @@ const InputFC: React.FC<InputProps> = ({
         className={inputClass}
         type={type}
         value={rest.value ?? ''}
-        onChange={onChange}
+        onChange={handleOnChange}
         onKeyDown={handleOnPressEnter}
         style={innerStyle}
         disabled={disabled}

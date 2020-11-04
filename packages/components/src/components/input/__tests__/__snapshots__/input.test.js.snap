@@ -1,5 +1,224 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Input should run onChange when input accept change event 1`] = `
+initialize {
+  "0": Object {
+    "attribs": Object {
+      "class": "gio-input",
+    },
+    "children": Array [
+      Object {
+        "attribs": Object {
+          "class": "gio-input-content gio-input-content-medium",
+          "placeholder": "",
+          "type": "text",
+          "value": "",
+        },
+        "children": Array [],
+        "name": "input",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": null,
+        "parent": [Circular],
+        "prev": null,
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+          "placeholder": undefined,
+          "type": undefined,
+          "value": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+          "placeholder": undefined,
+          "type": undefined,
+          "value": undefined,
+        },
+      },
+    ],
+    "name": "div",
+    "namespace": "http://www.w3.org/1999/xhtml",
+    "next": null,
+    "parent": null,
+    "prev": null,
+    "root": Object {
+      "attribs": Object {},
+      "children": Array [
+        [Circular],
+      ],
+      "name": "root",
+      "namespace": "http://www.w3.org/1999/xhtml",
+      "next": null,
+      "parent": null,
+      "prev": null,
+      "type": "root",
+      "x-attribsNamespace": Object {},
+      "x-attribsPrefix": Object {},
+    },
+    "type": "tag",
+    "x-attribsNamespace": Object {
+      "class": undefined,
+    },
+    "x-attribsPrefix": Object {
+      "class": undefined,
+    },
+  },
+  "_root": [Circular],
+  "length": 1,
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;
+
+exports[`Input should run onChange when input accept change event 2`] = `
+initialize {
+  "0": Object {
+    "attribs": Object {
+      "class": "gio-input",
+    },
+    "children": Array [
+      Object {
+        "attribs": Object {
+          "class": "gio-input-content gio-input-content-medium",
+          "placeholder": "",
+          "type": "text",
+          "value": "",
+        },
+        "children": Array [],
+        "name": "input",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": null,
+        "parent": [Circular],
+        "prev": null,
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+          "placeholder": undefined,
+          "type": undefined,
+          "value": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+          "placeholder": undefined,
+          "type": undefined,
+          "value": undefined,
+        },
+      },
+    ],
+    "name": "div",
+    "namespace": "http://www.w3.org/1999/xhtml",
+    "next": null,
+    "parent": null,
+    "prev": null,
+    "root": Object {
+      "attribs": Object {},
+      "children": Array [
+        [Circular],
+      ],
+      "name": "root",
+      "namespace": "http://www.w3.org/1999/xhtml",
+      "next": null,
+      "parent": null,
+      "prev": null,
+      "type": "root",
+      "x-attribsNamespace": Object {},
+      "x-attribsPrefix": Object {},
+    },
+    "type": "tag",
+    "x-attribsNamespace": Object {
+      "class": undefined,
+    },
+    "x-attribsPrefix": Object {
+      "class": undefined,
+    },
+  },
+  "_root": [Circular],
+  "length": 1,
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;
+
+exports[`Input should run onChange when input accept change event 3`] = `
+initialize {
+  "0": Object {
+    "attribs": Object {
+      "class": "gio-input",
+    },
+    "children": Array [
+      Object {
+        "attribs": Object {
+          "class": "gio-input-content gio-input-content-medium",
+          "placeholder": "",
+          "type": "text",
+          "value": "",
+        },
+        "children": Array [],
+        "name": "input",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": null,
+        "parent": [Circular],
+        "prev": null,
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+          "placeholder": undefined,
+          "type": undefined,
+          "value": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+          "placeholder": undefined,
+          "type": undefined,
+          "value": undefined,
+        },
+      },
+    ],
+    "name": "div",
+    "namespace": "http://www.w3.org/1999/xhtml",
+    "next": null,
+    "parent": null,
+    "prev": null,
+    "root": Object {
+      "attribs": Object {},
+      "children": Array [
+        [Circular],
+      ],
+      "name": "root",
+      "namespace": "http://www.w3.org/1999/xhtml",
+      "next": null,
+      "parent": null,
+      "prev": null,
+      "type": "root",
+      "x-attribsNamespace": Object {},
+      "x-attribsPrefix": Object {},
+    },
+    "type": "tag",
+    "x-attribsNamespace": Object {
+      "class": undefined,
+    },
+    "x-attribsPrefix": Object {
+      "class": undefined,
+    },
+  },
+  "_root": [Circular],
+  "length": 1,
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;
+
 exports[`Input should support maxLength 1`] = `
 initialize {
   "0": Object {
@@ -35,6 +254,406 @@ initialize {
           "placeholder": undefined,
           "type": undefined,
           "value": undefined,
+        },
+      },
+    ],
+    "name": "div",
+    "namespace": "http://www.w3.org/1999/xhtml",
+    "next": null,
+    "parent": null,
+    "prev": null,
+    "root": Object {
+      "attribs": Object {},
+      "children": Array [
+        [Circular],
+      ],
+      "name": "root",
+      "namespace": "http://www.w3.org/1999/xhtml",
+      "next": null,
+      "parent": null,
+      "prev": null,
+      "type": "root",
+      "x-attribsNamespace": Object {},
+      "x-attribsPrefix": Object {},
+    },
+    "type": "tag",
+    "x-attribsNamespace": Object {
+      "class": undefined,
+    },
+    "x-attribsPrefix": Object {
+      "class": undefined,
+    },
+  },
+  "_root": [Circular],
+  "length": 1,
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;
+
+exports[`Input should support prefix and suffix element 1`] = `
+initialize {
+  "0": Object {
+    "attribs": Object {
+      "class": "gio-input gio-input-container",
+    },
+    "children": Array [
+      Object {
+        "attribs": Object {
+          "class": "gio-input-container-prefix",
+        },
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "class": "prefix-path",
+            },
+            "children": Array [
+              Object {
+                "data": "http://",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "text",
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+        ],
+        "name": "div",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix gio-input-content-prefix",
+            "placeholder": "",
+            "style": "padding-left: 100px; padding-right: 60px;",
+            "type": "text",
+            "value": "www.growingio.com",
+          },
+          "children": Array [],
+          "name": "input",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": Object {
+            "attribs": Object {
+              "class": "gio-input-container-suffix",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "class": "suffix-path",
+                },
+                "children": Array [
+                  Object {
+                    "data": "/index.html",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+            ],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": [Circular],
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+            "placeholder": undefined,
+            "style": undefined,
+            "type": undefined,
+            "value": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+            "placeholder": undefined,
+            "style": undefined,
+            "type": undefined,
+            "value": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": null,
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix gio-input-content-prefix",
+          "placeholder": "",
+          "style": "padding-left: 100px; padding-right: 60px;",
+          "type": "text",
+          "value": "www.growingio.com",
+        },
+        "children": Array [],
+        "name": "input",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "class": "gio-input-container-suffix",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "suffix-path",
+              },
+              "children": Array [
+                Object {
+                  "data": "/index.html",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+          ],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": null,
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "class": "gio-input-container-prefix",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "prefix-path",
+              },
+              "children": Array [
+                Object {
+                  "data": "http://",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "span",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+          ],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": null,
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+          "placeholder": undefined,
+          "style": undefined,
+          "type": undefined,
+          "value": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+          "placeholder": undefined,
+          "style": undefined,
+          "type": undefined,
+          "value": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "class": "gio-input-container-suffix",
+        },
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "class": "suffix-path",
+            },
+            "children": Array [
+              Object {
+                "data": "/index.html",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "text",
+              },
+            ],
+            "name": "span",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+        ],
+        "name": "div",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": null,
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix gio-input-content-prefix",
+            "placeholder": "",
+            "style": "padding-left: 100px; padding-right: 60px;",
+            "type": "text",
+            "value": "www.growingio.com",
+          },
+          "children": Array [],
+          "name": "input",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": Object {
+            "attribs": Object {
+              "class": "gio-input-container-prefix",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "class": "prefix-path",
+                },
+                "children": Array [
+                  Object {
+                    "data": "http://",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+            ],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": [Circular],
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+            "placeholder": undefined,
+            "style": undefined,
+            "type": undefined,
+            "value": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+            "placeholder": undefined,
+            "style": undefined,
+            "type": undefined,
+            "value": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
         },
       },
     ],
