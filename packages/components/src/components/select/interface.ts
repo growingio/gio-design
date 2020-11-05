@@ -22,6 +22,7 @@ export interface SelectProps {
   customizePrefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
+  dropdownPlacement?: string;
   dropDownClassName?: string;
   dropDownStyle?: React.CSSProperties;
   bordered?: boolean;

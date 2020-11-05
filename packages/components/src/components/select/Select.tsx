@@ -103,6 +103,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     onDropDownVisibleChange,
     dropDownClassName,
     dropDownStyle,
+    dropdownPlacement = 'bottomRight',
   } = props;
 
   const prefix = getPrefixCls('select', customizePrefixCls);
@@ -384,7 +385,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
       visible={visible}
       onVisibleChange={onVisibleChange}
       trigger={['click']}
-      placement="bottomLeft"
+      placement={dropdownPlacement}
       overlay={list}
       overlayClassName={classnames(`${prefix}-dropdown`, dropDownClassName)}
       overlayInnerStyle={dropDownStyle}
