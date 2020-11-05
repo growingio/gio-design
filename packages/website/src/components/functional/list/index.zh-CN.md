@@ -62,6 +62,7 @@ group:
 | value         | 选中的值                | string \| string[]                                                          | -        |
 | onSelect      | 选中的回调              | (selectedValue: string, value: string \| string[], option: Option) => void; | -        |
 | onDeselect    | 取消选中的回调          | (selectedValue: string, value: string \| string[], option: Option) => void; | -        |
+| onClick       | 点击触发的回调          | (option: value) => void                                                     | noop     |
 
 ### Option
 

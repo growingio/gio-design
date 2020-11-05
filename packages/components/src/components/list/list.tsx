@@ -110,6 +110,7 @@ class SelectList extends React.Component<SelectListProps, {}> {
         isMultiple={!!this.props.isMultiple}
         allowDuplicate={this.props.allowDuplicate}
         onSelect={this.handleSelect}
+        onClick={this.handleClick}
         disabled={disabled}
         hasGroupIcon={!!groupIcon}
         getPopupContainer={this.getPopupContainer}
@@ -117,6 +118,13 @@ class SelectList extends React.Component<SelectListProps, {}> {
         {label}
       </SelectOption>
     );
+  };
+
+  private handleClick = (value: any) => {
+    const { onClick } = this.props;
+    if (onClick) {
+      onClick(value);
+    }
   };
 
   private handleSelect = (option: any) => {

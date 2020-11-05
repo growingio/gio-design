@@ -10,7 +10,7 @@ const options = [
 ];
 
 const WrapperStyle = {
-  padding: '16px 8px 10px',
+  // padding: '16px 8px 10px',
   display: 'inline-block',
   borderRadius: 6,
   backgroundColor: '#FFFFFF',

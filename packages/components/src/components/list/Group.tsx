@@ -31,5 +31,6 @@ export default class Group extends React.PureComponent<GroupProps> {
 
   private handleSelect = () => {
     this.props.onSelect && this.props.onSelect(this.props.option);
+    this.props.onClick && this.props.onClick(this.props.option);
   };
 }
