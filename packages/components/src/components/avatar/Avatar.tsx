@@ -5,6 +5,7 @@ import Tooltip from '../tooltip';
 import { AvatarProps } from './interface';
 import { ConfigContext } from '../config-provider';
 import composeRef from '../../utils/composeRef';
+import { isNil } from 'lodash';
 
 const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProps, ref: React.Ref<HTMLSpanElement>) => {
   const {
@@ -17,6 +18,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     displayTooltip = false,
     prefixCls: customizePrefixCls,
     placement = 'bottom',
+    tooltipTitle,
     ...rest
   } = props;
 
@@ -75,7 +77,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
 
   const renderTooltip = (child: React.ReactElement) =>
     displayTooltip ? (
-      <Tooltip title={userName?.trim()} placement={placement}>
+      <Tooltip title={isNil(tooltipTitle) ? userName?.trim() : tooltipTitle} placement={placement}>
         {child}
       </Tooltip>
     ) : (

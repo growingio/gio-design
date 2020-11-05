@@ -8,6 +8,7 @@ export default () => {
     {
       name: 'li',
       src: image,
+      tooltipTitle: '这是li',
     },
     {
       name: 'pan',
