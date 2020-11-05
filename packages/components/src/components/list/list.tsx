@@ -8,6 +8,7 @@ import { SelectListProps } from './interface';
 
 interface State {
   value: any | any[];
+  width: number;
 }
 
 class SelectList extends React.Component<SelectListProps, {}> {
@@ -20,11 +21,16 @@ class SelectList extends React.Component<SelectListProps, {}> {
   public ref: React.RefObject<HTMLDivElement>;
   public state: State = {
     value: null,
+    width: 0,
   };
 
   public constructor(props: SelectListProps) {
     super(props);
     this.ref = React.createRef();
+  }
+
+  public componentDidMount() {
+    this.setState({ width: this.ref.current?.offsetWidth });
   }
 
   public render() {
@@ -49,7 +55,7 @@ class SelectList extends React.Component<SelectListProps, {}> {
     return (
       <List
         value={this.props.value}
-        width={width}
+        width={typeof width === 'number' ? width : this.state.width}
         height={height}
         rowCount={this.props.options.length}
         rowHeight={typeof rowHeight === 'function' ? getRowHeight : rowHeight}
