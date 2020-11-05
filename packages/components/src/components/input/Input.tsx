@@ -58,13 +58,13 @@ const InputFC: React.FC<InputProps> = ({
       return null;
     }
     return <div className={`${prefixCls}-container-prefix`}>{prefix}</div>
-  }
+  };
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof onChange === 'function') {
       onChange(e)
     }
-  }
+  };
 
   const outerStyle = style !== undefined ? style : (wrapStyle || {})
   const innerStyle = style !== undefined ? {} : (inputStyle || {})
@@ -74,15 +74,15 @@ const InputFC: React.FC<InputProps> = ({
       'please fix your code because the deprecated parameter "wrapStyle" and "inputStyle" ' +
       'will be removed in the future version'
     )
-  }
+  };
 
   if (typeof prefixWidth === 'number') {
     innerStyle.paddingLeft = prefixWidth;
-  }
+  };
 
   if (typeof suffixWidth === 'number') {
     innerStyle.paddingRight = suffixWidth;
-  }
+  };
 
   return (
     <div className={wrapClass} style={outerStyle}>
