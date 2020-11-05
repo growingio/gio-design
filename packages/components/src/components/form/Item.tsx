@@ -17,6 +17,7 @@ type ChildrenType = RenderChildren | React.ReactNode;
 export interface Props extends Omit<FieldProps, 'children'> {
   prefixCls?: string;
   className?: string;
+  style?: React.CSSProperties;
   label?: string;
   afterLabel?: React.ReactNode;
   afterInput?: React.ReactNode;
@@ -48,6 +49,7 @@ const Item: React.FC<Props> = (props: Props) => {
   const {
     prefixCls: customizePrefixCls,
     className,
+    style,
     name,
     label,
     help,
@@ -88,7 +90,7 @@ const Item: React.FC<Props> = (props: Props) => {
     });
 
     return (
-      <div className={cls} data-message-type={mergedFeedbackType}>
+      <div className={cls} data-message-type={mergedFeedbackType} style={style}>
         <ItemLabel
           label={label}
           labelAlign={labelAlign}

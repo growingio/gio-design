@@ -21,6 +21,7 @@ export interface Props<Values = unknown> extends Omit<RcFormProps<Values>, 'form
   size?: SizeType;
   colon?: boolean;
   requiredMark?: RequiredMark;
+  style ?: React.CSSProperties;
 }
 
 const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props, ref) => {
@@ -28,6 +29,7 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
     name,
     prefixCls: customizePrefixCls,
     className,
+    style,
     layout = 'horizontal',
     labelWidth,
     inputWidth,
@@ -58,7 +60,7 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
   return (
     <FormContext.Provider value={formContextValues}>
       <SizeContextProvider size={size}>
-        <RcForm {...restProps} id={name} name={name} className={cls} form={wrapForm} />
+        <RcForm {...restProps} id={name} name={name} className={cls} form={wrapForm} style={style} />
       </SizeContextProvider>
     </FormContext.Provider>
   );
