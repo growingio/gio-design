@@ -2,40 +2,40 @@
   "size": {
     "font": {
       "10": {
-        "value": "0.625rem"
+        "value": "10px"
       },
       "12": {
-        "value": "0.75rem"
+        "value": "12px"
       },
       "14": {
-        "value": "0.875rem"
+        "value": "14px"
       },
       "16": {
-        "value": "1rem"
+        "value": "16px"
       },
       "18": {
-        "value": "1.125rem"
+        "value": "18px"
       },
       "20": {
-        "value": "1.25rem"
+        "value": "20px"
       },
       "24": {
-        "value": "1.5rem"
+        "value": "24px"
       },
       "28": {
-        "value": "1.75rem"
+        "value": "28px"
       },
       "30": {
-        "value": "1.875rem"
+        "value": "30px"
       },
       "32": {
-        "value": "2rem"
+        "value": "32px"
       },
       "38": {
-        "value": "2.375rem"
+        "value": "38px"
       },
       "42": {
-        "value": "2.625rem"
+        "value": "42px"
       }
     }
   }
