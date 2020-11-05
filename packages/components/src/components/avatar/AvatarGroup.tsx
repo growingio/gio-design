@@ -6,14 +6,14 @@ import { AvatarGroupProps, UserAvatarType } from './interface';
 import { ConfigContext } from '../config-provider';
 
 const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
-  const { number = 5, users = [], className, placement = 'bottom' } = props;
+  const { number = 5, users = [], className, placement = 'bottom', style, displayTooltip = true } = props;
   const { getPrefixCls } = useContext(ConfigContext);
   const prefixCls = getPrefixCls('avatar');
 
   let children = null;
   const renderAvatarGroup = (users: UserAvatarType[]) =>
     users.map((user, idx) => (
-      <Avatar key={idx} {...user} displayTooltip placement={placement}>
+      <Avatar key={idx} displayTooltip={displayTooltip} placement={placement} {...user}>
         {user.name}
       </Avatar>
     ));
@@ -37,6 +37,10 @@ const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
     );
   }
 
-  return <div className={classString}>{children}</div>;
+  return (
+    <div className={classString} style={style}>
+      {children}
+    </div>
+  );
 };
 export default AvatarGroup;
