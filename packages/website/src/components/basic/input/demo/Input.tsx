@@ -4,10 +4,14 @@ import '@gio-design/components/es/components/input/style/index.css';
 
 export default () => {
   const [inputValue, setInputValue] = React.useState<any | undefined>();
+  const [inputValue1, setInputValue1] = React.useState('');
   const [inputValue2, setInputValue2] = React.useState('');
   const [inputValue3, setInputValue3] = React.useState('333');
   const onChange = (e: React.FocusEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
+  };
+  const onChange1 = (e: React.FocusEvent<HTMLInputElement>) => {
+    setInputValue1(e.target.value);
   };
   const onChange2 = (e: React.FocusEvent<HTMLInputElement>) => {
     setInputValue2(e.target.value);
@@ -23,6 +27,15 @@ export default () => {
         size="small"
         value={inputValue}
         onChange={onChange}
+        style={{ display: 'block', marginBottom: '20px' }}
+      />
+
+      <Input
+        placeholder="请输入…"
+        prefix={<span>http://</span>}
+        prefixWidth={60}
+        value={inputValue1}
+        onChange={onChange1}
         style={{ display: 'block', marginBottom: '20px' }}
       />
 

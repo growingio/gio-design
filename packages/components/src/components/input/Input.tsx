@@ -6,13 +6,16 @@ export const prefixCls = 'gio-input';
 
 const InputFC: React.FC<InputProps> = ({
   type = 'text',
+  onChange,
   onPressEnter,
   disabled = false,
   readOnly = false,
   placeholder = '',
   size = 'medium',
   prefix,
+  prefixWidth,
   suffix,
+  suffixWidth,
   style,
   wrapStyle,
   inputStyle,
@@ -20,7 +23,7 @@ const InputFC: React.FC<InputProps> = ({
   ...rest
 }: InputProps) => {
   const wrapClass = classNames(prefixCls, {
-    [`${prefixCls}-container`]: !!suffix,
+    [`${prefixCls}-container`]: !!suffix || !!prefix,
   });
 
   const inputClass = classNames(
@@ -30,7 +33,10 @@ const InputFC: React.FC<InputProps> = ({
     },
     {
       [`${prefixCls}-content-suffix`]: !!suffix,
-    }
+    },
+    {
+      [`${prefixCls}-content-prefix`]: !!prefix,
+    },
   );
 
   const handleOnPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -52,23 +58,31 @@ const InputFC: React.FC<InputProps> = ({
       return null;
     }
     return <div className={`${prefixCls}-container-prefix`}>{prefix}</div>
-  }
+  };
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (typeof rest.onChange === 'function') {
-      rest.onChange(e)
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (typeof onChange === 'function') {
+      onChange(e)
     }
-  }
+  };
 
-  const outerStyle = style !== undefined ? style : wrapStyle
-  const innerStyle = style !== undefined ? {} : inputStyle
+  const outerStyle = style !== undefined ? style : (wrapStyle || {})
+  const innerStyle = style !== undefined ? {} : (inputStyle || {})
   if (wrapStyle !== undefined || inputStyle !== undefined) {
     console.warn(
       'The latest version of Input only accept "style" for inline-style setting, ' +
       'please fix your code because the deprecated parameter "wrapStyle" and "inputStyle" ' +
       'will be removed in the future version'
     )
-  }
+  };
+
+  if (typeof prefixWidth === 'number') {
+    innerStyle.paddingLeft = prefixWidth;
+  };
+
+  if (typeof suffixWidth === 'number') {
+    innerStyle.paddingRight = suffixWidth;
+  };
 
   return (
     <div className={wrapClass} style={outerStyle}>
@@ -77,7 +91,7 @@ const InputFC: React.FC<InputProps> = ({
         className={inputClass}
         type={type}
         value={rest.value ?? ''}
-        onChange={onChange}
+        onChange={handleOnChange}
         onKeyDown={handleOnPressEnter}
         style={innerStyle}
         disabled={disabled}
