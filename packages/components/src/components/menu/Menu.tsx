@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import { ConfigContext } from '../config-provider';
 import MenuPrefixClsContext from './MenuContext';
 import { IMenuProps, TMenuMode } from './interface';
+import MenuItem from './MenuItem';
+import SubMenu from './SubMenu';
 
 const transform2RcMode = (mode: TMenuMode) => (mode === 'vertical' ? 'inline' : 'horizontal');
 
@@ -14,7 +16,7 @@ const getOpenKeys = (mode: TMenuMode, children: React.ReactNode) => {
   return Children.map(children, (_: any) => (_.type.displayName === 'GIODesignSubMenu' ? _.key : null));
 };
 
-const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
+const Menu = (props: IMenuProps) => {
   const {
     mode = 'horizontal',
     prefixCls,
@@ -65,5 +67,8 @@ const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
     </MenuPrefixClsContext.Provider>
   );
 };
+
+Menu.MenuItem = MenuItem;
+Menu.SubMenu = SubMenu;
 
 export default Menu;
