@@ -44,6 +44,13 @@ describe('Input', () => {
     expect(val).toBe('press enter');
   });
 
+  it('should warn when legacy props "wrapStyle" or "inputStyle" passed in', () => {
+    const wrapper = mount(
+      <Input wrapStyle={{ width: 100 }} />
+    );
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
   it('should support size', () => {
     const wrapper = mount(<Input size="large" />);
     expect(wrapper.find('input').hasClass('gio-input-content-large')).toBe(true);
@@ -75,6 +82,21 @@ describe('Input.InputNumber', () => {
     wrapper.find('.gio-input-container-suffix-iconGroup-bottom').at(0).simulate('click');
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  it('should not change if the value is not between min and max, or the value is not a number', () => {
+    let val = '';
+    const wrapper = mount(<Input.InputNumber max={5} min={1} onChange={n => (val = n)} />);
+    expect(wrapper.render()).toMatchSnapshot();
+    wrapper.find('input').simulate('change', { target: { value: '5' }});
+    expect(wrapper.render()).toMatchSnapshot();
+    expect(val).toBe('5');
+    wrapper.find('input').simulate('change', { target: { value: '6' }});
+    expect(wrapper.render()).toMatchSnapshot();
+    expect(val).toBe('5');
+    wrapper.find('input').simulate('change', { target: { value: '0' }});
+    expect(wrapper.render()).toMatchSnapshot();
+    expect(val).toBe('5');
+  });
 });
 
 describe('Input.TextArea', () => {
@@ -85,6 +107,13 @@ describe('Input.TextArea', () => {
 
   it('should support maxLength', () => {
     const wrapper = mount(<Input.TextArea maxLength={10} />);
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  it('should warn when legacy props "wrapStyle" or "inputStyle" passed in', () => {
+    const wrapper = mount(
+      <Input.TextArea wrapStyle={{ width: 100 }} />
+    );
     expect(wrapper.render()).toMatchSnapshot();
   });
 });
