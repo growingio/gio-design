@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-type InputPropsSuper = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
+type InputPropsSuper = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export interface InputProps extends Omit<InputPropsSuper, 'prefix'> {
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -10,7 +10,7 @@ export interface InputProps extends Omit<InputPropsSuper, 'prefix'> {
   style?: React.CSSProperties;
   wrapStyle?: React.CSSProperties;
   inputStyle?: React.CSSProperties;
-  size?: 'large' | 'medium' | 'small';
+  size?: 'large' | 'middle' | 'small';
   prefix?: React.ReactNode;
   prefixWidth?: number;
   suffix?: React.ReactNode;

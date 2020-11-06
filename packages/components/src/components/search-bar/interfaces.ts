@@ -4,7 +4,7 @@ export interface SearchBarProps {
   allowClearStorage?: boolean;
   showClear?: boolean;
   disabled?: boolean;
-  size?: 'large' | 'medium' | 'small';
+  size?: 'large' | 'middle' | 'small';
   inputStyle?: React.CSSProperties;
   inputWrapStyle?: React.CSSProperties;
   wrapStyle?: React.CSSProperties;

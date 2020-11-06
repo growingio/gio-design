@@ -70,10 +70,10 @@ describe('<Select />', () => {
     const dropdown = document.querySelector('.gio-select-dropdown');
     expect(dropdown).not.toBeNull();
     act(() => {
-      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: '全' } });
+      tree.find('input').simulate('change', { target: { value: '全' } });
     });
     act(() => {
-      tree.find('input.gio-select-input.gio-select-item').simulate('click');
+      tree.find('input').simulate('click');
     });
     expect(dropdown.querySelectorAll('.gio-select-option')).toHaveLength(4);
     tree.unmount();
@@ -99,7 +99,7 @@ describe('<Select multiple/>', () => {
     const dropdown = document.querySelector('.gio-select-dropdown');
     expect(dropdown).not.toBeNull();
     act(() => {
-      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: '全' } });
+      tree.find('input').simulate('change', { target: { value: '全' } });
     });
     expect(document.querySelectorAll('.gio-select-dropdown .gio-select-option')).toHaveLength(4);
     act(() => {
@@ -146,7 +146,7 @@ describe('<Select /> callback functions should work as expected', () => {
       tree.simulate('click');
     });
     act(() => {
-      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: '全部' } });
+      tree.find('input').simulate('change', { target: { value: '全部' } });
     });
     act(() => {
       document.querySelector('.gio-select-dropdown .gio-select-option').click();
@@ -195,7 +195,7 @@ describe('<Select Multiple /> callback functions should work as expected on mult
       tree.simulate('click');
     });
     act(() => {
-      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: '全部' } });
+      tree.find('input').simulate('change', { target: { value: '全部' } });
     });
     act(() => {
       document.querySelector('.gio-select-dropdown .gio-select-option').click();
@@ -208,17 +208,17 @@ describe('<Select allowCustomOptions multiple/> can create option by presee ente
   it('should be able to create by enter', () => {
     const tree = mount(<Select multiple allowCustomOption searchable options={options} defaultValue={['all']} />);
     act(() => {
-      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: 'test' } });
+      tree.find('input').simulate('change', { target: { value: 'test' } });
     });
     act(() => {
-      tree.find('input.gio-select-input.gio-select-item').simulate('keydown', { keyCode: 13 });
+      tree.find('input').simulate('keydown', { keyCode: 13 });
     });
     expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(2);
     act(() => {
-      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: '' } });
+      tree.find('input').simulate('change', { target: { value: '' } });
     });
     act(() => {
-      tree.find('input.gio-select-input.gio-select-item').simulate('keydown', { keyCode: 46 });
+      tree.find('input').simulate('keydown', { keyCode: 46 });
     });
     expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(1);
     act(() => {
@@ -231,7 +231,7 @@ describe('<Select /> when press delete key will unselect current option', () => 
   it('should be able to create by enter', () => {
     const tree = mount(<Select searchable options={options} defaultValue={'all'} />);
     act(() => {
-      tree.find('input.gio-select-input.gio-select-item').simulate('keydown', { keyCode: 46 });
+      tree.find('input').simulate('keydown', { keyCode: 46 });
     });
     expect(tree.render().find('.gio-select-values-wrapper').children('.gio-select-item-text').text()).toBe('');
     act(() => {
@@ -274,7 +274,7 @@ describe('<Select /> deselect list', () => {
       tree.simulate('click');
     });
     act(() => {
-      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: '全部' } });
+      tree.find('input').simulate('change', { target: { value: '全部' } });
     });
     act(() => {
       document.querySelector('.gio-select-dropdown').querySelectorAll('.gio-select-option')[0].click();
@@ -301,7 +301,7 @@ describe('<Select /> deselect list', () => {
       tree.simulate('click');
     });
     act(() => {
-      tree.find('input.gio-select-input.gio-select-item').simulate('change', { target: { value: '全部' } });
+      tree.find('input').simulate('change', { target: { value: '全部' } });
     });
     act(() => {
       document.querySelector('.gio-select-dropdown').querySelectorAll('.gio-select-option')[0].click();
