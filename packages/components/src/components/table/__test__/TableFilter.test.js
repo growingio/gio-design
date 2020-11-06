@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useFilter, { collectFilterStates } from '../hook/useFilter';
 import { isEqual, cloneDeep } from 'lodash';
+import useFilter, { collectFilterStates } from '../hook/useFilter';
 
 const columns = [
   {
@@ -15,6 +15,7 @@ const columns = [
       if (value === '名字仨字') {
         return record.name.length === 3;
       }
+      return false;
     },
   },
   {
@@ -33,6 +34,7 @@ const columns = [
           if (value === '大人') {
             return record.age > 22;
           }
+          return false;
         },
       },
       {
@@ -81,6 +83,7 @@ describe('Testing Table Filter', () => {
   });
 
   test('useFilter hook', () => {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     const { result, rerender } = renderHook(({ columns, dataSource }) => useFilter(columns, dataSource), {
       initialProps: { columns, dataSource },
     });
@@ -107,6 +110,7 @@ describe('Testing Table Filter', () => {
   });
 
   it('should re-collect states, after columns update', () => {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     const { result, rerender } = renderHook(({ columns, dataSource }) => useFilter(columns, dataSource), {
       initialProps: { columns, dataSource },
     });
@@ -114,7 +118,7 @@ describe('Testing Table Filter', () => {
     act(() => {
       rerender({
         columns: cloneDeep(columns).map((column) => {
-          column.key = '#' + column.key;
+          column.key = `#${  column.key}`;
           return column;
         }),
         dataSource,

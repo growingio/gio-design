@@ -9,6 +9,7 @@ export const prefixCls = 'gio-searchbar';
 const getStorage = (key: string): string[] => {
   const empty: string[] = [];
   try {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : empty;
   } catch (error) {
@@ -82,7 +83,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    // eslint-disable-next-line no-shadow
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     const { value } = e.target;
     setTimeout(() => {
       setStorage(storageKey, value);
@@ -125,6 +126,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
             }}
             className={`${prefixCls}-dropdown-item`}
             key={item}
+            aria-hidden="true"
           >
             {item}
           </div>

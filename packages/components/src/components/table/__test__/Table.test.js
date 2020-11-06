@@ -47,6 +47,7 @@ const columns = [
       if (value === '名字仨字') {
         return record.name.length === 3;
       }
+      return false;
     },
   },
   {
@@ -63,6 +64,7 @@ const columns = [
       if (value === '大人') {
         return record.age > 22;
       }
+      return false;
     },
   },
   {
@@ -80,6 +82,7 @@ const columns = [
       if (value === 70) {
         return record.weight === 70;
       }
+      return false;
     },
   },
 ];
@@ -141,7 +144,7 @@ describe('Testing Table', () => {
     expect(wrapper.exists('.gio-table-column-sorter')).toBe(true);
   });
 
-  test('column key rule', () => {});
+  test('column key rule', () => {/**/});
 
   test('getNextSortDirection function', () => {
     expect(getNextSortDirection(['1', '2', null], '1')).toBe('2');

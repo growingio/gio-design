@@ -49,7 +49,7 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
   });
   const [transformEllipsisTooltipPipeline] = useEllipsisTooltip();
 
-  const onTriggerStateUpdate = (reset: boolean = false) => {
+  const onTriggerStateUpdate = (reset = false) => {
     if (reset) {
       resetPagination();
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
-import usePagination from '../hook/usePagination';
 import { mount } from 'enzyme';
+import usePagination from '../hook/usePagination';
 import Table from '../index';
 
 const dataSource = Array.from({ length: 100 }, (_, key) => ({ key }));
@@ -43,6 +43,7 @@ describe('Testing Table Pagination', () => {
   });
 
   test('usePagination hook', () => {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     const { result } = renderHook(({ dataSource, pagination }) => usePagination(dataSource, pagination, true), {
       initialProps: {
         dataSource,
@@ -50,7 +51,7 @@ describe('Testing Table Pagination', () => {
       },
     });
     const [transformShowIndexPipeline, activePaginationState, paginationData, PaginationComponent] = result.current;
-    const wrapper = mount(<PaginationComponent onTriggerStateUpdate={() => {}} />);
+    const wrapper = mount(<PaginationComponent onTriggerStateUpdate={() => {/**/}} />);
     expect(transformShowIndexPipeline([])).toHaveLength(1);
     expect(transformShowIndexPipeline([])[0].render(undefined, undefined, 0)).toBe(1);
     act(() => {
