@@ -41,6 +41,10 @@ export default () => (
       console.log(p, s, f);
     }}
     showIndex
-    rowSelection={{}}
+    rowSelection={{
+      getCheckboxProps: (record) => ({
+        disabled: record.a === 1,
+      }),
+    }}
   />
 );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PaginationProps } from '../pagination/interface';
-
+import { CheckboxProps } from '../checkbox/interface';
 export type AlignType = 'left' | 'center' | 'right';
 export type SortOrder = 'descend' | 'ascend' | null;
 
@@ -83,6 +83,7 @@ export interface RowSelection<RecordType> {
   columnWidth?: number | string;
   fixed?: 'left' | 'right' | boolean;
   onChange?: (selectedRowKeys: string[], selectedRows: RecordType[]) => void;
+  getCheckboxProps?: (record: RecordType) => CheckboxProps;
 }
 
 export interface TableProps<RecordType> {

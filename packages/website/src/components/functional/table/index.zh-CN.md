@@ -210,12 +210,13 @@ group:
 
 ### RowSelection
 
-| 参数                | 说明                               | 类型                                                            | 默认值 |
-| ------------------- | ---------------------------------- | --------------------------------------------------------------- | ------ |
-| **selectedRowKeys** | 设置选中的项，设置该项开启受控模式 | string[]                                                        | -      |
-| **columnWidth**     | 设置选择列宽                       | number \| string                                                | 48     |
-| **onChange**        | 选择项改变时触发的回调函数         | (selectedRowKeys: string[], selectedRows: RecordType[]) => void | -      |
-| **fixed**           | 固定选择列                         | 'left' \| 'right' \|boolean                                     | -      |
+| 参数                 | 说明                               | 类型                                                            | 默认值 |
+| -------------------- | ---------------------------------- | --------------------------------------------------------------- | ------ |
+| **selectedRowKeys**  | 设置选中的项，设置该项开启受控模式 | string[]                                                        | -      |
+| **columnWidth**      | 设置选择列宽                       | number \| string                                                | 48     |
+| **onChange**         | 选择项改变时触发的回调函数         | (selectedRowKeys: string[], selectedRows: RecordType[]) => void | -      |
+| **fixed**            | 固定选择列                         | 'left' \| 'right' \|boolean                                     | -      |
+| **getCheckboxProps** | 设置选择框的默认属性配置           | (record: RecordType) => CheckboxProps                           | -      |
 
 ### Pagination
 
