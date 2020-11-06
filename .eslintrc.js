@@ -30,5 +30,6 @@ module.exports = {
     'import/extensions': ['off', 'never'],
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
 };
