@@ -1,7 +1,7 @@
 import React from 'react';
+import { mount, render } from 'enzyme';
 import Popconfirm from '../index';
 import { waitForComponentToPaint } from '../../../utils/test';
-import { mount, render } from 'enzyme';
 
 describe('Testing popconfirm', () => {
   const getPopconfirm = () => (
