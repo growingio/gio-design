@@ -1,8 +1,8 @@
 import React from 'react';
-import Popover from '../index';
-import '@gio-design/components/es/components/Tabs/style/index.css';
-import { waitForComponentToPaint } from '../../../utils/test';
 import { mount, render } from 'enzyme';
+import Popover from '../index';
+import '../../../../es/components/tabs/style/index.css';
+import { waitForComponentToPaint } from '../../../utils/test';
 
 describe('Testing Popover', () => {
   const getPopover = () => (
