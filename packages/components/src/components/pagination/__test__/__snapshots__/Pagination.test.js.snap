@@ -24,6 +24,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-prev gio-pagination-disabled",
           },
           "children": Array [
@@ -272,6 +273,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-item gio-pagination-item-active",
             },
             "children": Array [
@@ -287,6 +289,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-item",
               },
               "children": Array [
@@ -302,6 +305,7 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
+                  "aria-hidden": "true",
                   "class": "gio-pagination-item",
                 },
                 "children": Array [
@@ -317,6 +321,7 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
+                    "aria-hidden": "true",
                     "class": "gio-pagination-item",
                   },
                   "children": Array [
@@ -332,6 +337,7 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
+                      "aria-hidden": "true",
                       "class": "gio-pagination-item",
                     },
                     "children": Array [
@@ -347,6 +353,7 @@ initialize {
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": Object {
                       "attribs": Object {
+                        "aria-hidden": "true",
                         "class": "gio-pagination-jump-next",
                       },
                       "children": Array [
@@ -987,6 +994,7 @@ initialize {
                       "namespace": "http://www.w3.org/1999/xhtml",
                       "next": Object {
                         "attribs": Object {
+                          "aria-hidden": "true",
                           "class": "gio-pagination-item",
                         },
                         "children": Array [
@@ -1002,6 +1010,7 @@ initialize {
                         "namespace": "http://www.w3.org/1999/xhtml",
                         "next": Object {
                           "attribs": Object {
+                            "aria-hidden": "true",
                             "class": "gio-pagination-next",
                           },
                           "children": Array [
@@ -1473,9 +1482,11 @@ initialize {
                           "prev": [Circular],
                           "type": "tag",
                           "x-attribsNamespace": Object {
+                            "aria-hidden": undefined,
                             "class": undefined,
                           },
                           "x-attribsPrefix": Object {
+                            "aria-hidden": undefined,
                             "class": undefined,
                           },
                         },
@@ -1483,9 +1494,11 @@ initialize {
                         "prev": [Circular],
                         "type": "tag",
                         "x-attribsNamespace": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                         "x-attribsPrefix": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                       },
@@ -1493,9 +1506,11 @@ initialize {
                       "prev": [Circular],
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                     },
@@ -1503,9 +1518,11 @@ initialize {
                     "prev": [Circular],
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                   },
@@ -1513,9 +1530,11 @@ initialize {
                   "prev": [Circular],
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                 },
@@ -1523,9 +1542,11 @@ initialize {
                 "prev": [Circular],
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
               },
@@ -1533,9 +1554,11 @@ initialize {
               "prev": [Circular],
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
@@ -1543,9 +1566,11 @@ initialize {
             "prev": [Circular],
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
@@ -1553,9 +1578,11 @@ initialize {
           "prev": [Circular],
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
@@ -1571,6 +1598,7 @@ initialize {
       },
       Object {
         "attribs": Object {
+          "aria-hidden": "true",
           "class": "gio-pagination-prev gio-pagination-disabled",
         },
         "children": Array [
@@ -1819,6 +1847,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-item gio-pagination-item-active",
           },
           "children": Array [
@@ -1834,6 +1863,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-item",
             },
             "children": Array [
@@ -1849,6 +1879,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-item",
               },
               "children": Array [
@@ -1864,6 +1895,7 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
+                  "aria-hidden": "true",
                   "class": "gio-pagination-item",
                 },
                 "children": Array [
@@ -1879,6 +1911,7 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
+                    "aria-hidden": "true",
                     "class": "gio-pagination-item",
                   },
                   "children": Array [
@@ -1894,6 +1927,7 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
+                      "aria-hidden": "true",
                       "class": "gio-pagination-jump-next",
                     },
                     "children": Array [
@@ -2534,6 +2568,7 @@ initialize {
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": Object {
                       "attribs": Object {
+                        "aria-hidden": "true",
                         "class": "gio-pagination-item",
                       },
                       "children": Array [
@@ -2549,6 +2584,7 @@ initialize {
                       "namespace": "http://www.w3.org/1999/xhtml",
                       "next": Object {
                         "attribs": Object {
+                          "aria-hidden": "true",
                           "class": "gio-pagination-next",
                         },
                         "children": Array [
@@ -3020,9 +3056,11 @@ initialize {
                         "prev": [Circular],
                         "type": "tag",
                         "x-attribsNamespace": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                         "x-attribsPrefix": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                       },
@@ -3030,9 +3068,11 @@ initialize {
                       "prev": [Circular],
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                     },
@@ -3040,9 +3080,11 @@ initialize {
                     "prev": [Circular],
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                   },
@@ -3050,9 +3092,11 @@ initialize {
                   "prev": [Circular],
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                 },
@@ -3060,9 +3104,11 @@ initialize {
                 "prev": [Circular],
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
               },
@@ -3070,9 +3116,11 @@ initialize {
               "prev": [Circular],
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
@@ -3080,9 +3128,11 @@ initialize {
             "prev": [Circular],
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
@@ -3090,9 +3140,11 @@ initialize {
           "prev": [Circular],
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
@@ -3125,14 +3177,17 @@ initialize {
         },
         "type": "tag",
         "x-attribsNamespace": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
         "x-attribsPrefix": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
       },
       Object {
         "attribs": Object {
+          "aria-hidden": "true",
           "class": "gio-pagination-item gio-pagination-item-active",
         },
         "children": Array [
@@ -3148,6 +3203,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-item",
           },
           "children": Array [
@@ -3163,6 +3219,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-item",
             },
             "children": Array [
@@ -3178,6 +3235,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-item",
               },
               "children": Array [
@@ -3193,6 +3251,7 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
+                  "aria-hidden": "true",
                   "class": "gio-pagination-item",
                 },
                 "children": Array [
@@ -3208,6 +3267,7 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
+                    "aria-hidden": "true",
                     "class": "gio-pagination-jump-next",
                   },
                   "children": Array [
@@ -3848,6 +3908,7 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
+                      "aria-hidden": "true",
                       "class": "gio-pagination-item",
                     },
                     "children": Array [
@@ -3863,6 +3924,7 @@ initialize {
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": Object {
                       "attribs": Object {
+                        "aria-hidden": "true",
                         "class": "gio-pagination-next",
                       },
                       "children": Array [
@@ -4334,9 +4396,11 @@ initialize {
                       "prev": [Circular],
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                     },
@@ -4344,9 +4408,11 @@ initialize {
                     "prev": [Circular],
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                   },
@@ -4354,9 +4420,11 @@ initialize {
                   "prev": [Circular],
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                 },
@@ -4364,9 +4432,11 @@ initialize {
                 "prev": [Circular],
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
               },
@@ -4374,9 +4444,11 @@ initialize {
               "prev": [Circular],
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
@@ -4384,9 +4456,11 @@ initialize {
             "prev": [Circular],
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
@@ -4394,15 +4468,18 @@ initialize {
           "prev": [Circular],
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-prev gio-pagination-disabled",
           },
           "children": Array [
@@ -4679,22 +4756,27 @@ initialize {
           },
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "type": "tag",
         "x-attribsNamespace": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
         "x-attribsPrefix": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
       },
       Object {
         "attribs": Object {
+          "aria-hidden": "true",
           "class": "gio-pagination-item",
         },
         "children": Array [
@@ -4710,6 +4792,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-item",
           },
           "children": Array [
@@ -4725,6 +4808,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-item",
             },
             "children": Array [
@@ -4740,6 +4824,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-item",
               },
               "children": Array [
@@ -4755,6 +4840,7 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
+                  "aria-hidden": "true",
                   "class": "gio-pagination-jump-next",
                 },
                 "children": Array [
@@ -5395,6 +5481,7 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
+                    "aria-hidden": "true",
                     "class": "gio-pagination-item",
                   },
                   "children": Array [
@@ -5410,6 +5497,7 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
+                      "aria-hidden": "true",
                       "class": "gio-pagination-next",
                     },
                     "children": Array [
@@ -5881,9 +5969,11 @@ initialize {
                     "prev": [Circular],
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                   },
@@ -5891,9 +5981,11 @@ initialize {
                   "prev": [Circular],
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                 },
@@ -5901,9 +5993,11 @@ initialize {
                 "prev": [Circular],
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
               },
@@ -5911,9 +6005,11 @@ initialize {
               "prev": [Circular],
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
@@ -5921,9 +6017,11 @@ initialize {
             "prev": [Circular],
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
@@ -5931,15 +6029,18 @@ initialize {
           "prev": [Circular],
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-item gio-pagination-item-active",
           },
           "children": Array [
@@ -5957,6 +6058,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-prev gio-pagination-disabled",
             },
             "children": Array [
@@ -6233,30 +6335,37 @@ initialize {
             },
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "type": "tag",
         "x-attribsNamespace": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
         "x-attribsPrefix": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
       },
       Object {
         "attribs": Object {
+          "aria-hidden": "true",
           "class": "gio-pagination-item",
         },
         "children": Array [
@@ -6272,6 +6381,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-item",
           },
           "children": Array [
@@ -6287,6 +6397,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-item",
             },
             "children": Array [
@@ -6302,6 +6413,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-jump-next",
               },
               "children": Array [
@@ -6942,6 +7054,7 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
+                  "aria-hidden": "true",
                   "class": "gio-pagination-item",
                 },
                 "children": Array [
@@ -6957,6 +7070,7 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
+                    "aria-hidden": "true",
                     "class": "gio-pagination-next",
                   },
                   "children": Array [
@@ -7428,9 +7542,11 @@ initialize {
                   "prev": [Circular],
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                 },
@@ -7438,9 +7554,11 @@ initialize {
                 "prev": [Circular],
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
               },
@@ -7448,9 +7566,11 @@ initialize {
               "prev": [Circular],
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
@@ -7458,9 +7578,11 @@ initialize {
             "prev": [Circular],
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
@@ -7468,15 +7590,18 @@ initialize {
           "prev": [Circular],
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-item",
           },
           "children": Array [
@@ -7494,6 +7619,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-item gio-pagination-item-active",
             },
             "children": Array [
@@ -7511,6 +7637,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-prev gio-pagination-disabled",
               },
               "children": Array [
@@ -7787,38 +7914,47 @@ initialize {
               },
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "type": "tag",
         "x-attribsNamespace": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
         "x-attribsPrefix": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
       },
       Object {
         "attribs": Object {
+          "aria-hidden": "true",
           "class": "gio-pagination-item",
         },
         "children": Array [
@@ -7834,6 +7970,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-item",
           },
           "children": Array [
@@ -7849,6 +7986,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-jump-next",
             },
             "children": Array [
@@ -8489,6 +8627,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-item",
               },
               "children": Array [
@@ -8504,6 +8643,7 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
+                  "aria-hidden": "true",
                   "class": "gio-pagination-next",
                 },
                 "children": Array [
@@ -8975,9 +9115,11 @@ initialize {
                 "prev": [Circular],
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
               },
@@ -8985,9 +9127,11 @@ initialize {
               "prev": [Circular],
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
@@ -8995,9 +9139,11 @@ initialize {
             "prev": [Circular],
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
@@ -9005,15 +9151,18 @@ initialize {
           "prev": [Circular],
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-item",
           },
           "children": Array [
@@ -9031,6 +9180,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-item",
             },
             "children": Array [
@@ -9048,6 +9198,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-item gio-pagination-item-active",
               },
               "children": Array [
@@ -9065,6 +9216,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
+                  "aria-hidden": "true",
                   "class": "gio-pagination-prev gio-pagination-disabled",
                 },
                 "children": Array [
@@ -9341,46 +9493,57 @@ initialize {
                 },
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
               },
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "type": "tag",
         "x-attribsNamespace": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
         "x-attribsPrefix": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
       },
       Object {
         "attribs": Object {
+          "aria-hidden": "true",
           "class": "gio-pagination-item",
         },
         "children": Array [
@@ -9396,6 +9559,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-jump-next",
           },
           "children": Array [
@@ -10036,6 +10200,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-item",
             },
             "children": Array [
@@ -10051,6 +10216,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-next",
               },
               "children": Array [
@@ -10522,9 +10688,11 @@ initialize {
               "prev": [Circular],
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
@@ -10532,9 +10700,11 @@ initialize {
             "prev": [Circular],
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
@@ -10542,15 +10712,18 @@ initialize {
           "prev": [Circular],
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-item",
           },
           "children": Array [
@@ -10568,6 +10741,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-item",
             },
             "children": Array [
@@ -10585,6 +10759,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-item",
               },
               "children": Array [
@@ -10602,6 +10777,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
+                  "aria-hidden": "true",
                   "class": "gio-pagination-item gio-pagination-item-active",
                 },
                 "children": Array [
@@ -10619,6 +10795,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
+                    "aria-hidden": "true",
                     "class": "gio-pagination-prev gio-pagination-disabled",
                   },
                   "children": Array [
@@ -10895,54 +11072,67 @@ initialize {
                   },
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                 },
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
               },
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "type": "tag",
         "x-attribsNamespace": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
         "x-attribsPrefix": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
       },
       Object {
         "attribs": Object {
+          "aria-hidden": "true",
           "class": "gio-pagination-jump-next",
         },
         "children": Array [
@@ -11583,6 +11773,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-item",
           },
           "children": Array [
@@ -11598,6 +11789,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-next",
             },
             "children": Array [
@@ -12069,9 +12261,11 @@ initialize {
             "prev": [Circular],
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
@@ -12079,15 +12273,18 @@ initialize {
           "prev": [Circular],
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-item",
           },
           "children": Array [
@@ -12105,6 +12302,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-item",
             },
             "children": Array [
@@ -12122,6 +12320,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-item",
               },
               "children": Array [
@@ -12139,6 +12338,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
+                  "aria-hidden": "true",
                   "class": "gio-pagination-item",
                 },
                 "children": Array [
@@ -12156,6 +12356,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
+                    "aria-hidden": "true",
                     "class": "gio-pagination-item gio-pagination-item-active",
                   },
                   "children": Array [
@@ -12173,6 +12374,7 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
+                      "aria-hidden": "true",
                       "class": "gio-pagination-prev gio-pagination-disabled",
                     },
                     "children": Array [
@@ -12449,62 +12651,77 @@ initialize {
                     },
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                   },
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                 },
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
               },
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "type": "tag",
         "x-attribsNamespace": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
         "x-attribsPrefix": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
       },
       Object {
         "attribs": Object {
+          "aria-hidden": "true",
           "class": "gio-pagination-item",
         },
         "children": Array [
@@ -12520,6 +12737,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-next",
           },
           "children": Array [
@@ -12991,15 +13209,18 @@ initialize {
           "prev": [Circular],
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-jump-next",
           },
           "children": Array [
@@ -13642,6 +13863,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-item",
             },
             "children": Array [
@@ -13659,6 +13881,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-item",
               },
               "children": Array [
@@ -13676,6 +13899,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
+                  "aria-hidden": "true",
                   "class": "gio-pagination-item",
                 },
                 "children": Array [
@@ -13693,6 +13917,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
+                    "aria-hidden": "true",
                     "class": "gio-pagination-item",
                   },
                   "children": Array [
@@ -13710,6 +13935,7 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
+                      "aria-hidden": "true",
                       "class": "gio-pagination-item gio-pagination-item-active",
                     },
                     "children": Array [
@@ -13727,6 +13953,7 @@ initialize {
                     "parent": [Circular],
                     "prev": Object {
                       "attribs": Object {
+                        "aria-hidden": "true",
                         "class": "gio-pagination-prev gio-pagination-disabled",
                       },
                       "children": Array [
@@ -14003,70 +14230,87 @@ initialize {
                       },
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                     },
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                   },
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                 },
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
               },
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "type": "tag",
         "x-attribsNamespace": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
         "x-attribsPrefix": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
       },
       Object {
         "attribs": Object {
+          "aria-hidden": "true",
           "class": "gio-pagination-next",
         },
         "children": Array [
@@ -14537,6 +14781,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-item",
           },
           "children": Array [
@@ -14554,6 +14799,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-jump-next",
             },
             "children": Array [
@@ -15196,6 +15442,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-item",
               },
               "children": Array [
@@ -15213,6 +15460,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
+                  "aria-hidden": "true",
                   "class": "gio-pagination-item",
                 },
                 "children": Array [
@@ -15230,6 +15478,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
+                    "aria-hidden": "true",
                     "class": "gio-pagination-item",
                   },
                   "children": Array [
@@ -15247,6 +15496,7 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
+                      "aria-hidden": "true",
                       "class": "gio-pagination-item",
                     },
                     "children": Array [
@@ -15264,6 +15514,7 @@ initialize {
                     "parent": [Circular],
                     "prev": Object {
                       "attribs": Object {
+                        "aria-hidden": "true",
                         "class": "gio-pagination-item gio-pagination-item-active",
                       },
                       "children": Array [
@@ -15281,6 +15532,7 @@ initialize {
                       "parent": [Circular],
                       "prev": Object {
                         "attribs": Object {
+                          "aria-hidden": "true",
                           "class": "gio-pagination-prev gio-pagination-disabled",
                         },
                         "children": Array [
@@ -15557,73 +15809,91 @@ initialize {
                         },
                         "type": "tag",
                         "x-attribsNamespace": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                         "x-attribsPrefix": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                       },
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                     },
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                   },
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                 },
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
               },
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },
         "type": "tag",
         "x-attribsNamespace": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
         "x-attribsPrefix": Object {
+          "aria-hidden": undefined,
           "class": undefined,
         },
       },
@@ -15841,6 +16111,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
+            "aria-hidden": "true",
             "class": "gio-pagination-next",
           },
           "children": Array [
@@ -16091,6 +16362,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
+              "aria-hidden": "true",
               "class": "gio-pagination-item",
             },
             "children": Array [
@@ -16108,6 +16380,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
+                "aria-hidden": "true",
                 "class": "gio-pagination-jump-next",
               },
               "children": Array [
@@ -16750,6 +17023,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
+                  "aria-hidden": "true",
                   "class": "gio-pagination-item",
                 },
                 "children": Array [
@@ -16767,6 +17041,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
+                    "aria-hidden": "true",
                     "class": "gio-pagination-item",
                   },
                   "children": Array [
@@ -16784,6 +17059,7 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
+                      "aria-hidden": "true",
                       "class": "gio-pagination-item",
                     },
                     "children": Array [
@@ -16801,6 +17077,7 @@ initialize {
                     "parent": [Circular],
                     "prev": Object {
                       "attribs": Object {
+                        "aria-hidden": "true",
                         "class": "gio-pagination-item",
                       },
                       "children": Array [
@@ -16818,6 +17095,7 @@ initialize {
                       "parent": [Circular],
                       "prev": Object {
                         "attribs": Object {
+                          "aria-hidden": "true",
                           "class": "gio-pagination-item gio-pagination-item-active",
                         },
                         "children": Array [
@@ -16835,6 +17113,7 @@ initialize {
                         "parent": [Circular],
                         "prev": Object {
                           "attribs": Object {
+                            "aria-hidden": "true",
                             "class": "gio-pagination-prev gio-pagination-disabled",
                           },
                           "children": Array [
@@ -17111,73 +17390,91 @@ initialize {
                           },
                           "type": "tag",
                           "x-attribsNamespace": Object {
+                            "aria-hidden": undefined,
                             "class": undefined,
                           },
                           "x-attribsPrefix": Object {
+                            "aria-hidden": undefined,
                             "class": undefined,
                           },
                         },
                         "type": "tag",
                         "x-attribsNamespace": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                         "x-attribsPrefix": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                       },
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                     },
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                   },
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-hidden": undefined,
                     "class": undefined,
                   },
                 },
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-hidden": undefined,
                   "class": undefined,
                 },
               },
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-hidden": undefined,
                 "class": undefined,
               },
             },
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-hidden": undefined,
               "class": undefined,
             },
           },
           "type": "tag",
           "x-attribsNamespace": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
           "x-attribsPrefix": Object {
+            "aria-hidden": undefined,
             "class": undefined,
           },
         },

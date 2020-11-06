@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount, render } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 import Pagination from '../Pagination';
 import { generatePageArray } from '../ until';
-import { act } from 'react-dom/test-utils';
 
 describe('Testing Pagination', () => {
   it('should be stable', () => {

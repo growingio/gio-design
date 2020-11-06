@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState, useRef } from 'react';
+import React, { useContext, useMemo, useState, useRef, useCallback } from 'react';
 import classNames from 'classnames';
 import { isFunction, isNumber, isNaN, isUndefined } from 'lodash';
 import { LeftOutlined, LeftDoubleOutlined, RightOutlined, RightDoubleOutlined, More } from '@gio-design/icons';
@@ -16,7 +16,7 @@ const Pagination = ({
   className,
   style,
   total = 0,
-  showTotal = (total: number) => `总共 ${total.toLocaleString()} 条`,
+  showTotal = (totals: number) => `总共 ${totals.toLocaleString()} 条`,
   onChange,
   showQuickJumper = false,
   hideOnSinglePage = false,
@@ -41,6 +41,22 @@ const Pagination = ({
   const prevDisabled = localCurrent <= 1;
   const nextDisabled = localCurrent >= pageNumber;
 
+  const handleClick = useCallback((toPage: number) => {
+    if (isNumber(toPage) && !Object.is(toPage, localCurrent) && !disabled) {
+      // eslint-disable-next-line no-underscore-dangle
+      let _toPage = toPage;
+      if (_toPage < 1) {
+        _toPage = 1;
+      } else if (toPage > pageNumber) {
+        _toPage = pageNumber;
+      }
+      if (isUndefined(current)) {
+        setLocalCurrent(_toPage);
+      }
+      onChange?.(_toPage, pageSize);
+    }
+  },[current,disabled,localCurrent,onChange,pageNumber,pageSize])
+
   const pagination = useMemo(
     () =>
       generatePageArray(localCurrent, pageNumber, offset, prevSymbol, nextSymbol).map((page: number | symbol) => {
@@ -52,6 +68,7 @@ const Pagination = ({
               })}
               key={page}
               onClick={() => handleClick(page)}
+              aria-hidden="true"
             >
               {page}
             </li>
@@ -63,6 +80,7 @@ const Pagination = ({
               key="prev"
               className={classNames(`${prefixCls}-jump-prev`)}
               onClick={() => handleClick(localCurrent - offset)}
+              aria-hidden="true"
             >
               <More className="more" />
               <LeftDoubleOutlined className="double" color="#0044F2" />
@@ -75,6 +93,7 @@ const Pagination = ({
               key="next"
               className={classNames(`${prefixCls}-jump-next`)}
               onClick={() => handleClick(localCurrent + offset)}
+              aria-hidden="true"
             >
               <More className="more" />
               <RightDoubleOutlined className="double" color="#0044F2" />
@@ -83,23 +102,8 @@ const Pagination = ({
         }
         return null;
       }),
-    [localCurrent, pageNumber]
+    [localCurrent, pageNumber,handleClick,prefixCls]
   );
-
-  const handleClick = (toPage: number) => {
-    if (isNumber(toPage) && !Object.is(toPage, localCurrent) && !disabled) {
-      let _toPage = toPage;
-      if (_toPage < 1) {
-        _toPage = 1;
-      } else if (toPage > pageNumber) {
-        _toPage = pageNumber;
-      }
-      if (isUndefined(current)) {
-        setLocalCurrent(_toPage);
-      }
-      onChange?.(_toPage, pageSize);
-    }
-  };
 
   const totalText = useMemo(() => {
     if (!isFunction(showTotal)) {
@@ -113,7 +117,7 @@ const Pagination = ({
         ])}
       </li>
     );
-  }, [total, showTotal, localCurrent, pageSize]);
+  }, [total, showTotal, localCurrent, pageSize,prefixCls]);
 
   const handleInputPressEnter = (e: any) => {
     const transformValue = Number(e.target.value);
@@ -157,6 +161,7 @@ const Pagination = ({
           [`${prefixCls}-disabled`]: prevDisabled,
         })}
         onClick={() => prevDisabled || handleClick(localCurrent - 1)}
+        aria-hidden="true"
       >
         <LeftOutlined size="16px" />
       </li>
@@ -166,6 +171,7 @@ const Pagination = ({
           [`${prefixCls}-disabled`]: nextDisabled,
         })}
         onClick={() => nextDisabled || handleClick(localCurrent + 1)}
+        aria-hidden="true"
       >
         <RightOutlined size="16px" />
       </li>
