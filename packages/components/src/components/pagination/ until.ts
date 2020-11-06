@@ -28,3 +28,5 @@ export const generatePageArray = (
   }
   return generateSuccessionArray(1, pageNumber);
 };
+
+export default {}
