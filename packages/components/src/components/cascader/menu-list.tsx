@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
 
+import { Value } from './menu-item';
 import { withPrefix } from './helper';
-import Menu, { Props as MenuProps, Value } from './menu';
+import Menu, { Props as MenuProps } from './menu';
 
 export interface Props extends Omit<MenuProps, 'onClick'> {
   value?: Value;
@@ -13,7 +14,7 @@ export interface Props extends Omit<MenuProps, 'onClick'> {
 }
 
 const MenuList = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
-  const { className, dataSource, onSelect, header, footer, onClick, origintOnClick, ...others } = props;
+  const { className, dataSource, header, footer, onClick, origintOnClick, ...others } = props;
   const withMenuCls = withPrefix('cascader-menu');
 
   useEffect(() => {
@@ -28,11 +29,11 @@ const MenuList = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     <div className={classNames(className, withMenuCls('list'))} ref={ref}>
       <div className={withMenuCls('header')}>{header}</div>
       <div className={withMenuCls('list')}>
-        <Menu dataSource={dataSource} onSelect={onSelect} {...others} onClick={origintOnClick} />
+        <Menu dataSource={dataSource} {...others} onClick={origintOnClick} />
       </div>
       <div className={withMenuCls('footer')}>{footer}</div>
     </div>
   );
 });
 
-export default MenuList;
+export default React.memo(MenuList);

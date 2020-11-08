@@ -1,4 +1,4 @@
-import { NodeData, Value } from './menu';
+import { NodeData, Value } from './menu-item';
 
 const hasOwnProperty = <T>(o: T, k: string) => o && Object.prototype.hasOwnProperty.call(o, k);
 const pathKey = '-gioMenuPath';
