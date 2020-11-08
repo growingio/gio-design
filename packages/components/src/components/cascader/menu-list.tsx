@@ -28,7 +28,7 @@ const MenuList = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   return (
     <div className={classNames(className, withMenuCls('list'))} ref={ref}>
       <div className={withMenuCls('header')}>{header}</div>
-      <div className={withMenuCls('list')}>
+      <div className={withMenuCls('group')}>
         <Menu dataSource={dataSource} {...others} onClick={origintOnClick} />
       </div>
       <div className={withMenuCls('footer')}>{footer}</div>
