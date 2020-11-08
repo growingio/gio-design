@@ -24,13 +24,14 @@ export interface Props {
   value?: Value;
   searchBy?: string;
   ignoreCase?: boolean;
+  parentsData?: NodeData[];
   onClick?: (nodeData: NodeData, event: MouseEvent) => void;
   onMouseEnter?: (nodeData: NodeData, event: MouseEvent) => void;
   trigger?: 'click' | 'hover';
   selectAll?: boolean;
   onTrigger?: (nodeData: NodeData, event: MouseEvent | KeyboardEvent) => void;
   beforeSelect?: (nodeData: NodeData, event: MouseEvent | KeyboardEvent) => void | NodeData | Promise<NodeData>;
-  onSelect?: (nodeData: NodeData) => void;
+  onSelect?: (nodeData: NodeData, parentsData: NodeData[]) => void;
   onKeyUp?: (event: KeyboardEvent) => void;
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
@@ -55,6 +56,8 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     className,
     dataSource,
     dataSource: { label, children: childNodeData },
+    value,
+    parentsData = [],
     beforeSelect,
     onSelect,
     onKeyUp,
@@ -75,13 +78,13 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     const noChildren = isEmpty(dataSource.children);
     const copyEvent = { ...event };
     if (noChildren || selectAll) {
-      // beforeSelect?.(dataSource, event);
-      // onSelect?.(dataSource);
       Promise.resolve(beforeSelect?.(dataSource, event))
         .then((d) => d || dataSource)
         .then((resolveData) => {
-          onSelect?.(resolveData);
-          onTrigger?.(resolveData, copyEvent);
+          onSelect?.(resolveData, parentsData);
+          if (selectAll) {
+            onTrigger?.(resolveData, copyEvent);
+          }
         });
     }
     if (!noChildren) {
@@ -124,10 +127,14 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
           onRender(dataSource)
         ) : (
           <div className={withWrapperCls('content')}>
-            <div dangerouslySetInnerHTML={{ __html: hitTarget ? renderLabel(label, searchBy, ignoreCase) : label }} />
-            {Array.isArray(childNodeData) && childNodeData.length > 0 && (
-              <DownFilled className={withWrapperCls('icon')} />
-            )}
+            <div
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: hitTarget && searchBy ? renderLabel(label, searchBy, ignoreCase) : label,
+              }}
+            />
+            {(selectAll || isEmpty(dataSource.children)) && value === dataSource.value && <span>✓</span>}
+            {!isEmpty(childNodeData) && <DownFilled className={withWrapperCls('icon')} />}
           </div>
         )}
       </div>
@@ -137,4 +144,4 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   );
 });
 
-export default MenuItem;
+export default React.memo(MenuItem);

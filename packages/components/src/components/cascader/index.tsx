@@ -14,12 +14,13 @@ export interface Props extends Omit<MenuListProps, 'onClick' | 'origintOnClick'>
   prefixCls?: string;
   size?: SizeType;
   disable?: boolean;
-  open?: boolean;
   placeholder?: string;
+  separator?: string;
   // MenuList props
   onClick?: MenuListProps['origintOnClick'];
 
   // dropdown props
+  visible?: boolean;
   overlayClassName?: string;
   onVisibleChange?: DropdownProps['onVisibleChange'];
   dropdownTrigger?: DropdownProps['trigger'];
@@ -30,49 +31,62 @@ const Cascader: React.FC<Props> = (props) => {
   const {
     prefixCls,
     className,
-    dataSource = [],
+    placeholder,
+    separator = '/',
     overlayClassName,
+    dataSource = [],
     trigger = 'click',
     dropdownTrigger = 'click',
     getDropdownContainer,
-    placeholder,
-    value,
     open,
+    value,
+    visible,
     onClick,
+    onTrigger: userOnTrigger,
     onSelect: userChange,
     onVisibleChange,
     ...others
   } = props;
-  const inputRef = useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [canOpen, setCanOpen] = useState(open);
+  const [selected, setSelected] = useState(value);
   const [keyword, setKeyword] = useState('');
   const [title, setTitle] = useState('');
   const { getPrefixCls } = useContext(ConfigContext);
   const wrapperCls = getPrefixCls('cascader', prefixCls);
   const mergedWrapperCls = classNames(wrapperCls, className);
   const withWrapperCls = withPrefix(wrapperCls);
-  const onChange = (data: NodeData) => {
-    const menuPath = data['-gioMenuPath']
-      ?.filter((s) => s && s.label)
-      .map((d) => d.label)
-      .join('/');
-    setTitle(menuPath || '');
-    userChange?.(data);
+  const onSelect = (data: NodeData, parents: NodeData[]) => {
+    const titles = parents.reduce((acc, b) => {
+      return [b.label, acc].join(separator);
+    }, data.label);
+
+    setTitle(titles);
+    setSelected(data.value);
+    userChange?.(data, parents);
   };
   let dropdownVisible = false;
   const handleVisibleChange = (v: boolean) => {
     dropdownVisible = v;
     onVisibleChange?.(v);
+    setCanOpen(false);
   };
   const afterVisibleChange = () => {
     if (dropdownVisible) {
-      inputRef.current?.focus();
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
     }
+  };
+  const handleTrigger: MenuListProps['onTrigger'] = (nodeData, event) => {
+    userOnTrigger?.(nodeData, event);
+    setCanOpen(true);
   };
 
   return (
     <div className={mergedWrapperCls}>
       <Dropdown
-        visible={open}
+        visible={visible}
         placement="bottomLeft"
         getTooltipContainer={getDropdownContainer}
         overlayClassName={classNames(withWrapperCls('dropdown'), overlayClassName)}
@@ -84,13 +98,15 @@ const Cascader: React.FC<Props> = (props) => {
           <MenuList
             {...others}
             origintOnClick={onClick}
+            open={canOpen}
             trigger={trigger}
             header={<SearchBar ref={inputRef} onSearch={setKeyword} />}
             className={withWrapperCls('panel')}
-            value={value}
+            value={selected}
             searchBy={keyword}
             dataSource={dataSource}
-            onSelect={onChange}
+            onTrigger={handleTrigger}
+            onSelect={onSelect}
           />
         }
       >

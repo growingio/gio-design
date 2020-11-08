@@ -17,7 +17,7 @@ const dataSource = [
         value: 'c-2',
         children: [
           { label: 'Option C-2-1', value: 'c-2-1' },
-          { label: 'Option C-2-2', value: 'c-2-2' },
+          { label: 'Option C-2-2', value: 'c-2-2', children: [{ label: 'Option C-2-2-1', value: 'c-2-2-1' }] },
         ],
       },
     ],
@@ -27,7 +27,7 @@ const dataSource = [
 const Basic = (): JSX.Element => {
   return (
     <Cascader
-      value="c"
+      value="c-2-1"
       dataSource={dataSource}
       // selectAll
       // beforeSelect={(d) => {
