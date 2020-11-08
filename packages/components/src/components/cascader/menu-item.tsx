@@ -13,7 +13,6 @@ export type NodeData = {
   value: Value;
   disable?: boolean;
   children?: NodeData[];
-  '-gioMenuPath'?: NodeData[];
   [key: string]: unknown;
 };
 
