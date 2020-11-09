@@ -12,7 +12,7 @@ nav:
 ## 20.11.6
 
 - component
-  - Select
+  - Select #393
     - 🆕 add disabled feature
     - 🆕 add allowCustomOption prop
     - 🆕 add notFoundContent prop
@@ -30,24 +30,25 @@ nav:
     - 🛎 options must follow the options of List Interface
     - 🛎 value && defaultValue now support string or string[] as single or mulit selection mode
     - 🛎 sign of onChange method has been change form (options: Option | Option[] ) to (value: string | string[], options: Option | Option[])
-  - Dropdown
+    - 🐛 fix auto width style issue #434
+  - Dropdown #395
     - 🐛 fix onVisibleChange not be call after click
-  - List
+  - List #412
     - 🆕 support string type of width
-  - SearchBar
+  - SearchBar #408
     - 🐛 Let the display panel adapt to the width of input,and let the prompt text show '...' when the width is too short
-  - Input
+  - Input #422
     - 🆕 add prefixWidth for prefix, suffixWidth for suffix, format prefix element style
-  - Menu
+  - Menu #417
     - 🆕 mount menuitem, submenu to menu
-  - Button
+  - Button #425
     - 🆕 change assist button background to transparent
-  - Table
+  - Table #427
     - 🆕 add getCheckboxProps prop
-  - Avatar
+  - Avatar #420
     - 🆕 support custom tooltip title
     - 🆕 add style prop
-  - Form
+  - Form #419
     - 🆕 add style prop to Form and Item
 
 ## 20.10.6

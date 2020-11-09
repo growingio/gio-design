@@ -12,7 +12,7 @@ nav:
 ## 20.11.6
 
 - component
-  - Select
+  - Select #393
     - 🆕 新增 disabled 禁用功能
     - 🆕 新增 allowCustomOption 可开启通过搜索输入增加 option
     - 🆕 新增 notFoundContent 可配置无搜索结果的展示内容
@@ -31,24 +31,25 @@ nav:
     - 🛎 options 现在不允许自定义格式，保持和 List option 格式一致
     - 🛎 value && defaultValue 现在可接受 string 或者 string[] 分别对应单选和多选模式
     - 🛎 onChange 方法的输入值 (options: Option | Option[] ) 改为 (value: string | string[], options: Option | Option[])
-  - Dropdown
+    - 修复 auto width 样式问题 #434
+  - Dropdown #395
     - 🐛 修复点击后 onVisibleChange 没有被调用
-  - List
+  - List #412
     - 🆕 width 支持 string 类型
-  - SearchBar
+  - SearchBar #408
     - 🐛 让展示面板自适应 input 的宽度，并且让提示文字在宽度过小时超出部分显示 ...
-  - Input
+  - Input #422
     - 🆕 给 prefix 元素默认样式，并且添加 prefixWidth 和 suffixWidth 让 input 调整左右间距
-  - Menu
+  - Menu #417
     - 🆕 挂载 menuitem, submenu 到 menu 上
-  - Button
+  - Button #425
     - 🆕 将 assist 类型的按钮背景色由白色改为透明
-  - Table
+  - Table #427
     - 🆕 添加 getCheckboxProps 参数
-  - Avatar
+  - Avatar #420
     - 🆕 支持自定义气泡框内容
     - 🆕 添加 style 参数
-  - Form
+  - Form #419
     - 🆕 给 Form 组件和 Form.Item 增加 style 属性
 
 ## 20.10.6
