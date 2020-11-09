@@ -103,7 +103,7 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   );
 
   return (
-    <div className={classNames('')}>
+    <div className={classNames(`${prefixCls}-wrap`)}>
       <RcDatePicker
         calendar={calendar}
         value={localValue}
