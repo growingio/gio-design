@@ -4,7 +4,7 @@ exports[`DatePicker should match snapshot 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "",
+      "class": "gio-date-picker-wrap",
     },
     "children": Array [
       Object {
