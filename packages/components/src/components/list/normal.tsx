@@ -1,8 +1,8 @@
 import React from 'react';
+import { noop } from 'lodash';
 import { IBaseListProps } from './interface';
 import './style/base.less';
 import Core from './core';
-import { noop } from 'lodash';
 
 const NormalList = ({
   prefixCls = 'gio-list',

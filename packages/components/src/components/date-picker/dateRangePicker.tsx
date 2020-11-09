@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import React, { useContext, useRef, useState,useEffect } from 'react';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/Picker';
@@ -23,32 +24,32 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   useEffect(() => {
     setTimeRange(value);
   }, [value])
-  const onSelect = (value: Array<Moment>): void => {
-    setTimeRange(value);
-    props?.onSelect(value);
+  const onSelect = (values: Array<Moment>): void => {
+    setTimeRange(values);
+    props?.onSelect(values);
     !showFooter && setOpen(false);
   };
-  const onChange = (value: Array<Moment>): void => {
-    setTimeRange(value);
+  const onChange = (values: Array<Moment>): void => {
+    setTimeRange(values);
   };
 
-  const onPanelChange = (value: Array<Moment>): void => {
-    setTimeRange(value);
+  const onPanelChange = (values: Array<Moment>): void => {
+    setTimeRange(values);
   };
 
   const debounceLeftChange = debounce((e: string): void => {
-    const value = moment(e, props.format);
-    if (value.isValid() && value.isBefore(timeRange[1])) {
-      setTimeRange([value, timeRange[1]]);
+    const values = moment(e, props.format);
+    if (values.isValid() && values.isBefore(timeRange[1])) {
+      setTimeRange([values, timeRange[1]]);
     } else {
       setTimeRange(timeRange);
     }
   }, 1000);
 
   const debounceRightChange = debounce((e: string): void => {
-    const value = moment(e, props.format);
-    if (value.isValid() && value.isAfter(timeRange[0])) {
-      setTimeRange([timeRange[0], value]);
+    const values = moment(e, props.format);
+    if (values.isValid() && values.isAfter(timeRange[0])) {
+      setTimeRange([timeRange[0], values]);
     } else {
       setTimeRange(timeRange);
     }

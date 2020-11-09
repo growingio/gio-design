@@ -8,9 +8,8 @@ const getGroupedOptions = (options: any[]) => {
   const hasNotGroup = !options.some((option: any) => {
     if (option?.groupLabel) {
       return true;
-    } else {
-      return false;
-    }
+    } 
+    return false;
   });
 
   if (hasNotGroup) {
@@ -43,21 +42,22 @@ export interface WithGroupedOptionsProps {
 
 const withGroupedOptions = (Component: any, getGroupedFunc = getGroupedOptions): any => {
   class HOC extends React.PureComponent<any> {
-    public static displayName: string;
+    public static displayName = `GroupedOptionsProvider(${getDisplayName(Component)})`;
+
     public render() {
-      const groupedOptions = getGroupedOptions(this.props.options);
+      const { options } = this.props;
+      const groupedOptions = getGroupedOptions(options);
       let groups;
       if (getGroupedFunc === getGroupedOptions) {
         groups = groupedOptions;
       } else {
-        groups = getGroupedFunc(this.props.options);
+        groups = getGroupedFunc(options);
       }
       return (
-        <Component {...this.props} options={groupedOptions} groups={groups} originalOptions={this.props.options} />
+        <Component {...this.props} options={groupedOptions} groups={groups} originalOptions={options} />
       );
     }
   }
-  HOC.displayName = `GroupedOptionsProvider(${getDisplayName(Component)})`;
   return HOC;
 };
 
