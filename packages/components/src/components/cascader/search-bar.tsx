@@ -1,4 +1,5 @@
 import React from 'react';
+import { SearchOutlined } from '@gio-design/icons';
 
 import Input from '../input';
 
@@ -18,7 +19,17 @@ const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
     onSearch?.(e.target.value);
   };
 
-  return <Input forwardRef={ref} value={value} type="text" onKeyUp={onKeyUp} onChange={handleChange} />;
+  return (
+    <Input
+      style={{ width: '100%' }}
+      forwardRef={ref}
+      value={value}
+      type="text"
+      onKeyUp={onKeyUp}
+      onChange={handleChange}
+      suffix={<SearchOutlined />}
+    />
+  );
 });
 
 export default SearchBar;

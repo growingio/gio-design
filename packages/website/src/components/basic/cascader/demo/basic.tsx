@@ -2,7 +2,7 @@ import React from 'react';
 import { Cascader } from '@gio-design/components';
 
 import '@gio-design/components/es/components/cascader/style/index.css';
-import '@gio-design/components/es/components/grid/style/index.css';
+import '@gio-design/components/es/components/input/style/index.css';
 
 const dataSource = [
   { label: 'option A', value: 'a' },
@@ -29,16 +29,17 @@ const Basic = (): JSX.Element => {
     <Cascader
       value="c-2-1"
       dataSource={dataSource}
-      // selectAll
-      // beforeSelect={(d) => {
-      //   if (d.value === 'a') {
-      //     return new Promise((resolve) => {
-      //       setTimeout(() => {
-      //         resolve({ ...d, label: 'hahah', children: [{ label: 'nb', value: 'nb' }] });
-      //       }, 300);
-      //     });
-      //   }
-      // }}
+      trigger="hover"
+      // selectAny
+      beforeSelect={(e, d) => {
+        if (d.value === 'a') {
+          return [{ label: 'nb', value: 'nb' }];
+          // return new Promise((resolve) => {
+          //   setTimeout(() => {
+          //   }, 300);
+          // });
+        }
+      }}
       // onRender={(d) => (
       //   <Grid justify="space-between" style={{ width: 100 }}>
       //     <div>{d.label}</div>

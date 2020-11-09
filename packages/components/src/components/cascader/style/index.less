@@ -23,25 +23,29 @@
   }
 }
 
-.cascader-menu-group {
+.cascader-menu-list {
   position: relative;
 }
 
 .cascader-menu {
+  position: relative;
   display: inline-block;
   float: left;
   margin-right: 4px;
+  padding: 8px;
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 6px 0 rgba(163, 173, 200, 0.5);
 
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+  }
+
   &-item {
     &-inner {
-      min-width: 260px;
-      height: 36px;
-      color: #313e75;
-      font-size: 14px;
-
       &:hover {
         color: #1248e9;
         background-color: #f7f8fc;
@@ -56,11 +60,21 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 6px 12px;
+
+      min-width: 236px;
+      padding: 7px 12px;
+      color: #313e75;
+      font-size: 14px;
+      cursor: pointer;
 
       .keyword {
         color: red;
         font-weight: normal;
+      }
+
+      .icon-checked svg {
+        width: 1em;
+        height: 1em;
       }
     }
     &-icon {

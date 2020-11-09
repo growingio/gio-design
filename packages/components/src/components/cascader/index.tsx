@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import { ConfigContext } from '../config-provider';
@@ -7,10 +7,11 @@ import { NodeData } from './menu-item';
 import { SizeType } from '../config-provider/SizeContext';
 import { withPrefix } from './helper';
 import Dropdown from '../dropdown';
-import MenuList, { Props as MenuListProps } from './menu-list';
+import Input from '../input';
+import MenuOverlayer, { Props as MenuListProps } from './menu-overlayer';
 import SearchBar from './search-bar';
 
-export interface Props extends Omit<MenuListProps, 'onClick' | 'origintOnClick'> {
+export interface Props extends Omit<MenuListProps, 'depth' | 'onClick' | 'origintOnClick'> {
   prefixCls?: string;
   size?: SizeType;
   disable?: boolean;
@@ -18,9 +19,11 @@ export interface Props extends Omit<MenuListProps, 'onClick' | 'origintOnClick'>
   separator?: string;
   // MenuList props
   onClick?: MenuListProps['origintOnClick'];
+  input?: React.ReactElement;
 
   // dropdown props
   visible?: boolean;
+  placement?: DropdownProps['placement'];
   overlayClassName?: string;
   onVisibleChange?: DropdownProps['onVisibleChange'];
   dropdownTrigger?: DropdownProps['trigger'];
@@ -32,11 +35,14 @@ const Cascader: React.FC<Props> = (props) => {
     prefixCls,
     className,
     placeholder,
+    input,
     separator = '/',
     overlayClassName,
     dataSource = [],
     trigger = 'click',
     dropdownTrigger = 'click',
+    placement = 'bottomLeft',
+    header,
     getDropdownContainer,
     open,
     value,
@@ -52,6 +58,7 @@ const Cascader: React.FC<Props> = (props) => {
   const [selected, setSelected] = useState(value);
   const [keyword, setKeyword] = useState('');
   const [title, setTitle] = useState('');
+  const [dropdownVisible, setDropdownVisible] = useState(false);
   const { getPrefixCls } = useContext(ConfigContext);
   const wrapperCls = getPrefixCls('cascader', prefixCls);
   const mergedWrapperCls = classNames(wrapperCls, className);
@@ -64,43 +71,47 @@ const Cascader: React.FC<Props> = (props) => {
     setTitle(titles);
     setSelected(data.value);
     userChange?.(data, parents);
+    setTimeout(() => {
+      // 1. 可以让用户看到选中操作的效果
+      // 2. 可以防止 unmount 后 setState
+      setDropdownVisible(false);
+    }, 120);
   };
-  let dropdownVisible = false;
   const handleVisibleChange = (v: boolean) => {
-    dropdownVisible = v;
+    setDropdownVisible(v);
     onVisibleChange?.(v);
     setCanOpen(false);
-  };
-  const afterVisibleChange = () => {
-    if (dropdownVisible) {
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 100);
-    }
   };
   const handleTrigger: MenuListProps['onTrigger'] = (nodeData, event) => {
     userOnTrigger?.(nodeData, event);
     setCanOpen(true);
   };
+  useEffect(() => {
+    if (dropdownVisible) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+    }
+  }, [dropdownVisible]);
 
   return (
     <div className={mergedWrapperCls}>
       <Dropdown
-        visible={visible}
-        placement="bottomLeft"
+        visible={visible === undefined ? dropdownVisible : dropdownVisible && visible}
+        placement={placement}
         getTooltipContainer={getDropdownContainer}
         overlayClassName={classNames(withWrapperCls('dropdown'), overlayClassName)}
         trigger={dropdownTrigger}
         onVisibleChange={handleVisibleChange}
-        afterVisibleChange={afterVisibleChange}
+        overlayInnerStyle={{ marginTop: -8 }}
         overlay={
           // eslint-disable-next-line react/jsx-wrap-multilines
-          <MenuList
+          <MenuOverlayer
             {...others}
             origintOnClick={onClick}
             open={canOpen}
             trigger={trigger}
-            header={<SearchBar ref={inputRef} onSearch={setKeyword} />}
+            header={header === false ? false : <SearchBar ref={inputRef} onSearch={setKeyword} />}
             className={withWrapperCls('panel')}
             value={selected}
             searchBy={keyword}
@@ -111,13 +122,7 @@ const Cascader: React.FC<Props> = (props) => {
         }
       >
         <div className={withWrapperCls('title')}>
-          <input
-            readOnly
-            className={withWrapperCls('title-inner')}
-            type="text"
-            placeholder={placeholder}
-            value={title}
-          />
+          {React.isValidElement(input) ? { input } : <Input readOnly placeholder={placeholder} value={title} />}
         </div>
       </Dropdown>
     </div>
