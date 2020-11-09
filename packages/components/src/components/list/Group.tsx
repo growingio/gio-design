@@ -3,9 +3,15 @@ import { noop } from 'lodash';
 import { GroupProps } from './interface';
 
 export default class Group extends React.PureComponent<GroupProps> {
-  public static defaultProps = {
+
+  static defaultProps = {
     onSelect: noop,
     style: {},
+  };
+
+  private handleSelect = () => {
+    const { onSelect,  option} = this.props;
+    onSelect && onSelect(option);
   };
 
   public render() {
@@ -22,15 +28,11 @@ export default class Group extends React.PureComponent<GroupProps> {
     } = this.props;
 
     return (
-      <div className="gio-select-option group" style={{ ...style, color: '#1248E9' }} onClick={this.handleSelect}>
+      <div className="gio-select-option group" style={{ ...style, color: '#1248E9' }} onClick={this.handleSelect} aria-hidden="true">
         {icon}
         {labelRenderer ? labelRenderer(option, true) : name}
       </div>
     );
   }
-
-  private handleSelect = () => {
-    this.props.onSelect && this.props.onSelect(this.props.option);
-    this.props.onClick && this.props.onClick(this.props.option);
-  };
 }
+

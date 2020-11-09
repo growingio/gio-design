@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Sortable from './Sortable';
 import { unionBy, noop } from 'lodash';
+import Sortable from './Sortable';
 import SelectedItem from './Sortable/template';
 import './style/sort.less';
 

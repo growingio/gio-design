@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import React, { useContext, useRef, useState } from 'react';
 import RcCalendar from 'rc-calendar';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
@@ -24,19 +25,19 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   const calendarContainerRef = useRef(null);
   const inputRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const [localValue, setLocalValue] = useState(props.value);
+  const [localValue, setLocalValue] = useState(value);
   const [inputTime, setInputTime] = useState('');
 
-  const onSelect = (value: Moment): void => {
+  const onSelect = (values: Moment): void => {
     if (!props.showFooter) {
-      setLocalValue(value);
-      props?.onSelect(value);
+      setLocalValue(values);
+      props?.onSelect(values);
       setOpen(false);
     }
   };
 
-  const onChange = (value: Moment): void => {
-    setLocalValue(value);
+  const onChange = (values: Moment): void => {
+    setLocalValue(values);
   };
 
   const CalendarCls = classNames(classNames, {
@@ -44,9 +45,9 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   });
 
   const debounceTimeChange = debounce((e: string): void => {
-    const value = moment(e, props.format);
-    if (value.isValid()) {
-      setLocalValue(value);
+    const values = moment(e, props.format);
+    if (values.isValid()) {
+      setLocalValue(values);
     } else {
       setLocalValue(localValue);
     }
