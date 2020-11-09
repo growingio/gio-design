@@ -259,6 +259,8 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
         }
         clearInput();
         break;
+      default:
+        break;
     }
   };
 
@@ -364,6 +366,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
       {completeOptions.length > 0 ? (
         <List
           value={value}
+          width={autoWidth ? Math.max(selectorRef.current?.clientWidth || 0, 160) : undefined}
           dataSource={completeOptions}
           onChange={onValueChange}
           isMultiple={multiple}
