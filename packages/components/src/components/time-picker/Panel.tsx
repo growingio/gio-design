@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Combobox from './Combobox';
 import { PanelProps } from './interface';
 
-function noop() {}
+function noop() {/* ... */}
 
 function generateOptions(length: number, disabledOptions: number[], hideDisabledOptions: boolean, step = 1) {
   const arr = [];

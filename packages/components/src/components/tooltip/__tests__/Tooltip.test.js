@@ -1,9 +1,9 @@
 import React from 'react';
-import Tooltip from '../index';
-import '@gio-design/components/es/components/Tabs/style/index.css';
 import { mount, render } from 'enzyme';
-import getPlacements, { getOverflowOptions } from '../placements';
 import { isEqual } from 'lodash';
+import Tooltip from '../index';
+import '../../../../es/components/tabs/style/index.css';
+import getPlacements, { getOverflowOptions } from '../placements';
 import { waitForComponentToPaint } from '../../../utils/test';
 
 
@@ -97,7 +97,7 @@ describe('Testing Tooltip', () => {
     let called = false;
     const wrapper = mount(getTooltip());
     wrapper.setProps({
-      onVisibleChange: () => (called = true),
+      onVisibleChange: () => {called = true},
     });
     wrapper.setProps({ trigger: 'click' });
     wrapper.find('span').at(0).simulate('click');

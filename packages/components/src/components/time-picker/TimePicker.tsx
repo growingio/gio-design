@@ -6,7 +6,7 @@ import Panel from './Panel';
 import placements, { defaultAlign } from './placements';
 import { TimePickerProps } from './interface';
 
-function noop() {}
+function noop() {/* ... */}
 
 function refFn(field: string, component: ReactNode) {
   this[field] = component;
@@ -275,9 +275,9 @@ class Picker extends Component<TimePickerProps, TimePickerState> {
     }
 
     return (
-      <a role="button" className={`${prefixCls}-clear`} title={clearText} onClick={this.onClear} tabIndex={0}>
+      <button type="button" className={`${prefixCls}-clear`} title={clearText} onClick={this.onClear} tabIndex={0} aria-hidden="true">
         {clearIcon}
-      </a>
+      </button>
     );
   }
 

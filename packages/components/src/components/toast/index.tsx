@@ -98,6 +98,7 @@ function notice(args: ArgsProps): MessageType {
     [`${prefixCls}-rtl`]: rtl === true,
   });
 
+  // eslint-disable-next-line no-plusplus
   const target = args.key || key++;
   const closePromise = new Promise((resolve) => {
     const callback = () => {
