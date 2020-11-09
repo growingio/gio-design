@@ -16,6 +16,7 @@ export interface Props extends Omit<MenuListProps, 'depth' | 'onClick' | 'origin
   size?: SizeType;
   disable?: boolean;
   placeholder?: string;
+  searchPlaceholder?: string;
   separator?: string;
   // MenuList props
   onClick?: MenuListProps['origintOnClick'];
@@ -35,6 +36,7 @@ const Cascader: React.FC<Props> = (props) => {
     prefixCls,
     className,
     placeholder,
+    searchPlaceholder,
     input,
     separator = '/',
     overlayClassName,
@@ -111,7 +113,13 @@ const Cascader: React.FC<Props> = (props) => {
             origintOnClick={onClick}
             open={canOpen}
             trigger={trigger}
-            header={header === false ? false : <SearchBar ref={inputRef} onSearch={setKeyword} />}
+            header={
+              header === false ? (
+                false
+              ) : (
+                <SearchBar ref={inputRef} onSearch={setKeyword} placeholder={searchPlaceholder} />
+              )
+            }
             className={withWrapperCls('panel')}
             value={selected}
             searchBy={keyword}
