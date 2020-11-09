@@ -9,6 +9,48 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.11.0
+
+- component
+  - Select #393
+    - 🆕 add disabled feature
+    - 🆕 add allowCustomOption prop
+    - 🆕 add notFoundContent prop
+    - 🆕 add dropdownClassName && dropdownStyle prop
+    - 🆕 add borderd prop
+    - 🆕 add arrowComponent prop
+    - 🆕 add autoWidth prop
+    - 🆕 add matchPredicate method
+    - 🆕 add onSearch method
+    - 🆕 add onSelect method
+    - 🆕 add onDeSelect method
+    - 🆕 add dropDownVisible prop
+    - 🆕 add onDropdownVisibleChange method
+    - 🛎 remove width prop
+    - 🛎 options must follow the options of List Interface
+    - 🛎 value && defaultValue now support string or string[] as single or mulit selection mode
+    - 🛎 sign of onChange method has been change form (options: Option | Option[] ) to (value: string | string[], options: Option | Option[])
+    - 🐛 fix auto width style issue #434
+  - Dropdown #395
+    - 🐛 fix onVisibleChange not be call after click
+  - List #412
+    - 🆕 support string type of width
+  - SearchBar #408
+    - 🐛 Let the display panel adapt to the width of input,and let the prompt text show '...' when the width is too short
+  - Input #422
+    - 🆕 add prefixWidth for prefix, suffixWidth for suffix, format prefix element style
+  - Menu #417
+    - 🆕 mount menuitem, submenu to menu
+  - Button #425
+    - 🆕 change assist button background to transparent
+  - Table #427
+    - 🆕 add getCheckboxProps prop
+  - Avatar #420
+    - 🆕 support custom tooltip title
+    - 🆕 add style prop
+  - Form #419
+    - 🆕 add style prop to Form and Item
+
 ## 20.10.6
 
 - component
@@ -35,7 +77,6 @@ nav:
   - 🆕An optional parameter successBorder is added to the upload component to control whether the border is displayed after the image is uploaded successfully. The default value is false [#331](https://github.com/growingio/gio-design/pull/331)
 - Select
   - 💄The text size in the input selection box of the select component is defined [#337](https://github.com/growingio/gio-design/pull/337)
-
 
 ## 20.10.4
 
