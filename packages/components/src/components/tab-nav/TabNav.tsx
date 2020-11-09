@@ -72,19 +72,20 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
       return null;
     });
     return [_tabNavKeys, _tabNavChildren];
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children, localActiveKey, onChange, onTabClick]);
 
   useMemo(() => {
     if (!tabNavKeys.includes(localActiveKey)) {
       setLocalActiveKey(tabNavKeys[0]);
     }
-  }, []);
+  }, [localActiveKey, tabNavKeys]);
 
   useMemo(() => {
     if (!isNil(activeKey) && tabNavKeys.includes(activeKey)) {
       setLocalActiveKey(activeKey);
     }
-  }, [activeKey]);
+  }, [activeKey, tabNavKeys]);
 
   useEffect(() => {
     if (!isNil(getRef(localActiveKey)?.current) && !isNil(getRef(wrapperRefKey.current)?.current)) {
@@ -92,6 +93,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
       const wrapperLeft = getRef(wrapperRefKey.current)!.current!.getBoundingClientRect().left;
       setInkStyle({ left: left - wrapperLeft, width });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [localActiveKey, tabNavChildren]);
 
   return (
@@ -104,6 +106,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
 
 TabNav.Item = React.forwardRef(
   ({ prefixCls, children, ...rest }: TabNavItemProps, ref: React.RefObject<HTMLDivElement>) => (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <div ref={ref} {...rest}>
       <div className={`${prefixCls}-item-btn`}>{children}</div>
     </div>

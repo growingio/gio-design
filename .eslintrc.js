@@ -30,6 +30,6 @@ module.exports = {
     'import/extensions': ['off', 'never'],
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
-    'no-param-reassign': ["error", { "props": false }],
+    'no-underscore-dangle': 'off',
   },
 };
