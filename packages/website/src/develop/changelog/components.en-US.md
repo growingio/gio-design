@@ -9,7 +9,7 @@ nav:
 
 # @gio-design/components Change Log
 
-## 20.11.6
+## 20.11.0
 
 - component
   - Select #393
