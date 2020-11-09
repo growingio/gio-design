@@ -31,7 +31,7 @@ nav:
     - 🛎 options 现在不允许自定义格式，保持和 List option 格式一致
     - 🛎 value && defaultValue 现在可接受 string 或者 string[] 分别对应单选和多选模式
     - 🛎 onChange 方法的输入值 (options: Option | Option[] ) 改为 (value: string | string[], options: Option | Option[])
-    - 修复 auto width 样式问题 #434
+    - 🐛 修复 auto width 样式问题 #434
   - Dropdown #395
     - 🐛 修复点击后 onVisibleChange 没有被调用
   - List #412
