@@ -40,10 +40,10 @@ group:
 | style        | input 组件外层容器的 style (若存在，忽略 wrapStyle 和 inputStyle)       | React.CSSProperties        | -        |
 | inputStyle   | input 的 style (兼容老版本，后续会去掉)   | React.CSSProperties        | -        |
 | wrapStyle    | input 组件外层容器的 style (兼容老版本，后续会去掉)  | React.CSSProperties        | -        |
-| prefix       | input 的前缀图标(在input左边)     | React.ReactNode            | -        |
-| prefixWidth  | input 的左内边距(防止prefix遮挡)  | number            | -        |
-| suffix       | input 的后缀图标(在input右边)     | React.ReactNode            | -        |
-| suffixWidth  | input 的右内边距(防止suffix遮挡)  | number            | -        |
+| prefix       | input 的前缀图标                | React.ReactNode            | -        |
+| prefixWidth  | input 的左内边距                | number            | -        |
+| suffix       | input 的后缀图标                | React.ReactNode            | -        |
+| suffixWidth  | input 的右内边距                | number            | -        |
 | ...          | 支持其他 React 自带的 input 属性 | any                        | -        |
 
 ### Input.Password
