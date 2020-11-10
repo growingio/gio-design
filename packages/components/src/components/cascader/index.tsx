@@ -5,7 +5,7 @@ import { ConfigContext } from '../config-provider';
 import { DropdownProps } from '../dropdown/interface';
 import { NodeData } from './menu-item';
 import { SizeType } from '../config-provider/SizeContext';
-import { withPrefix } from './helper';
+import { useDynamicData, withPrefix } from './helper';
 import Dropdown from '../dropdown';
 import Input from '../input';
 import MenuOverlayer, { Props as MenuListProps } from './menu-overlayer';
@@ -56,8 +56,8 @@ const Cascader: React.FC<Props> = (props) => {
     ...others
   } = props;
   const inputRef = useRef<HTMLInputElement>(null);
-  const [canOpen, setCanOpen] = useState(open);
-  const [selected, setSelected] = useState(value);
+  const [canOpen, setCanOpen] = useDynamicData(open);
+  const [selected, setSelected] = useDynamicData(value);
   const [keyword, setKeyword] = useState('');
   const [title, setTitle] = useState('');
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -92,7 +92,7 @@ const Cascader: React.FC<Props> = (props) => {
     if (dropdownVisible) {
       setTimeout(() => {
         inputRef.current?.focus();
-      }, 100);
+      }, 10);
     }
   }, [dropdownVisible]);
 

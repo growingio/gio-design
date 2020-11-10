@@ -1,8 +1,8 @@
-import React, { ReactElement, useEffect, useRef, useState } from 'react';
+import React, { ReactElement, useRef, useState } from 'react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
-import { useDataSource, withPrefix } from './helper';
+import { toInt, useDynamicData, withPrefix } from './helper';
 import MenuItem, { Props as MenuItemProps, NodeData } from './menu-item';
 
 export interface Props extends Omit<MenuItemProps, 'dataSource'> {
@@ -29,18 +29,18 @@ const Menu: React.FC<Props> = (props) => {
     footer,
     ...others
   } = props;
-  const [dataSource, setDataSource] = useDataSource(originDataSource);
+  const [dataSource, setDataSource] = useDynamicData(originDataSource);
   const wrapRef = useRef(null);
   const withWrapperCls = withPrefix('cascader-menu');
-  const [canOpen, setCanOpen] = useState(open);
-  const [triggered, setTriggered] = useState<NodeData>();
+  const [canOpen, setCanOpen] = useDynamicData(open);
+  const [triggerData, setTriggerData] = useState<NodeData>();
   const [offset, setOffset] = useState([0, 0]);
   const onTrigger = (event: React.MouseEvent | React.KeyboardEvent, nodeData: NodeData) => {
     const menu = event.currentTarget.closest('.cascader-menu');
     const { paddingLeft, paddingTop } = getComputedStyle(menu);
     const { offsetLeft, offsetTop } = event.currentTarget as HTMLElement;
-    setOffset([offsetLeft - parseInt(paddingLeft, 10), offsetTop - parseInt(paddingTop, 10)]);
-    setTriggered(nodeData);
+    setOffset([offsetLeft - toInt(paddingLeft), offsetTop - toInt(paddingTop)]);
+    setTriggerData(nodeData);
     userOnTrigger?.(event, nodeData);
     setCanOpen(!isEmpty(nodeData.children));
 
@@ -51,28 +51,23 @@ const Menu: React.FC<Props> = (props) => {
       return d;
     });
     setDataSource(nextData);
-    // console.log('what', nodeData);
   };
   const onSelect: MenuItemProps['onSelect'] = (nodeData, parents) => {
     userOnSelect?.(nodeData, parents);
     setCanOpen(false);
   };
 
-  useEffect(() => {
-    setCanOpen(open);
-  }, [open]);
-
   let childMenu;
-  if (canOpen && triggered && !isEmpty(triggered.children)) {
+  if (canOpen && triggerData && !isEmpty(triggerData.children)) {
     const [left, top] = offset;
     const { top: sTop = 0, left: sLeft = 0 } = style || {};
     childMenu = (
       <Menu
         {...props}
         depth={depth + 1}
-        dataSource={triggered.children}
-        parentsData={[triggered, ...parentsData]}
-        style={{ ...style, top: top + parseInt(sTop as string, 10), left: left + parseInt(sLeft as string, 10) }}
+        dataSource={triggerData.children}
+        parentsData={[triggerData, ...parentsData]}
+        style={{ ...style, top: top + toInt(sTop), left: left + toInt(sLeft) }}
       />
     );
   }

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
 
-import { isHit, makeSearchParttern, useDataSource, withPrefix } from './helper';
+import { isHit, makeSearchParttern, useDynamicData, withPrefix } from './helper';
 
 export type Value = string | number;
 
@@ -85,7 +85,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     searchBy,
     ignoreCase = true,
   } = props;
-  const [dataSource, setDataSource] = useDataSource(originDataSource);
+  const [dataSource, setDataSource] = useDynamicData(originDataSource);
   const { label, children: childNodeData } = dataSource;
   const withWrapperCls = withPrefix('cascader-menu-item');
   const mergedTrigger = triggerMap[trigger.toLowerCase() as typeof trigger];
@@ -130,11 +130,31 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     }
     onKeyUp?.(event);
   };
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
+  };
 
   const hitTarget = searchBy && isHit(dataSource.label, searchBy, ignoreCase);
 
   if (searchBy && !hitTarget) {
     return null;
+  }
+
+  let childNode = (
+    <div className={withWrapperCls('content')}>
+      <div>{hitTarget && searchBy && isEmpty(parentsData) ? renderLabel(label, searchBy, ignoreCase) : label}</div>
+      <div>
+        {value === dataSource.value && (selectAny || isEmpty(dataSource.children)) && (
+          <CheckOutlined className={withWrapperCls('icon-checked')} />
+        )}
+        {!isEmpty(childNodeData) && <DownFilled className={withWrapperCls('icon-down')} />}
+      </div>
+    </div>
+  );
+  if (isFunction(onRender)) {
+    childNode = onRender(dataSource);
   }
 
   return (
@@ -143,25 +163,14 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         className={withWrapperCls('inner')}
         role="button"
         tabIndex={0}
+        onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         onFocus={onFocus}
         onBlur={onBlur}
       >
-        {isFunction(onRender) ? (
-          onRender(dataSource)
-        ) : (
-          <div className={withWrapperCls('content')}>
-            <div>{hitTarget && searchBy ? renderLabel(label, searchBy, ignoreCase) : label}</div>
-            <div>
-              {(selectAny || isEmpty(dataSource.children)) && value === dataSource.value && (
-                <CheckOutlined className="icon-checked" />
-              )}
-              {!isEmpty(childNodeData) && <DownFilled className={withWrapperCls('icon')} />}
-            </div>
-          </div>
-        )}
+        {childNode}
       </div>
 
       {afterInner}

@@ -73,16 +73,20 @@
       cursor: pointer;
 
       .keyword {
-        color: red;
         font-weight: normal;
-      }
 
-      .icon-checked svg {
-        width: 1em;
-        height: 1em;
+        [data-depth='0'] & {
+          color: red;
+        }
       }
     }
-    &-icon {
+
+    &-icon-checked svg {
+      width: 1em;
+      height: 1em;
+    }
+
+    &-icon-down {
       display: inline-flex;
       align-items: center;
       transform: rotate(-90deg);

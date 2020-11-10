@@ -7,7 +7,7 @@ export const withPrefix = (prefix?: string) => (value?: string, sep = '-') => {
 export const makeSearchParttern = (word: string, ignoreCase = true) => {
   // 过滤掉正则表达式的特殊字符
   const escapedWord = word.replace(/([()[\]{}.?+*^$|\\<>!])/g, '\\$1');
-  return new RegExp(escapedWord, ignoreCase ? 'i' : '');
+  return new RegExp(escapedWord, ignoreCase ? 'gi' : 'g');
 };
 
 export const isHit = (label: string, word: string, ignoreCase = true) => {
@@ -17,7 +17,7 @@ export const isHit = (label: string, word: string, ignoreCase = true) => {
   return label.search(makeSearchParttern(word, ignoreCase)) + 1;
 };
 
-export const useDataSource = <T>(originDataSource: T) => {
+export const useDynamicData = <T>(originDataSource: T) => {
   const [dataSource, setDataSource] = useState(originDataSource);
 
   useEffect(() => {
@@ -26,3 +26,5 @@ export const useDataSource = <T>(originDataSource: T) => {
 
   return [dataSource, setDataSource] as const;
 };
+
+export const toInt = (s: string | React.ReactText) => parseInt(s as string, 10);
