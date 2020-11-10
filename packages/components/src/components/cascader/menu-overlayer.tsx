@@ -5,12 +5,12 @@ import { withPrefix } from './helper';
 import Menu, { Props as MenuProps } from './menu';
 
 export interface Props extends Omit<MenuProps, 'onClick'> {
-  origintOnClick?: MenuProps['onClick']; // 未被劫持的原始事件
+  originOnClick?: MenuProps['onClick']; // 未被劫持的原始事件
   onClick?: (e: MouseEvent) => void; // 被 dropdown 劫持的 onClick 事件
 }
 
 const MenuOverlayer = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
-  const { className, dataSource, onClick, origintOnClick, ...others } = props;
+  const { className, dataSource, onClick, originOnClick, ...others } = props;
   const withMenuCls = withPrefix('cascader-menu');
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const MenuOverlayer = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
 
   return (
     <div className={classNames(className, withMenuCls('list'))} ref={ref}>
-      <Menu dataSource={dataSource} {...others} onClick={origintOnClick} />
+      <Menu dataSource={dataSource} {...others} onClick={originOnClick} />
     </div>
   );
 });

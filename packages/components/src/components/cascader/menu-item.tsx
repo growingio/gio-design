@@ -4,14 +4,14 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
 
-import { isHit, makeSearchParttern, useDynamicData, withPrefix } from './helper';
+import { dataFilter, isHit, makeSearchParttern, useDynamicData, withPrefix } from './helper';
 
 export type Value = string | number;
 
 export type NodeData = {
   label: string;
   value: Value;
-  disable?: boolean;
+  disabled?: boolean;
   children?: NodeData[];
   [key: string]: unknown;
 };
@@ -21,8 +21,9 @@ export interface Props {
   style?: React.CSSProperties;
   dataSource: NodeData;
   value?: Value;
-  searchBy?: string;
+  keyword?: string;
   ignoreCase?: boolean;
+  deepSearch?: boolean;
   parentsData?: NodeData[];
   onClick?: (event: MouseEvent, nodeData: NodeData) => void;
   onMouseEnter?: (event: MouseEvent, nodeData: NodeData) => void;
@@ -43,17 +44,18 @@ const triggerMap = {
   hover: 'onMouseEnter',
 } as const;
 
-const renderLabel = (label: string, searchBy: string, ignoreCase: boolean) => {
-  const rSearch = makeSearchParttern(searchBy, ignoreCase);
+const renderKeyword = (label: string, keyword: string, ignoreCase: boolean) => {
+  const rSearch = makeSearchParttern(keyword, ignoreCase);
   const replaceValues: string[] = [];
   label.replace(rSearch, (s) => {
     replaceValues.push(s);
     return s;
   });
 
-  const result = label.split(rSearch).reduce((acc, b) => {
+  const result = label.split(rSearch).reduce((acc, b, i) => {
     acc.push(
-      <span key={b}>
+      // eslint-disable-next-line react/no-array-index-key
+      <span key={`${b}-${i}`}>
         <span>{b}</span>
         <b className="keyword">{replaceValues.shift()}</b>
       </span>
@@ -82,11 +84,13 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     onTrigger,
     onRender,
     afterInner,
-    searchBy,
+    keyword,
     ignoreCase = true,
+    deepSearch = false,
   } = props;
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
-  const { label, children: childNodeData } = dataSource;
+  const { label, disabled, children: childData = [] } = dataSource;
+  const childNodeData = deepSearch ? dataFilter(childData, keyword, ignoreCase) : childData;
   const withWrapperCls = withPrefix('cascader-menu-item');
   const mergedTrigger = triggerMap[trigger.toLowerCase() as typeof trigger];
   const resolveBeforeSelect = (event: MouseEvent | KeyboardEvent) => {
@@ -136,20 +140,18 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     }
   };
 
-  const hitTarget = searchBy && isHit(dataSource.label, searchBy, ignoreCase);
-
-  if (searchBy && !hitTarget) {
-    return null;
-  }
+  const hitTarget = keyword && isHit(dataSource.label, keyword, ignoreCase);
+  const shouldRenderKeyword = keyword && hitTarget && (isEmpty(parentsData) || deepSearch);
+  const noChild = isEmpty(childNodeData);
 
   let childNode = (
     <div className={withWrapperCls('content')}>
-      <div>{hitTarget && searchBy && isEmpty(parentsData) ? renderLabel(label, searchBy, ignoreCase) : label}</div>
+      <div>{shouldRenderKeyword ? renderKeyword(label, keyword, ignoreCase) : label}</div>
       <div>
-        {value === dataSource.value && (selectAny || isEmpty(dataSource.children)) && (
+        {value === dataSource.value && (selectAny || noChild) && (
           <CheckOutlined className={withWrapperCls('icon-checked')} />
         )}
-        {!isEmpty(childNodeData) && <DownFilled className={withWrapperCls('icon-down')} />}
+        {!noChild && <DownFilled className={withWrapperCls('icon-down')} />}
       </div>
     </div>
   );
@@ -158,7 +160,11 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   }
 
   return (
-    <div role="menuitem" className={classNames(className, withWrapperCls())} ref={ref}>
+    <div
+      role="menuitem"
+      className={classNames(className, withWrapperCls(), disabled && withPrefix('disable'))}
+      ref={ref}
+    >
       <div
         className={withWrapperCls('inner')}
         role="button"

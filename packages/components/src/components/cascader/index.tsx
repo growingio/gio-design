@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 
 import { ConfigContext } from '../config-provider';
@@ -8,19 +8,22 @@ import { SizeType } from '../config-provider/SizeContext';
 import { useDynamicData, withPrefix } from './helper';
 import Dropdown from '../dropdown';
 import Input from '../input';
-import MenuOverlayer, { Props as MenuListProps } from './menu-overlayer';
+import MenuOverlayer, { Props as OverlayerProps } from './menu-overlayer';
 import SearchBar from './search-bar';
 
-export interface Props extends Omit<MenuListProps, 'depth' | 'onClick' | 'origintOnClick'> {
+export interface Props extends Omit<OverlayerProps, 'depth' | 'onClick' | 'originOnClick'> {
   prefixCls?: string;
   size?: SizeType;
-  disable?: boolean;
-  placeholder?: string;
-  searchPlaceholder?: string;
+  disabled?: boolean;
+  title?: string;
   separator?: string;
-  // MenuList props
-  onClick?: MenuListProps['origintOnClick'];
+  placeholder?: string;
   input?: React.ReactElement;
+  // search-bar
+  searchPlaceholder?: string;
+  lazySearch?: boolean;
+
+  onClick?: OverlayerProps['originOnClick'];
 
   // dropdown props
   visible?: boolean;
@@ -38,7 +41,13 @@ const Cascader: React.FC<Props> = (props) => {
     placeholder,
     searchPlaceholder,
     input,
+    size,
+    disabled,
+    open,
+    title: originTitle,
     separator = '/',
+    lazySearch,
+    keyword: originKeyword,
     overlayClassName,
     dataSource = [],
     trigger = 'click',
@@ -46,7 +55,6 @@ const Cascader: React.FC<Props> = (props) => {
     placement = 'bottomLeft',
     header,
     getDropdownContainer,
-    open,
     value,
     visible,
     onClick,
@@ -56,11 +64,11 @@ const Cascader: React.FC<Props> = (props) => {
     ...others
   } = props;
   const inputRef = useRef<HTMLInputElement>(null);
-  const [canOpen, setCanOpen] = useDynamicData(open);
   const [selected, setSelected] = useDynamicData(value);
-  const [keyword, setKeyword] = useState('');
-  const [title, setTitle] = useState('');
-  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [title, setTitle] = useDynamicData(originTitle);
+  const [keyword, setKeyword] = useDynamicData(originKeyword);
+  const [canOpen, setCanOpen] = useDynamicData(open);
+  const [dropdownVisible, setDropdownVisible] = useDynamicData(visible);
   const { getPrefixCls } = useContext(ConfigContext);
   const wrapperCls = getPrefixCls('cascader', prefixCls);
   const mergedWrapperCls = classNames(wrapperCls, className);
@@ -84,10 +92,11 @@ const Cascader: React.FC<Props> = (props) => {
     onVisibleChange?.(v);
     setCanOpen(false);
   };
-  const handleTrigger: MenuListProps['onTrigger'] = (nodeData, event) => {
+  const handleTrigger: OverlayerProps['onTrigger'] = (nodeData, event) => {
     userOnTrigger?.(nodeData, event);
     setCanOpen(true);
   };
+
   useEffect(() => {
     if (dropdownVisible) {
       setTimeout(() => {
@@ -99,6 +108,7 @@ const Cascader: React.FC<Props> = (props) => {
   return (
     <div className={mergedWrapperCls}>
       <Dropdown
+        disabled={disabled}
         visible={visible === undefined ? dropdownVisible : dropdownVisible && visible}
         placement={placement}
         getTooltipContainer={getDropdownContainer}
@@ -110,19 +120,26 @@ const Cascader: React.FC<Props> = (props) => {
           // eslint-disable-next-line react/jsx-wrap-multilines
           <MenuOverlayer
             {...others}
-            origintOnClick={onClick}
+            originOnClick={onClick}
             open={canOpen}
             trigger={trigger}
             header={
               header === false ? (
                 false
               ) : (
-                <SearchBar ref={inputRef} onSearch={setKeyword} placeholder={searchPlaceholder} />
+                <SearchBar
+                  size={size}
+                  ref={inputRef}
+                  value={keyword}
+                  onSearch={setKeyword}
+                  lazySearch={lazySearch}
+                  placeholder={searchPlaceholder}
+                />
               )
             }
             className={withWrapperCls('panel')}
             value={selected}
-            searchBy={keyword}
+            keyword={keyword}
             dataSource={dataSource}
             onTrigger={handleTrigger}
             onSelect={onSelect}
@@ -130,7 +147,12 @@ const Cascader: React.FC<Props> = (props) => {
         }
       >
         <div className={withWrapperCls('title')}>
-          {React.isValidElement(input) ? { input } : <Input readOnly placeholder={placeholder} value={title} />}
+          {React.isValidElement(input) ? (
+            { input }
+          ) : (
+            // @TODO size={size}
+            <Input readOnly placeholder={placeholder} value={title} />
+          )}
         </div>
       </Dropdown>
     </div>

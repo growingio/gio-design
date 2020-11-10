@@ -1,8 +1,8 @@
-import React, { ReactElement, useRef, useState } from 'react';
+import React, { ReactElement, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
-import { toInt, useDynamicData, withPrefix } from './helper';
+import { dataFilter, toInt, useDynamicData, withPrefix } from './helper';
 import MenuItem, { Props as MenuItemProps, NodeData } from './menu-item';
 
 export interface Props extends Omit<MenuItemProps, 'dataSource'> {
@@ -22,6 +22,9 @@ const Menu: React.FC<Props> = (props) => {
     value,
     open,
     depth = 0,
+    keyword,
+    ignoreCase,
+    deepSearch = false,
     parentsData = [],
     onTrigger: userOnTrigger,
     onSelect: userOnSelect,
@@ -29,6 +32,7 @@ const Menu: React.FC<Props> = (props) => {
     footer,
     ...others
   } = props;
+  const isRootMenu = depth === 0;
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
   const wrapRef = useRef(null);
   const withWrapperCls = withPrefix('cascader-menu');
@@ -37,8 +41,9 @@ const Menu: React.FC<Props> = (props) => {
   const [offset, setOffset] = useState([0, 0]);
   const onTrigger = (event: React.MouseEvent | React.KeyboardEvent, nodeData: NodeData) => {
     const menu = event.currentTarget.closest('.cascader-menu');
-    const { paddingLeft, paddingTop } = getComputedStyle(menu);
-    const { offsetLeft, offsetTop } = event.currentTarget as HTMLElement;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const { paddingLeft, paddingTop } = getComputedStyle(menu!);
+    const { offsetLeft = 0, offsetTop = 0 } = (event.currentTarget || {}) as HTMLElement;
     setOffset([offsetLeft - toInt(paddingLeft), offsetTop - toInt(paddingTop)]);
     setTriggerData(nodeData);
     userOnTrigger?.(event, nodeData);
@@ -72,7 +77,14 @@ const Menu: React.FC<Props> = (props) => {
     );
   }
 
-  if (isEmpty(dataSource)) {
+  const filteredDataSource = useMemo(() => {
+    if (!isRootMenu && !deepSearch) {
+      return dataSource;
+    }
+    return dataFilter(dataSource, keyword, ignoreCase);
+  }, [isRootMenu, deepSearch, dataSource, keyword, ignoreCase]);
+
+  if (isEmpty(filteredDataSource) && !isRootMenu) {
     return null;
   }
 
@@ -80,26 +92,29 @@ const Menu: React.FC<Props> = (props) => {
     <>
       <div
         data-depth={depth}
+        data-deepsearch={deepSearch}
         className={classNames(className, withWrapperCls())}
         role="menu"
         style={style}
         ref={wrapRef}
       >
-        {depth === 0 && <div className={withWrapperCls('header')}>{header}</div>}
+        {isRootMenu && <div className={withWrapperCls('header')}>{header}</div>}
         <div className={withWrapperCls('body')}>
-          {dataSource.map((data) => (
+          {filteredDataSource.map((data) => (
             <MenuItem
               key={data.value}
               value={value}
+              keyword={keyword}
               dataSource={data}
               onTrigger={onTrigger}
               onSelect={onSelect}
               parentsData={parentsData}
+              deepSearch={deepSearch}
               {...others}
             />
           ))}
         </div>
-        {depth === 0 && <div className={withWrapperCls('footer')}>{footer}</div>}
+        {isRootMenu && <div className={withWrapperCls('footer')}>{footer}</div>}
       </div>
       {childMenu}
     </>

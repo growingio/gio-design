@@ -27,9 +27,15 @@ const dataSource = [
 const Basic = (): JSX.Element => {
   return (
     <Cascader
+      className="test"
       value="c-2-1"
       dataSource={dataSource}
       trigger="hover"
+      title="bar"
+      lazySearch
+      // visible
+      // keyword="o"
+      // deepSearch
       // selectAny
       beforeSelect={(e, d) => {
         if (d.value === 'a') {

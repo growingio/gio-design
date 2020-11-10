@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { NodeData } from './menu-item';
+
 export const withPrefix = (prefix?: string) => (value?: string, sep = '-') => {
   return [prefix, value].filter((s) => !!s).join(sep);
 };
@@ -27,4 +29,13 @@ export const useDynamicData = <T>(originDataSource: T) => {
   return [dataSource, setDataSource] as const;
 };
 
-export const toInt = (s: string | React.ReactText) => parseInt(s as string, 10);
+export const toInt = (s: string | React.ReactText) => (s ? parseInt(s as string, 10) : 0);
+
+export const dataFilter = (data: NodeData[], keyword?: string, ignoreCase?: boolean) => {
+  if (!keyword) {
+    return data;
+  }
+
+  const rSearch = makeSearchParttern(keyword, ignoreCase);
+  return data.filter((d) => d.label.match(rSearch));
+};
