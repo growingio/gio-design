@@ -108,8 +108,8 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   const prefix = getPrefixCls('select', customizePrefixCls);
 
   const [unControlledValue, setUnControlledValue] = useState(defaultValue);
-  const value = controlledValue || unControlledValue;
-  const isControlled = !!controlledValue;
+  const isControlled = !isNil(controlledValue);
+  const value = isControlled ? controlledValue : unControlledValue;
   const [isFocused, setFocused] = useState(false);
   const [_visible, _setVisible] = useState(false);
   const visible = isNil(dropDownVisible) ? _visible : dropDownVisible;
