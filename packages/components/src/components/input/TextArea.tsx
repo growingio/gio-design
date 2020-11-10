@@ -20,10 +20,12 @@ const TextArea: React.FC<TextAreaProps> = ({
   });
 
   useEffect(() => {
-    if (autosize && typeof forwardRef === 'object') {
-      const ele = forwardRef.current;
-      ele.style.height = 'auto';
-      ele.style.height = (ele.offsetHeight - ele.clientHeight + ele.scrollHeight) + 'px';
+    if (autosize) {
+      if (typeof forwardRef === 'object' && forwardRef !== null && forwardRef.current !== null) {
+        const ele = forwardRef.current;
+        ele.style.height = 'auto';
+        ele.style.height = (ele.offsetHeight - ele.clientHeight + ele.scrollHeight) + 'px';
+      }
     }
   });
 
