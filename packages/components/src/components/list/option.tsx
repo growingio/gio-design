@@ -17,6 +17,7 @@ const SelectOption = (props: OptionProps) => {
     hasGroupIcon,
     showGroupCheckBox,
     onSelect,
+    onClick,
     option,
     getPopupContainer,
   } = props;
@@ -28,6 +29,9 @@ const SelectOption = (props: OptionProps) => {
       e.preventDefault();
       if (onSelect) {
         onSelect(option);
+      }
+      if (onClick) {
+        onClick(option);
       }
     },
     [option]

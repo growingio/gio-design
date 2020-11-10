@@ -25,7 +25,6 @@ const options = [
 ];
 
 const WrapperStyle = {
-  padding: '0px 8px 10px',
   display: 'inline-block',
   borderRadius: 6,
   backgroundColor: '#FFFFFF',

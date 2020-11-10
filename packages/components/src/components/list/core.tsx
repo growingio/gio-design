@@ -63,6 +63,7 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
       width,
       height,
       getGroupIcon,
+      onClick,
       onSelect,
       onDeselect,
       emptyPlaceholder,
@@ -85,6 +86,7 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
             width={width}
             height={height}
             onSelect={onSelect}
+            onClick={onClick}
             onDeselect={onDeselect}
             onChange={this.handleSelect}
             getGroupIcon={getGroupIcon}
