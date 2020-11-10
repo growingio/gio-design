@@ -7,6 +7,7 @@ const InputFC: React.FC<InputProps> = (props: InputProps) => {
   const sizeContext = useContext(SizeContext);
   const {
     type = 'text',
+    value,
     onChange,
     onPressEnter,
     disabled = false,
@@ -92,7 +93,7 @@ const InputFC: React.FC<InputProps> = (props: InputProps) => {
       <input
         className={inputClass}
         type={type}
-        value={rest.value ?? ''}
+        value={value ?? ''}
         onChange={handleOnChange}
         onKeyDown={handleOnPressEnter}
         style={innerStyle}
