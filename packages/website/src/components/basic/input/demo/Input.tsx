@@ -7,16 +7,16 @@ export default () => {
   const [inputValue1, setInputValue1] = React.useState('');
   const [inputValue2, setInputValue2] = React.useState('');
   const [inputValue3, setInputValue3] = React.useState('333');
-  const onChange = (e: React.FocusEvent<HTMLInputElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
-  const onChange1 = (e: React.FocusEvent<HTMLInputElement>) => {
+  const onChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue1(e.target.value);
   };
-  const onChange2 = (e: React.FocusEvent<HTMLInputElement>) => {
+  const onChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue2(e.target.value);
   };
-  const onChange3 = (e: React.FocusEvent<HTMLInputElement>) => {
+  const onChange3 = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue3(e.target.value);
   };
 
@@ -27,6 +27,7 @@ export default () => {
         size="small"
         value={inputValue}
         onChange={onChange}
+        maxLength={10}
         style={{ display: 'block', marginBottom: '20px' }}
       />
 
