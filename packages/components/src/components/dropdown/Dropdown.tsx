@@ -1,5 +1,5 @@
 import React, { useContext, cloneElement } from 'react';
-import { isFunction } from 'lodash';
+import { isFunction, isUndefined } from 'lodash';
 import Tooltip from '../tooltip';
 import { DropdownProps } from './interface';
 import { ConfigContext } from '../config-provider';
@@ -28,7 +28,7 @@ const Dropdown = (props: DropdownProps) => {
       onVisibleChange?.(false);
       _overlay.props.onClick?.(e);
     };
-    return cloneElement(_overlay, { onClick: onOverlayClick });
+    return isUndefined(visible) ? cloneElement(_overlay, { onClick: onOverlayClick }) : _overlay;
   };
 
   return (

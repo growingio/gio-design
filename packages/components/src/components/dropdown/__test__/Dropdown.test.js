@@ -26,23 +26,29 @@ describe('Testing dropdown', () => {
     }).not.toThrow();
   });
 
-  it('should be render rightly', (done) => {
+  it('should be render rightly', async () => {
     const wrapper = mount(getDropdown());
     wrapper.setProps({ trigger: 'click' });
     wrapper.setProps({ placement: 'topLeft' });
     wrapper.find('button').at(0).simulate('click');
     expect(wrapper.exists('.gio-dropdown-inner')).toBe(true);
-    waitForComponentToPaint(wrapper).then(() => {
-      expect(wrapper.exists('.gio-dropdown-placement-topLeft')).toBe(true);
-      done();
-    });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.exists('.gio-dropdown-placement-topLeft')).toBe(true);
   });
 
-  it('will be close after click', () => {
+  it('will be close after click without visible', () => {
     const wrapper = mount(getDropdown());
     wrapper.setProps({ destroyTooltipOnHide: true });
     wrapper.find('button').at(0).simulate('click');
     wrapper.find('#overlay-content').simulate('click');
     expect(wrapper.exists('.gio-dropdown-inner')).toBe(false);
+  });
+
+  it('will not be close after click with visible', async () => {
+    const wrapper = mount(getDropdown());
+    wrapper.setProps({ destroyTooltipOnHide: true, visible: true });
+    await waitForComponentToPaint(wrapper);
+    wrapper.find('#overlay-content').simulate('click');
+    expect(wrapper.exists('.gio-dropdown-inner')).toBe(true);
   });
 });
