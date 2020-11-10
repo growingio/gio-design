@@ -1,8 +1,8 @@
 import React from 'react';
+import { mount, render } from 'enzyme';
 import Dropdown from '../index';
 import Button from '../../button';
 import { waitForComponentToPaint } from '../../../utils/test';
-import { mount, render } from 'enzyme';
 
 describe('Testing dropdown', () => {
   const getDropdown = () => (

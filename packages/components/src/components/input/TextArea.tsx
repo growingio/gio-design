@@ -56,6 +56,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         placeholder={placeholder}
         style={innerStyle}
         ref={forwardRef}
+        // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       />
     </div>

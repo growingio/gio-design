@@ -1,6 +1,7 @@
 import * as React from 'react';
 import RcDrawer from 'rc-drawer';
 import { omit } from 'lodash';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import getScrollBarSize from 'rc-util/lib/getScrollBarSize';
 import { Close } from '@gio-design/icons';
@@ -72,13 +73,16 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     level: null,
   };
 
-  public readonly state = {
-    push: false,
-  };
-
   private parentDrawer: Drawer | null;
 
   private destroyClose: boolean;
+
+  public constructor(props : DrawerProps & ConfigConsumerProps){
+    super(props);
+    this.state = {
+      push: false,
+    };
+  }
 
   public componentDidMount() {
     // fix: delete drawer in child and re-render, no push started.
@@ -108,34 +112,22 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     }
   }
 
-  public render() {
-    return <DrawerContext.Consumer>{this.renderProvider}</DrawerContext.Consumer>;
-  }
-
-  private push = () => {
-    if (this.props.push) {
-      this.setState({ push: true });
-    }
-  };
-
-  private pull = () => {
-    if (this.props.push) {
-      this.setState({ push: false });
-    }
-  };
-
   private onDestroyTransitionEnd = () => {
+    const { visible } = this.props;
     const isDestroyOnClose = this.getDestroyOnClose();
     if (!isDestroyOnClose) {
       return;
     }
-    if (!this.props.visible) {
+    if (!visible) {
       this.destroyClose = true;
       this.forceUpdate();
     }
   };
 
-  private getDestroyOnClose = () => this.props.destroyOnClose && !this.props.visible;
+  private getDestroyOnClose = () => {
+    const { destroyOnClose, visible } = this.props;
+    return destroyOnClose && !visible;
+  }
 
   private getPushDistance = () => {
     const { push } = this.props;
@@ -177,6 +169,20 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     }
     return offsetStyle;
   }
+
+  private pull = () => {
+    const { push } = this.props;
+    if (push) {
+      this.setState({ push: false });
+    }
+  };
+
+  private push = () => {
+    const { push } = this.props;
+    if (push) {
+      this.setState({ push: true });
+    }
+  };
 
   private getRcDrawerStyle = () => {
     const {
@@ -250,7 +256,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   // render drawer body dom
   private renderBody = () => {
     const {
-      bodyStyle, drawerStyle, prefixCls, visible,
+      bodyStyle, drawerStyle, prefixCls, visible, children
     } = this.props;
     if (this.destroyClose && !visible) {
       return null;
@@ -278,7 +284,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
       >
         {this.renderHeader()}
         <div className={`${prefixCls}-body`} style={bodyStyle}>
-          {this.props.children}
+          {children}
         </div>
         {this.renderFooter()}
       </div>
@@ -356,6 +362,10 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
       </ConfigConsumer>
     );
   };
+
+  public render() {
+    return <DrawerContext.Consumer>{this.renderProvider}</DrawerContext.Consumer>;
+  }
 }
 
 export default withConfigConsumer<DrawerProps>({

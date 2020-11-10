@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { InputProps, InputNumberProps, TextAreaProps } from './interfaces';
 import { SizeContext } from '../config-provider/SizeContext';
+
 export const prefixCls = 'gio-input';
 const InputFC: React.FC<InputProps> = (props: InputProps) => {
   const sizeContext = useContext(SizeContext);
@@ -74,9 +75,9 @@ const InputFC: React.FC<InputProps> = (props: InputProps) => {
   if (wrapStyle !== undefined || inputStyle !== undefined) {
     console.warn(
       'The latest version of Input only accept "style" for inline-style setting, ' +
-        'please fix your code because the deprecated parameter "wrapStyle" and "inputStyle" ' +
-        'will be removed in the future version'
-    );
+      'please fix your code because the deprecated parameter "wrapStyle" and "inputStyle" ' +
+      'will be removed in the future version'
+    )
   }
 
   if (typeof prefixWidth === 'number') {
