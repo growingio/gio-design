@@ -5,7 +5,6 @@ import { DownFilled, BoxFilled } from '@gio-design/icons';
 import { filter, isNil, without, uniqueId, uniqBy, findIndex } from 'lodash';
 import { SizeContext } from '../config-provider/SizeContext';
 import Dropdown from '../dropdown';
-import Input from '../input';
 import Tag from '../tag';
 import List from '../list';
 import { ConfigContext } from '../config-provider';
@@ -294,13 +293,12 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     onValueChange(without(value || [], v));
   };
 
-  const renderSingleValue = () => (
-    <div className={`${prefix}-item`}>
-      <span className={`${prefix}-item-text`}>
-        {!input && typeof value === 'string' ? optionLabelRenderer(value, getOptionByValue(value)) : null}
-      </span>
-    </div>
-  );
+  const renderSingleValue = () =>
+    !input && typeof value === 'string' ? (
+      <div className={`${prefix}-item`}>
+        <span className={`${prefix}-item-text`}>{optionLabelRenderer(value, getOptionByValue(value))}</span>
+      </div>
+    ) : null;
 
   const renderMultipleValue = () =>
     (value as Array<string>)?.map((v) => (
@@ -321,9 +319,9 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
       <div ref={inputWidthRef} className={classnames(`${prefix}-input-reference`, `${prefix}-item`)}>
         {input}
       </div>
-      <Input
+      <input
         placeholder={placeholder}
-        forwardRef={inputRef}
+        ref={inputRef}
         style={{ width: inputWidth }}
         className={classnames(`${prefix}-input`, `${prefix}-item`)}
         value={input}

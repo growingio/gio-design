@@ -37,7 +37,6 @@ describe('<Select />', () => {
     expect(tree.find('.gio-select').exists()).toBeTruthy();
     expect(tree.find('.gio-select-selector').exists()).toBeTruthy();
     expect(tree.find('.gio-select-values-wrapper').exists()).toBeTruthy();
-    expect(tree.find('.gio-select-item').exists()).toBeTruthy();
     expect(tree.find('.gio-select-arrow').exists()).toBeTruthy();
   });
 
@@ -46,7 +45,6 @@ describe('<Select />', () => {
     expect(tree.find('.gio-select').exists()).toBeTruthy();
     expect(tree.find('.gio-select-selector').exists()).toBeTruthy();
     expect(tree.find('.gio-select-values-wrapper').exists()).toBeTruthy();
-    expect(tree.find('.gio-select-item').exists()).toBeTruthy();
     expect(tree.find('.gio-select-arrow').exists()).toBeTruthy();
     tree.unmount();
   });
@@ -92,7 +90,7 @@ describe('<Select multiple/>', () => {
   });
 
   it('select dropdown should display correct search result', () => {
-    const tree = mount(<Select options={options} searchable allowCustomOption />);
+    const tree = mount(<Select options={options} searchable />);
     act(() => {
       tree.simulate('click');
     });
@@ -101,12 +99,16 @@ describe('<Select multiple/>', () => {
     act(() => {
       tree.find('input').simulate('change', { target: { value: '全' } });
     });
-    expect(document.querySelectorAll('.gio-select-dropdown .gio-select-option')).toHaveLength(4);
+    expect(document.querySelectorAll('.gio-select-dropdown .gio-select-option')).toHaveLength(2);
     act(() => {
-      document.querySelector('.gio-select-dropdown').querySelectorAll('.gio-select-option')[1].click();
+      tree.find('.gio-select-dropdown .gio-select-option').at(0).simulate('click');
     });
-    expect(tree.find('.gio-select-item .gio-select-item-text').text()).toBe('全');
-    tree.unmount();
+    act(() => {
+      expect(tree.find('.gio-select-input-reference.gio-select-item').text()).toBe('全');
+    });
+    act(() => {
+      tree.unmount();
+    });
   });
 });
 
@@ -229,7 +231,7 @@ describe('<Select allowCustomOptions multiple/> can create option by presee ente
 
 describe('<Select /> when press delete key will unselect current option', () => {
   it('should be able to create by enter', () => {
-    const tree = mount(<Select searchable options={options} defaultValue={'all'} />);
+    const tree = mount(<Select searchable options={options} defaultValue="all" />);
     act(() => {
       tree.find('input').simulate('keydown', { keyCode: 46 });
     });
@@ -285,9 +287,7 @@ describe('<Select /> deselect list', () => {
 
 describe('<Select /> deselect list', () => {
   it('should be able to create by enter', () => {
-    const tree = mount(
-      <Select searchable options={optionsWithOutGroup} defaultValue={'all'} onDeselect={onDeSelect} />
-    );
+    const tree = mount(<Select searchable options={optionsWithOutGroup} defaultValue="all" onDeselect={onDeSelect} />);
 
     const onDeSelect = (v, o) => {
       expect(v).toBe('all');
