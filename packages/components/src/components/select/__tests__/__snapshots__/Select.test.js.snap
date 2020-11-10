@@ -166,7 +166,7 @@ exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
     >
       <span
         aria-hidden="true"
-        className="gio-tag gio-tag-size-medium gio-tag-type-normal gio-tag-closable gio-select-item"
+        className="gio-tag gio-tag-size-middle gio-tag-type-normal gio-tag-closable gio-select-item"
       >
         <span
           className="gio-tag-label"
@@ -270,7 +270,7 @@ exports[`<Select multiple/> renders <Select multiple/> components 2`] = `
     >
       <span
         aria-hidden="true"
-        className="gio-tag gio-tag-size-medium gio-tag-type-normal gio-tag-closable gio-select-item"
+        className="gio-tag gio-tag-size-middle gio-tag-type-normal gio-tag-closable gio-select-item"
       >
         <span
           className="gio-tag-label"

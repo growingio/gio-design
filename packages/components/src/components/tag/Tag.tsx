@@ -10,7 +10,7 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
   const {
     children,
     type = 'normal',
-    size = 'medium',
+    size = 'middle',
     status,
     color,
     closable,
