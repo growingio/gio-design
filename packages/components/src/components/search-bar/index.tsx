@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
 import Input from '../input';
 import Button from '../button';
 import { SearchBarProps } from './interfaces';
-
+import { SizeContext } from '../config-provider/SizeContext';
 export const prefixCls = 'gio-searchbar';
 
 const getStorage = (key: string): string[] => {
@@ -40,21 +40,23 @@ const clearStorage = (key: string): string[] => {
   return [];
 };
 
-const SearchBar: React.FC<SearchBarProps> = ({
-  showStorage = false,
-  storageNum = 5,
-  allowClearStorage = false,
-  showClear = false,
-  disabled = false,
-  size = 'medium',
-  inputStyle,
-  inputWrapStyle,
-  wrapStyle,
-  placeholder,
-  value,
-  onChange,
-  id,
-}) => {
+const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
+  const sizeContext = useContext(SizeContext);
+  const {
+    showStorage = false,
+    storageNum = 5,
+    allowClearStorage = false,
+    showClear = false,
+    disabled = false,
+    size = sizeContext || 'middle',
+    inputStyle,
+    inputWrapStyle,
+    wrapStyle,
+    placeholder,
+    value,
+    onChange,
+    id,
+  } = props;
   const storageKey = React.useMemo(() => `${prefixCls}-storage-${id}`, [id]);
 
   const [searchStorage, setSearchStorage] = React.useState(getStorage(storageKey));

@@ -33,7 +33,7 @@ group:
 | value        | 值                               | string                     | 必填     |
 | onChange     | 修改值时触发的回调函数           | Function(value: string)    | 必填     |
 | type         | 同原生 input 的 type             | string                     | 'text'   |
-| size         | input 大小                       | 'large'、'medium'、'small' | 'medium' |
+| size         | input 大小                       | 'large'、'middle'、'small' | 'middle' |
 | onPressEnter | 按下回车时的回调                 | Function(e)                | -        |
 | disabled     | 是否禁用                         | boolean                    | false    |
 | maxLength    | 输入文字的最大长度               | number                     | -        |
@@ -49,7 +49,7 @@ group:
 | ------------ | -------------------------------- | -------------------------- | -------- |
 | value        | 值                               | string                     | 必填     |
 | onChange     | 修改值时触发的回调函数           | Function(value: string)    | 必填     |
-| size         | input 大小                       | 'large'、'medium'、'small' | 'medium' |
+| size         | input 大小                       | 'large'、'middle'、'small' | 'middle' |
 | onPressEnter | 按下回车时的回调                 | Function(e)                | -        |
 | disabled     | 是否禁用                         | boolean                    | false    |
 | maxLength    | 输入文字的最大长度               | number                     | -        |
@@ -64,7 +64,7 @@ group:
 | ------------ | -------------------------------- | -------------------------- | -------------------------- |
 | value        | 值                               | string                     | 必填                       |
 | onChange     | 修改值时触发的回调函数           | Function(value: string)    | 必填                       |
-| size         | input 大小                       | 'large'、'medium'、'small' | 'medium'                   |
+| size         | input 大小                       | 'large'、'middle'、'small' | 'middle'                   |
 | onPressEnter | 按下回车时的回调                 | Function(e)                | -                          |
 | disabled     | 是否禁用                         | boolean                    | false                      |
 | placeholder  | 默认显示文本                     | string                     | -                          |
