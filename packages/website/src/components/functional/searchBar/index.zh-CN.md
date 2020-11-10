@@ -26,7 +26,7 @@ group:
 | disabled          | 是否禁用                       | boolean                    | false    |
 | allowClearStorage | 是否显示清除本地存储按钮       | boolean                    | false    |
 | showClear         | 是否显示清空内容按钮           | boolean                    | false    |
-| size              | input 大小                     | 'large'、'medium'、'small' | 'medium' |
+| size              | input 大小                     | 'large'、'middle'、'small' | 'middle' |
 | inputStyle        | input 的 style                 | React.CSSProperties        | -        |
 | inputWrapStyle    | input 组件外层容器的 style     | React.CSSProperties        | -        |
 | wrapStyle         | searchbar 组件外层容器的 style | React.CSSProperties        | -        |
