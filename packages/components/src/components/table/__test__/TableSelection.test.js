@@ -1,8 +1,8 @@
 import React from 'react';
 import { renderHook, act as hookACT } from '@testing-library/react-hooks';
 import { act } from 'react-dom/test-utils';
-import useSelection, { getRowKey } from '../hook/useSelection';
 import { mount } from 'enzyme';
+import useSelection, { getRowKey } from '../hook/useSelection';
 import Table from '../index';
 import { waitForComponentToPaint } from '../../../utils/test';
 
@@ -58,6 +58,7 @@ const dataSource = [
 describe('Testing Table rowSelection', () => {
   test('rowSelection display logic', () => {
     const { result, rerender } = renderHook(
+      // eslint-disable-next-line @typescript-eslint/no-shadow
       ({ dataSource, rowSelection, config }) => useSelection(dataSource, rowSelection, config),
       {
         initialProps: { dataSource, rowSelection: {}, config: {} },

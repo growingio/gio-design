@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import { renderHook, act } from '@testing-library/react-hooks';
+import { isEqual, cloneDeep } from 'lodash';
 import useSorter, { collectSortStates } from '../hook/useSorter';
 import { getNextSortDirection } from '../Title';
-import { isEqual, cloneDeep } from 'lodash';
 
 const columns = [
   {
@@ -99,7 +100,7 @@ describe('Testing Table Sorter', () => {
     act(() => {
       rerender({
         columns: cloneDeep(columns).map((column) => {
-          column.key = '#' + column.key;
+          column.key = `#${  column.key}`;
           return column;
         }),
         dataSource,
