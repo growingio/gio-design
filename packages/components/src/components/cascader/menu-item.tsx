@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
 
-import { dataFilter, isHit, makeSearchParttern, useDynamicData, withPrefix } from './helper';
+import { isHit, makeSearchParttern, useDynamicData, withPrefix } from './helper';
 
 export type Value = string | number;
 
@@ -21,6 +21,7 @@ export interface Props {
   style?: React.CSSProperties;
   dataSource: NodeData;
   value?: Value;
+  hasChild?: boolean;
   keyword?: string;
   ignoreCase?: boolean;
   deepSearch?: boolean;
@@ -71,6 +72,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     className,
     dataSource: originDataSource,
     value,
+    hasChild = false,
     parentsData = [],
     beforeSelect,
     onSelect,
@@ -89,8 +91,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     deepSearch = false,
   } = props;
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
-  const { label, disabled, children: childData = [] } = dataSource;
-  const childNodeData = deepSearch ? dataFilter(childData, keyword, ignoreCase) : childData;
+  const { label, disabled } = dataSource;
   const withWrapperCls = withPrefix('cascader-menu-item');
   const mergedTrigger = triggerMap[trigger.toLowerCase() as typeof trigger];
   const resolveBeforeSelect = (event: MouseEvent | KeyboardEvent) => {
@@ -141,17 +142,16 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   };
 
   const hitTarget = keyword && isHit(dataSource.label, keyword, ignoreCase);
-  const shouldRenderKeyword = keyword && hitTarget && (isEmpty(parentsData) || deepSearch);
-  const noChild = isEmpty(childNodeData);
+  const shouldRenderKeyword = hitTarget && (isEmpty(parentsData) || deepSearch);
 
   let childNode = (
     <div className={withWrapperCls('content')}>
-      <div>{shouldRenderKeyword ? renderKeyword(label, keyword, ignoreCase) : label}</div>
+      <div>{shouldRenderKeyword && keyword ? renderKeyword(label, keyword, ignoreCase) : label}</div>
       <div>
-        {value === dataSource.value && (selectAny || noChild) && (
+        {value === dataSource.value && (selectAny || !hasChild) && (
           <CheckOutlined className={withWrapperCls('icon-checked')} />
         )}
-        {!noChild && <DownFilled className={withWrapperCls('icon-down')} />}
+        {!hasChild && <DownFilled className={withWrapperCls('icon-down')} />}
       </div>
     </div>
   );

@@ -2,10 +2,10 @@ import React, { ReactElement, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
-import { dataFilter, toInt, useDynamicData, withPrefix } from './helper';
+import { dataFilter, makeSearchParttern, toInt, useDynamicData, withPrefix } from './helper';
 import MenuItem, { Props as MenuItemProps, NodeData } from './menu-item';
 
-export interface Props extends Omit<MenuItemProps, 'dataSource'> {
+export interface Props extends Omit<MenuItemProps, 'dataSource' | 'hasChild'> {
   dataSource?: NodeData[];
   onRender?: (nodeData: NodeData) => ReactElement;
   open?: boolean;
@@ -78,13 +78,15 @@ const Menu: React.FC<Props> = (props) => {
   }
 
   const filteredDataSource = useMemo(() => {
-    if (!isRootMenu && !deepSearch) {
+    if (!keyword) {
       return dataSource;
     }
-    return dataFilter(dataSource, keyword, ignoreCase);
-  }, [isRootMenu, deepSearch, dataSource, keyword, ignoreCase]);
 
-  if (isEmpty(filteredDataSource) && !isRootMenu) {
+    const searchParttern = makeSearchParttern(keyword, ignoreCase);
+    return dataFilter(dataSource, searchParttern, deepSearch);
+  }, [dataSource, deepSearch, keyword, ignoreCase]);
+
+  if (isEmpty(dataSource) && !isRootMenu) {
     return null;
   }
 
@@ -102,7 +104,7 @@ const Menu: React.FC<Props> = (props) => {
         <div className={withWrapperCls('body')}>
           {filteredDataSource.map((data) => (
             <MenuItem
-              key={data.value}
+              key={`${depth}-${data.value}`}
               value={value}
               keyword={keyword}
               dataSource={data}
@@ -110,6 +112,7 @@ const Menu: React.FC<Props> = (props) => {
               onSelect={onSelect}
               parentsData={parentsData}
               deepSearch={deepSearch}
+              hasChild={isEmpty(data.children)}
               {...others}
             />
           ))}

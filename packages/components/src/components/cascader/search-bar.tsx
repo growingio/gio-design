@@ -14,19 +14,18 @@ interface Props {
 }
 
 const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
-  const { placeholder = '搜索', value = '', onSearch, lazySearch } = props;
-  const [innerValue, setValue] = useDynamicData(value);
-  const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const { placeholder = '搜索', value: originValue = '', onSearch, lazySearch } = props;
+  const [value, setValue] = useDynamicData(originValue);
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (lazySearch && e.key === 'Enter') {
-      onSearch?.((e.target as HTMLInputElement)?.value);
+      onSearch?.((e.target as HTMLInputElement).value);
     }
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (lazySearch) {
-      setValue(e.target.value);
-      return;
+    setValue(e.target.value);
+    if (!lazySearch) {
+      onSearch?.(e.target.value);
     }
-    onSearch?.(e.target.value);
   };
 
   return (
@@ -34,10 +33,10 @@ const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
       style={{ width: '100%' }}
       placeholder={placeholder}
       forwardRef={ref}
-      value={innerValue}
+      value={value}
       // size={size}
       type="text"
-      onKeyUp={onKeyUp}
+      onKeyUp={handleKeyUp}
       onChange={handleChange}
       suffix={<SearchOutlined className="icon-search" />}
     />

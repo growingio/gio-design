@@ -32,7 +32,8 @@ const Basic = (): JSX.Element => {
       dataSource={dataSource}
       trigger="hover"
       title="bar"
-      lazySearch
+      deepSearch
+      // lazySearch
       // visible
       // keyword="o"
       // deepSearch

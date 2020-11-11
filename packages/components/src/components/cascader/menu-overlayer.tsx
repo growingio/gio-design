@@ -10,7 +10,7 @@ export interface Props extends Omit<MenuProps, 'onClick'> {
 }
 
 const MenuOverlayer = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
-  const { className, dataSource, onClick, originOnClick, ...others } = props;
+  const { className, onClick, originOnClick, ...others } = props;
   const withMenuCls = withPrefix('cascader-menu');
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const MenuOverlayer = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
 
   return (
     <div className={classNames(className, withMenuCls('list'))} ref={ref}>
-      <Menu dataSource={dataSource} {...others} onClick={originOnClick} />
+      <Menu {...others} onClick={originOnClick} />
     </div>
   );
 });

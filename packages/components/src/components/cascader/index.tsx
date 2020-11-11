@@ -44,7 +44,7 @@ const Cascader: React.FC<Props> = (props) => {
     size,
     disabled,
     open,
-    title: originTitle,
+    title: originTitle = '',
     separator = '/',
     lazySearch,
     keyword: originKeyword,
@@ -96,6 +96,10 @@ const Cascader: React.FC<Props> = (props) => {
     userOnTrigger?.(nodeData, event);
     setCanOpen(true);
   };
+  const handleSearch = (kw: string) => {
+    setKeyword(kw);
+    setCanOpen(false);
+  };
 
   useEffect(() => {
     if (dropdownVisible) {
@@ -131,7 +135,7 @@ const Cascader: React.FC<Props> = (props) => {
                   size={size}
                   ref={inputRef}
                   value={keyword}
-                  onSearch={setKeyword}
+                  onSearch={handleSearch}
                   lazySearch={lazySearch}
                   placeholder={searchPlaceholder}
                 />
