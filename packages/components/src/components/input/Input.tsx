@@ -48,12 +48,6 @@ const InputFC: React.FC<InputProps> = (props: InputProps) => {
     }
   };
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (typeof onChange === 'function') {
-      onChange(e);
-    }
-  };
-
   const renderSuffix = () => {
     if (!suffix) {
       return null;
@@ -67,6 +61,12 @@ const InputFC: React.FC<InputProps> = (props: InputProps) => {
       return null;
     }
     return <div className={`${prefixCls}-container-prefix`}>{prefix}</div>;
+  };
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (typeof onChange === 'function') {
+      onChange(e);
+    }
   };
 
   const outerStyle = style !== undefined ? style : wrapStyle || {};
