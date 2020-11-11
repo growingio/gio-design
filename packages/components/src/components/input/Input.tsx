@@ -8,6 +8,7 @@ const InputFC: React.FC<InputProps> = (props: InputProps) => {
   const {
     type = 'text',
     value,
+    onChange,
     onPressEnter,
     disabled = false,
     readOnly = false,
@@ -44,6 +45,12 @@ const InputFC: React.FC<InputProps> = (props: InputProps) => {
   const handleOnPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && onPressEnter) {
       onPressEnter(e);
+    }
+  };
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (typeof onChange === 'function') {
+      onChange(e);
     }
   };
 
@@ -87,6 +94,7 @@ const InputFC: React.FC<InputProps> = (props: InputProps) => {
         className={inputClass}
         type={type}
         value={value ?? ''}
+        onChange={handleOnChange}
         onKeyDown={handleOnPressEnter}
         style={innerStyle}
         disabled={disabled}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import Input from '..';
 
@@ -25,15 +26,15 @@ describe('Input', () => {
     expect(wrapper.find('input').prop('style').paddingRight).toBe(60);
     expect(
       wrapper.find('.gio-input-container-prefix').text() +
-      wrapper.find('.gio-input-content').prop('value') +
-      wrapper.find('.gio-input-container-suffix').text()
+        wrapper.find('.gio-input-content').prop('value') +
+        wrapper.find('.gio-input-container-suffix').text()
     ).toBe('http://www.growingio.com/index.html');
   });
 
   it('should run onChange when input accept change event', () => {
     let val = '';
     const wrapper = mount(
-      <Input onChange={e => (val = e.target.value)} onPressEnter={e => (val = 'press enter')} />
+      <Input onChange={(e) => (val = e.target.value)} onPressEnter={(e) => (val = 'press enter')} />
     );
     expect(wrapper.render()).toMatchSnapshot();
     wrapper.find('input').simulate('change', { target: { value: '123' } });
@@ -45,9 +46,7 @@ describe('Input', () => {
   });
 
   it('should warn when legacy props "wrapStyle" or "inputStyle" passed in', () => {
-    const wrapper = mount(
-      <Input wrapStyle={{ width: 100 }} />
-    );
+    const wrapper = mount(<Input wrapStyle={{ width: 100 }} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
@@ -85,15 +84,15 @@ describe('Input.InputNumber', () => {
 
   it('should not change if the value is not between min and max, or the value is not a number', () => {
     let val = '';
-    const wrapper = mount(<Input.InputNumber max={5} min={1} onChange={n => (val = n)} />);
+    const wrapper = mount(<Input.InputNumber max={5} min={1} onChange={(n) => (val = n)} />);
     expect(wrapper.render()).toMatchSnapshot();
-    wrapper.find('input').simulate('change', { target: { value: '5' }});
-    expect(wrapper.render()).toMatchSnapshot();
-    expect(val).toBe('5');
-    wrapper.find('input').simulate('change', { target: { value: '6' }});
+    wrapper.find('input').simulate('change', { target: { value: '5' } });
     expect(wrapper.render()).toMatchSnapshot();
     expect(val).toBe('5');
-    wrapper.find('input').simulate('change', { target: { value: '0' }});
+    wrapper.find('input').simulate('change', { target: { value: '6' } });
+    expect(wrapper.render()).toMatchSnapshot();
+    expect(val).toBe('5');
+    wrapper.find('input').simulate('change', { target: { value: '0' } });
     expect(wrapper.render()).toMatchSnapshot();
     expect(val).toBe('5');
   });
@@ -111,9 +110,26 @@ describe('Input.TextArea', () => {
   });
 
   it('should warn when legacy props "wrapStyle" or "inputStyle" passed in', () => {
-    const wrapper = mount(
-      <Input.TextArea wrapStyle={{ width: 100 }} />
-    );
+    const wrapper = mount(<Input.TextArea wrapStyle={{ width: 100 }} />);
     expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  it('should trigger onChange when input event happens', () => {
+    let val = '';
+    const wrapper = mount(<Input.TextArea onChange={e => (val = e.target.value)} />);
+    expect(wrapper.render()).toMatchSnapshot();
+    wrapper.find('textarea').simulate('change', { target: { value: '123' }});
+    expect(wrapper.render()).toMatchSnapshot();
+    expect(val).toBe('123');
+  });
+
+  it('should change the height when input many characters in the textarea', () => {
+    let val = '';
+    const wrapper = mount(<Input.TextArea value={val} autosize />);
+    expect(wrapper.render()).toMatchSnapshot();
+    wrapper.setProps({ value: 'abc'.repeat(100) })
+    expect(wrapper.render()).toMatchSnapshot();
+    expect(wrapper.find('textarea').prop('value')).toBe('abc'.repeat(100));
+    act(() => {});
   });
 });

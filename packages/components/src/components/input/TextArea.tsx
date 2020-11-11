@@ -9,6 +9,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   resize = false,
   autosize = false,
   placeholder = '',
+  onChange,
   style,
   wrapStyle,
   inputStyle,
@@ -18,6 +19,12 @@ const TextArea: React.FC<TextAreaProps> = ({
   const inputClass = classNames(`${prefixCls}-content`, `${prefixCls}-textarea`, {
     [`${prefixCls}-textarea-noresize`]: !resize,
   });
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (typeof onChange === 'function') {
+      onChange(e);
+    }
+  };
 
   useEffect(() => {
     if (autosize) {
@@ -43,6 +50,7 @@ const TextArea: React.FC<TextAreaProps> = ({
     <div className={prefixCls} style={outerStyle}>
       <textarea
         value={value ?? ''}
+        onChange={handleOnChange}
         className={inputClass}
         disabled={disabled}
         placeholder={placeholder}
