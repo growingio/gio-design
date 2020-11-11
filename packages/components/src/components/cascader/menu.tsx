@@ -1,6 +1,7 @@
 import React, { ReactElement, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
+import groupBy from 'lodash/groupBy';
 
 import { dataFilter, makeSearchParttern, toInt, useDynamicData, withPrefix } from './helper';
 import MenuItem, { Props as MenuItemProps, NodeData } from './menu-item';
@@ -86,7 +87,9 @@ const Menu: React.FC<Props> = (props) => {
     return dataFilter(dataSource, searchParttern, deepSearch);
   }, [dataSource, deepSearch, keyword, ignoreCase]);
 
-  if (isEmpty(dataSource) && !isRootMenu) {
+  const groupData = groupBy(filteredDataSource, 'groupId');
+
+  if (isEmpty(filteredDataSource) && !isRootMenu) {
     return null;
   }
 
@@ -102,19 +105,23 @@ const Menu: React.FC<Props> = (props) => {
       >
         {isRootMenu && <div className={withWrapperCls('header')}>{header}</div>}
         <div className={withWrapperCls('body')}>
-          {filteredDataSource.map((data) => (
-            <MenuItem
-              key={`${depth}-${data.value}`}
-              value={value}
-              keyword={keyword}
-              dataSource={data}
-              onTrigger={onTrigger}
-              onSelect={onSelect}
-              parentsData={parentsData}
-              deepSearch={deepSearch}
-              hasChild={isEmpty(data.children)}
-              {...others}
-            />
+          {Object.keys(groupData).map((groupId) => (
+            <div key={groupId} className={withWrapperCls('group')}>
+              {groupData[groupId].map((data) => (
+                <MenuItem
+                  key={`${depth}-${data.value}`}
+                  value={value}
+                  keyword={keyword}
+                  dataSource={data}
+                  onTrigger={onTrigger}
+                  onSelect={onSelect}
+                  parentsData={parentsData}
+                  deepSearch={deepSearch}
+                  hasChild={isEmpty(data.children)}
+                  {...others}
+                />
+              ))}
+            </div>
           ))}
         </div>
         {isRootMenu && <div className={withWrapperCls('footer')}>{footer}</div>}

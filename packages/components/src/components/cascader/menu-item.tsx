@@ -13,6 +13,7 @@ export type NodeData = {
   value: Value;
   disabled?: boolean;
   children?: NodeData[];
+  groupId?: Value;
   [key: string]: unknown;
 };
 

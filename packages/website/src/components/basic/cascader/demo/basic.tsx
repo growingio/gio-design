@@ -25,36 +25,7 @@ const dataSource = [
 ];
 
 const Basic = (): JSX.Element => {
-  return (
-    <Cascader
-      className="test"
-      value="c-2-1"
-      dataSource={dataSource}
-      trigger="hover"
-      title="bar"
-      deepSearch
-      // lazySearch
-      // visible
-      // keyword="o"
-      // deepSearch
-      // selectAny
-      beforeSelect={(e, d) => {
-        if (d.value === 'a') {
-          return [{ label: 'nb', value: 'nb' }];
-          // return new Promise((resolve) => {
-          //   setTimeout(() => {
-          //   }, 300);
-          // });
-        }
-      }}
-      // onRender={(d) => (
-      //   <Grid justify="space-between" style={{ width: 100 }}>
-      //     <div>{d.label}</div>
-      //     {d.children && d.children.length > 0 && <div>&gt;</div>}
-      //   </Grid>
-      // )}
-    />
-  );
+  return <Cascader dataSource={dataSource} />;
 };
 
 export default Basic;

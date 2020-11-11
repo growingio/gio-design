@@ -29,6 +29,7 @@ export interface Props extends Omit<OverlayerProps, 'depth' | 'onClick' | 'origi
   visible?: boolean;
   placement?: DropdownProps['placement'];
   overlayClassName?: string;
+  overlayStyle?: React.CSSProperties;
   onVisibleChange?: DropdownProps['onVisibleChange'];
   dropdownTrigger?: DropdownProps['trigger'];
   getDropdownContainer?: DropdownProps['getTooltipContainer'];
@@ -53,7 +54,6 @@ const Cascader: React.FC<Props> = (props) => {
     trigger = 'click',
     dropdownTrigger = 'click',
     placement = 'bottomLeft',
-    header,
     getDropdownContainer,
     value,
     visible,
@@ -61,6 +61,8 @@ const Cascader: React.FC<Props> = (props) => {
     onTrigger: userOnTrigger,
     onSelect: userChange,
     onVisibleChange,
+    style,
+    overlayStyle,
     ...others
   } = props;
   const inputRef = useRef<HTMLInputElement>(null);
@@ -100,17 +102,29 @@ const Cascader: React.FC<Props> = (props) => {
     setKeyword(kw);
     setCanOpen(false);
   };
+  const {
+    header = (
+      <SearchBar
+        size={size}
+        ref={inputRef}
+        value={keyword}
+        onSearch={handleSearch}
+        lazySearch={lazySearch}
+        placeholder={searchPlaceholder}
+      />
+    ),
+  } = props;
 
   useEffect(() => {
     if (dropdownVisible) {
       setTimeout(() => {
         inputRef.current?.focus();
-      }, 10);
+      }, 100);
     }
   }, [dropdownVisible]);
 
   return (
-    <div className={mergedWrapperCls}>
+    <div className={mergedWrapperCls} style={style}>
       <Dropdown
         disabled={disabled}
         visible={visible === undefined ? dropdownVisible : dropdownVisible && visible}
@@ -120,6 +134,7 @@ const Cascader: React.FC<Props> = (props) => {
         trigger={dropdownTrigger}
         onVisibleChange={handleVisibleChange}
         overlayInnerStyle={{ marginTop: -8 }}
+        overlayStyle={overlayStyle}
         overlay={
           // eslint-disable-next-line react/jsx-wrap-multilines
           <MenuOverlayer
@@ -127,20 +142,7 @@ const Cascader: React.FC<Props> = (props) => {
             originOnClick={onClick}
             open={canOpen}
             trigger={trigger}
-            header={
-              header === false ? (
-                false
-              ) : (
-                <SearchBar
-                  size={size}
-                  ref={inputRef}
-                  value={keyword}
-                  onSearch={handleSearch}
-                  lazySearch={lazySearch}
-                  placeholder={searchPlaceholder}
-                />
-              )
-            }
+            header={header}
             className={withWrapperCls('panel')}
             value={selected}
             keyword={keyword}
@@ -152,7 +154,7 @@ const Cascader: React.FC<Props> = (props) => {
       >
         <div className={withWrapperCls('title')}>
           {React.isValidElement(input) ? (
-            { input }
+            input
           ) : (
             // @TODO size={size}
             <Input readOnly placeholder={placeholder} value={title} />
