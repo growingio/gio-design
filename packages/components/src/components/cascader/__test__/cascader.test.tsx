@@ -62,7 +62,7 @@ describe('<Cascader />', () => {
 
   it('should render sub-menu', async () => {
     const dataSource = [{ label: 'a', value: 1, children: [] as NodeData[] }];
-    const wrapper = mount(<Cascader dataSource={dataSource} visible />);
+    const wrapper = mount(<Cascader dataSource={dataSource} visible trigger="click" />);
 
     act(() => {
       wrapper.find('.cascader-menu-item .cascader-menu-item-inner').simulate('click', { currentTarget: {} });
@@ -83,7 +83,7 @@ describe('<Cascader />', () => {
 
   it('should select a value', async () => {
     const onSelect = jest.fn();
-    const wrapper = mount(<Cascader visible dataSource={menu} onSelect={onSelect} />);
+    const wrapper = mount(<Cascader visible dataSource={menu} onSelect={onSelect} trigger="click" />);
 
     act(() => {
       wrapper.find('.cascader-menu-item .cascader-menu-item-inner').at(0).simulate('click', { currentTarget: {} });
@@ -103,7 +103,7 @@ describe('<Cascader />', () => {
   });
 
   it('can trigger a sub-menu', () => {
-    const wrapper = mount(<Cascader visible dataSource={menu} />);
+    const wrapper = mount(<Cascader visible dataSource={menu} trigger="click" />);
 
     act(() => {
       wrapper
@@ -130,7 +130,7 @@ describe('<Cascader />', () => {
 
   it('can deep search a word', async () => {
     const dataSource = [{ label: 'foo', value: 1, children: [{ label: 'bar', value: 2 }] }];
-    const wrapper = mount(<Cascader visible deepSearch dataSource={dataSource} />);
+    const wrapper = mount(<Cascader visible deepSearch dataSource={dataSource} trigger="click" />);
 
     expect(wrapper.find('.cascader-menu-list').text()).toEqual('foo');
 
@@ -151,10 +151,7 @@ describe('<Cascader />', () => {
 
     // open a sub-menu
     act(() => {
-      wrapper
-        .find('.cascader-menu-item .cascader-menu-item-inner')
-        .at(0)
-        .simulate('click', { currentTarget: { offsetLeft: 0, offsetTop: 0 } });
+      wrapper.find('.cascader-menu-item .cascader-menu-item-inner').at(0).simulate('click', { currentTarget: {} });
     });
     await waitFor(() => {
       expect(wrapper.find('.cascader-menu-list').text()).toEqual('foobar');
@@ -165,13 +162,11 @@ describe('<Cascader />', () => {
     const wrapper = mount(<Cascader trigger="hover" dataSource={menu} visible />);
 
     act(() => {
-      wrapper
-        .find('.cascader-menu-item-inner')
-        .at(1)
-        .simulate('mouseEnter', { currentTarget: { offsetTop: 0, offsetLeft: 0 } });
+      wrapper.find('.cascader-menu-item .cascader-menu-item-inner').at(1).simulate('mouseEnter', { currentTarget: {} });
     });
 
     await waitFor(() => {
+      // expect(wrapper.find('.cascader-menu-item')).toHaveLength(3);
       expect(wrapper.find('.cascader-menu-list').text()).toEqual('abb-1');
     });
   });

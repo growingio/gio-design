@@ -157,9 +157,9 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       <div>{shouldRenderKeyword && keyword ? renderKeyword(label, keyword, ignoreCase) : label}</div>
       <div>
         {value === dataSource.value && (selectAny || !hasChild) && (
-          <CheckOutlined className={withWrapperCls('icon-checked')} />
+          <CheckOutlined size="1em" className={withWrapperCls('icon-checked')} />
         )}
-        {!hasChild && <DownFilled className={withWrapperCls('icon-down')} />}
+        {!hasChild && <DownFilled size="1em" className={withWrapperCls('icon-down')} />}
       </div>
     </div>
   );

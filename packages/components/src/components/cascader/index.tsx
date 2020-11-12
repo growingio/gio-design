@@ -130,7 +130,7 @@ const Cascader: React.FC<Props> = (props) => {
     <div className={mergedWrapperCls} style={style}>
       <Dropdown
         prefixCls={prefixCls}
-        size={size}
+        // size={size}
         disabled={disabled}
         visible={visible === undefined ? dropdownVisible : dropdownVisible && visible}
         placement={placement}
