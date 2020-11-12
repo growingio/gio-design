@@ -320,7 +320,6 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
         {input}
       </div>
       <input
-        placeholder={placeholder}
         ref={inputRef}
         style={{ width: inputWidth }}
         className={classnames(`${prefix}-input`, `${prefix}-item`)}
@@ -332,6 +331,12 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
       />
     </>
   );
+
+  const renderPlaceHolder = () => {
+    return (!value || !value.length) && !input && placeholder ? (
+      <div className={`${prefix}-item ${prefix}-placeholder`}>{placeholder}</div>
+    ) : null;
+  };
 
   const trigger = (
     <div
@@ -353,6 +358,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
         <div className={classnames(`${prefix}-values-wrapper`)}>
           {multiple ? renderMultipleValue() : renderSingleValue()}
           {searchable && !disabled && renderSearchInput()}
+          {renderPlaceHolder()}
         </div>
       </div>
       <div className={`${prefix}-arrow`}>{arrowComponent}</div>

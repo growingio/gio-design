@@ -32,6 +32,7 @@
   }
 
   &-values-wrapper {
+    position: relative;
     margin-top: -2px;
     line-height: 24px;
   }
@@ -65,6 +66,13 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+  }
+
+  &-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
   }
 
   &-small {
@@ -153,9 +161,13 @@
   &-single&-focused {
     .@{select-prefix-cls} {
       &-item {
-        position: absolute;
-        z-index: -1;
         opacity: 0.5;
+      }
+
+      &-input {
+        position: absolute;
+        left: 0;
+        opacity: 1;
       }
     }
   }
@@ -178,9 +190,6 @@
     text-align: center;
     &-icon {
       margin-bottom: 40px;
-    }
-
-    &-text {
     }
   }
 }
