@@ -11,9 +11,9 @@ const NormalList = ({
   width,
   onChange = noop,
   ...restProps
-}: IBaseListProps) => (
+}: IBaseListProps): React.ReactElement => (
   <div className={`${prefixCls}-wrapper`} style={{ ...wrapStyle, width }}>
-    <Core options={dataSource} onChange={onChange} width={width} {...restProps} />
+    <Core options={dataSource} onChange={onChange} {...restProps} />
   </div>
 );
 

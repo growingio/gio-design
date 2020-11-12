@@ -22,6 +22,14 @@ const optionsWithOutGroup = values.map((value, index) => ({
 }));
 
 describe('<Select />', () => {
+  // For List use AutoSizer.
+  // AutoSizer uses offsetWidth and offsetHeight.
+  // Jest runs in JSDom which doesn't support measurements APIs.
+  beforeEach(() => {
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', { configurable: true, value: 320 });
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { configurable: true, value: 160 });
+  });
+
   it('renders <Select /> components', () => {
     const tree = renderer.create(<Select defaultValue="all" options={options} />).toJSON();
     expect(tree).toMatchSnapshot();
