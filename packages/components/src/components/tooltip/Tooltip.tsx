@@ -39,6 +39,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
 
   useEffect(() => {
     setControlledVisible(!isNoContent && controlledVisible, true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isNoContent, controlledVisible]);
 
   const tooltipOverlay = isNoTitle ? null : (

@@ -28,6 +28,10 @@ interface SelectState {
   active: boolean;
 }
 class Select extends Component<SelectProps, SelectState> {
+  public list: any;
+
+  public root: any;
+  
   public constructor(s: SelectProps) {
     super(s);
     this.state = {
@@ -38,10 +42,6 @@ class Select extends Component<SelectProps, SelectState> {
   public static state = {
     active: false,
   };
-
-  public list: any;
-
-  public root: any;
 
   public componentDidMount() {
     // jump to selected option
@@ -84,12 +84,14 @@ class Select extends Component<SelectProps, SelectState> {
       const disprops = { disabled: item.disabled };
       return (
         <li
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
           role="button"
           onClick={onClick}
           className={cls}
-          key={index}
+          key={item.value}
           tabIndex={0}
           onKeyDown={onKeyDown}
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...disprops}
         >
           {item.value}
