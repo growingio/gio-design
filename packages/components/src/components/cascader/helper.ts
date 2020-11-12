@@ -41,7 +41,7 @@ export const deepFilter = (d: NodeData, parttern: RegExp) => {
     return false;
   }
 
-  const someChildMatch = d.children?.some((c) => deepFilter(c, parttern));
+  const someChildMatch = d.children?.some((c) => deepFilter(c, parttern)) as boolean;
 
   return someChildMatch;
 };

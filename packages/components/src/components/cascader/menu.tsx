@@ -46,6 +46,7 @@ const Menu: React.FC<Props> = (props) => {
     const { paddingLeft, paddingTop } = getComputedStyle(menu!);
     const { offsetLeft = 0, offsetTop = 0 } = (event.currentTarget || {}) as HTMLElement;
     setOffset([offsetLeft - toInt(paddingLeft), offsetTop - toInt(paddingTop)]);
+    setTriggerData(undefined);
     setTriggerData(nodeData);
     userOnTrigger?.(event, nodeData);
     setCanOpen(!isEmpty(nodeData.children));
@@ -71,6 +72,7 @@ const Menu: React.FC<Props> = (props) => {
       <Menu
         {...props}
         depth={depth + 1}
+        open={false}
         dataSource={triggerData.children}
         parentsData={[triggerData, ...parentsData]}
         style={{ ...style, top: top + toInt(sTop), left: left + toInt(sLeft) }}
@@ -103,7 +105,7 @@ const Menu: React.FC<Props> = (props) => {
         style={style}
         ref={wrapRef}
       >
-        {isRootMenu && <div className={withWrapperCls('header')}>{header}</div>}
+        {isRootMenu && header && <div className={withWrapperCls('header')}>{header}</div>}
         <div className={withWrapperCls('body')}>
           {Object.keys(groupData).map((groupId) => (
             <div key={groupId} className={withWrapperCls('group')}>
@@ -124,7 +126,7 @@ const Menu: React.FC<Props> = (props) => {
             </div>
           ))}
         </div>
-        {isRootMenu && <div className={withWrapperCls('footer')}>{footer}</div>}
+        {isRootMenu && footer && <div className={withWrapperCls('footer')}>{footer}</div>}
       </div>
       {childMenu}
     </>

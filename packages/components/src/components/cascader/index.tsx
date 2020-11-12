@@ -11,7 +11,7 @@ import Input from '../input';
 import MenuOverlayer, { Props as OverlayerProps } from './menu-overlayer';
 import SearchBar from './search-bar';
 
-export interface Props extends Omit<OverlayerProps, 'depth' | 'onClick' | 'originOnClick'> {
+export interface Props extends Omit<OverlayerProps, 'onClick' | 'originOnClick'> {
   prefixCls?: string;
   size?: SizeType;
   disabled?: boolean;
@@ -22,6 +22,7 @@ export interface Props extends Omit<OverlayerProps, 'depth' | 'onClick' | 'origi
   // search-bar
   searchPlaceholder?: string;
   lazySearch?: boolean;
+  onSearch?: (keyword: string) => void;
 
   onClick?: OverlayerProps['originOnClick'];
 
@@ -51,13 +52,14 @@ const Cascader: React.FC<Props> = (props) => {
     keyword: originKeyword,
     overlayClassName,
     dataSource = [],
-    trigger = 'click',
+    trigger = 'hover',
     dropdownTrigger = 'click',
     placement = 'bottomLeft',
     getDropdownContainer,
     value,
     visible,
     onClick,
+    onSearch,
     onTrigger: userOnTrigger,
     onSelect: userChange,
     onVisibleChange,
@@ -99,6 +101,7 @@ const Cascader: React.FC<Props> = (props) => {
     setCanOpen(true);
   };
   const handleSearch = (kw: string) => {
+    onSearch?.(kw);
     setKeyword(kw);
     setCanOpen(false);
   };
@@ -126,6 +129,8 @@ const Cascader: React.FC<Props> = (props) => {
   return (
     <div className={mergedWrapperCls} style={style}>
       <Dropdown
+        prefixCls={prefixCls}
+        size={size}
         disabled={disabled}
         visible={visible === undefined ? dropdownVisible : dropdownVisible && visible}
         placement={placement}
@@ -157,7 +162,7 @@ const Cascader: React.FC<Props> = (props) => {
             input
           ) : (
             // @TODO size={size}
-            <Input readOnly placeholder={placeholder} value={title} />
+            <Input disabled={disabled} readOnly placeholder={placeholder} value={title} />
           )}
         </div>
       </Dropdown>

@@ -37,6 +37,7 @@ export interface Props {
   onKeyUp?: (event: KeyboardEvent) => void;
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
+  onMouseLeave?: (event: MouseEvent) => void;
   onRender?: (nodeData: NodeData) => ReactElement;
   afterInner?: ReactElement;
 }
@@ -71,6 +72,7 @@ const renderKeyword = (label: string, keyword: string, ignoreCase: boolean) => {
 const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   const {
     className,
+    style,
     dataSource: originDataSource,
     value,
     hasChild = false,
@@ -82,7 +84,8 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     onFocus,
     onBlur,
     onMouseEnter,
-    trigger = 'click',
+    onMouseLeave,
+    trigger = 'hover',
     selectAny,
     onTrigger,
     onRender,
@@ -107,13 +110,17 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     return { ...event };
   };
   const handleMouseEnter = (event: MouseEvent<HTMLDivElement>) => {
-    onTrigger?.(event, dataSource);
+    if (trigger === 'hover') {
+      onTrigger?.(event, dataSource);
+    }
     onMouseEnter?.(event, dataSource);
   };
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     const eventCopy = getCopyEvent(event);
     resolveBeforeSelect(eventCopy).then((data) => {
-      onTrigger?.(eventCopy, data);
+      if (trigger === 'click') {
+        onTrigger?.(eventCopy, data);
+      }
       onClick?.(eventCopy, data);
       if (isEmpty(data.children) || selectAny) {
         setDataSource(data);
@@ -165,6 +172,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       role="menuitem"
       className={classNames(className, withWrapperCls(), disabled && withPrefix('disable'))}
       ref={ref}
+      style={style}
     >
       <div
         className={withWrapperCls('inner')}
@@ -176,6 +184,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         onMouseEnter={handleMouseEnter}
         onFocus={onFocus}
         onBlur={onBlur}
+        onMouseLeave={onMouseLeave}
       >
         {childNode}
       </div>

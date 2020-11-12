@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { withPrefix } from './helper';
 import Menu, { Props as MenuProps } from './menu';
 
-export interface Props extends Omit<MenuProps, 'onClick'> {
+export interface Props extends Omit<MenuProps, 'depth' | 'onClick' | 'parentsData'> {
   originOnClick?: MenuProps['onClick']; // 未被劫持的原始事件
   onClick?: (e: MouseEvent) => void; // 被 dropdown 劫持的 onClick 事件
 }
