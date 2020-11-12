@@ -1,14 +1,15 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
 import Input from '../input';
 import Button from '../button';
 import { SearchBarProps } from './interfaces';
-
+import { SizeContext } from '../config-provider/SizeContext';
 export const prefixCls = 'gio-searchbar';
 
 const getStorage = (key: string): string[] => {
   const empty: string[] = [];
   try {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : empty;
   } catch (error) {
@@ -40,21 +41,23 @@ const clearStorage = (key: string): string[] => {
   return [];
 };
 
-const SearchBar: React.FC<SearchBarProps> = ({
-  showStorage = false,
-  storageNum = 5,
-  allowClearStorage = false,
-  showClear = false,
-  disabled = false,
-  size = 'medium',
-  inputStyle,
-  inputWrapStyle,
-  wrapStyle,
-  placeholder,
-  value,
-  onChange,
-  id,
-}) => {
+const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
+  const sizeContext = useContext(SizeContext);
+  const {
+    showStorage = false,
+    storageNum = 5,
+    allowClearStorage = false,
+    showClear = false,
+    disabled = false,
+    size = sizeContext || 'middle',
+    inputStyle,
+    inputWrapStyle,
+    wrapStyle,
+    placeholder,
+    value,
+    onChange,
+    id,
+  } = props;
   const storageKey = React.useMemo(() => `${prefixCls}-storage-${id}`, [id]);
 
   const [searchStorage, setSearchStorage] = React.useState(getStorage(storageKey));
@@ -82,7 +85,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    // eslint-disable-next-line no-shadow
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     const { value } = e.target;
     setTimeout(() => {
       setStorage(storageKey, value);
@@ -125,6 +128,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
             }}
             className={`${prefixCls}-dropdown-item`}
             key={item}
+            aria-hidden="true"
           >
             {item}
           </div>

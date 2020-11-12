@@ -27,3 +27,11 @@ yarn watch
 ```
 yarn start
 ```
+
+---
+
+Powered by
+
+<p>
+  <a href="https://vercel.com/?utm_source=gio-design&utm_campaign=oss" target="_blank"><img src="./assets/vercel.svg" alt="Vercel Inc." height=32 /></a>
+</p>

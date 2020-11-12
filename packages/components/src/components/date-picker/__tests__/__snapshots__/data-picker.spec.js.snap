@@ -4,7 +4,7 @@ exports[`DatePicker should match snapshot 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "",
+      "class": "gio-date-picker-wrap",
     },
     "children": Array [
       Object {
@@ -14,7 +14,7 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
-              "class": "gio-input-content gio-input-content-medium",
+              "class": "gio-input-content gio-input-content-middle",
               "placeholder": "请输入…",
               "type": "text",
               "value": "2015/06/01",
@@ -86,7 +86,7 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
-                "class": "gio-input-content gio-input-content-medium",
+                "class": "gio-input-content gio-input-content-middle",
                 "placeholder": "请输入…",
                 "type": "text",
                 "value": "2015/06/01",

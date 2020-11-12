@@ -11,9 +11,9 @@ const useEllipsisTooltip = <RecordType,>() => {
     (columns: ColumnsType<RecordType>) =>
       columns.map((column) => {
         if (has(column, 'ellipsis') && has(column, 'width') && !has(column, 'render')) {
-          column.render = function () {
-            const text = arguments[0];
-            const index = arguments[2];
+          column.render = function (...args) {
+            const text = args[0];
+            const index = args[2];
             const textNode = getRef(get(column, 'dataIndex') + index)?.current;
             const columnWidth = Number(get(column, 'width')) - 32;
             const shouldShowTooltip = !isNil(textNode) && textNode.getBoundingClientRect().width - columnWidth > 0;
@@ -26,6 +26,7 @@ const useEllipsisTooltip = <RecordType,>() => {
         }
         return column;
       }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [cacheRefs.current.size]
   );
 

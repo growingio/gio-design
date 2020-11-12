@@ -16,7 +16,8 @@ const FilterPopover = (props: FilterPopoverProps) => {
   } = props;
   const [selectFilterKey, setSelectFilterKey] = useState<string[]>([]);
   const filterCheckbox = useMemo(
-    () => filters.map((item: string, index: number) => (
+    () => filters.map((item: string,index: number) => (
+      // eslint-disable-next-line react/no-array-index-key
       <Checkbox value={item} key={index}>
         {item}
       </Checkbox>

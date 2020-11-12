@@ -19,3 +19,5 @@ export const translateInnerColumns = <RecordType>(columns: ColumnsType<RecordTyp
     }
     return cloneColumn;
   }) as InnerColumnsType<RecordType>;
+
+export default {}

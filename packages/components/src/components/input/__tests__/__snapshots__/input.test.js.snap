@@ -9,7 +9,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium",
+          "class": "gio-input-content gio-input-content-middle",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -82,7 +82,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium",
+          "class": "gio-input-content gio-input-content-middle",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -155,7 +155,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium",
+          "class": "gio-input-content gio-input-content-middle",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -228,7 +228,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium",
+          "class": "gio-input-content gio-input-content-middle",
           "maxlength": "3",
           "placeholder": "",
           "type": "text",
@@ -338,7 +338,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix gio-input-content-prefix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix gio-input-content-prefix",
             "placeholder": "",
             "style": "padding-left: 100px; padding-right: 60px;",
             "type": "text",
@@ -422,7 +422,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix gio-input-content-prefix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix gio-input-content-prefix",
           "placeholder": "",
           "style": "padding-left: 100px; padding-right: 60px;",
           "type": "text",
@@ -576,7 +576,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix gio-input-content-prefix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix gio-input-content-prefix",
             "placeholder": "",
             "style": "padding-left: 100px; padding-right: 60px;",
             "type": "text",
@@ -778,7 +778,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium",
+          "class": "gio-input-content gio-input-content-middle",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -853,7 +853,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -2862,7 +2862,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -2943,7 +2943,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -4952,7 +4952,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -5033,7 +5033,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -7042,7 +7042,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -7123,7 +7123,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -9132,7 +9132,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -9213,7 +9213,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -11222,7 +11222,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -11303,7 +11303,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -13312,7 +13312,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -13393,7 +13393,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -15402,7 +15402,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -15483,7 +15483,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -17492,7 +17492,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -17573,7 +17573,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
           "placeholder": "",
           "type": "password",
           "value": "",
@@ -18032,7 +18032,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
             "placeholder": "",
             "type": "password",
             "value": "",
@@ -18113,7 +18113,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
           "placeholder": "",
           "type": "password",
           "value": "",
@@ -18572,7 +18572,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
             "placeholder": "",
             "type": "password",
             "value": "",
@@ -18653,7 +18653,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -19464,7 +19464,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -19545,7 +19545,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
           "placeholder": "",
           "type": "password",
           "value": "",
@@ -20004,7 +20004,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-medium gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
             "placeholder": "",
             "type": "password",
             "value": "",

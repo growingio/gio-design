@@ -13,7 +13,7 @@ export default () => {
       value={value}
       onChange={setValue}
       id="demo1"
-      size="medium"
+      size="middle"
     />
   );
 };

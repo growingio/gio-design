@@ -73,10 +73,18 @@ function collectTarget(connect: reactDnd.DropTargetConnector, monitor: reactDnd.
   };
 }
 
-class Item extends React.PureComponent<WrappedSortableItemProps, {}> {
-  public state = {
-    hovered: false,
-  };
+interface State {
+  hovered:boolean,
+}
+
+class Item extends React.PureComponent<WrappedSortableItemProps, State> {
+  
+  constructor(props : WrappedSortableItemProps){
+    super(props);
+    this.state = {
+      hovered: false,
+    };
+  }
 
   public componentDidMount() {
     const ref = this._createRef();
@@ -86,26 +94,6 @@ class Item extends React.PureComponent<WrappedSortableItemProps, {}> {
     /* eslint-enable */
     connectDragSource(domNode);
     connectDropTarget(domNode);
-  }
-
-  public render() {
-    const isOver = this.props.isOver;
-    const isDragging = this.props.isDragging;
-    return cloneElement(this.props.template, {
-      sortData: this.props.sortData,
-      index: this.props.index,
-      isOver,
-      isDragging,
-      ref: this._createRef(),
-      onMouseEnter: this._onMouseEnter,
-      onMouseLeave: this._onMouseLeave,
-      onDragStart: this._onDragStart,
-      className: classnames(this.props.className, 'gio-sortable-item', {
-        'is-over': isOver,
-        'is-dragging': isDragging,
-        'is-hovered': this.state.hovered,
-      }),
-    });
   }
 
   private _onDragStart = () => {
@@ -127,9 +115,29 @@ class Item extends React.PureComponent<WrappedSortableItemProps, {}> {
   };
 
   private _createRef() {
-    const position = this.props.position;
-    const value = this.props.sortData.value;
+    const { position, sortData } = this.props;
+    const {value} = sortData;
     return `${value}${position}`;
+  }
+
+  public render() {
+    const { isOver, template, sortData, index, className, isDragging } = this.props;
+    const { hovered } = this.state;
+    return cloneElement(template, {
+      sortData,
+      index,
+      isOver,
+      isDragging,
+      ref: this._createRef(),
+      onMouseEnter: this._onMouseEnter,
+      onMouseLeave: this._onMouseLeave,
+      onDragStart: this._onDragStart,
+      className: classnames(className, 'gio-sortable-item', {
+        'is-over': isOver,
+        'is-dragging': isDragging,
+        'is-hovered': hovered,
+      }),
+    });
   }
 }
 

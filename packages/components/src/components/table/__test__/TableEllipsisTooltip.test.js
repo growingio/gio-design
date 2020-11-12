@@ -1,7 +1,6 @@
-import { renderHook, act } from '@testing-library/react-hooks';
-import useEllipsisTooltip from '../hook/useEllipsisTooltip';
-import { waitForComponentToPaint } from '../../../utils/test';
+import { renderHook } from '@testing-library/react-hooks';
 import { mount } from 'enzyme';
+import useEllipsisTooltip from '../hook/useEllipsisTooltip';
 
 const columns = [
   {

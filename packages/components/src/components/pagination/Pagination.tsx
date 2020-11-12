@@ -134,7 +134,6 @@ const Pagination = ({
     <div className={`${prefixCls}-options-quick-jumper`}>
       跳至
       <Input
-        style={{ display: 'inline-block' }}
         value={inputValue}
         disabled={disabled}
         onChange={(e) => setInputValue(e.target.value)}

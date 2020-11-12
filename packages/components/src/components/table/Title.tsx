@@ -35,7 +35,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
             prefixCls={`${prefixCls}`}
             className={`${prefixCls}-column-sorter-inner-btn`}
             type="text"
-            icon={
+            icon={(
               <>
                 <UpFilled
                   className={classNames(`${prefixCls}-column-sorter-up`, {
@@ -48,7 +48,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
                   })}
                 />
               </>
-            }
+            )}
             onClick={handleSorterChange}
           />
         </span>
@@ -74,12 +74,12 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
             <Button
               type="assist"
               className={`${prefixCls}-column-filter-inner-btn`}
-              icon={
+              icon={(
                 <FilterFilled
                   size="16px"
                   className={classNames(`${prefixCls}-column-filter-icon`, { active: filteredKeys.length > 0 })}
                 />
-              }
+              )}
             />
           </FilterPopover>
         </span>
