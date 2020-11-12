@@ -118,9 +118,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     const eventCopy = getCopyEvent(event);
     resolveBeforeSelect(eventCopy).then((data) => {
-      if (trigger === 'click') {
-        onTrigger?.(eventCopy, data);
-      }
+      onTrigger?.(eventCopy, data);
       onClick?.(eventCopy, data);
       if (isEmpty(data.children) || selectAny) {
         setDataSource(data);

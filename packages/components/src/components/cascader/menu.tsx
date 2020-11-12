@@ -46,7 +46,7 @@ const Menu: React.FC<Props> = (props) => {
     const { paddingLeft, paddingTop } = getComputedStyle(menu!);
     const { offsetLeft = 0, offsetTop = 0 } = (event.currentTarget || {}) as HTMLElement;
     setOffset([offsetLeft - toInt(paddingLeft), offsetTop - toInt(paddingTop)]);
-    setTriggerData(undefined);
+    // setTriggerData(undefined);
     setTriggerData(nodeData);
     userOnTrigger?.(event, nodeData);
     setCanOpen(!isEmpty(nodeData.children));
