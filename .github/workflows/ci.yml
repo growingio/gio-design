@@ -76,6 +76,35 @@ jobs:
         run: yarn lint:style
       - name: ESLint
         run: yarn lint:components
+  review:
+    name: UI Review
+    if: ${{ !(startsWith(github.event.pull_request.title, 'chore') || startsWith(github.event.pull_request.title, 'docs')) }}
+    needs: [install]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: 12.x
+      - name: Restore Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Build Storybook
+        run: yarn build-storybook
+      - name: Upload to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: no8vpz82l1j
+          storybookBuildDir: packages/components/storybook-static/
   build:
     name: Build Packages
     needs: install
@@ -145,15 +174,4 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           directory: ./packages/components/coverage/
-  review:
-    name: UI Review
-    if: ${{ !(startsWith(github.event.pull_request.title, 'chore') || startsWith(github.event.pull_request.title, 'docs')) }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: chromaui/action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: no8vpz82l1j
+
