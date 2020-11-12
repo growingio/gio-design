@@ -1,5 +1,4 @@
 import { ReactNode, CSSProperties } from 'react';
-import { DialogProps } from 'rc-dialog';
 import { ButtonProps } from '../button';
 
 export type IStringOrHtmlElement = string | HTMLElement;
@@ -59,7 +58,7 @@ export interface IModalProps extends ITitleProps, Omit<IFooterProps, 'useOk' | '
   closeAfterOk?: boolean;
   // 是否在 Modal 关闭后销毁
   destroyOnClose?: boolean;
-  getContainer?: DialogProps['getContainer'] | false;
+  getContainer?: IStringOrHtmlElement | (() => IStringOrHtmlElement) | false;
   forceRender?: boolean;
   focusTriggerAfterClose?: boolean;
 }
