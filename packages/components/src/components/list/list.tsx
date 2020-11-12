@@ -1,6 +1,6 @@
 import React from 'react';
 import { get } from 'lodash';
-import { List } from 'react-virtualized';
+import { List, AutoSizer } from 'react-virtualized';
 import SelectOption from './option';
 import Group from './Group';
 import withGroupedOptions from './utils/withGroupedOptions';
@@ -8,14 +8,12 @@ import { SelectListProps } from './interface';
 
 interface State {
   value: any | any[];
-  width: any;
 }
 
 class SelectList extends React.Component<SelectListProps, State> {
   public static defaultProps: Partial<SelectListProps> = {
     disabledOptions: [],
     isMultiple: false,
-    width: 280,
     height: 450,
   };
 
@@ -25,39 +23,35 @@ class SelectList extends React.Component<SelectListProps, State> {
     super(props);
     this.ref = React.createRef();
     this.state = {
-      // eslint-disable-next-line react/no-unused-state
       value: null,
-      width: 0,
     };
-  }
-
-  public componentDidMount() {
-    this.setState({ width: this.ref.current?.offsetWidth });
   }
 
   private getPopupContainer = () => this.ref.current as HTMLElement;
 
   private renderList = () => {
-    const { width, height, disabledOptions, rowHeight, options, value } = this.props;
+    const { height, disabledOptions, rowHeight, options, value } = this.props;
     const getRowHeight = ({ index }: { index: number }) => {
       if (typeof rowHeight === 'function') {
         return rowHeight(options[index]);
-      } 
-        return rowHeight;
-      
+      }
+      return rowHeight;
     };
     return (
-      <List
-        value={value}
-        // eslint-disable-next-line react/destructuring-assignment
-        width={typeof width === 'number' ? width : this.state.width}
-        height={height}
-        rowCount={options.length}
-        rowHeight={typeof rowHeight === 'function' ? getRowHeight : rowHeight}
-        rowRenderer={this.renderListItem(options)}
-        disabledOptions={disabledOptions}
-        className="gio-select-list"
-      />
+      <AutoSizer style={{ width: '100%', height }}>
+        {({ width }) => (
+          <List
+            value={value}
+            width={width}
+            height={height}
+            rowCount={options.length}
+            rowHeight={typeof rowHeight === 'function' ? getRowHeight : rowHeight}
+            rowRenderer={this.renderListItem(options)}
+            disabledOptions={disabledOptions}
+            className="gio-select-list"
+          />
+        )}
+      </AutoSizer>
     );
   };
 
@@ -65,13 +59,22 @@ class SelectList extends React.Component<SelectListProps, State> {
     const { isMultiple, value, max } = this.props;
     if (Array.isArray(value) && !this.getSelected(option) && isMultiple && max) {
       return value.length >= max;
-    } 
-      return false;
-    
+    }
+    return false;
   };
 
   private renderListItem = (options: any) => ({ index, style }: { index: number; style: React.CSSProperties }) => {
-    const { isMultiple, required, value, valueKey, renderKey, disabledOptions, labelRenderer, getGroupIcon, allowDuplicate } = this.props;
+    const {
+      isMultiple,
+      required,
+      value,
+      valueKey,
+      renderKey,
+      disabledOptions,
+      labelRenderer,
+      getGroupIcon,
+      allowDuplicate,
+    } = this.props;
     const option = options[index];
     const isGroup = get(option, 'type') === 'groupLabel';
     const label = labelRenderer ? labelRenderer(option) : get(option, 'label') || option;
@@ -95,7 +98,7 @@ class SelectList extends React.Component<SelectListProps, State> {
         key={option.label}
         name={option.label}
         option={option}
-        style={{ ...style, height: (style.height as number) - 4, top: (style.top as number) + 8 }}
+        style={{ ...style, height: (style.height as number) - 4 }}
         icon={groupIcon}
         isSelected={this.getSelected(option)}
         isMultiple={!!isMultiple}
@@ -104,7 +107,7 @@ class SelectList extends React.Component<SelectListProps, State> {
     ) : (
       <SelectOption
         key={key}
-        style={{ ...style, height: (style.height as number) - 4, top: (style.top as number) + 4 }}
+        style={{ ...style, height: (style.height as number) - 4 }}
         option={option}
         title={!labelRenderer ? label : undefined}
         isSelected={this.getSelected(option)}

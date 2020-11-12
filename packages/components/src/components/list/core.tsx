@@ -22,7 +22,7 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
     emptyPlaceholder: '没有找到相关结果',
   };
 
-  constructor(props : SelectCoreProps){
+  constructor(props: SelectCoreProps) {
     super(props);
     this.state = {
       options: [],
@@ -47,7 +47,7 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
     return { ...state, options: nextProps.options };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { value, options } = this.props;
     this.setState({
       value,
@@ -56,12 +56,18 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
   }
 
   private handleSelect = (value: any) => {
-    const { onChange } = this.props;
-    this.setState({ value, stateChanged: true });
+    const { onChange, stateless = false, isMultiple } = this.props;
+    if (isMultiple || !stateless) {
+      if (stateless) {
+        // eslint-disable-next-line no-console
+        console.warn("stateless can't be used to multiple mode");
+      }
+      this.setState({ value, stateChanged: true });
+    }
     onChange(value);
   };
 
-  public render() {
+  public render(): React.ReactElement {
     const {
       disabledOptions,
       valueKey,
@@ -70,7 +76,6 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
       allowDuplicate,
       required,
       max,
-      width,
       height,
       getGroupIcon,
       onClick,
@@ -94,7 +99,6 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
             allowDuplicate={allowDuplicate}
             required={required}
             max={max}
-            width={width}
             height={height}
             onSelect={onSelect}
             onClick={onClick}
