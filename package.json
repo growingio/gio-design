@@ -53,7 +53,7 @@
     "build:icons": "yarn workspace @gio-design/icons build",
     "build:components": "yarn workspace @gio-design/components build",
     "build:website": "yarn workspace website build",
-    "build:stories": "yarn workspace @gio-design/components build-storybook",
+    "build-storybook": "yarn workspace @gio-design/components build-storybook",
     "g:icons": "yarn workspace @gio-design/icons generate",
     "lint:components": "eslint packages/components/src --ext .js,.jsx,.ts,.tsx",
     "lint:style": "stylelint 'packages/components/src/**/*.{css,less}' --syntax less",
