@@ -28,11 +28,12 @@ describe('<Cascader />', () => {
 
   it('should popup a searchable menu overlayer', async () => {
     const map = {} as { [key: string]: EventListenerOrEventListenerObject };
-    document.body.addEventListener = jest.fn((event, cb) => {
+    document.addEventListener = jest.fn((event, cb) => {
       map[event] = cb;
     });
     const wrapper = mount(<Cascader visible keyword="a" searchPlaceholder="search" dataSource={menu} />);
-    expect(wrapper.find('.gio-cascader-panel.cascader-menu-list')).toHaveLength(1);
+
+    expect(document.querySelectorAll('.gio-dropdown.gio-cascader-dropdown')).toHaveLength(1);
     expect(wrapper.find('.cascader-menu-header input').getElement().props.value).toBe('a');
     expect(wrapper.find('.cascader-menu-list').text()).toBe('a');
 

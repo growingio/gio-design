@@ -4,11 +4,12 @@ import classNames from 'classnames';
 import { ConfigContext } from '../config-provider';
 import { DropdownProps } from '../dropdown/interface';
 import { NodeData } from './menu-item';
+import { Props as OverlayerProps } from './menu-overlayer';
 import { SizeType } from '../config-provider/SizeContext';
 import { useDynamicData, withPrefix } from './helper';
 import Dropdown from '../dropdown';
 import Input from '../input';
-import MenuOverlayer, { Props as OverlayerProps } from './menu-overlayer';
+import Menu from './menu';
 import SearchBar from './search-bar';
 
 export interface Props extends Omit<OverlayerProps, 'onClick' | 'originOnClick'> {
@@ -126,6 +127,14 @@ const Cascader: React.FC<Props> = (props) => {
     }
   }, [dropdownVisible]);
 
+  useEffect(() => {
+    document.addEventListener('click', (e) => {
+      if (e.target?.classList.contains('gio-cascader-dropdown')) {
+        setDropdownVisible(false);
+      }
+    });
+  });
+
   return (
     <div className={mergedWrapperCls} style={style}>
       <Dropdown
@@ -138,23 +147,23 @@ const Cascader: React.FC<Props> = (props) => {
         overlayClassName={classNames(withWrapperCls('dropdown'), overlayClassName)}
         trigger={dropdownTrigger}
         onVisibleChange={handleVisibleChange}
-        overlayInnerStyle={{ marginTop: -8 }}
         overlayStyle={overlayStyle}
         overlay={
           // eslint-disable-next-line react/jsx-wrap-multilines
-          <MenuOverlayer
-            {...others}
-            originOnClick={onClick}
-            open={canOpen}
-            trigger={trigger}
-            header={header}
-            className={withWrapperCls('panel')}
-            value={selected}
-            keyword={keyword}
-            dataSource={dataSource}
-            onTrigger={handleTrigger}
-            onSelect={onSelect}
-          />
+          <div className={classNames(className, withWrapperCls('panel'), 'cascader-menu-list')}>
+            <Menu
+              {...others}
+              onClick={onClick}
+              open={canOpen}
+              trigger={trigger}
+              header={header}
+              value={selected}
+              keyword={keyword}
+              dataSource={dataSource}
+              onTrigger={handleTrigger}
+              onSelect={onSelect}
+            />
+          </div>
         }
       >
         <div className={withWrapperCls('title')}>
