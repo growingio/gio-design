@@ -174,7 +174,7 @@ describe('<Cascader />', () => {
 
   it('can render menu-item by user', () => {
     const wrapper = mount(
-      <Cascader dataSource={menu} visible onRender={(t) => <span className="custom-item">{t.label}</span>} />
+      <Cascader dataSource={menu} visible onRender={(t: NodeData) => <span className="custom-item">{t.label}</span>} />
     );
 
     expect(wrapper.find('.custom-item')).toHaveLength(2);

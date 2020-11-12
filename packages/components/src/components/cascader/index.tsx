@@ -4,15 +4,14 @@ import classNames from 'classnames';
 import { ConfigContext } from '../config-provider';
 import { DropdownProps } from '../dropdown/interface';
 import { NodeData } from './menu-item';
-import { Props as OverlayerProps } from './menu-overlayer';
 import { SizeType } from '../config-provider/SizeContext';
 import { useDynamicData, withPrefix } from './helper';
 import Dropdown from '../dropdown';
 import Input from '../input';
-import Menu from './menu';
+import Menu, { Props as MenuProps } from './menu';
 import SearchBar from './search-bar';
 
-export interface Props extends Omit<OverlayerProps, 'onClick' | 'originOnClick'> {
+export interface Props extends MenuProps {
   prefixCls?: string;
   size?: SizeType;
   disabled?: boolean;
@@ -24,8 +23,6 @@ export interface Props extends Omit<OverlayerProps, 'onClick' | 'originOnClick'>
   searchPlaceholder?: string;
   lazySearch?: boolean;
   onSearch?: (keyword: string) => void;
-
-  onClick?: OverlayerProps['originOnClick'];
 
   // dropdown props
   visible?: boolean;
@@ -97,7 +94,7 @@ const Cascader: React.FC<Props> = (props) => {
     onVisibleChange?.(v);
     setCanOpen(false);
   };
-  const handleTrigger: OverlayerProps['onTrigger'] = (nodeData, event) => {
+  const handleTrigger: MenuProps['onTrigger'] = (nodeData, event) => {
     userOnTrigger?.(nodeData, event);
     setCanOpen(true);
   };
@@ -129,7 +126,7 @@ const Cascader: React.FC<Props> = (props) => {
 
   useEffect(() => {
     document.addEventListener('click', (e) => {
-      if (e.target?.classList.contains('gio-cascader-dropdown')) {
+      if ((e.target as HTMLElement)?.classList.contains('gio-cascader-dropdown')) {
         setDropdownVisible(false);
       }
     });
