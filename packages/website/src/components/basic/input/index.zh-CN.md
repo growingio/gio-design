@@ -85,6 +85,7 @@ group:
 | value       | 值                                  | string                  | 必填   |
 | disabled    | 是否禁用                            | boolean                 | false  |
 | resize      | 是否可拖动大小                      | boolean                 | false  |
+| autosize    | 是否根据内容自动调整高度             | boolean                 | false  |
 | maxLength   | 输入文字的最大长度                  | number                  | -      |
 | placeholder | 默认显示文本                        | string                  | -      |
 | style        | textarea 组件外层容器的 style (若存在，忽略 wrapStyle 和 inputStyle)       | React.CSSProperties        | -        |

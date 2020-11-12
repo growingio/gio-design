@@ -25,6 +25,7 @@ export interface InputNumberProps extends Omit<InputProps, 'onChange'> {
 
 export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   resize?: boolean;
+  autosize?: boolean;
   style?: React.CSSProperties;
   wrapStyle?: React.CSSProperties;
   inputStyle?: React.CSSProperties;
