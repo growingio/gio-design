@@ -145,3 +145,15 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           directory: ./packages/components/coverage/
+  review:
+    name: UI Review
+    if: ${{ !(startsWith(github.event.pull_request.title, 'chore') || startsWith(github.event.pull_request.title, 'docs')) }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: no8vpz82l1j
