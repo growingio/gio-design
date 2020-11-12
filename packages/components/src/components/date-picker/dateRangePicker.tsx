@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import React, { useContext, useRef, useState,useEffect } from 'react';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/Picker';
@@ -138,14 +137,14 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
         getCalendarContainer={() => calendarContainerRef.current}
         open={open}
       >
-        {({ value }: { value: Array<Moment> }) => (
+        {({ value: _value }: { value: Array<Moment> }) => (
           <div
             className={classNames(`${prefixCls}-range-input`)}
           >
             <Input
               placeholder="please select"
               onChange={handleLeftInputChange}
-              value={leftInputTimeRange || `${formatDate(value[0])}`}
+              value={leftInputTimeRange || `${formatDate(_value[0])}`}
               onClick={() => setOpen(true)}
 
             />
@@ -153,7 +152,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
             <Input
               placeholder="please select"
               onChange={handleRightInputChange}
-              value={rightInputTimeRange || `${formatDate(value[1])}`}
+              value={rightInputTimeRange || `${formatDate(_value[1])}`}
               onClick={() => setOpen(true)}
             />
             <div ref={calendarContainerRef} className={classNames(`${prefixCls}-wrapper`)} />

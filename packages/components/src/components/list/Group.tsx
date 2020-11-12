@@ -4,14 +4,15 @@ import { GroupProps } from './interface';
 
 export default class Group extends React.PureComponent<GroupProps> {
 
-  static defaultProps = {
+  public static defaultProps = {
     onSelect: noop,
     style: {},
   };
 
   private handleSelect = () => {
-    const { onSelect,  option} = this.props;
+    const { onSelect, onClick,  option} = this.props;
     onSelect && onSelect(option);
+    onClick && onClick(option);
   };
 
   public render() {

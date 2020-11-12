@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import React, { useContext, useRef, useState } from 'react';
 import RcCalendar from 'rc-calendar';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
@@ -111,11 +110,11 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
         getCalendarContainer={() => calendarContainerRef.current}
         open={open}
       >
-        {({ value }: { value: Moment }) => (
+        {({ value: _value }: { value: Moment }) => (
           <>
             <Input
               placeholder="请输入…"
-              value={inputTime || value.format(format)}
+              value={inputTime || _value.format(format)}
               onChange={handleInputChange}
               onClick={() => setOpen(true)}
               ref={inputRef}

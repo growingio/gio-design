@@ -8,7 +8,7 @@ import { SelectListProps } from './interface';
 
 interface State {
   value: any | any[];
-  widths: number | string;
+  width: any;
 }
 
 class SelectList extends React.Component<SelectListProps, State> {
@@ -27,19 +27,18 @@ class SelectList extends React.Component<SelectListProps, State> {
     this.state = {
       // eslint-disable-next-line react/no-unused-state
       value: null,
-      widths: 0,
+      width: 0,
     };
   }
 
   public componentDidMount() {
-    this.setState({ widths: this.ref.current?.offsetWidth });
+    this.setState({ width: this.ref.current?.offsetWidth });
   }
 
   private getPopupContainer = () => this.ref.current as HTMLElement;
 
   private renderList = () => {
     const { width, height, disabledOptions, rowHeight, options, value } = this.props;
-    const { widths } = this.state;
     const getRowHeight = ({ index }: { index: number }) => {
       if (typeof rowHeight === 'function') {
         return rowHeight(options[index]);
@@ -50,7 +49,8 @@ class SelectList extends React.Component<SelectListProps, State> {
     return (
       <List
         value={value}
-        width={typeof width === 'number' ? width : widths}
+        // eslint-disable-next-line react/destructuring-assignment
+        width={typeof width === 'number' ? width : this.state.width}
         height={height}
         rowCount={options.length}
         rowHeight={typeof rowHeight === 'function' ? getRowHeight : rowHeight}
