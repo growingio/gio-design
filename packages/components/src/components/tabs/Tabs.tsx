@@ -56,20 +56,20 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
       return null;
     });
     return [_tabItem, _tabPane];
-  }, [children, localActiveKey]);
+  }, [children, localActiveKey, prefixCls]);
 
   const tabNavKeys = useMemo(() => tabNav.map((item) => item.key!), [tabNav]);
   useMemo(() => {
     if (!tabNavKeys.includes(localActiveKey)) {
       setLocalActiveKey(tabNavKeys[0]);
     }
-  }, []);
+  }, [localActiveKey, tabNavKeys]);
 
   useMemo(() => {
     if (!isNil(activeKey) && tabNavKeys.includes(activeKey)) {
       setLocalActiveKey(activeKey);
     }
-  }, [activeKey]);
+  }, [activeKey, tabNavKeys]);
 
   return (
     <div className={classString} ref={ref} style={style}>

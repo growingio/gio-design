@@ -9,7 +9,7 @@ const options = [
 ];
 
 const WrapperStyle = {
-  padding: '5px 8px',
+  // padding: '5px 8px',
   display: 'inline-block',
   borderRadius: 6,
   backgroundColor: '#FFFFFF',

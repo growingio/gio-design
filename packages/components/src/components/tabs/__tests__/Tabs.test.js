@@ -1,7 +1,7 @@
 import React from 'react';
-import Tabs, { TabPane } from '../index';
-import '@gio-design/components/es/components/Tabs/style/index.css';
 import { mount, render, shallow } from 'enzyme';
+import Tabs, { TabPane } from '../index';
+import '../../../../es/components/tabs/style/index.css';
 
 describe('Testing Tabs', () => {
   const getTabs = () => (

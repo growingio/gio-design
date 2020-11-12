@@ -128,9 +128,10 @@
 
   &-input {
     box-sizing: content-box;
+    padding: 0;
     background: none;
-    border: none !important;
-    outline: none !important;
+    border: none;
+    outline: none;
   }
 
   &-input-reference {
@@ -141,32 +142,19 @@
     visibility: hidden;
   }
 
-  .gio-input {
-    display: inline-block;
-    width: auto;
-    max-width: 100%;
-    height: auto !important;
-    overflow: hidden;
-    line-height: 22px;
-    vertical-align: bottom;
-  }
-
   &-single {
     .@{select-prefix-cls} {
       &-item {
         display: inline-flex;
       }
     }
-
-    .gio-input {
-      position: absolute;
-      left: 6px;
-    }
   }
 
   &-single&-focused {
     .@{select-prefix-cls} {
       &-item {
+        position: absolute;
+        z-index: -1;
         opacity: 0.5;
       }
     }

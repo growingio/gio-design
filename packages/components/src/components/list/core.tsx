@@ -22,6 +22,16 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
     emptyPlaceholder: '没有找到相关结果',
   };
 
+  constructor(props : SelectCoreProps){
+    super(props);
+    this.state = {
+      options: [],
+      value: undefined,
+      keyword: '',
+      stateChanged: false,
+    };
+  }
+
   public static getDerivedStateFromProps(nextProps: SelectCoreProps, state: State) {
     if (state.stateChanged) {
       return { stateChanged: false };
@@ -37,19 +47,19 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
     return { ...state, options: nextProps.options };
   }
 
-  public state: State = {
-    options: [],
-    value: undefined,
-    keyword: '',
-    stateChanged: false,
-  };
-
   public componentDidMount() {
+    const { value, options } = this.props;
     this.setState({
-      value: this.props.value,
-      options: this.props.options,
+      value,
+      options,
     });
   }
+
+  private handleSelect = (value: any) => {
+    const { onChange } = this.props;
+    this.setState({ value, stateChanged: true });
+    onChange(value);
+  };
 
   public render() {
     const {
@@ -63,19 +73,21 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
       width,
       height,
       getGroupIcon,
+      onClick,
       onSelect,
       onDeselect,
       emptyPlaceholder,
       labelRenderer,
       rowHeight,
     } = this.props;
-    if (this.state?.options?.length) {
+    const { options, value } = this.state;
+    if (this.state && options?.length) {
       return (
         <div className="gio-select-core">
           <SelectList
-            options={this.state.options}
+            options={options}
             disabledOptions={disabledOptions}
-            value={this.state.value}
+            value={value}
             valueKey={valueKey}
             renderKey={renderKey}
             isMultiple={isMultiple}
@@ -85,6 +97,7 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
             width={width}
             height={height}
             onSelect={onSelect}
+            onClick={onClick}
             onDeselect={onDeselect}
             onChange={this.handleSelect}
             getGroupIcon={getGroupIcon}
@@ -101,11 +114,6 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
       </div>
     );
   }
-
-  private handleSelect = (value: any) => {
-    this.setState({ value, stateChanged: true });
-    this.props.onChange(value);
-  };
 }
 
 export default SelectCore;

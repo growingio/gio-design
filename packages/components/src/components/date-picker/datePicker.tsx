@@ -24,19 +24,19 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   const calendarContainerRef = useRef(null);
   const inputRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const [localValue, setLocalValue] = useState(props.value);
+  const [localValue, setLocalValue] = useState(value);
   const [inputTime, setInputTime] = useState('');
 
-  const onSelect = (value: Moment): void => {
+  const onSelect = (values: Moment): void => {
     if (!props.showFooter) {
-      setLocalValue(value);
-      props?.onSelect(value);
+      setLocalValue(values);
+      props?.onSelect(values);
       setOpen(false);
     }
   };
 
-  const onChange = (value: Moment): void => {
-    setLocalValue(value);
+  const onChange = (values: Moment): void => {
+    setLocalValue(values);
   };
 
   const CalendarCls = classNames(classNames, {
@@ -44,9 +44,9 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   });
 
   const debounceTimeChange = debounce((e: string): void => {
-    const value = moment(e, props.format);
-    if (value.isValid()) {
-      setLocalValue(value);
+    const values = moment(e, props.format);
+    if (values.isValid()) {
+      setLocalValue(values);
     } else {
       setLocalValue(localValue);
     }
@@ -103,18 +103,18 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   );
 
   return (
-    <div className={classNames('')}>
+    <div className={classNames(`${prefixCls}-wrap`)}>
       <RcDatePicker
         calendar={calendar}
         value={localValue}
         getCalendarContainer={() => calendarContainerRef.current}
         open={open}
       >
-        {({ value }: { value: Moment }) => (
+        {({ value: _value }: { value: Moment }) => (
           <>
             <Input
               placeholder="请输入…"
-              value={inputTime || value.format(format)}
+              value={inputTime || _value.format(format)}
               onChange={handleInputChange}
               onClick={() => setOpen(true)}
               ref={inputRef}

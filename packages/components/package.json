@@ -17,7 +17,8 @@
     "watch": "gio-rewire lib compile --watch",
     "build": "gio-rewire lib compile",
     "test": "jest",
-    "test:xunit": "JEST_JUNIT_CLASSNAME=\"{filename}\" jest --ci --testResultsProcessor=jest-junit"
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-sotrybook": "build-storybook -s public"
   },
   "dependencies": {
     "@gio-design/icons": "^20.10.5",
@@ -32,6 +33,7 @@
     "@types/shallowequal": "^1.1.1",
     "classnames": "^2.2.6",
     "lodash": "^4.17.14",
+    "moment": "^2.26.0",
     "raf": "^3.4.1",
     "rc-animate": "^3.1.0",
     "rc-calendar": "9.15.11",
@@ -42,6 +44,7 @@
     "rc-menu": "^8.5.1",
     "rc-notification": "^3.3.1",
     "rc-table": "^7.9.1",
+    "rc-trigger": "^4.3.0",
     "rc-tooltip": "^4.2.1",
     "rc-tree": "3.9.5",
     "rc-tree-select": "4.1.2",
@@ -54,17 +57,25 @@
     "shallowequal": "^1.1.0"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-essentials": "^6.0.28",
+    "@storybook/addon-links": "^6.0.28",
+    "@storybook/node-logger": "^6.0.28",
+    "@storybook/react": "^6.0.28",
     "@testing-library/react": "^11.0.4",
     "@testing-library/react-hooks": "^3.4.1",
     "@types/enzyme": "^3.10.6",
     "@types/jest": "^26.0.14",
     "@types/react-test-renderer": "^16.9.3",
+    "babel-loader": "^8.1.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "gio-rewire": "^1.0.4",
     "jest": "^26.0.1",
     "jest-junit": "^12.0.0",
     "jsdom": "^16.2.2",
+    "less": "^3.12.2",
+    "less-loader": "^7.0.2",
     "react-test-renderer": "^17.0.1",
     "ts-import-plugin": "^1.6.1",
     "ts-jest": "^26.1.0",
@@ -73,7 +84,7 @@
     "xhr-mock": "^2.5.1"
   },
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo, useCallback } from 'react';
 import { get, intersection, isUndefined, difference, union, isFunction, isString, compact } from 'lodash';
 import { ColumnsType, RowSelection, ColumnType } from '../interface';
@@ -101,6 +102,7 @@ const useSelection = <RecordType,>(
 
   const transformSelectionPipeline = useCallback(
     (columns: ColumnsType<RecordType>) => (!isUndefined(rowSelection) ? [selectionColumn, ...columns] : columns),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectionColumn, rowSelection]
   );
 

@@ -23,32 +23,32 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   useEffect(() => {
     setTimeRange(value);
   }, [value])
-  const onSelect = (value: Array<Moment>): void => {
-    setTimeRange(value);
-    props?.onSelect(value);
+  const onSelect = (values: Array<Moment>): void => {
+    setTimeRange(values);
+    props?.onSelect(values);
     !showFooter && setOpen(false);
   };
-  const onChange = (value: Array<Moment>): void => {
-    setTimeRange(value);
+  const onChange = (values: Array<Moment>): void => {
+    setTimeRange(values);
   };
 
-  const onPanelChange = (value: Array<Moment>): void => {
-    setTimeRange(value);
+  const onPanelChange = (values: Array<Moment>): void => {
+    setTimeRange(values);
   };
 
   const debounceLeftChange = debounce((e: string): void => {
-    const value = moment(e, props.format);
-    if (value.isValid() && value.isBefore(timeRange[1])) {
-      setTimeRange([value, timeRange[1]]);
+    const values = moment(e, props.format);
+    if (values.isValid() && values.isBefore(timeRange[1])) {
+      setTimeRange([values, timeRange[1]]);
     } else {
       setTimeRange(timeRange);
     }
   }, 1000);
 
   const debounceRightChange = debounce((e: string): void => {
-    const value = moment(e, props.format);
-    if (value.isValid() && value.isAfter(timeRange[0])) {
-      setTimeRange([timeRange[0], value]);
+    const values = moment(e, props.format);
+    if (values.isValid() && values.isAfter(timeRange[0])) {
+      setTimeRange([timeRange[0], values]);
     } else {
       setTimeRange(timeRange);
     }
@@ -137,14 +137,14 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
         getCalendarContainer={() => calendarContainerRef.current}
         open={open}
       >
-        {({ value }: { value: Array<Moment> }) => (
+        {({ value: _value }: { value: Array<Moment> }) => (
           <div
             className={classNames(`${prefixCls}-range-input`)}
           >
             <Input
               placeholder="please select"
               onChange={handleLeftInputChange}
-              value={leftInputTimeRange || `${formatDate(value[0])}`}
+              value={leftInputTimeRange || `${formatDate(_value[0])}`}
               onClick={() => setOpen(true)}
 
             />
@@ -152,7 +152,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
             <Input
               placeholder="please select"
               onChange={handleRightInputChange}
-              value={rightInputTimeRange || `${formatDate(value[1])}`}
+              value={rightInputTimeRange || `${formatDate(_value[1])}`}
               onClick={() => setOpen(true)}
             />
             <div ref={calendarContainerRef} className={classNames(`${prefixCls}-wrapper`)} />

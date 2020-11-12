@@ -30,5 +30,8 @@ module.exports = {
     'import/extensions': ['off', 'never'],
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
+    'no-underscore-dangle': 'off',
+    'no-unused-expressions': ['error',{ "allowShortCircuit": true,}],
+    'react/static-property-placement': ["error", "static public field"],
   },
 };
