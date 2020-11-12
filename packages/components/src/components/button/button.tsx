@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { LoadingOutlined } from '@gio-design/icons';
 import { ConfigContext } from '../config-provider';
 import SizeContext from '../config-provider/SizeContext';
-import { ButtonProps } from './interface';
+import { ButtonProps } from './interfaces';
 import { cloneElement } from '../../utils/reactNode';
 
 const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
@@ -20,10 +20,10 @@ function insertSpace(child: React.ReactChild, needInserted: boolean) {
   }
   const SPACE = needInserted ? ' ' : '';
   if (
-    typeof child !== 'string'
-    && typeof child !== 'number'
-    && isString(child.type)
-    && isTwoCNChar(child.props.children)
+    typeof child !== 'string' &&
+    typeof child !== 'number' &&
+    isString(child.type) &&
+    isTwoCNChar(child.props.children)
   ) {
     return cloneElement(child, {
       children: child.props.children.split('').join(SPACE),
@@ -139,7 +139,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
   if (icon && !innerLoading) {
     iconNode = icon;
   } else if (innerLoading) {
-    iconNode = <LoadingOutlined rotating />
+    iconNode = <LoadingOutlined rotating />;
   }
 
   const kids = children || children === 0 ? spaceChildren(children, isNeedInserted() && autoInsertSpace) : null;

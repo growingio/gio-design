@@ -2,11 +2,11 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Avatar from './index';
-import { AvatarProps } from './interface';
+import { AvatarProps } from './interfaces';
 import './style';
 
 export default {
-  title: 'Components/Basic/Avatar',
+  title: 'Components/Functional/Avatar',
   component: Avatar,
 } as Meta;
 

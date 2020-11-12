@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Button from './index';
-import { ButtonProps } from './interface';
+import { ButtonProps } from './interfaces';
 import './style';
 
 export default {
