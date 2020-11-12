@@ -1,10 +1,10 @@
 import React, { useCallback, useRef } from 'react';
 import classnames from 'classnames';
+import { noop } from 'lodash';
 import Checkbox from '../checkbox';
 import { OptionProps } from './interface';
 import Tooltip from '../tooltip';
 import './style/option.less';
-import { noop } from 'lodash';
 
 const SelectOption = (props: OptionProps) => {
   const {
@@ -34,6 +34,7 @@ const SelectOption = (props: OptionProps) => {
         onClick(option);
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [option]
   );
 
@@ -49,6 +50,7 @@ const SelectOption = (props: OptionProps) => {
       onClick={disabled ? undefined : handleSelect}
       title={props.title}
       ref={ref}
+      aria-hidden="true"
     >
       {showGroupCheckBox && <span style={{ width: 25 }} />}
       {isMultiple && !allowDuplicate && (
