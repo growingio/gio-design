@@ -87,7 +87,7 @@ group:
 | visible              | 下拉面板显示与否                                 | boolean                                                                                               | -       |
 | placement            | 下拉面板显示位置                                 | DropdownProps['placement']                                                                            | -       |
 | overlayClassName     | 下拉面板的 className                             | string                                                                                                | -       |
-| overlayStyle         | 下拉面板的样式                                   | React.CSSProperties                                                                                   | -       |
+| overlayStyle         | 下拉面板的样式                                   | CSSProperties                                                                                         | -       |
 | onVisibleChange      | 下拉面板的显隐回调                               | (visible: boolean) => void                                                                            | -       |
 | dropdownTrigger      | 触发下拉面板的方式                               | `click` \| `hover` \| `focus`                                                                         | `click` |
 | getDropdownContainer | 获取下拉面板渲染到的 DOM 节点                    | (node: HTMLElement) => HTMLElement                                                                    | -       |
