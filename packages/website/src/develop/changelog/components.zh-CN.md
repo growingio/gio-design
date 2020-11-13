@@ -9,6 +9,30 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.11.1
+
+- component
+  - Select
+    - 🐛 修复 状态为未选择时没有宽度的问题 ，修复 placeholder 不起作用的问题 [#466](https://github.com/growingio/gio-design/pull/466)
+    - 🐛 修复 输入内容时的一些样式错误 [#456](https://github.com/growingio/gio-design/pull/456)
+  - List
+    - 🆕 新增 stateless 参数 [#468](https://github.com/growingio/gio-design/pull/468)
+    - 🆕 新增 padding 样式 [#468](https://github.com/growingio/gio-design/pull/468)
+  - Table
+    - 🐛 引入依赖组件样式 [#470](https://github.com/growingio/gio-design/pull/470)
+  - Tooltip
+    - 🐛 修复 disabled 状态下不应该改变内部 visible 状态 [#465](https://github.com/growingio/gio-design/pull/465)
+  - Button
+    - 🐛 修复 父节点 mouseleave 事件无法被触发 当按钮是 disabled 的时候。[#464](https://github.com/growingio/gio-design/pull/464)
+  - Input, Textarea
+    - 🆕 textarea 新增 autosize 参数 [#461](https://github.com/growingio/gio-design/pull/461)
+    - 🐛 修复 rest 解构覆盖 value 属性的问题 [#458](https://github.com/growingio/gio-design/pull/458)
+  - Dropdown
+    - 🆕 定义交互逻辑，当未传 visible 参数点击 overlay 区域会关闭下拉框 [#450](https://github.com/growingio/gio-design/pull/450)
+  - date-picker
+    - 💄 修改全局的 gio-input 类名 [#446](https://github.com/growingio/gio-design/pull/446)
+- 📖 更新文档 alert, avatar , button [#467](https://github.com/growingio/gio-design/pull/467)
+
 ## 20.11.0
 
 - component
