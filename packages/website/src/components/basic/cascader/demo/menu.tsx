@@ -1,8 +1,6 @@
 import React from 'react';
-import { Grid } from '@gio-design/components';
 import CascaderMenu from '@gio-design/components/es/components/cascader/menu';
 
-import '@gio-design/components/es/components/grid/style/index.css';
 import '@gio-design/components/es/components/cascader/style/index.css';
 import '@gio-design/components/es/components/input/style/index.css';
 
@@ -28,12 +26,9 @@ const dataSource = [
 
 const Basic = (): JSX.Element => {
   return (
-    <Grid>
-      <CascaderMenu
-        dataSource={dataSource}
-        style={{ display: 'inline-block', position: 'relative', float: 'none', height: 'fit-content' }}
-      />
-    </Grid>
+    <div style={{ position: 'relative', minHeight: 140 }}>
+      <CascaderMenu dataSource={dataSource} />
+    </div>
   );
 };
 

@@ -99,16 +99,31 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   const { label, disabled } = dataSource;
   const withWrapperCls = withPrefix('cascader-menu-item');
   const mergedTrigger = triggerMap[trigger.toLowerCase() as typeof trigger];
+
+  const getCopyEvent = <T extends MouseEvent | KeyboardEvent>(event: T) => {
+    event.persist();
+    return { ...event };
+  };
   const resolveBeforeSelect = (event: MouseEvent | KeyboardEvent) => {
+    // const eventCopy = getCopyEvent(event);
     // 没有子节点 || selectAny 先调用 beforeSelect 回调
     const { children } = dataSource;
     const isSelect = isEmpty(children) || (event.type.toLowerCase() === mergedTrigger && selectAny);
     const mergedData = isSelect ? beforeSelect?.(event, dataSource) : children;
-    return Promise.resolve(mergedData).then((c) => ({ ...dataSource, children: c || children }));
-  };
-  const getCopyEvent = <T extends MouseEvent | KeyboardEvent>(event: T) => {
-    event.persist();
-    return { ...event };
+    const pipe = (data: NodeData) => {
+      onTrigger?.(event, data);
+      if (isEmpty(data.children) || selectAny) {
+        setDataSource(data);
+        onSelect?.(data, parentsData);
+      }
+      return data;
+    };
+    return Promise.resolve(mergedData)
+      .then((c) => ({ ...dataSource, children: c || children }))
+      .then(pipe)
+      .catch(() => {
+        return pipe(dataSource);
+      });
   };
   const handleMouseEnter = (event: MouseEvent<HTMLDivElement>) => {
     if (trigger === 'hover') {
@@ -118,27 +133,17 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   };
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     const eventCopy = getCopyEvent(event);
-    resolveBeforeSelect(eventCopy).then((data) => {
-      onTrigger?.(eventCopy, data);
-      onClick?.(eventCopy, data);
-      if (isEmpty(data.children) || selectAny) {
-        setDataSource(data);
-        onSelect?.(data, parentsData);
-      }
-    });
+    resolveBeforeSelect(eventCopy)
+      .then((data) => {
+        onClick?.(eventCopy, data);
+      })
+      .catch(() => onClick?.(eventCopy, dataSource));
   };
   const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
-    const eventCopy = getCopyEvent(event);
     if ([' ', 'Enter', 'ArrowRight'].indexOf(event.key) >= 0) {
       event.preventDefault();
       event.stopPropagation();
-      resolveBeforeSelect(event).then((data) => {
-        onTrigger?.(eventCopy, data);
-        if (isEmpty(data.children) || selectAny) {
-          setDataSource(data);
-          onSelect?.(data, parentsData);
-        }
-      });
+      resolveBeforeSelect(getCopyEvent(event));
     }
     onKeyUp?.(event);
   };

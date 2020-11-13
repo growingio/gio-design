@@ -13,6 +13,8 @@ export interface Props extends Omit<MenuItemProps, 'dataSource' | 'hasChild'> {
   depth?: number;
   header?: React.ReactElement | false;
   footer?: React.ReactElement | false;
+  offsetLeft?: number;
+  offsetTop?: number;
 }
 
 const Menu: React.FC<Props> = (props) => {
@@ -31,6 +33,8 @@ const Menu: React.FC<Props> = (props) => {
     onSelect: userOnSelect,
     header,
     footer,
+    offsetLeft: userOffsetLeft = 5,
+    offsetTop: userOffsetTop = 0,
     ...others
   } = props;
   const isRootMenu = depth === 0;
@@ -43,9 +47,9 @@ const Menu: React.FC<Props> = (props) => {
   const onTrigger = (event: React.MouseEvent | React.KeyboardEvent, nodeData: NodeData) => {
     const menu = event.currentTarget.closest('.cascader-menu');
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const { paddingLeft, paddingTop } = getComputedStyle(menu!);
+    const { width, paddingLeft, paddingTop } = getComputedStyle(menu!);
     const { offsetLeft = 0, offsetTop = 0 } = (event.currentTarget || {}) as HTMLElement;
-    setOffset([offsetLeft - toInt(paddingLeft), offsetTop - toInt(paddingTop)]);
+    setOffset([toInt(width) + offsetLeft - toInt(paddingLeft), offsetTop - toInt(paddingTop)]);
     // setTriggerData(undefined);
     setTriggerData(nodeData);
     userOnTrigger?.(event, nodeData);
@@ -75,7 +79,7 @@ const Menu: React.FC<Props> = (props) => {
         open={false}
         dataSource={triggerData.children}
         parentsData={[triggerData, ...parentsData]}
-        style={{ ...style, top: top + toInt(sTop), left: left + toInt(sLeft) }}
+        style={{ ...style, top: userOffsetTop + top + toInt(sTop), left: userOffsetLeft + left + toInt(sLeft) }}
       />
     );
   }

@@ -126,14 +126,14 @@ const Cascader: React.FC<Props> = (props) => {
   }, [dropdownVisible]);
 
   useEffect(() => {
-    const handler = (e) => {
+    const handler = (e: MouseEvent) => {
       if ((e.target as HTMLElement)?.classList.contains('gio-cascader-dropdown')) {
         setDropdownVisible(false);
       }
     };
     document.addEventListener('click', handler);
 
-    return () => document.removeListener('click', handler);
+    return () => document.removeEventListener('click', handler);
   }, [setDropdownVisible]);
 
   return (
