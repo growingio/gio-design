@@ -34,7 +34,7 @@ describe('Input', () => {
   it('should run onChange when input accept change event', () => {
     let val = '';
     const wrapper = mount(
-      <Input onChange={(e) => (val = e.target.value)} onPressEnter={(e) => (val = 'press enter')} />
+      <Input onChange={e => {val = e.target.value}} onPressEnter={() => {val = 'press enter'}} />
     );
     expect(wrapper.render()).toMatchSnapshot();
     wrapper.find('input').simulate('change', { target: { value: '123' } });
@@ -72,7 +72,7 @@ describe('Input.Password', () => {
 
 describe('Input.InputNumber', () => {
   it('should change type when click', () => {
-    const wrapper = mount(<Input.InputNumber onChange={() => {}} />);
+    const wrapper = mount(<Input.InputNumber onChange={() => {/* ... */}} />);
     expect(wrapper.render()).toMatchSnapshot();
     wrapper.find('input').simulate('change', { target: { value: 1 } });
     expect(wrapper.render()).toMatchSnapshot();
@@ -84,7 +84,7 @@ describe('Input.InputNumber', () => {
 
   it('should not change if the value is not between min and max, or the value is not a number', () => {
     let val = '';
-    const wrapper = mount(<Input.InputNumber max={5} min={1} onChange={(n) => (val = n)} />);
+    const wrapper = mount(<Input.InputNumber max={5} min={1} onChange={n => {val = n}} />);
     expect(wrapper.render()).toMatchSnapshot();
     wrapper.find('input').simulate('change', { target: { value: '5' } });
     expect(wrapper.render()).toMatchSnapshot();
@@ -116,7 +116,7 @@ describe('Input.TextArea', () => {
 
   it('should trigger onChange when input event happens', () => {
     let val = '';
-    const wrapper = mount(<Input.TextArea onChange={e => (val = e.target.value)} />);
+    const wrapper = mount(<Input.TextArea onChange={e => {val = e.target.value}} />);
     expect(wrapper.render()).toMatchSnapshot();
     wrapper.find('textarea').simulate('change', { target: { value: '123' }});
     expect(wrapper.render()).toMatchSnapshot();
@@ -124,12 +124,12 @@ describe('Input.TextArea', () => {
   });
 
   it('should change the height when input many characters in the textarea', () => {
-    let val = '';
+    const val = '';
     const wrapper = mount(<Input.TextArea value={val} autosize />);
     expect(wrapper.render()).toMatchSnapshot();
     wrapper.setProps({ value: 'abc'.repeat(100) })
     expect(wrapper.render()).toMatchSnapshot();
     expect(wrapper.find('textarea').prop('value')).toBe('abc'.repeat(100));
-    act(() => {});
+    act(() => {/* ... */});
   });
 });

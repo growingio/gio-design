@@ -13,6 +13,7 @@ exports[`Testing Banner should be stable 1`] = `
     className="gio-banner-button"
   />
   <div
+    aria-hidden="true"
     className="gio-banner-closeIcon"
     onClick={[Function]}
     style={

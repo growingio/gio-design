@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import classNames from 'classnames';
 import RcCheckbox from 'rc-checkbox';
@@ -64,6 +65,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   });
 
   return (
+    // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label className={checkboxCls} style={style}>
       <CheckOutlined className={checkboxIconClass} />
       <RcCheckbox

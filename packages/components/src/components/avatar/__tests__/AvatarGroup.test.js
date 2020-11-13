@@ -1,9 +1,9 @@
 import React from 'react';
-import AvatarGroup from '../AvatarGroup';
-import '@gio-design/components/es/components/avatar/style/index.css';
 import renderer from 'react-test-renderer';
-import { waitForComponentToPaint } from '../../../utils/test';
 import { mount } from 'enzyme';
+import AvatarGroup from '../AvatarGroup';
+import '../../../../es/components/avatar/style/index.css';
+import { waitForComponentToPaint } from '../../../utils/test';
 import image from './icon.jpeg';
 
 describe('Testing AvatarGroup', () => {

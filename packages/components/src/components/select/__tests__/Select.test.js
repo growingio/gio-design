@@ -1,9 +1,9 @@
 import React from 'react';
-import Select from '../index';
-import '@gio-design/components/es/components/Select/style/index.css';
+import '../../../../es/components/select/style/index.css';
 import renderer from 'react-test-renderer';
 import { shallow, mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
+import Select from '../index';
 import { CustomOption, defaultLabelRenderer } from '../Select';
 
 const labels = ['全部', '已上线', '待上线', '已下线', '草稿'];
@@ -295,7 +295,9 @@ describe('<Select /> deselect list', () => {
 
 describe('<Select /> deselect list', () => {
   it('should be able to create by enter', () => {
-    const tree = mount(<Select searchable options={optionsWithOutGroup} defaultValue="all" onDeselect={onDeSelect} />);
+    const tree = mount(
+      <Select searchable options={optionsWithOutGroup} defaultValue="all" onDeselect={onDeSelect} />
+    );
 
     const onDeSelect = (v, o) => {
       expect(v).toBe('all');
