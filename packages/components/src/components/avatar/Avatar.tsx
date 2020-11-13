@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import classNames from 'classnames';
 import { More } from '@gio-design/icons';
+import { isNil } from 'lodash';
 import Tooltip from '../tooltip';
-import { AvatarProps } from './interface';
+import { AvatarProps } from './interfaces';
 import { ConfigContext } from '../config-provider';
 import composeRef from '../../utils/composeRef';
-import { isNil } from 'lodash';
 
 const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProps, ref: React.Ref<HTMLSpanElement>) => {
   const {
@@ -85,6 +85,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     );
 
   return renderTooltip(
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <span ref={mergedRef} className={classString} {...rest}>
       {renderMore()}
       {renderAvatar()}

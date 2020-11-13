@@ -1,21 +1,8 @@
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
-
+import _ from 'lodash';
 import { CheckCircleFilled, WarningFilled, InformationFilled, CloseCircleFilled, Close } from '@gio-design/icons';
-
-interface AlertProps {
-  afterClose?: any;
-  // banner?: boolean;
-  closeable?: boolean;
-  colseText?: string | ReactNode;
-  description?: string | ReactNode;
-  icon?: ReactNode;
-  message?: string | ReactNode;
-  showIcon?: boolean;
-  type?: string;
-  onClose?: any;
-  size?: string;
-}
+import { AlertProps } from './interfaces';
 
 const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   const [alertStatus, setAlertStatus] = useState(true);
@@ -32,7 +19,6 @@ const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   } = props;
 
   const getIcon = () => {
-    const { type, showIcon } = props;
     switch (type) {
       case 'success':
         return <CheckCircleFilled color="#00875A" />;
@@ -72,7 +58,14 @@ const Alert: React.FC<AlertProps> = (props: AlertProps) => {
             {description || null}
           </div>
         </div>
-        <div className="gio-alert-closeIcon" style={{ display: closeable ? 'block' : 'none' }} onClick={closeAlert}>
+        <div
+          className="gio-alert-closeIcon"
+          style={{ display: closeable ? 'block' : 'none' }}
+          onClick={closeAlert}
+          role="button"
+          tabIndex={0}
+          onKeyPress={_.noop}
+        >
           {colseText || <Close />}
         </div>
       </div>
