@@ -147,6 +147,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: no8vpz82l1j
           storybookBuildDir: packages/components/storybook-static/
+          exitZeroOnChanges: true
   test:
     name: Test Coverage
     if: ${{ !(startsWith(github.event.pull_request.title, 'chore') || startsWith(github.event.pull_request.title, 'docs')) }}
