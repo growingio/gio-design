@@ -1,6 +1,6 @@
 @import '../../../stylesheet/index.less';
 
-alert {
+.gio-alert {
   display: flex;
   align-items: center;
   width: 100%;
@@ -16,7 +16,7 @@ alert {
     padding-top: 1px;
   }
 
-  & alert-content {
+  & .gio-alert-content {
     flex: 1;
     margin: 0 8px;
     color: @color-text-alert-content;
@@ -24,20 +24,20 @@ alert {
     font-family: @font-family-primary;
     line-height: 22px;
 
-    & alert-content-title {
+    & .gio-alert-content-title {
       width: 100%;
       overflow: hidden;
       font-weight: @weight-font-medium;
       text-overflow: ellipsis;
     }
 
-    & alert-content-description {
+    & .gio-alert-content-description {
       width: 100%;
       letter-spacing: 0;
     }
   }
 
-  & alert-closeIcon {
+  & .gio-alert-closeIcon {
     flex-shrink: 0;
     align-self: flex-start;
     font-weight: @weight-font-semi-bold;
@@ -45,66 +45,66 @@ alert {
   }
 }
 
-alert-close {
+.gio-alert-close {
   display: none;
 }
 
-alert-info {
+.gio-alert-info {
   background-color: @color-background-alert-information;
 
-  & alert-closeIcon {
+  & .gio-alert-closeIcon {
     svg {
       fill: @palette-blue-6;
     }
   }
 
-  & alert-icon {
+  & .gio-alert-icon {
     svg {
       fill: @palette-blue-6;
     }
   }
 }
 
-alert-success {
+.gio-alert-success {
   background-color: @color-background-alert-success;
-  & alert-closeIcon {
+  & .gio-alert-closeIcon {
     fill: @palette-green-6;
   }
 
-  & alert-icon {
+  & .gio-alert-icon {
     fill: @palette-green-6;
   }
 }
 
-alert-warning {
+.gio-alert-warning {
   background-color: @color-background-alert-warning;
-  & alert-closeIcon {
+  & .gio-alert-closeIcon {
     svg {
       fill: @palette-yellow-6;
     }
   }
 
-  & alert-icon {
+  & .gio-alert-icon {
     svg {
       fill: @palette-yellow-6;
     }
   }
 }
 
-alert-error {
+.gio-alert-error {
   background-color: @color-background-alert-error;
-  & alert-closeIcon {
+  & .gio-alert-closeIcon {
     fill: @palette-red-6;
   }
 
-  & alert-icon {
+  & .gio-alert-icon {
     fill: @palette-red-6;
   }
 }
 
-alert-small {
+.gio-alert-small {
   padding: 8px 16px;
-  & alert-content {
+  & .gio-alert-content {
     font-size: @size-font-12;
   }
 }
