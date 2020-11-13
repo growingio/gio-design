@@ -6,6 +6,21 @@
 .@{wrapper-cls} {
   &-title {
     display: inline-flex;
+
+    input.gio-input-content {
+      // min-width: 250px;
+      cursor: pointer;
+    }
+
+    .icon-down {
+      svg {
+        color: #5c4e61;
+      }
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
   }
 
   &-dropdown {
@@ -31,7 +46,7 @@
   position: relative;
   display: inline-block;
   float: left;
-  min-width: 252px;
+  min-width: 250px;
   margin-right: 4px;
   padding: 8px;
   background: #fff;

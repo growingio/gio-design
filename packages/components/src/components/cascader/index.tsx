@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
+import { DownFilled } from '@gio-design/icons';
 
 import { ConfigContext } from '../config-provider';
 import { DropdownProps } from '../dropdown/interface';
@@ -168,7 +169,13 @@ const Cascader: React.FC<Props> = (props) => {
             input
           ) : (
             // @TODO size={size}
-            <Input disabled={disabled} readOnly placeholder={placeholder} value={title} />
+            <Input
+              disabled={disabled}
+              readOnly
+              placeholder={placeholder}
+              value={title}
+              suffix={<DownFilled size="1em" className={classNames('icon-down', dropdownVisible && 'open')} />}
+            />
           )}
         </div>
       </Dropdown>
