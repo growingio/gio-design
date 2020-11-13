@@ -1,17 +1,20 @@
 import React, { useCallback } from 'react';
 import { has, get, isNil } from 'lodash';
 import useRefs from '../../../utils/hooks/useRefs';
-import { ColumnsType } from '../interface';
+import { ColumnsType, ColumnGroupType, ColumnType } from '../interface';
 import ToolTip from '../../tooltip';
 
-const useEllipsisTooltip = <RecordType,>() => {
+const useEllipsisTooltip = <RecordType,>(): [
+  (columns: ColumnsType<RecordType>) => (ColumnGroupType<RecordType> | ColumnType<RecordType>)[]
+] => {
   const [setRef, getRef, cacheRefs] = useRefs<HTMLSpanElement>();
 
   const transformEllipsisTooltipPipeline = useCallback(
     (columns: ColumnsType<RecordType>) =>
       columns.map((column) => {
         if (has(column, 'ellipsis') && has(column, 'width') && !has(column, 'render')) {
-          column.render = function (...args) {
+          // eslint-disable-next-line no-param-reassign
+          column.render = (...args) => {
             const text = args[0];
             const index = args[2];
             const textNode = getRef(get(column, 'dataIndex') + index)?.current;

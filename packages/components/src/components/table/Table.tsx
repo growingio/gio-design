@@ -62,7 +62,9 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
       const filterState = activeFilterStates.find(({ key }) => key === column.key);
       if (sortState || filterState || !isUndefined(column.info)) {
         const oldColumn = cloneDeep(column);
-        column.title = (
+        set(
+          column,
+          'title',
           <Title
             sorterState={sortState}
             filterState={filterState}
