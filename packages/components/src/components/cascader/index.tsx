@@ -39,7 +39,7 @@ const Cascader: React.FC<Props> = (props) => {
   const {
     prefixCls,
     className,
-    placeholder,
+    placeholder = '请选择',
     searchPlaceholder,
     input,
     size,
