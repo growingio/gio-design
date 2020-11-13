@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
+
 import { SizeType } from './SizeContext';
 
 export interface CSPConfig {
@@ -27,11 +28,16 @@ export interface ConfigConsumerProps {
 }
 
 export const ConfigContext = React.createContext<ConfigConsumerProps>({
+  rootPrefixCls: 'gio',
   // We provide a default function for Context without provider
   getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => {
-    if (customizePrefixCls) return customizePrefixCls;
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { rootPrefixCls } = useContext(ConfigContext);
+    const { customizePrefixCls: prefixCls = rootPrefixCls } = { customizePrefixCls };
 
-    return suffixCls ? `gio-${suffixCls}` : 'gio';
+    // if (customizePrefixCls) return customizePrefixCls;
+
+    return [prefixCls, suffixCls].filter((s) => !!s).join('-');
   },
 });
 
