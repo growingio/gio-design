@@ -94,6 +94,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     ignoreCase = true,
     deepSearch = false,
   } = props;
+
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
   const { label, disabled } = dataSource;
   const withWrapperCls = withPrefix('cascader-menu-item');
@@ -157,7 +158,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         {value === dataSource.value && (selectAny || !hasChild) && (
           <CheckOutlined size="1em" className={withWrapperCls('icon-checked')} />
         )}
-        {!hasChild && <DownFilled size="1em" className={withWrapperCls('icon-down')} />}
+        {hasChild && <DownFilled size="1em" className={withWrapperCls('icon-down')} />}
       </div>
     </div>
   );

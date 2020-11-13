@@ -7,7 +7,7 @@ import Menu from '../menu';
 describe('<Menu />', () => {
   it('should render menu-item', async () => {
     const menu = [{ label: 'a', value: 1 }];
-    const wrapper = mount(<Menu hasChild dataSource={menu} />);
+    const wrapper = mount(<Menu dataSource={menu} />);
 
     expect(wrapper.find('.cascader-menu .cascader-menu-item')).toHaveLength(1);
   });

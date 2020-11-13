@@ -119,7 +119,7 @@ const Menu: React.FC<Props> = (props) => {
                   onSelect={onSelect}
                   parentsData={parentsData}
                   deepSearch={deepSearch}
-                  hasChild={isEmpty(data.children)}
+                  hasChild={!isEmpty(data.children)}
                   {...others}
                 />
               ))}
