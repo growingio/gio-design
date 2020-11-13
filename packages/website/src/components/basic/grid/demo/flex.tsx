@@ -1,8 +1,9 @@
-import '@gio-design/components/es/components/grid/style/index.css';
-
 import React, { useState } from 'react';
-
 import { Grid, Form, Radio, RadioGroup } from '@gio-design/components';
+import Partial from '../../checkbox/demo/partial';
+
+import '@gio-design/components/es/components/grid/style/index.css';
+import './style.less';
 
 const { Item } = Form;
 

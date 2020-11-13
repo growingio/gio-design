@@ -1,5 +1,7 @@
-import * as React from 'react';
+import React from 'react';
+
 import { SizeType } from './SizeContext';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 export interface CSPConfig {
   nonce?: string;
@@ -27,12 +29,9 @@ export interface ConfigConsumerProps {
 }
 
 export const ConfigContext = React.createContext<ConfigConsumerProps>({
+  rootPrefixCls: 'gio',
   // We provide a default function for Context without provider
-  getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => {
-    if (customizePrefixCls) return customizePrefixCls;
-
-    return suffixCls ? `gio-${suffixCls}` : 'gio';
-  },
+  getPrefixCls: usePrefixCls,
 });
 
 export const ConfigConsumer = ConfigContext.Consumer;
