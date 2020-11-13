@@ -86,7 +86,7 @@ describe('Testing tree select', () => {
     const wrapper = mount(
       <TreeSelect
         treeData={treeData}
-        treeCheckable={true}
+        treeCheckable
       />,
     );
 

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import _ from 'lodash';
 import Avatar from './Avatar';
-import { AvatarGroupProps, UserAvatarType } from './interface';
+import { AvatarGroupProps, UserAvatarType } from './interfaces';
 import { ConfigContext } from '../config-provider';
 
 const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
@@ -11,20 +11,21 @@ const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
   const prefixCls = getPrefixCls('avatar');
 
   let children = null;
-  const renderAvatarGroup = (users: UserAvatarType[]) =>
-    users.map((user, idx) => (
-      <Avatar key={idx} displayTooltip={displayTooltip} placement={placement} {...user}>
+  const renderAvatarGroup = (sliceUsers: UserAvatarType[]) =>
+    sliceUsers.map((user) => (
+      <Avatar key={user.name} displayTooltip={displayTooltip} placement={placement} {...user}>
         {user.name}
       </Avatar>
     ));
-  const renderAvatarRest = (users: UserAvatarType[]) => (
-    <Avatar className={`${prefixCls}-rest`} omit={false}>{`+${users.length}`}</Avatar>
+  const renderAvatarRest = (restUsers: UserAvatarType[]) => (
+    <Avatar className={`${prefixCls}-rest`} omit={false}>{`+${restUsers.length}`}</Avatar>
   );
   const classString = classNames(className, `${prefixCls}-group`);
 
   if (users.length === 0) {
     return null;
-  } else if (users.length <= number) {
+  }
+  if (users.length <= number) {
     children = renderAvatarGroup(users);
   } else {
     const sliceUsers = _.slice(users, 0, number - 1);

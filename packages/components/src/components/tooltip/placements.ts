@@ -100,8 +100,8 @@ export default function getPlacements(config: PlacementsConfig) {
       ignoreShake: true,
     };
     placementMap[key] = arrowPointAtCenter
-      ? Object.assign({}, placementMap[key], common, { targetOffset })
-      : Object.assign({}, placements[key], common);
+      ? ({ ...placementMap[key], ...common, targetOffset})
+      : ({ ...placements[key], ...common});
   });
   return placementMap;
 }

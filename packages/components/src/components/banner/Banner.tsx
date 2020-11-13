@@ -34,6 +34,7 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
         className={className(`${prefixCls}-closeIcon`)}
         style={{ display: closeable ? 'block' : 'none' }}
         onClick={onCloseBanner}
+        aria-hidden="true"
       >
         <Close />
       </div>

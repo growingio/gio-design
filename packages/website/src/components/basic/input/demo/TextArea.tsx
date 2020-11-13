@@ -13,6 +13,7 @@ export default () => {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         resize={false}
+        autosize={true}
         style={{ marginBottom: '20px', display: 'block', height: 'auto' }}
       />
 

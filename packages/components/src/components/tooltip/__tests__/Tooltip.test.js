@@ -1,11 +1,9 @@
 import React from 'react';
-import Tooltip from '../index';
-import '@gio-design/components/es/components/Tabs/style/index.css';
 import { mount, render } from 'enzyme';
-import getPlacements, { getOverflowOptions } from '../placements';
 import { isEqual } from 'lodash';
+import Tooltip from '../index';
+import getPlacements, { getOverflowOptions } from '../placements';
 import { waitForComponentToPaint } from '../../../utils/test';
-
 
 describe('Testing Tooltip', () => {
   const getTooltip = () => (
@@ -48,26 +46,31 @@ describe('Testing Tooltip', () => {
     ).toHaveLength(1);
   });
 
-  test('props disabled', () => {
+  test('props disabled', async () => {
     const wrapper = mount(getTooltip());
     wrapper.setProps({ disabled: true, title: '测试disabled' });
     wrapper.find('span').at(0).simulate('mouseenter');
+    await waitForComponentToPaint(wrapper);
     expect(wrapper.exists('.gio-tooltip')).toBe(false);
+    // 重新触发才应该显示
+    wrapper.setProps({ disabled: false });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.exists('.gio-tooltip')).toBe(false);
+    // 重新触发
+    wrapper.find('span').at(0).simulate('mouseenter');
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.exists('.gio-tooltip')).toBe(true);
   });
 
-  test('title content should be render', (done) => {
+  test('title content should be render', async () => {
     const wrapper = mount(getTooltip());
     wrapper.setProps({ visible: true });
     wrapper.setProps({ title: '' });
-    waitForComponentToPaint(wrapper).then(() => {
-      expect(wrapper.exists('.gio-tooltip')).toBe(false);
-      done();
-    });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.exists('.gio-tooltip')).toBe(false);
     wrapper.setProps({ title: null });
-    waitForComponentToPaint(wrapper).then(() => {
-      expect(wrapper.exists('.gio-tooltip')).toBe(false);
-      done();
-    });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.exists('.gio-tooltip')).toBe(false);
   });
 
   test('props trigger', () => {
@@ -77,13 +80,11 @@ describe('Testing Tooltip', () => {
     expect(wrapper.exists('.gio-tooltip-inner')).toBe(true);
   });
 
-  test('props placement', (done) => {
+  test('props placement', async () => {
     const wrapper = mount(getTooltip());
     wrapper.setProps({ visible: true, placement: 'topLeft' });
-    waitForComponentToPaint(wrapper, 2000).then(() => {
-      expect(wrapper.exists('.gio-tooltip-placement-topLeft')).toBe(true);
-      done();
-    });
+    await waitForComponentToPaint(wrapper, 2000);
+    expect(wrapper.exists('.gio-tooltip-placement-topLeft')).toBe(true);
   });
 
   test('props overlayClassName', () => {
@@ -97,14 +98,16 @@ describe('Testing Tooltip', () => {
     let called = false;
     const wrapper = mount(getTooltip());
     wrapper.setProps({
-      onVisibleChange: () => (called = true),
+      onVisibleChange: () => {
+        called = true;
+      },
     });
     wrapper.setProps({ trigger: 'click' });
     wrapper.find('span').at(0).simulate('click');
     expect(called).toBe(true);
   });
 
-  it('should be render rightly', (done) => {
+  it('should be render rightly', async () => {
     const wrapper = mount(getTooltip());
     wrapper.setProps({ trigger: 'click' });
     wrapper.setProps({ placement: 'topLeft' });
@@ -119,10 +122,8 @@ describe('Testing Tooltip', () => {
         .filterWhere((item) => item.prop('href') === 'https://www.growingio.com')
     ).toHaveLength(1);
     expect(wrapper.exists('.overlayClassName')).toBe(true);
-    waitForComponentToPaint(wrapper).then(() => {
-      expect(wrapper.exists('.gio-tooltip-placement-topLeft')).toBe(true);
-      done();
-    });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.exists('.gio-tooltip-placement-topLeft')).toBe(true);
   });
 
   test('getOverflowOptions function', () => {

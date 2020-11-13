@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SvgComponent() {
+function SvgComponent(): React.ReactElement {
   return (
     <svg width={60} height={61} viewBox="0 0 60 61">
       <g fill="none" fillRule="evenodd">

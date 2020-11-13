@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
+import { StopWatchOutlined, CloseCircleFilled } from '@gio-design/icons';
 import TimePicker from './TimePicker';
 import { TimePickerProps } from './interface';
 import { ConfigContext } from '../config-provider';
-import { StopWatchOutlined, CloseCircleFilled } from '@gio-design/icons';
 
 export default ({ prefixCls: customizePrefixCls, ...props }: TimePickerProps) => {
   const { getPrefixCls } = useContext(ConfigContext);

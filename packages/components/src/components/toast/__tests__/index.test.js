@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
 import React from 'react';
 import { mount } from 'enzyme';
@@ -37,7 +38,7 @@ describe('toast', () => {
   });
 
   it('should not need to use duration argument when using the onClose arguments', () => {
-    Toast.info('whatever', () => {});
+    Toast.info('whatever', () => {/* ... */});
   });
 
   it('should have the default duration when using the onClose arguments', (done) => {

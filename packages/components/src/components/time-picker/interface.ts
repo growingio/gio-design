@@ -82,8 +82,6 @@ export interface PanelProps {
   clearIcon?: TimePickerProps['clearIcon'];
 }
 
-export interface SelectProps {}
-
 export interface ComboboxProps {
   value?: TimePickerProps['value'];
   prefixCls?: TimePickerProps['prefixCls'];

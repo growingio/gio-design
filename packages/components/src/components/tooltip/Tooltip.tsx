@@ -39,6 +39,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
 
   useEffect(() => {
     setControlledVisible(!isNoContent && controlledVisible, true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isNoContent, controlledVisible]);
 
   const tooltipOverlay = isNoTitle ? null : (
@@ -72,6 +73,9 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
       builtinPlacements={getPlacements({ arrowPointAtCenter })}
       visible={controlledVisible && !disabled && !isNoContent}
       onVisibleChange={(_visible) => {
+        if (disabled) {
+          return;
+        }
         setControlledVisible(_visible);
         if (!isNoContent) {
           onVisibleChange?.(_visible);

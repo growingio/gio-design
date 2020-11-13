@@ -82,6 +82,7 @@ group:
 | onChange    | 修改值时触发的回调函数              | Function(value: string) | 必填   |
 | disabled    | 是否禁用                            | boolean                 | false  |
 | resize      | 是否可拖动大小                      | boolean                 | false  |
+| autosize    | 是否根据内容自动调整高度             | boolean                 | false  |
 | maxLength   | 输入文字的最大长度                  | number                  | -      |
 | placeholder | 默认显示文本                        | string                  | -      |
 | inputStyle  | input 的 style                      | React.CSSProperties     | -      |

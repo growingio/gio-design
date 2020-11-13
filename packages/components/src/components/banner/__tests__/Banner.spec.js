@@ -1,8 +1,8 @@
 import React from 'react';
-import Banner from '../Banner';
-import '@gio-design/components/es/components/banner/style/index.css';
+import '../../../../es/components/banner/style/index.css';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
+import Banner from '../Banner';
 
 describe('Testing Banner', () => {
   it('should be stable', () => {
