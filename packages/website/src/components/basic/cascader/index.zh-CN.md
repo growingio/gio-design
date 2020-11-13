@@ -62,7 +62,7 @@ group:
 | ignoreCase           | 忽略大小写                                       | boolean                                                                                               | -       |
 | deepSearch           | 深度过滤搜索结果                                 | boolean                                                                                               | -       |
 | onClick              | 点击菜单的回调                                   | (event: MouseEvent, nodeData: NodeData) => void                                                       | -       |
-| trigger              | 打开菜单的方式                                   | `click` \| `hover`                                                                                    | -       |
+| trigger              | 打开菜单的方式                                   | `click` \| `hover`                                                                                    | `hover` |
 | selectAny            | 是否可以选择有子节点的节点                       | boolean                                                                                               | -       |
 | onTrigger            | 打开菜单的回调                                   | (event: MouseEvent \| KeyboardEvent, nodeData: NodeData) => void                                      | -       |
 | beforeSelect         | 选中菜单前的回调，可以在这里动态注册子节点的数据 | (event: MouseEvent \| KeyboardEvent, nodeData: NodeData) => void \| NodeData[] \| Promise<NodeData[]> | -       |

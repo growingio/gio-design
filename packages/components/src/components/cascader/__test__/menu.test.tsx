@@ -5,6 +5,13 @@ import { NodeData } from '../menu-item';
 import Menu from '../menu';
 
 describe('<Menu />', () => {
+  it('should render menu-item', async () => {
+    const menu = [{ label: 'a', value: 1 }];
+    const wrapper = mount(<Menu hasChild dataSource={menu} />);
+
+    expect(wrapper.find('.cascader-menu .cascader-menu-item')).toHaveLength(1);
+  });
+
   it('should ignore empty node data', async () => {
     const menu = [] as NodeData[];
     const wrapper = mount(<Menu depth={1} dataSource={menu} />);
