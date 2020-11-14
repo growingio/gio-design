@@ -1,0 +1,119 @@
+@import '../../../stylesheet/index.less';
+
+@wrapper-cls: ~'@{component-prefix}-cascader';
+@dropdown-cls: ~'@{component-prefix}-dropdown';
+
+.@{wrapper-cls} {
+  &-title {
+    display: inline-flex;
+
+    input.gio-input-content {
+      // min-width: 250px;
+      cursor: pointer;
+    }
+
+    .icon-down {
+      svg {
+        color: #5c4e61;
+      }
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &-dropdown {
+    position: relative;
+
+    .@{dropdown-cls} {
+      &-content {
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+      &-inner {
+        overflow: visible !important;
+      }
+    }
+  }
+}
+
+.cascader-menu-list {
+  position: relative;
+}
+
+.cascader-menu {
+  position: absolute;
+  display: inline-block;
+  // float: left;
+  min-width: 250px;
+  margin-right: 4px;
+  padding: 8px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px 0 rgba(163, 173, 200, 0.5);
+
+  &-group:not(:last-child) {
+    .cascader-menu-item:last-child .cascader-menu-item-content {
+      border-bottom: 1px solid #dce0f2;
+    }
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+
+    .icon-search {
+      color: #a3adc8;
+    }
+  }
+
+  &-item {
+    &-inner {
+      &:hover {
+        color: #1248e9;
+        background-color: #f7f8fc;
+        border-radius: 4px;
+      }
+
+      &:not(:focus-visible) {
+        outline: none;
+      }
+    }
+
+    &-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin: 0 12px;
+      padding: 7px 0;
+      color: #313e75;
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
+
+      .keyword {
+        font-weight: normal;
+
+        [data-depth='0'] &,
+        [data-deepsearch='true'] & {
+          color: red;
+        }
+      }
+    }
+
+    &-icon-checked svg {
+      width: 1em;
+      height: 1em;
+    }
+
+    &-icon-down {
+      display: inline-flex;
+      align-items: center;
+      transform: rotate(-90deg);
+    }
+  }
+}
