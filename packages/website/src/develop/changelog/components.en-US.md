@@ -12,6 +12,8 @@ nav:
 ## 20.11.1
 
 - component
+  - Cascader
+    - 🆕 Add Cascader component.[#469](https://github.com/growingio/gio-design/pull/469)
   - Select
     - 🐛 fix Select style bug and placeholder not wokring [#466](https://github.com/growingio/gio-design/pull/466)
     - 🐛 fix input caused style error [#456](https://github.com/growingio/gio-design/pull/456)

@@ -12,6 +12,8 @@ nav:
 ## 20.11.1
 
 - component
+  - Cascader
+    - 🆕 新增 级联选择器 [#469](https://github.com/growingio/gio-design/pull/469)
   - Select
     - 🐛 修复 状态为未选择时没有宽度的问题 ，修复 placeholder 不起作用的问题 [#466](https://github.com/growingio/gio-design/pull/466)
     - 🐛 修复 输入内容时的一些样式错误 [#456](https://github.com/growingio/gio-design/pull/456)
