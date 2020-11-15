@@ -22,8 +22,6 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     ...rest
   } = props;
 
-  const { style } = rest;
-
   const { getPrefixCls } = useContext(ConfigContext);
   const [isImgExist, setIsImgExist] = useState<boolean>(src !== undefined);
   const [scale, setScale] = useState<number>(1);
@@ -87,7 +85,9 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     );
 
   return renderTooltip(
-    <span ref={mergedRef} className={classString} style={style}>
+    // For Dropdown trigger will set Event on rest
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <span ref={mergedRef} className={classString} {...rest}>
       {renderMore()}
       {renderAvatar()}
     </span>
