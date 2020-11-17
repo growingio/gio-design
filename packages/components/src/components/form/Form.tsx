@@ -1,9 +1,9 @@
 import { FormProps as RcFormProps } from 'rc-field-form/lib/Form';
 import RcForm, { FormInstance, useForm } from 'rc-field-form';
-import React, { useContext } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { FormContext, FormLabelAlign, RequiredMark } from './context';
 import { SizeContextProvider, SizeType } from '../config-provider/SizeContext';
 
@@ -21,7 +21,7 @@ export interface Props<Values = unknown> extends Omit<RcFormProps<Values>, 'form
   size?: SizeType;
   colon?: boolean;
   requiredMark?: RequiredMark;
-  style ?: React.CSSProperties;
+  style?: React.CSSProperties;
 }
 
 const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props, ref) => {
@@ -40,8 +40,7 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
     requiredMark = true,
     ...restProps
   } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('form', customizePrefixCls);
+  const prefixCls = usePrefixCls('form', customizePrefixCls);
   const cls = classNames(prefixCls, className, `${prefixCls}-${size || 'middle'}`, `${prefixCls}-${layout}`);
   // @TODO: wrap form with custom functions
   const [wrapForm] = useForm(form);

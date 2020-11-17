@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
 import { isNil } from 'lodash';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import TabNav from '../tab-nav';
 import TabPane from './TabPane';
 import { TabProps, TabPaneProps } from './interface';
@@ -21,9 +21,8 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
     onTabClick,
     onChange,
   } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
   const [localActiveKey, setLocalActiveKey] = useState<string | number>(activeKey || defaultActiveKey);
-  const prefixCls = getPrefixCls('tabs', customizePrefixCls);
+  const prefixCls = usePrefixCls('tabs', customizePrefixCls);
   const classString = classNames(prefixCls, className, {
     [`${prefixCls}-${type}`]: true,
     [`${prefixCls}-sm`]: size === 'small',

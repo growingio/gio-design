@@ -1,4 +1,5 @@
 import React from 'react';
+import { withConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import SelectList from './list';
 import { SelectCoreProps } from './interface';
 
@@ -9,8 +10,8 @@ interface State {
   stateChanged: boolean;
 }
 
-class SelectCore extends React.Component<SelectCoreProps, State> {
-  public static defaultProps: Partial<SelectCoreProps> = {
+class SelectCore extends React.Component<SelectCoreProps & ConfigConsumerProps, State> {
+  public static defaultProps: Partial<SelectCoreProps & ConfigConsumerProps> = {
     showSearch: true,
     // searchableFields: ['name'],
     valueKey: 'value',
@@ -22,7 +23,7 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
     emptyPlaceholder: '没有找到相关结果',
   };
 
-  constructor(props: SelectCoreProps) {
+  constructor(props: SelectCoreProps & ConfigConsumerProps) {
     super(props);
     this.state = {
       options: [],
@@ -32,7 +33,7 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
     };
   }
 
-  public static getDerivedStateFromProps(nextProps: SelectCoreProps, state: State) {
+  public static getDerivedStateFromProps(nextProps: SelectCoreProps & ConfigConsumerProps, state: State) {
     if (state.stateChanged) {
       return { stateChanged: false };
     }
@@ -84,11 +85,12 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
       emptyPlaceholder,
       labelRenderer,
       rowHeight,
+      prefixCls,
     } = this.props;
     const { options, value } = this.state;
     if (this.state && options?.length) {
       return (
-        <div className="gio-select-core">
+        <div className={`${prefixCls}-core`}>
           <SelectList
             options={options}
             disabledOptions={disabledOptions}
@@ -113,11 +115,11 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
     }
 
     return (
-      <div className="gio-select-core">
+      <div className={`${prefixCls}-core`}>
         <div style={{ padding: '50% 10px 0', textAlign: 'center', height }}>{emptyPlaceholder}</div>
       </div>
     );
   }
 }
 
-export default SelectCore;
+export default withConfigConsumer<SelectCoreProps>({ subPrefixCls: 'select' })(SelectCore);

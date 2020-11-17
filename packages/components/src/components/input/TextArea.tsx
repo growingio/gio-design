@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
-import { prefixCls } from './Input';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { TextAreaProps } from './interfaces';
 
 const TextArea: React.FC<TextAreaProps> = ({
@@ -16,6 +16,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   forwardRef = React.createRef(),
   ...rest
 }: TextAreaProps) => {
+  const prefixCls = usePrefixCls('input');
   const inputClass = classNames(`${prefixCls}-content`, `${prefixCls}-textarea`, {
     [`${prefixCls}-textarea-noresize`]: !resize,
   });
@@ -31,19 +32,19 @@ const TextArea: React.FC<TextAreaProps> = ({
       if (typeof forwardRef === 'object' && forwardRef !== null && forwardRef.current !== null) {
         const ele = forwardRef.current;
         ele.style.height = 'auto';
-        ele.style.height = (ele.offsetHeight - ele.clientHeight + ele.scrollHeight) + 'px';
+        ele.style.height = `${ele.offsetHeight - ele.clientHeight + ele.scrollHeight}px`;
       }
     }
   });
 
-  const outerStyle = style !== undefined ? style : wrapStyle
-  const innerStyle = style !== undefined ? {} : inputStyle
+  const outerStyle = style !== undefined ? style : wrapStyle;
+  const innerStyle = style !== undefined ? {} : inputStyle;
   if (wrapStyle !== undefined || inputStyle !== undefined) {
     console.warn(
       'The latest version of Input only accept "style" for inline-style setting, ' +
-      'please fix your code because the deprecated parameter "wrapStyle" and "inputStyle" ' +
-      'will be removed in the future version'
-    )
+        'please fix your code because the deprecated parameter "wrapStyle" and "inputStyle" ' +
+        'will be removed in the future version'
+    );
   }
 
   return (

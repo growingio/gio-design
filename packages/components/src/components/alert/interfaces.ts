@@ -14,7 +14,7 @@ export interface AlertProps {
   /**
    自定义关闭按钮
    */
-  colseText?: React.ReactNode;
+  closeText?: React.ReactNode;
   /**
    警告提示的辅助性文字介绍
    */

@@ -23,8 +23,8 @@ describe('<Progress />', () => {
 
 describe('<Progress>', () => {
   it('should has customizePrefixCls class', () => {
-    const tree = shallow(<Progress customizePrefixCls="test-custom-progress" />);
-    expect(tree.hasClass('test-custom-progress')).toBe(true);
+    const tree = shallow(<Progress customizePrefixCls="custom-prefix" />);
+    expect(tree.hasClass('custom-prefix-progress')).toBe(true);
   });
 });
 

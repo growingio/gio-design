@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { SizeType } from './SizeContext';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 export interface CSPConfig {
   nonce?: string;
 }
 
+export type TGetPrefixCls = (subPrefixCls?: string, customRootPrefixCls?: string) => string;
+
 export interface ConfigConsumerProps {
   getTargetContainer?: () => HTMLElement;
   getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
   rootPrefixCls?: string;
-  getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => string;
+  getPrefixCls: TGetPrefixCls;
   csp?: CSPConfig;
   autoInsertSpaceInButton?: boolean;
   input?: {
@@ -28,10 +29,15 @@ export interface ConfigConsumerProps {
   dropdownMatchSelectWidth?: boolean;
 }
 
+export const defaultRootPrefixCls = 'gio';
+
+export const getGioDesignPrefixCls: TGetPrefixCls = (subPrefixCls, customRootPrefixCls = 'gio') =>
+  [customRootPrefixCls, subPrefixCls].filter((s) => !!s).join('-');
+
 export const ConfigContext = React.createContext<ConfigConsumerProps>({
-  rootPrefixCls: 'gio',
+  rootPrefixCls: defaultRootPrefixCls,
   // We provide a default function for Context without provider
-  getPrefixCls: usePrefixCls,
+  getPrefixCls: getGioDesignPrefixCls,
 });
 
 export const ConfigConsumer = ConfigContext.Consumer;
@@ -45,7 +51,7 @@ interface BasicExportProps {
 }
 
 interface ConsumerConfig {
-  prefixCls: string;
+  subPrefixCls: string;
 }
 
 interface ConstructorProps {
@@ -56,17 +62,12 @@ export function withConfigConsumer<ExportProps extends BasicExportProps>(config:
     Component: IReactComponent
   ): React.FC<ExportProps> & ComponentDef {
     // Wrap with ConfigConsumer. Since we need compatible with react 15, be care when using ref methods
-    const SFC = ((props: ExportProps) => (
-      <ConfigConsumer>
-        {(configProps: ConfigConsumerProps) => {
-          const { prefixCls: basicPrefixCls } = config;
-          const { getPrefixCls } = configProps;
-          const { prefixCls: customizePrefixCls } = props;
-          const prefixCls = getPrefixCls(basicPrefixCls, customizePrefixCls);
-          return <Component {...configProps} {...props} prefixCls={prefixCls} />;
-        }}
-      </ConfigConsumer>
-    )) as React.FC<ExportProps> & ComponentDef;
+    const SFC = ((props: ExportProps) => {
+      const { subPrefixCls } = config;
+      const { rootPrefixCls, ...restConfigContext } = useContext(ConfigContext);
+      const prefixCls = getGioDesignPrefixCls(subPrefixCls, rootPrefixCls);
+      return <Component {...restConfigContext} {...props} prefixCls={prefixCls} />;
+    }) as React.FC<ExportProps> & ComponentDef;
 
     const cons: ConstructorProps = Component.constructor as ConstructorProps;
     const name = cons?.displayName || Component.name || 'Component';

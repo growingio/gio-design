@@ -2,11 +2,9 @@ import { useContext } from 'react';
 
 import { ConfigContext } from '../../components/config-provider';
 
-const usePrefixCls = (suffixCls?: string, customizePrefixCls?: string): string => {
-  const { rootPrefixCls } = useContext(ConfigContext);
-  const { customizePrefixCls: prefixCls = rootPrefixCls } = { customizePrefixCls };
-
-  return [prefixCls, suffixCls].filter((s) => !!s).join('-');
+const usePrefixCls = (subPrefixCls?: string, customRootPrefixCls?: string): string => {
+  const { rootPrefixCls, getPrefixCls } = useContext(ConfigContext);
+  return getPrefixCls(subPrefixCls, customRootPrefixCls ?? rootPrefixCls);
 };
 
 export default usePrefixCls;

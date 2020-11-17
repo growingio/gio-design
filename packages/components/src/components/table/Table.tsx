@@ -1,9 +1,9 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import RcTable from 'rc-table';
 import classNames from 'classnames';
 import { cloneDeep, isUndefined, get, has, set } from 'lodash';
 import { compose } from 'lodash/fp';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import useSorter from './hook/useSorter';
 import useFilter from './hook/useFilter';
 import usePagination from './hook/usePagination';
@@ -30,8 +30,7 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
     ...rest
   } = props;
 
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('table', customizePrefixCls);
+  const prefixCls = usePrefixCls('table', customizePrefixCls);
 
   const innerColumns = useMemo(() => translateInnerColumns(columns), [columns]);
   const [activeSorterStates, updateSorterStates, sortedData] = useSorter(innerColumns, dataSource);

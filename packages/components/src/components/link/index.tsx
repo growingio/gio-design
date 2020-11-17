@@ -2,6 +2,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { TLinkProps } from './interface';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const Link: React.FC<TLinkProps> = ({
   component = 'a',
@@ -12,8 +13,7 @@ const Link: React.FC<TLinkProps> = ({
   children,
   ...otherProps
 }: TLinkProps) => {
-  const prefixCls = customPrefixCls || 'gio-link';
-
+  const prefixCls = usePrefixCls('link', customPrefixCls);
   const cls = classnames(className, prefixCls, {
     [`${prefixCls}--disabled`]: disabled,
   });

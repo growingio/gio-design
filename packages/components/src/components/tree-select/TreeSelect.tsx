@@ -1,8 +1,7 @@
-/* eslint-disable */
-import * as React from 'react';
+import React from 'react';
 import RcTreeSelect, { TreeNode, SHOW_ALL, SHOW_PARENT, SHOW_CHILD } from 'rc-tree-select';
 import classNames from 'classnames';
-import omit from 'omit.js';
+import { omit } from 'lodash';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import devWarning from '../../utils/devWarning';
 import { GioTreeNodeProps } from '../tree';
@@ -48,6 +47,7 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>, {}> {
 
   public renderTreeSelect = ({
     getPopupContainer: getContextPopupContainer,
+    rootPrefixCls,
     getPrefixCls,
     virtual,
     dropdownMatchSelectWidth,
@@ -67,9 +67,9 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>, {}> {
       bordered,
     } = this.props;
 
-    const prefixCls = getPrefixCls('select', customizePrefixCls);
-    const treePrefixCls = getPrefixCls('select-tree', customizePrefixCls);
-    const treeSelectPrefixCls = getPrefixCls('tree-select', customizePrefixCls);
+    const prefixCls = getPrefixCls('select', customizePrefixCls ?? rootPrefixCls);
+    const treePrefixCls = getPrefixCls('select-tree', customizePrefixCls ?? rootPrefixCls);
+    const treeSelectPrefixCls = getPrefixCls('tree-select', customizePrefixCls ?? rootPrefixCls);
 
     const mergedDropdownClassName = classNames(dropdownClassName, `${treeSelectPrefixCls}-dropdown`);
 

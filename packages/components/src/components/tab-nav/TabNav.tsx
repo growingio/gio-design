@@ -1,12 +1,10 @@
-import React, {
-  useContext, useMemo, useState, useEffect, useRef,
-} from 'react';
+import React, { useMemo, useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
 import { isNil } from 'lodash';
-import { ConfigContext } from '../config-provider';
 import { TabNavProps, TabNavItemProps } from './interface';
 import useRefs from '../../utils/hooks/useRefs';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   const {
@@ -25,8 +23,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   const wrapperRefKey = useRef<symbol>(Symbol('tabNav'));
   const [setRef, getRef] = useRefs<HTMLDivElement>();
 
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('tabnav', customizePrefixCls);
+  const prefixCls = usePrefixCls('tabnav', customizePrefixCls);
   const classString = classNames(prefixCls, `${prefixCls}-${type}`, {
     [`${prefixCls}-lg`]: size === 'large',
     [`${prefixCls}-md`]: size === 'middle',
@@ -38,9 +35,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
     const _tabNavKeys: (string | number)[] = [];
     const _tabNavChildren = toArray(children).map((node: React.ReactElement<TabNavItemProps>, index) => {
       if (React.isValidElement(node) && node.type === TabNav.Item) {
-        const {
-          className, disabled, onClick, ...rest
-        } = node.props;
+        const { className, disabled, onClick, ...rest } = node.props;
         const _key = isNil(node.key) ? index : node.key;
         _tabNavKeys.push(_key);
         return (
@@ -72,7 +67,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
       return null;
     });
     return [_tabNavKeys, _tabNavChildren];
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children, localActiveKey, onChange, onTabClick]);
 
   useMemo(() => {
@@ -93,7 +88,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
       const wrapperLeft = getRef(wrapperRefKey.current)!.current!.getBoundingClientRect().left;
       setInkStyle({ left: left - wrapperLeft, width });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [localActiveKey, tabNavChildren]);
 
   return (
@@ -110,7 +105,7 @@ TabNav.Item = React.forwardRef(
     <div ref={ref} {...rest}>
       <div className={`${prefixCls}-item-btn`}>{children}</div>
     </div>
-  ),
+  )
 );
 
 export default TabNav;

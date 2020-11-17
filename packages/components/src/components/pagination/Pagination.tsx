@@ -1,9 +1,9 @@
-import React, { useContext, useMemo, useState, useRef, useCallback } from 'react';
+import React, { useMemo, useState, useRef, useCallback } from 'react';
 import classNames from 'classnames';
 import { isFunction, isNumber, isNaN, isUndefined } from 'lodash';
 import { LeftOutlined, LeftDoubleOutlined, RightOutlined, RightDoubleOutlined, More } from '@gio-design/icons';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Input from '../input';
-import { ConfigContext } from '../config-provider';
 import { PaginationProps } from './interface';
 import { generatePageArray } from './ until';
 
@@ -21,8 +21,7 @@ const Pagination = ({
   showQuickJumper = false,
   hideOnSinglePage = false,
 }: PaginationProps) => {
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('pagination', customizePrefixCls);
+  const prefixCls = usePrefixCls('pagination', customizePrefixCls);
   const pageNumber = useMemo(() => Math.ceil(total / pageSize), [total, pageSize]);
   const [localCurrent, setLocalCurrent] = useState<number>(isNumber(current) ? current : defaultCurrent);
   const [inputValue, setInputValue] = useState<string>('');
@@ -41,21 +40,24 @@ const Pagination = ({
   const prevDisabled = localCurrent <= 1;
   const nextDisabled = localCurrent >= pageNumber;
 
-  const handleClick = useCallback((toPage: number) => {
-    if (isNumber(toPage) && !Object.is(toPage, localCurrent) && !disabled) {
-      // eslint-disable-next-line no-underscore-dangle
-      let _toPage = toPage;
-      if (_toPage < 1) {
-        _toPage = 1;
-      } else if (toPage > pageNumber) {
-        _toPage = pageNumber;
+  const handleClick = useCallback(
+    (toPage: number) => {
+      if (isNumber(toPage) && !Object.is(toPage, localCurrent) && !disabled) {
+        // eslint-disable-next-line no-underscore-dangle
+        let _toPage = toPage;
+        if (_toPage < 1) {
+          _toPage = 1;
+        } else if (toPage > pageNumber) {
+          _toPage = pageNumber;
+        }
+        if (isUndefined(current)) {
+          setLocalCurrent(_toPage);
+        }
+        onChange?.(_toPage, pageSize);
       }
-      if (isUndefined(current)) {
-        setLocalCurrent(_toPage);
-      }
-      onChange?.(_toPage, pageSize);
-    }
-  },[current,disabled,localCurrent,onChange,pageNumber,pageSize])
+    },
+    [current, disabled, localCurrent, onChange, pageNumber, pageSize]
+  );
 
   const pagination = useMemo(
     () =>
@@ -102,7 +104,7 @@ const Pagination = ({
         }
         return null;
       }),
-    [localCurrent, pageNumber,handleClick,prefixCls]
+    [localCurrent, pageNumber, handleClick, prefixCls]
   );
 
   const totalText = useMemo(() => {
@@ -117,7 +119,7 @@ const Pagination = ({
         ])}
       </li>
     );
-  }, [total, showTotal, localCurrent, pageSize,prefixCls]);
+  }, [total, showTotal, localCurrent, pageSize, prefixCls]);
 
   const handleInputPressEnter = (e: any) => {
     const transformValue = Number(e.target.value);
