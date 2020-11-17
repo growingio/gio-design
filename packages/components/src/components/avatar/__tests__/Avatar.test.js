@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import Avatar from '../Avatar';
+import Dropdown from '../../dropdown';
 import '../../../../es/components/avatar/style/index.css';
 import { waitForComponentToPaint } from '../../../utils/test';
 import image from './icon.jpeg';
@@ -62,13 +63,21 @@ describe('Testing Avatar', () => {
     expect(wrapper.find('.gio-tooltip-inner-title').text()).toBe('这是一个很长的文字');
   });
 
-  test('props placement', (done) => {
+  test('props placement', async () => {
     const wrapper = mount(<Avatar displayTooltip>这是一个很长的文字</Avatar>);
     wrapper.setProps({ placement: 'top' });
     wrapper.find('.gio-avatar').at(0).simulate('mouseenter');
-    waitForComponentToPaint(wrapper).then(() => {
-      expect(wrapper.exists('.gio-tooltip-placement-top')).toBe(true);
-      done();
-    });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.exists('.gio-tooltip-placement-top')).toBe(true);
+  });
+
+  it('can accept dropdown trigger Mouse Event', () => {
+    const wrapper = mount(
+      <Dropdown overlay={<div>11</div>}>
+        <Avatar>li</Avatar>
+      </Dropdown>
+    );
+    wrapper.find('.gio-avatar').at(0).simulate('click');
+    expect(wrapper.exists('.gio-dropdown')).toBe(true);
   });
 });

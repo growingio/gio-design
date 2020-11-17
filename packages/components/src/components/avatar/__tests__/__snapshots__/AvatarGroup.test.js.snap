@@ -6,6 +6,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
 >
   <span
     className="gio-avatar gio-avatar-df"
+    name="li"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -17,6 +18,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
   </span>
   <span
     className="gio-avatar gio-avatar-df"
+    name="pan"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -32,6 +34,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
   </span>
   <span
     className="gio-avatar gio-avatar-df"
+    name="leng"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -43,6 +46,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
   </span>
   <span
     className="gio-avatar gio-avatar-df"
+    name="liu"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
