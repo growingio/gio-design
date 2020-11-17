@@ -55,7 +55,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         disabled={disabled}
         placeholder={placeholder}
         style={innerStyle}
-        ref={React.createRef()}
+        ref={forwardRef}
         {...rest}
       />
     </div>
