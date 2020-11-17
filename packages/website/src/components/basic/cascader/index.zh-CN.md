@@ -14,6 +14,10 @@ group:
 
 <code src='./demo/basic.tsx' title='基础用法' />
 
+## 键名映射
+
+<code src='./demo/key-mapping.tsx' title='键名映射' />
+
 ## 数据分组
 
 <code src='./demo/group.tsx' title='数据分组' />

@@ -1,9 +1,9 @@
-import React, { ReactElement, useMemo, useRef, useState } from 'react';
+import React, { ReactElement, useRef, useState } from 'react';
 import classNames from 'classnames';
-import isEmpty from 'lodash/isEmpty';
 import groupBy from 'lodash/groupBy';
+import isEmpty from 'lodash/isEmpty';
 
-import { dataFilter, makeSearchParttern, toInt, useDynamicData, withPrefix } from './helper';
+import { dataFilter, makeSearchParttern, toInt, useDynamicData, dataKeyMapping, withPrefix } from './helper';
 import MenuItem, { Props as MenuItemProps, NodeData } from './menu-item';
 
 export interface Props extends Omit<MenuItemProps, 'dataSource' | 'hasChild'> {
@@ -23,6 +23,7 @@ const Menu: React.FC<Props> = (props) => {
     style,
     dataSource: originDataSource = [],
     value,
+    keyMapping = {},
     open,
     depth = 0,
     keyword,
@@ -56,7 +57,7 @@ const Menu: React.FC<Props> = (props) => {
     setCanOpen(!isEmpty(nodeData.children));
 
     const nextData = dataSource.map((d) => {
-      if (d.value === nodeData.value) {
+      if (d.value === dataKeyMapping(nodeData, keyMapping).value) {
         return nodeData;
       }
       return d;
@@ -84,14 +85,14 @@ const Menu: React.FC<Props> = (props) => {
     );
   }
 
-  const filteredDataSource = useMemo(() => {
+  const filteredDataSource = (() => {
     if (!keyword) {
       return dataSource;
     }
 
     const searchParttern = makeSearchParttern(keyword, ignoreCase);
-    return dataFilter(dataSource, searchParttern, deepSearch);
-  }, [dataSource, deepSearch, keyword, ignoreCase]);
+    return dataFilter(dataSource, searchParttern, deepSearch, keyMapping.label);
+  })();
 
   const groupData = groupBy(filteredDataSource, 'groupId');
 
@@ -113,9 +114,9 @@ const Menu: React.FC<Props> = (props) => {
         <div className={withWrapperCls('body')}>
           {Object.keys(groupData).map((groupId) => (
             <div key={groupId} className={withWrapperCls('group')}>
-              {groupData[groupId].map((data) => (
+              {groupData[groupId].map((data, i) => (
                 <MenuItem
-                  key={`${depth}-${data.value}`}
+                  key={[depth, i].join('-')}
                   value={value}
                   keyword={keyword}
                   dataSource={data}
@@ -124,6 +125,7 @@ const Menu: React.FC<Props> = (props) => {
                   parentsData={parentsData}
                   deepSearch={deepSearch}
                   hasChild={!isEmpty(data.children)}
+                  keyMapping={keyMapping}
                   {...others}
                 />
               ))}

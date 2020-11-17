@@ -4,23 +4,29 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
 
-import { isHit, makeSearchParttern, useDynamicData, withPrefix } from './helper';
+import { isHit, makeSearchParttern, useDynamicData, dataKeyMapping, withPrefix } from './helper';
 
 export type Value = string | number;
 
+export type KeyMapping = {
+  label?: string;
+  value?: string;
+};
+
 export type NodeData = {
-  label: string;
-  value: Value;
+  label?: string;
+  value?: Value;
   disabled?: boolean;
   children?: NodeData[];
   groupId?: Value;
   [key: string]: unknown;
 };
 
-export interface Props {
+export interface Props<M extends KeyMapping = KeyMapping> {
   className?: string;
   style?: React.CSSProperties;
   dataSource: NodeData;
+  keyMapping?: M;
   value?: Value;
   hasChild?: boolean;
   keyword?: string;
@@ -75,6 +81,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     style,
     dataSource: originDataSource,
     value,
+    keyMapping = {},
     hasChild = false,
     parentsData = [],
     beforeSelect,
@@ -96,7 +103,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   } = props;
 
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
-  const { label, disabled } = dataSource;
+  const { label: dataLabel, value: dataValue, disabled } = dataKeyMapping(dataSource, keyMapping);
   const withWrapperCls = withPrefix('cascader-menu-item');
   const mergedTrigger = triggerMap[trigger.toLowerCase() as typeof trigger];
 
@@ -153,14 +160,16 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     }
   };
 
-  const hitTarget = keyword && isHit(dataSource.label, keyword, ignoreCase);
+  const hitTarget = keyword && dataLabel && isHit(dataLabel, keyword, ignoreCase);
   const shouldRenderKeyword = hitTarget && (isEmpty(parentsData) || deepSearch);
 
   let childNode = (
     <div className={withWrapperCls('content')}>
-      <div>{shouldRenderKeyword && keyword ? renderKeyword(label, keyword, ignoreCase) : label}</div>
       <div>
-        {value === dataSource.value && (selectAny || !hasChild) && (
+        {shouldRenderKeyword && keyword && dataLabel ? renderKeyword(dataLabel, keyword, ignoreCase) : dataLabel}
+      </div>
+      <div>
+        {value === dataValue && (selectAny || !hasChild) && (
           <CheckOutlined size="1em" className={withWrapperCls('icon-checked')} />
         )}
         {hasChild && <DownFilled size="1em" className={withWrapperCls('icon-down')} />}

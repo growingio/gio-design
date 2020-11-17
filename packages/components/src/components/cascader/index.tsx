@@ -1,12 +1,12 @@
+import { DownFilled } from '@gio-design/icons';
 import React, { useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { DownFilled } from '@gio-design/icons';
 
 import { ConfigContext } from '../config-provider';
 import { DropdownProps } from '../dropdown/interface';
 import { NodeData } from './menu-item';
 import { SizeType } from '../config-provider/SizeContext';
-import { useDynamicData, withPrefix } from './helper';
+import { dataKeyMapping, useDynamicData, withPrefix } from './helper';
 import Dropdown from '../dropdown';
 import Input from '../input';
 import Menu, { Props as MenuProps } from './menu';
@@ -56,6 +56,7 @@ const Cascader: React.FC<Props> = (props) => {
     placement = 'bottomLeft',
     getDropdownContainer,
     value,
+    keyMapping = {},
     visible,
     onClick,
     onSearch,
@@ -76,12 +77,12 @@ const Cascader: React.FC<Props> = (props) => {
   const wrapperCls = getPrefixCls('cascader', prefixCls);
   const mergedWrapperCls = classNames(wrapperCls, className);
   const withWrapperCls = withPrefix(wrapperCls);
-  const onSelect = (data: NodeData, parents: NodeData[]) => {
+  const onSelect = (data: NodeData, parents = [] as NodeData[]) => {
     const titles = parents.reduce((acc, b) => {
-      return [b.label, acc].join(separator);
-    }, data.label);
+      return [dataKeyMapping(b, keyMapping).label, acc].join(separator);
+    }, dataKeyMapping(data, keyMapping).label);
 
-    setTitle(titles);
+    setTitle(titles || '');
     setSelected(data.value);
     userChange?.(data, parents);
     setTimeout(() => {
@@ -163,6 +164,7 @@ const Cascader: React.FC<Props> = (props) => {
               dataSource={dataSource}
               onTrigger={handleTrigger}
               onSelect={onSelect}
+              keyMapping={keyMapping}
             />
           </div>
         }
