@@ -1,4 +1,8 @@
 export interface TagProps {
+  /**
+   * 类型
+   * @default normal
+   */
   type?: 'normal' | 'prorupt';
   status?: 'success' | 'warning' | 'error' | 'offline' | 'draft';
   size?: 'small' | 'middle' | 'large';
