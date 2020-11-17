@@ -4,6 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { TabNavProps } from './interface';
 import TabNav from './index';
 import './style';
+import './style/demo.less';
 
 export default {
   title: 'Components/Basic/TabNav',
