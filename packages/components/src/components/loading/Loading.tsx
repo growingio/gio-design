@@ -1,13 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { LoadingProps } from './interface';
 
 const Loading: React.FC<LoadingProps> = (props: LoadingProps) => {
   const { prefixCls: customizePrefixCls, loading = true, delay = 0 } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('loading', customizePrefixCls);
+  const prefixCls = usePrefixCls('loading', customizePrefixCls);
   const shouldLoading = useDebounceLoading(loading, delay);
 
   const renderLoadingElement = () => {
@@ -26,9 +25,7 @@ const Loading: React.FC<LoadingProps> = (props: LoadingProps) => {
   };
 
   const renderLoadingElementByPosition = () => {
-    const {
-      titlePosition = 'bottom', title = '加载中...', size = 'large', className, style,
-    } = props;
+    const { titlePosition = 'bottom', title = '加载中...', size = 'large', className, style } = props;
     return shouldLoading ? (
       <div className={classNames(`${prefixCls}`, `${prefixCls}-${size}`, className)} style={style}>
         {renderLoadingElement()}

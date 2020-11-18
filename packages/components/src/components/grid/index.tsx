@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-import { ConfigContext } from '../config-provider/context';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { GridProps } from './interface';
 import { clip, dataMap, isNumber } from './help';
 
@@ -22,8 +22,7 @@ const Grid: React.FC<GridProps> = (props: React.PropsWithChildren<GridProps>) =>
     collapse = false,
     style,
   } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('grid', customizePrefixCls);
+  const prefixCls = usePrefixCls('grid', customizePrefixCls);
   const cssProps = dataMap(
     {
       direction,

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { UpFilled, DownFilled } from '@gio-design/icons';
-import Input, { prefixCls } from './Input';
+import Input from './Input';
+import usePrefix from '../../utils/hooks/use-prefix-cls';
 import { InputNumberProps } from './interfaces';
 
 const InputNumber: React.FC<InputNumberProps> = ({
@@ -12,6 +13,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
   readOnly = false,
   ...rest
 }: InputNumberProps) => {
+  const prefixCls = usePrefix('input');
   const addDisabled = React.useMemo(() => Number(value) >= max || disabled || readOnly, [
     value,
     max,

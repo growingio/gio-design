@@ -1,15 +1,17 @@
 @import '../../../stylesheet/index.less';
 
-@gio-upload-prefix: ~'@{component-prefix}-upload';
-@gio-upload-btn: ~'@{gio-upload-prefix}__btn';
-@gio-upload-input: ~'@{gio-upload-prefix}__input';
-@gio-upload-card: ~'@{gio-upload-prefix}__card';
-@gio-upload-avatar: ~'@{gio-upload-prefix}__avatar';
-@gio-upload-drag: ~'@{gio-upload-prefix}__drag';
-@gio-upload-preview: ~'@{gio-upload-prefix}__preview';
-@gio-upload-actions: ~'@{gio-upload-prefix}__actions';
+@upload-prefix-cls: ~'@{component-prefix}-upload';
+@avatar-prefix-cls: ~'@{component-prefix}-avatar';
 
-.@{gio-upload-prefix} {
+@upload-btn: ~'@{upload-prefix-cls}__btn';
+@upload-input: ~'@{upload-prefix-cls}__input';
+@upload-card: ~'@{upload-prefix-cls}__card';
+@upload-avatar: ~'@{upload-prefix-cls}__avatar';
+@upload-drag: ~'@{upload-prefix-cls}__drag';
+@upload-preview: ~'@{upload-prefix-cls}__preview';
+@upload-actions: ~'@{upload-prefix-cls}__actions';
+
+.@{upload-prefix-cls} {
   display: inline-block;
   font-size: @size-font-14;
   line-height: 20px;
@@ -24,44 +26,44 @@
   }
 
   &--success {
-    & .@{gio-upload-card},
-    & .@{gio-upload-drag} {
+    & .@{upload-card},
+    & .@{upload-drag} {
       border: 0;
 
-      &:hover .@{gio-upload-actions} {
+      &:hover .@{upload-actions} {
         opacity: 1;
       }
     }
   }
   &--success-border {
-    & .@{gio-upload-card},
-    & .@{gio-upload-avatar},
-    & .@{gio-upload-drag} {
+    & .@{upload-card},
+    & .@{upload-avatar},
+    & .@{upload-drag} {
       border: 1px solid #dcdfed;
 
-      &:hover .@{gio-upload-actions} {
+      &:hover .@{upload-actions} {
         opacity: 1;
       }
     }
   }
 
   &--disabled {
-    & .@{gio-upload-card},
-    & .@{gio-upload-avatar},
-    & .@{gio-upload-drag} {
+    & .@{upload-card},
+    & .@{upload-avatar},
+    & .@{upload-drag} {
       cursor: not-allowed;
     }
   }
 
   &:not(&--disabled):not(&-disabled):hover {
-    .@{gio-upload-card},
-    .@{gio-upload-drag},
-    .@{gio-upload-drag}--hover {
+    .@{upload-card},
+    .@{upload-drag},
+    .@{upload-drag}--hover {
       border-color: @palette-blue-5;
     }
 
-    .@{gio-upload-avatar} {
-      .@{gio-upload-actions} {
+    .@{upload-avatar} {
+      .@{upload-actions} {
         opacity: 1;
       }
     }
@@ -69,7 +71,7 @@
 }
 
 // Button 类型 trigger
-.@{gio-upload-btn} {
+.@{upload-btn} {
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
@@ -85,13 +87,13 @@
     top: 0;
   }
 
-  .@{gio-upload-preview} {
+  .@{upload-preview} {
     flex-shrink: 0;
   }
 }
 
 // Input 类型 trigger
-.@{gio-upload-input} {
+.@{upload-input} {
   &-preview {
     display: inline-flex;
     align-items: center;
@@ -111,13 +113,13 @@
     }
   }
 
-  .@{gio-upload-preview} {
+  .@{upload-preview} {
     flex-shrink: 0;
   }
 }
 
 // Card 配型
-.@{gio-upload-card} {
+.@{upload-card} {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -132,20 +134,20 @@
   outline: 0;
   cursor: pointer;
 
-  .@{gio-upload-preview} {
+  .@{upload-preview} {
     margin: 0;
   }
 }
 
 // Avatar 类型
-.@{gio-upload-avatar} {
+.@{upload-avatar} {
   position: relative;
   display: inline-block;
   overflow: hidden;
   border-radius: 50%;
   cursor: pointer;
 
-  & .gio-avatar {
+  & .@{avatar-prefix-cls} {
     margin: 0;
 
     & img {
@@ -155,7 +157,7 @@
 }
 
 // Drag 类型
-.@{gio-upload-drag} {
+.@{upload-drag} {
   position: relative;
   display: flex;
   align-items: center;
@@ -181,14 +183,14 @@
     }
   }
 
-  & .@{gio-upload-preview} {
+  & .@{upload-preview} {
     margin: 0;
     object-fit: cover;
   }
 }
 
 // 预览图片
-.@{gio-upload-preview} {
+.@{upload-preview} {
   display: inline-block;
   margin-right: 8px;
   object-fit: contain;
@@ -209,7 +211,7 @@
 }
 
 // 操作遮罩层
-.@{gio-upload-actions} {
+.@{upload-actions} {
   position: absolute;
   top: 0;
   right: 0;
@@ -234,7 +236,7 @@
   }
 
   &--right-top {
-    & .@{gio-upload-actions}-container {
+    & .@{upload-actions}-container {
       position: absolute;
       top: 16px;
       right: 8px;

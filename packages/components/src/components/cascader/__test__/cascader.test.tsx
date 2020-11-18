@@ -23,7 +23,7 @@ describe('<Cascader />', () => {
     expect(wrapper.find('.gio-cascader-title input').getElement().props.placeholder).toBe('title ph');
 
     wrapper.setProps({ prefixCls: 'foo' });
-    expect(wrapper.find('.foo')).toHaveLength(1);
+    expect(wrapper.find('.foo-cascader')).toHaveLength(1);
   });
 
   it('should popup a searchable menu overlayer', async () => {

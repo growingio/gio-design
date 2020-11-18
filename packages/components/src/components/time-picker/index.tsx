@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StopWatchOutlined, CloseCircleFilled } from '@gio-design/icons';
 import TimePicker from './TimePicker';
 import { TimePickerProps } from './interface';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 export default ({ prefixCls: customizePrefixCls, ...props }: TimePickerProps) => {
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('time-picker', customizePrefixCls);
+  const prefixCls = usePrefixCls('time-picker', customizePrefixCls);
 
   return (
     <>

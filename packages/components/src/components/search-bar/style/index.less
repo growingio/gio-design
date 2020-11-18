@@ -1,12 +1,13 @@
 @import '../../../stylesheet/index.less';
 
 @searchbar-prefix-cls: ~'@{component-prefix}-searchbar';
+@input-cls: ~'@{component-prefix}-input';
 
 .@{searchbar-prefix-cls} {
   position: relative;
   width: fit-content;
 
-  .gio-input {
+  .@{input-cls} {
     width: inherit;
   }
 

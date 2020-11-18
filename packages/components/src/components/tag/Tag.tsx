@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Close } from '@gio-design/icons';
 import classnames from 'classnames';
 import { TagProps } from './interface';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 export const isToggleClose = (closable = false, persistCloseIcon = false): boolean => closable && !persistCloseIcon;
 
@@ -22,8 +22,7 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
     customizePrefixCls,
     style,
   } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefix = getPrefixCls('tag', customizePrefixCls);
+  const prefix = usePrefixCls('tag', customizePrefixCls);
 
   return (
     <span

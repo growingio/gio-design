@@ -1,4 +1,5 @@
 import React from 'react';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { BreadcrumbSeparatorProps } from './interface';
 
 interface BreadcrumbSeparatorInterface extends React.FC<BreadcrumbSeparatorProps> {
@@ -7,7 +8,8 @@ interface BreadcrumbSeparatorInterface extends React.FC<BreadcrumbSeparatorProps
 
 const BreadcrumbSeparator: BreadcrumbSeparatorInterface = (props: BreadcrumbSeparatorProps) => {
   const { separator = '/' } = props;
-  return <span className="gio-breadcrumb-separator">{separator}</span>;
+  const prefixCls = usePrefixCls('breadcrumb');
+  return <span className={`${prefixCls}-separator`}>{separator}</span>;
 };
 
 BreadcrumbSeparator.GIO_BREADCRUMB_SEPARATOR = true;

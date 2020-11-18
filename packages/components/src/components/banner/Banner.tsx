@@ -1,16 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Close } from '@gio-design/icons';
 import className from 'classnames';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { BannerProps } from './interface';
 
 const Banner: React.FC<BannerProps> = (props: BannerProps) => {
-  const {
-    type = 'normal', content, closeable = true, onClose, button, prefixCls: customizePrefixCls,
-  } = props;
+  const { type = 'normal', content, closeable = true, onClose, button, prefixCls: customizePrefixCls } = props;
   const [visible, setVisible] = useState(true);
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('banner', customizePrefixCls);
+  const prefixCls = usePrefixCls('banner', customizePrefixCls);
   const onCloseBanner = () => {
     setVisible(false);
     onClose?.();
@@ -22,13 +19,10 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
         `${prefixCls}`,
         `${prefixCls}-${type}`,
         closeable && `${prefixCls}-closeable`,
-        !visible && `${prefixCls}-close`,
+        !visible && `${prefixCls}-close`
       )}
     >
-      <div className={className(`${prefixCls}-content`, button && `${prefixCls}-content-button`)}>
-        {' '}
-        {content}
-      </div>
+      <div className={className(`${prefixCls}-content`, button && `${prefixCls}-content-button`)}> {content}</div>
       <div className={className(`${prefixCls}-button`)}>{button}</div>
       <div
         className={className(`${prefixCls}-closeIcon`)}

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import Checkbox from './checkbox';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import CheckboxGroupContext from './CheckboxGroupContext';
 import { CheckboxOptionType, CheckboxValueType, CheckboxGroupProps } from './interface';
 
@@ -64,11 +64,10 @@ function CheckboxGroup<T extends CheckboxValueType>({
         onChange?.(newSelected);
       }
     },
-    [onChange],
+    [onChange]
   );
 
-  const { getPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = getPrefixCls('checkbox', customizePrefixCls);
+  const prefixCls = usePrefixCls('checkbox', customizePrefixCls);
   const selectedValues = refValue.current || selected || (emptyValue as T[]);
   let customChildren = children;
   if (options.length > 0) {
