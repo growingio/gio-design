@@ -11,21 +11,21 @@ interface BreadcrumbItemInterface extends React.FC<BreadcrumbItemProps> {
 
 const BreadcrumbItem: BreadcrumbItemInterface = (props: BreadcrumbItemProps) => {
   const { children, separator, ...restProps } = props;
-  const prefixCls = usePrefixCls('breadcrumb-item');
+  const prefixCls = usePrefixCls('breadcrumb');
   const link =
     'href' in restProps ? (
-      <a className={`${prefixCls}-link-target`} {...restProps}>
+      <a className={`${prefixCls}-item-link-target`} {...restProps}>
         {children}
       </a>
     ) : (
-      <span className={`${prefixCls}-link-target`} {...restProps}>
+      <span className={`${prefixCls}-item-link-target`} {...restProps}>
         {children}
       </span>
     );
 
   if (children) {
     return (
-      <span className={classnames(prefixCls, `${prefixCls}-link`)}>
+      <span className={classnames(`${prefixCls}-item`, `${prefixCls}-item-link`)}>
         {link}
         {separator && separator !== '' && <BreadcrumbSeparator separator={separator} />}
       </span>
