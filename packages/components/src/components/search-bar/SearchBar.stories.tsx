@@ -13,7 +13,7 @@ export default {
 export const Default: Story<SearchBarProps> = (args) => {
   const [value, setValue] = React.useState('');
 
-  return <SearchBar value={value} onChange={setValue} id="demo1" />;
+  return <SearchBar value={value} onChange={setValue} id="demo1" {...args} />;
 };
 
 Default.args = {

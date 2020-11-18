@@ -38,7 +38,7 @@ const treeData = [
   },
 ];
 
-export const Default = (args: TreeSelectProps<any>) => {
+export const Default: Story<TreeSelectProps<any>> = (args) => {
   const [value, setValue] = useState<string | undefined>(undefined);
 
   return (

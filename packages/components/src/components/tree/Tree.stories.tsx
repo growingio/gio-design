@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Tree, { TreeProps } from './Tree';
-import { Setting } from '@gio-design/icons';
 import './style';
 
 export default {
@@ -53,7 +52,7 @@ const treeData = [
 export const Default: Story<TreeProps> = (args) => {
   const [keys, setKeys] = useState<string[]>([]);
 
-  const onSelect = (selectedKeys: string[], info: any) => {
+  const onSelect = (selectedKeys: string[]) => {
     if (selectedKeys.length === 0) {
       return;
     }
@@ -63,11 +62,7 @@ export const Default: Story<TreeProps> = (args) => {
   return (
     <div style={{ display: 'flex' }}>
       <div className="tree-demo">
-        <Tree
-          onSelect={(selectedKeys: any[], info: any) => onSelect(selectedKeys, info)}
-          selectedKeys={keys}
-          {...args}
-        />
+        <Tree onSelect={(selectedKeys: any[]) => onSelect(selectedKeys)} selectedKeys={keys} {...args} />
       </div>
     </div>
   );
