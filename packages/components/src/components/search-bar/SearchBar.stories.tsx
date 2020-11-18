@@ -10,12 +10,17 @@ export default {
   component: SearchBar,
 } as Meta;
 
-export const Default: Story<SearchBarProps> = (args) => {
+const Template: Story<SearchBarProps> = (args) => {
   const [value, setValue] = React.useState('');
 
-  return <SearchBar value={value} onChange={setValue} {...args} />;
+  return <SearchBar value={value} onChange={setValue} id="demo1" {...args} />;
 };
+
+export const Default = Template.bind({});
 
 Default.args = {
   size: 'middle',
+  showStorage: true,
+  showClear: true,
+  allowClearStorage: true,
 };
