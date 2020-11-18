@@ -13,7 +13,21 @@ export default {
 const Template: Story<SearchBarProps> = (args) => {
   const [value, setValue] = React.useState('');
 
-  return <SearchBar value={value} onChange={setValue} id="demo1" {...args} />;
+  return (
+    <SearchBar
+      value={args.value ? args.value : value}
+      onChange={args.onChange ? args.onChange : setValue}
+      id={args.id ? args.id : 'demo'}
+      {...args}
+    />
+  );
 };
 
 export const Default = Template.bind({});
+
+Default.args = {
+  size: 'middle',
+  showStorage: true,
+  showClear: true,
+  allowClearStorage: true,
+};
