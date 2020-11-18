@@ -5,13 +5,15 @@ import { IconProps } from './interface';
 function SvgBoxFilled(wrapperProps: IconProps) {
   const { rotating, color, size, ...restProps } = wrapperProps;
   const props = {
-    color,
+    style: {
+      color,
+    },
     className: rotating ? 'gio-icon-svg gio-icon-rotating' : 'gio-icon-svg',
     width: !size ? '1rem' : size,
     height: !size ? '1rem' : size,
   };
   const file = (
-    <svg viewBox="0 0 60 61" fill="currentColor" {...props}>
+    <svg viewBox="0 0 60 61" xmlns="http://www.w3.org/2000/svg" fill="currentColor" {...props}>
       <g fill="none" fillRule="evenodd">
         <path d="M.588 36.882l10-21.764h38.824l10 21.764h-23.53a5.882 5.882 0 11-11.764 0H.588z" fill="currentColor" />
         <path

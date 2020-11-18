@@ -1259,6 +1259,7 @@ initialize {
                   "height": "1rem",
                   "viewBox": "0 0 14 14",
                   "width": "1rem",
+                  "xmlns": "http://www.w3.org/2000/svg",
                 },
                 "children": Array [
                   Object {
@@ -1464,6 +1465,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
@@ -1471,6 +1473,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "",
                 },
               },
             ],
@@ -1508,6 +1511,7 @@ initialize {
                     "height": "1rem",
                     "viewBox": "0 0 14 14",
                     "width": "1rem",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -1652,6 +1656,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -1659,6 +1664,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -1721,6 +1727,7 @@ initialize {
                   "height": "1rem",
                   "viewBox": "0 0 14 14",
                   "width": "1rem",
+                  "xmlns": "http://www.w3.org/2000/svg",
                 },
                 "children": Array [
                   Object {
@@ -1865,6 +1872,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
@@ -1872,6 +1880,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "",
                 },
               },
             ],
@@ -1911,6 +1920,7 @@ initialize {
                     "height": "1rem",
                     "viewBox": "0 0 14 14",
                     "width": "1rem",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -2116,6 +2126,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -2123,6 +2134,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
