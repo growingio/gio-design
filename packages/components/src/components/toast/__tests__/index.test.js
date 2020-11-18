@@ -1,6 +1,7 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { CheckOutlined } from '@gio-design/icons';
 import Toast from '..';
@@ -38,7 +39,9 @@ describe('toast', () => {
   });
 
   it('should not need to use duration argument when using the onClose arguments', () => {
-    Toast.info('whatever', () => {/* ... */});
+    Toast.info('whatever', () => {
+      /* ... */
+    });
   });
 
   it('should have the default duration when using the onClose arguments', (done) => {
@@ -100,20 +103,12 @@ describe('toast', () => {
 
   // https://github.com/ant-design/ant-design/issues/8201
   it('should destroy messages correctly', () => {
-    class Test extends React.Component {
-      componentDidMount() {
-        Toast.info('Action in progress1..', 0);
-        Toast.info('Action in progress2..', 0);
-        setTimeout(() => Toast.destroy(), 1000);
-      }
-
-      render() {
-        return <div>test</div>;
-      }
-    }
-    mount(<Test />);
+    Toast.info('Action in progress1..', 0);
+    Toast.info('Action in progress2..', 0);
     expect(document.querySelectorAll('.gio-toast-notice').length).toBe(2);
-    jest.runAllTimers();
+    act(() => {
+      Toast.destroy();
+    });
     expect(document.querySelectorAll('.gio-toast-notice').length).toBe(0);
   });
 

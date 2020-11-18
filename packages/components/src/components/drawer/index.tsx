@@ -289,7 +289,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
         {({ getPopupContainer, rootPrefixCls, getPrefixCls }) => {
           const { prefixCls: customizePrefixCls, placement, className, mask, direction, visible, ...rest } = this.props;
 
-          const prefixCls = getPrefixCls('select', customizePrefixCls ?? rootPrefixCls);
+          const prefixCls = getPrefixCls('drawer', customizePrefixCls ?? rootPrefixCls);
           const drawerClassName = classNames(className, {
             'no-mask': !mask,
             [`${prefixCls}-rtl`]: direction === 'rtl',

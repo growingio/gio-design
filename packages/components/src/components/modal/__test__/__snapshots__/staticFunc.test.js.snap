@@ -4,26 +4,26 @@ exports[`<CalloutModal /> should match CalloutModal snapshot. 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-modal-modal-root",
+      "class": "gio-modal-root",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-modal-modal-mask fade-appear",
+          "class": "gio-modal-mask fade-appear",
         },
         "children": Array [],
         "name": "div",
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-modal-modal-wrap gio-modal-callout__wrapper gio-modal-modal__wrapper",
+            "class": "gio-modal-wrap gio-modal-callout__wrapper gio-modal__wrapper",
             "role": "dialog",
             "tabindex": "-1",
           },
           "children": Array [
             Object {
               "attribs": Object {
-                "class": "gio-modal-modal gio-modal-callout gio-modal-callout--confirm gio-modal-modal--small zoom-appear",
+                "class": "gio-modal gio-modal-callout gio-modal-callout--confirm gio-modal--small zoom-appear",
                 "role": "document",
               },
               "children": Array [
@@ -38,12 +38,12 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
-                      "class": "gio-modal-modal-content",
+                      "class": "gio-modal-content",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-modal-modal-body",
+                          "class": "gio-modal-body",
                         },
                         "children": Array [
                           Object {
@@ -1148,12 +1148,12 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
-                    "class": "gio-modal-modal-content",
+                    "class": "gio-modal-content",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-modal-modal-body",
+                        "class": "gio-modal-body",
                       },
                       "children": Array [
                         Object {
@@ -2278,12 +2278,12 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "class": "gio-modal-modal-content",
+                      "class": "gio-modal-content",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-modal-modal-body",
+                          "class": "gio-modal-body",
                         },
                         "children": Array [
                           Object {
@@ -3430,14 +3430,14 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-modal-modal-wrap gio-modal-callout__wrapper gio-modal-modal__wrapper",
+          "class": "gio-modal-wrap gio-modal-callout__wrapper gio-modal__wrapper",
           "role": "dialog",
           "tabindex": "-1",
         },
         "children": Array [
           Object {
             "attribs": Object {
-              "class": "gio-modal-modal gio-modal-callout gio-modal-callout--confirm gio-modal-modal--small zoom-appear",
+              "class": "gio-modal gio-modal-callout gio-modal-callout--confirm gio-modal--small zoom-appear",
               "role": "document",
             },
             "children": Array [
@@ -3452,12 +3452,12 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
-                    "class": "gio-modal-modal-content",
+                    "class": "gio-modal-content",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-modal-modal-body",
+                        "class": "gio-modal-body",
                       },
                       "children": Array [
                         Object {
@@ -4562,12 +4562,12 @@ initialize {
               },
               Object {
                 "attribs": Object {
-                  "class": "gio-modal-modal-content",
+                  "class": "gio-modal-content",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "gio-modal-modal-body",
+                      "class": "gio-modal-body",
                     },
                     "children": Array [
                       Object {
@@ -5692,12 +5692,12 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "class": "gio-modal-modal-content",
+                    "class": "gio-modal-content",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-modal-modal-body",
+                        "class": "gio-modal-body",
                       },
                       "children": Array [
                         Object {
@@ -6821,7 +6821,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-modal-modal-mask fade-appear",
+            "class": "gio-modal-mask fade-appear",
           },
           "children": Array [],
           "name": "div",
