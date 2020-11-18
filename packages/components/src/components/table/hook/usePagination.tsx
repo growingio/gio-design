@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo, useCallback, useEffect } from 'react';
 import { isUndefined } from 'lodash';
+import usePrefixCls from '../../../utils/hooks/use-prefix-cls';
 import Pagination, { PaginationProps } from '../../pagination';
 import { ColumnType, ColumnsType, PaginationState } from '../interface';
 import useControlledState from '../../../utils/hooks/useControlledState';
@@ -20,6 +21,7 @@ const usePagination = <RecordType,>(
   const [localCurrent, setLocalCurrent] = useControlledState<number>(current, 1);
   const [localPageSize] = useControlledState<number>(pageSize, 10);
   const [controlledTotal, setControlledTotal] = useControlledState<number>(total, data.length);
+  const prefixCls = usePrefixCls('table');
 
   // when dataSource update && unControlled, Pagination update.
   const resetPagination = () => {
@@ -67,7 +69,7 @@ const usePagination = <RecordType,>(
 
   const PaginationComponent = ({ onTriggerStateUpdate }: { onTriggerStateUpdate: () => void }) => (
     <Pagination
-      className="gio-table-pagination"
+      className={`${prefixCls}-pagination`}
       total={controlledTotal}
       current={localCurrent}
       pageSize={localPageSize}

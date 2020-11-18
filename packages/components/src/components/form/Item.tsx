@@ -5,7 +5,7 @@ import FieldContext from 'rc-field-form/lib/FieldContext';
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { FormContext, FormLabelAlign } from './context';
 import { hasValidName, toArray } from './util';
 import ItemControl, { FormItemFeedbackType } from './ItemControl';
@@ -69,8 +69,7 @@ const Item: React.FC<Props> = (props: Props) => {
     colon = _colon,
     labelAlign = _labelAlign,
   } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('field', customizePrefixCls);
+  const prefixCls = usePrefixCls('field', customizePrefixCls);
   const { validateTrigger: contextValidateTrigger = 'onChange' } = useContext(FieldContext);
   const mergedValidateTrigger = validateTrigger === undefined ? contextValidateTrigger : validateTrigger;
 

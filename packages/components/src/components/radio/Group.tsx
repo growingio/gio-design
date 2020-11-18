@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import usePrevious from '../../utils/hooks/usePrevious';
 import filterChildren from '../../utils/filterChildren';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Radio from './Radio';
 import { RadioGroupProvider } from './context';
 import { IRadioGroupProps, IRadioChangeEvent } from './interface';
@@ -28,6 +29,7 @@ const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
     initValue = defaultValue;
   }
 
+  const prefixCls = usePrefixCls('radio');
   const [selectedValue, setSelectedValue] = useState(initValue);
   const prevSelectedValue = usePrevious(value);
 
@@ -78,7 +80,7 @@ const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
         .map((opt) => {
           if (typeof opt === 'string') {
             return (
-              <Radio key={`gio-radio-option-${opt}`} disabled={disabled} value={opt} checked={selectedValue === opt}>
+              <Radio key={`${prefixCls}-option-${opt}`} disabled={disabled} value={opt} checked={selectedValue === opt}>
                 {opt}
               </Radio>
             );
@@ -86,7 +88,7 @@ const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
 
           return (
             <Radio
-              key={`gio-radio-option-${opt.value}`}
+              key={`${prefixCls}-option-${opt.value}`}
               disabled={disabled || opt.disabled}
               value={opt.value}
               checked={selectedValue === opt.value}
@@ -104,8 +106,8 @@ const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
     return renderedChildren;
   };
 
-  const wrapperCls = classnames(className, 'gio-radio__group', `gio-radio__group--${direction}`, {
-    'gio-radio__group--disabled': disabled,
+  const wrapperCls = classnames(className, `${prefixCls}__group`, `${prefixCls}__group--${direction}`, {
+    [`${prefixCls}__group--disabled`]: disabled,
   });
 
   return (

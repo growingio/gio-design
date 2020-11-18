@@ -5,6 +5,7 @@
 @import './decadePanel.less';
 
 @date-picker-prefix-cls: ~'@{component-prefix}-date-picker';
+@input-prefix-cls: ~'@{component-prefix}-input';
 
 .@{date-picker-prefix-cls}-wrapper {
   position: absolute;
@@ -12,7 +13,7 @@
   z-index: @zindex-dropdown;
 }
 .@{date-picker-prefix-cls}-wrap {
-  .gio-input {
+  .@{input-prefix-cls} {
     width: 253px;
     height: 40px;
   }
@@ -27,12 +28,12 @@
   border-radius: 0.25rem;
   transition: all 0.3s ease-in-out;
 
-  .gio-input {
+  .@{input-prefix-cls} {
     width: 118px;
     height: 38px;
   }
 
-  .gio-input-content {
+  .@{input-prefix-cls}-content {
     border: none;
     box-shadow: none;
   }

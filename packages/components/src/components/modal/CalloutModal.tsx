@@ -1,9 +1,9 @@
 /* eslint-disable no-useless-return */
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
 import Modal from './Modal';
 import { ICalloutModalProps } from './interface';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Button from '../button';
 
 const CalloutModal: React.FC<ICalloutModalProps> = ({
@@ -26,8 +26,7 @@ const CalloutModal: React.FC<ICalloutModalProps> = ({
   ...restProps
 }: ICalloutModalProps) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('modal', customPrefixCls);
+  const prefixCls = usePrefixCls('modal', customPrefixCls);
 
   const calloutPrefixCls = `${prefixCls}-callout`;
   const calloutModalClassName = classnames(className, calloutPrefixCls, `${calloutPrefixCls}--${type}`);

@@ -4,6 +4,7 @@ import { noop } from 'lodash';
 import Checkbox from '../checkbox';
 import { OptionProps } from './interface';
 import Tooltip from '../tooltip';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import './style/option.less';
 
 const SelectOption = (props: OptionProps) => {
@@ -22,6 +23,7 @@ const SelectOption = (props: OptionProps) => {
     getPopupContainer,
   } = props;
 
+  const prefixCls = usePrefixCls('select');
   const ref = useRef(null);
   const handleSelect = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -40,7 +42,7 @@ const SelectOption = (props: OptionProps) => {
 
   const renderContent = () => (
     <div
-      className={classnames('gio-select-option', className, {
+      className={classnames(`${prefixCls}-option`, className, {
         multiple: isMultiple,
         selected: isSelected,
         indented: hasGroupIcon,

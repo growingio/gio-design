@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import RcDialog from 'rc-dialog';
 import { Close } from '@gio-design/icons';
 import { ButtonProps } from '../button';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { IModalProps } from './interface';
 import ModalPrefixClsContext from './ModalContext';
 import Title from './Title';
@@ -29,8 +29,7 @@ const Modal: React.FC<IModalProps> = ({
   pending,
   ...restProps
 }: IModalProps) => {
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefix = getPrefixCls('modal', customPrefixCls);
+  const prefix = usePrefixCls('modal', customPrefixCls);
   const modalCls = classnames(className, {
     [`${prefix}--small`]: size === 'small',
     [`${prefix}--middle`]: size === 'middle',

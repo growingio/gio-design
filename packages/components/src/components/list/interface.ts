@@ -56,6 +56,7 @@ export interface SelectCoreProps {
   onClick?: IBaseListProps['onClick'];
   labelRenderer?: (option: any, isGroup?: boolean) => any;
   showCheckAllBox?: boolean;
+  prefixCls?: string;
 }
 
 export interface SelectListProps {
@@ -77,6 +78,7 @@ export interface SelectListProps {
   getSelected?: (option: any, value: any) => boolean;
   getGroupIcon?: (group: string) => React.ReactNode;
   labelRenderer?: (option: any, isGroup?: boolean) => any;
+  prefixCls?: string;
 }
 
 export interface GroupProps {
@@ -92,6 +94,7 @@ export interface GroupProps {
   onClick?: (option: any) => void;
   option?: any;
   labelRenderer?: (option: any, isGroup?: boolean) => Element;
+  prefixCls?: string;
 }
 
 export interface OptionProps {

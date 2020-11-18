@@ -1,14 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Tooltip from '../tooltip';
 import { PopoverProps } from './interface';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const Popover: React.FC<PopoverProps> = (props: PopoverProps) => {
-  const {
-    children, contentArea, footerArea, prefixCls: customizePrefixCls, ...rest
-  } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('popover', customizePrefixCls);
+  const { children, contentArea, footerArea, prefixCls: customizePrefixCls, subPrefixCls = 'popover', ...rest } = props;
+  const prefixCls = usePrefixCls(subPrefixCls, customizePrefixCls);
 
   const popoverOverlay = () => (
     <>
@@ -17,7 +14,7 @@ const Popover: React.FC<PopoverProps> = (props: PopoverProps) => {
     </>
   );
   return (
-    <Tooltip prefixCls={prefixCls} overlay={popoverOverlay()} {...rest}>
+    <Tooltip prefixCls={customizePrefixCls} subPrefixCls={subPrefixCls} overlay={popoverOverlay()} {...rest}>
       {children}
     </Tooltip>
   );

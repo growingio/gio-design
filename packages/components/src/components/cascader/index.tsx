@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { DownFilled } from '@gio-design/icons';
 
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { DropdownProps } from '../dropdown/interface';
 import { NodeData } from './menu-item';
 import { SizeType } from '../config-provider/SizeContext';
@@ -72,8 +72,7 @@ const Cascader: React.FC<Props> = (props) => {
   const [keyword, setKeyword] = useDynamicData(originKeyword);
   const [canOpen, setCanOpen] = useDynamicData(open);
   const [dropdownVisible, setDropdownVisible] = useDynamicData(visible);
-  const { getPrefixCls } = useContext(ConfigContext);
-  const wrapperCls = getPrefixCls('cascader', prefixCls);
+  const wrapperCls = usePrefixCls('cascader', prefixCls);
   const mergedWrapperCls = classNames(wrapperCls, className);
   const withWrapperCls = withPrefix(wrapperCls);
   const onSelect = (data: NodeData, parents: NodeData[]) => {
@@ -127,14 +126,14 @@ const Cascader: React.FC<Props> = (props) => {
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if ((e.target as HTMLElement)?.classList.contains('gio-cascader-dropdown')) {
+      if ((e.target as HTMLElement)?.classList.contains(`${wrapperCls}-dropdown`)) {
         setDropdownVisible(false);
       }
     };
     document.addEventListener('click', handler);
 
     return () => document.removeEventListener('click', handler);
-  }, [setDropdownVisible]);
+  }, [setDropdownVisible, wrapperCls]);
 
   return (
     <div className={mergedWrapperCls} style={style}>

@@ -3,8 +3,8 @@ import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
 import Input from '../input';
 import Button from '../button';
 import { SearchBarProps } from './interfaces';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { SizeContext } from '../config-provider/SizeContext';
-export const prefixCls = 'gio-searchbar';
 
 const getStorage = (key: string): string[] => {
   const empty: string[] = [];
@@ -43,6 +43,7 @@ const clearStorage = (key: string): string[] => {
 
 const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
   const sizeContext = useContext(SizeContext);
+  const prefixCls = usePrefixCls('searchbar');
   const {
     showStorage = false,
     storageNum = 5,
@@ -58,7 +59,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
     onChange,
     id,
   } = props;
-  const storageKey = React.useMemo(() => `${prefixCls}-storage-${id}`, [id]);
+  const storageKey = React.useMemo(() => `${prefixCls}-storage-${id}`, [id, prefixCls]);
 
   const [searchStorage, setSearchStorage] = React.useState(getStorage(storageKey));
   const [showDropdown, setShowDropdown] = React.useState(false);

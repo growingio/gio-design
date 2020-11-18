@@ -113,8 +113,8 @@ describe('Testing Table', () => {
 
   test('props prefixCls', () => {
     const wrapper = mount(getTable());
-    wrapper.setProps({ prefixCls: 'gio-table-custom' });
-    expect(wrapper.exists('.gio-table-custom')).toBe(true);
+    wrapper.setProps({ prefixCls: 'custom-prefix' });
+    expect(wrapper.exists('.custom-prefix-table')).toBe(true);
     expect(wrapper.exists('.gio-table')).toBe(false);
   });
 
@@ -144,7 +144,9 @@ describe('Testing Table', () => {
     expect(wrapper.exists('.gio-table-column-sorter')).toBe(true);
   });
 
-  test('column key rule', () => {/**/});
+  test('column key rule', () => {
+    /**/
+  });
 
   test('getNextSortDirection function', () => {
     expect(getNextSortDirection(['1', '2', null], '1')).toBe('2');

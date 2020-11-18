@@ -1,6 +1,6 @@
-import React, { useContext, Children } from 'react';
+import React, { Children } from 'react';
 import classnames from 'classnames';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { ISignProps } from './interface';
 import Number from './Number';
 import Dot from './Dot';
@@ -23,8 +23,7 @@ const Sign: React.FC<ISignProps> = ({
   size = 'middle',
   children,
 }: ISignProps) => {
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefix = getPrefixCls('sign', customPrefixCls);
+  const prefix = usePrefixCls('sign', customPrefixCls);
   const noChildren = Children.count(children) === 0;
 
   const cls = classnames(className, prefix, {

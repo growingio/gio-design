@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import RcCalendar from 'rc-calendar';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/Picker';
@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import moment, { Moment } from 'moment';
 import Input from '../input';
 import Button from '../button';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { DatePickerProps } from './interface';
 
 moment.locale('zh-cn', {
@@ -18,8 +18,7 @@ moment.locale('zh-cn', {
 
 const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   const { prefixCls: customizePrefixCls, format = 'YYYY/MM/DD', value, defaultValue, showFooter, disabledDate } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('date-picker', customizePrefixCls);
+  const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
 
   const calendarContainerRef = useRef(null);
   const inputRef = useRef(null);

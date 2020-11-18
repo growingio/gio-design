@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { WarningFilled } from '@gio-design/icons';
 import Tooltip from '../tooltip';
 import Button from '../button';
-import { ConfigContext } from '../config-provider';
 import { PopconfirmProps } from './interface';
 import useControlledState from '../../utils/hooks/useControlledState';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
   const {
@@ -16,6 +16,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
     cancelText = '取消',
     children,
     prefixCls: customizePrefixCls,
+    subPrefixCls = 'popconfirm',
     visible,
     defaultVisible,
     onVisibleChange,
@@ -23,8 +24,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
     ...rest
   } = props;
   const [controlledVisible, setControlledVisible] = useControlledState<boolean>(visible, false);
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('popconfirm', customizePrefixCls);
+  const prefixCls = usePrefixCls(subPrefixCls, customizePrefixCls);
 
   const popConfirmOnVisibleChange = (value: boolean) => {
     setControlledVisible(value);
@@ -62,7 +62,8 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
 
   return (
     <Tooltip
-      prefixCls={prefixCls}
+      prefixCls={customizePrefixCls}
+      subPrefixCls="popconfirm"
       visible={controlledVisible}
       onVisibleChange={popConfirmOnVisibleChange}
       overlayInnerStyle={{ width: desc ? 400 : 260 }}

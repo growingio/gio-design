@@ -1,5 +1,8 @@
 @import '../../../stylesheet/index.less';
-.gio-toggles {
+
+@toggles-prefix-cls: ~'@{component-prefix}-toggles';
+
+.@{toggles-prefix-cls} {
   position: relative;
   display: inline-block;
   width: 40px;
@@ -11,7 +14,7 @@
   cursor: pointer;
   transition: all ease 0.4s;
 
-  .gio-toggles-handle {
+  .@{toggles-prefix-cls}-handle {
     position: absolute;
     left: 0;
     width: 14px;
@@ -24,11 +27,11 @@
   }
 }
 
-.gio-toggles-checked {
+.@{toggles-prefix-cls}-checked {
   background-color: @color-background-toggles-on-normal;
   border: @color-border-toggles-normal-checked;
   box-shadow: none;
-  .gio-toggles-handle {
+  .@{toggles-prefix-cls}-handle {
     left: 100%;
     margin-left: -16px;
     background-color: @color-background-toggles-knob-on-normal;
@@ -36,7 +39,7 @@
   }
 }
 
-.gio-toggles-suffixContent {
+.@{toggles-prefix-cls}-suffixContent {
   display: inline-block;
   height: 20px;
   margin-left: 8px;
@@ -48,28 +51,28 @@
   user-select: none;
 }
 
-.gio-toggles-disabled {
-  .gio-toggles {
+.@{toggles-prefix-cls}-disabled {
+  .@{toggles-prefix-cls} {
     background-color: @color-background-toggles-off-disable;
     border: @color-border-toggles-disable-default;
     cursor: not-allowed;
 
-    .gio-toggles-handle {
+    .@{toggles-prefix-cls}-handle {
       background-color: @color-background-toggles-knob-off-disable;
       box-shadow: @shadow-toggles-disable-knob;
     }
   }
 
-  .gio-toggles-checked {
+  .@{toggles-prefix-cls}-checked {
     background-color: @color-background-toggles-on-disable;
     border: @color-border-toggles-disable-checked;
 
-    .gio-toggles-handle {
+    .@{toggles-prefix-cls}-handle {
       background-color: @color-background-toggles-knob-on-disable;
     }
   }
 
-  .gio-toggles-suffixContent {
+  .@{toggles-prefix-cls}-suffixContent {
     color: @color-text-toggles-disabled;
   }
 }
