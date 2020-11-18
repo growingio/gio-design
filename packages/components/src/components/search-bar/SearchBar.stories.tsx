@@ -17,10 +17,3 @@ const Template: Story<SearchBarProps> = (args) => {
 };
 
 export const Default = Template.bind({});
-
-Default.args = {
-  size: 'middle',
-  showStorage: true,
-  showClear: true,
-  allowClearStorage: true,
-};
