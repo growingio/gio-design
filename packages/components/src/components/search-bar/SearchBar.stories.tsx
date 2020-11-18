@@ -13,12 +13,9 @@ export default {
 export const Default: Story<SearchBarProps> = (args) => {
   const [value, setValue] = React.useState('');
 
-  return <SearchBar value={value} onChange={setValue} id="demo1" {...args} />;
+  return <SearchBar value={value} onChange={setValue} {...args} />;
 };
 
 Default.args = {
   size: 'middle',
-  showStorage: true,
-  showClear: true,
-  allowClearStorage: true,
 };
