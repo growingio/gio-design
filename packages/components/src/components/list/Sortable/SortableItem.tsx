@@ -2,6 +2,7 @@ import React, { cloneElement } from 'react';
 import classnames from 'classnames';
 import { findDOMNode } from 'react-dom';
 import reactDnd, { DragSource, DropTarget } from 'react-dnd';
+import { withConfigConsumer, ConfigConsumerProps } from '../../config-provider';
 
 export interface ItemWithId {
   value: string | number;
@@ -25,6 +26,7 @@ export interface WrappedSortableItemProps extends SortableItemProps {
   connectDropTarget: reactDnd.ConnectDropTarget;
   isDragging: boolean;
   isOver: boolean;
+  prefixCls?: string;
 }
 
 const dragSource = {
@@ -74,12 +76,11 @@ function collectTarget(connect: reactDnd.DropTargetConnector, monitor: reactDnd.
 }
 
 interface State {
-  hovered:boolean,
+  hovered: boolean;
 }
 
-class Item extends React.PureComponent<WrappedSortableItemProps, State> {
-  
-  constructor(props : WrappedSortableItemProps){
+class Item extends React.PureComponent<WrappedSortableItemProps & ConfigConsumerProps, State> {
+  constructor(props: WrappedSortableItemProps & ConfigConsumerProps) {
     super(props);
     this.state = {
       hovered: false,
@@ -116,12 +117,12 @@ class Item extends React.PureComponent<WrappedSortableItemProps, State> {
 
   private _createRef() {
     const { position, sortData } = this.props;
-    const {value} = sortData;
+    const { value } = sortData;
     return `${value}${position}`;
   }
 
   public render() {
-    const { isOver, template, sortData, index, className, isDragging } = this.props;
+    const { isOver, template, sortData, index, className, isDragging, prefixCls } = this.props;
     const { hovered } = this.state;
     return cloneElement(template, {
       sortData,
@@ -132,7 +133,7 @@ class Item extends React.PureComponent<WrappedSortableItemProps, State> {
       onMouseEnter: this._onMouseEnter,
       onMouseLeave: this._onMouseLeave,
       onDragStart: this._onDragStart,
-      className: classnames(className, 'gio-sortable-item', {
+      className: classnames(className, `${prefixCls}-item`, {
         'is-over': isOver,
         'is-dragging': isDragging,
         'is-hovered': hovered,
@@ -143,5 +144,19 @@ class Item extends React.PureComponent<WrappedSortableItemProps, State> {
 
 export default () => {
   const type = 'item';
-  return DragSource(type, dragSource, collectSource)(DropTarget(type, dropTarget, collectTarget)(Item));
+  return DragSource(
+    type,
+    dragSource,
+    collectSource
+  )(
+    DropTarget(
+      type,
+      dropTarget,
+      collectTarget
+    )(
+      withConfigConsumer<WrappedSortableItemProps>({
+        subPrefixCls: 'sortable',
+      })(Item)
+    )
+  );
 };

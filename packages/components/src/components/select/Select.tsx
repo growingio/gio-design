@@ -7,7 +7,7 @@ import { SizeContext } from '../config-provider/SizeContext';
 import Dropdown from '../dropdown';
 import Tag from '../tag';
 import List from '../list';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 import { SelectProps, Option, MaybeArray } from './interface';
 
@@ -69,7 +69,6 @@ const defaultOptionLabelRenderer = (value: string, option?: Option) => option?.l
 
 const Select: React.FC<SelectProps> = (props: SelectProps) => {
   const sizeContext = useContext(SizeContext);
-  const { getPrefixCls } = useContext(ConfigContext);
   const {
     size = sizeContext || 'middle',
     options = [],
@@ -104,7 +103,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     dropDownStyle,
   } = props;
 
-  const prefix = getPrefixCls('select', customizePrefixCls);
+  const prefix = usePrefixCls('select', customizePrefixCls);
 
   const [unControlledValue, setUnControlledValue] = useState(defaultValue);
   const isControlled = !isNil(controlledValue);

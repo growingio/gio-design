@@ -1,7 +1,7 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import RcUpload from 'rc-upload';
 import classnames from 'classnames';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import {
   IUploadProps,
   ITriggerProps,
@@ -56,8 +56,7 @@ const Upload: React.FC<IUploadProps> = ({
   const [file, setFile] = useState<IUploadFile>(getEmptyFileObj());
 
   const rcUploadRef = useRef(null);
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('upload', customPrefixCls);
+  const prefixCls = usePrefixCls('upload', customPrefixCls);
 
   const rootCls = classnames(className, prefixCls, {
     [`${prefixCls}--disabled`]: disabled,

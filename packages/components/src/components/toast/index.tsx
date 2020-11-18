@@ -2,12 +2,13 @@ import * as React from 'react';
 import classNames from 'classnames';
 import Notification from 'rc-notification';
 import { CheckCircleFilled, CloseCircleFilled, WarningFilled, InformationFilled } from '@gio-design/icons';
+import { defaultRootPrefixCls } from '../config-provider';
 
 let defaultDuration = 2;
 let defaultTop: number;
 let messageInstance: any;
 let key = 1;
-let prefixCls = 'gio-toast';
+let prefixCls = `${defaultRootPrefixCls}-toast`;
 let transitionName = 'move-up';
 let getContainer: () => HTMLElement;
 let maxCount: number;

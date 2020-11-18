@@ -3,6 +3,7 @@ import { isEqual } from 'lodash';
 import Modal from './Modal';
 import { stepArray2Map, clarifyRender } from './utils';
 import { IStepModalProps, IStepInner, TStepChange } from './interface';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const StepModal: React.FC<IStepModalProps> = ({
   steps = [],
@@ -16,8 +17,10 @@ const StepModal: React.FC<IStepModalProps> = ({
   additionalFooter,
   okButtonProps,
   closeButtonProps,
+  prefixCls: customPrefixCls,
   ...modalProps
 }: IStepModalProps) => {
+  const prefixCls = usePrefixCls('modal', customPrefixCls);
   const [stepObj, setStepObj] = useState(() => stepArray2Map(steps));
   const { stepMap, firstStep } = stepObj;
   const [stepStack, setStepStack] = useState<string[]>([firstStep]);
@@ -98,9 +101,9 @@ const StepModal: React.FC<IStepModalProps> = ({
   };
 
   const handleClose = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    const container = document.querySelector('.gio-modal-close');
+    const container = document.querySelector(`.${prefixCls}-close`);
     const target: HTMLElement = e.target as HTMLElement;
-    const isCloseIcon = container?.contains(target) || target.classList.contains('gio-modal-close');
+    const isCloseIcon = container?.contains(target) || target.classList.contains(`${prefixCls}-close`);
 
     if (isFirstStep || isCloseIcon) {
       const closeExecResult = onClose?.(e);

@@ -3,6 +3,7 @@ import RcCheckbox from 'rc-checkbox';
 import classnames from 'classnames';
 import RadioGroup from './Group';
 import RadioGroupContext from './context';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { IRadioProps, IRadioChangeEvent } from './interface';
 
 interface CompoundedRadio extends React.ForwardRefExoticComponent<IRadioProps & React.RefAttributes<HTMLElement>> {
@@ -15,8 +16,7 @@ const InnerRadio: React.ForwardRefRenderFunction<unknown, IRadioProps> = (
   ref
 ) => {
   const groupContext = useContext(RadioGroupContext);
-
-  const prefixCls = customPrefixCls || 'gio-radio';
+  const prefixCls = usePrefixCls('radio', customPrefixCls);
 
   const wrapperCls = classnames(className, `${prefixCls}__wrapper`, {
     [`${prefixCls}__wrapper--checked`]: restProps.checked,

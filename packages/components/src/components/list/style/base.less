@@ -1,6 +1,8 @@
-@import '~@gio-design/tokens/dist/variables.less';
+@import '../../../stylesheet/index.less';
 
-@prefix-cls: gio-list;
+@list-prefix-cls: ~'@{component-prefix}-list';
+@select-prefix-cls: ~'@{component-prefix}-select';
+@sortable-cls: ~'@{component-prefix}-sortable';
 
 @link-font-color-normal: #313e75;
 @link-font-color-active: #1248e9;
@@ -32,7 +34,7 @@
 @color-font-list-secondary-disable: #c7cbd8; // $color-black-2
 @color-font-list-title-normal: #1248e9; // $color-blue-5
 
-.@{prefix-cls}-wrapper {
+.@{list-prefix-cls}-wrapper {
   display: inline-block;
   // background-color: @color-background-list-single-normal;
   // &:focus {
@@ -55,11 +57,11 @@
     }
   }
 
-  .gio-select-core {
+  .@{select-prefix-cls}-core {
     position: relative;
-    .gio-select-list-wrapper {
+    .@{select-prefix-cls}-list-wrapper {
       background-color: #fff;
-      .gio-select-list {
+      .@{select-prefix-cls}-list {
         &:focus {
           outline: none;
         }

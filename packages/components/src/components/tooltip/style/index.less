@@ -2,6 +2,8 @@
 @import '../../../stylesheet/mixin/trigger.less';
 
 @tooltip-prefix-cls: ~'@{component-prefix}-tooltip';
+@link-prefix-cls: ~'@{component-prefix}-link';
+
 @tooltip-distance: 6px;
 @tooltip-arrow-width: 12px;
 @tooltip-arrow-offset: 14px;
@@ -40,7 +42,7 @@
         content: ' ';
       }
     }
-    .gio-link {
+    .@{link-prefix-cls} {
       color: @color-text-tooltip;
     }
   }

@@ -1,8 +1,8 @@
 import React from 'react';
-import Banner from '../Banner';
-import '@gio-design/components/es/components/banner/style/index.css';
+import '../../../../es/components/banner/style/index.css';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
+import Banner from '../Banner';
 
 describe('Testing Banner', () => {
   it('should be stable', () => {
@@ -34,12 +34,10 @@ describe('Testing Banner', () => {
     expect(mount(<Banner type="alert" />).exists('.gio-banner-alert')).toBe(true);
   });
 
-  it('can be click to close',() => {
+  it('can be click to close', () => {
     const closeMock = jest.fn();
-    const wrapper = mount(
-      <Banner onClose={closeMock}>关闭</Banner>
-    )
+    const wrapper = mount(<Banner onClose={closeMock}>关闭</Banner>);
     wrapper.find('.gio-banner-closeIcon').simulate('click');
     expect(closeMock).toBeCalled();
-  })
+  });
 });

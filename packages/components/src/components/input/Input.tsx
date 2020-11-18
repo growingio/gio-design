@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { InputProps, InputNumberProps, TextAreaProps } from './interfaces';
 import { SizeContext } from '../config-provider/SizeContext';
-export const prefixCls = 'gio-input';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+
 const InputFC: React.FC<InputProps> = (props: InputProps) => {
+  const prefixCls = usePrefixCls('input');
   const sizeContext = useContext(SizeContext);
   const {
     type = 'text',

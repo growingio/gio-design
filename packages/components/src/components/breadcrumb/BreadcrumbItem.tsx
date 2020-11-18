@@ -3,6 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 import BreadcrumbSeparator from './BreadcrumbSeparator';
 import { BreadcrumbItemProps } from './interface';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 interface BreadcrumbItemInterface extends React.FC<BreadcrumbItemProps> {
   GIO_BREADCRUMB_ITEM: boolean;
@@ -10,20 +11,21 @@ interface BreadcrumbItemInterface extends React.FC<BreadcrumbItemProps> {
 
 const BreadcrumbItem: BreadcrumbItemInterface = (props: BreadcrumbItemProps) => {
   const { children, separator, ...restProps } = props;
+  const prefixCls = usePrefixCls('breadcrumb');
   const link =
     'href' in restProps ? (
-      <a className="gio-breadcrumb-item-link-target" {...restProps}>
+      <a className={`${prefixCls}-item-link-target`} {...restProps}>
         {children}
       </a>
     ) : (
-      <span className="gio-breadcrumb-item-link-target" {...restProps}>
+      <span className={`${prefixCls}-item-link-target`} {...restProps}>
         {children}
       </span>
     );
 
   if (children) {
     return (
-      <span className={classnames('gio-breadcrumb-item', 'gio-breadcrumb-item-link')}>
+      <span className={classnames(`${prefixCls}-item`, `${prefixCls}-item-link`)}>
         {link}
         {separator && separator !== '' && <BreadcrumbSeparator separator={separator} />}
       </span>

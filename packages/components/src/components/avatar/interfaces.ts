@@ -13,17 +13,47 @@ export type tooltipPlacement =
   | 'bottomRight';
 
 export interface AvatarProps {
+  /**
+   设置头像的尺寸大小
+   */
   size?: 'small' | 'default' | 'large' | 'huge';
   droppable?: boolean;
+  /**
+    设置头像的尺寸大小
+   */
   src?: string;
+  /**
+   是否省略用户名称
+   */
   omit?: boolean;
+  /**
+   自定义混入 `CSS` 类
+   */
   className?: string;
-  children?: string;
+  /**
+   自定义混入 `CSS` 样式
+   */
   style?: React.CSSProperties;
+  /**
+   气泡框位置，可选 12 个方位
+   */
   placement?: tooltipPlacement;
+  /**
+   自定义 `CSS` 类前缀
+   */
   prefixCls?: string;
+  /**
+   用 `Tooltip` 显示用户名
+   */
   displayTooltip?: boolean;
+  /**
+   自定义气泡框的内容
+   */
   tooltipTitle?: React.ReactNode;
+  /**
+   设置字符，用作用户头像
+   */
+  children?: string;
 }
 
 export interface UserAvatarType {

@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { More } from '@gio-design/icons';
-import Tooltip from '../tooltip';
-import { AvatarProps } from './interface';
-import { ConfigContext } from '../config-provider';
-import composeRef from '../../utils/composeRef';
 import { isNil } from 'lodash';
+import Tooltip from '../tooltip';
+import { AvatarProps } from './interfaces';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import composeRef from '../../utils/composeRef';
 
 const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProps, ref: React.Ref<HTMLSpanElement>) => {
   const {
@@ -22,7 +22,6 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     ...rest
   } = props;
 
-  const { getPrefixCls } = useContext(ConfigContext);
   const [isImgExist, setIsImgExist] = useState<boolean>(src !== undefined);
   const [scale, setScale] = useState<number>(1);
   const nodeRef = useRef<HTMLSpanElement>(null);
@@ -37,7 +36,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     }
   }, [userName]);
 
-  const prefixCls = getPrefixCls('avatar', customizePrefixCls);
+  const prefixCls = usePrefixCls('avatar', customizePrefixCls);
   const classString = classNames(className, prefixCls, {
     [`${prefixCls}-sm`]: size === 'small',
     [`${prefixCls}-df`]: size === 'default',
@@ -85,6 +84,8 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     );
 
   return renderTooltip(
+    // For Dropdown trigger will set Event on rest
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <span ref={mergedRef} className={classString} {...rest}>
       {renderMore()}
       {renderAvatar()}

@@ -1,13 +1,13 @@
 @import '../../../stylesheet/index.less';
 @import './mixin.less';
 
-@gio-sign: ~'@{component-prefix}-sign';
-@gio-sign-number: ~'@{gio-sign}__number';
-@gio-sign-dot: ~'@{gio-sign}__dot';
-@gio-sign-hide: ~'@{gio-sign}--hide';
+@sign-prefix-cls: ~'@{component-prefix}-sign';
+@sign-number: ~'@{sign-prefix-cls}__number';
+@sign-dot: ~'@{sign-prefix-cls}__dot';
+@sign-hide: ~'@{sign-prefix-cls}--hide';
 
 // Dot
-.@{gio-sign-dot} {
+.@{sign-dot} {
   .place();
   .background.default();
   border-radius: @radius-border-circle;
@@ -39,7 +39,7 @@
 }
 
 // Number
-.@{gio-sign-number} {
+.@{sign-number} {
   height: 16px;
   padding: 0 4px;
   color: #fff;
@@ -52,14 +52,14 @@
 }
 
 // wrapper
-.@{gio-sign} {
+.@{sign-prefix-cls} {
   position: relative;
   display: inline-block;
   color: @palette-black-6;
 
   &--no-children {
-    .@{gio-sign-dot},
-    .@{gio-sign-number} {
+    .@{sign-dot},
+    .@{sign-number} {
       position: relative;
       top: auto;
       transform: scale(1) translate(0, 0);
@@ -68,8 +68,8 @@
   }
 
   &--hide {
-    &.@{gio-sign-dot},
-    &.@{gio-sign-number} {
+    &.@{sign-dot},
+    &.@{sign-number} {
       opacity: 0;
       transition: @transition;
     }
@@ -80,7 +80,7 @@
     left: 50%;
     .transform(1, -50%, -50%);
     transform-origin: 0 0;
-    &.@{gio-sign-hide} {
+    &.@{sign-hide} {
       .transform(0, -50%, -50%);
     }
   }
@@ -90,7 +90,7 @@
     right: 0;
     .transform(1, 50%, -50%);
     transform-origin: 100% 0;
-    &.@{gio-sign-hide} {
+    &.@{sign-hide} {
       .transform(0, 50%, -50%);
     }
   }
@@ -99,7 +99,7 @@
     left: 50%;
     .transform(1, -50%, 50%);
     transform-origin: 0 100%;
-    &.@{gio-sign-hide} {
+    &.@{sign-hide} {
       .transform(0, -50%, 50%);
     }
   }
@@ -108,7 +108,7 @@
     left: 0;
     .transform(1, -50%, -50%);
     transform-origin: 0 0;
-    &.@{gio-sign-hide} {
+    &.@{sign-hide} {
       .transform(0, -50%, -50%);
     }
   }
@@ -118,7 +118,7 @@
     right: 0;
     .transform(1, 50%, -50%);
     transform-origin: 100% 0;
-    &.@{gio-sign-hide} {
+    &.@{sign-hide} {
       .transform(0, 50%, -50%);
     }
   }
@@ -128,7 +128,7 @@
     bottom: 0;
     .transform(1, 50%, 50%);
     transform-origin: 100% 100%;
-    &.@{gio-sign-hide} {
+    &.@{sign-hide} {
       .transform(0, 50%, 50%);
     }
   }
@@ -137,7 +137,7 @@
     left: 0;
     .transform(1, -50%, -50%);
     transform-origin: 0 0;
-    &.@{gio-sign-hide} {
+    &.@{sign-hide} {
       .transform(0, -50%, -50%);
     }
   }
@@ -147,7 +147,7 @@
     left: 0;
     .transform(1, -50%, 50%);
     transform-origin: 0% 100%;
-    &.@{gio-sign-hide} {
+    &.@{sign-hide} {
       .transform(0, -50%, 50%);
     }
   }

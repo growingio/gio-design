@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import classNames from 'classnames';
 import RcCheckbox from 'rc-checkbox';
 import CheckOutlined from '@gio-design/icons/es/CheckOutlined';
-import { ConfigContext } from '../config-provider';
 import CheckboxGroupContext from './CheckboxGroupContext';
 import { CheckboxProps } from './interface';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const Checkbox: React.FC<CheckboxProps> = ({
   prefixCls: customizePrefixCls,
@@ -17,7 +18,6 @@ const Checkbox: React.FC<CheckboxProps> = ({
 }) => {
   const rcCheckbox = React.useRef(null);
 
-  const { getPrefixCls } = React.useContext(ConfigContext);
   const checkGroup = React.useContext(CheckboxGroupContext);
 
   const handleChange = React.useCallback(
@@ -25,10 +25,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
       if (onChange) onChange(e);
       checkGroup?.toggleOption?.({ label: children, value: restProps.value });
     },
-    [onChange],
+    [onChange]
   );
 
-  const prefixCls = getPrefixCls('checkbox', customizePrefixCls);
+  const prefixCls = usePrefixCls('checkbox', customizePrefixCls);
   const checkProps: CheckboxProps = { ...restProps };
 
   if (checkGroup) {
@@ -64,6 +64,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   });
 
   return (
+    // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label className={checkboxCls} style={style}>
       <CheckOutlined className={checkboxIconClass} />
       <RcCheckbox

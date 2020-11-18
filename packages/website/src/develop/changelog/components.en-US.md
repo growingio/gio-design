@@ -9,6 +9,32 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.11.1
+
+- component
+  - Cascader
+    - 🆕 Add Cascader component.[#469](https://github.com/growingio/gio-design/pull/469)
+  - Select
+    - 🐛 fix Select style bug and placeholder not wokring [#466](https://github.com/growingio/gio-design/pull/466)
+    - 🐛 fix input caused style error [#456](https://github.com/growingio/gio-design/pull/456)
+  - List
+    - 🆕 add stateless prop [#468](https://github.com/growingio/gio-design/pull/468)
+    - 🆕 add padding style [#468](https://github.com/growingio/gio-design/pull/468)
+  - Table
+    - 🐛 import dependence components style [#470](https://github.com/growingio/gio-design/pull/470)
+  - Tooltip
+    - 🐛 fix should not update internal state when tooltip disabled [#465](https://github.com/growingio/gio-design/pull/465)
+  - Button
+    - 🐛 fix parent node mouseleave not work when button disabled[#464](https://github.com/growingio/gio-design/pull/464)
+  - Input, Textarea
+    - 🆕 add autosize prop for textarea component [#461](https://github.com/growingio/gio-design/pull/461)
+    - 🐛 fix fix the problem that destructing the rest may overwrite value field [#458](https://github.com/growingio/gio-design/pull/458)
+  - Dropdown
+    - 🆕 define dropdown interaction, it will be close after click the overlay area without visible [#450](https://github.com/growingio/gio-design/pull/450)
+  - DatePicker
+    - 💄 rename global gio-input classname [#446](https://github.com/growingio/gio-design/pull/446)
+- 📖 add or update sotries of alert, avatar and button [#467](https://github.com/growingio/gio-design/pull/467)
+
 ## 20.11.0
 
 - component

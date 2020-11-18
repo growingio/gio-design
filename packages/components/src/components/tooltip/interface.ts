@@ -6,6 +6,7 @@ export interface TooltipLink {
   link: string;
 }
 export interface TooltipProps extends Partial<RcTooltipProps> {
+  subPrefixCls?: string;
   title?: React.ReactNode | ReactRender;
   disabled?: boolean;
   tooltipLink?: TooltipLink;

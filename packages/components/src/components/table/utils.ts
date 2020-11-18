@@ -6,11 +6,12 @@ export const translateInnerColumns = <RecordType>(columns: ColumnsType<RecordTyp
     if (!has(cloneColumn, 'key')) {
       if (has(cloneColumn, 'dataIndex')) {
         if (Array.isArray(get(cloneColumn, 'dataIndex'))) {
-          cloneColumn.key = join(get(cloneColumn, 'dataIndex'), '-');
+          set(cloneColumn, 'key', join(get(cloneColumn, 'dataIndex'), '-'));
         } else {
-          cloneColumn.key = get(cloneColumn, 'dataIndex');
+          set(cloneColumn, 'key', get(cloneColumn, 'dataIndex'));
         }
       } else {
+        // eslint-disable-next-line no-console
         console.warn('gio-design table: column key or dataIndex must have one');
       }
     }
@@ -20,4 +21,4 @@ export const translateInnerColumns = <RecordType>(columns: ColumnsType<RecordTyp
     return cloneColumn;
   }) as InnerColumnsType<RecordType>;
 
-export default {}
+export default {};

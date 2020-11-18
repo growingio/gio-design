@@ -1,6 +1,6 @@
 @import './mixin.less';
 
-.@{gio-modal} {
+.@{modal-prefix-cls} {
   position: relative;
   margin: 100px auto;
 
@@ -19,15 +19,15 @@
   &-header {
     padding: 24px 52px 24px 20px;
     background: @palette-white;
-    border-radius: @gio-modal-radius @gio-modal-radius 0 0;
+    border-radius: @modal-radius @modal-radius 0 0;
   }
 
   &-footer {
     padding: 20px 36px;
     text-align: right;
-    border-radius: 0 0 @gio-modal-radius @gio-modal-radius;
+    border-radius: 0 0 @modal-radius @modal-radius;
 
-    .gio-btn {
+    .@{btn-cls} {
       margin-left: 16px;
     }
   }
@@ -150,18 +150,18 @@
   });
 }
 
-.@{gio-modal-small} {
+.@{modal-small} {
   width: 500px;
   @media screen and (max-width: 820px) {
     .full-screen-modal();
   }
 }
-.@{gio-modal-middle} {
+.@{modal-middle} {
   width: 1000px;
   @media screen and (max-width: 1200px) {
     .full-screen-modal();
   }
 }
-.@{gio-modal-full} {
+.@{modal-full} {
   .full-screen-modal();
 }

@@ -6,6 +6,7 @@ module.exports = {
   // registers babel.config.js with jest
   transform: {
     '^.+\\.js$': 'babel-jest',
+    '^.+\\.tsx?$': 'babel-jest',
   },
 
   // explicitly include any node libs using ESM modules
@@ -21,6 +22,11 @@ module.exports = {
       '<rootDir>/__mocks__/fileMock.js',
     'iconfont.js': '<rootDir>/__mocks__/iconMock.js',
   },
-  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/index.{ts,tsx}', '!src/**/interface.ts'],
+  collectCoverageFrom: [
+    'src/**/*.{ts,tsx}',
+    '!src/**/index.{ts,tsx}',
+    '!src/**/interfaces.ts',
+    '!src/**/*.stories.{ts,tsx}',
+  ],
   coverageDirectory: './coverage/',
 };
