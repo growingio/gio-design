@@ -11,7 +11,7 @@ import './style';
 export default {
   title: 'Components/Basic/Input',
   component: Input,
-  subcomponents: { InputNumber, Password, TextArea },
+  subcomponents: { InputNumber, Password, TextArea }, // 子组件
 } as Meta;
 
 export const Default: Story<InputProps> = (args) => {
