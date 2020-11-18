@@ -15,10 +15,10 @@ const Template: Story<SearchBarProps> = (args) => {
 
   return (
     <SearchBar
+      {...args}
       value={args.value ? args.value : value}
       onChange={args.onChange ? args.onChange : setValue}
       id={args.id ? args.id : 'demo'}
-      {...args}
     />
   );
 };
