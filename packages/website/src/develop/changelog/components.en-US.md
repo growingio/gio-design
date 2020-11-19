@@ -12,7 +12,7 @@ nav:
 ## 20.11.2
 
 - component
-  - 🛎 use usePrefix & withConfigConsumer to build prefixCls.[#485](https://github.com/growingio/gio-design/pull/485)
+  - 🛎 use usePrefix & withConfigConsumer to build prefixCls. [#485](https://github.com/growingio/gio-design/pull/485)
   - Avatar
     - 🐛 Avatar can't trigger dropdown.[#475](https://github.com/growingio/gio-design/pull/475)
 - icons

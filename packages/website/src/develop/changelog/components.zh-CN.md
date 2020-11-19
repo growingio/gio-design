@@ -12,7 +12,7 @@ nav:
 ## 20.11.2
 
 - component
-  - 🛎 采用 usePrefix 以及 withConfigConsumer 进行组件 prefixCls 构建.[#485](https://github.com/growingio/gio-design/pull/485)
+  - 🛎 采用 usePrefix 以及 withConfigConsumer 进行组件 prefixCls 构建. [#485](https://github.com/growingio/gio-design/pull/485)
   - Avatar
     - 🐛 修复头像不能触发下拉列表.[#475](https://github.com/growingio/gio-design/pull/475)
 - icons
