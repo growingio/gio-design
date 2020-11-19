@@ -38,7 +38,7 @@ class SelectCore extends React.Component<SelectCoreProps & ConfigConsumerProps, 
       return { stateChanged: false };
     }
 
-    if (nextProps.value) {
+    if (nextProps.value || nextProps.options) {
       return {
         value: nextProps.value,
         options: nextProps.options,
