@@ -22,7 +22,7 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
         !visible && `${prefixCls}-close`
       )}
     >
-      <div className={className(`${prefixCls}-content`, button && `${prefixCls}-content-button`)}> {content}</div>
+      <div className={className(`${prefixCls}-content`, button && `${prefixCls}-content-button`)}>{content}</div>
       <div className={className(`${prefixCls}-button`)}>{button}</div>
       <div
         className={className(`${prefixCls}-closeIcon`)}

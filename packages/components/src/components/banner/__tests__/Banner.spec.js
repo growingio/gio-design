@@ -24,7 +24,7 @@ describe('Testing Banner', () => {
 
   it('props content', () => {
     const stringwrapper = mount(<Banner type="normal" content="content" />).children();
-    expect(stringwrapper.childAt(0).text()).toBe(' content');
+    expect(stringwrapper.childAt(0).text()).toBe('content');
     const nodeWrapper = mount(<Banner content={<div>content</div>} />).children();
     expect(nodeWrapper.childAt(0).type()).toBe('div');
   });

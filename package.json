@@ -55,7 +55,7 @@
     "build:website": "yarn workspace website build",
     "build-storybook": "yarn workspace @gio-design/components build-storybook",
     "g:icons": "yarn workspace @gio-design/icons generate",
-    "lint:components": "eslint packages/components/src --ext .js,.jsx,.ts,.tsx",
+    "lint:components": "eslint packages/components/src --ext .ts,.tsx",
     "lint:style": "stylelint 'packages/components/src/**/*.{css,less}' --syntax less",
     "test": "yarn workspace @gio-design/components test",
     "version": "npx lerna version --no-private --no-git-tag-version",
