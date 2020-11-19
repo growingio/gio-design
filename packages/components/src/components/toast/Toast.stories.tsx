@@ -12,7 +12,7 @@ export default {
 const SuccessMessage = () => (
   <span>
     操作成功！
-    <a style={{ color: '#3867f4', textDecoration: 'underline' }} href="#">
+    <a style={{ color: '#3867f4', textDecoration: 'underline' }} href="https://www.growingio.com">
       去看看
     </a>
   </span>
