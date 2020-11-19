@@ -10,7 +10,7 @@ import renderSwitcherIcon from '../tree/iconUtil';
 import SizeContext from '../config-provider/SizeContext';
 import { TreeSelectProps } from './interface';
 
-class TreeSelect<T> extends React.Component<TreeSelectProps<T>, {}> {
+class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
   public static TreeNode = TreeNode;
 
   public static SHOW_ALL: typeof SHOW_ALL = SHOW_ALL;

@@ -7,11 +7,7 @@ import Group from './Group';
 import withGroupedOptions from './utils/withGroupedOptions';
 import { SelectListProps } from './interface';
 
-interface State {
-  value: any | any[];
-}
-
-class SelectList extends React.Component<SelectListProps & ConfigConsumerProps, State> {
+class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> {
   public static defaultProps: Partial<SelectListProps & ConfigConsumerProps> = {
     disabledOptions: [],
     isMultiple: false,
@@ -23,9 +19,6 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps, 
   public constructor(props: SelectListProps & ConfigConsumerProps) {
     super(props);
     this.ref = React.createRef();
-    this.state = {
-      value: null,
-    };
   }
 
   private getPopupContainer = () => this.ref.current as HTMLElement;
