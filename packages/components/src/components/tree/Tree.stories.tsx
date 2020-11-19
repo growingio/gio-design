@@ -69,7 +69,7 @@ export const Default: Story<TreeProps> = (args) => {
 };
 
 Default.args = {
-  treeData: treeData,
+  treeData,
   defaultExpandedKeys: ['0-0-0', '0-0-1'],
   defaultSelectedKeys: ['0-0-1'],
 };

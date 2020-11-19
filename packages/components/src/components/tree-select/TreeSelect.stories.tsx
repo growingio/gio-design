@@ -49,7 +49,7 @@ export const Default: Story<TreeSelectProps<any>> = (args) => {
 };
 
 Default.args = {
-  treeData: treeData,
+  treeData,
   showSearch: true,
   style: { width: '100%' },
   dropdownStyle: { maxHeight: 400, overflow: 'auto' },
