@@ -24,7 +24,7 @@ describe('Testing Banner', () => {
 
   it('props content', () => {
     const stringwrapper = mount(<Banner type="normal" content="content" />).children();
-    expect(stringwrapper.childAt(0).text()).toBe(' content');
+    expect(stringwrapper.childAt(0).text()).toBe('content');
     const nodeWrapper = mount(<Banner content={<div>content</div>} />).children();
     expect(nodeWrapper.childAt(0).type()).toBe('div');
   });
@@ -34,12 +34,10 @@ describe('Testing Banner', () => {
     expect(mount(<Banner type="alert" />).exists('.gio-banner-alert')).toBe(true);
   });
 
-  it('can be click to close',() => {
+  it('can be click to close', () => {
     const closeMock = jest.fn();
-    const wrapper = mount(
-      <Banner onClose={closeMock}>关闭</Banner>
-    )
+    const wrapper = mount(<Banner onClose={closeMock}>关闭</Banner>);
     wrapper.find('.gio-banner-closeIcon').simulate('click');
     expect(closeMock).toBeCalled();
-  })
+  });
 });
