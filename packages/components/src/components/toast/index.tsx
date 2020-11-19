@@ -50,15 +50,34 @@ export interface MessageType {
 
 export interface ArgsProps {
   /**
-   提示内容
+   * 提示内容
    */
   content: React.ReactNode;
+  /**
+   * 多少秒后关闭，设为 0 时不自动关闭
+   * @default 2
+   */
   duration: number | null;
   type: NoticeType;
+  /**
+   * 关闭时触发的回调函数
+   */
   onClose?: () => void;
+  /**
+   * 自定义图标
+   */
   icon?: React.ReactNode;
+  /**
+   * 当前提示的唯一标志
+   */
   key?: string | number;
+  /**
+   * 自定义内联样式
+   */
   style?: React.CSSProperties;
+  /**
+   * 自定义 CSS class
+   */
   className?: string;
 }
 
