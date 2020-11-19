@@ -9,6 +9,17 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.11.2
+
+- component
+  - 🛎 use usePrefix & withConfigConsumer to build prefixCls.[#485](https://github.com/growingio/gio-design/pull/485)
+  - Avatar
+    - 🐛 Avatar can't trigger dropdown.[#475](https://github.com/growingio/gio-design/pull/475)
+- icons
+  - update icon template, svg color use style.[#490](https://github.com/growingio/gio-design/pull/490)
+- 📖 fix all eslint errors.[#491](https://github.com/growingio/gio-design/pull/491)
+- 🛠 bump less-loader from 7.0.2 to 7.1.0.[#479](https://github.com/growingio/gio-design/pull/479)
+
 ## 20.11.1
 
 - component
