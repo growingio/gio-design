@@ -30,7 +30,7 @@ const props = {
     console.log('--- Upload Progress ---');
   },
   // 上传成功
-  onSuccess: (response: {}, file: IUploadFile) => {
+  onSuccess: (response: Record<string, unknown>, file: IUploadFile) => {
     console.log('=== Upload Success ===');
     console.log('response: ', response);
     console.log('file: ', file);
