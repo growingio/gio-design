@@ -25,20 +25,24 @@ Default.args = {
   placeholder: '请输入…',
 };
 
-export const inputNumber: Story<InputNumberProps> = (args) => {
+const InputNumberTemplate = (args: InputNumberProps) => {
   const [inputValue, setInputValue] = React.useState('0');
   return <Input.InputNumber {...args} value={inputValue} onChange={setInputValue} />;
 };
 
-export const password: Story<InputProps> = (args) => {
+export const InputNumberCase: Story<InputNumberProps> = (args) => InputNumberTemplate(args);
+
+const PasswordTemplate = (args: InputProps) => {
   const [inputValue, setInputValue] = React.useState('x');
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
   return <Input.Password {...args} value={inputValue} onChange={onChange} />;
 };
+export const PasswordCase: Story<InputProps> = (args) => PasswordTemplate(args);
 
-export const textArea: Story<TextAreaProps> = (args) => {
+const TextAreaTemplate = (args: TextAreaProps) => {
   const [inputValue, setInputValue] = React.useState('hello');
   return <Input.TextArea {...args} value={inputValue} onChange={(e) => setInputValue(e.target.value)} />;
 };
+export const TextAreaCase: Story<TextAreaProps> = (args) => TextAreaTemplate(args);
