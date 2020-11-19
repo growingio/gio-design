@@ -31,6 +31,9 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
    * input 的后缀图标
    */
   suffix?: React.ReactNode;
+  /**
+   * 后缀图标宽度
+   */
   suffixWidth?: number;
   forwardRef?:
     | React.RefObject<HTMLInputElement>
