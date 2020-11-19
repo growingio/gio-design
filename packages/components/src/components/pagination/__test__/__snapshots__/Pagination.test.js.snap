@@ -40,6 +40,7 @@ initialize {
                     "height": "16px",
                     "viewBox": "0 0 14 14",
                     "width": "16px",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -245,6 +246,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -252,6 +254,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -369,6 +372,7 @@ initialize {
                                 "height": "1rem",
                                 "viewBox": "0 0 14 14",
                                 "width": "1rem",
+                                "xmlns": "http://www.w3.org/2000/svg",
                               },
                               "children": Array [
                                 Object {
@@ -408,6 +412,7 @@ initialize {
                                 "height": undefined,
                                 "viewBox": undefined,
                                 "width": undefined,
+                                "xmlns": "http://www.w3.org/2000/xmlns/",
                               },
                               "x-attribsPrefix": Object {
                                 "class": undefined,
@@ -415,6 +420,7 @@ initialize {
                                 "height": undefined,
                                 "viewBox": undefined,
                                 "width": undefined,
+                                "xmlns": "",
                               },
                             },
                           ],
@@ -428,11 +434,12 @@ initialize {
                               Object {
                                 "attribs": Object {
                                   "class": "gio-icon-svg",
-                                  "color": "#0044F2",
                                   "fill": "currentColor",
                                   "height": "1rem",
+                                  "style": "color:#0044F2",
                                   "viewBox": "0 0 14 14",
                                   "width": "1rem",
+                                  "xmlns": "http://www.w3.org/2000/svg",
                                 },
                                 "children": Array [
                                   Object {
@@ -634,19 +641,21 @@ initialize {
                                 "type": "tag",
                                 "x-attribsNamespace": Object {
                                   "class": undefined,
-                                  "color": undefined,
                                   "fill": undefined,
                                   "height": undefined,
+                                  "style": undefined,
                                   "viewBox": undefined,
                                   "width": undefined,
+                                  "xmlns": "http://www.w3.org/2000/xmlns/",
                                 },
                                 "x-attribsPrefix": Object {
                                   "class": undefined,
-                                  "color": undefined,
                                   "fill": undefined,
                                   "height": undefined,
+                                  "style": undefined,
                                   "viewBox": undefined,
                                   "width": undefined,
+                                  "xmlns": "",
                                 },
                               },
                             ],
@@ -681,11 +690,12 @@ initialize {
                             Object {
                               "attribs": Object {
                                 "class": "gio-icon-svg",
-                                "color": "#0044F2",
                                 "fill": "currentColor",
                                 "height": "1rem",
+                                "style": "color:#0044F2",
                                 "viewBox": "0 0 14 14",
                                 "width": "1rem",
+                                "xmlns": "http://www.w3.org/2000/svg",
                               },
                               "children": Array [
                                 Object {
@@ -887,19 +897,21 @@ initialize {
                               "type": "tag",
                               "x-attribsNamespace": Object {
                                 "class": undefined,
-                                "color": undefined,
                                 "fill": undefined,
                                 "height": undefined,
+                                "style": undefined,
                                 "viewBox": undefined,
                                 "width": undefined,
+                                "xmlns": "http://www.w3.org/2000/xmlns/",
                               },
                               "x-attribsPrefix": Object {
                                 "class": undefined,
-                                "color": undefined,
                                 "fill": undefined,
                                 "height": undefined,
+                                "style": undefined,
                                 "viewBox": undefined,
                                 "width": undefined,
+                                "xmlns": "",
                               },
                             },
                           ],
@@ -919,6 +931,7 @@ initialize {
                                   "height": "1rem",
                                   "viewBox": "0 0 14 14",
                                   "width": "1rem",
+                                  "xmlns": "http://www.w3.org/2000/svg",
                                 },
                                 "children": Array [
                                   Object {
@@ -958,6 +971,7 @@ initialize {
                                   "height": undefined,
                                   "viewBox": undefined,
                                   "width": undefined,
+                                  "xmlns": "http://www.w3.org/2000/xmlns/",
                                 },
                                 "x-attribsPrefix": Object {
                                   "class": undefined,
@@ -965,6 +979,7 @@ initialize {
                                   "height": undefined,
                                   "viewBox": undefined,
                                   "width": undefined,
+                                  "xmlns": "",
                                 },
                               },
                             ],
@@ -1026,6 +1041,7 @@ initialize {
                                     "height": "16px",
                                     "viewBox": "0 0 14 14",
                                     "width": "16px",
+                                    "xmlns": "http://www.w3.org/2000/svg",
                                   },
                                   "children": Array [
                                     Object {
@@ -1231,6 +1247,7 @@ initialize {
                                     "height": undefined,
                                     "viewBox": undefined,
                                     "width": undefined,
+                                    "xmlns": "http://www.w3.org/2000/xmlns/",
                                   },
                                   "x-attribsPrefix": Object {
                                     "class": undefined,
@@ -1238,6 +1255,7 @@ initialize {
                                     "height": undefined,
                                     "viewBox": undefined,
                                     "width": undefined,
+                                    "xmlns": "",
                                   },
                                 },
                               ],
@@ -1605,6 +1623,7 @@ initialize {
                   "height": "16px",
                   "viewBox": "0 0 14 14",
                   "width": "16px",
+                  "xmlns": "http://www.w3.org/2000/svg",
                 },
                 "children": Array [
                   Object {
@@ -1810,6 +1829,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
@@ -1817,6 +1837,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "",
                 },
               },
             ],
@@ -1934,6 +1955,7 @@ initialize {
                               "height": "1rem",
                               "viewBox": "0 0 14 14",
                               "width": "1rem",
+                              "xmlns": "http://www.w3.org/2000/svg",
                             },
                             "children": Array [
                               Object {
@@ -1973,6 +1995,7 @@ initialize {
                               "height": undefined,
                               "viewBox": undefined,
                               "width": undefined,
+                              "xmlns": "http://www.w3.org/2000/xmlns/",
                             },
                             "x-attribsPrefix": Object {
                               "class": undefined,
@@ -1980,6 +2003,7 @@ initialize {
                               "height": undefined,
                               "viewBox": undefined,
                               "width": undefined,
+                              "xmlns": "",
                             },
                           },
                         ],
@@ -1993,11 +2017,12 @@ initialize {
                             Object {
                               "attribs": Object {
                                 "class": "gio-icon-svg",
-                                "color": "#0044F2",
                                 "fill": "currentColor",
                                 "height": "1rem",
+                                "style": "color:#0044F2",
                                 "viewBox": "0 0 14 14",
                                 "width": "1rem",
+                                "xmlns": "http://www.w3.org/2000/svg",
                               },
                               "children": Array [
                                 Object {
@@ -2199,19 +2224,21 @@ initialize {
                               "type": "tag",
                               "x-attribsNamespace": Object {
                                 "class": undefined,
-                                "color": undefined,
                                 "fill": undefined,
                                 "height": undefined,
+                                "style": undefined,
                                 "viewBox": undefined,
                                 "width": undefined,
+                                "xmlns": "http://www.w3.org/2000/xmlns/",
                               },
                               "x-attribsPrefix": Object {
                                 "class": undefined,
-                                "color": undefined,
                                 "fill": undefined,
                                 "height": undefined,
+                                "style": undefined,
                                 "viewBox": undefined,
                                 "width": undefined,
+                                "xmlns": "",
                               },
                             },
                           ],
@@ -2246,11 +2273,12 @@ initialize {
                           Object {
                             "attribs": Object {
                               "class": "gio-icon-svg",
-                              "color": "#0044F2",
                               "fill": "currentColor",
                               "height": "1rem",
+                              "style": "color:#0044F2",
                               "viewBox": "0 0 14 14",
                               "width": "1rem",
+                              "xmlns": "http://www.w3.org/2000/svg",
                             },
                             "children": Array [
                               Object {
@@ -2452,19 +2480,21 @@ initialize {
                             "type": "tag",
                             "x-attribsNamespace": Object {
                               "class": undefined,
-                              "color": undefined,
                               "fill": undefined,
                               "height": undefined,
+                              "style": undefined,
                               "viewBox": undefined,
                               "width": undefined,
+                              "xmlns": "http://www.w3.org/2000/xmlns/",
                             },
                             "x-attribsPrefix": Object {
                               "class": undefined,
-                              "color": undefined,
                               "fill": undefined,
                               "height": undefined,
+                              "style": undefined,
                               "viewBox": undefined,
                               "width": undefined,
+                              "xmlns": "",
                             },
                           },
                         ],
@@ -2484,6 +2514,7 @@ initialize {
                                 "height": "1rem",
                                 "viewBox": "0 0 14 14",
                                 "width": "1rem",
+                                "xmlns": "http://www.w3.org/2000/svg",
                               },
                               "children": Array [
                                 Object {
@@ -2523,6 +2554,7 @@ initialize {
                                 "height": undefined,
                                 "viewBox": undefined,
                                 "width": undefined,
+                                "xmlns": "http://www.w3.org/2000/xmlns/",
                               },
                               "x-attribsPrefix": Object {
                                 "class": undefined,
@@ -2530,6 +2562,7 @@ initialize {
                                 "height": undefined,
                                 "viewBox": undefined,
                                 "width": undefined,
+                                "xmlns": "",
                               },
                             },
                           ],
@@ -2591,6 +2624,7 @@ initialize {
                                   "height": "16px",
                                   "viewBox": "0 0 14 14",
                                   "width": "16px",
+                                  "xmlns": "http://www.w3.org/2000/svg",
                                 },
                                 "children": Array [
                                   Object {
@@ -2796,6 +2830,7 @@ initialize {
                                   "height": undefined,
                                   "viewBox": undefined,
                                   "width": undefined,
+                                  "xmlns": "http://www.w3.org/2000/xmlns/",
                                 },
                                 "x-attribsPrefix": Object {
                                   "class": undefined,
@@ -2803,6 +2838,7 @@ initialize {
                                   "height": undefined,
                                   "viewBox": undefined,
                                   "width": undefined,
+                                  "xmlns": "",
                                 },
                               },
                             ],
@@ -3265,6 +3301,7 @@ initialize {
                             "height": "1rem",
                             "viewBox": "0 0 14 14",
                             "width": "1rem",
+                            "xmlns": "http://www.w3.org/2000/svg",
                           },
                           "children": Array [
                             Object {
@@ -3304,6 +3341,7 @@ initialize {
                             "height": undefined,
                             "viewBox": undefined,
                             "width": undefined,
+                            "xmlns": "http://www.w3.org/2000/xmlns/",
                           },
                           "x-attribsPrefix": Object {
                             "class": undefined,
@@ -3311,6 +3349,7 @@ initialize {
                             "height": undefined,
                             "viewBox": undefined,
                             "width": undefined,
+                            "xmlns": "",
                           },
                         },
                       ],
@@ -3324,11 +3363,12 @@ initialize {
                           Object {
                             "attribs": Object {
                               "class": "gio-icon-svg",
-                              "color": "#0044F2",
                               "fill": "currentColor",
                               "height": "1rem",
+                              "style": "color:#0044F2",
                               "viewBox": "0 0 14 14",
                               "width": "1rem",
+                              "xmlns": "http://www.w3.org/2000/svg",
                             },
                             "children": Array [
                               Object {
@@ -3530,19 +3570,21 @@ initialize {
                             "type": "tag",
                             "x-attribsNamespace": Object {
                               "class": undefined,
-                              "color": undefined,
                               "fill": undefined,
                               "height": undefined,
+                              "style": undefined,
                               "viewBox": undefined,
                               "width": undefined,
+                              "xmlns": "http://www.w3.org/2000/xmlns/",
                             },
                             "x-attribsPrefix": Object {
                               "class": undefined,
-                              "color": undefined,
                               "fill": undefined,
                               "height": undefined,
+                              "style": undefined,
                               "viewBox": undefined,
                               "width": undefined,
+                              "xmlns": "",
                             },
                           },
                         ],
@@ -3577,11 +3619,12 @@ initialize {
                         Object {
                           "attribs": Object {
                             "class": "gio-icon-svg",
-                            "color": "#0044F2",
                             "fill": "currentColor",
                             "height": "1rem",
+                            "style": "color:#0044F2",
                             "viewBox": "0 0 14 14",
                             "width": "1rem",
+                            "xmlns": "http://www.w3.org/2000/svg",
                           },
                           "children": Array [
                             Object {
@@ -3783,19 +3826,21 @@ initialize {
                           "type": "tag",
                           "x-attribsNamespace": Object {
                             "class": undefined,
-                            "color": undefined,
                             "fill": undefined,
                             "height": undefined,
+                            "style": undefined,
                             "viewBox": undefined,
                             "width": undefined,
+                            "xmlns": "http://www.w3.org/2000/xmlns/",
                           },
                           "x-attribsPrefix": Object {
                             "class": undefined,
-                            "color": undefined,
                             "fill": undefined,
                             "height": undefined,
+                            "style": undefined,
                             "viewBox": undefined,
                             "width": undefined,
+                            "xmlns": "",
                           },
                         },
                       ],
@@ -3815,6 +3860,7 @@ initialize {
                               "height": "1rem",
                               "viewBox": "0 0 14 14",
                               "width": "1rem",
+                              "xmlns": "http://www.w3.org/2000/svg",
                             },
                             "children": Array [
                               Object {
@@ -3854,6 +3900,7 @@ initialize {
                               "height": undefined,
                               "viewBox": undefined,
                               "width": undefined,
+                              "xmlns": "http://www.w3.org/2000/xmlns/",
                             },
                             "x-attribsPrefix": Object {
                               "class": undefined,
@@ -3861,6 +3908,7 @@ initialize {
                               "height": undefined,
                               "viewBox": undefined,
                               "width": undefined,
+                              "xmlns": "",
                             },
                           },
                         ],
@@ -3922,6 +3970,7 @@ initialize {
                                 "height": "16px",
                                 "viewBox": "0 0 14 14",
                                 "width": "16px",
+                                "xmlns": "http://www.w3.org/2000/svg",
                               },
                               "children": Array [
                                 Object {
@@ -4127,6 +4176,7 @@ initialize {
                                 "height": undefined,
                                 "viewBox": undefined,
                                 "width": undefined,
+                                "xmlns": "http://www.w3.org/2000/xmlns/",
                               },
                               "x-attribsPrefix": Object {
                                 "class": undefined,
@@ -4134,6 +4184,7 @@ initialize {
                                 "height": undefined,
                                 "viewBox": undefined,
                                 "width": undefined,
+                                "xmlns": "",
                               },
                             },
                           ],
@@ -4468,6 +4519,7 @@ initialize {
                     "height": "16px",
                     "viewBox": "0 0 14 14",
                     "width": "16px",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -4673,6 +4725,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -4680,6 +4733,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -4829,6 +4883,7 @@ initialize {
                           "height": "1rem",
                           "viewBox": "0 0 14 14",
                           "width": "1rem",
+                          "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
                           Object {
@@ -4868,6 +4923,7 @@ initialize {
                           "height": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
                           "class": undefined,
@@ -4875,6 +4931,7 @@ initialize {
                           "height": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "",
                         },
                       },
                     ],
@@ -4888,11 +4945,12 @@ initialize {
                         Object {
                           "attribs": Object {
                             "class": "gio-icon-svg",
-                            "color": "#0044F2",
                             "fill": "currentColor",
                             "height": "1rem",
+                            "style": "color:#0044F2",
                             "viewBox": "0 0 14 14",
                             "width": "1rem",
+                            "xmlns": "http://www.w3.org/2000/svg",
                           },
                           "children": Array [
                             Object {
@@ -5094,19 +5152,21 @@ initialize {
                           "type": "tag",
                           "x-attribsNamespace": Object {
                             "class": undefined,
-                            "color": undefined,
                             "fill": undefined,
                             "height": undefined,
+                            "style": undefined,
                             "viewBox": undefined,
                             "width": undefined,
+                            "xmlns": "http://www.w3.org/2000/xmlns/",
                           },
                           "x-attribsPrefix": Object {
                             "class": undefined,
-                            "color": undefined,
                             "fill": undefined,
                             "height": undefined,
+                            "style": undefined,
                             "viewBox": undefined,
                             "width": undefined,
+                            "xmlns": "",
                           },
                         },
                       ],
@@ -5141,11 +5201,12 @@ initialize {
                       Object {
                         "attribs": Object {
                           "class": "gio-icon-svg",
-                          "color": "#0044F2",
                           "fill": "currentColor",
                           "height": "1rem",
+                          "style": "color:#0044F2",
                           "viewBox": "0 0 14 14",
                           "width": "1rem",
+                          "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
                           Object {
@@ -5347,19 +5408,21 @@ initialize {
                         "type": "tag",
                         "x-attribsNamespace": Object {
                           "class": undefined,
-                          "color": undefined,
                           "fill": undefined,
                           "height": undefined,
+                          "style": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
                           "class": undefined,
-                          "color": undefined,
                           "fill": undefined,
                           "height": undefined,
+                          "style": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "",
                         },
                       },
                     ],
@@ -5379,6 +5442,7 @@ initialize {
                             "height": "1rem",
                             "viewBox": "0 0 14 14",
                             "width": "1rem",
+                            "xmlns": "http://www.w3.org/2000/svg",
                           },
                           "children": Array [
                             Object {
@@ -5418,6 +5482,7 @@ initialize {
                             "height": undefined,
                             "viewBox": undefined,
                             "width": undefined,
+                            "xmlns": "http://www.w3.org/2000/xmlns/",
                           },
                           "x-attribsPrefix": Object {
                             "class": undefined,
@@ -5425,6 +5490,7 @@ initialize {
                             "height": undefined,
                             "viewBox": undefined,
                             "width": undefined,
+                            "xmlns": "",
                           },
                         },
                       ],
@@ -5486,6 +5552,7 @@ initialize {
                               "height": "16px",
                               "viewBox": "0 0 14 14",
                               "width": "16px",
+                              "xmlns": "http://www.w3.org/2000/svg",
                             },
                             "children": Array [
                               Object {
@@ -5691,6 +5758,7 @@ initialize {
                               "height": undefined,
                               "viewBox": undefined,
                               "width": undefined,
+                              "xmlns": "http://www.w3.org/2000/xmlns/",
                             },
                             "x-attribsPrefix": Object {
                               "class": undefined,
@@ -5698,6 +5766,7 @@ initialize {
                               "height": undefined,
                               "viewBox": undefined,
                               "width": undefined,
+                              "xmlns": "",
                             },
                           },
                         ],
@@ -6038,6 +6107,7 @@ initialize {
                       "height": "16px",
                       "viewBox": "0 0 14 14",
                       "width": "16px",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -6243,6 +6313,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
@@ -6250,6 +6321,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -6393,6 +6465,7 @@ initialize {
                         "height": "1rem",
                         "viewBox": "0 0 14 14",
                         "width": "1rem",
+                        "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
                         Object {
@@ -6432,6 +6505,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
@@ -6439,6 +6513,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "",
                       },
                     },
                   ],
@@ -6452,11 +6527,12 @@ initialize {
                       Object {
                         "attribs": Object {
                           "class": "gio-icon-svg",
-                          "color": "#0044F2",
                           "fill": "currentColor",
                           "height": "1rem",
+                          "style": "color:#0044F2",
                           "viewBox": "0 0 14 14",
                           "width": "1rem",
+                          "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
                           Object {
@@ -6658,19 +6734,21 @@ initialize {
                         "type": "tag",
                         "x-attribsNamespace": Object {
                           "class": undefined,
-                          "color": undefined,
                           "fill": undefined,
                           "height": undefined,
+                          "style": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
                           "class": undefined,
-                          "color": undefined,
                           "fill": undefined,
                           "height": undefined,
+                          "style": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "",
                         },
                       },
                     ],
@@ -6705,11 +6783,12 @@ initialize {
                     Object {
                       "attribs": Object {
                         "class": "gio-icon-svg",
-                        "color": "#0044F2",
                         "fill": "currentColor",
                         "height": "1rem",
+                        "style": "color:#0044F2",
                         "viewBox": "0 0 14 14",
                         "width": "1rem",
+                        "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
                         Object {
@@ -6911,19 +6990,21 @@ initialize {
                       "type": "tag",
                       "x-attribsNamespace": Object {
                         "class": undefined,
-                        "color": undefined,
                         "fill": undefined,
                         "height": undefined,
+                        "style": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
-                        "color": undefined,
                         "fill": undefined,
                         "height": undefined,
+                        "style": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "",
                       },
                     },
                   ],
@@ -6943,6 +7024,7 @@ initialize {
                           "height": "1rem",
                           "viewBox": "0 0 14 14",
                           "width": "1rem",
+                          "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
                           Object {
@@ -6982,6 +7064,7 @@ initialize {
                           "height": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
                           "class": undefined,
@@ -6989,6 +7072,7 @@ initialize {
                           "height": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "",
                         },
                       },
                     ],
@@ -7050,6 +7134,7 @@ initialize {
                             "height": "16px",
                             "viewBox": "0 0 14 14",
                             "width": "16px",
+                            "xmlns": "http://www.w3.org/2000/svg",
                           },
                           "children": Array [
                             Object {
@@ -7255,6 +7340,7 @@ initialize {
                             "height": undefined,
                             "viewBox": undefined,
                             "width": undefined,
+                            "xmlns": "http://www.w3.org/2000/xmlns/",
                           },
                           "x-attribsPrefix": Object {
                             "class": undefined,
@@ -7262,6 +7348,7 @@ initialize {
                             "height": undefined,
                             "viewBox": undefined,
                             "width": undefined,
+                            "xmlns": "",
                           },
                         },
                       ],
@@ -7608,6 +7695,7 @@ initialize {
                         "height": "16px",
                         "viewBox": "0 0 14 14",
                         "width": "16px",
+                        "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
                         Object {
@@ -7813,6 +7901,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
@@ -7820,6 +7909,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "",
                       },
                     },
                   ],
@@ -7957,6 +8047,7 @@ initialize {
                       "height": "1rem",
                       "viewBox": "0 0 14 14",
                       "width": "1rem",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -7996,6 +8087,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
@@ -8003,6 +8095,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -8016,11 +8109,12 @@ initialize {
                     Object {
                       "attribs": Object {
                         "class": "gio-icon-svg",
-                        "color": "#0044F2",
                         "fill": "currentColor",
                         "height": "1rem",
+                        "style": "color:#0044F2",
                         "viewBox": "0 0 14 14",
                         "width": "1rem",
+                        "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
                         Object {
@@ -8222,19 +8316,21 @@ initialize {
                       "type": "tag",
                       "x-attribsNamespace": Object {
                         "class": undefined,
-                        "color": undefined,
                         "fill": undefined,
                         "height": undefined,
+                        "style": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
-                        "color": undefined,
                         "fill": undefined,
                         "height": undefined,
+                        "style": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "",
                       },
                     },
                   ],
@@ -8269,11 +8365,12 @@ initialize {
                   Object {
                     "attribs": Object {
                       "class": "gio-icon-svg",
-                      "color": "#0044F2",
                       "fill": "currentColor",
                       "height": "1rem",
+                      "style": "color:#0044F2",
                       "viewBox": "0 0 14 14",
                       "width": "1rem",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -8475,19 +8572,21 @@ initialize {
                     "type": "tag",
                     "x-attribsNamespace": Object {
                       "class": undefined,
-                      "color": undefined,
                       "fill": undefined,
                       "height": undefined,
+                      "style": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
-                      "color": undefined,
                       "fill": undefined,
                       "height": undefined,
+                      "style": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -8507,6 +8606,7 @@ initialize {
                         "height": "1rem",
                         "viewBox": "0 0 14 14",
                         "width": "1rem",
+                        "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
                         Object {
@@ -8546,6 +8646,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
@@ -8553,6 +8654,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "",
                       },
                     },
                   ],
@@ -8614,6 +8716,7 @@ initialize {
                           "height": "16px",
                           "viewBox": "0 0 14 14",
                           "width": "16px",
+                          "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
                           Object {
@@ -8819,6 +8922,7 @@ initialize {
                           "height": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
                           "class": undefined,
@@ -8826,6 +8930,7 @@ initialize {
                           "height": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "",
                         },
                       },
                     ],
@@ -9178,6 +9283,7 @@ initialize {
                           "height": "16px",
                           "viewBox": "0 0 14 14",
                           "width": "16px",
+                          "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
                           Object {
@@ -9383,6 +9489,7 @@ initialize {
                           "height": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
                           "class": undefined,
@@ -9390,6 +9497,7 @@ initialize {
                           "height": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "",
                         },
                       },
                     ],
@@ -9521,6 +9629,7 @@ initialize {
                     "height": "1rem",
                     "viewBox": "0 0 14 14",
                     "width": "1rem",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -9560,6 +9669,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -9567,6 +9677,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -9580,11 +9691,12 @@ initialize {
                   Object {
                     "attribs": Object {
                       "class": "gio-icon-svg",
-                      "color": "#0044F2",
                       "fill": "currentColor",
                       "height": "1rem",
+                      "style": "color:#0044F2",
                       "viewBox": "0 0 14 14",
                       "width": "1rem",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -9786,19 +9898,21 @@ initialize {
                     "type": "tag",
                     "x-attribsNamespace": Object {
                       "class": undefined,
-                      "color": undefined,
                       "fill": undefined,
                       "height": undefined,
+                      "style": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
-                      "color": undefined,
                       "fill": undefined,
                       "height": undefined,
+                      "style": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -9833,11 +9947,12 @@ initialize {
                 Object {
                   "attribs": Object {
                     "class": "gio-icon-svg",
-                    "color": "#0044F2",
                     "fill": "currentColor",
                     "height": "1rem",
+                    "style": "color:#0044F2",
                     "viewBox": "0 0 14 14",
                     "width": "1rem",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -10039,19 +10154,21 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "color": undefined,
                     "fill": undefined,
                     "height": undefined,
+                    "style": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "color": undefined,
                     "fill": undefined,
                     "height": undefined,
+                    "style": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -10071,6 +10188,7 @@ initialize {
                       "height": "1rem",
                       "viewBox": "0 0 14 14",
                       "width": "1rem",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -10110,6 +10228,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
@@ -10117,6 +10236,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -10178,6 +10298,7 @@ initialize {
                         "height": "16px",
                         "viewBox": "0 0 14 14",
                         "width": "16px",
+                        "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
                         Object {
@@ -10383,6 +10504,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
@@ -10390,6 +10512,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "",
                       },
                     },
                   ],
@@ -10748,6 +10871,7 @@ initialize {
                             "height": "16px",
                             "viewBox": "0 0 14 14",
                             "width": "16px",
+                            "xmlns": "http://www.w3.org/2000/svg",
                           },
                           "children": Array [
                             Object {
@@ -10953,6 +11077,7 @@ initialize {
                             "height": undefined,
                             "viewBox": undefined,
                             "width": undefined,
+                            "xmlns": "http://www.w3.org/2000/xmlns/",
                           },
                           "x-attribsPrefix": Object {
                             "class": undefined,
@@ -10960,6 +11085,7 @@ initialize {
                             "height": undefined,
                             "viewBox": undefined,
                             "width": undefined,
+                            "xmlns": "",
                           },
                         },
                       ],
@@ -11085,6 +11211,7 @@ initialize {
                   "height": "1rem",
                   "viewBox": "0 0 14 14",
                   "width": "1rem",
+                  "xmlns": "http://www.w3.org/2000/svg",
                 },
                 "children": Array [
                   Object {
@@ -11124,6 +11251,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
@@ -11131,6 +11259,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "",
                 },
               },
             ],
@@ -11144,11 +11273,12 @@ initialize {
                 Object {
                   "attribs": Object {
                     "class": "gio-icon-svg",
-                    "color": "#0044F2",
                     "fill": "currentColor",
                     "height": "1rem",
+                    "style": "color:#0044F2",
                     "viewBox": "0 0 14 14",
                     "width": "1rem",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -11350,19 +11480,21 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "color": undefined,
                     "fill": undefined,
                     "height": undefined,
+                    "style": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "color": undefined,
                     "fill": undefined,
                     "height": undefined,
+                    "style": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -11397,11 +11529,12 @@ initialize {
               Object {
                 "attribs": Object {
                   "class": "gio-icon-svg",
-                  "color": "#0044F2",
                   "fill": "currentColor",
                   "height": "1rem",
+                  "style": "color:#0044F2",
                   "viewBox": "0 0 14 14",
                   "width": "1rem",
+                  "xmlns": "http://www.w3.org/2000/svg",
                 },
                 "children": Array [
                   Object {
@@ -11603,19 +11736,21 @@ initialize {
                 "type": "tag",
                 "x-attribsNamespace": Object {
                   "class": undefined,
-                  "color": undefined,
                   "fill": undefined,
                   "height": undefined,
+                  "style": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
-                  "color": undefined,
                   "fill": undefined,
                   "height": undefined,
+                  "style": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "",
                 },
               },
             ],
@@ -11635,6 +11770,7 @@ initialize {
                     "height": "1rem",
                     "viewBox": "0 0 14 14",
                     "width": "1rem",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -11674,6 +11810,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -11681,6 +11818,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -11742,6 +11880,7 @@ initialize {
                       "height": "16px",
                       "viewBox": "0 0 14 14",
                       "width": "16px",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -11947,6 +12086,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
@@ -11954,6 +12094,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -12318,6 +12459,7 @@ initialize {
                               "height": "16px",
                               "viewBox": "0 0 14 14",
                               "width": "16px",
+                              "xmlns": "http://www.w3.org/2000/svg",
                             },
                             "children": Array [
                               Object {
@@ -12523,6 +12665,7 @@ initialize {
                               "height": undefined,
                               "viewBox": undefined,
                               "width": undefined,
+                              "xmlns": "http://www.w3.org/2000/xmlns/",
                             },
                             "x-attribsPrefix": Object {
                               "class": undefined,
@@ -12530,6 +12673,7 @@ initialize {
                               "height": undefined,
                               "viewBox": undefined,
                               "width": undefined,
+                              "xmlns": "",
                             },
                           },
                         ],
@@ -12681,6 +12825,7 @@ initialize {
                     "height": "16px",
                     "viewBox": "0 0 14 14",
                     "width": "16px",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -12886,6 +13031,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -12893,6 +13039,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -13155,6 +13302,7 @@ initialize {
                     "height": "1rem",
                     "viewBox": "0 0 14 14",
                     "width": "1rem",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -13194,6 +13342,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -13201,6 +13350,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -13214,11 +13364,12 @@ initialize {
                   Object {
                     "attribs": Object {
                       "class": "gio-icon-svg",
-                      "color": "#0044F2",
                       "fill": "currentColor",
                       "height": "1rem",
+                      "style": "color:#0044F2",
                       "viewBox": "0 0 14 14",
                       "width": "1rem",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -13420,19 +13571,21 @@ initialize {
                     "type": "tag",
                     "x-attribsNamespace": Object {
                       "class": undefined,
-                      "color": undefined,
                       "fill": undefined,
                       "height": undefined,
+                      "style": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
-                      "color": undefined,
                       "fill": undefined,
                       "height": undefined,
+                      "style": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -13467,11 +13620,12 @@ initialize {
                 Object {
                   "attribs": Object {
                     "class": "gio-icon-svg",
-                    "color": "#0044F2",
                     "fill": "currentColor",
                     "height": "1rem",
+                    "style": "color:#0044F2",
                     "viewBox": "0 0 14 14",
                     "width": "1rem",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -13673,19 +13827,21 @@ initialize {
                   "type": "tag",
                   "x-attribsNamespace": Object {
                     "class": undefined,
-                    "color": undefined,
                     "fill": undefined,
                     "height": undefined,
+                    "style": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
-                    "color": undefined,
                     "fill": undefined,
                     "height": undefined,
+                    "style": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -13705,6 +13861,7 @@ initialize {
                       "height": "1rem",
                       "viewBox": "0 0 14 14",
                       "width": "1rem",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -13744,6 +13901,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
@@ -13751,6 +13909,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -13888,6 +14047,7 @@ initialize {
                                 "height": "16px",
                                 "viewBox": "0 0 14 14",
                                 "width": "16px",
+                                "xmlns": "http://www.w3.org/2000/svg",
                               },
                               "children": Array [
                                 Object {
@@ -14093,6 +14253,7 @@ initialize {
                                 "height": undefined,
                                 "viewBox": undefined,
                                 "width": undefined,
+                                "xmlns": "http://www.w3.org/2000/xmlns/",
                               },
                               "x-attribsPrefix": Object {
                                 "class": undefined,
@@ -14100,6 +14261,7 @@ initialize {
                                 "height": undefined,
                                 "viewBox": undefined,
                                 "width": undefined,
+                                "xmlns": "",
                               },
                             },
                           ],
@@ -14245,6 +14407,7 @@ initialize {
                   "height": "16px",
                   "viewBox": "0 0 14 14",
                   "width": "16px",
+                  "xmlns": "http://www.w3.org/2000/svg",
                 },
                 "children": Array [
                   Object {
@@ -14450,6 +14613,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
@@ -14457,6 +14621,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "",
                 },
               },
             ],
@@ -14725,6 +14890,7 @@ initialize {
                       "height": "1rem",
                       "viewBox": "0 0 14 14",
                       "width": "1rem",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -14764,6 +14930,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
@@ -14771,6 +14938,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -14784,11 +14952,12 @@ initialize {
                     Object {
                       "attribs": Object {
                         "class": "gio-icon-svg",
-                        "color": "#0044F2",
                         "fill": "currentColor",
                         "height": "1rem",
+                        "style": "color:#0044F2",
                         "viewBox": "0 0 14 14",
                         "width": "1rem",
+                        "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
                         Object {
@@ -14990,19 +15159,21 @@ initialize {
                       "type": "tag",
                       "x-attribsNamespace": Object {
                         "class": undefined,
-                        "color": undefined,
                         "fill": undefined,
                         "height": undefined,
+                        "style": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
-                        "color": undefined,
                         "fill": undefined,
                         "height": undefined,
+                        "style": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "",
                       },
                     },
                   ],
@@ -15037,11 +15208,12 @@ initialize {
                   Object {
                     "attribs": Object {
                       "class": "gio-icon-svg",
-                      "color": "#0044F2",
                       "fill": "currentColor",
                       "height": "1rem",
+                      "style": "color:#0044F2",
                       "viewBox": "0 0 14 14",
                       "width": "1rem",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -15243,19 +15415,21 @@ initialize {
                     "type": "tag",
                     "x-attribsNamespace": Object {
                       "class": undefined,
-                      "color": undefined,
                       "fill": undefined,
                       "height": undefined,
+                      "style": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
-                      "color": undefined,
                       "fill": undefined,
                       "height": undefined,
+                      "style": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -15275,6 +15449,7 @@ initialize {
                         "height": "1rem",
                         "viewBox": "0 0 14 14",
                         "width": "1rem",
+                        "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
                         Object {
@@ -15314,6 +15489,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
@@ -15321,6 +15497,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "",
                       },
                     },
                   ],
@@ -15458,6 +15635,7 @@ initialize {
                                   "height": "16px",
                                   "viewBox": "0 0 14 14",
                                   "width": "16px",
+                                  "xmlns": "http://www.w3.org/2000/svg",
                                 },
                                 "children": Array [
                                   Object {
@@ -15663,6 +15841,7 @@ initialize {
                                   "height": undefined,
                                   "viewBox": undefined,
                                   "width": undefined,
+                                  "xmlns": "http://www.w3.org/2000/xmlns/",
                                 },
                                 "x-attribsPrefix": Object {
                                   "class": undefined,
@@ -15670,6 +15849,7 @@ initialize {
                                   "height": undefined,
                                   "viewBox": undefined,
                                   "width": undefined,
+                                  "xmlns": "",
                                 },
                               },
                             ],
@@ -16028,6 +16208,7 @@ initialize {
                     "height": "16px",
                     "viewBox": "0 0 14 14",
                     "width": "16px",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -16233,6 +16414,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -16240,6 +16422,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -16297,6 +16480,7 @@ initialize {
                         "height": "1rem",
                         "viewBox": "0 0 14 14",
                         "width": "1rem",
+                        "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
                         Object {
@@ -16336,6 +16520,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
@@ -16343,6 +16528,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "",
                       },
                     },
                   ],
@@ -16356,11 +16542,12 @@ initialize {
                       Object {
                         "attribs": Object {
                           "class": "gio-icon-svg",
-                          "color": "#0044F2",
                           "fill": "currentColor",
                           "height": "1rem",
+                          "style": "color:#0044F2",
                           "viewBox": "0 0 14 14",
                           "width": "1rem",
+                          "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
                           Object {
@@ -16562,19 +16749,21 @@ initialize {
                         "type": "tag",
                         "x-attribsNamespace": Object {
                           "class": undefined,
-                          "color": undefined,
                           "fill": undefined,
                           "height": undefined,
+                          "style": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
                           "class": undefined,
-                          "color": undefined,
                           "fill": undefined,
                           "height": undefined,
+                          "style": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "",
                         },
                       },
                     ],
@@ -16609,11 +16798,12 @@ initialize {
                     Object {
                       "attribs": Object {
                         "class": "gio-icon-svg",
-                        "color": "#0044F2",
                         "fill": "currentColor",
                         "height": "1rem",
+                        "style": "color:#0044F2",
                         "viewBox": "0 0 14 14",
                         "width": "1rem",
+                        "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
                         Object {
@@ -16815,19 +17005,21 @@ initialize {
                       "type": "tag",
                       "x-attribsNamespace": Object {
                         "class": undefined,
-                        "color": undefined,
                         "fill": undefined,
                         "height": undefined,
+                        "style": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
-                        "color": undefined,
                         "fill": undefined,
                         "height": undefined,
+                        "style": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "",
                       },
                     },
                   ],
@@ -16847,6 +17039,7 @@ initialize {
                           "height": "1rem",
                           "viewBox": "0 0 14 14",
                           "width": "1rem",
+                          "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
                           Object {
@@ -16886,6 +17079,7 @@ initialize {
                           "height": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
                           "class": undefined,
@@ -16893,6 +17087,7 @@ initialize {
                           "height": undefined,
                           "viewBox": undefined,
                           "width": undefined,
+                          "xmlns": "",
                         },
                       },
                     ],
@@ -17030,6 +17225,7 @@ initialize {
                                     "height": "16px",
                                     "viewBox": "0 0 14 14",
                                     "width": "16px",
+                                    "xmlns": "http://www.w3.org/2000/svg",
                                   },
                                   "children": Array [
                                     Object {
@@ -17235,6 +17431,7 @@ initialize {
                                     "height": undefined,
                                     "viewBox": undefined,
                                     "width": undefined,
+                                    "xmlns": "http://www.w3.org/2000/xmlns/",
                                   },
                                   "x-attribsPrefix": Object {
                                     "class": undefined,
@@ -17242,6 +17439,7 @@ initialize {
                                     "height": undefined,
                                     "viewBox": undefined,
                                     "width": undefined,
+                                    "xmlns": "",
                                   },
                                 },
                               ],

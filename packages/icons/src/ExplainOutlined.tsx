@@ -5,13 +5,15 @@ import { IconProps } from './interface';
 function SvgExplainOutlined(wrapperProps: IconProps) {
   const { rotating, color, size, ...restProps } = wrapperProps;
   const props = {
-    color,
+    style: {
+      color,
+    },
     className: rotating ? 'gio-icon-svg gio-icon-rotating' : 'gio-icon-svg',
     width: !size ? '1rem' : size,
     height: !size ? '1rem' : size,
   };
   const file = (
-    <svg viewBox="0 0 1024 1024" fill="currentColor" {...props}>
+    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="currentColor" {...props}>
       <path
         d="M512 32a480 480 0 10480 480A480.565 480.565 0 00512 32zm0 903.53A423.53 423.53 0 11935.53 512 424.094 424.094 0 01512 935.53z"
         fill="currentColor"

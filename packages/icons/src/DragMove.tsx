@@ -5,13 +5,15 @@ import { IconProps } from './interface';
 function SvgDragMove(wrapperProps: IconProps) {
   const { rotating, color, size, ...restProps } = wrapperProps;
   const props = {
-    color,
+    style: {
+      color,
+    },
     className: rotating ? 'gio-icon-svg gio-icon-rotating' : 'gio-icon-svg',
     width: !size ? '1rem' : size,
     height: !size ? '1rem' : size,
   };
   const file = (
-    <svg viewBox="0 0 12 6" fill="currentColor" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor" {...props}>
       <defs>
         <clipPath id="drag-move_svg__clip-path" transform="translate(0 -3)">
           <path fill="currentColor" d="M0 0h12v12H0z" />
