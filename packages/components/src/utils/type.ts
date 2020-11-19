@@ -8,6 +8,7 @@ export const tupleNum = <T extends number[]>(...args: T) => args;
  * Extract the type of an element of an array/tuple without performing indexing
  */
 // eslint-disable-next-line no-shadow
+// eslint-disable-next-line @typescript-eslint/no-shadow
 export type ElementOf<T> = T extends (infer E)[] ? E : T extends readonly (infer E)[] ? E : never;
 
 /**

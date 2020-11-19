@@ -6,9 +6,7 @@ exports[`Testing Banner should be stable 1`] = `
 >
   <div
     className="gio-banner-content"
-  >
-     
-  </div>
+  />
   <div
     className="gio-banner-button"
   />
