@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { Button } from '@gio-design/components';
+import Button from '../button';
 import { DrawerProps } from './interfaces';
 import Drawer from './index';
 import './style';
@@ -12,7 +12,7 @@ export default {
 
 export const Default: Story<DrawerProps> = (args) => {
   const [visible, setVisible] = React.useState(false);
-  const [showFooter, setShowFooter] = React.useState(true);
+  const [showFooter] = React.useState(true);
 
   const showDrawer = () => {
     setVisible(true);
