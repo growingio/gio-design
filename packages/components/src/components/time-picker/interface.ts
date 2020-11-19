@@ -3,26 +3,92 @@ import { AlignType } from 'rc-trigger/lib/interface';
 import Panel from './Panel';
 
 export interface TimePickerProps {
+  /**
+   * prefixCls of this component
+   * @default 'gio-time-picker'
+   */
   prefixCls?: string;
   clearText?: string;
+  /**
+   * 是否禁用
+   * @default false
+   */
   disabled?: boolean;
   allowEmpty?: boolean;
+  /**
+   * timepicker 的显示或者隐藏
+   * @default false
+   */
   open?: boolean;
+  /**
+   * 初始值
+   * @default null
+   */
   defaultValue?: Moment;
+  /**
+   * defaultOpenValue
+   * @default moment()
+   */
   defaultOpenValue?: Moment;
   defaultOpen: boolean;
+  /**
+   * 当前的值
+   * @default null
+   */
   value?: Moment;
+  /**
+   * time input's placeholder
+   * @default ""
+   */
   placeholder?: string;
+  /**
+   * time picker className
+   * @default ""
+   */
   className?: string;
+  /**
+   * time picker id
+   * @default ""
+   */
   id?: string;
+  /**
+   * time panel className
+   */
   popupClassName?: string;
+  /**
+   * 是否显示小时
+   * @default true
+   */
   showHour?: boolean;
+  /**
+   * 是否显示分钟
+   * @default true
+   */
   showMinute?: boolean;
+  /**
+   * 是否显示秒
+   * @default true
+   */
   showSecond?: boolean;
+  /**
+   * moment format
+   */
   format?: string;
+  /**
+   * disabled hour options
+   */
   disabledHours?: () => number[];
+  /**
+   * disabled minute options
+   */
   disabledMinutes?: (hour?: number) => number[];
+  /**
+   * disabled second options
+   */
   disabledSeconds?: (hour?: number, minute?: number) => number[];
+  /**
+   * 是否使用12小时制
+   */
   use12Hours?: boolean;
   hideDisabledOptions?: boolean;
   onChange?: (newValue?: Moment) => void;
