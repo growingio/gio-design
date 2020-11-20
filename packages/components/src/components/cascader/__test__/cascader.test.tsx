@@ -2,7 +2,6 @@ import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { waitFor } from '@testing-library/react';
 import React from 'react';
-
 import { NodeData } from '../menu-item';
 import Cascader from '..';
 
@@ -56,9 +55,12 @@ describe('<Cascader />', () => {
       });
     });
 
-    await waitFor(() => {
-      expect(document.querySelectorAll('.gio-dropdown-hidden')).toHaveLength(1);
-    });
+    await waitFor(
+      () => {
+        expect(document.querySelectorAll('.gio-dropdown-hidden')).toHaveLength(1);
+      },
+      { timeout: 5000 }
+    );
   });
 
   it('should render sub-menu', async () => {
