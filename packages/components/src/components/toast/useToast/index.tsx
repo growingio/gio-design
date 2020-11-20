@@ -50,7 +50,9 @@ const createUseToast = (
         }
 
         if (typeof duration === 'function') {
+          // eslint-disable-next-line no-param-reassign
           onClose = duration;
+          // eslint-disable-next-line no-param-reassign
           duration = undefined;
         }
 
