@@ -42,6 +42,10 @@ group:
 
 <code src='./demo/reference.tsx' title='返回引用' />
 
+### useModal
+
+<code src='./demo/useModal.tsx' />
+
 ## 参数说明
 
 ### Modal
@@ -123,3 +127,14 @@ group:
 | content   | Modal 内容            | React.ReactNode | -      | 否   |
 | icon      | Modal Title 中的 Icon | React.ReactNode | -      | 否   |
 | showClose | 是否显示关闭按钮      | React.ReactNode | -      | 否   |
+
+#### Modal.useModal()
+
+`Modal.staticMethod` 方法提供的函数式调用 `Modal` 方法产生的 `Modal` 无法获取 `ConfigContext` 提供的上下文信息，因此提供了一个基于 `hook` 调用的函数式调用 `Modal` 的方法。
+
+调用 `Modal.useModal` 后返回一个数组：`[modalFunctions, hooModal]`:
+
+- `modalFunctions`：使用方法与 `Modal.staticMethod` 一致
+- `hooModal`: 使用 `modalFunctions` 后生成的 `ReactElement`， 需要将其嵌入组件树中
+
+代码参考示例 [useModal](#usemodal)
