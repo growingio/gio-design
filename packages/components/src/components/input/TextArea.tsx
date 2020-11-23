@@ -14,9 +14,11 @@ const TextArea: React.FC<TextAreaProps> = ({
   wrapStyle,
   inputStyle,
   forwardRef = React.createRef(),
+  className,
   ...rest
 }: TextAreaProps) => {
   const prefixCls = usePrefixCls('input');
+  const wrapClass = classNames(className, prefixCls);
   const inputClass = classNames(`${prefixCls}-content`, `${prefixCls}-textarea`, {
     [`${prefixCls}-textarea-noresize`]: !resize,
   });
@@ -48,7 +50,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   }
 
   return (
-    <div className={prefixCls} style={outerStyle}>
+    <div className={wrapClass} style={outerStyle}>
       <textarea
         value={value ?? ''}
         onChange={handleOnChange}
