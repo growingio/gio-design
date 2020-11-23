@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
 
-import { isHit, makeSearchParttern, useDynamicData, dataKeyMapping, withPrefix } from './helper';
+import { dataFilter, dataKeyMapping, isHit, makeSearchParttern, useDynamicData, withPrefix } from './helper';
 
 export type Value = string | number;
 
@@ -19,16 +19,16 @@ export type NodeData = {
   disabled?: boolean;
   children?: NodeData[];
   groupId?: Value;
+  groupName?: string;
   [key: string]: unknown;
 };
 
-export interface Props<M extends KeyMapping = KeyMapping> {
+export interface Props {
   className?: string;
   style?: React.CSSProperties;
   dataSource: NodeData;
-  keyMapping?: M;
+  keyMapping?: KeyMapping;
   value?: Value;
-  hasChild?: boolean;
   keyword?: string;
   ignoreCase?: boolean;
   deepSearch?: boolean;
@@ -45,7 +45,7 @@ export interface Props<M extends KeyMapping = KeyMapping> {
   onBlur?: (event: FocusEvent) => void;
   onMouseLeave?: (event: MouseEvent) => void;
   onRender?: (nodeData: NodeData) => ReactElement;
-  afterInner?: ReactElement;
+  afterInner?: (nodeData: NodeData) => ReactElement;
 }
 
 const triggerMap = {
@@ -81,8 +81,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     style,
     dataSource: originDataSource,
     value,
-    keyMapping = {},
-    hasChild = false,
+    keyMapping = { label: 'label', value: 'value' },
     parentsData = [],
     beforeSelect,
     onSelect,
@@ -104,6 +103,8 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
 
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
   const { label: dataLabel, value: dataValue, disabled } = dataKeyMapping(dataSource, keyMapping);
+  const { children } = dataSource;
+  const noChild = isEmpty(children);
   const withWrapperCls = withPrefix('cascader-menu-item');
   const mergedTrigger = triggerMap[trigger.toLowerCase() as typeof trigger];
 
@@ -114,21 +115,26 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   const resolveBeforeSelect = (event: MouseEvent | KeyboardEvent) => {
     // const eventCopy = getCopyEvent(event);
     // 没有子节点 || selectAny 先调用 beforeSelect 回调
-    const { children } = dataSource;
-    const isSelect = isEmpty(children) || (event.type.toLowerCase() === mergedTrigger && selectAny);
+    const isSelect = noChild || (event.type.toLowerCase() === mergedTrigger && selectAny);
     const mergedData = isSelect ? beforeSelect?.(event, dataSource) : children;
     const pipe = (data: NodeData) => {
       onTrigger?.(event, data);
       if (isEmpty(data.children) || selectAny) {
         setDataSource(data);
-        onSelect?.(data, parentsData);
+        try {
+          onSelect?.(data, parentsData);
+        } catch (e) {
+          throw new Error(e);
+        }
       }
       return data;
     };
     return Promise.resolve(mergedData)
       .then((c) => ({ ...dataSource, children: c || children }))
       .then(pipe)
-      .catch(() => {
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('[cascader]', error);
         return pipe(dataSource);
       });
   };
@@ -162,6 +168,11 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
 
   const hitTarget = keyword && dataLabel && isHit(dataLabel, keyword, ignoreCase);
   const shouldRenderKeyword = hitTarget && (isEmpty(parentsData) || deepSearch);
+  const parttern = makeSearchParttern(keyword, ignoreCase);
+  const mergedHasChild =
+    keyword && deepSearch
+      ? !isEmpty(dataFilter(dataSource.children, parttern, deepSearch, keyMapping.label))
+      : !noChild;
 
   let childNode = (
     <div className={withWrapperCls('content')}>
@@ -169,10 +180,10 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         {shouldRenderKeyword && keyword && dataLabel ? renderKeyword(dataLabel, keyword, ignoreCase) : dataLabel}
       </div>
       <div>
-        {value === dataValue && (selectAny || !hasChild) && (
+        {value === dataValue && (selectAny || !mergedHasChild) && (
           <CheckOutlined size="1em" className={withWrapperCls('icon-checked')} />
         )}
-        {hasChild && <DownFilled size="1em" className={withWrapperCls('icon-down')} />}
+        {mergedHasChild && <DownFilled size="1em" className={withWrapperCls('icon-down')} />}
       </div>
     </div>
   );
@@ -202,7 +213,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         {childNode}
       </div>
 
-      {afterInner}
+      {isFunction(afterInner) ? afterInner(dataSource) : afterInner}
     </div>
   );
 });

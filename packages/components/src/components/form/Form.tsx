@@ -1,6 +1,7 @@
 import { FormProps as RcFormProps } from 'rc-field-form/lib/Form';
 import RcForm, { FormInstance, useForm } from 'rc-field-form';
-import React, { useContext } from 'react';
+import * as React from 'react';
+import { useContext } from 'react';
 import classNames from 'classnames';
 
 import { ConfigContext } from '../config-provider';
@@ -21,7 +22,7 @@ export interface Props<Values = unknown> extends Omit<RcFormProps<Values>, 'form
   size?: SizeType;
   colon?: boolean;
   requiredMark?: RequiredMark;
-  style ?: React.CSSProperties;
+  style?: React.CSSProperties;
 }
 
 const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props, ref) => {

@@ -5,6 +5,9 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  compositionStart?: (e: React.CompositionEvent<HTMLInputElement>) => void;
+  compositionUpdate?: (e: React.CompositionEvent<HTMLInputElement>) => void;
+  compositionEnd?: (e: React.CompositionEvent<HTMLInputElement>) => void;
   style?: React.CSSProperties;
   wrapStyle?: React.CSSProperties;
   inputStyle?: React.CSSProperties;

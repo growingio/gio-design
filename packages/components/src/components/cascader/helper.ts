@@ -46,7 +46,7 @@ export const deepFilter = (d: NodeData, parttern: RegExp, labelKey = 'label') =>
   return someChildMatch;
 };
 
-export const dataFilter = (data: NodeData[], parttern: RegExp, deepSearch = false, labelKey = 'label') => {
+export const dataFilter = (data = [] as NodeData[], parttern: RegExp, deepSearch = false, labelKey = 'label') => {
   if (!parttern) {
     return data;
   }

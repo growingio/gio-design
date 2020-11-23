@@ -2,19 +2,29 @@ import React, { ReactElement, useRef, useState } from 'react';
 import classNames from 'classnames';
 import groupBy from 'lodash/groupBy';
 import isEmpty from 'lodash/isEmpty';
+import isFunction from 'lodash/isFunction';
 
 import { dataFilter, makeSearchParttern, toInt, useDynamicData, dataKeyMapping, withPrefix } from './helper';
+import Empty from './empty';
 import MenuItem, { Props as MenuItemProps, NodeData } from './menu-item';
+
+type MaybeElementOrFn = React.ReactNode | ((dataSource: NodeData[]) => React.ReactNode);
+
+const getMayBeElement = (maybeElement: MaybeElementOrFn, dataSource: NodeData[]) => {
+  return isFunction(maybeElement) ? maybeElement(dataSource) : maybeElement;
+};
 
 export interface Props extends Omit<MenuItemProps, 'dataSource' | 'hasChild'> {
   dataSource?: NodeData[];
   onRender?: (nodeData: NodeData) => ReactElement;
   open?: boolean;
   depth?: number;
-  header?: React.ReactElement | false;
-  footer?: React.ReactElement | false;
+  header?: MaybeElementOrFn;
+  footer?: MaybeElementOrFn;
   offsetLeft?: number;
   offsetTop?: number;
+  getEmpty?: (keyword?: string) => React.ReactElement;
+  groupName?: MaybeElementOrFn;
 }
 
 const Menu: React.FC<Props> = (props) => {
@@ -23,7 +33,7 @@ const Menu: React.FC<Props> = (props) => {
     style,
     dataSource: originDataSource = [],
     value,
-    keyMapping = {},
+    keyMapping: originKeyMapping,
     open,
     depth = 0,
     keyword,
@@ -34,13 +44,16 @@ const Menu: React.FC<Props> = (props) => {
     onSelect: userOnSelect,
     header,
     footer,
+    groupName,
+    getEmpty,
     offsetLeft: userOffsetLeft = 5,
     offsetTop: userOffsetTop = 0,
     ...others
   } = props;
   const isRootMenu = depth === 0;
+  const keyMapping = { label: 'label', value: 'value', ...originKeyMapping };
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
-  const wrapRef = useRef(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
   const withWrapperCls = withPrefix('cascader-menu');
   const [canOpen, setCanOpen] = useDynamicData(open);
   const [triggerData, setTriggerData] = useState<NodeData>();
@@ -49,9 +62,10 @@ const Menu: React.FC<Props> = (props) => {
     const menu = event.currentTarget.closest('.cascader-menu');
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const { width, paddingLeft, paddingTop } = getComputedStyle(menu!);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const { scrollTop, scrollLeft } = menu!.querySelector('.cascader-menu-body')!;
     const { offsetLeft = 0, offsetTop = 0 } = (event.currentTarget || {}) as HTMLElement;
-    setOffset([toInt(width) + offsetLeft - toInt(paddingLeft), offsetTop - toInt(paddingTop)]);
-    // setTriggerData(undefined);
+    setOffset([toInt(width) + offsetLeft - toInt(paddingLeft) - scrollLeft, offsetTop - toInt(paddingTop) - scrollTop]);
     setTriggerData(nodeData);
     userOnTrigger?.(event, nodeData);
     setCanOpen(!isEmpty(nodeData.children));
@@ -71,33 +85,64 @@ const Menu: React.FC<Props> = (props) => {
 
   let childMenu;
   if (canOpen && triggerData && !isEmpty(triggerData.children)) {
-    const [left, top] = offset;
-    const { top: sTop = 0, left: sLeft = 0 } = style || {};
+    const [offsetLeft, offestTop] = offset;
+    const { top: inheritTop = 0, left: inheritLeft = 0 } = style || {};
+    const nextDepth = depth + 1;
     childMenu = (
       <Menu
         {...props}
-        depth={depth + 1}
+        key={[nextDepth, triggerData[keyMapping.value]].join('-')}
+        depth={nextDepth}
         open={false}
         dataSource={triggerData.children}
         parentsData={[triggerData, ...parentsData]}
-        style={{ ...style, top: userOffsetTop + top + toInt(sTop), left: userOffsetLeft + left + toInt(sLeft) }}
+        style={{
+          ...style,
+          top: userOffsetTop + offestTop + toInt(inheritTop),
+          left: userOffsetLeft + offsetLeft + toInt(inheritLeft),
+        }}
       />
     );
   }
 
-  const filteredDataSource = (() => {
-    if (!keyword) {
-      return dataSource;
-    }
-
+  let filteredDataSource = dataSource;
+  if (keyword && (isRootMenu || deepSearch)) {
     const searchParttern = makeSearchParttern(keyword, ignoreCase);
-    return dataFilter(dataSource, searchParttern, deepSearch, keyMapping.label);
-  })();
+    filteredDataSource = dataFilter(dataSource, searchParttern, deepSearch, keyMapping.label);
+  }
 
   const groupData = groupBy(filteredDataSource, 'groupId');
 
   if (isEmpty(filteredDataSource) && !isRootMenu) {
     return null;
+  }
+
+  let menu;
+
+  if (isEmpty(filteredDataSource) && isRootMenu) {
+    menu = getEmpty ? getEmpty(keyword) : <Empty tip={!keyword ? '无搜索结果' : undefined} />;
+  } else {
+    menu = Object.keys(groupData).map((groupId) => (
+      <div key={groupId} className={withWrapperCls('group')}>
+        <div className={withWrapperCls('group-name')}>
+          {getMayBeElement(groupName, groupData[groupId]) ?? groupData[groupId][0].groupName}
+        </div>
+        {groupData[groupId].map((data, i) => (
+          <MenuItem
+            key={[depth, i].join('-')}
+            value={value}
+            keyword={keyword}
+            dataSource={data}
+            onTrigger={onTrigger}
+            onSelect={onSelect}
+            parentsData={parentsData}
+            deepSearch={deepSearch}
+            keyMapping={keyMapping}
+            {...others}
+          />
+        ))}
+      </div>
+    ));
   }
 
   return (
@@ -110,29 +155,9 @@ const Menu: React.FC<Props> = (props) => {
         style={style}
         ref={wrapRef}
       >
-        {isRootMenu && header && <div className={withWrapperCls('header')}>{header}</div>}
-        <div className={withWrapperCls('body')}>
-          {Object.keys(groupData).map((groupId) => (
-            <div key={groupId} className={withWrapperCls('group')}>
-              {groupData[groupId].map((data, i) => (
-                <MenuItem
-                  key={[depth, i].join('-')}
-                  value={value}
-                  keyword={keyword}
-                  dataSource={data}
-                  onTrigger={onTrigger}
-                  onSelect={onSelect}
-                  parentsData={parentsData}
-                  deepSearch={deepSearch}
-                  hasChild={!isEmpty(data.children)}
-                  keyMapping={keyMapping}
-                  {...others}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
-        {isRootMenu && footer && <div className={withWrapperCls('footer')}>{footer}</div>}
+        {isRootMenu && header && <div className={withWrapperCls('header')}>{getMayBeElement(header, dataSource)}</div>}
+        <div className={withWrapperCls('body')}>{menu}</div>
+        {isRootMenu && footer && <div className={withWrapperCls('footer')}>{getMayBeElement(footer, dataSource)}</div>}
       </div>
       {childMenu}
     </>
