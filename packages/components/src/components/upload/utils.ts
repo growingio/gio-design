@@ -1,6 +1,7 @@
+import { defaultRootPrefixCls } from '../config-provider';
 import { IRcFile, IUploadFile, STATUS_NOT_YET } from './interface';
 
-export const getUid = (): string => `gio-upload-${Date.now()}`;
+export const getUid = (): string => `${defaultRootPrefixCls}-upload-${Date.now()}`;
 
 export const fileToObject = (file: IRcFile): IUploadFile => ({
   ...file,

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from '@gio-design/components/es/components/button';
-import '@gio-design/components/es/components/button/style/css.js';
+import '@gio-design/components/es/components/button/style/index.less';
 import { PlusCircleFilled } from '@gio-design/icons';
 import './index.less';
 

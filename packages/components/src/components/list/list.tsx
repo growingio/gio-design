@@ -1,17 +1,14 @@
 import React from 'react';
 import { get } from 'lodash';
 import { List, AutoSizer } from 'react-virtualized';
+import { withConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import SelectOption from './option';
 import Group from './Group';
 import withGroupedOptions from './utils/withGroupedOptions';
 import { SelectListProps } from './interface';
 
-interface State {
-  value: any | any[];
-}
-
-class SelectList extends React.Component<SelectListProps, State> {
-  public static defaultProps: Partial<SelectListProps> = {
+class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> {
+  public static defaultProps: Partial<SelectListProps & ConfigConsumerProps> = {
     disabledOptions: [],
     isMultiple: false,
     height: 450,
@@ -19,18 +16,15 @@ class SelectList extends React.Component<SelectListProps, State> {
 
   public ref: React.RefObject<HTMLDivElement>;
 
-  public constructor(props: SelectListProps) {
+  public constructor(props: SelectListProps & ConfigConsumerProps) {
     super(props);
     this.ref = React.createRef();
-    this.state = {
-      value: null,
-    };
   }
 
   private getPopupContainer = () => this.ref.current as HTMLElement;
 
   private renderList = () => {
-    const { height, disabledOptions, rowHeight, options, value } = this.props;
+    const { height, disabledOptions, rowHeight, options, value, prefixCls } = this.props;
     const getRowHeight = ({ index }: { index: number }) => {
       if (typeof rowHeight === 'function') {
         return rowHeight(options[index]);
@@ -48,7 +42,7 @@ class SelectList extends React.Component<SelectListProps, State> {
             rowHeight={typeof rowHeight === 'function' ? getRowHeight : rowHeight}
             rowRenderer={this.renderListItem(options)}
             disabledOptions={disabledOptions}
-            className="gio-select-list"
+            className={`${prefixCls}-list`}
           />
         )}
       </AutoSizer>
@@ -175,14 +169,17 @@ class SelectList extends React.Component<SelectListProps, State> {
   };
 
   public render() {
+    const { prefixCls } = this.props;
     return (
-      <div className="gio-select-list-wrapper" ref={this.ref}>
+      <div className={`${prefixCls}-list-wrapper`} ref={this.ref}>
         {this.renderList()}
       </div>
     );
   }
 }
 
-const WithGroupList = withGroupedOptions(SelectList);
+const WithGroupList = withGroupedOptions(
+  withConfigConsumer<SelectListProps>({ subPrefixCls: 'select' })(SelectList)
+);
 
 export default WithGroupList;

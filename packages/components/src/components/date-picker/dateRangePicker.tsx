@@ -1,19 +1,18 @@
-import React, { useContext, useRef, useState,useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/Picker';
 import RcRangeCalendar from 'rc-calendar/lib/RangeCalendar';
 import classNames from 'classnames';
 import moment, { Moment } from 'moment';
 import { debounce } from 'lodash';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Button from '../button';
 import Input from '../input';
 import { DateRangePickerProps } from './interface';
 
 const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerProps) => {
   const { prefixCls: customizePrefixCls, format = 'YYYY/MM/DD', value, defaultValue, showFooter, disabledDate } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('date-picker', customizePrefixCls);
+  const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
 
   const calendarContainerRef = useRef(null);
   const [open, setOpen] = useState(false);
@@ -22,7 +21,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   const [rightInputTimeRange, setRightInputTimeRange] = useState('');
   useEffect(() => {
     setTimeRange(value);
-  }, [value])
+  }, [value]);
   const onSelect = (values: Array<Moment>): void => {
     setTimeRange(values);
     props?.onSelect(values);
@@ -88,15 +87,9 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
 
   const renderFooter = () => (
     <>
-      {
-        props.renderExtraFooter && (
-          <div className={classNames(`${prefixCls}-extra-footer`)}>
-            {
-              props.renderExtraFooter()
-            }
-          </div>
-        )
-      }
+      {props.renderExtraFooter && (
+        <div className={classNames(`${prefixCls}-extra-footer`)}>{props.renderExtraFooter()}</div>
+      )}
       <Button onClick={onCancel} type="secondary" size="middle" style={{ margin: ' 0 12px 0 0 ' }}>
         取消
       </Button>
@@ -138,15 +131,12 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
         open={open}
       >
         {({ value: _value }: { value: Array<Moment> }) => (
-          <div
-            className={classNames(`${prefixCls}-range-input`)}
-          >
+          <div className={classNames(`${prefixCls}-range-input`)}>
             <Input
               placeholder="please select"
               onChange={handleLeftInputChange}
               value={leftInputTimeRange || `${formatDate(_value[0])}`}
               onClick={() => setOpen(true)}
-
             />
             <span className={`${prefixCls}-split`}>—</span>
             <Input

@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { WarningFilled, InformationFilled, CheckCircleFilled, CloseCircleFilled } from '@gio-design/icons';
 import { PaletteBlue4, PaletteYellow5, PaletteGreen6, PaletteRed5 } from '@gio-design/tokens';
+import { defaultRootPrefixCls } from '../config-provider';
 import CalloutModal from './CalloutModal';
 import { IModalStaticFuncConfig, IModalStaticFuncReturn } from './interface';
 
 export default function callout(config: IModalStaticFuncConfig): IModalStaticFuncReturn {
   const container = document.createElement('div');
-  container.classList.add('gio-modal__callout-container');
+  container.classList.add(`${defaultRootPrefixCls}-modal__callout-container`);
   document.body.appendChild(container);
 
   let props = { okText: '确定', closeText: '取消', ...config, close, visible: true };

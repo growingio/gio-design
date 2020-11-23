@@ -4,17 +4,17 @@ exports[`CheckboxGroup passes prefixCls down to checkbox 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "my-checkbox-group my-checkbox-group--horizontal",
+      "class": "my-checkbox-checkbox-group my-checkbox-checkbox-group--horizontal",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "my-checkbox-wrapper",
+          "class": "my-checkbox-checkbox-wrapper",
         },
         "children": Array [
           Object {
             "attribs": Object {
-              "class": "gio-icon my-checkbox-icon my-checkbox-icon-cool",
+              "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
             },
             "children": Array [
               Object {
@@ -24,6 +24,7 @@ initialize {
                   "height": "1rem",
                   "viewBox": "0 0 14 14",
                   "width": "1rem",
+                  "xmlns": "http://www.w3.org/2000/svg",
                 },
                 "children": Array [
                   Object {
@@ -229,6 +230,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
@@ -236,6 +238,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "",
                 },
               },
             ],
@@ -243,12 +246,12 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "my-checkbox my-checkbox-cool",
+                "class": "my-checkbox-checkbox my-checkbox-checkbox-cool",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "my-checkbox-input",
+                    "class": "my-checkbox-checkbox-input",
                     "type": "checkbox",
                     "value": "Apple",
                   },
@@ -257,7 +260,7 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
-                      "class": "my-checkbox-inner",
+                      "class": "my-checkbox-checkbox-inner",
                     },
                     "children": Array [],
                     "name": "span",
@@ -289,7 +292,7 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
-                    "class": "my-checkbox-inner",
+                    "class": "my-checkbox-checkbox-inner",
                   },
                   "children": Array [],
                   "name": "span",
@@ -298,7 +301,7 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "class": "my-checkbox-input",
+                      "class": "my-checkbox-checkbox-input",
                       "type": "checkbox",
                       "value": "Apple",
                     },
@@ -373,12 +376,12 @@ initialize {
           },
           Object {
             "attribs": Object {
-              "class": "my-checkbox my-checkbox-cool",
+              "class": "my-checkbox-checkbox my-checkbox-checkbox-cool",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "my-checkbox-input",
+                  "class": "my-checkbox-checkbox-input",
                   "type": "checkbox",
                   "value": "Apple",
                 },
@@ -387,7 +390,7 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
-                    "class": "my-checkbox-inner",
+                    "class": "my-checkbox-checkbox-inner",
                   },
                   "children": Array [],
                   "name": "span",
@@ -419,7 +422,7 @@ initialize {
               },
               Object {
                 "attribs": Object {
-                  "class": "my-checkbox-inner",
+                  "class": "my-checkbox-checkbox-inner",
                 },
                 "children": Array [],
                 "name": "span",
@@ -428,7 +431,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "class": "my-checkbox-input",
+                    "class": "my-checkbox-checkbox-input",
                     "type": "checkbox",
                     "value": "Apple",
                   },
@@ -484,7 +487,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "gio-icon my-checkbox-icon my-checkbox-icon-cool",
+                "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
               },
               "children": Array [
                 Object {
@@ -494,6 +497,7 @@ initialize {
                     "height": "1rem",
                     "viewBox": "0 0 14 14",
                     "width": "1rem",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -699,6 +703,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -706,6 +711,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -747,12 +753,12 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "my-checkbox my-checkbox-cool",
+                "class": "my-checkbox-checkbox my-checkbox-checkbox-cool",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "my-checkbox-input",
+                    "class": "my-checkbox-checkbox-input",
                     "type": "checkbox",
                     "value": "Apple",
                   },
@@ -761,7 +767,7 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
-                      "class": "my-checkbox-inner",
+                      "class": "my-checkbox-checkbox-inner",
                     },
                     "children": Array [],
                     "name": "span",
@@ -793,7 +799,7 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
-                    "class": "my-checkbox-inner",
+                    "class": "my-checkbox-checkbox-inner",
                   },
                   "children": Array [],
                   "name": "span",
@@ -802,7 +808,7 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "class": "my-checkbox-input",
+                      "class": "my-checkbox-checkbox-input",
                       "type": "checkbox",
                       "value": "Apple",
                     },
@@ -839,7 +845,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "gio-icon my-checkbox-icon my-checkbox-icon-cool",
+                  "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
                 },
                 "children": Array [
                   Object {
@@ -849,6 +855,7 @@ initialize {
                       "height": "1rem",
                       "viewBox": "0 0 14 14",
                       "width": "1rem",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -1054,6 +1061,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
@@ -1061,6 +1069,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -1094,12 +1103,12 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "my-checkbox-wrapper",
+            "class": "my-checkbox-checkbox-wrapper",
           },
           "children": Array [
             Object {
               "attribs": Object {
-                "class": "gio-icon my-checkbox-icon my-checkbox-icon-cool",
+                "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
               },
               "children": Array [
                 Object {
@@ -1109,6 +1118,7 @@ initialize {
                     "height": "1rem",
                     "viewBox": "0 0 14 14",
                     "width": "1rem",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -1314,6 +1324,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -1321,6 +1332,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -1328,12 +1340,12 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "my-checkbox my-checkbox-cool",
+                  "class": "my-checkbox-checkbox my-checkbox-checkbox-cool",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "my-checkbox-input",
+                      "class": "my-checkbox-checkbox-input",
                       "type": "checkbox",
                       "value": "Orange",
                     },
@@ -1342,7 +1354,7 @@ initialize {
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": Object {
                       "attribs": Object {
-                        "class": "my-checkbox-inner",
+                        "class": "my-checkbox-checkbox-inner",
                       },
                       "children": Array [],
                       "name": "span",
@@ -1374,7 +1386,7 @@ initialize {
                   },
                   Object {
                     "attribs": Object {
-                      "class": "my-checkbox-inner",
+                      "class": "my-checkbox-checkbox-inner",
                     },
                     "children": Array [],
                     "name": "span",
@@ -1383,7 +1395,7 @@ initialize {
                     "parent": [Circular],
                     "prev": Object {
                       "attribs": Object {
-                        "class": "my-checkbox-input",
+                        "class": "my-checkbox-checkbox-input",
                         "type": "checkbox",
                         "value": "Orange",
                       },
@@ -1458,12 +1470,12 @@ initialize {
             },
             Object {
               "attribs": Object {
-                "class": "my-checkbox my-checkbox-cool",
+                "class": "my-checkbox-checkbox my-checkbox-checkbox-cool",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "my-checkbox-input",
+                    "class": "my-checkbox-checkbox-input",
                     "type": "checkbox",
                     "value": "Orange",
                   },
@@ -1472,7 +1484,7 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
-                      "class": "my-checkbox-inner",
+                      "class": "my-checkbox-checkbox-inner",
                     },
                     "children": Array [],
                     "name": "span",
@@ -1504,7 +1516,7 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
-                    "class": "my-checkbox-inner",
+                    "class": "my-checkbox-checkbox-inner",
                   },
                   "children": Array [],
                   "name": "span",
@@ -1513,7 +1525,7 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "class": "my-checkbox-input",
+                      "class": "my-checkbox-checkbox-input",
                       "type": "checkbox",
                       "value": "Orange",
                     },
@@ -1569,7 +1581,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "gio-icon my-checkbox-icon my-checkbox-icon-cool",
+                  "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
                 },
                 "children": Array [
                   Object {
@@ -1579,6 +1591,7 @@ initialize {
                       "height": "1rem",
                       "viewBox": "0 0 14 14",
                       "width": "1rem",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -1784,6 +1797,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
@@ -1791,6 +1805,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -1832,12 +1847,12 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "my-checkbox my-checkbox-cool",
+                  "class": "my-checkbox-checkbox my-checkbox-checkbox-cool",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "my-checkbox-input",
+                      "class": "my-checkbox-checkbox-input",
                       "type": "checkbox",
                       "value": "Orange",
                     },
@@ -1846,7 +1861,7 @@ initialize {
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": Object {
                       "attribs": Object {
-                        "class": "my-checkbox-inner",
+                        "class": "my-checkbox-checkbox-inner",
                       },
                       "children": Array [],
                       "name": "span",
@@ -1878,7 +1893,7 @@ initialize {
                   },
                   Object {
                     "attribs": Object {
-                      "class": "my-checkbox-inner",
+                      "class": "my-checkbox-checkbox-inner",
                     },
                     "children": Array [],
                     "name": "span",
@@ -1887,7 +1902,7 @@ initialize {
                     "parent": [Circular],
                     "prev": Object {
                       "attribs": Object {
-                        "class": "my-checkbox-input",
+                        "class": "my-checkbox-checkbox-input",
                         "type": "checkbox",
                         "value": "Orange",
                       },
@@ -1924,7 +1939,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "class": "gio-icon my-checkbox-icon my-checkbox-icon-cool",
+                    "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
                   },
                   "children": Array [
                     Object {
@@ -1934,6 +1949,7 @@ initialize {
                         "height": "1rem",
                         "viewBox": "0 0 14 14",
                         "width": "1rem",
+                        "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
                         Object {
@@ -2139,6 +2155,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
@@ -2146,6 +2163,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "",
                       },
                     },
                   ],
@@ -2200,12 +2218,12 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "my-checkbox-wrapper",
+          "class": "my-checkbox-checkbox-wrapper",
         },
         "children": Array [
           Object {
             "attribs": Object {
-              "class": "gio-icon my-checkbox-icon my-checkbox-icon-cool",
+              "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
             },
             "children": Array [
               Object {
@@ -2215,6 +2233,7 @@ initialize {
                   "height": "1rem",
                   "viewBox": "0 0 14 14",
                   "width": "1rem",
+                  "xmlns": "http://www.w3.org/2000/svg",
                 },
                 "children": Array [
                   Object {
@@ -2420,6 +2439,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
                   "class": undefined,
@@ -2427,6 +2447,7 @@ initialize {
                   "height": undefined,
                   "viewBox": undefined,
                   "width": undefined,
+                  "xmlns": "",
                 },
               },
             ],
@@ -2434,12 +2455,12 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "my-checkbox my-checkbox-cool",
+                "class": "my-checkbox-checkbox my-checkbox-checkbox-cool",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "my-checkbox-input",
+                    "class": "my-checkbox-checkbox-input",
                     "type": "checkbox",
                     "value": "Orange",
                   },
@@ -2448,7 +2469,7 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
-                      "class": "my-checkbox-inner",
+                      "class": "my-checkbox-checkbox-inner",
                     },
                     "children": Array [],
                     "name": "span",
@@ -2480,7 +2501,7 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
-                    "class": "my-checkbox-inner",
+                    "class": "my-checkbox-checkbox-inner",
                   },
                   "children": Array [],
                   "name": "span",
@@ -2489,7 +2510,7 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "class": "my-checkbox-input",
+                      "class": "my-checkbox-checkbox-input",
                       "type": "checkbox",
                       "value": "Orange",
                     },
@@ -2564,12 +2585,12 @@ initialize {
           },
           Object {
             "attribs": Object {
-              "class": "my-checkbox my-checkbox-cool",
+              "class": "my-checkbox-checkbox my-checkbox-checkbox-cool",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "my-checkbox-input",
+                  "class": "my-checkbox-checkbox-input",
                   "type": "checkbox",
                   "value": "Orange",
                 },
@@ -2578,7 +2599,7 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
-                    "class": "my-checkbox-inner",
+                    "class": "my-checkbox-checkbox-inner",
                   },
                   "children": Array [],
                   "name": "span",
@@ -2610,7 +2631,7 @@ initialize {
               },
               Object {
                 "attribs": Object {
-                  "class": "my-checkbox-inner",
+                  "class": "my-checkbox-checkbox-inner",
                 },
                 "children": Array [],
                 "name": "span",
@@ -2619,7 +2640,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "class": "my-checkbox-input",
+                    "class": "my-checkbox-checkbox-input",
                     "type": "checkbox",
                     "value": "Orange",
                   },
@@ -2675,7 +2696,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "gio-icon my-checkbox-icon my-checkbox-icon-cool",
+                "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
               },
               "children": Array [
                 Object {
@@ -2685,6 +2706,7 @@ initialize {
                     "height": "1rem",
                     "viewBox": "0 0 14 14",
                     "width": "1rem",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -2890,6 +2912,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -2897,6 +2920,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -2938,12 +2962,12 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "my-checkbox my-checkbox-cool",
+                "class": "my-checkbox-checkbox my-checkbox-checkbox-cool",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "my-checkbox-input",
+                    "class": "my-checkbox-checkbox-input",
                     "type": "checkbox",
                     "value": "Orange",
                   },
@@ -2952,7 +2976,7 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
-                      "class": "my-checkbox-inner",
+                      "class": "my-checkbox-checkbox-inner",
                     },
                     "children": Array [],
                     "name": "span",
@@ -2984,7 +3008,7 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
-                    "class": "my-checkbox-inner",
+                    "class": "my-checkbox-checkbox-inner",
                   },
                   "children": Array [],
                   "name": "span",
@@ -2993,7 +3017,7 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "class": "my-checkbox-input",
+                      "class": "my-checkbox-checkbox-input",
                       "type": "checkbox",
                       "value": "Orange",
                     },
@@ -3030,7 +3054,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "gio-icon my-checkbox-icon my-checkbox-icon-cool",
+                  "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
                 },
                 "children": Array [
                   Object {
@@ -3040,6 +3064,7 @@ initialize {
                       "height": "1rem",
                       "viewBox": "0 0 14 14",
                       "width": "1rem",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -3245,6 +3270,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
@@ -3252,6 +3278,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -3287,12 +3314,12 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "my-checkbox-wrapper",
+            "class": "my-checkbox-checkbox-wrapper",
           },
           "children": Array [
             Object {
               "attribs": Object {
-                "class": "gio-icon my-checkbox-icon my-checkbox-icon-cool",
+                "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
               },
               "children": Array [
                 Object {
@@ -3302,6 +3329,7 @@ initialize {
                     "height": "1rem",
                     "viewBox": "0 0 14 14",
                     "width": "1rem",
+                    "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
                     Object {
@@ -3507,6 +3535,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
                     "class": undefined,
@@ -3514,6 +3543,7 @@ initialize {
                     "height": undefined,
                     "viewBox": undefined,
                     "width": undefined,
+                    "xmlns": "",
                   },
                 },
               ],
@@ -3521,12 +3551,12 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "my-checkbox my-checkbox-cool",
+                  "class": "my-checkbox-checkbox my-checkbox-checkbox-cool",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "my-checkbox-input",
+                      "class": "my-checkbox-checkbox-input",
                       "type": "checkbox",
                       "value": "Apple",
                     },
@@ -3535,7 +3565,7 @@ initialize {
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": Object {
                       "attribs": Object {
-                        "class": "my-checkbox-inner",
+                        "class": "my-checkbox-checkbox-inner",
                       },
                       "children": Array [],
                       "name": "span",
@@ -3567,7 +3597,7 @@ initialize {
                   },
                   Object {
                     "attribs": Object {
-                      "class": "my-checkbox-inner",
+                      "class": "my-checkbox-checkbox-inner",
                     },
                     "children": Array [],
                     "name": "span",
@@ -3576,7 +3606,7 @@ initialize {
                     "parent": [Circular],
                     "prev": Object {
                       "attribs": Object {
-                        "class": "my-checkbox-input",
+                        "class": "my-checkbox-checkbox-input",
                         "type": "checkbox",
                         "value": "Apple",
                       },
@@ -3651,12 +3681,12 @@ initialize {
             },
             Object {
               "attribs": Object {
-                "class": "my-checkbox my-checkbox-cool",
+                "class": "my-checkbox-checkbox my-checkbox-checkbox-cool",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "my-checkbox-input",
+                    "class": "my-checkbox-checkbox-input",
                     "type": "checkbox",
                     "value": "Apple",
                   },
@@ -3665,7 +3695,7 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
-                      "class": "my-checkbox-inner",
+                      "class": "my-checkbox-checkbox-inner",
                     },
                     "children": Array [],
                     "name": "span",
@@ -3697,7 +3727,7 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
-                    "class": "my-checkbox-inner",
+                    "class": "my-checkbox-checkbox-inner",
                   },
                   "children": Array [],
                   "name": "span",
@@ -3706,7 +3736,7 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "class": "my-checkbox-input",
+                      "class": "my-checkbox-checkbox-input",
                       "type": "checkbox",
                       "value": "Apple",
                     },
@@ -3762,7 +3792,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "gio-icon my-checkbox-icon my-checkbox-icon-cool",
+                  "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
                 },
                 "children": Array [
                   Object {
@@ -3772,6 +3802,7 @@ initialize {
                       "height": "1rem",
                       "viewBox": "0 0 14 14",
                       "width": "1rem",
+                      "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
                       Object {
@@ -3977,6 +4008,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
@@ -3984,6 +4016,7 @@ initialize {
                       "height": undefined,
                       "viewBox": undefined,
                       "width": undefined,
+                      "xmlns": "",
                     },
                   },
                 ],
@@ -4025,12 +4058,12 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "my-checkbox my-checkbox-cool",
+                  "class": "my-checkbox-checkbox my-checkbox-checkbox-cool",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "my-checkbox-input",
+                      "class": "my-checkbox-checkbox-input",
                       "type": "checkbox",
                       "value": "Apple",
                     },
@@ -4039,7 +4072,7 @@ initialize {
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": Object {
                       "attribs": Object {
-                        "class": "my-checkbox-inner",
+                        "class": "my-checkbox-checkbox-inner",
                       },
                       "children": Array [],
                       "name": "span",
@@ -4071,7 +4104,7 @@ initialize {
                   },
                   Object {
                     "attribs": Object {
-                      "class": "my-checkbox-inner",
+                      "class": "my-checkbox-checkbox-inner",
                     },
                     "children": Array [],
                     "name": "span",
@@ -4080,7 +4113,7 @@ initialize {
                     "parent": [Circular],
                     "prev": Object {
                       "attribs": Object {
-                        "class": "my-checkbox-input",
+                        "class": "my-checkbox-checkbox-input",
                         "type": "checkbox",
                         "value": "Apple",
                       },
@@ -4117,7 +4150,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "class": "gio-icon my-checkbox-icon my-checkbox-icon-cool",
+                    "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
                   },
                   "children": Array [
                     Object {
@@ -4127,6 +4160,7 @@ initialize {
                         "height": "1rem",
                         "viewBox": "0 0 14 14",
                         "width": "1rem",
+                        "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
                         Object {
@@ -4332,6 +4366,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
@@ -4339,6 +4374,7 @@ initialize {
                         "height": undefined,
                         "viewBox": undefined,
                         "width": undefined,
+                        "xmlns": "",
                       },
                     },
                   ],

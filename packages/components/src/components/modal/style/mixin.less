@@ -1,13 +1,14 @@
 @import '../../../stylesheet/index.less';
 @import '../../../stylesheet/mixin/animation.less';
 
-@gio-modal: ~'@{component-prefix}-modal';
-@gio-modal-small: ~'@{gio-modal}--small';
-@gio-modal-middle: ~'@{gio-modal}--middle';
-@gio-modal-full: ~'@{gio-modal}--full';
-@gio-modal-callout: ~'@{gio-modal}-callout';
+@modal-prefix-cls: ~'@{component-prefix}-modal';
+@modal-small: ~'@{modal-prefix-cls}--small';
+@modal-middle: ~'@{modal-prefix-cls}--middle';
+@modal-full: ~'@{modal-prefix-cls}--full';
+@modal-callout: ~'@{modal-prefix-cls}-callout';
+@btn-cls: ~'@{component-prefix}-btn';
 
-@gio-modal-radius: 8px;
+@modal-radius: 8px;
 
 .btn-style() {
   display: inline-block;
@@ -30,7 +31,7 @@
   height: 100%;
   margin: 0;
 
-  .@{gio-modal} {
+  .@{modal-prefix-cls} {
     &-content {
       height: 100%;
       max-height: none;

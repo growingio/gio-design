@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import _ from 'lodash';
 import Avatar from './Avatar';
 import { AvatarGroupProps, UserAvatarType } from './interfaces';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
   const { number = 5, users = [], className, placement = 'bottom', style, displayTooltip = true } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('avatar');
+  const prefixCls = usePrefixCls('avatar');
 
   let children = null;
   const renderAvatarGroup = (sliceUsers: UserAvatarType[]) =>

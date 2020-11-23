@@ -20,7 +20,7 @@ const Actions: React.FC<IActionsProps> = ({
   const iconCls = classnames(`${prefixCls}__actions-icon`);
 
   const handleStopPropagation = (e: any) => {
-    if (!e.target?.classList?.contains('gio-upload__actions-icon') && file?.status === STATUS_SUCCESS) {
+    if (!e.target?.classList?.contains(`${prefixCls}__actions-icon`) && file?.status === STATUS_SUCCESS) {
       e.stopPropagation();
     }
   };

@@ -7,8 +7,7 @@ import getScrollBarSize from 'rc-util/lib/getScrollBarSize';
 import { Close } from '@gio-design/icons';
 import classNames from 'classnames';
 
-import { ConfigConsumerProps } from '../config-provider';
-import { withConfigConsumer, ConfigConsumer } from '../config-provider/context';
+import { ConfigConsumerProps, withConfigConsumer, ConfigConsumer } from '../config-provider';
 import { tuple } from '../../utils/type';
 
 const DrawerContext = React.createContext<Drawer | null>(null);
@@ -77,7 +76,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
 
   private destroyClose: boolean;
 
-  public constructor(props : DrawerProps & ConfigConsumerProps){
+  public constructor(props: DrawerProps & ConfigConsumerProps) {
     super(props);
     this.state = {
       push: false,
@@ -127,7 +126,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   private getDestroyOnClose = () => {
     const { destroyOnClose, visible } = this.props;
     return destroyOnClose && !visible;
-  }
+  };
 
   private getPushDistance = () => {
     const { push } = this.props;
@@ -155,9 +154,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   };
 
   private getOffsetStyle() {
-    const {
-      placement, width, height, visible, mask,
-    } = this.props;
+    const { placement, width, height, visible, mask } = this.props;
     if (!visible && !mask) {
       return {};
     }
@@ -185,9 +182,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   };
 
   private getRcDrawerStyle = () => {
-    const {
-      zIndex, placement, mask, style,
-    } = this.props;
+    const { zIndex, placement, mask, style } = this.props;
     const { push } = this.state;
     // 当无 mask 时，将 width 应用到外层容器上
     const offsetStyle = mask ? {} : this.getOffsetStyle();
@@ -200,9 +195,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   };
 
   private renderHeader() {
-    const {
-      title, prefixCls, closable, headerStyle,
-    } = this.props;
+    const { title, prefixCls, closable, headerStyle } = this.props;
     if (!title && !closable) {
       return null;
     }
@@ -231,9 +224,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   }
 
   private renderCloseIcon() {
-    const {
-      closable, closeIcon = <Close />, prefixCls, onClose,
-    } = this.props;
+    const { closable, closeIcon = <Close />, prefixCls, onClose } = this.props;
     return (
       closable && (
         // eslint-disable-next-line react/button-has-type
@@ -255,9 +246,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
 
   // render drawer body dom
   private renderBody = () => {
-    const {
-      bodyStyle, drawerStyle, prefixCls, visible, children
-    } = this.props;
+    const { bodyStyle, drawerStyle, prefixCls, visible, children } = this.props;
     if (this.destroyClose && !visible) {
       return null;
     }
@@ -297,12 +286,9 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
 
     return (
       <ConfigConsumer>
-        {({ getPopupContainer, getPrefixCls }) => {
-          const {
-            prefixCls: customizePrefixCls, placement, className, mask, direction, visible, ...rest
-          } = this.props;
+        {({ getPopupContainer }) => {
+          const { prefixCls, placement, className, mask, direction, visible, ...rest } = this.props;
 
-          const prefixCls = getPrefixCls('select', customizePrefixCls);
           const drawerClassName = classNames(className, {
             'no-mask': !mask,
             [`${prefixCls}-rtl`]: direction === 'rtl',
@@ -369,5 +355,5 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
 }
 
 export default withConfigConsumer<DrawerProps>({
-  prefixCls: 'drawer',
+  subPrefixCls: 'drawer',
 })(Drawer);

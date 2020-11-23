@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
 import BreadcrumbItem from './BreadcrumbItem';
 import BreadcrumbSeparator from './BreadcrumbSeparator';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { cloneElement } from '../../utils/reactNode';
 import devWarning from '../../utils/devWarning';
 import { Route, BreadcrumbProps } from './interface';
@@ -55,10 +55,8 @@ const Breadcrumb: BreadcrumbInterface = ({
   params = {},
   ...restProps
 }: BreadcrumbProps) => {
-  const { getPrefixCls } = React.useContext(ConfigContext);
-
   let crumbs;
-  const prefixCls = getPrefixCls('breadcrumb', customizePrefixCls);
+  const prefixCls = usePrefixCls('breadcrumb', customizePrefixCls);
   if (routes && routes.length > 0) {
     const paths: string[] = [];
     crumbs = routes.map((route: Route) => {

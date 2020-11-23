@@ -4,23 +4,23 @@
 @radio-normal-shadow: inset -0.5px 1px 2px 0 rgba(163, 173, 200, 0.8);
 @radio-hover-shadow: @radio-normal-shadow, 0 2px 4px 0 rgba(223, 226, 237, 1);
 
-@gio-radio-prefix: ~'@{component-prefix}-radio';
-@gio-radio-input: ~'@{gio-radio-prefix}-input'; // input
-@gio-radio-inner: ~'@{gio-radio-prefix}-inner'; // inner
-@gio-radio-checked: ~'@{gio-radio-prefix}-checked'; // checked
-@gio-radio-disabled: ~'@{gio-radio-prefix}-disabled'; // disabled
-@gio-radio__wrapper: ~'@{gio-radio-prefix}__wrapper'; // wrapper
-@gio-radio__group: ~'@{gio-radio-prefix}__group'; // group
+@radio-prefix-cls: ~'@{component-prefix}-radio';
+@radio-input: ~'@{radio-prefix-cls}-input'; // input
+@radio-inner: ~'@{radio-prefix-cls}-inner'; // inner
+@radio-checked: ~'@{radio-prefix-cls}-checked'; // checked
+@radio-disabled: ~'@{radio-prefix-cls}-disabled'; // disabled
+@radio__wrapper: ~'@{radio-prefix-cls}__wrapper'; // wrapper
+@radio__group: ~'@{radio-prefix-cls}__group'; // group
 
-.@{gio-radio__wrapper} {
+.@{radio__wrapper} {
   position: relative;
   display: inline-block;
   white-space: nowrap;
   cursor: pointer;
 
   &:not(&--disabled):hover {
-    & :not(.@{gio-radio-checked}) {
-      .@{gio-radio-prefix}-inner {
+    & :not(.@{radio-checked}) {
+      .@{radio-prefix-cls}-inner {
         border-color: @color-border-checkbox-hover;
         box-shadow: @radio-hover-shadow;
       }
@@ -33,7 +33,7 @@
 }
 
 // normal
-.@{gio-radio-prefix} {
+.@{radio-prefix-cls} {
   position: relative;
   top: 0;
   display: inline-block;
@@ -105,8 +105,8 @@
 }
 
 // checked
-.@{gio-radio-checked} {
-  .@{gio-radio-inner} {
+.@{radio-checked} {
+  .@{radio-inner} {
     background-color: @color-background-checkbox-checked;
     border-color: @color-border-checkbox-checked;
     box-shadow: none;
@@ -119,13 +119,13 @@
 }
 
 // disabled
-.@{gio-radio-disabled} {
+.@{radio-disabled} {
   &,
-  .@{gio-radio-input} {
+  .@{radio-input} {
     cursor: not-allowed;
   }
 
-  .@{gio-radio-inner} {
+  .@{radio-inner} {
     background-color: @color-background-checkbox-disabled;
     border-color: @color-border-checkbox-disabled;
     box-shadow: none;
@@ -142,7 +142,7 @@
 }
 
 // radio group
-.@{gio-radio__group} {
+.@{radio__group} {
   display: inline-flex;
   justify-content: flex-start;
 
@@ -150,7 +150,7 @@
     flex-direction: row;
     align-items: center;
 
-    .@{gio-radio__wrapper} {
+    .@{radio__wrapper} {
       margin-right: 16px;
     }
   }
@@ -159,7 +159,7 @@
     flex-direction: column;
     align-items: flex-start;
 
-    .@{gio-radio__wrapper} {
+    .@{radio__wrapper} {
       margin-bottom: 16px;
     }
   }

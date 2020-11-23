@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { ViewOutlined, UnviewOutlined } from '@gio-design/icons';
-import Input, { prefixCls } from './Input';
+import Input from './Input';
+import usePrefix from '../../utils/hooks/use-prefix-cls';
 import { InputProps } from './interfaces';
 
 const Password: React.FC<InputProps> = (props) => {
+  const prefixCls = usePrefix('input');
   const [visible, setVisible] = React.useState(false);
 
   const toggleVisible = () => {

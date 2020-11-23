@@ -9,6 +9,15 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.11.2
+
+- component
+  - 🛎 采用 usePrefix 以及 withConfigConsumer 进行组件 prefixCls 构建. [#485](https://github.com/growingio/gio-design/pull/485)
+  - Avatar
+    - 🐛 修复头像不能触发下拉列表.[#475](https://github.com/growingio/gio-design/pull/475)
+- 📖 修复所有的 eslint 报错信息.[#491](https://github.com/growingio/gio-design/pull/491)
+- 🛠 less-loader 版本号从 7.0.2 升级到 7.1.0.[#479](https://github.com/growingio/gio-design/pull/479)
+
 ## 20.11.1
 
 - component

@@ -1,105 +1,90 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import Notification from 'rc-notification';
+import { defaultRootPrefixCls } from '../config-provider';
+import { getIconMap } from './toastIcons';
+import createUseToast from './useToast';
 import {
-  CheckCircleFilled, CloseCircleFilled, WarningFilled, InformationFilled,
-} from '@gio-design/icons';
+  ConfigOptions,
+  ArgsProps,
+  IToastApi,
+  ThenableArgument,
+  JointContent,
+  ConfigDuration,
+  ConfigOnClose,
+  IToastNotice,
+  NotificationInstance,
+} from './interface';
 
+let key = 1;
+let toastInstance: NotificationInstance;
 let defaultDuration = 2;
 let defaultTop: number;
-let messageInstance: any;
-let key = 1;
-let prefixCls = 'gio-toast';
-let transitionName = 'move-up';
-let getContainer: () => HTMLElement;
-let maxCount: number;
-let rtl = false;
+let defaultPrefixCls = defaultRootPrefixCls;
+let defaultTransitionName = 'move-up';
+let defaultGetContainer: () => HTMLElement;
+let defaultMaxCount: number;
+let defaultRtl = false;
 
-function getMessageInstance(callback: (i: any) => void) {
-  if (messageInstance) {
-    callback(messageInstance);
+function getToastInstance(args: ArgsProps, callback: (i: any) => void) {
+  const {
+    transitionName = defaultTransitionName,
+    style = { top: defaultTop }, // 覆盖原来的样式
+    getContainer = defaultGetContainer,
+    maxCount = defaultMaxCount,
+  } = args;
+
+  const outerPrefixCls = args.prefixCls ?? defaultPrefixCls;
+  const prefixCls = `${outerPrefixCls}-toast`;
+
+  if (toastInstance) {
+    callback({ instance: toastInstance, prefixCls });
     return;
   }
+
   Notification.newInstance(
     {
       prefixCls,
       transitionName,
-      style: { top: defaultTop }, // 覆盖原来的样式
+      style, // 覆盖原来的样式
       getContainer,
       maxCount,
     },
     (instance: any) => {
-      if (messageInstance) {
-        callback(messageInstance);
-        return;
-      }
-      messageInstance = instance;
-      callback(instance);
-    },
+      toastInstance = instance;
+      callback({ instance, prefixCls });
+    }
   );
 }
 
-type NoticeType = 'success' | 'error' | 'warning' | 'info';
-
-export type ThenableArgument = (val: any) => void;
-
-export interface MessageType {
-  then: (fill: ThenableArgument, reject: ThenableArgument) => Promise<void>;
-  promise: Promise<void>;
-  (): void;
-}
-
-export interface ArgsProps {
-  content: React.ReactNode;
-  duration: number | null;
-  type: NoticeType;
-  onClose?: () => void;
-  icon?: React.ReactNode;
-  key?: string | number;
-  style?: React.CSSProperties;
-  className?: string;
-}
-
-const iconStyle: React.CSSProperties = {
-  width: '16px',
-  height: '16px',
-  verticalAlign: 'text-bottom',
-};
-
-const iconMap = {
-  success: (
-    <span className={`${prefixCls}-icon`}>
-      <CheckCircleFilled color="#008a56" style={iconStyle} />
-    </span>
-  ),
-  error: (
-    <span className={`${prefixCls}-icon`}>
-      <CloseCircleFilled color="#f21300" style={iconStyle} />
-    </span>
-  ),
-  warning: (
-    <span className={`${prefixCls}-icon`}>
-      <WarningFilled color="#f8af48" style={iconStyle} />
-    </span>
-  ),
-  info: (
-    <span className={`${prefixCls}-icon`}>
-      <InformationFilled color="#3867f4" style={iconStyle} />
-    </span>
-  ),
-};
-
-function notice(args: ArgsProps): MessageType {
+const getNoticeProps = (args: ArgsProps, prefixCls: string) => {
   const duration = args.duration !== undefined ? args.duration : defaultDuration;
-  const icon = iconMap[args.type] || null;
+  const icon = getIconMap(prefixCls)[args.type] || null;
 
-  const messageClass = classNames(`${prefixCls}-custom-content`, {
+  const toastClassName = classNames(`${prefixCls}-custom-content`, {
     [`${prefixCls}-${args.type}`]: args.type,
-    [`${prefixCls}-rtl`]: rtl === true,
+    [`${prefixCls}-rtl`]: defaultRtl === true,
   });
 
+  return {
+    key: args.key,
+    duration,
+    style: args.style || {},
+    className: args.className,
+    content: (
+      <div className={toastClassName}>
+        {args.icon || icon}
+        <span>{args.content}</span>
+      </div>
+    ),
+    onClose: args.onClose,
+  };
+};
+
+function notice(args: ArgsProps): IToastNotice {
   // eslint-disable-next-line no-plusplus
   const target = args.key || key++;
+
   const closePromise = new Promise((resolve) => {
     const callback = () => {
       if (typeof args.onClose === 'function') {
@@ -107,25 +92,22 @@ function notice(args: ArgsProps): MessageType {
       }
       return resolve(true);
     };
-    getMessageInstance((instance) => {
-      instance.notice({
-        key: target,
-        duration,
-        style: args.style || {},
-        className: args.className,
-        content: (
-          <div className={messageClass}>
-            {args.icon || icon}
-            <span>{args.content}</span>
-          </div>
-        ),
-        onClose: callback,
-      });
+    getToastInstance(args, ({ instance, prefixCls }) => {
+      instance.notice(
+        getNoticeProps(
+          {
+            ...args,
+            key: target,
+            onClose: callback,
+          },
+          prefixCls
+        )
+      );
     });
   });
   const result: any = () => {
-    if (messageInstance) {
-      messageInstance.removeNotice(target);
+    if (toastInstance) {
+      toastInstance.removeNotice(target);
     }
   };
   result.then = (filled: ThenableArgument, rejected: ThenableArgument) => closePromise.then(filled, rejected);
@@ -133,23 +115,8 @@ function notice(args: ArgsProps): MessageType {
   return result;
 }
 
-type ConfigContent = React.ReactNode | string;
-type ConfigDuration = number | (() => void);
-type JointContent = ConfigContent | ArgsProps;
-export type ConfigOnClose = () => void;
-
-function isArgsProps(content: JointContent): content is ArgsProps {
+export function isArgsProps(content: JointContent): content is ArgsProps {
   return Object.prototype.toString.call(content) === '[object Object]' && !!(content as ArgsProps).content;
-}
-
-export interface ConfigOptions {
-  top?: number;
-  duration?: number;
-  prefixCls?: string;
-  getContainer?: () => HTMLElement;
-  transitionName?: string;
-  maxCount?: number;
-  rtl?: boolean;
 }
 
 const api: any = {
@@ -157,35 +124,36 @@ const api: any = {
   config(options: ConfigOptions) {
     if (options.top !== undefined) {
       defaultTop = options.top;
-      messageInstance = null; // delete messageInstance for new defaultTop
+      toastInstance = null; // delete toastInstance for new defaultTop
     }
     if (options.duration !== undefined) {
       defaultDuration = options.duration;
     }
     if (options.prefixCls !== undefined) {
-      prefixCls = options.prefixCls;
+      defaultPrefixCls = options.prefixCls;
     }
     if (options.getContainer !== undefined) {
-      getContainer = options.getContainer;
+      defaultGetContainer = options.getContainer;
     }
     if (options.transitionName !== undefined) {
-      transitionName = options.transitionName;
-      messageInstance = null; // delete messageInstance for new transitionName
+      defaultTransitionName = options.transitionName;
+      toastInstance = null; // delete toastInstance for new transitionName
     }
     if (options.maxCount !== undefined) {
-      maxCount = options.maxCount;
-      messageInstance = null;
+      defaultMaxCount = options.maxCount;
+      toastInstance = null;
     }
     if (options.rtl !== undefined) {
-      rtl = options.rtl;
+      defaultRtl = options.rtl;
     }
   },
   destroy() {
-    if (messageInstance) {
-      messageInstance.destroy();
-      messageInstance = null;
+    if (toastInstance) {
+      toastInstance.destroy();
+      toastInstance = null;
     }
   },
+  useToast: createUseToast(getToastInstance, getNoticeProps),
 };
 
 ['success', 'warning', 'error', 'info'].forEach((type) => {
@@ -208,14 +176,4 @@ const api: any = {
   };
 });
 
-export interface MessageApi {
-  success: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
-  error: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
-  warning: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
-  info: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
-  open: (args: ArgsProps) => MessageType;
-  config: (options: ConfigOptions) => void;
-  destroy: () => void;
-}
-
-export default api as MessageApi;
+export default api as IToastApi;

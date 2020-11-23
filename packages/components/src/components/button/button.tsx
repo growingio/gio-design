@@ -6,6 +6,7 @@ import { ConfigContext } from '../config-provider';
 import SizeContext from '../config-provider/SizeContext';
 import { ButtonProps } from './interfaces';
 import { cloneElement } from '../../utils/reactNode';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
@@ -79,7 +80,8 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
   const size = React.useContext(SizeContext);
   const [innerLoading, setLoading] = React.useState<boolean | undefined>(loading);
   const [hasTwoCNChar, setHasTwoCNChar] = React.useState(false);
-  const { getPrefixCls, autoInsertSpaceInButton } = React.useContext(ConfigContext);
+  const { autoInsertSpaceInButton } = React.useContext(ConfigContext);
+  const prefixCls = usePrefixCls('btn', customizePrefixCls);
   const buttonRef = (ref as any) || React.createRef<HTMLElement>();
 
   const isNeedInserted = () => React.Children.count(children) === 1 && !icon;
@@ -118,7 +120,6 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
     }
   };
 
-  const prefixCls = getPrefixCls('btn', customizePrefixCls);
   const autoInsertSpace = autoInsertSpaceInButton !== false;
 
   const sizeCls = customizeSize || size;

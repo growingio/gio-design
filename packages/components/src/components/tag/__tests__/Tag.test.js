@@ -27,8 +27,8 @@ describe('<Tag />', () => {
   });
 
   it('should have "test-custom-tag" class', () => {
-    const tree = shallow(<Tag customizePrefixCls="test-custom-tag" />);
-    expect(tree.hasClass('test-custom-tag')).toBe(true);
+    const tree = shallow(<Tag customizePrefixCls="custom-prefix" />);
+    expect(tree.hasClass('custom-prefix-tag')).toBe(true);
   });
 
   it('should have "gio-tag-closable-toggle', () => {

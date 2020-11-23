@@ -1,11 +1,11 @@
-import React, { useContext, useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import RcTooltip from 'rc-tooltip';
 import { isFunction } from 'lodash';
 import { TooltipProps } from './interface';
-import { ConfigContext } from '../config-provider';
 import Link from '../link';
 import getPlacements from './placements';
 import useControlledState from '../../utils/hooks/useControlledState';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const Tooltip = (props: TooltipProps): JSX.Element => {
   const {
@@ -17,6 +17,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     disabled = false,
     onVisibleChange,
     prefixCls: customizePrefixCls,
+    subPrefixCls = 'tooltip',
     overlay,
     children,
     arrowPointAtCenter = false,
@@ -34,12 +35,11 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
   const isNoOverlay = useMemo(() => !computedOverlay && computedOverlay !== 0, [computedOverlay]);
   const isNoContent = useMemo(() => isNoTitle && isNoOverlay, [isNoTitle, isNoOverlay]);
 
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('tooltip', customizePrefixCls);
+  const prefixCls = usePrefixCls(subPrefixCls, customizePrefixCls);
 
   useEffect(() => {
     setControlledVisible(!isNoContent && controlledVisible, true);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isNoContent, controlledVisible]);
 
   const tooltipOverlay = isNoTitle ? null : (

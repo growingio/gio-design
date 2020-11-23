@@ -1,10 +1,10 @@
 @import '../../../stylesheet/index.less';
 @import './mixin.less';
 
-@gio-menu-prefix: ~'@{component-prefix}-menu';
-@gio-menu-icon: ~'@{gio-menu-prefix}__icon';
+@menu-prefix-cls: ~'@{component-prefix}-menu';
+@menu-icon-cls: ~'@{menu-prefix-cls}__icon';
 
-.@{gio-menu-prefix} {
+.@{menu-prefix-cls} {
   margin-bottom: 0;
   padding-right: 0;
   padding-left: 0;
@@ -71,8 +71,8 @@
     cursor: pointer;
 
     // Disabled state sets text to gray and nukes hover/tab effects
-    &.@{gio-menu-prefix}-item-disabled,
-    &.@{gio-menu-prefix}-submenu-disabled {
+    &.@{menu-prefix-cls}-item-disabled,
+    &.@{menu-prefix-cls}-submenu-disabled {
       color: @color-text-menu-disable !important;
       cursor: not-allowed;
     }
@@ -94,24 +94,24 @@
         padding-right: 20px;
       }
     }
-    > .@{gio-menu-prefix} {
+    > .@{menu-prefix-cls} {
       padding: 4px 0;
       background-color: @color-background-menu-normal;
       box-shadow: 0 0 4px @palette-gray-5;
     }
-    & .@{gio-menu-prefix}-item {
+    & .@{menu-prefix-cls}-item {
       height: 40px;
       padding: 0 24px;
       line-height: 40px;
     }
   }
 
-  .@{gio-menu-prefix}-submenu-title,
-  .@{gio-menu-prefix}-item {
+  .@{menu-prefix-cls}-submenu-title,
+  .@{menu-prefix-cls}-item {
     & > span {
       display: inline-block;
     }
-    .@{gio-menu-icon} {
+    .@{menu-icon-cls} {
       margin-right: 12px;
 
       & > .gio-icon {
@@ -134,16 +134,16 @@
     border: none;
     box-shadow: none;
 
-    & > .@{gio-menu-prefix}-item,
-    & > .@{gio-menu-prefix}-submenu > .@{gio-menu-prefix}-submenu-title {
+    & > .@{menu-prefix-cls}-item,
+    & > .@{menu-prefix-cls}-submenu > .@{menu-prefix-cls}-submenu-title {
       height: 40px;
       margin-right: 4px;
       padding: 0 24px;
       line-height: 40px;
     }
 
-    & > .@{gio-menu-prefix}-submenu,
-    & > .@{gio-menu-prefix}-item {
+    & > .@{menu-prefix-cls}-submenu,
+    & > .@{menu-prefix-cls}-item {
       display: inline-block;
       vertical-align: bottom;
 
@@ -164,33 +164,33 @@
   &-inline {
     font-size: @size-font-14;
 
-    & > .@{gio-menu-prefix}-item,
-    & > .@{gio-menu-prefix}-submenu > .@{gio-menu-prefix}-submenu-title {
+    & > .@{menu-prefix-cls}-item,
+    & > .@{menu-prefix-cls}-submenu > .@{menu-prefix-cls}-submenu-title {
       height: 40px;
       line-height: 40px;
     }
 
-    & > .@{gio-menu-prefix}-item {
+    & > .@{menu-prefix-cls}-item {
       margin-top: 16px;
     }
 
-    & > .@{gio-menu-prefix}-submenu {
+    & > .@{menu-prefix-cls}-submenu {
       padding-top: 16px;
       color: @palette-gray-6;
 
-      & > .@{gio-menu-prefix}-submenu-title {
+      & > .@{menu-prefix-cls}-submenu-title {
         cursor: unset;
       }
 
-      & > .@{gio-menu-prefix}-sub {
-        & > .@{gio-menu-prefix}-item {
+      & > .@{menu-prefix-cls}-sub {
+        & > .@{menu-prefix-cls}-item {
           margin-top: 4px;
           padding-left: 44px !important;
         }
       }
     }
 
-    & .@{gio-menu-prefix}-item-selected {
+    & .@{menu-prefix-cls}-item-selected {
       background-color: @color-background-menu-hover;
     }
   }

@@ -2,7 +2,6 @@ import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { waitFor } from '@testing-library/react';
 import React from 'react';
-
 import Cascader from '..';
 
 const menu = [
@@ -22,7 +21,7 @@ describe('<Cascader />', () => {
     expect(wrapper.find('.gio-cascader-title input').getElement().props.placeholder).toBe('title ph');
 
     wrapper.setProps({ prefixCls: 'foo' });
-    expect(wrapper.find('.foo')).toHaveLength(1);
+    expect(wrapper.find('.foo-cascader')).toHaveLength(1);
   });
 
   it('should popup a searchable menu overlayer', async () => {
@@ -55,9 +54,12 @@ describe('<Cascader />', () => {
       });
     });
 
-    await waitFor(() => {
-      expect(document.querySelectorAll('.gio-dropdown-hidden')).toHaveLength(1);
-    });
+    await waitFor(
+      () => {
+        expect(document.querySelectorAll('.gio-dropdown-hidden')).toHaveLength(1);
+      },
+      { timeout: 5000 }
+    );
   });
 
   it('should render sub-menu', async () => {

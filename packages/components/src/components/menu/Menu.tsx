@@ -1,7 +1,7 @@
-import React, { useCallback, useContext, Children } from 'react';
+import React, { useCallback, Children } from 'react';
 import RcMenu from 'rc-menu';
 import classnames from 'classnames';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import MenuPrefixClsContext from './MenuContext';
 import { IMenuProps, TMenuMode } from './interface';
 import MenuItem from './MenuItem';
@@ -19,7 +19,7 @@ const getOpenKeys = (mode: TMenuMode, children: React.ReactNode) => {
 const Menu = (props: IMenuProps) => {
   const {
     mode = 'horizontal',
-    prefixCls,
+    prefixCls: customPrefixCls,
     className,
     selectedKey = '',
     defaultSelectedKey = '',
@@ -28,8 +28,7 @@ const Menu = (props: IMenuProps) => {
     ...restProps
   } = props;
 
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefix = getPrefixCls('menu', prefixCls);
+  const prefixCls = usePrefixCls('menu', customPrefixCls);
   const cls = classnames(className);
 
   const realMode = transform2RcMode(mode);
@@ -52,14 +51,14 @@ const Menu = (props: IMenuProps) => {
   );
 
   return (
-    <MenuPrefixClsContext.Provider value={prefix}>
+    <MenuPrefixClsContext.Provider value={prefixCls}>
       <RcMenu
         {...spreadProps}
         mode={realMode}
         selectedKeys={[selectedKey]}
         defaultSelectedKeys={[defaultSelectedKey]}
         onClick={handleClick}
-        prefixCls={prefix}
+        prefixCls={prefixCls}
         className={cls}
       >
         {children}

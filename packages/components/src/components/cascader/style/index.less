@@ -2,12 +2,13 @@
 
 @wrapper-cls: ~'@{component-prefix}-cascader';
 @dropdown-cls: ~'@{component-prefix}-dropdown';
+@input-cls: ~'@{component-prefix}-input';
 
 .@{wrapper-cls} {
   &-title {
     display: inline-flex;
 
-    input.gio-input-content {
+    input.@{input-cls}-content {
       // min-width: 250px;
       cursor: pointer;
     }
