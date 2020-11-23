@@ -62,6 +62,7 @@ group:
 | style                | 最外层样式                                       | CSSProperties                                                                                         | -       |
 | dataSource           | 数据源                                           | `NodeData` [⤵️](#NodeData)                                                                            | -       |
 | value                | 默认选中的菜单                                   | `Value` [⤵️](#Value)                                                                                  | -       |
+| keyMapping           | NodeData 的 label value 键名映射表               | `{label: string; value: string}`                                                                      | -       |
 | keyword              | 搜索框的字段                                     | string                                                                                                | -       |
 | ignoreCase           | 忽略大小写                                       | boolean                                                                                               | -       |
 | deepSearch           | 深度过滤搜索结果                                 | boolean                                                                                               | -       |
@@ -77,7 +78,7 @@ group:
 | onBlur               | 菜单项的事件回调                                 | (event: FocusEvent) => void                                                                           | -       |
 | onMouseLeave         | 菜单项的事件回调                                 | (event: MouseEvent) => void                                                                           | -       |
 | onRender             | 自定义渲染菜单项的回调                           | (nodeData: NodeData) => ReactElement                                                                  | -       |
-| afterInner           | 菜单项里额外的插入节点                           | ReactElement                                                                                          | -       |
+| afterInner           | 菜单项里额外的插入节点                           | ReactNode \| ((data: NodeDate) => ReactNode)                                                          | -       |
 | prefixCls            | className 前缀                                   | string                                                                                                | -       |
 | size                 | 控件尺寸                                         | SizeType                                                                                              | -       |
 | disabled             | 禁用                                             | boolean                                                                                               | -       |
@@ -95,8 +96,8 @@ group:
 | onVisibleChange      | 下拉面板的显隐回调                               | (visible: boolean) => void                                                                            | -       |
 | dropdownTrigger      | 触发下拉面板的方式                               | `click` \| `hover` \| `focus`                                                                         | `click` |
 | getDropdownContainer | 获取下拉面板渲染到的 DOM 节点                    | (node: HTMLElement) => HTMLElement                                                                    | -       |
-| header               | 菜单的头部-默认为搜索框                          | ReactElement \| false                                                                                 | -       |
-| footer               | 菜单的尾部                                       | ReactElement \| false                                                                                 | -       |
+| header               | 菜单的头部-默认为搜索框                          | ReactNode \| ((data: NodeDate) => ReactNode)                                                          | -       |
+| footer               | 菜单的尾部                                       | ReactNode \| ((data: NodeDate) => ReactNode)                                                          | -       |
 
 ### Value
 
