@@ -1,10 +1,8 @@
 import * as React from 'react';
 import CaretDownOutlined from '@gio-design/icons/es/CaretDownOutlined';
-import LoadingOutlined from '@gio-design/icons/es/LoadingOutlined';
 import CheckOutlined from '@gio-design/icons/es/CheckOutlined';
 import Close from '@gio-design/icons/es/Close';
 import CloseCircleFilled from '@gio-design/icons/es/CloseCircleFilled';
-import SearchOutlined from '@gio-design/icons/es/SearchOutlined';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function getIcons({
@@ -12,7 +10,6 @@ export default function getIcons({
   clearIcon,
   menuItemSelectedIcon,
   removeIcon,
-  loading,
   multiple,
   prefixCls,
 }: {
@@ -34,14 +31,9 @@ export default function getIcons({
   let mergedSuffixIcon = null;
   if (suffixIcon !== undefined) {
     mergedSuffixIcon = suffixIcon;
-  } else if (loading) {
-    mergedSuffixIcon = <LoadingOutlined rotating size='12px' />;
   } else {
     const iconCls = `${prefixCls}-suffix`;
-    mergedSuffixIcon = ({ open, showSearch }: { open: boolean; showSearch: boolean }) => {
-      if (open && showSearch) {
-        return <SearchOutlined className={iconCls} size='12px' />;
-      }
+    mergedSuffixIcon = () => {
       return <CaretDownOutlined className={iconCls} size='12px' />;
     };
   }
