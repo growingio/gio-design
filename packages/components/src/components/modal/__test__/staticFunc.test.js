@@ -178,9 +178,8 @@ describe('Modal.staticFunc triggers correctly.', () => {
     expect(document.querySelector('.gio-modal-callout__title').textContent).toBe('new title');
   });
 
-  it('could be destroy', () => {
-    jest.useFakeTimers();
-    ['info', 'success', 'warn', 'error'].forEach((type) => {
+  it('could be destroy', async () => {
+    ['info', 'success', 'warn', 'error'].forEach(async (type) => {
       const instance = Modal[type]({
         title: 'title',
         content: 'content',
@@ -193,6 +192,7 @@ describe('Modal.staticFunc triggers correctly.', () => {
       act(() => {
         jest.runAllTimers();
       });
+      await new Promise((resolve) => setTimeout(resolve, 3000));
       expect($$(`.gio-modal-callout--${type}`)).toHaveLength(0);
     });
     jest.useRealTimers();

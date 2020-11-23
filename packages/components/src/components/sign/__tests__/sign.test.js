@@ -17,7 +17,7 @@ describe('Testing Sign', () => {
       .create(
         <Sign className="gio-customized-sign" count={100} magnitude={100}>
           <span>Number</span>
-        </Sign>,
+        </Sign>
       )
       .toJSON();
     expect(domTree).toMatchSnapshot();
@@ -28,7 +28,7 @@ describe('Testing Sign', () => {
       .create(
         <Sign className="gio-customized-sign" variant="dot">
           <span>Dot</span>
-        </Sign>,
+        </Sign>
       )
       .toJSON();
     expect(domTree).toMatchSnapshot();
@@ -38,7 +38,7 @@ describe('Testing Sign', () => {
     const wrapper = mount(
       <Sign className="gio-customized-sign" variant="dot" visible>
         <span>Dot</span>
-      </Sign>,
+      </Sign>
     );
     expect(wrapper.exists('.gio-sign--hide')).toBe(false);
     wrapper.setProps({ visible: false });
@@ -51,7 +51,7 @@ describe('Testing Sign', () => {
     const wrapper = mount(
       <Sign className="gio-customized-sign" variant="dot">
         <span>Dot</span>
-      </Sign>,
+      </Sign>
     );
 
     expect(wrapper.exists('.gio-sign__dot--default')).toBe(true);
@@ -67,5 +67,25 @@ describe('Testing Sign', () => {
     wrapper.setProps({ status: 'disabled' });
     expect(wrapper.exists('.gio-sign__dot--disabled')).toBe(true);
     expect(wrapper.exists('.gio-sign__dot--default')).toBe(false);
+  });
+
+  it('should count less than magnitude', () => {
+    const wrapper = mount(
+      <Sign className="gio-customized-sign" variant="number" count={100} magnitude={100} showZero>
+        <span>Dot</span>
+      </Sign>
+    );
+    expect(wrapper.find('.gio-sign__number').at(0).text()).toBe('99+');
+    wrapper.setProps({ count: 10 });
+    expect(wrapper.find('.gio-sign__number').at(0).text()).toBe('10');
+  });
+
+  test('showZero prop', () => {
+    const wrapper = mount(
+      <Sign className="gio-customized-sign" variant="number" showZero>
+        <span>Dot</span>
+      </Sign>
+    );
+    expect(wrapper.find('.gio-sign__number').at(0).text()).toBe('0');
   });
 });
