@@ -43,7 +43,7 @@ export interface CheckboxProps {
    */
   disabled?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
-
+  onClick?: React.MouseEventHandler<HTMLElement>;
   value?: any;
   children?: React.ReactNode;
   id?: string;
