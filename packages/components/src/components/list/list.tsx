@@ -20,8 +20,6 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
     this.ref = React.createRef();
   }
 
-  private getPopupContainer = () => this.ref.current as HTMLElement;
-
   private renderList = () => {
     const { height, disabledOptions, rowHeight, options, value, prefixCls } = this.props;
     const getRowHeight = ({ index }: { index: number }) => {
@@ -68,6 +66,8 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
       labelRenderer,
       getGroupIcon,
       allowDuplicate,
+      placement = 'left',
+      getPopupContainer,
     } = this.props;
     const option = options[index];
     const isGroup = get(option, 'type') === 'groupLabel';
@@ -111,7 +111,8 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
         onClick={this.handleClick}
         disabled={disabled}
         hasGroupIcon={!!groupIcon}
-        getPopupContainer={this.getPopupContainer}
+        getPopupContainer={getPopupContainer}
+        placement={placement}
       >
         {label}
       </SelectOption>

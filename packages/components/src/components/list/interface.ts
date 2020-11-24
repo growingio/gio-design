@@ -17,6 +17,8 @@ export interface IBaseListProps {
   onSelect?: (selectedValue: string, value: ListValueType, option: Option) => void;
   onDeselect?: (selectedValue: string, value: ListValueType, option: Option) => void;
   onClick?: (value: any) => void;
+  getPopupContainer?: (node: HTMLElement) => HTMLElement;
+  placement?: string;
 }
 
 export interface Option {
@@ -57,6 +59,8 @@ export interface SelectCoreProps {
   labelRenderer?: (option: any, isGroup?: boolean) => any;
   showCheckAllBox?: boolean;
   prefixCls?: string;
+  getPopupContainer?: (node: HTMLElement) => HTMLElement;
+  placement?: string;
 }
 
 export interface SelectListProps {
@@ -79,6 +83,8 @@ export interface SelectListProps {
   getGroupIcon?: (group: string) => React.ReactNode;
   labelRenderer?: (option: any, isGroup?: boolean) => any;
   prefixCls?: string;
+  getPopupContainer?: (node: HTMLElement) => HTMLElement;
+  placement?: string;
 }
 
 export interface GroupProps {
@@ -95,6 +101,8 @@ export interface GroupProps {
   option?: any;
   labelRenderer?: (option: any, isGroup?: boolean) => Element;
   prefixCls?: string;
+  getPopupContainer?: (node: HTMLElement) => HTMLElement;
+  placement?: string;
 }
 
 export interface OptionProps {
@@ -111,5 +119,6 @@ export interface OptionProps {
   onClick?: (option: any) => void;
   showGroupCheckBox?: boolean;
   children?: ReactNode;
-  getPopupContainer: (node: HTMLElement) => HTMLElement;
+  getPopupContainer?: (node: HTMLElement) => HTMLElement;
+  placement?: string;
 }
