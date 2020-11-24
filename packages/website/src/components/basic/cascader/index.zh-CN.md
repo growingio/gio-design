@@ -78,7 +78,6 @@ group:
 | onBlur               | 菜单项的事件回调                                 | (event: FocusEvent) => void                                                                           | -       |
 | onMouseLeave         | 菜单项的事件回调                                 | (event: MouseEvent) => void                                                                           | -       |
 | onRender             | 自定义渲染菜单项的回调                           | (nodeData: NodeData) => ReactElement                                                                  | -       |
-| afterInner           | 菜单项里额外的插入节点                           | ReactNode \| ((data: NodeDate) => ReactNode)                                                          | -       |
 | prefixCls            | className 前缀                                   | string                                                                                                | -       |
 | size                 | 控件尺寸                                         | SizeType                                                                                              | -       |
 | disabled             | 禁用                                             | boolean                                                                                               | -       |
@@ -96,8 +95,10 @@ group:
 | onVisibleChange      | 下拉面板的显隐回调                               | (visible: boolean) => void                                                                            | -       |
 | dropdownTrigger      | 触发下拉面板的方式                               | `click` \| `hover` \| `focus`                                                                         | `click` |
 | getDropdownContainer | 获取下拉面板渲染到的 DOM 节点                    | (node: HTMLElement) => HTMLElement                                                                    | -       |
+| afterInner           | 菜单项里额外的插入节点                           | ReactNode \| ((data: NodeDate) => ReactNode)                                                          | -       |
 | header               | 菜单的头部-默认为搜索框                          | ReactNode \| ((data: NodeDate) => ReactNode)                                                          | -       |
 | footer               | 菜单的尾部                                       | ReactNode \| ((data: NodeDate) => ReactNode)                                                          | -       |
+| groupName            | 分组名                                           | ReactNode \| ((data: NodeDate) => ReactNode)                                                          | -       |
 
 ### Value
 
@@ -107,10 +108,11 @@ type Value = string | number;
 
 ### NodeData
 
-| 参数     | 说明       | 类型                 | 默认值 |
-| -------- | ---------- | -------------------- | ------ |
-| label    | string     | 菜单项显示的文本     | 必填   |
-| value    | Value      | 菜单项的惟一标识字段 | 必填   |
-| disabled | boolean    | 禁用菜单项           | -      |
-| children | NodeData[] | 子菜单               | -      |
-| groupId  | Value      | 分组字段             | -      |
+| 参数      | 说明       | 类型                 | 默认值 |
+| --------- | ---------- | -------------------- | ------ |
+| label     | string     | 菜单项显示的文本     | 必填   |
+| value     | Value      | 菜单项的惟一标识字段 | 必填   |
+| disabled  | boolean    | 禁用菜单项           | -      |
+| children  | NodeData[] | 子菜单               | -      |
+| groupId   | Value      | 分组字段             | -      |
+| groupName | string     | 分组名               | -      |
