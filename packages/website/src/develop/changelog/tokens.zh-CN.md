@@ -9,6 +9,10 @@ nav:
 
 # @gio-design/tokens 更新日志
 
+## 20.11.0
+
+- 🛎 修改字体大小单位 rem 变成 px [#515](https://github.com/growingio/gio-design/pull/515)
+
 ## 20.9.4
 
 - 🆕 更新 palette red token [#268](https://github.com/growingio/gio-design/pull/268)
