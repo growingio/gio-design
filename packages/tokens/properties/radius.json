@@ -5,13 +5,13 @@
         "value": "50%"
       },
       "small": {
-        "value": "0.25rem"
+        "value": "4px"
       },
       "medium": {
-        "value": "0.375rem"
+        "value": "6px"
       },
       "large": {
-        "value": "0.5rem"
+        "value": "8px"
       },
       "pill": {
         "value": "50%"
