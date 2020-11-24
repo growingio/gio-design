@@ -1,4 +1,3 @@
-import { NodeData } from '../menu-item';
 import { isHit, dataFilter } from '../helper';
 
 describe('isHit', () => {
@@ -14,9 +13,9 @@ describe('dataFilter', () => {
   it('should match word by a parttern', () => {
     const data = [
       { label: 'hello', value: 1 },
-      { label: 'nihao', value: 2, children: [] as NodeData[] },
+      { label: 'nihao', value: 2, children: [] },
     ];
-    expect(dataFilter(data, (null as unknown) as RegExp, true)).toHaveLength(2);
+    expect(dataFilter(data, null, true)).toHaveLength(2);
     expect(dataFilter(data, /h/i, true)).toHaveLength(2);
     expect(dataFilter(data, /hello/i, true)).toHaveLength(1);
   });

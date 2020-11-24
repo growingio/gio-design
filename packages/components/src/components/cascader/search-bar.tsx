@@ -1,5 +1,5 @@
-import { SearchOutlined } from '@gio-design/icons';
-import React from 'react';
+import { SearchOutlined, Close } from '@gio-design/icons';
+import React, { useState } from 'react';
 
 import { SizeType } from '../config-provider/SizeContext';
 import { useDynamicData } from './helper';
@@ -14,8 +14,9 @@ interface Props {
 }
 
 const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
-  const { placeholder = '搜索', value: originValue = '', onSearch, lazySearch } = props;
+  const { placeholder = '搜索', value: originValue = '', onSearch, lazySearch, size } = props;
   const [value, setValue] = useDynamicData(originValue);
+  const [inputState, setInputState] = useState('');
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (lazySearch && e.key === 'Enter') {
       onSearch?.((e.target as HTMLInputElement).value);
@@ -23,10 +24,39 @@ const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
+
+    if (inputState === 'init') {
+      return;
+    }
     if (!lazySearch) {
       onSearch?.(e.target.value);
     }
   };
+  const handlerClick = () => {
+    setValue('');
+    onSearch?.('');
+  };
+  // 如果支持，优先使用 composition 事件
+  const handleComposition = (e: React.CompositionEvent) => {
+    if (e.type === 'compositionend') {
+      setInputState('end');
+      if (!lazySearch) {
+        onSearch?.(value);
+      }
+    } else {
+      setInputState('init');
+    }
+  };
+
+  const suffix = value ? (
+    <button type="button" onClick={handlerClick} className="clear-btn action-btn">
+      <Close className="icon-clear suffix-icon" size="10" />
+    </button>
+  ) : (
+    <button type="button" onClick={() => onSearch?.(value)} className="search-btn action-btn">
+      <SearchOutlined className="icon-search suffix-icon" />
+    </button>
+  );
 
   return (
     <Input
@@ -34,11 +64,13 @@ const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
       placeholder={placeholder}
       forwardRef={ref}
       value={value}
-      // size={size}
+      size={size}
       type="text"
       onKeyUp={handleKeyUp}
       onChange={handleChange}
-      suffix={<SearchOutlined className="icon-search" />}
+      onCompositionStart={handleComposition}
+      onCompositionEnd={handleComposition}
+      suffix={suffix}
     />
   );
 });

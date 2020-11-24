@@ -1,12 +1,12 @@
+import { DownFilled } from '@gio-design/icons';
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { DownFilled } from '@gio-design/icons';
 
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { DropdownProps } from '../dropdown/interface';
 import { NodeData } from './menu-item';
 import { SizeType } from '../config-provider/SizeContext';
-import { useDynamicData, withPrefix } from './helper';
+import { dataKeyMapping, useDynamicData, withPrefix } from './helper';
 import Dropdown from '../dropdown';
 import Input from '../input';
 import Menu, { Props as MenuProps } from './menu';
@@ -56,6 +56,7 @@ const Cascader: React.FC<Props> = (props) => {
     placement = 'bottomLeft',
     getDropdownContainer,
     value,
+    keyMapping = {},
     visible,
     onClick,
     onSearch,
@@ -75,27 +76,28 @@ const Cascader: React.FC<Props> = (props) => {
   const wrapperCls = usePrefixCls('cascader', prefixCls);
   const mergedWrapperCls = classNames(wrapperCls, className);
   const withWrapperCls = withPrefix(wrapperCls);
-  const onSelect = (data: NodeData, parents: NodeData[]) => {
+  const onSelect = (data: NodeData, parents = [] as NodeData[]) => {
+    const { label: mapLabel, value: mapValue } = dataKeyMapping(data, keyMapping);
     const titles = parents.reduce((acc, b) => {
-      return [b.label, acc].join(separator);
-    }, data.label);
+      return [dataKeyMapping(b, keyMapping).label, acc].join(separator);
+    }, mapLabel);
 
-    setTitle(titles);
-    setSelected(data.value);
+    setTitle(titles || '');
+    setSelected(mapValue);
     userChange?.(data, parents);
     setTimeout(() => {
       // 1. 可以让用户看到选中操作的效果
       // 2. 可以防止 unmount 后 setState
       setDropdownVisible(false);
-    }, 120);
+    }, 80);
   };
   const handleVisibleChange = (v: boolean) => {
     setDropdownVisible(v);
     onVisibleChange?.(v);
     setCanOpen(false);
   };
-  const handleTrigger: MenuProps['onTrigger'] = (nodeData, event) => {
-    userOnTrigger?.(nodeData, event);
+  const handleTrigger: MenuProps['onTrigger'] = (event, nodeData) => {
+    userOnTrigger?.(event, nodeData);
     setCanOpen(true);
   };
   const handleSearch = (kw: string) => {
@@ -139,7 +141,6 @@ const Cascader: React.FC<Props> = (props) => {
     <div className={mergedWrapperCls} style={style}>
       <Dropdown
         prefixCls={prefixCls}
-        // size={size}
         disabled={disabled}
         visible={visible === undefined ? dropdownVisible : dropdownVisible && visible}
         placement={placement}
@@ -162,6 +163,7 @@ const Cascader: React.FC<Props> = (props) => {
               dataSource={dataSource}
               onTrigger={handleTrigger}
               onSelect={onSelect}
+              keyMapping={keyMapping}
             />
           </div>
         }
@@ -170,10 +172,10 @@ const Cascader: React.FC<Props> = (props) => {
           {React.isValidElement(input) ? (
             input
           ) : (
-            // @TODO size={size}
             <Input
-              disabled={disabled}
               readOnly
+              size={size}
+              disabled={disabled}
               placeholder={placeholder}
               value={title}
               suffix={<DownFilled size="1em" className={classNames('icon-down', dropdownVisible && 'open')} />}
