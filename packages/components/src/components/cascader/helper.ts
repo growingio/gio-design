@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
 
-import { NodeData } from './menu-item';
+import { NodeData, KeyMapping } from './menu-item';
 
 export const withPrefix = (prefix?: string) => (value?: string, sep = '-') => {
   return [prefix, value].filter((s) => !!s).join(sep);
@@ -32,8 +32,8 @@ export const useDynamicData = <T>(originDataSource: T) => {
 
 export const toInt = (s: string | React.ReactText) => (s ? parseInt(s as string, 10) : 0);
 
-export const deepFilter = (d: NodeData, parttern: RegExp) => {
-  const currentMatch = d.label.match(parttern);
+export const deepFilter = (d: NodeData, parttern: RegExp, labelKey = 'label') => {
+  const currentMatch = (d[labelKey] as string).match(parttern);
   if (currentMatch) {
     return true;
   }
@@ -41,19 +41,26 @@ export const deepFilter = (d: NodeData, parttern: RegExp) => {
     return false;
   }
 
-  const someChildMatch = d.children?.some((c) => deepFilter(c, parttern)) as boolean;
+  const someChildMatch = d.children?.some((c) => deepFilter(c, parttern, labelKey)) as boolean;
 
   return someChildMatch;
 };
 
-export const dataFilter = (data: NodeData[], parttern: RegExp, deepSearch = false) => {
+export const dataFilter = (data = [] as NodeData[], parttern: RegExp, deepSearch = false, labelKey = 'label') => {
   if (!parttern) {
     return data;
   }
 
   if (!deepSearch) {
-    return data.filter((d) => d.label.match(parttern));
+    return data.filter((d) => (d[labelKey] as string).match(parttern));
   }
 
-  return data.filter((d) => deepFilter(d, parttern));
+  return data.filter((d) => deepFilter(d, parttern, labelKey));
+};
+
+export const dataKeyMapping = (data: NodeData, keyMapping = {} as KeyMapping) => {
+  const { label: labelKey = 'label', value: valueKey = 'value' } = keyMapping;
+  const { [labelKey]: label, [valueKey]: value } = data;
+
+  return { ...data, label: label as NodeData['label'], value: value as NodeData['value'] };
 };

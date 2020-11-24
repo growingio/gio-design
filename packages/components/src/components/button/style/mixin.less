@@ -3,7 +3,7 @@
 @btn-height-base: 36px;
 @btn-height-lg: 40px;
 @btn-height-sm: 30px;
-@btn-square-size: 32px;
+@btn-square-size: @btn-height-base;
 @btn-square-size-lg: @btn-height-lg;
 @btn-square-size-sm: @btn-height-sm;
 
@@ -207,6 +207,11 @@
   .button-size(@btn-square-size; 0; @size-font-16; @radius-border-small);
   & > * {
     font-size: @size-font-16;
+  }
+  &.@{btnClassName} {
+    svg {
+      .square(@btn-square-size - 16px);
+    }
   }
   &.@{btnClassName}-large {
     .square(@btn-square-size-lg);

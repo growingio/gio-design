@@ -23,6 +23,7 @@ export { default as DownOutlined } from './DownOutlined';
 export { default as DownloadOutlined } from './DownloadOutlined';
 export { default as DragMove } from './DragMove';
 export { default as EditOutlined } from './EditOutlined';
+export { default as Empty } from './Empty';
 export { default as EnlargeOutlined } from './EnlargeOutlined';
 export { default as EventOutlined } from './EventOutlined';
 export { default as ExplainOutlined } from './ExplainOutlined';
