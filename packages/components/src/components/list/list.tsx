@@ -11,7 +11,6 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
   public static defaultProps: Partial<SelectListProps & ConfigConsumerProps> = {
     disabledOptions: [],
     isMultiple: false,
-    height: 450,
   };
 
   public ref: React.RefObject<HTMLDivElement>;
@@ -32,12 +31,13 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
       return rowHeight;
     };
     return (
-      <AutoSizer style={{ width: '100%', height }}>
+      <AutoSizer style={{ width: '100%', height: '100%' }}>
         {({ width }) => (
           <List
             value={value}
             width={width}
-            height={height}
+            height={400}
+            style={{height: height || '100%', overflow: 'auto' }}
             rowCount={options.length}
             rowHeight={typeof rowHeight === 'function' ? getRowHeight : rowHeight}
             rowRenderer={this.renderListItem(options)}

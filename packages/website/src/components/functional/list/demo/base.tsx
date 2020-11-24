@@ -18,6 +18,6 @@ const WrapperStyle = {
 
 export default () => (
   <div style={WrapperStyle}>
-    <List stateless dataSource={options} height={176} width={170} onClick={console.log} />
+    <List stateless dataSource={options} width={170} onClick={console.log} />
   </div>
 );
