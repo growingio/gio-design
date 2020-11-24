@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import groupBy from 'lodash/groupBy';
 import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
+import trim from 'lodash/trim';
 
 import { dataFilter, makeSearchParttern, toInt, useDynamicData, dataKeyMapping, withPrefix } from './helper';
 import Empty from './empty';
@@ -36,7 +37,7 @@ const Menu: React.FC<Props> = (props) => {
     keyMapping: originKeyMapping,
     open,
     depth = 0,
-    keyword,
+    keyword: originKeyword,
     ignoreCase,
     deepSearch = false,
     parentsData = [],
@@ -51,6 +52,7 @@ const Menu: React.FC<Props> = (props) => {
     ...others
   } = props;
   const isRootMenu = depth === 0;
+  const keyword = trim(originKeyword);
   const keyMapping = { label: 'label', value: 'value', ...originKeyMapping };
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
   const wrapRef = useRef<HTMLDivElement>(null);
