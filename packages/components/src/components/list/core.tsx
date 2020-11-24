@@ -18,7 +18,6 @@ class SelectCore extends React.Component<SelectCoreProps & ConfigConsumerProps, 
     isMultiple: false,
     isLoading: false,
     required: false,
-    height: 400,
     rowHeight: 44,
     emptyPlaceholder: '没有找到相关结果',
   };

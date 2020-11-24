@@ -1,4 +1,4 @@
-import { ReactNode, CSSProperties } from 'react';
+import { ReactElement, ReactNode, CSSProperties } from 'react';
 import { ButtonProps } from '../button';
 
 export type IStringOrHtmlElement = string | HTMLElement;
@@ -152,4 +152,15 @@ export interface IModalStaticFunctions {
   error: IModalStaticFunc;
   warn: IModalStaticFunc;
   confirm: IModalStaticFunc;
+}
+
+export type THookModalRef = IModalStaticFuncReturn;
+
+export interface IHookModalProps {
+  config: IModalStaticFuncConfig;
+  afterClose: () => void;
+}
+
+export interface IUseModal {
+  (): [IModalStaticFunctions, ReactElement];
 }

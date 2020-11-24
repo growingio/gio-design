@@ -19,6 +19,8 @@ group:
 
 <code src='./demo/index.tsx' title='基础用法' />
 
+<code src='./demo/useToast.tsx' title='通过 Hook 获取 ConfigContext 上下文' desc='通过 Toast.useToast 创建支持读取 ConfigContext 的 contextHolder。'/>
+
 ## API
 
 组件提供了一些静态方法，使用方法和参数如下：

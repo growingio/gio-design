@@ -13,6 +13,7 @@ export { default as Menu } from './components/menu';
 export {
   default as Modal,
   StepModal,
+  useModal,
   IModalProps,
   IStepModalProps,
   TModalSize,

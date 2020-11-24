@@ -9,6 +9,11 @@ nav:
 
 # @gio-design/icons 更新日志
 
+## 20.11.0
+
+- icons
+  - 修改模板 color 属性改为 style color.[#490](https://github.com/growingio/gio-design/pull/490)
+
 ## 20.10.5
 
 - 🆕 新增[#349](https://github.com/growingio/gio-design/pull/349)
