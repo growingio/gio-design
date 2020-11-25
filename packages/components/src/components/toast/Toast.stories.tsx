@@ -2,7 +2,8 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import Button from '../button';
 
-import Toast, { ArgsProps } from './index';
+import Toast from './index';
+import { ArgsProps } from './interface';
 import './style';
 
 export default {
