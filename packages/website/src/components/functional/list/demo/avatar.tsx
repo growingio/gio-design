@@ -1,5 +1,5 @@
 import React from 'react';
-import { List , Avatar } from '@gio-design/components';
+import { List, Avatar } from '@gio-design/components';
 
 import './avatar.less';
 
