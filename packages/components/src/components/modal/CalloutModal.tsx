@@ -75,7 +75,6 @@ const CalloutModal: React.FC<ICalloutModalProps> = ({
       {...restProps}
       visible={visible}
       pending={loading}
-      prefixCls={prefixCls}
       className={calloutModalClassName}
       wrapClassName={calloutModalWrapClassName}
       title={false}

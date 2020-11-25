@@ -12,12 +12,21 @@ const NormalList = ({
   width,
   onChange = noop,
   isMultiple = false,
+  getPopupContainer,
+  placement,
   ...restProps
 }: IBaseListProps): React.ReactElement => {
   const prefixCls = usePrefixCls('list', customPrefixCls);
   return (
     <div className={`${prefixCls}-wrapper`} style={{ ...wrapStyle, width }}>
-      <Core options={dataSource} onChange={onChange} isMultiple={isMultiple} {...restProps} />
+      <Core
+        options={dataSource}
+        onChange={onChange}
+        isMultiple={isMultiple}
+        getPopupContainer={getPopupContainer}
+        placement={placement}
+        {...restProps}
+      />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { FormProps as RcFormProps } from 'rc-field-form/lib/Form';
 import RcForm, { FormInstance, useForm } from 'rc-field-form';
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';

@@ -1,6 +1,6 @@
 import React from 'react';
-import { List } from '@gio-design/components';
-import { Avatar } from '@gio-design/components';
+import { List, Avatar } from '@gio-design/components';
+
 import './avatar.less';
 
 const options = [
@@ -62,17 +62,16 @@ const labelRenderer = (option: any, isGroup: boolean) => {
 export default () => (
   <>
     <div style={WrapperStyle} className="gio-list_avatar">
-      <List dataSource={options} height={305} width={220} labelRenderer={labelRenderer} rowHeight={getRowHeight} />
+      <List dataSource={options} width={220} labelRenderer={labelRenderer} rowHeight={getRowHeight} />
     </div>
     <div style={{ display: 'inline-block', width: 20 }} />
     <div style={WrapperStyle} className="gio-list_avatar">
       <List
         dataSource={options}
-        height={305}
         width={220}
         labelRenderer={labelRenderer}
         rowHeight={getRowHeight}
-        isMultiple={true}
+        isMultiple
         value={['a']}
       />
     </div>

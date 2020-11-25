@@ -29,12 +29,12 @@ export default () => {
           </Button>
         </div>
         <div className="item">
-          <Button type="secondary" disabled={true} size="large">
+          <Button type="secondary" disabled size="large">
             禁用
           </Button>
         </div>
         <div className="item">
-          <Button type="secondary" size="large" loading={true}>
+          <Button type="secondary" size="large" loading>
             加载中
           </Button>
         </div>
@@ -54,12 +54,12 @@ export default () => {
           <Button type="secondary">次要按钮</Button>
         </div>
         <div className="item">
-          <Button type="secondary" disabled={true}>
+          <Button type="secondary" disabled>
             禁用
           </Button>
         </div>
         <div className="item">
-          <Button type="secondary" loading={true}>
+          <Button type="secondary" loading>
             加载中
           </Button>
         </div>
@@ -81,12 +81,12 @@ export default () => {
           </Button>
         </div>
         <div className="item">
-          <Button type="secondary" disabled={true} size="small">
+          <Button type="secondary" disabled size="small">
             禁用
           </Button>
         </div>
         <div className="item">
-          <Button type="secondary" size="small" loading={true}>
+          <Button type="secondary" size="small" loading>
             加载中
           </Button>
         </div>

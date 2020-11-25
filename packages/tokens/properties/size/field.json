@@ -1,6 +1,9 @@
 {
   "size": {
     "field": {
+      "mini": {
+        "value": "24px"
+      },
       "small": {
         "value": "30px"
       },

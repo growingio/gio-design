@@ -5,7 +5,9 @@ import { IconProps } from './interface';
 function SvgTagOutlined(wrapperProps: IconProps) {
   const { rotating, color, size, ...restProps } = wrapperProps;
   const props = {
-    color,
+    style: {
+      color,
+    },
     className: rotating ? 'gio-icon-svg gio-icon-rotating' : 'gio-icon-svg',
     width: !size ? '1rem' : size,
     height: !size ? '1rem' : size,
@@ -13,6 +15,7 @@ function SvgTagOutlined(wrapperProps: IconProps) {
   const file = (
     <svg
       viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
       fillRule="evenodd"
       clipRule="evenodd"
       strokeLinejoin="round"
