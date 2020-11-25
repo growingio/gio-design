@@ -74,6 +74,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
     icon,
     ghost,
     block,
+    mini,
     ...rest
   } = props;
 
@@ -122,8 +123,8 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
 
   const autoInsertSpace = autoInsertSpaceInButton !== false;
 
-  const sizeCls = customizeSize || size;
   const iconType = innerLoading ? 'loading' : icon;
+  const sizeCls = mini && !!(!children && children !== 0 && iconType) ? 'mini' : customizeSize || size;
 
   const classes = classNames(prefixCls, className, {
     [`${prefixCls}-${type}`]: type,

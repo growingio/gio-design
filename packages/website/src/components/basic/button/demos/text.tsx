@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '@gio-design/components/es/components/button';
 import '@gio-design/components/es/components/button/style/css.js';
-import { PlusCircleFilled, FilterOutlined } from '@gio-design/icons';
+import { PlusCircleFilled } from '@gio-design/icons';
 import './index.less';
 
 export default () => {
@@ -27,12 +27,12 @@ export default () => {
           <Button type="text">文本按钮</Button>
         </div>
         <div className="item">
-          <Button type="text" disabled={true}>
+          <Button type="text" disabled>
             禁用
           </Button>
         </div>
         <div className="item">
-          <Button type="text" loading={true}>
+          <Button type="text" loading>
             加载中
           </Button>
         </div>
@@ -49,27 +49,27 @@ export default () => {
       </div>
       <div className="list" style={{ backgroundColor: '#313E75' }}>
         <div className="item">
-          <Button ghost={true} type="text">
+          <Button ghost type="text">
             深色背景
           </Button>
         </div>
         <div className="item">
-          <Button type="text" disabled={true} ghost={true}>
+          <Button type="text" disabled ghost>
             禁用
           </Button>
         </div>
         <div className="item">
-          <Button type="text" loading={true} ghost={true}>
+          <Button type="text" loading ghost>
             加载中
           </Button>
         </div>
         <div className="item">
-          <Button type="text" loading={loadings[2]} ghost={true} onClick={() => enterLoading(2)}>
+          <Button type="text" loading={loadings[2]} ghost onClick={() => enterLoading(2)}>
             点击!
           </Button>
         </div>
         <div className="item">
-          <Button icon={<PlusCircleFilled />} type="text" ghost={true}>
+          <Button icon={<PlusCircleFilled />} type="text" ghost>
             新建
           </Button>
         </div>
