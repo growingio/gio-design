@@ -12,6 +12,7 @@ nav:
 ## 20.11.3
 
 - component
+
   - 🛎 添加 ConfigProvider readme[#494](https://github.com/growingio/gio-design/pull/494)
   - Checkbox
     - 🆕 新增 onClick 参数.[#487](https://github.com/growingio/gio-design/pull/487)

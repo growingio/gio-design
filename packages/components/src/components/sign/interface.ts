@@ -35,7 +35,12 @@ export interface ISignDotProps extends ISignCommonProps {
 }
 
 export interface ISignProps extends ISignNumberProps, ISignDotProps {
-  // 设置 Sign 的变体类型，默认 number
+  /**
+   * 设置 Sign 的变体类型，默认 number
+   */
   variant?: TSignVariant;
+  /**
+   *
+   */
   placement?: TPlacement;
 }

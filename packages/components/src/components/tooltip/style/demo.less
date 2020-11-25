@@ -1,0 +1,35 @@
+@button-width: 100px;
+.tooltip-top {
+  margin-left: @button-width;
+  & > .tooltipSpan {
+    margin: 0 10px;
+  }
+}
+
+.tooltip-left {
+  float: left;
+  width: @button-width;
+  & > .tooltipSpan {
+    margin: 10px 0;
+  }
+}
+.tooltip-buttom {
+  margin-left: @button-width;
+  & > .tooltipSpan {
+    margin: 0 10px;
+  }
+}
+.tooltip-right {
+  width: 110px;
+  margin-left: 450px;
+  & > .tooltipSpan {
+    margin: 10px 0;
+  }
+}
+.tooltipSpan {
+  display: inline-block;
+  width: @button-width;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #adadad;
+}

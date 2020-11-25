@@ -3,37 +3,13 @@ import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import { DropdownProps } from '../dropdown/interface';
 import { NodeData } from './menu-item';
-import { SizeType } from '../config-provider/SizeContext';
 import { dataKeyMapping, useDynamicData, withPrefix } from './helper';
 import Dropdown from '../dropdown';
 import Input from '../input';
 import Menu, { Props as MenuProps } from './menu';
 import SearchBar from './search-bar';
-
-export interface Props extends MenuProps {
-  prefixCls?: string;
-  size?: SizeType;
-  disabled?: boolean;
-  title?: string;
-  separator?: string;
-  placeholder?: string;
-  input?: React.ReactElement;
-  // search-bar
-  searchPlaceholder?: string;
-  lazySearch?: boolean;
-  onSearch?: (keyword: string) => void;
-
-  // dropdown props
-  visible?: boolean;
-  placement?: DropdownProps['placement'];
-  overlayClassName?: string;
-  overlayStyle?: React.CSSProperties;
-  onVisibleChange?: DropdownProps['onVisibleChange'];
-  dropdownTrigger?: DropdownProps['trigger'];
-  getDropdownContainer?: DropdownProps['getTooltipContainer'];
-}
+import { Props } from './interface'
 
 const Cascader: React.FC<Props> = (props) => {
   const {

@@ -3,31 +3,94 @@ import { ReactNode, CSSProperties } from 'react';
 type ListValueType = string | string[];
 
 export interface IBaseListProps {
+  /**
+   `list` 数据源
+   */
   dataSource: Option[];
+  /**
+   是否多选
+   */
   isMultiple?: boolean;
+  /**
+   是否保存选中状态, 多选模式下失效
+   */
   stateless?: boolean;
+  /**
+   选中触发的回调
+   */
   onChange?: (value: any) => void;
+  /**
+   选中的值
+   */
   value?: any;
+  /**
+   	列表宽度
+   */
   width?: number | string;
+  /**
+   	列表高度
+   */
   height?: number;
+  /**
+   包裹样式
+   */
   wrapStyle?: CSSProperties;
+  /**
+   前缀 `className` 样式类名
+   */
   prefixCls?: string;
+  /**
+   渲染列表项
+   */
   labelRenderer?: (option: Option, isGruop: false) => ReactNode;
+  /**
+   	自定义行高
+   */
   rowHeight?: number | ((option: Option) => number);
+  /**
+   选中的回调
+   */
   onSelect?: (selectedValue: string, value: ListValueType, option: Option) => void;
+  /**
+   	取消选中的回调
+   */
   onDeselect?: (selectedValue: string, value: ListValueType, option: Option) => void;
+  /**
+   	点击触发的回调
+   */
   onClick?: (value: any) => void;
   getPopupContainer?: (node: HTMLElement) => HTMLElement;
   placement?: string;
 }
 
 export interface Option {
+  /**
+   列表单项主要文字
+   */
   label: string;
+  /**
+   	作为列表的 `key` 来使用
+   */
   value: string;
+  /**
+   	列表次要文字
+   */
   description?: string;
+  /**
+   	是否禁用
+   */
   disabled?: boolean;
+  /**
+   	`tooltip` 描述
+   */
   tooltip?: string;
+  /**
+   分组的 `key` ，与 `groupLabel` 一起使用
+   */
   groupValue?: string;
+  /**
+   	分组的标题
+   */
   groupLabel?: string;
 }
 

@@ -24,7 +24,9 @@ const SkeletonImage = (props: SkeletonImageProps) => {
       </div>
     </div>
   ) : (
-    children
+    <>
+      {children}
+    </>
   );
 };
 
