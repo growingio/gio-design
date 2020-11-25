@@ -8,6 +8,7 @@ export interface BaseButtonProps {
   icon?: React.ReactNode;
   size?: SizeType;
   loading?: boolean;
+  mini?: boolean;
   prefixCls?: string;
   className?: string;
   ghost?: boolean;

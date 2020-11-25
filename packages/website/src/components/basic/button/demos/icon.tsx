@@ -100,6 +100,31 @@ export default () => {
           />
         </div>
       </div>
+
+      <div className="list">
+        <div className="item">
+          <Button type="assist" icon={<FilterOutlined />} mini />
+          <Button type="secondary" icon={<FilterOutlined />} mini />
+        </div>
+        <div className="item">
+          <Button type="assist" disabled icon={<FilterOutlined />} mini />
+          <Button type="secondary" disabled icon={<FilterOutlined />} mini />
+        </div>
+        <div className="item">
+          <Button type="assist" disabled icon={<FilterOutlined />} mini loading />
+          <Button type="secondary" disabled icon={<FilterOutlined />} mini loading />
+        </div>
+        <div className="item">
+          <Button type="assist" icon={<FilterOutlined />} loading={loadings[5]} mini onClick={() => enterLoading(5)} />
+          <Button
+            type="secondary"
+            icon={<FilterOutlined />}
+            loading={loadings[6]}
+            mini
+            onClick={() => enterLoading(6)}
+          />
+        </div>
+      </div>
     </div>
   );
 };
