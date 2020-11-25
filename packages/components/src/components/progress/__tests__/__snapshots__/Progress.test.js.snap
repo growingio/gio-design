@@ -64,14 +64,14 @@ exports[`<Progress /> render error progress Component 1`] = `
         <svg
           className="gio-icon-svg"
           fill="currentColor"
-          height="1rem"
+          height="16px"
           style={
             Object {
               "color": undefined,
             }
           }
           viewBox="0 0 14 14"
-          width="1rem"
+          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
@@ -133,14 +133,14 @@ exports[`<Progress /> render sucess progress Component 1`] = `
         <svg
           className="gio-icon-svg"
           fill="currentColor"
-          height="1rem"
+          height="16px"
           style={
             Object {
               "color": undefined,
             }
           }
           viewBox="0 0 14 14"
-          width="1rem"
+          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
