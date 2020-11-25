@@ -7,17 +7,17 @@ export default () => (
   <div className="button-demo">
     <div className="list list-border">
       <div className="item">
-        <Button block={true} type="primary">
+        <Button block type="primary">
           块按钮
         </Button>
       </div>
       <div className="item">
-        <Button block={true} type="secondary">
+        <Button block type="secondary">
           块按钮
         </Button>
       </div>
       <div className="item">
-        <Button block={true} type="assist">
+        <Button block type="assist">
           块按钮
         </Button>
       </div>
