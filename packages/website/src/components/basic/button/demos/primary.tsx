@@ -24,9 +24,7 @@ export default () => {
     <div className="button-demo">
       <div className="list">
         <div className="item">
-          <Button size="large" prefixCls="xml">
-            主要按钮
-          </Button>
+          <Button size="large">主要按钮</Button>
         </div>
         <div className="item">
           <Button type="primary" icon={<PlusCircleFilled />} size="large" disabled>

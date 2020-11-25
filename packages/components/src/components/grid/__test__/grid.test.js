@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import Grid from '..';
 
-let container: HTMLDivElement;
+let container;
 beforeEach(() => {
   // 创建一个 DOM 元素作为渲染目标
   container = document.createElement('div');
@@ -14,7 +14,7 @@ afterEach(() => {
   // 退出时进行清理
   unmountComponentAtNode(container);
   container.remove();
-  container = (undefined as unknown) as HTMLDivElement;
+  container = undefined;
 });
 
 describe('<Grid />', () => {
@@ -71,7 +71,7 @@ describe('<Grid />', () => {
       );
     });
 
-    const grid = container.querySelector('.gio-grid') as HTMLDivElement;
+    const grid = container.querySelector('.gio-grid');
     expect(grid.style.getPropertyValue('--gio-grid-span')).toBe('12');
     expect(grid.style.getPropertyValue('--gio-grid-gap')).toBe('1');
     expect(grid.style.getPropertyValue('--gio-grid-wrap')).toBe('wrap');

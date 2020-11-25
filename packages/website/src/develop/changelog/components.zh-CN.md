@@ -9,6 +9,43 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.11.3
+
+- component
+
+  - 🛎 添加 ConfigProvider readme[#494](https://github.com/growingio/gio-design/pull/494)
+  - Checkbox
+    - 🆕 新增 onClick 参数.[#487](https://github.com/growingio/gio-design/pull/487)
+    - 💄 修改 input hidden 变成透明，其他元素禁止事件.[#487](https://github.com/growingio/gio-design/pull/487)
+  - Table
+    - 🆕 新增选择点击设置停止冒泡.[#487](https://github.com/growingio/gio-design/pull/487)
+  - Modal
+    - 🆕 新增 useModal 方法，以接入 configContext.[#494](https://github.com/growingio/gio-design/pull/494)
+  - Toast
+    - 🆕 新增 useToast 方法，以接入 configContext.[#494](https://github.com/growingio/gio-design/pull/494)
+  - Drawer
+    - 🐛 修复 drawer 的前缀 bug.[#494](https://github.com/growingio/gio-design/pull/494)
+  - List
+    - 🐛 修复 List 定高的 bug.[#510](https://github.com/growingio/gio-design/pull/510)
+    - 🐛 修复 List datasource 参数可控的问题.[#493](https://github.com/growingio/gio-design/pull/493)
+    - 🐛 修复 Tooltip 被圈在 List 的 bug.[#512](https://github.com/growingio/gio-design/pull/512)
+  - Input
+    - 💄 修改 input 设置默认宽度 100%.[#509](https://github.com/growingio/gio-design/pull/509)
+  - Cascader
+    - 🛎 使其支持 key mapping.[#486](https://github.com/growingio/gio-design/pull/486)
+  - Button
+
+    - 💄 修复默认尺寸.[#513](https://github.com/growingio/gio-design/pull/513)
+
+## 20.11.2
+
+- component
+  - 🛎 采用 usePrefix 以及 withConfigConsumer 进行组件 prefixCls 构建. [#485](https://github.com/growingio/gio-design/pull/485)
+  - Avatar
+    - 🐛 修复头像不能触发下拉列表.[#475](https://github.com/growingio/gio-design/pull/475)
+- 📖 修复所有的 eslint 报错信息.[#491](https://github.com/growingio/gio-design/pull/491)
+- 🛠 less-loader 版本号从 7.0.2 升级到 7.1.0.[#479](https://github.com/growingio/gio-design/pull/479)
+
 ## 20.11.1
 
 - component

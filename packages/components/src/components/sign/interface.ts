@@ -20,11 +20,11 @@ export interface ISignCommonProps {
 
 export interface ISignNumberProps extends ISignCommonProps {
   // 显示的数字
-  count?: number;
+  count: number;
   // count 为 0 时是否显示
   showZero?: boolean;
   // 最大显示数量级
-  magnitude?: TMagnitude;
+  magnitude: TMagnitude;
 }
 
 export interface ISignDotProps extends ISignCommonProps {

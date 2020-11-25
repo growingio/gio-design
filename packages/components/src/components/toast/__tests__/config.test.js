@@ -75,7 +75,7 @@ describe('Toast.config', () => {
     });
     Toast.info('last');
     expect(document.querySelectorAll('.gio-toast-notice').length).toBe(0);
-    expect(document.querySelectorAll('.prefix-test-notice').length).toBe(1);
+    expect(document.querySelectorAll('.prefix-test-toast-notice').length).toBe(1);
     Toast.config({
       prefixCls: 'gio-toast',
     });

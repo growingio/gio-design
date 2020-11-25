@@ -11,6 +11,9 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
    * 按下回车时的回调
    */
   onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  compositionStart?: (e: React.CompositionEvent<HTMLInputElement>) => void;
+  compositionUpdate?: (e: React.CompositionEvent<HTMLInputElement>) => void;
+  compositionEnd?: (e: React.CompositionEvent<HTMLInputElement>) => void;
   style?: React.CSSProperties;
   /**
    * input 组件外层容器的 style

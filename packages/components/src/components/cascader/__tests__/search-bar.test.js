@@ -10,7 +10,7 @@ describe('<SearchBar />', () => {
       wrapper.find('input').simulate('change', { target: { value: '123' } });
     });
 
-    expect((wrapper.find('input').getDOMNode() as HTMLInputElement).value).toBe('123');
+    expect(wrapper.find('input').getDOMNode().value).toBe('123');
 
     wrapper.setProps({ lazySearch: true });
 
@@ -18,7 +18,7 @@ describe('<SearchBar />', () => {
       wrapper.find('input').simulate('change', { target: { value: '234' } });
       wrapper.find('input').simulate('keyup', { key: 'Enter' });
     });
-    expect((wrapper.find('input').getDOMNode() as HTMLInputElement).value).toBe('234');
+    expect(wrapper.find('input').getDOMNode().value).toBe('234');
   });
 
   it('should be lazy change', () => {

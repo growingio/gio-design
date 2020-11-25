@@ -2,8 +2,6 @@ import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { waitFor } from '@testing-library/react';
 import React from 'react';
-
-import { NodeData } from '../menu-item';
 import Cascader from '..';
 
 const menu = [
@@ -27,7 +25,7 @@ describe('<Cascader />', () => {
   });
 
   it('should popup a searchable menu overlayer', async () => {
-    const map = {} as { [key: string]: EventListenerOrEventListenerObject };
+    const map = {};
     document.addEventListener = jest.fn((event, cb) => {
       map[event] = cb;
     });
@@ -51,18 +49,21 @@ describe('<Cascader />', () => {
     });
 
     act(() => {
-      (map.click as any)({
-        target: { classList: { contains: (cls: string) => cls === 'gio-cascader-dropdown' } },
+      map.click({
+        target: { classList: { contains: (cls) => cls === 'gio-cascader-dropdown' } },
       });
     });
 
-    await waitFor(() => {
-      expect(document.querySelectorAll('.gio-dropdown-hidden')).toHaveLength(1);
-    });
+    await waitFor(
+      () => {
+        expect(document.querySelectorAll('.gio-dropdown-hidden')).toHaveLength(1);
+      },
+      { timeout: 5000 }
+    );
   });
 
   it('should render sub-menu', async () => {
-    const dataSource = [{ label: 'a', value: 1, children: [] as NodeData[] }];
+    const dataSource = [{ label: 'a', value: 1, children: [] }];
     const wrapper = mount(<Cascader dataSource={dataSource} visible trigger="click" />);
 
     act(() => {
@@ -99,7 +100,7 @@ describe('<Cascader />', () => {
       wrapper.find('.cascader-menu-item .cascader-menu-item-inner').at(1).simulate('keyup', { key: 'Enter' });
     });
     await waitFor(() => {
-      expect((wrapper.find('.gio-cascader-title input').getDOMNode() as HTMLInputElement).value).toEqual('b');
+      expect(wrapper.find('.gio-cascader-title input').getDOMNode().value).toEqual('b');
     });
   });
 
@@ -174,7 +175,7 @@ describe('<Cascader />', () => {
 
   it('can render menu-item by user', () => {
     const wrapper = mount(
-      <Cascader dataSource={menu} visible onRender={(t: NodeData) => <span className="custom-item">{t.label}</span>} />
+      <Cascader dataSource={menu} visible onRender={(t) => <span className="custom-item">{t.label}</span>} />
     );
 
     expect(wrapper.find('.custom-item')).toHaveLength(2);
