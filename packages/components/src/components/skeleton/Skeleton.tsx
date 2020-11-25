@@ -57,7 +57,9 @@ const Skeleton = (props: SkeletonProps) => {
       {renderSkeletonParagraph()}
     </div>
   ) : (
-    children
+    <>
+      {children}
+    </>
   );
 };
 

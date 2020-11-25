@@ -1,43 +1,16 @@
-import { Field, FormInstance } from 'rc-field-form';
-import { FieldProps } from 'rc-field-form/lib/Field';
+import { Field } from 'rc-field-form';
 import { Meta } from 'rc-field-form/lib/interface';
 import FieldContext from 'rc-field-form/lib/FieldContext';
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-
+import { FormItemProps } from './interface'
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import { FormContext, FormLabelAlign } from './context';
+import { FormContext } from './context';
 import { hasValidName, toArray } from './util';
-import ItemControl, { FormItemFeedbackType } from './ItemControl';
+import ItemControl from './ItemControl';
 import ItemLabel from './ItemLabel';
 
-type RenderChildren = (form: FormInstance) => React.ReactNode;
-type ChildrenType = RenderChildren | React.ReactNode;
-
-export interface Props extends Omit<FieldProps, 'children'> {
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  label?: string;
-  afterLabel?: React.ReactNode;
-  afterInput?: React.ReactNode;
-  children?: ChildrenType;
-  help?: React.ReactNode;
-  feedback?: React.ReactNode;
-  feedbackType?: FormItemFeedbackType;
-  required?: boolean;
-  marker?: React.ReactNode;
-  feedbackIcon?: React.ReactNode;
-  htmlFor?: string;
-  labelWidth?: number;
-  inputWidth?: number;
-  colon?: boolean;
-  labelAlign?: FormLabelAlign;
-
-  fieldKey?: React.Key | React.Key[];
-}
-
-const Item: React.FC<Props> = (props: Props) => {
+const Item: React.FC<FormItemProps> = (props: FormItemProps) => {
   const {
     requiredMark,
     name: formName,
