@@ -48,13 +48,13 @@ export interface SearchBarProps {
   /**
    * 值
    */
-  value: string;
+  value?: string;
   /**
    * 修改值时触发的回调函数
    */
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
   /**
    * 存储记录的唯一 id
    */
-  id: string;
+  id?: string;
 }

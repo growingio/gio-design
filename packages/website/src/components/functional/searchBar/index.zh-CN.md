@@ -18,9 +18,9 @@ group:
 
 | 参数              | 说明                           | 类型                       | 默认值   |
 | ----------------- | ------------------------------ | -------------------------- | -------- |
-| value             | 值                             | string                     | 必填     |
-| onChange          | 修改值时触发的回调函数         | Function(value: string)    | 必填     |
-| id                | 存储记录的唯一 id              | string                     | 必填     |
+| value             | 值                             | string                     | -     |
+| onChange          | 修改值时触发的回调函数         | Function(value: string)    | -     |
+| id                | 存储记录的唯一 id              | string                     | -     |
 | showStorage       | 是否需要展示搜索记录           | boolean                    | false    |
 | storageNum        | 默认显示最近搜索条数           | number                     | 5        |
 | disabled          | 是否禁用                       | boolean                    | false    |
