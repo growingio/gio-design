@@ -37,7 +37,7 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     value,
     depth = 0,
     ignoreCase,
-    keyMapping,
+    keyMapping = { label: 'label', value: 'value' },
     keyword: originKeyword,
     deepSearch = false,
     parentsData = [],
