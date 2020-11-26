@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const fs = require('fs');
 const StyleDictionary = require('style-dictionary').extend('./config.json');
+
 const typingsES6Template = _.template(fs.readFileSync(`${__dirname}/templates/typings/es6.template`));
 
 StyleDictionary.registerFormat({
@@ -22,7 +23,7 @@ StyleDictionary.registerTransformGroup({
     'name/cti/kebab',
     'time/seconds',
     'content/icon',
-    'size/rem',
+    'size/px',
     'color/hex8',
     'supportCompositeValue',
   ],
