@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
 import trim from 'lodash/trim';
 
-import { toInt, withPrefix } from './helper';
+import { dataFilter, makeSearchParttern, toInt, withPrefix } from './helper';
 import Empty from './empty';
 import MenuItem, { Props as MenuItemProps, NodeData } from './menu-item';
 
@@ -36,6 +36,8 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     dataSource = [],
     value,
     depth = 0,
+    ignoreCase,
+    keyMapping,
     keyword: originKeyword,
     deepSearch = false,
     parentsData = [],
@@ -54,7 +56,7 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   const keyword = trim(originKeyword);
   const wrapRef = useRef<HTMLDivElement>(null);
   const withWrapperCls = withPrefix('cascader-menu');
-  const groupData = groupBy(dataSource, 'groupId');
+
   // 合并 ref
   useEffect(() => {
     if (typeof ref === 'function') {
@@ -81,10 +83,17 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wrapRef, parentMenu]);
 
+  let filteredDataSource = dataSource;
+  if (keyword && (isRootMenu || deepSearch)) {
+    const searchParttern = makeSearchParttern(keyword, ignoreCase);
+    filteredDataSource = dataFilter(dataSource, searchParttern, deepSearch, keyMapping.label);
+  }
+
   if (isEmpty(dataSource) && !isRootMenu) {
     return null;
   }
 
+  const groupData = groupBy(filteredDataSource, 'groupId');
   let menu;
 
   if (isEmpty(dataSource) && isRootMenu) {
@@ -103,6 +112,8 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
             dataSource={data}
             parentsData={parentsData}
             deepSearch={deepSearch}
+            keyMapping={keyMapping}
+            ignoreCase={ignoreCase}
             {...others}
           />
         ))}

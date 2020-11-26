@@ -20,7 +20,9 @@ describe('<Cascader />', () => {
 
     expect(wrapper.find('.gio-cascader-title input').getElement().props.placeholder).toBe('title ph');
 
-    wrapper.setProps({ prefixCls: 'foo' });
+    act(() => {
+      wrapper.setProps({ prefixCls: 'foo' });
+    });
     expect(wrapper.find('.foo-cascader')).toHaveLength(1);
   });
 
@@ -54,9 +56,9 @@ describe('<Cascader />', () => {
       });
     });
 
-    // await waitFor(() => {
-    //   expect(document.querySelectorAll('.gio-dropdown-hidden')).toHaveLength(1);
-    // });
+    await waitFor(() => {
+      expect(document.querySelectorAll('.gio-dropdown-hidden')).toHaveLength(1);
+    });
   });
 
   it('should render sub-menu', async () => {
@@ -70,14 +72,16 @@ describe('<Cascader />', () => {
       expect(wrapper.find('.cascader-menu-list').text()).toEqual('a');
     });
 
-    wrapper.setProps({ dataSource: [{ label: 'a', value: 1, children: [{ label: 'b', value: 2 }] }] });
+    act(() => {
+      wrapper.setProps({ dataSource: [{ label: 'a', value: 1, children: [{ label: 'b', value: 2 }] }] });
+    });
     act(() => {
       wrapper.find('.cascader-menu-item .cascader-menu-item-inner').at(0).simulate('click', { currentTarget: {} });
     });
 
-    // await waitFor(() => {
-    //   expect(wrapper.find('.cascader-menu-list').text()).toEqual('ab');
-    // });
+    await waitFor(() => {
+      expect(wrapper.find('.cascader-menu-list').text()).toEqual('ab');
+    });
   });
 
   it('should select a value', async () => {
@@ -92,7 +96,9 @@ describe('<Cascader />', () => {
       expect(onSelect).toBeCalled();
     });
 
-    wrapper.setProps({ selectAny: true });
+    act(() => {
+      wrapper.setProps({ selectAny: true });
+    });
     act(() => {
       wrapper.find('.cascader-menu-item .cascader-menu-item-inner').at(1).simulate('keyup', { key: 'Enter' });
     });
