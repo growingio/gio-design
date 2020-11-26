@@ -31,7 +31,16 @@ module.exports = {
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
     'no-underscore-dangle': 'off',
-    'no-unused-expressions': ['error', {"allowShortCircuit": true}],
-    'react/static-property-placement': ["error", "static public field"],
+    'no-unused-expressions': [0],
+    'react/static-property-placement': ['error', 'static public field'],
+    '@typescript-eslint/no-unused-expressions': ['error', { allowShortCircuit: true }],
+
+    '@typescript-eslint/explicit-function-return-type': [
+      'warn',
+      {
+        allowExpressions: true,
+        allowTypedFunctionExpressions: true,
+      },
+    ],
   },
 };
