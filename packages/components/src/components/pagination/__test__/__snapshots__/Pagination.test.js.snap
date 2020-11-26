@@ -1289,12 +1289,12 @@ initialize {
                                     "data": "跳至",
                                     "next": Object {
                                       "attribs": Object {
-                                        "class": "gio-input",
+                                        "class": "gio-input gio-input-container-middle",
                                       },
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
-                                            "class": "gio-input-content gio-input-content-middle",
+                                            "class": "gio-input-content",
                                             "placeholder": "",
                                             "type": "text",
                                             "value": "",
@@ -1345,12 +1345,12 @@ initialize {
                                   },
                                   Object {
                                     "attribs": Object {
-                                      "class": "gio-input",
+                                      "class": "gio-input gio-input-container-middle",
                                     },
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
-                                          "class": "gio-input-content gio-input-content-middle",
+                                          "class": "gio-input-content",
                                           "placeholder": "",
                                           "type": "text",
                                           "value": "",
@@ -1407,12 +1407,12 @@ initialize {
                                     "parent": [Circular],
                                     "prev": Object {
                                       "attribs": Object {
-                                        "class": "gio-input",
+                                        "class": "gio-input gio-input-container-middle",
                                       },
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
-                                            "class": "gio-input-content gio-input-content-middle",
+                                            "class": "gio-input-content",
                                             "placeholder": "",
                                             "type": "text",
                                             "value": "",
@@ -2872,12 +2872,12 @@ initialize {
                                   "data": "跳至",
                                   "next": Object {
                                     "attribs": Object {
-                                      "class": "gio-input",
+                                      "class": "gio-input gio-input-container-middle",
                                     },
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
-                                          "class": "gio-input-content gio-input-content-middle",
+                                          "class": "gio-input-content",
                                           "placeholder": "",
                                           "type": "text",
                                           "value": "",
@@ -2928,12 +2928,12 @@ initialize {
                                 },
                                 Object {
                                   "attribs": Object {
-                                    "class": "gio-input",
+                                    "class": "gio-input gio-input-container-middle",
                                   },
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
-                                        "class": "gio-input-content gio-input-content-middle",
+                                        "class": "gio-input-content",
                                         "placeholder": "",
                                         "type": "text",
                                         "value": "",
@@ -2990,12 +2990,12 @@ initialize {
                                   "parent": [Circular],
                                   "prev": Object {
                                     "attribs": Object {
-                                      "class": "gio-input",
+                                      "class": "gio-input gio-input-container-middle",
                                     },
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
-                                          "class": "gio-input-content gio-input-content-middle",
+                                          "class": "gio-input-content",
                                           "placeholder": "",
                                           "type": "text",
                                           "value": "",
@@ -4218,12 +4218,12 @@ initialize {
                                 "data": "跳至",
                                 "next": Object {
                                   "attribs": Object {
-                                    "class": "gio-input",
+                                    "class": "gio-input gio-input-container-middle",
                                   },
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
-                                        "class": "gio-input-content gio-input-content-middle",
+                                        "class": "gio-input-content",
                                         "placeholder": "",
                                         "type": "text",
                                         "value": "",
@@ -4274,12 +4274,12 @@ initialize {
                               },
                               Object {
                                 "attribs": Object {
-                                  "class": "gio-input",
+                                  "class": "gio-input gio-input-container-middle",
                                 },
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
-                                      "class": "gio-input-content gio-input-content-middle",
+                                      "class": "gio-input-content",
                                       "placeholder": "",
                                       "type": "text",
                                       "value": "",
@@ -4336,12 +4336,12 @@ initialize {
                                 "parent": [Circular],
                                 "prev": Object {
                                   "attribs": Object {
-                                    "class": "gio-input",
+                                    "class": "gio-input gio-input-container-middle",
                                   },
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
-                                        "class": "gio-input-content gio-input-content-middle",
+                                        "class": "gio-input-content",
                                         "placeholder": "",
                                         "type": "text",
                                         "value": "",
@@ -5800,12 +5800,12 @@ initialize {
                               "data": "跳至",
                               "next": Object {
                                 "attribs": Object {
-                                  "class": "gio-input",
+                                  "class": "gio-input gio-input-container-middle",
                                 },
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
-                                      "class": "gio-input-content gio-input-content-middle",
+                                      "class": "gio-input-content",
                                       "placeholder": "",
                                       "type": "text",
                                       "value": "",
@@ -5856,12 +5856,12 @@ initialize {
                             },
                             Object {
                               "attribs": Object {
-                                "class": "gio-input",
+                                "class": "gio-input gio-input-container-middle",
                               },
                               "children": Array [
                                 Object {
                                   "attribs": Object {
-                                    "class": "gio-input-content gio-input-content-middle",
+                                    "class": "gio-input-content",
                                     "placeholder": "",
                                     "type": "text",
                                     "value": "",
@@ -5918,12 +5918,12 @@ initialize {
                               "parent": [Circular],
                               "prev": Object {
                                 "attribs": Object {
-                                  "class": "gio-input",
+                                  "class": "gio-input gio-input-container-middle",
                                 },
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
-                                      "class": "gio-input-content gio-input-content-middle",
+                                      "class": "gio-input-content",
                                       "placeholder": "",
                                       "type": "text",
                                       "value": "",
@@ -7382,12 +7382,12 @@ initialize {
                             "data": "跳至",
                             "next": Object {
                               "attribs": Object {
-                                "class": "gio-input",
+                                "class": "gio-input gio-input-container-middle",
                               },
                               "children": Array [
                                 Object {
                                   "attribs": Object {
-                                    "class": "gio-input-content gio-input-content-middle",
+                                    "class": "gio-input-content",
                                     "placeholder": "",
                                     "type": "text",
                                     "value": "",
@@ -7438,12 +7438,12 @@ initialize {
                           },
                           Object {
                             "attribs": Object {
-                              "class": "gio-input",
+                              "class": "gio-input gio-input-container-middle",
                             },
                             "children": Array [
                               Object {
                                 "attribs": Object {
-                                  "class": "gio-input-content gio-input-content-middle",
+                                  "class": "gio-input-content",
                                   "placeholder": "",
                                   "type": "text",
                                   "value": "",
@@ -7500,12 +7500,12 @@ initialize {
                             "parent": [Circular],
                             "prev": Object {
                               "attribs": Object {
-                                "class": "gio-input",
+                                "class": "gio-input gio-input-container-middle",
                               },
                               "children": Array [
                                 Object {
                                   "attribs": Object {
-                                    "class": "gio-input-content gio-input-content-middle",
+                                    "class": "gio-input-content",
                                     "placeholder": "",
                                     "type": "text",
                                     "value": "",
@@ -8964,12 +8964,12 @@ initialize {
                           "data": "跳至",
                           "next": Object {
                             "attribs": Object {
-                              "class": "gio-input",
+                              "class": "gio-input gio-input-container-middle",
                             },
                             "children": Array [
                               Object {
                                 "attribs": Object {
-                                  "class": "gio-input-content gio-input-content-middle",
+                                  "class": "gio-input-content",
                                   "placeholder": "",
                                   "type": "text",
                                   "value": "",
@@ -9020,12 +9020,12 @@ initialize {
                         },
                         Object {
                           "attribs": Object {
-                            "class": "gio-input",
+                            "class": "gio-input gio-input-container-middle",
                           },
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "class": "gio-input-content gio-input-content-middle",
+                                "class": "gio-input-content",
                                 "placeholder": "",
                                 "type": "text",
                                 "value": "",
@@ -9082,12 +9082,12 @@ initialize {
                           "parent": [Circular],
                           "prev": Object {
                             "attribs": Object {
-                              "class": "gio-input",
+                              "class": "gio-input gio-input-container-middle",
                             },
                             "children": Array [
                               Object {
                                 "attribs": Object {
-                                  "class": "gio-input-content gio-input-content-middle",
+                                  "class": "gio-input-content",
                                   "placeholder": "",
                                   "type": "text",
                                   "value": "",
@@ -10546,12 +10546,12 @@ initialize {
                         "data": "跳至",
                         "next": Object {
                           "attribs": Object {
-                            "class": "gio-input",
+                            "class": "gio-input gio-input-container-middle",
                           },
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "class": "gio-input-content gio-input-content-middle",
+                                "class": "gio-input-content",
                                 "placeholder": "",
                                 "type": "text",
                                 "value": "",
@@ -10602,12 +10602,12 @@ initialize {
                       },
                       Object {
                         "attribs": Object {
-                          "class": "gio-input",
+                          "class": "gio-input gio-input-container-middle",
                         },
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "gio-input-content gio-input-content-middle",
+                              "class": "gio-input-content",
                               "placeholder": "",
                               "type": "text",
                               "value": "",
@@ -10664,12 +10664,12 @@ initialize {
                         "parent": [Circular],
                         "prev": Object {
                           "attribs": Object {
-                            "class": "gio-input",
+                            "class": "gio-input gio-input-container-middle",
                           },
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "class": "gio-input-content gio-input-content-middle",
+                                "class": "gio-input-content",
                                 "placeholder": "",
                                 "type": "text",
                                 "value": "",
@@ -12128,12 +12128,12 @@ initialize {
                       "data": "跳至",
                       "next": Object {
                         "attribs": Object {
-                          "class": "gio-input",
+                          "class": "gio-input gio-input-container-middle",
                         },
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "gio-input-content gio-input-content-middle",
+                              "class": "gio-input-content",
                               "placeholder": "",
                               "type": "text",
                               "value": "",
@@ -12184,12 +12184,12 @@ initialize {
                     },
                     Object {
                       "attribs": Object {
-                        "class": "gio-input",
+                        "class": "gio-input gio-input-container-middle",
                       },
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "gio-input-content gio-input-content-middle",
+                            "class": "gio-input-content",
                             "placeholder": "",
                             "type": "text",
                             "value": "",
@@ -12246,12 +12246,12 @@ initialize {
                       "parent": [Circular],
                       "prev": Object {
                         "attribs": Object {
-                          "class": "gio-input",
+                          "class": "gio-input gio-input-container-middle",
                         },
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "gio-input-content gio-input-content-middle",
+                              "class": "gio-input-content",
                               "placeholder": "",
                               "type": "text",
                               "value": "",
@@ -13073,12 +13073,12 @@ initialize {
                     "data": "跳至",
                     "next": Object {
                       "attribs": Object {
-                        "class": "gio-input",
+                        "class": "gio-input gio-input-container-middle",
                       },
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "gio-input-content gio-input-content-middle",
+                            "class": "gio-input-content",
                             "placeholder": "",
                             "type": "text",
                             "value": "",
@@ -13129,12 +13129,12 @@ initialize {
                   },
                   Object {
                     "attribs": Object {
-                      "class": "gio-input",
+                      "class": "gio-input gio-input-container-middle",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-input-content gio-input-content-middle",
+                          "class": "gio-input-content",
                           "placeholder": "",
                           "type": "text",
                           "value": "",
@@ -13191,12 +13191,12 @@ initialize {
                     "parent": [Circular],
                     "prev": Object {
                       "attribs": Object {
-                        "class": "gio-input",
+                        "class": "gio-input gio-input-container-middle",
                       },
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "gio-input-content gio-input-content-middle",
+                            "class": "gio-input-content",
                             "placeholder": "",
                             "type": "text",
                             "value": "",
@@ -14655,12 +14655,12 @@ initialize {
                   "data": "跳至",
                   "next": Object {
                     "attribs": Object {
-                      "class": "gio-input",
+                      "class": "gio-input gio-input-container-middle",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-input-content gio-input-content-middle",
+                          "class": "gio-input-content",
                           "placeholder": "",
                           "type": "text",
                           "value": "",
@@ -14711,12 +14711,12 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
-                    "class": "gio-input",
+                    "class": "gio-input gio-input-container-middle",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-input-content gio-input-content-middle",
+                        "class": "gio-input-content",
                         "placeholder": "",
                         "type": "text",
                         "value": "",
@@ -14773,12 +14773,12 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "class": "gio-input",
+                      "class": "gio-input gio-input-container-middle",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-input-content gio-input-content-middle",
+                          "class": "gio-input-content",
                           "placeholder": "",
                           "type": "text",
                           "value": "",
@@ -16001,12 +16001,12 @@ initialize {
                 "data": "跳至",
                 "next": Object {
                   "attribs": Object {
-                    "class": "gio-input",
+                    "class": "gio-input gio-input-container-middle",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-input-content gio-input-content-middle",
+                        "class": "gio-input-content",
                         "placeholder": "",
                         "type": "text",
                         "value": "",
@@ -16057,12 +16057,12 @@ initialize {
               },
               Object {
                 "attribs": Object {
-                  "class": "gio-input",
+                  "class": "gio-input gio-input-container-middle",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "gio-input-content gio-input-content-middle",
+                      "class": "gio-input-content",
                       "placeholder": "",
                       "type": "text",
                       "value": "",
@@ -16119,12 +16119,12 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "class": "gio-input",
+                    "class": "gio-input gio-input-container-middle",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-input-content gio-input-content-middle",
+                        "class": "gio-input-content",
                         "placeholder": "",
                         "type": "text",
                         "value": "",

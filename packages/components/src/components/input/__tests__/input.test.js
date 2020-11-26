@@ -59,7 +59,7 @@ describe('Input', () => {
 
   it('should support size', () => {
     const wrapper = mount(<Input size="large" />);
-    expect(wrapper.find('input').hasClass('gio-input-content-large')).toBe(true);
+    expect(wrapper.exists('.gio-input-container-large')).toBe(true);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });
