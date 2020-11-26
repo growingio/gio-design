@@ -1,12 +1,3 @@
-// mixins for button
-// ------------------------
-@btn-height-base: 36px;
-@btn-height-lg: 40px;
-@btn-height-sm: 30px;
-@btn-square-size: 32px;
-@btn-square-size-lg: @btn-height-lg;
-@btn-square-size-sm: @btn-height-sm;
-
 .square(@size;) {
   width: @size;
   height: @size;
@@ -208,6 +199,11 @@
   & > * {
     font-size: @size-font-16;
   }
+  &.@{btnClassName} {
+    svg {
+      .square(@btn-square-size - 16px);
+    }
+  }
   &.@{btnClassName}-large {
     .square(@btn-square-size-lg);
     .button-size(@btn-square-size-lg; 0; @size-font-18; @radius-border-small);
@@ -226,6 +222,16 @@
     }
     svg {
       .square(@btn-square-size-sm - 16px) !important;
+    }
+  }
+  &.@{btnClassName}-mini {
+    .square(@btn-square-size-mini);
+    .button-size(@btn-square-size-mini; 0; @size-font-14; @radius-border-small);
+    & > * {
+      font-size: @size-font-14;
+    }
+    svg {
+      .square(@btn-square-size-mini - 10px) !important;
     }
   }
 }

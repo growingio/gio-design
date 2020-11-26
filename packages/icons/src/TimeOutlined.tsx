@@ -9,8 +9,8 @@ function SvgTimeOutlined(wrapperProps: IconProps) {
       color,
     },
     className: rotating ? 'gio-icon-svg gio-icon-rotating' : 'gio-icon-svg',
-    width: !size ? '1rem' : size,
-    height: !size ? '1rem' : size,
+    width: !size ? '16px' : size,
+    height: !size ? '16px' : size,
   };
   const file = (
     <svg

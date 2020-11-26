@@ -40,5 +40,5 @@ yarn add @gio-design/icons
 | style     | The style properties of Icon            | CSSProperties      | -       |         |
 | rotating  | Rotate icon with animation              | boolean            | false   |         |
 | color     | The color of Icon                       | string (hex color) | -       |         |
-| size      | The size of Icon                        | string (with unit) | `1rem`  |         |
+| size      | The size of Icon                        | string (with unit) | `16px`  |         |
 | onClick   | Set the handler to handle `click` event | `(event) => void`  | -       |         |

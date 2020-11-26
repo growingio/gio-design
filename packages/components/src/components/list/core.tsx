@@ -85,6 +85,8 @@ class SelectCore extends React.Component<SelectCoreProps & ConfigConsumerProps, 
       labelRenderer,
       rowHeight,
       prefixCls,
+      getPopupContainer,
+      placement,
     } = this.props;
     const { options, value } = this.state;
     if (this.state && options?.length) {
@@ -108,6 +110,8 @@ class SelectCore extends React.Component<SelectCoreProps & ConfigConsumerProps, 
             getGroupIcon={getGroupIcon}
             labelRenderer={labelRenderer}
             rowHeight={rowHeight}
+            getPopupContainer={getPopupContainer}
+            placement={placement}
           />
         </div>
       );

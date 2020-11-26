@@ -42,14 +42,14 @@ exports[`<Select /> renders <Select /> components 1`] = `
       <svg
         className="gio-icon-svg"
         fill="currentColor"
-        height="1rem"
+        height="16px"
         style={
           Object {
             "color": undefined,
           }
         }
         viewBox="0 0 14 14"
-        width="1rem"
+        width="16px"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -119,14 +119,14 @@ exports[`<Select /> renders <Select /> components 2`] = `
       <svg
         className="gio-icon-svg"
         fill="currentColor"
-        height="1rem"
+        height="16px"
         style={
           Object {
             "color": undefined,
           }
         }
         viewBox="0 0 14 14"
-        width="1rem"
+        width="16px"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -192,14 +192,14 @@ exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
           <svg
             className="gio-icon-svg"
             fill="currentColor"
-            height="1rem"
+            height="16px"
             style={
               Object {
                 "color": undefined,
               }
             }
             viewBox="0 0 14 14"
-            width="1rem"
+            width="16px"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
@@ -235,14 +235,14 @@ exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
       <svg
         className="gio-icon-svg"
         fill="currentColor"
-        height="1rem"
+        height="16px"
         style={
           Object {
             "color": undefined,
           }
         }
         viewBox="0 0 14 14"
-        width="1rem"
+        width="16px"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -308,14 +308,14 @@ exports[`<Select multiple/> renders <Select multiple/> components 2`] = `
           <svg
             className="gio-icon-svg"
             fill="currentColor"
-            height="1rem"
+            height="16px"
             style={
               Object {
                 "color": undefined,
               }
             }
             viewBox="0 0 14 14"
-            width="1rem"
+            width="16px"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
@@ -351,14 +351,14 @@ exports[`<Select multiple/> renders <Select multiple/> components 2`] = `
       <svg
         className="gio-icon-svg"
         fill="currentColor"
-        height="1rem"
+        height="16px"
         style={
           Object {
             "color": undefined,
           }
         }
         viewBox="0 0 14 14"
-        width="1rem"
+        width="16px"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>

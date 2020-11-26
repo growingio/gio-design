@@ -9,6 +9,32 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.11.3
+
+- component
+  - 🛎 add ConfigProvider readme[#494](https://github.com/growingio/gio-design/pull/494)
+  - Checkbox
+    - 🆕 add onclick prop.[#487](https://github.com/growingio/gio-design/pull/487)
+    - 💄 update input hidden to transparent，other domelement pointer-events: none.[#487](https://github.com/growingio/gio-design/pull/487)
+  - Table
+    - 🐛 selection onClick stopPropagation.[#487](https://github.com/growingio/gio-design/pull/487)
+  - Modal
+    - 🆕 add useModal.[#494](https://github.com/growingio/gio-design/pull/494)
+  - Toast
+    - 🆕 add useToast.[#494](https://github.com/growingio/gio-design/pull/494)
+  - Drawer
+    - 🐛 fix drawer prefix error.[#494](https://github.com/growingio/gio-design/pull/494)
+  - List
+    - 🐛 fix List fixed height.[#510](https://github.com/growingio/gio-design/pull/510)
+    - 🐛 datasource prop should always be controlled.[#493](https://github.com/growingio/gio-design/pull/493)
+    - 🐛 resolve tooltip in list and add placement prop.[#512](https://github.com/growingio/gio-design/pull/512)
+  - Input
+    - 💄 set input default witdh 100%.[#509](https://github.com/growingio/gio-design/pull/509)
+  - Cascader
+    - 🛎 cascader support key mapping.[#486](https://github.com/growingio/gio-design/pull/486)
+  - Button
+    - 💄 change default size.[#513](https://github.com/growingio/gio-design/pull/513)
+
 ## 20.11.2
 
 - component
