@@ -13,6 +13,7 @@ export default () => {
         placeholder="请输入…"
         value={inputValue}
         onChange={setInputValue}
+        size="small"
         style={{ marginBottom: '20px', display: 'block' }}
         max={10}
         min={0}
@@ -22,11 +23,11 @@ export default () => {
         placeholder="请输入…"
         value={inputValue2}
         onChange={setInputValue2}
-        disabled={true}
+        disabled
         style={{ marginBottom: '20px', display: 'block' }}
       />
 
-      <Input.InputNumber value={inputValue3} onChange={setInputValue3} />
+      <Input.InputNumber value={inputValue3} onChange={setInputValue3} size="large" />
     </div>
   );
 };

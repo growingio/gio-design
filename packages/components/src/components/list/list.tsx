@@ -35,7 +35,7 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
             value={value}
             width={width}
             height={400}
-            style={{height: height || '100%', overflow: 'auto' }}
+            style={{ height: height || '100%', overflow: 'auto' }}
             rowCount={options.length}
             rowHeight={typeof rowHeight === 'function' ? getRowHeight : rowHeight}
             rowRenderer={this.renderListItem(options)}

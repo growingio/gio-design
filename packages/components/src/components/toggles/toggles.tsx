@@ -1,21 +1,7 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-
-interface TogglesProps {
-  suffixContent?: boolean;
-  defaultChecked?: boolean;
-  disabled?: boolean;
-  loading?: boolean;
-  size?: string;
-  onChange?: any;
-  onClick?: any;
-  className?: string;
-  inactiveValue?: number | string;
-  activeValue?: number | string;
-  activeColor?: string;
-  inactiveColor?: string;
-}
+import { TogglesProps } from './interface';
 
 const Toggles: React.FC<TogglesProps> = (props) => {
   const {

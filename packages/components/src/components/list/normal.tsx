@@ -19,13 +19,13 @@ const NormalList = ({
   const prefixCls = usePrefixCls('list', customPrefixCls);
   return (
     <div className={`${prefixCls}-wrapper`} style={{ ...wrapStyle, width }}>
-      <Core 
-        options={dataSource} 
-        onChange={onChange} 
-        isMultiple={isMultiple} 
+      <Core
+        options={dataSource}
+        onChange={onChange}
+        isMultiple={isMultiple}
         getPopupContainer={getPopupContainer}
         placement={placement}
-        {...restProps} 
+        {...restProps}
       />
     </div>
   );

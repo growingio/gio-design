@@ -29,13 +29,11 @@ const InputFC: React.FC<InputProps> = (props: InputProps) => {
   } = props;
   const wrapClass = classNames(prefixCls, className, {
     [`${prefixCls}-container`]: !!suffix || !!prefix,
+    [`${prefixCls}-container-${size}`]: !!size,
   });
 
   const inputClass = classNames(
     `${prefixCls}-content`,
-    {
-      [`${prefixCls}-content-${size}`]: !!size,
-    },
     {
       [`${prefixCls}-content-suffix`]: !!suffix,
     },

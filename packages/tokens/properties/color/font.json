@@ -2,12 +2,12 @@
   "color": {
     "font": {
       "form": {
-        "label": { "value": "{palette.blue.7.value}" },
+        "label": { "value": "{palette.black.7.value}" },
         "notes": { "value": "{palette.black.3.value}" },
-        "error": { "value": "{palette.red.6.value}" },
+        "error": { "value": "{palette.red.3.value}" },
         "warning": { "value": "{palette.yellow.6.value}" },
         "active": { "value": "{palette.green.6.value}" },
-        "required": { "value": "{palette.red.6.value}" }
+        "required": { "value": "{palette.red.3.value}" }
       }
     }
   }

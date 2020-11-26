@@ -18,7 +18,9 @@
   }
 
   &-content {
+    display: block;
     width: 100%;
+    height: 100%;
     padding: 9px 16px;
     color: @palette-black-6;
     font-size: @size-font-14;
@@ -27,18 +29,6 @@
     border-radius: @radius-border-small;
     outline: none;
     transition: all 0.3s ease-in-out;
-
-    &-middle {
-      height: @input-height-base;
-    }
-
-    &-large {
-      height: @input-height-lg;
-    }
-
-    &-small {
-      height: @input-height-sm;
-    }
 
     &-suffix {
       padding-right: 44px;
@@ -71,6 +61,19 @@
 
   &-container {
     position: relative;
+    line-height: 22px;
+
+    &-small {
+      height: @input-height-sm;
+    }
+
+    &-middle {
+      height: @input-height-base;
+    }
+
+    &-large {
+      height: @input-height-lg;
+    }
 
     &-suffix {
       right: 15px;
@@ -83,20 +86,20 @@
     &-suffix,
     &-prefix {
       position: absolute;
-      top: 7px;
-
+      top: 50%;
+      transform: translateY(-50%);
       &-iconGroup {
         display: flex;
         flex-direction: column;
 
         &-top {
           position: relative;
-          top: -2px;
+          top: 4px;
         }
 
         &-bottom {
           position: relative;
-          top: -8px;
+          top: -4px;
         }
       }
 

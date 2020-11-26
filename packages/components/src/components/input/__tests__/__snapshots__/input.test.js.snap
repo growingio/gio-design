@@ -4,12 +4,12 @@ exports[`Input should run onChange when input accept change event 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input",
+      "class": "gio-input gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle",
+          "class": "gio-input-content",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -77,12 +77,12 @@ exports[`Input should run onChange when input accept change event 2`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input",
+      "class": "gio-input gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle",
+          "class": "gio-input-content",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -150,12 +150,12 @@ exports[`Input should run onChange when input accept change event 3`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input",
+      "class": "gio-input gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle",
+          "class": "gio-input-content",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -223,12 +223,12 @@ exports[`Input should support maxLength 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input",
+      "class": "gio-input gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle",
+          "class": "gio-input-content",
           "maxlength": "3",
           "placeholder": "",
           "type": "text",
@@ -299,7 +299,7 @@ exports[`Input should support prefix and suffix element 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
@@ -338,7 +338,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix gio-input-content-prefix",
+            "class": "gio-input-content gio-input-content-suffix gio-input-content-prefix",
             "placeholder": "",
             "style": "padding-left: 100px; padding-right: 60px;",
             "type": "text",
@@ -422,7 +422,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix gio-input-content-prefix",
+          "class": "gio-input-content gio-input-content-suffix gio-input-content-prefix",
           "placeholder": "",
           "style": "padding-left: 100px; padding-right: 60px;",
           "type": "text",
@@ -576,7 +576,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix gio-input-content-prefix",
+            "class": "gio-input-content gio-input-content-suffix gio-input-content-prefix",
             "placeholder": "",
             "style": "padding-left: 100px; padding-right: 60px;",
             "type": "text",
@@ -699,12 +699,12 @@ exports[`Input should support size 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input",
+      "class": "gio-input gio-input-container-large",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-large",
+          "class": "gio-input-content",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -772,13 +772,13 @@ exports[`Input should warn when legacy props "wrapStyle" or "inputStyle" passed 
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input",
+      "class": "gio-input gio-input-container-middle",
       "style": "width: 100px;",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle",
+          "class": "gio-input-content",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -848,12 +848,12 @@ exports[`Input.InputNumber should change type when click 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -880,9 +880,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -1112,9 +1112,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -1365,9 +1365,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -1599,9 +1599,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -1904,9 +1904,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -2136,9 +2136,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -2389,9 +2389,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -2623,9 +2623,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -2886,7 +2886,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -2962,12 +2962,12 @@ exports[`Input.InputNumber should change type when click 2`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -2994,9 +2994,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -3226,9 +3226,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -3479,9 +3479,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -3713,9 +3713,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -4018,9 +4018,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -4250,9 +4250,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -4503,9 +4503,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -4737,9 +4737,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -5000,7 +5000,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -5076,12 +5076,12 @@ exports[`Input.InputNumber should change type when click 3`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -5108,9 +5108,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -5340,9 +5340,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -5593,9 +5593,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -5827,9 +5827,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -6132,9 +6132,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -6364,9 +6364,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -6617,9 +6617,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -6851,9 +6851,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -7114,7 +7114,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -7190,12 +7190,12 @@ exports[`Input.InputNumber should change type when click 4`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -7222,9 +7222,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -7454,9 +7454,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -7707,9 +7707,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -7941,9 +7941,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -8246,9 +8246,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -8478,9 +8478,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -8731,9 +8731,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -8965,9 +8965,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -9228,7 +9228,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -9304,12 +9304,12 @@ exports[`Input.InputNumber should not change if the value is not between min and
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -9336,9 +9336,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -9568,9 +9568,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -9821,9 +9821,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -10055,9 +10055,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -10360,9 +10360,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -10592,9 +10592,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -10845,9 +10845,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -11079,9 +11079,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -11342,7 +11342,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -11418,12 +11418,12 @@ exports[`Input.InputNumber should not change if the value is not between min and
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -11450,9 +11450,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -11682,9 +11682,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -11935,9 +11935,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -12169,9 +12169,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -12474,9 +12474,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -12706,9 +12706,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -12959,9 +12959,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -13193,9 +13193,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -13456,7 +13456,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -13532,12 +13532,12 @@ exports[`Input.InputNumber should not change if the value is not between min and
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -13564,9 +13564,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -13796,9 +13796,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -14049,9 +14049,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -14283,9 +14283,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -14588,9 +14588,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -14820,9 +14820,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -15073,9 +15073,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -15307,9 +15307,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -15570,7 +15570,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -15646,12 +15646,12 @@ exports[`Input.InputNumber should not change if the value is not between min and
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -15678,9 +15678,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -15910,9 +15910,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -16163,9 +16163,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -16397,9 +16397,9 @@ initialize {
                         "attribs": Object {
                           "class": "gio-icon-svg",
                           "fill": "currentColor",
-                          "height": "1rem",
+                          "height": "16px",
                           "viewBox": "0 0 14 14",
-                          "width": "1rem",
+                          "width": "16px",
                           "xmlns": "http://www.w3.org/2000/svg",
                         },
                         "children": Array [
@@ -16702,9 +16702,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -16934,9 +16934,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -17187,9 +17187,9 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "1rem",
+                      "height": "16px",
                       "viewBox": "0 0 14 14",
-                      "width": "1rem",
+                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -17421,9 +17421,9 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "1rem",
+                        "height": "16px",
                         "viewBox": "0 0 14 14",
-                        "width": "1rem",
+                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -17684,7 +17684,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -17760,12 +17760,12 @@ exports[`Input.Password should change type when click 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-suffix",
           "placeholder": "",
           "type": "password",
           "value": "",
@@ -17787,9 +17787,9 @@ initialize {
                   "attribs": Object {
                     "class": "gio-icon-svg",
                     "fill": "currentColor",
-                    "height": "1rem",
+                    "height": "16px",
                     "viewBox": "0 0 14 14",
-                    "width": "1rem",
+                    "width": "16px",
                     "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
@@ -18027,9 +18027,9 @@ initialize {
                 "attribs": Object {
                   "class": "gio-icon-svg",
                   "fill": "currentColor",
-                  "height": "1rem",
+                  "height": "16px",
                   "viewBox": "0 0 14 14",
-                  "width": "1rem",
+                  "width": "16px",
                   "xmlns": "http://www.w3.org/2000/svg",
                 },
                 "children": Array [
@@ -18230,7 +18230,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-suffix",
             "placeholder": "",
             "type": "password",
             "value": "",
@@ -18306,12 +18306,12 @@ exports[`Input.Password should change type when click 2`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-suffix",
           "placeholder": "",
           "type": "password",
           "value": "",
@@ -18333,9 +18333,9 @@ initialize {
                   "attribs": Object {
                     "class": "gio-icon-svg",
                     "fill": "currentColor",
-                    "height": "1rem",
+                    "height": "16px",
                     "viewBox": "0 0 14 14",
-                    "width": "1rem",
+                    "width": "16px",
                     "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
@@ -18573,9 +18573,9 @@ initialize {
                 "attribs": Object {
                   "class": "gio-icon-svg",
                   "fill": "currentColor",
-                  "height": "1rem",
+                  "height": "16px",
                   "viewBox": "0 0 14 14",
-                  "width": "1rem",
+                  "width": "16px",
                   "xmlns": "http://www.w3.org/2000/svg",
                 },
                 "children": Array [
@@ -18776,7 +18776,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-suffix",
             "placeholder": "",
             "type": "password",
             "value": "",
@@ -18852,12 +18852,12 @@ exports[`Input.Password should change type when click 3`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-suffix",
           "placeholder": "",
           "type": "text",
           "value": "",
@@ -18881,11 +18881,11 @@ initialize {
                     "clip-rule": "evenodd",
                     "fill": "currentColor",
                     "fill-rule": "evenodd",
-                    "height": "1rem",
+                    "height": "16px",
                     "stroke-linejoin": "round",
                     "stroke-miterlimit": "1.414",
                     "viewBox": "0 0 78 78",
-                    "width": "1rem",
+                    "width": "16px",
                     "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
@@ -19297,11 +19297,11 @@ initialize {
                   "clip-rule": "evenodd",
                   "fill": "currentColor",
                   "fill-rule": "evenodd",
-                  "height": "1rem",
+                  "height": "16px",
                   "stroke-linejoin": "round",
                   "stroke-miterlimit": "1.414",
                   "viewBox": "0 0 78 78",
-                  "width": "1rem",
+                  "width": "16px",
                   "xmlns": "http://www.w3.org/2000/svg",
                 },
                 "children": Array [
@@ -19674,7 +19674,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-suffix",
             "placeholder": "",
             "type": "text",
             "value": "",
@@ -19750,12 +19750,12 @@ exports[`Input.Password should change type when click 4`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-input gio-input-container",
+      "class": "gio-input gio-input-container gio-input-container-middle",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+          "class": "gio-input-content gio-input-content-suffix",
           "placeholder": "",
           "type": "password",
           "value": "",
@@ -19777,9 +19777,9 @@ initialize {
                   "attribs": Object {
                     "class": "gio-icon-svg",
                     "fill": "currentColor",
-                    "height": "1rem",
+                    "height": "16px",
                     "viewBox": "0 0 14 14",
-                    "width": "1rem",
+                    "width": "16px",
                     "xmlns": "http://www.w3.org/2000/svg",
                   },
                   "children": Array [
@@ -20017,9 +20017,9 @@ initialize {
                 "attribs": Object {
                   "class": "gio-icon-svg",
                   "fill": "currentColor",
-                  "height": "1rem",
+                  "height": "16px",
                   "viewBox": "0 0 14 14",
-                  "width": "1rem",
+                  "width": "16px",
                   "xmlns": "http://www.w3.org/2000/svg",
                 },
                 "children": Array [
@@ -20220,7 +20220,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input-content gio-input-content-middle gio-input-content-suffix",
+            "class": "gio-input-content gio-input-content-suffix",
             "placeholder": "",
             "type": "password",
             "value": "",
