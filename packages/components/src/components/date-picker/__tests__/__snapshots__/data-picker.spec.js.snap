@@ -9,12 +9,12 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input",
+          "class": "gio-input gio-input-container-middle",
         },
         "children": Array [
           Object {
             "attribs": Object {
-              "class": "gio-input-content gio-input-content-middle",
+              "class": "gio-input-content",
               "placeholder": "请输入…",
               "type": "text",
               "value": "2015/06/01",
@@ -81,12 +81,12 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-input",
+            "class": "gio-input gio-input-container-middle",
           },
           "children": Array [
             Object {
               "attribs": Object {
-                "class": "gio-input-content gio-input-content-middle",
+                "class": "gio-input-content",
                 "placeholder": "请输入…",
                 "type": "text",
                 "value": "2015/06/01",
