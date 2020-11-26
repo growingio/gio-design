@@ -57,7 +57,7 @@ describe('<Cascader />', () => {
     });
 
     await waitFor(() => {
-      expect(document.querySelectorAll('.gio-dropdown-hidden')).toHaveLength(1);
+      expect(document.querySelectorAll('.gio-dropdown-hidden')).not.toBeFalsy();
     });
   });
 
