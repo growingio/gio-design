@@ -139,7 +139,9 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       });
   };
   const handleMouseEnter = (event: MouseEvent<HTMLDivElement>) => {
-    if (trigger === 'hover') {
+    const target = event.nativeEvent.target as HTMLDivElement;
+    // 这里有个奇怪的问题，点 input 会触发这里的 MouseEvent 事件
+    if (trigger === 'hover' && target.closest('.cascader-menu-outer')) {
       onTrigger?.(event, dataSource);
     }
     onMouseEnter?.(event, dataSource);
