@@ -67,7 +67,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
   const {
     loading,
     prefixCls: customizePrefixCls,
-    type,
+    type = 'primary',
     size: customizeSize,
     className,
     children,
