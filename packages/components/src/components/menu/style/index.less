@@ -12,6 +12,7 @@
   font-size: @size-font-16;
   line-height: 0;
   list-style: none;
+  border: 1px solid red;
   outline: none;
 
   &-hidden {
@@ -174,8 +175,11 @@
       margin-top: 16px;
     }
 
-    & > .@{menu-prefix-cls}-submenu {
+    &:not(:first-child) {
       padding-top: 16px;
+    }
+
+    & > .@{menu-prefix-cls}-submenu {
       color: @palette-gray-6;
 
       & > .@{menu-prefix-cls}-submenu-title {
