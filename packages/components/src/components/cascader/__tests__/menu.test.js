@@ -15,6 +15,6 @@ describe('<Menu />', () => {
     const menu = [];
     const wrapper = mount(<Menu depth={1} dataSource={menu} />);
 
-    expect(wrapper.find('.cascader-menu')).toHaveLength(0);
+    expect(wrapper.find('.cascader-menu')).toHaveLength(1);
   });
 });

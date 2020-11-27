@@ -35,14 +35,14 @@ const Basic = (): JSX.Element => {
               setIgnoreCase(e.target.checked);
             }}
           >
-            大小写敏感
+            忽略大小写
           </Checkbox>
         </Grid>
       </Grid>
 
       <br />
 
-      <Cascader dataSource={dataSource} deepSearch={deepSearch} ignoreCase={ignoreCase} />
+      <Cascader keyword="a" dataSource={dataSource} deepSearch={deepSearch} ignoreCase={ignoreCase} />
     </div>
   );
 };
