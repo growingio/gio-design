@@ -7,6 +7,7 @@
     "preserveConstEnums": false,
     "noImplicitAny": true,
     "noImplicitReturns": true,
+    "noUnusedParameters": false,
     "moduleResolution": "node",
     "jsx": "react",
     "allowSyntheticDefaultImports": true,

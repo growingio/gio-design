@@ -30,7 +30,7 @@ export const useDynamicData = <T>(originDataSource: T) => {
   return [dataSource, setDataSource] as const;
 };
 
-export const toInt = (s: string | React.ReactText) => (s ? parseInt(s as string, 10) : 0);
+export const toInt = (s?: string | React.ReactText) => (s ? parseInt(s as string, 10) : 0);
 
 export const deepFilter = (d: NodeData, parttern: RegExp, labelKey = 'label') => {
   const currentMatch = (d[labelKey] as string).match(parttern);
