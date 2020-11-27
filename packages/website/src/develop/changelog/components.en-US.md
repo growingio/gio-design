@@ -9,6 +9,19 @@ nav:
 
 # @gio-design/components Change Log
 
+- component
+
+  - 🛎 Add change rem unit to PX.[#525](https://github.com/growingio/gio-design/pull/525)
+  - 🛎 Fixed some component style issues.
+  - SearchBar
+    - 🐛 Solve the problem that the text Icon in searchBar is not centered vertically.[#534](https://github.com/growingio/gio-design/pull/534)
+    - 🐛 Solve the problem of logic error in search box search list display.[#534](https://github.com/growingio/gio-design/pull/534)
+    - 🐛 When the search list is empty, the search bar's focus should not display a drop-down box.[#534](https://github.com/growingio/gio-design/pull/534)
+  - Select
+    - 🐛 Fixed a bug in the middle of text.[#524](https://github.com/growingio/gio-design/pull/524)
+  - Button
+    - 🆕 Only the icon button is added to the Mini type.[#526](https://github.com/growingio/gio-design/pull/526)
+
 ## 20.11.3
 
 - component
