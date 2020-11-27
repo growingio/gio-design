@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
 import Input from '../input';
 import Button from '../button';
@@ -44,6 +44,7 @@ const clearStorage = (key: string): string[] => {
 const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
   const sizeContext = useContext(SizeContext);
   const prefixCls = usePrefixCls('searchbar');
+  const [searchValue, setSearchValue] = useState('');
   const {
     showStorage = false,
     storageNum = 5,
@@ -56,7 +57,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
     wrapStyle,
     placeholder,
     value,
-    onChange,
+    onChange = setSearchValue,
     id,
   } = props;
   const storageKey = React.useMemo(() => `${prefixCls}-storage-${id}`, [id, prefixCls]);
@@ -75,33 +76,40 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
     setSearchStorage(newValue);
   };
 
+  const handleFocus = () => {
+    searchStorage.length && setShowDropdown(true);
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
     const newValue = findStorage(storageKey, e.target.value);
     setSearchStorage(newValue);
-  };
-
-  const handleFocus = () => {
-    setShowDropdown(true);
+    handleFocus();
+    newValue.length === 0 && setShowDropdown(false);
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { value } = e.target;
     setTimeout(() => {
-      setStorage(storageKey, value);
+      id && setStorage(storageKey, value);
       setShowDropdown(false);
     }, 200);
   };
 
   const renderSuffix = () => {
-    if (value) {
+    if (value || searchValue) {
       return showClear ? (
         <CloseCircleFilled className={`${prefixCls}-suffix-close`} onClick={handleClearValue} />
       ) : null;
     }
-    return <SearchOutlined className={`${prefixCls}-suffix-search-${size}`} />;
+    return <SearchOutlined className={`${prefixCls}-suffix-search`} />;
   };
+
+  // 按esc建关闭下拉框
+  const handleKeyUp = (e: any) => {
+    (e.keyCode === 27) && handleBlur(e);
+  }
 
   const renderStorage = () => {
     if (!showStorage || !showDropdown) {
@@ -122,7 +130,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
             </Button>
           </div>
         )}
-        {searchStorage.slice(0, storageNum).map((item) => (
+        {searchStorage.slice((searchStorage.length - storageNum) >= 0 ? (searchStorage.length - storageNum) : 0, searchStorage.length).reverse().map((item) => (
           <div
             onClick={() => {
               onChange(item);
@@ -131,7 +139,8 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
             key={item}
             aria-hidden="true"
           >
-            {item}
+            {(value || searchValue) && <mark className={`${prefixCls}-dropdown-item-mark`}>{value || searchValue}</mark>}
+            {item.replace(value || searchValue,'')}
           </div>
         ))}
       </div>
@@ -146,11 +155,12 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
         inputStyle={inputStyle}
         wrapStyle={inputWrapStyle}
         suffix={renderSuffix()}
-        value={value}
+        value={value || searchValue}
         placeholder={placeholder}
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        onKeyUp={handleKeyUp}
       />
       {renderStorage()}
     </div>

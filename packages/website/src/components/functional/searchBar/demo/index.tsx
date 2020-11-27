@@ -14,6 +14,7 @@ export default () => {
       onChange={setValue}
       id="demo1"
       size="middle"
+      placeholder="请输入要搜索的内容"
     />
   );
 };
