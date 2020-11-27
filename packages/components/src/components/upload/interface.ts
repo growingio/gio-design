@@ -65,6 +65,8 @@ export interface IInnerTriggerProps {
 }
 
 export interface IUploadProps<T = any> {
+  // 受控的 Preview 图片
+  file?: IUploadFile<T>;
   // 上传的图片是否显示边框
   successBorder?: boolean;
   // upload 组件展现类型
