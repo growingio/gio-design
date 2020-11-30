@@ -29,7 +29,7 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   const onSelect = (values: Moment): void => {
     if (!props.showFooter) {
       setLocalValue(values);
-      props?.onSelect(values);
+      props.onSelect?.(values);
       setOpen(false);
     }
   };
@@ -61,14 +61,14 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
     setOpen(false);
     setLocalValue(localValue);
     setInputTime('');
-    props.onChange(localValue);
+    props.onChange?.(localValue);
   };
 
   const onCancel = () => {
     setOpen(false);
     setLocalValue(value);
     setInputTime('');
-    props.onChange(value);
+    props.onChange?.(value);
   };
 
   const renderFooter = () => (

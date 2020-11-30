@@ -24,7 +24,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   }, [value]);
   const onSelect = (values: Array<Moment>): void => {
     setTimeRange(values);
-    props?.onSelect(values);
+    props.onSelect?.(values);
     !showFooter && setOpen(false);
   };
   const onChange = (values: Array<Moment>): void => {
@@ -74,7 +74,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     setTimeRange(timeRange);
     setLeftInputTimeRange('');
     setRightInputTimeRange('');
-    props.onChange(timeRange);
+    props.onChange?.(timeRange);
   };
 
   const onCancel = () => {
@@ -82,7 +82,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     setTimeRange(value);
     setLeftInputTimeRange('');
     setRightInputTimeRange('');
-    props.onChange(value);
+    props.onChange?.(value);
   };
 
   const renderFooter = () => (
