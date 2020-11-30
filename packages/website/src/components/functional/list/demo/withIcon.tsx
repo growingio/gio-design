@@ -1,6 +1,6 @@
 import React from 'react';
 import { List } from '@gio-design/components';
-import * as Icons from '@gio-design/icons';
+import { AppOutlined } from '@gio-design/icons';
 
 const options = [
   { value: 'a', label: '选择事件a' },
@@ -20,14 +20,15 @@ const WrapperStyle = {
 const labelRenderer = (option: any, isGroup: boolean) => {
   return (
     <>
-      <Icons.AppOutlined />
-      &nbsp;&nbsp;{option.label}
+      <AppOutlined />
+      &nbsp;&nbsp;
+      {option.label}
     </>
   );
 };
 
 export default () => (
   <div style={WrapperStyle}>
-    <List dataSource={options} height={176} width={170} labelRenderer={labelRenderer} />
+    <List dataSource={options} width={170} labelRenderer={labelRenderer} />
   </div>
 );

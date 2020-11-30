@@ -22,7 +22,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 1`] = `
       webkitdirectory={null}
     />
     <button
-      className="gio-btn gio-upload__btn gio-btn-large"
+      className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
       disabled={true}
       onClick={[Function]}
       type="button"
@@ -35,7 +35,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 1`] = `
           clipRule="evenodd"
           fill="currentColor"
           fillRule="evenodd"
-          height="1rem"
+          height="16px"
           strokeLinejoin="round"
           strokeMiterlimit={1.414}
           style={
@@ -44,7 +44,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 1`] = `
             }
           }
           viewBox="0 0 14 14"
-          width="1rem"
+          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -86,7 +86,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 2`] = `
       webkitdirectory={null}
     />
     <button
-      className="gio-btn gio-upload__btn gio-btn-large"
+      className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
       disabled={true}
       onClick={[Function]}
       type="button"
@@ -99,7 +99,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 2`] = `
           clipRule="evenodd"
           fill="currentColor"
           fillRule="evenodd"
-          height="1rem"
+          height="16px"
           strokeLinejoin="round"
           strokeMiterlimit={1.414}
           style={
@@ -108,7 +108,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 2`] = `
             }
           }
           viewBox="0 0 14 14"
-          width="1rem"
+          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -150,7 +150,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 3`] = `
       webkitdirectory={null}
     />
     <button
-      className="gio-btn gio-upload__btn gio-btn-large"
+      className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
       disabled={true}
       onClick={[Function]}
       type="button"
@@ -163,7 +163,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 3`] = `
           clipRule="evenodd"
           fill="currentColor"
           fillRule="evenodd"
-          height="1rem"
+          height="16px"
           strokeLinejoin="round"
           strokeMiterlimit={1.414}
           style={
@@ -172,7 +172,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 3`] = `
             }
           }
           viewBox="0 0 14 14"
-          width="1rem"
+          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -214,7 +214,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 4`] = `
       webkitdirectory={null}
     />
     <button
-      className="gio-btn gio-upload__btn gio-btn-large"
+      className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
       disabled={true}
       onClick={[Function]}
       type="button"
@@ -227,7 +227,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 4`] = `
           clipRule="evenodd"
           fill="currentColor"
           fillRule="evenodd"
-          height="1rem"
+          height="16px"
           strokeLinejoin="round"
           strokeMiterlimit={1.414}
           style={
@@ -236,7 +236,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 4`] = `
             }
           }
           viewBox="0 0 14 14"
-          width="1rem"
+          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -278,7 +278,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 5`] = `
       webkitdirectory={null}
     />
     <button
-      className="gio-btn gio-upload__btn gio-btn-large"
+      className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
       disabled={true}
       onClick={[Function]}
       type="button"
@@ -291,7 +291,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 5`] = `
           clipRule="evenodd"
           fill="currentColor"
           fillRule="evenodd"
-          height="1rem"
+          height="16px"
           strokeLinejoin="round"
           strokeMiterlimit={1.414}
           style={
@@ -300,7 +300,7 @@ exports[`Testing Upload mount match snapshot should match snapshot 5`] = `
             }
           }
           viewBox="0 0 14 14"
-          width="1rem"
+          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path

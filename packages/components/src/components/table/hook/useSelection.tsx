@@ -67,6 +67,7 @@ const useSelection = <RecordType,>(
       <Checkbox
         checked={atLeastOneChecked}
         indeterminate={isPartChecked}
+        onClick={(e) => e.stopPropagation()}
         onChange={(e) => {
           const latestLocalSelectedRowKeys = e.target.checked
             ? difference(union(localSelectedRowKeys, currentPageRowKeys), disabledRowKey)
@@ -86,7 +87,9 @@ const useSelection = <RecordType,>(
       const thisCheckboxProps = getCheckboxProps?.(rest[1]) || {};
       return (
         <Checkbox
+          {...thisCheckboxProps}
           checked={localSelectedRowKeys.includes(key)}
+          onClick={(e) => e.stopPropagation()}
           onChange={(e) => {
             const latestLocalSelectedRowKeys = e.target.checked
               ? union(localSelectedRowKeys, [key])
@@ -94,7 +97,6 @@ const useSelection = <RecordType,>(
             setLocalSelectedRowKeys(latestLocalSelectedRowKeys);
             onChange?.(latestLocalSelectedRowKeys, getSelectRows(latestLocalSelectedRowKeys));
           }}
-          {...thisCheckboxProps}
         />
       );
     },

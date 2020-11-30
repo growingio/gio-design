@@ -1,28 +1,10 @@
-import { FormProps as RcFormProps } from 'rc-field-form/lib/Form';
 import RcForm, { FormInstance, useForm } from 'rc-field-form';
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
-
+import { Props } from './interface'
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import { FormContext, FormLabelAlign, RequiredMark } from './context';
-import { SizeContextProvider, SizeType } from '../config-provider/SizeContext';
-
-export type FormLayout = 'horizontal' | 'vertical' | 'inline';
-
-export interface Props<Values = unknown> extends Omit<RcFormProps<Values>, 'form'> {
-  prefixCls?: string;
-  className?: string;
-  name?: string;
-  labelWidth?: number;
-  inputWidth?: number;
-  labelAlign?: FormLabelAlign;
-  form?: FormInstance<Values>;
-  layout?: FormLayout;
-  size?: SizeType;
-  colon?: boolean;
-  requiredMark?: RequiredMark;
-  style?: React.CSSProperties;
-}
+import { FormContext } from './context';
+import { SizeContextProvider } from '../config-provider/SizeContext';
 
 const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props, ref) => {
   const {

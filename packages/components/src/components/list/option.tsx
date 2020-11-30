@@ -21,6 +21,7 @@ const SelectOption = (props: OptionProps) => {
     onClick,
     option,
     getPopupContainer,
+    placement,
   } = props;
 
   const prefixCls = usePrefixCls('select');
@@ -67,7 +68,7 @@ const SelectOption = (props: OptionProps) => {
 
   if (option.tooltip) {
     return (
-      <Tooltip title={option.tooltip} placement="top" getTooltipContainer={getPopupContainer}>
+      <Tooltip title={option.tooltip} placement={placement} getTooltipContainer={getPopupContainer}>
         {renderContent()}
       </Tooltip>
     );

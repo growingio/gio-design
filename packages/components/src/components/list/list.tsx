@@ -11,7 +11,6 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
   public static defaultProps: Partial<SelectListProps & ConfigConsumerProps> = {
     disabledOptions: [],
     isMultiple: false,
-    height: 450,
   };
 
   public ref: React.RefObject<HTMLDivElement>;
@@ -26,8 +25,6 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
     this.ref = React.createRef();
   }
 
-  private getPopupContainer = () => this.ref.current as HTMLElement;
-
   private renderList = () => {
     const { height, disabledOptions, rowHeight, options, value, prefixCls } = this.props;
     const getRowHeight = ({ index }: { index: number }) => {
@@ -37,12 +34,13 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
       return rowHeight;
     };
     return (
-      <AutoSizer style={{ width: '100%', height }} disableHeight>
+    <AutoSizer style={{ width: '100%', height }} disableHeight>
         {({ width }) => (
           <List
             value={value}
             width={width}
-            height={height}
+            height={400}
+            style={{ height: height || '100%', overflow: 'auto' }}
             rowCount={options.length}
             rowHeight={typeof rowHeight === 'function' ? getRowHeight : this._cache.rowHeight}
             deferredMeasurementCache={this._cache}
@@ -75,6 +73,8 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
       labelRenderer,
       getGroupIcon,
       allowDuplicate,
+      placement = 'left',
+      getPopupContainer,
     } = this.props;
     const option = options[index];
     const isGroup = get(option, 'type') === 'groupLabel';

@@ -174,8 +174,11 @@
       margin-top: 16px;
     }
 
-    & > .@{menu-prefix-cls}-submenu {
+    &:not(:first-child) {
       padding-top: 16px;
+    }
+
+    & > .@{menu-prefix-cls}-submenu {
       color: @palette-gray-6;
 
       & > .@{menu-prefix-cls}-submenu-title {

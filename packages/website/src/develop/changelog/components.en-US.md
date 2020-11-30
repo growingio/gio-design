@@ -9,6 +9,45 @@ nav:
 
 # @gio-design/components Change Log
 
+- component
+
+  - 🛎 Add change rem unit to PX.[#525](https://github.com/growingio/gio-design/pull/525)
+  - 🛎 Fixed some component style issues.
+  - SearchBar
+    - 🐛 Solve the problem that the text Icon in searchBar is not centered vertically.[#534](https://github.com/growingio/gio-design/pull/534)
+    - 🐛 Solve the problem of logic error in search box search list display.[#534](https://github.com/growingio/gio-design/pull/534)
+    - 🐛 When the search list is empty, the search bar's focus should not display a drop-down box.[#534](https://github.com/growingio/gio-design/pull/534)
+  - Select
+    - 🐛 Fixed a bug in the middle of text.[#524](https://github.com/growingio/gio-design/pull/524)
+  - Button
+    - 🆕 Only the icon button is added to the Mini type.[#526](https://github.com/growingio/gio-design/pull/526)
+
+## 20.11.3
+
+- component
+  - 🛎 add ConfigProvider readme[#494](https://github.com/growingio/gio-design/pull/494)
+  - Checkbox
+    - 🆕 add onclick prop.[#487](https://github.com/growingio/gio-design/pull/487)
+    - 💄 update input hidden to transparent，other domelement pointer-events: none.[#487](https://github.com/growingio/gio-design/pull/487)
+  - Table
+    - 🐛 selection onClick stopPropagation.[#487](https://github.com/growingio/gio-design/pull/487)
+  - Modal
+    - 🆕 add useModal.[#494](https://github.com/growingio/gio-design/pull/494)
+  - Toast
+    - 🆕 add useToast.[#494](https://github.com/growingio/gio-design/pull/494)
+  - Drawer
+    - 🐛 fix drawer prefix error.[#494](https://github.com/growingio/gio-design/pull/494)
+  - List
+    - 🐛 fix List fixed height.[#510](https://github.com/growingio/gio-design/pull/510)
+    - 🐛 datasource prop should always be controlled.[#493](https://github.com/growingio/gio-design/pull/493)
+    - 🐛 resolve tooltip in list and add placement prop.[#512](https://github.com/growingio/gio-design/pull/512)
+  - Input
+    - 💄 set input default witdh 100%.[#509](https://github.com/growingio/gio-design/pull/509)
+  - Cascader
+    - 🛎 cascader support key mapping.[#486](https://github.com/growingio/gio-design/pull/486)
+  - Button
+    - 💄 change default size.[#513](https://github.com/growingio/gio-design/pull/513)
+
 ## 20.11.2
 
 - component

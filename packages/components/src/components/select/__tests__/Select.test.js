@@ -321,9 +321,7 @@ describe('<Select /> deselect list', () => {
 
 describe('<Select /> deselect list', () => {
   it('should be able to create by enter', () => {
-    const tree = mount(
-      <Select searchable options={optionsWithOutGroup} defaultValue="all" onDeselect={onDeSelect} />
-    );
+    const tree = mount(<Select searchable options={optionsWithOutGroup} defaultValue="all" onDeselect={onDeSelect} />);
 
     const onDeSelect = (v, o) => {
       expect(v).toBe('all');

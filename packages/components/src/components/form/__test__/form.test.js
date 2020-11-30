@@ -6,7 +6,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { waitFor } from '@testing-library/react';
 
 import { FormProvider } from '../context';
-import Form, { FormInstance } from '..';
+import Form from '..';
 
 const { Item, useForm } = Form;
 
@@ -78,7 +78,7 @@ describe('<Form />', () => {
   });
 
   it('can wrapped in FormProvider', (done) => {
-    const onFormChange = (name: string) => {
+    const onFormChange = (name) => {
       expect(name).toEqual('form1');
       done();
     };
@@ -119,7 +119,7 @@ describe('<Form />', () => {
   it('should accept a ref', () => {
     const {
       result: { current: formRef },
-    } = renderHook(() => useRef((null as unknown) as FormInstance<unknown>));
+    } = renderHook(() => useRef(null));
     mount(<Form ref={formRef} />);
 
     expect(typeof formRef.current.getFieldError).toBe('function');

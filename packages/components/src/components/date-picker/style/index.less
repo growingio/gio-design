@@ -25,7 +25,7 @@
   align-items: center;
   width: 252px;
   border: 1px solid @color-border-input-normal;
-  border-radius: 0.25rem;
+  border-radius: 4px;
   transition: all 0.3s ease-in-out;
 
   .@{input-prefix-cls} {
@@ -54,6 +54,7 @@
 .@{date-picker-prefix-cls} {
   position: relative;
   top: 45px;
+  box-sizing: border-box;
   width: 280px;
   font-size: 14px;
   line-height: 1.5;
@@ -228,7 +229,7 @@
     height: 240px;
     padding: 12px 13px;
     border: 1px solid @color-background-date-picker-hover;
-    border-radius: 0.25rem;
+    border-radius: 4px;
   }
 
   table {
