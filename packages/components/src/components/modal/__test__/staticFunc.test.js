@@ -179,6 +179,7 @@ describe('Modal.staticFunc triggers correctly.', () => {
   });
 
   it('could be destroy', async () => {
+    jest.useFakeTimers();
     ['info', 'success', 'warn', 'error'].forEach(async (type) => {
       const instance = Modal[type]({
         title: 'title',
