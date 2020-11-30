@@ -31,7 +31,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
   const handleFinalChange = (current: string) => {
     min = min <= max ? min : max;
     max = max > min ? max: min;
-    const v = Number(current);
+    const v = Number(value);
     if (Number.isNaN(v) || v < min) {
       onChange?.(`${min}`);
     } else if (v > max) {

@@ -101,21 +101,36 @@ describe('Input.InputNumber', () => {
       <Input.InputNumber
         max={5}
         min={1}
+        value={val}
         onChange={(n) => {
           val = n;
         }}
       />
     );
     expect(wrapper.render()).toMatchSnapshot();
+
     wrapper.find('input').simulate('change', { target: { value: '5' } });
-    expect(wrapper.render()).toMatchSnapshot();
     expect(val).toBe('5');
+    wrapper.setProps({ value: val });
+
     wrapper.find('input').simulate('change', { target: { value: '6' } });
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(val).toBe('6');
+    wrapper.setProps({ value: val });
+
+    wrapper.find('input').simulate('blur');
     expect(val).toBe('5');
+    wrapper.setProps({ value: val });
+
+    expect(wrapper.render()).toMatchSnapshot();
+
     wrapper.find('input').simulate('change', { target: { value: '0' } });
-    expect(wrapper.render()).toMatchSnapshot();
-    expect(val).toBe('5');
+    expect(val).toBe('0');
+    wrapper.setProps({ value: val });
+
+    wrapper.find('input').simulate('blur');
+    expect(val).toBe('1');
+    wrapper.setProps({ value: val });
+
   });
 });
 
