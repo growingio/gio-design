@@ -14,9 +14,9 @@ export default () => {
         value={inputValue}
         onChange={setInputValue}
         size="small"
-        style={{ marginBottom: '20px', display: 'block' }}
+        style={{ marginBottom: '20px', display: 'block', width: 300 }}
         max={10}
-        min={0}
+        min={2}
       />
 
       <Input.InputNumber
@@ -24,10 +24,10 @@ export default () => {
         value={inputValue2}
         onChange={setInputValue2}
         disabled
-        style={{ marginBottom: '20px', display: 'block' }}
+        style={{ marginBottom: '20px', display: 'block', width: 300 }}
       />
 
-      <Input.InputNumber value={inputValue3} onChange={setInputValue3} size="large" />
+      <Input.InputNumber value={inputValue3} onChange={setInputValue3} size="large" style={{ width: 300 }} />
     </div>
   );
 };

@@ -28,12 +28,15 @@ const InputNumber: React.FC<InputNumberProps> = ({
     readOnly,
   ]);
 
-  const handleChange = (current: string) => {
+  const handleFinalChange = (current: string) => {
+    min = min <= max ? min : max;
+    max = max > min ? max: min;
     const v = Number(current);
-    if (Number.isNaN(v) || v < min || v > max) {
-      return;
+    if (Number.isNaN(v) || v < min) {
+      onChange?.(`${min}`);
+    } else if (v > max) {
+      onChange?.(`${max}`);
     }
-    onChange?.(current);
   };
 
   const handleAdd = () => {
@@ -70,7 +73,8 @@ const InputNumber: React.FC<InputNumberProps> = ({
       {...rest}
       suffix={renderSuffix()}
       value={value}
-      onChange={(e) => handleChange(e.target.value)}
+      onBlur={(e) => handleFinalChange(e.target.value)}
+      onChange={(e) => onChange?.(e.target.value)}
       disabled={disabled}
     />
   );

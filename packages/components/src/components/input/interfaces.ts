@@ -43,6 +43,14 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 
 export interface InputNumberProps extends Omit<InputProps, 'onChange'> {
   /**
+   * 输入框允许的最大值
+   */
+  max?: number;
+  /**
+   * 输入框允许的最小值
+   */
+  min?: number;
+  /**
    * 修改值时触发的回调函数
    */
   onChange?: (value: string) => void;

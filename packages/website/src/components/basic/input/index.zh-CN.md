@@ -44,9 +44,9 @@ group:
 | prefixWidth  | input 的左内边距                | number            | -        |
 | suffix       | input 的后缀图标                | React.ReactNode            | -        |
 | suffixWidth  | input 的右内边距                | number            | -        |
-| compositionstart  | 用户使用拼音输入法开始输入汉字时，这个事件就会被触发 | Function(e: React.CompositionEvent<HTMLInputElement>) | -        |
-| compositionupdate | 事件触发于字符被输入到一段文字的时候 | Function(e: React.CompositionEvent<HTMLInputElement>) | -        |
-| compositionstart  | 用户使用拼音输入法开始输入汉字时，这个事件就会被触发 | Function(e: React.CompositionEvent<HTMLInputElement>) | -        |
+| compositionstart  | 用户使用拼音输入法开始输入汉字时，这个事件就会被触发 | Function(e: React.CompositionEvent) | -        |
+| compositionupdate | 事件触发于字符被输入到一段文字的时候 | Function(e: React.CompositionEvent) | -        |
+| compositionstart  | 用户使用拼音输入法开始输入汉字时，这个事件就会被触发 | Function(e: React.CompositionEvent) | -        |
 | ...          | 支持其他 React 自带的 input 属性 | any                        | -        |
 
 ### Input.Password
