@@ -1,6 +1,6 @@
 import React from 'react';
 import { get } from 'lodash';
-import { List, AutoSizer } from 'react-virtualized';
+import { List, AutoSizer, CellMeasurerCache, CellMeasurer } from 'react-virtualized';
 import { withConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import SelectOption from './option';
 import Group from './Group';
@@ -15,6 +15,11 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
   };
 
   public ref: React.RefObject<HTMLDivElement>;
+
+  public _cache = new CellMeasurerCache({
+    fixedWidth: true, 
+    defaultHeight: 40
+  })
 
   public constructor(props: SelectListProps & ConfigConsumerProps) {
     super(props);
@@ -32,14 +37,15 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
       return rowHeight;
     };
     return (
-      <AutoSizer style={{ width: '100%', height }}>
+      <AutoSizer style={{ width: '100%', height }} disableHeight>
         {({ width }) => (
           <List
             value={value}
             width={width}
             height={height}
             rowCount={options.length}
-            rowHeight={typeof rowHeight === 'function' ? getRowHeight : rowHeight}
+            rowHeight={typeof rowHeight === 'function' ? getRowHeight : this._cache.rowHeight}
+            deferredMeasurementCache={this._cache}
             rowRenderer={this.renderListItem(options)}
             disabledOptions={disabledOptions}
             className={`${prefixCls}-list`}
@@ -57,7 +63,8 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
     return false;
   };
 
-  private renderListItem = (options: any) => ({ index, style }: { index: number; style: React.CSSProperties }) => {
+  private renderListItem = (options: any) => ({ index, style, parent }: { index: number; style: React.CSSProperties, parent:any }) => {
+    
     const {
       isMultiple,
       required,
@@ -87,35 +94,50 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
 
     const groupIcon = getGroupIcon ? getGroupIcon(option.group) : null;
 
-    return isGroup ? (
-      <Group
-        key={option.label}
-        name={option.label}
-        option={option}
-        style={{ ...style, height: (style.height as number) - 4 }}
-        icon={groupIcon}
-        isSelected={this.getSelected(option)}
-        isMultiple={!!isMultiple}
-        labelRenderer={labelRenderer}
-      />
-    ) : (
-      <SelectOption
+    return (
+      <CellMeasurer 
         key={key}
-        style={{ ...style, height: (style.height as number) - 4 }}
-        option={option}
-        title={!labelRenderer ? label : undefined}
-        isSelected={this.getSelected(option)}
-        isMultiple={!!isMultiple}
-        allowDuplicate={allowDuplicate}
-        onSelect={this.handleSelect}
-        onClick={this.handleClick}
-        disabled={disabled}
-        hasGroupIcon={!!groupIcon}
-        getPopupContainer={this.getPopupContainer}
+        cache={this._cache}
+        parent={parent}
+        columnIndex={0}
+        rowIndex={index}
       >
-        {label}
-      </SelectOption>
-    );
+        <div style={{ ...style, height: (style.height as number) - 4 }} className="row">
+          {
+            isGroup ? (
+              <Group
+                key={option.label}
+                name={option.label}
+                option={option}
+                icon={groupIcon}
+                isSelected={this.getSelected(option)}
+                isMultiple={!!isMultiple}
+                labelRenderer={labelRenderer}
+              />
+              ) : (
+                <SelectOption
+                  key={key}
+                  style={{}}
+                  option={option}
+                  title={!labelRenderer ? label : undefined}
+                  isSelected={this.getSelected(option)}
+                  isMultiple={!!isMultiple}
+                  allowDuplicate={allowDuplicate}
+                  onSelect={this.handleSelect}
+                  onClick={this.handleClick}
+                  disabled={disabled}
+                  hasGroupIcon={!!groupIcon}
+                  getPopupContainer={this.getPopupContainer}
+                >
+                  {label}
+                </SelectOption>
+              )
+          }
+        </div>
+      </CellMeasurer>
+)
+    
+    
   };
 
   private handleClick = (value: any) => {

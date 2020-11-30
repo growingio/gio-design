@@ -1,42 +1,82 @@
 import React, { useState, useContext, useMemo, useRef, useEffect, useCallback } from 'react';
 import classnames from 'classnames';
 
-import { DownFilled, BoxFilled } from '@gio-design/icons';
-import { filter, isNil, without, uniqueId, uniqBy, findIndex } from 'lodash';
+import { DownFilled, CloseCircleFilled } from '@gio-design/icons';
+import { filter, isNil, without, uniqueId, uniqBy, findIndex , concat } from 'lodash';
 import { SizeContext } from '../config-provider/SizeContext';
 import Dropdown from '../dropdown';
 import Tag from '../tag';
 import List from '../list';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import Options from './Options'
+import { SelectProps, Option, MaybeArray, OptionProps } from './interface';
+import OptGroup from './OptGroup';
 
-import { SelectProps, Option, MaybeArray } from './interface';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const BoxFilled = require('../../assets/images/BoxFilled.svg');
 
 const defaultArrowComponent = <DownFilled />;
-
 const defaultListRowHeight = 44;
 
 const customOptionKeyPrefix = 'select_custom_option_';
 const customOptionKey = uniqueId(customOptionKeyPrefix);
 
-export const CustomOption = (value: string, withGroup = false, id = customOptionKeyPrefix): Option =>
+interface CompoundedSelect extends React.ForwardRefExoticComponent<SelectProps & React.RefAttributes<HTMLElement>> {
+  Group: typeof OptGroup;
+  Option: typeof Options;
+}
+
+interface group {
+  key?:string | React.Key;
+  groupLabel?:string;
+  groupValue?:string | number;
+}
+
+// ReactNode To Options
+function convertNodeToOption(node: React.ReactElement,group:group): OptionProps {
+  const { props: {value, label,children, ...restProps } } = node as React.ReactElement;
+  const { groupValue, groupLabel } = group;
+    return { value, label:children !== undefined ? children : label, groupValue, groupLabel, ...restProps };
+}
+
+export function convertChildrenToData(nodes: React.ReactNode, group = {}): OptionProps[] {
+  let nodeOptions: OptionProps[] = [];
+  React.Children.forEach(nodes, (node: React.ReactElement) => {
+    if (!React.isValidElement(node)) {
+      return;
+    }
+    const { type: { isSelectOptGroup }, props: { children, label, value } } = node as React.ReactElement & { type: { isSelectOptGroup?: boolean }; }; // 联合类型
+    if (!isSelectOptGroup) {
+      // option
+      nodeOptions.push(convertNodeToOption(node, group));
+    } else {
+      // Group
+      nodeOptions = concat(nodeOptions,convertChildrenToData(children,{groupLabel:label,groupValue:value }))
+    }
+  })
+  return nodeOptions;
+}
+
+
+export const CustomOption = (value: string | number, withGroup = false, id = customOptionKeyPrefix): OptionProps =>
   withGroup
     ? {
-        value,
-        label: value,
-        groupValue: id,
-        groupLabel: '自由输入',
-      }
+      value,
+      label: value.toString(),
+      groupValue: id,
+      groupLabel: '自由输入',
+    }
     : {
-        value,
-        label: value,
-      };
+      value,
+      label: value.toString(),
+    };
 
 // provide search matching hightlight;
 export const defaultLabelRenderer = (input: string, prefix: string) => (
-  option: Option,
+  option: OptionProps,
   isGroup: boolean
 ): React.ReactNode => {
-  if (isGroup) return option.label;
+  if (isGroup || typeof option.label !== 'string') return option.label;
   const index = option.label.indexOf(input);
   return (
     <div>
@@ -47,9 +87,11 @@ export const defaultLabelRenderer = (input: string, prefix: string) => (
   );
 };
 
-const defaultSearchPredicate = (input: string) => (o: Option) => o.label.includes(input);
+const defaultSearchPredicate = (input: string) => (o: OptionProps) => {
+  return typeof o.label === 'string' ? o.label.includes(input) : true;
+};
 
-const defaultMatchPredicate = (input: string) => (o: Option) => o.label === input;
+const defaultMatchPredicate = (input: string) => (o: OptionProps) => o.label === input;
 
 const defaultNotFoundContent = (
   <div
@@ -60,14 +102,14 @@ const defaultNotFoundContent = (
       padding: '68px 0',
     }}
   >
-    <BoxFilled size="48px" style={{ marginBottom: 24 }} />
+    <img src={BoxFilled} className="gio-icon" style={{ marginBottom: 24, width: '48px', height: '48px' }} alt="" />
     <div style={{ fontSize: 12 }}>暂无选项...</div>
   </div>
 );
 
-const defaultOptionLabelRenderer = (value: string, option?: Option) => option?.label || value;
+const defaultOptionLabelRenderer = (value: string | number, option?: OptionProps) => option?.label || value;
 
-const Select: React.FC<SelectProps> = (props: SelectProps) => {
+const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (props: SelectProps, ref: React.Ref<HTMLDivElement>) => {
   const sizeContext = useContext(SizeContext);
   const {
     size = sizeContext || 'middle',
@@ -101,6 +143,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     onDropDownVisibleChange,
     dropDownClassName,
     dropDownStyle,
+    children
   } = props;
 
   const prefix = usePrefixCls('select', customizePrefixCls);
@@ -127,20 +170,26 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     onSearch?.(e.target.value);
     setInput(e.target.value);
   };
-
+  const onInputClear = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (input) {
+      e.stopPropagation();
+      clearInput();
+      inputRef.current?.focus();
+    }
+  }
   const onInputClick = (e: React.MouseEvent<HTMLInputElement>) => {
     if (input) e.stopPropagation();
   };
-
+  const nodesToOptions = useMemo<OptionProps[]>(() => convertChildrenToData(children), [children]);
   const [valueToOptionMap, hasGroup] = useMemo(() => {
     let group = false;
-    const map = options.reduce((m, option) => {
+    const map = [...options, ...nodesToOptions].reduce((m, option) => {
       if (option.groupLabel) group = true;
       m.set(option.value, option);
       return m;
     }, new Map());
     return [map, group];
-  }, [options]);
+  }, [options, nodesToOptions]);
 
   useEffect(() => {
     if (!disabled) {
@@ -164,21 +213,21 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   };
 
   const getOptionByValue = useCallback(
-    (optValue: string): Option | undefined => {
+    (optValue: string | number): OptionProps | undefined => {
       return valueToOptionMap.get(optValue);
     },
     [valueToOptionMap]
   );
 
-  const getOptionsByValue = (optValue: MaybeArray<string>): MaybeArray<Option> | undefined => {
+  const getOptionsByValue = (optValue: MaybeArray<string | number>): MaybeArray<OptionProps> | undefined => {
     return Array.isArray(optValue)
-      ? optValue.reduce((prev: Option[], v) => {
-          const op = getOptionByValue(v);
-          if (op) {
-            prev.push(op);
-          }
-          return prev;
-        }, [])
+      ? optValue.reduce((prev: OptionProps[], v) => {
+        const op = getOptionByValue(v);
+        if (op) {
+          prev.push(op);
+        }
+        return prev;
+      }, [])
       : getOptionByValue(optValue);
   };
 
@@ -189,7 +238,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   }, [input]);
 
   const extendedOptions = useMemo(() => {
-    const result: Option[] = [];
+    const result: OptionProps[] = [];
     if (Array.isArray(value) && allowCustomOption) {
       value.forEach((v) => {
         const op = getOptionByValue(v);
@@ -198,9 +247,9 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
         }
       });
     }
-    return [...options, ...result];
-  }, [options, value, getOptionByValue, allowCustomOption, hasGroup]);
-
+    return [...[...options, ...nodesToOptions], ...result];
+  }, [options, nodesToOptions, value, getOptionByValue, allowCustomOption, hasGroup]);
+ 
   const filteredOptions = useMemo(() => filter(extendedOptions, searchPredicate(input)), [
     searchPredicate,
     extendedOptions,
@@ -220,13 +269,12 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
         : filteredOptions,
     [hasExactMatch, allowCustomOption, filteredOptions, input, hasGroup]
   );
-
   const groupCount = useMemo(() => (hasGroup ? uniqBy(completeOptions, 'groupValue').length : 0), [
     completeOptions,
     hasGroup,
   ]);
 
-  const onValueChange = (optValue: MaybeArray<string>) => {
+  const onValueChange = (optValue: MaybeArray<string | number>) => {
     if (!isControlled) {
       setUnControlledValue(optValue);
     }
@@ -252,7 +300,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
         if (!hasExactMatch && allowCustomOption && input) {
           if (Array.isArray(value)) {
             value.push(input);
-            onValueChange([...(value as Array<string>)]);
+            onValueChange([...(value as Array<string | number>)]);
           }
         }
         clearInput();
@@ -262,7 +310,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     }
   };
 
-  const onListSelect = (selectedValue: string, _: string[], option: Option) => {
+  const onListSelect = (selectedValue: string | number, _: string[], option: OptionProps) => {
     if (!multiple) {
       onVisibleChange(false);
     }
@@ -275,7 +323,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     onSelect?.(selectedValue, option);
   };
 
-  const onListDeselect = (selectedValue: string, _: string[], option: Option) => {
+  const onListDeselect = (selectedValue: string, _: string[], option: OptionProps) => {
     if (!multiple) {
       onVisibleChange(false);
     }
@@ -287,20 +335,21 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     onDeselect?.(selectedValue, option);
   };
 
-  const onTagCloseClick = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>, v: string) => {
+  const onTagCloseClick = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>, v: string | number) => {
     e.stopPropagation();
-    onValueChange(without(value || [], v));
+    onValueChange(without(value as MaybeArray<string> || [], v));
   };
 
-  const renderSingleValue = () =>
-    !input && typeof value === 'string' ? (
+  const renderSingleValue = () => {
+    return !input && (typeof value === 'string' || typeof value === 'number') ? (
       <div className={`${prefix}-item`}>
-        <span className={`${prefix}-item-text`}>{optionLabelRenderer(value, getOptionByValue(value))}</span>
+        <span className={`${prefix}-item-text`}>{optionLabelRenderer(value as string | number, getOptionByValue(value as string | number))}</span>
       </div>
     ) : null;
+  }
 
-  const renderMultipleValue = () =>
-    (value as Array<string>)?.map((v) => (
+  const renderMultipleValue = () => {
+    return (value as Array<string | number>)?.map((v) => (
       <Tag
         key={v}
         className={`${prefix}-item`}
@@ -312,6 +361,8 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
         {optionLabelRenderer(v, getOptionByValue(v))}
       </Tag>
     ));
+  }
+
 
   const renderSearchInput = () => (
     <>
@@ -332,7 +383,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
   );
 
   const renderPlaceHolder = () => {
-    return (!value || !value.length) && !input && placeholder ? (
+    return (!value || typeof value === ('string' || 'number') && !value.toString().length || typeof value === 'object' && !value.length) && !input && placeholder ? (
       <div className={`${prefix}-item ${prefix}-placeholder`}>{placeholder}</div>
     ) : null;
   };
@@ -360,28 +411,33 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
           {renderPlaceHolder()}
         </div>
       </div>
-      <div className={`${prefix}-arrow`}>{arrowComponent}</div>
+      <div className={`${prefix}-arrow`}>
+        {
+          searchable && !disabled && input ? <CloseCircleFilled onClick={onInputClear} /> : arrowComponent
+        }
+      </div>
     </div>
   );
-
   const list = (
     <div style={{ width: autoWidth ? Math.max(selectorRef.current?.clientWidth || 0, 160) : undefined }}>
-      {completeOptions.length > 0 ? (
-        <List
-          value={value}
-          width={autoWidth ? Math.max(selectorRef.current?.clientWidth || 0, 160) : undefined}
-          dataSource={completeOptions}
-          onChange={onValueChange}
-          isMultiple={multiple}
-          labelRenderer={labelRenderer(input, prefix)}
-          onSelect={onListSelect}
-          onDeselect={onListDeselect}
-          height={listHeight || (completeOptions.length + groupCount) * listRowHeight}
-          rowHeight={listRowHeight}
-        />
-      ) : (
-        notFoundContent
-      )}
+      {completeOptions.length > 0 ?
+        (
+          <List
+            value={value}
+            width={autoWidth ? Math.max(selectorRef.current?.clientWidth || 0, 160) : undefined}
+            dataSource={completeOptions as unknown as Option[]}
+            onChange={onValueChange}
+            isMultiple={multiple}
+            labelRenderer={labelRenderer(input, prefix)}
+            onSelect={onListSelect}
+            onDeselect={onListDeselect}
+            height={listHeight|| (completeOptions.length + groupCount) * listRowHeight}
+            rowHeight={listRowHeight}
+          />
+        )
+        : (
+          notFoundContent
+        )}
     </div>
   );
 
@@ -400,5 +456,7 @@ const Select: React.FC<SelectProps> = (props: SelectProps) => {
     </Dropdown>
   );
 };
+
+const Select = React.forwardRef<unknown, SelectProps>(RenderSelect) as CompoundedSelect;
 
 export default Select;

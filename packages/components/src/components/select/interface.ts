@@ -10,7 +10,7 @@ export interface SelectProps {
   // width?: number;
 
   size?: SizeType;
-  options: Option[];
+  options?: Option[];
   multiple?: boolean;
   placeholder?: string;
   searchable?: boolean;
@@ -30,21 +30,35 @@ export interface SelectProps {
   autoWidth?: boolean;
   listHeight?: number;
   listRowHeight?: number;
-  labelRenderer?: (input: string) => (option: Option, isGroup: boolean) => React.ReactNode;
-  searchPredicate?: (input: string) => _.ListIterateeCustom<Option, boolean>;
-  matchPredicate?: (input: string) => _.ListIterateeCustom<Option, boolean>;
-  optionLabelRenderer?: (value: string, option?: Option) => React.ReactNode;
+  labelRenderer?: (input: string) => (option: OptionProps, isGroup: boolean) => React.ReactNode;
+  searchPredicate?: (input: string) => _.ListIterateeCustom<OptionProps, boolean>;
+  matchPredicate?: (input: string) => _.ListIterateeCustom<OptionProps, boolean>;
+  optionLabelRenderer?: (value: string | number, option?: OptionProps) => React.ReactNode;
 
-  defaultValue?: MaybeArray<string>;
-  value?: MaybeArray<string>;
-  onChange?: (value: MaybeArray<string>, options?: MaybeArray<Option>) => void;
+  defaultValue?: MaybeArray<string | number>;
+  value?: MaybeArray<string | number>;
+  onChange?: (value: MaybeArray<string | number>, options?: MaybeArray<OptionProps>) => void;
   onSearch?: (input: string) => void;
-  onSelect?: (value: string, option: Option) => void;
-  onDeselect?: (value: string, option: Option) => void;
+  onSelect?: (value: string | number, option: OptionProps) => void;
+  onDeselect?: (value: string | number, option: OptionProps) => void;
 
   getContainer?: (node: HTMLElement) => HTMLElement;
   dropDownVisible?: boolean;
   onDropDownVisibleChange?: (visible: boolean) => void;
+  children?: React.ReactNode[] | React.ReactNode;
+}
+
+export interface OptGroupProps {
+  children?:React.ReactNode;
+  label?:string;
+  value:string | number;
+}
+
+
+export interface OptionProps {
+  children?: React.ReactNode;
+  /** Save for customize data */
+  [prop: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export { Option };
