@@ -9,21 +9,6 @@ nav:
 
 # @gio-design/components 更新日志
 
-## 20.11.4
-
-- component
-
-  - 🛎 添加 将 rem 单位改成 px.[#525](https://github.com/growingio/gio-design/pull/525)
-  - 🛎 修复了一些组件的样式问题.
-  - SearchBar
-    - 🐛 修复 icon 图标不居中问题.[#534](https://github.com/growingio/gio-design/pull/534)
-    - 🐛 解决搜索框搜索列表显示逻辑错误的问题.[#534](https://github.com/growingio/gio-design/pull/534)
-    - 🐛 搜索列表为空时，searchBar 的 focus 不应该显示下拉框.[#534](https://github.com/growingio/gio-design/pull/534)
-  - Select
-    - 🐛 修复文字上下居中的 bug.[#524](https://github.com/growingio/gio-design/pull/524)
-  - Button
-    - 🆕 添加 mini 类型的只有 icon 的按钮.[#526](https://github.com/growingio/gio-design/pull/526)
-
 ## 20.11.3
 
 - component
