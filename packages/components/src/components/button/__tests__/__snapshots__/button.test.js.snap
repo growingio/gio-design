@@ -7,7 +7,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-btn",
+          "class": "gio-btn gio-btn-primary",
           "type": "button",
         },
         "children": Array [
@@ -36,7 +36,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-btn",
+            "class": "gio-btn gio-btn-primary",
             "type": "button",
           },
           "children": Array [
@@ -97,7 +97,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
-              "class": "gio-btn",
+              "class": "gio-btn gio-btn-primary",
               "type": "button",
             },
             "children": Array [
@@ -241,7 +241,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "gio-btn",
+                "class": "gio-btn gio-btn-primary",
                 "type": "button",
               },
               "children": Array [
@@ -306,7 +306,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-btn",
+          "class": "gio-btn gio-btn-primary",
           "type": "button",
         },
         "children": Array [
@@ -367,7 +367,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-btn",
+            "class": "gio-btn gio-btn-primary",
             "type": "button",
           },
           "children": Array [
@@ -511,7 +511,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
-              "class": "gio-btn",
+              "class": "gio-btn gio-btn-primary",
               "type": "button",
             },
             "children": Array [
@@ -553,7 +553,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-btn",
+            "class": "gio-btn gio-btn-primary",
             "type": "button",
           },
           "children": Array [
@@ -605,7 +605,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-btn",
+          "class": "gio-btn gio-btn-primary",
           "type": "button",
         },
         "children": Array [
@@ -749,7 +749,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-btn",
+            "class": "gio-btn gio-btn-primary",
             "type": "button",
           },
           "children": Array [
@@ -779,7 +779,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-btn",
+            "class": "gio-btn gio-btn-primary",
             "type": "button",
           },
           "children": Array [
@@ -842,7 +842,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
-              "class": "gio-btn",
+              "class": "gio-btn gio-btn-primary",
               "type": "button",
             },
             "children": Array [
@@ -904,7 +904,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-btn",
+          "class": "gio-btn gio-btn-primary",
           "type": "button",
         },
         "children": Array [
@@ -922,7 +922,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-btn",
+            "class": "gio-btn gio-btn-primary",
             "type": "button",
           },
           "children": Array [
@@ -1068,7 +1068,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
-              "class": "gio-btn",
+              "class": "gio-btn gio-btn-primary",
               "type": "button",
             },
             "children": Array [
@@ -1131,7 +1131,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "gio-btn",
+                "class": "gio-btn gio-btn-primary",
                 "type": "button",
               },
               "children": Array [
@@ -1243,7 +1243,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-btn gio-btn-icon-only",
+          "class": "gio-btn gio-btn-primary gio-btn-icon-only",
           "type": "button",
         },
         "children": Array [
@@ -1495,7 +1495,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-btn gio-btn-icon-only gio-btn-loading",
+            "class": "gio-btn gio-btn-primary gio-btn-icon-only gio-btn-loading",
             "type": "button",
           },
           "children": Array [
@@ -1686,7 +1686,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
-              "class": "gio-btn gio-btn-mini gio-btn-icon-only",
+              "class": "gio-btn gio-btn-primary gio-btn-mini gio-btn-icon-only",
               "type": "button",
             },
             "children": Array [
@@ -1938,7 +1938,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "gio-btn gio-btn-mini gio-btn-icon-only gio-btn-loading",
+                "class": "gio-btn gio-btn-primary gio-btn-mini gio-btn-icon-only gio-btn-loading",
                 "type": "button",
               },
               "children": Array [
@@ -2178,7 +2178,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-btn gio-btn-icon-only gio-btn-loading",
+          "class": "gio-btn gio-btn-primary gio-btn-icon-only gio-btn-loading",
           "type": "button",
         },
         "children": Array [
@@ -2369,7 +2369,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-btn gio-btn-mini gio-btn-icon-only",
+            "class": "gio-btn gio-btn-primary gio-btn-mini gio-btn-icon-only",
             "type": "button",
           },
           "children": Array [
@@ -2621,7 +2621,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
-              "class": "gio-btn gio-btn-mini gio-btn-icon-only gio-btn-loading",
+              "class": "gio-btn gio-btn-primary gio-btn-mini gio-btn-icon-only gio-btn-loading",
               "type": "button",
             },
             "children": Array [
@@ -2838,7 +2838,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-btn gio-btn-icon-only",
+            "class": "gio-btn gio-btn-primary gio-btn-icon-only",
             "type": "button",
           },
           "children": Array [
@@ -3113,7 +3113,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-btn gio-btn-mini gio-btn-icon-only",
+          "class": "gio-btn gio-btn-primary gio-btn-mini gio-btn-icon-only",
           "type": "button",
         },
         "children": Array [
@@ -3365,7 +3365,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-btn gio-btn-mini gio-btn-icon-only gio-btn-loading",
+            "class": "gio-btn gio-btn-primary gio-btn-mini gio-btn-icon-only gio-btn-loading",
             "type": "button",
           },
           "children": Array [
@@ -3570,7 +3570,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-btn gio-btn-icon-only gio-btn-loading",
+            "class": "gio-btn gio-btn-primary gio-btn-icon-only gio-btn-loading",
             "type": "button",
           },
           "children": Array [
@@ -3763,7 +3763,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
-              "class": "gio-btn gio-btn-icon-only",
+              "class": "gio-btn gio-btn-primary gio-btn-icon-only",
               "type": "button",
             },
             "children": Array [
@@ -4048,7 +4048,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-btn gio-btn-mini gio-btn-icon-only gio-btn-loading",
+          "class": "gio-btn gio-btn-primary gio-btn-mini gio-btn-icon-only gio-btn-loading",
           "type": "button",
         },
         "children": Array [
@@ -4241,7 +4241,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-btn gio-btn-mini gio-btn-icon-only",
+            "class": "gio-btn gio-btn-primary gio-btn-mini gio-btn-icon-only",
             "type": "button",
           },
           "children": Array [
@@ -4495,7 +4495,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
-              "class": "gio-btn gio-btn-icon-only gio-btn-loading",
+              "class": "gio-btn gio-btn-primary gio-btn-icon-only gio-btn-loading",
               "type": "button",
             },
             "children": Array [
@@ -4688,7 +4688,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "gio-btn gio-btn-icon-only",
+                "class": "gio-btn gio-btn-primary gio-btn-icon-only",
                 "type": "button",
               },
               "children": Array [
@@ -5025,7 +5025,7 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-btn gio-btn-large",
+          "class": "gio-btn gio-btn-primary gio-btn-large",
           "type": "button",
         },
         "children": Array [
@@ -5084,7 +5084,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
-              "class": "gio-btn",
+              "class": "gio-btn gio-btn-primary",
               "type": "button",
             },
             "children": Array [],
@@ -5325,7 +5325,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-btn",
+            "class": "gio-btn gio-btn-primary",
             "type": "button",
           },
           "children": Array [],
@@ -5511,7 +5511,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-btn gio-btn-large",
+            "class": "gio-btn gio-btn-primary gio-btn-large",
             "type": "button",
           },
           "children": Array [
@@ -5565,7 +5565,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-btn",
+          "class": "gio-btn gio-btn-primary",
           "type": "button",
         },
         "children": Array [],
@@ -5771,7 +5771,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
-              "class": "gio-btn gio-btn-large",
+              "class": "gio-btn gio-btn-primary gio-btn-large",
               "type": "button",
             },
             "children": Array [
@@ -5989,7 +5989,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-btn",
+            "class": "gio-btn gio-btn-primary",
             "type": "button",
           },
           "children": Array [],
@@ -6031,7 +6031,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "gio-btn gio-btn-large",
+                "class": "gio-btn gio-btn-primary gio-btn-large",
                 "type": "button",
               },
               "children": Array [
@@ -6249,7 +6249,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
-              "class": "gio-btn",
+              "class": "gio-btn gio-btn-primary",
               "type": "button",
             },
             "children": Array [],
@@ -6291,7 +6291,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "gio-btn gio-btn-large",
+                  "class": "gio-btn gio-btn-primary gio-btn-large",
                   "type": "button",
                 },
                 "children": Array [
@@ -6509,7 +6509,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "gio-btn",
+                "class": "gio-btn gio-btn-primary",
                 "type": "button",
               },
               "children": Array [],
@@ -6551,7 +6551,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "class": "gio-btn gio-btn-large",
+                    "class": "gio-btn gio-btn-primary gio-btn-large",
                     "type": "button",
                   },
                   "children": Array [
@@ -6769,7 +6769,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "gio-btn",
+                  "class": "gio-btn gio-btn-primary",
                   "type": "button",
                 },
                 "children": Array [],
@@ -6811,7 +6811,7 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "class": "gio-btn gio-btn-large",
+                      "class": "gio-btn gio-btn-primary gio-btn-large",
                       "type": "button",
                     },
                     "children": Array [
