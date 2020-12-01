@@ -10,6 +10,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   autosize = false,
   placeholder = '',
   onChange,
+  maxLength,
   style,
   wrapStyle,
   inputStyle,
@@ -18,7 +19,9 @@ const TextArea: React.FC<TextAreaProps> = ({
   ...rest
 }: TextAreaProps) => {
   const prefixCls = usePrefixCls('input');
-  const wrapClass = classNames(className, prefixCls);
+  const wrapClass = classNames(className, prefixCls, {
+    [`${prefixCls}-showcount`]: maxLength > 0,
+  });
   const inputClass = classNames(`${prefixCls}-content`, `${prefixCls}-textarea`, {
     [`${prefixCls}-textarea-noresize`]: !resize,
   });
@@ -39,6 +42,12 @@ const TextArea: React.FC<TextAreaProps> = ({
     }
   });
 
+  const extraProps = {} as any;
+  if (maxLength > 0) {
+    value = ((value ?? '') + '').slice(0, maxLength);
+    extraProps['data-count'] = `${value.length} / ${maxLength}`;
+  }
+
   const outerStyle = style !== undefined ? style : wrapStyle;
   const innerStyle = style !== undefined ? {} : inputStyle;
   if (wrapStyle !== undefined || inputStyle !== undefined) {
@@ -50,7 +59,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   }
 
   return (
-    <div className={wrapClass} style={outerStyle}>
+    <div className={wrapClass} style={outerStyle} {...extraProps}>
       <textarea
         value={value ?? ''}
         onChange={handleOnChange}
@@ -59,6 +68,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         placeholder={placeholder}
         style={innerStyle}
         ref={forwardRef}
+        maxLength={maxLength}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       />

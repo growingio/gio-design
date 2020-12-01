@@ -130,7 +130,6 @@ describe('Input.InputNumber', () => {
     wrapper.find('input').simulate('blur');
     expect(val).toBe('1');
     wrapper.setProps({ value: val });
-
   });
 });
 
@@ -148,6 +147,16 @@ describe('Input.TextArea', () => {
   it('should warn when legacy props "wrapStyle" or "inputStyle" passed in', () => {
     const wrapper = mount(<Input.TextArea wrapStyle={{ width: 100 }} />);
     expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  it('should has showcount class and will not trigger onChange', () => {
+    let val = '0123456789aaa';
+    const wrapper = mount(<Input.TextArea value={val} maxLength={10} />);
+    expect(wrapper.render()).toMatchSnapshot();
+    expect(wrapper.find('textarea').prop('maxLength')).toBe(10);
+    expect(wrapper.find('textarea').prop('value')).toBe('0123456789');
+    expect(wrapper.find('div').prop('data-count')).toBe('10 / 10');
+    expect(wrapper.find('.gio-input-showcount').length).toBe(1);
   });
 
   it('should trigger onChange when input event happens', () => {

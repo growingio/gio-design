@@ -29,13 +29,13 @@ const InputNumber: React.FC<InputNumberProps> = ({
   ]);
 
   const handleFinalChange = (current: string) => {
-    min = min <= max ? min : max;
-    max = max > min ? max: min;
+    const minValue = min <= max ? min : max;
+    const maxValue = max > min ? max : min;
     const v = Number(value);
-    if (Number.isNaN(v) || v < min) {
-      onChange?.(`${min}`);
-    } else if (v > max) {
-      onChange?.(`${max}`);
+    if (Number.isNaN(v) || v < minValue) {
+      onChange?.(`${minValue}`);
+    } else if (v > maxValue) {
+      onChange?.(`${maxValue}`);
     }
   };
 

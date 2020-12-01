@@ -17,6 +17,13 @@
     }
   }
 
+  &-showcount:after {
+    display: block;
+    color: inherit;
+    text-align: right;
+    content: attr(data-count);
+  }
+
   &-content {
     display: block;
     width: 100%;
