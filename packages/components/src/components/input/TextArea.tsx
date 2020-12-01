@@ -37,7 +37,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   let finalValue = value ?? '';
 
   if (maxLength > 0) {
-    finalValue = (finalValue + '').slice(0, maxLength);
+    finalValue = `${finalValue}`.slice(0, maxLength);
     extraProps['data-count'] = `${finalValue.length} / ${maxLength}`;
   }
 
@@ -62,6 +62,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   }
 
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <div className={wrapClass} style={outerStyle} {...extraProps}>
       <textarea
         value={finalValue}
