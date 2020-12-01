@@ -37,7 +37,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   let finalValue = value ?? '';
 
   if (maxLength > 0) {
-    finalValue = ((value ?? '') + '').slice(0, maxLength);
+    finalValue = (finalValue + '').slice(0, maxLength);
     extraProps['data-count'] = `${finalValue.length} / ${maxLength}`;
   }
 
