@@ -15,10 +15,6 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   compositionUpdate?: (e: React.CompositionEvent<HTMLInputElement>) => void;
   compositionEnd?: (e: React.CompositionEvent<HTMLInputElement>) => void;
   /**
-   * react 通用的 className 属性
-   */
-  className?: string;
-  /**
    * 外层容器 style，取代 wrapStyle 并忽略 inputStyle
    */
   style?: React.CSSProperties;
@@ -74,10 +70,6 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
    * @default false
    */
   autosize?: boolean;
-  /**
-   * react 通用的 className 属性
-   */
-  className?: string;
   /**
    * 外层容器 style，取代 wrapStyle 并忽略 inputStyle
    */
