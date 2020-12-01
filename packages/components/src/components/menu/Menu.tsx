@@ -7,7 +7,7 @@ import { IMenuProps, TMenuMode, TRcMode } from './interface';
 
 const transform2RcMode = (mode: TMenuMode): TRcMode => (mode === 'vertical' ? 'inline' : 'horizontal');
 
-const getOpenKeys = (mode: TMenuMode, children: React.ReactNode): string[] => {
+const getOpenKeys = (mode: TMenuMode, children: React.ReactNode) => {
   if (mode === 'horizontal') {
     return undefined;
   }
