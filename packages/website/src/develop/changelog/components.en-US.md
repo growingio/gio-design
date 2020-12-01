@@ -9,6 +9,8 @@ nav:
 
 # @gio-design/components Change Log
 
+## 20.11.5
+
 - component
 
   - 🛎 Add change rem unit to PX.[#525](https://github.com/growingio/gio-design/pull/525)

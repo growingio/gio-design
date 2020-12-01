@@ -1,5 +1,5 @@
 import { defaultRootPrefixCls } from '../config-provider';
-import { IRcFile, IUploadFile, STATUS_NOT_YET } from './interface';
+import { IRcFile, IUploadFile, STATUS_NOT_YET, STATUS_SUCCESS } from './interface';
 
 export const getUid = (): string => `${defaultRootPrefixCls}-upload-${Date.now()}`;
 
@@ -15,12 +15,13 @@ export const fileToObject = (file: IRcFile): IUploadFile => ({
   originFile: file,
 });
 
-export const getEmptyFileObj = (): IUploadFile => ({
+export const getEmptyFileObj = (file?: IUploadFile): IUploadFile => ({
   uid: getUid(),
-  size: 0,
-  name: '本地上传',
-  type: '$empty-file',
-  status: STATUS_NOT_YET,
+  size: file?.size ?? 0,
+  name: file?.name ?? '本地上传',
+  type: file?.type ?? '$empty-file',
+  status: file?.dataUrl ? STATUS_SUCCESS : STATUS_NOT_YET,
+  dataUrl: file?.dataUrl ?? '',
 });
 
 export const requestImage = (src: string, cors?: 'anonymous' | 'use-credentials'): Promise<HTMLImageElement> =>

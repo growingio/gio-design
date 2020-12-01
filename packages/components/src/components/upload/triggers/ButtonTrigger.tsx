@@ -5,9 +5,12 @@ import Button from '../../button';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import Preview from '../Preview';
 import { UploadPrefixClsContext } from '../UploadContext';
+import { SizeContext } from '../../config-provider/SizeContext';
 
 const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps }: ITriggerProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
+  const contextSize = useContext(SizeContext);
+  const size = contextSize ?? 'large';
   const btnCls = classnames(`${prefixCls}__btn`, triggerProps?.className);
   const labelCls = classnames(`${prefixCls}__btn-label`);
 
@@ -32,7 +35,7 @@ const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps }: ITrigger
 
   const label = file?.name ?? '本地上传';
   return (
-    <Button {...btnProps} size="large" icon={icon} loading={uploading}>
+    <Button {...btnProps} size={size} icon={icon} loading={uploading}>
       <span className={labelCls} title={label}>
         {label}
       </span>
