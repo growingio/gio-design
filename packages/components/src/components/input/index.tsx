@@ -7,4 +7,5 @@ Input.InputNumber = InputNumber;
 Input.Password = Password;
 Input.TextArea = TextArea;
 
+export { InputProps, InputNumberProps, TextAreaProps } from './interfaces';
 export default Input;

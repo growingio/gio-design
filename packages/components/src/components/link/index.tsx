@@ -1,10 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import classnames from 'classnames';
-import { TLinkProps } from './interface';
+import { LinkProps } from './interface';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
-const Link: React.FC<TLinkProps> = ({
+export { LinkProps } from './interface';
+
+const Link: React.FC<LinkProps> = ({
   component = 'a',
   to = '',
   disabled,
@@ -12,7 +14,7 @@ const Link: React.FC<TLinkProps> = ({
   className,
   children,
   ...otherProps
-}: TLinkProps) => {
+}: LinkProps) => {
   const prefixCls = usePrefixCls('link', customPrefixCls);
   const cls = classnames(className, prefixCls, {
     [`${prefixCls}--disabled`]: disabled,
