@@ -32,6 +32,15 @@ const TextArea: React.FC<TextAreaProps> = ({
     }
   };
 
+  const extraProps = {} as any;
+
+  let finalValue = value ?? '';
+
+  if (maxLength > 0) {
+    finalValue = ((value ?? '') + '').slice(0, maxLength);
+    extraProps['data-count'] = `${finalValue.length} / ${maxLength}`;
+  }
+
   useEffect(() => {
     if (autosize) {
       if (typeof forwardRef === 'object' && forwardRef !== null && forwardRef.current !== null) {
@@ -41,12 +50,6 @@ const TextArea: React.FC<TextAreaProps> = ({
       }
     }
   });
-
-  const extraProps = {} as any;
-  if (maxLength > 0) {
-    value = ((value ?? '') + '').slice(0, maxLength);
-    extraProps['data-count'] = `${value.length} / ${maxLength}`;
-  }
 
   const outerStyle = style !== undefined ? style : wrapStyle;
   const innerStyle = style !== undefined ? {} : inputStyle;
@@ -61,7 +64,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   return (
     <div className={wrapClass} style={outerStyle} {...extraProps}>
       <textarea
-        value={value ?? ''}
+        value={finalValue}
         onChange={handleOnChange}
         className={inputClass}
         disabled={disabled}
