@@ -1,10 +1,7 @@
+import { ReactElement } from 'react';
 import { NotificationInstance as RCNotificationInstance } from 'rc-notification/lib/Notification';
 
 export type NotificationInstance = RCNotificationInstance | null;
-
-export interface IHookNotificationInstance {
-  [key: string]: NotificationInstance;
-}
 
 export type TToastType = 'success' | 'error' | 'warning' | 'info';
 
@@ -44,13 +41,16 @@ export interface IToastNotice {
   (): void;
 }
 
-export interface IToastApi {
+export interface IToastMethods {
+  open: (args: ArgsProps) => IToastNotice;
   success: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => IToastNotice;
   error: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => IToastNotice;
   warning: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => IToastNotice;
   info: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => IToastNotice;
-  open: (args: ArgsProps) => IToastNotice;
+}
+
+export interface IToastApi extends IToastMethods {
   config: (options: ConfigOptions) => void;
   destroy: () => void;
-  useToast: () => [];
+  useToast: () => [IToastMethods, ReactElement];
 }
