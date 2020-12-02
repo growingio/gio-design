@@ -187,35 +187,36 @@ group:
 
 列描述对象
 
-| 参数                  | 说明                                         | 类型                                     | 默认值                  |
-| --------------------- | -------------------------------------------- | ---------------------------------------- | ----------------------- |
-| **key**               | 列唯一标识                                   | string                                   | 列序号                  |
-| **className**         | 列样式类名                                   | string                                   | -                       |
-| **dataIndex**         | 列数据在数据项中对应的路径                   | string                                   | -                       |
-| **fixed**             | 固定列                                       | 'left' \| 'right' \|boolean              | -                       |
-| **align**             | 对齐方式                                     | 'left' \| 'center' \| 'right'            | 'left'                  |
-| **width**             | 列宽                                         | number \| string                         | -                       |
-| **title**             | 列标题                                       | React.ReactNode                          | -                       |
-| **ellipsis**          | 开启超出省略                                 | boolean                                  | false                   |
-| **info**              | 设置用于解释该列的文案                       | string                                   | -                       |
-| **sorter**            | 排序函数，设置此属性才开启排序功能           | (a: RecordType, b: RecordType) => number |                         |
-| **sortPriorityOrder** | 排序优先级                                   | React.ReactNode                          | -                       |
-| **sortDirections**    | 支持的排序方式                               | ascend\|descend[]                        | [ascend, descend, none] |
-| **defaultSortOrder**  | 默认排序顺序                                 | ascend\|descend                          | -                       |
-| **filters**           | 表头的筛选菜单项                             | string[]                                 | []                      |
-| **onFilter**          | 自定义筛选规则                               | (record: RecordType) => boolean          | -                       |
-| **filterDropdown**    | 自定义筛选菜单，可以用来覆盖默认菜单(还未做) | React.ReactNode                          | -                       |
-| **render**            | 每一列的渲染函数                             | function(text, record, index) {}         | -                       |
-| **onHeaderCell**      | 设置头部单元格属性                           | function(column)                         | -                       |
+| 参数                  | 说明                                                                       | 类型                                     | 默认值                  |
+| --------------------- | -------------------------------------------------------------------------- | ---------------------------------------- | ----------------------- |
+| **key**               | 列唯一标识                                                                 | string                                   | 列序号                  |
+| **className**         | 列样式类名                                                                 | string                                   | -                       |
+| **dataIndex**         | 列数据在数据项中对应的路径                                                 | string                                   | -                       |
+| **fixed**             | 固定列                                                                     | 'left' \| 'right' \|boolean              | -                       |
+| **align**             | 对齐方式                                                                   | 'left' \| 'center' \| 'right'            | 'left'                  |
+| **width**             | 列宽                                                                       | number \| string                         | -                       |
+| **title**             | 列标题                                                                     | React.ReactNode                          | -                       |
+| **ellipsis**          | 开启超出省略，（当设置 render 方法时，仅生效省略的样式，不会显示 Tooltip） | boolean                                  | false                   |
+| **info**              | 设置用于解释该列的文案                                                     | string                                   | -                       |
+| **sorter**            | 排序函数，设置此属性才开启排序功能                                         | (a: RecordType, b: RecordType) => number |                         |
+| **sortPriorityOrder** | 排序优先级                                                                 | React.ReactNode                          | -                       |
+| **sortDirections**    | 支持的排序方式                                                             | ascend\|descend[]                        | [ascend, descend, none] |
+| **defaultSortOrder**  | 默认排序顺序                                                               | ascend\|descend                          | -                       |
+| **filters**           | 表头的筛选菜单项                                                           | string[]                                 | []                      |
+| **onFilter**          | 自定义筛选规则                                                             | (record: RecordType) => boolean          | -                       |
+| **filterDropdown**    | 自定义筛选菜单，可以用来覆盖默认菜单(还未做)                               | React.ReactNode                          | -                       |
+| **render**            | 每一列的渲染函数                                                           | function(text, record, index) {}         | -                       |
+| **onHeaderCell**      | 设置头部单元格属性                                                         | function(column)                         | -                       |
 
 ### RowSelection
 
-| 参数                | 说明                               | 类型                                                            | 默认值 |
-| ------------------- | ---------------------------------- | --------------------------------------------------------------- | ------ |
-| **selectedRowKeys** | 设置选中的项，设置该项开启受控模式 | string[]                                                        | -      |
-| **columnWidth**     | 设置选择列宽                       | number \| string                                                | 48     |
-| **onChange**        | 选择项改变时触发的回调函数         | (selectedRowKeys: string[], selectedRows: RecordType[]) => void | -      |
-| **fixed**           | 固定选择列                         | 'left' \| 'right' \|boolean                                     | -      |
+| 参数                 | 说明                               | 类型                                                            | 默认值 |
+| -------------------- | ---------------------------------- | --------------------------------------------------------------- | ------ |
+| **selectedRowKeys**  | 设置选中的项，设置该项开启受控模式 | string[]                                                        | -      |
+| **columnWidth**      | 设置选择列宽                       | number \| string                                                | 48     |
+| **onChange**         | 选择项改变时触发的回调函数         | (selectedRowKeys: string[], selectedRows: RecordType[]) => void | -      |
+| **fixed**            | 固定选择列                         | 'left' \| 'right' \|boolean                                     | -      |
+| **getCheckboxProps** | 设置选择框的默认属性配置           | (record: RecordType) => CheckboxProps                           | -      |
 
 ### Pagination
 

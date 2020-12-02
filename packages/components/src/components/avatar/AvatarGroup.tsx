@@ -1,31 +1,30 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import _ from 'lodash';
 import Avatar from './Avatar';
-import { AvatarGroupProps, UserAvatarType } from './interface';
-import { ConfigContext } from '../config-provider';
+import { AvatarGroupProps, UserAvatarType } from './interfaces';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
-  const {
-    number = 5, users = [], className, placement = 'bottom',
-  } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('avatar');
+  const { number = 5, users = [], className, placement = 'bottom', style, displayTooltip = true } = props;
+  const prefixCls = usePrefixCls('avatar');
 
   let children = null;
-  const renderAvatarGroup = (users: UserAvatarType[]) => users.map((user, idx) => (
-    <Avatar key={idx} {...user} displayTooltip placement={placement}>
-      {user.name}
-    </Avatar>
-  ));
-  const renderAvatarRest = (users: UserAvatarType[]) => (
-    <Avatar className={`${prefixCls}-rest`} omit={false}>{`+${users.length}`}</Avatar>
+  const renderAvatarGroup = (sliceUsers: UserAvatarType[]) =>
+    sliceUsers.map((user) => (
+      <Avatar key={user.name} displayTooltip={displayTooltip} placement={placement} {...user}>
+        {user.name}
+      </Avatar>
+    ));
+  const renderAvatarRest = (restUsers: UserAvatarType[]) => (
+    <Avatar className={`${prefixCls}-rest`} omit={false}>{`+${restUsers.length}`}</Avatar>
   );
   const classString = classNames(className, `${prefixCls}-group`);
 
   if (users.length === 0) {
-    children = null;
-  } else if (users.length <= number) {
+    return null;
+  }
+  if (users.length <= number) {
     children = renderAvatarGroup(users);
   } else {
     const sliceUsers = _.slice(users, 0, number - 1);
@@ -38,6 +37,10 @@ const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
     );
   }
 
-  return <div className={classString}>{children}</div>;
+  return (
+    <div className={classString} style={style}>
+      {children}
+    </div>
+  );
 };
 export default AvatarGroup;

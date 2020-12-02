@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { IMenuTitle } from './interface';
-import MenuPrefixClsContext from './MenuContext';
+import { MenuContext } from './MenuContext';
 
 const MenuTitle: React.FC<IMenuTitle> = ({ icon, title }: IMenuTitle) => {
-  const prefixCls = useContext(MenuPrefixClsContext);
+  const { prefixCls } = useContext(MenuContext);
   return (
     <>
       {icon && <span className={`${prefixCls}__icon`}>{icon}</span>}
-      <span>{title}</span>
+      {icon ? <span>{title}</span> : title}
     </>
   );
 };

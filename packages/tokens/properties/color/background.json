@@ -65,7 +65,7 @@
         },
         "assist": {
           "normal": {
-            "value": "{palette.white.value}"
+            "value": "transparent"
           },
           "hover": {
             "value": "{palette.gray.3.value}"

@@ -1,8 +1,8 @@
-import React, { useContext, useRef } from 'react';
+import React from 'react';
 import { Close } from '@gio-design/icons';
 import classnames from 'classnames';
 import { TagProps } from './interface';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 export const isToggleClose = (closable = false, persistCloseIcon = false): boolean => closable && !persistCloseIcon;
 
@@ -10,27 +10,20 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
   const {
     children,
     type = 'normal',
-    size = 'medium',
+    size = 'middle',
     status,
     color,
     closable,
     onClose,
+    onClick,
     disabled,
     persistCloseIcon = true,
     className,
     customizePrefixCls,
-    ...restProps
+    style,
   } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefix = getPrefixCls('tag', customizePrefixCls);
-  const closeEl = useRef<HTMLSpanElement>(null);
+  const prefix = usePrefixCls('tag', customizePrefixCls);
 
-  const onCloseClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-    e.preventDefault();
-    if (closeEl.current?.contains(e.target as Node) && onClose) {
-      onClose(e);
-    }
-  };
   return (
     <span
       className={classnames(
@@ -44,15 +37,12 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
         classnames({ [`${prefix}-closable-disabled`]: disabled }),
         className
       )}
-      onClick={onCloseClick}
-      {...restProps}
+      aria-hidden="true"
+      onClick={onClick}
+      style={style}
     >
       <span className={`${prefix}-label`}>{children}</span>
-      {closable && !disabled ? (
-        <span ref={closeEl}>
-          <Close className={`${prefix}-closable-icon`} />
-        </span>
-      ) : null}
+      {closable && !disabled ? <Close className={`${prefix}-closable-icon`} onClick={onClose} /> : null}
     </span>
   );
 };

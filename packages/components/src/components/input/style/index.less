@@ -8,8 +8,7 @@
 
 .@{input-prefix-cls} {
   display: inline-block;
-  width: 300px;
-
+  width: 100%;
   &-textarea {
     height: 80px;
 
@@ -19,7 +18,9 @@
   }
 
   &-content {
+    display: block;
     width: 100%;
+    height: 100%;
     padding: 9px 16px;
     color: @palette-black-6;
     font-size: @size-font-14;
@@ -29,20 +30,12 @@
     outline: none;
     transition: all 0.3s ease-in-out;
 
-    &-medium {
-      height: @input-height-base;
-    }
-
-    &-large {
-      height: @input-height-lg;
-    }
-
-    &-small {
-      height: @input-height-sm;
-    }
-
     &-suffix {
       padding-right: 44px;
+    }
+
+    &-prefix {
+      padding-left: 50px;
     }
 
     &::placeholder {
@@ -68,24 +61,47 @@
 
   &-container {
     position: relative;
+    line-height: 22px;
+
+    &-small {
+      height: @input-height-sm;
+    }
+
+    &-middle {
+      height: @input-height-base;
+    }
+
+    &-large {
+      height: @input-height-lg;
+    }
 
     &-suffix {
-      position: absolute;
-      top: 8px;
-      right: 15px;
+      right: 16px;
+    }
 
+    &-prefix {
+      left: 16px;
+    }
+
+    &-suffix,
+    &-prefix {
+      position: absolute;
+      top: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
       &-iconGroup {
         display: flex;
         flex-direction: column;
 
         &-top {
           position: relative;
-          top: -2px;
+          top: 4px;
         }
 
         &-bottom {
           position: relative;
-          top: -8px;
+          top: -4px;
         }
       }
 

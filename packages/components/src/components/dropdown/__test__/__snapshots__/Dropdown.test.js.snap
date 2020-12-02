@@ -4,7 +4,7 @@ exports[`Testing dropdown should be stable 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-btn",
+      "class": "gio-btn gio-btn-primary",
       "style": "cursor:pointer",
       "type": "button",
     },

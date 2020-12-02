@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import Sortable from './Sortable';
 import { unionBy, noop } from 'lodash';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import Sortable from './Sortable';
 import SelectedItem from './Sortable/template';
 import './style/sort.less';
 
 const DragableList = ({
   dataSource,
   handleSort,
-  prefixCls = 'gio-list',
+  prefixCls: customPrefixCls,
   wrapStyle,
   width,
   height,
@@ -15,6 +16,7 @@ const DragableList = ({
   onRemove = noop,
   selected,
 }: any) => {
+  const prefixCls = usePrefixCls('list', customPrefixCls);
   const [data, setData] = useState(dataSource);
 
   const innerHandleSort = (steps: any) => {

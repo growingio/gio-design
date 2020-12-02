@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from '@gio-design/components/es/components/button';
-import '@gio-design/components/es/components/button/style/css.js';
+import '@gio-design/components/es/components/button/style/index.less';
 import { PlusCircleFilled } from '@gio-design/icons';
 import './index.less';
 
@@ -27,12 +27,12 @@ export default () => {
           <Button size="large">主要按钮</Button>
         </div>
         <div className="item">
-          <Button type="primary" icon={<PlusCircleFilled />} size="large" disabled={true}>
+          <Button type="primary" icon={<PlusCircleFilled />} size="large" disabled>
             禁用
           </Button>
         </div>
         <div className="item">
-          <Button type="primary" size="large" loading={true}>
+          <Button type="primary" size="large" loading>
             加载中
           </Button>
         </div>
@@ -52,12 +52,12 @@ export default () => {
           <Button type="primary">主要按钮</Button>
         </div>
         <div className="item">
-          <Button type="primary" disabled={true}>
+          <Button type="primary" disabled>
             禁用
           </Button>
         </div>
         <div className="item">
-          <Button type="primary" loading={true}>
+          <Button type="primary" loading>
             加载中
           </Button>
         </div>
@@ -79,12 +79,12 @@ export default () => {
           </Button>
         </div>
         <div className="item">
-          <Button type="primary" size="small" disabled={true}>
+          <Button type="primary" size="small" disabled>
             禁用
           </Button>
         </div>
         <div className="item">
-          <Button type="primary" size="small" loading={true}>
+          <Button type="primary" size="small" loading>
             加载中
           </Button>
         </div>

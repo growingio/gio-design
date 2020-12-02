@@ -1,14 +1,15 @@
-import React, { useContext, cloneElement } from 'react';
+import React, { cloneElement } from 'react';
+import { isFunction, isUndefined } from 'lodash';
 import Tooltip from '../tooltip';
 import { DropdownProps } from './interface';
-import { ConfigContext } from '../config-provider';
 import useControlledState from '../../utils/hooks/useControlledState';
-import { isFunction } from 'lodash';
 
 const Dropdown = (props: DropdownProps) => {
+  const placementList = ['top', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'];
   const {
     children,
-    prefixCls: customizePrefixCls,
+    prefixCls,
+    subPrefixCls = 'dropdown',
     placement = 'bottom',
     trigger = 'click',
     visible,
@@ -16,24 +17,24 @@ const Dropdown = (props: DropdownProps) => {
     overlay,
     ...rest
   } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('dropdown', customizePrefixCls);
   const [controlledVisible, setControlledVisible] = useControlledState(visible, false);
 
   const getOverlay = () => {
     const _overlay: React.ReactElement = isFunction(overlay) ? overlay() : overlay;
     const onOverlayClick = (e: React.MouseEvent) => {
       setControlledVisible(false, true);
+      onVisibleChange?.(false);
       _overlay.props.onClick?.(e);
     };
-    return cloneElement(_overlay, { onClick: onOverlayClick });
+    return isUndefined(visible) ? cloneElement(_overlay, { onClick: onOverlayClick }) : _overlay;
   };
 
   return (
     <Tooltip
       prefixCls={prefixCls}
+      subPrefixCls={subPrefixCls}
       trigger={trigger}
-      placement={placement}
+      placement={placementList.includes(placement) ? placement : 'bottom'}
       visible={controlledVisible}
       overlay={getOverlay()}
       onVisibleChange={(_visible) => {

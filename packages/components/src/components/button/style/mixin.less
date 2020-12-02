@@ -1,12 +1,3 @@
-// mixins for button
-// ------------------------
-@btn-height-base: 36px;
-@btn-height-lg: 40px;
-@btn-height-sm: 30px;
-@btn-square-size: 32px;
-@btn-square-size-lg: @btn-height-lg;
-@btn-square-size-sm: @btn-height-sm;
-
 .square(@size;) {
   width: @size;
   height: @size;
@@ -33,9 +24,6 @@
     }
     svg {
       color: @color-text-button-icon-disable !important;
-      path {
-        fill: @color-text-button-icon-disable !important;
-      }
     }
   }
 }
@@ -141,6 +129,7 @@
   }
   &[disabled] {
     cursor: not-allowed;
+    pointer-events: none;
     > * {
       pointer-events: none;
     }
@@ -157,9 +146,6 @@
   .button-variant-primary(@color-text-button-primary-normal; @color-background-button-primary-normal);
   svg {
     color: @color-text-button-primary-normal;
-    path {
-      fill: @color-text-button-primary-normal;
-    }
   }
 }
 // secondary button style
@@ -167,9 +153,6 @@
   .button-variant-other(@color-text-button-default-normal; @color-background-button-default-normal; @color-border-button-default-normal);
   svg {
     color: @color-text-button-default-normal;
-    path {
-      fill: @color-text-button-default-normal;
-    }
   }
 }
 // assist button style
@@ -177,9 +160,6 @@
   .button-variant-assist();
   svg {
     color: @color-text-button-assist-normal;
-    path {
-      fill: @color-text-button-assist-normal;
-    }
   }
 }
 
@@ -189,9 +169,6 @@
   .button-color(@color-text-button-normal; transparent; transparent);
   svg {
     color: @color-text-button-normal;
-    path {
-      fill: @color-text-button-normal;
-    }
   }
   box-shadow: none;
   &:hover {
@@ -200,9 +177,6 @@
     border-color: transparent;
     svg {
       color: @color-text-button-hover;
-      path {
-        fill: @color-text-button-hover;
-      }
     }
   }
 
@@ -212,9 +186,6 @@
     border-color: transparent;
     svg {
       color: @color-text-button-click;
-      path {
-        fill: @color-text-button-click;
-      }
     }
   }
 
@@ -227,6 +198,11 @@
   .button-size(@btn-square-size; 0; @size-font-16; @radius-border-small);
   & > * {
     font-size: @size-font-16;
+  }
+  &.@{btnClassName} {
+    svg {
+      .square(@btn-square-size - 16px);
+    }
   }
   &.@{btnClassName}-large {
     .square(@btn-square-size-lg);
@@ -246,6 +222,16 @@
     }
     svg {
       .square(@btn-square-size-sm - 16px) !important;
+    }
+  }
+  &.@{btnClassName}-mini {
+    .square(@btn-square-size-mini);
+    .button-size(@btn-square-size-mini; 0; @size-font-14; @radius-border-small);
+    & > * {
+      font-size: @size-font-14;
+    }
+    svg {
+      .square(@btn-square-size-mini - 10px) !important;
     }
   }
 }

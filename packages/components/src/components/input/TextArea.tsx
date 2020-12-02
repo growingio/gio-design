@@ -1,29 +1,65 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
-import { prefixCls } from './Input';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { TextAreaProps } from './interfaces';
 
 const TextArea: React.FC<TextAreaProps> = ({
+  value,
   disabled = false,
   resize = false,
+  autosize = false,
   placeholder = '',
-  inputStyle,
+  onChange,
+  style,
   wrapStyle,
-  forwardRef,
+  inputStyle,
+  forwardRef = React.createRef(),
+  className,
   ...rest
 }: TextAreaProps) => {
+  const prefixCls = usePrefixCls('input');
+  const wrapClass = classNames(className, prefixCls);
   const inputClass = classNames(`${prefixCls}-content`, `${prefixCls}-textarea`, {
     [`${prefixCls}-textarea-noresize`]: !resize,
   });
 
+  const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (typeof onChange === 'function') {
+      onChange(e);
+    }
+  };
+
+  useEffect(() => {
+    if (autosize) {
+      if (typeof forwardRef === 'object' && forwardRef !== null && forwardRef.current !== null) {
+        const ele = forwardRef.current;
+        ele.style.height = 'auto';
+        ele.style.height = `${ele.offsetHeight - ele.clientHeight + ele.scrollHeight}px`;
+      }
+    }
+  });
+
+  const outerStyle = style !== undefined ? style : wrapStyle;
+  const innerStyle = style !== undefined ? {} : inputStyle;
+  if (wrapStyle !== undefined || inputStyle !== undefined) {
+    console.warn(
+      'The latest version of Input only accept "style" for inline-style setting, ' +
+        'please fix your code because the deprecated parameter "wrapStyle" and "inputStyle" ' +
+        'will be removed in the future version'
+    );
+  }
+
   return (
-    <div className={prefixCls} style={wrapStyle}>
+    <div className={wrapClass} style={outerStyle}>
       <textarea
+        value={value ?? ''}
+        onChange={handleOnChange}
         className={inputClass}
         disabled={disabled}
         placeholder={placeholder}
-        style={inputStyle}
+        style={innerStyle}
         ref={forwardRef}
+        // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       />
     </div>

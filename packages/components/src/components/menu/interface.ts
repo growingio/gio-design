@@ -29,18 +29,29 @@ type TOmitRcMenuProps =
 
 export type TMenuMode = 'vertical' | 'horizontal';
 
+export type TRcMode = 'inline' | 'horizontal';
+
 export interface IMenuTitle {
   icon?: React.ReactNode | ((props: any) => React.ReactNode);
   title?: React.ReactNode;
 }
 
 export interface IMenuItemProps extends MenuItemProps {
+  /**
+   * 放置于 `children` 前的 `icon`
+   */
   icon?: React.ReactNode | ((props: any) => React.ReactNode);
 }
 
 export interface ISubMenuProps extends SubMenuProps {
-  //  rc 中 key 为可选，gio-design 中限制为必填
+  /**
+   *  rc 中 key 为可选，gio-design 中限制为必填
+   * 「必填」`MenuItem` 的唯一 `key`
+   */
   key: string;
+  /**
+   * 放置于 `SubMenu` `title` 前的 `icon`
+   */
   icon?: React.ReactNode | ((props: any) => React.ReactNode);
 }
 
@@ -49,7 +60,20 @@ export interface IMenuItemGroupProps extends MenuItemGroupProps {
 }
 
 export interface IMenuProps extends Omit<MenuProps, TOmitRcMenuProps> {
+  /**
+   * Menu 的方向
+   */
   mode?: TMenuMode;
+  /**
+   * selectedKey
+   */
   selectedKey?: string;
+  /**
+   * 默认选中的 MenuItem
+   */
   defaultSelectedKey?: string;
+  /**
+   * 垂直方向时 SubMenu 下 MenuItem 缩进距离
+   */
+  verticalIndent?: number;
 }

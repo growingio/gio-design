@@ -6,10 +6,10 @@ const Number: React.FC<ISignNumberProps> = ({
   prefixCls,
   className,
   style,
-  count = 0,
+  count,
   showZero,
   visible,
-  magnitude = 100,
+  magnitude,
 }: ISignNumberProps) => {
   const displayCount = count >= magnitude ? `${magnitude - 1}+` : count;
   const isZero = count === 0 || !count;

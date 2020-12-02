@@ -1,17 +1,6 @@
 import React from 'react';
 import Tag from '../index';
-import {
-  isProrupt,
-  isLarge,
-  isPredifinedColor,
-  isPredifinedStatus,
-  isToggleClose,
-  getTypeClass,
-  getStatusClass,
-  getColorClass,
-  getDeleteToggleClass,
-  getDisabledClass,
-} from '../Tag';
+import { isToggleClose } from '../Tag';
 import '@gio-design/components/es/components/Tag/style/index.css';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
@@ -22,14 +11,24 @@ describe('<Tag />', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders <Tag /> components', () => {
+    const tree = renderer.create(<Tag type="prorupt" size="small" />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders <Tag /> components', () => {
+    const tree = renderer.create(<Tag type="normal" size="large" />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should have "gio-tag" class', () => {
     const tree = shallow(<Tag />);
     expect(tree.hasClass('gio-tag')).toBe(true);
   });
 
   it('should have "test-custom-tag" class', () => {
-    const tree = shallow(<Tag customizePrefixCls="test-custom-tag" />);
-    expect(tree.hasClass('test-custom-tag')).toBe(true);
+    const tree = shallow(<Tag customizePrefixCls="custom-prefix" />);
+    expect(tree.hasClass('custom-prefix-tag')).toBe(true);
   });
 
   it('should have "gio-tag-closable-toggle', () => {
@@ -54,5 +53,6 @@ describe('Tag condition functions', () => {
     expect(isToggleClose(true, false)).toBe(true);
     expect(isToggleClose(false, true)).toBe(false);
     expect(isToggleClose(false, false)).toBe(false);
+    expect(isToggleClose()).toBe(false);
   });
 });

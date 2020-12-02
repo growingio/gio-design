@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import RcDialog from 'rc-dialog';
 import { Close } from '@gio-design/icons';
 import { ButtonProps } from '../button';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { IModalProps } from './interface';
 import ModalPrefixClsContext from './ModalContext';
 import Title from './Title';
@@ -29,8 +29,7 @@ const Modal: React.FC<IModalProps> = ({
   pending,
   ...restProps
 }: IModalProps) => {
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefix = getPrefixCls('modal', customPrefixCls);
+  const prefix = usePrefixCls('modal', customPrefixCls);
   const modalCls = classnames(className, {
     [`${prefix}--small`]: size === 'small',
     [`${prefix}--middle`]: size === 'middle',
@@ -59,9 +58,14 @@ const Modal: React.FC<IModalProps> = ({
   const handleOk = async (e: React.MouseEvent<HTMLElement>) => {
     if (onOk && typeof onOk === 'function') {
       e.persist();
-      await Promise.resolve(onOk(e));
-      if (closeAfterOk) {
-        onClose?.(e);
+      try {
+        await Promise.resolve(onOk(e));
+        if (closeAfterOk) {
+          onClose?.(e);
+        }
+      } catch (error) {
+        const err = error ?? 'onOk 执行 reject 或抛出错误。';
+        console.error(err);
       }
     }
   };
@@ -84,8 +88,9 @@ const Modal: React.FC<IModalProps> = ({
         prefixCls={prefix}
         className={modalCls}
         wrapClassName={wrapperCls}
+        closable={title !== false}
         closeIcon={<Close className={closeCls} />}
-        title={<Title onBack={onBack} useBack={useBack} title={title} />}
+        title={title !== false && <Title onBack={onBack} useBack={useBack} title={title} />}
         footer={
           useFooter && (
             <Footer

@@ -5,16 +5,42 @@
 @import './decadePanel.less';
 
 @date-picker-prefix-cls: ~'@{component-prefix}-date-picker';
+@input-prefix-cls: ~'@{component-prefix}-input';
+
+.@{date-picker-prefix-cls}-wrapper {
+  position: absolute;
+  top: 45px;
+  z-index: @zindex-dropdown;
+}
+.@{date-picker-prefix-cls}-wrap {
+  .@{input-prefix-cls} {
+    width: 253px;
+    height: 40px;
+  }
+}
+.@{date-picker-prefix-cls}-wrap-range {
+  width: fit-content;
+}
 
 .@{date-picker-prefix-cls}-range-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 252px;
   border: 1px solid @color-border-input-normal;
-  border-radius: 0.25rem;
+  border-radius: 4px;
   transition: all 0.3s ease-in-out;
 
-  .gio-input-content {
+  .@{input-prefix-cls} {
+    width: 118px;
+    height: 38px;
+  }
+
+  .@{input-prefix-cls}-content {
     border: none;
     box-shadow: none;
   }
+
   span.@{date-picker-prefix-cls}-split {
     color: rgba(0, 0, 0, 0.2);
   }
@@ -31,6 +57,7 @@
 .@{date-picker-prefix-cls} {
   position: relative;
   top: 45px;
+  box-sizing: border-box;
   width: 280px;
   font-size: 14px;
   line-height: 1.5;
@@ -57,6 +84,10 @@
 
   .@{date-picker-prefix-cls}-input:focus {
     outline-color: @color-background-date-picker-active;
+  }
+
+  .@{date-picker-prefix-cls}-date-panel:focus {
+    outline: none;
   }
 
   &-week-number {
@@ -99,10 +130,11 @@
       height: 24px;
 
       &::after {
-        display: inline-block;
-        width: 5px;
-        height: 5px;
-        content: url('../../../assets/images/previousMonth.svg');
+        //display: inline-block;
+        //width: 5px;
+        //height: 5px;
+        //content: url('../../../assets/images/previousMonth.svg');
+        content: '‹';
       }
     }
 
@@ -114,10 +146,11 @@
       height: 24px;
 
       &::after {
-        display: inline-block;
-        width: 5px;
-        height: 5px;
-        content: url('../../../assets/images/nextMonth.svg');
+        //display: inline-block;
+        //width: 5px;
+        //height: 5px;
+        //content: url('../../../assets/images/nextMonth.svg');
+        content: '›';
       }
     }
   }
@@ -138,6 +171,7 @@
       background-color: @color-background-date-picker-hover;
       cursor: pointer;
     }
+
     &.@{date-picker-prefix-cls}-time-status:hover {
       color: @color-text-date-picker-normal;
       cursor: pointer;
@@ -171,10 +205,11 @@
     right: 0;
 
     &::after {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      content: url('../../../assets/images/nextYear.svg');
+      //display: inline-block;
+      //width: 8px;
+      //height: 8px;
+      //content: url('../../../assets/images/nextYear.svg');
+      content: '»';
     }
   }
 
@@ -185,10 +220,11 @@
     height: 24px;
 
     &::after {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      content: url('../../../assets/images/previousYear.svg');
+      //display: inline-block;
+      //width: 8px;
+      //height: 8px;
+      //content: url('../../../assets/images/previousYear.svg');
+      content: '«';
     }
   }
 
@@ -196,7 +232,7 @@
     height: 240px;
     padding: 12px 13px;
     border: 1px solid @color-background-date-picker-hover;
-    border-radius: 0.25rem;
+    border-radius: 4px;
   }
 
   table {
@@ -223,6 +259,7 @@
     color: #313e75;
     line-height: 24px;
     text-align: center;
+
     .@{date-picker-prefix-cls}-column-header-inner {
       display: block;
       font-weight: normal;
@@ -300,6 +337,7 @@
   &-selected-date &-date {
     color: @palette-white;
     background: @color-background-date-picker-active;
+
     &:hover {
       background: @color-background-date-picker-active;
     }
@@ -336,6 +374,7 @@
 
     &-show-ok {
       text-align: right;
+
       .@{date-picker-prefix-cls} {
         &-footer-btn {
           padding-right: 12px;
@@ -345,12 +384,17 @@
           margin-left: 0;
           padding: 0 12px;
         }
+
         &-today-btn {
           float: left;
           padding-left: 12px;
         }
       }
     }
+  }
+
+  &-extra-footer {
+    text-align: left;
   }
 
   &-footer-btn {
@@ -384,6 +428,7 @@
 
     .@{date-picker-prefix-cls}-time-picker {
       top: 69px;
+
       &-panel {
         &-select {
           width: 77px;
@@ -394,6 +439,7 @@
 
   &-left {
     float: left;
+
     .@{date-picker-prefix-cls}-time-picker-panel {
       &-select:last-child {
         border-right: 1px solid @color-background-date-picker-hover;
@@ -403,6 +449,7 @@
 
   &-right {
     float: right;
+
     .@{date-picker-prefix-cls}-time-picker-panel {
       left: 21px;
 
@@ -420,6 +467,7 @@
     line-height: @input-box-height;
     text-align: center;
   }
+
   .@{date-picker-prefix-cls}-date-panel::after {
     display: block;
     clear: both;
@@ -432,6 +480,7 @@
     display: none;
     height: @input-box-height;
   }
+
   .@{date-picker-prefix-cls}-input {
     width: 253px;
     height: 58px;
@@ -444,8 +493,10 @@
     .@{date-picker-prefix-cls}-range {
       &-part {
         width: 286px;
+
         .@{date-picker-prefix-cls}-time-picker {
           top: 69px;
+
           &-panel {
             &-select {
               width: 89px;
@@ -453,6 +504,7 @@
           }
         }
       }
+
       &-right {
         .@{date-picker-prefix-cls}-time-picker-panel {
           left: 36px;
@@ -464,11 +516,13 @@
   .@{date-picker-prefix-cls}-year-panel,
   .@{date-picker-prefix-cls}-month-panel,
   .@{date-picker-prefix-cls}-decade-panel {
-    top: @input-box-height;
+    top: 53px;
   }
+
   .@{date-picker-prefix-cls}-month-panel .@{date-picker-prefix-cls}-year-panel {
     top: 0;
   }
+
   .@{date-picker-prefix-cls}-decade-panel-table,
   .@{date-picker-prefix-cls}-year-panel-table,
   .@{date-picker-prefix-cls}-month-panel-table {

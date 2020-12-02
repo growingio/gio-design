@@ -1,9 +1,10 @@
-import React, { useContext, useMemo, useState } from 'react';
+/* eslint-disable no-underscore-dangle */
+import React, { useMemo, useState } from 'react';
 import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
 import { isNil } from 'lodash';
-import { ConfigContext } from '../config-provider';
-import TabNav from '../tabnav';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import TabNav from '../tab-nav';
 import TabPane from './TabPane';
 import { TabProps, TabPaneProps } from './interface';
 
@@ -20,9 +21,8 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
     onTabClick,
     onChange,
   } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
   const [localActiveKey, setLocalActiveKey] = useState<string | number>(activeKey || defaultActiveKey);
-  const prefixCls = getPrefixCls('tabs', customizePrefixCls);
+  const prefixCls = usePrefixCls('tabs', customizePrefixCls);
   const classString = classNames(prefixCls, className, {
     [`${prefixCls}-${type}`]: true,
     [`${prefixCls}-sm`]: size === 'small',
@@ -34,13 +34,11 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
     const _tabItem: JSX.Element[] = [];
     const _tabPane = toArray(children).map((node: React.ReactElement<TabPaneProps>) => {
       if (React.isValidElement(node) && node.type === TabPane) {
-        const {
-          tab, className: paneClassName, disabled, style: paneStyle, ...restProps
-        } = node.props;
+        const { tab, className: paneClassName, disabled, style: paneStyle, ...restProps } = node.props;
         _tabItem.push(
           <TabNav.Item key={node.key} disabled={disabled}>
             {tab}
-          </TabNav.Item>,
+          </TabNav.Item>
         );
         return (
           <TabPane
@@ -57,20 +55,20 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
       return null;
     });
     return [_tabItem, _tabPane];
-  }, [children, localActiveKey]);
+  }, [children, localActiveKey, prefixCls]);
 
   const tabNavKeys = useMemo(() => tabNav.map((item) => item.key!), [tabNav]);
   useMemo(() => {
     if (!tabNavKeys.includes(localActiveKey)) {
       setLocalActiveKey(tabNavKeys[0]);
     }
-  }, []);
+  }, [localActiveKey, tabNavKeys]);
 
   useMemo(() => {
     if (!isNil(activeKey) && tabNavKeys.includes(activeKey)) {
       setLocalActiveKey(activeKey);
     }
-  }, [activeKey]);
+  }, [activeKey, tabNavKeys]);
 
   return (
     <div className={classString} ref={ref} style={style}>

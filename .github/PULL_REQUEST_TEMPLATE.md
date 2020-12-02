@@ -1,31 +1,13 @@
-<!--
-First of all, thank you for your contribution! 😄
+## @gio-design/package@version
 
-New feature please send pull request to feature branch, and rest to master branch.
-Pull request will be merged after one of collaborators approve.
-Please makes sure that these form are filled before submitting your pull request, thank you!
--->
+- 组件 1
+  - 某某
+  - 某某
 
-## Related issue link
+---
 
-<!--
-Describe the source of requirement, like related issue link.
--->
+## @gio-design/package@version
 
-## Changelog
-
-<!--
-Describe changes from userside, and list all potential break changes or other risks.
---->
-
-| Language   | Changelog |
-| ---------- | --------- |
-| 🇺🇸 English |           |
-| 🇨🇳 Chinese |           |
-
-## Self check
-
-- [ ] Doc is updated/provided or not needed
-- [ ] Demo is updated/provided or not needed
-- [ ] TypeScript definition is updated/provided or not needed
-- [ ] Changelog is provided or not needed
+- Component 1
+  - xxxxx
+  - xxxxx

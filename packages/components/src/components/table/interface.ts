@@ -1,5 +1,6 @@
 import React from 'react';
 import { PaginationProps } from '../pagination/interface';
+import { CheckboxProps } from '../checkbox/interface';
 
 export type AlignType = 'left' | 'center' | 'right';
 export type SortOrder = 'descend' | 'ascend' | null;
@@ -37,11 +38,12 @@ export interface ColumnGroupType<RecordType> extends Omit<ColumnType<RecordType>
 
 export type ColumnsType<RecordType> = (ColumnGroupType<RecordType> | ColumnType<RecordType>)[];
 
-interface InnerColumnType<RecordType> extends ColumnType<RecordType> {
+export interface InnerColumnType<RecordType> extends ColumnType<RecordType> {
   key: string;
 }
-interface InnerColumnGroupType<RecordType> extends ColumnGroupType<RecordType> {
+export interface InnerColumnGroupType<RecordType> extends ColumnGroupType<RecordType> {
   key: string;
+  children: InnerColumnsType<RecordType>;
 }
 
 export type InnerColumnsType<RecordType> = (InnerColumnType<RecordType> | InnerColumnGroupType<RecordType>)[];
@@ -74,7 +76,7 @@ export interface TitleProps<RecordType> {
   column: ColumnType<RecordType>;
   updateSorterStates: (sortState: SortState<RecordType>) => void;
   updateFilterStates: (filterState: FilterState<RecordType>) => void;
-  onTriggerStateUpdate: () => void;
+  onTriggerStateUpdate: (reset?: boolean) => void;
 }
 
 export interface RowSelection<RecordType> {
@@ -82,6 +84,7 @@ export interface RowSelection<RecordType> {
   columnWidth?: number | string;
   fixed?: 'left' | 'right' | boolean;
   onChange?: (selectedRowKeys: string[], selectedRows: RecordType[]) => void;
+  getCheckboxProps?: (record: RecordType) => CheckboxProps;
 }
 
 export interface TableProps<RecordType> {

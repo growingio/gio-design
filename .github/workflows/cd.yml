@@ -14,7 +14,7 @@ jobs:
         with:
           fetch-depth: '1'
       - name: Setup Node.js
-        uses: actions/setup-node@v2.1.1
+        uses: actions/setup-node@v2.1.2
         with:
           node-version: 12.x
       - name: Cache Node.js modules
@@ -37,7 +37,7 @@ jobs:
         with:
           fetch-depth: '1'
       - name: Setup Node.js
-        uses: actions/setup-node@v2.1.1
+        uses: actions/setup-node@v2.1.2
         with:
           node-version: 12.x
       - name: Restore Node.js modules
@@ -59,6 +59,22 @@ jobs:
           key: packages-${{ github.sha }}
       - name: Build packages
         run: yarn build
+  release:
+    name: Create release
+    if: ${{ startsWith(github.event.head_commit.message, 'docs(release)') }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: gio-design@${{ github.ref }}
+          body: ${{ github.event.head_commit.message }}
+          draft: true
+          prerelease: false
   other:
     name: Upload test coverage and build website
     needs: build
@@ -69,7 +85,7 @@ jobs:
         with:
           fetch-depth: '1'
       - name: Setup Node.js
-        uses: actions/setup-node@v2.1.1
+        uses: actions/setup-node@v2.1.2
         with:
           node-version: 12.x
       - name: Restore Node.js modules
@@ -121,18 +137,7 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      - name: Sending deploy succeeded message
-        uses: x-actions/dingtalk@master
-        env:
-          DINGTALK_ACCESS_TOKEN: ${{ secrets.DINGTALK_ACCESS_TOKEN }}
-          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
-          MSGTYPE: markdown
-          TITLE: GrowingIO Design deploy succeeded
-          TEXT: |
-            ## GrowingIO Design deploy succeeded
-            ${{ github.event.head_commit.message }}
-            - [GrowingIO Design](https://growingio.design)
-            - [GrowingIO Design on GitHub Pages](https://mirror.growingio.design)
+
   deploy_github:
     name: Deploying website to GitHub Pages
     needs: other

@@ -61,10 +61,11 @@
   line-height: 24px;
   user-select: none;
   &::after {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    content: url('../../../assets/images/nextYear.svg');
+    //display: inline-block;
+    //width: 8px;
+    //height: 8px;
+    //content: url('../../../assets/images/nextYear.svg');
+    content: '«';
   }
   &:hover {
     color: @color-text-date-picker-normal;
@@ -83,10 +84,11 @@
   user-select: none;
 
   &::after {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    content: url('../../../assets/images/previousYear.svg');
+    //display: inline-block;
+    //width: 8px;
+    //height: 8px;
+    //content: url('../../../assets/images/previousYear.svg');
+    content: '»';
   }
   &:hover {
     color: @color-text-date-picker-normal;
@@ -114,8 +116,7 @@
 }
 
 .@{date-picker-prefix-cls}-year-panel-footer {
-  line-height: 38px;
-  border-top: 1px solid @color-background-date-picker-hover;
+  display: none;
 }
 
 .@{date-picker-prefix-cls}-year-panel-table {

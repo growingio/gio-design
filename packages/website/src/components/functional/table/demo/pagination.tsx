@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from '@gio-design/components';
 import '@gio-design/components/es/components/table/style/index.css';
 
-const dataSource = Array.from({ length: 1000 }, (_, key) => ({ key, a: key, b: key, c: key, d: key }));
+const dataSource = Array.from({ length: 1000 }, (_, key) => ({ a: key, b: key, c: key, d: key }));
 
 const columns = [
   {
@@ -36,10 +36,23 @@ export default () => (
   <Table
     dataSource={dataSource}
     columns={columns}
+    rowKey={(record) => record.a.toString()}
+    onRow={(record) => ({
+      onClick: () => {
+        // Click Checkbox will not be called
+        // eslint-disable-next-line no-console
+        console.log('on row click');
+      },
+    })}
     onChange={(p, s, f) => {
+      // eslint-disable-next-line no-console
       console.log(p, s, f);
     }}
     showIndex
-    rowSelection={{}}
+    rowSelection={{
+      getCheckboxProps: (record) => ({
+        disabled: record.a === 1,
+      }),
+    }}
   />
 );

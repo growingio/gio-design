@@ -72,10 +72,11 @@
   }
 
   &::after {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    content: url('../../../assets/images/nextYear.svg');
+    //display: inline-block;
+    //width: 8px;
+    //height: 8px;
+    //content: url('../../../assets/images/nextYear.svg');
+    content: '»';
   }
 }
 
@@ -95,10 +96,11 @@
   }
 
   &::after {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    content: url('../../../assets/images/previousYear.svg');
+    //display: inline-block;
+    //width: 8px;
+    //height: 8px;
+    //content: url('../../../assets/images/previousYear.svg');
+    content: '«';
   }
 }
 
@@ -122,8 +124,7 @@
 }
 
 .@{date-picker-prefix-cls}-decade-panel-footer {
-  line-height: 38px;
-  border-top: 1px solid @color-background-date-picker-hover;
+  display: none;
 }
 
 .@{date-picker-prefix-cls}-decade-panel-table {

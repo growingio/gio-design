@@ -1,53 +1,69 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/Picker';
 import RcRangeCalendar from 'rc-calendar/lib/RangeCalendar';
 import classNames from 'classnames';
 import moment, { Moment } from 'moment';
 import { debounce } from 'lodash';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Button from '../button';
 import Input from '../input';
 import { DateRangePickerProps } from './interface';
 
 const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerProps) => {
-  const { prefixCls: customizePrefixCls, format = 'YYYY/MM/DD', value, defaultValue, showFooter } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('date-picker', customizePrefixCls);
+  const { prefixCls: customizePrefixCls, format = 'YYYY/MM/DD', value, defaultValue, showFooter, disabledDate } = props;
+  const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
 
   const calendarContainerRef = useRef(null);
+  const toggleContainer = useRef(null);
   const [open, setOpen] = useState(false);
   const [timeRange, setTimeRange] = useState(value);
   const [leftInputTimeRange, setLeftInputTimeRange] = useState('');
   const [rightInputTimeRange, setRightInputTimeRange] = useState('');
 
-  const onSelect = (value: Array<Moment>): void => {
+  useEffect(() => {
     setTimeRange(value);
-    // props?.onSelect(value);
+  }, [value]);
+
+  const handleBlur = (event: any) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if(open && !toggleContainer.current.contains(event.target)){
+      onCancel();
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('click',handleBlur);
+  })
+
+  const onSelect = (values: Array<Moment>): void => {
+    setTimeRange(values);
+    props.onSelect?.(values);
     !showFooter && setOpen(false);
   };
 
-  const onChange = (value: Array<Moment>): void => {
-    setTimeRange(value);
+  const onChange = (values: Array<Moment>): void => {
+    setTimeRange(values);
   };
 
-  const onPanelChange = (value: Array<Moment>): void => {
-    setTimeRange(value);
+  const onPanelChange = (values: Array<Moment>): void => {
+    setTimeRange(values);
   };
 
   const debounceLeftChange = debounce((e: string): void => {
-    const value = moment(e, props.format);
-    if (value.isValid() && value.isBefore(timeRange[1])) {
-      setTimeRange([value, timeRange[1]]);
+    const values = moment(e, props.format);
+    if (values.isValid() && values.isBefore(timeRange[1])) {
+      setTimeRange([values, timeRange[1]]);
     } else {
       setTimeRange(timeRange);
     }
   }, 1000);
 
   const debounceRightChange = debounce((e: string): void => {
-    const value = moment(e, props.format);
-    if (value.isValid() && value.isAfter(timeRange[0])) {
-      setTimeRange([timeRange[0], value]);
+    const values = moment(e, props.format);
+    if (values.isValid() && values.isAfter(timeRange[0])) {
+      setTimeRange([timeRange[0], values]);
     } else {
       setTimeRange(timeRange);
     }
@@ -74,7 +90,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     setTimeRange(timeRange);
     setLeftInputTimeRange('');
     setRightInputTimeRange('');
-    props.onChange(timeRange);
+    props.onChange?.(timeRange);
   };
 
   const onCancel = () => {
@@ -82,11 +98,14 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     setTimeRange(value);
     setLeftInputTimeRange('');
     setRightInputTimeRange('');
-    props.onChange(value);
+    props.onChange?.(value);
   };
 
   const renderFooter = () => (
     <>
+      {props.renderExtraFooter && (
+        <div className={classNames(`${prefixCls}-extra-footer`)}>{props.renderExtraFooter()}</div>
+      )}
       <Button onClick={onCancel} type="secondary" size="middle" style={{ margin: ' 0 12px 0 0 ' }}>
         取消
       </Button>
@@ -103,7 +122,8 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
       locale={zhCN}
       format={format}
       defaultValue={defaultValue}
-      value={timeRange}
+      disabledDate={disabledDate}
+      // value={timeRange}
       onSelect={onSelect}
       onPanelChange={onPanelChange}
       showToday={false}
@@ -116,9 +136,8 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   );
 
   return (
-    <div className={classNames('')}>
+    <div className={classNames(`${prefixCls}-wrap-range`)} ref={toggleContainer}>
       <RcDatePicker
-        style={{ zIndex: 1001 }}
         animation="slide-up"
         calendar={calendar}
         value={timeRange}
@@ -127,27 +146,22 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
         getCalendarContainer={() => calendarContainerRef.current}
         open={open}
       >
-        {({ value }: { value: Array<Moment> }) => (
-          <div
-            className={classNames(`${prefixCls}-range-input`)}
-            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '252px' }}
-          >
+        {({ value: _value }: { value: Array<Moment> }) => (
+          <div className={classNames(`${prefixCls}-range-input`)}>
             <Input
               placeholder="please select"
               onChange={handleLeftInputChange}
-              value={leftInputTimeRange || `${formatDate(value[0])}`}
+              value={leftInputTimeRange || `${formatDate(_value[0])}`}
               onClick={() => setOpen(true)}
-              style={{ width: '118px', height: '38px', position: 'relative', zIndex: Number(1002) }}
             />
             <span className={`${prefixCls}-split`}>—</span>
             <Input
               placeholder="please select"
               onChange={handleRightInputChange}
-              value={rightInputTimeRange || `${formatDate(value[1])}`}
+              value={rightInputTimeRange || `${formatDate(_value[1])}`}
               onClick={() => setOpen(true)}
-              style={{ width: '118px', height: '38px', position: 'relative', zIndex: Number(1002) }}
             />
-            <div ref={calendarContainerRef} />
+            <div ref={calendarContainerRef} className={classNames(`${prefixCls}-wrapper`)} />
           </div>
         )}
       </RcDatePicker>

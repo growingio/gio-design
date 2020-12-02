@@ -28,7 +28,7 @@ group:
 | 参数             | 说明                      | 类型                                                          | 默认值   |
 | ---------------- | ------------------------- | ------------------------------------------------------------- | -------- |
 | type             | 类型                      | `string` : `normal`, `prorupt`                                | `normal` |
-| size             | 大小                      | `string` : `small`, `medium`, `large`                         | `large`  |
+| size             | 大小                      | `string` : `small`, `middle`, `large`                         | `large`  |
 | status           | 状态                      | `string` : `success`, `warning`, `error`， `offline`, `draft` | -        |
 | color            | 预定义的颜色搭配          | `string` : `beta`, `new`, `grayscale`                         | -        |
 | disabled         | 失效                      | `boolean`                                                     | false    |

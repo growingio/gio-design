@@ -9,7 +9,7 @@ const options = [
 ];
 
 const WrapperStyle = {
-  padding: '0 8px 10px',
+  // padding: '0 8px 10px',
   display: 'inline-block',
   borderRadius: 6,
   backgroundColor: '#FFFFFF',
@@ -25,12 +25,11 @@ export default () => (
     <div style={WrapperStyle}>
       <List
         dataSource={options}
-        height={264}
         width={170}
-        isMultiple={true}
+        isMultiple
         value={['a', 'c']}
-        onSelect={console.log.bind(null, 'onSelect')}
-        onDeselect={console.log.bind(null, 'onDeselect')}
+        onSelect={() => console.log.bind(null, 'onSelect')}
+        onDeselect={() => console.log.bind(null, 'onDeselect')}
         onChange={console.log}
       />
     </div>

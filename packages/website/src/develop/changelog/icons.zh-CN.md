@@ -9,6 +9,48 @@ nav:
 
 # @gio-design/icons 更新日志
 
+## 20.11.0
+
+- icons
+  - 修改模板 color 属性改为 style color.[#490](https://github.com/growingio/gio-design/pull/490)
+
+## 20.10.5
+
+- 🆕 新增[#349](https://github.com/growingio/gio-design/pull/349)
+
+  - `CopyOutlined`
+  - `DownloadOutlined`
+  - `InformationCircleOutlined`
+  - `SequenceOutlined`
+  - `ShareOutlined`
+
+## 20.10.4
+
+- 🆕 新增 [#319](https://github.com/growingio/gio-design/pull/319)
+
+  - `EventOutlined`
+  - `FileOutlined`
+  - `RefreshOutlined`
+  - `TagOutlined`
+  - `TimeOutlined`
+
+- 修改 [#319](https://github.com/growingio/gio-design/pull/319)
+
+  - `UserOutlined`
+
+## 20.10.2
+
+- 🆕 新增 `StopWatchOutlined` [#292](https://github.com/growingio/gio-design/pull/292)
+
+## 20.9.4
+
+- 🆕 新增 `CleanOutlined`、`DownOutlined`、`EnlargeOutlined`、`FullScreenOutlined`、`LocationRecoveryOutlined`、`MapChartOutlined`、`MessageFilled`、`PopupWindowFilled`、`PushMsgFilled`、`QuitOutlined`、`ShrinkOutlined`、`StartFilled`、`UpOutlined`、`UserFilled`、`UserOutlined` 图标。[#281](https://github.com/growingio/gio-design/pull/281)
+- 📛 `Delete`、`Upload` 图标重命名为 `DeleteOutlined`、`UploadOutlined`。 [#281](https://github.com/growingio/gio-design/pull/281)
+
+## 20.9.3
+
+- 🆕 新增`BoxFilled`、 `EditOutlined`、 `ExplainOutlined`、`Filter2Outlined`、 `LockOutlined`、 `UnlockOutlined` 图标。 [#265](https://github.com/growingio/gio-design/pull/265)
+
 ## 20.9.1
 
 - 📛 `View`、`Unview` 图标重名为 `ViewOutlined`、`unviewOutlined`，新增 `SearchOutlined` 图标。[#153](https://github.com/growingio/gio-design/pull/153)

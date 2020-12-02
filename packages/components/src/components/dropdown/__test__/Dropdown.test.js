@@ -1,16 +1,12 @@
 import React from 'react';
+import { mount, render } from 'enzyme';
 import Dropdown from '../index';
 import Button from '../../button';
-import { act } from 'react-dom/test-utils';
-import { mount, render } from 'enzyme';
-
-async function waitForComponentToPaint(wrapper, amount = 500) {
-  await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
-}
+import { waitForComponentToPaint } from '../../../utils/test';
 
 describe('Testing dropdown', () => {
   const getDropdown = () => (
-    <Dropdown overlay={<div>Dropdown 内容主体</div>}>
+    <Dropdown overlay={<div id="overlay-content">Dropdown 内容主体</div>}>
       <Button>Test</Button>
     </Dropdown>
   );
@@ -30,15 +26,29 @@ describe('Testing dropdown', () => {
     }).not.toThrow();
   });
 
-  it('should be render rightly', (done) => {
+  it('should be render rightly', async () => {
     const wrapper = mount(getDropdown());
     wrapper.setProps({ trigger: 'click' });
     wrapper.setProps({ placement: 'topLeft' });
     wrapper.find('button').at(0).simulate('click');
     expect(wrapper.exists('.gio-dropdown-inner')).toBe(true);
-    waitForComponentToPaint(wrapper).then(() => {
-      expect(wrapper.exists('.gio-dropdown-placement-topLeft')).toBe(true);
-      done();
-    });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.exists('.gio-dropdown-placement-topLeft')).toBe(true);
+  });
+
+  it('will be close after click without visible', () => {
+    const wrapper = mount(getDropdown());
+    wrapper.setProps({ destroyTooltipOnHide: true });
+    wrapper.find('button').at(0).simulate('click');
+    wrapper.find('#overlay-content').simulate('click');
+    expect(wrapper.exists('.gio-dropdown-inner')).toBe(false);
+  });
+
+  it('will not be close after click with visible', async () => {
+    const wrapper = mount(getDropdown());
+    wrapper.setProps({ destroyTooltipOnHide: true, visible: true });
+    await waitForComponentToPaint(wrapper);
+    wrapper.find('#overlay-content').simulate('click');
+    expect(wrapper.exists('.gio-dropdown-inner')).toBe(true);
   });
 });

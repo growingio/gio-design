@@ -1,4 +1,5 @@
 import React from 'react';
+import { withConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import SelectList from './list';
 import { SelectCoreProps } from './interface';
 
@@ -9,49 +10,64 @@ interface State {
   stateChanged: boolean;
 }
 
-class SelectCore extends React.Component<SelectCoreProps, State> {
-  public static defaultProps: Partial<SelectCoreProps> = {
+class SelectCore extends React.Component<SelectCoreProps & ConfigConsumerProps, State> {
+  public static defaultProps: Partial<SelectCoreProps & ConfigConsumerProps> = {
     showSearch: true,
     // searchableFields: ['name'],
     valueKey: 'value',
     isMultiple: false,
     isLoading: false,
     required: false,
-    height: 400,
     rowHeight: 44,
     emptyPlaceholder: '没有找到相关结果',
   };
 
-  public static getDerivedStateFromProps(nextProps: SelectCoreProps, state: State) {
+  constructor(props: SelectCoreProps & ConfigConsumerProps) {
+    super(props);
+    this.state = {
+      options: [],
+      value: undefined,
+      keyword: '',
+      stateChanged: false,
+    };
+  }
+
+  public static getDerivedStateFromProps(nextProps: SelectCoreProps & ConfigConsumerProps, state: State) {
     if (state.stateChanged) {
       return { stateChanged: false };
     }
 
-    if (nextProps.value) {
+    if (nextProps.value || nextProps.options) {
       return {
         value: nextProps.value,
         options: nextProps.options,
       };
     }
 
-    return state;
+    return { ...state, options: nextProps.options };
   }
 
-  public state: State = {
-    options: [],
-    value: undefined,
-    keyword: '',
-    stateChanged: false,
-  };
-
-  public componentDidMount() {
+  public componentDidMount(): void {
+    const { value, options } = this.props;
     this.setState({
-      value: this.props.value,
-      options: this.props.options,
+      value,
+      options,
     });
   }
 
-  public render() {
+  private handleSelect = (value: any) => {
+    const { onChange, stateless = false, isMultiple } = this.props;
+    if (isMultiple || !stateless) {
+      if (stateless) {
+        // eslint-disable-next-line no-console
+        console.warn("stateless can't be used to multiple mode");
+      }
+      this.setState({ value, stateChanged: true });
+    }
+    onChange(value);
+  };
+
+  public render(): React.ReactElement {
     const {
       disabledOptions,
       valueKey,
@@ -60,52 +76,53 @@ class SelectCore extends React.Component<SelectCoreProps, State> {
       allowDuplicate,
       required,
       max,
-      width,
       height,
       getGroupIcon,
+      onClick,
       onSelect,
       onDeselect,
       emptyPlaceholder,
       labelRenderer,
       rowHeight,
+      prefixCls,
+      getPopupContainer,
+      placement,
     } = this.props;
-    if (this.state?.options?.length) {
+    const { options, value } = this.state;
+    if (this.state && options?.length) {
       return (
-        <div className="gio-select-core">
+        <div className={`${prefixCls}-core`}>
           <SelectList
-            options={this.state.options}
+            options={options}
             disabledOptions={disabledOptions}
-            value={this.state.value}
+            value={value}
             valueKey={valueKey}
             renderKey={renderKey}
             isMultiple={isMultiple}
             allowDuplicate={allowDuplicate}
             required={required}
             max={max}
-            width={width}
             height={height}
             onSelect={onSelect}
+            onClick={onClick}
             onDeselect={onDeselect}
             onChange={this.handleSelect}
             getGroupIcon={getGroupIcon}
             labelRenderer={labelRenderer}
             rowHeight={rowHeight}
+            getPopupContainer={getPopupContainer}
+            placement={placement}
           />
         </div>
       );
     }
 
     return (
-      <div className="gio-select-core">
+      <div className={`${prefixCls}-core`}>
         <div style={{ padding: '50% 10px 0', textAlign: 'center', height }}>{emptyPlaceholder}</div>
       </div>
     );
   }
-
-  private handleSelect = (value: any) => {
-    this.setState({ value, stateChanged: true });
-    this.props.onChange(value);
-  };
 }
 
-export default SelectCore;
+export default withConfigConsumer<SelectCoreProps>({ subPrefixCls: 'select' })(SelectCore);

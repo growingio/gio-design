@@ -1,11 +1,18 @@
 import React from 'react';
 import { noop } from 'lodash';
 import { GroupProps } from './interface';
+import { withConfigConsumer, ConfigConsumerProps } from '../config-provider';
 
-export default class Group extends React.PureComponent<GroupProps> {
+class Group extends React.PureComponent<GroupProps & ConfigConsumerProps> {
   public static defaultProps = {
     onSelect: noop,
     style: {},
+  };
+
+  private handleSelect = () => {
+    const { onSelect, onClick, option } = this.props;
+    onSelect && onSelect(option);
+    onClick && onClick(option);
   };
 
   public render() {
@@ -19,17 +26,21 @@ export default class Group extends React.PureComponent<GroupProps> {
       // indeterminate,
       option,
       labelRenderer,
+      prefixCls,
     } = this.props;
 
     return (
-      <div className="gio-select-option group" style={{ ...style, color: '#1248E9' }} onClick={this.handleSelect}>
+      <div
+        className={`${prefixCls}-option group`}
+        style={{ ...style, color: '#1248E9' }}
+        onClick={this.handleSelect}
+        aria-hidden="true"
+      >
         {icon}
         {labelRenderer ? labelRenderer(option, true) : name}
       </div>
     );
   }
-
-  private handleSelect = () => {
-    this.props.onSelect && this.props.onSelect(this.props.option);
-  };
 }
+
+export default withConfigConsumer<GroupProps>({ subPrefixCls: 'select' })(Group);

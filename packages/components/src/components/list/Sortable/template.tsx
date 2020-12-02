@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { noop, pick, get } from 'lodash';
 import { DragMove, CloseCircleFilled } from '@gio-design/icons';
+import { withConfigConsumer, ConfigConsumerProps } from '../../config-provider';
 
 const bemClsFactor = (blockName: string) => (elemName?: string, modifierName?: string) => {
   const elemName_ = elemName ? `__${elemName}` : '';
@@ -16,41 +17,45 @@ interface SiderSelectedItemProps {
   selected?: string;
   collapsed?: boolean;
   onSelect?: (item: any) => void;
+  prefixCls?: string;
   [key: string]: any;
 }
 
-export default class SiderSelectedItem extends React.PureComponent<SiderSelectedItemProps, any> {
+class SiderSelectedItem extends React.PureComponent<SiderSelectedItemProps & ConfigConsumerProps, any> {
   public static defaultProps = {
     onRemove: noop,
   };
 
-  public constructor(props: SiderSelectedItemProps) {
+  public constructor(props: SiderSelectedItemProps & ConfigConsumerProps) {
     super(props);
     this.state = {
+      // eslint-disable-next-line react/no-unused-state
       visible: false,
     };
   }
 
   public render() {
-    const { sortData: item = {} } = this.props;
-    const props = this.props;
-    const className = classnames('gio-select-option', cls(), {
+    const { className, sortData: item = {} } = this.props;
+    const { props } = this;
+    const classNames = classnames(`${props.prefixCls}-option`, cls(), {
       indented: props.indented,
       selected: item.value === props.selected,
       collapsed: props.collapsed,
-      [this.props.className]: !!this.props.className,
+      [className]: !!className,
       [`v-${item.value}`]: true,
     });
 
     return (
       <div
+        // eslint-disable-next-line react/jsx-props-no-spreading
         {...pick(props, ['onDragStart', 'onMouseEnter', 'onMouseLeave'])}
-        className={className}
+        className={classNames}
         onClick={() => {
           if (props.onSelect) {
             props.onSelect(item);
           }
         }}
+        aria-hidden="true"
       >
         {get(item, 'canDrag') !== false && (
           <IconCircle className={classnames({ selected: item.value === props.selected, collapsed: props.collapsed })}>
@@ -71,6 +76,7 @@ export default class SiderSelectedItem extends React.PureComponent<SiderSelected
           className={classnames('dh-can-remove', {
             collapsed: props.collapsed,
           })}
+          aria-hidden="true"
         >
           <CloseCircleFilled size="small" color="#5C4E61" />
         </span>
@@ -80,9 +86,12 @@ export default class SiderSelectedItem extends React.PureComponent<SiderSelected
 }
 
 const IconCircle = (props: any) => {
-  const className = classnames('pa-sider-icon-circle', props.className, {
-    scaled: props.scaled, // 利用 transform scale 解决 font-size < 12 的问题
+  const { className, scaled, children } = props;
+  const classNames = classnames('pa-sider-icon-circle', className, {
+    scaled, // 利用 transform scale 解决 font-size < 12 的问题
   });
 
-  return <span className={className}>{props.children}</span>;
+  return <span className={classNames}>{children}</span>;
 };
+
+export default withConfigConsumer<SiderSelectedItemProps>({ subPrefixCls: 'select' })(SiderSelectedItem);

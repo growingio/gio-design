@@ -5,14 +5,14 @@ exports[`Testing Radio should render correctly. 1`] = `
   className="gio-radio__group gio-radio__group--horizontal"
 >
   <label
-    className="gio-radio__wrapper gio-radio__wrapper--disabled"
+    className="gio-radio__wrapper gio-radio__wrapper--checked gio-radio__wrapper--disabled"
   >
     <span
-      className="gio-radio gio-radio-disabled"
+      className="gio-radio gio-radio-checked gio-radio-disabled"
       style={Object {}}
     >
       <input
-        checked={false}
+        checked={true}
         className="gio-radio-input"
         disabled={true}
         onBlur={[Function]}

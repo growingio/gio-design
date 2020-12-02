@@ -30,13 +30,11 @@ const steps: IStep[] = [
 
 export default () => {
   const [visible, setVisible] = useState(false);
-  const [pending, setPending] = useState(false);
 
   return (
     <>
       <Button onClick={() => setVisible(true)}>Open Modal</Button>
       <StepModal
-        pending={pending}
         visible={visible}
         title="Modal Title"
         onClose={() => {
@@ -45,11 +43,9 @@ export default () => {
         }}
         onOk={() => {
           console.log('ok start');
-          setPending(true);
           return new Promise((resolve) => {
             console.log('ok pending');
             setTimeout(() => {
-              setPending(false);
               console.log('ok resolve');
               resolve();
             }, 2000);

@@ -1,10 +1,11 @@
-import React, { useContext, useMemo, useState, useRef } from 'react';
+import React, { useMemo, useState, useRef, useCallback } from 'react';
 import classNames from 'classnames';
 import { isFunction, isNumber, isNaN, isUndefined } from 'lodash';
 import { LeftOutlined, LeftDoubleOutlined, RightOutlined, RightDoubleOutlined, More } from '@gio-design/icons';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Input from '../input';
-import { ConfigContext } from '../config-provider';
 import { PaginationProps } from './interface';
+import { generatePageArray } from './ until';
 
 const Pagination = ({
   prefixCls: customizePrefixCls,
@@ -15,13 +16,12 @@ const Pagination = ({
   className,
   style,
   total = 0,
-  showTotal = (total: number) => `总共 ${total.toLocaleString()} 条`,
+  showTotal = (totals: number) => `总共 ${totals.toLocaleString()} 条`,
   onChange,
   showQuickJumper = false,
   hideOnSinglePage = false,
 }: PaginationProps) => {
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('pagination', customizePrefixCls);
+  const prefixCls = usePrefixCls('pagination', customizePrefixCls);
   const pageNumber = useMemo(() => Math.ceil(total / pageSize), [total, pageSize]);
   const [localCurrent, setLocalCurrent] = useState<number>(isNumber(current) ? current : defaultCurrent);
   const [inputValue, setInputValue] = useState<string>('');
@@ -33,51 +33,79 @@ const Pagination = ({
 
   const shouldShowQuickJumper = useMemo(() => showQuickJumper && pageNumber > 10, [showQuickJumper, pageNumber]);
   const shouldShowOption = useMemo(() => shouldShowQuickJumper, [shouldShowQuickJumper]);
-  const generateSuccessionArray = (start: number, end: number) => Array.from(new Array(end + 1).keys()).slice(start);
   const offset = 5;
-  const offsetRadius = Math.floor(offset / 2);
 
   const prevSymbol = useRef<symbol>(Symbol('prev'));
   const nextSymbol = useRef<symbol>(Symbol('next'));
   const prevDisabled = localCurrent <= 1;
   const nextDisabled = localCurrent >= pageNumber;
 
-  const generatePageArray: (number | symbol)[] = useMemo(() => {
-    if (pageNumber > 10) {
-      if (localCurrent + offsetRadius < pageNumber && localCurrent - offsetRadius > 1) {
-        const successionArray = generateSuccessionArray(localCurrent - offsetRadius, localCurrent + offsetRadius);
-        if (localCurrent + offsetRadius + 1 === pageNumber) {
-          return [1, prevSymbol.current, ...successionArray, pageNumber];
+  const handleClick = useCallback(
+    (toPage: number) => {
+      if (isNumber(toPage) && !Object.is(toPage, localCurrent) && !disabled) {
+        // eslint-disable-next-line no-underscore-dangle
+        let _toPage = toPage;
+        if (_toPage < 1) {
+          _toPage = 1;
+        } else if (toPage > pageNumber) {
+          _toPage = pageNumber;
         }
-        if (localCurrent - offsetRadius - 1 === 1) {
-          return [1, ...successionArray, nextSymbol.current, pageNumber];
+        if (isUndefined(current)) {
+          setLocalCurrent(_toPage);
         }
-        return [1, prevSymbol.current, ...successionArray, nextSymbol.current, pageNumber];
+        onChange?.(_toPage, pageSize);
       }
-      if (localCurrent + offsetRadius >= pageNumber) {
-        return [1, prevSymbol.current, ...generateSuccessionArray(pageNumber - offset + 1, pageNumber)];
-      }
-      if (localCurrent - offsetRadius <= 1) {
-        return [...generateSuccessionArray(1, offset), nextSymbol.current, pageNumber];
-      }
-    }
-    return generateSuccessionArray(1, pageNumber);
-  }, [pageNumber, localCurrent]);
+    },
+    [current, disabled, localCurrent, onChange, pageNumber, pageSize]
+  );
 
-  const handleClick = (toPage: number) => {
-    if (isNumber(toPage) && !Object.is(toPage, localCurrent) && !disabled) {
-      let _toPage = toPage;
-      if (_toPage < 1) {
-        _toPage = 1;
-      } else if (toPage > pageNumber) {
-        _toPage = pageNumber;
-      }
-      if (isUndefined(current)) {
-        setLocalCurrent(_toPage);
-      }
-      onChange?.(_toPage, pageSize);
-    }
-  };
+  const pagination = useMemo(
+    () =>
+      generatePageArray(localCurrent, pageNumber, offset, prevSymbol, nextSymbol).map((page: number | symbol) => {
+        if (typeof page === 'number') {
+          return (
+            <li
+              className={classNames(`${prefixCls}-item`, {
+                [`${prefixCls}-item-active`]: page === localCurrent,
+              })}
+              key={page}
+              onClick={() => handleClick(page)}
+              aria-hidden="true"
+            >
+              {page}
+            </li>
+          );
+        }
+        if (Object.is(page, prevSymbol.current)) {
+          return (
+            <li
+              key="prev"
+              className={classNames(`${prefixCls}-jump-prev`)}
+              onClick={() => handleClick(localCurrent - offset)}
+              aria-hidden="true"
+            >
+              <More className="more" />
+              <LeftDoubleOutlined className="double" color="#0044F2" />
+            </li>
+          );
+        }
+        if (Object.is(page, nextSymbol.current)) {
+          return (
+            <li
+              key="next"
+              className={classNames(`${prefixCls}-jump-next`)}
+              onClick={() => handleClick(localCurrent + offset)}
+              aria-hidden="true"
+            >
+              <More className="more" />
+              <RightDoubleOutlined className="double" color="#0044F2" />
+            </li>
+          );
+        }
+        return null;
+      }),
+    [localCurrent, pageNumber, handleClick, prefixCls]
+  );
 
   const totalText = useMemo(() => {
     if (!isFunction(showTotal)) {
@@ -91,55 +119,14 @@ const Pagination = ({
         ])}
       </li>
     );
-  }, [total, showTotal]);
-
-  const renderPage = () =>
-    generatePageArray.map((page: number | symbol) => {
-      if (typeof page === 'number') {
-        return (
-          <li
-            className={classNames(`${prefixCls}-item`, {
-              [`${prefixCls}-item-active`]: page === localCurrent,
-            })}
-            key={page}
-            onClick={() => handleClick(page)}
-          >
-            {page}
-          </li>
-        );
-      }
-      if (Object.is(page, prevSymbol.current)) {
-        return (
-          <li
-            key="prev"
-            className={classNames(`${prefixCls}-jump-prev`)}
-            onClick={() => handleClick(localCurrent - offset)}
-          >
-            <More className="more" />
-            <LeftDoubleOutlined className="double" color="#0044F2" />
-          </li>
-        );
-      }
-      if (Object.is(page, nextSymbol.current)) {
-        return (
-          <li
-            key="next"
-            className={classNames(`${prefixCls}-jump-next`)}
-            onClick={() => handleClick(localCurrent + offset)}
-          >
-            <More className="more" />
-            <RightDoubleOutlined className="double" color="#0044F2" />
-          </li>
-        );
-      }
-      return null;
-    });
+  }, [total, showTotal, localCurrent, pageSize, prefixCls]);
 
   const handleInputPressEnter = (e: any) => {
     const transformValue = Number(e.target.value);
     if (!isNaN(transformValue)) {
       if (transformValue >= 1 && transformValue <= pageNumber) {
         setLocalCurrent(transformValue);
+        onChange?.(transformValue, pageSize);
       }
     }
     setInputValue('');
@@ -149,7 +136,6 @@ const Pagination = ({
     <div className={`${prefixCls}-options-quick-jumper`}>
       跳至
       <Input
-        style={{ display: 'inline-block' }}
         value={inputValue}
         disabled={disabled}
         onChange={(e) => setInputValue(e.target.value)}
@@ -176,15 +162,17 @@ const Pagination = ({
           [`${prefixCls}-disabled`]: prevDisabled,
         })}
         onClick={() => prevDisabled || handleClick(localCurrent - 1)}
+        aria-hidden="true"
       >
         <LeftOutlined size="16px" />
       </li>
-      {renderPage()}
+      {pagination}
       <li
         className={classNames(`${prefixCls}-next`, {
           [`${prefixCls}-disabled`]: nextDisabled,
         })}
         onClick={() => nextDisabled || handleClick(localCurrent + 1)}
+        aria-hidden="true"
       >
         <RightOutlined size="16px" />
       </li>

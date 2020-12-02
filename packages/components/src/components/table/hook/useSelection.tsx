@@ -1,57 +1,95 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo, useCallback } from 'react';
-import {
-  get, intersection, isUndefined, difference, union,
-} from 'lodash';
+import { get, intersection, isUndefined, difference, union, isFunction, isString, compact } from 'lodash';
 import { ColumnsType, RowSelection, ColumnType } from '../interface';
 import Checkbox from '../../checkbox';
 import useControlledState from '../../../utils/hooks/useControlledState';
 
-const useSelection = <RecordType, >(
+export const getRowKey = <RecordType,>(row: RecordType, rowKey?: string | ((record: RecordType) => string)): string => {
+  if (rowKey) {
+    if (isFunction(rowKey)) {
+      return rowKey(row);
+    }
+    if (isString(rowKey)) {
+      if (isString(get(row, rowKey))) {
+        return get(row, rowKey);
+      }
+    }
+  }
+  return get(row, 'key');
+};
+
+const useSelection = <RecordType,>(
   data: RecordType[],
   rowSelection: RowSelection<RecordType> | undefined,
+  config: {
+    rowKey?: string | ((record: RecordType) => string);
+  }
 ): [(columns: ColumnsType<RecordType>) => ColumnsType<RecordType>] => {
-  const {
-    onChange, selectedRowKeys, columnWidth = 50, fixed,
-  } = rowSelection || {};
+  const { onChange, selectedRowKeys, columnWidth = 50, fixed, getCheckboxProps } = rowSelection || {};
+  const { rowKey } = config;
+
   const [localSelectedRowKeys, setLocalSelectedRowKeys] = useControlledState<string[]>(selectedRowKeys, []);
-  const currentPageRowKeys = useMemo(() => data.map((item) => get(item, 'key')), [data]);
-  const allChecked = useMemo(
+  const currentPageRowKeys = useMemo(() => data.map((item) => getRowKey(item, rowKey)), [data]);
+  const isAllChecked = useMemo(
     () => intersection(localSelectedRowKeys, currentPageRowKeys).length === currentPageRowKeys.length,
-    [currentPageRowKeys, localSelectedRowKeys],
+    [currentPageRowKeys, localSelectedRowKeys]
   );
   const atLeastOneChecked = useMemo(() => intersection(currentPageRowKeys, localSelectedRowKeys).length > 0, [
     currentPageRowKeys,
     localSelectedRowKeys,
   ]);
-  const partChecked = useMemo(() => !allChecked && atLeastOneChecked, [allChecked, atLeastOneChecked]);
+  const isPartChecked = useMemo(() => !isAllChecked && atLeastOneChecked, [isAllChecked, atLeastOneChecked]);
+  const isAllDisabled = useMemo(() => data.every((item) => getCheckboxProps?.(item)?.disabled), [
+    data,
+    getCheckboxProps,
+  ]);
+  const disabledRowKey = useMemo(
+    () =>
+      compact(
+        data.map((item) => {
+          if (isFunction(getCheckboxProps) && getCheckboxProps(item).disabled) {
+            return getRowKey(item, rowKey);
+          }
+          return null;
+        })
+      ),
+    [data, getCheckboxProps]
+  );
+
   const getSelectRows = useCallback(
-    (_selectedRowKeys) => data.filter((item) => _selectedRowKeys.includes(get(item, 'key'))),
-    [data],
+    (_selectedRowKeys) => data.filter((item) => _selectedRowKeys.includes(getRowKey(item, rowKey))),
+    [data]
   );
 
   const selectionColumn: ColumnType<RecordType> = {
     title: (
       <Checkbox
         checked={atLeastOneChecked}
-        indeterminate={partChecked}
+        indeterminate={isPartChecked}
+        onClick={(e) => e.stopPropagation()}
         onChange={(e) => {
           const latestLocalSelectedRowKeys = e.target.checked
-            ? union(localSelectedRowKeys, currentPageRowKeys)
-            : difference(localSelectedRowKeys, currentPageRowKeys);
+            ? difference(union(localSelectedRowKeys, currentPageRowKeys), disabledRowKey)
+            : difference(localSelectedRowKeys, currentPageRowKeys, disabledRowKey);
           setLocalSelectedRowKeys(latestLocalSelectedRowKeys);
           onChange?.(latestLocalSelectedRowKeys, getSelectRows(latestLocalSelectedRowKeys));
         }}
+        disabled={isAllDisabled}
       />
     ),
     fixed,
     key: 'selection',
     align: 'center',
     width: columnWidth,
-    render: (value: string) => {
-      const key = get(value, 'key');
+    render: (...rest) => {
+      const key = getRowKey(rest[1], rowKey);
+      const thisCheckboxProps = getCheckboxProps?.(rest[1]) || {};
       return (
         <Checkbox
+          {...thisCheckboxProps}
           checked={localSelectedRowKeys.includes(key)}
+          onClick={(e) => e.stopPropagation()}
           onChange={(e) => {
             const latestLocalSelectedRowKeys = e.target.checked
               ? union(localSelectedRowKeys, [key])
@@ -66,7 +104,8 @@ const useSelection = <RecordType, >(
 
   const transformSelectionPipeline = useCallback(
     (columns: ColumnsType<RecordType>) => (!isUndefined(rowSelection) ? [selectionColumn, ...columns] : columns),
-    [selectionColumn, rowSelection],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selectionColumn, rowSelection]
   );
 
   return [transformSelectionPipeline];

@@ -1,14 +1,11 @@
 import React from 'react';
-import Avatar from '../Avatar';
-import '@gio-design/components/es/components/avatar/style/index.css';
 import renderer from 'react-test-renderer';
-import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
+import Avatar from '../Avatar';
+import Dropdown from '../../dropdown';
+import '../../../../es/components/avatar/style/index.css';
+import { waitForComponentToPaint } from '../../../utils/test';
 import image from './icon.jpeg';
-
-async function waitForComponentToPaint(wrapper, amount = 500) {
-  await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
-}
 
 describe('Testing Avatar', () => {
   it('should be stable', () => {
@@ -48,6 +45,10 @@ describe('Testing Avatar', () => {
     expect(mount(<Avatar size="huge" />).exists('.gio-avatar-hg')).toBe(true);
   });
 
+  test('prop droppable', () => {
+    expect(mount(<Avatar size="small" droppable />).exists('.gio-avatar-droppable')).toBe(true);
+  });
+
   test('props omit', () => {
     const wrapper = mount(<Avatar>这是一个很长的文字</Avatar>);
     expect(wrapper.childAt(0).text()).toBe('这');
@@ -62,13 +63,21 @@ describe('Testing Avatar', () => {
     expect(wrapper.find('.gio-tooltip-inner-title').text()).toBe('这是一个很长的文字');
   });
 
-  test('props placement', (done) => {
+  test('props placement', async () => {
     const wrapper = mount(<Avatar displayTooltip>这是一个很长的文字</Avatar>);
     wrapper.setProps({ placement: 'top' });
     wrapper.find('.gio-avatar').at(0).simulate('mouseenter');
-    waitForComponentToPaint(wrapper).then(() => {
-      expect(wrapper.exists('.gio-tooltip-placement-top')).toBe(true);
-      done();
-    });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.exists('.gio-tooltip-placement-top')).toBe(true);
+  });
+
+  it('can accept dropdown trigger Mouse Event', () => {
+    const wrapper = mount(
+      <Dropdown overlay={<div>11</div>}>
+        <Avatar>li</Avatar>
+      </Dropdown>
+    );
+    wrapper.find('.gio-avatar').at(0).simulate('click');
+    expect(wrapper.exists('.gio-dropdown')).toBe(true);
   });
 });

@@ -42,7 +42,7 @@ export default function getPlacements(config: PlacementsConfig) {
     horizontalArrowShift = 20,
     verticalArrowShift = 20,
     autoAdjustOverflow = true,
-    arrowPointAtCenter,
+    arrowPointAtCenter = false,
   } = config;
   const placementMap: BuildInPlacements = {
     left: {
@@ -95,18 +95,13 @@ export default function getPlacements(config: PlacementsConfig) {
     },
   };
   Object.keys(placementMap).forEach((key) => {
+    const common = {
+      overflow: getOverflowOptions(autoAdjustOverflow),
+      ignoreShake: true,
+    };
     placementMap[key] = arrowPointAtCenter
-      ? {
-        ...placementMap[key],
-        overflow: getOverflowOptions(autoAdjustOverflow),
-        targetOffset,
-      }
-      : {
-        ...placements[key],
-        overflow: getOverflowOptions(autoAdjustOverflow),
-      };
-
-    placementMap[key].ignoreShake = true;
+      ? ({ ...placementMap[key], ...common, targetOffset})
+      : ({ ...placements[key], ...common});
   });
   return placementMap;
 }

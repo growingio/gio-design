@@ -117,4 +117,36 @@ describe('CheckboxGroup', () => {
     wrapper.find('.gio-checkbox-input').at(0).simulate('change');
     expect(onChange).toHaveBeenCalledWith([1, 2]);
   });
+
+  it('set defaultValue and value',() => {
+    const changeMock = jest.fn();
+    const wrapper = mount(
+      <CheckboxGroup defaultValue={['Pear']} value={['Apple']} onChange={changeMock}>
+        <Checkbox value="Apple">Apple</Checkbox>
+        <Checkbox value="Pear">Pear</Checkbox>
+        <Checkbox value="Orange">Orange</Checkbox>
+      </CheckboxGroup>
+    )
+    wrapper.setProps({defaultValue:['Pear','Apple'],value:['Pear']});
+    expect(wrapper).toMatchSnapshot();
+    wrapper.setProps({defaultValue:['Pear'],value:['Orange']});
+    expect(wrapper).toMatchSnapshot();
+  })
+
+  it('value !== undefined',() => {
+    const changeMock = jest.fn();
+    const state = ['Apple'];
+    const defaultValue = ['Apple', 'Orange'];
+    const wrapper = mount(
+      <CheckboxGroup defaultValue={defaultValue} value={state} onChange={changeMock}>
+        <Checkbox value="Apple">Apple</Checkbox>
+        <Checkbox value="Pear">Pear</Checkbox>
+        <Checkbox value="Orange">Orange</Checkbox>
+      </CheckboxGroup>
+    )
+    wrapper.setProps({value:[]});
+    wrapper.find('.gio-checkbox-input').at(0).simulate('change');
+    expect(changeMock).toBeCalledWith(['Apple']);
+  })
+
 });

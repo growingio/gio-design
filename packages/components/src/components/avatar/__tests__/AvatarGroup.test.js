@@ -1,14 +1,10 @@
 import React from 'react';
-import AvatarGroup from '../AvatarGroup';
-import '@gio-design/components/es/components/avatar/style/index.css';
 import renderer from 'react-test-renderer';
-import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
+import AvatarGroup from '../AvatarGroup';
+import '../../../../es/components/avatar/style/index.css';
+import { waitForComponentToPaint } from '../../../utils/test';
 import image from './icon.jpeg';
-
-async function waitForComponentToPaint(wrapper, amount = 500) {
-  await act(async () => new Promise((resolve) => setTimeout(resolve, amount)).then(() => wrapper.update()));
-}
 
 describe('Testing AvatarGroup', () => {
   const users = [
@@ -60,7 +56,7 @@ describe('Testing AvatarGroup', () => {
       wrapper
         .childAt(0)
         .children()
-        .filterWhere((n) => n.find('.gio-avatar').childAt(0).type() === 'img'),
+        .filterWhere((n) => n.find('.gio-avatar').childAt(0).type() === 'img')
     ).toHaveLength(2);
   });
 
@@ -78,5 +74,10 @@ describe('Testing AvatarGroup', () => {
       expect(wrapper.exists('.gio-tooltip-placement-top')).toBe(true);
       done();
     });
+  });
+
+  test('props users', () => {
+    expect(mount(<AvatarGroup users={[]} number={4} />).exists('.gio-avatar-group')).toBe(false);
+    expect(mount(<AvatarGroup users={users.slice(0, 3)} number={4} />).find('.gio-avatar')).toHaveLength(3);
   });
 });

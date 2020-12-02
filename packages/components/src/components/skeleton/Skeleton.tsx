@@ -1,18 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { isBoolean } from 'lodash';
 import classNames from 'classnames';
-import { ConfigContext } from '../config-provider';
 import Avatar from '../avatar';
 import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { SkeletonProps } from './interface';
 import SkeletonImage from './Image';
 
 const Skeleton = (props: SkeletonProps) => {
-  const {
-    prefixCls: customizePrefixCls, delay = 0, loading = true, children, active = true,
-  } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('skeleton', customizePrefixCls);
+  const { prefixCls: customizePrefixCls, delay = 0, loading = true, children, active = true } = props;
+  const prefixCls = usePrefixCls('skeleton', customizePrefixCls);
   const shouldLoading = useDebounceLoading(loading, delay);
 
   const renderSkeletonAvatar = () => {
@@ -30,20 +27,22 @@ const Skeleton = (props: SkeletonProps) => {
 
   const renderSkeletonParagraph = () => {
     const { paragraph = true, title = true } = props;
-    if (!paragraph) {
+    if (!paragraph && !title) {
       return null;
     }
     const row = isBoolean(paragraph) ? 3 : paragraph.row;
     return (
       <div className={`${prefixCls}-content`}>
         {title && <div className={`${prefixCls}-title`} />}
-        <div className={`${prefixCls}-paragraph`}>
-          {Array(row)
-            .fill(0)
-            .map(function () {
-              return <p key={arguments[1]} />;
-            })}
-        </div>
+        {paragraph && (
+          <div className={`${prefixCls}-paragraph`}>
+            {Array(row)
+              .fill(0)
+              .map((...args) => {
+                return <p key={args[1]} />;
+              })}
+          </div>
+        )}
       </div>
     );
   };
@@ -58,7 +57,9 @@ const Skeleton = (props: SkeletonProps) => {
       {renderSkeletonParagraph()}
     </div>
   ) : (
-    children
+    <>
+      {children}
+    </>
   );
 };
 

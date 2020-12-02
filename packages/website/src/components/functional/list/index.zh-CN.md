@@ -46,22 +46,24 @@ group:
 
 ## 参数说明
 
-### Modal
+### List
 
-| 参数          | 说明                    | 类型                                                                        | 默认值   |
-| ------------- | ----------------------- | --------------------------------------------------------------------------- | -------- |
-| dataSource    | `list`数据源            | Option[]                                                                    |
-| isMultiple    | 是否多选                | boolean                                                                     | false    |
-| onChange      | 选中触发的回调          | (option: value) => void                                                     | noop     |
-| width         | 列表宽度                | number                                                                      | -        |
-| height        | 列表高度                | number                                                                      | 400      |
-| wrapStyle     | 包裹样式                | React.CSSProperties                                                         | -        |
-| prefixCls     | 前缀`className`样式类名 | string                                                                      | gio-list |
-| labelRenderer | 渲染列表项              | (option: Option, isGruop: false) => ReactNode                               | noop     |
-| rowHeight     | 自定义行高              | number \| ((option: Option) => number);                                     | 44       |
-| value         | 选中的值                | string \| string[]                                                          | -        |
-| onSelect      | 选中的回调              | (selectedValue: string, value: string \| string[], option: Option) => void; | -        |
-| onDeselect    | 取消选中的回调          | (selectedValue: string, value: string \| string[], option: Option) => void; | -        |
+| 参数          | 说明                             | 类型                                                                        | 默认值   |
+| ------------- | -------------------------------- | --------------------------------------------------------------------------- | -------- |
+| dataSource    | `list`数据源                     | Option[]                                                                    |
+| isMultiple    | 是否多选                         | boolean                                                                     | false    |
+| stateless     | 是否保存选中状态, 多选模式下失效 | boolean                                                                     | false    |
+| onChange      | 选中触发的回调                   | (option: value) => void                                                     | noop     |
+| width         | 列表宽度                         | number \| string                                                            | -        |
+| height        | 列表高度                         | number                                                                      | 400      |
+| wrapStyle     | 包裹样式                         | React.CSSProperties                                                         | -        |
+| prefixCls     | 前缀`className`样式类名          | string                                                                      | gio-list |
+| labelRenderer | 渲染列表项                       | (option: Option, isGruop: false) => ReactNode                               | noop     |
+| rowHeight     | 自定义行高                       | number \| ((option: Option) => number);                                     | 44       |
+| value         | 选中的值                         | string \| string[]                                                          | -        |
+| onSelect      | 选中的回调                       | (selectedValue: string, value: string \| string[], option: Option) => void; | -        |
+| onDeselect    | 取消选中的回调                   | (selectedValue: string, value: string \| string[], option: Option) => void; | -        |
+| onClick       | 点击触发的回调                   | (option: value) => void                                                     | noop     |
 
 ### Option
 

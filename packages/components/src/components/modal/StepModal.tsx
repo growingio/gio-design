@@ -3,6 +3,7 @@ import { isEqual } from 'lodash';
 import Modal from './Modal';
 import { stepArray2Map, clarifyRender } from './utils';
 import { IStepModalProps, IStepInner, TStepChange } from './interface';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const StepModal: React.FC<IStepModalProps> = ({
   steps = [],
@@ -16,12 +17,15 @@ const StepModal: React.FC<IStepModalProps> = ({
   additionalFooter,
   okButtonProps,
   closeButtonProps,
+  prefixCls: customPrefixCls,
   ...modalProps
 }: IStepModalProps) => {
+  const prefixCls = usePrefixCls('modal', customPrefixCls);
   const [stepObj, setStepObj] = useState(() => stepArray2Map(steps));
   const { stepMap, firstStep } = stepObj;
   const [stepStack, setStepStack] = useState<string[]>([firstStep]);
   const [stepMapKey, setStepMapKey] = useState<string[]>(Object.keys(stepMap));
+  const [stepPending, setStepPending] = useState<boolean>(false);
 
   useEffect(() => {
     // eslint-disable-next-line no-underscore-dangle
@@ -50,37 +54,62 @@ const StepModal: React.FC<IStepModalProps> = ({
 
   const handleReset = () => setStepStack([firstStep]);
 
-  const handleBack = async () => {
-    await Promise.resolve(onBack?.());
-    handlePop();
+  const handleExecResult = (execResult: void | Promise<unknown>, afterExec: () => void) => {
+    if (!execResult || !execResult.then) {
+      afterExec();
+      return;
+    }
+
+    setStepPending(true);
+    execResult
+      .then(
+        () => {
+          afterExec();
+        },
+        (e: Error) => {
+          console.error(e);
+        }
+      )
+      .finally(() => {
+        setStepPending(false);
+      });
   };
 
-  const handleOk = async (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handleBack = () => {
+    const backExecResult = onBack?.();
+    handleExecResult(backExecResult, handlePop);
+  };
+
+  const handleOk = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (isLastStep) {
-      await Promise.resolve(onOk?.(e));
-      // 这里不交给 Modal 进行处理，自行处理
-      // 因为 handleClose 在 afterClose 执行时无法很好判断触发点，导致出错
-      if (closeAfterOk) {
-        onClose?.(e);
-        handleReset();
-      }
+      const okExecResult = onOk?.(e);
+      handleExecResult(okExecResult, () => {
+        // 这里不交给 Modal 进行处理，自行处理
+        // 因为 handleClose 在 afterClose 执行时无法很好判断触发点，导致出错
+        if (closeAfterOk) {
+          onClose?.(e);
+          handleReset();
+        }
+      });
     } else {
-      await Promise.resolve(onNext?.());
-      const nextStep = curStep?.next?.[0] ?? '';
-      handlePush(nextStep);
+      const nextExecResult = onNext?.();
+      handleExecResult(nextExecResult, () => {
+        const nextStep = curStep?.next?.[0] ?? '';
+        handlePush(nextStep);
+      });
     }
   };
 
-  const handleClose = async (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    const container = document.querySelector('.gio-modal-close');
+  const handleClose = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    const container = document.querySelector(`.${prefixCls}-close`);
     const target: HTMLElement = e.target as HTMLElement;
-    const isCloseIcon = container?.contains(target) || target.classList.contains('gio-modal-close');
+    const isCloseIcon = container?.contains(target) || target.classList.contains(`${prefixCls}-close`);
 
     if (isFirstStep || isCloseIcon) {
-      onClose?.(e);
-      handleReset();
+      const closeExecResult = onClose?.(e);
+      handleExecResult(closeExecResult, handleReset);
     } else {
-      await handleBack();
+      handleBack();
     }
   };
 
@@ -96,13 +125,14 @@ const StepModal: React.FC<IStepModalProps> = ({
   return (
     <Modal
       {...modalProps}
+      pending={stepPending}
       additionalFooter={curStep.additionalFooter || additionalFooter}
       okButtonProps={curStep.nextButtonProps || okButtonProps}
       closeButtonProps={curStep.backButtonProps || closeButtonProps}
       closeAfterOk={false}
       title={Title}
       footer={Footer}
-      useBack={!isFirstStep && !curStep.backButtonProps?.disabled}
+      useBack={!isFirstStep && !curStep.backButtonProps?.disabled && !stepPending}
       onBack={handleBack}
       okText={textOk}
       closeText={textClose}

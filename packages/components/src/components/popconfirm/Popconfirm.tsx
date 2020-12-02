@@ -1,10 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { isBoolean, isUndefined } from 'lodash';
+import React from 'react';
 import { WarningFilled } from '@gio-design/icons';
 import Tooltip from '../tooltip';
 import Button from '../button';
-import { ConfigContext } from '../config-provider';
 import { PopconfirmProps } from './interface';
+import useControlledState from '../../utils/hooks/useControlledState';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
   const {
@@ -16,36 +16,18 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
     cancelText = '取消',
     children,
     prefixCls: customizePrefixCls,
+    subPrefixCls = 'popconfirm',
     visible,
     defaultVisible,
-    disabled = false,
     onVisibleChange,
     icon,
     ...rest
   } = props;
-  const [localVisible, setLocalVisible] = useState<boolean>(!disabled && (isUndefined(visible) ? false : visible));
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('popconfirm', customizePrefixCls);
+  const [controlledVisible, setControlledVisible] = useControlledState<boolean>(visible, false);
+  const prefixCls = usePrefixCls(subPrefixCls, customizePrefixCls);
 
-  useEffect(() => {
-    if (disabled) return;
-    if (isBoolean(visible)) {
-      setLocalVisible(visible);
-    }
-  }, [disabled, visible]);
-
-  useEffect(() => {
-    if (disabled) return;
-    if (isBoolean(defaultVisible)) {
-      setLocalVisible(defaultVisible);
-    }
-  }, [disabled, defaultVisible]);
-
-  const shouldUpdateLocalVisible = (value: boolean) => {
-    if (disabled) return;
-    if (isUndefined(visible)) {
-      setLocalVisible(value);
-    }
+  const popConfirmOnVisibleChange = (value: boolean) => {
+    setControlledVisible(value);
     onVisibleChange?.(value);
   };
 
@@ -59,7 +41,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
           size="small"
           type="secondary"
           onClick={(e) => {
-            shouldUpdateLocalVisible(false);
+            popConfirmOnVisibleChange(false);
             onCancel?.(e);
           }}
         >
@@ -68,7 +50,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
         <Button
           size="small"
           onClick={(e) => {
-            shouldUpdateLocalVisible(false);
+            popConfirmOnVisibleChange(false);
             onConfirm?.(e);
           }}
         >
@@ -80,12 +62,10 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
 
   return (
     <Tooltip
-      prefixCls={prefixCls}
-      visible={localVisible}
-      onVisibleChange={(visible: boolean) => {
-        if (disabled) return;
-        shouldUpdateLocalVisible(visible);
-      }}
+      prefixCls={customizePrefixCls}
+      subPrefixCls="popconfirm"
+      visible={controlledVisible}
+      onVisibleChange={popConfirmOnVisibleChange}
       overlayInnerStyle={{ width: desc ? 400 : 260 }}
       overlay={popConfirmOverlay()}
       trigger="click"

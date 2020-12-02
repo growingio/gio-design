@@ -9,7 +9,7 @@ const options = [
 ];
 
 const WrapperStyle = {
-  padding: '5px 8px',
+  // padding: '5px 8px',
   display: 'inline-block',
   borderRadius: 6,
   backgroundColor: '#FFFFFF',
@@ -18,6 +18,6 @@ const WrapperStyle = {
 
 export default () => (
   <div style={WrapperStyle}>
-    <DragList dataSource={options} height={166} width={260} />
+    <DragList dataSource={options} width={260} />
   </div>
 );

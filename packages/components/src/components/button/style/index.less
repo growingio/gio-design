@@ -4,6 +4,15 @@
 
 @btn-prefix-cls: ~'@{component-prefix}-btn';
 @iconfont-css-prefix: gio-icon;
+
+@btn-height-lg: @size-field-large;
+@btn-height-sm: @size-field-small;
+@btn-height-base: @size-field-normal;
+@btn-square-size: @btn-height-base;
+@btn-square-size-lg: @btn-height-lg;
+@btn-square-size-sm: @btn-height-sm;
+@btn-square-size-mini: @size-field-mini;
+
 // for compatible
 // @btn-assist-color: @text-color-base;
 // @btn-assist-bg: none;
@@ -15,10 +24,13 @@
   line-height: 1.5715;
 
   .btn;
-  .btn-primary;
 
   > span {
     display: inline-block;
+  }
+
+  &-primary {
+    .btn-primary;
   }
 
   &-secondary {
@@ -80,6 +92,9 @@
   &-icon-only {
     .btn-square(@btn-prefix-cls);
     padding: 7px !important;
+    &.@{btn-prefix-cls}-mini {
+      padding: 4px !important;
+    }
     .@{iconfont-css-prefix} {
       line-height: 0;
       vertical-align: unset;
@@ -87,8 +102,11 @@
         vertical-align: bottom !important;
       }
     }
-    &.gio-btn-assist {
+    &.@{btn-prefix-cls}-assist {
       padding: 8px !important;
+      &.@{btn-prefix-cls}-mini {
+        padding: 5px !important;
+      }
     }
   }
 

@@ -9,6 +9,48 @@ nav:
 
 # @gio-design/icons Change Log
 
+## 20.11.0
+
+- icons
+  - update icon template, svg color use style.[#490](https://github.com/growingio/gio-design/pull/490)
+
+## 20.10.5
+
+- 🆕 add [#349](https://github.com/growingio/gio-design/pull/349)
+
+  - `CopyOutlined`
+  - `DownloadOutlined`
+  - `InformationCircleOutlined`
+  - `SequenceOutlined`
+  - `ShareOutlined`
+
+## 20.10.4
+
+- 🆕 add [#319](https://github.com/growingio/gio-design/pull/319)
+
+  - `EventOutlined`
+  - `FileOutlined`
+  - `RefreshOutlined`
+  - `TagOutlined`
+  - `TimeOutlined`
+
+- modify [#319](https://github.com/growingio/gio-design/pull/319)
+
+  - `UserOutlined`
+
+## 20.10.2
+
+- 🆕 add `StopWatchOutlined` [#292](https://github.com/growingio/gio-design/pull/292)
+
+## 20.9.4
+
+- 🆕 add `CleanOutlined`、`DownOutlined`、`EnlargeOutlined`、`FullScreenOutlined`、`LocationRecoveryOutlined`、`MapChartOutlined`、`MessageFilled`、`PopupWindowFilled`、`PushMsgFilled`、`QuitOutlined`、`ShrinkOutlined`、`StartFilled`、`UpOutlined`、`UserFilled`、`UserOutlined` icon.[#281](https://github.com/growingio/gio-design/pull/281)
+- 📛 Rename `Delete`、`Upload` to `DeleteOutlined`、`UploadOutlined`. [#281](https://github.com/growingio/gio-design/pull/281)
+
+## 20.9.3
+
+- 🆕 add `BoxFilled`、 `EditOutlined`、 `ExplainOutlined`、`Filter2Outlined`、 `LockOutlined`、 `UnlockOutlined` icon. [#265](https://github.com/growingio/gio-design/pull/265)
+
 ## 20.9.1
 
 - 📛 Rename `View`、`Unview` to `ViewOutlined`、`unviewOutlined`, add `SearchOutlined` icon. [#153](https://github.com/growingio/gio-design/pull/153)

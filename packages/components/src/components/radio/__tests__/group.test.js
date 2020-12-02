@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
+import { create } from 'react-test-renderer';
 import Radio from '..';
 
 describe('Testing Radio', () => {
@@ -27,7 +27,7 @@ describe('Testing Radio', () => {
   });
 
   it('should render correctly.', () => {
-    const domTree = renderer.create(createRadioGroupMixed()).toJSON();
+    const domTree = create(createRadioGroupMixed({ defaultValue: 'opA' })).toJSON();
     expect(domTree).toMatchSnapshot();
   });
 
@@ -35,7 +35,9 @@ describe('Testing Radio', () => {
     const wrapper = mount(
       <Radio.Group options={[{ label: 'opA', value: 'opA' }, 'opC', null, undefined]}>
         <Radio value="a">A</Radio>
+        <Radio>B</Radio>
         <div>div</div>
+        {false}
       </Radio.Group>
     );
 

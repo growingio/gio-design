@@ -27,24 +27,27 @@ export default () => {
   };
 
   const handleInfo = () => {
-    Toast.info('这是一条温馨提示~');
+    Toast.info({ content: '这是一条温馨提示~', key: 'updatable' });
+    setTimeout(() => Toast.success({ content: 'Loaded', key: 'updatable' }), 1000);
   };
 
   return (
     <div>
-      <Button onClick={handleSuccess}>成功</Button>
-      <br />
-      <br />
-      <Button onClick={handleFail}>失败</Button>
-      <br />
-      <br />
-      <Button onClick={handleWarn}>警告</Button>
-      <br />
-      <br />
-      <Button onClick={handleInfo}>提示</Button>
-      <br />
-      <br />
-      <Button onClick={handleSuccessDiy}>成功，去看看</Button>
+      <Button style={{ marginRight: 10 }} onClick={handleSuccess}>
+        成功
+      </Button>
+      <Button style={{ marginRight: 10 }} onClick={handleFail}>
+        失败
+      </Button>
+      <Button style={{ marginRight: 10 }} onClick={handleWarn}>
+        警告
+      </Button>
+      <Button style={{ marginRight: 10 }} onClick={handleInfo}>
+        提示
+      </Button>
+      <div style={{ marginTop: 10 }}>
+        <Button onClick={handleSuccessDiy}>成功，去看看</Button>
+      </div>
     </div>
   );
 };

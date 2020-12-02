@@ -11,18 +11,19 @@ export default () => {
       <Input.TextArea
         placeholder="请输入…"
         value={inputValue}
-        onChange={setInputValue}
+        onChange={(e) => setInputValue(e.target.value)}
         resize={false}
-        wrapStyle={{ marginBottom: '20px', display: 'block' }}
+        autosize={true}
+        style={{ marginBottom: '20px', display: 'block', height: 'auto' }}
       />
 
       <Input.TextArea
         placeholder="禁止输入"
         value={inputValue2}
-        onChange={setInputValue2}
+        onChange={(e) => setInputValue2(e.target.value)}
         disabled={true}
         resize={true}
-        wrapStyle={{ display: 'block' }}
+        style={{ display: 'block', height: 'auto' }}
       />
     </div>
   );

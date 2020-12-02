@@ -9,7 +9,7 @@ const options = [
 ];
 
 const WrapperStyle = {
-  padding: '12px 8px',
+  // padding: '12px 8px',
   display: 'inline-block',
   borderRadius: 6,
   backgroundColor: '#FFFFFF',
@@ -18,6 +18,6 @@ const WrapperStyle = {
 
 export default () => (
   <div style={WrapperStyle}>
-    <List dataSource={options} height={176} width={170} onChange={console.log} />
+    <List stateless dataSource={options} width={170} onClick={console.log} />
   </div>
 );

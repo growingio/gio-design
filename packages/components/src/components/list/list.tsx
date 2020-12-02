@@ -1,62 +1,49 @@
 import React from 'react';
+import { get } from 'lodash';
+import { List, AutoSizer } from 'react-virtualized';
+import { withConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import SelectOption from './option';
 import Group from './Group';
-import { get } from 'lodash';
 import withGroupedOptions from './utils/withGroupedOptions';
-import { List } from 'react-virtualized';
 import { SelectListProps } from './interface';
 
-interface State {
-  value: any | any[];
-}
-
-class SelectList extends React.Component<SelectListProps, {}> {
-  public static defaultProps: Partial<SelectListProps> = {
+class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> {
+  public static defaultProps: Partial<SelectListProps & ConfigConsumerProps> = {
     disabledOptions: [],
     isMultiple: false,
-    width: 280,
-    height: 450,
-  };
-  public ref: React.RefObject<HTMLDivElement>;
-  public state: State = {
-    value: null,
   };
 
-  public constructor(props: SelectListProps) {
+  public ref: React.RefObject<HTMLDivElement>;
+
+  public constructor(props: SelectListProps & ConfigConsumerProps) {
     super(props);
     this.ref = React.createRef();
   }
 
-  public render() {
-    return (
-      <div className="gio-select-list-wrapper" ref={this.ref}>
-        {this.renderList()}
-      </div>
-    );
-  }
-
-  private getPopupContainer = () => this.ref.current as HTMLElement;
-
   private renderList = () => {
-    const { width, height, disabledOptions, rowHeight } = this.props;
+    const { height, disabledOptions, rowHeight, options, value, prefixCls } = this.props;
     const getRowHeight = ({ index }: { index: number }) => {
       if (typeof rowHeight === 'function') {
-        return rowHeight(this.props.options[index]);
-      } else {
-        return rowHeight;
+        return rowHeight(options[index]);
       }
+      return rowHeight;
     };
     return (
-      <List
-        value={this.props.value}
-        width={width}
-        height={height}
-        rowCount={this.props.options.length}
-        rowHeight={typeof rowHeight === 'function' ? getRowHeight : rowHeight}
-        rowRenderer={this.renderListItem(this.props.options)}
-        disabledOptions={disabledOptions}
-        className="gio-select-list"
-      />
+      <AutoSizer style={{ width: '100%', height: '100%' }}>
+        {({ width }) => (
+          <List
+            value={value}
+            width={width}
+            height={400}
+            style={{ height: height || '100%', overflow: 'auto' }}
+            rowCount={options.length}
+            rowHeight={typeof rowHeight === 'function' ? getRowHeight : rowHeight}
+            rowRenderer={this.renderListItem(options)}
+            disabledOptions={disabledOptions}
+            className={`${prefixCls}-list`}
+          />
+        )}
+      </AutoSizer>
     );
   };
 
@@ -64,13 +51,24 @@ class SelectList extends React.Component<SelectListProps, {}> {
     const { isMultiple, value, max } = this.props;
     if (Array.isArray(value) && !this.getSelected(option) && isMultiple && max) {
       return value.length >= max;
-    } else {
-      return false;
     }
+    return false;
   };
 
   private renderListItem = (options: any) => ({ index, style }: { index: number; style: React.CSSProperties }) => {
-    const { isMultiple, required, value, valueKey, renderKey, disabledOptions, labelRenderer } = this.props;
+    const {
+      isMultiple,
+      required,
+      value,
+      valueKey,
+      renderKey,
+      disabledOptions,
+      labelRenderer,
+      getGroupIcon,
+      allowDuplicate,
+      placement = 'left',
+      getPopupContainer,
+    } = this.props;
     const option = options[index];
     const isGroup = get(option, 'type') === 'groupLabel';
     const label = labelRenderer ? labelRenderer(option) : get(option, 'label') || option;
@@ -87,40 +85,49 @@ class SelectList extends React.Component<SelectListProps, {}> {
       disabledOptions.indexOf(valueKey ? option[valueKey] : option) > -1 ||
       option.disabled;
 
-    const groupIcon = this.props.getGroupIcon ? this.props.getGroupIcon(option.group) : null;
+    const groupIcon = getGroupIcon ? getGroupIcon(option.group) : null;
 
     return isGroup ? (
       <Group
         key={option.label}
         name={option.label}
         option={option}
-        style={{ ...style, height: (style.height as number) - 4, top: (style.top as number) + 8 }}
+        style={{ ...style, height: (style.height as number) - 4 }}
         icon={groupIcon}
         isSelected={this.getSelected(option)}
-        isMultiple={!!this.props.isMultiple}
+        isMultiple={!!isMultiple}
         labelRenderer={labelRenderer}
       />
     ) : (
       <SelectOption
         key={key}
-        style={{ ...style, height: (style.height as number) - 4, top: (style.top as number) + 4 }}
+        style={{ ...style, height: (style.height as number) - 4 }}
         option={option}
         title={!labelRenderer ? label : undefined}
         isSelected={this.getSelected(option)}
-        isMultiple={!!this.props.isMultiple}
-        allowDuplicate={this.props.allowDuplicate}
+        isMultiple={!!isMultiple}
+        allowDuplicate={allowDuplicate}
         onSelect={this.handleSelect}
+        onClick={this.handleClick}
         disabled={disabled}
         hasGroupIcon={!!groupIcon}
-        getPopupContainer={this.getPopupContainer}
+        getPopupContainer={getPopupContainer}
+        placement={placement}
       >
         {label}
       </SelectOption>
     );
   };
 
+  private handleClick = (value: any) => {
+    const { onClick } = this.props;
+    if (onClick) {
+      onClick(value);
+    }
+  };
+
   private handleSelect = (option: any) => {
-    const { isMultiple, allowDuplicate, onSelect, onDeselect, onChange } = this.props;
+    const { isMultiple, allowDuplicate, onSelect, onDeselect, onChange, value } = this.props;
 
     const isMax = this.checkIsMax(option);
 
@@ -130,20 +137,20 @@ class SelectList extends React.Component<SelectListProps, {}> {
 
     const selectedValue = this.getValue(option);
     const isSelected = this.getSelected(option);
-    let value;
+    let values;
     if (isSelected && !allowDuplicate) {
       if (onDeselect) {
-        onDeselect(selectedValue, this.props.value, option);
+        onDeselect(selectedValue, value, option);
       }
-      value = isMultiple ? this.props.value.filter((v: any) => v !== selectedValue) : null;
+      values = isMultiple ? value.filter((v: any) => v !== selectedValue) : null;
     } else {
       if (onSelect) {
-        onSelect(selectedValue, this.props.value, option);
+        onSelect(selectedValue, value, option);
       }
-      value = isMultiple ? [...(this.props.value || []), selectedValue] : selectedValue;
+      values = isMultiple ? [...(value || []), selectedValue] : selectedValue;
     }
     if (onChange) {
-      onChange(value);
+      onChange(values);
     }
   };
 
@@ -161,8 +168,19 @@ class SelectList extends React.Component<SelectListProps, {}> {
 
     return isMultiple ? value && value.indexOf(target) > -1 : value === target;
   };
+
+  public render() {
+    const { prefixCls } = this.props;
+    return (
+      <div className={`${prefixCls}-list-wrapper`} ref={this.ref}>
+        {this.renderList()}
+      </div>
+    );
+  }
 }
 
-const WithGroupList = withGroupedOptions(SelectList);
+const WithGroupList = withGroupedOptions(
+  withConfigConsumer<SelectListProps>({ subPrefixCls: 'select' })(SelectList)
+);
 
 export default WithGroupList;

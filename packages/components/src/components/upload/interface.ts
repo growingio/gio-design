@@ -65,6 +65,10 @@ export interface IInnerTriggerProps {
 }
 
 export interface IUploadProps<T = any> {
+  // 受控的 Preview 图片
+  file?: IUploadFile<T>;
+  // 上传的图片是否显示边框
+  successBorder?: boolean;
   // upload 组件展现类型
   type?: TUploadType;
   // input 时希望使用 file 还是直接使用 url
@@ -114,6 +118,7 @@ export interface IUploadProps<T = any> {
   // 在上传之前转换文件
   transformFile?: TTransformFileHandler;
   children?: React.ReactNode;
+  placeholderImg?: string;
 }
 
 export interface ITriggerProps {
@@ -125,6 +130,8 @@ export interface ITriggerProps {
   accept: string | undefined;
   disabled?: boolean;
   triggerProps?: IInnerTriggerProps;
+  children?: React.ReactNode;
+  placeholderImg?: string;
 }
 
 export type ITriggerMap = {

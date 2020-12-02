@@ -125,22 +125,25 @@
     },
     "red": {
       "1": {
-        "value": "#FFEBE6"
+        "value": "#FFF2F1"
       },
       "2": {
-        "value": "#FFE6ED"
+        "value": "#FFBBB3"
       },
       "3": {
         "value": "#EC134B"
       },
       "4": {
-        "value": "#FF991F"
+        "value": "#E0321F"
       },
       "5": {
-        "value": "#EC134B"
+        "value": "#C51B08"
       },
       "6": {
-        "value": "#FFEBEE"
+        "value": "#A71404"
+      },
+      "7": {
+        "value": "#8E0F01"
       }
     },
     "white": {

@@ -1,11 +1,11 @@
-import React, { useCallback, useContext, Children } from 'react';
+import React, { useCallback, Children } from 'react';
 import RcMenu from 'rc-menu';
 import classnames from 'classnames';
-import { ConfigContext } from '../config-provider';
-import MenuPrefixClsContext from './MenuContext';
-import { IMenuProps, TMenuMode } from './interface';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import { MenuContext } from './MenuContext';
+import { IMenuProps, TMenuMode, TRcMode } from './interface';
 
-const transform2RcMode = (mode: TMenuMode) => (mode === 'vertical' ? 'inline' : 'horizontal');
+const transform2RcMode = (mode: TMenuMode): TRcMode => (mode === 'vertical' ? 'inline' : 'horizontal');
 
 const getOpenKeys = (mode: TMenuMode, children: React.ReactNode) => {
   if (mode === 'horizontal') {
@@ -17,17 +17,17 @@ const getOpenKeys = (mode: TMenuMode, children: React.ReactNode) => {
 const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
   const {
     mode = 'horizontal',
-    prefixCls,
+    prefixCls: customPrefixCls,
     className,
     selectedKey = '',
     defaultSelectedKey = '',
+    verticalIndent = 16,
     onClick,
     children,
     ...restProps
   } = props;
 
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefix = getPrefixCls('menu', prefixCls);
+  const prefixCls = usePrefixCls('menu', customPrefixCls);
   const cls = classnames(className);
 
   const realMode = transform2RcMode(mode);
@@ -50,19 +50,24 @@ const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
   );
 
   return (
-    <MenuPrefixClsContext.Provider value={prefix}>
+    <MenuContext.Provider
+      value={{
+        prefixCls,
+        verticalIndent,
+      }}
+    >
       <RcMenu
         {...spreadProps}
         mode={realMode}
         selectedKeys={[selectedKey]}
         defaultSelectedKeys={[defaultSelectedKey]}
         onClick={handleClick}
-        prefixCls={prefix}
+        prefixCls={prefixCls}
         className={cls}
       >
         {children}
       </RcMenu>
-    </MenuPrefixClsContext.Provider>
+    </MenuContext.Provider>
   );
 };
 

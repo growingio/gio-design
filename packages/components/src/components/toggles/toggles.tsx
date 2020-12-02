@@ -1,49 +1,46 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-
-interface TogglesProps {
-  suffixContent?: boolean;
-  defaultChecked?: boolean;
-  disabled?: boolean;
-  loading?: boolean;
-  size?: string;
-  onChange?: any;
-  onClick?: any;
-  className?: string;
-  inactiveValue?: number | string;
-  activeValue?: number | string;
-  activeColor?: string;
-  inactiveColor?: string;
-}
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import { TogglesProps } from './interface';
 
 const Toggles: React.FC<TogglesProps> = (props) => {
-  const { activeColor } = props;
-  const { inactiveColor } = props;
+  const {
+    activeColor,
+    inactiveValue,
+    inactiveColor,
+    activeValue,
+    defaultChecked,
+    disabled,
+    className,
+    suffixContent,
+  } = props;
+  const prefixCls = usePrefixCls('toggles');
 
-  const inactiveValue = props.inactiveValue ? props.inactiveValue : false;
-  const activeValue = props.activeValue ? props.activeValue : true;
+  const inactiveValues = inactiveValue || false;
+  const activeValues = activeValue || true;
 
-  const [status, setStatus] = useState(props.defaultChecked || false);
+  const [status, setStatus] = useState(defaultChecked || false);
 
   const changeStatus = () => {
     !props.disabled && setStatus(!status);
-    props.onChange && props.onChange(status ? inactiveValue : activeValue);
-    props.onClick && props.onClick(status ? inactiveValue : activeValue);
+    props.onChange && props.onChange(status ? inactiveValues : activeValues);
+    props.onClick && props.onClick(status ? inactiveValues : activeValues);
   };
 
   return (
-    <div className={classnames({ 'gio-toggles-disabled': props.disabled })}>
+    <div className={classnames({ [`${prefixCls}-disabled`]: disabled })}>
       <div
-        className={classnames('gio-toggles', { 'gio-toggles-checked': status }, props.className)}
+        className={classnames(prefixCls, { [`${prefixCls}-checked`]: status }, className)}
         style={{ background: status ? activeColor : inactiveColor, borderColor: activeColor }}
         onClick={changeStatus}
+        aria-hidden="true"
       >
         <div
-          className={classnames('gio-toggles-handle')}
+          className={classnames(`${prefixCls}-handle`)}
           style={{ background: status ? inactiveColor : activeColor }}
         />
       </div>
-      {props.suffixContent && <span className={classnames('gio-toggles-suffixContent')}>{status ? '开' : '关'}</span>}
+      {suffixContent && <span className={classnames(`${prefixCls}-suffixContent`)}>{status ? '开' : '关'}</span>}
     </div>
   );
 };

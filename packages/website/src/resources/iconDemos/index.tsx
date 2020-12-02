@@ -6,7 +6,7 @@ import { TabNav, Toast } from '@gio-design/components';
 import { Outlined, Filled } from './svgs';
 
 import '@gio-design/components/es/components/toast/style/index.css';
-import '@gio-design/components/es/components/tabnav/style/index.css';
+import '@gio-design/components/es/components/tab-nav/style/index.css';
 import './index.less';
 
 const allIcons: {

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import RcCalendar from 'rc-calendar';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/Picker';
@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import moment, { Moment } from 'moment';
 import Input from '../input';
 import Button from '../button';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { DatePickerProps } from './interface';
 
 moment.locale('zh-cn', {
@@ -18,25 +18,24 @@ moment.locale('zh-cn', {
 
 const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   const { prefixCls: customizePrefixCls, format = 'YYYY/MM/DD', value, defaultValue, showFooter, disabledDate } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('date-picker', customizePrefixCls);
+  const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
 
   const calendarContainerRef = useRef(null);
   const inputRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const [localValue, setLocalValue] = useState(props.value);
+  const [localValue, setLocalValue] = useState(value);
   const [inputTime, setInputTime] = useState('');
 
-  const onSelect = (value: Moment): void => {
+  const onSelect = (values: Moment): void => {
     if (!props.showFooter) {
-      setLocalValue(value);
-      props?.onSelect(value);
+      setLocalValue(values);
+      props.onSelect?.(values);
       setOpen(false);
     }
   };
 
-  const onChange = (value: Moment): void => {
-    setLocalValue(value);
+  const onChange = (values: Moment): void => {
+    setLocalValue(values);
   };
 
   const CalendarCls = classNames(classNames, {
@@ -44,9 +43,9 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   });
 
   const debounceTimeChange = debounce((e: string): void => {
-    const value = moment(e, props.format);
-    if (value.isValid()) {
-      setLocalValue(value);
+    const values = moment(e, props.format);
+    if (values.isValid()) {
+      setLocalValue(values);
     } else {
       setLocalValue(localValue);
     }
@@ -62,14 +61,14 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
     setOpen(false);
     setLocalValue(localValue);
     setInputTime('');
-    props.onChange(localValue);
+    props.onChange?.(localValue);
   };
 
   const onCancel = () => {
     setOpen(false);
     setLocalValue(value);
     setInputTime('');
-    props.onChange(value);
+    props.onChange?.(value);
   };
 
   const renderFooter = () => (
@@ -86,7 +85,6 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   const calendar = (
     <RcCalendar
       locale={zhCN}
-      style={{ zIndex: 10001 }}
       timePicker={null}
       format={format}
       defaultValue={defaultValue}
@@ -100,29 +98,28 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
       showOk={false}
       disabledDate={disabledDate}
       renderFooter={renderFooter}
+      onBlur={onCancel}
     />
   );
 
   return (
-    <div className={classNames('')}>
+    <div className={classNames(`${prefixCls}-wrap`)}>
       <RcDatePicker
         calendar={calendar}
         value={localValue}
         getCalendarContainer={() => calendarContainerRef.current}
         open={open}
       >
-        {({ value }: { value: Moment }) => (
+        {({ value: _value }: { value: Moment }) => (
           <>
             <Input
               placeholder="请输入…"
-              style={{ height: '40px', width: '253px', zIndex: Number(10002), position: 'relative' }}
-              value={inputTime || value.format(format)}
+              value={inputTime || _value.format(format)}
               onChange={handleInputChange}
               onClick={() => setOpen(true)}
-              wrapStyle={{ marginBottom: '20px' }}
               ref={inputRef}
             />
-            <div ref={calendarContainerRef} />
+            <div ref={calendarContainerRef} className={classNames(`${prefixCls}-wrapper`)} />
           </>
         )}
       </RcDatePicker>

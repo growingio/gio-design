@@ -1,12 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import RcTooltip from 'rc-tooltip';
 import { isFunction } from 'lodash';
 import { TooltipProps } from './interface';
-import { ConfigContext } from '../config-provider';
 import Link from '../link';
 import getPlacements from './placements';
 import useControlledState from '../../utils/hooks/useControlledState';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const Tooltip = (props: TooltipProps): JSX.Element => {
   const {
@@ -15,11 +14,13 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     placement = 'top',
     trigger = 'hover',
     visible,
+    disabled = false,
     onVisibleChange,
     prefixCls: customizePrefixCls,
+    subPrefixCls = 'tooltip',
     overlay,
     children,
-    arrowPointAtCenter,
+    arrowPointAtCenter = false,
     destroyTooltipOnHide,
     ...rest
   } = props;
@@ -31,17 +32,19 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
   );
 
   const isNoTitle = useMemo(() => !computedTitle && computedTitle !== 0, [computedTitle]);
-  const visbleShouldBeControl = useMemo(() => isNoTitle && !computedOverlay, [isNoTitle, computedOverlay]);
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('tooltip', customizePrefixCls);
+  const isNoOverlay = useMemo(() => !computedOverlay && computedOverlay !== 0, [computedOverlay]);
+  const isNoContent = useMemo(() => isNoTitle && isNoOverlay, [isNoTitle, isNoOverlay]);
+
+  const prefixCls = usePrefixCls(subPrefixCls, customizePrefixCls);
 
   useEffect(() => {
-    setControlledVisible(!visbleShouldBeControl && controlledVisible, true);
-  }, [visbleShouldBeControl, controlledVisible]);
+    setControlledVisible(!isNoContent && controlledVisible, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isNoContent, controlledVisible]);
 
   const tooltipOverlay = isNoTitle ? null : (
     <>
-      <span className={`${prefixCls}-inner-title`}>{title}</span>
+      <span className={`${prefixCls}-inner-title`}>{computedTitle}</span>
       {tooltipLink?.link && (
         <Link component="a" to={tooltipLink.link}>
           {tooltipLink.name || tooltipLink.link}
@@ -68,14 +71,17 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
       arrowContent={<span className={`${prefixCls}-arrow-content`} />}
       overlay={getOverlay()}
       builtinPlacements={getPlacements({ arrowPointAtCenter })}
-      visible={controlledVisible}
+      visible={controlledVisible && !disabled && !isNoContent}
       onVisibleChange={(_visible) => {
-        setControlledVisible(visbleShouldBeControl ? false : _visible);
-        if (!visbleShouldBeControl) {
+        if (disabled) {
+          return;
+        }
+        setControlledVisible(_visible);
+        if (!isNoContent) {
           onVisibleChange?.(_visible);
         }
       }}
-      destroyTooltipOnHide={visbleShouldBeControl || destroyTooltipOnHide}
+      destroyTooltipOnHide={isNoContent || destroyTooltipOnHide}
       {...rest}
     >
       {setCursor(children)}

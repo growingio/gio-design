@@ -1,14 +1,11 @@
-import React, { useContext } from 'react';
-import { ConfigContext } from '../config-provider';
+import React from 'react';
 import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { SkeletonImageProps } from './interface';
 
 const SkeletonImage = (props: SkeletonImageProps) => {
-  const {
-    prefixCls: customizePrefixCls, loading = true, delay = 0, children, width = 100, color = '#DBDEE8',
-  } = props;
-  const { getPrefixCls } = useContext(ConfigContext);
-  const prefixCls = getPrefixCls('skeleton', customizePrefixCls);
+  const { prefixCls: customizePrefixCls, loading = true, delay = 0, children, width = 100, color = '#DBDEE8' } = props;
+  const prefixCls = usePrefixCls('skeleton', customizePrefixCls);
   const shouldLoading = useDebounceLoading(loading, delay);
 
   return shouldLoading ? (
@@ -27,7 +24,9 @@ const SkeletonImage = (props: SkeletonImageProps) => {
       </div>
     </div>
   ) : (
-    children
+    <>
+      {children}
+    </>
   );
 };
 

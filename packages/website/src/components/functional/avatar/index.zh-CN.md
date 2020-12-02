@@ -44,17 +44,22 @@ group:
 | **prefixCls**      | 自定义 css 类前缀          | `string`                              |            |
 | **displayTooltip** | 用 tooltip 显示用户名      | `boolean`                             | `false`    |
 | **className**      | 自定义混入 css 类          | `string`                              |            |
+| **style**          | 自定义混入 css 样式        | `React.CSSProperties`                 |            |
 | **children**       | 设置字符用作用户头像       | `string`                              |            |
 | **placement**      | 气泡框位置，可选 12 个方位 | `string`                              | `'bottom'` |
+| **displayTooltip** | 是否显示气泡框             | `boolean`                             | false      |
+| **tooltipTitle**   | 自定义气泡框的内容         | `React.ReactNode`                     |            |
 
 ### AvatarGroup
 
-| 参数          | 说明                                                   | 类型               | 默认值     |
-| ------------- | ------------------------------------------------------ | ------------------ | ---------- |
-| **number**    | 设置显示出来的头像个数，包含最后一项显示剩余个数的头像 | `number`           | `5`        |
-| **users**     | 用户头像数据数组                                       | `UserAvatarType[]` | `[]`       |
-| **className** | 自定义混入 css 类                                      | `string`           |            |
-| **placement** | Group 下所有头像气泡框位置, 可选 12 个方位             | `string`           | `'bottom'` |
+| 参数               | 说明                                                   | 类型                  | 默认值     |
+| ------------------ | ------------------------------------------------------ | --------------------- | ---------- |
+| **number**         | 设置显示出来的头像个数，包含最后一项显示剩余个数的头像 | `number`              | `5`        |
+| **users**          | 用户头像数据数组                                       | `UserAvatarType[]`    | `[]`       |
+| **className**      | 自定义混入 css 类                                      | `string`              |            |
+| **style**          | 自定义混入 css 样式                                    | `React.CSSProperties` |            |
+| **placement**      | Group 下所有头像气泡框位置, 可选 12 个方位             | `string`              | `'bottom'` |
+| **displayTooltip** | 是否显示气泡框                                         | `boolean`             | true       |
 
 ### Option
 
@@ -62,5 +67,7 @@ group:
 interface UserAvatarType {
   name: string;
   src?: string;
+  displayTooltip?: boolean;
+  tooltipTitle?: React.ReactNode;
 }
 ```

@@ -2,8 +2,30 @@
 
 exports[`<Tag /> renders <Tag /> components 1`] = `
 <span
-  className="gio-tag gio-tag-size-medium gio-tag-type-normal"
-  onClick={[Function]}
+  aria-hidden="true"
+  className="gio-tag gio-tag-size-middle gio-tag-type-normal"
+>
+  <span
+    className="gio-tag-label"
+  />
+</span>
+`;
+
+exports[`<Tag /> renders <Tag /> components 2`] = `
+<span
+  aria-hidden="true"
+  className="gio-tag gio-tag-size-small gio-tag-type-prorupt"
+>
+  <span
+    className="gio-tag-label"
+  />
+</span>
+`;
+
+exports[`<Tag /> renders <Tag /> components 3`] = `
+<span
+  aria-hidden="true"
+  className="gio-tag gio-tag-size-large gio-tag-type-normal"
 >
   <span
     className="gio-tag-label"

@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import classNames from 'classnames';
 import Checkbox from './checkbox';
-import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import CheckboxGroupContext from './CheckboxGroupContext';
 import { CheckboxOptionType, CheckboxValueType, CheckboxGroupProps } from './interface';
 
@@ -31,12 +32,12 @@ function CheckboxGroup<T extends CheckboxValueType>({
 }: CheckboxGroupProps<T>) {
   const registeredValuesRef = React.useRef<T[]>([]);
 
-  const registerValue = React.useCallback((value: T) => {
-    registeredValuesRef.current.push(value);
+  const registerValue = React.useCallback((values: T) => {
+    registeredValuesRef.current.push(values);
   }, []);
 
-  const unRegisterValue = React.useCallback((value: T) => {
-    registeredValuesRef.current = registeredValuesRef.current.filter((_) => _ !== value);
+  const unRegisterValue = React.useCallback((values: T) => {
+    registeredValuesRef.current = registeredValuesRef.current.filter((_) => _ !== values);
   }, []);
 
   // self maintained state
@@ -53,8 +54,8 @@ function CheckboxGroup<T extends CheckboxValueType>({
     (option: CheckboxOptionType<T>) => {
       if (value === undefined) {
         // self maintained state
-        updateSelected((selected) => {
-          const newSelected = merge(selected, option, registeredValuesRef.current);
+        updateSelected((selecting) => {
+          const newSelected = merge(selecting, option, registeredValuesRef.current);
           onChange?.(newSelected);
           return newSelected;
         });
@@ -63,11 +64,10 @@ function CheckboxGroup<T extends CheckboxValueType>({
         onChange?.(newSelected);
       }
     },
-    [onChange],
+    [onChange]
   );
 
-  const { getPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = getPrefixCls('checkbox', customizePrefixCls);
+  const prefixCls = usePrefixCls('checkbox', customizePrefixCls);
   const selectedValues = refValue.current || selected || (emptyValue as T[]);
   let customChildren = children;
   if (options.length > 0) {

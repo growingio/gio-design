@@ -2,34 +2,43 @@
   "size": {
     "spacing": {
       "none": {
-        "value": "0rem"
+        "value": "0px"
       },
       "xxxs": {
-        "value": "0.125rem"
+        "value": "2px"
       },
       "xxs": {
-        "value": "0.25rem"
+        "value": "4px"
       },
       "xs": {
-        "value": "0.5rem"
+        "value": "8px"
       },
       "s": {
-        "value": "0.75rem"
+        "value": "12px"
       },
       "m": {
-        "value": "1rem"
+        "value": "16px"
+      },
+      "xm": {
+        "value": "18px"
+      },
+      "xxm": {
+        "value": "20px"
+      },
+      "xxxm": {
+        "value": "22px"
       },
       "l": {
-        "value": "1.25rem"
+        "value": "24px"
       },
       "xl": {
-        "value": "1.5rem"
+        "value": "32px"
       },
       "xxl": {
-        "value": "2rem"
+        "value": "48px"
       },
       "xxxl": {
-        "value": "2.5rem"
+        "value": "64px"
       }
     }
   }

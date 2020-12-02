@@ -1,5 +1,12 @@
 import { createContext } from 'react';
+import { defaultRootPrefixCls } from '../config-provider';
 
-const MenuPrefixClsContext = createContext('gio-menu');
+export const MenuContext = createContext({
+  prefixCls: `${defaultRootPrefixCls}-menu`,
+  verticalIndent: 16,
+});
 
-export default MenuPrefixClsContext;
+export const SubMenuContext = createContext({
+  inSubMenu: false,
+  inIconSubMenu: false,
+});

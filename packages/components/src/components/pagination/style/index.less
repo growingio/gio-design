@@ -1,6 +1,7 @@
 @import '../../../stylesheet/index.less';
 
 @pagination-prefix-cls: ~'@{component-prefix}-pagination';
+@input-prefix-cls: ~'@{component-prefix}-input';
 
 .pagination-item {
   min-width: 32px;
@@ -166,7 +167,7 @@
     letter-spacing: 0;
     &-quick-jumper {
       height: 100%;
-      .gio-input {
+      .@{input-prefix-cls} {
         display: inline;
         input {
           width: 60px;

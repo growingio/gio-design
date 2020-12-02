@@ -3,6 +3,7 @@ import RcTree, { TreeNode, TreeProps as RcTreeProps } from 'rc-tree';
 import classNames from 'classnames';
 import { DataNode, Key } from 'rc-tree/lib/interface';
 import { ConfigContext } from '../config-provider';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import renderSwitcherIcon from './iconUtil';
 
 export interface GioTreeNodeAttribute {
@@ -97,13 +98,11 @@ interface CompoundedComponent extends React.ForwardRefExoticComponent<TreeProps 
 }
 
 const Tree = React.forwardRef<RcTree, TreeProps>((props: TreeProps, ref) => {
-  const { getPrefixCls, virtual } = React.useContext(ConfigContext);
-  const {
-    prefixCls: customizePrefixCls, className, showIcon, children, switcherIcon,
-  } = props;
+  const { virtual } = React.useContext(ConfigContext);
+  const { prefixCls: customizePrefixCls, className, showIcon, children, switcherIcon } = props;
 
   const newProps = { ...props };
-  const prefixCls = getPrefixCls('tree', customizePrefixCls);
+  const prefixCls = usePrefixCls('tree', customizePrefixCls);
 
   return (
     <RcTree

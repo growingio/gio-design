@@ -1,8 +1,8 @@
 import React from 'react';
-import createSortableItem, { ItemWithId } from './SortableItem';
 import _ from 'lodash';
 import { DndProvider } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import createSortableItem, { ItemWithId } from './SortableItem';
 
 export interface SortableCollectionProps {
   container: string;
@@ -17,8 +17,24 @@ export interface SortableCollectionState {
   SortableItemClass: React.Component;
 }
 
-export default class SortableCollection extends React.PureComponent<SortableCollectionProps, {}> {
-  public static defaultProps = { container: 'div' };
+interface State {
+  collections: ItemWithId[],
+  SortableItemClass: any,
+  stateChanged: boolean,
+}
+
+export default class SortableCollection extends React.PureComponent<SortableCollectionProps, State> {
+  public static defaultProps = { container : 'div' };
+
+  constructor(props:SortableCollectionProps){
+    super(props);
+    const { collection } = this.props;
+    this.state = {
+      collections: collection,
+      SortableItemClass: createSortableItem(),
+      stateChanged: false,
+    }
+  }
 
   public static getDerivedStateFromProps(nextProps: SortableCollectionProps, state: any) {
     if (state.stateChanged) {
@@ -27,18 +43,46 @@ export default class SortableCollection extends React.PureComponent<SortableColl
     return { collection: nextProps.collection };
   }
 
-  public state: any = {
-    collection: this.props.collection,
-    SortableItemClass: createSortableItem(),
-    stateChanged: false,
+  private _handleHover = (originalSourcePosition: number, originalTargetPosition: number) => {
+    const { collection } = this.props;
+    const { collections } = this.state;
+    const source = collection[originalSourcePosition];
+    const currentSourcePosition = collections.indexOf(source);
+    const target = collection[originalTargetPosition];
+    const currentTargetPosition = collections.indexOf(target);
+    console.log('====================================');
+    console.log(collection);
+    console.log('====================================');
+    if (source) {
+      // eslint-disable-next-line react/no-access-state-in-setstate
+      const newCollection = [...collections];
+      newCollection.splice(currentSourcePosition, 1);
+      newCollection.splice(currentTargetPosition, 0, source);
+      this.setState({ collections: newCollection, stateChanged: true });
+    }
+  };
+
+  private _handleDrop = () => {
+    const { collection, onSorted } = this.props;
+    const { collections } = this.state;
+    if (collection !== collections) {
+      onSorted(collections);
+    }
+  };
+
+  private _handleCancel = () => {
+    const { collection } = this.props;
+    this.setState({ collections: collection, stateChanged: true });
   };
 
   public render() {
-    const SortableItem = this.state.SortableItemClass;
+    const { collection, getId, template, container } = this.props;
+    const { collections, SortableItemClass } = this.state;
+    const SortableItem = SortableItemClass;
 
-    const children = this.state.collection.map((props: ItemWithId, i: number) => {
-      const originalPosition = this.props.collection.indexOf(props);
-      const key = this.props.getId ? this.props.getId(props, i) : props.value;
+    const children = collections.map((props: ItemWithId, i: number) => {
+      const originalPosition = collection.indexOf(props);
+      const key = getId ? getId(props, i) : props.value;
       const canDrag = props.canDrag === false ? props.canDrag : true;
       return (
         <SortableItem
@@ -50,7 +94,7 @@ export default class SortableCollection extends React.PureComponent<SortableColl
           onHover={this._handleHover}
           onDrop={this._handleDrop}
           onCancel={this._handleCancel}
-          template={this.props.template}
+          template={template}
         />
       );
     });
@@ -58,37 +102,11 @@ export default class SortableCollection extends React.PureComponent<SortableColl
     return (
       <DndProvider backend={HTML5Backend as any}>
         {React.createElement(
-          this.props.container,
+          container,
           _.omit(this.props, ['collection', 'container', 'onSorted', 'template']),
           children
         )}
       </DndProvider>
     );
   }
-
-  private _handleHover = (originalSourcePosition: number, originalTargetPosition: number) => {
-    const source = this.props.collection[originalSourcePosition];
-    const currentSourcePosition = this.state.collection.indexOf(source);
-    const target = this.props.collection[originalTargetPosition];
-    const currentTargetPosition = this.state.collection.indexOf(target);
-    console.log('====================================');
-    console.log(this.state.collection);
-    console.log('====================================');
-    if (source) {
-      const newCollection = [...this.state.collection];
-      newCollection.splice(currentSourcePosition, 1);
-      newCollection.splice(currentTargetPosition, 0, source);
-      this.setState({ collection: newCollection, stateChanged: true });
-    }
-  };
-
-  private _handleDrop = () => {
-    if (this.props.collection !== this.state.collection) {
-      this.props.onSorted(this.state.collection);
-    }
-  };
-
-  private _handleCancel = () => {
-    this.setState({ collection: this.props.collection, stateChanged: true });
-  };
 }
