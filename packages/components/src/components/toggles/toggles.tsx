@@ -22,9 +22,11 @@ const Toggles: React.FC<TogglesProps> = (props) => {
   const [status, setStatus] = useState(defaultChecked || false);
 
   const changeStatus = () => {
-    !props.disabled && setStatus(!status);
-    props.onChange && props.onChange(status ? inactiveValues : activeValues);
-    props.onClick && props.onClick(status ? inactiveValues : activeValues);
+    if (disabled) {
+      setStatus(!status);
+      props.onChange && props.onChange(status ? inactiveValues : activeValues);
+      props.onClick && props.onClick(status ? inactiveValues : activeValues);
+    }
   };
 
   return (
