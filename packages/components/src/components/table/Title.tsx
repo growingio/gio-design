@@ -10,10 +10,10 @@ import { SortOrder, TitleProps } from './interface';
 export const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): SortOrder =>
   current === null ? sortDirections[0] : sortDirections[sortDirections.indexOf(current) + 1];
 
-const Title = <RecordType,>(props: TitleProps<RecordType>) => {
+const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement => {
   const { prefixCls, column, onTriggerStateUpdate } = props;
 
-  const renderSorter = () => {
+  const renderSorter = (): React.ReactNode => {
     const { sorterState, updateSorterStates } = props;
     if (isUndefined(sorterState)) {
       return null;
@@ -21,7 +21,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
     const { sortDirections = ['ascend', 'descend', null] } = column;
     const { sortOrder: sorterOrder } = sorterState;
 
-    const handleSorterChange = () => {
+    const handleSorterChange = (): void => {
       updateSorterStates({
         ...sorterState,
         sortOrder: getNextSortDirection(sortDirections, sorterOrder),
@@ -56,13 +56,13 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
     );
   };
 
-  const renderFilter = () => {
+  const renderFilter = (): React.ReactNode => {
     const { filterState, updateFilterStates } = props;
     if (isUndefined(filterState)) {
       return null;
     }
     const { filteredKeys, filters } = filterState;
-    const handleFilterPopoverClick = (newFilteredKeys: string[]) => {
+    const handleFilterPopoverClick = (newFilteredKeys: string[]): void => {
       updateFilterStates({ ...filterState, filteredKeys: newFilteredKeys });
       onTriggerStateUpdate(true);
     };
@@ -87,7 +87,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>) => {
     );
   };
 
-  const renderInfo = () => {
+  const renderInfo = (): React.ReactNode => {
     const { info } = column;
     if (isUndefined(info)) {
       return null;
