@@ -19,8 +19,9 @@ const TextArea: React.FC<TextAreaProps> = ({
   ...rest
 }: TextAreaProps) => {
   const prefixCls = usePrefixCls('input');
+  const hasMaxLength = maxLength !== undefined && maxLength > 0;
   const wrapClass = classNames(className, prefixCls, {
-    [`${prefixCls}-showcount`]: maxLength > 0,
+    [`${prefixCls}-showcount`]: hasMaxLength,
   });
   const inputClass = classNames(`${prefixCls}-content`, `${prefixCls}-textarea`, {
     [`${prefixCls}-textarea-noresize`]: !resize,
@@ -36,7 +37,7 @@ const TextArea: React.FC<TextAreaProps> = ({
 
   let finalValue = value ?? '';
 
-  if (maxLength > 0) {
+  if (hasMaxLength) {
     finalValue = `${finalValue}`.slice(0, maxLength);
     extraProps['data-count'] = `${finalValue.length} / ${maxLength}`;
   }
