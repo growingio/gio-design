@@ -9,7 +9,7 @@ nav:
 
 # @gio-design/components 更新日志
 
-## 20.11.4
+## 20.11.5
 
 - component
 

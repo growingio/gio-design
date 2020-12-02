@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Menu, { MenuItem, SubMenu } from '@gio-design/components/es/components/menu';
 import '@gio-design/components/es/components/menu/style/css.js';
-import { AppOutlined } from '@gio-design/icons';
+import { AppOutlined, MapChartOutlined } from '@gio-design/icons';
 import './demo.less';
 
 export default () => {
@@ -19,12 +19,20 @@ export default () => {
       <Menu className="demo-menu-vertical" mode="vertical" selectedKey={selectedKey} onClick={handleClick}>
         <SubMenu key="sub-1" title="功能名称-1" icon={<AppOutlined />}>
           <MenuItem key="sub-menu-1-1">功能名称-1-1</MenuItem>
-          <MenuItem key="sub-menu-1-2">功能名称-1-2</MenuItem>
+          <MenuItem key="sub-menu-1-2" icon={<MapChartOutlined />}>
+            功能名称-1-2
+          </MenuItem>
         </SubMenu>
-        <SubMenu key="sub-2" title="功能名称-2" icon={<AppOutlined />}>
+        <SubMenu key="sub-2" title="功能名称-2">
           <MenuItem key="sub-menu-2-1">功能名称-2-1</MenuItem>
-          <MenuItem key="sub-menu-2-2">功能名称-2-2</MenuItem>
+          <MenuItem key="sub-menu-2-2" icon={<MapChartOutlined />}>
+            功能名称-2-2
+          </MenuItem>
         </SubMenu>
+        <MenuItem key="sub-menu-3">功能名称-3</MenuItem>
+        <MenuItem key="sub-menu-4" icon={<MapChartOutlined />}>
+          功能名称-4
+        </MenuItem>
       </Menu>
     </div>
   );

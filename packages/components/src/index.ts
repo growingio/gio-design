@@ -47,6 +47,7 @@ export { default as Form, FormLayout } from './components/form';
 export { default as TimePicker } from './components/time-picker';
 export { default as Grid } from './components/grid';
 export { default as Cascader } from './components/cascader';
+export { default as DatePicker, DateRangePicker } from './components/date-picker';
 
 // provide config context
 export { ConfigContext, ConfigConsumer, withConfigConsumer } from './components/config-provider';
