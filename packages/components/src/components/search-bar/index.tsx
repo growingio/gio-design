@@ -82,10 +82,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
-    const newValue = findStorage(storageKey, e.target.value);
-    setSearchStorage(newValue);
-    handleFocus();
-    newValue.length === 0 && setShowDropdown(false);
+    setShowDropdown(false);
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -139,8 +136,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
             key={item}
             aria-hidden="true"
           >
-            {(value || searchValue) && <mark className={`${prefixCls}-dropdown-item-mark`}>{value || searchValue}</mark>}
-            {item.replace(value || searchValue,'')}
+            {item}
           </div>
         ))}
       </div>
