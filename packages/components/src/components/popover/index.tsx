@@ -3,6 +3,8 @@ import Tooltip from '../tooltip';
 import { PopoverProps } from './interface';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
+export { PopoverProps } from './interface';
+
 const Popover: React.FC<PopoverProps> = (props: PopoverProps) => {
   const { children, contentArea, footerArea, prefixCls: customizePrefixCls, subPrefixCls = 'popover', ...rest } = props;
   const prefixCls = usePrefixCls(subPrefixCls, customizePrefixCls);

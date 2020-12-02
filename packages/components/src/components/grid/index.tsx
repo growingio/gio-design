@@ -5,6 +5,8 @@ import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { GridProps } from './interface';
 import { clip, dataMap, isNumber } from './help';
 
+export { GridProps } from './interface';
+
 const Grid: React.FC<GridProps> = (props: React.PropsWithChildren<GridProps>) => {
   const {
     component: Component = 'div',

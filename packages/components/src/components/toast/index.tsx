@@ -16,6 +16,8 @@ import {
   NotificationInstance,
 } from './interface';
 
+export { ConfigOptions as ToastConfigOptions, TToastType as ToastType } from './interface';
+
 let key = 1;
 let toastInstance: NotificationInstance;
 let defaultDuration = 2;

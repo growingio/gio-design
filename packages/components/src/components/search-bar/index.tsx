@@ -6,6 +6,8 @@ import { SearchBarProps } from './interfaces';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { SizeContext } from '../config-provider/SizeContext';
 
+export { SearchBarProps } from './interfaces';
+
 const getStorage = (key: string): string[] => {
   const empty: string[] = [];
   try {
@@ -105,8 +107,8 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
 
   // 按esc建关闭下拉框
   const handleKeyUp = (e: any) => {
-    (e.keyCode === 27) && handleBlur(e);
-  }
+    e.keyCode === 27 && handleBlur(e);
+  };
 
   const renderStorage = () => {
     if (!showStorage || !showDropdown) {

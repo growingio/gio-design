@@ -5,19 +5,19 @@ export type HtmlElement = keyof React.ReactHTML;
 
 export interface ILinkProps {
   /**
-   自定义 Link 根元素使用的组件
+   * 自定义 Link 根元素使用的组件
    */
   component: React.ElementType;
   /**
-   跳转目标链接
+   * 跳转目标链接
    */
   to?: string;
   /**
-   失效状态
+   * 失效状态
    */
   disabled?: boolean;
   /**
-   替代 Link 组件 class 的 gio-link 前缀
+   * 替代 Link 组件 class 的 gio-link 前缀
    */
   prefix?: string;
 }
@@ -27,7 +27,7 @@ export interface LinkTypeMap<P = {}, D extends React.ElementType = 'a'> {
   defaultComponent: D;
 }
 
-export type TLinkProps<D extends React.ElementType = LinkTypeMap['defaultComponent'], P = {}> = OverrideProps<
+export type LinkProps<D extends React.ElementType = LinkTypeMap['defaultComponent'], P = {}> = OverrideProps<
   LinkTypeMap<P, D>,
   D
 >;
