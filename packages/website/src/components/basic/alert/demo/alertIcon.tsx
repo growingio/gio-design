@@ -1,9 +1,10 @@
 import * as React from 'react';
 import Alert from '@gio-design/components/es/components/alert';
 import '@gio-design/components/es/components/alert/style/index.less';
+import './demo.less';
 
 export default () => (
-  <div>
+  <div className="gio-alert-demo">
     <Alert message="Info Text" showIcon />
     <Alert type="success" message="Success Text" showIcon />
     <Alert type="warning" message="Warning Text" showIcon />

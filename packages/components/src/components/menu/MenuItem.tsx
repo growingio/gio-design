@@ -11,7 +11,7 @@ const MenuItem: React.FC<IMenuItemProps> = (props: IMenuItemProps) => {
 
   let inlineIndent = verticalIndent;
   if (inSubMenu && inIconSubMenu) {
-    inlineIndent = verticalIndent + 8;
+    inlineIndent = verticalIndent + 6;
   }
   if (inSubMenu && !inIconSubMenu) {
     inlineIndent = verticalIndent / 2;
