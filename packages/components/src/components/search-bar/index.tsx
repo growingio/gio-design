@@ -84,10 +84,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
-    const newValue = findStorage(storageKey, e.target.value);
-    setSearchStorage(newValue);
-    handleFocus();
-    newValue.length === 0 && setShowDropdown(false);
+    setShowDropdown(false);
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -132,24 +129,18 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
             </Button>
           </div>
         )}
-        {searchStorage
-          .slice(searchStorage.length - storageNum >= 0 ? searchStorage.length - storageNum : 0, searchStorage.length)
-          .reverse()
-          .map((item) => (
-            <div
-              onClick={() => {
-                onChange(item);
-              }}
-              className={`${prefixCls}-dropdown-item`}
-              key={item}
-              aria-hidden="true"
-            >
-              {(value || searchValue) && (
-                <mark className={`${prefixCls}-dropdown-item-mark`}>{value || searchValue}</mark>
-              )}
-              {item.replace(value || searchValue, '')}
-            </div>
-          ))}
+        {searchStorage.slice((searchStorage.length - storageNum) >= 0 ? (searchStorage.length - storageNum) : 0, searchStorage.length).reverse().map((item) => (
+          <div
+            onClick={() => {
+              onChange(item);
+            }}
+            className={`${prefixCls}-dropdown-item`}
+            key={item}
+            aria-hidden="true"
+          >
+            {item}
+          </div>
+        ))}
       </div>
     );
   };

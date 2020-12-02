@@ -18,10 +18,15 @@ const Checkbox: React.FC<CheckboxProps> = ({
 }) => {
   const rcCheckbox = React.useRef(null);
 
+  const [check, setChecked] = React.useState(restProps.checked);
+
   const checkGroup = React.useContext(CheckboxGroupContext);
 
   const handleChange = React.useCallback(
     (e) => {
+      if(!checkGroup) {
+        setChecked(!check);
+      }
       if (onChange) onChange(e);
       checkGroup?.toggleOption?.({ label: children, value: restProps.value });
     },
@@ -58,9 +63,9 @@ const Checkbox: React.FC<CheckboxProps> = ({
   const checkboxIconClass = classNames({
     [`${prefixCls}-icon`]: true,
     [`${prefixCls}-icon-indeterminate`]: indeterminate,
-    [`${prefixCls}-icon-cool`]: !(checkProps.disabled || checkProps.checked || checkProps.indeterminate),
+    [`${prefixCls}-icon-cool`]: !(checkProps.disabled || checkProps.checked || check || checkProps.indeterminate),
     [`${prefixCls}-icon-disabled`]: checkProps.disabled,
-    [`${prefixCls}-icon-checked`]: checkProps.checked,
+    [`${prefixCls}-icon-checked`]: check || checkProps.checked,
   });
 
   return (

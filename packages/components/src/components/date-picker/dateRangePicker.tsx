@@ -15,18 +15,34 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
 
   const calendarContainerRef = useRef(null);
+  const toggleContainer = useRef(null);
   const [open, setOpen] = useState(false);
   const [timeRange, setTimeRange] = useState(value);
   const [leftInputTimeRange, setLeftInputTimeRange] = useState('');
   const [rightInputTimeRange, setRightInputTimeRange] = useState('');
+
   useEffect(() => {
     setTimeRange(value);
   }, [value]);
+
+  const handleBlur = (event: any) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if(open && !toggleContainer.current.contains(event.target)){
+      onCancel();
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('click',handleBlur);
+  })
+
   const onSelect = (values: Array<Moment>): void => {
     setTimeRange(values);
-    props?.onSelect(values);
+    props.onSelect?.(values);
     !showFooter && setOpen(false);
   };
+
   const onChange = (values: Array<Moment>): void => {
     setTimeRange(values);
   };
@@ -74,7 +90,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     setTimeRange(timeRange);
     setLeftInputTimeRange('');
     setRightInputTimeRange('');
-    props.onChange(timeRange);
+    props.onChange?.(timeRange);
   };
 
   const onCancel = () => {
@@ -82,7 +98,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     setTimeRange(value);
     setLeftInputTimeRange('');
     setRightInputTimeRange('');
-    props.onChange(value);
+    props.onChange?.(value);
   };
 
   const renderFooter = () => (
@@ -120,7 +136,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   );
 
   return (
-    <div className={classNames('')}>
+    <div className={classNames(`${prefixCls}-wrap-range`)} ref={toggleContainer}>
       <RcDatePicker
         animation="slide-up"
         calendar={calendar}
