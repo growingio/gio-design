@@ -16,7 +16,7 @@ export default () => {
         size="small"
         style={{ marginBottom: '20px', display: 'block', width: 300 }}
         max={10}
-        min={2}
+        min={3}
       />
 
       <Input.InputNumber
