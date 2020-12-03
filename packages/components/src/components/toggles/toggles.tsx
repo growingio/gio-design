@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { TogglesProps } from './interface';
@@ -10,6 +10,7 @@ const Toggles: React.FC<TogglesProps> = (props) => {
     inactiveColor,
     activeValue,
     defaultChecked,
+    checked,
     disabled,
     className,
     suffixContent,
@@ -20,6 +21,10 @@ const Toggles: React.FC<TogglesProps> = (props) => {
   const activeValues = activeValue || true;
 
   const [status, setStatus] = useState(defaultChecked || false);
+
+  useEffect(() => {
+    setStatus(checked)
+  }, [checked])
 
   const changeStatus = () => {
     if (disabled) {
