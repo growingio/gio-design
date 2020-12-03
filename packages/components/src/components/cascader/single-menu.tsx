@@ -1,11 +1,11 @@
-import React, { ReactElement, useEffect, useRef, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import groupBy from 'lodash/groupBy';
 import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
 import trim from 'lodash/trim';
 
-import { dataFilter, makeSearchParttern, toInt, withPrefix } from './helper';
+import { dataFilter, makeSearchParttern, mergeKeyMapping, toInt, useMergeRef, withPrefix } from './helper';
 import Empty from './empty';
 import MenuItem, { Props as MenuItemProps, NodeData } from './menu-item';
 
@@ -15,7 +15,7 @@ const getMayBeElement = (maybeElement: MaybeElementOrFn, dataSource: NodeData[])
   return isFunction(maybeElement) ? maybeElement(dataSource) : maybeElement;
 };
 
-export interface Props extends Omit<MenuItemProps, 'dataSource' | 'hasChild'> {
+export interface Props extends Omit<MenuItemProps, 'dataSource' | 'hasChild' | 'expanded'> {
   dataSource?: NodeData[];
   onRender?: (nodeData: NodeData) => ReactElement;
   open?: boolean;
@@ -27,6 +27,7 @@ export interface Props extends Omit<MenuItemProps, 'dataSource' | 'hasChild'> {
   getEmpty?: (keyword?: string) => React.ReactElement;
   groupName?: MaybeElementOrFn;
   parentMenu?: HTMLDivElement;
+  expandedId?: NodeData['value'];
 }
 
 const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
@@ -37,7 +38,7 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     value,
     depth = 0,
     ignoreCase,
-    keyMapping = { label: 'label', value: 'value' },
+    keyMapping: _keyMapping,
     keyword: originKeyword,
     deepSearch = false,
     parentsData = [],
@@ -46,26 +47,18 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     groupName,
     getEmpty,
     parentMenu,
+    expandedId,
     ...others
   } = props;
+  const keyMapping = mergeKeyMapping(_keyMapping);
   const isRootMenu = depth === 0;
   const [innerStyle, setInnerStyle] = useState({
     ...style,
     visibility: parentMenu ? 'hidden' : '',
   } as React.CSSProperties);
   const keyword = trim(originKeyword);
-  const wrapRef = useRef<HTMLDivElement>(null);
+  const wrapRef = useMergeRef(ref);
   const withWrapperCls = withPrefix('cascader-menu');
-
-  // 合并 ref
-  useEffect(() => {
-    if (typeof ref === 'function') {
-      ref(wrapRef.current);
-    } else if (ref) {
-      // eslint-disable-next-line no-param-reassign
-      ref.current = wrapRef.current;
-    }
-  }, [ref]);
 
   // 超出浏览器高度与上一级对齐
   useEffect(() => {
@@ -97,13 +90,15 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   let menu;
 
   if (isEmpty(dataSource) && isRootMenu) {
-    menu = getEmpty ? getEmpty(keyword) : <Empty tip={!keyword ? '无搜索结果' : undefined} />;
+    menu = getEmpty ? getEmpty(keyword) : <Empty tip={keyword ? '无搜索结果' : undefined} />;
   } else {
     menu = Object.keys(groupData).map((groupId) => (
       <div key={groupId} className={withWrapperCls('group')}>
-        <div className={withWrapperCls('group-name')}>
-          {getMayBeElement(groupName, groupData[groupId]) ?? groupData[groupId][0].groupName}
-        </div>
+        {groupName && (
+          <div className={withWrapperCls('group-name')}>
+            {getMayBeElement(groupName, groupData[groupId]) ?? groupData[groupId][0].groupName}
+          </div>
+        )}
         {groupData[groupId].map((data, i) => (
           <MenuItem
             key={[depth, i].join('-')}
@@ -114,6 +109,7 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
             deepSearch={deepSearch}
             keyMapping={keyMapping}
             ignoreCase={ignoreCase}
+            expanded={expandedId === data[keyMapping.value]}
             {...others}
           />
         ))}

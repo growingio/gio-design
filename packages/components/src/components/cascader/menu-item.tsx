@@ -30,6 +30,7 @@ export interface Props {
   keyMapping?: KeyMapping;
   value?: Value;
   keyword?: string;
+  expanded?: boolean;
   ignoreCase?: boolean;
   deepSearch?: boolean;
   parentsData?: NodeData[];
@@ -39,7 +40,7 @@ export interface Props {
   selectAny?: boolean;
   onTrigger?: (event: MouseEvent | KeyboardEvent, nodeData: NodeData) => void;
   beforeSelect?: (event: MouseEvent | KeyboardEvent, nodeData: NodeData) => void | NodeData[] | Promise<NodeData[]>;
-  onSelect?: (nodeData: NodeData, parentsData: NodeData[]) => void;
+  onSelect?: (nodeData: NodeData, parentsData: NodeData[], event: MouseEvent | KeyboardEvent) => void;
   onKeyUp?: (event: KeyboardEvent) => void;
   onFocus?: (event: FocusEvent) => void;
   onBlur?: (event: FocusEvent) => void;
@@ -81,6 +82,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     style,
     dataSource: originDataSource,
     value,
+    expanded,
     keyMapping = { label: 'label', value: 'value' },
     parentsData = [],
     beforeSelect,
@@ -100,7 +102,6 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     ignoreCase = true,
     deepSearch = false,
   } = props;
-
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
   const { label: dataLabel, value: dataValue, disabled } = dataKeyMapping(dataSource, keyMapping);
   const { children } = dataSource;
@@ -112,7 +113,11 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     event.persist();
     return { ...event };
   };
+
   const resolveBeforeSelect = (event: MouseEvent | KeyboardEvent) => {
+    if (disabled) {
+      return Promise.reject(Error('disabled'));
+    }
     // const eventCopy = getCopyEvent(event);
     // 没有子节点 || selectAny 先调用 beforeSelect 回调
     const isSelect = noChild || (event.type.toLowerCase() === mergedTrigger && selectAny);
@@ -122,7 +127,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       if (isEmpty(data.children) || selectAny) {
         setDataSource(data);
         try {
-          onSelect?.(data, parentsData);
+          onSelect?.(data, parentsData, event);
         } catch (e) {
           throw new Error(e);
         }
@@ -138,14 +143,16 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         return pipe(dataSource);
       });
   };
+
   const handleMouseEnter = (event: MouseEvent<HTMLDivElement>) => {
     const target = event.nativeEvent.target as HTMLDivElement;
     // 这里有个奇怪的问题，点 input 会触发这里的 MouseEvent 事件
-    if (trigger === 'hover' && target.closest('.cascader-menu-outer')) {
+    if (trigger === 'hover' && target.closest('.cascader-menu-outer') && !disabled) {
       onTrigger?.(event, dataSource);
     }
     onMouseEnter?.(event, dataSource);
   };
+
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     const eventCopy = getCopyEvent(event);
     resolveBeforeSelect(eventCopy)
@@ -154,14 +161,18 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       })
       .catch(() => onClick?.(eventCopy, dataSource));
   };
+
   const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
     if ([' ', 'Enter', 'ArrowRight'].indexOf(event.key) >= 0) {
       event.preventDefault();
       event.stopPropagation();
-      resolveBeforeSelect(getCopyEvent(event));
+      resolveBeforeSelect(getCopyEvent(event)).catch(() => {
+        onKeyUp?.(event);
+      });
     }
     onKeyUp?.(event);
   };
+
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === ' ') {
       event.preventDefault();
@@ -196,13 +207,16 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   return (
     <div
       role="menuitem"
-      className={classNames(className, withWrapperCls(), disabled && withPrefix('disable'))}
+      aria-expanded={expanded}
+      className={classNames(className, withWrapperCls(), disabled && withWrapperCls('disabled'))}
       ref={ref}
       style={style}
     >
       <div
         className={withWrapperCls('inner')}
         role="button"
+        aria-haspopup={mergedHasChild}
+        aria-disabled={disabled}
         tabIndex={0}
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
 import { Props as MenuItemProps, NodeData } from './menu-item';
-import { toInt, useDynamicData, dataKeyMapping, withPrefix } from './helper';
+import { dataKeyMapping, toInt, useDynamicData, useKeyboardNav, useMergeRef, withPrefix } from './helper';
 import SingleMenu, { Props as SingleMenuProps } from './single-menu';
 
 export type Props = SingleMenuProps;
@@ -26,7 +26,7 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
   const wrapRef = useRef<HTMLDivElement>((null as unknown) as HTMLDivElement);
   const withWrapperCls = withPrefix('cascader-menu');
-  const [canOpen, setCanOpen] = useState(open);
+  const [canOpen, setCanOpen] = useDynamicData(open);
   const [triggerData, setTriggerData] = useState<NodeData>();
   const [offset, setOffset] = useState([0, 0]);
 
@@ -50,8 +50,8 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
     });
     setDataSource(nextData);
   };
-  const onSelect: MenuItemProps['onSelect'] = (nodeData, parents) => {
-    userOnSelect?.(nodeData, parents);
+  const onSelect: MenuItemProps['onSelect'] = (nodeData, parents, event) => {
+    userOnSelect?.(nodeData, parents, event);
     setCanOpen(false);
   };
 
@@ -89,6 +89,7 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
         onTrigger={onTrigger}
         onSelect={onSelect}
         className={classNames(className, withWrapperCls())}
+        expandedId={triggerData?.[keyMapping.value] as string}
         ref={wrapRef}
       />
       {childMenu}
@@ -98,10 +99,13 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
 
 const Menu = React.forwardRef<HTMLDivElement, SingleMenuProps>((props, ref) => {
   const { className, style } = props;
+  const wrapRef = useMergeRef(ref);
 
   // @TODO useKeyboardNav
+  useKeyboardNav(wrapRef);
+
   return (
-    <div ref={ref} className={classNames('cascader-menu-outer', className)} style={style}>
+    <div ref={wrapRef} className={classNames('cascader-menu-outer', className)} style={style}>
       <InnerMenu {...props} />
     </div>
   );
