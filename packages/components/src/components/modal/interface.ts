@@ -247,3 +247,7 @@ export interface IHookModalProps {
 export interface IUseModal {
   (): [IModalStaticFunctions, ReactElement];
 }
+
+export interface IModalConfigs {
+  prefixCls?: string;
+}
