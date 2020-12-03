@@ -60,6 +60,7 @@ describe('DateRangePicker ui test', () => {
 });
 
 describe('DatePicker action Test', () => {
+  /*
   it('should trigger onChange', () => {
     const onChange = jest.fn();
     const wrapper = mount(
@@ -79,7 +80,7 @@ describe('DatePicker action Test', () => {
     });
   });
 
-  /*
+
     it('should trigger onConfirm', () => {
       const onConfirm = jest.fn();
       const renderFooter = () => (
