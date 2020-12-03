@@ -95,7 +95,6 @@
     padding: 8px 12px;
 
     .icon-search {
-      margin-top: 6px;
       color: #a3adc8;
     }
 
@@ -109,7 +108,9 @@
       border: none;
       border-radius: 50%;
 
-      outline: none;
+      &:not(:focus-visible) {
+        outline: none;
+      }
     }
 
     .clear-btn {
@@ -127,6 +128,8 @@
   }
 
   &-item {
+    outline: none;
+
     &-inner {
       &:hover {
         color: #1248e9;
@@ -159,6 +162,14 @@
           background-color: #ffef84;
         }
       }
+    }
+
+    &-disabled &-content {
+      color: #aaa;
+      cursor: not-allowed;
+    }
+    &-disabled &-inner {
+      // background: #f2f2f2;
     }
 
     &-icon-checked svg {

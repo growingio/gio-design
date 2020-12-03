@@ -12,7 +12,7 @@ group:
 
 ## 基础用法
 
-<code src='./demo/basic.tsx' title='基础用法' />
+<code src='./demo/basic.tsx' title='基础用法' desc="可以试试用 `Tab` 和 方向键来控制，用空格或回车键来选择" />
 
 ## 键名映射
 
@@ -71,12 +71,13 @@ group:
 | selectAny            | 是否可以选择有子节点的节点                       | boolean                                                                                               | -       |
 | onTrigger            | 打开菜单的回调                                   | (event: MouseEvent \| KeyboardEvent, nodeData: NodeData) => void                                      | -       |
 | beforeSelect         | 选中菜单前的回调，可以在这里动态注册子节点的数据 | (event: MouseEvent \| KeyboardEvent, nodeData: NodeData) => void \| NodeData[] \| Promise<NodeData[]> | -       |
-| onSelect             | 选中菜单后的回调                                 | (nodeData: NodeData, parentsData: NodeData[]) => void                                                 | -       |
+| onSelect             | 选中菜单后的回调                                 | (nodeData: NodeData, parentsData: NodeData[], event: MouseEvent \| KeyboardEvent) => void             | -       |
 | onMouseEnter         | 菜单项的事件回调                                 | (event: MouseEvent, nodeData: NodeData) => void                                                       | -       |
 | onKeyUp              | 菜单项的事件回调                                 | (event: KeyboardEvent) => void                                                                        | -       |
 | onFocus              | 菜单项的事件回调                                 | (event: FocusEvent) => void                                                                           | -       |
 | onBlur               | 菜单项的事件回调                                 | (event: FocusEvent) => void                                                                           | -       |
 | onMouseLeave         | 菜单项的事件回调                                 | (event: MouseEvent) => void                                                                           | -       |
+| destroyTooltipOnHide | 关闭下拉面板后是否销毁 Menu 元素                 | boolean                                                                                               | `true`  |
 | onRender             | 自定义渲染菜单项的回调                           | (nodeData: NodeData) => ReactElement                                                                  | -       |
 | prefixCls            | className 前缀                                   | string                                                                                                | -       |
 | size                 | 控件尺寸                                         | SizeType                                                                                              | -       |
