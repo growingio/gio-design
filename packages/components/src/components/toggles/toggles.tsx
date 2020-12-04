@@ -27,7 +27,7 @@ const Toggles: React.FC<TogglesProps> = (props) => {
   }, [checked])
 
   const changeStatus = () => {
-    if (disabled) {
+    if (!disabled) {
       setStatus(!status);
       props.onChange && props.onChange(status ? inactiveValues : activeValues);
       props.onClick && props.onClick(status ? inactiveValues : activeValues);
