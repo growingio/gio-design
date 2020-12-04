@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import * as module from '../utils';
-import 'jest-canvas-mock';
 const canvas = require('canvas');
 const { Canvas } = canvas;
 const jsdom = require('jsdom');
