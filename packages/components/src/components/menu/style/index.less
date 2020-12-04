@@ -163,6 +163,16 @@
   &-inline {
     font-size: @size-font-14;
 
+    & > li:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    & > li:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
     & > .@{menu-prefix-cls}-item,
     & > .@{menu-prefix-cls}-submenu > .@{menu-prefix-cls}-submenu-title {
       height: 40px;
@@ -170,14 +180,11 @@
     }
 
     & > .@{menu-prefix-cls}-item {
-      margin-top: 16px;
-    }
-
-    &:not(:first-child) {
-      padding-top: 16px;
+      margin-top: 4px;
     }
 
     & > .@{menu-prefix-cls}-submenu {
+      padding-top: 16px;
       color: @palette-gray-6;
 
       & > .@{menu-prefix-cls}-submenu-title {
