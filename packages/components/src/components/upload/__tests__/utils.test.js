@@ -2,9 +2,10 @@
  * @jest-environment jsdom
  */
 import * as module from '../utils';
-const canvas = require('canvas');
+// const canvas = require('canvas');
+import canvas from 'canvas';
 const { Canvas } = canvas;
-const jsdom = require('jsdom');
+import jsdom from 'jsdom';
 const { JSDOM } = jsdom;
 
 const url =
