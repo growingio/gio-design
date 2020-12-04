@@ -4,6 +4,8 @@ import TimePicker from './TimePicker';
 import { TimePickerProps } from './interface';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
+export { TimePickerProps } from './interface';
+
 export default ({ prefixCls: customizePrefixCls, ...props }: TimePickerProps) => {
   const prefixCls = usePrefixCls('time-picker', customizePrefixCls);
 
