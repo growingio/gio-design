@@ -131,9 +131,40 @@ describe('Testing Table', () => {
   });
 
   test('props pagination', () => {
-    const wrapper = mount(getTable());
-    wrapper.setProps({ pagination: true });
+    const onChange = jest.fn();
+    const dataSource = Array.from({ length: 100 }, (_, key) => ({ a: key, b: key, c: key, d: key }));
+    const _columns = [
+      {
+        title: 'A',
+        dataIndex: 'a',
+        key: 'a',
+        width: 200,
+      },
+      {
+        title: 'B',
+        dataIndex: 'b',
+        key: 'b',
+        width: 200,
+      },
+      {
+        title: 'C',
+        dataIndex: 'c',
+        key: 'c',
+        width: 200,
+      },
+      {
+        title: 'D',
+        dataIndex: 'd',
+        key: 'd',
+        width: 200,
+      },
+    ];
+    const wrapper = mount(
+      <Table title="列表标题" dataSource={dataSource} columns={_columns} pagination={true} onChange={onChange} />
+    );
     expect(wrapper.exists('.gio-table-pagination')).toBe(true);
+    wrapper.find('.gio-pagination-item').at(1).simulate('click');
+    expect(onChange).toBeCalledWith({ current: 2, pageSize: 10 }, [], []);
   });
 
   it('should be render rightly', () => {
