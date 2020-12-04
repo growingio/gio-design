@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import { setup, clear } from '../tests/mock';
 import { mountTest, mountSnapshot } from '../tests/mount';
 import { dataUrl, testFile } from './utils.test';

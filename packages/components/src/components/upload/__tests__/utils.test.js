@@ -2,11 +2,8 @@
  * @jest-environment jsdom
  */
 import * as module from '../utils';
-// const canvas = require('canvas');
-import canvas from 'canvas';
-const { Canvas } = canvas;
-import jsdom from 'jsdom';
-const { JSDOM } = jsdom;
+import { Canvas } from 'canvas';
+import { JSDOM } from 'jsdom';
 
 const url =
   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606823912493&di=291fcc824e1168b41b0876a619a565aa&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fde42849c2bb85b153d28e7f93341f54501e9f2b618f06-2PtOQh_fw658';

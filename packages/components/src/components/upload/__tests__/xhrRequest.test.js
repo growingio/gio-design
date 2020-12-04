@@ -1,8 +1,6 @@
-import React from 'react';
-import { mount, render } from 'enzyme';
 import 'xhr-mock';
 import xhrRequest, { getError, getBody } from '../xhrRequest';
-import { testFile, dataUrl } from './utils.test';
+import { testFile } from './utils.test';
 export const getMock = (status) => {
   const open = jest.fn();
   const onload = jest.fn((x) => {});
