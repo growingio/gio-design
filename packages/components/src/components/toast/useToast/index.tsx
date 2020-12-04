@@ -7,13 +7,13 @@ import {
 } from 'rc-notification/lib/Notification';
 import { ConfigConsumer, ConfigConsumerProps } from '../../config-provider';
 import { isArgsProps } from '..';
-import { ArgsProps, IHookNotificationInstance, JointContent, ConfigDuration, ConfigOnClose } from '../interface';
+import { ArgsProps, JointContent, ConfigDuration, ConfigOnClose, IToastMethods } from '../interface';
 
 const createUseToast = (
   getToastInstance: (args: ArgsProps, callback: (i: any) => void) => void,
   getNoticeProps: (args: ArgsProps, prefixCls: string) => RCNoticeContent
-) => {
-  const useToast = (): [IHookNotificationInstance, ReactElement] => {
+): (() => [IToastMethods, ReactElement]) => {
+  const useToast = (): [IToastMethods, ReactElement] => {
     let rootPrefixCls: ConfigConsumerProps['rootPrefixCls'];
 
     let innerInstance: RCNotificationInstance | null = null;

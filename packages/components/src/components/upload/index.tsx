@@ -1,13 +1,13 @@
 import Upload from './Upload';
 
 export {
-  IUploadProps,
+  IUploadProps as UploadProps,
+  TUploadType as UploadType,
+  TUploadStatus as UploadStatus,
   IRcFile,
   IUploadFile,
   IProgress,
   IRcCustomRequestOptions,
-  TUploadStatus,
-  TUploadType,
 } from './interface';
 
 export default Upload;

@@ -9,7 +9,9 @@ import Dropdown from '../dropdown';
 import Input from '../input';
 import Menu, { Props as MenuProps } from './menu';
 import SearchBar from './search-bar';
-import { Props } from './interface'
+import { Props } from './interface';
+
+export { Props as CascaderProps } from './interface';
 
 const Cascader: React.FC<Props> = (props) => {
   const {

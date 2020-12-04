@@ -5,15 +5,15 @@ import useModal from './useModal';
 import { IModalStaticFuncConfig, IModalStaticFunctions, IUseModal } from './interface';
 
 export {
-  IModalProps,
-  IStepModalProps,
-  TModalSize,
-  IStep,
-  TStepChange,
-  IModalStaticFuncConfig,
-  IModalStaticFuncReturn,
-  TModalStaticFuncType,
-  IModalStaticFunc,
+  IModalProps as ModalProps,
+  IStepModalProps as StepModalProps,
+  TModalSize as ModalSize,
+  IStep as Step,
+  TStepChange as StepChange,
+  IModalStaticFuncConfig as ModalStaticFuncConfig,
+  IModalStaticFuncReturn as ModalStaticFuncReturn,
+  TModalStaticFuncType as ModalStaticFuncType,
+  IModalStaticFunc as ModalStaticFunc,
 } from './interface';
 
 export { StepModal, useModal };
