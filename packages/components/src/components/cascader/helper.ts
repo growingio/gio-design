@@ -112,7 +112,7 @@ export const useKeyboardNav = (wrapRef: React.MutableRefObject<HTMLElement>) => 
       const total = silbing.length;
       const idx = findIndex(silbing, (o) => o === targetEl);
 
-      let nextEl: HTMLElement;
+      let nextEl = (null as unknown) as HTMLElement;
       switch (key) {
         case 'ArrowDown':
           nextEl = silbing[(idx + 1) % total];

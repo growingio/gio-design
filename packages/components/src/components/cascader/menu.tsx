@@ -59,7 +59,7 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
     if (wrapRef.current) {
       const wrapper = wrapRef.current;
       const handler = () => {
-        setTriggerData(null);
+        setTriggerData(undefined);
       };
       wrapper.addEventListener('focusin', handler);
       return () => wrapper.removeEventListener('focusin', handler);
