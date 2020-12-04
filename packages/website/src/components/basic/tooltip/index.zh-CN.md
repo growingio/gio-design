@@ -40,5 +40,6 @@ group:
 | **onVisibleChange**      | 显示隐藏的回调                                                                                                                                 | (visible) => void                 |                       |
 | **destroyTooltipOnHide** | 关闭后是否销毁 Tooltip，当 keepParent 为 false 时销毁父容器                                                                                    | boolean\|{ keepParent?: boolean } | `false`               |
 | **arrowPointAtCenter**   | 箭头是否指向目标元素中心                                                                                                                       | boolean                           | `false`               |
+| **autoAdjustOverflow**   | 气泡被遮挡时自动调整位置                                                                                                                       | boolean                           | `true`                |
 
 更多参数请参考 [rc-tooltip](https://github.com/react-component/tooltip)
