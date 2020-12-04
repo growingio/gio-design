@@ -51,9 +51,9 @@ describe('<Cascader />', () => {
     });
 
     act(() => {
-      map.click({
-        target: { classList: { contains: (cls) => cls === 'gio-cascader-dropdown' } },
-      });
+      const target = document.createElement('div');
+      target.className = 'gio-cascader-dropdown';
+      map.click({ target });
     });
 
     await waitFor(() => {

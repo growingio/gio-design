@@ -12,7 +12,7 @@ group:
 
 ## 基础用法
 
-<code src='./demo/basic.tsx' title='基础用法' desc="可以试试用 `Tab` 和 方向键来控制，用空格或回车键来选择" />
+<code src='./demo/basic.tsx' title='基础用法' desc="可以试试用 `Tab` 和 方向键来控制，用空格或回车键来选择，`Esc`来关闭下拉面板" />
 
 ## 键名映射
 
@@ -51,6 +51,10 @@ group:
 ## 异步获取数据
 
 <code src='./demo/async-child-data.tsx' title='异步获取数据' />
+
+## 使用 afterInner 渲染额外的内容
+
+<code src='./demo/after-inner.tsx' title='在菜单外再渲染一个提示页' />
 
 ## 参数说明
 

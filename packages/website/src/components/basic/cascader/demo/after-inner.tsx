@@ -1,8 +1,11 @@
 import React from 'react';
-import CascaderMenu from '@gio-design/components/es/components/cascader/menu';
+import { Cascader } from '@gio-design/components';
+import isEmpty from 'lodash/isEmpty';
 
 import '@gio-design/components/es/components/cascader/style/index.css';
 import '@gio-design/components/es/components/input/style/index.css';
+
+import './style.less';
 
 const dataSource = [
   { label: 'option A', value: 'a' },
@@ -26,13 +29,13 @@ const dataSource = [
 
 const Basic = (): JSX.Element => {
   return (
-    <CascaderMenu
-      style={{ minHeight: 160 }}
-      header={<div>header</div>}
-      footer={<div>footer</div>}
+    <Cascader
       dataSource={dataSource}
-      onSelect={console.log}
-      autoFocus={false}
+      afterInner={(nodeData) => {
+        if (isEmpty(nodeData.children)) {
+          return <div className="extra-desc">{nodeData.label}</div>;
+        }
+      }}
     />
   );
 };

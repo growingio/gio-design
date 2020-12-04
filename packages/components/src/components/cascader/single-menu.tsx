@@ -28,6 +28,7 @@ export interface Props extends Omit<MenuItemProps, 'dataSource' | 'hasChild' | '
   groupName?: MaybeElementOrFn;
   parentMenu?: HTMLDivElement;
   expandedId?: NodeData['value'];
+  autoFocus?: boolean;
 }
 
 const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
@@ -48,6 +49,7 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     getEmpty,
     parentMenu,
     expandedId,
+    autoFocus = true,
     ...others
   } = props;
   const keyMapping = mergeKeyMapping(_keyMapping);
@@ -75,6 +77,15 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     setInnerStyle(nextStyle as React.CSSProperties);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wrapRef, parentMenu]);
+
+  useEffect(() => {
+    if (autoFocus && wrapRef.current) {
+      const firstItem = wrapRef.current.querySelector('.cascader-menu-item-inner') as HTMLElement;
+      setTimeout(() => {
+        firstItem?.focus();
+      }, 10);
+    }
+  }, [autoFocus, wrapRef]);
 
   let filteredDataSource = dataSource;
   if (keyword && (isRootMenu || deepSearch)) {

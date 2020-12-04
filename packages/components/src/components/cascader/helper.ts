@@ -109,39 +109,30 @@ export const useKeyboardNav = (wrapRef: React.MutableRefObject<HTMLElement>) => 
         return;
       }
       const silbing = wrapRef.current.querySelectorAll<HTMLElement>(`.${cls}`);
+      const total = silbing.length;
       const idx = findIndex(silbing, (o) => o === targetEl);
 
-      let nextEl = Promise.resolve((null as unknown) as HTMLElement);
+      let nextEl: HTMLElement;
       switch (key) {
         case 'ArrowDown':
-          nextEl = Promise.resolve(silbing[idx + 1]);
+          nextEl = silbing[(idx + 1) % total];
           break;
         case 'ArrowUp':
-          nextEl = Promise.resolve(silbing[idx - 1]);
-          break;
-        case 'ArrowRight':
-          nextEl = new Promise((resolve) => {
-            setTimeout(() => {
-              const nextMenu = targetEl.closest('.cascader-menu')?.nextSibling as HTMLDivElement;
-              resolve(nextMenu?.querySelector(`.${cls}`) as HTMLDivElement);
-            }, 100);
-          });
+          nextEl = silbing[(total + idx - 1) % total];
           break;
         case 'ArrowLeft': {
           const nextMenu = targetEl.closest('.cascader-menu')?.previousSibling as HTMLDivElement;
-          nextEl = Promise.resolve(nextMenu?.querySelector(`[aria-expanded="true"] .${cls}`) as HTMLDivElement);
+          nextEl = nextMenu?.querySelector(`[aria-expanded="true"] .${cls}`) as HTMLDivElement;
           break;
         }
         default:
           break;
       }
 
-      nextEl.then((el) => {
-        if (el) {
-          e.preventDefault();
-          el.focus();
-        }
-      });
+      if (nextEl) {
+        e.preventDefault();
+        nextEl.focus();
+      }
     };
     wrapper.addEventListener('keydown', handler);
     return () => wrapper.removeEventListener('keydown', handler);

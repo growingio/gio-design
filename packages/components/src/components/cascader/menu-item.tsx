@@ -46,7 +46,7 @@ export interface Props {
   onBlur?: (event: FocusEvent) => void;
   onMouseLeave?: (event: MouseEvent) => void;
   onRender?: (nodeData: NodeData) => ReactElement;
-  afterInner?: (nodeData: NodeData) => ReactElement;
+  afterInner?: (nodeData: NodeData) => React.ReactNode;
 }
 
 const triggerMap = {
@@ -127,7 +127,9 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       if (isEmpty(data.children) || selectAny) {
         setDataSource(data);
         try {
-          onSelect?.(data, parentsData, event);
+          if (!(event.type === 'keyup' && (event as KeyboardEvent).key === 'ArrowRight')) {
+            onSelect?.(data, parentsData, event);
+          }
         } catch (e) {
           throw new Error(e);
         }
@@ -170,7 +172,6 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         onKeyUp?.(event);
       });
     }
-    onKeyUp?.(event);
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {

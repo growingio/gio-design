@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
@@ -55,6 +55,18 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
     setCanOpen(false);
   };
 
+  useEffect(() => {
+    if (wrapRef.current) {
+      const wrapper = wrapRef.current;
+      const handler = () => {
+        setTriggerData(null);
+      };
+      wrapper.addEventListener('focusin', handler);
+      return () => wrapper.removeEventListener('focusin', handler);
+    }
+    return () => ({});
+  }, [wrapRef, setTriggerData]);
+
   let childMenu;
   if (canOpen && triggerData && !isEmpty(triggerData.children)) {
     const [offsetLeft, offestTop] = offset;
@@ -68,6 +80,7 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
     childMenu = (
       <InnerMenu
         {...props}
+        open={canOpen}
         parentMenu={wrapRef.current}
         key={[nextDepth, triggerData[keyMapping.value]].join('-')}
         depth={nextDepth}
@@ -86,6 +99,7 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
     <>
       <SingleMenu
         {...props}
+        open={canOpen}
         onTrigger={onTrigger}
         onSelect={onSelect}
         className={classNames(className, withWrapperCls())}
@@ -98,15 +112,33 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
 };
 
 const Menu = React.forwardRef<HTMLDivElement, SingleMenuProps>((props, ref) => {
-  const { className, style } = props;
+  const { className, style, open, onTrigger, ...others } = props;
   const wrapRef = useMergeRef(ref);
+  const [canOpen, setCanOpen] = useState(open);
+  const handleTrigger: typeof onTrigger = (a, b) => {
+    setCanOpen(true);
+    onTrigger?.(a, b);
+  };
 
   // @TODO useKeyboardNav
   useKeyboardNav(wrapRef);
 
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (!wrapRef.current.contains(e.target as HTMLElement) || wrapRef.current === e.target) {
+        setCanOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClick);
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, [wrapRef]);
+
   return (
     <div ref={wrapRef} className={classNames('cascader-menu-outer', className)} style={style}>
-      <InnerMenu {...props} />
+      <InnerMenu {...others} open={canOpen} onTrigger={handleTrigger} />
     </div>
   );
 });
