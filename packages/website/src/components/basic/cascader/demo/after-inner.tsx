@@ -1,11 +1,14 @@
 import React from 'react';
 import { Cascader } from '@gio-design/components';
+import isEmpty from 'lodash/isEmpty';
 
 import '@gio-design/components/es/components/cascader/style/index.css';
 import '@gio-design/components/es/components/input/style/index.css';
 
+import './style.less';
+
 const dataSource = [
-  { label: 'option A', value: 'a', disabled: true },
+  { label: 'option A', value: 'a' },
   { label: 'option B', value: 'b', children: [{ label: 'B-1', value: 'b-1' }] },
   {
     label: 'option C',
@@ -25,7 +28,16 @@ const dataSource = [
 ];
 
 const Basic = (): JSX.Element => {
-  return <Cascader dataSource={dataSource} />;
+  return (
+    <Cascader
+      dataSource={dataSource}
+      afterInner={(nodeData) => {
+        if (isEmpty(nodeData.children)) {
+          return <div className="extra-desc">{nodeData.label}</div>;
+        }
+      }}
+    />
+  );
 };
 
 export default Basic;
