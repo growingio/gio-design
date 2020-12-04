@@ -109,4 +109,5 @@ export interface TableProps<RecordType> {
   onChange?: (pagination: PaginationState, sorter: SortState<RecordType>[], filters: FilterState<RecordType>[]) => void;
   showHover?: boolean;
   showHeader?: boolean;
+  loading?: boolean;
 }
