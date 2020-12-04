@@ -6,10 +6,10 @@ import { TogglesProps } from './interface';
 const Toggles: React.FC<TogglesProps> = (props) => {
   const {
     activeColor,
-    inactiveValue,
+    inactiveValue = false,
     inactiveColor,
-    activeValue,
-    defaultChecked,
+    activeValue = true,
+    defaultChecked = false,
     checked,
     disabled,
     className,
@@ -17,10 +17,10 @@ const Toggles: React.FC<TogglesProps> = (props) => {
   } = props;
   const prefixCls = usePrefixCls('toggles');
 
-  const inactiveValues = inactiveValue || false;
-  const activeValues = activeValue || true;
+  const inactiveValues = inactiveValue;
+  const activeValues = activeValue;
 
-  const [status, setStatus] = useState(defaultChecked || false);
+  const [status, setStatus] = useState(defaultChecked);
 
   useEffect(() => {
     setStatus(checked)
