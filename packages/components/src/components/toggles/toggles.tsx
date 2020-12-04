@@ -10,7 +10,7 @@ const Toggles: React.FC<TogglesProps> = (props) => {
     inactiveColor,
     activeValue = true,
     defaultChecked = false,
-    checked,
+    checked = false,
     disabled,
     className,
     suffixContent,
