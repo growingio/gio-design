@@ -7,26 +7,26 @@
   display: inline-block;
   width: 40px;
   height: 20px;
+  vertical-align: middle;
   background-color: @color-background-toggles-off-normal;
   border: @color-border-toggles-normal-default;
   border-radius: 10px;
   box-shadow: @shadow-toggles-normal-unchecked-rectangle;
   cursor: pointer;
   transition: all ease 0.4s;
-  vertical-align: middle;
 
   .@{toggles-prefix-cls}-handle {
     position: absolute;
     left: 0;
+    display: inline-block;
     width: 14px;
     height: 14px;
     margin: 2px;
+    vertical-align: middle;
     background-color: @color-background-toggles-knob-off-normal;
     border-radius: @radius-border-pill;
     box-shadow: @shadow-toggles-normal-unchecked-knob;
     transition: all ease 0.4s;
-    display: inline-block;
-    vertical-align: middle;
   }
 }
 
