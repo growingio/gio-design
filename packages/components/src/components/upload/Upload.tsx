@@ -67,7 +67,6 @@ const Upload: React.FC<IUploadProps> = ({
 
   const Trigger = triggerMap[type];
 
-  useEffect(() => {});
   const handleBeforeUpload = (fileBeforeUpload: IRcFile, fileList: IRcFile[]) =>
     beforeUpload?.(fileBeforeUpload, fileList);
 
