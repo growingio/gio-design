@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import * as module from '../utils';
-import { Canvas } from 'canvas';
+// import { Canvas } from 'canvas';
 import { JSDOM } from 'jsdom';
 
 const url =
@@ -61,7 +61,7 @@ describe('Testing Upload utils', () => {
       if (tagName === 'canvas') {
         return {
           ...createElement('canvas'),
-          toDataURL: new Canvas().toDataURL,
+          toDataURL: () => '',
           getContext: (str) => {},
         };
       }

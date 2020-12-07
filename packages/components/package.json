@@ -68,7 +68,6 @@
     "@types/jest": "^26.0.14",
     "@types/react-test-renderer": "^16.9.3",
     "babel-loader": "^8.1.0",
-    "canvas": "^2.6.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "gio-rewire": "^1.0.4",
