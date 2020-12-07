@@ -6,9 +6,10 @@ import { IActionsProps, STATUS_SUCCESS } from './interface';
 
 const Actions: React.FC<IActionsProps> = ({
   useDelete = true,
-  useUpload,
+  useUpload ,
   file,
   onRemove,
+  onUpload,
   placement = 'center',
 }: IActionsProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
@@ -30,10 +31,14 @@ const Actions: React.FC<IActionsProps> = ({
     onRemove?.();
   };
 
+  const handleUpload = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onUpload?.();
+  };
   return (
     <span className={cls} onClick={handleStopPropagation} aria-hidden="true">
       <span className={iconContainerCls}>
-        {useUpload && <UploadOutlined className={iconCls} />}
+        {useUpload && <UploadOutlined className={iconCls} onClick={ handleUpload }/>}
         {useDelete && <DeleteOutlined className={iconCls} onClick={handleRemove} />}
       </span>
     </span>

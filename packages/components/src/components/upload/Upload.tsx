@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import RcUpload from 'rc-upload';
 import classnames from 'classnames';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
@@ -67,6 +67,7 @@ const Upload: React.FC<IUploadProps> = ({
 
   const Trigger = triggerMap[type];
 
+  useEffect(() => {});
   const handleBeforeUpload = (fileBeforeUpload: IRcFile, fileList: IRcFile[]) =>
     beforeUpload?.(fileBeforeUpload, fileList);
 
@@ -130,9 +131,24 @@ const Upload: React.FC<IUploadProps> = ({
       if (res === false) {
         return;
       }
-
-      setFile(getEmptyFileObj(uploadedFile));
+      console.log(file)
+      console.log(uploadedFile)
+      if (file?.dataUrl === uploadedFile?.dataUrl) {
+        setFile({
+          uid: '',
+          size: 0,
+          name: '本地上传',
+          type: '$empty-file',
+          status: 'notYet',
+          dataUrl: '',
+        });
+      } else {
+        setFile(getEmptyFileObj(uploadedFile));
+      }
     });
+  };
+  const handleUpload = () => {
+    rcUploadRef.current.uploader.onClick();
   };
 
   const handleInputUpload = async (uploadType: TInputUploadType = 'url', url: string) => {
@@ -207,6 +223,7 @@ const Upload: React.FC<IUploadProps> = ({
     inputUploadType,
     setFile,
     onRemove: handleRemove,
+    onUpload: handleUpload,
     onInputUpload: handleInputUpload,
     placeholderImg,
   };
