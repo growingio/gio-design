@@ -130,8 +130,6 @@ const Upload: React.FC<IUploadProps> = ({
       if (res === false) {
         return;
       }
-      console.log(file);
-      console.log(uploadedFile);
       if (file?.dataUrl === uploadedFile?.dataUrl) {
         setFile({
           uid: '',
@@ -148,7 +146,7 @@ const Upload: React.FC<IUploadProps> = ({
   };
   const handleUpload = () => {
     const { current } = rcUploadRef;
-    current.uploader?.onClick();
+    current?.uploader?.onClick();
   };
 
   const handleInputUpload = async (uploadType: TInputUploadType = 'url', url: string) => {
