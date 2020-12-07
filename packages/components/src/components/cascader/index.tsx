@@ -2,14 +2,15 @@ import { DownFilled } from '@gio-design/icons';
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import { NodeData } from './menu-item';
-import { dataKeyMapping, useDynamicData, withPrefix } from './helper';
+import { Props } from './interface';
+import { dataKeyMapping, mergeKeyMapping, useDynamicData, withPrefix } from './helper';
 import Dropdown from '../dropdown';
 import Input from '../input';
 import Menu, { Props as MenuProps } from './menu';
 import SearchBar from './search-bar';
-import { Props } from './interface'
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+
+export type CascaderProps = Props;
 
 const Cascader: React.FC<Props> = (props) => {
   const {
@@ -31,8 +32,9 @@ const Cascader: React.FC<Props> = (props) => {
     dropdownTrigger = 'click',
     placement = 'bottomLeft',
     getDropdownContainer,
+    destroyTooltipOnHide = true,
     value,
-    keyMapping = {},
+    keyMapping: _keyMapping,
     visible,
     onClick,
     onSearch,
@@ -43,6 +45,7 @@ const Cascader: React.FC<Props> = (props) => {
     overlayStyle,
     ...others
   } = props;
+  const keyMapping = mergeKeyMapping(_keyMapping);
   const inputRef = useRef<HTMLInputElement>(null);
   const [selected, setSelected] = useDynamicData(value);
   const [title, setTitle] = useDynamicData(originTitle);
@@ -52,7 +55,7 @@ const Cascader: React.FC<Props> = (props) => {
   const wrapperCls = usePrefixCls('cascader', prefixCls);
   const mergedWrapperCls = classNames(wrapperCls, className);
   const withWrapperCls = withPrefix(wrapperCls);
-  const onSelect = (data: NodeData, parents = [] as NodeData[]) => {
+  const onSelect: Props['onSelect'] = (data, parents = [], event) => {
     const { label: mapLabel, value: mapValue } = dataKeyMapping(data, keyMapping);
     const titles = parents.reduce((acc, b) => {
       return [dataKeyMapping(b, keyMapping).label, acc].join(separator);
@@ -60,7 +63,7 @@ const Cascader: React.FC<Props> = (props) => {
 
     setTitle(titles || '');
     setSelected(mapValue);
-    userChange?.(data, parents);
+    userChange?.(data, parents, event);
     setTimeout(() => {
       // 1. 可以让用户看到选中操作的效果
       // 2. 可以防止 unmount 后 setState
@@ -108,10 +111,21 @@ const Cascader: React.FC<Props> = (props) => {
         setDropdownVisible(false);
       }
     };
-    document.addEventListener('click', handler);
 
+    document.addEventListener('click', handler);
     return () => document.removeEventListener('click', handler);
   }, [setDropdownVisible, wrapperCls]);
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setDropdownVisible(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEsc);
+    return () => document.removeEventListener('keydown', handleEsc);
+  }, [setDropdownVisible]);
 
   return (
     <div className={mergedWrapperCls} style={style}>
@@ -125,6 +139,7 @@ const Cascader: React.FC<Props> = (props) => {
         trigger={dropdownTrigger}
         onVisibleChange={handleVisibleChange}
         overlayStyle={overlayStyle}
+        destroyTooltipOnHide={destroyTooltipOnHide}
         overlay={
           // eslint-disable-next-line react/jsx-wrap-multilines
           <div className={classNames(className, withWrapperCls('panel'), 'cascader-menu-list')}>

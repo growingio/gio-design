@@ -33,6 +33,7 @@ const triggerMap: ITriggerMap = {
 };
 
 const Upload: React.FC<IUploadProps> = ({
+  file: uploadedFile,
   successBorder = false,
   style,
   prefixCls: customPrefixCls,
@@ -53,8 +54,7 @@ const Upload: React.FC<IUploadProps> = ({
   placeholderImg,
   ...restProps
 }: IUploadProps) => {
-  const [file, setFile] = useState<IUploadFile>(getEmptyFileObj());
-
+  const [file, setFile] = useState<IUploadFile>(getEmptyFileObj(uploadedFile));
   const rcUploadRef = useRef(null);
   const prefixCls = usePrefixCls('upload', customPrefixCls);
 
@@ -103,7 +103,7 @@ const Upload: React.FC<IUploadProps> = ({
         uploadFile.dataUrl = dataUrl;
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
 
     setFile(uploadFile);
@@ -120,7 +120,7 @@ const Upload: React.FC<IUploadProps> = ({
       response,
       status: STATUS_ERROR,
     };
-    setFile(type !== 'drag' ? getEmptyFileObj() : errorFile);
+    setFile(type !== 'drag' ? getEmptyFileObj(uploadedFile) : errorFile);
     onError?.(error, errorFile);
   };
 
@@ -131,7 +131,7 @@ const Upload: React.FC<IUploadProps> = ({
         return;
       }
 
-      setFile(getEmptyFileObj());
+      setFile(getEmptyFileObj(uploadedFile));
     });
   };
 
@@ -152,7 +152,6 @@ const Upload: React.FC<IUploadProps> = ({
         setFile(uploadFile);
         const { originFile } = await fetchImageFileFromUrl(url);
         const request = restProps.customRequest || xhrRequest;
-
         let ac: string;
         if (typeof action === 'function') {
           ac = await action(originFile);

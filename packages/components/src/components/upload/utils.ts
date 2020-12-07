@@ -1,5 +1,5 @@
 import { defaultRootPrefixCls } from '../config-provider';
-import { IRcFile, IUploadFile, STATUS_NOT_YET } from './interface';
+import { IRcFile, IUploadFile, STATUS_NOT_YET, STATUS_SUCCESS } from './interface';
 
 export const getUid = (): string => `${defaultRootPrefixCls}-upload-${Date.now()}`;
 
@@ -15,21 +15,28 @@ export const fileToObject = (file: IRcFile): IUploadFile => ({
   originFile: file,
 });
 
-export const getEmptyFileObj = (): IUploadFile => ({
+export const getEmptyFileObj = (file?: IUploadFile): IUploadFile => ({
   uid: getUid(),
-  size: 0,
-  name: '本地上传',
-  type: '$empty-file',
-  status: STATUS_NOT_YET,
+  size: file?.size ?? 0,
+  name: file?.name ?? '本地上传',
+  type: file?.type ?? '$empty-file',
+  status: file?.dataUrl ? STATUS_SUCCESS : STATUS_NOT_YET,
+  dataUrl: file?.dataUrl ?? '',
 });
 
 export const requestImage = (src: string, cors?: 'anonymous' | 'use-credentials'): Promise<HTMLImageElement> =>
   new Promise((resolve, reject) => {
     const img = new Image();
 
-    img.addEventListener('load', () => resolve(img));
+    // img.addEventListener('load', () => resolve(img));
 
-    img.addEventListener('error', (err) => reject(err));
+    // img.addEventListener('error', (err) => reject(err));
+    img.onload = () => {
+      resolve(img);
+    };
+    img.onerror = (err) => {
+      reject(err);
+    };
 
     if (cors) {
       img.setAttribute('crossOrigin', cors);
@@ -95,6 +102,7 @@ export const fetchImageFileFromUrl = (
 
         const ctx = canvas.getContext('2d');
         ctx?.drawImage(img, 0, 0, width, height);
+
         let dataUrl = '';
         try {
           dataUrl = canvas.toDataURL();
@@ -121,6 +129,12 @@ export const isOnlyAcceptImg = (accept?: string): boolean =>
 
 export const isImageFile = (file: IUploadFile): boolean => file.type.startsWith('image/');
 
+export const getHexValue = (e: any): string => {
+  const view = new DataView(e.target.result);
+  const first4Byte = view.getUint32(0, false);
+  const hexValue = Number(first4Byte).toString(16).toUpperCase();
+  return hexValue;
+};
 /**
  * 暂时没有用起来，文件头在处理 docx/xlsx 等微软文件时候的区分方法暂时没写
  * @param file
@@ -129,12 +143,8 @@ export const getFileType = (file: File | Blob): Promise<string | undefined> =>
   new Promise((resolve) => {
     const fr = new FileReader();
 
-    fr.addEventListener('load', (e: any) => {
-      const view = new DataView(e.target.result);
-      const first4Byte = view.getUint32(0, false);
-      const hexValue = Number(first4Byte).toString(16).toUpperCase();
-
-      switch (hexValue) {
+    fr.onload = (e: any) => {
+      switch (getHexValue(e)) {
         case 'FFD8FFE0':
         case 'FFD8FFE1':
         case 'FFD8FFE2':
@@ -145,7 +155,7 @@ export const getFileType = (file: File | Blob): Promise<string | undefined> =>
           resolve(undefined);
           break;
       }
-    });
+    };
 
     fr.readAsArrayBuffer(file);
   });

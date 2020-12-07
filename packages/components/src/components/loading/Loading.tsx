@@ -4,12 +4,12 @@ import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { LoadingProps } from './interface';
 
-const Loading: React.FC<LoadingProps> = (props: LoadingProps) => {
+const Loading = (props: LoadingProps) => {
   const { prefixCls: customizePrefixCls, loading = true, delay = 0 } = props;
   const prefixCls = usePrefixCls('loading', customizePrefixCls);
   const shouldLoading = useDebounceLoading(loading, delay);
 
-  const renderLoadingElement = () => {
+  const renderLoadingElement = (): React.ReactElement => {
     const { indicator } = props;
     if (indicator) {
       return <span className={`${prefixCls}-indicator`}>{indicator}</span>;

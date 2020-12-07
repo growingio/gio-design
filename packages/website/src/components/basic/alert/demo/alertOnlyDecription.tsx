@@ -3,7 +3,7 @@ import Alert from '@gio-design/components/es/components/alert';
 import '@gio-design/components/es/components/alert/style/index.less';
 
 export default () => (
-  <div>
+  <div className="gio-alert-demo">
     <Alert description="Info Description Info Description Info Description Info Description" />
     <Alert type="success" description="Success Description Success Description Success Description" />
     <Alert

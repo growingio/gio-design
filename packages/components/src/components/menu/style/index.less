@@ -5,9 +5,8 @@
 @menu-icon-cls: ~'@{menu-prefix-cls}__icon';
 
 .@{menu-prefix-cls} {
-  margin-bottom: 0;
-  padding-right: 0;
-  padding-left: 0;
+  margin: 0;
+  padding: 0;
   color: @color-text-menu-normal;
   font-size: @size-font-16;
   line-height: 0;
@@ -164,6 +163,16 @@
   &-inline {
     font-size: @size-font-14;
 
+    & > li:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    & > li:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
     & > .@{menu-prefix-cls}-item,
     & > .@{menu-prefix-cls}-submenu > .@{menu-prefix-cls}-submenu-title {
       height: 40px;
@@ -171,14 +180,11 @@
     }
 
     & > .@{menu-prefix-cls}-item {
-      margin-top: 16px;
-    }
-
-    &:not(:first-child) {
-      padding-top: 16px;
+      margin-top: 4px;
     }
 
     & > .@{menu-prefix-cls}-submenu {
+      padding-top: 16px;
       color: @palette-gray-6;
 
       & > .@{menu-prefix-cls}-submenu-title {
@@ -188,7 +194,6 @@
       & > .@{menu-prefix-cls}-sub {
         & > .@{menu-prefix-cls}-item {
           margin-top: 4px;
-          padding-left: 44px !important;
         }
       }
     }

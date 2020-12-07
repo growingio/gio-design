@@ -1,8 +1,8 @@
 /* eslint-disable no-restricted-syntax */
 import { IXhrOption, IProgress } from './interface';
 
-function getError(option: IXhrOption, xhr: XMLHttpRequest) {
-  const msg = `cannot ${option.method} ${option.action} ${xhr.status}'`;
+export const getError = (option: IXhrOption, xhr: XMLHttpRequest)=> {
+  const msg = `cannot ${option.method} ${option.action} ${xhr.status}`;
   const err: any = new Error(msg);
   err.status = xhr.status;
   err.method = option.method;
@@ -10,7 +10,7 @@ function getError(option: IXhrOption, xhr: XMLHttpRequest) {
   return err;
 }
 
-function getBody(xhr: XMLHttpRequest) {
+export const getBody = (xhr: XMLHttpRequest) =>{
   const text = xhr.responseText || xhr.response;
   if (!text) {
     return text;

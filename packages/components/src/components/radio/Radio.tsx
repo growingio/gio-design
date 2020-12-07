@@ -22,6 +22,7 @@ const InnerRadio: React.ForwardRefRenderFunction<unknown, IRadioProps> = (
     [`${prefixCls}__wrapper--checked`]: restProps.checked,
     [`${prefixCls}__wrapper--disabled`]: restProps.disabled,
   });
+  const labelCls = classnames(`${prefixCls}__label`);
 
   const handleChange = (e: IRadioChangeEvent) => {
     if (restProps.onChange) {
@@ -53,7 +54,7 @@ const InnerRadio: React.ForwardRefRenderFunction<unknown, IRadioProps> = (
       onMouseLeave={restProps.onMouseLeave}
     >
       <RcCheckbox type={type} {...rcProps} prefixCls={prefixCls} ref={ref as any} />
-      {children ? <span>{children}</span> : null}
+      {children ? <span className={labelCls}>{children}</span> : null}
     </label>
   );
 };

@@ -34,13 +34,6 @@ module.exports = {
     'no-unused-expressions': [0],
     'react/static-property-placement': ['error', 'static public field'],
     '@typescript-eslint/no-unused-expressions': ['error', { allowShortCircuit: true }],
-
-    '@typescript-eslint/explicit-function-return-type': [
-      'warn',
-      {
-        allowExpressions: true,
-        allowTypedFunctionExpressions: true,
-      },
-    ],
+    '@typescript-eslint/explicit-module-boundary-types': ['off'],
   },
 };

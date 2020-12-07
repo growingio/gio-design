@@ -157,6 +157,10 @@ group:
 
 <code src='./demo/empty.tsx' >
 
+### 列表加载
+
+<code src='./demo/loading.tsx' >
+
 ### 分页
 
 <code src='./demo/pagination.tsx' title='分页' desc='分页, pagination设置false 关闭' >
@@ -182,6 +186,7 @@ group:
 | **onHeaderRow**  | 设置头部行属性                                 | function(column, index)                | -                    |
 | **showHover**    | 是否显示 hover 效果                            | boolean                                | true                 |
 | **showHeader**   | 是否显示 table head                            | boolean                                | true                 |
+| **loading**      | 页面是否加载中                                 | boolean                                | false                |
 
 ### Column
 
