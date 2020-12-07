@@ -147,7 +147,8 @@ const Upload: React.FC<IUploadProps> = ({
     });
   };
   const handleUpload = () => {
-    rcUploadRef.current?.uploader.onClick();
+    const { current } = rcUploadRef;
+    current.uploader?.onClick();
   };
 
   const handleInputUpload = async (uploadType: TInputUploadType = 'url', url: string) => {
