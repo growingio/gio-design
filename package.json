@@ -65,8 +65,5 @@
     "commitizen": {
       "path": "./node_modules/cz-lerna-changelog"
     }
-  },
-  "dependencies": {
-    "canvas": "^2.6.1"
   }
 }

@@ -9,6 +9,25 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.12.0
+
+- Upload 上传组件
+  - 支持 `file` 参数并且支持 `sizeContext` 的 `size` 参数 [#547](https://github.com/growingio/gio-design/pull/547)
+- Select 选择器
+  - 增加 `JSX` 方式添加 `Option` [#562](https://github.com/growingio/gio-design/pull/562)
+- List 列表
+  - 解决table在placeholder情况时左上角和右上角圆角边框缺失的问题 [#569](https://github.com/growingio/gio-design/pull/569)
+- Alert 警告提示
+  - 去掉 `.gio-alert` 上的 `margin` 样式 [#569](https://github.com/growingio/gio-design/pull/569)
+- Input 输入框
+  - 定义输入框 `disabled` 情况下文字的颜色 [#569](https://github.com/growingio/gio-design/pull/569)
+- Menu 菜单
+  - `<Menu>` 下子元素的间距问题 [#569](https://github.com/growingio/gio-design/pull/569)
+- Pagination 分页
+  - 添加页数选择功能 [#576](https://github.com/growingio/gio-design/pull/576)
+- cascader 级联选择
+  - 支持键盘控制 [#579](https://github.com/growingio/gio-design/pull/579)
+
 ## 20.11.5
 
 - component
