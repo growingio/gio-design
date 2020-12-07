@@ -162,7 +162,6 @@ const Upload: React.FC<IUploadProps> = ({
         setFile(uploadFile);
         const { originFile } = await fetchImageFileFromUrl(url);
         const request = restProps.customRequest || xhrRequest;
-
         let ac: string;
         if (typeof action === 'function') {
           ac = await action(originFile);

@@ -22,6 +22,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     children,
     arrowPointAtCenter = false,
     destroyTooltipOnHide,
+    autoAdjustOverflow = true,
     ...rest
   } = props;
 
@@ -70,7 +71,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
       transitionName="spread-transition"
       arrowContent={<span className={`${prefixCls}-arrow-content`} />}
       overlay={getOverlay()}
-      builtinPlacements={getPlacements({ arrowPointAtCenter })}
+      builtinPlacements={getPlacements({ arrowPointAtCenter, autoAdjustOverflow })}
       visible={controlledVisible && !disabled && !isNoContent}
       onVisibleChange={(_visible) => {
         if (disabled) {

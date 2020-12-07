@@ -9,7 +9,7 @@ import Button from '../button';
 const CalloutModal: React.FC<ICalloutModalProps> = ({
   visible,
   close,
-  prefixCls: customPrefixCls,
+  prefixCls: customRootPrefixCls,
   className,
   wrapClassName,
   icon,
@@ -26,7 +26,7 @@ const CalloutModal: React.FC<ICalloutModalProps> = ({
   ...restProps
 }: ICalloutModalProps) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const prefixCls = usePrefixCls('modal', customPrefixCls);
+  const prefixCls = usePrefixCls('modal', customRootPrefixCls);
 
   const calloutPrefixCls = `${prefixCls}-callout`;
   const calloutModalClassName = classnames(className, calloutPrefixCls, `${calloutPrefixCls}--${type}`);
@@ -73,6 +73,7 @@ const CalloutModal: React.FC<ICalloutModalProps> = ({
   return (
     <Modal
       {...restProps}
+      prefixCls={customRootPrefixCls}
       visible={visible}
       pending={loading}
       className={calloutModalClassName}

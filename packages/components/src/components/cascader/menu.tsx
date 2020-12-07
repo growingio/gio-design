@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
 import { Props as MenuItemProps, NodeData } from './menu-item';
-import { toInt, useDynamicData, dataKeyMapping, withPrefix } from './helper';
+import { dataKeyMapping, toInt, useDynamicData, useKeyboardNav, useMergeRef, withPrefix } from './helper';
 import SingleMenu, { Props as SingleMenuProps } from './single-menu';
 
 export type Props = SingleMenuProps;
@@ -26,7 +26,7 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
   const wrapRef = useRef<HTMLDivElement>((null as unknown) as HTMLDivElement);
   const withWrapperCls = withPrefix('cascader-menu');
-  const [canOpen, setCanOpen] = useState(open);
+  const [canOpen, setCanOpen] = useDynamicData(open);
   const [triggerData, setTriggerData] = useState<NodeData>();
   const [offset, setOffset] = useState([0, 0]);
 
@@ -50,10 +50,22 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
     });
     setDataSource(nextData);
   };
-  const onSelect: MenuItemProps['onSelect'] = (nodeData, parents) => {
-    userOnSelect?.(nodeData, parents);
+  const onSelect: MenuItemProps['onSelect'] = (nodeData, parents, event) => {
+    userOnSelect?.(nodeData, parents, event);
     setCanOpen(false);
   };
+
+  useEffect(() => {
+    if (wrapRef.current) {
+      const wrapper = wrapRef.current;
+      const handler = () => {
+        setTriggerData(undefined);
+      };
+      wrapper.addEventListener('focusin', handler);
+      return () => wrapper.removeEventListener('focusin', handler);
+    }
+    return () => ({});
+  }, [wrapRef, setTriggerData]);
 
   let childMenu;
   if (canOpen && triggerData && !isEmpty(triggerData.children)) {
@@ -68,6 +80,7 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
     childMenu = (
       <InnerMenu
         {...props}
+        open={canOpen}
         parentMenu={wrapRef.current}
         key={[nextDepth, triggerData[keyMapping.value]].join('-')}
         depth={nextDepth}
@@ -86,9 +99,11 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
     <>
       <SingleMenu
         {...props}
+        open={canOpen}
         onTrigger={onTrigger}
         onSelect={onSelect}
         className={classNames(className, withWrapperCls())}
+        expandedId={triggerData?.[keyMapping.value] as string}
         ref={wrapRef}
       />
       {childMenu}
@@ -97,12 +112,33 @@ const InnerMenu: React.FC<SingleMenuProps> = (props) => {
 };
 
 const Menu = React.forwardRef<HTMLDivElement, SingleMenuProps>((props, ref) => {
-  const { className, style } = props;
+  const { className, style, open, onTrigger, ...others } = props;
+  const wrapRef = useMergeRef(ref);
+  const [canOpen, setCanOpen] = useState(open);
+  const handleTrigger: typeof onTrigger = (a, b) => {
+    setCanOpen(true);
+    onTrigger?.(a, b);
+  };
 
   // @TODO useKeyboardNav
+  useKeyboardNav(wrapRef);
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (!wrapRef.current.contains(e.target as HTMLElement) || wrapRef.current === e.target) {
+        setCanOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClick);
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, [wrapRef]);
+
   return (
-    <div ref={ref} className={classNames('cascader-menu-outer', className)} style={style}>
-      <InnerMenu {...props} />
+    <div ref={wrapRef} className={classNames('cascader-menu-outer', className)} style={style}>
+      <InnerMenu {...others} open={canOpen} onTrigger={handleTrigger} />
     </div>
   );
 });

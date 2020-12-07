@@ -138,3 +138,13 @@ group:
 - `hooModal`: 使用 `modalFunctions` 后生成的 `ReactElement`， 需要将其嵌入组件树中
 
 代码参考示例 [useModal](#usemodal)
+
+#### Modal.config(configs)
+
+`Modal.useModal` 方法提供的基于 `hook` 的调用方法可能在某些时候失效：例如在 saga 中需要函数式地调用 `Modal`。
+
+`Modal.config` 方法提供了函数式调用 `Modal` 时的某些配置项，以支持失效的 `prefixCls` 等参数，`configs` 当前可选参数为：
+
+| 参数      | 说明                      | 类型   | 默认值 | 必填 |
+| --------- | ------------------------- | ------ | ------ | ---- |
+| prefixCls | Modal 组件 className 前缀 | string | gio    | 否   |

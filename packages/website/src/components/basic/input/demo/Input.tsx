@@ -28,7 +28,7 @@ export default () => {
         value={inputValue}
         onChange={onChange}
         maxLength={10}
-        style={{ display: 'block', marginBottom: '20px' }}
+        style={{ display: 'block', marginBottom: '20px', width: 300 }}
       />
 
       <Input
@@ -37,7 +37,7 @@ export default () => {
         prefixWidth={60}
         value={inputValue1}
         onChange={onChange1}
-        style={{ display: 'block', marginBottom: '20px' }}
+        style={{ display: 'block', marginBottom: '20px', width: 300 }}
       />
 
       <Input
@@ -45,10 +45,10 @@ export default () => {
         value={inputValue2}
         onChange={onChange2}
         disabled
-        style={{ display: 'block', marginBottom: '20px' }}
+        style={{ display: 'block', marginBottom: '20px', width: 300 }}
       />
 
-      <Input value={inputValue3} size="large" onChange={onChange3} style={{ display: 'block' }} />
+      <Input value={inputValue3} size="large" onChange={onChange3} style={{ display: 'block', width: 300 }} />
     </div>
   );
 };

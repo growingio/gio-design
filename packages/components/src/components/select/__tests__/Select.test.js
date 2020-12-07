@@ -40,6 +40,36 @@ describe('<Select />', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders <Select.Option /> components', () => {
+    const tree = renderer
+      .create(
+        <Select>
+          <Select.Option value="all">全部</Select.Option>
+          <Select.Option value="online">已上线</Select.Option>
+        </Select>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders <Select.Group /> components', () => {
+    const tree = renderer
+      .create(
+        <Select>
+          <Select.Group label="应用平台" value="platform">
+            <Select.Option value="all">全部</Select.Option>
+            <Select.Option value="online">已上线</Select.Option>
+          </Select.Group>
+          <Select.Group label="选择" value="change">
+            <Select.Option value="yes">Yes</Select.Option>
+            <Select.Option value="no">No</Select.Option>
+          </Select.Group>
+        </Select>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should have correc dom structure', () => {
     const tree = shallow(<Select options={options} />);
     expect(tree.find('.gio-select').exists()).toBeTruthy();

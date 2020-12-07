@@ -2,4 +2,4 @@ import React from 'react';
 import { Pagination } from '@gio-design/components';
 import '@gio-design/components/es/components/pagination/style/index.css';
 
-export default () => <Pagination disabled showQuickJumper total={900} />;
+export default () => <Pagination disabled showQuickJumper showSizeChanger total={900} />;
