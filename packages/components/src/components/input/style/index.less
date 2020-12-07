@@ -19,6 +19,7 @@
 
   &-content {
     display: block;
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
     padding: 9px 16px;
@@ -53,6 +54,7 @@
     }
 
     &:disabled {
+      color: @palette-black-1;
       background-color: @palette-gray-1;
       border-color: @color-border-input-disable;
       cursor: not-allowed;

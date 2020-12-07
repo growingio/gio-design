@@ -19,7 +19,7 @@ const usePagination = <RecordType,>(
 ] => {
   const { current, pageSize, total, ...rest } = pagination || {};
   const [localCurrent, setLocalCurrent] = useControlledState<number>(current, 1);
-  const [localPageSize] = useControlledState<number>(pageSize, 10);
+  const [localPageSize, setLocalPageSize] = useControlledState<number>(pageSize, 10);
   const [controlledTotal, setControlledTotal] = useControlledState<number>(total, data.length);
   const prefixCls = usePrefixCls('table');
 
@@ -67,15 +67,20 @@ const usePagination = <RecordType,>(
     [localCurrent, localPageSize]
   );
 
-  const PaginationComponent = ({ onTriggerStateUpdate }: { onTriggerStateUpdate: () => void }) => (
+  const PaginationComponent = ({
+    onTriggerStateUpdate,
+  }: {
+    onTriggerStateUpdate: (reset?: boolean, paginationState?: PaginationState) => void;
+  }) => (
     <Pagination
       className={`${prefixCls}-pagination`}
       total={controlledTotal}
       current={localCurrent}
       pageSize={localPageSize}
-      onChange={(c) => {
-        setLocalCurrent(c);
-        onTriggerStateUpdate();
+      onChange={(_page, _pageSize) => {
+        setLocalCurrent(_page);
+        setLocalPageSize(_pageSize);
+        onTriggerStateUpdate(false, { current: _page, pageSize: _pageSize });
       }}
       {...rest}
     />

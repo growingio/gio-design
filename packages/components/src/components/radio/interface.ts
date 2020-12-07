@@ -34,41 +34,25 @@ export interface TRadioGroupOption {
 }
 
 export interface IRadioGroupProps {
-  /**
-   自定义 `className`
-   */
+  // 自定义 `className`
   className?: string;
-  /**
-   `RadioGroup` 的排列方向为水平还是垂直
-   */
+  // 自定义样式
+  style?: React.CSSProperties;
+  // `RadioGroup` 的排列方向为水平还是垂直
   direction?: 'horizontal' | 'vertical';
-  /**
-   整组失效
-   */
+  // 整组失效
   disabled?: boolean;
-  /**
-   	默认选中的选项
-   */
+  // 默认选中的选项
   defaultValue?: any;
-  /**
-   指定选中的选项
-   */
+  // 指定选中的选项
   value?: any;
-  /**
-   变化时回调函数
-   */
+  // 变化时回调函数
   onChange?: IRadioProps['onChange'];
-  /**
-   `RadioGroup` 下所有 `input[type="radio"]` 的 `name` 属性
-   */
+  // `RadioGroup` 下所有 `input[type="radio"]` 的 `name` 属性
   name?: string;
-  /**
-   指定可选项
-   */
+  // 指定可选项
   options?: Array<TRadioGroupOption | string>;
-  /**
-   子元素
-   */
+  // 子元素
   children?: React.ReactNode;
 }
 

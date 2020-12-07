@@ -38,6 +38,7 @@ jobs:
         with:
           node-version: 12.x
       - name: Cache Node.js modules
+        id: cache-node-modules
         uses: actions/cache@v2
         with:
           path: |
