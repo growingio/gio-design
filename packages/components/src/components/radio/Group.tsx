@@ -10,6 +10,7 @@ import { IRadioGroupProps, IRadioChangeEvent } from './interface';
 const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
   const {
     className,
+    style,
     name,
     direction = 'horizontal',
     disabled,
@@ -111,7 +112,7 @@ const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
   });
 
   return (
-    <div className={wrapperCls}>
+    <div style={style} className={wrapperCls}>
       <RadioGroupProvider
         value={{
           disabled,

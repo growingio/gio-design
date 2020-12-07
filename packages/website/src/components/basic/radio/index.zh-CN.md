@@ -45,6 +45,7 @@ group:
 | onChange       | 变化时回调函数                          | Function(e:IRadioChangeEvent) | -      |
 | className      | 自定义 className                        | string                        | -      |
 | prefixCls      | 替代 Radio 组件 class 的 gio-radio 前缀 | string                        | -      |
+| style          | 自定义组件样式                          | React.CSSProperties           | -      |
 | name           | input[type="radio"] 的 name 属性        | string                        | -      |
 
 ### RadioGroup
@@ -56,6 +57,7 @@ group:
 | 参数         | 说明                                                   | 类型                              | 默认值     |
 | ------------ | ------------------------------------------------------ | --------------------------------- | ---------- |
 | className    | 自定义 className                                       | string                            | -          |
+| style        | 自定义组件样式                                         | React.CSSProperties               | -          |
 | defaultValue | 默认选中的选项                                         | string                            | -          |
 | disabled     | 整组失效                                               | boolean                           | false      |  |
 | name         | RadioGroup 下所有 `input[type="radio"]` 的 `name` 属性 | string                            | -          |
