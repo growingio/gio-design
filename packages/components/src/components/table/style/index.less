@@ -247,6 +247,16 @@
     background-color: unset;
   }
 
+  &-showHover &-placeholder > &-cell {
+    border-top-left-radius: @radius-border-small;
+    border-top-right-radius: @radius-border-small;
+  }
+
+  &-showHover &-thead + &-tbody &-placeholder > &-cell {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
   &-wrapper {
     &::after {
       display: block;

@@ -63,7 +63,15 @@ export {
 } from './components/tree';
 export { default as Upload, UploadProps, UploadType, UploadStatus } from './components/upload';
 export { default as List, ListProps, ListOption } from './components/list';
-export { default as Select, SelectOptions, SelectProps, SelectOption } from './components/select';
+export {
+  default as Select,
+  Option,
+  Group,
+  SelectProps,
+  SelectOptions,
+  OptionProps,
+  GroupProps,
+} from './components/select';
 export { default as Form, FormLayout, FormProps } from './components/form';
 export { default as TimePicker, TimePickerProps } from './components/time-picker';
 export { default as Grid, GridProps } from './components/grid';
