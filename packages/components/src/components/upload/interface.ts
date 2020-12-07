@@ -125,7 +125,6 @@ export interface ITriggerProps {
   setFile: (file: IUploadFile) => void;
   file: IUploadFile;
   onRemove: () => void;
-  onUpload: () => void;
   onInputUpload: (type: TInputUploadType, url: string) => void;
   inputUploadType: TInputUploadType;
   accept: string | undefined;
@@ -147,7 +146,6 @@ export interface IPreviewProps {
 export interface IActionsProps {
   file: IUploadFile;
   onRemove: () => void;
-  onUpload?: () => void;
   useUpload?: boolean;
   useDelete?: boolean;
   placement?: 'center' | 'rightTop';

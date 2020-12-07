@@ -9,7 +9,6 @@ const Actions: React.FC<IActionsProps> = ({
   useUpload,
   file,
   onRemove,
-  onUpload,
   placement = 'center',
 }: IActionsProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
@@ -21,7 +20,8 @@ const Actions: React.FC<IActionsProps> = ({
   const iconCls = classnames(`${prefixCls}__actions-icon`);
 
   const handleStopPropagation = (e: any) => {
-    if (!e.target?.classList?.contains(`${prefixCls}__actions-icon`) && file?.status === STATUS_SUCCESS) {
+    const targetNode = document.getElementsByClassName(`${prefixCls}__actions-container`)[0];
+    if (targetNode !== e.target && !targetNode.contains(e.target) && file?.status === STATUS_SUCCESS) {
       e.stopPropagation();
     }
   };
@@ -31,14 +31,10 @@ const Actions: React.FC<IActionsProps> = ({
     onRemove?.();
   };
 
-  const handleUpload = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onUpload?.();
-  };
   return (
     <span className={cls} onClick={handleStopPropagation} aria-hidden="true">
       <span className={iconContainerCls}>
-        {useUpload && <UploadOutlined className={iconCls} onClick={handleUpload} />}
+        {useUpload && <UploadOutlined className={iconCls} />}
         {useDelete && <DeleteOutlined className={iconCls} onClick={handleRemove} />}
       </span>
     </span>

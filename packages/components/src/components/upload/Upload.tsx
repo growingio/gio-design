@@ -144,10 +144,6 @@ const Upload: React.FC<IUploadProps> = ({
       }
     });
   };
-  const handleUpload = () => {
-    const { current } = rcUploadRef;
-    current?.uploader?.onClick();
-  };
 
   const handleInputUpload = async (uploadType: TInputUploadType = 'url', url: string) => {
     const uploadFile = {
@@ -221,7 +217,6 @@ const Upload: React.FC<IUploadProps> = ({
     inputUploadType,
     setFile,
     onRemove: handleRemove,
-    onUpload: handleUpload,
     onInputUpload: handleInputUpload,
     placeholderImg,
   };

@@ -10,7 +10,6 @@ const AvatarTrigger: React.FC<ITriggerProps> = ({
   triggerProps,
   file,
   onRemove,
-  onUpload,
   children,
   placeholderImg = '',
 }: ITriggerProps) => {
@@ -23,13 +22,7 @@ const AvatarTrigger: React.FC<ITriggerProps> = ({
         <Avatar src={file?.dataUrl ?? placeholderImg} size="huge">
           {children as string}
         </Avatar>
-        <Actions
-          file={file}
-          useUpload
-          useDelete={file?.status === STATUS_SUCCESS}
-          onRemove={onRemove}
-          onUpload={onUpload}
-        />
+        <Actions file={file} useUpload useDelete={file?.status === STATUS_SUCCESS} onRemove={onRemove} />
       </span>
     </Loading>
   );

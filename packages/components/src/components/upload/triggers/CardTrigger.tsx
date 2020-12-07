@@ -7,13 +7,7 @@ import { UploadPrefixClsContext } from '../UploadContext';
 import Preview from '../Preview';
 import Actions from '../Actions';
 
-const CardTrigger: React.FC<ITriggerProps> = ({
-  triggerProps,
-  file,
-  onRemove,
-  onUpload,
-  placeholderImg,
-}: ITriggerProps) => {
+const CardTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, onRemove, placeholderImg }: ITriggerProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
   const cls = classnames(triggerProps?.className, `${prefixCls}__card`);
 
@@ -31,7 +25,7 @@ const CardTrigger: React.FC<ITriggerProps> = ({
         {file?.status === STATUS_SUCCESS && (
           <>
             <Preview file={file} size={80} />
-            <Actions file={file} onRemove={onRemove} useUpload onUpload={onUpload} />
+            <Actions file={file} onRemove={onRemove} useUpload />
           </>
         )}
         {file?.status !== STATUS_SUCCESS && <PlusOutlined className={`${prefixCls}__plus-icon`} />}
