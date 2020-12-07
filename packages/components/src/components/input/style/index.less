@@ -17,6 +17,13 @@
     }
   }
 
+  &-showcount::after {
+    display: block;
+    color: @palette-black-6;
+    text-align: right;
+    content: attr(data-count);
+  }
+
   &-content {
     display: block;
     box-sizing: border-box;
