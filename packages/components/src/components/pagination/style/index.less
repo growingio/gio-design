@@ -159,16 +159,22 @@
   }
 
   &-options {
+    display: inline-flex;
     height: 32px;
-    margin-left: 8px;
     color: @color-text-pagination-normal;
     font-size: @size-font-14;
     line-height: 22px;
     letter-spacing: 0;
+    &-size-changer {
+      display: inline-block;
+      margin: 0 8px;
+    }
     &-quick-jumper {
+      display: inline-block;
       height: 100%;
+      margin: 0 8px;
       .@{input-prefix-cls} {
-        display: inline;
+        width: auto;
         input {
           width: 60px;
           height: 100%;
