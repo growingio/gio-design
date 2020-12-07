@@ -6,17 +6,12 @@
 
 .@{select-prefix-cls} {
   position: relative;
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   overflow: hidden;
   border: 1px solid transparent;
   border-radius: @radius-border-small;
   outline: none;
   transition: all 0.2s;
-
-  &-list {
-    max-height: 220px;
-  }
 
   &-selector {
     width: 100%;
@@ -27,6 +22,7 @@
     overflow-y: auto;
     border-radius: @radius-border-small;
     transition: all 0.2s;
+
     &::-webkit-scrollbar {
       width: 2px;
       background-color: transparent;
@@ -68,6 +64,7 @@
     margin-left: 8px;
     font-size: @select-input-fontSize;
     transition: margin 0.2s;
+
     &-text {
       overflow: hidden;
       white-space: nowrap;
@@ -126,6 +123,7 @@
     & > * {
       pointer-events: none;
     }
+
     color: #d3d7e7;
     text-shadow: none;
     background: @color-background-input-disable;
@@ -196,6 +194,7 @@
     width: 100%;
     color: #a3adc8;
     text-align: center;
+
     &-icon {
       margin-bottom: 40px;
     }

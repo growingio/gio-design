@@ -1,14 +1,23 @@
 import GIOSelect from './Select';
-import { Option } from './interface';
+import { Option, SelectProps, OptGroupProps, OptionProps } from './interface';
+import Options from './Options';
+import OptGroup from './OptGroup';
 
-export { SelectProps, Option as SelectOption } from './interface';
-
-type TSelect = typeof GIOSelect & {
-  Option: typeof Option;
+export type TSelect = typeof GIOSelect & {
+  Group: typeof OptGroup;
+  Option: typeof Options;
 };
-
 const Select = GIOSelect as TSelect;
-Select.Option = Option;
 
-export { Option as SelectOptions };
+Select.Option = Options;
+Select.Group = OptGroup;
+
+export {
+  Options as Option,
+  OptGroup as Group,
+  SelectProps,
+  OptionProps,
+  Option as SelectOptions,
+  OptGroupProps as GroupProps,
+};
 export default Select;

@@ -21,8 +21,8 @@
     "build-sotrybook": "build-storybook -s public"
   },
   "dependencies": {
-    "@gio-design/icons": "^20.10.5",
-    "@gio-design/tokens": "^20.9.4",
+    "@gio-design/icons": "^20.11.0",
+    "@gio-design/tokens": "^20.11.2",
     "@types/classnames": "^2.2.9",
     "@types/lodash": "^4.14.136",
     "@types/raf": "^3.4.0",
