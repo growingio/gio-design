@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import RcUpload from 'rc-upload';
 import classnames from 'classnames';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
@@ -130,8 +130,8 @@ const Upload: React.FC<IUploadProps> = ({
       if (res === false) {
         return;
       }
-      console.log(file)
-      console.log(uploadedFile)
+      console.log(file);
+      console.log(uploadedFile);
       if (file?.dataUrl === uploadedFile?.dataUrl) {
         setFile({
           uid: '',
@@ -147,7 +147,7 @@ const Upload: React.FC<IUploadProps> = ({
     });
   };
   const handleUpload = () => {
-    rcUploadRef.current.uploader.onClick();
+    rcUploadRef.current.uploader?.onClick();
   };
 
   const handleInputUpload = async (uploadType: TInputUploadType = 'url', url: string) => {
