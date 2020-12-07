@@ -5,7 +5,7 @@ import '@gio-design/components/es/components/cascader/style/index.css';
 import '@gio-design/components/es/components/input/style/index.css';
 
 const dataSource = [
-  { label: 'option A', value: 'a' },
+  { label: 'option A', value: 'a', disabled: true },
   { label: 'option B', value: 'b', children: [{ label: 'B-1', value: 'b-1' }] },
   {
     label: 'option C',

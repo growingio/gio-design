@@ -7,7 +7,7 @@ export default () => {
     console.log('I was closed');
   };
   return (
-    <div>
+    <div className="gio-alert-demo">
       <Alert
         message="Info Text"
         description="Info Description Info Description Info Description Info Description"

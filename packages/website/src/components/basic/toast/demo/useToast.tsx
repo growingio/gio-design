@@ -5,32 +5,39 @@ import './useToast.less';
 const SuccessMessage = () => (
   <span>
     操作成功！
-    <a style={{ color: '#3867f4', textDecoration: 'underline' }}>去看看</a>
+    <a
+      href="https://growingio.design/"
+      target="_blank"
+      rel="noreferrer"
+      style={{ color: '#3867f4', textDecoration: 'underline' }}
+    >
+      去看看
+    </a>
   </span>
 );
 
 export default () => {
   const context = useContext(ConfigContext);
-  const [hootToast, toastHolder] = Toast.useToast();
+  const [hookToast, toastHolder] = Toast.useToast();
 
   const handleSuccess = () => {
-    hootToast.success('操作成功！');
+    hookToast.success('操作成功！');
   };
 
   const handleFail = () => {
-    hootToast.error('操作失败！');
+    hookToast.error('操作失败！');
   };
 
   const handleWarn = () => {
-    hootToast.warning('警告，怪兽即将入侵！');
+    hookToast.warning('警告，怪兽即将入侵！');
   };
 
   const handleSuccessDiy = () => {
-    hootToast.success(<SuccessMessage />);
+    hookToast.success(<SuccessMessage />);
   };
 
   const handleInfo = () => {
-    hootToast.info('这是一条温馨提示~');
+    hookToast.info('这是一条温馨提示~');
   };
 
   return (

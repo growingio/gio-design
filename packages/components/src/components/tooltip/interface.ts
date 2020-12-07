@@ -21,6 +21,10 @@ export interface TooltipProps extends Partial<RcTooltipProps> {
    */
   arrowPointAtCenter?: boolean;
   /**
+   气泡被遮挡时自动调整位置
+   */
+  autoAdjustOverflow?: boolean;
+  /**
    被包裹的元素
    */
   children: React.ReactElement;

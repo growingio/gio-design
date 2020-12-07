@@ -26,9 +26,14 @@ const dataSource = [
 
 const Basic = (): JSX.Element => {
   return (
-    <div style={{ position: 'relative', minHeight: 140 }}>
-      <CascaderMenu dataSource={dataSource} />
-    </div>
+    <CascaderMenu
+      style={{ minHeight: 160 }}
+      header={<div>header</div>}
+      footer={<div>footer</div>}
+      dataSource={dataSource}
+      onSelect={console.log}
+      autoFocus={false}
+    />
   );
 };
 

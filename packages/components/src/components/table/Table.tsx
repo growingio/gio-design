@@ -13,6 +13,8 @@ import Title from './Title';
 import { TableProps, ColumnsType } from './interface';
 import Empty from './Empty';
 import { translateInnerColumns } from './utils';
+import Loading from '../loading';
+import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
 
 const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement => {
   const {
@@ -27,11 +29,12 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
     onChange,
     showHover = true,
     rowKey,
+    loading = false,
     ...rest
   } = props;
 
   const prefixCls = usePrefixCls('table', customizePrefixCls);
-
+  const debounceLoading = useDebounceLoading(loading, 1000);
   const innerColumns = useMemo(() => translateInnerColumns(columns), [columns]);
   const [activeSorterStates, updateSorterStates, sortedData] = useSorter(innerColumns, dataSource);
   const [activeFilterStates, updateFilterStates, filtedData] = useFilter(innerColumns, sortedData);
@@ -48,14 +51,15 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
   });
   const [transformEllipsisTooltipPipeline] = useEllipsisTooltip();
 
-  const onTriggerStateUpdate = (reset = false) => {
+  const onTriggerStateUpdate = (reset = false, paginationState = activePaginationedState): void => {
     if (reset) {
       resetPagination();
     }
-    onChange?.(activePaginationedState, activeSorterStates, activeFilterStates);
+    // 通过 activePaginationedState 拿不到最新的状态
+    onChange?.(paginationState, activeSorterStates, activeFilterStates);
   };
 
-  const renderTitle = (_columns: ColumnsType<RecordType>) =>
+  const renderTitle = (_columns: ColumnsType<RecordType>): ColumnsType<RecordType> =>
     cloneDeep(_columns).map((column) => {
       const sortState = activeSorterStates.find(({ key }) => key === column.key);
       const filterState = activeFilterStates.find(({ key }) => key === column.key);
@@ -108,16 +112,18 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
         [`${prefixCls}-showHover`]: showHover,
       })}
     >
-      <RcTable
-        title={title ? () => title : undefined}
-        prefixCls={prefixCls}
-        columns={composedColumns}
-        data={paginationedData}
-        emptyText={emptyElement}
-        rowKey={rowKey}
-        {...rest}
-      />
-      <PaginationComponent onTriggerStateUpdate={onTriggerStateUpdate} />
+      <Loading loading={debounceLoading}>
+        <RcTable
+          title={title ? () => title : undefined}
+          prefixCls={prefixCls}
+          columns={composedColumns}
+          data={paginationedData}
+          emptyText={emptyElement}
+          rowKey={rowKey}
+          {...rest}
+        />
+        <PaginationComponent onTriggerStateUpdate={onTriggerStateUpdate} />
+      </Loading>
     </div>
   );
 };
