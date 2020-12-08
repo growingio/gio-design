@@ -130,8 +130,18 @@ const Upload: React.FC<IUploadProps> = ({
       if (res === false) {
         return;
       }
-
-      setFile(getEmptyFileObj(uploadedFile));
+      if (file?.dataUrl === uploadedFile?.dataUrl) {
+        setFile({
+          uid: '',
+          size: 0,
+          name: '本地上传',
+          type: '$empty-file',
+          status: 'notYet',
+          dataUrl: '',
+        });
+      } else {
+        setFile(getEmptyFileObj(uploadedFile));
+      }
     });
   };
 

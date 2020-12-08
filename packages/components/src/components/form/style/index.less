@@ -37,6 +37,10 @@
   display: flex;
   margin-bottom: @field-gap;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   .@{form-prefix-cls}-large & {
     margin-bottom: @field-gap-large;
   }
@@ -95,7 +99,6 @@
   }
 
   &-message {
-    margin-top: @margin-xs;
     color: @info-color;
     font-size: @size-font-12;
   }
@@ -103,6 +106,7 @@
   &-feedback,
   &-help {
     min-height: @field-gap;
+    margin-top: @margin-xs;
 
     .@{form-prefix-cls}-large & {
       min-height: @field-gap-large;

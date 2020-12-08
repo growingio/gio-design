@@ -44,6 +44,7 @@ const ItemControl: React.FC<Props> = (props: Props) => {
       </span>
     ) : null;
   const icon = customIcon || innerIcon;
+  const innerHasFeedback = feedback && feedback.length > 0;
 
   return (
     <div className={`${prefixCls}-control`} style={{ width: inputWidth }}>
@@ -52,7 +53,7 @@ const ItemControl: React.FC<Props> = (props: Props) => {
         {icon}
         {afterInput}
       </div>
-      <div className={`${prefixCls}-message`}>
+      <div className={`${prefixCls}-message`} data-has-feedback={innerHasFeedback || !!help}>
         {help && <div className={`${prefixCls}-help`}>{help}</div>}
 
         {feedback && feedback.length > 0 && (
