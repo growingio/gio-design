@@ -11,7 +11,7 @@ const Actions: React.FC<IActionsProps> = ({
   onRemove,
   placement = 'center',
 }: IActionsProps) => {
-  const spanRef = useRef<HTMLSpanElement>(null);;
+  const spanRef = useRef<HTMLSpanElement>(null);
   const prefixCls = useContext(UploadPrefixClsContext);
   const cls = classnames(`${prefixCls}__actions`, {
     [`${prefixCls}__actions--center`]: placement === 'center',
@@ -22,7 +22,7 @@ const Actions: React.FC<IActionsProps> = ({
 
   const handleStopPropagation = (e: any) => {
     const targetNode = spanRef.current?.childNodes[0];
-    if (!targetNode.contains(e.target) && file?.status === STATUS_SUCCESS) {
+    if (targetNode && !targetNode.contains(e.target) && file?.status === STATUS_SUCCESS) {
       e.stopPropagation();
     }
   };
