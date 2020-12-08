@@ -160,7 +160,7 @@ describe('Testing Table', () => {
       },
     ];
     const wrapper = mount(
-      <Table title="列表标题" dataSource={dataSource} columns={_columns} pagination={true} onChange={onChange} />
+      <Table title="列表标题" dataSource={dataSource} columns={_columns} pagination onChange={onChange} />
     );
     expect(wrapper.exists('.gio-table-pagination')).toBe(true);
     wrapper.find('.gio-pagination-item').at(1).simulate('click');
@@ -208,9 +208,7 @@ describe('Testing Table', () => {
     expect(updateSorterStates).toBeCalled();
     wrapper.find('.gio-table-column-filter-inner-btn').at(0).simulate('click');
     expect(wrapper.exists('.gio-popover')).toBe(true);
-    wrapper.find('.gio-checkbox-inner').at(0).simulate('click');
-    wrapper.find('.gio-checkbox-inner').at(0).simulate('click');
-    wrapper.find('.gio-popover-inner-footer').at(0).find('.gio-btn').simulate('click');
+    wrapper.find('.filter-popover-footer').find('.gio-btn').at(1).simulate('click');
     expect(updateFilterStates).toBeCalled();
     expect(onTriggerStateUpdate).toBeCalled();
     wrapper.setProps({ sorterState: undefined, filterState: undefined });
