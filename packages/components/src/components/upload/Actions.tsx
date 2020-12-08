@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import classnames from 'classnames';
 import { DeleteOutlined, UploadOutlined } from '@gio-design/icons';
 import { UploadPrefixClsContext } from './UploadContext';
@@ -11,6 +11,7 @@ const Actions: React.FC<IActionsProps> = ({
   onRemove,
   placement = 'center',
 }: IActionsProps) => {
+  const spanRef = useRef<HTMLSpanElement>(null);
   const prefixCls = useContext(UploadPrefixClsContext);
   const cls = classnames(`${prefixCls}__actions`, {
     [`${prefixCls}__actions--center`]: placement === 'center',
@@ -20,7 +21,8 @@ const Actions: React.FC<IActionsProps> = ({
   const iconCls = classnames(`${prefixCls}__actions-icon`);
 
   const handleStopPropagation = (e: any) => {
-    if (!e.target?.classList?.contains(`${prefixCls}__actions-icon`) && file?.status === STATUS_SUCCESS) {
+    const targetNode = spanRef.current?.childNodes[0];
+    if (targetNode && !targetNode.contains(e.target) && file?.status === STATUS_SUCCESS) {
       e.stopPropagation();
     }
   };
@@ -32,7 +34,7 @@ const Actions: React.FC<IActionsProps> = ({
 
   return (
     <span className={cls} onClick={handleStopPropagation} aria-hidden="true">
-      <span className={iconContainerCls}>
+      <span className={iconContainerCls} ref={spanRef}>
         {useUpload && <UploadOutlined className={iconCls} />}
         {useDelete && <DeleteOutlined className={iconCls} onClick={handleRemove} />}
       </span>
