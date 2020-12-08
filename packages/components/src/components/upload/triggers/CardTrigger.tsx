@@ -25,7 +25,7 @@ const CardTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, onRemove, pl
         {file?.status === STATUS_SUCCESS && (
           <>
             <Preview file={file} size={80} />
-            <Actions file={file} useUpload onRemove={onRemove} />
+            <Actions file={file} onRemove={onRemove} useUpload />
           </>
         )}
         {file?.status !== STATUS_SUCCESS && <PlusOutlined className={`${prefixCls}__plus-icon`} />}

@@ -1,8 +1,8 @@
 import GioModal from './Modal';
 import StepModal from './StepModal';
-import callout, { withConfirm, withInfo, withSuccess, withWarn, withError } from './callout';
+import callout, { configModal, withConfirm, withInfo, withSuccess, withWarn, withError } from './callout';
 import useModal from './useModal';
-import { IModalStaticFuncConfig, IModalStaticFunctions, IUseModal } from './interface';
+import { IModalStaticFuncConfig, IModalStaticFunctions, IUseModal, IModalConfigs } from './interface';
 
 export {
   IModalProps as ModalProps,
@@ -14,11 +14,16 @@ export {
   IModalStaticFuncReturn as ModalStaticFuncReturn,
   TModalStaticFuncType as ModalStaticFuncType,
   IModalStaticFunc as ModalStaticFunc,
+  IModalConfigs as ModalConfigs,
 } from './interface';
 
 export { StepModal, useModal };
 
-export type TModal = typeof GioModal & IModalStaticFunctions & { useModal: IUseModal };
+export type TModal = typeof GioModal &
+  IModalStaticFunctions & {
+    config: (configs: IModalConfigs) => void;
+    useModal: IUseModal;
+  };
 
 const Modal = GioModal as TModal;
 
@@ -33,5 +38,7 @@ Modal.warn = (config: IModalStaticFuncConfig) => callout(withWarn(config));
 Modal.error = (config: IModalStaticFuncConfig) => callout(withError(config));
 
 Modal.useModal = useModal;
+
+Modal.config = configModal;
 
 export default Modal;

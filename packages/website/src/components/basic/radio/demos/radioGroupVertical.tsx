@@ -5,7 +5,7 @@ import '@gio-design/components/es/components/radio/style/css.js';
 export default () => {
   const [radio, setRadio] = useState('a');
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     console.log('===Log Start===');
     console.log(e.target.value);
     console.log('---Log End---');

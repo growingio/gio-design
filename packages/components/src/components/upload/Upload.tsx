@@ -130,8 +130,18 @@ const Upload: React.FC<IUploadProps> = ({
       if (res === false) {
         return;
       }
-
-      setFile(getEmptyFileObj(uploadedFile));
+      if (file?.dataUrl === uploadedFile?.dataUrl) {
+        setFile({
+          uid: '',
+          size: 0,
+          name: '本地上传',
+          type: '$empty-file',
+          status: 'notYet',
+          dataUrl: '',
+        });
+      } else {
+        setFile(getEmptyFileObj(uploadedFile));
+      }
     });
   };
 
@@ -152,7 +162,6 @@ const Upload: React.FC<IUploadProps> = ({
         setFile(uploadFile);
         const { originFile } = await fetchImageFileFromUrl(url);
         const request = restProps.customRequest || xhrRequest;
-
         let ac: string;
         if (typeof action === 'function') {
           ac = await action(originFile);

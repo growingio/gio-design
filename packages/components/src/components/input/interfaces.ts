@@ -14,6 +14,9 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   compositionStart?: (e: React.CompositionEvent<HTMLInputElement>) => void;
   compositionUpdate?: (e: React.CompositionEvent<HTMLInputElement>) => void;
   compositionEnd?: (e: React.CompositionEvent<HTMLInputElement>) => void;
+  /**
+   * 外层容器 style，取代 wrapStyle 并忽略 inputStyle
+   */
   style?: React.CSSProperties;
   /**
    * input 组件外层容器的 style
@@ -43,6 +46,14 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 
 export interface InputNumberProps extends Omit<InputProps, 'onChange'> {
   /**
+   * 输入框允许的最大值
+   */
+  max?: number;
+  /**
+   * 输入框允许的最小值
+   */
+  min?: number;
+  /**
    * 修改值时触发的回调函数
    */
   onChange?: (value: string) => void;
@@ -59,6 +70,9 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
    * @default false
    */
   autosize?: boolean;
+  /**
+   * 外层容器 style，取代 wrapStyle 并忽略 inputStyle
+   */
   style?: React.CSSProperties;
   /**
    * 外层容器的style

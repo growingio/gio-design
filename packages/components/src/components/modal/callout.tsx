@@ -4,22 +4,30 @@ import { WarningFilled, InformationFilled, CheckCircleFilled, CloseCircleFilled 
 import { PaletteBlue4, PaletteYellow5, PaletteGreen6, PaletteRed5 } from '@gio-design/tokens';
 import { defaultRootPrefixCls } from '../config-provider';
 import CalloutModal from './CalloutModal';
-import { IModalStaticFuncConfig, IModalStaticFuncReturn } from './interface';
+import { IModalStaticFuncConfig, IModalStaticFuncReturn, IModalConfigs } from './interface';
+
+let modalPrefixCls = defaultRootPrefixCls;
+
+export function configModal({ prefixCls }: IModalConfigs): void {
+  if (prefixCls) {
+    modalPrefixCls = prefixCls;
+  }
+}
 
 export default function callout(config: IModalStaticFuncConfig): IModalStaticFuncReturn {
   const container = document.createElement('div');
-  container.classList.add(`${defaultRootPrefixCls}-modal__callout-container`);
+  container.classList.add(`${modalPrefixCls}-modal__callout-container`);
   document.body.appendChild(container);
 
-  let props = { okText: '确定', closeText: '取消', ...config, close, visible: true };
+  let props = { okText: '确定', closeText: '取消', prefixCls: modalPrefixCls, ...config, close, visible: true };
 
-  function render(modalProps: any) {
+  function render(modalProps: any): void {
     setTimeout(() => {
       ReactDOM.render(<CalloutModal {...modalProps}>{modalProps.content}</CalloutModal>, container);
     });
   }
 
-  function destroy(originAfterClose: () => void) {
+  function destroy(originAfterClose: () => void): void {
     const unmountResult = ReactDOM.unmountComponentAtNode(container);
 
     if (unmountResult && container.parentNode) {
@@ -29,7 +37,7 @@ export default function callout(config: IModalStaticFuncConfig): IModalStaticFun
     originAfterClose?.();
   }
 
-  function close(...args: any[]) {
+  function close(...args: any[]): void {
     props = {
       ...props,
       visible: false,
@@ -38,7 +46,7 @@ export default function callout(config: IModalStaticFuncConfig): IModalStaticFun
     render(props);
   }
 
-  function update(newConfig: IModalStaticFuncConfig) {
+  function update(newConfig: IModalStaticFuncConfig): void {
     props = {
       ...props,
       ...newConfig,

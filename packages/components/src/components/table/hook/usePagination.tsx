@@ -17,9 +17,9 @@ const usePagination = <RecordType,>(
   (props: { onTriggerStateUpdate: () => void }) => JSX.Element | null,
   () => void
 ] => {
-  const { current, pageSize, total, ...rest } = pagination || {};
-  const [localCurrent, setLocalCurrent] = useControlledState<number>(current, 1);
-  const [localPageSize, setLocalPageSize] = useControlledState<number>(pageSize, 10);
+  const { current, pageSize, total, onChange, onShowSizeChange, ...rest } = pagination || {};
+  const [controlledCurrent, setControlledCurrent] = useControlledState<number>(current, 1);
+  const [controlledPageSize, setControlledPageSize] = useControlledState<number>(pageSize, 10);
   const [controlledTotal, setControlledTotal] = useControlledState<number>(total, data.length);
   const prefixCls = usePrefixCls('table');
 
@@ -27,8 +27,8 @@ const usePagination = <RecordType,>(
   const resetPagination = () => {
     if (isUndefined(total)) {
       setControlledTotal(data.length, true);
-      if (Math.ceil(data.length / localPageSize) < localCurrent) {
-        setLocalCurrent(1, true);
+      if (Math.ceil(data.length / controlledPageSize) < controlledCurrent) {
+        setControlledCurrent(1, true);
       }
     }
   };
@@ -39,8 +39,11 @@ const usePagination = <RecordType,>(
 
   // 通过total字段是否受控判断是否后端分页。
   const paginationData = useMemo(
-    () => (isUndefined(total) ? data.slice((localCurrent - 1) * localPageSize, localCurrent * localPageSize) : data),
-    [data, total, localCurrent, localPageSize]
+    () =>
+      isUndefined(total)
+        ? data.slice((controlledCurrent - 1) * controlledPageSize, controlledCurrent * controlledPageSize)
+        : data,
+    [data, total, controlledCurrent, controlledPageSize]
   );
 
   const transformShowIndexPipeline = useCallback(
@@ -51,20 +54,20 @@ const usePagination = <RecordType,>(
         width: 50,
         align: 'center',
         render(...columnRest) {
-          return (localCurrent - 1) * localPageSize + columnRest[2] + 1;
+          return (controlledCurrent - 1) * controlledPageSize + columnRest[2] + 1;
         },
       };
       return showIndex ? [indexColumn, ...columns] : columns;
     },
-    [showIndex, localCurrent, localPageSize]
+    [showIndex, controlledCurrent, controlledPageSize]
   );
 
   const activePaginationState: PaginationState = useMemo(
     () => ({
-      current: localCurrent,
-      pageSize: localPageSize,
+      current: controlledCurrent,
+      pageSize: controlledPageSize,
     }),
-    [localCurrent, localPageSize]
+    [controlledCurrent, controlledPageSize]
   );
 
   const PaginationComponent = ({
@@ -75,11 +78,17 @@ const usePagination = <RecordType,>(
     <Pagination
       className={`${prefixCls}-pagination`}
       total={controlledTotal}
-      current={localCurrent}
-      pageSize={localPageSize}
+      current={controlledCurrent}
+      pageSize={controlledPageSize}
+      onShowSizeChange={(c, p) => {
+        setControlledCurrent(c);
+        setControlledPageSize(p);
+        onShowSizeChange?.(c, p);
+      }}
       onChange={(_page, _pageSize) => {
-        setLocalCurrent(_page);
-        setLocalPageSize(_pageSize);
+        setControlledCurrent(_page);
+        setControlledPageSize(_pageSize);
+        onChange?.(_page, _pageSize);
         onTriggerStateUpdate(false, { current: _page, pageSize: _pageSize });
       }}
       {...rest}

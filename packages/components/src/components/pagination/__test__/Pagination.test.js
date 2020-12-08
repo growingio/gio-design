@@ -6,7 +6,7 @@ import { generatePageArray } from '../ until';
 
 describe('Testing Pagination', () => {
   it('should be stable', () => {
-    const wrapper = render(<Pagination total={1100} showQuickJumper />);
+    const wrapper = render(<Pagination total={1100} showQuickJumper showSizeChanger />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -18,7 +18,7 @@ describe('Testing Pagination', () => {
         defaultCurrent: 10,
         total: 1200,
         current: 12,
-        pageSize: 50,
+        defaultPageSize: 50,
       });
       wrapper.unmount();
     }).not.toThrow();
@@ -123,4 +123,25 @@ describe('Testing Pagination', () => {
     const result6 = generatePageArray(3, 10, 5, prevSymbol, nextSymbol);
     expect(result6).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   });
+
+  // test('size changer', () => {
+  //   const onChange = jest.fn();
+  //   const onShowSizeChanger = jest.fn();
+  //   const wrapper = mount(
+  //     <Pagination
+  //       onChange={onChange}
+  //       showSizeChanger
+  //       showQuickJumper
+  //       onShowSizeChanger={onShowSizeChanger}
+  //       total={1100}
+  //     />
+  //   );
+  //   expect(wrapper.exists('.gio-pagination-options-size-changer')).toBe(true);
+  //   const sizeChanger = wrapper.find('.gio-pagination-options-size-changer').find('input');
+  //   const input = wrapper.find('.gio-pagination-options-quick-jumper').find('input');
+  //   input.simulate('change', { target: { value: 110 } });
+  //   sizeChanger.simulate('change', { target: { value: '100' } });
+  //   expect(onChange).toHaveBeenCalledWith(11, 100);
+  //   expect(onShowSizeChanger).toHaveBeenCalledWith(11, 100);
+  // });
 });
