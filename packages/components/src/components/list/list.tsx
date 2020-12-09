@@ -108,7 +108,7 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
             key={option.label}
             name={option.label}
             option={option}
-            style={{ ...style, height: (style.height as number) - 4, paddingTop: index !== 0 ? '16px' : '0px' }}
+            style={{ ...style, height: (style.height as number) - 4, paddingTop: index !== 0 ? '20px' : '0px' }}
             icon={groupIcon}
             isSelected={this.getSelected(option)}
             isMultiple={!!isMultiple}
