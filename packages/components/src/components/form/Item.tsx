@@ -3,7 +3,7 @@ import { Meta } from 'rc-field-form/lib/interface';
 import FieldContext from 'rc-field-form/lib/FieldContext';
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { FormItemProps } from './interface'
+import { FormItemProps } from './interface';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { FormContext } from './context';
 import { hasValidName, toArray } from './util';
@@ -25,6 +25,7 @@ const Item: React.FC<FormItemProps> = (props: FormItemProps) => {
     style,
     name,
     label,
+    title,
     help,
     feedback,
     feedbackType,
@@ -65,6 +66,7 @@ const Item: React.FC<FormItemProps> = (props: FormItemProps) => {
       <div className={cls} data-message-type={mergedFeedbackType} style={style}>
         <ItemLabel
           label={label}
+          title={title}
           labelAlign={labelAlign}
           prefixCls={prefixCls}
           fieldId={fieldId}
