@@ -2,7 +2,7 @@ import React, { useState, useContext, useMemo, useRef, useEffect, useCallback } 
 import classnames from 'classnames';
 
 import { DownFilled, CloseCircleFilled } from '@gio-design/icons';
-import { filter, isNil, without, uniqueId, uniqBy, findIndex, concat } from 'lodash';
+import { filter, isNil, without, uniqueId, findIndex, concat } from 'lodash';
 import { SizeContext } from '../config-provider/SizeContext';
 import Dropdown from '../dropdown';
 import Tag from '../tag';
@@ -273,10 +273,6 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
         : filteredOptions,
     [hasExactMatch, allowCustomOption, filteredOptions, input, hasGroup]
   );
-  const groupCount = useMemo(() => (hasGroup ? uniqBy(completeOptions, 'groupValue').length : 0), [
-    completeOptions,
-    hasGroup,
-  ]);
 
   const onValueChange = (optValue: MaybeArray<string | number>) => {
     if (!isControlled) {
@@ -442,7 +438,7 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
           onDeselect={onListDeselect}
           height={
             listHeight ||
-            (completeOptions.length + groupCount) * listRowHeight - groupCount * 10 - (groupCount !== 0 ? 16 : 0)
+            '100%'
           }
           rowHeight={listRowHeight}
         />
