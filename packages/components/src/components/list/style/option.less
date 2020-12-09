@@ -1,12 +1,13 @@
 @import './base.less';
 
 .@{select-prefix-cls}-option {
+  box-sizing: border-box;
   max-width: 100%;
   padding: 0 25px 0 16px;
   overflow: hidden;
   color: @color-font-list-primary-normal;
   font-size: 14px;
-  line-height: 40px;
+  line-height: 44px;
   white-space: nowrap;
   text-overflow: ellipsis;
   border-radius: 5px;
@@ -81,7 +82,7 @@
   }
 
   &.group {
-    padding: 16px 15px 0 15px;
+    padding: 0 15px 0 15px;
     font-size: 12px;
     line-height: inherit;
   }
