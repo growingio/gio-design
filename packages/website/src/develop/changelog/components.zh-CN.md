@@ -9,6 +9,23 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.12.1
+
+- Upload 上传组件 [#591](https://github.com/growingio/gio-design/pull/591)
+  - 为 trigger 接口增加 onUpload 属性，绑定点击上传事件
+  - 修复有默认的 file 时，无法删除的问题
+- Table 表格
+  - 更新列表筛选样式 [#592](https://github.com/growingio/gio-design/pull/592)
+- Form 表单
+  - 调整 Item 纵向间距为 20px；去掉末尾 Item 的间距 [#593](https://github.com/growingio/gio-design/pull/593)
+  - label 属性类型声明改为 React.ReactNode；新增 title: string 属性 [#597](https://github.com/growingio/gio-design/pull/597)
+- Cascader 级联选择
+  - 修复 groupName 不显示的问题 [#595](https://github.com/growingio/gio-design/pull/595)
+- List 列表
+  - 修复 list 组件 item 间距问题 [#596](https://github.com/growingio/gio-design/pull/596) [#598](https://github.com/growingio/gio-design/pull/598)
+- Select 选择器
+  - fix select group listHeight [#600](https://github.com/growingio/gio-design/pull/600)
+
 ## 20.12.0
 
 - Upload 上传组件
@@ -16,7 +33,7 @@ nav:
 - Select 选择器
   - 增加 `JSX` 方式添加 `Option` [#562](https://github.com/growingio/gio-design/pull/562)
 - List 列表
-  - 解决table在placeholder情况时左上角和右上角圆角边框缺失的问题 [#569](https://github.com/growingio/gio-design/pull/569)
+  - 解决 table 在 placeholder 情况时左上角和右上角圆角边框缺失的问题 [#569](https://github.com/growingio/gio-design/pull/569)
 - Alert 警告提示
   - 去掉 `.gio-alert` 上的 `margin` 样式 [#569](https://github.com/growingio/gio-design/pull/569)
 - Input 输入框
