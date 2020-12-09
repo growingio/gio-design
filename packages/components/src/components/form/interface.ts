@@ -17,7 +17,7 @@ export interface Props<Values = unknown> extends Omit<RcFormProps<Values>, 'form
    */
   className?: string;
   /**
-   	表单名称
+     表单名称
    */
   name?: string;
   /**
@@ -52,7 +52,7 @@ export interface Props<Values = unknown> extends Omit<RcFormProps<Values>, 'form
   /**
    自定义样式
    */
-  style ?: React.CSSProperties;
+  style?: React.CSSProperties;
 }
 
 type RenderChildren = (form: FormInstance) => React.ReactNode;
