@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import isNumber from 'lodash/isNumber';
+import isString from 'lodash/isString';
 
 import { FormLabelAlign, RequiredMark } from './context';
 
@@ -22,7 +24,7 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
   const {
     prefixCls,
     label,
-    title,
+    title = label,
     labelWidth,
     fieldId,
     afterLabel,
@@ -37,7 +39,7 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
   const isOptional = !required && requiredMark === 'optional';
   const innerMarker = isOptional ? '（选填）' : '*';
   const mergedRequiredMarker = marker !== undefined ? marker : innerMarker;
-  const mergedTitle = title ?? typeof label === 'string' ? (label as string) : ''
+  const mergedTitle = isNumber(title) || isString(title) ? (title as string) : '';
   const cls = classNames(
     `${prefixCls}-label`,
     isRequired && `${prefixCls}-label-required`,
