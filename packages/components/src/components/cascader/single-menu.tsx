@@ -25,7 +25,7 @@ export interface Props extends Omit<MenuItemProps, 'dataSource' | 'hasChild' | '
   offsetLeft?: number;
   offsetTop?: number;
   getEmpty?: (keyword?: string) => React.ReactElement;
-  groupName?: MaybeElementOrFn;
+  groupName?: boolean | MaybeElementOrFn;
   parentMenu?: HTMLDivElement;
   expandedId?: NodeData['value'];
   autoFocus?: boolean;
@@ -45,7 +45,7 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     parentsData = [],
     header,
     footer,
-    groupName,
+    groupName = false,
     getEmpty,
     parentMenu,
     expandedId,
@@ -83,7 +83,7 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       const firstItem = wrapRef.current.querySelector('.cascader-menu-item-inner') as HTMLElement;
       setTimeout(() => {
         firstItem?.focus();
-      }, 10);
+      }, 50);
     }
   }, [autoFocus, wrapRef]);
 
@@ -107,7 +107,7 @@ const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       <div key={groupId} className={withWrapperCls('group')}>
         {groupName && (
           <div className={withWrapperCls('group-name')}>
-            {getMayBeElement(groupName, groupData[groupId]) ?? groupData[groupId][0].groupName}
+            {groupName === true ? groupData[groupId][0].groupName : getMayBeElement(groupName, groupData[groupId])}
           </div>
         )}
         {groupData[groupId].map((data, i) => (
