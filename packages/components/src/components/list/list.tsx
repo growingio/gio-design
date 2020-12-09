@@ -36,6 +36,7 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
     return (
       <AutoSizer style={{ width: '100%', height: '100%' }}>
         {({ width }) => (
+          
           <List
             value={value}
             width={width}
