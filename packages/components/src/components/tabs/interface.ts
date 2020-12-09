@@ -10,11 +10,11 @@ export interface TabProps {
   /**
    `tab` 被点击的回调
    */
-  onTabClick?: (key: string | number) => void;
+  onTabClick?: (key: string) => void;
   /**
    切换面板的回调
    */
-  onChange?: (key: string | number) => void;
+  onChange?: (key: string) => void;
   /**
    开启受控模式，当前激活 `tab` 面板的 `key`
    */

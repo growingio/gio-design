@@ -74,9 +74,9 @@ describe('Testing Tabs', () => {
   test('prop activeKey', () => {
     const wrapper = mount(getTabs());
     wrapper.setProps({ activeKey: '1' });
-    expect(wrapper.find('.gio-tabnav').childAt(1).exists('.gio-tabnav-item-active')).toBe(true);
+    expect(wrapper.find('.gio-tabnav').childAt(0).exists('.gio-tabnav-item-active')).toBe(true);
     wrapper.setProps({ activeKey: '2' });
-    expect(wrapper.find('.gio-tabnav').childAt(2).exists('.gio-tabnav-item-active')).toBe(true);
+    expect(wrapper.find('.gio-tabnav').childAt(1).exists('.gio-tabnav-item-active')).toBe(true);
     wrapper.find('.gio-tabnav-item').at(1).simulate('click');
     expect(wrapper.find('.gio-tabnav').childAt(0).exists('.gio-tabnav-item-active')).toBe(false);
   });
