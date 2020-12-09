@@ -11,12 +11,10 @@ import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Options from './Options';
 import { SelectProps, Option, MaybeArray, OptionProps } from './interface';
 import OptGroup from './OptGroup';
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const BoxFilled = require('../../assets/images/BoxFilled.svg');
+import BoxFilled from './Empty';
 
 const defaultArrowComponent = <DownFilled />;
-const defaultListRowHeight = 40;
+const defaultListRowHeight = 44;
 
 const customOptionKeyPrefix = 'select_custom_option_';
 const customOptionKey = uniqueId(customOptionKeyPrefix);
@@ -106,8 +104,10 @@ const defaultNotFoundContent = (
       padding: '68px 0',
     }}
   >
-    <img src={BoxFilled} className="gio-icon" style={{ marginBottom: 24, width: '48px', height: '48px' }} alt="" />
-    <div style={{ fontSize: 12 }}>暂无选项...</div>
+    <div style={{ marginBottom: 24}}>
+      <BoxFilled />
+    </div>
+    <div style={{ fontSize: 12 }}>暂无选项</div>
   </div>
 );
 
@@ -440,7 +440,10 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
           labelRenderer={labelRenderer(input, prefix)}
           onSelect={onListSelect}
           onDeselect={onListDeselect}
-          height={listHeight || (completeOptions.length + groupCount) * listRowHeight}
+          height={
+            listHeight ||
+            (completeOptions.length + groupCount) * listRowHeight - groupCount * 10 - (groupCount !== 0 ? 16 : 0)
+          }
           rowHeight={listRowHeight}
         />
       ) : (

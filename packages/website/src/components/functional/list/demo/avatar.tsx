@@ -38,10 +38,10 @@ const optionWrapper = {
 
 const getRowHeight = (option: any) => {
   if (option.type === 'groupLabel') {
-    return 40;
+    return 34;
   }
 
-  return 56;
+  return 60;
 };
 
 const labelRenderer = (option: any, isGroup: boolean) => {
