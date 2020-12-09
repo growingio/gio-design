@@ -4,7 +4,8 @@ import classNames from 'classnames';
 import { FormLabelAlign, RequiredMark } from './context';
 
 export interface Props {
-  label?: string;
+  label?: React.ReactNode;
+  title?: string;
   fieldId?: string;
   prefixCls: string;
   labelWidth?: number;
@@ -21,6 +22,7 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
   const {
     prefixCls,
     label,
+    title,
     labelWidth,
     fieldId,
     afterLabel,
@@ -35,6 +37,7 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
   const isOptional = !required && requiredMark === 'optional';
   const innerMarker = isOptional ? '（选填）' : '*';
   const mergedRequiredMarker = marker !== undefined ? marker : innerMarker;
+  const mergedTitle = title ?? typeof label === 'string' ? (label as string) : ''
   const cls = classNames(
     `${prefixCls}-label`,
     isRequired && `${prefixCls}-label-required`,
@@ -61,7 +64,7 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
   return (
     <div className={cls} style={{ width: labelWidth }}>
       {label && (
-        <label title={label} htmlFor={htmlFor}>
+        <label title={mergedTitle} htmlFor={htmlFor}>
           {labelChild}
         </label>
       )}
