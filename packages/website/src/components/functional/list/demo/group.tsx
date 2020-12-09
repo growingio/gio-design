@@ -19,7 +19,7 @@ const WrapperStyle = {
 export default () => (
   <>
     <div style={WrapperStyle}>
-      <List dataSource={options} height={264} width={170} />
+      <List dataSource={options} width={170} />
     </div>
     <div style={{ display: 'inline-block', width: 20 }} />
     <div style={WrapperStyle}>
