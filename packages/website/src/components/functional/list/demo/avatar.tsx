@@ -34,16 +34,8 @@ const WrapperStyle = {
 const optionWrapper = {
   display: 'flex',
   alignItems: 'center',
+  height:'60px'
 };
-
-const getRowHeight = (option: any) => {
-  if (option.type === 'groupLabel') {
-    return 40;
-  }
-
-  return 56;
-};
-
 const labelRenderer = (option: any, isGroup: boolean) => {
   if (isGroup) {
     return option.name;
@@ -62,7 +54,7 @@ const labelRenderer = (option: any, isGroup: boolean) => {
 export default () => (
   <>
     <div style={WrapperStyle} className="gio-list_avatar">
-      <List dataSource={options} width={220} labelRenderer={labelRenderer} rowHeight={getRowHeight} />
+      <List dataSource={options} width={220} labelRenderer={labelRenderer} />
     </div>
     <div style={{ display: 'inline-block', width: 20 }} />
     <div style={WrapperStyle} className="gio-list_avatar">
@@ -70,7 +62,6 @@ export default () => (
         dataSource={options}
         width={220}
         labelRenderer={labelRenderer}
-        rowHeight={getRowHeight}
         isMultiple
         value={['a']}
       />

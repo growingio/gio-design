@@ -1,12 +1,13 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
-import { isNil } from 'lodash';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import TabNav from '../tab-nav';
 import TabPane from './TabPane';
 import { TabProps, TabPaneProps } from './interface';
+import useControlledState from '../../utils/hooks/useControlledState';
+import useDeepCompareMemo from '../../utils/hooks/useDeepCompareMemo';
 
 const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
   const {
@@ -21,7 +22,7 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
     onTabClick,
     onChange,
   } = props;
-  const [localActiveKey, setLocalActiveKey] = useState<string | number>(activeKey || defaultActiveKey);
+  const [localActiveKey, setLocalActiveKey] = useControlledState<string>(activeKey, defaultActiveKey);
   const prefixCls = usePrefixCls('tabs', customizePrefixCls);
   const classString = classNames(prefixCls, className, {
     [`${prefixCls}-${type}`]: true,
@@ -30,7 +31,7 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
     [`${prefixCls}-lg`]: size === 'large',
   });
 
-  const [tabNav, tabPane] = useMemo(() => {
+  const [tabNav, tabPane] = useDeepCompareMemo(() => {
     const _tabItem: JSX.Element[] = [];
     const _tabPane = toArray(children).map((node: React.ReactElement<TabPaneProps>) => {
       if (React.isValidElement(node) && node.type === TabPane) {
@@ -40,35 +41,28 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
             {tab}
           </TabNav.Item>
         );
-        return (
-          <TabPane
-            prefixCls={prefixCls}
-            className={classNames(paneClassName, {
-              [`${prefixCls}-tabpane-active`]: localActiveKey === node.key,
-            })}
-            key={node.key as string | number | undefined}
-            style={localActiveKey === node.key ? paneStyle : { ...paneStyle, display: 'none' }}
-            {...restProps}
-          />
-        );
+        return React.cloneElement(node, {
+          prefixCls,
+          className: classNames(paneClassName, {
+            [`${prefixCls}-tabpane-active`]: localActiveKey === node.key,
+          }),
+          style: localActiveKey === node.key ? paneStyle : { ...paneStyle, display: 'none' },
+          ...restProps,
+        });
       }
       return null;
     });
     return [_tabItem, _tabPane];
   }, [children, localActiveKey, prefixCls]);
 
-  const tabNavKeys = useMemo(() => tabNav.map((item) => item.key!), [tabNav]);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const tabNavKeys = useDeepCompareMemo(() => tabNav.map((item) => item.key!.toString()), [tabNav]);
+
   useMemo(() => {
     if (!tabNavKeys.includes(localActiveKey)) {
       setLocalActiveKey(tabNavKeys[0]);
     }
-  }, [localActiveKey, tabNavKeys]);
-
-  useMemo(() => {
-    if (!isNil(activeKey) && tabNavKeys.includes(activeKey)) {
-      setLocalActiveKey(activeKey);
-    }
-  }, [activeKey, tabNavKeys]);
+  }, [localActiveKey, tabNavKeys, setLocalActiveKey]);
 
   return (
     <div className={classString} ref={ref} style={style}>
@@ -77,10 +71,8 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
         type={type}
         activeKey={localActiveKey}
         onTabClick={onTabClick}
-        onChange={(_key: string | number) => {
-          if (isNil(activeKey)) {
-            setLocalActiveKey(_key);
-          }
+        onChange={(_key: string) => {
+          setLocalActiveKey(_key);
           onChange?.(_key);
         }}
       >

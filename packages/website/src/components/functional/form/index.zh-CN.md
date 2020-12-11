@@ -223,6 +223,7 @@ group:
 | 参数              | 说明                                                                                                                | 类型                                              | 默认值   |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | -------- |
 | label             | label 标签的文本                                                                                                    | string \| ReactNode                               | -        |
+| title             | label 标签的 title 属性                                                                                             | string                                            | -        |
 | name              | 字段名，支持数组                                                                                                    | [NamePath](#namepath)                             | -        |
 | valuePropName     | 子节点的值的属性，如 Switch 的是 'checked'。该属性为 getValueProps 的封装，自定义 `getValueProps` 后会失效          | string                                            | -        |
 | getValueFromEvent | 设置如何将 event 的值转换成字段值                                                                                   | `(..args: any[]) => any`                          | -        |

@@ -1,10 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
+import isNumber from 'lodash/isNumber';
+import isString from 'lodash/isString';
 
 import { FormLabelAlign, RequiredMark } from './context';
 
 export interface Props {
-  label?: string;
+  label?: React.ReactNode;
+  title?: string;
   fieldId?: string;
   prefixCls: string;
   labelWidth?: number;
@@ -21,6 +24,7 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
   const {
     prefixCls,
     label,
+    title = label,
     labelWidth,
     fieldId,
     afterLabel,
@@ -35,6 +39,7 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
   const isOptional = !required && requiredMark === 'optional';
   const innerMarker = isOptional ? '（选填）' : '*';
   const mergedRequiredMarker = marker !== undefined ? marker : innerMarker;
+  const mergedTitle = isNumber(title) || isString(title) ? (title as string) : '';
   const cls = classNames(
     `${prefixCls}-label`,
     isRequired && `${prefixCls}-label-required`,
@@ -61,7 +66,7 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
   return (
     <div className={cls} style={{ width: labelWidth }}>
       {label && (
-        <label title={label} htmlFor={htmlFor}>
+        <label title={mergedTitle} htmlFor={htmlFor}>
           {labelChild}
         </label>
       )}

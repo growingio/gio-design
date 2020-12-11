@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Cascader, Toggles, Grid } from '@gio-design/components';
-
 import '@gio-design/components/es/components/cascader/style/index.css';
 import '@gio-design/components/es/components/input/style/index.css';
+
+import React from 'react';
+
+import { Cascader } from '@gio-design/components';
 
 const dataSource = [
   { label: 'option A-1', value: 'a-1', groupId: 'a', groupName: '节能' },
@@ -12,17 +13,17 @@ const dataSource = [
 ];
 
 const Basic = (): JSX.Element => {
-  const [groupName, setGroupName] = useState(true);
+  const groupNameIcons = { a: '🎃', b: '🎄' };
 
   return (
-    <div>
-      <Grid>
-        <Toggles defaultChecked={groupName} onChange={setGroupName} />
-        <span> 显示分组名</span>
-      </Grid>
-
-      <Cascader dataSource={dataSource} groupName={groupName} />
-    </div>
+    <Cascader
+      dataSource={dataSource}
+      groupName={(d) => (
+        <div role="img" aria-label="groupName icon">
+          {groupNameIcons[d[0].groupId]}
+        </div>
+      )}
+    />
   );
 };
 

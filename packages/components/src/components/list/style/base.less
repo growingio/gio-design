@@ -41,6 +41,8 @@
   //   outline: none;
   // }
   padding: 16px 8px;
+  font-weight: @weight-font-regular;
+
   &-item {
     box-sizing: border-box;
     color: @link-font-color-normal;
@@ -52,6 +54,7 @@
       border-radius: 4px;
       cursor: pointer;
     }
+
     :active {
       background-color: @color-background-list-single-active;
     }
@@ -59,8 +62,10 @@
 
   .@{select-prefix-cls}-core {
     position: relative;
+
     .@{select-prefix-cls}-list-wrapper {
       background-color: #fff;
+
       .@{select-prefix-cls}-list {
         &:focus {
           outline: none;

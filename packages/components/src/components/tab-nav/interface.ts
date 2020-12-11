@@ -20,19 +20,19 @@ export interface TabNavProps {
   /**
    * 标签被点击时的回调
    */
-  onTabClick?: (_key: string | number) => void;
+  onTabClick?: (_key: string) => void;
   /**
    * 标签激活改变时的回调
    */
-  onChange?: (_key: string | number) => void;
+  onChange?: (_key: string) => void;
   /**
    * 初始化选中面板的 key
    */
-  defaultActiveKey?: string | number;
+  defaultActiveKey?: string;
   /**
    * 开启受控模式，当前激活 tab 面板的 key
    */
-  activeKey?: string | number;
+  activeKey?: string;
 }
 
 export interface TabNavItemProps {
@@ -41,4 +41,6 @@ export interface TabNavItemProps {
   className?: string;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
+  // 内部使用
+  innerRef?: React.RefObject<HTMLDivElement>;
 }

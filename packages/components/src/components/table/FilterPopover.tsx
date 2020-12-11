@@ -1,7 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import Button from '../button';
 import Popover from '../popover';
-import Checkbox, { CheckboxGroup } from '../checkbox';
+import List from '../list';
+import SearchBar from '../search-bar';
 
 interface FilterPopoverProps {
   prefixCls: string;
@@ -10,40 +11,60 @@ interface FilterPopoverProps {
   filters?: string[];
 }
 
-const FilterPopover = (props: FilterPopoverProps) => {
-  const {
-    prefixCls, children, onClick, filters = [],
-  } = props;
+const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
+  const { children, onClick, filters = [] } = props;
+  const [seachValue, setSearchValue] = useState<string>('');
   const [selectFilterKey, setSelectFilterKey] = useState<string[]>([]);
-  const filterCheckbox = useMemo(
-    () => filters.map((item: string,index: number) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <Checkbox value={item} key={index}>
-        {item}
-      </Checkbox>
-    )),
-    [filters],
-  );
+  const [visible, setVisible] = useState<boolean>(false);
   return (
     <Popover
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      getTooltipContainer={(triggerNode) => triggerNode.parentElement!}
       arrowContent={null}
+      visible={visible}
+      onVisibleChange={setVisible}
       placement="bottomLeft"
       trigger="click"
       contentArea={(
-        <div className={`${prefixCls}-filter-popover`}>
-          <CheckboxGroup defaultValue={selectFilterKey} value={selectFilterKey} onChange={setSelectFilterKey}>
-            {filterCheckbox}
-          </CheckboxGroup>
-        </div>
-      )}
-      footerArea={(
-        <Button
-          onClick={() => {
-            onClick(selectFilterKey);
-          }}
-        >
-          确定
-        </Button>
+        <>
+          <SearchBar placeholder='搜索过滤条件' size='small' value={seachValue} onChange={setSearchValue} />
+          <List
+            isMultiple
+            value={selectFilterKey}
+            onChange={setSelectFilterKey}
+            width={220}
+            height={160}
+            dataSource={
+              filters
+              .filter((item: string | number) => item.toString().includes(seachValue))
+              .map((item: string | number) => ({ label: item.toString(), value: item.toString()}))
+            }
+          />
+          <div className='filter-popover-footer'>
+            <Button
+              style={{ color: '#c7cbd8'}}
+              type='text'
+              ghost
+              size='small'
+              onClick={() => {
+                setSearchValue('');
+                setSelectFilterKey([]);
+              }}
+            >
+              清除
+            </Button>
+            <Button
+              style={{ float: 'right'}}
+              size='small'
+              onClick={() => {
+                onClick(selectFilterKey);
+                setVisible(false);
+              }}
+            >
+              确定
+            </Button>
+          </div>
+        </>
       )}
     >
       {children}
