@@ -58,6 +58,7 @@ const Upload: React.FC<IUploadProps> = ({
   useEffect(() => {
     setFile(getEmptyFileObj(uploadedFile));
   }, [uploadedFile]);
+  
   const rcUploadRef = useRef(null);
   const prefixCls = usePrefixCls('upload', customPrefixCls);
 
