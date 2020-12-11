@@ -132,8 +132,6 @@ const Upload: React.FC<IUploadProps> = ({
       if (res === false) {
         return;
       }
-      console.log(uploadedFile);
-      console.log(file);
       if (file?.dataUrl === uploadedFile?.dataUrl) {
         setFile({
           uid: '',
