@@ -9,7 +9,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 1`] = `
     role="button"
   >
     <input
-      directory={null}
       multiple={false}
       onChange={[Function]}
       onClick={[Function]}
@@ -19,7 +18,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 1`] = `
         }
       }
       type="file"
-      webkitdirectory={null}
     />
     <button
       className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
@@ -73,7 +71,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 2`] = `
     role="button"
   >
     <input
-      directory={null}
       multiple={false}
       onChange={[Function]}
       onClick={[Function]}
@@ -83,7 +80,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 2`] = `
         }
       }
       type="file"
-      webkitdirectory={null}
     />
     <button
       className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
@@ -137,7 +133,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 3`] = `
     role="button"
   >
     <input
-      directory={null}
       multiple={false}
       onChange={[Function]}
       onClick={[Function]}
@@ -147,7 +142,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 3`] = `
         }
       }
       type="file"
-      webkitdirectory={null}
     />
     <button
       className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
@@ -201,7 +195,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 4`] = `
     role="button"
   >
     <input
-      directory={null}
       multiple={false}
       onChange={[Function]}
       onClick={[Function]}
@@ -211,7 +204,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 4`] = `
         }
       }
       type="file"
-      webkitdirectory={null}
     />
     <button
       className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
@@ -265,7 +257,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 5`] = `
     role="button"
   >
     <input
-      directory={null}
       multiple={false}
       onChange={[Function]}
       onClick={[Function]}
@@ -275,7 +266,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 5`] = `
         }
       }
       type="file"
-      webkitdirectory={null}
     />
     <button
       className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
