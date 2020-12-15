@@ -35,7 +35,7 @@ const Toggles: React.FC<TogglesProps> = (props) => {
   };
 
   return (
-    <div className={classnames({ [`${prefixCls}-disabled`]: disabled })}>
+    <div className={classnames({ [`${prefixCls}-disabled`]: disabled },`${prefixCls}-normal`)}>
       <div
         className={classnames(prefixCls, { [`${prefixCls}-checked`]: status }, className)}
         style={{ background: status ? activeColor : inactiveColor, borderColor: activeColor }}
