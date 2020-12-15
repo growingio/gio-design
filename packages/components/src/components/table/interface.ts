@@ -100,6 +100,7 @@ export interface TableProps<RecordType> {
   };
   rowKey?: string | ((record: RecordType) => string);
   rowClassName?: string | ((record: RecordType, index: number, indent: number) => string);
+  hackRowEvent?: boolean;
   onRow?: GetComponentProps<RecordType>;
   onHeaderRow?: GetComponentProps<ColumnType<RecordType>[]>;
   pagination?: PaginationProps | false;
