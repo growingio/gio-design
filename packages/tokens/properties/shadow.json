@@ -1,7 +1,7 @@
 {
   "shadow": {
     "avatar": {
-      "value": "0 0 6px 0 rgba(223, 226, 237, 0.94)"
+      "value": "0 0 4px 0 {palette.gray.4.value}80"
     },
     "checkbox": {
       "inbound": {
@@ -12,16 +12,16 @@
       }
     },
     "popover": {
-      "value": "0 2px 14px 0 rgba(223, 226, 237, 0.8)"
+      "value": "0 2px 14px -2px {palette.gray.4.value}80"
     },
     "popconfirm": {
-      "value": "0 2px 14px 0 rgba(223, 226, 237, 0.8)"
+      "value": "0 2px 14px -2px {palette.gray.4.value}80"
     },
     "dropdown": {
-      "value": "0 2px 14px 0 rgba(223, 226, 237, 0.8)"
+      "value": "0 2px 14px -2px {palette.gray.4.value}80"
     },
     "tabs": {
-      "value": "0 0 6px 0 rgba(223,226,237,0.8)"
+      "value": "0 0 4px 0 {palette.gray.4.value}80"
     },
     "toggles": {
       "normal": {
@@ -50,7 +50,7 @@
         "value": "0 0 4px 0 rgba(163,173,200,0.94)"
       },
       "input": {
-        "value": "0 0 6px 0 rgba(223,226,237,0.8)"
+        "value": "0 0 4px 0 {palette.gray.4.value}80"
       }
     },
     "table": {
