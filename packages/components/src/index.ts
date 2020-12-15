@@ -76,6 +76,12 @@ export { default as Form, FormLayout, FormProps } from './components/form';
 export { default as TimePicker, TimePickerProps } from './components/time-picker';
 export { default as Grid, GridProps } from './components/grid';
 export { default as Cascader, CascaderProps } from './components/cascader';
+export { 
+  default as DatePicker,
+  DateRangePicker,
+  DatePickerProps,
+  DateRangePickerProps,
+} from './components/date-picker';
 
 // provide config context
 export { ConfigContext, ConfigConsumer, withConfigConsumer } from './components/config-provider';
