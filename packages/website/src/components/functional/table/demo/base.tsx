@@ -42,4 +42,17 @@ const columns = [
   },
 ];
 
-export default () => <Table title="列表标题" dataSource={dataSource} columns={columns} pagination={false} />;
+export default () => (
+  <Table
+    title="列表标题"
+    dataSource={dataSource}
+    columns={columns}
+    pagination={false}
+    useHackRowEvent
+    onRow={() => ({
+      onClick: () => console.log('click'),
+      onMouseDown: () => console.log('mouseDown'),
+      onMouseUp: () => console.log('mouseUp'),
+    })}
+  />
+);
