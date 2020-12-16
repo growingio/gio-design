@@ -59,7 +59,7 @@ export interface InputNumberProps extends Omit<InputProps, 'value' | 'onChange'>
   /**
    * 修改值时触发的回调函数
    */
-  onChange: (value: number | string | undefined) => void;
+  onChange: (value: PossibleValueType) => void;
   /**
    * 自定义在 InputNumber 中文文本的显示格式
    * 但最终 onChange 返回的数据依旧会是 number 类型
