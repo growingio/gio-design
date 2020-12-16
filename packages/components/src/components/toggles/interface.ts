@@ -47,4 +47,8 @@ export interface TogglesProps {
    `switch` 关闭时的背景色
    */
   inactiveColor?: string;
+  /**
+    Toggles控制字段
+  */
+  checked?: boolean;
   }
