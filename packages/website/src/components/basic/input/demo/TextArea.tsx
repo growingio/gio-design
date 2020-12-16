@@ -14,6 +14,7 @@ export default () => {
         onChange={(e) => setInputValue(e.target.value)}
         resize={false}
         autosize
+        showCount
         maxLength={10}
         style={{ marginBottom: '20px', display: 'flex', height: 'auto', width: 300 }}
       />
