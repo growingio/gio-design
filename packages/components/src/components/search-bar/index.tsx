@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import classnames from 'classnames';
 import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
 import Input from '../input';
 import Button from '../button';
@@ -55,12 +56,12 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
     disabled = false,
     size = sizeContext || 'middle',
     inputStyle,
-    inputWrapStyle,
-    wrapStyle,
+    style,
     placeholder,
     value,
     onChange = setSearchValue,
     id,
+    className,
   } = props;
   const storageKey = React.useMemo(() => `${prefixCls}-storage-${id}`, [id, prefixCls]);
 
@@ -129,29 +130,32 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
             </Button>
           </div>
         )}
-        {searchStorage.slice((searchStorage.length - storageNum) >= 0 ? (searchStorage.length - storageNum) : 0, searchStorage.length).reverse().map((item) => (
-          <div
-            onClick={() => {
-              onChange(item);
-            }}
-            className={`${prefixCls}-dropdown-item`}
-            key={item}
-            aria-hidden="true"
-          >
-            {item}
-          </div>
-        ))}
+        {searchStorage
+          .slice(searchStorage.length - storageNum >= 0 ? searchStorage.length - storageNum : 0, searchStorage.length)
+          .reverse()
+          .map((item) => (
+            <div
+              onClick={() => {
+                onChange(item);
+              }}
+              className={`${prefixCls}-dropdown-item`}
+              key={item}
+              aria-hidden="true"
+            >
+              {item}
+            </div>
+          ))}
       </div>
     );
   };
 
+  const wrapperCls = classnames(prefixCls, className);
   return (
-    <div className={prefixCls} style={wrapStyle}>
+    <div className={wrapperCls} style={style}>
       <Input
         disabled={disabled}
         size={size}
-        inputStyle={inputStyle}
-        wrapStyle={inputWrapStyle}
+        style={inputStyle}
         suffix={renderSuffix()}
         value={value || searchValue}
         placeholder={placeholder}

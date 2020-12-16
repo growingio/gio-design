@@ -9,12 +9,12 @@ initialize {
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "gio-input gio-input-container gio-input-container-large",
+          "class": "gio-input gio-input--large gio-input__container",
         },
         "children": Array [
           Object {
             "attribs": Object {
-              "class": "gio-input-content gio-input-content-suffix",
+              "class": "gio-input__content gio-input__content-suffix",
               "placeholder": "",
               "type": "text",
               "value": "",
@@ -24,7 +24,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "gio-input-container-suffix",
+                "class": "gio-input__suffix",
               },
               "children": Array [
                 Object {
@@ -302,7 +302,7 @@ initialize {
           },
           Object {
             "attribs": Object {
-              "class": "gio-input-container-suffix",
+              "class": "gio-input__suffix",
             },
             "children": Array [
               Object {
@@ -555,7 +555,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "gio-input-content gio-input-content-suffix",
+                "class": "gio-input__content gio-input__content-suffix",
                 "placeholder": "",
                 "type": "text",
                 "value": "",

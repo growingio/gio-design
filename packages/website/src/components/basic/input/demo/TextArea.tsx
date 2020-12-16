@@ -13,18 +13,18 @@ export default () => {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         resize={false}
-        autosize={true}
+        autosize
         maxLength={10}
-        style={{ marginBottom: '20px', display: 'block', height: 'auto', width: 300 }}
+        style={{ marginBottom: '20px', display: 'flex', height: 'auto', width: 300 }}
       />
 
       <Input.TextArea
         placeholder="禁止输入"
         value={inputValue2}
         onChange={(e) => setInputValue2(e.target.value)}
-        disabled={true}
-        resize={true}
-        style={{ display: 'block', height: 'auto', width: 300 }}
+        disabled
+        resize
+        style={{ display: 'flex', height: 'auto', width: 300 }}
       />
     </div>
   );

@@ -45,16 +45,16 @@ describe('DateRangePicker ui test', () => {
 
   it('should popup corretly', (done) => {
     const wrapper = mount(DateRangePickerInstance());
-    wrapper.find('.gio-input-content').at(0).simulate('click');
+    wrapper.find('.gio-input__content').at(0).simulate('click');
     waitComponentRender(wrapper).then(() => {
-      expect(wrapper.exists('.gio-input-content')).toBe(true);
+      expect(wrapper.exists('.gio-input__content')).toBe(true);
       done();
     });
   });
 
   it('should render corretly', () => {
     const wrapper = mount(DateRangePickerInstance());
-    const content = wrapper.find('.gio-input-content').at(0);
+    const content = wrapper.find('.gio-input__content').at(0);
     expect(content.html().includes('2015/05/01'));
   });
 });
@@ -67,7 +67,7 @@ describe('DatePicker action Test', () => {
       <DateRangePicker value={VALUE} onChange={onChange} format={format} showFooter disabledDate={disabledDate} />
     );
     act(() => {
-      wrapper.find('.gio-input-content').at(0).simulate('click');
+      wrapper.find('.gio-input__content').at(0).simulate('click');
     });
     waitComponentRender(wrapper).then(() => {
       act(() => {
@@ -105,7 +105,7 @@ describe('DatePicker action Test', () => {
         />
       );
       act(() => {
-        wrapper.find('.gio-input-content').at(0).simulate('click');
+        wrapper.find('.gio-input__content').at(0).simulate('click');
       })
       waitComponentRender(wrapper).then(() => {
         act(() => {
@@ -138,7 +138,7 @@ describe('DatePicker action Test', () => {
         />
       );
       act(() => {
-        wrapper.find('.gio-input-content').at(0).simulate('click');
+        wrapper.find('.gio-input__content').at(0).simulate('click');
       })
       waitComponentRender(wrapper).then(() => {
         act(() => {
