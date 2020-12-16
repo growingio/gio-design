@@ -15,7 +15,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
 
   const calendarContainerRef = useRef(null);
-  const toggleContainer = useRef(null);
   const [open, setOpen] = useState(false);
   const [timeRange, setTimeRange] = useState(value);
   const [leftInputTimeRange, setLeftInputTimeRange] = useState('');
@@ -24,18 +23,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   useEffect(() => {
     setTimeRange(value);
   }, [value]);
-
-  const handleBlur = (event: any) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    if(open && !toggleContainer.current.contains(event.target)){
-      onCancel();
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('click',handleBlur);
-  })
 
   const onSelect = (values: Array<Moment>): void => {
     setTimeRange(values);
@@ -136,7 +123,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   );
 
   return (
-    <div className={classNames(`${prefixCls}-wrap-range`)} ref={toggleContainer}>
+    <div className={classNames(`${prefixCls}-wrap-range`)}>
       <RcDatePicker
         animation="slide-up"
         calendar={calendar}

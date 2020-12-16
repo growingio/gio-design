@@ -10,5 +10,5 @@ export default () => {
     console.log('change-test', val);
     console.log('fhsihfisd', status);
   };
-  return <Toggles onChange={change} checked={status.a} />;
+  return <Toggles onChange={change} defaultChecked={status.a} />;
 };
