@@ -3,9 +3,9 @@ import { Input } from '@gio-design/components';
 import '@gio-design/components/es/components/input/style/index.css';
 
 export default () => {
-  const [inputValue, setInputValue] = React.useState(3);
-  const [inputValue2, setInputValue2] = React.useState(0);
-  const [inputValue3, setInputValue3] = React.useState(0);
+  const [inputValue, setInputValue] = React.useState<any>(3);
+  const [inputValue2, setInputValue2] = React.useState<any>(0);
+  const [inputValue3, setInputValue3] = React.useState<any>(0);
 
   return (
     <div>

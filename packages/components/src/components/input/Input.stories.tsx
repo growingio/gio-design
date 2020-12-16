@@ -26,7 +26,7 @@ Default.args = {
 };
 
 const InputNumberTemplate = (args: InputNumberProps) => {
-  const [inputValue, setInputValue] = React.useState(0);
+  const [inputValue, setInputValue] = React.useState<any>(0);
   return <Input.InputNumber {...args} value={inputValue} onChange={setInputValue} />;
 };
 
