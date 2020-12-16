@@ -36,8 +36,8 @@ group:
 | **onChange**         | 切换面板的回调                        | Function(activeKey) {}     |         |
 | **onTabClick**       | tab 被点击的回调                      | Function                   |         |
 | **children**         | 标签面板组件                          | TabPane[]                  |         |
-| **activeKey**        | 开启受控模式，当前激活 tab 面板的 key | string \| number           | -       |
-| **defaultActiveKey** | 初始化选中面板的 key                  | string \| number           | -       |
+| **activeKey**        | 开启受控模式，当前激活 tab 面板的 key | string                     | -       |
+| **defaultActiveKey** | 初始化选中面板的 key                  | string                     | -       |
 
 ### TabPane
 

@@ -17,7 +17,7 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
 
   public _cache = new CellMeasurerCache({
     fixedWidth: true,
-    defaultHeight: 40,
+    defaultHeight: 44,
   });
 
   public constructor(props: SelectListProps & ConfigConsumerProps) {
@@ -36,11 +36,12 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
     return (
       <AutoSizer style={{ width: '100%', height: '100%' }}>
         {({ width }) => (
+          
           <List
             value={value}
             width={width}
             height={400}
-            style={{ height: height || '100%', overflow: 'auto' }}
+            style={{ height: height || '100%', overflow: 'auto', marginBottom: '-4px' }}
             rowCount={options.length}
             rowHeight={typeof rowHeight === 'function' ? getRowHeight : this._cache.rowHeight}
             deferredMeasurementCache={this._cache}
@@ -103,37 +104,36 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
 
     return (
       <CellMeasurer key={key} cache={this._cache} parent={parent} columnIndex={0} rowIndex={index}>
-        <div style={{ ...style, height: (style.height as number) - 4 }} className="row">
-          {isGroup ? (
-            <Group
-              key={option.label}
-              name={option.label}
-              option={option}
-              icon={groupIcon}
-              isSelected={this.getSelected(option)}
-              isMultiple={!!isMultiple}
-              labelRenderer={labelRenderer}
-            />
-          ) : (
-            <SelectOption
-              key={key}
-              style={{}}
-              option={option}
-              title={!labelRenderer ? label : undefined}
-              isSelected={this.getSelected(option)}
-              isMultiple={!!isMultiple}
-              allowDuplicate={allowDuplicate}
-              onSelect={this.handleSelect}
-              onClick={this.handleClick}
-              disabled={disabled}
-              hasGroupIcon={!!groupIcon}
-              getPopupContainer={getPopupContainer}
-              placement={placement}
-            >
-              {label}
-            </SelectOption>
-          )}
-        </div>
+        {isGroup ? (
+          <Group
+            key={option.label}
+            name={option.label}
+            option={option}
+            style={{ ...style, height: (style.height as number) - 4, paddingTop: index !== 0 ? '20px' : '0px' }}
+            icon={groupIcon}
+            isSelected={this.getSelected(option)}
+            isMultiple={!!isMultiple}
+            labelRenderer={labelRenderer}
+          />
+        ) : (
+          <SelectOption
+            key={key}
+            style={{ ...style, height: (style.height as number) - 4 }}
+            option={option}
+            title={!labelRenderer ? label : undefined}
+            isSelected={this.getSelected(option)}
+            isMultiple={!!isMultiple}
+            allowDuplicate={allowDuplicate}
+            onSelect={this.handleSelect}
+            onClick={this.handleClick}
+            disabled={disabled}
+            hasGroupIcon={!!groupIcon}
+            getPopupContainer={getPopupContainer}
+            placement={placement}
+          >
+            {label}
+          </SelectOption>
+        )}
       </CellMeasurer>
     );
   };

@@ -44,7 +44,7 @@ describe('Testing TabNav', () => {
 
   test('prop defaultActiveKey', () => {
     const wrapper = mount(
-      <TabNav defaultActiveKey={1}>
+      <TabNav defaultActiveKey="1">
         <TabNav.Item>111</TabNav.Item>
         <TabNav.Item>222</TabNav.Item>
         <TabNav.Item>333</TabNav.Item>
@@ -56,10 +56,10 @@ describe('Testing TabNav', () => {
 
   test('prop activeKey', () => {
     const wrapper = mount(getTabNav());
-    wrapper.setProps({ activeKey: 1 });
+    wrapper.setProps({ activeKey: '1' });
+    expect(wrapper.find('.gio-tabnav').childAt(0).exists('.gio-tabnav-item-active')).toBe(true);
+    wrapper.setProps({ activeKey: '2' });
     expect(wrapper.find('.gio-tabnav').childAt(1).exists('.gio-tabnav-item-active')).toBe(true);
-    wrapper.setProps({ activeKey: 2 });
-    expect(wrapper.find('.gio-tabnav').childAt(2).exists('.gio-tabnav-item-active')).toBe(true);
     wrapper.find('.gio-tabnav-item').at(1).simulate('click');
     expect(wrapper.find('.gio-tabnav-item').at(1).exists('.gio-tabnav-item-active')).toBe(false);
   });
@@ -92,7 +92,7 @@ describe('Testing TabNav', () => {
 
   it('only render TabNav.Item', () => {
     const wrapper = mount(
-      <TabNav defaultActiveKey={1}>
+      <TabNav defaultActiveKey="1">
         <TabNav.Item>111</TabNav.Item>
         <TabNav.Item>222</TabNav.Item>
         <TabNav.Item>333</TabNav.Item>

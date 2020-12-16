@@ -24,13 +24,13 @@ export interface IBaseListProps {
    */
   value?: any;
   /**
-   	列表宽度
+      列表宽度
    */
   width?: number | string;
   /**
-   	列表高度
+      列表高度
    */
-  height?: number;
+  height?: number | string;
   /**
    包裹样式
    */
@@ -44,7 +44,7 @@ export interface IBaseListProps {
    */
   labelRenderer?: (option: Option, isGruop: false) => ReactNode;
   /**
-   	自定义行高
+      自定义行高
    */
   rowHeight?: number | ((option: Option) => number);
   /**
@@ -52,11 +52,11 @@ export interface IBaseListProps {
    */
   onSelect?: (selectedValue: string, value: ListValueType, option: Option) => void;
   /**
-   	取消选中的回调
+      取消选中的回调
    */
   onDeselect?: (selectedValue: string, value: ListValueType, option: Option) => void;
   /**
-   	点击触发的回调
+      点击触发的回调
    */
   onClick?: (value: any) => void;
   getPopupContainer?: (node: HTMLElement) => HTMLElement;
@@ -69,19 +69,19 @@ export interface Option {
    */
   label: string;
   /**
-   	作为列表的 `key` 来使用
+      作为列表的 `key` 来使用
    */
   value: string;
   /**
-   	列表次要文字
+      列表次要文字
    */
   description?: string;
   /**
-   	是否禁用
+      是否禁用
    */
   disabled?: boolean;
   /**
-   	`tooltip` 描述
+      `tooltip` 描述
    */
   tooltip?: string;
   /**
@@ -89,7 +89,7 @@ export interface Option {
    */
   groupValue?: string;
   /**
-   	分组的标题
+      分组的标题
    */
   groupLabel?: string;
 }
@@ -105,7 +105,7 @@ export interface SelectCoreProps {
   stateless?: boolean;
   allowDuplicate?: boolean;
   max?: number;
-  height?: number;
+  height?: number | string;
   rowHeight?: number | ((option: any) => number);
   isLoading?: boolean;
   required?: boolean;
@@ -136,7 +136,7 @@ export interface SelectListProps {
   allowDuplicate?: boolean;
   required?: boolean;
   max?: number;
-  height: number;
+  height: number | string;
   rowHeight: number | ((option: any) => number);
   onSelect?: (value: any, selectedValue?: any | any[], option?: any) => void;
   onDeselect?: (value: any, selectedValue?: any | any[], option?: any) => void;

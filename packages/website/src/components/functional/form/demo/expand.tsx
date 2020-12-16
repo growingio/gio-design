@@ -28,6 +28,7 @@ const Expand: React.FC = () => {
         visible={visible}
         title="新建账号"
         style={{ width: 360 }}
+        bodyStyle={{ minHeight: 370 }}
         onClose={() => setVisible(false)}
         onOk={() => setVisible(false)}
       >
@@ -42,7 +43,7 @@ const Expand: React.FC = () => {
             <Input placeholder="请输入密码" type="password" />
           </Item>
           <Item name="role" label="选择角色" required>
-            <Select options={options} width={300} />
+            <Select options={options} style={{ width: 300 }} />
           </Item>
 
           {expand && (

@@ -2,7 +2,7 @@
 
 @input-height-lg: 40px;
 @input-height-base: 36px;
-@input-height-sm: 30px;
+@input-height-sm: 32px;
 
 @input-prefix-cls: ~'@{component-prefix}-input';
 
@@ -15,6 +15,13 @@
     &-noresize {
       resize: none;
     }
+  }
+
+  &-showcount::after {
+    display: block;
+    color: @palette-black-6;
+    text-align: right;
+    content: attr(data-count);
   }
 
   &-content {
@@ -54,7 +61,7 @@
     }
 
     &:disabled {
-      color: @palette-black-1;
+      color: @palette-black-2;
       background-color: @palette-gray-1;
       border-color: @color-border-input-disable;
       cursor: not-allowed;

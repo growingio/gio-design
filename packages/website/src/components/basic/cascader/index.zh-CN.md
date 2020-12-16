@@ -21,6 +21,7 @@ group:
 ## 数据分组
 
 <code src='./demo/group.tsx' title='数据分组' />
+<code src='./demo/custom-group-name.tsx' title='自义分组名' />
 
 ## 打开菜单的方式
 
@@ -103,7 +104,7 @@ group:
 | afterInner           | 菜单项里额外的插入节点                           | ReactNode \| ((data: NodeDate) => ReactNode)                                                          | -       |
 | header               | 菜单的头部-默认为搜索框                          | ReactNode \| ((data: NodeDate) => ReactNode)                                                          | -       |
 | footer               | 菜单的尾部                                       | ReactNode \| ((data: NodeDate) => ReactNode)                                                          | -       |
-| groupName            | 分组名                                           | ReactNode \| ((data: NodeDate) => ReactNode)                                                          | -       |
+| groupName            | 分组名                                           | `boolean` \| ReactNode \| ((data: NodeDate) => ReactNode)                                             | false   |
 
 ### Value
 

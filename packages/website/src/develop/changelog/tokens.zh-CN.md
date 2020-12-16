@@ -9,6 +9,10 @@ nav:
 
 # @gio-design/tokens 更新日志
 
+## 20.12.0
+
+- 🆕 增加按钮 `mini` 尺寸的 `Token`. [#526](https://github.com/growingio/gio-design/pull/526)
+
 ## 20.11.2
 
 - 🛎 修改一处色值. [#524](https://github.com/growingio/gio-design/pull/524)

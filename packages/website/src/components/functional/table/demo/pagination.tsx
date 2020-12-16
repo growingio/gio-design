@@ -49,6 +49,10 @@ export default () => (
       console.log(p, s, f);
     }}
     showIndex
+    pagination={{
+      showSizeChanger: true,
+      showQuickJumper: true,
+    }}
     rowSelection={{
       getCheckboxProps: (record) => ({
         disabled: record.a === 1,

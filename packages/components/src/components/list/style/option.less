@@ -1,12 +1,13 @@
 @import './base.less';
 
 .@{select-prefix-cls}-option {
+  box-sizing: border-box;
   max-width: 100%;
   padding: 0 25px 0 16px;
   overflow: hidden;
   color: @color-font-list-primary-normal;
   font-size: 14px;
-  line-height: 40px;
+  line-height: 44px;
   white-space: nowrap;
   text-overflow: ellipsis;
   border-radius: 5px;
@@ -68,7 +69,7 @@
 
   &.disabled {
     color: @color-font-list-primary-disable;
-    background-color: @color-background-list-multiple-disable;
+    background-color: transparent !important;
     cursor: not-allowed;
 
     .@{list-prefix-cls}-option-title {
@@ -81,15 +82,25 @@
   }
 
   &.group {
-    padding: 16px 15px 0 15px;
+    padding: 0 15px 0 15px;
     font-size: 12px;
-    line-height: inherit;
+    line-height: 20.5px;
   }
 
   &.group:not(:nth-child(1)) {
-    border-top: 1px solid #ebedf5;
+    border-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+  }
+
+  &.group:not(:nth-child(1))::before {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ebedf5;
+    content: '';
   }
 
   &.indented {

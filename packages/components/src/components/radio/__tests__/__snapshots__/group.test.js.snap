@@ -25,7 +25,9 @@ exports[`Testing Radio should render correctly. 1`] = `
         className="gio-radio-inner"
       />
     </span>
-    <span>
+    <span
+      className="gio-radio__label"
+    >
       opA
     </span>
   </label>
@@ -49,7 +51,9 @@ exports[`Testing Radio should render correctly. 1`] = `
         className="gio-radio-inner"
       />
     </span>
-    <span>
+    <span
+      className="gio-radio__label"
+    >
       opB
     </span>
   </label>
@@ -73,7 +77,9 @@ exports[`Testing Radio should render correctly. 1`] = `
         className="gio-radio-inner"
       />
     </span>
-    <span>
+    <span
+      className="gio-radio__label"
+    >
       opC
     </span>
   </label>
@@ -97,7 +103,9 @@ exports[`Testing Radio should render correctly. 1`] = `
         className="gio-radio-inner"
       />
     </span>
-    <span>
+    <span
+      className="gio-radio__label"
+    >
       opD
     </span>
   </label>
@@ -121,7 +129,9 @@ exports[`Testing Radio should render correctly. 1`] = `
         className="gio-radio-inner"
       />
     </span>
-    <span>
+    <span
+      className="gio-radio__label"
+    >
       A
     </span>
   </label>
@@ -146,7 +156,9 @@ exports[`Testing Radio should render correctly. 1`] = `
         className="gio-radio-inner"
       />
     </span>
-    <span>
+    <span
+      className="gio-radio__label"
+    >
       B
     </span>
   </label>

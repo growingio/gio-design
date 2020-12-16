@@ -2,6 +2,8 @@
 
 @table-prefix-cls: ~'@{component-prefix}-table';
 @checkbox-prefix-cls: ~'@{component-prefix}-checkbox';
+@popover-prefix-cls: ~'@{component-prefix}-popover';
+@searchbar-prefix-cls: ~'@{component-prefix}-searchbar';
 
 .@{table-prefix-cls} {
   font-size: @size-font-14;
@@ -204,6 +206,18 @@
           outline: none;
         }
       }
+      .@{popover-prefix-cls}-inner-content {
+        width: 220px;
+        margin: 0;
+        .@{searchbar-prefix-cls} {
+          width: 188px;
+          margin: 16px 16px 0;
+        }
+        .filter-popover-footer {
+          padding: 8px 16px;
+          border-top: 1px solid #dfe4ee;
+        }
+      }
     }
   }
   &-column-sorter {
@@ -267,13 +281,6 @@
   &-pagination {
     float: right;
     margin: 16px 0;
-  }
-
-  &-filter-popover {
-    .@{checkbox-prefix-cls}-wrapper {
-      display: block;
-      height: 40px;
-    }
   }
 
   &-empty {

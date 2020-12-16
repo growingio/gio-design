@@ -17,7 +17,7 @@ export interface Props<Values = unknown> extends Omit<RcFormProps<Values>, 'form
    */
   className?: string;
   /**
-   	表单名称
+     表单名称
    */
   name?: string;
   /**
@@ -52,13 +52,13 @@ export interface Props<Values = unknown> extends Omit<RcFormProps<Values>, 'form
   /**
    自定义样式
    */
-  style ?: React.CSSProperties;
+  style?: React.CSSProperties;
 }
 
 type RenderChildren = (form: FormInstance) => React.ReactNode;
 type ChildrenType = RenderChildren | React.ReactNode;
 
-export interface FormItemProps extends Omit<FieldProps, 'children'> {
+export interface FormItemProps extends Omit<FieldProps, 'children'>, Omit<ItemLabelProps, 'colon'> {
   /**
    自定义 `css` 类前缀
    */
@@ -74,7 +74,12 @@ export interface FormItemProps extends Omit<FieldProps, 'children'> {
   /**
    `label` 标签的文本
    */
-  label?: string;
+  label?: React.ReactNode;
+
+  /**
+   * `label` 元素的 title 属性，不设置则尝试使用 string 类型的 label 属性
+   */
+  title?: string;
   afterLabel?: React.ReactNode;
   afterInput?: React.ReactNode;
   /**
@@ -123,7 +128,7 @@ export interface FormItemProps extends Omit<FieldProps, 'children'> {
    */
   labelAlign?: FormLabelAlign;
   fieldKey?: React.Key | React.Key[];
-  }
+}
 
 export interface FormContextProps {
   name?: string;
@@ -133,4 +138,19 @@ export interface FormContextProps {
   inputWidth?: number;
   requiredMark?: RequiredMark;
   colon?: boolean;
+}
+
+export interface ItemLabelProps {
+  label?: React.ReactNode;
+  title?: string;
+  fieldId?: string;
+  prefixCls?: string;
+  labelWidth?: number;
+  afterLabel?: React.ReactNode;
+  required?: boolean;
+  requiredMark?: RequiredMark;
+  marker?: React.ReactNode;
+  colon?: string;
+  htmlFor?: string;
+  labelAlign?: FormLabelAlign;
 }

@@ -23,6 +23,11 @@ export interface PaginationProps {
    	每页条数
    */
   pageSize?: number;
+
+  /**
+   默认的每页条数
+   */
+  defaultPageSize?: number;
   /**
    自定义 `className`
    */
@@ -47,4 +52,19 @@ export interface PaginationProps {
    只有一页时是否隐藏分页器
    */
   hideOnSinglePage?: boolean;
+
+  /**
+   * 是否展示 pageSize 切换器
+   */
+  showSizeChanger?: boolean;
+
+  /**
+   指定每页可以显示多少条
+   */
+  pageSizeOptions?: string[];
+
+  /**
+   pageSize 变化的回调
+   */
+  onShowSizeChange?: (current: number, size: number) => void;
 }

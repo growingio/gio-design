@@ -40,9 +40,14 @@ describe('Testing Actions Events', () => {
     expect(onRemove).toBeCalled();
   });
   it('should stop default events', () => {
+    global.document.getElementsByClassName = () => [
+      {
+        contains: () => false,
+      },
+    ];
     const onRemove = jest.fn();
     const handleStopPropagation = jest.fn();
-    test.status = 'success';
+    testFile.status = 'success';
     const wrapper = mount(<Actions file={testFile} onRemove={onRemove} />);
     wrapper.find('.gio-upload__actions').simulate('click');
     // expect(handleStopPropagation).toBeCalled();
