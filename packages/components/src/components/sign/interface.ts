@@ -25,6 +25,15 @@ export interface ISignNumberProps extends ISignCommonProps {
   showZero?: boolean;
   // 最大显示数量级
   magnitude: TMagnitude;
+  /**
+   * 设置状态点的位置偏移
+   */
+  offset?: [number, number];
+
+  /**
+   *
+   */
+  placement?: TPlacement;
 }
 
 export interface ISignDotProps extends ISignCommonProps {
@@ -39,8 +48,4 @@ export interface ISignProps extends ISignNumberProps, ISignDotProps {
    * 设置 Sign 的变体类型，默认 number
    */
   variant?: TSignVariant;
-  /**
-   *
-   */
-  placement?: TPlacement;
 }
