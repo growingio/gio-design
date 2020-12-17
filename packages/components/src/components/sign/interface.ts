@@ -25,10 +25,6 @@ export interface ISignNumberProps extends ISignCommonProps {
   showZero?: boolean;
   // 最大显示数量级
   magnitude: TMagnitude;
-  /**
-   * 设置状态点的位置偏移
-   */
-  offset?: [number, number];
 }
 
 export interface ISignDotProps extends ISignCommonProps {
