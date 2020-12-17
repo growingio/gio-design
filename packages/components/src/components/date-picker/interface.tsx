@@ -22,6 +22,10 @@ export interface DatePickerProps {
    */
   value: Moment;
   /**
+   * 是否禁用
+   */
+  disabled?: boolean;
+  /**
    默认显示的时间
    */
   defaultValue?: Moment;
@@ -68,6 +72,10 @@ export interface DateRangePickerProps {
    	此受控组件绑定的时间
    */
   value: Array<Moment>;
+  /**
+   * 是否禁用
+   */
+  disabled?: boolean;
   /**
    面板切换的回调
    */
