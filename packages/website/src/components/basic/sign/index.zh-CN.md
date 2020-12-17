@@ -36,17 +36,16 @@ group:
 
 ### variant='number'时生效的 Props
 
-| 参数      | 说明                          | 类型      | 默认值 |
-| --------- | ----------------------------- | --------- | ------ |
-| count     | Sign 中显示的数字             | number    | 0      |
-| showZero  | 当 count 为 0 时是否显示 Sign | boolean   | false  |
-| magnitude | Sign 中数字最大数量级         | 10 \| 100 | 100    |
+| 参数      | 说明                                   | 类型             | 默认值 |
+| --------- | -------------------------------------- | ---------------- | ------ |
+| count     | Sign 中显示的数字                      | number           | 0      |
+| showZero  | 当 count 为 0 时是否显示 Sign          | boolean          | false  |
+| magnitude | Sign 中数字最大数量级                  | 10 \| 100        | 100    |
+| offset    | 设置状态点的位置偏移,格式为[left, top] | [number, number] | [0, 0] |
 
 ### variant='dot'时生效的 Props
 
-| 参数                                                        | 说明      | 类型                                                        | 默认值    |
-| ----------------------------------------------------------- | --------- | ----------------------------------------------------------- | --------- |
-| status                                                      | 圆点状态  | `default` \| `normal` \| `warning` \| `error` \| `disabled` | `default` |
-| size                                                        | 圆点大小  | `middle` \| `small`                                         | `middle`  |
-| `default` \| `normal` \| `warning` \| `error` \| `disabled` | `default` |
-| size                                                        | 圆点大小  | `middle` \| `small`                                         | `middle`  |
+| 参数   | 说明     | 类型                                                        | 默认值    |
+| ------ | -------- | ----------------------------------------------------------- | --------- |
+| status | 圆点状态 | `default` \| `normal` \| `warning` \| `error` \| `disabled` | `default` |
+| size   | 圆点大小 | `middle` \| `small`                                         | `middle`  |

@@ -150,7 +150,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
         open={open}
       >
         {({ value: _value }: { value: Array<Moment> }) => (
-          <div className={classNames(`${prefixCls}-range-input`, { disabled: disabled })}>
+          <div className={classNames(`${prefixCls}-range-input`, { disabled })}>
             <Input
               placeholder="please select"
               onChange={handleLeftInputChange}
