@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import classnames from 'classnames';
-import { File, Picture } from '@gio-design/icons';
+import { File, PictureOutlined } from '@gio-design/icons';
 import Loading from '../../loading';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import { UploadPrefixClsContext } from '../UploadContext';
@@ -29,7 +29,7 @@ const DragTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, accept, onRe
         )}
         {file?.status !== STATUS_SUCCESS && (
           <div className={placeholderCls}>
-            {isOnlyAcceptImg(accept) ? <Picture /> : <File />}
+            {isOnlyAcceptImg(accept) ? <PictureOutlined /> : <File />}
             <div>点击或拖拽上传</div>
           </div>
         )}

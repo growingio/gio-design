@@ -9,11 +9,11 @@ function SvgEmpty(wrapperProps: IconProps) {
       color,
     },
     className: rotating ? 'gio-icon-svg gio-icon-rotating' : 'gio-icon-svg',
-    width: !size ? '1rem' : size,
-    height: !size ? '1rem' : size,
+    width: !size ? '16px' : size,
+    height: !size ? '16px' : size,
   };
   const file = (
-    <svg viewBox="0 0 60 60" fill="currentColor" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" fill="currentColor" {...props}>
       <defs>
         <clipPath id="empty_svg__clip-path">
           <path fill="currentColor" d="M0 0h60v60H0z" />

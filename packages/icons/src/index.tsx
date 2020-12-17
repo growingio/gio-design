@@ -53,7 +53,7 @@ export { default as MessageFilled } from './MessageFilled';
 export { default as MiniProgramFilled } from './MiniProgramFilled';
 export { default as More } from './More';
 export { default as NumberChartOutlined } from './NumberChartOutlined';
-export { default as Picture } from './Picture';
+export { default as PictureOutlined } from './PictureOutlined';
 export { default as PlusCircleFilled } from './PlusCircleFilled';
 export { default as PlusOutlined } from './PlusOutlined';
 export { default as PopupWindowFilled } from './PopupWindowFilled';
