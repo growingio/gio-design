@@ -2,7 +2,7 @@ import * as React from 'react';
 import Wrapper from './Wrapper';
 import { IconProps } from './interface';
 
-function SvgPicture(wrapperProps: IconProps) {
+function SvgPictureOutlined(wrapperProps: IconProps) {
   const { rotating, color, size, ...restProps } = wrapperProps;
   const props = {
     style: {
@@ -32,4 +32,4 @@ function SvgPicture(wrapperProps: IconProps) {
   return <Wrapper {...restProps} icon={file} />;
 }
 
-export default SvgPicture;
+export default SvgPictureOutlined;
