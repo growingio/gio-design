@@ -9,32 +9,6 @@ nav:
 
 # @gio-design/components 更新日志
 
-## 20.12.2
-
-- Avatar 头像
-  - 修复缩放错误，首字母大写 [#617](https://github.com/growingio/gio-design/pull/617)
-- Table 表格 [#603](https://github.com/growingio/gio-design/pull/603)
-  - 添加 hackRowEvent 功能
-  - 将 style，className 应用到最外层
-- Toggles 开关
-  - 增加 `checked` 属性 [#581](https://github.com/growingio/gio-design/pull/581)
-- Tabs 和 TabNav
-  - 去掉 key 的 number 类型 [#601](https://github.com/growingio/gio-design/pull/601)
-- Alert 警告提示
-  - 添加 `style` 参数 [#602](https://github.com/growingio/gio-design/pull/602)
-- Input 输入框
-  - 修改 input 输入框 disabled 时的颜色 [#606](https://github.com/growingio/gio-design/pull/606)
-- DatePicker 日期选择器
-  - dateRangePicker 的失焦隐藏实现存在问题，先去掉 [#606](https://github.com/growingio/gio-design/pull/606)
-  - 将 datePicker 及 dateRangePicker 从 index 里导出 [#606](https://github.com/growingio/gio-design/pull/606)
-  - 给 dateRangePicker 设置失焦隐藏 [#624](https://github.com/growingio/gio-design/pull/624)
-  - 将 onSelect 从参数列表里删除 [#624](https://github.com/growingio/gio-design/pull/624)
-  - 修复 dateRangePicker 点击取消或者失焦时行为和点击确定按钮一样的问题 [#624](https://github.com/growingio/gio-design/pull/624)
-- Upload 上传
-  - 阻止 Upload 组件的默认上传方式情况下，不更新文件状态的问题 [#607](https://github.com/growingio/gio-design/pull/607)
-- Sign 标记
-  - 添加 offset 参数 [#623](https://github.com/growingio/gio-design/pull/623)
-
 ## 20.12.1
 
 - Upload 上传组件 [#591](https://github.com/growingio/gio-design/pull/591)
