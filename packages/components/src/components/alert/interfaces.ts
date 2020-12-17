@@ -35,4 +35,8 @@ export interface AlertProps {
    关闭时触发的回调函数
    */
   onClose?: () => void;
+  /**
+   外层样式
+   */
+  style?: React.CSSProperties;
 }
