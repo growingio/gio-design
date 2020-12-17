@@ -7,7 +7,7 @@ import './demo.less';
 export default () => (
   <>
     <div className="demo-half-line">
-      <Sign count={4} magnitude={10}>
+      <Sign count={4} magnitude={10} placement="leftBottom" offset={[32, 32]}>
         <span className="demo-placeholder" />
       </Sign>
     </div>
