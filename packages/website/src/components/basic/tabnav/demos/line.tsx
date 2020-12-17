@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabNav } from '@gio-design/components';
+import { TabNav, Sign } from '@gio-design/components';
 import '@gio-design/components/es/components/tab-nav/style/index.css';
 import './index.less';
 
@@ -7,7 +7,11 @@ const { Item } = TabNav;
 
 const renderItem = () => (
   <>
-    <Item>我的</Item>
+    <Item>
+      <Sign count={4} magnitude={100} offset={[15, 0]}>
+        我的
+      </Sign>
+    </Item>
     <Item>全部</Item>
     <Item>共享</Item>
     <Item disabled>预置</Item>

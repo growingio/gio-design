@@ -34,10 +34,6 @@ export interface DatePickerProps {
    */
   onChange?: (v: Moment | null) => void;
   /**
-   	选择日期的回调
-   */
-  onSelect?: (v: Moment) => void;
-  /**
    是否显示footer
    */
   showFooter: boolean;
@@ -80,10 +76,6 @@ export interface DateRangePickerProps {
    面板切换的回调
    */
   onChange?: (v: Array<Moment> | null) => void;
-  /**
-   	选择日期的回调
-   */
-  onSelect?: (v: Array<Moment>) => void;
   /**
    默认显示的时间
    */
