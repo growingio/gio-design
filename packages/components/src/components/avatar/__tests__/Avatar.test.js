@@ -32,10 +32,10 @@ describe('Testing Avatar', () => {
   test('props src', () => {
     const wrapper = mount(<Avatar src={image}>li</Avatar>).children();
     expect(wrapper.childAt(0).type()).toBe('img');
-    expect(wrapper.childAt(0).text()).not.toBe('l');
+    expect(wrapper.childAt(0).text()).not.toBe('L');
     const noSrcWrapper = mount(<Avatar size="small">li</Avatar>).children();
     expect(noSrcWrapper.childAt(0).type()).toBe('span');
-    expect(noSrcWrapper.childAt(0).text()).toBe('l');
+    expect(noSrcWrapper.childAt(0).text()).toBe('L');
   });
 
   test('props size', () => {

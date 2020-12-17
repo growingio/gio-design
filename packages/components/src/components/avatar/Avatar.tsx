@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { More } from '@gio-design/icons';
-import { isNil } from 'lodash';
+import { isNil, isUndefined } from 'lodash';
 import Tooltip from '../tooltip';
 import { AvatarProps } from './interfaces';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
@@ -29,12 +29,16 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
   const mergedRef = composeRef(ref, nodeRef);
 
   useEffect(() => {
+    setIsImgExist(!isUndefined(src));
+  }, [src]);
+
+  useEffect(() => {
     if (nodeRef.current && childrenRef.current) {
       const nodeWidth = nodeRef.current.offsetWidth;
       const childrenWidth = childrenRef.current.offsetWidth;
       setScale(nodeWidth - 8 < childrenWidth ? (nodeWidth - 8) / childrenWidth : 1);
     }
-  }, [userName]);
+  }, [userName, isImgExist]);
 
   const prefixCls = usePrefixCls('avatar', customizePrefixCls);
   const classString = classNames(className, prefixCls, {
@@ -45,7 +49,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
   });
 
   const childrenStyle: React.CSSProperties = {
-    transform: `scale(${scale})`,
+    transform: `scale(${scale}) translateX(-50%)`,
   };
 
   const renderMore = () => {
@@ -64,7 +68,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
       return <img alt="avatar" src={src} onError={() => setIsImgExist(false)} />;
     }
     if (userName !== undefined && typeof userName === 'string') {
-      const prefixUserName = omit && typeof userName === 'string' ? userName.trim()[0] : userName.trim();
+      const prefixUserName = omit && typeof userName === 'string' ? userName.trim()[0].toUpperCase() : userName.trim();
       return (
         <span ref={childrenRef} style={childrenStyle}>
           {prefixUserName}

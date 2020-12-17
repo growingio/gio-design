@@ -25,11 +25,11 @@ exports[`Testing AvatarGroup should be stable 1`] = `
     <span
       style={
         Object {
-          "transform": "scale(1)",
+          "transform": "scale(1) translateX(-50%)",
         }
       }
     >
-      p
+      P
     </span>
   </span>
   <span
@@ -53,11 +53,11 @@ exports[`Testing AvatarGroup should be stable 1`] = `
     <span
       style={
         Object {
-          "transform": "scale(1)",
+          "transform": "scale(1) translateX(-50%)",
         }
       }
     >
-      l
+      L
     </span>
   </span>
   <span
@@ -66,7 +66,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
     <span
       style={
         Object {
-          "transform": "scale(1)",
+          "transform": "scale(1) translateX(-50%)",
         }
       }
     >
