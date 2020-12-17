@@ -15,6 +15,7 @@ import Empty from './Empty';
 import { translateInnerColumns } from './utils';
 import Loading from '../loading';
 import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
+import useHackOnRow from './hook/useHackOnRow';
 
 const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement => {
   const {
@@ -30,11 +31,16 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
     showHover = true,
     rowKey,
     loading = false,
+    onRow,
+    hackRowEvent = false,
+    className,
+    style,
     ...rest
   } = props;
 
   const prefixCls = usePrefixCls('table', customizePrefixCls);
   const debounceLoading = useDebounceLoading(loading, 1000);
+  const onHackRow = useHackOnRow(onRow, hackRowEvent);
   const innerColumns = useMemo(() => translateInnerColumns(columns), [columns]);
   const [activeSorterStates, updateSorterStates, sortedData] = useSorter(innerColumns, dataSource);
   const [activeFilterStates, updateFilterStates, filtedData] = useFilter(innerColumns, sortedData);
@@ -108,9 +114,10 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
 
   return (
     <div
-      className={classNames(`${prefixCls}-wrapper`, {
+      className={classNames(`${prefixCls}-wrapper`, className, {
         [`${prefixCls}-showHover`]: showHover,
       })}
+      style={style}
     >
       <Loading loading={debounceLoading}>
         <RcTable
@@ -120,6 +127,7 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
           data={paginationedData}
           emptyText={emptyElement}
           rowKey={rowKey}
+          onRow={onHackRow}
           {...rest}
         />
         <PaginationComponent onTriggerStateUpdate={onTriggerStateUpdate} />
