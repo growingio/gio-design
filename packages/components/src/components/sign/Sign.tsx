@@ -22,12 +22,11 @@ const Sign: React.FC<ISignProps> = ({
   status = 'default',
   size = 'middle',
   children,
-  offset,
 }: ISignProps) => {
   const prefix = usePrefixCls('sign', customPrefixCls);
   const noChildren = Children.count(children) === 0;
 
-  const cls = classnames(className, prefix, `${prefix}__${variant}-wrapper`, {
+  const cls = classnames(className, prefix, {
     [`${prefix}--no-children`]: noChildren,
   });
 
@@ -49,7 +48,6 @@ const Sign: React.FC<ISignProps> = ({
           showZero={showZero}
           magnitude={magnitude}
           visible={visible}
-          offset={offset}
         />
       )}
       {children}
