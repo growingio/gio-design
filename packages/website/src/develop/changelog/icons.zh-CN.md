@@ -9,10 +9,6 @@ nav:
 
 # @gio-design/icons 更新日志
 
-## 20.12.0
-
-- `Picture` 重命名为 `PictureOutlined`. [#626](https://github.com/growingio/gio-design/pull/626)
-
 ## 20.11.0
 
 - icons
