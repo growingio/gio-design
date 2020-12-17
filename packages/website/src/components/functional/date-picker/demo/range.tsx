@@ -15,10 +15,6 @@ const Demo = () => {
   const onChange = (value: Array<Moment> | null) => {
     value && setTime(value);
   };
-  const onSelect = (value: Array<Moment>) => {
-    setTime(value);
-    console.log('outer', value[0].format(format), value[1].format(format));
-  };
 
   const renderExtraFooter = () => {
     return <div>extra footer</div>
@@ -26,7 +22,7 @@ const Demo = () => {
 
   return (
     <div style={{ boxSizing: 'border-box', position: 'relative', display: 'block', lineHeight: 1.5, marginBottom: 22 }}>
-      <DateRangePicker value={time} onChange={onChange} onSelect={onSelect} renderExtraFooter={renderExtraFooter} disabledDate={disabledDate} format={format} showFooter />
+      <DateRangePicker value={time} onChange={onChange} renderExtraFooter={renderExtraFooter} disabledDate={disabledDate} format={format} showFooter />
     </div>
   );
 };
