@@ -2,7 +2,7 @@
 
 exports[`Testing Sign should render dot sign correctly 1`] = `
 <span
-  className="gio-customized-sign gio-sign"
+  className="gio-customized-sign gio-sign gio-sign__dot-wrapper"
 >
   <span
     className="gio-sign__dot gio-sign--right-top gio-sign__dot--default gio-sign__dot--middle"
@@ -15,10 +15,16 @@ exports[`Testing Sign should render dot sign correctly 1`] = `
 
 exports[`Testing Sign should render number sign correctly 1`] = `
 <span
-  className="gio-customized-sign gio-sign"
+  className="gio-customized-sign gio-sign gio-sign__number-wrapper"
 >
   <span
     className="gio-sign__number gio-sign--right-top"
+    style={
+      Object {
+        "right": "-0px",
+        "top": "-0px",
+      }
+    }
   >
     99+
   </span>

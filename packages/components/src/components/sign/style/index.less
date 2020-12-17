@@ -11,7 +11,9 @@
   .place();
   .background.default();
   border-radius: @radius-border-circle;
-
+  &-wrapper {
+    color: @palette-black-6;
+  }
   // status
   &--normal {
     .background.normal();
@@ -55,7 +57,6 @@
 .@{sign-prefix-cls} {
   position: relative;
   display: inline-block;
-  color: @palette-black-6;
 
   &--no-children {
     .@{sign-dot},

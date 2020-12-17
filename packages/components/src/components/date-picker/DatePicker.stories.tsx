@@ -15,9 +15,6 @@ const DatePickerDemo = (args : DatePickerProps) => {
     const onChange = (value: Moment | null) => {
       value && setTime(value);
     };
-    const onSelect = (value: Moment) => {
-      setTime(value);
-    };
     const disabledDate = (value: Moment) => {
       const date = moment(new Date()).add(-1, 'days')
       return value.isBefore(date);
@@ -29,7 +26,6 @@ const DatePickerDemo = (args : DatePickerProps) => {
           {...args}
           value={args.value ? args.value : time}
           onChange={args.onChange ? args.onChange : onChange}
-          onSelect={args.onSelect ? args.onSelect : onSelect}
           format={args.format ? args.format : format}
           showFooter={args.showFooter ? args.showFooter : true}
           disabledDate={args.disabledDate ? args.disabledDate : disabledDate}
@@ -54,9 +50,6 @@ const RangePickerDemo = (args : DateRangePickerProps) => {
     const onChange = (value: Array<Moment> | null) => {
       value && setTime(value);
     };
-    const onSelect = (value: Array<Moment>) => {
-      setTime(value);
-    };
     const renderExtraFooter = () => {
       return <div>extra footer</div>
     }
@@ -66,7 +59,6 @@ const RangePickerDemo = (args : DateRangePickerProps) => {
           renderExtraFooter={args.renderExtraFooter ? args.renderExtraFooter : renderExtraFooter} 
           value={args.value ? args.value : time}
           onChange={args.onChange ? args.onChange : onChange}
-          onSelect={args.onSelect ? args.onSelect : onSelect}
           format={args.format ? args.format : format}
           showFooter={args.showFooter ? args.showFooter : true}
           disabledDate={args.disabledDate ? args.disabledDate : disabledDates}
