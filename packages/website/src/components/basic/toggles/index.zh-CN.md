@@ -33,6 +33,7 @@ group:
 | 参数           | 说明                  | 类型             | 默认值  |
 | -------------- | --------------------- | ---------------- | ------- |
 | defaultChecked | 初始是否选中          | boolean          | false   |
+| checked         | 指定当前是否选中       | boolean          | false   |
 | disabled       | 失效状态              | boolean          | false   |
 | className      | 自定义 className      | string           | -       |
 | activeColor    | switch 打开时的背景色 | string           | #3867f4 |

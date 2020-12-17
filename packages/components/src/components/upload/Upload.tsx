@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import RcUpload from 'rc-upload';
 import classnames from 'classnames';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
@@ -55,6 +55,10 @@ const Upload: React.FC<IUploadProps> = ({
   ...restProps
 }: IUploadProps) => {
   const [file, setFile] = useState<IUploadFile>(getEmptyFileObj(uploadedFile));
+  useEffect(() => {
+    setFile(getEmptyFileObj(uploadedFile));
+  }, [uploadedFile]);
+  
   const rcUploadRef = useRef(null);
   const prefixCls = usePrefixCls('upload', customPrefixCls);
 
@@ -64,7 +68,6 @@ const Upload: React.FC<IUploadProps> = ({
     [`${prefixCls}--success`]: file?.status === STATUS_SUCCESS && !successBorder,
     [`${prefixCls}--success-border`]: file?.status === STATUS_SUCCESS && successBorder,
   });
-
   const Trigger = triggerMap[type];
 
   const handleBeforeUpload = (fileBeforeUpload: IRcFile, fileList: IRcFile[]) =>

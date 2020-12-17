@@ -18,6 +18,7 @@ const Alert: React.FC<AlertProps> = (props: AlertProps) => {
     icon,
     type = 'info',
     size = 'middle',
+    style,
   } = props;
 
   const getIcon = () => {
@@ -43,6 +44,7 @@ const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   return (
     <div>
       <div
+        style={style}
         className={classnames(
           prefixCls,
           size === 'small' ? `${prefixCls}-small` : '',

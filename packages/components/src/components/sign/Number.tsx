@@ -10,6 +10,7 @@ const Number: React.FC<ISignNumberProps> = ({
   showZero,
   visible,
   magnitude,
+  offset = [0, 0],
 }: ISignNumberProps) => {
   const displayCount = count >= magnitude ? `${magnitude - 1}+` : count;
   const isZero = count === 0 || !count;
@@ -19,8 +20,14 @@ const Number: React.FC<ISignNumberProps> = ({
     [`${prefixCls}--hide`]: isHide,
   });
 
+  const numberStyle: React.CSSProperties = {
+    ...style,
+    right: `-${offset[0]}px`,
+    top: `-${offset[1]}px`,
+  };
+
   return (
-    <span className={numberCls} style={style}>
+    <span className={numberCls} style={numberStyle}>
       {displayCount}
     </span>
   );

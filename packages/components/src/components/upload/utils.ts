@@ -20,7 +20,7 @@ export const getEmptyFileObj = (file?: IUploadFile): IUploadFile => ({
   size: file?.size ?? 0,
   name: file?.name ?? '本地上传',
   type: file?.type ?? '$empty-file',
-  status: file?.dataUrl ? STATUS_SUCCESS : STATUS_NOT_YET,
+  status: file?.dataUrl && file?.status === STATUS_SUCCESS ? STATUS_SUCCESS : STATUS_NOT_YET,
   dataUrl: file?.dataUrl ?? '',
 });
 
