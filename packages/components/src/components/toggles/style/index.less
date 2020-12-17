@@ -2,55 +2,58 @@
 
 @toggles-prefix-cls: ~'@{component-prefix}-toggles';
 
-.@{toggles-prefix-cls} {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 20px;
-  background-color: @color-background-toggles-off-normal;
-  border: @color-border-toggles-normal-default;
-  border-radius: 10px;
-  box-shadow: @shadow-toggles-normal-unchecked-rectangle;
-  cursor: pointer;
-  transition: all ease 0.4s;
-
-  .@{toggles-prefix-cls}-handle {
-    position: absolute;
-    left: 0;
-    width: 14px;
-    height: 14px;
-    margin: 2px;
-    background-color: @color-background-toggles-knob-off-normal;
-    border-radius: @radius-border-pill;
-    box-shadow: @shadow-toggles-normal-unchecked-knob;
+.@{toggles-prefix-cls}-normal {
+  vertical-align: middle;
+  .@{toggles-prefix-cls} {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    vertical-align: middle;
+    background-color: @color-background-toggles-off-normal;
+    border: @color-border-toggles-normal-default;
+    border-radius: 10px;
+    box-shadow: @shadow-toggles-normal-unchecked-rectangle;
+    cursor: pointer;
     transition: all ease 0.4s;
+
+    .@{toggles-prefix-cls}-handle {
+      position: absolute;
+      left: 0;
+      width: 14px;
+      height: 14px;
+      margin: 2px;
+      background-color: @color-background-toggles-knob-off-normal;
+      border-radius: @radius-border-pill;
+      box-shadow: @shadow-toggles-normal-unchecked-knob;
+      transition: all ease 0.4s;
+    }
+  }
+
+  .@{toggles-prefix-cls}-checked {
+    background-color: @color-background-toggles-on-normal;
+    border: @color-border-toggles-normal-checked;
+    box-shadow: none;
+    .@{toggles-prefix-cls}-handle {
+      left: 100%;
+      margin-left: -16px;
+      background-color: @color-background-toggles-knob-on-normal;
+      box-shadow: @shadow-toggles-normal-checked-knob;
+    }
+  }
+
+  .@{toggles-prefix-cls}-suffixContent {
+    display: inline-block;
+    height: 20px;
+    margin-left: 8px;
+    color: @color-text-toggles-normal;
+    font-size: @size-font-14;
+    font-family: @font-family-primary;
+    line-height: 20px;
+    vertical-align: top;
+    user-select: none;
   }
 }
-
-.@{toggles-prefix-cls}-checked {
-  background-color: @color-background-toggles-on-normal;
-  border: @color-border-toggles-normal-checked;
-  box-shadow: none;
-  .@{toggles-prefix-cls}-handle {
-    left: 100%;
-    margin-left: -16px;
-    background-color: @color-background-toggles-knob-on-normal;
-    box-shadow: @shadow-toggles-normal-checked-knob;
-  }
-}
-
-.@{toggles-prefix-cls}-suffixContent {
-  display: inline-block;
-  height: 20px;
-  margin-left: 8px;
-  color: @color-text-toggles-normal;
-  font-size: @size-font-14;
-  font-family: @font-family-primary;
-  line-height: 20px;
-  vertical-align: top;
-  user-select: none;
-}
-
 .@{toggles-prefix-cls}-disabled {
   .@{toggles-prefix-cls} {
     background-color: @color-background-toggles-off-disable;

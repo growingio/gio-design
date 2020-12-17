@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { TogglesProps } from './interface';
@@ -6,29 +6,36 @@ import { TogglesProps } from './interface';
 const Toggles: React.FC<TogglesProps> = (props) => {
   const {
     activeColor,
-    inactiveValue,
+    inactiveValue = false,
     inactiveColor,
-    activeValue,
-    defaultChecked,
+    activeValue = true,
+    defaultChecked = false,
+    checked = false,
     disabled,
     className,
     suffixContent,
   } = props;
   const prefixCls = usePrefixCls('toggles');
 
-  const inactiveValues = inactiveValue || false;
-  const activeValues = activeValue || true;
+  const inactiveValues = inactiveValue;
+  const activeValues = activeValue;
 
-  const [status, setStatus] = useState(defaultChecked || false);
+  const [status, setStatus] = useState(defaultChecked);
+
+  useEffect(() => {
+    setStatus(checked)
+  }, [checked])
 
   const changeStatus = () => {
-    !props.disabled && setStatus(!status);
-    props.onChange && props.onChange(status ? inactiveValues : activeValues);
-    props.onClick && props.onClick(status ? inactiveValues : activeValues);
+    if (!disabled) {
+      setStatus(!status);
+      props.onChange && props.onChange(status ? inactiveValues : activeValues);
+      props.onClick && props.onClick(status ? inactiveValues : activeValues);
+    }
   };
 
   return (
-    <div className={classnames({ [`${prefixCls}-disabled`]: disabled })}>
+    <div className={classnames({ [`${prefixCls}-disabled`]: disabled },`${prefixCls}-normal`)}>
       <div
         className={classnames(prefixCls, { [`${prefixCls}-checked`]: status }, className)}
         style={{ background: status ? activeColor : inactiveColor, borderColor: activeColor }}

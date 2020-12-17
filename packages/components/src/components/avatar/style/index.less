@@ -43,10 +43,9 @@
   }
 
   span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform-origin: 0 center;
   }
 
   img {
@@ -95,7 +94,9 @@
   &-group {
     .@{avatar-prefix-cls} {
       border: 1.5px solid @color-border-avatar;
-
+      span {
+        top: -1.5px;
+      }
       &:hover {
         position: relative;
         z-index: 1;
