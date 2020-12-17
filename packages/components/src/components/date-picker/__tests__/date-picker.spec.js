@@ -4,7 +4,7 @@ import { mount, render } from 'enzyme';
 import moment from 'moment';
 import { noop } from 'lodash';
 import DatePicker from '..';
-import Button from '../../button/button';
+// import Button from '../../button/button';
 
 const format = 'YYYY/MM/DD';
 const VALUE = moment([2015, 5, 1]);
@@ -51,21 +51,21 @@ describe('DatePicker ui test', () => {
 });
 
 describe('DatePicker action Test', () => {
-  it('should trigger onSelect', () => {
-    const onSelect = jest.fn();
-    const wrapper = mount(
-      <DatePicker value={VALUE} onSelect={onSelect} format={format} showFooter={false} disabledDate={disabledDate} />
-    );
-    act(() => {
-      wrapper.find('.gio-input-content').simulate('click');
-    });
-    waitComponentRender(wrapper).then(() => {
-      act(() => {
-        wrapper.find('.gio-date-picker-date').at(0).simulate('click');
-      });
-      expect(onSelect).toHaveBeenCalled();
-    });
-  });
+  // it('should trigger onSelect', () => {
+  //   const onSelect = jest.fn();
+  //   const wrapper = mount(
+  //     <DatePicker value={VALUE} onSelect={onSelect} format={format} showFooter={false} disabledDate={disabledDate} />
+  //   );
+  //   act(() => {
+  //     wrapper.find('.gio-input-content').simulate('click');
+  //   });
+  //   waitComponentRender(wrapper).then(() => {
+  //     act(() => {
+  //       wrapper.find('.gio-date-picker-date').at(0).simulate('click');
+  //     });
+  //     expect(onSelect).toHaveBeenCalled();
+  //   });
+  // });
 
   /*
   it('should trigger onChange', () => {

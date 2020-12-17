@@ -29,7 +29,6 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   const onSelect = (values: Moment): void => {
     if (!props.showFooter) {
       setLocalValue(values);
-      props.onSelect?.(values);
       setOpen(false);
     }
   };
@@ -82,6 +81,11 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
     </>
   );
 
+  const onblur = () => {
+    showFooter && onCancel();
+    !showFooter && setOpen(false);
+  }
+
   const calendar = (
     <RcCalendar
       locale={zhCN}
@@ -98,7 +102,7 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
       showOk={false}
       disabledDate={disabledDate}
       renderFooter={renderFooter}
-      onBlur={onCancel}
+      onBlur={onblur}
     />
   );
 

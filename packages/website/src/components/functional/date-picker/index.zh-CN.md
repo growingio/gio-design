@@ -26,6 +26,5 @@ group:
 | **showFooter**  | 是否显示footer | boolean |    true    |
 | **format**  | 日期显示格式 | string |    'YYYY/MM/DD'    |
 | **onChange**  | 面板切换的回调 | () => void |        |
-| **onSelect**  | 选择日期的回调 | () => void |        |
 | **value**  | 此受控组件绑定的时间 | `Array<Moment> , Moment`  |        |
 

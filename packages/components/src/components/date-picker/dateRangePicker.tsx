@@ -15,7 +15,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
 
   const calendarContainerRef = useRef(null);
-  const toggleContainer = useRef(null);
+  const selectPanelRef = useRef<any>(null);
   const [open, setOpen] = useState(false);
   const [timeRange, setTimeRange] = useState(value);
   const [leftInputTimeRange, setLeftInputTimeRange] = useState('');
@@ -25,21 +25,8 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     setTimeRange(value);
   }, [value]);
 
-  const handleBlur = (event: any) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    if(open && !toggleContainer.current.contains(event.target)){
-      onCancel();
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('click',handleBlur);
-  })
-
   const onSelect = (values: Array<Moment>): void => {
     setTimeRange(values);
-    props.onSelect?.(values);
     !showFooter && setOpen(false);
   };
 
@@ -115,6 +102,14 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     </>
   );
 
+  const onblur = (e: any) => {
+    if(selectPanelRef.current && selectPanelRef.current.contains(e.nativeEvent.relatedTarget)){
+      return;
+    }
+    showFooter && onCancel();
+    !showFooter && setOpen(false);
+  }
+
   const formatDate = (v: Moment) => v.format(format);
 
   const calendar = (
@@ -136,9 +131,9 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   );
 
   return (
-    <div className={classNames(`${prefixCls}-wrap-range`)} ref={toggleContainer}>
+    <div className={classNames(`${prefixCls}-wrap-range`)} onBlur={onblur} ref={selectPanelRef}>
       <RcDatePicker
-        animation="slide-up"
+        animation={showFooter ? "slide-up" : ''}
         calendar={calendar}
         value={timeRange}
         onChange={onChange}
