@@ -9,9 +9,6 @@ const Demo = () => {
   const onChange = (value: Moment | null) => {
     value && setTime(value);
   };
-  const onSelect = (value: Moment) => {
-    setTime(value);
-  };
 
   const disabledDate = (value: Moment) => {
     const date = moment(new Date()).add(-1, 'days')
@@ -25,7 +22,6 @@ const Demo = () => {
       <DatePicker
         value={time}
         onChange={onChange}
-        onSelect={onSelect}
         format={format}
         showFooter
         disabledDate={disabledDate}
