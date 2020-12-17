@@ -2,7 +2,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
-import { isNil, isUndefined, remove } from 'lodash';
+import { isNil, isUndefined, reject } from 'lodash';
 import { useDeepCompareEffect } from 'react-use';
 import { TabNavProps, TabNavItemProps } from './interface';
 import useRefs from '../../utils/hooks/useRefs';
@@ -95,7 +95,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
 TabNav.Item = React.forwardRef(
   ({ prefixCls, children, innerRef, ...rest }: TabNavItemProps, ref: React.RefObject<HTMLDivElement>) => (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <div ref={composeRef(...remove([ref, innerRef], isUndefined))} {...rest}>
+    <div ref={composeRef(...reject([ref, innerRef], isUndefined))} {...rest}>
       <div className={`${prefixCls}-item-btn`}>{children}</div>
     </div>
   )
