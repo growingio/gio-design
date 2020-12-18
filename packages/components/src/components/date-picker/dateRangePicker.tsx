@@ -11,9 +11,16 @@ import Input from '../input';
 import { DateRangePickerProps } from './interface';
 
 const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerProps) => {
-  const { prefixCls: customizePrefixCls, format = 'YYYY/MM/DD', value, defaultValue, showFooter, disabledDate } = props;
+  const {
+    prefixCls: customizePrefixCls,
+    format = 'YYYY/MM/DD',
+    value,
+    defaultValue,
+    showFooter,
+    disabledDate,
+    disabled,
+  } = props;
   const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
-
   const calendarContainerRef = useRef(null);
   const selectPanelRef = useRef<any>(null);
   const [open, setOpen] = useState(false);
@@ -142,12 +149,13 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
         open={open}
       >
         {({ value: _value }: { value: Array<Moment> }) => (
-          <div className={classNames(`${prefixCls}-range-input`)}>
+          <div className={classNames(`${prefixCls}-range-input`, { disabled })}>
             <Input
               placeholder="please select"
               onChange={handleLeftInputChange}
               value={leftInputTimeRange || `${formatDate(_value[0])}`}
               onClick={() => setOpen(true)}
+              disabled={disabled ?? false}
             />
             <span className={`${prefixCls}-split`}>—</span>
             <Input
@@ -155,6 +163,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
               onChange={handleRightInputChange}
               value={rightInputTimeRange || `${formatDate(_value[1])}`}
               onClick={() => setOpen(true)}
+              disabled={disabled ?? false}
             />
             <div ref={calendarContainerRef} className={classNames(`${prefixCls}-wrapper`)} />
           </div>

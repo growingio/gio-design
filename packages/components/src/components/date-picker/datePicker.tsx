@@ -17,7 +17,15 @@ moment.locale('zh-cn', {
 });
 
 const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
-  const { prefixCls: customizePrefixCls, format = 'YYYY/MM/DD', value, defaultValue, showFooter, disabledDate } = props;
+  const {
+    prefixCls: customizePrefixCls,
+    format = 'YYYY/MM/DD',
+    value,
+    defaultValue,
+    showFooter,
+    disabledDate,
+    disabled,
+  } = props;
   const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
 
   const calendarContainerRef = useRef(null);
@@ -122,6 +130,7 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
               onChange={handleInputChange}
               onClick={() => setOpen(true)}
               ref={inputRef}
+              disabled={disabled??false}
             />
             <div ref={calendarContainerRef} className={classNames(`${prefixCls}-wrapper`)} />
           </>
