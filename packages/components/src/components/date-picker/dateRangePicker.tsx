@@ -21,7 +21,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
     disabled,
   } = props;
   const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
-  console.log('disabled', disabled);
   const calendarContainerRef = useRef(null);
   const selectPanelRef = useRef<any>(null);
   const [open, setOpen] = useState(false);
