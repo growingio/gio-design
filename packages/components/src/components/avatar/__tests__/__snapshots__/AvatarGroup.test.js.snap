@@ -23,6 +23,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
     onMouseLeave={[Function]}
   >
     <span
+      className="gio-avatar-string"
       style={
         Object {
           "transform": "scale(1) translateX(-50%)",
@@ -51,6 +52,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
     onMouseLeave={[Function]}
   >
     <span
+      className="gio-avatar-string"
       style={
         Object {
           "transform": "scale(1) translateX(-50%)",
@@ -64,6 +66,7 @@ exports[`Testing AvatarGroup should be stable 1`] = `
     className="gio-avatar-rest gio-avatar gio-avatar-df"
   >
     <span
+      className="gio-avatar-string"
       style={
         Object {
           "transform": "scale(1) translateX(-50%)",
