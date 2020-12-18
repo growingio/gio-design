@@ -5,6 +5,7 @@ exports[`Testing Avatar should be stable 1`] = `
   className="gio-avatar gio-avatar-df"
 >
   <span
+    className="gio-avatar-string"
     style={
       Object {
         "transform": "scale(1) translateX(-50%)",

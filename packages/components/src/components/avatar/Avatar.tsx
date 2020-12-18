@@ -70,7 +70,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     if (userName !== undefined && typeof userName === 'string') {
       const prefixUserName = omit && typeof userName === 'string' ? userName.trim()[0].toUpperCase() : userName.trim();
       return (
-        <span ref={childrenRef} style={childrenStyle}>
+        <span ref={childrenRef} style={childrenStyle} className={`${prefixCls}-string`}>
           {prefixUserName}
         </span>
       );
