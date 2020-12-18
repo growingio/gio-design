@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
@@ -11,20 +12,20 @@ const TextArea: React.FC<TextAreaProps> = ({
   placeholder = '',
   onChange,
   maxLength,
+  showCount = false,
   style,
-  wrapStyle,
-  inputStyle,
   forwardRef = React.createRef(),
   className,
   ...rest
 }: TextAreaProps) => {
   const prefixCls = usePrefixCls('input');
   const hasMaxLength = maxLength !== undefined && maxLength > 0;
-  const wrapClass = classNames(className, prefixCls, {
-    [`${prefixCls}-showcount`]: hasMaxLength,
+  const wrapClass = classNames(className, prefixCls, `${prefixCls}__textarea-wrapper`, {
+    [`${prefixCls}--show-count`]: hasMaxLength && showCount,
+    [`${prefixCls}--disabled`]: disabled,
   });
-  const inputClass = classNames(`${prefixCls}-content`, `${prefixCls}-textarea`, {
-    [`${prefixCls}-textarea-noresize`]: !resize,
+  const inputClass = classNames(`${prefixCls}__content`, `${prefixCls}__textarea`, {
+    [`${prefixCls}__textarea--no-resize`]: !resize,
   });
 
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -52,29 +53,16 @@ const TextArea: React.FC<TextAreaProps> = ({
     }
   });
 
-  const outerStyle = style !== undefined ? style : wrapStyle;
-  const innerStyle = style !== undefined ? {} : inputStyle;
-  if (wrapStyle !== undefined || inputStyle !== undefined) {
-    console.warn(
-      'The latest version of Input only accept "style" for inline-style setting, ' +
-        'please fix your code because the deprecated parameter "wrapStyle" and "inputStyle" ' +
-        'will be removed in the future version'
-    );
-  }
-
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <div className={wrapClass} style={outerStyle} {...extraProps}>
+    <div className={wrapClass} style={style} {...extraProps}>
       <textarea
         value={finalValue}
         onChange={handleOnChange}
         className={inputClass}
         disabled={disabled}
         placeholder={placeholder}
-        style={innerStyle}
         ref={forwardRef}
         maxLength={maxLength}
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       />
     </div>

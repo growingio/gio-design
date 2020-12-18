@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
-import isFunction from 'lodash/isFunction';
 import findIndex from 'lodash/findIndex';
 
 import { NodeData, KeyMapping } from './menu-item';
@@ -74,25 +73,6 @@ export const dataKeyMapping = (data: NodeData, keyMapping = {} as KeyMapping) =>
   const { [labelKey]: label, [valueKey]: value } = data;
 
   return { ...data, label: label as NodeData['label'], value: value as NodeData['value'] };
-};
-
-/**
- * 合并 ref
- */
-export const useMergeRef = <T>(
-  forwardRef: React.MutableRefObject<T | null> | ((instance: T | null) => void) | null
-) => {
-  const innerRef = useRef<T>((null as unknown) as T);
-  useEffect(() => {
-    if (isFunction(forwardRef)) {
-      forwardRef(innerRef.current);
-    } else if (forwardRef) {
-      // eslint-disable-next-line no-param-reassign
-      forwardRef.current = innerRef.current;
-    }
-  }, [innerRef, forwardRef]);
-
-  return innerRef;
 };
 
 export const useKeyboardNav = (wrapRef: React.MutableRefObject<HTMLElement>) => {

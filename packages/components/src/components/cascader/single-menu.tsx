@@ -5,7 +5,8 @@ import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
 import trim from 'lodash/trim';
 
-import { dataFilter, makeSearchParttern, mergeKeyMapping, toInt, useMergeRef, withPrefix } from './helper';
+import useMergeRef from '../../utils/hooks/useMergeRef';
+import { dataFilter, makeSearchParttern, mergeKeyMapping, toInt, withPrefix } from './helper';
 import Empty from './empty';
 import MenuItem, { Props as MenuItemProps, NodeData } from './menu-item';
 

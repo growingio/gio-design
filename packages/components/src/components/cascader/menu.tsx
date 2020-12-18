@@ -3,8 +3,9 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
 import { Props as MenuItemProps, NodeData } from './menu-item';
-import { dataKeyMapping, toInt, useDynamicData, useKeyboardNav, useMergeRef, withPrefix } from './helper';
+import { dataKeyMapping, toInt, useDynamicData, useKeyboardNav, withPrefix } from './helper';
 import SingleMenu, { Props as SingleMenuProps } from './single-menu';
+import useMergeRef from '../../utils/hooks/useMergeRef';
 
 export type Props = SingleMenuProps;
 

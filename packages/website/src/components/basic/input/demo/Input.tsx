@@ -28,16 +28,15 @@ export default () => {
         value={inputValue}
         onChange={onChange}
         maxLength={10}
-        style={{ display: 'block', marginBottom: '20px', width: 300 }}
+        style={{ display: 'flex', marginBottom: '20px', width: 300 }}
       />
 
       <Input
         placeholder="请输入…"
         prefix={<span>http://</span>}
-        prefixWidth={60}
         value={inputValue1}
         onChange={onChange1}
-        style={{ display: 'block', marginBottom: '20px', width: 300 }}
+        style={{ display: 'flex', marginBottom: '20px', width: 300 }}
       />
 
       <Input
@@ -45,10 +44,10 @@ export default () => {
         value={inputValue2}
         onChange={onChange2}
         disabled
-        style={{ display: 'block', marginBottom: '20px', width: 300 }}
+        style={{ display: 'flex', marginBottom: '20px', width: 300 }}
       />
 
-      <Input value={inputValue3} size="large" onChange={onChange3} style={{ display: 'block', width: 300 }} />
+      <Input value={inputValue3} size="large" onChange={onChange3} style={{ display: 'flex', width: 300 }} />
     </div>
   );
 };
