@@ -20,14 +20,12 @@ describe('Input', () => {
       />
     );
     expect(wrapper.render()).toMatchSnapshot();
-    expect(wrapper.find('.gio-input-container-prefix span').hasClass('prefix-path')).toBe(true);
-    expect(wrapper.find('.gio-input-container-suffix span').hasClass('suffix-path')).toBe(true);
-    expect(wrapper.find('input').prop('style').paddingLeft).toBe(100);
-    expect(wrapper.find('input').prop('style').paddingRight).toBe(60);
+    expect(wrapper.find('.gio-input__prefix span').hasClass('prefix-path')).toBe(true);
+    expect(wrapper.find('.gio-input__suffix span').hasClass('suffix-path')).toBe(true);
     expect(
-      wrapper.find('.gio-input-container-prefix').text() +
-        wrapper.find('.gio-input-content').prop('value') +
-        wrapper.find('.gio-input-container-suffix').text()
+      wrapper.find('.gio-input__prefix').text() +
+        wrapper.find('.gio-input__content').prop('value') +
+        wrapper.find('.gio-input__suffix').text()
     ).toBe('http://www.growingio.com/index.html');
   });
 
@@ -59,7 +57,7 @@ describe('Input', () => {
 
   it('should support size', () => {
     const wrapper = mount(<Input size="large" />);
-    expect(wrapper.exists('.gio-input-container-large')).toBe(true);
+    expect(wrapper.exists('.gio-input--large')).toBe(true);
     expect(wrapper.render()).toMatchSnapshot();
   });
 });
@@ -70,9 +68,9 @@ describe('Input.Password', () => {
     expect(wrapper.render()).toMatchSnapshot();
     wrapper.find('input').simulate('change', { target: { value: '111' } });
     expect(wrapper.render()).toMatchSnapshot();
-    wrapper.find('.gio-input-container-suffix-icon').at(0).simulate('click');
+    wrapper.find('.gio-input__suffix-icon').at(0).simulate('click');
     expect(wrapper.render()).toMatchSnapshot();
-    wrapper.find('.gio-input-container-suffix-icon').at(0).simulate('click');
+    wrapper.find('.gio-input__suffix-icon').at(0).simulate('click');
     expect(wrapper.render()).toMatchSnapshot();
   });
 });
@@ -87,11 +85,11 @@ describe('Input.InputNumber', () => {
       />
     );
     expect(wrapper.render()).toMatchSnapshot();
-    wrapper.find('input').simulate('change', { target: { value: 1 } });
+    wrapper.find('input').simulate('change', { target: { value: '1' } });
     expect(wrapper.render()).toMatchSnapshot();
-    wrapper.find('.gio-input-container-suffix-iconGroup-top').at(0).simulate('click');
+    wrapper.find('.gio-input__suffix-iconGroup-top').at(0).simulate('click');
     expect(wrapper.render()).toMatchSnapshot();
-    wrapper.find('.gio-input-container-suffix-iconGroup-bottom').at(0).simulate('click');
+    wrapper.find('.gio-input__suffix-iconGroup-bottom').at(0).simulate('click');
     expect(wrapper.render()).toMatchSnapshot();
   });
 
@@ -110,25 +108,25 @@ describe('Input.InputNumber', () => {
     expect(wrapper.render()).toMatchSnapshot();
 
     wrapper.find('input').simulate('change', { target: { value: '5' } });
-    expect(val).toBe('5');
+    expect(val).toBe(5);
     wrapper.setProps({ value: val });
 
     wrapper.find('input').simulate('change', { target: { value: '6' } });
-    expect(val).toBe('6');
+    expect(val).toBe(6);
     wrapper.setProps({ value: val });
 
     wrapper.find('input').simulate('blur');
-    expect(val).toBe('5');
+    expect(val).toBe(5);
     wrapper.setProps({ value: val });
 
     expect(wrapper.render()).toMatchSnapshot();
 
     wrapper.find('input').simulate('change', { target: { value: '0' } });
-    expect(val).toBe('0');
+    expect(val).toBe(0);
     wrapper.setProps({ value: val });
 
     wrapper.find('input').simulate('blur');
-    expect(val).toBe('1');
+    expect(val).toBe(1);
     wrapper.setProps({ value: val });
   });
 });
@@ -150,13 +148,13 @@ describe('Input.TextArea', () => {
   });
 
   it('should has showcount class and will not trigger onChange', () => {
-    let val = '0123456789aaa';
-    const wrapper = mount(<Input.TextArea value={val} maxLength={10} />);
+    const val = '0123456789aaa';
+    const wrapper = mount(<Input.TextArea showCount value={val} maxLength={10} />);
     expect(wrapper.render()).toMatchSnapshot();
     expect(wrapper.find('textarea').prop('maxLength')).toBe(10);
     expect(wrapper.find('textarea').prop('value')).toBe('0123456789');
     expect(wrapper.find('div').prop('data-count')).toBe('10 / 10');
-    expect(wrapper.find('.gio-input-showcount').length).toBe(1);
+    expect(wrapper.find('.gio-input--show-count').length).toBe(1);
   });
 
   it('should trigger onChange when input event happens', () => {

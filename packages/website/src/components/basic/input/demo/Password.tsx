@@ -14,7 +14,7 @@ export default () => {
         size="small"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        style={{ marginBottom: '20px', display: 'block', width: 300 }}
+        style={{ marginBottom: '20px', display: 'flex', width: 300 }}
       />
 
       <Input.Password
@@ -22,10 +22,16 @@ export default () => {
         value={inputValue2}
         onChange={(e) => setInputValue2(e.target.value)}
         disabled
-        style={{ marginBottom: '20px', display: 'block', width: 300 }}
+        style={{ marginBottom: '20px', display: 'flex', width: 300 }}
       />
 
-      <Input.Password value={inputValue3} onChange={(e) => setInputValue3(e.target.value)} disabled size="large" style={{ width: 300 }} />
+      <Input.Password
+        value={inputValue3}
+        onChange={(e) => setInputValue3(e.target.value)}
+        disabled
+        size="large"
+        style={{ width: 300 }}
+      />
     </div>
   );
 };

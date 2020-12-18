@@ -34,13 +34,9 @@ export interface SearchBarProps {
    */
   inputStyle?: React.CSSProperties;
   /**
-   * input 组件外层容器的 style
-   */
-  inputWrapStyle?: React.CSSProperties;
-  /**
    * searchbar 组件外层容器的 style
    */
-  wrapStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
   /**
    * input placeholder
    */
@@ -57,4 +53,8 @@ export interface SearchBarProps {
    * 存储记录的唯一 id
    */
   id?: string;
+  /**
+   * 自定义包裹容器类名
+   */
+  className?: string;
 }

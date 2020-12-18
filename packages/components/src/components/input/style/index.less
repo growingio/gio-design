@@ -7,44 +7,72 @@
 @input-prefix-cls: ~'@{component-prefix}-input';
 
 .@{input-prefix-cls} {
-  display: inline-block;
+  position: relative;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  &-textarea {
+  color: @palette-black-6;
+  font-size: @size-font-14;
+  line-height: 22px;
+  background-color: @palette-white;
+  border: 1px solid @color-border-input-normal;
+  border-radius: @radius-border-small;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+
+  &--small {
+    height: @input-height-sm;
+  }
+
+  &--middle {
+    height: @input-height-base;
+  }
+
+  &--large {
+    height: @input-height-lg;
+  }
+
+  &--focus {
+    border-color: @color-border-input-active;
+    box-shadow: @shadow-tabs;
+  }
+
+  &__textarea-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__textarea {
+    width: 100%;
     height: 80px;
 
-    &-noresize {
+    &--no-resize {
       resize: none;
     }
   }
 
-  &-showcount::after {
+  &--show-count::after {
     display: block;
+    width: 100%;
+    padding: 0 16px;
     color: @palette-black-6;
     text-align: right;
     content: attr(data-count);
   }
 
-  &-content {
+  &__content {
     display: block;
+    flex: 1;
     box-sizing: border-box;
-    width: 100%;
     height: 100%;
     padding: 9px 16px;
-    color: @palette-black-6;
-    font-size: @size-font-14;
-    background-color: @palette-white;
-    border: 1px solid @color-border-input-normal;
+    background-color: transparent;
+    border: none;
     border-radius: @radius-border-small;
-    outline: none;
-    transition: all 0.3s ease-in-out;
-
-    &-suffix {
-      padding-right: 44px;
-    }
-
-    &-prefix {
-      padding-left: 50px;
-    }
+    outline: 0;
+    box-shadow: none;
 
     &::placeholder {
       color: @palette-black-1;
@@ -55,81 +83,62 @@
       box-shadow: none;
     }
 
-    &:focus {
-      border-color: @color-border-input-active;
-      box-shadow: @shadow-tabs;
-    }
-
     &:disabled {
-      color: @palette-black-2;
-      background-color: @palette-gray-1;
-      border-color: @color-border-input-disable;
       cursor: not-allowed;
     }
   }
 
-  &-container {
-    position: relative;
-    line-height: 22px;
+  &__prefix {
+    padding-left: 16px;
+  }
 
-    &-small {
-      height: @input-height-sm;
-    }
+  &__suffix {
+    padding-right: 16px;
+  }
 
-    &-middle {
-      height: @input-height-base;
-    }
-
-    &-large {
-      height: @input-height-lg;
-    }
-
-    &-suffix {
-      right: 16px;
-    }
-
-    &-prefix {
-      left: 16px;
-    }
-
-    &-suffix,
-    &-prefix {
-      position: absolute;
-      top: 0;
+  &__prefix,
+  &__suffix {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    height: 100%;
+    &-iconGroup {
       display: flex;
-      align-items: center;
-      height: 100%;
-      &-iconGroup {
-        display: flex;
-        flex-direction: column;
+      flex-direction: column-reverse;
 
-        &-top {
-          position: relative;
-          top: 4px;
-        }
-
-        &-bottom {
-          position: relative;
-          top: -4px;
-        }
+      &-top svg {
+        position: relative;
+        top: 4px;
       }
 
-      &-icon {
+      &-bottom svg {
+        position: relative;
+        top: -4px;
+      }
+    }
+
+    &-icon {
+      color: @palette-gray-6;
+
+      &:hover {
+        color: @color-background-button-primary-hover;
+        cursor: pointer;
+      }
+
+      &-disabled {
         color: @palette-gray-6;
-
         &:hover {
-          color: @color-background-button-primary-hover;
-          cursor: pointer;
-        }
-
-        &-disabled {
           color: @palette-gray-6;
-          &:hover {
-            color: @palette-gray-6;
-            cursor: not-allowed;
-          }
+          cursor: not-allowed;
         }
       }
     }
+  }
+
+  &--disabled {
+    color: @palette-black-2;
+    background-color: @palette-gray-1;
+    border-color: @color-border-input-disable;
+    cursor: not-allowed;
   }
 }
