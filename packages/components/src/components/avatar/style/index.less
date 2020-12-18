@@ -13,13 +13,10 @@
   opacity: 1;
   user-select: none;
 
-  &:hover {
-    .@{avatar-prefix-cls}-droppable {
-      background-color: @color-background-avatar-hover-dropdown;
-
-      svg {
-        transform: scale(1);
-      }
+  &:hover &-droppable {
+    background-color: @color-background-avatar-hover-dropdown;
+    span {
+      transform: scale(1);
     }
   }
 
@@ -35,14 +32,14 @@
     cursor: pointer;
     transition: all 0.3s;
 
-    svg {
+    span {
       vertical-align: middle;
       transform: scale(0);
       transition: all 0.3s;
     }
   }
 
-  span {
+  &-string {
     position: absolute;
     left: 50%;
     transform-origin: 0 center;
