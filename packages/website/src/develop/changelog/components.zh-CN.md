@@ -9,6 +9,24 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.12.3
+
+- Input [#618](https://github.com/growingio/gio-design/pull/618)
+  - 整体更新文档
+  - 修正组件类名为 BEM 写法
+  - 去除 wrapStyle 与 inputStyle prop
+- Input.InputNumber [#618](https://github.com/growingio/gio-design/pull/618)
+  - 新增定制数字显示的 customDisplay
+  - 新增 decimalSeparator 用于设置小数分隔符
+  - 修正 value 类型为 number
+- Input.TextArea [#618](https://github.com/growingio/gio-design/pull/618)
+  - 新增 showCount ，用于限制在有 maxLength 时是否显示计数
+- DatePicker [#627](https://github.com/growingio/gio-design/pull/627)
+  - 为 DatePicker 与 DateRangePicker 增加 disabled 属性
+  - 修改 DateRangePicker 在 disabled 状态下的样式
+- 头像 Avatar
+  - 修复 [#617](https://github.com/growingio/gio-design/pull/617) 造成的样式错误 [#631](https://github.com/growingio/gio-design/pull/631)
+
 ## 20.12.2
 
 - Avatar 头像
