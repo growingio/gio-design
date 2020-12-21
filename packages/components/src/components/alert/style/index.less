@@ -9,6 +9,7 @@
   padding: 16px 16px;
   border-radius: 6px;
   transition: all ease 0.8s;
+  box-sizing: border-box;
 
   & &-icon {
     flex-shrink: 0;
@@ -68,6 +69,7 @@
 
 .@{alert-prefix-cls}-success {
   background-color: @color-background-alert-success;
+
   & .@{alert-prefix-cls}-closeIcon {
     fill: @palette-green-6;
   }
@@ -79,6 +81,7 @@
 
 .@{alert-prefix-cls}-warning {
   background-color: @color-background-alert-warning;
+
   & .@{alert-prefix-cls}-closeIcon {
     svg {
       fill: @palette-yellow-6;
@@ -94,6 +97,7 @@
 
 .@{alert-prefix-cls}-error {
   background-color: @color-background-alert-error;
+
   & .@{alert-prefix-cls}-closeIcon {
     fill: @palette-red-6;
   }
@@ -105,6 +109,7 @@
 
 .@{alert-prefix-cls}-small {
   padding: 8px 16px;
+
   & .@{alert-prefix-cls}-content {
     font-size: @size-font-12;
   }
