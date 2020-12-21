@@ -7,10 +7,10 @@ function SvgMore(wrapperProps: IconProps) {
   const props = {
     style: {
       color,
+      width: !size ? '16px' : size,
+      height: !size ? '16px' : size,
     },
     className: rotating ? 'gio-icon-svg gio-icon-rotating' : 'gio-icon-svg',
-    width: !size ? '16px' : size,
-    height: !size ? '16px' : size,
   };
   const file = (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" fill="currentColor" {...props}>

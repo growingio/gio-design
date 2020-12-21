@@ -36,9 +36,8 @@ initialize {
                       "attribs": Object {
                         "class": "gio-icon-svg",
                         "fill": "currentColor",
-                        "height": "16px",
+                        "style": "width: 16px; height: 16px;",
                         "viewBox": "0 0 14.01 14",
-                        "width": "16px",
                         "xmlns": "http://www.w3.org/2000/svg",
                       },
                       "children": Array [
@@ -242,17 +241,15 @@ initialize {
                       "x-attribsNamespace": Object {
                         "class": undefined,
                         "fill": undefined,
-                        "height": undefined,
+                        "style": undefined,
                         "viewBox": undefined,
-                        "width": undefined,
                         "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
                         "fill": undefined,
-                        "height": undefined,
+                        "style": undefined,
                         "viewBox": undefined,
-                        "width": undefined,
                         "xmlns": "",
                       },
                     },
@@ -314,9 +311,8 @@ initialize {
                     "attribs": Object {
                       "class": "gio-icon-svg",
                       "fill": "currentColor",
-                      "height": "16px",
+                      "style": "width: 16px; height: 16px;",
                       "viewBox": "0 0 14.01 14",
-                      "width": "16px",
                       "xmlns": "http://www.w3.org/2000/svg",
                     },
                     "children": Array [
@@ -520,17 +516,15 @@ initialize {
                     "x-attribsNamespace": Object {
                       "class": undefined,
                       "fill": undefined,
-                      "height": undefined,
+                      "style": undefined,
                       "viewBox": undefined,
-                      "width": undefined,
                       "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
                       "fill": undefined,
-                      "height": undefined,
+                      "style": undefined,
                       "viewBox": undefined,
-                      "width": undefined,
                       "xmlns": "",
                     },
                   },

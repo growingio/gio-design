@@ -42,14 +42,14 @@ exports[`<Select /> renders <Select /> components 1`] = `
       <svg
         className="gio-icon-svg"
         fill="currentColor"
-        height="16px"
         style={
           Object {
             "color": undefined,
+            "height": "16px",
+            "width": "16px",
           }
         }
         viewBox="0 0 14 14"
-        width="16px"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -119,14 +119,14 @@ exports[`<Select /> renders <Select /> components 2`] = `
       <svg
         className="gio-icon-svg"
         fill="currentColor"
-        height="16px"
         style={
           Object {
             "color": undefined,
+            "height": "16px",
+            "width": "16px",
           }
         }
         viewBox="0 0 14 14"
-        width="16px"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -186,14 +186,14 @@ exports[`<Select /> renders <Select.Group /> components 1`] = `
       <svg
         className="gio-icon-svg"
         fill="currentColor"
-        height="16px"
         style={
           Object {
             "color": undefined,
+            "height": "16px",
+            "width": "16px",
           }
         }
         viewBox="0 0 14 14"
-        width="16px"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -253,14 +253,14 @@ exports[`<Select /> renders <Select.Option /> components 1`] = `
       <svg
         className="gio-icon-svg"
         fill="currentColor"
-        height="16px"
         style={
           Object {
             "color": undefined,
+            "height": "16px",
+            "width": "16px",
           }
         }
         viewBox="0 0 14 14"
-        width="16px"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -326,14 +326,14 @@ exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
           <svg
             className="gio-icon-svg"
             fill="currentColor"
-            height="16px"
             style={
               Object {
                 "color": undefined,
+                "height": "16px",
+                "width": "16px",
               }
             }
             viewBox="0 0 14 14"
-            width="16px"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
@@ -369,14 +369,14 @@ exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
       <svg
         className="gio-icon-svg"
         fill="currentColor"
-        height="16px"
         style={
           Object {
             "color": undefined,
+            "height": "16px",
+            "width": "16px",
           }
         }
         viewBox="0 0 14 14"
-        width="16px"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -442,14 +442,14 @@ exports[`<Select multiple/> renders <Select multiple/> components 2`] = `
           <svg
             className="gio-icon-svg"
             fill="currentColor"
-            height="16px"
             style={
               Object {
                 "color": undefined,
+                "height": "16px",
+                "width": "16px",
               }
             }
             viewBox="0 0 14 14"
-            width="16px"
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
@@ -485,14 +485,14 @@ exports[`<Select multiple/> renders <Select multiple/> components 2`] = `
       <svg
         className="gio-icon-svg"
         fill="currentColor"
-        height="16px"
         style={
           Object {
             "color": undefined,
+            "height": "16px",
+            "width": "16px",
           }
         }
         viewBox="0 0 14 14"
-        width="16px"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>

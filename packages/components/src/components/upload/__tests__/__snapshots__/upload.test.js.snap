@@ -35,16 +35,16 @@ exports[`Testing Upload mount match snapshot should match snapshot 1`] = `
           clipRule="evenodd"
           fill="currentColor"
           fillRule="evenodd"
-          height="16px"
           strokeLinejoin="round"
           strokeMiterlimit={1.414}
           style={
             Object {
               "color": undefined,
+              "height": "16px",
+              "width": "16px",
             }
           }
           viewBox="0 0 14 14"
-          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -99,16 +99,16 @@ exports[`Testing Upload mount match snapshot should match snapshot 2`] = `
           clipRule="evenodd"
           fill="currentColor"
           fillRule="evenodd"
-          height="16px"
           strokeLinejoin="round"
           strokeMiterlimit={1.414}
           style={
             Object {
               "color": undefined,
+              "height": "16px",
+              "width": "16px",
             }
           }
           viewBox="0 0 14 14"
-          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -163,16 +163,16 @@ exports[`Testing Upload mount match snapshot should match snapshot 3`] = `
           clipRule="evenodd"
           fill="currentColor"
           fillRule="evenodd"
-          height="16px"
           strokeLinejoin="round"
           strokeMiterlimit={1.414}
           style={
             Object {
               "color": undefined,
+              "height": "16px",
+              "width": "16px",
             }
           }
           viewBox="0 0 14 14"
-          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -227,16 +227,16 @@ exports[`Testing Upload mount match snapshot should match snapshot 4`] = `
           clipRule="evenodd"
           fill="currentColor"
           fillRule="evenodd"
-          height="16px"
           strokeLinejoin="round"
           strokeMiterlimit={1.414}
           style={
             Object {
               "color": undefined,
+              "height": "16px",
+              "width": "16px",
             }
           }
           viewBox="0 0 14 14"
-          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -291,16 +291,16 @@ exports[`Testing Upload mount match snapshot should match snapshot 5`] = `
           clipRule="evenodd"
           fill="currentColor"
           fillRule="evenodd"
-          height="16px"
           strokeLinejoin="round"
           strokeMiterlimit={1.414}
           style={
             Object {
               "color": undefined,
+              "height": "16px",
+              "width": "16px",
             }
           }
           viewBox="0 0 14 14"
-          width="16px"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
