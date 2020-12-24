@@ -1,5 +1,5 @@
 import React from 'react';
-import { get } from 'lodash';
+import { get, isNumber } from 'lodash';
 import { List, AutoSizer, CellMeasurerCache, CellMeasurer } from 'react-virtualized';
 import { withConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import SelectOption from './option';
@@ -34,9 +34,8 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
       return rowHeight;
     };
     return (
-      <AutoSizer style={{ width: '100%', height: '100%' }}>
+      <AutoSizer style={{ width: '100%',height:'100%'}}>
         {({ width }) => (
-          
           <List
             value={value}
             width={width}
@@ -100,8 +99,8 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
       disabledOptions.indexOf(valueKey ? option[valueKey] : option) > -1 ||
       option.disabled;
 
+      
     const groupIcon = getGroupIcon ? getGroupIcon(option.group) : null;
-
     return (
       <CellMeasurer key={key} cache={this._cache} parent={parent} columnIndex={0} rowIndex={index}>
         {isGroup ? (
@@ -109,7 +108,7 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
             key={option.label}
             name={option.label}
             option={option}
-            style={{ ...style, height: (style.height as number) - 4, paddingTop: index !== 0 ? '20px' : '0px' }}
+            style={{ ...style, height: isNumber(style.height) ? (style.height as number) - 4 : style.height, paddingTop: index !== 0 ? '20px' : '0px' }}
             icon={groupIcon}
             isSelected={this.getSelected(option)}
             isMultiple={!!isMultiple}
@@ -118,7 +117,7 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
         ) : (
           <SelectOption
             key={key}
-            style={{ ...style, height: (style.height as number) - 4 }}
+            style={{ ...style, height: isNumber(style.height) ? (style.height as number) - 4 : style.height }}
             option={option}
             title={!labelRenderer ? label : undefined}
             isSelected={this.getSelected(option)}
