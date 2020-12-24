@@ -3,7 +3,6 @@
 @table-prefix-cls: ~'@{component-prefix}-table';
 @checkbox-prefix-cls: ~'@{component-prefix}-checkbox';
 @popover-prefix-cls: ~'@{component-prefix}-popover';
-@searchbar-prefix-cls: ~'@{component-prefix}-searchbar';
 
 .@{table-prefix-cls} {
   font-size: @size-font-14;
@@ -180,6 +179,7 @@
 
   &-column-title {
     position: relative;
+    height: 24px;
     &-info {
       display: inline-block;
       height: 14px;
@@ -192,27 +192,11 @@
     &-inner {
       position: relative;
       display: block;
-      &-btn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        background-color: transparent;
-        border: none;
-        transform: translateY(30%);
-        cursor: pointer;
-        &:focus {
-          outline: none;
-        }
-      }
+      width: 24px;
+      height: 24px;
       .@{popover-prefix-cls}-inner-content {
         width: 220px;
-        margin: 0;
-        .@{searchbar-prefix-cls} {
-          width: 188px;
-          margin: 16px 16px 0;
-        }
+        margin: 16px 16px 0;
         .filter-popover-footer {
           padding: 8px 16px;
           border-top: 1px solid #dfe4ee;
@@ -227,7 +211,7 @@
       position: relative;
       display: block;
       width: 10px;
-      height: 20px;
+      height: 24px;
       &-btn {
         position: absolute;
         height: 20px;
@@ -242,10 +226,10 @@
     }
 
     &-up {
-      top: -1px;
+      top: 1px;
     }
     &-down {
-      bottom: -1px;
+      bottom: -3px;
     }
     &-up,
     &-down {

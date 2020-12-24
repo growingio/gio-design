@@ -4,3 +4,4 @@ import '../../checkbox/style/index';
 import '../../pagination/style/index';
 import '../../tooltip/style/index';
 import '../../popover/style/index';
+import '../../search-bar/style/index';

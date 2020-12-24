@@ -54,6 +54,7 @@ const columns = [
     dataIndex: 'depart',
     key: 'depart',
     filters: ['设计', '开发'],
+    defaultFilteredValue: ['开发'],
   },
 ];
 
