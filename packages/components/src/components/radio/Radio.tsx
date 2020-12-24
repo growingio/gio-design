@@ -18,10 +18,6 @@ const InnerRadio: React.ForwardRefRenderFunction<unknown, IRadioProps> = (
   const groupContext = useContext(RadioGroupContext);
   const prefixCls = usePrefixCls('radio', customPrefixCls);
 
-  const wrapperCls = classnames(className, `${prefixCls}__wrapper`, {
-    [`${prefixCls}__wrapper--checked`]: restProps.checked,
-    [`${prefixCls}__wrapper--disabled`]: restProps.disabled,
-  });
   const labelCls = classnames(`${prefixCls}__label`);
 
   const handleChange = (e: IRadioChangeEvent) => {
@@ -44,6 +40,11 @@ const InnerRadio: React.ForwardRefRenderFunction<unknown, IRadioProps> = (
     rcProps.name = groupContext.name;
     rcProps.disabled = groupContext.disabled || restProps.disabled;
   }
+
+  const wrapperCls = classnames(className, `${prefixCls}__wrapper`, {
+    [`${prefixCls}__wrapper--checked`]: restProps.checked,
+    [`${prefixCls}__wrapper--disabled`]: rcProps.disabled,
+  });
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control

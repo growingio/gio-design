@@ -12,12 +12,12 @@ export const collectFilterStates = <RecordType,>(
     if (has(column, 'children')) {
       filterStates.push(...collectFilterStates(get(column, 'children')));
     } else if (column.filters || column.filterDropdown) {
-      const { key, filters = [], onFilter } = column;
+      const { key, filters, onFilter, defaultFilteredValue = [] } = column;
       filterStates.push(
         clone({
           column,
           key,
-          filteredKeys: filters,
+          filteredKeys: defaultFilteredValue,
           onFilter,
           filters,
         })
@@ -57,10 +57,9 @@ const useFilter = <RecordType,>(
       activeFilterStates.reduce((accumulatorData, currentState) => {
         const { key: currentStateKey, filteredKeys, onFilter } = currentState;
         return accumulatorData.filter((record: RecordType) => {
-          if (isUndefined(onFilter)) {
-            return filteredKeys.includes(get(record, currentStateKey));
-          }
-          return filteredKeys.some((_key) => onFilter(_key, record));
+          const filterFunction = (_key: string) =>
+            isUndefined(onFilter) ? _key === get(record, currentStateKey) : onFilter(_key, record);
+          return filteredKeys.some(filterFunction);
         });
       }, data),
     [data, activeFilterStates]

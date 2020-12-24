@@ -2,7 +2,7 @@ import React, { useState, useContext, useMemo, useRef, useEffect, useCallback } 
 import classnames from 'classnames';
 
 import { DownFilled, CloseCircleFilled } from '@gio-design/icons';
-import { filter, isNil, without, uniqueId, findIndex, concat } from 'lodash';
+import { filter, isNil, without, uniqueId, findIndex, concat, isEmpty } from 'lodash';
 import { SizeContext } from '../config-provider/SizeContext';
 import Dropdown from '../dropdown';
 import Tag from '../tag';
@@ -113,12 +113,13 @@ const defaultNotFoundContent = (
 
 const defaultOptionLabelRenderer = (value: string | number, option?: OptionProps) => option?.label || value;
 
-const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (props: SelectProps) => {
+const Select = React.forwardRef<HTMLDivElement,SelectProps>((props: SelectProps, ref: React.MutableRefObject<HTMLDivElement>) => {
   const sizeContext = useContext(SizeContext);
   const {
     size = sizeContext || 'middle',
     options = [],
     multiple = false,
+    allowClear = false,
     placeholder,
     searchable = false,
     disabled = false,
@@ -148,6 +149,8 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
     dropDownClassName,
     dropDownStyle,
     children,
+    onClear,
+    allowDeselect = false || multiple,
   } = props;
 
   const prefix = usePrefixCls('select', customizePrefixCls);
@@ -156,6 +159,7 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
   const isControlled = !isNil(controlledValue);
   const value = isControlled ? controlledValue : unControlledValue;
   const [isFocused, setFocused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [_visible, _setVisible] = useState(false);
   const visible = isNil(dropDownVisible) ? _visible : dropDownVisible;
   const setVisbile = isNil(onDropDownVisibleChange) ? _setVisible : onDropDownVisibleChange;
@@ -163,7 +167,6 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputWidth, setInputWidth] = useState(2);
   const inputWidthRef = useRef<HTMLDivElement>(null);
-  const selectorRef = useRef<HTMLDivElement>(null);
 
   const clearInput = () => {
     setInput('');
@@ -173,13 +176,6 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
     e.preventDefault();
     onSearch?.(e.target.value);
     setInput(e.target.value);
-  };
-  const onInputClear = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (input) {
-      e.stopPropagation();
-      clearInput();
-      inputRef.current?.focus();
-    }
   };
   const onInputClick = (e: React.MouseEvent<HTMLInputElement>) => {
     if (input) e.stopPropagation();
@@ -253,7 +249,7 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
     }
     return [...[...options, ...nodesToOptions], ...result];
   }, [options, nodesToOptions, value, getOptionByValue, allowCustomOption, hasGroup]);
-
+  const isEmptyValue = useMemo(()=> !isEmpty(value),[value])
   const filteredOptions = useMemo(() => filter(extendedOptions, searchPredicate(input)), [
     searchPredicate,
     extendedOptions,
@@ -273,7 +269,6 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
         : filteredOptions,
     [hasExactMatch, allowCustomOption, filteredOptions, input, hasGroup]
   );
-
   const onValueChange = (optValue: MaybeArray<string | number>) => {
     if (!isControlled) {
       setUnControlledValue(optValue);
@@ -334,7 +329,17 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
     }
     onDeselect?.(selectedValue, option);
   };
-
+  const onAllowClear = (e: React.MouseEvent<Element, MouseEvent>) =>{
+    e.stopPropagation();
+    if(allowClear){
+    if(input){
+      clearInput();
+    } else {
+      onValueChange(!multiple ? '' : [])
+    }
+    onClear?.();
+    }
+  }
   const onTagCloseClick = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>, v: string | number) => {
     e.stopPropagation();
     onValueChange(without((value as MaybeArray<string>) || [], v));
@@ -395,7 +400,16 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
     }
     return null;
   };
-
+  const onMouseEnter = ()=>{
+    if(allowClear){
+      setIsHovered(true);
+    }
+  }
+  const onMouseLeave = ()=>{
+    if(allowClear){
+      setIsHovered(false);
+    }
+  }
   const trigger = (
     <div
       role={disabled ? undefined : 'combobox'}
@@ -403,14 +417,16 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
       aria-controls="expandable"
       className={classnames(`${prefix}`, `${prefix}-${size}`, {
         [`${prefix}-single`]: !multiple,
+        [`${prefix}-bordered`]: bordered,
         [`${prefix}-focused`]: isFocused,
         [`${prefix}-disabled`]: disabled,
-        [`${prefix}-bordered`]: bordered,
         className,
       })}
       aria-disabled={disabled}
       style={style}
-      ref={selectorRef}
+      ref={ref}
+      onMouseEnter={onMouseEnter} 
+      onMouseLeave={onMouseLeave}
     >
       <div className={`${prefix}-selector`}>
         <div className={classnames(`${prefix}-values-wrapper`)}>
@@ -420,18 +436,19 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
         </div>
       </div>
       <div className={`${prefix}-arrow`}>
-        {searchable && !disabled && input ? <CloseCircleFilled onClick={onInputClear} /> : arrowComponent}
+        {allowClear &&  isEmptyValue && isHovered ?  <CloseCircleFilled onClick={onAllowClear} /> : arrowComponent}
       </div>
     </div>
   );
   const list = (
-    <div style={{ width: autoWidth ? Math.max(selectorRef.current?.clientWidth || 0, 160) : undefined }}>
+    <div style={{ width: autoWidth ? Math.max(ref?.current?.clientWidth || 0, 160) : undefined }}>
       {completeOptions.length > 0 ? (
         <List
           value={value}
-          width={autoWidth ? Math.max(selectorRef.current?.clientWidth || 0, 160) : undefined}
+          width={autoWidth ? Math.max(ref?.current?.clientWidth || 0, 160) : undefined}
           dataSource={(completeOptions as unknown) as Option[]}
           onChange={onValueChange}
+          required={!allowDeselect}
           isMultiple={multiple}
           labelRenderer={labelRenderer(input, prefix)}
           onSelect={onListSelect}
@@ -462,8 +479,6 @@ const RenderSelect: React.ForwardRefRenderFunction<unknown, SelectProps> = (prop
       {trigger}
     </Dropdown>
   );
-};
-
-const Select = React.forwardRef<unknown, SelectProps>(RenderSelect) as CompoundedSelect;
+}) as CompoundedSelect;
 
 export default Select;
