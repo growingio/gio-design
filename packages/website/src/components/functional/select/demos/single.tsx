@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, createRef } from 'react';
 import { Select, Radio } from '@gio-design/components';
 import '@gio-design/components/es/components/select/style/index.css';
 import '@gio-design/components/es/components/radio/style/css.js';
@@ -8,6 +8,7 @@ import options, { optionsWithoutGroup } from './options';
 
 const Basics = (): React.ReactNode => {
   const [size, setSize] = useState<SizeType>('middle');
+  const selectRef = createRef<HTMLElement>();
   return (
     <>
       <div style={{ marginBottom: 16 }}>
@@ -18,7 +19,7 @@ const Basics = (): React.ReactNode => {
         </Radio.Group>
       </div>
       <div>
-        <Select options={optionsWithoutGroup} size={size} style={{ width: 140 }} placeholder="请选择" />
+        <Select options={optionsWithoutGroup} allowClear size={size} style={{ width: 140 }} placeholder="请选择" ref={selectRef} />
       </div>
     </>
   );

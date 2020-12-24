@@ -70,14 +70,16 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
     return (
       <span className={classNames(`${prefixCls}-column-filter`)}>
         <span className={`${prefixCls}-column-filter-inner`}>
-          <FilterPopover prefixCls={prefixCls} onClick={handleFilterPopoverClick} filters={filters}>
+          <FilterPopover prefixCls={prefixCls} onClick={handleFilterPopoverClick} filters={filters} values={filteredKeys}>
             <Button
               type="assist"
+              mini
               className={`${prefixCls}-column-filter-inner-btn`}
               icon={(
                 <FilterFilled
-                  size="16px"
-                  className={classNames(`${prefixCls}-column-filter-icon`, { active: filteredKeys.length > 0 })}
+                  size="12px"
+                  className={`${prefixCls}-column-filter-icon`}
+                  color={filteredKeys.length > 0 ? '#1248E9' : undefined}
                 />
               )}
             />

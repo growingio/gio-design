@@ -61,6 +61,10 @@ export interface IBaseListProps {
   onClick?: (value: any) => void;
   getPopupContainer?: (node: HTMLElement) => HTMLElement;
   placement?: string;
+  /**
+   * 必选一个
+   */
+  required?: boolean;
 }
 
 export interface Option {

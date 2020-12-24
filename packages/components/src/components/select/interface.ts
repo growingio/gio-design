@@ -8,7 +8,7 @@ export interface SelectProps {
   // removed
   // defaultSelection?: MaybeArray<string>;
   // width?: number;
-
+  allowClear?: boolean;
   size?: SizeType;
   options?: Option[];
   multiple?: boolean;
@@ -16,9 +16,7 @@ export interface SelectProps {
   searchable?: boolean;
   disabled?: boolean;
   allowCustomOption?: boolean;
-
   notFoundContent?: React.ReactElement;
-
   customizePrefixCls?: string;
   className?: string;
   style?: React.CSSProperties;
@@ -26,7 +24,7 @@ export interface SelectProps {
   dropDownStyle?: React.CSSProperties;
   bordered?: boolean;
   arrowComponent?: React.ReactElement;
-
+  allowDeselect?: boolean;
   autoWidth?: boolean;
   listHeight?: number;
   listRowHeight?: number;
@@ -41,7 +39,7 @@ export interface SelectProps {
   onSearch?: (input: string) => void;
   onSelect?: (value: string | number, option: OptionProps) => void;
   onDeselect?: (value: string | number, option: OptionProps) => void;
-
+  onClear?: () => void;
   getContainer?: (node: HTMLElement) => HTMLElement;
   dropDownVisible?: boolean;
   onDropDownVisibleChange?: (visible: boolean) => void;
