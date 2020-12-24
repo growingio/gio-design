@@ -169,50 +169,51 @@ group:
 
 ### Table
 
-| 参数                | 说明                                           | 类型                                   | 默认值               |
-| ------------------- | ---------------------------------------------- | -------------------------------------- | -------------------- |
-| **title**           | 列表标题                                       | string                                 |                      |
-| **columns**         | 列表列的配置描述，具体项见下表                 | ColumnsType[]                          | -                    |
-| **dataSource**      | 数据数组                                       | object[]                               | -                    |
-| **pagination**      | 设置分页 ，默认开启，设置为 false 时关闭分页。 | PaginationProps \| false               | {}                   |
-| **rowSelection**    | 设置行选择功能                                 | RowSelection                           | -                    |
-| **scroll**          | 设置 table 横向纵向滚动                        | { x: number, y:number}                 | { x: false, y:false} |
-| **showIndex**       | 设置显示序号                                   | boolean                                | false                |
-| **emptyText**       | 设置搜索无结果时的样式                         | React.ReactNode                        | -                    |
-| **onChange**        | 触发分页、排序、过滤时的回调                   | (pagination, sorter, filters,) => void | -                    |
-| **rowKey**          | 表格行 key 的取值，可以是字符串或一个函数      | string \| function(record): string     | 数据的 key 字段      |
-| **rowClassName**    | 表格行的类名                                   | function(record, index): string        | -                    |
-| **useHackRowEvent** | 是否使用 hack 的 row Event                     | boolean                                | false                |
-| **onRow**           | 设置行属性                                     | function(record, index)                | -                    |
-| **onHeaderRow**     | 设置头部行属性                                 | function(column, index)                | -                    |
-| **showHover**       | 是否显示 hover 效果                            | boolean                                | true                 |
-| **showHeader**      | 是否显示 table head                            | boolean                                | true                 |
-| **loading**         | 页面是否加载中                                 | boolean                                | false                |
+| 参数             | 说明                                           | 类型                                   | 默认值               |
+| ---------------- | ---------------------------------------------- | -------------------------------------- | -------------------- |
+| **title**        | 列表标题                                       | string                                 |                      |
+| **columns**      | 列表列的配置描述，具体项见下表                 | ColumnsType[]                          | -                    |
+| **dataSource**   | 数据数组                                       | object[]                               | -                    |
+| **pagination**   | 设置分页 ，默认开启，设置为 false 时关闭分页。 | PaginationProps \| false               | {}                   |
+| **rowSelection** | 设置行选择功能                                 | RowSelection                           | -                    |
+| **scroll**       | 设置 table 横向纵向滚动                        | { x: number, y:number}                 | { x: false, y:false} |
+| **showIndex**    | 设置显示序号                                   | boolean                                | false                |
+| **emptyText**    | 设置搜索无结果时的样式                         | React.ReactNode                        | -                    |
+| **onChange**     | 触发分页、排序、过滤时的回调                   | (pagination, sorter, filters,) => void | -                    |
+| **rowKey**       | 表格行 key 的取值，可以是字符串或一个函数      | string \| function(record): string     | 数据的 key 字段      |
+| **rowClassName** | 表格行的类名                                   | function(record, index): string        | -                    |
+| **hackRowEvent** | 是否使用 hack 的 row Event                     | boolean                                | false                |
+| **onRow**        | 设置行属性                                     | function(record, index)                | -                    |
+| **onHeaderRow**  | 设置头部行属性                                 | function(column, index)                | -                    |
+| **showHover**    | 是否显示 hover 效果                            | boolean                                | true                 |
+| **showHeader**   | 是否显示 table head                            | boolean                                | true                 |
+| **loading**      | 页面是否加载中                                 | boolean                                | false                |
 
 ### Column
 
 列描述对象
 
-| 参数                  | 说明                                                                       | 类型                                     | 默认值                  |
-| --------------------- | -------------------------------------------------------------------------- | ---------------------------------------- | ----------------------- |
-| **key**               | 列唯一标识                                                                 | string                                   | 列序号                  |
-| **className**         | 列样式类名                                                                 | string                                   | -                       |
-| **dataIndex**         | 列数据在数据项中对应的路径                                                 | string                                   | -                       |
-| **fixed**             | 固定列                                                                     | 'left' \| 'right' \|boolean              | -                       |
-| **align**             | 对齐方式                                                                   | 'left' \| 'center' \| 'right'            | 'left'                  |
-| **width**             | 列宽                                                                       | number \| string                         | -                       |
-| **title**             | 列标题                                                                     | React.ReactNode                          | -                       |
-| **ellipsis**          | 开启超出省略，（当设置 render 方法时，仅生效省略的样式，不会显示 Tooltip） | boolean                                  | false                   |
-| **info**              | 设置用于解释该列的文案                                                     | string                                   | -                       |
-| **sorter**            | 排序函数，设置此属性才开启排序功能                                         | (a: RecordType, b: RecordType) => number |                         |
-| **sortPriorityOrder** | 排序优先级                                                                 | React.ReactNode                          | -                       |
-| **sortDirections**    | 支持的排序方式                                                             | ascend\|descend[]                        | [ascend, descend, none] |
-| **defaultSortOrder**  | 默认排序顺序                                                               | ascend\|descend                          | -                       |
-| **filters**           | 表头的筛选菜单项                                                           | string[]                                 | []                      |
-| **onFilter**          | 自定义筛选规则                                                             | (record: RecordType) => boolean          | -                       |
-| **filterDropdown**    | 自定义筛选菜单，可以用来覆盖默认菜单(还未做)                               | React.ReactNode                          | -                       |
-| **render**            | 每一列的渲染函数                                                           | function(text, record, index) {}         | -                       |
-| **onHeaderCell**      | 设置头部单元格属性                                                         | function(column)                         | -                       |
+| 参数                     | 说明                                                                       | 类型                                     | 默认值                  |
+| ------------------------ | -------------------------------------------------------------------------- | ---------------------------------------- | ----------------------- |
+| **key**                  | 列唯一标识                                                                 | string                                   | 列序号                  |
+| **className**            | 列样式类名                                                                 | string                                   | -                       |
+| **dataIndex**            | 列数据在数据项中对应的路径                                                 | string                                   | -                       |
+| **fixed**                | 固定列                                                                     | 'left' \| 'right' \|boolean              | -                       |
+| **align**                | 对齐方式                                                                   | 'left' \| 'center' \| 'right'            | 'left'                  |
+| **width**                | 列宽                                                                       | number \| string                         | -                       |
+| **title**                | 列标题                                                                     | React.ReactNode                          | -                       |
+| **ellipsis**             | 开启超出省略，（当设置 render 方法时，仅生效省略的样式，不会显示 Tooltip） | boolean                                  | false                   |
+| **info**                 | 设置用于解释该列的文案                                                     | string                                   | -                       |
+| **sorter**               | 排序函数，设置此属性才开启排序功能                                         | (a: RecordType, b: RecordType) => number |                         |
+| **sortPriorityOrder**    | 排序优先级                                                                 | React.ReactNode                          | -                       |
+| **sortDirections**       | 支持的排序方式                                                             | ascend\|descend[]                        | [ascend, descend, none] |
+| **defaultSortOrder**     | 默认排序顺序                                                               | ascend\|descend                          | -                       |
+| **filters**              | 表头的筛选菜单项                                                           | string[]                                 | []                      |
+| **defaultFilteredValue** | 默认选中的筛选菜单项                                                       | string[]                                 | []                      |
+| **onFilter**             | 自定义筛选规则                                                             | (record: RecordType) => boolean          | -                       |
+| **filterDropdown**       | 自定义筛选菜单，可以用来覆盖默认菜单(还未做)                               | React.ReactNode                          | -                       |
+| **render**               | 每一列的渲染函数                                                           | function(text, record, index) {}         | -                       |
+| **onHeaderCell**         | 设置头部单元格属性                                                         | function(column)                         | -                       |
 
 ### RowSelection
 

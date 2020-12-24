@@ -26,6 +26,7 @@ export interface ColumnType<RecordType> {
   sortPriorityOrder?: number;
   defaultSortOrder?: SortOrder;
   // filter
+  defaultFilteredValue?: string[];
   filters?: string[];
   onFilter?: (value: string, record: RecordType) => boolean;
   filterDropdown?: React.ReactNode;

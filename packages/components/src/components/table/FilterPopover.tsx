@@ -9,12 +9,13 @@ interface FilterPopoverProps {
   children: React.ReactElement;
   onClick: (newFilterState: string[]) => void;
   filters?: string[];
+  values: string[];
 }
 
 const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
-  const { children, onClick, filters = [] } = props;
+  const { children, onClick, filters = [], values } = props;
   const [seachValue, setSearchValue] = useState<string>('');
-  const [selectFilterKey, setSelectFilterKey] = useState<string[]>([]);
+  const [selectFilterKeys, setSelectFilterKeys] = useState<string[]>(values);
   const [visible, setVisible] = useState<boolean>(false);
   return (
     <Popover
@@ -30,8 +31,8 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
           <SearchBar placeholder='搜索过滤条件' size='small' value={seachValue} onChange={setSearchValue} />
           <List
             isMultiple
-            value={selectFilterKey}
-            onChange={setSelectFilterKey}
+            value={selectFilterKeys}
+            onChange={setSelectFilterKeys}
             width={220}
             height={160}
             dataSource={
@@ -48,7 +49,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
               size='small'
               onClick={() => {
                 setSearchValue('');
-                setSelectFilterKey([]);
+                setSelectFilterKeys([]);
               }}
             >
               清除
@@ -57,7 +58,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
               style={{ float: 'right'}}
               size='small'
               onClick={() => {
-                onClick(selectFilterKey);
+                onClick(selectFilterKeys);
                 setVisible(false);
               }}
             >
