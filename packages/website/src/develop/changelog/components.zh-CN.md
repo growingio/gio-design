@@ -9,6 +9,20 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.12.4
+
+- Alert 警告提示
+  - 修复 `Alert` 会超出外层元素的情况，设置样式 `box-sizing:border-box;` [#633](https://github.com/growingio/gio-design/pull/633)
+- Checkbox 多选框
+  - 修复在 `disabled` 状态时 `cursor` 仍为 `pointer` 的问题 [#645](https://github.com/growingio/gio-design/pull/645)
+- Select 选择器 [#634](https://github.com/growingio/gio-design/pull/634)
+  - 新增 `allowClear` 参数，开启后拥有清除功能
+  - 新增 `allowDeSelect` 参数，默认情况下不开启反选
+  - 新增 `onClear` 方法，清除的回调
+  - 支持 `ref` 参数
+- Table 表格
+  - 添加 `defaultFilterValue` 参数 [#638](https://github.com/growingio/gio-design/pull/638)
+
 ## 20.12.3
 
 - Input [#618](https://github.com/growingio/gio-design/pull/618)
