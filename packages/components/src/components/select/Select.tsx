@@ -167,7 +167,8 @@ const Select = React.forwardRef<HTMLDivElement,SelectProps>((props: SelectProps,
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputWidth, setInputWidth] = useState(2);
   const inputWidthRef = useRef<HTMLDivElement>(null);
-
+  const selectRef = useRef<HTMLDivElement>(null)
+  const selectorRef = ref || selectRef;
   const clearInput = () => {
     setInput('');
   };
@@ -424,7 +425,7 @@ const Select = React.forwardRef<HTMLDivElement,SelectProps>((props: SelectProps,
       })}
       aria-disabled={disabled}
       style={style}
-      ref={ref}
+      ref={selectorRef}
       onMouseEnter={onMouseEnter} 
       onMouseLeave={onMouseLeave}
     >
@@ -441,11 +442,11 @@ const Select = React.forwardRef<HTMLDivElement,SelectProps>((props: SelectProps,
     </div>
   );
   const list = (
-    <div style={{ width: autoWidth ? Math.max(ref?.current?.clientWidth || 0, 160) : undefined }}>
+    <div style={{ width: autoWidth ? Math.max(selectorRef?.current?.clientWidth || 0, 160) : undefined }}>
       {completeOptions.length > 0 ? (
         <List
           value={value}
-          width={autoWidth ? Math.max(ref?.current?.clientWidth || 0, 160) : undefined}
+          width={autoWidth ? Math.max(selectorRef?.current?.clientWidth || 0, 160) : undefined}
           dataSource={(completeOptions as unknown) as Option[]}
           onChange={onValueChange}
           required={!allowDeselect}

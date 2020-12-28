@@ -19,7 +19,7 @@ const Basics = (): React.ReactNode => {
         </Radio.Group>
       </div>
       <div>
-        <Select options={optionsWithoutGroup} allowClear size={size} style={{ width: 140 }} placeholder="请选择" ref={selectRef} />
+        <Select options={optionsWithoutGroup} allowClear size={size} style={{ width: 190 }} placeholder="请选择" />
       </div>
     </>
   );
