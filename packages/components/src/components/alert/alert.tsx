@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 import _ from 'lodash';
-import { CheckCircleFilled, WarningFilled, InformationFilled, CloseCircleFilled, Close } from '@gio-design/icons';
+import {
+  CheckCircleFilled,
+  WarningCircleFilled,
+  InfoCircleFilled,
+  CloseCircleFilled,
+  CloseOutlined,
+} from '@gio-design/icons';
 import { AlertProps } from './interfaces';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
@@ -26,13 +32,13 @@ const Alert: React.FC<AlertProps> = (props: AlertProps) => {
       case 'success':
         return <CheckCircleFilled color="#00875A" />;
       case 'warning':
-        return <WarningFilled color="#FF991F" />;
+        return <WarningCircleFilled color="#FF991F" />;
       case 'error':
         return <CloseCircleFilled color="#DE350B" />;
       case 'info':
-        return <InformationFilled color="#0052CC" />;
+        return <InfoCircleFilled color="#0052CC" />;
       default:
-        return showIcon ? icon || <InformationFilled color="#0052CC" /> : null;
+        return showIcon ? icon || <InfoCircleFilled color="#0052CC" /> : null;
     }
   };
 
@@ -70,7 +76,7 @@ const Alert: React.FC<AlertProps> = (props: AlertProps) => {
           tabIndex={0}
           onKeyPress={_.noop}
         >
-          {closeText || <Close />}
+          {closeText || <CloseOutlined />}
         </div>
       </div>
     </div>

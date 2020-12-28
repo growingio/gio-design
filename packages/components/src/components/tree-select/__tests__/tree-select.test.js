@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { More } from '@gio-design/icons';
+import { MoreOutlined } from '@gio-design/icons';
 import TreeSelect from '../index';
 import focusTest from '../../../tests/focusTest';
 
@@ -92,9 +92,9 @@ describe('Testing tree select', () => {
         treeData={treeData}
         listHeight={400}
         listItemHeight={30}
-        suffixIcon={<More />}
+        suffixIcon={<MoreOutlined />}
         showSearch
-        menuItemSelectedIcon={<More />}
+        menuItemSelectedIcon={<MoreOutlined />}
       />
     );
 

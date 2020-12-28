@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback } from 'react';
 import classnames from 'classnames';
-import { ViewOutlined, UnviewOutlined } from '@gio-design/icons';
+import { EyeOutlined, EyeSlashOutlined } from '@gio-design/icons';
 import Input from './Input';
 import usePrefix from '../../utils/hooks/use-prefix-cls';
 import { InputProps } from './interfaces';
@@ -28,9 +28,9 @@ const Password: React.FC<InputProps> = (props) => {
   const passwordSuffix = useMemo(
     () =>
       visible ? (
-        <ViewOutlined className={passwordSuffixIconCls} onClick={toggleVisible} />
+        <EyeOutlined className={passwordSuffixIconCls} onClick={toggleVisible} />
       ) : (
-        <UnviewOutlined className={passwordSuffixIconCls} onClick={toggleVisible} />
+        <EyeSlashOutlined className={passwordSuffixIconCls} onClick={toggleVisible} />
       ),
     [passwordSuffixIconCls, toggleVisible, visible]
   );

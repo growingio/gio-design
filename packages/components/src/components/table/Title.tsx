@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { UpFilled, DownFilled, FilterFilled, QuestionCircleOutlined } from '@gio-design/icons';
+import { UpFilled, DownFilled, FilterOutlined, QuestionCircleOutlined } from '@gio-design/icons';
 import { isUndefined } from 'lodash';
 import Button from '../button';
 import Tooltip from '../tooltip';
@@ -35,7 +35,8 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
             prefixCls={`${prefixCls}`}
             className={`${prefixCls}-column-sorter-inner-btn`}
             type="text"
-            icon={(
+            icon={
+              // eslint-disable-next-line react/jsx-wrap-multilines
               <>
                 <UpFilled
                   className={classNames(`${prefixCls}-column-sorter-up`, {
@@ -48,7 +49,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
                   })}
                 />
               </>
-            )}
+            }
             onClick={handleSorterChange}
           />
         </span>
@@ -70,18 +71,24 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
     return (
       <span className={classNames(`${prefixCls}-column-filter`)}>
         <span className={`${prefixCls}-column-filter-inner`}>
-          <FilterPopover prefixCls={prefixCls} onClick={handleFilterPopoverClick} filters={filters} values={filteredKeys}>
+          <FilterPopover
+            prefixCls={prefixCls}
+            onClick={handleFilterPopoverClick}
+            filters={filters}
+            values={filteredKeys}
+          >
             <Button
               type="assist"
               mini
               className={`${prefixCls}-column-filter-inner-btn`}
-              icon={(
-                <FilterFilled
+              icon={
+                // eslint-disable-next-line react/jsx-wrap-multilines
+                <FilterOutlined
                   size="12px"
                   className={`${prefixCls}-column-filter-icon`}
                   color={filteredKeys.length > 0 ? '#1248E9' : undefined}
                 />
-              )}
+              }
             />
           </FilterPopover>
         </span>

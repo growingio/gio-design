@@ -1,5 +1,5 @@
 import React from 'react';
-import { Close } from '@gio-design/icons';
+import { CloseOutlined } from '@gio-design/icons';
 import classnames from 'classnames';
 import { TagProps } from './interface';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
@@ -42,7 +42,7 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
       style={style}
     >
       <span className={`${prefix}-label`}>{children}</span>
-      {closable && !disabled ? <Close className={`${prefix}-closable-icon`} onClick={onClose} /> : null}
+      {closable && !disabled ? <CloseOutlined className={`${prefix}-closable-icon`} onClick={onClose} /> : null}
     </span>
   );
 };
