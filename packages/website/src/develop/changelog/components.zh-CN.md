@@ -9,6 +9,15 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.12.5
+
+- Grid
+  - 修复嵌套 container 宽度计算错乱逻辑 [#652](https://github.com/growingio/gio-design/pull/652)
+- Cascader
+  - cascader position [#653](https://github.com/growingio/gio-design/pull/653)
+- Select
+  - 修复当不设置 ref 时，设置 width 失效 [#649](https://github.com/growingio/gio-design/pull/649)
+
 ## 20.12.4
 
 - Alert 警告提示
