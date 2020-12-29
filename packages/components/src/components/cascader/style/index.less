@@ -90,13 +90,13 @@
 
     &:not(:first-child) {
       .cascader-menu-group-name {
-        &:after {
-          content: '';
+        &::after {
           position: absolute;
-          left: 0;
           top: 0;
+          left: 0;
           width: 100%;
           border-bottom: 1px solid #dce0f2;
+          content: '';
         }
       }
     }
