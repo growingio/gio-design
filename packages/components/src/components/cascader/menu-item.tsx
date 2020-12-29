@@ -1,53 +1,11 @@
 import { CheckOutlined, DownFilled } from '@gio-design/icons';
-import React, { FocusEvent, KeyboardEvent, MouseEvent, ReactElement } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
 
+import { MenuItemProps as Props, NodeData } from './interface';
 import { dataFilter, dataKeyMapping, isHit, makeSearchParttern, useDynamicData, withPrefix } from './helper';
-
-export type Value = string | number;
-
-export type KeyMapping = {
-  label?: string;
-  value?: string;
-};
-
-export type NodeData = {
-  label?: string;
-  value?: Value;
-  disabled?: boolean;
-  children?: NodeData[];
-  groupId?: Value;
-  groupName?: string;
-  [key: string]: unknown;
-};
-
-export interface Props {
-  className?: string;
-  style?: React.CSSProperties;
-  dataSource: NodeData;
-  keyMapping?: KeyMapping;
-  value?: Value;
-  keyword?: string;
-  expanded?: boolean;
-  ignoreCase?: boolean;
-  deepSearch?: boolean;
-  parentsData?: NodeData[];
-  onClick?: (event: MouseEvent, nodeData: NodeData) => void;
-  onMouseEnter?: (event: MouseEvent, nodeData: NodeData) => void;
-  trigger?: 'click' | 'hover';
-  selectAny?: boolean;
-  onTrigger?: (event: MouseEvent | KeyboardEvent, nodeData: NodeData) => void;
-  beforeSelect?: (event: MouseEvent | KeyboardEvent, nodeData: NodeData) => void | NodeData[] | Promise<NodeData[]>;
-  onSelect?: (nodeData: NodeData, parentsData: NodeData[], event: MouseEvent | KeyboardEvent) => void;
-  onKeyUp?: (event: KeyboardEvent) => void;
-  onFocus?: (event: FocusEvent) => void;
-  onBlur?: (event: FocusEvent) => void;
-  onMouseLeave?: (event: MouseEvent) => void;
-  onRender?: (nodeData: NodeData) => ReactElement;
-  afterInner?: (nodeData: NodeData) => React.ReactNode;
-}
 
 const triggerMap = {
   click: 'onClick',
@@ -109,12 +67,12 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   const withWrapperCls = withPrefix('cascader-menu-item');
   const mergedTrigger = triggerMap[trigger.toLowerCase() as typeof trigger];
 
-  const getCopyEvent = <T extends MouseEvent | KeyboardEvent>(event: T) => {
+  const getCopyEvent = <T extends React.MouseEvent | React.KeyboardEvent>(event: T) => {
     event.persist();
     return { ...event };
   };
 
-  const resolveBeforeSelect = (event: MouseEvent | KeyboardEvent) => {
+  const resolveBeforeSelect = (event: React.MouseEvent | React.KeyboardEvent) => {
     if (disabled) {
       return Promise.reject(Error('disabled'));
     }
@@ -127,7 +85,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       if (isEmpty(data.children) || selectAny) {
         setDataSource(data);
         try {
-          if (!(event.type === 'keyup' && (event as KeyboardEvent).key === 'ArrowRight')) {
+          if (!(event.type === 'keyup' && (event as React.KeyboardEvent).key === 'ArrowRight')) {
             onSelect?.(data, parentsData, event);
           }
         } catch (e) {
@@ -146,7 +104,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       });
   };
 
-  const handleMouseEnter = (event: MouseEvent<HTMLDivElement>) => {
+  const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.nativeEvent.target as HTMLDivElement;
     // 这里有个奇怪的问题，点 input 会触发这里的 MouseEvent 事件
     if (trigger === 'hover' && target.closest('.cascader-menu-outer') && !disabled) {
@@ -155,7 +113,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     onMouseEnter?.(event, dataSource);
   };
 
-  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const eventCopy = getCopyEvent(event);
     resolveBeforeSelect(eventCopy)
       .then((data) => {
@@ -164,7 +122,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       .catch(() => onClick?.(eventCopy, dataSource));
   };
 
-  const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if ([' ', 'Enter', 'ArrowRight'].indexOf(event.key) >= 0) {
       event.preventDefault();
       event.stopPropagation();
@@ -174,7 +132,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     }
   };
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === ' ') {
       event.preventDefault();
     }
@@ -187,6 +145,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     keyword && deepSearch
       ? !isEmpty(dataFilter(dataSource.children, parttern, deepSearch, keyMapping.label))
       : !noChild;
+  const checked = value === dataValue && (selectAny || !mergedHasChild);
 
   let childNode = (
     <div className={withWrapperCls('content')}>
@@ -194,9 +153,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         {shouldRenderKeyword && keyword && dataLabel ? renderKeyword(dataLabel, keyword, ignoreCase) : dataLabel}
       </div>
       <div>
-        {value === dataValue && (selectAny || !mergedHasChild) && (
-          <CheckOutlined size="1em" className={withWrapperCls('icon-checked')} />
-        )}
+        {checked && <CheckOutlined size="1em" className={withWrapperCls('icon-checked')} />}
         {mergedHasChild && <DownFilled size="1em" className={withWrapperCls('icon-down')} />}
       </div>
     </div>
@@ -212,10 +169,12 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       className={classNames(className, withWrapperCls(), disabled && withWrapperCls('disabled'))}
       ref={ref}
       style={style}
+      data-checked={checked}
     >
       <div
         className={withWrapperCls('inner')}
         role="button"
+        aria-pressed={checked}
         aria-haspopup={mergedHasChild}
         aria-disabled={disabled}
         tabIndex={0}
