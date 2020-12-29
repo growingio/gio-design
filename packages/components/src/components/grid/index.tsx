@@ -44,6 +44,7 @@ const Grid: React.FC<GridProps> = (props: React.PropsWithChildren<GridProps>) =>
       data-collapse={collapse}
       data-gap={!!gap}
       data-container={!!container}
+      data-full={isNumber(span) && (span as number) >= 12}
       style={{ ...cssProps, ...style }}
     >
       {children}

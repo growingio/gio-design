@@ -26,9 +26,12 @@ group:
 
 打开控制台，查看元素，Demo 的 calssName 前缀应该已经替换成了 `cool`。对应的 less 变量也替换了。
 
+## 嵌套
+
 `Grid` 可以多层嵌套使用
 
 <code src='./demo/nested.tsx' title='嵌套使用' />
+<code src='./demo/nested-container.tsx' title='嵌套 container' />
 
 ### 间距
 

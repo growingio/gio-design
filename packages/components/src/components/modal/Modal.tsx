@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import RcDialog from 'rc-dialog';
-import { Close } from '@gio-design/icons';
+import { CloseOutlined } from '@gio-design/icons';
 import { ButtonProps } from '../button';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { IModalProps } from './interface';
@@ -89,7 +89,7 @@ const Modal: React.FC<IModalProps> = ({
         className={modalCls}
         wrapClassName={wrapperCls}
         closable={title !== false}
-        closeIcon={<Close className={closeCls} />}
+        closeIcon={<CloseOutlined className={closeCls} />}
         title={title !== false && <Title onBack={onBack} useBack={useBack} title={title} />}
         footer={
           useFooter && (
