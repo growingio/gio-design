@@ -1,5 +1,5 @@
 import React, { CSSProperties, ReactElement } from 'react';
-import { CheckCircleFilled, CloseCircleFilled, WarningFilled, InformationFilled } from '@gio-design/icons';
+import { CheckCircleFilled, CloseCircleFilled, WarningCircleFilled, InfoCircleFilled } from '@gio-design/icons';
 
 export const iconStyle: CSSProperties = {
   width: '16px',
@@ -16,7 +16,7 @@ export interface IIconMap {
 export const getIconMap = (prefixCls: string): IIconMap => ({
   info: (
     <span className={`${prefixCls}-icon`}>
-      <InformationFilled color="#3867f4" style={iconStyle} />
+      <InfoCircleFilled color="#3867f4" style={iconStyle} />
     </span>
   ),
   success: (
@@ -26,7 +26,7 @@ export const getIconMap = (prefixCls: string): IIconMap => ({
   ),
   warning: (
     <span className={`${prefixCls}-icon`}>
-      <WarningFilled color="#f8af48" style={iconStyle} />
+      <WarningCircleFilled color="#f8af48" style={iconStyle} />
     </span>
   ),
   error: (

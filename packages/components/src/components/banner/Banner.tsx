@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Close } from '@gio-design/icons';
+import { CloseOutlined } from '@gio-design/icons';
 import className from 'classnames';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { BannerProps } from './interface';
@@ -30,7 +30,7 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
         onClick={onCloseBanner}
         aria-hidden="true"
       >
-        <Close />
+        <CloseOutlined />
       </div>
     </div>
   );

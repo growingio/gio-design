@@ -4,7 +4,7 @@ import { omit } from 'lodash';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import getScrollBarSize from 'rc-util/lib/getScrollBarSize';
-import { Close } from '@gio-design/icons';
+import { CloseOutlined } from '@gio-design/icons';
 import classNames from 'classnames';
 
 import { ConfigConsumerProps, withConfigConsumer, ConfigConsumer } from '../config-provider';
@@ -224,7 +224,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   }
 
   private renderCloseIcon() {
-    const { closable, closeIcon = <Close />, prefixCls, onClose } = this.props;
+    const { closable, closeIcon = <CloseOutlined />, prefixCls, onClose } = this.props;
     return (
       closable && (
         // eslint-disable-next-line react/button-has-type

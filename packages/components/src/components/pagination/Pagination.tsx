@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useRef, useCallback } from 'react';
 import classNames from 'classnames';
 import { isFunction, isNumber, isNaN, isUndefined } from 'lodash';
-import { LeftOutlined, LeftDoubleOutlined, RightOutlined, RightDoubleOutlined, More } from '@gio-design/icons';
+import { LeftOutlined, LeftDoubleOutlined, RightOutlined, RightDoubleOutlined, MoreOutlined } from '@gio-design/icons';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Input from '../input';
 import Select from '../select';
@@ -89,7 +89,7 @@ const Pagination = ({
               onClick={() => handleClick(controlledCurrent - offset)}
               aria-hidden="true"
             >
-              <More className="more" />
+              <MoreOutlined className="more" />
               <LeftDoubleOutlined className="double" color="#0044F2" />
             </li>
           );
@@ -102,7 +102,7 @@ const Pagination = ({
               onClick={() => handleClick(controlledCurrent + offset)}
               aria-hidden="true"
             >
-              <More className="more" />
+              <MoreOutlined className="more" />
               <RightDoubleOutlined className="double" color="#0044F2" />
             </li>
           );

@@ -1,4 +1,4 @@
-import { SearchOutlined, Close } from '@gio-design/icons';
+import { SearchOutlined, CloseOutlined } from '@gio-design/icons';
 import React, { useState } from 'react';
 
 import { SizeType } from '../config-provider/SizeContext';
@@ -50,7 +50,7 @@ const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
 
   const suffix = value ? (
     <button type="button" onClick={handlerClick} className="clear-btn action-btn">
-      <Close className="icon-clear suffix-icon" size="10" />
+      <CloseOutlined className="icon-clear suffix-icon" size="10" />
     </button>
   ) : (
     <button type="button" onClick={() => onSearch?.(value)} className="search-btn action-btn">
