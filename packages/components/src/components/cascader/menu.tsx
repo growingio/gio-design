@@ -2,14 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
-import { Props as MenuItemProps, NodeData } from './menu-item';
+import { MenuItemProps, NodeData, MenuProps } from './interface';
 import { dataKeyMapping, toInt, useDynamicData, useKeyboardNav, withPrefix } from './helper';
-import SingleMenu, { Props as SingleMenuProps } from './single-menu';
+import SingleMenu from './single-menu';
 import useMergeRef from '../../utils/hooks/useMergeRef';
 
-export type Props = SingleMenuProps;
+export type Props = MenuProps;
 
-const InnerMenu: React.FC<SingleMenuProps> = (props) => {
+const InnerMenu: React.FC<Props> = (props) => {
   const {
     className,
     style = {},

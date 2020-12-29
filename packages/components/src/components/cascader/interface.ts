@@ -1,6 +1,68 @@
 import { DropdownProps } from '../dropdown/interface';
 import { SizeType } from '../config-provider/SizeContext';
-import { Props as MenuProps } from './menu';
+
+export type Value = string | number;
+export type KeyMapping = {
+  label?: string;
+  value?: string;
+};
+
+export type NodeData = {
+  label?: string;
+  value?: Value;
+  disabled?: boolean;
+  children?: NodeData[];
+  groupId?: Value;
+  groupName?: string;
+  [key: string]: unknown;
+};
+
+export interface MenuItemProps {
+  className?: string;
+  style?: React.CSSProperties;
+  dataSource: NodeData;
+  keyMapping?: KeyMapping;
+  value?: Value;
+  keyword?: string;
+  expanded?: boolean;
+  ignoreCase?: boolean;
+  deepSearch?: boolean;
+  parentsData?: NodeData[];
+  onClick?: (event: React.MouseEvent, nodeData: NodeData) => void;
+  onMouseEnter?: (event: React.MouseEvent, nodeData: NodeData) => void;
+  trigger?: 'click' | 'hover';
+  selectAny?: boolean;
+  onTrigger?: (event: React.MouseEvent | React.KeyboardEvent, nodeData: NodeData) => void;
+  beforeSelect?: (
+    event: React.MouseEvent | React.KeyboardEvent,
+    nodeData: NodeData
+  ) => void | NodeData[] | Promise<NodeData[]>;
+  onSelect?: (nodeData: NodeData, parentsData: NodeData[], event: React.MouseEvent | React.KeyboardEvent) => void;
+  onKeyUp?: (event: React.KeyboardEvent) => void;
+  onFocus?: (event: React.FocusEvent) => void;
+  onBlur?: (event: React.FocusEvent) => void;
+  onMouseLeave?: (event: React.MouseEvent) => void;
+  onRender?: (nodeData: NodeData) => React.ReactElement;
+  afterInner?: (nodeData: NodeData) => React.ReactNode;
+}
+
+export type MaybeElementOrFn = React.ReactNode | ((dataSource: NodeData[]) => React.ReactNode);
+
+export interface MenuProps extends Omit<MenuItemProps, 'dataSource' | 'hasChild' | 'expanded'> {
+  dataSource?: NodeData[];
+  onRender?: (nodeData: NodeData) => React.ReactElement;
+  open?: boolean;
+  depth?: number;
+  header?: MaybeElementOrFn;
+  footer?: MaybeElementOrFn;
+  offsetLeft?: number;
+  offsetTop?: number;
+  getEmpty?: (keyword?: string) => React.ReactElement;
+  groupName?: boolean | MaybeElementOrFn;
+  parentMenu?: HTMLDivElement;
+  expandedId?: NodeData['value'];
+  autoFocus?: boolean;
+}
 
 export interface Props extends MenuProps {
   /**
