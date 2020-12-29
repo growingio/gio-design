@@ -17,7 +17,7 @@ const Basic = (): JSX.Element => {
   return (
     <div>
       <Grid>
-        <Toggles defaultChecked={groupName} onChange={setGroupName} />
+        <Toggles checked={groupName} onChange={setGroupName} />
         <span> 显示分组名</span>
       </Grid>
 
