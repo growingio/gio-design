@@ -112,7 +112,7 @@ const InnerMenu: React.FC<Props> = (props) => {
   );
 };
 
-const Menu = React.forwardRef<HTMLDivElement, SingleMenuProps>((props, ref) => {
+const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   const { className, style, open, onTrigger, ...others } = props;
   const wrapRef = useMergeRef(ref);
   const [canOpen, setCanOpen] = useState(open);
