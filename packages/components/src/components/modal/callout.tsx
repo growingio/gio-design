@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { WarningFilled, InformationFilled, CheckCircleFilled, CloseCircleFilled } from '@gio-design/icons';
+import { WarningCircleFilled, InfoCircleFilled, CheckCircleFilled, CloseCircleFilled } from '@gio-design/icons';
 import { PaletteBlue4, PaletteYellow5, PaletteGreen6, PaletteRed5 } from '@gio-design/tokens';
 import { defaultRootPrefixCls } from '../config-provider';
 import CalloutModal from './CalloutModal';
@@ -73,7 +73,7 @@ export const iconColorMap = {
 export function withConfirm(props: IModalStaticFuncConfig): IModalStaticFuncConfig {
   return {
     type: 'confirm',
-    icon: <WarningFilled size="20px" color={iconColorMap.confirm} />,
+    icon: <WarningCircleFilled size="20px" color={iconColorMap.confirm} />,
     showClose: true,
     ...props,
   };
@@ -82,7 +82,7 @@ export function withConfirm(props: IModalStaticFuncConfig): IModalStaticFuncConf
 export function withInfo(props: IModalStaticFuncConfig): IModalStaticFuncConfig {
   return {
     type: 'info',
-    icon: <InformationFilled size="20px" color={iconColorMap.info} />,
+    icon: <InfoCircleFilled size="20px" color={iconColorMap.info} />,
     showClose: false,
     ...props,
   };
@@ -100,7 +100,7 @@ export function withSuccess(props: IModalStaticFuncConfig): IModalStaticFuncConf
 export function withWarn(props: IModalStaticFuncConfig): IModalStaticFuncConfig {
   return {
     type: 'warn',
-    icon: <WarningFilled size="20px" color={iconColorMap.warn} />,
+    icon: <WarningCircleFilled size="20px" color={iconColorMap.warn} />,
     showClose: false,
     ...props,
   };

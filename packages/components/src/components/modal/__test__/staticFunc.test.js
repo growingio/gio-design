@@ -1,7 +1,7 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
-import { WarningFilled } from '@gio-design/icons';
+import { WarningCircleFilled } from '@gio-design/icons';
 import CalloutModal from '../CalloutModal';
 import { withConfirm, withInfo, withSuccess, withWarn, withError } from '../callout';
 import Modal from '..';
@@ -28,7 +28,7 @@ describe('<CalloutModal />', () => {
         title="CalloutModal Title Snapshot"
         content="CalloutModal Content Snapshot"
         type="confirm"
-        icon={<WarningFilled size="20px" />}
+        icon={<WarningCircleFilled size="20px" />}
         close={() => {
           console.log('close');
         }}

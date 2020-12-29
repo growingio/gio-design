@@ -377,7 +377,7 @@ initialize {
                               "children": Array [
                                 Object {
                                   "attribs": Object {
-                                    "class": "more_svg__cls-2",
+                                    "class": "more-outlined_svg__cls-2",
                                     "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                                     "fill": "currentColor",
                                   },
@@ -936,7 +936,7 @@ initialize {
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
-                                      "class": "more_svg__cls-2",
+                                      "class": "more-outlined_svg__cls-2",
                                       "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                                       "fill": "currentColor",
                                     },
@@ -3633,7 +3633,7 @@ initialize {
                             "children": Array [
                               Object {
                                 "attribs": Object {
-                                  "class": "more_svg__cls-2",
+                                  "class": "more-outlined_svg__cls-2",
                                   "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                                   "fill": "currentColor",
                                 },
@@ -4192,7 +4192,7 @@ initialize {
                               "children": Array [
                                 Object {
                                   "attribs": Object {
-                                    "class": "more_svg__cls-2",
+                                    "class": "more-outlined_svg__cls-2",
                                     "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                                     "fill": "currentColor",
                                   },
@@ -6652,7 +6652,7 @@ initialize {
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "class": "more_svg__cls-2",
+                                "class": "more-outlined_svg__cls-2",
                                 "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                                 "fill": "currentColor",
                               },
@@ -7211,7 +7211,7 @@ initialize {
                             "children": Array [
                               Object {
                                 "attribs": Object {
-                                  "class": "more_svg__cls-2",
+                                  "class": "more-outlined_svg__cls-2",
                                   "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                                   "fill": "currentColor",
                                 },
@@ -9907,7 +9907,7 @@ initialize {
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "more_svg__cls-2",
+                              "class": "more-outlined_svg__cls-2",
                               "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                               "fill": "currentColor",
                             },
@@ -10466,7 +10466,7 @@ initialize {
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "class": "more_svg__cls-2",
+                                "class": "more-outlined_svg__cls-2",
                                 "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                                 "fill": "currentColor",
                               },
@@ -13162,7 +13162,7 @@ initialize {
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "more_svg__cls-2",
+                            "class": "more-outlined_svg__cls-2",
                             "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                             "fill": "currentColor",
                           },
@@ -13721,7 +13721,7 @@ initialize {
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "more_svg__cls-2",
+                              "class": "more-outlined_svg__cls-2",
                               "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                               "fill": "currentColor",
                             },
@@ -16417,7 +16417,7 @@ initialize {
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "more_svg__cls-2",
+                          "class": "more-outlined_svg__cls-2",
                           "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                           "fill": "currentColor",
                         },
@@ -16976,7 +16976,7 @@ initialize {
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "more_svg__cls-2",
+                            "class": "more-outlined_svg__cls-2",
                             "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                             "fill": "currentColor",
                           },
@@ -19672,7 +19672,7 @@ initialize {
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "more_svg__cls-2",
+                        "class": "more-outlined_svg__cls-2",
                         "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                         "fill": "currentColor",
                       },
@@ -20231,7 +20231,7 @@ initialize {
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "more_svg__cls-2",
+                          "class": "more-outlined_svg__cls-2",
                           "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                           "fill": "currentColor",
                         },
@@ -22927,7 +22927,7 @@ initialize {
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "more_svg__cls-2",
+                      "class": "more-outlined_svg__cls-2",
                       "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                       "fill": "currentColor",
                     },
@@ -23486,7 +23486,7 @@ initialize {
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "more_svg__cls-2",
+                        "class": "more-outlined_svg__cls-2",
                         "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                         "fill": "currentColor",
                       },
@@ -28364,7 +28364,7 @@ initialize {
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "more_svg__cls-2",
+                        "class": "more-outlined_svg__cls-2",
                         "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                         "fill": "currentColor",
                       },
@@ -28923,7 +28923,7 @@ initialize {
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "more_svg__cls-2",
+                          "class": "more-outlined_svg__cls-2",
                           "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                           "fill": "currentColor",
                         },
@@ -31625,7 +31625,7 @@ initialize {
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "more_svg__cls-2",
+                          "class": "more-outlined_svg__cls-2",
                           "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                           "fill": "currentColor",
                         },
@@ -32184,7 +32184,7 @@ initialize {
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "more_svg__cls-2",
+                            "class": "more-outlined_svg__cls-2",
                             "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                             "fill": "currentColor",
                           },
@@ -34888,7 +34888,7 @@ initialize {
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "more_svg__cls-2",
+                            "class": "more-outlined_svg__cls-2",
                             "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                             "fill": "currentColor",
                           },
@@ -35447,7 +35447,7 @@ initialize {
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "more_svg__cls-2",
+                              "class": "more-outlined_svg__cls-2",
                               "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                               "fill": "currentColor",
                             },

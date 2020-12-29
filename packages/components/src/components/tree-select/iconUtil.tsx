@@ -1,7 +1,7 @@
 import * as React from 'react';
 import CaretDownOutlined from '@gio-design/icons/es/CaretDownOutlined';
 import CheckOutlined from '@gio-design/icons/es/CheckOutlined';
-import Close from '@gio-design/icons/es/Close';
+import CloseOutlined from '@gio-design/icons/es/CloseOutlined';
 import CloseCircleFilled from '@gio-design/icons/es/CloseCircleFilled';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -52,7 +52,7 @@ export default function getIcons({
   if (removeIcon !== undefined) {
     mergedRemoveIcon = removeIcon;
   } else {
-    mergedRemoveIcon = <Close size="12px" />;
+    mergedRemoveIcon = <CloseOutlined size="12px" />;
   }
 
   return {
