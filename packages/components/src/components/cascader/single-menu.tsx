@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import groupBy from 'lodash/groupBy';
 import isEmpty from 'lodash/isEmpty';
@@ -8,31 +8,14 @@ import trim from 'lodash/trim';
 import useMergeRef from '../../utils/hooks/useMergeRef';
 import { dataFilter, makeSearchParttern, mergeKeyMapping, toInt, withPrefix } from './helper';
 import Empty from './empty';
-import MenuItem, { Props as MenuItemProps, NodeData } from './menu-item';
-
-type MaybeElementOrFn = React.ReactNode | ((dataSource: NodeData[]) => React.ReactNode);
+import MenuItem from './menu-item';
+import { MenuProps, MaybeElementOrFn, NodeData } from './interface';
 
 const getMayBeElement = (maybeElement: MaybeElementOrFn, dataSource: NodeData[]) => {
   return isFunction(maybeElement) ? maybeElement(dataSource) : maybeElement;
 };
 
-export interface Props extends Omit<MenuItemProps, 'dataSource' | 'hasChild' | 'expanded'> {
-  dataSource?: NodeData[];
-  onRender?: (nodeData: NodeData) => ReactElement;
-  open?: boolean;
-  depth?: number;
-  header?: MaybeElementOrFn;
-  footer?: MaybeElementOrFn;
-  offsetLeft?: number;
-  offsetTop?: number;
-  getEmpty?: (keyword?: string) => React.ReactElement;
-  groupName?: boolean | MaybeElementOrFn;
-  parentMenu?: HTMLDivElement;
-  expandedId?: NodeData['value'];
-  autoFocus?: boolean;
-}
-
-const SingleMenu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
+const SingleMenu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   const {
     className,
     style = {},

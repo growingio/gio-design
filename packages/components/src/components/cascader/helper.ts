@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
 import findIndex from 'lodash/findIndex';
 
-import { NodeData, KeyMapping } from './menu-item';
+import { NodeData, KeyMapping } from './interface';
 
 /**
  * 以分割符组合 前缀、后缀
