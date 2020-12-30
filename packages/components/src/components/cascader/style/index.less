@@ -9,7 +9,6 @@
     display: inline-flex;
 
     input.@{input-cls}-content {
-      // min-width: 250px;
       cursor: pointer;
     }
 
@@ -25,8 +24,6 @@
   }
 
   &-dropdown {
-    position: relative;
-
     .@{dropdown-cls} {
       &-content {
         background: transparent !important;
@@ -81,14 +78,23 @@
 
   &-group {
     &-name {
-      padding: 6px 12px 0 12px;
+      position: relative;
+      margin: 6px 12px 0 12px;
+      padding-top: 6px;
       color: #999;
       font-size: 12px;
     }
 
-    &:not(:last-child) {
-      .cascader-menu-item:last-child .cascader-menu-item-content {
-        border-bottom: 1px solid #dce0f2;
+    &:not(:first-child) {
+      .cascader-menu-group-name {
+        &::after {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          border-bottom: 1px solid #dce0f2;
+          content: '';
+        }
       }
     }
   }
@@ -135,10 +141,22 @@
   &-item {
     outline: none;
 
+    &[data-checked='true'] {
+      > .cascader-menu-item-inner {
+        background: #f7f8fc;
+
+        .cascader-menu-item-content {
+          cursor: default;
+        }
+      }
+    }
+
     &-inner {
+      border-radius: 4px;
+
       &:hover {
         color: #1248e9;
-        background-color: #f7f8fc;
+        background-color: #ebedf5;
         border-radius: 4px;
       }
 
