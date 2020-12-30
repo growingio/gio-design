@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Tree from '@gio-design/components/es/components/tree';
 import '@gio-design/components/es/components/tree/style/css.js';
-import { Setting } from '@gio-design/icons';
+import { SettingFilled } from '@gio-design/icons';
 import './index.less';
 
 const treeData = [
@@ -57,7 +57,7 @@ const Demo: React.FC<{}> = () => {
   const titleContent = (title: any) => (
     <>
       {title}
-      <Setting className="title-icon" />
+      <SettingFilled className="title-icon" />
     </>
   );
 

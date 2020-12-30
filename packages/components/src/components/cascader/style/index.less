@@ -77,25 +77,24 @@
   }
 
   &-group {
+    position: relative;
+    padding: 6px 0;
     &-name {
       position: relative;
       margin: 6px 12px 0 12px;
-      padding-top: 6px;
       color: #999;
       font-size: 12px;
     }
 
-    &:not(:first-child) {
-      .cascader-menu-group-name {
-        &::after {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          border-bottom: 1px solid #dce0f2;
-          content: '';
-        }
-      }
+    &:not(:first-child)::before {
+      position: absolute;
+      top: 0;
+      left: 15px;
+      display: inline-block;
+      width: calc(100% - 30px);
+      height: 0;
+      border-top: 1px solid #dce0f2;
+      content: '';
     }
   }
 

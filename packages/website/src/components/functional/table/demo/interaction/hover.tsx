@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Button } from '@gio-design/components';
 import '@gio-design/components/es/components/table/style/index.css';
 import { concat } from 'lodash';
-import { More } from '@gio-design/icons';
+import { MoreOutlined } from '@gio-design/icons';
 
 const dataSource = [
   {
@@ -42,7 +42,7 @@ export default () => {
     title: '操作',
     key: 'operate',
     align: 'center',
-    render: () => <Button type="assist" icon={<More />} />,
+    render: () => <Button type="assist" icon={<MoreOutlined />} />,
   });
   return (
     <>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from '@gio-design/components';
 import '@gio-design/components/es/components/table/style/index.css';
 import { concat } from 'lodash';
-import { More } from '@gio-design/icons';
+import { MoreOutlined } from '@gio-design/icons';
 
 const dataSource = [
   {
@@ -43,7 +43,7 @@ export default () => {
     width: 50,
     key: 'operate',
     align: 'center',
-    render: () => <More />,
+    render: () => <MoreOutlined />,
   });
   return (
     <>
