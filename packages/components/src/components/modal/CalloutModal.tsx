@@ -37,6 +37,7 @@ const CalloutModal: React.FC<ICalloutModalProps> = ({
 
   const handleExecResult = (execResult: void | PromiseLike<any>) => {
     if (!execResult || !execResult.then) {
+      calloutClose();
       return;
     }
 
