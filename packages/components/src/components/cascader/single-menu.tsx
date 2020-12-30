@@ -87,29 +87,28 @@ const SingleMenu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   if (isEmpty(dataSource) && isRootMenu) {
     menu = getEmpty ? getEmpty(keyword) : <Empty tip={keyword ? '无搜索结果' : undefined} />;
   } else {
-    menu = Object.keys(groupData).map((groupId) => (
-      <div key={groupId} className={withWrapperCls('group')}>
-        {groupName && (
-          <div className={withWrapperCls('group-name')}>
-            {groupName === true ? groupData[groupId][0].groupName : getMayBeElement(groupName, groupData[groupId])}
-          </div>
-        )}
-        {groupData[groupId].map((data, i) => (
-          <MenuItem
-            key={[depth, i].join('-')}
-            value={value}
-            keyword={keyword}
-            dataSource={data}
-            parentsData={parentsData}
-            deepSearch={deepSearch}
-            keyMapping={keyMapping}
-            ignoreCase={ignoreCase}
-            expanded={expandedId === data[keyMapping.value]}
-            {...others}
-          />
-        ))}
-      </div>
-    ));
+    menu = Object.keys(groupData).map((groupId) => {
+      const mergedGroupName = isFunction(groupName) ? groupName(groupId[0]) : groupData[groupId][0].groupName;
+      return (
+        <div key={groupId} className={withWrapperCls('group')}>
+          {groupName && mergedGroupName && <div className={withWrapperCls('group-name')}>{mergedGroupName}</div>}
+          {groupData[groupId].map((data, i) => (
+            <MenuItem
+              key={[depth, i].join('-')}
+              value={value}
+              keyword={keyword}
+              dataSource={data}
+              parentsData={parentsData}
+              deepSearch={deepSearch}
+              keyMapping={keyMapping}
+              ignoreCase={ignoreCase}
+              expanded={expandedId === data[keyMapping.value]}
+              {...others}
+            />
+          ))}
+        </div>
+      );
+    });
   }
 
   return (

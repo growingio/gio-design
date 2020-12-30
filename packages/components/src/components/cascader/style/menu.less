@@ -41,24 +41,25 @@
   }
 
   &-group {
-    position: relative;
-    padding: 6px 0;
     &-name {
       position: -webkit-sticky;
       position: sticky;
       top: 0;
-      margin: 6px 12px 0 12px;
+      margin-top: 6px;
+      padding: 0 12px;
       color: #999;
       font-size: 12px;
+      background: #fff;
     }
 
     &:not(:first-child)::before {
-      position: absolute;
+      position: relative;
       top: 0;
       left: 15px;
-      display: inline-block;
+      display: block;
       width: calc(100% - 30px);
       height: 0;
+      margin: 6px 0;
       border-top: 1px solid #dce0f2;
       content: '';
     }
@@ -106,7 +107,8 @@
   &-item {
     outline: none;
 
-    &[data-checked='true'] {
+    &[data-checked='true'],
+    &[aria-expanded='true'] {
       > .cascader-menu-item-inner {
         background: #f7f8fc;
 
