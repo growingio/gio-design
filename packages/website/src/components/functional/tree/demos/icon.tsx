@@ -1,14 +1,14 @@
 import React from 'react';
 import Tree from '@gio-design/components/es/components/tree';
 import '@gio-design/components/es/components/tree/style/css.js';
-import { AppOutlined, Setting, CheckOutlined } from '@gio-design/icons';
+import { AppOutlined, SettingFilled, CheckOutlined } from '@gio-design/icons';
 import './index.less';
 
 const treeData = [
   {
     title: '产研团队',
     key: '0-0',
-    icon: <Setting />,
+    icon: <SettingFilled />,
     children: [
       {
         title: '服务端',

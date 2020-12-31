@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Dropdown, List } from '@gio-design/components';
-import { More } from '@gio-design/icons';
+import { MoreOutlined } from '@gio-design/icons';
 
 const options = [
   { value: 'a', label: '功能名称' },
@@ -11,6 +11,6 @@ const options = [
 
 export default () => (
   <Dropdown overlay={<List dataSource={options} width={144} height={176} />}>
-    <Button type="assist" icon={<More />} />
+    <Button type="assist" icon={<MoreOutlined />} />
   </Dropdown>
 );
