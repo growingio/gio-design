@@ -9,6 +9,15 @@ nav:
 
 # @gio-design/components 更新日志
 
+## 20.12.6
+
+- Modal [#657](https://github.com/growingio/gio-design/pull/657)
+  - 修复 modal 组件在函数式调用时点击确定按钮 modal 没有关闭的问题
+- cascader [#660](https://github.com/growingio/gio-design/pull/660)
+  - group-name 改为 sticky 样式
+  - aria-expanded 元素高亮
+  - 拆分 less 文件
+
 ## 20.12.5
 
 - Grid
