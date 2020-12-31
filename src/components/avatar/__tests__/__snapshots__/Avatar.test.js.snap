@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Avatar should be stable 1`] = `
+<span
+  className="gio-avatar gio-avatar-df"
+>
+  <span
+    className="gio-avatar-string"
+    style={
+      Object {
+        "transform": "scale(1) translateX(-50%)",
+      }
+    }
+  >
+    快
+  </span>
+</span>
+`;

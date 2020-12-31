@@ -21,15 +21,13 @@ jobs:
         id: cache-node-modules
         uses: actions/cache@v2
         with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Bootstrap
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: yarn bootstrap
+        run: yarn install
   build:
-    name: Build Packages
+    name: Build Package
     needs: install
     runs-on: ubuntu-latest
     steps:
@@ -44,21 +42,16 @@ jobs:
       - name: Restore Node.js modules
         uses: actions/cache@v2
         with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Cache packages
         uses: actions/cache@v2
         with:
           path: |
-            packages/components/dist
-            packages/components/es
-            packages/icons/dist
-            packages/icons/es
-            packages/tokens/dist
+            dist
+            es
           key: packages-${{ github.sha }}
-      - name: Build packages
+      - name: Build package
         run: yarn build
   release:
     name: Create release
@@ -100,58 +93,12 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            packages/components/dist
-            packages/components/es
-            packages/icons/dist
-            packages/icons/es
-            packages/tokens/dist
+            dist
+            es
           key: packages-${{ github.sha }}
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
-          directory: ./packages/components/coverage/
-      - name: Cahce website
-        uses: actions/cache@v2
-        with:
-          path: |
-            packages/website/dist
-          key: website-${{ github.sha }}
-      - name: Build website
-        run: yarn build:website
-  deploy_netlify:
-    name: Deploying website to Netlify
-    needs: other
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore website
-        uses: actions/cache@v2
-        with:
-          path: |
-            packages/website/dist
-          key: website-${{ github.sha }}
-      - name: Deploy
-        uses: netlify/actions/cli@master
-        with:
-          args: deploy --prod --dir ./packages/website/dist
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-
-  deploy_github:
-    name: Deploying website to GitHub Pages
-    needs: other
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore website
-        uses: actions/cache@v2
-        with:
-          path: |
-            packages/website/dist
-          key: website-${{ github.sha }}
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./packages/website/dist
+          directory: ./coverage/

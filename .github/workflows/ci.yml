@@ -31,23 +31,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.2
         with:
-          node-version: 12.x
+          node-version: '14.x'
       - name: Cache Node.js modules
         id: cache-node-modules
         uses: actions/cache@v2
         with:
-          path: |
-            node_modules
-            */*/node_modules
+          path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Bootstrap
+      - name: Install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: yarn bootstrap
+        run: yarn install
   lint:
     name: Lint Checks
     needs: install
@@ -55,18 +51,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.2
         with:
-          node-version: 12.x
+          node-version: '14.x'
       - name: Restore Node.js modules
         uses: actions/cache@v2
         with:
-          path: |
-            node_modules
-            */*/node_modules
+          path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Lint pull request title
         run: echo "${{ github.event.pull_request.title }}" | npx commitlint
@@ -78,34 +70,27 @@ jobs:
       - name: ESLint
         run: yarn lint:components
   build:
-    name: Build Packages
+    name: Build Package
     needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.2
         with:
-          node-version: 12.x
+          node-version: '14.x'
       - name: Restore Node.js modules
         uses: actions/cache@v2
         with:
-          path: |
-            node_modules
-            */*/node_modules
+          path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Cache packages
+      - name: Cache package
         uses: actions/cache@v2
         with:
           path: |
-            packages/components/dist
-            packages/components/es
-            packages/icons/dist
-            packages/icons/es
-            packages/tokens/dist
+            dist
+            es
           key: packages-${{ github.sha }}
       - name: Build
         run: yarn build
@@ -117,32 +102,25 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.2
         with:
-          node-version: 12.x
+          node-version: '14.x'
       - name: Restore Node.js modules
         uses: actions/cache@v2
         with:
-          path: |
-            node_modules
-            */*/node_modules
+          path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Restore packages from cache
+      - name: Restore package from cache
         uses: actions/cache@v2
         with:
           path: |
-            packages/components/dist
-            packages/components/es
-            packages/icons/dist
-            packages/icons/es
-            packages/tokens/dist
+            dist
+            es
           key: packages-${{ github.sha }}
       - name: Test
         run: yarn test --coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
-          directory: ./packages/components/coverage/
+          directory: ./coverage/

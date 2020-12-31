@@ -1,0 +1,160 @@
+@import '../../../stylesheet/index.less';
+
+@loading-prefix-cls: ~'@{component-prefix}-loading';
+
+.@{loading-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  text-align: center;
+
+  &-wrapper-loading {
+    position: relative;
+  }
+
+  &-wrapper-loading > & {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    width: 100%;
+  }
+
+  &-container {
+    position: relative;
+    &-loading {
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    &-loading::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+      content: '';
+    }
+    &-blur-white::after {
+      background-color: @color-background-loading-blur-white;
+    }
+    &-blur-black::after {
+      background-color: @color-background-loading-blur-black;
+    }
+  }
+
+  &-title {
+    color: @color-text-loading;
+    font-size: @size-font-14;
+    &-bottom {
+      display: block;
+      height: 14px;
+      margin-top: 12px;
+    }
+    &-right {
+      display: inline-block;
+      margin-left: 12px;
+      line-height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  &-indicator {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  &-strip {
+    position: relative;
+    display: inline-block;
+    clear: both;
+    vertical-align: bottom;
+    &-item {
+      position: absolute;
+      bottom: 0;
+      display: inline-block;
+    }
+  }
+
+  &-small & {
+    &-strip {
+      width: 21px;
+      height: 20px;
+      &-item {
+        width: 3px;
+        height: 8px;
+        border-radius: 3px;
+        animation: loadingSmall 1.04s ease infinite;
+        .computeLeftAndDelay(6px, 0.13s);
+      }
+    }
+  }
+
+  &-middle & {
+    &-strip {
+      width: 28px;
+      height: 30px;
+      &-item {
+        width: 4px;
+        height: 12px;
+        border-radius: 4px;
+        animation: loadingMiddle 1.04s ease infinite;
+        .computeLeftAndDelay(8px, 0.13s);
+      }
+    }
+  }
+
+  &-large & {
+    &-strip {
+      width: 35px;
+      height: 40px;
+      &-item {
+        width: 5px;
+        height: 16px;
+        border-radius: 5px;
+        animation: loadingLarge 1.04s ease infinite;
+        .computeLeftAndDelay(10px, 0.13s);
+      }
+    }
+  }
+
+  @keyframes loadingSmall {
+    .createLoadingKeyFrames(20px);
+  }
+
+  @keyframes loadingMiddle {
+    .createLoadingKeyFrames(30px);
+  }
+
+  @keyframes loadingLarge {
+    .createLoadingKeyFrames(40px);
+  }
+
+  .createLoadingKeyFrames(@max-height) {
+    0% {
+      background-color: @color-background-loading-animation-0;
+    }
+    50% {
+      height: @max-height;
+    }
+    100% {
+      background-color: @color-background-loading-animation-100;
+    }
+  }
+
+  .computeLeftAndDelay(@left, @delay) {
+    &:nth-child(1) {
+      left: 0;
+    }
+    &:nth-child(2) {
+      left: @left;
+      animation-delay: @delay;
+    }
+    &:nth-child(3) {
+      left: 2 * @left;
+      animation-delay: 2 * @delay;
+    }
+    &:nth-child(4) {
+      left: 3 * @left;
+      animation-delay: 3 * @delay;
+    }
+  }
+}
