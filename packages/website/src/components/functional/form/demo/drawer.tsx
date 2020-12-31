@@ -5,7 +5,7 @@ import './index.less';
 import React, { useState } from 'react';
 
 import { Form, Alert, Drawer, Button, Input } from '@gio-design/components';
-import { Close } from '@gio-design/icons';
+import { CloseOutlined } from '@gio-design/icons';
 
 const { Item, List, useForm } = Form;
 
@@ -95,7 +95,7 @@ export default (): JSX.Element => {
                     afterInput={
                       index > 1 ? (
                         <Button type="assist" onClick={() => remove(field.name)}>
-                          <Close />
+                          <CloseOutlined />
                         </Button>
                       ) : (
                         ''
