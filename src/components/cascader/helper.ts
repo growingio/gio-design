@@ -128,7 +128,12 @@ export const mergeKeyMapping = (keyMapping = {} as { label?: string; value?: str
 /**
  * 根据 value 查找 parentsNode
  */
-export const getParentsByValue = (value: Value, list: NodeData[], parents?: NodeData[]): null | NodeData[] => {
+export const getParentsByValue = (
+  keyMapping: KeyMapping,
+  value: Value,
+  list: NodeData[],
+  parents?: NodeData[]
+): null | NodeData[] => {
   if (!value) {
     return [];
   }
@@ -136,13 +141,13 @@ export const getParentsByValue = (value: Value, list: NodeData[], parents?: Node
   for (let i = 0; i < length; i += 1) {
     const mergedParents = parents || [];
     const item = list[i];
-    if (item.id === value) {
+    if (item[keyMapping.value as string] === value) {
       mergedParents.push(item);
       return mergedParents;
     }
     if (Array.isArray(item.children)) {
       mergedParents.push(item);
-      const target = getParentsByValue(value, item.children, mergedParents);
+      const target = getParentsByValue(keyMapping, value, item.children, mergedParents);
       if (target) {
         return target;
       }

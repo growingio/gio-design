@@ -3,7 +3,15 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
 import { MenuItemProps, NodeData, MenuProps } from './interface';
-import { dataKeyMapping, getParentsByValue, toInt, useDynamicData, useKeyboardNav, withPrefix } from './helper';
+import {
+  dataKeyMapping,
+  getParentsByValue,
+  mergeKeyMapping,
+  toInt,
+  useDynamicData,
+  useKeyboardNav,
+  withPrefix,
+} from './helper';
 import SingleMenu from './single-menu';
 import useMergeRef from '../../utils/hooks/useMergeRef';
 
@@ -23,7 +31,7 @@ const InnerMenu: React.FC<Props> = (props) => {
     offsetLeft: userOffsetLeft = 5,
     offsetTop: userOffsetTop = 0,
   } = props;
-  const keyMapping = { label: 'label', value: 'value', ...originKeyMapping };
+  const keyMapping = mergeKeyMapping(originKeyMapping);
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
   const wrapRef = useRef<HTMLDivElement>((null as unknown) as HTMLDivElement);
   const withWrapperCls = withPrefix('cascader-menu');
@@ -122,9 +130,11 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     dataSource,
     value,
     parentsData: userParentsData,
+    keyMapping: originKeyMapping,
     ...others
   } = props;
   const wrapRef = useMergeRef(ref);
+  const keyMapping = mergeKeyMapping(originKeyMapping);
   const [canOpen, setCanOpen] = useState(open);
   const [inited, setInited] = useState(false);
   const [parentsData, setParentsData] = useDynamicData(userParentsData);
@@ -151,10 +161,10 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
 
   useEffect(() => {
     if (autoInit && !inited && value && !isEmpty(dataSource)) {
-      setParentsData(getParentsByValue(value, dataSource as NodeData[]) || ([] as NodeData[]));
+      setParentsData(getParentsByValue(keyMapping, value, dataSource as NodeData[]) || ([] as NodeData[]));
       setInited(true);
     }
-  }, [autoInit, inited, value, dataSource, setParentsData]);
+  }, [autoInit, inited, keyMapping, value, dataSource, setParentsData]);
 
   return (
     <div ref={wrapRef} className={classNames('cascader-menu-outer', className)} style={style}>
