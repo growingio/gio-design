@@ -1,0 +1,69 @@
+@import '../../../stylesheet/index.less';
+@import '../../../stylesheet/mixin/trigger.less';
+
+@tooltip-prefix-cls: ~'@{component-prefix}-tooltip';
+@link-prefix-cls: ~'@{component-prefix}-link';
+
+@tooltip-distance: 6px;
+@tooltip-arrow-width: 12px;
+@tooltip-arrow-offset: 14px;
+@tooltip-duration: 0.5s;
+
+.@{tooltip-prefix-cls} {
+  position: absolute;
+  z-index: @zindex-tooltip;
+  max-width: 500px;
+
+  &-hidden {
+    display: none;
+  }
+
+  &-content {
+    position: relative;
+  }
+
+  &-inner {
+    display: inline-block;
+    min-width: 40px;
+    padding: 8px 16px;
+    color: @color-text-tooltip;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-align: left;
+    text-decoration: none;
+    word-wrap: break-word;
+    background-color: @color-background-tooltip;
+    border-radius: 4px;
+    &-title {
+      vertical-align: middle;
+      word-break: break-word;
+    }
+    .@{link-prefix-cls} {
+      color: @color-text-tooltip;
+    }
+  }
+
+  &-arrow {
+    position: absolute;
+    display: block;
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+    &-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      margin: auto;
+      border: @tooltip-arrow-width / 2 solid;
+      pointer-events: auto;
+    }
+  }
+  .trigger-placement(@tooltip-prefix-cls, @color-background-tooltip, @tooltip-arrow-width, @tooltip-distance, @tooltip-arrow-offset);
+}
+
+.trigger-transition(@tooltip-prefix-cls, @tooltip-duration);

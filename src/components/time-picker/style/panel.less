@@ -1,0 +1,28 @@
+@import '../../../stylesheet/index.less';
+@prefixClass: ~'@{component-prefix}-time-picker';
+
+.@{prefixClass}-panel {
+  position: absolute;
+  z-index: 1070;
+  box-sizing: border-box;
+  // width: 170px;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &-inner {
+    position: relative;
+    display: inline-block;
+    font-size: @size-font-12;
+    line-height: 1.5;
+    text-align: left;
+    list-style: none;
+    background-color: @palette-white;
+    background-clip: padding-box;
+    // border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: 0 1px 5px #ccc;
+  }
+}

@@ -1,46 +1,40 @@
 # @gio-design/components
-/packages/components/src/components/alert @Danny548326
-/packages/components/src/components/avatar @LEEHONCN
-/packages/components/src/components/banner @itiiss
-/packages/components/src/components/breadcrumb @berber1016
-/packages/components/src/components/button @huskylengcb
-/packages/components/src/components/cascader @iahu
-/packages/components/src/components/checkbox @berber1016
-/packages/components/src/components/config-provider
-/packages/components/src/components/date-picker @itiiss
-/packages/components/src/components/drawer @Danny548326
-/packages/components/src/components/dropdown @itiiss
-/packages/components/src/components/form @iahu
-/packages/components/src/components/grid @iahu
-/packages/components/src/components/input @HunterGitHub
-/packages/components/src/components/link @berber1016
-/packages/components/src/components/list @gh2049
-/packages/components/src/components/loading
-/packages/components/src/components/menu @Danny548326
-/packages/components/src/components/modal @phyzess
-/packages/components/src/components/pagination @LEEHONCN
-/packages/components/src/components/popconfirm
-/packages/components/src/components/popover
-/packages/components/src/components/progress @zzt1224
-/packages/components/src/components/radio @phyzess
-/packages/components/src/components/search-bar @HunterGitHub
-/packages/components/src/components/select @zzt1224
-/packages/components/src/components/sign
-/packages/components/src/components/skeleton
-/packages/components/src/components/tab-nav
-/packages/components/src/components/table @LEEHONCN
-/packages/components/src/components/tabs
-/packages/components/src/components/tag @zzt1224
-/packages/components/src/components/time-picker @gh2049
-/packages/components/src/components/toast @HunterGitHub
-/packages/components/src/components/toggles
-/packages/components/src/components/tooltip
-/packages/components/src/components/tree-select @huskylengcb
-/packages/components/src/components/tree @huskylengcb
-/packages/components/src/components/upload @phyzess
-
-# @gio-design/icons
-/packages/icons @jack0pan
-
-# @gio-design/tokens
-/packages/tokens @jack0pan
+/src/components/alert @Danny548326
+/src/components/avatar @LEEHONCN
+/src/components/banner @itiiss
+/src/components/breadcrumb @berber1016
+/src/components/button @huskylengcb
+/src/components/cascader @iahu
+/src/components/checkbox @berber1016
+/src/components/config-provider
+/src/components/date-picker @itiiss
+/src/components/drawer @Danny548326
+/src/components/dropdown @itiiss
+/src/components/form @iahu
+/src/components/grid @iahu
+/src/components/input @jack0pan
+/src/components/link @berber1016
+/src/components/list @gh2049
+/src/components/loading
+/src/components/menu @Danny548326
+/src/components/modal @phyzess
+/src/components/pagination @LEEHONCN
+/src/components/popconfirm
+/src/components/popover
+/src/components/progress @zzt1224
+/src/components/radio @phyzess
+/src/components/search-bar @jack0pan
+/src/components/select @zzt1224
+/src/components/sign
+/src/components/skeleton
+/src/components/tab-nav
+/src/components/table @LEEHONCN
+/src/components/tabs
+/src/components/tag @zzt1224
+/src/components/time-picker @gh2049
+/src/components/toast @jack0pan
+/src/components/toggles
+/src/components/tooltip
+/src/components/tree-select @huskylengcb
+/src/components/tree @huskylengcb
+/src/components/upload @phyzess

@@ -1,0 +1,145 @@
+@import '../../../stylesheet/index.less';
+
+@import './mixin';
+
+@btn-prefix-cls: ~'@{component-prefix}-btn';
+@iconfont-css-prefix: gio-icon;
+
+@btn-height-lg: @size-field-large;
+@btn-height-sm: @size-field-small;
+@btn-height-base: @size-field-normal;
+@btn-square-size: @btn-height-base;
+@btn-square-size-lg: @btn-height-lg;
+@btn-square-size-sm: @btn-height-sm;
+@btn-square-size-mini: @size-field-mini;
+
+// for compatible
+// @btn-assist-color: @text-color-base;
+// @btn-assist-bg: none;
+// @btn-assist-border: none;
+
+// Button styles
+// -----------------------------
+.@{btn-prefix-cls} {
+  line-height: 1.5715;
+
+  .btn;
+
+  > span {
+    display: inline-block;
+  }
+
+  &-primary {
+    .btn-primary;
+  }
+
+  &-secondary {
+    .btn-secondary;
+  }
+
+  &-assist {
+    .btn-assist;
+  }
+
+  &-text {
+    .btn-text;
+  }
+
+  &::before {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    z-index: 1;
+    display: none;
+    border-radius: inherit;
+    opacity: 0.35;
+    transition: opacity 0.2s;
+    content: '';
+    pointer-events: none;
+  }
+
+  .@{iconfont-css-prefix} {
+    transition: margin-left 0.3s @ease-in-out;
+    &.@{iconfont-css-prefix}-plus,
+    &.@{iconfont-css-prefix}-minus {
+      > svg {
+        shape-rendering: optimizeSpeed;
+      }
+    }
+  }
+
+  &&-loading {
+    position: relative;
+    &:not([disabled]) {
+      pointer-events: none;
+    }
+
+    &::before {
+      display: block;
+    }
+  }
+
+  & > &-loading-icon {
+    height: 16px;
+    margin-right: @margin-xs;
+    &:only-child {
+      margin-right: 0;
+    }
+  }
+
+  &-icon-only {
+    .btn-square(@btn-prefix-cls);
+    padding: 7px !important;
+    &.@{btn-prefix-cls}-mini {
+      padding: 4px !important;
+    }
+    .@{iconfont-css-prefix} {
+      line-height: 0;
+      vertical-align: unset;
+      svg {
+        vertical-align: bottom !important;
+      }
+    }
+    &.@{btn-prefix-cls}-assist {
+      padding: 8px !important;
+      &.@{btn-prefix-cls}-mini {
+        padding: 5px !important;
+      }
+    }
+  }
+
+  &:focus > span,
+  &:active > span {
+    position: relative;
+  }
+
+  > .@{iconfont-css-prefix} + span,
+  > span + .@{iconfont-css-prefix} {
+    margin-left: @margin-xs;
+  }
+
+  &-background-ghost {
+    color: @color-text-button-default-ghost;
+    background: transparent !important;
+    border-color: transparent;
+    svg {
+      color: @color-text-button-default-ghost;
+      path {
+        fill: @color-text-button-default-ghost;
+      }
+    }
+  }
+
+  &-block {
+    width: 100%;
+  }
+
+  &:empty {
+    display: inline-block;
+    width: 0;
+    visibility: hidden;
+    content: '\a0';
+  }
+}

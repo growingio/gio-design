@@ -1,0 +1,60 @@
+@import '../../../stylesheet/index.less';
+@import '../../../stylesheet/mixin/animation.less';
+
+@modal-prefix-cls: ~'@{component-prefix}-modal';
+@modal-small: ~'@{modal-prefix-cls}--small';
+@modal-middle: ~'@{modal-prefix-cls}--middle';
+@modal-full: ~'@{modal-prefix-cls}--full';
+@modal-callout: ~'@{modal-prefix-cls}-callout';
+@btn-cls: ~'@{component-prefix}-btn';
+
+@modal-radius: 8px;
+
+.btn-style() {
+  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: #5c4e61;
+  background-color: @palette-gray-1;
+  border: 0;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+}
+
+.full-screen-modal() {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+
+  .@{modal-prefix-cls} {
+    &-content {
+      height: 100%;
+      max-height: none;
+    }
+
+    &-body {
+      flex: 1;
+    }
+
+    &-header,
+    &-footer {
+      flex-shrink: 0;
+    }
+  }
+}
+
+.effect() {
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+}
+
+.fade-effect() {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
