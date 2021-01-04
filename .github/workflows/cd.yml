@@ -6,17 +6,14 @@ on:
 jobs:
   install:
     name: Install dependencies
-    if: ${{ !(startsWith(github.event.head_commit.message, 'chore') || startsWith(github.event.head_commit.message, 'style')) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.4
         with:
-          node-version: 12.x
+          node-version: 14.x
       - name: Cache Node.js modules
         id: cache-node-modules
         uses: actions/cache@v2
@@ -26,6 +23,50 @@ jobs:
       - name: Install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install
+  lint:
+    name: Lint Checks
+    needs: install
+    if: ${{ !startsWith(github.event.head_commit.message, 'docs') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14.x
+      - name: Restore Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: StyleLint
+        run: yarn stylelint
+      - name: ESLint
+        run: yarn eslint
+  test:
+    name: Test Coverage
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14.x
+      - name: Restore Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Test
+        run: yarn test --coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: coverage/
   build:
     name: Build Package
     needs: install
@@ -38,67 +79,55 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.4
         with:
-          node-version: 12.x
+          node-version: 14.x
       - name: Restore Node.js modules
         uses: actions/cache@v2
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Cache packages
+      - name: Cache package
         uses: actions/cache@v2
         with:
           path: |
             dist
             es
-          key: packages-${{ github.sha }}
+          key: package-${{ github.sha }}
       - name: Build package
         run: yarn build
-  release:
-    name: Create release
-    if: ${{ startsWith(github.event.head_commit.message, 'docs(release)') }}
+  publish-package:
+    name: Publish package
     needs: build
+    if: ${{ startsWith(github.event.head_commit.message, 'docs(release)') }}
     runs-on: ubuntu-latest
     steps:
-      - name: Create release
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14.x
+          registry-url: 'https://registry.npmjs.org'
+      - name: Restore package from cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            dist
+            es
+          key: package-${{ github.sha }}
+      - name: Publish package
+        run: yarn publish --non-interactive --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Get package version
+        id: get-package-version
+        run: echo "::set-output name=version::$(node script/version.js)"
+      - name: Publish GitHub release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: gio-design@${{ github.ref }}
-          body: ${{ github.event.head_commit.message }}
-          draft: true
+          tag_name: v${{ steps.get-package-version.outputs.version }}
+          release_name: v${{ steps.get-package-version.outputs.version }}
+          body_path: VERSION.md
+          draft: false
           prerelease: false
-  other:
-    name: Upload test coverage and build website
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.1.4
-        with:
-          node-version: 12.x
-      - name: Restore Node.js modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Restore packages from cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            dist
-            es
-          key: packages-${{ github.sha }}
-      - name: Test
-        run: yarn test --coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          directory: ./coverage/
