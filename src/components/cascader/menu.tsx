@@ -150,8 +150,8 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   }, [wrapRef]);
 
   useEffect(() => {
-    if (autoInit && !inited) {
-      setParentsData(getParentsByValue(value, dataSource));
+    if (autoInit && !inited && value && !isEmpty(dataSource)) {
+      setParentsData(getParentsByValue(value, dataSource as NodeData[]) || ([] as NodeData[]));
       setInited(true);
     }
   }, [autoInit, inited, value, dataSource, setParentsData]);
