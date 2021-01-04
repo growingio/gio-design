@@ -42,8 +42,8 @@ export interface MenuItemProps {
   onFocus?: (event: React.FocusEvent) => void;
   onBlur?: (event: React.FocusEvent) => void;
   onMouseLeave?: (event: React.MouseEvent) => void;
-  onRender?: (nodeData: NodeData) => React.ReactElement;
-  afterInner?: (nodeData: NodeData) => React.ReactNode;
+  onRender?: (nodeData: NodeData, parentsData: NodeData[]) => React.ReactElement;
+  afterInner?: (nodeData: NodeData, parentsData: NodeData[]) => React.ReactNode;
 }
 
 export type MaybeElementOrFn = React.ReactNode | ((dataSource: NodeData[]) => React.ReactNode);
@@ -62,6 +62,7 @@ export interface MenuProps extends Omit<MenuItemProps, 'dataSource' | 'hasChild'
   parentMenu?: HTMLDivElement;
   expandedId?: NodeData['value'];
   autoFocus?: boolean;
+  autoInit?: boolean;
 }
 
 export interface Props extends MenuProps {

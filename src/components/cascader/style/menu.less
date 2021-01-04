@@ -108,7 +108,7 @@
     outline: none;
 
     &[data-checked='true'],
-    &[aria-expanded='true'] {
+    &[data-child-checked='true'] {
       > .cascader-menu-item-inner {
         background: #f7f8fc;
 
@@ -129,6 +129,14 @@
 
       &:not(:focus-visible) {
         outline: none;
+      }
+    }
+
+    &[aria-expanded='true'] {
+      > .cascader-menu-item-inner {
+        color: #1248e9;
+        background-color: #ebedf5;
+        border-radius: 4px;
       }
     }
 

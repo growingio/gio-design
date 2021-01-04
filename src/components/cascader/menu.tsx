@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
 import { MenuItemProps, NodeData, MenuProps } from './interface';
-import { dataKeyMapping, toInt, useDynamicData, useKeyboardNav, withPrefix } from './helper';
+import { dataKeyMapping, getParentsByValue, toInt, useDynamicData, useKeyboardNav, withPrefix } from './helper';
 import SingleMenu from './single-menu';
 import useMergeRef from '../../utils/hooks/useMergeRef';
 
@@ -113,9 +113,21 @@ const InnerMenu: React.FC<Props> = (props) => {
 };
 
 const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
-  const { className, style, open, onTrigger, ...others } = props;
+  const {
+    className,
+    style,
+    autoInit = true,
+    open,
+    onTrigger,
+    dataSource,
+    value,
+    parentsData: userParentsData,
+    ...others
+  } = props;
   const wrapRef = useMergeRef(ref);
   const [canOpen, setCanOpen] = useState(open);
+  const [inited, setInited] = useState(false);
+  const [parentsData, setParentsData] = useDynamicData(userParentsData);
   const handleTrigger: typeof onTrigger = (a, b) => {
     setCanOpen(true);
     onTrigger?.(a, b);
@@ -137,9 +149,23 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     };
   }, [wrapRef]);
 
+  useEffect(() => {
+    if (autoInit && !inited) {
+      setParentsData(getParentsByValue(value, dataSource));
+      setInited(true);
+    }
+  }, [autoInit, inited, value, dataSource, setParentsData]);
+
   return (
     <div ref={wrapRef} className={classNames('cascader-menu-outer', className)} style={style}>
-      <InnerMenu {...others} open={canOpen} onTrigger={handleTrigger} />
+      <InnerMenu
+        {...others}
+        open={canOpen}
+        onTrigger={handleTrigger}
+        dataSource={dataSource}
+        value={value}
+        parentsData={parentsData}
+      />
     </div>
   );
 });

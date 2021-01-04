@@ -1,5 +1,5 @@
 import { CheckOutlined, DownFilled } from '@gio-design/icons';
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
@@ -146,6 +146,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       ? !isEmpty(dataFilter(dataSource.children, parttern, deepSearch, keyMapping.label))
       : !noChild;
   const checked = value === dataValue && (selectAny || !mergedHasChild);
+  const childChecked = parentsData?.some((p) => p[keyMapping.value] === dataValue);
 
   let childNode = (
     <div className={withWrapperCls('content')}>
@@ -159,7 +160,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     </div>
   );
   if (isFunction(onRender)) {
-    childNode = onRender(dataSource);
+    childNode = onRender(dataSource, parentsData);
   }
 
   return (
@@ -170,6 +171,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       ref={ref}
       style={style}
       data-checked={checked}
+      data-child-checked={childChecked}
     >
       <div
         className={withWrapperCls('inner')}
@@ -189,7 +191,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         {childNode}
       </div>
 
-      {isFunction(afterInner) ? afterInner(dataSource) : afterInner}
+      {isFunction(afterInner) ? afterInner(dataSource, parentsData) : afterInner}
     </div>
   );
 });
