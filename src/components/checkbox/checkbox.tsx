@@ -30,7 +30,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       if (onChange) onChange(e);
       checkGroup?.toggleOption?.({ label: children, value: restProps.value });
     },
-    [onChange]
+    [onChange,check]
   );
 
   const prefixCls = usePrefixCls('checkbox', customizePrefixCls);
@@ -63,9 +63,9 @@ const Checkbox: React.FC<CheckboxProps> = ({
   const checkboxIconClass = classNames({
     [`${prefixCls}-icon`]: true,
     [`${prefixCls}-icon-indeterminate`]: indeterminate,
-    [`${prefixCls}-icon-cool`]: !(checkProps.disabled || checkProps.checked || check || checkProps.indeterminate),
+    [`${prefixCls}-icon-cool`]: !(checkProps.disabled || checkProps.checked || checkProps.indeterminate),
     [`${prefixCls}-icon-disabled`]: checkProps.disabled,
-    [`${prefixCls}-icon-checked`]: check || checkProps.checked,
+    [`${prefixCls}-icon-checked`]: checkProps.checked !== undefined ? checkProps.checked : check,
   });
 
   return (
