@@ -12,7 +12,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.4
         with:
-          node-version: '14.x'
+          node-version: 14
       - name: Cache Node.js modules
         id: cache-node-modules
         uses: actions/cache@v2
@@ -32,7 +32,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.4
         with:
-          node-version: '14.x'
+          node-version: 14
       - name: Restore Node.js modules
         uses: actions/cache@v2
         with:
@@ -44,32 +44,29 @@ jobs:
         if: ${{ github.event.pull_request.commits > 3 }}
         run: echo "::error::The commits of pull request should not be more than 3 && exit 1"
       - name: StyleLint
-        run: yarn lint:style
+        run: yarn stylelint
       - name: ESLint
-        run: yarn lint:components
+        run: yarn eslint
   build:
     name: Build Package
     needs: install
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node_version: [10, 12, 14]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.4
         with:
-          node-version: '14.x'
+          node-version: ${{ matrix.node_version }}
       - name: Restore Node.js modules
         uses: actions/cache@v2
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Cache package
-        uses: actions/cache@v2
-        with:
-          path: |
-            dist
-            es
-          key: packages-${{ github.sha }}
       - name: Build
         run: yarn build
   test:
@@ -83,7 +80,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2.1.4
         with:
-          node-version: '14.x'
+          node-version: 14
       - name: Restore Node.js modules
         uses: actions/cache@v2
         with:
