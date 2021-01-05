@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
 import findIndex from 'lodash/findIndex';
 
-import { NodeData, KeyMapping } from './interface';
+import { NodeData, KeyMapping, Value } from './interface';
 
 /**
  * 以分割符组合 前缀、后缀
@@ -124,3 +124,34 @@ export const mergeKeyMapping = (keyMapping = {} as { label?: string; value?: str
   value: 'value',
   ...keyMapping,
 });
+
+/**
+ * 根据 value 查找 parentsNode
+ */
+export const getParentsByValue = (
+  keyMapping: KeyMapping,
+  value: Value,
+  list: NodeData[],
+  parents?: NodeData[]
+): null | NodeData[] => {
+  if (!value) {
+    return [];
+  }
+  const { length } = list;
+  for (let i = 0; i < length; i += 1) {
+    const mergedParents = parents || [];
+    const item = list[i];
+    if (item[keyMapping.value as string] === value) {
+      mergedParents.push(item);
+      return mergedParents;
+    }
+    if (Array.isArray(item.children)) {
+      mergedParents.push(item);
+      const target = getParentsByValue(keyMapping, value, item.children, mergedParents);
+      if (target) {
+        return target;
+      }
+    }
+  }
+  return null;
+};
