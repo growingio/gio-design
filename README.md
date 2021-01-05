@@ -2,13 +2,14 @@
 
 一套 React UI 组件库和 GrowingIO 设计系统。
 
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 ![CodeQL Analysis](https://github.com/growingio/gio-design/workflows/CodeQL%20Analysis/badge.svg)
 ![Continuous Deployment](https://github.com/growingio/gio-design/workflows/Continuous%20Deployment/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/growingio/gio-design/branch/master/graph/badge.svg?token=9KSBW04X3Z)](https://codecov.io/gh/growingio/gio-design)
 ![NPM Downloads of Month](https://img.shields.io/npm/dm/@gio-design/components)
 ![NPM Version](https://img.shields.io/npm/v/@gio-design/components)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fgrowingio%2Fgio-design.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fgrowingio%2Fgio-design?ref=badge_shield)
-![GitHub](https://img.shields.io/github/license/growingio/gio-design)
+![License](https://img.shields.io/github/license/growingio/gio-design)
 
 ## Getting Started
 
