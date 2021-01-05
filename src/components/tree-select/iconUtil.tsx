@@ -24,7 +24,7 @@ export default function getIcons({
   // Clear Icon
   let mergedClearIcon = clearIcon;
   if (!clearIcon) {
-    mergedClearIcon = <CloseCircleFilled size="12px" />;
+    mergedClearIcon = <CloseCircleFilled size="16px" />;
   }
 
   // Arrow item icon
@@ -34,7 +34,7 @@ export default function getIcons({
   } else {
     const iconCls = `${prefixCls}-suffix`;
     mergedSuffixIcon = () => {
-      return <CaretDownOutlined className={iconCls} size="12px" />;
+      return <CaretDownOutlined className={iconCls} size="16px" />;
     };
   }
 
@@ -43,7 +43,7 @@ export default function getIcons({
   if (menuItemSelectedIcon !== undefined) {
     mergedItemIcon = menuItemSelectedIcon;
   } else if (multiple) {
-    mergedItemIcon = <CheckOutlined size="12px" />;
+    mergedItemIcon = <CheckOutlined size="16px" />;
   } else {
     mergedItemIcon = null;
   }
@@ -52,7 +52,7 @@ export default function getIcons({
   if (removeIcon !== undefined) {
     mergedRemoveIcon = removeIcon;
   } else {
-    mergedRemoveIcon = <CloseOutlined size="12px" />;
+    mergedRemoveIcon = <CloseOutlined size="16px" />;
   }
 
   return {
