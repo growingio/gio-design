@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/components",
-  "version": "20.12.6",
+  "version": "21.1.0",
   "description": "GrowingIO Design components",
   "repository": "https://github.com/growingio/gio-design.git",
   "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
@@ -17,7 +17,7 @@
     "build": "gio-rewire lib compile",
     "build-sotrybook": "build-storybook -s public",
     "eslint": "eslint src --ext .ts,.tsx",
-    "gen-changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "gen-changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "gen-version": "conventional-changelog -p angular > VERSION.md",
     "postversion": "yarn gen-version && yarn gen-changelog",
     "preversion": "git fetch --tags",
