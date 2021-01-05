@@ -1,19 +1,89 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0'
-
-import Loading from './index'
-import { LoadingProps } from './interface'
-import './style'
+import { Story, Meta } from '@storybook/react/types-6-0';
+import { LoadingOutlined } from '@gio-design/icons';
+import Docs from './Loading.mdx';
+import Loading from './index';
+import Button from '../button';
+import Tabs, { TabPane } from '../tabs';
+import { LoadingProps } from './interface';
+import './style';
 
 export default {
-    title: 'Components/Basic/Loading',
-    component: Loading,
+  title: 'Basic Components/Loading',
+  component: Loading,
+  parameters: {
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 
-const Template : Story<LoadingProps> = (args) => <Loading {...args} />
+const defaultTabs = (
+  <Tabs>
+    <TabPane tab="我的" key="1">
+      <ul>
+        <li>Event 1</li>
+        <li>Event 1</li>
+        <li>Event 1</li>
+        <li>Event 1</li>
+      </ul>
+    </TabPane>
+    <TabPane tab="全部" key="2">
+      <ul>
+        <li>Event 2</li>
+        <li>Event 2</li>
+        <li>Event 2</li>
+        <li>Event 2</li>
+      </ul>
+    </TabPane>
+    <TabPane tab="共享" key="3">
+      <ul>
+        <li>Event 3</li>
+        <li>Event 3</li>
+        <li>Event 3</li>
+        <li>Event 3</li>
+      </ul>
+    </TabPane>
+  </Tabs>
+);
+
+const Template: Story<LoadingProps> = (args) => <Loading {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    loading: true,
-    titlePosition: 'right',
+  loading: true,
+  titlePosition: 'right',
+};
+
+export const Container = Template.bind({});
+Container.args = {
+  children: defaultTabs,
+};
+
+export const Indicator = Template.bind({});
+Indicator.args = {
+  indicator: <LoadingOutlined rotating />,
+  title: false,
+};
+
+interface DelayProps {
+  delay: number;
 }
+
+const DelayTemplate: Story<DelayProps> = (args) => {
+  const { delay } = args;
+  const [loading, setLoading] = React.useState(true);
+  return (
+    <>
+      <Loading titlePosition="right" loading={loading} delay={delay}>
+        {defaultTabs}
+      </Loading>
+      <br />
+      <Button onClick={() => setLoading(!loading)}>click me</Button>
+    </>
+  );
+};
+export const Delay = DelayTemplate.bind({});
+Delay.args = {
+  delay: 1000,
+};
