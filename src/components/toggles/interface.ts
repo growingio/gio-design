@@ -22,11 +22,11 @@ export interface TogglesProps {
   /**
    变化时回调函数
    */
-  onChange?: any;
+  onChange?: (v: string | number | boolean) => void;
   /**
    点击时回调函数
    */
-  onClick?: any;
+  onClick?: (v: any) => void;
   /**
    自定义 `className`
    */
@@ -36,11 +36,11 @@ export interface TogglesProps {
    */
   inactiveValue?: number | string;
   /**
-   	选中时的内容
+      选中时的内容
    */
   activeValue?: number | string;
   /**
-   	`switch` 打开时的背景色
+      `switch` 打开时的背景色
    */
   activeColor?: string;
   /**
@@ -51,4 +51,4 @@ export interface TogglesProps {
     Toggles控制字段
   */
   checked?: boolean;
-  }
+}
