@@ -127,9 +127,10 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     autoInit = true,
     open,
     onTrigger,
+    onSelect,
     dataSource,
     value,
-    parentsData: userParentsData,
+    selectedParents: userSelectedParents,
     keyMapping: originKeyMapping,
     ...others
   } = props;
@@ -137,10 +138,15 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   const keyMapping = mergeKeyMapping(originKeyMapping);
   const [canOpen, setCanOpen] = useState(open);
   const [inited, setInited] = useState(false);
-  const [parentsData, setParentsData] = useDynamicData(userParentsData);
+  const [selectedParents, setSelectedParents] = useState(userSelectedParents);
   const handleTrigger: typeof onTrigger = (a, b) => {
     setCanOpen(true);
     onTrigger?.(a, b);
+  };
+  const handleSelect: typeof onSelect = (nodeData, parentsData, event) => {
+    onSelect?.(nodeData, parentsData, event);
+    setSelectedParents(parentsData);
+    setInited(true);
   };
 
   // @TODO useKeyboardNav
@@ -161,20 +167,23 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
 
   useEffect(() => {
     if (autoInit && !inited && value && !isEmpty(dataSource)) {
-      setParentsData(getParentsByValue(keyMapping, value, dataSource as NodeData[]) || ([] as NodeData[]));
-      setInited(true);
+      const nextData = getParentsByValue(keyMapping, value, dataSource as NodeData[]) || ([] as NodeData[]);
+      setSelectedParents(nextData);
     }
-  }, [autoInit, inited, keyMapping, value, dataSource, setParentsData]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoInit, inited, value, dataSource, keyMapping.label, keyMapping.value]);
 
   return (
     <div ref={wrapRef} className={classNames('cascader-menu-outer', className)} style={style}>
       <InnerMenu
         {...others}
         open={canOpen}
+        onSelect={handleSelect}
         onTrigger={handleTrigger}
         dataSource={dataSource}
         value={value}
-        parentsData={parentsData}
+        keyMapping={keyMapping}
+        selectedParents={selectedParents}
       />
     </div>
   );

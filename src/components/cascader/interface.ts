@@ -28,6 +28,7 @@ export interface MenuItemProps {
   ignoreCase?: boolean;
   deepSearch?: boolean;
   parentsData?: NodeData[];
+  selectedParents?: NodeData[];
   onClick?: (event: React.MouseEvent, nodeData: NodeData) => void;
   onMouseEnter?: (event: React.MouseEvent, nodeData: NodeData) => void;
   trigger?: 'click' | 'hover';
@@ -65,7 +66,7 @@ export interface MenuProps extends Omit<MenuItemProps, 'dataSource' | 'hasChild'
   autoInit?: boolean;
 }
 
-export interface Props extends MenuProps {
+export interface Props extends Omit<MenuProps, 'parentsData' | 'initParentsData'> {
   /**
      自定义 `CSS` 类前缀
      */

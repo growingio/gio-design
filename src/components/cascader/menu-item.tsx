@@ -43,6 +43,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     expanded,
     keyMapping = { label: 'label', value: 'value' },
     parentsData = [],
+    selectedParents = [],
     beforeSelect,
     onSelect,
     onClick,
@@ -146,7 +147,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
       ? !isEmpty(dataFilter(dataSource.children, parttern, deepSearch, keyMapping.label))
       : !noChild;
   const checked = value === dataValue && (selectAny || !mergedHasChild);
-  const childChecked = parentsData?.some((p) => p[keyMapping.value as string] === dataValue);
+  const childChecked = selectedParents?.some((p) => p[keyMapping.value as string] === dataValue);
 
   let childNode = (
     <div className={withWrapperCls('content')}>
