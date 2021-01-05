@@ -10,7 +10,7 @@ const Toggles: React.FC<TogglesProps> = (props) => {
     inactiveColor,
     activeValue = true,
     defaultChecked = false,
-    checked = false,
+    checked,
     disabled,
     className,
     suffixContent,
@@ -20,22 +20,28 @@ const Toggles: React.FC<TogglesProps> = (props) => {
   const inactiveValues = inactiveValue;
   const activeValues = activeValue;
 
-  const [status, setStatus] = useState(defaultChecked);
+  const [status, setStatus] = useState<boolean>(defaultChecked);
 
   useEffect(() => {
-    setStatus(checked)
+    if (checked !== undefined) {
+      setStatus(checked)
+    }
   }, [checked])
 
   const changeStatus = () => {
     if (!disabled) {
-      setStatus(!status);
-      props.onChange && props.onChange(status ? inactiveValues : activeValues);
-      props.onClick && props.onClick(status ? inactiveValues : activeValues);
+      if (checked === undefined) {
+        setStatus(!status);
+        props.onChange && props.onChange(status ? inactiveValues : activeValues);
+        props.onClick && props.onClick(status ? inactiveValues : activeValues);
+      } else {
+        props.onChange && props.onChange(!checked);
+      }
     }
   };
 
   return (
-    <div className={classnames({ [`${prefixCls}-disabled`]: disabled },`${prefixCls}-normal`)}>
+    <div className={classnames({ [`${prefixCls}-disabled`]: disabled }, `${prefixCls}-normal`)}>
       <div
         className={classnames(prefixCls, { [`${prefixCls}-checked`]: status }, className)}
         style={{ background: status ? activeColor : inactiveColor, borderColor: activeColor }}

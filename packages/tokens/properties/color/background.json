@@ -195,7 +195,7 @@
             "value": "{palette.blue.4.value}"
           },
           "disable": {
-            "value": "{palette.blue.5.value}"
+            "value": "rgba(18,72,233,0.5)"
           }
         },
         "knob": {
