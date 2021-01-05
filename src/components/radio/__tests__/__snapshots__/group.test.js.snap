@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Radio should render correctly. 1`] = `
+<div
+  className="gio-radio__group gio-radio__group--horizontal"
+>
+  <label
+    className="gio-radio__wrapper gio-radio__wrapper--checked gio-radio__wrapper--disabled"
+  >
+    <span
+      className="gio-radio gio-radio-checked gio-radio-disabled"
+      style={Object {}}
+    >
+      <input
+        checked={true}
+        className="gio-radio-input"
+        disabled={true}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="radio"
+        value="opA"
+      />
+      <span
+        className="gio-radio-inner"
+      />
+    </span>
+    <span
+      className="gio-radio__label"
+    >
+      opA
+    </span>
+  </label>
+  <label
+    className="gio-radio__wrapper"
+  >
+    <span
+      className="gio-radio"
+      style={Object {}}
+    >
+      <input
+        checked={false}
+        className="gio-radio-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="radio"
+        value="opB"
+      />
+      <span
+        className="gio-radio-inner"
+      />
+    </span>
+    <span
+      className="gio-radio__label"
+    >
+      opB
+    </span>
+  </label>
+  <label
+    className="gio-radio__wrapper"
+  >
+    <span
+      className="gio-radio"
+      style={Object {}}
+    >
+      <input
+        checked={false}
+        className="gio-radio-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="radio"
+        value="opC"
+      />
+      <span
+        className="gio-radio-inner"
+      />
+    </span>
+    <span
+      className="gio-radio__label"
+    >
+      opC
+    </span>
+  </label>
+  <label
+    className="gio-radio__wrapper"
+  >
+    <span
+      className="gio-radio"
+      style={Object {}}
+    >
+      <input
+        checked={false}
+        className="gio-radio-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="radio"
+        value="opD"
+      />
+      <span
+        className="gio-radio-inner"
+      />
+    </span>
+    <span
+      className="gio-radio__label"
+    >
+      opD
+    </span>
+  </label>
+  <label
+    className="gio-radio__wrapper"
+  >
+    <span
+      className="gio-radio"
+      style={Object {}}
+    >
+      <input
+        checked={false}
+        className="gio-radio-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="radio"
+        value="a"
+      />
+      <span
+        className="gio-radio-inner"
+      />
+    </span>
+    <span
+      className="gio-radio__label"
+    >
+      A
+    </span>
+  </label>
+  <label
+    className="gio-radio__wrapper gio-radio__wrapper--disabled"
+  >
+    <span
+      className="gio-radio gio-radio-disabled"
+      style={Object {}}
+    >
+      <input
+        checked={false}
+        className="gio-radio-input"
+        disabled={true}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="radio"
+        value="b"
+      />
+      <span
+        className="gio-radio-inner"
+      />
+    </span>
+    <span
+      className="gio-radio__label"
+    >
+      B
+    </span>
+  </label>
+</div>
+`;

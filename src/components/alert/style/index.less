@@ -1,0 +1,116 @@
+@import '../../../stylesheet/index.less';
+
+@alert-prefix-cls: ~'@{component-prefix}-alert';
+
+.@{alert-prefix-cls} {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px 16px;
+  border-radius: 6px;
+  transition: all ease 0.8s;
+
+  & &-icon {
+    flex-shrink: 0;
+    align-self: flex-start;
+    height: 100%;
+    padding-top: 1px;
+  }
+
+  & .@{alert-prefix-cls}-content {
+    flex: 1;
+    margin: 0 8px;
+    color: @color-text-alert-content;
+    font-size: @size-font-14;
+    font-family: @font-family-primary;
+    line-height: 22px;
+
+    & .@{alert-prefix-cls}-content-title {
+      width: 100%;
+      overflow: hidden;
+      font-weight: @weight-font-medium;
+      text-overflow: ellipsis;
+    }
+
+    & .@{alert-prefix-cls}-content-description {
+      width: 100%;
+      letter-spacing: 0;
+    }
+  }
+
+  & .@{alert-prefix-cls}-closeIcon {
+    flex-shrink: 0;
+    align-self: flex-start;
+    font-weight: @weight-font-semi-bold;
+    cursor: pointer;
+  }
+}
+
+.@{alert-prefix-cls}-close {
+  display: none;
+}
+
+.@{alert-prefix-cls}-info {
+  background-color: @color-background-alert-information;
+
+  & .@{alert-prefix-cls}-closeIcon {
+    svg {
+      fill: @palette-blue-6;
+    }
+  }
+
+  & .@{alert-prefix-cls}-icon {
+    svg {
+      fill: @palette-blue-6;
+    }
+  }
+}
+
+.@{alert-prefix-cls}-success {
+  background-color: @color-background-alert-success;
+
+  & .@{alert-prefix-cls}-closeIcon {
+    fill: @palette-green-6;
+  }
+
+  & .@{alert-prefix-cls}-icon {
+    fill: @palette-green-6;
+  }
+}
+
+.@{alert-prefix-cls}-warning {
+  background-color: @color-background-alert-warning;
+
+  & .@{alert-prefix-cls}-closeIcon {
+    svg {
+      fill: @palette-yellow-6;
+    }
+  }
+
+  & .@{alert-prefix-cls}-icon {
+    svg {
+      fill: @palette-yellow-6;
+    }
+  }
+}
+
+.@{alert-prefix-cls}-error {
+  background-color: @color-background-alert-error;
+
+  & .@{alert-prefix-cls}-closeIcon {
+    fill: @palette-red-6;
+  }
+
+  & .@{alert-prefix-cls}-icon {
+    fill: @palette-red-6;
+  }
+}
+
+.@{alert-prefix-cls}-small {
+  padding: 8px 16px;
+
+  & .@{alert-prefix-cls}-content {
+    font-size: @size-font-12;
+  }
+}

@@ -1,0 +1,108 @@
+@import '../../../stylesheet/index.less';
+
+@avatar-prefix-cls: ~'@{component-prefix}-avatar';
+
+.@{avatar-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  color: @color-text-avatar-normal;
+  font-weight: @weight-font-semi-bold;
+  background-color: @color-background-avatar-normal;
+  border-radius: 100%;
+  opacity: 1;
+  user-select: none;
+
+  &:hover &-droppable {
+    background-color: @color-background-avatar-hover-dropdown;
+    span {
+      transform: scale(1);
+    }
+  }
+
+  &-droppable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    span {
+      vertical-align: middle;
+      transform: scale(0);
+      transition: all 0.3s;
+    }
+  }
+
+  &-string {
+    position: absolute;
+    left: 50%;
+    transform-origin: 0 center;
+  }
+
+  img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &-sm {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    line-height: 24px;
+  }
+
+  &-df {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    line-height: 32px;
+  }
+
+  &-lg {
+    width: 56px;
+    height: 56px;
+    font-size: 16px;
+    line-height: 56px;
+  }
+
+  &-hg {
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
+    line-height: 80px;
+  }
+
+  &-rest {
+    &:hover {
+      color: @color-text-avatar-hover;
+      background-color: @color-background-avatar-hover-rest;
+    }
+  }
+
+  &-group {
+    .@{avatar-prefix-cls} {
+      border: 1.5px solid @color-border-avatar;
+      span {
+        top: -1.5px;
+      }
+      &:hover {
+        position: relative;
+        z-index: 1;
+        box-shadow: @shadow-avatar;
+      }
+    }
+
+    .@{avatar-prefix-cls}:not(:first-child) {
+      margin-left: -8px;
+    }
+  }
+}

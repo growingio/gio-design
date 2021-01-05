@@ -1,3 +1,26 @@
 {
-  "exclude": ["**/dist", "**/es", "**/node_modules"]
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "module": "ES6",
+    "removeComments": true,
+    "preserveConstEnums": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": false,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "keyofStringsOnly": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "lib": ["es2015", "dom"]
+  },
+  "exclude": ["./lib", "es", "./node_modules"],
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/typings/index.d.ts", "src/components/tag/__tests__/Tag.test.js"]
 }
