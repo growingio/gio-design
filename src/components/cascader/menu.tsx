@@ -167,10 +167,10 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
 
   useEffect(() => {
     if (autoInit && !inited && value && !isEmpty(dataSource)) {
-      const nextData = getParentsByValue(keyMapping, value, dataSource as NodeData[]) || ([] as NodeData[]);
+      const km = { label: keyMapping.label, value: keyMapping.value };
+      const nextData = getParentsByValue(km, value, dataSource as NodeData[]) || ([] as NodeData[]);
       setSelectedParents(nextData);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoInit, inited, value, dataSource, keyMapping.label, keyMapping.value]);
 
   return (
