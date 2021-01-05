@@ -2,7 +2,8 @@
 
 一套 React UI 组件库和 GrowingIO 设计系统。
 
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://commitizen.github.io/cz-cli/)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://growingio.design)
 ![CodeQL Analysis](https://github.com/growingio/gio-design/workflows/CodeQL%20Analysis/badge.svg)
 ![Continuous Deployment](https://github.com/growingio/gio-design/workflows/Continuous%20Deployment/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/growingio/gio-design/branch/master/graph/badge.svg?token=9KSBW04X3Z)](https://codecov.io/gh/growingio/gio-design)
