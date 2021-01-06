@@ -14,6 +14,7 @@ const NormalList = ({
   isMultiple = false,
   getPopupContainer,
   placement,
+  allowDeselect,
   ...restProps
 }: IBaseListProps): React.ReactElement => {
   const prefixCls = usePrefixCls('list', customPrefixCls);
@@ -25,6 +26,7 @@ const NormalList = ({
         isMultiple={isMultiple}
         getPopupContainer={getPopupContainer}
         placement={placement}
+        allowDeselect={allowDeselect}
         {...restProps}
       />
     </div>
