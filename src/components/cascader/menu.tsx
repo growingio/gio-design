@@ -3,7 +3,15 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
 import { MenuItemProps, NodeData, MenuProps } from './interface';
-import { dataKeyMapping, toInt, useDynamicData, useKeyboardNav, withPrefix } from './helper';
+import {
+  dataKeyMapping,
+  getParentsByValue,
+  mergeKeyMapping,
+  toInt,
+  useDynamicData,
+  useKeyboardNav,
+  withPrefix,
+} from './helper';
 import SingleMenu from './single-menu';
 import useMergeRef from '../../utils/hooks/useMergeRef';
 
@@ -23,7 +31,7 @@ const InnerMenu: React.FC<Props> = (props) => {
     offsetLeft: userOffsetLeft = 5,
     offsetTop: userOffsetTop = 0,
   } = props;
-  const keyMapping = { label: 'label', value: 'value', ...originKeyMapping };
+  const keyMapping = mergeKeyMapping(originKeyMapping);
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
   const wrapRef = useRef<HTMLDivElement>((null as unknown) as HTMLDivElement);
   const withWrapperCls = withPrefix('cascader-menu');
@@ -113,12 +121,32 @@ const InnerMenu: React.FC<Props> = (props) => {
 };
 
 const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
-  const { className, style, open, onTrigger, ...others } = props;
+  const {
+    className,
+    style,
+    autoInit = true,
+    open,
+    onTrigger,
+    onSelect,
+    dataSource,
+    value,
+    selectedParents: userSelectedParents,
+    keyMapping: originKeyMapping,
+    ...others
+  } = props;
   const wrapRef = useMergeRef(ref);
+  const keyMapping = mergeKeyMapping(originKeyMapping);
   const [canOpen, setCanOpen] = useState(open);
+  const [inited, setInited] = useState(false);
+  const [selectedParents, setSelectedParents] = useState(userSelectedParents);
   const handleTrigger: typeof onTrigger = (a, b) => {
     setCanOpen(true);
     onTrigger?.(a, b);
+  };
+  const handleSelect: typeof onSelect = (nodeData, parentsData, event) => {
+    onSelect?.(nodeData, parentsData, event);
+    setSelectedParents(parentsData);
+    setInited(true);
   };
 
   // @TODO useKeyboardNav
@@ -137,9 +165,26 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     };
   }, [wrapRef]);
 
+  useEffect(() => {
+    if (autoInit && !inited && value && !isEmpty(dataSource)) {
+      const km = { label: keyMapping.label, value: keyMapping.value };
+      const nextData = getParentsByValue(km, value, dataSource as NodeData[]) || ([] as NodeData[]);
+      setSelectedParents(nextData);
+    }
+  }, [autoInit, inited, value, dataSource, keyMapping.label, keyMapping.value]);
+
   return (
     <div ref={wrapRef} className={classNames('cascader-menu-outer', className)} style={style}>
-      <InnerMenu {...others} open={canOpen} onTrigger={handleTrigger} />
+      <InnerMenu
+        {...others}
+        open={canOpen}
+        onSelect={handleSelect}
+        onTrigger={handleTrigger}
+        dataSource={dataSource}
+        value={value}
+        keyMapping={keyMapping}
+        selectedParents={selectedParents}
+      />
     </div>
   );
 });

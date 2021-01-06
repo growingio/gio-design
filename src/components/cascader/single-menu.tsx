@@ -102,7 +102,7 @@ const SingleMenu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
               deepSearch={deepSearch}
               keyMapping={keyMapping}
               ignoreCase={ignoreCase}
-              expanded={expandedId === data[keyMapping.value]}
+              expanded={expandedId === data[keyMapping.value] && !isEmpty(data.children)}
               {...others}
             />
           ))}
