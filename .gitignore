@@ -31,3 +31,4 @@ yarn-error.log
 coverage
 .importjs.js
 storybook-static
+.idea

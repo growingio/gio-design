@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { MoreOutlined } from '@gio-design/icons';
+import { MoreOutlined, UserOutlined } from '@gio-design/icons';
 import { isNil, isUndefined } from 'lodash';
 import Tooltip from '../tooltip';
 import { AvatarProps } from './interfaces';
@@ -9,6 +9,7 @@ import composeRef from '../../utils/composeRef';
 
 const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProps, ref: React.Ref<HTMLSpanElement>) => {
   const {
+    default: showDefault = false,
     className,
     size = 'default',
     droppable = false,
@@ -47,6 +48,9 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     [`${prefixCls}-lg`]: size === 'large',
     [`${prefixCls}-hg`]: size === 'huge',
   });
+  const iconSizeMap: {[K: string]: string} = {
+    small: '10', 'default': '14', large: '24', huge: '35'
+  }
 
   const childrenStyle: React.CSSProperties = {
     transform: `scale(${scale}) translateX(-50%)`,
@@ -66,6 +70,13 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
   const renderAvatar = () => {
     if (!!src && isImgExist) {
       return <img alt="avatar" src={src} onError={() => setIsImgExist(false)} />;
+    }
+    if (showDefault) {
+      return (
+        <span className={`${prefixCls}-default`}>
+          <UserOutlined color="#fff" size={iconSizeMap[size]} />
+        </span>
+      )
     }
     if (userName !== undefined && typeof userName === 'string') {
       const prefixUserName = omit && typeof userName === 'string' ? userName.trim()[0].toUpperCase() : userName.trim();

@@ -23,6 +23,10 @@ export interface AvatarProps {
    */
   src?: string;
   /**
+   * 是否在不存在src时显示默认头像，显示默认头像将不显示文字
+   */
+  default?: boolean;
+  /**
    是否省略用户名称
    */
   omit?: boolean;

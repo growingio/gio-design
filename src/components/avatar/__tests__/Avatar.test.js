@@ -71,6 +71,11 @@ describe('Testing Avatar', () => {
     expect(wrapper.exists('.gio-tooltip-placement-top')).toBe(true);
   });
 
+  test('props default',  () => {
+    const wrapper = mount(<Avatar default>这是一个很长的文字</Avatar>);
+    expect(wrapper.exists('.gio-avatar-default')).toBeTruthy();
+  })
+
   it('can accept dropdown trigger Mouse Event', () => {
     const wrapper = mount(
       <Dropdown overlay={<div>11</div>}>
