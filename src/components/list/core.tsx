@@ -87,6 +87,7 @@ class SelectCore extends React.Component<SelectCoreProps & ConfigConsumerProps, 
       prefixCls,
       getPopupContainer,
       placement,
+      allowDeselect
     } = this.props;
     const { options, value } = this.state;
     if (this.state && options?.length) {
@@ -112,6 +113,7 @@ class SelectCore extends React.Component<SelectCoreProps & ConfigConsumerProps, 
             rowHeight={rowHeight}
             getPopupContainer={getPopupContainer}
             placement={placement}
+            allowDeselect={allowDeselect}
           />
         </div>
       );
