@@ -39,7 +39,7 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
           <List
             value={value}
             width={width}
-            height={400}
+            height={2000}
             style={{ height: height || '100%', overflow: 'auto', marginBottom: '-4px' }}
             rowCount={options.length}
             rowHeight={typeof rowHeight === 'function' ? getRowHeight : this._cache.rowHeight}
@@ -145,8 +145,7 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
   };
 
   private handleSelect = (option: any) => {
-    const { isMultiple, allowDuplicate, onSelect, onDeselect, onChange, value } = this.props;
-
+    const { isMultiple, allowDuplicate, onSelect, onDeselect, onChange, value, allowDeselect = true } = this.props;
     const isMax = this.checkIsMax(option);
 
     if (isMax) {
@@ -157,6 +156,9 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
     const isSelected = this.getSelected(option);
     let values;
     if (isSelected && !allowDuplicate) {
+      if(!allowDeselect){
+        return 
+      }
       if (onDeselect) {
         onDeselect(selectedValue, value, option);
       }

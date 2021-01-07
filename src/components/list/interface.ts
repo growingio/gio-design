@@ -52,6 +52,10 @@ export interface IBaseListProps {
    */
   onSelect?: (selectedValue: string, value: ListValueType, option: Option) => void;
   /**
+    是否允许反选
+ */
+  allowDeselect?: boolean;
+  /**
       取消选中的回调
    */
   onDeselect?: (selectedValue: string, value: ListValueType, option: Option) => void;
@@ -113,6 +117,7 @@ export interface SelectCoreProps {
   rowHeight?: number | ((option: any) => number);
   isLoading?: boolean;
   required?: boolean;
+  allowDeselect?: boolean;
   showSearch?: boolean;
   searchableFields?: string[];
   searchPlaceholder?: string;
@@ -139,6 +144,7 @@ export interface SelectListProps {
   isMultiple: boolean;
   allowDuplicate?: boolean;
   required?: boolean;
+  allowDeselect?: boolean;
   max?: number;
   height: number | string;
   rowHeight: number | ((option: any) => number);

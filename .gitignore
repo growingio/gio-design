@@ -30,3 +30,5 @@ yarn-error.log
 .temp.less
 coverage
 .importjs.js
+storybook-static
+.idea

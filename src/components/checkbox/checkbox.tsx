@@ -2,7 +2,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import RcCheckbox from 'rc-checkbox';
-import CheckOutlined from '@gio-design/icons/es/CheckOutlined';
+import { CheckOutlined } from '@gio-design/icons';
 import CheckboxGroupContext from './CheckboxGroupContext';
 import { CheckboxProps } from './interface';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
