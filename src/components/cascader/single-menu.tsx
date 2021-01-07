@@ -77,14 +77,14 @@ const SingleMenu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     filteredDataSource = dataFilter(dataSource, searchParttern, deepSearch, keyMapping.label);
   }
 
-  if (isEmpty(dataSource) && !isRootMenu) {
+  if (isEmpty(filteredDataSource) && !isRootMenu) {
     return null;
   }
 
   const groupData = groupBy(filteredDataSource, 'groupId');
   let menu;
 
-  if (isEmpty(dataSource) && isRootMenu) {
+  if (isEmpty(filteredDataSource) && isRootMenu) {
     menu = getEmpty ? getEmpty(keyword) : <Empty tip={keyword ? '无搜索结果' : undefined} />;
   } else {
     menu = Object.keys(groupData).map((groupId) => {
