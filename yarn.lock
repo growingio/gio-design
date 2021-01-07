@@ -2177,11 +2177,12 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gio-design/icons@20.12.1":
-  version "20.12.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-20.12.1.tgz#9007f85a94caf83f13a89d44857f618aaa3e37be"
-  integrity sha512-ikWDrE8KRq0Nh44la7ewNgF2ipdTWOgSX9V9bkUmE7hiqMJI91ewr0ArYCxDzsmtXU9j4OljtkrML8LaB97AwA==
+"@gio-design/icons@21.1.0":
+  version "21.1.0"
+  resolved "http://npm.lkangle.cn/@gio-design%2ficons/-/icons-21.1.0.tgz#9c16832a1b685110be810bb0cc59208c9ba8ed43"
+  integrity sha512-T4II9qzn8O4hF9IIPLDOFdCxm8LIQJ1/muCWk8zlv8ST3VK5hFVpOy7MfZQmbj/Prg7eQw81H9hxO1aH/A3GjA==
   dependencies:
+    "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
 "@gio-design/tokens@21.1.0":
@@ -3230,6 +3231,11 @@
   integrity sha512-aGI3DfswwqgKPiEOTaiHV2ZPC9KEhprpgEbJnv0fZl3SGX0cGgEva1126dGrMC6AJM6v/aihlUgJn9M5DbDZ/Q==
   dependencies:
     "@types/node" "*"
+
+"@types/classnames@^2.2.11":
+  version "2.2.11"
+  resolved "http://npm.lkangle.cn/@types%2fclassnames/-/classnames-2.2.11.tgz#2521cc86f69d15c5b90664e4829d84566052c1cf"
+  integrity sha512-2koNhpWm3DgWRp5tpkiJ8JGc1xTn2q0l+jUNUE7oMKXUf5NpI9AIdC4kbjGNFBdHtcxBD18LAksoudAVhFKCjw==
 
 "@types/classnames@^2.2.9":
   version "2.2.10"

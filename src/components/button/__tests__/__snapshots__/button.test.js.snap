@@ -1281,16 +1281,10 @@ initialize {
                     "name": "defs",
                     "namespace": "http://www.w3.org/2000/svg",
                     "next": Object {
-                      "attribs": Object {
-                        "data-name": "\\\\u56FE\\\\u5C42 2",
-                        "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                      },
+                      "attribs": Object {},
                       "children": Array [
                         Object {
-                          "attribs": Object {
-                            "data-name": "\\\\u56FE\\\\u5C42 1",
-                            "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
                               "attribs": Object {
@@ -1326,14 +1320,8 @@ initialize {
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                       ],
                       "name": "g",
@@ -1342,14 +1330,8 @@ initialize {
                       "parent": [Circular],
                       "prev": [Circular],
                       "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "data-name": undefined,
-                        "id": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "data-name": undefined,
-                        "id": undefined,
-                      },
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
                     },
                     "parent": [Circular],
                     "prev": null,
@@ -1358,16 +1340,10 @@ initialize {
                     "x-attribsPrefix": Object {},
                   },
                   Object {
-                    "attribs": Object {
-                      "data-name": "\\\\u56FE\\\\u5C42 2",
-                      "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                    },
+                    "attribs": Object {},
                     "children": Array [
                       Object {
-                        "attribs": Object {
-                          "data-name": "\\\\u56FE\\\\u5C42 1",
-                          "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
                             "attribs": Object {
@@ -1403,14 +1379,8 @@ initialize {
                         "parent": [Circular],
                         "prev": null,
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                     ],
                     "name": "g",
@@ -1443,14 +1413,8 @@ initialize {
                       "x-attribsPrefix": Object {},
                     },
                     "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "data-name": undefined,
-                      "id": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "data-name": undefined,
-                      "id": undefined,
-                    },
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
                   },
                 ],
                 "name": "svg",
@@ -1515,15 +1479,10 @@ initialize {
                   },
                   "children": Array [
                     Object {
-                      "attribs": Object {
-                        "data-name": "Layer 2",
-                      },
+                      "attribs": Object {},
                       "children": Array [
                         Object {
-                          "attribs": Object {
-                            "data-name": "Layer 1",
-                            "fill": "#2f3c70",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
                               "attribs": Object {
@@ -1620,14 +1579,8 @@ initialize {
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "data-name": undefined,
-                            "fill": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "data-name": undefined,
-                            "fill": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                       ],
                       "name": "g",
@@ -1636,12 +1589,8 @@ initialize {
                       "parent": [Circular],
                       "prev": null,
                       "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "data-name": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "data-name": undefined,
-                      },
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
                     },
                   ],
                   "name": "svg",
@@ -1724,16 +1673,10 @@ initialize {
                         "name": "defs",
                         "namespace": "http://www.w3.org/2000/svg",
                         "next": Object {
-                          "attribs": Object {
-                            "data-name": "\\\\u56FE\\\\u5C42 2",
-                            "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
-                              "attribs": Object {
-                                "data-name": "\\\\u56FE\\\\u5C42 1",
-                                "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                              },
+                              "attribs": Object {},
                               "children": Array [
                                 Object {
                                   "attribs": Object {
@@ -1769,14 +1712,8 @@ initialize {
                               "parent": [Circular],
                               "prev": null,
                               "type": "tag",
-                              "x-attribsNamespace": Object {
-                                "data-name": undefined,
-                                "id": undefined,
-                              },
-                              "x-attribsPrefix": Object {
-                                "data-name": undefined,
-                                "id": undefined,
-                              },
+                              "x-attribsNamespace": Object {},
+                              "x-attribsPrefix": Object {},
                             },
                           ],
                           "name": "g",
@@ -1785,14 +1722,8 @@ initialize {
                           "parent": [Circular],
                           "prev": [Circular],
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                         "parent": [Circular],
                         "prev": null,
@@ -1801,16 +1732,10 @@ initialize {
                         "x-attribsPrefix": Object {},
                       },
                       Object {
-                        "attribs": Object {
-                          "data-name": "\\\\u56FE\\\\u5C42 2",
-                          "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
-                            "attribs": Object {
-                              "data-name": "\\\\u56FE\\\\u5C42 1",
-                              "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                            },
+                            "attribs": Object {},
                             "children": Array [
                               Object {
                                 "attribs": Object {
@@ -1846,14 +1771,8 @@ initialize {
                             "parent": [Circular],
                             "prev": null,
                             "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "data-name": undefined,
-                              "id": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "data-name": undefined,
-                              "id": undefined,
-                            },
+                            "x-attribsNamespace": Object {},
+                            "x-attribsPrefix": Object {},
                           },
                         ],
                         "name": "g",
@@ -1886,14 +1805,8 @@ initialize {
                           "x-attribsPrefix": Object {},
                         },
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                     ],
                     "name": "svg",
@@ -1958,15 +1871,10 @@ initialize {
                       },
                       "children": Array [
                         Object {
-                          "attribs": Object {
-                            "data-name": "Layer 2",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
-                              "attribs": Object {
-                                "data-name": "Layer 1",
-                                "fill": "#2f3c70",
-                              },
+                              "attribs": Object {},
                               "children": Array [
                                 Object {
                                   "attribs": Object {
@@ -2063,14 +1971,8 @@ initialize {
                               "parent": [Circular],
                               "prev": null,
                               "type": "tag",
-                              "x-attribsNamespace": Object {
-                                "data-name": undefined,
-                                "fill": undefined,
-                              },
-                              "x-attribsPrefix": Object {
-                                "data-name": undefined,
-                                "fill": undefined,
-                              },
+                              "x-attribsNamespace": Object {},
+                              "x-attribsPrefix": Object {},
                             },
                           ],
                           "name": "g",
@@ -2079,12 +1981,8 @@ initialize {
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "data-name": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "data-name": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                       ],
                       "name": "svg",
@@ -2198,15 +2096,10 @@ initialize {
                 },
                 "children": Array [
                   Object {
-                    "attribs": Object {
-                      "data-name": "Layer 2",
-                    },
+                    "attribs": Object {},
                     "children": Array [
                       Object {
-                        "attribs": Object {
-                          "data-name": "Layer 1",
-                          "fill": "#2f3c70",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
                             "attribs": Object {
@@ -2303,14 +2196,8 @@ initialize {
                         "parent": [Circular],
                         "prev": null,
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "data-name": undefined,
-                          "fill": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "data-name": undefined,
-                          "fill": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                     ],
                     "name": "g",
@@ -2319,12 +2206,8 @@ initialize {
                     "parent": [Circular],
                     "prev": null,
                     "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "data-name": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "data-name": undefined,
-                    },
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
                   },
                 ],
                 "name": "svg",
@@ -2407,16 +2290,10 @@ initialize {
                       "name": "defs",
                       "namespace": "http://www.w3.org/2000/svg",
                       "next": Object {
-                        "attribs": Object {
-                          "data-name": "\\\\u56FE\\\\u5C42 2",
-                          "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
-                            "attribs": Object {
-                              "data-name": "\\\\u56FE\\\\u5C42 1",
-                              "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                            },
+                            "attribs": Object {},
                             "children": Array [
                               Object {
                                 "attribs": Object {
@@ -2452,14 +2329,8 @@ initialize {
                             "parent": [Circular],
                             "prev": null,
                             "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "data-name": undefined,
-                              "id": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "data-name": undefined,
-                              "id": undefined,
-                            },
+                            "x-attribsNamespace": Object {},
+                            "x-attribsPrefix": Object {},
                           },
                         ],
                         "name": "g",
@@ -2468,14 +2339,8 @@ initialize {
                         "parent": [Circular],
                         "prev": [Circular],
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                       "parent": [Circular],
                       "prev": null,
@@ -2484,16 +2349,10 @@ initialize {
                       "x-attribsPrefix": Object {},
                     },
                     Object {
-                      "attribs": Object {
-                        "data-name": "\\\\u56FE\\\\u5C42 2",
-                        "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                      },
+                      "attribs": Object {},
                       "children": Array [
                         Object {
-                          "attribs": Object {
-                            "data-name": "\\\\u56FE\\\\u5C42 1",
-                            "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
                               "attribs": Object {
@@ -2529,14 +2388,8 @@ initialize {
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                       ],
                       "name": "g",
@@ -2569,14 +2422,8 @@ initialize {
                         "x-attribsPrefix": Object {},
                       },
                       "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "data-name": undefined,
-                        "id": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "data-name": undefined,
-                        "id": undefined,
-                      },
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
                     },
                   ],
                   "name": "svg",
@@ -2641,15 +2488,10 @@ initialize {
                     },
                     "children": Array [
                       Object {
-                        "attribs": Object {
-                          "data-name": "Layer 2",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
-                            "attribs": Object {
-                              "data-name": "Layer 1",
-                              "fill": "#2f3c70",
-                            },
+                            "attribs": Object {},
                             "children": Array [
                               Object {
                                 "attribs": Object {
@@ -2746,14 +2588,8 @@ initialize {
                             "parent": [Circular],
                             "prev": null,
                             "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "data-name": undefined,
-                              "fill": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "data-name": undefined,
-                              "fill": undefined,
-                            },
+                            "x-attribsNamespace": Object {},
+                            "x-attribsPrefix": Object {},
                           },
                         ],
                         "name": "g",
@@ -2762,12 +2598,8 @@ initialize {
                         "parent": [Circular],
                         "prev": null,
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "data-name": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "data-name": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                     ],
                     "name": "svg",
@@ -2876,16 +2708,10 @@ initialize {
                       "name": "defs",
                       "namespace": "http://www.w3.org/2000/svg",
                       "next": Object {
-                        "attribs": Object {
-                          "data-name": "\\\\u56FE\\\\u5C42 2",
-                          "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
-                            "attribs": Object {
-                              "data-name": "\\\\u56FE\\\\u5C42 1",
-                              "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                            },
+                            "attribs": Object {},
                             "children": Array [
                               Object {
                                 "attribs": Object {
@@ -2921,14 +2747,8 @@ initialize {
                             "parent": [Circular],
                             "prev": null,
                             "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "data-name": undefined,
-                              "id": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "data-name": undefined,
-                              "id": undefined,
-                            },
+                            "x-attribsNamespace": Object {},
+                            "x-attribsPrefix": Object {},
                           },
                         ],
                         "name": "g",
@@ -2937,14 +2757,8 @@ initialize {
                         "parent": [Circular],
                         "prev": [Circular],
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                       "parent": [Circular],
                       "prev": null,
@@ -2953,16 +2767,10 @@ initialize {
                       "x-attribsPrefix": Object {},
                     },
                     Object {
-                      "attribs": Object {
-                        "data-name": "\\\\u56FE\\\\u5C42 2",
-                        "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                      },
+                      "attribs": Object {},
                       "children": Array [
                         Object {
-                          "attribs": Object {
-                            "data-name": "\\\\u56FE\\\\u5C42 1",
-                            "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
                               "attribs": Object {
@@ -2998,14 +2806,8 @@ initialize {
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                       ],
                       "name": "g",
@@ -3038,14 +2840,8 @@ initialize {
                         "x-attribsPrefix": Object {},
                       },
                       "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "data-name": undefined,
-                        "id": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "data-name": undefined,
-                        "id": undefined,
-                      },
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
                     },
                   ],
                   "name": "svg",
@@ -3151,16 +2947,10 @@ initialize {
                     "name": "defs",
                     "namespace": "http://www.w3.org/2000/svg",
                     "next": Object {
-                      "attribs": Object {
-                        "data-name": "\\\\u56FE\\\\u5C42 2",
-                        "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                      },
+                      "attribs": Object {},
                       "children": Array [
                         Object {
-                          "attribs": Object {
-                            "data-name": "\\\\u56FE\\\\u5C42 1",
-                            "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
                               "attribs": Object {
@@ -3196,14 +2986,8 @@ initialize {
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                       ],
                       "name": "g",
@@ -3212,14 +2996,8 @@ initialize {
                       "parent": [Circular],
                       "prev": [Circular],
                       "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "data-name": undefined,
-                        "id": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "data-name": undefined,
-                        "id": undefined,
-                      },
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
                     },
                     "parent": [Circular],
                     "prev": null,
@@ -3228,16 +3006,10 @@ initialize {
                     "x-attribsPrefix": Object {},
                   },
                   Object {
-                    "attribs": Object {
-                      "data-name": "\\\\u56FE\\\\u5C42 2",
-                      "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                    },
+                    "attribs": Object {},
                     "children": Array [
                       Object {
-                        "attribs": Object {
-                          "data-name": "\\\\u56FE\\\\u5C42 1",
-                          "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
                             "attribs": Object {
@@ -3273,14 +3045,8 @@ initialize {
                         "parent": [Circular],
                         "prev": null,
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                     ],
                     "name": "g",
@@ -3313,14 +3079,8 @@ initialize {
                       "x-attribsPrefix": Object {},
                     },
                     "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "data-name": undefined,
-                      "id": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "data-name": undefined,
-                      "id": undefined,
-                    },
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
                   },
                 ],
                 "name": "svg",
@@ -3385,15 +3145,10 @@ initialize {
                   },
                   "children": Array [
                     Object {
-                      "attribs": Object {
-                        "data-name": "Layer 2",
-                      },
+                      "attribs": Object {},
                       "children": Array [
                         Object {
-                          "attribs": Object {
-                            "data-name": "Layer 1",
-                            "fill": "#2f3c70",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
                               "attribs": Object {
@@ -3490,14 +3245,8 @@ initialize {
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "data-name": undefined,
-                            "fill": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "data-name": undefined,
-                            "fill": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                       ],
                       "name": "g",
@@ -3506,12 +3255,8 @@ initialize {
                       "parent": [Circular],
                       "prev": null,
                       "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "data-name": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "data-name": undefined,
-                      },
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
                     },
                   ],
                   "name": "svg",
@@ -3590,15 +3335,10 @@ initialize {
                   },
                   "children": Array [
                     Object {
-                      "attribs": Object {
-                        "data-name": "Layer 2",
-                      },
+                      "attribs": Object {},
                       "children": Array [
                         Object {
-                          "attribs": Object {
-                            "data-name": "Layer 1",
-                            "fill": "#2f3c70",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
                               "attribs": Object {
@@ -3695,14 +3435,8 @@ initialize {
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "data-name": undefined,
-                            "fill": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "data-name": undefined,
-                            "fill": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                       ],
                       "name": "g",
@@ -3711,12 +3445,8 @@ initialize {
                       "parent": [Circular],
                       "prev": null,
                       "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "data-name": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "data-name": undefined,
-                      },
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
                     },
                   ],
                   "name": "svg",
@@ -3801,16 +3531,10 @@ initialize {
                         "name": "defs",
                         "namespace": "http://www.w3.org/2000/svg",
                         "next": Object {
-                          "attribs": Object {
-                            "data-name": "\\\\u56FE\\\\u5C42 2",
-                            "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
-                              "attribs": Object {
-                                "data-name": "\\\\u56FE\\\\u5C42 1",
-                                "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                              },
+                              "attribs": Object {},
                               "children": Array [
                                 Object {
                                   "attribs": Object {
@@ -3846,14 +3570,8 @@ initialize {
                               "parent": [Circular],
                               "prev": null,
                               "type": "tag",
-                              "x-attribsNamespace": Object {
-                                "data-name": undefined,
-                                "id": undefined,
-                              },
-                              "x-attribsPrefix": Object {
-                                "data-name": undefined,
-                                "id": undefined,
-                              },
+                              "x-attribsNamespace": Object {},
+                              "x-attribsPrefix": Object {},
                             },
                           ],
                           "name": "g",
@@ -3862,14 +3580,8 @@ initialize {
                           "parent": [Circular],
                           "prev": [Circular],
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                         "parent": [Circular],
                         "prev": null,
@@ -3878,16 +3590,10 @@ initialize {
                         "x-attribsPrefix": Object {},
                       },
                       Object {
-                        "attribs": Object {
-                          "data-name": "\\\\u56FE\\\\u5C42 2",
-                          "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
-                            "attribs": Object {
-                              "data-name": "\\\\u56FE\\\\u5C42 1",
-                              "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                            },
+                            "attribs": Object {},
                             "children": Array [
                               Object {
                                 "attribs": Object {
@@ -3923,14 +3629,8 @@ initialize {
                             "parent": [Circular],
                             "prev": null,
                             "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "data-name": undefined,
-                              "id": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "data-name": undefined,
-                              "id": undefined,
-                            },
+                            "x-attribsNamespace": Object {},
+                            "x-attribsPrefix": Object {},
                           },
                         ],
                         "name": "g",
@@ -3963,14 +3663,8 @@ initialize {
                           "x-attribsPrefix": Object {},
                         },
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                     ],
                     "name": "svg",
@@ -4068,15 +3762,10 @@ initialize {
                 },
                 "children": Array [
                   Object {
-                    "attribs": Object {
-                      "data-name": "Layer 2",
-                    },
+                    "attribs": Object {},
                     "children": Array [
                       Object {
-                        "attribs": Object {
-                          "data-name": "Layer 1",
-                          "fill": "#2f3c70",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
                             "attribs": Object {
@@ -4173,14 +3862,8 @@ initialize {
                         "parent": [Circular],
                         "prev": null,
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "data-name": undefined,
-                          "fill": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "data-name": undefined,
-                          "fill": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                     ],
                     "name": "g",
@@ -4189,12 +3872,8 @@ initialize {
                     "parent": [Circular],
                     "prev": null,
                     "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "data-name": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "data-name": undefined,
-                    },
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
                   },
                 ],
                 "name": "svg",
@@ -4279,16 +3958,10 @@ initialize {
                       "name": "defs",
                       "namespace": "http://www.w3.org/2000/svg",
                       "next": Object {
-                        "attribs": Object {
-                          "data-name": "\\\\u56FE\\\\u5C42 2",
-                          "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
-                            "attribs": Object {
-                              "data-name": "\\\\u56FE\\\\u5C42 1",
-                              "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                            },
+                            "attribs": Object {},
                             "children": Array [
                               Object {
                                 "attribs": Object {
@@ -4324,14 +3997,8 @@ initialize {
                             "parent": [Circular],
                             "prev": null,
                             "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "data-name": undefined,
-                              "id": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "data-name": undefined,
-                              "id": undefined,
-                            },
+                            "x-attribsNamespace": Object {},
+                            "x-attribsPrefix": Object {},
                           },
                         ],
                         "name": "g",
@@ -4340,14 +4007,8 @@ initialize {
                         "parent": [Circular],
                         "prev": [Circular],
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "data-name": undefined,
-                          "id": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                       "parent": [Circular],
                       "prev": null,
@@ -4356,16 +4017,10 @@ initialize {
                       "x-attribsPrefix": Object {},
                     },
                     Object {
-                      "attribs": Object {
-                        "data-name": "\\\\u56FE\\\\u5C42 2",
-                        "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                      },
+                      "attribs": Object {},
                       "children": Array [
                         Object {
-                          "attribs": Object {
-                            "data-name": "\\\\u56FE\\\\u5C42 1",
-                            "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
                               "attribs": Object {
@@ -4401,14 +4056,8 @@ initialize {
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                       ],
                       "name": "g",
@@ -4441,14 +4090,8 @@ initialize {
                         "x-attribsPrefix": Object {},
                       },
                       "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "data-name": undefined,
-                        "id": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "data-name": undefined,
-                        "id": undefined,
-                      },
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
                     },
                   ],
                   "name": "svg",
@@ -4515,15 +4158,10 @@ initialize {
                     },
                     "children": Array [
                       Object {
-                        "attribs": Object {
-                          "data-name": "Layer 2",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
-                            "attribs": Object {
-                              "data-name": "Layer 1",
-                              "fill": "#2f3c70",
-                            },
+                            "attribs": Object {},
                             "children": Array [
                               Object {
                                 "attribs": Object {
@@ -4620,14 +4258,8 @@ initialize {
                             "parent": [Circular],
                             "prev": null,
                             "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "data-name": undefined,
-                              "fill": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "data-name": undefined,
-                              "fill": undefined,
-                            },
+                            "x-attribsNamespace": Object {},
+                            "x-attribsPrefix": Object {},
                           },
                         ],
                         "name": "g",
@@ -4636,12 +4268,8 @@ initialize {
                         "parent": [Circular],
                         "prev": null,
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "data-name": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "data-name": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                     ],
                     "name": "svg",
@@ -4726,16 +4354,10 @@ initialize {
                           "name": "defs",
                           "namespace": "http://www.w3.org/2000/svg",
                           "next": Object {
-                            "attribs": Object {
-                              "data-name": "\\\\u56FE\\\\u5C42 2",
-                              "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                            },
+                            "attribs": Object {},
                             "children": Array [
                               Object {
-                                "attribs": Object {
-                                  "data-name": "\\\\u56FE\\\\u5C42 1",
-                                  "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                                },
+                                "attribs": Object {},
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
@@ -4771,14 +4393,8 @@ initialize {
                                 "parent": [Circular],
                                 "prev": null,
                                 "type": "tag",
-                                "x-attribsNamespace": Object {
-                                  "data-name": undefined,
-                                  "id": undefined,
-                                },
-                                "x-attribsPrefix": Object {
-                                  "data-name": undefined,
-                                  "id": undefined,
-                                },
+                                "x-attribsNamespace": Object {},
+                                "x-attribsPrefix": Object {},
                               },
                             ],
                             "name": "g",
@@ -4787,14 +4403,8 @@ initialize {
                             "parent": [Circular],
                             "prev": [Circular],
                             "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "data-name": undefined,
-                              "id": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "data-name": undefined,
-                              "id": undefined,
-                            },
+                            "x-attribsNamespace": Object {},
+                            "x-attribsPrefix": Object {},
                           },
                           "parent": [Circular],
                           "prev": null,
@@ -4803,16 +4413,10 @@ initialize {
                           "x-attribsPrefix": Object {},
                         },
                         Object {
-                          "attribs": Object {
-                            "data-name": "\\\\u56FE\\\\u5C42 2",
-                            "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_2",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
-                              "attribs": Object {
-                                "data-name": "\\\\u56FE\\\\u5C42 1",
-                                "id": "filter-outlined_svg__\\\\u56FE\\\\u5C42_1-2",
-                              },
+                              "attribs": Object {},
                               "children": Array [
                                 Object {
                                   "attribs": Object {
@@ -4848,14 +4452,8 @@ initialize {
                               "parent": [Circular],
                               "prev": null,
                               "type": "tag",
-                              "x-attribsNamespace": Object {
-                                "data-name": undefined,
-                                "id": undefined,
-                              },
-                              "x-attribsPrefix": Object {
-                                "data-name": undefined,
-                                "id": undefined,
-                              },
+                              "x-attribsNamespace": Object {},
+                              "x-attribsPrefix": Object {},
                             },
                           ],
                           "name": "g",
@@ -4888,14 +4486,8 @@ initialize {
                             "x-attribsPrefix": Object {},
                           },
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "data-name": undefined,
-                            "id": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                       ],
                       "name": "svg",
