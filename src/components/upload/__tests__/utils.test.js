@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
+ * ReferenceError: globalThis is not defined // 升级node版本 // https://github.com/jsdom/jsdom/issues/2795
  */
+import { JSDOM } from 'jsdom';
 import * as module from '../utils';
 // import { Canvas } from 'canvas';
-import { JSDOM } from 'jsdom';
 
 const url =
   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606823912493&di=291fcc824e1168b41b0876a619a565aa&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fde42849c2bb85b153d28e7f93341f54501e9f2b618f06-2PtOQh_fw658';
@@ -19,7 +20,7 @@ export const getFile = (dataUrl) => {
   while (n--) {
     u8arr[n] = bstr.charCodeAt(n);
   }
-  let blob = new File([u8arr], 'web-image', { type: mime });
+  const blob = new File([u8arr], 'web-image', { type: mime });
   return blob;
 };
 export const testFile = getFile(dataUrl);
