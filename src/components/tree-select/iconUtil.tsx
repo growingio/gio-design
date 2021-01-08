@@ -1,8 +1,10 @@
 import * as React from 'react';
-import CaretDownOutlined from '@gio-design/icons/es/CaretDownOutlined';
-import CheckOutlined from '@gio-design/icons/es/CheckOutlined';
-import CloseOutlined from '@gio-design/icons/es/CloseOutlined';
-import CloseCircleFilled from '@gio-design/icons/es/CloseCircleFilled';
+import {
+  CaretDownOutlined,
+  CheckOutlined,
+  CloseOutlined,
+  CloseCircleFilled
+} from '@gio-design/icons'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function getIcons({

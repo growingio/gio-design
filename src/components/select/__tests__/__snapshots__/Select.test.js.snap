@@ -57,14 +57,8 @@ exports[`<Select /> renders <Select /> components 1`] = `
         <defs>
           <style />
         </defs>
-        <g
-          data-name="\\\\u56FE\\\\u5C42 2"
-          id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-        >
-          <g
-            data-name="\\\\u56FE\\\\u5C42 1"
-            id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-          >
+        <g>
+          <g>
             <path
               d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
               fill="currentColor"
@@ -136,14 +130,8 @@ exports[`<Select /> renders <Select /> components 2`] = `
         <defs>
           <style />
         </defs>
-        <g
-          data-name="\\\\u56FE\\\\u5C42 2"
-          id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-        >
-          <g
-            data-name="\\\\u56FE\\\\u5C42 1"
-            id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-          >
+        <g>
+          <g>
             <path
               d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
               fill="currentColor"
@@ -205,14 +193,8 @@ exports[`<Select /> renders <Select.Group /> components 1`] = `
         <defs>
           <style />
         </defs>
-        <g
-          data-name="\\\\u56FE\\\\u5C42 2"
-          id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-        >
-          <g
-            data-name="\\\\u56FE\\\\u5C42 1"
-            id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-          >
+        <g>
+          <g>
             <path
               d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
               fill="currentColor"
@@ -274,14 +256,8 @@ exports[`<Select /> renders <Select.Option /> components 1`] = `
         <defs>
           <style />
         </defs>
-        <g
-          data-name="\\\\u56FE\\\\u5C42 2"
-          id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-        >
-          <g
-            data-name="\\\\u56FE\\\\u5C42 1"
-            id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-          >
+        <g>
+          <g>
             <path
               d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
               fill="currentColor"
@@ -349,14 +325,8 @@ exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
             <defs>
               <style />
             </defs>
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="close-outlined_svg__\\\\u56FE\\\\u5C42_2"
-            >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="close-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
+            <g>
+              <g>
                 <path
                   d="M6.62 5.92a.54.54 0 00.76 0l3.87-3.87a.49.49 0 01.7.7L8.08 6.62a.54.54 0 000 .76L12 11.25a.49.49 0 01-.7.7L7.38 8.08a.54.54 0 00-.76 0L2.75 12a.49.49 0 01-.7-.7l3.87-3.92a.54.54 0 000-.76L2.05 2.75a.49.49 0 01.7-.7z"
                   fill="currentColor"
@@ -392,14 +362,8 @@ exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
         <defs>
           <style />
         </defs>
-        <g
-          data-name="\\\\u56FE\\\\u5C42 2"
-          id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-        >
-          <g
-            data-name="\\\\u56FE\\\\u5C42 1"
-            id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-          >
+        <g>
+          <g>
             <path
               d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
               fill="currentColor"
@@ -467,14 +431,8 @@ exports[`<Select multiple/> renders <Select multiple/> components 2`] = `
             <defs>
               <style />
             </defs>
-            <g
-              data-name="\\\\u56FE\\\\u5C42 2"
-              id="close-outlined_svg__\\\\u56FE\\\\u5C42_2"
-            >
-              <g
-                data-name="\\\\u56FE\\\\u5C42 1"
-                id="close-outlined_svg__\\\\u56FE\\\\u5C42_1-2"
-              >
+            <g>
+              <g>
                 <path
                   d="M6.62 5.92a.54.54 0 00.76 0l3.87-3.87a.49.49 0 01.7.7L8.08 6.62a.54.54 0 000 .76L12 11.25a.49.49 0 01-.7.7L7.38 8.08a.54.54 0 00-.76 0L2.75 12a.49.49 0 01-.7-.7l3.87-3.92a.54.54 0 000-.76L2.05 2.75a.49.49 0 01.7-.7z"
                   fill="currentColor"
@@ -510,14 +468,8 @@ exports[`<Select multiple/> renders <Select multiple/> components 2`] = `
         <defs>
           <style />
         </defs>
-        <g
-          data-name="\\\\u56FE\\\\u5C42 2"
-          id="down-filled_svg__\\\\u56FE\\\\u5C42_2"
-        >
-          <g
-            data-name="\\\\u56FE\\\\u5C42 1"
-            id="down-filled_svg__\\\\u56FE\\\\u5C42_1-2"
-          >
+        <g>
+          <g>
             <path
               d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
               fill="currentColor"
