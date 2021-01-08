@@ -25,7 +25,7 @@ const parseToNumber = (num: number | string): PossibleValueType => {
     return num;
   }
   const parsedNumber = Number(num);
-  return Number.isNaN(parsedNumber) ? num : parsedNumber;
+  return Number.isNaN(parsedNumber) ? '' : parsedNumber;
 };
 
 const getValidValue = (value: string, min = MAX_SAFE_NEGATIVE_INTEGER, max = MAX_SAFE_INTEGER) => {
