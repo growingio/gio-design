@@ -15,7 +15,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "gio-rewire lib compile",
-    "build-sotrybook": "build-storybook -s public",
+    "build-sotrybook": "build-storybook --quiet -s public",
     "eslint": "eslint src --ext .ts,.tsx",
     "gen-changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "gen-version": "conventional-changelog -p angular > VERSION.md",
