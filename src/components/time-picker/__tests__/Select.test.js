@@ -40,6 +40,25 @@ describe('Testing timepicker', () => {
     wrapper.find('.gio-time-picker-input').simulate('click');
     expect(wrapper.exists('.gio-time-picker-panel')).toBe(true);
   });
+  //  props test
+  it('props test', async () => {
+    const wrapper = mount(<Picker />);
+    await wrapper.find('.gio-time-picker-input').simulate('click');
+
+    expect(
+      mount(
+        <Picker
+          placeholder="我是测试数据"
+          onCurrentSelectPanelChange
+          use12Hours
+          focusOnOpen
+          hideDisabledOptions
+          allowEmpty
+          defaultOpen
+        />
+      ).find('.gio-time-picker-panel-select')
+    ).toMatchSnapshot();
+  });
   //   // onchange 应该被调用
   //   it('onchange should be called', () => {
   //     const onClickMock = jest.fn();

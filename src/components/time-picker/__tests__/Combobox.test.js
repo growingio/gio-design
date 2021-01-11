@@ -47,6 +47,12 @@ describe('Testing timepicker', () => {
   //     wrapper.find('.gio-time-picker').simulate('click');
   //     expect(onClickMock).toBeCalled();
   //   });
+  //  props test
+  it('props test', () => {
+    expect(
+      mount(<Picker placeholder="我是测试数据" onCurrentSelectPanelChange />).exists('.gio-time-picker-panel-combobox')
+    ).toMatchSnapshot();
+  });
   // 测试选择面板数据之前是否为空
   it('before select value is none ', () => {
     const wrapper = mount(<Picker />);
