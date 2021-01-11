@@ -49,8 +49,18 @@ describe('Testing timepicker', () => {
   //   });
   //  props test
   it('props test', () => {
+    const onClickMock = jest.fn();
+
     expect(
-      mount(<Picker placeholder="我是测试数据" onCurrentSelectPanelChange />).exists('.gio-time-picker-panel-combobox')
+      mount(
+        <Picker
+          placeholder="我是测试数据"
+          onCurrentSelectPanelChange
+          defaultOpenValue
+          use12Hours
+          onAmPmChange={onClickMock}
+        />
+      ).exists('.gio-time-picker-panel-combobox')
     ).toMatchSnapshot();
   });
   // 测试选择面板数据之前是否为空

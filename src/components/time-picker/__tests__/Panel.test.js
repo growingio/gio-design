@@ -47,6 +47,38 @@ describe('Testing timepicker', () => {
   //     wrapper.find('.gio-time-picker').simulate('click');
   //     expect(onClickMock).toBeCalled();
   //   });
+  //  props test
+  it('props test', async () => {
+    const wrapper = mount(<Picker />);
+    await wrapper.find('.gio-time-picker-input').simulate('click');
+    const onClickMock = jest.fn();
+
+    expect(
+      mount(
+        <Picker
+          format="HH:mm:ss"
+          placeholder="请选择时间"
+          onChange={onClickMock}
+          clearText="clear"
+          defaultOpen={false}
+          inputReadOnly={false}
+          //   style={margin:auto}
+          className=""
+          inputClassName=""
+          popupClassName=""
+          //   popupStyle={}
+          allowEmpty
+          showHour
+          showMinute
+          showSecond
+          hideDisabledOptions={false}
+          placement="bottomLeft"
+          use12Hours={false}
+          focusOnOpen={false}
+        />
+      ).find('.gio-time-picker-panel-select')
+    ).toMatchSnapshot();
+  });
   // 测试选择面板数据之前是否为空
   it('before select value is none ', () => {
     const wrapper = mount(<Picker />);
