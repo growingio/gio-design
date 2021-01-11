@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, render } from 'enzyme';
 import { TagOutlined } from '@gio-design/icons';
-import Alert from '..';
+import Alert from '../alert.tsx';
 
 describe('Alert snapshots.', () => {
   it('should match alert base snapshot.', () => {
