@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Testing timepicker props test 1`] = `ReactWrapper {}`;
+
 exports[`Testing timepicker should match alert base snapshot. 1`] = `
 initialize {
   "0": Object {
