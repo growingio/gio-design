@@ -13,8 +13,23 @@ export default {
 export const Default: Story<TimePickerProps> = (args) => <TimePicker {...args} />;
 
 Default.args = {
-  format: 'HH:mm',
+  format: 'HH:mm:ss',
   placeholder: '请选择时间',
-  showSecond: false,
-  onChange: console.log,
+    onChange: console.log,
+    clearText: 'clear',
+    defaultOpen: false,
+    inputReadOnly: false,
+    style: {},
+    className: '',
+    inputClassName: '',
+    popupClassName: '',
+    popupStyle: {},
+    allowEmpty: true,
+    showHour: true,
+    showMinute: true,
+    showSecond: true,
+    hideDisabledOptions: false,
+    placement: 'bottomLeft',
+    use12Hours: false,
+    focusOnOpen: false,
 };
