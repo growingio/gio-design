@@ -83,6 +83,11 @@ export {
   DatePickerProps,
   DateRangePickerProps,
 } from './components/date-picker';
+export {
+  default as Space,
+  SpaceProps,
+  ItemProps,
+} from './components/space';
 
 // provide config context
 export { ConfigContext, ConfigConsumer, withConfigConsumer } from './components/config-provider';
