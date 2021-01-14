@@ -40,9 +40,6 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Lint pull request title
         run: echo "${{ github.event.pull_request.title }}" | npx commitlint
-      - name: Lint commits count
-        if: ${{ github.event.pull_request.commits > 3 }}
-        run: echo "::error::The commits of pull request should not be more than 3" && exit 1
       - name: StyleLint
         run: yarn stylelint
       - name: ESLint
