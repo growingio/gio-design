@@ -18,7 +18,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
     prefixCls: customizePrefixCls,
     subPrefixCls = 'popconfirm',
     visible,
-    defaultVisible,
+    // defaultVisible,
     onVisibleChange,
     icon,
     ...rest

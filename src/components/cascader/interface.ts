@@ -145,3 +145,8 @@ export interface Props extends Omit<MenuProps, 'parentsData' | 'initParentsData'
    */
   destroyTooltipOnHide?: boolean;
 }
+
+export interface CascaderInstance {
+  getOverlay: () => HTMLDivElement | null;
+  getInputWrapper: () => HTMLDivElement | null;
+}
