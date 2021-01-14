@@ -23,6 +23,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': [1],
+    '@typescript-eslint/no-unused-vars': 'error',
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'react/jsx-props-no-spreading': ['error', { html: 'enforce', custom: 'ignore', explicitSpread: 'ignore' }],
     'import/no-unresolved': 'off',
