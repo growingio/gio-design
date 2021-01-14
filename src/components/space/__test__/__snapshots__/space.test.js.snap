@@ -1,0 +1,415 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Space. can accept a size array. 1`] = `ReactWrapper {}`;
+
+exports[`Testing Space. do not contain anything 1`] = `
+Object {
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;
+
+exports[`Testing Space. should can define split. 1`] = `ReactWrapper {}`;
+
+exports[`Testing Space. should render other props. 1`] = `ReactWrapper {}`;
+
+exports[`Testing Space. should render steady. 1`] = `
+initialize {
+  "0": Object {
+    "attribs": Object {
+      "class": "gio-space gio-space-horizontal gio-space-align-center",
+    },
+    "children": Array [
+      Object {
+        "attribs": Object {
+          "class": "gio-space-item",
+          "style": "margin-right:8px",
+        },
+        "children": Array [
+          Object {
+            "data": "Space",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "text",
+          },
+        ],
+        "name": "div",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "class": "gio-space-item",
+            "style": "margin-right:8px",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "gio-btn gio-btn-primary",
+                "type": "button",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {},
+                  "children": Array [
+                    Object {
+                      "data": "点 击",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
+                },
+              ],
+              "name": "button",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "type": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "type": undefined,
+              },
+            },
+          ],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": Object {
+            "attribs": Object {
+              "class": "gio-space-item",
+            },
+            "children": Array [
+              Object {
+                "data": "123",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "text",
+              },
+            ],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": [Circular],
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+            "style": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+            "style": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": null,
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+          "style": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+          "style": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "class": "gio-space-item",
+          "style": "margin-right:8px",
+        },
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "class": "gio-btn gio-btn-primary",
+              "type": "button",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {},
+                "children": Array [
+                  Object {
+                    "data": "点 击",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "span",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {},
+                "x-attribsPrefix": Object {},
+              },
+            ],
+            "name": "button",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+              "type": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+              "type": undefined,
+            },
+          },
+        ],
+        "name": "div",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "class": "gio-space-item",
+          },
+          "children": Array [
+            Object {
+              "data": "123",
+              "next": null,
+              "parent": [Circular],
+              "prev": null,
+              "type": "text",
+            },
+          ],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": null,
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "class": "gio-space-item",
+            "style": "margin-right:8px",
+          },
+          "children": Array [
+            Object {
+              "data": "Space",
+              "next": null,
+              "parent": [Circular],
+              "prev": null,
+              "type": "text",
+            },
+          ],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": null,
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+            "style": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+            "style": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+          "style": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+          "style": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "class": "gio-space-item",
+        },
+        "children": Array [
+          Object {
+            "data": "123",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "text",
+          },
+        ],
+        "name": "div",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": null,
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "class": "gio-space-item",
+            "style": "margin-right:8px",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "gio-btn gio-btn-primary",
+                "type": "button",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {},
+                  "children": Array [
+                    Object {
+                      "data": "点 击",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "text",
+                    },
+                  ],
+                  "name": "span",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {},
+                  "x-attribsPrefix": Object {},
+                },
+              ],
+              "name": "button",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "type": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "type": undefined,
+              },
+            },
+          ],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": Object {
+            "attribs": Object {
+              "class": "gio-space-item",
+              "style": "margin-right:8px",
+            },
+            "children": Array [
+              Object {
+                "data": "Space",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "text",
+              },
+            ],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": [Circular],
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+              "style": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+              "style": undefined,
+            },
+          },
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+            "style": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+            "style": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
+      },
+    ],
+    "name": "div",
+    "namespace": "http://www.w3.org/1999/xhtml",
+    "next": null,
+    "parent": null,
+    "prev": null,
+    "root": Object {
+      "attribs": Object {},
+      "children": Array [
+        [Circular],
+      ],
+      "name": "root",
+      "namespace": "http://www.w3.org/1999/xhtml",
+      "next": null,
+      "parent": null,
+      "prev": null,
+      "type": "root",
+      "x-attribsNamespace": Object {},
+      "x-attribsPrefix": Object {},
+    },
+    "type": "tag",
+    "x-attribsNamespace": Object {
+      "class": undefined,
+    },
+    "x-attribsPrefix": Object {
+      "class": undefined,
+    },
+  },
+  "_root": [Circular],
+  "length": 1,
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;
