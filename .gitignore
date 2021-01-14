@@ -32,3 +32,4 @@ coverage
 .importjs.js
 storybook-static
 .idea
+.history

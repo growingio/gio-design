@@ -22,7 +22,7 @@ const Alert: React.FC<AlertProps> = (props: AlertProps) => {
     closeText,
     onClose,
     icon,
-    type = 'info',
+    type,
     size = 'middle',
     style,
   } = props;
