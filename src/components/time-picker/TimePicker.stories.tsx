@@ -10,11 +10,31 @@ export default {
   component: TimePicker,
 } as Meta;
 
-export const Default: Story<TimePickerProps> = (args) => <TimePicker {...args} />;
+export const Default1: Story<TimePickerProps> = (args) => {
+  return (
+    <div>
+      <TimePicker {...args} />
+    </div>
+   )
+}
+export const Default2: Story<TimePickerProps> = (args) => {
+  return (
+    <div>
+      <TimePicker {...args} />
+    </div>
+    )
+}
+    
 
-Default.args = {
+Default1.args = {
   format: 'HH:mm',
   placeholder: '请选择时间',
   showSecond: false,
   onChange: console.log,
 };
+Default2.args = {
+    format: 'HH:mm:ss',
+    placeholder: '请选择时间',
+    showSecond: true,
+    onChange: console.log,
+  };
