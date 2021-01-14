@@ -1,8 +1,8 @@
 import { DownFilled } from '@gio-design/icons';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
-import { Props } from './interface';
+import { Props, CascaderInstance } from './interface';
 import { dataKeyMapping, mergeKeyMapping, useDynamicData, withPrefix } from './helper';
 import Dropdown from '../dropdown';
 import Input from '../input';
@@ -12,7 +12,7 @@ import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 export type CascaderProps = Props;
 
-const Cascader: React.FC<Props> = (props) => {
+const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Props>>((props, ref) => {
   const {
     prefixCls,
     className,
@@ -45,15 +45,16 @@ const Cascader: React.FC<Props> = (props) => {
     overlayStyle,
     ...others
   } = props;
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
   const keyMapping = mergeKeyMapping(_keyMapping);
   const inputRef = useRef<HTMLInputElement>(null);
   const [selected, setSelected] = useDynamicData(value);
   const [title, setTitle] = useDynamicData(originTitle);
   const [keyword, setKeyword] = useDynamicData(originKeyword);
   const [canOpen, setCanOpen] = useDynamicData(open);
-  const [dropdownVisible, setDropdownVisible] = useDynamicData(visible);
+  const [dropdownVisible, setDropdownVisible] = useDynamicData(!!visible);
   const wrapperCls = usePrefixCls('cascader', prefixCls);
-  const mergedWrapperCls = classNames(wrapperCls, className);
   const withWrapperCls = withPrefix(wrapperCls);
   const onSelect: Props['onSelect'] = (data, parents = [], event) => {
     const { label: mapLabel, value: mapValue } = dataKeyMapping(data, keyMapping);
@@ -96,6 +97,7 @@ const Cascader: React.FC<Props> = (props) => {
       />
     ),
   } = props;
+  const mergedVisible = visible === undefined ? dropdownVisible : dropdownVisible && visible;
 
   useEffect(() => {
     if (dropdownVisible) {
@@ -127,55 +129,58 @@ const Cascader: React.FC<Props> = (props) => {
     return () => document.removeEventListener('keydown', handleEsc);
   }, [setDropdownVisible]);
 
+  React.useImperativeHandle(ref, () => ({
+    getOverlay: () => overlayRef.current,
+    getInputWrapper: () => titleRef.current,
+  }));
+
   return (
-    <div className={mergedWrapperCls} style={style}>
-      <Dropdown
-        prefixCls={prefixCls}
-        disabled={disabled}
-        visible={visible === undefined ? dropdownVisible : dropdownVisible && visible}
-        placement={placement}
-        getTooltipContainer={getDropdownContainer}
-        overlayClassName={classNames(withWrapperCls('dropdown'), overlayClassName)}
-        trigger={dropdownTrigger}
-        onVisibleChange={handleVisibleChange}
-        overlayStyle={overlayStyle}
-        destroyTooltipOnHide={destroyTooltipOnHide}
-        overlay={
-          // eslint-disable-next-line react/jsx-wrap-multilines
-          <div className={classNames(className, withWrapperCls('panel'), 'cascader-menu-list')}>
-            <Menu
-              {...others}
-              onClick={onClick}
-              open={canOpen}
-              trigger={trigger}
-              header={header}
-              value={selected}
-              keyword={keyword}
-              dataSource={dataSource}
-              onTrigger={handleTrigger}
-              onSelect={onSelect}
-              keyMapping={keyMapping}
-            />
-          </div>
-        }
-      >
-        <div className={withWrapperCls('title')}>
-          {React.isValidElement(input) ? (
-            input
-          ) : (
-            <Input
-              readOnly
-              size={size}
-              disabled={disabled}
-              placeholder={placeholder}
-              value={title}
-              suffix={<DownFilled size="1em" className={classNames('icon-down', dropdownVisible && 'open')} />}
-            />
-          )}
+    <Dropdown
+      prefixCls={prefixCls}
+      disabled={disabled}
+      visible={mergedVisible}
+      placement={placement}
+      getTooltipContainer={getDropdownContainer}
+      overlayClassName={classNames(withWrapperCls('dropdown'), overlayClassName)}
+      trigger={dropdownTrigger}
+      onVisibleChange={handleVisibleChange}
+      overlayStyle={overlayStyle}
+      destroyTooltipOnHide={destroyTooltipOnHide}
+      overlay={
+        // eslint-disable-next-line react/jsx-wrap-multilines
+        <div ref={overlayRef} className={classNames(className, withWrapperCls('panel'), 'cascader-menu-list')}>
+          <Menu
+            {...others}
+            onClick={onClick}
+            open={canOpen}
+            trigger={trigger}
+            header={header}
+            value={selected}
+            keyword={keyword}
+            dataSource={dataSource}
+            onTrigger={handleTrigger}
+            onSelect={onSelect}
+            keyMapping={keyMapping}
+          />
         </div>
-      </Dropdown>
-    </div>
+      }
+    >
+      <div className={classNames(wrapperCls, className, withWrapperCls('title'))} style={style} ref={titleRef}>
+        {React.isValidElement(input) ? (
+          input
+        ) : (
+          <Input
+            readOnly
+            size={size}
+            disabled={disabled}
+            placeholder={placeholder}
+            value={title}
+            suffix={<DownFilled size="1em" className={classNames('icon-down', dropdownVisible && 'open')} />}
+          />
+        )}
+      </div>
+    </Dropdown>
   );
-};
+});
 
 export default Cascader;
