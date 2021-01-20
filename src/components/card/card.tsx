@@ -15,33 +15,32 @@ const Card = ({
   disabled = false,
   clickable = true,
   onClick,
+  ...rest
 }: CardProps) => {
   const prefixCls = usePrefixCls('card', customizePrefixCls);
 
-  const renderTitle = () => 
-    isUndefined(title) ? undefined :
-    <div className={`${prefixCls}-title`}>{title}</div>
-  
-  const renderFooter = () => 
-    isUndefined(footer) ? undefined :
-    <div className={`${prefixCls}-footer`}>{footer}</div>
-  
+  const renderTitle = () => (isUndefined(title) ? undefined : <div className={`${prefixCls}-title`}>{title}</div>);
+
+  const renderFooter = () => (isUndefined(footer) ? undefined : <div className={`${prefixCls}-footer`}>{footer}</div>);
+
   return (
     <div
       className={classNames(prefixCls, className, {
         [`${prefixCls}-disabled`]: disabled,
-        [`${prefixCls}-clickable`]: clickable
+        [`${prefixCls}-clickable`]: clickable,
       })}
       style={style}
-      onClick={() => disabled || ( clickable && onClick?.())}
+      onClick={() => disabled || (clickable && onClick?.())}
       aria-hidden="true"
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
     >
       {renderTitle()}
       {children}
       {renderFooter()}
     </div>
   );
-}
+};
 
 Card.Meta = Meta;
 export default Card;
