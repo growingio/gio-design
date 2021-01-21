@@ -1,11 +1,15 @@
-.demo {
-  .box();
+.grid-demo {
   .box {
-    background: #eee;
-    border: 1px solid #eee;
-  }
-  [data-container='false'] {
-    // padding: 20px 0;
-    background: #fff;
+    color: #fff;
+    & > div {
+      width: 100%;
+      height: 200px;
+    }
+    &:nth-child(odd) > div {
+      background-color: #1248e9;
+    }
+    &:nth-child(even) > div {
+      background-color: #3867f4;
+    }
   }
 }
