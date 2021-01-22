@@ -1,0 +1,46 @@
+@import '../../../stylesheet/index.less';
+
+@layout-prefix-cls: ~'@{component-prefix}-layout';
+
+.@{layout-prefix-cls} {
+  position: relative;
+  display: flex;
+  flex: auto;
+  flex-wrap: wrap;
+
+  &-header {
+    flex: 0 0 100%;
+    height: 48px;
+  }
+
+  &-content {
+    flex: var(--layout-content-grow) 1 var(--layout-content-maxWidth);
+    margin: 0 auto;
+  }
+
+  &-sider {
+    flex: 0 0 var(--layout-sider-width);
+    transition: all 0.2s;
+    &-collapsed {
+      flex: 0 0 var(--layout-sider-collapsedWidth);
+    }
+  }
+
+  &-sider-suspend {
+    position: absolute;
+    z-index: 1050;
+    width: var(--layout-sider-width);
+    height: 100%;
+    &-left {
+      left: 0;
+      transform: translateX(var(--layout-sider-collapsedWidth-negative));
+    }
+    &-right {
+      right: 0;
+      transform: translateX(var(--layout-sider-collapsedWidth));
+    }
+    &-collapsed {
+      width: var(--layout-sider-collapsedWidth);
+    }
+  }
+}
