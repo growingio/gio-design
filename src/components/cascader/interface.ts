@@ -20,7 +20,7 @@ export type NodeData = {
 export interface MenuItemProps {
   className?: string;
   style?: React.CSSProperties;
-  dataSource: NodeData;
+  dataSource?: NodeData;
   keyMapping?: KeyMapping;
   value?: Value;
   keyword?: string;
@@ -40,6 +40,7 @@ export interface MenuItemProps {
   ) => void | NodeData[] | Promise<NodeData[]>;
   onSelect?: (nodeData: NodeData, parentsData: NodeData[], event: React.MouseEvent | React.KeyboardEvent) => void;
   onKeyUp?: (event: React.KeyboardEvent) => void;
+  onKeyDown?: (event: React.KeyboardEvent) => void;
   onFocus?: (event: React.FocusEvent) => void;
   onBlur?: (event: React.FocusEvent) => void;
   onMouseLeave?: (event: React.MouseEvent) => void;
