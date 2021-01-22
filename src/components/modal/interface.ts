@@ -174,7 +174,12 @@ export interface IStep {
    */
   nextButtonProps?: ButtonProps;
   /**
-   被包裹的	传递给上一步的 `props` 元素
+   传递给取消按钮的 `props` 元素
+   */
+  cancelButtonProps?: ButtonProps;
+  /**
+   传递给上一步按钮的 `props` 元素
+    @deprecated  
    */
   backButtonProps?: ButtonProps;
   /**
@@ -182,7 +187,12 @@ export interface IStep {
    */
   nextText?: string;
   /**
+   传递给取消按钮的显示文案
+   */
+  cancelText?: string;
+  /**
    传递给上一步按钮的显示文案
+    @deprecated  
    */
   backText?: string;
 }
@@ -221,6 +231,7 @@ export interface IModalStaticFuncReturn {
 
 export interface ICalloutModalProps extends IModalStaticFuncConfig {
   visible: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   close: (...args: any[]) => void;
   afterClose?: () => void;
 }
