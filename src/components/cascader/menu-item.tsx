@@ -12,7 +12,7 @@ const triggerMap = {
   hover: 'onMouseEnter',
 } as const;
 
-const renderKeyword = (label: string, keyword: string, ignoreCase: boolean) => {
+export const renderKeyword = (label: string, keyword: string, ignoreCase: boolean) => {
   const rSearch = makeSearchParttern(keyword, ignoreCase);
   const replaceValues: string[] = [];
   label.replace(rSearch, (s) => {
@@ -38,7 +38,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   const {
     className,
     style,
-    dataSource: originDataSource,
+    dataSource: originDataSource = {},
     value,
     expanded,
     keyMapping = { label: 'label', value: 'value' },
@@ -48,6 +48,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     onSelect,
     onClick,
     onKeyUp,
+    onKeyDown,
     onFocus,
     onBlur,
     onMouseEnter,
@@ -127,9 +128,15 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     if ([' ', 'Enter', 'ArrowRight'].indexOf(event.key) >= 0) {
       event.preventDefault();
       event.stopPropagation();
-      resolveBeforeSelect(getCopyEvent(event)).catch(() => {
-        onKeyUp?.(event);
-      });
+      resolveBeforeSelect(getCopyEvent(event))
+        .then(() => {
+          onKeyUp?.(event);
+        })
+        .catch(() => {
+          onKeyUp?.(event);
+        });
+    } else {
+      onKeyUp?.(event);
     }
   };
 
@@ -137,6 +144,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     if (event.key === ' ') {
       event.preventDefault();
     }
+    onKeyDown?.(event);
   };
 
   const hitTarget = keyword && dataLabel && isHit(dataLabel, keyword, ignoreCase);
