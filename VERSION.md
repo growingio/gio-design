@@ -18,9 +18,5 @@
 
 * **modal:** replace back login with cancal
 
-* Update interface.ts
-
-Co-authored-by: Dan <liudan548326@yeah.net>
-
 
 
