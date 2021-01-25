@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { mount } from 'enzyme';
@@ -101,17 +102,12 @@ describe('StepModal snapshot match', () => {
     });
     const modalContent = document.querySelector('.gio-modal-body');
     const nextBtn = document.querySelector('.gio-modal__btn-ok');
-    const backBtn = document.querySelector('.gio-modal__btn-close');
+    const cancelBtn = document.querySelector('.gio-modal__btn-close');
 
     nextBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     expect(modalContent.textContent).toBe('Step Two');
-    backBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    expect(modalContent.textContent).toBe('Step One');
-    nextBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    nextBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    // act(() => {
-    //   expect(afterClose).toHaveBeenCalled();
-    // });
+    cancelBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    // expect(modalContent.textContent).toBe('Step One');
   });
 
   it('should not run afterClose when onClose reject', () => {
@@ -122,6 +118,7 @@ describe('StepModal snapshot match', () => {
         title="Modal Title"
         onClose={() =>
           new Promise((resolve, reject) => {
+            // eslint-disable-next-line prefer-promise-reject-errors
             reject('reject');
           })
         }
@@ -159,10 +156,10 @@ describe('StepModal snapshot match', () => {
     });
     const button = document.querySelector('.gio-modal__btn-ok');
     act(() => {
-      for (let i = 0; i < 2; i++) {
+      for (let i = 0; i < 2; i += 1) {
         button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
       }
-      expect(document.querySelector('.gio-modal-body').textContent).toBe('Step Three');
     });
+    expect(document.querySelector('.gio-modal-body').textContent).toBe('Step Three');
   });
 });
