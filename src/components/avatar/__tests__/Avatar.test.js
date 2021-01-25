@@ -71,10 +71,16 @@ describe('Testing Avatar', () => {
     expect(wrapper.exists('.gio-tooltip-placement-top')).toBe(true);
   });
 
-  test('props default',  () => {
+  test('props default', () => {
     const wrapper = mount(<Avatar />);
     expect(wrapper.exists('.gio-avatar-default')).toBeTruthy();
-  })
+  });
+
+  test('children only receive string', () => {
+    const wrapper = mount(<Avatar />);
+    wrapper.setProps({ children: 1 });
+    expect(wrapper.text()).toBe('');
+  });
 
   it('can accept dropdown trigger Mouse Event', () => {
     const wrapper = mount(
