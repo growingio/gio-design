@@ -16,20 +16,18 @@ const options = values.map((value, index) => ({
   groupLabel: '应用平台',
 }));
 
+const tooltipOptions = values.map((value, index) => ({
+  value,
+  label: labels[index],
+  tooltip: 'tooltip',
+}));
+
 const optionsWithOutGroup = values.map((value, index) => ({
   value,
   label: labels[index],
 }));
 
 describe('<Select />', () => {
-  // For List use AutoSizer.
-  // AutoSizer uses offsetWidth and offsetHeight.
-  // Jest runs in JSDom which doesn't support measurements APIs.
-  beforeEach(() => {
-    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', { configurable: true, value: 320 });
-    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { configurable: true, value: 160 });
-  });
-
   it('renders <Select /> components', () => {
     const tree = renderer.create(<Select defaultValue="all" options={options} />).toJSON();
     expect(tree).toMatchSnapshot();
@@ -46,12 +44,13 @@ describe('<Select />', () => {
         <Select>
           <Select.Option value="all">全部</Select.Option>
           <Select.Option value="online">已上线</Select.Option>
+          isNotReactElement
+          {/* waring ReactElement is Dom Element */}
         </Select>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-
   it('renders <Select.Group /> components', () => {
     const tree = renderer
       .create(
@@ -98,7 +97,7 @@ describe('<Select />', () => {
   });
 
   it('select dropdown should display correct search result', () => {
-    const tree = mount(<Select options={options} searchable allowCustomOption />);
+    const tree = mount(<Select options={options} searchable />);
     expect(document.body.querySelector('.gio-select-dropdown')).toBeNull();
     act(() => {
       tree.simulate('click');
@@ -106,12 +105,16 @@ describe('<Select />', () => {
     const dropdown = document.querySelector('.gio-select-dropdown');
     expect(dropdown).not.toBeNull();
     act(() => {
+      tree.find('input').simulate('change', { target: { value: 'demo' } });
+    });
+    expect(dropdown.querySelector('.not-found-context')).not.toBeNull();
+    act(() => {
       tree.find('input').simulate('change', { target: { value: '全' } });
     });
     act(() => {
       tree.find('input').simulate('click');
     });
-    expect(dropdown.querySelectorAll('.gio-select-option')).toHaveLength(4);
+    expect(dropdown.querySelectorAll('.gio-select-list-option')).toHaveLength(1);
     tree.unmount();
   });
 });
@@ -126,30 +129,59 @@ describe('<Select multiple/>', () => {
     const tree = renderer.create(<Select defaultValue={['all']} options={optionsWithOutGroup} multiple />).toJSON();
     expect(tree).toMatchSnapshot();
   });
+});
 
-  it('select dropdown should display correct search result', () => {
-    const tree = mount(<Select options={options} searchable />);
+describe('<Select /> allowClear onClear onAllowClear', () => {
+  it('allowClear onClear onAllowClear', () => {
+    const tree = mount(<Select options={optionsWithOutGroup} searchable allowClear allowDeselect allowCustomOption />);
     act(() => {
       tree.simulate('click');
     });
-    const dropdown = document.querySelector('.gio-select-dropdown');
-    expect(dropdown).not.toBeNull();
     act(() => {
-      tree.find('input').simulate('change', { target: { value: '全' } });
-    });
-    expect(document.querySelectorAll('.gio-select-dropdown .gio-select-option')).toHaveLength(2);
-    act(() => {
-      tree.find('.gio-select-dropdown .gio-select-option').at(0).simulate('click');
+      tree.find('input').simulate('change', { target: { value: '全部' } });
     });
     act(() => {
-      expect(tree.find('.gio-select-input-reference.gio-select-item').text()).toBe('全');
+      document.querySelector('.gio-select-dropdown .gio-select-list-option').click();
     });
     act(() => {
-      tree.unmount();
+      tree.simulate('mouseenter');
     });
+    act(() => {
+      tree.simulate('mouseenter').find('.gio-select-arrow').simulate('click');
+    });
+    act(() => {
+      tree.simulate('mouseleave');
+    });
+    act(() => {
+      tree.find('input').simulate('change', { target: { value: '全部' } });
+    });
+    act(() => {
+      tree.simulate('mouseenter').find('.gio-select-arrow').simulate('click');
+    });
+    expect(tree.find('input').text()).toBe('');
+    tree.unmount();
+  });
+  it('allowClear input', () => {
+    const tree = mount(<Select options={optionsWithOutGroup} searchable allowClear />);
+    act(() => {
+      tree.simulate('click');
+    });
+    act(() => {
+      tree.find('input').simulate('change', { target: { value: '全部' } });
+    });
+    act(() => {
+      tree.simulate('mouseenter');
+    });
+    act(() => {
+      tree.simulate('mouseenter').find('.gio-select-arrow').simulate('click');
+    });
+    act(() => {
+      tree.simulate('mouseleave');
+    });
+    expect(tree.find('input').text()).toBe('');
+    tree.unmount();
   });
 });
-
 describe('<Select /> callback functions should work as expected', () => {
   const onChange = (v, o) => {
     expect(v).toBe('all');
@@ -178,7 +210,9 @@ describe('<Select /> callback functions should work as expected', () => {
         onSelect={onSelect}
         onDeselect={onDeSelect}
         onSearch={onSearch}
+        placeholder="请选择"
         searchable
+        allowDeselect
         allowCustomOption
       />
     );
@@ -189,8 +223,12 @@ describe('<Select /> callback functions should work as expected', () => {
       tree.find('input').simulate('change', { target: { value: '全部' } });
     });
     act(() => {
-      document.querySelector('.gio-select-dropdown .gio-select-option').click();
+      document.querySelector('.gio-select-dropdown .gio-select-list-option').click();
     });
+    act(() => {
+      document.querySelector('.gio-select-dropdown .gio-select-list-option').click();
+    });
+    expect(document.querySelector('.gio-dropdown.gio-dropdown-hidden')).not.toBeNull();
     tree.unmount();
   });
 });
@@ -238,7 +276,7 @@ describe('<Select Multiple /> callback functions should work as expected on mult
       tree.find('input').simulate('change', { target: { value: '全部' } });
     });
     act(() => {
-      document.querySelector('.gio-select-dropdown .gio-select-option').click();
+      document.querySelector('.gio-select-dropdown .gio-select-list-option').click();
     });
     tree.unmount();
   });
@@ -262,6 +300,12 @@ describe('<Select allowCustomOptions multiple/> can create option by presee ente
     });
     expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(1);
     act(() => {
+      tree.find('input').simulate('keydown', { keyCode: 46 });
+    });
+    act(() => {
+      tree.find('input').simulate('keydown', { keyCode: 65 });
+    });
+    act(() => {
       tree.unmount();
     });
   });
@@ -279,7 +323,23 @@ describe('<Select /> when press delete key will unselect current option', () => 
     });
   });
 });
+describe('<Select /> tooltip', () => {
+  it('tooltip', () => {
+    const tree = mount(<Select searchable options={tooltipOptions} />);
+    act(() => {
+      tree.simulate('click');
+    });
+    expect(document.querySelector('.gio-tooltip')).toBe(null);
+    act(() => {
+      document.querySelector('.gio-select-dropdown').querySelectorAll('.gio-select-list-option')[0].click();
+    });
+    // expect(wrapper.find('.gio-tooltip-inner-title').text()).toBe('这是一个很长的文字');
 
+    act(() => {
+      tree.unmount();
+    });
+  });
+});
 describe('<Select /> when press delete key will unselect current option', () => {
   it('should be able to create by enter', () => {
     const onDeSelect = (v, o) => {
@@ -317,7 +377,7 @@ describe('<Select /> deselect list', () => {
       tree.find('input').simulate('change', { target: { value: '全部' } });
     });
     act(() => {
-      document.querySelector('.gio-select-dropdown').querySelectorAll('.gio-select-option')[0].click();
+      document.querySelector('.gio-select-dropdown').querySelectorAll('.gio-select-list-option')[0].click();
     });
     tree.unmount();
   });
@@ -342,7 +402,7 @@ describe('<Select /> deselect list', () => {
       tree.find('input').simulate('change', { target: { value: '全部' } });
     });
     act(() => {
-      document.querySelector('.gio-select-dropdown').querySelectorAll('.gio-select-option')[0].click();
+      document.querySelector('.gio-select-dropdown').querySelectorAll('.gio-select-list-option')[0].click();
     });
   });
 });
