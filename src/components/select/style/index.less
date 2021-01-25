@@ -3,6 +3,7 @@
 @gio-prefix: ~'@{component-prefix}';
 @select-prefix-cls: ~'@{component-prefix}-select';
 @select-input-fontSize: 14px;
+@color-font-list-primary-normal: @palette-black-6; // $color-black-6
 
 .@{select-prefix-cls} {
   position: relative;
@@ -21,7 +22,6 @@
     padding: 0 32px 5px 8px;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: @background-color-base;
     border-radius: @radius-border-small;
     transition: all 0.2s;
 
@@ -31,15 +31,13 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #ebedf5;
+      background: @palette-gray-3;
     }
   }
 
   &-values-wrapper {
     position: relative;
     width: 100%;
-    // margin-top: -2px;
-    // line-height: 24px;
   }
 
   &-bordered {
@@ -52,6 +50,17 @@
 
   &:not(&-bordered):not(&-disabled):hover {
     background-color: @color-background-button-default-hover;
+    border: 1px solid transparent;
+  }
+
+  &-focused:not(&-bordered):not(&-disabled) {
+    background-color: @color-background-tree-normal;
+    border: 1px solid @color-background-button-primary-hover;
+    border-radius: 4px;
+  }
+
+  &-focused {
+    box-shadow: 0 0 6px 0 #c0c4d3;
   }
 
   &-arrow {
@@ -63,6 +72,11 @@
     justify-content: center;
     height: 100%;
     color: #a3adc8;
+    transition: all 0.2s;
+
+    &-focused {
+      transform: rotate(-180deg);
+    }
   }
 
   &-item {
@@ -83,11 +97,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    color: #adb2c2;
+    color: @palette-black-3;
     opacity: 0.5;
   }
 
   &-small {
+    &-input {
+      line-height: 20px;
+    }
     .@{select-prefix-cls} {
       &-selector {
         min-height: 28px;
@@ -95,13 +112,13 @@
         padding: 0 32px 2px 8px;
       }
 
-      // &-values-wrapper {
-      //   margin-top: -1px;
-      //   line-height: 24px;
-      // }
+      &-values-wrapper {
+        // margin-top: -1px;
+        line-height: 20px;
+      }
 
       &-item {
-        margin-top: 3px;
+        margin-top: 5px;
         margin-left: 4px;
       }
     }
@@ -118,9 +135,8 @@
       // &-values-wrapper {
       //   line-height: 24px;
       // }
-
       &-item {
-        margin-top: 8px;
+        margin-top: 9px;
         margin-left: 8px;
       }
     }
@@ -131,7 +147,7 @@
       pointer-events: none;
     }
 
-    color: #d3d7e7;
+    color: @palette-gray-5;
     text-shadow: none;
     background: @color-background-input-disable;
     border-color: @color-border-input-disable;
@@ -140,7 +156,6 @@
 
   &-focused&-bordered {
     border: 1px solid @color-border-input-active;
-    box-shadow: @shadow-tabs;
   }
 
   &-focused:not(&-bordered) {
@@ -179,6 +194,7 @@
 
       &-input {
         position: absolute;
+        top: 1px;
         left: 0;
         opacity: 1;
       }
@@ -189,6 +205,7 @@
     .@{gio-prefix} {
       &-dropdown-content {
         padding: 0;
+        box-shadow: 0 6px 14px 0 rgba(223, 226, 237, 0.8);
       }
     }
   }
@@ -206,4 +223,61 @@
       margin-bottom: 40px;
     }
   }
+}
+
+.@{select-prefix-cls}-list {
+  box-sizing: border-box;
+  min-width: 160px;
+  padding: 16px 8px;
+}
+
+.@{select-prefix-cls}-list-option-container {
+  height: 44px;
+}
+
+.@{select-prefix-cls}-list-option {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-top: 4px;
+  padding: 0 25px 0 16px;
+  overflow: hidden;
+  color: @color-font-list-primary-normal;
+  font-size: 14px;
+  line-height: 40px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:not(&-disabled):hover {
+    color: @color-background-button-primary-hover;
+    background-color: @palette-gray-3;
+  }
+
+  &-disabled {
+    & > * {
+      pointer-events: none;
+    }
+
+    color: @palette-gray-5;
+    text-shadow: none;
+    background: @color-background-input-disable;
+    border-color: @color-border-input-disable;
+    cursor: not-allowed !important;
+  }
+
+  &-isSelected {
+    color: @color-background-button-primary-hover;
+    background-color: @palette-gray-3;
+  }
+}
+
+.@{select-prefix-cls}-list-group {
+  padding: 6px 16px;
+  color: @color-background-button-primary-hover;
+  font-size: 12px;
+  line-height: 20px;
 }
