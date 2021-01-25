@@ -4,6 +4,7 @@
   "description": "GrowingIO Design components",
   "repository": "https://github.com/growingio/gio-design.git",
   "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
+  "main": "./es/index.js",
   "module": "./es/index.js",
   "types": "./es/index.d.ts",
   "files": [
