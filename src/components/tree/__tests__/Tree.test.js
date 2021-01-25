@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { CaretDownOutlined } from '@gio-design/icons';
+import { DownFilled } from '@gio-design/icons';
 import Tree from '../index';
 
 const treeData = [
@@ -57,53 +57,29 @@ const treeData2 = [
       {
         title: 'node2',
         key: '3',
-      }
-    ]
-  }
+      },
+    ],
+  },
 ];
 
 describe('Tree', () => {
   it('icon and switcherIcon of Tree should render correctly', () => {
-    const wrapper = mount(
-      <Tree
-        treeData={treeData}
-        showIcon
-      />,
-    );
+    const wrapper = mount(<Tree treeData={treeData} showIcon />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   it('switcherIcon in Tree should not render at leaf nodes', () => {
-    const wrapper = mount(
-      <Tree
-        switcherIcon={<i className="switcherIcon" />}
-        defaultExpandAll
-        treeData={treeData2}
-      />,
-    );
+    const wrapper = mount(<Tree switcherIcon={<i className="switcherIcon" />} defaultExpandAll treeData={treeData2} />);
     expect(wrapper.find('.switcherIcon').length).toBe(1);
   });
 
   it('switcherIcon in Tree could be string', () => {
-    const wrapper = mount(
-      <Tree
-        switcherIcon='switcherIcon'
-        defaultExpandAll
-        treeData={treeData2}
-      />,
-    );
+    const wrapper = mount(<Tree switcherIcon="switcherIcon" defaultExpandAll treeData={treeData2} />);
     expect(wrapper.render()).toMatchSnapshot();
   });
 
   it('switcherIcon in Tree could be React.ReactNode', () => {
-    const wrapper = mount(
-      <Tree
-        switcherIcon={<CaretDownOutlined />}
-        defaultExpandAll
-        treeData={treeData2}
-        prefixCls='xxx'
-      />,
-    );
+    const wrapper = mount(<Tree switcherIcon={<DownFilled />} defaultExpandAll treeData={treeData2} prefixCls="xxx" />);
     expect(wrapper.render()).toMatchSnapshot();
   });
-})
+});

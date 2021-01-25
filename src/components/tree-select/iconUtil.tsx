@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  CaretDownOutlined,
-  CheckOutlined,
-  CloseOutlined,
-  CloseCircleFilled
-} from '@gio-design/icons'
+import { DownFilled, CheckOutlined, CloseOutlined, CloseCircleFilled } from '@gio-design/icons';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function getIcons({
@@ -36,7 +31,7 @@ export default function getIcons({
   } else {
     const iconCls = `${prefixCls}-suffix`;
     mergedSuffixIcon = () => {
-      return <CaretDownOutlined className={iconCls} size="16px" />;
+      return <DownFilled className={iconCls} size="16px" />;
     };
   }
 
