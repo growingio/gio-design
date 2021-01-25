@@ -179,7 +179,7 @@ export interface IStep {
   cancelButtonProps?: ButtonProps;
   /**
    传递给上一步按钮的 `props` 元素
-    @deprecated  
+    @deprecated
    */
   backButtonProps?: ButtonProps;
   /**
@@ -192,7 +192,7 @@ export interface IStep {
   cancelText?: string;
   /**
    传递给上一步按钮的显示文案
-    @deprecated  
+    @deprecated
    */
   backText?: string;
 }
