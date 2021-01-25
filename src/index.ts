@@ -75,19 +75,15 @@ export {
 } from './components/select';
 export { default as Form, FormLayout, FormProps } from './components/form';
 export { default as TimePicker, TimePickerProps } from './components/time-picker';
-export { default as Grid, GridProps } from './components/grid';
+export { default as Grid, GridProps, Row, Col, RowProps, ColProps } from './components/grid';
 export { default as Cascader, CascaderProps } from './components/cascader';
-export { 
+export {
   default as DatePicker,
   DateRangePicker,
   DatePickerProps,
   DateRangePickerProps,
 } from './components/date-picker';
-export {
-  default as Space,
-  SpaceProps,
-  ItemProps,
-} from './components/space';
+export { default as Space, SpaceProps, ItemProps } from './components/space';
 
 // provide config context
 export { ConfigContext, ConfigConsumer, withConfigConsumer } from './components/config-provider';
