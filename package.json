@@ -4,6 +4,7 @@
   "description": "GrowingIO Design components",
   "repository": "https://github.com/growingio/gio-design.git",
   "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
+  "main": "./es/index.js",
   "module": "./es/index.js",
   "types": "./es/index.d.ts",
   "files": [
@@ -106,6 +107,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-test-renderer": "^17.0.1",
+    "storybook-addon-designs": "^5.4.3",
     "stylelint": "^13.6.0",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-rational-order": "^0.1.2",
