@@ -18,10 +18,6 @@
 
 * **modal:** replace back login with cancal
 
-* Update interface.ts
-
-Co-authored-by: Dan <liudan548326@yeah.net>
-
 
 
 ## [21.1.2](https://github.com/growingio/gio-design/compare/v21.1.1...v21.1.2) (2021-01-14)
