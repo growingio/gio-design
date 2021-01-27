@@ -42,12 +42,14 @@
 
   &-group {
     &-name {
-      position: -webkit-sticky;
-      position: sticky;
+      // position: -webkit-sticky;
+      // position: sticky;
+      // padding: 8px 12px 4px;
+
       top: 0;
       margin-top: 6px;
       padding: 0 12px;
-      color: #999;
+      color: #1248e9;
       font-size: 12px;
       background: #fff;
     }
@@ -55,11 +57,9 @@
     &:not(:first-child)::before {
       position: relative;
       top: 0;
-      left: 15px;
       display: block;
-      width: calc(100% - 30px);
       height: 0;
-      margin: 6px 0;
+      margin: 6px 12px;
       border-top: 1px solid #dce0f2;
       content: '';
     }
@@ -106,6 +106,10 @@
 
   &-item {
     outline: none;
+
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
 
     &[data-checked='true'],
     &[data-child-checked='true'] {

@@ -32,4 +32,24 @@ describe('Testing Toggles', () => {
     expect(wrapper.exists('.gio-toggles-suffixContent')).toBe(true);
     expect(wrapper.find('.gio-toggles-suffixContent').text()).toEqual('开');
   });
+
+  it('checked not equal to undefined', () => {
+    const onChange = jest.fn();
+    const wrapper = mount(<Toggles checked onChange={onChange} />);
+    expect(wrapper.exists('.gio-toggles-checked')).toBeTruthy();
+    wrapper.find('.gio-toggles').at(0).simulate('click');
+    expect(onChange).toHaveBeenCalled();
+  });
+
+  it('toggles component should be disabled', () => {
+    const wrapper = mount(<Toggles disabled />);
+    expect(wrapper.exists('.gio-toggles-disabled')).toBeTruthy();
+  });
+
+  it('when users click the toggles component, it should be executed event function', () => {
+    const onClick = jest.fn();
+    const wrapper = mount(<Toggles defaultChecked onClick={onClick} />);
+    wrapper.find('.gio-toggles').at(0).simulate('click');
+    expect(onClick).toHaveBeenCalled();
+  });
 });

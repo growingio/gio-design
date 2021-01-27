@@ -1225,12 +1225,13 @@ initialize {
                                         "namespace": "http://www.w3.org/1999/xhtml",
                                         "next": Object {
                                           "attribs": Object {
+                                            "aria-hidden": "true",
                                             "class": "gio-select-arrow",
                                           },
                                           "children": Array [
                                             Object {
                                               "attribs": Object {
-                                                "class": "gio-icon",
+                                                "class": "gio-icon gio-select-icon-arrow",
                                               },
                                               "children": Array [
                                                 Object {
@@ -1443,9 +1444,11 @@ initialize {
                                           "prev": [Circular],
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
+                                            "aria-hidden": undefined,
                                             "class": undefined,
                                           },
                                           "x-attribsPrefix": Object {
+                                            "aria-hidden": undefined,
                                             "class": undefined,
                                           },
                                         },
@@ -1461,12 +1464,13 @@ initialize {
                                       },
                                       Object {
                                         "attribs": Object {
+                                          "aria-hidden": "true",
                                           "class": "gio-select-arrow",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon",
+                                              "class": "gio-icon gio-select-icon-arrow",
                                             },
                                             "children": Array [
                                               Object {
@@ -1761,9 +1765,11 @@ initialize {
                                         },
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-hidden": undefined,
                                           "class": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-hidden": undefined,
                                           "class": undefined,
                                         },
                                       },
@@ -2270,12 +2276,13 @@ initialize {
                                           "namespace": "http://www.w3.org/1999/xhtml",
                                           "next": Object {
                                             "attribs": Object {
+                                              "aria-hidden": "true",
                                               "class": "gio-select-arrow",
                                             },
                                             "children": Array [
                                               Object {
                                                 "attribs": Object {
-                                                  "class": "gio-icon",
+                                                  "class": "gio-icon gio-select-icon-arrow",
                                                 },
                                                 "children": Array [
                                                   Object {
@@ -2488,9 +2495,11 @@ initialize {
                                             "prev": [Circular],
                                             "type": "tag",
                                             "x-attribsNamespace": Object {
+                                              "aria-hidden": undefined,
                                               "class": undefined,
                                             },
                                             "x-attribsPrefix": Object {
+                                              "aria-hidden": undefined,
                                               "class": undefined,
                                             },
                                           },
@@ -2506,12 +2515,13 @@ initialize {
                                         },
                                         Object {
                                           "attribs": Object {
+                                            "aria-hidden": "true",
                                             "class": "gio-select-arrow",
                                           },
                                           "children": Array [
                                             Object {
                                               "attribs": Object {
-                                                "class": "gio-icon",
+                                                "class": "gio-icon gio-select-icon-arrow",
                                               },
                                               "children": Array [
                                                 Object {
@@ -2806,9 +2816,11 @@ initialize {
                                           },
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
+                                            "aria-hidden": undefined,
                                             "class": undefined,
                                           },
                                           "x-attribsPrefix": Object {
+                                            "aria-hidden": undefined,
                                             "class": undefined,
                                           },
                                         },
@@ -4193,12 +4205,13 @@ initialize {
                                       "namespace": "http://www.w3.org/1999/xhtml",
                                       "next": Object {
                                         "attribs": Object {
+                                          "aria-hidden": "true",
                                           "class": "gio-select-arrow",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon",
+                                              "class": "gio-icon gio-select-icon-arrow",
                                             },
                                             "children": Array [
                                               Object {
@@ -4411,9 +4424,11 @@ initialize {
                                         "prev": [Circular],
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-hidden": undefined,
                                           "class": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-hidden": undefined,
                                           "class": undefined,
                                         },
                                       },
@@ -4429,12 +4444,13 @@ initialize {
                                     },
                                     Object {
                                       "attribs": Object {
+                                        "aria-hidden": "true",
                                         "class": "gio-select-arrow",
                                       },
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
-                                            "class": "gio-icon",
+                                            "class": "gio-icon gio-select-icon-arrow",
                                           },
                                           "children": Array [
                                             Object {
@@ -4729,9 +4745,11 @@ initialize {
                                       },
                                       "type": "tag",
                                       "x-attribsNamespace": Object {
+                                        "aria-hidden": undefined,
                                         "class": undefined,
                                       },
                                       "x-attribsPrefix": Object {
+                                        "aria-hidden": undefined,
                                         "class": undefined,
                                       },
                                     },
@@ -5238,12 +5256,13 @@ initialize {
                                         "namespace": "http://www.w3.org/1999/xhtml",
                                         "next": Object {
                                           "attribs": Object {
+                                            "aria-hidden": "true",
                                             "class": "gio-select-arrow",
                                           },
                                           "children": Array [
                                             Object {
                                               "attribs": Object {
-                                                "class": "gio-icon",
+                                                "class": "gio-icon gio-select-icon-arrow",
                                               },
                                               "children": Array [
                                                 Object {
@@ -5456,9 +5475,11 @@ initialize {
                                           "prev": [Circular],
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
+                                            "aria-hidden": undefined,
                                             "class": undefined,
                                           },
                                           "x-attribsPrefix": Object {
+                                            "aria-hidden": undefined,
                                             "class": undefined,
                                           },
                                         },
@@ -5474,12 +5495,13 @@ initialize {
                                       },
                                       Object {
                                         "attribs": Object {
+                                          "aria-hidden": "true",
                                           "class": "gio-select-arrow",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon",
+                                              "class": "gio-icon gio-select-icon-arrow",
                                             },
                                             "children": Array [
                                               Object {
@@ -5774,9 +5796,11 @@ initialize {
                                         },
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-hidden": undefined,
                                           "class": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-hidden": undefined,
                                           "class": undefined,
                                         },
                                       },
@@ -6960,12 +6984,13 @@ initialize {
                                     "namespace": "http://www.w3.org/1999/xhtml",
                                     "next": Object {
                                       "attribs": Object {
+                                        "aria-hidden": "true",
                                         "class": "gio-select-arrow",
                                       },
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
-                                            "class": "gio-icon",
+                                            "class": "gio-icon gio-select-icon-arrow",
                                           },
                                           "children": Array [
                                             Object {
@@ -7178,9 +7203,11 @@ initialize {
                                       "prev": [Circular],
                                       "type": "tag",
                                       "x-attribsNamespace": Object {
+                                        "aria-hidden": undefined,
                                         "class": undefined,
                                       },
                                       "x-attribsPrefix": Object {
+                                        "aria-hidden": undefined,
                                         "class": undefined,
                                       },
                                     },
@@ -7196,12 +7223,13 @@ initialize {
                                   },
                                   Object {
                                     "attribs": Object {
+                                      "aria-hidden": "true",
                                       "class": "gio-select-arrow",
                                     },
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
-                                          "class": "gio-icon",
+                                          "class": "gio-icon gio-select-icon-arrow",
                                         },
                                         "children": Array [
                                           Object {
@@ -7496,9 +7524,11 @@ initialize {
                                     },
                                     "type": "tag",
                                     "x-attribsNamespace": Object {
+                                      "aria-hidden": undefined,
                                       "class": undefined,
                                     },
                                     "x-attribsPrefix": Object {
+                                      "aria-hidden": undefined,
                                       "class": undefined,
                                     },
                                   },
@@ -8005,12 +8035,13 @@ initialize {
                                       "namespace": "http://www.w3.org/1999/xhtml",
                                       "next": Object {
                                         "attribs": Object {
+                                          "aria-hidden": "true",
                                           "class": "gio-select-arrow",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon",
+                                              "class": "gio-icon gio-select-icon-arrow",
                                             },
                                             "children": Array [
                                               Object {
@@ -8223,9 +8254,11 @@ initialize {
                                         "prev": [Circular],
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-hidden": undefined,
                                           "class": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-hidden": undefined,
                                           "class": undefined,
                                         },
                                       },
@@ -8241,12 +8274,13 @@ initialize {
                                     },
                                     Object {
                                       "attribs": Object {
+                                        "aria-hidden": "true",
                                         "class": "gio-select-arrow",
                                       },
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
-                                            "class": "gio-icon",
+                                            "class": "gio-icon gio-select-icon-arrow",
                                           },
                                           "children": Array [
                                             Object {
@@ -8541,9 +8575,11 @@ initialize {
                                       },
                                       "type": "tag",
                                       "x-attribsNamespace": Object {
+                                        "aria-hidden": undefined,
                                         "class": undefined,
                                       },
                                       "x-attribsPrefix": Object {
+                                        "aria-hidden": undefined,
                                         "class": undefined,
                                       },
                                     },
@@ -9927,12 +9963,13 @@ initialize {
                                   "namespace": "http://www.w3.org/1999/xhtml",
                                   "next": Object {
                                     "attribs": Object {
+                                      "aria-hidden": "true",
                                       "class": "gio-select-arrow",
                                     },
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
-                                          "class": "gio-icon",
+                                          "class": "gio-icon gio-select-icon-arrow",
                                         },
                                         "children": Array [
                                           Object {
@@ -10145,9 +10182,11 @@ initialize {
                                     "prev": [Circular],
                                     "type": "tag",
                                     "x-attribsNamespace": Object {
+                                      "aria-hidden": undefined,
                                       "class": undefined,
                                     },
                                     "x-attribsPrefix": Object {
+                                      "aria-hidden": undefined,
                                       "class": undefined,
                                     },
                                   },
@@ -10163,12 +10202,13 @@ initialize {
                                 },
                                 Object {
                                   "attribs": Object {
+                                    "aria-hidden": "true",
                                     "class": "gio-select-arrow",
                                   },
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
-                                        "class": "gio-icon",
+                                        "class": "gio-icon gio-select-icon-arrow",
                                       },
                                       "children": Array [
                                         Object {
@@ -10463,9 +10503,11 @@ initialize {
                                   },
                                   "type": "tag",
                                   "x-attribsNamespace": Object {
+                                    "aria-hidden": undefined,
                                     "class": undefined,
                                   },
                                   "x-attribsPrefix": Object {
+                                    "aria-hidden": undefined,
                                     "class": undefined,
                                   },
                                 },
@@ -10972,12 +11014,13 @@ initialize {
                                     "namespace": "http://www.w3.org/1999/xhtml",
                                     "next": Object {
                                       "attribs": Object {
+                                        "aria-hidden": "true",
                                         "class": "gio-select-arrow",
                                       },
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
-                                            "class": "gio-icon",
+                                            "class": "gio-icon gio-select-icon-arrow",
                                           },
                                           "children": Array [
                                             Object {
@@ -11190,9 +11233,11 @@ initialize {
                                       "prev": [Circular],
                                       "type": "tag",
                                       "x-attribsNamespace": Object {
+                                        "aria-hidden": undefined,
                                         "class": undefined,
                                       },
                                       "x-attribsPrefix": Object {
+                                        "aria-hidden": undefined,
                                         "class": undefined,
                                       },
                                     },
@@ -11208,12 +11253,13 @@ initialize {
                                   },
                                   Object {
                                     "attribs": Object {
+                                      "aria-hidden": "true",
                                       "class": "gio-select-arrow",
                                     },
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
-                                          "class": "gio-icon",
+                                          "class": "gio-icon gio-select-icon-arrow",
                                         },
                                         "children": Array [
                                           Object {
@@ -11508,9 +11554,11 @@ initialize {
                                     },
                                     "type": "tag",
                                     "x-attribsNamespace": Object {
+                                      "aria-hidden": undefined,
                                       "class": undefined,
                                     },
                                     "x-attribsPrefix": Object {
+                                      "aria-hidden": undefined,
                                       "class": undefined,
                                     },
                                   },
@@ -12894,12 +12942,13 @@ initialize {
                                 "namespace": "http://www.w3.org/1999/xhtml",
                                 "next": Object {
                                   "attribs": Object {
+                                    "aria-hidden": "true",
                                     "class": "gio-select-arrow",
                                   },
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
-                                        "class": "gio-icon",
+                                        "class": "gio-icon gio-select-icon-arrow",
                                       },
                                       "children": Array [
                                         Object {
@@ -13112,9 +13161,11 @@ initialize {
                                   "prev": [Circular],
                                   "type": "tag",
                                   "x-attribsNamespace": Object {
+                                    "aria-hidden": undefined,
                                     "class": undefined,
                                   },
                                   "x-attribsPrefix": Object {
+                                    "aria-hidden": undefined,
                                     "class": undefined,
                                   },
                                 },
@@ -13130,12 +13181,13 @@ initialize {
                               },
                               Object {
                                 "attribs": Object {
+                                  "aria-hidden": "true",
                                   "class": "gio-select-arrow",
                                 },
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
-                                      "class": "gio-icon",
+                                      "class": "gio-icon gio-select-icon-arrow",
                                     },
                                     "children": Array [
                                       Object {
@@ -13430,9 +13482,11 @@ initialize {
                                 },
                                 "type": "tag",
                                 "x-attribsNamespace": Object {
+                                  "aria-hidden": undefined,
                                   "class": undefined,
                                 },
                                 "x-attribsPrefix": Object {
+                                  "aria-hidden": undefined,
                                   "class": undefined,
                                 },
                               },
@@ -13939,12 +13993,13 @@ initialize {
                                   "namespace": "http://www.w3.org/1999/xhtml",
                                   "next": Object {
                                     "attribs": Object {
+                                      "aria-hidden": "true",
                                       "class": "gio-select-arrow",
                                     },
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
-                                          "class": "gio-icon",
+                                          "class": "gio-icon gio-select-icon-arrow",
                                         },
                                         "children": Array [
                                           Object {
@@ -14157,9 +14212,11 @@ initialize {
                                     "prev": [Circular],
                                     "type": "tag",
                                     "x-attribsNamespace": Object {
+                                      "aria-hidden": undefined,
                                       "class": undefined,
                                     },
                                     "x-attribsPrefix": Object {
+                                      "aria-hidden": undefined,
                                       "class": undefined,
                                     },
                                   },
@@ -14175,12 +14232,13 @@ initialize {
                                 },
                                 Object {
                                   "attribs": Object {
+                                    "aria-hidden": "true",
                                     "class": "gio-select-arrow",
                                   },
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
-                                        "class": "gio-icon",
+                                        "class": "gio-icon gio-select-icon-arrow",
                                       },
                                       "children": Array [
                                         Object {
@@ -14475,9 +14533,11 @@ initialize {
                                   },
                                   "type": "tag",
                                   "x-attribsNamespace": Object {
+                                    "aria-hidden": undefined,
                                     "class": undefined,
                                   },
                                   "x-attribsPrefix": Object {
+                                    "aria-hidden": undefined,
                                     "class": undefined,
                                   },
                                 },
@@ -15861,12 +15921,13 @@ initialize {
                               "namespace": "http://www.w3.org/1999/xhtml",
                               "next": Object {
                                 "attribs": Object {
+                                  "aria-hidden": "true",
                                   "class": "gio-select-arrow",
                                 },
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
-                                      "class": "gio-icon",
+                                      "class": "gio-icon gio-select-icon-arrow",
                                     },
                                     "children": Array [
                                       Object {
@@ -16079,9 +16140,11 @@ initialize {
                                 "prev": [Circular],
                                 "type": "tag",
                                 "x-attribsNamespace": Object {
+                                  "aria-hidden": undefined,
                                   "class": undefined,
                                 },
                                 "x-attribsPrefix": Object {
+                                  "aria-hidden": undefined,
                                   "class": undefined,
                                 },
                               },
@@ -16097,12 +16160,13 @@ initialize {
                             },
                             Object {
                               "attribs": Object {
+                                "aria-hidden": "true",
                                 "class": "gio-select-arrow",
                               },
                               "children": Array [
                                 Object {
                                   "attribs": Object {
-                                    "class": "gio-icon",
+                                    "class": "gio-icon gio-select-icon-arrow",
                                   },
                                   "children": Array [
                                     Object {
@@ -16397,9 +16461,11 @@ initialize {
                               },
                               "type": "tag",
                               "x-attribsNamespace": Object {
+                                "aria-hidden": undefined,
                                 "class": undefined,
                               },
                               "x-attribsPrefix": Object {
+                                "aria-hidden": undefined,
                                 "class": undefined,
                               },
                             },
@@ -16906,12 +16972,13 @@ initialize {
                                 "namespace": "http://www.w3.org/1999/xhtml",
                                 "next": Object {
                                   "attribs": Object {
+                                    "aria-hidden": "true",
                                     "class": "gio-select-arrow",
                                   },
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
-                                        "class": "gio-icon",
+                                        "class": "gio-icon gio-select-icon-arrow",
                                       },
                                       "children": Array [
                                         Object {
@@ -17124,9 +17191,11 @@ initialize {
                                   "prev": [Circular],
                                   "type": "tag",
                                   "x-attribsNamespace": Object {
+                                    "aria-hidden": undefined,
                                     "class": undefined,
                                   },
                                   "x-attribsPrefix": Object {
+                                    "aria-hidden": undefined,
                                     "class": undefined,
                                   },
                                 },
@@ -17142,12 +17211,13 @@ initialize {
                               },
                               Object {
                                 "attribs": Object {
+                                  "aria-hidden": "true",
                                   "class": "gio-select-arrow",
                                 },
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
-                                      "class": "gio-icon",
+                                      "class": "gio-icon gio-select-icon-arrow",
                                     },
                                     "children": Array [
                                       Object {
@@ -17442,9 +17512,11 @@ initialize {
                                 },
                                 "type": "tag",
                                 "x-attribsNamespace": Object {
+                                  "aria-hidden": undefined,
                                   "class": undefined,
                                 },
                                 "x-attribsPrefix": Object {
+                                  "aria-hidden": undefined,
                                   "class": undefined,
                                 },
                               },
@@ -18828,12 +18900,13 @@ initialize {
                             "namespace": "http://www.w3.org/1999/xhtml",
                             "next": Object {
                               "attribs": Object {
+                                "aria-hidden": "true",
                                 "class": "gio-select-arrow",
                               },
                               "children": Array [
                                 Object {
                                   "attribs": Object {
-                                    "class": "gio-icon",
+                                    "class": "gio-icon gio-select-icon-arrow",
                                   },
                                   "children": Array [
                                     Object {
@@ -19046,9 +19119,11 @@ initialize {
                               "prev": [Circular],
                               "type": "tag",
                               "x-attribsNamespace": Object {
+                                "aria-hidden": undefined,
                                 "class": undefined,
                               },
                               "x-attribsPrefix": Object {
+                                "aria-hidden": undefined,
                                 "class": undefined,
                               },
                             },
@@ -19064,12 +19139,13 @@ initialize {
                           },
                           Object {
                             "attribs": Object {
+                              "aria-hidden": "true",
                               "class": "gio-select-arrow",
                             },
                             "children": Array [
                               Object {
                                 "attribs": Object {
-                                  "class": "gio-icon",
+                                  "class": "gio-icon gio-select-icon-arrow",
                                 },
                                 "children": Array [
                                   Object {
@@ -19364,9 +19440,11 @@ initialize {
                             },
                             "type": "tag",
                             "x-attribsNamespace": Object {
+                              "aria-hidden": undefined,
                               "class": undefined,
                             },
                             "x-attribsPrefix": Object {
+                              "aria-hidden": undefined,
                               "class": undefined,
                             },
                           },
@@ -19873,12 +19951,13 @@ initialize {
                               "namespace": "http://www.w3.org/1999/xhtml",
                               "next": Object {
                                 "attribs": Object {
+                                  "aria-hidden": "true",
                                   "class": "gio-select-arrow",
                                 },
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
-                                      "class": "gio-icon",
+                                      "class": "gio-icon gio-select-icon-arrow",
                                     },
                                     "children": Array [
                                       Object {
@@ -20091,9 +20170,11 @@ initialize {
                                 "prev": [Circular],
                                 "type": "tag",
                                 "x-attribsNamespace": Object {
+                                  "aria-hidden": undefined,
                                   "class": undefined,
                                 },
                                 "x-attribsPrefix": Object {
+                                  "aria-hidden": undefined,
                                   "class": undefined,
                                 },
                               },
@@ -20109,12 +20190,13 @@ initialize {
                             },
                             Object {
                               "attribs": Object {
+                                "aria-hidden": "true",
                                 "class": "gio-select-arrow",
                               },
                               "children": Array [
                                 Object {
                                   "attribs": Object {
-                                    "class": "gio-icon",
+                                    "class": "gio-icon gio-select-icon-arrow",
                                   },
                                   "children": Array [
                                     Object {
@@ -20409,9 +20491,11 @@ initialize {
                               },
                               "type": "tag",
                               "x-attribsNamespace": Object {
+                                "aria-hidden": undefined,
                                 "class": undefined,
                               },
                               "x-attribsPrefix": Object {
+                                "aria-hidden": undefined,
                                 "class": undefined,
                               },
                             },
@@ -21795,12 +21879,13 @@ initialize {
                           "namespace": "http://www.w3.org/1999/xhtml",
                           "next": Object {
                             "attribs": Object {
+                              "aria-hidden": "true",
                               "class": "gio-select-arrow",
                             },
                             "children": Array [
                               Object {
                                 "attribs": Object {
-                                  "class": "gio-icon",
+                                  "class": "gio-icon gio-select-icon-arrow",
                                 },
                                 "children": Array [
                                   Object {
@@ -22013,9 +22098,11 @@ initialize {
                             "prev": [Circular],
                             "type": "tag",
                             "x-attribsNamespace": Object {
+                              "aria-hidden": undefined,
                               "class": undefined,
                             },
                             "x-attribsPrefix": Object {
+                              "aria-hidden": undefined,
                               "class": undefined,
                             },
                           },
@@ -22031,12 +22118,13 @@ initialize {
                         },
                         Object {
                           "attribs": Object {
+                            "aria-hidden": "true",
                             "class": "gio-select-arrow",
                           },
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "class": "gio-icon",
+                                "class": "gio-icon gio-select-icon-arrow",
                               },
                               "children": Array [
                                 Object {
@@ -22331,9 +22419,11 @@ initialize {
                           },
                           "type": "tag",
                           "x-attribsNamespace": Object {
+                            "aria-hidden": undefined,
                             "class": undefined,
                           },
                           "x-attribsPrefix": Object {
+                            "aria-hidden": undefined,
                             "class": undefined,
                           },
                         },
@@ -22840,12 +22930,13 @@ initialize {
                             "namespace": "http://www.w3.org/1999/xhtml",
                             "next": Object {
                               "attribs": Object {
+                                "aria-hidden": "true",
                                 "class": "gio-select-arrow",
                               },
                               "children": Array [
                                 Object {
                                   "attribs": Object {
-                                    "class": "gio-icon",
+                                    "class": "gio-icon gio-select-icon-arrow",
                                   },
                                   "children": Array [
                                     Object {
@@ -23058,9 +23149,11 @@ initialize {
                               "prev": [Circular],
                               "type": "tag",
                               "x-attribsNamespace": Object {
+                                "aria-hidden": undefined,
                                 "class": undefined,
                               },
                               "x-attribsPrefix": Object {
+                                "aria-hidden": undefined,
                                 "class": undefined,
                               },
                             },
@@ -23076,12 +23169,13 @@ initialize {
                           },
                           Object {
                             "attribs": Object {
+                              "aria-hidden": "true",
                               "class": "gio-select-arrow",
                             },
                             "children": Array [
                               Object {
                                 "attribs": Object {
-                                  "class": "gio-icon",
+                                  "class": "gio-icon gio-select-icon-arrow",
                                 },
                                 "children": Array [
                                   Object {
@@ -23376,9 +23470,11 @@ initialize {
                             },
                             "type": "tag",
                             "x-attribsNamespace": Object {
+                              "aria-hidden": undefined,
                               "class": undefined,
                             },
                             "x-attribsPrefix": Object {
+                              "aria-hidden": undefined,
                               "class": undefined,
                             },
                           },
@@ -24197,12 +24293,13 @@ initialize {
                         "namespace": "http://www.w3.org/1999/xhtml",
                         "next": Object {
                           "attribs": Object {
+                            "aria-hidden": "true",
                             "class": "gio-select-arrow",
                           },
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "class": "gio-icon",
+                                "class": "gio-icon gio-select-icon-arrow",
                               },
                               "children": Array [
                                 Object {
@@ -24415,9 +24512,11 @@ initialize {
                           "prev": [Circular],
                           "type": "tag",
                           "x-attribsNamespace": Object {
+                            "aria-hidden": undefined,
                             "class": undefined,
                           },
                           "x-attribsPrefix": Object {
+                            "aria-hidden": undefined,
                             "class": undefined,
                           },
                         },
@@ -24433,12 +24532,13 @@ initialize {
                       },
                       Object {
                         "attribs": Object {
+                          "aria-hidden": "true",
                           "class": "gio-select-arrow",
                         },
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "gio-icon",
+                              "class": "gio-icon gio-select-icon-arrow",
                             },
                             "children": Array [
                               Object {
@@ -24733,9 +24833,11 @@ initialize {
                         },
                         "type": "tag",
                         "x-attribsNamespace": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                         "x-attribsPrefix": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                       },
@@ -25242,12 +25344,13 @@ initialize {
                           "namespace": "http://www.w3.org/1999/xhtml",
                           "next": Object {
                             "attribs": Object {
+                              "aria-hidden": "true",
                               "class": "gio-select-arrow",
                             },
                             "children": Array [
                               Object {
                                 "attribs": Object {
-                                  "class": "gio-icon",
+                                  "class": "gio-icon gio-select-icon-arrow",
                                 },
                                 "children": Array [
                                   Object {
@@ -25460,9 +25563,11 @@ initialize {
                             "prev": [Circular],
                             "type": "tag",
                             "x-attribsNamespace": Object {
+                              "aria-hidden": undefined,
                               "class": undefined,
                             },
                             "x-attribsPrefix": Object {
+                              "aria-hidden": undefined,
                               "class": undefined,
                             },
                           },
@@ -25478,12 +25583,13 @@ initialize {
                         },
                         Object {
                           "attribs": Object {
+                            "aria-hidden": "true",
                             "class": "gio-select-arrow",
                           },
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "class": "gio-icon",
+                                "class": "gio-icon gio-select-icon-arrow",
                               },
                               "children": Array [
                                 Object {
@@ -25778,9 +25884,11 @@ initialize {
                           },
                           "type": "tag",
                           "x-attribsNamespace": Object {
+                            "aria-hidden": undefined,
                             "class": undefined,
                           },
                           "x-attribsPrefix": Object {
+                            "aria-hidden": undefined,
                             "class": undefined,
                           },
                         },
@@ -27164,12 +27272,13 @@ initialize {
                       "namespace": "http://www.w3.org/1999/xhtml",
                       "next": Object {
                         "attribs": Object {
+                          "aria-hidden": "true",
                           "class": "gio-select-arrow",
                         },
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "gio-icon",
+                              "class": "gio-icon gio-select-icon-arrow",
                             },
                             "children": Array [
                               Object {
@@ -27382,9 +27491,11 @@ initialize {
                         "prev": [Circular],
                         "type": "tag",
                         "x-attribsNamespace": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                         "x-attribsPrefix": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                       },
@@ -27400,12 +27511,13 @@ initialize {
                     },
                     Object {
                       "attribs": Object {
+                        "aria-hidden": "true",
                         "class": "gio-select-arrow",
                       },
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "gio-icon",
+                            "class": "gio-icon gio-select-icon-arrow",
                           },
                           "children": Array [
                             Object {
@@ -27700,9 +27812,11 @@ initialize {
                       },
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                     },
@@ -28209,12 +28323,13 @@ initialize {
                         "namespace": "http://www.w3.org/1999/xhtml",
                         "next": Object {
                           "attribs": Object {
+                            "aria-hidden": "true",
                             "class": "gio-select-arrow",
                           },
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "class": "gio-icon",
+                                "class": "gio-icon gio-select-icon-arrow",
                               },
                               "children": Array [
                                 Object {
@@ -28427,9 +28542,11 @@ initialize {
                           "prev": [Circular],
                           "type": "tag",
                           "x-attribsNamespace": Object {
+                            "aria-hidden": undefined,
                             "class": undefined,
                           },
                           "x-attribsPrefix": Object {
+                            "aria-hidden": undefined,
                             "class": undefined,
                           },
                         },
@@ -28445,12 +28562,13 @@ initialize {
                       },
                       Object {
                         "attribs": Object {
+                          "aria-hidden": "true",
                           "class": "gio-select-arrow",
                         },
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "gio-icon",
+                              "class": "gio-icon gio-select-icon-arrow",
                             },
                             "children": Array [
                               Object {
@@ -28745,9 +28863,11 @@ initialize {
                         },
                         "type": "tag",
                         "x-attribsNamespace": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                         "x-attribsPrefix": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                       },
@@ -29931,12 +30051,13 @@ initialize {
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": Object {
                       "attribs": Object {
+                        "aria-hidden": "true",
                         "class": "gio-select-arrow",
                       },
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "gio-icon",
+                            "class": "gio-icon gio-select-icon-arrow",
                           },
                           "children": Array [
                             Object {
@@ -30149,9 +30270,11 @@ initialize {
                       "prev": [Circular],
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                     },
@@ -30167,12 +30290,13 @@ initialize {
                   },
                   Object {
                     "attribs": Object {
+                      "aria-hidden": "true",
                       "class": "gio-select-arrow",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-icon",
+                          "class": "gio-icon gio-select-icon-arrow",
                         },
                         "children": Array [
                           Object {
@@ -30467,9 +30591,11 @@ initialize {
                     },
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-hidden": undefined,
                       "class": undefined,
                     },
                   },
@@ -30976,12 +31102,13 @@ initialize {
                       "namespace": "http://www.w3.org/1999/xhtml",
                       "next": Object {
                         "attribs": Object {
+                          "aria-hidden": "true",
                           "class": "gio-select-arrow",
                         },
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "gio-icon",
+                              "class": "gio-icon gio-select-icon-arrow",
                             },
                             "children": Array [
                               Object {
@@ -31194,9 +31321,11 @@ initialize {
                         "prev": [Circular],
                         "type": "tag",
                         "x-attribsNamespace": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                         "x-attribsPrefix": Object {
+                          "aria-hidden": undefined,
                           "class": undefined,
                         },
                       },
@@ -31212,12 +31341,13 @@ initialize {
                     },
                     Object {
                       "attribs": Object {
+                        "aria-hidden": "true",
                         "class": "gio-select-arrow",
                       },
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "gio-icon",
+                            "class": "gio-icon gio-select-icon-arrow",
                           },
                           "children": Array [
                             Object {
@@ -31512,9 +31642,11 @@ initialize {
                       },
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-hidden": undefined,
                         "class": undefined,
                       },
                     },
