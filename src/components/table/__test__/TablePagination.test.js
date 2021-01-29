@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { mount } from 'enzyme';
@@ -43,15 +44,25 @@ describe('Testing Table Pagination', () => {
   });
 
   test('usePagination hook', () => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const onShowSizeChange = jest.fn();
     const { result } = renderHook(({ dataSource, pagination }) => usePagination(dataSource, pagination, true), {
       initialProps: {
         dataSource,
-        pagination: {},
+        pagination: {
+          onShowSizeChange,
+          showSizeChanger: true,
+        },
       },
     });
-    const [transformShowIndexPipeline, activePaginationState, paginationData, PaginationComponent] = result.current;
-    const wrapper = mount(<PaginationComponent onTriggerStateUpdate={() => {/**/}} />);
+    const transformShowIndexPipeline = result.current[0];
+    const PaginationComponent = result.current[3];
+    const wrapper = mount(
+      <PaginationComponent
+        onTriggerStateUpdate={() => {
+          /**/
+        }}
+      />
+    );
     expect(transformShowIndexPipeline([])).toHaveLength(1);
     expect(transformShowIndexPipeline([])[0].render(undefined, undefined, 0)).toBe(1);
     act(() => {
@@ -59,5 +70,34 @@ describe('Testing Table Pagination', () => {
     });
     expect(result.current[1].current).toBe(2);
     expect(result.current[2][0].key).toBe(10);
+
+    const sizeChanger = wrapper.find('.gio-pagination-options-size-changer').find('.gio-select');
+    sizeChanger.simulate('click');
+    wrapper.find('.gio-select-list-option').at(1).simulate('click');
+    expect(onShowSizeChange).toBeCalled();
+  });
+
+  test('usePagination pagination total', () => {
+    const dataSource10 = Array.from({ length: 10 }, (_, key) => ({ key }));
+    const { result } = renderHook(({ dataSource10, pagination }) => usePagination(dataSource10, pagination, true), {
+      initialProps: {
+        dataSource10,
+        pagination: {
+          total: 100,
+        },
+      },
+    });
+    const PaginationComponent = result.current[3];
+    const wrapper = mount(
+      <PaginationComponent
+        onTriggerStateUpdate={() => {
+          /**/
+        }}
+      />
+    );
+    act(() => {
+      wrapper.find('.gio-pagination-item').at(2).simulate('click');
+    });
+    expect(result.current[2][0].key).toBe(0);
   });
 });
