@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import RcDrawer from 'rc-drawer';
 import { omit } from 'lodash';
@@ -134,6 +135,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     if (typeof push === 'boolean') {
       distance = push ? defaultPushState.distance : 0;
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       distance = push!.distance;
     }
     return parseFloat(String(distance || 0));

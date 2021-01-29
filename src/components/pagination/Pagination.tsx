@@ -6,7 +6,7 @@ import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Input from '../input';
 import Select from '../select';
 import { PaginationProps } from './interface';
-import { generatePageArray } from './ until';
+import { generatePageArray } from './until';
 import useControlledState from '../../utils/hooks/useControlledState';
 
 const Pagination = ({
@@ -67,20 +67,6 @@ const Pagination = ({
   const pagination = useMemo(
     () =>
       generatePageArray(controlledCurrent, pageNumber, offset, prevSymbol, nextSymbol).map((page: number | symbol) => {
-        if (typeof page === 'number') {
-          return (
-            <li
-              className={classNames(`${prefixCls}-item`, {
-                [`${prefixCls}-item-active`]: page === controlledCurrent,
-              })}
-              key={page}
-              onClick={() => handleClick(page)}
-              aria-hidden="true"
-            >
-              {page}
-            </li>
-          );
-        }
         if (Object.is(page, prevSymbol.current)) {
           return (
             <li
@@ -107,7 +93,18 @@ const Pagination = ({
             </li>
           );
         }
-        return null;
+        return (
+          <li
+            className={classNames(`${prefixCls}-item`, {
+              [`${prefixCls}-item-active`]: page === controlledCurrent,
+            })}
+            key={page as number}
+            onClick={() => handleClick(page as number)}
+            aria-hidden="true"
+          >
+            {page}
+          </li>
+        );
       }),
     [controlledCurrent, pageNumber, handleClick, prefixCls]
   );
@@ -127,14 +124,16 @@ const Pagination = ({
   }, [total, showTotal, controlledCurrent, controlledPageSize, prefixCls]);
 
   const handleSelectPageSize = (selectValue: string): void => {
+    let _current = controlledCurrent;
     const newPageSize = Number(selectValue);
     setControlledPageSize(newPageSize);
-    onShowSizeChange?.(controlledCurrent, newPageSize);
     const newPageNumber = Math.ceil(total / newPageSize);
     if (controlledCurrent > newPageNumber) {
       setControlledCurrent(newPageNumber);
+      _current = newPageNumber;
       onChange?.(newPageNumber, newPageSize);
     }
+    onShowSizeChange?.(_current, newPageSize);
   };
 
   const renderSelect = (): React.ReactElement => (
@@ -145,6 +144,8 @@ const Pagination = ({
         disabled={disabled}
         defaultValue={controlledPageSize.toString()}
         onSelect={handleSelectPageSize}
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        getContainer={(triggerNode) => triggerNode.parentElement!}
         options={pageSizeOptions.map((value) => ({
           value,
           label: `${value}条/页`,
@@ -153,8 +154,8 @@ const Pagination = ({
     </div>
   );
 
-  const handleInputPressEnter = (e: any): void => {
-    const transformValue = Number(e.target.value);
+  const handleInputPressEnter = (): void => {
+    const transformValue = Number(inputValue);
     if (!isNaN(transformValue)) {
       if (transformValue >= 1 && transformValue <= pageNumber) {
         setControlledCurrent(transformValue);

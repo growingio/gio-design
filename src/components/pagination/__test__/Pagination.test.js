@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, render } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import Pagination from '../Pagination';
-import { generatePageArray } from '../ until';
+import { generatePageArray } from '../until';
 
 describe('Testing Pagination', () => {
   it('should be stable', () => {
@@ -124,24 +124,27 @@ describe('Testing Pagination', () => {
     expect(result6).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   });
 
-  // test('size changer', () => {
-  //   const onChange = jest.fn();
-  //   const onShowSizeChanger = jest.fn();
-  //   const wrapper = mount(
-  //     <Pagination
-  //       onChange={onChange}
-  //       showSizeChanger
-  //       showQuickJumper
-  //       onShowSizeChanger={onShowSizeChanger}
-  //       total={1100}
-  //     />
-  //   );
-  //   expect(wrapper.exists('.gio-pagination-options-size-changer')).toBe(true);
-  //   const sizeChanger = wrapper.find('.gio-pagination-options-size-changer').find('input');
-  //   const input = wrapper.find('.gio-pagination-options-quick-jumper').find('input');
-  //   input.simulate('change', { target: { value: 110 } });
-  //   sizeChanger.simulate('change', { target: { value: '100' } });
-  //   expect(onChange).toHaveBeenCalledWith(11, 100);
-  //   expect(onShowSizeChanger).toHaveBeenCalledWith(11, 100);
-  // });
+  test('size changer', () => {
+    const onChange = jest.fn();
+    const onShowSizeChange = jest.fn();
+    const wrapper = mount(
+      <Pagination
+        onChange={onChange}
+        showSizeChanger
+        showQuickJumper
+        onShowSizeChange={onShowSizeChange}
+        total={1100}
+      />
+    );
+    expect(wrapper.exists('.gio-pagination-options-size-changer')).toBe(true);
+
+    const sizeChanger = wrapper.find('.gio-pagination-options-size-changer').find('.gio-select');
+    const input = wrapper.find('.gio-pagination-options-quick-jumper').find('input');
+    input.simulate('change', { target: { value: 110 } });
+    input.simulate('keyDown', { key: 'Enter' });
+    sizeChanger.simulate('click');
+    wrapper.find('.gio-select-list-option').at(1).simulate('click');
+
+    expect(onShowSizeChange).toHaveBeenCalledWith(55, 20);
+  });
 });

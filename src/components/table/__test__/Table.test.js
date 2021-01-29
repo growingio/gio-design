@@ -1,9 +1,7 @@
 import React from 'react';
 import { mount, render } from 'enzyme';
+import { act } from 'react-test-renderer';
 import Table from '../index';
-import Title, { getNextSortDirection } from '../Title';
-import { collectSortStates } from '../hook/useSorter';
-import { collectFilterStates } from '../hook/useFilter';
 
 const dataSource = [
   {
@@ -103,6 +101,7 @@ describe('Testing Table', () => {
       wrapper.setProps({
         rowSelection: {
           onChange: (localSelectedRowKeys, selectRows) => {
+            // eslint-disable-next-line no-console
             console.log(localSelectedRowKeys, selectRows);
           },
         },
@@ -132,7 +131,7 @@ describe('Testing Table', () => {
 
   test('props pagination', () => {
     const onChange = jest.fn();
-    const dataSource = Array.from({ length: 100 }, (_, key) => ({ a: key, b: key, c: key, d: key }));
+    const _dataSource = Array.from({ length: 100 }, (_, key) => ({ a: key, b: key, c: key, d: key }));
     const _columns = [
       {
         title: 'A',
@@ -160,7 +159,7 @@ describe('Testing Table', () => {
       },
     ];
     const wrapper = mount(
-      <Table title="列表标题" dataSource={dataSource} columns={_columns} pagination onChange={onChange} />
+      <Table title="列表标题" dataSource={_dataSource} columns={_columns} pagination onChange={onChange} />
     );
     expect(wrapper.exists('.gio-table-pagination')).toBe(true);
     wrapper.find('.gio-pagination-item').at(1).simulate('click');
@@ -175,44 +174,37 @@ describe('Testing Table', () => {
     expect(wrapper.exists('.gio-table-column-sorter')).toBe(true);
   });
 
-  test('column key rule', () => {
-    /**/
+  test('useHackOnRow hook', () => {
+    const onClick = jest.fn();
+    const onMouseUp = jest.fn();
+    const onMouseDown = jest.fn();
+    const wrapper = mount(getTable());
+    wrapper.setProps({ hackRowEvent: true });
+    wrapper.setProps({ onRow: () => ({ onClick, onMouseUp, onMouseDown }) });
+    act(() => {
+      wrapper.find('.gio-table-row').at(0).simulate('click');
+      wrapper.find('.gio-table-row').at(0).simulate('mouseup');
+      wrapper.find('.gio-table-row').at(0).simulate('mousedown');
+    });
+    expect(onClick).toBeCalled();
+    expect(onMouseUp).toBeCalled();
+    expect(onMouseDown).toBeCalled();
   });
 
-  test('getNextSortDirection function', () => {
-    expect(getNextSortDirection(['1', '2', null], '1')).toBe('2');
-    expect(getNextSortDirection(['1', '2', null], '2')).toBe(null);
-    expect(getNextSortDirection(['1', '2', null], null)).toBe('1');
-  });
-
-  test('Title component', () => {
-    const updateSorterStates = jest.fn();
-    const updateFilterStates = jest.fn();
-    const onTriggerStateUpdate = jest.fn();
-    const wrapper = mount(
-      <Title
-        prefixCls="gio-table"
-        sorterState={collectSortStates(columns)[0]}
-        filterState={collectFilterStates(columns)[0]}
-        column={columns[0]}
-        updateSorterStates={updateSorterStates}
-        updateFilterStates={updateFilterStates}
-        onTriggerStateUpdate={onTriggerStateUpdate}
-      />
-    );
-
-    expect(wrapper.exists('.gio-table-column-sorter')).toBe(true);
-    expect(wrapper.exists('.gio-table-column-filter')).toBe(true);
-    expect(wrapper.exists('.gio-table-column-title-info')).toBe(true);
-    wrapper.find('.gio-table-column-sorter-inner-btn').at(0).simulate('click');
-    expect(updateSorterStates).toBeCalled();
-    wrapper.find('.gio-table-column-filter-inner-btn').at(0).simulate('click');
-    expect(wrapper.exists('.gio-popover')).toBe(true);
-    wrapper.find('.filter-popover-footer').find('.gio-btn').at(1).simulate('click');
-    expect(updateFilterStates).toBeCalled();
-    expect(onTriggerStateUpdate).toBeCalled();
-    wrapper.setProps({ sorterState: undefined, filterState: undefined });
-    expect(wrapper.exists('.gio-table-column-sorter')).toBe(false);
-    expect(wrapper.exists('.gio-table-column-filter')).toBe(false);
+  it('won`t trigger onRow click', () => {
+    const onClick = jest.fn();
+    const wrapper = mount(getTable());
+    wrapper.setProps({ rowSelection: {}, onRow: () => ({ onClick }), onHeaderRow: () => ({ onClick }) });
+    act(() => {
+      wrapper.find('.gio-checkbox-input').at(0).simulate('click');
+    });
+    act(() => {
+      wrapper.find('.gio-checkbox-input').at(1).simulate('click');
+    });
+    expect(onClick).not.toBeCalled();
+    act(() => {
+      wrapper.find('.gio-table-cell').at(1).simulate('click');
+    });
+    expect(onClick).toBeCalled();
   });
 });

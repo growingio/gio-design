@@ -1,0 +1,28 @@
+import { Props, Meta } from '@storybook/addon-docs/blocks';
+import Steps from './Steps';
+
+<Meta title="Components/Functional/Steps" Component={Steps} subcomponent />
+
+### Component API
+
+<Props />
+
+<!-- ### Steps 步骤条
+
+| 参数      | 说明                                                                                                                                                                           | 类型                      | 默认值  |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- | ------- |
+| current   | 当前步骤，从 0 开始计数                                                                                                                                                        | number                    | 0       |
+| type      | 使用场景，包括 `page`（页面）、`modal`（弹窗） 和 `drawer`（抽屉）；`page` 最多支持 4 步操作，`modal` 最多支持 2 ～ 4 步操作，具体要看 `size` 取值，`drawer` 最多支持 2 步操作 | string                    | `page`  |
+| size      | 当 type = `modal` 时有效，`middle` 最多支持 4 步操作，`small` 最多支持 2 步操作                                                                                                | string                    | `small` |
+| onClick   | 点击步骤项时触发, 如果不设置该回调函数，则步骤条为 `不可点击` 状态                                                                                                             | (current: number) => void | -       |
+| className | 步骤条类名                                                                                                                                                                     | string                    | -       |
+| children  | 只允许使用 Step 组件                                                                                                                                                           | ReactNode                 | -       |
+
+### Step 步骤项
+
+| 参数        | 说明                                                                         | 类型    | 默认值 |
+| ----------- | ---------------------------------------------------------------------------- | ------- | ------ |
+| title       | 当前步骤的标题                                                               | string  | -      |
+| description | 当前步骤的描述信息                                                           | string  | -      |
+| finished    | 是否已完成, 如果不指定该参数，则会组件内部会自己计算当前是否为 finished 状态 | boolean | false  |
+| className   | 步骤条类名                                                                   | string  | -      | -->
