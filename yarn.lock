@@ -12981,9 +12981,9 @@ rc-field-form@^1.11.0:
     rc-util "^5.0.0"
 
 rc-menu@^8.5.1:
-  version "8.10.4"
-  resolved "https://registry.yarnpkg.com/rc-menu/-/rc-menu-8.10.4.tgz#234b6cb12690a39ca1e9c380aa846110ec06ffdb"
-  integrity sha512-eZOyl6RZFNwREP2MMyIOicrEOA9oeAFz13YG5LBmclz1nJQnpkWRN1NjSSQf2JQGybiuI3zQn+PMfFG99i0YxQ==
+  version "8.10.5"
+  resolved "https://registry.yarnpkg.com/rc-menu/-/rc-menu-8.10.5.tgz#44b7381c650cc76020dfd65753b535f415012179"
+  integrity sha512-8Ets93wQFy9IysmgRUm1VGdrEz6XfZTM0jQOqOPLYNXah5HgAmCh4xT0UOygfHB3IWiQeqDgr2uPB4uVhwI2+Q==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "2.x"
