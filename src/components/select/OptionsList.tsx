@@ -30,20 +30,21 @@ interface OptionProp {
   children?: React.ReactNode;
 }
 
-const RenderGroup: React.FC<GroupProps> = (props) => {
+const RenderGroup: React.ForwardRefRenderFunction<unknown, GroupProps> = (props, ref) => {
   const {
     option: { value, label },
     prefixCls,
     groupStyle,
   } = props;
+
   return (
-    <div className={`${prefixCls}-list-group`} style={groupStyle} aria-hidden="true">
+    <div ref={ref as any} className={`${prefixCls}-list-group`} style={groupStyle} aria-hidden="true">
       {label !== undefined ? label : value}
     </div>
   );
 };
 
-const RenderOption: React.FC<OptionProp> = (props) => {
+const RenderOption: React.ForwardRefRenderFunction<unknown, OptionProp> = (props, ref) => {
   const {
     option: { value, disabled, tooltip, groupValue, groupLabel, label, title, ...restOption },
     selected,
@@ -53,6 +54,7 @@ const RenderOption: React.FC<OptionProp> = (props) => {
     optionStyle,
     multiple,
   } = props;
+
   const isSelected =
     typeof selected === 'string' || typeof selected === 'number' || isNull(selected) || typeof selected === 'undefined'
       ? selected === value
@@ -79,7 +81,7 @@ const RenderOption: React.FC<OptionProp> = (props) => {
       )
     : title || label;
   return (
-    <div className={`${prefixCls}-list-option-container`} style={optionStyle}>
+    <div ref={ref as any} className={`${prefixCls}-list-option-container`} style={optionStyle}>
       <div
         className={classnames(`${prefixCls}-list-option`, {
           [`${prefixCls}-list-option-isSelected`]: isSelected,
@@ -101,18 +103,22 @@ const RenderOption: React.FC<OptionProp> = (props) => {
   );
 };
 
-const RenderTooltip: React.FC<TooltipProps> = (props) => {
+const RenderTooltip: React.ForwardRefRenderFunction<unknown, TooltipProps> = (props, ref) => {
   const { tooltip, render, getContainer } = props;
   if (tooltip) {
     return (
-      <Tooltip title={tooltip} destroyTooltipOnHide placement="top" getTooltipContainer={getContainer}>
-        {render}
-      </Tooltip>
+      <div ref={ref as any}>
+        <Tooltip title={tooltip} destroyTooltipOnHide placement="top" getTooltipContainer={getContainer}>
+          {render}
+        </Tooltip>
+      </div>
     );
   }
-  return render;
+  return <div ref={ref as any}>{render}</div>;
 };
-
+const ForwardRenderGroup = React.forwardRef(RenderGroup);
+const ForwardRenderOption = React.forwardRef(RenderOption);
+const ForwardRenderTooltip = React.forwardRef(RenderTooltip);
 const getFlattenOptions = (data: Option[], hasGroup: boolean) => {
   const groupMap = new Map();
   if (!hasGroup) return data;
@@ -139,30 +145,86 @@ const getFlattenOptions = (data: Option[], hasGroup: boolean) => {
   });
   return flattenOption;
 };
+
 const OptionsList: React.FC<OptionsListProps> = (props) => {
-  const { prefixCls, data, groupStyle, hasGroup, height, itemHeight, ...restProps } = props;
+  const {
+    prefixCls,
+    data,
+    groupStyle,
+    hasGroup,
+    height,
+    itemHeight,
+    mode,
+    selected,
+    onAllChange,
+    ...restProps
+  } = props;
 
   const flattenOptions = useMemo(() => getFlattenOptions(data, hasGroup), [data, hasGroup]);
+  const filterflattenOptions = useMemo(
+    () =>
+      flattenOptions.filter((filterOption: Option & { isSelectOptGroup: boolean }) => !filterOption.isSelectOptGroup),
+    [flattenOptions]
+  );
+  const isChecked = useMemo(() => {
+    return selected && (selected as []).length >= 1;
+  }, [selected]);
+  const isIndeterminate = isChecked && selected && (selected as []).length < filterflattenOptions.length;
+
+  const onAllClick = () => {
+    if (isChecked) {
+      onAllChange?.(null);
+    } else {
+      onAllChange?.(
+        filterflattenOptions.reduce((prev: any[], curr: Option) => {
+          prev.push(curr.value || curr.label);
+          return prev;
+        }, [])
+      );
+    }
+  };
+  const renderAllOptions = () => {
+    return (
+      <div
+        className={classnames(`${prefixCls}-list-option-all`, {})}
+        onClick={(e) => {
+          e.stopPropagation();
+          onAllClick();
+        }}
+        aria-hidden="true"
+      >
+        <>
+          <Checkbox checked={isChecked as boolean} indeterminate={isIndeterminate as boolean} />
+          <span style={{ width: 10 }} />
+        </>
+        全部
+      </div>
+    );
+  };
   return (
-    <VirtualList
-      itemKey="value"
-      prefixCls={prefixCls}
-      data={flattenOptions}
-      height={height}
-      itemHeight={itemHeight}
-      {...restProps}
-    >
-      {(option: Option & { isSelectOptGroup: boolean }) => {
-        return option.isSelectOptGroup ? (
-          <RenderGroup option={option} prefixCls={prefixCls} groupStyle={groupStyle} />
-        ) : (
-          <RenderTooltip
-            tooltip={option?.tooltip}
-            render={<RenderOption option={option} prefixCls={prefixCls} {...restProps} />}
-          />
-        );
-      }}
-    </VirtualList>
+    <>
+      {mode === 'all' ? renderAllOptions() : undefined}
+      <VirtualList
+        itemKey="value"
+        prefixCls={prefixCls}
+        data={flattenOptions}
+        // ref={virtualListRef}
+        height={height}
+        itemHeight={itemHeight}
+        {...restProps}
+      >
+        {(option: Option & { isSelectOptGroup: boolean }) => {
+          return option.isSelectOptGroup ? (
+            <ForwardRenderGroup option={option} prefixCls={prefixCls} groupStyle={groupStyle} />
+          ) : (
+            <ForwardRenderTooltip
+              tooltip={option?.tooltip}
+              render={<ForwardRenderOption option={option} prefixCls={prefixCls} selected={selected} {...restProps} />}
+            />
+          );
+        }}
+      </VirtualList>
+    </>
   );
 };
 
