@@ -1,20 +1,32 @@
 @import '../../../stylesheet/index.less';
+@import './state.less';
 @import './mixin.less';
+@import './layout.less';
 
 @menu-prefix-cls: ~'@{component-prefix}-menu';
 @menu-icon-cls: ~'@{menu-prefix-cls}__icon';
 
 .@{menu-prefix-cls} {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   color: @color-text-menu-normal;
-  font-size: @size-font-16;
   line-height: 0;
   list-style: none;
   outline: none;
+  user-select: none;
 
-  &-hidden {
-    display: none;
+  &-title {
+    padding: 8px 20px;
+    color: #313e75;
+    font-weight: @weight-font-medium;
+    font-size: 12px;
+    line-height: 20px;
+    background-color: #f7f8fc;
+  }
+
+  .@{menu-icon-cls} {
+    margin-right: 12px;
   }
 
   &-overflowed-submenu {
@@ -37,177 +49,19 @@
     line-height: 1.5;
   }
 
-  &-item-active,
-  &-submenu-active > &-submenu-title {
-    background-color: @color-background-menu-hover;
-  }
-
-  &-item-selected {
-    color: @color-text-menu-active;
-    font-weight: 500;
-    background-color: @color-background-menu-active;
-    // fix chrome render bug
-    transform: translateZ(0);
-  }
-
-  &-submenu-selected {
-    color: @color-text-menu-sub-menu;
-    background-color: @color-background-menu-active;
-  }
-
   &-horizontal&-sub {
     min-width: 160px;
     margin-top: 0;
   }
 
-  &-item,
-  &-submenu-title {
-    position: relative;
-    display: block;
-    margin: 0;
-    white-space: nowrap;
-    border-radius: 4px;
-    cursor: pointer;
-
-    // Disabled state sets text to gray and nukes hover/tab effects
-    &.@{menu-prefix-cls}-item-disabled,
-    &.@{menu-prefix-cls}-submenu-disabled {
-      color: @color-text-menu-disable !important;
-      cursor: not-allowed;
-    }
-  }
-  & > &-item-divider {
+  &-item-divider {
     height: 1px;
-    margin: 1px 0;
+    margin: 8px;
     padding: 0;
     overflow: hidden;
     line-height: 0;
-    background-color: @color-text-menu-sub-menu;
-  }
-
-  &-submenu {
-    &-popup {
-      position: absolute;
-
-      .submenu-title-wrapper {
-        padding-right: 20px;
-      }
-    }
-    > .@{menu-prefix-cls} {
-      padding: 4px 0;
-      background-color: @color-background-menu-normal;
-      box-shadow: 0 0 4px @palette-gray-5;
-    }
-    & .@{menu-prefix-cls}-item {
-      height: 40px;
-      padding: 0 24px;
-      line-height: 40px;
-    }
-  }
-
-  .@{menu-prefix-cls}-submenu-title,
-  .@{menu-prefix-cls}-item {
-    & > span {
-      display: inline-block;
-    }
-    .@{menu-icon-cls} {
-      margin-right: 12px;
-
-      & > .gio-icon {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-      }
-
-      & * {
-        fill: currentColor;
-      }
-    }
-  }
-
-  // 水平模式
-  &-horizontal {
-    overflow: hidden;
-    white-space: nowrap;
-    border: none;
-    box-shadow: none;
-
-    & > .@{menu-prefix-cls}-item,
-    & > .@{menu-prefix-cls}-submenu > .@{menu-prefix-cls}-submenu-title {
-      height: 40px;
-      margin-right: 4px;
-      padding: 0 24px;
-      line-height: 40px;
-    }
-
-    & > .@{menu-prefix-cls}-submenu,
-    & > .@{menu-prefix-cls}-item {
-      display: inline-block;
-      vertical-align: bottom;
-
-      &-active {
-        background-color: @color-background-menu-hover;
-      }
-    }
-
-    &::after {
-      display: block;
-      clear: both;
-      height: 0;
-      content: '\20';
-    }
-  }
-
-  // 垂直模式
-  &-inline {
-    font-size: @size-font-14;
-
-    & > li:first-child {
-      margin-top: 0;
-      padding-top: 0;
-    }
-
-    & > li:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    & > .@{menu-prefix-cls}-item,
-    & > .@{menu-prefix-cls}-submenu > .@{menu-prefix-cls}-submenu-title {
-      height: 40px;
-      line-height: 40px;
-    }
-
-    & > .@{menu-prefix-cls}-item {
-      margin-top: 4px;
-    }
-
-    & > .@{menu-prefix-cls}-submenu {
-      padding-top: 16px;
-      color: @palette-gray-6;
-
-      & > .@{menu-prefix-cls}-submenu-title {
-        cursor: unset;
-      }
-
-      & > .@{menu-prefix-cls}-sub {
-        & > .@{menu-prefix-cls}-item {
-          margin-top: 4px;
-        }
-      }
-    }
-
-    & .@{menu-prefix-cls}-item-selected {
-      background-color: @color-background-menu-hover;
-    }
-  }
-
-  &-sub&-inline {
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
+    list-style: none;
+    background-color: #dfe4ee;
   }
 
   &-open {

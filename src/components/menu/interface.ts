@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MenuProps, MenuItemProps, SubMenuProps, MenuItemGroupProps } from 'rc-menu';
 /**
  * 当前 gio-design 中设计的 menu 不需要用到所有 rc-menu 的能力，因此只使用 rc-menu 的部分接口
@@ -14,9 +15,7 @@ type TOmitRcMenuProps =
   | 'defaultSelectedKeys'
   | 'activeKey'
   | 'defaultActiveFirst'
-  | 'defaultOpenKeys'
   | 'onSelect'
-  | 'onOpenChange'
   | 'triggerSubMenuAction'
   | 'openTransition'
   | 'subMenuOpenDelay'
@@ -24,7 +23,6 @@ type TOmitRcMenuProps =
   | 'forceSubMenuRender'
   | 'getPopupContainer'
   | 'builtinPlacements'
-  | 'expandIcon'
   | 'direction';
 
 export type TMenuMode = 'vertical' | 'horizontal';
@@ -76,4 +74,14 @@ export interface IMenuProps extends Omit<MenuProps, TOmitRcMenuProps> {
    * 垂直方向时 SubMenu 下 MenuItem 缩进距离
    */
   verticalIndent?: number;
+  /**
+   * 菜单的标题
+   */
+  title?: string;
+}
+
+export interface DividerProps {
+  className?: string;
+  prefixCls?: string;
+  style?: React.CSSProperties;
 }

@@ -5,6 +5,17 @@ export interface LayoutProps {
   style?: React.CSSProperties;
 }
 
+export interface LayoutHeaderDividerProps {
+  className?: string;
+  prefixCls?: string;
+  style?: React.CSSProperties;
+}
+
+export interface LayoutHeaderProps extends LayoutProps {
+  justify?: 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
+}
+
+export type LayoutHeaderSectionProps = LayoutHeaderProps;
 export interface LayoutContentProps extends LayoutProps {
   /**
    Content 区域的最大宽度 
@@ -41,6 +52,10 @@ export interface LayoutSiderProps extends LayoutProps {
     悬浮式侧边栏的位置
   */
   suspendedPosition?: 'left' | 'right';
+  /*
+    收缩触发器，设置bottom时启用默认触发器，可以自定义，设置为null时隐藏
+   */
+  trigger?: React.ReactNode | 'bottom' | null;
 }
 
 export interface SiderState {
