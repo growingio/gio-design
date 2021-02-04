@@ -1,23 +1,36 @@
-import React, { Ref } from 'react';
+import React, { useRef } from 'react';
 import List, { ListRef } from 'rc-virtual-list';
 import { VirtualListProps } from './interface';
 
-const VirtualList = React.forwardRef<ListRef, VirtualListProps>((props: VirtualListProps, ref: Ref<ListRef>) => {
-  const { itemHeight, height, prefixCls, children, data, virtual, itemKey } = props;
+const defaultListRowHeight = 44;
+const defaultListHeight = 240;
+
+const VirtualList: React.FC<VirtualListProps> = (props) => {
+  const {
+    itemHeight = defaultListRowHeight,
+    height = defaultListHeight,
+    prefixCls,
+    children,
+    data,
+    virtual,
+    itemKey,
+  } = props;
+  const Listref = useRef<ListRef>(null);
   return (
     <List
       itemKey={itemKey}
-      ref={ref}
+      ref={Listref}
       itemHeight={itemHeight}
       height={height}
       data={data}
       virtual={virtual}
       prefixCls={`${prefixCls}-virtual-list`}
+      style={{ paddingRight: 8 }}
       fullHeight={false}
     >
       {children}
     </List>
   );
-});
+};
 
 export default VirtualList;
