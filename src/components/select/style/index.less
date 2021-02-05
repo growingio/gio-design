@@ -61,6 +61,12 @@
 
   &-focused {
     box-shadow: 0 0 6px 0 #c0c4d3;
+
+    .@{select-prefix-cls} {
+      &-item-all {
+        opacity: 0.5;
+      }
+    }
   }
 
   &-arrow {
@@ -80,7 +86,22 @@
   }
 
   &-item {
-    max-width: 100%;
+    max-width: calc(100% - 12px);
+    margin-top: 7px;
+    margin-left: 8px;
+    font-size: @select-input-fontSize;
+    transition: margin 0.2s;
+
+    &-text {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &-item-all {
+    display: inline-flex;
+    max-width: calc(100% - 12px);
     margin-top: 7px;
     margin-left: 8px;
     font-size: @select-input-fontSize;
@@ -105,6 +126,7 @@
     &-input {
       line-height: 20px;
     }
+
     .@{select-prefix-cls} {
       &-selector {
         min-height: 28px;
@@ -118,6 +140,10 @@
       }
 
       &-item {
+        margin-top: 5px;
+        margin-left: 4px;
+      }
+      &-item-all {
         margin-top: 5px;
         margin-left: 4px;
       }
@@ -139,14 +165,14 @@
         margin-top: 9px;
         margin-left: 8px;
       }
+      &-item-all {
+        margin-top: 5px;
+        margin-left: 4px;
+      }
     }
   }
 
   &-disabled {
-    & > * {
-      pointer-events: none;
-    }
-
     color: @palette-gray-5;
     text-shadow: none;
     background: @color-background-input-disable;
@@ -228,11 +254,7 @@
 .@{select-prefix-cls}-list {
   box-sizing: border-box;
   min-width: 160px;
-  padding: 16px 8px;
-}
-
-.@{select-prefix-cls}-list-option-container {
-  height: 44px;
+  padding: 16px 0 16px 8px;
 }
 
 .@{select-prefix-cls}-list-option {
@@ -253,18 +275,12 @@
   transition: background-color 0.3s ease;
 
   &:not(&-disabled):hover {
-    color: @color-background-button-primary-hover;
     background-color: @palette-gray-3;
   }
 
   &-disabled {
-    & > * {
-      pointer-events: none;
-    }
-
     color: @palette-gray-5;
     text-shadow: none;
-    background: @color-background-input-disable;
     border-color: @color-border-input-disable;
     cursor: not-allowed !important;
   }
@@ -273,6 +289,23 @@
     color: @color-background-button-primary-hover;
     background-color: @palette-gray-3;
   }
+}
+
+.@{select-prefix-cls}-list-option-all {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0 25px 0 16px;
+  overflow: hidden;
+  color: @color-font-list-primary-normal;
+  font-size: 14px;
+  line-height: 40px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-bottom: 0.5px solid #dfe4ee;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .@{select-prefix-cls}-list-group {

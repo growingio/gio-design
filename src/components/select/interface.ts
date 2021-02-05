@@ -3,6 +3,8 @@ import { SizeType } from '../config-provider/SizeContext';
 
 export type MaybeArray<T> = T | T[];
 
+export type modeType = 'all' | 'tags' | undefined;
+
 export interface Option {
   /**
    列表单项主要文字
@@ -36,6 +38,8 @@ export interface Option {
       分组的标题
    */
   groupLabel?: string;
+
+  options?: Map<string | number, Option>;
 }
 
 export interface OptGroupProps {
@@ -65,6 +69,9 @@ export interface SelectProps {
    * 多选模式
    */
   multiple?: boolean;
+  /**
+   * 模式(仅在多选开启下生效)
+   */
   /**
    * 搜索模式下占位符
    */
@@ -220,11 +227,13 @@ export interface OptionsListProps {
   optionStyle: React.CSSProperties | undefined;
   selected: MaybeArray<string | number> | undefined | null;
   multiple: boolean;
+  mode: modeType;
   data: Option[];
   hasGroup: boolean;
   labelRenderer: (option: Option, isGruop: false) => React.ReactNode;
   onOptionClick: (selectedValue: string | number) => void;
   getContainer?: (node: HTMLElement) => HTMLElement;
-  height: number;
-  itemHeight: number;
+  onAllChange?: (optionValues: MaybeArray<string | number> | null) => void;
+  height?: number | undefined;
+  itemHeight?: number | undefined;
 }
