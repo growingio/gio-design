@@ -1,8 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-// import { withDesign } from 'storybook-addon-designs';
 import Steps, { StepsProps, Step } from '.';
-// import Docs from './Steps.mdx';
+import Docs from './Steps.mdx';
 import './style';
 import './style/steps.stories.less';
 import { Drawer, Button, Toast, Modal } from '../..';
@@ -11,15 +10,10 @@ export default {
   title: 'Components/Functional/Steps',
   component: Steps,
   subcomponents: { Step },
-  // decorators: [withDesign],
+  controls: { expanded: true },
   parameters: {
-    // docs: {
-    //   page: Docs,
-    // },
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/wj1nczMMBbGGcy3y72jvc6/Stepper%E7%BB%84%E4%BB%B6?node-id=173%3A566',
-      allowFullscreen: true,
+    docs: {
+      page: Docs,
     },
   },
 } as Meta;
