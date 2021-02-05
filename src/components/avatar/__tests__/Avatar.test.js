@@ -67,7 +67,7 @@ describe('Testing Avatar', () => {
     const wrapper = mount(<Avatar displayTooltip>这是一个很长的文字</Avatar>);
     wrapper.setProps({ placement: 'top' });
     wrapper.find('.gio-avatar').at(0).simulate('mouseenter');
-    await waitForComponentToPaint(wrapper);
+    await waitForComponentToPaint(wrapper, 3000);
     expect(wrapper.exists('.gio-tooltip-placement-top')).toBe(true);
   });
 

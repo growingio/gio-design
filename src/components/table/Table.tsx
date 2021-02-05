@@ -1,9 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, forwardRef, createContext } from 'react';
 import RcTable from 'rc-table';
 import classNames from 'classnames';
 import { cloneDeep, isUndefined, get, has, set } from 'lodash';
 import { compose } from 'lodash/fp';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import useMergeRef from '../../utils/hooks/useMergeRef';
 import useSorter from './hook/useSorter';
 import useFilter from './hook/useFilter';
 import usePagination from './hook/usePagination';
@@ -17,7 +18,15 @@ import Loading from '../loading';
 import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
 import useHackOnRow from './hook/useHackOnRow';
 
-const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement => {
+interface TableContextType {
+  tableRef: null | React.MutableRefObject<HTMLDivElement>;
+}
+export const TableContext = createContext({ tableRef: null } as TableContextType);
+
+const Table = <RecordType,>(
+  props: TableProps<RecordType>,
+  ref: React.MutableRefObject<HTMLDivElement>
+): React.ReactElement => {
   const {
     prefixCls: customizePrefixCls,
     title,
@@ -37,7 +46,7 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
     style,
     ...rest
   } = props;
-
+  const mergedRef = useMergeRef(ref);
   const prefixCls = usePrefixCls('table', customizePrefixCls);
   const debounceLoading = useDebounceLoading(loading, 1000);
   const onHackRow = useHackOnRow(onRow, hackRowEvent);
@@ -113,27 +122,30 @@ const Table = <RecordType,>(props: TableProps<RecordType>): React.ReactElement =
   );
 
   return (
-    <div
-      className={classNames(`${prefixCls}-wrapper`, className, {
-        [`${prefixCls}-showHover`]: showHover,
-      })}
-      style={style}
-    >
-      <Loading loading={debounceLoading}>
-        <RcTable
-          title={title ? () => title : undefined}
-          prefixCls={prefixCls}
-          columns={composedColumns}
-          data={paginationedData}
-          emptyText={emptyElement}
-          rowKey={rowKey}
-          onRow={onHackRow}
-          {...rest}
-        />
-        <PaginationComponent onTriggerStateUpdate={onTriggerStateUpdate} />
-      </Loading>
-    </div>
+    <TableContext.Provider value={{ tableRef: mergedRef }}>
+      <div
+        className={classNames(`${prefixCls}-wrapper`, className, {
+          [`${prefixCls}-showHover`]: showHover,
+        })}
+        style={style}
+        ref={mergedRef}
+      >
+        <Loading loading={debounceLoading}>
+          <RcTable
+            title={title ? () => title : undefined}
+            prefixCls={prefixCls}
+            columns={composedColumns}
+            data={paginationedData}
+            emptyText={emptyElement}
+            rowKey={rowKey}
+            onRow={onHackRow}
+            {...rest}
+          />
+          <PaginationComponent onTriggerStateUpdate={onTriggerStateUpdate} />
+        </Loading>
+      </div>
+    </TableContext.Provider>
   );
 };
 
-export default Table;
+export default forwardRef(Table);
