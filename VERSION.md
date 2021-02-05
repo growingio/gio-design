@@ -1,22 +1,13 @@
-## [21.1.3](https://github.com/growingio/gio-design/compare/v21.1.2...v21.1.3) (2021-01-25)
-
+# [21.2.0](https://github.com/growingio/gio-design/compare/v21.1.3...v21.2.0) (2021-02-05)
 
 ### Bug Fixes
 
-* **card:** support tooltip parameter pass-through ([#730](https://github.com/growingio/gio-design/issues/730)) ([f919fef](https://github.com/growingio/gio-design/commit/f919fefc43a206fc3f084d0e816c0d4d7d79272e))
-
+- **select:** option disabled style ([#762](https://github.com/growingio/gio-design/issues/762)) ([95cc0c0](https://github.com/growingio/gio-design/commit/95cc0c04d9edcb51756bf42f09c11ab6c1d2f1ed))
+- **table:** fix both use ellipsis and onFilter error ([#770](https://github.com/growingio/gio-design/issues/770)) ([4722d54](https://github.com/growingio/gio-design/commit/4722d54736abf25b69aed25f9dc4fd4fd12af9b6))
+- **tree-select:** exported from index
 
 ### Features
 
-* **grid:** add Row and Col components ([#734](https://github.com/growingio/gio-design/issues/734)) ([57d63a1](https://github.com/growingio/gio-design/commit/57d63a10c562ae062bea02f879427bcf0d60cef7))
-* **layout:** add layout component ([#722](https://github.com/growingio/gio-design/issues/722)) ([31e4517](https://github.com/growingio/gio-design/commit/31e451739f980866308e8910c18725c7005fde00))
-* **modal:** modify step modal, replace back login with cancel ([#736](https://github.com/growingio/gio-design/issues/736)) ([5b0469f](https://github.com/growingio/gio-design/commit/5b0469f26ddcbfc882e0ce5f7b27a3ad1d458ca1))
-* **select:** independent select ([#735](https://github.com/growingio/gio-design/issues/735)) ([4f0928f](https://github.com/growingio/gio-design/commit/4f0928fd4ce0587cc45a3c622f57d78e990d306e)), closes [#677](https://github.com/growingio/gio-design/issues/677)
-
-
-### BREAKING CHANGES
-
-* **modal:** replace back login with cancal
-
-
-
+- **button, dropdown:** 触发 dropdown 组件下拉时，应该保持 active 状态 ([#771](https://github.com/growingio/gio-design/issues/771)) ([ec88ae4](https://github.com/growingio/gio-design/commit/ec88ae4c6ed5e4051456502d54d0be33981ee34f))
+- **steps:** add steps component ([#766](https://github.com/growingio/gio-design/issues/766)) ([e46c67e](https://github.com/growingio/gio-design/commit/e46c67e9254a89566ea2dbf5d66fc4ff2d036b9d))
+- **toggles, link, tag:** add stories
