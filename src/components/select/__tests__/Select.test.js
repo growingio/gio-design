@@ -4,7 +4,8 @@ import renderer from 'react-test-renderer';
 import { shallow, mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import Select from '../index';
-import { CustomOption, defaultLabelRenderer } from '../Select';
+import { CustomOption, defaultLabelRenderer } from '../utils';
+import Selector from '../Selector';
 
 const labels = ['全部', '已上线', '待上线', '已下线', '草稿'];
 const values = ['all', 'online', 'pending', 'off', 'draft'];
@@ -71,29 +72,30 @@ describe('<Select />', () => {
 
   it('should have correc dom structure', () => {
     const tree = shallow(<Select options={options} />);
-    expect(tree.find('.gio-select').exists()).toBeTruthy();
-    expect(tree.find('.gio-select-selector').exists()).toBeTruthy();
-    expect(tree.find('.gio-select-values-wrapper').exists()).toBeTruthy();
-    expect(tree.find('.gio-select-arrow').exists()).toBeTruthy();
+    expect(tree.find('.gio-select-trigger').exists()).toBeTruthy();
+    expect(tree.find(Selector).shallow().find('.gio-select-selector').exists()).toBeTruthy();
+    expect(tree.find(Selector).shallow().find('.gio-select-values-wrapper').exists()).toBeTruthy();
+    expect(tree.find(Selector).shallow().find('.gio-select-arrow').exists()).toBeTruthy();
+    tree.unmount();
   });
 
   it('should have correc dom structure', () => {
     const tree = shallow(<Select options={optionsWithOutGroup} />);
-    expect(tree.find('.gio-select').exists()).toBeTruthy();
-    expect(tree.find('.gio-select-selector').exists()).toBeTruthy();
-    expect(tree.find('.gio-select-values-wrapper').exists()).toBeTruthy();
-    expect(tree.find('.gio-select-arrow').exists()).toBeTruthy();
+    expect(tree.find('.gio-select-trigger').exists()).toBeTruthy();
+    expect(tree.find(Selector).shallow().find('.gio-select-selector').exists()).toBeTruthy();
+    expect(tree.find(Selector).shallow().find('.gio-select-values-wrapper').exists()).toBeTruthy();
+    expect(tree.find(Selector).shallow().find('.gio-select-arrow').exists()).toBeTruthy();
     tree.unmount();
   });
 
   it('should have correct classes', () => {
     const tree = shallow(<Select options={options} />);
     tree.setProps({ size: 'small' });
-    expect(tree.find('.gio-select-small').exists()).toBeTruthy();
+    expect(tree.find(Selector).shallow().find('.gio-select-small').exists()).toBeTruthy();
     tree.setProps({ size: 'middle' });
-    expect(tree.find('.gio-select-middle').exists()).toBeTruthy();
+    expect(tree.find(Selector).shallow().find('.gio-select-middle').exists()).toBeTruthy();
     tree.setProps({ size: 'large' });
-    expect(tree.find('.gio-select-large').exists()).toBeTruthy();
+    expect(tree.find(Selector).shallow().find('.gio-select-large').exists()).toBeTruthy();
   });
 
   it('select dropdown should display correct search result', () => {
@@ -425,6 +427,7 @@ describe('independent function should work as expected', () => {
       groupLabel: '自由输入',
     };
     expect(defaultLabelRenderer('s')(option, true)).toBe('test');
+    // React.Fragment 渲染会导致shallow报错 Shallow rendering works only with custom components, but the provided element type was `symbol`
     const tree = shallow(defaultLabelRenderer('s', 'select')(option));
     expect(tree.find('.select-search-highlight').text()).toBe('s');
   });
