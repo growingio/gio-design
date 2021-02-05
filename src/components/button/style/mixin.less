@@ -34,7 +34,8 @@
   text-shadow: none;
   box-shadow: none;
 
-  &:hover {
+  &:hover,
+  &.dropdown-active {
     .button-color(@color; @color-background-button-primary-hover; @color-border-button-primary-hover);
   }
 
@@ -47,7 +48,8 @@
 
 .button-variant-other(@color; @background; @border) {
   .button-color(@color; @background; @border);
-  &:hover {
+  &:hover,
+  &.dropdown-active {
     .button-color(@color; @color-background-button-default-hover; @color-border-button-default-hover);
   }
   &:active {
@@ -60,7 +62,8 @@
   .button-color(@color-text-button-assist-normal; @color-background-button-assist-normal; @color-border-button-assist-normal);
   text-shadow: none;
   border: none;
-  &:hover {
+  &:hover,
+  &.dropdown-active {
     .button-color(@color-text-button-assist-hover; @color-background-button-assist-hover; @color-border-button-default-hover);
   }
   &:active {
@@ -171,7 +174,8 @@
     color: @color-text-button-normal;
   }
   box-shadow: none;
-  &:hover {
+  &:hover,
+  &.dropdown-active {
     color: @color-text-button-hover;
     background: transparent;
     border-color: transparent;

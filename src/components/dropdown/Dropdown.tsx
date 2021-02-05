@@ -1,5 +1,6 @@
-import React, { cloneElement } from 'react';
+import React, { cloneElement, Children } from 'react';
 import { isFunction, isUndefined } from 'lodash';
+import classnames from 'classnames';
 import Tooltip from '../tooltip';
 import { DropdownProps } from './interface';
 import useControlledState from '../../utils/hooks/useControlledState';
@@ -18,6 +19,17 @@ const Dropdown = (props: DropdownProps) => {
     ...rest
   } = props;
   const [controlledVisible, setControlledVisible] = useControlledState(visible, false);
+
+  const getDropdownTrigger = () => {
+    try {
+      const child = Children.only(children);
+      return cloneElement(child, {
+        className: classnames(controlledVisible ? 'dropdown-active' : '', child.props.className),
+      });
+    } catch (e) {
+      return children;
+    }
+  };
 
   const getOverlay = () => {
     const _overlay: React.ReactElement = isFunction(overlay) ? overlay() : overlay;
@@ -43,7 +55,7 @@ const Dropdown = (props: DropdownProps) => {
       }}
       {...rest}
     >
-      {children}
+      {getDropdownTrigger()}
     </Tooltip>
   );
 };
