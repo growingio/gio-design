@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 
-const composeRef = <T>(...refs: React.Ref<T>[]): React.RefCallback<T> => (node: T) => {
+const composeRef = <T>(...refs: React.Ref<T>[]): React.Ref<T> => (node: T) => {
   refs.forEach((ref) => {
     if (typeof ref === 'function') {
       ref(node);

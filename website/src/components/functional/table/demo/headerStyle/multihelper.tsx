@@ -74,6 +74,7 @@ const columns2 = [
     title: '年龄',
     dataIndex: 'age',
     key: 'age',
+    ellipsis: true,
     info: '这里是用户的年龄',
     filters: ['小孩子', '大人'],
     onFilter: (value, record) => {
