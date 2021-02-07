@@ -1,4 +1,4 @@
-import React, { useCallback, Children } from 'react';
+import React from 'react';
 import RcMenu from 'rc-menu';
 import classnames from 'classnames';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
@@ -7,13 +7,6 @@ import { IMenuProps, TMenuMode, TRcMode } from './interface';
 
 const transform2RcMode = (mode: TMenuMode): TRcMode => (mode === 'vertical' ? 'inline' : 'horizontal');
 
-const getOpenKeys = (mode: TMenuMode, children: React.ReactNode) => {
-  if (mode === 'horizontal') {
-    return undefined;
-  }
-  return Children.map(children, (_: any) => (_.type.displayName === 'GIODesignSubMenu' ? _.key : null));
-};
-
 const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
   const {
     mode = 'horizontal',
@@ -21,49 +14,37 @@ const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
     className,
     selectedKey = '',
     defaultSelectedKey = '',
-    verticalIndent = 16,
-    onClick,
+    verticalIndent = 20,
     children,
+    inlineCollapsed = false,
+    title,
     ...restProps
   } = props;
 
   const prefixCls = usePrefixCls('menu', customPrefixCls);
-  const cls = classnames(className);
+  const cls = classnames(className, { [`${prefixCls}-inlineCollapsed`]: inlineCollapsed });
 
   const realMode = transform2RcMode(mode);
-
-  const openKeys = getOpenKeys(mode, children);
-  const spreadProps: Partial<IMenuProps> = {
-    ...restProps,
-  };
-  if (openKeys !== undefined) {
-    spreadProps.openKeys = openKeys;
-  }
-
-  const handleClick = useCallback(
-    (e) => {
-      if (onClick && typeof onClick === 'function') {
-        onClick(e);
-      }
-    },
-    [onClick]
-  );
 
   return (
     <MenuContext.Provider
       value={{
         prefixCls,
         verticalIndent,
+        inlineCollapsed,
       }}
     >
+      {!!title && mode !== 'horizontal' && inlineCollapsed === false && (
+        <div className={`${prefixCls}-title`}>{title}</div>
+      )}
       <RcMenu
-        {...spreadProps}
+        {...restProps}
         mode={realMode}
         selectedKeys={[selectedKey]}
         defaultSelectedKeys={[defaultSelectedKey]}
-        onClick={handleClick}
         prefixCls={prefixCls}
         className={cls}
+        inlineCollapsed={inlineCollapsed}
       >
         {children}
       </RcMenu>

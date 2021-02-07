@@ -5,37 +5,41 @@ import { LayoutContentProps } from './interfaces';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { LayoutContext } from './layout';
 
-const Content = ({ 
+const getWidthAndMargin = (maxWidth: number | 'auto', wide: boolean, margin: number): React.CSSProperties => {
+  if (wide) {
+    return { width: `${maxWidth}px`, margin: '0 auto' };
+  }
+  return { flexGrow: 1, margin: `0 ${margin}px` };
+};
+
+const Content = ({
   prefixCls: customizePrefixCls,
   className,
   style,
   children,
-  maxWidth = 1200,
-  margin = 20
+  maxWidth = 1320,
+  margin = 20,
 }: LayoutContentProps) => {
-  
-  const { layoutState, setContentState } = useContext(LayoutContext);  
+  const { layoutState, setContentState } = useContext(LayoutContext);
   useEffect(() => {
     setContentState({ maxWidth: isNumber(maxWidth) ? maxWidth : 0, margin });
   }, [margin, maxWidth, setContentState]);
 
   const prefixCls = usePrefixCls('layout-content', customizePrefixCls);
-  
-  const mergedStyle: React.CSSProperties = useMemo(() => ({ 
-    '--layout-content-maxWidth': maxWidth === 'auto' ? '100%' : `${maxWidth}px`,
-    '--layout-content-grow': maxWidth === 'auto' ?  1 : 0,
-    ...((maxWidth === 'auto' || !layoutState.wide) ? { margin:  `0 ${margin}px`} : {}),
-    ...style
-  }), [maxWidth, layoutState.wide, margin, style]);
-  
+
+  const mergedStyle: React.CSSProperties = useMemo(
+    () => ({
+      ...getWidthAndMargin(maxWidth, layoutState.wide, margin),
+      ...style,
+    }),
+    [maxWidth, layoutState.wide, margin, style]
+  );
+
   return (
-    <main
-      className={classNames(prefixCls, className)}
-      style={mergedStyle}
-    >
+    <main className={classNames(prefixCls, className)} style={mergedStyle}>
       {children}
     </main>
   );
-}
+};
 
 export default Content;

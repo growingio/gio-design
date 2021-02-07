@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import Layout from '../layout';
 import useSiders from '../useSiders';
@@ -10,7 +10,10 @@ describe('Testing Layout', () => {
       <Layout>
         <Layout.Sider defaultCollapsed />
         <Layout>
-          <Layout.Header />
+          <Layout.Header>
+            <Layout.Header.HeaderSection />
+            <Layout.Header.HeaderDivider />
+          </Layout.Header>
           <Layout.Content />
         </Layout>
       </Layout>
@@ -25,13 +28,12 @@ describe('Testing Layout', () => {
       </Layout>
     );
     const contentElement = getByText('content');
-    expect(contentElement.style.getPropertyValue('--layout-content-maxWidth')).toBe('100%');
-    expect(contentElement.style.getPropertyValue('--layout-content-grow')).toBe('1');
+    expect(contentElement.style.getPropertyValue('flex-grow')).toBe('1');
     expect(contentElement.style.getPropertyValue('margin')).toBe('0px 20px');
   });
 
   test('Content margin', () => {
-    const { getByText } = render(
+    const { getByText, rerender } = render(
       <Layout>
         <Layout.Content maxWidth="auto" margin={10}>
           content
@@ -39,6 +41,52 @@ describe('Testing Layout', () => {
       </Layout>
     );
     expect(getByText('content').style.getPropertyValue('margin')).toBe('0px 10px');
+    Object.defineProperty(HTMLElement.prototype, 'getBoundingClientRect', {
+      configurable: true,
+      value: () => ({ width: 2000 }),
+    });
+    rerender(
+      <Layout style={{ width: 2000 }}>
+        <Layout.Content>content</Layout.Content>
+      </Layout>
+    );
+    expect(getByText('content').style.getPropertyValue('margin')).toBe('0px auto');
+  });
+
+  test('sider trigger', () => {
+    const { getByText, getByTestId, rerender } = render(
+      <Layout>
+        <Layout.Sider trigger={<div data-testid="trigger-test">trigger</div>} />
+      </Layout>
+    );
+    expect(getByText('trigger').getAttribute('data-testid')).toBe('trigger-test');
+    expect(getByTestId('sider-content').nextElementSibling).toBe(getByText('trigger'));
+
+    rerender(
+      <Layout>
+        <Layout.Sider trigger="bottom" />
+      </Layout>
+    );
+
+    expect(getByTestId('sider-content').nextElementSibling?.className.includes('gio-layout-sider-bottom-trigger')).toBe(
+      true
+    );
+    expect(getByTestId('right-icon')).toBeTruthy();
+    fireEvent(
+      getByTestId('sider-content').nextElementSibling as Element,
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+    expect(getByTestId('left-icon')).toBeTruthy();
+
+    rerender(
+      <Layout>
+        <Layout.Sider trigger="top" />
+      </Layout>
+    );
+    expect(getByTestId('sider-content').nextElementSibling).toBe(null);
   });
 
   test('useSiders', () => {
