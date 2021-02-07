@@ -5,7 +5,7 @@ import toArray from 'rc-util/lib/Children/toArray';
 import { cloneElement } from '../../utils/reactNode';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Step from './Step';
-import { StepsProps, StepsType, StepProps } from './interface';
+import { StepsProps, StepProps } from './interface';
 
 export const typeEnum = {
   drawer: Symbol('drawer'),
@@ -35,7 +35,7 @@ function getMaxStepNumber(type: symbol, size: symbol) {
   }
 }
 
-const Steps: StepsType = (props: StepsProps) => {
+const Steps: React.FC<StepsProps> & { Step: React.FC<StepProps> } = (props: StepsProps) => {
   const { current = 0, type = 'page', size = 'small', className, onClick, children: ch } = props;
   const prefixCls = usePrefixCls('steps');
   if (!ch) return null;
