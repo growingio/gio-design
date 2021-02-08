@@ -34,12 +34,12 @@
   text-shadow: none;
   box-shadow: none;
 
-  &:hover,
-  &.dropdown-active {
+  &:hover {
     .button-color(@color; @color-background-button-primary-hover; @color-border-button-primary-hover);
   }
 
-  &:active {
+  &:active,
+  &.dropdown-active {
     .button-color(@color; @color-background-button-primary-click; @color-border-button-primary-click);
   }
 
@@ -48,11 +48,11 @@
 
 .button-variant-other(@color; @background; @border) {
   .button-color(@color; @background; @border);
-  &:hover,
-  &.dropdown-active {
+  &:hover {
     .button-color(@color; @color-background-button-default-hover; @color-border-button-default-hover);
   }
-  &:active {
+  &:active,
+  &.dropdown-active {
     .button-color(@color; @color-background-button-default-click; @color-border-button-default-click);
   }
   .button-disabled();
@@ -62,11 +62,11 @@
   .button-color(@color-text-button-assist-normal; @color-background-button-assist-normal; @color-border-button-assist-normal);
   text-shadow: none;
   border: none;
-  &:hover,
-  &.dropdown-active {
+  &:hover {
     .button-color(@color-text-button-assist-hover; @color-background-button-assist-hover; @color-border-button-default-hover);
   }
-  &:active {
+  &:active,
+  &.dropdown-active {
     .button-color(@color-text-button-assist-click; @color-background-button-assist-click; @color-border-button-default-click);
   }
   .button-disabled(@color-text-button-assist-disable; @color-background-button-assist-normal; @color-border-button-assist-normal);
@@ -174,8 +174,7 @@
     color: @color-text-button-normal;
   }
   box-shadow: none;
-  &:hover,
-  &.dropdown-active {
+  &:hover {
     color: @color-text-button-hover;
     background: transparent;
     border-color: transparent;
@@ -184,7 +183,8 @@
     }
   }
 
-  &:active {
+  &:active,
+  &.dropdown-active {
     color: @color-text-button-click;
     background: transparent;
     border-color: transparent;
