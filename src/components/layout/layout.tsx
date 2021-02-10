@@ -47,7 +47,13 @@ const Layout = ({ prefixCls: customizePrefixCls, className, style, children }: L
         updateSiders,
       }}
     >
-      <section ref={containerRef} className={classNames(prefixCls, className)} style={mergedStyle}>
+      <section
+        ref={containerRef}
+        className={classNames(prefixCls, className, {
+          [`${prefixCls}-has-sider`]: siders.length > 0,
+        })}
+        style={mergedStyle}
+      >
         {children}
       </section>
     </LayoutContext.Provider>

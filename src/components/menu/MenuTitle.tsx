@@ -7,7 +7,7 @@ const MenuTitle: React.FC<IMenuTitle> = ({ icon, title }: IMenuTitle) => {
   return (
     <>
       {icon && <span className={`${prefixCls}__icon`}>{icon}</span>}
-      {icon ? <span>{title}</span> : title}
+      <span>{title}</span>
     </>
   );
 };

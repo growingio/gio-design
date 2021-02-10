@@ -13,7 +13,6 @@
   border-radius: @radius-border-small;
   outline: none;
   transition: all 0.2s;
-
   &-selector {
     box-sizing: border-box;
     width: 100%;
@@ -86,7 +85,7 @@
   }
 
   &-item {
-    max-width: calc(100% - 12px);
+    max-width: calc(100% - 8px);
     margin-top: 7px;
     margin-left: 8px;
     font-size: @select-input-fontSize;
@@ -94,6 +93,9 @@
 
     &-text {
       overflow: hidden;
+      color: #313e75;
+      font-size: 14px;
+      line-height: 22px;
       white-space: nowrap;
       text-overflow: ellipsis;
     }

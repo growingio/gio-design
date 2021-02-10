@@ -14,9 +14,18 @@ export {
 export { default as Drawer, DrawerProps } from './components/drawer';
 export { default as Dropdown, DropdownProps } from './components/dropdown';
 export { default as Input, InputProps, InputNumberProps, TextAreaProps } from './components/input';
+export { default as Layout, LayoutProps } from './components/layout';
 export { default as Link, LinkProps } from './components/link';
 export { default as Loading, LoadingProps } from './components/loading';
-export { default as Menu, MenuProps, SubMenuProps, MenuItemProps, MenuMode } from './components/menu';
+export {
+  default as Menu,
+  MenuProps,
+  SubMenuProps,
+  MenuItemProps,
+  MenuMode,
+  Divider,
+  DividerProps,
+} from './components/menu';
 export {
   default as Modal,
   StepModal,

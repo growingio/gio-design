@@ -2,26 +2,23 @@ import React, { useContext } from 'react';
 import { Item as RcMenuItem } from 'rc-menu';
 import { IMenuItemProps } from './interface';
 import MenuTitle from './MenuTitle';
-import { MenuContext, SubMenuContext } from './MenuContext';
+import { MenuContext, SubMenuContext, getInlineIndent } from './MenuContext';
+import Tooltip from '../tooltip';
 
-const MenuItem: React.FC<IMenuItemProps> = (props: IMenuItemProps) => {
+const MenuItem = (props: IMenuItemProps) => {
   const { icon, children, ...restProps } = props;
-  const { verticalIndent } = useContext(MenuContext);
+  const { verticalIndent, inlineCollapsed } = useContext(MenuContext);
   const { inSubMenu, inIconSubMenu } = useContext(SubMenuContext);
-
-  let inlineIndent = verticalIndent;
-  if (inSubMenu && inIconSubMenu) {
-    inlineIndent = verticalIndent + 6;
-  }
-  if (inSubMenu && !inIconSubMenu) {
-    inlineIndent = verticalIndent / 2;
-  }
+  const inlineIndent = getInlineIndent(verticalIndent, inSubMenu, inIconSubMenu);
 
   return (
-    <RcMenuItem {...restProps} inlineIndent={inlineIndent}>
-      <MenuTitle title={children} icon={icon} />
-    </RcMenuItem>
+    <Tooltip title={children} disabled={!inlineCollapsed || inSubMenu} placement="right">
+      <RcMenuItem {...restProps} inlineIndent={inlineIndent}>
+        <MenuTitle title={children} icon={icon} />
+      </RcMenuItem>
+    </Tooltip>
   );
 };
 
+MenuItem.isMenuItem = true;
 export default MenuItem;

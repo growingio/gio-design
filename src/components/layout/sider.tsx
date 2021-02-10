@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
+import { LeftOutlined, RightOutlined } from '@gio-design/icons';
+import { isNil, isString } from 'lodash';
 import { LayoutSiderProps } from './interfaces';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { LayoutContext } from './layout';
@@ -25,9 +27,10 @@ const Sider = ({
   defaultCollapsed = true,
   onCollapse,
   suspendedPosition,
+  trigger,
 }: LayoutSiderProps) => {
   const { removeSider, updateSiders } = useContext(LayoutContext);
-  const [localCollapsed] = useControlledState(collapsed, defaultCollapsed);
+  const [localCollapsed, setLocalCollapsed] = useControlledState(collapsed, defaultCollapsed);
   const siderRef = useRef<HTMLDivElement>(null);
   const siderId = useRef<string>();
 
@@ -59,6 +62,25 @@ const Sider = ({
     ...style,
   };
 
+  const renderTrigger = () => {
+    if (isNil(trigger)) return null;
+    if (isString(trigger)) {
+      if (trigger === 'bottom') {
+        return (
+          <div
+            className={`${prefixCls}-bottom-trigger`}
+            onClick={() => setLocalCollapsed(!localCollapsed)}
+            aria-hidden="true"
+          >
+            {localCollapsed ? <RightOutlined data-testid="right-icon" /> : <LeftOutlined data-testid="left-icon" />}
+          </div>
+        );
+      }
+      return null;
+    }
+    return trigger;
+  };
+
   return (
     <aside
       ref={siderRef}
@@ -70,7 +92,10 @@ const Sider = ({
       })}
       style={mergedStyle}
     >
-      {children}
+      <div data-testid="sider-content" className={`${prefixCls}-content`}>
+        {children}
+      </div>
+      {renderTrigger()}
     </aside>
   );
 };
