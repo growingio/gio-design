@@ -32,8 +32,12 @@ exports[`Testing Layout should be stable 1`] = `
       </header>
       <main
         class="gio-layout-content"
-        style="flex-grow: 1; margin: 0px 20px;"
-      />
+      >
+        <div
+          class="gio-layout-content-main"
+          style="max-width: 1320px; margin: 0px 20px;"
+        />
+      </main>
     </section>
   </section>
 </DocumentFragment>

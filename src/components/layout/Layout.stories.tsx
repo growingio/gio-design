@@ -34,7 +34,6 @@ const Header = () => (
       <Layout.Header.HeaderDivider style={{ marginLeft: 16, height: 30 }} />
       <Select
         size="large"
-        allowClear
         style={{ marginLeft: 8 }}
         options={[
           { value: '1', label: '金融行业 Demo' },
@@ -57,6 +56,8 @@ const Template: Story<LayoutProps> = (args) => <Layout {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
+  fixed: true,
+  style: { height: 'calc(100vh - 16px)', border: '1px solid' },
   children: (
     <>
       <Header />
@@ -71,16 +72,16 @@ Default.args = {
 // eslint-disable-next-line react/jsx-props-no-spreading
 const DemoListTemplate: Story = (args) => <div {...args} />;
 
-const SuspendDemo = ({ suspend }: { suspend?: 'left' | 'right' }) => {
+const SuspendDemo = ({ suspend, fixed }: { suspend?: 'left' | 'right'; fixed: boolean }) => {
   const [selectedKey, setSelectedKey] = useState('1');
   const handleClick = (e: any) => {
     setSelectedKey(e.key);
   };
   const [collapsed, setCollapsed] = useState<boolean>(false);
   return (
-    <Layout>
+    <Layout style={{ height: 'calc(100vh - 16px)' }} fixed={fixed}>
       <Header />
-      <Layout style={{ height: 612 }}>
+      <Layout>
         <Layout.Sider
           trigger="bottom"
           onCollapse={setCollapsed}
@@ -162,11 +163,13 @@ const SuspendDemo = ({ suspend }: { suspend?: 'left' | 'right' }) => {
 export const Sider = DemoListTemplate.bind({});
 
 Sider.args = {
-  children: <SuspendDemo />,
+  children: <SuspendDemo fixed />,
+  style: { border: '1px solid' },
 };
 
 export const Suspend = DemoListTemplate.bind({});
 
 Suspend.args = {
-  children: <SuspendDemo suspend="left" />,
+  children: <SuspendDemo suspend="left" fixed />,
+  style: { border: '1px solid' },
 };

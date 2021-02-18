@@ -3,6 +3,7 @@ export interface LayoutProps {
   prefixCls?: string;
   children?: React.ReactNode | React.ReactNode[];
   style?: React.CSSProperties;
+  fixed?: boolean;
 }
 
 export interface LayoutHeaderDividerProps {
@@ -72,6 +73,7 @@ export interface ContentState {
 
 export interface LayoutState {
   wide: boolean;
+  fixed: boolean;
 }
 
 export interface LayoutContextType {
