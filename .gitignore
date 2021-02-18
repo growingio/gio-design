@@ -33,3 +33,5 @@ coverage
 storybook-static
 .idea
 .history
+*-report.json
+*-report.xml
