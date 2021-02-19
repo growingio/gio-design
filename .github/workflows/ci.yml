@@ -109,6 +109,7 @@ jobs:
         run: yarn build
   sonar:
     name: Sonar scan
+    if: ${{ !github.event.pull_request.head.repo.fork }}
     needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
