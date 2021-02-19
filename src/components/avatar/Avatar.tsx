@@ -47,9 +47,12 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     [`${prefixCls}-lg`]: size === 'large',
     [`${prefixCls}-hg`]: size === 'huge',
   });
-  const iconSizeMap: {[K: string]: string} = {
-    small: '10', 'default': '14', large: '24', huge: '35'
-  }
+  const iconSizeMap: { [K: string]: string } = {
+    small: '10',
+    default: '14',
+    large: '24',
+    huge: '35',
+  };
 
   const childrenStyle: React.CSSProperties = {
     transform: `scale(${scale}) translateX(-50%)`,
@@ -75,10 +78,10 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
         <span className={`${prefixCls}-default`}>
           <UserOutlined color="#fff" size={iconSizeMap[size]} />
         </span>
-      )
+      );
     }
     if (typeof userName === 'string') {
-      const prefixUserName = omit && typeof userName === 'string' ? userName.trim()[0].toUpperCase() : userName.trim();
+      const prefixUserName = omit && typeof userName === 'string' ? userName.trim()[0]?.toUpperCase() : userName.trim();
       return (
         <span ref={childrenRef} style={childrenStyle} className={`${prefixCls}-string`}>
           {prefixUserName}

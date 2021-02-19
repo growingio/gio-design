@@ -5,6 +5,7 @@
 .@{avatar-prefix-cls} {
   position: relative;
   display: inline-block;
+  box-sizing: border-box;
   overflow: hidden;
   color: @color-text-avatar-normal;
   font-weight: @weight-font-semi-bold;
@@ -106,6 +107,7 @@
   }
 
   &-group {
+    display: flex;
     .@{avatar-prefix-cls} {
       border: 1.5px solid @color-border-avatar;
       span {
