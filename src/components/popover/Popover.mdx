@@ -1,0 +1,35 @@
+import { Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
+import Popover from './index';
+
+# Popover 气泡确认框
+
+<Subtitle>点击元素，弹出气泡式的确认框。目标元素的操作需要用户进一步的确认时，在目标元素附近弹出浮层提示，询问用户。</Subtitle>
+
+## 参数说明
+
+<ArgsTable of={Popover} />
+
+## 代码演示
+
+### 基本
+
+最简单的用法，浮层的大小由内容区域决定。
+
+[Example](/?path=/story/functional-components-popover--default)
+
+
+### click 触发
+
+[Example](/?path=/story/functional-components-popover--click-popover)
+
+### 箭头指向
+
+设置了 arrowPointAtCenter 后，箭头将指向目标元素的中心。
+
+[Example](/?path=/story/functional-components-popover--arrow)
+
+### 位置
+
+位置有12个方向，通过 placement 进行设置。
+
+[Example](/?path=/story/functional-components-popover--placement)
