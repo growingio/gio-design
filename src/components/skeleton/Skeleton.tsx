@@ -20,7 +20,9 @@ const Skeleton = (props: SkeletonProps) => {
     const size = isBoolean(avatar) ? 'large' : avatar.size;
     return (
       <div className={`${prefixCls}-header`}>
-        <Avatar className={`${prefixCls}-avatar`} size={size} />
+        <Avatar className={`${prefixCls}-avatar`} size={size}>
+          {' '}
+        </Avatar>
       </div>
     );
   };
