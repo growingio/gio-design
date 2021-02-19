@@ -1,0 +1,30 @@
+import { Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
+import Tooltip from './Tooltip';
+
+# Tooltip 文字提示
+
+<Subtitle>简单的文字提示气泡框。鼠标悬停时显示提示，移出即消失，气泡浮层不承载复杂文本和操作。</Subtitle>
+
+## 参数说明
+
+<ArgsTable of={Tooltip} />
+
+## 代码演示
+
+### 默认
+
+文本或普通操作的解释说明。
+
+[Example](/?path=/story/basic-components-tooltip--default)
+
+### 链接
+
+支持设置提示尾部链接，其中 name 字段可缺省。缺省 name 字段将直接显示链接，缺省 link 链接不显示。
+
+[Example](/?path=/story/basic-components-tooltip--link)
+
+### 多行
+
+最大宽度为 500px，超出换行。
+
+[Example](/?path=/story/basic-components-tooltip--multi-line)
