@@ -28,7 +28,6 @@ describe('Testing Layout', () => {
       </Layout>
     );
     const contentElement = getByText('content');
-    expect(contentElement.style.getPropertyValue('flex-grow')).toBe('1');
     expect(contentElement.style.getPropertyValue('margin')).toBe('0px 20px');
   });
 
