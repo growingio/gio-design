@@ -1,0 +1,24 @@
+import { Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
+import Toast from './index';
+
+# Toast 全局提示
+
+<Subtitle>全局展示成功、警告和错误等反馈信息。顶部居中显示并自动消失，是一种不打断用户操作的轻量级提示方式。</Subtitle>
+
+## 参数说明
+
+<ArgsTable of={Toast} />
+
+## 代码演示
+
+### 默认
+
+仅文字反馈，会自动消失，用户也可以主动关闭。自动消失时间为 800ms。
+
+[Example](/?path=/story/basic-components-toast--default)
+
+### 提供下一步操作
+
+除了文字反馈，还会提供可以进行的、强相关的下一步操作。会自动消失，用户也可以主动关闭。自动消失时间为 2000ms。
+
+[Example](/?path=/story/basic-components-toast--next-step)
