@@ -2,6 +2,7 @@
 
 @searchbar-prefix-cls: ~'@{component-prefix}-searchbar';
 @input-cls: ~'@{component-prefix}-input';
+@color-background-searchBar-icon-clear: #5c4e61;
 
 .@{searchbar-prefix-cls} {
   position: relative;
@@ -63,7 +64,7 @@
 
   &-suffix {
     &-close {
-      color: @palette-black-6;
+      color: @color-background-searchBar-icon-clear;
       cursor: pointer;
     }
     &-search {
