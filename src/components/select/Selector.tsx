@@ -69,16 +69,19 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
     onSearch,
     clearInput,
     onClear,
+    ...rest
   } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputWidth, setInputWidth] = useState(2);
   const inputWidthRef = useRef<HTMLDivElement>(null);
+  const selectorRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const isEmptyValue = useMemo(() => !isEmpty(value), [value]);
   const showClose = allowClear && (isEmptyValue || input) && isHovered;
 
   useImperativeHandle(ref, () => ({
+    clientWidth: selectorRef?.current?.clientWidth,
     focus: () => {
       inputRef?.current?.focus();
     },
@@ -236,25 +239,30 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
       })}
       aria-disabled={disabled}
       style={style}
-      ref={ref as any}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      ref={selectorRef as any}
+      // Dropdown trigger set Event on rest, fix dropdown can not onclick trigger
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
     >
-      <div className={`${prefix}-selector`}>
-        <div className={classnames(`${prefix}-values-wrapper`)}>
-          {multiple ? renderMultipleValue() : renderSingleValue()}
-          {searchable && !disabled && renderSearchInput()}
-          {renderPlaceHolder()}
+      <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <div className={`${prefix}-selector`}>
+          <div className={classnames(`${prefix}-values-wrapper`)}>
+            {multiple ? renderMultipleValue() : renderSingleValue()}
+            {searchable && !disabled && renderSearchInput()}
+            {renderPlaceHolder()}
+          </div>
         </div>
-      </div>
-      <div
-        aria-hidden="true"
-        className={classnames(`${prefix}-arrow`, {
-          [`${prefix}-arrow-focused`]: isFocused,
-        })}
-        onClick={showClose ? onAllowClear : undefined}
-      >
-        {showClose ? closeComponent || defaultCloseComponent(prefix) : arrowComponent || defaultArrowComponent(prefix)}
+        <div
+          aria-hidden="true"
+          className={classnames(`${prefix}-arrow`, {
+            [`${prefix}-arrow-focused`]: isFocused,
+          })}
+          onClick={showClose ? onAllowClear : undefined}
+        >
+          {showClose
+            ? closeComponent || defaultCloseComponent(prefix)
+            : arrowComponent || defaultArrowComponent(prefix)}
+        </div>
       </div>
     </div>
   );

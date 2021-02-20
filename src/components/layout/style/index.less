@@ -13,6 +13,10 @@
     flex-direction: row;
   }
 
+  &-fixed {
+    height: 100vh;
+  }
+
   &-header {
     display: flex;
     flex: none;
@@ -32,9 +36,18 @@
     }
   }
 
+  &-fixed > &-header {
+    position: sticky;
+    top: 0;
+  }
+
   &-content {
-    flex-shrink: 1;
+    flex: auto;
     box-sizing: border-box;
+  }
+
+  &-fixed &-content {
+    overflow: auto;
   }
 
   &-sider {
@@ -49,7 +62,7 @@
     &-content {
       flex: auto;
       overflow-x: hidden;
-      overflow-y: auto;
+      overflow-y: overlay;
       scrollbar-width: thin;
       scrollbar-color: light;
       &::-webkit-scrollbar {
