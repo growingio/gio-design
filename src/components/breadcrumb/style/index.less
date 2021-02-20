@@ -14,21 +14,30 @@
       &:hover {
         color: @color-text-breadcrumb-hover;
       }
+
+      &:active {
+        color: @color-text-breadcrumb-click;
+      }
     }
   }
 
   a {
     color: @color-text-breadcrumb-normal;
+    text-decoration: none;
 
     &:hover {
       color: @color-text-breadcrumb-hover;
+    }
+
+    &:active {
+      color: @color-text-breadcrumb-click;
     }
   }
 
   &-separator {
     display: inline-block;
     box-sizing: content-box;
-    width: 16px;
+    width: 14px;
     padding: 0 8px;
     text-align: center;
   }

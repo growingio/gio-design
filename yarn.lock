@@ -2185,10 +2185,10 @@
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
-"@gio-design/tokens@21.1.0":
-  version "21.1.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.1.0.tgz#f8e3519b58776f6864357f1362c145bb0928d739"
-  integrity sha512-udZQWINzs6ZX2Lxtu5IWI9OqaUfqnBbcCD4zD5Vam50m0hdh/e9eKSNUcalluCtF1vm9/sFKwOERkdbwk2hnZw==
+"@gio-design/tokens@^21.2.0":
+  version "21.2.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.2.0.tgz#7ff118e55688adf8766a362a51b8fea921a5e943"
+  integrity sha512-5iddXmRK33GTZUdziUNjZnCNeoLxNCG+hI0/k/CPph11iCppqw8XtZW/Yx2ls5B0g7VdUGvBkZ9as/Qs6uR0RA==
 
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
