@@ -4,6 +4,7 @@
 @input-height-base: 36px;
 @input-height-sm: 32px;
 
+@shadow-input-active: 0 0 6px 0 #c0c4d3;
 @input-prefix-cls: ~'@{component-prefix}-input';
 
 .@{input-prefix-cls} {
@@ -22,6 +23,10 @@
   outline: none;
   transition: all 0.3s ease-in-out;
 
+  &:hover {
+    border-color: @color-border-input-hover;
+  }
+
   &--small {
     height: @input-height-sm;
   }
@@ -36,7 +41,7 @@
 
   &--focus {
     border-color: @color-border-input-active;
-    box-shadow: @shadow-tabs;
+    box-shadow: @shadow-input-active;
   }
 
   &__textarea-wrapper {
@@ -77,11 +82,6 @@
 
     &::placeholder {
       color: @palette-black-1;
-    }
-
-    &:hover {
-      border-color: @color-border-input-hover;
-      box-shadow: none;
     }
 
     &:disabled {
