@@ -2,7 +2,7 @@
 /src/components/alert @Danny548326
 /src/components/avatar @LEEHONCN
 /src/components/banner @itiiss
-/src/components/breadcrumb @berber1016
+/src/components/breadcrumb @tongchuliu
 /src/components/button @huskylengcb
 /src/components/cascader @iahu
 /src/components/checkbox @berber1016
@@ -13,7 +13,7 @@
 /src/components/form @iahu
 /src/components/grid @iahu
 /src/components/input @jack0pan
-/src/components/link @berber1016
+/src/components/link @tongchuliu
 /src/components/list @gh2049
 /src/components/loading
 /src/components/menu @Danny548326
@@ -33,7 +33,7 @@
 /src/components/tag @zzt1224
 /src/components/time-picker @gh2049
 /src/components/toast @jack0pan
-/src/components/toggles
+/src/components/toggles @Danny548326
 /src/components/tooltip
 /src/components/tree-select @huskylengcb
 /src/components/tree @huskylengcb

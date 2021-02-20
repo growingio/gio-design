@@ -7,10 +7,9 @@ import './style/steps.stories.less';
 import { Drawer, Button, Toast, Modal } from '../..';
 
 export default {
-  title: 'Components/Functional/Steps',
+  title: 'Functional Components/Steps',
   component: Steps,
   subcomponents: { Step },
-  controls: { expanded: true },
   parameters: {
     docs: {
       page: Docs,
@@ -38,13 +37,13 @@ const PageStepsTemplate: Story<StepsProps> = (args) => {
   return (
     <div style={{ maxWidth: '1200px' }}>
       <Steps
+        {...args}
         current={current}
         onClick={(stepNumber) => {
           finished[current] = true;
           setFinished([...finished]);
           setCurrent(stepNumber);
         }}
-        {...args}
       >
         <Step key="1" title="标题 1" description="描述信息 1" finished={finished[0]} />
         <Step key="2" title="标题 2" description="描述信息 2" finished={finished[1]} />
@@ -130,6 +129,7 @@ const SmallModalStepsTemplate: Story<StepsProps> = (args) => {
       >
         <div>
           <Steps
+            {...args}
             current={current}
             size="small"
             type="modal"
@@ -138,7 +138,6 @@ const SmallModalStepsTemplate: Story<StepsProps> = (args) => {
               setFinished([...finished]);
               setCurrent(stepNumber);
             }}
-            {...args}
           >
             <Step key="1" title="标题 1" description="描述信息 1" finished={finished[0]} />
             <Step key="2" title="标题 2" description="描述信息 2" finished={finished[1]} />
@@ -209,6 +208,7 @@ const MiddleModalStepsTemplate: Story<StepsProps> = (args) => {
       >
         <div>
           <Steps
+            {...args}
             current={current}
             size="middle"
             type="modal"
@@ -217,7 +217,6 @@ const MiddleModalStepsTemplate: Story<StepsProps> = (args) => {
               setFinished([...finished]);
               setCurrent(stepNumber);
             }}
-            {...args}
           >
             <Step key="1" title="标题 1" description="描述信息 1" finished={finished[0]} />
             <Step key="2" title="标题 2" description="描述信息 2" finished={finished[1]} />
@@ -291,6 +290,7 @@ const DrawerStepsTemplate: Story<StepsProps> = (args) => {
       >
         <div style={{ width: '100%', height: '100%', padding: '16px' }}>
           <Steps
+            {...args}
             current={current}
             type="drawer"
             onClick={(stepNumber) => {
@@ -298,7 +298,6 @@ const DrawerStepsTemplate: Story<StepsProps> = (args) => {
               setFinished([...finished]);
               setCurrent(stepNumber);
             }}
-            {...args}
           >
             <Step key="1" title="标题 1" description="描述信息 1" finished={finished[0]} />
             <Step key="2" title="标题 2" description="描述信息 2" finished={finished[1]} />

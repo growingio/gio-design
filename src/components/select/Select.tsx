@@ -283,7 +283,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         overlayInnerStyle={dropDownStyle}
         getTooltipContainer={getContainer}
       >
-        <div className={`${prefix}-trigger`}>{trigger}</div>
+        {trigger}
       </Dropdown>
     );
   }

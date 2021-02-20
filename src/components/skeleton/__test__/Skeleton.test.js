@@ -1,14 +1,9 @@
 import React from 'react';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import { waitForComponentToPaint } from '../../../utils/test';
 import Skeleton from '../index';
 
 describe('Testing Skeleton', () => {
-  it('should be stable', () => {
-    const wrapper = render(<Skeleton avatar>children</Skeleton>);
-    expect(wrapper).toMatchSnapshot();
-  });
-
   it('should be mount, setProps, unmount with no error', () => {
     expect(() => {
       const wrapper = mount(<Skeleton avatar>children</Skeleton>);

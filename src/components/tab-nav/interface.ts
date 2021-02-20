@@ -1,7 +1,6 @@
 export interface TabNavProps {
   /**
    * 替代组件的类前缀
-   * @default 'gio-tabnav'
    */
   prefixCls?: string;
   className?: string;
@@ -9,12 +8,10 @@ export interface TabNavProps {
   children?: React.ReactNode;
   /**
    * 标签导航按钮样式
-   * @default 'block''
    */
   type?: 'block' | 'line';
   /**
    * 标签导航尺寸
-   * @default 'large'
    */
   size?: 'large' | 'middle' | 'small' | 'xs';
   /**
