@@ -21,12 +21,13 @@ module.exports = {
       '<rootDir>/__mocks__/fileMock.js',
     'iconfont.js': '<rootDir>/__mocks__/iconMock.js',
   },
-  collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     '!src/**/index.{ts,tsx}',
     '!src/**/interfaces.ts',
     '!src/**/*.stories.{ts,tsx}',
+    '!src/**/__tests__/*',
   ],
   coverageDirectory: './coverage/',
+  testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
 };
