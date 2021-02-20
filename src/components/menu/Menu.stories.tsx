@@ -19,7 +19,7 @@ export default {
 } as Meta;
 
 export const Vertical: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (args) => {
-  const { disabled, inlineCollapsed, title } = args;
+  const { disabled, inlineCollapsed, title, expandIcon } = args;
   const [selectedKey, setSelectedKey] = useState('sub-menu-1-1');
   const handleClick = (e: any) => {
     setSelectedKey(e.key);
@@ -35,7 +35,7 @@ export const Vertical: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (arg
         onClick={handleClick}
         defaultOpenKeys={['sub-1']}
       >
-        <SubMenu disabled={disabled} key="sub-1" title="功能名称-1" icon={<AppOutlined />}>
+        <SubMenu disabled={disabled} key="sub-1" title="功能名称-1" icon={<AppOutlined />} expandIcon={expandIcon}>
           <MenuItem key="sub-menu-1-1">功能名称-1-1</MenuItem>
           <MenuItem key="sub-menu-1-2">功能名称-1-2</MenuItem>
         </SubMenu>
@@ -60,9 +60,10 @@ export const Vertical: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (arg
 };
 
 Vertical.args = {
-  disabled: false,
+  disabled: true,
   inlineCollapsed: false,
   title: '标题',
+  expandIcon: () => null,
 };
 
 export const Horizontal: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (args) => {
