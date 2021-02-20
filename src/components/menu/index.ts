@@ -1,12 +1,14 @@
 import GIOMenu from './Menu';
 import MenuItem from './MenuItem';
 import SubMenu from './SubMenu';
+import Divider from './Divider';
 
 export {
   IMenuProps as MenuProps,
   ISubMenuProps as SubMenuProps,
   IMenuItemProps as MenuItemProps,
   TMenuMode as MenuMode,
+  DividerProps,
 } from './interface';
 
 export type TMenu = typeof GIOMenu & {
@@ -19,4 +21,4 @@ Menu.MenuItem = MenuItem;
 Menu.SubMenu = SubMenu;
 
 export default Menu;
-export { MenuItem, SubMenu };
+export { MenuItem, SubMenu, Divider };

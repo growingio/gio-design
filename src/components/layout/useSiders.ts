@@ -16,8 +16,7 @@ const useSiders = (): [
 
   const updateSiders = useCallback((incomingSider: SiderState) => {
     setSiders((_siders) => {
-      _siders.filter((_sider) => _sider.id !== incomingSider.id);
-      return [..._siders, incomingSider];
+      return [..._siders.filter((_sider) => _sider.id !== incomingSider.id), incomingSider];
     });
   }, []);
 

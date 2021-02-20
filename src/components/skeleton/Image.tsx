@@ -1,15 +1,25 @@
 import React from 'react';
+import classNames from 'classnames';
 import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { SkeletonImageProps } from './interface';
 
 const SkeletonImage = (props: SkeletonImageProps) => {
-  const { prefixCls: customizePrefixCls, loading = true, delay = 0, children, width = 100, color = '#DBDEE8' } = props;
+  const {
+    prefixCls: customizePrefixCls,
+    loading = true,
+    delay = 0,
+    children,
+    width = 100,
+    color = '#DBDEE8',
+    className,
+    style,
+  } = props;
   const prefixCls = usePrefixCls('skeleton', customizePrefixCls);
   const shouldLoading = useDebounceLoading(loading, delay);
 
   return shouldLoading ? (
-    <div className={prefixCls}>
+    <div className={classNames(prefixCls, className)} style={style}>
       <div className={`${prefixCls}-image`}>
         <svg width={`${width}px`} height={`${width * 0.85}px`} viewBox="0 0 1204 1024" color={color}>
           <path
@@ -24,9 +34,7 @@ const SkeletonImage = (props: SkeletonImageProps) => {
       </div>
     </div>
   ) : (
-    <>
-      {children}
-    </>
+    <>{children}</>
   );
 };
 

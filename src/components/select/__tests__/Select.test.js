@@ -72,7 +72,6 @@ describe('<Select />', () => {
 
   it('should have correc dom structure', () => {
     const tree = shallow(<Select options={options} />);
-    expect(tree.find('.gio-select-trigger').exists()).toBeTruthy();
     expect(tree.find(Selector).shallow().find('.gio-select-selector').exists()).toBeTruthy();
     expect(tree.find(Selector).shallow().find('.gio-select-values-wrapper').exists()).toBeTruthy();
     expect(tree.find(Selector).shallow().find('.gio-select-arrow').exists()).toBeTruthy();
@@ -81,7 +80,6 @@ describe('<Select />', () => {
 
   it('should have correc dom structure', () => {
     const tree = shallow(<Select options={optionsWithOutGroup} />);
-    expect(tree.find('.gio-select-trigger').exists()).toBeTruthy();
     expect(tree.find(Selector).shallow().find('.gio-select-selector').exists()).toBeTruthy();
     expect(tree.find(Selector).shallow().find('.gio-select-values-wrapper').exists()).toBeTruthy();
     expect(tree.find(Selector).shallow().find('.gio-select-arrow').exists()).toBeTruthy();
@@ -146,19 +144,16 @@ describe('<Select /> allowClear onClear onAllowClear', () => {
       document.querySelector('.gio-select-dropdown .gio-select-list-option').click();
     });
     act(() => {
-      tree.simulate('mouseenter');
+      tree.find('.gio-select').simulate('mouseenter').find('.gio-select-arrow').simulate('click');
     });
     act(() => {
-      tree.simulate('mouseenter').find('.gio-select-arrow').simulate('click');
-    });
-    act(() => {
-      tree.simulate('mouseleave');
+      tree.find('.gio-select').simulate('mouseleave');
     });
     act(() => {
       tree.find('input').simulate('change', { target: { value: '全部' } });
     });
     act(() => {
-      tree.simulate('mouseenter').find('.gio-select-arrow').simulate('click');
+      tree.find('.gio-select').simulate('mouseenter').find('.gio-select-arrow').simulate('click');
     });
     expect(tree.find('input').text()).toBe('');
     tree.unmount();
@@ -172,13 +167,13 @@ describe('<Select /> allowClear onClear onAllowClear', () => {
       tree.find('input').simulate('change', { target: { value: '全部' } });
     });
     act(() => {
-      tree.simulate('mouseenter');
+      tree.find('.gio-select').simulate('mouseenter');
     });
     act(() => {
-      tree.simulate('mouseenter').find('.gio-select-arrow').simulate('click');
+      tree.find('.gio-select').simulate('mouseenter').find('.gio-select-arrow').simulate('click');
     });
     act(() => {
-      tree.simulate('mouseleave');
+      tree.find('.gio-select').simulate('mouseleave');
     });
     expect(tree.find('input').text()).toBe('');
     tree.unmount();

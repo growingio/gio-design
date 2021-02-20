@@ -3,15 +3,11 @@ import { CommonProps } from '../../utils/type';
 export type Type = 'page' | 'modal' | 'drawer';
 export type Size = 'middle' | 'small';
 
-export interface StepsType extends React.FC<StepsProps> {
-  Step: React.FC<StepProps>;
-}
-
 export interface StepsProps extends CommonProps {
   /**
    * 只允许使用 Step 组件
    */
-  children?: React.ReactNode;
+  children: React.ReactNode;
 
   /**
    * 当前步骤，从 0 开始计数

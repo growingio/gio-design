@@ -48,36 +48,8 @@ const Template: Story<SelectProps> = (args) => {
 export const Default = Template.bind({});
 export const Group = Template.bind({});
 export const customOption = Template.bind({});
-Default.args = {
-  placeholder: '请选择',
-  searchable: true,
-  disabled: false,
-  bordered: true,
-  allowClear: true,
-  className: 'gio-demo',
-  allowCustomOption: true,
-  size: 'small',
-  options,
-  style: { width: 160 },
-  onChange: (value: string | number, option: OptionProps) => {
-    console.log('onchange', value, option);
-  },
-  onSearch: (input: string) => {
-    console.log('input', input);
-  },
-  onSelect: (value: string | number, option: OptionProps) => {
-    console.log('onselect', value, option);
-  },
-  allowDeselect: false,
-  onDeSelect: (value: string | number, option: OptionProps) => {
-    console.log('ondeselect', value, option);
-  },
-  onClear: () => {
-    console.log('clear');
-  },
-};
 
-Group.args = {
+const args = {
   placeholder: '请选择',
   searchable: true,
   disabled: false,
@@ -87,7 +59,6 @@ Group.args = {
   className: 'gio-demo',
   allowCustomOption: true,
   size: 'small',
-  options: optionsWithoutGroup,
   style: { width: 160 },
   onChange: (value: string | number, option: OptionProps) => {
     console.log('onchange', value, option);
@@ -106,33 +77,8 @@ Group.args = {
     console.log('clear');
   },
 };
+Default.args = { ...args, options };
 
-customOption.args = {
-  placeholder: '请选择',
-  searchable: true,
-  disabled: false,
-  multiple: true,
-  bordered: true,
-  allowClear: true,
-  className: 'gio-demo',
-  allowCustomOption: true,
-  size: 'small',
-  options: optionsWithCustomLabel,
-  style: { width: 160 },
-  onChange: (value: string | number, option: OptionProps) => {
-    console.log('onchange', value, option);
-  },
-  onSearch: (input: string) => {
-    console.log('input', input);
-  },
-  onSelect: (value: string | number, option: OptionProps) => {
-    console.log('onselect', value, option);
-  },
-  allowDeselect: false,
-  onDeSelect: (value: string | number, option: OptionProps) => {
-    console.log('ondeselect', value, option);
-  },
-  onClear: () => {
-    console.log('clear');
-  },
-};
+Group.args = { ...args, options: optionsWithoutGroup };
+
+customOption.args = { ...args, options: optionsWithCustomLabel };

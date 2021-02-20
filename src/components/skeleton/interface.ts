@@ -6,6 +6,8 @@ export interface SkeletonParagraphProps {
 }
 
 export interface SkeletonImageProps {
+  className?: string;
+  style?: React.CSSProperties;
   /**
    替代组件的类前缀
    */
@@ -33,6 +35,8 @@ export interface SkeletonImageProps {
 }
 
 export interface SkeletonProps {
+  className?: string;
+  style?: React.CSSProperties;
   /**
    替代组件的类前缀
    */

@@ -8,7 +8,7 @@ import { SkeletonProps } from './interface';
 import SkeletonImage from './Image';
 
 const Skeleton = (props: SkeletonProps) => {
-  const { prefixCls: customizePrefixCls, delay = 0, loading = true, children, active = true } = props;
+  const { prefixCls: customizePrefixCls, delay = 0, loading = true, children, active = true, className, style } = props;
   const prefixCls = usePrefixCls('skeleton', customizePrefixCls);
   const shouldLoading = useDebounceLoading(loading, delay);
 
@@ -20,7 +20,9 @@ const Skeleton = (props: SkeletonProps) => {
     const size = isBoolean(avatar) ? 'large' : avatar.size;
     return (
       <div className={`${prefixCls}-header`}>
-        <Avatar className={`${prefixCls}-avatar`} size={size} />
+        <Avatar className={`${prefixCls}-avatar`} size={size}>
+          {' '}
+        </Avatar>
       </div>
     );
   };
@@ -49,17 +51,16 @@ const Skeleton = (props: SkeletonProps) => {
 
   return shouldLoading ? (
     <div
-      className={classNames(prefixCls, {
+      className={classNames(prefixCls, className, {
         [`${prefixCls}-active`]: active,
       })}
+      style={style}
     >
       {renderSkeletonAvatar()}
       {renderSkeletonParagraph()}
     </div>
   ) : (
-    <>
-      {children}
-    </>
+    <>{children}</>
   );
 };
 

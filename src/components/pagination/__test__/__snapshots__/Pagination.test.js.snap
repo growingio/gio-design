@@ -1143,18 +1143,16 @@ initialize {
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
-                                      "class": "gio-select-trigger",
+                                      "aria-controls": "expandable",
+                                      "aria-disabled": "false",
+                                      "aria-expanded": "false",
+                                      "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                                      "role": "combobox",
                                       "style": "cursor:pointer",
                                     },
                                     "children": Array [
                                       Object {
-                                        "attribs": Object {
-                                          "aria-controls": "expandable",
-                                          "aria-disabled": "false",
-                                          "aria-expanded": "false",
-                                          "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                          "role": "combobox",
-                                        },
+                                        "attribs": Object {},
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
@@ -1785,20 +1783,8 @@ initialize {
                                         "parent": [Circular],
                                         "prev": null,
                                         "type": "tag",
-                                        "x-attribsNamespace": Object {
-                                          "aria-controls": undefined,
-                                          "aria-disabled": undefined,
-                                          "aria-expanded": undefined,
-                                          "class": undefined,
-                                          "role": undefined,
-                                        },
-                                        "x-attribsPrefix": Object {
-                                          "aria-controls": undefined,
-                                          "aria-disabled": undefined,
-                                          "aria-expanded": undefined,
-                                          "class": undefined,
-                                          "role": undefined,
-                                        },
+                                        "x-attribsNamespace": Object {},
+                                        "x-attribsPrefix": Object {},
                                       },
                                     ],
                                     "name": "div",
@@ -1808,11 +1794,19 @@ initialize {
                                     "prev": null,
                                     "type": "tag",
                                     "x-attribsNamespace": Object {
+                                      "aria-controls": undefined,
+                                      "aria-disabled": undefined,
+                                      "aria-expanded": undefined,
                                       "class": undefined,
+                                      "role": undefined,
                                       "style": undefined,
                                     },
                                     "x-attribsPrefix": Object {
+                                      "aria-controls": undefined,
+                                      "aria-disabled": undefined,
+                                      "aria-expanded": undefined,
                                       "class": undefined,
+                                      "role": undefined,
                                       "style": undefined,
                                     },
                                   },
@@ -2213,18 +2207,16 @@ initialize {
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
-                                        "class": "gio-select-trigger",
+                                        "aria-controls": "expandable",
+                                        "aria-disabled": "false",
+                                        "aria-expanded": "false",
+                                        "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                                        "role": "combobox",
                                         "style": "cursor:pointer",
                                       },
                                       "children": Array [
                                         Object {
-                                          "attribs": Object {
-                                            "aria-controls": "expandable",
-                                            "aria-disabled": "false",
-                                            "aria-expanded": "false",
-                                            "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                            "role": "combobox",
-                                          },
+                                          "attribs": Object {},
                                           "children": Array [
                                             Object {
                                               "attribs": Object {
@@ -2855,20 +2847,8 @@ initialize {
                                           "parent": [Circular],
                                           "prev": null,
                                           "type": "tag",
-                                          "x-attribsNamespace": Object {
-                                            "aria-controls": undefined,
-                                            "aria-disabled": undefined,
-                                            "aria-expanded": undefined,
-                                            "class": undefined,
-                                            "role": undefined,
-                                          },
-                                          "x-attribsPrefix": Object {
-                                            "aria-controls": undefined,
-                                            "aria-disabled": undefined,
-                                            "aria-expanded": undefined,
-                                            "class": undefined,
-                                            "role": undefined,
-                                          },
+                                          "x-attribsNamespace": Object {},
+                                          "x-attribsPrefix": Object {},
                                         },
                                       ],
                                       "name": "div",
@@ -2878,11 +2858,19 @@ initialize {
                                       "prev": null,
                                       "type": "tag",
                                       "x-attribsNamespace": Object {
+                                        "aria-controls": undefined,
+                                        "aria-disabled": undefined,
+                                        "aria-expanded": undefined,
                                         "class": undefined,
+                                        "role": undefined,
                                         "style": undefined,
                                       },
                                       "x-attribsPrefix": Object {
+                                        "aria-controls": undefined,
+                                        "aria-disabled": undefined,
+                                        "aria-expanded": undefined,
                                         "class": undefined,
+                                        "role": undefined,
                                         "style": undefined,
                                       },
                                     },
@@ -4161,18 +4149,16 @@ initialize {
                               "children": Array [
                                 Object {
                                   "attribs": Object {
-                                    "class": "gio-select-trigger",
+                                    "aria-controls": "expandable",
+                                    "aria-disabled": "false",
+                                    "aria-expanded": "false",
+                                    "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                                    "role": "combobox",
                                     "style": "cursor:pointer",
                                   },
                                   "children": Array [
                                     Object {
-                                      "attribs": Object {
-                                        "aria-controls": "expandable",
-                                        "aria-disabled": "false",
-                                        "aria-expanded": "false",
-                                        "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                        "role": "combobox",
-                                      },
+                                      "attribs": Object {},
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
@@ -4803,20 +4789,8 @@ initialize {
                                       "parent": [Circular],
                                       "prev": null,
                                       "type": "tag",
-                                      "x-attribsNamespace": Object {
-                                        "aria-controls": undefined,
-                                        "aria-disabled": undefined,
-                                        "aria-expanded": undefined,
-                                        "class": undefined,
-                                        "role": undefined,
-                                      },
-                                      "x-attribsPrefix": Object {
-                                        "aria-controls": undefined,
-                                        "aria-disabled": undefined,
-                                        "aria-expanded": undefined,
-                                        "class": undefined,
-                                        "role": undefined,
-                                      },
+                                      "x-attribsNamespace": Object {},
+                                      "x-attribsPrefix": Object {},
                                     },
                                   ],
                                   "name": "div",
@@ -4826,11 +4800,19 @@ initialize {
                                   "prev": null,
                                   "type": "tag",
                                   "x-attribsNamespace": Object {
+                                    "aria-controls": undefined,
+                                    "aria-disabled": undefined,
+                                    "aria-expanded": undefined,
                                     "class": undefined,
+                                    "role": undefined,
                                     "style": undefined,
                                   },
                                   "x-attribsPrefix": Object {
+                                    "aria-controls": undefined,
+                                    "aria-disabled": undefined,
+                                    "aria-expanded": undefined,
                                     "class": undefined,
+                                    "role": undefined,
                                     "style": undefined,
                                   },
                                 },
@@ -5231,18 +5213,16 @@ initialize {
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
-                                      "class": "gio-select-trigger",
+                                      "aria-controls": "expandable",
+                                      "aria-disabled": "false",
+                                      "aria-expanded": "false",
+                                      "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                                      "role": "combobox",
                                       "style": "cursor:pointer",
                                     },
                                     "children": Array [
                                       Object {
-                                        "attribs": Object {
-                                          "aria-controls": "expandable",
-                                          "aria-disabled": "false",
-                                          "aria-expanded": "false",
-                                          "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                          "role": "combobox",
-                                        },
+                                        "attribs": Object {},
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
@@ -5873,20 +5853,8 @@ initialize {
                                         "parent": [Circular],
                                         "prev": null,
                                         "type": "tag",
-                                        "x-attribsNamespace": Object {
-                                          "aria-controls": undefined,
-                                          "aria-disabled": undefined,
-                                          "aria-expanded": undefined,
-                                          "class": undefined,
-                                          "role": undefined,
-                                        },
-                                        "x-attribsPrefix": Object {
-                                          "aria-controls": undefined,
-                                          "aria-disabled": undefined,
-                                          "aria-expanded": undefined,
-                                          "class": undefined,
-                                          "role": undefined,
-                                        },
+                                        "x-attribsNamespace": Object {},
+                                        "x-attribsPrefix": Object {},
                                       },
                                     ],
                                     "name": "div",
@@ -5896,11 +5864,19 @@ initialize {
                                     "prev": null,
                                     "type": "tag",
                                     "x-attribsNamespace": Object {
+                                      "aria-controls": undefined,
+                                      "aria-disabled": undefined,
+                                      "aria-expanded": undefined,
                                       "class": undefined,
+                                      "role": undefined,
                                       "style": undefined,
                                     },
                                     "x-attribsPrefix": Object {
+                                      "aria-controls": undefined,
+                                      "aria-disabled": undefined,
+                                      "aria-expanded": undefined,
                                       "class": undefined,
+                                      "role": undefined,
                                       "style": undefined,
                                     },
                                   },
@@ -6978,18 +6954,16 @@ initialize {
                             "children": Array [
                               Object {
                                 "attribs": Object {
-                                  "class": "gio-select-trigger",
+                                  "aria-controls": "expandable",
+                                  "aria-disabled": "false",
+                                  "aria-expanded": "false",
+                                  "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                                  "role": "combobox",
                                   "style": "cursor:pointer",
                                 },
                                 "children": Array [
                                   Object {
-                                    "attribs": Object {
-                                      "aria-controls": "expandable",
-                                      "aria-disabled": "false",
-                                      "aria-expanded": "false",
-                                      "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                      "role": "combobox",
-                                    },
+                                    "attribs": Object {},
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
@@ -7620,20 +7594,8 @@ initialize {
                                     "parent": [Circular],
                                     "prev": null,
                                     "type": "tag",
-                                    "x-attribsNamespace": Object {
-                                      "aria-controls": undefined,
-                                      "aria-disabled": undefined,
-                                      "aria-expanded": undefined,
-                                      "class": undefined,
-                                      "role": undefined,
-                                    },
-                                    "x-attribsPrefix": Object {
-                                      "aria-controls": undefined,
-                                      "aria-disabled": undefined,
-                                      "aria-expanded": undefined,
-                                      "class": undefined,
-                                      "role": undefined,
-                                    },
+                                    "x-attribsNamespace": Object {},
+                                    "x-attribsPrefix": Object {},
                                   },
                                 ],
                                 "name": "div",
@@ -7643,11 +7605,19 @@ initialize {
                                 "prev": null,
                                 "type": "tag",
                                 "x-attribsNamespace": Object {
+                                  "aria-controls": undefined,
+                                  "aria-disabled": undefined,
+                                  "aria-expanded": undefined,
                                   "class": undefined,
+                                  "role": undefined,
                                   "style": undefined,
                                 },
                                 "x-attribsPrefix": Object {
+                                  "aria-controls": undefined,
+                                  "aria-disabled": undefined,
+                                  "aria-expanded": undefined,
                                   "class": undefined,
+                                  "role": undefined,
                                   "style": undefined,
                                 },
                               },
@@ -8048,18 +8018,16 @@ initialize {
                               "children": Array [
                                 Object {
                                   "attribs": Object {
-                                    "class": "gio-select-trigger",
+                                    "aria-controls": "expandable",
+                                    "aria-disabled": "false",
+                                    "aria-expanded": "false",
+                                    "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                                    "role": "combobox",
                                     "style": "cursor:pointer",
                                   },
                                   "children": Array [
                                     Object {
-                                      "attribs": Object {
-                                        "aria-controls": "expandable",
-                                        "aria-disabled": "false",
-                                        "aria-expanded": "false",
-                                        "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                        "role": "combobox",
-                                      },
+                                      "attribs": Object {},
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
@@ -8690,20 +8658,8 @@ initialize {
                                       "parent": [Circular],
                                       "prev": null,
                                       "type": "tag",
-                                      "x-attribsNamespace": Object {
-                                        "aria-controls": undefined,
-                                        "aria-disabled": undefined,
-                                        "aria-expanded": undefined,
-                                        "class": undefined,
-                                        "role": undefined,
-                                      },
-                                      "x-attribsPrefix": Object {
-                                        "aria-controls": undefined,
-                                        "aria-disabled": undefined,
-                                        "aria-expanded": undefined,
-                                        "class": undefined,
-                                        "role": undefined,
-                                      },
+                                      "x-attribsNamespace": Object {},
+                                      "x-attribsPrefix": Object {},
                                     },
                                   ],
                                   "name": "div",
@@ -8713,11 +8669,19 @@ initialize {
                                   "prev": null,
                                   "type": "tag",
                                   "x-attribsNamespace": Object {
+                                    "aria-controls": undefined,
+                                    "aria-disabled": undefined,
+                                    "aria-expanded": undefined,
                                     "class": undefined,
+                                    "role": undefined,
                                     "style": undefined,
                                   },
                                   "x-attribsPrefix": Object {
+                                    "aria-controls": undefined,
+                                    "aria-disabled": undefined,
+                                    "aria-expanded": undefined,
                                     "class": undefined,
+                                    "role": undefined,
                                     "style": undefined,
                                   },
                                 },
@@ -9995,18 +9959,16 @@ initialize {
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "class": "gio-select-trigger",
+                                "aria-controls": "expandable",
+                                "aria-disabled": "false",
+                                "aria-expanded": "false",
+                                "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                                "role": "combobox",
                                 "style": "cursor:pointer",
                               },
                               "children": Array [
                                 Object {
-                                  "attribs": Object {
-                                    "aria-controls": "expandable",
-                                    "aria-disabled": "false",
-                                    "aria-expanded": "false",
-                                    "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                    "role": "combobox",
-                                  },
+                                  "attribs": Object {},
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
@@ -10637,20 +10599,8 @@ initialize {
                                   "parent": [Circular],
                                   "prev": null,
                                   "type": "tag",
-                                  "x-attribsNamespace": Object {
-                                    "aria-controls": undefined,
-                                    "aria-disabled": undefined,
-                                    "aria-expanded": undefined,
-                                    "class": undefined,
-                                    "role": undefined,
-                                  },
-                                  "x-attribsPrefix": Object {
-                                    "aria-controls": undefined,
-                                    "aria-disabled": undefined,
-                                    "aria-expanded": undefined,
-                                    "class": undefined,
-                                    "role": undefined,
-                                  },
+                                  "x-attribsNamespace": Object {},
+                                  "x-attribsPrefix": Object {},
                                 },
                               ],
                               "name": "div",
@@ -10660,11 +10610,19 @@ initialize {
                               "prev": null,
                               "type": "tag",
                               "x-attribsNamespace": Object {
+                                "aria-controls": undefined,
+                                "aria-disabled": undefined,
+                                "aria-expanded": undefined,
                                 "class": undefined,
+                                "role": undefined,
                                 "style": undefined,
                               },
                               "x-attribsPrefix": Object {
+                                "aria-controls": undefined,
+                                "aria-disabled": undefined,
+                                "aria-expanded": undefined,
                                 "class": undefined,
+                                "role": undefined,
                                 "style": undefined,
                               },
                             },
@@ -11065,18 +11023,16 @@ initialize {
                             "children": Array [
                               Object {
                                 "attribs": Object {
-                                  "class": "gio-select-trigger",
+                                  "aria-controls": "expandable",
+                                  "aria-disabled": "false",
+                                  "aria-expanded": "false",
+                                  "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                                  "role": "combobox",
                                   "style": "cursor:pointer",
                                 },
                                 "children": Array [
                                   Object {
-                                    "attribs": Object {
-                                      "aria-controls": "expandable",
-                                      "aria-disabled": "false",
-                                      "aria-expanded": "false",
-                                      "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                      "role": "combobox",
-                                    },
+                                    "attribs": Object {},
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
@@ -11707,20 +11663,8 @@ initialize {
                                     "parent": [Circular],
                                     "prev": null,
                                     "type": "tag",
-                                    "x-attribsNamespace": Object {
-                                      "aria-controls": undefined,
-                                      "aria-disabled": undefined,
-                                      "aria-expanded": undefined,
-                                      "class": undefined,
-                                      "role": undefined,
-                                    },
-                                    "x-attribsPrefix": Object {
-                                      "aria-controls": undefined,
-                                      "aria-disabled": undefined,
-                                      "aria-expanded": undefined,
-                                      "class": undefined,
-                                      "role": undefined,
-                                    },
+                                    "x-attribsNamespace": Object {},
+                                    "x-attribsPrefix": Object {},
                                   },
                                 ],
                                 "name": "div",
@@ -11730,11 +11674,19 @@ initialize {
                                 "prev": null,
                                 "type": "tag",
                                 "x-attribsNamespace": Object {
+                                  "aria-controls": undefined,
+                                  "aria-disabled": undefined,
+                                  "aria-expanded": undefined,
                                   "class": undefined,
+                                  "role": undefined,
                                   "style": undefined,
                                 },
                                 "x-attribsPrefix": Object {
+                                  "aria-controls": undefined,
+                                  "aria-disabled": undefined,
+                                  "aria-expanded": undefined,
                                   "class": undefined,
+                                  "role": undefined,
                                   "style": undefined,
                                 },
                               },
@@ -13012,18 +12964,16 @@ initialize {
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "gio-select-trigger",
+                              "aria-controls": "expandable",
+                              "aria-disabled": "false",
+                              "aria-expanded": "false",
+                              "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                              "role": "combobox",
                               "style": "cursor:pointer",
                             },
                             "children": Array [
                               Object {
-                                "attribs": Object {
-                                  "aria-controls": "expandable",
-                                  "aria-disabled": "false",
-                                  "aria-expanded": "false",
-                                  "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                  "role": "combobox",
-                                },
+                                "attribs": Object {},
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
@@ -13654,20 +13604,8 @@ initialize {
                                 "parent": [Circular],
                                 "prev": null,
                                 "type": "tag",
-                                "x-attribsNamespace": Object {
-                                  "aria-controls": undefined,
-                                  "aria-disabled": undefined,
-                                  "aria-expanded": undefined,
-                                  "class": undefined,
-                                  "role": undefined,
-                                },
-                                "x-attribsPrefix": Object {
-                                  "aria-controls": undefined,
-                                  "aria-disabled": undefined,
-                                  "aria-expanded": undefined,
-                                  "class": undefined,
-                                  "role": undefined,
-                                },
+                                "x-attribsNamespace": Object {},
+                                "x-attribsPrefix": Object {},
                               },
                             ],
                             "name": "div",
@@ -13677,11 +13615,19 @@ initialize {
                             "prev": null,
                             "type": "tag",
                             "x-attribsNamespace": Object {
+                              "aria-controls": undefined,
+                              "aria-disabled": undefined,
+                              "aria-expanded": undefined,
                               "class": undefined,
+                              "role": undefined,
                               "style": undefined,
                             },
                             "x-attribsPrefix": Object {
+                              "aria-controls": undefined,
+                              "aria-disabled": undefined,
+                              "aria-expanded": undefined,
                               "class": undefined,
+                              "role": undefined,
                               "style": undefined,
                             },
                           },
@@ -14082,18 +14028,16 @@ initialize {
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "class": "gio-select-trigger",
+                                "aria-controls": "expandable",
+                                "aria-disabled": "false",
+                                "aria-expanded": "false",
+                                "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                                "role": "combobox",
                                 "style": "cursor:pointer",
                               },
                               "children": Array [
                                 Object {
-                                  "attribs": Object {
-                                    "aria-controls": "expandable",
-                                    "aria-disabled": "false",
-                                    "aria-expanded": "false",
-                                    "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                    "role": "combobox",
-                                  },
+                                  "attribs": Object {},
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
@@ -14724,20 +14668,8 @@ initialize {
                                   "parent": [Circular],
                                   "prev": null,
                                   "type": "tag",
-                                  "x-attribsNamespace": Object {
-                                    "aria-controls": undefined,
-                                    "aria-disabled": undefined,
-                                    "aria-expanded": undefined,
-                                    "class": undefined,
-                                    "role": undefined,
-                                  },
-                                  "x-attribsPrefix": Object {
-                                    "aria-controls": undefined,
-                                    "aria-disabled": undefined,
-                                    "aria-expanded": undefined,
-                                    "class": undefined,
-                                    "role": undefined,
-                                  },
+                                  "x-attribsNamespace": Object {},
+                                  "x-attribsPrefix": Object {},
                                 },
                               ],
                               "name": "div",
@@ -14747,11 +14679,19 @@ initialize {
                               "prev": null,
                               "type": "tag",
                               "x-attribsNamespace": Object {
+                                "aria-controls": undefined,
+                                "aria-disabled": undefined,
+                                "aria-expanded": undefined,
                                 "class": undefined,
+                                "role": undefined,
                                 "style": undefined,
                               },
                               "x-attribsPrefix": Object {
+                                "aria-controls": undefined,
+                                "aria-disabled": undefined,
+                                "aria-expanded": undefined,
                                 "class": undefined,
+                                "role": undefined,
                                 "style": undefined,
                               },
                             },
@@ -16029,18 +15969,16 @@ initialize {
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "gio-select-trigger",
+                            "aria-controls": "expandable",
+                            "aria-disabled": "false",
+                            "aria-expanded": "false",
+                            "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                            "role": "combobox",
                             "style": "cursor:pointer",
                           },
                           "children": Array [
                             Object {
-                              "attribs": Object {
-                                "aria-controls": "expandable",
-                                "aria-disabled": "false",
-                                "aria-expanded": "false",
-                                "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                "role": "combobox",
-                              },
+                              "attribs": Object {},
                               "children": Array [
                                 Object {
                                   "attribs": Object {
@@ -16671,20 +16609,8 @@ initialize {
                               "parent": [Circular],
                               "prev": null,
                               "type": "tag",
-                              "x-attribsNamespace": Object {
-                                "aria-controls": undefined,
-                                "aria-disabled": undefined,
-                                "aria-expanded": undefined,
-                                "class": undefined,
-                                "role": undefined,
-                              },
-                              "x-attribsPrefix": Object {
-                                "aria-controls": undefined,
-                                "aria-disabled": undefined,
-                                "aria-expanded": undefined,
-                                "class": undefined,
-                                "role": undefined,
-                              },
+                              "x-attribsNamespace": Object {},
+                              "x-attribsPrefix": Object {},
                             },
                           ],
                           "name": "div",
@@ -16694,11 +16620,19 @@ initialize {
                           "prev": null,
                           "type": "tag",
                           "x-attribsNamespace": Object {
+                            "aria-controls": undefined,
+                            "aria-disabled": undefined,
+                            "aria-expanded": undefined,
                             "class": undefined,
+                            "role": undefined,
                             "style": undefined,
                           },
                           "x-attribsPrefix": Object {
+                            "aria-controls": undefined,
+                            "aria-disabled": undefined,
+                            "aria-expanded": undefined,
                             "class": undefined,
+                            "role": undefined,
                             "style": undefined,
                           },
                         },
@@ -17099,18 +17033,16 @@ initialize {
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "gio-select-trigger",
+                              "aria-controls": "expandable",
+                              "aria-disabled": "false",
+                              "aria-expanded": "false",
+                              "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                              "role": "combobox",
                               "style": "cursor:pointer",
                             },
                             "children": Array [
                               Object {
-                                "attribs": Object {
-                                  "aria-controls": "expandable",
-                                  "aria-disabled": "false",
-                                  "aria-expanded": "false",
-                                  "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                  "role": "combobox",
-                                },
+                                "attribs": Object {},
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
@@ -17741,20 +17673,8 @@ initialize {
                                 "parent": [Circular],
                                 "prev": null,
                                 "type": "tag",
-                                "x-attribsNamespace": Object {
-                                  "aria-controls": undefined,
-                                  "aria-disabled": undefined,
-                                  "aria-expanded": undefined,
-                                  "class": undefined,
-                                  "role": undefined,
-                                },
-                                "x-attribsPrefix": Object {
-                                  "aria-controls": undefined,
-                                  "aria-disabled": undefined,
-                                  "aria-expanded": undefined,
-                                  "class": undefined,
-                                  "role": undefined,
-                                },
+                                "x-attribsNamespace": Object {},
+                                "x-attribsPrefix": Object {},
                               },
                             ],
                             "name": "div",
@@ -17764,11 +17684,19 @@ initialize {
                             "prev": null,
                             "type": "tag",
                             "x-attribsNamespace": Object {
+                              "aria-controls": undefined,
+                              "aria-disabled": undefined,
+                              "aria-expanded": undefined,
                               "class": undefined,
+                              "role": undefined,
                               "style": undefined,
                             },
                             "x-attribsPrefix": Object {
+                              "aria-controls": undefined,
+                              "aria-disabled": undefined,
+                              "aria-expanded": undefined,
                               "class": undefined,
+                              "role": undefined,
                               "style": undefined,
                             },
                           },
@@ -19046,18 +18974,16 @@ initialize {
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-select-trigger",
+                          "aria-controls": "expandable",
+                          "aria-disabled": "false",
+                          "aria-expanded": "false",
+                          "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                          "role": "combobox",
                           "style": "cursor:pointer",
                         },
                         "children": Array [
                           Object {
-                            "attribs": Object {
-                              "aria-controls": "expandable",
-                              "aria-disabled": "false",
-                              "aria-expanded": "false",
-                              "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                              "role": "combobox",
-                            },
+                            "attribs": Object {},
                             "children": Array [
                               Object {
                                 "attribs": Object {
@@ -19688,20 +19614,8 @@ initialize {
                             "parent": [Circular],
                             "prev": null,
                             "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "aria-controls": undefined,
-                              "aria-disabled": undefined,
-                              "aria-expanded": undefined,
-                              "class": undefined,
-                              "role": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "aria-controls": undefined,
-                              "aria-disabled": undefined,
-                              "aria-expanded": undefined,
-                              "class": undefined,
-                              "role": undefined,
-                            },
+                            "x-attribsNamespace": Object {},
+                            "x-attribsPrefix": Object {},
                           },
                         ],
                         "name": "div",
@@ -19711,11 +19625,19 @@ initialize {
                         "prev": null,
                         "type": "tag",
                         "x-attribsNamespace": Object {
+                          "aria-controls": undefined,
+                          "aria-disabled": undefined,
+                          "aria-expanded": undefined,
                           "class": undefined,
+                          "role": undefined,
                           "style": undefined,
                         },
                         "x-attribsPrefix": Object {
+                          "aria-controls": undefined,
+                          "aria-disabled": undefined,
+                          "aria-expanded": undefined,
                           "class": undefined,
+                          "role": undefined,
                           "style": undefined,
                         },
                       },
@@ -20116,18 +20038,16 @@ initialize {
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "gio-select-trigger",
+                            "aria-controls": "expandable",
+                            "aria-disabled": "false",
+                            "aria-expanded": "false",
+                            "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                            "role": "combobox",
                             "style": "cursor:pointer",
                           },
                           "children": Array [
                             Object {
-                              "attribs": Object {
-                                "aria-controls": "expandable",
-                                "aria-disabled": "false",
-                                "aria-expanded": "false",
-                                "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                                "role": "combobox",
-                              },
+                              "attribs": Object {},
                               "children": Array [
                                 Object {
                                   "attribs": Object {
@@ -20758,20 +20678,8 @@ initialize {
                               "parent": [Circular],
                               "prev": null,
                               "type": "tag",
-                              "x-attribsNamespace": Object {
-                                "aria-controls": undefined,
-                                "aria-disabled": undefined,
-                                "aria-expanded": undefined,
-                                "class": undefined,
-                                "role": undefined,
-                              },
-                              "x-attribsPrefix": Object {
-                                "aria-controls": undefined,
-                                "aria-disabled": undefined,
-                                "aria-expanded": undefined,
-                                "class": undefined,
-                                "role": undefined,
-                              },
+                              "x-attribsNamespace": Object {},
+                              "x-attribsPrefix": Object {},
                             },
                           ],
                           "name": "div",
@@ -20781,11 +20689,19 @@ initialize {
                           "prev": null,
                           "type": "tag",
                           "x-attribsNamespace": Object {
+                            "aria-controls": undefined,
+                            "aria-disabled": undefined,
+                            "aria-expanded": undefined,
                             "class": undefined,
+                            "role": undefined,
                             "style": undefined,
                           },
                           "x-attribsPrefix": Object {
+                            "aria-controls": undefined,
+                            "aria-disabled": undefined,
+                            "aria-expanded": undefined,
                             "class": undefined,
+                            "role": undefined,
                             "style": undefined,
                           },
                         },
@@ -22063,18 +21979,16 @@ initialize {
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-select-trigger",
+                        "aria-controls": "expandable",
+                        "aria-disabled": "false",
+                        "aria-expanded": "false",
+                        "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                        "role": "combobox",
                         "style": "cursor:pointer",
                       },
                       "children": Array [
                         Object {
-                          "attribs": Object {
-                            "aria-controls": "expandable",
-                            "aria-disabled": "false",
-                            "aria-expanded": "false",
-                            "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                            "role": "combobox",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
                               "attribs": Object {
@@ -22705,20 +22619,8 @@ initialize {
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "aria-controls": undefined,
-                            "aria-disabled": undefined,
-                            "aria-expanded": undefined,
-                            "class": undefined,
-                            "role": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "aria-controls": undefined,
-                            "aria-disabled": undefined,
-                            "aria-expanded": undefined,
-                            "class": undefined,
-                            "role": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                       ],
                       "name": "div",
@@ -22728,11 +22630,19 @@ initialize {
                       "prev": null,
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-controls": undefined,
+                        "aria-disabled": undefined,
+                        "aria-expanded": undefined,
                         "class": undefined,
+                        "role": undefined,
                         "style": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-controls": undefined,
+                        "aria-disabled": undefined,
+                        "aria-expanded": undefined,
                         "class": undefined,
+                        "role": undefined,
                         "style": undefined,
                       },
                     },
@@ -23133,18 +23043,16 @@ initialize {
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-select-trigger",
+                          "aria-controls": "expandable",
+                          "aria-disabled": "false",
+                          "aria-expanded": "false",
+                          "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                          "role": "combobox",
                           "style": "cursor:pointer",
                         },
                         "children": Array [
                           Object {
-                            "attribs": Object {
-                              "aria-controls": "expandable",
-                              "aria-disabled": "false",
-                              "aria-expanded": "false",
-                              "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                              "role": "combobox",
-                            },
+                            "attribs": Object {},
                             "children": Array [
                               Object {
                                 "attribs": Object {
@@ -23775,20 +23683,8 @@ initialize {
                             "parent": [Circular],
                             "prev": null,
                             "type": "tag",
-                            "x-attribsNamespace": Object {
-                              "aria-controls": undefined,
-                              "aria-disabled": undefined,
-                              "aria-expanded": undefined,
-                              "class": undefined,
-                              "role": undefined,
-                            },
-                            "x-attribsPrefix": Object {
-                              "aria-controls": undefined,
-                              "aria-disabled": undefined,
-                              "aria-expanded": undefined,
-                              "class": undefined,
-                              "role": undefined,
-                            },
+                            "x-attribsNamespace": Object {},
+                            "x-attribsPrefix": Object {},
                           },
                         ],
                         "name": "div",
@@ -23798,11 +23694,19 @@ initialize {
                         "prev": null,
                         "type": "tag",
                         "x-attribsNamespace": Object {
+                          "aria-controls": undefined,
+                          "aria-disabled": undefined,
+                          "aria-expanded": undefined,
                           "class": undefined,
+                          "role": undefined,
                           "style": undefined,
                         },
                         "x-attribsPrefix": Object {
+                          "aria-controls": undefined,
+                          "aria-disabled": undefined,
+                          "aria-expanded": undefined,
                           "class": undefined,
+                          "role": undefined,
                           "style": undefined,
                         },
                       },
@@ -24515,18 +24419,16 @@ initialize {
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "gio-select-trigger",
+                      "aria-controls": "expandable",
+                      "aria-disabled": "false",
+                      "aria-expanded": "false",
+                      "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                      "role": "combobox",
                       "style": "cursor:pointer",
                     },
                     "children": Array [
                       Object {
-                        "attribs": Object {
-                          "aria-controls": "expandable",
-                          "aria-disabled": "false",
-                          "aria-expanded": "false",
-                          "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                          "role": "combobox",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
                             "attribs": Object {
@@ -25157,20 +25059,8 @@ initialize {
                         "parent": [Circular],
                         "prev": null,
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "aria-controls": undefined,
-                          "aria-disabled": undefined,
-                          "aria-expanded": undefined,
-                          "class": undefined,
-                          "role": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "aria-controls": undefined,
-                          "aria-disabled": undefined,
-                          "aria-expanded": undefined,
-                          "class": undefined,
-                          "role": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                     ],
                     "name": "div",
@@ -25180,11 +25070,19 @@ initialize {
                     "prev": null,
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-controls": undefined,
+                      "aria-disabled": undefined,
+                      "aria-expanded": undefined,
                       "class": undefined,
+                      "role": undefined,
                       "style": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-controls": undefined,
+                      "aria-disabled": undefined,
+                      "aria-expanded": undefined,
                       "class": undefined,
+                      "role": undefined,
                       "style": undefined,
                     },
                   },
@@ -25585,18 +25483,16 @@ initialize {
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-select-trigger",
+                        "aria-controls": "expandable",
+                        "aria-disabled": "false",
+                        "aria-expanded": "false",
+                        "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                        "role": "combobox",
                         "style": "cursor:pointer",
                       },
                       "children": Array [
                         Object {
-                          "attribs": Object {
-                            "aria-controls": "expandable",
-                            "aria-disabled": "false",
-                            "aria-expanded": "false",
-                            "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                            "role": "combobox",
-                          },
+                          "attribs": Object {},
                           "children": Array [
                             Object {
                               "attribs": Object {
@@ -26227,20 +26123,8 @@ initialize {
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {
-                            "aria-controls": undefined,
-                            "aria-disabled": undefined,
-                            "aria-expanded": undefined,
-                            "class": undefined,
-                            "role": undefined,
-                          },
-                          "x-attribsPrefix": Object {
-                            "aria-controls": undefined,
-                            "aria-disabled": undefined,
-                            "aria-expanded": undefined,
-                            "class": undefined,
-                            "role": undefined,
-                          },
+                          "x-attribsNamespace": Object {},
+                          "x-attribsPrefix": Object {},
                         },
                       ],
                       "name": "div",
@@ -26250,11 +26134,19 @@ initialize {
                       "prev": null,
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-controls": undefined,
+                        "aria-disabled": undefined,
+                        "aria-expanded": undefined,
                         "class": undefined,
+                        "role": undefined,
                         "style": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-controls": undefined,
+                        "aria-disabled": undefined,
+                        "aria-expanded": undefined,
                         "class": undefined,
+                        "role": undefined,
                         "style": undefined,
                       },
                     },
@@ -27532,18 +27424,16 @@ initialize {
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-select-trigger",
+                    "aria-controls": "expandable",
+                    "aria-disabled": "false",
+                    "aria-expanded": "false",
+                    "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                    "role": "combobox",
                     "style": "cursor:pointer",
                   },
                   "children": Array [
                     Object {
-                      "attribs": Object {
-                        "aria-controls": "expandable",
-                        "aria-disabled": "false",
-                        "aria-expanded": "false",
-                        "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                        "role": "combobox",
-                      },
+                      "attribs": Object {},
                       "children": Array [
                         Object {
                           "attribs": Object {
@@ -28174,20 +28064,8 @@ initialize {
                       "parent": [Circular],
                       "prev": null,
                       "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "aria-controls": undefined,
-                        "aria-disabled": undefined,
-                        "aria-expanded": undefined,
-                        "class": undefined,
-                        "role": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "aria-controls": undefined,
-                        "aria-disabled": undefined,
-                        "aria-expanded": undefined,
-                        "class": undefined,
-                        "role": undefined,
-                      },
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
                     },
                   ],
                   "name": "div",
@@ -28197,11 +28075,19 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-controls": undefined,
+                    "aria-disabled": undefined,
+                    "aria-expanded": undefined,
                     "class": undefined,
+                    "role": undefined,
                     "style": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-controls": undefined,
+                    "aria-disabled": undefined,
+                    "aria-expanded": undefined,
                     "class": undefined,
+                    "role": undefined,
                     "style": undefined,
                   },
                 },
@@ -28602,18 +28488,16 @@ initialize {
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "gio-select-trigger",
+                      "aria-controls": "expandable",
+                      "aria-disabled": "false",
+                      "aria-expanded": "false",
+                      "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                      "role": "combobox",
                       "style": "cursor:pointer",
                     },
                     "children": Array [
                       Object {
-                        "attribs": Object {
-                          "aria-controls": "expandable",
-                          "aria-disabled": "false",
-                          "aria-expanded": "false",
-                          "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                          "role": "combobox",
-                        },
+                        "attribs": Object {},
                         "children": Array [
                           Object {
                             "attribs": Object {
@@ -29244,20 +29128,8 @@ initialize {
                         "parent": [Circular],
                         "prev": null,
                         "type": "tag",
-                        "x-attribsNamespace": Object {
-                          "aria-controls": undefined,
-                          "aria-disabled": undefined,
-                          "aria-expanded": undefined,
-                          "class": undefined,
-                          "role": undefined,
-                        },
-                        "x-attribsPrefix": Object {
-                          "aria-controls": undefined,
-                          "aria-disabled": undefined,
-                          "aria-expanded": undefined,
-                          "class": undefined,
-                          "role": undefined,
-                        },
+                        "x-attribsNamespace": Object {},
+                        "x-attribsPrefix": Object {},
                       },
                     ],
                     "name": "div",
@@ -29267,11 +29139,19 @@ initialize {
                     "prev": null,
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-controls": undefined,
+                      "aria-disabled": undefined,
+                      "aria-expanded": undefined,
                       "class": undefined,
+                      "role": undefined,
                       "style": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-controls": undefined,
+                      "aria-disabled": undefined,
+                      "aria-expanded": undefined,
                       "class": undefined,
+                      "role": undefined,
                       "style": undefined,
                     },
                   },
@@ -30349,18 +30229,16 @@ initialize {
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-select-trigger",
+                  "aria-controls": "expandable",
+                  "aria-disabled": "false",
+                  "aria-expanded": "false",
+                  "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                  "role": "combobox",
                   "style": "cursor:pointer",
                 },
                 "children": Array [
                   Object {
-                    "attribs": Object {
-                      "aria-controls": "expandable",
-                      "aria-disabled": "false",
-                      "aria-expanded": "false",
-                      "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                      "role": "combobox",
-                    },
+                    "attribs": Object {},
                     "children": Array [
                       Object {
                         "attribs": Object {
@@ -30991,20 +30869,8 @@ initialize {
                     "parent": [Circular],
                     "prev": null,
                     "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "aria-controls": undefined,
-                      "aria-disabled": undefined,
-                      "aria-expanded": undefined,
-                      "class": undefined,
-                      "role": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "aria-controls": undefined,
-                      "aria-disabled": undefined,
-                      "aria-expanded": undefined,
-                      "class": undefined,
-                      "role": undefined,
-                    },
+                    "x-attribsNamespace": Object {},
+                    "x-attribsPrefix": Object {},
                   },
                 ],
                 "name": "div",
@@ -31014,11 +30880,19 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-controls": undefined,
+                  "aria-disabled": undefined,
+                  "aria-expanded": undefined,
                   "class": undefined,
+                  "role": undefined,
                   "style": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-controls": undefined,
+                  "aria-disabled": undefined,
+                  "aria-expanded": undefined,
                   "class": undefined,
+                  "role": undefined,
                   "style": undefined,
                 },
               },
@@ -31419,18 +31293,16 @@ initialize {
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-select-trigger",
+                    "aria-controls": "expandable",
+                    "aria-disabled": "false",
+                    "aria-expanded": "false",
+                    "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
+                    "role": "combobox",
                     "style": "cursor:pointer",
                   },
                   "children": Array [
                     Object {
-                      "attribs": Object {
-                        "aria-controls": "expandable",
-                        "aria-disabled": "false",
-                        "aria-expanded": "false",
-                        "class": "gio-select gio-select-small gio-select-single gio-select-bordered",
-                        "role": "combobox",
-                      },
+                      "attribs": Object {},
                       "children": Array [
                         Object {
                           "attribs": Object {
@@ -32061,20 +31933,8 @@ initialize {
                       "parent": [Circular],
                       "prev": null,
                       "type": "tag",
-                      "x-attribsNamespace": Object {
-                        "aria-controls": undefined,
-                        "aria-disabled": undefined,
-                        "aria-expanded": undefined,
-                        "class": undefined,
-                        "role": undefined,
-                      },
-                      "x-attribsPrefix": Object {
-                        "aria-controls": undefined,
-                        "aria-disabled": undefined,
-                        "aria-expanded": undefined,
-                        "class": undefined,
-                        "role": undefined,
-                      },
+                      "x-attribsNamespace": Object {},
+                      "x-attribsPrefix": Object {},
                     },
                   ],
                   "name": "div",
@@ -32084,11 +31944,19 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-controls": undefined,
+                    "aria-disabled": undefined,
+                    "aria-expanded": undefined,
                     "class": undefined,
+                    "role": undefined,
                     "style": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-controls": undefined,
+                    "aria-disabled": undefined,
+                    "aria-expanded": undefined,
                     "class": undefined,
+                    "role": undefined,
                     "style": undefined,
                   },
                 },
