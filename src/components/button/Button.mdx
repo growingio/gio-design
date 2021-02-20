@@ -1,0 +1,56 @@
+import { Subtitle, ArgsTable, Story, Canvas } from '@storybook/addon-docs/blocks';
+import Button from '.';
+
+# Button 按钮
+
+<Subtitle>点击后即执行相应操作</Subtitle>
+
+## 使用规范
+
+主要按钮 primary
+
+> 突出显示页面上最强烈的动作，应该只在每个屏幕上出现一次(不包括应用程序头或模态对话框)。并不是每个屏幕都需要主按钮。
+
+次要按钮 secondary
+
+> 用于与主按钮配对，以明确有两个选项；或者用于多个无主次之分的操作时。
+
+辅助按钮 assist
+
+> 当页面有许多高频率使用的操作时，将其用作默认按钮。如：看板页面。
+
+文本按钮 text
+
+> 适用于列表内添加多个内容时，如「事件分析」中「添加事件」、「fliter」中「添加过滤条件」等。
+
+图标按钮 icon
+
+> 图标 icon 的颜色可以自定义，图标按钮的存在两种样式：背景为透明度 0%的、浅蓝色背景的。
+
+可扩展
+
+> 按钮具有多种 padding。大多数情况下，我们使用默认紧凑型的 padding，即下列「间距」的规范。还可以将按钮扩展到全宽以填充父容器。
+
+## 参数说明
+
+<ArgsTable of={Button} />
+
+## 代码演示
+
+### 基础
+
+<Canvas>
+  <Story id="basic-components-button--default" />
+</Canvas>
+
+### 图标
+
+<Canvas>
+  <Story id="basic-components-button--icon-button" />
+</Canvas>
+
+### 可扩展
+
+<Canvas>
+  <Story id="basic-components-button--block-button" />
+</Canvas>

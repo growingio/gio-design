@@ -158,7 +158,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
   return buttonNode;
 };
 
-const Button = React.forwardRef<unknown, ButtonProps>(InternalButton) as CompoundedComponent;
+export const Button = React.forwardRef<unknown, ButtonProps>(InternalButton) as CompoundedComponent;
 
 Button.defaultProps = {
   loading: false,
