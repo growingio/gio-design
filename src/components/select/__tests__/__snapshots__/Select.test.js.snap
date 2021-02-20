@@ -2,10 +2,14 @@
 
 exports[`<Select /> renders <Select /> components 1`] = `
 <div
-  className="gio-select-trigger"
+  aria-controls="expandable"
+  aria-disabled={false}
+  aria-expanded={false}
+  className="gio-select gio-select-middle gio-select-single gio-select-bordered"
   onClick={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
+  role="combobox"
   style={
     Object {
       "cursor": "pointer",
@@ -13,13 +17,8 @@ exports[`<Select /> renders <Select /> components 1`] = `
   }
 >
   <div
-    aria-controls="expandable"
-    aria-disabled={false}
-    aria-expanded={false}
-    className="gio-select gio-select-middle gio-select-single gio-select-bordered"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
-    role="combobox"
   >
     <div
       className="gio-select-selector"
@@ -80,10 +79,14 @@ exports[`<Select /> renders <Select /> components 1`] = `
 
 exports[`<Select /> renders <Select /> components 2`] = `
 <div
-  className="gio-select-trigger"
+  aria-controls="expandable"
+  aria-disabled={false}
+  aria-expanded={false}
+  className="gio-select gio-select-middle gio-select-single gio-select-bordered"
   onClick={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
+  role="combobox"
   style={
     Object {
       "cursor": "pointer",
@@ -91,13 +94,8 @@ exports[`<Select /> renders <Select /> components 2`] = `
   }
 >
   <div
-    aria-controls="expandable"
-    aria-disabled={false}
-    aria-expanded={false}
-    className="gio-select gio-select-middle gio-select-single gio-select-bordered"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
-    role="combobox"
   >
     <div
       className="gio-select-selector"
@@ -158,10 +156,14 @@ exports[`<Select /> renders <Select /> components 2`] = `
 
 exports[`<Select /> renders <Select.Group /> components 1`] = `
 <div
-  className="gio-select-trigger"
+  aria-controls="expandable"
+  aria-disabled={false}
+  aria-expanded={false}
+  className="gio-select gio-select-middle gio-select-single gio-select-bordered"
   onClick={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
+  role="combobox"
   style={
     Object {
       "cursor": "pointer",
@@ -169,13 +171,8 @@ exports[`<Select /> renders <Select.Group /> components 1`] = `
   }
 >
   <div
-    aria-controls="expandable"
-    aria-disabled={false}
-    aria-expanded={false}
-    className="gio-select gio-select-middle gio-select-single gio-select-bordered"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
-    role="combobox"
   >
     <div
       className="gio-select-selector"
@@ -226,10 +223,14 @@ exports[`<Select /> renders <Select.Group /> components 1`] = `
 
 exports[`<Select /> renders <Select.Option /> components 1`] = `
 <div
-  className="gio-select-trigger"
+  aria-controls="expandable"
+  aria-disabled={false}
+  aria-expanded={false}
+  className="gio-select gio-select-middle gio-select-single gio-select-bordered"
   onClick={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
+  role="combobox"
   style={
     Object {
       "cursor": "pointer",
@@ -237,13 +238,8 @@ exports[`<Select /> renders <Select.Option /> components 1`] = `
   }
 >
   <div
-    aria-controls="expandable"
-    aria-disabled={false}
-    aria-expanded={false}
-    className="gio-select gio-select-middle gio-select-single gio-select-bordered"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
-    role="combobox"
   >
     <div
       className="gio-select-selector"
@@ -294,10 +290,14 @@ exports[`<Select /> renders <Select.Option /> components 1`] = `
 
 exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
 <div
-  className="gio-select-trigger"
+  aria-controls="expandable"
+  aria-disabled={false}
+  aria-expanded={false}
+  className="gio-select gio-select-middle gio-select-bordered"
   onClick={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
+  role="combobox"
   style={
     Object {
       "cursor": "pointer",
@@ -305,13 +305,8 @@ exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
   }
 >
   <div
-    aria-controls="expandable"
-    aria-disabled={false}
-    aria-expanded={false}
-    className="gio-select gio-select-middle gio-select-bordered"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
-    role="combobox"
   >
     <div
       className="gio-select-selector"
@@ -405,10 +400,14 @@ exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
 
 exports[`<Select multiple/> renders <Select multiple/> components 2`] = `
 <div
-  className="gio-select-trigger"
+  aria-controls="expandable"
+  aria-disabled={false}
+  aria-expanded={false}
+  className="gio-select gio-select-middle gio-select-bordered"
   onClick={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
+  role="combobox"
   style={
     Object {
       "cursor": "pointer",
@@ -416,13 +415,8 @@ exports[`<Select multiple/> renders <Select multiple/> components 2`] = `
   }
 >
   <div
-    aria-controls="expandable"
-    aria-disabled={false}
-    aria-expanded={false}
-    className="gio-select gio-select-middle gio-select-bordered"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
-    role="combobox"
   >
     <div
       className="gio-select-selector"
