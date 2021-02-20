@@ -3,16 +3,8 @@ const path = require('path');
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    'storybook-addon-designs',
-    '@storybook/addon-links',
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        sourceLoaderOptions: {
-          injectStoryParameters: false,
-        },
-      },
-    },
+    '@storybook/addon-controls',
+    '@storybook/addon-actions',
     {
       name: '@storybook/addon-storysource',
       options: {
@@ -21,7 +13,15 @@ module.exports = {
         },
       },
     },
-    '@storybook/addon-essentials',
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        sourceLoaderOptions: {
+          injectStoryParameters: false,
+        },
+      },
+    },
+    'storybook-addon-designs',
     path.resolve('./.storybook/footer/preset'),
   ],
   webpackFinal: async (config) => {
