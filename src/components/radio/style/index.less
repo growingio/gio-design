@@ -142,6 +142,13 @@
   }
 }
 
+// The selected but disabled text color
+.@{radio-checked}.@{radio-disabled} {
+  & + * {
+    opacity: 1;
+  }
+}
+
 // radio group
 .@{radio__group} {
   display: inline-flex;
