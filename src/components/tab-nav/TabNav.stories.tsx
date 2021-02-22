@@ -4,7 +4,7 @@ import Docs from './TabNav.mdx';
 import { TabNavProps } from './interface';
 import TabNav from './index';
 import './style';
-import './style/demo.less';
+import './style/demo.stories.less';
 
 export default {
   title: 'Basic Components/TabNav',

@@ -4,7 +4,7 @@ import { Row, Col } from './index';
 import { RowProps, ColProps } from './interface';
 import './style/index.less';
 import './style/row.less';
-import './style/demo.less';
+import './style/demo.stories.less';
 
 export default {
   title: 'Basic Components/Grid',

@@ -5,7 +5,7 @@ import Docs from './Popover.mdx';
 import Popover from './index';
 import { PopoverProps } from './interface';
 import './style';
-import './style/demo.less';
+import './style/demo.stories.less';
 import { Checkbox, CheckboxGroup, Link } from '../..';
 
 export default {

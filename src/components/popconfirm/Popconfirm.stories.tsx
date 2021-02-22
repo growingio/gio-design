@@ -4,7 +4,7 @@ import Docs from './Popconfirm.mdx';
 import Popconfirm, { PopconfirmProps } from './index';
 import './style';
 import { Button } from '../..';
-import './style/demo.less';
+import './style/demo.stories.less';
 
 export default {
   title: 'Functional Components/Popconfirm',

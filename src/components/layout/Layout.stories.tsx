@@ -10,7 +10,7 @@ import Skeleton from '../skeleton';
 import Select from '../select';
 import Menu, { SubMenu, MenuItem, Divider } from '../menu';
 import './style';
-import './style/demo.less';
+import './style/demo.stories.less';
 
 export default {
   title: 'Basic Components/Layout',

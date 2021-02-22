@@ -4,6 +4,7 @@ import Docs from './Tag.mdx';
 import { TagProps } from './interface';
 import Tag from './index';
 import './style';
+import './style/demo.stories.less';
 
 export default {
   title: 'Basic Components/Tag',
