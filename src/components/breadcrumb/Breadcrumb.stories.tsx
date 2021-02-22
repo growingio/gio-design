@@ -1,5 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { withDesign } from 'storybook-addon-designs';
 import Docs from './Breadcrumb.mdx';
 import Breadcrumb from './index';
 import { BreadcrumbProps } from './interface';
@@ -8,7 +9,13 @@ import './style';
 export default {
   title: 'Basic Components/Breadcrumb',
   component: Breadcrumb,
+  decorators: [withDesign],
   parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=1108%3A3874',
+      allowFullscreen: true,
+    },
     docs: {
       page: Docs,
     },

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { withDesign } from 'storybook-addon-designs';
 import Docs from './Tooltip.mdx';
 import Tooltip, { TooltipProps } from './index';
 import './style';
@@ -8,7 +9,13 @@ import './style/demo.stories.less';
 export default {
   title: 'Basic Components/Tooltip',
   component: Tooltip,
+  decorators: [withDesign],
   parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A1753',
+      allowFullscreen: true,
+    },
     docs: {
       page: Docs,
     },
