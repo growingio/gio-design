@@ -1,0 +1,28 @@
+import { Subtitle, ArgsTable, Story, Canvas } from '@storybook/addon-docs/blocks';
+import DatePicker from '.';
+
+# DatePicker 日期选择器
+
+<Subtitle>选择一个日期</Subtitle>
+
+## 参数说明
+
+<ArgsTable of={DatePicker} />
+
+## 代码演示
+
+### 基础用法
+
+<Canvas>
+  <Story id="functional-components-datepicker--default" />
+</Canvas>
+
+### 选择范围
+
+<!-- 这里无法添加 Canvas 包裹，否则会出现无限调用 DatePicker 组件函数进行渲染，导致堆栈溢出，原因未知 -->
+
+<!-- <Canvas>
+  <Story id="functional-components-datepicker--date-range-pickers" />
+</Canvas>  -->
+
+<Story id="functional-components-datepicker--date-range-pickers" />

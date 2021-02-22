@@ -1,74 +1,81 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import moment, { Moment } from 'moment';
-import DatePicker, { DateRangePicker, DatePickerProps, DateRangePickerProps } from './index'
-import './style'
+import { withDesign } from 'storybook-addon-designs';
+import DatePicker, { DateRangePicker, DatePickerProps, DateRangePickerProps } from '.';
+import './style';
+import Docs from './DatePicker.mdx';
 
 export default {
-    title: 'Components/Functional/DatePicker',
-    component: DatePicker,
-    subcomponents: { DateRangePicker },
+  title: 'Functional Components/DatePicker',
+  component: DatePicker,
+  subcomponents: { DateRangePicker },
+  decorators: [withDesign],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A2381',
+      allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 
-const DatePickerDemo = (args : DatePickerProps) => {
-    const [time, setTime] = useState(moment(new Date()));
-    const onChange = (value: Moment | null) => {
-      value && setTime(value);
-    };
-    const disabledDate = (value: Moment) => {
-      const date = moment(new Date()).add(-1, 'days')
-      return value.isBefore(date);
-    };
-    const format = 'YYYY/MM/DD';
-    return (
-      <div style={{marginLeft:"200px",marginTop:"100px"}}>
-        <DatePicker
-          {...args}
-          value={args.value ? args.value : time}
-          onChange={args.onChange ? args.onChange : onChange}
-          format={args.format ? args.format : format}
-          showFooter={args.showFooter ? args.showFooter : true}
-          disabledDate={args.disabledDate ? args.disabledDate : disabledDate}
-        />
-      </div>
-    );
+const Template: Story<DatePickerProps> = (args) => {
+  const [time, setTime] = useState(moment(new Date()));
+  const onChange = (value: Moment | null) => {
+    value && setTime(value);
   };
-
-const Template : Story<DatePickerProps> = (args) => <>{DatePickerDemo(args)}</>;
+  const disabledDate = (value: Moment) => {
+    const date = moment(new Date()).add(-1, 'days');
+    return value.isBefore(date);
+  };
+  return (
+    <div style={{ marginLeft: '200px', marginTop: '100px' }}>
+      <DatePicker
+        {...args}
+        value={time}
+        onChange={onChange}
+        disabledDate={args.disabledDate ? args.disabledDate : disabledDate}
+      />
+    </div>
+  );
+};
 export const Default = Template.bind({});
 Default.args = {
-    format: 'YYYY-MM-DD',
-}
-
-
-function disabledDates(current:Moment) {
-    return current && current < moment().endOf('day');
-}
-const RangePickerDemo = (args : DateRangePickerProps) => {
-    const [time, setTime] = useState([moment(new Date()), moment(new Date())]);
-    const format = 'YYYY/MM/DD';
-    const onChange = (value: Array<Moment> | null) => {
-      value && setTime(value);
-    };
-    const renderExtraFooter = () => {
-      return <div>extra footer</div>
-    }
-    return (
-      <div style={{marginLeft:"200px",marginTop:"100px"}}>
-        <DateRangePicker 
-          renderExtraFooter={args.renderExtraFooter ? args.renderExtraFooter : renderExtraFooter} 
-          value={args.value ? args.value : time}
-          onChange={args.onChange ? args.onChange : onChange}
-          format={args.format ? args.format : format}
-          showFooter={args.showFooter ? args.showFooter : true}
-          disabledDate={args.disabledDate ? args.disabledDate : disabledDates}
-        />
-      </div>
-    );
+  format: 'YYYY-MM-DD',
+  showFooter: true,
 };
 
-const RangeTemplate : Story<DateRangePickerProps> = (args) => <>{RangePickerDemo(args)}</>;
+function disabledDates(current: Moment) {
+  return current && current < moment().endOf('day');
+}
+
+const RangeTemplate: Story<DateRangePickerProps> = (args) => {
+  const now = new Date();
+  const [time, setTime] = useState([moment(now), moment(now)]);
+  const onChange = (value: Array<Moment> | null) => {
+    value && setTime(value);
+  };
+  const renderExtraFooter = () => {
+    return <div>extra footer</div>;
+  };
+  return (
+    <div style={{ marginLeft: '200px', marginTop: '100px' }}>
+      <DateRangePicker
+        {...args}
+        renderExtraFooter={renderExtraFooter}
+        value={time}
+        onChange={onChange}
+        disabledDate={disabledDates}
+      />
+    </div>
+  );
+};
 export const DateRangePickers = RangeTemplate.bind({});
 DateRangePickers.args = {
-    format: 'YYYY-MM-DD',
-}
+  format: 'YYYY-MM-DD',
+  showFooter: true,
+};

@@ -10,7 +10,7 @@ import Button from '../button';
 import Input from '../input';
 import { DateRangePickerProps } from './interface';
 
-const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerProps) => {
+export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerProps) => {
   const {
     prefixCls: customizePrefixCls,
     format = 'YYYY/MM/DD',
@@ -110,12 +110,12 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   );
 
   const onblur = (e: any) => {
-    if(selectPanelRef.current && selectPanelRef.current.contains(e.nativeEvent.relatedTarget)){
+    if (selectPanelRef.current && selectPanelRef.current.contains(e.nativeEvent.relatedTarget)) {
       return;
     }
     showFooter && onCancel();
     !showFooter && setOpen(false);
-  }
+  };
 
   const formatDate = (v: Moment) => v.format(format);
 
@@ -140,7 +140,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerP
   return (
     <div className={classNames(`${prefixCls}-wrap-range`)} onBlur={onblur} ref={selectPanelRef}>
       <RcDatePicker
-        animation={showFooter ? "slide-up" : ''}
+        animation={showFooter ? 'slide-up' : ''}
         calendar={calendar}
         value={timeRange}
         onChange={onChange}

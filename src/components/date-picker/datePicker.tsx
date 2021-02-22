@@ -16,7 +16,7 @@ moment.locale('zh-cn', {
   weekdaysMin: '日_一_二_三_四_五_六'.split('_'),
 });
 
-const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
+export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   const {
     prefixCls: customizePrefixCls,
     format = 'YYYY/MM/DD',
@@ -92,7 +92,7 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
   const onblur = () => {
     showFooter && onCancel();
     !showFooter && setOpen(false);
-  }
+  };
 
   const calendar = (
     <RcCalendar
@@ -130,7 +130,7 @@ const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
               onChange={handleInputChange}
               onClick={() => setOpen(true)}
               ref={inputRef}
-              disabled={disabled??false}
+              disabled={disabled ?? false}
             />
             <div ref={calendarContainerRef} className={classNames(`${prefixCls}-wrapper`)} />
           </>

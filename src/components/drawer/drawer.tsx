@@ -356,6 +356,8 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   }
 }
 
-export default withConfigConsumer<DrawerProps>({
+export const WCC = withConfigConsumer<DrawerProps>({
   subPrefixCls: 'drawer',
 })(Drawer);
+
+export default WCC;

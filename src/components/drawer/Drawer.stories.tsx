@@ -2,17 +2,22 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import Button from '../button';
 import { DrawerProps } from './interfaces';
-import Drawer from './index';
+import Drawer from '.';
 import './style';
+import Docs from './Drawer.mdx';
 
 export default {
-  title: 'Components/Basic/Drawer',
+  title: 'Basic Components/Drawer',
   component: Drawer,
+  parameters: {
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 
 export const Default: Story<DrawerProps> = (args) => {
   const [visible, setVisible] = React.useState(false);
-  const [showFooter] = React.useState(true);
 
   const showDrawer = () => {
     setVisible(true);
@@ -43,7 +48,7 @@ export const Default: Story<DrawerProps> = (args) => {
           Open
         </Button>
       </div>
-      <Drawer {...args} onClose={onClose} visible={visible} footer={showFooter ? renderFooter() : null} direction="rtl">
+      <Drawer {...args} onClose={onClose} visible={visible} footer={renderFooter()}>
         <div style={{ width: '100%', height: '100%', padding: '16px', border: '1px dashed #DCDFED' }}>
           <p>Some contents...</p>
           <p>Some contents...</p>
@@ -56,7 +61,8 @@ export const Default: Story<DrawerProps> = (args) => {
 
 Default.args = {
   title: 'default drawer',
-  placement: 'left',
+  placement: 'right',
   mask: true,
   maskClosable: true,
+  direction: 'rtl',
 };

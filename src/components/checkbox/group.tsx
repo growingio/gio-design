@@ -19,7 +19,7 @@ function merge<T>(selected: T[], option: CheckboxOptionType<T>, registeredValues
 
 const emptyValue: any[] = [];
 
-function CheckboxGroup<T extends CheckboxValueType>({
+export function CheckboxGroup<T extends CheckboxValueType>({
   options = [],
   prefixCls: customizePrefixCls,
   defaultValue,
