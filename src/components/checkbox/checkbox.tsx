@@ -7,7 +7,7 @@ import CheckboxGroupContext from './CheckboxGroupContext';
 import { CheckboxProps } from './interface';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
-const Checkbox: React.FC<CheckboxProps> = ({
+export const Checkbox: React.FC<CheckboxProps> = ({
   prefixCls: customizePrefixCls,
   className,
   children,
@@ -24,13 +24,13 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
   const handleChange = React.useCallback(
     (e) => {
-      if(!checkGroup) {
+      if (!checkGroup) {
         setChecked(!check);
       }
       if (onChange) onChange(e);
       checkGroup?.toggleOption?.({ label: children, value: restProps.value });
     },
-    [onChange,check]
+    [onChange, check]
   );
 
   const prefixCls = usePrefixCls('checkbox', customizePrefixCls);

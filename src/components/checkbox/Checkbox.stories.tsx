@@ -1,47 +1,50 @@
-import React from 'react'
-import { Story, Meta } from '@storybook/react/types-6-0'
-
-import Checkbox from './index'
-import CheckboxGroup from './group'
-import { CheckboxProps, CheckboxGroupProps, CheckboxValueType } from './interface'
-import './style'
+import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
+import { withDesign } from 'storybook-addon-designs';
+import Docs from './Checkbox.mdx';
+import Checkbox from './checkbox';
+import CheckboxGroup from './group';
+import { CheckboxProps, CheckboxGroupProps, CheckboxValueType } from './interface';
+import './style';
 
 export default {
-    title: 'Components/Basic/Checkbox',
-    component: Checkbox,
-    subcomponents: {CheckboxGroup}
+  title: 'Basic Components/Checkbox',
+  component: Checkbox,
+  subcomponents: { CheckboxGroup },
+  decorators: [withDesign],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A1248',
+      allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 
-const Checked = (args : CheckboxProps) => {
-    const [checked, update] = React.useState(false);
-    const handleChange = (e: any) => {
-      update(e.target.checked);
-    };
-    return (
-      <Checkbox 
-        {...args}
-        checked={args.checked ? args.checked :checked} 
-        onChange={args.onChange ? args.onChange : handleChange}
-      >
-        Normal
-      </Checkbox>
-    );
+const Template: Story<CheckboxProps> = (args) => {
+  const [checked, setChecked] = React.useState(false);
+  const handleChange = (e: any) => {
+    setChecked(e.target.checked);
   };
-
-const Template : Story<CheckboxProps> = (args) => <>{Checked(args)}</>
+  return (
+    <Checkbox {...args} checked={checked} onChange={handleChange}>
+      Normal
+    </Checkbox>
+  );
+};
+const TemplateGroup: Story<CheckboxGroupProps<CheckboxValueType>> = (args) => <CheckboxGroup {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-    autoFocus: false,
-}
-
-const TemplateGroup : Story<CheckboxGroupProps<CheckboxValueType>> = (args) => <CheckboxGroup {...args} />
-
 export const Group = TemplateGroup.bind({});
+
+Default.args = {};
 Group.args = {
-    options: [
-        { label: '1', value: 1 },
-        { label: '2', value: 2 },
-        { label: '3', value: 3 },
-    ],
-}
+  options: [
+    { label: '1', value: 1 },
+    { label: '2', value: 2 },
+    { label: '3', value: 3 },
+  ],
+};
