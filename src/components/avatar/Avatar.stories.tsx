@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Docs from './Avatar.mdx';
 import Avatar, { AvatarGroup, AvatarGroupProps, AvatarProps } from './index';
 import './style';
-import './style/demo.less';
+import './style/demo.stories.less';
 import image from '../../assets/images/Avatar.png';
 
 export default {

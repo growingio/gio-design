@@ -5,7 +5,7 @@ import Menu, { MenuItem, SubMenu } from './index';
 import { IMenuProps, IMenuItemProps, ISubMenuProps } from './interface';
 import Docs from './Menu.mdx';
 import './style';
-import './style/demo.less';
+import './style/demo.stories.less';
 
 export default {
   title: 'Basic Components/Menu',

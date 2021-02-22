@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Docs from './Tooltip.mdx';
 import Tooltip, { TooltipProps } from './index';
 import './style';
-import './style/demo.less';
+import './style/demo.stories.less';
 
 export default {
   title: 'Basic Components/Tooltip',

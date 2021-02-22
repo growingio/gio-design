@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import TreeSelect, { TreeNode } from './index';
 import { TreeSelectProps } from './interface';
 import './style';
-import './style/demo.less';
+import './style/demo.stories.less';
 
 export default {
   title: 'Components/Functional/TreeSelect',
