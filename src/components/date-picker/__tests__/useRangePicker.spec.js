@@ -1,5 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { noop } from 'lodash';
+import moment from 'moment';
 import useDatePicker from '../hook/useDateRangePicker';
 
 const props = {
@@ -56,6 +57,16 @@ describe('Testing useDatePicker', () => {
   it('useDateRangePicker inputField', () => {
     const { result } = renderHook(() => useDatePicker(props));
     const { inputField, panelField } = result.current;
+
+    act(() => {
+      inputField.debounceInputChange(moment(), 'left');
+    });
+    expect(panelField.timeRange).toBe('');
+
+    act(() => {
+      inputField.debounceInputChange(moment(), 'right');
+    });
+    expect(panelField.timeRange).toBe('');
 
     act(() => {
       inputField.handleInputClick();

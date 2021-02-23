@@ -54,17 +54,23 @@ describe('Testing useDatePicker', () => {
     const { result } = renderHook(() => useDatePicker(props));
     const { inputField, panelField } = result.current;
 
-    act(() => {
-      inputField.handleInputClick();
-    });
-    expect(panelField.open).toBe(false);
-
     const e = { target: {} };
     e.target.value = '';
     act(() => {
       inputField.handleInputChange(e);
     });
     expect(inputField.inputTime).toBe('');
+
+    act(() => {
+      inputField.debounceTimeChange(e);
+    });
+
+    expect(panelField.localValue).toBe('');
+
+    act(() => {
+      inputField.handleInputClick();
+    });
+    expect(panelField.open).toBe(false);
   });
 
   it('useDatePicker showfooter', () => {

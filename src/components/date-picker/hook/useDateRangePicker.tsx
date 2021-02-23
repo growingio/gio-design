@@ -23,32 +23,25 @@ const useDateRangePicker = (props: DateRangePickerProps) => {
     setTimeRange(values);
   };
 
-  const debounceLeftChange = debounce((e: string): void => {
-    const values = moment(e, props.format);
-    if (values.isValid() && values.isBefore(timeRange[1])) {
+  const debounceInputChange = debounce((values: Moment, side: string): void => {
+    if (values.isValid() && side === 'left' && values.isBefore(timeRange[1])) {
       setTimeRange([values, timeRange[1]]);
-    } else {
-      setTimeRange(timeRange);
-    }
-  }, 1000);
-
-  const debounceRightChange = debounce((e: string): void => {
-    const values = moment(e, props.format);
-    if (values.isValid() && values.isAfter(timeRange[0])) {
+    } else if (values.isValid() && side === 'right' && values.isAfter(timeRange[0])) {
       setTimeRange([timeRange[0], values]);
-    } else {
-      setTimeRange(timeRange);
     }
+    setTimeRange(timeRange);
   }, 1000);
 
   const handleLeftInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setLeftInputTimeRange(e.target.value);
-    debounceLeftChange(e.target.value);
+    const values = moment(e.target.value, props.format);
+    debounceInputChange(values, 'left');
   };
 
   const handleRightInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setRightInputTimeRange(e.target.value);
-    debounceRightChange(e.target.value);
+    const values = moment(e.target.value, props.format);
+    debounceInputChange(values, 'right');
   };
 
   const handleInputClick = () => setOpen(true);
@@ -58,7 +51,7 @@ const useDateRangePicker = (props: DateRangePickerProps) => {
     setTimeRange(timeRange);
     setLeftInputTimeRange('');
     setRightInputTimeRange('');
-    onChange?.(timeRange);
+    onChange(timeRange);
   };
 
   const onCancel = () => {
@@ -66,7 +59,7 @@ const useDateRangePicker = (props: DateRangePickerProps) => {
     setTimeRange(value);
     setLeftInputTimeRange('');
     setRightInputTimeRange('');
-    onChange?.(value);
+    onChange(value);
   };
 
   const onBlur = () => {
@@ -85,6 +78,7 @@ const useDateRangePicker = (props: DateRangePickerProps) => {
       handleLeftInputChange,
       handleRightInputChange,
       handleInputClick,
+      debounceInputChange,
     },
     panelField: {
       open,

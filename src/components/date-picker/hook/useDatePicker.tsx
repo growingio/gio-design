@@ -65,6 +65,7 @@ const useDatePicker = (props: DatePickerProps) => {
       inputTime,
       handleInputChange,
       handleInputClick,
+      debounceTimeChange,
     },
     panelField: {
       localValue,
