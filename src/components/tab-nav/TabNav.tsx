@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useEffect } from 'react';
 import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
-import { isNil, isUndefined, reject } from 'lodash';
-import { useDeepCompareEffect } from 'react-use';
+import { isNil } from 'lodash';
 import { TabNavProps, TabNavItemProps } from './interface';
 import useRefs from '../../utils/hooks/useRefs';
-import composeRef from '../../utils/composeRef';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import useControlledState from '../../utils/hooks/useControlledState';
-import useDeepCompareMemo from '../../utils/hooks/useDeepCompareMemo';
 
 const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   const {
@@ -24,7 +21,6 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   } = props;
 
   const [localActiveKey, setLocalActiveKey] = useControlledState<string>(activeKey, defaultActiveKey);
-  const [inkStyle, setInkStyle] = useState<{ left?: number; width?: number }>({});
   const wrapperRefKey = useRef<symbol>(Symbol('tabNav'));
   const [setRef, getRef] = useRefs<HTMLDivElement>();
 
@@ -36,10 +32,12 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
     [`${prefixCls}-xs`]: size === 'xs' && type === 'block',
   });
 
-  const [tabNavKeys, tabNavChildren] = useDeepCompareMemo(() => {
+  const [tabNavKeys, tabNavChildren] = useMemo(() => {
     const _tabNavKeys: string[] = [];
-    const _tabNavChildren = toArray(children).map((node: React.ReactElement<TabNavItemProps>, index) => {
-      if (React.isValidElement(node) && node.type === TabNav.Item) {
+    const _tabNavChildren =
+      toArray(children)
+      .filter((node) => React.isValidElement(node) && node.type === TabNav.Item)
+      .map((node, index) => {
         const { className, disabled, onClick, ...rest } = node.props;
         const _key: string = isNil(node.key) ? index.toString() : node.key.toString();
         _tabNavKeys.push(_key);
@@ -51,7 +49,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
           prefixCls,
           disabled,
           key: _key,
-          innerRef: setRef(_key),
+          ref: setRef(_key),
           onClick: (e: React.MouseEvent<HTMLDivElement>) => {
             if (!disabled) {
               onClick?.(e);
@@ -64,25 +62,24 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
           },
           ...rest,
         });
-      }
-      return null;
-    });
+      });
     return [_tabNavKeys, _tabNavChildren];
-  }, [children, localActiveKey, onChange, onTabClick]);
+  }, [children, localActiveKey, onChange, onTabClick, prefixCls, setLocalActiveKey, setRef]);
 
-  useMemo(() => {
+  useEffect(() => {
     if (!tabNavKeys.includes(localActiveKey)) {
       setLocalActiveKey(tabNavKeys[0]);
     }
   }, [tabNavKeys, localActiveKey, setLocalActiveKey]);
 
-  useDeepCompareEffect(() => {
-    if (!isNil(getRef(localActiveKey)?.current) && !isNil(getRef(wrapperRefKey.current)?.current)) {
-      const { left, width } = getRef(localActiveKey)!.current!.getBoundingClientRect();
-      const wrapperLeft = getRef(wrapperRefKey.current)!.current!.getBoundingClientRect().left;
-      setInkStyle({ left: left - wrapperLeft, width });
+  const inkStyle = useMemo(() => {
+    if (isNil(getRef(localActiveKey)?.current) || isNil(getRef(wrapperRefKey?.current)?.current)) {
+      return {};
     }
-  }, [localActiveKey, children]);
+    const { left, width } = getRef(localActiveKey)!.current!.getBoundingClientRect();
+    const wrapperLeft = getRef(wrapperRefKey.current)!.current!.getBoundingClientRect().left;
+    return { left: left - wrapperLeft, width };
+  } , [getRef, localActiveKey]);
 
   return (
     <div className={classString} ref={setRef(wrapperRefKey.current, ref)}>
@@ -92,13 +89,11 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   );
 };
 
-TabNav.Item = React.forwardRef(
-  ({ prefixCls, children, innerRef, ...rest }: TabNavItemProps, ref: React.RefObject<HTMLDivElement>) => (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <div ref={composeRef(...reject([ref, innerRef], isUndefined))} {...rest}>
-      <div className={`${prefixCls}-item-btn`}>{children}</div>
-    </div>
-  )
-);
+TabNav.Item = React.forwardRef<HTMLDivElement, TabNavItemProps>(({ prefixCls, children, ...rest }, ref) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  <div data-testid='tabnav-item' ref={ref} {...rest}>
+    <div className={`${prefixCls}-item-btn`}>{children}</div>
+  </div>
+));
 
 export default TabNav;

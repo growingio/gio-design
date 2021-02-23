@@ -38,6 +38,4 @@ export interface TabNavItemProps {
   className?: string;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
-  // 内部使用
-  innerRef?: React.RefObject<HTMLDivElement>;
 }
