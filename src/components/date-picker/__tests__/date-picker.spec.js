@@ -50,114 +50,114 @@ describe('DatePicker ui test', () => {
   });
 });
 
-describe('DatePicker action Test', () => {
-  // it('should trigger onSelect', () => {
-  //   const onSelect = jest.fn();
-  //   const wrapper = mount(
-  //     <DatePicker value={VALUE} onSelect={onSelect} format={format} showFooter={false} disabledDate={disabledDate} />
-  //   );
-  //   act(() => {
-  //     wrapper.find('.gio-input-content').simulate('click');
-  //   });
-  //   waitComponentRender(wrapper).then(() => {
-  //     act(() => {
-  //       wrapper.find('.gio-date-picker-date').at(0).simulate('click');
-  //     });
-  //     expect(onSelect).toHaveBeenCalled();
-  //   });
-  // });
+// describe('DatePicker action Test', () => {
+//   // it('should trigger onSelect', () => {
+//   //   const onSelect = jest.fn();
+//   //   const wrapper = mount(
+//   //     <DatePicker value={VALUE} onSelect={onSelect} format={format} showFooter={false} disabledDate={disabledDate} />
+//   //   );
+//   //   act(() => {
+//   //     wrapper.find('.gio-input-content').simulate('click');
+//   //   });
+//   //   waitComponentRender(wrapper).then(() => {
+//   //     act(() => {
+//   //       wrapper.find('.gio-date-picker-date').at(0).simulate('click');
+//   //     });
+//   //     expect(onSelect).toHaveBeenCalled();
+//   //   });
+//   // });
 
-  /*
-  it('should trigger onChange', () => {
-    const onChange = jest.fn();
-    const wrapper = mount(
-      <DatePicker
-        value={VALUE}
-        onChange={onChange}
-        format={format}
-        showFooter
-        disabledDate={disabledDate}
-      />
-    );
-    act(() => {
-      wrapper.find('.gio-input__content').simulate('click');
-    })
-    waitComponentRender(wrapper).then(() => {
-      act(() => {
-        wrapper.find('.gio-date-picker-date').at(0).simulate('click');
-      })
-      expect(onChange).toHaveBeenCalled();
-    });
-  });
-  */
+//   /*
+//   it('should trigger onChange', () => {
+//     const onChange = jest.fn();
+//     const wrapper = mount(
+//       <DatePicker
+//         value={VALUE}
+//         onChange={onChange}
+//         format={format}
+//         showFooter
+//         disabledDate={disabledDate}
+//       />
+//     );
+//     act(() => {
+//       wrapper.find('.gio-input__content').simulate('click');
+//     })
+//     waitComponentRender(wrapper).then(() => {
+//       act(() => {
+//         wrapper.find('.gio-date-picker-date').at(0).simulate('click');
+//       })
+//       expect(onChange).toHaveBeenCalled();
+//     });
+//   });
+//   */
 
-  /*
-  it('should trigger onConfirm', () => {
-    const onConfirm = jest.fn();
-    const renderFooter = () => (
-      <>
-        <Button type="secondary" size="middle" onClick={noop}>
-          取消
-        </Button>
-        <Button size="middle" className='confirmButton' onClick={onConfirm}>
-          确定
-        </Button>
-      </>
-    );
-    const wrapper = mount(
-      <DatePicker
-        value={VALUE}
-        onSelect={noop}
-        onChange={noop}
-        format={format}
-        showFooter
-        renderFooter={renderFooter}
-        disabledDate={disabledDate}
-      />
-    );
-    act(() => {
-      wrapper.find('.gio-input__content').simulate('click');
-    })
-    waitComponentRender(wrapper).then(() => {
-      act(() => {
-        wrapper.find('.confirmButton').at(0).simulate('click');
-      })
-      expect(onConfirm).toHaveBeenCalled();
-    });
-  });
-  /*
-  it('should trigger onCancel', () => {
-    const onCancel = jest.fn();
-    const renderFooter = () => (
-      <>
-        <Button type="secondary" size="middle" onClick={onCancel} style={{ margin: ' 0 10px 0 0 ' }}>
-          取消
-        </Button>
-        <Button size="middle" onClick={noop}>
-          确定
-        </Button>
-      </>
-    );
-    const wrapper = mount(
-      <DatePicker
-        value={VALUE}
-        onSelect={noop}
-        onChange={noop}
-        format={format}
-        showFooter
-        renderFooter={renderFooter}
-        disabledDate={disabledDate}
-      />
-    );
-    act(() => {
-      wrapper.find('.gio-input__content').simulate('click');
-    })
-    waitComponentRender(wrapper).then(() => {
-      act(() => {
-        wrapper.find('.gio-btn-secondary').at(0).simulate('click');
-      })
-      expect(onCancel).toHaveBeenCalled();
-    });
-  });
-  */
-});
+//   /*
+//   it('should trigger onConfirm', () => {
+//     const onConfirm = jest.fn();
+//     const renderFooter = () => (
+//       <>
+//         <Button type="secondary" size="middle" onClick={noop}>
+//           取消
+//         </Button>
+//         <Button size="middle" className='confirmButton' onClick={onConfirm}>
+//           确定
+//         </Button>
+//       </>
+//     );
+//     const wrapper = mount(
+//       <DatePicker
+//         value={VALUE}
+//         onSelect={noop}
+//         onChange={noop}
+//         format={format}
+//         showFooter
+//         renderFooter={renderFooter}
+//         disabledDate={disabledDate}
+//       />
+//     );
+//     act(() => {
+//       wrapper.find('.gio-input__content').simulate('click');
+//     })
+//     waitComponentRender(wrapper).then(() => {
+//       act(() => {
+//         wrapper.find('.confirmButton').at(0).simulate('click');
+//       })
+//       expect(onConfirm).toHaveBeenCalled();
+//     });
+//   });
+//   /*
+//   it('should trigger onCancel', () => {
+//     const onCancel = jest.fn();
+//     const renderFooter = () => (
+//       <>
+//         <Button type="secondary" size="middle" onClick={onCancel} style={{ margin: ' 0 10px 0 0 ' }}>
+//           取消
+//         </Button>
+//         <Button size="middle" onClick={noop}>
+//           确定
+//         </Button>
+//       </>
+//     );
+//     const wrapper = mount(
+//       <DatePicker
+//         value={VALUE}
+//         onSelect={noop}
+//         onChange={noop}
+//         format={format}
+//         showFooter
+//         renderFooter={renderFooter}
+//         disabledDate={disabledDate}
+//       />
+//     );
+//     act(() => {
+//       wrapper.find('.gio-input__content').simulate('click');
+//     })
+//     waitComponentRender(wrapper).then(() => {
+//       act(() => {
+//         wrapper.find('.gio-btn-secondary').at(0).simulate('click');
+//       })
+//       expect(onCancel).toHaveBeenCalled();
+//     });
+//   });
+//   */
+// });
