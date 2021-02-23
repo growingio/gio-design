@@ -1,11 +1,12 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-
+import { withDesign } from 'storybook-addon-designs';
+import Docs from './Upload.mdx';
 import Upload from './index';
 import { IUploadProps, IProgress, IRcFile, IUploadFile } from './interface';
 import './style';
 
-const action = 'https://run.mocky.io/v3/424be679-93fe-4d9d-8036-c3d7adb9bd25';
+const uploadUrl = 'https://run.mocky.io/v3/424be679-93fe-4d9d-8036-c3d7adb9bd25';
 
 const props = {
   // 上传开始前
@@ -54,18 +55,31 @@ const props = {
 };
 
 export default {
-  title: 'Components/Functional/Upload',
+  title: 'Functional Components/Upload',
   component: Upload,
+  decorators: [withDesign],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A6954',
+      allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 
-export const Default: Story<IUploadProps> = (args) => (
+const Template: Story<IUploadProps> = (args) => (
   <div>
-    <Upload style={{ margin: '0 5px' }} action={action} {...args} />
-    <Upload style={{ margin: '0 5px' }} triggerProps={{ type: 'secondary' }} {...args} />
+    <Upload style={{ margin: '0 10px' }} {...args} />
+    <Upload style={{ margin: '0 10px' }} triggerProps={{ type: 'secondary' }} {...args} />
   </div>
 );
-
+export const Default = Template.bind({});
 Default.args = {
+  type: "button",
+  action: uploadUrl,
   beforeUpload: props.beforeUpload,
   onStart: props.onStart,
   onProgress: props.onProgress,
@@ -73,3 +87,90 @@ Default.args = {
   onError: props.onError,
   onRemove: props.onRemove,
 };
+
+
+const UrlTemplate: Story<IUploadProps> = (args) => (
+  <div>
+    <div style={{ padding: '10px 0' }}>
+      返回图片 url：
+      <Upload {...args} />
+    </div>
+    <div style={{ padding: '10px 0' }}>
+      返回图片 file：
+      <Upload inputUploadType="file" {...args} />
+    </div>
+  </div>
+);
+export const UrlUpload = UrlTemplate.bind({});
+UrlUpload.args = {
+  type: "input",
+  action: uploadUrl,
+  inputUploadType: "file",
+  beforeUpload: props.beforeUpload,
+  onStart: props.onStart,
+  onProgress: props.onProgress,
+  onSuccess: props.onSuccess,
+  onError: props.onError,
+  onRemove: props.onRemove,
+};
+
+
+const CardTemplate: Story<IUploadProps> = (args) => (
+  <div>
+    <Upload style={{ margin: '0 10px' }} {...args} />
+    <Upload style={{ margin: '0 10px' }} {...args} successBorder />
+  </div>
+);
+export const CardUpload = CardTemplate.bind({});
+CardUpload.args = {
+  type: "card",
+  action: uploadUrl,
+  beforeUpload: props.beforeUpload,
+  onStart: props.onStart,
+  onProgress: props.onProgress,
+  onSuccess: props.onSuccess,
+  onError: props.onError,
+  onRemove: props.onRemove,
+};
+
+const AvatarTemplate: Story<IUploadProps> = (args) => (
+  <div>
+    <Upload style={{ margin: '0 10px' }} {...args}>
+      GIO
+    </Upload>
+    <Upload style={{ margin: '0 10px' }} {...args}>
+      GIO
+    </Upload>
+  </div>
+);
+export const AvatarUpload = AvatarTemplate.bind({});
+AvatarUpload.args = {
+  type: "avatar",
+  action: uploadUrl,
+  beforeUpload: props.beforeUpload,
+  onStart: props.onStart,
+  onProgress: props.onProgress,
+  onSuccess: props.onSuccess,
+  onError: props.onError,
+  onRemove: props.onRemove,
+};
+
+
+const AreaTemplate: Story<IUploadProps> = (args) => (
+  <div>
+    <Upload style={{ margin: '10px 20px 0px 10px' }} {...args} accept="image/*" />
+    <Upload style={{ margin: '10px 20px 0px 10px' }} {...args} />
+  </div>
+);
+export const AreaUpload = AreaTemplate.bind({});
+AreaUpload.args = {
+  type: "drag",
+  action: uploadUrl,
+  beforeUpload: props.beforeUpload,
+  onStart: props.onStart,
+  onProgress: props.onProgress,
+  onSuccess: props.onSuccess,
+  onError: props.onError,
+  onRemove: props.onRemove,
+};
+
