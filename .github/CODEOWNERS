@@ -11,21 +11,21 @@
 /src/components/drawer @Danny548326
 /src/components/dropdown @itiiss
 /src/components/form @iahu
-/src/components/grid @iahu
-/src/components/input @jack0pan
+/src/components/grid
+/src/components/input @berber1016
 /src/components/link @tongchuliu
 /src/components/list @gh2049
-/src/components/loading
-/src/components/menu @Danny548326
-/src/components/modal @phyzess
+/src/components/loading @tongchuliu
+/src/components/menu @LEEHONCN
+/src/components/modal @gavin-hao
 /src/components/pagination @LEEHONCN
 /src/components/popconfirm
 /src/components/popover
 /src/components/progress @zzt1224
-/src/components/radio @phyzess
-/src/components/search-bar @jack0pan
+/src/components/radio @gh2049
+/src/components/search-bar @berber1016
 /src/components/select @zzt1224
-/src/components/sign
+/src/components/sign @tongchuliu
 /src/components/skeleton
 /src/components/tab-nav
 /src/components/table @LEEHONCN
@@ -37,4 +37,4 @@
 /src/components/tooltip
 /src/components/tree-select @huskylengcb
 /src/components/tree @huskylengcb
-/src/components/upload @phyzess
+/src/components/upload @gavin-hao
