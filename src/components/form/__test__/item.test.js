@@ -45,7 +45,7 @@ describe('<Item />', () => {
     expect(wrapper.find('label').text()).toBe('username：*');
   });
 
-  it('accept accept a function as children', () => {
+  it('can accept a function as children', () => {
     const wrapper = mount(<Item>{() => <input type="text" />}</Item>);
 
     expect(wrapper.find('.gio-field input')).toHaveLength(1);
@@ -85,5 +85,11 @@ describe('<Item />', () => {
     const wrapper = mount(<Item feedback="feedback msg" feedbackType="warning" />);
 
     expect(wrapper.find('.gio-field-message').text()).toBe('feedback msg');
+  });
+
+  it('can show feedback icon', () => {
+    const wrapper = mount(<Item feedbackIcon feedback="feedback message" feedbackType="warning" />);
+
+    expect(wrapper.find('.gio-field-children-icon')).toHaveLength(1);
   });
 });

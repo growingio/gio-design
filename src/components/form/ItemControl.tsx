@@ -13,7 +13,7 @@ export interface Props {
   feedback: React.ReactNode[];
   feedbackType?: FormItemFeedbackType;
   children?: React.ReactNode;
-  icon?: React.ReactNode;
+  icon?: boolean | React.ReactNode;
 }
 
 const iconMap = {
@@ -29,13 +29,14 @@ const ItemControl: React.FC<Props> = (props: Props) => {
     inputWidth,
     afterInput,
     help,
-    hasFeedback,
+    // hasFeedback,
     feedbackType,
     feedback,
     children,
-    icon: customIcon,
+    icon = false,
   } = props;
 
+  const hasFeedback = feedback && feedback.length > 0;
   const IconNode = feedbackType && iconMap[feedbackType];
   const innerIcon =
     hasFeedback && IconNode ? (
@@ -43,20 +44,19 @@ const ItemControl: React.FC<Props> = (props: Props) => {
         <IconNode rotating={feedbackType === 'validating'} />
       </span>
     ) : null;
-  const icon = customIcon || innerIcon;
-  const innerHasFeedback = feedback && feedback.length > 0;
+  const mergedIcon = icon === false ? null : innerIcon;
 
   return (
     <div className={`${prefixCls}-control`} style={{ width: inputWidth }}>
       <div className={`${prefixCls}-control-input`}>
         {children}
-        {icon}
+        {mergedIcon}
         {afterInput}
       </div>
-      <div className={`${prefixCls}-message`} data-has-feedback={innerHasFeedback || !!help}>
+      <div className={`${prefixCls}-message`} data-has-feedback={hasFeedback || !!help}>
         {help && <div className={`${prefixCls}-help`}>{help}</div>}
 
-        {feedback && feedback.length > 0 && (
+        {hasFeedback && (
           <div className={`${prefixCls}-feedback`}>
             {feedback.map((e, i) => (
               // eslint-disable-next-line react/no-array-index-key

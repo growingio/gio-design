@@ -104,9 +104,9 @@ export interface FormItemProps extends Omit<FieldProps, 'children'>, Omit<ItemLa
   required?: boolean;
   marker?: React.ReactNode;
   /**
-   自定义校验图标
+   自定义校验图标，可使用内部图标或自由传入
    */
-  feedbackIcon?: React.ReactNode;
+  feedbackIcon?: boolean | React.ReactNode;
   /**
    设置子元素 label htmlFor 属性
    */
