@@ -11,7 +11,7 @@ import {
 import { AlertProps } from './interfaces';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
-const Alert: React.FC<AlertProps> = (props: AlertProps) => {
+export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   const prefixCls = usePrefixCls('alert');
   const [alertStatus, setAlertStatus] = useState(true);
   const {
