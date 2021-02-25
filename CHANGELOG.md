@@ -1,4 +1,4 @@
-## [21.2.2](https://github.com/growingio/gio-design/compare/v21.2.2...v21.2.3) (2021-02-23)
+## [21.2.3](https://github.com/growingio/gio-design/compare/v21.2.2...v21.2.3) (2021-02-23)
 
 
 ### Bug Fixes
