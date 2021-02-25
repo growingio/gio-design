@@ -27,6 +27,7 @@ module.exports = {
     '!src/**/interfaces.ts',
     '!src/**/*.stories.{ts,tsx}',
     '!src/**/__tests__/*',
+    '!src/**/list/*',
   ],
   coverageDirectory: './coverage/',
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
