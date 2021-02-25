@@ -80,7 +80,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
     }
     // const eventCopy = getCopyEvent(event);
     // 没有子节点 || selectAny 先调用 beforeSelect 回调
-    const isSelect = noChild || (event.type.toLowerCase() === mergedTrigger && selectAny);
+    const isSelect = noChild || (event.type.toLowerCase() === mergedTrigger.toLowerCase() && selectAny);
     const mergedData = isSelect ? beforeSelect?.(event, dataSource) : children;
     const pipe = (data: NodeData) => {
       onTrigger?.(event, data);
