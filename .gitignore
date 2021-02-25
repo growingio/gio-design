@@ -35,3 +35,4 @@ storybook-static
 .history
 *-report.json
 *-report.xml
+build-storybook.log

@@ -24,7 +24,7 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install
   lint:
-    name: Lint Checks
+    name: Lint codes
     needs: install
     if: ${{ !startsWith(github.event.head_commit.message, 'docs') }}
     runs-on: ubuntu-latest
@@ -48,11 +48,11 @@ jobs:
             eslint-report.json
           key: lint-reports-${{ github.sha }}
       - name: StyleLint
-        run: yarn stylelint && yarn stylelint -f json -o stylelint-report.json
+        run: yarn stylelint -f json -o stylelint-report.json
       - name: ESLint
-        run: yarn eslint && yarn eslint -f json -o eslint-report.json
-  test:
-    name: Test Coverage
+        run: yarn eslint -f json -o eslint-report.json
+  unit_test:
+    name: Unit test
     needs: install
     runs-on: ubuntu-latest
     steps:
@@ -106,6 +106,35 @@ jobs:
           key: package-${{ github.sha }}
       - name: Build package
         run: yarn build
+  publish-storybook:
+    name: Publish storybook
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14
+      - name: Restore Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Build Storybook
+        run: yarn build-storybook
+      - name: Upload to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
+          storybookBuildDir: storybook-static/
+          exitZeroOnChanges: true
+          exitOnceUploaded: true
+          allowConsoleErrors: true
   publish-package:
     name: Publish package
     needs: build
@@ -145,7 +174,7 @@ jobs:
           prerelease: false
   sonar:
     name: Sonar scan
-    needs: [lint, test]
+    needs: [lint, unit_test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
