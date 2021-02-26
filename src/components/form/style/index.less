@@ -15,7 +15,7 @@
 @field-gap: 20px;
 @field-gap-large: 24px;
 
-.message-type(@type, @hasMsg: true, @hasBorder: false, @hasIcon: false) {
+.message-type(@type, @hasMsg: true, @hasBorder: false, @hasIcon: true) {
   @color: ~'@{type}-color';
   .@{input-prefix-cls}-content {
     border-color: if(@hasBorder, @@color, '');
