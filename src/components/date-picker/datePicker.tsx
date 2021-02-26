@@ -1,13 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import RcCalendar from 'rc-calendar';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/Picker';
-import { debounce } from 'lodash';
 import classNames from 'classnames';
 import moment, { Moment } from 'moment';
 import Input from '../input';
 import Button from '../button';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import useDatePicker from './hook/useDatePicker';
 import { DatePickerProps } from './interface';
 
 moment.locale('zh-cn', {
@@ -20,7 +20,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
   const {
     prefixCls: customizePrefixCls,
     format = 'YYYY/MM/DD',
-    value,
     defaultValue,
     showFooter,
     disabledDate,
@@ -30,69 +29,23 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
 
   const calendarContainerRef = useRef(null);
   const inputRef = useRef(null);
-  const [open, setOpen] = useState(false);
-  const [localValue, setLocalValue] = useState(value);
-  const [inputTime, setInputTime] = useState('');
 
-  const onSelect = (values: Moment): void => {
-    if (!props.showFooter) {
-      setLocalValue(values);
-      setOpen(false);
-    }
-  };
-
-  const onChange = (values: Moment): void => {
-    setLocalValue(values);
-  };
+  const { footerFiled, inputField, panelField } = useDatePicker(props);
 
   const CalendarCls = classNames(classNames, {
     [`${prefixCls}-no-footer`]: !showFooter,
   });
 
-  const debounceTimeChange = debounce((e: string): void => {
-    const values = moment(e, props.format);
-    if (values.isValid()) {
-      setLocalValue(values);
-    } else {
-      setLocalValue(localValue);
-    }
-  }, 1000);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    // e.persist();
-    setInputTime(e.target.value);
-    debounceTimeChange(e.target.value);
-  };
-
-  const onConfirm = () => {
-    setOpen(false);
-    setLocalValue(localValue);
-    setInputTime('');
-    props.onChange?.(localValue);
-  };
-
-  const onCancel = () => {
-    setOpen(false);
-    setLocalValue(value);
-    setInputTime('');
-    props.onChange?.(value);
-  };
-
   const renderFooter = () => (
     <>
-      <Button type="secondary" size="middle" onClick={onCancel} style={{ margin: ' 0 10px 0 0 ' }}>
+      <Button type="secondary" size="middle" onClick={footerFiled.onCancel} style={{ margin: ' 0 10px 0 0 ' }}>
         取消
       </Button>
-      <Button size="middle" onClick={onConfirm}>
+      <Button size="middle" onClick={footerFiled.onConfirm}>
         确定
       </Button>
     </>
   );
-
-  const onblur = () => {
-    showFooter && onCancel();
-    !showFooter && setOpen(false);
-  };
 
   const calendar = (
     <RcCalendar
@@ -100,9 +53,9 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
       timePicker={null}
       format={format}
       defaultValue={defaultValue}
-      value={localValue}
-      onChange={onChange}
-      onSelect={onSelect}
+      value={panelField.localValue}
+      onChange={panelField.onChange}
+      onSelect={panelField.onSelect}
       showDateInput={false}
       showToday={false}
       prefixCls={prefixCls}
@@ -110,7 +63,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
       showOk={false}
       disabledDate={disabledDate}
       renderFooter={renderFooter}
-      onBlur={onblur}
+      onBlur={panelField.onblur}
     />
   );
 
@@ -118,17 +71,17 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
     <div className={classNames(`${prefixCls}-wrap`)}>
       <RcDatePicker
         calendar={calendar}
-        value={localValue}
+        value={panelField.localValue}
         getCalendarContainer={() => calendarContainerRef.current}
-        open={open}
+        open={panelField.open}
       >
         {({ value: _value }: { value: Moment }) => (
           <>
             <Input
               placeholder="请输入…"
-              value={inputTime || _value.format(format)}
-              onChange={handleInputChange}
-              onClick={() => setOpen(true)}
+              value={inputField.inputTime || _value.format(format)}
+              onChange={inputField.handleInputChange}
+              onClick={inputField.handleInputClick}
               ref={inputRef}
               disabled={disabled ?? false}
             />

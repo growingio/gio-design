@@ -6,7 +6,6 @@ import { mount, render } from 'enzyme';
 import moment from 'moment';
 import { noop } from 'lodash';
 import DateRangePicker from '../dateRangePicker';
-import Button from '../../button/button';
 
 const format = 'YYYY/MM/DD';
 const VALUE = [moment([2015, 5, 1]), moment([2015, 5, 2])];
@@ -57,95 +56,4 @@ describe('DateRangePicker ui test', () => {
     const content = wrapper.find('.gio-input__content').at(0);
     expect(content.html().includes('2015/05/01'));
   });
-});
-
-describe('DatePicker action Test', () => {
-  /*
-  it('should trigger onChange', () => {
-    const onChange = jest.fn();
-    const wrapper = mount(
-      <DateRangePicker value={VALUE} onChange={onChange} format={format} showFooter disabledDate={disabledDate} />
-    );
-    act(() => {
-      wrapper.find('.gio-input__content').at(0).simulate('click');
-    });
-    waitComponentRender(wrapper).then(() => {
-      act(() => {
-        wrapper.find('.gio-date-picker-selected-start-date').at(0).simulate('click');
-      });
-      act(() => {
-        wrapper.find('.gio-date-picker-selected-end-date').at(0).simulate('click');
-      });
-      expect(onChange).toHaveBeenCalled();
-    });
-  });
-
-
-    it('should trigger onConfirm', () => {
-      const onConfirm = jest.fn();
-      const renderFooter = () => (
-        <>
-          <Button type="secondary" size="middle" onClick={noop}>
-            取消
-          </Button>
-          <Button size="middle" className='confirmButton' onClick={onConfirm}>
-            确定
-          </Button>
-        </>
-      );
-      const wrapper = mount(
-        <DateRangePicker
-          value={VALUE}
-          onSelect={noop}
-          onChange={noop}
-          format={format}
-          showFooter
-          renderFooter={renderFooter}
-          disabledDate={disabledDate}
-        />
-      );
-      act(() => {
-        wrapper.find('.gio-input__content').at(0).simulate('click');
-      })
-      waitComponentRender(wrapper).then(() => {
-        act(() => {
-          wrapper.find('.confirmButton').at(0).simulate('click');
-        })
-        expect(onConfirm).toHaveBeenCalled();
-      });
-    });
-    it('should trigger onCancel', () => {
-      const onCancel = jest.fn();
-      const renderFooter = () => (
-        <>
-          <Button type="secondary" size="middle" onClick={onCancel}>
-            取消
-          </Button>
-          <Button size="middle" onClick={noop}>
-            确定
-          </Button>
-        </>
-      );
-      const wrapper = mount(
-        <DateRangePicker
-          value={VALUE}
-          onSelect={noop}
-          onChange={noop}
-          format={format}
-          showFooter
-          renderFooter={renderFooter}
-          disabledDate={disabledDate}
-        />
-      );
-      act(() => {
-        wrapper.find('.gio-input__content').at(0).simulate('click');
-      })
-      waitComponentRender(wrapper).then(() => {
-        act(() => {
-          wrapper.find('.gio-btn-secondary').at(0).simulate('click');
-        })
-        expect(onCancel).toHaveBeenCalled();
-      });
-    });
-    */
 });
