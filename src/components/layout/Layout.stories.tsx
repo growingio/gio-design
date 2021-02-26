@@ -74,15 +74,18 @@ const DemoListTemplate: Story = (args) => <div {...args} />;
 
 const SuspendDemo = ({ suspend, fixed }: { suspend?: 'left' | 'right'; fixed: boolean }) => {
   const [selectedKey, setSelectedKey] = useState('1');
+  const [collapsed, setCollapsed] = useState<boolean>(true);
   const handleClick = (e: any) => {
     setSelectedKey(e.key);
+    setCollapsed(true);
   };
-  const [collapsed, setCollapsed] = useState<boolean>(false);
+  
   return (
     <Layout style={{ height: 'calc(100vh - 16px)' }} fixed={fixed}>
       <Header />
       <Layout>
         <Layout.Sider
+          collapsed={collapsed}
           trigger="bottom"
           onCollapse={setCollapsed}
           suspendedPosition={suspend}

@@ -52,8 +52,6 @@ const Sider = ({
     });
   }, [collapsedWidth, localCollapsed, suspendedPosition, updateSiders]);
 
-  useEffect(() => onCollapse?.(localCollapsed), [localCollapsed, onCollapse]);
-
   const prefixCls = usePrefixCls('layout-sider', customizePrefixCls);
   const mergedStyle: React.CSSProperties = {
     ['--layout-sider-width' as any]: `${width}px`,
@@ -69,7 +67,10 @@ const Sider = ({
         return (
           <div
             className={`${prefixCls}-bottom-trigger`}
-            onClick={() => setLocalCollapsed(!localCollapsed)}
+            onClick={() => {
+              setLocalCollapsed(!localCollapsed);
+              onCollapse?.(!localCollapsed);
+            }}
             aria-hidden="true"
           >
             {localCollapsed ? <RightOutlined data-testid="right-icon" /> : <LeftOutlined data-testid="left-icon" />}
