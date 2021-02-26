@@ -1,6 +1,7 @@
 import React from 'react';
 import { PaginationProps } from '../pagination/interface';
 import { CheckboxProps } from '../checkbox/interface';
+import { EmptyProps } from '../empty/interfaces';
 
 export type AlignType = 'left' | 'center' | 'right';
 export type SortOrder = 'descend' | 'ascend' | null;
@@ -107,7 +108,11 @@ export interface TableProps<RecordType> {
   pagination?: PaginationProps | false;
   rowSelection?: RowSelection<RecordType>;
   showIndex?: boolean;
+  /**
+    @deprecated
+  */
   emptyText?: React.ReactNode;
+  empty?: EmptyProps;
   onChange?: (pagination: PaginationState, sorter: SortState<RecordType>[], filters: FilterState<RecordType>[]) => void;
   showHover?: boolean;
   showHeader?: boolean;

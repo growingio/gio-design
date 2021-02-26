@@ -3,6 +3,7 @@
 @table-prefix-cls: ~'@{component-prefix}-table';
 @checkbox-prefix-cls: ~'@{component-prefix}-checkbox';
 @popover-prefix-cls: ~'@{component-prefix}-popover';
+@empty-prefix-cls: ~'@{component-prefix}-empty';
 
 .@{table-prefix-cls} {
   font-size: @size-font-14;
@@ -269,11 +270,11 @@
     margin: 16px 0;
   }
 
+  &-tbody > &-placeholder > &-cell {
+    padding: 0;
+  }
+
   &-empty {
-    color: @color-text-table-empty;
-    font-size: 14px;
-    line-height: 22px;
-    letter-spacing: 0;
-    text-align: center;
+    margin: 60px auto;
   }
 }
