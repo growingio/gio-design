@@ -12,7 +12,7 @@ import useSelection from './hook/useSelection';
 import useEllipsisTooltip from './hook/useEllipsisTooltip';
 import Title from './Title';
 import { TableProps, ColumnsType } from './interface';
-import Empty from './Empty';
+import Empty from '../empty';
 import { translateInnerColumns } from './utils';
 import Loading from '../loading';
 import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
@@ -35,7 +35,8 @@ const Table = <RecordType,>(
     pagination = {},
     rowSelection,
     showIndex = false,
-    emptyText = null,
+    emptyText,
+    empty,
     onChange,
     showHover = true,
     rowKey,
@@ -114,10 +115,9 @@ const Table = <RecordType,>(
     transformShowIndexPipeline
   )(transformColumns);
 
-  const emptyElement = emptyText || (
+  const emptyElement = (
     <div className={`${prefixCls}-empty`}>
-      <Empty />
-      <p>无搜索结果</p>
+      <Empty description={emptyText} size='small' {...empty} />
     </div>
   );
 
