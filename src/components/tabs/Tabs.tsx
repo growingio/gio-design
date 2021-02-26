@@ -1,13 +1,12 @@
-/* eslint-disable no-underscore-dangle */
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
+import { isNil } from 'lodash';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import TabNav from '../tab-nav';
 import TabPane from './TabPane';
 import { TabProps, TabPaneProps } from './interface';
 import useControlledState from '../../utils/hooks/useControlledState';
-import useDeepCompareMemo from '../../utils/hooks/useDeepCompareMemo';
 
 const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
   const {
@@ -31,34 +30,34 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
     [`${prefixCls}-lg`]: size === 'large',
   });
 
-  const [tabNav, tabPane] = useDeepCompareMemo(() => {
+  const [tabNavKeys, tabNav, tabPane] = useMemo(() => {
+    const _tabNavKeys: string[] = [];
     const _tabItem: JSX.Element[] = [];
-    const _tabPane = toArray(children).map((node: React.ReactElement<TabPaneProps>) => {
-      if (React.isValidElement(node) && node.type === TabPane) {
+    const _tabPane =
+      toArray(children)
+      .filter(node => React.isValidElement(node) && node.type === TabPane)
+      .map((node: React.ReactElement<TabPaneProps>, index) => {
         const { tab, className: paneClassName, disabled, style: paneStyle, ...restProps } = node.props;
+        const _key = isNil(node.key) ? index.toString() : node.key.toString();
+        _tabNavKeys.push(_key);
         _tabItem.push(
-          <TabNav.Item key={node.key} disabled={disabled}>
+          <TabNav.Item key={_key} disabled={disabled}>
             {tab}
           </TabNav.Item>
         );
         return React.cloneElement(node, {
           prefixCls,
           className: classNames(paneClassName, {
-            [`${prefixCls}-tabpane-active`]: localActiveKey === node.key,
+            [`${prefixCls}-tabpane-active`]: localActiveKey === _key,
           }),
-          style: localActiveKey === node.key ? paneStyle : { ...paneStyle, display: 'none' },
+          style: localActiveKey === _key ? paneStyle : { ...paneStyle, display: 'none' },
           ...restProps,
         });
-      }
-      return null;
-    });
-    return [_tabItem, _tabPane];
+      });
+    return [_tabNavKeys, _tabItem, _tabPane];
   }, [children, localActiveKey, prefixCls]);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const tabNavKeys = useDeepCompareMemo(() => tabNav.map((item) => item.key!.toString()), [tabNav]);
-
-  useMemo(() => {
+  useEffect(() => {
     if (!tabNavKeys.includes(localActiveKey)) {
       setLocalActiveKey(tabNavKeys[0]);
     }

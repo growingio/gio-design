@@ -69,7 +69,7 @@ const columns: any[] = [
 
 // eslint-disable-next-line import/prefer-default-export
 export const TableScroll: Story<TableProps<Record<string, unknown>> & { fixed: 'left' | 'right' }> = (args) => {
-  const { fixed, columns: argsColumns, ...rest } = args;
+  const { fixed, columns: argsColumns = [], ...rest } = args;
   argsColumns[0].fixed = fixed;
   return <Table columns={argsColumns} {...rest} />;
 };
