@@ -197,4 +197,18 @@ describe('<Menu />', () => {
       expect(wrapper.find('.cascader-menu-outer').text()).toEqual('a');
     });
   });
+
+  it('should catch beforeSelect error', async () => {
+    const menu = [{ label: 'a', value: 1 }];
+    const fn = jest.fn();
+    const wrapper = mount(<Menu dataSource={menu} onKeyUp={fn} />);
+
+    act(() => {
+      wrapper.find('.cascader-menu-item-inner').simulate('keyup', { key: '[' });
+    });
+
+    await waitFor(() => {
+      expect(fn).toBeCalled();
+    });
+  });
 });
