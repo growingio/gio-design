@@ -12,8 +12,8 @@ interface Props {
   lazySearch?: boolean;
   onChange?: (value: string) => void;
   onSearch?: (value: string) => void;
-  onCompositionStart: (e: React.CompositionEvent) => void;
-  onCompositionEnd: (e: React.CompositionEvent) => void;
+  onCompositionStart?: (e: React.CompositionEvent) => void;
+  onCompositionEnd?: (e: React.CompositionEvent) => void;
 }
 
 const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
