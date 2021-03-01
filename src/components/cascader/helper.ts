@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import findIndex from 'lodash/findIndex';
 import isEmpty from 'lodash/isEmpty';
+import isUndefined from 'lodash/isUndefined';
 
 import { KeyMapping, NodeData, Value } from './interface';
 
@@ -75,47 +76,49 @@ export const dataKeyMapping = (data: NodeData, keyMapping = {} as KeyMapping) =>
   return { ...data, label: label as NodeData['label'], value: value as NodeData['value'] };
 };
 
+const keyboardNavHandler = (e: KeyboardEvent) => {
+  const { target: _target, key } = e;
+  const targetEl = _target as HTMLDivElement;
+  const cls = 'cascader-menu-item-inner';
+  const isMenuItem = targetEl.classList.contains(cls);
+  if (!isMenuItem) {
+    return;
+  }
+  const silbing =
+    targetEl.closest('.cascader-menu-outer')?.querySelectorAll<HTMLElement>(`.${cls}`) || ([] as HTMLElement[]);
+  const total = silbing.length;
+  const idx = findIndex(silbing, (o) => o === targetEl);
+
+  let nextEl = (null as unknown) as HTMLElement;
+  switch (key) {
+    case 'ArrowDown':
+      nextEl = silbing[(idx + 1) % total];
+      break;
+    case 'ArrowUp':
+      nextEl = silbing[(total + idx - 1) % total];
+      break;
+    case 'ArrowLeft': {
+      const nextMenu = targetEl.closest('.cascader-menu')?.previousSibling as HTMLDivElement;
+      nextEl = nextMenu?.querySelector(`[aria-expanded="true"] .${cls}`) as HTMLDivElement;
+      break;
+    }
+    default:
+      break;
+  }
+
+  if (nextEl) {
+    e.preventDefault();
+    nextEl.focus();
+  }
+};
+
 export const useKeyboardNav = (wrapRef: React.MutableRefObject<HTMLElement>) => {
   useEffect(() => {
     const { current: wrapper } = wrapRef;
     if (!wrapper) return () => null;
 
-    const handler = (e: KeyboardEvent) => {
-      const { target: _target, key } = e;
-      const targetEl = _target as HTMLDivElement;
-      const cls = 'cascader-menu-item-inner';
-      const isMenuItem = targetEl.classList.contains(cls);
-      if (!isMenuItem) {
-        return;
-      }
-      const silbing = wrapRef.current.querySelectorAll<HTMLElement>(`.${cls}`);
-      const total = silbing.length;
-      const idx = findIndex(silbing, (o) => o === targetEl);
-
-      let nextEl = (null as unknown) as HTMLElement;
-      switch (key) {
-        case 'ArrowDown':
-          nextEl = silbing[(idx + 1) % total];
-          break;
-        case 'ArrowUp':
-          nextEl = silbing[(total + idx - 1) % total];
-          break;
-        case 'ArrowLeft': {
-          const nextMenu = targetEl.closest('.cascader-menu')?.previousSibling as HTMLDivElement;
-          nextEl = nextMenu?.querySelector(`[aria-expanded="true"] .${cls}`) as HTMLDivElement;
-          break;
-        }
-        default:
-          break;
-      }
-
-      if (nextEl) {
-        e.preventDefault();
-        nextEl.focus();
-      }
-    };
-    wrapper.addEventListener('keydown', handler);
-    return () => wrapper.removeEventListener('keydown', handler);
+    wrapper.addEventListener('keydown', keyboardNavHandler);
+    return () => wrapper.removeEventListener('keydown', keyboardNavHandler);
   }, [wrapRef]);
 };
 
@@ -134,7 +137,7 @@ export const getParentsByValue = (
   list: NodeData[],
   parents?: NodeData[]
 ): null | NodeData[] => {
-  if (!value) {
+  if (isUndefined(value)) {
     return [];
   }
   const { length } = list;
@@ -153,5 +156,5 @@ export const getParentsByValue = (
       }
     }
   }
-  return null;
+  return [];
 };

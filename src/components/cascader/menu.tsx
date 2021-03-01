@@ -3,15 +3,7 @@ import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
 import { MenuItemProps, NodeData, MenuProps } from './interface';
-import {
-  dataKeyMapping,
-  getParentsByValue,
-  mergeKeyMapping,
-  toInt,
-  useDynamicData,
-  useKeyboardNav,
-  withPrefix,
-} from './helper';
+import { dataKeyMapping, getParentsByValue, mergeKeyMapping, toInt, useDynamicData, useKeyboardNav } from './helper';
 import SingleMenu from './single-menu';
 import useMergeRef from '../../utils/hooks/useMergeRef';
 
@@ -34,7 +26,6 @@ const InnerMenu: React.FC<Props> = (props) => {
   const keyMapping = mergeKeyMapping(originKeyMapping);
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
   const wrapRef = useRef<HTMLDivElement>((null as unknown) as HTMLDivElement);
-  const withWrapperCls = withPrefix('cascader-menu');
   const [canOpen, setCanOpen] = useDynamicData(open);
   const [triggerData, setTriggerData] = useState<NodeData>();
   const [offset, setOffset] = useState([0, 0]);
@@ -65,15 +56,12 @@ const InnerMenu: React.FC<Props> = (props) => {
   };
 
   useEffect(() => {
-    if (wrapRef.current) {
-      const wrapper = wrapRef.current;
-      const handler = () => {
-        setTriggerData(undefined);
-      };
-      wrapper.addEventListener('focusin', handler);
-      return () => wrapper.removeEventListener('focusin', handler);
-    }
-    return () => ({});
+    const wrapper = wrapRef.current;
+    const handler = () => {
+      setTriggerData(undefined);
+    };
+    wrapper?.addEventListener('focusin', handler);
+    return () => wrapper?.removeEventListener('focusin', handler);
   }, [wrapRef, setTriggerData]);
 
   let childMenu;
@@ -89,6 +77,7 @@ const InnerMenu: React.FC<Props> = (props) => {
     childMenu = (
       <InnerMenu
         {...props}
+        autoFocus
         open={canOpen}
         parentMenu={wrapRef.current}
         key={[nextDepth, triggerData[keyMapping.value]].join('-')}
@@ -111,7 +100,7 @@ const InnerMenu: React.FC<Props> = (props) => {
         open={canOpen}
         onTrigger={onTrigger}
         onSelect={onSelect}
-        className={classNames(className, withWrapperCls())}
+        className={className}
         expandedId={triggerData?.[keyMapping.value] as string}
         ref={wrapRef}
       />
