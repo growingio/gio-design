@@ -157,7 +157,7 @@ describe('<Menu />', () => {
     });
   });
 
-  it('should catch beforeSelect error', async () => {
+  it('should catch onSelect error', async () => {
     const menu = [{ label: 'a', value: 1 }];
     const beforeSelect = jest.fn(() => Promise.reject(Error('1')));
     let value;
@@ -198,17 +198,18 @@ describe('<Menu />', () => {
     });
   });
 
-  it('should catch beforeSelect error', async () => {
+  it('should bypass keyup event', async () => {
     const menu = [{ label: 'a', value: 1 }];
     const fn = jest.fn();
     const wrapper = mount(<Menu dataSource={menu} onKeyUp={fn} />);
 
     act(() => {
+      wrapper.find('.cascader-menu-item-inner').simulate('keyup', { key: 'ArrowLeft' });
       wrapper.find('.cascader-menu-item-inner').simulate('keyup', { key: '[' });
     });
 
     await waitFor(() => {
-      expect(fn).toBeCalled();
+      expect(fn).toBeCalledTimes(2);
     });
   });
 });
