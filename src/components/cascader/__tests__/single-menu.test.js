@@ -1,5 +1,4 @@
 import { act } from 'react-dom/test-utils';
-// import { waitFor } from '@testing-library/react';
 import { mount } from 'enzyme';
 import React from 'react';
 
