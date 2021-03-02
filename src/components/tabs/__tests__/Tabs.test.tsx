@@ -44,18 +44,18 @@ describe('Testing Tabs', () => {
 
   test('props type', () => {
     const { container, rerender } = render(getTabs());
-    expect(container.getElementsByClassName('gio-tabs-block')).not.toBe(null);
+    expect(container.getElementsByClassName('gio-tabs-block').length).toBe(1);
     rerender(getTabs({ type: 'line' }));
-    expect(container.getElementsByClassName('gio-tabs-line')).not.toBe(null);
+    expect(container.getElementsByClassName('gio-tabs-line').length).toBe(1);
   });
 
   test('props size', () => {
     const { container, rerender } = render(getTabs());
-    expect(container.getElementsByClassName('gio-tabs-lg')).not.toBe(null);
+    expect(container.getElementsByClassName('gio-tabs-lg').length).toBe(1);
     rerender(getTabs({ size: 'middle' }));
-    expect(container.getElementsByClassName('gio-tabs-md')).not.toBe(null);
+    expect(container.getElementsByClassName('gio-tabs-md').length).toBe(1);
     rerender(getTabs({ size: 'small' }));
-    expect(container.getElementsByClassName('gio-tabs-sm')).not.toBe(null);
+    expect(container.getElementsByClassName('gio-tabs-sm').length).toBe(1);
   });
 
   test('prop defaultActiveKey', () => {
@@ -111,4 +111,25 @@ describe('Testing Tabs', () => {
     );
     expect(queryByText('我不会被渲染')).toBe(null);
   });
+
+  it('will use map index if not set key to tabpane', () => {
+    const { container } = render(
+      <Tabs defaultActiveKey="1">
+        <TabPane tab="我的">
+          111
+        </TabPane>
+        <TabPane tab="全部">
+          222
+        </TabPane>
+        <TabPane tab="共享">
+          333
+        </TabPane>
+        <TabPane disabled tab="预置">
+          444
+        </TabPane>
+      </Tabs>
+    );
+    expect(container.getElementsByClassName('gio-tabnav-item-active')[0].textContent).toBe('全部');
+    expect(container.getElementsByClassName('gio-tabs-tabpane-active')[0].textContent).toBe('222');
+  })
 });

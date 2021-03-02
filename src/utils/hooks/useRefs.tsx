@@ -8,17 +8,17 @@ export default function useRefs<RefType>(): [
   React.MutableRefObject<Map<RefKey, React.RefObject<RefType>>>
   ] {
   const cacheRefs = useRef(new Map<RefKey, React.RefObject<RefType>>());
-
-  function setRef(key: RefKey, ref?: React.RefObject<RefType>) {
+  
+  const setRef = useRef((key: RefKey, ref?: React.RefObject<RefType>) => {
     if (!cacheRefs.current.has(key)) {
       cacheRefs.current.set(key, ref?.current ? ref : React.createRef<RefType>());
     }
     return cacheRefs.current.get(key);
-  }
+  }).current;
 
-  function getRef(key: RefKey) {
+  const getRef = useRef((key: RefKey) => {
     return cacheRefs.current.get(key);
-  }
+  }).current
 
   return [setRef, getRef, cacheRefs];
 }

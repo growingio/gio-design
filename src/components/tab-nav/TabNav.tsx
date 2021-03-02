@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React, { useRef, useMemo, useEffect } from 'react';
+import React, { useRef, useMemo, useEffect, useState, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
 import { isNil } from 'lodash';
@@ -23,6 +23,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   const [localActiveKey, setLocalActiveKey] = useControlledState<string>(activeKey, defaultActiveKey);
   const wrapperRefKey = useRef<symbol>(Symbol('tabNav'));
   const [setRef, getRef] = useRefs<HTMLDivElement>();
+  const [inkStyle, setInkStyle] = useState<React.CSSProperties>({});
 
   const prefixCls = usePrefixCls('tabnav', customizePrefixCls);
   const classString = classNames(prefixCls, `${prefixCls}-${type}`, {
@@ -72,13 +73,16 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
     }
   }, [tabNavKeys, localActiveKey, setLocalActiveKey]);
 
-  const inkStyle = useMemo(() => {
-    if (isNil(getRef(localActiveKey)?.current) || isNil(getRef(wrapperRefKey?.current)?.current)) {
-      return {};
+  useLayoutEffect(() => {
+    const activeTabElement = getRef(localActiveKey)?.current;
+    const wrapperElement = getRef(wrapperRefKey.current)?.current;
+    if (isNil(activeTabElement) || isNil(wrapperElement)) {
+      setInkStyle({});
+    } else {
+      const { left, width } = activeTabElement.getBoundingClientRect();
+      const wrapperLeft = wrapperElement.getBoundingClientRect().left;
+      setInkStyle({ left: left - wrapperLeft, width });
     }
-    const { left, width } = getRef(localActiveKey)!.current!.getBoundingClientRect();
-    const wrapperLeft = getRef(wrapperRefKey.current)!.current!.getBoundingClientRect().left;
-    return { left: left - wrapperLeft, width };
   } , [getRef, localActiveKey]);
 
   return (
