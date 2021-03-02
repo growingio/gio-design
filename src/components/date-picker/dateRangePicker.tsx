@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/Picker';
 import RcRangeCalendar from 'rc-calendar/lib/RangeCalendar';
@@ -20,11 +20,8 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
     disabled,
   } = props;
   const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
-  const calendarContainerRef = useRef(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const selectPanelRef = useRef<any>(null);
 
-  const { footerField, inputField, panelField } = useDateRangePicker(props);
+  const { footerField, inputField, panelField, ref } = useDateRangePicker(props);
 
   const CalendarCls = classNames(classNames, {
     [`${prefixCls}-no-footer`]: !showFooter,
@@ -43,12 +40,6 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
       </Button>
     </>
   );
-
-  const onblur = (e: React.FocusEvent) => {
-    if (!(selectPanelRef.current && selectPanelRef.current.contains(e.nativeEvent.relatedTarget))) {
-      panelField.onBlur();
-    }
-  };
 
   const formatDate = (v: Moment) => v.format(format);
 
@@ -71,14 +62,14 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
   );
 
   return (
-    <div className={classNames(`${prefixCls}-wrap-range`)} onBlur={onblur} ref={selectPanelRef}>
+    <div className={classNames(`${prefixCls}-wrap-range`)} onBlur={panelField.onBlur} ref={ref.selectPanelRef}>
       <RcDatePicker
         animation={showFooter ? 'slide-up' : ''}
         calendar={calendar}
         value={panelField.timeRange}
         onChange={panelField.localChange}
         prefixCls={`${prefixCls}-dropdown`}
-        getCalendarContainer={() => calendarContainerRef.current}
+        getCalendarContainer={() => ref.calendarContainerRef.current}
         open={panelField.open}
       >
         {({ value: _value }: { value: Array<Moment> }) => (
@@ -98,7 +89,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
               onClick={inputField.handleInputClick}
               disabled={disabled ?? false}
             />
-            <div ref={calendarContainerRef} className={classNames(`${prefixCls}-wrapper`)} />
+            <div ref={ref.calendarContainerRef} className={classNames(`${prefixCls}-wrapper`)} />
           </div>
         )}
       </RcDatePicker>
