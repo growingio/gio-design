@@ -10,31 +10,47 @@ interface Props {
   value?: string;
   size?: SizeType;
   lazySearch?: boolean;
+  onChange?: (value: string) => void;
   onSearch?: (value: string) => void;
+  onCompositionStart?: (e: React.CompositionEvent) => void;
+  onCompositionEnd?: (e: React.CompositionEvent) => void;
 }
 
 const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
-  const { placeholder = '搜索', value: originValue = '', onSearch, lazySearch, size } = props;
+  const {
+    placeholder = '搜索',
+    value: originValue = '',
+    onSearch,
+    onChange,
+    lazySearch,
+    size,
+    onCompositionStart,
+    onCompositionEnd,
+  } = props;
   const [value, setValue] = useDynamicData(originValue);
   const [inputState, setInputState] = useState('');
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const nextValue = (e.target as HTMLInputElement).value;
     if (lazySearch && e.key === 'Enter') {
-      onSearch?.((e.target as HTMLInputElement).value);
+      onSearch?.(nextValue);
     }
+    onChange?.(nextValue);
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    const nextValue = e.target.value;
+    setValue(nextValue);
 
     if (inputState === 'init') {
       return;
     }
     if (!lazySearch) {
-      onSearch?.(e.target.value);
+      onSearch?.(nextValue);
     }
+    onChange?.(nextValue);
   };
   const handlerClick = () => {
     setValue('');
-    onSearch?.('');
+    onChange?.('');
   };
   // 如果支持，优先使用 composition 事件
   const handleComposition = (e: React.CompositionEvent) => {
@@ -43,8 +59,10 @@ const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
       if (!lazySearch) {
         onSearch?.(value);
       }
+      onCompositionStart?.(e);
     } else {
       setInputState('init');
+      onCompositionEnd?.(e);
     }
   };
 
@@ -53,7 +71,7 @@ const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
       <CloseOutlined className="icon-clear suffix-icon" size="10" />
     </button>
   ) : (
-    <button type="button" onClick={() => onSearch?.(value)} className="search-btn action-btn">
+    <button type="button" className="search-btn action-btn">
       <SearchOutlined className="icon-search suffix-icon" />
     </button>
   );

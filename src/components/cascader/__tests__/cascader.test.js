@@ -61,29 +61,6 @@ describe('<Cascader />', () => {
     });
   });
 
-  it('should render sub-menu', async () => {
-    const dataSource = [{ label: 'a', value: 1, children: [] }];
-    const wrapper = mount(<Cascader dataSource={dataSource} visible trigger="click" />);
-
-    act(() => {
-      wrapper.find('.cascader-menu-item .cascader-menu-item-inner').simulate('click', { currentTarget: {} });
-    });
-    await waitFor(() => {
-      expect(wrapper.find('.cascader-menu-list').text()).toEqual('a');
-    });
-
-    // act(() => {
-    //   wrapper.setProps({ dataSource: [{ label: 'a', value: 1, children: [{ label: 'b', value: 2 }] }] });
-    // });
-    // act(() => {
-    //   wrapper.find('.cascader-menu-item .cascader-menu-item-inner').at(0).simulate('click', { currentTarget: {} });
-    // });
-
-    // await waitFor(() => {
-    //   expect(wrapper.find('.cascader-menu-list').text()).toEqual('ab');
-    // });
-  });
-
   it('should select a value', async () => {
     const onSelect = jest.fn();
     const wrapper = mount(
