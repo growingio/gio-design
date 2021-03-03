@@ -24,11 +24,12 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     '!src/**/index.{ts,tsx}',
-    '!src/**/interfaces.ts',
+    '!src/**/interface?(s).ts?(x)',
     '!src/**/*.stories.{ts,tsx}',
-    '!src/**/__tests__/*',
-    '!src/**/list/*',
+    '!src/**/__test?(s)__/*',
+    // '!src/**/list',
   ],
   coverageDirectory: './coverage/',
+  coveragePathIgnorePatterns: ['list/'],
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
 };
