@@ -148,11 +148,8 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     if (placement === 'left' || placement === 'right') {
       return `translateX(${placement === 'left' ? distance : -distance}px)`;
     }
-    if (placement === 'top' || placement === 'bottom') {
-      return `translateY(${placement === 'top' ? distance : -distance}px)`;
-    }
-
-    return undefined;
+    // placement === 'top' || placement === 'bottom' || other
+    return `translateY(${placement === 'top' ? distance : -distance}px)`;
   };
 
   private getOffsetStyle() {
@@ -193,7 +190,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
       transform: push ? this.getPushTransform(placement) : undefined,
       ...offsetStyle,
       ...style,
-    };
+    } as React.CSSProperties;
   };
 
   private renderHeader() {
