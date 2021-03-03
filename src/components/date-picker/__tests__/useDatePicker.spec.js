@@ -8,6 +8,8 @@ const props = {
   showFooter: true,
 };
 
+jest.useFakeTimers();
+
 describe('Testing useDatePicker', () => {
   it('useDatePicker panelField', () => {
     const { result } = renderHook(() => useDatePicker(props));
@@ -65,7 +67,7 @@ describe('Testing useDatePicker', () => {
       inputField.debounceTimeChange(e);
     });
 
-    expect(panelField.localValue).toBe('');
+    expect(panelField.localValue).toBe(e.target.value);
 
     act(() => {
       inputField.handleInputClick();

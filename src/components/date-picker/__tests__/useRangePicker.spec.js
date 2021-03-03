@@ -9,6 +9,8 @@ const props = {
   showFooter: true,
 };
 
+jest.useFakeTimers();
+
 describe('Testing useDatePicker', () => {
   it('useDateRangePicker panelField', () => {
     const { result } = renderHook(() => useDatePicker(props));
@@ -59,13 +61,14 @@ describe('Testing useDatePicker', () => {
     const { inputField, panelField } = result.current;
 
     act(() => {
-      inputField.debounceInputChange(moment(), 'left');
+      inputField.debounceInputChange(moment(new Date()).add(-1, 'days'), 'left');
     });
     expect(panelField.timeRange).toBe('');
 
     act(() => {
-      inputField.debounceInputChange(moment(), 'right');
+      inputField.debounceInputChange(moment(new Date()).add(1, 'days'), 'right');
     });
+
     expect(panelField.timeRange).toBe('');
 
     act(() => {
