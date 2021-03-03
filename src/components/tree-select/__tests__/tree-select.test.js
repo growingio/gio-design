@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { MoreOutlined } from '@gio-design/icons';
 import TreeSelect from '../index';
-import focusTest from '../../../tests/focusTest';
+import focusTest from './focusTest';
 
 const treeData = [
   {
