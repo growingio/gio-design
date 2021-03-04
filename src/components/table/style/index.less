@@ -136,6 +136,25 @@
     &-fix-right {
       z-index: @zindex-table-fixed;
     }
+
+    // overflow: hidden cause :after box-shadow not work;
+    &-ellipsis&-fix-left-last,
+    &-ellipsis&-fix-right-first {
+      overflow: visible;
+    }
+    &-ellipsis&-fix-left-last > &-content,
+    &-ellipsis&-fix-right-first > &-content {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    // border-collapse: collapse && position: sticky; will cause border disappear
+    &-fix-left:not(&-fix-left-last),
+    &-fix-right:not(&-fix-right-last) {
+      box-shadow: 1px 0 0 0 @color-border-table;
+    }
+
     &-fix-left-last {
       &::after {
         position: absolute;

@@ -50,6 +50,7 @@ const columns: any[] = [
     dataIndex: 'second',
     align: 'left',
     width: 300,
+    ellipsis: true,
   },
   {
     title: '列标题',
@@ -71,6 +72,7 @@ const columns: any[] = [
 export const TableScroll: Story<TableProps<Record<string, unknown>> & { fixed: 'left' | 'right' }> = (args) => {
   const { fixed, columns: argsColumns = [], ...rest } = args;
   argsColumns[0].fixed = fixed;
+  argsColumns[1].fixed = fixed;
   return <Table columns={argsColumns} {...rest} />;
 };
 
