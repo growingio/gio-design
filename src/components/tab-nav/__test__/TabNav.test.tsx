@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import TabNav from '../index';
@@ -37,18 +38,18 @@ describe('Testing TabNav', () => {
 
   test('props type', () => {
     const { container, rerender } = render(getTabNav());
-    expect(container.getElementsByClassName('gio-tabnav-block')).not.toBe(null);
+    expect(container.getElementsByClassName('gio-tabnav-block').length).toBe(1);
     rerender(getTabNav({ type: 'line' }));
-    expect(container.getElementsByClassName('gio-tabnav-line')).not.toBe(null);
+    expect(container.getElementsByClassName('gio-tabnav-line').length).toBe(1);
   });
 
   test('props size', () => {
     const { container, rerender } = render(getTabNav());
-    expect(container.getElementsByClassName('gio-tabnav-lg')).not.toBe(null);
+    expect(container.getElementsByClassName('gio-tabnav-lg').length).toBe(1);
     rerender(getTabNav({ size: 'middle' }));
-    expect(container.getElementsByClassName('gio-tabnav-md')).not.toBe(null);
+    expect(container.getElementsByClassName('gio-tabnav-md').length).toBe(1);
     rerender(getTabNav({ size: 'small' }));
-    expect(container.getElementsByClassName('gio-tabnav-sm')).not.toBe(null);
+    expect(container.getElementsByClassName('gio-tabnav-sm').length).toBe(1);
   });
 
   test('prop defaultActiveKey', () => {
@@ -69,14 +70,43 @@ describe('Testing TabNav', () => {
   test('prop onChange and onTabClick', () => {
     const onChange = jest.fn();
     const onTabClick = jest.fn();
-    const { getByText } = render(getTabNav({ onChange, onTabClick }));
+    const onClick = jest.fn();
+    const { getByText } = render(
+      <TabNav onChange={onChange} onTabClick={onTabClick}>
+        <TabNav.Item onClick={onClick} key='1'>111</TabNav.Item>
+        <TabNav.Item key='2'>222</TabNav.Item>
+        <TabNav.Item key='3'>333</TabNav.Item>
+        <TabNav.Item key='4' disabled>444</TabNav.Item>
+      </TabNav>
+    );
     fireEvent.click(getByText('111'));
     // not change
     expect(onChange).not.toHaveBeenCalled();
     expect(onTabClick).toHaveBeenCalled();
+    expect(onClick).toHaveBeenCalled();
     fireEvent.click(getByText('222'));
     expect(onChange).toHaveBeenCalled();
   });
+
+  it('will be not called, when disabled is given', () => {
+    const onChange = jest.fn();
+    const onTabClick = jest.fn();
+    const onClick = jest.fn();
+    const { getByText } = render(
+      <TabNav onChange={onChange} onTabClick={onTabClick} defaultActiveKey='2'>
+        <TabNav.Item onClick={onClick} disabled key='1'>111</TabNav.Item>
+        <TabNav.Item key='2'>222</TabNav.Item>
+        <TabNav.Item key='3'>333</TabNav.Item>
+        <TabNav.Item key='4' disabled>444</TabNav.Item>
+      </TabNav>
+    );
+    fireEvent.click(getByText('111'));
+    // not called
+    expect(onChange).not.toHaveBeenCalled();
+    expect(onTabClick).not.toHaveBeenCalled();
+    expect(onClick).not.toHaveBeenCalled();
+  })
+
 
   it('should be render rightly', () => {
     const { container } = render(getTabNav());
@@ -103,5 +133,17 @@ describe('Testing TabNav', () => {
       </TabNav>
     );
     expect(queryByText('我不会被渲染')).toBe(null);
+  });
+
+  test('Whether or not activekey is given, the ink-bar element have left and width style', () => {
+    const { container, rerender } = render(getTabNav());
+    const style = container.getElementsByClassName('gio-tabnav-ink-bar')[0].getAttribute('style');
+    expect(style).not.toBe(null);
+    expect(style!.includes('left') && style!.includes('width')).toBe(true);
+
+    rerender(getTabNav({ activeKey: '1' }));
+    const styleFromGivenActivekey = container.getElementsByClassName('gio-tabnav-ink-bar')[0].getAttribute('style');
+    expect(styleFromGivenActivekey).not.toBe(null);
+    expect(styleFromGivenActivekey!.includes('left') && styleFromGivenActivekey!.includes('width')).toBe(true);
   });
 });
