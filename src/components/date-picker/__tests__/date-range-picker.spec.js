@@ -3,6 +3,7 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount, render } from 'enzyme';
+import { waitFor } from '@testing-library/react';
 import moment from 'moment';
 import { noop } from 'lodash';
 import DateRangePicker from '../dateRangePicker';
@@ -38,6 +39,7 @@ describe('DateRangePicker ui test', () => {
       wrapper.setProps({ disabledDate: noop });
       wrapper.setProps({ format });
       wrapper.setProps({ showFooter: 'true' });
+      wrapper.setProps({ renderExtraFooter: () => <div>extrafooter</div> });
       wrapper.unmount();
     }).not.toThrow();
   });
@@ -55,5 +57,20 @@ describe('DateRangePicker ui test', () => {
     const wrapper = mount(DateRangePickerInstance());
     const content = wrapper.find('.gio-input__content').at(0);
     expect(content.html().includes('2015/05/01'));
+  });
+
+  it('should render extrafooter', async () => {
+    const wrapper = mount(DateRangePickerInstance());
+    wrapper.setProps({ renderExtraFooter: () => <div>extrafooter</div> });
+
+    act(() => {
+      wrapper.setProps({ renderExtraFooter: () => <div>extrafooter</div> });
+      wrapper.find('.gio-input__content').at(0).simulate('click');
+    });
+
+    waitComponentRender(wrapper).then(() => {
+      const extraFooter = wrapper.find('.gio-date-picker-extra-footer');
+      expect(extraFooter.html().includes('extrafooter'));
+    });
   });
 });
