@@ -12,7 +12,7 @@ describe('Testing Sign', () => {
   );
 
   it('should mount and unmount Sign with no error.', () => {
-    const wrapper = mount(<Sign count={12} />);
+    const wrapper = mount(<Sign count={12} size={module} />);
     expect(() => {
       wrapper.setProps({});
       wrapper.unmount();
@@ -22,7 +22,7 @@ describe('Testing Sign', () => {
   it('should render number sign correctly', () => {
     const domTree = renderer
       .create(
-        <Sign className="gio-customized-sign" count={100} magnitude={100}>
+        <Sign className="gio-customized-sign" count={100} magnitude={100} placement="rightTop">
           <span>Number</span>
         </Sign>
       )
@@ -78,7 +78,7 @@ describe('Testing Sign', () => {
 
   it('toggle the placement position', () => {
     const { container, rerender } = render(getSign());
-    rerender(getSign({ placement: 'right' }));
+    rerender(getSign({ placement: 'right', offset: [0, 0] }));
     expect(container.getElementsByClassName('gio-sign--right').length).toBe(1);
     rerender(getSign({ placement: 'bottom' }));
     expect(container.getElementsByClassName('gio-sign--bottom').length).toBe(1);
