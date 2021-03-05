@@ -22,7 +22,7 @@ export interface LoadingProps {
   /**
    设置被包裹的元素
    */
-  children?: React.ReactChild[] | React.ReactChild;
+  children?: React.ReactElement[] | React.ReactElement;
   /**
    自定义 `className`
    */

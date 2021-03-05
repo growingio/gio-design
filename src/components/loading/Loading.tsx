@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { LoadingProps } from './interface';
 
 const Loading = (props: LoadingProps) => {
-  const { prefixCls: customizePrefixCls, loading = true, delay = 0 } = props;
+  const { prefixCls: customizePrefixCls, loading = true, delay = 0, indicator, titlePosition  = 'bottom', title = '加载中...', size = 'large', className, style, children, blurColor = 'white' } = props;
   const prefixCls = usePrefixCls('loading', customizePrefixCls);
   const shouldLoading = useDebounceLoading(loading, delay);
 
-  const renderLoadingElement = (): React.ReactElement => {
-    const { indicator } = props;
+  const loadingElement: JSX.Element = useMemo(() => {
     if (indicator) {
       return <span className={`${prefixCls}-indicator`}>{indicator}</span>;
     }
@@ -22,40 +21,41 @@ const Loading = (props: LoadingProps) => {
         <span className={`${prefixCls}-strip-item`} />
       </span>
     );
-  };
+  }, [prefixCls, indicator]);
 
-  const renderLoadingElementByPosition = () => {
-    const { titlePosition = 'bottom', title = '加载中...', size = 'large', className, style } = props;
+  const loadingElementAndTitle: JSX.Element = useMemo(() => {
     return shouldLoading ? (
       <div className={classNames(`${prefixCls}`, `${prefixCls}-${size}`, className)} style={style}>
-        {renderLoadingElement()}
+        {loadingElement}
         {title && (
           <span className={classNames(`${prefixCls}-title`, `${prefixCls}-title-${titlePosition}`)}>{title}</span>
         )}
       </div>
-    ) : null;
-  };
+    ) : <>{null}</>;
+  }, [className, loadingElement, prefixCls, shouldLoading, size, style, title, titlePosition]);
 
-  const renderLoadingContainer = () => {
-    const { children, blurColor = 'white' } = props;
+  const result: JSX.Element = useMemo(() => {
     if (children) {
-      return (
-        <div className={`${prefixCls}-wrapper-loading`}>
-          {renderLoadingElementByPosition()}
-          <div
-            className={classNames(`${prefixCls}-container`, `${prefixCls}-container-blur-${blurColor}`, {
-              [`${prefixCls}-container-loading`]: shouldLoading,
-            })}
-          >
-            {children}
+      if(shouldLoading){
+        return (
+          <div className={`${prefixCls}-wrapper-loading`}>
+            {loadingElementAndTitle}
+            <div
+              className={classNames(`${prefixCls}-container`, `${prefixCls}-container-blur-${blurColor}`, {
+                [`${prefixCls}-container-loading`]: shouldLoading,
+              })}
+            >
+              {children}
+            </div>
           </div>
-        </div>
-      );
+        );
+      }
+      return <>{children}</>;
     }
-    return renderLoadingElementByPosition();
-  };
+    return loadingElementAndTitle;
+  }, [blurColor, children, loadingElementAndTitle, prefixCls, shouldLoading]);
 
-  return renderLoadingContainer();
+  return result;
 };
 
 export default Loading;
