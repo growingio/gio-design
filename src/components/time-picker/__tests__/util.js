@@ -1,22 +1,22 @@
 /* eslint-disable no-console */
 
 export function clickInput(picker) {
-    picker.find('.rc-time-picker-input').simulate('click');
+    picker.find('.gio-time-picker-input').simulate('click');
   }
 
   export function blurInput(picker) {
-    picker.find('.rc-time-picker-input').simulate('blur');
+    picker.find('.gio-time-picker-input').simulate('blur');
   }
 
   export function escapeSelected(picker) {
     picker
-      .find('.rc-time-picker-panel-select-option-selected')
+      .find('.gio-time-picker-panel-select-option-selected')
       .first()
       .simulate('keydown', { keyCode: 27 });
   }
 
   export function clickSelectItem(picker, select, index) {
-    const selector = picker.find('.rc-time-picker-panel-select').at(select);
+    const selector = picker.find('.gio-time-picker-panel-select').at(select);
     selector
       .find('li')
       .at(index)
@@ -24,12 +24,12 @@ export function clickInput(picker) {
   }
 
   export function findHeader(picker) {
-    return picker.find('.rc-time-picker-panel-input');
+    return picker.find('.gio-time-picker-panel-input');
   }
 
   export function matchValue(picker, str) {
     // Input
-    expect(picker.find('.rc-time-picker-input').instance().value).toBe(str);
+    expect(picker.find('.gio-time-picker-input').instance().value).toBe(str);
   }
 
   export function matchAll(picker, str, str2) {

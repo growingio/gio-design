@@ -20,7 +20,7 @@ interface TimePickerState {
 class Picker extends Component<TimePickerProps, TimePickerState> {
   public static defaultProps = {
     clearText: 'clear',
-    prefixCls: 'rc-time-picker',
+    prefixCls: 'gio-time-picker',
     defaultOpen: false,
     inputReadOnly: false,
     style: {},

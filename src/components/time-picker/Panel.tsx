@@ -29,7 +29,7 @@ interface PanelState {
 }
 class Panel extends Component<PanelProps, PanelState> {
   public static defaultProps = {
-    prefixCls: 'rc-time-picker-panel',
+    prefixCls: 'gio-time-picker-panel',
     onChange: noop,
     disabledHours: noop,
     disabledMinutes: noop,

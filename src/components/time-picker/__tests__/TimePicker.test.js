@@ -110,35 +110,4 @@ describe('Testing timepicker', () => {
       />
     ).toMatchSnapshot()
   })
-  //   //  测试时间格式
-  //   it('time formatte should  active ', () => {
-  //     const wrapper = mount(<Picker format="HH" />);
-
-  //     wrapper.find('.gio-time-picker-input').simulate('click');
-  //     const lis = wrapper.find('.gio-time-picker-panel-select');
-  //     expect(lis.at(0).find('li').length).toBe(24);
-  //     expect(lis.at(1).find('li').length).toBe(60);
-  //   });
-  // 测试选择内容后 内容非空
-  //   it(' selected and value is alive ', async () => {
-  //     const wrapper = mount(<Picker />);
-  //     expect(wrapper.find('.gio-time-picker-input').text()).toBe('');
-
-  //     wrapper.find('.gio-time-picker-input').simulate('click');
-  //     expect(document.querySelectorAll('.gio-time-picker-panel-select')[0]).text();
-  //     // const liLeft = document.querySelectorAll('.gio-time-picker-panel-select').at(0);
-  //     // const liRight = document.querySelectorAll('.gio-time-picker-panel-select').at(1);
-  //     // await liLeft.find('li').simulate('click');
-  //     // await liRight.find('li').simulate('click');
-  //     //   wrapper.find('li').first().simulate('click');
-  //     //   wrapper.find('li').last().simulate('click');
-
-  //     // expect(wrapper.find('.gio-time-picker-input').text()).toBe('');
-  //   });
-  //   测试删除内容后  内容消失
-  //   it('delete content and content disapper', () => {
-  //     const wrapper = mount(<Picker />);
-  //     wrapper.find('.gio-time-picker-clear').simulate('click');
-  //     expect(wrapper.find('.gio-time-picker-input')).toBe('');
-  //   });
 });

@@ -103,38 +103,38 @@ describe('Select', () => {
       const picker = renderPicker();
       clickInput(picker);
 
-      const re = /(^|\s+)rc-time-picker-panel-select-active(\s+|$)/;
+      const re = /(^|\s+)gio-time-picker-panel-select-active(\s+|$)/;
 
       expect(
         re.test(
           picker
-            .find('.rc-time-picker-panel-select')
+            .find('.gio-time-picker-panel-select')
             .at(0)
             .instance().className,
         ),
       ).toBeFalsy();
 
       picker
-        .find('.rc-time-picker-panel-select')
+        .find('.gio-time-picker-panel-select')
         .at(0)
         .simulate('mouseEnter');
       expect(
         re.test(
           picker
-            .find('.rc-time-picker-panel-select')
+            .find('.gio-time-picker-panel-select')
             .at(0)
             .instance().className,
         ),
       ).toBeTruthy();
 
       picker
-        .find('.rc-time-picker-panel-select')
+        .find('.gio-time-picker-panel-select')
         .at(0)
         .simulate('mouseLeave');
       expect(
         re.test(
           picker
-            .find('.rc-time-picker-panel-select')
+            .find('.gio-time-picker-panel-select')
             .at(0)
             .instance().className,
         ),
@@ -149,7 +149,7 @@ describe('Select', () => {
       });
       clickInput(picker);
 
-      const selectors = picker.find('.rc-time-picker-panel-select');
+      const selectors = picker.find('.gio-time-picker-panel-select');
 
       const hourSelector = selectors.at(0);
       const minuteSelector = selectors.at(1);
@@ -174,7 +174,7 @@ describe('Select', () => {
       clickInput(picker);
       expect(picker.state().open).toBeTruthy();
 
-      expect(picker.find('.rc-time-picker-panel-select').length).toBe(3);
+      expect(picker.find('.gio-time-picker-panel-select').length).toBe(3);
     });
   });
 
@@ -353,7 +353,7 @@ describe('Select', () => {
 
       matchValue(picker, '2:00 pm');
 
-      expect(picker.find('.rc-time-picker-panel-select').length).toBe(3);
+      expect(picker.find('.gio-time-picker-panel-select').length).toBe(3);
     });
 
     it('renders 12am correctly', async () => {
@@ -370,7 +370,7 @@ describe('Select', () => {
       clickInput(picker);
       expect(picker.state().open).toBeTruthy();
 
-      expect(picker.find('.rc-time-picker-panel-select').length).toBe(3);
+      expect(picker.find('.gio-time-picker-panel-select').length).toBe(3);
     });
 
     it('renders 5am correctly', async () => {
@@ -517,7 +517,7 @@ describe('Select', () => {
   //   }
 
   //   testClearIcon('clear correctly', 'test-clear', picker => {
-  //     const clearButton = picker.find('.rc-time-picker-clear');
+  //     const clearButton = picker.find('.gio-time-picker-clear');
   //     expect(clearButton.text()).toBe('test-clear');
   //     return clearButton;
   //   });
