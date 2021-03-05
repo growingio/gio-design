@@ -1,3 +1,16 @@
+## [21.3.0](https://github.com/growingio/gio-design/compare/v21.2.4...v21.3.0) (2021-03-05)
+
+
+### Bug Fixes
+* **table:**  fixed column border and box-shadow disappered ([6d14bba](https://github.com/growingio/gio-design/pull/850/commits/6d14bba48daf36f04ae24a21b6f2e5c4df210944))
+* **layout:** sider open status should have shadow ([840a2c1](https://github.com/growingio/gio-design/pull/843/commits/840a2c1781ed61618b287bbef42baf381b520a7c)) 
+* **tabnav:** when activekey is given, ink-bar will not display ([c8fb258](https://github.com/growingio/gio-design/pull/842/commits/c8fb2588f3a1ae377cbde38b58014fe754ae1501)) 
+* **loading:** loading vertical align  ([b765200](https://github.com/growingio/gio-design/pull/838/commits/b765200b9fbb49030368e0812b33b1e45f5cba01))
+
+### Features
+
+* **feat:** add the lite version of list ([e3df889](https://github.com/growingio/gio-design/pull/827/commits/e3df889a1c3160d858f0793498f72949c7f4c032))
+
 ## [21.2.4](https://github.com/growingio/gio-design/compare/v21.2.3...v21.2.4) (2021-02-28)
 
 
