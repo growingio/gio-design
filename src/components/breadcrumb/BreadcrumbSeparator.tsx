@@ -7,7 +7,7 @@ interface BreadcrumbSeparatorInterface extends React.FC<BreadcrumbSeparatorProps
 }
 
 const BreadcrumbSeparator: BreadcrumbSeparatorInterface = (props: BreadcrumbSeparatorProps) => {
-  const { separator = '/' } = props;
+  const { separator } = props;
   const prefixCls = usePrefixCls('breadcrumb');
   return <span className={`${prefixCls}-separator`}>{separator}</span>;
 };

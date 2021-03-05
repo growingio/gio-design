@@ -101,7 +101,7 @@ describe('Breadcrumb', () => {
   });
 
   it('should render routes with params', () => {
-    const wrapper = render(<Breadcrumb routes={routes} params={{ first: 1, last: 1 }} />); 
+    const wrapper = render(<Breadcrumb routes={routes} params={{ first: 1, last: 1 }} />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -152,7 +152,7 @@ describe('Breadcrumb', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('can replace the content after :',() => {
+  it('can replace the content after :', () => {
     const route = [
       {
         path: 'components',
@@ -166,10 +166,48 @@ describe('Breadcrumb', () => {
         path: 'breadcrumb',
         breadcrumbName: '二级面包屑',
       },
-    ]
-    const wrapper = render(
-      <Breadcrumb routes={route} params={{面:'背',包:'条'}} />
-    )
+    ];
+    const wrapper = render(<Breadcrumb routes={route} params={{ 面: '背', 包: '条' }} />);
     expect(wrapper).toMatchSnapshot();
-  })
+  });
+
+  it('props itemRender', () => {
+    const route = [
+      {
+        path: 'components',
+        breadcrumbName: '首页',
+      },
+      {
+        path: 'basic',
+        breadcrumbName: '一级面包屑',
+      },
+      {
+        path: 'breadcrumb',
+        breadcrumbName: '二级面包屑',
+      },
+    ];
+    const MyItemRender = () => <div>面包屑</div>;
+    const wrapper = mount(<Breadcrumb routes={route} itemRender={MyItemRender} />);
+    expect(wrapper.find('.gio-breadcrumb-item-link-target div').at(0).text()).toBe('面包屑');
+  });
+
+  it('props separator and undefined path', () => {
+    const route = [
+      {
+        path: '',
+        breadcrumbName: '首页',
+      },
+      {
+        path: '',
+        breadcrumbName: '一级面包屑',
+      },
+      {
+        path: '',
+        breadcrumbName: '二级面包屑',
+      },
+    ];
+    const wrapper = mount(<Breadcrumb routes={route} />);
+    wrapper.setProps({ separator: '→' });
+    expect(wrapper.find('.gio-breadcrumb-separator').at(0).text()).toBe('→');
+  });
 });
