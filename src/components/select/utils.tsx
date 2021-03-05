@@ -6,12 +6,12 @@ interface group {
   groupLabel?: string;
   groupValue?: string | number;
 }
-
 const ungroupedOptionKeyPrefix = 'select_isungrouped_option_';
 const ungroupedOptionKey = uniqueId(ungroupedOptionKeyPrefix);
 const ungroupedOptionLabel = '未分组';
 export const customOptionKeyPrefix = 'select_custom_option_';
 export const customOptionKey = uniqueId(customOptionKeyPrefix);
+
 // ReactNode To Options
 export function convertNodeToOption(node: React.ReactElement, group: group): Option {
   const {
@@ -20,6 +20,33 @@ export function convertNodeToOption(node: React.ReactElement, group: group): Opt
   const { groupValue, groupLabel } = group;
   return { value, label: children !== undefined ? children : value, groupValue, groupLabel, ...restProps };
 }
+
+export const getFlattenOptions = (data: Option[], hasGroup: boolean) => {
+  const groupMap = new Map();
+  if (!hasGroup) return data;
+  data?.map((cur: Option) => {
+    const gValue = groupMap.get(cur.groupValue);
+    if (gValue) {
+      const { options, ...rest } = gValue;
+      return groupMap.set(cur.groupValue, {
+        options: [...options, cur],
+        ...rest,
+      });
+    }
+    return groupMap.set(cur.groupValue, {
+      label: cur.groupLabel,
+      value: cur.groupValue,
+      isSelectOptGroup: true,
+      options: [cur],
+    });
+  });
+  const flattenOption: Option[] = [];
+  groupMap.forEach((value) => {
+    flattenOption.push(value);
+    flattenOption.push(...value.options);
+  });
+  return flattenOption;
+};
 
 export function convertChildrenToData(nodes: React.ReactNode, group = {}): Option[] {
   let nodeOptions: Option[] = [];
@@ -41,7 +68,7 @@ export function convertChildrenToData(nodes: React.ReactNode, group = {}): Optio
   });
   return nodeOptions;
 }
-
+// optionsMap flattenOptions
 export function handleOptions(
   mergedOptions: OptionProps[],
   setCacheOptions: (options: Option[]) => void,
@@ -95,9 +122,7 @@ export const defaultOptionLabelRenderer = (value: string | number, option?: Opti
 export const defaultSearchPredicate = (input: string) => (o: Option) => {
   return typeof o.label === 'string' ? o.label.includes(input) : true;
 };
-export const defaultMatchPredicate = (input: string) => (o: Option) => {
-  return o.label === input;
-};
+export const defaultMatchPredicate = (input: string) => (o: Option) => o.label === input;
 
 export const CustomOption = (value: string | number, withGroup = false, id = customOptionKeyPrefix): Option => {
   return withGroup

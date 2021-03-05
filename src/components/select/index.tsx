@@ -1,7 +1,7 @@
 import GIOSelect from './Select';
 import { Option, SelectProps, OptGroupProps, OptionProps } from './interface';
-import Options from './Options';
-import OptGroup from './OptGroup';
+import Options from './OptionsList/Options';
+import OptGroup from './OptionsList/OptGroup';
 
 export type TSelect = typeof GIOSelect & {
   Group: typeof OptGroup;

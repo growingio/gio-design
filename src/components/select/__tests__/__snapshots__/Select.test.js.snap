@@ -1,12 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Select /> renders <Select /> components 1`] = `
+exports[`<Select /> Single Multiple options or groupOptions  renders <Select /> components 1`] = `
 <div
   aria-controls="expandable"
   aria-disabled={false}
   aria-expanded={false}
+  aria-hidden="true"
   className="gio-select gio-select-middle gio-select-single gio-select-bordered"
+  onBlur={[Function]}
   onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
   role="combobox"
@@ -15,8 +19,10 @@ exports[`<Select /> renders <Select /> components 1`] = `
       "cursor": "pointer",
     }
   }
+  tabIndex={0}
 >
   <div
+    id="selector"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -31,6 +37,8 @@ exports[`<Select /> renders <Select /> components 1`] = `
         >
           <span
             className="gio-select-item-text"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             全部
           </span>
@@ -77,13 +85,17 @@ exports[`<Select /> renders <Select /> components 1`] = `
 </div>
 `;
 
-exports[`<Select /> renders <Select /> components 2`] = `
+exports[`<Select /> Single Multiple options or groupOptions  renders <Select /> components 2`] = `
 <div
   aria-controls="expandable"
   aria-disabled={false}
   aria-expanded={false}
+  aria-hidden="true"
   className="gio-select gio-select-middle gio-select-single gio-select-bordered"
+  onBlur={[Function]}
   onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
   role="combobox"
@@ -92,8 +104,10 @@ exports[`<Select /> renders <Select /> components 2`] = `
       "cursor": "pointer",
     }
   }
+  tabIndex={0}
 >
   <div
+    id="selector"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -108,6 +122,8 @@ exports[`<Select /> renders <Select /> components 2`] = `
         >
           <span
             className="gio-select-item-text"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             全部
           </span>
@@ -154,13 +170,17 @@ exports[`<Select /> renders <Select /> components 2`] = `
 </div>
 `;
 
-exports[`<Select /> renders <Select.Group /> components 1`] = `
+exports[`<Select /> Single Multiple options or groupOptions  renders <Select /> components multiple useFooter useAll mode 1`] = `
 <div
   aria-controls="expandable"
   aria-disabled={false}
   aria-expanded={false}
-  className="gio-select gio-select-middle gio-select-single gio-select-bordered"
+  aria-hidden="true"
+  className="gio-select gio-select-middle gio-select-bordered"
+  onBlur={[Function]}
   onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
   role="combobox"
@@ -169,8 +189,10 @@ exports[`<Select /> renders <Select.Group /> components 1`] = `
       "cursor": "pointer",
     }
   }
+  tabIndex={0}
 >
   <div
+    id="selector"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -221,13 +243,17 @@ exports[`<Select /> renders <Select.Group /> components 1`] = `
 </div>
 `;
 
-exports[`<Select /> renders <Select.Option /> components 1`] = `
+exports[`<Select /> Single Multiple options or groupOptions  renders <Select.Group /> components 1`] = `
 <div
   aria-controls="expandable"
   aria-disabled={false}
   aria-expanded={false}
+  aria-hidden="true"
   className="gio-select gio-select-middle gio-select-single gio-select-bordered"
+  onBlur={[Function]}
   onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
   role="combobox"
@@ -236,8 +262,10 @@ exports[`<Select /> renders <Select.Option /> components 1`] = `
       "cursor": "pointer",
     }
   }
+  tabIndex={0}
 >
   <div
+    id="selector"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -288,13 +316,17 @@ exports[`<Select /> renders <Select.Option /> components 1`] = `
 </div>
 `;
 
-exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
+exports[`<Select /> Single Multiple options or groupOptions  renders <Select.Option /> components 1`] = `
 <div
   aria-controls="expandable"
   aria-disabled={false}
   aria-expanded={false}
-  className="gio-select gio-select-middle gio-select-bordered"
+  aria-hidden="true"
+  className="gio-select gio-select-middle gio-select-single gio-select-bordered"
+  onBlur={[Function]}
   onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
   onMouseDown={[Function]}
   onTouchStart={[Function]}
   role="combobox"
@@ -303,8 +335,10 @@ exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
       "cursor": "pointer",
     }
   }
+  tabIndex={0}
 >
   <div
+    id="selector"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -313,160 +347,7 @@ exports[`<Select multiple/> renders <Select multiple/> components 1`] = `
     >
       <div
         className="gio-select-values-wrapper"
-      >
-        <span
-          aria-hidden="true"
-          className="gio-tag gio-tag-size-middle gio-tag-type-normal gio-tag-closable gio-select-item"
-        >
-          <span
-            className="gio-tag-label"
-          >
-            全部
-          </span>
-          <span
-            className="gio-icon gio-tag-closable-icon"
-            onClick={[Function]}
-          >
-            <svg
-              className="gio-icon-svg"
-              fill="currentColor"
-              height="16px"
-              style={
-                Object {
-                  "color": undefined,
-                }
-              }
-              viewBox="0 0 14 14"
-              width="16px"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <style />
-              </defs>
-              <g>
-                <g>
-                  <path
-                    d="M6.62 5.92a.54.54 0 00.76 0l3.87-3.87a.49.49 0 01.7.7L8.08 6.62a.54.54 0 000 .76L12 11.25a.49.49 0 01-.7.7L7.38 8.08a.54.54 0 00-.76 0L2.75 12a.49.49 0 01-.7-.7l3.87-3.92a.54.54 0 000-.76L2.05 2.75a.49.49 0 01.7-.7z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                    id="close-outlined_svg__close"
-                  />
-                </g>
-              </g>
-            </svg>
-          </span>
-        </span>
-      </div>
-    </div>
-    <div
-      aria-hidden="true"
-      className="gio-select-arrow"
-    >
-      <span
-        className="gio-icon gio-select-icon-arrow"
-      >
-        <svg
-          className="gio-icon-svg"
-          fill="currentColor"
-          height="16px"
-          style={
-            Object {
-              "color": undefined,
-            }
-          }
-          viewBox="0 0 14 14"
-          width="16px"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <style />
-          </defs>
-          <g>
-            <g>
-              <path
-                d="M7.39 9.51a.5.5 0 01-.78 0l-3-3.7a.51.51 0 01-.06-.53A.5.5 0 014 5h6a.5.5 0 01.45.28.51.51 0 01-.06.53z"
-                fill="currentColor"
-                fillRule="evenodd"
-                id="down-filled_svg__down-2"
-              />
-            </g>
-          </g>
-        </svg>
-      </span>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<Select multiple/> renders <Select multiple/> components 2`] = `
-<div
-  aria-controls="expandable"
-  aria-disabled={false}
-  aria-expanded={false}
-  className="gio-select gio-select-middle gio-select-bordered"
-  onClick={[Function]}
-  onMouseDown={[Function]}
-  onTouchStart={[Function]}
-  role="combobox"
-  style={
-    Object {
-      "cursor": "pointer",
-    }
-  }
->
-  <div
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="gio-select-selector"
-    >
-      <div
-        className="gio-select-values-wrapper"
-      >
-        <span
-          aria-hidden="true"
-          className="gio-tag gio-tag-size-middle gio-tag-type-normal gio-tag-closable gio-select-item"
-        >
-          <span
-            className="gio-tag-label"
-          >
-            全部
-          </span>
-          <span
-            className="gio-icon gio-tag-closable-icon"
-            onClick={[Function]}
-          >
-            <svg
-              className="gio-icon-svg"
-              fill="currentColor"
-              height="16px"
-              style={
-                Object {
-                  "color": undefined,
-                }
-              }
-              viewBox="0 0 14 14"
-              width="16px"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <style />
-              </defs>
-              <g>
-                <g>
-                  <path
-                    d="M6.62 5.92a.54.54 0 00.76 0l3.87-3.87a.49.49 0 01.7.7L8.08 6.62a.54.54 0 000 .76L12 11.25a.49.49 0 01-.7.7L7.38 8.08a.54.54 0 00-.76 0L2.75 12a.49.49 0 01-.7-.7l3.87-3.92a.54.54 0 000-.76L2.05 2.75a.49.49 0 01.7-.7z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                    id="close-outlined_svg__close"
-                  />
-                </g>
-              </g>
-            </svg>
-          </span>
-        </span>
-      </div>
+      />
     </div>
     <div
       aria-hidden="true"

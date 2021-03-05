@@ -3,8 +3,8 @@ import { SizeType } from '../config-provider/SizeContext';
 
 export type MaybeArray<T> = T | T[];
 
-export type modeType = 'all' | 'tags' | undefined;
-
+export type modeType = 'string' | 'tags' | undefined;
+export type searchableType = 'default' | 'inner' | undefined;
 export interface Option {
   /**
    列表单项主要文字
@@ -70,8 +70,17 @@ export interface SelectProps {
    */
   multiple?: boolean;
   /**
-   * 模式(仅在多选开启下生效)
+   * 多选模式下选中的展示模式(仅在多选开启下生效)
    */
+  mode?: modeType;
+  /**
+   * 多选模式下开启全选(仅在多选开启下生效)
+   */
+  useAll?: boolean;
+  /**
+   * 是否使用footer(仅在多选开启下生效)
+   */
+  useFooter?: boolean;
   /**
    * 搜索模式下占位符
    */
@@ -79,7 +88,7 @@ export interface SelectProps {
   /**
    * 是否可搜索
    */
-  searchable?: boolean;
+  searchable?: searchableType;
   /**
    * 是否禁用
    */
@@ -211,6 +220,32 @@ export interface SelectProps {
   children?: React.ReactNode[] | React.ReactNode;
 }
 
+export interface SelectorProps {
+  input: string;
+  disabled: boolean;
+  prefix: string;
+  size: string;
+  multiple: boolean;
+  bordered: boolean;
+  isFocused: boolean;
+  className?: string | undefined;
+  visible: boolean;
+  style?: React.CSSProperties | undefined;
+  allowClear: boolean;
+  mode?: modeType;
+  value?: MaybeArray<string | number> | undefined | null;
+  searchable: searchableType;
+  placeholder?: string | undefined;
+  optionLabelRenderer: (value: string | number, option?: Option) => React.ReactNode;
+  getOptionByValue: (optValue: string | number) => Option;
+  onInputChange: (value: string) => void;
+  onAllowClear: () => void;
+  deleteValue: (value: React.ReactText[], v: string | number) => void;
+  arrowComponent?: React.ReactElement | undefined;
+  closeComponent?: React.ReactElement | undefined;
+  [key: string]: any
+}
+
 export interface VirtualListProps {
   itemHeight?: number;
   height?: number;
@@ -219,21 +254,37 @@ export interface VirtualListProps {
   data: Option[];
   virtual?: boolean;
   itemKey: string | number | ((item: never) => React.ReactText);
+  activeIndex: number;
 }
 
 export interface OptionsListProps {
+  style: React.CSSProperties;
+  input: string;
   prefixCls: string;
   groupStyle: React.CSSProperties | undefined;
   optionStyle: React.CSSProperties | undefined;
-  selected: MaybeArray<string | number> | undefined | null;
+  selected?: MaybeArray<React.ReactText> | undefined | null;
   multiple: boolean;
-  mode: modeType;
+  isMode?: boolean;
+  isUseAll?: boolean;
   data: Option[];
   hasGroup: boolean;
+  searchable: searchableType;
+  placeholder?: string;
+  notFoundContent?: React.ReactElement;
+  onTempValueChange: (tempValue: React.ReactText[]) => void;
+  setTempValue: (values: React.ReactText[]) => void;
+  value?: MaybeArray<React.ReactText> | null;
+  tempValue: React.ReactText[];
+  isFooter?: boolean;
   labelRenderer: (option: Option, isGruop: false) => React.ReactNode;
   onOptionClick: (selectedValue: string | number) => void;
   getContainer?: (node: HTMLElement) => HTMLElement;
-  onAllChange?: (optionValues: MaybeArray<string | number> | null) => void;
+  onValueChange?: (optionValues: MaybeArray<string | number> | null) => void;
+  onInputChange: (value: string) => void;
   height?: number | undefined;
   itemHeight?: number | undefined;
+  activeIndex: number;
+  setActiveIndex: React.Dispatch<React.SetStateAction<number>>
+  onOptionListKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => void
 }
