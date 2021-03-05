@@ -21,14 +21,10 @@ const Dropdown = (props: DropdownProps) => {
   const [controlledVisible, setControlledVisible] = useControlledState(visible, false);
 
   const getDropdownTrigger = () => {
-    try {
-      const child = Children.only(children);
-      return cloneElement(child, {
-        className: classnames(controlledVisible ? 'dropdown-active' : '', child.props.className),
-      });
-    } catch (e) {
-      return children;
-    }
+    const child = Children.only(children);
+    return cloneElement(child, {
+      className: classnames(controlledVisible ? 'dropdown-active' : '', child.props.className),
+    });
   };
 
   const getOverlay = () => {
