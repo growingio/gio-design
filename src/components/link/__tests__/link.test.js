@@ -23,7 +23,7 @@ describe('Test Link', () => {
       .create(
         <Link className="gio-customized-link" to="https://www.growingio.com" disabled>
           GrowingIO
-        </Link>,
+        </Link>
       )
       .toJSON();
     expect(domTree).toMatchSnapshot();
@@ -33,7 +33,7 @@ describe('Test Link', () => {
     const wrapper = shallow(
       <Link to="https://www.growingio.com" component="div">
         Custom Component
-      </Link>,
+      </Link>
     );
     expect(wrapper.name()).toEqual('div');
   });
@@ -44,9 +44,31 @@ describe('Test Link', () => {
     const wrapper = mount(
       <Link to="https://www.growingio.com" component="div" onClick={onClick}>
         Custom Component
-      </Link>,
+      </Link>
     );
 
+    wrapper.simulate('click');
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it('It should show or hide', () => {
+    const wrapper = mount(
+      <Link component="div" to="https://www.growingio.com" disabled>
+        GrowingIO
+      </Link>
+    );
+    wrapper.simulate('click');
+    expect(wrapper.exists('.gio-link--disabled')).toBe(true);
+  });
+  it('should accept undefined link', () => {
+    const onClick = jest.fn();
+
+    const wrapper = mount(
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <Link component="div" to={undefined} onClick={onClick}>
+        GrowingIO
+      </Link>
+    );
     wrapper.simulate('click');
     expect(onClick).toHaveBeenCalled();
   });
@@ -58,9 +80,22 @@ describe('Test Link', () => {
     const wrapper = mount(
       <Link component="div" to="https://www.growingio.com">
         GrowingIO
-      </Link>,
+      </Link>
     );
     wrapper.simulate('click');
     expect(window.location.href).toEqual('https://www.growingio.com');
+  });
+  it('not pointing in the right place', () => {
+    delete global.window.location;
+    global.window.location = { href: '' };
+
+    const wrapper = mount(
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <Link component="div" to={undefined}>
+        GrowingIO
+      </Link>
+    );
+    wrapper.simulate('click');
+    expect(window.location.href).not.toEqual('https://www.growingio.com');
   });
 });
