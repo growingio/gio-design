@@ -16,7 +16,7 @@
   &-wrapper-loading > & {
     position: absolute;
     top: 50%;
-    z-index: 1;
+    z-index: @zindex-loading;
     width: 100%;
     transform: translateY(-50%);
   }
@@ -34,7 +34,7 @@
       right: 0;
       bottom: 0;
       left: 0;
-      z-index: 10;
+      z-index: @zindex-loading;
       content: '';
     }
     &-blur-white::after {
