@@ -1,7 +1,9 @@
 import React from 'react';
-import { Moment } from 'moment';
+import moment, { Moment } from 'moment';
 import { mount, render } from 'enzyme';
+import { noop } from 'lodash';
 import Picker from '../index';
+import TimePicker from '../TimePicker';
 
 // 打印快照
 describe('Testing timepicker', () => {
@@ -82,6 +84,32 @@ describe('Testing timepicker', () => {
     expect(lis.at(0).find('li').length).toBe(24);
     expect(lis.at(1).find('li').length).toBe(60);
   });
+
+  it('timepciker match snapshot1', () => {
+    expect(
+      <TimePicker
+        format="HH:mm"
+        placeholder="请选择时间"
+        showSecond={false}
+        onChange={noop}
+        value={moment('2011-03-05T00:00:00.000Z')}
+        defaultOpenValue={null}
+      />
+    ).toMatchSnapshot()
+  })
+
+  it('timepciker match snapshot2', () => {
+    expect(
+      <TimePicker
+        format="HH:mm:ss"
+        placeholder="请选择时间"
+        showSecond
+        onChange={noop}
+        value={moment('2011-03-05T00:00:00.000Z')}
+        defaultOpenValue={null}
+      />
+    ).toMatchSnapshot()
+  })
   //   //  测试时间格式
   //   it('time formatte should  active ', () => {
   //     const wrapper = mount(<Picker format="HH" />);

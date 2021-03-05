@@ -1,3 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing timepicker props test 1`] = `ReactWrapper {}`;
+
+exports[`Testing timepicker timepciker match snapshot1 1`] = `
+<Picker
+  addon={[Function]}
+  align={
+    Object {
+      "offset": Array [
+        0,
+        4,
+      ],
+      "overflow": Object {
+        "adjustX": 1,
+        "adjustY": 1,
+      },
+    }
+  }
+  allowEmpty={true}
+  className=""
+  clearText="clear"
+  defaultOpen={false}
+  defaultOpenValue={null}
+  disabledHours={[Function]}
+  disabledMinutes={[Function]}
+  disabledSeconds={[Function]}
+  focusOnOpen={false}
+  format="HH:mm"
+  hideDisabledOptions={false}
+  inputClassName=""
+  inputReadOnly={false}
+  onAmPmChange={[Function]}
+  onBlur={[Function]}
+  onChange={[Function]}
+  onClose={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onOpen={[Function]}
+  placeholder="请选择时间"
+  placement="bottomLeft"
+  popupClassName=""
+  popupStyle={Object {}}
+  prefixCls="rc-time-picker"
+  showHour={true}
+  showMinute={true}
+  showSecond={false}
+  style={Object {}}
+  use12Hours={false}
+  value={"2011-03-05T00:00:00.000Z"}
+/>
+`;
+
+exports[`Testing timepicker timepciker match snapshot2 1`] = `
+<Picker
+  addon={[Function]}
+  align={
+    Object {
+      "offset": Array [
+        0,
+        4,
+      ],
+      "overflow": Object {
+        "adjustX": 1,
+        "adjustY": 1,
+      },
+    }
+  }
+  allowEmpty={true}
+  className=""
+  clearText="clear"
+  defaultOpen={false}
+  defaultOpenValue={null}
+  disabledHours={[Function]}
+  disabledMinutes={[Function]}
+  disabledSeconds={[Function]}
+  focusOnOpen={false}
+  format="HH:mm:ss"
+  hideDisabledOptions={false}
+  inputClassName=""
+  inputReadOnly={false}
+  onAmPmChange={[Function]}
+  onBlur={[Function]}
+  onChange={[Function]}
+  onClose={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onOpen={[Function]}
+  placeholder="请选择时间"
+  placement="bottomLeft"
+  popupClassName=""
+  popupStyle={Object {}}
+  prefixCls="rc-time-picker"
+  showHour={true}
+  showMinute={true}
+  showSecond={true}
+  style={Object {}}
+  use12Hours={false}
+  value={"2011-03-05T00:00:00.000Z"}
+/>
+`;

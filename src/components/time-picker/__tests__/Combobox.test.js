@@ -2,8 +2,8 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { waitFor } from '@testing-library/react';
 import { mount, render } from 'enzyme';
-import Combobox from '../Combobox';
 import { Moment } from 'moment';
+import Combobox from '../Combobox';
 
 // 打印快照
 describe('Testing Combobox', () => {
@@ -18,7 +18,7 @@ describe('Testing Combobox', () => {
       mount(
         <Combobox
           defaultOpenValue={false}
-          use12Hours={true}
+          use12Hours
           isAM
           onAmPmChange={onClickMock}
           //   onChange={onClickMock}
