@@ -1,10 +1,11 @@
 import React from 'react';
 import { mount, render } from 'enzyme';
+import { render as tlrRender } from '@testing-library/react';
 import { waitForComponentToPaint } from '../../../utils/test';
 import Loading from '../Loading';
 
 describe('Testing Loading', () => {
-  const getLoading = () => <Loading>这是一个测试</Loading>;
+  const getLoading = (args) => <Loading {...args}>这是一个测试</Loading>;
 
   it('should be stable', () => {
     const wrapper = render(<Loading>快照</Loading>);
@@ -61,4 +62,11 @@ describe('Testing Loading', () => {
     wrapper.setProps({ blurColor: 'black' });
     expect(wrapper.exists('.gio-loading')).toBe(true);
   });
+
+  test('props autoCenter', () => {
+    const { container } = tlrRender(<Loading autoCenter />);
+    const style = container.getElementsByClassName('gio-loading')[0].getAttribute('style');
+    expect(style).not.toBe(null);
+    expect(style.includes('margin-left') && style.includes('margin-top')).toBe(true);
+  })
 });

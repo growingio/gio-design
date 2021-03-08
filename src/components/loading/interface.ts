@@ -1,5 +1,9 @@
 export interface LoadingProps {
   /**
+    默认居中与父容器
+   */
+  autoCenter?: boolean;
+  /**
    是否为加载中状态
    */
   loading?: boolean;
