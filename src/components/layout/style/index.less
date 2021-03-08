@@ -90,23 +90,23 @@
       cursor: pointer;
       user-select: none;
     }
-  }
 
-  &-sider-suspend {
-    position: absolute;
-    z-index: 1050;
-    width: var(--layout-sider-width);
-    height: 100%;
-    &-left {
-      left: 0;
-      transform: translateX(var(--layout-sider-collapsedWidth-negative));
-    }
-    &-right {
-      right: 0;
-      transform: translateX(var(--layout-sider-collapsedWidth));
-    }
-    &-collapsed {
-      width: var(--layout-sider-collapsedWidth);
+    &-suspend {
+      position: absolute;
+      z-index: 1050;
+      width: var(--layout-sider-width);
+      height: 100%;
+      &-left {
+        left: 0;
+        transform: translateX(var(--layout-sider-collapsedWidth-negative));
+      }
+      &-right {
+        right: 0;
+        transform: translateX(var(--layout-sider-collapsedWidth));
+      }
+      &-collapsed {
+        width: var(--layout-sider-collapsedWidth);
+      }
     }
   }
 }
