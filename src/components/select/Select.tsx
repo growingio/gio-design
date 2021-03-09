@@ -1,14 +1,14 @@
-import React, { useState, useContext, useMemo, useRef, useEffect } from 'react';
+import React, { useState, useContext, useMemo, useRef, useEffect, ReactText } from 'react';
 import classnames from 'classnames';
-import { filter, isNil, without, findIndex, isNull } from 'lodash';
+import { filter, isNil, without, findIndex } from 'lodash';
 import { SizeContext } from '../config-provider/SizeContext';
 import Dropdown from '../dropdown';
 import Selector from './Selector';
 import OptionsList from './OptionsList';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import Options from './Options';
+import Options from './OptionsList/Options';
 import { SelectProps, Option, MaybeArray, OptionProps } from './interface';
-import OptGroup from './OptGroup';
+import OptGroup from './OptionsList/OptGroup';
 import {
   convertChildrenToData,
   handleOptions,
@@ -18,6 +18,7 @@ import {
   defaultOptionLabelRenderer,
   CustomOption,
   customOptionKey,
+  getFlattenOptions,
 } from './utils';
 import useCacheOptions from './hooks/useCacheOption';
 import DefaultNotFoundContent from './components/NotFoundContent';
@@ -29,7 +30,7 @@ interface CompoundedSelect extends React.ForwardRefExoticComponent<SelectProps &
   Option: typeof Options;
 }
 
-const Select = React.forwardRef<HTMLDivElement, SelectProps>(
+export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
   (props: SelectProps, ref: React.MutableRefObject<HTMLDivElement>) => {
     const contextSize = useContext(SizeContext);
     const {
@@ -38,14 +39,17 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       defaultValue = null,
       value: controlledValue,
       multiple = false,
+      mode = multiple ? 'tags' : undefined,
+      useAll = false,
+      useFooter = false,
       allowClear = false,
       placeholder,
-      searchable = false,
+      searchable,
       disabled = false,
       bordered = true,
       allowCustomOption = false,
       autoWidth = true,
-      allowDeselect = false || multiple,
+      allowDeselect = multiple,
       notFoundContent = defaultNotFoundContent,
       customizePrefixCls,
       className,
@@ -77,24 +81,38 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     const [unControlledValue, setUnControlledValue] = useState(defaultValue);
     const isControlled = !isNil(controlledValue);
     const value = isControlled ? controlledValue : unControlledValue;
-    const [isFocused, setFocused] = useState(false);
-    const [_visible, _setVisible] = useState(false);
+    const [tempValue, setTempValue] = useState<React.ReactText[]>([]);
+    const [isFocused, setFocused] = useState<boolean>(false);
+    const [_visible, _setVisible] = useState<boolean>(false);
     const visible = isNil(dropDownVisible) ? _visible : dropDownVisible;
     const setVisbile = isNil(onDropDownVisibleChange) ? _setVisible : onDropDownVisibleChange;
     const [input, setInput] = useState('');
     const selectRef = useRef<HTMLDivElement>(null);
+    const optionListRef = useRef<any>(null);
     const selectorRef = ref || selectRef;
-    /** merge Option & nodeOption & mergedOptionsMap */
-    const nodesToOptions = useMemo<OptionProps[]>(() => convertChildrenToData(children), [children]);
-    const { setCacheOptions, getOptionByValue, getOptionsByValue, updateGroup, hasGroup } = useCacheOptions();
-    const { flattenOptions: mergedFlattenOPtions } = useMemo(
-      () => handleOptions([...options, ...nodesToOptions], setCacheOptions, updateGroup),
-      [nodesToOptions, options, setCacheOptions, updateGroup]
-    );
+    const isFooter: boolean = useMemo(() => multiple && useFooter, [multiple, useFooter]);
+    const isMode: boolean = useMemo(() => multiple && !!mode, [multiple, mode]);
+    const isUseAll: boolean = useMemo(() => multiple && !!useAll, [multiple, useAll]);
 
-    const clearInput = () => {
-      setInput('');
-    };
+    // keydown
+    const [activeIndex, setActiveIndex] = useState<number>(0);
+    // init
+    useEffect(() => {
+      visible && setActiveIndex(0);
+    }, [visible]);
+
+    // Exhibition value (tempvalue + value);
+    const selectorValue = useMemo(() => {
+      if (Array.isArray(value)) {
+        // filter: if v in value and tempValue   no Exhibition
+        return value.concat(tempValue).filter((v) => !value.includes(v) || !tempValue.includes(v));
+      }
+      if (multiple) {
+        return tempValue;
+      }
+      return value;
+    }, [value, multiple, tempValue]);
+
     useEffect(() => {
       if (!disabled) {
         setFocused(visible);
@@ -106,7 +124,23 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [visible, disabled]);
+    /** merge Option & nodeOption & mergedOptionsMap */
+    const nodesToOptions = useMemo<OptionProps[]>(() => convertChildrenToData(children), [children]);
+    const { setCacheOptions, getOptionByValue, getOptionsByValue, updateGroup, hasGroup } = useCacheOptions();
+    const { flattenOptions: mergedFlattenOPtions } = useMemo(
+      () => handleOptions([...options, ...nodesToOptions], setCacheOptions, updateGroup),
+      [nodesToOptions, options, setCacheOptions, updateGroup]
+    );
 
+    // input change
+    const onInputChange = (_value: string) => {
+      onSearch?.(_value);
+      setInput(_value);
+    };
+    // clear
+    const clearInput = () => setInput('');
+
+    // dropdown visible
     const onVisibleChange = (optVisible: boolean) => {
       if (!disabled) {
         setVisbile(optVisible);
@@ -116,6 +150,17 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         }
       }
     };
+
+    // selector focus 失去焦点 清空temValue 且 关闭dropdown
+    const onFocusChange = (focus: boolean) => {
+      if (!disabled) {
+        setFocused(focus);
+        if (!focus) {
+          setTempValueFC([])
+        }
+      }
+    };
+
     // value other methods
     const onValueChange = (optValue: MaybeArray<string | number> | null) => {
       if (!isControlled) {
@@ -127,48 +172,81 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         onChange?.(optValue, getOptionsByValue(optValue));
       }
     };
-    const onAllChange = (optionValue: MaybeArray<string | number> | null) => {
-      onValueChange?.(optionValue);
+
+    // tempValue change methods
+    const onTempValueChange = (values: React.ReactText[]) => {
+      // value is array
+      const concatValue = isNil(value)
+        ? values
+        : values.concat(value).filter((v) => !(value as React.ReactText[])?.includes(v) || !values?.includes(v));
+      onChange?.(concatValue, getOptionsByValue(concatValue));
+      onVisibleChange(false);
+      if (!isControlled) {
+        setUnControlledValue(concatValue);
+      }
+      // clear tempValue
+      setTempValue([]);
+    };
+    const deleteValue = (optValue: React.ReactText[], v: React.ReactText) =>
+      tempValue.includes(v)
+        ? onTempValueChange(without((optValue as MaybeArray<string>) || [], v))
+        : onValueChange(without((optValue as MaybeArray<string>) || [], v));
+    const setTempValueFC = (tempvalues: React.ReactText[]) => {
+      setTempValue(tempvalues);
     };
 
-    const onListSelect = (selectedValue: string | number, option: Option) => {
+    const onListSelect = (selectedValue: React.ReactText, option: Option) => {
       if (!multiple) {
         onVisibleChange(false);
-      }
-      if (multiple) {
-        selectorRef.current?.focus();
-      } else {
         selectorRef.current?.blur();
+      } else {
+        selectorRef.current?.focus();
       }
       clearInput();
       onSelect?.(selectedValue, option);
     };
-    const onListDeselect = (selectedValue: string | number, option: Option) => {
+    const onListDeselect = (selectedValue: React.ReactText, option: Option) => {
       if (!multiple) {
         onVisibleChange(false);
-      }
-      if (multiple) {
-        selectorRef.current?.focus();
-      } else {
         selectorRef.current?.blur();
+      } else {
+        selectorRef.current?.focus();
       }
+
       onDeselect?.(selectedValue, option);
     };
-    const onOptionClick = (selectValue: string | number) => {
+
+    const onAllowClearClick = () => {
+      if (useFooter) {
+        setTempValueFC([]);
+      }
+      if (input) {
+        clearInput();
+      }
+      onValueChange(!multiple ? null : []);
+      onClear?.();
+    };
+
+    const onOptionClick = (selectValue: React.ReactText) => {
       const selectedOption = getOptionByValue(selectValue) as Option;
-      const isSelected =
-        typeof value === 'string' || typeof value === 'number' || isNull(value) || typeof value === 'undefined'
-          ? value === selectValue
-          : value.includes(selectValue);
-      if (isSelected) {
-        if (!allowDeselect) {
-          return;
+      const isTempSelected = tempValue.includes(selectValue);
+      const isSelected = !Array.isArray(value) ? value === selectValue : value.includes(selectValue);
+      if (isTempSelected) {
+        if (allowDeselect) {
+          onListDeselect(selectValue, selectedOption);
+          setTempValue((tempvalues) => (without(tempvalues, selectValue) as unknown) as [ReactText]);
         }
-        onListDeselect(selectValue, selectedOption);
-        if (Array.isArray(value)) {
-          onValueChange(without((value as MaybeArray<string>) || [], selectValue));
-        } else {
-          onValueChange(null);
+        return;
+      }
+      if (isFooter) {
+        onListSelect(selectValue, selectedOption);
+        setTempValue((tempvalues) => ([...tempvalues, selectValue] as unknown) as [ReactText]);
+        return;
+      }
+      if (isSelected) {
+        if (allowDeselect) {
+          onListDeselect(selectValue, selectedOption);
+          onValueChange(Array.isArray(value) ? without((value as MaybeArray<string>) || [], selectValue) : null);
         }
       } else {
         onListSelect(selectValue, selectedOption);
@@ -180,9 +258,10 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       }
     };
 
-    // options  extended  filtered
+    // options  extended: multiple values need extended Options
     const extendedOptions = useMemo(() => {
       const result: Option[] = [];
+
       if (Array.isArray(value) && allowCustomOption) {
         value.forEach((v) => {
           const op = getOptionByValue(v);
@@ -194,17 +273,15 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       return [...mergedFlattenOPtions, ...result];
     }, [mergedFlattenOPtions, value, getOptionByValue, allowCustomOption, hasGroup]);
 
-    const filteredOptions = useMemo(() => filter(extendedOptions, searchPredicate(input)), [
-      searchPredicate,
-      extendedOptions,
-      input,
-    ]);
-    const hasExactMatch = useMemo(() => findIndex(filteredOptions, matchPredicate(input)) > -1, [
-      matchPredicate,
-      filteredOptions,
-      input,
-    ]);
-    // flartten options
+    // search filter InputValue // match input(label === input)
+    const [filteredOptions, hasExactMatch]: [Option[], boolean] = useMemo(() => {
+      return [
+        filter(extendedOptions, searchPredicate(input)),
+        findIndex(mergedFlattenOPtions, matchPredicate(input)) > -1,
+      ];
+    }, [extendedOptions, searchPredicate, input, matchPredicate, mergedFlattenOPtions]);
+
+    // input created customOption
     const completeOptions = useMemo(
       () =>
         !!input && !hasExactMatch && allowCustomOption
@@ -212,7 +289,76 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           : filteredOptions,
       [hasExactMatch, allowCustomOption, filteredOptions, input, hasGroup]
     );
+    const flattenOptions = useMemo(() => getFlattenOptions(completeOptions, hasGroup), [completeOptions, hasGroup]);
+    
+    // arrowDown
+    const arrowDownKeyDown = () => {
+      const maxLength = isFooter ? flattenOptions.length + 1 : flattenOptions.length - 1;
+      if (activeIndex === -1) {
+        setActiveIndex(0);
+      } else {
+        setActiveIndex((active) => (active !== maxLength || 0 ? active + 1 : active));
+      }
+        
+    }
+    // // arrowUp
+    const arrowUpKeyDown = () => {
+      setActiveIndex((active) => ((active > 0) ? active - 1 : active));
+    }
+    // // enter
+    const enterKeyDown = () => {
+      const length = flattenOptions?.length || 0;
+      if (activeIndex <= length) {
+        onOptionClick?.(flattenOptions[activeIndex]?.value);
+      }
+      if (activeIndex === length ) {
+        optionListRef?.current?.onCancel()
+      }
+      if (activeIndex === length + 1) {
+        optionListRef?.current?.onConfirm()
+      }
+    }
+    // selector keyDown
+    const onSelectorKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      // event.preventDefault();
+      if (event.keyCode === 40) {
+        if(!visible){
+          onVisibleChange(true);
+        }
+        setTimeout(() => optionListRef?.current?.onFocus(), 17)
+      }
+      // tab close dropDown
+      if (event.keyCode === 9) {
+        (selectorRef as React.MutableRefObject<any>)?.current?.onBlur();
+        visible && onVisibleChange(!visible);
+      }
+      // esc close dropDown
+      if (event.keyCode === 27) {
+        (selectorRef as React.MutableRefObject<any>)?.current?.onBlur();
+        visible && onVisibleChange(!visible);
+      }
+    };
+    // optionList keydown
+    const onOptionListKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      // event.preventDefault();
+      // arrowDown
+      if (event.keyCode === 40) arrowDownKeyDown();
+      // arrowUp
+      if (event.keyCode === 38) arrowUpKeyDown();
+      // enter
+      if (event.keyCode === 13) enterKeyDown();
+      // Tab close dropDown;
+      if (event.keyCode === 9) {
+        optionListRef?.current?.onBlur();
+        visible && onVisibleChange(!visible);
+      }
+      // esc close dropDown
+      if (event.keyCode === 27) {
+        optionListRef?.current?.onBlur();
+        visible && onVisibleChange(!visible);
+      }
 
+    };
     const trigger = (
       <Selector
         size={size}
@@ -227,49 +373,57 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         ref={selectorRef}
         style={style}
         allowClear={allowClear}
-        mode="tags"
-        value={value}
+        onFocusChange={onFocusChange}
+        onSelectorKeyDown={onSelectorKeyDown}
+        mode={mode}
+        value={selectorValue}
         searchable={searchable}
-        hasExactMatch={hasExactMatch}
-        allowCustomOption={allowCustomOption}
         placeholder={placeholder}
-        onValueChange={onValueChange}
+        deleteValue={deleteValue}
+        onAllowClear={onAllowClearClick}
         optionLabelRenderer={optionLabelRenderer}
         getOptionByValue={getOptionByValue}
-        onSearch={onSearch}
-        setInput={setInput}
-        clearInput={clearInput}
-        onClear={onClear}
+        onInputChange={onInputChange}
         arrowComponent={arrowComponent}
         closeComponent={closeComponent}
       />
     );
+
     const list = (
-      <div
-        className={`${prefix}-list`}
-        style={{ width: autoWidth ? Math.max(selectorRef?.current?.clientWidth || 0, 160) : undefined }}
-      >
-        {completeOptions.length > 0 ? (
-          <OptionsList
-            multiple={multiple}
-            prefixCls={prefix}
-            selected={value}
-            mode="tags"
-            hasGroup={hasGroup}
-            groupStyle={groupStyle}
-            optionStyle={optionStyle}
-            data={(completeOptions as unknown) as Option[]}
-            labelRenderer={labelRenderer(input, prefix)}
-            onOptionClick={onOptionClick}
-            onAllChange={onAllChange}
-            height={listHeight}
-            getContainer={getContainer}
-            itemHeight={listRowHeight}
-          />
-        ) : (
-          notFoundContent
-        )}
-      </div>
+      <>
+        <OptionsList
+          ref={optionListRef}
+          multiple={multiple}
+          prefixCls={prefix}
+          selected={selectorValue}
+          isMode={isMode}
+          isUseAll={isUseAll}
+          hasGroup={hasGroup}
+          style={{ minWidth: autoWidth ? Math.max(selectorRef?.current?.clientWidth || 0, 160) : undefined }}
+          groupStyle={groupStyle}
+          optionStyle={optionStyle}
+          searchable={searchable}
+          placeholder={placeholder}
+          notFoundContent={notFoundContent}
+          data={flattenOptions as Option[]}
+          labelRenderer={labelRenderer(input, prefix)}
+          value={value}
+          tempValue={tempValue}
+          onOptionClick={onOptionClick}
+          isFooter={isFooter}
+          onValueChange={onValueChange}
+          onTempValueChange={onTempValueChange}
+          setTempValue={setTempValueFC}
+          onInputChange={onInputChange}
+          input={input}
+          height={listHeight}
+          getContainer={getContainer}
+          itemHeight={listRowHeight}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+          onOptionListKeyDown={onOptionListKeyDown}
+        />
+      </>
     );
 
     return (
@@ -282,6 +436,12 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         overlayClassName={classnames(`${prefix}-dropdown`, dropDownClassName)}
         overlayInnerStyle={dropDownStyle}
         getTooltipContainer={getContainer}
+        afterVisibleChange={(show: boolean) => {
+          if (show !== visible && isFooter) {
+            setTempValueFC([]);
+          }
+        }}
+
       >
         {trigger}
       </Dropdown>

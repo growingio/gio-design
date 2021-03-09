@@ -38,13 +38,7 @@ export default function useCacheOptions() {
       );
     }
   };
-  const setCacheOption = (option: Option) => {
-    if (!hasGroup) {
-      optionSet(cacheOptionsMap, option.value, option);
-    } else {
-      groupOptionSet(cacheOptionsMap, option.groupValue as string | number, option);
-    }
-  };
+
   const updateGroup = (value: boolean) => {
     isGroup.current = value;
   };
@@ -59,17 +53,16 @@ export default function useCacheOptions() {
   const getOptionsByValue = (optValue: MaybeArray<string | number>): MaybeArray<Option> => {
     return Array.isArray(optValue)
       ? optValue.reduce((prev: Option[], v) => {
-          const op = getOptionByValue(v);
-          if (op) {
-            prev.push(op);
-          }
-          return prev;
-        }, [])
+        const op = getOptionByValue(v);
+        if (op) {
+          prev.push(op);
+        }
+        return prev;
+      }, [])
       : getOptionByValue(optValue);
   };
   return {
     setCacheOptions,
-    setCacheOption,
     getOptionByValue,
     getOptionsByValue,
     updateGroup,

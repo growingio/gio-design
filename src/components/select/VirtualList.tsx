@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import List, { ListRef } from 'rc-virtual-list';
 import { VirtualListProps } from './interface';
 
 const defaultListRowHeight = 44;
-const defaultListHeight = 240;
+const defaultListHeight = 520;
 
 const VirtualList: React.FC<VirtualListProps> = (props) => {
   const {
@@ -14,8 +14,12 @@ const VirtualList: React.FC<VirtualListProps> = (props) => {
     data,
     virtual,
     itemKey,
+    activeIndex
   } = props;
   const Listref = useRef<ListRef>(null);
+  useEffect(() => {
+    Listref?.current?.scrollTo({index:activeIndex,offset:defaultListRowHeight * 3})
+  }, [activeIndex])
   return (
     <List
       itemKey={itemKey}
