@@ -88,7 +88,7 @@ const Sider = ({
       className={classNames(prefixCls, className, {
         [`${prefixCls}-suspend`]: !!suspendedPosition,
         [`${prefixCls}-suspend-${suspendedPosition}`]: !!suspendedPosition,
-        [`${prefixCls}-collapsed`]: localCollapsed && !suspendedPosition,
+        [`${prefixCls}-collapsed`]: localCollapsed,
         [`${prefixCls}-suspend-collapsed`]: localCollapsed && !!suspendedPosition,
       })}
       style={mergedStyle}
