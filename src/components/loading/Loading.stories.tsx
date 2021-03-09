@@ -60,6 +60,7 @@ export const Default = Template.bind({});
 Default.args = {
   loading: true,
   titlePosition: 'right',
+  autoCenter: true
 };
 
 export const Container = Template.bind({});
