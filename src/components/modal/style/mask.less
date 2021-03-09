@@ -14,32 +14,31 @@
     &-hidden {
       display: none;
     }
-  }
 
-  &.fade-enter,
-  &.fade-appear {
-    opacity: 0;
-    .fade-effect();
-    animation-play-state: paused;
-  }
+    &.fade-enter,
+    &.fade-appear {
+      opacity: 0;
+      .fade-effect();
+      animation-play-state: paused;
+    }
 
-  &.fade-leave {
-    .fade-effect();
-    animation-play-state: paused;
-  }
+    &.fade-leave {
+      .fade-effect();
+      animation-play-state: paused;
+    }
 
-  &.fade-enter&.fade-enter-active,
-  &.fade-appear&.fade-appear-active {
-    animation-name: gioModalFadeIn;
-    animation-play-state: running;
-  }
+    &.fade-enter&.fade-enter-active,
+    &.fade-appear&.fade-appear-active {
+      animation-name: gioModalFadeIn;
+      animation-play-state: running;
+    }
 
-  &.fade-leave&.fade-leave-active {
-    animation-name: gioModalFadeOut;
-    animation-play-state: running;
-  }
+    &.fade-leave&.fade-leave-active {
+      animation-name: gioModalFadeOut;
+      animation-play-state: running;
+    }
 
-  .keyframes(gioModalFadeIn; {
+    .keyframes(gioModalFadeIn; {
     0% {
       opacity: 0;
     }
@@ -48,7 +47,7 @@
     }
   });
 
-  .keyframes(gioModalFadeOut; {
+    .keyframes(gioModalFadeOut; {
     0% {
       opacity: 1;
     }
@@ -56,4 +55,5 @@
       opacity: 0;
     }
   });
+  }
 }
