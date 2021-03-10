@@ -254,7 +254,6 @@ export interface VirtualListProps {
   data: Option[];
   virtual?: boolean;
   itemKey: string | number | ((item: never) => React.ReactText);
-  activeIndex: number;
 }
 
 export interface OptionsListProps {

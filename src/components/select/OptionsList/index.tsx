@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, {LegacyRef, useCallback, useImperativeHandle, useMemo, useRef } from 'react';
 import classnames from 'classnames';
+import { ListRef } from 'rc-virtual-list';
 import VirtualList from '../VirtualList';
 import { OptionsListProps, Option } from '../interface';
 import Checkbox from '../../checkbox';
@@ -41,7 +42,7 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
 
   const selectAllRef = useRef(null);
   const OptionListRef = useRef<HTMLDivElement>(null);
-
+  const VirtualListRef = useRef<ListRef>(null);
 
   useImperativeHandle(ref, () => ({
     onConfirm: () => {
@@ -55,6 +56,9 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
     },
     onBlur: () => {
       OptionListRef?.current?.blur();
+    },
+    scrollIntoView: (index: number, offset?: number) => {
+      scrollIntoView(index, offset)
     }
     
   }));
@@ -92,7 +96,10 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
   };
   const onConfirm = useCallback(() => onTempValueChange(tempValue),[onTempValueChange, tempValue]);
   const onCancel = useCallback(() => onTempValueChange([]), [onTempValueChange]);
-  
+
+  const scrollIntoView = (index: number,offset?: number) => {
+    VirtualListRef?.current?.scrollTo({ index, offset });
+  };
   const renderAllOptions = () => {
     return (
       <div
@@ -133,10 +140,10 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
         <VirtualList
           itemKey="value"
           prefixCls={prefixCls}
+          ref={VirtualListRef}
           data={data}
           height={height}
           itemHeight={itemHeight}
-          activeIndex={activeIndex}
           {...restProps}
         >
           {(option: Option & { isSelectOptGroup: boolean}, index: number) => {

@@ -2,9 +2,7 @@ import { useCallback, useRef } from 'react';
 import { MaybeArray, Option } from '../interface';
 
 const optionSet = (map: Map<string | number, any>, key: string | number, value: Option) => {
-  if (!map.get(key)) {
-    map.set(key, value);
-  }
+  map.set(key, value)
 };
 const groupOptionSet = (map: Map<string | number, any>, key: string | number, option: Option) => {
   if (map.get(key)) {
