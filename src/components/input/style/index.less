@@ -23,7 +23,7 @@
   outline: none;
   transition: all 0.3s ease-in-out;
 
-  &:hover {
+  &:not(&--disabled):hover {
     border-color: @color-border-input-hover;
   }
 
@@ -87,6 +87,9 @@
     &:disabled {
       cursor: not-allowed;
     }
+    &-suffix {
+      padding-right: 42px;
+    }
   }
 
   &__prefix {
@@ -94,6 +97,8 @@
   }
 
   &__suffix {
+    position: absolute;
+    right: 0;
     padding-right: 16px;
   }
 
