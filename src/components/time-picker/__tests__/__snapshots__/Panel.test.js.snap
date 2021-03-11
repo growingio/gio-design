@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing Combobox props test 1`] = `false`;
+exports[`Testing Combobox props test1 1`] = `false`;
+
+exports[`Testing Combobox props test2 1`] = `false`;
+
+exports[`Testing Combobox props test3 1`] = `false`;

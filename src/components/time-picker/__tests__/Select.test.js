@@ -178,162 +178,159 @@ describe('Select', () => {
     });
   });
 
-  // describe('select to change value', () => {
-  //   it('hour correctly', async () => {
-  //     const onChange = jest.fn();
-  //     const picker = renderPicker({
-  //       onChange,
-  //     });
-  //     expect(picker.state().open).toBeFalsy();
+  describe('select to change value', () => {
+    // it('hour correctly', async () => {
+    //   const onChange = jest.fn();
+    //   const picker = renderPicker({
+    //     onChange,
+    //   });
+    //   expect(picker.state().open).toBeFalsy();
 
-  //     clickInput(picker);
+    //   clickInput(picker);
+    //   expect(picker.state().open).toBeTruthy();
+    //   matchAll(picker, '01:02:04');
+    //   clickSelectItem(picker, 0, 19);
+    //   expect(onChange).toBeCalled();
+    //   expect(onChange.mock.calls[0][0].hour()).toBe(19);
+    //   matchAll(picker, '19:02:04');
+    //   expect(picker.state().open).toBeTruthy();
+    // });
 
-  //     expect(picker.state().open).toBeTruthy();
-  //     matchAll(picker, '01:02:04');
+    // it('minute correctly', async () => {
+    //   const onChange = jest.fn();
+    //   const picker = renderPicker({
+    //     onChange,
+    //   });
+    //   expect(picker.state().open).toBeFalsy();
 
-  //     clickSelectItem(picker, 0, 19);
+    //   clickInput(picker);
 
-  //     expect(onChange).toBeCalled();
-  //     expect(onChange.mock.calls[0][0].hour()).toBe(19);
-  //     matchAll(picker, '19:02:04');
-  //     expect(picker.state().open).toBeTruthy();
-  //   });
+    //   expect(picker.state().open).toBeTruthy();
+    //   matchAll(picker, '01:02:04');
 
-  //   it('minute correctly', async () => {
-  //     const onChange = jest.fn();
-  //     const picker = renderPicker({
-  //       onChange,
-  //     });
-  //     expect(picker.state().open).toBeFalsy();
+    //   clickSelectItem(picker, 1, 19);
 
-  //     clickInput(picker);
+    //   expect(onChange).toBeCalled();
+    //   expect(onChange.mock.calls[0][0].minute()).toBe(19);
+    //   matchAll(picker, '01:19:04');
+    //   expect(picker.state().open).toBeTruthy();
+    // });
 
-  //     expect(picker.state().open).toBeTruthy();
-  //     matchAll(picker, '01:02:04');
+    // it('second correctly', async () => {
+    //   const onChange = jest.fn();
+    //   const picker = renderPicker({
+    //     onChange,
+    //   });
+    //   expect(picker.state().open).toBeFalsy();
 
-  //     clickSelectItem(picker, 1, 19);
+    //   clickInput(picker);
 
-  //     expect(onChange).toBeCalled();
-  //     expect(onChange.mock.calls[0][0].minute()).toBe(19);
-  //     matchAll(picker, '01:19:04');
-  //     expect(picker.state().open).toBeTruthy();
-  //   });
+    //   expect(picker.state().open).toBeTruthy();
+    //   matchAll(picker, '01:02:04');
 
-  //   it('second correctly', async () => {
-  //     const onChange = jest.fn();
-  //     const picker = renderPicker({
-  //       onChange,
-  //     });
-  //     expect(picker.state().open).toBeFalsy();
+    //   clickSelectItem(picker, 2, 19);
 
-  //     clickInput(picker);
+    //   expect(onChange).toBeCalled();
+    //   expect(onChange.mock.calls[0][0].second()).toBe(19);
+    //   matchAll(picker, '01:02:19');
+    //   expect(picker.state().open).toBeTruthy();
+    // });
 
-  //     expect(picker.state().open).toBeTruthy();
-  //     matchAll(picker, '01:02:04');
+    it('ampm correctly', async () => {
+      const onAmPmChange = jest.fn();
+      const picker = renderPicker({
+        onAmPmChange,
+        defaultValue: moment()
+          .hour(0)
+          .minute(0)
+          .second(0),
+        format: undefined,
+        showSecond: false,
+        use12Hours: true,
+      });
+      expect(picker.state().open).toBeFalsy();
+      clickInput(picker);
 
-  //     clickSelectItem(picker, 2, 19);
+      expect(picker.state().open).toBeTruthy();
 
-  //     expect(onChange).toBeCalled();
-  //     expect(onChange.mock.calls[0][0].second()).toBe(19);
-  //     matchAll(picker, '01:02:19');
-  //     expect(picker.state().open).toBeTruthy();
-  //   });
+      matchValue(picker, '12:00 am');
+      clickSelectItem(picker, 2, 1);
 
-  //   it('ampm correctly', async () => {
-  //     const onAmPmChange = jest.fn();
-  //     const picker = renderPicker({
-  //       onAmPmChange,
-  //       defaultValue: moment()
-  //         .hour(0)
-  //         .minute(0)
-  //         .second(0),
-  //       format: undefined,
-  //       showSecond: false,
-  //       use12Hours: true,
-  //     });
-  //     expect(picker.state().open).toBeFalsy();
-  //     clickInput(picker);
+      expect(onAmPmChange).toBeCalled();
+      expect(onAmPmChange.mock.calls[0][0]).toBe('PM');
+      matchValue(picker, '12:00 pm');
+      expect(picker.state().open).toBeTruthy();
+    });
 
-  //     expect(picker.state().open).toBeTruthy();
+    // it('disabled correctly', async () => {
+    //   const onChange = jest.fn();
+    //   const picker = renderPicker({
+    //     onChange,
+    //     disabledMinutes(h) {
+    //       return [h];
+    //     },
+    //     disabledSeconds(h, m) {
+    //       return [h + (m % 60)];
+    //     },
+    //   });
+    //   expect(picker.state().open).toBeFalsy();
+    //   clickInput(picker);
 
-  //     matchValue(picker, '12:00 am');
-  //     clickSelectItem(picker, 2, 1);
+    //   expect(picker.state().open).toBeTruthy();
 
-  //     expect(onAmPmChange).toBeCalled();
-  //     expect(onAmPmChange.mock.calls[0][0]).toBe('PM');
-  //     matchValue(picker, '12:00 pm');
-  //     expect(picker.state().open).toBeTruthy();
-  //   });
+    //   matchAll(picker, '01:02:04');
 
-  //   it('disabled correctly', async () => {
-  //     const onChange = jest.fn();
-  //     const picker = renderPicker({
-  //       onChange,
-  //       disabledMinutes(h) {
-  //         return [h];
-  //       },
-  //       disabledSeconds(h, m) {
-  //         return [h + (m % 60)];
-  //       },
-  //     });
-  //     expect(picker.state().open).toBeFalsy();
-  //     clickInput(picker);
+    //   clickSelectItem(picker, 1, 1);
 
-  //     expect(picker.state().open).toBeTruthy();
+    //   expect(onChange).not.toBeCalled();
+    //   matchAll(picker, '01:02:04');
+    //   expect(picker.state().open).toBeTruthy();
 
-  //     matchAll(picker, '01:02:04');
+    //   clickSelectItem(picker, 2, 3);
 
-  //     clickSelectItem(picker, 1, 1);
+    //   expect(onChange).not.toBeCalled();
+    //   matchAll(picker, '01:02:04');
+    //   expect(picker.state().open).toBeTruthy();
 
-  //     expect(onChange).not.toBeCalled();
-  //     matchAll(picker, '01:02:04');
-  //     expect(picker.state().open).toBeTruthy();
+    //   clickSelectItem(picker, 1, 7);
 
-  //     clickSelectItem(picker, 2, 3);
+    //   expect(onChange).toBeCalled();
+    //   expect(onChange.mock.calls[0][0].minute()).toBe(7);
+    //   matchAll(picker, '01:07:04');
+    //   expect(picker.state().open).toBeTruthy();
+    // });
 
-  //     expect(onChange).not.toBeCalled();
-  //     matchAll(picker, '01:02:04');
-  //     expect(picker.state().open).toBeTruthy();
+    // it('hidden correctly', async () => {
+    //   const onChange = jest.fn();
+    //   const picker = renderPicker({
+    //     onChange,
+    //     disabledHours() {
+    //       return [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23];
+    //     },
+    //     hideDisabledOptions: true,
+    //   });
+    //   expect(picker.state().open).toBeFalsy();
+    //   clickInput(picker);
+    //   expect(picker.state().open).toBeTruthy();
 
-  //     clickSelectItem(picker, 1, 7);
+    //   matchAll(picker, '01:02:04');
 
-  //     expect(onChange).toBeCalled();
-  //     expect(onChange.mock.calls[0][0].minute()).toBe(7);
-  //     matchAll(picker, '01:07:04');
-  //     expect(picker.state().open).toBeTruthy();
-  //   });
+    //   clickSelectItem(picker, 0, 3);
 
-  //   it('hidden correctly', async () => {
-  //     const onChange = jest.fn();
-  //     const picker = renderPicker({
-  //       onChange,
-  //       disabledHours() {
-  //         return [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23];
-  //       },
-  //       hideDisabledOptions: true,
-  //     });
-  //     expect(picker.state().open).toBeFalsy();
-  //     clickInput(picker);
-  //     expect(picker.state().open).toBeTruthy();
+    //   expect(onChange).toBeCalled();
+    //   expect(onChange.mock.calls[0][0].hour()).toBe(6);
+    //   matchAll(picker, '06:02:04');
+    //   expect(picker.state().open).toBeTruthy();
+    //   onChange.mockReset();
 
-  //     matchAll(picker, '01:02:04');
+    //   clickSelectItem(picker, 0, 4);
 
-  //     clickSelectItem(picker, 0, 3);
-
-  //     expect(onChange).toBeCalled();
-  //     expect(onChange.mock.calls[0][0].hour()).toBe(6);
-  //     matchAll(picker, '06:02:04');
-  //     expect(picker.state().open).toBeTruthy();
-  //     onChange.mockReset();
-
-  //     clickSelectItem(picker, 0, 4);
-
-  //     expect(onChange).toBeCalled();
-  //     expect(onChange.mock.calls[0][0].hour()).toBe(8);
-  //     matchAll(picker, '08:02:04');
-  //     expect(picker.state().open).toBeTruthy();
-  //   });
-  // });
+    //   expect(onChange).toBeCalled();
+    //   expect(onChange.mock.calls[0][0].hour()).toBe(8);
+    //   matchAll(picker, '08:02:04');
+    //   expect(picker.state().open).toBeTruthy();
+    // });
+  });
 
   describe('select in 12 hours mode', () => {
     it('renders correctly', async () => {

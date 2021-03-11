@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import moment, { Moment } from 'moment';
 import classNames from 'classnames';
 // import Header from './Header';
+import { noop } from 'lodash';
 import Combobox from './Combobox';
 import { PanelProps } from './interface';
-
-function noop() {/* ... */}
 
 function generateOptions(length: number, disabledOptions: number[], hideDisabledOptions: boolean, step = 1) {
   const arr = [];
@@ -51,7 +50,7 @@ class Panel extends Component<PanelProps, PanelState> {
         value: props.value,
       };
     }
-    return null;
+    return state
   }
 
   private onChange = (newValue: Moment) => {
