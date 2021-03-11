@@ -294,16 +294,13 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     // arrowDown
     const arrowDownKeyDown = () => {
       const maxLength = isFooter ? flattenOptions.length + 1 : flattenOptions.length - 1;
-      if (activeIndex === -1) {
-        setActiveIndex(0);
-      } else {
-        setActiveIndex((active) => (active !== maxLength || 0 ? active + 1 : active));
-      }
-        
+      setActiveIndex(activeIndex === -1 ? 0 : (active) => (active !== maxLength || 0 ? active + 1 : active))
+      optionListRef?.current?.scrollIntoView(activeIndex + 1);
     }
     // // arrowUp
     const arrowUpKeyDown = () => {
       setActiveIndex((active) => ((active > 0) ? active - 1 : active));
+      optionListRef?.current?.scrollIntoView(activeIndex - 1);
     }
     // // enter
     const enterKeyDown = () => {
@@ -347,17 +344,11 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       if (event.keyCode === 38) arrowUpKeyDown();
       // enter
       if (event.keyCode === 13) enterKeyDown();
-      // Tab close dropDown;
-      if (event.keyCode === 9) {
+      // Tab,Esc close dropDown;
+      if (event.keyCode === 9 || event.keyCode === 27) {
         optionListRef?.current?.onBlur();
         visible && onVisibleChange(!visible);
       }
-      // esc close dropDown
-      if (event.keyCode === 27) {
-        optionListRef?.current?.onBlur();
-        visible && onVisibleChange(!visible);
-      }
-
     };
     const trigger = (
       <Selector

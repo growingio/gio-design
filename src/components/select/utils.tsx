@@ -18,7 +18,10 @@ export function convertNodeToOption(node: React.ReactElement, group: group): Opt
     props: { value, children, ...restProps },
   } = node as React.ReactElement & { props: OptionProps };
   const { groupValue, groupLabel } = group;
-  return { value, label: children !== undefined ? children : value, groupValue, groupLabel, ...restProps };
+  if (groupLabel && groupLabel) {
+    return { value, label: children !== undefined ? children : value, groupValue, groupLabel, ...restProps };
+  }
+    return { value, label: children !== undefined ? children : value, ...restProps };
 }
 
 export const getFlattenOptions = (data: Option[], hasGroup: boolean) => {
@@ -76,27 +79,23 @@ export function handleOptions(
 ) {
   const isGroup = !!mergedOptions.find((v) => Object.prototype.hasOwnProperty.call(v, 'groupValue'));
   const flattenOptions: Option[] = [];
-  const optionsMap = new Map();
 
   mergedOptions.forEach((option: Option) => {
-    const { groupLabel: optionGroupLabel, groupValue: optionGroupValue, value: optionValue } = option;
+    const { groupLabel: optionGroupLabel, groupValue: optionGroupValue } = option;
     if (isGroup && !optionGroupValue && !optionGroupLabel) {
       const ungroupedOption = {
+        ...option,
         groupLabel: ungroupedOptionLabel,
         groupValue: ungroupedOptionKey,
-        ...option,
       };
-      optionsMap.set(optionValue, ungroupedOption);
       flattenOptions.push(ungroupedOption);
     } else {
-      optionsMap.set(optionValue, option);
       flattenOptions.push(option);
     }
   });
   updateGroup(isGroup);
   setCacheOptions(flattenOptions);
   return {
-    optionsMap,
     flattenOptions,
     isGroup,
   };
