@@ -60,6 +60,13 @@ describe('Input', () => {
     expect(wrapper.exists('.gio-input--large')).toBe(true);
     expect(wrapper.render()).toMatchSnapshot();
   });
+
+  it('should trigger onFocus', () => {
+    const onFocus = jest.fn();
+    const wrapper = mount(<Input onFocus={onFocus} />);
+    wrapper.find('input').simulate('focus');
+    expect(onFocus).toHaveBeenCalled();
+  });
 });
 
 describe('Input.Password', () => {
@@ -71,6 +78,13 @@ describe('Input.Password', () => {
     wrapper.find('.gio-input__suffix-icon').at(0).simulate('click');
     expect(wrapper.render()).toMatchSnapshot();
     wrapper.find('.gio-input__suffix-icon').at(0).simulate('click');
+    expect(wrapper.render()).toMatchSnapshot();
+    wrapper.unmount();
+  });
+
+  it('disabled', () => {
+    const wrapper = mount(<Input.Password value="password" disabled />);
+    wrapper.find('.gio-input__suffix-icon-disabled').at(0).simulate('click');
     expect(wrapper.render()).toMatchSnapshot();
   });
 });
@@ -128,6 +142,33 @@ describe('Input.InputNumber', () => {
     wrapper.find('input').simulate('blur');
     expect(val).toBe(1);
     wrapper.setProps({ value: val });
+  });
+
+  it('when there not onChange', () => {
+    const wrapper = mount(<Input.InputNumber />);
+    wrapper.find('input').simulate('change', { target: { value: '' } });
+    wrapper.find('.gio-input__suffix-iconGroup-top').at(0).simulate('click');
+    wrapper.find('.gio-input__suffix-iconGroup-bottom').at(0).simulate('click');
+    wrapper.find('input').simulate('blur');
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  it('should trigger onBlur', () => {
+    const onBlur = jest.fn();
+    const wrapper = mount(<Input.InputNumber value={''} onBlur={onBlur} />);
+    wrapper.find('input').simulate('blur');
+    expect(onBlur).toHaveBeenCalled();
+  });
+
+  it('customDisplay', () => {
+    const customDisplay = {
+      formatter: (value) => String(value).replace(/formatter/, '0'),
+      parser: (value) => String(value).replace(/parser/, '0'),
+    };
+    const onChange = jest.fn();
+    const wrapper = mount(<Input.InputNumber value="formatter" customDisplay={customDisplay} onChange={onChange} />);
+    wrapper.find('input').simulate('change', { target: { value: 'parser' } });
+    expect(onChange).toHaveBeenCalledWith(0);
   });
 });
 
