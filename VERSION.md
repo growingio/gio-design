@@ -1,38 +1,27 @@
-## [21.3.0](https://github.com/growingio/gio-design/compare/v21.2.4...v21.3.0) (2021-03-05)
+## [21.3.1](https://github.com/growingio/gio-design/compare/v21.3.0...v21.3.1) (2021-03-12)
 
 
 ### Bug Fixes
-* **table:**  fixed column border and box-shadow disappered ([6d14bba](https://github.com/growingio/gio-design/pull/850/commits/6d14bba48daf36f04ae24a21b6f2e5c4df210944))
-* **layout:** sider open status should have shadow ([840a2c1](https://github.com/growingio/gio-design/pull/843/commits/840a2c1781ed61618b287bbef42baf381b520a7c)) 
-* **tabnav:** when activekey is given, ink-bar will not display ([c8fb258](https://github.com/growingio/gio-design/pull/842/commits/c8fb2588f3a1ae377cbde38b58014fe754ae1501)) 
-* **loading:** loading vertical align  ([b765200](https://github.com/growingio/gio-design/pull/838/commits/b765200b9fbb49030368e0812b33b1e45f5cba01))
+
+* **date-picker:** remove range-picker border ([#866](https://github.com/growingio/gio-design/issues/866)) ([38307f6](https://github.com/growingio/gio-design/commit/38307f6cee4a56ab9e5acd78cf57211039631df7))
+* **input:** fix auto password input styles error ([#865](https://github.com/growingio/gio-design/issues/865)) ([79c7f80](https://github.com/growingio/gio-design/commit/79c7f80b59d7f737f9e3a6f6cfe54e12da3e86d1))
+* **layout:** suspend collapsed sider should have gio-layout-collapsed class ([#861](https://github.com/growingio/gio-design/issues/861)) ([7296dd4](https://github.com/growingio/gio-design/commit/7296dd4d7d3d8c2896ca3a3c3552c05847822b1a))
+* **loading:** loading case children Component rerender ([#870](https://github.com/growingio/gio-design/issues/870)) ([003ea9d](https://github.com/growingio/gio-design/commit/003ea9de0629dec0b2992c3e730266d6f11f7118))
+* **modal:** style scope error, fix mask do not disappear ([#863](https://github.com/growingio/gio-design/issues/863)) ([a73469e](https://github.com/growingio/gio-design/commit/a73469ee89f2bb01331c1b523b8cb4bf94b02636))
+* **select:** keydown scroll error ([#864](https://github.com/growingio/gio-design/issues/864)) ([cfb9a6d](https://github.com/growingio/gio-design/commit/cfb9a6d3eb833037f4f1945818fdb0543712fd96))
+
 
 ### Features
 
-* **feat:** add the lite version of list ([e3df889](https://github.com/growingio/gio-design/pull/827/commits/e3df889a1c3160d858f0793498f72949c7f4c032))
-
-## [21.2.4](https://github.com/growingio/gio-design/compare/v21.2.3...v21.2.4) (2021-02-28)
-
-
-### Bug Fixes
-
-* **cascader:** 修复逻辑判断永远不成立的问题([#824](https://github.com/growingio/gio-design/issues/824)) ([4d14b5c](https://github.com/growingio/gio-design/commit/4d14b5cbab10bc1b364c47eaf0e96bc621c8fdf1))
-* **layout, menu:** fix onCollapse called logic; add z-index on submenu ([#825](https://github.com/growingio/gio-design/issues/825)) ([fcad655](https://github.com/growingio/gio-design/commit/fcad65582fac4ab3fb37a6e44ee9c22dfa83e851))
-
-### Features
-
-* **empty:** add empty component ([#818](https://github.com/growingio/gio-design/issues/818)) ([f6e3047](https://github.com/growingio/gio-design/commit/f6e3047a3a3ef27c56523e6d29b61a54c7d24daa))
+* **loading:** add autocenter props ([#862](https://github.com/growingio/gio-design/issues/862)) ([25a0e46](https://github.com/growingio/gio-design/commit/25a0e46d4036e9d9e569204889320d97be0953b9))
+* **select:** multiple all pattern and new multiple ([#852](https://github.com/growingio/gio-design/issues/852)) ([06f84d0](https://github.com/growingio/gio-design/commit/06f84d0cf687895f8b7d47378de6ce1256fcdf17))
 
 
-## [21.2.3](https://github.com/growingio/gio-design/compare/v21.2.2...v21.2.3) (2021-02-23)
+### BREAKING CHANGES
 
+* **select:** searchable:boolean -> searchable:'custom' | 'inner'
 
-### Bug Fixes
-
-* **radio:** modifies the text color of the disabled selected state([#815](https://github.com/growingio/gio-design/issues/815)) ([596700d](https://github.com/growingio/gio-design/commit/596700d852d08871fdfc9c9a50a5d190dded4b21))
-* **menu:** remove background color ([#804](https://github.com/growingio/gio-design/issues/804)) ([d405547](https://github.com/growingio/gio-design/commit/d405547460811cdfbbed50dbbfdf6e3301938c65))
-* **menu:** fix color error ([#817](https://github.com/growingio/gio-design/issues/817)) ([3e46996](https://github.com/growingio/gio-design/commit/3e46996134b39ce8cf1c55f87920afbbac1a7ba6))
-* **input, search-bar:** update the style of component ([#801](https://github.com/growingio/gio-design/issues/801)) ([87da0d7](https://github.com/growingio/gio-design/commit/87da0d734b9cdd1acb7e951eb785bba8e03d02dd))
+Co-authored-by: shiliqian <shiliqian@growingio.com>
 
 
 
