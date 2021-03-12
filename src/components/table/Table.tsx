@@ -10,6 +10,7 @@ import useFilter from './hook/useFilter';
 import usePagination from './hook/usePagination';
 import useSelection from './hook/useSelection';
 import useEllipsisTooltip from './hook/useEllipsisTooltip';
+import useCustomRules from './hook/useCustomRules';
 import Title from './Title';
 import { TableProps, ColumnsType } from './interface';
 import Empty from '../empty';
@@ -66,6 +67,7 @@ const Table = <RecordType,>(
     rowKey,
   });
   const [transformEllipsisTooltipPipeline] = useEllipsisTooltip();
+  const [transformCustomRules] = useCustomRules(prefixCls);
 
   const onTriggerStateUpdate = (reset = false, paginationState = activePaginationedState): void => {
     if (reset) {
@@ -110,6 +112,7 @@ const Table = <RecordType,>(
   ]);
 
   const composedColumns = compose(
+    transformCustomRules,
     transformEllipsisTooltipPipeline,
     transformSelectionPipeline,
     transformShowIndexPipeline

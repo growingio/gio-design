@@ -2,6 +2,7 @@ import React from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { TableProps } from '../interface';
 import Table from '../index';
+import Avatar from '../../avatar';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Base: Story<TableProps<ExampleData>> = (args) => <Table {...args} />;
@@ -39,6 +40,9 @@ const columns = [
     title: '列标题1',
     dataIndex: 'name',
     key: 'name',
+    render: (text) => {
+      return <Avatar>{text}</Avatar>;
+    }
   },
   {
     title: '列标题2',
