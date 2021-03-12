@@ -20,6 +20,14 @@ const options = values.map((value, index) => ({
   groupLabel: '应用平台',
 }));
 
+const TitleOptions = values.map((value, index) => ({
+  title: `${labels[index]}--title`,
+  value,
+  label: labels[index],
+  groupValue: 'platform',
+  groupLabel: '应用平台',
+}));
+
 const tooltipOptions = values.map((value, index) => ({
   value,
   label: labels[index],
@@ -29,6 +37,13 @@ const tooltipOptions = values.map((value, index) => ({
 const optionsWithOutGroup = values.map((value, index) => ({
   value,
   label: labels[index],
+}));
+
+const expecialGroupOptions = values.map((value, index) => ({
+  value,
+  label: labels[index],
+  groupValue: undefined,
+  groupLabel: undefined,
 }));
 
 describe('<Select /> Single Multiple options or groupOptions ', () => {
@@ -47,7 +62,6 @@ describe('<Select /> Single Multiple options or groupOptions ', () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-
   it('renders <Select.Option /> components', () => {
     const tree = renderer
       .create(
@@ -130,6 +144,25 @@ describe('<Select /> Single Multiple options or groupOptions ', () => {
     expect(document.querySelector('.gio-select-dropdown')).not.toBeNull();
     tree.find('input').simulate('change', { target: { value: 'demo' } });
     expect(document.querySelector('.gio-select-dropdown').querySelectorAll('.gio-select-list-option')).toHaveLength(1);
+    tree.unmount();
+  });
+  it('renders <Select /> expecialGroup components', () => {
+    const tree = mount(<Select options={expecialGroupOptions} />);
+    tree.simulate('click');
+    expect(document.querySelector('.gio-select-dropdown')).not.toBeNull();
+    expect(document.querySelector('.gio-select-list-group')).not.toBeNull();
+    tree.unmount();
+  });
+  it('renders <Select> renderlabel with title', () => {
+    const tree = mount(<Select options={TitleOptions} searchable="default" multiple />);
+    act(() => {
+      tree.simulate('click');
+    });
+    act(() => {
+      tree.find('input').simulate('change', { target: { value: '全部' } });
+    });
+    document.querySelector('.gio-select-dropdown .gio-select-list-option').click();
+    expect(tree.render().find('.gio-select-values-wrapper').find('.gio-tag-label').text()).toBe('全部--title');
     tree.unmount();
   });
 });
@@ -310,6 +343,21 @@ describe('<Select allowCustomOptions multiple/> keyDown', () => {
       tree.unmount();
     });
   });
+  it('keyDown mouseEnter', () => {
+    const tree = mount(<Select multiple searchable="default" mode="tags" options={optionsWithOutGroup} />);
+    act(() => {
+      tree.simulate('click');
+    });
+    act(() => {
+      tree.find('input').simulate('change', { target: { value: '全部' } });
+    });
+    tree.mount().find('.gio-select-list-option').simulate('mouseenter');
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 13, key: 'Enter' });
+    expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(1);
+    act(() => {
+      tree.unmount();
+    });
+  });
   it('keyDown', async () => {
     const tree = mount(<Select multiple mode="tags" options={optionsWithOutGroup} />);
     act(() => {
@@ -420,8 +468,6 @@ describe('<Select allowCustomOptions multiple/> keyDown', () => {
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 13, key: 'Enter' });
-    // tree.mount().find('.gio-select-list').simulate('mouseLeave');
-    // tree.mount().find('.gio-select-list-option-container').simulate('mouseEnter');
     expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(1);
     tree.unmount();
   });
@@ -490,12 +536,21 @@ describe('<Select /> when press delete key will unselect current option', () => 
         onDeselect={onDeSelect}
       />
     );
-
-    act(() => {
-      tree.find('.gio-tag .gio-tag-closable-icon').at(0).simulate('click');
-    });
-
+    tree.find('.gio-tag .gio-tag-closable-icon').at(0).simulate('click');
     expect(tree.render().find('.gio-select-values-wrapper').children()).toHaveLength(2);
+    tree.unmount();
+  });
+  it('tempValue close by tag-icon', () => {
+    const tree = mount(<Select multiple searchable="default" mode="tags" useFooter options={optionsWithOutGroup} />);
+    tree.find('.gio-select').simulate('focus');
+    tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 13, key: 'Enter' });
+    expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(1);
+
+    tree.find('.gio-tag .gio-tag-closable-icon').at(0).simulate('click');
+    expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(0);
     tree.unmount();
   });
 });
