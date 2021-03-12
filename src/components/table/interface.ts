@@ -31,7 +31,8 @@ export interface ColumnType<RecordType> {
   filters?: string[];
   onFilter?: (value: string, record: RecordType) => boolean;
   filterDropdown?: React.ReactNode;
-  render?: (text: string, record: RecordType, index: number) => React.ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  render?: (value: any, record: RecordType, index: number) => React.ReactNode;
 }
 
 export interface ColumnGroupType<RecordType> extends Omit<ColumnType<RecordType>, 'dataIndex'> {
