@@ -23,10 +23,10 @@ interface TableContextType {
 }
 export const TableContext = createContext({ tableRef: null } as TableContextType);
 
-const Table = <RecordType,>(
+function Table <RecordType>(
   props: TableProps<RecordType>,
   ref: React.MutableRefObject<HTMLDivElement>
-): React.ReactElement => {
+): React.ReactElement {
   const {
     prefixCls: customizePrefixCls,
     title,
@@ -146,6 +146,6 @@ const Table = <RecordType,>(
       </div>
     </TableContext.Provider>
   );
-};
+}
 
 export default forwardRef(Table);

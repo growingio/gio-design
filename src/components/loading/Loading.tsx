@@ -66,21 +66,18 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
 
   const result: JSX.Element = useMemo(() => {
     if (children) {
-      if(shouldLoading){
-        return (
-          <div className={`${prefixCls}-wrapper-loading`}>
-            {loadingElementAndTitle}
-            <div
-              className={classNames(`${prefixCls}-container`, `${prefixCls}-container-blur-${blurColor}`, {
-                [`${prefixCls}-container-loading`]: shouldLoading,
-              })}
-            >
-              {children}
-            </div>
+      return (
+        <div className={`${prefixCls}-wrapper-loading`}>
+          {loadingElementAndTitle}
+          <div
+            className={classNames(`${prefixCls}-container`, `${prefixCls}-container-blur-${blurColor}`, {
+              [`${prefixCls}-container-loading`]: shouldLoading,
+            })}
+          >
+            {children}
           </div>
-        );
-      }
-      return <>{children}</>;
+        </div>
+      );
     }
     return loadingElementAndTitle;
   }, [blurColor, children, loadingElementAndTitle, prefixCls, shouldLoading]);
