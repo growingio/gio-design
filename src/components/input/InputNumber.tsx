@@ -30,9 +30,7 @@ const parseToNumber = (num: number | string): PossibleValueType => {
 
 const getValidValue = (value: string, min = MAX_SAFE_NEGATIVE_INTEGER, max = MAX_SAFE_INTEGER) => {
   let val = parseFloat(value);
-  if (Number.isNaN(val)) {
-    return value;
-  }
+
   if (val < min) {
     val = min;
   }
