@@ -19,6 +19,7 @@ const fruitOptions = new Array(100).fill(0).reduce((prev,value,index) => {
   return [...prev,{
     value:`${fruitValue[index % 7]}${index}`,
     label: `${fruitLabel[index % 7]}${index}`,
+    title:`${fruitLabel[index % 7]}${index}--title`,
     groupValue: `'platform'${index % 7}`,
     groupLabel: `'水果'${index % 7}`,
   }]

@@ -25,7 +25,7 @@ interface OptionProp {
   option: Option;
   selected: MaybeArray<string | number> | null | undefined;
   prefixCls?: string;
-  labelRenderer?: (option: Option, isGruop: false) => React.ReactNode;
+  labelRenderer: (option: Option, isGruop: false) => React.ReactNode;
   onOptionClick?: (selectedValue: string | number) => void;
   index: number;
   
@@ -63,7 +63,7 @@ const RenderGroup: React.ForwardRefRenderFunction<unknown, GroupProps> = (props,
 // ================= RenderOption =====================
 const RenderOption: React.ForwardRefRenderFunction<unknown, OptionProp> = (props, ref) => {
   const {
-    option: { value, disabled, tooltip, groupValue, groupLabel, label, title, ...restOption },
+    option: { value, disabled, tooltip, groupValue, groupLabel, label, ...restOption },
     selected,
     onOptionClick,
     labelRenderer,
@@ -74,7 +74,6 @@ const RenderOption: React.ForwardRefRenderFunction<unknown, OptionProp> = (props
     activeIndex,
     setActiveIndex,
   } = props;
-
   const isSelected =
     typeof selected === 'string' || typeof selected === 'number' || isNull(selected) || typeof selected === 'undefined'
       ? selected === value
@@ -82,20 +81,18 @@ const RenderOption: React.ForwardRefRenderFunction<unknown, OptionProp> = (props
   const onClick = () => {
       onOptionClick?.(value);
   };
-  const labelNode = labelRenderer
-    ? labelRenderer(
-        {
-          value,
-          disabled,
-          tooltip,
-          groupValue,
-          groupLabel,
-          label,
-          ...restOption,
-        },
-        false
-      )
-    : title || label;
+  const labelNode = labelRenderer(
+    {
+      value,
+      disabled,
+      tooltip,
+      groupValue,
+      groupLabel,
+      label,
+      ...restOption,
+    },
+    false
+  );
   return (
     <div ref={ref as any} className={`${prefixCls}-list-option-container`} style={optionStyle}>
       <div
