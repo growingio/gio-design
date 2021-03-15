@@ -3,18 +3,12 @@ import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { WarningCircleFilled } from '@gio-design/icons';
 import CalloutModal from '../CalloutModal';
-import { withConfirm, withInfo, withSuccess, withWarn, withError } from '../callout';
+import { withConfirm, withInfo, withSuccess, withWarn, withError, configModal } from '../callout';
 import Modal from '..';
+import { sleep } from '../../../utils/test';
+import { defaultRootPrefixCls } from '../../config-provider';
 
 const { confirm } = Modal;
-
-const globalTimeout = global.setTimeout;
-
-const sleep = async (timeout = 0) => {
-  await act(async () => {
-    await new Promise((resolve) => globalTimeout(resolve, timeout));
-  });
-};
 
 describe('<CalloutModal />', () => {
   afterEach(() => {
@@ -40,6 +34,7 @@ describe('<CalloutModal />', () => {
 
 describe('get props with type correctly.', () => {
   it('should get confirm props.', () => {
+    configModal({ prefixCls: defaultRootPrefixCls });
     const props = withConfirm({ title: 'confirm', content: 'confirm' });
     expect(props.type).toEqual('confirm');
     expect(props.showClose).toBe(true);
