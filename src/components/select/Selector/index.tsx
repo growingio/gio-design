@@ -29,7 +29,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
     allowClear,
     mode,
     value,
-    searchable,
+    searchType,
     arrowComponent,
     closeComponent,
     placeholder,
@@ -99,7 +99,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
 
   // ========================== render =======================
   const renderPlaceHolder = () => {
-    if (isEmpty(value) && (searchable === 'inner' || !input) && placeholder) {
+    if (isEmpty(value) && (searchType === 'inner' || !input) && placeholder) {
       return <div className={`${prefix}-item ${prefix}-placeholder`}>{placeholder}</div>;
     }
     return null;
@@ -133,7 +133,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
       return [...prev, curr];
     }, []);
 
-    return (searchable === 'inner' || !input) && !isNil(value) ? (
+    return (searchType === 'inner' || !input) && !isNil(value) ? (
       <div
         className={`${prefix}-item-all`}
         style={{ maxWidth: style && style.width && style?.width > 0 ? 'fill-available' : undefined }}
@@ -201,7 +201,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
         <div className={`${prefix}-selector`}>
           <div className={classnames(`${prefix}-values-wrapper`)} ref={selectValuesRef}>
             {multiple ? renderMultipleValue() : renderSingleValue()}
-            {searchable === 'default' && !disabled && (
+            {searchType === 'normal' && !disabled && (
               <SearchInput
                 prefix={prefix}
                 mode={mode}

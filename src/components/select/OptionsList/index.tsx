@@ -21,7 +21,7 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
     itemHeight,
     isUseAll,
     selected,
-    searchable,
+    searchType,
     tempValue,
     value,
     placeholder,
@@ -130,7 +130,7 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
       onMouseLeave={() => setActiveIndex(-1)}
       onKeyDown={onOptionListKeyDown}
     >
-      {searchable === 'inner' && (
+      {searchType === 'inner' && (
         <div className={classnames(`${prefixCls}-list-search-bar`, {})}>
           <SearchBar onChange={onInputChange} value={input} placeholder={placeholder} />
         </div>
