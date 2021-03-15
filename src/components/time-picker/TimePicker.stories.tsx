@@ -1,40 +1,41 @@
 import React from 'react';
+import { withDesign } from 'storybook-addon-designs';
 import { Story, Meta } from '@storybook/react/types-6-0';
-
 import TimePicker from './index';
 import { TimePickerProps } from './interface';
+import Docs from './TimePicker.mdx';
 import './style/index.less';
 
 export default {
-  title: 'Components/Functional/TimePicker',
+  title: 'Functional Components/TimePicker',
   component: TimePicker,
+  decorators: [withDesign],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=523%3A4272',
+      allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 
-export const Default1: Story<TimePickerProps> = (args) => {
-  return (
-    <div>
-      <TimePicker {...args} />
-    </div>
-   )
-}
-export const Default2: Story<TimePickerProps> = (args) => {
-  return (
-    <div>
-      <TimePicker {...args} />
-    </div>
-    )
-}
-    
+const Template: Story<TimePickerProps> = (args) => {
+  return <TimePicker {...args} />
+};
 
-Default1.args = {
+export const Default = Template.bind({});
+Default.args = {
   format: 'HH:mm',
   placeholder: '请选择时间',
   showSecond: false,
-  onChange: console.log,
 };
-Default2.args = {
-    format: 'HH:mm:ss',
-    placeholder: '请选择时间',
-    showSecond: true,
-    onChange: console.log,
-  };
+
+export const Seconds = Template.bind({});
+Seconds.args = {
+  format: 'HH:mm:ss',
+  placeholder: '请选择时间',
+  showSecond: true,
+};
