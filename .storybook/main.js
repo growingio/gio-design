@@ -3,6 +3,14 @@ const path = require('path');
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        sourceLoaderOptions: {
+          injectStoryParameters: false,
+        },
+      },
+    },
     '@storybook/addon-controls',
     '@storybook/addon-actions',
     {
@@ -10,14 +18,6 @@ module.exports = {
       options: {
         loaderOptions: {
           prettierConfig: { printWidth: 80, singleQuote: false },
-        },
-      },
-    },
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        sourceLoaderOptions: {
-          injectStoryParameters: false,
         },
       },
     },
