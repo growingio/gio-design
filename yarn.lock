@@ -12979,7 +12979,7 @@ rc-notification@^4.5.4:
     rc-motion "^2.2.0"
     rc-util "^5.0.1"
 
-rc-resize-observer@^0.2.0, rc-resize-observer@^0.2.3:
+rc-resize-observer@^0.2.0:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/rc-resize-observer/-/rc-resize-observer-0.2.3.tgz"
   dependencies:
@@ -13041,7 +13041,18 @@ rc-tree-select@4.1.2:
     rc-tree "^3.8.0"
     rc-util "^5.0.5"
 
-rc-tree@3.9.5, rc-tree@^3.8.0:
+rc-tree@4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-4.1.5.tgz#734ab1bfe835e78791be41442ca0e571147ab6fa"
+  integrity sha512-q2vjcmnBDylGZ9/ZW4F9oZMKMJdbFWC7um+DAQhZG1nqyg1iwoowbBggUDUaUOEryJP+08bpliEAYnzJXbI5xQ==
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "2.x"
+    rc-motion "^2.0.1"
+    rc-util "^5.0.0"
+    rc-virtual-list "^3.0.1"
+
+rc-tree@^3.8.0:
   version "3.9.5"
   resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-3.9.5.tgz"
   integrity sha512-ZGVl1o83hZoz971pzY9Y7yZM+f9qcia1Gym+QNyc3zMGQVshbr6CX2WZ8xUK18tTkdRSqbTXmZFnvYf1lfqT8A==
@@ -13111,16 +13122,7 @@ rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.4, rc-util@^5.0.5, rc-util@^5.0.6, 
     react-is "^16.12.0"
     shallowequal "^1.1.0"
 
-rc-virtual-list@^3.0.1, rc-virtual-list@^3.0.3:
-  version "3.0.14"
-  resolved "https://registry.yarnpkg.com/rc-virtual-list/-/rc-virtual-list-3.0.14.tgz"
-  integrity sha512-sbiPmSaDmO+2IY91eHyFYVHH8mJH0QYS1t4I5EKbqeVFgY/RZIHkwezKX/nvxULQlZHdTU6l/wh7yBxfp4QUyg==
-  dependencies:
-    classnames "^2.2.6"
-    rc-resize-observer "^0.2.3"
-    rc-util "^5.0.7"
-
-rc-virtual-list@^3.2.6:
+rc-virtual-list@^3.0.1, rc-virtual-list@^3.0.3, rc-virtual-list@^3.2.6:
   version "3.2.6"
   resolved "https://registry.npmjs.org/rc-virtual-list/-/rc-virtual-list-3.2.6.tgz#2c92a40f4425e19881b38134d6bd286a11137d2d"
   integrity sha512-8FiQLDzm3c/tMX0d62SQtKDhLH7zFlSI6pWBAPt+TUntEqd3Lz9zFAmpvTu8gkvUom/HCsDSZs4wfV4wDPWC0Q==
