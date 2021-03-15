@@ -17,7 +17,12 @@ const useModal: IUseModal = () => {
 
       let handleClose: () => void;
       const modal = (
-        <HookModal key={`hook-modal-${modalId}`} config={withConfig(config)} afterClose={() => handleClose()} />
+        <HookModal
+          key={`hook-modal-${modalId}`}
+          ref={hookModalRef}
+          config={withConfig(config)}
+          afterClose={() => handleClose()}
+        />
       );
       handleClose = patchModalElements(modal);
 
