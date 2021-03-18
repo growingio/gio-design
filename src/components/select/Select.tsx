@@ -44,7 +44,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       useFooter = false,
       allowClear = false,
       placeholder,
-      searchable,
+      searchType = 'no-search',
       disabled = false,
       bordered = true,
       allowCustomOption = false,
@@ -368,7 +368,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         onSelectorKeyDown={onSelectorKeyDown}
         mode={mode}
         value={selectorValue}
-        searchable={searchable}
+        searchType={searchType}
         placeholder={placeholder}
         deleteValue={deleteValue}
         onAllowClear={onAllowClearClick}
@@ -393,7 +393,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           style={{ minWidth: autoWidth ? Math.max(selectorRef?.current?.clientWidth || 0, 160) : undefined }}
           groupStyle={groupStyle}
           optionStyle={optionStyle}
-          searchable={searchable}
+          searchType={searchType}
           placeholder={placeholder}
           notFoundContent={notFoundContent}
           data={flattenOptions as Option[]}

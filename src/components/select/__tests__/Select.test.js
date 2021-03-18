@@ -126,7 +126,7 @@ describe('<Select /> Single Multiple options or groupOptions ', () => {
   });
 
   it('select dropdown should display correct search result', () => {
-    const tree = mount(<Select options={optionsWithOutGroup} searchable="default" />);
+    const tree = mount(<Select options={optionsWithOutGroup} searchType="normal" />);
     expect(document.querySelector('.gio-select-dropdown')).toBeNull();
     tree.simulate('click');
     expect(document.querySelector('.gio-select-dropdown')).not.toBeNull();
@@ -138,7 +138,7 @@ describe('<Select /> Single Multiple options or groupOptions ', () => {
     tree.unmount();
   });
   it('select dropdown should allowCustomOption', () => {
-    const tree = mount(<Select options={optionsWithOutGroup} searchable="default" allowCustomOption />);
+    const tree = mount(<Select options={optionsWithOutGroup} searchType="normal" allowCustomOption />);
     expect(document.querySelector('.gio-select-dropdown')).toBeNull();
     tree.simulate('click');
     expect(document.querySelector('.gio-select-dropdown')).not.toBeNull();
@@ -154,7 +154,7 @@ describe('<Select /> Single Multiple options or groupOptions ', () => {
     tree.unmount();
   });
   it('renders <Select> renderlabel with title', () => {
-    const tree = mount(<Select options={TitleOptions} searchable="default" multiple />);
+    const tree = mount(<Select options={TitleOptions} searchType="normal" multiple />);
     act(() => {
       tree.simulate('click');
     });
@@ -170,7 +170,7 @@ describe('<Select /> Single Multiple options or groupOptions ', () => {
 describe('<Select /> allowClear onClear onAllowClear', () => {
   it('allowClear onClear onAllowClear', () => {
     const tree = mount(
-      <Select options={optionsWithOutGroup} searchable="default" allowClear allowCustomOption useFooter />
+      <Select options={optionsWithOutGroup} searchType="normal" allowClear allowCustomOption useFooter />
     );
     act(() => {
       tree.simulate('click');
@@ -190,7 +190,7 @@ describe('<Select /> allowClear onClear onAllowClear', () => {
     tree.unmount();
   });
   it('allowClear', () => {
-    const tree = mount(<Select options={optionsWithOutGroup} multiple allowClear searchable="default" />);
+    const tree = mount(<Select options={optionsWithOutGroup} multiple allowClear searchType="normal" />);
     act(() => {
       tree.find('input').simulate('change', { target: { value: '全部' } });
     });
@@ -228,7 +228,7 @@ describe('<Select /> callback functions should work as expected', () => {
         onDeselect={onDeSelect}
         onSearch={onSearch}
         placeholder="请选择"
-        searchable="default"
+        searchType="normal"
         allowDeselect
         allowCustomOption
       />
@@ -253,7 +253,7 @@ describe('<Select /> callback functions should work as expected', () => {
 describe('input to be create extendedOptions', () => {
   it('create extendedOptions', () => {
     const tree = mount(
-      <Select options={optionsWithOutGroup} mode="tags" multiple searchable="default" allowCustomOption />
+      <Select options={optionsWithOutGroup} mode="tags" multiple searchType="normal" allowCustomOption />
     );
     act(() => {
       tree.simulate('click');
@@ -301,7 +301,7 @@ describe('<Select Multiple /> callback functions should work as expected on mult
         onSelect={onSelect}
         onDeselect={onDeSelect}
         onSearch={onSearch}
-        searchable="default"
+        searchType="normal"
         defaultValue={['online']}
       />
     );
@@ -344,7 +344,7 @@ describe('<Select allowCustomOptions multiple/> keyDown', () => {
     });
   });
   it('keyDown mouseEnter', () => {
-    const tree = mount(<Select multiple searchable="default" mode="tags" options={optionsWithOutGroup} />);
+    const tree = mount(<Select multiple searchType="normal" mode="tags" options={optionsWithOutGroup} />);
     act(() => {
       tree.simulate('click');
     });
@@ -492,7 +492,7 @@ describe('<Select allowCustomOptions multiple/> keyDown', () => {
 
 describe('<Select /> when press delete key will unselect current option', () => {
   it('should be able to create by enter', () => {
-    const tree = mount(<Select searchable="default" options={options} defaultValue="all" />);
+    const tree = mount(<Select searchType="normal" options={options} defaultValue="all" />);
     act(() => {
       tree.simulate('click');
     });
@@ -507,7 +507,7 @@ describe('<Select /> when press delete key will unselect current option', () => 
 });
 describe('<Select /> tooltip', () => {
   it('tooltip', () => {
-    const tree = mount(<Select searchable="default" options={tooltipOptions} />);
+    const tree = mount(<Select searchType="normal" options={tooltipOptions} />);
     act(() => {
       tree.simulate('click');
     });
@@ -529,7 +529,7 @@ describe('<Select /> when press delete key will unselect current option', () => 
     const tree = mount(
       <Select
         multiple
-        searchable="default"
+        searchType="normal"
         mode="tags"
         options={options}
         defaultValue={['all']}
@@ -541,7 +541,7 @@ describe('<Select /> when press delete key will unselect current option', () => 
     tree.unmount();
   });
   it('tempValue close by tag-icon', () => {
-    const tree = mount(<Select multiple searchable="default" mode="tags" useFooter options={optionsWithOutGroup} />);
+    const tree = mount(<Select multiple searchType="normal" mode="tags" useFooter options={optionsWithOutGroup} />);
     tree.find('.gio-select').simulate('focus');
     tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
@@ -565,7 +565,7 @@ describe('<Select /> deselect list', () => {
     const tree = mount(
       <Select
         multiple
-        searchable="default"
+        searchType="normal"
         options={optionsWithOutGroup}
         defaultValue={['all']}
         onDeselect={onDeselect}
@@ -594,7 +594,7 @@ describe('<Select /> deselect list', () => {
     const tree = mount(
       <Select
         multiple
-        searchable="default"
+        searchType="normal"
         mode="string"
         options={optionsWithOutGroup}
         useFooter
@@ -622,7 +622,7 @@ describe('<Select /> deselect list', () => {
   it('should be able to create by enter', () => {
     const tree = mount(
       <Select
-        searchable="default"
+        searchType="normal"
         options={optionsWithOutGroup}
         defaultValue="all"
         allowDeselect
@@ -653,7 +653,7 @@ describe('<Select /> deselect list', () => {
 describe('<Select /> onAllClick click all or cencel useFooter click onConfim onCencel', () => {
   it('onAllClick mode = tags', () => {
     const tree = mount(
-      <Select multiple mode="tags" options={optionsWithOutGroup} useAll useFooter searchable="default" allowClear />
+      <Select multiple mode="tags" options={optionsWithOutGroup} useAll useFooter searchType="normal" allowClear />
     );
     act(() => {
       tree.simulate('click');

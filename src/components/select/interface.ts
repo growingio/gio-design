@@ -4,7 +4,7 @@ import { SizeType } from '../config-provider/SizeContext';
 export type MaybeArray<T> = T | T[];
 
 export type modeType = 'string' | 'tags' | undefined;
-export type searchableType = 'default' | 'inner' | undefined;
+export type searchType = 'normal' | 'inner' | 'no-search';
 export interface Option {
   /**
    列表单项主要文字
@@ -86,9 +86,9 @@ export interface SelectProps {
    */
   placeholder?: string;
   /**
-   * 是否可搜索
+   * 搜索的方式
    */
-  searchable?: searchableType;
+  searchType?: searchType;
   /**
    * 是否禁用
    */
@@ -234,7 +234,7 @@ export interface SelectorProps {
   allowClear: boolean;
   mode?: modeType;
   value?: MaybeArray<string | number> | undefined | null;
-  searchable: searchableType;
+  searchType: searchType;
   placeholder?: string | undefined;
   optionLabelRenderer: (value: string | number, option?: Option) => React.ReactNode;
   getOptionByValue: (optValue: string | number) => Option;
@@ -268,7 +268,7 @@ export interface OptionsListProps {
   isUseAll?: boolean;
   data: Option[];
   hasGroup: boolean;
-  searchable: searchableType;
+  searchType: searchType;
   placeholder?: string;
   notFoundContent?: React.ReactElement;
   onTempValueChange: (tempValue: React.ReactText[]) => void;

@@ -251,6 +251,11 @@
   &-gap-10 {
     width: 10px;
   }
+  &-gap-10 + div {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
   &-button {
     margin-right: 8px;
   }
@@ -265,6 +270,7 @@
   box-sizing: border-box;
   min-width: 160px;
   padding: 16px 0 16px 8px;
+  outline: none;
 }
 
 .@{select-prefix-cls}-list-option {
