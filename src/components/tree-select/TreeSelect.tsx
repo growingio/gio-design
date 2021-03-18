@@ -20,8 +20,6 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
   public static SHOW_CHILD: typeof SHOW_CHILD = SHOW_CHILD;
 
   public static defaultProps = {
-    transitionName: 'slide-up',
-    choiceTransitionName: '',
     bordered: true,
   };
 

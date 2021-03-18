@@ -27,4 +27,18 @@ describe('Testing Combobox', () => {
       ).exists('.gio-time-picker-panel-combobox')
     ).toMatchSnapshot();
   });
+
+  it('props test2', () => {
+    const onClickMock = jest.fn();
+    expect(
+      mount(
+        <Combobox
+          defaultOpenValue={false}
+          use12Hours={false}
+          isAM
+          onAmPmChange={onClickMock}
+        />
+      ).exists('.gio-time-picker-panel-combobox')
+    ).toMatchSnapshot();
+  });
 });

@@ -2,6 +2,8 @@
 
 exports[`Testing Combobox props test 1`] = `false`;
 
+exports[`Testing Combobox props test2 1`] = `false`;
+
 exports[`Testing Combobox should match alert base snapshot. 1`] = `
 initialize {
   "0": Object {
