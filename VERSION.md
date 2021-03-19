@@ -1,27 +1,16 @@
-## [21.3.1](https://github.com/growingio/gio-design/compare/v21.3.0...v21.3.1) (2021-03-12)
+## [21.3.2](https://github.com/growingio/gio-design/compare/v21.3.1...v21.3.2) (2021-03-19)
 
 
 ### Bug Fixes
 
-* **date-picker:** remove range-picker border ([#866](https://github.com/growingio/gio-design/issues/866)) ([38307f6](https://github.com/growingio/gio-design/commit/38307f6cee4a56ab9e5acd78cf57211039631df7))
-* **input:** fix auto password input styles error ([#865](https://github.com/growingio/gio-design/issues/865)) ([79c7f80](https://github.com/growingio/gio-design/commit/79c7f80b59d7f737f9e3a6f6cfe54e12da3e86d1))
-* **layout:** suspend collapsed sider should have gio-layout-collapsed class ([#861](https://github.com/growingio/gio-design/issues/861)) ([7296dd4](https://github.com/growingio/gio-design/commit/7296dd4d7d3d8c2896ca3a3c3552c05847822b1a))
-* **loading:** loading case children Component rerender ([#870](https://github.com/growingio/gio-design/issues/870)) ([003ea9d](https://github.com/growingio/gio-design/commit/003ea9de0629dec0b2992c3e730266d6f11f7118))
-* **modal:** style scope error, fix mask do not disappear ([#863](https://github.com/growingio/gio-design/issues/863)) ([a73469e](https://github.com/growingio/gio-design/commit/a73469ee89f2bb01331c1b523b8cb4bf94b02636))
-* **select:** keydown scroll error ([#864](https://github.com/growingio/gio-design/issues/864)) ([cfb9a6d](https://github.com/growingio/gio-design/commit/cfb9a6d3eb833037f4f1945818fdb0543712fd96))
-
-
-### Features
-
-* **loading:** add autocenter props ([#862](https://github.com/growingio/gio-design/issues/862)) ([25a0e46](https://github.com/growingio/gio-design/commit/25a0e46d4036e9d9e569204889320d97be0953b9))
-* **select:** multiple all pattern and new multiple ([#852](https://github.com/growingio/gio-design/issues/852)) ([06f84d0](https://github.com/growingio/gio-design/commit/06f84d0cf687895f8b7d47378de6ce1256fcdf17))
+* **layout:** set maxWidth: auto can not cover previous value ([#885](https://github.com/growingio/gio-design/issues/885)) ([151a679](https://github.com/growingio/gio-design/commit/151a67952e1d5114ffc03dacc13c637ec1f06b80))
+* **loading:** not align center when set loading false ([#884](https://github.com/growingio/gio-design/issues/884)) ([11cbb62](https://github.com/growingio/gio-design/commit/11cbb62a296e1174e6ee8188c542cd6a7d4c45f9))
+* **modal:** add ref ([#878](https://github.com/growingio/gio-design/issues/878)) ([c85f0a9](https://github.com/growingio/gio-design/commit/c85f0a92c3010cc4a1f3c9c53a82da0ba15c087a))
+* **select:** empty style ([1a618ab](https://github.com/growingio/gio-design/commit/1a618ab8ca266ca4b985e43727b857620a85b4cb))
+* **select:** searchable => searchType ([#881](https://github.com/growingio/gio-design/issues/881)) ([ac32635](https://github.com/growingio/gio-design/commit/ac32635f5888798a41034c8272f7564f459cf0b9))
+* **tree-select:** 解决slide动画引发的bug ([#883](https://github.com/growingio/gio-design/issues/883)) ([09ab70d](https://github.com/growingio/gio-design/commit/09ab70d9daba53109a95402861b64e8c79c8da27))
 
 
 ### BREAKING CHANGES
 
-* **select:** searchable:boolean -> searchable:'custom' | 'inner'
-
-Co-authored-by: shiliqian <shiliqian@growingio.com>
-
-
-
+* **select:** delete searchable and add searchType
