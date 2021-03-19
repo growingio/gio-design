@@ -21,7 +21,7 @@ export interface LayoutContentProps extends LayoutProps {
   /**
    Content 区域的最大宽度 
   */
-  maxWidth?: number | 'auto';
+  maxWidth?: number | string;
   /*
     Content 区域的外边距
   */
