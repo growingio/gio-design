@@ -146,7 +146,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
           placement="bottom"
         >
           <span ref={selectorAllRef} className={`${prefix}-item-all-text`}>
-            {allValueLabel?.join(',')}
+            {allValueLabel?.join('，')}
           </span>
         </ToolTip>
       </div>
