@@ -37,7 +37,7 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
       window.addEventListener('resize', constantFunction);
     }
     return () => window.removeEventListener('resize', constantFunction);
-  }, [autoCenter, children, constantFunction]);
+  }, [autoCenter, children, constantFunction, shouldLoading]);
 
   const loadingElement: JSX.Element = useMemo(() => {
     if (indicator) {
