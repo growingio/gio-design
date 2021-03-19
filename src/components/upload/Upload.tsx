@@ -12,6 +12,7 @@ import {
   STATUS_UPLOADING,
   STATUS_SUCCESS,
   STATUS_ERROR,
+  STATUS_NOT_YET,
   TInputUploadType,
 } from './interface';
 import Toast from '../toast';
@@ -58,7 +59,7 @@ const Upload: React.FC<IUploadProps> = ({
   useEffect(() => {
     setFile(getEmptyFileObj(uploadedFile));
   }, [uploadedFile]);
-  
+
   const rcUploadRef = useRef(null);
   const prefixCls = usePrefixCls('upload', customPrefixCls);
 
@@ -101,7 +102,7 @@ const Upload: React.FC<IUploadProps> = ({
     };
 
     try {
-      if (fileOnSuccess.type.startsWith('image/')) {
+      if (fileOnSuccess.type?.startsWith('image/')) {
         dataUrl = await imageFile2DataUrl(fileOnSuccess);
         uploadFile.dataUrl = dataUrl;
       }
@@ -139,7 +140,7 @@ const Upload: React.FC<IUploadProps> = ({
           size: 0,
           name: '本地上传',
           type: '$empty-file',
-          status: 'notYet',
+          status: STATUS_NOT_YET,
           dataUrl: '',
         });
       } else {
@@ -192,6 +193,7 @@ const Upload: React.FC<IUploadProps> = ({
         });
       } catch (error) {
         setFile({ ...file, error });
+        onError?.(error, file);
       }
     }
   };

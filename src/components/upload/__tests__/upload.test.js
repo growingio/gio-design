@@ -1,12 +1,20 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { setup, clear } from '../tests/mock';
+import { fakeXhr } from 'nise';
+import { act } from 'react-dom/test-utils';
 import { mountTest, mountSnapshot } from '../tests/mount';
-import { dataUrl, testFile } from './utils.test';
+import { testFile, dataUrl, url as imgUrl } from '../tests/mock';
 import * as utils from '../utils';
-import { getMock } from './xhrRequest.test';
+import sleep from '../../../utils/sleep';
 import Upload from '..';
 const uploadTypes = ['button', 'input', 'card', 'avatar', 'drag'];
+import { STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
+
+let mockXhr = null;
+let currentRequest = null;
+const mockFile = new File(['foo'], 'foo.png', {
+  type: 'image/png',
+});
 
 describe('Testing Upload mount', () => {
   uploadTypes.forEach((type) => {
@@ -23,68 +31,379 @@ describe('Testing Upload props', () => {
   });
 });
 describe('Testing Upload actions', () => {
-  beforeEach(() => setup());
-  afterEach(() => clear());
-  it('return promise in beforeUpload', (done) => {
-    const wrapper = mount(
-      <Upload
-        action="http://upload.com"
-        beforeUpload={() => new Promise((resolve) => setTimeout(() => resolve('success'), 201))}
-        onSuccess={(res, file) => {
-          if (file.status !== 'uploading') {
-            done();
-          }
-        }}
-        onError={(error, file) => {
-          if (file.status !== 'uploading') {
-            done();
-          }
-        }}
-      />
-    );
-    wrapper.find('input').simulate('change', {
-      target: {
-        files: [{ file: 'foo.png' }],
-      },
-    });
+  beforeEach(() => {
+    mockXhr = fakeXhr.useFakeXMLHttpRequest();
+    mockXhr.onCreate = (request) => (currentRequest = request);
+    jest.spyOn(utils, 'fetchImageFileFromUrl').mockResolvedValue({ originFile: testFile, dataUrl });
+    jest.spyOn(utils, 'imageFile2DataUrl').mockResolvedValue(dataUrl);
   });
-  test('handleInputUpload function when uploadType = url', () => {
-    const wrapper = mount(<Upload type="input" />);
-    wrapper.find('input[type="text"]').simulate('focus');
-    wrapper.find('input[type="text"]').simulate('change', {
-      target: {
-        value:
-          'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607050385386&di=3998f4831eff5f90e97c27cad63704c3&imgtype=0&src=http%3A%2F%2Fg-search1.alicdn.com%2Fimg%2Fbao%2Fuploaded%2Fi3%2F3883849635%2FTB2eWnVhDXYBeNkHFrdXXciuVXa_%2521%25213883849635.jpg_300x300.jpg',
-      },
-    });
-    wrapper.find('input[type="text"]').simulate('keyDown', { key: 'Enter' });
+
+  afterEach(() => {
+    mockXhr.restore();
+    currentRequest = null;
+    jest.spyOn(utils, 'fetchImageFileFromUrl').mockRestore();
+    jest.spyOn(utils, 'imageFile2DataUrl').mockRestore();
   });
-  test('handleInputUpload function when uploadType = file', () => {
+
+  test('should call onStart function', (done) => {
+    expect.assertions(1);
     const props = {
-      action: 'http://upload.com',
-      data: { name: 'gio', age: '21', hobbies: ['eat', 'sleep'] },
-      file: testFile,
+      action: 'api',
+      onStart: ({ status }) => {
+        expect(status).toEqual(STATUS_UPLOADING);
+        done();
+      },
     };
-    const wrapper = mount(<Upload {...props} type="input" inputUploadType="file" />);
-    const originFile = { testFile, dataUrl };
-    const mock = jest.spyOn(utils, 'fetchImageFileFromUrl');
-    mock.mockResolvedValue(originFile);
-    XMLHttpRequest = jest.fn().mockImplementation(getMock(201));
-    wrapper.find('input[type="text"]').simulate('focus');
-    wrapper.find('input[type="text"]').simulate('keyDown', { key: 'Enter' });
+    const wrapper = mount(<Upload {...props} />);
+    wrapper.find('input').simulate('change', { target: { files: [{ file: mockFile }] } });
   });
-  test('handleInputUpload function when uploadType = file', () => {
+
+  test('should call beforeUpload function', async (done) => {
+    expect.assertions(2);
+
     const props = {
-      action: 'http://upload.com',
-      data: { name: 'gio', age: '21', hobbies: ['eat', 'sleep'] },
-      file: testFile,
+      action: 'api',
+      beforeUpload: () =>
+        new Promise((resolve) =>
+          setTimeout(() => {
+            const newMockFile = new File(['new file context'], 'new_file_name.png', { type: 'image/png' });
+            resolve(newMockFile);
+          })
+        ),
+      onSuccess: (response, { name }) => {
+        expect(response).toEqual('uploaded success');
+        expect(name).toEqual('new_file_name.png');
+        done();
+      },
     };
-    const wrapper = mount(<Upload {...props} type="input" inputUploadType="file" />);
-    const originFile = { testFile, dataUrl };
-    const mock = jest.spyOn(utils, 'fetchImageFileFromUrl');
-    mock.mockResolvedValue(originFile);
-    XMLHttpRequest = jest.fn().mockImplementation(getMock(300));
-    wrapper.find('input[type="text"]').simulate('focus');
-    wrapper.find('input[type="text"]').simulate('keyDown', { key: 'Enter' });
+
+    const wrapper = mount(<Upload {...props} />);
+    wrapper.find('input').simulate('change', { target: { files: [{ file: mockFile }] } });
+
+    await sleep(50);
+    currentRequest.respond(200, {}, 'uploaded success');
+  });
+
+  test('should call handleProgress function', async (done) => {
+    expect.assertions(1);
+
+    const props = {
+      action: 'api',
+      onProgress: (progressEvent) => {
+        expect(progressEvent.type).toEqual('progress');
+        done();
+      },
+    };
+
+    const wrapper = mount(<Upload {...props} />);
+    wrapper.find('input').simulate('change', { target: { files: [{ file: mockFile }] } });
+
+    await sleep(50);
+    currentRequest.respond(200, {}, 'uploaded success');
+  });
+
+  test('should call onSuccess function', async (done) => {
+    expect.assertions(1);
+
+    const props = {
+      action: 'api',
+      onSuccess: (response) => {
+        expect(response).toEqual('uploaded success');
+        done();
+      },
+    };
+
+    const wrapper = mount(<Upload {...props} />);
+    wrapper.find('input').simulate('change', { target: { files: [testFile] } });
+
+    await sleep(50);
+    currentRequest.respond(200, {}, 'uploaded success');
+  });
+
+  test('should happen HTTP Error', async (done) => {
+    expect.assertions(1);
+
+    const props = {
+      action: 'api',
+      onError: (event) => {
+        expect(event.type).toEqual('error');
+        done();
+      },
+    };
+
+    const wrapper = mount(<Upload {...props} />);
+    wrapper.find('input').simulate('change', { target: { files: [mockFile] } });
+
+    await sleep(50);
+    currentRequest.error();
+  });
+
+  describe('test input upload', () => {
+    test('test inputUploadType is an url', () => {
+      const props = {
+        action: 'api',
+        type: 'input',
+        inputUploadType: 'url',
+        onSuccess: (_response, file) => {
+          expect(file.status).toEqual(STATUS_SUCCESS);
+        },
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper
+        .find('input[type="text"]')
+        .simulate('change', {
+          target: {
+            value: 'url',
+          },
+        })
+        .simulate('keyDown', { key: 'Enter' });
+    });
+
+    test('test inputUploadType is a file', async (done) => {
+      expect.assertions(2);
+
+      const props = {
+        action: 'api',
+        type: 'input',
+        inputUploadType: 'file',
+        onSuccess: (response, file) => {
+          expect(response).toEqual('upload success');
+          expect(file.status).toEqual(STATUS_SUCCESS);
+          done();
+        },
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper
+        .find('input[type="text"]')
+        .simulate('change', {
+          target: {
+            value: 'url',
+          },
+        })
+        .simulate('keyDown', { key: 'Enter' });
+
+      await sleep(50);
+      currentRequest.respond(200, {}, 'upload success');
+    });
+
+    test('test inputUploadType is a file ---- when data and action is a function', async (done) => {
+      const props = {
+        action: () => 'api',
+        data: () => ({ data: 'data' }),
+        type: 'input',
+        inputUploadType: 'file',
+        onSuccess: () => {
+          done();
+        },
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper
+        .find('input[type="text"]')
+        .simulate('change', {
+          target: {
+            value: 'url',
+          },
+        })
+        .simulate('keyDown', { key: 'Enter' });
+
+      await sleep(50);
+      currentRequest.respond(200, {}, 'upload success');
+    });
+
+    test('test inputUploadType is a file ---- should happen onError function', async (done) => {
+      expect.assertions(1);
+
+      const props = {
+        action: 'api',
+        type: 'input',
+        inputUploadType: 'file',
+        onError: (event) => {
+          expect(event.type).toEqual('error');
+          done();
+        },
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper
+        .find('input[type="text"]')
+        .simulate('change', {
+          target: {
+            value: 'url',
+          },
+        })
+        .simulate('keyDown', { key: 'Enter' });
+
+      await sleep(50);
+      currentRequest.error();
+    });
+
+    test('test inputUploadType is a file ---- should happen catch', async (done) => {
+      const props = {
+        data: () => {
+          throw new Error('error');
+        },
+        type: 'input',
+        inputUploadType: 'file',
+        onError: () => {
+          done();
+        },
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper
+        .find('input[type="text"]')
+        .simulate('change', {
+          target: {
+            value: 'url',
+          },
+        })
+        .simulate('keyDown', { key: 'Enter' });
+    });
+
+    test('test inputUploadType is a file ---- should happen catch', async (done) => {
+      const props = {
+        action: 'api',
+        type: 'input',
+        inputUploadType: 'file',
+        onSuccess: () => {
+          imageFile2DataUrl.mockRestore();
+          done();
+        },
+      };
+
+      const imageFile2DataUrl = jest.spyOn(utils, 'imageFile2DataUrl').mockImplementation(() => {
+        throw new Error('error');
+      });
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper
+        .find('input[type="text"]')
+        .simulate('change', {
+          target: {
+            value: 'url',
+          },
+        })
+        .simulate('keyDown', { key: 'Enter' });
+
+      await sleep(50);
+      currentRequest.respond(200, {}, 'upload success');
+    });
+
+    test('onRemove', (done) => {
+      const onRemove = jest.fn();
+      const props = {
+        api: 'api',
+        type: 'input',
+        inputUploadType: 'url',
+        onRemove,
+        onSuccess: async () => {
+          await sleep(50);
+          wrapper.update();
+          wrapper.find('.gio-upload__input-preview').simulate('click');
+          expect(onRemove).toHaveBeenCalled();
+          done();
+        },
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper
+        .find('input[type="text"]')
+        .simulate('change', {
+          target: {
+            value: imgUrl,
+          },
+        })
+        .simulate('keyDown', { key: 'Enter' });
+    });
+
+    test('should call onRemove function ---- return false', async (done) => {
+      const onRemove = jest.fn(() => false);
+      testFile.status = STATUS_SUCCESS;
+      const props = {
+        action: 'api',
+        type: 'card',
+        onSuccess: async () => {
+          wrapper.update();
+          wrapper.find('.gio-upload__actions-icon-delete').at(0).simulate('click');
+          expect(onRemove).toHaveBeenCalled();
+          done();
+        },
+        onRemove,
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper.find('input').simulate('change', { target: { files: [testFile] } });
+      await sleep(50);
+      currentRequest.respond(200, {}, JSON.stringify({ success: true }));
+    });
+
+    test('should call onRemove function ---- return true', async (done) => {
+      const onRemove = jest.fn(() => true);
+      const props = {
+        action: 'api',
+        type: 'card',
+        onSuccess: async () => {
+          wrapper.update();
+          wrapper.find('.gio-upload__actions-icon-delete').at(0).simulate('click');
+          expect(onRemove).toHaveBeenCalled();
+          done();
+        },
+        onRemove,
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper.find('input').simulate('change', { target: { files: [testFile] } });
+      await sleep(50);
+      currentRequest.respond(200, {}, JSON.stringify({ success: true }));
+    });
+
+    test('should call onRemove function ---- return true', async (done) => {
+      const onRemove = jest.fn(() => true);
+      testFile.dataUrl = dataUrl;
+      const props = {
+        action: 'api',
+        file: testFile,
+        type: 'card',
+        onSuccess: async () => {
+          wrapper.update();
+          wrapper.find('.gio-upload__actions-icon-delete').at(0).simulate('click');
+          expect(onRemove).toHaveBeenCalled();
+          await sleep(50);
+          delete testFile.dataUrl;
+          done();
+        },
+        onRemove,
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper.find('input').simulate('change', { target: { files: [testFile] } });
+      await sleep(50);
+      currentRequest.respond(200, {}, JSON.stringify({ success: true }));
+    });
+
+    test('support drag file with hover style', () => {
+      jest.useFakeTimers();
+      const props = {
+        action: 'api',
+        type: 'drag',
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper.find('.gio-upload__drag').simulate('dragover', {
+        target: {
+          files: [{ file: 'foo.png' }],
+        },
+      });
+      act(() => {
+        jest.runAllTimers();
+      });
+      wrapper.update();
+
+      expect(wrapper.find('.gio-upload__drag').hasClass('gio-upload__drag--hover')).toEqual(true);
+      jest.useRealTimers();
+    });
   });
 });
