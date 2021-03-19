@@ -22,8 +22,8 @@ const Actions: React.FC<IActionsProps> = ({
   const deleteIconCls = classnames(`${prefixCls}__actions-icon`, `${prefixCls}__actions-icon-delete`);
 
   const handleStopPropagation = (e: any) => {
-    const targetNode = spanRef.current?.childNodes[0];
-    if (targetNode && !targetNode.contains(e.target) && file?.status === STATUS_SUCCESS) {
+    const targetNode = spanRef?.current?.childNodes[0];
+    if (targetNode && !targetNode.contains(e.target) && file.status === STATUS_SUCCESS) {
       e.stopPropagation();
     }
   };

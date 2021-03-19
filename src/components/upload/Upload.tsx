@@ -65,9 +65,9 @@ const Upload: React.FC<IUploadProps> = ({
 
   const rootCls = classnames(className, prefixCls, {
     [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--error`]: file?.status === STATUS_ERROR,
-    [`${prefixCls}--success`]: file?.status === STATUS_SUCCESS && !successBorder,
-    [`${prefixCls}--success-border`]: file?.status === STATUS_SUCCESS && successBorder,
+    [`${prefixCls}--error`]: file.status === STATUS_ERROR,
+    [`${prefixCls}--success`]: file.status === STATUS_SUCCESS && !successBorder,
+    [`${prefixCls}--success-border`]: file.status === STATUS_SUCCESS && successBorder,
   });
   const Trigger = triggerMap[type];
 
@@ -134,7 +134,7 @@ const Upload: React.FC<IUploadProps> = ({
       if (res === false) {
         return;
       }
-      if (file?.dataUrl === uploadedFile?.dataUrl) {
+      if (file.dataUrl === uploadedFile?.dataUrl) {
         setFile({
           uid: '',
           size: 0,

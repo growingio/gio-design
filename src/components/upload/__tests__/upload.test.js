@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { fakeXhr } from 'nise';
 import { act } from 'react-dom/test-utils';
 import { mountTest, mountSnapshot } from '../tests/mount';
@@ -28,6 +28,26 @@ describe('Testing Upload props', () => {
     const wrapper = mount(getUpload());
     wrapper.setProps({ disabled: true });
     expect(wrapper.exists('.gio-upload-disabled')).toBe(true);
+  });
+
+  it('should be render default image', () => {
+    const props = {
+      placeholderImg: dataUrl,
+      type: 'avatar',
+    };
+    const wrapper = shallow(<Upload {...props} />);
+    expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  it('should be render successBorder', () => {
+    const props = {
+      placeholderImg: dataUrl,
+      type: 'avatar',
+      successBorder: true,
+      openFileDialogOnClick: false,
+    };
+    const wrapper = shallow(<Upload {...props} />);
+    expect(wrapper.render()).toMatchSnapshot();
   });
 });
 describe('Testing Upload actions', () => {
@@ -129,6 +149,19 @@ describe('Testing Upload actions', () => {
         expect(event.type).toEqual('error');
         done();
       },
+    };
+
+    const wrapper = mount(<Upload {...props} />);
+    wrapper.find('input').simulate('change', { target: { files: [mockFile] } });
+
+    await sleep(50);
+    currentRequest.error();
+  });
+
+  test('should happen HTTP Error with drag', async () => {
+    const props = {
+      action: 'api',
+      type: 'drag',
     };
 
     const wrapper = mount(<Upload {...props} />);
@@ -384,6 +417,27 @@ describe('Testing Upload actions', () => {
       currentRequest.respond(200, {}, JSON.stringify({ success: true }));
     });
 
+    test('should call onRemove function ---- return true', async (done) => {
+      testFile.dataUrl = dataUrl;
+      const props = {
+        action: 'api',
+        file: testFile,
+        type: 'card',
+        onSuccess: async () => {
+          wrapper.update();
+          wrapper.find('.gio-upload__actions-icon-delete').at(0).simulate('click');
+          await sleep(50);
+          delete testFile.dataUrl;
+          done();
+        },
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper.find('input').simulate('change', { target: { files: [testFile] } });
+      await sleep(50);
+      currentRequest.respond(200, {}, JSON.stringify({ success: true }));
+    });
+
     test('support drag file with hover style', () => {
       jest.useFakeTimers();
       const props = {
@@ -393,7 +447,7 @@ describe('Testing Upload actions', () => {
 
       const wrapper = mount(<Upload {...props} />);
       wrapper.find('.gio-upload__drag').simulate('dragover', {
-        target: {
+        dataTransfer: {
           files: [{ file: 'foo.png' }],
         },
       });
@@ -404,6 +458,52 @@ describe('Testing Upload actions', () => {
 
       expect(wrapper.find('.gio-upload__drag').hasClass('gio-upload__drag--hover')).toEqual(true);
       jest.useRealTimers();
+    });
+
+    test('support darg file with image style', async (done) => {
+      const props = {
+        action: 'api',
+        type: 'drag',
+        accept: 'image/*',
+        onSuccess: () => {
+          wrapper.update();
+          expect(wrapper.find('img.gio-upload__preview')).toHaveLength(1);
+          done();
+        },
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper.find('.gio-upload__drag').simulate('drop', {
+        dataTransfer: {
+          files: [testFile],
+        },
+      });
+
+      await sleep(50);
+      currentRequest.respond(200, {}, JSON.stringify({ success: true }));
+    });
+
+    test('support darg file with file style', async (done) => {
+      const props = {
+        action: 'api',
+        type: 'drag',
+        onSuccess: () => {
+          wrapper.update();
+          console.log(wrapper.debug());
+          expect(wrapper.find('.gio-upload__preview-file')).toHaveLength(1);
+          done();
+        },
+      };
+
+      const wrapper = mount(<Upload {...props} />);
+      wrapper.find('.gio-upload__drag').simulate('drop', {
+        dataTransfer: {
+          files: [new File(['content'], 'filename.doc')],
+        },
+      });
+
+      await sleep(50);
+      currentRequest.respond(200, {}, JSON.stringify({ success: true }));
     });
   });
 });

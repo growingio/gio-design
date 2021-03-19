@@ -10,13 +10,13 @@ import { SizeContext } from '../../config-provider/SizeContext';
 const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps }: ITriggerProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
   const contextSize = useContext(SizeContext);
-  const size = contextSize ?? 'large';
+  const size = contextSize || 'large';
   const btnCls = classnames(`${prefixCls}__btn`, triggerProps?.className);
   const labelCls = classnames(`${prefixCls}__btn-label`);
 
-  const uploading = file?.status === STATUS_UPLOADING;
+  const uploading = file.status === STATUS_UPLOADING;
   let icon = null;
-  switch (file?.status) {
+  switch (file.status) {
     case STATUS_UPLOADING:
       icon = null;
       break;
@@ -33,7 +33,7 @@ const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps }: ITrigger
     className: btnCls,
   };
 
-  const label = file?.name ?? '本地上传';
+  const label = file.name || '本地上传';
   return (
     <Button {...btnProps} size={size} icon={icon} loading={uploading}>
       <span className={labelCls} title={label}>

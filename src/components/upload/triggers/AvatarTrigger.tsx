@@ -17,12 +17,12 @@ const AvatarTrigger: React.FC<ITriggerProps> = ({
   const cls = classnames(triggerProps?.className, `${prefixCls}__avatar`);
 
   return (
-    <Loading loading={file?.status === STATUS_UPLOADING} size="small" title="上传中">
+    <Loading loading={file.status === STATUS_UPLOADING} size="small" title="上传中">
       <span className={cls}>
-        <Avatar src={file?.dataUrl ?? placeholderImg} size="huge">
+        <Avatar src={file.dataUrl || placeholderImg} size="huge">
           {children as string}
         </Avatar>
-        <Actions file={file} useUpload useDelete={file?.status === STATUS_SUCCESS} onRemove={onRemove} />
+        <Actions file={file} useUpload useDelete={file.status === STATUS_SUCCESS} onRemove={onRemove} />
       </span>
     </Loading>
   );
