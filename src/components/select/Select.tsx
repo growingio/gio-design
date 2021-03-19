@@ -21,9 +21,8 @@ import {
   getFlattenOptions,
 } from './utils';
 import useCacheOptions from './hooks/useCacheOption';
-import DefaultNotFoundContent from './components/NotFoundContent';
+import Empty from '../empty';
 
-const defaultNotFoundContent = <DefaultNotFoundContent />;
 
 interface CompoundedSelect extends React.ForwardRefExoticComponent<SelectProps & React.RefAttributes<HTMLElement>> {
   Group: typeof OptGroup;
@@ -50,7 +49,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       allowCustomOption = false,
       autoWidth = true,
       allowDeselect = multiple,
-      notFoundContent = defaultNotFoundContent,
+      notFoundContent,
       customizePrefixCls,
       className,
       style,
@@ -93,7 +92,14 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     const isFooter: boolean = useMemo(() => multiple && useFooter, [multiple, useFooter]);
     const isMode: boolean = useMemo(() => multiple && !!mode, [multiple, mode]);
     const isUseAll: boolean = useMemo(() => multiple && !!useAll, [multiple, useAll]);
+    // empty
 
+    const emptyElement = (
+      <div className={`${prefix}-empty`}>
+        <Empty description="暂无选项" size='small' />
+      </div>
+    );
+    const controllednotFoundContent = notFoundContent || emptyElement;
     // keydown
     const [activeIndex, setActiveIndex] = useState<number>(0);
     // init
@@ -395,7 +401,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           optionStyle={optionStyle}
           searchType={searchType}
           placeholder={placeholder}
-          notFoundContent={notFoundContent}
+          notFoundContent={controllednotFoundContent}
           data={flattenOptions as Option[]}
           labelRenderer={labelRenderer(input, prefix)}
           value={value}

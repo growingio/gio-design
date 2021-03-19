@@ -124,7 +124,9 @@ describe('<Select /> Single Multiple options or groupOptions ', () => {
     });
     expect(tree.find(Selector).shallow().find('.gio-select-large').exists()).toBeTruthy();
   });
+});
 
+describe('select dropdown should allowCustomOption', () => {
   it('select dropdown should display correct search result', () => {
     const tree = mount(<Select options={optionsWithOutGroup} searchType="normal" />);
     expect(document.querySelector('.gio-select-dropdown')).toBeNull();
@@ -132,7 +134,7 @@ describe('<Select /> Single Multiple options or groupOptions ', () => {
     expect(document.querySelector('.gio-select-dropdown')).not.toBeNull();
     tree.find('input').simulate('change', { target: { value: 'demo' } });
 
-    expect(document.querySelector('.gio-select-dropdown').querySelector('.not-found-context')).not.toBeNull();
+    expect(document.querySelector('.gio-select-dropdown').querySelector('.gio-select-empty')).not.toBeNull();
     tree.find('input').simulate('change', { target: { value: '全' } });
     expect(document.querySelector('.gio-select-dropdown').querySelectorAll('.gio-select-list-option')).toHaveLength(1);
     tree.unmount();
