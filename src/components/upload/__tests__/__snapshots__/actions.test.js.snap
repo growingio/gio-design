@@ -15,7 +15,7 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
-              "class": "gio-icon gio-upload__actions-icon",
+              "class": "gio-icon gio-upload__actions-icon gio-upload__actions-icon-delete",
             },
             "children": Array [
               Object {

@@ -12,7 +12,7 @@ const CardTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, onRemove, pl
   const cls = classnames(triggerProps?.className, `${prefixCls}__card`);
 
   const cardPlaceholderStyle =
-    file?.status === STATUS_SUCCESS
+    file.status === STATUS_SUCCESS
       ? {}
       : {
           backgroundImage: `url(${placeholderImg})`,
@@ -20,15 +20,15 @@ const CardTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, onRemove, pl
         };
 
   return (
-    <Loading loading={file?.status === STATUS_UPLOADING} size="small" title="上传中">
+    <Loading loading={file.status === STATUS_UPLOADING} size="small" title="上传中">
       <span className={cls} style={cardPlaceholderStyle}>
-        {file?.status === STATUS_SUCCESS && (
+        {file.status === STATUS_SUCCESS && (
           <>
             <Preview file={file} size={80} />
             <Actions file={file} onRemove={onRemove} useUpload />
           </>
         )}
-        {file?.status !== STATUS_SUCCESS && <PlusOutlined className={`${prefixCls}__plus-icon`} />}
+        {file.status !== STATUS_SUCCESS && <PlusOutlined className={`${prefixCls}__plus-icon`} />}
       </span>
     </Loading>
   );

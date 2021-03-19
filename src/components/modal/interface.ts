@@ -113,7 +113,7 @@ export interface IModalProps extends ITitleProps, Omit<IFooterProps, 'useOk' | '
    `Modal` `onClose` 执行后是否卸载 `Modal` 组件
    */
   destroyOnClose?: boolean;
-  getContainer?: IStringOrHtmlElement | (() => IStringOrHtmlElement) | false;
+  getContainer?: IStringOrHtmlElement | (() => HTMLElement) | false;
   forceRender?: boolean;
   focusTriggerAfterClose?: boolean;
 }

@@ -19,7 +19,7 @@ const InputTrigger: React.FC<ITriggerProps> = ({
   const inputWrapperCls = classnames(`${prefixCls}__input`);
   const inputPreviewCls = classnames(`${prefixCls}__input-preview`);
 
-  const hideInput = file?.status === STATUS_SUCCESS || file?.status === STATUS_UPLOADING;
+  const hideInput = file.status === STATUS_SUCCESS || file.status === STATUS_UPLOADING;
 
   const handlePressEnter = () => onInputUpload(inputUploadType, url);
 
@@ -28,10 +28,10 @@ const InputTrigger: React.FC<ITriggerProps> = ({
   return (
     <span className={inputWrapperCls}>
       {hideInput ? (
-        <Loading loading={file?.status === STATUS_UPLOADING} indicator={<LoadingOutlined rotating />} title={false}>
+        <Loading loading={file.status === STATUS_UPLOADING} indicator={<LoadingOutlined rotating />} title={false}>
           <span className={inputPreviewCls} onClick={handlePreviewClick} aria-hidden="true">
-            {file?.status === STATUS_SUCCESS && <Preview file={file} />}
-            <span>{file?.name ?? 'Web Image'}</span>
+            {file.status === STATUS_SUCCESS && <Preview file={file} />}
+            <span>{file.name}</span>
           </span>
         </Loading>
       ) : (
