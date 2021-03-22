@@ -207,4 +207,10 @@ describe('Testing Table', () => {
     });
     expect(onClick).toBeCalled();
   });
+
+  it('will get Table Element instance', () => {
+    let dom;
+    mount(<Table ref={(_dom) => { dom = _dom }} />);
+    expect(dom.className).toBe('gio-table-wrapper gio-table-showHover');
+  })
 });
