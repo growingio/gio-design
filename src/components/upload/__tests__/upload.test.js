@@ -5,7 +5,7 @@ import { act } from 'react-dom/test-utils';
 import { mountTest, mountSnapshot } from '../tests/mount';
 import { testFile, dataUrl, url as imgUrl } from '../tests/mock';
 import * as utils from '../utils';
-import sleep from '../../../utils/sleep';
+import { sleep } from '../../../utils/test';
 import Upload from '..';
 const uploadTypes = ['button', 'input', 'card', 'avatar', 'drag'];
 import { STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';

@@ -31,7 +31,7 @@ class Select extends Component<SelectProps, SelectState> {
   public list: any;
 
   public root: any;
-  
+
   public constructor(s: SelectProps) {
     super(s);
     this.state = {

@@ -1,4 +1,4 @@
-import sleep from '../../../utils/sleep';
+import { sleep } from '../../../utils/test';
 import Toast from '..';
 
 describe('Toast.config', () => {
