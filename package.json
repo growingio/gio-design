@@ -28,7 +28,7 @@
     "watch": "gio-rewire lib compile --watch"
   },
   "dependencies": {
-    "@gio-design/icons": "21.1.0",
+    "@gio-design/icons": "21.3.1",
     "@gio-design/tokens": "^21.3.0",
     "@types/classnames": "^2.2.9",
     "@types/lodash": "^4.14.136",

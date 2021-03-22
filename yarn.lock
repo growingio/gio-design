@@ -2170,10 +2170,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gio-design/icons@21.1.0":
-  version "21.1.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.1.0.tgz#9c16832a1b685110be810bb0cc59208c9ba8ed43"
-  integrity sha512-T4II9qzn8O4hF9IIPLDOFdCxm8LIQJ1/muCWk8zlv8ST3VK5hFVpOy7MfZQmbj/Prg7eQw81H9hxO1aH/A3GjA==
+"@gio-design/icons@21.3.1":
+  version "21.3.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.3.1.tgz#0046ea28e4bb62b6a5dc3821a063c5167bc33b10"
+  integrity sha512-OrH4pTPo0P0uvAyr1rHp+/I2XnG0YII8JObVS3NivaKpz5azr7LWxVurK2Mv7REnX+Vxy7Efu7CFSeGsvru88w==
   dependencies:
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
@@ -3155,14 +3155,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/classnames@^2.2.11":
+"@types/classnames@^2.2.11", "@types/classnames@^2.2.9":
   version "2.2.11"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.11.tgz#2521cc86f69d15c5b90664e4829d84566052c1cf"
   integrity sha512-2koNhpWm3DgWRp5tpkiJ8JGc1xTn2q0l+jUNUE7oMKXUf5NpI9AIdC4kbjGNFBdHtcxBD18LAksoudAVhFKCjw==
-
-"@types/classnames@^2.2.9":
-  version "2.2.10"
-  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.10.tgz"
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
