@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FormItemFeedbackType } from './ItemControl';
 import Form, { FormInstance, List, useForm, FormProvider } from './Form';
-import { Props as FormProps, FormLayout, } from './interface'
+import { Props as FormProps, FormLayout } from './interface';
 import Item from './Item';
 
 const InternalForm = React.forwardRef<FormInstance, FormProps>(Form);
@@ -20,7 +20,6 @@ interface RefForm extends InternalForm {
 RefForm.FormProvider = FormProvider;
 RefForm.List = List;
 RefForm.Item = Item;
-RefForm.List = List;
 RefForm.useForm = useForm;
 
 export { FormInstance, FormLayout, FormItemFeedbackType, FormProps, List, useForm, FormProvider };

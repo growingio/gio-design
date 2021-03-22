@@ -12,7 +12,7 @@ import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 export type CascaderProps = Props;
 
-const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Props>>((props, ref) => {
+export const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Props>>((props, ref) => {
   const {
     prefixCls,
     className,
