@@ -101,21 +101,21 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
     VirtualListRef?.current?.scrollTo({ index, offset });
   };
   const renderAllOptions = () => (
-      <div
-        ref={selectAllRef}
-        className={classnames(`${prefixCls}-list-option-all`, {})}
-        onClick={(e) => {
+    <div
+      ref={selectAllRef}
+      className={classnames(`${prefixCls}-list-option-all`, {})}
+      onClick={(e) => {
           e.stopPropagation();
           onAllClick(isChecked);
         }}
-        aria-hidden="true"
-      >
-        <>
-          <Checkbox checked={isChecked} indeterminate={isIndeterminate} />
-          <span style={{ width: 10 }} />
-        </>
-        全部
-      </div>
+      aria-hidden="true"
+    >
+      <>
+        <Checkbox checked={isChecked} indeterminate={isIndeterminate} />
+        <span style={{ width: 10 }} />
+      </>
+      全部
+    </div>
     );
   return (
     <div
@@ -145,7 +145,7 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
           {...restProps}
         >
           {(option: Option & { isSelectOptGroup: boolean}, index: number) => option.isSelectOptGroup ? (
-              <ForwardRenderGroup option={option} prefixCls={prefixCls} groupStyle={groupStyle} index={index} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+            <ForwardRenderGroup option={option} prefixCls={prefixCls} groupStyle={groupStyle} />
             ) : (
               <ForwardRenderTooltip
                 tooltip={option?.tooltip}

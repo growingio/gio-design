@@ -29,6 +29,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
     arrowComponent,
     closeComponent,
     placeholder,
+    innerInputPlaceHolder,
     deleteValue,
     optionLabelRenderer,
     getOptionByValue,
@@ -45,7 +46,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
   const selectValuesRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const isEmptyValue = useMemo(() => !isEmpty(value), [value]);
-  const showClose = allowClear && (isEmptyValue || input) && isHovered;
+  const showClose = allowClear && (isEmptyValue || input) && isHovered && !disabled;
   const selectValuesWidth = selectValuesRef?.current?.getBoundingClientRect()?.width;
   const isShowTooltip = (selectValuesWidth || 0) - (selectorAllRef?.current?.clientWidth || 0) <= 0;
 
@@ -96,7 +97,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
   // ========================== render =======================
   const renderPlaceHolder = () => {
     if (isEmpty(value) && (searchType === 'inner' || !input) && placeholder) {
-      return <div className={`${prefix}-item ${prefix}-placeholder`}>{placeholder}</div>;
+      return <div className={`${prefix}-item ${prefix}-placeholder`}>{innerInputPlaceHolder || placeholder}</div>;
     }
     return null;
   };

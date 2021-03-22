@@ -16,8 +16,8 @@ const values = ['all', 'online', 'pending', 'off', 'draft'];
 const options = values.map((value, index) => ({
   value,
   label: labels[index],
-  groupValue: 'platform',
-  groupLabel: '应用平台',
+  groupValue: index % 2 === 0 ? 'platform' : 'platform1',
+  groupLabel: index % 2 === 0 ? '应用平台' : '应用平台1',
 }));
 
 const TitleOptions = values.map((value, index) => ({
@@ -353,45 +353,32 @@ describe('<Select allowCustomOptions multiple/> keyDown', () => {
     act(() => {
       tree.find('input').simulate('change', { target: { value: '全部' } });
     });
-    tree.mount().find('.gio-select-list-option').simulate('mouseenter');
-    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 13, key: 'Enter' });
+    tree.mount().find('.gio-select-list-option').simulate('mouseEnter');
+    tree.mount().find('.gio-select-list-option').simulate('click');
     expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(1);
-    act(() => {
-      tree.unmount();
-    });
+    tree.unmount();
   });
-  it('keyDown', async () => {
+  it('keyDown', (done) => {
     const tree = mount(<Select multiple mode="tags" options={optionsWithOutGroup} />);
     act(() => {
       tree.find('.gio-select').simulate('focus');
-    });
-    act(() => {
-      tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
-    });
-    expect(document.querySelector('.gio-select-dropdown')).not.toBeNull();
-    act(() => {
-      tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     });
 
-    act(() => {
-      tree.unmount();
-    });
+    tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    setTimeout(function () {
+      done();
+    }, 100);
+    expect(document.querySelector('.gio-select-dropdown')).not.toBeNull();
+    tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.unmount();
   });
   it('keyDown tab not useFooter', () => {
-    const tree = mount(<Select multiple mode="tags" options={optionsWithOutGroup} />);
-    act(() => {
-      tree.find('.gio-select').simulate('focus');
-    });
-    act(() => {
-      tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
-    });
+    const tree = mount(<Select multiple mode="tags" options={options} />);
+    tree.find('.gio-select').simulate('focus');
+    tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     expect(document.querySelector('.gio-select-dropdown')).not.toBeNull();
-    act(() => {
-      tree.find('.gio-select').simulate('keyDown', { keyCode: 9, key: 'Tab' });
-    });
-    act(() => {
-      tree.unmount();
-    });
+    tree.find('.gio-select').simulate('keyDown', { keyCode: 9, key: 'Tab' });
+    tree.unmount();
   });
   it('keyDown useFooter onConfirm', () => {
     const tree = mount(
@@ -405,11 +392,17 @@ describe('<Select allowCustomOptions multiple/> keyDown', () => {
         />
       </div>
     );
-    tree.find('.gio-select').simulate('focus');
+    act(() => {
+      tree.find('.gio-select').simulate('focus');
+    });
     tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 13, key: 'Enter' });
     expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(1);
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
@@ -432,8 +425,14 @@ describe('<Select allowCustomOptions multiple/> keyDown', () => {
         />
       </div>
     );
-    tree.find('.gio-select').simulate('focus');
+    act(() => {
+      tree.find('.gio-select').simulate('focus');
+    });
     tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 13, key: 'Enter' });
     expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(1);
@@ -443,6 +442,31 @@ describe('<Select allowCustomOptions multiple/> keyDown', () => {
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 13, key: 'Enter' });
     expect(tree.render().find('.gio-select-values-wrapper').children('.gio-tag')).toHaveLength(0);
+    tree.unmount();
+  });
+  it('keyDown up up up, down down down', () => {
+    const tree = mount(
+      <div className="gio-select-test">
+        <Select multiple mode="tags" options={options} getContainer={(node) => node.parentElement} />
+      </div>
+    );
+    act(() => {
+      tree.find('.gio-select').simulate('focus');
+    });
+    tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
+    tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 38, key: 'ArrowUp' });
     tree.unmount();
   });
 
@@ -458,7 +482,9 @@ describe('<Select allowCustomOptions multiple/> keyDown', () => {
         />
       </div>
     );
-    tree.find('.gio-select').simulate('focus');
+    act(() => {
+      tree.find('.gio-select').simulate('focus');
+    });
     tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
@@ -486,7 +512,9 @@ describe('<Select allowCustomOptions multiple/> keyDown', () => {
       </div>
     );
     tree.find('.gio-select').simulate('focus');
-    tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    act(() => {
+      tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 27, key: 'Esc' });
     tree.unmount();
   });
@@ -545,7 +573,9 @@ describe('<Select /> when press delete key will unselect current option', () => 
   it('tempValue close by tag-icon', () => {
     const tree = mount(<Select multiple searchType="normal" mode="tags" useFooter options={optionsWithOutGroup} />);
     tree.find('.gio-select').simulate('focus');
-    tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    act(() => {
+      tree.find('.gio-select').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
+    });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 40, key: 'ArrowDown' });
     tree.mount().find('.gio-select-list').simulate('keyDown', { keyCode: 13, key: 'Enter' });
