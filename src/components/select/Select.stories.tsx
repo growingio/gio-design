@@ -48,7 +48,7 @@ const DefaultArgs: SelectProps = {
   placeholder: '请选择...',
   allowClear: true,
   options: templatestOptions,
-  onDropDownVisibleChange: undefined,
+  onDropDownVisibleChange: undefined
 }
 Default.args = DefaultArgs;
 
@@ -71,6 +71,7 @@ const multipleArgs: SelectProps = {
   allowClear: true,
   placeholder: '请选择...',
   onDropDownVisibleChange: undefined,
+  useFooter:true,
   onChange: (value, options) => { console.log(value, options) },
 };
 Multiple.args = multipleArgs;

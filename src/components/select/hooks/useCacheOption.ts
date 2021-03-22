@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { MaybeArray, Option } from '../interface';
 
 const optionSet = (map: Map<string | number, any>, key: string | number, value: Option) => {
@@ -25,10 +25,9 @@ const groupOptionSet = (map: Map<string | number, any>, key: string | number, op
 export default function useCacheOptions() {
   const cacheOptions = useRef(new Map());
   const cacheOptionsMap = cacheOptions.current;
-  const isGroup = useRef(false);
-  const hasGroup = isGroup.current;
+  const [isGroup, setIsGroup] = useState(false);
   const setCacheOptions = (options: Option[]) => {
-    if (!hasGroup) {
+    if (!isGroup) {
       options.forEach((option: Option) => optionSet(cacheOptionsMap, option.value, option));
     } else {
       options.forEach((option: Option) =>
@@ -38,7 +37,9 @@ export default function useCacheOptions() {
   };
 
   const updateGroup = (value: boolean) => {
-    isGroup.current = value;
+    if (value !== isGroup) {
+      setIsGroup(value)
+    }
   };
   // value to option || options
   const getOptionByValue = useCallback(
@@ -61,6 +62,6 @@ export default function useCacheOptions() {
     getOptionsByValue,
     updateGroup,
     cacheOptionsMap,
-    hasGroup,
+    hasGroup: isGroup,
   };
 }

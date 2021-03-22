@@ -86,6 +86,10 @@ export interface SelectProps {
    */
   placeholder?: string;
   /**
+   * inner搜索模式下占位符
+   */
+  innerInputPlaceHolder?: string;
+  /**
    * 搜索的方式
    */
   searchType?: searchType;
@@ -235,7 +239,8 @@ export interface SelectorProps {
   mode?: modeType;
   value?: MaybeArray<string | number> | undefined | null;
   searchType: searchType;
-  placeholder?: string | undefined;
+  placeholder?: string;
+  innerInputPlaceHolder?: string;
   optionLabelRenderer: (value: string | number, option?: Option) => React.ReactNode;
   getOptionByValue: (optValue: string | number) => Option;
   onInputChange: (value: string) => void;

@@ -100,7 +100,6 @@ export function handleOptions(
     isGroup,
   };
 }
-
 // provide search matching hightlight;
 export const defaultLabelRenderer = (input: string, prefix: string) => (
   option: Option,

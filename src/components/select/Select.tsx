@@ -23,7 +23,6 @@ import {
 import useCacheOptions from './hooks/useCacheOption';
 import Empty from '../empty';
 
-
 interface CompoundedSelect extends React.ForwardRefExoticComponent<SelectProps & React.RefAttributes<HTMLElement>> {
   Group: typeof OptGroup;
   Option: typeof Options;
@@ -43,6 +42,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       useFooter = false,
       allowClear = false,
       placeholder,
+      innerInputPlaceHolder,
       searchType = 'no-search',
       disabled = false,
       bordered = true,
@@ -96,16 +96,12 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
     const emptyElement = (
       <div className={`${prefix}-empty`}>
-        <Empty description="暂无选项" size='small' />
+        <Empty description="暂无选项" size="small" />
       </div>
     );
     const controllednotFoundContent = notFoundContent || emptyElement;
     // keydown
-    const [activeIndex, setActiveIndex] = useState<number>(0);
-    // init
-    useEffect(() => {
-      visible && setActiveIndex(0);
-    }, [visible]);
+    const [activeIndex, setActiveIndex] = useState<number>(-1);
 
     // Exhibition value (tempvalue + value);
     const selectorValue = useMemo(() => {
@@ -121,11 +117,18 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
     useEffect(() => {
       if (!disabled) {
-        setFocused(visible);
         if (visible) {
           if (selectorRef.current) {
             selectorRef.current.focus();
           }
+          setTimeout(() => {
+            optionListRef?.current?.onFocus();
+            setFocused(visible);
+          }, 80);
+        } else {
+          setActiveIndex(-1);
+          setFocused(visible);
+          optionListRef?.current?.onBlur();
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -162,7 +165,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       if (!disabled) {
         setFocused(focus);
         if (!focus) {
-          setTempValueFC([])
+          setTempValueFC([]);
         }
       }
     };
@@ -294,39 +297,67 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       [hasExactMatch, allowCustomOption, filteredOptions, input, hasGroup]
     );
     const flattenOptions = useMemo(() => getFlattenOptions(completeOptions, hasGroup), [completeOptions, hasGroup]);
-    
+
+    const getArrowDownItemIndex = (nowIndex: number, usefooter: boolean) => {
+      const maxLength = usefooter ? flattenOptions.length + 1 : flattenOptions.length - 1;
+      let nextIndex = nowIndex < maxLength ? nowIndex + 1 : nowIndex;
+      while (nextIndex < maxLength) {
+        if ((flattenOptions[nextIndex] as any)?.isSelectOptGroup) {
+          nextIndex += 1;
+        } else {
+          return nextIndex;
+        }
+      }
+      return nextIndex;
+    };
     // arrowDown
     const arrowDownKeyDown = () => {
-      const maxLength = isFooter ? flattenOptions.length + 1 : flattenOptions.length - 1;
-      setActiveIndex(activeIndex === -1 ? 0 : (active) => (active !== maxLength || 0 ? active + 1 : active))
-      optionListRef?.current?.scrollIntoView(activeIndex + 1);
-    }
+      const nextItemIndex = getArrowDownItemIndex(activeIndex, isFooter);
+      setActiveIndex(nextItemIndex);
+      optionListRef?.current?.scrollIntoView(nextItemIndex);
+    };
+    const getArrowUpItemIndex = (nowIndex: number) => {
+      let nextIndex = nowIndex > 1 ? nowIndex - 1 : nowIndex;
+      while (nextIndex > 0) {
+        if ((flattenOptions[nextIndex] as any)?.isSelectOptGroup) {
+          nextIndex -= 1;
+        } else {
+          return nextIndex;
+        }
+      }
+      return nextIndex;
+    };
     // // arrowUp
     const arrowUpKeyDown = () => {
-      setActiveIndex((active) => ((active > 0) ? active - 1 : active));
-      optionListRef?.current?.scrollIntoView(activeIndex - 1);
-    }
+      const nextItemIndex = getArrowUpItemIndex(activeIndex);
+      setActiveIndex(nextItemIndex);
+      optionListRef?.current?.scrollIntoView(nextItemIndex);
+    };
     // // enter
     const enterKeyDown = () => {
       const length = flattenOptions?.length || 0;
-      if (activeIndex <= length) {
+      if (activeIndex <= length && !flattenOptions[activeIndex]?.disabled) {
         onOptionClick?.(flattenOptions[activeIndex]?.value);
       }
-      if (activeIndex === length ) {
-        optionListRef?.current?.onCancel()
+      if (activeIndex === length) {
+        // cancel
+        optionListRef?.current?.onCancel();
       }
       if (activeIndex === length + 1) {
-        optionListRef?.current?.onConfirm()
+        // confirm
+        optionListRef?.current?.onConfirm();
       }
-    }
+    };
     // selector keyDown
     const onSelectorKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
       // event.preventDefault();
       if (event.keyCode === 40) {
-        if(!visible){
+        if (!visible) {
           onVisibleChange(true);
+          if (activeIndex === -1) {
+            setActiveIndex(getArrowDownItemIndex(activeIndex, isFooter));
+          }
         }
-        setTimeout(() => optionListRef?.current?.onFocus(), 17)
       }
       // tab close dropDown
       if (event.keyCode === 9) {
@@ -374,6 +405,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         value={selectorValue}
         searchType={searchType}
         placeholder={placeholder}
+        innerInputPlaceHolder={innerInputPlaceHolder}
         deleteValue={deleteValue}
         onAllowClear={onAllowClearClick}
         optionLabelRenderer={optionLabelRenderer}
@@ -436,7 +468,6 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
             setTempValueFC([]);
           }
         }}
-
       >
         {trigger}
       </Dropdown>
