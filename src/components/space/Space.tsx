@@ -1,7 +1,7 @@
-import React,{ useContext, useMemo } from 'react';
+import React,{ useMemo } from 'react';
 import classnames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
-import { ConfigContext } from '../config-provider'
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Item from './Item';
 import { SpaceProps, SpaceSize } from './interface';
 import './style'
@@ -13,8 +13,6 @@ export const SpaceContext = React.createContext({
 });
 
 const Space : React.FC<SpaceProps> = props => {
-    const { getPrefixCls } = useContext(ConfigContext);
-
     const {
         size = 8,
         className,
@@ -26,7 +24,7 @@ const Space : React.FC<SpaceProps> = props => {
         autoWrap = false,
         align = 'center',
     } = props;
-
+    const prefixCls = usePrefixCls('space', customizePrefixCls);
     const [horizontalSize, verticalSize] = useMemo(() => ((Array.isArray(size) ? size : [size, size]) as [SpaceSize, SpaceSize]),[size]);
 
     const childNodes = toArray(children, { keepEmpty: true });
@@ -35,7 +33,6 @@ const Space : React.FC<SpaceProps> = props => {
         return null;
     }
 
-    const prefixCls = getPrefixCls('space', customizePrefixCls);
     const itemCls = `${prefixCls}-item`;
     const cls = classnames(
         prefixCls,
