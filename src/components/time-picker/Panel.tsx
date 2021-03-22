@@ -4,8 +4,7 @@ import classNames from 'classnames';
 // import Header from './Header';
 import Combobox from './Combobox';
 import { PanelProps } from './interface';
-
-function noop() {/* ... */}
+import { noop } from './TimePicker';
 
 function generateOptions(length: number, disabledOptions: number[], hideDisabledOptions: boolean, step = 1) {
   const arr = [];
@@ -45,13 +44,10 @@ class Panel extends Component<PanelProps, PanelState> {
   public static state = {};
 
   static getDerivedStateFromProps(props: PanelProps, state: PanelState) {
-    if ('value' in props) {
-      return {
-        ...state,
-        value: props.value,
-      };
-    }
-    return null;
+    return {
+      ...state,
+      value: props.value,
+    };
   }
 
   private onChange = (newValue: Moment) => {

@@ -11,8 +11,10 @@ export function waitAMoment(): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, 3000));
 }
 
-export const sleep = async (timeout = 0) => {
-  await act(async () => {
-    await new Promise((resolve) => global.setTimeout(resolve, timeout));
+export const sleep = (timer = 0) => {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, timer);
   });
 };
