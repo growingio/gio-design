@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-
+import { withDesign } from 'storybook-addon-designs';
+import Docs from './Input.mdx';
 import { InputProps, InputNumberProps, TextAreaProps } from './interfaces';
 import Input from './index';
 import InputNumber from './InputNumber';
@@ -9,9 +10,20 @@ import TextArea from './TextArea';
 import './style';
 
 export default {
-  title: 'Components/Basic/Input',
+  title: 'Basic Components/Input',
   component: Input,
   subcomponents: { InputNumber, Password, TextArea }, // 子组件
+  decorators: [withDesign],
+  parameters: {
+    docs: {
+      page: Docs,
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A266',
+      allowFullscreen: true,
+    },
+  },
 } as Meta;
 
 export const Default: Story<InputProps> = (args) => {
