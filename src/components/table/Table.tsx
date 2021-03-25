@@ -1,14 +1,14 @@
 import React, { useMemo, forwardRef, createContext } from 'react';
 import RcTable from 'rc-table';
 import classNames from 'classnames';
-import { cloneDeep, isUndefined, get, has, set } from 'lodash';
+import { cloneDeep, isUndefined, get, has, set, isFunction } from 'lodash';
 import { compose } from 'lodash/fp';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import useMergeRef from '../../utils/hooks/useMergeRef';
 import useSorter from './hook/useSorter';
 import useFilter from './hook/useFilter';
 import usePagination from './hook/usePagination';
-import useSelection from './hook/useSelection';
+import useSelection, { getRowKey } from './hook/useSelection';
 import useEllipsisTooltip from './hook/useEllipsisTooltip';
 import Title from './Title';
 import { TableProps, ColumnsType } from './interface';
@@ -45,6 +45,7 @@ function Table <RecordType>(
     hackRowEvent = false,
     className,
     style,
+    rowClassName = '',
     ...rest
   } = props;
   const mergedRef = useMergeRef(ref);
@@ -62,7 +63,7 @@ function Table <RecordType>(
     resetPagination,
   ] = usePagination(filtedData, pagination, showIndex);
 
-  const [transformSelectionPipeline] = useSelection(paginationedData, rowSelection, {
+  const [transformSelectionPipeline, selectedRowKeys] = useSelection(paginationedData, rowSelection, {
     rowKey,
   });
   const [transformEllipsisTooltipPipeline] = useEllipsisTooltip();
@@ -131,7 +132,8 @@ function Table <RecordType>(
         ref={mergedRef}
       >
         <Loading loading={debounceLoading}>
-          <RcTable
+          <RcTable<RecordType>
+            tableLayout='fixed'
             title={title ? () => title : undefined}
             prefixCls={prefixCls}
             columns={composedColumns}
@@ -139,6 +141,10 @@ function Table <RecordType>(
             emptyText={emptyElement}
             rowKey={rowKey}
             onRow={onHackRow}
+            rowClassName={(record, index, indent) => {
+              const rowClassNameFromOutset = isFunction(rowClassName) ? rowClassName(record, index, indent) : rowClassName;              
+              return selectedRowKeys.includes(getRowKey(record, rowKey)) ? classNames(`${prefixCls}-row-selected`, rowClassNameFromOutset) : rowClassNameFromOutset;
+            }}
             {...rest}
           />
           <PaginationComponent onTriggerStateUpdate={onTriggerStateUpdate} />

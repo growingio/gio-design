@@ -112,10 +112,8 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
 
   return (
     <div className={`${prefixCls}-column-title`}>
-      <span>
-        {column.title}
-        {renderInfo()}
-      </span>
+      {column.title}
+      {renderInfo()}
       {renderSorter()}
       {renderFilter()}
     </div>

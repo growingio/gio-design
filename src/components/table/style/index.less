@@ -22,7 +22,7 @@
       position: relative;
       width: 100%;
       font-size: @size-font-14;
-      line-height: 20px;
+      line-height: 18px;
       letter-spacing: 0;
       border-style: hidden;
       border-radius: 4px;
@@ -79,10 +79,12 @@
     padding: 16px;
     vertical-align: middle;
     background-color: @color-background-table-head;
-    border-right: 0.5px solid @color-border-table;
     border-bottom: 0.5px solid @color-border-table;
     &:first-child {
       border-left: 0.5px solid @color-border-table;
+    }
+    &:last-child {
+      border-right: 0.5px solid @color-border-table;
     }
   }
 
@@ -114,6 +116,26 @@
     &:last-child {
       border-right: 0.5px solid @color-border-table;
     }
+  }
+
+  &-thead,
+  &-tbody {
+    tr {
+      th,
+      td {
+        &:first-child {
+          padding-left: 20px;
+        }
+        &:last-child {
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+
+  &-tbody > &-row-selected > &-cell {
+    background-color: #edf2fc;
+    transition: background-color 0.3s ease-in-out;
   }
 
   &-showHover &-tbody > tr {
@@ -179,6 +201,19 @@
         pointer-events: none;
       }
     }
+
+    .@{checkbox-prefix-cls} {
+      &-wrapper {
+        height: 16px;
+        line-height: 0;
+      }
+      &-icon {
+        top: 4px;
+      }
+      &-input {
+        margin: 0;
+      }
+    }
   }
   // hack
   &-thead &-cell-fix-right-first {
@@ -198,20 +233,25 @@
   }
 
   &-column-title {
-    position: relative;
-    height: 24px;
+    display: flex;
+    align-items: center;
+    height: 18px;
     &-info {
       display: inline-block;
-      height: 14px;
-      margin-left: 6px;
-      vertical-align: -0.1em;
+      width: 16px;
+      height: 16px;
+      margin-left: 8px;
+      .gio-icon {
+        vertical-align: 0;
+      }
     }
   }
+
   &-column-filter {
-    float: right;
+    height: 100%;
+    margin-top: -6px;
+    margin-left: 4px;
     &-inner {
-      position: relative;
-      display: block;
       width: 24px;
       height: 24px;
       .@{popover-prefix-cls}-inner-content {
@@ -224,20 +264,19 @@
       }
     }
   }
+
   &-column-sorter {
-    float: right;
-    margin-left: 10px;
+    height: 100%;
+    margin-left: 8px;
     &-inner {
-      position: relative;
-      display: block;
-      width: 10px;
-      height: 24px;
+      display: inline-block;
+      width: 16px;
+      height: 100%;
       &-btn {
-        position: absolute;
-        height: 20px;
+        height: 100%;
+        padding: 0;
         background-color: transparent;
         border: none;
-        transform: translateX(-100%);
         cursor: pointer;
         &:focus {
           outline: none;
@@ -246,17 +285,24 @@
     }
 
     &-up {
-      top: 1px;
+      top: 0;
     }
     &-down {
-      bottom: -3px;
+      bottom: 9px;
     }
     &-up,
     &-down {
-      position: absolute;
+      position: relative;
+      width: 12px;
+      height: 50%;
       color: @color-background-table-arrow-normal;
       &.active {
         color: @color-background-table-arrow-active;
+      }
+      .gio-icon-svg {
+        position: relative;
+        top: -3px;
+        left: -2px;
       }
     }
   }

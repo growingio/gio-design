@@ -1,5 +1,6 @@
 import React from 'react';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { act } from 'react-test-renderer';
 import Table from '../index';
 
@@ -89,8 +90,8 @@ describe('Testing Table', () => {
   const getTable = () => <Table title="列表标题" dataSource={dataSource} columns={columns} pagination={false} />;
 
   it('should be stable', () => {
-    const wrapper = render(getTable());
-    expect(wrapper).toMatchSnapshot();
+    const { asFragment } = render(getTable());
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('should be mount, setProps, unmount with no error', () => {

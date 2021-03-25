@@ -25,8 +25,8 @@ const useSelection = <RecordType,>(
   config: {
     rowKey?: string | ((record: RecordType) => string);
   }
-): [(columns: ColumnsType<RecordType>) => ColumnsType<RecordType>] => {
-  const { onChange, selectedRowKeys, columnWidth = 50, fixed, getCheckboxProps } = rowSelection || {};
+): [(columns: ColumnsType<RecordType>) => ColumnsType<RecordType>, string[]] => {
+  const { onChange, selectedRowKeys, columnWidth = 52, fixed, getCheckboxProps } = rowSelection || {};
   const { rowKey } = config;
 
   const [localSelectedRowKeys, setLocalSelectedRowKeys] = useControlledState<string[]>(selectedRowKeys, []);
@@ -108,7 +108,7 @@ const useSelection = <RecordType,>(
     [selectionColumn, rowSelection]
   );
 
-  return [transformSelectionPipeline];
+  return [transformSelectionPipeline, localSelectedRowKeys];
 };
 
 export default useSelection;
