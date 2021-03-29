@@ -10,10 +10,11 @@ exports[`Checkbox render 1`] = `
   }
 >
   <span
+    aria-label="check-outlined"
     className="gio-icon gio-checkbox-icon gio-checkbox-icon-indeterminate gio-checkbox-icon-disabled gio-checkbox-icon-checked"
+    role="img"
   >
     <svg
-      className="gio-icon-svg"
       fill="currentColor"
       height="16px"
       style={

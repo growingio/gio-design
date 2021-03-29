@@ -2273,18 +2273,18 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@gio-design/icons@21.1.0":
-  version "21.1.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.1.0.tgz#9c16832a1b685110be810bb0cc59208c9ba8ed43"
-  integrity sha512-T4II9qzn8O4hF9IIPLDOFdCxm8LIQJ1/muCWk8zlv8ST3VK5hFVpOy7MfZQmbj/Prg7eQw81H9hxO1aH/A3GjA==
+"@gio-design/icons@^21.3.2":
+  version "21.3.2"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.3.2.tgz#7b753b07ed4814e51ff6b33be518fd270cb198bc"
+  integrity sha512-GzfOfcgYtKtz1dBN9PkF+/aTcZMTU6xESlkq8PANHSxW7AI2Z//gAbOQmF+76adD6UR8gG4k0g8WNLqjoqB/fw==
   dependencies:
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
-"@gio-design/tokens@^21.3.0":
-  version "21.3.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.3.0.tgz#5f57874cd10a6282e90fb0c26f9d8c0bc3361151"
-  integrity sha512-Z4fGw8cpaQMxOyIA43dzceMqDcgIrFpp7eMXztv9soCBTb4dfgiolA+ryS/86OwG/G3YEllNa4BpsOGDOwrygQ==
+"@gio-design/tokens@^21.3.1":
+  version "21.3.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.3.1.tgz#ff2ed50151d42f93908ea17343957100aff0f69f"
+  integrity sha512-OIj89KegIDwe5iAAubjtOuxn4TlU2XQQ7Z4K9wOJBglXfImcmTJdiAx+joX5J3PDHof2lh16/Wv3OhoLBZZmpQ==
 
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"

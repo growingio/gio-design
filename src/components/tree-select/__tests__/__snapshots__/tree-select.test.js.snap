@@ -1177,12 +1177,13 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
+                "aria-label": "down-filled",
                 "class": "gio-icon gio-select-suffix",
+                "role": "img",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon-svg",
                     "fill": "currentColor",
                     "height": "16px",
                     "viewBox": "0 0 14 14",
@@ -1352,7 +1353,6 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -1360,7 +1360,6 @@ initialize {
                     "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -1376,10 +1375,14 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
             },
           ],
@@ -1422,12 +1425,13 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
+              "aria-label": "down-filled",
               "class": "gio-icon gio-select-suffix",
+              "role": "img",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-icon-svg",
                   "fill": "currentColor",
                   "height": "16px",
                   "viewBox": "0 0 14 14",
@@ -1597,7 +1601,6 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -1605,7 +1608,6 @@ initialize {
                   "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -1621,10 +1623,14 @@ initialize {
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
           },
         ],
@@ -2101,12 +2107,13 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
+                "aria-label": "down-filled",
                 "class": "gio-icon gio-select-suffix",
+                "role": "img",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon-svg",
                     "fill": "currentColor",
                     "height": "16px",
                     "viewBox": "0 0 14 14",
@@ -2276,7 +2283,6 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -2284,7 +2290,6 @@ initialize {
                     "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -2300,10 +2305,14 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
             },
           ],
@@ -2346,12 +2355,13 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
+              "aria-label": "down-filled",
               "class": "gio-icon gio-select-suffix",
+              "role": "img",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-icon-svg",
                   "fill": "currentColor",
                   "height": "16px",
                   "viewBox": "0 0 14 14",
@@ -2521,7 +2531,6 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -2529,7 +2538,6 @@ initialize {
                   "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -2545,10 +2553,14 @@ initialize {
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
           },
         ],
@@ -3031,12 +3043,13 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
+                "aria-label": "down-filled",
                 "class": "gio-icon gio-select-suffix",
+                "role": "img",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon-svg",
                     "fill": "currentColor",
                     "height": "16px",
                     "viewBox": "0 0 14 14",
@@ -3206,7 +3219,6 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -3214,7 +3226,6 @@ initialize {
                     "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -3230,10 +3241,14 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
             },
           ],
@@ -3276,12 +3291,13 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
+              "aria-label": "down-filled",
               "class": "gio-icon gio-select-suffix",
+              "role": "img",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-icon-svg",
                   "fill": "currentColor",
                   "height": "16px",
                   "viewBox": "0 0 14 14",
@@ -3451,7 +3467,6 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -3459,7 +3474,6 @@ initialize {
                   "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -3475,10 +3489,14 @@ initialize {
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
           },
         ],
@@ -7259,12 +7277,13 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
+                "aria-label": "more-outlined",
                 "class": "gio-icon",
+                "role": "img",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon-svg",
                     "fill": "currentColor",
                     "height": "16px",
                     "viewBox": "0 0 14 14",
@@ -7274,9 +7293,10 @@ initialize {
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "more-outlined_svg__cls-2",
-                        "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
+                        "clip-rule": "evenodd",
+                        "d": "M3 7a1.5 1.5 0 11-3.001-.001A1.5 1.5 0 013 7zm5.5 0a1.5 1.5 0 11-3.001-.001A1.5 1.5 0 018.5 7zM14 7a1.5 1.5 0 11-3.002-.002A1.5 1.5 0 0114 7z",
                         "fill": "currentColor",
+                        "fill-rule": "evenodd",
                       },
                       "children": Array [],
                       "name": "path",
@@ -7286,14 +7306,16 @@ initialize {
                       "prev": null,
                       "type": "tag",
                       "x-attribsNamespace": Object {
-                        "class": undefined,
+                        "clip-rule": undefined,
                         "d": undefined,
                         "fill": undefined,
+                        "fill-rule": undefined,
                       },
                       "x-attribsPrefix": Object {
-                        "class": undefined,
+                        "clip-rule": undefined,
                         "d": undefined,
                         "fill": undefined,
+                        "fill-rule": undefined,
                       },
                     },
                   ],
@@ -7304,7 +7326,6 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -7312,7 +7333,6 @@ initialize {
                     "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -7328,10 +7348,14 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
             },
           ],
@@ -7374,12 +7398,13 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
+              "aria-label": "more-outlined",
               "class": "gio-icon",
+              "role": "img",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-icon-svg",
                   "fill": "currentColor",
                   "height": "16px",
                   "viewBox": "0 0 14 14",
@@ -7389,9 +7414,10 @@ initialize {
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "more-outlined_svg__cls-2",
-                      "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
+                      "clip-rule": "evenodd",
+                      "d": "M3 7a1.5 1.5 0 11-3.001-.001A1.5 1.5 0 013 7zm5.5 0a1.5 1.5 0 11-3.001-.001A1.5 1.5 0 018.5 7zM14 7a1.5 1.5 0 11-3.002-.002A1.5 1.5 0 0114 7z",
                       "fill": "currentColor",
+                      "fill-rule": "evenodd",
                     },
                     "children": Array [],
                     "name": "path",
@@ -7401,14 +7427,16 @@ initialize {
                     "prev": null,
                     "type": "tag",
                     "x-attribsNamespace": Object {
-                      "class": undefined,
+                      "clip-rule": undefined,
                       "d": undefined,
                       "fill": undefined,
+                      "fill-rule": undefined,
                     },
                     "x-attribsPrefix": Object {
-                      "class": undefined,
+                      "clip-rule": undefined,
                       "d": undefined,
                       "fill": undefined,
+                      "fill-rule": undefined,
                     },
                   },
                 ],
@@ -7419,7 +7447,6 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -7427,7 +7454,6 @@ initialize {
                   "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -7443,10 +7469,14 @@ initialize {
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
           },
         ],

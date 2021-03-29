@@ -59,10 +59,11 @@ exports[`<Progress /> render error progress Component 1`] = `
       className="gio-progress-icon"
     >
       <span
+        aria-label="close-circle-filled"
         className="gio-icon gio-progress-exception-icon"
+        role="img"
       >
         <svg
-          className="gio-icon-svg"
           fill="currentColor"
           height="16px"
           style={
@@ -122,10 +123,11 @@ exports[`<Progress /> render sucess progress Component 1`] = `
       className="gio-progress-icon"
     >
       <span
+        aria-label="check-circle-filled"
         className="gio-icon gio-progress-success-icon"
+        role="img"
       >
         <svg
-          className="gio-icon-svg"
           fill="currentColor"
           height="16px"
           style={

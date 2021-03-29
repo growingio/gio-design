@@ -89,7 +89,7 @@ describe('toast', () => {
 
   it('should allow custom icon', () => {
     Toast.open({ content: 'Message', icon: <CheckOutlined id="" /> });
-    expect(document.querySelectorAll('.gio-icon-svg').length).toBe(1);
+    expect(document.querySelectorAll('svg').length).toBe(1);
   });
 
   it('should have no icon', () => {

@@ -63,12 +63,13 @@ initialize {
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
+                                          "aria-label": "warning-circle-filled",
                                           "class": "gio-icon",
+                                          "role": "img",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon-svg",
                                               "clip-rule": "evenodd",
                                               "fill": "currentColor",
                                               "fill-rule": "evenodd",
@@ -109,7 +110,6 @@ initialize {
                                             "prev": null,
                                             "type": "tag",
                                             "x-attribsNamespace": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -121,7 +121,6 @@ initialize {
                                               "xmlns": "http://www.w3.org/2000/xmlns/",
                                             },
                                             "x-attribsPrefix": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -141,10 +140,14 @@ initialize {
                                         "prev": null,
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                       },
                                     ],
@@ -400,12 +403,13 @@ initialize {
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
+                                            "aria-label": "warning-circle-filled",
                                             "class": "gio-icon",
+                                            "role": "img",
                                           },
                                           "children": Array [
                                             Object {
                                               "attribs": Object {
-                                                "class": "gio-icon-svg",
                                                 "clip-rule": "evenodd",
                                                 "fill": "currentColor",
                                                 "fill-rule": "evenodd",
@@ -446,7 +450,6 @@ initialize {
                                               "prev": null,
                                               "type": "tag",
                                               "x-attribsNamespace": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -458,7 +461,6 @@ initialize {
                                                 "xmlns": "http://www.w3.org/2000/xmlns/",
                                               },
                                               "x-attribsPrefix": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -478,10 +480,14 @@ initialize {
                                           "prev": null,
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                           "x-attribsPrefix": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                         },
                                       ],
@@ -602,12 +608,13 @@ initialize {
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
+                                            "aria-label": "warning-circle-filled",
                                             "class": "gio-icon",
+                                            "role": "img",
                                           },
                                           "children": Array [
                                             Object {
                                               "attribs": Object {
-                                                "class": "gio-icon-svg",
                                                 "clip-rule": "evenodd",
                                                 "fill": "currentColor",
                                                 "fill-rule": "evenodd",
@@ -648,7 +655,6 @@ initialize {
                                               "prev": null,
                                               "type": "tag",
                                               "x-attribsNamespace": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -660,7 +666,6 @@ initialize {
                                                 "xmlns": "http://www.w3.org/2000/xmlns/",
                                               },
                                               "x-attribsPrefix": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -680,10 +685,14 @@ initialize {
                                           "prev": null,
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                           "x-attribsPrefix": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                         },
                                       ],
@@ -939,12 +948,13 @@ initialize {
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
+                                              "aria-label": "warning-circle-filled",
                                               "class": "gio-icon",
+                                              "role": "img",
                                             },
                                             "children": Array [
                                               Object {
                                                 "attribs": Object {
-                                                  "class": "gio-icon-svg",
                                                   "clip-rule": "evenodd",
                                                   "fill": "currentColor",
                                                   "fill-rule": "evenodd",
@@ -985,7 +995,6 @@ initialize {
                                                 "prev": null,
                                                 "type": "tag",
                                                 "x-attribsNamespace": Object {
-                                                  "class": undefined,
                                                   "clip-rule": undefined,
                                                   "fill": undefined,
                                                   "fill-rule": undefined,
@@ -997,7 +1006,6 @@ initialize {
                                                   "xmlns": "http://www.w3.org/2000/xmlns/",
                                                 },
                                                 "x-attribsPrefix": Object {
-                                                  "class": undefined,
                                                   "clip-rule": undefined,
                                                   "fill": undefined,
                                                   "fill-rule": undefined,
@@ -1017,10 +1025,14 @@ initialize {
                                             "prev": null,
                                             "type": "tag",
                                             "x-attribsNamespace": Object {
+                                              "aria-label": undefined,
                                               "class": undefined,
+                                              "role": undefined,
                                             },
                                             "x-attribsPrefix": Object {
+                                              "aria-label": undefined,
                                               "class": undefined,
+                                              "role": undefined,
                                             },
                                           },
                                         ],
@@ -1173,12 +1185,13 @@ initialize {
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
+                                        "aria-label": "warning-circle-filled",
                                         "class": "gio-icon",
+                                        "role": "img",
                                       },
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
-                                            "class": "gio-icon-svg",
                                             "clip-rule": "evenodd",
                                             "fill": "currentColor",
                                             "fill-rule": "evenodd",
@@ -1219,7 +1232,6 @@ initialize {
                                           "prev": null,
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
-                                            "class": undefined,
                                             "clip-rule": undefined,
                                             "fill": undefined,
                                             "fill-rule": undefined,
@@ -1231,7 +1243,6 @@ initialize {
                                             "xmlns": "http://www.w3.org/2000/xmlns/",
                                           },
                                           "x-attribsPrefix": Object {
-                                            "class": undefined,
                                             "clip-rule": undefined,
                                             "fill": undefined,
                                             "fill-rule": undefined,
@@ -1251,10 +1262,14 @@ initialize {
                                       "prev": null,
                                       "type": "tag",
                                       "x-attribsNamespace": Object {
+                                        "aria-label": undefined,
                                         "class": undefined,
+                                        "role": undefined,
                                       },
                                       "x-attribsPrefix": Object {
+                                        "aria-label": undefined,
                                         "class": undefined,
+                                        "role": undefined,
                                       },
                                     },
                                   ],
@@ -1510,12 +1525,13 @@ initialize {
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
+                                          "aria-label": "warning-circle-filled",
                                           "class": "gio-icon",
+                                          "role": "img",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon-svg",
                                               "clip-rule": "evenodd",
                                               "fill": "currentColor",
                                               "fill-rule": "evenodd",
@@ -1556,7 +1572,6 @@ initialize {
                                             "prev": null,
                                             "type": "tag",
                                             "x-attribsNamespace": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -1568,7 +1583,6 @@ initialize {
                                               "xmlns": "http://www.w3.org/2000/xmlns/",
                                             },
                                             "x-attribsPrefix": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -1588,10 +1602,14 @@ initialize {
                                         "prev": null,
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                       },
                                     ],
@@ -1712,12 +1730,13 @@ initialize {
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
+                                          "aria-label": "warning-circle-filled",
                                           "class": "gio-icon",
+                                          "role": "img",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon-svg",
                                               "clip-rule": "evenodd",
                                               "fill": "currentColor",
                                               "fill-rule": "evenodd",
@@ -1758,7 +1777,6 @@ initialize {
                                             "prev": null,
                                             "type": "tag",
                                             "x-attribsNamespace": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -1770,7 +1788,6 @@ initialize {
                                               "xmlns": "http://www.w3.org/2000/xmlns/",
                                             },
                                             "x-attribsPrefix": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -1790,10 +1807,14 @@ initialize {
                                         "prev": null,
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                       },
                                     ],
@@ -2049,12 +2070,13 @@ initialize {
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
+                                            "aria-label": "warning-circle-filled",
                                             "class": "gio-icon",
+                                            "role": "img",
                                           },
                                           "children": Array [
                                             Object {
                                               "attribs": Object {
-                                                "class": "gio-icon-svg",
                                                 "clip-rule": "evenodd",
                                                 "fill": "currentColor",
                                                 "fill-rule": "evenodd",
@@ -2095,7 +2117,6 @@ initialize {
                                               "prev": null,
                                               "type": "tag",
                                               "x-attribsNamespace": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -2107,7 +2128,6 @@ initialize {
                                                 "xmlns": "http://www.w3.org/2000/xmlns/",
                                               },
                                               "x-attribsPrefix": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -2127,10 +2147,14 @@ initialize {
                                           "prev": null,
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                           "x-attribsPrefix": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                         },
                                       ],
@@ -2303,12 +2327,13 @@ initialize {
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
+                                          "aria-label": "warning-circle-filled",
                                           "class": "gio-icon",
+                                          "role": "img",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon-svg",
                                               "clip-rule": "evenodd",
                                               "fill": "currentColor",
                                               "fill-rule": "evenodd",
@@ -2349,7 +2374,6 @@ initialize {
                                             "prev": null,
                                             "type": "tag",
                                             "x-attribsNamespace": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -2361,7 +2385,6 @@ initialize {
                                               "xmlns": "http://www.w3.org/2000/xmlns/",
                                             },
                                             "x-attribsPrefix": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -2381,10 +2404,14 @@ initialize {
                                         "prev": null,
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                       },
                                     ],
@@ -2640,12 +2667,13 @@ initialize {
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
+                                            "aria-label": "warning-circle-filled",
                                             "class": "gio-icon",
+                                            "role": "img",
                                           },
                                           "children": Array [
                                             Object {
                                               "attribs": Object {
-                                                "class": "gio-icon-svg",
                                                 "clip-rule": "evenodd",
                                                 "fill": "currentColor",
                                                 "fill-rule": "evenodd",
@@ -2686,7 +2714,6 @@ initialize {
                                               "prev": null,
                                               "type": "tag",
                                               "x-attribsNamespace": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -2698,7 +2725,6 @@ initialize {
                                                 "xmlns": "http://www.w3.org/2000/xmlns/",
                                               },
                                               "x-attribsPrefix": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -2718,10 +2744,14 @@ initialize {
                                           "prev": null,
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                           "x-attribsPrefix": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                         },
                                       ],
@@ -2842,12 +2872,13 @@ initialize {
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
+                                            "aria-label": "warning-circle-filled",
                                             "class": "gio-icon",
+                                            "role": "img",
                                           },
                                           "children": Array [
                                             Object {
                                               "attribs": Object {
-                                                "class": "gio-icon-svg",
                                                 "clip-rule": "evenodd",
                                                 "fill": "currentColor",
                                                 "fill-rule": "evenodd",
@@ -2888,7 +2919,6 @@ initialize {
                                               "prev": null,
                                               "type": "tag",
                                               "x-attribsNamespace": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -2900,7 +2930,6 @@ initialize {
                                                 "xmlns": "http://www.w3.org/2000/xmlns/",
                                               },
                                               "x-attribsPrefix": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -2920,10 +2949,14 @@ initialize {
                                           "prev": null,
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                           "x-attribsPrefix": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                         },
                                       ],
@@ -3179,12 +3212,13 @@ initialize {
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
+                                              "aria-label": "warning-circle-filled",
                                               "class": "gio-icon",
+                                              "role": "img",
                                             },
                                             "children": Array [
                                               Object {
                                                 "attribs": Object {
-                                                  "class": "gio-icon-svg",
                                                   "clip-rule": "evenodd",
                                                   "fill": "currentColor",
                                                   "fill-rule": "evenodd",
@@ -3225,7 +3259,6 @@ initialize {
                                                 "prev": null,
                                                 "type": "tag",
                                                 "x-attribsNamespace": Object {
-                                                  "class": undefined,
                                                   "clip-rule": undefined,
                                                   "fill": undefined,
                                                   "fill-rule": undefined,
@@ -3237,7 +3270,6 @@ initialize {
                                                   "xmlns": "http://www.w3.org/2000/xmlns/",
                                                 },
                                                 "x-attribsPrefix": Object {
-                                                  "class": undefined,
                                                   "clip-rule": undefined,
                                                   "fill": undefined,
                                                   "fill-rule": undefined,
@@ -3257,10 +3289,14 @@ initialize {
                                             "prev": null,
                                             "type": "tag",
                                             "x-attribsNamespace": Object {
+                                              "aria-label": undefined,
                                               "class": undefined,
+                                              "role": undefined,
                                             },
                                             "x-attribsPrefix": Object {
+                                              "aria-label": undefined,
                                               "class": undefined,
+                                              "role": undefined,
                                             },
                                           },
                                         ],
@@ -3477,12 +3513,13 @@ initialize {
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
+                                        "aria-label": "warning-circle-filled",
                                         "class": "gio-icon",
+                                        "role": "img",
                                       },
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
-                                            "class": "gio-icon-svg",
                                             "clip-rule": "evenodd",
                                             "fill": "currentColor",
                                             "fill-rule": "evenodd",
@@ -3523,7 +3560,6 @@ initialize {
                                           "prev": null,
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
-                                            "class": undefined,
                                             "clip-rule": undefined,
                                             "fill": undefined,
                                             "fill-rule": undefined,
@@ -3535,7 +3571,6 @@ initialize {
                                             "xmlns": "http://www.w3.org/2000/xmlns/",
                                           },
                                           "x-attribsPrefix": Object {
-                                            "class": undefined,
                                             "clip-rule": undefined,
                                             "fill": undefined,
                                             "fill-rule": undefined,
@@ -3555,10 +3590,14 @@ initialize {
                                       "prev": null,
                                       "type": "tag",
                                       "x-attribsNamespace": Object {
+                                        "aria-label": undefined,
                                         "class": undefined,
+                                        "role": undefined,
                                       },
                                       "x-attribsPrefix": Object {
+                                        "aria-label": undefined,
                                         "class": undefined,
+                                        "role": undefined,
                                       },
                                     },
                                   ],
@@ -3814,12 +3853,13 @@ initialize {
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
+                                          "aria-label": "warning-circle-filled",
                                           "class": "gio-icon",
+                                          "role": "img",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon-svg",
                                               "clip-rule": "evenodd",
                                               "fill": "currentColor",
                                               "fill-rule": "evenodd",
@@ -3860,7 +3900,6 @@ initialize {
                                             "prev": null,
                                             "type": "tag",
                                             "x-attribsNamespace": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -3872,7 +3911,6 @@ initialize {
                                               "xmlns": "http://www.w3.org/2000/xmlns/",
                                             },
                                             "x-attribsPrefix": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -3892,10 +3930,14 @@ initialize {
                                         "prev": null,
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                       },
                                     ],
@@ -4016,12 +4058,13 @@ initialize {
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
+                                          "aria-label": "warning-circle-filled",
                                           "class": "gio-icon",
+                                          "role": "img",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon-svg",
                                               "clip-rule": "evenodd",
                                               "fill": "currentColor",
                                               "fill-rule": "evenodd",
@@ -4062,7 +4105,6 @@ initialize {
                                             "prev": null,
                                             "type": "tag",
                                             "x-attribsNamespace": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -4074,7 +4116,6 @@ initialize {
                                               "xmlns": "http://www.w3.org/2000/xmlns/",
                                             },
                                             "x-attribsPrefix": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -4094,10 +4135,14 @@ initialize {
                                         "prev": null,
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                       },
                                     ],
@@ -4353,12 +4398,13 @@ initialize {
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
+                                            "aria-label": "warning-circle-filled",
                                             "class": "gio-icon",
+                                            "role": "img",
                                           },
                                           "children": Array [
                                             Object {
                                               "attribs": Object {
-                                                "class": "gio-icon-svg",
                                                 "clip-rule": "evenodd",
                                                 "fill": "currentColor",
                                                 "fill-rule": "evenodd",
@@ -4399,7 +4445,6 @@ initialize {
                                               "prev": null,
                                               "type": "tag",
                                               "x-attribsNamespace": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -4411,7 +4456,6 @@ initialize {
                                                 "xmlns": "http://www.w3.org/2000/xmlns/",
                                               },
                                               "x-attribsPrefix": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -4431,10 +4475,14 @@ initialize {
                                           "prev": null,
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                           "x-attribsPrefix": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                         },
                                       ],
@@ -4587,12 +4635,13 @@ initialize {
                                 "children": Array [
                                   Object {
                                     "attribs": Object {
+                                      "aria-label": "warning-circle-filled",
                                       "class": "gio-icon",
+                                      "role": "img",
                                     },
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
-                                          "class": "gio-icon-svg",
                                           "clip-rule": "evenodd",
                                           "fill": "currentColor",
                                           "fill-rule": "evenodd",
@@ -4633,7 +4682,6 @@ initialize {
                                         "prev": null,
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
-                                          "class": undefined,
                                           "clip-rule": undefined,
                                           "fill": undefined,
                                           "fill-rule": undefined,
@@ -4645,7 +4693,6 @@ initialize {
                                           "xmlns": "http://www.w3.org/2000/xmlns/",
                                         },
                                         "x-attribsPrefix": Object {
-                                          "class": undefined,
                                           "clip-rule": undefined,
                                           "fill": undefined,
                                           "fill-rule": undefined,
@@ -4665,10 +4712,14 @@ initialize {
                                     "prev": null,
                                     "type": "tag",
                                     "x-attribsNamespace": Object {
+                                      "aria-label": undefined,
                                       "class": undefined,
+                                      "role": undefined,
                                     },
                                     "x-attribsPrefix": Object {
+                                      "aria-label": undefined,
                                       "class": undefined,
+                                      "role": undefined,
                                     },
                                   },
                                 ],
@@ -4924,12 +4975,13 @@ initialize {
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
+                                        "aria-label": "warning-circle-filled",
                                         "class": "gio-icon",
+                                        "role": "img",
                                       },
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
-                                            "class": "gio-icon-svg",
                                             "clip-rule": "evenodd",
                                             "fill": "currentColor",
                                             "fill-rule": "evenodd",
@@ -4970,7 +5022,6 @@ initialize {
                                           "prev": null,
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
-                                            "class": undefined,
                                             "clip-rule": undefined,
                                             "fill": undefined,
                                             "fill-rule": undefined,
@@ -4982,7 +5033,6 @@ initialize {
                                             "xmlns": "http://www.w3.org/2000/xmlns/",
                                           },
                                           "x-attribsPrefix": Object {
-                                            "class": undefined,
                                             "clip-rule": undefined,
                                             "fill": undefined,
                                             "fill-rule": undefined,
@@ -5002,10 +5052,14 @@ initialize {
                                       "prev": null,
                                       "type": "tag",
                                       "x-attribsNamespace": Object {
+                                        "aria-label": undefined,
                                         "class": undefined,
+                                        "role": undefined,
                                       },
                                       "x-attribsPrefix": Object {
+                                        "aria-label": undefined,
                                         "class": undefined,
+                                        "role": undefined,
                                       },
                                     },
                                   ],
@@ -5126,12 +5180,13 @@ initialize {
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
+                                        "aria-label": "warning-circle-filled",
                                         "class": "gio-icon",
+                                        "role": "img",
                                       },
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
-                                            "class": "gio-icon-svg",
                                             "clip-rule": "evenodd",
                                             "fill": "currentColor",
                                             "fill-rule": "evenodd",
@@ -5172,7 +5227,6 @@ initialize {
                                           "prev": null,
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
-                                            "class": undefined,
                                             "clip-rule": undefined,
                                             "fill": undefined,
                                             "fill-rule": undefined,
@@ -5184,7 +5238,6 @@ initialize {
                                             "xmlns": "http://www.w3.org/2000/xmlns/",
                                           },
                                           "x-attribsPrefix": Object {
-                                            "class": undefined,
                                             "clip-rule": undefined,
                                             "fill": undefined,
                                             "fill-rule": undefined,
@@ -5204,10 +5257,14 @@ initialize {
                                       "prev": null,
                                       "type": "tag",
                                       "x-attribsNamespace": Object {
+                                        "aria-label": undefined,
                                         "class": undefined,
+                                        "role": undefined,
                                       },
                                       "x-attribsPrefix": Object {
+                                        "aria-label": undefined,
                                         "class": undefined,
+                                        "role": undefined,
                                       },
                                     },
                                   ],
@@ -5463,12 +5520,13 @@ initialize {
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
+                                          "aria-label": "warning-circle-filled",
                                           "class": "gio-icon",
+                                          "role": "img",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon-svg",
                                               "clip-rule": "evenodd",
                                               "fill": "currentColor",
                                               "fill-rule": "evenodd",
@@ -5509,7 +5567,6 @@ initialize {
                                             "prev": null,
                                             "type": "tag",
                                             "x-attribsNamespace": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -5521,7 +5578,6 @@ initialize {
                                               "xmlns": "http://www.w3.org/2000/xmlns/",
                                             },
                                             "x-attribsPrefix": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -5541,10 +5597,14 @@ initialize {
                                         "prev": null,
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                       },
                                     ],
@@ -5717,12 +5777,13 @@ initialize {
                                   "children": Array [
                                     Object {
                                       "attribs": Object {
+                                        "aria-label": "warning-circle-filled",
                                         "class": "gio-icon",
+                                        "role": "img",
                                       },
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
-                                            "class": "gio-icon-svg",
                                             "clip-rule": "evenodd",
                                             "fill": "currentColor",
                                             "fill-rule": "evenodd",
@@ -5763,7 +5824,6 @@ initialize {
                                           "prev": null,
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
-                                            "class": undefined,
                                             "clip-rule": undefined,
                                             "fill": undefined,
                                             "fill-rule": undefined,
@@ -5775,7 +5835,6 @@ initialize {
                                             "xmlns": "http://www.w3.org/2000/xmlns/",
                                           },
                                           "x-attribsPrefix": Object {
-                                            "class": undefined,
                                             "clip-rule": undefined,
                                             "fill": undefined,
                                             "fill-rule": undefined,
@@ -5795,10 +5854,14 @@ initialize {
                                       "prev": null,
                                       "type": "tag",
                                       "x-attribsNamespace": Object {
+                                        "aria-label": undefined,
                                         "class": undefined,
+                                        "role": undefined,
                                       },
                                       "x-attribsPrefix": Object {
+                                        "aria-label": undefined,
                                         "class": undefined,
+                                        "role": undefined,
                                       },
                                     },
                                   ],
@@ -6054,12 +6117,13 @@ initialize {
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
+                                          "aria-label": "warning-circle-filled",
                                           "class": "gio-icon",
+                                          "role": "img",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon-svg",
                                               "clip-rule": "evenodd",
                                               "fill": "currentColor",
                                               "fill-rule": "evenodd",
@@ -6100,7 +6164,6 @@ initialize {
                                             "prev": null,
                                             "type": "tag",
                                             "x-attribsNamespace": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -6112,7 +6175,6 @@ initialize {
                                               "xmlns": "http://www.w3.org/2000/xmlns/",
                                             },
                                             "x-attribsPrefix": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -6132,10 +6194,14 @@ initialize {
                                         "prev": null,
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                       },
                                     ],
@@ -6256,12 +6322,13 @@ initialize {
                                     "children": Array [
                                       Object {
                                         "attribs": Object {
+                                          "aria-label": "warning-circle-filled",
                                           "class": "gio-icon",
+                                          "role": "img",
                                         },
                                         "children": Array [
                                           Object {
                                             "attribs": Object {
-                                              "class": "gio-icon-svg",
                                               "clip-rule": "evenodd",
                                               "fill": "currentColor",
                                               "fill-rule": "evenodd",
@@ -6302,7 +6369,6 @@ initialize {
                                             "prev": null,
                                             "type": "tag",
                                             "x-attribsNamespace": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -6314,7 +6380,6 @@ initialize {
                                               "xmlns": "http://www.w3.org/2000/xmlns/",
                                             },
                                             "x-attribsPrefix": Object {
-                                              "class": undefined,
                                               "clip-rule": undefined,
                                               "fill": undefined,
                                               "fill-rule": undefined,
@@ -6334,10 +6399,14 @@ initialize {
                                         "prev": null,
                                         "type": "tag",
                                         "x-attribsNamespace": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                         "x-attribsPrefix": Object {
+                                          "aria-label": undefined,
                                           "class": undefined,
+                                          "role": undefined,
                                         },
                                       },
                                     ],
@@ -6593,12 +6662,13 @@ initialize {
                                       "children": Array [
                                         Object {
                                           "attribs": Object {
+                                            "aria-label": "warning-circle-filled",
                                             "class": "gio-icon",
+                                            "role": "img",
                                           },
                                           "children": Array [
                                             Object {
                                               "attribs": Object {
-                                                "class": "gio-icon-svg",
                                                 "clip-rule": "evenodd",
                                                 "fill": "currentColor",
                                                 "fill-rule": "evenodd",
@@ -6639,7 +6709,6 @@ initialize {
                                               "prev": null,
                                               "type": "tag",
                                               "x-attribsNamespace": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -6651,7 +6720,6 @@ initialize {
                                                 "xmlns": "http://www.w3.org/2000/xmlns/",
                                               },
                                               "x-attribsPrefix": Object {
-                                                "class": undefined,
                                                 "clip-rule": undefined,
                                                 "fill": undefined,
                                                 "fill-rule": undefined,
@@ -6671,10 +6739,14 @@ initialize {
                                           "prev": null,
                                           "type": "tag",
                                           "x-attribsNamespace": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                           "x-attribsPrefix": Object {
+                                            "aria-label": undefined,
                                             "class": undefined,
+                                            "role": undefined,
                                           },
                                         },
                                       ],

@@ -15,12 +15,13 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
+              "aria-label": "delete-outlined",
               "class": "gio-icon gio-upload__actions-icon gio-upload__actions-icon-delete",
+              "role": "img",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-icon-svg",
                   "fill": "currentColor",
                   "height": "16px",
                   "viewBox": "0 0 14 14",
@@ -190,7 +191,6 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -198,7 +198,6 @@ initialize {
                   "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -214,10 +213,14 @@ initialize {
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
           },
         ],

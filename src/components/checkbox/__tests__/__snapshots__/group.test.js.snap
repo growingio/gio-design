@@ -14,12 +14,13 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
+              "aria-label": "check-outlined",
               "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
+              "role": "img",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-icon-svg",
                   "fill": "currentColor",
                   "height": "16px",
                   "viewBox": "0 0 14 14",
@@ -189,7 +190,6 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -197,7 +197,6 @@ initialize {
                   "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -332,10 +331,14 @@ initialize {
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
           },
           Object {
@@ -451,12 +454,13 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
+                "aria-label": "check-outlined",
                 "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
+                "role": "img",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon-svg",
                     "fill": "currentColor",
                     "height": "16px",
                     "viewBox": "0 0 14 14",
@@ -626,7 +630,6 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -634,7 +637,6 @@ initialize {
                     "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -650,10 +652,14 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
             },
             "type": "tag",
@@ -773,12 +779,13 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
+                  "aria-label": "check-outlined",
                   "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
+                  "role": "img",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "gio-icon-svg",
                       "fill": "currentColor",
                       "height": "16px",
                       "viewBox": "0 0 14 14",
@@ -948,7 +955,6 @@ initialize {
                     "prev": null,
                     "type": "tag",
                     "x-attribsNamespace": Object {
-                      "class": undefined,
                       "fill": undefined,
                       "height": undefined,
                       "viewBox": undefined,
@@ -956,7 +962,6 @@ initialize {
                       "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
-                      "class": undefined,
                       "fill": undefined,
                       "height": undefined,
                       "viewBox": undefined,
@@ -972,10 +977,14 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-label": undefined,
                   "class": undefined,
+                  "role": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-label": undefined,
                   "class": undefined,
+                  "role": undefined,
                 },
               },
               "type": "tag",
@@ -1000,12 +1009,13 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
+                "aria-label": "check-outlined",
                 "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
+                "role": "img",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon-svg",
                     "fill": "currentColor",
                     "height": "16px",
                     "viewBox": "0 0 14 14",
@@ -1175,7 +1185,6 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -1183,7 +1192,6 @@ initialize {
                     "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -1318,10 +1326,14 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
             },
             Object {
@@ -1437,12 +1449,13 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
+                  "aria-label": "check-outlined",
                   "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
+                  "role": "img",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "gio-icon-svg",
                       "fill": "currentColor",
                       "height": "16px",
                       "viewBox": "0 0 14 14",
@@ -1612,7 +1625,6 @@ initialize {
                     "prev": null,
                     "type": "tag",
                     "x-attribsNamespace": Object {
-                      "class": undefined,
                       "fill": undefined,
                       "height": undefined,
                       "viewBox": undefined,
@@ -1620,7 +1632,6 @@ initialize {
                       "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
-                      "class": undefined,
                       "fill": undefined,
                       "height": undefined,
                       "viewBox": undefined,
@@ -1636,10 +1647,14 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-label": undefined,
                   "class": undefined,
+                  "role": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-label": undefined,
                   "class": undefined,
+                  "role": undefined,
                 },
               },
               "type": "tag",
@@ -1759,12 +1774,13 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
+                    "aria-label": "check-outlined",
                     "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
+                    "role": "img",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-icon-svg",
                         "fill": "currentColor",
                         "height": "16px",
                         "viewBox": "0 0 14 14",
@@ -1934,7 +1950,6 @@ initialize {
                       "prev": null,
                       "type": "tag",
                       "x-attribsNamespace": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "viewBox": undefined,
@@ -1942,7 +1957,6 @@ initialize {
                         "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "viewBox": undefined,
@@ -1958,10 +1972,14 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                 },
                 "type": "tag",
@@ -2007,12 +2025,13 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
+              "aria-label": "check-outlined",
               "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
+              "role": "img",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-icon-svg",
                   "fill": "currentColor",
                   "height": "16px",
                   "viewBox": "0 0 14 14",
@@ -2182,7 +2201,6 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -2190,7 +2208,6 @@ initialize {
                   "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -2325,10 +2342,14 @@ initialize {
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
           },
           Object {
@@ -2444,12 +2465,13 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
+                "aria-label": "check-outlined",
                 "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
+                "role": "img",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon-svg",
                     "fill": "currentColor",
                     "height": "16px",
                     "viewBox": "0 0 14 14",
@@ -2619,7 +2641,6 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -2627,7 +2648,6 @@ initialize {
                     "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -2643,10 +2663,14 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
             },
             "type": "tag",
@@ -2766,12 +2790,13 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
+                  "aria-label": "check-outlined",
                   "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
+                  "role": "img",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "gio-icon-svg",
                       "fill": "currentColor",
                       "height": "16px",
                       "viewBox": "0 0 14 14",
@@ -2941,7 +2966,6 @@ initialize {
                     "prev": null,
                     "type": "tag",
                     "x-attribsNamespace": Object {
-                      "class": undefined,
                       "fill": undefined,
                       "height": undefined,
                       "viewBox": undefined,
@@ -2949,7 +2973,6 @@ initialize {
                       "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
-                      "class": undefined,
                       "fill": undefined,
                       "height": undefined,
                       "viewBox": undefined,
@@ -2965,10 +2988,14 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-label": undefined,
                   "class": undefined,
+                  "role": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-label": undefined,
                   "class": undefined,
+                  "role": undefined,
                 },
               },
               "type": "tag",
@@ -2995,12 +3022,13 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
+                "aria-label": "check-outlined",
                 "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
+                "role": "img",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon-svg",
                     "fill": "currentColor",
                     "height": "16px",
                     "viewBox": "0 0 14 14",
@@ -3170,7 +3198,6 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -3178,7 +3205,6 @@ initialize {
                     "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -3313,10 +3339,14 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
             },
             Object {
@@ -3432,12 +3462,13 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
+                  "aria-label": "check-outlined",
                   "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
+                  "role": "img",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "gio-icon-svg",
                       "fill": "currentColor",
                       "height": "16px",
                       "viewBox": "0 0 14 14",
@@ -3607,7 +3638,6 @@ initialize {
                     "prev": null,
                     "type": "tag",
                     "x-attribsNamespace": Object {
-                      "class": undefined,
                       "fill": undefined,
                       "height": undefined,
                       "viewBox": undefined,
@@ -3615,7 +3645,6 @@ initialize {
                       "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
-                      "class": undefined,
                       "fill": undefined,
                       "height": undefined,
                       "viewBox": undefined,
@@ -3631,10 +3660,14 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-label": undefined,
                   "class": undefined,
+                  "role": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-label": undefined,
                   "class": undefined,
+                  "role": undefined,
                 },
               },
               "type": "tag",
@@ -3754,12 +3787,13 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
+                    "aria-label": "check-outlined",
                     "class": "gio-icon my-checkbox-checkbox-icon my-checkbox-checkbox-icon-cool",
+                    "role": "img",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-icon-svg",
                         "fill": "currentColor",
                         "height": "16px",
                         "viewBox": "0 0 14 14",
@@ -3929,7 +3963,6 @@ initialize {
                       "prev": null,
                       "type": "tag",
                       "x-attribsNamespace": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "viewBox": undefined,
@@ -3937,7 +3970,6 @@ initialize {
                         "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "viewBox": undefined,
@@ -3953,10 +3985,14 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                 },
                 "type": "tag",

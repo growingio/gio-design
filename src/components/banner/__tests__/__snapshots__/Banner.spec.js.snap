@@ -21,10 +21,11 @@ exports[`Testing Banner should be stable 1`] = `
     }
   >
     <span
+      aria-label="close-outlined"
       className="gio-icon"
+      role="img"
     >
       <svg
-        className="gio-icon-svg"
         fill="currentColor"
         height="16px"
         style={
