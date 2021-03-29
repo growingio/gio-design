@@ -44,10 +44,11 @@ exports[`Testing Table should be stable 1`] = `
                           class="gio-table-column-title-info"
                         >
                           <span
+                            aria-label="question-circle-outlined"
                             class="gio-icon"
+                            role="img"
                           >
                             <svg
-                              class="gio-icon-svg"
                               fill="currentColor"
                               height="16px"
                               viewBox="0 0 14 14"
@@ -80,10 +81,11 @@ exports[`Testing Table should be stable 1`] = `
                               type="button"
                             >
                               <span
+                                aria-label="up-filled"
                                 class="gio-icon gio-table-column-sorter-up"
+                                role="img"
                               >
                                 <svg
-                                  class="gio-icon-svg"
                                   fill="currentColor"
                                   height="16px"
                                   viewBox="0 0 14 14"
@@ -106,10 +108,11 @@ exports[`Testing Table should be stable 1`] = `
                                 </svg>
                               </span>
                               <span
+                                aria-label="down-filled"
                                 class="gio-icon gio-table-column-sorter-down"
+                                role="img"
                               >
                                 <svg
-                                  class="gio-icon-svg"
                                   fill="currentColor"
                                   height="16px"
                                   viewBox="0 0 14 14"
@@ -146,10 +149,11 @@ exports[`Testing Table should be stable 1`] = `
                               type="button"
                             >
                               <span
+                                aria-label="filter-outlined"
                                 class="gio-icon gio-table-column-filter-icon"
+                                role="img"
                               >
                                 <svg
-                                  class="gio-icon-svg"
                                   fill="currentColor"
                                   height="12px"
                                   viewBox="0 0 14 14"
@@ -187,10 +191,11 @@ exports[`Testing Table should be stable 1`] = `
                           class="gio-table-column-title-info"
                         >
                           <span
+                            aria-label="question-circle-outlined"
                             class="gio-icon"
+                            role="img"
                           >
                             <svg
-                              class="gio-icon-svg"
                               fill="currentColor"
                               height="16px"
                               viewBox="0 0 14 14"
@@ -223,10 +228,11 @@ exports[`Testing Table should be stable 1`] = `
                               type="button"
                             >
                               <span
+                                aria-label="up-filled"
                                 class="gio-icon gio-table-column-sorter-up"
+                                role="img"
                               >
                                 <svg
-                                  class="gio-icon-svg"
                                   fill="currentColor"
                                   height="16px"
                                   viewBox="0 0 14 14"
@@ -249,10 +255,11 @@ exports[`Testing Table should be stable 1`] = `
                                 </svg>
                               </span>
                               <span
+                                aria-label="down-filled"
                                 class="gio-icon gio-table-column-sorter-down"
+                                role="img"
                               >
                                 <svg
-                                  class="gio-icon-svg"
                                   fill="currentColor"
                                   height="16px"
                                   viewBox="0 0 14 14"
@@ -289,10 +296,11 @@ exports[`Testing Table should be stable 1`] = `
                               type="button"
                             >
                               <span
+                                aria-label="filter-outlined"
                                 class="gio-icon gio-table-column-filter-icon"
+                                role="img"
                               >
                                 <svg
-                                  class="gio-icon-svg"
                                   fill="currentColor"
                                   height="12px"
                                   viewBox="0 0 14 14"
@@ -330,10 +338,11 @@ exports[`Testing Table should be stable 1`] = `
                           class="gio-table-column-title-info"
                         >
                           <span
+                            aria-label="question-circle-outlined"
                             class="gio-icon"
+                            role="img"
                           >
                             <svg
-                              class="gio-icon-svg"
                               fill="currentColor"
                               height="16px"
                               viewBox="0 0 14 14"
@@ -366,10 +375,11 @@ exports[`Testing Table should be stable 1`] = `
                               type="button"
                             >
                               <span
+                                aria-label="up-filled"
                                 class="gio-icon gio-table-column-sorter-up"
+                                role="img"
                               >
                                 <svg
-                                  class="gio-icon-svg"
                                   fill="currentColor"
                                   height="16px"
                                   viewBox="0 0 14 14"
@@ -392,10 +402,11 @@ exports[`Testing Table should be stable 1`] = `
                                 </svg>
                               </span>
                               <span
+                                aria-label="down-filled"
                                 class="gio-icon gio-table-column-sorter-down"
+                                role="img"
                               >
                                 <svg
-                                  class="gio-icon-svg"
                                   fill="currentColor"
                                   height="16px"
                                   viewBox="0 0 14 14"
@@ -432,10 +443,11 @@ exports[`Testing Table should be stable 1`] = `
                               type="button"
                             >
                               <span
+                                aria-label="filter-outlined"
                                 class="gio-icon gio-table-column-filter-icon"
+                                role="img"
                               >
                                 <svg
-                                  class="gio-icon-svg"
                                   fill="currentColor"
                                   height="12px"
                                   viewBox="0 0 14 14"

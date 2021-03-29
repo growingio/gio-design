@@ -50,10 +50,11 @@ exports[`<Select /> Single Multiple options or groupOptions  renders <Select /> 
       className="gio-select-arrow"
     >
       <span
+        aria-label="down-filled"
         className="gio-icon gio-select-icon-arrow"
+        role="img"
       >
         <svg
-          className="gio-icon-svg"
           fill="currentColor"
           height="16px"
           style={
@@ -135,10 +136,11 @@ exports[`<Select /> Single Multiple options or groupOptions  renders <Select /> 
       className="gio-select-arrow"
     >
       <span
+        aria-label="down-filled"
         className="gio-icon gio-select-icon-arrow"
+        role="img"
       >
         <svg
-          className="gio-icon-svg"
           fill="currentColor"
           height="16px"
           style={
@@ -208,10 +210,11 @@ exports[`<Select /> Single Multiple options or groupOptions  renders <Select /> 
       className="gio-select-arrow"
     >
       <span
+        aria-label="down-filled"
         className="gio-icon gio-select-icon-arrow"
+        role="img"
       >
         <svg
-          className="gio-icon-svg"
           fill="currentColor"
           height="16px"
           style={
@@ -281,10 +284,11 @@ exports[`<Select /> Single Multiple options or groupOptions  renders <Select.Gro
       className="gio-select-arrow"
     >
       <span
+        aria-label="down-filled"
         className="gio-icon gio-select-icon-arrow"
+        role="img"
       >
         <svg
-          className="gio-icon-svg"
           fill="currentColor"
           height="16px"
           style={
@@ -354,10 +358,11 @@ exports[`<Select /> Single Multiple options or groupOptions  renders <Select.Opt
       className="gio-select-arrow"
     >
       <span
+        aria-label="down-filled"
         className="gio-icon gio-select-icon-arrow"
+        role="img"
       >
         <svg
-          className="gio-icon-svg"
           fill="currentColor"
           height="16px"
           style={

@@ -10673,12 +10673,13 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
+                    "aria-label": "down-outlined",
                     "class": "gio-icon gio-menu-submenu-arrow",
+                    "role": "img",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-icon-svg",
                         "fill": "currentColor",
                         "height": "12px",
                         "style": "color:#313E75",
@@ -10849,7 +10850,6 @@ initialize {
                       "prev": null,
                       "type": "tag",
                       "x-attribsNamespace": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "style": undefined,
@@ -10858,7 +10858,6 @@ initialize {
                         "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "style": undefined,
@@ -10875,10 +10874,14 @@ initialize {
                   "prev": [Circular],
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                 },
                 "parent": [Circular],
@@ -10889,12 +10892,13 @@ initialize {
               },
               Object {
                 "attribs": Object {
+                  "aria-label": "down-outlined",
                   "class": "gio-icon gio-menu-submenu-arrow",
+                  "role": "img",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "gio-icon-svg",
                       "fill": "currentColor",
                       "height": "12px",
                       "style": "color:#313E75",
@@ -11065,7 +11069,6 @@ initialize {
                     "prev": null,
                     "type": "tag",
                     "x-attribsNamespace": Object {
-                      "class": undefined,
                       "fill": undefined,
                       "height": undefined,
                       "style": undefined,
@@ -11074,7 +11077,6 @@ initialize {
                       "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
-                      "class": undefined,
                       "fill": undefined,
                       "height": undefined,
                       "style": undefined,
@@ -11110,10 +11112,14 @@ initialize {
                 },
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-label": undefined,
                   "class": undefined,
+                  "role": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-label": undefined,
                   "class": undefined,
+                  "role": undefined,
                 },
               },
             ],
@@ -11180,12 +11186,13 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
+                      "aria-label": "down-outlined",
                       "class": "gio-icon gio-menu-submenu-arrow",
+                      "role": "img",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-icon-svg",
                           "fill": "currentColor",
                           "height": "12px",
                           "style": "color:#313E75",
@@ -11356,7 +11363,6 @@ initialize {
                         "prev": null,
                         "type": "tag",
                         "x-attribsNamespace": Object {
-                          "class": undefined,
                           "fill": undefined,
                           "height": undefined,
                           "style": undefined,
@@ -11365,7 +11371,6 @@ initialize {
                           "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
-                          "class": undefined,
                           "fill": undefined,
                           "height": undefined,
                           "style": undefined,
@@ -11382,10 +11387,14 @@ initialize {
                     "prev": [Circular],
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-label": undefined,
                       "class": undefined,
+                      "role": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-label": undefined,
                       "class": undefined,
+                      "role": undefined,
                     },
                   },
                   "parent": [Circular],
@@ -11396,12 +11405,13 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
+                    "aria-label": "down-outlined",
                     "class": "gio-icon gio-menu-submenu-arrow",
+                    "role": "img",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-icon-svg",
                         "fill": "currentColor",
                         "height": "12px",
                         "style": "color:#313E75",
@@ -11572,7 +11582,6 @@ initialize {
                       "prev": null,
                       "type": "tag",
                       "x-attribsNamespace": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "style": undefined,
@@ -11581,7 +11590,6 @@ initialize {
                         "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "style": undefined,
@@ -11617,10 +11625,14 @@ initialize {
                   },
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                 },
               ],
@@ -11682,12 +11694,13 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
+                      "aria-label": "down-outlined",
                       "class": "gio-icon gio-menu-submenu-arrow",
+                      "role": "img",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-icon-svg",
                           "fill": "currentColor",
                           "height": "12px",
                           "style": "color:#313E75",
@@ -11858,7 +11871,6 @@ initialize {
                         "prev": null,
                         "type": "tag",
                         "x-attribsNamespace": Object {
-                          "class": undefined,
                           "fill": undefined,
                           "height": undefined,
                           "style": undefined,
@@ -11867,7 +11879,6 @@ initialize {
                           "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
-                          "class": undefined,
                           "fill": undefined,
                           "height": undefined,
                           "style": undefined,
@@ -11884,10 +11895,14 @@ initialize {
                     "prev": [Circular],
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-label": undefined,
                       "class": undefined,
+                      "role": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-label": undefined,
                       "class": undefined,
+                      "role": undefined,
                     },
                   },
                   "parent": [Circular],
@@ -11898,12 +11913,13 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
+                    "aria-label": "down-outlined",
                     "class": "gio-icon gio-menu-submenu-arrow",
+                    "role": "img",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-icon-svg",
                         "fill": "currentColor",
                         "height": "12px",
                         "style": "color:#313E75",
@@ -12074,7 +12090,6 @@ initialize {
                       "prev": null,
                       "type": "tag",
                       "x-attribsNamespace": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "style": undefined,
@@ -12083,7 +12098,6 @@ initialize {
                         "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "style": undefined,
@@ -12119,10 +12133,14 @@ initialize {
                   },
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                 },
               ],
@@ -12189,12 +12207,13 @@ initialize {
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": Object {
                       "attribs": Object {
+                        "aria-label": "down-outlined",
                         "class": "gio-icon gio-menu-submenu-arrow",
+                        "role": "img",
                       },
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "gio-icon-svg",
                             "fill": "currentColor",
                             "height": "12px",
                             "style": "color:#313E75",
@@ -12365,7 +12384,6 @@ initialize {
                           "prev": null,
                           "type": "tag",
                           "x-attribsNamespace": Object {
-                            "class": undefined,
                             "fill": undefined,
                             "height": undefined,
                             "style": undefined,
@@ -12374,7 +12392,6 @@ initialize {
                             "xmlns": "http://www.w3.org/2000/xmlns/",
                           },
                           "x-attribsPrefix": Object {
-                            "class": undefined,
                             "fill": undefined,
                             "height": undefined,
                             "style": undefined,
@@ -12391,10 +12408,14 @@ initialize {
                       "prev": [Circular],
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-label": undefined,
                         "class": undefined,
+                        "role": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-label": undefined,
                         "class": undefined,
+                        "role": undefined,
                       },
                     },
                     "parent": [Circular],
@@ -12405,12 +12426,13 @@ initialize {
                   },
                   Object {
                     "attribs": Object {
+                      "aria-label": "down-outlined",
                       "class": "gio-icon gio-menu-submenu-arrow",
+                      "role": "img",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-icon-svg",
                           "fill": "currentColor",
                           "height": "12px",
                           "style": "color:#313E75",
@@ -12581,7 +12603,6 @@ initialize {
                         "prev": null,
                         "type": "tag",
                         "x-attribsNamespace": Object {
-                          "class": undefined,
                           "fill": undefined,
                           "height": undefined,
                           "style": undefined,
@@ -12590,7 +12611,6 @@ initialize {
                           "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
-                          "class": undefined,
                           "fill": undefined,
                           "height": undefined,
                           "style": undefined,
@@ -12626,10 +12646,14 @@ initialize {
                     },
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-label": undefined,
                       "class": undefined,
+                      "role": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-label": undefined,
                       "class": undefined,
+                      "role": undefined,
                     },
                   },
                 ],
@@ -12716,12 +12740,13 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
+                    "aria-label": "down-outlined",
                     "class": "gio-icon gio-menu-submenu-arrow",
+                    "role": "img",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-icon-svg",
                         "fill": "currentColor",
                         "height": "12px",
                         "style": "color:#313E75",
@@ -12892,7 +12917,6 @@ initialize {
                       "prev": null,
                       "type": "tag",
                       "x-attribsNamespace": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "style": undefined,
@@ -12901,7 +12925,6 @@ initialize {
                         "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "style": undefined,
@@ -12918,10 +12941,14 @@ initialize {
                   "prev": [Circular],
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                 },
                 "parent": [Circular],
@@ -12932,12 +12959,13 @@ initialize {
               },
               Object {
                 "attribs": Object {
+                  "aria-label": "down-outlined",
                   "class": "gio-icon gio-menu-submenu-arrow",
+                  "role": "img",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "gio-icon-svg",
                       "fill": "currentColor",
                       "height": "12px",
                       "style": "color:#313E75",
@@ -13108,7 +13136,6 @@ initialize {
                     "prev": null,
                     "type": "tag",
                     "x-attribsNamespace": Object {
-                      "class": undefined,
                       "fill": undefined,
                       "height": undefined,
                       "style": undefined,
@@ -13117,7 +13144,6 @@ initialize {
                       "xmlns": "http://www.w3.org/2000/xmlns/",
                     },
                     "x-attribsPrefix": Object {
-                      "class": undefined,
                       "fill": undefined,
                       "height": undefined,
                       "style": undefined,
@@ -13153,10 +13179,14 @@ initialize {
                 },
                 "type": "tag",
                 "x-attribsNamespace": Object {
+                  "aria-label": undefined,
                   "class": undefined,
+                  "role": undefined,
                 },
                 "x-attribsPrefix": Object {
+                  "aria-label": undefined,
                   "class": undefined,
+                  "role": undefined,
                 },
               },
             ],
@@ -13223,12 +13253,13 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
+                      "aria-label": "down-outlined",
                       "class": "gio-icon gio-menu-submenu-arrow",
+                      "role": "img",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-icon-svg",
                           "fill": "currentColor",
                           "height": "12px",
                           "style": "color:#313E75",
@@ -13399,7 +13430,6 @@ initialize {
                         "prev": null,
                         "type": "tag",
                         "x-attribsNamespace": Object {
-                          "class": undefined,
                           "fill": undefined,
                           "height": undefined,
                           "style": undefined,
@@ -13408,7 +13438,6 @@ initialize {
                           "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
-                          "class": undefined,
                           "fill": undefined,
                           "height": undefined,
                           "style": undefined,
@@ -13425,10 +13454,14 @@ initialize {
                     "prev": [Circular],
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-label": undefined,
                       "class": undefined,
+                      "role": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-label": undefined,
                       "class": undefined,
+                      "role": undefined,
                     },
                   },
                   "parent": [Circular],
@@ -13439,12 +13472,13 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
+                    "aria-label": "down-outlined",
                     "class": "gio-icon gio-menu-submenu-arrow",
+                    "role": "img",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-icon-svg",
                         "fill": "currentColor",
                         "height": "12px",
                         "style": "color:#313E75",
@@ -13615,7 +13649,6 @@ initialize {
                       "prev": null,
                       "type": "tag",
                       "x-attribsNamespace": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "style": undefined,
@@ -13624,7 +13657,6 @@ initialize {
                         "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "style": undefined,
@@ -13660,10 +13692,14 @@ initialize {
                   },
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                 },
               ],
@@ -13727,12 +13763,13 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
+                      "aria-label": "down-outlined",
                       "class": "gio-icon gio-menu-submenu-arrow",
+                      "role": "img",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-icon-svg",
                           "fill": "currentColor",
                           "height": "12px",
                           "style": "color:#313E75",
@@ -13903,7 +13940,6 @@ initialize {
                         "prev": null,
                         "type": "tag",
                         "x-attribsNamespace": Object {
-                          "class": undefined,
                           "fill": undefined,
                           "height": undefined,
                           "style": undefined,
@@ -13912,7 +13948,6 @@ initialize {
                           "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
-                          "class": undefined,
                           "fill": undefined,
                           "height": undefined,
                           "style": undefined,
@@ -13929,10 +13964,14 @@ initialize {
                     "prev": [Circular],
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-label": undefined,
                       "class": undefined,
+                      "role": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-label": undefined,
                       "class": undefined,
+                      "role": undefined,
                     },
                   },
                   "parent": [Circular],
@@ -13943,12 +13982,13 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
+                    "aria-label": "down-outlined",
                     "class": "gio-icon gio-menu-submenu-arrow",
+                    "role": "img",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-icon-svg",
                         "fill": "currentColor",
                         "height": "12px",
                         "style": "color:#313E75",
@@ -14119,7 +14159,6 @@ initialize {
                       "prev": null,
                       "type": "tag",
                       "x-attribsNamespace": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "style": undefined,
@@ -14128,7 +14167,6 @@ initialize {
                         "xmlns": "http://www.w3.org/2000/xmlns/",
                       },
                       "x-attribsPrefix": Object {
-                        "class": undefined,
                         "fill": undefined,
                         "height": undefined,
                         "style": undefined,
@@ -14164,10 +14202,14 @@ initialize {
                   },
                   "type": "tag",
                   "x-attribsNamespace": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                   "x-attribsPrefix": Object {
+                    "aria-label": undefined,
                     "class": undefined,
+                    "role": undefined,
                   },
                 },
               ],
@@ -14234,12 +14276,13 @@ initialize {
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": Object {
                       "attribs": Object {
+                        "aria-label": "down-outlined",
                         "class": "gio-icon gio-menu-submenu-arrow",
+                        "role": "img",
                       },
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "gio-icon-svg",
                             "fill": "currentColor",
                             "height": "12px",
                             "style": "color:#313E75",
@@ -14410,7 +14453,6 @@ initialize {
                           "prev": null,
                           "type": "tag",
                           "x-attribsNamespace": Object {
-                            "class": undefined,
                             "fill": undefined,
                             "height": undefined,
                             "style": undefined,
@@ -14419,7 +14461,6 @@ initialize {
                             "xmlns": "http://www.w3.org/2000/xmlns/",
                           },
                           "x-attribsPrefix": Object {
-                            "class": undefined,
                             "fill": undefined,
                             "height": undefined,
                             "style": undefined,
@@ -14436,10 +14477,14 @@ initialize {
                       "prev": [Circular],
                       "type": "tag",
                       "x-attribsNamespace": Object {
+                        "aria-label": undefined,
                         "class": undefined,
+                        "role": undefined,
                       },
                       "x-attribsPrefix": Object {
+                        "aria-label": undefined,
                         "class": undefined,
+                        "role": undefined,
                       },
                     },
                     "parent": [Circular],
@@ -14450,12 +14495,13 @@ initialize {
                   },
                   Object {
                     "attribs": Object {
+                      "aria-label": "down-outlined",
                       "class": "gio-icon gio-menu-submenu-arrow",
+                      "role": "img",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "gio-icon-svg",
                           "fill": "currentColor",
                           "height": "12px",
                           "style": "color:#313E75",
@@ -14626,7 +14672,6 @@ initialize {
                         "prev": null,
                         "type": "tag",
                         "x-attribsNamespace": Object {
-                          "class": undefined,
                           "fill": undefined,
                           "height": undefined,
                           "style": undefined,
@@ -14635,7 +14680,6 @@ initialize {
                           "xmlns": "http://www.w3.org/2000/xmlns/",
                         },
                         "x-attribsPrefix": Object {
-                          "class": undefined,
                           "fill": undefined,
                           "height": undefined,
                           "style": undefined,
@@ -14671,10 +14715,14 @@ initialize {
                     },
                     "type": "tag",
                     "x-attribsNamespace": Object {
+                      "aria-label": undefined,
                       "class": undefined,
+                      "role": undefined,
                     },
                     "x-attribsPrefix": Object {
+                      "aria-label": undefined,
                       "class": undefined,
+                      "role": undefined,
                     },
                   },
                 ],
