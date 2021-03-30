@@ -254,14 +254,6 @@
     &-inner {
       width: 24px;
       height: 24px;
-      .@{popover-prefix-cls}-inner-content {
-        width: 220px;
-        margin: 16px 16px 0;
-        .filter-popover-footer {
-          padding: 8px 16px;
-          border-top: 1px solid #dfe4ee;
-        }
-      }
     }
   }
 
@@ -299,7 +291,7 @@
       &.active {
         color: @color-background-table-arrow-active;
       }
-      .gio-icon-svg {
+      svg {
         position: relative;
         top: -3px;
         left: -2px;
@@ -339,5 +331,31 @@
 
   &-empty {
     margin: 60px auto;
+  }
+
+  &-filter {
+    &-popover {
+      .@{popover-prefix-cls}-inner-content {
+        width: 220px;
+        margin: 16px 16px 0;
+      }
+      &-footer {
+        padding: 8px 16px;
+        border-top: 1px solid #dfe4ee;
+      }
+    }
+
+    &-list {
+      width: 220px;
+      height: 160px;
+      padding: 16px 8px;
+      overflow: auto;
+      &-item {
+        line-height: 22px;
+        .@{checkbox-prefix-cls} {
+          margin-right: 10px;
+        }
+      }
+    }
   }
 }
