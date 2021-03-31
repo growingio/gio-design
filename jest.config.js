@@ -30,6 +30,5 @@ module.exports = {
     '!src/**/__test?(s)__/*',
   ],
   coverageDirectory: './coverage/',
-  coveragePathIgnorePatterns: ['list/'],
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
 };
