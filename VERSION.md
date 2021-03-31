@@ -1,15 +1,21 @@
-## [21.3.3](https://github.com/growingio/gio-design/compare/v21.3.2...v21.3.3) (2021-03-26)
+## [21.3.4](https://github.com/growingio/gio-design/compare/v21.3.3...v21.3.4) (2021-03-31)
 
 
 ### Bug Fixes
 
-* **space:** can't read context from project ([de2728c](https://github.com/growingio/gio-design/commit/de2728c645a817a9aeb024581bebc66feaaf3c82))
-* **table:** style bug on Firefox ([49dd307](https://github.com/growingio/gio-design/commit/49dd307640c3ced6a48b072aecab053b8b4f02c1))
+* **select clear disabled:** select disabled not show closeComponent ([4cbcfb1](https://github.com/growingio/gio-design/commit/4cbcfb1311e491992bd8f5062178ae710718d368))
 
 
 ### Features
 
-* **table:** update style, add gio-table-row-selected class on seleted row ([eaf35d5](https://github.com/growingio/gio-design/commit/eaf35d5879435e5f8588a1dbd62eef746e8a3d7d))
+* **list:** upgrade list-lite to list ([0847d76](https://github.com/growingio/gio-design/commit/0847d768d5af06253aa82443190c7443ff5978c4)), closes [#754](https://github.com/growingio/gio-design/issues/754)
+* set @gio-design/icons and @gio-design/tokens as peer dependencies ([#911](https://github.com/growingio/gio-design/issues/911)) ([908e4f1](https://github.com/growingio/gio-design/commit/908e4f1db17fd468065adb0201a85ebd9d4d9d3c))
+
+
+### BREAKING CHANGES
+
+* **list:** Refactor list component with new api.
+* set @gio-design/icons and @gio-design/tokens as peer dependencies.
 
 
 
