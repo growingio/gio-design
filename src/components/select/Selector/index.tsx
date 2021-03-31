@@ -7,12 +7,8 @@ import { SelectorProps } from '../interface';
 import SearchInput from './input';
 import ToolTip from '../../tooltip';
 
-const defaultArrowComponent = (prefix: string) => {
-  return <DownFilled className={`${prefix}-icon-arrow`} />;
-};
-const defaultCloseComponent = (prefix: string) => {
-  return <CloseCircleFilled className={`${prefix}-icon-close`} />;
-};
+const defaultArrowComponent = (prefix: string) => <DownFilled className={`${prefix}-icon-arrow`} />;
+const defaultCloseComponent = (prefix: string) => <CloseCircleFilled className={`${prefix}-icon-close`} />;
 
 const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props, ref) => {
   const {

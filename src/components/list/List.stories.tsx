@@ -43,15 +43,13 @@ const DragTemplate : Story<IBaseListProps> = (args) => (
     <DragList {...args} />
   </div>
 )
-const labelRenderer = (option: any) => {
-    return (
+const labelRenderer = (option: any) => (
       <>
         <Icons.AppOutlined />
         &nbsp;&nbsp;
         {option.label}
       </>
     );
-};
 export const DragLists = DragTemplate.bind({});
 DragLists.args = {
     dataSource: options,

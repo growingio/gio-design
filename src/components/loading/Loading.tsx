@@ -53,16 +53,14 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
     );
   }, [prefixCls, indicator]);
 
-  const loadingElementAndTitle: JSX.Element = useMemo(() => {
-    return shouldLoading ? (
+  const loadingElementAndTitle: JSX.Element = useMemo(() => shouldLoading ? (
       <div className={classNames(`${prefixCls}`, `${prefixCls}-${size}`, className)} style={{...style, ...centerStyle}} ref={composeRef(loadingRef, ref)}>
         {loadingElement}
         {title && (
           <span className={classNames(`${prefixCls}-title`, `${prefixCls}-title-${titlePosition}`)}>{title}</span>
         )}
       </div>
-    ) : <>{null}</>;
-  }, [centerStyle, className, loadingElement, prefixCls, ref, shouldLoading, size, style, title, titlePosition]);
+    ) : <>{null}</>, [centerStyle, className, loadingElement, prefixCls, ref, shouldLoading, size, style, title, titlePosition]);
 
   const result: JSX.Element = useMemo(() => {
     if (children) {

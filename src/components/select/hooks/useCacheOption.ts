@@ -42,14 +42,11 @@ export default function useCacheOptions() {
   };
   // value to option || options
   const getOptionByValue = useCallback(
-    (optValue: string | number): Option => {
-      return cacheOptionsMap.get(optValue);
-    },
+    (optValue: string | number): Option => cacheOptionsMap.get(optValue),
     [cacheOptionsMap]
   );
 
-  const getOptionsByValue = (optValue: MaybeArray<string | number>): MaybeArray<Option> => {
-    return Array.isArray(optValue)
+  const getOptionsByValue = (optValue: MaybeArray<string | number>): MaybeArray<Option> => Array.isArray(optValue)
       ? optValue.reduce((prev: Option[], v) => {
         const op = getOptionByValue(v);
         if (op) {
@@ -58,7 +55,6 @@ export default function useCacheOptions() {
         return prev;
       }, [])
       : getOptionByValue(optValue);
-  };
   return {
     setCacheOptions,
     getOptionByValue,

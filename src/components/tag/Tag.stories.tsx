@@ -60,8 +60,7 @@ const DefaultTemplate: Story<TagProps> = (args) => (
 
 export const Default = DefaultTemplate.bind({});
 
-const DelayTemplate: Story<TagProps> = (args) => {
-  return (
+const DelayTemplate: Story<TagProps> = (args) => (
     <>
       <Tag className="tag_website_demo_tag" {...args}>
         控件内的过滤条件
@@ -76,7 +75,6 @@ const DelayTemplate: Story<TagProps> = (args) => {
       </Tag>
     </>
   );
-};
 export const Closable = DelayTemplate.bind({});
 Closable.args = {
   closable: true,

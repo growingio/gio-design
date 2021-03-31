@@ -59,9 +59,7 @@ const RangeTemplate: Story<DateRangePickerProps> = (args) => {
   const onChange = (value: Array<Moment> | null) => {
     value && setTime(value);
   };
-  const renderExtraFooter = () => {
-    return <div>extra footer</div>;
-  };
+  const renderExtraFooter = () => <div>extra footer</div>;
   return (
     <div style={{ marginLeft: '200px', marginTop: '100px' }}>
       <DateRangePicker

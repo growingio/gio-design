@@ -106,8 +106,7 @@ export const FormWithModal: Story<Props> = (args: Props) => {
 
 // Multiple Column Form Story
 const items = [...new Array(6)];
-export const MultipleForm: Story<Props> = (args) => {
-  return (
+export const MultipleForm: Story<Props> = (args) => (
     <Form {...args}>
       {items.map((_, i) => (
         // eslint-disable-next-line react/no-array-index-key
@@ -117,4 +116,3 @@ export const MultipleForm: Story<Props> = (args) => {
       ))}
     </Form>
   );
-};

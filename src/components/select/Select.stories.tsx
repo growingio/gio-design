@@ -34,8 +34,7 @@ const templatestOptions = values.map((value, index) => ({
   groupLabel: '应用平台',
 }));
 
-const Template: Story<SelectProps> = (args) => {
-  return (
+const Template: Story<SelectProps> = (args) => (
     <div>
       <Select {...args} />
       <br />
@@ -43,7 +42,6 @@ const Template: Story<SelectProps> = (args) => {
       <Select {...args} style={{ width: '300px' }} />
     </div>
   );
-};
 export const Default = Template.bind({});
 const DefaultArgs: SelectProps = {
   size: 'middle',
@@ -57,19 +55,15 @@ Default.args = DefaultArgs;
 
 const fruitValue = ['apple', 'orange', 'greengage', 'Hami melon', 'cherry', 'chestnut', 'Chinese gooseberry'];
 const fruitLabel = ['苹果', '香蕉', '青梅', '哈密瓜', '樱桃', '栗子', '猕猴桃'];
-const fruitOptions = new Array(20).fill(0).reduce((prev, value, index) => {
-  return [...prev, {
+const fruitOptions = new Array(20).fill(0).reduce((prev, value, index) => [...prev, {
     value: `${fruitValue[index % 7]}${index}`,
     label: `${fruitLabel[index % 7]}${index}`,
     title: `${fruitLabel[index % 7]}${index}`,
     groupValue: `'platform'${index % 7}`,
     groupLabel: `水果${index % 7}`,
-  }]
-}, [])
+  }], [])
 
-const multipleTemplate: Story<SelectProps> = (args) => {
-  return <Select {...args} style={{ width: '300px' }} />;
-};
+const multipleTemplate: Story<SelectProps> = (args) => <Select {...args} style={{ width: '300px' }} />;
 export const Multiple = multipleTemplate.bind({});
 const multipleArgs: SelectProps = {
   multiple: true,
@@ -81,9 +75,7 @@ const multipleArgs: SelectProps = {
 };
 Multiple.args = multipleArgs;
 
-const NoBorderTemplate: Story<SelectProps> = (args) => {
-  return <Select {...args} />
-};
+const NoBorderTemplate: Story<SelectProps> = (args) => <Select {...args} />;
 export const NoBorder = NoBorderTemplate.bind({});
 NoBorder.args = {
   size: 'middle',

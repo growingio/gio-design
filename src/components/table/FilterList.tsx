@@ -13,8 +13,7 @@ interface FilterListProps {
   }[];
 }
 
-const FilterList = ({ prefixCls, value, onChange, dataSource }: FilterListProps) => {
-  return (
+const FilterList = ({ prefixCls, value, onChange, dataSource }: FilterListProps) => (
     <List className={`${prefixCls}-filter-list`}>
       {dataSource.map((item) => (
         <List.Item
@@ -30,7 +29,6 @@ const FilterList = ({ prefixCls, value, onChange, dataSource }: FilterListProps)
       ))}
       
     </List>
-  );
-}
+  )
 
 export default FilterList;

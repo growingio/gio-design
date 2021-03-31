@@ -27,13 +27,11 @@ const Layout = ({ prefixCls: customizePrefixCls, fixed, className, style, childr
 
   useLayoutEffect(() => {
     const layoutWidth = containerRef.current?.getBoundingClientRect().width ?? 0;
-    setLayoutState(() => {
-      return {
+    setLayoutState(() => ({
         wide:
           localContentState.maxWidth !== 0 &&
           layoutWidth > localContentState.maxWidth + 2 * localContentState.margin + sidersWidth,
-      };
-    });
+      }));
   }, [width, setLayoutState, localContentState, siders, sidersWidth]);
 
   useEffect(() => {

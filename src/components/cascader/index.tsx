@@ -58,9 +58,7 @@ export const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Pro
   const withWrapperCls = withPrefix(wrapperCls);
   const onSelect: Props['onSelect'] = (data, parents = [], event) => {
     const { label: mapLabel, value: mapValue } = dataKeyMapping(data, keyMapping);
-    const titles = parents.reduce((acc, b) => {
-      return [dataKeyMapping(b, keyMapping).label, acc].join(separator);
-    }, mapLabel);
+    const titles = parents.reduce((acc, b) => [dataKeyMapping(b, keyMapping).label, acc].join(separator), mapLabel);
 
     setTitle(titles || '');
     setSelected(mapValue);

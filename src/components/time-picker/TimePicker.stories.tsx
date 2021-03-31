@@ -22,9 +22,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<TimePickerProps> = (args) => {
-  return <TimePicker {...args} />
-};
+const Template: Story<TimePickerProps> = (args) => <TimePicker {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

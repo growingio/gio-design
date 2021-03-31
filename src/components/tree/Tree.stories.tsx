@@ -93,15 +93,13 @@ Default.args = {
 };
 
 
-const IconTemplate: Story<TreeProps> = (args) => {
-  return (
+const IconTemplate: Story<TreeProps> = (args) => (
     <div style={{ display: 'flex' }}>
       <div className="tree-demo">
         <Tree icon={<AppOutlined />} {...args} />
       </div>
     </div>
   );
-};
 
 export const IconTree = IconTemplate.bind({});
 IconTree.args = {

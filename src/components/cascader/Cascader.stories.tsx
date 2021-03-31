@@ -65,13 +65,11 @@ const Template: Story<Props> = (args) => (
 
 const GroupTemplate: Story<Props> = (args) => {
   const groupNameIcons: { [key: string]: React.ReactNode } = { a: '🎃', b: '🎄' };
-  const groupName = (id: any) => {
-    return (
+  const groupName = (id: any) => (
       <div role="img" aria-label="groupName icon">
         {groupNameIcons[id] ?? 'groupName'}
       </div>
     );
-  };
 
   return (
     <>
@@ -171,8 +169,7 @@ const CustomTemplate: Story<Props> = (args) => {
   );
 };
 
-const AsyncTemplate: Story<Props> = (args) => {
-  return (
+const AsyncTemplate: Story<Props> = (args) => (
     <>
       <Title>{args.title}</Title>
       <Cascader
@@ -201,10 +198,8 @@ const AsyncTemplate: Story<Props> = (args) => {
       />
     </>
   );
-};
 
-const TooltipTemplate: Story<Props> = (args) => {
-  return (
+const TooltipTemplate: Story<Props> = (args) => (
     <>
       <Title>{args.title}</Title>
       <Cascader
@@ -218,7 +213,6 @@ const TooltipTemplate: Story<Props> = (args) => {
       />
     </>
   );
-};
 
 export const Default = Template.bind({});
 export const KeyMapping = Template.bind({});

@@ -8,9 +8,7 @@ import { KeyMapping, NodeData, Value } from './interface';
 /**
  * 以分割符组合 前缀、后缀
  */
-export const withPrefix = (prefix?: string) => (value?: string, sep = '-') => {
-  return [prefix, value].filter((s) => !!s).join(sep);
-};
+export const withPrefix = (prefix?: string) => (value?: string, sep = '-') => [prefix, value].filter((s) => !!s).join(sep);
 
 /**
  * 以关键字生成正则运算表达式

@@ -28,10 +28,10 @@
     "watch": "gio-rewire lib compile --watch"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
     "@gio-design/icons": ">=21.3.2",
-    "@gio-design/tokens": ">=21.3.1"
+    "@gio-design/tokens": ">=21.3.1",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "dependencies": {
     "@types/classnames": "^2.2.9",
@@ -72,6 +72,8 @@
     "@babel/preset-typescript": "^7.12.7",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^12.0.1",
+    "@gio-design/icons": "^21.3.2",
+    "@gio-design/tokens": "^21.3.1",
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-controls": "^6.1.21",
     "@storybook/addon-docs": "^6.1.21",
@@ -96,7 +98,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^7.8.1",
     "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-prettier": "8.1.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
@@ -126,9 +128,7 @@
     "ts-import-plugin": "^1.6.1",
     "ts-jest": "^26.1.0",
     "tslib": "^2.0.0",
-    "typescript": "^4.0.2",
-    "@gio-design/icons": "^21.3.2",
-    "@gio-design/tokens": "^21.3.1"
+    "typescript": "^4.0.2"
   },
   "config": {
     "commitizen": {

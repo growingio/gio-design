@@ -280,12 +280,10 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     }, [mergedFlattenOPtions, value, getOptionByValue, allowCustomOption, hasGroup]);
 
     // search filter InputValue // match input(label === input)
-    const [filteredOptions, hasExactMatch]: [Option[], boolean] = useMemo(() => {
-      return [
+    const [filteredOptions, hasExactMatch]: [Option[], boolean] = useMemo(() => [
         filter(extendedOptions, searchPredicate(input)),
         findIndex(mergedFlattenOPtions, matchPredicate(input)) > -1,
-      ];
-    }, [extendedOptions, searchPredicate, input, matchPredicate, mergedFlattenOPtions]);
+      ], [extendedOptions, searchPredicate, input, matchPredicate, mergedFlattenOPtions]);
 
     // input created customOption
     const completeOptions = useMemo(

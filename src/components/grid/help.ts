@@ -5,12 +5,12 @@ import kebabCase from 'lodash/kebabCase';
 
 export default {};
 
-export const getAttrName = (cls: string, prefix?: string): string => {
+export const getAttrName = (cls: string, prefix?: string): string => 
   // if (!prefix) {
   //   return cls;
   // }
-  return `${prefix}-${kebabCase(cls)}`;
-};
+   `${prefix}-${kebabCase(cls)}`
+;
 
 interface ObjType {
   [key: string]: undefined | number | string | boolean;
@@ -32,8 +32,6 @@ export const dataMap = <T extends ObjType = ObjType>(obj: T, prefixCls: string):
   return cls;
 };
 
-export const clip = (min: number, max: number, value: number): number => {
-  return Math.max(min, Math.min(max, value));
-};
+export const clip = (min: number, max: number, value: number): number => Math.max(min, Math.min(max, value));
 
 export const isNumber = <T = unknown>(n: T): boolean => typeof n === 'number';

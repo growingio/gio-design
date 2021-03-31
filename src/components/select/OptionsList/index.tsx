@@ -100,8 +100,7 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
   const scrollIntoView = (index: number,offset?: number) => {
     VirtualListRef?.current?.scrollTo({ index, offset });
   };
-  const renderAllOptions = () => {
-    return (
+  const renderAllOptions = () => (
       <div
         ref={selectAllRef}
         className={classnames(`${prefixCls}-list-option-all`, {})}
@@ -118,7 +117,6 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
         全部
       </div>
     );
-  };
   return (
     <div
       className={`${prefixCls}-list`}
@@ -146,8 +144,7 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
           itemHeight={itemHeight}
           {...restProps}
         >
-          {(option: Option & { isSelectOptGroup: boolean}, index: number) => {
-            return option.isSelectOptGroup ? (
+          {(option: Option & { isSelectOptGroup: boolean}, index: number) => option.isSelectOptGroup ? (
               <ForwardRenderGroup option={option} prefixCls={prefixCls} groupStyle={groupStyle} index={index} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
             ) : (
               <ForwardRenderTooltip
@@ -166,8 +163,7 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
                   />
                 )}
               />
-            );
-          }}
+            )}
         </VirtualList>
       ) : (
         notFoundContent

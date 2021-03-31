@@ -16,9 +16,7 @@ export default function useRefs<RefType>(): [
     return cacheRefs.current.get(key);
   }).current;
 
-  const getRef = useRef((key: RefKey) => {
-    return cacheRefs.current.get(key);
-  }).current
+  const getRef = useRef((key: RefKey) => cacheRefs.current.get(key)).current
 
   return [setRef, getRef, cacheRefs];
 }

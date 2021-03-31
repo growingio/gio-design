@@ -118,13 +118,10 @@ export const defaultLabelRenderer = (input: string, prefix: string) => (
 };
 export const defaultOptionLabelRenderer = (value: string | number, option?: Option) =>
   option?.title || option?.label || value;
-export const defaultSearchPredicate = (input: string) => (o: Option) => {
-  return typeof o.label === 'string' ? o.label.includes(input) : true;
-};
+export const defaultSearchPredicate = (input: string) => (o: Option) => typeof o.label === 'string' ? o.label.includes(input) : true;
 export const defaultMatchPredicate = (input: string) => (o: Option) => o.label === input;
 
-export const CustomOption = (value: string | number, withGroup = false, id = customOptionKeyPrefix): Option => {
-  return withGroup
+export const CustomOption = (value: string | number, withGroup = false, id = customOptionKeyPrefix): Option => withGroup
     ? {
         value,
         label: value.toString(),
@@ -135,4 +132,3 @@ export const CustomOption = (value: string | number, withGroup = false, id = cus
         value,
         label: value.toString(),
       };
-};

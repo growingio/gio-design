@@ -40,9 +40,7 @@ const Skeleton = (props: SkeletonProps) => {
           <div className={`${prefixCls}-paragraph`}>
             {Array(row)
               .fill(0)
-              .map((...args) => {
-                return <p key={args[1]} />;
-              })}
+              .map((...args) => <p key={args[1]} />)}
           </div>
         )}
       </div>
