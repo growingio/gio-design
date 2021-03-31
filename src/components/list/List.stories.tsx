@@ -1,59 +1,73 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
-import * as Icons from '@gio-design/icons';
-import List, { DragList } from './index'
-import Option from './option'
-import { IBaseListProps } from './interface'
-import './style'
+import { Meta, Story } from '@storybook/react/types-6-0';
+import Docs from './List.mdx';
+import List from '.';
+import { ListProps } from './interfaces';
+import { properties } from './__tests__/data';
+import './style';
 
 export default {
-    title: 'Components/Functional/List',
-    component: List,
-    subcomponents: { Option },
+  title: 'Functional Components/List',
+  component: List,
+  subcomponents: {
+    Divider: List.Divider,
+    Item: List.Item,
+    ItemGroup: List.ItemGroup,
+    ItemSubgroup: List.ItemSubgroup,
+  },
+  parameters: {
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 
-const options = [
-    { value: 'a', label: '选择事件a' },
-    { value: 'b', label: '选择事件b', tooltip: 'test', disabled: true },
-    { value: 'c', label: '选择事件c' },
-    { value: 'd', label: '选择事件d', disabled: true },
-];
-const WrapperStyle = {
-    display: 'inline-block',
-    borderRadius: 6,
-    backgroundColor: '#FFFFFF',
-    boxShadow: '0 2px 14px 1px rgba(223,226,237,0.8)',
-};
-
-const Template : Story<IBaseListProps> = (args) => (
-  <div style={WrapperStyle}>
-    <List {...args} />
+const Wrapper = ({ children }: { children?: React.ReactNode }) => (
+  <div
+    style={{
+      width: 360,
+      border: '0.5px dashed #DCDFED',
+      padding: 8,
+      borderRadius: 4,
+    }}
+  >
+    {children}
   </div>
 );
+const Template: Story<ListProps> = (args) => (
+  <Wrapper>
+    <List {...args} />
+  </Wrapper>
+);
+
 export const Default = Template.bind({});
 Default.args = {
-    dataSource: options,
-    width: 170,
-    height: 176,
-}
+  children: (
+    <List.ItemGroup title="Group 1">
+      <List.Item>first</List.Item>
+      <List.Item disabled>second</List.Item>
+      <List.Divider />
+    </List.ItemGroup>
+  ),
+};
 
+export const Items = Template.bind({});
+Items.args = {
+  items: properties,
+  expandable: true,
+};
 
-const DragTemplate : Story<IBaseListProps> = (args) => (
-  <div style={WrapperStyle}>
-    <DragList {...args} />
-  </div>
-)
-const labelRenderer = (option: any) => (
-      <>
-        <Icons.AppOutlined />
-        &nbsp;&nbsp;
-        {option.label}
-      </>
-    );
-export const DragLists = DragTemplate.bind({});
-DragLists.args = {
-    dataSource: options,
-    width: 260,
-    height: 166,
-    labelRenderer: {labelRenderer},
-}
+export const Empty = Template.bind({});
+Empty.args = {};
+
+export const Ellipsis = () => (
+  <Wrapper>
+    <List>
+      <List.Item>文本</List.Item>
+      <List.Item>文本</List.Item>
+      <List.Item>超长文本超长文本超长文本超长文本超长文本超长文本超长文本超长文本</List.Item>
+      <List.Item>文本</List.Item>
+      <List.Item>文本</List.Item>
+    </List>
+  </Wrapper>
+);

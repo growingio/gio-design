@@ -1,2 +1,2 @@
-import './option.less';
-import './sort.less';
+import '../../empty/style';
+import './index.less';

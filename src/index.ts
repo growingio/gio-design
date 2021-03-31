@@ -17,6 +17,7 @@ export { default as Empty, EmptyProps } from './components/empty';
 export { default as Input, InputProps, InputNumberProps, TextAreaProps } from './components/input';
 export { default as Layout, LayoutProps } from './components/layout';
 export { default as Link, LinkProps } from './components/link';
+export { default as List, ListProps } from './components/list';
 export { default as Loading, LoadingProps } from './components/loading';
 export {
   default as Menu,
@@ -73,7 +74,6 @@ export {
   GioTreeNodeProps,
 } from './components/tree';
 export { default as Upload, UploadProps, UploadType, UploadStatus } from './components/upload';
-export { default as List, ListProps, ListOption } from './components/list';
 export {
   default as Select,
   Option,
