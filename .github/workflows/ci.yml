@@ -51,8 +51,8 @@ jobs:
         run: yarn stylelint && yarn stylelint -f json -o stylelint-report.json
       - name: ESLint
         run: yarn eslint && yarn eslint -f json -o eslint-report.json
-  test:
-    name: Test coverage
+  unit_test:
+    name: Unit test
     needs: install
     runs-on: ubuntu-latest
     steps:
@@ -85,8 +85,38 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           directory: ./coverage/
+  ui_test:
+    name: UI test
+    if: ${{ !github.event.pull_request.head.repo.fork }}
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 12
+      - name: Restore Node.js modules
+        uses: actions/cache@v2.1.4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Build Storybook
+        run: yarn build-storybook
+      - name: Upload to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
+          storybookBuildDir: storybook-static/
+          exitZeroOnChanges: true
+          exitOnceUploaded: true
+          allowConsoleErrors: true
   build:
-    name: Build Package
+    name: Build package
     needs: install
     strategy:
       matrix:
@@ -110,7 +140,7 @@ jobs:
   sonar:
     name: Sonar scan
     if: ${{ !github.event.pull_request.head.repo.fork }}
-    needs: [lint, test]
+    needs: [lint, unit_test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

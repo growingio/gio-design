@@ -80,7 +80,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: coverage/
   build:
-    name: Build Package
+    name: Build package
     needs: install
     runs-on: ubuntu-latest
     steps:
