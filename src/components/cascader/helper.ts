@@ -151,7 +151,7 @@ export const getParentsByValue = (
     if (Array.isArray(item.children)) {
       mergedParents.push(item);
       const target = getParentsByValue(keyMapping, value, item.children, mergedParents);
-      if (target) {
+      if (target && Array.isArray(target) && target.length !== 0) {
         return target;
       }
     }
