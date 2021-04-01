@@ -23,6 +23,8 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     arrowPointAtCenter = false,
     destroyTooltipOnHide,
     autoAdjustOverflow = true,
+    getContainer,
+    getTooltipContainer,
     ...rest
   } = props;
 
@@ -83,6 +85,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
         }
       }}
       destroyTooltipOnHide={isNoContent || destroyTooltipOnHide}
+      getTooltipContainer={getContainer || getTooltipContainer}
       {...rest}
     >
       {setCursor(children)}
