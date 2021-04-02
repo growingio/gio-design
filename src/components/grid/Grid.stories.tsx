@@ -3,7 +3,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { Row, Col } from './index';
 import { RowProps, ColProps } from './interface';
 import './style/index.less';
-import './style/row.less';
+import '../row/style';
+import '../col/style';
 import './style/demo.stories.less';
 
 export default {
