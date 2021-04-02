@@ -1,3 +1,17 @@
+# 21.4.0 (2021-04-02)
+
+
+### Bug Fixes
+
+* **cascader:** getParentByValue ([#917](https://github.com/growingio/gio-design/issues/917)) ([c8717b7](https://github.com/growingio/gio-design/commit/c8717b7806eabcaebabce693deaf437da7e7928a))
+* **select:** text ellipsis  error ([#920](https://github.com/growingio/gio-design/issues/920)) ([da73353](https://github.com/growingio/gio-design/commit/da73353eb7bdc2254c68c99d3441a3adb72d49a6)), closes [#914](https://github.com/growingio/gio-design/issues/914)
+
+### Features
+
+* support babel-plugin-import ([#916](https://github.com/growingio/gio-design/issues/916)) ([3ebc2bb](https://github.com/growingio/gio-design/commit/3ebc2bb34856381173e746443bcece3485a861c1))
+
+
+
 ## [21.3.4](https://github.com/growingio/gio-design/compare/v21.3.3...v21.3.4) (2021-03-31)
 
 
