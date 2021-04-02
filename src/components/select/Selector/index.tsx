@@ -48,7 +48,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
   const isEmptyValue = useMemo(() => !isEmpty(value), [value]);
   const showClose = allowClear && (isEmptyValue || input) && isHovered && !disabled;
   const selectValuesWidth = selectValuesRef?.current?.getBoundingClientRect()?.width;
-  const isShowTooltip = (selectValuesWidth || 0) - (selectorAllRef?.current?.clientWidth || 0) <= 0;
+  const isShowTooltip = style?.width && (selectValuesWidth || 0) - (selectorAllRef?.current?.offsetWidth || 0) <= 0;
 
   useImperativeHandle(ref, () => ({
     clientWidth: selectorRef?.current?.clientWidth,
@@ -131,41 +131,51 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
     }, []);
 
     return (searchType === 'inner' || !input) && !isNil(value) ? (
-      <div
-        className={`${prefix}-item-all`}
-        style={{ maxWidth: style && style.width && style?.width > 0 ? 'fill-available' : undefined }}
+      <ToolTip
+        disabled={!isShowTooltip}
+        title={allValueLabel?.join(',')}
+        placement="bottom"
+        getTooltipContainer={()=> selectorRef?.current?.parentElement || document.body}
       >
-        <ToolTip
-          overlayStyle={{ width: selectorRef?.current?.clientWidth }}
-          arrowPointAtCenter
-          disabled={!isShowTooltip}
-          title={allValueLabel?.join(',')}
-          placement="bottom"
+        <div
+          className={`${prefix}-item-all`}
+          style={{ maxWidth: style && style.width && style?.width > 0 ? 'fill-available' : undefined }}
         >
-          <span ref={selectorAllRef} className={`${prefix}-item-all-text`}>
-            {allValueLabel?.join('，')}
-          </span>
-        </ToolTip>
-      </div>
+          <div className={`${prefix}-item-tooltip-container`}>
+            <span
+              ref={selectorAllRef}
+              className={classnames(`${prefix}-item-all-text`,{
+              [`${prefix}-item-text-visibility`]:isShowTooltip
+            })}
+            >
+              {allValueLabel?.join('，')}
+            </span>
+            { isShowTooltip && <span className={classnames(`${prefix}-item-text-ellipsis`)}>{allValueLabel?.join('，')}</span>}
+          </div>
+        </div>
+      </ToolTip>
     ) : null;
+    
   };
 
   const renderSingleValue = () => {
     const text = optionLabelRenderer(value as string | number, getOptionByValue(value as string | number));
     return !input && (typeof value === 'string' || typeof value === 'number') ? (
-      <div className={`${prefix}-item`}>
-        <ToolTip
-          disabled={!isShowTooltip}
-          overlayStyle={{ width: selectorRef?.current?.clientWidth }}
-          arrowPointAtCenter
-          title={text}
-          placement="bottom"
-        >
-          <span ref={selectorAllRef} className={`${prefix}-item-text`}>
+      <ToolTip
+        disabled={!isShowTooltip}
+        title={text}
+        placement="bottom"
+        getTooltipContainer={()=>selectorRef?.current?.parentElement || document.body}
+      >
+        <div className={classnames(`${prefix}-item`)}>      
+          <span
+            ref={selectorAllRef}
+            className={classnames(`${prefix}-item-text`)}
+          >
             {text}
           </span>
-        </ToolTip>
-      </div>
+        </div>
+      </ToolTip>
     ) : null;
   };
 

@@ -34,11 +34,11 @@ exports[`<Select /> Single Multiple options or groupOptions  renders <Select /> 
       >
         <div
           className="gio-select-item"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <span
             className="gio-select-item-text"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
           >
             全部
           </span>
@@ -120,11 +120,11 @@ exports[`<Select /> Single Multiple options or groupOptions  renders <Select /> 
       >
         <div
           className="gio-select-item"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <span
             className="gio-select-item-text"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
           >
             全部
           </span>
