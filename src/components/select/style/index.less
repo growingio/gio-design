@@ -90,6 +90,7 @@
 
   &-item {
     max-width: 100%;
+    overflow: hidden;
     font-size: @select-input-fontSize;
     transition: margin 0.2s;
 
@@ -115,6 +116,8 @@
 
     &-text {
       overflow: hidden;
+      font-size: 14px;
+      line-height: 22px;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
@@ -303,7 +306,7 @@
 
   &-isSelected {
     color: @color-background-button-primary-hover;
-    background-color: @palette-gray-3;
+    background-color: @palette-gray-1;
   }
 }
 

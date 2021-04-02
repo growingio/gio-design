@@ -33,14 +33,22 @@ const templatestOptions = values.map((value, index) => ({
   groupValue: 'platform',
   groupLabel: '应用平台',
 }));
-
+const templatestEllipsisOptions = values.map((value, index) => ({
+  value,
+  label: labels[index].repeat(6),
+  groupValue: 'platform',
+  groupLabel: '应用平台',
+}))
 const Template: Story<SelectProps> = (args) => (
-    <div>
-      <Select {...args} />
-      <br />
-      <br />
-      <Select {...args} style={{ width: '300px' }} />
-    </div>
+  <div>
+    <Select {...args} options={templatestEllipsisOptions} />
+    <br />
+    <br />
+    <Select {...args} style={{ width: '300px' }} />
+    <br />
+    <br />
+    <Select {...args} options={templatestEllipsisOptions} style={{ width: '300px' }} />
+  </div>
   );
 export const Default = Template.bind({});
 const DefaultArgs: SelectProps = {
