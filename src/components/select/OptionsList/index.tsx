@@ -182,7 +182,6 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
             取消
           </Button>
           <Button
-            type="secondary"
             className={classnames({[`${prefixCls}-button-active`]: activeIndex === data.length + 1})}
             size="middle"
             onClick={onConfirm}

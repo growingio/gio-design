@@ -201,10 +201,11 @@
     color: @palette-gray-5;
     text-shadow: none;
     background: @color-background-input-disable;
-    border-color: @color-border-input-disable;
     cursor: not-allowed !important;
   }
-
+  &-bordered&-disabled {
+    border-color: @color-border-input-disable;
+  }
   &-focused&-bordered {
     border: 1px solid @color-border-input-active;
   }
