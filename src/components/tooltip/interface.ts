@@ -28,4 +28,10 @@ export interface TooltipProps extends Partial<RcTooltipProps> {
    被包裹的元素
    */
   children: React.ReactElement;
+
+    /**
+    @deprecated
+   */
+    getTooltipContainer?: (node: HTMLElement) => HTMLElement;
+    getContainer?: (node: HTMLElement) => HTMLElement;
 }
