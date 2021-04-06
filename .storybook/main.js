@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     {
       name: '@storybook/addon-docs',
@@ -24,6 +23,10 @@ module.exports = {
     'storybook-addon-designs',
     path.resolve('./.storybook/footer/preset'),
   ],
+  features: {
+    postcss: false,
+  },
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.less$/,
