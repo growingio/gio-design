@@ -99,7 +99,7 @@
 .@{select-prefix-cls}-clear {
   position: absolute;
   top: 50%;
-  right: 8px;
+  right: 10px;
   z-index: 1;
   display: inline-block;
   width: 12px;
@@ -107,13 +107,20 @@
   margin-top: -6px;
   font-size: 12px;
   font-style: normal;
-  line-height: 1;
+  line-height: 0;
   text-align: center;
   text-transform: none;
+  background: ghostwhite;
   cursor: pointer;
-  opacity: 0;
+  opacity: 1;
   transition: color 0.3s ease, opacity 0.15s ease;
   text-rendering: auto;
+
+  svg {
+    width: 12px;
+    height: auto;
+  }
+
   &::before {
     display: block;
   }
