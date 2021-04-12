@@ -49,7 +49,7 @@ const Template: Story<TreeSelectProps<any>> = (args) => {
   const [value, setValue] = useState<string | undefined>(undefined);
 
   return (
-    <TreeSelect value={value} onChange={(v: string) => setValue(v)} {...args} />
+    <TreeSelect value={value} allowClear onChange={(v: string) => setValue(v)} {...args} />
   );
 };
 export const Default = Template.bind({});
@@ -60,6 +60,7 @@ Default.args = {
   dropdownStyle: { maxHeight: 400, overflow: 'auto' },
   placeholder: '请选择...',
   treeDefaultExpandAll: true,
+  allowClear: true
 };
 
 
