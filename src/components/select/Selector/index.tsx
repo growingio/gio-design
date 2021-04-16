@@ -141,17 +141,13 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
           className={`${prefix}-item-all`}
           style={{ maxWidth: style && style.width && style?.width > 0 ? 'fill-available' : undefined }}
         >
-          <div className={`${prefix}-item-tooltip-container`}>
-            <span
+           <span
               ref={selectorAllRef}
               className={classnames(`${prefix}-item-all-text`,{
-              [`${prefix}-item-text-visibility`]:isShowTooltip
             })}
             >
               {allValueLabel?.join('，')}
             </span>
-            { isShowTooltip && <span className={classnames(`${prefix}-item-text-ellipsis`)}>{allValueLabel?.join('，')}</span>}
-          </div>
         </div>
       </ToolTip>
     ) : null;
