@@ -118,13 +118,8 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     useEffect(() => {
       if (!disabled) {
         if (visible) {
-          if (selectorRef.current) {
-            selectorRef.current.focus();
-          }
-          setTimeout(() => {
-            optionListRef?.current?.onFocus();
-            setFocused(visible);
-          }, 80);
+          selectorRef?.current?.focus();
+          setFocused(visible);
         } else {
           setActiveIndex(-1);
           setFocused(visible);
@@ -206,7 +201,6 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
     const onListSelect = (selectedValue: React.ReactText, option: Option) => {
       if (!multiple) {
-        onVisibleChange(false);
         selectorRef.current?.blur();
       } else {
         selectorRef.current?.focus();
@@ -216,7 +210,6 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     };
     const onListDeselect = (selectedValue: React.ReactText, option: Option) => {
       if (!multiple) {
-        onVisibleChange(false);
         selectorRef.current?.blur();
       } else {
         selectorRef.current?.focus();
@@ -240,6 +233,9 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       const selectedOption = getOptionByValue(selectValue) as Option;
       const isTempSelected = tempValue.includes(selectValue);
       const isSelected = !Array.isArray(value) ? value === selectValue : value.includes(selectValue);
+      if (!multiple) {
+        onVisibleChange(false);
+      }
       if (isTempSelected) {
         if (allowDeselect) {
           onListDeselect(selectValue, selectedOption);
@@ -353,6 +349,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       // event.preventDefault();
       if (event.keyCode === 40) {
         if (!visible) {
+          setTimeout(() => {optionListRef?.current?.onFocus()}, 80);
           onVisibleChange(true);
           if (activeIndex === -1) {
             setActiveIndex(getArrowDownItemIndex(activeIndex, isFooter));
