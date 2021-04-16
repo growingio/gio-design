@@ -7293,10 +7293,9 @@ initialize {
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "clip-rule": "evenodd",
-                        "d": "M3 7a1.5 1.5 0 11-3.001-.001A1.5 1.5 0 013 7zm5.5 0a1.5 1.5 0 11-3.001-.001A1.5 1.5 0 018.5 7zM14 7a1.5 1.5 0 11-3.002-.002A1.5 1.5 0 0114 7z",
+                        "class": "more-outlined_svg__cls-2",
+                        "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                         "fill": "currentColor",
-                        "fill-rule": "evenodd",
                       },
                       "children": Array [],
                       "name": "path",
@@ -7306,16 +7305,14 @@ initialize {
                       "prev": null,
                       "type": "tag",
                       "x-attribsNamespace": Object {
-                        "clip-rule": undefined,
+                        "class": undefined,
                         "d": undefined,
                         "fill": undefined,
-                        "fill-rule": undefined,
                       },
                       "x-attribsPrefix": Object {
-                        "clip-rule": undefined,
+                        "class": undefined,
                         "d": undefined,
                         "fill": undefined,
-                        "fill-rule": undefined,
                       },
                     },
                   ],
@@ -7414,10 +7411,9 @@ initialize {
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "clip-rule": "evenodd",
-                      "d": "M3 7a1.5 1.5 0 11-3.001-.001A1.5 1.5 0 013 7zm5.5 0a1.5 1.5 0 11-3.001-.001A1.5 1.5 0 018.5 7zM14 7a1.5 1.5 0 11-3.002-.002A1.5 1.5 0 0114 7z",
+                      "class": "more-outlined_svg__cls-2",
+                      "d": "M7 1a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1zm0 5a1 1 0 11-1 1 1 1 0 011-1z",
                       "fill": "currentColor",
-                      "fill-rule": "evenodd",
                     },
                     "children": Array [],
                     "name": "path",
@@ -7427,16 +7423,14 @@ initialize {
                     "prev": null,
                     "type": "tag",
                     "x-attribsNamespace": Object {
-                      "clip-rule": undefined,
+                      "class": undefined,
                       "d": undefined,
                       "fill": undefined,
-                      "fill-rule": undefined,
                     },
                     "x-attribsPrefix": Object {
-                      "clip-rule": undefined,
+                      "class": undefined,
                       "d": undefined,
                       "fill": undefined,
-                      "fill-rule": undefined,
                     },
                   },
                 ],
