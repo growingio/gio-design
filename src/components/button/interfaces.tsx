@@ -1,6 +1,6 @@
 import { SizeType } from '../config-provider/SizeContext';
 
-export type ButtonType = 'primary' | 'secondary' | 'assist' | 'text';
+export type ButtonType = 'primary' | 'secondary' | 'link' | 'text';
 export type ButtonHTMLType = 'submit' | 'button' | 'reset';
 
 export interface BaseButtonProps {
