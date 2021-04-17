@@ -144,7 +144,7 @@ exports[`Testing Table should be stable 1`] = `
                             class="gio-table-column-filter-inner"
                           >
                             <button
-                              class="gio-btn gio-table-column-filter-inner-btn gio-btn-assist gio-btn-mini gio-btn-icon-only"
+                              class="gio-btn gio-table-column-filter-inner-btn gio-btn-text gio-btn-mini gio-btn-icon-only"
                               style="cursor: pointer;"
                               type="button"
                             >
@@ -291,7 +291,7 @@ exports[`Testing Table should be stable 1`] = `
                             class="gio-table-column-filter-inner"
                           >
                             <button
-                              class="gio-btn gio-table-column-filter-inner-btn gio-btn-assist gio-btn-mini gio-btn-icon-only"
+                              class="gio-btn gio-table-column-filter-inner-btn gio-btn-text gio-btn-mini gio-btn-icon-only"
                               style="cursor: pointer;"
                               type="button"
                             >
@@ -438,7 +438,7 @@ exports[`Testing Table should be stable 1`] = `
                             class="gio-table-column-filter-inner"
                           >
                             <button
-                              class="gio-btn gio-table-column-filter-inner-btn gio-btn-assist gio-btn-mini gio-btn-icon-only"
+                              class="gio-btn gio-table-column-filter-inner-btn gio-btn-text gio-btn-mini gio-btn-icon-only"
                               style="cursor: pointer;"
                               type="button"
                             >

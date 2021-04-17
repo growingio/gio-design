@@ -11,6 +11,6 @@ const options = [
 
 export default () => (
   <Dropdown overlay={<List dataSource={options} width={144} height={176} />}>
-    <Button type="assist" icon={<MoreOutlined />} />
+    <Button type="text" icon={<MoreOutlined />} />
   </Dropdown>
 );

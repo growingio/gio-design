@@ -5,7 +5,7 @@ export type ButtonHTMLType = 'submit' | 'button' | 'reset';
 
 export interface BaseButtonProps {
   /**
-   设置按钮类型，可选值为 `primary` `secondary` `assist` `text` 或者不设
+   设置按钮类型，可选值为 `primary` `secondary` `link` `text` 或者不设
    */
   type?: ButtonType;
   /**
