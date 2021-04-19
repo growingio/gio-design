@@ -3374,10 +3374,21 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/node-logger@6.2.3", "@storybook/node-logger@^6.2.3":
+"@storybook/node-logger@6.2.3":
   version "6.2.3"
   resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.2.3.tgz#3f169747a1e871cd048da79c02d4f1bdc27ff485"
   integrity sha512-NwKVqfRyscoElY3vKF2KRVXng4NMmPIJF11ddpWJfZ2+ojGHHaFKUKZy0iZrUkTZpv/0o5VtR3K/vU+2ZVWTKw==
+  dependencies:
+    "@types/npmlog" "^4.1.2"
+    chalk "^4.1.0"
+    core-js "^3.8.2"
+    npmlog "^4.1.2"
+    pretty-hrtime "^1.0.3"
+
+"@storybook/node-logger@^6.2.3":
+  version "6.2.8"
+  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.2.8.tgz#a5cb21e397a3e4945375b73803f901c93513a56c"
+  integrity sha512-mSbHF1yneRScviISaDQmtRcOBwjHbmdc8p791X4Myl87luqENnt0s8mnTG0H8uH/LGKvtZ2AGST89MqusQ6xUw==
   dependencies:
     "@types/npmlog" "^4.1.2"
     chalk "^4.1.0"
@@ -6343,16 +6354,7 @@ core-js@^2.4.0:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz"
 
-core-js@^3.0.4:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.7.0.tgz#b0a761a02488577afbf97179e4681bf49568520f"
-  integrity sha512-NwS7fI5M5B85EwpWuIwJN4i/fbisQUwLwiSNUWeXlkAZ0sbBjLEvLvFLf1uzAUV66PcEPt4xCGCmOZSxVf3xzA==
-
-core-js@^3.6.1, core-js@^3.6.5:
-  version "3.6.5"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz"
-
-core-js@^3.8.2:
+core-js@^3.0.4, core-js@^3.6.1, core-js@^3.6.5, core-js@^3.8.2:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.10.0.tgz#9a020547c8b6879f929306949e31496bbe2ae9b3"
   integrity sha512-MQx/7TLgmmDVamSyfE+O+5BHvG1aUGj/gHhLn1wVtm2B5u1eVIPvh7vkfjwWKNCjrTJB8+He99IntSQ1qP+vYQ==
