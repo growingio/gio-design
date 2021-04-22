@@ -4761,7 +4761,7 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "gio-btn gio-btn-assist gio-btn-middle",
+                  "class": "gio-btn gio-btn-text gio-btn-middle",
                   "type": "button",
                 },
                 "children": Array [
@@ -4769,7 +4769,7 @@ initialize {
                     "attribs": Object {},
                     "children": Array [
                       Object {
-                        "data": "辅助按钮",
+                        "data": "文本按钮",
                         "next": null,
                         "parent": [Circular],
                         "prev": null,
@@ -4790,7 +4790,7 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
-                    "class": "gio-btn gio-btn-text gio-btn-small gio-btn-background-ghost",
+                    "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
                     "type": "button",
                   },
                   "children": Array [
@@ -4798,7 +4798,7 @@ initialize {
                       "attribs": Object {},
                       "children": Array [
                         Object {
-                          "data": "深色背景",
+                          "data": "链接按钮",
                           "next": null,
                           "parent": [Circular],
                           "prev": null,
@@ -5002,7 +5002,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "gio-btn gio-btn-assist gio-btn-middle",
+                "class": "gio-btn gio-btn-text gio-btn-middle",
                 "type": "button",
               },
               "children": Array [
@@ -5010,7 +5010,7 @@ initialize {
                   "attribs": Object {},
                   "children": Array [
                     Object {
-                      "data": "辅助按钮",
+                      "data": "文本按钮",
                       "next": null,
                       "parent": [Circular],
                       "prev": null,
@@ -5031,7 +5031,7 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "gio-btn gio-btn-text gio-btn-small gio-btn-background-ghost",
+                  "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
                   "type": "button",
                 },
                 "children": Array [
@@ -5039,7 +5039,7 @@ initialize {
                     "attribs": Object {},
                     "children": Array [
                       Object {
-                        "data": "深色背景",
+                        "data": "链接按钮",
                         "next": null,
                         "parent": [Circular],
                         "prev": null,
@@ -5242,7 +5242,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
-              "class": "gio-btn gio-btn-assist gio-btn-middle",
+              "class": "gio-btn gio-btn-text gio-btn-middle",
               "type": "button",
             },
             "children": Array [
@@ -5250,7 +5250,7 @@ initialize {
                 "attribs": Object {},
                 "children": Array [
                   Object {
-                    "data": "辅助按钮",
+                    "data": "文本按钮",
                     "next": null,
                     "parent": [Circular],
                     "prev": null,
@@ -5271,7 +5271,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "gio-btn gio-btn-text gio-btn-small gio-btn-background-ghost",
+                "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
                 "type": "button",
               },
               "children": Array [
@@ -5279,7 +5279,7 @@ initialize {
                   "attribs": Object {},
                   "children": Array [
                     Object {
-                      "data": "深色背景",
+                      "data": "链接按钮",
                       "next": null,
                       "parent": [Circular],
                       "prev": null,
@@ -5504,7 +5504,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-btn gio-btn-assist gio-btn-middle",
+            "class": "gio-btn gio-btn-text gio-btn-middle",
             "type": "button",
           },
           "children": Array [
@@ -5512,7 +5512,7 @@ initialize {
               "attribs": Object {},
               "children": Array [
                 Object {
-                  "data": "辅助按钮",
+                  "data": "文本按钮",
                   "next": null,
                   "parent": [Circular],
                   "prev": null,
@@ -5533,7 +5533,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
-              "class": "gio-btn gio-btn-text gio-btn-small gio-btn-background-ghost",
+              "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
               "type": "button",
             },
             "children": Array [
@@ -5541,7 +5541,7 @@ initialize {
                 "attribs": Object {},
                 "children": Array [
                   Object {
-                    "data": "深色背景",
+                    "data": "链接按钮",
                     "next": null,
                     "parent": [Circular],
                     "prev": null,
@@ -5745,7 +5745,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-btn gio-btn-assist gio-btn-middle",
+          "class": "gio-btn gio-btn-text gio-btn-middle",
           "type": "button",
         },
         "children": Array [
@@ -5753,7 +5753,7 @@ initialize {
             "attribs": Object {},
             "children": Array [
               Object {
-                "data": "辅助按钮",
+                "data": "文本按钮",
                 "next": null,
                 "parent": [Circular],
                 "prev": null,
@@ -5774,7 +5774,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-btn gio-btn-text gio-btn-small gio-btn-background-ghost",
+            "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
             "type": "button",
           },
           "children": Array [
@@ -5782,7 +5782,7 @@ initialize {
               "attribs": Object {},
               "children": Array [
                 Object {
-                  "data": "深色背景",
+                  "data": "链接按钮",
                   "next": null,
                   "parent": [Circular],
                   "prev": null,
@@ -6015,7 +6015,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-btn gio-btn-text gio-btn-small gio-btn-background-ghost",
+          "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
           "type": "button",
         },
         "children": Array [
@@ -6023,7 +6023,7 @@ initialize {
             "attribs": Object {},
             "children": Array [
               Object {
-                "data": "深色背景",
+                "data": "链接按钮",
                 "next": null,
                 "parent": [Circular],
                 "prev": null,
@@ -6087,7 +6087,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-btn gio-btn-assist gio-btn-middle",
+            "class": "gio-btn gio-btn-text gio-btn-middle",
             "type": "button",
           },
           "children": Array [
@@ -6095,7 +6095,7 @@ initialize {
               "attribs": Object {},
               "children": Array [
                 Object {
-                  "data": "辅助按钮",
+                  "data": "文本按钮",
                   "next": null,
                   "parent": [Circular],
                   "prev": null,
@@ -6316,7 +6316,7 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "gio-btn gio-btn-text gio-btn-small gio-btn-background-ghost",
+            "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
             "type": "button",
           },
           "children": Array [
@@ -6324,7 +6324,7 @@ initialize {
               "attribs": Object {},
               "children": Array [
                 Object {
-                  "data": "深色背景",
+                  "data": "链接按钮",
                   "next": null,
                   "parent": [Circular],
                   "prev": null,
@@ -6347,7 +6347,7 @@ initialize {
           "parent": [Circular],
           "prev": Object {
             "attribs": Object {
-              "class": "gio-btn gio-btn-assist gio-btn-middle",
+              "class": "gio-btn gio-btn-text gio-btn-middle",
               "type": "button",
             },
             "children": Array [
@@ -6355,7 +6355,7 @@ initialize {
                 "attribs": Object {},
                 "children": Array [
                   Object {
-                    "data": "辅助按钮",
+                    "data": "文本按钮",
                     "next": null,
                     "parent": [Circular],
                     "prev": null,

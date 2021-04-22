@@ -51,13 +51,13 @@ const options = [
 const PlacementTemplate: Story<DropdownProps> = (args) => (
   <div style={{ padding: 300 }}>
     <Dropdown {...args} placement="bottomRight">
-      <Button type="assist" icon={<MoreOutlined />} style={{ marginLeft: '64px' }} />
+      <Button type="text" icon={<MoreOutlined />} style={{ marginLeft: '64px' }} />
     </Dropdown>
     <Dropdown {...args} placement="bottom">
-      <Button type="assist" icon={<MoreOutlined />} style={{ margin: '0px 128px' }} />
+      <Button type="text" icon={<MoreOutlined />} style={{ margin: '0px 128px' }} />
     </Dropdown>
     <Dropdown {...args} placement="bottomLeft">
-      <Button type="assist" icon={<MoreOutlined />} />
+      <Button type="text" icon={<MoreOutlined />} />
     </Dropdown>
   </div>
 );

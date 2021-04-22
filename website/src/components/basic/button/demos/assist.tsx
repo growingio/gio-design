@@ -24,79 +24,79 @@ export default () => {
     <div className="button-demo">
       <div className="list">
         <div className="item">
-          <Button type="assist" size="large">
+          <Button type="text" size="large">
             辅助按钮
           </Button>
         </div>
         <div className="item">
-          <Button type="assist" size="large" disabled>
+          <Button type="text" size="large" disabled>
             禁用
           </Button>
         </div>
         <div className="item">
-          <Button type="assist" size="large" loading>
+          <Button type="text" size="large" loading>
             加载中
           </Button>
         </div>
         <div className="item">
-          <Button type="assist" size="large" loading={loadings[1]} onClick={() => enterLoading(1)}>
+          <Button type="text" size="large" loading={loadings[1]} onClick={() => enterLoading(1)}>
             点击!
           </Button>
         </div>
         <div className="item">
-          <Button icon={<FilterOutlined />} size="large" type="assist">
+          <Button icon={<FilterOutlined />} size="large" type="text">
             过滤条件
           </Button>
         </div>
       </div>
       <div className="list">
         <div className="item">
-          <Button type="assist">辅助按钮</Button>
+          <Button type="text">辅助按钮</Button>
         </div>
         <div className="item">
-          <Button type="assist" disabled>
+          <Button type="text" disabled>
             禁用
           </Button>
         </div>
         <div className="item">
-          <Button type="assist" loading>
+          <Button type="text" loading>
             加载中
           </Button>
         </div>
         <div className="item">
-          <Button type="assist" loading={loadings[2]} onClick={() => enterLoading(2)}>
+          <Button type="text" loading={loadings[2]} onClick={() => enterLoading(2)}>
             点击!
           </Button>
         </div>
         <div className="item">
-          <Button icon={<FilterOutlined />} type="assist">
+          <Button icon={<FilterOutlined />} type="text">
             过滤条件
           </Button>
         </div>
       </div>
       <div className="list">
         <div className="item">
-          <Button type="assist" size="small">
+          <Button type="text" size="small">
             辅助按钮
           </Button>
         </div>
         <div className="item">
-          <Button type="assist" size="small" disabled>
+          <Button type="text" size="small" disabled>
             禁用
           </Button>
         </div>
         <div className="item">
-          <Button type="assist" size="small" loading>
+          <Button type="text" size="small" loading>
             加载中
           </Button>
         </div>
         <div className="item">
-          <Button type="assist" size="small" loading={loadings[3]} onClick={() => enterLoading(3)}>
+          <Button type="text" size="small" loading={loadings[3]} onClick={() => enterLoading(3)}>
             点击!
           </Button>
         </div>
         <div className="item">
-          <Button icon={<FilterOutlined />} size="small" type="assist">
+          <Button icon={<FilterOutlined />} size="small" type="text">
             过滤条件
           </Button>
         </div>
