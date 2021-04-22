@@ -2524,10 +2524,10 @@
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
-"@gio-design/tokens@^21.3.1":
-  version "21.3.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.3.1.tgz#ff2ed50151d42f93908ea17343957100aff0f69f"
-  integrity sha512-OIj89KegIDwe5iAAubjtOuxn4TlU2XQQ7Z4K9wOJBglXfImcmTJdiAx+joX5J3PDHof2lh16/Wv3OhoLBZZmpQ==
+"@gio-design/tokens@^21.4.2":
+  version "21.4.2"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.2.tgz#8914f09567d042a98f144fe4f1d7f463954e3378"
+  integrity sha512-1/EhIwL9+t3zHmxRWf01vr+U4PiANwVgcZ/MK8iet7srbQGrrrnKS5aKpLVt53Mr9HCGB0dAX1S3RDyjJ559uA==
 
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"

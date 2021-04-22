@@ -78,7 +78,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
             values={filteredKeys}
           >
             <Button
-              type="assist"
+              type="text"
               mini
               className={`${prefixCls}-column-filter-inner-btn`}
               icon={

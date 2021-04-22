@@ -14,9 +14,6 @@
 @btn-square-size-mini: @size-field-mini;
 
 // for compatible
-// @btn-assist-color: @text-color-base;
-// @btn-assist-bg: none;
-// @btn-assist-border: none;
 
 // Button styles
 // -----------------------------
@@ -37,12 +34,12 @@
     .btn-secondary;
   }
 
-  &-assist {
-    .btn-assist;
-  }
-
   &-text {
     .btn-text;
+  }
+
+  &-link {
+    .btn-link;
   }
 
   &::before {
@@ -100,12 +97,6 @@
       vertical-align: unset;
       svg {
         vertical-align: bottom !important;
-      }
-    }
-    &.@{btn-prefix-cls}-assist {
-      padding: 8px !important;
-      &.@{btn-prefix-cls}-mini {
-        padding: 5px !important;
       }
     }
   }
