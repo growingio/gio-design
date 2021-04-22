@@ -17,7 +17,7 @@ export default () => (
         </Button>
       </div>
       <div className="item">
-        <Button block type="assist">
+        <Button block type="text">
           块按钮
         </Button>
       </div>
