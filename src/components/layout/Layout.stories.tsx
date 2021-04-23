@@ -25,7 +25,7 @@ export default {
 const Header = () => (
   <Layout.Header justify="space-between" style={{ padding: '0 24px', borderBottom: '1px solid rgb(223 228 238)' }}>
     <Layout.Header.HeaderSection justify="space-between">
-      <Button type="assist" icon={<HomeFilled size="16px" />} />
+      <Button type="text" icon={<HomeFilled size="16px" />} />
       <img
         src="https://www.growingio.com/vassets/images/home_v3/gio-logo-primary.svg"
         style={{ width: 120, height: 26, marginTop: 7, marginLeft: 8 }}
@@ -44,8 +44,8 @@ const Header = () => (
       />
     </Layout.Header.HeaderSection>
     <Layout.Header.HeaderSection justify="space-between" style={{ width: 136 }}>
-      <Button type="assist" icon={<AppsFilled />} />
-      <Button type="assist" icon={<SettingOutlined />} />
+      <Button type="text" icon={<AppsFilled />} />
+      <Button type="text" icon={<SettingOutlined />} />
       <Avatar />
     </Layout.Header.HeaderSection>
   </Layout.Header>

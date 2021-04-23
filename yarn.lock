@@ -2517,17 +2517,17 @@
     strip-json-comments "^3.1.1"
 
 "@gio-design/icons@^21.4.0":
-  version "21.4.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.4.0.tgz#033dea22cc460eb2b147bddd81974897dac8dbcd"
-  integrity sha512-TdGGUQdJOJVCfTbQ7vbdEVsA6c2RdTtpKqqa8ffMOfkzh0vTRxdSCVSXcI7zzB2ErT2yIxqcv4OtH3ucdBNpeg==
+  version "21.4.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.4.1.tgz#5a9f5192107905b905439f4b937f8e9678fb2e69"
+  integrity sha512-1bOlEYHfWPfMwYKQ6pnWir0CNtvnKFEeqqVlj7euw6TQWUR85TT/l+t+J92CG6OhZOgWkSLe76X24QpyTp2Hzg==
   dependencies:
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
-"@gio-design/tokens@^21.4.1":
-  version "21.4.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.1.tgz#710494032c0ff0c61ae9ce3c0a7e2565d3eecade"
-  integrity sha512-U2iix98dSMNURsht4KK7ezmtVHcGMup55zrxflKYsKm7AahNNadTtDyHAeo5iUE78A2ga3lHpZZuyjbgCt6/bg==
+"@gio-design/tokens@^21.4.2":
+  version "21.4.2"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.2.tgz#8914f09567d042a98f144fe4f1d7f463954e3378"
+  integrity sha512-1/EhIwL9+t3zHmxRWf01vr+U4PiANwVgcZ/MK8iet7srbQGrrrnKS5aKpLVt53Mr9HCGB0dAX1S3RDyjJ559uA==
 
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
@@ -7424,10 +7424,10 @@ eslint-config-airbnb@^18.2.0:
     object.assign "^4.1.0"
     object.entries "^1.1.2"
 
-eslint-config-prettier@8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.1.0.tgz#4ef1eaf97afe5176e6a75ddfb57c335121abc5a6"
-  integrity sha512-oKMhGv3ihGbCIimCAjqkdzx2Q+jthoqnXSP+d86M9tptwugycmTFdVR4IpLgq2c4SHifbwO90z2fQ8/Aio73yw==
+eslint-config-prettier@8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.2.0.tgz#78de77d63bca8e9e59dae75a614b5299925bb7b3"
+  integrity sha512-dWV9EVeSo2qodOPi1iBYU/x6F6diHv8uujxbxr77xExs3zTAlNXvVZKiyLsQGNz7yPV2K49JY5WjPzNIuDc2Bw==
 
 eslint-import-resolver-node@^0.3.3:
   version "0.3.3"
