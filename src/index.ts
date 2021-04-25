@@ -42,6 +42,7 @@ export {
   ModalStaticFuncType,
   ModalStaticFunc,
 } from './components/modal';
+export { default as Page, PageProps } from './components/page';
 export { default as Pagination, PaginationProps } from './components/pagination';
 export { default as Popconfirm, PopconfirmProps } from './components/popconfirm';
 export { default as Popover, PopoverProps } from './components/popover';
