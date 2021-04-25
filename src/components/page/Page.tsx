@@ -9,7 +9,7 @@ const statusCodeMap = {
   403: ForbiddenSVG,
 };
 
-const Page = ({ className, style, statusCode, description, cta }: PageProps) => {
+const Page: React.FC<PageProps> = ({ className, style, statusCode, description, cta }: PageProps) => {
   const prefixCls = usePrefixCls('page');
   const cls = classnames(prefixCls, className);
   return (
