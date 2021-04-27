@@ -16,7 +16,7 @@ exports[`Testing Banner should be stable 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "display": "block",
+        "display": "flex",
       }
     }
   >
