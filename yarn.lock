@@ -13,14 +13,14 @@
   dependencies:
     "@babel/highlight" "^7.10.4"
 
-"@babel/code-frame@7.12.11":
+"@babel/code-frame@7.12.11", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.1", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.11", "@babel/code-frame@^7.5.5":
   version "7.12.11"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.12.11.tgz#f4ad435aa263db935b8f10f2c552d23fb716a63f"
   integrity sha512-Zt1yodBx1UcyiePMSkWnU4hPqhwq7hGi2nFL1LeA3EUl+q2LQx16MISgJ0+z7dnmgvP9QtIleuETGOiOH1RcIw==
   dependencies:
     "@babel/highlight" "^7.10.4"
 
-"@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.1", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.11", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.5.5", "@babel/code-frame@^7.8.3":
+"@babel/code-frame@^7.12.13", "@babel/code-frame@^7.8.3":
   version "7.12.13"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.12.13.tgz#dcfc826beef65e75c50e21d3837d7d95798dd658"
   integrity sha512-HV1Cm0Q3ZrpCR93tkWOYiuYIgLxZXZFVG2VgK+MBWjUqZTundupbfx2aXarXuw5Ko5aMcjtJgbSs4vUGBS5v6g==
@@ -2517,17 +2517,17 @@
     strip-json-comments "^3.1.1"
 
 "@gio-design/icons@^21.4.0":
-  version "21.4.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.4.0.tgz#033dea22cc460eb2b147bddd81974897dac8dbcd"
-  integrity sha512-TdGGUQdJOJVCfTbQ7vbdEVsA6c2RdTtpKqqa8ffMOfkzh0vTRxdSCVSXcI7zzB2ErT2yIxqcv4OtH3ucdBNpeg==
+  version "21.4.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.4.1.tgz#5a9f5192107905b905439f4b937f8e9678fb2e69"
+  integrity sha512-1bOlEYHfWPfMwYKQ6pnWir0CNtvnKFEeqqVlj7euw6TQWUR85TT/l+t+J92CG6OhZOgWkSLe76X24QpyTp2Hzg==
   dependencies:
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
-"@gio-design/tokens@^21.4.1":
-  version "21.4.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.1.tgz#710494032c0ff0c61ae9ce3c0a7e2565d3eecade"
-  integrity sha512-U2iix98dSMNURsht4KK7ezmtVHcGMup55zrxflKYsKm7AahNNadTtDyHAeo5iUE78A2ga3lHpZZuyjbgCt6/bg==
+"@gio-design/tokens@^21.4.2":
+  version "21.4.2"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.2.tgz#8914f09567d042a98f144fe4f1d7f463954e3378"
+  integrity sha512-1/EhIwL9+t3zHmxRWf01vr+U4PiANwVgcZ/MK8iet7srbQGrrrnKS5aKpLVt53Mr9HCGB0dAX1S3RDyjJ559uA==
 
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
@@ -7539,9 +7539,9 @@ eslint-visitor-keys@^2.0.0:
   integrity sha512-QudtT6av5WXels9WjIM7qz1XD1cWGvX4gGXvp/zBn9nXG02D0utdU3Em2m/QjTnrsk6bBjmCygl3rmj118msQQ==
 
 eslint@^7.8.1:
-  version "7.24.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.24.0.tgz#2e44fa62d93892bfdb100521f17345ba54b8513a"
-  integrity sha512-k9gaHeHiFmGCDQ2rEfvULlSLruz6tgfA8DEn+rY9/oYPFFTlz55mM/Q/Rij1b2Y42jwZiK3lXvNTw6w6TXzcKQ==
+  version "7.22.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.22.0.tgz#07ecc61052fec63661a2cab6bd507127c07adc6f"
+  integrity sha512-3VawOtjSJUQiiqac8MQc+w457iGLfuNGLFn8JmF051tTKbh5/x/0vlcEj8OgDCaw7Ysa2Jn8paGshV7x2abKXg==
   dependencies:
     "@babel/code-frame" "7.12.11"
     "@eslint/eslintrc" "^0.4.0"
@@ -14558,20 +14558,20 @@ semver@7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.0.0.tgz"
 
-semver@7.3.2:
+semver@7.3.2, semver@7.x, semver@^7.2.1, semver@^7.3.2:
   version "7.3.2"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.2.tgz"
 
-semver@7.x, semver@^7.2.1, semver@^7.3.2, semver@^7.3.4:
+semver@^6.0.0, semver@^6.1.1, semver@^6.1.2, semver@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz"
+
+semver@^7.3.4:
   version "7.3.5"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.5.tgz#0b621c879348d8998e4b0e4be94b3f12e6018ef7"
   integrity sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==
   dependencies:
     lru-cache "^6.0.0"
-
-semver@^6.0.0, semver@^6.1.1, semver@^6.1.2, semver@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz"
 
 send@0.17.1:
   version "0.17.1"

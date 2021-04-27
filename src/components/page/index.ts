@@ -1,4 +1,5 @@
 import Page from './Page';
-import { PageProps } from './interfaces';
 
-export { Page, PageProps };
+export { PageProps } from './interfaces';
+
+export default Page;

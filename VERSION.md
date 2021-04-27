@@ -1,10 +1,9 @@
-## [21.4.2](https://github.com/growingio/gio-design/compare/v21.4.1...v21.4.2) (2021-04-16)
+## [21.4.4](https://github.com/growingio/gio-design/compare/v21.4.3...v21.4.4) (2021-04-25)
 
 
 ### Bug Fixes
 
-* **select:** select mode=string error ([#942](https://github.com/growingio/gio-design/issues/942)) ([1c8c3d0](https://github.com/growingio/gio-design/commit/1c8c3d0644449e726e93e1eb66291874af3a81f1))
-* **tree:** fix tree style ([#945](https://github.com/growingio/gio-design/issues/945)) ([b0e7489](https://github.com/growingio/gio-design/commit/b0e74896eea90b4af9aab2675dfdc4174593beee))
+* **page:** fix page export and add component type ([#955](https://github.com/growingio/gio-design/issues/955)) ([c0d5daa](https://github.com/growingio/gio-design/commit/c0d5daaac8b5f84516ab4b924e0f64f81b07d264))
 
 
 

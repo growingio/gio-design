@@ -58,20 +58,6 @@
   .button-disabled();
 }
 
-.button-variant-assist() {
-  .button-color(@color-text-button-assist-normal; @color-background-button-assist-normal; @color-border-button-assist-normal);
-  text-shadow: none;
-  border: none;
-  &:hover {
-    .button-color(@color-text-button-assist-hover; @color-background-button-assist-hover; @color-border-button-default-hover);
-  }
-  &:active,
-  &.dropdown-active {
-    .button-color(@color-text-button-assist-click; @color-background-button-assist-click; @color-border-button-default-click);
-  }
-  .button-disabled(@color-text-button-assist-disable; @color-background-button-assist-normal; @color-border-button-assist-normal);
-}
-
 .button-color(@color; @background; @border) {
   color: @color;
   background: @background;
@@ -158,38 +144,60 @@
     color: @color-text-button-default-normal;
   }
 }
-// assist button style
-.btn-assist() {
-  .button-variant-assist();
-  svg {
-    color: @color-text-button-assist-normal;
-  }
-}
 
 // text button style
 .btn-text() {
-  padding: 0 !important;
-  .button-color(@color-text-button-normal; transparent; transparent);
+  .button-color(@color-text-button-text-normal; transparent; transparent);
   svg {
-    color: @color-text-button-normal;
+    color: @color-text-button-text-normal;
   }
   box-shadow: none;
   &:hover {
-    color: @color-text-button-hover;
-    background: transparent;
-    border-color: transparent;
+    color: @color-text-button-text-hover;
+    background: @color-background-button-text-hover;
+    border-color: @color-border-button-text-hover;
     svg {
-      color: @color-text-button-hover;
+      color: @color-text-button-text-hover;
     }
   }
 
   &:active,
   &.dropdown-active {
-    color: @color-text-button-click;
+    color: @color-text-button-text-click;
+    background: @color-background-button-text-click;
+    border-color: @color-border-button-text-click;
+    svg {
+      color: @color-text-button-text-click;
+    }
+  }
+
+  .button-disabled(@color-text-button-disable; transparent; transparent);
+}
+
+// link button style
+
+.btn-link() {
+  .button-color(@color-text-button-link-normal; transparent; transparent);
+  svg {
+    color: @color-text-button-link-normal;
+  }
+  box-shadow: none;
+  &:hover {
+    color: @color-text-button-link-hover;
     background: transparent;
     border-color: transparent;
     svg {
-      color: @color-text-button-click;
+      color: @color-text-button-link-hover;
+    }
+  }
+
+  &:active,
+  &.dropdown-active {
+    color: @color-text-button-link-click;
+    background: transparent;
+    border-color: transparent;
+    svg {
+      color: @color-text-button-link-click;
     }
   }
 

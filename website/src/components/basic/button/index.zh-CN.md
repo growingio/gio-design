@@ -19,9 +19,9 @@ group:
 
 <code src='./demos/secondary.tsx' title='次要按钮' desc='用于与主按钮配对，以明确有两个选项；或者用于多个无主次之分的操作时。' />
 
-<code src='./demos/assist.tsx' title='辅助按钮' desc='当页面有许多高频率使用的操作时，将其用作默认按钮。' />
+<code src='./demos/text.tsx' title='文本按钮' desc='适用于列表内添加多个内容时，如「事件分析」中「添加事件」、「fliter」中「添加过滤条件」等' />
 
-<code src='./demos/text.tsx' title='文本按钮' desc='适用于列表内添加多个内容时。' />
+<code src='./demos/link.tsx' title='链接按钮' desc='适用于列表内添加多个内容时。' />
 
 <code src='./demos/icon.tsx' title='图标按钮' desc='暂无' />
 
@@ -31,7 +31,7 @@ group:
 
 | 参数    | 说明                                                                  | 类型                           | 默认值 |
 | ------- | --------------------------------------------------------------------- | ------------------------------ | ------ |
-| type    | 设置按钮类型，可选值为 `primary` `secondary` `assist` `text` 或者不设 | string                         | -      |
+| type    | 设置按钮类型，可选值为 `primary` `secondary` `link` `text` 或者不设 | string                         | -      |
 | icon    | 设置按钮的图标组件                                                    | ReactNode                      | -      |
 | size    | 设置按钮大小                                                          | `large` \| `middle` \| `small` | -      |
 | loading | 设置按钮载入状态                                                      | boolean                        | false  |

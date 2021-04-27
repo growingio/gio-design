@@ -94,7 +94,7 @@ export default (): JSX.Element => {
                     label={index === 0 ? '查询条件' : ''}
                     afterInput={
                       index > 1 ? (
-                        <Button type="assist" onClick={() => remove(field.name)}>
+                        <Button type="text" onClick={() => remove(field.name)}>
                           <CloseOutlined />
                         </Button>
                       ) : (
