@@ -13,7 +13,7 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
     delay = 0,
     indicator,
     titlePosition  = 'bottom',
-    title = '加载中...',
+    title,
     size = 'large',
     className,
     style,
@@ -44,12 +44,7 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
       return <span className={`${prefixCls}-indicator`}>{indicator}</span>;
     }
     return (
-      <span className={`${prefixCls}-strip`}>
-        <span className={`${prefixCls}-strip-item`} />
-        <span className={`${prefixCls}-strip-item`} />
-        <span className={`${prefixCls}-strip-item`} />
-        <span className={`${prefixCls}-strip-item`} />
-      </span>
+      <div className={`${prefixCls}-ring`} />
     );
   }, [prefixCls, indicator]);
 

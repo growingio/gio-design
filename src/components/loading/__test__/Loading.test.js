@@ -1,16 +1,11 @@
 import React from 'react';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import { render as tlrRender } from '@testing-library/react';
 import { waitForComponentToPaint } from '../../../utils/test';
 import Loading from '../Loading';
 
 describe('Testing Loading', () => {
   const getLoading = (args) => <Loading {...args}>这是一个测试</Loading>;
-
-  it('should be stable', () => {
-    const wrapper = render(<Loading>快照</Loading>);
-    expect(wrapper).toMatchSnapshot();
-  });
 
   it('should be mount, setProps, unmount with no error', () => {
     expect(() => {
@@ -42,8 +37,9 @@ describe('Testing Loading', () => {
   test('props titlePosition and title', () => {
     const wrapper = mount(getLoading());
     wrapper.setProps({ titlePosition: 'right' });
-    expect(wrapper.exists('.gio-loading-title-right')).toBe(true);
+    expect(wrapper.exists('.gio-loading-title-right')).toBe(false);
     wrapper.setProps({ title: '测试' });
+    expect(wrapper.exists('.gio-loading-title-right')).toBe(true);
     expect(wrapper.find('.gio-loading-title-right').at(0).text()).toBe('测试');
   });
 
