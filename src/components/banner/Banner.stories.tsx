@@ -19,10 +19,8 @@ export default {
 } as Meta;
 
 const baseContent = (
-    <div className="alert-close">
-    <span>
-    【GrowingIO在线公共课】欧治云商运营负责人复盘B2B增长实践
-    </span>
+  <div className="alert-close">
+    <span>【GrowingIO在线公共课】欧治云商运营负责人复盘B2B增长实践</span>
     <Button type="secondary" size="small" style={{ margin: '0 0 0 8px' }}>
       立即报名
     </Button>
@@ -31,9 +29,7 @@ const baseContent = (
 
 const alertContent = (
   <div className="alert-close">
-    <span>
-    尊敬的客户您好，工单系统将于2月2日～2月10日暂停服务。        
-    </span>
+    <span>尊敬的客户您好，工单系统将于2月2日～2月10日暂停服务。</span>
     <Link component="a" to="#">
       查看详情
     </Link>
@@ -41,18 +37,18 @@ const alertContent = (
 );
 
 const closeableContent = (
-    <div className="alert-close" style={{ display: 'flex',justifyContent:'space-between',alignItems:'center'}}>
-    <div className='alert-close-l'>
-    <Tag color="beta" size="small" style={{ margin: '0 8px 0 0' }}>
-      试用中
-    </Tag>
-    <span>试用14天后结束</span>
+  <div className="alert-close" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div className="alert-close-l">
+      <Tag color="beta" size="small" style={{ margin: '0 8px 0 0' }}>
+        试用中
+      </Tag>
+      <span>试用14天后结束</span>
     </div>
-    <div className='alert-close-r'>
-    <span style={{ margin: '0 8px 0 100px' }}>客服专线：010-50914714</span>
-    <Button type="secondary" size="small" style={{ margin: '0 8px 0 0' }}>
-      商务咨询
-    </Button>
+    <div className="alert-close-r">
+      <span style={{ margin: '0 8px 0 100px' }}>客服专线：010-50914714</span>
+      <Button type="secondary" size="small" style={{ margin: '0 8px 0 0' }}>
+        商务咨询
+      </Button>
     </div>
   </div>
 );
