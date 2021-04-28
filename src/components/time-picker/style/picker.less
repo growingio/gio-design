@@ -8,7 +8,7 @@
     width: 100%;
     height: 40px;
     padding: 9px 20px;
-    color: #666;
+    color: #313e75;
     font-size: @size-font-14;
     line-height: 1.5;
     background-color: #fff;
@@ -19,6 +19,9 @@
     cursor: text;
     transition: border 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), background 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
       box-shadow 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    ::-webkit-input-placeholder {
+      color: #dbdee8;
+    }
     &:hover {
       border: 1px solid @palette-blue-5;
     }
