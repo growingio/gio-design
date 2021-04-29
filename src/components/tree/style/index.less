@@ -115,9 +115,10 @@
 
     // >>> Title
     & &-node-content-wrapper {
+      display: flex;
+      align-items: center;
       width: 100%;
       cursor: pointer;
-
       .@{custom-tree-prefix-cls}-title {
         overflow: hidden;
         white-space: nowrap;
@@ -129,7 +130,7 @@
         display: inline-block;
         width: 16px;
         height: 16px;
-        margin: 2px 8px 0 0;
+        margin: 0 8px;
         line-height: 16px;
         text-align: center;
         vertical-align: middle;
