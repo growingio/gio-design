@@ -1,9 +1,10 @@
-## [21.4.4](https://github.com/growingio/gio-design/compare/v21.4.3...v21.4.4) (2021-04-25)
+## [21.4.5](https://github.com/growingio/gio-design/compare/v21.4.4...v21.4.5) (2021-04-29)
 
 
 ### Bug Fixes
 
-* **page:** fix page export and add component type ([#955](https://github.com/growingio/gio-design/issues/955)) ([c0d5daa](https://github.com/growingio/gio-design/commit/c0d5daaac8b5f84516ab4b924e0f64f81b07d264))
+* some components centered ([#965](https://github.com/growingio/gio-design/issues/965)) ([a366c84](https://github.com/growingio/gio-design/commit/a366c84ee2addb16d38bd42b16919403b0108d99))
+* **banner:** update banner (icon centered，two message shuould space-between） ([#963](https://github.com/growingio/gio-design/issues/963)) ([c497a53](https://github.com/growingio/gio-design/commit/c497a53600c0f71fcd201519b1f26a9bcd30bf89))
 
 
 
