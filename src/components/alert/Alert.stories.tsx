@@ -4,6 +4,8 @@ import Docs from './Alert.mdx';
 import Alert from './index';
 import { AlertProps } from './interfaces';
 import './style';
+// eslint-disable-next-line import/order
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Basic Components/Alert',
@@ -25,7 +27,7 @@ Default.args = {
     <div>
       <Alert type="info" size="middle" description="info" showIcon />
       <br />
-      <Alert type="success" size="small" description="success" closeable onClose={() => alert('我被关闭了')} />
+      <Alert type="success" size="small" description="success" closeable onClose={action('我被关闭了')} />
       <br />
       <Alert
         type="warning"
@@ -33,7 +35,7 @@ Default.args = {
         description="warning"
         closeText="点我关闭"
         closeable
-        onClose={() => alert('我被关闭了')}
+        onClose={action('我被关闭了')}
       />
       <br />
       <Alert type="error" size="small" description="error" message="我是一条message" />
@@ -56,5 +58,5 @@ Closeable.args = {
   size: 'middle' || 'small',
   closeable: true,
   description: '我是内容',
-  onClose: () => alert('我被关闭了'),
+  onClose: action('我被关闭了'),
 };
