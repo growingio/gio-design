@@ -2,6 +2,148 @@
 
 @loading-prefix-cls: ~'@{component-prefix}-loading';
 
+@color-1: #1248e9;
+@color-2: #88a6ff;
+@color-3: #1248e9;
+@color-4: #88a6ff;
+
+@container-rotate-timing: 1600ms;
+@ring-fill-unfill-rotate-timing: 4800ms;
+@ring-line-count: 4;
+@ring-left-spin: @ring-fill-unfill-rotate-timing / @ring-line-count;
+@ring-right-spin: @ring-fill-unfill-rotate-timing / @ring-line-count;
+
+@keyframes container-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fill-unfill-rotate {
+  12.5% {
+    transform: rotate(135deg);
+  }
+  25% {
+    transform: rotate(270deg);
+  }
+  37.5% {
+    transform: rotate(405deg);
+  }
+  50% {
+    transform: rotate(540deg);
+  }
+  62.5% {
+    transform: rotate(675deg);
+  }
+  75% {
+    transform: rotate(810deg);
+  }
+  87.5% {
+    transform: rotate(945deg);
+  }
+  to {
+    transform: rotate(1080deg);
+  }
+}
+
+@keyframes left-spin {
+  0% {
+    transform: rotate(130deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(130deg);
+  }
+}
+@keyframes right-spin {
+  0% {
+    transform: rotate(-130deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  to {
+    transform: rotate(-130deg);
+  }
+}
+
+@keyframes line-1-fade-in-out {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  26% {
+    opacity: 0;
+  }
+  89% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes line-2-fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+}
+
+@keyframes line-3-fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  76% {
+    opacity: 0;
+  }
+}
+
+@keyframes line-4-fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  65% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .@{loading-prefix-cls} {
   position: relative;
   display: inline-block;
@@ -45,98 +187,118 @@
     }
   }
 
-  @keyframes loading-transform-small {
-    0% {
-      transform: rotate(0) scale(1.04);
-    }
-    100% {
-      transform: rotate(360deg) scale(1.04);
-    }
-  }
-
-  @keyframes loading-transform-middle {
-    0% {
-      transform: rotate(0) scale(1.03);
-    }
-    100% {
-      transform: rotate(360deg) scale(1.03);
-    }
-  }
-
-  @keyframes loading-transform-large {
-    0% {
-      transform: rotate(0) scale(1.02);
-    }
-    100% {
-      transform: rotate(360deg) scale(1.02);
-    }
-  }
-
   &-ring {
-    position: relative;
-    display: inline-block;
-    box-sizing: border-box;
-    line-height: 0;
-    background-image: linear-gradient(0deg, #ccddfe, #3867f4);
-    border-radius: 50%;
-    &::before {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-left: -14px;
+    animation: container-rotate @container-rotate-timing linear infinite;
+    &-line {
       position: absolute;
-      display: block;
-      box-sizing: border-box;
       width: 100%;
       height: 100%;
-      border-color: #fff transparent;
-      border-style: solid;
-      border-radius: 50%;
-      content: ' ';
-    }
+      opacity: 0;
 
-    &::after {
-      position: absolute;
-      display: block;
-      box-sizing: border-box;
-      width: 100%;
-      height: 100%;
-      background-color: #fff;
-      background-clip: padding-box;
-      border-radius: 50%;
-      content: ' ';
-    }
-  }
+      &-1 {
+        border-color: @color-1;
+        animation: fill-unfill-rotate @ring-fill-unfill-rotate-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both,
+          line-1-fade-in-out @ring-fill-unfill-rotate-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+      }
 
-  &-small &-ring {
-    width: 30px;
-    height: 30px;
-    &::before {
-      border-width: 3px;
-      animation: loading-transform-small 0.8s linear infinite;
-    }
-    &::after {
-      border: 2.4px solid transparent;
-    }
-  }
+      &-2 {
+        border-color: @color-2;
+        animation: fill-unfill-rotate @ring-fill-unfill-rotate-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both,
+          line-2-fade-in-out @ring-fill-unfill-rotate-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+      }
 
-  &-middle &-ring {
-    width: 40px;
-    height: 40px;
-    &::before {
-      border-width: 4px;
-      animation: loading-transform-middle 0.8s linear infinite;
-    }
-    &::after {
-      border: 3.2px solid transparent;
+      &-3 {
+        border-color: @color-3;
+        animation: fill-unfill-rotate @ring-fill-unfill-rotate-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both,
+          line-3-fade-in-out @ring-fill-unfill-rotate-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+      }
+
+      &-4 {
+        border-color: @color-4;
+        animation: fill-unfill-rotate @ring-fill-unfill-rotate-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both,
+          line-4-fade-in-out @ring-fill-unfill-rotate-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+      }
+
+      &-cog {
+        position: relative;
+        display: inline-block;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        border-color: inherit;
+        &-inner {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          box-sizing: border-box;
+          width: 200%;
+          height: 100%;
+          border-color: inherit;
+          border-style: solid;
+          border-bottom-color: transparent;
+          border-radius: 50%;
+          animation: none;
+
+          &-left {
+            border-right-color: transparent;
+            transform: rotate(129deg);
+            animation: left-spin @ring-left-spin cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+          }
+
+          &-right {
+            left: -100%;
+            border-left-color: transparent;
+            transform: rotate(-129deg);
+            animation: right-spin @ring-right-spin cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+          }
+
+          &-center {
+            left: -450%;
+            width: 1000%;
+          }
+        }
+      }
+
+      &-ticker {
+        position: absolute;
+        top: 0;
+        left: 45%;
+        box-sizing: border-box;
+        width: 10%;
+        height: 100%;
+        overflow: hidden;
+        border-color: inherit;
+      }
     }
   }
 
   &-large &-ring {
     width: 50px;
     height: 50px;
-    &::before {
-      border-width: 5px;
-      animation: loading-transform-large 0.8s linear infinite;
+    &-line-cog-inner {
+      border-width: 3.5px;
     }
-    &::after {
-      border: 4px solid transparent;
+  }
+
+  &-middle &-ring {
+    width: 40px;
+    height: 40px;
+    &-line-cog-inner {
+      border-width: 3px;
+    }
+  }
+
+  &-small &-ring {
+    width: 30px;
+    height: 30px;
+    &-line-cog-inner {
+      border-width: 2px;
     }
   }
 
