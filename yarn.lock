@@ -2519,9 +2519,9 @@
     strip-json-comments "^3.1.1"
 
 "@gio-design/icons@^21.4.0":
-  version "21.4.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.4.1.tgz#5a9f5192107905b905439f4b937f8e9678fb2e69"
-  integrity sha512-1bOlEYHfWPfMwYKQ6pnWir0CNtvnKFEeqqVlj7euw6TQWUR85TT/l+t+J92CG6OhZOgWkSLe76X24QpyTp2Hzg==
+  version "21.5.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.5.0.tgz#8a16fe8cc7c9e9582910b1a65f321be29acb2006"
+  integrity sha512-h3JfH2pvzH2lWHKib/VJQ5xJEq/N22iWb23dgowAMUNMxLKEOdrluLcvb9PVwHNWsoKp2ADelbMKQlxiIR13NQ==
   dependencies:
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
