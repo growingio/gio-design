@@ -1,10 +1,14 @@
-## [21.4.5](https://github.com/growingio/gio-design/compare/v21.4.4...v21.4.5) (2021-04-29)
+# [21.5.0](https://github.com/growingio/gio-design/compare/v21.4.5...v21.5.0) (2021-05-08)
 
 
 ### Bug Fixes
 
-* some components centered ([#965](https://github.com/growingio/gio-design/issues/965)) ([a366c84](https://github.com/growingio/gio-design/commit/a366c84ee2addb16d38bd42b16919403b0108d99))
-* **banner:** update banner (icon centered，two message shuould space-between） ([#963](https://github.com/growingio/gio-design/issues/963)) ([c497a53](https://github.com/growingio/gio-design/commit/c497a53600c0f71fcd201519b1f26a9bcd30bf89))
+* **input:** input-content 颜色black-6 ，眼睛状态错误 ([#967](https://github.com/growingio/gio-design/issues/967)) ([0490184](https://github.com/growingio/gio-design/commit/0490184e3277ea83c7f9a560f64048b7d7b5d52c))
+
+
+### Features
+
+* **loading:** update loading style ([9999e13](https://github.com/growingio/gio-design/commit/9999e13209a7f2eaa61155dee4658579de7aac82))
 
 
 
