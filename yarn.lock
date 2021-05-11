@@ -13296,7 +13296,7 @@ rc-notification@^4.5.4:
     rc-motion "^2.2.0"
     rc-util "^5.0.1"
 
-rc-resize-observer@^0.2.0, rc-resize-observer@^0.2.3:
+rc-resize-observer@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/rc-resize-observer/-/rc-resize-observer-0.2.3.tgz"
   dependencies:
@@ -13328,15 +13328,15 @@ rc-select@^11.1.1:
     rc-virtual-list "^3.0.3"
     warning "^4.0.3"
 
-rc-table@^7.9.1:
-  version "7.9.1"
-  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-7.9.1.tgz"
+"rc-table@https://github.com/growingio/table.git":
+  version "7.14.0"
+  resolved "https://github.com/growingio/table.git#693e0db9963a78cfcfba4c0da383349896df570d"
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.5"
-    raf "^3.4.1"
-    rc-resize-observer "^0.2.0"
-    rc-util "^5.0.4"
+    lodash "^4.17.21"
+    rc-resize-observer "^1.0.0"
+    rc-util "^5.4.0"
     shallowequal "^1.1.0"
 
 rc-tooltip@^5.0.1:
@@ -13419,10 +13419,19 @@ rc-util@^4.0.4, rc-util@^4.1.1, rc-util@^4.15.3, rc-util@^4.4.0:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.1.0"
 
-rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.4, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, rc-util@^5.2.1, rc-util@^5.5.0, rc-util@^5.7.0:
+rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, rc-util@^5.2.1, rc-util@^5.5.0, rc-util@^5.7.0:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.7.0.tgz#776b14cf5bbfc24f419fd40c42ffadddda0718fc"
   integrity sha512-0hh5XkJ+vBDeMJsHElqT1ijMx+gC3gpClwQ10h/5hccrrgrMx8VUem183KLlH1YrWCfMMPmDXWWNnwsn+p6URw==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    react-is "^16.12.0"
+    shallowequal "^1.1.0"
+
+rc-util@^5.4.0:
+  version "5.12.2"
+  resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.12.2.tgz#41572687a2cd174fdaec028da756d288e398e9f8"
+  integrity sha512-kzqG2lHY4oZsoj5Svov12K+9wi0xQHvGzfbLlsF1PDEH1aTbgdNTwlE7mejc3MGEr+7bNHa4+T5ZemCS8vQ1Gw==
   dependencies:
     "@babel/runtime" "^7.12.5"
     react-is "^16.12.0"
