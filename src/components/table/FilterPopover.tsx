@@ -1,16 +1,18 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React, { useState, useContext } from 'react';
+import { isObject } from 'lodash';
 import Button from '../button';
 import Popover from '../popover';
 import FilterList from './FilterList';
 import SearchBar from '../search-bar';
 import { TableContext } from './Table';
+import { filterType } from './interface';
 
 interface FilterPopoverProps {
   prefixCls: string;
   children: React.ReactElement;
   onClick: (newFilterState: string[]) => void;
-  filters?: string[];
+  filters?: filterType[];
   values: string[];
 }
 
@@ -38,8 +40,19 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
             value={selectFilterKeys}
             onChange={setSelectFilterKeys}
             dataSource={filters
-              .filter((item: string | number) => item.toString().includes(seachValue))
-              .map((item: string | number) => ({ key: item.toString(), value: item.toString() }))}
+              .filter((item) => {
+                if(isObject(item)) {
+                  return item.label.includes(seachValue);
+                }
+                return item.toString().includes(seachValue);
+              })
+              .map((item) => {
+                if(isObject(item)) {
+                  return ({ key: item.value, value: item.label });
+                }
+                return ({ key: item.toString(), value: item.toString() });
+              })
+            }
           />
           <div className={`${prefixCls}-filter-popover-footer`}>
             <Button

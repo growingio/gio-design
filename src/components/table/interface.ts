@@ -8,6 +8,8 @@ export type SortOrder = 'descend' | 'ascend' | null;
 
 export type GetComponentProps<DataType> = (data: DataType, index?: number) => React.HTMLAttributes<HTMLElement>;
 
+export type filterType = (string | { label: string; value: string });
+
 export interface ColumnType<RecordType> {
   key?: string;
   title?: React.ReactNode;
@@ -28,7 +30,7 @@ export interface ColumnType<RecordType> {
   defaultSortOrder?: SortOrder;
   // filter
   defaultFilteredValue?: string[];
-  filters?: string[];
+  filters?: filterType[];
   onFilter?: (value: string, record: RecordType) => boolean;
   filterDropdown?: React.ReactNode;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -64,7 +66,7 @@ export interface FilterState<RecordType> {
   key: string;
   filteredKeys: string[];
   onFilter?: (value: string, record: RecordType) => boolean;
-  filters?: string[];
+  filters?: filterType[];
 }
 
 export interface PaginationState {
