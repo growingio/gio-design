@@ -111,11 +111,15 @@ const RenderTooltip: React.ForwardRefRenderFunction<unknown, TooltipProps> = (pr
   const { tooltip, render, getContainer } = props;
   if (tooltip) {
     return (
+      
       <div ref={ref as any}>
-        <Tooltip title={tooltip} destroyTooltipOnHide placement="top" getTooltipContainer={getContainer}>
-          {render}
-        </Tooltip>
+          <Tooltip title={tooltip} destroyTooltipOnHide placement="right" getTooltipContainer={getContainer}>
+            <div>
+            {render}
+            </div>
+          </Tooltip>
       </div>
+       
     );
   }
   return <div ref={ref as any}>{render}</div>;
