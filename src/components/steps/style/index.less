@@ -20,8 +20,8 @@
       display: block;
       width: 100%;
       height: 2px;
-      background-color: @palette-blue-4;
-      opacity: 0;
+      background-color: @palette-black-1;
+      // opacity: 0;
       content: '';
     }
     &_active&_finished &-content-title {
@@ -36,7 +36,7 @@
       color: @palette-blue-5;
     }
     &_active::before {
-      opacity: 1;
+      background-color: @palette-blue-4;
     }
     &_finished &-content {
       &-title {
