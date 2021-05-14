@@ -44,13 +44,13 @@ const columns = [
     title: '列标题2',
     dataIndex: 'age',
     key: 'age',
-    filters: ['名字四个字', '名字不是四个字'],
+    filters: [{label:'名字四个字', value: '4'}, { label: '名字不是四个字', value: '3'}],
     ellipsis: true,
     onFilter: (value: string, record: ExampleData) => {
-      if (value === '名字四个字') {
+      if (value === '4') {
         return record.name.length === 4;
       }
-      if (value === '名字不是四个字') {
+      if (value === '3') {
         return record.name.length !== 4;
       }
       return false;

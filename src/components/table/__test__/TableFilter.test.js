@@ -1,6 +1,9 @@
+import React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
+import { render, fireEvent } from '@testing-library/react';
 import { isEqual, cloneDeep } from 'lodash';
 import useFilter, { collectFilterStates } from '../hook/useFilter';
+import FilterPopover from '../FilterPopover';
 
 const columns = [
   {
@@ -84,7 +87,7 @@ describe('Testing Table Filter', () => {
 
   test('useFilter hook', () => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { result, rerender } = renderHook(({ columns, dataSource }) => useFilter(columns, dataSource), {
+    const { result } = renderHook(({ columns, dataSource }) => useFilter(columns, dataSource), {
       initialProps: { columns, dataSource },
     });
     const [filterStates, updateFilterStates] = result.current;
@@ -109,6 +112,25 @@ describe('Testing Table Filter', () => {
     expect(result.current[2].length).toBe(1);
   });
 
+
+  test('object data type', () => {
+    const onClick = jest.fn();
+    const { getByText, getAllByRole } = render(
+      <FilterPopover 
+        prefixCls='gio-table'
+        values={[]}
+        onClick={onClick}
+        filters={[{ label: '第一项', value: '1'}, { label: '第二项', value: '2'}]}
+      >
+        <span>trigger</span>
+      </FilterPopover>
+    );
+    fireEvent.click(getByText('trigger'));
+    fireEvent.click(getAllByRole('option')[0]);
+    fireEvent.click(getByText('确 定'));
+    expect(onClick).toBeCalledWith(['1']);
+  });
+  
   it('should re-collect states, after columns update', () => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { result, rerender } = renderHook(({ columns, dataSource }) => useFilter(columns, dataSource), {
