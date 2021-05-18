@@ -328,6 +328,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
   &:not(&-disabled):hover {
     background-color: @palette-gray-3;
   }
@@ -355,8 +356,9 @@
 }
 
 .@{select-prefix-cls}-list-group {
-  padding: 6px 16px;
+  padding: 6px 12px;
   color: @color-background-button-primary-hover;
+  font-weight: 500;
   font-size: 12px;
   line-height: 20px;
 }
