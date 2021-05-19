@@ -63,35 +63,35 @@ export default function getPlacements(config: PlacementsConfig) {
     },
     topLeft: {
       points: ['bl', 'tc'],
-      offset: [-(horizontalArrowShift + arrowWidth), -4],
+      offset: [-(horizontalArrowShift + arrowWidth - 6), -4],
     },
     leftTop: {
       points: ['tr', 'cl'],
-      offset: [-4, -(verticalArrowShift + arrowWidth)],
+      offset: [-4, -(verticalArrowShift + arrowWidth - 6)],
     },
     topRight: {
       points: ['br', 'tc'],
-      offset: [horizontalArrowShift + arrowWidth, -4],
+      offset: [horizontalArrowShift + arrowWidth - 6, -4],
     },
     rightTop: {
       points: ['tl', 'cr'],
-      offset: [4, -(verticalArrowShift + arrowWidth)],
+      offset: [4, -(verticalArrowShift + arrowWidth - 6)],
     },
     bottomRight: {
       points: ['tr', 'bc'],
-      offset: [horizontalArrowShift + arrowWidth, 4],
+      offset: [horizontalArrowShift + arrowWidth - 6, 4],
     },
     rightBottom: {
       points: ['bl', 'cr'],
-      offset: [4, verticalArrowShift + arrowWidth],
+      offset: [4, verticalArrowShift + arrowWidth - 6],
     },
     bottomLeft: {
       points: ['tl', 'bc'],
-      offset: [-(horizontalArrowShift + arrowWidth), 4],
+      offset: [-(horizontalArrowShift + arrowWidth - 6), 4],
     },
     leftBottom: {
       points: ['br', 'cl'],
-      offset: [-4, verticalArrowShift + arrowWidth],
+      offset: [-4, verticalArrowShift + arrowWidth -6],
     },
   };
   Object.keys(placementMap).forEach((key) => {
