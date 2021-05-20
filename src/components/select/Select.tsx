@@ -49,6 +49,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       allowCustomOption = false,
       autoWidth = true,
       allowDeselect = multiple,
+      triggerComponent,
       notFoundContent,
       customizePrefixCls,
       className,
@@ -382,7 +383,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         visible && onVisibleChange(!visible);
       }
     };
-    const trigger = (
+    const trigger = triggerComponent || (
       <Selector
         size={size}
         input={input}
