@@ -115,7 +115,7 @@ describe('Testing Table Filter', () => {
 
   test('object data type', () => {
     const onClick = jest.fn();
-    const { getByText, getAllByRole } = render(
+    const { getByText, getAllByRole, container } = render(
       <FilterPopover 
         prefixCls='gio-table'
         values={[]}
@@ -129,6 +129,14 @@ describe('Testing Table Filter', () => {
     fireEvent.click(getAllByRole('option')[0]);
     fireEvent.click(getByText('确 定'));
     expect(onClick).toBeCalledWith(['1']);
+
+    fireEvent.click(getByText('trigger'));
+    fireEvent.click(getAllByRole('option')[0]);
+    // 不点确定 并关掉 Filter
+    fireEvent.click(getByText('trigger'));
+    // 再打开
+    fireEvent.click(getByText('trigger'));
+    expect(container.getElementsByClassName('gio-checkbox-checked')).toBeTruthy();
   });
   
   it('should re-collect states, after columns update', () => {

@@ -60,7 +60,6 @@ function Table <RecordType>(
     activePaginationedState,
     paginationedData,
     PaginationComponent,
-    resetPagination,
   ] = usePagination(filtedData, pagination, showIndex);
 
   const [transformSelectionPipeline, selectedRowKeys] = useSelection(paginationedData, rowSelection, {
@@ -68,11 +67,8 @@ function Table <RecordType>(
   });
   const [transformEllipsisTooltipPipeline] = useEllipsisTooltip();
 
-  const onTriggerStateUpdate = (reset = false, paginationState = activePaginationedState): void => {
-    if (reset) {
-      resetPagination();
-    }
-    // 通过 activePaginationedState 拿不到最新的状态
+  const onTriggerStateUpdate = (paginationState = activePaginationedState): void => {
+    // 分页状态更新的时候，通过 activePaginationedState 拿不到最新的状态。
     onChange?.(paginationState, activeSorterStates, activeFilterStates);
   };
 

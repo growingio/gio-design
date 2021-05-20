@@ -81,7 +81,7 @@ export interface TitleProps<RecordType> {
   column: ColumnType<RecordType>;
   updateSorterStates: (sortState: SortState<RecordType>) => void;
   updateFilterStates: (filterState: FilterState<RecordType>) => void;
-  onTriggerStateUpdate: (reset?: boolean) => void;
+  onTriggerStateUpdate: () => void;
 }
 
 export interface RowSelection<RecordType> {
