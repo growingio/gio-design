@@ -188,6 +188,7 @@
   }
 
   &-ring {
+    display: inline-block;
     animation: container-rotate @container-rotate-timing linear infinite;
     &-line {
       position: absolute;
@@ -298,18 +299,30 @@
     }
   }
 
+  &-small &-title-right {
+    height: 30px;
+  }
+
+  &-middle &-title-right {
+    height: 40px;
+  }
+
+  &-large &-title-right {
+    height: 50px;
+  }
+
   &-title {
     color: @color-text-loading;
     font-size: @size-font-14;
     &-bottom {
       display: block;
       height: 14px;
-      margin-top: 12px;
+      margin-top: 16px;
     }
     &-right {
       display: inline-block;
       height: 100%;
-      margin-left: 12px;
+      margin-left: 16px;
       line-height: 100%;
       vertical-align: middle;
     }
