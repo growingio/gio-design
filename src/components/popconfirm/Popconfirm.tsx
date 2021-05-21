@@ -5,6 +5,7 @@ import Button from '../button';
 import { PopconfirmProps } from './interface';
 import useControlledState from '../../utils/hooks/useControlledState';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import getPlacements from '../tooltip/placements';
 
 const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
   const {
@@ -18,6 +19,8 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
     prefixCls: customizePrefixCls,
     subPrefixCls = 'popconfirm',
     visible,
+    arrowPointAtCenter,
+    autoAdjustOverflow,
     // defaultVisible,
     onVisibleChange,
     icon,
@@ -69,6 +72,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
       overlayInnerStyle={{ width: desc ? 400 : 260 }}
       overlay={popConfirmOverlay()}
       trigger="click"
+      builtinPlacements={getPlacements({ arrowPointAtCenter, autoAdjustOverflow, arrowWidth: 12 })}
       {...rest}
     >
       {children}

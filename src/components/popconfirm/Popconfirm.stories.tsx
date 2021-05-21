@@ -49,13 +49,13 @@ Controlled.args = {
 const PlacementTemplate: Story<PopconfirmProps> = (props) => (
   <div className="popconfirmDisplay">
     <div className="popconfirm-top">
-      <Popconfirm placement="topLeft" {...props} arrowPointAtCenter={false}>
+      <Popconfirm placement="topLeft" {...props}>
         <Button type="secondary">TopLeft</Button>
       </Popconfirm>
       <Popconfirm placement="top" {...props}>
         <Button type="secondary">Top</Button>
       </Popconfirm>
-      <Popconfirm placement="topRight" {...props} arrowPointAtCenter={false}>
+      <Popconfirm placement="topRight" {...props}>
         <Button type="secondary">TopRight</Button>
       </Popconfirm>
     </div>
@@ -82,13 +82,13 @@ const PlacementTemplate: Story<PopconfirmProps> = (props) => (
       </Popconfirm>
     </div>
     <div className="popconfirm-buttom">
-      <Popconfirm placement="bottomLeft" {...props} arrowPointAtCenter={false}>
+      <Popconfirm placement="bottomLeft" {...props}>
         <Button type="secondary">BottomLeft</Button>
       </Popconfirm>
       <Popconfirm placement="bottom" {...props}>
         <Button type="secondary">Bottom</Button>
       </Popconfirm>
-      <Popconfirm placement="bottomRight" {...props} arrowPointAtCenter={false}>
+      <Popconfirm placement="bottomRight" {...props}>
         <Button type="secondary">BottomRight</Button>
       </Popconfirm>
     </div>
