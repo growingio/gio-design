@@ -11,7 +11,7 @@ import usePagination from './hook/usePagination';
 import useSelection, { getRowKey } from './hook/useSelection';
 import useEllipsisTooltip from './hook/useEllipsisTooltip';
 import Title from './Title';
-import { TableProps, ColumnsType } from './interface';
+import { TableProps, ColumnsType, OnTriggerStateUpdateProps } from './interface';
 import Empty from '../empty';
 import { translateInnerColumns } from './utils';
 import Loading from '../loading';
@@ -53,8 +53,8 @@ function Table <RecordType>(
   const debounceLoading = useDebounceLoading(loading, 1000);
   const onHackRow = useHackOnRow(onRow, hackRowEvent);
   const innerColumns = useMemo(() => translateInnerColumns(columns), [columns]);
-  const [activeSorterStates, updateSorterStates, sortedData] = useSorter(innerColumns, dataSource);
-  const [activeFilterStates, updateFilterStates, filtedData] = useFilter(innerColumns, sortedData);
+  const [activeSorterStates, updateSorterStates, sortedData, sorter] = useSorter(innerColumns, dataSource);
+  const [activeFilterStates, updateFilterStates, filtedData, filters] = useFilter(innerColumns, sortedData);
   const [
     transformShowIndexPipeline,
     activePaginationedState,
@@ -67,9 +67,12 @@ function Table <RecordType>(
   });
   const [transformEllipsisTooltipPipeline] = useEllipsisTooltip();
 
-  const onTriggerStateUpdate = (paginationState = activePaginationedState): void => {
-    // 分页状态更新的时候，通过 activePaginationedState 拿不到最新的状态。
-    onChange?.(paginationState, activeSorterStates, activeFilterStates);
+  const onTriggerStateUpdate = ({
+    paginationState = activePaginationedState,
+    sorterState = sorter,
+    filterStates = filters
+   }: OnTriggerStateUpdateProps<RecordType>): void => {
+    onChange?.(paginationState, filterStates, sorterState);
   };
 
   const renderTitle = (_columns: ColumnsType<RecordType>): ColumnsType<RecordType> =>

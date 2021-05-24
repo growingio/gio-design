@@ -9,6 +9,7 @@ import { TableScroll } from './demo/TableScroll.stories';
 import { TableEmpty } from './demo/TableEmpty.stories';
 import { TableLoading } from './demo/TableLoading.stories';
 import { TablePagination } from './demo/TablePagination.stories';
+import { ControlledTable } from './demo/TableControlled.stories'
 
 export default {
   title: 'Functional Components/Table',
@@ -20,4 +21,4 @@ export default {
   },
 } as Meta;
 
-export { Base, TableHeader, MultiLine, TableScroll, TableEmpty, TableLoading, TablePagination };
+export { Base, TableHeader, MultiLine, TableScroll, TableEmpty, TableLoading, TablePagination, ControlledTable };
