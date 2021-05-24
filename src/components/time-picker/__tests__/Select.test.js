@@ -257,6 +257,7 @@ describe('Select', () => {
 });
 
 it('onScroll', async () => {
+  jest.useRealTimers();
   const options = new Array(100).fill(0).map((_, index) => ({ value: `test${index}`, label: `test${index}` }));
   const wrapper = mount(
     <Select
