@@ -3,6 +3,7 @@ import React, { useMemo, useCallback } from 'react';
 import { get, intersection, isUndefined, difference, union, isFunction, isString, compact } from 'lodash';
 import { ColumnsType, RowSelection, ColumnType } from '../interface';
 import Checkbox from '../../checkbox';
+import Tooltip from '../../tooltip';
 import useControlledState from '../../../utils/hooks/useControlledState';
 
 export const getRowKey = <RecordType,>(row: RecordType, rowKey?: string | ((record: RecordType) => string)): string => {
@@ -85,19 +86,25 @@ const useSelection = <RecordType,>(
     render: (...rest) => {
       const key = getRowKey(rest[1], rowKey);
       const thisCheckboxProps = getCheckboxProps?.(rest[1]) || {};
+      const { title, disabled, ...restCheckboxProps } = thisCheckboxProps;
       return (
-        <Checkbox
-          {...thisCheckboxProps}
-          checked={localSelectedRowKeys.includes(key)}
-          onClick={(e) => e.stopPropagation()}
-          onChange={(e) => {
-            const latestLocalSelectedRowKeys = e.target.checked
-              ? union(localSelectedRowKeys, [key])
-              : difference(localSelectedRowKeys, [key]);
-            setLocalSelectedRowKeys(latestLocalSelectedRowKeys);
-            onChange?.(latestLocalSelectedRowKeys, getSelectRows(latestLocalSelectedRowKeys));
-          }}
-        />
+        <Tooltip placement='topLeft' arrowPointAtCenter title={title} disabled={!disabled}>
+          <div>
+            <Checkbox
+              {...restCheckboxProps}
+              disabled={disabled}
+              checked={localSelectedRowKeys.includes(key)}
+              onClick={(e) => e.stopPropagation()}
+              onChange={(e) => {
+                const latestLocalSelectedRowKeys = e.target.checked
+                  ? union(localSelectedRowKeys, [key])
+                  : difference(localSelectedRowKeys, [key]);
+                setLocalSelectedRowKeys(latestLocalSelectedRowKeys);
+                onChange?.(latestLocalSelectedRowKeys, getSelectRows(latestLocalSelectedRowKeys));
+              }}
+            >&nbsp;</Checkbox>
+          </div>
+        </Tooltip>
       );
     },
   };
