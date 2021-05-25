@@ -10,8 +10,8 @@
 @container-rotate-timing: 1600ms;
 @ring-fill-unfill-rotate-timing: 4800ms;
 @ring-line-count: 4;
-@ring-left-spin: @ring-fill-unfill-rotate-timing / @ring-line-count;
-@ring-right-spin: @ring-fill-unfill-rotate-timing / @ring-line-count;
+@ring-left-spin: (@ring-fill-unfill-rotate-timing / @ring-line-count);
+@ring-right-spin: (@ring-fill-unfill-rotate-timing / @ring-line-count);
 
 @keyframes container-rotate {
   to {
