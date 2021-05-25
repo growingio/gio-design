@@ -1,68 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import RcDrawer from 'rc-drawer';
-import { omit } from 'lodash';
+import { isUndefined, omit } from 'lodash';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import getScrollBarSize from 'rc-util/lib/getScrollBarSize';
-import { CloseOutlined } from '@gio-design/icons';
+import { CloseOutlined, LeftOutlined, RightOutlined } from '@gio-design/icons';
 import classNames from 'classnames';
-
+import Button from '../button';
+import Skeleton from '../skeleton';
 import { ConfigConsumerProps, withConfigConsumer, ConfigConsumer } from '../config-provider';
-import { tuple } from '../../utils/type';
+import { PushState, IDrawerState, DrawerProps, placementType } from './interfaces'
 
 const DrawerContext = React.createContext<Drawer | null>(null);
-
-type EventType = React.KeyboardEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement | HTMLButtonElement>;
-
-type getContainerFunc = () => HTMLElement;
-
-const PlacementTypes = tuple('top', 'right', 'bottom', 'left');
-type placementType = typeof PlacementTypes[number];
-
-export interface PushState {
-  distance: string | number;
-}
-export interface DrawerProps {
-  closable?: boolean;
-  closeIcon?: React.ReactNode;
-  destroyOnClose?: boolean;
-  forceRender?: boolean;
-  getContainer?: string | HTMLElement | getContainerFunc | false;
-  maskClosable?: boolean;
-  mask?: boolean;
-  maskStyle?: React.CSSProperties;
-  style?: React.CSSProperties;
-  /** wrapper dom node style of header and body */
-  drawerStyle?: React.CSSProperties;
-  headerStyle?: React.CSSProperties;
-  bodyStyle?: React.CSSProperties;
-  title?: React.ReactNode;
-  visible?: boolean;
-  width?: number | string;
-  height?: number | string;
-  zIndex?: number;
-  prefixCls?: string;
-  push?: boolean | PushState;
-  placement?: placementType;
-  onClose?: (e: EventType) => void;
-  afterVisibleChange?: (visible: boolean) => void;
-  className?: string;
-  handler?: React.ReactNode;
-  keyboard?: boolean;
-  footer?: React.ReactNode;
-  footerStyle?: React.CSSProperties;
-  direction?: string;
-}
-
-export interface IDrawerState {
-  push?: boolean;
-}
 
 const defaultPushState: PushState = { distance: 180 };
 class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerState> {
   public static defaultProps: any = {
-    width: 480,
     height: 256,
     closable: true,
     placement: 'right' as placementType,
@@ -71,6 +25,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     keyboard: true,
     push: defaultPushState,
     level: null,
+    loading: false
   };
 
   private parentDrawer: Drawer | null;
@@ -194,7 +149,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
   };
 
   private renderHeader() {
-    const { title, prefixCls, closable, headerStyle } = this.props;
+    const { title, prefixCls, closable, headerStyle, onPrev, onNext } = this.props;
     if (!title && !closable) {
       return null;
     }
@@ -203,7 +158,12 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     return (
       <div className={headerClassName} style={headerStyle}>
         {title && <div className={`${prefixCls}-title`}>{title}</div>}
-        {closable && this.renderCloseIcon()}
+        { (!(isUndefined(onPrev) && isUndefined(onNext)) || closable) &&
+          <div className={`${prefixCls}-header-btns`}>
+            { !(isUndefined(onPrev) && isUndefined(onNext)) && this.renderPrevNext()}
+            {closable && this.renderCloseIcon()}
+          </div>
+        }
       </div>
     );
   }
@@ -222,30 +182,41 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     );
   }
 
+  private renderPrevNext() {
+    const { onPrev, onNext, prefixCls, prevDisabled, nextDisabled } = this.props;
+    return (
+      <div className={`${prefixCls}-prev-next`}>
+        { onPrev && <Button icon={<LeftOutlined />} type='secondary' mini onClick={onPrev} disabled={prevDisabled} />}
+        { onNext && <Button icon={<RightOutlined />} type='secondary' mini onClick={onNext} disabled={nextDisabled} />}
+      </div>
+    )
+  }
+
   private renderCloseIcon() {
     const { closable, closeIcon = <CloseOutlined />, prefixCls, onClose } = this.props;
     return (
       closable && (
         // eslint-disable-next-line react/button-has-type
-        <button
+        <Button
           onClick={onClose}
           aria-label="Close"
           className={`${prefixCls}-close`}
+          mini
+          type='text'
           style={
             {
               '--scroll-bar': `${getScrollBarSize()}px`,
             } as any
           }
-        >
-          {closeIcon}
-        </button>
+          icon={closeIcon}
+         />
       )
     );
   }
 
   // render drawer body dom
   private renderBody = () => {
-    const { bodyStyle, drawerStyle, prefixCls, visible, children } = this.props;
+    const { children, bodyStyle, drawerStyle, prefixCls, visible, loading } = this.props;
     if (this.destroyClose && !visible) {
       return null;
     }
@@ -262,20 +233,22 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     }
 
     return (
-      <div
-        className={`${prefixCls}-wrapper-body`}
-        style={{
-          ...containerStyle,
-          ...drawerStyle,
-        }}
-        onTransitionEnd={this.onDestroyTransitionEnd}
-      >
-        {this.renderHeader()}
-        <div className={`${prefixCls}-body`} style={bodyStyle}>
-          {children}
+      <Skeleton loading={loading} style={{ padding: 24 }}>
+        <div
+          className={`${prefixCls}-wrapper-body`}
+          style={{
+            ...containerStyle,
+            ...drawerStyle,
+          }}
+          onTransitionEnd={this.onDestroyTransitionEnd}
+        >
+          {this.renderHeader()}
+          <div className={`${prefixCls}-body`} style={bodyStyle}>
+            {children}
+          </div>
+          {this.renderFooter()}
         </div>
-        {this.renderFooter()}
-      </div>
+      </Skeleton>
     );
   };
 

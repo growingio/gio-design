@@ -1,6 +1,5 @@
-import { tuple } from '../../utils/type';
-
-type EventType = React.KeyboardEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement | HTMLButtonElement>;
+import React from 'react';
+import { tuple } from '../../utils/interfaces';
 
 type getContainerFunc = () => HTMLElement;
 
@@ -99,7 +98,7 @@ export interface DrawerProps {
   /**
    * 点击遮罩层或右上角叉或取消按钮的回调
    */
-  onClose?: (e: EventType) => void;
+  onClose?: React.MouseEventHandler<HTMLElement>;
   /**
    * 切换抽屉时动画结束后的回调
    */
@@ -120,6 +119,12 @@ export interface DrawerProps {
    */
   footerStyle?: React.CSSProperties;
   direction?: string;
+
+  onPrev?: () => void;
+  prevDisabled?: boolean;
+  onNext?: () => void;
+  nextDisabled?: boolean;
+  loading?: boolean;
 }
 
 export interface IDrawerState {

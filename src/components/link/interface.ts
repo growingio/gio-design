@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { OverrideProps } from '../../utils/type';
+import { OverrideProps } from '../../utils/interfaces';
 
 export type HtmlElement = keyof React.ReactHTML;
 
