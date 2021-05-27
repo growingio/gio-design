@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-wrap-multilines */
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { isObject } from 'lodash';
 import Button from '../button';
 import Popover from '../popover';
@@ -22,13 +22,24 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
   const [selectFilterKeys, setSelectFilterKeys] = useState<string[]>(values);
   const [visible, setVisible] = useState<boolean>(false);
   const { tableRef } = useContext(TableContext);
+
+  useEffect(() => {
+    setSelectFilterKeys(values);
+  }, [values]);
+  
   return (
     <Popover
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       getTooltipContainer={(triggerNode) => tableRef?.current || triggerNode.parentElement!}
       arrowContent={null}
       visible={visible}
-      onVisibleChange={setVisible}
+      onVisibleChange={(_visible: boolean) => {
+        setVisible(_visible);
+        if(_visible === false) {
+          setSearchValue('');
+          setSelectFilterKeys(values);
+        }
+      }}
       placement="bottomLeft"
       trigger="click"
       overlayClassName={`${prefixCls}-filter-popover`}

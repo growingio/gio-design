@@ -65,7 +65,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
     const { filteredKeys, filters } = filterState;
     const handleFilterPopoverClick = (newFilteredKeys: string[]): void => {
       updateFilterStates({ ...filterState, filteredKeys: newFilteredKeys });
-      onTriggerStateUpdate(true);
+      onTriggerStateUpdate();
     };
 
     return (

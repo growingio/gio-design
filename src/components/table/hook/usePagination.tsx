@@ -14,28 +14,20 @@ const usePagination = <RecordType,>(
   (columns: ColumnsType<RecordType>) => ColumnsType<RecordType>,
   PaginationState,
   RecordType[],
-  (props: { onTriggerStateUpdate: () => void }) => JSX.Element | null,
-  () => void
+  (props: { onTriggerStateUpdate: (paginationState?: PaginationState) => void }) => JSX.Element | null,
+  // () => void
 ] => {
-  const { current, pageSize, total, onChange, onShowSizeChange, ...rest } = pagination || {};
-  const [controlledCurrent, setControlledCurrent] = useControlledState<number>(current, 1);
-  const [controlledPageSize, setControlledPageSize] = useControlledState<number>(pageSize, 10);
+  const { current, pageSize, total, onChange, onShowSizeChange, defaultCurrent = 1, defaultPageSize = 10, ...rest } = pagination || {};
+  const [controlledCurrent, setControlledCurrent] = useControlledState<number>(current, defaultCurrent);
+  const [controlledPageSize, setControlledPageSize] = useControlledState<number>(pageSize, defaultPageSize);
   const [controlledTotal, setControlledTotal] = useControlledState<number>(total, data.length);
   const prefixCls = usePrefixCls('table');
 
-  // when dataSource update && unControlled, Pagination update.
-  const resetPagination = () => {
-    if (isUndefined(total)) {
-      setControlledTotal(data.length, true);
-      if (Math.ceil(data.length / controlledPageSize) < controlledCurrent) {
-        setControlledCurrent(1, true);
-      }
-    }
-  };
-
   useEffect(() => {
-    resetPagination();
-  }, [data.length]);
+    setControlledTotal(data.length);
+    setControlledCurrent(defaultCurrent);
+    setControlledPageSize(defaultPageSize)
+  }, [data]);
 
   // 通过total字段是否受控判断是否后端分页。
   const paginationData = useMemo(
@@ -73,7 +65,7 @@ const usePagination = <RecordType,>(
   const PaginationComponent = ({
     onTriggerStateUpdate,
   }: {
-    onTriggerStateUpdate: (reset?: boolean, paginationState?: PaginationState) => void;
+    onTriggerStateUpdate: (paginationState?: PaginationState) => void;
   }) => (
     <Pagination
       className={`${prefixCls}-pagination`}
@@ -89,15 +81,15 @@ const usePagination = <RecordType,>(
         setControlledCurrent(_page);
         setControlledPageSize(_pageSize);
         onChange?.(_page, _pageSize);
-        onTriggerStateUpdate(false, { current: _page, pageSize: _pageSize });
+        onTriggerStateUpdate({ current: _page, pageSize: _pageSize });
       }}
       {...rest}
     />
   );
   if (pagination === false) {
-    return [transformShowIndexPipeline, activePaginationState, data, () => null, resetPagination];
+    return [transformShowIndexPipeline, activePaginationState, data, () => null];
   }
-  return [transformShowIndexPipeline, activePaginationState, paginationData, PaginationComponent, resetPagination];
+  return [transformShowIndexPipeline, activePaginationState, paginationData, PaginationComponent];
 };
 
 export default usePagination;
