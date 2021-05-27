@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef, useCallback } from 'react';
+import React, { useMemo, useState, useRef, useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 import { isFunction, isNumber, isNaN, isUndefined } from 'lodash';
 import { LeftOutlined, LeftDoubleOutlined, RightOutlined, RightDoubleOutlined, MoreOutlined } from '@gio-design/icons';
@@ -32,6 +32,13 @@ const Pagination = ({
   const [controlledPageSize, setControlledPageSize] = useControlledState(pageSize, defaultPageSize);
   const [inputValue, setInputValue] = useState<string>('');
   const pageNumber = useMemo(() => Math.ceil(total / controlledPageSize), [total, controlledPageSize]);
+
+  useEffect(() => {
+    if(controlledCurrent > pageNumber) {
+      onChange?.(pageNumber, controlledPageSize);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumber]);
 
   const shouldShowQuickJumper = useMemo(() => showQuickJumper && pageNumber > 10, [showQuickJumper, pageNumber]);
   const shouldShowOption = useMemo(() => shouldShowQuickJumper || showSizeChanger, [
