@@ -57,6 +57,7 @@ export const TablePagination: Story<TableProps<any> & PaginationProps> = (args) 
       rowSelection={{
         getCheckboxProps: (record: any) => ({
           disabled: record.a === 1,
+          title: record.a
         }),
       }}
       {...rest}

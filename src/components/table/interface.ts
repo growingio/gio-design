@@ -89,7 +89,7 @@ export interface RowSelection<RecordType> {
   columnWidth?: number | string;
   fixed?: 'left' | 'right' | boolean;
   onChange?: (selectedRowKeys: string[], selectedRows: RecordType[]) => void;
-  getCheckboxProps?: (record: RecordType) => CheckboxProps;
+  getCheckboxProps?: (record: RecordType) => CheckboxProps & { title?: React.ReactNode };
 }
 
 export interface TableProps<RecordType> {
