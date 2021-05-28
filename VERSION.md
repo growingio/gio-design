@@ -1,28 +1,18 @@
-## [21.5.2](https://github.com/growingio/gio-design/compare/v21.5.1...v21.5.2) (2021-05-21)
+## [21.5.3](https://github.com/growingio/gio-design/compare/v21.5.2...v21.5.3) (2021-05-28)
 
 
 ### Bug Fixes
 
-* **loading:** fix wrapper loading and loading text not align ([#995](https://github.com/growingio/gio-design/issues/995)) ([571369b](https://github.com/growingio/gio-design/commit/571369b895554dc80bff43c46ddb04f0c45c7e27))
-* **tooltip, popover, popconfirm:** fix arrow not point at target element center ([#1002](https://github.com/growingio/gio-design/issues/1002)) ([6c79e09](https://github.com/growingio/gio-design/commit/6c79e0979c1541d70bb305c4886620ad42b0e051))
-
-
-
-
-## [21.5.1](https://github.com/growingio/gio-design/compare/v21.5.0...v21.5.1) (2021-05-14)
-
-
-### Bug Fixes
-
-* **button:** update button styles ([#979](https://github.com/growingio/gio-design/issues/979)) ([849dc1d](https://github.com/growingio/gio-design/commit/849dc1d484d51155550f62e816e1b941abdb1187))
-* **loading:** fix loading autocenter not align ([#985](https://github.com/growingio/gio-design/issues/985)) ([32728d5](https://github.com/growingio/gio-design/commit/32728d56aa0d475abce94ff5487a361511402343))
-* **select:** tooltip and style ([#989](https://github.com/growingio/gio-design/issues/989)) ([543f1ef](https://github.com/growingio/gio-design/commit/543f1efd806d6d2e7ab2db6b88aba6731c98d426)), closes [#975](https://github.com/growingio/gio-design/issues/975)
-* **tree:** tree组件样式问题 ([#991](https://github.com/growingio/gio-design/issues/991)) ([b05afa1](https://github.com/growingio/gio-design/commit/b05afa1015d9362ba6f558b6492e944945f729fe))
+* **loading:** add parentheses in loading/index.less ([#1013](https://github.com/growingio/gio-design/issues/1013)) ([003a71d](https://github.com/growingio/gio-design/commit/003a71dd2f527c2c0182761fdf52fc26856e52a0))
+* **table:** if columns or data changed, status reset ([#1004](https://github.com/growingio/gio-design/issues/1004)) ([5347246](https://github.com/growingio/gio-design/commit/53472461663904a444dfc0ef73bd5cbaf8785343))
 
 
 ### Features
 
-* **table:** table filter support object data type ([#988](https://github.com/growingio/gio-design/issues/988)) ([ddb5367](https://github.com/growingio/gio-design/commit/ddb5367b17bf6ff5b6e65470ecaa8bd4d4991da4))
+* **drawer:** support change drawer content ([#1014](https://github.com/growingio/gio-design/issues/1014)) ([b4bdfe1](https://github.com/growingio/gio-design/commit/b4bdfe1880583b6b2a08d99415d55d80c5fb1d9b))
+* **progress:** add Progress bar active animation ([#1006](https://github.com/growingio/gio-design/issues/1006)) ([014cc31](https://github.com/growingio/gio-design/commit/014cc31f6ca5608f86423cbcfbd0138fa1771df6))
+* **table:** add row selection tooltip ([#1015](https://github.com/growingio/gio-design/issues/1015)) ([75abb96](https://github.com/growingio/gio-design/commit/75abb960c7323d8970ee092cf258b5dd0856520b))
+* **table:** support sorter and filter controll ([#1016](https://github.com/growingio/gio-design/issues/1016)) ([bf9c6e2](https://github.com/growingio/gio-design/commit/bf9c6e234fbc3f3800dad80d6b51a33a8c34cbb2))
 
 
 
