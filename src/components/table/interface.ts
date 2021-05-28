@@ -1,6 +1,7 @@
 import React from 'react';
 import { PaginationProps } from '../pagination/interface';
 import { CheckboxProps } from '../checkbox/interface';
+import { TooltipProps } from '../tooltip/interface';
 import { EmptyProps } from '../empty/interfaces';
 
 export type AlignType = 'left' | 'center' | 'right';
@@ -22,19 +23,20 @@ export interface ColumnType<RecordType> {
   dataIndex?: string | string[];
   width?: number | string;
   info?: string;
+  render?: (value: string, record: RecordType, index: number) => React.ReactNode;
   // Sorter
   // 设定排序函数才开启排序功能
-  sorter?: (a: RecordType, b: RecordType) => number;
+  sorter?: ((a: RecordType, b: RecordType) => number) | boolean;
   sortDirections?: SortOrder[];
   sortPriorityOrder?: number;
   defaultSortOrder?: SortOrder;
+  sortOrder?: SortOrder;
   // filter
   defaultFilteredValue?: string[];
+  filteredValue?: string[];
   filters?: filterType[];
   onFilter?: (value: string, record: RecordType) => boolean;
-  filterDropdown?: React.ReactNode;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  render?: (value: any, record: RecordType, index: number) => React.ReactNode;
+  filterSearchPlaceHolder?: string;
 }
 
 export interface ColumnGroupType<RecordType> extends Omit<ColumnType<RecordType>, 'dataIndex'> {
@@ -59,6 +61,7 @@ export interface SortState<RecordType> {
   sortPriorityOrder: number | undefined;
   sortDirections: SortOrder[];
   sortOrder: SortOrder;
+  isControlled: boolean;
 }
 
 export interface FilterState<RecordType> {
@@ -67,11 +70,18 @@ export interface FilterState<RecordType> {
   filteredKeys: string[];
   onFilter?: (value: string, record: RecordType) => boolean;
   filters?: filterType[];
+  isControlled: boolean;
 }
 
-export interface PaginationState {
+export type PaginationState = {
   current: number;
   pageSize: number;
+}
+
+export type OnTriggerStateUpdateProps<RecordType> = {
+  paginationState? : PaginationState;
+  filterStates?: Record<string, string[]>;
+  sorterState?: SortState<RecordType>;
 }
 
 export interface TitleProps<RecordType> {
@@ -79,9 +89,9 @@ export interface TitleProps<RecordType> {
   sorterState?: SortState<RecordType>;
   filterState?: FilterState<RecordType>;
   column: ColumnType<RecordType>;
-  updateSorterStates: (sortState: SortState<RecordType>) => void;
-  updateFilterStates: (filterState: FilterState<RecordType>) => void;
-  onTriggerStateUpdate: () => void;
+  updateSorterStates: (sortState: SortState<RecordType>) => SortState<RecordType>;
+  updateFilterStates: (filterState: FilterState<RecordType>) => Record<string, string[]>;
+  onTriggerStateUpdate: (onTriggerStateUpdateProps?: OnTriggerStateUpdateProps<RecordType>) => void;
 }
 
 export interface RowSelection<RecordType> {
@@ -89,7 +99,7 @@ export interface RowSelection<RecordType> {
   columnWidth?: number | string;
   fixed?: 'left' | 'right' | boolean;
   onChange?: (selectedRowKeys: string[], selectedRows: RecordType[]) => void;
-  getCheckboxProps?: (record: RecordType) => CheckboxProps & { title?: React.ReactNode };
+  getCheckboxProps?: (record: RecordType) => CheckboxProps & { tooltipProps?: TooltipProps };
 }
 
 export interface TableProps<RecordType> {
@@ -116,7 +126,7 @@ export interface TableProps<RecordType> {
   */
   emptyText?: React.ReactNode;
   empty?: EmptyProps;
-  onChange?: (pagination: PaginationState, sorter: SortState<RecordType>[], filters: FilterState<RecordType>[]) => void;
+  onChange?: (pagination: PaginationState, filters: Record<string, string[]>, sorter: SortState<RecordType> | undefined) => void;
   showHover?: boolean;
   showHeader?: boolean;
   loading?: boolean;

@@ -14,10 +14,11 @@ interface FilterPopoverProps {
   onClick: (newFilterState: string[]) => void;
   filters?: filterType[];
   values: string[];
+  placeholder?: string;
 }
 
 const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
-  const { children, onClick, filters = [], values, prefixCls } = props;
+  const { children, onClick, filters = [], values, prefixCls, placeholder = '搜索过滤条件' } = props;
   const [seachValue, setSearchValue] = useState<string>('');
   const [selectFilterKeys, setSelectFilterKeys] = useState<string[]>(values);
   const [visible, setVisible] = useState<boolean>(false);
@@ -25,7 +26,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
 
   useEffect(() => {
     setSelectFilterKeys(values);
-  }, [values]);
+  }, [values, visible]);
   
   return (
     <Popover
@@ -45,7 +46,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
       overlayClassName={`${prefixCls}-filter-popover`}
       contentArea={
         <>
-          <SearchBar placeholder="搜索过滤条件" size="small" value={seachValue} onChange={setSearchValue} />
+          <SearchBar placeholder={placeholder} size="small" value={seachValue} onChange={setSearchValue} />
           <FilterList
             prefixCls={prefixCls}
             value={selectFilterKeys}

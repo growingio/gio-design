@@ -86,9 +86,9 @@ const useSelection = <RecordType,>(
     render: (...rest) => {
       const key = getRowKey(rest[1], rowKey);
       const thisCheckboxProps = getCheckboxProps?.(rest[1]) || {};
-      const { title, disabled, ...restCheckboxProps } = thisCheckboxProps;
+      const { tooltipProps, disabled, ...restCheckboxProps } = thisCheckboxProps;
       return (
-        <Tooltip placement='topLeft' arrowPointAtCenter title={title} disabled={!disabled}>
+        <Tooltip placement='topLeft' arrowPointAtCenter disabled={!disabled} {...tooltipProps}>
           <div>
             <Checkbox
               {...restCheckboxProps}
@@ -102,7 +102,7 @@ const useSelection = <RecordType,>(
                 setLocalSelectedRowKeys(latestLocalSelectedRowKeys);
                 onChange?.(latestLocalSelectedRowKeys, getSelectRows(latestLocalSelectedRowKeys));
               }}
-            >&nbsp;</Checkbox>
+            >{disabled ? null : undefined}</Checkbox>
           </div>
         </Tooltip>
       );

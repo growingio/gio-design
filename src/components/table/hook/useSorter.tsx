@@ -10,13 +10,14 @@ export const collectSortStates = <RecordType,>(columns: InnerColumnsType<RecordT
     if (has(column, 'children')) {
       sortStates.push(...collectSortStates(get(column, 'children')));
     } else if (column.sorter) {
-      const { key, sortPriorityOrder, sortDirections = ['ascend', 'descend', null] } = column;
+      const { key, sortPriorityOrder, sortDirections = ['ascend', 'descend', null], sortOrder, defaultSortOrder } = column;
       sortStates.push({
         column,
         key,
         sortPriorityOrder,
         sortDirections,
-        sortOrder: column.defaultSortOrder || null,
+        sortOrder: sortOrder || defaultSortOrder || null,
+        isControlled: !isUndefined(sortOrder)
       });
     }
   });
@@ -26,9 +27,10 @@ export const collectSortStates = <RecordType,>(columns: InnerColumnsType<RecordT
 const useSorter = <RecordType,>(
   columns: InnerColumnsType<RecordType>,
   data: RecordType[]
-): [SortState<RecordType>[], (sortState: SortState<RecordType>) => void, RecordType[]] => {
+): [SortState<RecordType>[], (sortState: SortState<RecordType>) => SortState<RecordType>, RecordType[], SortState<RecordType> | undefined] => {
   // record all sorter states
   const [sortStates, setSortStates] = useState<SortState<RecordType>[]>(collectSortStates(columns));
+  const [_sorter, setSorter] = useState<SortState<RecordType>>();
 
   useShallowCompareEffect(() => {
     setSortStates(collectSortStates(columns));
@@ -37,22 +39,25 @@ const useSorter = <RecordType,>(
   // update sorter states action
   const updateSorterStates = useCallback(
     (incomingSortState: SortState<RecordType>) => {
+      setSorter(incomingSortState);
       setSortStates(
         sortStates.map((_sortState) => {
           const innerSortState = _sortState;
-          // if updata cloumn have not sortPriorityOrder, clear all active sortOrder state.
-          if (isUndefined(incomingSortState.sortPriorityOrder)) {
-            innerSortState.sortOrder = null;
-            // only update sortOrder which cloumn have not sortPriorityOrder.
-          } else if (isUndefined(innerSortState.sortPriorityOrder)) {
+          // if update cloumn haven't sortPriorityOrder, clear all active sortOrder state.
+          // if update cloumn haven sortPriorityOrder, only update sortOrder which cloumn haven't sortPriorityOrder.
+          if ((isUndefined(incomingSortState.sortPriorityOrder) || isUndefined(innerSortState.sortPriorityOrder)) && !innerSortState.isControlled) {
             innerSortState.sortOrder = null;
           }
-          if (innerSortState.key === incomingSortState.key) {
+          if(innerSortState.key === incomingSortState.key) {
+            if(incomingSortState.isControlled) {
+              return innerSortState;
+            }
             innerSortState.sortOrder = incomingSortState.sortOrder;
           }
           return innerSortState;
         })
       );
+      return incomingSortState;
     },
     [sortStates]
   );
@@ -80,6 +85,10 @@ const useSorter = <RecordType,>(
         } = sorterState;
 
         if (sortOrder && sorter) {
+          // server sort
+          if(sorter === true) {
+            return 0;
+          }
           const compareResult = sorter(record1, record2);
 
           if (compareResult !== 0) {
@@ -91,7 +100,7 @@ const useSorter = <RecordType,>(
     });
   }, [activeSortStates, data]);
 
-  return [sortStates, updateSorterStates, sortedData];
+  return [sortStates, updateSorterStates, sortedData, _sorter];
 };
 
 export default useSorter;

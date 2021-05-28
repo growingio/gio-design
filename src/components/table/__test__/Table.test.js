@@ -164,7 +164,7 @@ describe('Testing Table', () => {
     );
     expect(wrapper.exists('.gio-table-pagination')).toBe(true);
     wrapper.find('.gio-pagination-item').at(1).simulate('click');
-    expect(onChange).toBeCalledWith({ current: 2, pageSize: 10 }, [], []);
+    expect(onChange).toBeCalledWith({ current: 2, pageSize: 10 }, {}, undefined);
   });
 
   it('should be render rightly', () => {

@@ -22,11 +22,8 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
     const { sortOrder: sorterOrder } = sorterState;
 
     const handleSorterChange = (): void => {
-      updateSorterStates({
-        ...sorterState,
-        sortOrder: getNextSortDirection(sortDirections, sorterOrder),
-      });
-      onTriggerStateUpdate();
+      const changedSorterState = { ...sorterState, sortOrder: getNextSortDirection(sortDirections, sorterOrder) };
+      onTriggerStateUpdate({ sorterState: updateSorterStates(changedSorterState) });
     };
     return (
       <span className={classNames(`${prefixCls}-column-sorter`)}>
@@ -59,13 +56,13 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
 
   const renderFilter = (): React.ReactNode => {
     const { filterState, updateFilterStates } = props;
+    const { filterSearchPlaceHolder } = column;
     if (isUndefined(filterState)) {
       return null;
     }
     const { filteredKeys, filters } = filterState;
     const handleFilterPopoverClick = (newFilteredKeys: string[]): void => {
-      updateFilterStates({ ...filterState, filteredKeys: newFilteredKeys });
-      onTriggerStateUpdate();
+      onTriggerStateUpdate({ filterStates: updateFilterStates({ ...filterState, filteredKeys: newFilteredKeys }) });
     };
 
     return (
@@ -76,6 +73,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
             onClick={handleFilterPopoverClick}
             filters={filters}
             values={filteredKeys}
+            placeholder={filterSearchPlaceHolder}
           >
             <Button
               type="text"
