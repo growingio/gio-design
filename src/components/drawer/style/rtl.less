@@ -9,8 +9,16 @@
 
   &-close {
     .@{drawer-prefix-cls}-rtl & {
-      right: auto;
-      left: 0;
+      margin-right: 16px;
+      margin-left: 0;
+    }
+  }
+
+  &-prev-next {
+    .@{drawer-prefix-cls}-rtl & {
+      button:first-child {
+        float: left;
+      }
     }
   }
 }

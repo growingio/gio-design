@@ -40,7 +40,6 @@
 
   &-content-wrapper {
     position: absolute;
-    width: 100%;
     height: 100%;
   }
 
@@ -52,9 +51,17 @@
   &-left,
   &-right {
     top: 0;
-    width: 0%;
     height: 100%;
     .@{drawer-prefix-cls}-content-wrapper {
+      @media screen and (max-width: 1200px) {
+        width: 480px;
+      }
+      @media screen and (min-width: 1200px) and (max-width: 2000px) {
+        width: 40%;
+      }
+      @media screen and (min-width: 2000px) {
+        width: 800px;
+      }
       height: 100%;
     }
     &.@{drawer-prefix-cls}-open {
@@ -154,8 +161,8 @@
     margin: 0;
     color: @palette-black-6;
     font-weight: @weight-font-medium;
-    font-size: @size-font-16;
-    line-height: 22px;
+    font-size: @size-font-18;
+    line-height: 24px;
   }
 
   &-content {
@@ -167,35 +174,27 @@
     border: 0;
   }
 
+  &-prev-next {
+    display: inline-block;
+    button:last-child {
+      margin-left: 8px;
+    }
+  }
+
   &-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: @zindex-popup-close;
-    display: block;
+    margin-left: 16px;
     padding: @drawer-header-close-padding;
-    color: @palette-black-6;
-    font-weight: 700;
-    font-size: @size-font-16;
-    font-style: normal;
-    line-height: 1;
-    text-align: center;
-    text-transform: none;
-    text-decoration: none;
-    background: transparent;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
     transition: color @animation-duration-slow;
     text-rendering: auto;
-
     &:focus,
     &:hover {
       text-decoration: none;
     }
 
     .@{drawer-prefix-cls}-header-no-title & {
+      margin-top: 16px;
       margin-right: var(--scroll-bar);
+      margin-left: 24px;
       /* stylelint-disable-next-line function-calc-no-invalid */
       padding-right: calc(@drawer-header-close-padding - var(--scroll-bar));
     }
@@ -203,11 +202,17 @@
 
   &-header {
     position: relative;
+    display: flex;
+    justify-content: space-between;
     padding: @drawer-header-padding;
     color: @palette-black-6;
     background: @palette-white;
     border-bottom: @border-width-base @border-style-base @border-color-split;
     border-radius: @border-radius-base @border-radius-base 0 0;
+  }
+
+  &-header-btns {
+    line-height: 0;
   }
 
   &-header-no-title {

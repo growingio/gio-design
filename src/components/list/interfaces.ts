@@ -1,4 +1,4 @@
-import { CommonProps } from '../../utils/type';
+import { CommonProps } from '../../utils/interfaces';
 
 export interface ListProps extends CommonProps {
   children?: React.ReactNode;
