@@ -99,7 +99,7 @@ export interface RowSelection<RecordType> {
   columnWidth?: number | string;
   fixed?: 'left' | 'right' | boolean;
   onChange?: (selectedRowKeys: string[], selectedRows: RecordType[]) => void;
-  getCheckboxProps?: (record: RecordType) => CheckboxProps & { tooltipProps?: TooltipProps };
+  getCheckboxProps?: (record: RecordType) => CheckboxProps & { tooltipProps?: Omit<TooltipProps, 'children'> };
 }
 
 export interface TableProps<RecordType> {
