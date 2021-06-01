@@ -15,7 +15,7 @@ jobs:
           node-version: 14
       - name: Cache Node.js modules
         id: cache-node-modules
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -34,12 +34,12 @@ jobs:
         with:
           node-version: 14
       - name: Restore Node.js modules
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Cache lint reports
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: |
             stylelint-report.json
@@ -63,19 +63,19 @@ jobs:
         with:
           node-version: 14
       - name: Restore Node.js modules
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Restore package from cache
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: |
             dist
             es
           key: packages-${{ github.sha }}
       - name: Cache test report
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: coverage/lcov.info
           key: test-report-${{ github.sha }}
@@ -100,7 +100,7 @@ jobs:
         with:
           node-version: 12
       - name: Restore Node.js modules
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -131,7 +131,7 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       - name: Restore Node.js modules
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -148,14 +148,14 @@ jobs:
         with:
           fetch-depth: 0
       - name: Restore lint reports
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: |
             stylelint-report.json
             eslint-report.json
           key: lint-reports-${{ github.sha }}
       - name: Restore test report
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: coverage/lcov.info
           key: test-report-${{ github.sha }}
