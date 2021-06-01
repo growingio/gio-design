@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import React from 'react';
 import { SizeType } from '../config-provider/SizeContext';
 
 export type MaybeArray<T> = T | T[];
@@ -142,6 +143,10 @@ export interface SelectProps {
    * 多选模式下 是否允许通过搜索自定义插入 option
    */
   allowCustomOption?: boolean;
+  /**
+   * 被包裹的元素
+   */
+  triggerComponent?: React.ReactElement;
   /**
    * 自定义无搜索内容
    */

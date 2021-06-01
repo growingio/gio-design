@@ -1,9 +1,12 @@
 import React from 'react';
 import { withDesign } from 'storybook-addon-designs';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { FilterOutlined } from '@gio-design/icons';
 import Select, { SelectProps } from './index';
 import Docs from './Select.mdx';
 import './style';
+import Button from '../button';
+
 
 export default {
   title: 'Functional Components/Select',
@@ -41,7 +44,7 @@ const templatestEllipsisOptions = values.map((value, index) => ({
 }))
 const Template: Story<SelectProps> = (args) => (
   <div>
-    <Select {...args} options={templatestEllipsisOptions} />
+    <Select {...args} triggerComponent={<Button type='text' size='small' icon={<FilterOutlined />} />} options={templatestEllipsisOptions} />
     <br />
     <br />
     <Select {...args} style={{ width: '300px' }} />

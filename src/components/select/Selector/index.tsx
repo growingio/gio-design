@@ -187,8 +187,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
         [`${prefix}-bordered`]: bordered,
         [`${prefix}-focused`]: isFocused,
         [`${prefix}-disabled`]: disabled,
-        className,
-      })}
+      },className)}
       aria-disabled={disabled}
       aria-hidden='true'
       style={style}
