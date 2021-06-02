@@ -20,6 +20,11 @@ export interface ILinkProps {
    * 替代 Link 组件 class 的 gio-link 前缀
    */
   prefix?: string;
+
+  /**
+   * ICON
+   */
+  icon?: React.ReactNode;
 }
 
 export interface LinkTypeMap<P = {}, D extends React.ElementType = 'a'> {

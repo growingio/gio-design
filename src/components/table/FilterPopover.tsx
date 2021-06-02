@@ -70,7 +70,6 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
             <Button
               style={{ color: '#c7cbd8' }}
               type="text"
-              ghost
               size="small"
               onClick={() => {
                 setSearchValue('');

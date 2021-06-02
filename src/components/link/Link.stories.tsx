@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
+import { FilterOutlined } from '@gio-design/icons'
 import Docs from './Link.mdx';
 import Link from './index';
 import { ILinkProps } from './interface';
@@ -27,6 +28,7 @@ const Template: Story<ILinkProps> = (args) => <Link {...args}>GrowingIO</Link>;
 export const Default = Template.bind({});
 Default.args = {
   to: 'https://www.growingio.com',
+  icon: <FilterOutlined />
 };
 
 export const Disabled = Template.bind({});

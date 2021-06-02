@@ -2,39 +2,50 @@
 
 @gio-link-prefix: ~'@{component-prefix}-link';
 @gio-link-disabled: ~'@{gio-link-prefix}--disabled';
+@iconfont-css-prefix: ~'@{component-prefix}-icon';
 
 // normal
 .@{gio-link-prefix} {
   display: inline-block;
   margin-right: 8px;
   margin-left: 8px;
-  color: @color-text-link-normal;
+  color: @palette-blue-4;
   font-size: 14px;
   line-height: 22px;
-  text-decoration: underline;
+  text-decoration: none;
   vertical-align: middle;
   cursor: pointer;
 
   &:hover {
-    color: @color-text-link-hover;
-    text-decoration: underline;
+    color: @palette-blue-5;
+    text-decoration: none;
   }
 
   &:active {
-    color: @color-text-link-click;
+    color: @palette-blue-3;
+  }
+
+  .@{iconfont-css-prefix} {
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    svg {
+      width: 14px;
+      height: auto;
+    }
   }
 }
 
 // disabled
 .@{gio-link-disabled} {
-  color: @color-text-link-disable;
+  color: @palette-black-3;
   cursor: not-allowed;
 
   &.@{gio-link-prefix} {
     &:hover,
     &:active {
-      color: @color-text-link-disable;
-      text-decoration: underline;
+      color: @palette-black-3;
+      text-decoration: none;
     }
   }
 }
