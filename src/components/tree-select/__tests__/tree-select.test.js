@@ -94,6 +94,8 @@ describe('Testing tree select', () => {
         listItemHeight={30}
         suffixIcon={<MoreOutlined />}
         showSearch
+        maxTagTextLength={6}
+        maxTagCount={3}
         menuItemSelectedIcon={<MoreOutlined />}
       />
     );
