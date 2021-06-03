@@ -970,7 +970,7 @@ exports[`Testing tree select \`multiple\` will alway be \`true\` when \`treeChec
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-select gio-tree-select gio-select-single gio-select-show-arrow",
+      "class": "gio-select gio-tree-select gio-select-single gio-select-show-arrow gio-select-show-search",
     },
     "children": Array [
       Object {
@@ -1900,7 +1900,7 @@ exports[`Testing tree select not found work 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-select gio-tree-select gio-select-single gio-select-show-arrow",
+      "class": "gio-select gio-tree-select gio-select-single gio-select-show-arrow gio-select-show-search",
     },
     "children": Array [
       Object {
@@ -2830,7 +2830,7 @@ exports[`Testing tree select should \`treeIcon\` work 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-select gio-tree-select gio-select-single gio-select-show-arrow gio-select-open",
+      "class": "gio-select gio-tree-select gio-select-single gio-select-show-arrow gio-select-open gio-select-show-search",
     },
     "children": Array [
       Object {
@@ -2854,11 +2854,8 @@ initialize {
                   "autocomplete": "off",
                   "class": "gio-select-selection-search-input",
                   "id": "rc_select_TEST_OR_SSR",
-                  "readonly": "",
                   "role": "combobox",
-                  "style": "opacity: 0;",
                   "type": "search",
-                  "unselectable": "on",
                   "value": "",
                 },
                 "children": Array [],
@@ -2878,11 +2875,8 @@ initialize {
                   "autocomplete": undefined,
                   "class": undefined,
                   "id": undefined,
-                  "readonly": undefined,
                   "role": undefined,
-                  "style": undefined,
                   "type": undefined,
-                  "unselectable": undefined,
                   "value": undefined,
                 },
                 "x-attribsPrefix": Object {
@@ -2895,11 +2889,8 @@ initialize {
                   "autocomplete": undefined,
                   "class": undefined,
                   "id": undefined,
-                  "readonly": undefined,
                   "role": undefined,
-                  "style": undefined,
                   "type": undefined,
-                  "unselectable": undefined,
                   "value": undefined,
                 },
               },
@@ -2959,11 +2950,8 @@ initialize {
                     "autocomplete": "off",
                     "class": "gio-select-selection-search-input",
                     "id": "rc_select_TEST_OR_SSR",
-                    "readonly": "",
                     "role": "combobox",
-                    "style": "opacity: 0;",
                     "type": "search",
-                    "unselectable": "on",
                     "value": "",
                   },
                   "children": Array [],
@@ -2983,11 +2971,8 @@ initialize {
                     "autocomplete": undefined,
                     "class": undefined,
                     "id": undefined,
-                    "readonly": undefined,
                     "role": undefined,
-                    "style": undefined,
                     "type": undefined,
-                    "unselectable": undefined,
                     "value": undefined,
                   },
                   "x-attribsPrefix": Object {
@@ -3000,11 +2985,8 @@ initialize {
                     "autocomplete": undefined,
                     "class": undefined,
                     "id": undefined,
-                    "readonly": undefined,
                     "role": undefined,
-                    "style": undefined,
                     "type": undefined,
-                    "unselectable": undefined,
                     "value": undefined,
                   },
                 },
@@ -3525,11 +3507,8 @@ initialize {
                     "autocomplete": "off",
                     "class": "gio-select-selection-search-input",
                     "id": "rc_select_TEST_OR_SSR",
-                    "readonly": "",
                     "role": "combobox",
-                    "style": "opacity: 0;",
                     "type": "search",
-                    "unselectable": "on",
                     "value": "",
                   },
                   "children": Array [],
@@ -3549,11 +3528,8 @@ initialize {
                     "autocomplete": undefined,
                     "class": undefined,
                     "id": undefined,
-                    "readonly": undefined,
                     "role": undefined,
-                    "style": undefined,
                     "type": undefined,
-                    "unselectable": undefined,
                     "value": undefined,
                   },
                   "x-attribsPrefix": Object {
@@ -3566,11 +3542,8 @@ initialize {
                     "autocomplete": undefined,
                     "class": undefined,
                     "id": undefined,
-                    "readonly": undefined,
                     "role": undefined,
-                    "style": undefined,
                     "type": undefined,
-                    "unselectable": undefined,
                     "value": undefined,
                   },
                 },
@@ -3630,11 +3603,8 @@ initialize {
                       "autocomplete": "off",
                       "class": "gio-select-selection-search-input",
                       "id": "rc_select_TEST_OR_SSR",
-                      "readonly": "",
                       "role": "combobox",
-                      "style": "opacity: 0;",
                       "type": "search",
-                      "unselectable": "on",
                       "value": "",
                     },
                     "children": Array [],
@@ -3654,11 +3624,8 @@ initialize {
                       "autocomplete": undefined,
                       "class": undefined,
                       "id": undefined,
-                      "readonly": undefined,
                       "role": undefined,
-                      "style": undefined,
                       "type": undefined,
-                      "unselectable": undefined,
                       "value": undefined,
                     },
                     "x-attribsPrefix": Object {
@@ -3671,11 +3638,8 @@ initialize {
                       "autocomplete": undefined,
                       "class": undefined,
                       "id": undefined,
-                      "readonly": undefined,
                       "role": undefined,
-                      "style": undefined,
                       "type": undefined,
-                      "unselectable": undefined,
                       "value": undefined,
                     },
                   },
