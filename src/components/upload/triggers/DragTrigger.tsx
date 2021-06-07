@@ -19,15 +19,15 @@ const DragTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, accept, onRe
   const handleDrag = (e: React.DragEvent<HTMLDivElement>) => setDragState(e.type);
 
   return (
-    <Loading loading={file?.status === STATUS_UPLOADING} size="small" title="上传中">
+    <Loading loading={file.status === STATUS_UPLOADING} size="small" title="上传中">
       <div className={cls} onDrop={handleDrag} onDragOver={handleDrag} onDragLeave={handleDrag}>
-        {file?.status === STATUS_SUCCESS && (
+        {file.status === STATUS_SUCCESS && (
           <>
             {isImageFile(file) ? <Preview file={file} size="100%" /> : <PreviewForNotImage file={file} />}
             <Actions file={file} useUpload onRemove={onRemove} placement="rightTop" />
           </>
         )}
-        {file?.status !== STATUS_SUCCESS && (
+        {file.status !== STATUS_SUCCESS && (
           <div className={placeholderCls}>
             {isOnlyAcceptImg(accept) ? <PictureOutlined /> : <File />}
             <div>点击或拖拽上传</div>

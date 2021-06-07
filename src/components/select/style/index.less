@@ -11,11 +11,11 @@
   display: inline-block;
   min-width: 120px;
   overflow: hidden;
+  color: @color-font-list-primary-normal;
   border: 1px solid transparent;
   border-radius: @radius-border-small;
   outline: none;
   transition: all 0.2s;
-
   &-selector {
     box-sizing: border-box;
     width: 100%;
@@ -52,7 +52,7 @@
   }
 
   &:not(&-bordered):not(&-disabled):hover {
-    background-color: @color-background-button-default-hover;
+    background-color: @palette-gray-2;
     border: 1px solid transparent;
   }
 
@@ -90,6 +90,7 @@
 
   &-item {
     max-width: 100%;
+    overflow: hidden;
     font-size: @select-input-fontSize;
     transition: margin 0.2s;
 
@@ -115,6 +116,8 @@
 
     &-text {
       overflow: hidden;
+      font-size: 14px;
+      line-height: 22px;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
@@ -158,7 +161,7 @@
       }
 
       &-values-wrapper {
-        padding-top: 2px;
+        padding-top: 3px;
       }
       &-tag-item {
         margin-bottom: 2px;
@@ -198,16 +201,17 @@
     color: @palette-gray-5;
     text-shadow: none;
     background: @color-background-input-disable;
-    border-color: @color-border-input-disable;
     cursor: not-allowed !important;
   }
-
+  &-bordered&-disabled {
+    border-color: @color-border-input-disable;
+  }
   &-focused&-bordered {
     border: 1px solid @color-border-input-active;
   }
 
   &-focused:not(&-bordered) {
-    background-color: @color-background-button-default-hover;
+    background-color: @palette-gray-2;
   }
 
   &-single {
@@ -251,13 +255,18 @@
   &-gap-10 {
     width: 10px;
   }
+  &-gap-10 + div {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
   &-button {
     margin-right: 8px;
   }
   &-button-active {
-    color: @color-text-button-assist-hover;
-    background: @color-background-button-default-click;
-    border-color: @color-background-button-default-click;
+    color: @color-text-button-text-hover;
+    background: @palette-gray-4;
+    border-color: @palette-gray-4;
   }
 }
 
@@ -265,6 +274,7 @@
   box-sizing: border-box;
   min-width: 160px;
   padding: 16px 0 16px 8px;
+  outline: none;
 }
 
 .@{select-prefix-cls}-list-option {
@@ -297,7 +307,7 @@
 
   &-isSelected {
     color: @color-background-button-primary-hover;
-    background-color: @palette-gray-3;
+    background-color: @palette-gray-1;
   }
 }
 
@@ -318,6 +328,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
   &:not(&-disabled):hover {
     background-color: @palette-gray-3;
   }
@@ -345,8 +356,9 @@
 }
 
 .@{select-prefix-cls}-list-group {
-  padding: 6px 16px;
+  padding: 6px 12px;
   color: @color-background-button-primary-hover;
+  font-weight: 500;
   font-size: 12px;
   line-height: 20px;
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import Form, { useForm } from './index';
 import Item from './Item';
+import Docs from './Form.mdx';
 import { Props, FormItemProps } from './interface';
 import './style';
 import '../input/style';
@@ -9,11 +10,16 @@ import '../button/style';
 import './style/demo.stories.less';
 import { Button, Input, Modal } from '../..';
 
-export default ({
-  title: 'Components/Functional/Form',
+export default {
+  title: 'Functional Components/Form',
   component: Form,
   subcomponents: { Item },
-} as unknown) as Meta;
+  parameters: {
+    docs: {
+      page: Docs,
+    },
+  },
+} as Meta;
 
 const FormStory = (args: Props): JSX.Element => {
   const [form] = useForm();
@@ -100,8 +106,7 @@ export const FormWithModal: Story<Props> = (args: Props) => {
 
 // Multiple Column Form Story
 const items = [...new Array(6)];
-export const MultipleForm: Story<Props> = (args) => {
-  return (
+export const MultipleForm: Story<Props> = (args) => (
     <Form {...args}>
       {items.map((_, i) => (
         // eslint-disable-next-line react/no-array-index-key
@@ -111,4 +116,3 @@ export const MultipleForm: Story<Props> = (args) => {
       ))}
     </Form>
   );
-};

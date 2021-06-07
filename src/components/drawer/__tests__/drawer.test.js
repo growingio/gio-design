@@ -1,5 +1,7 @@
+// eslint-disable-next-line max-classes-per-file
 import React, { useContext } from 'react';
 import { render, mount } from 'enzyme';
+import { render as tlrRender, fireEvent } from '@testing-library/react';
 import Drawer from '..';
 import Button from '../../button';
 import { ConfigContext } from '../../config-provider';
@@ -75,6 +77,22 @@ describe('Drawer Base', () => {
       </Drawer>
     );
     expect(wrapper).toMatchSnapshot();
+  });
+
+  test('onPrev, onNext', () => {
+    const onPrev = jest.fn();
+    const onNext = jest.fn();
+    const { container } = tlrRender(
+      <div id='mount-point'>
+        <Drawer visible closable onPrev={onPrev} onNext={onNext} getContainer="#mount-point">
+          Here is content of Drawer
+        </Drawer>
+      </div>
+    );
+    fireEvent.click(container.getElementsByClassName('gio-drawer-prev-next')[0].firstChild);
+    expect(onPrev).toBeCalled();
+    fireEvent.click(container.getElementsByClassName('gio-drawer-prev-next')[0].lastChild);
+    expect(onNext).toBeCalled();
   });
 });
 
@@ -209,7 +227,7 @@ describe('Multi Drawer', () => {
     const translateX = wrapper.find('.gio-drawer.test_drawer').get(0).props.style.transform;
     expect(translateX).toEqual('translateX(180px)');
     expect(wrapper.find('#two_drawer_text').exists()).toBe(true);
-    wrapper.find('.Two-level .gio-drawer-close').simulate('click');
+    wrapper.find('.Two-level .gio-drawer-close').at(0).simulate('click');
     expect(wrapper.state().childrenDrawer).toBe(false);
   });
 
@@ -310,7 +328,7 @@ describe('Drawer Events', () => {
     const body = wrapper.find('.gio-drawer-body').exists();
 
     expect(body).toBe(true);
-    wrapper.find('button.gio-btn').simulate('click');
+    wrapper.find('button.gio-btn').at(0).simulate('click');
 
     const content = wrapper.find('.gio-drawer-body').getDOMNode().innerHTML;
     expect(content).toBe('Here is content of Drawer');
@@ -321,7 +339,7 @@ describe('Drawer Events', () => {
   it('mask trigger onClose', () => {
     const wrapper = mount(<DrawerEventTester />);
 
-    wrapper.find('button.gio-btn').simulate('click');
+    wrapper.find('button.gio-btn').at(0).simulate('click');
     expect(wrapper.instance().state.visible).toBe(true);
 
     wrapper.find('.gio-drawer-mask').simulate('click');
@@ -331,17 +349,17 @@ describe('Drawer Events', () => {
   it('close button trigger onClose', () => {
     const wrapper = mount(<DrawerEventTester />);
 
-    wrapper.find('button.gio-btn').simulate('click');
+    wrapper.find('button.gio-btn').at(0).simulate('click');
     expect(wrapper.instance().state.visible).toBe(true);
 
-    wrapper.find('.gio-drawer-close').simulate('click');
+    wrapper.find('.gio-drawer-close').at(0).simulate('click');
     expect(wrapper.instance().state.visible).toBe(false);
   });
 
   it('maskClosable no trigger onClose', () => {
     const wrapper = mount(<DrawerEventTester maskClosable={false} />);
 
-    wrapper.find('button.gio-btn').simulate('click');
+    wrapper.find('button.gio-btn').at(0).simulate('click');
     expect(wrapper.instance().state.visible).toBe(true);
 
     wrapper.find('.gio-drawer-mask').simulate('click');
@@ -350,7 +368,7 @@ describe('Drawer Events', () => {
 
   it('dom should be removed after close when destroyOnClose is true', () => {
     const wrapper = mount(<DrawerEventTester destroyOnClose />);
-    wrapper.find('button.gio-btn').simulate('click');
+    wrapper.find('button.gio-btn').at(0).simulate('click');
     expect(wrapper.find('.gio-drawer-wrapper-body').exists()).toBe(true);
 
     wrapper.setState({
@@ -362,7 +380,7 @@ describe('Drawer Events', () => {
 
   it('dom should be existed after close when destroyOnClose is false', () => {
     const wrapper = mount(<DrawerEventTester />);
-    wrapper.find('button.gio-btn').simulate('click');
+    wrapper.find('button.gio-btn').at(0).simulate('click');
     expect(wrapper.find('.gio-drawer-wrapper-body').exists()).toBe(true);
 
     wrapper.setState({
@@ -375,10 +393,10 @@ describe('Drawer Events', () => {
   it('no mask and no closable', () => {
     const wrapper = mount(<DrawerEventTester destroyOnClose />);
 
-    wrapper.find('button.gio-btn').simulate('click');
+    wrapper.find('button.gio-btn').at(0).simulate('click');
     expect(wrapper.instance().state.visible).toBe(true);
 
-    wrapper.find('.gio-drawer-close').simulate('click');
+    wrapper.find('.gio-drawer-close').at(0).simulate('click');
     expect(wrapper.instance().state.visible).toBe(false);
   });
 });

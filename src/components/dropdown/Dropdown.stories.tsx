@@ -5,6 +5,8 @@ import Docs from './Dropdown.mdx';
 import Dropdown, { DropdownProps } from './index';
 import './style';
 import { Button, List } from '../..';
+import ListPro from '../list-pro';
+import { properties } from '../list/__tests__/data';
 
 export default {
   title: 'Functional Components/Dropdown',
@@ -23,47 +25,54 @@ const overlay = (
       height: 120,
       border: '1px dashed #DCDFED',
       borderRadius: '4px',
-      backgroundColor: '#FFFFFF',
+      backgroundColor: '#FFF',
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
     }}
   >
-    内容区域
+    {/* <SearchBar /> */}
+    <List items={properties} />
   </div>
 );
 
+const options = [
+  { value: 'a', label: '功能名称' },
+  { value: 'b', label: '功能名称' },
+  { value: 'c', label: '功能名称' },
+  { value: 'd', label: '功能名称' },
+  { value: 'e', label: '功能名称' },
+  { value: 'f', label: '功能名称' },
+  { value: 'g', label: '功能名称' },
+];
+
 const Template: Story<DropdownProps> = (args) => (
   <Dropdown {...args}>
-    <Button>点击下拉</Button>
+    <Button>更多功能</Button>
   </Dropdown>
 );
 export const Default = Template.bind({});
 Default.args = {
   overlay,
+
   placement: 'bottom',
 };
 
-const options = [
-  { value: 'a', label: '功能名称' },
-  { value: 'c', label: '功能名称' },
-];
 const PlacementTemplate: Story<DropdownProps> = (args) => (
-  <div style={{ padding: 300 }}>
-    <Dropdown {...args} placement="bottomRight">
-      <Button type="assist" icon={<MoreOutlined />} style={{ marginLeft: '64px' }} />
+  <div style={{ display: 'flex', justifyContent: 'space-around', height: 800, flexWrap: 'wrap' }}>
+    <Dropdown {...args} placement="bottomLeft">
+      <Button type="text" icon={<MoreOutlined />} style={{ margin: '50px' }} />
     </Dropdown>
     <Dropdown {...args} placement="bottom">
-      <Button type="assist" icon={<MoreOutlined />} style={{ margin: '0px 128px' }} />
+      <Button type="text" icon={<MoreOutlined />} style={{ margin: '50px' }} />
     </Dropdown>
-    <Dropdown {...args} placement="bottomLeft">
-      <Button type="assist" icon={<MoreOutlined />} />
+    <Dropdown {...args} placement="bottomRight">
+      <Button type="text" icon={<MoreOutlined />} style={{ margin: '50px' }} />
     </Dropdown>
   </div>
 );
-
 export const Placement = PlacementTemplate.bind({});
 
 Placement.args = {
-  overlay: <List dataSource={options} width={144} height={88} />,
+  overlay: <ListPro dataSource={options} width={144} height={88} />,
 };

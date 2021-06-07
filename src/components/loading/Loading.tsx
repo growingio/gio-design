@@ -13,7 +13,7 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
     delay = 0,
     indicator,
     titlePosition  = 'bottom',
-    title = '加载中...',
+    title,
     size = 'large',
     className,
     style,
@@ -37,32 +37,39 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
       window.addEventListener('resize', constantFunction);
     }
     return () => window.removeEventListener('resize', constantFunction);
-  }, [autoCenter, children, constantFunction]);
+  }, [autoCenter, children, constantFunction, shouldLoading]);
 
   const loadingElement: JSX.Element = useMemo(() => {
     if (indicator) {
       return <span className={`${prefixCls}-indicator`}>{indicator}</span>;
     }
     return (
-      <span className={`${prefixCls}-strip`}>
-        <span className={`${prefixCls}-strip-item`} />
-        <span className={`${prefixCls}-strip-item`} />
-        <span className={`${prefixCls}-strip-item`} />
-        <span className={`${prefixCls}-strip-item`} />
-      </span>
+      <div className={`${prefixCls}-ring`}>
+        {[1, 2, 3, 4].map((item) => (
+          <div className={`${prefixCls}-ring-line ${prefixCls}-ring-line-${item}`}>
+            <div className={`${prefixCls}-ring-line-cog`}>
+                <div className={`${prefixCls}-ring-line-cog-inner ${prefixCls}-ring-line-cog-inner-left`} />
+            </div>
+            <div className={`${prefixCls}-ring-line-ticker`}>
+                <div className={`${prefixCls}-ring-line-cog-inner ${prefixCls}-ring-line-cog-inner-center`} />
+            </div>
+            <div className={`${prefixCls}-ring-line-cog`}>
+                <div className={`${prefixCls}-ring-line-cog-inner ${prefixCls}-ring-line-cog-inner-right`} />
+            </div>
+          </div>
+        ))}
+      </div>
     );
   }, [prefixCls, indicator]);
 
-  const loadingElementAndTitle: JSX.Element = useMemo(() => {
-    return shouldLoading ? (
+  const loadingElementAndTitle: JSX.Element = useMemo(() => shouldLoading ? (
       <div className={classNames(`${prefixCls}`, `${prefixCls}-${size}`, className)} style={{...style, ...centerStyle}} ref={composeRef(loadingRef, ref)}>
         {loadingElement}
         {title && (
           <span className={classNames(`${prefixCls}-title`, `${prefixCls}-title-${titlePosition}`)}>{title}</span>
         )}
       </div>
-    ) : <>{null}</>;
-  }, [centerStyle, className, loadingElement, prefixCls, ref, shouldLoading, size, style, title, titlePosition]);
+    ) : <>{null}</>, [centerStyle, className, loadingElement, prefixCls, ref, shouldLoading, size, style, title, titlePosition]);
 
   const result: JSX.Element = useMemo(() => {
     if (children) {

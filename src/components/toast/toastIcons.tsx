@@ -3,8 +3,8 @@ import { CheckCircleFilled, CloseCircleFilled, WarningCircleFilled, InfoCircleFi
 
 export const iconStyle: CSSProperties = {
   width: '16px',
-  height: '16px',
-  verticalAlign: 'text-bottom',
+  height: '20px',
+  verticalAlign: 'middle',
 };
 
 export interface IIconMap {

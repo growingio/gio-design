@@ -1,11 +1,11 @@
 import { SizeType } from '../config-provider/SizeContext';
 
-export type ButtonType = 'primary' | 'secondary' | 'assist' | 'text';
+export type ButtonType = 'primary' | 'secondary' | 'text';
 export type ButtonHTMLType = 'submit' | 'button' | 'reset';
 
 export interface BaseButtonProps {
   /**
-   设置按钮类型，可选值为 `primary` `secondary` `assist` `text` 或者不设
+   设置按钮类型，可选值为 `primary` `secondary` `link` `text` 或者不设
    */
   type?: ButtonType;
   /**
@@ -32,10 +32,6 @@ export interface BaseButtonProps {
    自定义className
    */
   className?: string;
-  /**
-   幽灵属性，使按钮背景透明
-   */
-  ghost?: boolean;
   /**
    将按钮宽度调整为其父宽度的选项
    */

@@ -193,3 +193,50 @@ describe('Modal Test.', () => {
     expect(onClose).not.toHaveBeenCalled();
   });
 });
+
+describe('useModal', () => {
+  it('confirm', () => {
+    jest.useFakeTimers();
+
+    const Context = React.createContext('content');
+    let instance = null;
+    const ConfigModal = () => {
+      const [modal, hookModal] = Modal.useModal();
+
+      const onClick = () => {
+        instance = modal.confirm({
+          title: 'title',
+          content: (
+            <Context.Consumer>{(content) => <div id="modal-hook-test-content">{content}</div>}</Context.Consumer>
+          ),
+        });
+      };
+
+      return (
+        <Context.Provider value="content">
+          <button onClick={onClick}>button</button>
+          {hookModal}
+        </Context.Provider>
+      );
+    };
+
+    const wrapper = mount(<ConfigModal />);
+    wrapper.find('button').simulate('click');
+    expect(wrapper.find('.gio-modal').length).toBeTruthy();
+    expect(wrapper.find('.gio-modal-content').length).toBeTruthy();
+    expect(wrapper.find('#modal-hook-test-content').text()).toEqual('content');
+
+    instance.update({
+      content: <div id="modal-hook-test-content">update content</div>,
+    });
+    wrapper.update();
+    expect(wrapper.find('#modal-hook-test-content').text()).toEqual('update content');
+
+    instance.destroy();
+    jest.runAllTimers();
+    wrapper.update();
+    expect(wrapper.find('.gio-modal')).toHaveLength(0);
+
+    jest.useRealTimers();
+  });
+});

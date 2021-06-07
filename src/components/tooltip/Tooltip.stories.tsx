@@ -74,6 +74,7 @@ const Template: Story<TooltipProps> = (args) => (
 );
 export const Default = Template.bind({});
 Default.args = {
+  arrowPointAtCenter:true,
   title: '这是提示文案。',
 };
 

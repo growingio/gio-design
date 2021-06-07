@@ -21,7 +21,7 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
     itemHeight,
     isUseAll,
     selected,
-    searchable,
+    searchType,
     tempValue,
     value,
     placeholder,
@@ -100,25 +100,23 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
   const scrollIntoView = (index: number,offset?: number) => {
     VirtualListRef?.current?.scrollTo({ index, offset });
   };
-  const renderAllOptions = () => {
-    return (
-      <div
-        ref={selectAllRef}
-        className={classnames(`${prefixCls}-list-option-all`, {})}
-        onClick={(e) => {
+  const renderAllOptions = () => (
+    <div
+      ref={selectAllRef}
+      className={classnames(`${prefixCls}-list-option-all`, {})}
+      onClick={(e) => {
           e.stopPropagation();
           onAllClick(isChecked);
         }}
-        aria-hidden="true"
-      >
-        <>
-          <Checkbox checked={isChecked} indeterminate={isIndeterminate} />
-          <span style={{ width: 10 }} />
-        </>
-        全部
-      </div>
+      aria-hidden="true"
+    >
+      <>
+        <Checkbox checked={isChecked} indeterminate={isIndeterminate} />
+        <span style={{ width: 10 }} />
+      </>
+      全部
+    </div>
     );
-  };
   return (
     <div
       className={`${prefixCls}-list`}
@@ -130,7 +128,7 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
       onMouseLeave={() => setActiveIndex(-1)}
       onKeyDown={onOptionListKeyDown}
     >
-      {searchable === 'inner' && (
+      {searchType === 'inner' && (
         <div className={classnames(`${prefixCls}-list-search-bar`, {})}>
           <SearchBar onChange={onInputChange} value={input} placeholder={placeholder} />
         </div>
@@ -146,9 +144,8 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
           itemHeight={itemHeight}
           {...restProps}
         >
-          {(option: Option & { isSelectOptGroup: boolean}, index: number) => {
-            return option.isSelectOptGroup ? (
-              <ForwardRenderGroup option={option} prefixCls={prefixCls} groupStyle={groupStyle} index={index} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+          {(option: Option & { isSelectOptGroup: boolean}, index: number) => option.isSelectOptGroup ? (
+            <ForwardRenderGroup option={option} prefixCls={prefixCls} groupStyle={groupStyle} />
             ) : (
               <ForwardRenderTooltip
                 tooltip={option?.tooltip}
@@ -166,8 +163,7 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
                   />
                 )}
               />
-            );
-          }}
+            )}
         </VirtualList>
       ) : (
         notFoundContent
@@ -186,7 +182,6 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
             取消
           </Button>
           <Button
-            type="secondary"
             className={classnames({[`${prefixCls}-button-active`]: activeIndex === data.length + 1})}
             size="middle"
             onClick={onConfirm}

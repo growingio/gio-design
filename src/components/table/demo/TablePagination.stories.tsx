@@ -12,26 +12,22 @@ const columns = [
     title: 'A',
     dataIndex: 'a',
     key: 'a',
-    width: 200,
     sorter: (a: any, b: any) => a.a - b.a,
   },
   {
     title: 'B',
     dataIndex: 'b',
     key: 'b',
-    width: 200,
   },
   {
     title: 'C',
     dataIndex: 'c',
     key: 'c',
-    width: 200,
   },
   {
     title: 'D',
     dataIndex: 'd',
     key: 'd',
-    width: 200,
   },
 ];
 
@@ -61,6 +57,7 @@ export const TablePagination: Story<TableProps<any> & PaginationProps> = (args) 
       rowSelection={{
         getCheckboxProps: (record: any) => ({
           disabled: record.a === 1,
+          title: record.a
         }),
       }}
       {...rest}
@@ -69,7 +66,6 @@ export const TablePagination: Story<TableProps<any> & PaginationProps> = (args) 
 };
 
 TablePagination.args = {
-  showIndex: true,
   showSizeChanger: true,
   showQuickJumper: true,
 };

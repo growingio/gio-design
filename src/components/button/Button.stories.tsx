@@ -29,12 +29,11 @@ export default {
 
 const Wrapper = (props: { children?: React.ReactNode }) => {
   const { children } = props;
-  return <section style={{ backgroundColor: '#cecece80', boxSizing: 'border-box', padding: 30 }}>{children}</section>;
+  return <section style={{ backgroundColor: '#F0F8FF', boxSizing: 'border-box', padding: 30 }}>{children}</section>;
 };
 
-const Template: Story<ButtonProps> = (args) => (
-  <Wrapper>
-    <Button {...args}>按钮</Button>
+const Template: Story<ButtonProps> = (args) => (<Wrapper>
+    <Button {...args} >按钮</Button>
     <Button {...args} disabled>
       禁用
     </Button>
@@ -44,18 +43,13 @@ const Template: Story<ButtonProps> = (args) => (
     <Button {...args} icon={<PlusCircleFilled />}>
       图标
     </Button>
-    <Button {...args} ghost>
-      幽灵按钮
-    </Button>
-  </Wrapper>
-);
+  </Wrapper>);
 
 const IconTemplate: Story<ButtonProps> = (args) => (
   <Wrapper>
     <Button {...args} icon={<FilterOutlined />} />
     <Button {...args} disabled icon={<FilterOutlined />} />
     <Button {...args} loading icon={<FilterOutlined />} />
-    <Button {...args} ghost icon={<FilterOutlined />} />
   </Wrapper>
 );
 
@@ -63,6 +57,8 @@ export const Default = Template.bind({});
 export const IconButton = IconTemplate.bind({});
 export const TextButton = Template.bind({});
 export const BlockButton = Template.bind({});
+
+
 Default.args = {
   style: {
     margin: '0 20px 0 0',

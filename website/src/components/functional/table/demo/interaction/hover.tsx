@@ -42,7 +42,7 @@ export default () => {
     title: '操作',
     key: 'operate',
     align: 'center',
-    render: () => <Button type="assist" icon={<MoreOutlined />} />,
+    render: () => <Button type="text" icon={<MoreOutlined />} />,
   });
   return (
     <>

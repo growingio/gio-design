@@ -26,7 +26,7 @@ const Banner: React.FC<BannerProps> = (props: BannerProps) => {
       <div className={className(`${prefixCls}-button`)}>{button}</div>
       <div
         className={className(`${prefixCls}-closeIcon`)}
-        style={{ display: closeable ? 'block' : 'none' }}
+        style={{ display: closeable ? 'flex' : 'none' }}
         onClick={onCloseBanner}
         aria-hidden="true"
       >

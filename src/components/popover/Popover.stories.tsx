@@ -95,13 +95,13 @@ Arrow.args = {
 const PlacementTemplate: Story<PopoverProps> = (props) => (
   <div className="popover-demo-box">
     <div className="popover-top">
-      <Popover placement="topLeft" {...props} arrowPointAtCenter={false}>
+      <Popover placement="topLeft" {...props}>
         <span className="popoverSpan">TopLeft</span>
       </Popover>
       <Popover placement="top" {...props}>
         <span className="popoverSpan">Top</span>
       </Popover>
-      <Popover placement="topRight" {...props} arrowPointAtCenter={false}>
+      <Popover placement="topRight" {...props}>
         <span className="popoverSpan">TopRight</span>
       </Popover>
     </div>
@@ -128,13 +128,13 @@ const PlacementTemplate: Story<PopoverProps> = (props) => (
       </Popover>
     </div>
     <div className="popover-buttom">
-      <Popover placement="bottomLeft" {...props} arrowPointAtCenter={false}>
+      <Popover placement="bottomLeft" {...props}>
         <span className="popoverSpan">BottomLeft</span>
       </Popover>
       <Popover placement="bottom" {...props}>
         <span className="popoverSpan">Bottom</span>
       </Popover>
-      <Popover placement="bottomRight" {...props} arrowPointAtCenter={false}>
+      <Popover placement="bottomRight" {...props}>
         <span className="popoverSpan">BottomRight</span>
       </Popover>
     </div>

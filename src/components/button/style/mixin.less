@@ -11,72 +11,26 @@
   border-radius: @border-radius;
 }
 
-.button-disabled(@color: @color-text-button-disable; @background: @color-background-button-disable; @border: @color-border-button-disable) {
+.button-disabled(@color: @palette-gray-5; @background: @palette-gray-1; @border: @palette-gray-1) {
   &[disabled] {
     &,
     &:hover,
     &:focus,
     &:active {
       .button-color(@color; @background; @border);
-
       text-shadow: none;
       box-shadow: none;
     }
     svg {
-      color: @color-text-button-icon-disable !important;
+      color: @palette-black-3 !important;
     }
   }
-}
-
-.button-variant-primary(@color; @background) {
-  .button-color(@color; @background; @background);
-
-  text-shadow: none;
-  box-shadow: none;
-
-  &:hover {
-    .button-color(@color; @color-background-button-primary-hover; @color-border-button-primary-hover);
-  }
-
-  &:active,
-  &.dropdown-active {
-    .button-color(@color; @color-background-button-primary-click; @color-border-button-primary-click);
-  }
-
-  .button-disabled();
-}
-
-.button-variant-other(@color; @background; @border) {
-  .button-color(@color; @background; @border);
-  &:hover {
-    .button-color(@color; @color-background-button-default-hover; @color-border-button-default-hover);
-  }
-  &:active,
-  &.dropdown-active {
-    .button-color(@color; @color-background-button-default-click; @color-border-button-default-click);
-  }
-  .button-disabled();
-}
-
-.button-variant-assist() {
-  .button-color(@color-text-button-assist-normal; @color-background-button-assist-normal; @color-border-button-assist-normal);
-  text-shadow: none;
-  border: none;
-  &:hover {
-    .button-color(@color-text-button-assist-hover; @color-background-button-assist-hover; @color-border-button-default-hover);
-  }
-  &:active,
-  &.dropdown-active {
-    .button-color(@color-text-button-assist-click; @color-background-button-assist-click; @color-border-button-default-click);
-  }
-  .button-disabled(@color-text-button-assist-disable; @color-background-button-assist-normal; @color-border-button-assist-normal);
 }
 
 .button-color(@color; @background; @border) {
   color: @color;
   background: @background;
-  border-color: @border; // a inside Button which only work in Chrome
-  // http://stackoverflow.com/a/17253457
+  border-color: @border;
   > a:only-child {
     color: currentColor;
     &::after {
@@ -91,109 +45,95 @@
   }
 }
 
-// Base styles of buttons
-// --------------------------------------------------
-.btn() {
-  position: relative;
-  display: inline-block;
-  font-weight: @weight-font-regular;
-  white-space: nowrap;
-  text-align: center;
-  text-shadow: none;
-  background-image: none;
-  border: 1px solid transparent;
-  box-shadow: none;
-  cursor: pointer;
-  user-select: none;
-  touch-action: manipulation;
-  .gio-icon {
-    svg {
-      width: 16px;
-      height: 16px;
-      margin-right: 0 !important;
-      vertical-align: -1px;
-    }
-  }
-  .button-size(@btn-height-base; @size-spacing-xxm; @size-font-14; @radius-border-small);
-  > .@{iconfont-css-prefix} {
-    line-height: 1;
-  }
-  &,
-  &:active,
-  &:focus {
-    outline: 0;
-  }
-  &:not([disabled]):hover {
-    text-decoration: none;
-  }
-  &:not([disabled]):active {
-    outline: 0;
-    box-shadow: none;
-  }
-  &[disabled] {
-    cursor: not-allowed;
-    pointer-events: none;
-    > * {
-      pointer-events: none;
-    }
-  }
-  &-large {
-    .button-size(@btn-height-lg; @size-spacing-xxm; @size-font-14; @radius-border-small);
-  }
-  &-small {
-    .button-size(@btn-height-sm; @size-spacing-m; @size-font-14; @radius-border-small);
-  }
-}
 // primary button style
 .btn-primary() {
-  .button-variant-primary(@color-text-button-primary-normal; @color-background-button-primary-normal);
-  svg {
-    color: @color-text-button-primary-normal;
+  box-shadow: 0 3px 8px rgba(36, 46, 89, 0.05);
+
+  .button-color(@palette-white; @palette-blue-4; @palette-blue-4);
+
+  &:active,
+  &:hover {
+    .button-color(@palette-white; @palette-blue-5; @palette-blue-5);
+    svg {
+      color: @palette-white;
+    }
   }
+
+  &.dropdown-active {
+    .button-color(@palette-white; @palette-blue-3; @palette-blue-3);
+    svg {
+      color: @palette-white;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(36, 46, 89, 0.1);
+  }
+  &:active,
+  &.dropdown-active {
+    box-shadow: 0 3px 8px rgba(36, 46, 89, 0.05);
+  }
+
+  &::after {
+    background-image: radial-gradient(circle, @palette-blue-3 10%, transparent 10.01%);
+  }
+
+  .button-disabled();
 }
+
 // secondary button style
 .btn-secondary() {
-  .button-variant-other(@color-text-button-default-normal; @color-background-button-default-normal; @color-border-button-default-normal);
-  svg {
-    color: @color-text-button-default-normal;
+  .button-color(@palette-black-6; transparent; @palette-gray-4);
+
+  &:hover,
+  &:active {
+    .button-color(@palette-blue-5; @palette-gray-2; @palette-gray-4);
+    svg {
+      color: @palette-blue-5;
+    }
   }
-}
-// assist button style
-.btn-assist() {
-  .button-variant-assist();
-  svg {
-    color: @color-text-button-assist-normal;
+
+  &.dropdown-active {
+    .button-color(@palette-blue-5; @palette-gray-4; @palette-gray-4);
+    svg {
+      color: @palette-blue-5;
+    }
   }
+
+  &::after {
+    background-image: radial-gradient(circle, @palette-gray-4 10%, transparent 10.01%);
+  }
+
+  .button-disabled();
+  border-color: @palette-gray-4 !important;
 }
 
 // text button style
 .btn-text() {
-  padding: 0 !important;
-  .button-color(@color-text-button-normal; transparent; transparent);
-  svg {
-    color: @color-text-button-normal;
-  }
-  box-shadow: none;
-  &:hover {
-    color: @color-text-button-hover;
-    background: transparent;
-    border-color: transparent;
+  padding-right: 8px;
+  padding-left: 8px;
+  .button-color(@palette-black-6; transparent; transparent);
+
+  &:hover,
+  &:active {
+    .button-color(@palette-blue-5; @palette-gray-2; @palette-gray-2);
     svg {
-      color: @color-text-button-hover;
+      color: @palette-blue-5;
     }
   }
 
-  &:active,
   &.dropdown-active {
-    color: @color-text-button-click;
-    background: transparent;
-    border-color: transparent;
+    .button-color(@palette-blue-5; @palette-gray-4; @palette-gray-2);
     svg {
-      color: @color-text-button-click;
+      color: @palette-blue-5;
     }
   }
 
-  .button-disabled(@color-text-button-disable; transparent; transparent);
+  &::after {
+    background-image: radial-gradient(circle, @palette-gray-4 10%, transparent 10.01%);
+  }
+
+  .button-disabled(@palette-gray-5; transparent; transparent);
 }
 
 // square button: the content only contains icon

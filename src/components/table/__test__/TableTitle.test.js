@@ -65,13 +65,13 @@ describe('Testing Table Title', () => {
     expect(wrapper.exists('.gio-popover')).toBe(true);
 
     // clear btn
-    wrapper.find('.gio-select-option').at(0).simulate('click');
+    wrapper.find('.gio-table-filter-list-item').at(0).simulate('click');
     expect(wrapper.find('.gio-checkbox-checked')).toHaveLength(1);
-    wrapper.find('.filter-popover-footer').find('.gio-btn').at(0).simulate('click');
+    wrapper.find('.gio-table-filter-popover-footer').find('.gio-btn').at(0).simulate('click');
     expect(wrapper.find('.gio-checkbox-checked')).toHaveLength(0);
 
     // ok btn
-    wrapper.find('.filter-popover-footer').find('.gio-btn').at(1).simulate('click');
+    wrapper.find('.gio-table-filter-popover-footer').find('.gio-btn').at(1).simulate('click');
     expect(updateFilterStates).toBeCalled();
     expect(onTriggerStateUpdate).toBeCalled();
     wrapper.setProps({ sorterState: undefined, filterState: undefined });
@@ -101,8 +101,8 @@ describe('Testing Table Title', () => {
     wrapper.find('.gio-pagination-item').at(5).simulate('click');
     expect(wrapper.find('.gio-pagination-item-active').text()).toBe('6');
     wrapper.find('.gio-table-column-filter-inner-btn').at(0).simulate('click');
-    wrapper.find('.gio-select-option').at(0).simulate('click');
-    wrapper.find('.filter-popover-footer').find('.gio-btn').at(1).simulate('click');
+    wrapper.find('.gio-table-filter-list-item').at(0).simulate('click');
+    wrapper.find('.gio-table-filter-popover-footer').find('.gio-btn').at(1).simulate('click');
     expect(wrapper.find('.gio-pagination-item-active').text()).toBe('1');
   });
 });

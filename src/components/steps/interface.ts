@@ -1,4 +1,4 @@
-import { CommonProps } from '../../utils/type';
+import { CommonProps } from '../../utils/interfaces';
 
 export type Type = 'page' | 'modal' | 'drawer';
 export type Size = 'middle' | 'small';

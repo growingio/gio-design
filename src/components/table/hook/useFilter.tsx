@@ -11,15 +11,16 @@ export const collectFilterStates = <RecordType,>(
   columns.forEach((column) => {
     if (has(column, 'children')) {
       filterStates.push(...collectFilterStates(get(column, 'children')));
-    } else if (column.filters || column.filterDropdown) {
-      const { key, filters, onFilter, defaultFilteredValue = [] } = column;
+    } else if (column.filters) {
+      const { key, filters, onFilter, defaultFilteredValue = [], filteredValue } = column;
       filterStates.push(
         clone({
           column,
           key,
-          filteredKeys: defaultFilteredValue,
+          filteredKeys: filteredValue ?? defaultFilteredValue,
           onFilter,
           filters,
+          isControlled: !isUndefined(filteredValue)
         })
       );
     }
@@ -30,10 +31,10 @@ export const collectFilterStates = <RecordType,>(
 const useFilter = <RecordType,>(
   columns: InnerColumnsType<RecordType>,
   data: RecordType[]
-): [FilterState<RecordType>[], (filterState: FilterState<RecordType>) => void, RecordType[]] => {
+): [FilterState<RecordType>[], (filterState: FilterState<RecordType>) => Record<string, string[]>, RecordType[], Record<string, string[]>] => {
   // record all filter states
   const [filterStates, setFilterStates] = useState<FilterState<RecordType>[]>(collectFilterStates(columns));
-
+  const [filters, setFilters] = useState<Record<string, string[]>>({});
   useShallowCompareEffect(() => {
     setFilterStates(collectFilterStates(columns));
   }, [columns]);
@@ -41,7 +42,13 @@ const useFilter = <RecordType,>(
   // update filter states action
   const updateFilterStates = useCallback(
     (filterState: FilterState<RecordType>) => {
-      setFilterStates([...filterStates.filter(({ key }) => key !== filterState.key), filterState]);
+      const newFilterStates = filterState.isControlled ? filterStates : [...filterStates.filter(({ key }) => key !== filterState.key), filterState];
+      const newfilters =
+        [...filterStates.filter(({ key }) => key !== filterState.key), filterState]
+        .reduce((prev, curr) => Object.assign(prev, { [curr.key]: curr.filteredKeys }), {} as Record<string, string[]>);
+      setFilterStates(newFilterStates);
+      setFilters(newfilters);
+      return newfilters;
     },
     [filterStates]
   );
@@ -65,7 +72,7 @@ const useFilter = <RecordType,>(
     [data, activeFilterStates]
   );
 
-  return [filterStates, updateFilterStates, filtedData];
+  return [filterStates, updateFilterStates, filtedData, filters];
 };
 
 export default useFilter;

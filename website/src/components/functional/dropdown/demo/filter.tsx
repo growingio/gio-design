@@ -62,7 +62,7 @@ export default () => {
         </div>
       }
     >
-      <Button type="assist" icon={<FilterOutlined />} />
+      <Button type="text" icon={<FilterOutlined />} />
     </Dropdown>
   );
 };

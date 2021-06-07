@@ -1,16 +1,16 @@
 /* eslint-disable no-restricted-syntax */
 import { IXhrOption, IProgress } from './interface';
 
-export const getError = (option: IXhrOption, xhr: XMLHttpRequest)=> {
+export const getError = (option: IXhrOption, xhr: XMLHttpRequest) => {
   const msg = `cannot ${option.method} ${option.action} ${xhr.status}`;
   const err: any = new Error(msg);
   err.status = xhr.status;
   err.method = option.method;
   err.url = option.action;
   return err;
-}
+};
 
-export const getBody = (xhr: XMLHttpRequest) =>{
+export const getBody = (xhr: XMLHttpRequest) => {
   const text = xhr.responseText || xhr.response;
   if (!text) {
     return text;
@@ -21,11 +21,10 @@ export const getBody = (xhr: XMLHttpRequest) =>{
   } catch (e) {
     return text;
   }
-}
+};
 
 const xhrRequest = (option: IXhrOption) => {
   const xhr = new XMLHttpRequest();
-
   if (option.onProgress && xhr.upload) {
     xhr.upload.onprogress = (e: IProgress) => {
       if (e.total > 0) {

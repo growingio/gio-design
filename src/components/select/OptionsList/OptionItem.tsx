@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { isNull, noop } from 'lodash';
 import classnames from 'classnames';
 import { Option, MaybeArray } from '../interface';
@@ -9,9 +9,6 @@ interface GroupProps {
   option: Option;
   prefixCls: string;
   groupStyle?: React.CSSProperties;
-  index: number;
-  activeIndex: number;
-  setActiveIndex:React.Dispatch<React.SetStateAction<number>>
 }
 
 interface TooltipProps {
@@ -42,17 +39,8 @@ const RenderGroup: React.ForwardRefRenderFunction<unknown, GroupProps> = (props,
     option: { value, label },
     prefixCls,
     groupStyle,
-    index,
-    activeIndex,
-    setActiveIndex,
   } = props;
-  
-  // group + 1 pass
-  useEffect(() => {
-    if (index === activeIndex) {
-      setActiveIndex(active => active + 1)
-    }
-  }, [activeIndex, index, setActiveIndex])
+
   return (
     <div ref={ref as any} className={`${prefixCls}-list-group`} style={groupStyle}>
       {label !== undefined ? label : value}
@@ -123,11 +111,15 @@ const RenderTooltip: React.ForwardRefRenderFunction<unknown, TooltipProps> = (pr
   const { tooltip, render, getContainer } = props;
   if (tooltip) {
     return (
+      
       <div ref={ref as any}>
-        <Tooltip title={tooltip} destroyTooltipOnHide placement="top" getTooltipContainer={getContainer}>
-          {render}
-        </Tooltip>
+          <Tooltip title={tooltip} destroyTooltipOnHide placement="right" getTooltipContainer={getContainer}>
+            <div>
+            {render}
+            </div>
+          </Tooltip>
       </div>
+       
     );
   }
   return <div ref={ref as any}>{render}</div>;

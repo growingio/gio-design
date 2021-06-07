@@ -1,0 +1,41 @@
+import { Canvas, Subtitle, ArgsTable, Story } from '@storybook/addon-docs/blocks';
+import Input from '.';
+
+# Input 输入框
+
+<Subtitle>通过鼠标或键盘输入内容</Subtitle>
+
+## 何时使用
+
+- 需要用户输入表单域内容时。
+- 提供组合型输入框，带搜索的输入框，还可以进行大小选择。
+
+## 参数说明
+
+<ArgsTable of={Input} />
+
+## 代码演示
+
+### 基础用法
+
+<Canvas>
+  <Story id="basic-components-input--default" />
+</Canvas>
+
+### 数字输入框
+
+<Canvas>
+  <Story id="basic-components-input--input-number-case" />
+</Canvas>
+
+### 密码输入框
+
+<Canvas>
+  <Story id="basic-components-input--password-case" />
+</Canvas>
+
+### 文本域
+
+<Canvas>
+  <Story id="basic-components-input--text-area-case" />
+</Canvas>

@@ -12,12 +12,6 @@ export const tupleNum = <T extends number[]>(...args: T) => args;
 export type ElementOf<T> = T extends (infer E)[] ? E : T extends readonly (infer E)[] ? E : never;
 
 /**
- * https://github.com/Microsoft/TypeScript/issues/29729
- */
-// eslint-disable-next-line @typescript-eslint/ban-types
-export type LiteralUnion<T extends U, U> = T | (U & {});
-
-/**
  * 原 OverridableComponent.d
  */
 export interface OverridableTypeMap {

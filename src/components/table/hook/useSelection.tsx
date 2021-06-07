@@ -3,6 +3,7 @@ import React, { useMemo, useCallback } from 'react';
 import { get, intersection, isUndefined, difference, union, isFunction, isString, compact } from 'lodash';
 import { ColumnsType, RowSelection, ColumnType } from '../interface';
 import Checkbox from '../../checkbox';
+import Tooltip from '../../tooltip';
 import useControlledState from '../../../utils/hooks/useControlledState';
 
 export const getRowKey = <RecordType,>(row: RecordType, rowKey?: string | ((record: RecordType) => string)): string => {
@@ -25,8 +26,8 @@ const useSelection = <RecordType,>(
   config: {
     rowKey?: string | ((record: RecordType) => string);
   }
-): [(columns: ColumnsType<RecordType>) => ColumnsType<RecordType>] => {
-  const { onChange, selectedRowKeys, columnWidth = 50, fixed, getCheckboxProps } = rowSelection || {};
+): [(columns: ColumnsType<RecordType>) => ColumnsType<RecordType>, string[]] => {
+  const { onChange, selectedRowKeys, columnWidth = 52, fixed, getCheckboxProps } = rowSelection || {};
   const { rowKey } = config;
 
   const [localSelectedRowKeys, setLocalSelectedRowKeys] = useControlledState<string[]>(selectedRowKeys, []);
@@ -85,19 +86,25 @@ const useSelection = <RecordType,>(
     render: (...rest) => {
       const key = getRowKey(rest[1], rowKey);
       const thisCheckboxProps = getCheckboxProps?.(rest[1]) || {};
+      const { tooltipProps, disabled, ...restCheckboxProps } = thisCheckboxProps;
       return (
-        <Checkbox
-          {...thisCheckboxProps}
-          checked={localSelectedRowKeys.includes(key)}
-          onClick={(e) => e.stopPropagation()}
-          onChange={(e) => {
-            const latestLocalSelectedRowKeys = e.target.checked
-              ? union(localSelectedRowKeys, [key])
-              : difference(localSelectedRowKeys, [key]);
-            setLocalSelectedRowKeys(latestLocalSelectedRowKeys);
-            onChange?.(latestLocalSelectedRowKeys, getSelectRows(latestLocalSelectedRowKeys));
-          }}
-        />
+        <Tooltip placement='topLeft' arrowPointAtCenter disabled={!disabled} {...tooltipProps}>
+          <div>
+            <Checkbox
+              {...restCheckboxProps}
+              disabled={disabled}
+              checked={localSelectedRowKeys.includes(key)}
+              onClick={(e) => e.stopPropagation()}
+              onChange={(e) => {
+                const latestLocalSelectedRowKeys = e.target.checked
+                  ? union(localSelectedRowKeys, [key])
+                  : difference(localSelectedRowKeys, [key]);
+                setLocalSelectedRowKeys(latestLocalSelectedRowKeys);
+                onChange?.(latestLocalSelectedRowKeys, getSelectRows(latestLocalSelectedRowKeys));
+              }}
+            >{disabled ? null : undefined}</Checkbox>
+          </div>
+        </Tooltip>
       );
     },
   };
@@ -108,7 +115,7 @@ const useSelection = <RecordType,>(
     [selectionColumn, rowSelection]
   );
 
-  return [transformSelectionPipeline];
+  return [transformSelectionPipeline, localSelectedRowKeys];
 };
 
 export default useSelection;

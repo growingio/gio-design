@@ -72,7 +72,6 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
     className,
     children,
     icon,
-    ghost,
     block,
     mini,
     ...rest
@@ -130,7 +129,6 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
     [`${prefixCls}-${type}`]: type,
     [`${prefixCls}-${sizeCls}`]: sizeCls,
     [`${prefixCls}-icon-only`]: !children && children !== 0 && iconType,
-    [`${prefixCls}-background-ghost`]: ghost,
     [`${prefixCls}-loading`]: innerLoading,
     [`${prefixCls}-two-chinese-chars`]: hasTwoCNChar && autoInsertSpace,
     [`${prefixCls}-block`]: block,
@@ -162,7 +160,6 @@ export const Button = React.forwardRef<unknown, ButtonProps>(InternalButton) as 
 
 Button.defaultProps = {
   loading: false,
-  ghost: false,
   block: false,
   htmlType: 'button' as ButtonProps['htmlType'],
 };

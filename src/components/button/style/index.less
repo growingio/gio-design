@@ -14,35 +14,51 @@
 @btn-square-size-mini: @size-field-mini;
 
 // for compatible
-// @btn-assist-color: @text-color-base;
-// @btn-assist-bg: none;
-// @btn-assist-border: none;
 
 // Button styles
 // -----------------------------
 .@{btn-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  font-weight: @weight-font-regular;
   line-height: 1.5715;
+  white-space: nowrap;
+  text-align: center;
+  text-shadow: none;
+  background-image: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
 
-  .btn;
-
-  > span {
-    display: inline-block;
+  &,
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+  &:not([disabled]):hover {
+    text-decoration: none;
+  }
+  &:not([disabled]):active {
+    outline: 0;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+    > * {
+      pointer-events: none;
+    }
   }
 
-  &-primary {
-    .btn-primary;
+  .button-size(@btn-height-base; @size-spacing-m; @size-font-14; @radius-border-small);
+
+  &-large {
+    .button-size(@btn-height-lg; @size-spacing-m; @size-font-14; @radius-border-small);
   }
 
-  &-secondary {
-    .btn-secondary;
-  }
-
-  &-assist {
-    .btn-assist;
-  }
-
-  &-text {
-    .btn-text;
+  &-small {
+    .button-size(@btn-height-sm; @size-spacing-s; @size-font-14; @radius-border-small);
   }
 
   &::before {
@@ -60,7 +76,54 @@
     pointer-events: none;
   }
 
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform 0.3s, opacity 1s;
+    content: '';
+    pointer-events: none;
+  }
+
+  &:active::after {
+    transform: scale(0, 0);
+    opacity: 0.3;
+    transition: 0s;
+  }
+
+  > span {
+    display: inline-block;
+  }
+
+  // 主要按钮
+  &-primary {
+    .btn-primary;
+  }
+
+  // 次要按钮
+  &-secondary {
+    .btn-secondary;
+  }
+
+  // 文本按钮
+  &-text {
+    .btn-text;
+  }
+
+  // .gio-icon
   .@{iconfont-css-prefix} {
+    svg {
+      width: 14px;
+      height: 14px;
+      margin-right: 0 !important;
+    }
     transition: margin-left 0.3s @ease-in-out;
     &.@{iconfont-css-prefix}-plus,
     &.@{iconfont-css-prefix}-minus {
@@ -70,6 +133,12 @@
     }
   }
 
+  > .@{iconfont-css-prefix} + span,
+  > span + .@{iconfont-css-prefix} {
+    margin-left: @margin-xs;
+  }
+
+  // loading状态
   &&-loading {
     position: relative;
     &:not([disabled]) {
@@ -89,6 +158,24 @@
     }
   }
 
+  &&-loading.@{btn-prefix-cls}-primary {
+    background: @palette-blue-6;
+    border-color: @palette-blue-6;
+  }
+
+  &&-loading.@{btn-prefix-cls}-secondary {
+    color: @palette-blue-5;
+    background: @palette-gray-2;
+    border-color: @palette-gray-4;
+  }
+
+  &&-loading.@{btn-prefix-cls}-text {
+    color: @palette-blue-5;
+    background: @palette-gray-2;
+    border-color: @palette-gray-2;
+  }
+
+  // only icon
   &-icon-only {
     .btn-square(@btn-prefix-cls);
     padding: 7px !important;
@@ -102,12 +189,6 @@
         vertical-align: bottom !important;
       }
     }
-    &.@{btn-prefix-cls}-assist {
-      padding: 8px !important;
-      &.@{btn-prefix-cls}-mini {
-        padding: 5px !important;
-      }
-    }
   }
 
   &:focus > span,
@@ -115,27 +196,12 @@
     position: relative;
   }
 
-  > .@{iconfont-css-prefix} + span,
-  > span + .@{iconfont-css-prefix} {
-    margin-left: @margin-xs;
-  }
-
-  &-background-ghost {
-    color: @color-text-button-default-ghost;
-    background: transparent !important;
-    border-color: transparent;
-    svg {
-      color: @color-text-button-default-ghost;
-      path {
-        fill: @color-text-button-default-ghost;
-      }
-    }
-  }
-
+  // 块状按钮
   &-block {
     width: 100%;
   }
 
+  // 处理文字间空格
   &:empty {
     display: inline-block;
     width: 0;

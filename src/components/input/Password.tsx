@@ -28,9 +28,9 @@ const Password: React.FC<InputProps> = (props) => {
   const passwordSuffix = useMemo(
     () =>
       visible ? (
-        <EyeOutlined className={passwordSuffixIconCls} onClick={toggleVisible} />
-      ) : (
         <EyeSlashOutlined className={passwordSuffixIconCls} onClick={toggleVisible} />
+      ) : (
+        <EyeOutlined className={passwordSuffixIconCls} onClick={toggleVisible} />
       ),
     [passwordSuffixIconCls, toggleVisible, visible]
   );

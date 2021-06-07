@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { has, get, isNil } from 'lodash';
+import { has, get, isNil, isUndefined } from 'lodash';
 import useRefs from '../../../utils/hooks/useRefs';
 import { ColumnsType, ColumnGroupType, ColumnType } from '../interface';
 import ToolTip from '../../tooltip';
@@ -12,10 +12,11 @@ const useEllipsisTooltip = <RecordType,>(): [
   const transformEllipsisTooltipPipeline = useCallback(
     (columns: ColumnsType<RecordType>) =>
       columns.map((column) => {
-        if (has(column, 'ellipsis') && has(column, 'width') && !has(column, 'render')) {
+        if (has(column, 'ellipsis') && has(column, 'width')) {
+          const originRender = column.render;
           // eslint-disable-next-line no-param-reassign
           column.render = (...args) => {
-            const text = args[0];
+            const text = isUndefined(originRender) ? args[0] : originRender(...args);
             const index = args[2];
             const textNode = getRef(get(column, 'dataIndex') + index)?.current;
             const columnWidth = Number(get(column, 'width')) - 32;

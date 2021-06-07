@@ -17,6 +17,7 @@ export { default as Empty, EmptyProps } from './components/empty';
 export { default as Input, InputProps, InputNumberProps, TextAreaProps } from './components/input';
 export { default as Layout, LayoutProps } from './components/layout';
 export { default as Link, LinkProps } from './components/link';
+export { default as List, ListProps } from './components/list';
 export { default as Loading, LoadingProps } from './components/loading';
 export {
   default as Menu,
@@ -41,6 +42,7 @@ export {
   ModalStaticFuncType,
   ModalStaticFunc,
 } from './components/modal';
+export { default as Page, PageProps } from './components/page';
 export { default as Pagination, PaginationProps } from './components/pagination';
 export { default as Popconfirm, PopconfirmProps } from './components/popconfirm';
 export { default as Popover, PopoverProps } from './components/popover';
@@ -73,7 +75,6 @@ export {
   GioTreeNodeProps,
 } from './components/tree';
 export { default as Upload, UploadProps, UploadType, UploadStatus } from './components/upload';
-export { default as List, ListProps, ListOption } from './components/list';
 export {
   default as Select,
   Option,
@@ -85,7 +86,9 @@ export {
 } from './components/select';
 export { default as Form, FormLayout, FormProps } from './components/form';
 export { default as TimePicker, TimePickerProps } from './components/time-picker';
-export { default as Grid, GridProps, Row, Col, RowProps, ColProps } from './components/grid';
+export { default as Grid, GridProps } from './components/grid';
+export { default as Row, RowProps } from './components/row';
+export { default as Col, ColProps } from './components/col';
 export { default as Cascader, CascaderProps } from './components/cascader';
 export {
   default as DatePicker,

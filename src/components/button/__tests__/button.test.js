@@ -54,11 +54,8 @@ describe('Testing button', () => {
         <Button type="secondary" size="large">
           次要按钮
         </Button>
-        <Button type="assist" size="middle">
-          辅助按钮
-        </Button>
-        <Button type="text" size="small" ghost>
-          深色背景
+        <Button type="text" size="middle">
+          文本按钮
         </Button>
         <Button block type="primary">
           块按钮

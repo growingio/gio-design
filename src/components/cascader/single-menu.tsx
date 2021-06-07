@@ -11,9 +11,7 @@ import Empty from './empty';
 import MenuItem from './menu-item';
 import { MenuProps, MaybeElementOrFn, NodeData } from './interface';
 
-const getMayBeElement = (maybeElement: MaybeElementOrFn, dataSource: NodeData[]) => {
-  return isFunction(maybeElement) ? maybeElement(dataSource) : maybeElement;
-};
+const getMayBeElement = (maybeElement: MaybeElementOrFn, dataSource: NodeData[]) => isFunction(maybeElement) ? maybeElement(dataSource) : maybeElement;
 
 const SingleMenu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   const {

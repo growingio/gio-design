@@ -5,10 +5,10 @@ import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import { StepModal } from '..';
 import * as Steps from './steps';
+import { sleep } from '../../../utils/test';
 
 const { multiBranchSteps, steps, mixedSteps, stepsOne, stepsTwo } = Steps;
 
-jest.useFakeTimers();
 let container = null;
 
 beforeEach(() => {
@@ -161,5 +161,88 @@ describe('StepModal snapshot match', () => {
       }
     });
     expect(document.querySelector('.gio-modal-body').textContent).toBe('Step Three');
+  });
+
+  it('onBack', () => {
+    const onBack = jest.fn();
+    const steps = [
+      {
+        key: '1',
+        return: null,
+        title: '步骤 1',
+        content: 'Step One',
+      },
+      {
+        key: '2',
+        return: '1',
+        title: '步骤 2',
+        content: 'Step Two',
+        onBack,
+      },
+    ];
+
+    const wrapper = mount(<StepModal visible steps={steps} />);
+    const nextBtn = wrapper.find('.gio-modal__btn-ok').at(0);
+    nextBtn.simulate('click');
+    wrapper.find('.gio-modal__btn-back').simulate('click');
+    expect(onBack).toHaveBeenCalled();
+  });
+
+  it('onOk', async () => {
+    const onOk = jest.fn();
+    const onClose = jest.fn();
+    const steps = [
+      {
+        key: '1',
+        return: null,
+        title: '步骤 1',
+        content: 'Step One',
+      },
+      {
+        key: '2',
+        return: '1',
+        title: '步骤 2',
+        content: 'Step Two',
+      },
+    ];
+    const wrapper = mount(<StepModal closeAfterOk visible steps={steps} onOk={onOk} onClose={onClose} />);
+    const okBtnList = wrapper.find('.gio-modal__btn-ok');
+    okBtnList.at(0).simulate('click');
+    okBtnList.at(1).simulate('click');
+    await sleep(500);
+    expect(onOk).toHaveBeenCalled();
+    expect(onClose).toHaveBeenCalled();
+  });
+
+  it('cancelButtonProps & backButtonProps', () => {
+    const steps = [
+      {
+        key: '1',
+        return: null,
+        title: '步骤 1',
+        content: 'Step One',
+        cancelButtonProps: {
+          disabled: true,
+        },
+        backButtonProps: {
+          disabled: true,
+        },
+      },
+      {
+        key: '2',
+        return: '1',
+        title: '步骤 2',
+        content: 'Step Two',
+        cancelButtonProps: {
+          disabled: true,
+        },
+        backButtonProps: {
+          disabled: true,
+        },
+      },
+    ];
+    const wrapper = mount(<StepModal visible steps={steps} />);
+    expect(wrapper.find('.gio-modal__btn-close[disabled]')).toHaveLength(2);
+    wrapper.find('.gio-modal__btn-ok').at(0).simulate('click');
   });
 });

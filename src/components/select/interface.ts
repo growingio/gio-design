@@ -1,10 +1,11 @@
 import _ from 'lodash';
+import React from 'react';
 import { SizeType } from '../config-provider/SizeContext';
 
 export type MaybeArray<T> = T | T[];
 
 export type modeType = 'string' | 'tags' | undefined;
-export type searchableType = 'default' | 'inner' | undefined;
+export type searchType = 'normal' | 'inner' | 'no-search';
 export interface Option {
   /**
    列表单项主要文字
@@ -86,9 +87,13 @@ export interface SelectProps {
    */
   placeholder?: string;
   /**
-   * 是否可搜索
+   * inner搜索模式下占位符
    */
-  searchable?: searchableType;
+  innerInputPlaceHolder?: string;
+  /**
+   * 搜索的方式
+   */
+  searchType?: searchType;
   /**
    * 是否禁用
    */
@@ -138,6 +143,10 @@ export interface SelectProps {
    * 多选模式下 是否允许通过搜索自定义插入 option
    */
   allowCustomOption?: boolean;
+  /**
+   * 被包裹的元素
+   */
+  triggerComponent?: React.ReactElement;
   /**
    * 自定义无搜索内容
    */
@@ -234,8 +243,9 @@ export interface SelectorProps {
   allowClear: boolean;
   mode?: modeType;
   value?: MaybeArray<string | number> | undefined | null;
-  searchable: searchableType;
-  placeholder?: string | undefined;
+  searchType: searchType;
+  placeholder?: string;
+  innerInputPlaceHolder?: string;
   optionLabelRenderer: (value: string | number, option?: Option) => React.ReactNode;
   getOptionByValue: (optValue: string | number) => Option;
   onInputChange: (value: string) => void;
@@ -268,7 +278,7 @@ export interface OptionsListProps {
   isUseAll?: boolean;
   data: Option[];
   hasGroup: boolean;
-  searchable: searchableType;
+  searchType: searchType;
   placeholder?: string;
   notFoundContent?: React.ReactElement;
   onTempValueChange: (tempValue: React.ReactText[]) => void;

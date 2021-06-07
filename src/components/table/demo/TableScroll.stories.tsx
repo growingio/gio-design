@@ -80,8 +80,8 @@ TableScroll.args = {
   columns,
   dataSource,
   pagination: false,
-  scroll: { x: 800, y: 200 },
+  scroll: { x: 900, y: 200 },
   fixed: 'left',
   title: '滚动',
-  style: { width: 700 },
+  style: { width: 900 },
 };

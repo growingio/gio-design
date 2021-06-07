@@ -23,6 +23,7 @@ export type TModal = typeof GioModal &
   IModalStaticFunctions & {
     config: (configs: IModalConfigs) => void;
     useModal: IUseModal;
+    StepModal: typeof StepModal;
   };
 
 const Modal = GioModal as TModal;
@@ -40,5 +41,7 @@ Modal.error = (config: IModalStaticFuncConfig) => callout(withError(config));
 Modal.useModal = useModal;
 
 Modal.config = configModal;
+
+Modal.StepModal = StepModal;
 
 export default Modal;

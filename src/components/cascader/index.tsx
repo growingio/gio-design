@@ -12,7 +12,7 @@ import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 export type CascaderProps = Props;
 
-const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Props>>((props, ref) => {
+export const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Props>>((props, ref) => {
   const {
     prefixCls,
     className,
@@ -58,9 +58,7 @@ const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Props>>((p
   const withWrapperCls = withPrefix(wrapperCls);
   const onSelect: Props['onSelect'] = (data, parents = [], event) => {
     const { label: mapLabel, value: mapValue } = dataKeyMapping(data, keyMapping);
-    const titles = parents.reduce((acc, b) => {
-      return [dataKeyMapping(b, keyMapping).label, acc].join(separator);
-    }, mapLabel);
+    const titles = parents.reduce((acc, b) => [dataKeyMapping(b, keyMapping).label, acc].join(separator), mapLabel);
 
     setTitle(titles || '');
     setSelected(mapValue);

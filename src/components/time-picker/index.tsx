@@ -14,7 +14,7 @@ export default ({ prefixCls: customizePrefixCls, ...props }: TimePickerProps) =>
       <TimePicker
         prefixCls={prefixCls}
         inputIcon={<StopWatchOutlined color="#5C4E61" />}
-        clearIcon={<CloseCircleFilled />}
+        clearIcon={<CloseCircleFilled color="#5C4E61" />}
         {...props}
       />
     </>

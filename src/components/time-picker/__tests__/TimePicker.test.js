@@ -9,10 +9,6 @@ import { clickInput, clickSelectItem, matchValue } from './util';
 
 // 打印快照
 describe('Testing timepicker', () => {
-  it('should match alert base snapshot.', () => {
-    // const wrapper = render(<Picker showMinute />);
-    // expect(wrapper).toMatchSnapshot();
-  });
   // 测试组件是否正常渲染
   it('should render a DOM', () => {
     const wrapper = mount(<Picker className="test-cls" />);
@@ -48,11 +44,9 @@ describe('Testing timepicker', () => {
           clearText="clear"
           defaultOpen={false}
           inputReadOnly={false}
-          //   style={margin:auto}
           className=""
           inputClassName=""
           popupClassName=""
-          //   popupStyle={}
           allowEmpty
           showHour
           showMinute
@@ -61,7 +55,6 @@ describe('Testing timepicker', () => {
           placement="bottomLeft"
           use12Hours={false}
           focusOnOpen={false}
-          //   defaultOpen={false}
           value={Moment}
           onAmPmChange={onClickMock}
           onPanelChange={onClickMock}
@@ -97,8 +90,8 @@ describe('Testing timepicker', () => {
         value={moment('2011-03-05T00:00:00.000Z')}
         defaultOpenValue={null}
       />
-    ).toMatchSnapshot()
-  })
+    ).toMatchSnapshot();
+  });
 
   it('timepciker match snapshot2', () => {
     expect(
@@ -110,8 +103,8 @@ describe('Testing timepicker', () => {
         value={moment('2011-03-05T00:00:00.000Z')}
         defaultOpenValue={null}
       />
-    ).toMatchSnapshot()
-  })
+    ).toMatchSnapshot();
+  });
 });
 
 describe('TimePicker', () => {
@@ -122,13 +115,8 @@ describe('TimePicker', () => {
     const format = 'HH:mm:ss';
 
     return mount(
-      <TimePicker
-        format={format}
-        showSecond={showSecond}
-        defaultValue={moment('12:57:58', format)}
-        {...props}
-      />,
-      options,
+      <TimePicker format={format} showSecond={showSecond} defaultValue={moment('12:57:58', format)} {...props} />,
+      options
     );
   }
 
@@ -137,12 +125,7 @@ describe('TimePicker', () => {
     const format = 'HH:mm';
 
     return mount(
-      <TimePicker
-        format={format}
-        showSecond={showSecond}
-        defaultValue={moment('08:24', format)}
-        {...props}
-      />,
+      <TimePicker format={format} showSecond={showSecond} defaultValue={moment('08:24', format)} {...props} />
     );
   }
 
@@ -251,6 +234,7 @@ describe('TimePicker', () => {
         use12Hours: true,
         value: null,
         onChange,
+        showSecond: true,
       });
       expect(picker.state().open).toBeFalsy();
       matchValue(picker, '');
@@ -259,6 +243,7 @@ describe('TimePicker', () => {
       expect(picker.find('.gio-time-picker-panel-inner').length).toBeTruthy();
       expect(picker.state().open).toBeTruthy();
       clickSelectItem(picker, 0, 1);
+      clickSelectItem(picker, 2, 1);
 
       expect(onChange).toBeCalled();
       expect(picker.state().open).toBeTruthy();
@@ -303,5 +288,91 @@ describe('TimePicker', () => {
       });
       expect(picker.render()).toMatchSnapshot();
     });
+  });
+
+  it('should call onClear function', () => {
+    const picker = renderPicker();
+    picker.find('.gio-time-picker-clear').simulate('click');
+    const { value, open } = picker.instance().state;
+    expect(value).toBeFalsy();
+    expect(open).toBeFalsy();
+  });
+
+  it('should call onKeyDown function', () => {
+    const picker = renderPicker();
+    picker.find('.gio-time-picker-input').simulate('focus');
+    let { open } = picker.instance().state;
+    expect(open).toBeFalsy();
+    picker.find('.gio-time-picker-input').simulate('keydown', { keyCode: 40 });
+    ({ open } = picker.instance().state);
+    expect(open).toBeTruthy();
+  });
+
+  it('should render custom clearIcon', () => {
+    const onClick = jest.fn();
+    const picker = renderPicker({
+      clearIcon: (
+        <span className="custom-clear-icon" onClick={onClick}>
+          x
+        </span>
+      ),
+    });
+    picker.find('span.custom-clear-icon').simulate('click');
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it('should disabledHours with AM', () => {
+    const picker = renderPicker({
+      disabledHours: () => [0, 1, 2],
+      open: true,
+      use12Hours: true,
+      defaultValue: moment('1:57:58', 'HH:mm:ss'),
+    });
+    expect(picker.find('.gio-time-picker-panel-select-option-disabled')).toHaveLength(3);
+  });
+
+  it('should disabledHours with PM', () => {
+    const picker = renderPicker({
+      disabledHours: () => [12, 13, 14],
+      use12Hours: true,
+      defaultValue: moment('12:57:58', 'HH:mm:ss'),
+    });
+    picker.find('.gio-time-picker-input').simulate('keydown', { keyCode: 40 });
+    expect(picker.find('.gio-time-picker-panel-select-option-disabled')).toHaveLength(3);
+  });
+
+  it('should not show panel-select', () => {
+    const picker = renderPicker({
+      open: true,
+      use12Hours: false,
+      showHour: false,
+      showMinute: false,
+      showSecond: false,
+    });
+    expect(picker.find('.gio-time-picker-panel-select')).toHaveLength(0);
+  });
+
+  it('should not show panel-select', () => {
+    const picker = renderPicker({
+      open: true,
+      use12Hours: false,
+      showHour: false,
+      showMinute: false,
+      showSecond: false,
+    });
+    expect(picker.find('.gio-time-picker-panel-select')).toHaveLength(0);
+  });
+
+  it('should call onChange function', () => {
+    const onChange = jest.fn();
+    const props = {
+      open: true,
+      use12Hours: true,
+      onChange,
+      defaultValue: moment('13:57:58', 'HH:mm:ss'),
+    };
+    const picker = mount(<TimePicker {...props} />);
+    clickSelectItem(picker, 0, 8);
+    expect(onChange.mock.calls[0][0].hour()).toBe(20);
   });
 });

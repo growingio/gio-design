@@ -60,7 +60,7 @@ export const Default = Template.bind({});
 Default.args = {
   loading: true,
   titlePosition: 'right',
-  autoCenter: true
+  autoCenter: true,
 };
 
 export const Container = Template.bind({});
@@ -69,10 +69,12 @@ Container.args = {
 };
 
 export const Indicator = Template.bind({});
+
 Indicator.args = {
   indicator: <LoadingOutlined rotating />,
   title: false,
 };
+
 Indicator.story = {
   parameters: {
     design: {
@@ -98,6 +100,7 @@ const DelayTemplate: Story<DelayProps> = (args) => {
     </>
   );
 };
+
 export const Delay = DelayTemplate.bind({});
 Delay.args = {
   delay: 1000,

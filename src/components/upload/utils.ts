@@ -27,10 +27,6 @@ export const getEmptyFileObj = (file?: IUploadFile): IUploadFile => ({
 export const requestImage = (src: string, cors?: 'anonymous' | 'use-credentials'): Promise<HTMLImageElement> =>
   new Promise((resolve, reject) => {
     const img = new Image();
-
-    // img.addEventListener('load', () => resolve(img));
-
-    // img.addEventListener('error', (err) => reject(err));
     img.onload = () => {
       resolve(img);
     };

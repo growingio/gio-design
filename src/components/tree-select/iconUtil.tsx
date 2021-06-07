@@ -30,9 +30,7 @@ export default function getIcons({
     mergedSuffixIcon = suffixIcon;
   } else {
     const iconCls = `${prefixCls}-suffix`;
-    mergedSuffixIcon = () => {
-      return <DownFilled className={iconCls} size="16px" />;
-    };
+    mergedSuffixIcon = () => <DownFilled className={iconCls} size="16px" />;
   }
 
   // Checked item icon

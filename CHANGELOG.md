@@ -1,3 +1,192 @@
+## [21.5.3](https://github.com/growingio/gio-design/compare/v21.5.2...v21.5.3) (2021-05-28)
+
+
+### Bug Fixes
+
+* **loading:** add parentheses in loading/index.less ([#1013](https://github.com/growingio/gio-design/issues/1013)) ([003a71d](https://github.com/growingio/gio-design/commit/003a71dd2f527c2c0182761fdf52fc26856e52a0))
+* **table:** if columns or data changed, status reset ([#1004](https://github.com/growingio/gio-design/issues/1004)) ([5347246](https://github.com/growingio/gio-design/commit/53472461663904a444dfc0ef73bd5cbaf8785343))
+
+
+### Features
+
+* **drawer:** support change drawer content ([#1014](https://github.com/growingio/gio-design/issues/1014)) ([b4bdfe1](https://github.com/growingio/gio-design/commit/b4bdfe1880583b6b2a08d99415d55d80c5fb1d9b))
+* **progress:** add Progress bar active animation ([#1006](https://github.com/growingio/gio-design/issues/1006)) ([014cc31](https://github.com/growingio/gio-design/commit/014cc31f6ca5608f86423cbcfbd0138fa1771df6))
+* **table:** add row selection tooltip ([#1015](https://github.com/growingio/gio-design/issues/1015)) ([75abb96](https://github.com/growingio/gio-design/commit/75abb960c7323d8970ee092cf258b5dd0856520b))
+* **table:** support sorter and filter controll ([#1016](https://github.com/growingio/gio-design/issues/1016)) ([bf9c6e2](https://github.com/growingio/gio-design/commit/bf9c6e234fbc3f3800dad80d6b51a33a8c34cbb2))
+
+
+
+## [21.5.2](https://github.com/growingio/gio-design/compare/v21.5.1...v21.5.2) (2021-05-21)
+
+
+### Bug Fixes
+
+* **loading:** fix wrapper loading and loading text not align ([#995](https://github.com/growingio/gio-design/issues/995)) ([571369b](https://github.com/growingio/gio-design/commit/571369b895554dc80bff43c46ddb04f0c45c7e27))
+* **tooltip, popover, popconfirm:** fix arrow not point at target element center ([#1002](https://github.com/growingio/gio-design/issues/1002)) ([6c79e09](https://github.com/growingio/gio-design/commit/6c79e0979c1541d70bb305c4886620ad42b0e051))
+
+
+
+## [21.5.1](https://github.com/growingio/gio-design/compare/v21.5.0...v21.5.1) (2021-05-14)
+
+
+### Bug Fixes
+
+* **button:** update button styles ([#979](https://github.com/growingio/gio-design/issues/979)) ([849dc1d](https://github.com/growingio/gio-design/commit/849dc1d484d51155550f62e816e1b941abdb1187))
+* **loading:** fix loading autocenter not align ([#985](https://github.com/growingio/gio-design/issues/985)) ([32728d5](https://github.com/growingio/gio-design/commit/32728d56aa0d475abce94ff5487a361511402343))
+* **select:** tooltip and style ([#989](https://github.com/growingio/gio-design/issues/989)) ([543f1ef](https://github.com/growingio/gio-design/commit/543f1efd806d6d2e7ab2db6b88aba6731c98d426)), closes [#975](https://github.com/growingio/gio-design/issues/975)
+* **tree:** tree组件样式问题 ([#991](https://github.com/growingio/gio-design/issues/991)) ([b05afa1](https://github.com/growingio/gio-design/commit/b05afa1015d9362ba6f558b6492e944945f729fe))
+
+
+### Features
+
+* **table:** table filter support object data type ([#988](https://github.com/growingio/gio-design/issues/988)) ([ddb5367](https://github.com/growingio/gio-design/commit/ddb5367b17bf6ff5b6e65470ecaa8bd4d4991da4))
+
+
+
+# [21.5.0](https://github.com/growingio/gio-design/compare/v21.4.5...v21.5.0) (2021-05-08)
+
+
+### Bug Fixes
+
+* **input:** input-content 颜色black-6 ，眼睛状态错误 ([#967](https://github.com/growingio/gio-design/issues/967)) ([0490184](https://github.com/growingio/gio-design/commit/0490184e3277ea83c7f9a560f64048b7d7b5d52c))
+
+
+### Features
+
+* **loading:** update loading style ([9999e13](https://github.com/growingio/gio-design/commit/9999e13209a7f2eaa61155dee4658579de7aac82))
+
+
+
+## [21.4.5](https://github.com/growingio/gio-design/compare/v21.4.4...v21.4.5) (2021-04-29)
+
+
+### Bug Fixes
+
+* some components centered ([#965](https://github.com/growingio/gio-design/issues/965)) ([a366c84](https://github.com/growingio/gio-design/commit/a366c84ee2addb16d38bd42b16919403b0108d99))
+* **banner:** update banner (icon centered，two message shuould space-between） ([#963](https://github.com/growingio/gio-design/issues/963)) ([c497a53](https://github.com/growingio/gio-design/commit/c497a53600c0f71fcd201519b1f26a9bcd30bf89))
+
+
+
+## [21.4.4](https://github.com/growingio/gio-design/compare/v21.4.3...v21.4.4) (2021-04-25)
+
+
+### Bug Fixes
+
+* **page:** fix page export and add component type ([#955](https://github.com/growingio/gio-design/issues/955)) ([c0d5daa](https://github.com/growingio/gio-design/commit/c0d5daaac8b5f84516ab4b924e0f64f81b07d264))
+
+
+
+## [21.4.3](https://github.com/growingio/gio-design/compare/v21.4.2...v21.4.3) (2021-04-22)
+
+
+### Features
+
+* add list pro component ([6f535c2](https://github.com/growingio/gio-design/commit/6f535c217113130a3823d04853002ec4b55d04eb))
+* **button:** update button styles  ([#946](https://github.com/growingio/gio-design/issues/946)) ([3052cfa](https://github.com/growingio/gio-design/commit/3052cfa905813348cd892b55effe3b1db9b9aa25))
+* **page:** add forbidden page ([#952](https://github.com/growingio/gio-design/issues/952)) ([6ffeb87](https://github.com/growingio/gio-design/commit/6ffeb8740d4890f8953903df88829144917e5a2e))
+
+
+### BREAKING CHANGES
+
+* **button:** button type prop update
+
+
+
+## [21.4.2](https://github.com/growingio/gio-design/compare/v21.4.1...v21.4.2) (2021-04-16)
+
+
+### Bug Fixes
+
+* **select:** select mode=string error ([#942](https://github.com/growingio/gio-design/issues/942)) ([1c8c3d0](https://github.com/growingio/gio-design/commit/1c8c3d0644449e726e93e1eb66291874af3a81f1))
+* **tree:** fix tree style ([#945](https://github.com/growingio/gio-design/issues/945)) ([b0e7489](https://github.com/growingio/gio-design/commit/b0e74896eea90b4af9aab2675dfdc4174593beee))
+
+
+
+## [21.4.1](https://github.com/growingio/gio-design/compare/v21.4.0...v21.4.1) (2021-04-16)
+
+
+### Bug Fixes
+
+* **cascader:** fix search clear ([#939](https://github.com/growingio/gio-design/issues/939)) ([ae12d4c](https://github.com/growingio/gio-design/commit/ae12d4c7aa8c930ec9f2528a8660f72dafaf3794))
+* **select:** select search normal not focus ([#927](https://github.com/growingio/gio-design/issues/927)) ([16aaeb0](https://github.com/growingio/gio-design/commit/16aaeb051abad27448e47df3760e5234ab1c9db4))
+* **tree-select:** 修复tree-select组件的样式问题 ([#936](https://github.com/growingio/gio-design/issues/936)) ([5624055](https://github.com/growingio/gio-design/commit/56240559624deab6c19412c6f25d124d1f098e87))
+
+
+### Features
+
+* **avatar:** update avatar style ([#929](https://github.com/growingio/gio-design/issues/929)) ([8ee15e8](https://github.com/growingio/gio-design/commit/8ee15e83f1f013865495d9aa11a4901c6547d916))
+* **tree:** update tree style ([#938](https://github.com/growingio/gio-design/issues/938)) ([42718b9](https://github.com/growingio/gio-design/commit/42718b9615fe7553ec409da5e0d5645221937be7))
+* replace getTooltipContainer with getContainer ([#919](https://github.com/growingio/gio-design/issues/919)) ([3207984](https://github.com/growingio/gio-design/commit/32079844b152841b115a4f4034ff116102ac9295))
+
+
+
+# 21.4.0 (2021-04-02)
+
+
+### Bug Fixes
+
+* **cascader:** getParentByValue ([#917](https://github.com/growingio/gio-design/issues/917)) ([c8717b7](https://github.com/growingio/gio-design/commit/c8717b7806eabcaebabce693deaf437da7e7928a))
+* **select:** text ellipsis  error ([#920](https://github.com/growingio/gio-design/issues/920)) ([da73353](https://github.com/growingio/gio-design/commit/da73353eb7bdc2254c68c99d3441a3adb72d49a6)), closes [#914](https://github.com/growingio/gio-design/issues/914)
+
+### Features
+
+* support babel-plugin-import ([#916](https://github.com/growingio/gio-design/issues/916)) ([3ebc2bb](https://github.com/growingio/gio-design/commit/3ebc2bb34856381173e746443bcece3485a861c1))
+
+
+
+## [21.3.4](https://github.com/growingio/gio-design/compare/v21.3.3...v21.3.4) (2021-03-31)
+
+
+### Bug Fixes
+
+* **select clear disabled:** select disabled not show closeComponent ([4cbcfb1](https://github.com/growingio/gio-design/commit/4cbcfb1311e491992bd8f5062178ae710718d368))
+
+
+### Features
+
+* **list:** upgrade list-lite to list ([0847d76](https://github.com/growingio/gio-design/commit/0847d768d5af06253aa82443190c7443ff5978c4)), closes [#754](https://github.com/growingio/gio-design/issues/754)
+* set @gio-design/icons and @gio-design/tokens as peer dependencies ([#911](https://github.com/growingio/gio-design/issues/911)) ([908e4f1](https://github.com/growingio/gio-design/commit/908e4f1db17fd468065adb0201a85ebd9d4d9d3c))
+
+
+### BREAKING CHANGES
+
+* **list:** Refactor list component with new api.
+* set @gio-design/icons and @gio-design/tokens as peer dependencies.
+
+
+
+## [21.3.3](https://github.com/growingio/gio-design/compare/v21.3.2...v21.3.3) (2021-03-26)
+
+
+### Bug Fixes
+
+* **space:** can't read context from project ([de2728c](https://github.com/growingio/gio-design/commit/de2728c645a817a9aeb024581bebc66feaaf3c82))
+* **table:** style bug on Firefox ([49dd307](https://github.com/growingio/gio-design/commit/49dd307640c3ced6a48b072aecab053b8b4f02c1))
+
+
+### Features
+
+* **table:** update style, add gio-table-row-selected class on seleted row ([eaf35d5](https://github.com/growingio/gio-design/commit/eaf35d5879435e5f8588a1dbd62eef746e8a3d7d))
+
+
+
+## [21.3.2](https://github.com/growingio/gio-design/compare/v21.3.1...v21.3.2) (2021-03-19)
+
+
+### Bug Fixes
+
+* **layout:** set maxWidth: auto can not cover previous value ([#885](https://github.com/growingio/gio-design/issues/885)) ([151a679](https://github.com/growingio/gio-design/commit/151a67952e1d5114ffc03dacc13c637ec1f06b80))
+* **loading:** not align center when set loading false ([#884](https://github.com/growingio/gio-design/issues/884)) ([11cbb62](https://github.com/growingio/gio-design/commit/11cbb62a296e1174e6ee8188c542cd6a7d4c45f9))
+* **modal:** add ref ([#878](https://github.com/growingio/gio-design/issues/878)) ([c85f0a9](https://github.com/growingio/gio-design/commit/c85f0a92c3010cc4a1f3c9c53a82da0ba15c087a))
+* **select:** empty style ([1a618ab](https://github.com/growingio/gio-design/commit/1a618ab8ca266ca4b985e43727b857620a85b4cb))
+* **select:** searchable => searchType ([#881](https://github.com/growingio/gio-design/issues/881)) ([ac32635](https://github.com/growingio/gio-design/commit/ac32635f5888798a41034c8272f7564f459cf0b9))
+* **tree-select:** 解决slide动画引发的bug ([#883](https://github.com/growingio/gio-design/issues/883)) ([09ab70d](https://github.com/growingio/gio-design/commit/09ab70d9daba53109a95402861b64e8c79c8da27))
+
+
+### BREAKING CHANGES
+
+* **select:** delete searchable and add searchType
+
 ## [21.3.0](https://github.com/growingio/gio-design/compare/v21.2.4...v21.3.0) (2021-03-05)
 
 

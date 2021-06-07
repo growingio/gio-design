@@ -9,15 +9,19 @@ let modalId = 0;
 const useModal: IUseModal = () => {
   const [modalElements, patchModalElements] = usePatchElement();
 
-  const getHookCalloutFnc = (withConfig: (config: IModalStaticFuncConfig) => IModalStaticFuncConfig) => {
-    return function hookCallout(config: IModalStaticFuncConfig): IModalStaticFuncReturn {
+  const getHookCalloutFnc = (withConfig: (config: IModalStaticFuncConfig) => IModalStaticFuncConfig) => function hookCallout(config: IModalStaticFuncConfig): IModalStaticFuncReturn {
       modalId += 1;
 
       const hookModalRef = createRef<THookModalRef>();
 
       let handleClose: () => void;
       const modal = (
-        <HookModal key={`hook-modal-${modalId}`} config={withConfig(config)} afterClose={() => handleClose()} />
+        <HookModal
+          key={`hook-modal-${modalId}`}
+          ref={hookModalRef}
+          config={withConfig(config)}
+          afterClose={() => handleClose()}
+        />
       );
       handleClose = patchModalElements(modal);
 
@@ -30,7 +34,6 @@ const useModal: IUseModal = () => {
         },
       };
     };
-  };
 
   return [
     {

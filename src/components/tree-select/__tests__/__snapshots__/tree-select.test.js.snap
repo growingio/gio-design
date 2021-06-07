@@ -970,7 +970,7 @@ exports[`Testing tree select \`multiple\` will alway be \`true\` when \`treeChec
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-select gio-tree-select gio-select-single gio-select-show-arrow",
+      "class": "gio-select gio-tree-select gio-select-single gio-select-show-arrow gio-select-show-search",
     },
     "children": Array [
       Object {
@@ -1177,12 +1177,13 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
+                "aria-label": "down-filled",
                 "class": "gio-icon gio-select-suffix",
+                "role": "img",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon-svg",
                     "fill": "currentColor",
                     "height": "16px",
                     "viewBox": "0 0 14 14",
@@ -1352,7 +1353,6 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -1360,7 +1360,6 @@ initialize {
                     "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -1376,10 +1375,14 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
             },
           ],
@@ -1422,12 +1425,13 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
+              "aria-label": "down-filled",
               "class": "gio-icon gio-select-suffix",
+              "role": "img",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-icon-svg",
                   "fill": "currentColor",
                   "height": "16px",
                   "viewBox": "0 0 14 14",
@@ -1597,7 +1601,6 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -1605,7 +1608,6 @@ initialize {
                   "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -1621,10 +1623,14 @@ initialize {
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
           },
         ],
@@ -1894,7 +1900,7 @@ exports[`Testing tree select not found work 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-select gio-tree-select gio-select-single gio-select-show-arrow",
+      "class": "gio-select gio-tree-select gio-select-single gio-select-show-arrow gio-select-show-search",
     },
     "children": Array [
       Object {
@@ -2101,12 +2107,13 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
+                "aria-label": "down-filled",
                 "class": "gio-icon gio-select-suffix",
+                "role": "img",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon-svg",
                     "fill": "currentColor",
                     "height": "16px",
                     "viewBox": "0 0 14 14",
@@ -2276,7 +2283,6 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -2284,7 +2290,6 @@ initialize {
                     "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -2300,10 +2305,14 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
             },
           ],
@@ -2346,12 +2355,13 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
+              "aria-label": "down-filled",
               "class": "gio-icon gio-select-suffix",
+              "role": "img",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-icon-svg",
                   "fill": "currentColor",
                   "height": "16px",
                   "viewBox": "0 0 14 14",
@@ -2521,7 +2531,6 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -2529,7 +2538,6 @@ initialize {
                   "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -2545,10 +2553,14 @@ initialize {
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
           },
         ],
@@ -2818,7 +2830,7 @@ exports[`Testing tree select should \`treeIcon\` work 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "gio-select gio-tree-select gio-select-single gio-select-show-arrow gio-select-open",
+      "class": "gio-select gio-tree-select gio-select-single gio-select-show-arrow gio-select-open gio-select-show-search",
     },
     "children": Array [
       Object {
@@ -2842,11 +2854,8 @@ initialize {
                   "autocomplete": "off",
                   "class": "gio-select-selection-search-input",
                   "id": "rc_select_TEST_OR_SSR",
-                  "readonly": "",
                   "role": "combobox",
-                  "style": "opacity: 0;",
                   "type": "search",
-                  "unselectable": "on",
                   "value": "",
                 },
                 "children": Array [],
@@ -2866,11 +2875,8 @@ initialize {
                   "autocomplete": undefined,
                   "class": undefined,
                   "id": undefined,
-                  "readonly": undefined,
                   "role": undefined,
-                  "style": undefined,
                   "type": undefined,
-                  "unselectable": undefined,
                   "value": undefined,
                 },
                 "x-attribsPrefix": Object {
@@ -2883,11 +2889,8 @@ initialize {
                   "autocomplete": undefined,
                   "class": undefined,
                   "id": undefined,
-                  "readonly": undefined,
                   "role": undefined,
-                  "style": undefined,
                   "type": undefined,
-                  "unselectable": undefined,
                   "value": undefined,
                 },
               },
@@ -2947,11 +2950,8 @@ initialize {
                     "autocomplete": "off",
                     "class": "gio-select-selection-search-input",
                     "id": "rc_select_TEST_OR_SSR",
-                    "readonly": "",
                     "role": "combobox",
-                    "style": "opacity: 0;",
                     "type": "search",
-                    "unselectable": "on",
                     "value": "",
                   },
                   "children": Array [],
@@ -2971,11 +2971,8 @@ initialize {
                     "autocomplete": undefined,
                     "class": undefined,
                     "id": undefined,
-                    "readonly": undefined,
                     "role": undefined,
-                    "style": undefined,
                     "type": undefined,
-                    "unselectable": undefined,
                     "value": undefined,
                   },
                   "x-attribsPrefix": Object {
@@ -2988,11 +2985,8 @@ initialize {
                     "autocomplete": undefined,
                     "class": undefined,
                     "id": undefined,
-                    "readonly": undefined,
                     "role": undefined,
-                    "style": undefined,
                     "type": undefined,
-                    "unselectable": undefined,
                     "value": undefined,
                   },
                 },
@@ -3031,12 +3025,13 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
+                "aria-label": "down-filled",
                 "class": "gio-icon gio-select-suffix",
+                "role": "img",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon-svg",
                     "fill": "currentColor",
                     "height": "16px",
                     "viewBox": "0 0 14 14",
@@ -3206,7 +3201,6 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -3214,7 +3208,6 @@ initialize {
                     "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -3230,10 +3223,14 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
             },
           ],
@@ -3276,12 +3273,13 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
+              "aria-label": "down-filled",
               "class": "gio-icon gio-select-suffix",
+              "role": "img",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-icon-svg",
                   "fill": "currentColor",
                   "height": "16px",
                   "viewBox": "0 0 14 14",
@@ -3451,7 +3449,6 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -3459,7 +3456,6 @@ initialize {
                   "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -3475,10 +3471,14 @@ initialize {
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
           },
         ],
@@ -3507,11 +3507,8 @@ initialize {
                     "autocomplete": "off",
                     "class": "gio-select-selection-search-input",
                     "id": "rc_select_TEST_OR_SSR",
-                    "readonly": "",
                     "role": "combobox",
-                    "style": "opacity: 0;",
                     "type": "search",
-                    "unselectable": "on",
                     "value": "",
                   },
                   "children": Array [],
@@ -3531,11 +3528,8 @@ initialize {
                     "autocomplete": undefined,
                     "class": undefined,
                     "id": undefined,
-                    "readonly": undefined,
                     "role": undefined,
-                    "style": undefined,
                     "type": undefined,
-                    "unselectable": undefined,
                     "value": undefined,
                   },
                   "x-attribsPrefix": Object {
@@ -3548,11 +3542,8 @@ initialize {
                     "autocomplete": undefined,
                     "class": undefined,
                     "id": undefined,
-                    "readonly": undefined,
                     "role": undefined,
-                    "style": undefined,
                     "type": undefined,
-                    "unselectable": undefined,
                     "value": undefined,
                   },
                 },
@@ -3612,11 +3603,8 @@ initialize {
                       "autocomplete": "off",
                       "class": "gio-select-selection-search-input",
                       "id": "rc_select_TEST_OR_SSR",
-                      "readonly": "",
                       "role": "combobox",
-                      "style": "opacity: 0;",
                       "type": "search",
-                      "unselectable": "on",
                       "value": "",
                     },
                     "children": Array [],
@@ -3636,11 +3624,8 @@ initialize {
                       "autocomplete": undefined,
                       "class": undefined,
                       "id": undefined,
-                      "readonly": undefined,
                       "role": undefined,
-                      "style": undefined,
                       "type": undefined,
-                      "unselectable": undefined,
                       "value": undefined,
                     },
                     "x-attribsPrefix": Object {
@@ -3653,11 +3638,8 @@ initialize {
                       "autocomplete": undefined,
                       "class": undefined,
                       "id": undefined,
-                      "readonly": undefined,
                       "role": undefined,
-                      "style": undefined,
                       "type": undefined,
-                      "unselectable": undefined,
                       "value": undefined,
                     },
                   },
@@ -7259,12 +7241,13 @@ initialize {
           "children": Array [
             Object {
               "attribs": Object {
+                "aria-label": "more-outlined",
                 "class": "gio-icon",
+                "role": "img",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-icon-svg",
                     "fill": "currentColor",
                     "height": "16px",
                     "viewBox": "0 0 14 14",
@@ -7304,7 +7287,6 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -7312,7 +7294,6 @@ initialize {
                     "xmlns": "http://www.w3.org/2000/xmlns/",
                   },
                   "x-attribsPrefix": Object {
-                    "class": undefined,
                     "fill": undefined,
                     "height": undefined,
                     "viewBox": undefined,
@@ -7328,10 +7309,14 @@ initialize {
               "prev": null,
               "type": "tag",
               "x-attribsNamespace": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
               "x-attribsPrefix": Object {
+                "aria-label": undefined,
                 "class": undefined,
+                "role": undefined,
               },
             },
           ],
@@ -7374,12 +7359,13 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
+              "aria-label": "more-outlined",
               "class": "gio-icon",
+              "role": "img",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-icon-svg",
                   "fill": "currentColor",
                   "height": "16px",
                   "viewBox": "0 0 14 14",
@@ -7419,7 +7405,6 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -7427,7 +7412,6 @@ initialize {
                   "xmlns": "http://www.w3.org/2000/xmlns/",
                 },
                 "x-attribsPrefix": Object {
-                  "class": undefined,
                   "fill": undefined,
                   "height": undefined,
                   "viewBox": undefined,
@@ -7443,10 +7427,14 @@ initialize {
             "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
             "x-attribsPrefix": Object {
+              "aria-label": undefined,
               "class": undefined,
+              "role": undefined,
             },
           },
         ],

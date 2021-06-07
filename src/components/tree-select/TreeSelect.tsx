@@ -20,8 +20,6 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
   public static SHOW_CHILD: typeof SHOW_CHILD = SHOW_CHILD;
 
   public static defaultProps = {
-    transitionName: 'slide-up',
-    choiceTransitionName: '',
     bordered: true,
   };
 
@@ -58,6 +56,8 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
       className,
       treeCheckable,
       multiple,
+      maxTagTextLength,
+      maxTagCount,
       listHeight = 368,
       listItemHeight = 26,
       notFoundContent,
@@ -125,6 +125,8 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
               prefixCls={prefixCls}
               className={mergedClassName}
               listHeight={listHeight}
+              maxTagTextLength={maxTagTextLength}
+              maxTagCount={maxTagCount}
               listItemHeight={listItemHeight}
               treeCheckable={treeCheckable ? <span className={`${prefixCls}-tree-checkbox-inner`} /> : treeCheckable}
               inputIcon={suffixIcon}
@@ -132,6 +134,7 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
               clearIcon={clearIcon}
               switcherIcon={(nodeProps: GioTreeNodeProps) => renderSwitcherIcon(treePrefixCls, switcherIcon, nodeProps)}
               showTreeIcon={false}
+              showSearch
               notFoundContent={mergedNotFound}
               getPopupContainer={getPopupContainer || getContextPopupContainer}
               treeMotion={null}

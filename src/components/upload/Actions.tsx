@@ -18,11 +18,12 @@ const Actions: React.FC<IActionsProps> = ({
     [`${prefixCls}__actions--right-top`]: placement === 'rightTop',
   });
   const iconContainerCls = classnames(`${prefixCls}__actions-container`);
-  const iconCls = classnames(`${prefixCls}__actions-icon`);
+  const uploadIconCls = classnames(`${prefixCls}__actions-icon`, `${prefixCls}__actions-icon-upload`);
+  const deleteIconCls = classnames(`${prefixCls}__actions-icon`, `${prefixCls}__actions-icon-delete`);
 
   const handleStopPropagation = (e: any) => {
-    const targetNode = spanRef.current?.childNodes[0];
-    if (targetNode && !targetNode.contains(e.target) && file?.status === STATUS_SUCCESS) {
+    const targetNode = spanRef?.current?.childNodes[0];
+    if (targetNode && !targetNode.contains(e.target) && file.status === STATUS_SUCCESS) {
       e.stopPropagation();
     }
   };
@@ -35,8 +36,8 @@ const Actions: React.FC<IActionsProps> = ({
   return (
     <span className={cls} onClick={handleStopPropagation} aria-hidden="true">
       <span className={iconContainerCls} ref={spanRef}>
-        {useUpload && <UploadOutlined className={iconCls} />}
-        {useDelete && <DeleteOutlined className={iconCls} onClick={handleRemove} />}
+        {useUpload && <UploadOutlined className={uploadIconCls} />}
+        {useDelete && <DeleteOutlined className={deleteIconCls} onClick={handleRemove} />}
       </span>
     </span>
   );

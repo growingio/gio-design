@@ -51,6 +51,7 @@ const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
   const handlerClick = () => {
     setValue('');
     onChange?.('');
+    onSearch?.('');
   };
   // 如果支持，优先使用 composition 事件
   const handleComposition = (e: React.CompositionEvent) => {

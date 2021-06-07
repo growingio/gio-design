@@ -15,9 +15,7 @@ const useSiders = (): [
   };
 
   const updateSiders = useCallback((incomingSider: SiderState) => {
-    setSiders((_siders) => {
-      return [..._siders.filter((_sider) => _sider.id !== incomingSider.id), incomingSider];
-    });
+    setSiders((_siders) => [..._siders.filter((_sider) => _sider.id !== incomingSider.id), incomingSider]);
   }, []);
 
   const sidersWidth = useMemo(() => siders.reduce((prev: number, current: SiderState) => prev + current.width, 0), [

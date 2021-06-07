@@ -12,6 +12,7 @@ const Link: React.FC<LinkProps> = ({
   prefix: customPrefixCls,
   className,
   children,
+  icon,
   ...otherProps
 }: LinkProps) => {
   const prefixCls = usePrefixCls('link', customPrefixCls);
@@ -45,6 +46,7 @@ const Link: React.FC<LinkProps> = ({
     return (
       // eslint-disable-next-line react/jsx-props-no-spreading
       <a href={to} {...componentProps}>
+        {icon}
         {children}
       </a>
     );
