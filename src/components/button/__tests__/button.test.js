@@ -57,9 +57,6 @@ describe('Testing button', () => {
         <Button type="text" size="middle">
           文本按钮
         </Button>
-        <Button type="link" size="small" ghost>
-          链接按钮
-        </Button>
         <Button block type="primary">
           块按钮
         </Button>

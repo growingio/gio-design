@@ -4790,7 +4790,7 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
-                    "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
+                    "class": "gio-btn gio-btn-primary gio-btn-block",
                     "type": "button",
                   },
                   "children": Array [
@@ -4798,7 +4798,7 @@ initialize {
                       "attribs": Object {},
                       "children": Array [
                         Object {
-                          "data": "链接按钮",
+                          "data": "块按钮",
                           "next": null,
                           "parent": [Circular],
                           "prev": null,
@@ -4817,48 +4817,7 @@ initialize {
                   ],
                   "name": "button",
                   "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": Object {
-                    "attribs": Object {
-                      "class": "gio-btn gio-btn-primary gio-btn-block",
-                      "type": "button",
-                    },
-                    "children": Array [
-                      Object {
-                        "attribs": Object {},
-                        "children": Array [
-                          Object {
-                            "data": "块按钮",
-                            "next": null,
-                            "parent": [Circular],
-                            "prev": null,
-                            "type": "text",
-                          },
-                        ],
-                        "name": "span",
-                        "namespace": "http://www.w3.org/1999/xhtml",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "tag",
-                        "x-attribsNamespace": Object {},
-                        "x-attribsPrefix": Object {},
-                      },
-                    ],
-                    "name": "button",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": [Circular],
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                      "type": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                      "type": undefined,
-                    },
-                  },
+                  "next": null,
                   "parent": [Circular],
                   "prev": [Circular],
                   "type": "tag",
@@ -5031,7 +4990,7 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
+                  "class": "gio-btn gio-btn-primary gio-btn-block",
                   "type": "button",
                 },
                 "children": Array [
@@ -5039,7 +4998,7 @@ initialize {
                     "attribs": Object {},
                     "children": Array [
                       Object {
-                        "data": "链接按钮",
+                        "data": "块按钮",
                         "next": null,
                         "parent": [Circular],
                         "prev": null,
@@ -5058,48 +5017,7 @@ initialize {
                 ],
                 "name": "button",
                 "namespace": "http://www.w3.org/1999/xhtml",
-                "next": Object {
-                  "attribs": Object {
-                    "class": "gio-btn gio-btn-primary gio-btn-block",
-                    "type": "button",
-                  },
-                  "children": Array [
-                    Object {
-                      "attribs": Object {},
-                      "children": Array [
-                        Object {
-                          "data": "块按钮",
-                          "next": null,
-                          "parent": [Circular],
-                          "prev": null,
-                          "type": "text",
-                        },
-                      ],
-                      "name": "span",
-                      "namespace": "http://www.w3.org/1999/xhtml",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "tag",
-                      "x-attribsNamespace": Object {},
-                      "x-attribsPrefix": Object {},
-                    },
-                  ],
-                  "name": "button",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": [Circular],
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                    "type": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                    "type": undefined,
-                  },
-                },
+                "next": null,
                 "parent": [Circular],
                 "prev": [Circular],
                 "type": "tag",
@@ -5271,7 +5189,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
+                "class": "gio-btn gio-btn-primary gio-btn-block",
                 "type": "button",
               },
               "children": Array [
@@ -5279,7 +5197,7 @@ initialize {
                   "attribs": Object {},
                   "children": Array [
                     Object {
-                      "data": "链接按钮",
+                      "data": "块按钮",
                       "next": null,
                       "parent": [Circular],
                       "prev": null,
@@ -5298,48 +5216,7 @@ initialize {
               ],
               "name": "button",
               "namespace": "http://www.w3.org/1999/xhtml",
-              "next": Object {
-                "attribs": Object {
-                  "class": "gio-btn gio-btn-primary gio-btn-block",
-                  "type": "button",
-                },
-                "children": Array [
-                  Object {
-                    "attribs": Object {},
-                    "children": Array [
-                      Object {
-                        "data": "块按钮",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "text",
-                      },
-                    ],
-                    "name": "span",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "tag",
-                    "x-attribsNamespace": Object {},
-                    "x-attribsPrefix": Object {},
-                  },
-                ],
-                "name": "button",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": null,
-                "parent": [Circular],
-                "prev": [Circular],
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                  "type": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
-                  "type": undefined,
-                },
-              },
+              "next": null,
               "parent": [Circular],
               "prev": [Circular],
               "type": "tag",
@@ -5533,7 +5410,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
-              "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
+              "class": "gio-btn gio-btn-primary gio-btn-block",
               "type": "button",
             },
             "children": Array [
@@ -5541,7 +5418,7 @@ initialize {
                 "attribs": Object {},
                 "children": Array [
                   Object {
-                    "data": "链接按钮",
+                    "data": "块按钮",
                     "next": null,
                     "parent": [Circular],
                     "prev": null,
@@ -5560,48 +5437,7 @@ initialize {
             ],
             "name": "button",
             "namespace": "http://www.w3.org/1999/xhtml",
-            "next": Object {
-              "attribs": Object {
-                "class": "gio-btn gio-btn-primary gio-btn-block",
-                "type": "button",
-              },
-              "children": Array [
-                Object {
-                  "attribs": Object {},
-                  "children": Array [
-                    Object {
-                      "data": "块按钮",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {},
-                  "x-attribsPrefix": Object {},
-                },
-              ],
-              "name": "button",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": [Circular],
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-                "type": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
-                "type": undefined,
-              },
-            },
+            "next": null,
             "parent": [Circular],
             "prev": [Circular],
             "type": "tag",
@@ -5774,7 +5610,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
+            "class": "gio-btn gio-btn-primary gio-btn-block",
             "type": "button",
           },
           "children": Array [
@@ -5782,7 +5618,7 @@ initialize {
               "attribs": Object {},
               "children": Array [
                 Object {
-                  "data": "链接按钮",
+                  "data": "块按钮",
                   "next": null,
                   "parent": [Circular],
                   "prev": null,
@@ -5801,48 +5637,7 @@ initialize {
           ],
           "name": "button",
           "namespace": "http://www.w3.org/1999/xhtml",
-          "next": Object {
-            "attribs": Object {
-              "class": "gio-btn gio-btn-primary gio-btn-block",
-              "type": "button",
-            },
-            "children": Array [
-              Object {
-                "attribs": Object {},
-                "children": Array [
-                  Object {
-                    "data": "块按钮",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "text",
-                  },
-                ],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": null,
-                "parent": [Circular],
-                "prev": null,
-                "type": "tag",
-                "x-attribsNamespace": Object {},
-                "x-attribsPrefix": Object {},
-              },
-            ],
-            "name": "button",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": null,
-            "parent": [Circular],
-            "prev": [Circular],
-            "type": "tag",
-            "x-attribsNamespace": Object {
-              "class": undefined,
-              "type": undefined,
-            },
-            "x-attribsPrefix": Object {
-              "class": undefined,
-              "type": undefined,
-            },
-          },
+          "next": null,
           "parent": [Circular],
           "prev": [Circular],
           "type": "tag",
@@ -6015,7 +5810,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
+          "class": "gio-btn gio-btn-primary gio-btn-block",
           "type": "button",
         },
         "children": Array [
@@ -6023,7 +5818,7 @@ initialize {
             "attribs": Object {},
             "children": Array [
               Object {
-                "data": "链接按钮",
+                "data": "块按钮",
                 "next": null,
                 "parent": [Circular],
                 "prev": null,
@@ -6042,48 +5837,7 @@ initialize {
         ],
         "name": "button",
         "namespace": "http://www.w3.org/1999/xhtml",
-        "next": Object {
-          "attribs": Object {
-            "class": "gio-btn gio-btn-primary gio-btn-block",
-            "type": "button",
-          },
-          "children": Array [
-            Object {
-              "attribs": Object {},
-              "children": Array [
-                Object {
-                  "data": "块按钮",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "text",
-                },
-              ],
-              "name": "span",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": null,
-              "type": "tag",
-              "x-attribsNamespace": Object {},
-              "x-attribsPrefix": Object {},
-            },
-          ],
-          "name": "button",
-          "namespace": "http://www.w3.org/1999/xhtml",
-          "next": null,
-          "parent": [Circular],
-          "prev": [Circular],
-          "type": "tag",
-          "x-attribsNamespace": Object {
-            "class": undefined,
-            "type": undefined,
-          },
-          "x-attribsPrefix": Object {
-            "class": undefined,
-            "type": undefined,
-          },
-        },
+        "next": null,
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
@@ -6240,276 +5994,6 @@ initialize {
                 "x-attribsPrefix": Object {
                   "class": undefined,
                   "disabled": undefined,
-                  "type": undefined,
-                },
-              },
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "class": undefined,
-                "type": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "class": undefined,
-                "type": undefined,
-              },
-            },
-            "type": "tag",
-            "x-attribsNamespace": Object {
-              "class": undefined,
-              "type": undefined,
-            },
-            "x-attribsPrefix": Object {
-              "class": undefined,
-              "type": undefined,
-            },
-          },
-          "type": "tag",
-          "x-attribsNamespace": Object {
-            "class": undefined,
-            "type": undefined,
-          },
-          "x-attribsPrefix": Object {
-            "class": undefined,
-            "type": undefined,
-          },
-        },
-        "type": "tag",
-        "x-attribsNamespace": Object {
-          "class": undefined,
-          "type": undefined,
-        },
-        "x-attribsPrefix": Object {
-          "class": undefined,
-          "type": undefined,
-        },
-      },
-      Object {
-        "attribs": Object {
-          "class": "gio-btn gio-btn-primary gio-btn-block",
-          "type": "button",
-        },
-        "children": Array [
-          Object {
-            "attribs": Object {},
-            "children": Array [
-              Object {
-                "data": "块按钮",
-                "next": null,
-                "parent": [Circular],
-                "prev": null,
-                "type": "text",
-              },
-            ],
-            "name": "span",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": null,
-            "parent": [Circular],
-            "prev": null,
-            "type": "tag",
-            "x-attribsNamespace": Object {},
-            "x-attribsPrefix": Object {},
-          },
-        ],
-        "name": "button",
-        "namespace": "http://www.w3.org/1999/xhtml",
-        "next": null,
-        "parent": [Circular],
-        "prev": Object {
-          "attribs": Object {
-            "class": "gio-btn gio-btn-link gio-btn-small gio-btn-background-ghost",
-            "type": "button",
-          },
-          "children": Array [
-            Object {
-              "attribs": Object {},
-              "children": Array [
-                Object {
-                  "data": "链接按钮",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "text",
-                },
-              ],
-              "name": "span",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": null,
-              "type": "tag",
-              "x-attribsNamespace": Object {},
-              "x-attribsPrefix": Object {},
-            },
-          ],
-          "name": "button",
-          "namespace": "http://www.w3.org/1999/xhtml",
-          "next": [Circular],
-          "parent": [Circular],
-          "prev": Object {
-            "attribs": Object {
-              "class": "gio-btn gio-btn-text gio-btn-middle",
-              "type": "button",
-            },
-            "children": Array [
-              Object {
-                "attribs": Object {},
-                "children": Array [
-                  Object {
-                    "data": "文本按钮",
-                    "next": null,
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "text",
-                  },
-                ],
-                "name": "span",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": null,
-                "parent": [Circular],
-                "prev": null,
-                "type": "tag",
-                "x-attribsNamespace": Object {},
-                "x-attribsPrefix": Object {},
-              },
-            ],
-            "name": "button",
-            "namespace": "http://www.w3.org/1999/xhtml",
-            "next": [Circular],
-            "parent": [Circular],
-            "prev": Object {
-              "attribs": Object {
-                "class": "gio-btn gio-btn-secondary gio-btn-large",
-                "type": "button",
-              },
-              "children": Array [
-                Object {
-                  "attribs": Object {},
-                  "children": Array [
-                    Object {
-                      "data": "次要按钮",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "text",
-                    },
-                  ],
-                  "name": "span",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": null,
-                  "parent": [Circular],
-                  "prev": null,
-                  "type": "tag",
-                  "x-attribsNamespace": Object {},
-                  "x-attribsPrefix": Object {},
-                },
-              ],
-              "name": "button",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": [Circular],
-              "parent": [Circular],
-              "prev": Object {
-                "attribs": Object {
-                  "class": "gio-btn gio-btn-primary",
-                  "type": "button",
-                },
-                "children": Array [],
-                "name": "button",
-                "namespace": "http://www.w3.org/1999/xhtml",
-                "next": [Circular],
-                "parent": [Circular],
-                "prev": Object {
-                  "attribs": Object {
-                    "class": "gio-btn gio-btn-text",
-                    "disabled": "",
-                    "type": "button",
-                  },
-                  "children": Array [
-                    Object {
-                      "attribs": Object {},
-                      "children": Array [
-                        Object {
-                          "data": "文本按钮",
-                          "next": null,
-                          "parent": [Circular],
-                          "prev": null,
-                          "type": "text",
-                        },
-                      ],
-                      "name": "span",
-                      "namespace": "http://www.w3.org/1999/xhtml",
-                      "next": null,
-                      "parent": [Circular],
-                      "prev": null,
-                      "type": "tag",
-                      "x-attribsNamespace": Object {},
-                      "x-attribsPrefix": Object {},
-                    },
-                  ],
-                  "name": "button",
-                  "namespace": "http://www.w3.org/1999/xhtml",
-                  "next": [Circular],
-                  "parent": [Circular],
-                  "prev": Object {
-                    "attribs": Object {
-                      "class": "gio-btn gio-btn-primary gio-btn-large",
-                      "type": "button",
-                    },
-                    "children": Array [
-                      Object {
-                        "attribs": Object {},
-                        "children": Array [
-                          Object {
-                            "data": "主要按钮",
-                            "next": null,
-                            "parent": [Circular],
-                            "prev": null,
-                            "type": "text",
-                          },
-                        ],
-                        "name": "span",
-                        "namespace": "http://www.w3.org/1999/xhtml",
-                        "next": null,
-                        "parent": [Circular],
-                        "prev": null,
-                        "type": "tag",
-                        "x-attribsNamespace": Object {},
-                        "x-attribsPrefix": Object {},
-                      },
-                    ],
-                    "name": "button",
-                    "namespace": "http://www.w3.org/1999/xhtml",
-                    "next": [Circular],
-                    "parent": [Circular],
-                    "prev": null,
-                    "type": "tag",
-                    "x-attribsNamespace": Object {
-                      "class": undefined,
-                      "type": undefined,
-                    },
-                    "x-attribsPrefix": Object {
-                      "class": undefined,
-                      "type": undefined,
-                    },
-                  },
-                  "type": "tag",
-                  "x-attribsNamespace": Object {
-                    "class": undefined,
-                    "disabled": undefined,
-                    "type": undefined,
-                  },
-                  "x-attribsPrefix": Object {
-                    "class": undefined,
-                    "disabled": undefined,
-                    "type": undefined,
-                  },
-                },
-                "type": "tag",
-                "x-attribsNamespace": Object {
-                  "class": undefined,
-                  "type": undefined,
-                },
-                "x-attribsPrefix": Object {
-                  "class": undefined,
                   "type": undefined,
                 },
               },
