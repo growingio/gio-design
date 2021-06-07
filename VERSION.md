@@ -1,18 +1,16 @@
-## [21.5.3](https://github.com/growingio/gio-design/compare/v21.5.2...v21.5.3) (2021-05-28)
+# [21.6.0](https://github.com/growingio/gio-design/compare/v21.5.3...v21.6.0) (2021-06-07)
 
 
 ### Bug Fixes
 
-* **loading:** add parentheses in loading/index.less ([#1013](https://github.com/growingio/gio-design/issues/1013)) ([003a71d](https://github.com/growingio/gio-design/commit/003a71dd2f527c2c0182761fdf52fc26856e52a0))
-* **table:** if columns or data changed, status reset ([#1004](https://github.com/growingio/gio-design/issues/1004)) ([5347246](https://github.com/growingio/gio-design/commit/53472461663904a444dfc0ef73bd5cbaf8785343))
+* **modal:** update modal style ([#1027](https://github.com/growingio/gio-design/issues/1027)) ([c057ff1](https://github.com/growingio/gio-design/commit/c057ff125fde8a240cb0577aef853569c4ec7eaa))
+* **select:** fix select props classname error ([#1003](https://github.com/growingio/gio-design/issues/1003)) ([764e9ee](https://github.com/growingio/gio-design/commit/764e9ee7c629045844b2d6af8fe72f5ce994cc7e))
 
 
 ### Features
 
-* **drawer:** support change drawer content ([#1014](https://github.com/growingio/gio-design/issues/1014)) ([b4bdfe1](https://github.com/growingio/gio-design/commit/b4bdfe1880583b6b2a08d99415d55d80c5fb1d9b))
-* **progress:** add Progress bar active animation ([#1006](https://github.com/growingio/gio-design/issues/1006)) ([014cc31](https://github.com/growingio/gio-design/commit/014cc31f6ca5608f86423cbcfbd0138fa1771df6))
-* **table:** add row selection tooltip ([#1015](https://github.com/growingio/gio-design/issues/1015)) ([75abb96](https://github.com/growingio/gio-design/commit/75abb960c7323d8970ee092cf258b5dd0856520b))
-* **table:** support sorter and filter controll ([#1016](https://github.com/growingio/gio-design/issues/1016)) ([bf9c6e2](https://github.com/growingio/gio-design/commit/bf9c6e234fbc3f3800dad80d6b51a33a8c34cbb2))
+* **button、link:** button、link重构 ([#1029](https://github.com/growingio/gio-design/issues/1029)) ([4890b2b](https://github.com/growingio/gio-design/commit/4890b2ba3ea07965a718d524a8c364c62a32d86f))
+* **tree-select:** 添加复选搜索，input框最大长的控制 ([ad583c1](https://github.com/growingio/gio-design/commit/ad583c17114044516bddc3658869b74bd3b703ba))
 
 
 
