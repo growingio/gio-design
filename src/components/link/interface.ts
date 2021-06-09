@@ -7,7 +7,7 @@ export interface ILinkProps {
   /**
    * 自定义 Link 根元素使用的组件
    */
-  component: React.ElementType;
+  component?: React.ElementType;
   /**
    * 跳转目标链接
    */

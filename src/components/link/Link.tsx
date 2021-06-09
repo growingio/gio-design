@@ -5,16 +5,10 @@ import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 export { LinkProps } from './interface';
 
-const Link: React.FC<LinkProps> = ({
-  component = 'a',
-  to = '',
-  disabled,
-  prefix: customPrefixCls,
-  className,
-  children,
-  icon,
-  ...otherProps
-}: LinkProps) => {
+const Link: React.FC<LinkProps> = (props: LinkProps) => {
+
+  const {component = 'a', to = '', disabled, prefix: customPrefixCls, className, children, icon, ...otherProps} = props;
+
   const prefixCls = usePrefixCls('link', customPrefixCls);
   const cls = classnames(className, prefixCls, {
     [`${prefixCls}--disabled`]: disabled,
@@ -42,7 +36,7 @@ const Link: React.FC<LinkProps> = ({
     onClick: handleClick,
   };
 
-  if (component === 'a') {
+  if (component === 'a' && !otherProps.onClick) {
     return (
       // eslint-disable-next-line react/jsx-props-no-spreading
       <a href={to} {...componentProps}>
@@ -53,7 +47,7 @@ const Link: React.FC<LinkProps> = ({
   }
 
   const ComponentProp = component;
-  return <ComponentProp {...componentProps}>{children}</ComponentProp>;
+  return <ComponentProp {...componentProps}>{icon}{children}</ComponentProp>;
 };
 
 export default Link;

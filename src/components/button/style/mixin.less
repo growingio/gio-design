@@ -104,7 +104,7 @@
     background-image: radial-gradient(circle, @palette-gray-4 10%, transparent 10.01%);
   }
 
-  .button-disabled();
+  .button-disabled(@palette-gray-5; transparent; @palette-gray-4);
   border-color: @palette-gray-4 !important;
 }
 
@@ -175,7 +175,7 @@
       font-size: @size-font-14;
     }
     svg {
-      .square(@btn-square-size-mini - 10px) !important;
+      .square(@btn-square-size-mini - 12px) !important;
     }
   }
 }
