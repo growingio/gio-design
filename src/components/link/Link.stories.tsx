@@ -23,21 +23,23 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ILinkProps> = (args) => <Link {...args}>GrowingIO</Link>;
+const Template: Story<ILinkProps> = (args) => (
+  <div>
+    <Link {...args}>GrowingIO</Link>
+    <Link {...args} to='https://growingio.com'>GrowingIO</Link>
+    <Link {...args} icon={<FilterOutlined />} to='https://growingio.com' onClick={() => window.alert('被点击')}>GrowingIO</Link>
+  </div>
+  );
 
 export const Default = Template.bind({});
-Default.args = {
-  to: 'https://www.growingio.com',
-  icon: <FilterOutlined />
-};
+Default.args = {};
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  to: 'https://www.growingio.com',
   disabled: true,
 };
+
 export const CustomComponent = Template.bind({});
 CustomComponent.args = {
-  to: 'https://www.growingio.com',
   component: 'span',
 };
