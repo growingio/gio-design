@@ -59,7 +59,7 @@ const SelectOption = (props: OptionProps) => {
       {isMultiple && !allowDuplicate && (
         <>
           <Checkbox checked={isSelected} disabled={disabled} onChange={noop} />
-          <span style={{ width: 10 }} />
+          <span style={{ width: 8 }} />
         </>
       )}
       {props.children}

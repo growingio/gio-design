@@ -59,7 +59,7 @@ class SiderSelectedItem extends React.PureComponent<SiderSelectedItemProps & Con
       >
         {get(item, 'canDrag') !== false && (
           <IconCircle className={classnames({ selected: item.value === props.selected, collapsed: props.collapsed })}>
-            <DragMove className="icon-drag" />
+            <DragMove size='14px' className="icon-drag" />
           </IconCircle>
         )}
 
@@ -78,7 +78,7 @@ class SiderSelectedItem extends React.PureComponent<SiderSelectedItemProps & Con
           })}
           aria-hidden="true"
         >
-          <CloseCircleFilled size="small" color="#5C4E61" />
+          <CloseCircleFilled size="14px" color="#313E75" />
         </span>
       </div>
     );

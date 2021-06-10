@@ -3,15 +3,19 @@
 @icon-circle-color-light: #f1f1fa;
 @icon-circle-color-text: #220968;
 
+.@{list-prefix-cls}-wrapper:hover .icon-drag {
+  display: inline-block;
+}
+
 .pa_sider-selected-item {
   position: relative;
   display: flex;
   align-items: center;
-  height: 40px;
-  padding-left: 20px;
+  height: 36px;
+  padding-left: 34px;
   color: @color-font-list-primary-normal;
   font-size: 14px;
-  line-height: 40px;
+  line-height: 36px;
   background: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -24,8 +28,7 @@
   &__name-wrap {
     position: relative;
     display: inline-block;
-    height: 40px;
-    padding-left: 4px;
+    height: 36px;
   }
 
   &__name {
@@ -99,7 +102,7 @@
     right: 10px;
     display: none;
     width: 12px;
-    height: 40px;
+    height: 36px;
     &.collapsed {
       display: none;
     }
@@ -108,12 +111,11 @@
 
 .pa-sider-icon-circle {
   position: absolute;
-  left: 2px;
+  left: 12px;
   display: inline-block;
-  width: 24px;
-  height: 24px;
-  line-height: 23px;
+  line-height: 24px;
   text-align: center;
+  transform: rotate(90deg);
   cursor: move;
 
   &.hollow {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { unionBy, noop } from 'lodash';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Sortable from './Sortable';
@@ -18,6 +18,10 @@ const DragableList = ({
 }: any) => {
   const prefixCls = usePrefixCls('list', customPrefixCls);
   const [data, setData] = useState(dataSource);
+
+  useEffect(() => {
+    setData(dataSource);
+  }, [dataSource])
 
   const innerHandleSort = (steps: any) => {
     const combineDashbord = unionBy(steps, dataSource, 'value');

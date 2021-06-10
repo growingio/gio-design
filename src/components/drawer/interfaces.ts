@@ -125,6 +125,7 @@ export interface DrawerProps {
   onNext?: () => void;
   nextDisabled?: boolean;
   loading?: boolean;
+  children?: React.ReactNode[] | React.ReactNode;
 }
 
 export interface IDrawerState {

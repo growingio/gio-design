@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 
 import { SizeType } from './SizeContext';
 
@@ -58,16 +58,16 @@ interface ConstructorProps {
   displayName?: string;
 }
 export function withConfigConsumer<ExportProps extends BasicExportProps>(config: ConsumerConfig) {
-  return function withConfigConsumerFunc<ComponentDef>(
+  return function withConfigConsumerFunc(
     Component: IReactComponent
-  ): React.FC<ExportProps> & ComponentDef {
+  ): React.ForwardRefExoticComponent<React.PropsWithoutRef<ExportProps> & React.RefAttributes<unknown>> {
     // Wrap with ConfigConsumer. Since we need compatible with react 15, be care when using ref methods
-    const SFC = ((props: ExportProps) => {
+    const SFC = forwardRef((props: ExportProps, ref) => {
       const { subPrefixCls } = config;
       const { rootPrefixCls, ...restConfigContext } = useContext(ConfigContext);
       const prefixCls = getGioDesignPrefixCls(subPrefixCls, rootPrefixCls);
-      return <Component {...restConfigContext} {...props} prefixCls={prefixCls} />;
-    }) as React.FC<ExportProps> & ComponentDef;
+      return <Component {...restConfigContext} {...props} prefixCls={prefixCls} ref={ref} />;
+    }) as React.ForwardRefExoticComponent<React.PropsWithoutRef<ExportProps> & React.RefAttributes<unknown>>;
 
     const cons: ConstructorProps = Component.constructor as ConstructorProps;
     const name = cons?.displayName || Component.name || 'Component';
