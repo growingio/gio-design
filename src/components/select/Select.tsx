@@ -160,9 +160,6 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     const onFocusChange = (focus: boolean) => {
       if (!disabled) {
         setFocused(focus);
-        if (!focus) {
-          setTempValueFC([]);
-        }
       }
     };
 
@@ -380,6 +377,9 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       // Tab,Esc close dropDown;
       if (event.keyCode === 9 || event.keyCode === 27) {
         optionListRef?.current?.onBlur();
+        // list render in body, when close, should trenfer focus in selectorRef
+        (selectorRef as React.MutableRefObject<any>)?.current?.onFocus();
+        (selectorRef as React.MutableRefObject<any>)?.current?.onBlur();
         visible && onVisibleChange(!visible);
       }
     };
