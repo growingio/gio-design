@@ -136,7 +136,6 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
               switcherIcon={(nodeProps: GioTreeNodeProps) => renderSwitcherIcon(treePrefixCls, switcherIcon, nodeProps)}
               showTreeIcon={false}
               showSearch
-              treeNodeFilterProp='title'
               notFoundContent={mergedNotFound}
               getPopupContainer={getPopupContainer || getContextPopupContainer}
               treeMotion={null}
