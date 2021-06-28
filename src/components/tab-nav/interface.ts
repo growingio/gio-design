@@ -4,7 +4,7 @@ export interface TabNavProps {
    */
   prefixCls?: string;
   className?: string;
-  style?: CSSStyleSheet;
+  style?: React.CSSProperties;
   children?: React.ReactNode;
   /**
    * 标签导航按钮样式
@@ -36,6 +36,7 @@ export interface TabNavItemProps {
   prefixCls?: string;
   children?: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 }

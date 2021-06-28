@@ -18,6 +18,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
     onTabClick,
     activeKey,
     defaultActiveKey = '',
+    style
   } = props;
 
   const [localActiveKey, setLocalActiveKey] = useControlledState<string>(activeKey, defaultActiveKey);
@@ -86,7 +87,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   } , [getRef, localActiveKey]);
 
   return (
-    <div className={classString} ref={setRef(wrapperRefKey.current, ref)}>
+    <div className={classString} ref={setRef(wrapperRefKey.current, ref)} style={style}>
       {tabNavChildren}
       <div className={`${prefixCls}-ink-bar`} style={{ ...inkStyle }} />
     </div>

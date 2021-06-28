@@ -132,6 +132,7 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
               inputIcon={suffixIcon}
               removeIcon={removeIcon}
               clearIcon={clearIcon}
+              treeNodeFilterProp='title'
               switcherIcon={(nodeProps: GioTreeNodeProps) => renderSwitcherIcon(treePrefixCls, switcherIcon, nodeProps)}
               showTreeIcon={false}
               showSearch
