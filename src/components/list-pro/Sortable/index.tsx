@@ -40,7 +40,7 @@ export default class SortableCollection extends React.PureComponent<SortableColl
     if (state.stateChanged) {
       return { ...state, stateChanged: false };
     }
-    return { collection: nextProps.collection };
+    return { collections: nextProps.collection };
   }
 
   private _handleHover = (originalSourcePosition: number, originalTargetPosition: number) => {
@@ -50,9 +50,6 @@ export default class SortableCollection extends React.PureComponent<SortableColl
     const currentSourcePosition = collections.indexOf(source);
     const target = collection[originalTargetPosition];
     const currentTargetPosition = collections.indexOf(target);
-    console.log('====================================');
-    console.log(collection);
-    console.log('====================================');
     if (source) {
       // eslint-disable-next-line react/no-access-state-in-setstate
       const newCollection = [...collections];
