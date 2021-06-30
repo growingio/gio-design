@@ -107,7 +107,7 @@ jobs:
       - name: Build Storybook
         run: yarn build-storybook
       - name: Upload to Chromatic
-        uses: chromaui/action@v1
+        uses: chromaui/action@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_TOKEN }}
