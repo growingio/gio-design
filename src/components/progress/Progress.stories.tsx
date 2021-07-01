@@ -10,6 +10,14 @@ export default {
   title: 'Basic Components/Progress',
   component: Progress,
   decorators: [withDesign],
+  argTypes: {
+    animation: {
+      defaultValue: false,
+    },
+    showInfo: {
+      defaultValue: true,
+    },
+  },
   parameters: {
     design: {
       type: 'figma',
@@ -33,5 +41,5 @@ const Template: Story<ProgressProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   percent: 60,
-  status: "active",
+  status: 'active',
 };

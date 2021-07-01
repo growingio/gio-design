@@ -28,7 +28,7 @@
     overflow: hidden;
     background-color: @progress-trail-bg-color;
     border: 0.5px solid @progress-trail-border-color;
-    border-radius: @radius-border-large;
+    border-radius: 999px;
     box-shadow: inset 0 0 3px @progress-trail-bg-shadow-color;
   }
 
@@ -36,26 +36,13 @@
     position: relative;
     width: 0;
     height: 100%;
-    border-radius: 8px;
+    border-radius: 999px;
     transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
   }
 
   &-active {
     background-color: @progress-active-bg-color;
     box-shadow: inset 0 0 5px @progress-active-bg-shadow-color;
-    &::before {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: #fff;
-      border-radius: 10px;
-      opacity: 0;
-      -webkit-animation: progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
-      animation: progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
-      content: '';
-    }
   }
 
   &-success {
@@ -74,6 +61,22 @@
       margin-top: 1.5px;
       color: @progress-exception-bg-color;
       vertical-align: text-top;
+    }
+  }
+
+  &-animate {
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: #fff;
+      border-radius: 999px;
+      opacity: 0;
+      -webkit-animation: progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+      animation: progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+      content: '';
     }
   }
 
