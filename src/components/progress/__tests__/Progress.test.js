@@ -1,8 +1,8 @@
 import React from 'react';
-import Progress from '../index';
+import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
+import Progress from '../index';
 import '@gio-design/components/es/components/Progress/style/index.css';
-import { shallow, render } from 'enzyme';
 
 describe('<Progress />', () => {
   it('render active progress Component', () => {
@@ -17,6 +17,11 @@ describe('<Progress />', () => {
 
   it('render error progress Component', () => {
     const tree = renderer.create(<Progress percent={1} status="exception" />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('render progress with no info', () => {
+    const tree = renderer.create(<Progress percent={1} status="exception" showInfo={false} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
