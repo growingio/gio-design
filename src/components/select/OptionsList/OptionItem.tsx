@@ -89,6 +89,7 @@ const RenderOption: React.ForwardRefRenderFunction<unknown, OptionProp> = (props
           [`${prefixCls}-list-option-isSelected`]: isSelected,
           [`${prefixCls}-list-option-isHover`]: !disabled && index === activeIndex,
           [`${prefixCls}-list-option-disabled`]: disabled,
+          [`${prefixCls}-list-option-nomargin`]:index === 0
         })}
         onClick={disabled ? undefined : onClick}
         onKeyDown={noop}
