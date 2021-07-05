@@ -107,7 +107,7 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "gio-rewire": "https://github.com/growingio/gio-rewire.git",
-    "husky": "6.0.0",
+    "husky": "7.0.0",
     "jest": "^26.0.1",
     "jest-junit": "^12.0.0",
     "jsdom": "^16.2.2",
