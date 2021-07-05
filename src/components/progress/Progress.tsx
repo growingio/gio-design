@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircleFilled, CloseCircleFilled } from '@gio-design/icons';
+import classNames from 'classnames';
 import { ProgressProps, ProgressStatus } from './interface';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
@@ -12,18 +13,34 @@ const getStatusIcon = (status: string, prefix: string) => {
 };
 
 const Progress: React.FC<ProgressProps> = (props: ProgressProps) => {
-  const { percent, status = 'active', format = defaultFormat, customizePrefixCls } = props;
+  const {
+    percent,
+    status = 'active',
+    format = defaultFormat,
+    customizePrefixCls,
+    animation,
+    className,
+    style,
+    showInfo = true,
+  } = props;
   const prefixCls = usePrefixCls('progress', customizePrefixCls);
 
   return (
     <div className={prefixCls}>
-      <div className={`${prefixCls}-trail`}>
-        <div className={`${prefixCls}-stroke ${prefixCls}-${status}`} style={{ width: `${percent}%` }} />
+      <div className={classNames(`${prefixCls}-trail`, className)} style={style}>
+        <div
+          className={classNames(`${prefixCls}-stroke`, `${prefixCls}-${status}`, {
+            [`${prefixCls}-animate`]: animation,
+          })}
+          style={{ width: `${percent}%` }}
+        />
       </div>
-      <div className={`${prefixCls}-info`}>
-        <span className={`${prefixCls}-text`}>{format(percent)}</span>
-        <span className={`${prefixCls}-icon`}>{getStatusIcon(status, prefixCls)}</span>
-      </div>
+      {showInfo ? (
+        <div className={`${prefixCls}-info`}>
+          <span className={`${prefixCls}-text`}>{format(percent)}</span>
+          <span className={`${prefixCls}-icon`}>{getStatusIcon(status, prefixCls)}</span>
+        </div>
+      ) : null}
     </div>
   );
 };

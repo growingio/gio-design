@@ -95,6 +95,25 @@ exports[`<Progress /> render error progress Component 1`] = `
 </div>
 `;
 
+exports[`<Progress /> render progress with no info 1`] = `
+<div
+  className="gio-progress"
+>
+  <div
+    className="gio-progress-trail"
+  >
+    <div
+      className="gio-progress-stroke gio-progress-exception"
+      style={
+        Object {
+          "width": "1%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
 exports[`<Progress /> render sucess progress Component 1`] = `
 <div
   className="gio-progress"

@@ -18,4 +18,8 @@ export interface ProgressProps {
    */
   format?: (percent?: number) => React.ReactNode;
   customizePrefixCls?: string;
+  animation?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
+  showInfo?: boolean;
 }
