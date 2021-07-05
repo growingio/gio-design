@@ -1,4 +1,4 @@
-## [21.6.3](https://github.com/growingio/gio-design/compare/v21.6.2...v21.6.3) (2021-07-05)
+## [21.7.0](https://github.com/growingio/gio-design/compare/v21.6.2...v21.7.0) (2021-07-05)
 
 
 ### Features
