@@ -18,7 +18,8 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
     onTabClick,
     activeKey,
     defaultActiveKey = '',
-    style
+    style,
+    className,
   } = props;
 
   const [localActiveKey, setLocalActiveKey] = useControlledState<string>(activeKey, defaultActiveKey);
@@ -27,7 +28,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   const [inkStyle, setInkStyle] = useState<React.CSSProperties>({});
 
   const prefixCls = usePrefixCls('tabnav', customizePrefixCls);
-  const classString = classNames(prefixCls, `${prefixCls}-${type}`, {
+  const classString = classNames(prefixCls, `${prefixCls}-${type}`, className, {
     [`${prefixCls}-lg`]: size === 'large',
     [`${prefixCls}-md`]: size === 'middle',
     [`${prefixCls}-sm`]: size === 'small',
@@ -36,8 +37,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
 
   const [tabNavKeys, tabNavChildren] = useMemo(() => {
     const _tabNavKeys: string[] = [];
-    const _tabNavChildren =
-      toArray(children)
+    const _tabNavChildren = toArray(children)
       .filter((node) => React.isValidElement(node) && node.type === TabNav.Item)
       .map((node, index) => {
         const { className, disabled, onClick, ...rest } = node.props;
@@ -84,7 +84,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
       const wrapperLeft = wrapperElement.getBoundingClientRect().left;
       setInkStyle({ left: left - wrapperLeft, width });
     }
-  } , [getRef, localActiveKey]);
+  }, [getRef, localActiveKey]);
 
   return (
     <div className={classString} ref={setRef(wrapperRefKey.current, ref)} style={style}>
@@ -96,7 +96,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
 
 TabNav.Item = React.forwardRef<HTMLDivElement, TabNavItemProps>(({ prefixCls, children, ...rest }, ref) => (
   // eslint-disable-next-line react/jsx-props-no-spreading
-  <div data-testid='tabnav-item' ref={ref} {...rest}>
+  <div data-testid="tabnav-item" ref={ref} {...rest}>
     <div className={`${prefixCls}-item-btn`}>{children}</div>
   </div>
 ));
