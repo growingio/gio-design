@@ -1,4 +1,4 @@
-export type StatusCodeType = 403;
+export type StatusCodeType = 403 | 404 | 500;
 
 export interface PageProps {
   className?: string;
@@ -11,7 +11,10 @@ export interface PageProps {
    * 自定义描述内容
    */
   description: React.ReactNode;
-  cta: {
+  /**
+   * Call to action
+   */
+  cta?: {
     text: string;
     onClick: React.MouseEventHandler<HTMLElement>;
   };
