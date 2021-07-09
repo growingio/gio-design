@@ -5,13 +5,14 @@ module.exports = {
   verbose: true,
   // registers babel.config.js with jest
   transform: {
-    '^.+\\.js$': 'babel-jest',
+    '^.+\\.js(x)?$': 'babel-jest',
+    '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
   },
 
   // explicitly include any node libs using ESM modules
   // "node_modules/?!(<ESM module here>|<another here>|<etc...>)"
   // transformIgnorePatterns: ['node_modules/?!(@gio-design\/icon)', '!(@gio-design/icon)'],
-  transformIgnorePatterns: ['/node_modules/(?!@gio-design/icon).+\\.js$'],
+  transformIgnorePatterns: ['node_modules/@storybook/(?!(addon-docs)/)'],
 
   setupFilesAfterEnv: ['<rootDir>/enzyme-adapter.js'],
 
@@ -32,4 +33,5 @@ module.exports = {
   coverageDirectory: './coverage/',
   coveragePathIgnorePatterns: ['list-pro/'],
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
+  testPathIgnorePatterns: ['/node_modules/', '/es/', '/build/', '/dist/'],
 };

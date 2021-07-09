@@ -3,6 +3,11 @@
 exports[`Testing Avatar should be stable 1`] = `
 <span
   className="gio-avatar gio-avatar-df"
+  style={
+    Object {
+      "backgroundColor": undefined,
+    }
+  }
 >
   <span
     className="gio-avatar-string"
