@@ -9,6 +9,11 @@ exports[`Testing AvatarGroup should be stable 1`] = `
     name="li"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
   >
     <img
       alt="avatar"
@@ -21,6 +26,11 @@ exports[`Testing AvatarGroup should be stable 1`] = `
     name="pan"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
   >
     <span
       className="gio-avatar-string"
@@ -38,6 +48,11 @@ exports[`Testing AvatarGroup should be stable 1`] = `
     name="leng"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
   >
     <img
       alt="avatar"
@@ -50,6 +65,11 @@ exports[`Testing AvatarGroup should be stable 1`] = `
     name="liu"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
   >
     <span
       className="gio-avatar-string"
@@ -64,6 +84,11 @@ exports[`Testing AvatarGroup should be stable 1`] = `
   </span>
   <span
     className="gio-avatar-rest gio-avatar gio-avatar-df"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
   >
     <span
       className="gio-avatar-string"

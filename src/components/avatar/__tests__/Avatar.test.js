@@ -6,6 +6,7 @@ import Dropdown from '../../dropdown';
 import '../../../../es/components/avatar/style/index.css';
 import { waitForComponentToPaint } from '../../../utils/test';
 import image from './icon.jpeg';
+import { PlusCircleFilled } from '@gio-design/icons';
 
 describe('Testing Avatar', () => {
   it('should be stable', () => {
@@ -43,6 +44,10 @@ describe('Testing Avatar', () => {
     expect(mount(<Avatar />).exists('.gio-avatar-df')).toBe(true);
     expect(mount(<Avatar size="large" />).exists('.gio-avatar-lg')).toBe(true);
     expect(mount(<Avatar size="huge" />).exists('.gio-avatar-hg')).toBe(true);
+  });
+
+  test('props icon', () => {
+    expect(mount(<Avatar icon={<PlusCircleFilled />} />).exists('.gio-avatar-icon')).toBe(true);
   });
 
   test('prop droppable', () => {

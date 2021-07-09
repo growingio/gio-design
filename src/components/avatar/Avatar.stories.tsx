@@ -1,5 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { HomeFilled } from '@gio-design/icons';
 import Docs from './Avatar.mdx';
 import Avatar, { AvatarGroup, AvatarGroupProps, AvatarProps } from './index';
 import './style';
@@ -26,6 +27,7 @@ const Template: Story<AvatarProps> = (args) => (
     <Avatar src="错误的链接" {...args}>
       这是一个很长的描述
     </Avatar>
+    <Avatar {...args} icon={<HomeFilled />} />
   </div>
 );
 
@@ -74,7 +76,14 @@ const SizeTemplate: Story<AvatarProps> = (args) => (
 );
 export const Size = SizeTemplate.bind({});
 
-const HoverTemplate: Story<AvatarProps> = (args) => <Avatar src={image} {...args} />;
+const HoverTemplate: Story<AvatarProps> = (args) => (
+  <>
+    <Avatar src={image} {...args} />
+    <Avatar {...args} />
+    <Avatar {...args}>张</Avatar>
+    <Avatar {...args} icon={<HomeFilled />} />
+  </>
+);
 export const Hover = HoverTemplate.bind({});
 Hover.args = {
   droppable: true,

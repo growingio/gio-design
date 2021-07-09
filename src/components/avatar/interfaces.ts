@@ -54,6 +54,21 @@ export interface AvatarProps {
    设置字符，用作用户头像
    */
   children?: string;
+
+  /**
+   圆头像 or 方头像
+   */
+  mode?: 'circle' | 'square';
+
+  /**
+   自定义背景色
+   */
+  backgroundColor?: string;
+
+  /**
+   头像内容是Icon
+   */
+  icon?: React.ReactNode;
 }
 
 export interface UserAvatarType {

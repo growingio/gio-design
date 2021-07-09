@@ -19,6 +19,9 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     prefixCls: customizePrefixCls,
     placement = 'bottom',
     tooltipTitle,
+    mode = 'circle',
+    backgroundColor,
+    icon,
     ...rest
   } = props;
 
@@ -46,13 +49,8 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     [`${prefixCls}-df`]: size === 'default',
     [`${prefixCls}-lg`]: size === 'large',
     [`${prefixCls}-hg`]: size === 'huge',
+    [`${prefixCls}-square`]: mode === 'square',
   });
-  const iconSizeMap: { [K: string]: string } = {
-    small: '10',
-    default: '14',
-    large: '24',
-    huge: '35',
-  };
 
   const childrenStyle: React.CSSProperties = {
     transform: `scale(${scale}) translateX(-50%)`,
@@ -73,10 +71,17 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     if (!!src && isImgExist) {
       return <img alt="avatar" src={src} onError={() => setIsImgExist(false)} />;
     }
+    if (icon) {
+      return (
+        <span className={`${prefixCls}-default ${prefixCls}-icon`}>
+          {icon}
+        </span>
+      );
+    }
     if (!userName) {
       return (
-        <span className={`${prefixCls}-default`}>
-          <UserOutlined color="#fff" size={iconSizeMap[size]} />
+        <span className={`${prefixCls}-default ${prefixCls}-icon`}>
+          <UserOutlined />
         </span>
       );
     }
@@ -103,7 +108,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
   return renderTooltip(
     // For Dropdown trigger will set Event on rest
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <span ref={mergedRef} className={classString} {...rest}>
+    <span ref={mergedRef} className={classString} {...rest} style={{backgroundColor}}>
       {renderMore()}
       {renderAvatar()}
     </span>
