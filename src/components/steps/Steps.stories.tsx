@@ -5,7 +5,7 @@ import Steps, { StepsProps, Step } from '.';
 import Docs from './Steps.mdx';
 import './style';
 import './style/steps.stories.less';
-import { Drawer, Button, Toast, Modal } from '../..';
+import { Button, Toast } from '../..';
 
 export default {
   title: 'Functional Components/Steps',
@@ -24,51 +24,44 @@ export default {
   },
 } as Meta;
 
-const PageStepsTemplate: Story<StepsProps> = (args) => {
+const steps = Array.from({ length: 4 }, (_, i) => ({
+  key: i,
+  title: `Title ${i}`,
+  description: `Description ${i}`,
+}));
+
+const DefaultStepsTemplate: Story<StepsProps> = () => {
   const [current, setCurrent] = React.useState(0);
-  const [finished, setFinished] = React.useState([false, false, false]);
 
   const next = () => {
-    finished[current] = true;
-    setFinished([...finished]);
     setCurrent(current + 1);
   };
   const previous = () => {
     setCurrent(current - 1);
   };
   const done = () => {
-    finished[current] = true;
-    setFinished([...finished]);
     Toast.success('操作成功！');
   };
   return (
-    <div style={{ maxWidth: '1200px' }}>
-      <Steps
-        {...args}
-        current={current}
-        onClick={(stepNumber) => {
-          finished[current] = true;
-          setFinished([...finished]);
-          setCurrent(stepNumber);
-        }}
-      >
-        <Step key="1" title="标题 1" description="描述信息 1" finished={finished[0]} />
-        <Step key="2" title="标题 2" description="描述信息 2" finished={finished[1]} />
-        <Step key="3" title="标题 3" description="描述信息 3" finished={finished[2]} />
+    <div>
+      <Steps current={current}>
+        {steps.map((step) => (
+          <Step key={step.key} title={step.title} description={step.description} />
+        ))}
       </Steps>
-      <div className="steps-content">{`Content ${current + 1}`}</div>
-      <div className="steps-action">
+      <div className="steps-demo-content">{`Content ${current + 1}`}</div>
+      <div className="steps-demo-action">
         {current > 0 && (
           <Button type="secondary" className="previous-btn" onClick={previous}>
             上一步
           </Button>
         )}
-        {current < 2 && (
+        {current < steps.length - 1 && (
           <Button type="primary" className="next-btn" onClick={next}>
             下一步
           </Button>
         )}
-        {current === 2 && (
+        {current === steps.length - 1 && (
           <Button className="done-btn" type="primary" onClick={done}>
             完成
           </Button>
@@ -77,243 +70,110 @@ const PageStepsTemplate: Story<StepsProps> = (args) => {
     </div>
   );
 };
-export const PageSteps = PageStepsTemplate.bind({});
-PageSteps.args = {};
+export const DefaultSteps = DefaultStepsTemplate.bind({});
 
-const SmallModalStepsTemplate: Story<StepsProps> = (args) => {
-  const [visible, setVisible] = React.useState(false);
+/**
+ * 可点击的 Steps
+ */
+const ClickableStepsTemplate: Story<StepsProps> = (args) => {
   const [current, setCurrent] = React.useState(0);
-  const [finished, setFinished] = React.useState([false, false]);
+
+  return (
+    <div>
+      <Steps
+        {...args}
+        current={current}
+        onClick={(stepNumber) => {
+          setCurrent(stepNumber);
+        }}
+      >
+        {steps.map((step) => (
+          <Step key={step.key} title={step.title} description={step.description} />
+        ))}
+      </Steps>
+      <div className="steps-demo-content">{`Content ${current + 1}`}</div>
+    </div>
+  );
+};
+export const ClickableSteps = ClickableStepsTemplate.bind({});
+
+/**
+ * 没有 description 的 Steps
+ */
+const NotDescStepsTemplate: Story<StepsProps> = (args) => {
+  const [current, setCurrent] = React.useState(0);
+
+  return (
+    <div>
+      <Steps
+        {...args}
+        current={current}
+        onClick={(stepNumber) => {
+          setCurrent(stepNumber);
+        }}
+      >
+        {steps.map((step) => (
+          <Step key={step.key} title={step.title} />
+        ))}
+      </Steps>
+      <div className="steps-demo-content">{`Content ${current + 1}`}</div>
+    </div>
+  );
+};
+export const NotDescSteps = NotDescStepsTemplate.bind({});
+
+/**
+ * 自定义 Steps 状态
+ */
+const CustomStateStepsTemplate: Story<StepsProps> = () => {
+  const [current, setCurrent] = React.useState(0);
+  const [finished, setFinished] = React.useState<boolean[]>(Array.from({ length: steps.length }, () => false));
 
   const next = () => {
-    finished[current] = true;
-    setFinished([...finished]);
+    setFinished((oldFinished) => {
+      const newFinished = [...oldFinished];
+      newFinished[current] = true;
+      return newFinished;
+    });
     setCurrent(current + 1);
   };
   const previous = () => {
+    setFinished((oldFinished) => {
+      const newFinished = [...oldFinished];
+      newFinished[current] = true;
+      return newFinished;
+    });
     setCurrent(current - 1);
   };
   const done = () => {
-    finished[current] = true;
-    setFinished([...finished]);
     Toast.success('操作成功！');
   };
-
-  const modalFooter = (
-    <div className="steps-action">
-      {current > 0 && (
-        <Button type="secondary" className="previous-btn" onClick={previous}>
-          上一步
-        </Button>
-      )}
-      {current < 1 && (
-        <Button type="primary" className="next-btn" onClick={next}>
-          下一步
-        </Button>
-      )}
-      {current === 1 && (
-        <Button className="done-btn" type="primary" onClick={done}>
-          完成
-        </Button>
-      )}
+  return (
+    <div>
+      <Steps current={current}>
+        {steps.map((step, index) => (
+          <Step key={step.key} title={step.title} finished={finished[index]} />
+        ))}
+      </Steps>
+      <div className="steps-demo-content">{`Content ${current + 1}`}</div>
+      <div className="steps-demo-action">
+        {current > 0 && (
+          <Button type="secondary" className="previous-btn" onClick={previous}>
+            上一步
+          </Button>
+        )}
+        {current < steps.length - 1 && (
+          <Button type="primary" className="next-btn" onClick={next}>
+            下一步
+          </Button>
+        )}
+        {current === steps.length - 1 && (
+          <Button className="done-btn" type="primary" onClick={done}>
+            完成
+          </Button>
+        )}
+      </div>
     </div>
   );
-
-  return (
-    <>
-      <Button onClick={() => setVisible(true)}>Open Small Modal</Button>
-      <Modal
-        destroyOnClose
-        size="small"
-        visible={visible}
-        title="操 作"
-        onClose={() => {
-          setVisible(false);
-          setCurrent(0);
-          setFinished([false, false]);
-        }}
-        footer={modalFooter}
-      >
-        <div>
-          <Steps
-            {...args}
-            current={current}
-            size="small"
-            type="modal"
-            onClick={(stepNumber) => {
-              finished[current] = true;
-              setFinished([...finished]);
-              setCurrent(stepNumber);
-            }}
-          >
-            <Step key="1" title="标题 1" description="描述信息 1" finished={finished[0]} />
-            <Step key="2" title="标题 2" description="描述信息 2" finished={finished[1]} />
-          </Steps>
-          <div className="steps-content">{`Content ${current + 1}`}</div>
-        </div>
-      </Modal>
-    </>
-  );
 };
-
-export const SmallModalSteps = SmallModalStepsTemplate.bind({});
-SmallModalSteps.args = {};
-
-const MiddleModalStepsTemplate: Story<StepsProps> = (args) => {
-  const [visible, setVisible] = React.useState(false);
-  const [current, setCurrent] = React.useState(0);
-  const [finished, setFinished] = React.useState([false, false, false]);
-
-  const next = () => {
-    finished[current] = true;
-    setFinished([...finished]);
-    setCurrent(current + 1);
-  };
-  const previous = () => {
-    setCurrent(current - 1);
-  };
-  const done = () => {
-    finished[current] = true;
-    setFinished([...finished]);
-    Toast.success('操作成功！');
-  };
-
-  const modalFooter = (
-    <div className="steps-action">
-      {current > 0 && (
-        <Button type="secondary" className="previous-btn" onClick={previous}>
-          上一步
-        </Button>
-      )}
-      {current < 2 && (
-        <Button type="primary" className="next-btn" onClick={next}>
-          下一步
-        </Button>
-      )}
-      {current === 2 && (
-        <Button className="done-btn" type="primary" onClick={done}>
-          完成
-        </Button>
-      )}
-    </div>
-  );
-
-  return (
-    <>
-      <Button onClick={() => setVisible(true)}>Open Middle Modal</Button>
-      <Modal
-        destroyOnClose
-        size="middle"
-        visible={visible}
-        title="操 作"
-        onClose={() => {
-          setVisible(false);
-          setCurrent(0);
-          setFinished([false, false, false]);
-        }}
-        footer={modalFooter}
-      >
-        <div>
-          <Steps
-            {...args}
-            current={current}
-            size="middle"
-            type="modal"
-            onClick={(stepNumber) => {
-              finished[current] = true;
-              setFinished([...finished]);
-              setCurrent(stepNumber);
-            }}
-          >
-            <Step key="1" title="标题 1" description="描述信息 1" finished={finished[0]} />
-            <Step key="2" title="标题 2" description="描述信息 2" finished={finished[1]} />
-            <Step key="3" title="标题 3" description="描述信息 3" finished={finished[2]} />
-          </Steps>
-          <div className="steps-content">{`Content ${current + 1}`}</div>
-        </div>
-      </Modal>
-    </>
-  );
-};
-
-export const MiddleModalSteps = MiddleModalStepsTemplate.bind({});
-MiddleModalSteps.args = {};
-
-const DrawerStepsTemplate: Story<StepsProps> = (args) => {
-  const [visible, setVisible] = React.useState(false);
-  const [current, setCurrent] = React.useState(0);
-  const [finished, setFinished] = React.useState([false, false]);
-  const next = () => {
-    finished[current] = true;
-    setFinished([...finished]);
-    setCurrent(current + 1);
-  };
-  const previous = () => {
-    setCurrent(current - 1);
-  };
-  const done = () => {
-    finished[current] = true;
-    setFinished([...finished]);
-    Toast.success('操作成功！');
-  };
-
-  const drawerFooter = (
-    <div className="steps-action">
-      {current > 0 && (
-        <Button type="secondary" className="previous-btn" onClick={previous}>
-          上一步
-        </Button>
-      )}
-      {current < 1 && (
-        <Button type="primary" className="next-btn" onClick={next}>
-          下一步
-        </Button>
-      )}
-      {current === 1 && (
-        <Button className="done-btn" type="primary" onClick={done}>
-          完成
-        </Button>
-      )}
-    </div>
-  );
-  return (
-    <>
-      <Button type="primary" onClick={() => setVisible(true)}>
-        Open Drawer
-      </Button>
-      <Drawer
-        closable
-        destroyOnClose
-        mask
-        title="操 作"
-        placement="right"
-        visible={visible}
-        footer={drawerFooter}
-        onClose={() => {
-          setVisible(false);
-          setCurrent(0);
-          setFinished([false, false]);
-        }}
-      >
-        <div style={{ width: '100%', height: '100%', padding: '16px' }}>
-          <Steps
-            {...args}
-            current={current}
-            type="drawer"
-            onClick={(stepNumber) => {
-              finished[current] = true;
-              setFinished([...finished]);
-              setCurrent(stepNumber);
-            }}
-          >
-            <Step key="1" title="标题 1" description="描述信息 1" finished={finished[0]} />
-            <Step key="2" title="标题 2" description="描述信息 2" finished={finished[1]} />
-          </Steps>
-          <div className="steps-content">{`Content ${current + 1}`}</div>
-        </div>
-      </Drawer>
-    </>
-  );
-};
-export const DrawerSteps = DrawerStepsTemplate.bind({});
-DrawerSteps.args = {};
+export const CustomStateSteps = CustomStateStepsTemplate.bind({});
