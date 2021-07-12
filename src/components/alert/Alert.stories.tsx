@@ -25,6 +25,8 @@ Default.args = {
 
   children: (
     <div>
+      <Alert description="default" />
+      <br />
       <Alert type="info" size="middle" description="info" showIcon />
       <br />
       <Alert type="success" size="small" description="success" closeable onClose={action('我被关闭了')} />
