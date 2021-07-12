@@ -16,9 +16,8 @@ const Meta = ({
   const prefixCls = usePrefixCls('card-meta');
 
   const renderImage = () => {
-    if(isUndefined(image)) return undefined;
-    if(isString(image)) return <img src={image} className={`${prefixCls}-image`} alt="" />;
-    return React.cloneElement(image, { className: classNames(`${prefixCls}-image`, image.props.className) });
+    if(isString(image)) return isUndefined(image) ? undefined : <img src={image} className={`${prefixCls}-image`} alt="" />;
+    return isUndefined(image) ? undefined : React.cloneElement(image, { className: classNames(`${prefixCls}-image`, image.props.className) });
   }
 
   const renderDetail = () => {
