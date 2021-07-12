@@ -86,6 +86,7 @@ export interface CheckboxProps {
   /**
    指定的选中项
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value?: any;
   children?: React.ReactNode;
   /**
