@@ -21,13 +21,9 @@ const Step: React.FC<StepProps> = (props) => {
         icon = <CheckCircleOutlined size="24px" color={tokens.PaletteBlue5} />;
       }
     } else {
-      icon = <div className={`${prefixCls}__item-icon`}>{_.isNumber(stepNumber) ? stepNumber + 1 : -1}</div>;
+      icon = <div className={`${prefixCls}__item-icon`}>{stepNumber! + 1}</div>;
     }
     return icon;
-  };
-
-  const onClick = () => {
-    if (_.isFunction(onStepClick)) onStepClick(_.isNumber(stepNumber) ? stepNumber : -1);
   };
 
   let clickableProps: {
@@ -41,7 +37,9 @@ const Step: React.FC<StepProps> = (props) => {
       ...clickableProps,
       role: 'button',
       tabIndex: 0,
-      onClick,
+      onClick: () => {
+        onStepClick(stepNumber!);
+      },
     };
   }
 
