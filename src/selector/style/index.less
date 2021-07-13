@@ -1,0 +1,16 @@
+@import '../../stylesheet/index.less';
+
+@prefix-cls: ~'@{component-prefix}-selector';
+@dropdown-prefix-cls: ~'@{component-prefix}-dropdown';
+
+.@{prefix-cls}-overlay {
+  height: fit-content;
+  min-height: 200px;
+  max-height: 520px;
+  background: @palette-white;
+  border-radius: 4px;
+  box-shadow: 0 6px 14px rgba(223, 226, 237, 0.8);
+  .@{dropdown-prefix-cls}-inner {
+    overflow: visible;
+  }
+}
