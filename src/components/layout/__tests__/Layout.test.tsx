@@ -6,7 +6,7 @@ import useSiders from '../useSiders';
 
 describe('Testing Layout', () => {
   it('should be stable', () => {
-    const { asFragment } = render(
+    const { container } = render(
       <Layout>
         <Layout.Sider defaultCollapsed />
         <Layout>
@@ -18,7 +18,7 @@ describe('Testing Layout', () => {
         </Layout>
       </Layout>
     );
-    expect(asFragment()).toMatchSnapshot();
+    expect(container.getElementsByClassName('gio-layout')).toHaveLength(2);
   });
 
   test('Content maxWidth', () => {
