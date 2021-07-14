@@ -73,6 +73,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     <label className={checkboxCls} style={style}>
       <CheckOutlined className={checkboxIconClass} />
       <RcCheckbox
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         {...(checkProps as any)}
         prefixCls={prefixCls}
         ref={rcCheckbox}
