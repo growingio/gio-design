@@ -1,21 +1,23 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import TabNav from '../index';
 
 describe('Testing TabNav', () => {
   const getTabNav = (args?: unknown) => (
     <TabNav {...args}>
-      <TabNav.Item key='1'>111</TabNav.Item>
-      <TabNav.Item key='2'>222</TabNav.Item>
-      <TabNav.Item key='3'>333</TabNav.Item>
-      <TabNav.Item key='4' disabled>444</TabNav.Item>
+      <TabNav.Item key="1">111</TabNav.Item>
+      <TabNav.Item key="2">222</TabNav.Item>
+      <TabNav.Item key="3">333</TabNav.Item>
+      <TabNav.Item key="4" disabled>
+        444
+      </TabNav.Item>
     </TabNav>
   );
-    
+
   it('should be stable', () => {
-    const { asFragment } = render(getTabNav());
-    expect(asFragment()).toMatchSnapshot();
+    render(getTabNav());
+    expect(screen.getAllByText(/[1-4]{3}/)).toHaveLength(4);
   });
 
   it('will be changed after click', () => {
@@ -32,7 +34,7 @@ describe('Testing TabNav', () => {
       const { rerender, unmount } = render(getTabNav());
       rerender(getTabNav({ type: 'line' }));
       rerender(getTabNav({ size: 'small' }));
-      unmount()
+      unmount();
     }).not.toThrow();
   });
 
@@ -53,7 +55,7 @@ describe('Testing TabNav', () => {
   });
 
   test('prop defaultActiveKey', () => {
-    const { container } = render(getTabNav({ defaultActiveKey: '2'}));
+    const { container } = render(getTabNav({ defaultActiveKey: '2' }));
     expect(container.getElementsByClassName('gio-tabnav-item-active')[0].textContent).toBe('222');
   });
 
@@ -63,7 +65,7 @@ describe('Testing TabNav', () => {
     rerender(getTabNav({ activeKey: '2' }));
     expect(container.getElementsByClassName('gio-tabnav-item-active')[0].textContent).toBe('222');
     // be controlled, not work
-    fireEvent.click(getByText('111'))
+    fireEvent.click(getByText('111'));
     expect(container.getElementsByClassName('gio-tabnav-item-active')[0].textContent).toBe('222');
   });
 
@@ -73,10 +75,14 @@ describe('Testing TabNav', () => {
     const onClick = jest.fn();
     const { getByText } = render(
       <TabNav onChange={onChange} onTabClick={onTabClick}>
-        <TabNav.Item onClick={onClick} key='1'>111</TabNav.Item>
-        <TabNav.Item key='2'>222</TabNav.Item>
-        <TabNav.Item key='3'>333</TabNav.Item>
-        <TabNav.Item key='4' disabled>444</TabNav.Item>
+        <TabNav.Item onClick={onClick} key="1">
+          111
+        </TabNav.Item>
+        <TabNav.Item key="2">222</TabNav.Item>
+        <TabNav.Item key="3">333</TabNav.Item>
+        <TabNav.Item key="4" disabled>
+          444
+        </TabNav.Item>
       </TabNav>
     );
     fireEvent.click(getByText('111'));
@@ -93,11 +99,15 @@ describe('Testing TabNav', () => {
     const onTabClick = jest.fn();
     const onClick = jest.fn();
     const { getByText } = render(
-      <TabNav onChange={onChange} onTabClick={onTabClick} defaultActiveKey='2'>
-        <TabNav.Item onClick={onClick} disabled key='1'>111</TabNav.Item>
-        <TabNav.Item key='2'>222</TabNav.Item>
-        <TabNav.Item key='3'>333</TabNav.Item>
-        <TabNav.Item key='4' disabled>444</TabNav.Item>
+      <TabNav onChange={onChange} onTabClick={onTabClick} defaultActiveKey="2">
+        <TabNav.Item onClick={onClick} disabled key="1">
+          111
+        </TabNav.Item>
+        <TabNav.Item key="2">222</TabNav.Item>
+        <TabNav.Item key="3">333</TabNav.Item>
+        <TabNav.Item key="4" disabled>
+          444
+        </TabNav.Item>
       </TabNav>
     );
     fireEvent.click(getByText('111'));
@@ -105,8 +115,7 @@ describe('Testing TabNav', () => {
     expect(onChange).not.toHaveBeenCalled();
     expect(onTabClick).not.toHaveBeenCalled();
     expect(onClick).not.toHaveBeenCalled();
-  })
-
+  });
 
   it('should be render rightly', () => {
     const { container } = render(getTabNav());
