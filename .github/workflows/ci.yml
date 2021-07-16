@@ -4,6 +4,7 @@ on:
     types: [opened, synchronize]
 jobs:
   install:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     name: Install dependencies
     runs-on: ubuntu-latest
     steps:
@@ -85,36 +86,6 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           directory: ./coverage/
-  ui_test:
-    name: UI test
-    if: ${{ !github.event.pull_request.head.repo.fork }}
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.2.0
-        with:
-          node-version: 12
-      - name: Restore Node.js modules
-        uses: actions/cache@v2.1.6
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Build Storybook
-        run: yarn build-storybook
-      - name: Upload to Chromatic
-        uses: chromaui/action@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
-          storybookBuildDir: storybook-static/
-          exitZeroOnChanges: true
-          exitOnceUploaded: true
-          allowConsoleErrors: true
   build:
     name: Build package
     needs: install

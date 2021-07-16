@@ -1,10 +1,9 @@
 name: Greetings
 
-on: [pull_request, issues]
+on: [issues]
 
 jobs:
   greeting:
-    if: ${{ !github.event.pull_request.head.repo.fork }}
     runs-on: ubuntu-latest
     steps:
       - name: Say Hello
@@ -12,4 +11,3 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           issue-message: 'Hey, thank you for opening your first Issue ! 🙂'
-          pr-message: 'Hey, thank you for opening your Pull Request !'

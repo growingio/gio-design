@@ -1,0 +1,17 @@
+coverage:
+  status:
+    patch:
+      default:
+        threshold: 0.0
+    project:
+      default:
+        threshold: 0.0
+github_checks:
+  annotations: true
+parsers:
+  gcov:
+    branch_detection:
+      conditional: true
+      loop: true
+      macro: true
+      method: true

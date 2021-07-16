@@ -1,0 +1,65 @@
+name: Dependabot
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+jobs:
+  install:
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    name: Install dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: 14
+      - name: Cache Node.js modules
+        id: cache-node-modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install
+        if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
+        run: yarn install
+  build:
+    name: Build package
+    needs: install
+    strategy:
+      matrix:
+        node_version: [10, 12, 14]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: ${{ matrix.node_version }}
+      - name: Restore Node.js modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Build
+        run: yarn build
+  unit_test:
+    name: Unit test
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: 14
+      - name: Restore Node.js modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Test
+        run: yarn test
