@@ -69,7 +69,7 @@ describe('Steps', () => {
       </Steps>
     );
     wrapper.find('.gio-steps__item-container').at(1).simulate('click');
-    expect(onClick).toHaveBeenCalledWith(1);
+    expect(onClick).toHaveBeenCalled()
   });
 
   it('current', () => {
