@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Tabs, { TabPane } from '../index';
 
 describe('Testing Tabs', () => {
@@ -21,8 +21,8 @@ describe('Testing Tabs', () => {
   );
 
   it('should be stable', () => {
-    const { asFragment } = render(getTabs());
-    expect(asFragment()).toMatchSnapshot();
+    render(getTabs());
+    expect(screen.getAllByText(/[1-4]{3}/)).toHaveLength(4);
   });
 
   it('will be changed after click', () => {
@@ -31,14 +31,14 @@ describe('Testing Tabs', () => {
     fireEvent.click(getByText('全部'));
     expect(container.getElementsByClassName('gio-tabnav-item-active')[0].textContent).toBe('全部');
     expect(container.getElementsByClassName('gio-tabs-tabpane-active')[0].textContent).toBe('222');
-  })
+  });
 
   it('should be mount, setProps, unmount with no error', () => {
     expect(() => {
       const { rerender, unmount } = render(getTabs());
       rerender(getTabs({ type: 'line' }));
       rerender(getTabs({ size: 'small' }));
-      unmount()
+      unmount();
     }).not.toThrow();
   });
 
@@ -59,7 +59,7 @@ describe('Testing Tabs', () => {
   });
 
   test('prop defaultActiveKey', () => {
-    const { container } = render(getTabs({ defaultActiveKey: '1' }))
+    const { container } = render(getTabs({ defaultActiveKey: '1' }));
     expect(container.getElementsByClassName('gio-tabnav-item-active')[0].textContent).toBe('全部');
   });
 
@@ -115,15 +115,9 @@ describe('Testing Tabs', () => {
   it('will use map index if not set key to tabpane', () => {
     const { container } = render(
       <Tabs defaultActiveKey="1">
-        <TabPane tab="我的">
-          111
-        </TabPane>
-        <TabPane tab="全部">
-          222
-        </TabPane>
-        <TabPane tab="共享">
-          333
-        </TabPane>
+        <TabPane tab="我的">111</TabPane>
+        <TabPane tab="全部">222</TabPane>
+        <TabPane tab="共享">333</TabPane>
         <TabPane disabled tab="预置">
           444
         </TabPane>
@@ -131,5 +125,5 @@ describe('Testing Tabs', () => {
     );
     expect(container.getElementsByClassName('gio-tabnav-item-active')[0].textContent).toBe('全部');
     expect(container.getElementsByClassName('gio-tabs-tabpane-active')[0].textContent).toBe('222');
-  })
+  });
 });
