@@ -38,7 +38,7 @@ const Step: React.FC<StepProps> = (props) => {
       role: 'button',
       tabIndex: 0,
       onClick: () => {
-        onStepClick(stepNumber + 1);
+        onStepClick(stepNumber);
       },
     };
   }
