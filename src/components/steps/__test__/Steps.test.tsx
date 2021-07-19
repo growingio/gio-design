@@ -4,8 +4,9 @@ import Steps, { Step } from '..';
 
 describe('Testing steps', () => {
   it('basic steps of no children', () => {
-    // @ts-ignore
-    const wrapper = render(<Steps />);
+    const wrapper = render(<Steps>
+      {null}
+    </Steps>);
     expect(wrapper).toMatchSnapshot();
   });
 

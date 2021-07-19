@@ -63,7 +63,12 @@ const Action: React.FC<ActionProps> = (props) => {
   )
 }
 
-const Content: React.FC<Pick<ActionProps, 'current'>> = (props) => (<div className="steps-demo-content">{`Content ${props.current + 1}`}</div>)
+const Content: React.FC<Pick<ActionProps, 'current'>> = (props) => {
+  const { current } = props
+  return (
+    <div className="steps-demo-content">{`Content ${current + 1}`}</div>
+  )
+}
 
 const DefaultStepsTemplate: Story<StepsProps> = () => {
   const [current, setCurrent] = React.useState(0);
