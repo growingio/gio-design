@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { CheckCircleOutlined, CheckCircleFilled } from '@gio-design/icons';
 import * as tokens from '@gio-design/tokens';
-import _ from 'lodash';
+import { isFunction, isNil } from 'lodash';
 import { StepProps } from './interface';
 
 const Step: React.FC<StepProps> = (props) => {
@@ -21,7 +21,7 @@ const Step: React.FC<StepProps> = (props) => {
         icon = <CheckCircleOutlined size="24px" color={tokens.PaletteBlue5} />;
       }
     } else {
-      icon = <div className={`${prefixCls}__item-icon`}>{stepNumber! + 1}</div>;
+      icon = <div className={`${prefixCls}__item-icon`}>{isNil(stepNumber) ? 0 : stepNumber + 1}</div>;
     }
     return icon;
   };
@@ -32,13 +32,13 @@ const Step: React.FC<StepProps> = (props) => {
     onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   } = {};
 
-  if (_.isFunction(onStepClick)) {
+  if (isFunction(onStepClick)) {
     clickableProps = {
       ...clickableProps,
       role: 'button',
       tabIndex: 0,
       onClick: () => {
-        onStepClick(stepNumber!);
+        onStepClick(isNil(stepNumber) ? 0 : stepNumber + 1);
       },
     };
   }

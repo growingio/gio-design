@@ -24,11 +24,46 @@ export default {
   },
 } as Meta;
 
+
+
 const steps = Array.from({ length: 4 }, (_, i) => ({
   key: i,
   title: `Title ${i}`,
   description: `Description ${i}`,
 }));
+
+
+interface ActionProps {
+  previous: () => void
+  next: () => void
+  done: () => void
+  current: number
+}
+
+const Action: React.FC<ActionProps> = (props) => {
+  const { previous, next, done, current } = props
+  return (
+    <div className="steps-demo-action">
+      {current > 0 && (
+        <Button type="secondary" className="previous-btn" onClick={previous}>
+          上一步
+        </Button>
+      )}
+      {current < steps.length - 1 && (
+        <Button type="primary" className="next-btn" onClick={next}>
+          下一步
+        </Button>
+      )}
+      {current === steps.length - 1 && (
+        <Button className="done-btn" type="primary" onClick={done}>
+          完成
+        </Button>
+      )}
+    </div>
+  )
+}
+
+const Content: React.FC<Pick<ActionProps, 'current'>> = (props) => (<div className="steps-demo-content">{`Content ${props.current + 1}`}</div>)
 
 const DefaultStepsTemplate: Story<StepsProps> = () => {
   const [current, setCurrent] = React.useState(0);
@@ -49,24 +84,8 @@ const DefaultStepsTemplate: Story<StepsProps> = () => {
           <Step key={step.key} title={step.title} description={step.description} />
         ))}
       </Steps>
-      <div className="steps-demo-content">{`Content ${current + 1}`}</div>
-      <div className="steps-demo-action">
-        {current > 0 && (
-          <Button type="secondary" className="previous-btn" onClick={previous}>
-            上一步
-          </Button>
-        )}
-        {current < steps.length - 1 && (
-          <Button type="primary" className="next-btn" onClick={next}>
-            下一步
-          </Button>
-        )}
-        {current === steps.length - 1 && (
-          <Button className="done-btn" type="primary" onClick={done}>
-            完成
-          </Button>
-        )}
-      </div>
+      <Content current={current} />
+      <Action previous={previous} next={next} done={done} current={current} />
     </div>
   );
 };
@@ -91,7 +110,7 @@ const ClickableStepsTemplate: Story<StepsProps> = (args) => {
           <Step key={step.key} title={step.title} description={step.description} />
         ))}
       </Steps>
-      <div className="steps-demo-content">{`Content ${current + 1}`}</div>
+      <Content current={current} />
     </div>
   );
 };
@@ -116,7 +135,7 @@ const NotDescStepsTemplate: Story<StepsProps> = (args) => {
           <Step key={step.key} title={step.title} />
         ))}
       </Steps>
-      <div className="steps-demo-content">{`Content ${current + 1}`}</div>
+      <Content current={current} />
     </div>
   );
 };
@@ -129,20 +148,18 @@ const CustomStateStepsTemplate: Story<StepsProps> = () => {
   const [current, setCurrent] = React.useState(0);
   const [finished, setFinished] = React.useState<boolean[]>(Array.from({ length: steps.length }, () => false));
 
+  const setFinishedFunc = (value: boolean[]) => {
+    const newFinished = [...value];
+    newFinished[current] = true;
+    return newFinished;
+  }
+
   const next = () => {
-    setFinished((oldFinished) => {
-      const newFinished = [...oldFinished];
-      newFinished[current] = true;
-      return newFinished;
-    });
+    setFinished(setFinishedFunc);
     setCurrent(current + 1);
   };
   const previous = () => {
-    setFinished((oldFinished) => {
-      const newFinished = [...oldFinished];
-      newFinished[current] = true;
-      return newFinished;
-    });
+    setFinished(setFinishedFunc);
     setCurrent(current - 1);
   };
   const done = () => {
@@ -155,24 +172,8 @@ const CustomStateStepsTemplate: Story<StepsProps> = () => {
           <Step key={step.key} title={step.title} finished={finished[index]} />
         ))}
       </Steps>
-      <div className="steps-demo-content">{`Content ${current + 1}`}</div>
-      <div className="steps-demo-action">
-        {current > 0 && (
-          <Button type="secondary" className="previous-btn" onClick={previous}>
-            上一步
-          </Button>
-        )}
-        {current < steps.length - 1 && (
-          <Button type="primary" className="next-btn" onClick={next}>
-            下一步
-          </Button>
-        )}
-        {current === steps.length - 1 && (
-          <Button className="done-btn" type="primary" onClick={done}>
-            完成
-          </Button>
-        )}
-      </div>
+      <Content current={current} />
+      <Action previous={previous} next={next} done={done} current={current} />
     </div>
   );
 };
