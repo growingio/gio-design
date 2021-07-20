@@ -76,9 +76,13 @@ const defautItem = () => 'Content';
 const InputTriggerTemplate: Story<InputTriggerProps> = (args) => (
   <div>
     <InputTrigger {...args} itemRender={undefinedItem} suffix={<DownFilled />} />
+    <br />
     <InputTrigger {...args} actived itemRender={undefinedItem} suffix={<UpFilled />} />
+    <br />
     <InputTrigger {...args} disabled itemRender={undefinedItem} suffix={<DownFilled />} />
+    <br />
     <InputTrigger {...args} itemRender={defautItem} suffix={<CloseCircleFilled />} />
+    <br />
     <InputTrigger {...args} itemRender={defautItem} suffix={<DownFilled />} fitContent />
   </div>
 );

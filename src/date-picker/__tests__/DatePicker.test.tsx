@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Default, DisabledDate } from '../DatePicker.stories';
+import { Basic, DisabledDate } from '../DatePicker.stories';
 
 describe('DatePicker', () => {
   beforeAll(() => {
@@ -15,7 +15,7 @@ describe('DatePicker', () => {
 
   it('render with default', () => {
     const handleOnSelect = jest.fn();
-    render(<Default {...Default.args} onSelect={handleOnSelect} />);
+    render(<Basic {...Basic.args} onSelect={handleOnSelect} />);
     expect(screen.getAllByText(20)).toHaveLength(1);
     fireEvent.click(screen.getByText(20));
     expect(handleOnSelect).toHaveBeenCalledWith(new Date());

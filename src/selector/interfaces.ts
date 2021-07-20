@@ -41,7 +41,7 @@ export interface InputTriggerProps extends CommonProps {
 export interface SelectorProps
   extends CommonProps,
     Omit<InputTriggerProps, 'className' | 'style'>,
-    Omit<DropdownProps, 'trigger' | 'placement' | 'prefixCls'> {
+    Omit<DropdownProps, 'trigger' | 'placement' | 'prefixCls' | 'children'> {
   /**
    * 触发器自定义的 `className`
    */

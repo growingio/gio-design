@@ -1,6 +1,7 @@
 @import '../../stylesheet/index.less';
 
 @prefix-cls: ~'@{component-prefix}-input-trigger';
+@icon-prefix-cls: 'gio-icon';
 
 .@{prefix-cls} {
   position: relative;
@@ -8,7 +9,7 @@
   height: 36px;
   padding: 0 32px 0 16px;
   background: @palette-white;
-  border: 1px solid @color-border-input-normal;
+  border: 1px solid @palette-gray-4;
   border-radius: 4px;
 
   &--fit-content {
@@ -21,7 +22,7 @@
   }
 
   &:not(&--disabled):hover {
-    border-color: @color-border-input-hover;
+    border-color: @palette-blue-5;
   }
 
   &--borderless,
@@ -36,7 +37,7 @@
 
   &:not(&--disabled):active,
   &--actived:not(&--disabled) {
-    border-color: @color-border-input-active;
+    border-color: @palette-blue-3;
   }
 
   &__item,
@@ -89,5 +90,9 @@
     height: 16px;
     margin-top: -8px;
     color: @palette-black-3;
+
+    span[aria-label='close-circle-filled'] {
+      color: @palette-black-6;
+    }
   }
 }
