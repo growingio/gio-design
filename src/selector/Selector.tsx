@@ -7,6 +7,7 @@ import InputTrigger from './InputTrigger';
 import { SelectorProps } from './interfaces';
 
 function Selector({
+  actived,
   borderless,
   disabled,
   fitContent,
@@ -65,6 +66,7 @@ function Selector({
         }}
       >
         <InputTrigger
+          actived={actived}
           borderless={borderless}
           disabled={disabled}
           fitContent={fitContent}
