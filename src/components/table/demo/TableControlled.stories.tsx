@@ -1,10 +1,9 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useState } from 'react';
 import { SortOrder } from '../interface';
 import Table from '../index';
 
-
 const dataSource = Array.from({ length: 1000 }, (_, key) => ({ a: key, b: key, c: key, d: key }));
-
 
 const ControlledTable = () => {
   const [sortOrder, setSortOrder] = useState<SortOrder>(null);
@@ -16,14 +15,14 @@ const ControlledTable = () => {
       dataIndex: 'a',
       key: 'a',
       sorter: (a: any, b: any) => a.a - b.a,
-      sortOrder
+      sortOrder,
     },
     {
       title: 'B',
       dataIndex: 'b',
       key: 'b',
       sorter: (a: any, b: any) => a.a - b.a,
-      sortOrder: sortOrder2
+      sortOrder: sortOrder2,
     },
     {
       title: 'C',
@@ -53,19 +52,25 @@ const ControlledTable = () => {
       dataSource={dataSource}
       columns={columns}
       onChange={(p, s, f) => {
-        if(s?.key === 'a') {
+        // @ts-ignore
+        if (s?.key === 'a') {
+          // @ts-ignore
           setSortOrder(s.sortOrder);
         }
-        if(s?.key === 'b') {
+        // @ts-ignore
+        if (s?.key === 'b') {
+          // @ts-ignore
           setSortOrder2(s.sortOrder);
         }
-        if(f.c) {
-          setFilters(f.c)
+        // @ts-ignore
+        if (f.c) {
+          // @ts-ignore
+          setFilters(f.c);
         }
       }}
-     />
-  )
-}
+    />
+  );
+};
 
 // eslint-disable-next-line import/prefer-default-export
 export { ControlledTable };
