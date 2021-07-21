@@ -11,7 +11,7 @@ const columns = [
     dataIndex: 'name',
     key: 'name',
     filters: ['名字俩字', '名字仨字'],
-    onFilter: (value, record) => {
+    onFilter: (value: string, record: { name: string | any[] }) => {
       if (value === '名字俩字') {
         return record.name.length === 2;
       }
@@ -30,7 +30,7 @@ const columns = [
         dataIndex: 'age',
         key: 'age',
         filters: ['小孩子', '大人'],
-        onFilter: (value, record) => {
+        onFilter: (value: string, record: { age: number }) => {
           if (value === '小孩子') {
             return record.age <= 22;
           }
@@ -56,24 +56,28 @@ const dataSource = [
     name: '胡彦斌',
     age: 32,
     weight: 70,
+    height: 180,
   },
   {
     key: '2',
     name: '胡彦祖',
     age: 42,
     weight: 60,
+    height: 170,
   },
   {
     key: '3',
     name: '航航',
     age: 18,
     weight: 70,
+    height: 200,
   },
   {
     key: '4',
     name: '屁屁',
     age: 22,
     weight: 60,
+    height: 210,
   },
 ];
 
@@ -106,21 +110,25 @@ describe('Testing Table Filter', () => {
     act(() => {
       newUpdateFilterStates({
         ...filterState2,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         filteredKeys: [60],
       });
     });
     expect(result.current[2].length).toBe(1);
   });
 
-
   test('object data type', () => {
     const onClick = jest.fn();
     const { getByText, getAllByRole, container } = render(
-      <FilterPopover 
-        prefixCls='gio-table'
+      <FilterPopover
+        prefixCls="gio-table"
         values={[]}
         onClick={onClick}
-        filters={[{ label: '第一项', value: '1'}, { label: '第二项', value: '2'}]}
+        filters={[
+          { label: '第一项', value: '1' },
+          { label: '第二项', value: '2' },
+        ]}
       >
         <span>trigger</span>
       </FilterPopover>
@@ -138,7 +146,7 @@ describe('Testing Table Filter', () => {
     fireEvent.click(getByText('trigger'));
     expect(container.getElementsByClassName('gio-checkbox-checked')).toBeTruthy();
   });
-  
+
   it('should re-collect states, after columns update', () => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { result, rerender } = renderHook(({ columns, dataSource }) => useFilter(columns, dataSource), {
@@ -148,7 +156,8 @@ describe('Testing Table Filter', () => {
     act(() => {
       rerender({
         columns: cloneDeep(columns).map((column) => {
-          column.key = `#${  column.key}`;
+          // eslint-disable-next-line no-param-reassign
+          column.key = `#${column.key}`;
           return column;
         }),
         dataSource,
@@ -157,5 +166,56 @@ describe('Testing Table Filter', () => {
 
     const [newSortStates] = result.current;
     expect(isEqual(oldSortStates, newSortStates)).toBe(false);
+  });
+
+  it('no column to filter', () => {
+    const filterStates = collectFilterStates();
+    expect(filterStates.length).toEqual(0);
+  });
+
+  it('filter with default filtered', () => {
+    const column = [
+      {
+        title: '姓名',
+        dataIndex: 'name',
+        key: 'name',
+      },
+      {
+        title: '身高',
+        dataIndex: 'height',
+        key: 'height',
+        filters: ['两米以下', '两米以上'],
+        onFilter: (value: string, record: { height: number }) => {
+          if (value === '两米以下') {
+            return record.height < 200;
+          }
+          if (value === '两米以上') {
+            return record.height >= 200;
+          }
+          return false;
+        },
+        defaultFilteredValue: ['两米以下'],
+        filteredValue: ['两米以下'],
+      },
+    ];
+    const dataSourse = [
+      {
+        key: '1',
+        name: '胡彦斌',
+        height: 180,
+      },
+      {
+        key: '2',
+        name: '胡彦祖',
+        height: 210,
+      },
+    ];
+    const { result } = renderHook(() => useFilter(column, dataSourse));
+    const [filterStates, updateFilterStates, filtedData] = result.current;
+    updateFilterStates({
+      ...filterStates[0],
+      filteredKeys: ['两米以下'],
+    });
+    expect(filtedData.length).toEqual(1);
   });
 });
