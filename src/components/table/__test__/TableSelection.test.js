@@ -1,27 +1,29 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
 import { renderHook, act as hookACT } from '@testing-library/react-hooks';
+import { act } from 'react-dom/test-utils';
+import { mount } from 'enzyme';
 import useSelection, { getRowKey } from '../hook/useSelection';
 import Table from '../index';
+import { waitForComponentToPaint } from '../../../utils/test';
 
 const columns = [
   {
     title: '姓名',
     dataIndex: 'name',
     key: 'name',
-    sorter: (a: { name: string | any[] }, b: { name: string | any[] }) => a.name.length - b.name.length,
+    sorter: (a, b) => a.name.length - b.name.length,
   },
   {
     title: '年龄',
     dataIndex: 'age',
     key: 'age',
-    sorter: (a: { age: number }, b: { age: number }) => a.age - b.age,
+    sorter: (a, b) => a.age - b.age,
   },
   {
     title: '体重',
     dataIndex: 'weight',
     key: 'weight',
-    sorter: (a: { weight: number }, b: { weight: number }) => a.weight - b.weight,
+    sorter: (a, b) => a.weight - b.weight,
     sortPriorityOrder: 2,
   },
 ];
@@ -73,32 +75,62 @@ describe('Testing Table rowSelection', () => {
 
   test('onChange prop', async () => {
     const onChange = jest.fn();
-    const { container } = render(
+    const wrapper = mount(
       <Table dataSource={dataSource} columns={columns} pagination={false} rowSelection={{ onChange }} />
     );
-    expect(container.getElementsByClassName('gio-checkbox-checked')).toHaveLength(0);
-    fireEvent.click(container.getElementsByClassName('gio-checkbox-input')[0]);
-
-    expect(container.getElementsByClassName('gio-checkbox-checked')).toHaveLength(dataSource.length + 1);
-    fireEvent.click(container.getElementsByClassName('gio-checkbox-input')[0]);
-    fireEvent.click(container.getElementsByClassName('gio-checkbox-input')[1]);
-    expect(container.getElementsByClassName('gio-checkbox-checked')).toHaveLength(2);
-
-    fireEvent.click(container.getElementsByClassName('gio-checkbox-input')[1]);
+    expect(wrapper.find('.gio-checkbox-checked')).toHaveLength(0);
+    act(() => {
+      wrapper
+        .find('.gio-checkbox-input')
+        .at(0)
+        .simulate('change', { target: { checked: true } });
+    });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.find('.gio-checkbox-checked')).toHaveLength(dataSource.length + 1);
+    act(() => {
+      wrapper
+        .find('.gio-checkbox-input')
+        .at(0)
+        .simulate('change', { target: { checked: false } });
+    });
+    act(() => {
+      wrapper
+        .find('.gio-checkbox-input')
+        .at(1)
+        .simulate('change', { target: { checked: true } });
+    });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.find('.gio-checkbox-checked')).toHaveLength(2);
+    act(() => {
+      wrapper
+        .find('.gio-checkbox-input')
+        .at(1)
+        .simulate('change', { target: { checked: false } });
+    });
     expect(onChange).toBeCalledTimes(4);
   });
 
   test('getCheckboxProps prop', async () => {
-    const getCheckboxProps = (record: { key: string }) => ({ disabled: record.key === '1' });
-    const { container } = render(
+    const getCheckboxProps = (record) => ({ disabled: record.key === '1' });
+    const wrapper = mount(
       <Table dataSource={dataSource} columns={columns} pagination={false} rowSelection={{ getCheckboxProps }} />
     );
-    fireEvent.click(container.getElementsByClassName('gio-checkbox-input')[1]);
-
-    expect(container.getElementsByClassName('gio-checkbox-checked')).toHaveLength(0);
-    fireEvent.click(container.getElementsByClassName('gio-checkbox-input')[0]);
-
-    expect(container.getElementsByClassName('.gio-checkbox-checked')).toHaveLength(0);
+    act(() => {
+      wrapper
+        .find('.gio-checkbox-input')
+        .at(1)
+        .simulate('change', { target: { checked: true } });
+    });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.find('.gio-checkbox-checked')).toHaveLength(0);
+    act(() => {
+      wrapper
+        .find('.gio-checkbox-input')
+        .at(0)
+        .simulate('change', { target: { checked: true } });
+    });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.find('.gio-checkbox-checked')).toHaveLength(dataSource.length);
   });
 
   test('getRowKey function', () => {

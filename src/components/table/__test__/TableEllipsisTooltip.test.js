@@ -1,8 +1,6 @@
-import React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import { render, fireEvent } from '@testing-library/react';
+import { mount } from 'enzyme';
 import useEllipsisTooltip from '../hook/useEllipsisTooltip';
-import { ColumnsType } from '../interface';
 
 const columns = [
   {
@@ -30,14 +28,21 @@ const columns = [
 ];
 
 describe('Testing useEllipsisTooltip', () => {
-  it('useEllipsisTooltip', () => {
+  test('useEllipsisTooltip', () => {
     const { result } = renderHook(() => useEllipsisTooltip());
     const transformEllipsisTooltipPipeline = result.current[0];
-    const transformedColumns = transformEllipsisTooltipPipeline(columns as ColumnsType<unknown>);
+    const transformedColumns = transformEllipsisTooltipPipeline(columns);
     expect(transformedColumns[0].render).not.toBeUndefined();
     const renderNode = transformedColumns[0].render('列表文本最大字符字符字符的示例', undefined, 1);
-    const { container } = render(renderNode as React.ReactElement);
+    const renderNodeWrapper = mount(renderNode);
+    // act(() => {
+    renderNodeWrapper.find('span').at(0).simulate('mouseenter');
+    // });
 
-    fireEvent.mouseEnter(container.getElementsByTagName('span')[0]);
+    // waitForComponentToPaint(renderNodeWrapper).then(() => {
+    //   console.log(renderNodeWrapper.html());
+    //   expect(renderNodeWrapper.exists('.gio-tooltip')).toBe(true);
+    //   done();
+    // });
   });
 });
