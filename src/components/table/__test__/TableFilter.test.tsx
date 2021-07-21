@@ -11,7 +11,7 @@ const columns = [
     dataIndex: 'name',
     key: 'name',
     filters: ['名字俩字', '名字仨字'],
-    onFilter: (value, record) => {
+    onFilter: (value: string, record: { name: string | any[] }) => {
       if (value === '名字俩字') {
         return record.name.length === 2;
       }
@@ -30,7 +30,7 @@ const columns = [
         dataIndex: 'age',
         key: 'age',
         filters: ['小孩子', '大人'],
-        onFilter: (value, record) => {
+        onFilter: (value: string, record: { age: number }) => {
           if (value === '小孩子') {
             return record.age <= 22;
           }
@@ -106,21 +106,25 @@ describe('Testing Table Filter', () => {
     act(() => {
       newUpdateFilterStates({
         ...filterState2,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         filteredKeys: [60],
       });
     });
     expect(result.current[2].length).toBe(1);
   });
 
-
   test('object data type', () => {
     const onClick = jest.fn();
     const { getByText, getAllByRole, container } = render(
-      <FilterPopover 
-        prefixCls='gio-table'
+      <FilterPopover
+        prefixCls="gio-table"
         values={[]}
         onClick={onClick}
-        filters={[{ label: '第一项', value: '1'}, { label: '第二项', value: '2'}]}
+        filters={[
+          { label: '第一项', value: '1' },
+          { label: '第二项', value: '2' },
+        ]}
       >
         <span>trigger</span>
       </FilterPopover>
@@ -138,7 +142,7 @@ describe('Testing Table Filter', () => {
     fireEvent.click(getByText('trigger'));
     expect(container.getElementsByClassName('gio-checkbox-checked')).toBeTruthy();
   });
-  
+
   it('should re-collect states, after columns update', () => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { result, rerender } = renderHook(({ columns, dataSource }) => useFilter(columns, dataSource), {
@@ -148,7 +152,8 @@ describe('Testing Table Filter', () => {
     act(() => {
       rerender({
         columns: cloneDeep(columns).map((column) => {
-          column.key = `#${  column.key}`;
+          // eslint-disable-next-line no-param-reassign
+          column.key = `#${column.key}`;
           return column;
         }),
         dataSource,
