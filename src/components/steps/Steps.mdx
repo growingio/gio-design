@@ -7,37 +7,32 @@ import Steps, { Step } from './Steps';
 
 ## 使用规范
 
-1. 在页面中使用时（type = `page`），Steps 最大宽度为 1200px，最多支持 4 个步骤，如果超过 4 个步骤，则只保留前 4 个步骤；
-2. 在小弹窗中使用时（type = `modal`, size = `small`），Steps 最大宽度为 428px，最多支持 2 个步骤，如果超过 2 个步骤，则只保留前 2 个步骤；
-3. 在大弹窗中使用时（type = `modal`, size = `middle`），Steps 最大宽度为 928px，最多支持 4 个步骤，如果超过 4 个步骤，则只保留前 4 个步骤；
-4. 在抽屉中使用时（type = `drawer`），Steps 最大宽度为抽屉容器的 100%，最多支持 2 个步骤，如果超过 2 个步骤，则只保留前 2 个步骤；
-
 ## 参数说明
 
 <ArgsTable of={Steps} />
 
 ## 代码演示
 
-### 页面中使用
+### 默认情况
 
 <Canvas>
-  <Story id="functional-components-steps--page-steps" />
+  <Story id="functional-components-steps--default-steps" />
 </Canvas>
 
-### 小弹窗中使用
+### 步骤可点击
 
 <Canvas>
-  <Story id="functional-components-steps--small-modal-steps" />
+  <Story id="functional-components-steps--clickable-steps" />
 </Canvas>
 
-### 大弹窗中使用
+### 无描述信息
 
 <Canvas>
-  <Story id="functional-components-steps--middle-modal-steps" />
+  <Story id="functional-components-steps--not-desc-steps" />
 </Canvas>
 
-### 抽屉中使用
+### 控制状态
 
 <Canvas>
-  <Story id="functional-components-steps--drawer-steps" />
+  <Story id="functional-components-steps--custom-state-steps" />
 </Canvas>
