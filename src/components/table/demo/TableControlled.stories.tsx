@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { SortOrder } from '../interface';
 import Table from '../index';
 
-
 const dataSource = Array.from({ length: 1000 }, (_, key) => ({ a: key, b: key, c: key, d: key }));
-
 
 const ControlledTable = () => {
   const [sortOrder, setSortOrder] = useState<SortOrder>(null);
@@ -16,14 +14,14 @@ const ControlledTable = () => {
       dataIndex: 'a',
       key: 'a',
       sorter: (a: any, b: any) => a.a - b.a,
-      sortOrder
+      sortOrder,
     },
     {
       title: 'B',
       dataIndex: 'b',
       key: 'b',
       sorter: (a: any, b: any) => a.a - b.a,
-      sortOrder: sortOrder2
+      sortOrder: sortOrder2,
     },
     {
       title: 'C',
@@ -53,19 +51,23 @@ const ControlledTable = () => {
       dataSource={dataSource}
       columns={columns}
       onChange={(p, s, f) => {
-        if(s?.key === 'a') {
-          setSortOrder(s.sortOrder);
+        if (s?.key as any === 'a') {
+          setSortOrder(s.sortOrder as any);
         }
-        if(s?.key === 'b') {
-          setSortOrder2(s.sortOrder);
+        if (s?.key as any === 'b') {
+          setSortOrder2(s.sortOrder as any);
         }
-        if(f.c) {
-          setFilters(f.c)
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        if (f.c) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          setFilters(f.c);
         }
       }}
-     />
-  )
-}
+    />
+  );
+};
 
 // eslint-disable-next-line import/prefer-default-export
 export { ControlledTable };

@@ -1,15 +1,18 @@
-/* eslint-disable @typescript-eslint/no-shadow */
-import { renderHook, act } from '@testing-library/react-hooks';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import React from 'react';
+import { renderHook } from '@testing-library/react-hooks';
+import { render, screen } from '@testing-library/react';
 import { cloneDeep } from 'lodash';
 import useSorter, { collectSortStates } from '../hook/useSorter';
 import { getNextSortDirection } from '../Title';
+import Table from '../index';
 
 const dataColumns = [
   {
     title: '姓名',
     dataIndex: 'name',
     key: 'name',
-    sorter: (a, b) => a.name.length - b.name.length,
+    sorter: (a: { name: string | any[] }, b: { name: string | any[] }) => a.name.length - b.name.length,
   },
   {
     title: '基本信息',
@@ -19,13 +22,13 @@ const dataColumns = [
         title: '年龄',
         dataIndex: 'age',
         key: 'age',
-        sorter: (a, b) => a.age - b.age,
+        sorter: (a: { age: number }, b: { age: number }) => a.age - b.age,
       },
       {
         title: '体重',
         dataIndex: 'weight',
         key: 'weight',
-        sorter: (a, b) => a.weight - b.weight,
+        sorter: (a: { weight: number }, b: { weight: number }) => a.weight - b.weight,
         sortPriorityOrder: 2,
       },
     ],
@@ -65,11 +68,16 @@ const dataControlledColumns = [
     dataIndex: 'name',
     key: 'name',
     sorter: true,
-    sortOrder: 'descend'
-  }
+    sortOrder: 'descend',
+  },
 ];
 
 describe('Testing Table Sorter', () => {
+  test('without column', () => {
+    const sortStates = collectSortStates();
+    expect(sortStates.length).toEqual(0);
+  });
+
   test('collectSortStates function', () => {
     const sortStates = collectSortStates(dataColumns);
     expect(sortStates.length).toBe(3);
@@ -85,12 +93,14 @@ describe('Testing Table Sorter', () => {
     const sorterState0 = sortStates[0];
     updateSorterStates({
       ...sorterState0,
+      // @ts-ignore
       sortOrder: getNextSortDirection(sorterState0.sortDirections, sorterState0.sorterOrder),
     });
     expect(result.current[2]).not.toStrictEqual(sortedData);
     const sorterState2 = sortStates[2];
     updateSorterStates({
       ...sorterState2,
+      // @ts-ignore
       sortOrder: getNextSortDirection(sorterState2.sortDirections, sorterState2.sorterOrder),
     });
     expect(result.current[2]).not.toStrictEqual(sortedData);
@@ -105,9 +115,11 @@ describe('Testing Table Sorter', () => {
     const [oldSortStates] = result.current;
     rerender({
       columns: cloneDeep(dataColumns).map((column) => {
-        column.key = `#${  column.key}`;
+        // eslint-disable-next-line no-param-reassign
+        column.key = `#${column.key}`;
         return column;
       }),
+      // @ts-ignore
       dataDataSource,
     });
 
@@ -116,6 +128,7 @@ describe('Testing Table Sorter', () => {
   });
 
   test('controlled sorter', () => {
+    // @ts-ignore
     const { result } = renderHook(({ columns, dataSource }) => useSorter(columns, dataSource), {
       initialProps: { columns: dataControlledColumns, dataSource: dataDataSource },
     });
@@ -125,9 +138,76 @@ describe('Testing Table Sorter', () => {
     const sorterState0 = sortStates[0];
     updateSorterStates({
       ...sorterState0,
+      // @ts-ignore
       sortOrder: getNextSortDirection(sorterState0.sortDirections, sorterState0.sorterOrder),
     });
     // 受控时排序字段不改变
     expect(result.current[0][0]).toStrictEqual(sorterState0);
+  });
+
+  it('column without sorter', () => {
+    const sortStates = collectSortStates([
+      {
+        title: '体重',
+        dataIndex: 'weight',
+        key: 'weight',
+      },
+    ]);
+    expect(sortStates.length).toEqual(0);
+  });
+
+  it('column.sorter', () => {
+    const sortStates = collectSortStates([
+      {
+        title: '体重',
+        dataIndex: 'weight',
+        key: 'weight',
+        sorter: (a: { weight: number }, b: { weight: number }) => a.weight - b.weight,
+        sortPriorityOrder: 2,
+        sortDirections: ['ascend'],
+      },
+    ]);
+    expect(sortStates.length).toEqual(1);
+  });
+
+  it('different sort directions', () => {
+    const dataSource: any[] = [
+      {
+        key: '1',
+        name: '列表文本',
+        age: 13,
+      },
+      {
+        key: '2',
+        name: '列表文本2',
+        age: 324,
+      },
+      {
+        key: '3',
+        name: '列表文本123',
+        age: 43,
+      },
+    ];
+    const sortColumns = [
+      {
+        title: '列标题1',
+        dataIndex: 'name',
+        key: 'name',
+        sorter: (a: any, b: any) => a.name.length - b.name.length,
+        ellipsis: true,
+        width: 200,
+        sortOrder: 'descend',
+      },
+      {
+        title: '列标题2',
+        dataIndex: 'age',
+        key: 'age',
+        sorter: (a: any, b: any) => a.age - b.age,
+        sortOrder: 'ascend',
+      },
+    ];
+    // @ts-ignore
+    render(<Table dataSource={dataSource} columns={sortColumns} />);
+    expect(screen.getAllByText('列表文本', { exact: false })).toHaveLength(3);
   });
 });
