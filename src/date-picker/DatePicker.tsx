@@ -7,10 +7,12 @@ import generateDateFns from 'rc-picker/lib/generate/dateFns';
 import zhCN from 'rc-picker/lib/locale/zh_CN';
 import { DatePickerProps } from './interfaces';
 
-function DatePicker(props: DatePickerProps) {
+function DatePicker({ viewDate, defaultViewDate, ...restProps }: DatePickerProps) {
   return (
     <PickerPanel<Date>
-      {...props}
+      {...restProps}
+      defaultPickerValue={defaultViewDate}
+      pickerValue={viewDate}
       locale={zhCN}
       prefixCls={usePrefixCls('picker')}
       picker="date"
