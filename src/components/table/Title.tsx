@@ -13,6 +13,8 @@ export const getNextSortDirection = (sortDirections: SortOrder[], current: SortO
 const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement => {
   const { prefixCls, column, onTriggerStateUpdate } = props;
 
+  const { align } = column;
+
   const renderSorter = (): React.ReactNode => {
     const { sorterState, updateSorterStates } = props;
     if (isUndefined(sorterState)) {
@@ -108,8 +110,14 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
     );
   };
 
+  const cls = classNames(`${prefixCls}-column-title`, {
+    [`${prefixCls}-column-title-align-left`]: align === 'left',
+    [`${prefixCls}-column-title-align-center`]: align === 'center',
+    [`${prefixCls}-column-title-align-right`]: align === 'right',
+  });
+
   return (
-    <div className={`${prefixCls}-column-title`}>
+    <div className={cls}>
       {column.title}
       {renderInfo()}
       {renderSorter()}
