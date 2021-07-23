@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/components",
-  "version": "21.7.2",
+  "version": "21.7.3",
   "description": "GrowingIO Design components",
   "repository": "https://github.com/growingio/gio-design.git",
   "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
@@ -34,8 +34,8 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@gio-design/utils": "^21.7.0",
     "@gio-design/table": "7.14.0",
+    "@gio-design/utils": "^21.7.0",
     "@types/classnames": "^2.2.9",
     "@types/lodash": "^4.14.136",
     "@types/raf": "^3.4.0",
@@ -73,10 +73,6 @@
     "react-virtualized": "^9.22.2",
     "shallowequal": "^1.1.0"
   },
-
-
-
-
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-transform-runtime": "^7.13.10",
