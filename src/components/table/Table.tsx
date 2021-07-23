@@ -1,5 +1,5 @@
 import React, { useMemo, forwardRef, createContext } from 'react';
-import RcTable from 'rc-table';
+import RcTable from '@gio-design/table';
 import classNames from 'classnames';
 import { cloneDeep, isUndefined, get, has, set, isFunction } from 'lodash';
 import { compose } from 'lodash/fp';
@@ -23,7 +23,7 @@ interface TableContextType {
 }
 export const TableContext = createContext({ tableRef: null } as TableContextType);
 
-function Table <RecordType>(
+function Table<RecordType>(
   props: TableProps<RecordType>,
   ref: React.MutableRefObject<HTMLDivElement>
 ): React.ReactElement {
@@ -55,12 +55,11 @@ function Table <RecordType>(
   const innerColumns = useMemo(() => translateInnerColumns(columns), [columns]);
   const [activeSorterStates, updateSorterStates, sortedData, sorter] = useSorter(innerColumns, dataSource);
   const [activeFilterStates, updateFilterStates, filtedData, filters] = useFilter(innerColumns, sortedData);
-  const [
-    transformShowIndexPipeline,
-    activePaginationedState,
-    paginationedData,
-    PaginationComponent,
-  ] = usePagination(filtedData, pagination, showIndex);
+  const [transformShowIndexPipeline, activePaginationedState, paginationedData, PaginationComponent] = usePagination(
+    filtedData,
+    pagination,
+    showIndex
+  );
 
   const [transformSelectionPipeline, selectedRowKeys] = useSelection(paginationedData, rowSelection, {
     rowKey,
@@ -70,8 +69,8 @@ function Table <RecordType>(
   const onTriggerStateUpdate = ({
     paginationState = activePaginationedState,
     sorterState = sorter,
-    filterStates = filters
-   }: OnTriggerStateUpdateProps<RecordType>): void => {
+    filterStates = filters,
+  }: OnTriggerStateUpdateProps<RecordType>): void => {
     onChange?.(paginationState, filterStates, sorterState);
   };
 
@@ -102,12 +101,11 @@ function Table <RecordType>(
     });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const transformColumns = useMemo(() => renderTitle(innerColumns), [
-    activeSorterStates,
-    activeFilterStates,
-    innerColumns,
-    prefixCls,
-  ]);
+  const transformColumns = useMemo(
+    () => renderTitle(innerColumns),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [activeSorterStates, activeFilterStates, innerColumns, prefixCls]
+  );
 
   const composedColumns = compose(
     transformEllipsisTooltipPipeline,
@@ -117,7 +115,7 @@ function Table <RecordType>(
 
   const emptyElement = (
     <div className={`${prefixCls}-empty`}>
-      <Empty description={emptyText} size='small' {...empty} />
+      <Empty description={emptyText} size="small" {...empty} />
     </div>
   );
 
@@ -132,7 +130,7 @@ function Table <RecordType>(
       >
         <Loading loading={debounceLoading}>
           <RcTable<RecordType>
-            tableLayout='fixed'
+            tableLayout="fixed"
             title={title ? () => title : undefined}
             prefixCls={prefixCls}
             columns={composedColumns}
@@ -141,8 +139,12 @@ function Table <RecordType>(
             rowKey={rowKey}
             onRow={onHackRow}
             rowClassName={(record, index, indent) => {
-              const rowClassNameFromOutset = isFunction(rowClassName) ? rowClassName(record, index, indent) : rowClassName;              
-              return selectedRowKeys.includes(getRowKey(record, rowKey)) ? classNames(`${prefixCls}-row-selected`, rowClassNameFromOutset) : rowClassNameFromOutset;
+              const rowClassNameFromOutset = isFunction(rowClassName)
+                ? rowClassName(record, index, indent)
+                : rowClassName;
+              return selectedRowKeys.includes(getRowKey(record, rowKey))
+                ? classNames(`${prefixCls}-row-selected`, rowClassNameFromOutset)
+                : rowClassNameFromOutset;
             }}
             {...rest}
           />

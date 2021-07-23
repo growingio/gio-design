@@ -2040,6 +2040,18 @@
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
+"@gio-design/table@7.14.0":
+  version "7.14.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/table/-/table-7.14.0.tgz#57a33db86c2bc1096c2e52ad1d3e56ebfc1fb036"
+  integrity sha512-yIBKzk1fXXgC4VCkz6SC3kuvnIOMBrLkOGTaNcCkDnQyerJIcNEil/OK3nVTYhmNIYkSy+0frnngF3q0c0iqjg==
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "^2.2.5"
+    lodash "^4.17.21"
+    rc-resize-observer "^1.0.0"
+    rc-util "^5.4.0"
+    shallowequal "^1.1.0"
+
 "@gio-design/tokens@^21.4.2":
   version "21.4.2"
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.2.tgz#8914f09567d042a98f144fe4f1d7f463954e3378"
@@ -13134,17 +13146,6 @@ rc-select@^11.1.1:
     rc-util "^5.0.1"
     rc-virtual-list "^3.0.3"
     warning "^4.0.3"
-
-"rc-table@https://github.com/growingio/table.git":
-  version "7.14.0"
-  resolved "https://github.com/growingio/table.git#ba846b3e5a5d4c6895f034de4262be5edf176d2d"
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "^2.2.5"
-    lodash "^4.17.21"
-    rc-resize-observer "^1.0.0"
-    rc-util "^5.4.0"
-    shallowequal "^1.1.0"
 
 rc-tooltip@^5.0.1:
   version "5.0.2"
