@@ -1,20 +1,19 @@
 @import '../../stylesheet/index.less';
 
-@prefix-cls: ~'@{component-prefix}-input-trigger';
-@icon-prefix-cls: 'gio-icon';
+@range-input-trigger-prefix-cls: ~'@{component-prefix}-range-input-trigger';
 
-.@{prefix-cls} {
+.@{range-input-trigger-prefix-cls} {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   box-sizing: border-box;
   height: 36px;
   padding: 0 32px 0 16px;
   background: @palette-white;
   border: 1px solid @palette-gray-4;
   border-radius: 4px;
-
-  &--fit-content {
-    width: fit-content;
-  }
+  transition: all 0.3s ease-in-out;
 
   &--disabled {
     background: @palette-gray-1;
@@ -43,12 +42,12 @@
 
   &__item,
   &__placeholder {
-    display: inline-block;
-    max-width: 100%;
-    .font();
+    display: inline-flex;
+    width: 100%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    .font();
   }
   &__item {
     color: @palette-black-6;
@@ -81,6 +80,23 @@
   &--large > &__item,
   &--large > &__placeholder {
     line-height: 38px;
+  }
+
+  &__separator {
+    position: relative;
+    display: inline-flex;
+    min-width: 10px;
+    height: 100%;
+    margin: 0 12px;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      height: 1px;
+      border-top: 1px solid @palette-black-6;
+      content: '';
+    }
   }
 
   &__suffix {

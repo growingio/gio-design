@@ -27,8 +27,9 @@ describe('DateRangePicker', () => {
     fireEvent.mouseLeave(tempDateCell);
 
     fireEvent.click(screen.getByTitle('2021-05-20'));
+    expect(handleOnSelect).toHaveBeenCalledWith([startOfToday(), null], 0);
     fireEvent.click(screen.getByTitle('2021-06-20'));
-    expect(handleOnSelect).toHaveBeenCalledWith([startOfToday(), add(startOfToday(), { months: 1 })]);
+    expect(handleOnSelect).toHaveBeenCalledWith([startOfToday(), add(startOfToday(), { months: 1 })], 1);
   });
 
   it('render with disabled date', () => {
