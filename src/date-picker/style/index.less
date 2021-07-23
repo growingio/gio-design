@@ -115,12 +115,10 @@
 
     &::before {
       position: absolute;
-      top: 50%;
       right: 0;
       left: 0;
       z-index: 1;
       height: 30px;
-      transform: translateY(-50%);
       content: '';
     }
 
@@ -135,10 +133,10 @@
       border-radius: 4px;
       transition: all 0.3s;
       .font(@weight: normal);
-
-      &:hover {
-        background: @palette-gray-2;
-      }
+    }
+    &-in-view:not(&-selected):not(&-range-start):not(&-range-end):not(&-range-hover):not(&-range-hover-start):not(&-range-hover-end)
+      &-inner:hover {
+      background-color: @palette-gray-2;
     }
 
     &-in-view {

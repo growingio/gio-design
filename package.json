@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/components",
-  "version": "21.7.2",
+  "version": "21.7.3",
   "description": "GrowingIO Design components",
   "repository": "https://github.com/growingio/gio-design.git",
   "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
@@ -34,6 +34,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
+    "@gio-design/table": "7.14.0",
     "@gio-design/utils": "^21.7.0",
     "@types/classnames": "^2.2.9",
     "@types/lodash": "^4.14.136",
@@ -58,7 +59,6 @@
     "rc-menu": "^8.5.1",
     "rc-notification": "^4.5.4",
     "rc-picker": "^2.5.10",
-    "rc-table": "https://github.com/growingio/table.git",
     "rc-tooltip": "^5.0.1",
     "rc-tree": "3.9.5",
     "rc-tree-select": "4.1.2",
