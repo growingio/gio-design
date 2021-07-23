@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@gio-design/utils": "^21.7.0",
+    "@gio-design/table": "7.14.0",
     "@types/classnames": "^2.2.9",
     "@types/lodash": "^4.14.136",
     "@types/raf": "^3.4.0",
@@ -58,7 +59,6 @@
     "rc-menu": "^8.5.1",
     "rc-notification": "^4.5.4",
     "rc-picker": "^2.5.10",
-    "rc-table": "https://github.com/growingio/table.git",
     "rc-tooltip": "^5.0.1",
     "rc-tree": "3.9.5",
     "rc-tree-select": "4.1.2",
@@ -73,6 +73,10 @@
     "react-virtualized": "^9.22.2",
     "shallowequal": "^1.1.0"
   },
+
+
+
+
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-transform-runtime": "^7.13.10",
