@@ -3,7 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 import RangeContext from 'rc-picker/lib/RangeContext';
 import { RangeValue } from 'rc-picker/lib/interface';
-import { usePrefixCls } from '@gio-design/utils/es/hooks';
+import { useControlledState, usePrefixCls } from '@gio-design/utils/es/hooks';
 import isBefore from 'date-fns/isBefore';
 import DatePicker, { DatePickerContext } from '../date-picker';
 import { DateRangePickerProps } from './interfaces';
@@ -11,16 +11,19 @@ import { getDefaultViewDates, calcClosingViewDate, mergeDates } from './utils';
 
 function DateRangePicker({
   className,
-  style,
+  defaultValue,
   disabledDate,
   onSelect,
   onDateMouseEnter,
   onDateMouseLeave,
+  style,
+  value,
 }: DateRangePickerProps) {
   const [viewDates, setViewDates] = React.useState<[Date, Date]>(getDefaultViewDates());
   const [hoveredDates, setHoveredDates] = React.useState<RangeValue<Date>>();
   const [dateIndex, setDateIndex] = React.useState<number>(0);
-  const [selectedValue, setSelectedValue] = React.useState<RangeValue<Date>>([null, null]);
+  // @ts-ignore
+  const [selectedValue, setSelectedValue] = useControlledState<RangeValue<Date>>(value, defaultValue);
   const preficCls = usePrefixCls('date-range-picker');
 
   function renderPicker(position: 'left' | 'right') {
@@ -42,16 +45,16 @@ function DateRangePicker({
             const isDisabledDate = disabledDate ? disabledDate(currentDate) : false;
             return isBeforeStartDate || isDisabledDate;
           }}
-          onPanelChange={(value) => {
+          onPanelChange={(currentValue) => {
             if (index) {
-              setViewDates([calcClosingViewDate(value, -1), value]);
+              setViewDates([calcClosingViewDate(currentValue, -1), currentValue]);
             } else {
-              setViewDates([value, calcClosingViewDate(value)]);
+              setViewDates([currentValue, calcClosingViewDate(currentValue)]);
             }
           }}
           onSelect={undefined}
           // @ts-ignore
-          value={selectedValue[index] as Date | undefined}
+          value={selectedValue ? selectedValue[index] : undefined}
           viewDate={viewDates[index]}
         />
       </RangeContext.Provider>
@@ -72,13 +75,11 @@ function DateRangePicker({
           setHoveredDates(mergeDates(selectedValue, undefined, dateIndex));
           onDateMouseLeave?.(dateIndex);
         },
-        onSelect: (value) => {
-          const newValue = mergeDates(selectedValue, value, dateIndex);
+        onSelect: (currentValue) => {
+          const newValue = mergeDates(selectedValue, currentValue, dateIndex);
+          onSelect?.(newValue as [Date, Date], dateIndex);
           setSelectedValue(newValue);
           setDateIndex(1 - dateIndex);
-          if (dateIndex) {
-            onSelect?.(newValue as [Date, Date]);
-          }
         },
       }}
     >

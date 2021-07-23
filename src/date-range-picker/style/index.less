@@ -43,7 +43,7 @@
       right: 50%;
     }
 
-    // >>> Range Hover
+    // the styles for hovered cells
     &-in-view&-range-hover-start:not(&-in-range):not(&-range-start):not(&-range-end),
     &-in-view&-range-hover-end:not(&-in-range):not(&-range-start):not(&-range-end),
     &-in-view&-range-hover-start&-range-start-single,
@@ -61,7 +61,7 @@
       }
     }
 
-    // Edge start
+    // the styles for start cell of row
     tr > &-in-view&-range-hover:first-child::after,
     tr > &-in-view&-range-hover-end:first-child::after,
     &-in-view&-start&-range-hover-edge-start&-range-hover-edge-start-near-range::after,
@@ -73,7 +73,7 @@
       border-bottom-left-radius: 4px;
     }
 
-    // Edge end
+    // the styles for end cell of row
     tr > &-in-view&-range-hover:last-child::after,
     tr > &-in-view&-range-hover-start:last-child::after,
     &-in-view&-end&-range-hover-edge-end&-range-hover-edge-end-near-range::after,
@@ -85,7 +85,7 @@
       border-bottom-right-radius: 4px;
     }
 
-    // Add space for stash
+    // set space for stash of hovered cell
     &-range-hover-start::after,
     &-range-hover-end::after,
     &-range-hover::after {

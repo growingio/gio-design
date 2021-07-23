@@ -25,7 +25,7 @@ export interface InputTriggerProps extends CommonProps {
    */
   itemRender?: () => React.ReactNode;
   /**
-   * placeholder
+   * 选择框提示文字
    */
   placeholder?: string;
   /**

@@ -1,6 +1,7 @@
 @import '../../stylesheet/index.less';
 
 @new-date-picker-prefix-cls: ~'@{component-prefix}-picker';
+@icon-prefix-cls: ~'@{component-prefix}-icon';
 
 .@{new-date-picker-prefix-cls} {
   &-decade-btn,
@@ -49,11 +50,22 @@
     &-next-btn {
       width: 24px;
       height: 24px;
+      margin: 0 2px;
       padding: 4px;
       background: @palette-white;
       border: none;
       border-radius: 4px;
       cursor: pointer;
+
+      .@{icon-prefix-cls} {
+        color: @palette-black-6;
+      }
+    }
+    &-super-prev-btn {
+      margin-left: 0;
+    }
+    &-super-next-btn {
+      margin-right: 0;
     }
     &-super-prev-btn:hover,
     &-super-next-btn:hover,
