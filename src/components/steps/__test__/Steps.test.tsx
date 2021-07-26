@@ -1,100 +1,69 @@
 import React from 'react';
-import { mount, render } from 'enzyme';
+import { fireEvent, render } from '@testing-library/react';
+import { DefaultSteps, ClickableSteps, NotDescSteps, CustomStateSteps } from '../Steps.stories'
 import Steps, { Step } from '..';
 
-describe('Testing steps', () => {
-  it('basic steps of no children', () => {
-    const wrapper = render(<Steps>
-      {null}
-    </Steps>);
-    expect(wrapper).toMatchSnapshot();
-  });
+describe('Steps', () => {
+  const stepItemClassName = 'gio-steps__item';
+  const stepItemActiveClassName = 'gio-steps__item_active';
 
-  it('basic steps', () => {
-    const wrapper = render(
-      <Steps current={0}>
-        <Step key="1" />
-        <Step key="2" />
-        <Step key="3" />
-        <Step key="4" />
-      </Steps>
-    );
-    expect(wrapper).toMatchSnapshot();
-  });
+  it('render default', () => {
+    const { container } = render(<DefaultSteps {...DefaultSteps.args} />)
+    expect(container.getElementsByClassName(stepItemClassName)).toHaveLength(4)
+  })
 
-  it('basic steps of having title', () => {
-    const wrapper = render(
-      <Steps>
-        <Step key="1" title="title1" />
-        <Step key="2" title="title2" />
-        <Step key="3" title="title3" />
-        <Step key="4" title="title4" />
-        <Step key="5" title="title5" />
-      </Steps>
-    );
-    expect(wrapper).toMatchSnapshot();
-  });
+  it('render clickable', () => {
+    const { getAllByRole, container } = render(<ClickableSteps {...ClickableSteps.args} />)
+    const items = container.getElementsByClassName(stepItemClassName)
+    expect(
+      items[0].classList.contains(stepItemActiveClassName)
+    ).toBe(true)
 
-  it('renders correctly of having description', () => {
-    const wrapper = render(
-      <Steps>
-        <Step key="1" description="description1" />
-        <Step key="2" description="description2" />
-        <Step key="3" description="description3" />
-        <Step key="4" description="description4" />
-      </Steps>
-    );
-    expect(wrapper).toMatchSnapshot();
-  });
+    expect(getAllByRole('button')).toHaveLength(3)
 
-  it('renders correctly of having title and description', () => {
-    const wrapper = render(
-      <Steps>
-        <Step key="1" title="title1" description="description1" />
-        <Step key="2" title="title2" description="description2" />
-        <Step key="3" title="title3" description="description3" />
-        <Step key="4" title="title4" description="description4" />
-      </Steps>
-    );
-    expect(wrapper).toMatchSnapshot();
-  });
+    fireEvent.click(getAllByRole('button')[0])
 
-  it('clickable steps', () => {
-    const onClick = jest.fn();
-    const wrapper = mount(
-      <Steps onClick={onClick}>
-        <Step key="1" title="title1" description="description1" />
-        <Step key="2" title="title2" description="description2" />
-        <Step key="3" title="title3" description="description3" />
-      </Steps>
-    );
-    wrapper.find('.gio-steps__item-container').at(1).simulate('click');
-    expect(onClick).toHaveBeenCalled()
-  });
+    expect(
+      items[1].classList.contains(stepItemActiveClassName)
+    ).toBe(true)
 
-  it('set current', () => {
-    const steps = (
-      <Steps current={3}>
-        <Step key="1" title="title1" description="description1" />
-        <Step key="2" title="title2" description="description2" />
-        <Step key="3" title="title3" description="description3" />
-      </Steps>
-    );
-    const wrapper = render(steps);
-    expect(wrapper).toMatchSnapshot();
+  })
 
-    const wrapper2 = render(React.cloneElement(steps, { current: -1 }));
-    expect(wrapper2).toMatchSnapshot();
-  });
+  it('render not description', () => {
+    const { container } = render(<NotDescSteps {...NotDescSteps.args} />)
+    expect(
+      container.getElementsByClassName('gio-steps__item-content-description')
+    ).toHaveLength(0)
+  })
 
-  it('set finished', () => {
-    const wrapper = render(
-      <Steps>
-        <Step finished key="1" title="title1" description="description1" />
-        <Step finished key="2" title="title2" description="description2" />
-        <Step finished key="3" title="title3" description="description3" />
-      </Steps>
-    );
-    expect(wrapper.find('.gio-steps__item_finished')).toHaveLength(3);
-  });
-});
+  it('render custom state', () => {
+    const { container, getByText } = render(<CustomStateSteps {...CustomStateSteps.args} />)
+    fireEvent.click(getByText('下一步'))
+    fireEvent.click(getByText('上一步'))
+    expect(
+      container
+        .getElementsByClassName(stepItemActiveClassName)[0]
+        .classList.contains('gio-steps__item_finished')
+    ).toBe(true)
+  })
+
+  it('render null children', () => {
+    const { container } = render(<Steps>{null}</Steps>)
+    expect(
+      container.getElementsByClassName(stepItemClassName)
+    ).toHaveLength(0)
+  })
+
+  it('render with `current` prop equal -1', () => {
+    const { getAllByText } = render(<Steps current={-1}>
+      <Step key="1" title="title1" />
+      <Step key="2" title="title2" />
+    </Steps>)
+    expect(getAllByText(/title/)).toHaveLength(2)
+  })
+
+  it('render step', () => {
+    const { getByText } = render(<Step title="Title" />)
+    expect(getByText('Title')).toBeTruthy()
+  })
+})
