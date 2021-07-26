@@ -2033,9 +2033,9 @@
     tslib "^2.1.0"
 
 "@gio-design/icons@^21.4.0":
-  version "21.5.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.5.0.tgz#8a16fe8cc7c9e9582910b1a65f321be29acb2006"
-  integrity sha512-h3JfH2pvzH2lWHKib/VJQ5xJEq/N22iWb23dgowAMUNMxLKEOdrluLcvb9PVwHNWsoKp2ADelbMKQlxiIR13NQ==
+  version "21.6.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.6.1.tgz#87fd80d6254b5ab0e5e468a8223d7d2c4420341e"
+  integrity sha512-u+eUuzq9P0ExzNjq2XslyGOuP0XuR8ZHkJGH5XIEFN+5YFXu1Qu7mHrKti82bUjiGZkWzK/t3d6v/sy5PrBFOw==
   dependencies:
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
