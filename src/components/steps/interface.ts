@@ -1,8 +1,5 @@
 import { CommonProps } from '../../utils/interfaces';
 
-export type Type = 'page' | 'modal' | 'drawer';
-export type Size = 'middle' | 'small';
-
 export interface StepsProps extends CommonProps {
   /**
    * 只允许使用 Step 组件
@@ -16,19 +13,14 @@ export interface StepsProps extends CommonProps {
   current?: number;
 
   /**
-   * 使用场景，包括 `page`（页面）、`modal`（弹窗） 和 `drawer`（抽屉）
-   * @page 最多支持 4 步操作
-   * @modal 最多支持 2 ~ 4 步操作
-   * @drawer 最多支持 2 步操作
-   * @default `page`
+   * 未支持
    */
-  type?: Type;
+  type?: string;
 
   /**
-   * 当 type = `modal` 时有效，middle 最多支持 4 步操作，small 最多支持 2 步操作
-   * @default `small`
+   * 未支持
    */
-  size?: Size;
+  size?: string;
 
   /**
    * 点击步骤项时触发, 如果不设置该回调函数，则步骤条为 `不可点击` 状态
