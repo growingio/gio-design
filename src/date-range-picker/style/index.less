@@ -1,9 +1,9 @@
 @import '../../stylesheet/index.less';
 
-@prefix-cls: ~'@{component-prefix}-date-range-picker';
-@picker-cls: ~'@{component-prefix}-picker';
+@date-range-picker-prefix-cls: ~'@{component-prefix}-date-range-picker';
+@picker-prefix-cls: ~'@{component-prefix}-picker';
 
-.@{prefix-cls} {
+.@{date-range-picker-prefix-cls} {
   display: flex;
   width: fit-content;
   border-radius: 4px;
@@ -15,13 +15,13 @@
   }
 
   &__left {
-    .@{picker-cls}-body {
+    .@{picker-prefix-cls}-body {
       border-right: 1px solid @palette-gray-3;
     }
   }
 }
 
-.@{picker-cls} {
+.@{picker-prefix-cls} {
   &-cell {
     &-in-view&-range-start,
     &-in-view&-range-end {
