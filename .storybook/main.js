@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
   addons: [
+    // addons on top
     {
       name: '@storybook/addon-docs',
       options: {
@@ -10,8 +11,12 @@ module.exports = {
         },
       },
     },
-    '@storybook/addon-controls',
+    '@storybook/addon-measure',
+    '@storybook/addon-outline',
+    // addons on right side
     '@storybook/addon-actions',
+    '@storybook/addon-controls',
+    'storybook-addon-designs',
     {
       name: '@storybook/addon-storysource',
       options: {
@@ -20,7 +25,6 @@ module.exports = {
         },
       },
     },
-    'storybook-addon-designs',
     path.resolve('./.storybook/footer/preset'),
   ],
   features: {

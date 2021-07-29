@@ -84,6 +84,8 @@
     "@storybook/addon-actions": "^6.3.3",
     "@storybook/addon-controls": "^6.3.3",
     "@storybook/addon-docs": "^6.3.3",
+    "@storybook/addon-measure": "^2.0.0",
+    "@storybook/addon-outline": "^6.4.0-alpha.13",
     "@storybook/addon-storysource": "^6.3.3",
     "@storybook/addons": "^6.3.3",
     "@storybook/api": "^6.3.3",
