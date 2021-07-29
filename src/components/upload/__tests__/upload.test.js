@@ -1,19 +1,41 @@
 import React from 'react';
+import { set } from 'lodash';
+import { render, screen } from '@testing-library/react';
 import { mount, shallow } from 'enzyme';
 import { fakeXhr } from 'nise';
 import { act } from 'react-dom/test-utils';
+import { AreaUpload } from '../Upload.stories';
 import { mountTest, mountSnapshot } from '../tests/mount';
 import { testFile, dataUrl, url as imgUrl } from '../tests/mock';
 import * as utils from '../utils';
 import { sleep } from '../../../utils/test';
 import Upload from '..';
-const uploadTypes = ['button', 'input', 'card', 'avatar', 'drag'];
 import { STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
+
+const uploadTypes = ['button', 'input', 'card', 'avatar', 'drag'];
 
 let mockXhr = null;
 let currentRequest = null;
 const mockFile = new File(['foo'], 'foo.png', {
   type: 'image/png',
+});
+
+describe('Testing drag-trigger', () => {
+  it('basic drag-tigger', () => {
+    render(<AreaUpload {...AreaUpload.args} />);
+    expect(screen.getAllByText('点击或拖拽上传')).toHaveLength(2);
+  });
+
+  it('drag-trigger width single size', () => {
+    const { container } = render(<AreaUpload {...set(AreaUpload.args, 'iconSize', 40)} />);
+    expect(container.getElementsByClassName('gio-icon')).toHaveLength(1);
+  });
+
+  it('drag-trigger with array size', () => {
+    set(AreaUpload.args, 'triggerProps', { className: 'gio-upload-drag-test' });
+    render(<AreaUpload {...set(AreaUpload.args, 'iconSize', [80, 80])} />);
+    expect(screen.getAllByRole('img')).toHaveLength(1);
+  });
 });
 
 describe('Testing Upload mount', () => {
