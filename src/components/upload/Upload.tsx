@@ -53,6 +53,7 @@ const Upload: React.FC<IUploadProps> = ({
   openFileDialogOnClick = true,
   children,
   placeholderImg,
+  iconSize,
   ...restProps
 }: IUploadProps) => {
   const [file, setFile] = useState<IUploadFile>(getEmptyFileObj(uploadedFile));
@@ -223,6 +224,7 @@ const Upload: React.FC<IUploadProps> = ({
     onRemove: handleRemove,
     onInputUpload: handleInputUpload,
     placeholderImg,
+    iconSize,
   };
 
   return (

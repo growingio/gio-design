@@ -119,6 +119,8 @@ export interface IUploadProps<T = any> {
   transformFile?: TTransformFileHandler;
   children?: React.ReactNode;
   placeholderImg?: string;
+  // 可根据使用场景调整icon的尺寸
+  iconSize?: number | [number, number];
 }
 
 export interface ITriggerProps {
@@ -132,6 +134,8 @@ export interface ITriggerProps {
   triggerProps?: IInnerTriggerProps;
   children?: React.ReactNode;
   placeholderImg?: string;
+  // 可根据使用场景调整icon尺寸
+  iconSize?: number | [number, number];
 }
 
 export type ITriggerMap = {
