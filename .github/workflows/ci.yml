@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Node.js
-        uses: actions/setup-node@v2.2.0
+        uses: actions/setup-node@v2.3.0
         with:
           node-version: 14
       - name: Cache Node.js modules
@@ -31,7 +31,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Node.js
-        uses: actions/setup-node@v2.2.0
+        uses: actions/setup-node@v2.3.0
         with:
           node-version: 14
       - name: Restore Node.js modules
@@ -60,7 +60,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Node.js
-        uses: actions/setup-node@v2.2.0
+        uses: actions/setup-node@v2.3.0
         with:
           node-version: 14
       - name: Restore Node.js modules
@@ -98,7 +98,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Node.js
-        uses: actions/setup-node@v2.2.0
+        uses: actions/setup-node@v2.3.0
         with:
           node-version: ${{ matrix.node_version }}
       - name: Restore Node.js modules
