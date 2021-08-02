@@ -47,7 +47,9 @@ const Step: React.FC<StepProps> = (props) => {
     <div className={classNames}>
       {/* eslint react/jsx-props-no-spreading: off */}
       <div
-        className={description ? `${prefixCls}__item-container` : `${prefixCls}__item-noDescription`}
+        className={
+          description ? `${prefixCls}__item-container` : `${prefixCls}__item-container ${prefixCls}__item-nodescription`
+        }
         {...clickableProps}
       >
         {getIcon()}
