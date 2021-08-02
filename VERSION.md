@@ -1,10 +1,16 @@
-## [21.7.7](https://github.com/growingio/gio-design/compare/v21.7.6...v21.7.7) (2021-07-29)
+# [21.8.0](https://github.com/growingio/gio-design/compare/v21.7.7...v21.8.0) (2021-08-02)
+
+
+### Bug Fixes
+
+* **loading:** add prop's classname to loading wrapper ([#1149](https://github.com/growingio/gio-design/issues/1149)) ([6f8c21b](https://github.com/growingio/gio-design/commit/6f8c21bccb99fe06f0b220f566903439b38340a1))
 
 
 ### Features
 
-* **pickers:** add list picker component ([a9107eb](https://github.com/growingio/gio-design/commit/a9107eb9ad908b41afb8ad60c05ec5b0ca851709))
-* add date range selector component ([a4f5ab5](https://github.com/growingio/gio-design/commit/a4f5ab5eeff2eff565c9dcb7c11e7e3b4caed0a8))
+* **date-range-picker:** add defaultViewDates prop for setting view dates ([#1156](https://github.com/growingio/gio-design/issues/1156)) ([cab3bdb](https://github.com/growingio/gio-design/commit/cab3bdb6a06d5de1ed4ca9d089f73ac62a4e9ed8))
+* **steps:** update steps style ([#1153](https://github.com/growingio/gio-design/issues/1153)) ([57e0f84](https://github.com/growingio/gio-design/commit/57e0f84bee58fcf2537dab70655409b9ed3a3c29))
+* **upload:** add emptyImage prop ([190ec67](https://github.com/growingio/gio-design/commit/190ec675bb97f2af57f89fc06c7e0b91634f25b7))
 
 
 
