@@ -12,6 +12,7 @@ import { getDefaultViewDates, calcClosingViewDate, mergeDates } from './utils';
 function DateRangePicker({
   className,
   defaultValue,
+  defaultViewDates,
   disabledDate,
   onSelect,
   onDateMouseEnter,
@@ -19,7 +20,7 @@ function DateRangePicker({
   style,
   value,
 }: DateRangePickerProps) {
-  const [viewDates, setViewDates] = React.useState<[Date, Date]>(getDefaultViewDates());
+  const [viewDates, setViewDates] = React.useState<[Date, Date]>(defaultViewDates ?? getDefaultViewDates());
   const [hoveredDates, setHoveredDates] = React.useState<RangeValue<Date>>();
   const [dateIndex, setDateIndex] = React.useState<number>(0);
   // @ts-ignore
@@ -41,7 +42,7 @@ function DateRangePicker({
           className={`${preficCls}__${position}`}
           disabledDate={(currentDate) => {
             const isBeforeStartDate =
-              selectedValue && selectedValue[0] ? isBefore(currentDate, selectedValue[0]) : false;
+              selectedValue && selectedValue[0] && !selectedValue[1] ? isBefore(currentDate, selectedValue[0]) : false;
             const isDisabledDate = disabledDate ? disabledDate(currentDate) : false;
             return isBeforeStartDate || isDisabledDate;
           }}

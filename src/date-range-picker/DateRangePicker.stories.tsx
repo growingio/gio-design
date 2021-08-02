@@ -2,8 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { withDesign } from 'storybook-addon-designs';
-import isBefore from 'date-fns/isBefore';
-import startOfToday from 'date-fns/startOfToday';
+import { isBefore, startOfToday, subMonths } from 'date-fns';
 import Docs from './DateRangePicker.mdx';
 import { DateRangePicker, DateRangePickerProps } from './index';
 
@@ -33,4 +32,9 @@ Basic.args = {};
 export const DisabledDate = Template.bind({});
 DisabledDate.args = {
   disabledDate: (date: Date) => isBefore(date, startOfToday()),
+};
+
+export const DefaultViewDates = Template.bind({});
+DefaultViewDates.args = {
+  defaultViewDates: [subMonths(startOfToday(), 1), startOfToday()],
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import { isBefore, startOfToday } from 'date-fns';
+import { addMonths, isBefore, startOfToday } from 'date-fns';
 import Docs from './DatePicker.mdx';
 import DatePicker from './DatePicker';
 
@@ -31,4 +31,9 @@ Basic.args = {};
 export const DisabledDate = Template.bind({});
 DisabledDate.args = {
   disabledDate: (date: Date) => isBefore(startOfToday(), date),
+};
+
+export const ViewDate = Template.bind({});
+ViewDate.args = {
+  viewDate: addMonths(startOfToday(), 1),
 };

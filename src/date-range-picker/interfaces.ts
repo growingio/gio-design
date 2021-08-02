@@ -7,6 +7,10 @@ export interface DateRangePickerProps extends CommonProps, Pick<DatePickerProps,
    */
   defaultValue?: [Date, Date];
   /**
+   * 默认可见日历中的日期
+   */
+  defaultViewDates?: [Date, Date];
+  /**
    * 鼠标进入日期单元格的触发事件的回调
    *
    * @param date - 鼠标进入的单元格中的日期，`Date`
