@@ -7,10 +7,6 @@ export interface DatePickerProps extends CommonProps {
    */
   defaultValue?: Date;
   /**
-   * 默认可见日历中的日期
-   */
-  defaultViewDate?: Date;
-  /**
    * 不可选择的日期
    *
    * @param date - 当前日期 `Date`

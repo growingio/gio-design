@@ -1,9 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import startOfToday from 'date-fns/startOfToday';
-import add from 'date-fns/add';
-import startOfMonth from 'date-fns/startOfMonth';
-import { Basic, DisabledDate } from '../DateRangePicker.stories';
+import { add, startOfMonth, startOfToday, subMonths } from 'date-fns';
+import { Basic, DefaultViewDates, DisabledDate } from '../DateRangePicker.stories';
 
 describe('DateRangePicker', () => {
   beforeAll(() => {
@@ -38,6 +36,11 @@ describe('DateRangePicker', () => {
     expect(screen.getAllByTitle('2021-05-19')).toHaveLength(1);
     fireEvent.click(screen.getByTitle('2021-05-19'));
     expect(handleOnSelect).not.toHaveBeenCalled();
+  });
+
+  it('render with default view dates', () => {
+    render(<DefaultViewDates defaultViewDates={[subMonths(startOfToday(), 1), startOfToday()]} />);
+    expect(screen.getAllByTitle('2021-06-01')).toHaveLength(1);
   });
 
   it('have mouse events for date cells', () => {
