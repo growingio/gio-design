@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { UpFilled, DownFilled, CloseCircleFilled } from '@gio-design/icons';
-import { usePrefixCls, useControlledState } from '@gio-design/utils/es/hooks';
+import { usePrefixCls, useControlledState } from '@gio-design/utils';
 import Dropdown from '../components/dropdown';
 import InputTrigger from './InputTrigger';
 import { SelectorProps } from './interfaces';

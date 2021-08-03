@@ -1,4 +1,4 @@
-import { CommonProps } from '@gio-design/utils/es/interfaces';
+import { CommonProps } from '@gio-design/utils';
 import { DatePickerProps } from '../date-picker';
 
 export interface DateRangePickerProps extends CommonProps, Pick<DatePickerProps, 'disabledDate'> {

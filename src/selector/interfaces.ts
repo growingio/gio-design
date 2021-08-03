@@ -1,6 +1,5 @@
 import React from 'react';
-import { SizeType } from '@gio-design/utils/es/design-context';
-import { CommonProps } from '@gio-design/utils/es/interfaces';
+import { CommonProps, SizeType } from '@gio-design/utils';
 import { DropdownProps } from '../components/dropdown';
 
 export interface InputTriggerProps extends CommonProps {
