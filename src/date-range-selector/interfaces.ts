@@ -1,4 +1,4 @@
-import { CommonProps } from '@gio-design/utils/es/interfaces';
+import { CommonProps } from '@gio-design/utils';
 import { InputTriggerProps } from '../selector/interfaces';
 
 export type NullableDate = Date | undefined;

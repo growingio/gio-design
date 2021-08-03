@@ -1,40 +1,42 @@
 import { PanelMode } from 'rc-picker/lib/interface';
+import React from 'react';
 
-export interface DatePickerProps {
+export interface TimePickerProps {
   /**
    * 自定义 CSS 样式名
    */
   className?: string;
   /**
-   * 默认选择的日期
+   * 默认选择的时间
    */
   defaultValue?: Date;
   /**
-   * 不可选择的日期
-   *
-   * @param date - 当前日期 `Date`
-   * @return 当前日期可选择返回 `false`，不可选择返回 `true`
-   */
-  disabledDate?: (date: Date) => boolean;
-  /**
    * 日历面板切换的回调
    *
-   * @param value - 当前日期 `Date`
+   * @param value - 当前时间 `Date`
    * @param mode - 当前模式，目前只会是 `date` 模式
    */
   onPanelChange?: (value: Date, mode: PanelMode) => void;
   /**
-   * 日期发生变化时的回调
+   * 时间发生变化时的回调
    *
-   * @param value - 选择的日期 `Date`
+   * @param value - 选择的时间 `Date`
    */
   onSelect?: (value: Date) => void;
   /**
-   * 选择的日期
+   * 自定义面板底部
+   */
+  renderFooter?: (mode: PanelMode) => React.ReactNode;
+  /**
+   * 显示秒
+   */
+  showSecond?: boolean;
+  /**
+   * 选择的时间
    */
   value?: Date;
   /**
-   * 可见日历中的日期
+   * 可见日历中的时间
    */
   viewDate?: Date;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { usePrefixCls, useSize } from '@gio-design/utils/es/hooks';
+import { usePrefixCls, useSize } from '@gio-design/utils';
 import { InputTriggerProps } from './interfaces';
 
 function InputTrigger({

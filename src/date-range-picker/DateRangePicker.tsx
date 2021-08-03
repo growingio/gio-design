@@ -3,7 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 import RangeContext from 'rc-picker/lib/RangeContext';
 import { RangeValue } from 'rc-picker/lib/interface';
-import { useControlledState, usePrefixCls } from '@gio-design/utils/es/hooks';
+import { useControlledState, usePrefixCls } from '@gio-design/utils';
 import isBefore from 'date-fns/isBefore';
 import DatePicker, { DatePickerContext } from '../date-picker';
 import { DateRangePickerProps } from './interfaces';
