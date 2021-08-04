@@ -31,6 +31,12 @@ export const Basic = Template.bind({});
 Basic.args = {
   placeholder: defaultPlaceholder,
   onSelect: action('selected:'),
+};
+
+export const DisbaledDatePicker = Template.bind({});
+DisbaledDatePicker.args = {
+  placeholder: defaultPlaceholder,
+  onSelect: action('selected:'),
   disabledDate: (current: Date) => current.getTime() > new Date().getTime(),
 };
 
