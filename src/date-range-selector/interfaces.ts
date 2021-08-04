@@ -43,4 +43,11 @@ export interface DateRangeSelectorProps
    * 选择的日期
    */
   value?: [NullableDate, NullableDate];
+  /**
+   * 不可选择的日期
+   *
+   * @param date - 当前日期 `Date`
+   * @return 当前日期可选择返回 `false`，不可选择返回 `true`
+   */
+  disabledDate?: (date: Date) => boolean;
 }

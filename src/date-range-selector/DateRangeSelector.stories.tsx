@@ -31,6 +31,7 @@ export const Basic = Template.bind({});
 Basic.args = {
   placeholder: defaultPlaceholder,
   onSelect: action('selected:'),
+  disabledDate: (current: Date) => current.getTime() > new Date().getTime(),
 };
 
 const TriggerTemplate: Story<RangeInputTriggerProps> = (args) => (
