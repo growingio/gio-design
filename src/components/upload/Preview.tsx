@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
-import { File, FileCsv, FileDoc, FilePdf, FileXlsx, CheckCircleFilled } from '@gio-design/icons';
+import { CheckCircleFilled } from '@gio-design/icons';
 import { UploadPrefixClsContext } from './UploadContext';
 import { IPreviewProps, IUploadFile } from './interface';
+import { CsvSVG, DocxSVG, PdfSVG, XlsxSVG, DefaultSVG } from './svg';
 
 const getFileLogo = (file: IUploadFile) => {
   const suffix = file.name.match(/.*\.(\w+)/)?.[1];
@@ -10,24 +11,23 @@ const getFileLogo = (file: IUploadFile) => {
 
   switch (suffix) {
     case 'csv':
-      return <FileCsv style={style} />;
+      return <CsvSVG style={style} />;
     case 'pdf':
-      return <FilePdf style={style} />;
+      return <PdfSVG style={style} />;
     case 'doc':
     case 'docx':
-      return <FileDoc style={style} />;
+      return <DocxSVG style={style} />;
     case 'xls':
     case 'xlsx':
-      return <FileXlsx style={style} />;
+      return <XlsxSVG style={style} />;
     default:
-      return <File style={style} />;
+      return <DefaultSVG style={style} />;
   }
 };
 
 const iconStyle = {
   width: 16,
   height: 16,
-  verticalAlign: 'text-bottom',
 };
 
 const Preview: React.FC<IPreviewProps> = ({ file, size = 32 }: IPreviewProps) => {
@@ -45,7 +45,7 @@ export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file }: IPreviewPr
     <div className={cls}>
       {getFileLogo(file)}
       <div className={fileNameCls}>{file?.name}</div>
-      <div>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
         <CheckCircleFilled color="#008a56" style={iconStyle} />
         上传成功！
       </div>

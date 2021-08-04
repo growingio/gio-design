@@ -1,14 +1,12 @@
 import React, { useState, useContext } from 'react';
 import classnames from 'classnames';
-import { PictureOutlined } from '@gio-design/icons';
 import Loading from '../../loading';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import { UploadPrefixClsContext } from '../UploadContext';
 import Preview, { PreviewForNotImage } from '../Preview';
 import Actions from '../Actions';
 import { isOnlyAcceptImg, isImageFile } from '../utils';
-import { dataMap } from '../../grid/help';
-import FolderSVG from '../FolderSVG';
+import { FolderSVG, PictureSVG } from '../svg';
 
 const DragTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, accept, onRemove, iconSize }: ITriggerProps) => {
   const [dragState, setDragState] = useState('');
@@ -20,13 +18,7 @@ const DragTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, accept, onRe
 
   const handleDrag = (e: React.DragEvent<HTMLDivElement>) => setDragState(e.type);
 
-  const iconCSSVariables = dataMap(
-    {
-      width: Array.isArray(iconSize) ? iconSize[0] : iconSize,
-      height: Array.isArray(iconSize) ? iconSize[1] : iconSize,
-    },
-    '--gio-upload-dragTrigger-img'
-  ) as React.CSSProperties;
+  const [currentWidth, currentHeight] = Array.isArray(iconSize) ? iconSize : [iconSize, iconSize];
 
   return (
     <Loading loading={file.status === STATUS_UPLOADING} size="small" title="上传中">
@@ -40,9 +32,9 @@ const DragTrigger: React.FC<ITriggerProps> = ({ triggerProps, file, accept, onRe
         {file.status !== STATUS_SUCCESS && (
           <div className={placeholderCls}>
             {isOnlyAcceptImg(accept) ? (
-              <PictureOutlined style={iconCSSVariables} />
+              <PictureSVG style={{ width: currentWidth, height: currentHeight }} />
             ) : (
-              <FolderSVG style={iconCSSVariables} />
+              <FolderSVG style={{ width: currentWidth, height: currentHeight }} />
             )}
             <div>点击或拖拽上传</div>
           </div>

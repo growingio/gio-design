@@ -28,13 +28,13 @@ describe('Testing drag-trigger', () => {
 
   it('drag-trigger width single size', () => {
     const { container } = render(<AreaUpload {...set(AreaUpload.args, 'iconSize', 40)} />);
-    expect(container.getElementsByClassName('gio-icon')).toHaveLength(1);
+    expect(container.getElementsByClassName('gio-icon')).toHaveLength(0);
   });
 
   it('drag-trigger with array size', () => {
     set(AreaUpload.args, 'triggerProps', { className: 'gio-upload-drag-test' });
     render(<AreaUpload {...set(AreaUpload.args, 'iconSize', [80, 80])} />);
-    expect(screen.getAllByRole('img')).toHaveLength(1);
+    expect(screen.getAllByRole('button')).toHaveLength(2);
   });
 });
 
