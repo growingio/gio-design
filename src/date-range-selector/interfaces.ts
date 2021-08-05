@@ -1,4 +1,4 @@
-import { CommonProps } from '@gio-design/utils/es/interfaces';
+import { CommonProps } from '@gio-design/utils';
 import { DateRangePickerProps } from '../date-range-picker';
 import { InputTriggerProps } from '../selector/interfaces';
 

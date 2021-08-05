@@ -1497,6 +1497,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.14.8":
+  version "7.14.8"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.8.tgz#7119a56f421018852694290b9f9148097391b446"
+  integrity sha512-twj3L8Og5SaCRCErB4x4ajbvBIVV77CGeFglHpeg5WC5FF8TZzBWXtTJ4MqaD9QszLYTtr+IsaAL2rEUevb+eg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.10.4.tgz"
@@ -2057,11 +2064,12 @@
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.2.tgz#8914f09567d042a98f144fe4f1d7f463954e3378"
   integrity sha512-1/EhIwL9+t3zHmxRWf01vr+U4PiANwVgcZ/MK8iet7srbQGrrrnKS5aKpLVt53Mr9HCGB0dAX1S3RDyjJ559uA==
 
-"@gio-design/utils@^21.7.0":
-  version "21.7.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/utils/-/utils-21.7.0.tgz#95ed252cb1175cb66c824614ac9d2fc9c33aeb03"
-  integrity sha512-R8RLbUvA1dnPHONDsxRu3Kd+yQKnBl1CUAVV7HQc4qbn96roD3pSrlc3dGySL9iebS49Zp4J0/oQ5j4Ufr1SzQ==
+"@gio-design/utils@21.8.1":
+  version "21.8.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/utils/-/utils-21.8.1.tgz#eb4c66b47ee2e6fe54617459f47e974e4a79ab33"
+  integrity sha512-2iWuJtrflcAdDbSOZUqFCAUaXcN9DXZTU5G2goMRxB8EXNSgPsuHIZwHKbChVhYEjOy48f6jaEVAU7HPyePz/w==
   dependencies:
+    "@babel/runtime" "^7.14.8"
     lodash "^4.17.21"
     pinyin "^2.9.1"
     react-intl "^5.15.8"
@@ -3628,10 +3636,17 @@
   dependencies:
     react-dnd "*"
 
-"@types/react-dom@>=16.9.0", "@types/react-dom@^17.0.1":
+"@types/react-dom@>=16.9.0":
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.1.tgz#d92d77d020bfb083e07cc8e0ac9f933599a4d56a"
   integrity sha512-yIVyopxQb8IDZ7SOHeTovurFq+fXiPICa+GV3gp0Xedsl+MwQlMLKmvrnEjFbQxjliH5YVAEWFh975eVNmKj7Q==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-dom@^17.0.9":
+  version "17.0.9"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.9.tgz#441a981da9d7be117042e1a6fd3dac4b30f55add"
+  integrity sha512-wIvGxLfgpVDSAMH5utdL9Ngm5Owu0VsGmldro3ORLXV8CShrL8awVj06NuEXFQ5xyaYfdca7Sgbk/50Ri1GdPg==
   dependencies:
     "@types/react" "*"
 
@@ -13506,7 +13521,7 @@ react-docgen@^5.0.0:
     node-dir "^0.1.10"
     strip-indent "^3.0.0"
 
-react-dom@^16.13.1:
+react-dom@^16.14.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
   integrity sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==
@@ -13722,7 +13737,7 @@ react-virtualized@^9.22.2:
     prop-types "^15.7.2"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.13.1:
+react@^16.14.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
   integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
