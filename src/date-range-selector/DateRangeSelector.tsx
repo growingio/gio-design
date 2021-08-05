@@ -18,6 +18,7 @@ function DateRangeSelector({
   placeholder,
   size,
   value,
+  disabledDate,
   ...restProps
 }: DateRangeSelectorProps) {
   const [visible, setVisible] = React.useState<boolean>();
@@ -53,6 +54,7 @@ function DateRangeSelector({
       onSelect={handleOnSelect}
       // @ts-ignore
       value={controlledValue}
+      disabledDate={disabledDate}
     />
   );
   return (

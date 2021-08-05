@@ -1,4 +1,5 @@
 import { CommonProps } from '@gio-design/utils';
+import { DateRangePickerProps } from '../date-range-picker';
 import { InputTriggerProps } from '../selector/interfaces';
 
 export type NullableDate = Date | undefined;
@@ -23,7 +24,8 @@ export interface RangeInputTriggerProps
 
 export interface DateRangeSelectorProps
   extends CommonProps,
-    Pick<RangeInputTriggerProps, 'borderless' | 'disabled' | 'placeholder' | 'size'> {
+    Pick<RangeInputTriggerProps, 'borderless' | 'disabled' | 'placeholder' | 'size'>,
+    Pick<DateRangePickerProps, 'disabledDate'> {
   /**
    * 默认选择的日期
    */

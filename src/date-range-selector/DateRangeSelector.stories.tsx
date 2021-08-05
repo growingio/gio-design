@@ -33,6 +33,13 @@ Basic.args = {
   onSelect: action('selected:'),
 };
 
+export const DisbaledDate = Template.bind({});
+DisbaledDate.args = {
+  placeholder: defaultPlaceholder,
+  onSelect: action('selected:'),
+  disabledDate: (current: Date) => current.getTime() > new Date().getTime(),
+};
+
 const TriggerTemplate: Story<RangeInputTriggerProps> = (args) => (
   <div style={{ width: 280 }}>
     <RIT {...args} />
