@@ -1,8 +1,5 @@
 import React from 'react';
-
-interface IconProps {
-  style?: React.CSSProperties;
-}
+import { IconProps } from './interface';
 
 function FolderSVG(props: IconProps) {
   return (
