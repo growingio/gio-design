@@ -22,7 +22,7 @@ export interface TextProps extends Pick<TooltipProps, 'placement'> {
    超出部分省略显示，默认为...
    */
   ellipsis?: string;
-  children?: string | React.ReactNode;
+  children?: string;
   /**
    是否去除文字最后省略号之前的空格
    */

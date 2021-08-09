@@ -14,13 +14,15 @@ export default {
 } as Meta;
 
 const Template: Story<TextProps> = (args) => (
-  <div style={{ width: '100px', margin: '0px auto' }}>
-    <Text {...args}>我是一个栗子我是一个栗子我是一个栗子我是一个栗子</Text>
+  <div style={{ fontSize: '20px' }}>
+    <Text {...args}>
+      我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子
+    </Text>
   </div>
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  lines: 3,
+  lines: 1,
   width: 0,
 };
