@@ -60,12 +60,7 @@ const CustomHeightTemplate: Story<ModalProps> = (args) => {
           setVisible(false);
         }}
       >
-        Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height
-        Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height
-        Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height
-        Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height
-        Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height
-        Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height Custom Height
+        {'Custom Height '.repeat(40)}
       </Modal>
     </div>
   );
