@@ -1,6 +1,13 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Content, IconContent, CustomizeTrigger, CustomizeSuffix, Placeholder } from '../Selector.stories';
+import {
+  Content,
+  IconContent,
+  CustomizeTrigger,
+  CustomizeSuffix,
+  Placeholder,
+  WithoutClear,
+} from '../demos/Selector.stories';
 
 describe('Selector', () => {
   it('renders text item', () => {
@@ -45,5 +52,11 @@ describe('Selector', () => {
     fireEvent.click(placeholder);
     expect(screen.getByLabelText('up-filled'));
     expect(handleVisibleChange).toHaveBeenCalled();
+  });
+
+  it('renders without clear icon', () => {
+    render(<WithoutClear {...WithoutClear.args} />);
+    fireEvent.mouseEnter(screen.getByText(/Content/));
+    expect(screen.queryByLabelText('close-circle-filled')).toBeNull();
   });
 });

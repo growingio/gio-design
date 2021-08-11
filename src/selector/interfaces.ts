@@ -42,6 +42,10 @@ export interface SelectorProps
     Omit<InputTriggerProps, 'className' | 'style'>,
     Omit<DropdownProps, 'trigger' | 'placement' | 'prefixCls' | 'children'> {
   /**
+   * 支持清除
+   */
+  allowClear?: boolean;
+  /**
    * 触发器自定义的 `className`
    */
   triggerClassName?: string;
