@@ -8,6 +8,7 @@ import { SelectorProps } from './interfaces';
 
 function Selector({
   actived,
+  allowClear = true,
   borderless,
   disabled,
   fitContent,
@@ -34,7 +35,7 @@ function Selector({
   }
 
   function renderSuffix() {
-    if (itemRender?.() && triggerHovered) {
+    if (allowClear && itemRender?.() && triggerHovered) {
       return (
         <CloseCircleFilled
           onClick={(e: React.MouseEvent) => {
