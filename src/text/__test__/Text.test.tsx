@@ -12,7 +12,7 @@ beforeEach(() => {
 describe('Testing Text', () => {
   it('basic text', () => {
     render(<Default {...Default.args} />);
-    expect(screen.getByText('我是一个栗子', { exact: false })).toBeTruthy();
+    expect(screen.getAllByText('我是一个栗子', { exact: false })).toBeTruthy();
   });
 
   it('empty text', () => {

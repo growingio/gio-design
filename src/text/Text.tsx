@@ -50,7 +50,7 @@ const Text: React.FC<TextProps> = (props: TextProps) => {
           onTruncate={handleTruncate}
           ref={contentRef}
         >
-          {children?.replace(/\s/g, '')}
+          {typeof children === 'string' ? children.replace(/\s/g, '') : children}
         </Truncate>
       </div>
     </Tooltip>
