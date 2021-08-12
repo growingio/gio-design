@@ -11,6 +11,7 @@ describe('DateRangeSelector', () => {
   const dateFormat = 'yyyy-MM-dd';
   const startDate = parse(startDateString, dateFormat, new Date());
   const endDate = parse(endDateString, dateFormat, new Date());
+  const closeIconClassName = 'close-circle-filled'
 
   beforeAll(() => {
     // mock now is 2021/05/20 00:00:00.000
@@ -48,12 +49,23 @@ describe('DateRangeSelector', () => {
 
     const trigger = screen.getByText(startDateString).parentElement;
     fireEvent.mouseEnter(trigger);
-    const clearIcon = screen.getByLabelText('close-circle-filled');
+    const clearIcon = screen.getByLabelText(closeIconClassName);
     expect(clearIcon).toBeDefined();
     fireEvent.click(clearIcon);
     expect(screen.getByText(defaultPlaceholder[1]));
     fireEvent.mouseLeave(trigger);
   });
+
+  it('can be clear date range', () => {
+    const handleOnClear = jest.fn();
+    render(<Basic value={[startDate, endDate]} onClear={handleOnClear} format={dateFormat} />)
+
+    const trigger = screen.getByText(startDateString).parentElement;
+    fireEvent.mouseEnter(trigger);
+    const clearIcon = screen.getByLabelText(closeIconClassName);
+    fireEvent.click(clearIcon);
+    expect(handleOnClear).toHaveBeenCalled()
+  })
 
   it('renders with default props', () => {
     render(<Basic placeholder={undefined} onSelect={undefined} />);
@@ -77,6 +89,6 @@ describe('DateRangeSelector', () => {
     const { rerender } = render(<RangeInputTrigger placeholder={undefined} />);
     rerender(<RangeInputTrigger value={[startDateString, endDateString]} />);
     fireEvent.mouseEnter(screen.getByText(startDateString).parentElement);
-    fireEvent.click(screen.getByLabelText('close-circle-filled'));
+    fireEvent.click(screen.getByLabelText(closeIconClassName));
   });
 });

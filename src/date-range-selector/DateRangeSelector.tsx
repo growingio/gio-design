@@ -19,6 +19,7 @@ function DateRangeSelector({
   size,
   value,
   disabledDate,
+  onClear,
   ...restProps
 }: DateRangeSelectorProps) {
   const [visible, setVisible] = React.useState<boolean>();
@@ -38,6 +39,7 @@ function DateRangeSelector({
   };
   const handleOnClear = () => {
     setControlledValue([undefined, undefined]);
+    onClear?.()
   };
   const overlay = (
     <DateRangePicker

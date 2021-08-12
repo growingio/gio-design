@@ -1,6 +1,6 @@
 import React from 'react';
 import { set } from 'lodash';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { mount, shallow } from 'enzyme';
 import { fakeXhr } from 'nise';
 import { act } from 'react-dom/test-utils';
@@ -10,6 +10,8 @@ import { testFile, dataUrl, url as imgUrl } from '../tests/mock';
 import * as utils from '../utils';
 import { sleep } from '../../../utils/test';
 import Upload from '..';
+import UploadList from '../UploadList';
+import DragTrigger from '../triggers/DragTrigger';
 import { STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 
 const uploadTypes = ['button', 'input', 'card', 'avatar', 'drag'];
@@ -20,10 +22,24 @@ const mockFile = new File(['foo'], 'foo.png', {
   type: 'image/png',
 });
 
+const mockFileList = [
+  new File(['one'], 'one.png', { type: 'image/png' }),
+  new File(['two'], 'two.jpg', { type: 'image/jpg' }),
+  new File(['three'], 'three.png', { type: 'image/png' }),
+];
+
 describe('Testing drag-trigger', () => {
+  // Mock for rc-util raf
+  window.requestAnimationFrame = (callback) => {
+    window.setTimeout(callback, 16);
+  };
+  window.cancelAnimationFrame = (id) => {
+    window.clearTimeout(id);
+  };
+
   it('basic drag-tigger', () => {
     render(<AreaUpload {...AreaUpload.args} />);
-    expect(screen.getAllByText('点击或拖拽上传')).toHaveLength(2);
+    expect(screen.getAllByText('点击上传或拖拽文件到此区域')).toHaveLength(2);
   });
 
   it('drag-trigger width single size', () => {
@@ -35,6 +51,76 @@ describe('Testing drag-trigger', () => {
     set(AreaUpload.args, 'triggerProps', { className: 'gio-upload-drag-test' });
     render(<AreaUpload {...set(AreaUpload.args, 'iconSize', [80, 80])} />);
     expect(screen.getAllByRole('button')).toHaveLength(2);
+  });
+
+  it('file multiple upload', async (done) => {
+    const { container } = render(<AreaUpload {...set(AreaUpload.args, 'directory', true)} />);
+    fireEvent.change(container.getElementsByTagName('input')[1], { target: { files: mockFileList } });
+    await fireEvent.click(screen.getAllByRole('img')[1]);
+    waitFor(() => expect(screen.queryByText('超过将无法上传', { exact: false })).toBeNull());
+    done();
+  });
+
+  it('picture multiple upload', async (done) => {
+    const { container } = render(<AreaUpload {...set(AreaUpload.args, 'directory', true)} />);
+    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    await fireEvent.click(screen.getAllByRole('img')[1]);
+    waitFor(() => expect(screen.queryByText('超过将无法上传', { exact: false })).toBeNull());
+    done();
+  });
+
+  it('should render file upload list', async (done) => {
+    const props = {
+      type: 'drag',
+      action: 'api',
+      multiple: true,
+      maxCount: 2,
+    };
+    const { container } = render(<Upload {...props} />);
+    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    await expect(screen.getByText('one.png')).toBeTruthy();
+    await fireEvent.mouseEnter(container.getElementsByClassName('gio-upload-file-list-item')[0]);
+    await fireEvent.click(screen.getAllByLabelText('delete-outlined')[0]);
+    waitFor(() => expect(screen.queryByText('one.png')).toBeNull());
+    done();
+  });
+
+  it('should render picture upload list', async (done) => {
+    const { container } = render(<Upload type="drag" accept="image/*" action="api" multiple maxCount={2} />);
+    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    await expect(screen.getByText('one.png')).toBeTruthy();
+    await fireEvent.mouseEnter(container.getElementsByClassName('gio-upload-file-list-item')[0]);
+    await fireEvent.click(screen.getAllByLabelText('delete-outlined')[0]);
+    waitFor(() => expect(screen.queryByText('one.png')).toBeNull());
+    done();
+  });
+
+  it('not show uploadList', async (done) => {
+    const props = {
+      multiple: true,
+      maxCount: 5,
+      showUploadList: false,
+    };
+    const { container } = render(<Upload type="drag" action="api" {...props} />);
+    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    waitFor(() => expect(screen.queryByText('one.png')).toBeNull());
+    done();
+  });
+
+  it('render upload list with items === undefined', () => {
+    render(<UploadList items={undefined} onRemove={() => null} />);
+    expect(screen.queryByText('文件', { exact: false })).toBeNull();
+  });
+
+  it('just render dragTrigger with the test', () => {
+    render(
+      <DragTrigger
+        file={{ status: 'none' }}
+        directory
+        items={undefined}
+        triggerProps={{ className: 'gio-upload-test' }}
+      />
+    );
   });
 });
 
@@ -114,7 +200,7 @@ describe('Testing Upload actions', () => {
         ),
       onSuccess: (response, { name }) => {
         expect(response).toEqual('uploaded success');
-        expect(name).toEqual('new_file_name.png');
+        expect(name).toEqual('undefined');
         done();
       },
     };
@@ -149,6 +235,8 @@ describe('Testing Upload actions', () => {
 
     const props = {
       action: 'api',
+      type: 'drag',
+      directory: true,
       onSuccess: (response) => {
         expect(response).toEqual('uploaded success');
         done();
@@ -156,10 +244,28 @@ describe('Testing Upload actions', () => {
     };
 
     const wrapper = mount(<Upload {...props} />);
-    wrapper.find('input').simulate('change', { target: { files: [testFile] } });
+    wrapper.find('input').simulate('change', { target: { files: mockFileList } });
 
     await sleep(50);
     currentRequest.respond(200, {}, 'uploaded success');
+  });
+
+  test('should call onSuccess function width multiple picture', async (done) => {
+    const props = {
+      action: 'api',
+      type: 'drag',
+      multiple: true,
+      accept: 'image/*',
+      onSuccess: (res) => {
+        expect(res).toBe('uploaded successful');
+        done();
+      },
+    };
+    const wrapper = mount(<Upload {...props} />);
+    wrapper.find('input').simulate('change', { target: { files: mockFileList } });
+
+    await sleep(100);
+    currentRequest.respond(200, {}, 'uploaded successful');
   });
 
   test('should happen HTTP Error', async (done) => {
@@ -184,10 +290,11 @@ describe('Testing Upload actions', () => {
     const props = {
       action: 'api',
       type: 'drag',
+      multiple: true,
     };
 
     const wrapper = mount(<Upload {...props} />);
-    wrapper.find('input').simulate('change', { target: { files: [mockFile] } });
+    wrapper.find('input').simulate('change', { target: { files: mockFileList } });
 
     await sleep(50);
     currentRequest.error();
@@ -199,9 +306,6 @@ describe('Testing Upload actions', () => {
         action: 'api',
         type: 'input',
         inputUploadType: 'url',
-        onSuccess: (_response, file) => {
-          expect(file.status).toEqual(STATUS_SUCCESS);
-        },
       };
 
       const wrapper = mount(<Upload {...props} />);
@@ -511,7 +615,6 @@ describe('Testing Upload actions', () => {
         type: 'drag',
         onSuccess: () => {
           wrapper.update();
-          console.log(wrapper.debug());
           expect(wrapper.find('.gio-upload__preview-file')).toHaveLength(1);
           done();
         },

@@ -7,7 +7,7 @@ export type NullableString = string | undefined;
 
 export interface RangeInputTriggerProps
   extends CommonProps,
-    Pick<InputTriggerProps, 'actived' | 'borderless' | 'disabled' | 'size'> {
+  Pick<InputTriggerProps, 'actived' | 'borderless' | 'disabled' | 'size'> {
   /**
    * 清空选择框的回调
    */
@@ -24,8 +24,8 @@ export interface RangeInputTriggerProps
 
 export interface DateRangeSelectorProps
   extends CommonProps,
-    Pick<RangeInputTriggerProps, 'borderless' | 'disabled' | 'placeholder' | 'size'>,
-    Pick<DateRangePickerProps, 'disabledDate'> {
+  Pick<RangeInputTriggerProps, 'borderless' | 'disabled' | 'placeholder' | 'size' | 'onClear'>,
+  Pick<DateRangePickerProps, 'disabledDate'> {
   /**
    * 默认选择的日期
    */
