@@ -31,6 +31,7 @@ export const Basic = Template.bind({});
 Basic.args = {
   placeholder: defaultPlaceholder,
   onSelect: action('selected:'),
+  onClear: action('onClear:')
 };
 
 export const DisbaledDate = Template.bind({});
