@@ -46,6 +46,30 @@ Default.args = {
   title: 'title',
 };
 
+const CustomHeightTemplate: Story<ModalProps> = (args) => {
+  const [visible, setVisible] = useState(false);
+  return (
+    <div>
+      <Button onClick={() => setVisible(true)}>Open Modal</Button>
+      <Modal
+        {...args}
+        style={{ top: 100, width: 500 }}
+        bodyStyle={{ height: 200 }}
+        visible={visible}
+        onClose={() => {
+          setVisible(false);
+        }}
+      >
+        {'Custom Height '.repeat(40)}
+      </Modal>
+    </div>
+  );
+};
+export const CustomHeight = CustomHeightTemplate.bind({});
+CustomHeight.args = {
+  title: 'title',
+};
+
 const StepModalTemplate: Story<StepModalProps> = (args) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [visible, setVisible] = useState(false);

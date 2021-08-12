@@ -1,7 +1,7 @@
 import { addons } from '@storybook/addons';
-import gioTheme from './gio-theme';
+import theme from './theme';
 
 addons.setConfig({
   panelPosition: 'right',
-  theme: gioTheme,
+  theme,
 });
