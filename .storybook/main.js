@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
   addons: [
     // addons on top
@@ -25,7 +23,6 @@ module.exports = {
         },
       },
     },
-    path.resolve('./.storybook/footer/preset'),
   ],
   features: {
     postcss: false,
