@@ -16,7 +16,8 @@ export default {
 const Template: Story<TextProps> = (args) => (
   <div style={{ fontSize: '20px' }}>
     <Text {...args}>
-      我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子我是一个栗子
+      我是一个栗子<span>我是一个栗子我是一个栗子我是一个栗子</span>我是一个栗子我是一个栗子我是一
+      <div>个栗子我是一个栗子我是一个栗子我是一个栗子我</div>是一个栗子我是一个栗子
     </Text>
   </div>
 );
