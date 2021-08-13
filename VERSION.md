@@ -1,16 +1,15 @@
-## [21.8.3](https://github.com/growingio/gio-design/compare/v21.8.2...v21.8.3) (2021-08-12)
+## [21.8.4](https://github.com/growingio/gio-design/compare/v21.8.3...v21.8.4) (2021-08-13)
 
 
 ### Bug Fixes
 
-* **time-picker:** add background color for actived item ([7e0a43e](https://github.com/growingio/gio-design/commit/7e0a43e45d68ff1b1625a1505bfd030d7f158198))
+* **date-picker, date-range-picker:** add `box-sizing: content-box` style ([#1184](https://github.com/growingio/gio-design/issues/1184)) ([d685252](https://github.com/growingio/gio-design/commit/d685252c455911272e1cfb393213eca59909bbab))
+* **text:** change text children type ([#1181](https://github.com/growingio/gio-design/issues/1181)) ([69fdfef](https://github.com/growingio/gio-design/commit/69fdfefa90bbddcd6567b5ec2d3b315b5fef8fa0))
 
 
 ### Features
 
-* **modal:** modify modal style ([bd35357](https://github.com/growingio/gio-design/commit/bd353576daca94c3d165fbb04a3928ec341f06cc))
-* **modal:** modify modal style ([557192a](https://github.com/growingio/gio-design/commit/557192a221944bd21685d1296ef2acdadd3021a8))
-* **selector:** add allowClear prop to disable clear ([c3e7ed1](https://github.com/growingio/gio-design/commit/c3e7ed1906df82c028b389ac516eebf6da11dabb))
+* **DateRangeSelector:** support onClear callback functions ([#1180](https://github.com/growingio/gio-design/issues/1180)) ([ef600ab](https://github.com/growingio/gio-design/commit/ef600ab97d6267eab415393356dc2372ad0e8275))
 
 
 
