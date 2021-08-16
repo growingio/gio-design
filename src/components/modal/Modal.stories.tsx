@@ -53,7 +53,7 @@ const CustomHeightTemplate: Story<ModalProps> = (args) => {
       <Button onClick={() => setVisible(true)}>Open Modal</Button>
       <Modal
         {...args}
-        style={{ top: 100, width: 500 }}
+        style={{ top: 100, width: 500, margin: '0 auto' }}
         bodyStyle={{ height: 200 }}
         visible={visible}
         onClose={() => {
