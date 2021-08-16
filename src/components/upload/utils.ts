@@ -3,6 +3,26 @@ import { IRcFile, IUploadFile, STATUS_NOT_YET, STATUS_SUCCESS } from './interfac
 
 export const getUid = (): string => `${defaultRootPrefixCls}-upload-${Date.now()}`;
 
+// 更新上传文件列表
+export const updateFileList = (file: IUploadFile, fileList: IUploadFile[]) => {
+  const currentFileList = [...fileList];
+  const findIndex = fileList.findIndex((item) => item.uid === file.uid);
+  if (findIndex === -1) {
+    currentFileList.push(file);
+  } else {
+    currentFileList[findIndex] = file;
+  }
+  return currentFileList;
+};
+
+// 删除列表中的某个文件
+export function removeFileItem(file: IUploadFile, fileList: IUploadFile[]) {
+  if (!file) {
+    return fileList;
+  }
+  return fileList.filter((item) => item.uid !== file.uid);
+}
+
 export const fileToObject = (file: IRcFile): IUploadFile => ({
   ...file,
   lastModified: file.lastModified,

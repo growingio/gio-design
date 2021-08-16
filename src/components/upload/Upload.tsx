@@ -21,9 +21,19 @@ import CardTrigger from './triggers/CardTrigger';
 import InputTrigger from './triggers/InputTrigger';
 import AvatarTrigger from './triggers/AvatarTrigger';
 import DragTrigger from './triggers/DragTrigger';
-import { imageFile2DataUrl, fileToObject, getEmptyFileObj, fetchImageFileFromUrl } from './utils';
+import {
+  imageFile2DataUrl,
+  fileToObject,
+  getEmptyFileObj,
+  fetchImageFileFromUrl,
+  updateFileList,
+  removeFileItem,
+  isOnlyAcceptImg,
+} from './utils';
 import xhrRequest from './xhrRequest';
 import { UploadPrefixClsContext } from './UploadContext';
+import UploadList from './UploadList';
+import Alert from '../alert';
 
 const triggerMap: ITriggerMap = {
   button: ButtonTrigger,
@@ -54,9 +64,20 @@ const Upload: React.FC<IUploadProps> = ({
   children,
   placeholderImg,
   iconSize,
+  maxCount = 1,
+  directory,
+  multiple,
+  showUploadList = true,
   ...restProps
 }: IUploadProps) => {
   const [file, setFile] = useState<IUploadFile>(getEmptyFileObj(uploadedFile));
+  const [showAlert, setAlert] = useState(false);
+  // 要上传的文件列表
+  const [uploadFileList, setUploadFileList] = useState<IRcFile[]>([]);
+  // 已经上传了的文件数量
+  const [finish, setFinish] = useState(0);
+  // 控制dragTrigger是否disabled
+  const [uploadDisabled, setUploadDisabled] = useState(disabled);
   useEffect(() => {
     setFile(getEmptyFileObj(uploadedFile));
   }, [uploadedFile]);
@@ -65,15 +86,40 @@ const Upload: React.FC<IUploadProps> = ({
   const prefixCls = usePrefixCls('upload', customPrefixCls);
 
   const rootCls = classnames(className, prefixCls, {
-    [`${prefixCls}--disabled`]: disabled,
+    [`${prefixCls}--disabled`]: disabled || uploadDisabled,
     [`${prefixCls}--error`]: file.status === STATUS_ERROR,
     [`${prefixCls}--success`]: file.status === STATUS_SUCCESS && !successBorder,
     [`${prefixCls}--success-border`]: file.status === STATUS_SUCCESS && successBorder,
+    [`${prefixCls}-drag-container`]: type === 'drag',
   });
   const Trigger = triggerMap[type];
 
-  const handleBeforeUpload = (fileBeforeUpload: IRcFile, fileList: IRcFile[]) =>
+  const handleSingleBeforeUpload = (fileBeforeUpload: IRcFile, fileList: IRcFile[]) => {
     beforeUpload?.(fileBeforeUpload, fileList);
+  };
+
+  const handleMultipleBeforeUpload = (fileBeforeUpload: IRcFile, fileList: IRcFile[]) => {
+    const mergeFileList = [...uploadFileList, ...fileList];
+    // 如果选择的文件数量超出最大限制，进行截断
+    const fileIndex = mergeFileList.findIndex((item) => item.uid === fileBeforeUpload.uid);
+    if (fileIndex >= maxCount) {
+      return false;
+    }
+
+    setUploadFileList(mergeFileList);
+
+    // 选择的文件超出最大上传文件数量限制
+    if (mergeFileList.length >= maxCount) {
+      setUploadDisabled(true);
+      mergeFileList.length > maxCount && setAlert(true);
+      const newFileList = mergeFileList.slice(0, maxCount);
+      setUploadFileList(newFileList);
+      beforeUpload?.(fileBeforeUpload, newFileList);
+    }
+
+    beforeUpload?.(fileBeforeUpload, fileList);
+    return true;
+  };
 
   const handleStart = (fileOnStart: IRcFile) => {
     const uploadFile: IUploadFile = {
@@ -90,6 +136,7 @@ const Upload: React.FC<IUploadProps> = ({
       status: STATUS_UPLOADING,
       percent: step.percent,
     };
+
     setFile(progressFile);
     onProgress?.(step, fileOnProgress);
   };
@@ -100,6 +147,7 @@ const Upload: React.FC<IUploadProps> = ({
       ...fileToObject(fileOnSuccess),
       response,
       status: STATUS_SUCCESS,
+      percent: 100,
     };
 
     try {
@@ -111,13 +159,15 @@ const Upload: React.FC<IUploadProps> = ({
       console.error(error);
     }
 
+    setUploadFileList(updateFileList(uploadFile, uploadFileList) as IRcFile[]);
+    setFinish(finish + 1);
     setFile(uploadFile);
     onSuccess?.(response, uploadFile);
   };
 
   const handleError = (error: Error, response: any, fileOnError: IRcFile) => {
     if (type !== 'input') {
-      Toast.error('上传失败！');
+      !directory && !multiple && Toast.error('上传失败！');
     }
     const errorFile: IUploadFile = {
       ...fileToObject(fileOnError),
@@ -125,16 +175,26 @@ const Upload: React.FC<IUploadProps> = ({
       response,
       status: STATUS_ERROR,
     };
+    setUploadFileList(updateFileList(errorFile, uploadFileList) as IRcFile[]);
+    setFinish(finish + 1);
     setFile(type !== 'drag' ? getEmptyFileObj(uploadedFile) : errorFile);
     onError?.(error, errorFile);
   };
 
-  const handleRemove = () => {
+  const handleRemove = (_file: IUploadFile) => {
     Promise.resolve(typeof onRemove === 'function' ? onRemove(file) : onRemove).then((res) => {
       // 使用者返回了 false，阻止删除操作
       if (res === false) {
         return;
       }
+
+      const removedFileList = removeFileItem(_file, uploadFileList);
+
+      removedFileList.length < maxCount && setAlert(false);
+      removedFileList.length < maxCount && setUploadDisabled(false);
+      setFinish(removedFileList.length);
+      setUploadFileList(removedFileList as IRcFile[]);
+
       if (file.dataUrl === uploadedFile?.dataUrl) {
         setFile({
           uid: '',
@@ -199,12 +259,35 @@ const Upload: React.FC<IUploadProps> = ({
     }
   };
 
+  const showBeyondAlert = () =>
+    showAlert &&
+    maxCount && (
+      <Alert
+        type="error"
+        message={
+          isOnlyAcceptImg(restProps.accept)
+            ? `图片最多上传${maxCount}张，超过将无法上传`
+            : `文件最多上传${maxCount}个，超过将无法上传`
+        }
+        showIcon
+        closeable
+        onClose={() => setAlert(false)}
+      />
+    );
+
+  const renderUploadList = () =>
+    showUploadList && (directory || multiple) ? (
+      <UploadList items={uploadFileList} onRemove={handleRemove} accept={restProps.accept} />
+    ) : null;
+
   const rcUploadProps = {
     ...restProps,
-    disabled,
-    prefixCls,
+    disabled: disabled || uploadDisabled,
+    prefixCls: type === 'drag' ? `${prefixCls}-drag-container` : prefixCls,
     action,
-    beforeUpload: handleBeforeUpload,
+    directory,
+    multiple,
+    beforeUpload: directory || multiple ? handleMultipleBeforeUpload : handleSingleBeforeUpload,
     onStart: handleStart,
     onProgress: handleProgress,
     onSuccess: handleSuccess,
@@ -215,9 +298,10 @@ const Upload: React.FC<IUploadProps> = ({
   const triggerComponentProps: ITriggerProps = {
     triggerProps: {
       ...triggerProps,
-      disabled,
     },
     file,
+    items: uploadFileList,
+    finishCount: finish,
     accept: restProps.accept,
     inputUploadType,
     setFile,
@@ -225,7 +309,27 @@ const Upload: React.FC<IUploadProps> = ({
     onInputUpload: handleInputUpload,
     placeholderImg,
     iconSize,
+    directory,
+    multiple,
+    maxCount,
+    disabled: disabled === true ? disabled : uploadDisabled,
   };
+
+  if (type === 'drag') {
+    return (
+      <UploadPrefixClsContext.Provider value={prefixCls}>
+        <div>
+          <div className={rootCls} style={style}>
+            {showBeyondAlert()}
+            <RcUpload {...rcUploadProps} ref={rcUploadRef}>
+              <Trigger {...triggerComponentProps}>{children}</Trigger>
+            </RcUpload>
+          </div>
+          {renderUploadList()}
+        </div>
+      </UploadPrefixClsContext.Provider>
+    );
+  }
 
   return (
     <UploadPrefixClsContext.Provider value={prefixCls}>

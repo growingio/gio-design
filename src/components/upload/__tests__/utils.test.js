@@ -198,4 +198,22 @@ describe('Testing Upload utils', () => {
     expect(object).toHaveProperty('status');
     expect(object).toHaveProperty('dataUrl');
   });
+
+  test('test updateUploadList and removeFileItem', () => {
+    const mockFile1 = {
+      uid: '12345',
+      name: 'first.jpg',
+    };
+
+    const mockFile2 = {
+      uid: '12345',
+      name: 'second.png',
+    };
+
+    const list = module.updateFileList(mockFile2, [mockFile1]);
+    expect(list[0].name).toEqual('second.png');
+
+    const otherList = module.removeFileItem(false, [mockFile1]);
+    expect(otherList.length).toEqual(1);
+  });
 });

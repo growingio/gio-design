@@ -21,7 +21,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 1`] = `
     />
     <button
       className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
-      disabled={true}
       onClick={[Function]}
       type="button"
     >
@@ -84,7 +83,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 2`] = `
     />
     <button
       className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
-      disabled={true}
       onClick={[Function]}
       type="button"
     >
@@ -147,7 +145,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 3`] = `
     />
     <button
       className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
-      disabled={true}
       onClick={[Function]}
       type="button"
     >
@@ -210,7 +207,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 4`] = `
     />
     <button
       className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
-      disabled={true}
       onClick={[Function]}
       type="button"
     >
@@ -273,7 +269,6 @@ exports[`Testing Upload mount match snapshot should match snapshot 5`] = `
     />
     <button
       className="gio-btn gio-upload__btn gio-btn-primary gio-btn-large"
-      disabled={true}
       onClick={[Function]}
       type="button"
     >

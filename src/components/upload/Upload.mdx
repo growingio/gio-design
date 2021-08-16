@@ -44,5 +44,8 @@ import Upload from './Upload';
 1. 可以将文件或图片等拖拽到制定区域上传，也可以点击上传。若上传的是图片，上传后图片等比缩放填充满父容器。
 2. 图片上传中套用 Loading 组件。若上传失败，出现 toast 提示失败原因。
 3. 文件上传中套用 Loading 组件。上传成功/上传失败都在界面上显示。
+4. 可批量上传，通过 directory 和 multiple 两个参数控制，directory 为文件夹上传，multiple 为多选文件上传，两者同时设置时，directory 的优先级更高。
+5. 批量上传时，已上传的文件列表会展示在上传区域下方，列表项的内容主要有文件名、上传成功或失败原因、移除按钮。
+6. 批量上传时可设置是否显示上传文件列表，并可设置最大上传数量限制。
 
 [Example](/?path=/story/functional-components-upload--area-upload)

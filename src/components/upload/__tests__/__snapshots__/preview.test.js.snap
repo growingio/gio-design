@@ -2920,7 +2920,7 @@ initialize {
                   "aria-label": "check-circle-filled",
                   "class": "gio-icon",
                   "role": "img",
-                  "style": "width:16px;height:16px",
+                  "style": "width:16px;height:16px;margin-right:8px",
                 },
                 "children": Array [
                   Object {
@@ -3146,7 +3146,7 @@ initialize {
                     "aria-label": "check-circle-filled",
                     "class": "gio-icon",
                     "role": "img",
-                    "style": "width:16px;height:16px",
+                    "style": "width:16px;height:16px;margin-right:8px",
                   },
                   "children": Array [
                     Object {
@@ -3420,7 +3420,7 @@ initialize {
                 "aria-label": "check-circle-filled",
                 "class": "gio-icon",
                 "role": "img",
-                "style": "width:16px;height:16px",
+                "style": "width:16px;height:16px;margin-right:8px",
               },
               "children": Array [
                 Object {
@@ -3646,7 +3646,7 @@ initialize {
                   "aria-label": "check-circle-filled",
                   "class": "gio-icon",
                   "role": "img",
-                  "style": "width:16px;height:16px",
+                  "style": "width:16px;height:16px;margin-right:8px",
                 },
                 "children": Array [
                   Object {
@@ -6739,7 +6739,7 @@ initialize {
               "aria-label": "check-circle-filled",
               "class": "gio-icon",
               "role": "img",
-              "style": "width:16px;height:16px",
+              "style": "width:16px;height:16px;margin-right:8px",
             },
             "children": Array [
               Object {
@@ -6965,7 +6965,7 @@ initialize {
                 "aria-label": "check-circle-filled",
                 "class": "gio-icon",
                 "role": "img",
-                "style": "width:16px;height:16px",
+                "style": "width:16px;height:16px;margin-right:8px",
               },
               "children": Array [
                 Object {
@@ -12968,7 +12968,7 @@ initialize {
                   "aria-label": "check-circle-filled",
                   "class": "gio-icon",
                   "role": "img",
-                  "style": "width:16px;height:16px",
+                  "style": "width:16px;height:16px;margin-right:8px",
                 },
                 "children": Array [
                   Object {
@@ -13194,7 +13194,7 @@ initialize {
                     "aria-label": "check-circle-filled",
                     "class": "gio-icon",
                     "role": "img",
-                    "style": "width:16px;height:16px",
+                    "style": "width:16px;height:16px;margin-right:8px",
                   },
                   "children": Array [
                     Object {
@@ -13468,7 +13468,7 @@ initialize {
                 "aria-label": "check-circle-filled",
                 "class": "gio-icon",
                 "role": "img",
-                "style": "width:16px;height:16px",
+                "style": "width:16px;height:16px;margin-right:8px",
               },
               "children": Array [
                 Object {
@@ -13694,7 +13694,7 @@ initialize {
                   "aria-label": "check-circle-filled",
                   "class": "gio-icon",
                   "role": "img",
-                  "style": "width:16px;height:16px",
+                  "style": "width:16px;height:16px;margin-right:8px",
                 },
                 "children": Array [
                   Object {
@@ -16787,7 +16787,7 @@ initialize {
               "aria-label": "check-circle-filled",
               "class": "gio-icon",
               "role": "img",
-              "style": "width:16px;height:16px",
+              "style": "width:16px;height:16px;margin-right:8px",
             },
             "children": Array [
               Object {
@@ -17013,7 +17013,7 @@ initialize {
                 "aria-label": "check-circle-filled",
                 "class": "gio-icon",
                 "role": "img",
-                "style": "width:16px;height:16px",
+                "style": "width:16px;height:16px;margin-right:8px",
               },
               "children": Array [
                 Object {
@@ -23016,7 +23016,7 @@ initialize {
                   "aria-label": "check-circle-filled",
                   "class": "gio-icon",
                   "role": "img",
-                  "style": "width:16px;height:16px",
+                  "style": "width:16px;height:16px;margin-right:8px",
                 },
                 "children": Array [
                   Object {
@@ -23242,7 +23242,7 @@ initialize {
                     "aria-label": "check-circle-filled",
                     "class": "gio-icon",
                     "role": "img",
-                    "style": "width:16px;height:16px",
+                    "style": "width:16px;height:16px;margin-right:8px",
                   },
                   "children": Array [
                     Object {
@@ -23516,7 +23516,7 @@ initialize {
                 "aria-label": "check-circle-filled",
                 "class": "gio-icon",
                 "role": "img",
-                "style": "width:16px;height:16px",
+                "style": "width:16px;height:16px;margin-right:8px",
               },
               "children": Array [
                 Object {
@@ -23742,7 +23742,7 @@ initialize {
                   "aria-label": "check-circle-filled",
                   "class": "gio-icon",
                   "role": "img",
-                  "style": "width:16px;height:16px",
+                  "style": "width:16px;height:16px;margin-right:8px",
                 },
                 "children": Array [
                   Object {
@@ -26835,7 +26835,7 @@ initialize {
               "aria-label": "check-circle-filled",
               "class": "gio-icon",
               "role": "img",
-              "style": "width:16px;height:16px",
+              "style": "width:16px;height:16px;margin-right:8px",
             },
             "children": Array [
               Object {
@@ -27061,7 +27061,7 @@ initialize {
                 "aria-label": "check-circle-filled",
                 "class": "gio-icon",
                 "role": "img",
-                "style": "width:16px;height:16px",
+                "style": "width:16px;height:16px;margin-right:8px",
               },
               "children": Array [
                 Object {
@@ -33064,7 +33064,7 @@ initialize {
                   "aria-label": "check-circle-filled",
                   "class": "gio-icon",
                   "role": "img",
-                  "style": "width:16px;height:16px",
+                  "style": "width:16px;height:16px;margin-right:8px",
                 },
                 "children": Array [
                   Object {
@@ -33290,7 +33290,7 @@ initialize {
                     "aria-label": "check-circle-filled",
                     "class": "gio-icon",
                     "role": "img",
-                    "style": "width:16px;height:16px",
+                    "style": "width:16px;height:16px;margin-right:8px",
                   },
                   "children": Array [
                     Object {
@@ -33564,7 +33564,7 @@ initialize {
                 "aria-label": "check-circle-filled",
                 "class": "gio-icon",
                 "role": "img",
-                "style": "width:16px;height:16px",
+                "style": "width:16px;height:16px;margin-right:8px",
               },
               "children": Array [
                 Object {
@@ -33790,7 +33790,7 @@ initialize {
                   "aria-label": "check-circle-filled",
                   "class": "gio-icon",
                   "role": "img",
-                  "style": "width:16px;height:16px",
+                  "style": "width:16px;height:16px;margin-right:8px",
                 },
                 "children": Array [
                   Object {
@@ -36883,7 +36883,7 @@ initialize {
               "aria-label": "check-circle-filled",
               "class": "gio-icon",
               "role": "img",
-              "style": "width:16px;height:16px",
+              "style": "width:16px;height:16px;margin-right:8px",
             },
             "children": Array [
               Object {
@@ -37109,7 +37109,7 @@ initialize {
                 "aria-label": "check-circle-filled",
                 "class": "gio-icon",
                 "role": "img",
-                "style": "width:16px;height:16px",
+                "style": "width:16px;height:16px;margin-right:8px",
               },
               "children": Array [
                 Object {

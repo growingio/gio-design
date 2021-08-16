@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { CheckCircleFilled } from '@gio-design/icons';
 import { UploadPrefixClsContext } from './UploadContext';
 import { IPreviewProps, IUploadFile } from './interface';
-import { CsvSVG, DocxSVG, PdfSVG, XlsxSVG, DefaultSVG } from './svg';
+import { CsvSVG, DocxSVG, PdfSVG, XlsxSVG, FolderSVG } from './svg';
 
 const getFileLogo = (file: IUploadFile) => {
   const suffix = file.name.match(/.*\.(\w+)/)?.[1];
@@ -21,13 +21,14 @@ const getFileLogo = (file: IUploadFile) => {
     case 'xlsx':
       return <XlsxSVG style={style} />;
     default:
-      return <DefaultSVG style={style} />;
+      return <FolderSVG style={style} />;
   }
 };
 
 const iconStyle = {
   width: 16,
   height: 16,
+  marginRight: 8,
 };
 
 const Preview: React.FC<IPreviewProps> = ({ file, size = 32 }: IPreviewProps) => {
