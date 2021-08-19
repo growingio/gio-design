@@ -23,15 +23,15 @@ export default {
 } as Meta;
 
 const Template: Story<SearchBarProps> = (args) => {
-  const [value, setValue] = React.useState('');
-
+  const [currentValue, setCurrentValue] = React.useState('');
+  const { id, value, onChange } = args;
   return (
     <SearchBar
-      style={{ width: "300px" }}
+      style={{ width: '300px' }}
       {...args}
-      value={args.value ? args.value : value}
-      onChange={args.onChange ? args.onChange : setValue}
-      id={args.id ? args.id : 'demo'}
+      value={value || currentValue}
+      onChange={onChange || setCurrentValue}
+      id={id || 'demo'}
     />
   );
 };
@@ -40,7 +40,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   size: 'middle',
-  placeholder: "请搜索...",
+  placeholder: '请搜索...',
   storageNum: 5,
   disabled: false,
   showStorage: true,

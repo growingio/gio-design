@@ -3,7 +3,6 @@ on: workflow_dispatch
 jobs:
   publish-package:
     name: Publish package
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

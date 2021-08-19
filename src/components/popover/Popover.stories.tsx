@@ -44,7 +44,8 @@ const text = () => (
 );
 
 const Template: Story<PopoverProps> = (args) => {
-  const triggerText = args.trigger === 'click' ? 'click me' : 'hover me';
+  const { trigger } = args;
+  const triggerText = trigger === 'click' ? 'click me' : 'hover me';
 
   return (
     <div className="popover-demo-box">

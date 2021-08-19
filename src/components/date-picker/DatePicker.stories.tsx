@@ -28,18 +28,14 @@ const Template: Story<DatePickerProps> = (args) => {
   const onChange = (value: Moment | null) => {
     value && setTime(value);
   };
-  const disabledDate = (value: Moment) => {
+  const { disabledDate } = args;
+  const handleDisabledDate = (value: Moment) => {
     const date = moment(new Date()).add(-1, 'days');
     return value.isBefore(date);
   };
   return (
     <div style={{ marginLeft: '200px', marginTop: '100px' }}>
-      <DatePicker
-        {...args}
-        value={time}
-        onChange={onChange}
-        disabledDate={args.disabledDate ? args.disabledDate : disabledDate}
-      />
+      <DatePicker {...args} value={time} onChange={onChange} disabledDate={disabledDate || handleDisabledDate} />
     </div>
   );
 };

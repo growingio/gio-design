@@ -56,20 +56,23 @@ const groupDataSource = [
   { label: 'option B-2', value: 'b-2', groupId: 'b' },
 ];
 
-const Template: Story<Props> = (args) => (
-  <>
-    <Title>{args.title}</Title>
-    <Cascader {...args} />
-  </>
-);
+const Template: Story<Props> = (args) => {
+  const { title } = args;
+  return (
+    <>
+      <Title>{title}</Title>
+      <Cascader {...args} />
+    </>
+  );
+};
 
 const GroupTemplate: Story<Props> = (args) => {
   const groupNameIcons: { [key: string]: React.ReactNode } = { a: '🎃', b: '🎄' };
   const groupName = (id: any) => (
-      <div role="img" aria-label="groupName icon">
-        {groupNameIcons[id] ?? 'groupName'}
-      </div>
-    );
+    <div role="img" aria-label="groupName icon">
+      {groupNameIcons[id] ?? 'groupName'}
+    </div>
+  );
 
   return (
     <>
@@ -86,10 +89,10 @@ const SearchTemplate: Story<Props> = (args) => {
   const [deepSearch, setDeepSearch] = React.useState(false);
   const [ignoreCase, setIgnoreCase] = React.useState(true);
   const [lazySearch, setLazySearch] = React.useState(false);
-
+  const { title } = args;
   return (
     <div>
-      <Title>{args.title}</Title>
+      <Title>{title}</Title>
       <Grid gap={5} collapse>
         <Grid>
           <Checkbox
@@ -169,9 +172,11 @@ const CustomTemplate: Story<Props> = (args) => {
   );
 };
 
-const AsyncTemplate: Story<Props> = (args) => (
+const AsyncTemplate: Story<Props> = (args) => {
+  const { title } = args;
+  return (
     <>
-      <Title>{args.title}</Title>
+      <Title>{title}</Title>
       <Cascader
         {...args}
         // eslint-disable-next-line
@@ -198,10 +203,13 @@ const AsyncTemplate: Story<Props> = (args) => (
       />
     </>
   );
+};
 
-const TooltipTemplate: Story<Props> = (args) => (
+const TooltipTemplate: Story<Props> = (args) => {
+  const { title } = args;
+  return (
     <>
-      <Title>{args.title}</Title>
+      <Title>{title}</Title>
       <Cascader
         {...args}
         afterInner={(nodeData) => {
@@ -213,6 +221,7 @@ const TooltipTemplate: Story<Props> = (args) => (
       />
     </>
   );
+};
 
 export const Default = Template.bind({});
 export const KeyMapping = Template.bind({});

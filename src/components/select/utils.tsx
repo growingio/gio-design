@@ -21,7 +21,7 @@ export function convertNodeToOption(node: React.ReactElement, group: group): Opt
   if (groupLabel && groupLabel) {
     return { value, label: children !== undefined ? children : value, groupValue, groupLabel, ...restProps };
   }
-    return { value, label: children !== undefined ? children : value, ...restProps };
+  return { value, label: children !== undefined ? children : value, ...restProps };
 }
 
 export const getFlattenOptions = (data: Option[], hasGroup: boolean) => {
@@ -101,26 +101,28 @@ export function handleOptions(
   };
 }
 // provide search matching hightlight;
-export const defaultLabelRenderer = (input: string, prefix: string) => (
-  option: Option,
-  isGroup: boolean
-): React.ReactNode => {
-  if (isGroup || typeof option.label !== 'string') return option.title || option.label;
-  const index = option.label.indexOf(input);
-  return (
-    <div style={{ display: 'inline-block', lineHeight: '40px' }}>
-      {option.label.slice(0, index)}
-      <span className={`${prefix}-search-highlight`}>{option.label.slice(index, index + input.length)}</span>
-      {option.label.slice(index + input.length)}
-    </div>
-  );
-};
+export const defaultLabelRenderer =
+  (input: string, prefix: string) =>
+  (option: Option, isGroup: boolean): React.ReactNode => {
+    const { title, label } = option;
+    if (isGroup || typeof label !== 'string') return title || label;
+    const index = label.indexOf(input);
+    return (
+      <div style={{ display: 'inline-block', lineHeight: '40px' }}>
+        {label.slice(0, index)}
+        <span className={`${prefix}-search-highlight`}>{label.slice(index, index + input.length)}</span>
+        {label.slice(index + input.length)}
+      </div>
+    );
+  };
 export const defaultOptionLabelRenderer = (value: string | number, option?: Option) =>
   option?.title || option?.label || value;
-export const defaultSearchPredicate = (input: string) => (o: Option) => typeof o.label === 'string' ? o.label.includes(input) : true;
+export const defaultSearchPredicate = (input: string) => (o: Option) =>
+  typeof o.label === 'string' ? o.label.includes(input) : true;
 export const defaultMatchPredicate = (input: string) => (o: Option) => o.label === input;
 
-export const CustomOption = (value: string | number, withGroup = false, id = customOptionKeyPrefix): Option => withGroup
+export const CustomOption = (value: string | number, withGroup = false, id = customOptionKeyPrefix): Option =>
+  withGroup
     ? {
         value,
         label: value.toString(),
