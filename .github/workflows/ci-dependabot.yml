@@ -46,18 +46,14 @@ jobs:
   build:
     name: Build package
     needs: install
-    strategy:
-      matrix:
-        node_version: [10, 12, 14]
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Node.js
         uses: actions/setup-node@v2.4.0
         with:
-          node-version: ${{ matrix.node_version }}
+          node-version: 14
       - name: Restore Node.js modules
         uses: actions/cache@v2.1.6
         with:

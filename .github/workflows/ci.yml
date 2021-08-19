@@ -69,13 +69,6 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Restore package from cache
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            dist
-            es
-          key: packages-${{ github.sha }}
       - name: Cache test report
         uses: actions/cache@v2.1.6
         with:
