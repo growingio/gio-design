@@ -200,7 +200,7 @@ describe('Testing Upload actions', () => {
         ),
       onSuccess: (response, { name }) => {
         expect(response).toEqual('uploaded success');
-        expect(name).toEqual('undefined');
+        expect(name).toEqual('new_file_name.png');
         done();
       },
     };

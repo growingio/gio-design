@@ -46,7 +46,7 @@ export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file }: IPreviewPr
     <div className={cls}>
       {getFileLogo(file)}
       <div className={fileNameCls}>{file?.name}</div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <CheckCircleFilled color="#008a56" style={iconStyle} />
         上传成功！
       </div>

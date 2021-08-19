@@ -94,9 +94,8 @@ const Upload: React.FC<IUploadProps> = ({
   });
   const Trigger = triggerMap[type];
 
-  const handleSingleBeforeUpload = (fileBeforeUpload: IRcFile, fileList: IRcFile[]) => {
+  const handleSingleBeforeUpload = (fileBeforeUpload: IRcFile, fileList: IRcFile[]) =>
     beforeUpload?.(fileBeforeUpload, fileList);
-  };
 
   const handleMultipleBeforeUpload = (fileBeforeUpload: IRcFile, fileList: IRcFile[]) => {
     const mergeFileList = [...uploadFileList, ...fileList];
@@ -114,11 +113,10 @@ const Upload: React.FC<IUploadProps> = ({
       mergeFileList.length > maxCount && setAlert(true);
       const newFileList = mergeFileList.slice(0, maxCount);
       setUploadFileList(newFileList);
-      beforeUpload?.(fileBeforeUpload, newFileList);
+      return beforeUpload?.(fileBeforeUpload, newFileList);
     }
 
-    beforeUpload?.(fileBeforeUpload, fileList);
-    return true;
+    return beforeUpload?.(fileBeforeUpload, fileList);
   };
 
   const handleStart = (fileOnStart: IRcFile) => {

@@ -2912,7 +2912,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
-              "style": "display:flex;align-items:center",
+              "style": "display:flex;align-items:center;justify-content:center",
             },
             "children": Array [
               Object {
@@ -3412,7 +3412,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "style": "display:flex;align-items:center",
+            "style": "display:flex;align-items:center;justify-content:center",
           },
           "children": Array [
             Object {
@@ -6731,7 +6731,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "style": "display:flex;align-items:center",
+          "style": "display:flex;align-items:center;justify-content:center",
         },
         "children": Array [
           Object {
@@ -12960,7 +12960,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
-              "style": "display:flex;align-items:center",
+              "style": "display:flex;align-items:center;justify-content:center",
             },
             "children": Array [
               Object {
@@ -13460,7 +13460,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "style": "display:flex;align-items:center",
+            "style": "display:flex;align-items:center;justify-content:center",
           },
           "children": Array [
             Object {
@@ -16779,7 +16779,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "style": "display:flex;align-items:center",
+          "style": "display:flex;align-items:center;justify-content:center",
         },
         "children": Array [
           Object {
@@ -23008,7 +23008,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
-              "style": "display:flex;align-items:center",
+              "style": "display:flex;align-items:center;justify-content:center",
             },
             "children": Array [
               Object {
@@ -23508,7 +23508,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "style": "display:flex;align-items:center",
+            "style": "display:flex;align-items:center;justify-content:center",
           },
           "children": Array [
             Object {
@@ -26827,7 +26827,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "style": "display:flex;align-items:center",
+          "style": "display:flex;align-items:center;justify-content:center",
         },
         "children": Array [
           Object {
@@ -33056,7 +33056,7 @@ initialize {
           "namespace": "http://www.w3.org/1999/xhtml",
           "next": Object {
             "attribs": Object {
-              "style": "display:flex;align-items:center",
+              "style": "display:flex;align-items:center;justify-content:center",
             },
             "children": Array [
               Object {
@@ -33556,7 +33556,7 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "style": "display:flex;align-items:center",
+            "style": "display:flex;align-items:center;justify-content:center",
           },
           "children": Array [
             Object {
@@ -36875,7 +36875,7 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "style": "display:flex;align-items:center",
+          "style": "display:flex;align-items:center;justify-content:center",
         },
         "children": Array [
           Object {
