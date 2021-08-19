@@ -2,10 +2,10 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import { addMonths, isBefore, startOfToday } from 'date-fns';
-import Docs from './DatePicker.mdx';
-import DatePicker from './DatePicker';
+import Page from './DatePickerPage';
+import DatePicker from '../DatePicker';
 
-import './style';
+import '../style';
 
 export default {
   title: 'Pickers/DatePicker',
@@ -18,7 +18,7 @@ export default {
       allowFullscreen: true,
     },
     docs: {
-      page: Docs,
+      page: Page,
     },
   },
 } as Meta;

@@ -11,6 +11,7 @@ module.exports = {
     },
     '@storybook/addon-measure',
     '@storybook/addon-outline',
+    '@storybook/addon-toolbars',
     // addons on right side
     '@storybook/addon-actions',
     '@storybook/addon-controls',
@@ -33,7 +34,6 @@ module.exports = {
       test: /\.less$/,
       use: ['style-loader', 'css-loader', 'less-loader'],
     });
-
     return config;
   },
 };

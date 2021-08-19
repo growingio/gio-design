@@ -1,0 +1,40 @@
+name: Crowdin
+
+on:
+  workflow_run:
+    workflows:
+      - Continuous Integration
+    branches:
+      - master
+    types:
+      - completed
+
+jobs:
+  synchronize:
+    name: Synchronize sources and translations
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 14
+      - name: Restore Node.js modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Extract messages
+        run: yarn intl:extract
+      - name: Synchronize
+        uses: crowdin/github-action@1.0.4
+        with:
+          upload_translations: true
+          download_translations: true
+          localization_branch_name: l10n_crowdin_action
+          create_pull_request: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_ID }}
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_TOKEN }}
