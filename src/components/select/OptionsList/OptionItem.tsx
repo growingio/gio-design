@@ -96,11 +96,11 @@ const RenderOption: React.ForwardRefRenderFunction<unknown, OptionProp> = (props
         aria-hidden="true"
       >
         {multiple && (
-          <>
+          <div style={{ marginTop: '-4px' }}>
             <Checkbox checked={isSelected} disabled={disabled} onChange={noop} />
-            <span className={`${prefixCls}-gap-10`} />
-          </>
+          </div>
         )}
+        <span className={`${prefixCls}-gap-10`} />
         {labelNode}
       </div>
     </div>

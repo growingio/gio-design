@@ -108,7 +108,7 @@ export const defaultLabelRenderer = (input: string, prefix: string) => (
   if (isGroup || typeof option.label !== 'string') return option.title || option.label;
   const index = option.label.indexOf(input);
   return (
-    <div>
+    <div style={{ display: 'inline-block', lineHeight: '40px' }}>
       {option.label.slice(0, index)}
       <span className={`${prefix}-search-highlight`}>{option.label.slice(index, index + input.length)}</span>
       {option.label.slice(index + input.length)}
