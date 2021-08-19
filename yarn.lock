@@ -2094,15 +2094,15 @@
     rc-util "^5.4.0"
     shallowequal "^1.1.0"
 
-"@gio-design/tokens@^21.4.2":
-  version "21.4.2"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.4.2.tgz#8914f09567d042a98f144fe4f1d7f463954e3378"
-  integrity sha512-1/EhIwL9+t3zHmxRWf01vr+U4PiANwVgcZ/MK8iet7srbQGrrrnKS5aKpLVt53Mr9HCGB0dAX1S3RDyjJ559uA==
+"@gio-design/tokens@^21.8.0":
+  version "21.8.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.8.0.tgz#2e6fa9f38416d65f0a87782925b0ed14de14658c"
+  integrity sha512-01ME9z5LjvA1uYt9eHtt6JsATwJy5ygQd4H1y6XTYqXB/6PwuzLl8fgwCFEDH2FFDNATe9T0//ufyV6HSuB8Ww==
 
-"@gio-design/utils@21.8.1":
-  version "21.8.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/utils/-/utils-21.8.1.tgz#eb4c66b47ee2e6fe54617459f47e974e4a79ab33"
-  integrity sha512-2iWuJtrflcAdDbSOZUqFCAUaXcN9DXZTU5G2goMRxB8EXNSgPsuHIZwHKbChVhYEjOy48f6jaEVAU7HPyePz/w==
+"@gio-design/utils@21.8.4":
+  version "21.8.4"
+  resolved "https://registry.yarnpkg.com/@gio-design/utils/-/utils-21.8.4.tgz#2a195ca61aa78e62c189a78de787befb21c22631"
+  integrity sha512-MIY5ICqfOt5xstl/vVZy6Pu+z2+ubiq7UKdEOoYRvy86+kIT0hlxo5+j3RwXV4tr5Zv1VgRF44BIclqL17b6zQ==
   dependencies:
     "@babel/runtime" "^7.14.8"
     lodash "^4.17.21"

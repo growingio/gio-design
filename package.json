@@ -37,13 +37,13 @@
   ],
   "peerDependencies": {
     "@gio-design/icons": ">=21.4.0",
-    "@gio-design/tokens": ">=21.4.2",
+    "@gio-design/tokens": ">=21.8.0",
+    "@gio-design/utils": ">=21.8.4",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
     "@gio-design/table": "7.14.0",
-    "@gio-design/utils": "21.8.1",
     "classnames": "^2.2.6",
     "date-fns": "^2.21.3",
     "lodash": "^4.17.14",
@@ -79,7 +79,8 @@
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.0.1",
     "@gio-design/icons": "^21.4.0",
-    "@gio-design/tokens": "^21.4.2",
+    "@gio-design/tokens": "^21.8.0",
+    "@gio-design/utils": "21.8.4",
     "@storybook/addon-actions": "^6.3.7",
     "@storybook/addon-controls": "^6.3.7",
     "@storybook/addon-docs": "^6.3.7",

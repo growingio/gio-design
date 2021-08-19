@@ -2,6 +2,9 @@ name: Continuous Integration
 on:
   pull_request:
     types: [opened, synchronize]
+  push:
+    branches:
+      - master
 jobs:
   install:
     if: ${{ github.actor != 'dependabot[bot]' }}
@@ -46,8 +49,6 @@ jobs:
             stylelint-report.json
             eslint-report.json
           key: lint-reports-${{ github.sha }}
-      - name: Lint pull request title
-        run: echo "${{ github.event.pull_request.title }}" | npx commitlint
       - name: StyleLint
         run: yarn stylelint && yarn stylelint -f json -o stylelint-report.json
       - name: ESLint
@@ -86,31 +87,8 @@ jobs:
         uses: codecov/codecov-action@v2.0.2
         with:
           directory: ./coverage/
-  build:
-    name: Build package
-    needs: install
-    strategy:
-      matrix:
-        node_version: [10, 12, 14]
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.3.0
-        with:
-          node-version: ${{ matrix.node_version }}
-      - name: Restore Node.js modules
-        uses: actions/cache@v2.1.6
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Build
-        run: yarn build
   sonar:
     name: Sonar scan
-    if: ${{ !github.event.pull_request.head.repo.fork }}
     needs: [lint, unit_test]
     runs-on: ubuntu-latest
     steps:
@@ -135,3 +113,28 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  build:
+    name: Build package
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.3.0
+        with:
+          node-version: 14
+      - name: Restore Node.js modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Cache package
+        uses: actions/cache@v2.1.6
+        with:
+          path: |
+            dist
+            es
+          key: package-${{ github.sha }}
+      - name: Build
+        run: yarn build
