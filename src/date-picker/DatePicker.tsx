@@ -1,18 +1,19 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
-import { usePrefixCls } from '@gio-design/utils';
+import { useLocale, usePrefixCls } from '@gio-design/utils';
 import { LeftDoubleOutlined, LeftOutlined, RightOutlined, RightDoubleOutlined } from '@gio-design/icons';
 import PickerPanel from 'rc-picker/lib/PickerPanel';
 import generateDateFns from 'rc-picker/lib/generate/dateFns';
-import zhCN from 'rc-picker/lib/locale/zh_CN';
+import defaultLocale from './locales/zh-CN';
 import { DatePickerProps } from './interfaces';
 
 function DatePicker({ viewDate, ...restProps }: DatePickerProps) {
+  const locale = useLocale('DatePicker') || defaultLocale;
   return (
     <PickerPanel<Date>
       {...restProps}
       pickerValue={viewDate}
-      locale={zhCN}
+      locale={locale}
       prefixCls={usePrefixCls('picker')}
       picker="date"
       generateConfig={generateDateFns}

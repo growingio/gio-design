@@ -1,6 +1,5 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
 import { addMonths, isBefore, startOfToday } from 'date-fns';
 import Page from './DatePickerPage';
 import DatePicker from '../DatePicker';
@@ -10,7 +9,6 @@ import '../style';
 export default {
   title: 'Pickers/DatePicker',
   component: DatePicker,
-  decorators: [withDesign],
   parameters: {
     design: {
       type: 'figma',

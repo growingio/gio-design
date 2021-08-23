@@ -2117,13 +2117,6 @@
     tslib "^2.1.0"
     typescript "4"
 
-"@formatjs/ecma402-abstract@1.9.4":
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.9.4.tgz#797ae6c407fb5a0d09023a60c86f19aca1958c5e"
-  integrity sha512-ePJXI7tWC9PBxQxS7jtbkCLGVmpC8MH8n9Yjmg8dsh9wXK9svu7nAbq76Oiu5Zb+5GVkLkeTVerlSvHCbNImlA==
-  dependencies:
-    tslib "^2.1.0"
-
 "@formatjs/ecma402-abstract@1.9.7":
   version "1.9.7"
   resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.9.7.tgz#92743737f6cfe16eb1666fe710121f8af26ecff5"
@@ -2131,11 +2124,6 @@
   dependencies:
     "@formatjs/intl-localematcher" "0.2.20"
     tslib "^2.1.0"
-
-"@formatjs/fast-memoize@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@formatjs/fast-memoize/-/fast-memoize-1.1.1.tgz#3006b58aca1e39a98aca213356b42da5d173f26b"
-  integrity sha512-mIqBr5uigIlx13eZTOPSEh2buDiy3BCdMYUtewICREQjbb4xarDiVWoXSnrERM7NanZ+0TAHNXSqDe6HpEFQUg==
 
 "@formatjs/fast-memoize@1.2.0":
   version "1.2.0"
@@ -2153,37 +2141,12 @@
     "@formatjs/icu-skeleton-parser" "1.2.11"
     tslib "^2.1.0"
 
-"@formatjs/icu-messageformat-parser@2.0.7":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@formatjs/icu-messageformat-parser/-/icu-messageformat-parser-2.0.7.tgz#326efc14d9409cdbf1b7d3f42e0eed273c95c663"
-  integrity sha512-gduYfh/YdBTmb1XzLueNaofiGZVMrkaDg0RSa0GNztKWs4QXIRS+28cjcuWNpV0q5S8aiLMkP7SHQpZKnPCHLw==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.9.4"
-    "@formatjs/icu-skeleton-parser" "1.2.8"
-    tslib "^2.1.0"
-
 "@formatjs/icu-skeleton-parser@1.2.11":
   version "1.2.11"
   resolved "https://registry.yarnpkg.com/@formatjs/icu-skeleton-parser/-/icu-skeleton-parser-1.2.11.tgz#187a632e18b851f529bbf673a440b4523b18863e"
   integrity sha512-nvme882npz//T17BR5S1xdNqv10CSlHsaPZ1iUxVrDTlotQHcr7O5qkX6JjpQ6qPflTt2s4k0W9nkMcFIfDuFg==
   dependencies:
     "@formatjs/ecma402-abstract" "1.9.7"
-    tslib "^2.1.0"
-
-"@formatjs/icu-skeleton-parser@1.2.8":
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/@formatjs/icu-skeleton-parser/-/icu-skeleton-parser-1.2.8.tgz#ddf6c1f7274244b71237fad49a67dd97e81f5c0a"
-  integrity sha512-KLSSAA7Q2Uv7msij8saaOE5rpsHK/2WkfS3737JnDyVTFOYe8l2OarIBUoTC5gi1BnCgiN/1icZlqXwyUX6obA==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.9.4"
-    tslib "^2.1.0"
-
-"@formatjs/intl-displaynames@5.1.6":
-  version "5.1.6"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-displaynames/-/intl-displaynames-5.1.6.tgz#b2905cff3802c4a703cf0ce1da10083e37652716"
-  integrity sha512-s0eDyQFM2gQIPgn+MyaH+UcCvp6ui2ft9UW1gsIkjBkaprRlzKMd3fjxcUFO/I7oyXXA6FYR4qHR8u1I0+PvXA==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.9.4"
     tslib "^2.1.0"
 
 "@formatjs/intl-displaynames@5.2.2":
@@ -2193,14 +2156,6 @@
   dependencies:
     "@formatjs/ecma402-abstract" "1.9.7"
     "@formatjs/intl-localematcher" "0.2.20"
-    tslib "^2.1.0"
-
-"@formatjs/intl-listformat@6.2.6":
-  version "6.2.6"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-listformat/-/intl-listformat-6.2.6.tgz#4e3d6580df3b6ef737e5d7ce85bae7e065518ff9"
-  integrity sha512-6FMdQY1+QKqJW5IhsVPFuEaR/uRiBKP+Y1oDvamZKzDfJ2vQmk9jqSF51VztlZH8XSfdO0IgvBzeRPHahKChQA==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.9.4"
     tslib "^2.1.0"
 
 "@formatjs/intl-listformat@6.3.2":
@@ -2217,19 +2172,6 @@
   resolved "https://registry.yarnpkg.com/@formatjs/intl-localematcher/-/intl-localematcher-0.2.20.tgz#782aef53d1c1b6112ee67468dc59f9b8d1ba7b17"
   integrity sha512-/Ro85goRZnCojzxOegANFYL0LaDIpdPjAukR7xMTjOtRx+3yyjR0ifGTOW3/Kjhmab3t6GnyHBYWZSudxEOxPA==
   dependencies:
-    tslib "^2.1.0"
-
-"@formatjs/intl@1.13.2":
-  version "1.13.2"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-1.13.2.tgz#4bfa02f9447152a19a2cbc4184295c740ebb85ab"
-  integrity sha512-aonTXXaI/Guqr4t87m/XWfmgE9aPefDTLRnCwadxBDkUHw1/HQeUV+lp/3BgiPZfemIdBq9UgdigDCwrpEwrTA==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.9.4"
-    "@formatjs/fast-memoize" "1.1.1"
-    "@formatjs/icu-messageformat-parser" "2.0.7"
-    "@formatjs/intl-displaynames" "5.1.6"
-    "@formatjs/intl-listformat" "6.2.6"
-    intl-messageformat "9.7.1"
     tslib "^2.1.0"
 
 "@formatjs/intl@1.14.0":
@@ -2277,15 +2219,14 @@
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.8.0.tgz#2e6fa9f38416d65f0a87782925b0ed14de14658c"
   integrity sha512-01ME9z5LjvA1uYt9eHtt6JsATwJy5ygQd4H1y6XTYqXB/6PwuzLl8fgwCFEDH2FFDNATe9T0//ufyV6HSuB8Ww==
 
-"@gio-design/utils@21.8.4":
-  version "21.8.4"
-  resolved "https://registry.yarnpkg.com/@gio-design/utils/-/utils-21.8.4.tgz#2a195ca61aa78e62c189a78de787befb21c22631"
-  integrity sha512-MIY5ICqfOt5xstl/vVZy6Pu+z2+ubiq7UKdEOoYRvy86+kIT0hlxo5+j3RwXV4tr5Zv1VgRF44BIclqL17b6zQ==
+"@gio-design/utils@21.8.6":
+  version "21.8.6"
+  resolved "https://registry.yarnpkg.com/@gio-design/utils/-/utils-21.8.6.tgz#0e66bebf8b35d14cc93030e34283926bb30a9bef"
+  integrity sha512-klkpp/h0y/1f3crtHdxVspMThPraJtuPoCE6J6FrSLANshmXMlzXRcQoFW3ZaDKtidVd/PvmGd3q8ZWtI1RrZw==
   dependencies:
     "@babel/runtime" "^7.14.8"
     lodash "^4.17.21"
     pinyin "^2.9.1"
-    react-intl "^5.15.8"
 
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
@@ -9875,15 +9816,6 @@ interpret@^2.2.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-2.2.0.tgz#1a78a0b5965c40a5416d007ad6f50ad27c417df9"
   integrity sha512-Ju0Bz/cEia55xDwUWEa8+olFpCiQoypjnQySseKtmjNrnps3P+xfpUmGr90T7yjlVJmOtybRvPXhKMbHr+fWnw==
 
-intl-messageformat@9.7.1:
-  version "9.7.1"
-  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-9.7.1.tgz#98e3f6d063413196ff7b63f63bcc3975ad67e83c"
-  integrity sha512-DNiuD+/59G9qaYu3U0KgwCV0zpN9XRoUvc8izSNCNAA5MknhiIUONFE0WtScP+E/7JfoENu+CX57P/SURRbI0A==
-  dependencies:
-    "@formatjs/fast-memoize" "1.1.1"
-    "@formatjs/icu-messageformat-parser" "2.0.7"
-    tslib "^2.1.0"
-
 intl-messageformat@9.9.0:
   version "9.9.0"
   resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-9.9.0.tgz#83b05b7de934f3ac47e0805a24bab3bc41f13783"
@@ -14172,21 +14104,6 @@ react-inspector@^5.1.0:
     "@babel/runtime" "^7.0.0"
     is-dom "^1.0.0"
     prop-types "^15.0.0"
-
-react-intl@^5.15.8:
-  version "5.20.4"
-  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.20.4.tgz#e458384a94af86a8c542880d7fa4c154bea683ca"
-  integrity sha512-lYUL8hWkRHbpVtedGSjpQ1kK/x2AAGZHGgOHsU0SFDufHo2aS7xdvRcaxXD3PMVDuh53KcU+vTaun+bcrwKpbA==
-  dependencies:
-    "@formatjs/ecma402-abstract" "1.9.4"
-    "@formatjs/icu-messageformat-parser" "2.0.7"
-    "@formatjs/intl" "1.13.2"
-    "@formatjs/intl-displaynames" "5.1.6"
-    "@formatjs/intl-listformat" "6.2.6"
-    "@types/hoist-non-react-statics" "^3.3.1"
-    hoist-non-react-statics "^3.3.2"
-    intl-messageformat "9.7.1"
-    tslib "^2.1.0"
 
 react-intl@^5.20.9:
   version "5.20.9"
