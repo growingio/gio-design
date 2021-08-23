@@ -20,6 +20,7 @@ const DragTrigger: React.FC<ITriggerProps> = ({
   directory,
   multiple,
   maxCount,
+  dragStyle,
 }: ITriggerProps) => {
   const [dragState, setDragState] = useState('');
   const prefixCls = useContext(UploadPrefixClsContext);
@@ -67,27 +68,61 @@ const DragTrigger: React.FC<ITriggerProps> = ({
 
   // 单个文件上传渲染
   const renderSingleUpload = () => (
-    <div className={cls} onDrop={handleDrag} onDragOver={handleDrag} onDragLeave={handleDrag}>
+    <div className={cls} onDrop={handleDrag} onDragOver={handleDrag} onDragLeave={handleDrag} style={dragStyle}>
       {'percent' in file && file.status === STATUS_UPLOADING ? (
         <div className={`${prefixCls}__drag-container`}>
-          <Progress percent={file.percent} status="active" className={progressCls} />
-          <span>正在上传，请耐心等待</span>
+          <Progress
+            percent={file.percent}
+            status="active"
+            className={progressCls}
+            format={() => <span style={{ color: '#313E75' }}>{Math.round((file.percent || 0) * 100) / 100}%</span>}
+          />
+          <span className="loading-text">正在上传，请耐心等待</span>
         </div>
       ) : null}
       {file.status === STATUS_SUCCESS && (
         <>
-          {isImageFile(file) ? <Preview file={file} size="100%" /> : <PreviewForNotImage file={file} />}
-          <Actions file={file} useUpload onRemove={onRemove} placement="rightTop" />
+          {isImageFile(file) || isOnlyAcceptImg(accept) ? (
+            <>
+              <Preview file={file} size="100%" />{' '}
+              <Actions file={file} useUpload onRemove={onRemove} placement="rightTop" />
+            </>
+          ) : (
+            <>
+              <PreviewForNotImage file={file} />
+              <Actions file={file} onRemove={onRemove} showModal={false} />
+            </>
+          )}
         </>
       )}
-      {(file.status === STATUS_NOT_YET || file.status === STATUS_ERROR) && (
+      {file.status === STATUS_ERROR && (
+        <>
+          {isOnlyAcceptImg(accept) ? (
+            <div className={placeholderCls}>
+              <PictureSVG style={{ width: currentWidth, height: currentHeight }} />
+              <div>点击上传或拖拽图片到此区域</div>
+            </div>
+          ) : (
+            <>
+              <PreviewForNotImage file={file} />
+              <Actions file={file} onRemove={onRemove} showModal={false} />
+            </>
+          )}
+        </>
+      )}
+      {file.status === STATUS_NOT_YET && (
         <div className={placeholderCls}>
           {isOnlyAcceptImg(accept) ? (
-            <PictureSVG style={{ width: currentWidth, height: currentHeight }} />
+            <>
+              <PictureSVG style={{ width: currentWidth, height: currentHeight }} />
+              <div>点击上传或拖拽图片到此区域</div>
+            </>
           ) : (
-            <FolderSVG style={{ width: currentWidth, height: currentHeight }} />
+            <>
+              <FolderSVG style={{ width: currentWidth, height: currentHeight }} />
+              <div>点击上传或拖拽文件到此区域</div>
+            </>
           )}
-          <div>点击上传或拖拽文件到此区域</div>
         </div>
       )}
     </div>
@@ -98,11 +133,16 @@ const DragTrigger: React.FC<ITriggerProps> = ({
     const currentProgress = (finishCount / fileListLength) * 100;
     const multiplePercent = fileListLength > 1 ? currentProgress : file.percent;
     return (
-      <div className={cls} onDrop={handleDrag} onDragOver={handleDrag} onDragLeave={handleDrag}>
+      <div className={cls} onDrop={handleDrag} onDragOver={handleDrag} onDragLeave={handleDrag} style={dragStyle}>
         {finishCount < fileListLength ? (
           <div className={`${prefixCls}__drag-container`}>
-            <Progress percent={multiplePercent} status="active" className={progressCls} />
-            <span>正在上传，请耐心等待</span>
+            <Progress
+              percent={multiplePercent}
+              status="active"
+              className={progressCls}
+              format={() => <span style={{ color: '#313E75' }}>{Math.round((multiplePercent || 0) * 100) / 100}%</span>}
+            />
+            <span className="loading-text">正在上传，请耐心等待</span>
           </div>
         ) : null}
 

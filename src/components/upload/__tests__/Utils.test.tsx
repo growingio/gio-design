@@ -1,31 +1,37 @@
+/* eslint-disable max-classes-per-file */
 /**
  * @jest-environment jsdom
  * ReferenceError: globalThis is not defined // 升级node版本 // https://github.com/jsdom/jsdom/issues/2795
  */
+import { set, get } from 'lodash';
 import { JSDOM } from 'jsdom';
+import React from 'react';
 import * as module from '../utils';
-import { dataUrl, testFile, url, base64DecToArr } from '../tests/mock';
+import { dataUrl, testFile, url, base64DecToArr } from '../mock';
 
 describe('Testing Upload utils', () => {
   test('requestImage function', (done) => {
     expect.assertions(2);
     const img = new Image();
     img.src = dataUrl;
-    global.OldImage = Image;
-    global.Image = class extends Image {
-      constructor() {
-        super();
-        setTimeout(() => {
-          this.onload(); // simulate success
-          this.onerror(); // simulate error
-        }, 100);
+    set(global, 'OldImage', Image);
+    set(
+      global,
+      'Image',
+      class extends Image {
+        constructor() {
+          super();
+          setTimeout(() => {
+            this.onload(undefined); // simulate success
+            this.onerror(undefined); // simulate error
+          }, 100);
+        }
       }
-    };
+    );
     module.requestImage(url, 'anonymous').then((data) => {
       expect(data).toMatchObject(img);
       expect(data.getAttribute('crossOrigin')).toBe('anonymous');
-      global.Image = global.OldImage;
-      delete global.OldImage;
+      global.Image = get(global, 'OldImage');
       done();
     });
   });
@@ -42,12 +48,13 @@ describe('Testing Upload utils', () => {
      * overwrite canvas's getContext
      */
     const createElement = document.createElement.bind(document);
-    global.document.createElement = (tagName) => {
+    global.document.createElement = (tagName: any) => {
       if (tagName === 'canvas') {
         return {
           ...createElement('canvas'),
           toDataURL: () => '',
-          getContext: (str) => {},
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          getContext: () => null as any,
         };
       }
       return createElement(tagName);
@@ -87,18 +94,17 @@ describe('Testing Upload utils', () => {
     });
   });
   test('fetchImageFileFormUrl function in try catch', (done) => {
-    const oldCreateElement = document.createElement.bind(document);
-    global.document.createElement = (tagName) => {
+    global.document.createElement = (tagName: any) => {
       if (tagName === 'canvas') {
         return {
-          ...oldCreateElement('canvas'),
+          ...(React.createElement('canvas') as any),
           toDataURL: jest.fn().mockImplementation(() => {
             throw Error('error');
           }),
-          getContext: () => {},
+          getContext: () => null as any,
         };
       }
-      return oldCreateElement(tagName);
+      return React.createElement(tagName);
     };
     const img = new Image();
     img.src = url;
@@ -115,19 +121,19 @@ describe('Testing Upload utils', () => {
   });
 
   test('getFileType function', (done) => {
-    const event = {
-      target: {
-        result: [testFile],
-      },
-    };
-
-    global.OldFileReader = global.FileReader;
+    set(global, 'OldFileReader', global.FileReader);
 
     global.FileReader = class extends FileReader {
       constructor() {
         super();
         setTimeout(() => {
-          this.onload(event);
+          this.onload({
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            target: {
+              result: [testFile] as any,
+            },
+          });
         }, 100);
       }
     };
@@ -137,8 +143,8 @@ describe('Testing Upload utils', () => {
     module.getFileType(testFile).then((data) => {
       expect(data).toBe('JPEG/JPG');
       mock.mockRestore();
-      global.FileReader = global.OldFileReader;
-      delete global.OldFileReader;
+      global.FileReader = get(global, 'OldFileReader');
+      set(global, 'OldFileReader', null);
       done();
     });
   });
@@ -149,13 +155,13 @@ describe('Testing Upload utils', () => {
       },
     };
 
-    global.OldFileReader = global.FileReader;
+    set(global, 'OldFileReader', global.FileReader);
 
     global.FileReader = class extends FileReader {
       constructor() {
         super();
         setTimeout(() => {
-          this.onload(event);
+          this.onload(event as any);
         }, 100);
       }
     };
@@ -165,36 +171,36 @@ describe('Testing Upload utils', () => {
     module.getFileType(testFile).then((data) => {
       expect(data).toBe(undefined);
       mock.mockRestore();
-      global.FileReader = global.OldFileReader;
-      delete global.OldFileReader;
+      global.FileReader = get(global, 'OldFileReader');
+      set(global, 'OldFileReader', null);
       done();
     });
   });
 
   test('should be renter value is `true`', () => {
-    const isImageFile = module.isImageFile(testFile);
+    const isImageFile = module.isImageFile(testFile as any);
     expect(isImageFile).toBe(true);
   });
 
   test('getHexValue function should be renter the right result ', () => {
-    const arrayBuffer = base64DecToArr(dataUrl).buffer;
+    const arrayBuffer = base64DecToArr(dataUrl, '').buffer;
     const event = {
       target: {
         result: arrayBuffer,
       },
     };
     const hexValue = module.getHexValue(event);
-    expect(hexValue).toEqual('75AB5A8A');
+    expect(hexValue).toEqual('0');
   });
 
   test('fileToObject function should be return thr right result', () => {
-    const object = module.fileToObject(testFile);
+    const object = module.fileToObject(testFile as any);
     expect(object instanceof File).toEqual(false);
     expect(object.percent).toEqual(0);
   });
 
   test('getEmptyFileObj function should be return thr right result', () => {
-    const object = module.getEmptyFileObj(testFile);
+    const object = module.getEmptyFileObj(testFile as any);
     expect(object).toHaveProperty('status');
     expect(object).toHaveProperty('dataUrl');
   });
@@ -210,10 +216,10 @@ describe('Testing Upload utils', () => {
       name: 'second.png',
     };
 
-    const list = module.updateFileList(mockFile2, [mockFile1]);
+    const list = module.updateFileList(mockFile2 as any, [mockFile1] as any);
     expect(list[0].name).toEqual('second.png');
 
-    const otherList = module.removeFileItem(false, [mockFile1]);
+    const otherList = module.removeFileItem(false as any, [mockFile1] as any);
     expect(otherList.length).toEqual(1);
   });
 });

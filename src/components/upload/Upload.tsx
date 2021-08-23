@@ -15,7 +15,6 @@ import {
   STATUS_NOT_YET,
   TInputUploadType,
 } from './interface';
-import Toast from '../toast';
 import ButtonTrigger from './triggers/ButtonTrigger';
 import CardTrigger from './triggers/CardTrigger';
 import InputTrigger from './triggers/InputTrigger';
@@ -94,11 +93,11 @@ const Upload: React.FC<IUploadProps> = ({
   });
   const Trigger = triggerMap[type];
 
-  const handleSingleBeforeUpload = (fileBeforeUpload: IRcFile, fileList: IRcFile[]) =>
-    beforeUpload?.(fileBeforeUpload, fileList);
+  const handleSingleBeforeUpload = (fileBeforeUpload: IRcFile, fileListArgs: IRcFile[]) =>
+    beforeUpload?.(fileBeforeUpload, fileListArgs);
 
-  const handleMultipleBeforeUpload = (fileBeforeUpload: IRcFile, fileList: IRcFile[]) => {
-    const mergeFileList = [...uploadFileList, ...fileList];
+  const handleMultipleBeforeUpload = (fileBeforeUpload: IRcFile, fileListArgs: IRcFile[]) => {
+    const mergeFileList = [...uploadFileList, ...fileListArgs];
     // 如果选择的文件数量超出最大限制，进行截断
     const fileIndex = mergeFileList.findIndex((item) => item.uid === fileBeforeUpload.uid);
     if (fileIndex >= maxCount) {
@@ -116,7 +115,7 @@ const Upload: React.FC<IUploadProps> = ({
       return beforeUpload?.(fileBeforeUpload, newFileList);
     }
 
-    return beforeUpload?.(fileBeforeUpload, fileList);
+    return beforeUpload?.(fileBeforeUpload, fileListArgs);
   };
 
   const handleStart = (fileOnStart: IRcFile) => {
@@ -125,7 +124,7 @@ const Upload: React.FC<IUploadProps> = ({
       status: STATUS_UPLOADING,
     };
     setFile(uploadFile);
-    onStart?.(uploadFile);
+    onStart?.(uploadFile, uploadFileList);
   };
 
   const handleProgress = (step: IProgress, fileOnProgress: IRcFile) => {
@@ -136,7 +135,7 @@ const Upload: React.FC<IUploadProps> = ({
     };
 
     setFile(progressFile);
-    onProgress?.(step, fileOnProgress);
+    onProgress?.(step, fileOnProgress, uploadFileList);
   };
 
   const handleSuccess = async (response: Record<string, unknown>, fileOnSuccess: IRcFile) => {
@@ -157,26 +156,28 @@ const Upload: React.FC<IUploadProps> = ({
       console.error(error);
     }
 
-    setUploadFileList(updateFileList(uploadFile, uploadFileList) as IRcFile[]);
+    const updatedFileList = updateFileList(uploadFile, uploadFileList);
+
+    onSuccess?.(response, uploadFile, updatedFileList.slice(0, finish + 1));
     setFinish(finish + 1);
     setFile(uploadFile);
-    onSuccess?.(response, uploadFile);
+    setUploadFileList(updatedFileList as IRcFile[]);
   };
 
   const handleError = (error: Error, response: any, fileOnError: IRcFile) => {
-    if (type !== 'input') {
-      !directory && !multiple && Toast.error('上传失败！');
-    }
     const errorFile: IUploadFile = {
       ...fileToObject(fileOnError),
       error,
       response,
       status: STATUS_ERROR,
+      errorMessage: '文件上传失败！',
     };
-    setUploadFileList(updateFileList(errorFile, uploadFileList) as IRcFile[]);
+
+    const updatedFileList = updateFileList(errorFile, uploadFileList);
+    onError?.(error, errorFile, updatedFileList.slice(0, finish + 1));
+    setUploadFileList(updatedFileList as IRcFile[]);
     setFinish(finish + 1);
     setFile(type !== 'drag' ? getEmptyFileObj(uploadedFile) : errorFile);
-    onError?.(error, errorFile);
   };
 
   const handleRemove = (_file: IUploadFile) => {
@@ -218,7 +219,7 @@ const Upload: React.FC<IUploadProps> = ({
       uploadFile.dataUrl = url;
       uploadFile.status = STATUS_SUCCESS;
       setFile(uploadFile);
-      onSuccess?.({}, uploadFile);
+      onSuccess?.({}, uploadFile, uploadFileList);
     } else {
       try {
         uploadFile.status = STATUS_UPLOADING;
@@ -252,7 +253,7 @@ const Upload: React.FC<IUploadProps> = ({
         });
       } catch (error) {
         setFile({ ...file, error });
-        onError?.(error, file);
+        onError?.(error, file, uploadFileList);
       }
     }
   };
@@ -311,6 +312,7 @@ const Upload: React.FC<IUploadProps> = ({
     multiple,
     maxCount,
     disabled: disabled === true ? disabled : uploadDisabled,
+    dragStyle: restProps.dragStyle,
   };
 
   if (type === 'drag') {

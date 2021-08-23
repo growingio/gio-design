@@ -6,5 +6,6 @@ import PictureSVG from './PictureSVG';
 import XlsxSVG from './XlsxSVG';
 import DisabledFolderSVG from './DisabledFolderSVG';
 import DisabledPictureSVG from './DisabledPictureSVG';
+import TxtSVG from './TxtSVG';
 
-export { CsvSVG, DocxSVG, FolderSVG, PdfSVG, PictureSVG, XlsxSVG, DisabledFolderSVG, DisabledPictureSVG };
+export { CsvSVG, DocxSVG, FolderSVG, PdfSVG, PictureSVG, XlsxSVG, DisabledFolderSVG, DisabledPictureSVG, TxtSVG };
