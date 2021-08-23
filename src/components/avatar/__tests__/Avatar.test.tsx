@@ -86,14 +86,14 @@ describe('Testing Avatar', () => {
     expect(container.getElementsByClassName('gio-avatar-group')).toBeTruthy();
   });
 
-  it('props number', () => {
-    const { container } = render(<AvatarGroup users={users} number={4} />);
-    expect(container.getElementsByClassName('gio-avatar-rest')).toBeTruthy();
-  });
-
   test('props placement', () => {
     const { rerender } = render(<AvatarGroup users={users} number={4} placement="top" />);
     rerender(<AvatarGroup users={users} number={4} placement="top" />);
+  });
+
+  it('props number', () => {
+    const { container } = render(<AvatarGroup users={users} number={4} />);
+    expect(container.getElementsByClassName('gio-avatar-rest')).toBeTruthy();
   });
 
   it('props users', () => {
