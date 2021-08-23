@@ -28,6 +28,7 @@ module.exports = {
     '!src/**/index.{ts,tsx}',
     '!src/**/interface?(s).ts?(x)',
     '!src/**/*.stories.{ts,tsx}',
+    '!src/**/demos/*',
     '!src/**/__test?(s)__/*',
   ],
   coverageDirectory: './coverage/',

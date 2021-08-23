@@ -40,7 +40,7 @@
   "peerDependencies": {
     "@gio-design/icons": ">=21.4.0",
     "@gio-design/tokens": ">=21.8.0",
-    "@gio-design/utils": ">=21.8.4",
+    "@gio-design/utils": ">=21.8.6",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
@@ -84,7 +84,7 @@
     "@formatjs/ts-transformer": "^3.4.8",
     "@gio-design/icons": "^21.4.0",
     "@gio-design/tokens": "^21.8.0",
-    "@gio-design/utils": "21.8.4",
+    "@gio-design/utils": "21.8.6",
     "@storybook/addon-actions": "^6.3.7",
     "@storybook/addon-controls": "^6.3.7",
     "@storybook/addon-docs": "^6.3.7",

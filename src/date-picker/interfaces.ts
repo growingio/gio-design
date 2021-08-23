@@ -1,10 +1,9 @@
-import { PanelMode } from 'rc-picker/lib/interface';
+import { PanelMode, Locale } from 'rc-picker/lib/interface';
+import { CommonProps } from '@gio-design/utils';
 
-export interface DatePickerProps {
-  /**
-   * 自定义 CSS 样式名
-   */
-  className?: string;
+export type DatePickerLocale = Omit<Locale, 'locale'>;
+
+export interface DatePickerProps extends CommonProps {
   /**
    * 默认选择的日期
    */
@@ -16,6 +15,10 @@ export interface DatePickerProps {
    * @return 当前日期可选择返回 `false`，不可选择返回 `true`
    */
   disabledDate?: (date: Date) => boolean;
+  /**
+   * 国际化配置
+   */
+  locale?: DatePickerLocale;
   /**
    * 日历面板切换的回调
    *
