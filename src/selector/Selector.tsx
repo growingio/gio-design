@@ -35,7 +35,7 @@ function Selector({
   }
 
   function renderSuffix() {
-    if (allowClear && itemRender?.() && triggerHovered) {
+    if (allowClear && !disabled && itemRender?.() && triggerHovered) {
       return (
         <CloseCircleFilled
           onClick={(e: React.MouseEvent) => {
