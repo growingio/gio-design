@@ -22,6 +22,7 @@ import {
 } from './utils';
 import useCacheOptions from './hooks/useCacheOption';
 import Empty from '../empty';
+import useControlledState from '../../utils/hooks/useControlledState';
 
 interface CompoundedSelect extends React.ForwardRefExoticComponent<SelectProps & React.RefAttributes<HTMLElement>> {
   Group: typeof OptGroup;
@@ -78,9 +79,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     } = props;
 
     const prefix = usePrefixCls('select', customizePrefixCls);
-    const [unControlledValue, setUnControlledValue] = useState(defaultValue);
-    const isControlled = !isNil(controlledValue);
-    const value = isControlled ? controlledValue : unControlledValue;
+    const [value,setSelectValue] = useControlledState(controlledValue,defaultValue);
     const [tempValue, setTempValue] = useState<React.ReactText[]>([]);
     const [isFocused, setFocused] = useState<boolean>(false);
     const [_visible, _setVisible] = useState<boolean>(false);
@@ -165,9 +164,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
     // value other methods
     const onValueChange = (optValue: MaybeArray<string | number> | null) => {
-      if (!isControlled) {
-        setUnControlledValue(optValue);
-      }
+      setSelectValue(optValue);
       if (isNil(optValue)) {
         onChange?.(null, null);
       } else {
@@ -183,9 +180,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         : values.concat(value).filter((v) => !(value as React.ReactText[])?.includes(v) || !values?.includes(v));
       onChange?.(concatValue, getOptionsByValue(concatValue));
       onVisibleChange(false);
-      if (!isControlled) {
-        setUnControlledValue(concatValue);
-      }
+      setSelectValue(concatValue);
       // clear tempValue
       setTempValue([]);
     };
@@ -264,7 +259,6 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     // options  extended: multiple values need extended Options
     const extendedOptions = useMemo(() => {
       const result: Option[] = [];
-
       if (Array.isArray(value) && allowCustomOption) {
         value.forEach((v) => {
           const op = getOptionByValue(v);
@@ -278,17 +272,16 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
     // search filter InputValue // match input(label === input)
     const [filteredOptions, hasExactMatch]: [Option[], boolean] = useMemo(() => [
-        filter(extendedOptions, searchPredicate(input)),
-        findIndex(mergedFlattenOPtions, matchPredicate(input)) > -1,
-      ], [extendedOptions, searchPredicate, input, matchPredicate, mergedFlattenOPtions]);
-
+      filter(extendedOptions, searchPredicate(input)),
+      findIndex(mergedFlattenOPtions, matchPredicate(input)) > -1,
+    ], [extendedOptions, searchPredicate, input, matchPredicate, mergedFlattenOPtions]);
     // input created customOption
     const completeOptions = useMemo(
       () =>
-        !!input && !hasExactMatch && allowCustomOption
+        !!input && !hasExactMatch && allowCustomOption && filteredOptions.every((val) => val.label !== input && val.value !== input)
           ? [CustomOption(input, hasGroup, customOptionKey), ...filteredOptions]
           : filteredOptions,
-      [hasExactMatch, allowCustomOption, filteredOptions, input, hasGroup]
+      [input, hasExactMatch, allowCustomOption, hasGroup, filteredOptions]
     );
     const flattenOptions = useMemo(() => getFlattenOptions(completeOptions, hasGroup), [completeOptions, hasGroup]);
 

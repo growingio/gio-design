@@ -4,6 +4,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { render, fireEvent, screen } from '@testing-library/react';
 import usePagination from '../hook/usePagination';
 import Table from '../index';
+import 'raf/polyfill';
 
 const dataSource = Array.from({ length: 100 }, (_, key) => ({ key }));
 

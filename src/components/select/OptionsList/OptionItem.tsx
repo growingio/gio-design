@@ -66,8 +66,9 @@ const RenderOption: React.ForwardRefRenderFunction<unknown, OptionProp> = (props
     typeof selected === 'string' || typeof selected === 'number' || isNull(selected) || typeof selected === 'undefined'
       ? selected === value
       : selected.includes(value);
-  const onClick = () => {
+  const onClick = (e:React.MouseEvent) => {
       onOptionClick?.(value);
+      e.preventDefault();
   };
   const labelNode = labelRenderer(
     {

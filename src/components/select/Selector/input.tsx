@@ -39,6 +39,7 @@ const SearchInput: React.ForwardRefRenderFunction<unknown, SearchInputProps> = (
         className={classnames(`${prefix}-input`, `${prefix}-item`, {
           [`${prefix}-input-tags`]: mode === 'tags' && multiple,
         })}
+        type='text'
         value={inputValue}
         onChange={onInputChange}
         tabIndex={-1}
