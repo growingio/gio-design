@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable no-console */
 import React from 'react';
 import Button from '../../button';
 
-const StepOneContent = ({ children, step, push, pop }) => {
+interface props {
+  [key: string]: any;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const StepOneContent = ({ children, step, push, pop }: props) => {
   const handleNext1 = () => {
     push('2-1');
   };
@@ -24,7 +30,7 @@ const StepOneContent = ({ children, step, push, pop }) => {
   );
 };
 
-const StepThreeContent = ({ children, step, push, pop }) => {
+const StepThreeContent = ({ children, pop }: props) => {
   const back = () => {
     pop();
   };
@@ -44,7 +50,7 @@ export const multiBranchSteps = [
     key: '1',
     return: null,
     title: '步骤 1',
-    content: ({ step, push, pop }) => (
+    content: ({ step, push, pop }: props) => (
       <StepOneContent step={step} push={push} pop={pop}>
         Step One
       </StepOneContent>
@@ -78,7 +84,7 @@ export const multiBranchSteps = [
     key: '3',
     return: '2-2',
     title: '步骤 3',
-    content: ({ step, push, pop }) => (
+    content: ({ step, push, pop }: props) => (
       <StepThreeContent step={step} push={push} pop={pop}>
         Step Three
       </StepThreeContent>
@@ -117,7 +123,7 @@ export const steps = [
 export const mixedSteps = [
   {
     key: '1',
-    return: null,
+    return: null as any,
     title: '步骤 1',
     content: 'Step One',
     onNext: () => console.log('step 1 onNext.'),
@@ -150,7 +156,7 @@ export const mixedSteps = [
 export const stepsOne = [
   {
     key: '1',
-    return: null,
+    return: null as any,
     title: '步骤 1',
     content: 'Step One',
     onNext: () => console.log('step 1 onNext.'),
@@ -168,7 +174,7 @@ export const stepsOne = [
 export const stepsTwo = [
   {
     key: 'one',
-    return: null,
+    return: null as any,
     title: '步骤 1',
     content: 'Step One',
     onNext: () => console.log('step 1 onNext.'),

@@ -65,6 +65,7 @@ const Modal: React.FC<IModalProps> = ({
         }
       } catch (error) {
         const err = error ?? 'onOk 执行 reject 或抛出错误。';
+        // eslint-disable-next-line no-console
         console.error(err);
       }
     }
