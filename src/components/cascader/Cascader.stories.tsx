@@ -199,6 +199,7 @@ const AsyncTemplate: Story<Props> = (args) => {
               }, 500);
             });
           }
+          return null;
         }}
       />
     </>
