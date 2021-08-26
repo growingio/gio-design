@@ -15,7 +15,7 @@ describe('dataFilter', () => {
   it('should match word by a parttern', () => {
     const data = [
       { label: 'hello', value: 1 },
-      { label: 'nihao', value: 2, children: [] },
+      { label: 'nihao', value: 2, children: [] as any },
     ];
     expect(dataFilter(data, null, true)).toHaveLength(2);
     expect(dataFilter(data, /h/i, true)).toHaveLength(2);
@@ -39,7 +39,6 @@ describe('getParentsByValue', () => {
 
 describe('useKeyboardNav', () => {
   it('should ignore empty wrapper', () => {
-    renderHook(() => useKeyboardNav({}));
-    // nothing to test
+    renderHook(() => useKeyboardNav({} as any));
   });
 });
