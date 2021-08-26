@@ -3,6 +3,7 @@ import findIndex from 'lodash/findIndex';
 import isEmpty from 'lodash/isEmpty';
 import isUndefined from 'lodash/isUndefined';
 
+import { find } from 'lodash';
 import { KeyMapping, NodeData, Value } from './interface';
 
 /**
@@ -155,4 +156,29 @@ export const getParentsByValue = (
     }
   }
   return [];
+};
+
+export const getTitleBySelected = (keyMapping:KeyMapping,separator:string,list?:NodeData[], value?:string|number ):string | undefined => {
+  if (isUndefined(value) || isUndefined(list)) {
+    return undefined;
+  }
+  const { label:labelKey = 'label', value:valueKey = 'value' } = keyMapping;
+  const { length } = list;
+  let title;
+  for(let i = 0; i < length; i+=1){
+    const item = list[i];
+    if(item[valueKey] === value){
+      title = item[labelKey] as string;
+      break;
+    }
+    let children;
+    if (Array.isArray(item.children)) {
+      children = find(item.children, (childval) => childval[valueKey] === value);
+    }
+    if(children){
+      title = `${item[labelKey]}${separator}${children[labelKey]}`;
+      break;
+    }
+  }
+  return title;
 };

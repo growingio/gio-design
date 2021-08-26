@@ -3,12 +3,13 @@ import React, { useEffect, useRef, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
 import { Props, CascaderInstance } from './interface';
-import { dataKeyMapping, mergeKeyMapping, useDynamicData, withPrefix } from './helper';
+import { dataKeyMapping, getTitleBySelected, mergeKeyMapping, useDynamicData, withPrefix } from './helper';
 import Dropdown from '../dropdown';
 import Input from '../input';
 import Menu, { Props as MenuProps } from './menu';
 import SearchBar from './search-bar';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import useControlledState from '../../utils/hooks/useControlledState';
 
 export type CascaderProps = Props;
 
@@ -22,7 +23,7 @@ export const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Pro
     size,
     disabled,
     open,
-    title: originTitle = '',
+    title: originTitle,
     separator = '/',
     lazySearch,
     keyword: originKeyword,
@@ -34,6 +35,7 @@ export const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Pro
     getDropdownContainer,
     destroyTooltipOnHide = true,
     value,
+    defaultValue,
     keyMapping: _keyMapping,
     visible,
     onClick,
@@ -49,8 +51,9 @@ export const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Pro
   const titleRef = useRef<HTMLDivElement>(null);
   const keyMapping = mergeKeyMapping(_keyMapping);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [selected, setSelected] = useDynamicData(value);
-  const [title, setTitle] = useDynamicData(originTitle);
+  const [selected, setSelected] = useControlledState(value, defaultValue);
+  const merTitle = originTitle ?? getTitleBySelected(keyMapping,separator,dataSource, value, );
+  const [title, setTitle] = useControlledState(merTitle, getTitleBySelected(keyMapping,separator,dataSource, defaultValue) );
   const [keyword, setKeyword] = useDynamicData(originKeyword);
   const [canOpen, setCanOpen] = useDynamicData(open);
   const [dropdownVisible, setDropdownVisible] = useDynamicData(!!visible);

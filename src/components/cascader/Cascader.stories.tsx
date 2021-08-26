@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import _ from 'lodash';
 import { Grid, Checkbox } from '../..';
@@ -11,6 +11,10 @@ import '../input/style';
 import '../dropdown/style';
 import '../search-bar/style';
 import Docs from './Cascader.mdx';
+
+interface DemoProps extends Props {
+  titleText?:string
+}
 
 export default {
   title: 'Basic Components/Cascader',
@@ -55,18 +59,32 @@ const groupDataSource = [
   { label: 'option B-1', value: 'b-1', groupId: 'b', groupName: '哈哈' },
   { label: 'option B-2', value: 'b-2', groupId: 'b' },
 ];
-
-const Template: Story<Props> = (args) => {
-  const { title } = args;
+const Controlled: Story<DemoProps> = (args) => {
+  const { titleText } = args;
+  const [value,setValue] = useState('a');
   return (
     <>
-      <Title>{title}</Title>
+      <Title>{`${titleText}-非受控模式`}</Title>
+      <Cascader {...args} />
+      <Title>{`${titleText}-受控模式`}</Title>
+      <Cascader {...args} value={value} onClick={(e,n) => {
+        console.log('n',n);
+        setValue(n?.value as string)
+      }} />
+    </>
+  );
+};
+const Template: Story<DemoProps> = (args) => {
+  const { titleText } = args;
+  return (
+    <>
+      <Title>{titleText}</Title>
       <Cascader {...args} />
     </>
   );
 };
 
-const GroupTemplate: Story<Props> = (args) => {
+const GroupTemplate: Story<DemoProps> = (args) => {
   const groupNameIcons: { [key: string]: React.ReactNode } = { a: '🎃', b: '🎄' };
   const groupName = (id: any) => (
     <div role="img" aria-label="groupName icon">
@@ -85,14 +103,14 @@ const GroupTemplate: Story<Props> = (args) => {
   );
 };
 
-const SearchTemplate: Story<Props> = (args) => {
+const SearchTemplate: Story<DemoProps> = (args) => {
   const [deepSearch, setDeepSearch] = React.useState(false);
   const [ignoreCase, setIgnoreCase] = React.useState(true);
   const [lazySearch, setLazySearch] = React.useState(false);
-  const { title } = args;
+  const { titleText } = args;
   return (
     <div>
-      <Title>{title}</Title>
+      <Title>{titleText}</Title>
       <Grid gap={5} collapse>
         <Grid>
           <Checkbox
@@ -131,7 +149,7 @@ const SearchTemplate: Story<Props> = (args) => {
   );
 };
 
-const CustomTemplate: Story<Props> = (args) => {
+const CustomTemplate: Story<DemoProps> = (args) => {
   const [keyword, setKeyword] = React.useState('');
   const nextData = defaultDataSource.filter((d) => d.label.startsWith(keyword));
   return (
@@ -172,11 +190,11 @@ const CustomTemplate: Story<Props> = (args) => {
   );
 };
 
-const AsyncTemplate: Story<Props> = (args) => {
-  const { title } = args;
+const AsyncTemplate: Story<DemoProps> = (args) => {
+  const { titleText } = args;
   return (
     <>
-      <Title>{title}</Title>
+      <Title>{titleText}</Title>
       <Cascader
         {...args}
         // eslint-disable-next-line
@@ -206,11 +224,11 @@ const AsyncTemplate: Story<Props> = (args) => {
   );
 };
 
-const TooltipTemplate: Story<Props> = (args) => {
-  const { title } = args;
+const TooltipTemplate: Story<DemoProps> = (args) => {
+  const { titleText } = args;
   return (
     <>
-      <Title>{title}</Title>
+      <Title>{titleText}</Title>
       <Cascader
         {...args}
         afterInner={(nodeData) => {
@@ -225,6 +243,7 @@ const TooltipTemplate: Story<Props> = (args) => {
 };
 
 export const Default = Template.bind({});
+export const controlled = Controlled.bind({});
 export const KeyMapping = Template.bind({});
 export const Group = GroupTemplate.bind({});
 export const Trigger = Template.bind({});
@@ -235,12 +254,16 @@ export const Tooltip = TooltipTemplate.bind({});
 
 Default.args = {
   dataSource: defaultDataSource,
-  title: '基础用法',
+  titleText:'基础用法',
+};
+controlled.args = {
+  dataSource: defaultDataSource,
+  titleText:'受控与非受控',
 };
 KeyMapping.args = {
   dataSource: keyMappingDataSource,
   keyMapping: { value: 'id', label: 'name' },
-  title: '键名映射',
+  titleText: '键名映射',
 };
 Group.args = {
   dataSource: groupDataSource,
@@ -248,21 +271,21 @@ Group.args = {
 };
 Trigger.args = {
   dataSource: defaultDataSource,
-  title: '触发方式 - click',
+  titleText: '触发方式 - click',
   trigger: 'click',
 };
 Search.args = {
   dataSource: defaultDataSource,
-  title: '可搜索的',
+  titleText: '可搜索的',
 };
 Custom.args = {
   dataSource: defaultDataSource,
 };
 Async.args = {
   dataSource: defaultDataSource,
-  title: '异步获取数据',
+  titleText: '异步获取数据',
 };
 Tooltip.args = {
   dataSource: defaultDataSource,
-  title: '添加文字提示',
+  titleText: '添加文字提示',
 };
