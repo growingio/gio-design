@@ -2260,16 +2260,16 @@
     "@types/classnames" "^2.2.11"
     classnames "^2.2.6"
 
-"@gio-design/table@7.14.0":
-  version "7.14.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/table/-/table-7.14.0.tgz#57a33db86c2bc1096c2e52ad1d3e56ebfc1fb036"
-  integrity sha512-yIBKzk1fXXgC4VCkz6SC3kuvnIOMBrLkOGTaNcCkDnQyerJIcNEil/OK3nVTYhmNIYkSy+0frnngF3q0c0iqjg==
+"@gio-design/table@7.17.1":
+  version "7.17.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/table/-/table-7.17.1.tgz#a499d15ba3ffea3e86ac43730e3a46e45904ca64"
+  integrity sha512-uvim1WsyDNasNCxv9RXNMfwd6qsJ+yne4ZjkuDPC2Bdcjq2kRuFQPsq+TwMFytpMbZFqkTMrxT8NO+G+xzQYRA==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.5"
     lodash "^4.17.21"
     rc-resize-observer "^1.0.0"
-    rc-util "^5.4.0"
+    rc-util "^5.13.0"
     shallowequal "^1.1.0"
 
 "@gio-design/tokens@^21.8.0":
@@ -13997,7 +13997,7 @@ rc-util@^4.0.4, rc-util@^4.1.1, rc-util@^4.15.3, rc-util@^4.4.0:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.1.0"
 
-rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, rc-util@^5.2.0, rc-util@^5.2.1, rc-util@^5.4.0, rc-util@^5.5.0, rc-util@^5.7.0:
+rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, rc-util@^5.13.0, rc-util@^5.2.0, rc-util@^5.2.1, rc-util@^5.4.0, rc-util@^5.5.0, rc-util@^5.7.0:
   version "5.13.2"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.13.2.tgz#a8a0bb77743351841ba8bed6393e03b8d2f685c8"
   integrity sha512-eYc71XXGlp96RMzg01Mhq/T3BL6OOVTDSS0urFEuvpi+e7slhJRhaHGCKy2hqJm18m9ff7VoRoptplKu60dYog==
