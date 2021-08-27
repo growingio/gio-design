@@ -68,6 +68,11 @@ export interface MenuProps extends Omit<MenuItemProps, 'dataSource' | 'hasChild'
 }
 
 export interface Props extends Omit<MenuProps, 'parentsData' | 'initParentsData'> {
+   /**
+    * 默认value
+    */
+    defaultValue?:string | number;
+    value?:string|number;
   /**
      自定义 `CSS` 类前缀
      */
