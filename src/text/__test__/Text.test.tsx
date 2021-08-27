@@ -16,7 +16,9 @@ describe('Testing Text', () => {
   });
 
   it('empty text', () => {
-    render(<Text />);
+    const { rerender } = render(<Text />);
+    expect(screen.queryByText('...')).not.toBeNull();
+    rerender(<Text > <span /> </Text>);
     expect(screen.queryByText('...')).not.toBeNull();
   });
 

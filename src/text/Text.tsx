@@ -27,7 +27,7 @@ const Text: React.FC<TextProps> = (props: TextProps) => {
   const [currentWidth, setCurrentWidth] = useState(width);
 
   const handleTruncate = (isTruncated: boolean) => {
-    setCurrentWidth(containerRef.current.children[0].offsetWidth * lines);
+    setCurrentWidth((containerRef.current?.children[0].offsetWidth ?? 0) * lines);
     if (isTruncated !== truncated) {
       setTruncted(isTruncated);
       isTruncated && contentRef.current.onResize();
@@ -35,7 +35,7 @@ const Text: React.FC<TextProps> = (props: TextProps) => {
   };
 
   useEffect(() => {
-    setCurrentWidth(containerRef.current.children[0].offsetWidth * lines);
+    setCurrentWidth((containerRef.current.children[0].offsetWidth) * lines);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
