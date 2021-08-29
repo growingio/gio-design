@@ -31,7 +31,7 @@ const UploadList = (props: IUploadListProps<IUploadProps>) => {
           )}
           {file.status === STATUS_ERROR && (
             <Text width={500} className={`${prefixCls}-file-error`}>
-              {name}上传失败！
+              {file.errorMessage}
             </Text>
           )}
           <DeleteOutlined size="12px" className={`${prefixCls}-file-delete`} onClick={() => handleRemove(file)} />

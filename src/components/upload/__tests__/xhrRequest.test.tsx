@@ -1,7 +1,9 @@
 import { fakeXhr } from 'nise';
+import { set, get } from 'lodash';
 import xhrRequest, { getError, getBody } from '../xhrRequest';
-let mockXhr = null;
-let currentRequest = null;
+
+let mockXhr: any = null;
+let currentRequest: any = null;
 const API_URL = '/api/upload';
 const option = {
   data: { name: 'gio', age: '21', hobbies: ['eat', 'sleep'] },
@@ -10,15 +12,16 @@ const option = {
   withCredentials: true,
   action: API_URL,
   method: 'POST',
-  onProgress: () => {},
-  onSuccess: () => {},
-  onError: () => {},
+  onProgress: () => null as any,
+  onSuccess: () => null as any,
+  onError: () => null as any,
 };
 
 describe('xhrRequest', () => {
   beforeEach(() => {
     mockXhr = fakeXhr.useFakeXMLHttpRequest();
-    mockXhr.onCreate = (request) => (currentRequest = request);
+    // eslint-disable-next-line no-return-assign
+    mockXhr.onCreate = (request: any) => (currentRequest = request);
   });
 
   afterEach(() => {
@@ -29,17 +32,17 @@ describe('xhrRequest', () => {
   test('upload request success', (done) => {
     expect.assertions(2);
 
-    option.onSuccess = (response) => {
-      expect(response).toEqual({ message: 'upload success', success: true });
+    option.onSuccess = ((response: any) => {
+      expect(response).toEqual({ message: 'success', success: true });
       expect(currentRequest.requestBody.getAll('hobbies[]')).toEqual(['eat', 'sleep']);
       done();
-    };
+    }) as () => void;
 
-    xhrRequest(option);
+    xhrRequest(option as any);
     currentRequest.respond(
       200,
       { 'Content-Type': 'application/json' },
-      JSON.stringify({ message: 'upload success', success: true })
+      JSON.stringify({ message: 'success', success: true })
     );
   });
 
@@ -48,12 +51,12 @@ describe('xhrRequest', () => {
     const mockFile = new File(['foo'], 'foo.png', {
       type: 'image/png',
     });
-    option.file = mockFile;
-    option.onSuccess = (_response) => {
-      expect(currentRequest.requestBody.getAll(option.filename)[0].name).toEqual(option.file.name);
+    option.file = mockFile as any;
+    option.onSuccess = (() => {
+      expect(currentRequest.requestBody.getAll(option.filename)[0].name).toEqual(get(option.file, 'name'));
       done();
-    };
-    xhrRequest(option);
+    }) as () => void;
+    xhrRequest(option as any);
 
     currentRequest.respond(
       200,
@@ -64,32 +67,32 @@ describe('xhrRequest', () => {
 
   test('should trigger onError 1', (done) => {
     expect.assertions(2);
-    option.onError = (progressEvent, response) => {
+    option.onError = ((progressEvent: any, response: any) => {
       expect(progressEvent.type).toEqual('error');
       expect(response).toEqual({});
       done();
-    };
-    xhrRequest(option);
+    }) as () => void;
+    xhrRequest(option as any);
     currentRequest.error();
   });
 
   test('should trigger onError 2', (done) => {
     expect.assertions(2);
-    option.onError = (error, response) => {
+    option.onError = ((error: any, response: any) => {
       expect(error.toString()).toContain(`cannot POST ${API_URL} 404`);
       expect(response).toEqual({ success: false, status: 404 });
       done();
-    };
-    xhrRequest(option);
+    }) as any;
+    xhrRequest(option as any);
     currentRequest.respond(404, {}, JSON.stringify({ success: false, status: 404 }));
   });
 
   test('should trigger abort', () => {
-    option.headers = {
+    set(option, 'headers', {
       foo: null,
       form: 'form',
-    };
-    const { abort } = xhrRequest(option);
+    });
+    const { abort } = xhrRequest(option as any);
     expect(() => abort()).not.toThrowError();
   });
 });
@@ -98,11 +101,11 @@ describe('other', () => {
   test('getError function', () => {
     const msg = `cannot POST ${API_URL} 0`;
     const err = new Error(msg);
-    err.status = 0;
-    err.method = 'POST';
-    err.url = API_URL;
+    set(err, 'status', 0);
+    set(err, 'method', 'POST');
+    set(err, 'url', API_URL);
     const xhr = new XMLHttpRequest();
-    expect(getError(option, xhr)).toEqual(err);
+    expect(getError(option as any, xhr)).toEqual(err);
   });
 
   test('getBody function without text', () => {

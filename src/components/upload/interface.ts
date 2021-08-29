@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type TUploadType = 'button' | 'input' | 'card' | 'avatar' | 'drag';
 
 export type TRequestMethod = 'POST' | 'PUT' | 'PATCH' | 'post' | 'put' | 'patch';
@@ -56,6 +58,10 @@ export interface IUploadFile<T = any> {
   response?: T;
   error?: any;
   type: string;
+  /**
+   自定义文件上传失败时显示的错误信息
+   */
+  errorMessage?: React.ReactNode;
 }
 
 export type TTransformFileHandler = (file: IRcFile) => string | Blob | File | Promise<string | Blob | File>;
@@ -89,6 +95,10 @@ export interface IUploadProps<T = any> {
    组件根元素自定义样式
    */
   style?: React.CSSProperties;
+  /**
+   drag模式自定义样式
+   */
+  dragStyle?: React.CSSProperties;
   /**
    自定义组件前缀
    */
@@ -140,19 +150,25 @@ export interface IUploadProps<T = any> {
   /**
    开始上传 回调
    */
-  onStart?: (file: IUploadFile) => void;
+  onStart?: (file: IUploadFile, fileList: IUploadFile[]) => void;
   /**
    上传过程中 回调
    */
-  onProgress?: (event: IProgress, file: IRcFile) => void;
+  onProgress?: (event: IProgress, file: IRcFile, fileList: IRcFile[]) => void;
   /**
    上传成功 回调
    */
-  onSuccess?: (response: Record<string, unknown>, file: IUploadFile) => void;
+  onSuccess?: (response: Record<string, unknown>, file: IUploadFile, fileList: IUploadFile[]) => void;
   /**
    上传出错 回调
+   onError = {(error, file, fileList) => {
+     file.errorMessage = '单个文件上传自定义错误信息';
+     fileList.forEach(file => {
+        file.errorMessage = '批量上传时自定义每个文件的错误信息';
+     })
+   }}
    */
-  onError?: (error: Error, file: IUploadFile) => void;
+  onError?: (error: Error, file: IUploadFile, fileList: IUploadFile[]) => void;
   /**
    删除已上传图片 回调
    */
@@ -217,6 +233,10 @@ export interface ITriggerProps {
    批量上传时文件的最大数量限制
    */
   maxCount?: number;
+  /**
+   drag模式自定义样式
+   */
+  dragStyle?: React.CSSProperties;
 }
 
 export interface IUploadListProps<T> {
@@ -247,6 +267,8 @@ export interface IActionsProps {
   useUpload?: boolean;
   useDelete?: boolean;
   placement?: 'center' | 'rightTop';
+  // 是否展示蒙层
+  showModal?: boolean;
 }
 
 export interface IXhrOption {

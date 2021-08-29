@@ -26,9 +26,16 @@
   }
 
   &--success {
-    & .@{upload-card},
-    & .@{upload-drag} {
+    & .@{upload-card} {
       border: 0;
+
+      &:hover .@{upload-actions} {
+        opacity: 1;
+      }
+    }
+
+    & .@{upload-drag} {
+      border: 1px dashed #dfe4ee;
 
       &:hover .@{upload-actions} {
         opacity: 1;
@@ -218,7 +225,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 150px;
+  height: 160px;
   margin: 16px 0;
   overflow: hidden;
   background-color: #f7f8fc;
@@ -244,11 +251,45 @@
     object-fit: cover;
   }
 
+  & .@{upload-preview}-file {
+    .drag-file-preview {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      height: 22px;
+      margin: 0 auto;
+
+      &-icon {
+        padding-left: 8px;
+      }
+
+      &-btn {
+        color: @palette-blue-4;
+
+        &:hover {
+          color: @palette-blue-5;
+          background-color: transparent;
+          border: 1px solid transparent;
+        }
+      }
+
+      &-text {
+        &:hover {
+          cursor: default;
+        }
+      }
+    }
+  }
+
   &-container {
     width: 75%;
     text-align: center;
     .gio-progress {
       margin: 12px auto;
+    }
+
+    .loading-text {
+      color: #313e75;
     }
   }
 }
@@ -305,5 +346,18 @@
       top: 16px;
       right: 8px;
     }
+  }
+}
+
+.@{upload-actions}-file {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+
+  &:hover {
+    cursor: default;
   }
 }

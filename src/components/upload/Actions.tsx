@@ -10,6 +10,7 @@ const Actions: React.FC<IActionsProps> = ({
   file,
   onRemove,
   placement = 'center',
+  showModal = true,
 }: IActionsProps) => {
   const spanRef = useRef<HTMLSpanElement>(null);
   const prefixCls = useContext(UploadPrefixClsContext);
@@ -33,13 +34,24 @@ const Actions: React.FC<IActionsProps> = ({
     onRemove?.();
   };
 
-  return (
+  const handleFileStopPropagation = (e: any) => {
+    e.stopPropagation();
+  };
+
+  return showModal ? (
     <span className={cls} onClick={handleStopPropagation} aria-hidden="true">
       <span className={iconContainerCls} ref={spanRef}>
         {useUpload && <UploadOutlined className={uploadIconCls} />}
         {useDelete && <DeleteOutlined className={deleteIconCls} onClick={handleRemove} />}
       </span>
     </span>
+  ) : (
+    <span
+      className={`${prefixCls}__actions-file`}
+      onClick={handleFileStopPropagation}
+      aria-hidden="true"
+      data-testid="opacity-span"
+    />
   );
 };
 
