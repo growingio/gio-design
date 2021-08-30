@@ -19,6 +19,7 @@ function DateRangePicker({
   onDateMouseLeave,
   style,
   value,
+  locale,
 }: DateRangePickerProps) {
   const [viewDates, setViewDates] = React.useState<[Date, Date]>(defaultViewDates ?? getDefaultViewDates());
   const [hoveredDates, setHoveredDates] = React.useState<RangeValue<Date>>();
@@ -57,6 +58,7 @@ function DateRangePicker({
           // @ts-ignore
           value={selectedValue ? selectedValue[index] : undefined}
           viewDate={viewDates[index]}
+          locale={locale}
         />
       </RangeContext.Provider>
     );
