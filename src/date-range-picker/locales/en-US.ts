@@ -1,7 +1,5 @@
 import rcPickerLocale from 'rc-picker/lib/locale/en_US';
 
-const locale = {
+export default {
   ...rcPickerLocale,
 };
-
-export default locale;

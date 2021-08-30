@@ -34,6 +34,7 @@ export const Vertical: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (arg
         inlineCollapsed={inlineCollapsed}
         onClick={handleClick}
         defaultOpenKeys={['sub-1']}
+        style={{ height: 300 }}
       >
         <SubMenu disabled={disabled} key="sub-1" title="功能名称-1" icon={<AppOutlined />} expandIcon={expandIcon}>
           <MenuItem key="sub-menu-1-1">功能名称-1-1</MenuItem>
