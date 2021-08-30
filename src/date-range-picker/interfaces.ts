@@ -1,5 +1,8 @@
 import { CommonProps } from '@gio-design/utils';
+import { Locale } from 'rc-picker/lib/interface';
 import { DatePickerProps } from '../date-picker';
+
+export type DateRangePickerLocale = Omit<Locale, 'locale'>;
 
 export interface DateRangePickerProps extends CommonProps, Pick<DatePickerProps, 'disabledDate'> {
   /**
@@ -10,6 +13,10 @@ export interface DateRangePickerProps extends CommonProps, Pick<DatePickerProps,
    * 默认可见日历中的日期
    */
   defaultViewDates?: [Date, Date];
+  /**
+   * 国际化配置
+   */
+  locale?: DateRangePickerLocale;
   /**
    * 鼠标进入日期单元格的触发事件的回调
    *
