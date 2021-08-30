@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import { isEmpty, isNil } from 'lodash';
 import React, { useRef, useState, useImperativeHandle, useMemo, useCallback } from 'react';
 import Tag from '../../tag';
+import Text from '../../../text';
 import { SelectorProps } from '../interface';
 import SearchInput from './input';
-import ToolTip from '../../tooltip';
 
 const defaultArrowComponent = (prefix: string) => <DownFilled className={`${prefix}-icon-arrow`} />;
 const defaultCloseComponent = (prefix: string) => <CloseCircleFilled className={`${prefix}-icon-close`} />;
@@ -47,8 +47,6 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
   const [isHovered, setIsHovered] = useState(false);
   const isEmptyValue = useMemo(() => !isEmpty(value), [value]);
   const showClose = allowClear && (isEmptyValue || input) && isHovered && !disabled;
-  const selectValuesWidth = selectValuesRef?.current?.getBoundingClientRect()?.width;
-  const isShowTooltip = style?.width && (selectValuesWidth || 0) - (selectorAllRef?.current?.offsetWidth || 0) <= 0;
 
   useImperativeHandle(ref, () => ({
     clientWidth: selectorRef?.current?.clientWidth,
@@ -131,12 +129,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
     }, []);
 
     return (searchType === 'inner' || !input) && !isNil(value) ? (
-      <ToolTip
-        disabled={!isShowTooltip}
-        title={allValueLabel?.join(',')}
-        placement="bottom"
-        getTooltipContainer={()=> selectorRef?.current?.parentElement || document.body}
-      >
+      <Text>
         <div
           className={`${prefix}-item-all`}
           style={{ maxWidth: style && style.width && style?.width > 0 ? 'fill-available' : undefined }}
@@ -149,7 +142,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
               {allValueLabel?.join('，')}
             </span>
         </div>
-      </ToolTip>
+      </Text>
     ) : null;
     
   };
@@ -157,21 +150,15 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
   const renderSingleValue = () => {
     const text = optionLabelRenderer(value as string | number, getOptionByValue(value as string | number));
     return !input && (typeof value === 'string' || typeof value === 'number') ? (
-      <ToolTip
-        disabled={!isShowTooltip}
-        title={text}
-        placement="bottom"
-        getTooltipContainer={()=>selectorRef?.current?.parentElement || document.body}
+      <Text>
+      <div className={classnames(`${prefix}-item`)}>      
+      <span
+        ref={selectorAllRef}
+        className={classnames(`${prefix}-item-text`)}
       >
-        <div className={classnames(`${prefix}-item`)}>      
-          <span
-            ref={selectorAllRef}
-            className={classnames(`${prefix}-item-text`)}
-          >
-            {text}
-          </span>
-        </div>
-      </ToolTip>
+        {text}
+      </span>
+    </div></Text>
     ) : null;
   };
 

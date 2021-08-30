@@ -122,6 +122,7 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
       className={`${prefixCls}-list`}
       style={style}
       ref={OptionListRef as LegacyRef<HTMLDivElement>}
+      role='list'
       aria-hidden='true'
       // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
       tabIndex={0}

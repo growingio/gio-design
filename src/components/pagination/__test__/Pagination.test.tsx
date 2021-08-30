@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { Default } from '../Pagination.stories';
 import Pagination from '..';
 import { generatePageArray } from '../until';
+import 'raf/polyfill';
 
 describe('Testing pagination', () => {
   it('basic pagination', () => {
