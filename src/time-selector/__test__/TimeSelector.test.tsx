@@ -1,6 +1,8 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
+import locale from 'rc-picker/lib/locale/zh_CN';
 import { Basic, ShowSecond } from '../demos/TimeSelector.stories';
+import TimeSelector from '../TimeSelector';
 
 describe('TimeSelector', () => {
   it('renders with default', () => {
@@ -28,5 +30,10 @@ describe('TimeSelector', () => {
 
     fireEvent.click(screen.getByText(/此 刻/));
     fireEvent.click(screen.getByText(/确 定/));
+  });
+
+  it('locale test', () => {
+    render(<TimeSelector locale={locale} />);
+    fireEvent.click(screen.getByText(/选择时间/));
   });
 });

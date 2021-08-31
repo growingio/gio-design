@@ -20,6 +20,7 @@ function DateRangeSelector({
   value,
   disabledDate,
   onClear,
+  locale,
   ...restProps
 }: DateRangeSelectorProps) {
   const [visible, setVisible] = React.useState<boolean>();
@@ -39,7 +40,7 @@ function DateRangeSelector({
   };
   const handleOnClear = () => {
     setControlledValue([undefined, undefined]);
-    onClear?.()
+    onClear?.();
   };
   const overlay = (
     <DateRangePicker
@@ -57,6 +58,7 @@ function DateRangeSelector({
       // @ts-ignore
       value={controlledValue}
       disabledDate={disabledDate}
+      locale={locale}
     />
   );
   return (

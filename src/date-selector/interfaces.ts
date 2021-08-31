@@ -1,5 +1,8 @@
+import { Locale } from 'rc-picker/lib/interface';
 import { DatePickerProps } from '../date-picker';
 import { SelectorProps } from '../selector';
+
+export type DateSelectorLocale = Omit<Locale, 'locale'>;
 
 export interface DateSelectorProps
   extends Pick<DatePickerProps, 'disabledDate'>,
@@ -12,6 +15,10 @@ export interface DateSelectorProps
    * 默认日期
    */
   defaultValue?: Date;
+  /**
+   * 国际化配置
+   */
+  locale?: DateSelectorLocale;
   /**
    * 日期
    */
