@@ -17,6 +17,7 @@ const Text: React.FC<TextProps> = (props: TextProps) => {
     children,
     trimwhitespace,
     placement = 'top',
+    language = 'cn',
   } = props;
 
   const containerRef = useRef<any>(null);
@@ -35,7 +36,7 @@ const Text: React.FC<TextProps> = (props: TextProps) => {
   };
 
   useEffect(() => {
-    setCurrentWidth((containerRef.current.children[0].offsetWidth) * lines);
+    setCurrentWidth(containerRef.current.children[0].offsetWidth * lines);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -44,7 +45,7 @@ const Text: React.FC<TextProps> = (props: TextProps) => {
       <div ref={containerRef} className={cls} style={style}>
         <Truncate
           lines={lines}
-          width={lines > 1 ? currentWidth : width}
+          width={lines > 1 && language === 'cn' ? currentWidth : width}
           ellipsis={ellipsis}
           trimWhitespace={trimwhitespace}
           onTruncate={handleTruncate}

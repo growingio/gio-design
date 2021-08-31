@@ -27,3 +27,19 @@ Default.args = {
   lines: 1,
   width: 0,
 };
+
+const EnglishTemplate: Story<TextProps> = (args) => (
+  <Text {...args}>
+    This is an Example!This is an Example!This is an Example!This is an Example!This is an Example!This is an Example!
+    This is an Example!This is an Example!This is an Example!This is an Example! This is an Example!This is an
+    Example!This is an Example!This is an Example!This is an Example!This is an Example! This is an Example!This is an
+    Example!This is an Example!
+  </Text>
+);
+
+export const English = EnglishTemplate.bind({});
+English.args = {
+  lines: 1,
+  width: 0,
+  language: 'en',
+};

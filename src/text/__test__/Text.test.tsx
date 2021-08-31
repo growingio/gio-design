@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import { Default } from '../Text.stories';
+import { Default, English } from '../Text.stories';
 import Text from '../Text';
 import 'raf/polyfill';
 
@@ -15,10 +15,20 @@ describe('Testing Text', () => {
     expect(screen.getAllByText('我是一个栗子', { exact: false })).toBeTruthy();
   });
 
+  it('english text', () => {
+    render(<English {...English.args} />);
+    expect(screen.getByText('This is an Example!', { exact: false })).toBeTruthy();
+  });
+
   it('empty text', () => {
     const { rerender } = render(<Text />);
     expect(screen.queryByText('...')).not.toBeNull();
-    rerender(<Text > <span /> </Text>);
+    rerender(
+      <Text>
+        {' '}
+        <span />{' '}
+      </Text>
+    );
     expect(screen.queryByText('...')).not.toBeNull();
   });
 
@@ -42,7 +52,11 @@ describe('Testing Text', () => {
   });
 
   it('test onTruncate', () => {
-    const { container } = render(<Text width={50}>我是一个栗子</Text>);
+    const { container } = render(
+      <Text width={50} language="cn">
+        我是一个栗子
+      </Text>
+    );
     act(() => {
       jest.advanceTimersByTime(100);
     });

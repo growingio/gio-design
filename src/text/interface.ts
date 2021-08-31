@@ -27,4 +27,8 @@ export interface TextProps extends Pick<TooltipProps, 'placement'> {
    是否去除文字最后省略号之前的空格
    */
   trimwhitespace?: boolean;
+  /**
+   中文cn 英文en
+   */
+  language?: 'cn' | 'en';
 }
