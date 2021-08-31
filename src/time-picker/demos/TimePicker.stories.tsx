@@ -1,6 +1,5 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
 import TimePicker from '../TimePicker';
 import { TimePickerProps } from '../interfaces';
 import Docs from './TimePicker.mdx';
@@ -10,7 +9,6 @@ import '../style';
 export default {
   title: 'Pickers/TimePicker',
   component: TimePicker,
-  decorators: [withDesign],
   parameters: {
     design: {
       type: 'figma',

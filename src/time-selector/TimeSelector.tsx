@@ -1,12 +1,13 @@
 import React from 'react';
 import { TimeOutlined } from '@gio-design/icons';
-import { useControlledState, usePrefixCls } from '@gio-design/utils';
+import { useLocale, useControlledState, usePrefixCls } from '@gio-design/utils';
 import { format } from 'date-fns';
 import Button from '../components/button';
 import Selector from '../selector';
 import TimePicker from '../time-picker/TimePicker';
 import { TimeSelectorProps } from './interfaces';
 import { TIME_FORMAT, TIME_WITH_SECOND_FORMAT } from './constant';
+import defaultLocale from './locales/zh-CN';
 
 function TimeSelector({
   defaultValue,
@@ -14,12 +15,16 @@ function TimeSelector({
   placeholder,
   showSecond = false,
   value,
+  locale: customizeLocale,
   ...restProps
 }: TimeSelectorProps) {
   const [visible, setVisible] = React.useState<boolean>();
   const [controlledValue, setControlledValue] = useControlledState(value, defaultValue);
   const [time, setTime] = React.useState<Date | undefined>(controlledValue);
   const prefixCls = usePrefixCls('date-selector');
+  const locale = useLocale('TimeSelector');
+  const coalescedLocale = customizeLocale ?? locale ?? defaultLocale;
+  const { now, ok, timeSelect } = coalescedLocale;
 
   const formatTime = (date: Date) => format(date, showSecond ? TIME_WITH_SECOND_FORMAT : TIME_FORMAT);
   const handleOnPickerSelect = (currentValue: Date) => {
@@ -40,13 +45,14 @@ function TimeSelector({
   const overlay = (
     <TimePicker
       onSelect={handleOnPickerSelect}
+      locale={coalescedLocale}
       renderFooter={() => (
         <>
           <Button type="text" size="small" onClick={handleOnNow}>
-            此刻
+            {now}
           </Button>
           <Button disabled={!time} type="primary" size="small" onClick={handleOnOk}>
-            确定
+            {ok}
           </Button>
         </>
       )}
@@ -64,7 +70,7 @@ function TimeSelector({
       overlayClassName={prefixCls}
       overlay={overlay}
       onClear={handleOnClear}
-      placeholder={placeholder ?? '选择时间'}
+      placeholder={placeholder ?? timeSelect}
       itemRender={() => (controlledValue ? formatTime(controlledValue) : undefined)}
       suffix={<TimeOutlined />}
     />

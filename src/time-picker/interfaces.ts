@@ -1,7 +1,9 @@
-import { PanelMode } from 'rc-picker/lib/interface';
-import React from 'react';
+import { PanelMode, Locale } from 'rc-picker/lib/interface';
+import { CommonProps } from '@gio-design/utils';
 
-export interface TimePickerProps {
+export type TimePickerLocale = Omit<Locale, 'locale'>;
+
+export interface TimePickerProps extends CommonProps {
   /**
    * 自定义 CSS 样式名
    */
@@ -10,6 +12,10 @@ export interface TimePickerProps {
    * 默认选择的时间
    */
   defaultValue?: Date;
+  /**
+   * 国际化配置
+   */
+  locale?: TimePickerLocale;
   /**
    * 日历面板切换的回调
    *

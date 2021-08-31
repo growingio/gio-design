@@ -1,13 +1,15 @@
 import { CommonProps } from '@gio-design/utils';
+import { Locale } from 'rc-picker/lib/interface';
 import { DateRangePickerProps } from '../date-range-picker';
 import { InputTriggerProps } from '../selector/interfaces';
 
 export type NullableDate = Date | undefined;
 export type NullableString = string | undefined;
+export type DateRangeSelectorLocale = Omit<Locale, 'locale'>;
 
 export interface RangeInputTriggerProps
   extends CommonProps,
-  Pick<InputTriggerProps, 'actived' | 'borderless' | 'disabled' | 'size'> {
+    Pick<InputTriggerProps, 'actived' | 'borderless' | 'disabled' | 'size'> {
   /**
    * 清空选择框的回调
    */
@@ -24,8 +26,12 @@ export interface RangeInputTriggerProps
 
 export interface DateRangeSelectorProps
   extends CommonProps,
-  Pick<RangeInputTriggerProps, 'borderless' | 'disabled' | 'placeholder' | 'size' | 'onClear'>,
-  Pick<DateRangePickerProps, 'disabledDate'> {
+    Pick<RangeInputTriggerProps, 'borderless' | 'disabled' | 'placeholder' | 'size' | 'onClear'>,
+    Pick<DateRangePickerProps, 'disabledDate'> {
+  /**
+   * 国际化配置
+   */
+  locale?: DateRangeSelectorLocale;
   /**
    * 默认选择的日期
    */

@@ -1,6 +1,8 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
+import locale from 'rc-picker/lib/locale/zh_CN';
 import { Basic, DisabledDate } from '../DateSelector.stories';
+import DateSelector from '..';
 
 describe('DateSelector', () => {
   beforeAll(() => {
@@ -60,5 +62,12 @@ describe('DateSelector', () => {
     expect(screen.getAllByText(19)).toHaveLength(1);
     fireEvent.click(screen.getByText(19));
     expect(handleOnSelect).not.toHaveBeenCalled();
+  });
+
+  it('no placeholder', () => {
+    const handleOnSelect = jest.fn();
+    render(<DateSelector onSelect={handleOnSelect} locale={locale} />);
+    fireEvent.click(screen.getByText(/选择日期/));
+    fireEvent.click(screen.getByText(20));
   });
 });
