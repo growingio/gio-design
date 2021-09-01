@@ -61,7 +61,7 @@ Default.args = {
   children: (
     <>
       <Header />
-      <Layout.Content>
+      <Layout.Content style={{ margin: '0 10px' }}>
         <Skeleton style={{ padding: '40px 140px' }} />
         <Skeleton style={{ padding: '40px 140px' }} />
       </Layout.Content>
@@ -79,7 +79,7 @@ const SuspendDemo = ({ suspend, fixed }: { suspend?: 'left' | 'right'; fixed: bo
     setSelectedKey(e.key);
     setCollapsed(true);
   };
-  
+
   return (
     <Layout style={{ height: 'calc(100vh - 16px)' }} fixed={fixed}>
       <Header />
