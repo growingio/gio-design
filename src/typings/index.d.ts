@@ -9,3 +9,5 @@ declare module 'rc-calendar/lib/locale/zh_CN';
 declare module 'rc-calendar/lib/RangeCalendar';
 declare module '*.md';
 declare module '*.mdx';
+declare module 'react-lines-ellipsis';
+declare module 'react-lines-ellipsis/lib/responsiveHOC';

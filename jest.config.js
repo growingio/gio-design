@@ -1,7 +1,10 @@
 module.exports = {
   // if you're also using typescript
   preset: 'ts-jest',
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
+  testEnvironmentOptions: {
+    enzymeAdapter: 'react16',
+  },
   verbose: true,
   // registers babel.config.js with jest
   transform: {
@@ -14,7 +17,8 @@ module.exports = {
   // transformIgnorePatterns: ['node_modules/?!(@gio-design\/icon)', '!(@gio-design/icon)'],
   transformIgnorePatterns: ['node_modules/@storybook/(?!(addon-docs)/)'],
 
-  setupFilesAfterEnv: ['<rootDir>/enzyme-adapter.js'],
+  // setupFilesAfterEnv: ['<rootDir>/enzyme-adapter.js'],
+  setupFilesAfterEnv: ['<rootDir>/jest-setup'],
 
   moduleNameMapper: {
     '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
@@ -30,6 +34,8 @@ module.exports = {
     '!src/**/*.stories.{ts,tsx}',
     '!src/**/demos/*',
     '!src/**/__test?(s)__/*',
+    '!src/text/Text.tsx',
+    '!src/typograhy/Text.tsx',
   ],
   coverageDirectory: './coverage/',
   coveragePathIgnorePatterns: ['list-pro/'],
