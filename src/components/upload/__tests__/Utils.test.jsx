@@ -48,13 +48,13 @@ describe('Testing Upload utils', () => {
      * overwrite canvas's getContext
      */
     const createElement = document.createElement.bind(document);
-    global.document.createElement = (tagName: any) => {
+    global.document.createElement = (tagName) => {
       if (tagName === 'canvas') {
         return {
           ...createElement('canvas'),
           toDataURL: () => '',
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          getContext: () => null as any,
+          getContext: () => null,
         };
       }
       return createElement(tagName);
@@ -94,20 +94,20 @@ describe('Testing Upload utils', () => {
     });
   });
   test('fetchImageFileFormUrl function in try catch', (done) => {
-    global.document.createElement = (tagName: any) => {
+    global.document.createElement = (tagName) => {
       if (tagName === 'canvas') {
         return {
-          ...(React.createElement('canvas') as any),
+          ...React.createElement('canvas'),
           toDataURL: jest.fn().mockImplementation(() => {
             throw Error('error');
           }),
-          getContext: () => null as any,
+          getContext: () => null,
         };
       }
       return React.createElement(tagName);
     };
     const img = new Image();
-    img.src = url;
+    // img.src = url;
     const requestImage = jest.spyOn(module, 'requestImage').mockResolvedValue(img);
     module.fetchImageFileFromUrl(url).catch((error) => {
       expect(error.message).toEqual('error');
@@ -131,7 +131,7 @@ describe('Testing Upload utils', () => {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             target: {
-              result: [testFile] as any,
+              result: [testFile],
             },
           });
         }, 100);
@@ -161,7 +161,7 @@ describe('Testing Upload utils', () => {
       constructor() {
         super();
         setTimeout(() => {
-          this.onload(event as any);
+          this.onload(event);
         }, 100);
       }
     };
@@ -178,7 +178,7 @@ describe('Testing Upload utils', () => {
   });
 
   test('should be renter value is `true`', () => {
-    const isImageFile = module.isImageFile(testFile as any);
+    const isImageFile = module.isImageFile(testFile);
     expect(isImageFile).toBe(true);
   });
 
@@ -194,13 +194,13 @@ describe('Testing Upload utils', () => {
   });
 
   test('fileToObject function should be return thr right result', () => {
-    const object = module.fileToObject(testFile as any);
+    const object = module.fileToObject(testFile);
     expect(object instanceof File).toEqual(false);
     expect(object.percent).toEqual(0);
   });
 
   test('getEmptyFileObj function should be return thr right result', () => {
-    const object = module.getEmptyFileObj(testFile as any);
+    const object = module.getEmptyFileObj(testFile);
     expect(object).toHaveProperty('status');
     expect(object).toHaveProperty('dataUrl');
   });
@@ -216,10 +216,10 @@ describe('Testing Upload utils', () => {
       name: 'second.png',
     };
 
-    const list = module.updateFileList(mockFile2 as any, [mockFile1] as any);
+    const list = module.updateFileList(mockFile2, [mockFile1]);
     expect(list[0].name).toEqual('second.png');
 
-    const otherList = module.removeFileItem(false as any, [mockFile1] as any);
+    const otherList = module.removeFileItem(false, [mockFile1]);
     expect(otherList.length).toEqual(1);
   });
 });
