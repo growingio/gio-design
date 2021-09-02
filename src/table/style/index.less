@@ -1,4 +1,4 @@
-@import '../../../stylesheet/index.less';
+@import '../../stylesheet/index.less';
 
 @table-prefix-cls: ~'@{component-prefix}-table';
 @checkbox-prefix-cls: ~'@{component-prefix}-checkbox';
@@ -22,7 +22,7 @@
       position: relative;
       width: 100%;
       font-size: @size-font-14;
-      line-height: 18px;
+      line-height: 22px;
       letter-spacing: 0;
       border-style: hidden;
       border-radius: 4px;
@@ -60,9 +60,6 @@
     color: @color-text-table-head;
     font-weight: @weight-font-medium;
     vertical-align: middle;
-    & > td {
-      height: 50px;
-    }
   }
 
   &-thead > tr:first-child > &-cell {
@@ -76,7 +73,6 @@
   }
 
   &-thead > tr > &-cell {
-    padding: 16px;
     vertical-align: middle;
     background-color: @color-background-table-head;
     border-bottom: 0.5px solid @color-border-table;
@@ -85,6 +81,13 @@
     }
     &:last-child {
       border-right: 0.5px solid @color-border-table;
+
+      .react-resizable-handle {
+        display: none;
+      }
+    }
+    .gio-checkbox-wrapper + .react-resizable-handle {
+      display: none;
     }
   }
 
@@ -102,7 +105,6 @@
   }
 
   &-tbody > tr > &-cell {
-    padding: 16px;
     overflow-wrap: break-word;
     background-color: @color-background-table-body;
     border-top: unset;
@@ -143,6 +145,12 @@
         background-color: @color-background-table-hover;
         transition: background-color 0.3s ease-in-out;
       }
+    }
+  }
+
+  &-showHover &-tbody .@{table-prefix-cls}-expanded-row:hover {
+    td {
+      background-color: unset;
     }
   }
 
@@ -242,7 +250,9 @@
     align-items: center;
     height: 18px;
     &-info {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 16px;
       height: 16px;
       margin-left: 8px;
@@ -267,7 +277,7 @@
   &-column-filter {
     height: 100%;
     margin-top: -6px;
-    margin-left: 4px;
+    margin-left: 2px;
     &-inner {
       width: 24px;
       height: 24px;
@@ -281,7 +291,11 @@
       display: inline-block;
       width: 16px;
       height: 100%;
+      text-align: center;
       &-btn {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
         height: 100%;
         padding: 0;
         background-color: transparent;
@@ -295,6 +309,7 @@
 
     &-up {
       top: 0;
+      margin-bottom: 8px;
     }
     &-down {
       bottom: 9px;
@@ -375,4 +390,73 @@
       }
     }
   }
+
+  &-row-expand-icon-cell {
+    width: 64px;
+    text-align: center;
+
+    .@{table-prefix-cls}-expanded-icon {
+      background: #f1f2f8;
+      border-radius: 4px;
+    }
+  }
+
+  &-expanded-placeholder {
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    margin-right: 8px;
+  }
+
+  &-expanded-icon,
+  &-to_expand-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    line-height: 24px;
+    cursor: pointer;
+  }
 }
+
+.table-size(@size, @padding-vertical, @padding-horizontal) {
+  .@{table-prefix-cls}.@{table-prefix-cls}-@{size} {
+    .@{table-prefix-cls}-title,
+    .@{table-prefix-cls}-footer,
+    .@{table-prefix-cls}-thead > tr > th,
+    .@{table-prefix-cls}-tbody > tr > td,
+    tfoot > tr > th,
+    tfoot > tr > td {
+      padding: @padding-vertical @padding-horizontal;
+    }
+
+    .@{table-prefix-cls}-tbody .@{table-prefix-cls}-row-expand-icon-cell {
+      padding: calc(@padding-vertical - 1px) 20px;
+    }
+
+    .@{table-prefix-cls}-tbody .@{table-prefix-cls}-expanded-row > .@{table-prefix-cls}-cell {
+      padding: @padding-vertical 20px;
+    }
+
+    .@{table-prefix-cls}-tbody .@{table-prefix-cls}-cell-with-append {
+      padding: calc(@padding-vertical - 1px) 16px;
+
+      .@{table-prefix-cls}-row-indent {
+        float: left;
+        height: 1px;
+      }
+
+      .@{table-prefix-cls}-expanded-icon {
+        background: #f1f2f8;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+
+.table-size(~'default', 14px, 16px);
+
+.table-size(~'small', 9px, 16px);
