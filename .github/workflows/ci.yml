@@ -1,13 +1,14 @@
 name: Continuous Integration
 on:
-  pull_request:
-    types: [opened, synchronize]
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
   push:
     branches:
       - master
 jobs:
   install:
-    if: ${{ github.actor != 'dependabot[bot]' }}
     name: Install dependencies
     runs-on: ubuntu-latest
     steps:
