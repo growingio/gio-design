@@ -29,14 +29,6 @@
     "test": "jest",
     "watch": "gio-rewire lib compile --watch"
   },
-  "browserslist": [
-    "> 0.5%",
-    "last 2 versions",
-    "Firefox ESR",
-    "not dead",
-    "IE 11",
-    "not IE 10"
-  ],
   "peerDependencies": {
     "@gio-design/icons": ">=21.4.0",
     "@gio-design/tokens": ">=21.8.0",
