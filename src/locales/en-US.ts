@@ -3,6 +3,7 @@ import datePickerLocale from '../date-picker/locales/en-US';
 import dateRangePickerLocale from '../date-range-picker/locales/en-US';
 import dateRangeSelectorLocale from '../date-range-selector/locales/en-US';
 import dateSelectorLocale from '../date-selector/locales/en-US';
+import emptyLocale from '../empty/locales/en-US';
 import timePickerLocale from '../time-picker/locales/en-US';
 import timeSelectorLocale from '../time-selector/locales/en-US';
 
@@ -19,6 +20,9 @@ export const locale: Locale = {
   },
   DateSelector: {
     ...dateSelectorLocale,
+  },
+  Empty: {
+    ...emptyLocale,
   },
   TimePicker: {
     ...timePickerLocale,
