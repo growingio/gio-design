@@ -4,8 +4,9 @@
 @input-prefix-cls: ~'@{component-prefix}-input';
 
 .pagination-item {
-  min-width: 32px;
-  height: 32px;
+  min-width: 28px;
+  height: 28px;
+  font-size: 14px;
   text-align: center;
   border-radius: 6px;
   cursor: pointer;
@@ -13,22 +14,22 @@
 
 .pagination-button {
   .pagination-item;
-  padding: 0 6px;
+  padding: 0;
   color: @color-text-pagination-normal;
-  background-color: @color-background-pagination-normal;
+  border: 1px solid @color-background-pagination-disabled-active;
   -webkit-transition: none;
   transition: none;
   &:hover {
     background-color: @color-background-pagination-hover;
   }
   &:active {
-    background-color: @color-background-pagination-click;
+    background-color: @palette-gray-2;
   }
 }
 
 .@{pagination-prefix-cls} {
   padding: 0;
-  line-height: 32px;
+  line-height: 28px;
   list-style: none;
   user-select: none;
   &::after {
@@ -56,14 +57,9 @@
   }
 
   &-item-active {
-    color: @color-text-pagination-active;
-    background-color: @color-background-pagination-active;
+    color: @palette-blue-5;
+    background-color: @palette-gray-2;
     border-radius: 4px;
-    box-shadow: @shadow-pagination-button;
-    &:hover,
-    &:active {
-      background-color: @color-background-pagination-active;
-    }
   }
 
   &-disabled > &-item-active {
@@ -75,9 +71,10 @@
   }
 
   &-total-text {
-    margin-right: 16px;
+    margin-right: 16px !important;
     color: @color-text-pagination-normal;
     font-size: @size-font-14;
+    line-height: 30px;
     text-align: right;
   }
 
@@ -85,18 +82,9 @@
   &-next {
     .pagination-button;
     color: @color-text-pagination-normal;
-    line-height: 30px;
+    line-height: 28px;
     .gio-icon {
       vertical-align: middle;
-    }
-  }
-
-  &-disabled > &-prev,
-  &-disabled > &-next {
-    &,
-    &:hover,
-    &:active {
-      background-color: @color-background-pagination-normal;
     }
   }
 
@@ -107,7 +95,7 @@
     &,
     &:hover,
     &:active {
-      background-color: @color-background-pagination-normal;
+      background-color: unset;
     }
   }
 
@@ -162,14 +150,14 @@
 
   &-options {
     display: inline-flex;
-    height: 32px;
+    height: 30px;
     color: @color-text-pagination-normal;
     font-size: @size-font-14;
     line-height: 22px;
     letter-spacing: 0;
     &-size-changer {
       display: inline-block;
-      margin: 1px 8px;
+      margin: 0 8px;
     }
     &-quick-jumper {
       display: inline-block;
@@ -180,7 +168,7 @@
         width: auto;
         margin: 0 8px;
         input {
-          width: 60px;
+          width: 80px;
           height: 100%;
           &[disabled] {
             border: 1px solid @color-border-pagination-quick-jumper-disabled;

@@ -30,14 +30,14 @@ const Pagination = ({
   const prefixCls = usePrefixCls('pagination', customizePrefixCls);
   const [controlledCurrent, setControlledCurrent] = useControlledState(current, defaultCurrent);
   const [controlledPageSize, setControlledPageSize] = useControlledState(pageSize, defaultPageSize);
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<number>(1);
   const pageNumber = useMemo(() => Math.ceil(total / controlledPageSize), [total, controlledPageSize]);
 
   const shouldShowQuickJumper = useMemo(() => showQuickJumper && pageNumber > 10, [showQuickJumper, pageNumber]);
-  const shouldShowOption = useMemo(() => shouldShowQuickJumper || showSizeChanger, [
-    shouldShowQuickJumper,
-    showSizeChanger,
-  ]);
+  const shouldShowOption = useMemo(
+    () => shouldShowQuickJumper || showSizeChanger,
+    [shouldShowQuickJumper, showSizeChanger]
+  );
   const offset = 5;
 
   const prevSymbol = useRef<symbol>(Symbol('prev'));
@@ -75,7 +75,7 @@ const Pagination = ({
               onClick={() => handleClick(controlledCurrent - offset)}
               aria-hidden="true"
             >
-              <MoreOutlined className="more" />
+              <MoreOutlined className="more" color="#313E75" />
               <LeftDoubleOutlined className="double" color="#0044F2" />
             </li>
           );
@@ -88,7 +88,7 @@ const Pagination = ({
               onClick={() => handleClick(controlledCurrent + offset)}
               aria-hidden="true"
             >
-              <MoreOutlined className="more" />
+              <MoreOutlined className="more" color="#313E75" />
               <RightDoubleOutlined className="double" color="#0044F2" />
             </li>
           );
@@ -142,7 +142,7 @@ const Pagination = ({
         size="small"
         listHeight={176}
         disabled={disabled}
-        defaultValue={controlledPageSize.toString()}
+        defaultValue={`${controlledPageSize.toString()}条/页`}
         onSelect={handleSelectPageSize}
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         getContainer={(triggerNode) => triggerNode.parentElement!}
@@ -150,6 +150,7 @@ const Pagination = ({
           value,
           label: `${value}条/页`,
         }))}
+        style={{ height: '28px' }}
       />
     </div>
   );
@@ -162,18 +163,19 @@ const Pagination = ({
         onChange?.(transformValue, controlledPageSize);
       }
     }
-    setInputValue('');
+    setInputValue(1);
   };
 
   const renderInput = (): React.ReactElement => (
     <div className={`${prefixCls}-options-quick-jumper`}>
       跳至
-      <Input
+      <Input.InputNumber
         size="small"
         value={inputValue}
         disabled={disabled}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={(val) => setInputValue(Number(val))}
         onPressEnter={handleInputPressEnter}
+        style={{ height: '30px' }}
       />
       页
     </div>

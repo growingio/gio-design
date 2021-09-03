@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Default } from '../Pagination.stories';
+import { Default } from '../demos/Pagination.stories';
 import Pagination from '..';
 import { generatePageArray } from '../until';
 import 'raf/polyfill';
