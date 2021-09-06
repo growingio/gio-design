@@ -13855,12 +13855,13 @@ rc-dialog@^8.1.0:
     rc-util "^5.0.1"
 
 rc-drawer@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/rc-drawer/-/rc-drawer-4.1.0.tgz"
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/rc-drawer/-/rc-drawer-4.4.2.tgz#08d34efe590fc62acc8d9f607933a95974aaf34d"
+  integrity sha512-H1IibpT8sf4PaPjoiRmrVruBWzCg2T5dB06wWH+SicHtdIEcVj5HDzhYXWzrk0n/yygyBS7t1uX/E5NiRmZAXQ==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.6"
-    rc-util "^5.0.1"
+    rc-util "^5.7.0"
 
 rc-field-form@^1.11.0:
   version "1.11.0"
