@@ -44,6 +44,7 @@ const triggerMap: ITriggerMap = {
 
 const Upload: React.FC<IUploadProps> = ({
   file: uploadedFile,
+  defaultFileList = [],
   successBorder = false,
   style,
   prefixCls: customPrefixCls,
@@ -72,14 +73,20 @@ const Upload: React.FC<IUploadProps> = ({
   const [file, setFile] = useState<IUploadFile>(getEmptyFileObj(uploadedFile));
   const [showAlert, setAlert] = useState(false);
   // 要上传的文件列表
-  const [uploadFileList, setUploadFileList] = useState<IRcFile[]>([]);
+  const [uploadFileList, setUploadFileList] = useState<IRcFile[]>(defaultFileList.slice(0, maxCount) as IRcFile[]);
   // 已经上传了的文件数量
-  const [finish, setFinish] = useState(0);
+  const [finish, setFinish] = useState(Math.min(defaultFileList.length, maxCount));
   // 控制dragTrigger是否disabled
   const [uploadDisabled, setUploadDisabled] = useState(disabled);
   useEffect(() => {
     setFile(getEmptyFileObj(uploadedFile));
   }, [uploadedFile]);
+
+  useEffect(() => {
+    if (defaultFileList.length >= maxCount) {
+      setUploadDisabled(true);
+    }
+  }, [defaultFileList, maxCount]);
 
   const rcUploadRef = useRef(null);
   const prefixCls = usePrefixCls('upload', customPrefixCls);
@@ -181,7 +188,7 @@ const Upload: React.FC<IUploadProps> = ({
   };
 
   const handleRemove = (_file: IUploadFile) => {
-    Promise.resolve(typeof onRemove === 'function' ? onRemove(file) : onRemove).then((res) => {
+    Promise.resolve(typeof onRemove === 'function' ? onRemove(_file) : onRemove).then((res) => {
       // 使用者返回了 false，阻止删除操作
       if (res === false) {
         return;
@@ -305,6 +312,7 @@ const Upload: React.FC<IUploadProps> = ({
     inputUploadType,
     setFile,
     onRemove: handleRemove,
+    onReSelect: restProps.onReSelect,
     onInputUpload: handleInputUpload,
     placeholderImg,
     iconSize,

@@ -49,7 +49,6 @@ const props = {
     console.log('=== Remove ===');
     console.log('file: ', file);
     console.log('--- Remove ---');
-    window.confirm('确定要删除？');
     return true;
   },
 };
@@ -78,7 +77,7 @@ const Template: Story<IUploadProps> = (args) => (
 );
 export const Default = Template.bind({});
 Default.args = {
-  type: "button",
+  type: 'button',
   action: uploadUrl,
   beforeUpload: props.beforeUpload,
   onStart: props.onStart,
@@ -87,7 +86,6 @@ Default.args = {
   onError: props.onError,
   onRemove: props.onRemove,
 };
-
 
 const UrlTemplate: Story<IUploadProps> = (args) => (
   <div>
@@ -103,9 +101,9 @@ const UrlTemplate: Story<IUploadProps> = (args) => (
 );
 export const UrlUpload = UrlTemplate.bind({});
 UrlUpload.args = {
-  type: "input",
+  type: 'input',
   action: uploadUrl,
-  inputUploadType: "file",
+  inputUploadType: 'file',
   beforeUpload: props.beforeUpload,
   onStart: props.onStart,
   onProgress: props.onProgress,
@@ -113,7 +111,6 @@ UrlUpload.args = {
   onError: props.onError,
   onRemove: props.onRemove,
 };
-
 
 const CardTemplate: Story<IUploadProps> = (args) => (
   <div>
@@ -123,7 +120,7 @@ const CardTemplate: Story<IUploadProps> = (args) => (
 );
 export const CardUpload = CardTemplate.bind({});
 CardUpload.args = {
-  type: "card",
+  type: 'card',
   action: uploadUrl,
   beforeUpload: props.beforeUpload,
   onStart: props.onStart,
@@ -145,7 +142,7 @@ const AvatarTemplate: Story<IUploadProps> = (args) => (
 );
 export const AvatarUpload = AvatarTemplate.bind({});
 AvatarUpload.args = {
-  type: "avatar",
+  type: 'avatar',
   action: uploadUrl,
   beforeUpload: props.beforeUpload,
   onStart: props.onStart,
@@ -154,7 +151,6 @@ AvatarUpload.args = {
   onError: props.onError,
   onRemove: props.onRemove,
 };
-
 
 const AreaTemplate: Story<IUploadProps> = (args) => (
   <div>
@@ -164,7 +160,7 @@ const AreaTemplate: Story<IUploadProps> = (args) => (
 );
 export const AreaUpload = AreaTemplate.bind({});
 AreaUpload.args = {
-  type: "drag",
+  type: 'drag',
   action: uploadUrl,
   beforeUpload: props.beforeUpload,
   onStart: props.onStart,
@@ -174,3 +170,36 @@ AreaUpload.args = {
   onRemove: props.onRemove,
 };
 
+const ControlledTemplate: Story<IUploadProps> = (args) => (
+  <div>
+    <Upload style={{ margin: '10px 20px 0px 10px' }} {...args} />
+  </div>
+);
+export const DefaultListUpload = ControlledTemplate.bind({});
+DefaultListUpload.args = {
+  type: 'drag',
+  action: uploadUrl,
+  beforeUpload: props.beforeUpload,
+  onStart: props.onStart,
+  onProgress: props.onProgress,
+  onSuccess: props.onSuccess,
+  onError: props.onError,
+  onRemove: props.onRemove,
+  multiple: true,
+  maxCount: 5,
+  defaultFileList: [
+    {
+      uid: 'u-13432',
+      name: 'xxx.pdf',
+      status: 'success',
+      url: 'http://www.baidu.com/xxx.png',
+    },
+    {
+      uid: 'u-523468',
+      name: 'yyy.docx',
+      status: 'error',
+      errorMessage: '404 Not Found',
+      url: 'http://www.baidu.com/yyy.png',
+    },
+  ],
+};

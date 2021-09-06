@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import Preview, { PreviewForNotImage } from '../Preview';
 
 const testFile = new File(['abc'], 'test.doc', { type: 'doc' });
@@ -63,5 +63,33 @@ describe('Testing preview', () => {
   it('empty preview with name', () => {
     render(<PreviewForNotImage file={{ name: 'test' } as any} />);
     expect(screen.getByText('test')).toBeTruthy();
+  });
+
+  it('test onReSelect', () => {
+    const onReSelectMock = jest.fn();
+    const onRemoveMock = jest.fn();
+    render(
+      <PreviewForNotImage
+        file={{ name: 'test.txt', status: 'success', uid: 'a123' } as any}
+        onReSelect={onReSelectMock}
+        onRemove={onRemoveMock}
+      />
+    );
+    act(() => {
+      fireEvent.click(screen.getByRole('button', { name: '重新选择' }));
+    });
+    waitFor(() => {
+      expect(onReSelectMock).toBeCalled();
+    });
+  });
+
+  it('without onReSelect', () => {
+    render(<PreviewForNotImage file={{ name: 'test.txt', status: 'success', uid: 'a123' } as any} />);
+    act(() => {
+      fireEvent.click(screen.getByRole('button', { name: '重新选择' }));
+    });
+    waitFor(() => {
+      expect(screen.queryByText('test.txt')).toBeNull();
+    });
   });
 });
