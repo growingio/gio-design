@@ -108,6 +108,7 @@ export interface RowSelection<RecordType> {
 export interface TableProps<RecordType> {
   prefixCls?: string;
   className?: string;
+  title?: string;
   style?: React.CSSProperties;
   dataSource?: RecordType[];
   columns?: ColumnsType<RecordType>;
