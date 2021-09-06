@@ -1,15 +1,30 @@
 {
+  "8jbNOU": {
+    "message": "英文文本"
+  },
   "93SaBx": {
     "message": "Parameters"
   },
+  "GQIcJg": {
+    "message": "单行样式"
+  },
   "MPhC0O": {
     "message": "Disable some dates by using disabledDate function."
+  },
+  "Ph1hNB": {
+    "message": "多行样式"
   },
   "QQmHyL": {
     "message": "DatePicker"
   },
   "az4pqH": {
     "message": "Disable some dates"
+  },
+  "cMEGzw": {
+    "message": "文本的基本格式。"
+  },
+  "gHOK3e": {
+    "message": "文本样式"
   },
   "gb1Cd5": {
     "message": "Basic"
@@ -22,6 +37,12 @@
   },
   "nzCBf9": {
     "message": "Code Demo"
+  },
+  "pzFJUf": {
+    "message": "通过文案行数省略，并用 Tooltip 显示全文。"
+  },
+  "q2uSxG": {
+    "message": "Text 文本"
   },
   "qkWcbl": {
     "message": "Set the date to be displayed in the panel."

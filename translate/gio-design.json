@@ -1,15 +1,30 @@
 {
+  "8jbNOU": {
+    "message": "英文文本"
+  },
   "93SaBx": {
     "message": "参数说明"
   },
+  "GQIcJg": {
+    "message": "单行样式"
+  },
   "MPhC0O": {
     "message": "可用 disabledDate 禁止选择部分日期。"
+  },
+  "Ph1hNB": {
+    "message": "多行样式"
   },
   "QQmHyL": {
     "message": "DatePicker 日期选择器"
   },
   "az4pqH": {
     "message": "禁止选择部分日期"
+  },
+  "cMEGzw": {
+    "message": "文本的基本格式。"
+  },
+  "gHOK3e": {
+    "message": "文本样式"
   },
   "gb1Cd5": {
     "message": "基本样式"
@@ -22,6 +37,12 @@
   },
   "nzCBf9": {
     "message": "代码演示"
+  },
+  "pzFJUf": {
+    "message": "通过文案行数省略，并用 Tooltip 显示全文。"
+  },
+  "q2uSxG": {
+    "message": "Text 文本"
   },
   "qkWcbl": {
     "message": "设置面板显示的日期。"
