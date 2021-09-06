@@ -31,6 +31,7 @@ function Table<RecordType>(
 ): React.ReactElement {
   const {
     prefixCls: customizePrefixCls,
+    title,
     columns = [],
     dataSource = [],
     pagination = {},
@@ -171,7 +172,7 @@ function Table<RecordType>(
         <Loading loading={debounceLoading}>
           <RcTable<RecordType>
             tableLayout="fixed"
-            title={undefined as any}
+            title={title ? () => title : undefined}
             prefixCls={prefixCls}
             columns={composedColumns}
             data={paginationedData}

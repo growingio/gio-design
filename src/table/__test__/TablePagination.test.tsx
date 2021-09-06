@@ -18,21 +18,21 @@ describe('Testing Table Pagination', () => {
     const data10 = Array.from({ length: 10 }, (_, key) => ({ a: key, key }));
     const data20 = Array.from({ length: 20 }, (_, key) => ({ a: key, key }));
 
-    const { container, rerender } = render(
-      <Table
-        title="列表标题"
-        dataSource={data20}
-        columns={[
-          {
-            title: 'a',
-            dataIndex: 'a',
-          },
-        ]}
-        pagination={{
-          pageSize: 5,
-        }}
-      />
-    );
+    const props = {
+      title: '列表标题',
+      dataSource: data20,
+      columns: [
+        {
+          title: 'a',
+          dataIndex: 'a',
+        },
+      ],
+      pagination: {
+        pageSize: 5,
+      },
+    } as any;
+
+    const { container, rerender } = render(<Table {...props} />);
     // update
     fireEvent.click(container.getElementsByClassName('gio-pagination-item')[3]);
     rerender(<Table dataSource={data10} />);

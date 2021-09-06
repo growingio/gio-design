@@ -93,7 +93,6 @@ describe('Testing useHackonRow', () => {
     const onMouseDown = jest.fn();
     const { container } = render(
       <Table
-        title="列表标题"
         dataSource={dataSource}
         columns={columns as any}
         pagination={false}
@@ -113,7 +112,6 @@ describe('Testing useHackonRow', () => {
     const onClick = jest.fn();
     const { container } = render(
       <Table
-        title="列表标题"
         dataSource={dataSource}
         columns={columns as any}
         pagination={false}
@@ -150,7 +148,6 @@ describe('Testing useHackonRow', () => {
     const onMouseDown = jest.fn();
     const { container } = render(
       <Table
-        title="列表标题"
         dataSource={dataSource}
         columns={columns as any}
         pagination={false}
