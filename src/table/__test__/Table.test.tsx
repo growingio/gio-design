@@ -1,6 +1,16 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { Base, TableHeader, MultiLine, TableEmpty, TableLoading, TablePagination } from '../demos/Table.stories';
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
+import {
+  Base,
+  TableHeader,
+  MultiLine,
+  TableEmpty,
+  TableLoading,
+  TablePagination,
+  ExpandWithTable,
+  RowExpandTable,
+  TreeExpandTable,
+} from '../demos/Table.stories';
 import FilterPopover from '../FilterPopover';
 import { translateInnerColumns } from '../utils';
 import Table from '../index';
@@ -97,15 +107,114 @@ describe('Testing table', () => {
     expect(container.getElementsByClassName('gio-loading')).toBeTruthy();
   });
 
-  it('pagination table', () => {
+  it('pagination table', async () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const { container } = render(<TablePagination {...TablePagination} />);
-    fireEvent.click(container.getElementsByClassName('gio-pagination-item')[3]);
-    expect(screen.getByText(6)).toBeTruthy();
+    act(() => {
+      fireEvent.click(container.getElementsByClassName('gio-pagination-item')[3]);
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText(6)).toBeTruthy();
+    });
   });
 
-  it('testing table title filter', () => {
+  it('rowExpand table', async () => {
+    render(<RowExpandTable {...RowExpandTable.args} />);
+    act(() => {
+      fireEvent.click(screen.getByRole('img'));
+    });
+    await waitFor(() => {
+      expect(screen.queryByText('我是一个例子我是一个例子我是一个例子我是一个例子')).not.toBeNull();
+    });
+  });
+
+  it('treeExpand table', async () => {
+    render(<TreeExpandTable {...TreeExpandTable.args} />);
+    act(() => {
+      fireEvent.click(screen.getByRole('img', { name: 'right-outlined' }));
+    });
+    await waitFor(() => {
+      expect(screen.getAllByRole('img', { name: 'right-outlined' })).toHaveLength(1);
+      expect(screen.getAllByRole('img', { name: 'down-outlined' })).toHaveLength(1);
+    });
+
+    act(() => {
+      fireEvent.click(screen.getByRole('img', { name: 'down-outlined' }));
+    });
+    await waitFor(() => {
+      expect(screen.queryByRole('img', { name: 'down-outlined' })).toBeNull();
+    });
+  });
+
+  it('treeExpand with selection', async () => {
+    const { container } = render(<TreeExpandTable {...TreeExpandTable.args} />);
+    act(() => {
+      fireEvent.click(screen.getByRole('img', { name: 'right-outlined' }));
+    });
+    await fireEvent.click(screen.getByRole('img', { name: 'right-outlined' }));
+    await waitFor(() => {
+      expect(screen.getAllByRole('img', { name: 'down-outlined' })).toHaveLength(2);
+    });
+
+    act(() => {
+      fireEvent.click(screen.getAllByRole('checkbox')[3]);
+      fireEvent.click(screen.getAllByRole('checkbox')[4]);
+      fireEvent.click(screen.getAllByRole('checkbox')[5]);
+    });
+    await waitFor(() => {
+      expect(container.getElementsByClassName('gio-checkbox-checked')).toHaveLength(4);
+    });
+  });
+
+  it('select parentNode to checked', async () => {
+    const { container } = render(<TreeExpandTable {...TreeExpandTable.args} />);
+    fireEvent.click(screen.getByRole('img', { name: 'right-outlined' }));
+    act(() => {
+      fireEvent.click(screen.getByRole('img', { name: 'right-outlined' }));
+      fireEvent.click(screen.getAllByRole('checkbox')[2]);
+    });
+    await waitFor(() => {
+      expect(container.getElementsByClassName('gio-checkbox-icon-indeterminate')).toHaveLength(2);
+    });
+
+    act(() => {
+      fireEvent.click(screen.getAllByRole('checkbox')[4]);
+    });
+    await waitFor(() => {
+      expect(container.getElementsByClassName('gio-checkbox-icon-indeterminate')).toHaveLength(3);
+    });
+  });
+
+  it('select all checkbox', async () => {
+    render(<TreeExpandTable {...TreeExpandTable.args} />);
+    act(() => {
+      fireEvent.click(screen.getByRole('img', { name: 'right-outlined' }));
+    });
+
+    act(() => {
+      fireEvent.click(screen.getAllByRole('checkbox')[2]);
+      fireEvent.click(screen.getAllByRole('checkbox')[4]);
+      fireEvent.click(screen.getAllByRole('checkbox')[3]);
+    });
+    await waitFor(() => {
+      expect(screen.getAllByRole('checkbox')).toHaveLength(7);
+    });
+  });
+
+  it('expand with table', async () => {
+    const { container } = render(<ExpandWithTable {...ExpandWithTable.args} />);
+    act(() => {
+      fireEvent.click(screen.getByRole('img', { name: 'right-outlined' }));
+    });
+
+    await waitFor(() => {
+      expect(container.getElementsByClassName('gio-table')).toHaveLength(2);
+    });
+  });
+
+  it('testing table title filter', async () => {
     const onClick = jest.fn();
     const { getByText, getAllByRole, container } = render(
       <FilterPopover
@@ -122,18 +231,25 @@ describe('Testing table', () => {
       </FilterPopover>
     );
     fireEvent.click(getByText('trigger'));
-    fireEvent.click(getAllByRole('option')[0]);
+    fireEvent.click(getAllByRole('option', { hidden: true })[0]);
     fireEvent.click(getByText('确 定'));
-    expect(onClick).toBeCalledWith(['1']);
 
-    fireEvent.click(getByText('trigger'));
-    fireEvent.click(getAllByRole('option')[0]);
-    fireEvent.click(getAllByRole('option')[0]);
-    // 不点确定 并关掉 Filter
-    fireEvent.click(getByText('trigger'));
-    // 再打开
-    fireEvent.click(getByText('trigger'));
-    expect(container.getElementsByClassName('gio-checkbox-checked')).toBeTruthy();
+    await waitFor(() => {
+      expect(onClick).toBeCalledTimes(1);
+    });
+
+    act(() => {
+      fireEvent.click(getByText('trigger'));
+      fireEvent.click(getAllByRole('option')[0]);
+      fireEvent.click(getAllByRole('option')[0]);
+      // 不点确定 并关掉 Filter
+      fireEvent.click(getByText('trigger'));
+      // 再打开
+      fireEvent.click(getByText('trigger'));
+    });
+    await waitFor(() => {
+      expect(container.getElementsByClassName('gio-checkbox-checked')).toBeTruthy();
+    });
   });
 
   it('translateInnerColumns function', () => {
@@ -190,7 +306,7 @@ describe('Testing table', () => {
     expect(screen.getByText(/empty/i)).toBeTruthy();
   });
 
-  it('rowClassName should be function', () => {
+  it('rowClassName should be function', async () => {
     const changeMock = jest.fn();
     const { container } = render(
       <Table
@@ -214,16 +330,24 @@ describe('Testing table', () => {
         rowClassName={(record, index, indent) => indent.toString()}
       />
     );
-    fireEvent.click(screen.getAllByRole('checkbox')[1]);
-    expect(container.getElementsByClassName('gio-checkbox-checked')).toBeTruthy();
+    act(() => {
+      fireEvent.click(screen.getAllByRole('checkbox')[1]);
+    });
+    await waitFor(() => {
+      expect(container.getElementsByClassName('gio-checkbox-checked')).toBeTruthy();
+    });
   });
 
-  it('table header sorter = null', () => {
+  it('table header sorter = null', async () => {
     const { container } = render(<Table dataSource={dataSource} columns={columns} />);
-    fireEvent.click(screen.getAllByRole('img')[0]);
-    fireEvent.click(screen.getAllByRole('img')[0]);
-    fireEvent.click(screen.getAllByRole('img')[0]);
-    expect(container.getElementsByClassName('gio-table')).toBeTruthy();
+    act(() => {
+      fireEvent.click(screen.getAllByRole('img')[0]);
+      fireEvent.click(screen.getAllByRole('img')[0]);
+      fireEvent.click(screen.getAllByRole('img')[0]);
+    });
+    await waitFor(() => {
+      expect(container.getElementsByClassName('gio-table')).toBeTruthy();
+    });
   });
 
   it('without filters', () => {
