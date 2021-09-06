@@ -1,6 +1,6 @@
 import { CommonProps } from '@gio-design/utils';
 
-type EmptyLocale = { description: string };
+export type EmptyLocale = { description: string };
 
 export interface EmptyProps extends CommonProps {
   /**
