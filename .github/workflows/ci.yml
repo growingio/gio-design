@@ -1,6 +1,9 @@
 name: Continuous Integration
 on:
   pull_request_target:
+    branches:
+      - master
+      - next
     types:
       - opened
       - synchronize
