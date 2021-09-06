@@ -1,0 +1,72 @@
+import { Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
+import Table from '../index';
+
+# Table 列表
+
+<Subtitle>通用列表。</Subtitle>
+
+## 参数说明
+
+<ArgsTable of={Table} />
+
+## 代码演示
+
+### 基础
+
+合适的数据展示方式可以帮助用户快速地定位和浏览数据/信息，以及更高效得协同工作。列表常和排序、搜索、筛选、分页等其他界面元素一起协同，适用于信息的收集和展示、归纳整理、以及操作结构化数据/信息。它结构简单，分隔归纳明确，使信息之间更易于阅读，大大提升了用户对信息的接收效率和理解程度。
+
+- 列表标题：标题是对列表信息内容的整体概括，以便用户对列表内通有整体认知。
+- 表头：一般指列标签，这里也指首列行标签，是对所属列/行的信息描述。
+- 表体：列表主体内容，具体信息内容的填充区域。
+
+[Example](/story/data-display-table--base)
+
+### 表头多样式
+
+在使用列表的过程中，表头常常与其他辅助性控件，如提示、排序、过滤等对快速获取/阅读列表数据/信息提供帮助的辅助性控件配合使用。
+【常用辅助控件】：一般对当前表头所属列的内容进行解释，便于用户理解。
+
+- 提示：一般对当前表头所属列的内容进行解释，便于用户理解。
+- 排序：可以对当前列进行升序/降序排序。
+- 过滤：可以快速定位当前列的某个元素。
+
+【组合规则】：我们常常会遇到同一个表头使用多个辅助性控件的情况，使用/排列规则如下：
+
+- 提示：始终跟随表头文案，居其右侧排列。
+- 排序：始终在表头所属表格居右显示；当过滤等其他操作设置也居右显示时，排序控件位置不变，其他操作设置随其左侧显示。
+- 过滤：正常情况下，在所属表格居右显示；当「排序」也居右显示时，过滤居其左。
+- 不建议一个表头中超过 2 个以上的辅助性控件。多控件的出现，反而会影响用户阅读信息的效率。
+
+[Example](/story/data-display-table--table-header)
+
+### 多行表头
+
+[Example](/story/data-display-table--multi-line)
+
+### 滚动
+
+[Example](/story/data-display-table--table-scroll)
+
+### 无结果
+
+[Example](/story/data-display-table--table-empty)
+
+### 列表加载
+
+[Example](/story/data-display-table--table-loading)
+
+### 分页
+
+[Example](/story/data-display-table--table-pagination)
+
+### 行展开
+
+[Example](/story/data-display-table--row-expand-table)
+
+### 树形结构展开
+
+[Example](/story/data-display-table--tree-expand-table)
+
+### 表格展开
+
+[Example](/story/data-display-table--expand-width-table)
