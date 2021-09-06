@@ -76,6 +76,10 @@ export interface IUploadProps<T = any> {
    */
   file?: IUploadFile<T>;
   /**
+   受控的文件上传列表
+   */
+  fileList?: IUploadFile<T>[];
+  /**
    上传的图片是否显示边框
    */
   successBorder?: boolean;
@@ -174,6 +178,10 @@ export interface IUploadProps<T = any> {
    */
   onRemove?: ((file: IUploadFile) => void) | ((file: IUploadFile) => boolean) | Promise<void> | Promise<boolean>;
   /**
+   重新选择文件 回调
+   */
+  onReSelect?: (file: IUploadFile) => void;
+  /**
    自定义上传方法，将覆盖默认的 xhr 上传
    */
   customRequest?: (options: IRcCustomRequestOptions) => void;
@@ -212,6 +220,7 @@ export interface ITriggerProps {
   setFile: (file: IUploadFile) => void;
   file: IUploadFile;
   onRemove: (file?: IUploadFile) => void;
+  onReSelect?: (file: IUploadFile) => void;
   onInputUpload: (type: TInputUploadType, url: string) => void;
   inputUploadType: TInputUploadType;
   accept: string | undefined;
@@ -259,6 +268,7 @@ export type ITriggerMap = {
 export interface IPreviewProps {
   file: IUploadFile;
   size?: number | string;
+  onReSelect?: (file: IUploadFile) => void;
 }
 
 export interface IActionsProps {

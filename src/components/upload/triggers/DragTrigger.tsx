@@ -21,6 +21,7 @@ const DragTrigger: React.FC<ITriggerProps> = ({
   multiple,
   maxCount,
   dragStyle,
+  onReSelect,
 }: ITriggerProps) => {
   const [dragState, setDragState] = useState('');
   const prefixCls = useContext(UploadPrefixClsContext);
@@ -89,7 +90,7 @@ const DragTrigger: React.FC<ITriggerProps> = ({
             </>
           ) : (
             <>
-              <PreviewForNotImage file={file} />
+              <PreviewForNotImage onReSelect={onReSelect} file={file} />
               <Actions file={file} onRemove={onRemove} showModal={false} />
             </>
           )}
@@ -104,7 +105,7 @@ const DragTrigger: React.FC<ITriggerProps> = ({
             </div>
           ) : (
             <>
-              <PreviewForNotImage file={file} />
+              <PreviewForNotImage onReSelect={onReSelect} file={file} />
               <Actions file={file} onRemove={onRemove} showModal={false} />
             </>
           )}

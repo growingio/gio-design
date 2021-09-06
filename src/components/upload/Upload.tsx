@@ -44,6 +44,7 @@ const triggerMap: ITriggerMap = {
 
 const Upload: React.FC<IUploadProps> = ({
   file: uploadedFile,
+  fileList = [],
   successBorder = false,
   style,
   prefixCls: customPrefixCls,
@@ -72,14 +73,21 @@ const Upload: React.FC<IUploadProps> = ({
   const [file, setFile] = useState<IUploadFile>(getEmptyFileObj(uploadedFile));
   const [showAlert, setAlert] = useState(false);
   // 要上传的文件列表
-  const [uploadFileList, setUploadFileList] = useState<IRcFile[]>([]);
+  const [uploadFileList, setUploadFileList] = useState<IRcFile[]>(fileList.slice(0, maxCount) as IRcFile[]);
   // 已经上传了的文件数量
-  const [finish, setFinish] = useState(0);
+  const [finish, setFinish] = useState(Math.min(fileList.length, maxCount));
   // 控制dragTrigger是否disabled
   const [uploadDisabled, setUploadDisabled] = useState(disabled);
   useEffect(() => {
     setFile(getEmptyFileObj(uploadedFile));
   }, [uploadedFile]);
+
+  useEffect(() => {
+    if (fileList.length >= maxCount) {
+      setUploadDisabled(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fileList]);
 
   const rcUploadRef = useRef(null);
   const prefixCls = usePrefixCls('upload', customPrefixCls);
@@ -305,6 +313,7 @@ const Upload: React.FC<IUploadProps> = ({
     inputUploadType,
     setFile,
     onRemove: handleRemove,
+    onReSelect: restProps.onReSelect,
     onInputUpload: handleInputUpload,
     placeholderImg,
     iconSize,
@@ -325,7 +334,7 @@ const Upload: React.FC<IUploadProps> = ({
               <Trigger {...triggerComponentProps}>{children}</Trigger>
             </RcUpload>
           </div>
-          {renderUploadList()}
+          {!isOnlyAcceptImg(restProps.accept) && renderUploadList()}
         </div>
       </UploadPrefixClsContext.Provider>
     );

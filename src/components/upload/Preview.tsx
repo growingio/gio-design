@@ -43,12 +43,16 @@ const Preview: React.FC<IPreviewProps> = ({ file, size = 32 }: IPreviewProps) =>
   return <img src={file?.dataUrl ?? ''} className={cls} style={{ width: size, height: size }} alt="" />;
 };
 
-export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file }: IPreviewProps) => {
+export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file, onReSelect }: IPreviewProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
   const cls = classnames(`${prefixCls}__preview-file`);
   const fileNameCls = classnames(`${prefixCls}__preview-file-name`);
 
   const errorMessage = file.status === 'success' ? '上传成功！' : file.errorMessage;
+
+  const handleSelect = () => {
+    onReSelect?.(file);
+  };
 
   return (
     <div className={cls}>
@@ -65,7 +69,7 @@ export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file }: IPreviewPr
           </Text>
         </div>
         <div style={{ zIndex: 1 }}>
-          <Button type="text" className="drag-file-preview-btn">
+          <Button type="text" className="drag-file-preview-btn" onClick={handleSelect}>
             重新选择
           </Button>
         </div>
