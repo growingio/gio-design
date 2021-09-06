@@ -4,9 +4,6 @@ on:
     types:
       - opened
       - synchronize
-  push:
-    branches:
-      - master
 jobs:
   install:
     name: Install dependencies
