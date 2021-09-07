@@ -89,6 +89,12 @@
     .gio-checkbox-wrapper + .react-resizable-handle {
       display: none;
     }
+
+    &:hover {
+      .react-resizable-handle {
+        background: #5f87ff;
+      }
+    }
   }
 
   &-tbody > tr {
@@ -441,6 +447,20 @@
       border-left: 1px solid #ebedf5;
       content: '';
     }
+  }
+  .react-resizable {
+    position: relative;
+    background-clip: padding-box;
+  }
+
+  .react-resizable-handle {
+    position: absolute;
+    top: 0;
+    right: -4px;
+    z-index: 1;
+    width: 8px;
+    height: 100%;
+    cursor: col-resize;
   }
 }
 
