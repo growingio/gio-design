@@ -14,6 +14,7 @@ import { RowExpandTable } from './RowExpandTable';
 import { TreeExpandTable } from './TreeExpandTable';
 import { ExpandWithTable } from './ExpandWithTable';
 import { RowExpandWithFixedColumn } from './RowExpandWithFixedColumn';
+import { ResizableWithTable } from './ResizableTable';
 
 export default {
   title: 'Data Display/Table',
@@ -43,4 +44,5 @@ export {
   TreeExpandTable,
   ExpandWithTable,
   RowExpandWithFixedColumn,
+  ResizableWithTable,
 };

@@ -1,4 +1,6 @@
+import ResizableTable from './ResizableTable';
+import { TableProps } from './interface';
 import Table from './Table';
 
-export { TableProps } from './interface';
+export { TableProps, ResizableTable };
 export default Table;
