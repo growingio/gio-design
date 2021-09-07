@@ -1,4 +1,4 @@
-import { CommonProps } from '@gio-design/utils';
+import { CommonProps, SizeType } from '@gio-design/utils';
 import React from 'react';
 import { EmptyLocale } from '../empty/interfaces';
 
@@ -6,11 +6,11 @@ export type ListLocale = {
   /**
    * 空态组件的国际化
    */
-  empty?: EmptyLocale;
+  empty: EmptyLocale;
   /**
    * 展开项文本
    */
-  expandText?: string;
+  expandText: string;
 };
 
 interface ExpandableProps {
@@ -37,7 +37,11 @@ export interface ListProps extends CommonProps, Pick<ExpandableProps, 'expandabl
   /**
    * 国际化设置
    */
-  locale?: ListLocale;
+  locale?: Partial<ListLocale>;
+  /**
+   * 列表项的尺寸
+   */
+  size?: SizeType;
 }
 
 export interface ListItemProps extends CommonProps, ExpandableProps {
