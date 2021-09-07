@@ -442,6 +442,24 @@
       content: '';
     }
   }
+  .react-resizable {
+    position: relative;
+    background-clip: padding-box;
+  }
+
+  .react-resizable-handle {
+    position: absolute;
+    top: 0;
+    right: -2px;
+    z-index: 1;
+    width: 4px;
+    height: 100%;
+    cursor: col-resize;
+
+    &:hover {
+      background: #5f87ff;
+    }
+  }
 }
 
 .table-size(@size, @padding-vertical, @padding-horizontal) {

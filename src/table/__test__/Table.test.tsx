@@ -10,6 +10,7 @@ import {
   ExpandWithTable,
   RowExpandTable,
   TreeExpandTable,
+  ResizableWithTable,
 } from '../demos/Table.stories';
 import FilterPopover from '../FilterPopover';
 import { translateInnerColumns } from '../utils';
@@ -358,5 +359,13 @@ describe('Testing table', () => {
       </FilterPopover>
     );
     expect(screen.getByText('button')).toBeTruthy();
+  });
+
+  it('resize table', () => {
+    const { container } = render(<ResizableWithTable {...ResizableWithTable.args} />);
+    fireEvent.click(container.getElementsByClassName('react-resizable-handle')[0]);
+    fireEvent.mouseDown(container.getElementsByClassName('react-resizable-handle')[0]);
+    fireEvent.mouseMove(container, { clientX: 100 });
+    fireEvent.mouseUp(container.getElementsByClassName('react-resizable-handle')[0]);
   });
 });
