@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { DesignProvider } from '@gio-design/utils';
-import { Basic, Groups, Empty, JSX } from '../demos/List.stories';
+import { Basic, Groups, Empty, JSX, Size } from '../demos/List.stories';
 import List from '../List';
 import enUS from '../../locales/en-US';
 import zhCN from '../../locales/zh-CN';
@@ -62,5 +62,10 @@ describe('List', () => {
     );
     expect(screen.queryByText('暂无数据')).toBeTruthy();
     expect(screen.queryAllByText('展开全部').length).toBeGreaterThan(1);
+  });
+
+  it('has different sizes', () => {
+    const { container } = render(<Size />);
+    expect(container.querySelector('.gio-list--small')).not.toBeNull();
   });
 });
