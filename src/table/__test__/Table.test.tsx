@@ -187,7 +187,7 @@ describe('Testing table', () => {
     });
   });
 
-  it('select all checkbox', async () => {
+  it('select one node all checkbox', async () => {
     render(<TreeExpandTable {...TreeExpandTable.args} />);
     act(() => {
       fireEvent.click(screen.getByRole('img', { name: 'right-outlined' }));
@@ -195,9 +195,16 @@ describe('Testing table', () => {
 
     act(() => {
       fireEvent.click(screen.getAllByRole('checkbox')[2]);
+    });
+
+    act(() => {
       fireEvent.click(screen.getAllByRole('checkbox')[4]);
+    });
+
+    act(() => {
       fireEvent.click(screen.getAllByRole('checkbox')[3]);
     });
+
     await waitFor(() => {
       expect(screen.getAllByRole('checkbox')).toHaveLength(7);
     });
