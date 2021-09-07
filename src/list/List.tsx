@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { useLocale, usePrefixCls } from '@gio-design/utils';
+import { useLocale, usePrefixCls, useSize } from '@gio-design/utils';
 import Empty from '../components/empty';
 import ItemGroup from './ItemGroup';
 import ItemSubgroup from './ItemSubgroup';
@@ -21,10 +21,28 @@ const List: React.FC<ListProps> & {
   ItemGroup: React.FC<ListItemGroupProps>;
   ItemSubgroup: React.FC<ListItemSubgroupProps>;
   Divider: React.FC<DividerProps>;
-} = ({ className, style, children, items, expandable = false, emptyImage, locale: customizeLocale }: ListProps) => {
+} = ({
+  className,
+  style,
+  children,
+  items,
+  expandable = false,
+  emptyImage,
+  locale: customizeLocale,
+  size: customizeSize,
+}: ListProps) => {
   const locale = useLocale('List');
   const prefixCls = usePrefixCls('list');
+  const size = useSize();
 
+  const coalescingSize = customizeSize ?? size;
+  const cls = classnames(
+    prefixCls,
+    {
+      [`${prefixCls}--${coalescingSize}`]: true,
+    },
+    className
+  );
   const {
     empty: { description },
     expandText,
@@ -54,7 +72,7 @@ const List: React.FC<ListProps> & {
   };
 
   return (
-    <ul className={classnames(prefixCls, className)} style={style}>
+    <ul className={cls} style={style}>
       {content()}
     </ul>
   );

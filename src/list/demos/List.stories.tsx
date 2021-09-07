@@ -77,6 +77,17 @@ Empty.args = {
   items: undefined,
 };
 
+export const Size = () => (
+  <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+    <Wrapper>
+      <List items={defaultItems} />
+    </Wrapper>
+    <Wrapper>
+      <List items={defaultItems} size="small" />
+    </Wrapper>
+  </div>
+);
+
 export const JSX = Template.bind({});
 JSX.args = {
   items: undefined,
