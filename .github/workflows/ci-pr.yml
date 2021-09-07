@@ -1,9 +1,10 @@
-name: Continuous Integration
+name: CI on Pull Request
 on:
   pull_request_target:
     types:
       - opened
       - synchronize
+      - reopened
 jobs:
   install:
     name: Install dependencies
@@ -44,17 +45,10 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Cache lint reports
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            stylelint-report.json
-            eslint-report.json
-          key: lint-reports-${{ github.sha }}
       - name: StyleLint
-        run: yarn stylelint && yarn stylelint -f json -o stylelint-report.json
+        run: yarn stylelint
       - name: ESLint
-        run: yarn eslint && yarn eslint -f json -o eslint-report.json
+        run: yarn eslint
   unit_test:
     name: Unit test
     needs: install
@@ -74,38 +68,29 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Cache test report
+        id: cache-test-report
         uses: actions/cache@v2.1.6
         with:
           path: coverage/lcov.info
-          key: test-report-${{ github.sha }}
+          key: test-report-${{ github.event.pull_request.head.sha }}
       - name: Test
+        if: steps.cache-test-report.outputs.cache-hit != 'true'
         run: yarn test --coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2.0.3
-        with:
-          directory: ./coverage/
   sonar:
     name: Sonar scan
-    needs: [lint, unit_test]
+    needs:
+      - unit_test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha }}
-      - name: Restore lint reports
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            stylelint-report.json
-            eslint-report.json
-          key: lint-reports-${{ github.sha }}
       - name: Restore test report
         uses: actions/cache@v2.1.6
         with:
           path: coverage/lcov.info
-          key: test-report-${{ github.sha }}
+          key: test-report-${{ github.event.pull_request.head.sha }}
       - name: Upload reports to SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
@@ -130,11 +115,14 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Cache package
+        id: cache-package
         uses: actions/cache@v2.1.6
         with:
           path: |
             dist
             es
-          key: package-${{ github.sha }}
+            lib
+          key: package-${{ github.event.pull_request.head.sha }}
       - name: Build
+        if: steps.cache-package.outputs.cache-hit != 'true'
         run: yarn build
