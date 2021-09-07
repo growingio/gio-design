@@ -27,3 +27,8 @@ export interface TextProps extends Pick<CommonProps, 'className'> {
    */
   trimRight?: boolean;
 }
+
+export interface TitleProps extends Pick<CommonProps, 'className'> {
+  children: React.ReactNode;
+  level: 1 | 2 | 3 | 4;
+}
