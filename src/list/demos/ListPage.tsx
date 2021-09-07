@@ -31,6 +31,11 @@ export default function ListPage() {
         <Story id="data-display-list--empty" />
       </Canvas>
 
+      <Subheading>{formatMessage({ defaultMessage: '不同尺寸' })}</Subheading>
+      <Canvas>
+        <Story id="data-display-list--size" />
+      </Canvas>
+
       <Subheading>{formatMessage({ defaultMessage: 'JSX 语法' })}</Subheading>
       <Canvas>
         <Story id="data-display-list--jsx" />
