@@ -1,4 +1,4 @@
 export default {
-  okText: 'ok',
-  closeText: 'cancel',
+  okText: 'OK',
+  closeText: 'Cancel',
 };
