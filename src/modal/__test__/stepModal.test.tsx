@@ -4,7 +4,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import { StepModal } from '..';
 import * as Steps from './Steps';
-import { sleep } from '../../utils/test';
 
 const { steps, mixedSteps, stepsOne, stepsTwo } = Steps;
 let container: Element | DocumentFragment = null;
@@ -17,37 +16,42 @@ beforeEach(() => {
 
 describe('StepModal Testing', () => {
   it('basic StepModal.', () => {
-    const stepModal = render(
-      <StepModal
-        visible
-        title="Modal Title"
-        onClose={() => {
-          console.log('close');
-        }}
-        onOk={() => {
-          console.log('ok');
-        }}
-        afterClose={() => console.log('after close')}
-        steps={steps}
-        closeAfterOk
-      >
-        Modal Body
-      </StepModal>
-    );
-    expect(stepModal).toBeTruthy();
+    act(() => {
+      render(
+        <StepModal
+          visible
+          title="Modal Title"
+          onClose={() => {
+            console.log('close');
+          }}
+          onOk={() => {
+            console.log('ok');
+          }}
+          afterClose={() => console.log('after close')}
+          steps={steps}
+          closeAfterOk
+        >
+          Modal Body
+        </StepModal>
+      );
+    });
+
+    // expect(stepModal).toBeTruthy();
   });
 
   it('should update when steps and stepKey both change', () => {
-    const { rerender } = render(
-      <StepModal visible title="Modal Title" steps={stepsOne}>
-        Modal Body
-      </StepModal>
-    );
-    rerender(
-      <StepModal visible title="Modal Title" steps={stepsTwo}>
-        Modal Body
-      </StepModal>
-    );
+    act(() => {
+      const { rerender } = render(
+        <StepModal visible title="Modal Title" steps={stepsOne}>
+          Modal Body
+        </StepModal>
+      );
+      rerender(
+        <StepModal visible title="Modal Title" steps={stepsTwo}>
+          Modal Body
+        </StepModal>
+      );
+    });
   });
 
   it('should run ok with normal steps', () => {
@@ -102,7 +106,9 @@ describe('StepModal Testing', () => {
         Modal Body
       </StepModal>
     );
-    fireEvent.click(screen.getByText('取 消'));
+    act(() => {
+      fireEvent.click(screen.getByText('取 消'));
+    });
     expect(afterClose).not.toHaveBeenCalled();
   });
 
@@ -134,6 +140,7 @@ describe('StepModal Testing', () => {
   });
 
   it('onOk', async () => {
+    // jest.useFakeTimers();
     const onOk = jest.fn();
     const onClose = jest.fn();
     const option = [
@@ -150,10 +157,11 @@ describe('StepModal Testing', () => {
         content: 'Step Two',
       },
     ];
-    render(<StepModal closeAfterOk visible steps={option} onOk={onOk} onClose={onClose} />);
+    act(() => {
+      render(<StepModal closeAfterOk visible steps={option} onOk={onOk} onClose={onClose} />);
+    });
     fireEvent.click(screen.getByRole('button', { name: '下一步' }));
     fireEvent.click(screen.getByText('确 定'));
-    await sleep(500);
     expect(onOk).toHaveBeenCalled();
     expect(onClose).toHaveBeenCalled();
   });
@@ -175,9 +183,10 @@ describe('StepModal Testing', () => {
         content: 'Step Two',
       },
     ];
-    render(<StepModal closeAfterOk visible steps={options} onOk={onOk} onClose={onClose} />);
+    act(() => {
+      render(<StepModal closeAfterOk visible steps={options} onOk={onOk} onClose={onClose} />);
+    });
     fireEvent.click(screen.getByText('取 消'));
-    await sleep(500);
     expect(onClose).toHaveBeenCalled();
   });
 
@@ -199,7 +208,9 @@ describe('StepModal Testing', () => {
       },
     ];
 
-    render(<StepModal visible steps={step} />);
+    act(() => {
+      render(<StepModal visible steps={step} />);
+    });
     fireEvent.click(screen.getByRole('button', { name: '下一步' }));
     fireEvent.click(screen.getByLabelText('left-outlined'));
     expect(onBack).toHaveBeenCalled();
@@ -233,6 +244,8 @@ describe('ButtonProps Testing', () => {
         },
       },
     ];
-    render(<StepModal visible steps={options} />);
+    act(() => {
+      render(<StepModal visible steps={options} />);
+    });
   });
 });
