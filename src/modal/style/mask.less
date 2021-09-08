@@ -1,0 +1,59 @@
+@import './mixin.less';
+
+.@{modal-prefix-cls} {
+  &-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    &-hidden {
+      display: none;
+    }
+
+    &.fade-enter,
+    &.fade-appear {
+      opacity: 0;
+      .fade-effect();
+      animation-play-state: paused;
+    }
+
+    &.fade-leave {
+      .fade-effect();
+      animation-play-state: paused;
+    }
+
+    &.fade-enter&.fade-enter-active,
+    &.fade-appear&.fade-appear-active {
+      animation-name: gioModalFadeIn;
+      animation-play-state: running;
+    }
+
+    &.fade-leave&.fade-leave-active {
+      animation-name: gioModalFadeOut;
+      animation-play-state: running;
+    }
+
+    .keyframes(gioModalFadeIn; {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  });
+
+    .keyframes(gioModalFadeOut; {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  });
+  }
+}
