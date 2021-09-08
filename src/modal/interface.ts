@@ -39,10 +39,6 @@ export interface IModalProps extends ITitleProps, Omit<IFooterProps, 'useOk' | '
    */
   prefixCls?: string;
   /**
-   * 国际化
-   */
-  locale?: ModalLocale;
-  /**
    `Modal` 根节点 `className`
    */
   className?: string;
