@@ -1,12 +1,33 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-console */
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { DesignProvider } from '@gio-design/utils';
+import { render, screen, fireEvent, act } from '@testing-library/react';
+import { Default } from '../demos/Modal.stories';
 import Modal from '..';
+import { IModalStaticFuncReturn } from '../interface';
 import enUS from '../../locales/en-US';
 import zhCN from '../../locales/zh-CN';
 
 describe('Modal Testing', () => {
+  it('renders with multi languages', () => {
+    const { rerender } = render(
+      <DesignProvider locale={enUS}>
+        <Default {...Default.args} />
+      </DesignProvider>
+    );
+    fireEvent.click(screen.getByText('Open Modal'));
+    expect(screen.queryByText(/Cancel/)).not.toBeNull();
+
+    rerender(
+      <DesignProvider locale={zhCN}>
+        <Default {...Default.args} />
+      </DesignProvider>
+    );
+    fireEvent.click(screen.getByText('Open Modal'));
+    expect(screen.queryByText(/取 消/)).not.toBeNull();
+  });
   it('should match basic Modal snapshot.', () => {
     const wrapper = render(
       <Modal
@@ -19,7 +40,6 @@ describe('Modal Testing', () => {
         afterClose={() => {
           console.log('a');
         }}
-        locale={enUS}
       >
         Default Modal
       </Modal>
@@ -64,7 +84,6 @@ describe('Modal Testing', () => {
             <span>新建</span>
           </div>
         }
-        locale={zhCN}
       >
         有额外 Footer 的 Modal
       </Modal>
@@ -204,7 +223,7 @@ describe('useModal', () => {
     jest.useFakeTimers();
 
     const Context = React.createContext('content');
-    let instance = null;
+    let instance: IModalStaticFuncReturn;
     const ConfigModal = () => {
       const [modal, hookModal] = Modal.useModal();
 
@@ -228,15 +247,15 @@ describe('useModal', () => {
     const { container, rerender } = render(<ConfigModal />);
     fireEvent.click(screen.getByRole('button'));
     expect(container.getElementsByClassName('gio-modal')).toHaveLength(0);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    instance.update({
-      content: <div id="modal-hook-test-content">update content</div>,
+    act(() => {
+      instance.update({
+        content: <div id="modal-hook-test-content">update content</div>,
+      });
     });
     rerender(<ConfigModal />);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    instance.destroy();
+    act(() => {
+      instance.destroy();
+    });
     jest.runAllTimers();
     rerender(<ConfigModal />);
     expect(container.getElementsByClassName('gio-modal')).toHaveLength(0);
