@@ -318,13 +318,11 @@ const Upload: React.FC<IUploadProps> = ({
   if (type === 'drag') {
     return (
       <UploadPrefixClsContext.Provider value={prefixCls}>
-        <div>
-          <div className={rootCls} style={style}>
-            {showBeyondAlert()}
-            <RcUpload {...rcUploadProps} ref={rcUploadRef}>
-              <Trigger {...triggerComponentProps}>{children}</Trigger>
-            </RcUpload>
-          </div>
+        <div className={rootCls} style={style}>
+          {showBeyondAlert()}
+          <RcUpload {...rcUploadProps} ref={rcUploadRef}>
+            <Trigger {...triggerComponentProps}>{children}</Trigger>
+          </RcUpload>
           {renderUploadList()}
         </div>
       </UploadPrefixClsContext.Provider>
