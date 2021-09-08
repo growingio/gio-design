@@ -1,9 +1,8 @@
 import React from 'react';
 import { set } from 'lodash';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { fakeXhr } from 'nise';
-import { act } from 'react-dom/test-utils';
-import { AreaUpload } from '../Upload.stories';
+import { AreaUpload, DefaultListUpload } from '../Upload.stories';
 import { testFile, dataUrl, url as imgUrl } from '../mock';
 import * as utils from '../utils';
 import { sleep } from '../../../utils/test';
@@ -70,17 +69,25 @@ describe('Testing drag-trigger', () => {
 
   it('file multiple upload', async (done) => {
     const { container } = render(<AreaUpload {...set(AreaUpload.args, 'directory', true)} />);
-    fireEvent.change(container.getElementsByTagName('input')[1], { target: { files: mockFileList } });
-    await fireEvent.click(screen.getAllByRole('img')[1]);
-    waitFor(() => expect(screen.queryByText('超过将无法上传', { exact: false })).toBeNull());
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[1], { target: { files: mockFileList } });
+    });
+    act(() => {
+      fireEvent.click(screen.getAllByRole('img')[1]);
+    });
+    await waitFor(() => expect(screen.queryByText('超过将无法上传', { exact: false })).toBeNull());
     done();
   });
 
   it('picture multiple upload', async (done) => {
     const { container } = render(<AreaUpload {...set(AreaUpload.args, 'directory', true)} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
-    await fireEvent.click(screen.getAllByRole('img')[1]);
-    waitFor(() => expect(screen.queryByText('超过将无法上传', { exact: false })).toBeNull());
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    });
+    act(() => {
+      fireEvent.click(screen.getAllByRole('img')[1]);
+    });
+    await waitFor(() => expect(screen.queryByText('超过将无法上传', { exact: false })).toBeNull());
     done();
   });
 
@@ -92,21 +99,33 @@ describe('Testing drag-trigger', () => {
       maxCount: 2,
     } as any;
     const { container } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
-    await expect(screen.getByText('one.png')).toBeTruthy();
-    await fireEvent.mouseEnter(container.getElementsByClassName('gio-upload-file-list-item')[0]);
-    await fireEvent.click(screen.getAllByLabelText('delete-outlined')[0]);
-    waitFor(() => expect(screen.queryByText('one.png')).toBeNull());
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    });
+    await waitFor(() => {
+      expect(screen.getByText('one.png')).toBeTruthy();
+    });
+    act(() => {
+      fireEvent.mouseEnter(container.getElementsByClassName('gio-upload-file-list-item')[0]);
+      fireEvent.click(screen.getAllByLabelText('delete-outlined')[0]);
+    });
+    await waitFor(() => expect(screen.queryByText('one.png')).toBeNull());
     done();
   });
 
   it('should render picture upload list', async (done) => {
     const { container } = render(<Upload type="drag" accept="image/*" action="api" multiple maxCount={2} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
-    await expect(screen.getByText('one.png')).toBeTruthy();
-    await fireEvent.mouseEnter(container.getElementsByClassName('gio-upload-file-list-item')[0]);
-    await fireEvent.click(screen.getAllByLabelText('delete-outlined')[0]);
-    waitFor(() => expect(screen.queryByText('one.png')).toBeNull());
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    });
+    await waitFor(() => {
+      expect(screen.getByText('one.png')).toBeTruthy();
+    });
+    act(() => {
+      fireEvent.mouseEnter(container.getElementsByClassName('gio-upload-file-list-item')[0]);
+      fireEvent.click(screen.getAllByLabelText('delete-outlined')[0]);
+    });
+    await waitFor(() => expect(screen.queryByText('one.png')).toBeNull());
     done();
   });
 
@@ -117,8 +136,10 @@ describe('Testing drag-trigger', () => {
       showUploadList: false,
     };
     const { container } = render(<Upload type="drag" action="api" {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
-    waitFor(() => expect(screen.queryByText('one.png')).toBeNull());
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    });
+    await waitFor(() => expect(screen.queryByText('one.png')).toBeNull());
     done();
   });
 
@@ -139,7 +160,7 @@ describe('Testing drag-trigger', () => {
     render(<DragTrigger {...props} />);
   });
 
-  it('prevent the multiple upload', async () => {
+  it('prevent the multiple upload', async (done) => {
     const props = {
       multiple: true,
       maxCount: 10,
@@ -148,15 +169,22 @@ describe('Testing drag-trigger', () => {
       beforeUpload: () => false,
     } as any;
     const { container } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+      done();
+    });
   });
 });
 
 describe('Testing Upload props', () => {
-  it('props disabled', () => {
+  it('props disabled', async () => {
     const { rerender, container } = render(<Upload />);
-    rerender(<Upload disabled />);
-    expect(container.getElementsByClassName('gio-upload-disabled')).toHaveLength(1);
+    act(() => {
+      rerender(<Upload disabled />);
+    });
+    await waitFor(() => {
+      expect(container.getElementsByClassName('gio-upload-disabled')).toHaveLength(1);
+    });
   });
 
   it('should be render default image', () => {
@@ -190,7 +218,9 @@ describe('Testing Upload actions', () => {
       },
     };
     const { container } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [{ file: mockFile }] } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [{ file: mockFile }] } });
+    });
   });
 
   test('should call beforeUpload function', async (done) => {
@@ -213,7 +243,9 @@ describe('Testing Upload actions', () => {
     } as any;
 
     const { container } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [{ file: mockFile }] } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [{ file: mockFile }] } });
+    });
 
     await sleep(50);
     currentRequest.respond(200, {}, uploadedSuccess);
@@ -231,7 +263,9 @@ describe('Testing Upload actions', () => {
     };
 
     const { container } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [{ file: mockFile }] } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [{ file: mockFile }] } });
+    });
 
     await sleep(50);
     currentRequest.respond(200, {}, uploadedSuccess);
@@ -251,7 +285,9 @@ describe('Testing Upload actions', () => {
     } as any;
 
     const { container } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    });
 
     await sleep(50);
     currentRequest.respond(200, {}, uploadedSuccess);
@@ -269,7 +305,9 @@ describe('Testing Upload actions', () => {
       },
     } as any;
     const { container } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    });
 
     await sleep(100);
     currentRequest.respond(200, {}, 'uploaded successful');
@@ -289,7 +327,9 @@ describe('Testing Upload actions', () => {
     } as any;
 
     const { container } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [mockFile] } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [mockFile] } });
+    });
 
     await sleep(50);
     currentRequest.error();
@@ -304,7 +344,9 @@ describe('Testing Upload actions', () => {
     } as any;
 
     const { container } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    });
 
     await sleep(50);
     currentRequest.error();
@@ -312,7 +354,9 @@ describe('Testing Upload actions', () => {
 
   test('render errorMessage', async () => {
     const { container } = render(<Upload action="api" type="drag" />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [mockFile] } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [mockFile] } });
+    });
 
     await sleep(50);
     currentRequest.error();
@@ -320,7 +364,9 @@ describe('Testing Upload actions', () => {
 
   test('happen error width drag image', async () => {
     const { container } = render(<Upload action="api" type="drag" accept="image/*" multiple />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
+    });
 
     await sleep(50);
     currentRequest.error();
@@ -336,8 +382,10 @@ describe('test input upload', () => {
     } as any;
 
     render(<Upload {...props} />);
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
-    fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    act(() => {
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
+      fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    });
   });
 
   test('test inputUploadType is a file', async (done) => {
@@ -359,8 +407,10 @@ describe('test input upload', () => {
     } as any;
 
     render(<Upload {...props} />);
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
-    fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    act(() => {
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
+      fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    });
 
     await sleep(50);
     currentRequest.respond(200, {}, uploadSuccess);
@@ -378,8 +428,10 @@ describe('test input upload', () => {
     } as any;
 
     render(<Upload {...props} />);
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
-    fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    act(() => {
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
+      fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    });
 
     await sleep(50);
     currentRequest.respond(200, {}, uploadSuccess);
@@ -399,8 +451,10 @@ describe('test input upload', () => {
     } as any;
 
     render(<Upload {...props} />);
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
-    fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    act(() => {
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
+      fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    });
 
     await sleep(50);
     currentRequest.error();
@@ -416,8 +470,10 @@ describe('test input upload', () => {
         inputUploadType="file"
       />
     );
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
-    fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    act(() => {
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
+      fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    });
   });
 
   test('test inputUploadType is a file ---- should happen catch', async (done) => {
@@ -434,8 +490,10 @@ describe('test input upload', () => {
 
     render(<Upload {...props} />);
 
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
-    fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    act(() => {
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
+      fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    });
   });
 
   test('test inputUploadType is a file ---- should happen catch', async (done) => {
@@ -454,8 +512,10 @@ describe('test input upload', () => {
     });
 
     render(<Upload {...props} />);
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
-    fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    act(() => {
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
+      fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    });
 
     await sleep(50);
     currentRequest.respond(200, {}, uploadSuccess);
@@ -470,16 +530,24 @@ describe('test input upload', () => {
       onRemove,
       onSuccess: async () => {
         await sleep(50);
-        rerender(<Upload {...props} />);
-        fireEvent.click(container.getElementsByClassName('gio-upload__input-preview')[0]);
-        expect(onRemove).toHaveBeenCalled();
+        act(() => {
+          rerender(<Upload {...props} />);
+        });
+        act(() => {
+          fireEvent.click(container.getElementsByClassName('gio-upload__input-preview')[0]);
+        });
+        await waitFor(() => {
+          expect(onRemove).toHaveBeenCalled();
+        });
         done();
       },
     } as any;
 
     const { container, rerender } = render(<Upload {...props} />);
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: imgUrl } });
-    fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    act(() => {
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: imgUrl } });
+      fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+    });
   });
 });
 
@@ -493,15 +561,21 @@ describe('Testing card upload', () => {
       onRemove,
       onSuccess: async () => {
         await sleep(50);
-        rerender(<Upload {...props} />);
-        fireEvent.click(container.querySelector(deleteIcon));
-        expect(onRemove).toHaveBeenCalled();
+        act(() => {
+          rerender(<Upload {...props} />);
+          fireEvent.click(container.querySelector(deleteIcon));
+        });
+        await waitFor(() => {
+          expect(onRemove).toHaveBeenCalled();
+        });
         done();
       },
     } as any;
 
     const { container, rerender } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [testFile] } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [testFile] } });
+    });
 
     await sleep(50);
     currentRequest.respond(200, {}, JSON.stringify({ success: true }));
@@ -514,9 +588,13 @@ describe('Testing card upload', () => {
       action: 'api',
       onSuccess: async () => {
         await sleep(50);
-        rerender(<Upload {...props} />);
-        fireEvent.click(container.querySelector(deleteIcon));
-        expect(removeMock).toHaveBeenCalled();
+        act(() => {
+          rerender(<Upload {...props} />);
+          fireEvent.click(container.querySelector(deleteIcon));
+        });
+        await waitFor(() => {
+          expect(removeMock).toHaveBeenCalled();
+        });
         done();
       },
       onRemove: removeMock,
@@ -538,9 +616,13 @@ describe('Testing card upload', () => {
       type: 'card',
       onSuccess: async () => {
         await sleep(50);
-        rerender(<Upload {...props} />);
-        fireEvent.click(container.querySelector(deleteIcon));
-        expect(onRemove).toHaveBeenCalled();
+        act(() => {
+          rerender(<Upload {...props} />);
+          fireEvent.click(container.querySelector(deleteIcon));
+        });
+        await waitFor(() => {
+          expect(onRemove).toHaveBeenCalled();
+        });
         await sleep(50);
         delete (testFile as any).dataUrl;
         done();
@@ -549,7 +631,9 @@ describe('Testing card upload', () => {
     } as any;
 
     const { container, rerender } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [testFile] } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [testFile] } });
+    });
 
     await sleep(50);
     currentRequest.respond(200, {}, JSON.stringify({ success: true }));
@@ -563,8 +647,10 @@ describe('Testing card upload', () => {
       type: 'card',
       onSuccess: async () => {
         await sleep(50);
-        rerender(<Upload {...props} />);
-        fireEvent.click(container.querySelector(deleteIcon));
+        act(() => {
+          rerender(<Upload {...props} />);
+          fireEvent.click(container.querySelector(deleteIcon));
+        });
         await sleep(50);
         delete (testFile as any).dataUrl;
         done();
@@ -572,7 +658,9 @@ describe('Testing card upload', () => {
     } as any;
 
     const { container, rerender } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [testFile] } });
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [testFile] } });
+    });
 
     await sleep(50);
     currentRequest.respond(200, {}, JSON.stringify({ success: true }));
@@ -580,7 +668,7 @@ describe('Testing card upload', () => {
 });
 
 describe('Testing drag upload', () => {
-  test('support drag file with hover style', () => {
+  test('support drag file with hover style', async () => {
     jest.useFakeTimers();
     const props = {
       action: 'api',
@@ -588,16 +676,23 @@ describe('Testing drag upload', () => {
     } as any;
 
     const { container, rerender } = render(<Upload {...props} />);
-    fireEvent.dragOver(container.getElementsByClassName('gio-upload__drag')[0], {
-      dataTransfer: { files: [{ file: 'foo.png' }] },
+    act(() => {
+      fireEvent.dragOver(container.getElementsByClassName('gio-upload__drag')[0], {
+        dataTransfer: { files: [{ file: 'foo.png' }] },
+      });
     });
 
     act(() => {
       jest.runAllTimers();
     });
-    rerender(<Upload {...props} />);
 
-    expect(container.getElementsByClassName('gio-upload__drag--hover')).toBeTruthy();
+    act(() => {
+      rerender(<Upload {...props} />);
+    });
+
+    await waitFor(() => {
+      expect(container.getElementsByClassName('gio-upload__drag--hover')).toBeTruthy();
+    });
     jest.useRealTimers();
   });
 
@@ -608,15 +703,22 @@ describe('Testing drag upload', () => {
       accept: 'image/*',
       onSuccess: async () => {
         await sleep(50);
-        rerender(<Upload {...props} />);
-        expect(container.getElementsByClassName('gio-upload__actions-container')).toHaveLength(1);
+        act(() => {
+          rerender(<Upload {...props} />);
+        });
+        await waitFor(() => {
+          expect(container.getElementsByClassName('gio-upload__actions-container')).toHaveLength(1);
+        });
         done();
       },
     } as any;
 
     const { container, rerender } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], {
-      target: { files: [testFile] },
+
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], {
+        target: { files: [testFile] },
+      });
     });
 
     await sleep(50);
@@ -629,20 +731,39 @@ describe('Testing drag upload', () => {
       type: 'drag',
       onSuccess: async () => {
         await sleep(50);
-        rerender(<Upload {...props} />);
-        fireEvent.click(container.getElementsByClassName('gio-upload__actions-file')[0]);
-        fireEvent.click(container.getElementsByClassName('drag-file-preview-text')[0]);
-        expect(container.getElementsByClassName('gio-upload__preview-file')).toHaveLength(1);
+        act(() => {
+          rerender(<Upload {...props} />);
+        });
+        act(() => {
+          fireEvent.click(container.getElementsByClassName('gio-upload__actions-file')[0]);
+          fireEvent.click(container.getElementsByClassName('drag-file-preview-text')[0]);
+        });
+        await waitFor(() => {
+          expect(container.getElementsByClassName('gio-upload__preview-file')).toHaveLength(1);
+        });
         done();
       },
     } as any;
 
     const { container, rerender } = render(<Upload {...props} />);
-    fireEvent.change(container.getElementsByTagName('input')[0], {
-      target: { files: [new File(['content'], 'filename.doc')] },
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], {
+        target: { files: [new File(['content'], 'filename.doc')] },
+      });
     });
 
     await sleep(50);
     currentRequest.respond(200, {}, JSON.stringify({ success: true }));
+  });
+
+  it('upload width default file list', () => {
+    render(<DefaultListUpload {...DefaultListUpload.args} />);
+    expect(screen.getByText('xxx.pdf')).toBeTruthy();
+  });
+
+  it('defaultFileList length > maxCount', () => {
+    render(<Upload type="drag" multiple defaultFileList={mockFileList as any} />);
+    expect(screen.getByText('one.png')).toBeTruthy();
+    expect(screen.queryByText('two.jpg')).toBeNull();
   });
 });
