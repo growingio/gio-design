@@ -1,11 +1,10 @@
 import React from 'react';
 import classnames from 'classnames';
-import { useLocale } from '@gio-design/utils';
+import { useLocale, usePrefixCls } from '@gio-design/utils';
 import RcDialog from 'rc-dialog';
 import { CloseOutlined } from '@gio-design/icons';
 import { ButtonProps } from '../components/button';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
-import { IModalProps } from './interface';
+import { IModalProps, ModalLocale } from './interface';
 import ModalPrefixClsContext from './ModalContext';
 import Title from './Title';
 import Footer from './Footer';
@@ -22,8 +21,8 @@ const Modal: React.FC<IModalProps> = ({
   onBack,
   closeAfterOk,
   dropCloseButton,
-  okText: okLocale,
-  closeText: closeLocale,
+  okText: customizeOKText,
+  closeText: customizeCloseText,
   okButtonProps,
   closeButtonProps,
   onOk,
@@ -32,9 +31,11 @@ const Modal: React.FC<IModalProps> = ({
   ...restProps
 }: IModalProps) => {
   const prefix = usePrefixCls('modal', customPrefixCls);
-  const locale = useLocale('modal');
-  const { closeText } = closeLocale ?? locale ?? defaultLocale;
-  const { okText } = okLocale ?? locale ?? defaultLocale;
+  const locale = useLocale('Modal');
+  const { closeText, okText } = {
+    ...defaultLocale,
+    ...locale,
+  } as ModalLocale;
 
   const modalCls = classnames(className, {
     [`${prefix}--small`]: size === 'small',
@@ -99,8 +100,8 @@ const Modal: React.FC<IModalProps> = ({
         footer={
           useFooter && (
             <Footer
-              okText={okLocale ?? okText}
-              closeText={closeLocale ?? closeText}
+              okText={customizeOKText ?? okText}
+              closeText={customizeCloseText ?? closeText}
               okButtonProps={okBtnProps}
               closeButtonProps={closeBtnProps}
               footer={restProps.footer}
