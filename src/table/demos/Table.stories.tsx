@@ -13,6 +13,7 @@ import { ControlledTable } from './TableControlled';
 import { RowExpandTable } from './RowExpandTable';
 import { TreeExpandTable } from './TreeExpandTable';
 import { ExpandWithTable } from './ExpandWithTable';
+import { RowExpandWithFixedColumn } from './RowExpandWithFixedColumn';
 
 export default {
   title: 'Data Display/Table',
@@ -41,4 +42,5 @@ export {
   RowExpandTable,
   TreeExpandTable,
   ExpandWithTable,
+  RowExpandWithFixedColumn,
 };
