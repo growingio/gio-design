@@ -7,7 +7,10 @@ export type TModalSize = 'small' | 'middle' | 'full';
 
 export type TStepNoParamFn = () => void | Promise<unknown>;
 
-export type ModalLocale = Omit<Locale, 'locale'>;
+export type ModalLocale = {
+  okText: string;
+  closeText: string;
+};
 
 export interface ITitleProps {
   title?: ReactNode;
