@@ -420,6 +420,28 @@
     line-height: 24px;
     cursor: pointer;
   }
+
+  &-expanded-row-fixed {
+    box-sizing: border-box;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border-right: 1px solid #ebedf5;
+      content: '';
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      border-left: 1px solid #ebedf5;
+      content: '';
+    }
+  }
 }
 
 .table-size(@size, @padding-vertical, @padding-horizontal) {
@@ -439,6 +461,11 @@
 
     .@{table-prefix-cls}-tbody .@{table-prefix-cls}-expanded-row > .@{table-prefix-cls}-cell {
       padding: @padding-vertical 20px;
+
+      .@{table-prefix-cls}-expanded-row-fixed {
+        margin: -@padding-vertical -21px;
+        padding: @padding-vertical 20px;
+      }
     }
 
     .@{table-prefix-cls}-tbody .@{table-prefix-cls}-cell-with-append {
