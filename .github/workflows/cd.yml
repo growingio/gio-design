@@ -12,13 +12,13 @@ jobs:
         with:
           node-version: 14
           registry-url: 'https://registry.npmjs.org'
-      - name: Restore package from cache
+      - name: Restore Node.js modules
         uses: actions/cache@v2.1.6
         with:
-          path: |
-            dist
-            es
-          key: package-${{ github.sha }}
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Build
+        run: yarn build
       - name: Publish package
         run: yarn publish --non-interactive --access public
         env:
