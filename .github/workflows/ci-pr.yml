@@ -79,8 +79,7 @@ jobs:
         run: yarn test --coverage
   sonar:
     name: Sonar scan
-    needs:
-      - unit_test
+    needs: unit_test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
