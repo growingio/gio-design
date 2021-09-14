@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
 import Divider from './Divider';
-import { ListItemSubgroupProps } from './interfaces';
+import { SubgroupProps } from './interfaces';
 import { renderItems } from './utils';
 import { PREFIX } from './constants';
 
-function ItemSubgroup({
+function Subgroup({
   className,
   style,
   title,
@@ -14,17 +15,32 @@ function ItemSubgroup({
   items,
   expandable = false,
   expandText,
-}: ListItemSubgroupProps) {
+  value,
+  onSelect,
+}: SubgroupProps) {
   const [expanded, setExpanded] = React.useState(false);
 
   function onExpand() {
     setExpanded(true);
   }
 
-  const prefixCls = `${usePrefixCls(PREFIX)}__item-subgroup`;
+  const prefixCls = `${usePrefixCls(PREFIX)}__subgroup`;
   let content;
   if (items) {
-    content = renderItems(expandable, expanded, items, onExpand, expandText).concat(<Divider key="subgroup-divider" />);
+    content = renderItems(
+      expandable,
+      expanded,
+      items.map((i) => ({
+        ...i,
+        selected: i.value === value,
+        onClick: () => {
+          // @ts-ignore
+          onSelect(i.value);
+        },
+      })),
+      onExpand,
+      expandText
+    ).concat(<Divider key="subgroup-divider" />);
   } else {
     content = children;
   }
@@ -36,4 +52,4 @@ function ItemSubgroup({
   );
 }
 
-export default ItemSubgroup;
+export default Subgroup;
