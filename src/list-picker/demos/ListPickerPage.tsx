@@ -1,54 +1,56 @@
 import React from 'react';
-import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook/addon-docs';
+import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
-import List from '../List';
+import List from '../ListPicker';
 
 export default function ListPage() {
   const { formatMessage } = useIntl();
 
   return (
     <>
-      <Title>{formatMessage({ defaultMessage: 'List 列表' })}</Title>
-      <p>
+      <Title>{formatMessage({ defaultMessage: 'ListPicker 列表选择器' })}</Title>
+      <Description>
         {formatMessage({
-          defaultMessage: '以列表的形式展示同一类型的内容，可承载文字、头像、多选框、按钮等元素组合。',
+          defaultMessage: '当用户需要选择某一项值时，可以从列表中选择。',
         })}
-      </p>
+      </Description>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="data-display-list--basic" />
+        <Story id="internal-components-listpicker--basic" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '分组' })}</Subheading>
-      <p>{formatMessage({ defaultMessage: '支持两级分组，一级分钟用 ItemGroup，二级分组用 ItemSubgroup。' })}</p>
+      <Description>
+        {formatMessage({ defaultMessage: '支持两级分组，一级分钟用 ItemGroup，二级分组用 ItemSubgroup。' })}
+      </Description>
       <Canvas>
-        <Story id="data-display-list--groups" />
+        <Story id="internal-components-listpicker--groups" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '空样式' })}</Subheading>
       <Canvas>
-        <Story id="data-display-list--empty" />
+        <Story id="internal-components-listpicker--empty" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '不同尺寸' })}</Subheading>
       <Canvas>
-        <Story id="data-display-list--size" />
+        <Story id="internal-components-listpicker--size" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'JSX 语法' })}</Subheading>
       <Canvas>
-        <Story id="data-display-list--jsx" />
+        <Story id="internal-components-listpicker--jsx" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自动省略' })}</Subheading>
-      <p>
+      <Description>
         {formatMessage({
           defaultMessage: 'List 本身不支持自动省略。想要自动省略超长文本，请使用 Typography.Text 组件。',
         })}
-      </p>
+      </Description>
       <Canvas>
-        <Story id="data-display-list--ellipsis" />
+        <Story id="internal-components-listpicker--ellipsis" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

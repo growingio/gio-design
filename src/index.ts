@@ -18,6 +18,7 @@ export { default as Input, InputProps, InputNumberProps, TextAreaProps } from '.
 export { default as Layout, LayoutProps } from './components/layout';
 export { default as Link, LinkProps } from './components/link';
 export { default as List, ListProps } from './components/list';
+export { default as ListPicker, ListPickerProps } from './list-picker';
 export { default as Loading, LoadingProps } from './components/loading';
 export {
   default as Menu,

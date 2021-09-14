@@ -2198,10 +2198,10 @@
     rc-util "^5.13.0"
     shallowequal "^1.1.0"
 
-"@gio-design/tokens@^21.8.0":
-  version "21.8.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-21.8.0.tgz#2e6fa9f38416d65f0a87782925b0ed14de14658c"
-  integrity sha512-01ME9z5LjvA1uYt9eHtt6JsATwJy5ygQd4H1y6XTYqXB/6PwuzLl8fgwCFEDH2FFDNATe9T0//ufyV6HSuB8Ww==
+"@gio-design/tokens@22.0.0-alpha.0":
+  version "22.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-22.0.0-alpha.0.tgz#3089471e2e52f73914952f9448e3894e599bad97"
+  integrity sha512-2rDZIkvMDsl7nUD9HlwRJPYErwNXJJp+2smhxl8NY3vMYMhdSRXZsWblMLvNogKAGfpEYFR/ar1lysifQC/G4w==
 
 "@gio-design/utils@21.8.6":
   version "21.8.6"

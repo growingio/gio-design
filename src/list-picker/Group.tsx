@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
 import Divider from './Divider';
-import { ListItemGroupProps } from './interfaces';
+import { GroupProps, ItemProps } from './interfaces';
 import { renderItems } from './utils';
-import ItemSubgroup from './ItemSubgroup';
+import Subgroup from './Subgroup';
 import { PREFIX } from './constants';
 
 function ItemGroup({
@@ -16,8 +17,10 @@ function ItemGroup({
   items,
   expandable = false,
   expandText,
-}: ListItemGroupProps) {
-  const prefixCls = `${usePrefixCls(PREFIX)}__item-group`;
+  value,
+  onSelect,
+}: GroupProps) {
+  const prefixCls = `${usePrefixCls(PREFIX)}__group`;
   const [expanded, setExpanded] = React.useState(false);
 
   function onExpand() {
@@ -32,10 +35,23 @@ function ItemGroup({
         expandable,
         expandText,
       };
-      return <ItemSubgroup key={subgroupProps.key} {...subgroupProps} />;
+      return <Subgroup key={subgroupProps.key} {...subgroupProps} onSelect={onSelect} />;
     });
   } else if (items) {
-    content = renderItems(expandable, expanded, items, onExpand, expandText).concat(<Divider key="group-divider" />);
+    content = renderItems(
+      expandable,
+      expanded,
+      items.map((i: ItemProps) => ({
+        ...i,
+        selected: i.value === value,
+        onClick: () => {
+          // @ts-ignore
+          onSelect(i.value);
+        },
+      })),
+      onExpand,
+      expandText
+    ).concat(<Divider key="group-divider" />);
   } else {
     content = children;
   }
