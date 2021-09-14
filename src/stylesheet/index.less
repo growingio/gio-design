@@ -1,10 +1,10 @@
 @import '~@gio-design/tokens/dist/variables.less';
 @import '~@gio-design/utils/lib/less/mixins.less';
 
-.font(@style: normal, @weight: 400, @size: 14px) {
+.font(@style: normal, @weight: 400, @size: @size-font-base) {
   font-weight: @weight;
   font-size: @size;
-  font-family: 'PingFang SC', sans-serif;
+  font-family: @font-family-primary;
   font-style: @style;
 }
 

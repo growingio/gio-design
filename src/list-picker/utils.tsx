@@ -1,17 +1,17 @@
 import React from 'react';
 import Item from './Item';
 import ExpandItem from './ExpandItem';
-import { ListItemProps } from './interfaces';
+import { ItemProps } from './interfaces';
 import { DEFAULT_SHOW_ITEMS_COUNT } from './constants';
 
-export function renderItem(i: ListItemProps) {
-  return <Item {...i} key={i.key} />;
+export function renderItem(i: ItemProps) {
+  return <Item {...i} key={i.value} />;
 }
 
 export function renderItems(
   expandable: boolean,
   expanded: boolean,
-  currentItems: ListItemProps[],
+  currentItems: ItemProps[],
   onExpand: () => void,
   expandText?: string
 ) {
