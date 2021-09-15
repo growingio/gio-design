@@ -34,7 +34,7 @@ import {
 import xhrRequest from './xhrRequest';
 import { UploadPrefixClsContext } from './UploadContext';
 import UploadList from './UploadList';
-import Alert from '../alert';
+import Alert from '../../alert';
 
 const triggerMap: ITriggerMap = {
   button: ButtonTrigger,
