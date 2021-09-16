@@ -5,7 +5,7 @@ import Docs from './Layout.mdx';
 import { LayoutProps } from './interfaces';
 import Layout from './index';
 import Button from '../button';
-import Avatar from '../avatar';
+import Avatar from '../../avatar';
 import Skeleton from '../skeleton';
 import Select from '../select';
 import Menu, { SubMenu, MenuItem, Divider } from '../menu';
@@ -79,7 +79,7 @@ const SuspendDemo = ({ suspend, fixed }: { suspend?: 'left' | 'right'; fixed: bo
     setSelectedKey(e.key);
     setCollapsed(true);
   };
-  
+
   return (
     <Layout style={{ height: 'calc(100vh - 16px)' }} fixed={fixed}>
       <Header />

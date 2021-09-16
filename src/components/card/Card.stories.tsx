@@ -5,7 +5,7 @@ import Docs from './Card.mdx';
 import { CardProps } from './interfaces';
 import './style';
 
-import Avatar from '../avatar';
+import Avatar from '../../avatar';
 import Card from './index';
 import Table from '../table';
 import Button from '../button';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { isBoolean } from 'lodash';
 import classNames from 'classnames';
-import Avatar from '../avatar';
+import Avatar from '../../avatar';
 import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { SkeletonProps } from './interface';
@@ -40,7 +40,9 @@ const Skeleton = (props: SkeletonProps) => {
           <div className={`${prefixCls}-paragraph`}>
             {Array(row)
               .fill(0)
-              .map((...args) => <p key={args[1]} />)}
+              .map((...args) => (
+                <p key={args[1]} />
+              ))}
           </div>
         )}
       </div>
