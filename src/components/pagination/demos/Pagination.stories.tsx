@@ -25,5 +25,5 @@ Default.args = {
   defaultCurrent: 1,
   hideOnSinglePage: false,
   showSizeChanger: true,
-  pageSizeOptions: [10, 20, 50, 100],
+  pageSizeOptions: [10, 20, 50],
 };

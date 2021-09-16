@@ -29,7 +29,7 @@ describe('Testing Card', () => {
     const mockClick = jest.fn();
     _.set(Footer.args, 'clickable', true);
     render(<Footer {..._.set(Footer.args, 'onClick', mockClick)} />);
-    fireEvent.click(screen.getByRole('button', { hidden: true }));
+    fireEvent.click(screen.getByRole('button', { hidden: true, name: '按 钮' }));
     expect(mockClick).toBeCalledTimes(1);
   });
 
@@ -39,7 +39,7 @@ describe('Testing Card', () => {
       'children',
       <>
         <Card.Meta image="../../../assets/images/Avatar.png" title="卡片标题" description="卡片副标题" />
-        <Card.Meta image='' />
+        <Card.Meta image="" />
       </>
     );
     render(<Default {...Default.args} />);

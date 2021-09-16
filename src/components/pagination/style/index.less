@@ -4,10 +4,13 @@
 @input-prefix-cls: ~'@{component-prefix}-input';
 
 .pagination-item {
-  min-width: 28px;
-  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
   font-size: 14px;
-  text-align: center;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -20,7 +23,7 @@
   -webkit-transition: none;
   transition: none;
   &:hover {
-    background-color: @color-background-pagination-hover;
+    background-color: @palette-gray-2;
   }
   &:active {
     background-color: @palette-gray-2;
@@ -52,7 +55,7 @@
     &,
     &:hover,
     &:active {
-      background-color: @color-background-pagination-normal;
+      background-color: @palette-gray-2;
     }
   }
 
@@ -66,7 +69,7 @@
     &,
     &:hover,
     &:active {
-      background-color: @color-background-pagination-disabled-active;
+      background-color: @palette-gray-2;
     }
   }
 
@@ -78,14 +81,23 @@
     text-align: right;
   }
 
+  &-arrow-container {
+    height: 30px;
+
+    button .gio-icon {
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
   &-prev,
   &-next {
     .pagination-button;
+    width: 30px;
+    height: 30px;
     color: @color-text-pagination-normal;
-    line-height: 28px;
-    .gio-icon {
-      vertical-align: middle;
-    }
   }
 
   &-disabled&-prev,
@@ -156,13 +168,14 @@
     line-height: 22px;
     letter-spacing: 0;
     &-size-changer {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       margin: 0 8px;
     }
     &-quick-jumper {
       display: inline-block;
       height: 100%;
-      margin: 0 8px;
+      margin: 0 8px 0 0;
       .@{input-prefix-cls} {
         box-sizing: border-box;
         width: auto;

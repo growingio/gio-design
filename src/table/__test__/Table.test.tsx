@@ -237,9 +237,15 @@ describe('Testing table', () => {
         <span>trigger</span>
       </FilterPopover>
     );
-    fireEvent.click(getByText('trigger'));
-    fireEvent.click(getAllByRole('option', { hidden: true })[0]);
-    fireEvent.click(getByText('确 定'));
+    act(() => {
+      fireEvent.click(getByText('trigger'));
+    });
+    act(() => {
+      fireEvent.click(getAllByRole('option', { hidden: true })[0]);
+    });
+    act(() => {
+      fireEvent.click(getByText('确 定'));
+    });
 
     await waitFor(() => {
       expect(onClick).toBeCalledTimes(1);
