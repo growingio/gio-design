@@ -33,19 +33,9 @@ describe('Testing Avatar', () => {
     expect(screen.queryByText('这', { exact: false })).not.toBeNull();
   });
 
-  it('props default', () => {
-    const { container } = render(<Avatar />);
-    expect(container.getElementsByClassName('gio-avatar-defaul')).toBeTruthy();
-  });
-
   it('props src', () => {
     const { container } = render(<Avatar>li</Avatar>);
     expect(container.getElementsByClassName('img')).toBeTruthy();
-  });
-
-  it('props size', () => {
-    const { container } = render(<Avatar size="small" />);
-    expect(container.getElementsByClassName('gio-avatar-sm')).toBeTruthy();
   });
 
   it('props icon', () => {
@@ -53,21 +43,13 @@ describe('Testing Avatar', () => {
     expect(container.getElementsByClassName('gio-avatar-icon')).toBeTruthy();
   });
 
-  it('prop droppable', () => {
-    const { container } = render(<Avatar size="small" droppable />);
+  it('prop size and droppable', () => {
+    const { container } = render(<Avatar size="small" mode="circle" droppable displayTooltip />);
     expect(container.getElementsByClassName('gio-avatar-droppable')).toBeTruthy();
   });
 
-  it('prop circle', () => {
-    const { container } = render(<Avatar mode="circle" />);
-    expect(container.getElementsByClassName('gio-avatar-circle')).toBeTruthy();
-  });
-
   it('not string', () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    // eslint-disable-next-line react/no-children-prop
-    const { rerender } = render(<Avatar children={1} />);
+    const { rerender } = render(<Avatar>1</Avatar>);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     // eslint-disable-next-line react/no-children-prop
@@ -75,16 +57,25 @@ describe('Testing Avatar', () => {
     expect(screen).toBeTruthy();
   });
 
-  it('props users', () => {
-    const { container } = render(
-      <AvatarGroup users={[]} number={4} placement="bottom" className="display-avatar" style={{}} displayTooltip />
-    );
-    expect(container.getElementsByClassName('gio-avatar-group')).toBeTruthy();
+  it('not omit', () => {
+    render(<Avatar omit={false}>1</Avatar>);
   });
 
-  it('should be stable', () => {
-    const { rerender } = render(<AvatarGroup users={users} />);
-    rerender(<AvatarGroup users={users} />);
+  it('children trim', () => {
+    render(<Avatar omit>asdfg</Avatar>);
+  });
+  it('children trim', () => {
+    render(<Avatar omit> </Avatar>);
+  });
+
+  it('props users', () => {
+    render(<AvatarGroup users={[]} placement="bottom" displayTooltip />);
+  });
+
+  it('no props', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    render(<AvatarGroup />);
   });
 
   it('should be render rightly', () => {
@@ -92,23 +83,8 @@ describe('Testing Avatar', () => {
     expect(container.getElementsByClassName('gio-avatar-group')).toBeTruthy();
   });
 
-  test('props placement', () => {
-    const { rerender } = render(<AvatarGroup users={users} number={4} placement="top" />);
-    rerender(<AvatarGroup users={users} number={4} placement="top" />);
-  });
-
-  it('props number', () => {
-    const { container } = render(<AvatarGroup users={users} number={4} />);
-    expect(container.getElementsByClassName('gio-avatar-rest')).toBeTruthy();
-  });
-
   it('props users', () => {
     const { container } = render(<AvatarGroup users={users.slice(0, 3)} number={4} />);
-    expect(container.getElementsByClassName('gio-avatar')).toBeTruthy();
-  });
-
-  it('should have two character avatars', () => {
-    const { container } = render(<AvatarGroup users={users} />);
     expect(container.getElementsByClassName('gio-avatar')).toBeTruthy();
   });
 

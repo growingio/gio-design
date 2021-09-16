@@ -1,5 +1,5 @@
 export { default as Alert, AlertProps } from './components/alert';
-export { default as Avatar, AvatarGroup, AvatarProps } from './components/avatar';
+export { default as Avatar, AvatarGroup, AvatarProps } from './avatar';
 export { default as Banner, BannerProps } from './components/banner';
 export { default as Breadcrumb, BreadcrumbItem, BreadcrumbProps, BreadcrumbItemProps } from './components/breadcrumb';
 export { default as Button, ButtonProps, ButtonType } from './components/button';
