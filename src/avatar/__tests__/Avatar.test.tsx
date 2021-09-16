@@ -2,9 +2,9 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { PlusCircleFilled } from '@gio-design/icons';
 import Avatar from '../index';
-import Dropdown from '../../dropdown';
+import Dropdown from '../../components/dropdown';
 import AvatarGroup from '../AvatarGroup';
-import { Default } from '../Avatar.stories';
+import { Default } from '../demos/Avatar.stories';
 
 describe('Testing Avatar', () => {
   const users = [
@@ -76,7 +76,9 @@ describe('Testing Avatar', () => {
   });
 
   it('props users', () => {
-    const { container } = render(<AvatarGroup users={[]} number={4} placement="bottom" displayTooltip />);
+    const { container } = render(
+      <AvatarGroup users={[]} number={4} placement="bottom" className="display-avatar" style={{}} displayTooltip />
+    );
     expect(container.getElementsByClassName('gio-avatar-group')).toBeTruthy();
   });
 

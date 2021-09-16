@@ -4,8 +4,8 @@ import { HomeFilled, AppsFilled, SettingOutlined, AppOutlined } from '@gio-desig
 import Docs from './LayoutPage';
 import { LayoutProps } from '../interfaces';
 import Layout from '../index';
-import Button from '../../components/button';
-import Avatar from '../../components/avatar';
+import Button from '../../button';
+import Avatar from '../../avatar';
 import Skeleton from '../../components/skeleton';
 import Select from '../../components/select';
 import Menu, { SubMenu, MenuItem, Divider } from '../../components/menu';
