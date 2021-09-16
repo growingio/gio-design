@@ -8,6 +8,7 @@ import Select from '../select';
 import { PaginationProps } from './interface';
 import { generatePageArray } from './until';
 import useControlledState from '../../utils/hooks/useControlledState';
+import Button from '../button';
 
 const Pagination = ({
   prefixCls: customizePrefixCls,
@@ -24,7 +25,7 @@ const Pagination = ({
   showQuickJumper = false,
   hideOnSinglePage = false,
   showSizeChanger = false,
-  pageSizeOptions = ['10', '20', '50', '100'],
+  pageSizeOptions = ['10', '20', '50'],
   onShowSizeChange,
 }: PaginationProps) => {
   const prefixCls = usePrefixCls('pagination', customizePrefixCls);
@@ -138,20 +139,22 @@ const Pagination = ({
 
   const renderSelect = (): React.ReactElement => (
     <div className={`${prefixCls}-options-size-changer`}>
+      每页展示
       <Select
         size="small"
         listHeight={176}
         disabled={disabled}
-        defaultValue={`${controlledPageSize.toString()}条/页`}
+        defaultValue={`${controlledPageSize.toString()}`}
         onSelect={handleSelectPageSize}
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         getContainer={(triggerNode) => triggerNode.parentElement!}
         options={pageSizeOptions.map((value) => ({
           value,
-          label: `${value}条/页`,
+          label: `${value}`,
         }))}
-        style={{ height: '28px' }}
+        style={{ height: '28px', margin: '0 8px' }}
       />
+      条
     </div>
   );
 
@@ -192,32 +195,28 @@ const Pagination = ({
       })}
       style={style}
     >
+      {shouldShowOption && <li className={`${prefixCls}-options`}>{showSizeChanger && renderSelect()}</li>}
       {totalText}
-      <li
-        className={classNames(`${prefixCls}-prev`, {
-          [`${prefixCls}-disabled`]: prevDisabled,
-        })}
-        onClick={() => prevDisabled || handleClick(controlledCurrent - 1)}
-        aria-hidden="true"
-      >
-        <LeftOutlined size="16px" />
+      <li className={`${prefixCls}-arrow-container`} aria-hidden="true">
+        <Button
+          type="secondary"
+          className={`${prefixCls}-prev`}
+          onClick={() => prevDisabled || handleClick(controlledCurrent - 1)}
+          disabled={prevDisabled}
+          icon={<LeftOutlined size="14px" />}
+        />
       </li>
       {pagination}
-      <li
-        className={classNames(`${prefixCls}-next`, {
-          [`${prefixCls}-disabled`]: nextDisabled,
-        })}
-        onClick={() => nextDisabled || handleClick(controlledCurrent + 1)}
-        aria-hidden="true"
-      >
-        <RightOutlined size="16px" />
+      <li className={`${prefixCls}-arrow-container`} aria-hidden="true">
+        <Button
+          type="secondary"
+          className={classNames(`${prefixCls}-next`)}
+          onClick={() => nextDisabled || handleClick(controlledCurrent + 1)}
+          disabled={nextDisabled}
+          icon={<RightOutlined size="14px" />}
+        />
       </li>
-      {shouldShowOption && (
-        <li className={`${prefixCls}-options`}>
-          {showSizeChanger && renderSelect()}
-          {shouldShowQuickJumper && renderInput()}
-        </li>
-      )}
+      {shouldShowOption && <li className={`${prefixCls}-options`}>{shouldShowQuickJumper && renderInput()}</li>}
     </ul>
   );
 };
