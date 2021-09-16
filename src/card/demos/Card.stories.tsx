@@ -5,7 +5,7 @@ import Docs from './CardPage';
 import { CardProps } from '../interfaces';
 import '../style';
 
-import Avatar from '../../components/avatar';
+import Avatar from '../../avatar';
 import Card from '../index';
 import Table from '../../table';
 import Button from '../../components/button';
