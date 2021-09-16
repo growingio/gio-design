@@ -4,6 +4,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect, useRef } from 'react';
 import { Resizable } from 'react-resizable';
+import { TableProps } from './interface';
 import Table from './index';
 import './style';
 
@@ -42,8 +43,8 @@ export const tableComponent = {
   },
 };
 
-const ResizableTable = (props: any) => {
-  const { columns, dataSource, ...restProps } = props;
+const ResizableTable = (props: TableProps<any>) => {
+  const { columns = [], dataSource, ...restProps } = props;
 
   const [column, setColumn] = useState(columns);
   const modelStatusRef = useRef<any>(null);
@@ -52,9 +53,18 @@ const ResizableTable = (props: any) => {
     (index: number) =>
     (e: any, { size }: any) => {
       const nextColumns = [...modelStatusRef.current];
+
+      const prevWidth = nextColumns[index].width;
+      const nextPrevWidth = nextColumns[index + 1].width;
+
       nextColumns[index] = {
         ...nextColumns[index],
-        width: size.width,
+        width: size.width < prevWidth + nextPrevWidth - 58 ? size.width : prevWidth + nextPrevWidth - 58,
+      };
+
+      nextColumns[index + 1] = {
+        ...nextColumns[index + 1],
+        width: nextPrevWidth + (prevWidth - size.width) <= 58 ? 58 : nextPrevWidth + (prevWidth - size.width),
       };
 
       setColumn(nextColumns);

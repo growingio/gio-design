@@ -131,6 +131,9 @@
       th,
       td {
         &:first-child {
+          position: sticky;
+          left: 0;
+          z-index: 1;
           padding-left: 20px;
         }
         &:last-child {
@@ -456,9 +459,9 @@
   .react-resizable-handle {
     position: absolute;
     top: 0;
-    right: -4px;
+    right: 0;
     z-index: 1;
-    width: 8px;
+    width: 4px;
     height: 100%;
     cursor: col-resize;
   }

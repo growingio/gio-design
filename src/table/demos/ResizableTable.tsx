@@ -95,12 +95,13 @@ const columns = [
       }
       return false;
     },
+    fixed: 'left',
   },
   {
     title: '列标题2',
     dataIndex: 'age',
     key: 'age',
-    width: 400,
+    width: 200,
     ellipsis: true,
   },
   {
@@ -179,11 +180,12 @@ const columns = [
     key: 'attr8',
     width: 200,
     ellipsis: true,
+    fixed: 'right',
   },
 ];
 
 ResizableWithTable.args = {
-  columns,
+  columns: columns as any,
   dataSource,
   pagination: false,
   rowSelection: {
@@ -193,5 +195,8 @@ ResizableWithTable.args = {
     onChange: (e: any) => {
       console.log(e);
     },
+  },
+  scroll: {
+    x: 1200,
   },
 };
