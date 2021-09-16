@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { MoreOutlined, UserOutlined } from '@gio-design/icons';
 import { isNil, isUndefined } from 'lodash';
-import Tooltip from '../../tooltip';
+import { usePrefixCls } from '@gio-design/utils';
+import Tooltip from '../tooltip';
 import { AvatarProps } from './interfaces';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import composeRef from '../../utils/composeRef';
+import composeRef from '../utils/composeRef';
 
 const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProps, ref: React.Ref<HTMLSpanElement>) => {
   const {

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { HomeFilled } from '@gio-design/icons';
-import Docs from './Avatar.mdx';
-import Avatar, { AvatarGroup, AvatarGroupProps, AvatarProps } from './index';
-import './style';
-import './style/demo.stories.less';
+import Docs from './AvatarPage';
+import Avatar, { AvatarGroup, AvatarGroupProps, AvatarProps } from '../index';
+import '../style';
+import '../style/demo.stories.less';
 import image from '../../assets/images/Avatar.png';
 
 export default {
-  title: 'Functional Components/Avatar',
+  title: 'Data Display/Avatar',
   component: Avatar,
   parameters: {
     docs: {

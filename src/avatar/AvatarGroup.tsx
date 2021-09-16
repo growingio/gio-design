@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import _ from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import Avatar from './Avatar';
 import { AvatarGroupProps, UserAvatarType } from './interfaces';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
   const { number = 5, users = [], className, placement = 'bottom', style, displayTooltip = true } = props;
