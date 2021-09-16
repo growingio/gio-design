@@ -15,6 +15,7 @@ import {
 import FilterPopover from '../FilterPopover';
 import { translateInnerColumns } from '../utils';
 import Table from '../index';
+import ResizableTable from '../ResizableTable';
 
 const dataSource: any[] = [
   {
@@ -368,11 +369,39 @@ describe('Testing table', () => {
     expect(screen.getByText('button')).toBeTruthy();
   });
 
-  it('resize table', () => {
+  it('resize table', async () => {
     const { container } = render(<ResizableWithTable {...ResizableWithTable.args} />);
-    fireEvent.click(container.getElementsByClassName('react-resizable-handle')[0]);
-    fireEvent.mouseDown(container.getElementsByClassName('react-resizable-handle')[0]);
-    fireEvent.mouseMove(container, { clientX: 100 });
-    fireEvent.mouseUp(container.getElementsByClassName('react-resizable-handle')[0]);
+    const resizeHandle = container.getElementsByClassName('react-resizable-handle')[0];
+    act(() => {
+      fireEvent.click(resizeHandle);
+    });
+    act(() => {
+      fireEvent.mouseDown(resizeHandle);
+    });
+    act(() => {
+      fireEvent.mouseMove(resizeHandle, { clientX: 100 });
+    });
+    act(() => {
+      fireEvent.mouseUp(resizeHandle);
+    });
+
+    act(() => {
+      fireEvent.mouseDown(resizeHandle);
+    });
+    act(() => {
+      fireEvent.mouseMove(resizeHandle, { clientX: 500 });
+    });
+    act(() => {
+      fireEvent.mouseUp(resizeHandle);
+    });
+
+    await waitFor(() => {
+      expect(container.getElementsByClassName('gio-table')).toHaveLength(1);
+    });
+  });
+
+  it('render empty resize table', () => {
+    const { container } = render(<ResizableTable dataSource={[]} />);
+    expect(container.getElementsByClassName('gio-table')).toHaveLength(1);
   });
 });
