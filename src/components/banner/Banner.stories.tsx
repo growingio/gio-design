@@ -3,7 +3,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import Button from '../button';
 import Link from '../link';
-import Tag from '../tag';
+import Tag from '../../tag';
 import Banner, { BannerProps } from './index';
 import Docs from './Banner.mdx';
 import './style';

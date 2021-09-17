@@ -1,13 +1,13 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Docs from './Tag.mdx';
-import { TagProps } from './interface';
-import Tag from './index';
-import './style';
-import './style/demo.stories.less';
+import Docs from './TagPage';
+import { TagProps } from '../interface';
+import Tag from '../index';
+import '../style';
+import '../style/demo.stories.less';
 
 export default {
-  title: 'Basic Components/Tag',
+  title: 'Data Display/Tag',
   component: Tag,
   parameters: {
     docs: {
@@ -61,20 +61,20 @@ const DefaultTemplate: Story<TagProps> = (args) => (
 export const Default = DefaultTemplate.bind({});
 
 const DelayTemplate: Story<TagProps> = (args) => (
-    <>
-      <Tag className="tag_website_demo_tag" {...args}>
-        控件内的过滤条件
-      </Tag>
-      <Tag className="tag_website_demo_tag" {...args} type="prorupt">
-        控件内的过滤条件
-      </Tag>
-      <br />
-      <br />
-      <Tag className="tag_website_demo_tag" {...args} persistCloseIcon={false}>
-        可删除的标签
-      </Tag>
-    </>
-  );
+  <>
+    <Tag className="tag_website_demo_tag" {...args}>
+      控件内的过滤条件
+    </Tag>
+    <Tag className="tag_website_demo_tag" {...args} type="prorupt">
+      控件内的过滤条件
+    </Tag>
+    <br />
+    <br />
+    <Tag className="tag_website_demo_tag" {...args} persistCloseIcon={false}>
+      可删除的标签
+    </Tag>
+  </>
+);
 export const Closable = DelayTemplate.bind({});
 Closable.args = {
   closable: true,
