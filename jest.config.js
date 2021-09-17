@@ -36,6 +36,7 @@ module.exports = {
     '!src/**/__test?(s)__/*',
     '!src/text/Text.tsx',
     '!src/typograhy/Text.tsx',
+    '!src/table/DragTable.tsx',
   ],
   coverageDirectory: './coverage/',
   coveragePathIgnorePatterns: ['list-pro/'],

@@ -465,6 +465,38 @@
     height: 100%;
     cursor: col-resize;
   }
+
+  &-drag-container {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &-drag-handle {
+    margin-right: 8px;
+
+    &:hover {
+      cursor: grab;
+    }
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    &-disabled {
+      display: none;
+    }
+  }
+
+  &-drag-helper {
+    z-index: 999;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 16px;
+    background: #f7f8fc;
+    border-top: 1px solid #ebedf5;
+    border-bottom: 1px solid #ebedf5;
+  }
 }
 
 .table-size(@size, @padding-vertical, @padding-horizontal) {
