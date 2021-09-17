@@ -3,7 +3,7 @@ import * as React from 'react';
 function NoDataImage() {
   
   return (
-    <svg width="300" height="240" viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg role="img" aria-labelledby="title" viewBox="0 0 300 240" fill="none" >
       <title id="title">No data image</title>
       <path d="M213.528 139.013H85.6475L56.9268 200.808H240L213.528 139.013Z" fill="url(#paint0_linear)" />
       <path d="M54 217.527L85 146.027V110.027L54 171.027V217.527Z" fill="url(#paint1_linear)" />
