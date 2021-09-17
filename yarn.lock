@@ -1579,6 +1579,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.2.0":
+  version "7.15.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
+  integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.10.4.tgz"
@@ -2178,24 +2185,24 @@
     "@formatjs/icu-messageformat-parser" "2.0.10"
     tslib "^2.1.0"
 
-"@gio-design/icons@^21.4.0":
-  version "21.8.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.8.0.tgz#d5d892ad697f9e7176d809dc9450c3a111521b9c"
-  integrity sha512-Alvgv/BqBbTNceFmxslgPoyCk82n0SsOI0cRL/s+6PpHowzm78o91q9fT0WR+5cWuxKoYSBFlmMTNrWN6s8S+g==
+"@gio-design/icons@^21.9.1":
+  version "21.9.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.9.1.tgz#a548df3746777dd229dbbdd1674552907096a375"
+  integrity sha512-AUu05Adr8SvShV08Gy6SoeGmJ5PLCLVj3eunekJBFJGnQer07m5p69yBnl0mteOj+Ip8bNXYpZ5/muqyCHPLOA==
   dependencies:
-    "@types/classnames" "^2.2.11"
+    "@babel/runtime" "^7.14.8"
     classnames "^2.2.6"
 
-"@gio-design/table@7.17.1":
-  version "7.17.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/table/-/table-7.17.1.tgz#a499d15ba3ffea3e86ac43730e3a46e45904ca64"
-  integrity sha512-uvim1WsyDNasNCxv9RXNMfwd6qsJ+yne4ZjkuDPC2Bdcjq2kRuFQPsq+TwMFytpMbZFqkTMrxT8NO+G+xzQYRA==
+"@gio-design/table@7.18.1-patch.1":
+  version "7.18.1-patch.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/table/-/table-7.18.1-patch.1.tgz#58b67e141568f7f82d5d4ec26803985d4e5531c2"
+  integrity sha512-jmGKU7FurWfuUpIruoP/H+ZPGA6TIZ9h8x6S2Jvv09JX6jwjU+yH9sYhhSSizzPVXq5N3pRz8O6RBjrMqS7pfg==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.5"
     lodash "^4.17.21"
     rc-resize-observer "^1.0.0"
-    rc-util "^5.13.0"
+    rc-util "^5.14.0"
     shallowequal "^1.1.0"
 
 "@gio-design/tokens@22.0.0-alpha.0":
@@ -3617,7 +3624,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/classnames@^2.2.11", "@types/classnames@^2.2.9":
+"@types/classnames@^2.2.9":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.3.1.tgz#3c2467aa0f1a93f1f021e3b9bcf938bd5dfdc0dd"
   integrity sha512-zeOWb0JGBoVmlQoznvqXbE0tEC/HONsnoUNH19Hc96NFsTAwTXbTqb8FMYkru1F/iqp7a18Ws3nWJvtA1sHD1A==
@@ -4781,6 +4788,11 @@ array-last@^1.1.1:
   resolved "https://registry.yarnpkg.com/array-last/-/array-last-1.3.0.tgz"
   dependencies:
     is-number "^4.0.0"
+
+array-move@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/array-move/-/array-move-4.0.0.tgz#2c3730f056cc926f62a59769a5a8cda2fb6d8c55"
+  integrity sha512-+RY54S8OuVvg94THpneQvFRmqWdAHeqtMzgMW6JNurHxe8rsS07cHQdfGkXnTUXiBcyZ0j3SiDIxxj0RPiqCkQ==
 
 array-slice@^0.2.3:
   version "0.2.3"
@@ -13566,7 +13578,7 @@ prop-types-exact@^1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@15.x, prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.x, prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz"
   dependencies:
@@ -14016,10 +14028,19 @@ rc-util@^4.0.4, rc-util@^4.1.1, rc-util@^4.15.3, rc-util@^4.4.0:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.1.0"
 
-rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, rc-util@^5.13.0, rc-util@^5.2.0, rc-util@^5.2.1, rc-util@^5.4.0, rc-util@^5.5.0, rc-util@^5.7.0:
+rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, rc-util@^5.2.0, rc-util@^5.2.1, rc-util@^5.4.0, rc-util@^5.5.0, rc-util@^5.7.0:
   version "5.13.2"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.13.2.tgz#a8a0bb77743351841ba8bed6393e03b8d2f685c8"
   integrity sha512-eYc71XXGlp96RMzg01Mhq/T3BL6OOVTDSS0urFEuvpi+e7slhJRhaHGCKy2hqJm18m9ff7VoRoptplKu60dYog==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    react-is "^16.12.0"
+    shallowequal "^1.1.0"
+
+rc-util@^5.14.0:
+  version "5.14.0"
+  resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.14.0.tgz#52c650e27570c2c47f7936c7d32eaec5212492a8"
+  integrity sha512-2vy6/Z1BJUcwLjm/UEJb/htjUTQPigITUIemCcFEo1fQevAumc9sA32x2z5qyWoa9uhrXbiAjSDpPIUqyg65sA==
   dependencies:
     "@babel/runtime" "^7.12.5"
     react-is "^16.12.0"
@@ -14260,6 +14281,15 @@ react-sizeme@^3.0.1:
     invariant "^2.2.4"
     shallowequal "^1.1.0"
     throttle-debounce "^3.0.1"
+
+react-sortable-hoc@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-sortable-hoc/-/react-sortable-hoc-2.0.0.tgz#f6780d8aa4b922a21f3e754af542f032677078b7"
+  integrity sha512-JZUw7hBsAHXK7PTyErJyI7SopSBFRcFHDjWW5SWjcugY0i6iH7f+eJkY8cJmGMlZ1C9xz1J3Vjz0plFpavVeRg==
+  dependencies:
+    "@babel/runtime" "^7.2.0"
+    invariant "^2.2.4"
+    prop-types "^15.5.7"
 
 react-syntax-highlighter@^13.5.3:
   version "13.5.3"

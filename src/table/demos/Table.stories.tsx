@@ -16,6 +16,7 @@ import { TreeExpandTable } from './TreeExpandTable';
 import { ExpandWithTable } from './ExpandWithTable';
 import { RowExpandWithFixedColumn } from './RowExpandWithFixedColumn';
 import { ResizableWithTable } from './ResizableTable';
+import { DragColumns } from './DragTable';
 
 export default {
   title: 'Data Display/Table',
@@ -47,4 +48,5 @@ export {
   ExpandWithTable,
   RowExpandWithFixedColumn,
   ResizableWithTable,
+  DragColumns,
 };
