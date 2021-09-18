@@ -15,7 +15,6 @@ import { TableProps, ColumnsType, OnTriggerStateUpdateProps } from './interface'
 import Empty from '../empty';
 import { translateInnerColumns } from './utils';
 import Loading from '../loading';
-import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
 import useHackOnRow from './hook/useHackOnRow';
 
 interface TableContextType {
@@ -50,7 +49,6 @@ function Table<RecordType>(
   } = props;
   const mergedRef = useMergeRef(ref);
   const prefixCls = usePrefixCls('table', customizePrefixCls);
-  const debounceLoading = useDebounceLoading(loading, 1000);
   const onHackRow = useHackOnRow(onRow, hackRowEvent);
   const innerColumns = useMemo(() => translateInnerColumns(columns), [columns]);
   const [activeSorterStates, updateSorterStates, sortedData, sorter] = useSorter(innerColumns, dataSource);
@@ -128,7 +126,7 @@ function Table<RecordType>(
         style={style}
         ref={mergedRef}
       >
-        <Loading loading={debounceLoading}>
+        <Loading loading={loading}>
           <RcTable<RecordType>
             tableLayout="fixed"
             title={title ? () => title : undefined}
