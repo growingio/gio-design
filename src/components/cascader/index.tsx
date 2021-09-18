@@ -52,8 +52,11 @@ export const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Pro
   const keyMapping = mergeKeyMapping(_keyMapping);
   const inputRef = useRef<HTMLInputElement>(null);
   const [selected, setSelected] = useControlledState(value, defaultValue);
-  const merTitle = originTitle ?? getTitleBySelected(keyMapping,separator,dataSource, value, );
-  const [title, setTitle] = useControlledState(merTitle, getTitleBySelected(keyMapping,separator,dataSource, defaultValue) );
+  const merTitle = originTitle ?? getTitleBySelected(keyMapping, separator, dataSource, value);
+  const [title, setTitle] = useControlledState(
+    merTitle,
+    getTitleBySelected(keyMapping, separator, dataSource, defaultValue)
+  );
   const [keyword, setKeyword] = useDynamicData(originKeyword);
   const [canOpen, setCanOpen] = useDynamicData(open);
   const [dropdownVisible, setDropdownVisible] = useDynamicData(!!visible);
@@ -70,6 +73,7 @@ export const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Pro
       // 1. 可以让用户看到选中操作的效果
       // 2. 可以防止 unmount 后 setState
       setDropdownVisible(false);
+      onVisibleChange?.(false);
     }, 80);
   };
   const handleVisibleChange = (v: boolean) => {
