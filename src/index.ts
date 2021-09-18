@@ -62,7 +62,7 @@ export { default as TabNav, TabNavProps } from './components/tab-nav';
 export { default as SearchBar, SearchBarProps } from './components/search-bar';
 export { default as Tabs, TabPane, TabProps, TabPaneProps } from './components/tabs';
 export { default as Tag, TagProps } from './components/tag';
-export { default as Toast, ToastConfigOptions, ToastType } from './components/toast';
+export { default as Toast, ToastConfigOptions, ToastType } from './toast';
 export { default as Toggles, TogglesProps } from './components/toggles';
 export { default as Tooltip, TooltipProps, TooltipLink } from './components/tooltip';
 export {

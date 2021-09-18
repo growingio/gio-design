@@ -1,11 +1,11 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import Button from '../button';
-import Docs from './Toast.mdx';
-import Toast from './index';
-import { ArgsProps } from './interface';
-import './style';
+import Button from '../../components/button';
+import Docs from './ToastPage';
+import Toast from '../index';
+import { ArgsProps } from '../interface';
+import '../style';
 
 export default {
   title: 'Basic Components/Toast',
