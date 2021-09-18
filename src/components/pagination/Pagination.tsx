@@ -200,6 +200,7 @@ const Pagination = ({
       <li className={`${prefixCls}-arrow-container`} aria-hidden="true">
         <Button
           type="secondary"
+          size="small"
           className={`${prefixCls}-prev`}
           onClick={() => prevDisabled || handleClick(controlledCurrent - 1)}
           disabled={prevDisabled}
@@ -210,6 +211,7 @@ const Pagination = ({
       <li className={`${prefixCls}-arrow-container`} aria-hidden="true">
         <Button
           type="secondary"
+          size="small"
           className={classNames(`${prefixCls}-next`)}
           onClick={() => nextDisabled || handleClick(controlledCurrent + 1)}
           disabled={nextDisabled}
