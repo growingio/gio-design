@@ -63,7 +63,7 @@
     "react-dnd-html5-backend": "^14.0.0",
     "react-lines-ellipsis": "^0.15.0",
     "react-truncate": "^2.4.0",
-    "react-use": "^15.3.3",
+    "react-use": "^17.3.1",
     "react-virtualized": "^9.22.2",
     "shallowequal": "^1.1.0"
   },
