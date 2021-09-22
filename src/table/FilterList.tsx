@@ -1,7 +1,7 @@
 import React from 'react';
 import { without, concat } from 'lodash';
 import List from '../components/list';
-import Checkbox from '../components/checkbox';
+import Checkbox from '../checkbox';
 
 interface FilterListProps {
   prefixCls: string;

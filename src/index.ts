@@ -4,13 +4,7 @@ export { default as Banner, BannerProps } from './components/banner';
 export { default as Breadcrumb, BreadcrumbItem, BreadcrumbProps, BreadcrumbItemProps } from './components/breadcrumb';
 export { default as Button, ButtonProps, ButtonType } from './components/button';
 export { default as Card, CardProps, CardMetaProps } from './components/card';
-export {
-  default as Checkbox,
-  CheckboxGroup,
-  CheckboxProps,
-  CheckboxGroupProps,
-  CheckboxOptionType,
-} from './components/checkbox';
+export { default as Checkbox, CheckboxGroup, CheckboxProps, CheckboxGroupProps, CheckboxOptionType } from './checkbox';
 export { default as Drawer, DrawerProps } from './components/drawer';
 export { default as Dropdown, DropdownProps } from './components/dropdown';
 export { default as Empty, EmptyProps } from './components/empty';

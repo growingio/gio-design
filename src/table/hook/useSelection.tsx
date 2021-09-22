@@ -5,7 +5,7 @@ import React, { useMemo, useCallback } from 'react';
 import { get, intersection, isUndefined, difference, union, isFunction, isString, flatten, flattenDeep } from 'lodash';
 import { ColumnsType, RowSelection, ColumnType } from '../interface';
 
-import Checkbox from '../../components/checkbox';
+import Checkbox from '../../checkbox';
 import Tooltip from '../../components/tooltip';
 import useControlledState from '../../utils/hooks/useControlledState';
 

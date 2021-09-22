@@ -1,4 +1,4 @@
-import GIOCheckbox from './checkbox';
+import GIOCheckbox from './Checkbox';
 import CheckboxGroup from './group';
 
 export type TCheckbox = typeof GIOCheckbox & {
