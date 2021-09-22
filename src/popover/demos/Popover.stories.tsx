@@ -6,7 +6,8 @@ import Popover from '../index';
 import { PopoverProps } from '../interface';
 import '../style';
 import '../style/demo.stories.less';
-import { Checkbox, CheckboxGroup, Link } from '../..';
+import { Checkbox, CheckboxGroup } from '../..';
+import Link from '../../link';
 
 export default {
   title: 'Data Display/Popover',

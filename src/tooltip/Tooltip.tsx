@@ -3,7 +3,7 @@ import RcTooltip from 'rc-tooltip';
 import { isFunction } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
 import { TooltipProps } from './interface';
-import Link from '../components/link';
+import Link from '../link';
 import getPlacements from './placements';
 import useControlledState from '../utils/hooks/useControlledState';
 
