@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import classNames from 'classnames';
-import Checkbox from './checkbox';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
+import Checkbox from './Checkbox';
 import CheckboxGroupContext from './CheckboxGroupContext';
 import { CheckboxOptionType, CheckboxValueType, CheckboxGroupProps } from './interface';
 
@@ -68,7 +68,7 @@ export function CheckboxGroup<T extends CheckboxValueType>({
   );
 
   const prefixCls = usePrefixCls('checkbox', customizePrefixCls);
-  const selectedValues = refValue.current || selected || (emptyValue as T[]);
+  const selectedValues = refValue.current || selected;
   let customChildren = children;
   if (options.length > 0) {
     customChildren = options
