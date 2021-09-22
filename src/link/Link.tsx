@@ -1,13 +1,21 @@
 import React from 'react';
 import classnames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import { LinkProps } from './interface';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 export { LinkProps } from './interface';
 
 const Link: React.FC<LinkProps> = (props: LinkProps) => {
-
-  const {component = 'a', to = '', disabled, prefix: customPrefixCls, className, children, icon, ...otherProps} = props;
+  const {
+    component = 'a',
+    to = '',
+    disabled,
+    prefix: customPrefixCls,
+    className,
+    children,
+    icon,
+    ...otherProps
+  } = props;
 
   const prefixCls = usePrefixCls('link', customPrefixCls);
   const cls = classnames(className, prefixCls, {
@@ -47,7 +55,12 @@ const Link: React.FC<LinkProps> = (props: LinkProps) => {
   }
 
   const ComponentProp = component;
-  return <ComponentProp {...componentProps}>{icon}{children}</ComponentProp>;
+  return (
+    <ComponentProp {...componentProps}>
+      {icon}
+      {children}
+    </ComponentProp>
+  );
 };
 
 export default Link;
