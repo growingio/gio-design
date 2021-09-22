@@ -10,7 +10,7 @@ export { default as Dropdown, DropdownProps } from './dropdown';
 export { default as Empty, EmptyProps } from './components/empty';
 export { default as Input, InputProps, InputNumberProps, TextAreaProps } from './components/input';
 export { default as Layout, LayoutProps } from './layout';
-export { default as Link, LinkProps } from './components/link';
+export { default as Link, LinkProps } from './link';
 export { default as List, ListProps } from './components/list';
 export { default as ListPicker, ListPickerProps } from './list-picker';
 export { default as Loading, LoadingProps } from './loading';

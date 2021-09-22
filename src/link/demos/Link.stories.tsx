@@ -1,11 +1,11 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import { FilterOutlined } from '@gio-design/icons'
-import Docs from './Link.mdx';
-import Link from './index';
-import { ILinkProps } from './interface';
-import './style';
+import { FilterOutlined } from '@gio-design/icons';
+import Docs from './LinkPage';
+import Link from '../index';
+import { ILinkProps } from '../interface';
+import '../style';
 
 export default {
   title: 'Basic Components/Link',
@@ -26,10 +26,14 @@ export default {
 const Template: Story<ILinkProps> = (args) => (
   <div>
     <Link {...args}>GrowingIO</Link>
-    <Link {...args} to='https://growingio.com'>GrowingIO</Link>
-    <Link {...args} icon={<FilterOutlined />} to='https://growingio.com' onClick={() => window.alert('被点击')}>GrowingIO</Link>
+    <Link {...args} to="https://growingio.com">
+      GrowingIO
+    </Link>
+    <Link {...args} icon={<FilterOutlined />} to="https://growingio.com" onClick={() => window.alert('被点击')}>
+      GrowingIO
+    </Link>
   </div>
-  );
+);
 
 export const Default = Template.bind({});
 Default.args = {};
