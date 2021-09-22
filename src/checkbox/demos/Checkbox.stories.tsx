@@ -1,14 +1,14 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import Docs from './Checkbox.mdx';
-import Checkbox from './checkbox';
-import CheckboxGroup from './group';
-import { CheckboxProps, CheckboxGroupProps, CheckboxValueType } from './interface';
-import './style';
+import Docs from './CheckboxPage';
+import Checkbox from '../Checkbox';
+import CheckboxGroup from '../group';
+import { CheckboxProps, CheckboxGroupProps, CheckboxValueType } from '../interface';
+import '../style';
 
 export default {
-  title: 'Basic Components/Checkbox',
+  title: 'Data Entry/Checkbox',
   component: Checkbox,
   subcomponents: { CheckboxGroup },
   decorators: [withDesign],
@@ -46,5 +46,6 @@ Group.args = {
     { label: '1', value: 1 },
     { label: '2', value: 2 },
     { label: '3', value: 3 },
+    { label: '4', value: 4, disabled: true },
   ],
 };

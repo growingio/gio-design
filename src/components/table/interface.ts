@@ -1,6 +1,6 @@
 import React from 'react';
 import { PaginationProps } from '../pagination/interface';
-import { CheckboxProps } from '../checkbox/interface';
+import { CheckboxProps } from '../../checkbox/interface';
 import { TooltipProps } from '../tooltip/interface';
 import { EmptyProps } from '../empty/interfaces';
 
@@ -9,7 +9,7 @@ export type SortOrder = 'descend' | 'ascend' | null;
 
 export type GetComponentProps<DataType> = (data: DataType, index?: number) => React.HTMLAttributes<HTMLElement>;
 
-export type filterType = (string | { label: string; value: string });
+export type filterType = string | { label: string; value: string };
 
 export interface ColumnType<RecordType> {
   key?: string;
@@ -76,13 +76,13 @@ export interface FilterState<RecordType> {
 export type PaginationState = {
   current: number;
   pageSize: number;
-}
+};
 
 export type OnTriggerStateUpdateProps<RecordType> = {
-  paginationState? : PaginationState;
+  paginationState?: PaginationState;
   filterStates?: Record<string, string[]>;
   sorterState?: SortState<RecordType>;
-}
+};
 
 export interface TitleProps<RecordType> {
   prefixCls: string;
@@ -126,7 +126,11 @@ export interface TableProps<RecordType> {
   */
   emptyText?: React.ReactNode;
   empty?: EmptyProps;
-  onChange?: (pagination: PaginationState, filters: Record<string, string[]>, sorter: SortState<RecordType> | undefined) => void;
+  onChange?: (
+    pagination: PaginationState,
+    filters: Record<string, string[]>,
+    sorter: SortState<RecordType> | undefined
+  ) => void;
   showHover?: boolean;
   showHeader?: boolean;
   loading?: boolean;

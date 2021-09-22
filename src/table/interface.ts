@@ -1,7 +1,7 @@
 import React from 'react';
 import { ExpandableConfig } from '@gio-design/table/lib/interface';
 import { PaginationProps } from '../components/pagination/interface';
-import { CheckboxProps } from '../components/checkbox/interface';
+import { CheckboxProps } from '../checkbox/interface';
 import { TooltipProps } from '../components/tooltip/interface';
 import { EmptyProps } from '../components/empty/interfaces';
 

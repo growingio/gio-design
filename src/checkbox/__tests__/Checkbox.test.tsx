@@ -1,12 +1,19 @@
 import React from 'react';
 import _ from 'lodash';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
-import { Default, Group } from '../Checkbox.stories';
+import { Default, Group } from '../demos/Checkbox.stories';
 import Checkbox from '../index';
+import CheckboxGroup from '../group';
 
 afterEach(cleanup);
 
 describe('Testing checkbox', () => {
+  const options = [
+    { label: '1', value: 1 },
+    { label: '2', value: 2 },
+    { label: '3', value: 3 },
+    { label: '4', value: 4 },
+  ];
   it('default', () => {
     render(<Default {...Default.args} />);
     expect(screen.getAllByRole('checkbox')).toHaveLength(1);
@@ -20,8 +27,17 @@ describe('Testing checkbox', () => {
   });
 
   it('group checkbox', () => {
+    const props = {
+      disabled: false,
+      direction: 'horizontal',
+    };
+    render(<Group />);
+    render(<Group {...props} />);
+  });
+
+  it('group checkbox', () => {
     render(<Group {...Group.args} />);
-    expect(screen.getAllByRole('checkbox')).toHaveLength(3);
+    expect(screen.getAllByRole('checkbox')).toHaveLength(4);
   });
 
   it('group change', () => {
@@ -34,6 +50,16 @@ describe('Testing checkbox', () => {
   it('string options', () => {
     render(<Group {..._.set(Group.args, 'options', ['yes', 'no'])} />);
     expect(screen.getAllByRole('checkbox')).toHaveLength(2);
+  });
+
+  it('CheckboxGroup options', () => {
+    render(<CheckboxGroup options={options} />);
+    fireEvent.click(screen.getAllByRole('checkbox')[0]);
+  });
+
+  it('CheckboxGroup value', () => {
+    render(<CheckboxGroup options={options} value={null} />);
+    fireEvent.click(screen.getAllByRole('checkbox')[0]);
   });
 
   it('value !== undefined and change value', () => {

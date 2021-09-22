@@ -3,7 +3,7 @@ import { isNull, noop } from 'lodash';
 import classnames from 'classnames';
 import { Option, MaybeArray } from '../interface';
 import Tooltip from '../../tooltip';
-import Checkbox from '../../checkbox';
+import Checkbox from '../../../checkbox';
 
 interface GroupProps {
   option: Option;
@@ -25,12 +25,12 @@ interface OptionProp {
   labelRenderer: (option: Option, isGruop: false) => React.ReactNode;
   onOptionClick?: (selectedValue: string | number) => void;
   index: number;
-  
+
   optionStyle?: React.CSSProperties;
   multiple?: boolean;
   children?: React.ReactNode;
   activeIndex: number;
-  setActiveIndex:React.Dispatch<React.SetStateAction<number>>
+  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 // ================= RenderGroup =====================
@@ -66,9 +66,9 @@ const RenderOption: React.ForwardRefRenderFunction<unknown, OptionProp> = (props
     typeof selected === 'string' || typeof selected === 'number' || isNull(selected) || typeof selected === 'undefined'
       ? selected === value
       : selected.includes(value);
-  const onClick = (e:React.MouseEvent) => {
-      onOptionClick?.(value);
-      e.preventDefault();
+  const onClick = (e: React.MouseEvent) => {
+    onOptionClick?.(value);
+    e.preventDefault();
   };
   const labelNode = labelRenderer(
     {
@@ -90,7 +90,7 @@ const RenderOption: React.ForwardRefRenderFunction<unknown, OptionProp> = (props
           [`${prefixCls}-list-option-isSelected`]: isSelected,
           [`${prefixCls}-list-option-isHover`]: !disabled && index === activeIndex,
           [`${prefixCls}-list-option-disabled`]: disabled,
-          [`${prefixCls}-list-option-nomargin`]:index === 0
+          [`${prefixCls}-list-option-nomargin`]: index === 0,
         })}
         onClick={disabled ? undefined : onClick}
         onKeyDown={noop}
@@ -113,15 +113,11 @@ const RenderTooltip: React.ForwardRefRenderFunction<unknown, TooltipProps> = (pr
   const { tooltip, render, getContainer } = props;
   if (tooltip) {
     return (
-      
       <div ref={ref as any}>
-          <Tooltip title={tooltip} destroyTooltipOnHide placement="right" getTooltipContainer={getContainer}>
-            <div>
-            {render}
-            </div>
-          </Tooltip>
+        <Tooltip title={tooltip} destroyTooltipOnHide placement="right" getTooltipContainer={getContainer}>
+          <div>{render}</div>
+        </Tooltip>
       </div>
-       
     );
   }
   return <div ref={ref as any}>{render}</div>;

@@ -2,7 +2,7 @@
 import React, { useMemo, useCallback } from 'react';
 import { get, intersection, isUndefined, difference, union, isFunction, isString, compact } from 'lodash';
 import { ColumnsType, RowSelection, ColumnType } from '../interface';
-import Checkbox from '../../checkbox';
+import Checkbox from '../../../checkbox';
 import Tooltip from '../../tooltip';
 import useControlledState from '../../../utils/hooks/useControlledState';
 
@@ -36,15 +36,15 @@ const useSelection = <RecordType,>(
     () => intersection(localSelectedRowKeys, currentPageRowKeys).length === currentPageRowKeys.length,
     [currentPageRowKeys, localSelectedRowKeys]
   );
-  const atLeastOneChecked = useMemo(() => intersection(currentPageRowKeys, localSelectedRowKeys).length > 0, [
-    currentPageRowKeys,
-    localSelectedRowKeys,
-  ]);
+  const atLeastOneChecked = useMemo(
+    () => intersection(currentPageRowKeys, localSelectedRowKeys).length > 0,
+    [currentPageRowKeys, localSelectedRowKeys]
+  );
   const isPartChecked = useMemo(() => !isAllChecked && atLeastOneChecked, [isAllChecked, atLeastOneChecked]);
-  const isAllDisabled = useMemo(() => data.every((item) => getCheckboxProps?.(item)?.disabled), [
-    data,
-    getCheckboxProps,
-  ]);
+  const isAllDisabled = useMemo(
+    () => data.every((item) => getCheckboxProps?.(item)?.disabled),
+    [data, getCheckboxProps]
+  );
   const disabledRowKey = useMemo(
     () =>
       compact(
@@ -88,7 +88,7 @@ const useSelection = <RecordType,>(
       const thisCheckboxProps = getCheckboxProps?.(rest[1]) || {};
       const { tooltipProps, disabled, ...restCheckboxProps } = thisCheckboxProps;
       return (
-        <Tooltip placement='topLeft' arrowPointAtCenter disabled={!disabled} {...tooltipProps}>
+        <Tooltip placement="topLeft" arrowPointAtCenter disabled={!disabled} {...tooltipProps}>
           <div>
             <Checkbox
               {...restCheckboxProps}
@@ -102,7 +102,9 @@ const useSelection = <RecordType,>(
                 setLocalSelectedRowKeys(latestLocalSelectedRowKeys);
                 onChange?.(latestLocalSelectedRowKeys, getSelectRows(latestLocalSelectedRowKeys));
               }}
-            >{disabled ? null : undefined}</Checkbox>
+            >
+              {disabled ? null : undefined}
+            </Checkbox>
           </div>
         </Tooltip>
       );
