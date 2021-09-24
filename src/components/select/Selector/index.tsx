@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { isEmpty, isNil } from 'lodash';
 import React, { useRef, useState, useImperativeHandle, useMemo, useCallback } from 'react';
 import Tag from '../../tag';
-import Text from '../../../text';
+import ToolTip from '../../tooltip';
 import { SelectorProps } from '../interface';
 import SearchInput from './input';
 
@@ -47,7 +47,8 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
   const [isHovered, setIsHovered] = useState(false);
   const isEmptyValue = useMemo(() => !isEmpty(value), [value]);
   const showClose = allowClear && (isEmptyValue || input) && isHovered && !disabled;
-
+  const selectValuesWidth = selectValuesRef?.current?.getBoundingClientRect()?.width;
+  const isShowTooltip = style?.width && (selectValuesWidth || 0) - (selectorAllRef?.current?.offsetWidth || 0) <= 0;
   useImperativeHandle(ref, () => ({
     clientWidth: selectorRef?.current?.clientWidth,
     focus: () => {
@@ -129,7 +130,12 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
     }, []);
 
     return (searchType === 'inner' || !input) && !isNil(value) ? (
-      <Text>
+      <ToolTip
+        disabled={!isShowTooltip}
+        title={allValueLabel?.join(',')}
+        placement="bottom"
+        getTooltipContainer={()=> selectorRef?.current?.parentElement || document.body}
+      >
         <div
           className={`${prefix}-item-all`}
           style={{ maxWidth: style && style.width && style?.width > 0 ? 'fill-available' : undefined }}
@@ -142,7 +148,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
               {allValueLabel?.join('，')}
             </span>
         </div>
-      </Text>
+      </ToolTip>
     ) : null;
     
   };
@@ -150,15 +156,21 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
   const renderSingleValue = () => {
     const text = optionLabelRenderer(value as string | number, getOptionByValue(value as string | number));
     return !input && (typeof value === 'string' || typeof value === 'number') ? (
-      <Text>
-      <div className={classnames(`${prefix}-item`)}>      
-      <span
-        ref={selectorAllRef}
-        className={classnames(`${prefix}-item-text`)}
+      <ToolTip
+        disabled={!isShowTooltip}
+        title={text}
+        placement="bottom"
+        getTooltipContainer={()=>selectorRef?.current?.parentElement || document.body}
       >
-        {text}
-      </span>
-    </div></Text>
+        <div className={classnames(`${prefix}-item`)}>      
+          <span
+            ref={selectorAllRef}
+            className={classnames(`${prefix}-item-text`)}
+          >
+            {text}
+          </span>
+        </div>
+      </ToolTip>
     ) : null;
   };
 
