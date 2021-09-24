@@ -105,7 +105,7 @@ const DragTrigger: React.FC<ITriggerProps> = ({
             </div>
           ) : (
             <>
-              <PreviewForNotImage onReSelect={onReSelect} file={file} />
+              <PreviewForNotImage onReSelect={onReSelect} file={file} onRemove={onRemove} />
               <Actions file={file} onRemove={onRemove} showModal={false} />
             </>
           )}
