@@ -319,7 +319,7 @@ const Upload: React.FC<IUploadProps> = ({
     directory,
     multiple,
     maxCount,
-    disabled: disabled === true ? disabled : uploadDisabled,
+    disabled: disabled ? disabled : type === 'drag' && uploadDisabled,
     dragStyle: restProps.dragStyle,
   };
 
