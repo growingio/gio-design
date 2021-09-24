@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import Docs from './Upload.mdx';
 import Upload from './index';
 import { IUploadProps, IProgress, IRcFile, IUploadFile } from './interface';
+import AvatarPng from '../../assets/images/Avatar.png';
 import './style';
+import Button from '../button';
 
 const uploadUrl = 'https://run.mocky.io/v3/424be679-93fe-4d9d-8036-c3d7adb9bd25';
 
@@ -118,6 +120,20 @@ const CardTemplate: Story<IUploadProps> = (args) => (
     <Upload style={{ margin: '0 10px' }} {...args} successBorder />
   </div>
 );
+
+const DisabledTemplate: Story<IUploadProps> = (args) => {
+  const [disable, setDisable] = useState(true);
+  const onClick = () => {
+    setDisable(!disable);
+  };
+  return (
+    <div>
+      <Button onClick={onClick}>{disable ? 'Disabled' : 'Enable'}</Button>
+      <Upload style={{ margin: '0 10px' }} {...args} successBorder disabled={disable} />
+    </div>
+  );
+};
+
 export const CardUpload = CardTemplate.bind({});
 CardUpload.args = {
   type: 'card',
@@ -129,6 +145,9 @@ CardUpload.args = {
   onError: props.onError,
   onRemove: props.onRemove,
 };
+
+export const DisableUpload = DisabledTemplate.bind({});
+DisableUpload.args = { ...CardUpload.args, file: { dataUrl: AvatarPng, status: 'success' } };
 
 const AvatarTemplate: Story<IUploadProps> = (args) => (
   <div>

@@ -77,7 +77,7 @@ const Upload: React.FC<IUploadProps> = ({
   // 已经上传了的文件数量
   const [finish, setFinish] = useState(Math.min(defaultFileList.length, maxCount));
   // 控制dragTrigger是否disabled
-  const [uploadDisabled, setUploadDisabled] = useState(disabled);
+  const [uploadDisabled, setUploadDisabled] = useState(false);
   useEffect(() => {
     setFile(getEmptyFileObj(uploadedFile));
   }, [uploadedFile]);
@@ -92,7 +92,7 @@ const Upload: React.FC<IUploadProps> = ({
   const prefixCls = usePrefixCls('upload', customPrefixCls);
 
   const rootCls = classnames(className, prefixCls, {
-    [`${prefixCls}--disabled`]: disabled || uploadDisabled,
+    [`${prefixCls}--disabled`]: disabled || (type === 'drag' && uploadDisabled),
     [`${prefixCls}--error`]: file.status === STATUS_ERROR,
     [`${prefixCls}--success`]: file.status === STATUS_SUCCESS && !successBorder,
     [`${prefixCls}--success-border`]: file.status === STATUS_SUCCESS && successBorder,
@@ -288,7 +288,7 @@ const Upload: React.FC<IUploadProps> = ({
 
   const rcUploadProps = {
     ...restProps,
-    disabled: disabled || uploadDisabled,
+    disabled: disabled || (type === 'drag' && uploadDisabled),
     prefixCls: type === 'drag' ? `${prefixCls}-drag-container` : prefixCls,
     action,
     directory,
@@ -319,7 +319,7 @@ const Upload: React.FC<IUploadProps> = ({
     directory,
     multiple,
     maxCount,
-    disabled: disabled === true ? disabled : uploadDisabled,
+    disabled: disabled || (type === 'drag' && uploadDisabled),
     dragStyle: restProps.dragStyle,
   };
 
