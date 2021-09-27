@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import { AppOutlined, CheckOutlined, EventOutlined, CopyOutlined } from '@gio-design/icons';
-import Tree, { TreeProps } from './Tree';
-import Docs from './Tree.mdx';
-import './style';
+import Tree, { TreeProps } from '../Tree';
+import Docs from './TreePage';
+import '../style';
 
 export default {
-  title: 'Functional Components/Tree',
+  title: 'Data Display/Tree',
   component: Tree,
   decorators: [withDesign],
   parameters: {
@@ -92,14 +92,13 @@ Default.args = {
   defaultSelectedKeys: ['0-0-1'],
 };
 
-
 const IconTemplate: Story<TreeProps> = (args) => (
-    <div style={{ display: 'flex' }}>
-      <div className="tree-demo">
-        <Tree icon={<AppOutlined />} {...args} />
-      </div>
+  <div style={{ display: 'flex' }}>
+    <div className="tree-demo">
+      <Tree icon={<AppOutlined />} {...args} />
     </div>
-  );
+  </div>
+);
 
 export const IconTree = IconTemplate.bind({});
 IconTree.args = {
@@ -107,5 +106,5 @@ IconTree.args = {
   defaultExpandedKeys: ['0-0-0', '0-0-1'],
   defaultSelectedKeys: ['0-0-1'],
   showIcon: true,
-  style: { width: '300px' }
+  style: { width: '300px' },
 };
