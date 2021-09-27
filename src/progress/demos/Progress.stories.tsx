@@ -1,13 +1,13 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import Docs from './Progress.mdx';
-import { ProgressProps } from './interface';
-import Progress from './index';
-import './style';
+import Docs from './ProgressPage';
+import { ProgressProps } from '../interface';
+import Progress from '../index';
+import '../style';
 
 export default {
-  title: 'Basic Components/Progress',
+  title: 'Feedback/Progress',
   component: Progress,
   decorators: [withDesign],
   argTypes: {
