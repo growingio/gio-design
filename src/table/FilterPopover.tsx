@@ -2,7 +2,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { isObject } from 'lodash';
 import Button from '../components/button';
-import Popover from '../components/popover';
+import Popover from '../popover';
 import FilterList from './FilterList';
 import SearchBar from '../search-bar';
 import { TableContext } from './Table';

@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Docs from './Popover.mdx';
-import Popover from './index';
-import { PopoverProps } from './interface';
-import './style';
-import './style/demo.stories.less';
+import Docs from './PopoverPage';
+import Popover from '../index';
+import { PopoverProps } from '../interface';
+import '../style';
+import '../style/demo.stories.less';
 import { Checkbox, CheckboxGroup, Link } from '../..';
 
 export default {
-  title: 'Functional Components/Popover',
+  title: 'Data Display/Popover',
   component: Popover,
   parameters: {
     docs: {
