@@ -2179,11 +2179,11 @@
     tslib "^2.1.0"
 
 "@gio-design/icons@^21.4.0":
-  version "21.8.0"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.8.0.tgz#d5d892ad697f9e7176d809dc9450c3a111521b9c"
-  integrity sha512-Alvgv/BqBbTNceFmxslgPoyCk82n0SsOI0cRL/s+6PpHowzm78o91q9fT0WR+5cWuxKoYSBFlmMTNrWN6s8S+g==
+  version "21.9.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.9.1.tgz#a548df3746777dd229dbbdd1674552907096a375"
+  integrity sha512-AUu05Adr8SvShV08Gy6SoeGmJ5PLCLVj3eunekJBFJGnQer07m5p69yBnl0mteOj+Ip8bNXYpZ5/muqyCHPLOA==
   dependencies:
-    "@types/classnames" "^2.2.11"
+    "@babel/runtime" "^7.14.8"
     classnames "^2.2.6"
 
 "@gio-design/table@7.17.1":
@@ -3617,7 +3617,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/classnames@^2.2.11", "@types/classnames@^2.2.9":
+"@types/classnames@^2.2.9":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.3.1.tgz#3c2467aa0f1a93f1f021e3b9bcf938bd5dfdc0dd"
   integrity sha512-zeOWb0JGBoVmlQoznvqXbE0tEC/HONsnoUNH19Hc96NFsTAwTXbTqb8FMYkru1F/iqp7a18Ws3nWJvtA1sHD1A==
