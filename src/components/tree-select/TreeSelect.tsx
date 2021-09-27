@@ -4,9 +4,9 @@ import classNames from 'classnames';
 import { omit } from 'lodash';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import devWarning from '../../utils/devWarning';
-import { GioTreeNodeProps } from '../tree';
+import { GioTreeNodeProps } from '../../tree';
 import getIcons from './iconUtil';
-import renderSwitcherIcon from '../tree/iconUtil';
+import renderSwitcherIcon from '../../tree/iconUtil';
 import SizeContext from '../config-provider/SizeContext';
 import { TreeSelectProps } from './interface';
 
@@ -132,7 +132,7 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
               inputIcon={suffixIcon}
               removeIcon={removeIcon}
               clearIcon={clearIcon}
-              treeNodeFilterProp='title'
+              treeNodeFilterProp="title"
               switcherIcon={(nodeProps: GioTreeNodeProps) => renderSwitcherIcon(treePrefixCls, switcherIcon, nodeProps)}
               showTreeIcon={false}
               showSearch
