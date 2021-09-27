@@ -8,7 +8,7 @@ import Preview, { PreviewForNotImage } from '../Preview';
 import Actions from '../Actions';
 import { isOnlyAcceptImg, isImageFile } from '../utils';
 import { FolderSVG, PictureSVG, DisabledFolderSVG, DisabledPictureSVG } from '../svg';
-import Progress from '../../components/progress';
+import Progress from '../../progress';
 import defaultLocale from '../locales/zh-CN';
 
 const DragTrigger: React.FC<ITriggerProps> = ({
