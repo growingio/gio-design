@@ -41,7 +41,7 @@ export { default as Page, PageProps } from './page';
 export { default as Pagination, PaginationProps } from './pagination';
 export { default as Popconfirm, PopconfirmProps } from './popconfirm';
 export { default as Popover, PopoverProps } from './popover';
-export { default as Progress, ProgressProps } from './components/progress';
+export { default as Progress, ProgressProps } from './progress';
 export { default as Radio, RadioGroup, RadioProps, RadioGroupProps, RadioGroupOption } from './radio';
 export { default as Sign, SignProps } from './components/sign';
 export {

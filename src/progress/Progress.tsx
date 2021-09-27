@@ -1,8 +1,8 @@
 import React from 'react';
 import { CheckCircleFilled, CloseCircleFilled } from '@gio-design/icons';
 import classNames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import { ProgressProps, ProgressStatus } from './interface';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const defaultFormat = (percent?: number) => `${Math.round((percent || 0) * 100) / 100}%`;
 const statusIcons = [null, CheckCircleFilled, CloseCircleFilled];
