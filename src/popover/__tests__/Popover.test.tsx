@@ -1,12 +1,21 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Default, ClickPopover, Arrow, Placement } from '../Popover.stories';
+import { Default, ClickPopover, Arrow, Placement } from '../demos/Popover.stories';
+import Popover from '../Popover';
 
 describe('Testing popover', () => {
   it('basic popover', () => {
     render(<Default {...Default.args} />);
     fireEvent.mouseEnter(screen.getAllByText(/hover me/i)[0]);
     expect(screen.getByText('广告阶段')).toBeTruthy();
+  });
+
+  it('subPrefixCls prop', () => {
+    render(
+      <Popover contentArea subPrefixCls="popover">
+        <span className="popoverSpan">11</span>
+      </Popover>
+    );
   });
 
   it('click popover', () => {
