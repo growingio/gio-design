@@ -2,8 +2,8 @@ import * as React from 'react';
 import RcTree, { TreeNode, TreeProps as RcTreeProps } from 'rc-tree';
 import classNames from 'classnames';
 import { DataNode, Key } from 'rc-tree/lib/interface';
-import { ConfigContext } from '../config-provider';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
+import { ConfigContext } from '../components/config-provider';
 import renderSwitcherIcon from './iconUtil';
 
 export interface GioTreeNodeAttribute {
