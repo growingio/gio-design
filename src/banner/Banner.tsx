@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CloseOutlined } from '@gio-design/icons';
 import className from 'classnames';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
 import { BannerProps } from './interface';
 
 const Banner: React.FC<BannerProps> = (props: BannerProps) => {
