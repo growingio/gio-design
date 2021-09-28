@@ -2,12 +2,12 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import { LoadingOutlined } from '@gio-design/icons';
-import Docs from './Loading.mdx';
-import Loading from './index';
-import Button from '../button';
-import Tabs, { TabPane } from '../tabs';
-import { LoadingProps } from './interface';
-import './style';
+import Docs from './LoadingPage';
+import Loading from '../index';
+import Button from '../../components/button';
+import Tabs, { TabPane } from '../../components/tabs';
+import { LoadingProps } from '../interface';
+import '../style';
 
 export default {
   title: 'Basic Components/Loading',
