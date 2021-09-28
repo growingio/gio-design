@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import TreeSelect, { TreeNode } from './index';
-import { TreeSelectProps } from './interface';
-import Docs from './TreeSelect.mdx';
-import './style';
-import './style/demo.stories.less';
+import TreeSelect, { TreeNode } from '../index';
+import { TreeSelectProps } from '../interface';
+import Docs from './TreeSelectPage';
+import '../style';
+import '../style/demo.stories.less';
 
 export default {
-  title: 'Functional Components/TreeSelect',
+  title: 'Data Entry/TreeSelect',
   component: TreeSelect,
   subcomponents: { TreeNode },
   decorators: [withDesign],
@@ -48,9 +48,7 @@ const treeSelectData = [
 const Template: Story<TreeSelectProps<any>> = (args) => {
   const [value, setValue] = useState<string | undefined>(undefined);
 
-  return (
-    <TreeSelect value={value} allowClear onChange={(v: string) => setValue(v)} {...args} />
-  );
+  return <TreeSelect value={value} allowClear onChange={(v: string) => setValue(v)} {...args} />;
 };
 export const Default = Template.bind({});
 Default.args = {
@@ -60,9 +58,8 @@ Default.args = {
   dropdownStyle: { maxHeight: 400, overflow: 'auto' },
   placeholder: '请选择...',
   treeDefaultExpandAll: true,
-  allowClear: true
+  allowClear: true,
 };
-
 
 export const Multiple = Template.bind({});
 Multiple.args = {
@@ -73,6 +70,6 @@ Multiple.args = {
   placeholder: '请选择...',
   treeDefaultExpandAll: true,
   allowClear: true,
-  multiple: true,
+  multiple: false,
   treeCheckable: true,
 };
