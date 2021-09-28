@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Forbidden, NotFound, InternalServerError } from '../Page.stories';
+import { Forbidden, NotFound, InternalServerError } from '../demos/Page.stories';
 
 describe('Page', () => {
   it('can render forbidden page', () => {
