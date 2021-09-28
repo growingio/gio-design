@@ -13,7 +13,7 @@ export { default as Layout, LayoutProps } from './layout';
 export { default as Link, LinkProps } from './components/link';
 export { default as List, ListProps } from './components/list';
 export { default as ListPicker, ListPickerProps } from './list-picker';
-export { default as Loading, LoadingProps } from './components/loading';
+export { default as Loading, LoadingProps } from './loading';
 export {
   default as Menu,
   MenuProps,

@@ -14,7 +14,7 @@ import Title from './Title';
 import { TableProps, ColumnsType, OnTriggerStateUpdateProps } from './interface';
 import Empty from '../empty';
 import { translateInnerColumns } from './utils';
-import Loading from '../loading';
+import Loading from '../../loading';
 import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
 import useHackOnRow from './hook/useHackOnRow';
 
