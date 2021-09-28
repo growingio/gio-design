@@ -92,7 +92,7 @@ export {
   DateRangePickerProps,
 } from './components/date-picker';
 export { default as Space, SpaceProps, ItemProps } from './space';
-export { default as TreeSelect, TreeNode, LabeledValue, SelectValue, TreeSelectProps } from './components/tree-select';
+export { default as TreeSelect, TreeNode, LabeledValue, SelectValue, TreeSelectProps } from './tree-select';
 export { default as Steps } from './components/steps';
 
 // provide config context

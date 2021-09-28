@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MoreOutlined } from '@gio-design/icons';
-import { Default, Multiple } from '../TreeSelect.stories';
+import { Default, Multiple } from '../demos/TreeSelect.stories';
 import TreeSelect from '../index';
 
 describe('Testing tree-select', () => {
@@ -34,9 +34,30 @@ describe('Testing tree-select', () => {
         menuItemSelectedIcon={<MoreOutlined />}
         removeIcon={<span>remove</span>}
         notFoundContent="not found"
+        clearIcon
       />
     );
     expect(screen.getByText('parent 1')).toBeTruthy();
+  });
+
+  it('swithout props', () => {
+    render(<TreeSelect />);
+  });
+
+  it('treeSelect props', () => {
+    const props = {
+      prefixCls: 'select',
+      listHeight: 368,
+      listItemHeight: 26,
+      notFoundContent: 1,
+      switcherIcon: 1,
+      getPopupContainer: 1,
+      dropdownClassName: 1,
+      bordered: true,
+    };
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    render(<TreeSelect {...props} />);
   });
 
   it('set ref to test focus and blur', () => {
