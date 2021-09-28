@@ -1,10 +1,10 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
-import Docs from './Page.mdx';
-import Page, { PageProps } from './index';
+import Docs from './PagePage';
+import Page, { PageProps } from '../index';
 
-import './style';
+import '../style';
 
 export default {
   title: 'Functional Components/Page',

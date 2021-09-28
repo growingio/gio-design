@@ -1,11 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import { PageProps } from './interfaces';
 import ForbiddenSVG from './ForbiddenSVG';
 import NotFoundSVG from './NotFoundSVG';
 import InternalServerErrorSVG from './InternalServerErrorSVG';
-import Button from '../button';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import Button from '../components/button';
 
 const statusCodeMap = {
   403: ForbiddenSVG,
