@@ -16,7 +16,7 @@ import Title from './Title';
 import { TableProps, ColumnsType, OnTriggerStateUpdateProps } from './interface';
 import Empty from '../components/empty';
 import { translateInnerColumns } from './utils';
-import Loading from '../components/loading';
+import Loading from '../loading';
 import useHackOnRow from './hook/useHackOnRow';
 
 interface TableContextType {
