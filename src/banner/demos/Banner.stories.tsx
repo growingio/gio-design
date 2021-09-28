@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Button from '../button';
-import Link from '../link';
+import Button from '../../components/button';
+import Link from '../../components/link';
 import Tag from '../../tag';
-import Banner, { BannerProps } from './index';
-import Docs from './Banner.mdx';
-import './style';
+import Banner, { BannerProps } from '../index';
+import Docs from './BannerPage';
+import '../style';
 
 export default {
   title: 'Functional Components/Banner',
