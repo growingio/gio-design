@@ -43,7 +43,7 @@ export { default as Popconfirm, PopconfirmProps } from './popconfirm';
 export { default as Popover, PopoverProps } from './popover';
 export { default as Progress, ProgressProps } from './progress';
 export { default as Radio, RadioGroup, RadioProps, RadioGroupProps, RadioGroupOption } from './radio';
-export { default as Sign, SignProps } from './components/sign';
+export { default as Sign, SignProps } from './sign';
 export {
   default as Skeleton,
   SkeletonProps,

@@ -1,8 +1,8 @@
 import React, { Children } from 'react';
 import classnames from 'classnames';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
 import { ISignProps } from './interface';
-import Number from './Number';
+import SignNumber from './SignNumber';
 import Dot from './Dot';
 
 export { TPlacement, TSignVariant } from './interface';
@@ -41,7 +41,7 @@ const Sign: React.FC<ISignProps> = ({
         <Dot prefixCls={prefix} className={supCls} status={status} size={size} style={style} visible={visible} />
       )}
       {variant === 'number' && (
-        <Number
+        <SignNumber
           prefixCls={prefix}
           className={supCls}
           style={style}
