@@ -1,7 +1,9 @@
 import React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { isEqual, cloneDeep } from 'lodash';
+import { DesignProvider } from '@gio-design/utils';
+import enUS from '../../locales/en-US';
 import useFilter, { collectFilterStates } from '../hook/useFilter';
 import FilterPopover from '../FilterPopover';
 
@@ -120,7 +122,7 @@ describe('Testing Table Filter', () => {
 
   test('object data type', () => {
     const onClick = jest.fn();
-    const { getByText, getAllByRole, container } = render(
+    const { getByText, getAllByRole, container, rerender } = render(
       <FilterPopover
         prefixCls="gio-table"
         values={[]}
@@ -145,6 +147,25 @@ describe('Testing Table Filter', () => {
     // 再打开
     fireEvent.click(getByText('trigger'));
     expect(container.getElementsByClassName('gio-checkbox-checked')).toBeTruthy();
+
+    rerender(
+      <DesignProvider locale={enUS}>
+        <FilterPopover
+          prefixCls="gio-table"
+          values={[]}
+          onClick={onClick}
+          filters={[
+            { label: '第一项', value: '1' },
+            { label: '第二项', value: '2' },
+          ]}
+        >
+          <span>trigger</span>
+        </FilterPopover>
+      </DesignProvider>
+    );
+    fireEvent.click(getByText('trigger'));
+    expect(screen.getByText('Confirm')).toBeTruthy();
+    expect(screen.getByText('Clear')).toBeTruthy();
   });
 
   it('should re-collect states, after columns update', () => {

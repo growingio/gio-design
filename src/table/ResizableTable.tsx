@@ -4,12 +4,15 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect, useRef } from 'react';
 import { Resizable } from 'react-resizable';
+import { usePrefixCls } from '@gio-design/utils';
 import { TableProps } from './interface';
 import Table from './index';
 import './style';
 
 const ResizableTitle = (props: any) => {
   const { onResize, width, ...restProps } = props;
+
+  const prefixCls = usePrefixCls('table');
 
   if (!width) {
     return <th {...restProps} />;
@@ -21,7 +24,7 @@ const ResizableTitle = (props: any) => {
       height={0}
       handle={
         <span
-          className="react-resizable-handle"
+          className={`${prefixCls}-resizable-handle`}
           onClick={(e: any) => {
             e.stopPropagation();
           }}
