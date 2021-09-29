@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Default, DotSign } from '../Sign.stories';
+import { Default, DotSign } from '../demos/Sign.stories';
 import Sign from '../index';
+import SignNumber from '../SignNumber';
 
 describe('Testing sign', () => {
   it('basic sign', () => {
@@ -12,6 +13,25 @@ describe('Testing sign', () => {
   it('dot sign', () => {
     const { container } = render(<DotSign {...DotSign.args} />);
     expect(container.getElementsByClassName('gio-sign__dot')).toHaveLength(4);
+  });
+
+  it('dot sign', () => {
+    const { container } = render(<DotSign {...DotSign.args} />);
+    expect(container.getElementsByClassName('gio-sign__dot')).toHaveLength(4);
+  });
+
+  it('dot sign', () => {
+    render(<SignNumber count={0} magnitude={10} />);
+    render(<SignNumber count={0} magnitude={10} placement="rightTop" />);
+  });
+
+  it('number sign', () => {
+    const { container } = render(
+      <Sign count={99} magnitude={100} visible size="middle" variant="number" placement="rightBottom">
+        <span>正常</span>
+      </Sign>
+    );
+    expect(container.getElementsByClassName('gio-sign__number')).toHaveLength(1);
   });
 
   it('number sign', () => {

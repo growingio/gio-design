@@ -49,7 +49,7 @@ const getOffsetByPlacement = (placement: TPlacement, offset: [number, number]) =
   }
 };
 
-const Number: React.FC<ISignNumberProps> = ({
+const SignNumber: React.FC<ISignNumberProps> = ({
   prefixCls,
   className,
   style,
@@ -80,4 +80,4 @@ const Number: React.FC<ISignNumberProps> = ({
   );
 };
 
-export default Number;
+export default SignNumber;
