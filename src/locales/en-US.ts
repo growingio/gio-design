@@ -12,6 +12,7 @@ import searchBarLocale from '../search-bar/locales/en-US';
 import cascaderLocale from '../cascader/locales/en-US';
 import paginationLocale from '../pagination/locales/en-US';
 import tableLocale from '../table/locales/en-US';
+import uploadLocale from '../upload/locales/en-US';
 
 export const locale: Locale = {
   code: 'en-US',
@@ -53,6 +54,9 @@ export const locale: Locale = {
   },
   Table: {
     ...tableLocale,
+  },
+  Upload: {
+    ...uploadLocale,
   },
 };
 

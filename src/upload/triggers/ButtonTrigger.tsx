@@ -1,16 +1,21 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { UploadOutlined } from '@gio-design/icons';
-import Button from '../../button';
+import { useSize, useLocale } from '@gio-design/utils';
+import Button from '../../components/button';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import Preview from '../Preview';
-import { UploadPrefixClsContext } from '../UploadContext';
-import { SizeContext } from '../../config-provider/SizeContext';
+import { UploadPrefixClsContext } from '../Upload';
+import defaultLocale from '../locales/zh-CN';
 
 const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps }: ITriggerProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
-  const contextSize = useContext(SizeContext);
-  const size = contextSize || 'large';
+  const size = useSize() || 'large';
+  const locale = useLocale('Upload');
+  const { buttonLabel }: { buttonLabel: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
   const btnCls = classnames(`${prefixCls}__btn`, triggerProps?.className);
   const labelCls = classnames(`${prefixCls}__btn-label`);
 
@@ -18,7 +23,6 @@ const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps }: ITrigger
   let icon = null;
   switch (file.status) {
     case STATUS_UPLOADING:
-      icon = null;
       break;
     case STATUS_SUCCESS:
       icon = <Preview file={file} />;
@@ -33,7 +37,7 @@ const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps }: ITrigger
     className: btnCls,
   };
 
-  const label = file.name || '本地上传';
+  const label = file.name || buttonLabel;
   return (
     <Button {...btnProps} size={size} icon={icon} loading={uploading}>
       <span className={labelCls} title={label}>

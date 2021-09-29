@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from 'react';
 import classnames from 'classnames';
 import { DeleteOutlined, UploadOutlined } from '@gio-design/icons';
-import { UploadPrefixClsContext } from './UploadContext';
+import { UploadPrefixClsContext } from './Upload';
 import { IActionsProps, STATUS_SUCCESS } from './interface';
 
 const Actions: React.FC<IActionsProps> = ({
@@ -31,7 +31,7 @@ const Actions: React.FC<IActionsProps> = ({
 
   const handleRemove = (e: React.MouseEvent) => {
     e.stopPropagation();
-    onRemove?.();
+    onRemove();
   };
 
   const handleFileStopPropagation = (e: any) => {
