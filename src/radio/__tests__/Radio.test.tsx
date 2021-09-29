@@ -1,15 +1,21 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Default, Group } from '../Radio.stories';
+import { Default, Group } from '../demos/Radio.stories';
 import Radio from '../index';
 
 describe('Testing radio', () => {
   it('basic radio', () => {
     render(<Default {...Default.args} />);
+    fireEvent.click(screen.getAllByRole('radio')[0]);
     expect(screen.getAllByRole('radio')).toHaveLength(4);
   });
 
+  it('basic radio', () => {
+    render(<Radio type="radio" prefixCls="gio-radio" />);
+  });
+
   it('radio group', () => {
+    render(<Group />);
     const { container } = render(<Group {...Group.args} />);
     fireEvent.click(screen.getAllByRole('radio')[0]);
     expect(container.getElementsByClassName('gio-radio-checked')[0]).toBeTruthy();

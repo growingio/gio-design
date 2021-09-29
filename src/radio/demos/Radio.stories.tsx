@@ -1,13 +1,13 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import Radio, { RadioGroup } from './index';
-import { IRadioProps, IRadioGroupProps } from './interface';
-import Docs from './Radio.mdx';
-import './style';
+import Radio, { RadioGroup } from '../index';
+import { IRadioProps, IRadioGroupProps } from '../interface';
+import Docs from './RadioPage';
+import '../style';
 
 export default {
-  title: 'Basic Components/Radio',
+  title: 'Data Entry/Radio',
   component: Radio,
   subcomponents: { RadioGroup },
   decorators: [withDesign],
