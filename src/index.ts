@@ -69,7 +69,7 @@ export {
   GioTreeNodeSelectedEvent,
   GioTreeNodeProps,
 } from './tree';
-export { default as Upload, UploadProps, UploadType, UploadStatus } from './components/upload';
+export { default as Upload, UploadProps, UploadType, UploadStatus } from './upload';
 export {
   default as Select,
   Option,

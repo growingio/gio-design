@@ -1,12 +1,15 @@
 import React, { useState, useContext } from 'react';
 import classnames from 'classnames';
+import { useLocale } from '@gio-design/utils';
+import { template } from 'lodash';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING, STATUS_NOT_YET, STATUS_ERROR } from '../interface';
-import { UploadPrefixClsContext } from '../UploadContext';
+import { UploadPrefixClsContext } from '../Upload';
 import Preview, { PreviewForNotImage } from '../Preview';
 import Actions from '../Actions';
 import { isOnlyAcceptImg, isImageFile } from '../utils';
 import { FolderSVG, PictureSVG, DisabledFolderSVG, DisabledPictureSVG } from '../svg';
-import Progress from '../../progress';
+import Progress from '../../components/progress';
+import defaultLocale from '../locales/zh-CN';
 
 const DragTrigger: React.FC<ITriggerProps> = ({
   triggerProps,
@@ -31,6 +34,21 @@ const DragTrigger: React.FC<ITriggerProps> = ({
   const placeholderCls = classnames(`${prefixCls}__drag-placeholder`);
   const progressCls = classnames(`${prefixCls}__drag-progress`);
 
+  const locale = useLocale('Upload');
+
+  const {
+    disabledPic,
+    disabledFile,
+    dragPic,
+    dragFile,
+    uploading,
+    picPending,
+    filePending,
+  }: { [key: string]: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
+
   const handleDrag = (e: React.DragEvent<HTMLDivElement>) => setDragState(e.type);
 
   const [currentWidth, currentHeight] = Array.isArray(iconSize) ? iconSize : [iconSize, iconSize];
@@ -41,12 +59,12 @@ const DragTrigger: React.FC<ITriggerProps> = ({
     isOnlyAcceptImg(accept) ? (
       <>
         <DisabledPictureSVG style={{ width: currentWidth, height: currentHeight }} />
-        <div>已上传{finishCount}张图片，不可继续上传</div>
+        <div>{template(disabledPic, { interpolate: /{([\s\S]+?)}/g })({ count: finishCount })}</div>
       </>
     ) : (
       <>
         <DisabledFolderSVG style={{ width: currentWidth, height: currentHeight }} />
-        <div>已上传{finishCount}个文件，不可继续上传</div>
+        <div>{template(disabledFile, { interpolate: /{([\s\S]+?)}/g })({ count: finishCount })}</div>
       </>
     );
 
@@ -54,16 +72,12 @@ const DragTrigger: React.FC<ITriggerProps> = ({
     isOnlyAcceptImg(accept) ? (
       <>
         <PictureSVG style={{ width: currentWidth, height: currentHeight }} />
-        <div>
-          已上传{finishCount}张图片，总共可以上传{maxCount}张图片
-        </div>
+        <div>{template(dragPic, { interpolate: /{([\s\S]+?)}/g })({ count: finishCount, maxCount })}</div>
       </>
     ) : (
       <>
         <FolderSVG style={{ width: currentWidth, height: currentHeight }} />
-        <div>
-          已上传{finishCount}个文件，总共可以上传{maxCount}个文件
-        </div>
+        <div>{template(dragFile, { interpolate: /{([\s\S]+?)}/g })({ count: finishCount, maxCount })}</div>
       </>
     );
 
@@ -78,7 +92,7 @@ const DragTrigger: React.FC<ITriggerProps> = ({
             className={progressCls}
             format={() => <span style={{ color: '#313E75' }}>{Math.round((file.percent || 0) * 100) / 100}%</span>}
           />
-          <span className="loading-text">正在上传，请耐心等待</span>
+          <span className="loading-text">{uploading}</span>
         </div>
       ) : null}
       {file.status === STATUS_SUCCESS && (
@@ -101,11 +115,11 @@ const DragTrigger: React.FC<ITriggerProps> = ({
           {isOnlyAcceptImg(accept) ? (
             <div className={placeholderCls}>
               <PictureSVG style={{ width: currentWidth, height: currentHeight }} />
-              <div>点击上传或拖拽图片到此区域</div>
+              <div>{picPending}</div>
             </div>
           ) : (
             <>
-              <PreviewForNotImage onReSelect={onReSelect} file={file} />
+              <PreviewForNotImage onReSelect={onReSelect} file={file} onRemove={onRemove} />
               <Actions file={file} onRemove={onRemove} showModal={false} />
             </>
           )}
@@ -116,12 +130,12 @@ const DragTrigger: React.FC<ITriggerProps> = ({
           {isOnlyAcceptImg(accept) ? (
             <>
               <PictureSVG style={{ width: currentWidth, height: currentHeight }} />
-              <div>点击上传或拖拽图片到此区域</div>
+              <div>{picPending}</div>
             </>
           ) : (
             <>
               <FolderSVG style={{ width: currentWidth, height: currentHeight }} />
-              <div>点击上传或拖拽文件到此区域</div>
+              <div>{filePending}</div>
             </>
           )}
         </div>
@@ -143,7 +157,7 @@ const DragTrigger: React.FC<ITriggerProps> = ({
               className={progressCls}
               format={() => <span style={{ color: '#313E75' }}>{Math.round((multiplePercent || 0) * 100) / 100}%</span>}
             />
-            <span className="loading-text">正在上传，请耐心等待</span>
+            <span className="loading-text">{uploading}</span>
           </div>
         ) : null}
 
@@ -161,7 +175,7 @@ const DragTrigger: React.FC<ITriggerProps> = ({
             ) : (
               <FolderSVG style={{ width: currentWidth, height: currentHeight }} />
             )}
-            <div>点击上传或拖拽文件到此区域</div>
+            <div>{filePending}</div>
           </div>
         )}
       </div>

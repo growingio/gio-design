@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
 import classnames from 'classnames';
 import { LoadingOutlined } from '@gio-design/icons';
-import Loading from '../../../loading';
-import Input from '../../input';
+import { useLocale } from '@gio-design/utils';
+import Loading from '../../loading';
+import Input from '../../components/input';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import Preview from '../Preview';
-import { UploadPrefixClsContext } from '../UploadContext';
+import { UploadPrefixClsContext } from '../Upload';
+import defaultLocale from '../locales/zh-CN';
 
 const InputTrigger: React.FC<ITriggerProps> = ({
   triggerProps,
@@ -18,6 +20,13 @@ const InputTrigger: React.FC<ITriggerProps> = ({
   const prefixCls = useContext(UploadPrefixClsContext);
   const inputWrapperCls = classnames(`${prefixCls}__input`);
   const inputPreviewCls = classnames(`${prefixCls}__input-preview`);
+
+  const locale = useLocale('Upload');
+
+  const { placeholder }: { placeholder: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
 
   const hideInput = file.status === STATUS_SUCCESS || file.status === STATUS_UPLOADING;
 
@@ -36,7 +45,7 @@ const InputTrigger: React.FC<ITriggerProps> = ({
         </Loading>
       ) : (
         <Input
-          placeholder="请输入图片的 URL"
+          placeholder={placeholder}
           {...triggerProps}
           onChange={(e) => setUrl(e.target.value)}
           onPressEnter={handlePressEnter}

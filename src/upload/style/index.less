@@ -1,4 +1,4 @@
-@import '../../../stylesheet/index.less';
+@import '../../stylesheet/index.less';
 
 @upload-prefix-cls: ~'@{component-prefix}-upload';
 @avatar-prefix-cls: ~'@{component-prefix}-avatar';
@@ -19,10 +19,6 @@
 
   &:focus {
     outline: 0;
-  }
-
-  & * {
-    vertical-align: middle;
   }
 
   &--success {
@@ -259,7 +255,8 @@
       margin: 0 auto;
 
       &-icon {
-        padding-left: 8px;
+        margin-right: 8px;
+        margin-left: 8px;
       }
 
       &-btn {

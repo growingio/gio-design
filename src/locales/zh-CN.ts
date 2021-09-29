@@ -12,6 +12,7 @@ import searchBarLocale from '../search-bar/locales/zh-CN';
 import cascaderLocale from '../cascader/locales/zh-CN';
 import paginationLocale from '../pagination/locales/zh-CN';
 import tableLocale from '../table/locales/zh-CN';
+import uploadLocale from '../upload/locales/zh-CN';
 
 export const locale: Locale = {
   code: 'zh-CN',
@@ -53,6 +54,9 @@ export const locale: Locale = {
   },
   Table: {
     ...tableLocale,
+  },
+  Upload: {
+    ...uploadLocale,
   },
 };
 

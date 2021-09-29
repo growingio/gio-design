@@ -2,10 +2,12 @@ import React from 'react';
 import { set } from 'lodash';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { fakeXhr } from 'nise';
-import { AreaUpload, DefaultListUpload } from '../Upload.stories';
-import { testFile, dataUrl, url as imgUrl } from '../mock';
+import { DesignProvider } from '@gio-design/utils';
+import { AreaUpload, DefaultListUpload } from '../demos/Upload.stories';
+import { testFile, dataUrl, url as imgUrl } from './mock';
 import * as utils from '../utils';
-import { sleep } from '../../../utils/test';
+import enUS from '../../locales/en-US';
+import { sleep } from '../../utils/test';
 import Upload from '..';
 import UploadList from '../UploadList';
 import DragTrigger from '../triggers/DragTrigger';
@@ -109,6 +111,7 @@ describe('Testing drag-trigger', () => {
       fireEvent.mouseEnter(container.getElementsByClassName('gio-upload-file-list-item')[0]);
       fireEvent.click(screen.getAllByLabelText('delete-outlined')[0]);
     });
+
     await waitFor(() => expect(screen.queryByText('one.png')).toBeNull());
     done();
   });
@@ -119,8 +122,9 @@ describe('Testing drag-trigger', () => {
       fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: mockFileList } });
     });
     await waitFor(() => {
-      expect(screen.getByText('one.png')).toBeTruthy();
+      expect(screen.queryByText('one.png')).not.toBeNull();
     });
+
     act(() => {
       fireEvent.mouseEnter(container.getElementsByClassName('gio-upload-file-list-item')[0]);
       fireEvent.click(screen.getAllByLabelText('delete-outlined')[0]);
@@ -254,15 +258,15 @@ describe('Testing Upload actions', () => {
   test('should call handleProgress function', async (done) => {
     expect.assertions(1);
 
-    const props = {
-      action: 'api',
-      onProgress: (progressEvent: any) => {
-        expect(progressEvent.type).toEqual('progress');
-        done();
-      },
-    };
-
-    const { container } = render(<Upload {...props} />);
+    const { container } = render(
+      <Upload
+        action="api"
+        onProgress={(progressEvent: any) => {
+          expect(progressEvent.type).toEqual('progress');
+          done();
+        }}
+      />
+    );
     act(() => {
       fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: [{ file: mockFile }] } });
     });
@@ -275,8 +279,8 @@ describe('Testing Upload actions', () => {
     expect.assertions(1);
 
     const props = {
-      action: 'api',
       type: 'drag',
+      action: 'api',
       directory: true,
       onSuccess: (response: any) => {
         expect(response).toEqual(uploadedSuccess);
@@ -418,16 +422,14 @@ describe('test input upload', () => {
 
   test('test inputUploadType is a file ---- when data and action is a function', async (done) => {
     const props = {
-      action: () => 'api',
-      data: () => ({ data: 'data' }),
-      type: 'input',
-      inputUploadType: 'file',
       onSuccess: () => {
         done();
       },
     } as any;
 
-    render(<Upload {...props} />);
+    render(
+      <Upload action={() => 'api'} type="input" inputUploadType="file" data={() => ({ data: 'data' })} {...props} />
+    );
     act(() => {
       fireEvent.change(screen.getByRole('textbox'), { target: { value: 'url' } });
       fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
@@ -765,5 +767,52 @@ describe('Testing drag upload', () => {
     render(<Upload type="drag" multiple defaultFileList={mockFileList as any} />);
     expect(screen.getByText('one.png')).toBeTruthy();
     expect(screen.queryByText('two.jpg')).toBeNull();
+  });
+});
+
+describe('multiple language', () => {
+  it('button trigger', () => {
+    render(
+      <DesignProvider locale={enUS} size="middle">
+        <Upload type="button" />
+      </DesignProvider>
+    );
+  });
+
+  it('drag trigger', () => {
+    render(
+      <DesignProvider locale={enUS}>
+        <Upload type="drag" />
+      </DesignProvider>
+    );
+    expect(screen.getByText('Click or drag file to this area to upload')).toBeTruthy();
+  });
+
+  it('file list', () => {
+    render(
+      <DesignProvider locale={enUS}>
+        <DefaultListUpload {...DefaultListUpload.args} />
+      </DesignProvider>
+    );
+    expect(screen.getByText('FileUploaded Successfully!')).toBeTruthy();
+  });
+
+  it('controlled file', () => {
+    render(
+      <DesignProvider locale={enUS}>
+        <Upload
+          type="drag"
+          file={
+            {
+              uid: '3',
+              name: 'zzz.txt',
+              status: 'success',
+              dataUrl: 'https://www.xxx.com/zzz.txt',
+            } as any
+          }
+        />
+      </DesignProvider>
+    );
+    expect(screen.getByText('Uploaded Successfully!')).toBeTruthy();
   });
 });

@@ -1,7 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, createContext } from 'react';
 import RcUpload from 'rc-upload';
+import { template } from 'lodash';
 import classnames from 'classnames';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import { usePrefixCls, useLocale } from '@gio-design/utils';
+import { defaultRootPrefixCls } from '../components/config-provider';
 import {
   IUploadProps,
   ITriggerProps,
@@ -30,9 +32,11 @@ import {
   isOnlyAcceptImg,
 } from './utils';
 import xhrRequest from './xhrRequest';
-import { UploadPrefixClsContext } from './UploadContext';
 import UploadList from './UploadList';
-import Alert from '../../alert';
+import Alert from '../alert';
+import defaultLocale from './locales/zh-CN';
+
+export const UploadPrefixClsContext = createContext(`${defaultRootPrefixCls}-upload`);
 
 const triggerMap: ITriggerMap = {
   button: ButtonTrigger,
@@ -78,6 +82,13 @@ const Upload: React.FC<IUploadProps> = ({
   const [finish, setFinish] = useState(Math.min(defaultFileList.length, maxCount));
   // 控制dragTrigger是否disabled
   const [uploadDisabled, setUploadDisabled] = useState(disabled);
+
+  const locale = useLocale('Upload');
+  const { defaultErrorMessage, picLimit, fileLimit }: { [key: string]: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
+
   useEffect(() => {
     setFile(getEmptyFileObj(uploadedFile));
   }, [uploadedFile]);
@@ -177,7 +188,7 @@ const Upload: React.FC<IUploadProps> = ({
       error,
       response,
       status: STATUS_ERROR,
-      errorMessage: '文件上传失败！',
+      errorMessage: defaultErrorMessage,
     };
 
     const updatedFileList = updateFileList(errorFile, uploadFileList);
@@ -272,8 +283,8 @@ const Upload: React.FC<IUploadProps> = ({
         type="error"
         message={
           isOnlyAcceptImg(restProps.accept)
-            ? `图片最多上传${maxCount}张，超过将无法上传`
-            : `文件最多上传${maxCount}个，超过将无法上传`
+            ? template(picLimit, { interpolate: /{([\s\S]+?)}/g })({ maxCount })
+            : template(fileLimit, { interpolate: /{([\s\S]+?)}/g })({ maxCount })
         }
         showIcon
         closeable

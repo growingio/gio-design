@@ -7,7 +7,7 @@ import { set, get } from 'lodash';
 import { JSDOM } from 'jsdom';
 import React from 'react';
 import * as module from '../utils';
-import { dataUrl, testFile, url, base64DecToArr } from '../mock';
+import { dataUrl, testFile, url, base64DecToArr } from './mock';
 
 describe('Testing Upload utils', () => {
   test('requestImage function', (done) => {
