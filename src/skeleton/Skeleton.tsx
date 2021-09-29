@@ -1,9 +1,8 @@
 import React from 'react';
-import { isBoolean } from 'lodash';
 import classNames from 'classnames';
-import Avatar from '../../avatar';
-import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import Avatar from '../avatar';
+import useDebounceLoading from '../utils/hooks/useDebounceLoading';
+import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { SkeletonProps } from './interface';
 import SkeletonImage from './Image';
 
@@ -17,7 +16,7 @@ const Skeleton = (props: SkeletonProps) => {
     if (!avatar) {
       return null;
     }
-    const size = isBoolean(avatar) ? 'large' : avatar.size;
+    const size = 'large';
     return (
       <div className={`${prefixCls}-header`}>
         <Avatar className={`${prefixCls}-avatar`} size={size}>
@@ -26,13 +25,12 @@ const Skeleton = (props: SkeletonProps) => {
       </div>
     );
   };
-
   const renderSkeletonParagraph = () => {
     const { paragraph = true, title = true } = props;
     if (!paragraph && !title) {
       return null;
     }
-    const row = isBoolean(paragraph) ? 3 : paragraph.row;
+    const row = 3;
     return (
       <div className={`${prefixCls}-content`}>
         {title && <div className={`${prefixCls}-title`} />}

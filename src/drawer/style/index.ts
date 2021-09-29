@@ -1,3 +1,3 @@
 import './index.less';
-import '../../components/skeleton/style';
+import '../../skeleton/style';
 import '../../components/button/style';

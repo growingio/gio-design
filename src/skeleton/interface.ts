@@ -1,4 +1,4 @@
-import { AvatarProps } from '../../avatar';
+import { AvatarProps } from '../avatar';
 
 export type SkeletonAvatarProps = Pick<AvatarProps, 'size'>;
 export interface SkeletonParagraphProps {
