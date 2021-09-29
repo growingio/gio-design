@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import { isUndefined } from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import { CardProps } from './interfaces';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import Meta from './meta';
+import Meta from './Meta';
 
 const Card = ({
   prefixCls: customizePrefixCls,
