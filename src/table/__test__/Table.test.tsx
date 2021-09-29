@@ -377,7 +377,7 @@ describe('Testing table', () => {
 
   it('resize table', async () => {
     const { container } = render(<ResizableWithTable {...ResizableWithTable.args} />);
-    const resizeHandle = container.getElementsByClassName('react-resizable-handle')[0];
+    const resizeHandle = container.getElementsByClassName('gio-table-resizable-handle')[0];
     act(() => {
       fireEvent.click(resizeHandle);
     });

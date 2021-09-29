@@ -11,6 +11,7 @@ import timeSelectorLocale from '../time-selector/locales/en-US';
 import searchBarLocale from '../search-bar/locales/en-US';
 import cascaderLocale from '../cascader/locales/en-US';
 import paginationLocale from '../pagination/locales/en-US';
+import tableLocale from '../table/locales/en-US';
 
 export const locale: Locale = {
   code: 'en-US',
@@ -49,6 +50,9 @@ export const locale: Locale = {
   },
   Pagination: {
     ...paginationLocale,
+  },
+  Table: {
+    ...tableLocale,
   },
 };
 
