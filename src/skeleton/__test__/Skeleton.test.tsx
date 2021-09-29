@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Default, Image } from '../Skeleton.stories';
+import { Default, Image } from '../demos/Skeleton.stories';
 import Skeleton from '../index';
 
 describe('Testing skeleton', () => {
@@ -21,6 +21,22 @@ describe('Testing skeleton', () => {
       </Skeleton>
     );
     expect(container.getElementsByClassName('gio-skeleton')).toHaveLength(1);
+  });
+
+  it('image skeleton', () => {
+    render(
+      <Skeleton avatar paragraph loading={false}>
+        <span>子组件</span>
+      </Skeleton>
+    );
+  });
+
+  it('image skeleton', () => {
+    render(
+      <Skeleton.Image>
+        <span>子组件</span>
+      </Skeleton.Image>
+    );
   });
 
   it('image skeleton width false loading', () => {
