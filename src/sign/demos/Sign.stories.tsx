@@ -1,10 +1,10 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import Docs from './Sign.mdx';
-import { ISignProps } from './interface';
-import Sign from './index';
-import './style';
+import Docs from './SignPage';
+import { ISignProps } from '../interface';
+import Sign from '../index';
+import '../style';
 
 export default {
   title: 'Basic Components/Sign',
