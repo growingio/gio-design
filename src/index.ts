@@ -3,7 +3,7 @@ export { default as Avatar, AvatarGroup, AvatarProps } from './components/avatar
 export { default as Banner, BannerProps } from './banner';
 export { default as Breadcrumb, BreadcrumbItem, BreadcrumbProps, BreadcrumbItemProps } from './components/breadcrumb';
 export { default as Button, ButtonProps, ButtonType } from './button';
-export { default as Card, CardProps, CardMetaProps } from './components/card';
+export { default as Card, CardProps, CardMetaProps } from './card';
 export { default as Checkbox, CheckboxGroup, CheckboxProps, CheckboxGroupProps, CheckboxOptionType } from './checkbox';
 export { default as Drawer, DrawerProps } from './components/drawer';
 export { default as Dropdown, DropdownProps } from './dropdown';

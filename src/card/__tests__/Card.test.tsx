@@ -1,18 +1,13 @@
 import React from 'react';
 import _ from 'lodash';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Default, Demo, Disabled, Multiple, Footer } from '../Card.stories';
+import { Default, Disabled, Multiple, Footer } from '../demos/Card.stories';
 import Card from '../index';
 
 describe('Testing Card', () => {
   it('default', () => {
     render(<Default {...Default.args} />);
     expect(screen.getAllByText(/卡片.?标题/, { exact: false })).toHaveLength(2);
-  });
-
-  it('demo card', () => {
-    render(<Demo {...Demo.args} />);
-    expect(screen.getAllByText('卡片标题')).toHaveLength(23);
   });
 
   it('disabled card', () => {
@@ -44,5 +39,15 @@ describe('Testing Card', () => {
     );
     render(<Default {...Default.args} />);
     expect(screen.getAllByText('卡片标题')).toHaveLength(1);
+  });
+
+  it('card title to undefined', () => {
+    const { container } = render(
+      <Card title=''>
+        <Card.Meta image=''>1234</Card.Meta>
+      </Card>
+    );
+    fireEvent.click(container.getElementsByClassName('gio-card')[0]);
+    expect(container.getElementsByClassName('gio-card')[0]).toHaveClass('gio-card-clickable');
   });
 });
