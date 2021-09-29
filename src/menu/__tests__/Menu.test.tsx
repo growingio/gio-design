@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { AppsFilled } from '@gio-design/icons';
-import { Vertical, Horizontal } from '../Menu.stories';
+import { Vertical, Horizontal } from '../demos/Menu.stories';
 import Menu, { MenuItem, SubMenu, Divider } from '..';
 
 describe('Testing Menu', () => {
@@ -18,6 +18,12 @@ describe('Testing Menu', () => {
     render(<Horizontal {...Horizontal.args} />);
     expect(screen.getByText('看板')).not.toBeNull();
   });
+  it('menu props', () => {
+    const props = {
+      verticalIndent: 20,
+    };
+    render(<Menu defaultSelectedKey="" {...props} />);
+  });
 
   it('title, verticalIndent, expandIcon', () => {
     render(
@@ -27,6 +33,7 @@ describe('Testing Menu', () => {
         selectedKey="sub-1"
         title="标题"
         defaultOpenKeys={['sub-1', 'sub-2']}
+        inlineCollapsed
       >
         <SubMenu key="sub-1" title="功能名称-1" icon={<AppsFilled />}>
           <MenuItem key="sub-menu-1-1">功能名称-1-1</MenuItem>
@@ -39,7 +46,6 @@ describe('Testing Menu', () => {
         <Divider />
       </Menu>
     );
-    expect(screen.getByText('标题').className.includes('gio-menu-title')).toBe(true);
     expect(screen.getByTestId('menu-divider')).toBeTruthy();
   });
 });
