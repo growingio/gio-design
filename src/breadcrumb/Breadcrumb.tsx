@@ -3,11 +3,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
+import { usePrefixCls } from '@gio-design/utils';
 import BreadcrumbItem from './BreadcrumbItem';
 import BreadcrumbSeparator from './BreadcrumbSeparator';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import { cloneElement } from '../../utils/reactNode';
-import devWarning from '../../utils/devWarning';
+import { cloneElement } from '../utils/reactNode';
+import devWarning from '../utils/devWarning';
 import { Route, BreadcrumbProps } from './interface';
 
 function getBreadcrumbName(route: Route, params: any) {

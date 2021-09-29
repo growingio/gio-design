@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import classnames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import BreadcrumbSeparator from './BreadcrumbSeparator';
 import { BreadcrumbItemProps } from './interface';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 interface BreadcrumbItemInterface extends React.FC<BreadcrumbItemProps> {
   GIO_BREADCRUMB_ITEM: boolean;
