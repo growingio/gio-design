@@ -1,15 +1,23 @@
 import React, { useContext } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
-import Text from '../../text';
+import { useLocale } from '@gio-design/utils';
+import Text from '../text';
 import { isOnlyAcceptImg } from './utils';
-import { UploadPrefixClsContext } from './UploadContext';
+import { UploadPrefixClsContext } from './Upload';
 import { IUploadProps, IUploadListProps, IUploadFile, STATUS_SUCCESS, STATUS_ERROR } from './interface';
+import defaultLocale from './locales/zh-CN';
 
 const UploadList = (props: IUploadListProps<IUploadProps>) => {
   const { items, onRemove, accept } = props;
   const prefixCls = useContext(UploadPrefixClsContext);
 
-  const name = isOnlyAcceptImg(accept) ? '图片' : '文件';
+  const locale = useLocale('Upload');
+  const { picture, folder, uploadSuccess }: { [key: string]: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
+
+  const name = isOnlyAcceptImg(accept) ? picture : folder;
 
   const handleRemove = (file: IUploadFile) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -26,7 +34,8 @@ const UploadList = (props: IUploadListProps<IUploadProps>) => {
           </Text>
           {file.status === STATUS_SUCCESS && (
             <Text width={500} className={`${prefixCls}-file-success`}>
-              {name}上传成功!
+              {name}
+              {uploadSuccess}!
             </Text>
           )}
           {file.status === STATUS_ERROR && (

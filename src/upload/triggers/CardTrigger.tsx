@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { PlusOutlined } from '@gio-design/icons';
-import Loading from '../../../loading';
+import Loading from '../../loading';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
-import { UploadPrefixClsContext } from '../UploadContext';
+import { UploadPrefixClsContext } from '../Upload';
 import Preview from '../Preview';
 import Actions from '../Actions';
 

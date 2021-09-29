@@ -3,11 +3,13 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { CheckCircleFilled, CloseCircleFilled } from '@gio-design/icons';
-import Button from '../button';
-import Text from '../../text';
-import { UploadPrefixClsContext } from './UploadContext';
-import { IPreviewProps, IUploadFile } from './interface';
+import { useLocale } from '@gio-design/utils';
+import Button from '../components/button';
+import Text from '../text';
+import { STATUS_SUCCESS, STATUS_ERROR, IPreviewProps, IUploadFile } from './interface';
+import { UploadPrefixClsContext } from './Upload';
 import { CsvSVG, DocxSVG, PdfSVG, XlsxSVG, FolderSVG, TxtSVG } from './svg';
+import defaultLocale from './locales/zh-CN';
 
 const getFileLogo = (file: IUploadFile) => {
   const suffix = file.name.match(/.*\.(\w+)/)?.[1].toLowerCase();
@@ -31,12 +33,6 @@ const getFileLogo = (file: IUploadFile) => {
   }
 };
 
-const iconStyle = {
-  width: 16,
-  height: 16,
-  marginRight: 8,
-};
-
 const Preview: React.FC<IPreviewProps> = ({ file, size = 32 }: IPreviewProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
   const cls = classnames(`${prefixCls}__preview`);
@@ -48,7 +44,13 @@ export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file, onReSelect, 
   const cls = classnames(`${prefixCls}__preview-file`);
   const fileNameCls = classnames(`${prefixCls}__preview-file-name`);
 
-  const errorMessage = file.status === 'success' ? '上传成功！' : file.errorMessage;
+  const locale = useLocale('Upload');
+  const { reselect, uploadSuccess }: { reselect: string; uploadSuccess: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
+
+  const message = file.status === 'success' ? `${uploadSuccess}!` : file.errorMessage;
 
   const handleSelect = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -62,17 +64,17 @@ export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file, onReSelect, 
       <div className={fileNameCls}>{file?.name}</div>
       <div className="drag-file-preview">
         <div className="drag-file-preview-icon">
-          {file.status === 'success' && <CheckCircleFilled color="#008a56" style={iconStyle} />}
-          {file.status === 'error' && <CloseCircleFilled color="#ec134b" style={iconStyle} />}
+          {file.status === STATUS_SUCCESS && <CheckCircleFilled color="#008a56" size="14px" />}
+          {file.status === STATUS_ERROR && <CloseCircleFilled color="#ec134b" size="14px" />}
         </div>
         <div onClick={(e: any) => e.stopPropagation()}>
           <Text width={300} style={{ zIndex: 1 }} className="drag-file-preview-text">
-            {errorMessage}
+            {message}
           </Text>
         </div>
         <div>
           <Button type="text" className="drag-file-preview-btn" onClick={handleSelect}>
-            重新选择
+            {reselect}
           </Button>
         </div>
       </div>
