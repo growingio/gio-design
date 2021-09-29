@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { SubMenu as RcSubMenu } from 'rc-menu';
 import { DownOutlined } from '@gio-design/icons';
 import { isUndefined } from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import { ISubMenuProps } from './interface';
 import MenuTitle from './MenuTitle';
 import { MenuContext, SubMenuContext, getInlineIndent } from './MenuContext';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const SubMenu = (props: ISubMenuProps) => {
   const { icon, title, children, expandIcon, ...restProps } = props;

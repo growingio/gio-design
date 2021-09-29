@@ -102,7 +102,7 @@ describe('Testing search-bar', () => {
 
     await waitFor(() => {
       const store = JSON.parse(localStorage.getItem('gio-searchbar-storage-demo'));
-      expect(store.length).toBe(2);
+      expect(store.length).toBe(3);
     });
   });
 

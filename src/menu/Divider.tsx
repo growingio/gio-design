@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import { DividerProps } from './interface';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const Divider = (props: DividerProps) => {
   const { prefixCls: customPrefixCls, className, style } = props;

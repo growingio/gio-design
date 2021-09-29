@@ -14,15 +14,7 @@ export { default as Link, LinkProps } from './link';
 export { default as List, ListProps } from './components/list';
 export { default as ListPicker, ListPickerProps } from './list-picker';
 export { default as Loading, LoadingProps } from './loading';
-export {
-  default as Menu,
-  MenuProps,
-  SubMenuProps,
-  MenuItemProps,
-  MenuMode,
-  Divider,
-  DividerProps,
-} from './components/menu';
+export { default as Menu, MenuProps, SubMenuProps, MenuItemProps, MenuMode, Divider, DividerProps } from './menu';
 export {
   default as Modal,
   StepModal,
