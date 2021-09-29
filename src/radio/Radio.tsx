@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import RcCheckbox from 'rc-checkbox';
 import classnames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import RadioGroup from './Group';
 import RadioGroupContext from './context';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { IRadioProps, IRadioChangeEvent } from './interface';
 
 interface CompoundedRadio extends React.ForwardRefExoticComponent<IRadioProps & React.RefAttributes<HTMLElement>> {

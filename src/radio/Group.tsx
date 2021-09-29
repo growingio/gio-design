@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
-import usePrevious from '../../utils/hooks/usePrevious';
-import filterChildren from '../../utils/filterChildren';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import usePrevious from '../utils/hooks/usePrevious';
+import filterChildren from '../utils/filterChildren';
+import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import Radio from './Radio';
 import { RadioGroupProvider } from './context';
 import { IRadioGroupProps, IRadioChangeEvent } from './interface';
