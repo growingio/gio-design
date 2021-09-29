@@ -63,7 +63,7 @@ const columns: any[] = [
     key: 'operate',
     align: 'center',
     fixed: 'right',
-    width: 60,
+    width: 80,
     render: () => <MoreOutlined />,
   },
 ];

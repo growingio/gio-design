@@ -1,8 +1,9 @@
 import { Meta } from '@storybook/react/types-6-0';
-import Docs from './Table.mdx';
+import Docs from './TablePage';
 import Table from '../index';
 import '../style';
 import { Base } from './Base';
+import { CompactTable } from './CompactTable';
 import { TableHeader } from './TableHeader';
 import { MultiLine } from './MultiLine';
 import { TableScroll } from './TableScroll';
@@ -33,6 +34,7 @@ export default {
 
 export {
   Base,
+  CompactTable,
   TableHeader,
   MultiLine,
   TableScroll,

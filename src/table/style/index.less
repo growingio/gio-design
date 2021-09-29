@@ -82,16 +82,16 @@
     &:last-child {
       border-right: 0.5px solid @color-border-table;
 
-      .react-resizable-handle {
+      .@{table-prefix-cls}-resizable-handle {
         display: none;
       }
     }
-    .gio-checkbox-wrapper + .react-resizable-handle {
+    .gio-checkbox-wrapper + .@{table-prefix-cls}-resizable-handle {
       display: none;
     }
 
     &:hover {
-      .react-resizable-handle {
+      .@{table-prefix-cls}-resizable-handle {
         background: #5f87ff;
       }
     }
@@ -456,7 +456,7 @@
     background-clip: padding-box;
   }
 
-  .react-resizable-handle {
+  &-resizable-handle {
     position: absolute;
     top: 0;
     right: 0;
