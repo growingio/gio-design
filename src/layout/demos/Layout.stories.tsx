@@ -8,7 +8,7 @@ import Button from '../../button';
 import Avatar from '../../avatar';
 import Skeleton from '../../skeleton';
 import Select from '../../components/select';
-import Menu, { SubMenu, MenuItem, Divider } from '../../components/menu';
+import Menu, { SubMenu, MenuItem, Divider } from '../../menu';
 import '../style';
 import '../style/demo.stories.less';
 

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { AppOutlined, MapChartOutlined, CalendarOutlined } from '@gio-design/icons';
-import Menu, { MenuItem, SubMenu } from './index';
-import { IMenuProps, IMenuItemProps, ISubMenuProps } from './interface';
-import Docs from './Menu.mdx';
-import './style';
-import './style/demo.stories.less';
+import Menu, { MenuItem, SubMenu } from '../index';
+import { IMenuProps, IMenuItemProps, ISubMenuProps } from '../interface';
+import Docs from './MenuPage';
+import '../style';
+import '../style/demo.stories.less';
 
 export default {
-  title: 'Basic Components/Menu',
+  title: 'Navigation/Menu',
   component: Menu,
   subcomponents: { MenuItem, SubMenu },
   parameters: {
