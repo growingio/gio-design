@@ -1,5 +1,5 @@
 import React from 'react';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
 import { BreadcrumbSeparatorProps } from './interface';
 
 interface BreadcrumbSeparatorInterface extends React.FC<BreadcrumbSeparatorProps> {
