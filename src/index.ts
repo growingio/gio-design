@@ -50,7 +50,7 @@ export {
   SkeletonImageProps,
   SkeletonAvatarProps,
   SkeletonParagraphProps,
-} from './components/skeleton';
+} from './skeleton';
 export { default as Table, TableProps } from './table';
 export { default as TabNav, TabNavProps } from './tab-nav';
 export { default as SearchBar, SearchBarProps } from './search-bar';

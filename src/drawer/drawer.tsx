@@ -7,8 +7,8 @@ import { isUndefined, omit } from 'lodash';
 import getScrollBarSize from 'rc-util/lib/getScrollBarSize';
 import { CloseOutlined, LeftOutlined, RightOutlined } from '@gio-design/icons';
 import classNames from 'classnames';
-import Button from '../components/button';
-import Skeleton from '../components/skeleton';
+import Button from '../button';
+import Skeleton from '../skeleton';
 import { ConfigConsumerProps, withConfigConsumer, ConfigConsumer } from '../components/config-provider';
 import { PushState, IDrawerState, DrawerProps, placementType } from './interfaces';
 

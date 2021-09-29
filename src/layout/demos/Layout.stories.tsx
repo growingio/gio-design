@@ -6,7 +6,7 @@ import { LayoutProps } from '../interfaces';
 import Layout from '../index';
 import Button from '../../button';
 import Avatar from '../../avatar';
-import Skeleton from '../../components/skeleton';
+import Skeleton from '../../skeleton';
 import Select from '../../components/select';
 import Menu, { SubMenu, MenuItem, Divider } from '../../components/menu';
 import '../style';
