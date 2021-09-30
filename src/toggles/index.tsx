@@ -1,4 +1,4 @@
-import Toggles from './toggles';
+import Toggles from './Toggles';
 
 export { TogglesProps } from './interface';
 
