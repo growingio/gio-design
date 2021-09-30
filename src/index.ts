@@ -85,7 +85,7 @@ export {
   OptionProps,
   GroupProps,
 } from './components/select';
-export { default as Form, FormLayout, FormProps } from './components/form';
+export { default as Form, FormLayout, FormProps } from './form';
 export { default as TimePicker, TimePickerProps } from './components/time-picker';
 export { default as Grid, GridProps } from './components/grid';
 export { default as Row, RowProps } from './components/row';

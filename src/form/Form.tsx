@@ -1,10 +1,10 @@
 import RcForm, { FormInstance, useForm } from 'rc-field-form';
 import * as React from 'react';
 import classNames from 'classnames';
-import { Props } from './interface'
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
+import { Props } from './interface';
 import { FormContext } from './context';
-import { SizeContextProvider } from '../config-provider/SizeContext';
+import { SizeContextProvider } from '../components/config-provider/SizeContext';
 
 const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props, ref) => {
   const {
