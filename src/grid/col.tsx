@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { isNumber } from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import { ColProps } from './interface';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { RowContext } from './row';
 
 const Col = ({

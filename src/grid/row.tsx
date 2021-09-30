@@ -1,8 +1,8 @@
 import React, { createContext, Context, useMemo } from 'react';
 import classNames from 'classnames';
 import { isArray, isUndefined } from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import { RowProps, RowContextState } from './interface';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { dataMap } from './help';
 
 export const RowContext: Context<RowContextState> = createContext({ gutters: [0, 0] });
@@ -18,12 +18,14 @@ const Row = ({
   alignItems,
   alignContent,
   wrap,
-  gutter = 0,
+  gutter,
 }: React.PropsWithChildren<RowProps>) => {
   const prefixCls = usePrefixCls('row', customizePrefixCls);
 
   const gutters: [number, number] = useMemo(() => {
-    if (isUndefined(gutter)) return [0, 0];
+    if (isUndefined(gutter)) {
+      return [0, 0];
+    }
     return isArray(gutter) ? gutter : [gutter, gutter];
   }, [gutter]);
 
