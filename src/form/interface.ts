@@ -2,10 +2,10 @@ import { FormProps as RcFormProps } from 'rc-field-form/lib/Form';
 import { FormInstance } from 'rc-field-form';
 import { FieldProps } from 'rc-field-form/lib/Field';
 import { FormLabelAlign, RequiredMark } from './context';
-import { SizeType } from '../config-provider/SizeContext';
 import { FormItemFeedbackType } from './ItemControl';
 
 export type FormLayout = 'horizontal' | 'vertical' | 'inline';
+export type SizeType = 'small' | 'middle' | 'large' | undefined;
 
 export interface Props<Values = unknown> extends Omit<RcFormProps<Values>, 'form'> {
   /**

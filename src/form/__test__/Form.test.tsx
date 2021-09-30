@@ -1,11 +1,12 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
-import { Default, FormItems, FormWithModal, MultipleForm } from '../Form.stories';
+import { Default, FormItems, FormWithModal, MultipleForm } from '../demos/Form.stories';
 import RefForm from '../index';
 import { FormProvider } from '../context';
 import { FormItemProps } from '../interface';
-import Input from '../../input';
+import Input from '../../components/input';
+import { toArray, hasValidName } from '../util';
 
 describe('Testing form', () => {
   it('basic form', () => {
@@ -45,13 +46,13 @@ describe('Testing form', () => {
     const { container } = render(
       <FormProvider onFormChange={onFormChange}>
         <RefForm name="form1">
-          <RefForm.Item name="name">
+          <RefForm.Item name="name1" validateTrigger="onClick">
             <input type="text" />
           </RefForm.Item>
         </RefForm>
         <RefForm name="form2">
-          <RefForm.Item name="name">
-            <input type="text" />
+          <RefForm.Item name="name2">
+            <input type="text" id="gio-test-demo" />
           </RefForm.Item>
         </RefForm>
       </FormProvider>
@@ -76,7 +77,7 @@ describe('Testing form', () => {
           validateTrigger="onFocus"
           rules={[{ required: true, message: 'validate message' }]}
         >
-          <input type="text" />
+          <input type="text" onFocus={() => null} />
         </RefForm.Item>
       </RefForm>
     );
@@ -94,5 +95,69 @@ describe('Testing form', () => {
   it('have feedback with icon', () => {
     const { container } = render(<RefForm.Item feedbackIcon feedback="feedback message" feedbackType="warning" />);
     expect(container.getElementsByClassName('gio-field-children-icon')).toHaveLength(1);
+  });
+});
+
+// ===== test util =====
+
+describe('toArray', () => {
+  it('should convert string to array', () => {
+    expect(toArray('abc')).toContainEqual('abc');
+    expect(toArray(['abc'])[0]).toEqual('abc');
+  });
+
+  it('should ignore undefined and false value', () => {
+    expect(toArray(false)).toHaveLength(0);
+    expect(toArray(undefined)).toHaveLength(0);
+  });
+});
+
+describe('hasValidName', () => {
+  it('should reject undefined null value', () => {
+    expect(hasValidName(undefined)).toBeFalsy();
+    // eslint-disable-next-line
+    const warn = console.assert;
+    // eslint-disable-next-line
+    console.warn = jest.fn();
+    expect(hasValidName(null)).toBeFalsy();
+    // eslint-disable-next-line
+    console.warn = warn;
+  });
+  it('should accept a string or string[] value', () => {
+    expect(hasValidName('abc')).toBeTruthy();
+    expect(hasValidName(['abc'])).toBeTruthy();
+  });
+});
+
+// =====  add branch test ======
+describe('improve branch test', () => {
+  it('render other props', () => {
+    render(
+      <RefForm colon requiredMark={false}>
+        <RefForm.Item
+          trigger="onClick"
+          labelWidth={100}
+          inputWidth={100}
+          colon
+          labelAlign="right"
+          help="help"
+          required
+          title="test"
+          htmlFor="test"
+        >
+          <Input />
+        </RefForm.Item>
+      </RefForm>
+    );
+  });
+
+  it('requiredMark is optional', () => {
+    render(
+      <RefForm requiredMark="optional">
+        <RefForm.Item required={false} marker={<span>123</span>}>
+          <Input id="gio-demo" />
+        </RefForm.Item>
+      </RefForm>
+    );
   });
 });

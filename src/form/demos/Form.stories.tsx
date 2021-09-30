@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Form, { useForm } from './index';
-import Item from './Item';
-import Docs from './Form.mdx';
-import { Props, FormItemProps } from './interface';
-import './style';
-import '../input/style';
-import '../button/style';
-import './style/demo.stories.less';
-import { Button, Input, Modal } from '../..';
+import Form, { useForm } from '../index';
+import Item from '../Item';
+import Docs from './FormPage';
+import { Props, FormItemProps } from '../interface';
+import '../style';
+import '../../components/input/style';
+import '../../components/button/style';
+import '../style/demo.stories.less';
+import { Button, Input, Modal } from '../../index';
 
 export default {
-  title: 'Functional Components/Form',
+  title: 'Data Input/Form',
   component: Form,
   subcomponents: { Item },
   parameters: {
@@ -107,12 +107,12 @@ export const FormWithModal: Story<Props> = (args: Props) => {
 // Multiple Column Form Story
 const items = [...new Array(6)];
 export const MultipleForm: Story<Props> = (args) => (
-    <Form {...args}>
-      {items.map((_, i) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Item key={i} label={`label-${i}`} name={`inline-${i}`}>
-          <Input />
-        </Item>
-      ))}
-    </Form>
-  );
+  <Form {...args}>
+    {items.map((_, i) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <Item key={i} label={`label-${i}`} name={`inline-${i}`}>
+        <Input />
+      </Item>
+    ))}
+  </Form>
+);

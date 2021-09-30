@@ -40,12 +40,11 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
   const innerMarker = isOptional ? '（选填）' : '*';
   const mergedRequiredMarker = marker !== undefined ? marker : innerMarker;
   const mergedTitle = isNumber(title) || isString(title) ? (title as string) : '';
-  const cls = classNames(
-    `${prefixCls}-label`,
-    isRequired && `${prefixCls}-label-required`,
-    isOptional && `${prefixCls}-label-optional`,
-    labelAlign && `${prefixCls}-label-${labelAlign}`
-  );
+  const cls = classNames(`${prefixCls}-label`, {
+    [`${prefixCls}-label-required`]: isRequired,
+    [`${prefixCls}-label-optional`]: isOptional,
+    [`${prefixCls}-label-${labelAlign}`]: labelAlign,
+  });
 
   let labelChild: React.ReactNode = (
     <>

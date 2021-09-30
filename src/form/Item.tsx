@@ -3,8 +3,8 @@ import { Meta } from 'rc-field-form/lib/interface';
 import FieldContext from 'rc-field-form/lib/FieldContext';
 import React, { useContext } from 'react';
 import classNames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import { FormItemProps } from './interface';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { FormContext } from './context';
 import { hasValidName, toArray } from './util';
 import ItemControl from './ItemControl';
@@ -19,6 +19,7 @@ const Item: React.FC<FormItemProps> = (props: FormItemProps) => {
     colon: _colon,
     labelAlign: _labelAlign,
   } = useContext(FormContext);
+
   const {
     prefixCls: customizePrefixCls,
     className,
@@ -119,7 +120,7 @@ const Item: React.FC<FormItemProps> = (props: FormItemProps) => {
           triggers.forEach((eventName) => {
             childProps[eventName] = (...args: unknown[]) => {
               control[eventName]?.(...args);
-              children.props[eventName]?.(...args); // execute the orignal event handler
+              children.props[eventName]?.(...args); // execute the original event handler
             };
           });
 
