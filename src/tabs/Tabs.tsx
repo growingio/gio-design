@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
 import { isNil } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
-import TabNav from '../components/tab-nav';
+import TabNav from '../tab-nav';
 import TabPane from './TabPane';
 import { TabProps, TabPaneProps } from './interface';
 import useControlledState from '../utils/hooks/useControlledState';
