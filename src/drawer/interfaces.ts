@@ -1,10 +1,8 @@
 import React from 'react';
-import { tuple } from '../../utils/interfaces';
 
 type getContainerFunc = () => HTMLElement;
 
-const PlacementTypes = tuple('top', 'right', 'bottom', 'left');
-export type placementType = typeof PlacementTypes[number];
+export type placementType = 'right' | 'top' | 'bottom' | 'left';
 
 export interface PushState {
   distance: string | number;
@@ -119,11 +117,25 @@ export interface DrawerProps {
    */
   footerStyle?: React.CSSProperties;
   direction?: string;
-
+  /**
+   * 上一步回调函数
+   */
   onPrev?: () => void;
+  /**
+   * 禁用上一步
+   */
   prevDisabled?: boolean;
+  /**
+   * 下一步回调函数
+   */
   onNext?: () => void;
+  /**
+   * 禁用下一步
+   */
   nextDisabled?: boolean;
+  /**
+   * 加载状态
+   */
   loading?: boolean;
   children?: React.ReactNode[] | React.ReactNode;
 }

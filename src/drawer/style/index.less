@@ -1,7 +1,10 @@
-@import '../../../stylesheet/index.less';
+@import '../../stylesheet/mixin/index.less';
+@import '../../stylesheet/index.less';
 
 @drawer-prefix-cls: ~'@{component-prefix}-drawer';
 @picker-prefix-cls: ~'@{component-prefix}-picker';
+
+@drawer-prefix-cls: ~'@{component-prefix}-drawer';
 
 // 现在的token里面没有，先写在这边
 @animation-duration-slow: 0.2s;
@@ -179,6 +182,12 @@
     button:last-child {
       margin-left: 8px;
     }
+
+    .@{drawer-prefix-cls}-rtl & {
+      button:first-child {
+        float: left;
+      }
+    }
   }
 
   &-close {
@@ -197,6 +206,11 @@
       margin-left: 24px;
       /* stylelint-disable-next-line function-calc-no-invalid */
       padding-right: calc(@drawer-header-close-padding - var(--scroll-bar));
+    }
+
+    .@{drawer-prefix-cls}-rtl & {
+      margin-right: 16px;
+      margin-left: 0;
     }
   }
 
@@ -267,6 +281,11 @@
     &-clear {
       background: @color-background-popover;
     }
+  }
+
+  // ========   rtl  ==========
+  &-rtl {
+    direction: rtl;
   }
 }
 
