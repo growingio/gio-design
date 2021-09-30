@@ -20,6 +20,11 @@ describe('Testing TabNav', () => {
     expect(screen.getAllByText(/[1-4]{3}/)).toHaveLength(4);
   });
 
+  it('size prop', () => {
+    render(getTabNav({ size: 'xs' }));
+    expect(screen.getAllByText(/[1-4]{3}/)).toHaveLength(4);
+  });
+
   it('will be changed after click', () => {
     const { getByText, container } = render(getTabNav());
     fireEvent.click(getByText('222'));

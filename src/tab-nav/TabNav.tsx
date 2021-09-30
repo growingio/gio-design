@@ -4,9 +4,9 @@ import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
 import { isNil } from 'lodash';
 import { TabNavProps, TabNavItemProps } from './interface';
-import useRefs from '../../utils/hooks/useRefs';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import useControlledState from '../../utils/hooks/useControlledState';
+import useRefs from '../utils/hooks/useRefs';
+import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import useControlledState from '../utils/hooks/useControlledState';
 
 const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   const {
@@ -18,7 +18,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
     onTabClick,
     activeKey,
     defaultActiveKey = '',
-    style
+    style,
   } = props;
 
   const [localActiveKey, setLocalActiveKey] = useControlledState<string>(activeKey, defaultActiveKey);
@@ -36,8 +36,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
 
   const [tabNavKeys, tabNavChildren] = useMemo(() => {
     const _tabNavKeys: string[] = [];
-    const _tabNavChildren =
-      toArray(children)
+    const _tabNavChildren = toArray(children)
       .filter((node) => React.isValidElement(node) && node.type === TabNav.Item)
       .map((node, index) => {
         const { className, disabled, onClick, ...rest } = node.props;
@@ -84,7 +83,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
       const wrapperLeft = wrapperElement.getBoundingClientRect().left;
       setInkStyle({ left: left - wrapperLeft, width });
     }
-  } , [getRef, localActiveKey]);
+  }, [getRef, localActiveKey]);
 
   return (
     <div className={classString} ref={setRef(wrapperRefKey.current, ref)} style={style}>
@@ -96,7 +95,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
 
 TabNav.Item = React.forwardRef<HTMLDivElement, TabNavItemProps>(({ prefixCls, children, ...rest }, ref) => (
   // eslint-disable-next-line react/jsx-props-no-spreading
-  <div data-testid='tabnav-item' ref={ref} {...rest}>
+  <div data-testid="tabnav-item" ref={ref} {...rest}>
     <div className={`${prefixCls}-item-btn`}>{children}</div>
   </div>
 ));

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Docs from './TabNav.mdx';
-import { TabNavProps } from './interface';
-import TabNav from './index';
-import './style';
-import './style/demo.stories.less';
+import Docs from './TabNavPage';
+import { TabNavProps } from '../interface';
+import TabNav from '../index';
+import '../style';
+import '../style/demo.stories.less';
 
 export default {
   title: 'Basic Components/TabNav',
