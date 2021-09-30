@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Grid, { Row, Col } from '..';
-import { Default } from '../Grid.stories';
+import { Default } from '../demos/Grid.stories';
 
 describe('Testing Grid', () => {
   it('default grid', () => {
@@ -35,7 +35,22 @@ describe('Testing Grid', () => {
 
   it('should render nested', () => {
     const { container } = render(
-      <Grid span={12} gap={1} direction="row" wrap="wrap" justify="center" alignItems="center" alignContent="center" />
+      <Grid
+        span={12}
+        gap={1}
+        direction="row"
+        wrap="wrap"
+        justify="center"
+        alignItems="center"
+        alignContent="center"
+        component="span"
+        container
+        collapse
+      >
+        <Row component="span" gutter={12}>
+          <Col component="span">123</Col>
+        </Row>
+      </Grid>
     );
     expect(container.getElementsByClassName('gio-grid')).not.toBeNull();
   });

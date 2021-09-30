@@ -1,16 +1,10 @@
-import isNil from 'lodash/isNil';
-import isNaN from 'lodash/isNaN';
+import { isNil, isNaN as isNotNumber } from 'lodash';
 import keys from 'lodash/keys';
 import kebabCase from 'lodash/kebabCase';
 
 export default {};
 
-export const getAttrName = (cls: string, prefix?: string): string => 
-  // if (!prefix) {
-  //   return cls;
-  // }
-   `${prefix}-${kebabCase(cls)}`
-;
+export const getAttrName = (cls: string, prefix?: string): string => `${prefix}-${kebabCase(cls)}`;
 
 interface ObjType {
   [key: string]: undefined | number | string | boolean;
@@ -20,7 +14,7 @@ type Ret<T> = {
   [P in keyof T]: string | boolean;
 };
 
-const falsely = <T>(o: T) => isNil(o) || isNaN(o);
+const falsely = <T>(o: T) => isNil(o) || isNotNumber(o);
 
 export const dataMap = <T extends ObjType = ObjType>(obj: T, prefixCls: string): Ret<T> => {
   const cls = {} as Ret<T>;

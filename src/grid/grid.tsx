@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
 import { GridProps } from './interface';
 import { clip, dataMap, isNumber } from './help';
 
