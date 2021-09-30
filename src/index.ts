@@ -57,7 +57,7 @@ export { default as SearchBar, SearchBarProps } from './search-bar';
 export { default as Tabs, TabPane, TabProps, TabPaneProps } from './components/tabs';
 export { default as Tag, TagProps } from './tag';
 export { default as Toast, ToastConfigOptions, ToastType } from './toast';
-export { default as Toggles, TogglesProps } from './components/toggles';
+export { default as Toggles, TogglesProps } from './toggles';
 export { default as Tooltip, TooltipProps, TooltipLink } from './tooltip';
 export {
   default as Tree,

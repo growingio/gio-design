@@ -1,10 +1,10 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import Docs from './Toggles.mdx';
-import Toggles from './index';
-import { TogglesProps } from './interface';
-import './style';
+import Docs from './TogglesPage';
+import Toggles from '../index';
+import { TogglesProps } from '../interface';
+import '../style';
 
 export default {
   title: 'Basic Components/Toggles',

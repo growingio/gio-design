@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
 import { TogglesProps } from './interface';
 
 const Toggles: React.FC<TogglesProps> = (props) => {
@@ -14,7 +14,7 @@ const Toggles: React.FC<TogglesProps> = (props) => {
     disabled,
     className,
     suffixContent,
-    onChange
+    onChange,
   } = props;
   const prefixCls = usePrefixCls('toggles');
 
@@ -25,16 +25,16 @@ const Toggles: React.FC<TogglesProps> = (props) => {
 
   useEffect(() => {
     if (checked !== undefined) {
-      setStatus(checked)
+      setStatus(checked);
     }
-  }, [checked])
+  }, [checked]);
 
   const changeStatus = () => {
     if (!disabled) {
       if (checked === undefined) {
         setStatus(!status);
         onChange && onChange(status ? inactiveValues : activeValues);
-        props.onClick && props.onClick(status ? inactiveValues : activeValues);
+        // props.onClick && props.onClick(status ? inactiveValues : activeValues);
       } else {
         onChange && onChange(!checked);
       }
