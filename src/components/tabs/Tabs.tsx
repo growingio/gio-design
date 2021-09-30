@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import toArray from 'rc-util/lib/Children/toArray';
 import { isNil } from 'lodash';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import TabNav from '../tab-nav';
+import TabNav from '../../tab-nav';
 import TabPane from './TabPane';
 import { TabProps, TabPaneProps } from './interface';
 import useControlledState from '../../utils/hooks/useControlledState';
@@ -33,9 +33,8 @@ const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
   const [tabNavKeys, tabNav, tabPane] = useMemo(() => {
     const _tabNavKeys: string[] = [];
     const _tabItem: JSX.Element[] = [];
-    const _tabPane =
-      toArray(children)
-      .filter(node => React.isValidElement(node) && node.type === TabPane)
+    const _tabPane = toArray(children)
+      .filter((node) => React.isValidElement(node) && node.type === TabPane)
       .map((node: React.ReactElement<TabPaneProps>, index) => {
         const { tab, className: paneClassName, disabled, style: paneStyle, ...restProps } = node.props;
         const _key = isNil(node.key) ? index.toString() : node.key.toString();
