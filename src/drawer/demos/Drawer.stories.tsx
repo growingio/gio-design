@@ -1,14 +1,14 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Button from '../button';
-import Input from '../input';
-import { DrawerProps } from './interfaces';
-import Drawer from '.';
-import './style';
-import Docs from './Drawer.mdx';
+import Button from '../../components/button';
+import Input from '../../components/input';
+import { DrawerProps } from '../interfaces';
+import Drawer from '..';
+import '../style';
+import Docs from './DrawerPage';
 
 export default {
-  title: 'Basic Components/Drawer',
+  title: 'Data Display/Drawer',
   component: Drawer,
   parameters: {
     docs: {
@@ -66,7 +66,7 @@ Default.args = {
   mask: true,
   maskClosable: true,
   onPrev: undefined,
-  onNext: undefined
+  onNext: undefined,
 };
 
 export const ChangeContent: Story<DrawerProps> = (args) => {
@@ -81,8 +81,8 @@ export const ChangeContent: Story<DrawerProps> = (args) => {
       <>
         <Input value={`content${current}`} />
       </>
-    )
-  }
+    ),
+  };
 
   return (
     <>
@@ -118,11 +118,10 @@ ChangeContent.args = {
   maskClosable: true,
 };
 
-
 export const ParentDrawer: Story<DrawerProps> = (args) => {
   const [parentVisible, setParentVisible] = React.useState(false);
   const [childVisible, setChildVisible] = React.useState(false);
-  console.log(args);
+
   return (
     <>
       <div>
@@ -130,12 +129,7 @@ export const ParentDrawer: Story<DrawerProps> = (args) => {
           Open
         </Button>
       </div>
-      <Drawer
-        {...args}
-        title="title"
-        onClose={() => setParentVisible(false)}
-        visible={parentVisible}
-      >
+      <Drawer {...args} title="title" onClose={() => setParentVisible(false)} visible={parentVisible}>
         <Button type="primary" onClick={() => setChildVisible(true)}>
           Open child
         </Button>
@@ -149,13 +143,12 @@ export const ParentDrawer: Story<DrawerProps> = (args) => {
       </Drawer>
     </>
   );
-}
+};
 
 ParentDrawer.args = {
   placement: 'right',
   mask: true,
   maskClosable: true,
   onPrev: undefined,
-  onNext: undefined
+  onNext: undefined,
 };
-
