@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Default, ChangeContent } from '../Drawer.stories';
+import { Default, ChangeContent } from '../demos/Drawer.stories';
 import Drawer, { DrawerProps } from '../index';
-import Button from '../../button';
-import { ConfigContext } from '../../config-provider';
+import Button from '../../components/button';
+import { ConfigContext } from '../../components/config-provider';
 
 const ParentsDrawer: React.FC = (args: DrawerProps) => {
   const [parentVisible, setParentVisible] = React.useState(false);
@@ -107,7 +107,7 @@ describe('Testing drawer', () => {
     render(
       <ConfigContext.Provider
         value={{
-          getPopupContainer: (trigger) => trigger,
+          getPopupContainer: (trigger: any) => trigger,
           getPrefixCls: () => 'gio',
         }}
       >

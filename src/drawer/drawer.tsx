@@ -7,10 +7,10 @@ import { isUndefined, omit } from 'lodash';
 import getScrollBarSize from 'rc-util/lib/getScrollBarSize';
 import { CloseOutlined, LeftOutlined, RightOutlined } from '@gio-design/icons';
 import classNames from 'classnames';
-import Button from '../button';
-import Skeleton from '../skeleton';
-import { ConfigConsumerProps, withConfigConsumer, ConfigConsumer } from '../config-provider';
-import { PushState, IDrawerState, DrawerProps, placementType } from './interfaces'
+import Button from '../components/button';
+import Skeleton from '../components/skeleton';
+import { ConfigConsumerProps, withConfigConsumer, ConfigConsumer } from '../components/config-provider';
+import { PushState, IDrawerState, DrawerProps, placementType } from './interfaces';
 
 const DrawerContext = React.createContext<Drawer | null>(null);
 
@@ -25,7 +25,7 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     keyboard: true,
     push: defaultPushState,
     level: null,
-    loading: false
+    loading: false,
   };
 
   private parentDrawer: Drawer | null;
@@ -158,12 +158,12 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     return (
       <div className={headerClassName} style={headerStyle}>
         {title && <div className={`${prefixCls}-title`}>{title}</div>}
-        { (!(isUndefined(onPrev) && isUndefined(onNext)) || closable) &&
+        {(!(isUndefined(onPrev) && isUndefined(onNext)) || closable) && (
           <div className={`${prefixCls}-header-btns`}>
-            { !(isUndefined(onPrev) && isUndefined(onNext)) && this.renderPrevNext()}
+            {!(isUndefined(onPrev) && isUndefined(onNext)) && this.renderPrevNext()}
             {closable && this.renderCloseIcon()}
           </div>
-        }
+        )}
       </div>
     );
   }
@@ -186,10 +186,10 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     const { onPrev, onNext, prefixCls, prevDisabled, nextDisabled } = this.props;
     return (
       <div className={`${prefixCls}-prev-next`}>
-        { onPrev && <Button icon={<LeftOutlined />} type='secondary' mini onClick={onPrev} disabled={prevDisabled} />}
-        { onNext && <Button icon={<RightOutlined />} type='secondary' mini onClick={onNext} disabled={nextDisabled} />}
+        {onPrev && <Button icon={<LeftOutlined />} type="secondary" mini onClick={onPrev} disabled={prevDisabled} />}
+        {onNext && <Button icon={<RightOutlined />} type="secondary" mini onClick={onNext} disabled={nextDisabled} />}
       </div>
-    )
+    );
   }
 
   private renderCloseIcon() {
@@ -202,14 +202,14 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
           aria-label="Close"
           className={`${prefixCls}-close`}
           mini
-          type='text'
+          type="text"
           style={
             {
               '--scroll-bar': `${getScrollBarSize()}px`,
             } as any
           }
           icon={closeIcon}
-         />
+        />
       )
     );
   }
