@@ -6,7 +6,7 @@ export { default as Button, ButtonProps, ButtonType } from './components/button'
 export { default as Card, CardProps, CardMetaProps } from './components/card';
 export { default as Checkbox, CheckboxGroup, CheckboxProps, CheckboxGroupProps, CheckboxOptionType } from './checkbox';
 export { default as Drawer, DrawerProps } from './components/drawer';
-export { default as Dropdown, DropdownProps } from './components/dropdown';
+export { default as Dropdown, DropdownProps } from './dropdown';
 export { default as Empty, EmptyProps } from './components/empty';
 export { default as Input, InputProps, InputNumberProps, TextAreaProps } from './components/input';
 export { default as Layout, LayoutProps } from './layout';
