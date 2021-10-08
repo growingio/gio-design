@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { HomeFilled, AppsFilled, SettingOutlined, AppOutlined } from '@gio-design/icons';
-import Docs from './Layout.mdx';
-import { LayoutProps } from './interfaces';
-import Layout from './index';
-import Button from '../button';
-import Avatar from '../avatar';
-import Skeleton from '../skeleton';
-import Select from '../select';
-import Menu, { SubMenu, MenuItem, Divider } from '../menu';
-import './style';
-import './style/demo.stories.less';
+import Docs from './LayoutPage';
+import { LayoutProps } from '../interfaces';
+import Layout from '../index';
+import Button from '../../components/button';
+import Avatar from '../../components/avatar';
+import Skeleton from '../../components/skeleton';
+import Select from '../../components/select';
+import Menu, { SubMenu, MenuItem, Divider } from '../../components/menu';
+import '../style';
+import '../style/demo.stories.less';
 
 export default {
-  title: 'Basic Components/Layout',
+  title: 'Global Style/Layout',
   component: Layout,
   parameters: {
     docs: {
@@ -79,7 +79,7 @@ const SuspendDemo = ({ suspend, fixed }: { suspend?: 'left' | 'right'; fixed: bo
     setSelectedKey(e.key);
     setCollapsed(true);
   };
-  
+
   return (
     <Layout style={{ height: 'calc(100vh - 16px)' }} fixed={fixed}>
       <Header />

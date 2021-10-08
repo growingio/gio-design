@@ -3,10 +3,10 @@ import React, { useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { LeftOutlined, RightOutlined } from '@gio-design/icons';
 import { isNil, isString } from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import { LayoutSiderProps } from './interfaces';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { LayoutContext } from './layout';
-import useControlledState from '../../utils/hooks/useControlledState';
+import useControlledState from '../utils/hooks/useControlledState';
 
 const generateId = (() => {
   let i = 0;

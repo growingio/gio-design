@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import classNames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import { LayoutHeaderProps, LayoutHeaderSectionProps, LayoutHeaderDividerProps } from './interfaces';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const Header = ({ prefixCls: customizePrefixCls, className, style, children, justify }: LayoutHeaderProps) => {
   const prefixCls = usePrefixCls('layout-header', customizePrefixCls);
