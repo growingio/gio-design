@@ -38,7 +38,7 @@ export {
   ModalStaticFunc,
 } from './modal';
 export { default as Page, PageProps } from './page';
-export { default as Pagination, PaginationProps } from './components/pagination';
+export { default as Pagination, PaginationProps } from './pagination';
 export { default as Popconfirm, PopconfirmProps } from './popconfirm';
 export { default as Popover, PopoverProps } from './components/popover';
 export { default as Progress, ProgressProps } from './components/progress';
@@ -51,7 +51,7 @@ export {
   SkeletonAvatarProps,
   SkeletonParagraphProps,
 } from './components/skeleton';
-export { default as Table, TableProps } from './components/table';
+export { default as Table, TableProps } from './table';
 export { default as TabNav, TabNavProps } from './tab-nav';
 export { default as SearchBar, SearchBarProps } from './search-bar';
 export { default as Tabs, TabPane, TabProps, TabPaneProps } from './components/tabs';

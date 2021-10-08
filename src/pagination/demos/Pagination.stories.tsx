@@ -1,11 +1,11 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Docs from './Pagination.mdx';
+import Docs from './PaginationPage';
 import Pagination, { PaginationProps } from '../index';
 import '../style';
 
 export default {
-  title: 'Functional Components/Pagination',
+  title: 'Navigation/Pagination',
   component: Pagination,
   parameters: {
     docs: {

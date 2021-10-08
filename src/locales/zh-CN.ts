@@ -10,6 +10,7 @@ import timePickerLocale from '../time-picker/locales/zh-CN';
 import timeSelectorLocale from '../time-selector/locales/zh-CN';
 import searchBarLocale from '../search-bar/locales/zh-CN';
 import cascaderLocale from '../cascader/locales/zh-CN';
+import paginationLocale from '../pagination/locales/zh-CN';
 
 export const locale: Locale = {
   code: 'zh-CN',
@@ -45,6 +46,9 @@ export const locale: Locale = {
   },
   Cascader: {
     ...cascaderLocale,
+  },
+  Pagination: {
+    ...paginationLocale,
   },
 };
 
