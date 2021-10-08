@@ -1,4 +1,4 @@
-import { TooltipProps } from '../tooltip/interface';
+import { TooltipProps } from '../components/tooltip/interface';
 
 export interface PopconfirmProps extends Omit<TooltipProps, 'title' | 'tooltipLink'> {
   /**
@@ -12,11 +12,11 @@ export interface PopconfirmProps extends Omit<TooltipProps, 'title' | 'tooltipLi
   /**
    	点击取消的回调
    */
-  onCancel?: (e:React.MouseEvent<HTMLElement, MouseEvent>)=>void;
+  onCancel?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   /**
    	点击确认的回调
    */
-  onConfirm?: (e:React.MouseEvent<HTMLElement, MouseEvent>)=>void;
+  onConfirm?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   /**
    	确认按钮文字
    */
