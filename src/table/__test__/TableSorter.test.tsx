@@ -1,11 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import { render, screen } from '@testing-library/react';
 import { cloneDeep } from 'lodash';
 import useSorter, { collectSortStates } from '../hook/useSorter';
 import { getNextSortDirection } from '../Title';
-import Table from '../index';
 
 const dataColumns = [
   {
@@ -168,46 +165,5 @@ describe('Testing Table Sorter', () => {
       },
     ]);
     expect(sortStates.length).toEqual(1);
-  });
-
-  it('different sort directions', () => {
-    const dataSource: any[] = [
-      {
-        key: '1',
-        name: '列表文本',
-        age: 13,
-      },
-      {
-        key: '2',
-        name: '列表文本2',
-        age: 324,
-      },
-      {
-        key: '3',
-        name: '列表文本123',
-        age: 43,
-      },
-    ];
-    const sortColumns = [
-      {
-        title: '列标题1',
-        dataIndex: 'name',
-        key: 'name',
-        sorter: (a: any, b: any) => a.name.length - b.name.length,
-        ellipsis: true,
-        width: 200,
-        sortOrder: 'descend',
-      },
-      {
-        title: '列标题2',
-        dataIndex: 'age',
-        key: 'age',
-        sorter: (a: any, b: any) => a.age - b.age,
-        sortOrder: 'ascend',
-      },
-    ];
-    // @ts-ignore
-    render(<Table dataSource={dataSource} columns={sortColumns} />);
-    expect(screen.getAllByText('列表文本', { exact: false })).toHaveLength(3);
   });
 });

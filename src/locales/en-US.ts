@@ -10,6 +10,7 @@ import timePickerLocale from '../time-picker/locales/en-US';
 import timeSelectorLocale from '../time-selector/locales/en-US';
 import searchBarLocale from '../search-bar/locales/en-US';
 import cascaderLocale from '../cascader/locales/en-US';
+import paginationLocale from '../pagination/locales/en-US';
 
 export const locale: Locale = {
   code: 'en-US',
@@ -45,6 +46,9 @@ export const locale: Locale = {
   },
   Cascader: {
     ...cascaderLocale,
+  },
+  Pagination: {
+    ...paginationLocale,
   },
 };
 
