@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Docs from './Popconfirm.mdx';
-import Popconfirm, { PopconfirmProps } from './index';
-import './style';
+import Docs from './PopconfirmPage';
+import Popconfirm, { PopconfirmProps } from '../index';
+import '../style';
 import { Button } from '../..';
-import './style/demo.stories.less';
+import '../style/demo.stories.less';
 
 export default {
-  title: 'Functional Components/Popconfirm',
+  title: 'Feedback/Popconfirm',
   component: Popconfirm,
   parameters: {
     docs: {

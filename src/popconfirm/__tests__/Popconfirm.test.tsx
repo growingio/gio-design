@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Default, Controlled, Placement } from '../Popconfirm.stories';
+import { Default, Controlled, Placement } from '../demos/Popconfirm.stories';
 import Popconfirm from '../index';
 
 describe('Testing popconfirm', () => {
@@ -26,7 +26,7 @@ describe('Testing popconfirm', () => {
 
   it('change ok and cancel text', () => {
     render(
-      <Popconfirm title="我是一个栗子" okText="OK" cancelText="Cancel">
+      <Popconfirm title="我是一个栗子" okText="OK" cancelText="Cancel" subPrefixCls="popconfirm">
         <span>Click Me</span>
       </Popconfirm>
     );
