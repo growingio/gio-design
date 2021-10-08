@@ -1,14 +1,28 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { renderHook, act } from '@testing-library/react-hooks';
+import { Default, Sider } from '../demos/Layout.stories';
 import Layout from '../layout';
 import useSiders from '../useSiders';
 
 describe('Testing Layout', () => {
+  it('render basic layout', () => {
+    const { container } = render(<Default {...Default.args} />);
+    expect(container.getElementsByClassName('gio-layout')).toHaveLength(1);
+  });
+
+  it('layout with sider', () => {
+    const { container } = render(<Sider {...Sider.args} />);
+    expect(container.getElementsByClassName('gio-layout-sider')).toHaveLength(1);
+
+    fireEvent.click(container.getElementsByClassName('gio-layout-sider-bottom-trigger')[0]);
+    expect(screen.getByRole('img', { name: 'left-outlined', hidden: true })).toBeTruthy();
+  });
+
   it('should be stable', () => {
     const { container } = render(
       <Layout>
-        <Layout.Sider defaultCollapsed />
+        <Layout.Sider defaultCollapsed collapsedWidth={60} width={300} />
         <Layout>
           <Layout.Header>
             <Layout.Header.HeaderSection />

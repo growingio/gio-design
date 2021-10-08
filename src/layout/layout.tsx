@@ -1,8 +1,8 @@
 import React, { useLayoutEffect, useRef, createContext, useEffect, useContext } from 'react';
 import classNames from 'classnames';
 import { useWindowSize, useSetState } from 'react-use';
+import { usePrefixCls } from '@gio-design/utils';
 import { LayoutProps, LayoutState, ContentState, LayoutContextType } from './interfaces';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Header from './header';
 import Content from './content';
 import Sider from './sider';
@@ -28,10 +28,10 @@ const Layout = ({ prefixCls: customizePrefixCls, fixed, className, style, childr
   useLayoutEffect(() => {
     const layoutWidth = containerRef.current?.getBoundingClientRect().width ?? 0;
     setLayoutState(() => ({
-        wide:
-          localContentState.maxWidth !== 0 &&
-          layoutWidth > localContentState.maxWidth + 2 * localContentState.margin + sidersWidth,
-      }));
+      wide:
+        localContentState.maxWidth !== 0 &&
+        layoutWidth > localContentState.maxWidth + 2 * localContentState.margin + sidersWidth,
+    }));
   }, [width, setLayoutState, localContentState, siders, sidersWidth]);
 
   useEffect(() => {

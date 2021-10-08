@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import { isNumber, isString } from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import { LayoutContentProps } from './interfaces';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { LayoutContext } from './layout';
 
-const getWidthAndMargin = (maxWidth: number | string , wide: boolean, margin: number): React.CSSProperties => {
-  if(maxWidth === 'auto'){
+const getWidthAndMargin = (maxWidth: number | string, wide: boolean, margin: number): React.CSSProperties => {
+  if (maxWidth === 'auto') {
     // eslint-disable-next-line no-param-reassign
     maxWidth = '100%';
   }
