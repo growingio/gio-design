@@ -45,7 +45,7 @@ export {
 } from './modal';
 export { default as Page, PageProps } from './components/page';
 export { default as Pagination, PaginationProps } from './components/pagination';
-export { default as Popconfirm, PopconfirmProps } from './components/popconfirm';
+export { default as Popconfirm, PopconfirmProps } from './popconfirm';
 export { default as Popover, PopoverProps } from './components/popover';
 export { default as Progress, ProgressProps } from './components/progress';
 export { default as Radio, RadioGroup, RadioProps, RadioGroupProps, RadioGroupOption } from './components/radio';
