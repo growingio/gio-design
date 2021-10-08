@@ -410,4 +410,45 @@ describe('Testing table', () => {
     const { container } = render(<ResizableTable dataSource={[]} />);
     expect(container.getElementsByClassName('gio-table')).toHaveLength(1);
   });
+
+  it('different sort directions', () => {
+    const data: any[] = [
+      {
+        key: '1',
+        name: '列表文本',
+        age: 13,
+      },
+      {
+        key: '2',
+        name: '列表文本2',
+        age: 324,
+      },
+      {
+        key: '3',
+        name: '列表文本123',
+        age: 43,
+      },
+    ];
+    const sortColumns = [
+      {
+        title: '列标题1',
+        dataIndex: 'name',
+        key: 'name',
+        sorter: (a: any, b: any) => a.name.length - b.name.length,
+        ellipsis: true,
+        width: 200,
+        sortOrder: 'descend',
+      },
+      {
+        title: '列标题2',
+        dataIndex: 'age',
+        key: 'age',
+        sorter: (a: any, b: any) => a.age - b.age,
+        sortOrder: 'ascend',
+      },
+    ];
+
+    render(<Table dataSource={data} columns={sortColumns as any} />);
+    expect(screen.getAllByText('列表文本', { exact: false })).toHaveLength(3);
+  });
 });

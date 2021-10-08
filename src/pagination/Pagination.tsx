@@ -1,14 +1,19 @@
 import React, { useMemo, useState, useRef, useCallback } from 'react';
 import classNames from 'classnames';
-import { isFunction, isNumber, isNaN, isUndefined } from 'lodash';
+import { isFunction, isNumber, isNaN as notNumber, isUndefined } from 'lodash';
 import { LeftOutlined, LeftDoubleOutlined, RightOutlined, RightDoubleOutlined, MoreOutlined } from '@gio-design/icons';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import Input from '../input';
-import Select from '../select';
+import { usePrefixCls, useLocale } from '@gio-design/utils';
+import Input from '../components/input';
+import Select from '../components/select';
 import { PaginationProps } from './interface';
 import { generatePageArray } from './until';
+<<<<<<< HEAD:src/components/pagination/Pagination.tsx
 import useControlledState from '../../utils/hooks/useControlledState';
 import Button from '../button';
+=======
+import useControlledState from '../utils/hooks/useControlledState';
+import defaultLocale from './locales/zh-CN';
+>>>>>>> a16e2f722 (feat(pagination): modify pagination component):src/pagination/Pagination.tsx
 
 const Pagination = ({
   prefixCls: customizePrefixCls,
@@ -20,7 +25,7 @@ const Pagination = ({
   className,
   style,
   total = 0,
-  showTotal = (totals: number) => `总共 ${totals.toLocaleString()} 条`,
+  showTotal,
   onChange,
   showQuickJumper = false,
   hideOnSinglePage = false,
@@ -40,6 +45,18 @@ const Pagination = ({
     [shouldShowQuickJumper, showSizeChanger]
   );
   const offset = 5;
+
+  const locale = useLocale('Pagination');
+  const { all, totals, jumpTo, pages }: { [key: string]: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
+
+  const showTotals = useMemo(
+    () => showTotal ?? ((tol: number) => `${all} ${tol.toLocaleString()} ${totals}`),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [showTotal]
+  );
 
   const prevSymbol = useRef<symbol>(Symbol('prev'));
   const nextSymbol = useRef<symbol>(Symbol('next'));
@@ -111,18 +128,18 @@ const Pagination = ({
   );
 
   const totalText = useMemo(() => {
-    if (!isFunction(showTotal)) {
+    if (!isFunction(showTotals)) {
       return null;
     }
     return (
       <li className={`${prefixCls}-total-text`}>
-        {showTotal(total, [
+        {showTotals(total, [
           total === 0 ? 0 : (controlledCurrent - 1) * controlledPageSize + 1,
           controlledCurrent * controlledPageSize > total ? total : controlledCurrent * controlledPageSize,
         ])}
       </li>
     );
-  }, [total, showTotal, controlledCurrent, controlledPageSize, prefixCls]);
+  }, [total, showTotals, controlledCurrent, controlledPageSize, prefixCls]);
 
   const handleSelectPageSize = (selectValue: string): void => {
     let _current = controlledCurrent;
@@ -160,7 +177,7 @@ const Pagination = ({
 
   const handleInputPressEnter = (): void => {
     const transformValue = Number(inputValue);
-    if (!isNaN(transformValue)) {
+    if (!notNumber(transformValue)) {
       if (transformValue >= 1 && transformValue <= pageNumber) {
         setControlledCurrent(transformValue);
         onChange?.(transformValue, controlledPageSize);
@@ -171,7 +188,7 @@ const Pagination = ({
 
   const renderInput = (): React.ReactElement => (
     <div className={`${prefixCls}-options-quick-jumper`}>
-      跳至
+      {jumpTo}
       <Input.InputNumber
         size="small"
         value={inputValue}
@@ -180,7 +197,7 @@ const Pagination = ({
         onPressEnter={handleInputPressEnter}
         style={{ height: '30px' }}
       />
-      页
+      {pages}
     </div>
   );
 

@@ -1,9 +1,11 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, act, waitFor } from '@testing-library/react';
+import { DesignProvider } from '@gio-design/utils';
 import { Default } from '../demos/Pagination.stories';
 import Pagination from '..';
 import { generatePageArray } from '../until';
 import 'raf/polyfill';
+import enUS from '../../locales/en-US';
 
 describe('Testing pagination', () => {
   it('basic pagination', () => {
@@ -111,5 +113,69 @@ describe('Testing pagination', () => {
     fireEvent.click(screen.getByRole('combobox', { hidden: true }));
     fireEvent.click(container.getElementsByClassName('gio-select-list-option')[1]);
     expect(showSizeChangeMock).toBeCalledWith(55, 20);
+  });
+
+  it('disabled pagination', () => {
+    const { container } = render(
+      <Pagination
+        disabled
+        defaultPageSize={20}
+        pageSize={30}
+        current={4}
+        className="gio-test-pagination"
+        style={{ color: 'red' }}
+      />
+    );
+    expect(container.getElementsByClassName('gio-pagination')[0]).toHaveStyle({ color: 'red' });
+  });
+
+  it('without onChange', () => {
+    render(<Pagination total={200} current={2} />);
+    act(() => {
+      fireEvent.click(screen.getByText('4'));
+    });
+    waitFor(() => {
+      expect(screen.getByText('4')).toHaveClass('gio-pagination-item-active');
+    });
+  });
+
+  it('without onShowSizeChange', () => {
+    const { container } = render(<Default {...Default.args} />);
+    act(() => {
+      fireEvent.click(screen.getByText('12'));
+      fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter' });
+      fireEvent.click(screen.getByRole('combobox', { hidden: true }));
+    });
+    act(() => {
+      fireEvent.click(container.getElementsByClassName('gio-select-list-option')[2]);
+    });
+    waitFor(() => {
+      expect(screen.getByText('3')).toHaveClass('gio-pagination-item-active');
+    });
+  });
+
+  it('change pageSize without onChange', () => {
+    const { container } = render(<Default {...Default.args} />);
+    act(() => {
+      fireEvent.click(screen.getByText(5));
+    });
+    act(() => {
+      fireEvent.click(screen.getByRole('combobox', { hidden: true }));
+    });
+    act(() => {
+      fireEvent.click(container.getElementsByClassName('gio-select-list-option')[2]);
+    });
+    waitFor(() => {
+      expect(screen.getByText('3')).toHaveClass('gio-pagination-item-active');
+    });
+  });
+
+  it('multiple language', () => {
+    render(
+      <DesignProvider locale={enUS}>
+        <Default {...Default.args} />
+      </DesignProvider>
+    );
+    expect(screen.getByText('Go To')).toBeTruthy();
   });
 });

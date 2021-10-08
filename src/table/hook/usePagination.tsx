@@ -2,7 +2,7 @@
 import React, { useMemo, useCallback, useEffect } from 'react';
 import { isUndefined } from 'lodash';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import Pagination, { PaginationProps } from '../../components/pagination';
+import { Pagination, PaginationProps } from '../../index';
 import { ColumnType, ColumnsType, PaginationState, OnTriggerStateUpdateProps } from '../interface';
 import useControlledState from '../../utils/hooks/useControlledState';
 
