@@ -1,4 +1,4 @@
-import { TooltipProps } from '../components/tooltip/interface';
+import { TooltipProps } from '../tooltip/interface';
 
 export interface DropdownProps extends Omit<TooltipProps, 'title' | 'tooltipLink' | 'arrowPointAtCenter' | 'overlay'> {
   /**

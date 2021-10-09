@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { MoreOutlined, UserOutlined } from '@gio-design/icons';
 import { isNil, isUndefined } from 'lodash';
-import Tooltip from '../tooltip';
+import Tooltip from '../../tooltip';
 import { AvatarProps } from './interfaces';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import composeRef from '../../utils/composeRef';
@@ -72,11 +72,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
       return <img alt="avatar" src={src} onError={() => setIsImgExist(false)} />;
     }
     if (icon) {
-      return (
-        <span className={`${prefixCls}-default ${prefixCls}-icon`}>
-          {icon}
-        </span>
-      );
+      return <span className={`${prefixCls}-default ${prefixCls}-icon`}>{icon}</span>;
     }
     if (!userName) {
       return (
@@ -108,7 +104,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
   return renderTooltip(
     // For Dropdown trigger will set Event on rest
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <span ref={mergedRef} className={classString} {...rest} style={{backgroundColor}}>
+    <span ref={mergedRef} className={classString} {...rest} style={{ backgroundColor }}>
       {renderMore()}
       {renderAvatar()}
     </span>

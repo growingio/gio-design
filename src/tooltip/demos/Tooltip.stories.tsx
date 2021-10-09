@@ -1,13 +1,13 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import Docs from './Tooltip.mdx';
-import Tooltip, { TooltipProps } from './index';
-import './style';
-import './style/demo.stories.less';
+import Docs from './TooltipPage';
+import Tooltip, { TooltipProps } from '../index';
+import '../style';
+import '../style/demo.stories.less';
 
 export default {
-  title: 'Basic Components/Tooltip',
+  title: 'Data Display/Tooltip',
   component: Tooltip,
   decorators: [withDesign],
   parameters: {
@@ -74,7 +74,7 @@ const Template: Story<TooltipProps> = (args) => (
 );
 export const Default = Template.bind({});
 Default.args = {
-  arrowPointAtCenter:true,
+  arrowPointAtCenter: true,
   title: '这是提示文案。',
 };
 

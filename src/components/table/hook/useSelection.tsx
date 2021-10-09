@@ -3,7 +3,7 @@ import React, { useMemo, useCallback } from 'react';
 import { get, intersection, isUndefined, difference, union, isFunction, isString, compact } from 'lodash';
 import { ColumnsType, RowSelection, ColumnType } from '../interface';
 import Checkbox from '../../../checkbox';
-import Tooltip from '../../tooltip';
+import Tooltip from '../../../tooltip';
 import useControlledState from '../../../utils/hooks/useControlledState';
 
 export const getRowKey = <RecordType,>(row: RecordType, rowKey?: string | ((record: RecordType) => string)): string => {

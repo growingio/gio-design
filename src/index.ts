@@ -58,7 +58,7 @@ export { default as Tabs, TabPane, TabProps, TabPaneProps } from './components/t
 export { default as Tag, TagProps } from './tag';
 export { default as Toast, ToastConfigOptions, ToastType } from './toast';
 export { default as Toggles, TogglesProps } from './components/toggles';
-export { default as Tooltip, TooltipProps, TooltipLink } from './components/tooltip';
+export { default as Tooltip, TooltipProps, TooltipLink } from './tooltip';
 export {
   default as Tree,
   TreeProps,

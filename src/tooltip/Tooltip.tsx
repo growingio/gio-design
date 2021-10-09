@@ -1,11 +1,11 @@
 import React, { useMemo, useEffect } from 'react';
 import RcTooltip from 'rc-tooltip';
 import { isFunction } from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import { TooltipProps } from './interface';
-import Link from '../link';
+import Link from '../components/link';
 import getPlacements from './placements';
-import useControlledState from '../../utils/hooks/useControlledState';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import useControlledState from '../utils/hooks/useControlledState';
 
 const Tooltip = (props: TooltipProps): JSX.Element => {
   const {
@@ -24,8 +24,6 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     destroyTooltipOnHide,
     autoAdjustOverflow = true,
     getContainer,
-    getTooltipContainer,
-    builtinPlacements,
     ...rest
   } = props;
 
@@ -74,7 +72,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
       transitionName="spread-transition"
       arrowContent={<span className={`${prefixCls}-arrow-content`} />}
       overlay={getOverlay()}
-      builtinPlacements={builtinPlacements ?? getPlacements({ arrowPointAtCenter, autoAdjustOverflow })}
+      builtinPlacements={getPlacements({ arrowPointAtCenter, autoAdjustOverflow })}
       visible={controlledVisible && !disabled && !isNoContent}
       onVisibleChange={(_visible) => {
         if (disabled) {
@@ -86,7 +84,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
         }
       }}
       destroyTooltipOnHide={isNoContent || destroyTooltipOnHide}
-      getTooltipContainer={getContainer || getTooltipContainer}
+      getTooltipContainer={getContainer}
       {...rest}
     >
       {setCursor(children)}

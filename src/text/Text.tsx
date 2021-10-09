@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import Truncate from 'react-truncate';
 import { TextProps } from './interface';
-import Tooltip from '../components/tooltip';
+import Tooltip from '../tooltip';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import './style';
 
@@ -35,7 +35,7 @@ const Text: React.FC<TextProps> = (props: TextProps) => {
   };
 
   useEffect(() => {
-    setCurrentWidth((containerRef.current.children[0].offsetWidth) * lines);
+    setCurrentWidth(containerRef.current.children[0].offsetWidth * lines);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

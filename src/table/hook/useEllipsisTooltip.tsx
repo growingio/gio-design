@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { has, get, isNil, isUndefined } from 'lodash';
 import useRefs from '../../utils/hooks/useRefs';
 import { ColumnsType, ColumnGroupType, ColumnType } from '../interface';
-import ToolTip from '../../components/tooltip';
+import ToolTip from '../../tooltip';
 
 const useEllipsisTooltip = <RecordType,>(): [
   (columns: ColumnsType<RecordType>) => (ColumnGroupType<RecordType> | ColumnType<RecordType>)[]
