@@ -5,13 +5,16 @@ import isEmpty from 'lodash/isEmpty';
 import isFunction from 'lodash/isFunction';
 import trim from 'lodash/trim';
 
-import useMergeRef from '../../utils/hooks/useMergeRef';
+import { useLocale } from '@gio-design/utils';
+import useMergeRef from '../utils/hooks/useMergeRef';
 import { dataFilter, makeSearchParttern, mergeKeyMapping, toInt, withPrefix } from './helper';
 import Empty from './empty';
 import MenuItem from './menu-item';
 import { MenuProps, MaybeElementOrFn, NodeData } from './interface';
+import defaultLocale from './locales/zh-CN';
 
-const getMayBeElement = (maybeElement: MaybeElementOrFn, dataSource: NodeData[]) => isFunction(maybeElement) ? maybeElement(dataSource) : maybeElement;
+const getMayBeElement = (maybeElement: MaybeElementOrFn, dataSource: NodeData[]) =>
+  isFunction(maybeElement) ? maybeElement(dataSource) : maybeElement;
 
 const SingleMenu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   const {
@@ -43,6 +46,12 @@ const SingleMenu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   const keyword = trim(originKeyword);
   const wrapRef = useMergeRef(ref);
   const withWrapperCls = withPrefix('cascader-menu');
+
+  const locale = useLocale('Cascader');
+  const { noResult }: { noResult: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
 
   // 超出浏览器高度与上一级对齐
   useEffect(() => {
@@ -83,10 +92,10 @@ const SingleMenu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   let menu;
 
   if (isEmpty(filteredDataSource) && isRootMenu) {
-    menu = getEmpty ? getEmpty(keyword) : <Empty tip={keyword ? '无搜索结果' : undefined} />;
+    menu = getEmpty ? getEmpty(keyword) : <Empty tip={keyword ? noResult : undefined} />;
   } else {
     menu = Object.keys(groupData).map((groupId) => {
-      const mergedGroupName = isFunction(groupName) ? groupName(groupId[0]) : groupData[groupId][0].groupName;
+      const mergedGroupName = isFunction(groupName) ? groupName(groupId[0] as any) : groupData[groupId][0].groupName;
       return (
         <div key={groupId} className={withWrapperCls('group')}>
           {groupName && mergedGroupName && <div className={withWrapperCls('group-name')}>{mergedGroupName}</div>}

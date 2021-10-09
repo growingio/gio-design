@@ -84,7 +84,7 @@ export { default as TimePicker, TimePickerProps } from './components/time-picker
 export { default as Grid, GridProps } from './grid';
 export { default as Row, RowProps } from './row';
 export { default as Col, ColProps } from './col';
-export { default as Cascader, CascaderProps } from './components/cascader';
+export { default as Cascader, CascaderProps } from './cascader';
 export {
   default as DatePicker,
   DateRangePicker,

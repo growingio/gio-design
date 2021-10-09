@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import { MenuItemProps, NodeData, MenuProps } from './interface';
 import { dataKeyMapping, getParentsByValue, mergeKeyMapping, toInt, useDynamicData, useKeyboardNav } from './helper';
 import SingleMenu from './single-menu';
-import useMergeRef from '../../utils/hooks/useMergeRef';
+import useMergeRef from '../utils/hooks/useMergeRef';
 
 export type Props = MenuProps;
 
@@ -25,7 +25,7 @@ const InnerMenu: React.FC<Props> = (props) => {
   } = props;
   const keyMapping = mergeKeyMapping(originKeyMapping);
   const [dataSource, setDataSource] = useDynamicData(originDataSource);
-  const wrapRef = useRef<HTMLDivElement>((null as unknown) as HTMLDivElement);
+  const wrapRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
   const [canOpen, setCanOpen] = useDynamicData(open);
   const [triggerData, setTriggerData] = useState<NodeData>();
   const [offset, setOffset] = useState([0, 0]);

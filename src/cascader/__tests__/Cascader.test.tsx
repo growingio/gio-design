@@ -2,7 +2,7 @@ import { waitFor, render, screen, fireEvent } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import React from 'react';
 import Cascader from '..';
-import { Default, KeyMapping, Group, Trigger, Search, Custom, Async, Tooltip } from '../Cascader.stories';
+import { Default, KeyMapping, Group, Trigger, Search, Custom, Async, Tooltip } from '../demos/Cascader.stories';
 
 const menu = [
   { label: 'a', value: 'a' },

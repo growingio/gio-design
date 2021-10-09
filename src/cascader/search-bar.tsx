@@ -1,9 +1,10 @@
 import { SearchOutlined, CloseOutlined } from '@gio-design/icons';
 import React, { useState } from 'react';
-
-import { SizeType } from '../config-provider/SizeContext';
+import { useLocale } from '@gio-design/utils';
+import { SizeType } from './interface';
 import { useDynamicData } from './helper';
-import Input from '../input';
+import Input from '../components/input';
+import defaultLocale from './locales/zh-CN';
 
 interface Props {
   placeholder?: string;
@@ -17,8 +18,14 @@ interface Props {
 }
 
 const SearchBar = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
+  const locale = useLocale('Cascader');
+  const { searchPlaceholder }: { searchPlaceholder: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
+
   const {
-    placeholder = '搜索',
+    placeholder = searchPlaceholder,
     value: originValue = '',
     onSearch,
     onChange,
