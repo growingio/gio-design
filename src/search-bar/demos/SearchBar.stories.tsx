@@ -1,13 +1,13 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import Docs from './SearchBar.mdx';
-import SearchBar from './index';
-import { SearchBarProps } from './interfaces';
-import './style';
+import Docs from './SearchBarPage';
+import SearchBar from '../index';
+import { SearchBarProps } from '../interfaces';
+import '../style';
 
 export default {
-  title: 'Functional Components/SearchBar',
+  title: 'Data Input/SearchBar',
   component: SearchBar,
   decorators: [withDesign],
   parameters: {

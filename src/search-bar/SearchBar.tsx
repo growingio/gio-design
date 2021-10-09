@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
 import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
-import Input from '../input';
-import Button from '../button';
+import { usePrefixCls, useSize, useLocale } from '@gio-design/utils';
+import { Input, Button } from '../index';
 import { SearchBarProps } from './interfaces';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import { SizeContext } from '../config-provider/SizeContext';
+import defaultLocale from './locales/zh-CN';
 
 export { SearchBarProps } from './interfaces';
 
@@ -45,7 +44,7 @@ const clearStorage = (key: string): string[] => {
 };
 
 const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
-  const sizeContext = useContext(SizeContext);
+  const sizeContext = useSize();
   const prefixCls = usePrefixCls('searchbar');
   const [searchValue, setSearchValue] = useState('');
   const {
@@ -67,6 +66,12 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
 
   const [searchStorage, setSearchStorage] = React.useState(getStorage(storageKey));
   const [showDropdown, setShowDropdown] = React.useState(false);
+
+  const locale = useLocale('SearchBar');
+  const { show, record, clearText }: { show: string; record: string; clearText: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
 
   const handleClearStorage = () => {
     const emptyValue = clearStorage(storageKey);
@@ -121,12 +126,12 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
         {allowClearStorage && (
           <div className={`${prefixCls}-dropdown-clear`}>
             <span className={`${prefixCls}-dropdown-clear-text`}>
-              显示最近
+              {show}
               {storageNum}
-              条搜索记录
+              {record}
             </span>
             <Button type="text" onClick={handleClearStorage}>
-              清除
+              {clearText}
             </Button>
           </div>
         )}

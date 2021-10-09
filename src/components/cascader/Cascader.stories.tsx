@@ -9,11 +9,11 @@ import './style';
 import './style/stories.less';
 import '../input/style';
 import '../dropdown/style';
-import '../search-bar/style';
+import '../../search-bar/style';
 import Docs from './Cascader.mdx';
 
 interface DemoProps extends Props {
-  titleText?:string
+  titleText?: string;
 }
 
 export default {
@@ -61,16 +61,20 @@ const groupDataSource = [
 ];
 const Controlled: Story<DemoProps> = (args) => {
   const { titleText } = args;
-  const [value,setValue] = useState('a');
+  const [value, setValue] = useState('a');
   return (
     <>
       <Title>{`${titleText}-非受控模式`}</Title>
       <Cascader {...args} />
       <Title>{`${titleText}-受控模式`}</Title>
-      <Cascader {...args} value={value} onClick={(e,n) => {
-        console.log('n',n);
-        setValue(n?.value as string)
-      }} />
+      <Cascader
+        {...args}
+        value={value}
+        onClick={(e, n) => {
+          console.log('n', n);
+          setValue(n?.value as string);
+        }}
+      />
     </>
   );
 };
@@ -254,11 +258,11 @@ export const Tooltip = TooltipTemplate.bind({});
 
 Default.args = {
   dataSource: defaultDataSource,
-  titleText:'基础用法',
+  titleText: '基础用法',
 };
 controlled.args = {
   dataSource: defaultDataSource,
-  titleText:'受控与非受控',
+  titleText: '受控与非受控',
 };
 KeyMapping.args = {
   dataSource: keyMappingDataSource,
