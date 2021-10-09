@@ -4,7 +4,7 @@ import { isObject } from 'lodash';
 import Button from '../button';
 import Popover from '../popover';
 import FilterList from './FilterList';
-import SearchBar from '../search-bar';
+import SearchBar from '../../search-bar';
 import { TableContext } from './Table';
 import { filterType } from './interface';
 
@@ -27,7 +27,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
   useEffect(() => {
     setSelectFilterKeys(values);
   }, [values, visible]);
-  
+
   return (
     <Popover
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -36,7 +36,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
       visible={visible}
       onVisibleChange={(_visible: boolean) => {
         setVisible(_visible);
-        if(_visible === false) {
+        if (_visible === false) {
           setSearchValue('');
           setSelectFilterKeys(values);
         }
@@ -53,18 +53,17 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
             onChange={setSelectFilterKeys}
             dataSource={filters
               .filter((item) => {
-                if(isObject(item)) {
+                if (isObject(item)) {
                   return item.label.includes(seachValue);
                 }
                 return item.toString().includes(seachValue);
               })
               .map((item) => {
-                if(isObject(item)) {
-                  return ({ key: item.value, value: item.label });
+                if (isObject(item)) {
+                  return { key: item.value, value: item.label };
                 }
-                return ({ key: item.toString(), value: item.toString() });
-              })
-            }
+                return { key: item.toString(), value: item.toString() };
+              })}
           />
           <div className={`${prefixCls}-filter-popover-footer`}>
             <Button

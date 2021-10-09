@@ -6,7 +6,7 @@ import VirtualList from '../VirtualList';
 import { OptionsListProps, Option } from '../interface';
 import Checkbox from '../../../checkbox';
 import { ForwardRenderGroup, ForwardRenderOption, ForwardRenderTooltip } from './OptionItem';
-import SearchBar from '../../search-bar';
+import SearchBar from '../../../search-bar';
 import Button from '../../button';
 
 const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (props, ref) => {

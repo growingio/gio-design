@@ -4,7 +4,7 @@ import { isObject } from 'lodash';
 import Button from '../components/button';
 import Popover from '../components/popover';
 import FilterList from './FilterList';
-import SearchBar from '../components/search-bar';
+import SearchBar from '../search-bar';
 import { TableContext } from './Table';
 import { filterType } from './interface';
 
