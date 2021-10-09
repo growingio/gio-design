@@ -1,4 +1,4 @@
-import { TooltipProps } from '../components/tooltip/interface';
+import { TooltipProps } from '../tooltip/interface';
 
 export interface PopconfirmProps extends Omit<TooltipProps, 'title' | 'tooltipLink'> {
   /**

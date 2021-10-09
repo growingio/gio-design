@@ -91,7 +91,7 @@ export default function getPlacements(config: PlacementsConfig) {
     },
     leftBottom: {
       points: ['br', 'cl'],
-      offset: [-4, verticalArrowShift + arrowWidth -6],
+      offset: [-4, verticalArrowShift + arrowWidth - 6],
     },
   };
   Object.keys(placementMap).forEach((key) => {
@@ -100,8 +100,8 @@ export default function getPlacements(config: PlacementsConfig) {
       ignoreShake: true,
     };
     placementMap[key] = arrowPointAtCenter
-      ? ({ ...placementMap[key], ...common, targetOffset})
-      : ({ ...placements[key], ...common});
+      ? { ...placementMap[key], ...common, targetOffset }
+      : { ...placements[key], ...common };
   });
   return placementMap;
 }

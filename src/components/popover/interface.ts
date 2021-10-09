@@ -1,4 +1,4 @@
-import { TooltipProps } from '../tooltip/interface';
+import { TooltipProps } from '../../tooltip/interface';
 
 export type ReactRender = () => React.ReactNode;
 export interface PopoverProps extends Omit<TooltipProps, 'title' | 'tooltipLink'> {

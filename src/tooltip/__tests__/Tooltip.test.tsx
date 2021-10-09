@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Default, Link, MultiLine } from '../Tooltip.stories';
+import { Default, Link, MultiLine } from '../demos/Tooltip.stories';
 import Tooltip from '../index';
 import getPlacements, { getOverflowOptions } from '../placements';
 
@@ -11,10 +11,23 @@ describe('Testing tooltip', () => {
     expect(screen.getByText('这是提示文案。')).toBeTruthy();
   });
 
+  it('no title', () => {
+    const props = {
+      title: null,
+    } as any;
+    render(<Default {...props} />);
+    fireEvent.mouseEnter(screen.getByText('Top'));
+  });
+
   it('link tooltip', () => {
-    render(<Link {...Link.args} />);
+    const props = {
+      trigger: 'click',
+      title: '这里是提示文案。',
+      tooltipLink: { link: 'www.growingio.com' },
+      placement: 'right',
+    };
+    render(<Link {...props} />);
     fireEvent.mouseEnter(screen.getByText('Right'));
-    expect(fireEvent.click(screen.getByRole('link'))).toBeTruthy();
   });
 
   it('multiple line tooltip', () => {
@@ -25,7 +38,28 @@ describe('Testing tooltip', () => {
 
   it('click trigger', () => {
     render(
-      <Tooltip trigger="click" title="这里是提示文案。">
+      <Tooltip
+        trigger={['click', 'hover']}
+        overlay={() => console.log('overlay')}
+        title={() => {
+          console.log('title');
+        }}
+      >
+        <span className="tooltipSpan">Right</span>
+      </Tooltip>
+    );
+  });
+
+  it('click trigger', () => {
+    const onVisibleChange = jest.fn();
+    render(
+      <Tooltip
+        trigger="click"
+        title="这里是提示文案。"
+        subPrefixCls="tooltip"
+        autoAdjustOverflow
+        onVisibleChange={onVisibleChange}
+      >
         <span className="tooltipSpan">Right</span>
       </Tooltip>
     );

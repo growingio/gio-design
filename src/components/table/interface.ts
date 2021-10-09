@@ -1,7 +1,7 @@
 import React from 'react';
 import { PaginationProps } from '../pagination/interface';
 import { CheckboxProps } from '../../checkbox/interface';
-import { TooltipProps } from '../tooltip/interface';
+import { TooltipProps } from '../../tooltip/interface';
 import { EmptyProps } from '../empty/interfaces';
 
 export type AlignType = 'left' | 'center' | 'right';

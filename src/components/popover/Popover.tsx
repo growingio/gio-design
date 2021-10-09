@@ -1,6 +1,6 @@
 import React from 'react';
-import Tooltip from '../tooltip';
-import getPlacements from '../tooltip/placements';
+import Tooltip from '../../tooltip';
+import getPlacements from '../../tooltip/placements';
 import { PopoverProps } from './interface';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
