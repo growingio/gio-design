@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import _ from 'lodash';
-import { Grid, Checkbox } from '../..';
-import Cascader from './index';
-import CascaderMenu from './menu';
-import { Props } from './interface';
-import './style';
-import './style/stories.less';
-import '../input/style';
-import '../dropdown/style';
+import { Grid, Checkbox } from '../../index';
+import Cascader from '../index';
+import CascaderMenu from '../menu';
+import { Props } from '../interface';
+import '../style';
+import '../style/stories.less';
+import '../../components/input/style';
+import '../../dropdown/style';
 import '../../search-bar/style';
-import Docs from './Cascader.mdx';
+import Docs from './CascaderPage';
 
 interface DemoProps extends Props {
   titleText?: string;
 }
 
 export default {
-  title: 'Basic Components/Cascader',
+  title: 'Data Input/Cascader',
   component: Cascader,
   parameters: {
     docs: {
@@ -71,7 +71,6 @@ const Controlled: Story<DemoProps> = (args) => {
         {...args}
         value={value}
         onClick={(e, n) => {
-          console.log('n', n);
           setValue(n?.value as string);
         }}
       />
@@ -119,7 +118,7 @@ const SearchTemplate: Story<DemoProps> = (args) => {
         <Grid>
           <Checkbox
             checked={deepSearch}
-            onChange={(e) => {
+            onChange={(e: any) => {
               setDeepSearch(e.target.checked);
             }}
           >
@@ -129,7 +128,7 @@ const SearchTemplate: Story<DemoProps> = (args) => {
         <Grid>
           <Checkbox
             checked={ignoreCase}
-            onChange={(e) => {
+            onChange={(e: any) => {
               setIgnoreCase(e.target.checked);
             }}
           >
@@ -139,7 +138,7 @@ const SearchTemplate: Story<DemoProps> = (args) => {
         <Grid>
           <Checkbox
             checked={lazySearch}
-            onChange={(e) => {
+            onChange={(e: any) => {
               setLazySearch(e.target.checked);
             }}
           >

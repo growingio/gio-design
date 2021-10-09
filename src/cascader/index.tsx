@@ -2,22 +2,29 @@ import { DownFilled } from '@gio-design/icons';
 import React, { useEffect, useRef, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
+import { usePrefixCls, useLocale } from '@gio-design/utils';
 import { Props, CascaderInstance } from './interface';
 import { dataKeyMapping, getTitleBySelected, mergeKeyMapping, useDynamicData, withPrefix } from './helper';
-import Dropdown from '../dropdown';
-import Input from '../input';
+import Dropdown from '../components/dropdown';
+import Input from '../components/input';
 import Menu, { Props as MenuProps } from './menu';
 import SearchBar from './search-bar';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import useControlledState from '../../utils/hooks/useControlledState';
+import useControlledState from '../utils/hooks/useControlledState';
+import defaultLocale from './locales/zh-CN';
 
 export type CascaderProps = Props;
 
 export const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Props>>((props, ref) => {
+  const locale = useLocale('Cascader');
+  const { selectPlaceholder }: { selectPlaceholder: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
+
   const {
     prefixCls,
     className,
-    placeholder = '请选择',
+    placeholder = selectPlaceholder,
     searchPlaceholder,
     input,
     size,
