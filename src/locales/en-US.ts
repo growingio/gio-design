@@ -8,6 +8,7 @@ import listPickerLocale from '../list-picker/locales/en-US';
 import modalLocale from '../modal/locales/en-US';
 import timePickerLocale from '../time-picker/locales/en-US';
 import timeSelectorLocale from '../time-selector/locales/en-US';
+import searchBarLocale from '../search-bar/locales/en-US';
 
 export const locale: Locale = {
   code: 'en-US',
@@ -37,6 +38,9 @@ export const locale: Locale = {
   },
   TimeSelector: {
     ...timeSelectorLocale,
+  },
+  SearchBar: {
+    ...searchBarLocale,
   },
 };
 

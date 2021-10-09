@@ -8,6 +8,7 @@ import listPickerLocale from '../list-picker/locales/zh-CN';
 import modalLocale from '../modal/locales/zh-CN';
 import timePickerLocale from '../time-picker/locales/zh-CN';
 import timeSelectorLocale from '../time-selector/locales/zh-CN';
+import searchBarLocale from '../search-bar/locales/zh-CN';
 
 export const locale: Locale = {
   code: 'zh-CN',
@@ -37,6 +38,9 @@ export const locale: Locale = {
   },
   TimeSelector: {
     ...timeSelectorLocale,
+  },
+  SearchBar: {
+    ...searchBarLocale,
   },
 };
 

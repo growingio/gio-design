@@ -59,7 +59,7 @@ export {
 } from './components/skeleton';
 export { default as Table, TableProps } from './components/table';
 export { default as TabNav, TabNavProps } from './components/tab-nav';
-export { default as SearchBar, SearchBarProps } from './components/search-bar';
+export { default as SearchBar, SearchBarProps } from './search-bar';
 export { default as Tabs, TabPane, TabProps, TabPaneProps } from './components/tabs';
 export { default as Tag, TagProps } from './tag';
 export { default as Toast, ToastConfigOptions, ToastType } from './components/toast';
