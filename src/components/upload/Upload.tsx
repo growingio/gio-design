@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import RcUpload from 'rc-upload';
+import useControlledState from 'rc-util/es/hooks/useMergedState';
 import classnames from 'classnames';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import {
@@ -27,6 +28,7 @@ import {
   fetchImageFileFromUrl,
   updateFileList,
   removeFileItem,
+  getFileItem,
   isOnlyAcceptImg,
 } from './utils';
 import xhrRequest from './xhrRequest';
@@ -44,7 +46,8 @@ const triggerMap: ITriggerMap = {
 
 const Upload: React.FC<IUploadProps> = ({
   file: uploadedFile,
-  defaultFileList = [],
+  fileList,
+  defaultFileList,
   successBorder = false,
   style,
   prefixCls: customPrefixCls,
@@ -59,6 +62,7 @@ const Upload: React.FC<IUploadProps> = ({
   onProgress,
   onError,
   onSuccess,
+  onChange,
   onRemove,
   openFileDialogOnClick = true,
   children,
@@ -73,9 +77,14 @@ const Upload: React.FC<IUploadProps> = ({
   const [file, setFile] = useState<IUploadFile>(getEmptyFileObj(uploadedFile));
   const [showAlert, setAlert] = useState(false);
   // 要上传的文件列表
-  const [uploadFileList, setUploadFileList] = useState<IRcFile[]>(defaultFileList.slice(0, maxCount) as IRcFile[]);
+  const [uploadFileList, setUploadFileList] = useControlledState<IRcFile[]>(
+    (defaultFileList?.slice(0, maxCount) as IRcFile[]) || [],
+    {
+      value: fileList?.slice(0, maxCount) as IRcFile[],
+    }
+  );
   // 已经上传了的文件数量
-  const [finish, setFinish] = useState(Math.min(defaultFileList.length, maxCount));
+  const [finish, setFinish] = useState(Math.min(uploadFileList.length, maxCount));
   // 控制dragTrigger是否disabled
   const [uploadDisabled, setUploadDisabled] = useState(false);
   useEffect(() => {
@@ -83,10 +92,10 @@ const Upload: React.FC<IUploadProps> = ({
   }, [uploadedFile]);
 
   useEffect(() => {
-    if (defaultFileList.length >= maxCount) {
+    if (Number(defaultFileList?.length) >= maxCount || Number(fileList?.length) >= maxCount) {
       setUploadDisabled(true);
     }
-  }, [defaultFileList, maxCount]);
+  }, [defaultFileList, fileList, maxCount]);
 
   const rcUploadRef = useRef(null);
   const prefixCls = usePrefixCls('upload', customPrefixCls);
@@ -100,6 +109,26 @@ const Upload: React.FC<IUploadProps> = ({
   });
   const Trigger = triggerMap[type];
 
+  const onFileChange = (_file: IUploadFile, mergedFileList: IUploadFile[]) => {
+    let cloneList = [...mergedFileList];
+
+    // 选择的文件超出最大上传文件数量限制
+    if (cloneList.length >= maxCount && (directory || multiple)) {
+      setUploadDisabled(true);
+      cloneList.length > maxCount && setAlert(true);
+      cloneList = cloneList.slice(0, maxCount);
+    }
+
+    const finishCount = cloneList.filter(
+      (item: IUploadFile) => item.status === 'success' || item.status === 'error'
+    ).length;
+
+    setFinish(Math.min(finishCount, cloneList.length));
+    setUploadFileList(cloneList as IRcFile[]);
+
+    onChange?.(_file, cloneList);
+  };
+
   const handleSingleBeforeUpload = (fileBeforeUpload: IRcFile, fileListArgs: IRcFile[]) =>
     beforeUpload?.(fileBeforeUpload, fileListArgs);
 
@@ -111,16 +140,7 @@ const Upload: React.FC<IUploadProps> = ({
       return false;
     }
 
-    setUploadFileList(mergeFileList);
-
-    // 选择的文件超出最大上传文件数量限制
-    if (mergeFileList.length >= maxCount) {
-      setUploadDisabled(true);
-      mergeFileList.length > maxCount && setAlert(true);
-      const newFileList = mergeFileList.slice(0, maxCount);
-      setUploadFileList(newFileList);
-      return beforeUpload?.(fileBeforeUpload, newFileList);
-    }
+    onFileChange(fileBeforeUpload, mergeFileList);
 
     return beforeUpload?.(fileBeforeUpload, fileListArgs);
   };
@@ -130,22 +150,37 @@ const Upload: React.FC<IUploadProps> = ({
       ...fileToObject(fileOnStart),
       status: STATUS_UPLOADING,
     };
+
+    const updatedFileList = updateFileList(uploadFile, uploadFileList);
+    onFileChange(uploadFile, updatedFileList);
+
     setFile(uploadFile);
-    onStart?.(uploadFile, uploadFileList);
+    onStart?.(uploadFile, updatedFileList);
   };
 
   const handleProgress = (step: IProgress, fileOnProgress: IRcFile) => {
+    if (!getFileItem(fileOnProgress, uploadFileList) && (directory || multiple)) {
+      return;
+    }
+
     const progressFile: IUploadFile = {
       ...fileToObject(fileOnProgress),
       status: STATUS_UPLOADING,
       percent: step.percent,
     };
 
+    const updatedFileList = updateFileList(progressFile, uploadFileList);
+    onFileChange(progressFile, updatedFileList);
+
     setFile(progressFile);
-    onProgress?.(step, fileOnProgress, uploadFileList);
+    onProgress?.(step, fileOnProgress, updatedFileList as IRcFile[]);
   };
 
   const handleSuccess = async (response: Record<string, unknown>, fileOnSuccess: IRcFile) => {
+    if (!getFileItem(fileOnSuccess, uploadFileList) && (directory || multiple)) {
+      return;
+    }
+
     let dataUrl = '';
     const uploadFile: IUploadFile = {
       ...fileToObject(fileOnSuccess),
@@ -165,13 +200,16 @@ const Upload: React.FC<IUploadProps> = ({
 
     const updatedFileList = updateFileList(uploadFile, uploadFileList);
 
-    onSuccess?.(response, uploadFile, updatedFileList.slice(0, finish + 1));
-    setFinish(finish + 1);
+    onSuccess?.(response, uploadFile, updatedFileList);
     setFile(uploadFile);
-    setUploadFileList(updatedFileList as IRcFile[]);
+    onFileChange(uploadFile, updatedFileList);
   };
 
   const handleError = (error: Error, response: any, fileOnError: IRcFile) => {
+    if (!getFileItem(fileOnError, uploadFileList) && (directory || multiple)) {
+      return;
+    }
+
     const errorFile: IUploadFile = {
       ...fileToObject(fileOnError),
       error,
@@ -181,9 +219,10 @@ const Upload: React.FC<IUploadProps> = ({
     };
 
     const updatedFileList = updateFileList(errorFile, uploadFileList);
-    onError?.(error, errorFile, updatedFileList.slice(0, finish + 1));
-    setUploadFileList(updatedFileList as IRcFile[]);
-    setFinish(finish + 1);
+    onFileChange(errorFile, updatedFileList);
+
+    onError?.(error, errorFile, updatedFileList);
+
     setFile(type !== 'drag' ? getEmptyFileObj(uploadedFile) : errorFile);
   };
 
@@ -198,8 +237,8 @@ const Upload: React.FC<IUploadProps> = ({
 
       removedFileList.length < maxCount && setAlert(false);
       removedFileList.length < maxCount && setUploadDisabled(false);
-      setFinish(removedFileList.length);
-      setUploadFileList(removedFileList as IRcFile[]);
+
+      onFileChange(_file, removedFileList);
 
       if (file.dataUrl === uploadedFile?.dataUrl) {
         setFile({

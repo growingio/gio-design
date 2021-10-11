@@ -3,6 +3,12 @@ import { IRcFile, IUploadFile, STATUS_NOT_YET, STATUS_SUCCESS } from './interfac
 
 export const getUid = (): string => `${defaultRootPrefixCls}-upload-${Date.now()}`;
 
+// 文件是否在fileList中
+export function getFileItem(file: IUploadFile, fileList: IUploadFile[]) {
+  const matchKey = 'uid';
+  return fileList.filter((item) => item[matchKey] === file[matchKey])[0];
+}
+
 // 更新上传文件列表
 export const updateFileList = (file: IUploadFile, fileList: IUploadFile[]) => {
   const currentFileList = [...fileList];

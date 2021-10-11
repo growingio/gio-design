@@ -2,7 +2,7 @@ import React from 'react';
 import { set } from 'lodash';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { fakeXhr } from 'nise';
-import { AreaUpload, DefaultListUpload } from '../Upload.stories';
+import { AreaUpload, ControlledFileList, DefaultListUpload } from '../Upload.stories';
 import { testFile, dataUrl, url as imgUrl } from '../mock';
 import * as utils from '../utils';
 import { sleep } from '../../../utils/test';
@@ -765,5 +765,39 @@ describe('Testing drag upload', () => {
     render(<Upload type="drag" multiple defaultFileList={mockFileList as any} />);
     expect(screen.getByText('one.png')).toBeTruthy();
     expect(screen.queryByText('two.jpg')).toBeNull();
+  });
+
+  it('testing fileList prop', async () => {
+    const list = [
+      {
+        uid: 'u-12138',
+        name: 'xxx.png',
+        type: 'image/png',
+      },
+      {
+        uid: 'u-12139',
+        name: 'yyy.png',
+        type: 'image/png',
+      },
+      {
+        uid: 'u-12140',
+        name: 'zzz.html',
+        type: 'text/html',
+      },
+    ];
+    const { container } = render(<ControlledFileList {...ControlledFileList.args} />);
+    act(() => {
+      fireEvent.change(container.getElementsByTagName('input')[0], { target: { files: list } });
+    });
+
+    await waitFor(() => {
+      expect(screen.queryByText('xxx.png')).toBeNull();
+      expect(screen.getByText('yyy.png')).toBeTruthy();
+    });
+
+    await sleep(50);
+    act(() => {
+      currentRequest.respond(200, {}, uploadedSuccess);
+    });
   });
 });
