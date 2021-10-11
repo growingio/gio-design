@@ -76,6 +76,10 @@ export interface IUploadProps<T = any> {
    */
   file?: IUploadFile<T>;
   /**
+   受控的文件上传列表
+   */
+  fileList?: IUploadFile<T>[];
+  /**
    已经上传的文件列表
    */
   defaultFileList?: IUploadFile<T>[];
@@ -147,6 +151,7 @@ export interface IUploadProps<T = any> {
    接受上传的文件类型，具体查看https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#accept
    */
   accept?: string;
+  onChange?: (file: IUploadFile, fileList: IUploadFile[]) => void;
   /**
    上传开始前 回调
    */

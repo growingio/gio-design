@@ -211,14 +211,50 @@ DefaultListUpload.args = {
       uid: 'u-13432',
       name: 'xxx.pdf',
       status: 'success',
-      url: 'http://www.baidu.com/xxx.png',
+      url: 'https://www.baidu.com/xxx.png',
     },
     {
       uid: 'u-523468',
       name: 'yyy.docx',
       status: 'error',
       errorMessage: '404 Not Found',
-      url: 'http://www.baidu.com/yyy.png',
+      url: 'https://www.baidu.com/yyy.png',
     },
   ],
+};
+
+const ControlledFileListTemplate: Story<IUploadProps> = (args) => {
+  const [files, setFileList] = useState([
+    {
+      uid: '-1',
+      name: 'xxx.png',
+      status: 'success',
+      url: 'https://www.baidu.com/xxx.png',
+    },
+    {
+      uid: '-11',
+      name: 'yyy.png',
+      status: 'success',
+      url: 'https://www.baidu.com/yyy.png',
+    },
+  ]);
+
+  const onChange = (file: IUploadFile, fileList: IUploadFile[]) => {
+    let newList = [...fileList];
+    newList = newList.slice(-2);
+    setFileList(newList as any);
+  };
+
+  return (
+    <div>
+      <Upload style={{ margin: '10px 20px 0px 10px' }} onChange={onChange} fileList={files as any} {...args} />
+    </div>
+  );
+};
+export const ControlledFileList = ControlledFileListTemplate.bind({});
+ControlledFileList.args = {
+  type: 'drag',
+  action: uploadUrl,
+  maxCount: 10,
+  multiple: true,
 };
