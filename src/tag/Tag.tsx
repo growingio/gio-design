@@ -1,8 +1,8 @@
 import React from 'react';
 import { CloseOutlined } from '@gio-design/icons';
 import classnames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import { TagProps } from './interface';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 export const isToggleClose = (closable = false, persistCloseIcon = false): boolean => closable && !persistCloseIcon;
 

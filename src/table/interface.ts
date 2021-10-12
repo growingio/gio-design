@@ -1,5 +1,5 @@
-import React from 'react';
 import { ExpandableConfig } from '@gio-design/table/lib/interface';
+import { TableComponents } from '@gio-design/table/es/interface';
 import { PaginationProps } from '../components/pagination/interface';
 import { CheckboxProps } from '../components/checkbox/interface';
 import { TooltipProps } from '../components/tooltip/interface';
@@ -200,4 +200,8 @@ export interface TableProps<RecordType> {
    * 扩展配置
    */
   expandable?: ExpandableConfig<RecordType>;
+  /**
+   * 自定义渲染table
+   */
+  components?: TableComponents<RecordType>;
 }
