@@ -13,6 +13,7 @@ export { default as Layout, LayoutProps } from './layout';
 export { default as Link, LinkProps } from './link';
 export { default as List, ListProps } from './components/list';
 export { default as ListPicker, ListPickerProps } from './list-picker';
+export { default as ListSelector, ListSelectorProps } from './list-selector';
 export { default as Loading, LoadingProps } from './loading';
 export { default as Menu, MenuProps, SubMenuProps, MenuItemProps, MenuMode, Divider, DividerProps } from './menu';
 export {

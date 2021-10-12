@@ -13,38 +13,45 @@ export type ListPickerLocale = {
   expandText: string;
 };
 
+export interface ValueItemMap {
+  [key: string]: ItemType;
+}
+
 interface ExpandableProps {
   /**
    * 是否可展开，当列表项超过 10 个，收起后续列表项
    */
-  expandable?: boolean;
+  expandable: boolean;
   /**
    * 展开项的文案
    */
-  expandText?: string;
+  expandText: string;
 }
 
 interface ValueableProps {
   /**
    * 默认选择值
    */
-  defaultValue?: string;
-  /**
-   * 选择某一项时的回调
-   */
-  onSelect?: (value: string) => void;
+  defaultValue: string;
   /**
    * 选择值
    */
   value: string;
 }
 
-export interface ListPickerProps extends CommonProps, Pick<ExpandableProps, 'expandable'>, Partial<ValueableProps> {
+export interface ListPickerProps
+  extends CommonProps,
+    Partial<Pick<ExpandableProps, 'expandable'>>,
+    Partial<ValueableProps> {
   children?: React.ReactNode;
   /**
    * 列表项
    */
-  items?: (GroupProps | ItemProps)[];
+  items?: ItemType[];
+  /**
+   * 列表项分组
+   */
+  groups?: GroupType[];
   /**
    * 空状态时显示的图片
    */
@@ -54,68 +61,81 @@ export interface ListPickerProps extends CommonProps, Pick<ExpandableProps, 'exp
    */
   locale?: Partial<ListPickerLocale>;
   /**
+   * 选择某一项时的回调
+   */
+  onSelect?: (value: string, item?: React.ReactNode) => void;
+  /**
    * 列表项的尺寸
    */
   size?: SizeType;
 }
 
-export interface ItemProps extends CommonProps, ExpandableProps, Pick<ValueableProps, 'value'> {
+export interface ItemType extends Pick<ValueableProps, 'value'> {
   children: React.ReactNode;
   /**
-   * 是否被选中
+   * 此项是否禁用
    */
-  selected?: boolean;
-  /**
-   * 鼠标点击时的回调
-   */
-  onClick?: React.MouseEventHandler<HTMLElement>;
-  /**
-   * 鼠标进入元素时的回调
-   */
-  onMouseEnter?: React.MouseEventHandler<HTMLElement>;
-  /**
-   * 鼠标离开元素时的回调
-   */
-  onMouseLeave?: React.MouseEventHandler<HTMLElement>;
+  disabled?: boolean;
 }
 
-export interface GroupProps extends CommonProps, ExpandableProps, Partial<Pick<ValueableProps, 'value' | 'onSelect'>> {
-  children?: React.ReactNode;
+export interface SubgroupType {
   /**
-   * 分组的唯一 key
+   * 当前子分组的列表项
    */
-  key?: string;
+  items: ItemType[];
+  /**
+   * 子分组名称
+   */
+  title?: React.ReactNode;
+}
+
+export interface GroupType {
+  /**
+   * 当前分组的列表项
+   */
+  items?: ItemType[];
+  /**
+   * 子分组
+   */
+  subgroups?: SubgroupType[];
   /**
    * 分组名称
    */
   title?: React.ReactNode;
+}
+
+export interface ItemProps extends CommonProps, ItemType {
   /**
-   * 当前分组的列表项
+   * 是否被选中
    */
-  items?: ItemProps[];
+  selected?: boolean;
+}
+
+export interface GroupProps extends CommonProps, ExpandableProps, GroupType, Partial<Pick<ValueableProps, 'value'>> {
   /**
-   * 当前分组的子分组
+   * 是否为最后一个分组
    */
-  subgroups?: SubgroupProps[];
+  isLast?: boolean;
 }
 
 export interface SubgroupProps
   extends CommonProps,
     ExpandableProps,
-    Partial<Pick<ValueableProps, 'value' | 'onSelect'>> {
-  children?: React.ReactNode;
+    SubgroupType,
+    Partial<Pick<ValueableProps, 'value'>> {
   /**
-   * 子分组的唯一 key
+   * 是否为最后一个子分组
    */
-  key?: string;
-  /**
-   * 子分组名称
-   */
-  title?: React.ReactNode;
-  /**
-   * 当前子分组的列表项
-   */
-  items?: ItemProps[];
+  isLast?: boolean;
+}
+
+export interface ExpandableItemsProps {
+  expandable: boolean;
+  expanded: boolean;
+  expandText: string;
+  onExpand: () => void;
+  items: ItemType[];
+  value?: string;
 }
 
 export interface ExpandItemProps extends CommonProps {

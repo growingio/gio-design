@@ -2,14 +2,9 @@ import React from 'react';
 import { set } from 'lodash';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { fakeXhr } from 'nise';
-<<<<<<< HEAD:src/components/upload/__tests__/Upload.test.tsx
-import { AreaUpload, ControlledFileList, DefaultListUpload } from '../Upload.stories';
-import { testFile, dataUrl, url as imgUrl } from '../mock';
-=======
 import { DesignProvider } from '@gio-design/utils';
-import { AreaUpload, DefaultListUpload } from '../demos/Upload.stories';
+import { AreaUpload, ControlledFileList, DefaultListUpload } from '../demos/Upload.stories';
 import { testFile, dataUrl, url as imgUrl } from './mock';
->>>>>>> 2841d781b (feat(upload): modify upload component):src/upload/__tests__/Upload.test.tsx
 import * as utils from '../utils';
 import enUS from '../../locales/en-US';
 import { sleep } from '../../utils/test';

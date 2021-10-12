@@ -38,11 +38,6 @@ export default function ListPage() {
         <Story id="internal-components-listpicker--size" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'JSX 语法' })}</Subheading>
-      <Canvas>
-        <Story id="internal-components-listpicker--jsx" />
-      </Canvas>
-
       <Subheading>{formatMessage({ defaultMessage: '自动省略' })}</Subheading>
       <Description>
         {formatMessage({

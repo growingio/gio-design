@@ -7,13 +7,9 @@ import Input from '../components/input';
 import Select from '../components/select';
 import { PaginationProps } from './interface';
 import { generatePageArray } from './until';
-<<<<<<< HEAD:src/components/pagination/Pagination.tsx
-import useControlledState from '../../utils/hooks/useControlledState';
 import Button from '../button';
-=======
 import useControlledState from '../utils/hooks/useControlledState';
 import defaultLocale from './locales/zh-CN';
->>>>>>> a16e2f722 (feat(pagination): modify pagination component):src/pagination/Pagination.tsx
 
 const Pagination = ({
   prefixCls: customizePrefixCls,

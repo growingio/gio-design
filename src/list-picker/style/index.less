@@ -42,13 +42,18 @@
     line-height: 22px;
     background-color: @color-background-base;
     border-radius: 4px;
+    cursor: pointer;
 
-    &:hover {
+    :not(&--disabled)&:hover {
       background-color: @color-background-hover;
     }
     &--selected {
       color: @color-font-primary;
       background-color: @color-background-selected;
+    }
+    &--disabled {
+      color: @color-font-disabled;
+      cursor: not-allowed;
     }
   }
 
