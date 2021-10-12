@@ -4,7 +4,7 @@ import { withDesign } from 'storybook-addon-designs';
 import { CalendarOutlined, CloseCircleFilled, DownFilled, UpFilled, FolderOutlined } from '@gio-design/icons';
 import Docs from './Selector.mdx';
 import Button from '../../components/button';
-import Toast from '../../components/toast';
+import Toast from '../../toast';
 import Selector, { SelectorProps } from '../index';
 import InputTrigger from '../InputTrigger';
 import { InputTriggerProps } from '../interfaces';
