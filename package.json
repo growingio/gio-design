@@ -37,7 +37,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@gio-design/table": "7.17.1",
+    "@gio-design/table": "7.18.1",
     "classnames": "^2.2.6",
     "date-fns": "^2.21.3",
     "lodash": "^4.17.14",
