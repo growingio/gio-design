@@ -1,0 +1,37 @@
+@import '../../stylesheet/index.less';
+
+@wrapper-cls: ~'@{component-prefix}-cascader';
+@dropdown-cls: ~'@{component-prefix}-dropdown';
+@input-cls: ~'@{component-prefix}-input';
+
+.@{wrapper-cls} {
+  &-title {
+    display: inline-flex;
+
+    input.@{input-cls}-content {
+      cursor: pointer;
+    }
+
+    .icon-down {
+      svg {
+        color: #5c4e61;
+      }
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &-dropdown {
+    .@{dropdown-cls} {
+      &-content {
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+      &-inner {
+        overflow: visible !important;
+      }
+    }
+  }
+}

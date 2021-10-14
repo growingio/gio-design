@@ -1,8 +1,9 @@
 import { Meta } from '@storybook/react/types-6-0';
-import Docs from './Table.mdx';
+import Docs from './TablePage';
 import Table from '../index';
 import '../style';
 import { Base } from './Base';
+import { CompactTable } from './CompactTable';
 import { TableHeader } from './TableHeader';
 import { MultiLine } from './MultiLine';
 import { TableScroll } from './TableScroll';
@@ -13,6 +14,9 @@ import { ControlledTable } from './TableControlled';
 import { RowExpandTable } from './RowExpandTable';
 import { TreeExpandTable } from './TreeExpandTable';
 import { ExpandWithTable } from './ExpandWithTable';
+import { RowExpandWithFixedColumn } from './RowExpandWithFixedColumn';
+import { ResizableWithTable } from './ResizableTable';
+import { DragColumns } from './DragTable';
 
 export default {
   title: 'Data Display/Table',
@@ -31,6 +35,7 @@ export default {
 
 export {
   Base,
+  CompactTable,
   TableHeader,
   MultiLine,
   TableScroll,
@@ -41,4 +46,7 @@ export {
   RowExpandTable,
   TreeExpandTable,
   ExpandWithTable,
+  RowExpandWithFixedColumn,
+  ResizableWithTable,
+  DragColumns,
 };

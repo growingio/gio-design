@@ -1,9 +1,9 @@
 import React, { useCallback, useRef } from 'react';
 import classnames from 'classnames';
 import { noop } from 'lodash';
-import Checkbox from '../checkbox';
+import Checkbox from '../../checkbox';
 import { OptionProps } from './interface';
-import Tooltip from '../tooltip';
+import Tooltip from '../../tooltip';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import './style/option.less';
 

@@ -10,10 +10,12 @@ import {
   ExpandWithTable,
   RowExpandTable,
   TreeExpandTable,
+  ResizableWithTable,
 } from '../demos/Table.stories';
 import FilterPopover from '../FilterPopover';
 import { translateInnerColumns } from '../utils';
 import Table from '../index';
+import ResizableTable from '../ResizableTable';
 
 const dataSource: any[] = [
   {
@@ -371,5 +373,82 @@ describe('Testing table', () => {
       </FilterPopover>
     );
     expect(screen.getByText('button')).toBeTruthy();
+  });
+
+  it('resize table', async () => {
+    const { container } = render(<ResizableWithTable {...ResizableWithTable.args} />);
+    const resizeHandle = container.getElementsByClassName('gio-table-resizable-handle')[0];
+    act(() => {
+      fireEvent.click(resizeHandle);
+    });
+    act(() => {
+      fireEvent.mouseDown(resizeHandle);
+    });
+    act(() => {
+      fireEvent.mouseMove(resizeHandle, { clientX: 100 });
+    });
+    act(() => {
+      fireEvent.mouseUp(resizeHandle);
+    });
+
+    act(() => {
+      fireEvent.mouseDown(resizeHandle);
+    });
+    act(() => {
+      fireEvent.mouseMove(resizeHandle, { clientX: 500 });
+    });
+    act(() => {
+      fireEvent.mouseUp(resizeHandle);
+    });
+
+    await waitFor(() => {
+      expect(container.getElementsByClassName('gio-table')).toHaveLength(1);
+    });
+  });
+
+  it('render empty resize table', () => {
+    const { container } = render(<ResizableTable dataSource={[]} />);
+    expect(container.getElementsByClassName('gio-table')).toHaveLength(1);
+  });
+
+  it('different sort directions', () => {
+    const data: any[] = [
+      {
+        key: '1',
+        name: '列表文本',
+        age: 13,
+      },
+      {
+        key: '2',
+        name: '列表文本2',
+        age: 324,
+      },
+      {
+        key: '3',
+        name: '列表文本123',
+        age: 43,
+      },
+    ];
+    const sortColumns = [
+      {
+        title: '列标题1',
+        dataIndex: 'name',
+        key: 'name',
+        sorter: (a: any, b: any) => a.name.length - b.name.length,
+        ellipsis: true,
+        width: 200,
+        sortOrder: 'descend',
+      },
+      {
+        title: '列标题2',
+        dataIndex: 'age',
+        key: 'age',
+        sorter: (a: any, b: any) => a.age - b.age,
+        sortOrder: 'ascend',
+      },
+    ];
+
+    render(<Table dataSource={data} columns={sortColumns as any} />);
+    expect(screen.getAllByText('列表文本', { exact: false })).toHaveLength(3);
   });
 });

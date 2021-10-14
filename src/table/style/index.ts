@@ -1,8 +1,8 @@
 import './index.less';
 import '../../components/button/style/index';
-import '../../components/checkbox/style/index';
-import '../../components/pagination/style/index';
-import '../../components/tooltip/style/index';
-import '../../components/popover/style/index';
-import '../../components/search-bar/style/index';
+import '../../checkbox/style/index';
+import '../../pagination/style/index';
+import '../../tooltip/style/index';
+import '../../popover/style/index';
+import '../../search-bar/style/index';
 import '../../components/empty/style/index';
