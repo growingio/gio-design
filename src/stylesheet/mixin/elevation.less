@@ -1,0 +1,4 @@
+@elevations: 0px 3px 8px rgba(36, 46, 89, 0.05), 0px 8px 24px rgba(36, 46, 89, 0.1);
+.elevation(@level: 1) {
+  box-shadow: if(@level > 0 and @level < 3, extract(@elevations, @level), none);
+}
