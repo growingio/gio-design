@@ -4,10 +4,10 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Docs from './PopoverPage';
 import Popover from '../index';
 import { PopoverProps } from '../interface';
-import '../style';
-import '../style/demo.stories.less';
+// import '../style';
+// import '../style/demo.stories.less';
 import { Checkbox, CheckboxGroup } from '../..';
-import Link from '../../link';
+import Link from '../../legacy/link';
 
 export default {
   title: 'Data Display/Popover',
