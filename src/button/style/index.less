@@ -14,15 +14,15 @@
 .@{button-prefix-cls} {
   position: relative;
   display: inline-flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   height: @normal-height;
   padding: 7px 12px;
+  overflow: hidden;
   font-weight: 400;
   font-size: 14px;
   line-height: 20 / 14;
-  overflow: hidden;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -97,8 +97,8 @@
 
   &_small {
     height: @small-height;
-    line-height: 20 / 14;
     padding: 4px 12px;
+    line-height: 20 / 14;
     &.@{button-prefix-cls}_text {
       padding: 4px 8px;
     }
