@@ -144,7 +144,7 @@
     "react-test-renderer": "^17.0.1",
     "storybook-addon-designs": "^6.0.1",
     "stylelint": "^13.6.0",
-    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.3.0",
