@@ -1,51 +1,27 @@
 @import '../../stylesheet/index.less';
+@import '../../stylesheet/mixin/border.less';
+@import '../../stylesheet//mixin/elevation.less';
 
 @button-prefix-cls: ~'@{component-prefix}-button';
 @icon-button-prefix-cls: ~'@{component-prefix}-icon-button';
-
-@gray-0: var(--white, #ffffff);
-@gray-1: var(--gray-1, #f7f8fc);
-@gray-2: var(--gray-2, #dfe4ee);
-@gray-3: var(--gray-3, #adb2c2);
-@gray-5: var(--gray-6, #242e59);
-@blue-2: var(--blue-2, #3867f4);
-@blue-3: var(--blue-3, #1248e9);
 
 @space-2: 8px;
 
 @small-height: 30px;
 @normal-height: 36px;
 
-.border-radius(@radius) {
-  -webkit-border-radius: @radius * 2px;
-  -moz-border-radius: @radius * 2px;
-  border-radius: @radius * 2px;
-}
-
-.border(@radius, @color) {
-  border: 1px solid @color;
-  .border-radius(@radius);
-}
-.border(@radius) {
-  border: none;
-  .border-radius(@radius);
-}
-
-@elevations: 0px 3px 8px rgba(36, 46, 89, 0.05), 0px 8px 24px rgba(36, 46, 89, 0.1);
-.elevation(@level: 1) {
-  box-shadow: if(@level > 0 and @level < 3, extract(@elevations, @level), none);
-}
-
 // ----------------------- Button Style --------------------------- //
 .@{button-prefix-cls} {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   height: @normal-height;
-  padding: 0 12px;
+  padding: 7px 12px;
   font-weight: 400;
   font-size: 14px;
-  line-height: @normal-height - 2px;
+  line-height: 20 / 14;
   overflow: hidden;
   text-align: center;
   vertical-align: middle;
@@ -53,7 +29,7 @@
   .border(2, transparent);
 
   &_primary {
-    color: @gray-0;
+    color: @white;
     background-color: @blue-2;
     .elevation(1);
 
@@ -77,7 +53,7 @@
 
   &_secondary {
     color: @gray-5;
-    background-color: @gray-0;
+    background-color: @white;
     .border(2, @gray-2);
 
     &:enabled:hover {
@@ -87,7 +63,7 @@
 
     &:disabled:not(.@{button-prefix-cls}_loading) {
       color: @gray-3;
-      background-color: @gray-0;
+      background-color: @white;
       cursor: auto;
     }
 
@@ -99,7 +75,7 @@
   }
 
   &_text {
-    padding: 0 8px;
+    padding: 7px 8px;
     color: @gray-5;
     background-color: transparent;
     .border(2, transparent);
@@ -109,7 +85,7 @@
     }
     &:disabled:not(.@{button-prefix-cls}_loading) {
       color: @gray-3;
-      background-color: @gray-0;
+      background-color: @white;
       cursor: auto;
     }
     &.@{button-prefix-cls}_loading {
@@ -121,10 +97,10 @@
 
   &_small {
     height: @small-height;
-    line-height: @small-height - 2px;
-    padding: 0 12px;
+    line-height: 20 / 14;
+    padding: 4px 12px;
     &.@{button-prefix-cls}_text {
-      padding: 0 8px;
+      padding: 4px 8px;
     }
   }
 
@@ -176,10 +152,10 @@
 
 // ----------------------- IconButton Style --------------------------- //
 .@{icon-button-prefix-cls} {
-  padding: 0 10px;
+  padding: 5px 10px;
 
   &.@{button-prefix-cls}_small {
-    padding: 0 7px;
+    padding: 3px 7px;
   }
   & > .@{button-prefix-cls}-prefix-icon,
   & > .@{button-prefix-cls}-suffix-icon {
