@@ -7,7 +7,7 @@ import Input from '../components/input';
 import Select from '../components/select';
 import { PaginationProps } from './interface';
 import { generatePageArray } from './until';
-import Button from '../button';
+import { IconButton } from '../button';
 import useControlledState from '../utils/hooks/useControlledState';
 import defaultLocale from './locales/zh-CN';
 
@@ -211,25 +211,27 @@ const Pagination = ({
       {shouldShowOption && <li className={`${prefixCls}-options`}>{showSizeChanger && renderSelect()}</li>}
       {totalText}
       <li className={`${prefixCls}-arrow-container`} aria-hidden="true">
-        <Button
+        <IconButton
           type="secondary"
           size="small"
           className={`${prefixCls}-prev`}
           onClick={() => prevDisabled || handleClick(controlledCurrent - 1)}
           disabled={prevDisabled}
-          icon={<LeftOutlined size="14px" />}
-        />
+        >
+          <LeftOutlined />
+        </IconButton>
       </li>
       {pagination}
       <li className={`${prefixCls}-arrow-container`} aria-hidden="true">
-        <Button
+        <IconButton
           type="secondary"
           size="small"
           className={classNames(`${prefixCls}-next`)}
           onClick={() => nextDisabled || handleClick(controlledCurrent + 1)}
           disabled={nextDisabled}
-          icon={<RightOutlined size="14px" />}
-        />
+        >
+          <RightOutlined />
+        </IconButton>
       </li>
       {shouldShowOption && <li className={`${prefixCls}-options`}>{shouldShowQuickJumper && renderInput()}</li>}
     </ul>

@@ -7,14 +7,14 @@ describe('Testing popconfirm', () => {
   it('basic popconfirm', () => {
     render(<Default {...Default.args} />);
     fireEvent.click(screen.getByRole('button', { name: /click me/i }));
-    fireEvent.click(screen.getByRole('button', { name: '取 消' }));
+    fireEvent.click(screen.getByRole('button', { name: '取消' }));
     expect(screen.getAllByRole('button')).toHaveLength(3);
   });
 
   it('controlled popconfirm', () => {
     render(<Controlled {...Controlled.args} />);
     fireEvent.click(screen.getByRole('button', { name: /click me/i }));
-    fireEvent.click(screen.getByRole('button', { name: '确 认' }));
+    fireEvent.click(screen.getByRole('button', { name: '确认' }));
     expect(screen.getAllByRole('button')).toHaveLength(3);
   });
 

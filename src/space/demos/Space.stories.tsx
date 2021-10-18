@@ -21,7 +21,7 @@ const Template: Story<SpaceProps> = (args) => (
   <Space {...args}>
     <Button>主要按钮</Button>
     <Button type="secondary">次要按钮</Button>
-    <Button type="secondary" icon={<PlusCircleFilled />}>
+    <Button type="secondary" prefix={<PlusCircleFilled />}>
       次要按钮
     </Button>
   </Space>

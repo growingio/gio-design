@@ -2,7 +2,7 @@ export { default as Alert, AlertProps } from './alert';
 export { default as Avatar, AvatarGroup, AvatarProps } from './avatar';
 export { default as Banner, BannerProps } from './banner';
 export { default as Breadcrumb, BreadcrumbItem, BreadcrumbProps, BreadcrumbItemProps } from './breadcrumb';
-export { default as Button, ButtonProps, ButtonType } from './button';
+export { default as Button, IconButton, ButtonProps, IconButtonProps, ButtonType } from './button';
 export { default as Card, CardProps, CardMetaProps } from './card';
 export { default as Checkbox, CheckboxGroup, CheckboxProps, CheckboxGroupProps, CheckboxOptionType } from './checkbox';
 export { default as Drawer, DrawerProps } from './drawer';
