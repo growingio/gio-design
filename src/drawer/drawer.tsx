@@ -7,7 +7,7 @@ import { isUndefined, omit } from 'lodash';
 import getScrollBarSize from 'rc-util/lib/getScrollBarSize';
 import { CloseOutlined, LeftOutlined, RightOutlined } from '@gio-design/icons';
 import classNames from 'classnames';
-import Button from '../button';
+import { IconButton } from '../button';
 import Skeleton from '../skeleton';
 import { ConfigConsumerProps, withConfigConsumer, ConfigConsumer } from '../components/config-provider';
 import { PushState, IDrawerState, DrawerProps, placementType } from './interfaces';
@@ -186,8 +186,16 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     const { onPrev, onNext, prefixCls, prevDisabled, nextDisabled } = this.props;
     return (
       <div className={`${prefixCls}-prev-next`}>
-        {onPrev && <Button icon={<LeftOutlined />} type="secondary" mini onClick={onPrev} disabled={prevDisabled} />}
-        {onNext && <Button icon={<RightOutlined />} type="secondary" mini onClick={onNext} disabled={nextDisabled} />}
+        {onPrev && (
+          <IconButton type="secondary" size="small" onClick={onPrev} disabled={prevDisabled}>
+            <LeftOutlined />
+          </IconButton>
+        )}
+        {onNext && (
+          <IconButton type="secondary" size="small" onClick={onNext} disabled={nextDisabled}>
+            <RightOutlined />
+          </IconButton>
+        )}
       </div>
     );
   }
@@ -197,19 +205,19 @@ class Drawer extends React.Component<DrawerProps & ConfigConsumerProps, IDrawerS
     return (
       closable && (
         // eslint-disable-next-line react/button-has-type
-        <Button
+        <IconButton
           onClick={onClose}
           aria-label="Close"
           className={`${prefixCls}-close`}
-          mini
           type="text"
           style={
             {
               '--scroll-bar': `${getScrollBarSize()}px`,
             } as any
           }
-          icon={closeIcon}
-        />
+        >
+          {closeIcon}
+        </IconButton>
       )
     );
   }

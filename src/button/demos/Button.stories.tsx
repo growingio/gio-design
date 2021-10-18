@@ -11,7 +11,9 @@ export default {
   component: Button,
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} suffix={<FilterOutlined />} prefix={<PlusCircleFilled />} />;
+const Template: Story<ButtonProps> = (args) => (
+  <Button {...args} suffix={<FilterOutlined />} prefix={<PlusCircleFilled />} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -19,10 +21,10 @@ Default.args = {
 };
 
 const IconButtonTemplate: Story<IconButtonProps> = (args) => (
-    <IconButton {...args}>
-      <DeleteOutlined />
-    </IconButton>
-  );
+  <IconButton {...args}>
+    <DeleteOutlined />
+  </IconButton>
+);
 
 export const IconButtonDemo = IconButtonTemplate.bind({});
 IconButtonDemo.args = {};
