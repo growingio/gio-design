@@ -1,80 +1,16 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { FilterOutlined, PlusCircleFilled } from '@gio-design/icons';
-import Button from '../index';
+import Button from '..';
 
-describe('Testing Card', () => {
-  it('test button children', () => {
-    render(
-      <div>
-        <Button>
-          按钮
-          {123}
-          {null}
-          <span>按钮</span>
-        </Button>
-      </div>
-    );
-    expect(screen).toBeTruthy();
-  });
+describe('Testing Button', () => {
+  test('The size style should be rendered correctly', () => {});
 
-  it('click button', () => {
-    const mockClick = jest.fn();
-    render(
-      <Button onClick={mockClick} loading={false}>
-        点击按钮
-      </Button>
-    );
-    fireEvent.click(screen.getByRole('button'));
-    expect(mockClick).toBeCalledTimes(1);
-  });
+  test('The type style should be rendered correctly', () => {});
 
-  it('not click button', () => {
-    const mockClick = jest.fn();
-    render(
-      <Button onClick={mockClick} loading>
-        点击按钮
-      </Button>
-    );
-    fireEvent.click(screen.getByRole('button'));
-    expect(mockClick).not.toBeCalled();
-  });
+  test('The prefix style should be rendered correctly', () => {});
 
-  it('test two chars', () => {
-    const { rerender } = render(
-      <Button htmlType="submit">
-        <div>
-          <PlusCircleFilled />
-          提交
-        </div>
-      </Button>
-    );
-    rerender(<Button htmlType="submit">提交</Button>);
-    expect(screen.getAllByRole('button')).toHaveLength(1);
-  });
+  test('The suffix style should be rendered correctly', () => {});
 
-  it('no text', () => {
-    const wrapper = render(
-      <div>
-        <Button mini loading={false} icon={<FilterOutlined />} />
-      </div>
-    );
-    expect(wrapper).toBeTruthy();
-  });
-
-  it('test ref', () => {
-    const changeMock = jest.fn();
-    render(<Button ref={changeMock}>按钮</Button>);
-    expect(changeMock).toBeCalled();
-  });
-
-  it('not auto insert space', () => {
-    render(
-      <Button type="secondary" autoInsertSpace={false}>
-        按钮
-      </Button>
-    );
-    fireEvent.click(screen.getByText('按钮'));
-    expect(screen.getByText('按钮')).toBeTruthy();
-  });
+  test('The loading style should be rendered correctly', () => {});
 });

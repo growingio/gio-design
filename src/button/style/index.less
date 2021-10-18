@@ -53,7 +53,7 @@
   text-align: center;
   cursor: pointer;
   .font-body1();
-  .border(2);
+  .border(2, transparent);
 
   &_primary {
     color: @gray-0;
@@ -102,9 +102,10 @@
   }
 
   &_text {
+    padding: 7px 8px;
     color: @gray-5;
     background-color: transparent;
-    border: none;
+    .border(2, transparent);
     &:enabled:hover {
       color: @blue-2;
       background-color: @gray-1;
@@ -153,8 +154,10 @@
   }
 
   .svg() {
-    width: 1em;
-    height: 1em;
+    & svg {
+      width: 1em;
+      height: 1em;
+    }
   }
 
   &-prefix-icon {
