@@ -4,7 +4,7 @@ import { MoreOutlined } from '@gio-design/icons';
 import Docs from './DropdownPage';
 import Dropdown, { DropdownProps } from '../index';
 import '../style';
-import { Button, List } from '../../index';
+import { IconButton, Button, List } from '../../index';
 import ListPro from '../../components/list-pro';
 import { properties } from '../../components/list/__tests__/data';
 
@@ -59,7 +59,9 @@ Default.args = {
 
 const IconTemplate: Story<DropdownProps> = (args) => (
   <Dropdown {...args} placement="bottomLeft">
-    <Button type="text" icon={<MoreOutlined />} style={{ margin: '50px' }} />
+    <IconButton type="text" style={{ margin: '50px' }}>
+      <MoreOutlined />
+    </IconButton>
   </Dropdown>
 );
 export const IconTrigger = IconTemplate.bind({});

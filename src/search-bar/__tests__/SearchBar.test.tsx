@@ -142,11 +142,11 @@ describe('Testing search-bar', () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByRole('button', { name: '清 除' })).toBeTruthy();
+      expect(screen.getByRole('button', { name: '清除' })).toBeTruthy();
     });
 
     act(() => {
-      fireEvent.click(screen.getByRole('button', { name: '清 除' }));
+      fireEvent.click(screen.getByRole('button', { name: '清除' }));
     });
 
     await waitFor(() => {

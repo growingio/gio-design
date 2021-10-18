@@ -4,7 +4,7 @@ import { HomeFilled, AppsFilled, SettingOutlined, AppOutlined } from '@gio-desig
 import Docs from './LayoutPage';
 import { LayoutProps } from '../interfaces';
 import Layout from '../index';
-import Button from '../../button';
+import IconButton from '../../button';
 import Avatar from '../../avatar';
 import Skeleton from '../../skeleton';
 import Select from '../../components/select';
@@ -25,7 +25,9 @@ export default {
 const Header = () => (
   <Layout.Header justify="space-between" style={{ padding: '0 24px', borderBottom: '1px solid rgb(223 228 238)' }}>
     <Layout.Header.HeaderSection justify="space-between">
-      <Button type="text" icon={<HomeFilled size="16px" />} />
+      <IconButton type="text">
+        <HomeFilled size="16px" />
+      </IconButton>
       <img
         src="https://www.growingio.com/vassets/images/home_v3/gio-logo-primary.svg"
         style={{ width: 120, height: 26, marginTop: 7, marginLeft: 8 }}
@@ -44,8 +46,12 @@ const Header = () => (
       />
     </Layout.Header.HeaderSection>
     <Layout.Header.HeaderSection justify="space-between" style={{ width: 136 }}>
-      <Button type="text" icon={<AppsFilled />} />
-      <Button type="text" icon={<SettingOutlined />} />
+      <IconButton type="text">
+        <AppsFilled />
+      </IconButton>
+      <IconButton type="text">
+        <SettingOutlined />
+      </IconButton>
       <Avatar />
     </Layout.Header.HeaderSection>
   </Layout.Header>
