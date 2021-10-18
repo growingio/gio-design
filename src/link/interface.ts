@@ -1,38 +1,24 @@
-/* eslint-disable @typescript-eslint/ban-types */
-import { OverrideProps } from '../utils/interfaces';
 
-export type HtmlElement = keyof React.ReactHTML;
-
-export interface ILinkProps {
+export interface LinkProps extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'prefix' | 'href'> {
   /**
-   * 自定义 Link 根元素使用的组件
+   * 文本前的图标
    */
-  component?: React.ElementType;
-  /**
-   * 跳转目标链接
-   */
-  to?: string;
-  /**
-   * 失效状态
-   */
-  disabled?: boolean;
-  /**
-   * 替代 Link 组件 class 的 gio-link 前缀
-   */
-  prefix?: string;
+  prefix?: React.ReactNode;
 
   /**
-   * ICON
+   * 载入状态
+   * @default false
    */
-  icon?: React.ReactNode;
+  loading?: boolean;
+
+  /**
+   * 禁用状态
+   */
+  disabled?: boolean
+
+  /**
+   * 包含超链接指向的 URL 或 URL 片段。`a` 标签的原生属性
+   */
+  href?: string
 }
 
-export interface LinkTypeMap<P = {}, D extends React.ElementType = 'a'> {
-  props: P & ILinkProps;
-  defaultComponent: D;
-}
-
-export type LinkProps<D extends React.ElementType = LinkTypeMap['defaultComponent'], P = {}> = OverrideProps<
-  LinkTypeMap<P, D>,
-  D
->;

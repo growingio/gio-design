@@ -1,51 +1,37 @@
 @import '../../stylesheet/index.less';
+@import '../../stylesheet/variables/index.less';
 
-@gio-link-prefix: ~'@{component-prefix}-link';
-@gio-link-disabled: ~'@{gio-link-prefix}--disabled';
-@iconfont-css-prefix: ~'@{component-prefix}-icon';
+@link-prefix-cls: ~'@{component-prefix}-link';
 
-// normal
-.@{gio-link-prefix} {
-  display: inline-block;
-  margin-right: 8px;
-  margin-left: 8px;
-  color: @palette-blue-4;
+.@{link-prefix-cls} {
+  box-sizing: border-box;
+  color: @blue-2;
+  font-weight: 400;
   font-size: 14px;
-  line-height: 22px;
+  font-style: normal;
+  line-height: 22 / 14;
   text-decoration: none;
-  vertical-align: middle;
   cursor: pointer;
 
-  &:hover {
-    color: @palette-blue-5;
-    text-decoration: none;
+  &:not([aria-disabled='true']):hover {
+    color: @blue-3;
   }
 
-  &:active {
-    color: @palette-blue-3;
+  &_loading {
+    color: @blue-3;
+    pointer-events: none;
   }
 
-  .@{iconfont-css-prefix} {
-    width: 14px;
-    height: 14px;
-    margin-right: 8px;
-    svg {
-      width: 14px;
-      height: auto;
-    }
+  &[aria-disabled='true']:not(&_loading) {
+    color: @gray-3;
+    pointer-events: none;
   }
-}
 
-// disabled
-.@{gio-link-disabled} {
-  color: @palette-black-3;
-  cursor: not-allowed;
-
-  &.@{gio-link-prefix} {
-    &:hover,
-    &:active {
-      color: @palette-black-3;
-      text-decoration: none;
+  &-prefix-icon {
+    margin-right: @space-2;
+    & svg {
+      width: 1em;
+      height: 1em;
     }
   }
 }
