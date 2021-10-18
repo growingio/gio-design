@@ -10,7 +10,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     size = 'normal',
     loading = false,
     disabled = false,
-    htmlType: htmlTypeProp = 'button',
+    htmlType = 'button',
     prefix,
     suffix,
     className,
@@ -35,16 +35,23 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
 
   const suffixIcon = suffix && <span className={`${prefixCls}-suffix-icon`}>{suffix}</span>;
 
-  const htmlType = ['button', 'submit', 'reset'].includes(htmlTypeProp) ? htmlTypeProp : 'button';
-
   const other: typeof restProps = {
     role: 'button',
     'aria-disabled': disabled,
   };
 
   return (
-    // eslint-disable-next-line react/button-has-type, react/jsx-props-no-spreading
-    <button ref={ref} type={htmlType} className={classes} disabled={disabled || loading} {...other} {...restProps}>
+    <button
+      ref={ref}
+      // eslint-disable-next-line react/button-has-type
+      type={htmlType || 'button'}
+      className={classes}
+      disabled={disabled || loading}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...other}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...restProps}
+    >
       {prefixIcon}
       {children}
       {suffixIcon}

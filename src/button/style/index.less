@@ -36,23 +36,20 @@
   box-shadow: if(@level > 0 and @level < 3, extract(@elevations, @level), none);
 }
 
-.font-body1() {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
-}
-
 // ----------------------- Button Style --------------------------- //
 .@{button-prefix-cls} {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
   height: @normal-height;
-  padding: 7px 12px;
+  padding: 0 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: @normal-height - 2px;
   overflow: hidden;
   text-align: center;
+  vertical-align: middle;
   cursor: pointer;
-  .font-body1();
   .border(2, transparent);
 
   &_primary {
@@ -102,7 +99,7 @@
   }
 
   &_text {
-    padding: 7px 8px;
+    padding: 0 8px;
     color: @gray-5;
     background-color: transparent;
     .border(2, transparent);
@@ -124,7 +121,11 @@
 
   &_small {
     height: @small-height;
-    padding: 4px 12px;
+    line-height: @small-height - 2px;
+    padding: 0 12px;
+    &.@{button-prefix-cls}_text {
+      padding: 0 8px;
+    }
   }
 
   // ripple effect
@@ -175,9 +176,10 @@
 
 // ----------------------- IconButton Style --------------------------- //
 .@{icon-button-prefix-cls} {
-  padding: 8px 10px;
+  padding: 0 10px;
+
   &.@{button-prefix-cls}_small {
-    padding: 5px 7px;
+    padding: 0 7px;
   }
   & > .@{button-prefix-cls}-prefix-icon,
   & > .@{button-prefix-cls}-suffix-icon {
