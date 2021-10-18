@@ -1,53 +1,48 @@
-import { SizeType } from '@gio-design/utils';
+import React from "react";
 
-export type ButtonType = 'primary' | 'secondary' | 'text';
-export type ButtonHTMLType = 'submit' | 'button' | 'reset';
+export type ButtonType = 'primary' | 'secondary' | 'text'
 
-export interface BaseButtonProps {
+export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'prefix' | 'type' | 'disabled'> {
   /**
-   设置按钮类型，可选值为 `primary` `secondary` `link` `text` 或者不设
+   * 按钮类型
+   * @default 'primary'
    */
-  type?: ButtonType;
+  type?: ButtonType
+
   /**
-   设置按钮的图标组件
+   * 按钮大小
+   * @default 'normal'
+   * @TODO 使用全局的 SizeType
    */
-  icon?: React.ReactNode;
+  size?: 'small' | 'normal'
+
   /**
-   设置按钮大小
+   * 按钮文本前的内容
    */
-  size?: SizeType;
+  prefix?: React.ReactNode
+
   /**
-   设置按钮载入状态
+   * 按钮文本后的内容
    */
-  loading?: boolean;
+  suffix?: React.ReactNode
+
   /**
-   only icon 的 mini 大小的按钮，其他类型按钮不适应
+   * 按钮的载入状态，如果为 `true`，则 `disabled` 也默认为 `true`
+   * @default false
    */
-  mini?: boolean;
+  loading?: boolean
+
   /**
-   自定义class前缀
+   * `button` 原生的 `type` 值
+   * @default `button`
    */
-  prefixCls?: string;
+  htmlType?: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
+
   /**
-   自定义className
+   * 按钮的失效状态
+   * @default false
    */
-  className?: string;
-  /**
-   将按钮宽度调整为其父宽度的选项
-   */
-  block?: boolean;
-  /**
-   按钮内容元素
-   */
-  children?: React.ReactNode;
-  /**
-    是否自动在两个字符中间插入空格符
-   */
-  autoInsertSpace?: boolean;
+  disabled?: boolean
 }
 
-export type ButtonProps = {
-  htmlType?: ButtonHTMLType;
-  onClick?: React.MouseEventHandler<HTMLElement>;
-} & BaseButtonProps &
-  Omit<React.ButtonHTMLAttributes<any>, 'type' | 'onClick'>;
+export type IconButtonProps = Omit<ButtonProps, 'prefix' | 'suffix'>
