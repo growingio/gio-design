@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Default, IconTrigger } from '../demos/Dropdown.stories';
 import Dropdown from '../index';
-import Button from '../../components/button';
+import Button from '../../legacy/button';
 
 describe('Testing dropdown', () => {
   it('default dropdown', () => {

@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { useLocale, usePrefixCls } from '@gio-design/utils';
 import RcDialog from 'rc-dialog';
 import { CloseOutlined } from '@gio-design/icons';
-import { ButtonProps } from '../components/button';
+import { ButtonProps } from '../legacy/button';
 import { IModalProps, ModalLocale } from './interface';
 import ModalPrefixClsContext from './ModalContext';
 import Title from './Title';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Button from '../../components/button';
+import Button from '../../legacy/button';
 import Input from '../../components/input';
 import { DrawerProps } from '../interfaces';
 import Drawer from '..';

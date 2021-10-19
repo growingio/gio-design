@@ -4,7 +4,7 @@ import { useLocale, usePrefixCls } from '@gio-design/utils';
 import NoDataImage from './NoDataImage';
 import NoResultImage from './NoResultImage';
 import { EmptyProps } from './interfaces';
-import Button from '../components/button';
+import Button from '../legacy/button';
 import defaultLocale from './locales/zh-CN';
 
 const Empty: React.FC<EmptyProps> & { NO_DATA_IMAGE: React.ReactNode; NO_RESULT_IMAGE: React.ReactNode } = ({

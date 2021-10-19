@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { UploadOutlined } from '@gio-design/icons';
 import { useSize, useLocale } from '@gio-design/utils';
-import Button from '../../components/button';
+import Button from '../../legacy/button';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import Preview from '../Preview';
 import { UploadPrefixClsContext } from '../Upload';

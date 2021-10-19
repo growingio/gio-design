@@ -7,7 +7,7 @@ import { OptionsListProps, Option } from '../interface';
 import Checkbox from '../../../checkbox';
 import { ForwardRenderGroup, ForwardRenderOption, ForwardRenderTooltip } from './OptionItem';
 import SearchBar from '../../../search-bar';
-import Button from '../../button';
+import Button from '../../../legacy/button';
 
 const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (props, ref) => {
   const {

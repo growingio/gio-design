@@ -5,7 +5,7 @@ import RcRangeCalendar from 'rc-calendar/lib/RangeCalendar';
 import classNames from 'classnames';
 import { Moment } from 'moment';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import Button from '../button';
+import Button from '../../legacy/button';
 import Input from '../input';
 import useDateRangePicker from './hook/useDateRangePicker';
 import { DateRangePickerProps } from './interface';

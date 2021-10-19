@@ -4,7 +4,7 @@ import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import NoDataImage from './NoDataImage';
 import NoResultImage from './NoResultImage';
 import { EmptyProps } from './interfaces';
-import Button from '../button';
+import Button from '../../legacy/button';
 
 const Empty: React.FC<EmptyProps> & { NO_DATA_IMAGE: React.FC; NO_RESULT_IMAGE: React.ReactNode } = ({
   className,

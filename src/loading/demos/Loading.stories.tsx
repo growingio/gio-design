@@ -4,7 +4,7 @@ import { withDesign } from 'storybook-addon-designs';
 import { LoadingOutlined } from '@gio-design/icons';
 import Docs from './LoadingPage';
 import Loading from '../index';
-import Button from '../../components/button';
+import Button from '../../legacy/button';
 import Tabs, { TabPane } from '../../components/tabs';
 import { LoadingProps } from '../interface';
 import '../style';

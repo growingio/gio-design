@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import Modal from './Modal';
 import { ICalloutModalProps } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
-import Button from '../components/button';
+import Button from '../legacy/button';
 
 const CalloutModal: React.FC<ICalloutModalProps> = ({
   visible,
