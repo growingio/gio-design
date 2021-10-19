@@ -17,8 +17,8 @@ import {
 ### 使用了 useControll 的组件 Counter
 
 ```javascript
-export const Counter = ({ value, onChange, defaultValue }) => {
-  const [state, setState] = useControlledState(value, onChange, defaultValue);
+export const Counter = ({ value, onChange, defaultValue }: IProps) => {
+  const [state, setState] = useControlledState(value, defaultValue, onChange);
   return (
     <>
       <button type="button" onClick={() => setState(state - 1)}>
