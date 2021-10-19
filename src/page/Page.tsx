@@ -5,7 +5,7 @@ import { PageProps } from './interfaces';
 import ForbiddenSVG from './ForbiddenSVG';
 import NotFoundSVG from './NotFoundSVG';
 import InternalServerErrorSVG from './InternalServerErrorSVG';
-import Button from '../components/button';
+import Button from '../legacy/button';
 
 const statusCodeMap = {
   403: ForbiddenSVG,

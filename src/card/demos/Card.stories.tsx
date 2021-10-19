@@ -8,7 +8,7 @@ import '../style';
 import Avatar from '../../avatar';
 import Card from '../index';
 import Table from '../../table';
-import Button from '../../components/button';
+import Button from '../../legacy/button';
 
 export default {
   title: 'Data Display/Card',

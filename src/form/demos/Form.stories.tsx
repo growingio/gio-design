@@ -6,7 +6,7 @@ import Docs from './FormPage';
 import { Props, FormItemProps } from '../interface';
 import '../style';
 import '../../components/input/style';
-import '../../components/button/style';
+import '../../legacy/button/style';
 import '../style/demo.stories.less';
 import { Button, Input, Modal } from '../../index';
 

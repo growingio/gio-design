@@ -5,7 +5,7 @@ import RcDatePicker from 'rc-calendar/lib/Picker';
 import classNames from 'classnames';
 import moment, { Moment } from 'moment';
 import Input from '../input';
-import Button from '../button';
+import Button from '../../legacy/button';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import useDatePicker from './hook/useDatePicker';
 import { DatePickerProps } from './interface';

@@ -2,7 +2,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { isObject } from 'lodash';
 import { useLocale } from '@gio-design/utils';
-import Button from '../components/button';
+import Button from '../legacy/button';
 import Popover from '../popover';
 import FilterList from './FilterList';
 import SearchBar from '../search-bar';

@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode, CSSProperties } from 'react';
-import { ButtonProps } from '../components/button';
+import { ButtonProps } from '../legacy/button';
 
 export type IStringOrHtmlElement = string | HTMLElement;
 
@@ -75,7 +75,7 @@ export interface IModalProps extends ITitleProps, Omit<IFooterProps, 'useOk' | '
    */
   wrapProps?: Record<string, unknown>;
   /**
-   	`Modal` 层级
+      `Modal` 层级
    */
   zIndex?: number;
   /**

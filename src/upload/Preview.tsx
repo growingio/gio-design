@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { CheckCircleFilled, CloseCircleFilled } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
-import Button from '../components/button';
+import Button from '../legacy/button';
 import Text from '../text';
 import { STATUS_SUCCESS, STATUS_ERROR, IPreviewProps, IUploadFile } from './interface';
 import { UploadPrefixClsContext } from './Upload';
