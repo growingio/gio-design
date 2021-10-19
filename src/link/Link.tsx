@@ -22,8 +22,7 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
   );
 
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <a className={classes} ref={ref} aria-disabled={disabled || loading} {...restProps}>
+    <a className={classes} ref={ref} aria-disabled={disabled || loading} data-testid="link" {...restProps}>
       {prefixIcon}
       {children}
     </a>
