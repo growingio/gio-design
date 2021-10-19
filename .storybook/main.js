@@ -28,7 +28,11 @@ module.exports = {
   features: {
     postcss: false,
   },
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: [
+    // exclude `components` and `legacy` directories
+    '../src/{,!(components|legacy)/**/}*.stories.mdx',
+    '../src/{,!(components|legacy)/**/}*.stories.@(js|jsx|ts|tsx)',
+  ],
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.less$/,
