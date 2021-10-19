@@ -20,6 +20,11 @@ export default {
       page: Docs,
     },
   },
+  argTypes: {
+    separator: {
+      control: { type: 'text' } 
+    }
+  },
 } as Meta;
 
 const Template: Story<BreadcrumbProps> = (args) => <Breadcrumb {...args} />;
