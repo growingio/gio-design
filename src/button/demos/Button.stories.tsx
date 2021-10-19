@@ -11,9 +11,7 @@ export default {
   component: Button,
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => (
-  <Button {...args} suffix={<FilterOutlined />} prefix={<PlusCircleFilled />} />
-);
+const Template: Story<ButtonProps> = (args) => <Button>Button</Button>;
 
 export const Default = Template.bind({});
 Default.args = {

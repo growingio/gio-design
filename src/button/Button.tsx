@@ -37,11 +37,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
 
   const disabled = disabledProp || loading;
 
-  const other: typeof restProps = {
-    role: 'button',
-    'aria-disabled': disabled,
-  };
-
   return (
     <button
       ref={ref}
@@ -50,7 +45,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       className={classes}
       disabled={disabled}
       data-testid="button"
-      {...other}
       {...restProps}
     >
       {prefixIcon}
