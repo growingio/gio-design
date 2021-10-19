@@ -25,7 +25,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': [1],
     '@typescript-eslint/no-unused-vars': 'error',
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
-    'react/jsx-props-no-spreading': ['error', { html: 'enforce', custom: 'ignore', explicitSpread: 'ignore' }],
+    'react/jsx-props-no-spreading': 'off',
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/extensions': ['off', 'never'],

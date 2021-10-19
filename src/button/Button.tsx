@@ -44,13 +44,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     <button
       ref={ref}
       // eslint-disable-next-line react/button-has-type
-      type={htmlType || 'button'}
+      type={htmlType}
       className={classes}
       disabled={disabled || loading}
       data-testid="button"
-      // eslint-disable-next-line react/jsx-props-no-spreading
       {...other}
-      // eslint-disable-next-line react/jsx-props-no-spreading
       {...restProps}
     >
       {prefixIcon}
