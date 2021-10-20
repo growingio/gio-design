@@ -1,34 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
-import { isUndefined } from 'lodash';
-import usePrevious from '../utils/hooks/usePrevious';
-import filterChildren from '../utils/filterChildren';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import usePrevious from '../../utils/hooks/usePrevious';
+import filterChildren from '../../utils/filterChildren';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Radio from './Radio';
-import RadioGroupContext from './context';
-import { IRadioGroupProps, RadioValueType } from './interface';
-import WithRef from '../utils/withRef';
+import { RadioGroupProvider } from './context';
+import { IRadioGroupProps, IRadioChangeEvent } from './interface';
 
-const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, IRadioGroupProps> = (props: IRadioGroupProps, ref) => {
-  const { className, style, layout = 'horizontal', disabled, defaultValue, value, onChange, children, options } = props;
+const Group: React.FC<IRadioGroupProps> = (props: IRadioGroupProps) => {
+  const {
+    className,
+    style,
+    name,
+    direction = 'horizontal',
+    disabled,
+    defaultValue,
+    value,
+    onChange,
+    children,
+    options,
+  } = props;
+  /**
+   * 首次渲染完成前 defaultValue 会默认覆盖 value
+   */
+  let initValue;
+  if (value !== undefined) {
+    initValue = value;
+  } else if (defaultValue !== undefined) {
+    initValue = defaultValue;
+  }
 
   const prefixCls = usePrefixCls('radio');
-  const [selectedValue, setSelectedValue] = useState(() => (!isUndefined(value) ? value : defaultValue));
+  const [selectedValue, setSelectedValue] = useState(initValue);
   const prevSelectedValue = usePrevious(value);
 
   /**
    * （包括初次渲染）render 阶段结束后会检查 props.value 与 prevValue 的差异，并进行真实值的覆盖
    */
   useEffect(() => {
-    if (!isUndefined(value) || value !== prevSelectedValue) {
+    if (value !== undefined || value !== prevSelectedValue) {
       setSelectedValue(value);
     }
   }, [value, prevSelectedValue]);
 
+  const handleChange = (e: IRadioChangeEvent) => {
+    if (!Reflect.has(props, 'value')) {
+      setSelectedValue(e.target.value);
+    }
+
+    if (!!onChange && e.target.value !== prevSelectedValue) {
+      onChange(e);
+    }
+  };
+
   const getChildrenRadios = () =>
     filterChildren(children, (child) => {
       if (React.isValidElement(child)) {
-        if (typeof child.type !== 'object' || (child.type as typeof Radio).displayName !== 'Radio') {
+        if (typeof child.type !== 'object' || (child.type as typeof Radio).componentType !== 'GIO_RADIO') {
           console.error(
             'Warning: Children wrapped by RadioGroup component should be a Radio. Please check the Radio Component in your RadioGroup.'
           );
@@ -45,7 +73,7 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, IRadioGroupProp
       return false;
     });
 
-  const renderRadio = () => {
+  const radioRender = () => {
     let renderedChildren: React.ReactNodeArray = [];
     if (options && options.length > 0) {
       renderedChildren = options
@@ -79,34 +107,24 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, IRadioGroupProp
     return renderedChildren;
   };
 
-  const wrapperCls = classnames(className, `${prefixCls}__group`, `${prefixCls}__group__${layout}`, {
-    [`${prefixCls}__group__disabled`]: disabled,
+  const wrapperCls = classnames(className, `${prefixCls}__group`, `${prefixCls}__group--${direction}`, {
+    [`${prefixCls}__group--disabled`]: disabled,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!props.value) {
-      setSelectedValue(e.target.value);
-    }
-    if (onChange && e.target.value !== prevSelectedValue) {
-      onChange(e);
-    }
-  };
-
   return (
-    <div style={style} className={wrapperCls} ref={ref}>
-      <RadioGroupContext.Provider
+    <div style={style} className={wrapperCls}>
+      <RadioGroupProvider
         value={{
           disabled,
-          value: selectedValue as RadioValueType,
+          name,
+          value: selectedValue,
           onChange: handleChange,
         }}
       >
-        {renderRadio()}
-      </RadioGroupContext.Provider>
+        {radioRender()}
+      </RadioGroupProvider>
     </div>
   );
 };
 
-const RadioGroup = WithRef<HTMLDivElement, IRadioGroupProps>(InnerGroup);
-
-export default RadioGroup;
+export default Group;
