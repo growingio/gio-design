@@ -1,115 +1,113 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import classNames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
 import Checkbox from './Checkbox';
+import WithRef from '../utils/withRef';
 import CheckboxGroupContext from './CheckboxGroupContext';
 import { CheckboxOptionType, CheckboxValueType, CheckboxGroupProps } from './interface';
 
-function merge<T>(selected: T[], option: CheckboxOptionType<T>, registeredValues: T[]): T[] {
-  const optionIndex = selected.indexOf(option.value);
-  const newSelected = [...selected].filter((val) => registeredValues.indexOf(val) !== -1);
-  if (optionIndex === -1) {
-    newSelected.push(option.value);
-  } else {
-    newSelected.splice(optionIndex, 1);
-  }
-  return newSelected;
-}
+const InternalCheckboxGroup: React.ForwardRefRenderFunction<HTMLDivElement, CheckboxGroupProps<CheckboxValueType>> = (
+  props,
+  ref
+) => {
+  const {
+    options = [],
+    prefixCls: customizePrefixCls,
+    defaultValue,
+    onChange,
+    disabled = false,
+    name,
+    layout = 'horizontal',
+    children,
+    ...restProps
+  } = props;
 
-const emptyValue: any[] = [];
+  const [value, setValue] = React.useState<CheckboxValueType[]>(restProps.value || defaultValue || []);
+  const [registeredValues, setRegisteredValues] = React.useState<CheckboxValueType[]>([]);
 
-export function CheckboxGroup<T extends CheckboxValueType>({
-  options = [],
-  prefixCls: customizePrefixCls,
-  defaultValue,
-  value,
-  onChange,
-  disabled = false,
-  name,
-  direction = 'horizontal',
-  children,
-}: CheckboxGroupProps<T>) {
-  const registeredValuesRef = React.useRef<T[]>([]);
+  React.useEffect(() => {
+    if ('value' in restProps) {
+      setValue(restProps.value || []);
+    }
+  }, [restProps, restProps.value]);
 
-  const registerValue = React.useCallback((values: T) => {
-    registeredValuesRef.current.push(values);
-  }, []);
-
-  const unRegisterValue = React.useCallback((values: T) => {
-    registeredValuesRef.current = registeredValuesRef.current.filter((_) => _ !== values);
-  }, []);
-
-  // self maintained state
-  const [selected, updateSelected] = React.useState<T[]>(() => defaultValue || emptyValue);
-
-  const refValue = React.useRef(value);
-
-  // update outside maintained state
-  if (refValue.current !== value && value) {
-    refValue.current = value;
-  }
-
-  const toggleOption = React.useCallback(
-    (option: CheckboxOptionType<T>) => {
-      if (value === undefined) {
-        // self maintained state
-        updateSelected((selecting) => {
-          const newSelected = merge(selecting, option, registeredValuesRef.current);
-          onChange?.(newSelected);
-          return newSelected;
-        });
-      } else {
-        const newSelected = merge(refValue.current || emptyValue, option, registeredValuesRef.current);
-        onChange?.(newSelected);
+  const getOptions = () =>
+    options.map((option) => {
+      if (typeof option === 'string') {
+        return {
+          label: option,
+          value: option,
+        };
       }
-    },
-    [onChange]
-  );
+      return option;
+    });
+
+  const unRegisterValue = (val: string) => {
+    setRegisteredValues((prevValues) => prevValues.filter((v) => v !== val));
+  };
+
+  const registerValue = (val: string) => {
+    setRegisteredValues((prevValues) => [...prevValues, val]);
+  };
+
+  const toggleOption = (option: CheckboxOptionType<CheckboxValueType>) => {
+    const optionIndex = value.indexOf(option.value);
+    const newValue = [...value];
+    if (optionIndex === -1) {
+      newValue.push(option.value);
+    } else {
+      newValue.splice(optionIndex, 1);
+    }
+    if (!('value' in restProps)) {
+      setValue(newValue);
+    }
+    const opts = getOptions();
+    onChange?.(
+      newValue
+        .filter((val) => registeredValues.indexOf(val) !== -1)
+        .sort((a, b) => {
+          const indexA = opts.findIndex((opt) => opt.value === a);
+          const indexB = opts.findIndex((opt) => opt.value === b);
+          return indexA - indexB;
+        })
+    );
+  };
 
   const prefixCls = usePrefixCls('checkbox', customizePrefixCls);
-  const selectedValues = refValue.current || selected;
   let customChildren = children;
-  if (options.length > 0) {
-    customChildren = options
-      .map((option) => {
-        if (typeof option === 'string') {
-          return {
-            label: option,
-            value: option,
-          };
-        }
-        return option;
-      })
-      .map((option) => (
-        <Checkbox
-          prefixCls={customizePrefixCls}
-          key={option.value.toString()}
-          disabled={'disabled' in option ? option.disabled : disabled}
-          value={option.value}
-          checked={selectedValues.indexOf(option.value) !== -1}
-          onChange={option.onChange}
-        >
-          {option.label}
-        </Checkbox>
-      ));
+
+  if (options && options.length > 0) {
+    customChildren = getOptions().map((option) => (
+      <Checkbox
+        onChange={option.onChange}
+        key={option.value.toString()}
+        disabled={'disabled' in option ? option.disabled : disabled}
+        value={option.value}
+        checked={value.indexOf(option.value) !== -1}
+      >
+        {option.label}
+      </Checkbox>
+    ));
   }
 
-  const cls = classNames(`${prefixCls}-group`, `${prefixCls}-group--${direction}`);
+  const cls = classNames(`${prefixCls}-group`, `${prefixCls}-group__${layout}`);
+
+  const context = {
+    toggleOption,
+    selectedValues: value,
+    disabled,
+    name,
+    registerValue,
+    unRegisterValue,
+  };
 
   return (
-    <CheckboxGroupContext.Provider
-      value={{
-        toggleOption,
-        selectedValues,
-        name,
-        registerValue,
-        unRegisterValue,
-      }}
-    >
-      <div className={cls}>{customChildren}</div>
-    </CheckboxGroupContext.Provider>
+    <div ref={ref} className={cls}>
+      <CheckboxGroupContext.Provider value={context}>{customChildren}</CheckboxGroupContext.Provider>
+    </div>
   );
-}
+};
 
-export default CheckboxGroup;
+const CheckboxGroup = WithRef<HTMLDivElement, CheckboxGroupProps<CheckboxValueType>>(InternalCheckboxGroup);
+
+export default React.memo(CheckboxGroup);

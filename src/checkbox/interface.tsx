@@ -1,5 +1,48 @@
-export type CheckboxValueType = string | number | boolean;
+export type CheckboxValueType = string | number;
 
+export interface CheckboxProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix' | 'type' | 'disabled'> {
+  /**
+     是否为不定状态
+     */
+  indeterminate?: boolean;
+  /**
+     自定义 `CSS` 类前缀
+     */
+  prefixCls?: string;
+  /**
+     自定义 className
+     */
+  className?: string;
+  /**
+     初始是否选中
+     */
+  defaultChecked?: boolean;
+  /**
+     指定当前是否选中
+     */
+  checked?: boolean;
+  /**
+     当前选中值
+     */
+  value?: CheckboxValueType;
+  /**
+     是否禁止
+     */
+  disabled?: boolean;
+  /**
+     变化时的回调函数
+     */
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  /**
+     选择框填充后的背景色
+     */
+  color?: string;
+  /**
+     自定义的`CSS`样式
+     */
+  style?: React.CSSProperties;
+}
 export interface CheckboxOptionType<T> {
   label: React.ReactNode;
   value: T;
@@ -37,68 +80,15 @@ export interface CheckboxGroupProps<T extends CheckboxValueType> {
    */
   style?: React.CSSProperties;
   /**
-   排列的方向
-   */
-  direction?: 'horizontal' | 'vertical';
-  /**
-   子元素
-   */
-  children?: React.ReactNode | React.ReactNode[];
-  /**
-   自定义 `CSS` 类前缀
-   */
-  prefixCls?: string;
-}
-
-export interface CheckboxProps {
-  /**
-   是否部分选中
-   */
-  indeterminate?: boolean;
-  /**
    自定义 `CSS` 类前缀
    */
   prefixCls?: string;
   /**
-   自定义 className
+   自定义子节点
    */
-  className?: string;
-  /**
-   初始是否选中
-   */
-  defaultChecked?: boolean;
-  /**
-   指定当前是否选中
-   */
-  checked?: boolean;
-  /**
-   是否禁止
-   */
-  disabled?: boolean;
-  /**
-   变化时的回调函数
-   */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  /**
-   点击时的回调函数
-   */
-  onClick?: React.MouseEventHandler<HTMLElement>;
-  /**
-   指定的选中项
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  value?: any;
   children?: React.ReactNode;
   /**
-   input[type="checkbox"] 的 id 属性
+   checkbox 排列方向
    */
-  id?: string;
-  /**
-   input[type="checkbox"] 的 name 属性
-   */
-  name?: string;
-  /**
-   自定义的`CSS`样式
-   */
-  style?: React.CSSProperties;
+  layout?: 'horizontal' | 'vertical';
 }
