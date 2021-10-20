@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useControlledState from '../../hooks/useControlled';
+import useControlledState from '../../hooks/useControlledState';
 import Docs from './useControl.mdx';
 
 interface IProps {
@@ -9,7 +9,7 @@ interface IProps {
 }
 
 export const Counter = ({ value, onChange, defaultValue }: IProps) => {
-  const [state, setState] = useControlledState(value, onChange, defaultValue);
+  const [state, setState] = useControlledState(value, defaultValue, onChange);
   return (
     <>
       <button type="button" onClick={() => setState(state - 1)}>
