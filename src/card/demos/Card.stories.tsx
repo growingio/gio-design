@@ -11,7 +11,7 @@ import Table from '../../table';
 import Button from '../../legacy/button';
 
 export default {
-  title: 'Data Display/Card',
+  title: 'Components/Card',
   component: Card,
   decorators: [withDesign],
   parameters: {

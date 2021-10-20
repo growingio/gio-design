@@ -7,7 +7,7 @@ import './style';
 import Docs from './DatePicker.mdx';
 
 export default {
-  title: 'Functional Components/DatePicker',
+  title: 'Components/DatePicker',
   component: DatePicker,
   subcomponents: { DateRangePicker },
   decorators: [withDesign],

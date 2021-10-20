@@ -27,7 +27,7 @@ export default function EmptyPage() {
         {formatMessage({ defaultMessage: '3、一般用于导航上，用于标示功能的版本信息。字体12px-Medium，高度20px。' })}
       </p>
       <Canvas>
-        <Story id="data-display-tag--default" />
+        <Story id="components-tag--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '已选内容以标签的方式展现 样式' })}</Subheading>
@@ -49,7 +49,7 @@ export default function EmptyPage() {
         })}
       </p>
       <Canvas>
-        <Story id="data-display-tag--closable" />
+        <Story id="components-tag--closable" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

@@ -28,7 +28,7 @@ export default function UploadPage() {
         })}
       </p>
       <Canvas>
-        <Story id="data-input-upload--default" />
+        <Story id="components-upload--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'URL 上传' })}</Subheading>
@@ -38,7 +38,7 @@ export default function UploadPage() {
         {formatMessage({ defaultMessage: '2. 若上传失败，使用 input 的错误提示方式，说明上传失败的原因。' })}
       </p>
       <Canvas>
-        <Story id="data-input-upload--url-upload" />
+        <Story id="components-upload--url-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'logo 上传' })}</Subheading>
@@ -48,7 +48,7 @@ export default function UploadPage() {
         {formatMessage({ defaultMessage: '2. 图片上传中套用 Loading 组件。' })}
       </p>
       <Canvas>
-        <Story id="data-input-upload--card-upload" />
+        <Story id="components-upload--card-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '头像上传' })}</Subheading>
@@ -58,7 +58,7 @@ export default function UploadPage() {
         {formatMessage({ defaultMessage: '2. 图片上传中套用 Loading 组件。' })}
       </p>
       <Canvas>
-        <Story id="data-input-upload--avatar-upload" />
+        <Story id="components-upload--avatar-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '上传区域' })}</Subheading>
@@ -85,13 +85,13 @@ export default function UploadPage() {
         {formatMessage({ defaultMessage: '6. 批量上传时可设置是否显示上传文件列表，并可设置最大上传数量限制。' })}
       </p>
       <Canvas>
-        <Story id="data-input-upload--area-upload" />
+        <Story id="components-upload--area-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '受控文件' })}</Subheading>
       <p>{formatMessage({ defaultMessage: '受控的上传文件。' })}</p>
       <Canvas>
-        <Story id="data-input-upload--controlled-file" />
+        <Story id="components-upload--controlled-file" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自定义上传错误信息' })}</Subheading>
@@ -101,12 +101,12 @@ export default function UploadPage() {
         })}
       </p>
       <Canvas>
-        <Story id="data-input-upload--custom-error-message-upload" />
+        <Story id="components-upload--custom-error-message-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '默认上传文件列表' })}</Subheading>
       <Canvas>
-        <Story id="data-input-upload--default-list-upload" />
+        <Story id="components-upload--default-list-upload" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

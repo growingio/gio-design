@@ -13,17 +13,17 @@ export default function LayoutPage() {
 
       <Subheading>{formatMessage({ defaultMessage: '无侧导航页面' })}</Subheading>
       <Canvas>
-        <Story id="global-style-layout--default" />
+        <Story id="components-layout--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '嵌入式展开侧导航' })}</Subheading>
       <Canvas>
-        <Story id="global-style-layout--sider" />
+        <Story id="components-layout--sider" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '悬浮式展开侧导航' })}</Subheading>
       <Canvas>
-        <Story id="global-style-layout--suspend" />
+        <Story id="components-layout--suspend" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

@@ -17,22 +17,22 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-toggles--default" />
+        <Story id="components-toggles--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '禁用' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-toggles--disabled" />
+        <Story id="components-toggles--disabled" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '文字' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-toggles--suffix-content" />
+        <Story id="components-toggles--suffix-content" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自定义背景色' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-toggles--custom-color" />
+        <Story id="components-toggles--custom-color" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

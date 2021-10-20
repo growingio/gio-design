@@ -16,7 +16,7 @@ export default function EmptyPage() {
         {formatMessage({ defaultMessage: '用户在某一具体模块下，未创建任何内容时，可使用此类型空态。' })}
       </p>
       <Canvas>
-        <Story id="data-display-empty--no-data" />
+        <Story id="components-empty--no-data" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '无结果' })}</Subheading>
@@ -24,13 +24,13 @@ export default function EmptyPage() {
         {formatMessage({ defaultMessage: '用户通过筛选、搜索等操作，未找到合适的结果时，可使用此类型空态。' })}
       </p>
       <Canvas>
-        <Story id="data-display-empty--no-result" />
+        <Story id="components-empty--no-result" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自定义' })}</Subheading>
       <p className="">{formatMessage({ defaultMessage: '自定义图片、描述和 Call to Action。' })}</p>
       <Canvas>
-        <Story id="data-display-empty--customize" />
+        <Story id="components-empty--customize" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

@@ -6,7 +6,7 @@ import SkeletonImage from '../Image';
 import '../style';
 
 export default {
-  title: 'Feedback/Skeleton',
+  title: 'Components/Skeleton',
   component: Skeleton,
   subcomponents: { SkeletonImage },
   parameters: {

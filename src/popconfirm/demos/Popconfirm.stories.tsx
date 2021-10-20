@@ -7,7 +7,7 @@ import { Button } from '../..';
 import '../style/demo.stories.less';
 
 export default {
-  title: 'Feedback/Popconfirm',
+  title: 'Components/Popconfirm',
   component: Popconfirm,
   parameters: {
     docs: {

@@ -34,7 +34,7 @@ export default function GridPage() {
 
       <Subheading>{formatMessage({ defaultMessage: '完整栅格示例' })}</Subheading>
       <Canvas>
-        <Story id="global-style-grid--default" />
+        <Story id="components-grid--default" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

@@ -12,7 +12,7 @@ import { InputTriggerProps } from '../interfaces';
 import '../style';
 
 export default {
-  title: 'Selectors/Selector',
+  title: 'Components/Selector',
   component: Selector,
   subcomponents: { InputTrigger },
   decorators: [withDesign],

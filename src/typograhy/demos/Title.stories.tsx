@@ -15,7 +15,7 @@ export const Default = () => (
   </>
 );
 export default {
-  title: 'Typography/Title',
+  title: 'Components/Title',
   component: Title,
   parameters: {
     docs: {

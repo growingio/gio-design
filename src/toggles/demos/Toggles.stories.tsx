@@ -7,7 +7,7 @@ import { TogglesProps } from '../interface';
 import '../style';
 
 export default {
-  title: 'Basic Components/Toggles',
+  title: 'Components/Toggles',
   component: Toggles,
   decorators: [withDesign],
   parameters: {

@@ -13,7 +13,7 @@ import Tabs, { TabPane, TabProps } from '../index';
 import '../style';
 
 export default {
-  title: 'Data Display/Tabs',
+  title: 'Components/Tabs',
   component: Tabs,
   subcomponents: { TabPane },
   parameters: {

@@ -8,7 +8,7 @@ import '../style/demo.stories.less';
 import image from '../../assets/images/Avatar.png';
 
 export default {
-  title: 'Data Display/Avatar',
+  title: 'Components/Avatar',
   component: Avatar,
   parameters: {
     docs: {

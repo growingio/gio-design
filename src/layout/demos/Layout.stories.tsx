@@ -13,7 +13,7 @@ import '../style';
 import '../style/demo.stories.less';
 
 export default {
-  title: 'Global Style/Layout',
+  title: 'Components/Layout',
   component: Layout,
   parameters: {
     docs: {

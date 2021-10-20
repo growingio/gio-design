@@ -13,7 +13,7 @@ export default function TextPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: 'Title 标题' })}</Subheading>
       <Canvas>
-        <Story id="typography-title--h-1" />
+        <Story id="components-title--h-1" />
       </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={title} />

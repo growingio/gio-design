@@ -17,12 +17,12 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '默认-数字标记' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-sign--default" />
+        <Story id="components-sign--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '状态标记' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-sign--dot-sign" />
+        <Story id="components-sign--dot-sign" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

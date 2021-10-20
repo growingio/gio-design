@@ -17,7 +17,7 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="layout-space--default" />
+        <Story id="components-space--default" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

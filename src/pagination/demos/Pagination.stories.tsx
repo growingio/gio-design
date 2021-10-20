@@ -5,7 +5,7 @@ import Pagination, { PaginationProps } from '../index';
 import '../style';
 
 export default {
-  title: 'Navigation/Pagination',
+  title: 'Components/Pagination',
   component: Pagination,
   parameters: {
     docs: {

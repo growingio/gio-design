@@ -9,7 +9,7 @@ import ListPro from '../../components/list-pro';
 import { properties } from '../../components/list/__tests__/data';
 
 export default {
-  title: 'Navigation/Dropdown',
+  title: 'Components/Dropdown',
   component: Dropdown,
   parameters: {
     docs: {

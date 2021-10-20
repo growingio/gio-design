@@ -8,7 +8,7 @@ import DashboardImage from './DashboardImage';
 import '../style';
 
 export default {
-  title: 'Data Display/Empty',
+  title: 'Components/Empty',
   component: Empty,
   parameters: {
     docs: {

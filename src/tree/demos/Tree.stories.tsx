@@ -7,7 +7,7 @@ import Docs from './TreePage';
 import '../style';
 
 export default {
-  title: 'Data Display/Tree',
+  title: 'Components/Tree',
   component: Tree,
   decorators: [withDesign],
   parameters: {

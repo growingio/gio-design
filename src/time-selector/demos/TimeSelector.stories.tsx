@@ -7,7 +7,7 @@ import Docs from './TimeSelector.mdx';
 import '../style';
 
 export default {
-  title: 'Selectors/TimeSelector',
+  title: 'Components/TimeSelector',
   component: TimeSelector,
   parameters: {
     design: {

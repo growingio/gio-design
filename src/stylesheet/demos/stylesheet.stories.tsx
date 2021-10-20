@@ -31,7 +31,7 @@ export const Demo = () => (
 );
 
 export default {
-  title: 'stylesheet/less-variables',
+  title: 'UI Colors',
   component: Demo,
   decorators: [withDesign],
   parameters: {

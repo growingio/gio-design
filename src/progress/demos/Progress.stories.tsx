@@ -7,7 +7,7 @@ import Progress from '../index';
 import '../style';
 
 export default {
-  title: 'Feedback/Progress',
+  title: 'Components/Progress',
   component: Progress,
   decorators: [withDesign],
   argTypes: {

@@ -100,6 +100,5 @@ Loading.args = {
 export const IconLink = LinkTemplate.bind({});
 IconLink.args = {
   href: '',
-  loading: true,
   prefix: <PlusOutlined />,
 };

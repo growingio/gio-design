@@ -7,7 +7,7 @@ import Page, { PageProps } from '../index';
 import '../style';
 
 export default {
-  title: 'Functional Components/Page',
+  title: 'Components/Page',
   component: Page,
   parameters: {
     docs: {

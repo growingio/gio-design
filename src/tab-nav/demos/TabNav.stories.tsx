@@ -7,7 +7,7 @@ import '../style';
 import '../style/demo.stories.less';
 
 export default {
-  title: 'Basic Components/TabNav',
+  title: 'Components/TabNav',
   component: TabNav,
   parameters: {
     docs: {

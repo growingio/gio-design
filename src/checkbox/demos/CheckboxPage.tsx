@@ -23,12 +23,12 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="data-entry-checkbox--default" />
+        <Story id="components-checkbox--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '分组' })}</Subheading>
       <Canvas>
-        <Story id="data-entry-checkbox--group" />
+        <Story id="components-checkbox--group" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

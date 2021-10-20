@@ -17,12 +17,12 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="data-entry-treeselect--default" />
+        <Story id="components-treeselect--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '多选' })}</Subheading>
       <Canvas>
-        <Story id="data-entry-treeselect--multiple" />
+        <Story id="components-treeselect--multiple" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

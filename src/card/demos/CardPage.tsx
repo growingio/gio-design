@@ -22,13 +22,13 @@ export default function CardPage() {
         })}
       </p>
       <Canvas>
-        <Story id="data-display-card--default" />
+        <Story id="components-card--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '禁用' })}</Subheading>
       <p>{formatMessage({ defaultMessage: '当卡片被禁用时，卡片不可被点击。' })}</p>
       <Canvas>
-        <Story id="data-display-card--disabled" />
+        <Story id="components-card--disabled" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '多内容结构' })}</Subheading>
@@ -38,7 +38,7 @@ export default function CardPage() {
         })}
       </p>
       <Canvas>
-        <Story id="data-display-card--multiple" />
+        <Story id="components-card--multiple" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '有底脚的卡片' })}</Subheading>
@@ -51,7 +51,7 @@ export default function CardPage() {
         })}
       </p>
       <Canvas>
-        <Story id="data-display-card--footer" />
+        <Story id="components-card--footer" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

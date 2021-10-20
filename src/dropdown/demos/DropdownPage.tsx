@@ -13,12 +13,12 @@ export default function DropdownPage() {
 
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="navigation-dropdown--default" />
+        <Story id="components-dropdown--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'Icon' })}</Subheading>
       <Canvas>
-        <Story id="navigation-dropdown--icon-trigger" />
+        <Story id="components-dropdown--icon-trigger" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

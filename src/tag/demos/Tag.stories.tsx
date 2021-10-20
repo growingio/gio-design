@@ -7,7 +7,7 @@ import '../style';
 import '../style/demo.stories.less';
 
 export default {
-  title: 'Data Display/Tag',
+  title: 'Components/Tag',
   component: Tag,
   parameters: {
     docs: {

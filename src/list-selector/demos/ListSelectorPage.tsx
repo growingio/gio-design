@@ -19,17 +19,17 @@ export default function ListSelectorPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="data-entry-listselector--basic" />
+        <Story id="components-listselector--basic" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '分组' })}</Subheading>
       <Canvas>
-        <Story id="data-entry-listselector--group" />
+        <Story id="components-listselector--group" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '空样式' })}</Subheading>
       <Canvas>
-        <Story id="data-entry-listselector--empty" />
+        <Story id="components-listselector--empty" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

@@ -18,12 +18,12 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '块状标签导航' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-tabnav--block" />
+        <Story id="components-tabnav--block" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '线状标签导航' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-tabnav--line" />
+        <Story id="components-tabnav--line" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

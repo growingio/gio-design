@@ -8,7 +8,7 @@ import { ILinkProps } from '../interface';
 // import '../style';
 
 export default {
-  title: 'Basic Components/Link',
+  title: 'Legacy/Link',
   component: Link,
   decorators: [withDesign],
   parameters: {
