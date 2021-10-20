@@ -4,7 +4,7 @@ import Docs from './Text.mdx';
 import Text, { TextProps } from './index';
 
 export default {
-  title: 'Basic Components/Text',
+  title: 'Components/Text',
   component: Text,
   parameters: {
     docs: {

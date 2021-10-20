@@ -20,7 +20,7 @@ export default function ListPage() {
         {formatMessage({ defaultMessage: '一共四种尺寸：L（40px）、M（36px）、S（30px）、XS（24px）。' })}
       </Subheading>
       <Canvas>
-        <Story id="data-display-tabs--block" />
+        <Story id="components-tabs--block" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '线状标签导航' })}</Heading>
@@ -29,7 +29,7 @@ export default function ListPage() {
       </Subheading>
       <Subheading>{formatMessage({ defaultMessage: '一共三种尺寸：L（40px）、M（36px）、S（30px）。' })}</Subheading>
       <Canvas>
-        <Story id="data-display-tabs--icon" />
+        <Story id="components-tabs--icon" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

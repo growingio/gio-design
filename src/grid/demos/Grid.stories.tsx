@@ -8,7 +8,7 @@ import '../../col/style';
 import '../style/demo.stories.less';
 
 export default {
-  title: 'Global Style/Grid',
+  title: 'Components/Grid',
   component: Row,
 } as Meta;
 

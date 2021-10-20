@@ -7,7 +7,7 @@ import { properties } from './__tests__/data';
 import './style';
 
 export default {
-  title: 'Functional Components/List',
+  title: 'Components/List',
   component: List,
   subcomponents: {
     Divider: List.Divider,

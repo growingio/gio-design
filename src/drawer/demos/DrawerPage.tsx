@@ -31,17 +31,17 @@ export default function DrawerPage() {
 
       <Subheading>{formatMessage({ defaultMessage: '默认样式' })}</Subheading>
       <Canvas>
-        <Story id="data-display-drawer--default" />
+        <Story id="components-drawer--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '可编辑和多步骤' })}</Subheading>
       <Canvas>
-        <Story id="data-display-drawer--change-content" />
+        <Story id="components-drawer--change-content" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '多层嵌套' })}</Subheading>
       <Canvas>
-        <Story id="data-display-drawer--parent-drawer" />
+        <Story id="components-drawer--parent-drawer" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

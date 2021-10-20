@@ -22,7 +22,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="basic-components-link--default" />
+        <Story id="legacy-link--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '禁用' })}</Subheading>
@@ -32,7 +32,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="basic-components-link--disabled" />
+        <Story id="legacy-link--disabled" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自定义组件' })}</Subheading>
@@ -42,7 +42,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="basic-components-link--custom-component" />
+        <Story id="legacy-link--custom-component" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

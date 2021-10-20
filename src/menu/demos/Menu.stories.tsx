@@ -8,7 +8,7 @@ import '../style';
 import '../style/demo.stories.less';
 
 export default {
-  title: 'Navigation/Menu',
+  title: 'Components/Menu',
   component: Menu,
   subcomponents: { MenuItem, SubMenu },
   parameters: {

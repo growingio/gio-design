@@ -17,12 +17,12 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '垂直模式' })}</Subheading>
       <Canvas>
-        <Story id="navigation-menu--vertical" />
+        <Story id="components-menu--vertical" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '水平模式' })}</Subheading>
       <Canvas>
-        <Story id="navigation-menu--horizontal" />
+        <Story id="components-menu--horizontal" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

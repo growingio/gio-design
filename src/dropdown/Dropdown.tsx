@@ -5,7 +5,7 @@ import Tooltip from '../tooltip';
 import { DropdownProps } from './interface';
 import useControlledState from '../utils/hooks/useControlledState';
 
-const Dropdown = (props: DropdownProps) => {
+export const Dropdown = (props: DropdownProps) => {
   const placementList = ['top', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'];
   const {
     children,

@@ -9,7 +9,7 @@ import Docs from './BannerPage';
 import '../style';
 
 export default {
-  title: 'Functional Components/Banner',
+  title: 'Components/Banner',
   component: Banner,
   parameters: {
     docs: {

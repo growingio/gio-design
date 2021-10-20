@@ -18,32 +18,32 @@ export default function ButtonPage() {
 
       <Subheading>{formatMessage({ defaultMessage: '默认按钮' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-button--default" />
+        <Story id="legacy-button--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '主要按钮' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-button--primary-button" />
+        <Story id="legacy-button--primary-button" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '次要按钮' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-button--secondary-button" />
+        <Story id="legacy-button--secondary-button" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '文本按钮' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-button--text-button" />
+        <Story id="legacy-button--text-button" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'Block宽度按钮' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-button--block-button" />
+        <Story id="legacy-button--block-button" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '图标按钮' })}</Subheading>
       <Canvas>
-        <Story id="basic-components-button--icon-button" />
+        <Story id="legacy-button--icon-button" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

@@ -113,7 +113,7 @@ Ellipsis.args = {
 };
 
 export default {
-  title: 'Internal Components/ListPicker',
+  title: 'Components/ListPicker',
   component: ListPicker,
   subcomponents: {
     Divider: ListPicker.Divider,

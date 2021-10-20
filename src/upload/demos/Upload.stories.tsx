@@ -57,7 +57,7 @@ const props = {
 };
 
 export default {
-  title: 'Data Input/Upload',
+  title: 'Components/Upload',
   component: Upload,
   decorators: [withDesign],
   parameters: {

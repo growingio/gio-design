@@ -8,7 +8,7 @@ import './style';
 import Button from '../../legacy/button';
 
 export default {
-  title: 'Functional Components/Select',
+  title: 'Components/Select',
   component: Select,
   decorators: [withDesign],
   parameters: {

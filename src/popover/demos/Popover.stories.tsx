@@ -10,7 +10,7 @@ import { Checkbox, CheckboxGroup } from '../..';
 import Link from '../../legacy/link';
 
 export default {
-  title: 'Data Display/Popover',
+  title: 'Components/Popover',
   component: Popover,
   parameters: {
     docs: {

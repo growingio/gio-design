@@ -17,12 +17,12 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="data-display-tree--default" />
+        <Story id="components-tree--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '带 Icon 的树形控件' })}</Subheading>
       <Canvas>
-        <Story id="data-display-tree--icon-tree" />
+        <Story id="components-tree--icon-tree" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

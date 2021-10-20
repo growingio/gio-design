@@ -44,7 +44,7 @@ interface BreadcrumbInterface extends React.FC<BreadcrumbProps> {
   Separator: typeof BreadcrumbSeparator;
 }
 
-const Breadcrumb: BreadcrumbInterface = ({
+export const Breadcrumb: BreadcrumbInterface = ({
   prefixCls: customizePrefixCls,
   separator = '/',
   style,

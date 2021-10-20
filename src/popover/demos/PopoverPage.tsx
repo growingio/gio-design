@@ -18,22 +18,22 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="data-display-popover--default" />
+        <Story id="components-popover--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'click 触发' })}</Subheading>
       <Canvas>
-        <Story id="data-display-popover--click-popover" />
+        <Story id="components-popover--click-popover" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '箭头指向' })}</Subheading>
       <Canvas>
-        <Story id="data-display-popover--arrow" />
+        <Story id="components-popover--arrow" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '位置用' })}</Subheading>
       <Canvas>
-        <Story id="data-display-popover--placement" />
+        <Story id="components-popover--placement" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

@@ -13,7 +13,7 @@ export default function BreadcrumbPage() {
 
       <Subheading>{formatMessage({ defaultMessage: '默认' })}</Subheading>
       <Canvas>
-        <Story id="navigation-breadcrumb--default" />
+        <Story id="components-breadcrumb--default" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

@@ -8,7 +8,7 @@ import '../style';
 import Docs from './DrawerPage';
 
 export default {
-  title: 'Data Display/Drawer',
+  title: 'Components/Drawer',
   component: Drawer,
   parameters: {
     docs: {

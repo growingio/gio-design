@@ -27,7 +27,7 @@ export const Empty = Template.bind({});
 Empty.args = {};
 
 export default {
-  title: 'Data Entry/ListSelector',
+  title: 'Components/ListSelector',
   component: ListSelector,
   parameters: {
     docs: {

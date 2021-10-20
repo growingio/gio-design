@@ -9,7 +9,7 @@ import { DateSelectorProps } from './interfaces';
 import './style';
 
 export default {
-  title: 'Selectors/DateSelector',
+  title: 'Components/DateSelector',
   cdecorators: [withDesign],
   parameters: {
     design: {

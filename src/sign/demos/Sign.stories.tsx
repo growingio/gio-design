@@ -7,7 +7,7 @@ import Sign from '../index';
 import '../style';
 
 export default {
-  title: 'Basic Components/Sign',
+  title: 'Components/Sign',
   component: Sign,
   decorators: [withDesign],
   parameters: {

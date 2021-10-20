@@ -8,7 +8,7 @@ import '../style';
 import '../style/demo.stories.less';
 
 export default {
-  title: 'Data Entry/TreeSelect',
+  title: 'Components/TreeSelect',
   component: TreeSelect,
   subcomponents: { TreeNode },
   decorators: [withDesign],

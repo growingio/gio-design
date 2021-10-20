@@ -13,19 +13,19 @@ export default function DatePickerPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="pickers-datepicker--basic" />
+        <Story id="components-datepicker--basic" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '禁止选择部分日期' })}</Subheading>
       <p className="">{formatMessage({ defaultMessage: '可用 disabledDate 禁止选择部分日期。' })}</p>
       <Canvas>
-        <Story id="pickers-datepicker--disabled-date" />
+        <Story id="components-datepicker--disabled-date" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '面板日期' })}</Subheading>
       <p>{formatMessage({ defaultMessage: '设置面板显示的日期。' })}</p>
       <Canvas>
-        <Story id="pickers-datepicker--view-date" />
+        <Story id="components-datepicker--view-date" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

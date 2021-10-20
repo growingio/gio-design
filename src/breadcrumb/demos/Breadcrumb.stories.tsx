@@ -7,7 +7,7 @@ import { BreadcrumbProps } from '../interface';
 import '../style';
 
 export default {
-  title: 'Navigation/Breadcrumb',
+  title: 'Components/Breadcrumb',
   component: Breadcrumb,
   decorators: [withDesign],
   parameters: {
@@ -18,6 +18,11 @@ export default {
     },
     docs: {
       page: Docs,
+    },
+  },
+  argTypes: {
+    separator: {
+      control: { type: 'text' },
     },
   },
 } as Meta;

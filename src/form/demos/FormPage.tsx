@@ -14,22 +14,22 @@ export default function FormPage() {
 
       <Subheading>{formatMessage({ defaultMessage: '基础用法' })}</Subheading>
       <Canvas>
-        <Story id="data-input-form--default" />
+        <Story id="components-form--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'Item' })}</Subheading>
       <Canvas>
-        <Story id="data-input-form--default" />
+        <Story id="components-form--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '弹窗表单' })}</Subheading>
       <Canvas>
-        <Story id="data-input-form--form-with-modal" />
+        <Story id="components-form--form-with-modal" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '多行表单' })}</Subheading>
       <Canvas>
-        <Story id="data-input-form--multiple-form" />
+        <Story id="components-form--multiple-form" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

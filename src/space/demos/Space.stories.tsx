@@ -7,7 +7,7 @@ import Docs from './SpacePage';
 import { Button } from '../..';
 
 export default {
-  title: 'Layout/Space',
+  title: 'Components/Space',
   component: Space,
   decorators: [withDesign],
   parameters: {

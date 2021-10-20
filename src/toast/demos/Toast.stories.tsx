@@ -8,7 +8,7 @@ import { ArgsProps } from '../interface';
 import '../style';
 
 export default {
-  title: 'Basic Components/Toast',
+  title: 'Components/Toast',
   decorators: [withDesign],
   parameters: {
     design: {

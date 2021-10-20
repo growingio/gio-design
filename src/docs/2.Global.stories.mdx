@@ -1,0 +1,82 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TabsState } from '@storybook/components';
+
+<Meta title="Docs/Global" />
+
+# Global
+
+<a href='https://www.figma.com/file/J2wZWEocPEb1DbDEj99AgD/Design-System?node-id=2%3A741' >Figma</a>
+
+# 全局文件适配：
+
+## Less variables
+
+### 新的 palette 采用较少的色调控制
+
+```css
+@gray-0: var(--white, #ffffff);
+@gray-1: var(--gray-1, #f7f8fc);
+@gray-2: var(--gray-2, #dfe4ee);
+@gray-3: var(--gray-3, #adb2c2);
+@gray-4: var(--gray-4, #7b819c);
+@gray-5: var(--gray-6, #242e59);
+@blue-1: var(--blue-1, #edf2fc);
+@blue-2: var(--blue-2, #3867f4);
+@blue-3: var(--blue-3, #1248e9);
+@green-1: var(--green-1, #e3fff0);
+@green-2: var(--green-2, #60ea97);
+@green-3: var(--green-3, #16cb79);
+@yellow-1: var(--yellow-1, #fffae6);
+@yellow-2: var(--yellow-2, #ffc449);
+@yellow-3: var(--yellow-3, #faa937);
+@red-1: var(--red-1, #ffebe6);
+@red-2: var(--red-2, #ff688f);
+@red-3: var(--red-3, #ec134b);
+```
+
+## Less Mixins
+
+### 边框和阴影采用函数式
+
+```css
+.border(@radius: 2, @color: $gray2) {
+  border: 1px solid @color;
+  -webkit-border-radius: @radius * 2px;
+  -moz-border-radius: @radius * 2px;
+  border-radius: @radius * 2px;
+}
+```
+
+```css
+@elevations: 0px 3px 8px rgba(36, 46, 89, 0.05), 0px 8px 24px rgba(36, 46, 89, 0.1);
+.elevation(@level: 1) {
+  box-shadow: if(@level > 0 and @level < 3, extract(@elevations, @level), none);
+}
+```
+
+## Utils
+
+### 大小更改为两种：small 和 normal
+
+```jsx
+type SizeType = 'small' | 'normal';
+
+useSize: () => SizeType;
+usePrefixCls: (subPrefixCls: string, customRootPrefixCls?: string) => string;
+useControlledState: (state: any, defaultState?: any) => [state, setState];
+```
+
+## Typescript
+
+### 组件props包含项：多删少补
+
+```typescript
+interface Option {
+  value: string | number;
+  label?: React.ReactNode;
+  groupId?: string | number;
+  groupName?: React.ReactNode;
+  disabled?: boolean;
+  isLeaf?: boolean;
+}
+```

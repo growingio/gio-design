@@ -11,7 +11,7 @@ import '../style/demo.stories.less';
 import { Button, Input, Modal } from '../../index';
 
 export default {
-  title: 'Data Input/Form',
+  title: 'Components/Form',
   component: Form,
   subcomponents: { Item },
   parameters: {

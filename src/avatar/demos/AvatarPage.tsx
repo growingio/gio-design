@@ -17,7 +17,7 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基础头像' })}</Subheading>
       <Canvas>
-        <Story id="data-display-avatar--default" />
+        <Story id="components-avatar--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '尺寸' })}</Subheading>
@@ -28,7 +28,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="data-display-avatar--size" />
+        <Story id="components-avatar--size" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '可展开操作' })}</Subheading>
@@ -38,7 +38,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="data-display-avatar--hover" />
+        <Story id="components-avatar--hover" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '重叠展示' })}</Subheading>
@@ -49,7 +49,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="data-display-avatar--group" />
+        <Story id="components-avatar--group" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

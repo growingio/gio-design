@@ -18,27 +18,27 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: 'Icon、标题、正文、关闭按钮' })}</Subheading>
       <Canvas>
-        <Story id="feedback-alert--default" />
+        <Story id="components-alert--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'Icon & 标题 & 关闭' })}</Subheading>
       <Canvas>
-        <Story id="feedback-alert--no-description" />
+        <Story id="components-alert--no-description" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'Icon & 正文 & 关闭' })}</Subheading>
       <Canvas>
-        <Story id="feedback-alert--no-title" />
+        <Story id="components-alert--no-title" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '标题 & 正文 & 关闭' })}</Subheading>
       <Canvas>
-        <Story id="feedback-alert--no-icon" />
+        <Story id="components-alert--no-icon" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'Icon & 标题 & 正文 ' })}</Subheading>
       <Canvas>
-        <Story id="feedback-alert--no-close" />
+        <Story id="components-alert--no-close" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

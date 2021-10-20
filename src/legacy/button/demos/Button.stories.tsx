@@ -8,7 +8,7 @@ import { ButtonProps } from '../interface';
 import '../style';
 
 export default {
-  title: 'General/Button',
+  title: 'Legacy/Button',
   component: Button,
   decorators: [withDesign],
   parameters: {

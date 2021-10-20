@@ -13,23 +13,23 @@ export default function TextPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '单行样式' })}</Subheading>
       <Canvas>
-        <Story id="typography-text--single-line" />
+        <Story id="components-text--single-line" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '多行样式' })}</Subheading>
       <p className="">{formatMessage({ defaultMessage: '通过文案行数省略，并用 Tooltip 显示全文。' })}</p>
       <Canvas>
-        <Story id="typography-text--multi-lines" />
+        <Story id="components-text--multi-lines" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '英文文本' })}</Subheading>
       <Canvas>
-        <Story id="typography-text--english" />
+        <Story id="components-text--english" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '文本样式' })}</Subheading>
       <Canvas>
-        <Story id="typography-text--styles" />
+        <Story id="components-text--styles" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

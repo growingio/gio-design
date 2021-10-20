@@ -10,7 +10,7 @@ import { LoadingProps } from '../interface';
 import '../style';
 
 export default {
-  title: 'Basic Components/Loading',
+  title: 'Components/Loading',
   component: Loading,
   decorators: [withDesign],
   parameters: {

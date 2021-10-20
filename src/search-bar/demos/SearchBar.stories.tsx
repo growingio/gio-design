@@ -7,7 +7,7 @@ import { SearchBarProps } from '../interfaces';
 import '../style';
 
 export default {
-  title: 'Data Input/SearchBar',
+  title: 'Components/SearchBar',
   component: SearchBar,
   decorators: [withDesign],
   parameters: {

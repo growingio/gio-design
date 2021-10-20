@@ -17,7 +17,7 @@ interface DemoProps extends Props {
 }
 
 export default {
-  title: 'Data Input/Cascader',
+  title: 'Components/Cascader',
   component: Cascader,
   parameters: {
     docs: {
