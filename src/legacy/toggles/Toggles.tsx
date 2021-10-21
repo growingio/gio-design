@@ -16,7 +16,7 @@ const Toggles: React.FC<TogglesProps> = (props) => {
     suffixContent,
     onChange,
   } = props;
-  const prefixCls = usePrefixCls('toggles');
+  const prefixCls = usePrefixCls('toggles-legacy');
 
   const inactiveValues = inactiveValue;
   const activeValues = activeValue;
