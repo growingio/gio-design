@@ -9,7 +9,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     type = 'primary',
     size = 'normal',
     loading = false,
-    disabled: disabledProp = false,
+    disabled = false,
     htmlType = 'button',
     prefix,
     suffix,
@@ -23,6 +23,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     [`${prefixCls}_${type}`]: type,
     [`${prefixCls}_${size}`]: size,
     [`${prefixCls}_loading`]: loading,
+    [`${prefixCls}_disabled`]: disabled,
   });
 
   const prefixIcon = loading ? (
@@ -35,13 +36,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
 
   const suffixIcon = suffix && <span className={`${prefixCls}-suffix-icon`}>{suffix}</span>;
 
-  const disabled = disabledProp || loading;
-
-  const other: typeof restProps = {
-    role: 'button',
-    'aria-disabled': disabled,
-  };
-
   return (
     <button
       ref={ref}
@@ -50,7 +44,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       className={classes}
       disabled={disabled}
       data-testid="button"
-      {...other}
       {...restProps}
     >
       {prefixIcon}
