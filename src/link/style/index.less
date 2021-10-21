@@ -19,12 +19,18 @@
 
   &_loading {
     color: @blue-3;
-    pointer-events: none;
+    cursor: not-allowed;
+    &:active {
+      pointer-events: none;
+    }
   }
 
   &[aria-disabled='true']:not(&_loading) {
     color: @gray-3;
-    pointer-events: none;
+    cursor: not-allowed;
+    &:active {
+      pointer-events: none;
+    }
   }
 
   &-prefix-icon {
