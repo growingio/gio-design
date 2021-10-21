@@ -39,13 +39,13 @@
     &:disabled:not(.@{button-prefix-cls}_loading) {
       color: @gray-3;
       background-color: @gray-1;
-      cursor: auto;
+      cursor: not-allowed;
       .elevation(none);
     }
 
     &.@{button-prefix-cls}_loading {
       background-color: @blue-3;
-      cursor: auto;
+      cursor: not-allowed;
       .elevation(2);
     }
   }
@@ -63,13 +63,13 @@
     &:disabled:not(.@{button-prefix-cls}_loading) {
       color: @gray-3;
       background-color: transparent;
-      cursor: auto;
+      cursor: not-allowed;
     }
 
     &.@{button-prefix-cls}_loading {
       color: @blue-3;
       background-color: @gray-1;
-      cursor: auto;
+      cursor: not-allowed;
     }
   }
 
@@ -85,12 +85,12 @@
     &:disabled:not(.@{button-prefix-cls}_loading) {
       color: @gray-3;
       background-color: transparent;
-      cursor: auto;
+      cursor: not-allowed;
     }
     &.@{button-prefix-cls}_loading {
       color: @blue-3;
       background-color: @gray-1;
-      cursor: auto;
+      cursor: not-allowed;
     }
   }
 

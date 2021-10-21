@@ -5,11 +5,11 @@ import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { LinkProps } from './interface';
 
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
-  const { className, children, prefix, loading = false, disabled = false, ...restProps } = props;
+  const { className, children, prefix, loading = false, disabled: disabledProp = false, ...restProps } = props;
 
   const prefixCls = usePrefixCls('link');
   const classes = classNames([prefixCls, className], {
-    [`${prefixCls}_disabled`]: disabled,
+    [`${prefixCls}_disabled`]: disabledProp,
     [`${prefixCls}_loading`]: loading,
   });
 
@@ -21,8 +21,17 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
     prefix && <span className={`${prefixCls}-prefix-icon`}>{prefix}</span>
   );
 
+  const disabled = disabledProp || loading;
+
   return (
-    <a className={classes} ref={ref} aria-disabled={disabled || loading} data-testid="link" {...restProps}>
+    <a
+      className={classes}
+      ref={ref}
+      aria-disabled={disabled}
+      tabIndex={disabled ? -1 : 0}
+      data-testid="link"
+      {...restProps}
+    >
       {prefixIcon}
       {children}
     </a>
