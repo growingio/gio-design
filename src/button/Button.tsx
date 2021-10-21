@@ -42,7 +42,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       // eslint-disable-next-line react/button-has-type
       type={htmlType}
       className={classes}
-      disabled={disabled}
+      disabled={disabled || loading}
       data-testid="button"
       {...restProps}
     >
