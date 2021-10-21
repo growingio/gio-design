@@ -1,3 +1,5 @@
+import React, { CSSProperties } from 'react';
+
 // https://stackoverflow.com/questions/46176165/ways-to-get-string-literal-type-of-array-values-without-enum-overhead
 export const tuple = <T extends string[]>(...args: T) => args;
 
@@ -74,3 +76,11 @@ export interface OverridableComponent<M extends OverridableTypeMap> {
   ): React.ElementType;
   (props: DefaultComponentProps<M>): React.ElementType;
 }
+
+export type PropsWithChildren<P> = P & { children?: React.ReactNode };
+
+export type PropsWithStyle<P> = P & { style?: CSSProperties };
+
+export type PropsWithClassname<P> = P & { classname?: string };
+
+export type WithCommonProps<P> = PropsWithChildren<PropsWithStyle<PropsWithClassname<P>>>;
