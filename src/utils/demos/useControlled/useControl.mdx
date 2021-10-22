@@ -18,7 +18,7 @@ import {
 
 ```javascript
 export const Counter = ({ value, onChange, defaultValue }: IProps) => {
-  const [state, setState] = useControlledState(value, defaultValue, onChange);
+  const [state, setState] = useControlledState < number > (value, defaultValue, onChange);
   return (
     <>
       <button type="button" onClick={() => setState(state - 1)}>

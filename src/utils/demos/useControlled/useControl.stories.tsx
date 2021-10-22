@@ -8,7 +8,7 @@ interface IProps {
   defaultValue?: number;
 }
 
-export const Counter = ({ value, onChange, defaultValue }: IProps) => {
+export const Counter = ({ value, onChange, defaultValue = 0 }: IProps) => {
   const [state, setState] = useControlledState(value, defaultValue, onChange);
   return (
     <>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, Dispatch, SetStateAction, useDebugValue } from 'react';
+import { useState, useEffect, useRef, useDebugValue } from 'react';
 import { isUndefined } from 'lodash';
 
 function format<T>([innerState, outterState]: [T, T]) {
@@ -8,10 +8,10 @@ function format<T>([innerState, outterState]: [T, T]) {
 }
 
 const useControlledState = <T>(
-  outterState?: T | (() => T),
-  defaultOutterState?: T,
+  outterState: T | (() => T) | undefined,
+  defaultOutterState: T,
   callback?: (state: T | (() => T)) => void
-): [T | undefined, (state: T | Dispatch<SetStateAction<T>>, force?: boolean) => void] => {
+): [T, (state: T | (() => T), force?: boolean) => void] => {
   const [innerState, setInnerState] = useState<T>(isUndefined(outterState) ? defaultOutterState : outterState);
 
   const setState = useRef((state: T | (() => T), force = false) => {

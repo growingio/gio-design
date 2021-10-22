@@ -1,42 +1,43 @@
 import React, { useRef } from 'react';
-import WithRef, { CommonPropsWithRef } from '../withRef';
+import withRef from '../withRef';
+import withSubComponent from '../withSubComponent';
+import { WithCommonProps } from '../interfaces';
 
-type InternalButton = typeof Button;
-
-interface RefButton extends InternalButton {
-  SubButton: InternalButton;
+interface DemoButtonProps {
+  size?: string;
 }
 
-const InnerButton: React.FC<CommonPropsWithRef<React.HTMLProps<HTMLButtonElement>, HTMLButtonElement>> = (props) => {
-  const { forwardRef, children } = props;
-  return (
-    <button type="button" ref={forwardRef}>
-      {children}
-    </button>
-  );
-};
-const ButtonItem: React.FC<React.HTMLProps<HTMLButtonElement>> = () => <button type="button">subButton</button>;
+interface SubComponentProps {
+  type?: string;
+}
 
-const Button = WithRef<HTMLButtonElement, React.HTMLProps<HTMLButtonElement>, React.ReactNode>(InnerButton, {
-  SubButton: ButtonItem,
-});
+const InternalButton: React.ForwardRefRenderFunction<HTMLButtonElement, WithCommonProps<DemoButtonProps>> = (
+  { children },
+  ref
+) => (
+  <button ref={ref} type="button">
+    {children}
+  </button>
+);
+
+const SubComponent: React.FC<WithCommonProps<SubComponentProps>> = ({ type }) => <div>{type}</div>;
+
+const Button = withSubComponent(withRef(InternalButton), { SubComponent });
 
 export const Demo = () => {
   const ref = useRef(document.querySelector('button'));
 
-  const { SubButton } = Button as unknown as RefButton;
-
   return (
     <div>
-      <Button ref={ref} type="button">
+      <Button ref={ref} size="size">
         ButtonWithRef
       </Button>
-      <SubButton />
+      <Button.SubComponent type="sub component" />
     </div>
   );
 };
 
 export default {
-  title: 'utils/TextWithRef',
+  title: 'utils/WithRef',
   component: Demo,
 };
