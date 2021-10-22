@@ -1,12 +1,12 @@
-@import '../../stylesheet/index.less';
-@import '../../stylesheet/mixin/border.less';
-@import '../../stylesheet//mixin/elevation.less';
+@import '../../stylesheet/mixin/index.less';
 
 @button-prefix-cls: ~'@{component-prefix}-button';
 @icon-button-prefix-cls: ~'@{component-prefix}-icon-button';
 
 @small-height: 30px;
 @normal-height: 36px;
+
+@space: 8px;
 
 // ----------------------- Button Style --------------------------- //
 .@{button-prefix-cls} {
@@ -18,9 +18,7 @@
   height: @normal-height;
   padding: 7px 12px;
   overflow: hidden;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20 / 14;
+  .typography-body-1();
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -129,22 +127,21 @@
     .elevation(1);
   }
 
-  .svg() {
-    & svg {
+  .icon() {
+    display: inherit;
+    svg {
       width: 1em;
       height: 1em;
     }
   }
 
   &-prefix-icon {
-    display: inherit;
-    margin-right: @space-2;
-    .svg();
+    margin-right: @space;
+    .icon();
   }
   &-suffix-icon {
-    display: inherit;
-    margin-left: @space-2;
-    .svg();
+    margin-left: @space;
+    .icon();
   }
 }
 // ----------------------- Button Style --------------------------- //
