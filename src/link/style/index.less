@@ -1,13 +1,11 @@
-@import '../../stylesheet/mixin/index.less';
+@import '../../stylesheet/variables/index.less';
 
 @link-prefix-cls: ~'@{component-prefix}-link';
-
-@space: 8px;
 
 .@{link-prefix-cls} {
   box-sizing: border-box;
   color: @blue-2;
-  .typography-body-1();
+  .text-body1();
   text-decoration: none;
   cursor: pointer;
 
@@ -32,7 +30,7 @@
   }
 
   &-prefix-icon {
-    margin-right: @space;
+    margin-right: 8px;
     & svg {
       width: 1em;
       height: 1em;

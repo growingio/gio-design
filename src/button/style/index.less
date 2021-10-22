@@ -1,12 +1,10 @@
-@import '../../stylesheet/mixin/index.less';
+@import '../../stylesheet/variables/index.less';
 
 @button-prefix-cls: ~'@{component-prefix}-button';
 @icon-button-prefix-cls: ~'@{component-prefix}-icon-button';
 
 @small-height: 30px;
 @normal-height: 36px;
-
-@space: 8px;
 
 // ----------------------- Button Style --------------------------- //
 .@{button-prefix-cls} {
@@ -18,7 +16,7 @@
   height: @normal-height;
   padding: 7px 12px;
   overflow: hidden;
-  .typography-body-1();
+  .text-body1();
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -136,11 +134,11 @@
   }
 
   &-prefix-icon {
-    margin-right: @space;
+    margin-right: 8px;
     .icon();
   }
   &-suffix-icon {
-    margin-left: @space;
+    margin-left: 8px;
     .icon();
   }
 }
