@@ -13,7 +13,7 @@ const Divider = WithRef<HTMLHRElement, DividerProps>((props, ref) => {
     [`${prefixCls}_flex_item`]: flexItem,
   });
 
-  return <hr ref={ref} className={classes} {...otherProps} />;
+  return <hr ref={ref} className={classes} data-testid="divider" {...otherProps} />;
 });
 
 Divider.displayName = 'Divider';
