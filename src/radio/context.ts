@@ -1,8 +1,6 @@
-import { createContext } from 'react';
-import { IRadioGroupContext } from './interface';
+import * as React from 'react';
+import { RadioGroupContextType } from './interface';
 
-const RadioGroupContext = createContext<IRadioGroupContext | null>(null);
+const RadioGroupContext = React.createContext<RadioGroupContextType | null>(null);
 
 export default RadioGroupContext;
-
-export const RadioGroupProvider = RadioGroupContext.Provider;

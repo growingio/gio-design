@@ -1,7 +1,7 @@
 export { default as Alert, AlertProps } from './alert';
 export { default as Avatar, AvatarGroup, AvatarProps } from './avatar';
 export { default as Banner, BannerProps } from './banner';
-export { default as Breadcrumb, BreadcrumbItem, BreadcrumbProps, BreadcrumbItemProps } from './breadcrumb';
+export { default as Breadcrumb, BreadcrumbProps } from './breadcrumb';
 export { default as Button, IconButton, ButtonProps, IconButtonProps, ButtonType } from './button';
 export { default as Card, CardProps, CardMetaProps } from './card';
 export { default as Checkbox, CheckboxGroup, CheckboxProps, CheckboxGroupProps, CheckboxOptionType } from './checkbox';
@@ -15,7 +15,7 @@ export { default as List, ListProps } from './components/list';
 export { default as ListPicker, ListPickerProps } from './list-picker';
 export { default as ListSelector, ListSelectorProps } from './list-selector';
 export { default as Loading, LoadingProps } from './loading';
-export { default as Menu, MenuProps, SubMenuProps, MenuItemProps, MenuMode, Divider, DividerProps } from './menu';
+export { default as Menu, MenuProps, SubMenuProps, MenuItemProps, MenuMode } from './menu';
 export {
   default as Modal,
   StepModal,
@@ -50,7 +50,7 @@ export { default as SearchBar, SearchBarProps } from './search-bar';
 export { default as Tabs, TabPane, TabProps, TabPaneProps } from './components/tabs';
 export { default as Tag, TagProps } from './tag';
 export { default as Toast, ToastConfigOptions, ToastType } from './toast';
-export { default as Toggles, TogglesProps } from './toggles';
+export { default as Toggles, TogglesProps } from './legacy/toggles';
 export { default as Tooltip, TooltipProps, TooltipLink } from './tooltip';
 export {
   default as Tree,
@@ -87,6 +87,7 @@ export {
 export { default as Space, SpaceProps, ItemProps } from './space';
 export { default as TreeSelect, TreeNode, LabeledValue, SelectValue, TreeSelectProps } from './tree-select';
 export { default as Steps } from './components/steps';
+export { default as Divider, DividerProps } from './divider';
 
 // provide config context
 export { ConfigContext, ConfigConsumer, withConfigConsumer } from './components/config-provider';

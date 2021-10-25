@@ -1,5 +1,7 @@
 import React from 'react';
 
+export type InputSize = 'normal' | 'small';
+
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'suffix'> {
   /**
    * 修改值时触发的回调函数
@@ -20,8 +22,9 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
    * input 大小
    * @default 'middle''
    */
-  size?: 'normal' | 'small';
+  size?: InputSize;
   prefixCls?: string;
+  prefix?: React.ReactNode;
   prefixWidth?: number;
   allowClear?: boolean;
   /**
