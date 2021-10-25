@@ -21,7 +21,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
    * @default 'middle''
    */
   size?: 'normal' | 'small';
-  prefix?: React.ReactNode;
+  prefixCls?: string;
   prefixWidth?: number;
   allowClear?: boolean;
   /**
@@ -59,6 +59,7 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
    * 外层容器 style，取代 wrapStyle 并忽略 inputStyle
    */
   style?: React.CSSProperties;
+  prefixCls?: string;
   /**
    * 外层容器的style
    */

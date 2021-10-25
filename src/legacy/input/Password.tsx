@@ -6,8 +6,8 @@ import Input from './Input';
 import { PasswordProps } from './interface';
 
 const Password = React.forwardRef<HTMLInputElement, PasswordProps>((props, ref) => {
-  const { disabled, placeholder = '请输入密码...' } = props;
-  const prefixCls = usePrefixCls('input');
+  const { disabled, prefixCls: customizePrefixCls, placeholder = '请输入密码...' } = props;
+  const prefixCls = usePrefixCls('input', customizePrefixCls);
   const [visible, setVisible] = React.useState(false);
 
   const passwordSuffixIconCls = classNames(`${prefixCls}__suffix-icon`, {

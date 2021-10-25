@@ -4,18 +4,17 @@ import { CompoundedInput, InputProps } from './interface';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { size, prefix, suffix, onBlur, onFocus, disabled, placeholder, ...rest } = props;
+  const { size, prefixCls: customizePrefixCls, suffix, disabled, placeholder, ...rest } = props;
 
-  const prefixCls = usePrefixCls('input');
+  const prefixCls = usePrefixCls('input', customizePrefixCls);
 
   const inputClass = useMemo(
     () =>
       classNames(prefixCls, {
-        [`${prefixCls}__focus`]: focus,
         [`${prefixCls}__disabled`]: disabled,
         [`${prefixCls}__small`]: size === 'small',
       }),
-    [prefixCls, focus, size, disabled]
+    [prefixCls, size, disabled]
   );
 
   const inputSuffix = useMemo(
@@ -28,7 +27,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       classNames({
         [`${prefixCls}-wrapper`]: !!suffix,
       }),
-    [suffix]
+    [suffix, prefixCls]
   );
 
   const input = (

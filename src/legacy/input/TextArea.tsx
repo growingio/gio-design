@@ -4,10 +4,10 @@ import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import classNames from 'classnames';
 
 const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
-  const { prefix, disabled, placeholder = '请输入...', rows = 2, style = {}, ...rest } = props;
+  const { prefixCls: customizePrefixCls, disabled, placeholder = '请输入...', rows = 2, style, ...rest } = props;
 
-  const inputPrefixCls = usePrefixCls('input');
-  const prefixCls = usePrefixCls('textArea');
+  const inputPrefixCls = usePrefixCls('input', customizePrefixCls);
+  const prefixCls = usePrefixCls('textarea');
 
   const textAreaClass = useMemo(
     () =>
@@ -17,6 +17,14 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     [inputPrefixCls, prefixCls, disabled]
   );
 
+  const styles = useMemo(
+    () => ({
+      ...style,
+      resize: disabled ? 'none' : style.resize || 'none',
+    }),
+    [style, disabled]
+  );
+
   return (
     <textarea
       {...rest}
@@ -24,7 +32,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
       className={textAreaClass}
       placeholder={placeholder}
       rows={rows}
-      style={{ ...style, resize: disabled ? 'none' : 'vertical' }}
+      style={styles}
       ref={ref}
     />
   );
