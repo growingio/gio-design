@@ -1,14 +1,13 @@
 import Radio from './Radio';
 import RadioGroup from './Group';
-
-Radio.Group = RadioGroup;
-
-export {
-  IRadioProps as RadioProps,
-  IRadioGroupProps as RadioGroupProps,
-  TRadioGroupOption as RadioGroupOption,
-} from './interface';
+import WithSubComponent from '../utils/withSubComponent';
 
 export { RadioGroup };
 
-export default Radio;
+export {
+  IRadioProps as RadioProps,
+  TRadioGroupOption as RadioGroupOption,
+  IRadioGroupProps as RadioGroupProps,
+} from './interface';
+
+export default WithSubComponent(Radio, { Group: RadioGroup });
