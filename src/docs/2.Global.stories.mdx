@@ -34,6 +34,16 @@ import { TabsState } from '@storybook/components';
 @red-3: var(--red-3, #ec134b);
 ```
 
+### 组件层级
+
+```css
+@z-index-toast: 500;
+@z-index-popover: 400;
+@z-index-modal: 300;
+@z-index-drawer: 200;
+@z-index-table-fixed: 100;
+```
+
 ## Less Mixins
 
 ### 边框和阴影采用函数式
@@ -54,11 +64,57 @@ import { TabsState } from '@storybook/components';
 }
 ```
 
+### Typography 文字排版
+
+```css
+.text-h1() {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.text-h2() {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.text-h3() {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.text-h4() {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.text-h5() {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.text-body1() {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.text-body2() {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+}
+```
+
 ## Utils
 
 ### 大小更改为两种：small 和 normal
 
-```jsx
+```typescript
 type SizeType = 'small' | 'normal';
 
 useSize: () => SizeType;
