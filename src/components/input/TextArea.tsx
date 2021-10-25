@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';

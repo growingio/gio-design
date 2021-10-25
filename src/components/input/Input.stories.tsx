@@ -7,7 +7,7 @@ import Input from './index';
 import InputNumber from './InputNumber';
 import Password from './Password';
 import TextArea from './TextArea';
-import './style';
+// import './style';
 
 export default {
   title: 'Components/Input',

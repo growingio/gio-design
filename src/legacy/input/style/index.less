@@ -1,0 +1,76 @@
+@import '../../../stylesheet/index.less';
+@import '../../../stylesheet/mixin/border.less';
+@import '../../../stylesheet/mixin/elevation.less';
+
+@input-prefix-cls: ~'@{component-prefix}-input';
+@textarea-prefix-cls: ~'@{component-prefix}-textarea';
+
+.@{input-prefix-cls} {
+  height: 36px;
+  padding: 7px 12px;
+  font-family+: @font-family-primary;
+  font-family+: @font-family-number;
+  font-size: @font-size-base;
+  border: 1px solid @gray-2;
+  border-radius: @radius-border-small;
+  box-sizing: border-box;
+
+  &-wrapper {
+    position: relative;
+
+    .@{input-prefix-cls} {
+      padding-right: 32px;
+    }
+  }
+
+  &::placeholder {
+    color: @gray-2;
+    font-size: @font-size-base;
+  }
+
+  &:not([disabled]):hover {
+    border: 1px solid @blue-3;
+  }
+
+  &:not([disabled]):focus {
+    border: 1px solid @blue-3;
+    outline: none;
+  }
+
+  &:disabled {
+    color: @gray-3;
+    background-color: @gray-1;
+    border: 1px solid @gray-2;
+    cursor: not-allowed;
+    &:hover {
+      background-color: @gray-1;
+      border: 1px solid @gray-2;
+    }
+  }
+  &__small {
+    height: 30px;
+  }
+  &__error {
+    border: 1px solid @red-3;
+  }
+
+  &__suffix {
+    position: absolute;
+    top: 1px;
+    right: 0;
+    padding-right: 12px;
+
+    &-icon {
+      cursor: pointer;
+      svg {
+        color: @gray-3;
+      }
+    }
+  }
+}
+
+.@{textarea-prefix-cls} {
+  height: auto;
+  min-height: 36px;
+  resize: vertical;
+}
