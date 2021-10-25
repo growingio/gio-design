@@ -6,6 +6,7 @@
 @textarea-prefix-cls: ~'@{component-prefix}-textarea';
 
 .@{input-prefix-cls} {
+  box-sizing: border-box;
   height: 36px;
   padding: 7px 12px;
   font-family+: @font-family-primary;
@@ -13,7 +14,6 @@
   font-size: @font-size-base;
   border: 1px solid @gray-2;
   border-radius: @radius-border-small;
-  box-sizing: border-box;
 
   &-wrapper {
     position: relative;
