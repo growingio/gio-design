@@ -1,0 +1,22 @@
+@import '../../stylesheet/variables/index.less';
+
+@divider-prefix-cls: ~'@{component-prefix}-divider';
+
+.@{divider-prefix-cls} {
+  margin: 0;
+  border: 0 solid @gray-2;
+  border-top-width: thin;
+
+  &_vertical {
+    display: inline;
+    padding: 0 8px;
+    border-top-width: 0;
+    border-left-width: thin;
+  }
+
+  &_flex_item {
+    align-self: stretch;
+    height: auto;
+    margin: 0;
+  }
+}

@@ -15,7 +15,7 @@ export { default as List, ListProps } from './components/list';
 export { default as ListPicker, ListPickerProps } from './list-picker';
 export { default as ListSelector, ListSelectorProps } from './list-selector';
 export { default as Loading, LoadingProps } from './loading';
-export { default as Menu, MenuProps, SubMenuProps, MenuItemProps, MenuMode, Divider, DividerProps } from './menu';
+export { default as Menu, MenuProps, SubMenuProps, MenuItemProps, MenuMode } from './menu';
 export {
   default as Modal,
   StepModal,
@@ -87,6 +87,7 @@ export {
 export { default as Space, SpaceProps, ItemProps } from './space';
 export { default as TreeSelect, TreeNode, LabeledValue, SelectValue, TreeSelectProps } from './tree-select';
 export { default as Steps } from './components/steps';
+export { default as Divider, DividerProps } from './divider';
 
 // provide config context
 export { ConfigContext, ConfigConsumer, withConfigConsumer } from './components/config-provider';
