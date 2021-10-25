@@ -4,12 +4,12 @@ import { usePrefixCls } from '..';
 import WithRef from '../utils/withRef';
 import BreadcrumbsProps from './interface';
 
-const Breadcrumb = WithRef<HTMLElement, BreadcrumbsProps>((props, ref) => {
+const Breadcrumbs = WithRef<HTMLElement, BreadcrumbsProps>((props, ref) => {
   const { separator = '/', className, children, ...otherProps } = props;
-  const prefixCls = usePrefixCls('breadcrumb');
+  const prefixCls = usePrefixCls('breadcrumbs');
   const classes = classNames([className, prefixCls]);
 
-  const breadcrumbItems = React.Children.toArray(children)
+  const breadcrumbsItems = React.Children.toArray(children)
     .filter((child) => React.isValidElement(child))
     .map((child, index) => (
       // eslint-disable-next-line react/no-array-index-key
@@ -19,10 +19,10 @@ const Breadcrumb = WithRef<HTMLElement, BreadcrumbsProps>((props, ref) => {
     ));
 
   return (
-    <nav ref={ref} className={classes} aria-label="breadcrumb" data-testid="breadcrumb" {...otherProps}>
+    <nav ref={ref} className={classes} aria-label="breadcrumbs" data-testid="breadcrumbs" {...otherProps}>
       <ol className={`${prefixCls}__ol`}>
-        {breadcrumbItems.map((child, index) => {
-          if (index === breadcrumbItems.length - 1) return child;
+        {breadcrumbsItems.map((child, index) => {
+          if (index === breadcrumbsItems.length - 1) return child;
           return (
             // eslint-disable-next-line react/no-array-index-key
             <React.Fragment key={`${prefixCls}-fragment-${index}`}>
@@ -39,10 +39,10 @@ const Breadcrumb = WithRef<HTMLElement, BreadcrumbsProps>((props, ref) => {
   );
 });
 
-Breadcrumb.displayName = 'Breadcrumbs';
+Breadcrumbs.displayName = 'Breadcrumbs';
 
-Breadcrumb.defaultProps = {
+Breadcrumbs.defaultProps = {
   separator: '/',
 };
 
-export default Breadcrumb;
+export default Breadcrumbs;
