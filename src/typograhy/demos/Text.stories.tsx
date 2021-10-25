@@ -53,6 +53,11 @@ export const Styles = () => (
   </>
 );
 
+export const Empty = Template.bind({});
+Empty.args = {
+  children: '',
+};
+
 export default {
   title: 'Typography/Text',
   component: Text,

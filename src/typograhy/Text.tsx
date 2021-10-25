@@ -36,6 +36,10 @@ function Text({
     setClamped(ref.current ? ref.current.isClamped() : false);
   }, []);
 
+  if (!children) {
+    return <></>;
+  }
+
   const linesNode = (
     <LinesEllipsis
       innerRef={ref}
