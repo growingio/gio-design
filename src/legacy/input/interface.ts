@@ -39,9 +39,13 @@ export interface CompoundedInput
   TextArea: React.FC<TextAreaProps>;
 }
 
-export interface PasswordProps extends Omit<InputProps, 'type'> {}
+export interface PasswordProps extends Omit<InputProps, 'type'> {
+  prefixCls?: string;
+}
 
-export interface InputNumberProps extends Omit<InputProps, 'type'> {}
+export interface InputNumberProps extends Omit<InputProps, 'type'> {
+  prefixCls?: string;
+}
 
 export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   /**

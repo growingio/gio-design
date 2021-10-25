@@ -45,7 +45,7 @@ const Template: Story<InputProps> = (args) => (
           <Input {...args} />
         </td>
         <td>
-          <Input {...args} value="数据可视化" disabled={true} />
+          <Input {...args} value="数据可视化" disabled />
         </td>
       </tr>
       <tr>
@@ -60,7 +60,7 @@ const Template: Story<InputProps> = (args) => (
           <InputNumber {...args} />
         </td>
         <td>
-          <InputNumber {...args} value={365} disabled={true} />
+          <InputNumber {...args} value={365} disabled />
         </td>
       </tr>
       <tr>
@@ -75,7 +75,7 @@ const Template: Story<InputProps> = (args) => (
           <Password {...args} />
         </td>
         <td>
-          <Password {...args} value="密码无法输入" disabled={true} />
+          <Password {...args} value="密码无法输入" disabled />
         </td>
       </tr>
       <tr>
@@ -90,7 +90,7 @@ const Template: Story<InputProps> = (args) => (
           <TextArea {...(args as any)} />
         </td>
         <td>
-          <TextArea {...(args as any)} disabled={true} />
+          <TextArea {...(args as any)} disabled />
         </td>
       </tr>
     </table>
@@ -116,10 +116,10 @@ const Template: Story<InputProps> = (args) => (
         <td>Disabled</td>
         <td>disabled状态的样式，可配置是否hover有tooltip</td>
         <td>
-          <Input {...args} value="数据可视化" disabled={true} />
+          <Input {...args} value="数据可视化" disabled />
         </td>
         <td>
-          <Input {...args} value="数据可视化" disabled={true} size="small" />
+          <Input {...args} value="数据可视化" disabled size="small" />
         </td>
       </tr>
     </table>

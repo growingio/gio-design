@@ -1,7 +1,7 @@
+import React, { useCallback, useMemo } from 'react';
 import { EyeOutlined, EyeSlashOutlined } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
-import React, { useCallback, useMemo } from 'react';
 import Input from './Input';
 import { PasswordProps } from './interface';
 
