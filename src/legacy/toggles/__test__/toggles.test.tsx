@@ -12,44 +12,44 @@ describe('Testing Toggles', () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const { container } = render(<Toggles defaultChecked={false} inactiveColor="red" {...props} onChange={onChange} />);
-    fireEvent.click(container.getElementsByClassName('gio-toggles')[0]);
+    fireEvent.click(container.getElementsByClassName('gio-toggles-legacy')[0]);
   });
 
   it('should return "false" when change on defaultChecked Toggles.', () => {
     const onChange = jest.fn();
     const { container } = render(<Toggles defaultChecked suffixContent onChange={onChange} />);
-    fireEvent.click(container.getElementsByClassName('gio-toggles')[0]);
-    expect(container.getElementsByClassName('gio-toggles')).toBeTruthy();
+    fireEvent.click(container.getElementsByClassName('gio-toggles-legacy')[0]);
+    expect(container.getElementsByClassName('gio-toggles-legacy')).toBeTruthy();
   });
 
   it('toggles with suffixContent', () => {
     const { container } = render(<Toggles defaultChecked suffixContent />);
-    expect(container.getElementsByClassName('gio-toggles-suffixContent')).toBeTruthy();
+    expect(container.getElementsByClassName('gio-toggles-legacy-suffixContent')).toBeTruthy();
   });
 
   it('disabled equal to false', () => {
     const onChange = jest.fn();
     const { container } = render(<Toggles disabled={false} checked onChange={onChange} />);
-    fireEvent.click(container.getElementsByClassName('gio-toggles-checked')[0]);
-    expect(container.getElementsByClassName('gio-toggles-checked')).toBeTruthy();
+    fireEvent.click(container.getElementsByClassName('gio-toggles-legacy-checked')[0]);
+    expect(container.getElementsByClassName('gio-toggles-legacy-checked')).toBeTruthy();
   });
 
   it('checked not equal to undefined', () => {
     const onChange = jest.fn();
     const { container } = render(<Toggles disabled checked onChange={onChange} />);
-    fireEvent.click(container.getElementsByClassName('gio-toggles-checked')[0]);
-    expect(container.getElementsByClassName('gio-toggles-checked')).toBeTruthy();
+    fireEvent.click(container.getElementsByClassName('gio-toggles-legacy-checked')[0]);
+    expect(container.getElementsByClassName('gio-toggles-legacy-checked')).toBeTruthy();
   });
 
   it('toggles component should be disabled', () => {
     const { container } = render(<Toggles disabled />);
-    expect(container.getElementsByClassName('gio-toggles-disables')).toBeTruthy();
+    expect(container.getElementsByClassName('gio-toggles-legacy-disables')).toBeTruthy();
   });
 
   it('when users click the toggles component, it should be executed event function', () => {
     const onClick = jest.fn();
     const { container } = render(<Toggles checked onClick={onClick} />);
-    fireEvent.click(container.getElementsByClassName('gio-toggles')[0]);
-    expect(container.getElementsByClassName('gio-toggles')).toBeTruthy();
+    fireEvent.click(container.getElementsByClassName('gio-toggles-legacy')[0]);
+    expect(container.getElementsByClassName('gio-toggles-legacy')).toBeTruthy();
   });
 });
