@@ -1,89 +1,109 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react-hooks/exhaustive-deps */
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import RcCheckbox from 'rc-checkbox';
-import { CheckOutlined } from '@gio-design/icons';
-import { usePrefixCls } from '@gio-design/utils';
 import CheckboxGroupContext from './CheckboxGroupContext';
-import { CheckboxProps } from './interface';
+import { CheckboxProps, CheckboxValueType } from './interface';
+import WithRef from '../utils/withRef';
+import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import useControlledState from '../utils/hooks/useControlledState';
 
-export const Checkbox: React.FC<CheckboxProps> = ({
-  prefixCls: customizePrefixCls,
-  className,
-  children,
-  style,
-  indeterminate,
-  onChange,
-  ...restProps
-}) => {
-  const rcCheckbox = React.useRef(null);
+const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
+  const {
+    indeterminate = false,
+    defaultChecked = false,
+    checked,
+    disabled = false,
+    color = 'transparent',
+    value = '',
+    children,
+    className,
+    style,
+    onChange,
+    ...restProps
+  } = props;
 
-  const [check, setChecked] = React.useState(restProps.checked);
+  const checkboxProps: CheckboxProps = { ...restProps };
 
-  const checkGroup = React.useContext(CheckboxGroupContext);
+  const prefixCls = usePrefixCls('checkbox');
 
-  const handleChange = React.useCallback(
-    (e) => {
-      if (!checkGroup) {
-        setChecked(!check);
-      }
-      if (onChange) onChange(e);
-      checkGroup?.toggleOption?.({ label: children, value: restProps.value });
-    },
-    [onChange, check]
-  );
-
-  const prefixCls = usePrefixCls('checkbox', customizePrefixCls);
-  const checkProps: CheckboxProps = { ...restProps };
-
-  if (checkGroup) {
-    checkProps.name = checkGroup.name;
-    checkProps.onChange = handleChange;
-    checkProps.checked = !!checkGroup.selectedValues.find((_) => _ === restProps.value);
-    checkProps.disabled = checkProps.disabled || checkGroup.disabled;
-  }
-
-  React.useEffect(() => {
-    checkGroup?.registerValue(restProps.value);
-    return () => {
-      checkGroup?.unRegisterValue(restProps.value);
-    };
-  }, [restProps.value]);
+  const classes = classNames([className, prefixCls], {
+    [`${prefixCls}-${checked ? 'checked' : ''}`]: checked,
+    [`${prefixCls}-${indeterminate ? 'indeterminate' : ''}`]: indeterminate,
+    [`${prefixCls}-${disabled ? 'disabled' : ''}`]: disabled,
+  });
 
   const checkboxCls = classNames(className, {
     [`${prefixCls}-wrapper`]: true,
-    [`${prefixCls}-wrapper-disabled`]: checkProps.disabled,
+    [`${prefixCls}-wrapper-disabled`]: checkboxProps.disabled,
   });
 
-  const checkboxClass = classNames({
-    [`${prefixCls}-indeterminate`]: indeterminate,
-    [`${prefixCls}-cool`]: !(checkProps.disabled || checkProps.checked || checkProps.indeterminate),
-  });
+  const [checkedStatus, setChecked] = useControlledState(checked, defaultChecked);
 
-  const checkboxIconClass = classNames({
-    [`${prefixCls}-icon`]: true,
-    [`${prefixCls}-icon-indeterminate`]: indeterminate,
-    [`${prefixCls}-icon-cool`]: !(checkProps.disabled || checkProps.checked || checkProps.indeterminate),
-    [`${prefixCls}-icon-disabled`]: checkProps.disabled,
-    [`${prefixCls}-icon-checked`]: checkProps.checked !== undefined ? checkProps.checked : check,
-  });
+  const checkboxGroup = React.useContext(CheckboxGroupContext);
+
+  const prevValue = React.useRef<CheckboxValueType>(value);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(e.target.checked);
+    onChange?.(e);
+  };
+
+  React.useEffect(() => {
+    checkboxGroup?.registerValue(value);
+  }, []);
+
+  React.useEffect(() => {
+    if (value !== prevValue.current) {
+      checkboxGroup?.unRegisterValue(prevValue.current);
+      checkboxGroup?.registerValue(value);
+    }
+    return () => checkboxGroup?.unRegisterValue(value);
+  }, [value]);
+
+  if (checkboxGroup) {
+    checkboxProps.onChange = (...args) => {
+      if (onChange) {
+        onChange(...args);
+      }
+      if (checkboxGroup.toggleOption) {
+        checkboxGroup.toggleOption({ label: children, value });
+      }
+    };
+    checkboxProps.name = checkboxGroup.name;
+    checkboxProps.checked = checkboxGroup.selectedValues.indexOf(value) !== -1;
+    checkboxProps.disabled = disabled || checkboxGroup.disabled;
+  }
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
-    <label className={checkboxCls} style={style}>
-      <CheckOutlined className={checkboxIconClass} />
-      <RcCheckbox
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        {...(checkProps as any)}
-        prefixCls={prefixCls}
-        ref={rcCheckbox}
+    <label className={checkboxCls}>
+      <input
         type="checkbox"
-        className={checkboxClass}
+        ref={ref}
+        disabled={disabled}
+        className={classes}
+        indeterminate={indeterminate}
+        value={value}
+        checked={checkedStatus}
         onChange={handleChange}
+        style={style}
+        color={color}
+        defaultChecked={defaultChecked}
+        {...checkboxProps}
       />
-      {children !== undefined ? <span>{children}</span> : null}
+      <span>{children}</span>
     </label>
   );
+});
+
+Checkbox.displayName = 'Checkbox';
+
+Checkbox.defaultProps = {
+  indeterminate: false,
+  defaultChecked: false,
+  disabled: false,
+  color: 'transparent',
 };
 
-export default React.memo(Checkbox);
+export default Checkbox;
