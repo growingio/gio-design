@@ -82,7 +82,7 @@ const Template: Story<InputButtonProps> = (args) => (
           <InputButton {...args} />
         </td>
         <td>
-          <InputButton {...args} hidePrefix={true} />
+          <InputButton {...args} hidePrefix />
         </td>
       </tr>
       <tr>

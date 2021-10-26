@@ -58,7 +58,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   const suffix = useMemo(() => {
     const hideRemove = removable === false;
     const defaultSuffix = canClear && !hideRemove ? <CloseCircleFilled onClick={onClear} /> : <DownFilled />;
-    return customizeSuffix ? customizeSuffix : defaultSuffix;
+    return customizeSuffix || defaultSuffix;
   }, [customizeSuffix, canClear, onClear, removable]);
 
   return (
