@@ -35,7 +35,7 @@ describe('Testing input', () => {
 
   it('should support maxLength', () => {
     const { container } = render(<Input maxLength={3} />);
-    expect(container.getElementsByClassName('gio-legacy-input')).toHaveLength(1);
+    expect(container.getElementsByClassName('gio-input')).toHaveLength(1);
   });
 
   it('should support prefix and suffix element', () => {

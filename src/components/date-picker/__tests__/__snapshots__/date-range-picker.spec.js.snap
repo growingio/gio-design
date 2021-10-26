@@ -14,12 +14,12 @@ initialize {
         "children": Array [
           Object {
             "attribs": Object {
-              "class": "gio-legacy-input gio-legacy-input--middle",
+              "class": "gio-input gio-input--middle",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-legacy-input__content",
+                  "class": "gio-input__content",
                   "placeholder": "please select",
                   "type": "text",
                   "value": "2015/06/01",
@@ -64,12 +64,12 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "gio-legacy-input gio-legacy-input--middle",
+                  "class": "gio-input gio-input--middle",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "gio-legacy-input__content",
+                      "class": "gio-input__content",
                       "placeholder": "please select",
                       "type": "text",
                       "value": "2015/06/02",
@@ -162,12 +162,12 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "gio-legacy-input gio-legacy-input--middle",
+                "class": "gio-input gio-input--middle",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-legacy-input__content",
+                    "class": "gio-input__content",
                     "placeholder": "please select",
                     "type": "text",
                     "value": "2015/06/02",
@@ -226,12 +226,12 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "gio-legacy-input gio-legacy-input--middle",
+                "class": "gio-input gio-input--middle",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-legacy-input__content",
+                    "class": "gio-input__content",
                     "placeholder": "please select",
                     "type": "text",
                     "value": "2015/06/01",
@@ -280,12 +280,12 @@ initialize {
           },
           Object {
             "attribs": Object {
-              "class": "gio-legacy-input gio-legacy-input--middle",
+              "class": "gio-input gio-input--middle",
             },
             "children": Array [
               Object {
                 "attribs": Object {
-                  "class": "gio-legacy-input__content",
+                  "class": "gio-input__content",
                   "placeholder": "please select",
                   "type": "text",
                   "value": "2015/06/02",
@@ -351,12 +351,12 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "gio-legacy-input gio-legacy-input--middle",
+                  "class": "gio-input gio-input--middle",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "gio-legacy-input__content",
+                      "class": "gio-input__content",
                       "placeholder": "please select",
                       "type": "text",
                       "value": "2015/06/01",
@@ -422,12 +422,12 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "gio-legacy-input gio-legacy-input--middle",
+                "class": "gio-input gio-input--middle",
               },
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "class": "gio-legacy-input__content",
+                    "class": "gio-input__content",
                     "placeholder": "please select",
                     "type": "text",
                     "value": "2015/06/02",
@@ -476,12 +476,12 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "class": "gio-legacy-input gio-legacy-input--middle",
+                    "class": "gio-input gio-input--middle",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "gio-legacy-input__content",
+                        "class": "gio-input__content",
                         "placeholder": "please select",
                         "type": "text",
                         "value": "2015/06/01",

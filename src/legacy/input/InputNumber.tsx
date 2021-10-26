@@ -52,7 +52,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
   onBlur,
   ...rest
 }: InputNumberProps) => {
-  const prefixCls = usePrefix('legacy-input');
+  const prefixCls = usePrefix('input');
   const increaseDisabled = useMemo(
     () => Number(value) >= max || disabled || readOnly,
     [value, max, disabled, readOnly]
