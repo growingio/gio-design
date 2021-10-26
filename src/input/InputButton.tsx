@@ -20,7 +20,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     allowClear,
   } = props;
 
-  const prefixCls = usePrefixCls('input-btn', customizePrefixCls);
+  const prefixCls = usePrefixCls('input-btn-new', customizePrefixCls);
 
   const [value, setValue] = useState(enterValue);
   const [canClear, setClear] = useState(!!enterValue);

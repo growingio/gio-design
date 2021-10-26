@@ -6,8 +6,8 @@ import usePrefixCls from '../utils/hooks/use-prefix-cls';
 const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
   const { prefixCls: customizePrefixCls, disabled, placeholder = '请输入...', rows = 2, style, ...rest } = props;
 
-  const inputPrefixCls = usePrefixCls('input', customizePrefixCls);
-  const prefixCls = usePrefixCls('textarea');
+  const inputPrefixCls = usePrefixCls('input-new', customizePrefixCls);
+  const prefixCls = usePrefixCls('textarea-new');
 
   const textAreaClass = useMemo(
     () =>
