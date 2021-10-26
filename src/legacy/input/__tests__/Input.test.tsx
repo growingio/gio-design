@@ -35,7 +35,7 @@ describe('Testing input', () => {
 
   it('should support maxLength', () => {
     const { container } = render(<Input maxLength={3} />);
-    expect(container.getElementsByClassName('gio-input')).toHaveLength(1);
+    expect(container.getElementsByClassName('gio-legacy-input')).toHaveLength(1);
   });
 
   it('should support prefix and suffix element', () => {
@@ -97,13 +97,24 @@ describe('Testing input', () => {
     fireEvent.change(screen.getByRole('textbox'), { target: { value: '5' } });
     expect(val).toBe(5);
     rerender(
-      <Input.InputNumber max={5} min={1} value={val as any} onChange={(n: any) => {val = n}} />
+      <Input.InputNumber
+        max={5}
+        min={1}
+        value={val as any}
+        onChange={(n: any) => {
+          val = n;
+        }}
+      />
     );
 
     fireEvent.change(screen.getByRole('textbox'), { target: { value: '6' } });
     expect(val).toBe(6);
     rerender(
-      <Input.InputNumber max={5} min={1} value={val as any} onChange={(n: any) => {
+      <Input.InputNumber
+        max={5}
+        min={1}
+        value={val as any}
+        onChange={(n: any) => {
           val = n;
         }}
       />
@@ -125,7 +136,14 @@ describe('Testing input', () => {
     fireEvent.change(screen.getByRole('textbox'), { target: { value: '0' } });
     expect(val).toBe(0);
     rerender(
-      <Input.InputNumber max={5} min={1} value={val as any} onChange={(n: any) => { val = n; }} />
+      <Input.InputNumber
+        max={5}
+        min={1}
+        value={val as any}
+        onChange={(n: any) => {
+          val = n;
+        }}
+      />
     );
 
     fireEvent.blur(screen.getByRole('textbox'));
