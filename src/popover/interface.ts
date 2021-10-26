@@ -1,13 +1,30 @@
-import { TooltipProps } from '../tooltip/interface';
+export interface PopoverProps {
+  subPrefixCls?: string;
+  title?: React.ReactNode;
+  /**
+   当 `disabled` 为 `true` 时，触发行为不会显示气泡框
+   */
+  disabled?: boolean;
+  /**
+   设置头像的链接以及链接的文字
+   */
+  //   tooltipLink?: TooltipLink;
+  /**
+   箭头是否指向目标元素中心
+   */
+  arrowPointAtCenter?: boolean;
+  /**
+   气泡被遮挡时自动调整位置
+   */
+  autoAdjustOverflow?: boolean;
+  /**
+   被包裹的元素
+   */
+  children: React.ReactElement;
 
-export type ReactRender = () => React.ReactNode;
-export interface PopoverProps extends Omit<TooltipProps, 'title' | 'tooltipLink'> {
   /**
-   	卡片内容区域
+    @deprecated
    */
-  contentArea: React.ReactNode | ReactRender;
-  /**
-   	卡片按钮区域
-   */
-  footerArea?: React.ReactNode | ReactRender;
+  getTooltipContainer?: (node: HTMLElement) => HTMLElement;
+  getContainer?: (node: HTMLElement) => HTMLElement;
 }

@@ -1,61 +1,51 @@
-@import '../../stylesheet/index.less';
-@import '../../stylesheet/mixin/trigger.less';
+@import '../../stylesheet/variables/index.less';
 
-@popover-prefix-cls: ~'@{component-prefix}-popover';
-@popover-arrow-width: 12px;
-@distance: 6px;
-@popover-offset: 20px;
-@popover-duration: 10ms;
+@popover-prefix-cls: ~'@{component-prefix}-popover-new';
+@popover-arrow-prefix-cls: ~'@{component-prefix}-popover-new__arrow';
 
 .@{popover-prefix-cls} {
-  position: absolute;
-  z-index: @zindex-popover;
-  margin: auto;
-
-  &-hidden {
-    display: none;
+  &__popcorn {
+    display: inline-block;
   }
-
-  &-content {
-    position: relative;
-    background-color: @color-background-popover;
+  &__content {
+    color: @gray-0;
+    box-sizing: border-box;
+    visibility: hidden;
+    background: @gray-5;
     border-radius: 4px;
-    box-shadow: @shadow-popover;
+    padding: 8px 16px;
+
+    &[data-popper-placement^='top'] > .@{popover-arrow-prefix-cls} {
+      bottom: -4px;
+    }
+
+    &[data-popper-placement^='bottom'] > .@{popover-arrow-prefix-cls} {
+      top: -4px;
+    }
+
+    &[data-popper-placement^='left'] > .@{popover-arrow-prefix-cls} {
+      right: -4px;
+    }
+
+    &[data-popper-placement^='right'] > .@{popover-arrow-prefix-cls} {
+      left: -4px;
+    }
   }
 
-  &-inner {
-    overflow: hidden;
-    &-content {
-      position: relative;
-      margin: 20px;
-      overflow: hidden;
-    }
-    &-footer {
-      position: relative;
-      margin: -4px 20px 16px;
-      overflow: hidden;
-    }
-  }
-
-  &-arrow {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    pointer-events: none;
-    &-content {
+  &__arrow {
+    visibility: hidden;
+    &,
+    &::before {
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 0;
-      margin: auto;
-      border: @popover-arrow-width / 2 solid;
-      pointer-events: auto;
+      width: 8px;
+      height: 8px;
+      background: inherit;
+      visibility: visible;
+      transform: rotate(45deg);
+    }
+
+    &::before {
+      content: '';
     }
   }
-  .trigger-placement(@popover-prefix-cls, @color-background-popover, @popover-arrow-width, @distance, @popover-offset);
 }
-
-.trigger-transition(@popover-prefix-cls, @popover-duration);
