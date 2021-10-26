@@ -8,7 +8,7 @@ export { default as Checkbox, CheckboxGroup, CheckboxProps, CheckboxGroupProps, 
 export { default as Drawer, DrawerProps } from './drawer';
 export { default as Dropdown, DropdownProps } from './dropdown';
 export { default as Empty, EmptyProps } from './components/empty';
-export { default as Input, InputProps, InputNumberProps, TextAreaProps } from './components/input';
+export { default as Input, InputProps, InputNumberProps, TextAreaProps } from './input';
 export { default as Layout, LayoutProps } from './layout';
 export { default as Link, LinkProps } from './link';
 export { default as List, ListProps } from './components/list';
@@ -46,7 +46,7 @@ export {
 } from './skeleton';
 export { default as Table, TableProps } from './table';
 export { default as TabNav, TabNavProps } from './tab-nav';
-export { default as SearchBar, SearchBarProps } from './search-bar';
+export { default as SearchBar, SearchBarProps } from './legacy/search-bar';
 export { default as Tabs, TabPane, TabProps, TabPaneProps } from './components/tabs';
 export { default as Tag, TagProps } from './tag';
 export { default as Toast, ToastConfigOptions, ToastType } from './toast';

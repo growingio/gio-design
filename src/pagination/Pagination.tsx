@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { isFunction, isNumber, isNaN as notNumber, isUndefined } from 'lodash';
 import { LeftOutlined, LeftDoubleOutlined, RightOutlined, RightDoubleOutlined, MoreOutlined } from '@gio-design/icons';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
-import Input from '../components/input';
+import Input from '../legacy/input';
 import Select from '../components/select';
 import { PaginationProps } from './interface';
 import { generatePageArray } from './until';

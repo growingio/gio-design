@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Moment } from 'moment';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import Button from '../../legacy/button';
-import Input from '../input';
+import Input from '../../legacy/input';
 import useDateRangePicker from './hook/useDateRangePicker';
 import { DateRangePickerProps } from './interface';
 

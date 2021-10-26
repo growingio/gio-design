@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { LoadingOutlined } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
 import Loading from '../../loading';
-import Input from '../../components/input';
+import Input from '../../legacy/input';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import Preview from '../Preview';
 import { UploadPrefixClsContext } from '../Upload';

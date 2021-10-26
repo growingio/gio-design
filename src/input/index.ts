@@ -7,4 +7,6 @@ Input.InputNumber = InputNumber;
 Input.Password = Password;
 Input.TextArea = TextArea;
 
+export * from './interface';
+
 export default Input;

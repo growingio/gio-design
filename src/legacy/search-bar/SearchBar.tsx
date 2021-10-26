@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classnames from 'classnames';
 import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
 import { usePrefixCls, useSize, useLocale } from '@gio-design/utils';
-import { Input, Button } from '../index';
+import { Input, Button } from '../../index';
 import { SearchBarProps } from './interfaces';
 import defaultLocale from './locales/zh-CN';
 
