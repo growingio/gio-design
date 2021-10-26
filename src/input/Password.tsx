@@ -18,11 +18,7 @@ const Password = React.forwardRef<HTMLInputElement, PasswordProps>((props, ref) 
     if (disabled) {
       return;
     }
-    if (visible) {
-      setVisible(false);
-    } else {
-      setVisible(true);
-    }
+    setVisible(!visible);
   }, [visible, disabled]);
 
   const passwordSuffix = useMemo(

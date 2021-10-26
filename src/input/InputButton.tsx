@@ -2,7 +2,7 @@ import { CloseCircleFilled, DownFilled, EventsPresetOutlined } from '@gio-design
 import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
 import React, { useCallback, useMemo, useState } from 'react';
-import Input from '../input/Input';
+import Input from './Input';
 import { InputButtonProps } from './interface';
 
 import './style';
@@ -17,7 +17,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     value: enterValue,
     disabled,
     hidePrefix = false,
-    removable,
+    allowClear,
   } = props;
 
   const prefixCls = usePrefixCls('input-btn', customizePrefixCls);
@@ -56,10 +56,10 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   );
 
   const suffix = useMemo(() => {
-    const hideRemove = removable === false;
-    const defaultSuffix = canClear && !hideRemove ? <CloseCircleFilled onClick={onClear} /> : <DownFilled />;
+    const hideClear = allowClear === false;
+    const defaultSuffix = canClear && !hideClear ? <CloseCircleFilled onClick={onClear} /> : <DownFilled />;
     return customizeSuffix || defaultSuffix;
-  }, [customizeSuffix, canClear, onClear, removable]);
+  }, [customizeSuffix, canClear, onClear, allowClear]);
 
   return (
     <span className={wrapperCls}>

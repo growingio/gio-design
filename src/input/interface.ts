@@ -40,6 +40,7 @@ export interface CompoundedInput
   InputNumber: React.FC<InputNumberProps>;
   Password: React.FC<PasswordProps>;
   TextArea: React.FC<TextAreaProps>;
+  Button: React.FC<InputButtonProps>;
 }
 
 export interface PasswordProps extends Omit<InputProps, 'type'> {
@@ -83,4 +84,11 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
     | React.RefObject<HTMLTextAreaElement>
     | React.MutableRefObject<HTMLTextAreaElement>
     | React.LegacyRef<HTMLTextAreaElement>;
+}
+
+export interface InputButtonProps extends InputProps {
+  hidePrefix?: boolean;
+  prefix?: React.ReactNode;
+  prefixCls?: string;
+  onInputChange?: (value: string) => void;
 }

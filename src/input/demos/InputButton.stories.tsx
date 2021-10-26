@@ -92,7 +92,7 @@ const Template: Story<InputButtonProps> = (args) => (
           <InputButton {...args} value="浏览商品详情页" />
         </td>
         <td>
-          <InputButton {...args} value="浏览商品详情页" removable={false} />
+          <InputButton {...args} value="浏览商品详情页" allowClear={false} />
         </td>
       </tr>
     </table>
