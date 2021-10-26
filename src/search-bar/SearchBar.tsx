@@ -3,11 +3,11 @@ import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
 import React, { useCallback, useMemo, useState } from 'react';
 import Input from '../input/Input';
-import { SearchProps } from './interface';
+import { SearchBarProps } from './interface';
 
 import './style';
 
-const Search = React.forwardRef<HTMLInputElement, SearchProps>((props, ref) => {
+const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref) => {
   const {
     prefixCls: customizePrefixCls,
     onChange: onChangeFC,
@@ -66,4 +66,4 @@ const Search = React.forwardRef<HTMLInputElement, SearchProps>((props, ref) => {
   );
 });
 
-export default Search;
+export default SearchBar;

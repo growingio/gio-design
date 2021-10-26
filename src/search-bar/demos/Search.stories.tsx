@@ -1,16 +1,16 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 // import { InputProps } from '../interface';
-import Search from '../Search';
+import SearchBar from '../SearchBar';
 import '../style';
-import { SearchProps } from '../interface';
+import { SearchBarProps } from '../interface';
 // import InputNumber from '../InputNumber';
 // import Password from '../Password';
 // import TextArea from '../TextArea';
 
 export default {
-  title: 'Upgraded/Search',
-  component: Search,
+  title: 'Upgraded/SearchBar',
+  component: SearchBar,
   argTypes: {
     prefix: {
       control: { type: 'text' }, // 不约束react_node会传入对象导致报错
@@ -21,7 +21,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<SearchProps> = (args) => (
+const Template: Story<SearchBarProps> = (args) => (
   <>
     <h3>定义</h3>
     <p>在所有内容中，通过输入内容的关键信息筛选出某个内容。</p>
@@ -41,19 +41,19 @@ const Template: Story<SearchProps> = (args) => (
       </tr>
       <tr>
         <td>
-          <Search {...args} />
+          <SearchBar {...args} />
         </td>
         <td>
-          <Search {...args} />
+          <SearchBar {...args} />
         </td>
         <td>
-          <Search {...args} value="集成应用" />
+          <SearchBar {...args} value="集成应用" />
         </td>
         <td>
-          <Search {...args} disabled />
+          <SearchBar {...args} disabled />
         </td>
         <td>
-          <Search {...args} value="数据可视化" disabled />
+          <SearchBar {...args} value="数据可视化" disabled />
         </td>
       </tr>
     </table>
@@ -66,10 +66,10 @@ const Template: Story<SearchProps> = (args) => (
       </tr>
       <tr>
         <td>
-          <Search {...args} />
+          <SearchBar {...args} />
         </td>
         <td>
-          <Search {...args} size="small" />
+          <SearchBar {...args} size="small" />
         </td>
       </tr>
     </table>

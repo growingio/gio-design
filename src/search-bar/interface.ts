@@ -1,5 +1,5 @@
 import { InputProps } from '../input/interface';
 
-export interface SearchProps extends InputProps {
+export interface SearchBarProps extends InputProps {
   onSearch?: (value: string) => void;
 }
