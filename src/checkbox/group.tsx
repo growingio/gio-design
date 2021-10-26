@@ -73,7 +73,7 @@ const InternalCheckboxGroup: React.ForwardRefRenderFunction<HTMLDivElement, Chec
     );
   };
 
-  const prefixCls = usePrefixCls('checkbox', customizePrefixCls);
+  const prefixCls = usePrefixCls('checkbox-new', customizePrefixCls);
   let customChildren = children;
 
   if (options && options.length > 0) {
