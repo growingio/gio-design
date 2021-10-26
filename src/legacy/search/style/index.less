@@ -1,0 +1,15 @@
+@import '../../../stylesheet/index.less';
+@import '../../../stylesheet/mixin/border.less';
+@import '../../../stylesheet/mixin/elevation.less';
+
+@search-prefix-cls: ~'@{component-prefix}-search';
+.@{search-prefix-cls} {
+  &__suffix {
+    &-clear {
+      cursor: pointer;
+    }
+    &-disabled {
+      cursor: not-allowed;
+    }
+  }
+}

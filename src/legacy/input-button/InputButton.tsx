@@ -1,4 +1,4 @@
-import { CloseCircleFilled, EventsPresetOutlined, SearchOutlined } from '@gio-design/icons';
+import { CloseCircleFilled, DownFilled, EventsPresetOutlined } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
 import React, { useCallback, useMemo, useState } from 'react';
@@ -10,53 +10,70 @@ import './style';
 const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props, ref) => {
   const {
     prefixCls: customizePrefixCls,
-    prefix,
+    prefix: customizePrefix,
+    suffix: customizeSuffix,
     onChange: onChangeFC,
+    onInputChange,
     value: enterValue,
     disabled,
-    placeholder,
+    hidePrefix = false,
+    removable,
   } = props;
 
-  const prefixCls = usePrefixCls('search', customizePrefixCls);
-  const [value, setValue] = useState(enterValue);
+  const prefixCls = usePrefixCls('input-btn', customizePrefixCls);
 
+  const [value, setValue] = useState(enterValue);
   const [canClear, setClear] = useState(!!enterValue);
 
-  const prefixIcon = <EventsPresetOutlined />;
+  const onClear = useCallback(() => {
+    if (disabled) {
+      return;
+    }
+    onInputChange && onInputChange('');
+    setValue('');
+    setClear(false);
+  }, [onInputChange, disabled]);
 
-  const suffixCls = useMemo(
-    () =>
-      classNames(`${prefixCls}__suffix`, {
-        [`${prefixCls}__suffix-clear`]: canClear,
-        [`${prefixCls}__suffix-disabled`]: disabled,
-      }),
-    [prefixCls, canClear, disabled]
+  const onChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const inputValue = e.target.value;
+      onChangeFC && onChangeFC(e);
+      onInputChange && onInputChange(inputValue);
+      setValue(inputValue);
+      setClear(!!inputValue);
+    },
+    [onInputChange, onChangeFC]
   );
 
-  const suffix = useMemo(
-    () => (canClear ? <CloseCircleFilled className={suffixCls} /> : <SearchOutlined className={suffixCls} />),
-    [suffixCls, canClear]
+  const wrapperCls = useMemo(
+    () => classNames(prefixCls, { [`${prefixCls}__disabled`]: disabled }),
+    [prefixCls, disabled]
   );
 
-  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    onChangeFC && onChangeFC(e);
-    // onSearch && onSearch(inputValue);
-    setValue(inputValue);
-    setClear(!!inputValue);
-  }, []);
+  const prefix = useMemo(
+    () => (hidePrefix ? null : customizePrefix || <EventsPresetOutlined />),
+    [customizePrefix, hidePrefix]
+  );
 
-  const resetPlaceholder = useMemo(() => (placeholder || disabled ? '无法搜索' : '搜索'), [placeholder, disabled]);
+  const suffix = useMemo(() => {
+    const hideRemove = removable === false;
+    const defaultSuffix = canClear && !hideRemove ? <CloseCircleFilled onClick={onClear} /> : <DownFilled />;
+    return customizeSuffix ? customizeSuffix : defaultSuffix;
+  }, [customizeSuffix, canClear, onClear, removable]);
+
   return (
-    <Input
-      {...props}
-      placeholder={resetPlaceholder}
-      value={value}
-      onChange={onChange}
-      prefix={prefixIcon}
-      suffix={suffix}
-      ref={ref}
-    />
+    <span className={wrapperCls}>
+      <Input
+        {...props}
+        placeholder="请选择事件"
+        readOnly
+        value={value}
+        onChange={onChange}
+        prefix={prefix}
+        suffix={suffix}
+        ref={ref}
+      />
+    </span>
   );
 });
 

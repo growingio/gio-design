@@ -21,8 +21,6 @@ export default {
   },
 } as Meta;
 
-const colspan: any = { colspan: 2 };
-
 const Template: Story<SearchProps> = (args) => (
   <>
     <h3>定义</h3>

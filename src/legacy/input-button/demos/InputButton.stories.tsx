@@ -34,13 +34,13 @@ const Template: Story<InputButtonProps> = (args) => (
         <td>Default</td>
         <td>Select Button的各状态与 Secondary Button 一致</td>
         <td>
-          <InputButton {...args} value="集成应用" />
+          <InputButton {...args} />
+        </td>
+        <td>
+          <InputButton {...args} />
         </td>
         <td>
           <InputButton {...args} disabled />
-        </td>
-        <td>
-          <InputButton {...args} value="数据可视化" disabled />
         </td>
       </tr>
       <tr>
@@ -50,10 +50,10 @@ const Template: Story<InputButtonProps> = (args) => (
           <InputButton {...args} value="集成应用" />
         </td>
         <td>
-          <InputButton {...args} disabled />
+          <InputButton {...args} value="集成应用" />
         </td>
         <td>
-          <InputButton {...args} value="数据可视化" disabled />
+          <InputButton {...args} value="集成应用" disabled />
         </td>
       </tr>
     </table>
@@ -63,11 +63,14 @@ const Template: Story<InputButtonProps> = (args) => (
       <tr>
         <th>Button Control</th>
         <th>描述</th>
-        <th>Secondary</th>
+        <th colSpan={2}>Secondary</th>
       </tr>
       <tr>
         <td>Size</td>
         <td>拥有两种尺寸：大号为高度36px，小号为高度30px</td>
+        <td>
+          <InputButton {...args} />
+        </td>
         <td>
           <InputButton {...args} size="small" />
         </td>
@@ -76,14 +79,20 @@ const Template: Story<InputButtonProps> = (args) => (
         <td>With Icon</td>
         <td>文案右侧是否有icon</td>
         <td>
-          <InputButton {...args} size="small" />
+          <InputButton {...args} />
+        </td>
+        <td>
+          <InputButton {...args} hidePrefix={true} />
         </td>
       </tr>
       <tr>
         <td>Removable</td>
         <td>是否可以清除选中内容</td>
         <td>
-          <InputButton {...args} size="small" />
+          <InputButton {...args} value="浏览商品详情页" />
+        </td>
+        <td>
+          <InputButton {...args} value="浏览商品详情页" removable={false} />
         </td>
       </tr>
     </table>

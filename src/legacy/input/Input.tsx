@@ -10,6 +10,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     prefixCls: customizePrefixCls,
     suffix: customizeSuffix,
     disabled,
+    className,
     placeholder,
     ...rest
   } = props;
@@ -18,11 +19,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   const inputClass = useMemo(
     () =>
-      classNames(prefixCls, {
+      classNames(prefixCls, className, {
         [`${prefixCls}__disabled`]: disabled,
         [`${prefixCls}__small`]: size === 'small',
       }),
-    [prefixCls, size, disabled]
+    [prefixCls, className, size, disabled]
   );
 
   const wrapper = useMemo(
@@ -31,17 +32,33 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         [`${prefixCls}__suffix-wrapper`]: !!customizeSuffix,
         [`${prefixCls}__prefix-wrapper`]: !!customizePrefix,
       }),
-    [customizeSuffix, customizePrefix, prefixCls]
+    [prefixCls, customizeSuffix, customizePrefix]
+  );
+
+  const prefixFcCls = useMemo(
+    () =>
+      classNames(`${prefixCls}__prefix`, {
+        [`${prefixCls}__prefix-disabled`]: disabled,
+      }),
+    [prefixCls, disabled]
   );
 
   const prefix = useMemo(
-    () => (customizePrefix ? <div className={`${prefixCls}__prefix`}>{customizePrefix}</div> : null),
-    [customizePrefix]
+    () => (customizePrefix ? <div className={prefixFcCls}>{customizePrefix}</div> : null),
+    [prefixFcCls, customizePrefix]
+  );
+
+  const suffixCls = useMemo(
+    () =>
+      classNames(`${prefixCls}__suffix`, {
+        [`${prefixCls}__suffix-disabled`]: disabled,
+      }),
+    [prefixCls, disabled]
   );
 
   const suffix = useMemo(
-    () => (customizeSuffix ? <div className={`${prefixCls}__suffix`}>{customizeSuffix}</div> : null),
-    [customizeSuffix, prefixCls]
+    () => (customizeSuffix ? <div className={suffixCls}>{customizeSuffix}</div> : null),
+    [suffixCls, customizeSuffix]
   );
 
   const input = (
