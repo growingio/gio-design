@@ -2,37 +2,43 @@ import React from 'react';
 
 export type InputSize = 'normal' | 'small';
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'suffix'> {
-  /**
-   * 修改值时触发的回调函数
-   */
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+export interface BaseInputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'suffix'> {
   /**
    * Input 外层容器 style，
    */
   style?: React.CSSProperties;
   /**
    * input 大小
-   * @default 'middle''
+   * @default "normal"
    */
   size?: InputSize;
-  prefixCls?: string;
-
   prefix?: React.ReactNode;
-  allowClear?: boolean;
+
+  prefixCls?: string;
   /**
    * input 的后缀图标
    */
   suffix?: React.ReactNode;
+}
+
+export interface InputProps extends Omit<BaseInputProps, 'onChange'> {
+  /**
+   * 修改值时触发的回调函数
+   */
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+  allowClear?: boolean;
+
   forwardRef?: React.MutableRefObject<HTMLInputElement | null> | ((instance: HTMLInputElement | null) => void) | null;
 }
 
-export interface PasswordProps extends Omit<InputProps, 'type'> {
-  prefixCls?: string;
+export interface PasswordProps extends Omit<BaseInputProps, 'type'> {
+  forwardRef?: React.MutableRefObject<HTMLInputElement | null> | ((instance: HTMLInputElement | null) => void) | null;
 }
 
-export interface InputNumberProps extends Omit<InputProps, 'type'> {
-  prefixCls?: string;
+export interface InputNumberProps extends Omit<BaseInputProps, 'type'> {
+  forwardRef?: React.MutableRefObject<HTMLInputElement | null> | ((instance: HTMLInputElement | null) => void) | null;
 }
 
 export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
