@@ -1,14 +1,38 @@
+import { Placement as PlacementRepo } from '@popperjs/core';
+import React from 'react';
+
+export type Placement =
+  | 'top'
+  | 'left'
+  | 'right'
+  | 'bottom'
+  | 'topLeft'
+  | 'topRight'
+  | 'bottomLeft'
+  | 'bottomRight'
+  | 'leftTop'
+  | 'leftBottom'
+  | 'rightTop'
+  | 'rightBottom';
+
+export const placements = {
+  topLeft: 'top-start',
+  top: 'top',
+  topRight: 'top-end',
+  leftTop: 'left-start',
+  left: 'left',
+  leftBottom: 'left-end',
+  rightTop: 'right-start',
+  right: 'right',
+  rightBottom: 'right-end',
+  bottomLeft: 'bottom-start',
+  bottom: 'bottom',
+  bottomRight: 'bottom-end',
+} as { [key: string]: PlacementRepo };
+
 export interface PopoverProps {
-  subPrefixCls?: string;
-  title?: React.ReactNode;
-  /**
-   当 `disabled` 为 `true` 时，触发行为不会显示气泡框
-   */
-  disabled?: boolean;
-  /**
-   设置头像的链接以及链接的文字
-   */
-  //   tooltipLink?: TooltipLink;
+  prefixCls?: string;
+
   /**
    箭头是否指向目标元素中心
    */
@@ -22,9 +46,31 @@ export interface PopoverProps {
    */
   children: React.ReactElement;
 
+  placement?: Placement;
+  trigger?: string;
+  content?: string | React.ReactNode;
+
+  allowArrow?: boolean;
+  enterable?: boolean;
+
   /**
     @deprecated
    */
   getTooltipContainer?: (node: HTMLElement) => HTMLElement;
+  /**
+   * 浮动显示的层
+   */
   getContainer?: (node: HTMLElement) => HTMLElement;
+  /**
+   * 手动控制浮动，默认为false
+   */
+  visible?: boolean;
+  /**
+   * 默认是否显示，默认为false
+   */
+  defaultVisible?: boolean;
+  /**
+   * 显示隐藏的回掉
+   */
+  onVisibleChange?: (visible: boolean) => void;
 }
