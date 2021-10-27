@@ -18,6 +18,7 @@ const Popover = (props: PopoverProps) => {
     defaultVisible,
     allowArrow = true,
     enterable = true,
+    children,
   } = props;
 
   const prefixCls = usePrefixCls('popover-new', customPrefixCls);
@@ -46,8 +47,7 @@ const Popover = (props: PopoverProps) => {
   const updateVisible = useCallback(
     (resetVisible: boolean) => {
       const realVisible = isUndefined(enterVisible) ? resetVisible : enterVisible;
-      if (overContentRef.current && enterable) {
-      } else {
+      if (!(overContentRef.current && enterable)) {
         setVisible(realVisible);
         onVisibleChange?.(resetVisible);
       }
@@ -68,7 +68,10 @@ const Popover = (props: PopoverProps) => {
   const onFocus = useCallback(() => trigger === 'focus' && updateVisible(true), [trigger, updateVisible]);
   const onBlur = useCallback(() => trigger === 'focus' && updateVisible(false), [trigger, updateVisible]);
 
-  const onContentMouseEnter = useCallback((e) => (overContentRef.current = true), [enterable]);
+  const onContentMouseEnter = useCallback(() => {
+    overContentRef.current = true;
+  }, []);
+
   const onContentMouseLeave = useMemo(
     () =>
       debounce(() => {
@@ -77,7 +80,7 @@ const Popover = (props: PopoverProps) => {
           updateVisible(false);
         }
       }, 100),
-    [enterable, trigger]
+    [trigger, updateVisible]
   );
 
   useEffect(() => {
@@ -89,15 +92,16 @@ const Popover = (props: PopoverProps) => {
   return (
     <>
       <div
+        role="widget"
         className={`${prefixCls}__popcorn`}
         ref={referenceElement}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onFocus={onFocus}
         onBlur={onBlur}
-        onClick={onClick}
+        onKeyDown={onClick}
       >
-        {props.children}
+        {children}
       </div>
       <div
         className={contentCls}
