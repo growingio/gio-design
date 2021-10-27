@@ -2,7 +2,7 @@
 import React, { useMemo, useCallback, useContext, useState } from 'react';
 import classNames from 'classnames';
 import { InputProps, InputNumberProps, TextAreaProps } from './interfaces';
-import { SizeContext } from '../config-provider/SizeContext';
+import { SizeContext } from '../../components/config-provider/SizeContext';
 import useMergeRef from '../../utils/hooks/useMergeRef';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 

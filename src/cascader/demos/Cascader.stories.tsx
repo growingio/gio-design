@@ -7,9 +7,9 @@ import CascaderMenu from '../menu';
 import { Props } from '../interface';
 import '../style';
 import '../style/stories.less';
-import '../../components/input/style';
+import '../../legacy/input/style';
 import '../../dropdown/style';
-import '../../search-bar/style';
+import '../../legacy/search-bar/style';
 import Docs from './CascaderPage';
 
 interface DemoProps extends Props {

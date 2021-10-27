@@ -8,7 +8,7 @@ import listPickerLocale from '../list-picker/locales/en-US';
 import modalLocale from '../modal/locales/en-US';
 import timePickerLocale from '../time-picker/locales/en-US';
 import timeSelectorLocale from '../time-selector/locales/en-US';
-import searchBarLocale from '../search-bar/locales/en-US';
+import searchBarLocale from '../legacy/search-bar/locales/en-US';
 import cascaderLocale from '../cascader/locales/en-US';
 import paginationLocale from '../pagination/locales/en-US';
 import tableLocale from '../table/locales/en-US';
