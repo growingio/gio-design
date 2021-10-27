@@ -6,7 +6,7 @@ import InputNumber from './InputNumber';
 import Password from './Password';
 import TextArea from './TextArea';
 
-export * from './interface';
+export { InputProps, InputButtonProps, PasswordProps, TextAreaProps } from './interface';
 
 export { InputButton, InputNumber, TextArea, Password };
 

@@ -27,11 +27,11 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   forwardRef?: React.MutableRefObject<HTMLInputElement | null> | ((instance: HTMLInputElement | null) => void) | null;
 }
 
-export interface PasswordProps<T extends InputProps> {
+export interface PasswordProps extends Omit<InputProps, 'type'> {
   prefixCls?: string;
 }
 
-export interface InputNumberProps<T extends InputProps> {
+export interface InputNumberProps extends Omit<InputProps, 'type'> {
   prefixCls?: string;
 }
 
@@ -77,14 +77,6 @@ export interface InputButtonProps {
    */
   style?: React.CSSProperties;
   /**
-   * 外层容器的style
-   */
-  wrapStyle?: React.CSSProperties;
-  /**
-   * input 的 style
-   */
-  inputStyle?: React.CSSProperties;
-  /**
    * class name 前缀
    */
   prefixCls?: string;
@@ -115,6 +107,11 @@ export interface InputButtonProps {
    * Input button默认的value
    */
   value?: string;
+
+  /**
+   * Input Button size
+   */
+  size?: InputSize;
 
   /**
    * 空值时，显示的样式

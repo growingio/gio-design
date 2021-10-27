@@ -19,8 +19,6 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     allowClear,
     className,
     style = {},
-    wrapStyle = {},
-    inputStyle = {},
   } = props;
 
   const prefixCls = usePrefixCls('input-btn-new', customizePrefixCls);
@@ -61,9 +59,9 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   }, [customizeSuffix, value, onClear, allowClear]);
 
   return (
-    <span className={wrapperCls} style={{ ...style, ...wrapStyle }}>
+    <span className={wrapperCls}>
       <Input
-        style={inputStyle}
+        style={style}
         placeholder="请选择事件"
         readOnly
         value={value}
