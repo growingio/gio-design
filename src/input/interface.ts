@@ -8,13 +8,6 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
    */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   /**
-   * 按下回车时的回调
-   */
-  onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  compositionStart?: (e: React.CompositionEvent<HTMLInputElement>) => void;
-  compositionUpdate?: (e: React.CompositionEvent<HTMLInputElement>) => void;
-  compositionEnd?: (e: React.CompositionEvent<HTMLInputElement>) => void;
-  /**
    * Input 外层容器 style，
    */
   style?: React.CSSProperties;
@@ -24,30 +17,21 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
    */
   size?: InputSize;
   prefixCls?: string;
+
   prefix?: React.ReactNode;
-  prefixWidth?: number;
   allowClear?: boolean;
   /**
    * input 的后缀图标
    */
   suffix?: React.ReactNode;
-  suffixWidth?: number;
   forwardRef?: React.MutableRefObject<HTMLInputElement | null> | ((instance: HTMLInputElement | null) => void) | null;
 }
 
-export interface CompoundedInput
-  extends React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>> {
-  InputNumber: React.FC<InputNumberProps>;
-  Password: React.FC<PasswordProps>;
-  TextArea: React.FC<TextAreaProps>;
-  Button: React.FC<InputButtonProps>;
-}
-
-export interface PasswordProps extends Omit<InputProps, 'type'> {
+export interface PasswordProps<T extends InputProps> {
   prefixCls?: string;
 }
 
-export interface InputNumberProps extends Omit<InputProps, 'type'> {
+export interface InputNumberProps<T extends InputProps> {
   prefixCls?: string;
 }
 
@@ -76,19 +60,72 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
    * input 的 style
    */
   inputStyle?: React.CSSProperties;
-  /**
-   * 是否展示计数
-   */
-  showCount?: boolean;
+
   forwardRef?:
     | React.RefObject<HTMLTextAreaElement>
     | React.MutableRefObject<HTMLTextAreaElement>
     | React.LegacyRef<HTMLTextAreaElement>;
 }
 
-export interface InputButtonProps extends InputProps {
-  hidePrefix?: boolean;
-  prefix?: React.ReactNode;
+export interface InputButtonProps {
+  /**
+   * Input button 的 class name
+   */
+  className?: string;
+  /**
+   * 外层容器 style，取代 wrapStyle 并忽略 inputStyle
+   */
+  style?: React.CSSProperties;
+  /**
+   * 外层容器的style
+   */
+  wrapStyle?: React.CSSProperties;
+  /**
+   * input 的 style
+   */
+  inputStyle?: React.CSSProperties;
+  /**
+   * class name 前缀
+   */
   prefixCls?: string;
+  /**
+   * 是否disabled掉Input Button
+   */
+  disabled?: boolean;
+
+  /**
+   * 是否可以被清空
+   */
+  allowClear?: boolean;
+
+  /**
+   * 是否隐藏前缀的icon，默认是false
+   */
+  hidePrefix?: boolean;
+  /**
+   * 自定义前缀icon
+   */
+  prefix?: React.ReactNode;
+  /**
+   * 自定义后缀的icon
+   */
+  suffix?: React.ReactNode;
+
+  /**
+   * Input button默认的value
+   */
+  value?: string;
+
+  /**
+   * 空值时，显示的样式
+   */
+  placeholder?: string;
+  /**
+   * 当Input Button的值修改后的方法
+   */
   onInputChange?: (value: string) => void;
+  forwardRef?:
+    | React.RefObject<HTMLInputElement>
+    | React.MutableRefObject<HTMLInputElement>
+    | React.LegacyRef<HTMLInputElement>;
 }

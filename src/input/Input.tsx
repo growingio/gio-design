@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
-import { CompoundedInput, InputProps } from './interface';
+import { InputProps } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
@@ -76,6 +76,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       {suffix}
     </span>
   );
-}) as CompoundedInput;
+});
 
 export default Input;

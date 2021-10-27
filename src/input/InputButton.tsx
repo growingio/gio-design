@@ -12,12 +12,15 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     prefixCls: customizePrefixCls,
     prefix: customizePrefix,
     suffix: customizeSuffix,
-    onChange: onChangeFC,
     onInputChange,
     value: enterValue,
     disabled,
     hidePrefix = false,
     allowClear,
+    className,
+    style = {},
+    wrapStyle = {},
+    inputStyle = {},
   } = props;
 
   const prefixCls = usePrefixCls('input-btn-new', customizePrefixCls);
@@ -35,16 +38,15 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const inputValue = e.target.value;
-      onChangeFC?.(e);
       onInputChange?.(inputValue);
       setValue(inputValue);
     },
-    [onInputChange, onChangeFC]
+    [onInputChange]
   );
 
   const wrapperCls = useMemo(
-    () => classNames(prefixCls, { [`${prefixCls}__disabled`]: disabled }),
-    [prefixCls, disabled]
+    () => classNames(className, prefixCls, { [`${prefixCls}__disabled`]: disabled }),
+    [className, prefixCls, disabled]
   );
 
   const prefix = useMemo(
@@ -59,9 +61,9 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   }, [customizeSuffix, value, onClear, allowClear]);
 
   return (
-    <span className={wrapperCls}>
+    <span className={wrapperCls} style={{ ...style, ...wrapStyle }}>
       <Input
-        {...props}
+        style={inputStyle}
         placeholder="请选择事件"
         readOnly
         value={value}
