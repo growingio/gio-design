@@ -17,13 +17,13 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     [inputPrefixCls, prefixCls, disabled]
   );
 
-  const styles = useMemo(
-    () => ({
+  const styles = useMemo(() => {
+    const resize = disabled ? 'none' : style?.resize || 'none';
+    return {
       ...(style || {}),
-      resize: disabled ? 'none' : style?.resize || 'none',
-    }),
-    [style, disabled]
-  );
+      resize,
+    };
+  }, [style, disabled]);
 
   return (
     <textarea
