@@ -8,12 +8,12 @@
     display: inline-block;
   }
   &__content {
-    color: @gray-0;
     box-sizing: border-box;
-    visibility: hidden;
+    padding: 8px 16px;
+    color: @gray-0;
     background: @gray-5;
     border-radius: 4px;
-    padding: 8px 16px;
+    visibility: hidden;
 
     &[data-popper-placement^='top'] > .@{popover-arrow-prefix-cls} {
       bottom: -4px;
@@ -40,8 +40,8 @@
       width: 8px;
       height: 8px;
       background: inherit;
-      visibility: visible;
       transform: rotate(45deg);
+      visibility: visible;
     }
 
     &::before {
