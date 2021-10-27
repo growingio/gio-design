@@ -23,24 +23,21 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   const prefixCls = usePrefixCls('input-btn-new', customizePrefixCls);
 
   const [value, setValue] = useState(enterValue);
-  const [canClear, setClear] = useState(!!enterValue);
 
   const onClear = useCallback(() => {
     if (disabled) {
       return;
     }
-    onInputChange && onInputChange('');
+    onInputChange?.('');
     setValue('');
-    setClear(false);
   }, [onInputChange, disabled]);
 
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const inputValue = e.target.value;
-      onChangeFC && onChangeFC(e);
-      onInputChange && onInputChange(inputValue);
+      onChangeFC?.(e);
+      onInputChange?.(inputValue);
       setValue(inputValue);
-      setClear(!!inputValue);
     },
     [onInputChange, onChangeFC]
   );
@@ -57,9 +54,9 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
 
   const suffix = useMemo(() => {
     const hideClear = allowClear === false;
-    const defaultSuffix = canClear && !hideClear ? <CloseCircleFilled onClick={onClear} /> : <DownFilled />;
+    const defaultSuffix = value && !hideClear ? <CloseCircleFilled onClick={onClear} /> : <DownFilled />;
     return customizeSuffix || defaultSuffix;
-  }, [customizeSuffix, canClear, onClear, allowClear]);
+  }, [customizeSuffix, value, onClear, allowClear]);
 
   return (
     <span className={wrapperCls}>

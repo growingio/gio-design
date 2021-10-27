@@ -24,7 +24,7 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
 
   const onClear = useCallback(() => {
     if (!disabled) {
-      onSearch && onSearch('');
+      onSearch?.('');
       setClear(false);
       setValue('');
     }
@@ -52,8 +52,8 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const inputValue = e.target.value;
-      onChangeFC && onChangeFC(e);
-      onSearch && onSearch(inputValue);
+      onChangeFC?.(e);
+      onSearch?.(inputValue);
       setValue(inputValue);
       setClear(!!inputValue);
     },
