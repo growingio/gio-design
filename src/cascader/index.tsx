@@ -6,7 +6,7 @@ import { usePrefixCls, useLocale } from '@gio-design/utils';
 import { Props, CascaderInstance } from './interface';
 import { dataKeyMapping, getTitleBySelected, mergeKeyMapping, useDynamicData, withPrefix } from './helper';
 import Dropdown from '../components/dropdown';
-import Input from '../components/input';
+import Input from '../legacy/input';
 import Menu, { Props as MenuProps } from './menu';
 import SearchBar from './search-bar';
 import useControlledState from '../utils/hooks/useControlledState';

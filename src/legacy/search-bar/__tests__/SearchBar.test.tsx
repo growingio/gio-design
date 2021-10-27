@@ -3,8 +3,8 @@ import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import { DesignProvider } from '@gio-design/utils';
 import { Default } from '../demos/SearchBar.stories';
 import SearchBar from '../index';
-import enUS from '../../locales/en-US';
-import { sleep } from '../../utils/test';
+import enUS from '../../../locales/en-US';
+import { sleep } from '../../../utils/test';
 
 describe('Testing search-bar', () => {
   it('basic search-bar', () => {

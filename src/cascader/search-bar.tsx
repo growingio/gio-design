@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useLocale } from '@gio-design/utils';
 import { SizeType } from './interface';
 import { useDynamicData } from './helper';
-import Input from '../components/input';
+import Input from '../legacy/input';
 import defaultLocale from './locales/zh-CN';
 
 interface Props {

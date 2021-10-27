@@ -5,7 +5,7 @@ import { Default, FormItems, FormWithModal, MultipleForm } from '../demos/Form.s
 import RefForm from '../index';
 import { FormProvider } from '../context';
 import { FormItemProps } from '../interface';
-import Input from '../../components/input';
+import Input from '../../legacy/input';
 import { toArray, hasValidName } from '../util';
 
 describe('Testing form', () => {
