@@ -7,12 +7,6 @@
 @input-prefix-cls: ~'@{component-prefix}-input-new';
 
 .@{input-btn-prefix-cls} {
-  .@{icon-prefix-cls} {
-    cursor: auto;
-    svg {
-      cursor: auto;
-    }
-  }
   .@{input-prefix-cls} {
     &:not([disabled])::placeholder {
       color: @gray-5;
@@ -42,8 +36,6 @@
   &:hover {
     .@{input-prefix-cls}:not([disabled]) {
       color: @blue-3;
-      background-color: @gray-1;
-      border: 1px solid @gray-2;
       &:not([disabled])::placeholder {
         color: @blue-3;
       }
@@ -55,7 +47,9 @@
     }
     .@{icon-prefix-cls} {
       color: @blue-3;
+      cursor: auto;
       svg {
+        cursor: auto;
         color: @blue-3;
       }
     }
@@ -64,6 +58,29 @@
     svg {
       color: @gray-3 !important;
       cursor: not-allowed;
+    }
+
+    &:hover {
+      .@{input-prefix-cls} {
+        color: @gray-3 !important;
+      }
+    }
+
+    .@{input-prefix-cls} {
+      color: @gray-3;
+      background-color: @gray-0;
+      cursor: not-allowed;
+      &::placeholder {
+        color: @gray-3 !important;
+        font-size: @font-size-base;
+      }
+      &:hover {
+        color: @gray-3 !important;
+        background-color: @gray-0 !important;
+        &::placeholder {
+          color: @gray-3;
+        }
+      }
     }
   }
 }
