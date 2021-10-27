@@ -25,9 +25,9 @@ const Popover = (props: PopoverProps) => {
   const [visible, setVisible] = useState(defaultVisible);
   const overContentRef = useRef<boolean>(false);
 
-  const referenceElement = useRef();
-  const popperElement = useRef();
-  const arrowElement = useRef();
+  const referenceElement = useRef<HTMLDivElement>();
+  const popperElement = useRef<HTMLDivElement>();
+  const arrowElement = useRef<HTMLDivElement>();
 
   const contentCls = useMemo(
     () =>
@@ -92,7 +92,7 @@ const Popover = (props: PopoverProps) => {
   return (
     <>
       <div
-        role="widget"
+        role="window"
         className={`${prefixCls}__popcorn`}
         ref={referenceElement}
         onMouseEnter={onMouseEnter}
