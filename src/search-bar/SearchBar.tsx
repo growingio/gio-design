@@ -1,177 +1,69 @@
-import React, { useState } from 'react';
-import classnames from 'classnames';
 import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
-import { usePrefixCls, useSize, useLocale } from '@gio-design/utils';
-import { Input, Button } from '../index';
-import { SearchBarProps } from './interfaces';
-import defaultLocale from './locales/zh-CN';
+import { usePrefixCls } from '@gio-design/utils';
+import classNames from 'classnames';
+import React, { useCallback, useMemo, useState } from 'react';
+import Input from '../input/Input';
+import { SearchBarProps } from './interface';
 
-export { SearchBarProps } from './interfaces';
+import './style';
 
-const getStorage = (key: string): string[] => {
-  const empty: string[] = [];
-  try {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : empty;
-  } catch (error) {
-    return empty;
-  }
-};
-
-const setStorage = (key: string, value: string) => {
-  try {
-    const oldValue = getStorage(key);
-    if (!value || oldValue.some((item) => item === value)) {
-      return oldValue;
-    }
-    const newValue = oldValue.concat(value);
-    localStorage.setItem(key, JSON.stringify(newValue));
-    return newValue;
-  } catch (error) {
-    return [];
-  }
-};
-
-const findStorage = (key: string, value: string): string[] => {
-  const storages = getStorage(key);
-  return storages.filter((item) => item.startsWith(value));
-};
-
-const clearStorage = (key: string): string[] => {
-  localStorage.removeItem(key);
-  return [];
-};
-
-const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
-  const sizeContext = useSize();
-  const prefixCls = usePrefixCls('searchbar');
-  const [searchValue, setSearchValue] = useState('');
+const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref) => {
   const {
-    showStorage = false,
-    storageNum = 5,
-    allowClearStorage = false,
-    showClear = false,
-    disabled = false,
-    size = sizeContext || 'middle',
-    inputStyle,
-    style,
+    prefixCls: customizePrefixCls,
+    onChange: onChangeFC,
+    value: enterValue,
+    disabled,
     placeholder,
-    value,
-    onChange = setSearchValue,
-    id,
-    className,
+    onSearch,
   } = props;
-  const storageKey = React.useMemo(() => `${prefixCls}-storage-${id}`, [id, prefixCls]);
 
-  const [searchStorage, setSearchStorage] = React.useState(getStorage(storageKey));
-  const [showDropdown, setShowDropdown] = React.useState(false);
+  const prefixCls = usePrefixCls('search', customizePrefixCls);
+  const [value, setValue] = useState(enterValue);
 
-  const locale = useLocale('SearchBar');
-  const { show, record, clearText }: { show: string; record: string; clearText: string } = {
-    ...defaultLocale,
-    ...locale,
-  };
+  const [canClear, setClear] = useState(!!enterValue);
 
-  const handleClearStorage = () => {
-    const emptyValue = clearStorage(storageKey);
-    setSearchStorage(emptyValue);
-  };
-
-  const handleClearValue = () => {
-    onChange('');
-    const newValue = findStorage(storageKey, '');
-    setSearchStorage(newValue);
-  };
-
-  const handleFocus = () => {
-    searchStorage.length && setShowDropdown(true);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value);
-    setShowDropdown(false);
-  };
-
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { value } = e.target;
-    setTimeout(() => {
-      id && setStorage(storageKey, value);
-      setShowDropdown(false);
-    }, 200);
-  };
-
-  const renderSuffix = () => {
-    if (value || searchValue) {
-      return showClear ? (
-        <CloseCircleFilled className={`${prefixCls}-suffix-close`} onClick={handleClearValue} />
-      ) : null;
+  const onClear = useCallback(() => {
+    if (!disabled) {
+      onSearch?.('');
+      setClear(false);
+      setValue('');
     }
-    return <SearchOutlined className={`${prefixCls}-suffix-search`} />;
-  };
+  }, [onSearch, disabled]);
 
-  // 按esc建关闭下拉框
-  const handleKeyUp = (e: any) => {
-    e.keyCode === 27 && handleBlur(e);
-  };
-
-  const renderStorage = () => {
-    if (!showStorage || !showDropdown) {
-      return null;
-    }
-
-    return (
-      <div className={`${prefixCls}-dropdown`}>
-        {allowClearStorage && (
-          <div className={`${prefixCls}-dropdown-clear`}>
-            <span className={`${prefixCls}-dropdown-clear-text`}>
-              {show}
-              {storageNum}
-              {record}
-            </span>
-            <Button type="text" onClick={handleClearStorage}>
-              {clearText}
-            </Button>
-          </div>
-        )}
-        {searchStorage
-          .slice(searchStorage.length - storageNum >= 0 ? searchStorage.length - storageNum : 0, searchStorage.length)
-          .reverse()
-          .map((item) => (
-            <div
-              onClick={() => {
-                onChange(item);
-              }}
-              className={`${prefixCls}-dropdown-item`}
-              key={item}
-              aria-hidden="true"
-            >
-              {item}
-            </div>
-          ))}
-      </div>
-    );
-  };
-
-  const wrapperCls = classnames(prefixCls, className);
-  return (
-    <div className={wrapperCls} style={style}>
-      <Input
-        disabled={disabled}
-        size={size}
-        style={inputStyle}
-        suffix={renderSuffix()}
-        value={value || searchValue}
-        placeholder={placeholder}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onKeyUp={handleKeyUp}
-      />
-      {renderStorage()}
-    </div>
+  const suffixCls = useMemo(
+    () =>
+      classNames(`${prefixCls}__suffix`, {
+        [`${prefixCls}__suffix-clear`]: canClear,
+        [`${prefixCls}__suffix-disabled`]: disabled,
+      }),
+    [prefixCls, canClear, disabled]
   );
-};
+
+  const suffix = useMemo(
+    () =>
+      canClear ? (
+        <CloseCircleFilled className={suffixCls} onClick={onClear} />
+      ) : (
+        <SearchOutlined className={suffixCls} />
+      ),
+    [suffixCls, canClear, onClear]
+  );
+
+  const onChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const inputValue = e.target.value;
+      onChangeFC?.(e);
+      onSearch?.(inputValue);
+      setValue(inputValue);
+      setClear(!!inputValue);
+    },
+    [onChangeFC, onSearch]
+  );
+
+  const resetPlaceholder = useMemo(() => (placeholder || disabled ? '无法搜索' : '搜索'), [placeholder, disabled]);
+  return (
+    <Input {...props} placeholder={resetPlaceholder} value={value} onChange={onChange} suffix={suffix} ref={ref} />
+  );
+});
 
 export default SearchBar;

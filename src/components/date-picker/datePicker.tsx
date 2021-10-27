@@ -4,7 +4,7 @@ import zhCN from 'rc-calendar/lib/locale/zh_CN';
 import RcDatePicker from 'rc-calendar/lib/Picker';
 import classNames from 'classnames';
 import moment, { Moment } from 'moment';
-import Input from '../input';
+import Input from '../../legacy/input';
 import Button from '../../legacy/button';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import useDatePicker from './hook/useDatePicker';

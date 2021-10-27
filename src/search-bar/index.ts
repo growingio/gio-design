@@ -1,5 +1,1 @@
-import SearchBar from './SearchBar';
-
-export { SearchBarProps } from './interfaces';
-
-export default SearchBar;
+export { default, default as SearchBar } from './SearchBar';

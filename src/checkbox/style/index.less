@@ -2,8 +2,9 @@
 @import '../../stylesheet/mixin/index.less';
 @import '../../stylesheet/variables/index.less';
 
-@checkbox-prefix-cls: ~'@{component-prefix}-checkbox';
-@checkbox-indeterminate-prefix-cls: ~'@{component-prefix}-checkbox-indeterminate';
+@checkbox-prefix-cls: ~'@{component-prefix}-checkbox-new';
+@checkbox-checked-prefix-cls: ~'@{checkbox-prefix-cls}-checked';
+@checkbox-indeterminate-prefix-cls: ~'@{checkbox-prefix-cls}-indeterminate';
 @checkbox-inner-prefix-cls: ~'@{checkbox-prefix-cls}-inner';
 @checkbox-icon-cls: ~'@{checkbox-prefix-cls}-icon';
 @group-prefix-cls: ~'@{checkbox-prefix-cls}-group';
@@ -37,14 +38,6 @@
       transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
       -webkit-appearance: none;
       -moz-appearance: none;
-      &::after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
-        content: '';
-      }
       &:checked {
         --b: var(--active);
         --bc: var(--active);
@@ -57,7 +50,7 @@
         cursor: not-allowed;
         opacity: 0.9;
         &:checked {
-          --b: var(--disabled-inner);
+          --b: var(--disabled);
           --bc: var(--border);
         }
         &::after {
@@ -85,6 +78,28 @@
       &:not(.switch) {
         width: 16px;
         border-radius: 4px;
+        &:checked {
+          --r: 43deg;
+        }
+      }
+      & + label {
+        display: inline-block;
+        margin-left: 4px;
+        font-size: 14px;
+        line-height: 21px;
+        cursor: pointer;
+      }
+    }
+    input[type='checkbox'].@{checkbox-checked-prefix-cls} {
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+        content: '';
+      }
+      &:not(.switch) {
         &::after {
           top: 0;
           left: 4px;
@@ -98,13 +113,6 @@
         &:checked {
           --r: 43deg;
         }
-      }
-      & + label {
-        display: inline-block;
-        margin-left: 4px;
-        font-size: 14px;
-        line-height: 21px;
-        cursor: pointer;
       }
     }
     input[type='checkbox'].@{checkbox-indeterminate-prefix-cls} {
@@ -128,15 +136,8 @@
       }
       &:disabled {
         &::after {
-          top: 0;
-          left: 2px;
-          width: 10px;
-          height: 7px;
-          border: 1px solid var(--disable-inner) !important;
-          border-top: 0;
-          border-right: 0;
-          border-left: 0;
-          transform: none;
+          border-color: var(--disabled-inner);
+          transform: none !important;
         }
       }
     }
@@ -180,20 +181,6 @@
     vertical-align: middle;
   }
 
-  // &::after {
-  //   position: relative;
-  //   top: 50%;
-  //   left: 20%;
-  //   display: block;
-  //   width: 60%;
-  //   height: 2px;
-  //   margin-top: -1px;
-  //   background-color: @color-background-checkbox-normal;
-  //   border-radius: 1px;
-  //   transform: scale(0);
-  //   content: ' ';
-  // }
-
   &-checked {
     background-color: @blue-3;
     border-color: @blue-3;
@@ -227,7 +214,7 @@
 
 .@{group-prefix-cls} {
   display: inline-flex;
-  gap: 16px 8px;
+  gap: 8px 16px;
   justify-content: flex-start;
   &__vertical {
     flex-direction: column;

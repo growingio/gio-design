@@ -5,7 +5,7 @@ import { useLocale } from '@gio-design/utils';
 import Button from '../legacy/button';
 import Popover from '../legacy/popover';
 import FilterList from './FilterList';
-import SearchBar from '../search-bar';
+import SearchBar from '../legacy/search-bar';
 import { TableContext } from './Table';
 import { filterType } from './interface';
 import defaultLocale from './locales/zh-CN';

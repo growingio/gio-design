@@ -25,7 +25,7 @@ const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 
   const checkboxProps: CheckboxProps = { ...restProps };
 
-  const prefixCls = usePrefixCls('checkbox');
+  const prefixCls = usePrefixCls('checkbox-new');
 
   const classes = classNames([className, prefixCls], {
     [`${prefixCls}-${checked ? 'checked' : ''}`]: checked,

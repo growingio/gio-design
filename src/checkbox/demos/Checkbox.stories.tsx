@@ -33,6 +33,17 @@ Group.args = {
   ],
 };
 
+export const GroupVertical = TemplateGroup.bind({});
+
+GroupVertical.args = {
+  options: [
+    { label: '我已阅读以下条款一', value: 1 },
+    { label: '我已阅读以下条款二', value: 2 },
+    { label: '我已阅读以下条款三', value: 3, disabled: true },
+  ],
+  layout: 'vertical',
+};
+
 export const Default = Template.bind({});
 
 export const Indeterminate = Template.bind({});
