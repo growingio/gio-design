@@ -2,7 +2,7 @@
 @import '../../stylesheet/mixin/index.less';
 @import '../../stylesheet/variables/index.less';
 
-@toggles-prefix-cls: ~'@{component-prefix}-toggles';
+@toggles-prefix-cls: ~'@{component-prefix}-toggle-new';
 
 .@{toggles-prefix-cls}-normal {
   @supports (-webkit-appearance: none) or (-moz-appearance: none) {
@@ -16,7 +16,7 @@
       --disabled-inner: @gray-3;
       position: relative;
       display: inline-block;
-      height: 21px;
+      height: 20px;
       margin: 0;
       vertical-align: top;
       background: var(--b, var(--background));
@@ -27,13 +27,16 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       &.@{toggles-prefix-cls} {
-        width: 38px;
+        width: 40px;
         border-radius: 11px;
+        &:hover {
+          border-color: @blue-3;
+        }
         &::after {
           top: 2px;
           left: 2px;
-          width: 15px;
-          height: 15px;
+          width: 14px;
+          height: 14px;
           background: var(--ab, var(--active));
           border-radius: 50%;
           transform: translateX(var(--x, 0));
@@ -82,7 +85,7 @@
         display: inline-block;
         margin-left: 4px;
         font-size: 14px;
-        line-height: 21px;
+        line-height: 20px;
         vertical-align: top;
         cursor: pointer;
       }
@@ -104,7 +107,7 @@
       --disabled-inner: @gray-3;
       position: relative;
       display: inline-block;
-      height: 21px;
+      height: 20px;
       margin: 0;
       vertical-align: top;
       background: var(--disabled, var(--disabled));
@@ -115,13 +118,16 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       &.@{toggles-prefix-cls} {
-        width: 38px;
+        width: 40px;
         border-radius: 11px;
+        &:hover {
+          border-color: @gray-2;
+        }
         &::after {
           top: 2px;
           left: 2px;
-          width: 15px;
-          height: 15px;
+          width: 14px;
+          height: 14px;
           background: var(--disabled-inner, var(--disabled-inner));
           border-radius: 50%;
           transform: translateX(var(--x, 0));
@@ -170,7 +176,7 @@
         display: inline-block;
         margin-left: 4px;
         font-size: 14px;
-        line-height: 21px;
+        line-height: 20px;
         vertical-align: top;
         cursor: pointer;
       }
