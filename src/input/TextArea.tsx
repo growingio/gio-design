@@ -19,7 +19,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
 
   const styles = useMemo(
     () => ({
-      ...style,
+      ...(style || {}),
       resize: disabled ? 'none' : style.resize || 'none',
     }),
     [style, disabled]

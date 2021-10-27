@@ -10,7 +10,7 @@ const filterChildren: IFilterChildren = (children, filter) => {
 
   React.Children.forEach(children, (child) => {
     if (filter(child)) {
-      result.push(child);
+      result?.push(child);
     }
   });
 
