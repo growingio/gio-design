@@ -24,9 +24,9 @@ const Popover = (props: PopoverProps) => {
   const [visible, setVisible] = useState(defaultVisible);
   const overContentRef = useRef<boolean>(false);
 
-  const [referenceElement, setReferenceElement] = useState(null);
-  const [popperElement, setPopperElement] = useState(null);
-  const [arrowElement, setArrowElement] = useState(null);
+  const referenceElement = useRef();
+  const popperElement = useRef();
+  const arrowElement = useRef();
 
   const contentCls = useMemo(
     () =>
@@ -38,9 +38,9 @@ const Popover = (props: PopoverProps) => {
     [prefixCls, visible, allowArrow]
   );
 
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+  const { styles, attributes } = usePopper(referenceElement.current, popperElement.current, {
     placement: placements[placement],
-    modifiers: [{ name: 'arrow', options: { element: arrowElement } }],
+    modifiers: [{ name: 'arrow', options: { element: arrowElement.current } }],
   });
 
   const updateVisible = useCallback(
@@ -90,7 +90,7 @@ const Popover = (props: PopoverProps) => {
     <>
       <div
         className={`${prefixCls}__popcorn`}
-        ref={setReferenceElement}
+        ref={referenceElement}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onFocus={onFocus}
@@ -101,13 +101,13 @@ const Popover = (props: PopoverProps) => {
       </div>
       <div
         className={contentCls}
-        ref={setPopperElement}
+        ref={popperElement}
         {...attributes.popper}
         style={{ ...styles.popper }}
         onMouseEnter={onContentMouseEnter}
         onMouseLeave={onContentMouseLeave}
       >
-        {allowArrow && <div className={`${prefixCls}__arrow`} ref={setArrowElement} style={{ ...styles.arrow }} />}
+        {allowArrow && <div className={`${prefixCls}__arrow`} ref={arrowElement} style={{ ...styles.arrow }} />}
         <div className={`${prefixCls}__content-inner`}>{content}</div>
       </div>
     </>
