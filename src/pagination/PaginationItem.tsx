@@ -1,6 +1,6 @@
 import { LeftDoubleOutlined, LeftOutlined, RightDoubleOutlined, RightOutlined } from '@gio-design/icons';
 import React, { useContext, useRef } from 'react';
-import { IconButton, Select, InputNumber } from '..';
+import { IconButton, Select, InputNumber } from '../index';
 import { PaginationItemProps, PaginationItemType } from './interface';
 import { PaginationContext } from './Pagination';
 

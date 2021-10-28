@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen, act, waitFor } from '@testing-library/react';
 import { DesignProvider } from '@gio-design/utils';
 import { Default } from '../demos/Pagination.stories';
-import Pagination from '..';
+import Pagination from '../Pagination';
 import { generatePageArray } from '../until';
 import 'raf/polyfill';
 import enUS from '../../../locales/en-US';

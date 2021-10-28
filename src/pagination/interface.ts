@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonProps } from '..';
+import { ButtonProps } from '../index';
 
 interface PaginationProps {
   /**
@@ -62,7 +62,7 @@ interface PaginationProps {
   hideOnSinglePage?: boolean;
 
   /**
-   * 是否展示 pageSize 切换器
+   * 是否展示行数切换器
    */
   showSizeChanger?: boolean;
 
@@ -73,7 +73,7 @@ interface PaginationProps {
   pageSizeOptions?: Array<string | number>;
 
   /**
-   * pageSize 变化的回调
+   * 行数变化的回调
    * @param currentPageSize 改变后的页大小
    * @param previousPageSize 改变前的页大小
    */

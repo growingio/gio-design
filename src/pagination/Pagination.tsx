@@ -2,7 +2,7 @@ import React, { createContext } from 'react';
 import classNames from 'classnames';
 import PaginationProps, { PaginationItemType } from './interface';
 import WithRef from '../utils/withRef';
-import { usePrefixCls } from '..';
+import { usePrefixCls } from '../index';
 import usePagination from './usePagination';
 import PaginationItem from './PaginationItem';
 
@@ -104,5 +104,19 @@ const Pagination = WithRef<HTMLElement, PaginationProps>((props, ref) => {
     </nav>
   );
 });
+
+Pagination.displayName = 'Pagination';
+
+Pagination.defaultProps = {
+  total: 0,
+  defaultCurrent: 1,
+  pageSizeOptions: [10, 20, 50],
+  defaultPageSize: 10,
+  showQuickJumper: false,
+  showSizeChanger: false,
+  hideOnSinglePage: false,
+  hideFirstButton: false,
+  hideLastButton: false,
+};
 
 export default Pagination;
