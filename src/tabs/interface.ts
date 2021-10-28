@@ -1,47 +1,45 @@
+import React from 'react';
+
 export interface TabProps {
   /**
-   标签页样式
-   */
-  type?: 'line' | 'block';
-  /**
-   设置尺寸
-   */
-  size?: 'small' | 'middle' | 'large';
-  /**
-   `tab` 被点击的回调
-   */
-  onTabClick?: (key: string) => void;
-  /**
-   切换面板的回调
-   */
-  onChange?: (key: string) => void;
+   	初始化选中面板的 `key`
+  */
+  defaultActiveKey?: string;
   /**
    开启受控模式，当前激活 `tab` 面板的 `key`
    */
   activeKey?: string;
   /**
-   	初始化选中面板的 `key`
+   切换面板的回调
    */
-  defaultActiveKey?: string;
-  /**
-   	标签面板组件
-   */
-  children?: React.ReactNode;
-  /**
-   	替代组件的类前缀
-   */
-  prefixCls?: string;
-  /**
-   自定义`className`
+  onChange?: (key: string) => void;
+   /**
+   外层容器，自定义类名
    */
   className?: string;
   /**
-   自定义样式
-   */
+  外层容器，自定义样式
+  */
   style?: React.CSSProperties;
+  /**
+  标签面板组件
+  */
+  children?: React.ReactNode;
+  /**
+  * 组件大小
+  */
+  size?: 'small' | 'normal'
 }
 
-export interface TabPaneProps {
+export interface TabPanelProps {
+  /**
+   key
+   */
+  key?: string | number;
+  /**
+   * className
+   */
+  className?: string;
   /**
    选项卡头显示文字
    */
@@ -51,19 +49,58 @@ export interface TabPaneProps {
    */
   disabled?: boolean;
   /**
+   卡头前缀
+   */
+  prefix?: React.ReactNode;
+  /**
    标签面板组件
    */
   children?: React.ReactNode;
+ /**
+  样式
+  */
+  style?: React.CSSProperties
+}
+
+export interface TabButtonProps {
+   /**
+   key
+   */
+   key?: string | number;
   /**
-   替代组件的类前缀
+   * button内容
+   */
+  tab?: string;
+  /**
+   * 不可选状态
+   */
+  disabled?: boolean;
+  /** 
+   * 前缀元素
+   */
+  prefix?: React.ReactNode;
+/** 
+   * 前缀元素
+   */
+  realKey?: string | number;
+  /** 
+   * onChange
+   */
+  onChange?: (string: string) => void;
+  /** 
+   * 选中key
+   */
+  localActiveKey?: string;
+  /** 
+   * 设置localActiveKey
+   */
+  setLocalActiveKey?: (string: string) => void;
+  /** 
+   * prefixCls
    */
   prefixCls?: string;
-  /**
-   自定义`className`
+  /** 
+   * 大小
    */
-  className?: string;
-  /**
-   自定义样式
-   */
-  style?: React.CSSProperties;
+  size?: 'small' | 'normal';
 }

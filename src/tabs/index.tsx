@@ -1,14 +1,14 @@
 import GIOTabs from './Tabs';
-import TabPane from './TabPane';
+import TabPanel from './TabPanel';
 
-export { TabProps, TabPaneProps } from './interface';
+export { TabProps, TabPanelProps } from './interface';
 
 type TTabs = typeof GIOTabs & {
-  Pane: typeof TabPane;
+  TabPanel: typeof TabPanel;
 };
 
 const Tabs = GIOTabs as TTabs;
-Tabs.Pane = TabPane;
+Tabs.TabPanel = TabPanel;
 
-export { TabPane };
+export { TabPanel };
 export default Tabs;
