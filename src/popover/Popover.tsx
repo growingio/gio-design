@@ -83,6 +83,16 @@ const Popover = (props: PopoverProps) => {
     [trigger, updateVisible]
   );
 
+  const divRoles = useMemo(() => {
+    if (trigger === 'click') {
+      return { role: 'button', onClick };
+    }
+    if (trigger === 'focus') {
+      return { role: 'input', onFocus, onBlur };
+    }
+    return { role: 'tooltip', onMouseEnter, onMouseLeave };
+  }, [trigger, onClick, onFocus, onBlur, onMouseEnter, onMouseLeave]);
+
   useEffect(() => {
     if (!isUndefined(enterVisible)) {
       setVisible(enterVisible);
@@ -91,22 +101,13 @@ const Popover = (props: PopoverProps) => {
 
   return (
     <>
-      <div
-        role="document"
-        className={`${prefixCls}__popcorn`}
-        ref={referenceElement}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onClick={onClick}
-      >
+      <div className={`${prefixCls}__popcorn`} ref={referenceElement} {...divRoles}>
         {children}
       </div>
       <div
+        {...attributes.popper}
         className={contentCls}
         ref={popperElement}
-        {...attributes.popper}
         style={{ ...styles.popper }}
         onMouseEnter={onContentMouseEnter}
         onMouseLeave={onContentMouseLeave}
