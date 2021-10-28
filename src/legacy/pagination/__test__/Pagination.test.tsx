@@ -5,7 +5,7 @@ import { Default } from '../demos/Pagination.stories';
 import Pagination from '..';
 import { generatePageArray } from '../until';
 import 'raf/polyfill';
-import enUS from '../../locales/en-US';
+import enUS from '../../../locales/en-US';
 
 describe('Testing pagination', () => {
   it('basic pagination', () => {
