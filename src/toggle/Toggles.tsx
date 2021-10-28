@@ -37,13 +37,14 @@ const InnerToggle: React.ForwardRefRenderFunction<HTMLInputElement, TogglesProps
         className={classnames(`${prefixCls}`)}
         onChange={onChangeStatus}
         ref={ref}
+        checked={status}
       />
       <span className={classnames(`${prefixCls}-suffixContent`)}>{status ? checkedChildren : uncheckedChildren}</span>
     </label>
   );
 };
 
-const Toggle = WithRef<HTMLInputElement, TogglesProps>(InnerToggle);
+export const Toggle = WithRef<HTMLInputElement, TogglesProps>(InnerToggle);
 
 Toggle.displayName = 'Toggle';
 
