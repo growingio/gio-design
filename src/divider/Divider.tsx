@@ -7,7 +7,7 @@ import DividerProps from './interface';
 const Divider = WithRef<HTMLHRElement, DividerProps>((props, ref) => {
   const { orientation = 'horizontal', flexItem = false, className, ...otherProps } = props;
 
-  const prefixCls = usePrefixCls('divider');
+  const prefixCls = usePrefixCls('divider-new');
   const classes = classNames([prefixCls, className], {
     [`${prefixCls}_${orientation}`]: ['horizontal', 'vertical'].includes(orientation),
     [`${prefixCls}_flex_item`]: flexItem,

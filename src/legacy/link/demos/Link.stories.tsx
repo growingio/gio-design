@@ -5,7 +5,7 @@ import { FilterOutlined } from '@gio-design/icons';
 import Docs from './LinkPage';
 import Link from '../index';
 import { ILinkProps } from '../interface';
-// import '../style';
+import '../style';
 
 export default {
   title: 'Legacy/Link',
