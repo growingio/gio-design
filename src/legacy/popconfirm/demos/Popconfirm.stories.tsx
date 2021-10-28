@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Docs from './PopconfirmPage';
 import Popconfirm, { PopconfirmProps } from '../index';
 import '../style';
-import { Button } from '../..';
+import { Button } from '../../..';
 import '../style/demo.stories.less';
 
 export default {
