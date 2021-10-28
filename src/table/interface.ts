@@ -1,6 +1,6 @@
 import { ExpandableConfig } from '@gio-design/table/lib/interface';
 import { TableComponents } from '@gio-design/table/es/interface';
-import { PaginationProps } from '../pagination/interface';
+import { PaginationProps } from '../legacy/pagination/interface';
 import { CheckboxProps } from '../checkbox/interface';
 import { TooltipProps } from '../legacy/tooltip/interface';
 import { EmptyProps } from '../empty/interfaces';
