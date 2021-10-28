@@ -56,9 +56,21 @@ export interface PopoverProps {
   enterable?: boolean;
 
   /**
-    @deprecated
+   * 卡片类名
    */
-  getTooltipContainer?: (node: HTMLElement) => HTMLElement;
+  overlayClassName?: string;
+  /**
+   * 卡片样式
+   */
+  overlayStyle?: React.CSSProperties;
+  /**
+   * 卡片内容区域的样式对象
+   */
+  overlayInnerClassName?: string;
+  /**
+   * 卡片内容区域的样式对象
+   */
+  overlayInnerStyle?: React.CSSProperties;
   /**
    * 浮动显示的层
    */

@@ -18,6 +18,10 @@ const Popover = (props: PopoverProps) => {
     defaultVisible,
     allowArrow = true,
     enterable = true,
+    overlayClassName,
+    overlayInnerStyle,
+    overlayInnerClassName,
+    overlayStyle,
     children,
   } = props;
 
@@ -31,12 +35,21 @@ const Popover = (props: PopoverProps) => {
 
   const contentCls = useMemo(
     () =>
-      classNames(`${prefixCls}__content`, {
-        [`${prefixCls}__content-display`]: visible,
-        [`${prefixCls}__content-arrow-allowed`]: allowArrow,
-        [`${prefixCls}__content-arrow-rejected`]: !allowArrow,
-      }),
-    [prefixCls, visible, allowArrow]
+      classNames(
+        `${prefixCls}__content`,
+        {
+          [`${prefixCls}__content-display`]: visible,
+          [`${prefixCls}__content-arrow-allowed`]: allowArrow,
+          [`${prefixCls}__content-arrow-rejected`]: !allowArrow,
+        },
+        overlayClassName
+      ),
+    [prefixCls, overlayClassName, visible, allowArrow]
+  );
+
+  const contentInnerCls = useMemo(
+    () => classNames(overlayInnerClassName, `${prefixCls}__content-inner`),
+    [prefixCls, overlayInnerClassName]
   );
 
   const { styles, attributes } = usePopper(referenceElement.current, popperElement.current, {
@@ -129,12 +142,14 @@ const Popover = (props: PopoverProps) => {
           {...attributes.popper}
           className={contentCls}
           ref={popperElement}
-          style={{ ...styles.popper }}
+          style={{ ...(overlayStyle || {}), ...styles.popper }}
           onMouseEnter={onContentMouseEnter}
           onMouseLeave={onContentMouseLeave}
         >
           {allowArrow && <div className={`${prefixCls}__arrow`} ref={arrowElement} style={{ ...styles.arrow }} />}
-          <div className={`${prefixCls}__content-inner`}>{content}</div>
+          <div className={contentInnerCls} style={overlayInnerStyle}>
+            {content}
+          </div>
         </div>
       )}
     </>
