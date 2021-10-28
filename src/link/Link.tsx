@@ -7,7 +7,7 @@ import { LinkProps } from './interface';
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
   const { className, children, prefix, loading = false, disabled: disabledProp = false, ...restProps } = props;
 
-  const prefixCls = usePrefixCls('link');
+  const prefixCls = usePrefixCls('link-new');
   const classes = classNames([prefixCls, className], {
     [`${prefixCls}_disabled`]: disabledProp,
     [`${prefixCls}_loading`]: loading,
