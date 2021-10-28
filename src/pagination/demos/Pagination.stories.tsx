@@ -1,29 +1,21 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Docs from './PaginationPage';
-import Pagination, { PaginationProps } from '../index';
+import Pagination, { PaginationProps } from '..';
 import '../style';
 
 export default {
-  title: 'Components/Pagination',
+  title: 'Upgraded/Pagination',
   component: Pagination,
-  parameters: {
-    docs: {
-      page: Docs,
-    },
-  },
 } as Meta;
 
 const Template: Story<PaginationProps> = (args) => <Pagination {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  total: 120,
+  total: 75,
   showQuickJumper: true,
-  disabled: false,
-  pageSize: 10,
-  defaultCurrent: 1,
+  defaultPageSize: 10,
   hideOnSinglePage: false,
   showSizeChanger: true,
-  pageSizeOptions: [10, 20, 50],
-};
+  pageSizeOptions: [10, 20, 50, 100, 1000],
+} as PaginationProps;
