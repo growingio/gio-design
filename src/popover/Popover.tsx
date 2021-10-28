@@ -55,18 +55,32 @@ const Popover = (props: PopoverProps) => {
     [onVisibleChange, enterVisible, enterable]
   );
 
+  const isClickToShow = useMemo(() => trigger.indexOf('click') !== -1, [trigger]);
+
+  const isHoverToShow = useMemo(() => trigger.indexOf('hover') !== -1, [trigger]);
+
+  const isFocusToShow = useMemo(() => trigger.indexOf('focus') !== -1, [trigger]);
+
   const onMouseEnter = useMemo(
-    () => debounce(() => trigger === 'hover' && updateVisible(true), 100),
-    [trigger, updateVisible]
+    () => debounce(() => isHoverToShow && updateVisible(true), 100),
+    [isHoverToShow, updateVisible]
   );
   const onMouseLeave = useMemo(
-    () => debounce(() => trigger === 'hover' && updateVisible(false), 100),
-    [trigger, updateVisible]
+    () => debounce(() => isHoverToShow && updateVisible(false), 100),
+    [isHoverToShow, updateVisible]
   );
 
-  const onClick = useCallback(() => trigger === 'click' && updateVisible(!visible), [trigger, visible, updateVisible]);
-  const onFocus = useCallback(() => trigger === 'focus' && updateVisible(true), [trigger, updateVisible]);
-  const onBlur = useCallback(() => trigger === 'focus' && updateVisible(false), [trigger, updateVisible]);
+  const onClick = useCallback(() => {
+    if (!isHoverToShow && !isFocusToShow) {
+      isClickToShow && updateVisible(!visible);
+    }
+  }, [isClickToShow, isHoverToShow, isFocusToShow, visible, updateVisible]);
+  const onFocus = useCallback(() => {
+    isFocusToShow && updateVisible(true);
+  }, [isFocusToShow, updateVisible]);
+  const onBlur = useCallback(() => {
+    isFocusToShow && updateVisible(false);
+  }, [isFocusToShow, updateVisible]);
 
   const onContentMouseEnter = useCallback(() => {
     overContentRef.current = true;
@@ -84,14 +98,20 @@ const Popover = (props: PopoverProps) => {
   );
 
   const divRoles = useMemo(() => {
-    if (trigger === 'click') {
-      return { role: 'button', onClick };
+    const roles: any = {};
+    if (isClickToShow) {
+      roles.onClick = onClick;
     }
-    if (trigger === 'focus') {
-      return { role: 'input', onFocus, onBlur };
+    if (isFocusToShow) {
+      roles.onFocus = onFocus;
+      roles.onBlur = onBlur;
     }
-    return { role: 'tooltip', onMouseEnter, onMouseLeave };
-  }, [trigger, onClick, onFocus, onBlur, onMouseEnter, onMouseLeave]);
+    if (isHoverToShow) {
+      roles.onMouseEnter = onMouseEnter;
+      roles.onMouseLeave = onMouseLeave;
+    }
+    return roles;
+  }, [isClickToShow, isFocusToShow, isHoverToShow, onClick, onFocus, onBlur, onMouseEnter, onMouseLeave]);
 
   useEffect(() => {
     if (!isUndefined(enterVisible)) {

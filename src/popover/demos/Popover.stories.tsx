@@ -124,6 +124,11 @@ const TriggerTemplate: Story<PopoverProps> = (args) => (
       </Popover>
     </span>
     <span style={{ marginRight: 20 }}>
+      <Popover {...args} trigger={['focus', 'click']} placement="top">
+        <Input value="Focus or Click Me!" style={{ width: 150 }} />
+      </Popover>
+    </span>
+    <span style={{ marginRight: 20 }}>
       <Popover {...args} trigger="click" placement="top">
         <Input value="Click Me!" style={{ width: 100 }} />
       </Popover>

@@ -1,6 +1,8 @@
 import { Placement as PlacementRepo } from '@popperjs/core';
 import React from 'react';
 
+export type TriggerAction = 'click' | 'hover' | 'focus';
+
 export type Placement =
   | 'top'
   | 'left'
@@ -47,7 +49,7 @@ export interface PopoverProps {
   children: React.ReactElement;
 
   placement?: Placement;
-  trigger?: string;
+  trigger?: TriggerAction | TriggerAction[];
   content?: string | React.ReactNode;
 
   allowArrow?: boolean;
