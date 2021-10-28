@@ -124,17 +124,19 @@ const Popover = (props: PopoverProps) => {
       <div className={`${prefixCls}__popcorn`} ref={referenceElement} {...divRoles}>
         {children}
       </div>
-      <div
-        {...attributes.popper}
-        className={contentCls}
-        ref={popperElement}
-        style={{ ...styles.popper }}
-        onMouseEnter={onContentMouseEnter}
-        onMouseLeave={onContentMouseLeave}
-      >
-        {allowArrow && <div className={`${prefixCls}__arrow`} ref={arrowElement} style={{ ...styles.arrow }} />}
-        <div className={`${prefixCls}__content-inner`}>{content}</div>
-      </div>
+      {content && (
+        <div
+          {...attributes.popper}
+          className={contentCls}
+          ref={popperElement}
+          style={{ ...styles.popper }}
+          onMouseEnter={onContentMouseEnter}
+          onMouseLeave={onContentMouseLeave}
+        >
+          {allowArrow && <div className={`${prefixCls}__arrow`} ref={arrowElement} style={{ ...styles.arrow }} />}
+          <div className={`${prefixCls}__content-inner`}>{content}</div>
+        </div>
+      )}
     </>
   );
 };

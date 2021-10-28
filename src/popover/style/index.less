@@ -3,6 +3,9 @@
 @popover-prefix-cls: ~'@{component-prefix}-popover-new';
 @popover-arrow-prefix-cls: ~'@{component-prefix}-popover-new__arrow';
 
+@popover-border-color: #ffffff00;
+@popover-backgroup-color: #ffffff00;
+
 .@{popover-prefix-cls} {
   &__popcorn {
     display: inline-block;
@@ -12,43 +15,43 @@
 
     &-inner {
       padding: 8px 12px;
-      border: 1px solid @gray-2;
+      border: 1px solid @popover-border-color;
     }
 
     &-arrow {
       &-allowed {
         &[data-popper-placement^='top'] {
-          padding-bottom: 11px;
+          padding-bottom: 10px;
           & > .@{popover-arrow-prefix-cls} {
             bottom: 7px;
-            background: #fff;
+            background: @popover-backgroup-color;
             &::before {
-              border-top: 1 px solid var(--gray-2, #dfe4ee);
-              border-left: 1 px solid var(--gray-2, #dfe4ee);
+              border-right: 1px solid @popover-border-color;
+              border-bottom: 1px solid @popover-border-color;
             }
           }
         }
 
         &[data-popper-placement^='bottom'] {
-          padding-top: 9px;
+          padding-top: 10px;
           & > .@{popover-arrow-prefix-cls} {
-            top: 4px;
-            background: #fff;
+            top: 6px;
+            background: @popover-backgroup-color;
             &::before {
-              border-right: 1 px solid var(--gray-2, #dfe4ee);
-              border-bottom: 1 px solid var(--gray-2, #dfe4ee);
+              border-top: 1px solid @popover-border-color;
+              border-left: 1px solid @popover-border-color;
             }
           }
         }
 
         &[data-popper-placement^='left'] {
-          padding-right: 11px;
+          padding-right: 10px;
           & > .@{popover-arrow-prefix-cls} {
             right: 7px;
-            background: #fff;
+            background: @popover-backgroup-color;
             &::before {
-              border-bottom: 1 px solid var(--gray-2, #dfe4ee);
-              border-left: 1 px solid var(--gray-2, #dfe4ee);
+              border-top: 1px solid @popover-border-color;
+              border-right: 1px solid @popover-border-color;
             }
           }
         }
@@ -56,11 +59,11 @@
         &[data-popper-placement^='right'] {
           padding-left: 10px;
           & > .@{popover-arrow-prefix-cls} {
-            left: 5px;
-            background: #fff;
+            left: 6px;
+            background: @popover-backgroup-color;
             &::before {
-              border-top: 1 px solid var(--gray-2, #dfe4ee);
-              border-right: 1 px solid var(--gray-2, #dfe4ee);
+              border-bottom: 1px solid @popover-border-color;
+              border-left: 1px solid @popover-border-color;
             }
           }
         }
@@ -118,7 +121,6 @@
       width: 8px;
       height: 8px;
       background: inherit;
-      border: 1px solid @gray-2;
       transform: rotate(45deg);
     }
 
