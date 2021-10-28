@@ -1,0 +1,29 @@
+@import '../../stylesheet/variables/index.less';
+
+@tooltip-prefix-cls: ~'@{component-prefix}-tooltip-new';
+@arrow-prefix-cls: ~'@{component-prefix}-popover-new__arrow';
+@link-prefix-cls: ~'@{component-prefix}-link';
+
+.@{tooltip-prefix-cls} {
+  &__inner {
+    padding: 8px 16px;
+    color: @gray-0;
+    font-size: 14px;
+    background-color: @gray-5;
+    border-radius: 4px;
+  }
+
+  .@{link-prefix-cls} {
+    color: @gray-0;
+    &:hover {
+      color: @gray-0;
+    }
+  }
+
+  .@{arrow-prefix-cls} {
+    background-color: @gray-5;
+    &::before {
+      background-color: @gray-5;
+    }
+  }
+}
