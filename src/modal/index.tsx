@@ -1,47 +1,32 @@
-import GioModal from './Modal';
-import StepModal from './StepModal';
-import callout, { configModal, withConfirm, withInfo, withSuccess, withWarn, withError } from './callout';
+import OriginalModal from './Modal';
+import open, { destroyFns } from './open';
 import useModal from './useModal';
-import { IModalStaticFuncConfig, IModalStaticFunctions, IUseModal, IModalConfigs } from './interface';
 
-export {
-  IModalProps as ModalProps,
-  IStepModalProps as StepModalProps,
-  TModalSize as ModalSize,
-  IStep as Step,
-  TStepChange as StepChange,
-  IModalStaticFuncConfig as ModalStaticFuncConfig,
-  IModalStaticFuncReturn as ModalStaticFuncReturn,
-  TModalStaticFuncType as ModalStaticFuncType,
-  IModalStaticFunc as ModalStaticFunc,
-  IModalConfigs as ModalConfigs,
-} from './interface';
+import { ModalFuncProps, IUseModal, IModalStaticFunctions } from './interface';
 
-export { StepModal, useModal };
-
-export type TModal = typeof GioModal &
+type ModalType = typeof OriginalModal &
   IModalStaticFunctions & {
-    config: (configs: IModalConfigs) => void;
+    destroyAll: () => void;
     useModal: IUseModal;
-    StepModal: typeof StepModal;
   };
 
-const Modal = GioModal as TModal;
+const Modal = OriginalModal as ModalType;
 
-Modal.confirm = (config: IModalStaticFuncConfig) => callout(withConfirm(config));
-
-Modal.info = (config: IModalStaticFuncConfig) => callout(withInfo(config));
-
-Modal.success = (config: IModalStaticFuncConfig) => callout(withSuccess(config));
-
-Modal.warn = (config: IModalStaticFuncConfig) => callout(withWarn(config));
-
-Modal.error = (config: IModalStaticFuncConfig) => callout(withError(config));
+Modal.open = function confirmFn(props: ModalFuncProps) {
+  return open(props);
+};
 
 Modal.useModal = useModal;
 
-Modal.config = configModal;
+Modal.destroyAll = function destroyAllFn() {
+  while (destroyFns.length) {
+    const close = destroyFns.pop();
+    if (close) {
+      close();
+    }
+  }
+};
 
-Modal.StepModal = StepModal;
+export type { ModalProps } from './interface';
 
 export default Modal;

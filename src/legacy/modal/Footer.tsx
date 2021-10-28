@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
-import Button from '../legacy/button';
+import Button from '../../legacy/button';
 import { IFooterProps } from './interface';
 import ModalPrefixClsContext from './ModalContext';
 

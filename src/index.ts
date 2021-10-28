@@ -29,7 +29,7 @@ export {
   ModalStaticFuncReturn,
   ModalStaticFuncType,
   ModalStaticFunc,
-} from './modal';
+} from './legacy/modal';
 export { default as Page, PageProps } from './page';
 export { default as Pagination, PaginationProps } from './pagination';
 export { default as Popconfirm, PopconfirmProps } from './popconfirm';

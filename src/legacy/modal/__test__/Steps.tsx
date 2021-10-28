@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 import React from 'react';
-import Button from '../../legacy/button';
+import Button from '../../../legacy/button';
 
 interface Props {
   [key: string]: any;
