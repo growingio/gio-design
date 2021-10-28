@@ -6,7 +6,7 @@ import { get, intersection, isUndefined, difference, union, isFunction, isString
 import { ColumnsType, RowSelection, ColumnType } from '../interface';
 
 import Checkbox from '../../legacy/checkbox';
-import Tooltip from '../../tooltip';
+import Tooltip from '../../legacy/tooltip';
 import useControlledState from '../../utils/hooks/useControlledState';
 
 // 拿到row及其children 所有的key

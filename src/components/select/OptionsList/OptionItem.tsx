@@ -2,7 +2,7 @@ import React from 'react';
 import { isNull, noop } from 'lodash';
 import classnames from 'classnames';
 import { Option, MaybeArray } from '../interface';
-import Tooltip from '../../../tooltip';
+import Tooltip from '../../../legacy/tooltip';
 import Checkbox from '../../../checkbox';
 
 interface GroupProps {

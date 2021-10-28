@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { MoreOutlined, UserOutlined } from '@gio-design/icons';
 import { isNil, isUndefined } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
-import Tooltip from '../tooltip';
+import Tooltip from '../legacy/tooltip';
 import { AvatarProps } from './interfaces';
 import composeRef from '../utils/composeRef';
 

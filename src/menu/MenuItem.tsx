@@ -3,7 +3,7 @@ import { Item as RcMenuItem } from 'rc-menu';
 import { IMenuItemProps } from './interface';
 import MenuTitle from './MenuTitle';
 import { MenuContext, SubMenuContext, getInlineIndent } from './MenuContext';
-import Tooltip from '../tooltip';
+import Tooltip from '../legacy/tooltip';
 
 const MenuItem = (props: IMenuItemProps) => {
   const { icon, children, ...restProps } = props;

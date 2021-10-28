@@ -1,5 +1,5 @@
 import { CommonProps, SizeType } from '@gio-design/utils';
-import { TooltipProps } from '../tooltip';
+import { TooltipProps } from '../legacy/tooltip';
 
 export interface TextProps extends Pick<CommonProps, 'className'> {
   /**

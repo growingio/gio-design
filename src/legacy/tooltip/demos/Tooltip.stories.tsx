@@ -7,7 +7,7 @@ import '../style';
 import '../style/demo.stories.less';
 
 export default {
-  title: 'Components/Tooltip',
+  title: 'Legacy/Tooltip',
   component: Tooltip,
   decorators: [withDesign],
   parameters: {

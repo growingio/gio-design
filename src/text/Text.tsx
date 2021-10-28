@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import Truncate from 'react-truncate';
 import { TextProps } from './interface';
-import Tooltip from '../tooltip';
+import Tooltip from '../legacy/tooltip';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import './style';
 
