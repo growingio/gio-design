@@ -13,7 +13,7 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, ISwitchGroupPro
   props: ISwitchGroupProps,
   ref
 ) => {
-  const { className, style, disabled, defaultValue, value, onChange, children, options, size } = props;
+  const { className, style, disabled, defaultValue, value, onChange, children, options, size = 'normal' } = props;
 
   const prefixCls = usePrefixCls('switch');
   const [selectedValue, setSelectedValue] = useState(() => (!isUndefined(value) ? value : defaultValue));
@@ -107,6 +107,6 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, ISwitchGroupPro
   );
 };
 
-const SwitchGroup = WithRef<HTMLDivElement, ISwitchGroupProps>(InnerGroup);
+export const SwitchGroup = WithRef<HTMLDivElement, ISwitchGroupProps>(InnerGroup);
 
 export default SwitchGroup;

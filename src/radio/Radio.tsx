@@ -63,7 +63,7 @@ const InnerRadio: React.ForwardRefRenderFunction<HTMLInputElement, IRadioProps> 
   );
 };
 
-const Radio = WithRef<HTMLInputElement, IRadioProps>(InnerRadio); // React.forwardRef<HTMLInputElement, IRadioProps>(InnerRadio);
+export const Radio = WithRef<HTMLInputElement, IRadioProps>(InnerRadio); // React.forwardRef<HTMLInputElement, IRadioProps>(InnerRadio);
 
 Radio.displayName = 'Radio';
 

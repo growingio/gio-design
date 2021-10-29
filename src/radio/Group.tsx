@@ -107,6 +107,6 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, IRadioGroupProp
   );
 };
 
-const RadioGroup = WithRef<HTMLDivElement, IRadioGroupProps>(InnerGroup);
+export const RadioGroup = WithRef<HTMLDivElement, IRadioGroupProps>(InnerGroup);
 
 export default RadioGroup;
