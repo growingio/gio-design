@@ -1,0 +1,111 @@
+@import '../../stylesheet/variables/index.less';
+
+@list-prefix-cls: ~'@{component-prefix}-list-new';
+
+.@{list-prefix-cls} {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  &--selection {
+    &--item {
+      position: relative;
+      margin-bottom: 16px;
+      &::after {
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        border-bottom: 1px solid @gray-2;
+        content: '';
+      }
+      &:last-child {
+        margin-bottom: 0;
+        border-bottom: 0;
+        &::after {
+          width: 0;
+        }
+      }
+      &--title {
+        margin-bottom: 4px;
+        color: @gray-4;
+        font-weight: 500;
+        font-size: 12px;
+        font-style: normal;
+        line-height: 20px;
+      }
+    }
+  }
+  &--item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    padding: 7px 12px;
+    color: @gray-5;
+    font-weight: normal;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 22px;
+    vertical-align: middle;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &--ellipsis {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    &:hover {
+      background-color: @gray-1;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:not(&--disabled):not(&--drag):active {
+      color: @blue-3;
+    }
+    &--actived:not(&--multiple) {
+      color: @blue-3;
+      background-color: @gray-1;
+    }
+    &--disabled {
+      color: @gray-3;
+      cursor: not-allowed;
+    }
+    &--interval {
+      margin-top: 4px;
+    }
+    &--drag {
+      justify-content: flex-start;
+      cursor: all-scroll;
+      & > .@{list-prefix-cls}--item {
+        margin-bottom: 0;
+        padding: 0;
+        background-color: inherit;
+      }
+      &--icon {
+        margin-right: 8px;
+      }
+      &--disabled {
+        cursor: no-drop;
+      }
+    }
+    &--text {
+      flex-grow: 1;
+    }
+    > span > .gio-text--black {
+      color: inherit;
+    }
+    &-prefix-icon {
+      display: inherit;
+      margin-right: 8px;
+    }
+    &-suffix-icon {
+      display: inherit;
+      margin-left: 8px;
+    }
+    &--checkbox {
+      font-size: 0;
+    }
+  }
+}
