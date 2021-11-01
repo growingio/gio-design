@@ -16,7 +16,11 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>((props, 
 IconButton.displayName = 'IconButton';
 
 IconButton.defaultProps = {
-  ...Button.defaultProps,
+  type: 'primary',
+  size: 'normal',
+  loading: false,
+  disabled: false,
+  htmlType: 'button',
 };
 
 export default IconButton;
