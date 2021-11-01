@@ -1,8 +1,6 @@
 import React from 'react';
 import { PopoverProps } from '../popover/interface';
 
-type ReactRender = () => React.ReactNode;
-
 export interface TooltipLink {
   name?: string;
   link: string;
