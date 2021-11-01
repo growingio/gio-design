@@ -2,9 +2,9 @@
 import React, { useMemo, useCallback, useEffect } from 'react';
 import { isUndefined } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
-import Pagination, { PaginationProps } from '../../legacy/pagination';
+import Pagination, { PaginationProps } from '../../pagination';
 import { ColumnType, ColumnsType, PaginationState, OnTriggerStateUpdateProps } from '../interface';
-import useControlledState from '../../utils/hooks/useControlledState';
+import useControlledState from '../../../utils/hooks/useControlledState';
 
 const usePagination = <RecordType,>(
   data: RecordType[],

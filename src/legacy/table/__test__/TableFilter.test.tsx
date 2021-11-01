@@ -3,7 +3,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { isEqual, cloneDeep } from 'lodash';
 import { DesignProvider } from '@gio-design/utils';
-import enUS from '../../locales/en-US';
+import enUS from '../../../locales/en-US';
 import useFilter, { collectFilterStates } from '../hook/useFilter';
 import FilterPopover from '../FilterPopover';
 

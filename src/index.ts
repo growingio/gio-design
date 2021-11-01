@@ -55,7 +55,7 @@ export {
   SkeletonAvatarProps,
   SkeletonParagraphProps,
 } from './skeleton';
-export { default as Table, TableProps } from './table';
+export { default as Table, TableProps } from './legacy/table';
 export { default as TabNav, TabNavProps } from './tab-nav';
 export { default as SearchBar, SearchBarProps } from './legacy/search-bar';
 export { default as Tabs, TabPane, TabProps, TabPaneProps } from './components/tabs';
