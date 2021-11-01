@@ -27,7 +27,8 @@
     background-color: @blue-2;
     .elevation(1);
 
-    &:enabled:hover {
+    &:enabled:hover,
+    &.@{button-prefix-cls}_active {
       background-color: @blue-3;
       .elevation(2);
     }
@@ -51,7 +52,8 @@
     background-color: transparent;
     .border(2, @gray-2);
 
-    &:enabled:hover {
+    &:enabled:hover,
+    &.@{button-prefix-cls}_active {
       color: @blue-3;
       background-color: @gray-1;
     }
@@ -74,7 +76,8 @@
     color: @gray-5;
     background-color: transparent;
     .border(2, transparent);
-    &:enabled:hover {
+    &:enabled:hover,
+    &.@{button-prefix-cls}_active {
       color: @blue-3;
       background-color: @gray-1;
     }

@@ -11,6 +11,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     loading = false,
     disabled = false,
     htmlType = 'button',
+    active = false,
     prefix,
     suffix,
     className,
@@ -24,6 +25,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     [`${prefixCls}_${size}`]: size,
     [`${prefixCls}_loading`]: loading,
     [`${prefixCls}_disabled`]: disabled,
+    [`${prefixCls}_active`]: active,
   });
 
   const prefixIcon = loading ? (
