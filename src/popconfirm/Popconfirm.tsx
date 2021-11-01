@@ -1,11 +1,11 @@
 import React from 'react';
 import { WarningCircleFilled } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
-import Tooltip from '../tooltip';
+import Tooltip from '../legacy/tooltip';
 import Button from '../button';
 import { PopconfirmProps } from './interface';
 import useControlledState from '../utils/hooks/useControlledState';
-import getPlacements from '../tooltip/placements';
+import getPlacements from '../legacy/tooltip/placements';
 
 const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
   const {

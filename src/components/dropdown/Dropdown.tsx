@@ -1,7 +1,7 @@
 import React, { cloneElement, Children } from 'react';
 import { isFunction, isUndefined } from 'lodash';
 import classnames from 'classnames';
-import Tooltip from '../../tooltip';
+import Tooltip from '../../legacy/tooltip';
 import { DropdownProps } from './interface';
 import useControlledState from '../../utils/hooks/useControlledState';
 

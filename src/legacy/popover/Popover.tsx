@@ -1,7 +1,7 @@
 import React from 'react';
 import { usePrefixCls } from '@gio-design/utils';
-import Tooltip from '../../tooltip';
-import getPlacements from '../../tooltip/placements';
+import Tooltip from '../tooltip';
+import getPlacements from '../tooltip/placements';
 import { PopoverProps } from './interface';
 
 export { PopoverProps } from './interface';

@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import InnerLinesEllipsis from 'react-lines-ellipsis';
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC';
 import type { TextProps } from './interfaces';
-import Tooltip from '../tooltip';
+import Tooltip from '../legacy/tooltip';
 
 const LinesEllipsis = responsiveHOC()(InnerLinesEllipsis);
 

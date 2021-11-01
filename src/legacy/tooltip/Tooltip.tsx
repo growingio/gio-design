@@ -3,9 +3,9 @@ import RcTooltip from 'rc-tooltip';
 import { isFunction } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
 import { TooltipProps } from './interface';
-import Link from '../legacy/link';
+import Link from '../link';
 import getPlacements from './placements';
-import useControlledState from '../utils/hooks/useControlledState';
+import useControlledState from '../../utils/hooks/useControlledState';
 
 const Tooltip = (props: TooltipProps): JSX.Element => {
   const {

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { UpFilled, DownFilled, FilterOutlined, QuestionCircleOutlined } from '@gio-design/icons';
 import { isUndefined } from 'lodash';
 import Button from '../legacy/button';
-import Tooltip from '../tooltip';
+import Tooltip from '../legacy/tooltip';
 import FilterPopover from './FilterPopover';
 import { SortOrder, TitleProps } from './interface';
 
