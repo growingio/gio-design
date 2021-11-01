@@ -1,13 +1,7 @@
 import { useState, useMemo, useCallback } from 'react';
 import { SiderState } from './interfaces';
 
-const useSiders = (): [
-  SiderState[],
-  number,
-  (siderId: string) => void,
-  (sider: SiderState) => void,
-  [number, number]
-] => {
+const useSiders = (): [SiderState[], (siderId: string) => void, (sider: SiderState) => void, [number, number]] => {
   const [siders, setSiders] = useState<SiderState[]>([]);
 
   const removeSider = (siderId: string) => {
@@ -18,10 +12,6 @@ const useSiders = (): [
     setSiders((_siders) => [..._siders.filter((_sider) => _sider.id !== incomingSider.id), incomingSider]);
   }, []);
 
-  const sidersWidth = useMemo(() => siders.reduce((prev: number, current: SiderState) => prev + current.width, 0), [
-    siders,
-  ]);
-
   const margin: [number, number] = useMemo(
     () => [
       siders.find((sider) => sider.suspendedPosition === 'left')?.collapsedWidth ?? 0,
@@ -30,7 +20,7 @@ const useSiders = (): [
     [siders]
   );
 
-  return [siders, sidersWidth, removeSider, updateSiders, margin];
+  return [siders, removeSider, updateSiders, margin];
 };
 
 export default useSiders;

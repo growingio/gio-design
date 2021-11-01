@@ -41,19 +41,20 @@ describe('Testing Layout', () => {
         <Layout.Content maxWidth="auto">content</Layout.Content>
       </Layout>
     );
-    const contentElement = getByText('content');
-    expect(contentElement.style.getPropertyValue('margin')).toBe('0px 20px');
+
+    expect(getByText('content').style.getPropertyValue('max-width')).toBe('100%');
   });
 
   test('Content margin', () => {
     const { getByText, rerender } = render(
       <Layout>
-        <Layout.Content maxWidth="auto" margin={10}>
+        <Layout.Content maxWidth="auto" style={{ margin: '0 10px' }}>
           content
         </Layout.Content>
       </Layout>
     );
-    expect(getByText('content').style.getPropertyValue('margin')).toBe('0px 10px');
+    expect(getByText('content').style.getPropertyValue('margin')).toBe('');
+    expect(getByText('content').parentElement.style.getPropertyValue('margin')).toBe('0px 10px');
     Object.defineProperty(HTMLElement.prototype, 'getBoundingClientRect', {
       configurable: true,
       value: () => ({ width: 2000 }),
@@ -63,7 +64,7 @@ describe('Testing Layout', () => {
         <Layout.Content>content</Layout.Content>
       </Layout>
     );
-    expect(getByText('content').style.getPropertyValue('margin')).toBe('0px auto');
+    expect(getByText('content').style.getPropertyValue('margin')).toBe('');
   });
 
   test('sider trigger', () => {
@@ -104,29 +105,27 @@ describe('Testing Layout', () => {
 
   test('useSiders', () => {
     const { result } = renderHook(() => useSiders());
-    const _updateSiders = result.current[3];
+    const _updateSiders = result.current[2];
     act(() => {
       _updateSiders({ id: '1', width: 200, collapsedWidth: 80, suspendedPosition: 'left' });
       _updateSiders({ id: '2', width: 300, collapsedWidth: 100, suspendedPosition: 'right' });
       _updateSiders({ id: '3', width: 100, collapsedWidth: 50 });
     });
-    const [siders, sidersWidth, removeSider, updateSiders, margin] = result.current;
+    const [siders, removeSider, updateSiders, margin] = result.current;
     expect(siders.length).toBe(3);
-    expect(sidersWidth).toBe(600);
     expect(margin).toStrictEqual([80, 100]);
     act(() => {
       removeSider('1');
     });
     expect(result.current[0].length).toBe(2);
-    expect(result.current[1]).toBe(400);
-    expect(result.current[4]).toStrictEqual([0, 100]);
+    expect(result.current[3]).toStrictEqual([0, 100]);
     act(() => {
       updateSiders({ id: '3', width: 100, collapsedWidth: 50, suspendedPosition: 'left' });
     });
-    expect(result.current[4]).toStrictEqual([50, 100]);
+    expect(result.current[3]).toStrictEqual([50, 100]);
     act(() => {
       removeSider('2');
     });
-    expect(result.current[4]).toStrictEqual([50, 0]);
+    expect(result.current[3]).toStrictEqual([50, 0]);
   });
 });

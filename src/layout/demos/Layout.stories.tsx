@@ -67,7 +67,7 @@ Default.args = {
   children: (
     <>
       <Header />
-      <Layout.Content>
+      <Layout.Content style={{ margin: '0 10px' }}>
         <Skeleton style={{ padding: '40px 140px' }} />
         <Skeleton style={{ padding: '40px 140px' }} />
       </Layout.Content>

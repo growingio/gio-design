@@ -22,10 +22,6 @@ export interface LayoutContentProps extends LayoutProps {
    Content 区域的最大宽度 
   */
   maxWidth?: number | string;
-  /*
-    Content 区域的外边距
-  */
-  margin?: number;
 }
 
 export interface LayoutSiderProps extends LayoutProps {
@@ -72,7 +68,6 @@ export interface ContentState {
 }
 
 export interface LayoutState {
-  wide: boolean;
   fixed: boolean;
 }
 

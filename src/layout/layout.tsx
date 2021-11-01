@@ -1,6 +1,6 @@
-import React, { useLayoutEffect, useRef, createContext, useEffect, useContext } from 'react';
+import React, { useRef, createContext, useEffect, useContext } from 'react';
 import classNames from 'classnames';
-import { useWindowSize, useSetState } from 'react-use';
+import { useSetState } from 'react-use';
 import { usePrefixCls } from '@gio-design/utils';
 import { LayoutProps, LayoutState, ContentState, LayoutContextType } from './interfaces';
 import Header from './header';
@@ -8,7 +8,7 @@ import Content from './content';
 import Sider from './sider';
 import useSiders from './useSiders';
 
-const initLayoutState = { wide: false, fixed: false };
+const initLayoutState = { fixed: false };
 const initContentState = { maxWidth: 0, margin: 0 };
 
 export const LayoutContext = createContext<LayoutContextType>({
@@ -17,22 +17,12 @@ export const LayoutContext = createContext<LayoutContextType>({
 } as LayoutContextType);
 
 const Layout = ({ prefixCls: customizePrefixCls, fixed, className, style, children }: LayoutProps) => {
-  const { width } = useWindowSize();
   const containerRef = useRef<HTMLDivElement>(null);
   const prefixCls = usePrefixCls('layout', customizePrefixCls);
   const [localLayoutState, setLayoutState] = useSetState<LayoutState>(initLayoutState);
   const [localContentState, setContentState] = useSetState<ContentState>(initContentState);
-  const [siders, sidersWidth, removeSider, updateSiders, margin] = useSiders();
+  const [siders, removeSider, updateSiders, margin] = useSiders();
   const { layoutState: parentLayoutState } = useContext(LayoutContext);
-
-  useLayoutEffect(() => {
-    const layoutWidth = containerRef.current?.getBoundingClientRect().width ?? 0;
-    setLayoutState(() => ({
-      wide:
-        localContentState.maxWidth !== 0 &&
-        layoutWidth > localContentState.maxWidth + 2 * localContentState.margin + sidersWidth,
-    }));
-  }, [width, setLayoutState, localContentState, siders, sidersWidth]);
 
   useEffect(() => {
     setLayoutState({ fixed });
