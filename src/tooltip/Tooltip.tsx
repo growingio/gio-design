@@ -15,7 +15,7 @@ const Tooltip = (props: TooltipProps) => {
     tooltipLink,
     prefixCls: customizePrefixCls,
     subPrefixCls = 'tooltip-new',
-    ...reset
+    ...rest
   } = props;
   const prefixCls = usePrefixCls(subPrefixCls, customizePrefixCls);
 
@@ -25,22 +25,20 @@ const Tooltip = (props: TooltipProps) => {
     () => [isFunction(title) ? title() : title, isFunction(overlay) ? overlay() : overlay],
     [title, overlay]
   );
-  const isNoTitle = useMemo(() => !computedTitle && computedTitle !== 0, [computedTitle]);
 
-  const tooltipOverlay = useMemo(
-    () =>
-      isNoTitle ? null : (
-        <>
-          <span className={`${prefixCls}__inner-title`}>{computedTitle}</span>
-          {tooltipLink?.link && <Link href={tooltipLink.link}>{tooltipLink.name || tooltipLink.link}</Link>}
-        </>
-      ),
-    [prefixCls, isNoTitle, computedTitle, tooltipLink]
-  );
+  const tooltipOverlay = useMemo(() => {
+    const isNoTitle = !computedTitle && computedTitle !== 0;
+    return isNoTitle ? null : (
+      <>
+        <span className={`${prefixCls}__inner-title`}>{computedTitle}</span>
+        {tooltipLink?.link && <Link href={tooltipLink.link}>{tooltipLink.name || tooltipLink.link}</Link>}
+      </>
+    );
+  }, [prefixCls, computedTitle, tooltipLink]);
 
   return (
     <Popover
-      {...reset}
+      {...rest}
       prefixCls={customizePrefixCls}
       overlayClassName={prefixCls}
       overlayInnerClassName={contentInnerCls}
