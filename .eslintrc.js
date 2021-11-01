@@ -36,5 +36,6 @@ module.exports = {
     'react/static-property-placement': ['error', 'static public field'],
     '@typescript-eslint/no-unused-expressions': ['error', { allowShortCircuit: true }],
     '@typescript-eslint/explicit-module-boundary-types': ['off'],
+    'react/jsx-no-bind': ['off'],
   },
 };

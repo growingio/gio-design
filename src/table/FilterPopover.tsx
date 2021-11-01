@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { isObject } from 'lodash';
 import { useLocale } from '@gio-design/utils';
 import Button from '../legacy/button';
-import Popover from '../popover';
+import Popover from '../legacy/popover';
 import FilterList from './FilterList';
 import SearchBar from '../legacy/search-bar';
 import { TableContext } from './Table';
