@@ -7,7 +7,7 @@ import Docs from './RadioPage';
 import '../style';
 
 export default {
-  title: 'Components/Radio',
+  title: 'Legacy/Radio',
   component: Radio,
   subcomponents: { RadioGroup },
   decorators: [withDesign],

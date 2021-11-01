@@ -5,8 +5,6 @@ import { usePopper } from 'react-popper';
 import { PopoverProps, placements } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 
-import './style';
-
 const Popover = (props: PopoverProps) => {
   const {
     placement = 'top',

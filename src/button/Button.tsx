@@ -18,7 +18,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     ...restProps
   } = props;
 
-  const prefixCls = usePrefixCls('button');
+  const prefixCls = usePrefixCls('button-new');
   const classes = classNames([className, prefixCls], {
     [`${prefixCls}_${type}`]: type,
     [`${prefixCls}_${size}`]: size,

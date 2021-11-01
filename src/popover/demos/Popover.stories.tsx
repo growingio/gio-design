@@ -5,6 +5,7 @@ import Popover from '../Popover';
 import { PopoverProps } from '../interface';
 import Input from '../../input';
 import { Button } from '../../button';
+import '../style';
 import './demo.stories.less';
 
 export default {
