@@ -158,13 +158,13 @@ const ControlTemplate: Story<PopConfirmProps> = (args) => {
         <legend>Controlled</legend>
         <div style={{ marginRight: 20 }}>
           <Button onClick={show} style={{ marginRight: 10 }}>
-            Show Popover
+            Show Confirm
           </Button>
           <Button onClick={hide} style={{ marginRight: 50 }}>
-            Hide Popover
+            Hide Confirm
           </Button>
           <PopConfirm {...args} visible={visible} placement="top" onVisibleChange={onVisibleChange}>
-            <Input value="Show Popover Me!" />
+            <Input value="Show Confirm Me!" />
           </PopConfirm>
         </div>
       </fieldset>
@@ -172,13 +172,13 @@ const ControlTemplate: Story<PopConfirmProps> = (args) => {
         <legend>Controlled by onVisibleChange</legend>
         <div style={{ marginRight: 20 }}>
           <Button onClick={show2} style={{ marginRight: 10 }}>
-            Show Popover
+            Show Confirm
           </Button>
           <Button onClick={hide2} style={{ marginRight: 50 }}>
-            Hide Popover
+            Hide Confirm
           </Button>
           <PopConfirm {...args} visible={visible2} placement="top" onVisibleChange={onVisibleChange2}>
-            <Input value="Show Popover Me!" />
+            <Input value="Show Confirm Me!" />
           </PopConfirm>
         </div>
       </fieldset>
@@ -189,14 +189,31 @@ const ControlTemplate: Story<PopConfirmProps> = (args) => {
 export const Controlled = ControlTemplate.bind({});
 Controlled.args = { ...content };
 
+const DescTemplate: Story<PopConfirmProps> = (args) => (
+  <>
+    <PopConfirm {...args}>
+      <Input value="Show Confirm with desc" style={{ width: 280 }} />
+    </PopConfirm>
+    <span>|</span>
+    <PopConfirm {...args} desc="">
+      <Input value="Show Confirm without desc" style={{ width: 280 }} />
+    </PopConfirm>
+  </>
+);
+export const Description = DescTemplate.bind({});
+Description.args = {
+  ...content,
+  placement: 'topLeft',
+};
+
 // const DefaultTemplate: Story<PopConfirmProps> = (args) => (
 //   <>
 //     <PopConfirm {...args}>
-//       <Input value="Show Popover with allowed Arrow" style={{ width: 280 }} />
+//       <Input value="Show Confirm with allowed Arrow" style={{ width: 280 }} />
 //     </PopConfirm>
 //     <span>|</span>
 //     <PopConfirm {...args} allowArrow={false}>
-//       <Input value="Show Popover with rejected Arrow" style={{ width: 280 }} />
+//       <Input value="Show Confirm with rejected Arrow" style={{ width: 280 }} />
 //     </PopConfirm>
 //   </>
 // );
