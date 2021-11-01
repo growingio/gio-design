@@ -5,9 +5,9 @@ import React, { useMemo, useCallback } from 'react';
 import { get, intersection, isUndefined, difference, union, isFunction, isString, flatten, flattenDeep } from 'lodash';
 import { ColumnsType, RowSelection, ColumnType } from '../interface';
 
-import Checkbox from '../../legacy/checkbox';
-import Tooltip from '../../legacy/tooltip';
-import useControlledState from '../../utils/hooks/useControlledState';
+import Checkbox from '../../checkbox';
+import Tooltip from '../../tooltip';
+import useControlledState from '../../../utils/hooks/useControlledState';
 
 // 拿到row及其children 所有的key
 export const getRowAllKeys = (row: any, rowKey: any) => {

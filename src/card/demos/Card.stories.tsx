@@ -7,7 +7,7 @@ import '../style';
 
 import Avatar from '../../avatar';
 import Card from '../index';
-import Table from '../../table';
+import Table from '../../legacy/table';
 import Button from '../../legacy/button';
 
 export default {
