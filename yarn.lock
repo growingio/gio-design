@@ -1572,14 +1572,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.8", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
-  version "7.14.8"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.8.tgz#7119a56f421018852694290b9f9148097391b446"
-  integrity sha512-twj3L8Og5SaCRCErB4x4ajbvBIVV77CGeFglHpeg5WC5FF8TZzBWXtTJ4MqaD9QszLYTtr+IsaAL2rEUevb+eg==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.2.0":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.8", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
@@ -2210,12 +2203,13 @@
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-22.0.0-alpha.0.tgz#3089471e2e52f73914952f9448e3894e599bad97"
   integrity sha512-2rDZIkvMDsl7nUD9HlwRJPYErwNXJJp+2smhxl8NY3vMYMhdSRXZsWblMLvNogKAGfpEYFR/ar1lysifQC/G4w==
 
-"@gio-design/utils@21.8.6":
-  version "21.8.6"
-  resolved "https://registry.yarnpkg.com/@gio-design/utils/-/utils-21.8.6.tgz#0e66bebf8b35d14cc93030e34283926bb30a9bef"
-  integrity sha512-klkpp/h0y/1f3crtHdxVspMThPraJtuPoCE6J6FrSLANshmXMlzXRcQoFW3ZaDKtidVd/PvmGd3q8ZWtI1RrZw==
+"@gio-design/utils@22.0.2":
+  version "22.0.2"
+  resolved "https://registry.yarnpkg.com/@gio-design/utils/-/utils-22.0.2.tgz#d9a352711ebffcf1f5a010eb6257723851d68750"
+  integrity sha512-rqTbRzbkfyPbGwyHsVnIHQ1AziC9WJvIdjn6aNN9GRwumzb4TS7Y5tV9PfMHZSU7tyh8PKvbhC9qhZFTQtwgkA==
   dependencies:
     "@babel/runtime" "^7.14.8"
+    date-fns "^2.25.0"
     lodash "^4.17.21"
     pinyin "^2.9.1"
 
@@ -6853,10 +6847,10 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-date-fns@^2.15.0, date-fns@^2.21.3:
-  version "2.24.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.24.0.tgz#7d86dc0d93c87b76b63d213b4413337cfd1c105d"
-  integrity sha512-6ujwvwgPID6zbI0o7UbURi2vlLDR9uP26+tW6Lg+Ji3w7dd0i3DOcjcClLjLPranT60SSEFBwdSyYwn/ZkPIuw==
+date-fns@^2.15.0, date-fns@^2.21.3, date-fns@^2.25.0:
+  version "2.25.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.25.0.tgz#8c5c8f1d958be3809a9a03f4b742eba894fc5680"
+  integrity sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w==
 
 dateformat@^3.0.0:
   version "3.0.3"
