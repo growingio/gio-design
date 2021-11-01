@@ -1,0 +1,103 @@
+import { Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import {
+  Counter,
+  UnControlledDemo,
+  ControlledDemo,
+  WatchUnControlled,
+  IgnoreControlledChange,
+} from './useControl.stories';
+
+<Meta title="Hooks/useControlledState" />
+
+# useControl
+
+## 基础用法
+
+### 使用了 useControll 的组件 Counter
+
+```javascript
+export const Counter = ({ value, onChange, defaultValue }: IProps) => {
+  const [state, setState] = useControlledState < number > (value, defaultValue, onChange);
+  return (
+    <>
+      <button type="button" onClick={() => setState(state - 1)}>
+        -
+      </button>
+      <span>{state}</span>
+      <button type="button" onClick={() => setState(state + 1)}>
+        +
+      </button>
+    </>
+  );
+};
+```
+
+<Canvas>
+  <Counter />
+</Canvas>
+
+### 非受控模式，只有 defaultValue
+
+```javascript
+const UnControlledDemo = () => <Counter defaultValue={0} />;
+```
+
+<Canvas>
+  <UnControlledDemo />
+</Canvas>
+
+### 受控模式，参数有 value 和 onChange
+
+```javascript
+const ControlledDemo = () => {
+  const [value, setValue] = useState(0);
+  return (
+    <div>
+      <input type="number" onChange={(e) => setValue(parseInt(e.target.value, 10))} value={value} />
+      <Counter value={value} onChange={setValue} />
+    </div>
+  );
+};
+```
+
+<Canvas>
+  <ControlledDemo />
+</Canvas>
+
+### 非受控模式，订阅 defaultValue 的值变化
+
+```javascript
+const WatchUnControlled = () => {
+  const [value, setValue] = useState(0);
+  return (
+    <div>
+      <input type="number" onChange={(e) => setValue(parseInt(e.target.value, 10))} value={value} />
+      <Counter defaultValue={0} onChange={setValue} />
+    </div>
+  );
+};
+```
+
+<Canvas>
+  <WatchUnControlled />
+</Canvas>
+
+### 受控模式，不提供 onChange，只回显展示
+
+```javascript
+const IgnoreControlledChange = () => {
+  const [value, setValue] = useState(0);
+  return (
+    <div>
+      <input type="number" onChange={(e) => setValue(parseInt(e.target.value, 10))} value={value} />
+      <Counter value={value} />
+    </div>
+  );
+};
+```
+
+<Canvas>
+  <IgnoreControlledChange />
+</Canvas>
+<ArgsTable of={Counter}></ArgsTable>

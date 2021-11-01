@@ -2,7 +2,7 @@ import React from 'react';
 import { TimeOutlined } from '@gio-design/icons';
 import { useLocale, useControlledState, usePrefixCls } from '@gio-design/utils';
 import { format } from 'date-fns';
-import Button from '../components/button';
+import Button from '../legacy/button';
 import Selector from '../selector';
 import TimePicker from '../time-picker/TimePicker';
 import { TimeSelectorProps } from './interfaces';

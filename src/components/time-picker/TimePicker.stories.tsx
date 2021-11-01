@@ -7,7 +7,7 @@ import Docs from './TimePicker.mdx';
 import './style/index.less';
 
 export default {
-  title: 'Functional Components/TimePicker',
+  title: 'Components/TimePicker',
   component: TimePicker,
   decorators: [withDesign],
   parameters: {

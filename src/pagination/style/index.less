@@ -1,0 +1,61 @@
+@import '../../stylesheet/variables/index.less';
+
+@pagination-prefix-cls: ~'@{component-prefix}-pagination-new';
+
+.@{pagination-prefix-cls} {
+  @pagination-height: 30px;
+  height: @pagination-height;
+  color: @gray-5;
+  .text-body1();
+  &__ul {
+    display: flex;
+    align-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__li {
+    margin: 0 16px 0 0;
+    &.first,
+    &.previous,
+    &.page,
+    &.next,
+    &.last {
+      margin: 0 8px 0 0;
+    }
+    &:last-child {
+      margin: 0;
+    }
+    &.jumper {
+      margin: 0 0 0 8px;
+    }
+  }
+  &__rows,
+  &__jumper {
+    display: flex;
+    align-content: center;
+    & > p:first-of-type {
+      margin: 4px 8px 4px 0;
+    }
+    & > p:last-of-type {
+      margin: 4px 0 4px 8px;
+    }
+    &__select,
+    &__input {
+      @width: 85px;
+      width: @width;
+      min-width: @width;
+    }
+  }
+  &__total {
+    margin: 0;
+    padding: 0;
+    line-height: @pagination-height;
+  }
+  &__page__button {
+    &-text {
+      display: block;
+      min-width: 1em;
+    }
+  }
+}

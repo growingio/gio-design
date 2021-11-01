@@ -198,7 +198,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       } else {
         selectorRef.current?.focus();
       }
-      clearInput();
+      searchType === 'normal' && clearInput();
       onSelect?.(selectedValue, option);
     };
     const onListDeselect = (selectedValue: React.ReactText, option: Option) => {

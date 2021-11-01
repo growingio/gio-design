@@ -1,0 +1,185 @@
+@import '../../stylesheet/index.less';
+@import '../../stylesheet/mixin/index.less';
+@import '../../stylesheet/variables/index.less';
+
+@toggles-prefix-cls: ~'@{component-prefix}-toggle-new';
+
+.@{toggles-prefix-cls}-normal {
+  @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    input[type='checkbox'] {
+      --active: @blue-3;
+      --active-inner: @gray-0;
+      --border: @gray-2;
+      --border-hover: @blue-3;
+      --background: @gray-0;
+      --disabled: @gray-1;
+      --disabled-inner: @gray-3;
+      position: relative;
+      display: inline-block;
+      height: 20px;
+      margin: 0;
+      vertical-align: top;
+      background: var(--b, var(--background));
+      border: 1px solid var(--bc, var(--border));
+      outline: none;
+      cursor: pointer;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      &.@{toggles-prefix-cls} {
+        width: 40px;
+        border-radius: 11px;
+        &:hover {
+          border-color: @blue-3;
+        }
+        &::after {
+          top: 2px;
+          left: 2px;
+          width: 14px;
+          height: 14px;
+          background: var(--ab, var(--active));
+          border-radius: 50%;
+          transform: translateX(var(--x, 0));
+        }
+        &:checked {
+          --ab: var(--active-inner);
+          --x: 17px;
+        }
+        &:disabled {
+          &:not(:checked) {
+            &::after {
+              opacity: 0.6;
+            }
+          }
+        }
+      }
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+        content: '';
+      }
+      &:checked {
+        --b: var(--active);
+        --bc: var(--active);
+        --d-o: 0.3s;
+        --d-t: 0.6s;
+        --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+      }
+      &:disabled {
+        --b: var(--disabled);
+        cursor: not-allowed;
+        opacity: 0.9;
+        &:checked {
+          --b: var(--disabled-inner);
+          --bc: var(--border);
+        }
+        & + label {
+          cursor: not-allowed;
+        }
+      }
+
+      & + label {
+        display: inline-block;
+        margin-left: 4px;
+        font-size: 14px;
+        line-height: 20px;
+        vertical-align: top;
+        cursor: pointer;
+      }
+    }
+  }
+
+  line-height: 0px;
+  vertical-align: middle;
+}
+.@{toggles-prefix-cls}-disabled {
+  @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    input[type='checkbox'] {
+      --active: @blue-3;
+      --active-inner: @gray-0;
+      --border: @gray-2;
+      --border-hover: @blue-3;
+      --background: @gray-0;
+      --disabled: @gray-1;
+      --disabled-inner: @gray-3;
+      position: relative;
+      display: inline-block;
+      height: 20px;
+      margin: 0;
+      vertical-align: top;
+      background: var(--disabled, var(--disabled));
+      border: 1px solid var(--border, var(--border));
+      outline: none;
+      cursor: pointer;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      &.@{toggles-prefix-cls} {
+        width: 40px;
+        border-radius: 11px;
+        &:hover {
+          border-color: @gray-2;
+        }
+        &::after {
+          top: 2px;
+          left: 2px;
+          width: 14px;
+          height: 14px;
+          background: var(--disabled-inner, var(--disabled-inner));
+          border-radius: 50%;
+          transform: translateX(var(--x, 0));
+        }
+        &:checked {
+          --ab: var(--disabled);
+          --x: 17px;
+        }
+        &:disabled {
+          &:not(:checked) {
+            &::after {
+              opacity: 0.6;
+            }
+          }
+        }
+      }
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+        content: '';
+      }
+      &:checked {
+        --b: var(--active);
+        --bc: var(--active);
+        --d-o: 0.3s;
+        --d-t: 0.6s;
+        --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+      }
+      &:disabled {
+        --b: var(--disabled);
+        cursor: not-allowed;
+        opacity: 0.9;
+        &:checked {
+          --b: var(--disabled-inner);
+          --bc: var(--border);
+        }
+        & + label {
+          cursor: not-allowed;
+        }
+      }
+
+      & + label {
+        display: inline-block;
+        margin-left: 4px;
+        font-size: 14px;
+        line-height: 20px;
+        vertical-align: top;
+        cursor: pointer;
+      }
+    }
+  }
+}

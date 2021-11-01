@@ -2,7 +2,7 @@
 import React from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { TableProps } from '../interface';
-import { PaginationProps } from '../../components/pagination/interface';
+import { PaginationProps } from '../../legacy/pagination/interface';
 import Table from '../index';
 
 const dataSource = Array.from({ length: 1000 }, (_, key) => ({ a: key, b: key, c: key, d: key }));

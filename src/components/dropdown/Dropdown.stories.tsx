@@ -4,12 +4,12 @@ import { MoreOutlined } from '@gio-design/icons';
 import Docs from './Dropdown.mdx';
 import Dropdown, { DropdownProps } from './index';
 import './style';
-import { Button, List } from '../..';
+import { Button, List, IconButton } from '../..';
 import ListPro from '../list-pro';
 import { properties } from '../list/__tests__/data';
 
 export default {
-  title: 'Functional Components/Dropdown',
+  title: 'Components/Dropdown',
   component: Dropdown,
   parameters: {
     docs: {
@@ -61,13 +61,19 @@ Default.args = {
 const PlacementTemplate: Story<DropdownProps> = (args) => (
   <div style={{ display: 'flex', justifyContent: 'space-around', height: 800, flexWrap: 'wrap' }}>
     <Dropdown {...args} placement="bottomLeft">
-      <Button type="text" icon={<MoreOutlined />} style={{ margin: '50px' }} />
+      <IconButton type="text" style={{ margin: '50px' }}>
+        <MoreOutlined />
+      </IconButton>
     </Dropdown>
     <Dropdown {...args} placement="bottom">
-      <Button type="text" icon={<MoreOutlined />} style={{ margin: '50px' }} />
+      <IconButton type="text" style={{ margin: '50px' }}>
+        <MoreOutlined />
+      </IconButton>
     </Dropdown>
     <Dropdown {...args} placement="bottomRight">
-      <Button type="text" icon={<MoreOutlined />} style={{ margin: '50px' }} />
+      <IconButton type="text" style={{ margin: '50px' }}>
+        <MoreOutlined />
+      </IconButton>
     </Dropdown>
   </div>
 );

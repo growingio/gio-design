@@ -1,0 +1,39 @@
+@import '../../stylesheet/variables/index.less';
+
+@link-prefix-cls: ~'@{component-prefix}-link-new';
+
+.@{link-prefix-cls} {
+  box-sizing: border-box;
+  color: @blue-2;
+  .text-body1();
+  text-decoration: none;
+  cursor: pointer;
+
+  &:not([aria-disabled='true']):hover {
+    color: @blue-3;
+  }
+
+  &_loading {
+    color: @blue-3;
+    cursor: not-allowed;
+    &:active {
+      pointer-events: none;
+    }
+  }
+
+  &[aria-disabled='true']:not(&_loading) {
+    color: @gray-3;
+    cursor: not-allowed;
+    &:active {
+      pointer-events: none;
+    }
+  }
+
+  &-prefix-icon {
+    margin-right: 8px;
+    & svg {
+      width: 1em;
+      height: 1em;
+    }
+  }
+}

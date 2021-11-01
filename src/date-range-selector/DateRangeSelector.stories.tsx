@@ -9,7 +9,7 @@ import { RangeInputTriggerProps, DateRangeSelectorProps } from './interfaces';
 import './style';
 
 export default {
-  title: 'Selectors/DateRangeSelector',
+  title: 'Components/DateRangeSelector',
   component: DateRangeSelector,
   parameters: {
     docs: {
@@ -31,7 +31,7 @@ export const Basic = Template.bind({});
 Basic.args = {
   placeholder: defaultPlaceholder,
   onSelect: action('selected:'),
-  onClear: action('onClear:')
+  onClear: action('onClear:'),
 };
 
 export const DisbaledDate = Template.bind({});

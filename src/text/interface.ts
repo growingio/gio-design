@@ -1,5 +1,5 @@
 import React from 'react';
-import { TooltipProps } from '../components/tooltip';
+import { TooltipProps } from '../legacy/tooltip';
 
 export interface TextProps extends Pick<TooltipProps, 'placement'> {
   /**

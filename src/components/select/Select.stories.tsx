@@ -5,11 +5,10 @@ import { FilterOutlined } from '@gio-design/icons';
 import Select, { SelectProps } from './index';
 import Docs from './Select.mdx';
 import './style';
-import Button from '../button';
-
+import Button from '../../legacy/button';
 
 export default {
-  title: 'Functional Components/Select',
+  title: 'Components/Select',
   component: Select,
   decorators: [withDesign],
   parameters: {
@@ -41,10 +40,14 @@ const templatestEllipsisOptions = values.map((value, index) => ({
   label: labels[index].repeat(6),
   groupValue: 'platform',
   groupLabel: '应用平台',
-}))
+}));
 const Template: Story<SelectProps> = (args) => (
   <div>
-    <Select {...args} triggerComponent={<Button type='text' size='small' icon={<FilterOutlined />} />} options={templatestEllipsisOptions} />
+    <Select
+      {...args}
+      triggerComponent={<Button type="text" size="small" icon={<FilterOutlined />} />}
+      options={templatestEllipsisOptions}
+    />
     <br />
     <br />
     <Select {...args} style={{ width: '300px' }} />
@@ -52,27 +55,32 @@ const Template: Story<SelectProps> = (args) => (
     <br />
     <Select {...args} options={templatestEllipsisOptions} style={{ width: '300px' }} />
   </div>
-  );
+);
 export const Default = Template.bind({});
 const DefaultArgs: SelectProps = {
   size: 'middle',
   placeholder: '请选择...',
   allowClear: true,
   options: templatestOptions,
-  onDropDownVisibleChange: undefined
-}
+  onDropDownVisibleChange: undefined,
+};
 Default.args = DefaultArgs;
-
 
 const fruitValue = ['apple', 'orange', 'greengage', 'Hami melon', 'cherry', 'chestnut', 'Chinese gooseberry'];
 const fruitLabel = ['苹果', '香蕉', '青梅', '哈密瓜', '樱桃', '栗子', '猕猴桃'];
-const fruitOptions = new Array(20).fill(0).reduce((prev, value, index) => [...prev, {
-    value: `${fruitValue[index % 7]}${index}`,
-    label: `${fruitLabel[index % 7]}${index}`,
-    title: `${fruitLabel[index % 7]}${index}`,
-    groupValue: `'platform'${index % 7}`,
-    groupLabel: `水果${index % 7}`,
-  }], [])
+const fruitOptions = new Array(20).fill(0).reduce(
+  (prev, value, index) => [
+    ...prev,
+    {
+      value: `${fruitValue[index % 7]}${index}`,
+      label: `${fruitLabel[index % 7]}${index}`,
+      title: `${fruitLabel[index % 7]}${index}`,
+      groupValue: `'platform'${index % 7}`,
+      groupLabel: `水果${index % 7}`,
+    },
+  ],
+  []
+);
 
 const multipleTemplate: Story<SelectProps> = (args) => <Select {...args} style={{ width: '300px' }} />;
 export const Multiple = multipleTemplate.bind({});
@@ -82,8 +90,10 @@ const multipleArgs: SelectProps = {
   allowClear: true,
   placeholder: '请选择...',
   onDropDownVisibleChange: undefined,
-  useFooter:true,
-  onChange: (value, options) => { console.log(value, options) },
+  useFooter: true,
+  onChange: (value, options) => {
+    console.log(value, options);
+  },
 };
 Multiple.args = multipleArgs;
 
@@ -95,4 +105,4 @@ NoBorder.args = {
   options: templatestOptions,
   bordered: false,
   onDropDownVisibleChange: undefined,
-}
+};

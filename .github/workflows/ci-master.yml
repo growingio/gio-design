@@ -1,0 +1,97 @@
+name: CI on Master
+on:
+  push:
+    branches:
+      - master
+jobs:
+  install:
+    name: Install dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: 14
+      - name: Cache Node.js modules
+        id: cache-node-modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn install
+  unit_test:
+    name: Unit test
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: 14
+      - name: Restore Node.js modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Cache test report
+        id: cache-test-report
+        uses: actions/cache@v2.1.6
+        with:
+          path: coverage/lcov.info
+          key: test-report-${{ github.sha }}
+      - name: Test
+        if: steps.cache-test-report.outputs.cache-hit != 'true'
+        run: yarn test --coverage
+  sonar:
+    name: Sonar scan
+    needs: unit_test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Restore test report
+        uses: actions/cache@v2.1.6
+        with:
+          path: coverage/lcov.info
+          key: test-report-${{ github.sha }}
+      - name: Upload reports to SonarCloud
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  build:
+    name: Build package
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: 14
+      - name: Restore Node.js modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Cache package
+        id: cache-package
+        uses: actions/cache@v2.1.6
+        with:
+          path: |
+            dist
+            es
+            lib
+          key: package-${{ github.sha }}
+      - name: Build
+        if: steps.cache-package.outputs.cache-hit != 'true'
+        run: yarn build

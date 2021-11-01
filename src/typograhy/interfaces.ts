@@ -1,5 +1,5 @@
 import { CommonProps, SizeType } from '@gio-design/utils';
-import { TooltipProps } from '../components/tooltip';
+import { TooltipProps } from '../legacy/tooltip';
 
 export interface TextProps extends Pick<CommonProps, 'className'> {
   /**
@@ -26,4 +26,9 @@ export interface TextProps extends Pick<CommonProps, 'className'> {
    * Trim right the clamped text to avoid putting the ellipsis on an empty line.
    */
   trimRight?: boolean;
+}
+
+export interface TitleProps extends Pick<CommonProps, 'className'> {
+  children: React.ReactNode;
+  level: 1 | 2 | 3 | 4;
 }

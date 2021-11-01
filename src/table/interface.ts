@@ -1,9 +1,9 @@
-import React from 'react';
 import { ExpandableConfig } from '@gio-design/table/lib/interface';
-import { PaginationProps } from '../components/pagination/interface';
-import { CheckboxProps } from '../components/checkbox/interface';
-import { TooltipProps } from '../components/tooltip/interface';
-import { EmptyProps } from '../components/empty/interfaces';
+import { TableComponents } from '@gio-design/table/es/interface';
+import { PaginationProps } from '../legacy/pagination/interface';
+import { CheckboxProps } from '../checkbox/interface';
+import { TooltipProps } from '../legacy/tooltip/interface';
+import { EmptyProps } from '../empty/interfaces';
 
 export type AlignType = 'left' | 'center' | 'right';
 export type SortOrder = 'descend' | 'ascend' | null;
@@ -106,35 +106,91 @@ export interface RowSelection<RecordType> {
 }
 
 export interface TableProps<RecordType> {
+  /**
+   * 自定义className前缀
+   */
   prefixCls?: string;
+  /**
+   * 自定义className
+   */
   className?: string;
+  /**
+   * 表格标题
+   */
+  title?: string;
+  /**
+   * 自定义样式
+   */
   style?: React.CSSProperties;
+  /**
+   * 数据源
+   */
   dataSource?: RecordType[];
+  /**
+   * 配置列
+   */
   columns?: ColumnsType<RecordType>;
+  /**
+   * 滚动配置，超出滚动
+   */
   scroll?: {
     x?: number;
     y?: number;
   };
+  /**
+   * 每行的key，替换默认的 ‘key’
+   */
   rowKey?: string | ((record: RecordType) => string);
+  /**
+   * 自定义每行的className
+   */
   rowClassName?: string | ((record: RecordType, index: number, indent: number) => string);
+  /**
+   * 行鼠标事件是否受控
+   */
   hackRowEvent?: boolean;
+  /**
+   * 设置行属性
+   */
   onRow?: GetComponentProps<RecordType>;
+  /**
+   * 设置头部行属性
+   */
   onHeaderRow?: GetComponentProps<ColumnType<RecordType>[]>;
+  /**
+   * 分页配置（参考Pagination组件）
+   */
   pagination?: PaginationProps | false;
+  /**
+   * 配置表格行是否可选择
+   */
   rowSelection?: RowSelection<RecordType>;
+  /**
+   * 每行是否显示序号
+   */
   showIndex?: boolean;
   /**
     @deprecated
+    * 表格数据为空时的占位内容
   */
   emptyText?: React.ReactNode;
   empty?: EmptyProps;
+  /**
+   * 分页/排序/筛选变化时触发
+   */
   onChange?: (
     pagination: PaginationState,
     filters: Record<string, string[]>,
     sorter: SortState<RecordType> | undefined
   ) => void;
   showHover?: boolean;
+  /**
+   * 是否显示表头
+   */
   showHeader?: boolean;
+  /**
+   * 是否加载中
+   */
   loading?: boolean;
   /**
    * 宽度适应内容
@@ -144,4 +200,8 @@ export interface TableProps<RecordType> {
    * 扩展配置
    */
   expandable?: ExpandableConfig<RecordType>;
+  /**
+   * 自定义渲染table
+   */
+  components?: TableComponents<RecordType>;
 }

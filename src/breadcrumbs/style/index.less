@@ -1,0 +1,21 @@
+@import '../../stylesheet/variables/index.less';
+
+@breadcrumb-prefix-cls: ~'@{component-prefix}-breadcrumbs-new';
+
+.@{breadcrumb-prefix-cls} {
+  .text-body1();
+  color: @gray-4;
+  &__ol {
+    display: flex;
+    align-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__separator {
+    margin: 0 12px;
+  }
+  a {
+    color: inherit;
+  }
+}

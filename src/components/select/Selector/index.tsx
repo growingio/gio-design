@@ -2,7 +2,8 @@ import { DownFilled, CloseCircleFilled } from '@gio-design/icons';
 import classnames from 'classnames';
 import { isEmpty, isNil } from 'lodash';
 import React, { useRef, useState, useImperativeHandle, useMemo, useCallback } from 'react';
-import Tag from '../../tag';
+import ToolTip from '../../../legacy/tooltip';
+import Tag from '../../../tag';
 import Text from '../../../text';
 import { SelectorProps } from '../interface';
 import SearchInput from './input';
@@ -47,7 +48,8 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
   const [isHovered, setIsHovered] = useState(false);
   const isEmptyValue = useMemo(() => !isEmpty(value), [value]);
   const showClose = allowClear && (isEmptyValue || input) && isHovered && !disabled;
-
+  const selectValuesWidth = selectValuesRef?.current?.getBoundingClientRect()?.width;
+  const isShowTooltip = style?.width && (selectValuesWidth || 0) - (selectorAllRef?.current?.offsetWidth || 0) <= 0;
   useImperativeHandle(ref, () => ({
     clientWidth: selectorRef?.current?.clientWidth,
     focus: () => {
@@ -61,7 +63,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
     },
     onFocus: () => {
       selectorRef?.current?.focus();
-    }
+    },
   }));
 
   const onMouseEnter = () => {
@@ -79,18 +81,14 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
     if (allowClear) onAllowClear();
   };
   const onFocus = useCallback(() => {
-    rest?.onFocus?.() // dropdown event mothods
-    onFocusChange?.(true)
-  },
-    [onFocusChange, rest],
-  )
+    rest?.onFocus?.(); // dropdown event mothods
+    onFocusChange?.(true);
+  }, [onFocusChange, rest]);
 
   const onBlur = useCallback(() => {
-    rest?.onBlur?.()
-    onFocusChange?.(false)
-  },
-    [onFocusChange, rest],
-  )
+    rest?.onBlur?.();
+    onFocusChange?.(false);
+  }, [onFocusChange, rest]);
 
   // ========================== render =======================
   const renderPlaceHolder = () => {
@@ -129,36 +127,34 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
     }, []);
 
     return (searchType === 'inner' || !input) && !isNil(value) ? (
-      <Text>
+      <ToolTip
+        disabled={!isShowTooltip}
+        title={allValueLabel?.join(',')}
+        placement="bottom"
+        getTooltipContainer={() => selectorRef?.current?.parentElement || document.body}
+      >
         <div
           className={`${prefix}-item-all`}
           style={{ maxWidth: style && style.width && style?.width > 0 ? 'fill-available' : undefined }}
         >
-           <span
-              ref={selectorAllRef}
-              className={classnames(`${prefix}-item-all-text`,{
-            })}
-            >
-              {allValueLabel?.join('，')}
-            </span>
+          <span ref={selectorAllRef} className={classnames(`${prefix}-item-all-text`, {})}>
+            {allValueLabel?.join('，')}
+          </span>
         </div>
-      </Text>
+      </ToolTip>
     ) : null;
-    
   };
 
   const renderSingleValue = () => {
     const text = optionLabelRenderer(value as string | number, getOptionByValue(value as string | number));
     return !input && (typeof value === 'string' || typeof value === 'number') ? (
       <Text>
-      <div className={classnames(`${prefix}-item`)}>      
-      <span
-        ref={selectorAllRef}
-        className={classnames(`${prefix}-item-text`)}
-      >
-        {text}
-      </span>
-    </div></Text>
+        <div className={classnames(`${prefix}-item`)}>
+          <span ref={selectorAllRef} className={classnames(`${prefix}-item-text`)}>
+            {text}
+          </span>
+        </div>
+      </Text>
     ) : null;
   };
 
@@ -169,14 +165,19 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
       aria-controls="expandable"
       // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
       tabIndex={0}
-      className={classnames(`${prefix}`, `${prefix}-${size}`, {
-        [`${prefix}-single`]: !multiple,
-        [`${prefix}-bordered`]: bordered,
-        [`${prefix}-focused`]: isFocused,
-        [`${prefix}-disabled`]: disabled,
-      },className)}
+      className={classnames(
+        `${prefix}`,
+        `${prefix}-${size}`,
+        {
+          [`${prefix}-single`]: !multiple,
+          [`${prefix}-bordered`]: bordered,
+          [`${prefix}-focused`]: isFocused,
+          [`${prefix}-disabled`]: disabled,
+        },
+        className
+      )}
       aria-disabled={disabled}
-      aria-hidden='true'
+      aria-hidden="true"
       style={style}
       ref={selectorRef as any}
       // Dropdown trigger set Event on rest, fix dropdown can not onclick trigger
@@ -186,7 +187,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
       onBlur={onBlur}
       onKeyDown={onSelectorKeyDown}
     >
-      <div id='selector' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+      <div id="selector" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         <div className={`${prefix}-selector`}>
           <div className={classnames(`${prefix}-values-wrapper`)} ref={selectValuesRef}>
             {multiple ? renderMultipleValue() : renderSingleValue()}

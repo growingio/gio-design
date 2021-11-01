@@ -7,7 +7,7 @@ import { IBaseListProps } from './interface';
 import './style';
 
 export default {
-  title: 'Deprecated Components/List Pro',
+  title: 'Components/List Pro',
   component: List,
   subcomponents: { Option },
 } as Meta;

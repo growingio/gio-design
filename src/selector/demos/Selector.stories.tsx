@@ -3,8 +3,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import { CalendarOutlined, CloseCircleFilled, DownFilled, UpFilled, FolderOutlined } from '@gio-design/icons';
 import Docs from './Selector.mdx';
-import Button from '../../components/button';
-import Toast from '../../components/toast';
+import Button from '../../legacy/button';
+import Toast from '../../toast';
 import Selector, { SelectorProps } from '../index';
 import InputTrigger from '../InputTrigger';
 import { InputTriggerProps } from '../interfaces';
@@ -12,7 +12,7 @@ import { InputTriggerProps } from '../interfaces';
 import '../style';
 
 export default {
-  title: 'Selectors/Selector',
+  title: 'Components/Selector',
   component: Selector,
   subcomponents: { InputTrigger },
   decorators: [withDesign],

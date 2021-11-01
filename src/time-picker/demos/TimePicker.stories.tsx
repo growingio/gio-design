@@ -7,7 +7,7 @@ import Docs from './TimePicker.mdx';
 import '../style';
 
 export default {
-  title: 'Pickers/TimePicker',
+  title: 'Components/TimePicker',
   component: TimePicker,
   parameters: {
     design: {

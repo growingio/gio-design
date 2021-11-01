@@ -82,12 +82,18 @@
     &:last-child {
       border-right: 0.5px solid @color-border-table;
 
-      .react-resizable-handle {
+      .@{table-prefix-cls}-resizable-handle {
         display: none;
       }
     }
-    .gio-checkbox-wrapper + .react-resizable-handle {
+    .gio-checkbox-wrapper + .@{table-prefix-cls}-resizable-handle {
       display: none;
+    }
+
+    &:hover {
+      .@{table-prefix-cls}-resizable-handle {
+        background: #5f87ff;
+      }
     }
   }
 
@@ -125,6 +131,9 @@
       th,
       td {
         &:first-child {
+          position: sticky;
+          left: 0;
+          z-index: 1;
           padding-left: 20px;
         }
         &:last-child {
@@ -420,6 +429,74 @@
     line-height: 24px;
     cursor: pointer;
   }
+
+  &-expanded-row-fixed {
+    box-sizing: border-box;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border-right: 1px solid #ebedf5;
+      content: '';
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      border-left: 1px solid #ebedf5;
+      content: '';
+    }
+  }
+  .react-resizable {
+    position: relative;
+    background-clip: padding-box;
+  }
+
+  &-resizable-handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 4px;
+    height: 100%;
+    cursor: col-resize;
+  }
+
+  &-drag-container {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &-drag-handle {
+    margin-right: 8px;
+
+    &:hover {
+      cursor: grab;
+    }
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    &-disabled {
+      display: none;
+    }
+  }
+
+  &-drag-helper {
+    z-index: 999;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 16px;
+    background: #f7f8fc;
+    border-top: 1px solid #ebedf5;
+    border-bottom: 1px solid #ebedf5;
+  }
 }
 
 .table-size(@size, @padding-vertical, @padding-horizontal) {
@@ -439,6 +516,11 @@
 
     .@{table-prefix-cls}-tbody .@{table-prefix-cls}-expanded-row > .@{table-prefix-cls}-cell {
       padding: @padding-vertical 20px;
+
+      .@{table-prefix-cls}-expanded-row-fixed {
+        margin: -@padding-vertical -21px;
+        padding: @padding-vertical 20px;
+      }
     }
 
     .@{table-prefix-cls}-tbody .@{table-prefix-cls}-cell-with-append {

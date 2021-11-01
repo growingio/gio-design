@@ -19,7 +19,7 @@ export default {
       page: Docs,
     },
   },
-  title: 'Pickers/DateRangePicker',
+  title: 'Components/DateRangePicker',
 } as Meta;
 
 const Template: Story<DateRangePickerProps> = (args) => <DateRangePicker onSelect={action('selected:')} {...args} />;

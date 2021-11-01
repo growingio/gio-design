@@ -2,8 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { UpFilled, DownFilled, FilterOutlined, QuestionCircleOutlined } from '@gio-design/icons';
 import { isUndefined } from 'lodash';
-import Button from '../components/button';
-import Tooltip from '../components/tooltip';
+import Button from '../legacy/button';
+import Tooltip from '../legacy/tooltip';
 import FilterPopover from './FilterPopover';
 import { SortOrder, TitleProps } from './interface';
 

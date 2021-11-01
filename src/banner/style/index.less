@@ -1,0 +1,77 @@
+@import '../../stylesheet/index.less';
+
+@banner-prefix-cls: ~'@{component-prefix}-banner';
+
+.@{banner-prefix-cls} {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 720px;
+  height: 48px;
+  background-color: @color-background-banner-normal;
+  transition: all ease 0.8s;
+  &-content {
+    flex: 1;
+    height: 30px;
+    margin: 0 64px;
+    color: @color-text-banner-normal;
+    font-size: @size-font-14;
+    font-family: @font-family-primary;
+    line-height: 30px;
+    text-align: center;
+    .alert-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &-content-button {
+    margin: 0 154px 0 64px;
+  }
+
+  &-button {
+    position: relative;
+    right: 64px;
+  }
+
+  &-closeIcon {
+    position: relative;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: @color-text-banner-normal;
+    font-weight: @weight-font-semi-bold;
+    line-height: 16px;
+    cursor: pointer;
+  }
+  &-closeIcon:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+  }
+}
+
+.@{banner-prefix-cls}-alert {
+  background-color: @color-background-banner-alert;
+  .@{banner-prefix-cls}-content {
+    color: @color-text-banner-alert;
+    font-size: @size-font-14;
+    font-family: @font-family-primary;
+  }
+  .@{banner-prefix-cls}-closeIcon {
+    color: @color-text-banner-alert;
+  }
+}
+
+.@{banner-prefix-cls}-close {
+  display: none;
+}
+
+.@{banner-prefix-cls}-closeable {
+  .@{banner-prefix-cls}-content {
+    margin: 0 40px 0 64px;
+  }
+}

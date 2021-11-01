@@ -13,7 +13,7 @@ import Tabs, { TabPane, TabProps } from './index';
 import './style';
 
 export default {
-  title: 'Basic Components/Tabs',
+  title: 'Components/Tabs',
   component: Tabs,
   subcomponents: { TabPane },
   parameters: {

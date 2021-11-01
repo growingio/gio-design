@@ -5,19 +5,17 @@ import { cloneDeep, isUndefined, get, has, set, isFunction } from 'lodash';
 import { ExpandableConfig } from '@gio-design/table/lib/interface';
 import { compose } from 'lodash/fp';
 import { RightOutlined, DownOutlined } from '@gio-design/icons';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
 import useMergeRef from '../utils/hooks/useMergeRef';
 import useSorter from './hook/useSorter';
 import useFilter from './hook/useFilter';
 import usePagination from './hook/usePagination';
 import useSelection, { getRowKey } from './hook/useSelection';
-import useEllipsisTooltip from './hook/useEllipsisTooltip';
 import Title from './Title';
 import { TableProps, ColumnsType, OnTriggerStateUpdateProps } from './interface';
 import Empty from '../components/empty';
 import { translateInnerColumns } from './utils';
-import Loading from '../components/loading';
-import useDebounceLoading from '../utils/hooks/useDebounceLoading';
+import Loading from '../loading';
 import useHackOnRow from './hook/useHackOnRow';
 
 interface TableContextType {
@@ -31,6 +29,7 @@ function Table<RecordType>(
 ): React.ReactElement {
   const {
     prefixCls: customizePrefixCls,
+    title,
     columns = [],
     dataSource = [],
     pagination = {},
@@ -53,7 +52,6 @@ function Table<RecordType>(
   } = props;
   const mergedRef = useMergeRef(ref);
   const prefixCls = usePrefixCls('table', customizePrefixCls);
-  const debounceLoading = useDebounceLoading(loading, 1000);
   const onHackRow = useHackOnRow(onRow, hackRowEvent);
   const innerColumns = useMemo(() => translateInnerColumns(columns), [columns]);
   const [activeSorterStates, updateSorterStates, sortedData, sorter] = useSorter(innerColumns, dataSource);
@@ -99,8 +97,6 @@ function Table<RecordType>(
     rowKey,
   });
 
-  const [transformEllipsisTooltipPipeline] = useEllipsisTooltip();
-
   const onTriggerStateUpdate = ({
     paginationState = activePaginationedState,
     sorterState = sorter,
@@ -142,11 +138,7 @@ function Table<RecordType>(
     [activeSorterStates, activeFilterStates, innerColumns, prefixCls]
   );
 
-  const composedColumns = compose(
-    transformEllipsisTooltipPipeline,
-    transformSelectionPipeline,
-    transformShowIndexPipeline
-  )(transformColumns);
+  const composedColumns = compose(transformSelectionPipeline, transformShowIndexPipeline)(transformColumns);
 
   const emptyElement = (
     <div className={`${prefixCls}-empty`}>
@@ -168,10 +160,10 @@ function Table<RecordType>(
         style={style}
         ref={mergedRef}
       >
-        <Loading loading={debounceLoading}>
+        <Loading loading={loading}>
           <RcTable<RecordType>
             tableLayout="fixed"
-            title={undefined as any}
+            title={title ? () => title : undefined}
             prefixCls={prefixCls}
             columns={composedColumns}
             data={paginationedData}

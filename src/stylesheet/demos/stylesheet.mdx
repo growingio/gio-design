@@ -1,0 +1,23 @@
+import { Subtitle, ArgsTable } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Color/less-variables" />
+
+# How to use ?
+
+```css
+@import '@gio-design/components/stylesheet/mixin/border.less';
+@import '@gio-design/components/stylesheet/mixin/elevation.less';
+@import '@gio-design/components/stylesheet/variables/index.less';
+
+div {
+  // 注意颜色写法 @gray-1;
+  background-color: @gray-1;
+
+  // 注意函数用法 .border(2)
+  .border(2);
+
+  // 注意函数用法  .elevation(@level:2)
+  .elevation(@level:2);
+}
+```

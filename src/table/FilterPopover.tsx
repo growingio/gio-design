@@ -1,12 +1,14 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React, { useState, useContext, useEffect } from 'react';
 import { isObject } from 'lodash';
-import Button from '../components/button';
-import Popover from '../components/popover';
+import { useLocale } from '@gio-design/utils';
+import Button from '../legacy/button';
+import Popover from '../legacy/popover';
 import FilterList from './FilterList';
-import SearchBar from '../components/search-bar';
+import SearchBar from '../legacy/search-bar';
 import { TableContext } from './Table';
 import { filterType } from './interface';
+import defaultLocale from './locales/zh-CN';
 
 interface FilterPopoverProps {
   prefixCls: string;
@@ -23,6 +25,12 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
   const [selectFilterKeys, setSelectFilterKeys] = useState<string[]>(values);
   const [visible, setVisible] = useState<boolean>(false);
   const { tableRef } = useContext(TableContext);
+
+  const locale = useLocale('Table');
+  const { clearText, okText }: { clearText: string; okText: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
 
   useEffect(() => {
     setSelectFilterKeys(values);
@@ -75,7 +83,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
                 setSelectFilterKeys([]);
               }}
             >
-              清除
+              {clearText}
             </Button>
             <Button
               style={{ float: 'right' }}
@@ -85,7 +93,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
                 setVisible(false);
               }}
             >
-              确定
+              {okText}
             </Button>
           </div>
         </>

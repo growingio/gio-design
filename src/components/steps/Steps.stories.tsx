@@ -8,7 +8,7 @@ import './style/steps.stories.less';
 import { Button, Toast } from '../..';
 
 export default {
-  title: 'Functional Components/Steps',
+  title: 'Components/Steps',
   component: Steps,
   subcomponents: { Step },
   decorators: [withDesign],
@@ -24,24 +24,21 @@ export default {
   },
 } as Meta;
 
-
-
 const steps = Array.from({ length: 4 }, (_, i) => ({
   key: i,
   title: `Title ${i}`,
   description: `Description ${i}`,
 }));
 
-
 interface ActionProps {
-  previous: () => void
-  next: () => void
-  done: () => void
-  current: number
+  previous: () => void;
+  next: () => void;
+  done: () => void;
+  current: number;
 }
 
 const Action: React.FC<ActionProps> = (props) => {
-  const { previous, next, done, current } = props
+  const { previous, next, done, current } = props;
   return (
     <div className="steps-demo-action">
       {current > 0 && (
@@ -60,15 +57,13 @@ const Action: React.FC<ActionProps> = (props) => {
         </Button>
       )}
     </div>
-  )
-}
+  );
+};
 
 const Content: React.FC<Pick<ActionProps, 'current'>> = (props) => {
-  const { current } = props
-  return (
-    <div className="steps-demo-content">{`Content ${current + 1}`}</div>
-  )
-}
+  const { current } = props;
+  return <div className="steps-demo-content">{`Content ${current + 1}`}</div>;
+};
 
 const DefaultStepsTemplate: Story<StepsProps> = () => {
   const [current, setCurrent] = React.useState(0);
@@ -157,7 +152,7 @@ const CustomStateStepsTemplate: Story<StepsProps> = () => {
     const newFinished = [...value];
     newFinished[current] = true;
     return newFinished;
-  }
+  };
 
   const next = () => {
     setFinished(setFinishedFunc);
