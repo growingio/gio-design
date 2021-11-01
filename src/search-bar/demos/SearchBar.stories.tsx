@@ -1,12 +1,10 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-// import { InputProps } from '../interface';
+import { action } from '@storybook/addon-actions';
 import SearchBar from '../SearchBar';
 import '../style';
 import { SearchBarProps } from '../interface';
-// import InputNumber from '../InputNumber';
-// import Password from '../Password';
-// import TextArea from '../TextArea';
+import Docs from './SearchBarPage';
 
 export default {
   title: 'Upgraded/SearchBar',
@@ -17,6 +15,16 @@ export default {
     },
     suffix: {
       control: { type: 'text' },
+    },
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4078%3A43861',
+      allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
     },
   },
 } as Meta;
@@ -76,7 +84,36 @@ const Template: Story<SearchBarProps> = (args) => (
   </>
 );
 
-export const InputUsage = Template.bind({});
-InputUsage.args = {
+export const Demo = Template.bind({});
+Demo.args = {
   style: { width: '200px' },
+  onChange: () => action('onChange'),
+  onSearch: () => action('onSearch'),
+};
+
+const DefaultTemplate = (args: SearchBarProps) => <SearchBar {...args} />;
+
+export const Default = DefaultTemplate.bind({});
+Default.args = {
+  style: { width: '200px' },
+  onChange: () => action('onChange'),
+  onSearch: () => action('onChange'),
+};
+
+const DisableTemplate = (args: SearchBarProps) => <SearchBar {...args} />;
+
+export const Disabled = DisableTemplate.bind({});
+Disabled.args = {
+  style: { width: '200px' },
+  disabled: true,
+};
+const DisableValueTemplate = (args: SearchBarProps) => <SearchBar {...args} />;
+
+export const DisableValue = DisableValueTemplate.bind({});
+DisableValue.args = {
+  style: { width: '200px' },
+  onChange: () => action('onChange'),
+  onSearch: () => action('onChange'),
+  value: '数据可视化',
+  disabled: true,
 };

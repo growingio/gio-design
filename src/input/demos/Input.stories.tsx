@@ -1,11 +1,13 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { action } from '@storybook/addon-actions';
 import { InputProps } from '../interface';
 import Input from '../Input';
 import '../style';
 import InputNumber from '../InputNumber';
 import Password from '../Password';
 import TextArea from '../TextArea';
+import Docs from './InputPage';
 
 export default {
   title: 'Upgraded/Input',
@@ -16,6 +18,16 @@ export default {
     },
     suffix: {
       control: { type: 'text' },
+    },
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4066%3A42547',
+      allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
     },
   },
 } as Meta;
@@ -126,7 +138,40 @@ const Template: Story<InputProps> = (args) => (
   </>
 );
 
-export const InputUsage = Template.bind({});
-InputUsage.args = {
+export const Demo = Template.bind({});
+Demo.args = {
   style: { width: '200px' },
+  onChange: () => action('action'),
+};
+
+const TextTemplate = (args: InputProps) => <Input {...args} />;
+
+export const Text = TextTemplate.bind({});
+Text.args = {
+  style: { width: '200px' },
+  onChange: () => action('action'),
+};
+
+const InputNumberTemplate = (args: InputProps) => <InputNumber {...args} value="请输入..." />;
+
+export const InputNumberDemo = InputNumberTemplate.bind({});
+InputNumberDemo.args = {
+  style: { width: '200px' },
+  onChange: () => action('action'),
+};
+const PasswordTemplate = (args: InputProps) => <Password {...args} value="password" />;
+
+export const PasswordDemo = PasswordTemplate.bind({});
+PasswordDemo.args = {
+  style: { width: '200px' },
+  onChange: () => action('action'),
+};
+
+const TextareaTemplate = (args: InputProps) => <TextArea {...(args as any)} />;
+
+export const TextareaDemo = TextareaTemplate.bind({});
+TextareaDemo.args = {
+  col: { width: '200px' },
+  value: 'you can write here',
+  onChange: () => action('action'),
 };

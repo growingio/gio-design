@@ -1,8 +1,11 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { action } from '@storybook/addon-actions';
+import { PlusOutlined, FilterOutlined } from '@gio-design/icons';
 import InputButton from '../InputButton';
 import '../style';
 import { InputButtonProps } from '../interface';
+import Docs from './InputButtonPage';
 
 export default {
   title: 'Upgraded/InputButton',
@@ -13,6 +16,16 @@ export default {
     },
     suffix: {
       control: { type: 'text' },
+    },
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=6385%3A69093',
+      allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
     },
   },
 } as Meta;
@@ -99,7 +112,28 @@ const Template: Story<InputButtonProps> = (args) => (
   </>
 );
 
-export const InputUsage = Template.bind({});
-InputUsage.args = {
-  style: { width: '200px' },
+export const Demo = Template.bind({});
+Demo.args = {
+  onChange: () => action('onChange'),
+};
+
+const DefaultTemplate = () => <InputButton />;
+export const Default = DefaultTemplate.bind({});
+DefaultTemplate.args = {
+  allowClear: false,
+  onChange: () => action('onChange'),
+};
+
+const HidePrefixTemplate = (args: InputButtonProps) => <InputButton {...args} value="请选择事件" />;
+export const HidePrefix = HidePrefixTemplate.bind({});
+HidePrefixTemplate.args = {
+  hidePrefix: true,
+  onChange: () => action('onChange'),
+};
+const customPrefixTemplate = (args: InputButtonProps) => (
+  <InputButton {...args} value="请选择事件" prefix={<PlusOutlined />} suffix={<FilterOutlined />} />
+);
+export const CustomIcon = customPrefixTemplate.bind({});
+CustomIcon.args = {
+  onChange: () => action('onChange'),
 };
