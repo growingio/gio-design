@@ -9,8 +9,8 @@ export interface TooltipLink {
 }
 
 export interface TooltipProps extends Omit<PopoverProps, 'content'> {
-  overlay?: string | React.ReactNode | ReactRender;
-  title?: string | React.ReactNode | ReactRender;
+  overlay?: React.ReactNode;
+  title?: React.ReactNode;
 
   subPrefixCls?: string;
 
