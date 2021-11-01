@@ -54,6 +54,10 @@ export interface PopoverProps {
   trigger?: TriggerAction | TriggerAction[];
   content?: string | React.ReactNode;
 
+  /**
+   * 气泡被遮挡时自动调整位置
+   * @default false
+   */
   allowArrow?: boolean;
   enterable?: boolean;
 

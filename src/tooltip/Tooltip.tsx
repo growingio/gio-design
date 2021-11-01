@@ -13,6 +13,7 @@ const Tooltip = (props: TooltipProps) => {
     title,
     overlay,
     tooltipLink,
+    allowArrow = true,
     prefixCls: customizePrefixCls,
     subPrefixCls = 'tooltip-new',
     ...rest
@@ -39,6 +40,7 @@ const Tooltip = (props: TooltipProps) => {
   return (
     <Popover
       {...rest}
+      allowArrow={allowArrow}
       prefixCls={customizePrefixCls}
       overlayClassName={prefixCls}
       overlayInnerClassName={contentInnerCls}
