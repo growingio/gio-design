@@ -130,6 +130,8 @@ const Popover = (props: PopoverProps) => {
     }
   }, [enterVisible]);
 
+  console.log(styles.popper);
+
   return (
     <>
       <div className={`${prefixCls}__popcorn`} ref={referenceElement} {...divRoles}>
