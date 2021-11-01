@@ -3,14 +3,18 @@ import React from 'react';
 import { LoadingOutlined } from '@gio-design/icons';
 import { ButtonProps } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import IconButton from './IconButton';
+import WithRef from '../utils/withRef';
+import WithSubComponent from '../utils/withSubComponent';
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+const InternalButton = WithRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     type = 'primary',
     size = 'normal',
     loading = false,
     disabled = false,
     htmlType = 'button',
+    active = false,
     prefix,
     suffix,
     className,
@@ -18,12 +22,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     ...restProps
   } = props;
 
-  const prefixCls = usePrefixCls('button');
+  const prefixCls = usePrefixCls('button-new');
   const classes = classNames([className, prefixCls], {
     [`${prefixCls}_${type}`]: type,
     [`${prefixCls}_${size}`]: size,
     [`${prefixCls}_loading`]: loading,
     [`${prefixCls}_disabled`]: disabled,
+    [`${prefixCls}_active`]: active,
   });
 
   const prefixIcon = loading ? (
@@ -52,6 +57,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     </button>
   );
 });
+
+const Button = WithSubComponent(InternalButton, { IconButton });
 
 Button.displayName = 'Button';
 

@@ -4,7 +4,7 @@ import { withDesign } from 'storybook-addon-designs';
 import Docs from './BreadcrumbPage';
 import Breadcrumb from '../index';
 import { BreadcrumbProps } from '../interface';
-// import '../style';
+import '../style';
 
 export default {
   title: 'Legacy/Breadcrumb',

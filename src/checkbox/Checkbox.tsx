@@ -35,7 +35,7 @@ const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 
   const checkboxCls = classNames(className, {
     [`${prefixCls}-wrapper`]: true,
-    [`${prefixCls}-wrapper-disabled`]: checkboxProps.disabled,
+    [`${prefixCls}-wrapper-disabled`]: disabled,
   });
 
   const [checkedStatus, setChecked] = useControlledState(checked, defaultChecked);

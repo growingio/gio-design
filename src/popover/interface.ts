@@ -36,11 +36,13 @@ export interface PopoverProps {
   prefixCls?: string;
 
   /**
-   箭头是否指向目标元素中心
+   * 箭头是否指向目标元素中心
+   * @default false
    */
   arrowPointAtCenter?: boolean;
   /**
-   气泡被遮挡时自动调整位置
+   * 气泡被遮挡时自动调整位置
+   * @default true
    */
   autoAdjustOverflow?: boolean;
   /**

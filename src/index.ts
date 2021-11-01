@@ -8,7 +8,18 @@ export { default as Checkbox, CheckboxGroup, CheckboxProps, CheckboxGroupProps, 
 export { default as Drawer, DrawerProps } from './drawer';
 export { default as Dropdown, DropdownProps } from './dropdown';
 export { default as Empty, EmptyProps } from './components/empty';
-export { default as Input, InputProps, InputNumberProps, TextAreaProps } from './legacy/input';
+export {
+  default as Input,
+  InputProps,
+  InputNumberProps,
+  TextAreaProps,
+  InputButtonProps,
+  PasswordProps,
+  InputButton,
+  InputNumber,
+  Password,
+  TextArea,
+} from './input';
 export { default as Layout, LayoutProps } from './layout';
 export { default as Link, LinkProps } from './link';
 export { default as List, ListProps } from './components/list';
@@ -33,7 +44,7 @@ export {
 export { default as Page, PageProps } from './page';
 export { default as Pagination, PaginationProps } from './pagination';
 export { default as Popconfirm, PopconfirmProps } from './legacy/popconfirm';
-export { default as Popover, PopoverProps } from './legacy/popover';
+export { default as Popover, PopoverProps } from './popover';
 export { default as Progress, ProgressProps } from './progress';
 export { default as Radio, RadioGroup, RadioProps, RadioGroupProps, RadioGroupOption } from './radio';
 export { default as Sign, SignProps } from './sign';
@@ -92,3 +103,4 @@ export { default as Divider, DividerProps } from './divider';
 // provide config context
 export { ConfigContext, ConfigConsumer, withConfigConsumer } from './components/config-provider';
 export { default as usePrefixCls } from './utils/hooks/use-prefix-cls';
+export { default as useControlledState } from './utils/hooks/useControlledState';

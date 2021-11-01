@@ -5,6 +5,9 @@ import Tooltip from '../Tooltip';
 import { TooltipProps } from '../interface';
 import Input from '../../input';
 import { Button } from '../../button';
+
+import '../../popover/style';
+import '../style';
 import '../../popover/demos/demo.stories.less';
 
 export default {
@@ -24,7 +27,7 @@ export default {
 } as Meta;
 
 const Template: Story<TooltipProps> = (args) => (
-  <div style={{ display: 'flex', alignItems: 'center', justifyoverlay: 'center' }}>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
     <div style={{ width: '610px', margin: '70px 0px' }}>
       <div className="tooltip-top">
         <span className="popover-wrapper">
@@ -192,22 +195,23 @@ const ControlTemplate: Story<TooltipProps> = (args) => {
 export const Controlled = ControlTemplate.bind({});
 Controlled.args = { overlay };
 
-const DefaultTemplate: Story<TooltipProps> = (args) => (
-  <>
-    <Tooltip {...args}>
-      <Input value="Show Popover with allowed Arrow" style={{ width: 280 }} />
-    </Tooltip>
-    <span>|</span>
-    <Tooltip {...args} allowArrow={false}>
-      <Input value="Show Popover with rejected Arrow" style={{ width: 280 }} />
-    </Tooltip>
-  </>
-);
-export const DefaultVisible = DefaultTemplate.bind({});
-DefaultVisible.args = {
-  defaultVisible: true,
-  overlay,
-};
+// const DefaultTemplate: Story<TooltipProps> = (args) => (
+//   <>
+//     <Tooltip {...args}>
+//       <Input value="Show Popover with allowed Arrow" style={{ width: 280 }} />
+//     </Tooltip>
+//     <span>|</span>
+//     <Tooltip {...args} allowArrow={false}>
+//       <Input value="Show Popover with rejected Arrow" style={{ width: 280 }} />
+//     </Tooltip>
+//   </>
+// );
+// export const DefaultVisible = DefaultTemplate.bind({});
+// DefaultVisible.args = {
+//   defaultVisible: true,
+//   overlay,
+//   placement: 'bottom',
+// };
 
 const EnterableTemplate: Story<TooltipProps> = (args) => (
   <>

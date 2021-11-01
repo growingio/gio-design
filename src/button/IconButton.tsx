@@ -7,7 +7,7 @@ import usePrefixCls from '../utils/hooks/use-prefix-cls';
 const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>((props, ref) => {
   const { children, className, ...restProps } = props;
 
-  const prefixCls = usePrefixCls('icon-button');
+  const prefixCls = usePrefixCls('icon-button-new');
   const classes = classNames(prefixCls, className);
 
   return <Button ref={ref} className={classes} prefix={children} {...restProps} />;
@@ -16,7 +16,11 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>((props, 
 IconButton.displayName = 'IconButton';
 
 IconButton.defaultProps = {
-  ...Button.defaultProps,
+  type: 'primary',
+  size: 'normal',
+  loading: false,
+  disabled: false,
+  htmlType: 'button',
 };
 
 export default IconButton;

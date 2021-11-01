@@ -1,203 +1,61 @@
-@import '../../stylesheet/index.less';
+@import '../../stylesheet/variables/index.less';
 
-@pagination-prefix-cls: ~'@{component-prefix}-pagination';
-@input-prefix-cls: ~'@{component-prefix}-input';
-
-.pagination-item {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  width: 30px;
-  height: 30px;
-  font-size: 14px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.pagination-button {
-  .pagination-item;
-  padding: 0;
-  color: @color-text-pagination-normal;
-  border: 1px solid @color-background-pagination-disabled-active;
-  -webkit-transition: none;
-  transition: none;
-  &:hover {
-    background-color: @palette-gray-2;
-  }
-  &:active {
-    background-color: @palette-gray-2;
-  }
-}
+@pagination-prefix-cls: ~'@{component-prefix}-pagination-new';
 
 .@{pagination-prefix-cls} {
-  padding: 0;
-  line-height: 28px;
-  list-style: none;
-  user-select: none;
-  &::after {
-    display: block;
-    clear: both;
-    content: ' ';
-  }
-  li {
-    float: left;
+  @pagination-height: 30px;
+  height: @pagination-height;
+  color: @gray-5;
+  .text-body1();
+  &__ul {
+    display: flex;
+    align-content: center;
+    margin: 0;
+    padding: 0;
     list-style: none;
-    &:not(:last-child) {
-      margin-right: 8px;
-    }
   }
-  &-item {
-    .pagination-button;
-  }
-
-  &-disabled > &-item {
-    &,
-    &:hover,
-    &:active {
-      background-color: @palette-gray-2;
-    }
-  }
-
-  &-item-active {
-    color: @palette-blue-5;
-    background-color: @palette-gray-2;
-    border-radius: 4px;
-  }
-
-  &-disabled > &-item-active {
-    &,
-    &:hover,
-    &:active {
-      background-color: @palette-gray-2;
-    }
-  }
-
-  &-total-text {
-    margin-right: 16px !important;
-    color: @color-text-pagination-normal;
-    font-size: @size-font-14;
-    line-height: 30px;
-    text-align: right;
-  }
-
-  &-arrow-container {
-    height: 30px;
-
-    button .gio-icon {
-      svg {
-        width: 14px;
-        height: 14px;
-      }
-    }
-  }
-
-  &-prev,
-  &-next {
-    .pagination-button;
-    width: 30px;
-    height: 30px;
-    color: @color-text-pagination-normal;
-  }
-
-  &-disabled&-prev,
-  &-disabled&-next {
-    color: @color-text-pagination-disabled;
-    cursor: not-allowed;
-    &,
-    &:hover,
-    &:active {
-      background-color: unset;
-    }
-  }
-
-  &-jump {
-    &-prev,
-    &-next {
-      .pagination-item;
-      position: relative;
-      color: @color-text-pagination-disabled;
-      .gio-icon {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: auto;
-        transition: opacity 0.2s;
-      }
-      .more {
-        width: 16px;
-        height: 16px;
-        transform: rotate(90deg);
-        opacity: 1;
-      }
-      .double {
-        width: 16px;
-        height: 16px;
-        opacity: 0;
-      }
-      &:hover {
-        .more {
-          opacity: 0;
-        }
-        .double {
-          opacity: 1;
-        }
-      }
-    }
-  }
-
-  &-disabled > &-jump-prev,
-  &-disabled > &-jump-next {
-    &:hover {
-      .more {
-        opacity: 1;
-      }
-      .double {
-        opacity: 0;
-      }
-    }
-  }
-
-  &-options {
-    display: inline-flex;
-    height: 30px;
-    color: @color-text-pagination-normal;
-    font-size: @size-font-14;
-    line-height: 22px;
-    letter-spacing: 0;
-    &-size-changer {
-      display: inline-flex;
-      align-items: center;
-      margin: 0 8px;
-    }
-    &-quick-jumper {
-      display: inline-block;
-      height: 100%;
+  &__li {
+    margin: 0 16px 0 0;
+    &.first,
+    &.previous,
+    &.page,
+    &.next,
+    &.last {
       margin: 0 8px 0 0;
-      .@{input-prefix-cls} {
-        box-sizing: border-box;
-        width: auto;
-        margin: 0 8px;
-        input {
-          width: 80px;
-          height: 100%;
-          &[disabled] {
-            border: 1px solid @color-border-pagination-quick-jumper-disabled;
-          }
-        }
-      }
+    }
+    &:last-child {
+      margin: 0;
+    }
+    &.jumper {
+      margin: 0 0 0 8px;
     }
   }
-
-  &-disabled {
-    li {
-      color: @color-text-pagination-disabled;
-      cursor: not-allowed;
-      * {
-        cursor: not-allowed;
-      }
+  &__rows,
+  &__jumper {
+    display: flex;
+    align-content: center;
+    & > p:first-of-type {
+      margin: 4px 8px 4px 0;
+    }
+    & > p:last-of-type {
+      margin: 4px 0 4px 8px;
+    }
+    &__select,
+    &__input {
+      @width: 85px;
+      width: @width;
+      min-width: @width;
+    }
+  }
+  &__total {
+    margin: 0;
+    padding: 0;
+    line-height: @pagination-height;
+  }
+  &__page__button {
+    &-text {
+      display: block;
+      min-width: 1em;
     }
   }
 }

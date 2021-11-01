@@ -96,7 +96,7 @@ export const FormWithModal: Story<Props> = (args: Props) => {
             <Input />
           </Item>
           <Item label="密码" name="password">
-            <Input.Password type="password" />
+            <Input.Password />
           </Item>
         </Form>
       </Modal>

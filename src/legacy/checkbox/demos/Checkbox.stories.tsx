@@ -8,7 +8,7 @@ import { CheckboxProps, CheckboxGroupProps, CheckboxValueType } from '../interfa
 import '../style';
 
 export default {
-  title: 'Data Entry/Checkbox',
+  title: 'legacy/Checkbox',
   component: Checkbox,
   subcomponents: { CheckboxGroup },
   decorators: [withDesign],
