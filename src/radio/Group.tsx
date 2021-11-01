@@ -12,7 +12,7 @@ import WithRef from '../utils/withRef';
 const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, IRadioGroupProps> = (props: IRadioGroupProps, ref) => {
   const { className, style, layout = 'horizontal', disabled, defaultValue, value, onChange, children, options } = props;
 
-  const prefixCls = usePrefixCls('radio');
+  const prefixCls = usePrefixCls('radio-new');
   const [selectedValue, setSelectedValue] = useState(() => (!isUndefined(value) ? value : defaultValue));
   const prevSelectedValue = usePrevious(value);
 
@@ -107,6 +107,6 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, IRadioGroupProp
   );
 };
 
-const RadioGroup = WithRef<HTMLDivElement, IRadioGroupProps>(InnerGroup);
+export const RadioGroup = WithRef<HTMLDivElement, IRadioGroupProps>(InnerGroup);
 
 export default RadioGroup;

@@ -11,26 +11,37 @@ export default function ListPage() {
       <Title>{formatMessage({ defaultMessage: 'Checkbox 多选框' })}</Title>
       <p>
         {formatMessage({
-          defaultMessage: '在一组可选项中进行多项选择;',
+          defaultMessage: '在一组可选项中进行多项选择:',
         })}
       </p>
       <p>
-        {formatMessage({
-          defaultMessage:
-            '单独使用可以表示两种状态之间的切换，和 switch 类似。区别在于切换 switch 会直接触发状态改变，而 checkbox 一般用于状态标记，需要和提交操作配合。',
-        })}
+        <a href="https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4078%3A37260">
+          Figma
+        </a>
       </p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li> checkbox 支持多选</li>
+      </ul>
+
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
+      <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-checkbox--demo" />
+      </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="components-checkbox--default" />
+        <Story id="upgraded-checkbox--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '分组' })}</Subheading>
       <Canvas>
-        <Story id="components-checkbox--group" />
+        <Story id="upgraded-checkbox--group" />
       </Canvas>
-
+      <Subheading>{formatMessage({ defaultMessage: '不定态' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-checkbox--indeterminate" />
+      </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Checkbox} />
     </>
