@@ -5,7 +5,6 @@ import { PlusOutlined } from '@gio-design/icons';
 import { LinkProps } from '../interface';
 import Link from '../Link';
 import '../style';
-import './index.less';
 import Docs from './LinkPage';
 
 export default {
@@ -77,6 +76,9 @@ const Template: Story<LinkProps> = (args) => (
 export const Demo = Template.bind({});
 Demo.args = {
   href: '',
+  style: {
+    margin: '4px 8px',
+  },
 };
 const LinkTemplate: Story<LinkProps> = (args) => <Link {...args}>GrowingIO</Link>;
 

@@ -100,7 +100,7 @@ const content = (
   <>
     这是提示文案。
     <br />
-    需要有足够的长宽！
+    <button type="button">button</button>
   </>
 );
 export const Placement = Template.bind({});
@@ -193,28 +193,28 @@ Controlled.args = { content };
 const DefaultTemplate: Story<PopoverProps> = (args) => (
   <>
     <Popover {...args}>
-      <Input value="Show Popover with allowed Arrow" style={{ width: 280 }} />
+      <Input value="Show Popover with allowed Arrow" />
     </Popover>
     <span>|</span>
     <Popover {...args} allowArrow={false}>
-      <Input value="Show Popover with rejected Arrow" style={{ width: 280 }} />
+      <Input value="Show Popover with rejected Arrow" />
     </Popover>
   </>
 );
 export const DefaultVisible = DefaultTemplate.bind({});
 DefaultVisible.args = {
-  defaultVisible: true,
+  defaultVisible: false,
   content,
 };
 
 const EnterableTemplate: Story<PopoverProps> = (args) => (
   <>
     <Popover {...args}>
-      <Input value="Popover supports mouse enter!" style={{ width: 280 }} />
+      <Input value="Popover supports mouse enter!" />
     </Popover>
     <span>|</span>
     <Popover {...args} enterable={false}>
-      <Input value="Popover does't support mouse enter!" style={{ width: 280 }} />
+      <Input value="Popover does't support mouse enter!" />
     </Popover>
   </>
 );
