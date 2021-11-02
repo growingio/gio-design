@@ -6,7 +6,6 @@ import Button from '../index';
 import IconButton from '../IconButton';
 import { ButtonProps, IconButtonProps } from '../interface';
 import '../style';
-import './index.less';
 import Docs from './ButtonPage';
 
 export default {
@@ -124,6 +123,9 @@ const Template: Story<ButtonProps> = (args) => (
 export const Demo = Template.bind({});
 Demo.args = {
   children: 'Button',
+  style: {
+    margin: '4px 8px',
+  },
 };
 
 const ButtonTemplate: Story<ButtonProps> = (args) => <Button {...args} />;

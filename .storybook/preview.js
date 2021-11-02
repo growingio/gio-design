@@ -5,6 +5,7 @@ import { DocsContainer } from '@storybook/addon-docs';
 import { IntlProvider } from 'react-intl';
 import enUS from '../src/locales/en-US';
 import enMessages from './locales/en.json';
+import './index.less';
 
 export const globalTypes = {
   locale: {
