@@ -1,6 +1,4 @@
-@import '../../stylesheet/index.less';
-@import '../../stylesheet/mixin/border.less';
-@import '../../stylesheet/mixin/elevation.less';
+@import '../../stylesheet/variables/index.less';
 
 @input-btn-prefix-cls: ~'@{component-prefix}-input-btn-new';
 @icon-prefix-cls: ~'@{component-prefix}-input-new__prefix';
@@ -10,14 +8,14 @@
   .@{input-prefix-cls} {
     &:not([disabled])::placeholder {
       color: @gray-5;
-      font-size: @font-size-base;
+      .text-body1();
     }
     &:disabled {
       color: @gray-3;
       background-color: @gray-0;
       &::placeholder {
         color: @gray-3;
-        font-size: @font-size-base;
+        .text-body1();
       }
       &:hover {
         color: @gray-3;
@@ -72,7 +70,7 @@
       cursor: not-allowed;
       &::placeholder {
         color: @gray-3 !important;
-        font-size: @font-size-base;
+        .text-body1();
       }
       &:hover {
         color: @gray-3 !important;

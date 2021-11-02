@@ -81,7 +81,7 @@ const Template: Story<InputProps> = (args) => (
           <Password {...args} />
         </td>
         <td>
-          <Password {...args} />
+          <Password {...args} size="small" />
         </td>
         <td>
           <Password {...args} />
