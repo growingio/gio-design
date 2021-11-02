@@ -115,6 +115,8 @@ export interface InputButtonProps
    */
   value?: string;
 
+  maxWidth?: number;
+
   /**
    * Input Button size
    */

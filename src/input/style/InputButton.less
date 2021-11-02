@@ -13,6 +13,10 @@
   .@{input-btn-input-prefix-cls} {
     background-color: @gray-0;
     cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
     &:not([disabled])::placeholder {
       color: @gray-5;
       .text-body1();

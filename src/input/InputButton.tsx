@@ -21,6 +21,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     allowClear,
     className,
     style = {},
+    maxWidth,
     ...rest
   } = props;
 
@@ -62,11 +63,13 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     return customizeSuffix || defaultSuffix;
   }, [customizeSuffix, value, onClear, allowClear, disabled]);
 
+  const styles = maxWidth ? { maxWidth } : {};
+
   return (
     <span className={wrapperCls}>
       <Input
         {...rest}
-        style={style}
+        style={{ ...style, ...styles }}
         className={inputCls}
         type="button"
         value={value || placeholder}

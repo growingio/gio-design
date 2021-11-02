@@ -69,6 +69,14 @@ const Template: Story<InputButtonProps> = (args) => (
           <InputButton {...args} value="集成应用" disabled />
         </td>
       </tr>
+
+      <tr>
+        <td>Max Width</td>
+        <td>可以限制value的字符数做缩略处理</td>
+        <td colSpan={3}>
+          <InputButton {...args} value="可以限制value的字符数做缩略处理" maxWidth={200} />
+        </td>
+      </tr>
     </table>
 
     <h3>Control</h3>
