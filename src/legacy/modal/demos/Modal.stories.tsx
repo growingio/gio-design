@@ -10,7 +10,7 @@ import { IModalStaticFuncConfig } from '../interface';
 import Docs from './ModalPage';
 
 export default {
-  title: 'Components/Modal',
+  title: 'Legacy/Modal',
   component: Modal,
   decorators: [withDesign],
   parameters: {
