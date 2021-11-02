@@ -14,6 +14,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   onClose,
   closeIcon,
   size,
+  width,
   maskClosable = true,
   ...restProps
 }: DrawerProps) => {
@@ -50,6 +51,7 @@ export const Drawer: React.FC<DrawerProps> = ({
         )
       }
       title={title}
+      width={size === 'fixed' ? 500 : width}
       {...restProps}
     />
   );

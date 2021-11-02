@@ -3,8 +3,8 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Default, ChangeContent } from '../demos/Drawer.stories';
 import Drawer, { DrawerProps } from '../index';
-import Button from '../../legacy/button';
-import { ConfigContext } from '../../components/config-provider';
+import Button from '../../../legacy/button';
+import { ConfigContext } from '../../../components/config-provider';
 
 const ParentsDrawer: React.FC = (args: DrawerProps) => {
   const [parentVisible, setParentVisible] = React.useState(false);

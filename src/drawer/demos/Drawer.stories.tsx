@@ -36,6 +36,7 @@ const Template: Story<DrawerProps> = (args) => {
 export const AdaptiveWidthDemo = Template.bind({});
 AdaptiveWidthDemo.args = {
   title: '标题',
+  size: 'normal',
 };
 
 const FixedTemplate: Story<DrawerProps> = (args) => {

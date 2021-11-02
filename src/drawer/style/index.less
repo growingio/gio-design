@@ -94,7 +94,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    float: right;
     height: 100vh;
     background-color: @gray-0;
     background-clip: padding-box;
@@ -137,9 +136,11 @@
 }
 
 .@{drawer-normal} {
+  float: right;
   width: fit-content;
 }
 .@{drawer-fixed} {
+  float: right;
   .@{drawer-prefix-cls} {
     &-content {
       width: 500px;
