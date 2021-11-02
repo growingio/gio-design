@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonProps } from '../index';
+import { IconButtonProps } from '../index';
 
 interface PaginationProps {
   /**
@@ -97,14 +97,6 @@ interface PaginationProps {
  */
 export enum PaginationItemType {
   /**
-   * 行数选择器
-   */
-  RowsPerPage = 'rows-per-page',
-  /**
-   * 总数显示
-   */
-  DisplayTotal = 'display-total',
-  /**
    * 首页
    */
   First = 'first',
@@ -124,52 +116,19 @@ export enum PaginationItemType {
    * 尾页
    */
   Last = 'last',
-  /**
-   * 页码跳转器
-   */
-  Jumper = 'jumper',
 }
 
-interface PaginationItemProps
-  extends Pick<PaginationProps & ButtonProps, 'className' | 'style' | 'aria-current' | 'aria-label'> {
-  /**
-   * 点击事件的回调
-   */
-  onClick: (event: React.MouseEvent<unknown, unknown>) => void;
-
-  /**
-   * 快速跳转的回调（按下回车、上、下键会触发）
-   * @param page 需要跳转的页码
-   */
-  onQuickGo?: (page: number) => void;
-
-  /**
-   * 每页行数改变的回调
-   * @param rows 改变后的行数
-   */
-  onRowsChange?: (rows: number) => void;
-
+export interface PaginationItemProps
+  extends Pick<IconButtonProps, 'aria-current' | 'aria-label' | 'disabled' | 'active' | 'onClick'> {
   /**
    * 子元素的类型
    */
   type: PaginationItemType;
 
   /**
-   * 是否被选择
-   */
-  selected?: boolean;
-
-  /**
-   * 是否被禁用
-   */
-  disabled?: boolean;
-
-  /**
-   * 页码
+   * 代表的页码
    */
   page?: number;
 }
-
-export { PaginationItemProps };
 
 export default PaginationProps;

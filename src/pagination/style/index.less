@@ -4,41 +4,51 @@
 
 .@{pagination-prefix-cls} {
   @pagination-height: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: start;
+  box-sizing: border-box;
   height: @pagination-height;
   color: @gray-5;
   .text-body1();
+  & > * {
+    margin: 0 16px 0 0;
+  }
+  & > *:last-child {
+    margin: 0;
+  }
   &__ul {
     display: flex;
+    flex-wrap: nowrap;
     align-content: center;
     margin: 0;
     padding: 0;
     list-style: none;
   }
   &__li {
-    margin: 0 16px 0 0;
-    &.first,
-    &.previous,
-    &.page,
-    &.next,
-    &.last {
-      margin: 0 8px 0 0;
-    }
+    margin: 0 8px 0 0;
     &:last-child {
       margin: 0;
     }
-    &.jumper {
-      margin: 0 0 0 8px;
-    }
+  }
+  &__total {
+    min-width: max-content;
+    padding: 0;
+    line-height: @pagination-height;
   }
   &__rows,
   &__jumper {
     display: flex;
     align-content: center;
+    min-width: max-content;
     & > p:first-of-type {
-      margin: 4px 8px 4px 0;
+      margin: 0 8px 0 0;
+      line-height: @pagination-height;
     }
     & > p:last-of-type {
-      margin: 4px 0 4px 8px;
+      margin: 0 0 0 8px;
+      line-height: @pagination-height;
     }
     &__select,
     &__input {
@@ -47,15 +57,8 @@
       min-width: @width;
     }
   }
-  &__total {
-    margin: 0;
-    padding: 0;
-    line-height: @pagination-height;
-  }
-  &__page__button {
-    &-text {
-      display: block;
-      min-width: 1em;
-    }
+  &__page__button-text {
+    display: block;
+    min-width: 1em;
   }
 }
