@@ -22,9 +22,7 @@ function Page({ className, style, statusCode, description, cta }: PageProps) {
       <div className={`${prefixCls}__description`}>{description}</div>
       {cta && (
         <div className={`${prefixCls}__footer`}>
-          <Button size="large" onClick={cta.onClick}>
-            {cta.text}
-          </Button>
+          <Button onClick={cta.onClick}>{cta.text}</Button>
         </div>
       )}
     </div>
