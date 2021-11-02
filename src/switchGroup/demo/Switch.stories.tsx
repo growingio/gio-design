@@ -51,7 +51,7 @@ const options = [
   },
 ];
 const DemoTemplate = () => (
-  <table>
+  <table className="table-demo">
     <tr>
       <th>Switch</th>
       <th>Example</th>

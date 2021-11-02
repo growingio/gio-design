@@ -39,7 +39,7 @@ const Template: Story<SearchBarProps> = (args) => (
       适用于对页面或弹窗内容的搜索。 当搜索框内出现搜索的内容后，原本的“搜索” Icon 变为“清除”
       Icon，点击后将清除掉所有输入的内容。
     </p>
-    <table>
+    <table className="table-demo">
       <tr>
         <th>Normal</th>
         <th>Hover/Focused</th>
@@ -67,7 +67,7 @@ const Template: Story<SearchBarProps> = (args) => (
     </table>
 
     <h3>Search Bar 大小</h3>
-    <table>
+    <table className="table-demo">
       <tr>
         <th>Big (36px)</th>
         <th>Small (30px)</th>

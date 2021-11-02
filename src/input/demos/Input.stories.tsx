@@ -40,7 +40,7 @@ const colspan: any = { colspan: 2 };
 const Template: Story<InputProps> = (args) => (
   <>
     <h3>Type & State</h3>
-    <table>
+    <table className="table-demo">
       <tr>
         <th>Input Type</th>
         <th>Normal</th>
@@ -111,7 +111,7 @@ const Template: Story<InputProps> = (args) => (
     </table>
 
     <h3>Control</h3>
-    <table>
+    <table className="table-demo">
       <tr>
         <th>Control</th>
         <th>Description</th>
@@ -184,7 +184,7 @@ const InputButtonTemplate: Story<InputButtonProps> = (args) => (
     <p>In Button 继承 Secondary Button 的样式（但有背景色），通常作为选择器的触发以及选中内容的回显，支持回显Icon</p>
     <br />
     <h3>Type</h3>
-    <table>
+    <table className="table-demo">
       <tr>
         <th>State</th>
         <th>Description</th>
@@ -221,7 +221,7 @@ const InputButtonTemplate: Story<InputButtonProps> = (args) => (
     </table>
 
     <h3>Control</h3>
-    <table>
+    <table className="table-demo">
       <tr>
         <th>Button Control</th>
         <th>描述</th>
