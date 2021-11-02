@@ -19,7 +19,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   const inputClass = useMemo(
     () =>
-      classNames(prefixCls, className, {
+      classNames(className, prefixCls, {
         [`${prefixCls}__disabled`]: disabled,
         [`${prefixCls}__small`]: size === 'small',
       }),

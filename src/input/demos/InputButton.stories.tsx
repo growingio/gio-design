@@ -115,13 +115,15 @@ const Template: Story<InputButtonProps> = (args) => (
 export const Demo = Template.bind({});
 Demo.args = {
   onChange: () => action('onChange'),
+  placeholder: '请选择事件',
 };
 
-const DefaultTemplate = () => <InputButton />;
+const DefaultTemplate = (args: InputButtonProps) => <InputButton {...args} />;
 export const Default = DefaultTemplate.bind({});
-DefaultTemplate.args = {
+Default.args = {
   allowClear: false,
   onChange: () => action('onChange'),
+  placeholder: '请选择事件',
 };
 
 const HidePrefixTemplate = (args: InputButtonProps) => <InputButton {...args} value="请选择事件" />;
@@ -129,6 +131,7 @@ export const HidePrefix = HidePrefixTemplate.bind({});
 HidePrefixTemplate.args = {
   hidePrefix: true,
   onChange: () => action('onChange'),
+  placeholder: '请选择事件',
 };
 const customPrefixTemplate = (args: InputButtonProps) => (
   <InputButton {...args} value="请选择事件" prefix={<PlusOutlined />} suffix={<FilterOutlined />} />
@@ -136,4 +139,5 @@ const customPrefixTemplate = (args: InputButtonProps) => (
 export const CustomIcon = customPrefixTemplate.bind({});
 CustomIcon.args = {
   onChange: () => action('onChange'),
+  placeholder: '请选择事件',
 };

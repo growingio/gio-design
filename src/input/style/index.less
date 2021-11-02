@@ -41,6 +41,7 @@
   }
   &__small {
     height: 30px;
+    padding: 4px 12px;
   }
   &__error {
     border: 1px solid @red-3;
@@ -58,16 +59,16 @@
       align-items: center;
 
       .@{input-prefix-cls} {
-        padding-right: 32px;
+        padding-right: 36px;
       }
     }
 
     .@{icon-prefix-cls} {
       cursor: pointer;
       svg {
-        color: @gray-3;
         width: 14px;
         height: 14px;
+        color: @gray-3;
       }
     }
   }
@@ -79,21 +80,20 @@
 
     &-wrapper {
       position: relative;
-
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
       .@{input-prefix-cls} {
-        padding-left: 36px;
+        padding-left: 34px;
       }
     }
 
     .@{icon-prefix-cls} {
       cursor: pointer;
       svg {
-        color: @gray-5;
         width: 14px;
         height: 14px;
+        color: @gray-5;
       }
     }
   }
