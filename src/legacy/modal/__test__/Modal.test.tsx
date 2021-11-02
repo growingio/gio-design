@@ -7,8 +7,8 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import { Default } from '../demos/Modal.stories';
 import Modal from '..';
 import { IModalStaticFuncReturn } from '../interface';
-import enUS from '../../locales/en-US';
-import zhCN from '../../locales/zh-CN';
+import enUS from '../../../locales/en-US';
+import zhCN from '../../../locales/zh-CN';
 
 describe('Modal Testing', () => {
   it('renders with multi languages', () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { WarningCircleFilled, InfoCircleFilled, CheckCircleFilled, CloseCircleFilled } from '@gio-design/icons';
 import { PaletteBlue4, PaletteYellow5, PaletteGreen6, PaletteRed5 } from '@gio-design/tokens';
-import { defaultRootPrefixCls } from '../components/config-provider';
+import { defaultRootPrefixCls } from '../../components/config-provider';
 import CalloutModal from './CalloutModal';
 import { IModalStaticFuncConfig, IModalStaticFuncReturn, IModalConfigs } from './interface';
 

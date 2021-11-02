@@ -1,7 +1,7 @@
 import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
-import Modal from '../index';
+import Modal from '../Modal';
 
 export default function ListPage() {
   const { formatMessage } = useIntl();

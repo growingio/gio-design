@@ -3,118 +3,104 @@ import classnames from 'classnames';
 import { useLocale, usePrefixCls } from '@gio-design/utils';
 import RcDialog from 'rc-dialog';
 import { CloseOutlined } from '@gio-design/icons';
-import { ButtonProps } from '../legacy/button';
-import { IModalProps, ModalLocale } from './interface';
-import ModalPrefixClsContext from './ModalContext';
-import Title from './Title';
-import Footer from './Footer';
-import defaultLocale from './locales/zh-CN';
+import Button, { IconButton } from '../button';
+import { ModalProps, ModalLocale } from './interface';
 
-const Modal: React.FC<IModalProps> = ({
+const Modal: React.FC<ModalProps> = ({
   prefixCls: customPrefixCls,
-  size = 'small',
+  size = 'normal',
   className,
   wrapClassName,
-  useBack,
   title,
-  additionalFooter,
-  onBack,
-  closeAfterOk,
-  dropCloseButton,
+  confirmLoading,
   okText: customizeOKText,
-  closeText: customizeCloseText,
+  cancelText: customizeCloseText,
   okButtonProps,
   closeButtonProps,
   onOk,
   onClose,
-  pending,
+  closeIcon,
+  maskClosable = false,
   ...restProps
-}: IModalProps) => {
-  const prefix = usePrefixCls('modal', customPrefixCls);
+}: ModalProps) => {
+  const prefix = usePrefixCls('modal-new', customPrefixCls);
+  const modalCls = classnames(className, {
+    [`${prefix}-normal`]: size === 'normal',
+    [`${prefix}-fixed`]: size === 'fixed',
+    [`${prefix}-full`]: size === 'full',
+  });
+  const wrapperCls = classnames(wrapClassName, `${prefix}__wrapper`);
+  const closeCls = classnames(`${prefix}__close`);
+
   const locale = useLocale('Modal');
   const { closeText, okText } = {
-    ...defaultLocale,
     ...locale,
   } as ModalLocale;
 
-  const modalCls = classnames(className, {
-    [`${prefix}--small`]: size === 'small',
-    [`${prefix}--middle`]: size === 'middle',
-    [`${prefix}--full`]: size === 'full',
-  });
-  const wrapperCls = classnames(wrapClassName, `${prefix}__wrapper`);
-  const closeCls = classnames(`${prefix}__close`, {
-    [`${prefix}__close--disabled`]: pending,
-  });
+  const renderFooter = () => {
+    const cls = classnames(`${prefix}__footer`);
+    const closeBtnCls = classnames(`${prefix}__btn-close`, closeButtonProps?.className ?? '');
+    const okBtnCls = classnames(`${prefix}__btn-ok`, okButtonProps?.className ?? '');
+    const useOkBtn = !!onOk && typeof onOk === 'function';
 
-  const useOkBtn = !!onOk && typeof onOk === 'function';
-  let useFooter = useOkBtn || !dropCloseButton || !!additionalFooter;
-  if ('footer' in restProps && (restProps.footer === false || restProps.footer === null)) {
-    useFooter = false;
-  }
-  const okBtnProps: ButtonProps = {
-    loading: pending,
-    disabled: pending,
-    ...okButtonProps,
-  };
-  const closeBtnProps: ButtonProps = {
-    disabled: pending,
-    ...closeButtonProps,
+    return (
+      <div className={cls}>
+        {restProps.footer || (
+          <div>
+            <Button
+              type="secondary"
+              {...closeButtonProps}
+              style={{ padding: '7px 13px' }}
+              className={closeBtnCls}
+              onClick={onClose}
+            >
+              {customizeCloseText ?? closeText ?? '取消'}
+            </Button>
+            {useOkBtn && (
+              <Button
+                type="primary"
+                {...okButtonProps}
+                loading={confirmLoading}
+                className={okBtnCls}
+                style={{ padding: '7px 13px' }}
+                onClick={onOk}
+              >
+                {customizeOKText ?? okText ?? '确定'}
+              </Button>
+            )}
+          </div>
+        )}
+      </div>
+    );
   };
 
-  const handleOk = async (e: React.MouseEvent<HTMLElement>) => {
-    if (onOk && typeof onOk === 'function') {
-      e.persist();
-      try {
-        await Promise.resolve(onOk(e));
-        if (closeAfterOk) {
-          onClose?.(e);
-        }
-      } catch (error) {
-        const err = error ?? 'onOk 执行 reject 或抛出错误。';
-        console.error(err);
-      }
+  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (onClose && typeof onClose === 'function') {
+      onClose?.(e);
     }
   };
 
-  const handleClose = (e: React.SyntheticEvent<HTMLElement, Event>) => {
-    if (!pending) {
-      onClose?.(e as React.MouseEvent<HTMLElement, MouseEvent>);
-    }
-  };
   return (
-    <ModalPrefixClsContext.Provider value={prefix}>
-      <RcDialog
-        keyboard
-        {...restProps}
-        maskClosable={!useFooter}
-        onClose={handleClose}
-        transitionName="zoom"
-        maskTransitionName="fade"
-        prefixCls={prefix}
-        className={modalCls}
-        wrapClassName={wrapperCls}
-        closable={title !== false}
-        closeIcon={<CloseOutlined className={closeCls} />}
-        title={title !== false && <Title onBack={onBack} useBack={useBack} title={title} />}
-        footer={
-          useFooter && (
-            <Footer
-              okText={customizeOKText ?? okText}
-              closeText={customizeCloseText ?? closeText}
-              okButtonProps={okBtnProps}
-              closeButtonProps={closeBtnProps}
-              footer={restProps.footer}
-              additionalFooter={additionalFooter}
-              onOk={handleOk}
-              onClose={handleClose}
-              useOk={useOkBtn}
-              useClose={!dropCloseButton}
-            />
-          )
-        }
-      />
-    </ModalPrefixClsContext.Provider>
+    <RcDialog
+      data-testid="modal"
+      keyboard
+      maskClosable={maskClosable}
+      onClose={handleClose}
+      prefixCls={prefix}
+      className={modalCls}
+      wrapClassName={wrapperCls}
+      closable={title !== false}
+      closeIcon={
+        closeIcon || (
+          <IconButton type="text" size="small">
+            <CloseOutlined className={closeCls} />
+          </IconButton>
+        )
+      }
+      title={title}
+      footer={renderFooter()}
+      {...restProps}
+    />
   );
 };
 

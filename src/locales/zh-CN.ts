@@ -5,7 +5,7 @@ import dateRangeSelectorLocale from '../date-range-selector/locales/zh-CN';
 import dateSelectorLocale from '../date-selector/locales/zh-CN';
 import emptyLocale from '../empty/locales/zh-CN';
 import listPickerLocale from '../list-picker/locales/zh-CN';
-import modalLocale from '../modal/locales/zh-CN';
+import modalLocale from '../legacy/modal/locales/zh-CN';
 import timePickerLocale from '../time-picker/locales/zh-CN';
 import timeSelectorLocale from '../time-selector/locales/zh-CN';
 import searchBarLocale from '../legacy/search-bar/locales/zh-CN';

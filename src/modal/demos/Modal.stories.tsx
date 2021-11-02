@@ -1,27 +1,17 @@
 /* eslint-disable no-console */
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
-import Modal, { ModalProps, StepModalProps, StepModal } from '../index';
-import '../style';
+import Modal from '../index';
 import Button from '../../legacy/button';
-import { ConfigContext } from '../../components/config-provider';
-import { IModalStaticFuncConfig } from '../interface';
+import { ModalProps, IModalStaticFuncConfig } from '../interface';
 import Docs from './ModalPage';
+import '../style';
 
 export default {
-  title: 'Components/Modal',
+  title: 'Upgraded/Modal',
   component: Modal,
-  decorators: [withDesign],
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A6757',
-      allowFullscreen: true,
-    },
-    docs: {
-      page: Docs,
-    },
+  docs: {
+    page: Docs,
   },
 } as Meta;
 
@@ -36,196 +26,126 @@ const Template: Story<ModalProps> = (args) => {
         onClose={() => {
           setVisible(false);
         }}
+        onOk={() => {
+          setVisible(false);
+        }}
       >
-        Default Modal
+        宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开
+        宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开
       </Modal>
     </div>
   );
 };
-export const Default = Template.bind({});
-Default.args = {
-  title: 'title',
+export const AdaptiveWidthDemo = Template.bind({});
+AdaptiveWidthDemo.args = {
+  title: '弹窗标题',
 };
 
-const CustomHeightTemplate: Story<ModalProps> = (args) => {
+const FixedTemplate: Story<ModalProps> = (args) => {
   const [visible, setVisible] = useState(false);
   return (
     <div>
       <Button onClick={() => setVisible(true)}>Open Modal</Button>
       <Modal
         {...args}
-        style={{ top: 100, width: 500, margin: '0 auto' }}
-        bodyStyle={{ height: 200 }}
         visible={visible}
         onClose={() => {
           setVisible(false);
         }}
+        onOk={() => {
+          setVisible(false);
+        }}
       >
-        {'Custom Height '.repeat(40)}
+        宽度固定500 宽度固定500 宽度固定500 宽度固定500 宽度固定500 宽度固定500 宽度固定500 宽度固定500
       </Modal>
     </div>
   );
 };
-export const CustomHeight = CustomHeightTemplate.bind({});
-CustomHeight.args = {
-  title: 'title',
+
+export const FixedWidthDemo = FixedTemplate.bind({});
+FixedWidthDemo.args = {
+  title: '弹窗标题',
+  size: 'fixed',
 };
 
-const StepModalTemplate: Story<StepModalProps> = (args) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+export const FullModal = Template.bind({});
+FullModal.args = {
+  title: '弹窗标题',
+  size: 'full',
+};
+
+const HeightOverflowModalTemplate: Story<ModalProps> = (args) => {
   const [visible, setVisible] = useState(false);
-  const steps = [
-    {
-      key: '1',
-      content: '这是内容1',
-      return: null,
-    },
-    {
-      key: '2',
-      content: '这是内容2',
-      return: '1',
-    },
-    {
-      key: '3',
-      content: '这是内容3',
-      return: '2',
-    },
-  ];
   return (
-    <>
-      <Button onClick={() => setVisible(true)}>Open StepModal</Button>
-      <StepModal
+    <div>
+      <Button onClick={() => setVisible(true)}>Open Modal</Button>
+      <Modal
         {...args}
         visible={visible}
-        title="操作"
-        onOk={() => setVisible(false)}
-        steps={steps}
-        onClose={() => setVisible(false)}
-      />
-    </>
+        onClose={() => {
+          setVisible(false);
+        }}
+        onOk={() => {
+          setVisible(false);
+        }}
+      >
+        <div style={{ height: '2000px', background: '#E3FFF0' }}>
+          HeightOverflowModalTemplate HeightOverflowModalTemplate
+        </div>
+      </Modal>
+    </div>
   );
 };
 
-export const StepModalDemo = StepModalTemplate.bind({});
-StepModalDemo.args = {
-  title: '操作',
+export const HeightOverflowModal = HeightOverflowModalTemplate.bind({});
+HeightOverflowModal.args = {
+  title: '弹窗标题',
+  size: 'fixed',
 };
 
-const buttonStyle = {
-  marginRight: 10,
+const ConfirmTemplate: Story<ModalProps> = () => (
+  <div>
+    <Button
+      onClick={() => {
+        Modal.open({
+          title: '弹窗标题',
+          content: 'Some descriptions',
+          size: 'fixed',
+          onOk() {
+            console.log('OK');
+          },
+          onClose() {
+            console.log('Cancel');
+          },
+        });
+      }}
+    >
+      Open Modal
+    </Button>
+  </div>
+);
+export const OpenModal = ConfirmTemplate.bind({});
+OpenModal.args = {
+  title: '弹窗标题',
 };
-const FunctionModalTemplate: Story<IModalStaticFuncConfig> = (args) => {
-  const handleInfo = () => {
-    Modal.info({
-      ...args,
-      title: 'Info',
-      content: 'Info content',
-    });
-  };
-
-  const handleSuccess = () => {
-    Modal.success({
-      ...args,
-      title: 'Success',
-      content: 'Success content',
-    });
-  };
-
-  const handleWarn = () => {
-    Modal.warn({
-      ...args,
-      title: 'Warn',
-      content: 'Warn content',
-    });
-  };
-
-  const handleError = () => {
-    Modal.error({
-      ...args,
-      title: 'Error',
-      content: 'Error content',
-    });
-  };
-  return (
-    <>
-      <Button type="secondary" style={buttonStyle} onClick={() => handleInfo()}>
-        Info
-      </Button>
-      <Button type="secondary" style={buttonStyle} onClick={() => handleSuccess()}>
-        Success
-      </Button>
-      <Button type="secondary" style={buttonStyle} onClick={() => handleWarn()}>
-        Warn
-      </Button>
-      <Button type="secondary" style={buttonStyle} onClick={() => handleError()}>
-        Error
-      </Button>
-    </>
-  );
-};
-
-export const FunctionModal = FunctionModalTemplate.bind({});
-FunctionModal.args = {};
 
 const UseModalTemplate: Story<IModalStaticFuncConfig> = (args) => {
   const [modalFuncs, hookModal] = Modal.useModal();
   const handleConfirm = () => {
-    modalFuncs.confirm({
+    modalFuncs.open({
       ...args,
-      title: 'Confirm',
+      title: '弹窗标题',
       content: 'Confirm content',
     });
   };
-  const handleInfo = () => {
-    modalFuncs.info({
-      ...args,
-      title: 'Info',
-      content: 'Info content',
-    });
-  };
-  const handleSuccess = () => {
-    modalFuncs.success({
-      ...args,
-      title: 'Success',
-      content: 'Success content',
-    });
-  };
-  const handleWarn = () => {
-    modalFuncs.warn({
-      ...args,
-      title: 'Warn',
-      content: 'Warn content',
-    });
-  };
-  const handleError = () => {
-    modalFuncs.error({
-      ...args,
-      title: 'Error',
-      content: 'Error content',
-    });
-  };
-  const context = useContext(ConfigContext);
+
   return (
-    <ConfigContext.Provider value={{ ...context, rootPrefixCls: 'gio' }}>
-      <>
-        <Button type="secondary" style={buttonStyle} onClick={() => handleConfirm()}>
-          confirm
-        </Button>
-        <Button type="secondary" style={buttonStyle} onClick={() => handleInfo()}>
-          Info
-        </Button>
-        <Button type="secondary" style={buttonStyle} onClick={() => handleSuccess()}>
-          Success
-        </Button>
-        <Button type="secondary" style={buttonStyle} onClick={() => handleWarn()}>
-          Warn
-        </Button>
-        <Button type="secondary" style={buttonStyle} onClick={() => handleError()}>
-          Error
-        </Button>
-        {hookModal}
-      </>
-    </ConfigContext.Provider>
+    <>
+      <Button type="secondary" onClick={() => handleConfirm()}>
+        open
+      </Button>
+      {hookModal}
+    </>
   );
 };
 

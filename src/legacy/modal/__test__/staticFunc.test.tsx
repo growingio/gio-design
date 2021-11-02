@@ -5,8 +5,8 @@ import { WarningCircleFilled } from '@gio-design/icons';
 import CalloutModal from '../CalloutModal';
 import { withConfirm, withInfo, withSuccess, withWarn, withError, configModal } from '../callout';
 import Modal from '..';
-import { sleep } from '../../utils/test';
-import { defaultRootPrefixCls } from '../../components/config-provider';
+import { sleep } from '../../../utils/test';
+import { defaultRootPrefixCls } from '../../../components/config-provider';
 
 const { confirm } = Modal;
 
