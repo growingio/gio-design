@@ -83,6 +83,22 @@ const DemoTemplate = () => {
             </Checkbox>
           </td>
         </tr>
+        <tr>
+          <td>color checked</td>
+          <td>
+            <Checkbox checked style={{ background: 'red', borderColor: 'red' }}>
+              我已阅读以下条款
+            </Checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td>color indeterminate</td>
+          <td>
+            <Checkbox checked indeterminate style={{ background: 'red', borderColor: 'red' }}>
+              我已阅读以下条款
+            </Checkbox>
+          </td>
+        </tr>
       </table>
       <table>
         <tr>

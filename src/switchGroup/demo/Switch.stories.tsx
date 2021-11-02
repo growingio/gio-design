@@ -99,27 +99,27 @@ const DemoTemplate = () => (
           size="normal"
           options={[
             {
-              label: <ListOutlined />,
+              label: <ListOutlined size="14" />,
               value: 'OptionA',
             },
             {
-              label: <ListOutlined />,
+              label: <ListOutlined size="14" />,
               value: 'OptionB',
             },
             {
-              label: <ListOutlined />,
+              label: <ListOutlined size="14" />,
               value: 'OptionCDisabled',
             },
             {
-              label: <ListOutlined />,
+              label: <ListOutlined size="14" />,
               value: 'OptionD',
             },
             {
-              label: <ListOutlined />,
+              label: <ListOutlined size="14" />,
               value: 'OptionE',
             },
             {
-              label: <ListOutlined />,
+              label: <ListOutlined size="14" />,
               value: 'OptionF',
             },
           ]}
