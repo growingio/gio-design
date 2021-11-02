@@ -7,9 +7,9 @@ import { isUndefined, omit } from 'lodash';
 import getScrollBarSize from 'rc-util/lib/getScrollBarSize';
 import { CloseOutlined, LeftOutlined, RightOutlined } from '@gio-design/icons';
 import classNames from 'classnames';
-import { IconButton } from '../button';
-import Skeleton from '../skeleton';
-import { ConfigConsumerProps, withConfigConsumer, ConfigConsumer } from '../components/config-provider';
+import { IconButton } from '../../button';
+import Skeleton from '../../skeleton';
+import { ConfigConsumerProps, withConfigConsumer, ConfigConsumer } from '../../components/config-provider';
 import { PushState, IDrawerState, DrawerProps, placementType } from './interfaces';
 
 const DrawerContext = React.createContext<Drawer | null>(null);
