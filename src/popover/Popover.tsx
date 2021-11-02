@@ -14,7 +14,7 @@ const Popover = (props: PopoverProps) => {
     visible: enterVisible,
     onVisibleChange,
     defaultVisible,
-    allowArrow = true,
+    allowArrow = false,
     enterable = true,
     overlayClassName,
     overlayInnerStyle,
