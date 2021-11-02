@@ -6,6 +6,8 @@ import '../style';
 import { SearchBarProps } from '../interface';
 import Docs from './SearchBarPage';
 
+import '../style';
+
 export default {
   title: 'Upgraded/SearchBar',
   component: SearchBar,
