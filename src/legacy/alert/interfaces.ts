@@ -4,6 +4,10 @@ export interface AlertProps {
    */
   type?: 'success' | 'info' | 'warning' | 'error';
   /**
+   指定警告的尺寸
+   */
+  size?: 'small' | 'middle';
+  /**
    是否显示关闭按钮
    */
   closeable?: boolean;
