@@ -7,9 +7,14 @@ import { AlertProps } from '../interfaces';
 import '../style';
 
 export default {
-  title: 'Components/Alert',
+  title: 'Upgraded/Alert',
   component: Alert,
   parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4093%3A45313',
+      allowFullscreen: true,
+    },
     docs: {
       page: Docs,
     },
@@ -17,49 +22,51 @@ export default {
 } as Meta;
 
 const Template: Story<AlertProps> = (args) => (
-  <div style={{ width: 320 }}>
-    <Alert {...args} type="info" size="small" />
+  <div>
+    <Alert {...args} type="info" style={{ width: '%100' }} onClose={action('close')} />
     <br />
-    <Alert {...args} type="warning" size="small" />
+    <Alert {...args} type="warning" style={{ width: 800 }} onClose={action('close')} />
     <br />
-    <Alert {...args} type="success" size="small" />
+    <Alert {...args} type="success" style={{ width: 500 }} onClose={action('close')} />
     <br />
-    <Alert {...args} type="error" size="small" onClose={action('我被关闭了')} />
+    <Alert {...args} type="error" style={{ width: 300 }} onClose={action('close')} />
   </div>
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  showIcon: true,
-  closeable: true,
-  message: '标题',
-  description: '提示正文',
+  message: 'This is an example of an embedded banner',
+  description:
+    'Use this if you want to put it inside of another thing like this panel. Heres how you would format it, syntax.',
 };
 
 export const NoDescription = Template.bind({});
 NoDescription.args = {
   showIcon: true,
   closeable: true,
-  message: '标题',
+  message: 'This is an example of an embedded banner',
 };
 
 export const NoTitle = Template.bind({});
 NoTitle.args = {
   showIcon: true,
   closeable: true,
-  description: '提示正文',
+  description:
+    'Use this if you want to put it inside of another thing like this panel. Heres how you would format it, syntax.',
 };
 
 export const NoIcon = Template.bind({});
 NoIcon.args = {
   closeable: true,
-  message: '标题',
-  description: '提示正文',
+  message: 'This is an example of an embedded banner',
+  description:
+    'Use this if you want to put it inside of another thing like this panel. Heres how you would format it, syntax.',
 };
 
 export const NoClose = Template.bind({});
 NoClose.args = {
   showIcon: true,
-  message: '标题',
-  description: '提示正文',
+  message: 'This is an example of an embedded banner',
+  description:
+    'Use this if you want to put it inside of another thing like this panel. Heres how you would format it, syntax.',
 };
