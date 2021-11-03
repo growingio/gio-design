@@ -11,11 +11,11 @@
   cursor: pointer;
 
   .@{input-btn-input-prefix-cls} {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     background-color: @gray-0;
     cursor: pointer;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 
     &:not([disabled])::placeholder {
       color: @gray-5;
