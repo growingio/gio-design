@@ -1,5 +1,4 @@
 import React from 'react';
-import { SizeType } from '@gio-design/utils';
 
 export interface TabsProps {
   /**

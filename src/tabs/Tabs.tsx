@@ -28,10 +28,10 @@ const Tabs: React.ForwardRefRenderFunction<
     onChange?.(v);
   };
 
-  const tabs = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>) => (
+  const tabs = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>, index) => (
     <TabButton
       key={tab.props.value}
-      value={tab.props.value}
+      value={tab.props.value || index}
       size={size}
       onClick={onClick}
       prefix={tab.props.prefix}

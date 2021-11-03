@@ -43,7 +43,7 @@ const TabButton: React.FC<TabButtonProps> = (props) => {
   });
 
   const onButtonClick = () => {
-    onClick(value);
+    onClick && onClick(value);
   };
 
   return (
