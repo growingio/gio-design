@@ -296,3 +296,8 @@ const InputButtonMaxWidthTemplate = (args: InputButtonProps) => (
 
 export const InputButtonMaxWidth = InputButtonMaxWidthTemplate.bind({});
 InputButtonMaxWidth.args = {};
+
+const InputButtonActiveTemplate = (args: InputButtonProps) => <InputButton {...args} value="请选择事件" active />;
+
+export const InputButtonActive = InputButtonActiveTemplate.bind({});
+InputButtonActive.args = {};

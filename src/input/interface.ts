@@ -126,6 +126,12 @@ export interface InputButtonProps
    * 空值时，显示的样式
    */
   placeholder?: string;
+
+  /**
+   * 设置是否active
+   * @default false
+   */
+  active?: boolean;
   /**
    * 当Input Button的值修改后的方法
    */
