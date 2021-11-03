@@ -5,8 +5,6 @@ import React, { useCallback, useMemo, useState } from 'react';
 import Input from '../input/Input';
 import { SearchBarProps } from './interface';
 
-import './style';
-
 const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref) => {
   const {
     prefixCls: customizePrefixCls,
@@ -41,12 +39,12 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
 
   const suffix = useMemo(
     () =>
-      canClear ? (
+      canClear && !disabled ? (
         <CloseCircleFilled className={suffixCls} onClick={onClear} />
       ) : (
         <SearchOutlined className={suffixCls} />
       ),
-    [suffixCls, canClear, onClear]
+    [suffixCls, canClear, onClear, disabled]
   );
 
   const onChange = useCallback(
@@ -62,7 +60,15 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
 
   const resetPlaceholder = useMemo(() => (placeholder || disabled ? '无法搜索' : '搜索'), [placeholder, disabled]);
   return (
-    <Input {...props} placeholder={resetPlaceholder} value={value} onChange={onChange} suffix={suffix} ref={ref} />
+    <Input
+      {...props}
+      type="text"
+      placeholder={resetPlaceholder}
+      value={value}
+      onChange={onChange}
+      suffix={suffix}
+      ref={ref}
+    />
   );
 });
 

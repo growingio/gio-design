@@ -73,7 +73,8 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
     | React.LegacyRef<HTMLTextAreaElement>;
 }
 
-export interface InputButtonProps {
+export interface InputButtonProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'suffix'> {
   /**
    * Input button 的 class name
    */
@@ -114,6 +115,8 @@ export interface InputButtonProps {
    */
   value?: string;
 
+  maxWidth?: number;
+
   /**
    * Input Button size
    */
@@ -127,8 +130,5 @@ export interface InputButtonProps {
    * 当Input Button的值修改后的方法
    */
   onInputChange?: (value: string) => void;
-  forwardRef?:
-    | React.RefObject<HTMLInputElement>
-    | React.MutableRefObject<HTMLInputElement>
-    | React.LegacyRef<HTMLInputElement>;
+  forwardRef?: React.MutableRefObject<HTMLInputElement | null> | ((instance: HTMLInputElement | null) => void) | null;
 }

@@ -1,23 +1,32 @@
-@import '../../stylesheet/index.less';
-@import '../../stylesheet/mixin/border.less';
-@import '../../stylesheet/mixin/elevation.less';
+@import '../../stylesheet/variables/index.less';
 
 @input-btn-prefix-cls: ~'@{component-prefix}-input-btn-new';
 @icon-prefix-cls: ~'@{component-prefix}-input-new__prefix';
 @input-prefix-cls: ~'@{component-prefix}-input-new';
 
+@input-btn-input-prefix-cls: ~'@{component-prefix}-input-btn-new__input';
+
 .@{input-btn-prefix-cls} {
-  .@{input-prefix-cls} {
+  display: flex;
+  cursor: pointer;
+
+  .@{input-btn-input-prefix-cls} {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: @gray-0;
+    cursor: pointer;
+
     &:not([disabled])::placeholder {
       color: @gray-5;
-      font-size: @font-size-base;
+      .text-body1();
     }
     &:disabled {
       color: @gray-3;
       background-color: @gray-0;
       &::placeholder {
         color: @gray-3;
-        font-size: @font-size-base;
+        .text-body1();
       }
       &:hover {
         color: @gray-3;
@@ -28,57 +37,75 @@
       }
     }
 
+    &:not([disabled]):hover {
+      color: @blue-3;
+      border: 1px solid @gray-2;
+    }
+    &:is([disabled]):hover {
+      color: @gray-3;
+      border: 1px solid @gray-2;
+    }
+
     &:not([disabled]):focus {
       border: 1px solid @gray-2;
       outline: none;
     }
   }
   &:hover {
-    .@{input-prefix-cls}:not([disabled]) {
+    .@{input-btn-input-prefix-cls} {
       color: @blue-3;
-      &:not([disabled])::placeholder {
-        color: @blue-3;
-      }
-
-      &:not([disabled]):hover {
-        color: @blue-3;
-        border: 1px solid @gray-2;
-      }
+      background-color: @gray-1;
     }
-    .@{icon-prefix-cls} {
-      color: @blue-3;
-      cursor: auto;
-      svg {
+    .@{input-prefix-cls} {
+      &__prefix {
         color: @blue-3;
-        cursor: auto;
+        cursor: pointer;
+        svg {
+          color: @blue-3;
+          cursor: pointer;
+        }
       }
     }
   }
   &__disabled {
+    background-color: @gray-0;
     svg {
-      color: @gray-3 !important;
+      color: @gray-3;
       cursor: not-allowed;
     }
 
     &:hover {
+      .@{input-btn-input-prefix-cls} {
+        color: @gray-3;
+        background-color: @gray-0;
+        cursor: not-allowed;
+      }
       .@{input-prefix-cls} {
-        color: @gray-3 !important;
+        &__prefix {
+          color: @gray-3;
+          cursor: not-allowed;
+          svg {
+            color: @gray-3;
+            cursor: not-allowed;
+          }
+        }
+
+        &__suffix {
+          cursor: not-allowed;
+        }
       }
     }
 
-    .@{input-prefix-cls} {
-      color: @gray-3;
+    .@{input-btn-input-prefix-cls} {
       background-color: @gray-0;
-      cursor: not-allowed;
-      &::placeholder {
-        color: @gray-3 !important;
-        font-size: @font-size-base;
-      }
-      &:hover {
-        color: @gray-3 !important;
-        background-color: @gray-0 !important;
-        &::placeholder {
+    }
+    .@{input-prefix-cls} {
+      &__prefix-disabled {
+        color: @gray-3;
+        cursor: not-allowed;
+        svg {
           color: @gray-3;
+          cursor: not-allowed;
         }
       }
     }

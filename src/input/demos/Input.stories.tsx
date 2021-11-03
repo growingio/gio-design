@@ -84,7 +84,7 @@ const Template: Story<InputProps> = (args) => (
           <Password {...args} />
         </td>
         <td>
-          <Password {...args} />
+          <Password {...args} size="small" />
         </td>
         <td>
           <Password {...args} />
@@ -286,3 +286,10 @@ export const InputButtonCustomIcon = customPrefixTemplate.bind({});
 InputButtonCustomIcon.args = {
   onChange: () => action('onChange'),
 };
+
+const InputButtonMaxWidthTemplate = (args: InputButtonProps) => (
+  <InputButton {...args} value="可以限制value的字符数做缩略处理" maxWidth={200} />
+);
+
+export const InputButtonMaxWidth = InputButtonMaxWidthTemplate.bind({});
+InputButtonMaxWidth.args = {};

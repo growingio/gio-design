@@ -2,9 +2,10 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import SearchBar from '../SearchBar';
-import '../style';
 import { SearchBarProps } from '../interface';
 import Docs from './SearchBarPage';
+
+import '../style';
 
 export default {
   title: 'Upgraded/SearchBar',

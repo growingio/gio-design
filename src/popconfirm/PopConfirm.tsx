@@ -64,7 +64,7 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
     <div className={`${prefixCls}`}>
       <div className={`${prefixCls}__content`}>
         <div className={`${prefixCls}__content-title`}>
-          {icon || <WarningCircleFilled />}
+          <span className={`${prefixCls}__content-title-icon`}>{icon || <WarningCircleFilled />}</span>
           <span className={`${prefixCls}__content-title-text`}>{title}</span>
         </div>
         {desc && <div className={`${prefixCls}__content-desc`}>{desc}</div>}
