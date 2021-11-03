@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { useLocale } from '@gio-design/utils';
-import Loading from '../../../loading';
+import Loading from '../../loading';
 import Avatar from '../../avatar';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import { UploadPrefixClsContext } from '../Upload';

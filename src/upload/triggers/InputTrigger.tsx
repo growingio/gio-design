@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import classnames from 'classnames';
 import { LoadingOutlined } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
-import Loading from '../../loading';
+import Loading from '../../legacy/loading';
 import Input from '../../legacy/input';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import Preview from '../Preview';
