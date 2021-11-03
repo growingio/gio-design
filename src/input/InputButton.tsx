@@ -36,7 +36,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     }
     onInputChange?.('');
     setValue('');
-  }, [onInputChange, disabled]);
+  }, [onInputChange, disabled, setValue]);
 
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +44,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
       onInputChange?.(inputValue);
       setValue(inputValue);
     },
-    [onInputChange]
+    [onInputChange, setValue]
   );
 
   const wrapperCls = useMemo(
