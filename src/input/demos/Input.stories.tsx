@@ -264,6 +264,7 @@ const InputButtonTemplate: Story<InputButtonProps> = (args) => (
 export const InputButtonDemo = InputButtonTemplate.bind({});
 InputButtonDemo.args = {
   onChange: () => action('onChange'),
+  placeholder: '请选择事件',
 };
 
 const InputButtonDefaultTemplate = () => <InputButton />;
@@ -278,6 +279,7 @@ export const InputButtonHidePrefix = HidePrefixTemplate.bind({});
 InputButtonHidePrefix.args = {
   hidePrefix: true,
   onChange: () => action('onChange'),
+  placeholder: '请选择事件',
 };
 const customPrefixTemplate = (args: InputButtonProps) => (
   <InputButton {...args} value="请选择事件" prefix={<PlusOutlined />} suffix={<FilterOutlined />} />
@@ -285,6 +287,7 @@ const customPrefixTemplate = (args: InputButtonProps) => (
 export const InputButtonCustomIcon = customPrefixTemplate.bind({});
 InputButtonCustomIcon.args = {
   onChange: () => action('onChange'),
+  placeholder: '请选择事件',
 };
 
 const InputButtonMaxWidthTemplate = (args: InputButtonProps) => (
