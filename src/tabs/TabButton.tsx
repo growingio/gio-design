@@ -1,45 +1,69 @@
 import React from 'react';
-import classNames from 'classnames';
-import { TabButtonProps } from './interface';
+import classnames from 'classnames';
+import usePrefixCls from '../utils/hooks/use-prefix-cls';
 
-export const TabButton = (props: TabButtonProps) => {
-  const {
-    tab,
-    disabled,
-    prefix,
-    realKey = '',
-    onChange,
-    localActiveKey,
-    setLocalActiveKey,
-    prefixCls,
-    size = 'normal',
-    key: uniqueKey,
-  } = props;
-  const key = realKey.toString();
-  const itemClasses = classNames({
-    [`${prefixCls}-${size}`]: ['normal', 'small'].includes(size),
+export interface TabButtonProps {
+  /**
+   key
+   */
+  value: React.Key;
+  /**
+   * button内容
+   */
+  label?: React.ReactNode;
+  /**
+   * 不可选状态
+   */
+  disabled?: boolean;
+  /**
+   * 前缀元素
+   */
+  prefix?: React.ReactNode;
+  /**
+   * 是否为激活状态
+   */
+  active?: boolean;
+  /**
+   * 大小
+   */
+  size?: 'small' | 'normal';
+  /**
+   * 点击事件的回调
+   */
+  onClick?: (e: React.Key) => void;
+}
+
+const TabButton: React.FC<TabButtonProps> = (props) => {
+  const { children, disabled, prefix, size = 'normal', value, active, onClick } = props;
+
+  const prefixCls = usePrefixCls('tabs-new-tablist-button');
+  const buttonClassnames = classnames(`${prefixCls}`, `${prefixCls}-${size}`, {
+    [`${prefixCls}-active`]: active,
+    [`${prefixCls}-disabled`]: disabled,
   });
+
+  const onButtonClick = () => {
+    onClick(value);
+  };
+
   return (
     <button
-      className={classNames(itemClasses, `${prefixCls}-item`, {
-        [`${prefixCls}-item-active`]: localActiveKey === key,
-        [`${prefixCls}-item-disabled`]: disabled,
-      })}
+      className={buttonClassnames}
       disabled={disabled}
-      key={uniqueKey}
       type="button"
-      data-testid={`tabList-item-${key}`}
-      onClick={() => {
-        key && setLocalActiveKey && setLocalActiveKey(key);
-        if (localActiveKey !== key) {
-          onChange?.(key);
-        }
-      }}
+      data-testid={`tablist-${value}`}
+      onClick={onButtonClick}
+      value={value}
     >
-      {prefix ? (
-        <span className={tab ? `${prefixCls}-item-prefix-icon` : `${prefixCls}-item-prefix-icon-no-tab`}>{prefix}</span>
-      ) : null}
-      {tab}
+      <span
+        className={classnames(`${prefixCls}-prefix`, {
+          [`${prefixCls}-prefix-none`]: !prefix,
+          [`${prefixCls}-prefix-only`]: !children,
+        })}
+      >
+        {prefix}
+      </span>
+      {children}
     </button>
   );
 };

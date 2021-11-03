@@ -1,106 +1,36 @@
 import React from 'react';
+import { SizeType } from '@gio-design/utils';
 
-export interface TabProps {
+export interface TabsProps {
   /**
    	初始化选中面板的 `key`
   */
-  defaultActiveKey?: string;
+  defaultValue?: React.Key;
   /**
    开启受控模式，当前激活 `tab` 面板的 `key`
    */
-  activeKey?: string;
+  value?: React.Key;
   /**
    切换面板的回调
    */
-  onChange?: (key: string) => void;
-   /**
-   外层容器，自定义类名
+  onChange?: (key: React.Key) => void;
+  /**
+   * 组件大小
    */
-  className?: string;
-  /**
-  外层容器，自定义样式
-  */
-  style?: React.CSSProperties;
-  /**
-  标签面板组件
-  */
-  children?: React.ReactNode;
-  /**
-  * 组件大小
-  */
-  size?: 'small' | 'normal'
+  size?: 'small' | 'normal';
 }
 
-export interface TabPanelProps {
+export interface TabProps {
   /**
    key
    */
-  key?: string | number;
-  /**
-   * className
-   */
-  className?: string;
+  value?: React.Key;
   /**
    选项卡头显示文字
    */
-  tab?: React.ReactNode;
+  label?: React.ReactNode;
   /**
-   选项卡禁用
-   */
-  disabled?: boolean;
-  /**
-   卡头前缀
+   选项卡头显示文字
    */
   prefix?: React.ReactNode;
-  /**
-   标签面板组件
-   */
-  children?: React.ReactNode;
- /**
-  样式
-  */
-  style?: React.CSSProperties
-}
-
-export interface TabButtonProps {
-   /**
-   key
-   */
-   key?: string | number;
-  /**
-   * button内容
-   */
-  tab?: string;
-  /**
-   * 不可选状态
-   */
-  disabled?: boolean;
-  /** 
-   * 前缀元素
-   */
-  prefix?: React.ReactNode;
-/** 
-   * 前缀元素
-   */
-  realKey?: string | number;
-  /** 
-   * onChange
-   */
-  onChange?: (string: string) => void;
-  /** 
-   * 选中key
-   */
-  localActiveKey?: string;
-  /** 
-   * 设置localActiveKey
-   */
-  setLocalActiveKey?: (string: string) => void;
-  /** 
-   * prefixCls
-   */
-  prefixCls?: string;
-  /** 
-   * 大小
-   */
-  size?: 'small' | 'normal';
 }
