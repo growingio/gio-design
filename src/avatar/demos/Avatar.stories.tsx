@@ -16,25 +16,72 @@ export default {
     },
   },
 } as Meta;
-
+const arr = ['small', 'medium', 'large', 'x-large'];
 const Template: Story<AvatarProps> = (args) => (
-  <div className="display-avatar">
-    <Avatar src={image} {...args}>
-      li
-    </Avatar>
-    <Avatar {...args}>li</Avatar>
-    <Avatar {...args}>这是一个很长的描述</Avatar>
-    <Avatar src="错误的链接" {...args}>
-      这是一个很长的描述
-    </Avatar>
-    <Avatar {...args} icon={<HomeFilled />} />
-  </div>
+  <table className="table-demo">
+    <tr>
+      <th>Control</th>
+      <th>small</th>
+      <th>medium</th>
+      <th>large</th>
+      <th>x-large</th>
+    </tr>
+    <tr>
+      <td>default</td>
+      {arr.map((item: AvatarProps['size']) => (
+        <td>
+          <Avatar size={item} />
+        </td>
+      ))}
+    </tr>
+    <tr>
+      <td>字符</td>
+      {arr.map((item: AvatarProps['size']) => (
+        <td>
+          <Avatar {...args} size={item}>
+            Lili
+          </Avatar>
+        </td>
+      ))}
+    </tr>
+    <tr>
+      <td>icon</td>
+      {arr.map((item: AvatarProps['size']) => (
+        <td>
+          <Avatar icon={<HomeFilled />} {...args} size={item} />
+        </td>
+      ))}
+    </tr>
+    <tr>
+      <td>image</td>
+      {arr.map((item: AvatarProps['size']) => (
+        <td>
+          <Avatar src={image} {...args} size={item} />
+        </td>
+      ))}
+    </tr>
+    <tr>
+      <td>hover</td>
+      {arr.map((item: AvatarProps['size']) => (
+        <td>
+          <Avatar {...args} size={item} droppable />
+        </td>
+      ))}
+    </tr>
+    <tr>
+      <td>square</td>
+      {arr.map((item: AvatarProps['size']) => (
+        <td>
+          <Avatar {...args} size={item} droppable mode="square" />
+        </td>
+      ))}
+    </tr>
+  </table>
 );
 
 export const Default = Template.bind({});
 Default.args = {
   droppable: false,
-  size: 'default',
   omit: true,
   placement: 'top',
   displayTooltip: true,
@@ -47,13 +94,13 @@ const SizeTemplate: Story<AvatarProps> = (args) => (
       <Avatar size="small" src={image} {...args}>
         李
       </Avatar>
-      <Avatar size="default" src={image} {...args}>
+      <Avatar size="medium" src={image} {...args}>
         李
       </Avatar>
       <Avatar size="large" src={image} {...args}>
         李
       </Avatar>
-      <Avatar size="huge" src={image} {...args}>
+      <Avatar size="x-large" src={image} {...args}>
         李
       </Avatar>
     </div>
@@ -62,13 +109,13 @@ const SizeTemplate: Story<AvatarProps> = (args) => (
       <Avatar size="small" {...args}>
         李
       </Avatar>
-      <Avatar size="default" {...args}>
+      <Avatar size="medium" {...args}>
         李
       </Avatar>
       <Avatar size="large" {...args}>
         李
       </Avatar>
-      <Avatar size="huge" {...args}>
+      <Avatar size="x-large" {...args}>
         李
       </Avatar>
     </div>

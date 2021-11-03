@@ -1,21 +1,27 @@
-@import '../../stylesheet/index.less';
+@import '../../stylesheet/variables/index.less';
 
-@avatar-prefix-cls: ~'@{component-prefix}-avatar';
+@avatar-prefix-cls: ~'@{component-prefix}-avatar-new';
 
 .@{avatar-prefix-cls} {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
   overflow: hidden;
-  color: @color-text-avatar-normal;
-  font-weight: @weight-font-semi-bold;
-  background-color: @color-background-avatar-normal;
+  color: @gray-0;
+  background-color: @blue-2;
   border-radius: 100%;
   opacity: 1;
   user-select: none;
-
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
   &:hover &-droppable {
-    background-color: @color-background-avatar-hover-dropdown;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border: 1px solid @gray-0;
+    border-radius: 100%;
+    background-color: rgba(36, 46, 89, 0.5);
     span {
       transform: scale(1);
     }
@@ -26,7 +32,7 @@
     display: inline-block;
     width: 100%;
     height: 100%;
-    background-color: @color-background-avatar-normal;
+    background-color: @blue-2;
 
     & svg {
       position: absolute;
@@ -49,8 +55,9 @@
     text-align: center;
     background-color: transparent;
     cursor: pointer;
-    transition: all 0.3s;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     span {
       vertical-align: middle;
       transform: scale(0);
@@ -85,8 +92,18 @@
       }
     }
 
-    &.@{avatar-prefix-cls}-square {
+    &.@{avatar-prefix-cls}-square-small {
       border-radius: 2px;
+      border: 1px solid @gray-2;
+      .@{avatar-prefix-cls}-droppable {
+        border-radius: 2px;
+      }
+      .@{avatar-prefix-cls}-default {
+        background-color: @gray-0;
+        svg {
+          color: @blue-2;
+        }
+      }
       .@{avatar-prefix-cls}-icon {
         & svg {
           width: 12px;
@@ -96,7 +113,7 @@
     }
   }
 
-  &-df {
+  &-me {
     width: 32px;
     height: 32px;
     font-size: 12px;
@@ -109,8 +126,18 @@
       }
     }
 
-    &.@{avatar-prefix-cls}-square {
+    &.@{avatar-prefix-cls}-square-medium {
       border-radius: 4px;
+      border: 1px solid @gray-2;
+      .@{avatar-prefix-cls}-droppable {
+        border-radius: 4px;
+      }
+      .@{avatar-prefix-cls}-default {
+        background-color: @gray-0;
+        svg {
+          color: @blue-2;
+        }
+      }
       .@{avatar-prefix-cls}-icon {
         & svg {
           width: 16px;
@@ -120,7 +147,7 @@
     }
   }
 
-  &-lg {
+  &-la {
     width: 56px;
     height: 56px;
     font-size: 16px;
@@ -133,8 +160,18 @@
       }
     }
 
-    &.@{avatar-prefix-cls}-square {
+    &.@{avatar-prefix-cls}-square-large {
       border-radius: 8px;
+      border: 1px solid @gray-2;
+      .@{avatar-prefix-cls}-droppable {
+        border-radius: 8px;
+      }
+      .@{avatar-prefix-cls}-default {
+        background-color: @gray-0;
+        svg {
+          color: @blue-2;
+        }
+      }
       .@{avatar-prefix-cls}-icon {
         & svg {
           width: 28px;
@@ -144,7 +181,7 @@
     }
   }
 
-  &-hg {
+  &-xl {
     width: 80px;
     height: 80px;
     font-size: 20px;
@@ -156,9 +193,18 @@
         height: 32px;
       }
     }
-
-    &.@{avatar-prefix-cls}-square {
+    &.@{avatar-prefix-cls}-square-x-large {
       border-radius: 10px;
+      border: 1px solid @gray-2;
+      .@{avatar-prefix-cls}-droppable {
+        border-radius: 10px;
+      }
+      .@{avatar-prefix-cls}-default {
+        background-color: @gray-0;
+        svg {
+          color: @blue-2;
+        }
+      }
       .@{avatar-prefix-cls}-icon {
         & svg {
           width: 40px;
@@ -171,7 +217,7 @@
   &-group {
     display: flex;
     .@{avatar-prefix-cls} {
-      border: 1.4px solid @color-border-avatar;
+      border: 1.4px solid @gray-0;
       span {
         top: -1.5px;
       }
