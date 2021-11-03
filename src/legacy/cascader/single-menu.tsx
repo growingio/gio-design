@@ -6,7 +6,7 @@ import isFunction from 'lodash/isFunction';
 import trim from 'lodash/trim';
 
 import { useLocale } from '@gio-design/utils';
-import useMergeRef from '../utils/hooks/useMergeRef';
+import useMergeRef from '../../utils/hooks/useMergeRef';
 import { dataFilter, makeSearchParttern, mergeKeyMapping, toInt, withPrefix } from './helper';
 import Empty from './empty';
 import MenuItem from './menu-item';

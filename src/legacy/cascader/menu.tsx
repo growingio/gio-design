@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import { MenuItemProps, NodeData, MenuProps } from './interface';
 import { dataKeyMapping, getParentsByValue, mergeKeyMapping, toInt, useDynamicData, useKeyboardNav } from './helper';
 import SingleMenu from './single-menu';
-import useMergeRef from '../utils/hooks/useMergeRef';
+import useMergeRef from '../../utils/hooks/useMergeRef';
 
 export type Props = MenuProps;
 

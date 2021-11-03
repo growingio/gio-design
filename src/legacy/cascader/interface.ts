@@ -1,4 +1,4 @@
-import { DropdownProps } from '../components/dropdown/interface';
+import { DropdownProps } from '../../components/dropdown/interface';
 
 export type SizeType = 'small' | 'middle' | 'large' | undefined;
 

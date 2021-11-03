@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import _ from 'lodash';
-import { Grid, Checkbox } from '../../index';
+import { Grid, Checkbox } from '../../../index';
 import Cascader from '../index';
 import CascaderMenu from '../menu';
 import { Props } from '../interface';
 import '../style';
 import '../style/stories.less';
-import '../../legacy/input/style';
-import '../../dropdown/style';
-import '../../legacy/search-bar/style';
+import '../../input/style';
+import '../../../dropdown/style';
+import '../../search-bar/style';
 import Docs from './CascaderPage';
 
 interface DemoProps extends Props {
@@ -17,7 +17,7 @@ interface DemoProps extends Props {
 }
 
 export default {
-  title: 'Components/Cascader',
+  title: 'Legacy/Cascader',
   component: Cascader,
   parameters: {
     docs: {
