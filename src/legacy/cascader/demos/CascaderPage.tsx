@@ -13,42 +13,42 @@ export default function CascaderPage() {
 
       <Subheading>{formatMessage({ defaultMessage: '基础用法' })}</Subheading>
       <Canvas>
-        <Story id="components-cascader--default" />
+        <Story id="legacy-cascader--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '键名映射' })}</Subheading>
       <Canvas>
-        <Story id="components-cascader--key-mapping" />
+        <Story id="legacy-cascader--key-mapping" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '分组' })}</Subheading>
       <Canvas>
-        <Story id="components-cascader--group" />
+        <Story id="legacy-cascader--group" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '触发方式' })}</Subheading>
       <Canvas>
-        <Story id="components-cascader--trigger" />
+        <Story id="legacy-cascader--trigger" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '可搜索的' })}</Subheading>
       <Canvas>
-        <Story id="components-cascader--search" />
+        <Story id="legacy-cascader--search" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自定义' })}</Subheading>
       <Canvas>
-        <Story id="components-cascader--custom" />
+        <Story id="legacy-cascader--custom" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '异步获取数据' })}</Subheading>
       <Canvas>
-        <Story id="components-cascader--async" />
+        <Story id="legacy-cascader--async" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '添加文字提示' })}</Subheading>
       <Canvas>
-        <Story id="components-cascader--tooltip" />
+        <Story id="legacy-cascader--tooltip" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
@@ -70,47 +70,47 @@ export default function CascaderPage() {
 // ### 基础用法
 
 // <Canvas>
-//   <Story id="components-cascader--default" />
+//   <Story id="legacy-cascader--default" />
 // </Canvas>
 
 // ### 键名映射
 
 // <Canvas>
-//   <Story id="components-cascader--key-mapping" />
+//   <Story id="legacy-cascader--key-mapping" />
 // </Canvas>
 
 // ### 分组
 
 // <Canvas>
-//   <Story id="components-cascader--group" />
+//   <Story id="legacy-cascader--group" />
 // </Canvas>
 
 // ### 触发方式
 
 // <Canvas>
-//   <Story id="components-cascader--trigger" />
+//   <Story id="legacy-cascader--trigger" />
 // </Canvas>
 
 // ### 可搜索的
 
 // <Canvas>
-//   <Story id="components-cascader--search" />
+//   <Story id="legacy-cascader--search" />
 // </Canvas>
 
 // ### 自定义
 
 // <Canvas>
-//   <Story id="components-cascader--custom" />
+//   <Story id="legacy-cascader--custom" />
 // </Canvas>
 
 // ### 异步获取数据
 
 // <Canvas>
-//   <Story id="components-cascader--async" />
+//   <Story id="legacy-cascader--async" />
 // </Canvas>
 
 // ### 添加文字提示
 
 // <Canvas>
-//   <Story id="components-cascader--tooltip" />
+//   <Story id="legacy-cascader--tooltip" />
 // </Canvas>

@@ -9,7 +9,7 @@ import modalLocale from '../legacy/modal/locales/en-US';
 import timePickerLocale from '../time-picker/locales/en-US';
 import timeSelectorLocale from '../time-selector/locales/en-US';
 import searchBarLocale from '../legacy/search-bar/locales/en-US';
-import cascaderLocale from '../cascader/locales/en-US';
+import cascaderLocale from '../legacy/cascader/locales/en-US';
 import paginationLocale from '../legacy/pagination/locales/en-US';
 import tableLocale from '../legacy/table/locales/en-US';
 import uploadLocale from '../upload/locales/en-US';
