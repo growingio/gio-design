@@ -30,7 +30,7 @@ export default {
 
 const Template: Story<LinkProps> = (args) => (
   <>
-    <table>
+    <table className="table-demo">
       <tr>
         <th>Control</th>
         <th>描述</th>

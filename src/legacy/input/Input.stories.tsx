@@ -10,7 +10,7 @@ import TextArea from './TextArea';
 import './style';
 
 export default {
-  title: 'Components/Input',
+  title: 'Legacy/Input',
   component: Input,
   subcomponents: { InputNumber, Password, TextArea }, // 子组件
   decorators: [withDesign],

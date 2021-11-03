@@ -24,7 +24,7 @@ export default {
 } as Meta;
 
 const DemoTemplate = () => (
-  <table>
+  <table className="table-demo">
     <tr>
       <th>Toggle</th>
       <th>Example</th>

@@ -14,6 +14,10 @@ export default function ListPage() {
           defaultMessage: '在当前页面正中打开一个浮层',
         })}
       </p>
+      <p>
+        此组件引用了rc-dialog;
+        <a href="https://www.npmjs.com/package/rc-dialog">rc-dialog</a>
+      </p>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>

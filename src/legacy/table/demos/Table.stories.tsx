@@ -19,7 +19,7 @@ import { ResizableWithTable } from './ResizableTable';
 import { DragColumns } from './DragTable';
 
 export default {
-  title: 'Components/Table',
+  title: 'Legacy/Table',
   component: Table,
   parameters: {
     design: {

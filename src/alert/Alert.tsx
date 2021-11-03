@@ -9,6 +9,7 @@ import {
   CloseCircleFilled,
   CloseOutlined,
 } from '@gio-design/icons';
+import IconButton from '../button/IconButton';
 import { AlertProps } from './interfaces';
 
 export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
@@ -39,21 +40,22 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   return alertStatus ? (
     <div style={style} className={classnames(prefixCls, `${prefixCls}-${type}`)}>
       {showIcon && <div className={classnames(`${prefixCls}-icon`)}>{getIcon()}</div>}
-      <div className={classnames(`${prefixCls}-content`)}>
+      <div className={classnames(showIcon ? null : `${prefixCls}-content-no-icon`, `${prefixCls}-content`)}>
         {message && <div className={classnames(`${prefixCls}-content-title`)}>{message}</div>}
         {message && description && <div className={classnames(`${prefixCls}-content-gap`)} />}
         {description && <div className={classnames(`${prefixCls}-content-description`)}>{description}</div>}
       </div>
       {closeable && (
-        <div
-          className={classnames(`${prefixCls}-closeIcon`)}
+        <IconButton
+          className={classnames(`${prefixCls}-closeButton`)}
           onClick={closeAlert}
-          role="button"
           tabIndex={0}
           onKeyPress={_.noop}
+          type="text"
+          size="small"
         >
           <CloseOutlined />
-        </div>
+        </IconButton>
       )}
     </div>
   ) : null;
