@@ -93,7 +93,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     const isMode: boolean = useMemo(() => multiple && !!mode, [multiple, mode]);
     const isUseAll: boolean = useMemo(() => multiple && !!useAll, [multiple, useAll]);
     // empty
-
+    
     const emptyElement = (
       <div className={`${prefix}-empty`}>
         <Empty description="暂无选项" size="small" />
