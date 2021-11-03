@@ -7,7 +7,7 @@
 .@{input-prefix-cls} {
   box-sizing: border-box;
   height: 36px;
-  padding: 7px 12px;
+  padding: 6px 12px;
   color: @gray-5;
   font-family+: @font-family-primary;
   font-family+: @font-family-number;
@@ -41,7 +41,7 @@
   }
   &__small {
     height: 30px;
-    padding: 4px 12px;
+    padding: 3px 12px;
   }
   &__error {
     border: 1px solid @red-3;
@@ -50,6 +50,8 @@
   &__suffix {
     position: absolute;
     right: 0;
+    display: flex;
+    align-items: center;
     padding-right: 12px;
 
     &-wrapper {
@@ -76,6 +78,8 @@
   &__prefix {
     position: absolute;
     left: 0;
+    display: flex;
+    align-items: center;
     padding-left: 12px;
 
     &-wrapper {

@@ -22,6 +22,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     className,
     style = {},
     maxWidth,
+    active = false,
     ...rest
   } = props;
 
@@ -48,8 +49,8 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   );
 
   const wrapperCls = useMemo(
-    () => classNames(className, prefixCls, { [`${prefixCls}__disabled`]: disabled }),
-    [className, prefixCls, disabled]
+    () => classNames(className, prefixCls, { [`${prefixCls}__disabled`]: disabled, [`${prefixCls}__active`]: active }),
+    [className, prefixCls, disabled, active]
   );
 
   const prefix = useMemo(
