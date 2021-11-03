@@ -18,9 +18,6 @@ export default {
       url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=6392%3A67234',
       allowFullscreen: true,
     },
-    docs: {
-      page: null,
-    },
   },
 } as Meta;
 

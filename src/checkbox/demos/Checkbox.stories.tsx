@@ -30,7 +30,7 @@ const DemoTemplate = () => {
   };
   return (
     <>
-      <table style={{ marginBottom: 50 }}>
+      <table style={{ marginBottom: 50 }} className="table-demo">
         <tr>
           <th>Checkbox status</th>
           <th>Example</th>
@@ -100,7 +100,7 @@ const DemoTemplate = () => {
           </td>
         </tr>
       </table>
-      <table>
+      <table className="table-demo">
         <tr>
           <th>Checkbox.Group</th>
           <th>layout</th>

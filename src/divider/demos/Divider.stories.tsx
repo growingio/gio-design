@@ -24,7 +24,7 @@ export default {
 } as Meta;
 
 const DemoTemplate: Story<DividerProps> = () => (
-  <table>
+  <table className="table-demo">
     <tr>
       <th>Divider</th>
       <th>Example</th>

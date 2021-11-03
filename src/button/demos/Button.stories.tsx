@@ -38,7 +38,7 @@ const Context = [
 ];
 
 const Template: Story<ButtonProps> = (args) => (
-  <table>
+  <table className="table-demo">
     <tr>
       <th>Button Control</th>
       <th>描述</th>

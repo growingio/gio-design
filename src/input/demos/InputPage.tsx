@@ -21,7 +21,7 @@ export default function ListPage() {
         </a>
       </p>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
-      <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: 'Input样例展示' })}</Subheading>
       <Canvas>
         <Story id="upgraded-input--demo" />
       </Canvas>
@@ -40,6 +40,22 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: '文本区域' })}</Subheading>、
       <Canvas>
         <Story id="upgraded-input--textarea-demo" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'Input.Button样例展示' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-input--input-button-demo" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'default' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-input--input-button-default" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '隐藏前缀' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-input--input-button-hide-prefix" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '自定义前后缀icon' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-input--input-button-custom-icon" />
       </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Input} />
