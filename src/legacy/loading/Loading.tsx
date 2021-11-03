@@ -1,9 +1,9 @@
 import React, { useMemo, forwardRef, useRef, useState, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import { isUndefined } from 'lodash';
-import useDebounceLoading from '../utils/hooks/useDebounceLoading';
-import composeRef from '../utils/composeRef';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import useDebounceLoading from '../../utils/hooks/useDebounceLoading';
+import composeRef from '../../utils/composeRef';
+import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { LoadingProps } from './interface';
 
 const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
