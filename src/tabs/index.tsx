@@ -1,14 +1,7 @@
-import GIOTabs from './Tabs';
-import TabPanel from './TabPanel';
+import Tabs from './Tabs';
+import Tab from './Tab';
+import withSubComponent from '../utils/withSubComponent';
+import { TabProps, TabsProps } from './interface';
 
-export { TabProps, TabPanelProps } from './interface';
-
-type TTabs = typeof GIOTabs & {
-  TabPanel: typeof TabPanel;
-};
-
-const Tabs = GIOTabs as TTabs;
-Tabs.TabPanel = TabPanel;
-
-export { TabPanel };
-export default Tabs;
+export { Tab, TabsProps, TabProps };
+export default withSubComponent(Tabs, { Tab });

@@ -1,66 +1,67 @@
-import React, { PropsWithChildren, ReactElement } from 'react';
-import classNames from 'classnames';
-import { TabProps } from './interface';
+import React, { DOMAttributes } from 'react';
+import classnames from 'classnames';
+import { isNil } from 'lodash';
+import { TabProps, TabsProps } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import useControlledState from '../utils/hooks/useControlledState';
-import TabPanel from './TabPanel';
+import Tab from './Tab';
 import TabButton from './TabButton';
+import { WithCommonProps } from '../utils/interfaces';
 import WithRef from '../utils/withRef';
+import TabsContext from './context';
 
-export const Tabs = WithRef<HTMLDivElement, TabProps>((props: PropsWithChildren<TabProps>, ref?) => {
-  const {
-    defaultActiveKey = '',
-    activeKey,
-    onChange,
-    className,
-    style,
-    children,
-    size = 'normal',
-    ...restProps
-  } = props;
-  const [localActiveKey, setLocalActiveKey] = useControlledState<string>(activeKey, defaultActiveKey);
+const Tabs: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  WithCommonProps<TabsProps> & Omit<DOMAttributes<HTMLDivElement>, 'onChange'>
+> = (props: WithCommonProps<TabsProps> & Omit<DOMAttributes<HTMLDivElement>, 'onChange'>, ref?) => {
+  const { defaultValue = 0, value, onChange, classname, children, size = 'normal', ...restProps } = props;
+  const [activeValue, setActiveValue] = useControlledState<React.Key>(value, defaultValue);
   const prefixCls = usePrefixCls('tabs-new');
-  const tabClasses = classNames(className, prefixCls);
+  const tabClasses = classnames(classname, prefixCls);
+
   const elementList = React.Children.toArray(children).filter(
-    (node) => React.isValidElement(node) && node.type === TabPanel
+    (node) => React.isValidElement(node) && node.type === Tab
   );
+
+  const onClick = (v: React.Key) => {
+    setActiveValue(v);
+    onChange?.(v);
+  };
+
+  const tabs = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>) => (
+    <TabButton
+      key={tab.props.value}
+      value={tab.props.value}
+      size={size}
+      onClick={onClick}
+      prefix={tab.props.prefix}
+      active={activeValue === tab.props.value}
+    >
+      {tab.props.label}
+    </TabButton>
+  ));
+
+  const tabPanels = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>, index) => {
+    if (isNil(tab.props.value)) {
+      return React.cloneElement(<Tab />, { ...tab.props, value: index });
+    }
+    return React.cloneElement(<Tab />, tab.props);
+  });
 
   return (
-    <div className={tabClasses} style={style} data-testid="tabs" ref={ref} {...restProps}>
-      <div data-testid="tablist" className={`${prefixCls}-tablist`}>
-        {elementList.map((item: ReactElement, index: number) => {
-          const TabButtonOptions = {
-            prefixCls,
-            key: index.toString(),
-            realKey: item.props.key ? item.props.key.toString() : index.toString(),
-            size,
-            localActiveKey,
-            setLocalActiveKey,
-            onChange,
-            ...item.props,
-          };
-          return React.cloneElement(<TabButton />, TabButtonOptions);
-        })}
+    <TabsContext.Provider value={{ activeValue }}>
+      <div className={tabClasses} data-testid="tabs" ref={ref} {...restProps}>
+        <div data-testid="tablist" className={`${prefixCls}-tablist`}>
+          {tabs}
+        </div>
+        <div data-testid="tabpanels" className={`${prefixCls}-tabpanels`}>
+          {tabPanels}
+        </div>
       </div>
-      <div data-testid="tabpanel" className={`${prefixCls}-tabpanel`}>
-        {elementList.map((item: ReactElement, index: number) => (
-          <div
-            data-testid={`tabpanel-item-${index}`}
-            style={
-              (item.props.key ? item.props.key.toString() : index.toString()) === localActiveKey
-                ? undefined
-                : { display: 'none' }
-            }
-            key={index.toString()}
-          >
-            {item}
-          </div>
-        ))}
-      </div>
-    </div>
+    </TabsContext.Provider>
   );
-});
+};
 
 Tabs.displayName = 'Tabs';
 
-export default Tabs;
+export default WithRef(Tabs);

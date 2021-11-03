@@ -11,13 +11,13 @@ import {
 } from '@gio-design/icons';
 import { action } from '@storybook/addon-actions';
 import Docs from './TabsPage';
-import Tabs, { TabPanel, TabProps } from '../index';
+import Tabs, { Tab, TabProps } from '../index';
 import '../style';
 
 export default {
   title: 'Upgraded/Tabs',
   component: Tabs,
-  subcomponents: { TabPanel },
+  subcomponents: { Tab },
   parameters: {
     docs: {
       page: Docs,
@@ -38,12 +38,12 @@ const templateIconArr = [
   <FlowOutlined />,
 ];
 const renderItems = () =>
-  templateIconArr.map((item, index) => <TabPanel tab={`Option${index}`} key={index} prefix={item} />);
-const noTabItem = () => templateIconArr.map((item, index) => <TabPanel key={index} prefix={item} />);
-const noPrefixItems = () => templateIconArr.map((item, index) => <TabPanel tab={`Option${index}`} key={index} />);
+  templateIconArr.map((item, index) => <Tab label={`Option${index}`} value={index} prefix={item} />);
+const noTabItem = () => templateIconArr.map((item, index) => <Tab value={index} prefix={item} />);
+const noPrefixItems = () => templateIconArr.map((item, index) => <Tab label={`Option${index}`} value={index} />);
 const haveChildrenItems = () =>
   templateIconArr.map((item, index) => (
-    <TabPanel tab={`Option${index}`} key={index}>
+    <Tab label={`Option${index}`} value={index}>
       <div
         style={{
           backgroundColor: '#f7f8fc',
@@ -54,7 +54,7 @@ const haveChildrenItems = () =>
       >
         {`Option${index}`}
       </div>
-    </TabPanel>
+    </Tab>
   ));
 const Template: Story<TabProps> = (args) => (
   <div>
@@ -94,12 +94,12 @@ const DemoTemplate: Story<TabProps> = (args) => (
         <td>
           <Tabs style={{ marginBottom: 10 }} {...args}>
             {templateIconArr.map((item, index) => (
-              <TabPanel tab={`Option${index}`} key={index} />
+              <Tab label={`Option${index}`} value={index} />
             ))}
           </Tabs>
           <Tabs size="small" {...args}>
             {templateIconArr.map((item, index) => (
-              <TabPanel tab={`Option${index}`} key={index} />
+              <Tab label={`Option${index}`} value={index} />
             ))}
           </Tabs>
         </td>
@@ -110,7 +110,7 @@ const DemoTemplate: Story<TabProps> = (args) => (
         <td style={{ width: 500 }}>
           <Tabs {...args}>
             {[...Array(10)].map((item, index) => (
-              <TabPanel tab={`Option${index}`} key={index} />
+              <Tab label={`Option${index}`} value={index} />
             ))}
           </Tabs>
         </td>
@@ -118,7 +118,7 @@ const DemoTemplate: Story<TabProps> = (args) => (
     </table>
     <table>
       <tr>
-        <th>Tabpanel control</th>
+        <th>Tab control</th>
         <th>描述</th>
         <th>Example</th>
       </tr>
@@ -128,7 +128,7 @@ const DemoTemplate: Story<TabProps> = (args) => (
         <td>
           <Tabs {...args}>
             {templateIconArr.map((item, index) => (
-              <TabPanel tab={`Option${index}`} key={index} prefix={item} />
+              <Tab label={`Option${index}`} value={index} prefix={item} />
             ))}
           </Tabs>
         </td>
@@ -139,7 +139,7 @@ const DemoTemplate: Story<TabProps> = (args) => (
         <td>
           <Tabs {...args}>
             {templateIconArr.map((item, index) => (
-              <TabPanel key={index} prefix={item} />
+              <Tab value={index} prefix={item} />
             ))}
           </Tabs>
         </td>
@@ -150,7 +150,7 @@ const DemoTemplate: Story<TabProps> = (args) => (
         <td>
           <Tabs {...args}>
             {templateIconArr.map((item, index) => (
-              <TabPanel tab={`Option${index}`} key={index} />
+              <Tab label={`Option${index}`} value={index} />
             ))}
           </Tabs>
         </td>
@@ -159,9 +159,14 @@ const DemoTemplate: Story<TabProps> = (args) => (
         <td>children</td>
         <td>有内容联动</td>
         <td>
-          <Tabs {...args}>
+          <Tabs
+            {...args}
+            onChange={() => {
+              console.log(1);
+            }}
+          >
             {templateIconArr.map((item, index) => (
-              <TabPanel tab={`Option${index}`} key={index}>
+              <Tab label={`Option${index}`} value={index}>
                 <div
                   style={{
                     backgroundColor: '#f7f8fc',
@@ -172,7 +177,7 @@ const DemoTemplate: Story<TabProps> = (args) => (
                 >
                   {`Option${index}`}
                 </div>
-              </TabPanel>
+              </Tab>
             ))}
           </Tabs>
         </td>
@@ -183,34 +188,34 @@ const DemoTemplate: Story<TabProps> = (args) => (
 // Demo
 export const Demo = DemoTemplate.bind({});
 Demo.args = {
-  defaultActiveKey: '0',
+  defaultValue: 0,
   onChange: action('onchange'),
 };
 // default
 export const Default = Template.bind({});
 Default.args = {
   className: 'cc',
-  defaultActiveKey: '1',
+  defaultValue: 1,
   onChange: action('onchange'),
 };
 // notab
 export const noTab = noTabTemplate.bind({});
 noTab.args = {
   className: 'cc',
-  defaultActiveKey: '1',
+  defaultValue: 1,
   onChange: action('onchange'),
 };
 // noprefix
 export const noPrefix = noPrefixTemplate.bind({});
 noPrefix.args = {
   className: 'cc',
-  defaultActiveKey: '1',
+  defaultValue: 1,
   onChange: action('onchange'),
 };
 // have children
 export const haveChildren = childrenTemplate.bind({});
 haveChildren.args = {
   className: 'cc',
-  defaultActiveKey: '1',
+  defaultValue: 1,
   onChange: action('onchange'),
 };
