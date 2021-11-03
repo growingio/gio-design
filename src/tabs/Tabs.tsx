@@ -1,84 +1,67 @@
-import React, { useEffect, useMemo } from 'react';
-import classNames from 'classnames';
-import toArray from 'rc-util/lib/Children/toArray';
+import React, { DOMAttributes } from 'react';
+import classnames from 'classnames';
 import { isNil } from 'lodash';
-import { usePrefixCls } from '@gio-design/utils';
-import TabNav from '../tab-nav';
-import TabPane from './TabPane';
-import { TabProps, TabPaneProps } from './interface';
+import { TabProps, TabsProps } from './interface';
+import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import useControlledState from '../utils/hooks/useControlledState';
+import Tab from './Tab';
+import TabButton from './TabButton';
+import { WithCommonProps } from '../utils/interfaces';
+import WithRef from '../utils/withRef';
+import TabsContext from './context';
 
-const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
-  const {
-    type = 'block',
-    size = 'large',
-    children,
-    prefixCls: customizePrefixCls,
-    className,
-    activeKey,
-    defaultActiveKey = '',
-    style,
-    onTabClick,
-    onChange,
-  } = props;
-  const [localActiveKey, setLocalActiveKey] = useControlledState<string>(activeKey, defaultActiveKey);
-  const prefixCls = usePrefixCls('tabs', customizePrefixCls);
-  const classString = classNames(prefixCls, className, {
-    [`${prefixCls}-${type}`]: true,
-    [`${prefixCls}-sm`]: size === 'small',
-    [`${prefixCls}-md`]: size === 'middle',
-    [`${prefixCls}-lg`]: size === 'large',
+const Tabs: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  WithCommonProps<TabsProps> & Omit<DOMAttributes<HTMLDivElement>, 'onChange'>
+> = (props: WithCommonProps<TabsProps> & Omit<DOMAttributes<HTMLDivElement>, 'onChange'>, ref?) => {
+  const { defaultValue = 0, value, onChange, classname, children, size = 'normal', ...restProps } = props;
+  const [activeValue, setActiveValue] = useControlledState<React.Key>(value, defaultValue);
+  const prefixCls = usePrefixCls('tabs-new');
+  const tabClasses = classnames(classname, prefixCls);
+
+  const elementList = React.Children.toArray(children).filter(
+    (node) => React.isValidElement(node) && node.type === Tab
+  );
+
+  const onClick = (v: React.Key) => {
+    setActiveValue(v);
+    onChange?.(v);
+  };
+
+  const tabs = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>, index) => (
+    <TabButton
+      key={tab.props.value}
+      value={tab.props.value || index}
+      size={size}
+      onClick={onClick}
+      prefix={tab.props.prefix}
+      active={activeValue === tab.props.value}
+    >
+      {tab.props.label}
+    </TabButton>
+  ));
+
+  const tabPanels = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>, index) => {
+    if (isNil(tab.props.value)) {
+      return React.cloneElement(<Tab />, { ...tab.props, value: index });
+    }
+    return React.cloneElement(<Tab />, tab.props);
   });
 
-  const [tabNavKeys, tabNav, tabPane] = useMemo(() => {
-    const _tabNavKeys: string[] = [];
-    const _tabItem: JSX.Element[] = [];
-    const _tabPane = toArray(children)
-      .filter((node) => React.isValidElement(node) && node.type === TabPane)
-      .map((node: React.ReactElement<TabPaneProps>, index) => {
-        const { tab, className: paneClassName, disabled, style: paneStyle, ...restProps } = node.props;
-        const _key = isNil(node.key) ? index.toString() : node.key.toString();
-        _tabNavKeys.push(_key);
-        _tabItem.push(
-          <TabNav.Item key={_key} disabled={disabled}>
-            {tab}
-          </TabNav.Item>
-        );
-        return React.cloneElement(node, {
-          prefixCls,
-          className: classNames(paneClassName, {
-            [`${prefixCls}-tabpane-active`]: localActiveKey === _key,
-          }),
-          style: localActiveKey === _key ? paneStyle : { ...paneStyle, display: 'none' },
-          ...restProps,
-        });
-      });
-    return [_tabNavKeys, _tabItem, _tabPane];
-  }, [children, localActiveKey, prefixCls]);
-
-  useEffect(() => {
-    if (!tabNavKeys.includes(localActiveKey)) {
-      setLocalActiveKey(tabNavKeys[0]);
-    }
-  }, [localActiveKey, tabNavKeys, setLocalActiveKey]);
-
   return (
-    <div className={classString} ref={ref} style={style}>
-      <TabNav
-        size={size}
-        type={type}
-        activeKey={localActiveKey}
-        onTabClick={onTabClick}
-        onChange={(_key: string) => {
-          setLocalActiveKey(_key);
-          onChange?.(_key);
-        }}
-      >
-        {tabNav}
-      </TabNav>
-      <div className={`${prefixCls}-content`}>{tabPane}</div>
-    </div>
+    <TabsContext.Provider value={{ activeValue }}>
+      <div className={tabClasses} data-testid="tabs" ref={ref} {...restProps}>
+        <div data-testid="tablist" className={`${prefixCls}-tablist`}>
+          {tabs}
+        </div>
+        <div data-testid="tabpanels" className={`${prefixCls}-tabpanels`}>
+          {tabPanels}
+        </div>
+      </div>
+    </TabsContext.Provider>
   );
 };
 
-export default React.forwardRef(Tabs);
+Tabs.displayName = 'Tabs';
+
+export default WithRef(Tabs);

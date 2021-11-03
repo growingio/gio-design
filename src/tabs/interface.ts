@@ -1,69 +1,35 @@
-export interface TabProps {
+import React from 'react';
+
+export interface TabsProps {
   /**
-   标签页样式
-   */
-  type?: 'line' | 'block';
-  /**
-   设置尺寸
-   */
-  size?: 'small' | 'middle' | 'large';
-  /**
-   `tab` 被点击的回调
-   */
-  onTabClick?: (key: string) => void;
-  /**
-   切换面板的回调
-   */
-  onChange?: (key: string) => void;
+   	初始化选中面板的 `key`
+  */
+  defaultValue?: React.Key;
   /**
    开启受控模式，当前激活 `tab` 面板的 `key`
    */
-  activeKey?: string;
+  value?: React.Key;
   /**
-   	初始化选中面板的 `key`
+   切换面板的回调
    */
-  defaultActiveKey?: string;
+  onChange?: (key: React.Key) => void;
   /**
-   	标签面板组件
+   * 组件大小
    */
-  children?: React.ReactNode;
-  /**
-   	替代组件的类前缀
-   */
-  prefixCls?: string;
-  /**
-   自定义`className`
-   */
-  className?: string;
-  /**
-   自定义样式
-   */
-  style?: React.CSSProperties;
+  size?: 'small' | 'normal';
 }
 
-export interface TabPaneProps {
+export interface TabProps {
+  /**
+   key
+   */
+  value?: React.Key;
   /**
    选项卡头显示文字
    */
-  tab?: React.ReactNode;
+  label?: React.ReactNode;
   /**
-   选项卡禁用
+   选项卡头显示文字
    */
-  disabled?: boolean;
-  /**
-   标签面板组件
-   */
-  children?: React.ReactNode;
-  /**
-   替代组件的类前缀
-   */
-  prefixCls?: string;
-  /**
-   自定义`className`
-   */
-  className?: string;
-  /**
-   自定义样式
-   */
-  style?: React.CSSProperties;
+  prefix?: React.ReactNode;
 }
