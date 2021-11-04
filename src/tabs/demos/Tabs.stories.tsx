@@ -82,6 +82,7 @@ const DemoTemplate: Story<TabProps> = (args) => (
       style={{
         marginBottom: 5,
       }}
+      className="table-demo"
     >
       <tr>
         <th>Tabs control</th>
@@ -116,7 +117,7 @@ const DemoTemplate: Story<TabProps> = (args) => (
         </td>
       </tr>
     </table>
-    <table>
+    <table className="table-demo">
       <tr>
         <th>Tab control</th>
         <th>描述</th>

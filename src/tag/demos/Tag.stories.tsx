@@ -69,7 +69,6 @@ const DefaultTemplate: Story<TagProps> = (args) => (
               status={Object.values(obj)[index] as TagProps['status']}
               {...args}
               size="small"
-              type="highlight"
               style={{ margin: '10' }}
             >
               {Object.keys(obj)[index]}
@@ -81,7 +80,6 @@ const DefaultTemplate: Story<TagProps> = (args) => (
               className="tag_website_demo_tag"
               status={Object.values(obj)[index] as TagProps['status']}
               {...args}
-              type="highlight"
               size="middle"
             >
               {Object.keys(obj)[index]}

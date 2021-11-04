@@ -26,7 +26,7 @@ const AvatarTrigger: React.FC<ITriggerProps> = ({
   return (
     <Loading loading={file.status === STATUS_UPLOADING} size="small" title={loadingTitle}>
       <span className={cls}>
-        <Avatar src={file.dataUrl || placeholderImg} size="huge">
+        <Avatar src={file.dataUrl || placeholderImg} size="x-large">
           {children as string}
         </Avatar>
         <Actions file={file} useUpload useDelete={file.status === STATUS_SUCCESS} onRemove={onRemove} />

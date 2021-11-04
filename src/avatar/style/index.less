@@ -8,20 +8,20 @@
   box-sizing: border-box;
   overflow: hidden;
   color: @gray-0;
+  font-weight: 600;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 20px;
   background-color: @blue-2;
   border-radius: 100%;
   opacity: 1;
   user-select: none;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 20px;
   &:hover &-droppable {
     width: calc(100% - 2px);
     height: calc(100% - 2px);
+    background-color: rgba(36, 46, 89, 0.5);
     border: 1px solid @gray-0;
     border-radius: 100%;
-    background-color: rgba(36, 46, 89, 0.5);
     span {
       transform: scale(1);
     }
@@ -50,14 +50,14 @@
     top: 0;
     left: 0;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     text-align: center;
     background-color: transparent;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     span {
       vertical-align: middle;
       transform: scale(0);
@@ -93,8 +93,9 @@
     }
 
     &.@{avatar-prefix-cls}-square-small {
-      border-radius: 2px;
+      background-color: @gray-2;
       border: 1px solid @gray-2;
+      border-radius: 2px;
       .@{avatar-prefix-cls}-droppable {
         border-radius: 2px;
       }
@@ -127,8 +128,9 @@
     }
 
     &.@{avatar-prefix-cls}-square-medium {
-      border-radius: 4px;
+      background-color: @gray-2;
       border: 1px solid @gray-2;
+      border-radius: 4px;
       .@{avatar-prefix-cls}-droppable {
         border-radius: 4px;
       }
@@ -161,8 +163,10 @@
     }
 
     &.@{avatar-prefix-cls}-square-large {
-      border-radius: 8px;
+      background-color: @gray-2;
       border: 1px solid @gray-2;
+      border-radius: 8px;
+
       .@{avatar-prefix-cls}-droppable {
         border-radius: 8px;
       }
@@ -194,8 +198,10 @@
       }
     }
     &.@{avatar-prefix-cls}-square-x-large {
-      border-radius: 10px;
+      background-color: @gray-2;
       border: 1px solid @gray-2;
+      border-radius: 10px;
+
       .@{avatar-prefix-cls}-droppable {
         border-radius: 10px;
       }
@@ -224,7 +230,6 @@
       &:hover {
         position: relative;
         z-index: 1;
-        filter: @shadow-avatar;
       }
     }
 
