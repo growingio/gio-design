@@ -1,7 +1,7 @@
-@import '../../stylesheet/index.less';
+@import '../../stylesheet/variables/index.less';
 @import './mixin.less';
 
-@sign-prefix-cls: ~'@{component-prefix}-sign';
+@sign-prefix-cls: ~'@{component-prefix}-sign-new';
 @sign-number: ~'@{sign-prefix-cls}__number';
 @sign-dot: ~'@{sign-prefix-cls}__dot';
 @sign-hide: ~'@{sign-prefix-cls}--hide';
@@ -10,9 +10,9 @@
 .@{sign-dot} {
   .place();
   .background.default();
-  border-radius: @radius-border-circle;
+  border-radius: 50%;
   &-wrapper {
-    color: @palette-black-6;
+    color: @gray-3;
   }
   // status
   &--normal {
@@ -27,7 +27,7 @@
   &--disabled {
     .background.disabled();
     & ~ * {
-      color: @color-background-sign-disabled;
+      color: @gray-3;
     }
   }
 
