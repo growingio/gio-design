@@ -1,2 +1,2 @@
 import './index.less';
-import '../../date-picker/style';
+import '../../static-date-picker/style';

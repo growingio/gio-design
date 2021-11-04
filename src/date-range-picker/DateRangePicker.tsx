@@ -5,7 +5,7 @@ import RangeContext from 'rc-picker/lib/RangeContext';
 import { RangeValue } from 'rc-picker/lib/interface';
 import { useControlledState, usePrefixCls } from '@gio-design/utils';
 import isBefore from 'date-fns/isBefore';
-import DatePicker, { DatePickerContext } from '../date-picker';
+import StaticDatePicker, { StaticDatePickerContext } from '../static-date-picker';
 import { DateRangePickerProps } from './interfaces';
 import { getDefaultViewDates, calcClosingViewDate, mergeDates } from './utils';
 
@@ -39,7 +39,7 @@ function DateRangePicker({
           hoverRangedValue: hoveredDates,
         }}
       >
-        <DatePicker
+        <StaticDatePicker
           className={`${preficCls}__${position}`}
           disabledDate={(currentDate) => {
             const isBeforeStartDate =
@@ -66,7 +66,7 @@ function DateRangePicker({
 
   const cls = classnames(className, preficCls);
   return (
-    <DatePickerContext.Provider
+    <StaticDatePickerContext.Provider
       value={{
         onDateMouseEnter: (date) => {
           if (dateIndex) {
@@ -90,7 +90,7 @@ function DateRangePicker({
         {renderPicker('left')}
         {renderPicker('right')}
       </div>
-    </DatePickerContext.Provider>
+    </StaticDatePickerContext.Provider>
   );
 }
 

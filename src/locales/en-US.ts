@@ -1,5 +1,5 @@
 import type { Locale } from '@gio-design/utils';
-import datePickerLocale from '../date-picker/locales/en-US';
+import datePickerLocale from '../static-date-picker/locales/en-US';
 import dateRangePickerLocale from '../date-range-picker/locales/en-US';
 import dateRangeSelectorLocale from '../date-range-selector/locales/en-US';
 import dateSelectorLocale from '../date-selector/locales/en-US';

@@ -4,7 +4,7 @@ import { CalendarOutlined } from '@gio-design/icons';
 import { format } from 'date-fns/fp';
 import PanelContext from 'rc-picker/lib/PanelContext';
 import Selector from '../selector';
-import DatePicker from '../date-picker';
+import DatePicker from '../static-date-picker';
 import { DateSelectorProps } from './interfaces';
 import { DATE_FORMAT } from './constant';
 import defaultLocale from './locales/zh-CN';
