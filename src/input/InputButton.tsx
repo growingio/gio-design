@@ -23,6 +23,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     style = {},
     maxWidth,
     active = false,
+    onClear: handleOnClear,
     ...rest
   } = props;
 
@@ -31,13 +32,17 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
 
   const [value, setValue] = useControlledState(enterValue, defaultValue);
 
-  const onClear = useCallback(() => {
-    if (disabled) {
-      return;
-    }
-    onInputChange?.('');
-    setValue('');
-  }, [onInputChange, disabled, setValue]);
+  const onClear = useCallback(
+    (event: React.MouseEvent<Element, MouseEvent>) => {
+      if (disabled) {
+        return;
+      }
+      handleOnClear?.(event);
+      onInputChange?.('');
+      setValue('');
+    },
+    [disabled, handleOnClear, onInputChange, setValue]
+  );
 
   const onChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -6,7 +6,6 @@ const Item: React.FC<ItemProps> = (props) => {
   const { label, value, disabled, onClick, ...rest } = props;
 
   const handleClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    console.log('执行');
     if (!disabled) {
       onClick?.(value);
       e.stopPropagation();
