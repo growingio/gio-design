@@ -3,7 +3,7 @@ export interface TagProps {
    * 类型
    * @default 'normal'
    */
-  type?: 'normal' | 'prorupt';
+  type?: 'normal' | 'highlight';
   /**
    * 状态
    */
@@ -12,11 +12,7 @@ export interface TagProps {
    * 大小
    * @default 'large'
    */
-  size?: 'small' | 'middle' | 'large';
-  /**
-   * 预定义的颜色搭配
-   */
-  color?: 'beta' | 'new' | 'grayscale' | 'blue';
+  size?: 'small' | 'middle';
   /**
    * 显示可关闭图标
    * @default false
