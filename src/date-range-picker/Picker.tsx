@@ -1,14 +1,14 @@
 import React from 'react';
 import classnames from 'classnames';
 import { usePrefixCls, useControlledState } from '@gio-design/utils';
-import { format } from 'date-fns/fp';
+import format from 'date-fns/format';
 import { CalendarOutlined } from '@gio-design/icons';
 import Popover from '../popover';
 import { InputButton } from '../input';
-import StaticDatePicker from '../static-date-picker';
-import { DatePickerProps } from './interfaces';
+import StaticDateRangePicker from '../static-date-range-picker';
+import { DateRangePickerProps, NullableDate, NullableString } from './interfaces';
 
-export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) => {
+export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerProps) => {
   const {
     onVisibleChange: onPopoverVisibleChange,
     overlayClassName,
@@ -29,27 +29,41 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
     ...restProps
   } = props;
 
-  const prefixCls = usePrefixCls('date-picker-new');
+  const prefixCls = usePrefixCls('date-range-picker-new');
   const overlayCls = classnames(`${prefixCls}-overlay`, overlayClassName);
+
+  const formatDates = (dates: [NullableDate, NullableDate]): NullableString => {
+    const strongFormat = (date: NullableDate) => (date ? format(date, formatString ?? 'yyyy/MM/dd') : undefined);
+    return `${strongFormat(dates[0]) || ''} - ${strongFormat(dates[1]) || ''}`;
+  };
 
   const [visible, setVisible] = useControlledState(popoverVisible, false);
 
-  const [controlledValue, setControlledValue] = useControlledState(value, defaultValue);
-
-  const formatDate = (date: Date) => format(formatString ?? 'yyyy/MM/dd', date);
+  const [controlledValue, setControlledValue] = useControlledState<[NullableDate, NullableDate] | undefined>(
+    value,
+    defaultValue
+  );
 
   const handleVisibleChange = (current: boolean) => {
     setVisible(current);
     onPopoverVisibleChange?.(current);
   };
 
-  const handleOnSelect = (currentValue: Date) => {
+  const handleOnSelect = (currentValue: [Date, Date], index: number) => {
     setControlledValue(currentValue);
-    setVisible(false);
-    onSelect?.(currentValue, formatDate(currentValue));
+    if (index) {
+      setVisible(false);
+      onSelect?.(currentValue, formatDates(currentValue));
+    }
   };
 
-  const content = <StaticDatePicker onSelect={handleOnSelect} disabledDate={disabledDate} />;
+  const content = (
+    <StaticDateRangePicker
+      onSelect={handleOnSelect}
+      value={controlledValue as [Date, Date]}
+      disabledDate={disabledDate}
+    />
+  );
 
   function renderTrigger() {
     if (trigger) {
@@ -61,7 +75,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
         placeholder={placeholder}
         disabled={disabled}
         allowClear={allowClear}
-        value={controlledValue && formatDate(controlledValue)}
+        value={controlledValue && formatDates(controlledValue)}
         size={size}
         suffix={suffix}
         hidePrefix={hidePrefix}
@@ -84,4 +98,4 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
   );
 };
 
-export default DatePicker;
+export default DateRangePicker;

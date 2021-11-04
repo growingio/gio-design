@@ -5,9 +5,9 @@ import { LeftDoubleOutlined, LeftOutlined, RightOutlined, RightDoubleOutlined } 
 import PickerPanel from 'rc-picker/lib/PickerPanel';
 import generateDateFns from 'rc-picker/lib/generate/dateFns';
 import defaultLocale from './locales/zh-CN';
-import { DatePickerProps } from './interfaces';
+import { StaticDatePickerProps } from './interfaces';
 
-function DatePicker({ viewDate, ...restProps }: DatePickerProps) {
+function DatePicker({ viewDate, ...restProps }: StaticDatePickerProps) {
   const locale = useLocale('DatePicker') || defaultLocale;
   return (
     <PickerPanel<Date>

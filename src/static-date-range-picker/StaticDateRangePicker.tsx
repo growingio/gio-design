@@ -6,10 +6,10 @@ import { RangeValue } from 'rc-picker/lib/interface';
 import { useControlledState, usePrefixCls } from '@gio-design/utils';
 import isBefore from 'date-fns/isBefore';
 import StaticDatePicker, { StaticDatePickerContext } from '../static-date-picker';
-import { DateRangePickerProps } from './interfaces';
+import { StaticDateRangePickerProps } from './interfaces';
 import { getDefaultViewDates, calcClosingViewDate, mergeDates } from './utils';
 
-function DateRangePicker({
+function StaticDateRangePicker({
   className,
   defaultValue,
   defaultViewDates,
@@ -20,7 +20,7 @@ function DateRangePicker({
   style,
   value,
   locale,
-}: DateRangePickerProps) {
+}: StaticDateRangePickerProps) {
   const [viewDates, setViewDates] = React.useState<[Date, Date]>(defaultViewDates ?? getDefaultViewDates());
   const [hoveredDates, setHoveredDates] = React.useState<RangeValue<Date>>();
   const [dateIndex, setDateIndex] = React.useState<number>(0);
@@ -41,13 +41,13 @@ function DateRangePicker({
       >
         <StaticDatePicker
           className={`${preficCls}__${position}`}
-          disabledDate={(currentDate) => {
+          disabledDate={(currentDate: Date) => {
             const isBeforeStartDate =
               selectedValue && selectedValue[0] && !selectedValue[1] ? isBefore(currentDate, selectedValue[0]) : false;
             const isDisabledDate = disabledDate ? disabledDate(currentDate) : false;
             return isBeforeStartDate || isDisabledDate;
           }}
-          onPanelChange={(currentValue) => {
+          onPanelChange={(currentValue: Date) => {
             if (index) {
               setViewDates([calcClosingViewDate(currentValue, -1), currentValue]);
             } else {
@@ -94,4 +94,4 @@ function DateRangePicker({
   );
 }
 
-export default DateRangePicker;
+export default StaticDateRangePicker;

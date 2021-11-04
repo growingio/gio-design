@@ -1,6 +1,6 @@
-import DateRangePicker from './DateRangePicker';
-import { DateRangePickerProps } from './interfaces';
+import StaticDateRangePicker from './StaticDateRangePicker';
+import { StaticDateRangePickerProps } from './interfaces';
 
-export { DateRangePicker, DateRangePickerProps };
+export { StaticDateRangePicker, StaticDateRangePickerProps };
 
-export default DateRangePicker;
+export default StaticDateRangePicker;
