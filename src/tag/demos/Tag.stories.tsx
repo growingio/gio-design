@@ -7,69 +7,173 @@ import '../style';
 import '../style/demo.stories.less';
 
 export default {
-  title: 'Components/Tag',
+  title: 'Upgraded/Tag',
   component: Tag,
   parameters: {
     docs: {
       page: Docs,
     },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4092%3A41171',
+      allowFullscreen: true,
+    },
   },
 } as Meta;
-
+const obj: any = {
+  普通标签: 'default',
+  灰色标签: 'draft',
+  信息标签: 'info',
+  成功标签: 'success',
+  警告标签: 'warning',
+  错误标签: 'error',
+};
 const DefaultTemplate: Story<TagProps> = (args) => (
   <>
-    <Tag className="tag_website_demo_tag" {...args}>
-      超管
-    </Tag>
-    <Tag className="tag_website_demo_tag" status="success" {...args}>
-      已上线
-    </Tag>
-    <Tag className="tag_website_demo_tag" status="warning" {...args}>
-      待上线
-    </Tag>
-    <Tag className="tag_website_demo_tag" status="draft" {...args}>
-      草稿
-    </Tag>
-    <Tag className="tag_website_demo_tag" status="offline" {...args}>
-      已结束
-    </Tag>
+    <table className="table-demo">
+      <tr>
+        <th>Control</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>status</td>
+        <td>
+          {[...new Array(6)].map((item, index) => (
+            <Tag className="tag_website_demo_tag" status={Object.values(obj)[index] as TagProps['status']} {...args}>
+              {Object.keys(obj)[index]}
+            </Tag>
+          ))}
+        </td>
+      </tr>
+      <tr>
+        <td>highlight</td>
+        <td>
+          {[...new Array(6)].map((item, index) => (
+            <Tag
+              className="tag_website_demo_tag"
+              status={Object.values(obj)[index] as TagProps['status']}
+              {...args}
+              type="highlight"
+            >
+              {Object.keys(obj)[index]}
+            </Tag>
+          ))}
+        </td>
+      </tr>
+      <tr>
+        <td>size</td>
+        <td>
+          {[...new Array(6)].map((item, index) => (
+            <Tag
+              className="tag_website_demo_tag"
+              status={Object.values(obj)[index] as TagProps['status']}
+              {...args}
+              size="small"
+              type="highlight"
+              style={{ margin: '10' }}
+            >
+              {Object.keys(obj)[index]}
+            </Tag>
+          ))}
+          <br />
+          {[...new Array(6)].map((item, index) => (
+            <Tag
+              className="tag_website_demo_tag"
+              status={Object.values(obj)[index] as TagProps['status']}
+              {...args}
+              type="highlight"
+              size="middle"
+            >
+              {Object.keys(obj)[index]}
+            </Tag>
+          ))}
+        </td>
+      </tr>
+      <tr>
+        <td>disabled</td>
+        <td>
+          {[...new Array(6)].map((item, index) => (
+            <Tag
+              className="tag_website_demo_tag"
+              status={Object.values(obj)[index] as TagProps['status']}
+              {...args}
+              size="small"
+              type="highlight"
+              style={{ margin: '10' }}
+              disabled
+            >
+              {Object.keys(obj)[index]}
+            </Tag>
+          ))}
+          <br />
+          {[...new Array(6)].map((item, index) => (
+            <Tag
+              className="tag_website_demo_tag"
+              status={Object.values(obj)[index] as TagProps['status']}
+              {...args}
+              type="highlight"
+              size="middle"
+              disabled
+            >
+              {Object.keys(obj)[index]}
+            </Tag>
+          ))}
+        </td>
+      </tr>
+      <tr>
+        <td>closed</td>
+        <td>
+          {[...new Array(6)].map((item, index) => (
+            <Tag
+              className="tag_website_demo_tag"
+              status={Object.values(obj)[index] as TagProps['status']}
+              {...args}
+              size="middle"
+              persistCloseIcon={false}
+              closable
+            >
+              {Object.keys(obj)[index]}
+            </Tag>
+          ))}
+          <br />
+          {[...new Array(6)].map((item, index) => (
+            <Tag
+              className="tag_website_demo_tag"
+              status={Object.values(obj)[index] as TagProps['status']}
+              {...args}
+              size="middle"
+              closable
+            >
+              {Object.keys(obj)[index]}
+            </Tag>
+          ))}
+        </td>
+      </tr>
+    </table>
     <br />
-    <br />
-    <Tag className="tag_website_demo_tag" {...args} status="success" type="prorupt" size="middle">
-      正常
-    </Tag>
-    <Tag className="tag_website_demo_tag" {...args} status="warning" type="prorupt" size="middle">
-      不确定
-    </Tag>
-    <Tag className="tag_website_demo_tag" {...args} status="error" type="prorupt" size="middle">
-      错误
-    </Tag>
-    <br />
-    <br />
-    <Tag className="tag_website_demo_tag" {...args} color="beta" size="small">
-      Beta
-    </Tag>
-    <Tag className="tag_website_demo_tag" {...args} color="new" size="small">
-      New
-    </Tag>
-    <Tag className="tag_website_demo_tag" {...args} color="grayscale" size="small">
-      灰度
-    </Tag>
   </>
 );
 
-export const Default = DefaultTemplate.bind({});
+export const Demo = DefaultTemplate.bind({});
+Demo.args = {
+  style: { margin: '30' },
+};
+const defaultTemplate = () =>
+  [...new Array(6)].map((item, index) => (
+    <Tag className="tag_website_demo_tag" status={Object.values(obj)[index] as TagProps['status']}>
+      {Object.keys(obj)[index]}
+    </Tag>
+  ));
 
+export const Default = defaultTemplate.bind({});
 const DelayTemplate: Story<TagProps> = (args) => (
   <>
     <Tag className="tag_website_demo_tag" {...args}>
       控件内的过滤条件
     </Tag>
-    <Tag className="tag_website_demo_tag" {...args} type="prorupt">
+    <Tag className="tag_website_demo_tag" {...args}>
       控件内的过滤条件
     </Tag>
-    <br />
-    <br />
     <Tag className="tag_website_demo_tag" {...args} persistCloseIcon={false}>
       可删除的标签
     </Tag>
@@ -80,3 +184,11 @@ Closable.args = {
   closable: true,
   persistCloseIcon: true,
 };
+
+const disableTemplate = () =>
+  [...new Array(6)].map((item, index) => (
+    <Tag className="tag_website_demo_tag" status={Object.values(obj)[index] as TagProps['status']} disabled>
+      {Object.keys(obj)[index]}
+    </Tag>
+  ));
+export const Disable = disableTemplate.bind({});

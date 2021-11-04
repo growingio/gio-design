@@ -1,16 +1,14 @@
-@import '../../stylesheet/index.less';
+@import '../../stylesheet/variables/index.less';
 
-@tag-prefix-cls: ~'@{component-prefix}-tag';
+@tag-prefix-cls: ~'@{component-prefix}-tag-new';
 @tag-padding: @size-spacing-xs;
 
 .@{tag-prefix-cls} {
   display: inline-block;
-  padding-right: @tag-padding;
-  padding-left: @tag-padding;
-  color: @color-text-tag-sign-normal;
-  font-family: @font-family-primary;
-  background-color: @color-background-tag-sign;
-  border-radius: @radius-border-small;
+  padding: 1px 8px;
+  color: @gray-5;
+  background-color: @gray-1;
+  border-radius: 4px;
   cursor: default;
 
   &-label {
@@ -21,99 +19,97 @@
 
   &-size {
     &-small {
-      font-weight: @weight-font-medium;
-      font-size: @size-font-12;
+      font-weight: normal;
+      font-size: 12px;
       line-height: 20px;
     }
 
     &-middle {
-      font-weight: @weight-font-regular;
-      font-size: @size-font-14;
+      font-weight: normal;
+      font-size: 14px;
       line-height: 24px;
-    }
-
-    &-large {
-      font-weight: @weight-font-regular;
-      font-size: @size-font-14;
-      line-height: 32px;
     }
   }
 
   &-status {
-    &-success {
-      color: @color-text-tag-sign-inline;
+    &-default {
+      color: @gray-5;
+      background-color: @gray-1;
     }
-    &-success.@{tag-prefix-cls}-type-prorupt {
-      background-color: @color-background-tag-status-success;
-    }
-    &-warning {
-      color: @color-text-tag-sign-processing;
-    }
-    &-warning.@{tag-prefix-cls}-type-prorupt {
-      background-color: @color-background-tag-status-warning;
-    }
-    &-error {
-      color: @color-background-tag-status-error;
-    }
-    &-error.@{tag-prefix-cls}-type-prorupt {
-      background-color: @color-background-tag-status-error;
+    &-default.@{tag-prefix-cls}-type-highlight {
+      background-color: @gray-5;
     }
     &-draft {
-      color: @color-text-tag-sign-draft;
+      color: @gray-3;
+      background-color: @gray-1;
     }
-    &-offline {
-      color: @color-text-tag-sign-offline;
+    &-draft.@{tag-prefix-cls}-type-highlight {
+      background-color: @gray-3;
+    }
+    &-info {
+      color: @blue-3;
+      background-color: @gray-1;
+    }
+    &-info.@{tag-prefix-cls}-type-highlight {
+      background-color: @blue-3;
+    }
+    &-success {
+      color: @green-3;
+      background-color: @green-1;
+    }
+    &-success.@{tag-prefix-cls}-type-highlight {
+      background-color: @green-3;
+    }
+    &-warning {
+      color: @yellow-3;
+      background-color: @yellow-1;
+    }
+    &-warning.@{tag-prefix-cls}-type-highlight {
+      background-color: @yellow-3;
+    }
+    &-error {
+      color: @red-3;
+      background-color: @red-1;
+    }
+    &-error.@{tag-prefix-cls}-type-highlight {
+      background-color: @red-3;
     }
   }
 
   &-type {
-    &-prorupt {
-      color: @color-text-tag-status-button;
-    }
-  }
-
-  &-color {
-    &-beta {
-      color: @color-text-tag-version-beta;
-      background-color: @color-background-tag-version-beta;
-    }
-    &-new {
-      color: @color-text-tag-version-new;
-      background-color: @color-background-tag-version-new;
-    }
-    &-grayscale {
-      color: @color-text-tag-version-grayscale;
-      background-color: @color-background-tag-version-grayscale;
-    }
-    &-blue {
-      color: @color-background-tag-filter-dark-normal;
-      background-color: @color-background-tag-filter-dark-normal;
+    &-highlight {
+      color: @gray-0;
     }
   }
 
   &-closable {
     display: inline-flex;
     align-items: center;
-    background-color: @color-background-tag-filter-light-normal;
+    color: #313e75;
+    background-color: @gray-1;
     &:hover {
-      background-color: @color-background-tag-filter-light-hover;
+      color: #313e75;
+      background-color: @gray-2;
     }
     &:focus {
-      background-color: @color-background-tag-filter-light-click;
+      color: #313e75;
+      background-color: @gray-2;
     }
 
-    &.@{tag-prefix-cls}-type-prorupt {
-      background-color: @color-background-tag-filter-dark-normal;
+    &.@{tag-prefix-cls}-type-highlight {
+      color: #313e75;
+      background-color: @gray-1;
       &:hover {
-        background-color: @color-background-tag-filter-dark-hover;
+        background-color: @gray-2;
       }
       &:focus {
-        background-color: @color-background-tag-filter-dark-click;
+        background-color: @gray-2;
       }
     }
 
     &-icon {
       margin-left: @tag-padding;
+      color: @gray-3;
       vertical-align: middle;
       cursor: pointer;
     }
@@ -131,8 +127,8 @@
     }
 
     &-disabled {
-      color: @color-text-tag-filter-disable-l !important;
-      background-color: @color-background-tag-filter-dark-disable !important;
+      color: @gray-3 !important;
+      background-color: @gray-1 !important;
     }
   }
 }

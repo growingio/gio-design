@@ -7,13 +7,13 @@ import Sign from '../index';
 import '../style';
 
 export default {
-  title: 'Components/Sign',
+  title: 'Upgraded/Sign',
   component: Sign,
   decorators: [withDesign],
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=1285%3A4670',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4092%3A41172',
       allowFullscreen: true,
     },
     docs: {

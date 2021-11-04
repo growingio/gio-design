@@ -14,15 +14,20 @@ export default function ListPage() {
           defaultMessage: '图标右上角的圆形徽标数字。',
         })}
       </p>
+      <p>
+        <a href="https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4092%3A41172">
+          Figma
+        </a>
+      </p>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '默认-数字标记' })}</Subheading>
       <Canvas>
-        <Story id="components-sign--default" />
+        <Story id="upgraded-sign--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '状态标记' })}</Subheading>
       <Canvas>
-        <Story id="components-sign--dot-sign" />
+        <Story id="upgraded-sign--dot-sign" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

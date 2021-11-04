@@ -12,7 +12,6 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
     type = 'normal',
     size = 'middle',
     status,
-    color,
     closable,
     onClose,
     onClick,
@@ -22,7 +21,7 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
     customizePrefixCls,
     style,
   } = props;
-  const prefix = usePrefixCls('tag', customizePrefixCls);
+  const prefix = usePrefixCls('tag-new', customizePrefixCls);
 
   return (
     <span
@@ -31,7 +30,6 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
         classnames({ [`${prefix}-size-${size}`]: size }),
         classnames({ [`${prefix}-type-${type}`]: type }),
         classnames({ [`${prefix}-status-${status}`]: status }),
-        classnames({ [`${prefix}-color-${color}`]: color }),
         classnames({ [`${prefix}-closable`]: closable }),
         classnames({ [`${prefix}-closable-toggle`]: isToggleClose(closable, persistCloseIcon) }),
         classnames({ [`${prefix}-closable-disabled`]: disabled }),
