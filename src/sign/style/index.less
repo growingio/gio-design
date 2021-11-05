@@ -3,42 +3,7 @@
 
 @sign-prefix-cls: ~'@{component-prefix}-sign-new';
 @sign-number: ~'@{sign-prefix-cls}__number';
-@sign-dot: ~'@{sign-prefix-cls}__dot';
 @sign-hide: ~'@{sign-prefix-cls}--hide';
-
-// Dot
-.@{sign-dot} {
-  .place();
-  .background.default();
-  border-radius: 50%;
-  &-wrapper {
-    color: @gray-3;
-  }
-  // status
-  &--normal {
-    .background.normal();
-  }
-  &--warning {
-    .background.warning();
-  }
-  &--error {
-    .background.error();
-  }
-  &--disabled {
-    .background.disabled();
-    & ~ * {
-      color: @gray-3;
-    }
-  }
-
-  // size
-  &--middle {
-    .square(8px);
-  }
-  &--small {
-    .square(6px);
-  }
-}
 
 // Number
 .@{sign-number} {
@@ -59,7 +24,6 @@
   display: inline-block;
 
   &--no-children {
-    .@{sign-dot},
     .@{sign-number} {
       position: relative;
       top: auto;
@@ -69,7 +33,6 @@
   }
 
   &--hide {
-    &.@{sign-dot},
     &.@{sign-number} {
       opacity: 0;
       transition: @transition;

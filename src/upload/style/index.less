@@ -43,7 +43,7 @@
     & .@{upload-card},
     & .@{upload-avatar},
     & .@{upload-drag} {
-      border: 1px solid #dcdfed;
+      border: 1px solid @gray-2;
 
       &:hover .@{upload-actions} {
         opacity: 1;
@@ -90,19 +90,19 @@
       .@{upload-prefix-cls}-file-name {
         width: fit-content;
         margin-right: 16px;
-        color: #313e75;
+        color: @blue-3;
       }
 
       .@{upload-prefix-cls}-file-success {
         width: fit-content;
         margin-right: 16px;
-        color: #00875a;
+        color: @green-3;
       }
 
       .@{upload-prefix-cls}-file-error {
         width: fit-content;
         margin-right: 16px;
-        color: #ec134b;
+        color: @red-3;
       }
 
       .@{upload-prefix-cls}-file-delete {
@@ -160,8 +160,8 @@
     padding: 9px 16px;
     font-size: 14px;
     line-height: 40px;
-    background-color: @gray-0;
-    border: 1px solid #dcdfed;
+    background-color: @gray-1;
+    border: 1px solid @gray-2;
     border-radius: 4px;
     cursor: pointer;
 
@@ -228,13 +228,13 @@
   height: 160px;
   margin: 16px 0;
   overflow: hidden;
-  background-color: #f7f8fc;
-  border: 1px dashed #dcdfed;
+  background-color: @gray-1;
+  border: 1px dashed @gray-2;
   border-radius: 4px;
   cursor: pointer;
 
   &-placeholder {
-    color: #7b819c;
+    color: @gray-4;
     font-size: 14px;
     text-align: center;
 
@@ -266,10 +266,10 @@
 
       &-btn {
         z-index: 1;
-        color: #3867f4;
+        color: @blue-2;
 
         &:hover {
-          color: #1248e9;
+          color: @blue-3;
           background-color: transparent;
           border: 1px solid transparent;
         }

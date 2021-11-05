@@ -5,12 +5,12 @@
 
 .@{tag-prefix-cls} {
   display: inline-block;
-  padding: 1px 8px;
+  box-sizing: border-box;
+  padding: 0 8px;
   color: @gray-5;
   background-color: @gray-1;
   border-radius: 4px;
   cursor: default;
-
   &-label {
     overflow: hidden;
     white-space: nowrap;
@@ -19,12 +19,14 @@
 
   &-size {
     &-small {
+      height: 20px;
       font-weight: normal;
       font-size: 12px;
       line-height: 20px;
     }
 
     &-middle {
+      height: 24px;
       font-weight: normal;
       font-size: 14px;
       line-height: 24px;
@@ -108,10 +110,14 @@
     }
 
     &-icon {
-      margin-left: @tag-padding;
+      margin-left: 8px;
       color: @gray-3;
       vertical-align: middle;
       cursor: pointer;
+      svg {
+        width: 12px;
+        height: 12px;
+      }
     }
 
     &-toggle & {
