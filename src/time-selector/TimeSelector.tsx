@@ -4,7 +4,7 @@ import { useLocale, useControlledState, usePrefixCls } from '@gio-design/utils';
 import { format } from 'date-fns';
 import Button from '../legacy/button';
 import Selector from '../selector';
-import TimePicker from '../time-picker/TimePicker';
+import TimePicker from '../static-time-picker/StaticTimePicker';
 import { TimeSelectorProps } from './interfaces';
 import { TIME_FORMAT, TIME_WITH_SECOND_FORMAT } from './constant';
 import defaultLocale from './locales/zh-CN';

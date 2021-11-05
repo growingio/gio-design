@@ -1,0 +1,84 @@
+@import '../../stylesheet/index.less';
+
+@new-time-picker-prefix-cls: ~'@{component-prefix}-new-time-picker';
+
+.@{new-time-picker-prefix-cls} {
+  &-panel {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    padding-top: 4px;
+    background-color: @palette-white;
+    filter: drop-shadow(0 8px 24px rgba(36, 46, 89, 0.1));
+  }
+  &--three-columns {
+    .@{new-time-picker-prefix-cls}-time-panel-column {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+  }
+
+  &-time-panel {
+    &-column {
+      width: 40px;
+      height: 240px;
+      margin: 0;
+      padding: 8px 20px;
+      overflow: hidden scroll;
+      list-style-type: none;
+      border-right: 1px solid @palette-gray-3;
+
+      .scrollbar();
+    }
+    &-column:last-child {
+      border-right: none;
+    }
+
+    &-cell {
+      margin-top: 4px;
+      padding: 4px 12px;
+      color: @palette-black-6;
+      .font();
+      line-height: 22px;
+      list-style-type: none;
+      background-color: @palette-white;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: @palette-gray-3;
+      }
+
+      &-selected,
+      &:active {
+        color: @palette-blue-5;
+        font-weight: 500;
+        background-color: @palette-gray-1;
+      }
+
+      &-inner {
+        display: inline-block;
+      }
+    }
+  }
+
+  &-footer {
+    border-top: 1px solid @palette-gray-3;
+
+    &-extra {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px;
+    }
+  }
+  &-ranges {
+    display: none;
+  }
+}
