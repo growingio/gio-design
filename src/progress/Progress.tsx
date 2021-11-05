@@ -22,12 +22,13 @@ const Progress: React.FC<ProgressProps> = (props: ProgressProps) => {
     className,
     style,
     showInfo = true,
+    size = 'default',
   } = props;
-  const prefixCls = usePrefixCls('progress', customizePrefixCls);
+  const prefixCls = usePrefixCls('progress-new', customizePrefixCls);
 
   return (
-    <div className={prefixCls}>
-      <div className={classNames(`${prefixCls}-trail`, className)} style={style}>
+    <div className={prefixCls} style={style}>
+      <div className={classNames(`${prefixCls}-trail`, `${prefixCls}-${size}`, className)}>
         <div
           className={classNames(`${prefixCls}-stroke`, `${prefixCls}-${status}`, {
             [`${prefixCls}-animate`]: animation,
@@ -37,7 +38,7 @@ const Progress: React.FC<ProgressProps> = (props: ProgressProps) => {
       </div>
       {showInfo ? (
         <div className={`${prefixCls}-info`}>
-          <span className={`${prefixCls}-text`}>{format(percent)}</span>
+          <span className={`${prefixCls}-text`}>{status === 'exception' ? '中断' : format(percent)}</span>
           <span className={`${prefixCls}-icon`}>{getStatusIcon(status, prefixCls)}</span>
         </div>
       ) : null}

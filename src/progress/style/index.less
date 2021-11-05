@@ -1,66 +1,49 @@
-@import '../../stylesheet/index.less';
+@import '../../stylesheet/variables/index.less';
 
-@progress-prefix-cls: ~'@{component-prefix}-progress';
-
-@progress-height: 16px;
-
-// progress无token 暂时使用色值 之后替换为新版color palette值
-@progress-text-color: #242e59;
-@progress-trail-bg-color: #ebedf5;
-@progress-trail-border-color: #dfe2ed;
-@progress-trail-bg-shadow-color: #dcdfed;
-@progress-active-bg-color: #3867f4;
-@progress-active-bg-shadow-color: #1248e9;
-@progress-success-bg-color: #0ba471;
-@progress-success-bg-shadow-color: #00875a;
-@progress-exception-bg-color: #de350b;
-@progress-exception-bg-shadow-color: #bc2b07;
+@progress-prefix-cls: ~'@{component-prefix}-progress-new';
 
 .@{progress-prefix-cls} {
   display: flex;
   align-items: center;
-  color: @progress-text-color;
-  font-weight: @weight-font-regular;
-  font-size: @size-font-16;
+  height: 24px;
+  color: @gray-5;
+  font-weight: normal;
+  .text-h3();
   &-trail {
     flex-basis: 100%;
-    height: @progress-height;
     overflow: hidden;
-    background-color: @progress-trail-bg-color;
-    border: 0.5px solid @progress-trail-border-color;
-    border-radius: 999px;
-    box-shadow: inset 0 0 3px @progress-trail-bg-shadow-color;
+    background-color: @gray-2;
+    border-radius: 24px;
   }
-
+  &-default {
+    height: 16px;
+  }
+  &-small {
+    height: 8px;
+  }
   &-stroke {
     position: relative;
     width: 0;
     height: 100%;
-    border-radius: 999px;
+    border-radius: 24px;
     transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
   }
 
   &-active {
-    background-color: @progress-active-bg-color;
-    box-shadow: inset 0 0 5px @progress-active-bg-shadow-color;
+    background-color: @blue-3;
   }
 
   &-success {
-    background-color: @progress-success-bg-color;
-    box-shadow: inset 0 0 5px @progress-success-bg-shadow-color;
+    background-color: @green-3;
     &-icon {
-      color: @progress-success-bg-color;
-      vertical-align: text-top;
+      color: @green-3;
     }
   }
 
   &-exception {
-    background-color: @progress-exception-bg-color;
-    box-shadow: inset 0 0 5px @progress-exception-bg-shadow-color;
+    background-color: @red-3;
     &-icon {
-      margin-top: 1.5px;
-      color: @progress-exception-bg-color;
-      vertical-align: text-top;
+      color: @red-3;
     }
   }
 
@@ -81,18 +64,13 @@
   }
 
   &-info {
-    width: 96px;
-    margin-left: @size-spacing-m;
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
     white-space: nowrap;
-  }
-
-  &-text {
-    vertical-align: middle;
-  }
-
-  &-icon {
-    margin-left: @size-spacing-xs;
-    vertical-align: middle;
+    .@{progress-prefix-cls}-icon {
+      margin-left: 8px;
+    }
   }
 }
 
