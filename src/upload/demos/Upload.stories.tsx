@@ -6,7 +6,7 @@ import Upload from '../index';
 import { IUploadProps, IProgress, IRcFile, IUploadFile } from '../interface';
 import '../style';
 
-const uploadUrl = 'https://run.mocky.io/v3/424be679-93fe-4d9d-8036-c3d7adb9bd25';
+const uploadUrl = 'https://examples.form.io/example';
 
 const props = {
   // 上传开始前
@@ -57,13 +57,13 @@ const props = {
 };
 
 export default {
-  title: 'Components/Upload',
+  title: 'Upgraded/Upload',
   component: Upload,
   decorators: [withDesign],
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A6954',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4078%3A43562',
       allowFullscreen: true,
     },
     docs: {
