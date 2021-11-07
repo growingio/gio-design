@@ -215,7 +215,7 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
         <Loading loading={loading}>
           <GioTable<RecordType>
             tableLayout="fixed"
-            title={isFunction(title) ? (currentPageData) => title(currentPageData) : () => title}
+            title={title && (isFunction(title) ? (currentPageData) => title(currentPageData) : () => title)}
             prefixCls={prefixCls}
             columns={composedColumns}
             data={paginationData}

@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import { UpFilled, DownFilled, FilterOutlined, QuestionCircleOutlined } from '@gio-design/icons';
-import { isUndefined } from 'lodash';
-import Button from '../legacy/button';
-import Tooltip from '../legacy/tooltip';
+import { isEmpty, isUndefined } from 'lodash';
+import Button from '../button';
+import Tooltip from '../tooltip';
 import FilterPopover from './FilterPopover';
 import { SortOrder, TitleProps } from './interface';
 
@@ -28,31 +28,20 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
       onTriggerStateUpdate({ sorterState: updateSorterStates(changedSorterState) });
     };
     return (
-      <span className={classNames(`${prefixCls}-column-sorter`)}>
-        <span className={`${prefixCls}-column-sorter-inner`}>
-          <Button
-            prefixCls={`${prefixCls}`}
-            className={`${prefixCls}-column-sorter-inner-btn`}
-            type="text"
-            icon={
-              // eslint-disable-next-line react/jsx-wrap-multilines
-              <>
-                <UpFilled
-                  className={classNames(`${prefixCls}-column-sorter-up`, {
-                    active: sorterOrder === 'ascend',
-                  })}
-                />
-                <DownFilled
-                  className={classNames(`${prefixCls}-column-sorter-down`, {
-                    active: sorterOrder === 'descend',
-                  })}
-                />
-              </>
-            }
-            onClick={handleSorterChange}
+      <Button.IconButton className={`${prefixCls}-sorter-button`} type="text" size="small" onClick={handleSorterChange}>
+        <>
+          <UpFilled
+            className={classNames(`${prefixCls}-sorter-button-up`, {
+              active: sorterOrder === 'ascend',
+            })}
           />
-        </span>
-      </span>
+          <DownFilled
+            className={classNames(`${prefixCls}-sorter-button-down`, {
+              active: sorterOrder === 'descend',
+            })}
+          />
+        </>
+      </Button.IconButton>
     );
   };
 
@@ -68,31 +57,22 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
     };
 
     return (
-      <span className={classNames(`${prefixCls}-column-filter`)}>
-        <span className={`${prefixCls}-column-filter-inner`}>
-          <FilterPopover
-            prefixCls={prefixCls}
-            onClick={handleFilterPopoverClick}
-            filters={filters}
-            values={filteredKeys}
-            placeholder={filterSearchPlaceHolder}
-          >
-            <Button
-              type="text"
-              mini
-              className={`${prefixCls}-column-filter-inner-btn`}
-              icon={
-                // eslint-disable-next-line react/jsx-wrap-multilines
-                <FilterOutlined
-                  size="12px"
-                  className={`${prefixCls}-column-filter-icon`}
-                  color={filteredKeys.length > 0 ? '#1248E9' : undefined}
-                />
-              }
-            />
-          </FilterPopover>
-        </span>
-      </span>
+      <FilterPopover
+        prefixCls={prefixCls}
+        onClick={handleFilterPopoverClick}
+        filters={filters}
+        values={filteredKeys}
+        placeholder={filterSearchPlaceHolder}
+      >
+        <Button.IconButton
+          size="small"
+          type="text"
+          className={`${prefixCls}-filter-button`}
+          active={!isEmpty(filteredKeys)}
+        >
+          <FilterOutlined size="12px" />
+        </Button.IconButton>
+      </FilterPopover>
     );
   };
 
