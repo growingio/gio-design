@@ -1,1 +1,1 @@
-import './divider.less';
+import './index.less';
