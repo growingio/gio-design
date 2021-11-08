@@ -19,6 +19,12 @@ import { TABLE_PREFIX_CLS, translateInnerColumns } from './utils';
 import Loading from '../loading';
 import useHackOnRow from './hook/useHackOnRow';
 
+declare module 'React' {
+  interface CSSProperties {
+    '--table-cell-padding'?: React.CSSProperties['padding'];
+  }
+}
+
 interface TableContextType {
   tableRef: React.ForwardedRef<HTMLDivElement>;
 }
@@ -32,6 +38,7 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
     pagination = {},
     rowSelection,
     showIndex = false,
+    padding = '12px 16px',
     emptyText,
     empty,
     onChange,
@@ -217,7 +224,7 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
         className={classNames(`${prefixCls}-wrapper`, className, {
           [`${prefixCls}-showHover`]: showHover,
         })}
-        style={style}
+        style={{ ...style, '--table-cell-padding': padding }}
         ref={mergedRef}
         data-testid="table"
       >

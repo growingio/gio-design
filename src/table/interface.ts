@@ -136,6 +136,12 @@ interface TableProps<RecordType> extends Omit<GioTableProps<RecordType>, 'title'
   title?: string | ((currentPageData: ReadonlyArray<RecordType>) => string);
 
   /**
+   * 单元格的 padding 值
+   * @default `12px 16px`
+   */
+  padding?: React.CSSProperties['padding'];
+
+  /**
    * 表格列的配置详情
    */
   columns?: ColumnsType<RecordType>;

@@ -372,7 +372,7 @@
   }
 }
 
-.table-size(@size, @padding-vertical, @padding-horizontal) {
+.table-size(@size, @padding: 12px 16px) {
   .@{table-prefix-cls}.@{table-prefix-cls}-@{size} {
     .@{table-prefix-cls}-title,
     .@{table-prefix-cls}-footer,
@@ -380,24 +380,19 @@
     .@{table-prefix-cls}-tbody > tr > td,
     tfoot > tr > th,
     tfoot > tr > td {
-      padding: @padding-vertical @padding-horizontal;
+      padding: @padding;
     }
 
     .@{table-prefix-cls}-tbody .@{table-prefix-cls}-row-expand-icon-cell {
-      padding: calc(@padding-vertical - 1px) 20px;
+      padding: @padding;
     }
 
     .@{table-prefix-cls}-tbody .@{table-prefix-cls}-expanded-row > .@{table-prefix-cls}-cell {
-      padding: @padding-vertical 20px;
-
-      .@{table-prefix-cls}-expanded-row-fixed {
-        margin: -@padding-vertical -21px;
-        padding: @padding-vertical 20px;
-      }
+      padding: @padding;
     }
 
     .@{table-prefix-cls}-tbody .@{table-prefix-cls}-cell-with-append {
-      padding: calc(@padding-vertical - 1px) 16px;
+      padding: @padding;
 
       .@{table-prefix-cls}-row-indent {
         float: left;
@@ -412,4 +407,4 @@
   }
 }
 
-.table-size(~'normal', 12px, 16px);
+.table-size(~'normal', var(--table-cell-padding));
