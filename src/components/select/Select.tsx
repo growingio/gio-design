@@ -21,7 +21,7 @@ import {
   getFlattenOptions,
 } from './utils';
 import useCacheOptions from './hooks/useCacheOption';
-import Empty from '../empty';
+import Empty from '../../empty';
 import useControlledState from '../../utils/hooks/useControlledState';
 
 interface CompoundedSelect extends React.ForwardRefExoticComponent<SelectProps & React.RefAttributes<HTMLElement>> {
@@ -79,7 +79,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     } = props;
 
     const prefix = usePrefixCls('select', customizePrefixCls);
-    const [value,setSelectValue] = useControlledState(controlledValue,defaultValue);
+    const [value, setSelectValue] = useControlledState(controlledValue, defaultValue);
     const [tempValue, setTempValue] = useState<React.ReactText[]>([]);
     const [isFocused, setFocused] = useState<boolean>(false);
     const [_visible, _setVisible] = useState<boolean>(false);
@@ -93,7 +93,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     const isMode: boolean = useMemo(() => multiple && !!mode, [multiple, mode]);
     const isUseAll: boolean = useMemo(() => multiple && !!useAll, [multiple, useAll]);
     // empty
-    
+
     const emptyElement = (
       <div className={`${prefix}-empty`}>
         <Empty description="暂无选项" size="small" />
@@ -232,13 +232,13 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       if (isTempSelected) {
         if (allowDeselect) {
           onListDeselect(selectValue, selectedOption);
-          setTempValue((tempvalues) => (without(tempvalues, selectValue) as unknown) as [ReactText]);
+          setTempValue((tempvalues) => without(tempvalues, selectValue) as unknown as [ReactText]);
         }
         return;
       }
       if (isFooter) {
         onListSelect(selectValue, selectedOption);
-        setTempValue((tempvalues) => ([...tempvalues, selectValue] as unknown) as [ReactText]);
+        setTempValue((tempvalues) => [...tempvalues, selectValue] as unknown as [ReactText]);
         return;
       }
       if (isSelected) {
@@ -271,14 +271,20 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     }, [mergedFlattenOPtions, value, getOptionByValue, allowCustomOption, hasGroup]);
 
     // search filter InputValue // match input(label === input)
-    const [filteredOptions, hasExactMatch]: [Option[], boolean] = useMemo(() => [
-      filter(extendedOptions, searchPredicate(input)),
-      findIndex(mergedFlattenOPtions, matchPredicate(input)) > -1,
-    ], [extendedOptions, searchPredicate, input, matchPredicate, mergedFlattenOPtions]);
+    const [filteredOptions, hasExactMatch]: [Option[], boolean] = useMemo(
+      () => [
+        filter(extendedOptions, searchPredicate(input)),
+        findIndex(mergedFlattenOPtions, matchPredicate(input)) > -1,
+      ],
+      [extendedOptions, searchPredicate, input, matchPredicate, mergedFlattenOPtions]
+    );
     // input created customOption
     const completeOptions = useMemo(
       () =>
-        !!input && !hasExactMatch && allowCustomOption && filteredOptions.every((val) => val.label !== input && val.value !== input)
+        !!input &&
+        !hasExactMatch &&
+        allowCustomOption &&
+        filteredOptions.every((val) => val.label !== input && val.value !== input)
           ? [CustomOption(input, hasGroup, customOptionKey), ...filteredOptions]
           : filteredOptions,
       [input, hasExactMatch, allowCustomOption, hasGroup, filteredOptions]
@@ -340,7 +346,9 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       // event.preventDefault();
       if (event.keyCode === 40) {
         if (!visible) {
-          setTimeout(() => {optionListRef?.current?.onFocus()}, 80);
+          setTimeout(() => {
+            optionListRef?.current?.onFocus();
+          }, 80);
           onVisibleChange(true);
           if (activeIndex === -1) {
             setActiveIndex(getArrowDownItemIndex(activeIndex, isFooter));
