@@ -4,7 +4,7 @@ import { withDesign } from 'storybook-addon-designs';
 import { LoadingOutlined } from '@gio-design/icons';
 import Loading from '../index';
 import Button from '../../button';
-import Tabs, { TabPane } from '../../components/tabs';
+import Tabs, { Tab } from '../../tabs';
 import { LoadingProps } from '../interface';
 import '../style';
 
@@ -26,30 +26,30 @@ export default {
 
 const defaultTabs = (
   <Tabs>
-    <TabPane tab="我的" key="1">
+    <Tab label="我的" key="1">
       <ul>
         <li>Event 1</li>
         <li>Event 1</li>
         <li>Event 1</li>
         <li>Event 1</li>
       </ul>
-    </TabPane>
-    <TabPane tab="全部" key="2">
+    </Tab>
+    <Tab label="全部" key="2">
       <ul>
         <li>Event 2</li>
         <li>Event 2</li>
         <li>Event 2</li>
         <li>Event 2</li>
       </ul>
-    </TabPane>
-    <TabPane tab="共享" key="3">
+    </Tab>
+    <Tab label="共享" key="3">
       <ul>
         <li>Event 3</li>
         <li>Event 3</li>
         <li>Event 3</li>
         <li>Event 3</li>
       </ul>
-    </TabPane>
+    </Tab>
   </Tabs>
 );
 

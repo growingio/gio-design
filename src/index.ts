@@ -58,7 +58,7 @@ export {
 export { default as Table, TableProps } from './legacy/table';
 export { default as TabNav, TabNavProps } from './tab-nav';
 export { default as SearchBar, SearchBarProps } from './legacy/search-bar';
-export { default as Tabs, TabPane, TabProps, TabPaneProps } from './components/tabs';
+export { default as Tabs, Tab, TabProps, TabsProps } from './tabs';
 export { default as Tag, TagProps } from './tag';
 export { default as Toast, ToastConfigOptions, ToastType } from './toast';
 export { default as Toggles, TogglesProps } from './legacy/toggles';
