@@ -36,6 +36,7 @@ export const Basic = () => {
     {
       dataIndex: 'id',
       title: 'Id',
+      info: 'description',
     },
     {
       dataIndex: 'name',
