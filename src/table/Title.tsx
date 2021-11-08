@@ -83,7 +83,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
     }
     return (
       <span className={`${prefixCls}-column-title-info`}>
-        <Tooltip title={info}>
+        <Tooltip title={info} overlayClassName={`${prefixCls}-tooltip`}>
           <QuestionCircleOutlined size="12px" />
         </Tooltip>
       </span>
