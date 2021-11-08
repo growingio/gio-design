@@ -1,0 +1,69 @@
+@import '../../stylesheet/index.less';
+@import '../../stylesheet/mixin/index.less';
+@import '../../stylesheet/variables/index.less';
+
+@range-panel-prefix-cls: ~'@{component-prefix}-range-panel';
+@date-picker-prefix-cls: ~'@{component-prefix}-picker-panel';
+@date-range-picker-prefix-cls: ~'@{component-prefix}-date-range-picker';
+@range-input-trigger-prefix-cls: ~'@{component-prefix}-range-input-trigger';
+
+.@{range-panel-prefix-cls} {
+  &__header {
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    border: none;
+
+    &__text {
+      .font();
+
+      /* $palette/black/6 */
+      color: #313e75;
+
+      line-height: 30px;
+    }
+    &__text:not(:first-child) {
+      margin-left: 10px;
+    }
+
+    &__input-number {
+      width: 80px;
+      margin-left: 8px;
+    }
+
+    &__options,
+    &__button {
+      margin-left: 8px;
+    }
+  }
+
+  &__divider {
+    height: 0;
+    margin: 0;
+
+    /* Border/Border-1 */
+    border-bottom: 1px solid #e7eaf9;
+  }
+
+  &__body {
+    padding: 16px;
+
+    & > .@{date-picker-prefix-cls},
+    .@{date-range-picker-prefix-cls} {
+      border: 1px solid #ebedf5;
+      border-radius: 4px;
+      box-shadow: none;
+      filter: none;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 16px 16px;
+
+    button {
+      margin-left: 8px;
+    }
+  }
+}
