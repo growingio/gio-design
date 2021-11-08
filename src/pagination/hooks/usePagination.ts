@@ -1,4 +1,4 @@
-import { isFunction, isUndefined, range } from 'lodash';
+import { isFunction, range } from 'lodash';
 import { useEffect } from 'react';
 import PaginationProps, { PaginationItemProps, PaginationItemType } from '../interface';
 import useControlledState from '../../utils/hooks/useControlledState';
@@ -35,11 +35,11 @@ const usePagination = (
   }, [maxPages, currentPage, setCurrentPage]);
 
   const goToPage = (value: number) => {
-    if (isUndefined(currentProp)) {
+    if (value) {
       setCurrentPage(value);
     }
     if (isFunction(onChange)) {
-      onChange(currentPage, pageSize);
+      onChange(value, pageSize);
     }
   };
 

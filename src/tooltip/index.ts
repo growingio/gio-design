@@ -1,2 +1,2 @@
 export { TooltipProps } from './interface';
-export * from './Tooltip';
+export { default } from './Tooltip';
