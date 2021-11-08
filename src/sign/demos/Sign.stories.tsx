@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import Docs from './SignPage';
-import { ISignProps } from '../interface';
+import { ISignNumberProps } from '../interface';
 import Sign from '../index';
 import '../style';
 
@@ -40,18 +40,8 @@ const style3 = {
   backgroundColor: '#ebedf5',
   bordeRadius: '4PX',
 };
-const style4 = {
-  display: 'inline-block',
-  width: '25%',
-  marginBottom: '15px',
-};
 
-const style5 = {
-  display: 'inline-block',
-  padding: '0 12px',
-};
-
-const Template: Story<ISignProps> = (args) => (
+const Template: Story<ISignNumberProps> = (args) => (
   <>
     <div style={style1}>
       <span style={style2}>
@@ -87,36 +77,4 @@ Default.args = {
   showZero: false,
   offset: [32, 32],
   placement: 'leftBottom',
-};
-
-const DotTemplate: Story<ISignProps> = (args) => (
-  <div style={{ marginBottom: '15px' }}>
-    <span style={style4}>
-      <Sign {...args}>
-        <span style={style5}>正常</span>
-      </Sign>
-    </span>
-    <span style={style4}>
-      <Sign {...args} status="warning">
-        <span style={style5}>已禁用</span>
-      </Sign>
-    </span>
-    <span style={style4}>
-      <Sign {...args} status="error">
-        <span style={style5}>异常</span>
-      </Sign>
-    </span>
-    <span style={style4}>
-      <Sign {...args} status="disabled">
-        <span style={style5}>未检测到数据</span>
-      </Sign>
-    </span>
-  </div>
-);
-
-export const DotSign = DotTemplate.bind({});
-DotSign.args = {
-  variant: 'dot',
-  placement: 'left',
-  status: 'normal',
 };

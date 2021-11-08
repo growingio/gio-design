@@ -18,6 +18,19 @@ export default function UploadPage() {
           defaultMessage: '文件选择上传和拖拽上传控件。',
         })}
       </p>
+      <p>
+        <a href="https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4078%3A43562">
+          Figma
+        </a>
+      </p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>修复了drag单文件传输状态无disable样式</li>
+        <li>type=button disable样式修改</li>
+        <li>修复了上传网址跨域问题</li>
+        <li>修复了avatar状态 阴影超出边界问题</li>
+      </ul>
+
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
 
       <Subheading>{formatMessage({ defaultMessage: '默认-按钮上传' })}</Subheading>
@@ -28,7 +41,7 @@ export default function UploadPage() {
         })}
       </p>
       <Canvas>
-        <Story id="components-upload--default" />
+        <Story id="upgraded-upload--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'URL 上传' })}</Subheading>
@@ -38,7 +51,7 @@ export default function UploadPage() {
         {formatMessage({ defaultMessage: '2. 若上传失败，使用 input 的错误提示方式，说明上传失败的原因。' })}
       </p>
       <Canvas>
-        <Story id="components-upload--url-upload" />
+        <Story id="upgraded-upload--url-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'logo 上传' })}</Subheading>
@@ -48,7 +61,7 @@ export default function UploadPage() {
         {formatMessage({ defaultMessage: '2. 图片上传中套用 Loading 组件。' })}
       </p>
       <Canvas>
-        <Story id="components-upload--card-upload" />
+        <Story id="upgraded-upload--card-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '头像上传' })}</Subheading>
@@ -58,7 +71,7 @@ export default function UploadPage() {
         {formatMessage({ defaultMessage: '2. 图片上传中套用 Loading 组件。' })}
       </p>
       <Canvas>
-        <Story id="components-upload--avatar-upload" />
+        <Story id="upgraded-upload--avatar-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '上传区域' })}</Subheading>
@@ -85,13 +98,13 @@ export default function UploadPage() {
         {formatMessage({ defaultMessage: '6. 批量上传时可设置是否显示上传文件列表，并可设置最大上传数量限制。' })}
       </p>
       <Canvas>
-        <Story id="components-upload--area-upload" />
+        <Story id="upgraded-upload--area-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '受控文件' })}</Subheading>
       <p>{formatMessage({ defaultMessage: '受控的上传文件。' })}</p>
       <Canvas>
-        <Story id="components-upload--controlled-file" />
+        <Story id="upgraded-upload--controlled-file" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自定义上传错误信息' })}</Subheading>
@@ -101,12 +114,12 @@ export default function UploadPage() {
         })}
       </p>
       <Canvas>
-        <Story id="components-upload--custom-error-message-upload" />
+        <Story id="upgraded-upload--custom-error-message-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '默认上传文件列表' })}</Subheading>
       <Canvas>
-        <Story id="components-upload--default-list-upload" />
+        <Story id="upgraded-upload--default-list-upload" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
