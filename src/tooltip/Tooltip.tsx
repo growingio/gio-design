@@ -16,11 +16,16 @@ const Tooltip = (props: TooltipProps) => {
     allowArrow = true,
     prefixCls: customizePrefixCls,
     subPrefixCls = 'tooltip-new',
+    overlayClassName,
+    overlayInnerClassName,
     ...rest
   } = props;
   const prefixCls = usePrefixCls(subPrefixCls, customizePrefixCls);
 
-  const contentInnerCls = useMemo(() => classNames(`${prefixCls}__inner`), [prefixCls]);
+  const contentInnerCls = useMemo(
+    () => classNames(`${prefixCls}__inner`, overlayInnerClassName),
+    [prefixCls, overlayInnerClassName]
+  );
 
   const [computedTitle, computedOverlay] = useMemo(
     () => [isFunction(title) ? title() : title, isFunction(overlay) ? overlay() : overlay],
@@ -42,7 +47,7 @@ const Tooltip = (props: TooltipProps) => {
       {...rest}
       allowArrow={allowArrow}
       prefixCls={customizePrefixCls}
-      overlayClassName={prefixCls}
+      overlayClassName={classNames(prefixCls, overlayClassName)}
       overlayInnerClassName={contentInnerCls}
       content={computedOverlay || tooltipOverlay}
     >

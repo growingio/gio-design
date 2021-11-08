@@ -19,7 +19,7 @@ import { TABLE_PREFIX_CLS, translateInnerColumns } from './utils';
 import Loading from '../loading';
 import useHackOnRow from './hook/useHackOnRow';
 
-declare module 'React' {
+declare module 'react' {
   interface CSSProperties {
     '--table-cell-padding'?: React.CSSProperties['padding'];
   }
