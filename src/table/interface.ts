@@ -170,7 +170,7 @@ interface TableProps<RecordType> extends Omit<GioTableProps<RecordType>, 'title'
   /**
    * 分页/排序/筛选变化时触发
    */
-  onChange?: (pagination: PaginationState, filters: Record<string, string[]>, sorter: SortState<RecordType>) => void;
+  onChange?: (pagination?: PaginationState, filters?: Record<string, string[]>, sorter?: SortState<RecordType>) => void;
   showHover?: boolean;
 
   /**

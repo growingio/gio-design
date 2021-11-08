@@ -1,7 +1,7 @@
 import React, { useMemo, forwardRef, createContext, useCallback, useRef } from 'react';
 import GioTable from '@gio-design/table';
 import classNames from 'classnames';
-import { cloneDeep, isUndefined, get, has, set, isFunction } from 'lodash';
+import { cloneDeep, get, has, set, isFunction, isNil } from 'lodash';
 import { ExpandableConfig } from '@gio-design/table/lib/interface';
 import { compose } from 'lodash/fp';
 import { RightOutlined, DownOutlined } from '@gio-design/icons';
@@ -153,7 +153,7 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
       return cloneDeep(_columns).map((column) => {
         const sortState = activeSorterStates.find(({ key }) => key === column.key);
         const filterState = activeFilterStates.find(({ key }) => key === column.key);
-        if (sortState || filterState || !isUndefined(column.info)) {
+        if (sortState || filterState || !isNil(column.info)) {
           const oldColumn = cloneDeep(column);
           set(
             column,
@@ -204,7 +204,7 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
     [rowClassName, selectedRowKeys, rowKey, prefixCls]
   );
 
-  const titleFn: TableProps<RecordType>['title'] = (data) => {
+  const titleFn = (data: RecordType[]) => {
     if (isFunction(title)) {
       return title(data);
     }
@@ -222,21 +222,23 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
         data-testid="table"
       >
         <Loading loading={loading}>
-          <GioTable<RecordType>
-            tableLayout="fixed"
-            title={isUndefined(title) ? undefined : titleFn}
-            prefixCls={prefixCls}
-            columns={composedColumns}
-            data={paginationData}
-            emptyText={emptyElement}
-            rowKey={rowKey}
-            onRow={onHackRow}
-            className={`${prefixCls}-normal`}
-            rowClassName={rowClassNameCallback}
-            expandable={mergeExpandable}
-            {...rest}
-          />
-          {paginationComponent}
+          <>
+            <GioTable<RecordType>
+              tableLayout="fixed"
+              title={isNil(title) ? undefined : titleFn}
+              prefixCls={prefixCls}
+              columns={composedColumns}
+              data={paginationData}
+              emptyText={emptyElement}
+              rowKey={rowKey}
+              onRow={onHackRow}
+              className={`${prefixCls}-normal`}
+              rowClassName={rowClassNameCallback}
+              expandable={mergeExpandable}
+              {...rest}
+            />
+            {paginationComponent}
+          </>
         </Loading>
       </div>
     </TableContext.Provider>
