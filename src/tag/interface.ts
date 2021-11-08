@@ -7,7 +7,7 @@ export interface TagProps {
   /**
    * 状态
    */
-  status?: 'success' | 'warning' | 'error' | 'offline' | 'draft';
+  status?: 'default' | 'draft'| 'info'|'success' | 'warning' | 'error';
   /**
    * 大小
    * @default 'large'

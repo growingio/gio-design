@@ -1,10 +1,5 @@
 import { CSSProperties } from 'react';
 
-export type TSignVariant = 'number' | 'dot';
-
-export type TDotSignStatus = 'default' | 'normal' | 'warning' | 'error' | 'disabled';
-
-export type TDotSignSize = 'middle' | 'small';
 
 export type TMagnitude = 10 | 100;
 
@@ -29,23 +24,9 @@ export interface ISignNumberProps extends ISignCommonProps {
    * 设置状态点的位置偏移
    */
   offset?: [number, number];
-
   /**
-   *
+   *放置位置
    */
   placement?: TPlacement;
 }
 
-export interface ISignDotProps extends ISignCommonProps {
-  // 状态
-  status?: TDotSignStatus;
-  // 尺寸
-  size?: TDotSignSize;
-}
-
-export interface ISignProps extends ISignNumberProps, ISignDotProps {
-  /**
-   * 设置 Sign 的变体类型，默认 number
-   */
-  variant?: TSignVariant;
-}

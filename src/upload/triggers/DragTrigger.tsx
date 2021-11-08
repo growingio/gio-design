@@ -125,21 +125,36 @@ const DragTrigger: React.FC<ITriggerProps> = ({
           )}
         </>
       )}
-      {file.status === STATUS_NOT_YET && (
-        <div className={placeholderCls}>
-          {isOnlyAcceptImg(accept) ? (
-            <>
-              <PictureSVG style={{ width: currentWidth, height: currentHeight }} />
-              <div>{picPending}</div>
-            </>
-          ) : (
-            <>
-              <FolderSVG style={{ width: currentWidth, height: currentHeight }} />
-              <div>{filePending}</div>
-            </>
-          )}
-        </div>
-      )}
+      {file.status === STATUS_NOT_YET &&
+        (disabled ? (
+          <div className={placeholderCls}>
+            {isOnlyAcceptImg(accept) ? (
+              <>
+                <DisabledPictureSVG style={{ width: currentWidth, height: currentHeight }} />
+                <div>{picPending}</div>
+              </>
+            ) : (
+              <>
+                <DisabledFolderSVG style={{ width: currentWidth, height: currentHeight }} />
+                <div>{filePending}</div>
+              </>
+            )}
+          </div>
+        ) : (
+          <div className={placeholderCls}>
+            {isOnlyAcceptImg(accept) ? (
+              <>
+                <PictureSVG style={{ width: currentWidth, height: currentHeight }} />
+                <div>{picPending}</div>
+              </>
+            ) : (
+              <>
+                <FolderSVG style={{ width: currentWidth, height: currentHeight }} />
+                <div>{filePending}</div>
+              </>
+            )}
+          </div>
+        ))}
     </div>
   );
 
@@ -160,7 +175,6 @@ const DragTrigger: React.FC<ITriggerProps> = ({
             <span className="loading-text">{uploading}</span>
           </div>
         ) : null}
-
         {fileListLength !== 0 &&
           finishCount === fileListLength &&
           (disabled ? (
@@ -181,9 +195,7 @@ const DragTrigger: React.FC<ITriggerProps> = ({
       </div>
     );
   };
-
   const renderUpload = () => (directory || multiple ? renderMultipleUpload() : renderSingleUpload());
-
   return <>{renderUpload()}</>;
 };
 

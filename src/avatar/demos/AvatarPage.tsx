@@ -14,10 +14,15 @@ export default function ListPage() {
           defaultMessage: '用来代表用户，支持图片或字符展示。',
         })}
       </p>
+      <p>
+        <a href="https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4092%3A41169">
+          Figma
+        </a>
+      </p>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
-      <Subheading>{formatMessage({ defaultMessage: '基础头像' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
       <Canvas>
-        <Story id="components-avatar--default" />
+        <Story id="upgraded-avatar--demo" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '尺寸' })}</Subheading>
@@ -28,7 +33,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="components-avatar--size" />
+        <Story id="upgraded-avatar--size" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '可展开操作' })}</Subheading>
@@ -38,7 +43,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="components-avatar--hover" />
+        <Story id="upgraded-avatar--hover" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '重叠展示' })}</Subheading>
@@ -49,7 +54,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="components-avatar--group" />
+        <Story id="upgraded-avatar--group" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

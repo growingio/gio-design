@@ -19,15 +19,15 @@ export default function ListPage() {
           Figma
         </a>
       </p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>去处了dot样式</li>
+        <li>variant,status参数取消</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '默认-数字标记' })}</Subheading>
       <Canvas>
         <Story id="upgraded-sign--default" />
-      </Canvas>
-
-      <Subheading>{formatMessage({ defaultMessage: '状态标记' })}</Subheading>
-      <Canvas>
-        <Story id="upgraded-sign--dot-sign" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

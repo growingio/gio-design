@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
-import { UploadOutlined } from '@gio-design/icons';
+import { DocumentFilled } from '@gio-design/icons';
 import { useSize, useLocale } from '@gio-design/utils';
 import Button from '../../legacy/button';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
@@ -8,7 +8,7 @@ import Preview from '../Preview';
 import { UploadPrefixClsContext } from '../Upload';
 import defaultLocale from '../locales/zh-CN';
 
-const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps }: ITriggerProps) => {
+const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps, disabled }: ITriggerProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
   const size = useSize() || 'large';
   const locale = useLocale('Upload');
@@ -28,7 +28,7 @@ const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps }: ITrigger
       icon = <Preview file={file} />;
       break;
     default:
-      icon = <UploadOutlined />;
+      icon = <DocumentFilled />;
       break;
   }
 
@@ -39,7 +39,7 @@ const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps }: ITrigger
 
   const label = file.name || buttonLabel;
   return (
-    <Button {...btnProps} size={size} icon={icon} loading={uploading}>
+    <Button {...btnProps} size={size} icon={icon} loading={uploading} type="secondary" disabled={disabled}>
       <span className={labelCls} title={label}>
         {label}
       </span>

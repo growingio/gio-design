@@ -7,7 +7,7 @@ export default {
   fileLimit: '文件最多上传 {maxCount} 个，超过将无法上传',
   defaultErrorMessage: '文件上传失败！',
   loadingTitle: '上传中',
-  buttonLabel: '本地上传',
+  buttonLabel: '上传文件',
   placeholder: '请输入图片的 URL',
   disabledPic: '已上传 {count} 张图片，不可继续上传',
   disabledFile: '已上传 {count} 个文件，不可继续上传',

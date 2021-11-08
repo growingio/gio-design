@@ -21,7 +21,7 @@ export default function ListPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
-        <li> 支持所有原生html属性</li>
+        <li>子元素为tab</li>
         <li>不再区分tabnav，tabs</li>
         <li>block参数取消</li>
         <li>去掉了过渡动画</li>

@@ -10,7 +10,7 @@ import composeRef from '../utils/composeRef';
 const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProps, ref: React.Ref<HTMLSpanElement>) => {
   const {
     className,
-    size = 'default',
+    size = 'medium',
     droppable = false,
     children: userName,
     src,
@@ -43,13 +43,13 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     }
   }, [userName, isImgExist]);
 
-  const prefixCls = usePrefixCls('avatar', customizePrefixCls);
+  const prefixCls = usePrefixCls('avatar-new', customizePrefixCls);
   const classString = classNames(className, prefixCls, {
     [`${prefixCls}-sm`]: size === 'small',
-    [`${prefixCls}-df`]: size === 'default',
-    [`${prefixCls}-lg`]: size === 'large',
-    [`${prefixCls}-hg`]: size === 'huge',
-    [`${prefixCls}-square`]: mode === 'square',
+    [`${prefixCls}-me`]: size === 'medium',
+    [`${prefixCls}-la`]: size === 'large',
+    [`${prefixCls}-xl`]: size === 'x-large',
+    [`${prefixCls}-square-${size}`]: mode === 'square',
   });
 
   const childrenStyle: React.CSSProperties = {
