@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useMemo, useCallback, useEffect, useRef, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import { debounce, isUndefined } from 'lodash';
 import { usePopper } from 'react-popper';
@@ -26,7 +26,6 @@ const Popover = (props: PopoverProps) => {
   const prefixCls = usePrefixCls('popover-new', customPrefixCls);
   const [visible, setVisible] = useState(defaultVisible);
   const overContentRef = useRef<boolean>(false);
-
   const referenceElement = useRef<HTMLDivElement | null>(null);
   const popperElement = useRef<HTMLDivElement | null>(null);
   const arrowElement = useRef<HTMLDivElement | null>(null);
@@ -65,6 +64,28 @@ const Popover = (props: PopoverProps) => {
     },
     [onVisibleChange, enterVisible, enterable]
   );
+  const onDocumentClick = useCallback(
+    (event: MouseEvent) => {
+      const { target } = event;
+      if (!referenceElement.current?.contains(target as Node) && !popperElement.current?.contains(target as Node)) {
+        updateVisible(false);
+      }
+    },
+    [updateVisible]
+  );
+
+  useEffect(() => {
+    if (!isUndefined(enterVisible)) {
+      setVisible(enterVisible);
+    }
+  }, [enterVisible]);
+
+  useLayoutEffect(() => {
+    document.addEventListener('mousedown', onDocumentClick);
+    return () => {
+      document.removeEventListener('mousedown', onDocumentClick);
+    };
+  }, [onDocumentClick]);
 
   const isClickToShow = useMemo(() => trigger.indexOf('click') !== -1, [trigger]);
 
@@ -123,12 +144,6 @@ const Popover = (props: PopoverProps) => {
     }
     return roles;
   }, [isClickToShow, isFocusToShow, isHoverToShow, onClick, onFocus, onBlur, onMouseEnter, onMouseLeave]);
-
-  useEffect(() => {
-    if (!isUndefined(enterVisible)) {
-      setVisible(enterVisible);
-    }
-  }, [enterVisible]);
 
   return (
     <>

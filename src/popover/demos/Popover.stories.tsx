@@ -144,6 +144,7 @@ const ControlTemplate: Story<PopoverProps> = (args) => {
   const show = () => setVisible(true);
   const hide = () => setVisible(false);
   const onVisibleChange = (resetVisible: boolean) => {
+    setVisible(resetVisible);
     console.log(resetVisible);
   };
 
@@ -178,7 +179,7 @@ const ControlTemplate: Story<PopoverProps> = (args) => {
           <Button onClick={hide2} style={{ marginRight: 50 }}>
             Hide Popover
           </Button>
-          <Popover {...args} visible={visible2} placement="top" onVisibleChange={onVisibleChange2}>
+          <Popover {...args} trigger="click" visible={visible2} placement="top" onVisibleChange={onVisibleChange2}>
             <Input value="Show Popover Me!" />
           </Popover>
         </div>
