@@ -36,19 +36,13 @@ const ResizableTitle = (props: Pick<ResizableProps, 'onResize' | 'width'>) => {
   );
 };
 
-export const tableComponent = {
-  header: {
-    cell: ResizableTitle,
-  },
-};
-
 function ResizableTable<RecordType = Record<string, unknown>>(
   props: TableProps<RecordType>,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   const { columns = [], dataSource, ...restProps } = props;
 
-  const [columnsState, setColumnsState] = useState(columns);
+  const [columnsState, setColumnsState] = useState<ColumnsType<RecordType>>(columns);
   const previousColumnsRef = useRef<ColumnsType<RecordType>>(columns);
 
   useEffect(() => {

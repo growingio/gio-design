@@ -462,41 +462,6 @@ export const Ellipsis = () => {
 
 // ----------------------- Ellipsis -----------------------//
 
-// ----------------------- Drag Column -----------------------//
-
-export const DragColumn = () => {
-  const columns: ColumnsType<DataSourceType> = [
-    {
-      dataIndex: 'id',
-      title: 'Id',
-    },
-    {
-      dataIndex: 'name',
-      title: 'Name',
-    },
-    {
-      dataIndex: 'age',
-      title: 'Age',
-    },
-    {
-      dataIndex: 'address',
-      title: 'Address',
-    },
-  ];
-
-  return (
-    <Table.DragTable<DataSourceType>
-      pagination={false}
-      title="可拖拽的列"
-      columns={columns}
-      dataSource={genDataSource()}
-      rowKey="id"
-    />
-  );
-};
-
-// ----------------------- Drag Column -----------------------//
-
 // ----------------------- Resizable Column -----------------------//
 
 export const ResizableColumn = () => {
@@ -504,24 +469,28 @@ export const ResizableColumn = () => {
     {
       dataIndex: 'id',
       title: 'Id',
+      width: 200,
     },
     {
       dataIndex: 'name',
       title: 'Name',
+      width: 200,
     },
     {
       dataIndex: 'age',
       title: 'Age',
+      width: 200,
     },
     {
       dataIndex: 'address',
       title: 'Address',
+      width: 300,
     },
   ];
 
   return (
     <Table.ResizableTable<DataSourceType>
-      title="宽度可调整的列"
+      title="宽度可调整的列，必须给每个列设置固定宽度"
       columns={columns}
       dataSource={genDataSource()}
       rowKey="id"

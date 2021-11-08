@@ -61,7 +61,7 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
         ...info,
       };
       if (isFunction(onChange)) {
-        onChange(paginationState || {}, filterStates || {}, sorterState || {});
+        onChange(paginationState, filterStates, sorterState);
       }
       if (isRefreshPage && isFunction(refreshPagination)) {
         refreshPagination();
@@ -78,7 +78,8 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
   const [activeSorterStates, updateSorterStates, sortedData, sorter] = useSorter(
     innerColumns,
     dataSource,
-    onSorterChange
+    onSorterChange,
+    rowKey
   );
   changeEventInfo.sorterState = sorter;
 
@@ -93,7 +94,8 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
   const [activeFilterStates, updateFilterStates, filteredData, filters] = useFilter(
     innerColumns,
     sortedData,
-    onFilterChange
+    onFilterChange,
+    rowKey
   );
   changeEventInfo.filterStates = filters;
 
@@ -202,6 +204,13 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
     [rowClassName, selectedRowKeys, rowKey, prefixCls]
   );
 
+  const titleFn: TableProps<RecordType>['title'] = (data) => {
+    if (isFunction(title)) {
+      return title(data);
+    }
+    return title;
+  };
+
   return (
     <TableContext.Provider value={{ tableRef: mergedRef }}>
       <div
@@ -215,7 +224,7 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
         <Loading loading={loading}>
           <GioTable<RecordType>
             tableLayout="fixed"
-            title={title && (isFunction(title) ? (currentPageData) => title(currentPageData) : () => title)}
+            title={isUndefined(title) ? undefined : titleFn}
             prefixCls={prefixCls}
             columns={composedColumns}
             data={paginationData}

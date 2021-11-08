@@ -1,12 +1,17 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { get, isUndefined, clone, has, isFunction } from 'lodash';
+import { GetRowKey } from '@gio-design/table/es/interface';
 import { ColumnsType, SortState } from '../interface';
+import { getRowKey } from './useSelection';
 
-export const collectSortStates = <RecordType,>(columns: ColumnsType<RecordType> = []): SortState<RecordType>[] => {
+export const collectSortStates = <RecordType,>(
+  columns: ColumnsType<RecordType> = [],
+  rowKey: string | GetRowKey<RecordType>
+): SortState<RecordType>[] => {
   const sortStates: SortState<RecordType>[] = [];
   columns.forEach((column) => {
     if (has(column, 'children')) {
-      sortStates.push(...collectSortStates(get(column, 'children')));
+      sortStates.push(...collectSortStates(get(column, 'children'), rowKey));
     } else if (column.sorter) {
       const {
         key,
@@ -17,7 +22,7 @@ export const collectSortStates = <RecordType,>(columns: ColumnsType<RecordType> 
       } = column;
       sortStates.push({
         column,
-        key,
+        key: key || getRowKey(column, rowKey),
         sortPriorityOrder,
         sortDirections,
         sortOrder: sortOrder || defaultSortOrder || null,
@@ -31,7 +36,8 @@ export const collectSortStates = <RecordType,>(columns: ColumnsType<RecordType> 
 const useSorter = <RecordType,>(
   columns: ColumnsType<RecordType>,
   data: RecordType[],
-  onChange?: (sorterState: SortState<RecordType>) => void
+  onChange: (sorterState: SortState<RecordType>) => void,
+  rowKey: string | GetRowKey<RecordType>
 ): [
   SortState<RecordType>[],
   (sortState: SortState<RecordType>) => SortState<RecordType>,
@@ -39,18 +45,18 @@ const useSorter = <RecordType,>(
   SortState<RecordType> | undefined
 ] => {
   // record all sorter states
-  const [sortStates, setSortStates] = useState<SortState<RecordType>[]>(collectSortStates(columns));
+  const [sortStates, setSortStates] = useState<SortState<RecordType>[]>(collectSortStates(columns, rowKey));
   const [_sorter, setSorter] = useState<SortState<RecordType>>();
 
   useEffect(() => {
-    const collectedData = collectSortStates(columns);
+    const collectedData = collectSortStates(columns, rowKey);
 
     const allIsControlled = collectedData.every(({ isControlled }) => isControlled);
 
     if (allIsControlled) {
       setSortStates(collectedData);
     }
-  }, [columns]);
+  }, [columns, rowKey]);
 
   // update sorter states action
   const updateSorterStates = useCallback(
@@ -92,7 +98,12 @@ const useSorter = <RecordType,>(
 
   // sorted data
   const sortedData: RecordType[] = useMemo(() => {
-    const cloneSortStates = clone(activeSortStates).sort((a, b) => b.sortPriorityOrder - a.sortPriorityOrder);
+    const cloneSortStates = clone(activeSortStates).sort((a, b) => {
+      if (!isUndefined(a) && !isUndefined(b)) {
+        return b.sortPriorityOrder - a.sortPriorityOrder;
+      }
+      return 0;
+    });
 
     const cloneData = clone(data);
     if (cloneSortStates.length === 0) {

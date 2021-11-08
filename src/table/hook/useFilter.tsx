@@ -1,18 +1,23 @@
 import { useMemo, useCallback, useState, useEffect } from 'react';
 import { get, isUndefined, has, clone, isFunction } from 'lodash';
+import { GetRowKey } from '@gio-design/table/es/interface';
 import { ColumnsType, FilterState } from '../interface';
+import { getRowKey } from './useSelection';
 
-export const collectFilterStates = <RecordType,>(columns: ColumnsType<RecordType> = []): FilterState<RecordType>[] => {
+export const collectFilterStates = <RecordType,>(
+  columns: ColumnsType<RecordType> = [],
+  rowKey: string | GetRowKey<RecordType>
+): FilterState<RecordType>[] => {
   const filterStates: FilterState<RecordType>[] = [];
   columns.forEach((column) => {
     if (has(column, 'children')) {
-      filterStates.push(...collectFilterStates(get(column, 'children')));
+      filterStates.push(...collectFilterStates(get(column, 'children'), rowKey));
     } else if (column.filters) {
       const { key, filters, onFilter, defaultFilteredValue = [], filteredValue } = column;
       filterStates.push(
         clone({
           column,
-          key,
+          key: key || getRowKey(column, rowKey),
           filteredKeys: filteredValue ?? defaultFilteredValue,
           onFilter,
           filters,
@@ -27,7 +32,8 @@ export const collectFilterStates = <RecordType,>(columns: ColumnsType<RecordType
 const useFilter = <RecordType,>(
   columns: ColumnsType<RecordType>,
   data: RecordType[],
-  onFilterChange: (filters: Record<string, string[]>) => void
+  onFilterChange: (filters: Record<string, string[]>) => void,
+  rowKey: string | GetRowKey<RecordType>
 ): [
   FilterState<RecordType>[],
   (filterState: FilterState<RecordType>) => Record<string, string[]>,
@@ -35,17 +41,17 @@ const useFilter = <RecordType,>(
   Record<string, string[]>
 ] => {
   // record all filter states
-  const [filterStates, setFilterStates] = useState<FilterState<RecordType>[]>(collectFilterStates(columns));
+  const [filterStates, setFilterStates] = useState<FilterState<RecordType>[]>(collectFilterStates(columns, rowKey));
   const [filters, setFilters] = useState<Record<string, string[]>>({});
   useEffect(() => {
-    const collectedFilterStates = collectFilterStates(columns);
+    const collectedFilterStates = collectFilterStates(columns, rowKey);
 
     const allIsControlled = collectedFilterStates.every(({ isControlled }) => isControlled);
 
     if (allIsControlled) {
       setFilterStates(collectedFilterStates);
     }
-  }, [columns]);
+  }, [columns, rowKey]);
 
   // update filter states action
   const updateFilterStates = useCallback(
