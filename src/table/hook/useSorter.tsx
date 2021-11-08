@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
-import { get, isUndefined, clone, has, isFunction } from 'lodash';
+import { get, isNil, clone, has, isFunction } from 'lodash';
 import { GetRowKey } from '@gio-design/table/es/interface';
 import { ColumnsType, SortState } from '../interface';
 import { getRowKey } from './useSelection';
@@ -26,7 +26,7 @@ export const collectSortStates = <RecordType,>(
         sortPriorityOrder,
         sortDirections,
         sortOrder: sortOrder || defaultSortOrder || null,
-        isControlled: !isUndefined(sortOrder),
+        isControlled: !isNil(sortOrder),
       });
     }
   });
@@ -68,7 +68,7 @@ const useSorter = <RecordType,>(
           // if update column haven't sortPriorityOrder, clear all active sortOrder state.
           // if update column haven sortPriorityOrder, only update sortOrder which column haven't sortPriorityOrder.
           if (
-            (isUndefined(incomingSortState.sortPriorityOrder) || isUndefined(innerSortState.sortPriorityOrder)) &&
+            (isNil(incomingSortState.sortPriorityOrder) || isNil(innerSortState.sortPriorityOrder)) &&
             !innerSortState.isControlled
           ) {
             innerSortState.sortOrder = null;
@@ -99,10 +99,9 @@ const useSorter = <RecordType,>(
   // sorted data
   const sortedData: RecordType[] = useMemo(() => {
     const cloneSortStates = clone(activeSortStates).sort((a, b) => {
-      if (!isUndefined(a) && !isUndefined(b)) {
-        return b.sortPriorityOrder - a.sortPriorityOrder;
-      }
-      return 0;
+      if (isNil(a) || isNil(b)) return 0;
+      if (isNil(a.sortPriorityOrder) || isNil(b.sortPriorityOrder)) return 0;
+      return b.sortPriorityOrder - a.sortPriorityOrder;
     });
 
     const cloneData = clone(data);

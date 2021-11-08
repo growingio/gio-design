@@ -67,10 +67,11 @@ function ResizableTable<RecordType = Record<string, unknown>>(
         setColumnsState(nextColumns);
       };
 
-    const getOnHeaderCell = (column: ColumnType<RecordType>, index: number) => {
-      if (isFunction(column.onHeaderCell)) {
+    const getOnHeaderCell = (column: ColumnType<RecordType> | undefined, index: number) => {
+      if (isFunction(column?.onHeaderCell)) {
+        const headerCell = column?.onHeaderCell(column) || {};
         return (cell: ColumnType<RecordType>) => ({
-          ...column.onHeaderCell(column),
+          ...headerCell,
           width: cell.width,
           onResize: handleResize(index),
         });

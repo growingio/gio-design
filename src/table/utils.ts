@@ -4,8 +4,10 @@ import { ColumnsType } from './interface';
 export const TABLE_PREFIX_CLS = 'table-new';
 
 // eslint-disable-next-line import/prefer-default-export
-export const translateInnerColumns = <RecordType>(columns: ColumnsType<RecordType>): ColumnsType<RecordType> =>
-  clone(columns).map((cloneColumn) => {
+export const translateInnerColumns = <RecordType>(
+  columns: ColumnsType<RecordType> | undefined
+): ColumnsType<RecordType> =>
+  clone<ColumnsType<RecordType> | undefined>(columns)?.map((cloneColumn) => {
     if (!has(cloneColumn, 'key')) {
       if (has(cloneColumn, 'dataIndex')) {
         if (Array.isArray(get(cloneColumn, 'dataIndex'))) {
@@ -22,4 +24,4 @@ export const translateInnerColumns = <RecordType>(columns: ColumnsType<RecordTyp
       set(cloneColumn, 'children', translateInnerColumns(get(cloneColumn, 'children')));
     }
     return cloneColumn;
-  });
+  }) || [];
