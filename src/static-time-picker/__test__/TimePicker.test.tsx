@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Basic, ShowSecond } from '../demos/TimePicker.stories';
+import { Basic, ShowSecond } from '../demos/StaticTimePicker.stories';
 
-describe('TimePicker', () => {
+describe('StaticTimePicker', () => {
   it('renders with default', () => {
     render(<Basic />);
     expect(screen.getAllByText('00')).toHaveLength(2);

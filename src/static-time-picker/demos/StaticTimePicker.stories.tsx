@@ -1,14 +1,14 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { action } from '@storybook/addon-actions';
-import TimePicker from '../TimePicker';
-import Docs from './TimePicker.mdx';
+import StaticTimePicker from '../StaticTimePicker';
+import { StaticTimePickerProps } from '../interfaces';
+import Docs from './StaticTimePicker.mdx';
 
 import '../style';
 
 export default {
-  title: 'Upgraded/TimePicker',
-  component: TimePicker,
+  title: 'Upgraded/StaticTimePicker',
+  component: StaticTimePicker,
   parameters: {
     design: {
       type: 'figma',
@@ -21,16 +21,10 @@ export default {
   },
 } as Meta;
 
-const Template: Story = (args) => (
-  <div style={{ width: 160 }}>
-    <TimePicker onSelect={action('selected time:')} {...args} />
-  </div>
-);
+const Template: Story<StaticTimePickerProps> = (args) => <StaticTimePicker {...args} />;
 
 export const Basic = Template.bind({});
-Basic.args = {
-  placeholder: '请选择时间',
-};
+Basic.args = {};
 
 export const ShowSecond = Template.bind({});
 ShowSecond.args = {
