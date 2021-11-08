@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function NotFoundSVG() {
   return (
-    <svg width="450" height="318" viewBox="0 0 450 318" fill="none">
+    <svg viewBox="0 0 450 318" fill="none">
       <path
         d="M43.5166 317.15C185.23 272.467 263.834 273.024 401.705 317.15H43.5166Z"
         fill="url(#page__not_found__paint0_linear)"

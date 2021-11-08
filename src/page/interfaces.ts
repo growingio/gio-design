@@ -1,4 +1,4 @@
-export type StatusCodeType = 403 | 404 | 500;
+export type StatusCodeType = 'noResource'|'noAuth'|'noShared'| 304 | 404 | 500;
 
 export interface PageProps {
   className?: string;
@@ -18,4 +18,8 @@ export interface PageProps {
     text: string;
     onClick: React.MouseEventHandler<HTMLElement>;
   };
+   /**
+   * Size have two types
+   */
+  size?:'normal'| 'small'
 }

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function ForbiddenSVG() {
   return (
-    <svg width={450} height={338} viewBox="0 0 450 338" fill="none">
+    <svg viewBox="0 0 450 338" fill="none">
       <ellipse
         rx={71.18}
         ry={38.406}
