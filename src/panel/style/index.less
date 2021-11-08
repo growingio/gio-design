@@ -1,0 +1,79 @@
+@import '../../stylesheet/variables/index.less';
+
+@panel-prefix-cls: ~'@{component-prefix}-panel';
+
+.@{panel-prefix-cls} {
+  position: relative;
+  padding-top: 20px;
+  background: @gray-0;
+  border-radius: 4px;
+
+  &--bordered {
+    .border(0);
+    .elevation(1);
+  }
+
+  &__header {
+    position: relative;
+    display: flex;
+    padding: 0 20px 20px 20px;
+
+    &__border--bottom {
+      border-bottom: 1px solid @gray-2;
+    }
+
+    &__avatar {
+      flex: 0 0 auto;
+      &--icon {
+        margin-right: 16px;
+        padding: 14px;
+        .border(2);
+      }
+    }
+
+    &__meta {
+      position: relative;
+      flex: 1 1 100%;
+      &__title {
+        font-weight: 500;
+        font-size: 18px;
+        font-style: normal;
+        line-height: 32px;
+      }
+
+      &__description {
+        position: relative;
+        color: @gray-4;
+        font-weight: normal;
+        font-size: 14px;
+        font-style: normal;
+        line-height: 28px;
+      }
+    }
+
+    &__actions {
+      flex: 0 0 auto;
+      margin-left: 16px;
+    }
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__tabs {
+    padding-right: 20px;
+    padding-left: 20px;
+    border-bottom: 1px solid @gray-2;
+  }
+
+  &__content {
+    position: relative;
+  }
+
+  &__footer {
+    margin: 0 20px;
+    padding: 20px 0;
+    border-top: 1px solid @gray-2;
+  }
+}
