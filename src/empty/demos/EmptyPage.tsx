@@ -9,28 +9,45 @@ export default function EmptyPage() {
   return (
     <>
       <Title>{formatMessage({ defaultMessage: 'Empty 空态' })}</Title>
-      <p>{formatMessage({ defaultMessage: '初始化状态或无数据情况下的占位图，可以起到提示或引导操作的功能。' })}</p>
+      <p>
+        {formatMessage({
+          defaultMessage:
+            '空状态时的展示占位图。当目前没有数据时，用于显式的用户提示。大尺寸样式，文字最大宽度为300px。小尺寸样式，文字最大宽度为150px。内容超长时，换行。',
+        })}
+      </p>
+      <p>
+        <a href="https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4093%3A47838">
+          Figma
+        </a>
+      </p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>将empty图移入到了image的内部，新增了no-find</li>
+        <li>新的image参数为 image?: no-data | no-result | no-find |empty| React.ReactNode;</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
-      <Subheading>{formatMessage({ defaultMessage: '未创建' })}</Subheading>
-      <p className="">
-        {formatMessage({ defaultMessage: '用户在某一具体模块下，未创建任何内容时，可使用此类型空态。' })}
-      </p>
+
+      <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
       <Canvas>
-        <Story id="components-empty--no-data" />
+        <Story id="upgraded-empty--demo" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '看板空态 - 未添加看板' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-empty--empty-demo" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: '无结果' })}</Subheading>
-      <p className="">
-        {formatMessage({ defaultMessage: '用户通过筛选、搜索等操作，未找到合适的结果时，可使用此类型空态。' })}
-      </p>
+      <Subheading>{formatMessage({ defaultMessage: '未创建资源空态（通用） - 资源为空' })}</Subheading>
       <Canvas>
-        <Story id="components-empty--no-result" />
+        <Story id="upgraded-empty--no-data" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: '自定义' })}</Subheading>
-      <p className="">{formatMessage({ defaultMessage: '自定义图片、描述和 Call to Action。' })}</p>
+      <Subheading>{formatMessage({ defaultMessage: '搜索无结果' })}</Subheading>
       <Canvas>
-        <Story id="components-empty--customize" />
+        <Story id="upgraded-empty--no-result" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '当前查询条件下暂无数据' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-empty--no-find" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

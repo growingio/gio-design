@@ -1,19 +1,13 @@
 import React from 'react';
 import classnames from 'classnames';
 import { useLocale, usePrefixCls } from '@gio-design/utils';
-import EmptyImage from './EmptyImage';
 import NoDataImage from './NoDataImage';
 import NoResultImage from './NoResultImage';
-import NoFindImage from './NoFindImage';
 import { EmptyProps } from './interfaces';
-import Button from '../legacy/button';
+import Button from '../button';
 import defaultLocale from './locales/zh-CN';
 
-const Empty: React.FC<EmptyProps> & {
-  NO_DATA_IMAGE: React.ReactNode;
-  NO_RESULT_IMAGE: React.ReactNode;
-  NO_FIND_IMAGE: React.ReactNode;
-} = ({
+const Empty: React.FC<EmptyProps> & { NO_DATA_IMAGE: React.ReactNode; NO_RESULT_IMAGE: React.ReactNode } = ({
   className,
   style,
   size = 'large',
@@ -23,7 +17,7 @@ const Empty: React.FC<EmptyProps> & {
   locale: customizeLocale,
 }: EmptyProps) => {
   const locale = useLocale('Empty');
-  const prefixCls = usePrefixCls('empty-new');
+  const prefixCls = usePrefixCls('empty');
 
   const { description } = customizeLocale ?? locale ?? defaultLocale;
   const cls = classnames(
@@ -38,10 +32,6 @@ const Empty: React.FC<EmptyProps> & {
     imageContent = <NoDataImage />;
   } else if (image === 'no-result') {
     imageContent = <NoResultImage />;
-  } else if (image === 'no-find') {
-    imageContent = <NoFindImage />;
-  } else if (image === 'empty') {
-    imageContent = <EmptyImage />;
   } else {
     imageContent = image;
   }
@@ -63,6 +53,5 @@ const Empty: React.FC<EmptyProps> & {
 
 Empty.NO_DATA_IMAGE = NoDataImage;
 Empty.NO_RESULT_IMAGE = NoResultImage;
-Empty.NO_FIND_IMAGE = NoFindImage;
 
 export default Empty;

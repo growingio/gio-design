@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function ForbiddenSVG() {
+function SharedSVG() {
   return (
     <svg viewBox="0 0 190 144" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M17.0006 144C79.1158 117.166 113.57 117.501 174.001 144H17.0006Z" fill="url(#paint0_linear_7150:7078)" />
@@ -131,4 +131,4 @@ function ForbiddenSVG() {
   );
 }
 
-export default ForbiddenSVG;
+export default SharedSVG;

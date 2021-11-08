@@ -8,28 +8,29 @@
   &__image {
     display: inline-block;
     margin: 0;
+    &-normal {
+      width: 450px;
+    }
+    &-small {
+      width: 220px;
+    }
   }
-  &__image-normal {
-    width: 450px;
-  }
-  &__image-small {
-    width: 220px;
-  }
+
   &__description {
     margin: 8px 0 0;
     color: @gray-5;
     font-weight: 500;
     font-family: 'PingFang SC', sans-serif;
     text-align: center;
-  }
-  &__description-normal {
-    font-size: 18px;
-    line-height: 28px;
-  }
-  &__description-small {
-    font-size: 14px;
-    line-height: 22px;
-    font-weight: normal;
+    &-normal {
+      font-size: 18px;
+      line-height: 28px;
+    }
+    &-small {
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: normal;
+    }
   }
   &__footer {
     margin: 16px 0 0;

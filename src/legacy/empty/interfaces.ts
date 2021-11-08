@@ -8,9 +8,9 @@ export interface EmptyProps extends CommonProps {
    */
   size?: 'small' | 'large';
   /**
-   * 自定义图片，默认可用的图片有：`no-data`,'no-find' 和 `no-result`
+   * 自定义图片，默认可用的图片有：`no-data` 和 `no-result`
    */
-  image?: 'no-data' | 'no-result' | 'no-find' |'empty'| React.ReactNode;
+  image?: 'no-data' | 'no-result' | React.ReactNode;
   /**
    * 自定义描述内容
    */
