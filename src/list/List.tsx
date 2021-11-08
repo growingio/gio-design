@@ -17,10 +17,12 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> = (props, 
     disabled = false,
     value: controlledValue,
     isMultiple = false,
+    isCascader = false,
     collapse: initCollapse = 10,
     prefix,
     suffix,
     onChange,
+    selectedParent = [],
   } = props;
   const prefixCls = usePrefixCls(PREFIX);
 
@@ -34,6 +36,9 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> = (props, 
   const handleClick = (val: string | number) => {
     if (isArray(selectValue)) {
       onChange?.(indexOf(selectValue, val) !== -1 ? difference(selectValue, [val]) : [...selectValue, val]);
+    } else if (isCascader) {
+      // console.log('val', val);
+      onChange?.(val);
     } else if (selectValue !== val) {
       onChange?.(val);
     }
@@ -45,6 +50,8 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> = (props, 
       suffix={suffix?.(option)}
       disabled={option?.disabled ?? disabled}
       isMultiple={isMultiple}
+      isCascader={isCascader}
+      selectValue={selectValue}
       selected={utils.selectedStatus(option?.value, selectValue)}
       onClick={handleClick}
     />
@@ -56,24 +63,29 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> = (props, 
       return (child as OptionProps[])?.map((option: OptionProps) => renderChildren(option));
     }
     // childrens render
-    return (child as React.ReactNode[]).map((node: React.ReactElement<ItemProps>) => {
-      const {
-        props: { disabled: itemDisabled, prefix: itemPrefix, suffix: itemSuffix, onClick, ...rest },
-      } = node;
-      const item = { label: node?.props?.label, value: node?.props?.value };
-      return React.cloneElement(node, {
-        disabled: itemDisabled ?? disabled,
-        prefix: itemPrefix ?? prefix?.(item),
-        suffix: itemSuffix ?? suffix?.(item),
-        isMultiple,
-        selected: utils.selectedStatus(item.value, selectValue),
-        onClick: (value: string | number) => {
-          handleClick(value);
-          onClick?.(value);
-        },
-        ...rest,
-      });
-    });
+    return (child as React.ReactNode[]).map(
+      (node: React.ReactElement<ItemProps & { isMultiple?: boolean; isCascader?: boolean }>) => {
+        const {
+          props: { disabled: itemDisabled, prefix: itemPrefix, suffix: itemSuffix, onClick, ...rest },
+        } = node;
+        const item = { label: node?.props?.label, value: node?.props?.value };
+        return React.cloneElement(node, {
+          disabled: itemDisabled ?? disabled,
+          prefix: itemPrefix ?? prefix?.(item),
+          suffix: itemSuffix ?? suffix?.(item),
+          isMultiple,
+          isCascader,
+          selectedParent,
+          selectValue,
+          selected: utils.selectedStatus(item.value, selectValue),
+          onClick: (value: string | number) => {
+            handleClick(value);
+            onClick?.(value);
+          },
+          ...rest,
+        });
+      }
+    );
   };
 
   const renderExpandedItem = (length: number) => {
