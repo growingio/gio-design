@@ -1,9 +1,9 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { add, startOfMonth, startOfToday, subMonths } from 'date-fns';
-import { Basic, DefaultViewDates, DisabledDate } from '../DateRangePicker.stories';
+import { Basic, DefaultViewDates, DisabledDate } from '../StaticDateRangePicker.stories';
 
-describe('DateRangePicker', () => {
+describe('StaticDateRangePicker', () => {
   beforeAll(() => {
     // mock now is 2021/05/20 00:00:00.000
     jest.useFakeTimers('modern');

@@ -1,7 +1,5 @@
-import DatePicker from './DatePicker';
+import DatePicker from './Picker';
 
-export { default as DatePicker } from './DatePicker';
-export { DatePickerProps } from './interfaces';
-export { default as DatePickerContext } from 'rc-picker/lib/PanelContext';
+export type { DatePickerProps } from './interfaces';
 
 export default DatePicker;

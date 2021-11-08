@@ -2,13 +2,13 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { isBefore, startOfToday, subMonths } from 'date-fns';
-import Docs from './DateRangePicker.mdx';
-import { DateRangePicker, DateRangePickerProps } from './index';
+import Docs from './StaticDateRangePicker.mdx';
+import { StaticDateRangePicker, StaticDateRangePickerProps } from './index';
 
 import './style';
 
 export default {
-  component: DateRangePicker,
+  component: StaticDateRangePicker,
   parameters: {
     design: {
       type: 'figma',
@@ -19,10 +19,12 @@ export default {
       page: Docs,
     },
   },
-  title: 'Components/DateRangePicker',
+  title: 'Upgraded/StaticStaticDateRangePicker',
 } as Meta;
 
-const Template: Story<DateRangePickerProps> = (args) => <DateRangePicker onSelect={action('selected:')} {...args} />;
+const Template: Story<StaticDateRangePickerProps> = (args) => (
+  <StaticDateRangePicker onSelect={action('selected:')} {...args} />
+);
 
 export const Basic = Template.bind({});
 Basic.args = {};

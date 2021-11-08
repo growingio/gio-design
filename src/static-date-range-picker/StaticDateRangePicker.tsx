@@ -5,11 +5,11 @@ import RangeContext from 'rc-picker/lib/RangeContext';
 import { RangeValue } from 'rc-picker/lib/interface';
 import { useControlledState, usePrefixCls } from '@gio-design/utils';
 import isBefore from 'date-fns/isBefore';
-import DatePicker, { DatePickerContext } from '../date-picker';
-import { DateRangePickerProps } from './interfaces';
+import StaticDatePicker, { StaticDatePickerContext } from '../static-date-picker';
+import { StaticDateRangePickerProps } from './interfaces';
 import { getDefaultViewDates, calcClosingViewDate, mergeDates } from './utils';
 
-function DateRangePicker({
+function StaticDateRangePicker({
   className,
   defaultValue,
   defaultViewDates,
@@ -20,7 +20,7 @@ function DateRangePicker({
   style,
   value,
   locale,
-}: DateRangePickerProps) {
+}: StaticDateRangePickerProps) {
   const [viewDates, setViewDates] = React.useState<[Date, Date]>(defaultViewDates ?? getDefaultViewDates());
   const [hoveredDates, setHoveredDates] = React.useState<RangeValue<Date>>();
   const [dateIndex, setDateIndex] = React.useState<number>(0);
@@ -39,15 +39,15 @@ function DateRangePicker({
           hoverRangedValue: hoveredDates,
         }}
       >
-        <DatePicker
+        <StaticDatePicker
           className={`${preficCls}__${position}`}
-          disabledDate={(currentDate) => {
+          disabledDate={(currentDate: Date) => {
             const isBeforeStartDate =
               selectedValue && selectedValue[0] && !selectedValue[1] ? isBefore(currentDate, selectedValue[0]) : false;
             const isDisabledDate = disabledDate ? disabledDate(currentDate) : false;
             return isBeforeStartDate || isDisabledDate;
           }}
-          onPanelChange={(currentValue) => {
+          onPanelChange={(currentValue: Date) => {
             if (index) {
               setViewDates([calcClosingViewDate(currentValue, -1), currentValue]);
             } else {
@@ -66,7 +66,7 @@ function DateRangePicker({
 
   const cls = classnames(className, preficCls);
   return (
-    <DatePickerContext.Provider
+    <StaticDatePickerContext.Provider
       value={{
         onDateMouseEnter: (date) => {
           if (dateIndex) {
@@ -90,8 +90,8 @@ function DateRangePicker({
         {renderPicker('left')}
         {renderPicker('right')}
       </div>
-    </DatePickerContext.Provider>
+    </StaticDatePickerContext.Provider>
   );
 }
 
-export default DateRangePicker;
+export default StaticDateRangePicker;

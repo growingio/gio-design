@@ -1,6 +1,6 @@
 import type { Locale } from '@gio-design/utils';
-import datePickerLocale from '../date-picker/locales/zh-CN';
-import dateRangePickerLocale from '../date-range-picker/locales/zh-CN';
+import datePickerLocale from '../static-date-picker/locales/zh-CN';
+import dateRangePickerLocale from '../static-date-range-picker/locales/zh-CN';
 import dateRangeSelectorLocale from '../date-range-selector/locales/zh-CN';
 import dateSelectorLocale from '../date-selector/locales/zh-CN';
 import emptyLocale from '../empty/locales/zh-CN';

@@ -1,44 +1,35 @@
+import React from 'react';
 import { CommonProps } from '@gio-design/utils';
-import { Locale } from 'rc-picker/lib/interface';
-import { DatePickerProps } from '../date-picker';
+import { PopoverProps } from '../popover';
+import { StaticDateRangePickerProps } from '../static-date-range-picker';
+import { InputButtonProps } from '../input';
 
-export type DateRangePickerLocale = Omit<Locale, 'locale'>;
+export type NullableDate = Date | undefined;
+export type NullableString = string | undefined;
 
-export interface DateRangePickerProps extends CommonProps, Pick<DatePickerProps, 'disabledDate'> {
+export interface DateRangePickerProps
+  extends CommonProps,
+    Omit<InputButtonProps, 'value' | 'onSelect' | 'defaultValue'>,
+    Omit<StaticDateRangePickerProps, 'onSelect' | 'value' | 'defaultValue'>,
+    Omit<PopoverProps, 'trigger' | 'placement' | 'prefixCls' | 'children' | 'content'> {
   /**
-   * 默认选择的日期
+   * 自定义的触发器
    */
-  defaultValue?: [Date, Date];
+  trigger?: React.ReactNode;
   /**
-   * 默认可见日历中的日期
+   * 日期展示格式
    */
-  defaultViewDates?: [Date, Date];
+  format?: string;
   /**
-   * 国际化配置
-   */
-  locale?: DateRangePickerLocale;
-  /**
-   * 鼠标进入日期单元格的触发事件的回调
-   *
-   * @param date - 鼠标进入的单元格中的日期，`Date`
-   * @param index - 当前待设置日期的索引，只会有 `0` 和 `1`，`number`
-   */
-  onDateMouseEnter?: (date: Date, index: number) => void;
-  /**
-   * 鼠标离开日期单元格的触发事件的回调
-   *
-   * @param index - 当前待设置日期的索引，只会有 `0` 和 `1`，`number`
-   */
-  onDateMouseLeave?: (index: number) => void;
-  /**
-   * 选择日期时的回调，只要选择一个日期就会触发回调
+   * 选择日期时的回调
    *
    * @param dates - 选择的日期 `[Date, Date]`
-   * @param index - 选择日期的在 `dates` 中的索引，只会有 `0` 和 `1`，`number`
+   * @param dateStrings - 格式化后的日期 `[string, string]`
    */
-  onSelect?: (dates: [Date, Date], index: number) => void;
+  onSelect?: (dates: [NullableDate, NullableDate], dateStrings: NullableString) => void;
   /**
    * 选择的日期
    */
-  value?: [Date, Date];
+  value?: [NullableDate, NullableDate];
+  defaultValue?: [NullableDate, NullableDate];
 }

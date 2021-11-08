@@ -2,7 +2,7 @@
 import React from 'react';
 import { usePrefixCls, useControlledState } from '@gio-design/utils';
 import Selector from '../selector';
-import DateRangePicker from '../date-range-picker';
+import DateRangePicker from '../static-date-range-picker';
 import RangeInputTrigger from './RangeInputTrigger';
 import { DateRangeSelectorProps, NullableDate, NullableString } from './interfaces';
 import { formatDate } from '../date-selector/utils';

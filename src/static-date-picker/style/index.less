@@ -1,0 +1,218 @@
+@import '../../stylesheet/index.less';
+
+@new-date-picker-prefix-cls: ~'@{component-prefix}-picker';
+@icon-prefix-cls: ~'@{component-prefix}-icon';
+
+.@{new-date-picker-prefix-cls} {
+  &-decade-btn,
+  &-year-btn,
+  &-month-btn {
+    height: 24px;
+    .font(@weight: 500);
+
+    color: @palette-black-6;
+    line-height: 22px;
+    background: @palette-white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  &-decade-btn:hover,
+  &-year-btn:hover,
+  &-month-btn:hover {
+    background: @palette-gray-2;
+  }
+  &-decade-btn:active,
+  &-year-btn:active,
+  &-month-btn:active {
+    background: @palette-gray-3;
+  }
+
+  &-panel {
+    width: 280px;
+    text-align: center;
+    background: @palette-white;
+    border-radius: 4px;
+    filter: drop-shadow(0 8px 24px rgba(36, 46, 89, 0.1));
+  }
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    box-sizing: content-box;
+    height: 24px;
+    padding: 12px 8px 11px;
+    border-bottom: 1px solid @palette-gray-3;
+    border-radius: 4px 4px 0 0;
+
+    &-super-prev-btn,
+    &-super-next-btn,
+    &-prev-btn,
+    &-next-btn {
+      width: 24px;
+      height: 24px;
+      margin: 0 2px;
+      padding: 4px;
+      background: @palette-white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      .@{icon-prefix-cls} {
+        color: @palette-black-6;
+      }
+    }
+    &-super-prev-btn {
+      margin-left: 0;
+    }
+    &-super-next-btn {
+      margin-right: 0;
+    }
+    &-super-prev-btn:hover,
+    &-super-next-btn:hover,
+    &-prev-btn:hover,
+    &-next-btn:hover {
+      background: @palette-gray-2;
+    }
+    &-super-prev-btn:active,
+    &-super-next-btn:active,
+    &-prev-btn:active,
+    &-next-btn:active {
+      background: @palette-gray-3;
+    }
+
+    &-view {
+      flex-grow: 1;
+      color: @palette-black-6;
+      line-height: 24px;
+      text-align: center;
+      .font(@weight: 500);
+    }
+  }
+
+  &-body {
+    box-sizing: border-box;
+    padding: 20px;
+    background: @palette-white;
+    border-radius: 0 0 4px 4px;
+  }
+  &-decade-panel > &-body {
+    padding: 20px 8px;
+  }
+
+  &-content {
+    width: 100%;
+    min-height: 224px;
+    border-collapse: collapse;
+    th,
+    td {
+      position: relative;
+      min-width: 24px;
+    }
+
+    tr > th {
+      .font();
+      margin: 5px;
+      color: @palette-black-6;
+
+      line-height: 22px;
+      text-align: center;
+    }
+  }
+
+  &-cell {
+    box-sizing: border-box;
+    padding: 4px 0;
+    color: @palette-black-3;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      right: 0;
+      left: 0;
+      z-index: 1;
+      height: 30px;
+      content: '';
+    }
+
+    &-inner {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      min-width: 24px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 4px;
+      .font(@weight: normal);
+    }
+    &-in-view:not(&-selected):not(&-range-start):not(&-range-end):not(&-range-hover):not(&-range-hover-start):not(&-range-hover-end)
+      &-inner:hover {
+      background-color: @palette-gray-2;
+    }
+
+    &-in-view {
+      color: @palette-black-6;
+    }
+
+    &-today {
+      font-weight: 500;
+    }
+
+    &-in-view&-today {
+      color: @palette-blue-4;
+    }
+    &-in-view&-today &-inner::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      border: 1px solid @palette-blue-4;
+      border-radius: 4px;
+      content: '';
+    }
+
+    &-in-view&-selected {
+      color: @palette-white;
+    }
+    &-in-view&-selected &-inner {
+      background: @palette-blue-4;
+    }
+
+    &-disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+
+      &::before {
+        background: @palette-gray-1;
+      }
+    }
+    &-disabled&-in-view,
+    &-disabled&-today {
+      color: @palette-black-3;
+    }
+    &-disabled&-today &-inner::before {
+      border-color: @palette-black-3;
+    }
+  }
+
+  &-date-panel &-cell::before {
+    height: 24px;
+  }
+  &-date-panel &-cell-inner {
+    height: 24px;
+    line-height: 24px;
+  }
+
+  &-month-panel &-cell-inner,
+  &-quarter-panel &-cell-inner,
+  &-year-panel &-cell-inner {
+    width: 60px;
+    padding: 0 8px;
+  }
+  &-decade-panel &-cell-inner {
+    padding: 0 4px;
+  }
+}
