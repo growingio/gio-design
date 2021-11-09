@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { usePrefixCls, useSize } from '@gio-design/utils';
+import { usePrefixCls } from '@gio-design/utils';
 import { InputTriggerProps } from './interfaces';
 
 function InputTrigger({
@@ -15,10 +15,9 @@ function InputTrigger({
   style,
   suffix,
 }: InputTriggerProps) {
-  const size = useSize();
   const prefixCls = usePrefixCls('input-trigger');
 
-  const mergedSize = customizeSize || size;
+  const mergedSize = customizeSize;
   const cls = classnames(
     prefixCls,
     `${prefixCls}--${mergedSize}`,

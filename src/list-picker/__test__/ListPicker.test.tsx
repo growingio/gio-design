@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { DesignProvider } from '@gio-design/utils';
+import { DesignContext, DefaultContextProps } from '@gio-design/utils';
 import { Basic, Disabled, Empty, Groups, Size } from '../demos/ListPicker.stories';
 import ListPicker from '../ListPicker';
 import enUS from '../../locales/en-US';
@@ -59,19 +59,19 @@ describe('ListPicker', () => {
 
   it('renders with multi languages', () => {
     const { rerender } = render(
-      <DesignProvider locale={enUS}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, local: enUS }}>
         <Empty {...Empty.args} />
         <Groups {...Groups.args} />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
     expect(screen.queryByText('No data')).toBeTruthy();
     expect(screen.queryAllByText('Expand all').length).toBeGreaterThan(1);
 
     rerender(
-      <DesignProvider locale={zhCN}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, local: zhCN }}>
         <Empty {...Empty.args} />
         <Groups {...Groups.args} onSelect={undefined} />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
     expect(screen.queryByText('暂无数据')).toBeTruthy();
     expect(screen.queryAllByText('展开全部').length).toBeGreaterThan(1);

@@ -2,7 +2,7 @@ import React from 'react';
 import { set } from 'lodash';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { fakeXhr } from 'nise';
-import { DesignProvider } from '@gio-design/utils';
+import { DesignContext, DefaultContextProps } from '@gio-design/utils';
 import { AreaUpload, ControlledFileList, DefaultListUpload } from '../demos/Upload.stories';
 import { testFile, dataUrl, url as imgUrl } from './mock';
 import * as utils from '../utils';
@@ -807,33 +807,33 @@ describe('Testing drag upload', () => {
 describe('multiple language', () => {
   it('button trigger', () => {
     render(
-      <DesignProvider locale={enUS} size="middle">
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
         <Upload type="button" />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
   });
 
   it('drag trigger', () => {
     render(
-      <DesignProvider locale={enUS}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
         <Upload type="drag" />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
     expect(screen.getByText('Click or drag file to this area to upload')).toBeTruthy();
   });
 
   it('file list', () => {
     render(
-      <DesignProvider locale={enUS}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
         <DefaultListUpload {...DefaultListUpload.args} />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
     expect(screen.getByText('FileUploaded Successfully!')).toBeTruthy();
   });
 
   it('controlled file', () => {
     render(
-      <DesignProvider locale={enUS}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
         <Upload
           type="drag"
           file={
@@ -845,7 +845,7 @@ describe('multiple language', () => {
             } as any
           }
         />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
     expect(screen.getByText('Uploaded Successfully!')).toBeTruthy();
   });

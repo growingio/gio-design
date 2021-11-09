@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { DesignProvider } from '@gio-design/utils';
+import { DesignContext, DefaultContextProps } from '@gio-design/utils';
 import { Basic, DisabledDate } from '../demos/DatePicker.stories';
 import enUS from '../../locales/en-US';
 import zhCN from '../../locales/zh-CN';
@@ -34,16 +34,16 @@ describe('DatePicker', () => {
 
   it('renders with multi languages', () => {
     const { rerender } = render(
-      <DesignProvider locale={enUS}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
         <Basic />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
     expect(screen.queryAllByText(/Su|Mo|Tu|We|Th|Fr|Sa/)).toHaveLength(7);
 
     rerender(
-      <DesignProvider locale={zhCN}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: zhCN }}>
         <Basic />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
     expect(screen.queryAllByText(/一|二|三|四|五|六|日/)).toHaveLength(7);
   });

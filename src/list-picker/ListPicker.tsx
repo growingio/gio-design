@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import classnames from 'classnames';
-import { useControlledState, useLocale, usePrefixCls, useSize } from '@gio-design/utils';
+import { useControlledState, useLocale, usePrefixCls } from '@gio-design/utils';
 import Empty from '../components/empty';
 import Group from './Group';
 import Subgroup from './Subgroup';
@@ -49,10 +49,9 @@ const ListPicker: React.FC<ListPickerProps> & {
 }: ListPickerProps) => {
   const locale = useLocale('ListPicker');
   const prefixCls = usePrefixCls('list-picker');
-  const size = useSize();
   const [currentValue, setCurrentVaule] = useControlledState(value, defaultValue);
 
-  const coalescingSize = customizeSize ?? size;
+  const coalescingSize = customizeSize;
   const cls = classnames(
     prefixCls,
     {

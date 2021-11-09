@@ -1,6 +1,6 @@
 import React from 'react';
 import { withDesign } from 'storybook-addon-designs';
-import { DesignProvider } from '@gio-design/utils';
+import { DesignContext, DefaultContextProps } from '@gio-design/utils';
 import { DocsContainer } from '@storybook/addon-docs';
 import { IntlProvider } from 'react-intl';
 import enUS from '../src/locales/en-US';
@@ -27,9 +27,9 @@ const withDesignProvider = (Story, context) => {
     globals: { locale },
   } = context;
   return (
-    <DesignProvider locale={locale === 'en-US' ? enUS : undefined}>
+    <DesignContext.Provider value={{ ...DefaultContextProps, locale: 'en-US' ? enUS : undefined }}>
       <Story {...context} />
-    </DesignProvider>
+    </DesignContext.Provider>
   );
 };
 export const decorators = [withDesign, withDesignProvider];

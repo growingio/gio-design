@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { DesignProvider } from '@gio-design/utils';
+import { DesignContext, DefaultContextProps } from '@gio-design/utils';
 import { NoData, NoResult, Customize } from '../demos/Empty.stories';
 import Empty from '../Empty';
 import enUS from '../../locales/en-US';
@@ -46,16 +46,16 @@ describe('Empty', () => {
 
   it('renders with multi languages', () => {
     const { rerender } = render(
-      <DesignProvider locale={enUS}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
         <Empty />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
     expect(screen.queryByText('No data')).toBeTruthy();
 
     rerender(
-      <DesignProvider locale={zhCN}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: zhCN }}>
         <Empty />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
     expect(screen.queryAllByText('暂无数据')).toBeTruthy();
   });

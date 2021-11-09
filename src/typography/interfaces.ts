@@ -1,4 +1,4 @@
-import { CommonProps, SizeType } from '@gio-design/utils';
+import { CommonProps } from '@gio-design/utils';
 import { TooltipProps } from '../legacy/tooltip';
 
 export interface TextProps extends CommonProps {
@@ -18,7 +18,7 @@ export interface TextProps extends CommonProps {
   /**
    * The font size of text
    */
-  size?: SizeType;
+  size?: 'small' | 'medium' | 'large';
   /**
    * Show tooltip when clamp text
    */

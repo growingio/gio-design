@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
-import { usePrefixCls, useSize, useLocale } from '@gio-design/utils';
+import { usePrefixCls, useLocale } from '@gio-design/utils';
 import { Button } from '../../index';
 import Input from '../input';
 import { SearchBarProps } from './interfaces';
@@ -45,7 +45,6 @@ const clearStorage = (key: string): string[] => {
 };
 
 const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
-  const sizeContext = useSize();
   const prefixCls = usePrefixCls('searchbar');
   const [searchValue, setSearchValue] = useState('');
   const {
@@ -54,7 +53,7 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
     allowClearStorage = false,
     showClear = false,
     disabled = false,
-    size = sizeContext || 'middle',
+    size = 'middle',
     inputStyle,
     style,
     placeholder,
