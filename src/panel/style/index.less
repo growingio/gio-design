@@ -4,6 +4,7 @@
 
 .@{panel-prefix-cls} {
   position: relative;
+  box-sizing: border-box;
   padding-top: 20px;
   background: @gray-0;
   border: none;
@@ -16,11 +17,7 @@
   &__header {
     position: relative;
     display: flex;
-    padding: 0 20px 20px 20px;
-
-    &__border--bottom {
-      border-bottom: 1px solid @gray-2;
-    }
+    margin: 0 20px 20px;
 
     &__avatar {
       flex: 0 0 auto;
@@ -35,19 +32,15 @@
       position: relative;
       flex: 1 1 100%;
       &__title {
-        font-weight: 500;
-        font-size: 18px;
-        font-style: normal;
-        line-height: 32px;
+        .text-h2();
+        color: @gray-5;
       }
 
       &__description {
         position: relative;
+        margin-top: 4px;
         color: @gray-4;
-        font-weight: normal;
-        font-size: 14px;
-        font-style: normal;
-        line-height: 28px;
+        .text-body1();
       }
     }
 
@@ -62,9 +55,14 @@
   }
 
   &__tabs {
-    padding-right: 20px;
-    padding-left: 20px;
-    border-bottom: 1px solid @gray-2;
+    box-sizing: border-box;
+    width: 100%;
+    & > [data-testid='tabs'] {
+      margin: 0 20px;
+    }
+    &__divider {
+      margin: 0;
+    }
   }
 
   &__content {

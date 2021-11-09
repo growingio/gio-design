@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { difference } from 'lodash';
 import Typography from '../typography';
 import Tabs, { Tab } from '../tabs';
+import Divider from '../divider';
 import { PanelProps, TabPaneProps } from './interfaces';
 import TabPanel from './TabPanel';
 import { useControlledState, usePrefixCls } from '..';
@@ -28,7 +29,7 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
   const prefix = (classname?: string) => `${_prefixCls}${classname || ''}`;
 
   const [currentTabKey, setCurrentTabKey] = useControlledState(activeKey, defaultActiveKey);
-
+  const [currentTabIndex, setCurrentTabIndex] = useState(0);
   const panelChildren = React.Children.toArray(children);
 
   const panelTabs = panelChildren.filter(
@@ -39,7 +40,12 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
 
   const showTabs = panelTabs.length > 1;
 
-  const hasChildren = panelChildren.length > 0;
+  useEffect(() => {
+    const _currentIndex = panelTabs.findIndex((tab) => tab.key === `.$${currentTabKey}`);
+    if (_currentIndex > -1) {
+      setCurrentTabIndex(_currentIndex);
+    }
+  }, [currentTabKey, panelTabs]);
 
   const showHeader = title || description || !showTabs;
 
@@ -50,49 +56,53 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
 
   return (
     <div ref={ref} className={classnames(prefix(), className, { [prefix('--bordered')]: bordered })} style={style}>
-      <div
-        className={classnames(
-          prefix('__header'),
-          { [prefix(`__header__border--bottom`)]: hasChildren && !showTabs },
-          { [prefix('__header--hidden')]: !showHeader }
-        )}
-      >
+      <div className={classnames(prefix('__header'), { [prefix('__header--hidden')]: !showHeader })}>
         {avatar && (
           <div className={prefix('__header__avatar')}>
             <div className={prefix('__header__avatar--icon')}>{avatar}</div>
           </div>
         )}
         <div className={prefix('__header__meta')}>
-          <div className={classnames(prefix('__header__meta__title'))}>{title}</div>
-          <div className={classnames(prefix('__header__meta__description'))}>
-            {typeof description === 'string' ? <Typography.Text lines={3}>{description}</Typography.Text> : description}
-          </div>
+          {title && <div className={classnames(prefix('__header__meta__title'))}>{title}</div>}
+          {description && (
+            <div className={classnames(prefix('__header__meta__description'))}>
+              {typeof description === 'string' ? (
+                <Typography.Text lines={3}>{description}</Typography.Text>
+              ) : (
+                description
+              )}
+            </div>
+          )}
         </div>
-        <div className={classnames(prefix('__header__actions'))}>{actions}</div>
+        {actions && <div className={classnames(prefix('__header__actions'))}>{actions}</div>}
       </div>
       {showTabs ? (
-        <div className={classnames(prefix('__tabs'))}>
-          <Tabs
-            value={currentTabKey}
-            onChange={onTabChange}
-            onClick={onTabClick}
-            size={tabSize}
-            defaultValue={currentTabKey}
-          >
-            {panelTabs.map((tab) => {
-              const {
-                key: tabKey,
-                props: { name },
-              } = tab;
-              return (
-                <Tab value={String(tabKey).slice(2)} label={name} key={tabKey}>
-                  {tab}
-                </Tab>
-              );
-            })}
-          </Tabs>
-        </div>
-      ) : null}
+        <>
+          <div className={classnames(prefix('__tabs'))}>
+            <Tabs
+              value={currentTabKey}
+              onChange={onTabChange}
+              onClick={onTabClick}
+              size={tabSize}
+              defaultValue={currentTabKey}
+            >
+              {panelTabs.map((tab) => {
+                const {
+                  key: tabKey,
+                  props: { name },
+                } = tab;
+                return (
+                  <Tab value={String(tabKey).slice(2)} label={name} key={tabKey} classname={prefix('__tabs__tab')} />
+                );
+              })}
+            </Tabs>
+            <Divider className={prefix('__tabs__divider')} />
+          </div>
+          {panelTabs[currentTabIndex]}
+        </>
+      ) : (
+        panelTabs[0]
+      )}
       {otherChildren}
       {footer && <div className={prefix('__footer')}>{footer}</div>}
     </div>
