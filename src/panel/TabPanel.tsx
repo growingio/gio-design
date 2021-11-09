@@ -9,13 +9,13 @@ import ToolBar from './ToolBar';
 const TabPanel: React.FC<TabPaneProps> = (props) => {
   const { className, style, children } = props;
 
-  const childs = React.Children.toArray(children);
+  const tabChildren = React.Children.toArray(children);
 
-  const toolBars = childs.filter(
+  const toolBars = tabChildren.filter(
     (toolBar) => React.isValidElement(toolBar) && toolBar.type === ToolBar
   ) as React.ReactElement<TabNavProps>[];
 
-  const otherChildren = difference(childs, toolBars);
+  const otherChildren = difference(tabChildren, toolBars);
 
   const showToolBars = toolBars.length > 0;
 

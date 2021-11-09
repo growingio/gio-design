@@ -5,10 +5,10 @@ import { CalendarOutlined } from '@gio-design/icons';
 import ListPickerPage from './ListPickerPage';
 import ListPicker from '../ListPicker';
 import { ListPickerProps } from '../interfaces';
-import Typography from '../../typograhy';
+import Typography from '../../typography';
 
 import '../style';
-import '../../typograhy/style';
+import '../../typography/style';
 import './ListPicker.stories.less';
 
 const defaultItems = Array.from({ length: 5 }, (_, index) => index).map((i) => ({

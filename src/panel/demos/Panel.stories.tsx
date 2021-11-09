@@ -1,7 +1,8 @@
 import React, { Key, useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { PlusOutlined, UserOutlined } from '@gio-design/icons';
-import { SearchBar, Button } from '../..';
+import SearchBar from '../../search-bar';
+import Button from '../../button';
 import Panel from '../Panel';
 import TabPanel from '../TabPanel';
 import { PanelProps } from '../interfaces';
@@ -77,7 +78,7 @@ const MultiplePanel: Story<PanelProps> = (args) => {
           dataSource={dataSource1}
           columns={columns1}
           rowSelection={{ selectedRowKeys, onChange: setSelectedRowKeys }}
-          scroll={{ x: 1200, y: 'calc(100vh - 359px)' as any }}
+          scroll={{ x: 1200, y: 'calc(100vh - 359px)' }}
         />
       </TabPanel>
       <TabPanel key="2" name="权限">
@@ -109,7 +110,7 @@ const SinglePanel: Story<PanelProps> = (args) => {
           dataSource={dataSource1}
           columns={columns1}
           rowSelection={{ selectedRowKeys, onChange: setSelectedRowKeys }}
-          scroll={{ x: 1200, y: 'calc(100vh - 359px)' as any }}
+          scroll={{ x: 1200, y: 'calc(100vh - 359px)' }}
         />
       </TabPanel>
     </Panel>
@@ -121,6 +122,7 @@ const TitleInfoCardStory: Story<PanelProps> = (args) => <Panel {...args} />;
 export const TableCard = MultiplePanel.bind({});
 TableCard.args = {
   title: '全部成员(233)',
+  defaultActiveKey: '1',
   description: '这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题'.repeat(10),
 };
 
@@ -143,4 +145,5 @@ TitleInfoCard.args = {
     </div>
   ),
   bordered: true,
+  defaultActiveKey: '1',
 };

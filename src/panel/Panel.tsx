@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useControlledState } from '@gio-design/utils';
+import React from 'react';
 import classnames from 'classnames';
 import { difference } from 'lodash';
-import Typography from '../typograhy';
-import TabNav from '../tab-nav';
+import Typography from '../typography';
+import Tabs, { Tab } from '../tabs';
 import { PanelProps, TabPaneProps } from './interfaces';
 import TabPanel from './TabPanel';
-import { usePrefixCls } from '..';
+import { useControlledState, usePrefixCls } from '..';
 
 const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (props, ref) => {
   const {
@@ -14,8 +13,7 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
     description,
     children,
     footer,
-    tabType = 'line',
-    tabSize = 'middle',
+    tabSize = 'normal',
     activeKey,
     defaultActiveKey,
     onTabClick,
@@ -29,33 +27,25 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
   const _prefixCls = usePrefixCls('panel');
   const prefix = (classname?: string) => `${_prefixCls}${classname || ''}`;
 
-  const [key, setKey] = useControlledState(activeKey, defaultActiveKey);
-  const [currentTabIndex, setCurrentTabIndex] = useState(0);
+  const [currentTabKey, setCurrentTabKey] = useControlledState(activeKey, defaultActiveKey);
 
-  const childs = React.Children.toArray(children);
+  const panelChildren = React.Children.toArray(children);
 
-  const tabs = childs.filter(
+  const panelTabs = panelChildren.filter(
     (child) => React.isValidElement(child) && child.type === TabPanel
   ) as React.ReactElement<TabPaneProps>[];
 
-  const otherChilds = difference(childs, tabs);
+  const otherChildren = difference(panelChildren, panelTabs);
 
-  const showTabs = tabs.length > 1;
+  const showTabs = panelTabs.length > 1;
 
-  const hasChildren = childs.length > 0;
-
-  useEffect(() => {
-    const _currentIndex = tabs.findIndex((tab) => tab.key === `.$${key}`);
-    if (_currentIndex > -1) {
-      setCurrentTabIndex(_currentIndex);
-    }
-  }, [key, tabs]);
+  const hasChildren = panelChildren.length > 0;
 
   const showHeader = title || description || !showTabs;
 
-  const onTabChange = (_key: string) => {
-    setKey(_key);
-    onChange?.(_key);
+  const onTabChange = (tabKey: string) => {
+    setCurrentTabKey(tabKey);
+    onChange?.(tabKey);
   };
 
   return (
@@ -82,32 +72,28 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
       </div>
       {showTabs ? (
         <div className={classnames(prefix('__tabs'))}>
-          <TabNav
-            size={tabSize}
-            type={tabType}
-            activeKey={key}
-            onTabClick={onTabClick}
-            defaultActiveKey={key}
+          <Tabs
+            value={currentTabKey}
             onChange={onTabChange}
+            onClick={onTabClick}
+            size={tabSize}
+            defaultValue={currentTabKey}
           >
-            {tabs.map((tab) => {
+            {panelTabs.map((tab) => {
               const {
-                key: _key,
-                props: { name, disabled },
+                key: tabKey,
+                props: { name },
               } = tab;
               return (
-                <TabNav.Item disabled={disabled} key={String(_key).slice(2)}>
-                  {name}
-                </TabNav.Item>
+                <Tab value={String(tabKey).slice(2)} label={name} key={tabKey}>
+                  {tab}
+                </Tab>
               );
             })}
-          </TabNav>
+          </Tabs>
         </div>
       ) : null}
-      <div className={prefix('__content')}>
-        {tabs[currentTabIndex]}
-        {otherChilds}
-      </div>
+      {otherChildren}
       {footer && <div className={prefix('__footer')}>{footer}</div>}
     </div>
   );
