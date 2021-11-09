@@ -13,6 +13,7 @@ import cascaderLocale from '../legacy/cascader/locales/zh-CN';
 import paginationLocale from '../legacy/pagination/locales/zh-CN';
 import tableLocale from '../legacy/table/locales/zh-CN';
 import uploadLocale from '../upload/locales/zh-CN';
+import staticPastTimePickerLocale from '../static-past-time-picker/locales/zh-CN';
 
 export const locale: Locale = {
   code: 'zh-CN',
@@ -57,6 +58,9 @@ export const locale: Locale = {
   },
   Upload: {
     ...uploadLocale,
+  },
+  StaticPastTimePicker: {
+    ...staticPastTimePickerLocale,
   },
 };
 
