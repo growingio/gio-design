@@ -22,8 +22,12 @@ export default function ListPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
-        <li>新增size属性，控制两种大小，normal宽度为450，small宽度为220</li>
-        <li>兼容了过去的304，新的status有noResource|noAuth|noShared| 304 | 404 | 500;</li>
+        <li>将empty和page合并了，用type控制预制图片和描述</li>
+        <li>新增size属性，控制两种大小，normal宽度为450，small宽度为220，empty图normal宽度为300，small宽度为150</li>
+        <li>
+          兼容了过去的304,404，新的type有 empty | noData | noResult | noFind | noAuth | noResource | noShared | 304 |
+          404 | 500
+        </li>
       </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
 

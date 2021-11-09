@@ -37,3 +37,27 @@
     text-align: center;
   }
 }
+
+.@{page-prefix-cls}-empty {
+  .@{page-prefix-cls}__image {
+    &-normal {
+      width: 300px;
+    }
+    &-small {
+      width: 150px;
+    }
+  }
+  .@{page-prefix-cls}__description {
+    color: @gray-4;
+    font-weight: normal;
+    &-normal {
+      font-size: 14px;
+      line-height: 22px;
+    }
+    &-small {
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+}

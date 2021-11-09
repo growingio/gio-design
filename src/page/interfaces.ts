@@ -1,25 +1,36 @@
-export type StatusCodeType = 'noResource'|'noAuth'|'noShared'| 304 | 404 | 500;
+import React from 'react';
+import { typeMap } from './Page';
 
 export interface PageProps {
+  /**
+   * 预制类型，使用组件自带的图片和描述
+   */
+  type?: keyof typeof typeMap;
+  /**
+   * 外层classname
+   */
   className?: string;
+  /**
+   * 外层容器style
+   */
   style?: React.CSSProperties;
   /**
-   * HTTP 响应状态码
+   * 图片预图案
    */
-  statusCode: StatusCodeType;
+  image?: React.ReactNode;
   /**
    * 自定义描述内容
    */
-  description: React.ReactNode;
+  description?: React.ReactNode;
   /**
-   * Call to action
+   * 下方buttn的text 和 onclick 包装对象
    */
   cta?: {
     text: string;
     onClick: React.MouseEventHandler<HTMLElement>;
   };
-   /**
+  /**
    * Size have two types
    */
-  size?:'normal'| 'small'
+  size?: 'normal' | 'small';
 }
