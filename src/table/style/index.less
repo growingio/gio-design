@@ -1,9 +1,9 @@
 @import '../../stylesheet/variables/index.less';
+@import '../../checkbox/style/index.less';
+@import '../../popover/style/index.less';
+@import '../../empty/style/index.less';
 
 @table-prefix-cls: ~'@{component-prefix}-table-new';
-@checkbox-prefix-cls: ~'@{component-prefix}-checkbox';
-@popover-prefix-cls: ~'@{component-prefix}-popover';
-@empty-prefix-cls: ~'@{component-prefix}-empty';
 
 .@{table-prefix-cls} {
   color: @gray-5;
@@ -16,6 +16,7 @@
 
   & &-container {
     position: relative;
+    border-bottom: 1px solid @gray-2;
     table {
       position: relative;
       width: 100%;
@@ -46,7 +47,7 @@
         display: none;
       }
     }
-    .gio-checkbox-wrapper + .@{table-prefix-cls}-resizable-handle {
+    .@{checkbox-wrapper-cls} + .@{table-prefix-cls}-resizable-handle {
       display: none;
     }
 
@@ -64,6 +65,9 @@
     border-right: unset;
     border-bottom: 1px solid @gray-2;
     border-left: unset;
+  }
+  &-tbody > tr:last-child > &-cell {
+    border-bottom: 0;
   }
 
   &-tbody > &-row-selected > &-cell {
