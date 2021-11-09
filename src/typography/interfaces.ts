@@ -18,7 +18,7 @@ export interface TextProps extends CommonProps {
   /**
    * The font size of text
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'middle' | 'large';
   /**
    * Show tooltip when clamp text
    */

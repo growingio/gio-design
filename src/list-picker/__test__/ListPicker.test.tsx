@@ -59,7 +59,7 @@ describe('ListPicker', () => {
 
   it('renders with multi languages', () => {
     const { rerender } = render(
-      <DesignContext.Provider value={{ ...DefaultContextProps, local: enUS }}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
         <Empty {...Empty.args} />
         <Groups {...Groups.args} />
       </DesignContext.Provider>

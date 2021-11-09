@@ -108,7 +108,7 @@ describe('Testing search-bar', () => {
 
   it('multiple language', async () => {
     render(
-      <DesignContext.Provider value={{ ...DefaultContextProps, local: enUS }}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
         <SearchBar showClear showStorage id="demo" allowClearStorage />
       </DesignContext.Provider>
     );

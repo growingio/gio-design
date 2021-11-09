@@ -4,11 +4,11 @@ import { useLocale, usePrefixCls } from '@gio-design/utils';
 import { LeftDoubleOutlined, LeftOutlined, RightOutlined, RightDoubleOutlined } from '@gio-design/icons';
 import PickerPanel from 'rc-picker/lib/PickerPanel';
 import generateDateFns from 'rc-picker/lib/generate/dateFns';
-import defaultLocale from './locales/zh-CN';
+import { Locale } from 'rc-picker/lib/interface';
 import { StaticDatePickerProps } from './interfaces';
 
 function DatePicker({ viewDate, ...restProps }: StaticDatePickerProps) {
-  const locale = useLocale('DatePicker') || defaultLocale;
+  const locale = useLocale<Locale>('DatePicker');
   return (
     <PickerPanel<Date>
       {...restProps}

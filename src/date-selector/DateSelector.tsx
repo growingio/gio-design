@@ -3,6 +3,7 @@ import { useLocale, usePrefixCls, useControlledState } from '@gio-design/utils';
 import { CalendarOutlined } from '@gio-design/icons';
 import { format } from 'date-fns/fp';
 import PanelContext from 'rc-picker/lib/PanelContext';
+import { Locale } from 'rc-picker/lib/interface';
 import Selector from '../selector';
 import DatePicker from '../static-date-picker';
 import { DateSelectorProps } from './interfaces';
@@ -23,7 +24,7 @@ function DateSelector({
   const [hoveredDate, setHoveredDate] = React.useState<Date | undefined>();
   const [controlledValue, setControlledValue] = useControlledState(value, defaultValue);
   const prefixCls = usePrefixCls('date-selector');
-  const locale = useLocale('DateSelector');
+  const locale = useLocale<Locale>('DateSelector');
   const coalescedLocale = customizeLocale ?? locale ?? defaultLocale;
   const { dateSelect } = coalescedLocale;
 

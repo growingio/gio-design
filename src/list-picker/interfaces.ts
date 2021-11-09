@@ -67,7 +67,7 @@ export interface ListPickerProps
   /**
    * 列表项的尺寸
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'middle' | 'large';
 }
 
 export interface ItemType extends Pick<ValueableProps, 'value'> {

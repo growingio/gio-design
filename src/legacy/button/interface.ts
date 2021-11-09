@@ -13,7 +13,7 @@ export interface BaseButtonProps {
   /**
    设置按钮大小
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'middle' | 'large';
   /**
    设置按钮载入状态
    */

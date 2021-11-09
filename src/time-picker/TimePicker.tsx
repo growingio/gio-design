@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { StopWatchOutlined } from '@gio-design/icons';
 import { useLocale, useControlledState, usePrefixCls } from '@gio-design/utils';
 import { format } from 'date-fns';
+import { Locale } from 'rc-picker/lib/interface';
 import Button from '../button';
 import Popover from '../popover';
 import { InputButton } from '../input';
@@ -35,7 +36,7 @@ export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) =>
   const [controlledValue, setControlledValue] = useControlledState(value, defaultValue);
   const [time, setTime] = React.useState<Date | undefined>(controlledValue);
   const prefixCls = usePrefixCls('time-picker-new');
-  const locale = useLocale('TimePicker');
+  const locale = useLocale<Locale>('TimePicker');
   const coalescedLocale = customizeLocale ?? locale ?? defaultLocale;
   const { now, ok, timeSelect } = coalescedLocale;
   const overlayCls = classnames(`${prefixCls}-overlay`, overlayClassName);

@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { usePrefixCls, useSize } from '@gio-design/utils';
+import { usePrefixCls } from '@gio-design/utils';
 import { CalendarOutlined, CloseCircleFilled } from '@gio-design/icons';
 import { NullableString, RangeInputTriggerProps } from './interfaces';
 
@@ -14,11 +14,10 @@ function RangeInputTrigger({
   size: customizeSize,
   value = [undefined, undefined],
 }: RangeInputTriggerProps) {
-  const size = useSize();
   const prefixCls = usePrefixCls('range-input-trigger');
   const [hovered, setHovered] = React.useState<boolean>(false);
 
-  const mergedSize = customizeSize || size;
+  const mergedSize = customizeSize;
   const cls = classnames(
     prefixCls,
     `${prefixCls}--${mergedSize}`,

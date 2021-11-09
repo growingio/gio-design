@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen, act, waitFor } from '@testing-library/react';
-import { DefaultContextProps, DesignContext, DesignContextProps } from '@gio-design/utils';
+import { DefaultContextProps, DesignContext } from '@gio-design/utils';
 import { Default } from '../demos/Pagination.stories';
 import Pagination from '../Pagination';
 import { generatePageArray } from '../until';
@@ -172,7 +172,7 @@ describe('Testing pagination', () => {
 
   it('multiple language', () => {
     render(
-      <DesignContext.Provider value={{ ...DefaultContextProps, local: enUS }}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
         <Default {...Default.args} />
       </DesignContext.Provider>
     );

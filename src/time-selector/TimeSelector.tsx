@@ -2,6 +2,7 @@ import React from 'react';
 import { TimeOutlined } from '@gio-design/icons';
 import { useLocale, useControlledState, usePrefixCls } from '@gio-design/utils';
 import { format } from 'date-fns';
+import { Locale } from 'rc-picker/lib/interface';
 import Button from '../legacy/button';
 import Selector from '../selector';
 import TimePicker from '../static-time-picker/StaticTimePicker';
@@ -22,7 +23,7 @@ function TimeSelector({
   const [controlledValue, setControlledValue] = useControlledState(value, defaultValue);
   const [time, setTime] = React.useState<Date | undefined>(controlledValue);
   const prefixCls = usePrefixCls('date-selector');
-  const locale = useLocale('TimeSelector');
+  const locale = useLocale<Locale>('TimeSelector');
   const coalescedLocale = customizeLocale ?? locale ?? defaultLocale;
   const { now, ok, timeSelect } = coalescedLocale;
 

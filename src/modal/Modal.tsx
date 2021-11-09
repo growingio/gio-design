@@ -32,10 +32,7 @@ const Modal: React.FC<ModalProps> = ({
   const wrapperCls = classnames(wrapClassName, `${prefix}__wrapper`);
   const closeCls = classnames(`${prefix}__close`);
 
-  const locale = useLocale('Modal');
-  const { closeText, okText } = {
-    ...locale,
-  } as ModalLocale;
+  const { closeText, okText } = useLocale<ModalLocale>('Modal');
 
   const renderFooter = () => {
     const cls = classnames(`${prefix}__footer`);
