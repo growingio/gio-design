@@ -37,7 +37,7 @@ function getToastInstance(args: ArgsProps, callback: (i: any) => void) {
   } = args;
 
   const outerPrefixCls = args.prefixCls ?? defaultPrefixCls;
-  const prefixCls = `${outerPrefixCls}-toast`;
+  const prefixCls = `${outerPrefixCls}-toast-new`;
 
   if (toastInstance) {
     callback({ instance: toastInstance, prefixCls });

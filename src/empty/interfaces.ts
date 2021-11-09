@@ -6,7 +6,7 @@ export interface EmptyProps extends CommonProps {
   /**
    * 组件的尺寸
    */
-  size?: 'small' | 'large';
+  size?: 'small' | 'normal';
   /**
    * 自定义图片，默认可用的图片有：`no-data`,'no-find' 和 `no-result`
    */

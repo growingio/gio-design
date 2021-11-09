@@ -13,7 +13,7 @@ describe('List', () => {
 
   it('render empty when no children and items', () => {
     render(<List />);
-    expect(screen.queryByText('No data')).toBeTruthy();
+    expect(screen.queryByText('No data')).toBeNull();
   });
 
   it('renders with JSX style API', () => {

@@ -7,7 +7,7 @@ export { default as Card, CardProps, CardMetaProps } from './card';
 export { default as Checkbox, CheckboxGroup, CheckboxProps, CheckboxGroupProps, CheckboxOptionType } from './checkbox';
 export { default as Drawer, DrawerProps } from './legacy/drawer';
 export { default as Dropdown, DropdownProps } from './dropdown';
-export { default as Empty, EmptyProps } from './components/empty';
+export { default as Empty, EmptyProps } from './empty';
 export {
   default as Input,
   InputProps,

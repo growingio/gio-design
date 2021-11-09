@@ -8,12 +8,12 @@ import { ArgsProps } from '../interface';
 import '../style';
 
 export default {
-  title: 'Components/Toast',
+  title: 'upgraded/Toast',
   decorators: [withDesign],
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A1684',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4093%3A45841',
       allowFullscreen: true,
     },
     docs: {
@@ -54,7 +54,7 @@ export const Default: Story<ArgsProps> = (args) => {
 };
 Default.args = {
   content: '提示文案！',
-  duration: 2,
+  duration: 5,
   key: '',
 };
 
@@ -62,21 +62,41 @@ export const NextStep: Story<ArgsProps> = (args) => {
   const handleSuccess = () => {
     Toast.success(args);
   };
+  const handleInfo = () => {
+    Toast.info(args);
+  };
+  const handleFail = () => {
+    Toast.error(args);
+  };
+  const handleWarn = () => {
+    Toast.warning(args);
+  };
   return (
     <div>
-      <Button onClick={handleSuccess}>成功</Button>
+      <Button style={{ marginRight: 10 }} onClick={handleSuccess}>
+        成功
+      </Button>
+      <Button style={{ marginRight: 10 }} onClick={handleFail}>
+        失败
+      </Button>
+      <Button style={{ marginRight: 10 }} onClick={handleWarn}>
+        警告
+      </Button>
+      <Button style={{ marginRight: 10 }} onClick={handleInfo}>
+        提示
+      </Button>
     </div>
   );
 };
 NextStep.args = {
   content: (
     <span>
-      操作成功！
+      文案
       <a style={{ color: '#3867f4', textDecoration: 'underline' }} href="https://www.growingio.com">
         去看看
       </a>
     </span>
   ),
-  duration: 2,
+  duration: 5,
   key: '',
 };

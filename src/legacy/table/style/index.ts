@@ -5,4 +5,4 @@ import '../../pagination/style/index';
 import '../../tooltip/style/index';
 import '../../popover/style/index';
 import '../../search-bar/style/index';
-import '../../../components/empty/style/index';
+import '../../../empty/style/index';

@@ -23,6 +23,7 @@ export default function EmptyPage() {
       <p>Upgrading Guide</p>
       <ul>
         <li>将empty图移入到了image的内部，新增了no-find</li>
+        <li>从过去的large smalll变成了normal small</li>
         <li>新的image参数为 image?: no-data | no-result | no-find |empty| React.ReactNode;</li>
       </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>

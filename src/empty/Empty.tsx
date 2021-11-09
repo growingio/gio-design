@@ -6,7 +6,7 @@ import NoDataImage from './NoDataImage';
 import NoResultImage from './NoResultImage';
 import NoFindImage from './NoFindImage';
 import { EmptyProps } from './interfaces';
-import Button from '../legacy/button';
+import Button from '../button';
 import defaultLocale from './locales/zh-CN';
 
 const Empty: React.FC<EmptyProps> & {
@@ -16,7 +16,7 @@ const Empty: React.FC<EmptyProps> & {
 } = ({
   className,
   style,
-  size = 'large',
+  size = 'normal',
   image = 'no-data',
   description: customizeDesc,
   cta,

@@ -14,7 +14,7 @@ import usePagination from './hook/usePagination';
 import useSelection, { getRowKey } from './hook/useSelection';
 import Title from './Title';
 import { TableProps, ColumnsType, OnTriggerStateUpdateProps, SortState, ForwardRefFn } from './interface';
-import Empty from '../components/empty';
+import Empty from '../empty';
 import { TABLE_PREFIX_CLS, translateInnerColumns } from './utils';
 import Loading from '../loading';
 import useHackOnRow from './hook/useHackOnRow';
