@@ -1,15 +1,16 @@
 import { CommonProps, SizeType } from '@gio-design/utils';
 import { TooltipProps } from '../legacy/tooltip';
 
-export interface TextProps extends Pick<CommonProps, 'className'> {
+export interface TextProps extends CommonProps {
   /**
    * The text you want to clamp.
    */
   children: string;
   /**
    * The color of text
+   * @default `inherit`
    */
-  color?: 'black' | 'gray';
+  color?: React.CSSProperties['color'];
   /**
    * Max count of lines allowed.
    */

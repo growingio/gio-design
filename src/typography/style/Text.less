@@ -4,14 +4,7 @@
 
 .@{text-prefix-cls} {
   .font();
-
-  &--black {
-    color: @palette-black-6;
-  }
-  &--gray {
-    color: @palette-black-4;
-  }
-
+  color: var(--color, 'inherit');
   &--small {
     font-size: 12px;
     line-height: 20px;

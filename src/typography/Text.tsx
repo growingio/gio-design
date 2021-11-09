@@ -11,22 +11,21 @@ const LinesEllipsis = responsiveHOC()(InnerLinesEllipsis);
 function Text({
   children,
   className,
-  color = 'black',
+  color = 'inherit',
   lines = 1,
   size: customizeSize,
   tooltip,
   trimRight = true,
+  style,
 }: TextProps) {
   const size = useSize();
   const prefixCls = usePrefixCls('text');
   const ref = React.useRef<{ isClamped: () => boolean }>(null);
   const [clamped, setClamped] = React.useState(false);
-
   const mergedSize = customizeSize ?? size;
   const cls = classnames(
     prefixCls,
     {
-      [`${prefixCls}--${color}`]: true,
       [`${prefixCls}--${mergedSize}`]: true,
     },
     className
@@ -40,6 +39,7 @@ function Text({
     <LinesEllipsis
       innerRef={ref}
       className={cls}
+      style={{ '--color': color, ...style }}
       maxLine={lines}
       text={children}
       trimRight={trimRight}
