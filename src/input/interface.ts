@@ -136,5 +136,10 @@ export interface InputButtonProps
    * 当Input Button的值修改后的方法
    */
   onInputChange?: (value: string) => void;
+  /**
+   * 点击onClear回调
+   *
+   */
+  onClear?: (e?: React.MouseEvent<Element, MouseEvent>) => void;
   forwardRef?: React.MutableRefObject<HTMLInputElement | null> | ((instance: HTMLInputElement | null) => void) | null;
 }

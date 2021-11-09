@@ -15,8 +15,8 @@ export interface ListProps {
   children?: React.ReactNode | React.ReactNode[];
   value?: string | number | (string | number)[];
   disabled?: boolean;
-  prefix?: (option: OptionProps) => string | React.ReactNode;
-  suffix?: (option: OptionProps) => string | React.ReactNode;
+  prefix?: (option?: OptionProps) => string | React.ReactNode;
+  suffix?: (option?: OptionProps) => string | React.ReactNode;
   isMultiple?: boolean;
   collapse?: number;
   onChange?: (value: string | number | (string | number)[]) => void;
