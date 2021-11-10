@@ -10,7 +10,7 @@ import List from '../../legacy/list';
 import { properties } from '../list/__tests__/data';
 
 export default {
-  title: 'Components/Dropdown',
+  title: 'legacy/Dropdown',
   component: Dropdown,
   parameters: {
     docs: {

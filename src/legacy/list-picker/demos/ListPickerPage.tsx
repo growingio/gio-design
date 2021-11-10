@@ -17,7 +17,7 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="components-components-listpicker--basic" />
+        <Story id="legacy-legacy-listpicker--basic" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '分组' })}</Subheading>
@@ -25,17 +25,17 @@ export default function ListPage() {
         {formatMessage({ defaultMessage: '支持两级分组，一级分钟用 ItemGroup，二级分组用 ItemSubgroup。' })}
       </Description>
       <Canvas>
-        <Story id="components-components-listpicker--groups" />
+        <Story id="legacy-legacy-listpicker--groups" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '空样式' })}</Subheading>
       <Canvas>
-        <Story id="components-components-listpicker--empty" />
+        <Story id="legacy-legacy-listpicker--empty" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '不同尺寸' })}</Subheading>
       <Canvas>
-        <Story id="components-components-listpicker--size" />
+        <Story id="legacy-legacy-listpicker--size" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自动省略' })}</Subheading>
@@ -45,7 +45,7 @@ export default function ListPage() {
         })}
       </Description>
       <Canvas>
-        <Story id="components-components-listpicker--ellipsis" />
+        <Story id="legacy-legacy-listpicker--ellipsis" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

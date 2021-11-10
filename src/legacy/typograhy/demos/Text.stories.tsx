@@ -54,7 +54,7 @@ export const Styles = () => (
 );
 
 export default {
-  title: 'Components/Text',
+  title: 'legacy/Text',
   component: Text,
   parameters: {
     docs: {

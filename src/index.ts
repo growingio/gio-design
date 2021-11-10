@@ -3,7 +3,7 @@ export { default as Avatar, AvatarGroup, AvatarProps } from './avatar';
 export { default as Banner, BannerProps } from './banner';
 export { default as Breadcrumbs, BreadcrumbsProps } from './breadcrumbs';
 export { default as Button, IconButton, ButtonProps, IconButtonProps, ButtonType } from './button';
-export { default as Card, CardProps, CardMetaProps } from './card';
+export { default as Card, CardProps, CardMetaProps } from './legacy/card';
 export { default as Checkbox, CheckboxGroup, CheckboxProps, CheckboxGroupProps, CheckboxOptionType } from './checkbox';
 export { default as Drawer, DrawerProps } from './drawer';
 export { default as Dropdown, DropdownProps } from './dropdown';
@@ -21,13 +21,11 @@ export {
   Password,
   TextArea,
 } from './input';
-export { default as Layout, LayoutProps } from './layout';
+export { default as Layout, LayoutProps } from './legacy/layout';
 export { default as Link, LinkProps } from './link';
 export { default as List, ListProps } from './list';
-export { default as ListPicker, ListPickerProps } from './legacy/list-picker';
-export { default as ListSelector, ListSelectorProps } from './legacy/list-selector';
 export { default as Loading, LoadingProps } from './loading';
-export { default as Menu, MenuProps, SubMenuProps, MenuItemProps, MenuMode } from './menu';
+export { default as Menu, MenuProps, SubMenuProps, MenuItemProps, MenuMode } from './legacy/menu';
 export { default as Modal, ModalProps } from './modal';
 export { default as Page, PageProps } from './page';
 export { default as Pagination, PaginationProps } from './pagination';
@@ -59,21 +57,23 @@ export {
   GioTreeNodeExpandedEvent,
   GioTreeNodeSelectedEvent,
   GioTreeNodeProps,
-} from './tree';
+} from './legacy/tree';
 export { default as Upload, UploadProps, UploadType, UploadStatus } from './upload';
 export { default as Select, SelectProps, OptionProps } from './select';
-export { default as Form, FormLayout, FormProps } from './form';
-export { default as Grid, GridProps } from './grid';
+export { default as Form, FormLayout, FormProps } from './legacy/form';
+export { default as Grid, GridProps } from './legacy/grid';
 export { default as Row, RowProps } from './row';
 export { default as Col, ColProps } from './col';
 export { default as TimePicker, TimePickerProps } from './legacy/time-picker';
 export { default as Cascader, CascaderProps } from './legacy/cascader';
 export { default as DatePicker, DateRangePicker, DatePickerProps, DateRangePickerProps } from './legacy/date-picker';
 export { default as Space, SpaceProps, ItemProps } from './legacy/space';
-export { default as TreeSelect, TreeNode, LabeledValue, SelectValue, TreeSelectProps } from './tree-select';
+export { default as TreeSelect, TreeNode, LabeledValue, SelectValue, TreeSelectProps } from './legacy/tree-select';
 export { default as Steps } from './legacy/steps';
 export { default as Empty, EmptyProps } from './legacy/empty';
 export { default as TabNav, TabNavProps } from './legacy/tab-nav';
+export { default as ListPicker, ListPickerProps } from './legacy/list-picker';
+export { default as ListSelector, ListSelectorProps } from './legacy/list-selector';
 
 // provide config context
 export { ConfigContext, ConfigConsumer, withConfigConsumer } from './legacy/config-provider';

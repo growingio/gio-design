@@ -20,9 +20,6 @@ export default {
       url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A1753',
       allowFullscreen: true,
     },
-    docs: {
-      page: null,
-    },
   },
 } as Meta;
 
