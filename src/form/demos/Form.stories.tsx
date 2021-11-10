@@ -8,7 +8,8 @@ import '../style';
 import '../../legacy/input/style';
 import '../../legacy/button/style';
 import '../style/demo.stories.less';
-import { Button, Input, Modal } from '../../index';
+import { Button, Input } from '../../index';
+import Modal from '../../legacy/modal';
 
 export default {
   title: 'Components/Form',

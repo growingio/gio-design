@@ -24,8 +24,8 @@ export {
 export { default as Layout, LayoutProps } from './layout';
 export { default as Link, LinkProps } from './link';
 export { default as List, ListProps } from './list';
-export { default as ListPicker, ListPickerProps } from './list-picker';
-export { default as ListSelector, ListSelectorProps } from './list-selector';
+export { default as ListPicker, ListPickerProps } from './legacy/list-picker';
+export { default as ListSelector, ListSelectorProps } from './legacy/list-selector';
 export { default as Loading, LoadingProps } from './loading';
 export { default as Menu, MenuProps, SubMenuProps, MenuItemProps, MenuMode } from './menu';
 export { default as Modal, ModalProps } from './modal';

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
 import { Props } from './interface';
 import { FormContext } from './context';
-import { SizeContextProvider } from '../legacy/config-provider/SizeContext';
+import { SizeContextProvider, SizeType } from '../legacy/config-provider/SizeContext';
 
 const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props, ref) => {
   const {
@@ -40,7 +40,7 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
 
   return (
     <FormContext.Provider value={formContextValues}>
-      <SizeContextProvider size={size}>
+      <SizeContextProvider size={size as SizeType}>
         <RcForm {...restProps} id={name} name={name} className={cls} form={wrapForm} style={style} />
       </SizeContextProvider>
     </FormContext.Provider>

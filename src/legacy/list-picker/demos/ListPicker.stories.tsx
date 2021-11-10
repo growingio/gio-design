@@ -8,7 +8,7 @@ import { ListPickerProps } from '../interfaces';
 import Typography from '../../typograhy';
 
 import '../style';
-import '../../legacy/typograhy/style';
+import '../../typograhy/style';
 import './ListPicker.stories.less';
 
 const defaultItems = Array.from({ length: 5 }, (_, index) => index).map((i) => ({
