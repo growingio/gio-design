@@ -6,7 +6,7 @@ import Input from './Input';
 import { PasswordProps } from './interface';
 
 const Password = React.forwardRef<HTMLInputElement, PasswordProps>((props, ref) => {
-  const { disabled, prefixCls: customizePrefixCls, placeholder = '请输入密码...' } = props;
+  const { disabled, prefixCls: customizePrefixCls } = props;
   const prefixCls = usePrefixCls('input-new', customizePrefixCls);
   const [visible, setVisible] = React.useState(false);
 
@@ -30,15 +30,7 @@ const Password = React.forwardRef<HTMLInputElement, PasswordProps>((props, ref) 
       ),
     [passwordSuffixIconCls, toggleVisible, visible]
   );
-  return (
-    <Input
-      {...props}
-      type={visible ? 'text' : 'password'}
-      placeholder={placeholder}
-      suffix={passwordSuffix}
-      ref={ref}
-    />
-  );
+  return <Input {...props} type={visible ? 'text' : 'password'} suffix={passwordSuffix} ref={ref} />;
 });
 
 export default Password;
