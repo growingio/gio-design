@@ -1,6 +1,6 @@
 import { CommonProps } from '@gio-design/utils';
 import React from 'react';
-import { EmptyLocale } from '../empty/interfaces';
+import { EmptyLocale } from '../../empty/interfaces';
 
 export type ListPickerLocale = {
   /**

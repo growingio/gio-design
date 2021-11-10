@@ -3,7 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { useControlledState, usePrefixCls } from '@gio-design/utils';
 import ListPicker from '../list-picker';
-import Selector from '../selector';
+import Selector from '../../selector';
 import { ListSelectorProps } from './interfaces';
 import { ItemProps } from '../list-picker/interfaces';
 
