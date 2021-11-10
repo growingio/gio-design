@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { usePrefixCls } from '@gio-design/utils';
+import { useLocale, usePrefixCls } from '@gio-design/utils';
 import { PageProps } from './interfaces';
 import ForbiddenSVG from './svg/ForbiddenSVG';
 import NotFoundSVG from './svg/NotFoundSVG';
@@ -12,51 +12,56 @@ import NoDataImage from './svg/NoDataImageSVG';
 import NoResultImage from './svg/NoResultImageSVG';
 import NoFindImage from './svg/NoFindImageSVG';
 import Button from '../button';
-
-export const typeMap = {
-  empty: {
-    image: EmptyImage,
-    description: '你还没有属于自己的看板，快去新建一个吧',
-  },
-  noData: {
-    image: NoDataImage,
-    description: '你还没有创建内容，快去创建一个吧',
-  },
-  noResult: {
-    image: NoResultImage,
-    description: '没有搜索到相关结果',
-  },
-  noFind: {
-    image: NoFindImage,
-    description: '当前查询条件下暂无数据',
-  },
-  noAuth: {
-    image: ForbiddenSVG,
-    description: '无访问权限，请联系管理员',
-  },
-  noResource: {
-    image: DeletedSVG,
-    description: '该项目已删除',
-  },
-  noShared: {
-    image: SharedSVG,
-    description: '此看板已取消与你共享',
-  },
-  '304': {
-    image: ForbiddenSVG,
-    description: '无访问权限，请联系管理员',
-  },
-  '404': {
-    image: NotFoundSVG,
-    description: '抱歉，出现了一个错误，页面不见了',
-  },
-  '500': {
-    image: InternalServerErrorSVG,
-    description: '抱歉，服务器出现了错误',
-  },
-};
+import defaultLocale from './locales/zh-CN';
 
 function Page({ className, style, type = 'noData', image, description, cta, size = 'normal' }: PageProps) {
+  const locale = useLocale('Table');
+  const localeContent: { [key: string]: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
+  const typeMap = {
+    empty: {
+      image: EmptyImage,
+      description: localeContent.empty,
+    },
+    noData: {
+      image: NoDataImage,
+      description: localeContent.noData,
+    },
+    noResult: {
+      image: NoResultImage,
+      description: localeContent.noResult,
+    },
+    noFind: {
+      image: NoFindImage,
+      description: localeContent.noFind,
+    },
+    noAuth: {
+      image: ForbiddenSVG,
+      description: localeContent.noAuth,
+    },
+    noResource: {
+      image: DeletedSVG,
+      description: localeContent.noResource,
+    },
+    noShared: {
+      image: SharedSVG,
+      description: localeContent.noShared,
+    },
+    type304: {
+      image: ForbiddenSVG,
+      description: localeContent.type304,
+    },
+    type404: {
+      image: NotFoundSVG,
+      description: localeContent.type404,
+    },
+    type500: {
+      image: InternalServerErrorSVG,
+      description: localeContent.type500,
+    },
+  };
   const prefixCls = usePrefixCls('page-new');
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}-empty`]: ['empty', 'noData', 'noResult', 'noFind'].includes(type),
@@ -67,7 +72,7 @@ function Page({ className, style, type = 'noData', image, description, cta, size
   return (
     <div className={cls} style={style}>
       <div className={classnames(`${prefixCls}__image`, `${prefixCls}__image-${size}`)}>
-        {React.createElement(img as string)}
+        {React.createElement(img as React.FC)}
       </div>
       <div className={classnames(`${prefixCls}__description`, `${prefixCls}__description-${size}`)}>{des}</div>
       {cta && (

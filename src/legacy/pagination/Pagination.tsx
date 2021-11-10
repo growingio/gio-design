@@ -4,7 +4,7 @@ import { isFunction, isNumber, isNaN as notNumber, isUndefined } from 'lodash';
 import { LeftOutlined, LeftDoubleOutlined, RightOutlined, RightDoubleOutlined, MoreOutlined } from '@gio-design/icons';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
 import Input from '../input';
-import Select from '../../components/select';
+import Select from '../select';
 import { PaginationProps } from './interface';
 import { generatePageArray } from './until';
 import { IconButton } from '../../button';

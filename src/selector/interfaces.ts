@@ -1,6 +1,6 @@
 import React from 'react';
 import { CommonProps } from '@gio-design/utils';
-import { DropdownProps } from '../components/dropdown';
+import { DropdownProps } from '../dropdown';
 
 export interface InputTriggerProps extends CommonProps {
   /**

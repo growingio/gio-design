@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Notification from 'rc-notification';
-import { defaultRootPrefixCls } from '../components/config-provider';
+import { defaultRootPrefixCls } from '../legacy/config-provider';
 import { getIconMap } from './toastIcons';
 import createUseToast from './useToast';
 import {

@@ -92,7 +92,11 @@ Demo.args = {
   onSearch: () => action('onSearch'),
 };
 
-const DefaultTemplate = (args: SearchBarProps) => <SearchBar {...args} />;
+const DefaultTemplate = (args: SearchBarProps) => (
+  <div style={{ width: '200px' }}>
+    <SearchBar {...args} />
+  </div>
+);
 
 export const Default = DefaultTemplate.bind({});
 Default.args = {

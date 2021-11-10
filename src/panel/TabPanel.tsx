@@ -2,7 +2,7 @@ import React from 'react';
 import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
 import { difference } from 'lodash';
-import { TabNavProps } from '../tab-nav';
+import { TabNavProps } from '../legacy/tab-nav';
 import { TabPaneProps } from './interfaces';
 import ToolBar from './ToolBar';
 

@@ -1,4 +1,4 @@
-import { defaultRootPrefixCls } from '../components/config-provider';
+import { defaultRootPrefixCls } from '../legacy/config-provider';
 import { IRcFile, IUploadFile, STATUS_NOT_YET, STATUS_SUCCESS } from './interface';
 
 export const getUid = (): string => `${defaultRootPrefixCls}-upload-${Date.now()}`;

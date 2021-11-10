@@ -18,12 +18,12 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="components-radio--default" />
+        <Story id="legacy-radio--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '排列组合' })}</Subheading>
       <Canvas>
-        <Story id="components-radio--group" />
+        <Story id="legacy-radio--group" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

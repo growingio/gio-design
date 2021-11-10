@@ -7,7 +7,7 @@ import Layout from '../index';
 import IconButton from '../../button';
 import Avatar from '../../avatar';
 import Skeleton from '../../skeleton';
-import Select from '../../components/select';
+import Select from '../../legacy/select';
 import Menu, { SubMenu, MenuItem, Divider } from '../../menu';
 import '../style';
 import '../style/demo.stories.less';

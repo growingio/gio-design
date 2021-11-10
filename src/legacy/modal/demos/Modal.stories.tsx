@@ -5,7 +5,7 @@ import { withDesign } from 'storybook-addon-designs';
 import Modal, { ModalProps, StepModalProps, StepModal } from '../index';
 import '../style';
 import Button from '../../../legacy/button';
-import { ConfigContext } from '../../../components/config-provider';
+import { ConfigContext } from '../../config-provider';
 import { IModalStaticFuncConfig } from '../interface';
 import Docs from './ModalPage';
 

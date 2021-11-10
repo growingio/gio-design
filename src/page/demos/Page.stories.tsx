@@ -35,9 +35,9 @@ const arr: PageProps['type'][] = [
   'noAuth',
   'noResource',
   'noShared',
-  '304',
-  '404',
-  '500',
+  'type304',
+  'type404',
+  'type500',
 ];
 const demoTemplate: Story<PageProps> = (args) => (
   <>
@@ -103,14 +103,14 @@ noShared.args = {
 };
 export const NotFound = Template.bind({});
 NotFound.args = {
-  type: 404,
+  type: 'type404',
   description: '抱歉，出现了一个错误，页面不见了',
   cta: defaultCTA,
 };
 
 export const InternalServerError = Template.bind({});
 InternalServerError.args = {
-  type: 500,
+  type: 'type500',
   description: '抱歉，服务器出现了错误',
   cta: defaultCTA,
 };

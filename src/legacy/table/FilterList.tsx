@@ -1,6 +1,6 @@
 import React from 'react';
 import { without, concat } from 'lodash';
-import List from '../../components/list';
+import List from '../list';
 import Checkbox from '../../legacy/checkbox';
 
 interface FilterListProps {

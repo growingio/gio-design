@@ -6,7 +6,7 @@ import CalloutModal from '../CalloutModal';
 import { withConfirm, withInfo, withSuccess, withWarn, withError, configModal } from '../callout';
 import Modal from '..';
 import { sleep } from '../../../utils/test';
-import { defaultRootPrefixCls } from '../../../components/config-provider';
+import { defaultRootPrefixCls } from '../../config-provider';
 
 const { confirm } = Modal;
 

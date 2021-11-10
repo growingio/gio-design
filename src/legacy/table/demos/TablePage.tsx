@@ -26,13 +26,13 @@ export default function TablePage() {
         })}
       </p>
       <Canvas>
-        <Story id="components-table--base" />
+        <Story id="legacy-table--base" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '紧凑型' })}</Subheading>
       <p>{formatMessage({ defaultMessage: '行高为40px，可在Modal、Drawer等展示空间较小的场景下使用。' })}</p>
       <Canvas>
-        <Story id="components-table--compact-table" />
+        <Story id="legacy-table--compact-table" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '表头多样式' })}</Subheading>
@@ -54,58 +54,58 @@ export default function TablePage() {
         })}
       </p>
       <Canvas>
-        <Story id="components-table--table-header" />
+        <Story id="legacy-table--table-header" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '多行表头' })}</Subheading>
       <Canvas>
-        <Story id="components-table--multi-line" />
+        <Story id="legacy-table--multi-line" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '滚动' })}</Subheading>
       <Canvas>
-        <Story id="components-table--table-scroll" />
+        <Story id="legacy-table--table-scroll" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '无结果' })}</Subheading>
       <Canvas>
-        <Story id="components-table--table-empty" />
+        <Story id="legacy-table--table-empty" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '列表加载' })}</Subheading>
       <Canvas>
-        <Story id="components-table--table-loading" />
+        <Story id="legacy-table--table-loading" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '分页' })}</Subheading>
       <Canvas>
-        <Story id="components-table--table-pagination" />
+        <Story id="legacy-table--table-pagination" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '行展开' })}</Subheading>
       <p>{formatMessage({ defaultMessage: '列表行可展开，支持展示文字、图片、图表、表格，不支持内部滚动' })}</p>
       <Canvas>
-        <Story id="components-table--row-expand-table" />
+        <Story id="legacy-table--row-expand-table" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '树形结构展开' })}</Subheading>
       <Canvas>
-        <Story id="components-table--tree-expand-table" />
+        <Story id="legacy-table--tree-expand-table" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '表格展开' })}</Subheading>
       <Canvas>
-        <Story id="components-table--expand-with-table" />
+        <Story id="legacy-table--expand-with-table" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '固定列展开 + 滚动' })}</Subheading>
       <Canvas>
-        <Story id="components-table--row-expand-with-fixed-column" />
+        <Story id="legacy-table--row-expand-with-fixed-column" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自定义列宽' })}</Subheading>
       <Canvas>
-        <Story id="components-table--resizable-with-table" />
+        <Story id="legacy-table--resizable-with-table" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

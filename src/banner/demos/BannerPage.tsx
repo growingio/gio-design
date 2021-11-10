@@ -17,17 +17,17 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '信息通知' })}</Subheading>
       <Canvas>
-        <Story id="components-banner--base" />
+        <Story id="legacy-banner--base" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '警告通知' })}</Subheading>
       <Canvas>
-        <Story id="components-banner--alert" />
+        <Story id="legacy-banner--alert" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '可关闭' })}</Subheading>
       <Canvas>
-        <Story id="components-banner--closeable" />
+        <Story id="legacy-banner--closeable" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

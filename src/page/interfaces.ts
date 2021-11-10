@@ -1,11 +1,20 @@
 import React from 'react';
-import { typeMap } from './Page';
 
 export interface PageProps {
   /**
    * 预制类型，使用组件自带的图片和描述
    */
-  type?: keyof typeof typeMap;
+  type?:
+    | 'empty'
+    | 'noData'
+    | 'noResult'
+    | 'noFind'
+    | 'noAuth'
+    | 'noResource'
+    | 'noShared'
+    | 'type304'
+    | 'type404'
+    | 'type500';
   /**
    * 外层classname
    */

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
 import { Props } from './interface';
 import { FormContext } from './context';
-import { SizeContextProvider } from '../utils/SizeContext';
+import { SizeContextProvider } from '../legacy/config-provider/SizeContext';
 
 const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props, ref) => {
   const {

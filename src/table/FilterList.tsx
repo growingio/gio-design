@@ -1,6 +1,6 @@
 import React from 'react';
 import { without, concat } from 'lodash';
-import List from '../components/list';
+import List from '../legacy/list';
 import Checkbox from '../checkbox';
 import { Key } from './interface';
 
