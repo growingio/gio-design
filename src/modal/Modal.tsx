@@ -4,7 +4,8 @@ import { useLocale, usePrefixCls } from '@gio-design/utils';
 import RcDialog from 'rc-dialog';
 import { CloseOutlined } from '@gio-design/icons';
 import Button, { IconButton } from '../button';
-import { ModalProps, ModalLocale } from './interface';
+import { ModalProps } from './interface';
+import defaultLocale from '../locales/zh-CN';
 
 const Modal: React.FC<ModalProps> = ({
   prefixCls: customPrefixCls,
@@ -32,7 +33,7 @@ const Modal: React.FC<ModalProps> = ({
   const wrapperCls = classnames(wrapClassName, `${prefix}__wrapper`);
   const closeCls = classnames(`${prefix}__close`);
 
-  const { closeText, okText } = useLocale<ModalLocale>('Modal');
+  const { closeText, okText } = useLocale<typeof defaultLocale>('Modal') || defaultLocale;
 
   const renderFooter = () => {
     const cls = classnames(`${prefix}__footer`);
