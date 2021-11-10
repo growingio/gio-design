@@ -20,21 +20,21 @@ const Template: Story<SelectProps> = (props) => {
       <div className="demo-box">
         <Select
           options={options}
-          triggerOption={{ placeholder: '请选择' }}
+          triggerProps={{ placeholder: '请选择' }}
           size="normal"
           {...props}
           onVisibleChange={(v) => console.log('visibleChange', v)}
         />
       </div>
       <div className="demo-box">
-        <Select disabled options={options} triggerOption={{ placeholder: '请选择' }} size="normal" {...props} />
+        <Select disabled options={options} triggerProps={{ placeholder: '请选择' }} size="normal" {...props} />
       </div>
       <h3>自定义list,trigger宽度</h3>
       <div className="demo-box">
         <Select
           options={options}
           overlayStyle={{ width: 240 }}
-          triggerOption={{ placeholder: '请选择', style: { width: 240, textAlign: 'left' }, allowClear: false }}
+          triggerProps={{ placeholder: '请选择', style: { width: 240, textAlign: 'left' }, allowClear: false }}
           size="small"
           {...props}
         />
@@ -44,7 +44,7 @@ const Template: Story<SelectProps> = (props) => {
         <Select
           options={options}
           overlayStyle={{ width: 240 }}
-          triggerOption={{
+          triggerProps={{
             placeholder: '请选择',
             hidePrefix: true,
             style: { width: 240, textAlign: 'left' },
@@ -61,7 +61,7 @@ const Template: Story<SelectProps> = (props) => {
           prefix={() => <PlusOutlined size="14px" />}
           suffix={() => <FilterOutlined size="14px" />}
           overlayStyle={{ width: 240 }}
-          triggerOption={{
+          triggerProps={{
             placeholder: '请选择',
             style: { width: 240, textAlign: 'left' },
           }}
@@ -74,7 +74,7 @@ const Template: Story<SelectProps> = (props) => {
 };
 
 export const Default = Template.bind({
-  triggerOption: {
+  triggerProps: {
     placeholder: '请选择',
   },
 });

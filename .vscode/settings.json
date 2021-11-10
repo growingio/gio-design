@@ -44,7 +44,8 @@
     "styled-css",
     "sugarss",
     "svelte"
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 
   //stylelint   -----settings end-----
 }

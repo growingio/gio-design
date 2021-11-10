@@ -1,14 +1,13 @@
 import classNames from 'classnames';
 import { isEmpty } from 'lodash';
-import React from 'react';
-import List from '../list';
-import CascaderItem from '../list/inner/CascaderItem';
+import React, { useState } from 'react';
+import List, { OptionProps } from '../list';
 import Popover from '../popover';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import useControlledState from '../utils/hooks/useControlledState';
-import { CascaderProps, CascaderItemProps } from './interfance';
+import { CascaderProps } from './interfance';
+import { getLabelByValue } from './util';
 import Trigger from './Trigger';
-import { useCacheOptions } from './utils';
 
 const Cascader: React.FC<CascaderProps> = (props) => {
   const {
@@ -34,20 +33,22 @@ const Cascader: React.FC<CascaderProps> = (props) => {
   } = props;
   const [value, setSelectValue] = useControlledState(controlledValue, defaultValue);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
+  const [selectedTitle, setSelectedTitle] = useState(undefined);
   const defaultPrefixCls = usePrefixCls(prefixCls);
   const prefixIcon = prefix?.(undefined);
   const suffixIcon = suffix?.(undefined);
-  const { setCacheOptions, getOptionByValue } = useCacheOptions();
-  setCacheOptions(options);
+  // 这里实现的不好
 
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);
     onVisibleChange?.(vis);
   };
 
-  const handleChange = (val?: string | number | (string | number)[]) => {
-    onChange?.(val as string);
+  const handleChange = (val?: string | string[], opts?: OptionProps | OptionProps[]) => {
+    onChange?.(val);
     setSelectValue((val as string) ?? '');
+    setSelectedTitle(getLabelByValue(val, opts, separator));
+
     setVisible(false);
   };
 
@@ -64,48 +65,44 @@ const Cascader: React.FC<CascaderProps> = (props) => {
       onClick={() => setVisible(!visible)}
     >
       <Trigger
-        value={value}
+        value={selectedTitle}
         size={size}
         prefix={prefixIcon}
         suffix={suffixIcon}
         disabled={disabled}
-        separator={separator}
         onClear={handleOnClear}
         onInputChange={(val) => {
           isEmpty(val) && handleChange('');
         }}
-        getOptionByValue={getOptionByValue}
         {...triggerProps}
       />
     </div>
   );
-  const renderItems = () =>
-    options?.map((option: CascaderItemProps) => {
-      const { childrens = [], ...optionRest } = option;
-      if (!isEmpty(childrens)) {
-        return (
-          <CascaderItem {...optionRest}>
-            <List isCascader className={`${defaultPrefixCls}--list`} isMultiple={false}>
-              {childrens.map((child) => (
-                <CascaderItem {...child} />
-              ))}
-            </List>
-          </CascaderItem>
-        );
-      }
-      return <CascaderItem {...optionRest} />;
-    });
+  // const renderItems = () =>
+  //   options?.map((option: CascaderItemProps) => {
+  //     const { childrens = [], ...optionRest } = option;
+  //     if (!isEmpty(childrens)) {
+  //       return (
+  //         <Item isCascader {...optionRest}>
+  //           <List model="cascader" className={`${defaultPrefixCls}--list`}>
+  //             {childrens.map((child) => (
+  //               <Item isCascader {...child} />
+  //             ))}
+  //           </List>
+  //         </Item>
+  //       );
+  //     }
+  //     return <Item {...optionRest} />;
+  //   });
   const renderOverlay = () => (
     <List
       {...rest}
+      options={options}
       className={`${defaultPrefixCls}--list`}
-      isCascader
-      isMultiple={false}
+      model="cascader"
       value={value}
       onChange={handleChange}
-    >
-      {renderItems()}
-    </List>
+    />
   );
 
   return (
