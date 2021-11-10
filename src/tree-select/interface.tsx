@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { TreeSelectProps as RcTreeSelectProps } from 'rc-tree-select';
-import { SizeType } from '../components/config-provider/SizeContext';
+import { SizeType } from '../legacy/config-provider/SizeContext';
 
 type RawValue = string | number;
 

@@ -1,6 +1,6 @@
 import './index.less';
-import '../../components/list/style';
-import '../../components/empty/style';
+import '../../legacy/list/style';
+import '../../legacy/empty/style';
 import '../../checkbox/style';
 import '../../button/style';
 import '../../popover/style';

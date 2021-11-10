@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react';
-import { Select } from '..';
+import Select from '../legacy/select';
 import { PaginationContext } from './Pagination';
 
 const RowsSelector: React.FC<{

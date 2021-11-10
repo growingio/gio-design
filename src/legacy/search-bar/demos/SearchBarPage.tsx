@@ -14,7 +14,7 @@ export default function SearchBarPage() {
 
       <Subheading>{formatMessage({ defaultMessage: '默认样式' })}</Subheading>
       <Canvas>
-        <Story id="components-searchbar--default" />
+        <Story id="legacy-searchbar--default" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

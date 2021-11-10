@@ -8,26 +8,55 @@ export default function ListPage() {
 
   return (
     <>
-      <Title>{formatMessage({ defaultMessage: 'Modal 弹窗' })}</Title>
+      <Title>{formatMessage({ defaultMessage: 'Page Result 页面结果' })}</Title>
       <p>
         {formatMessage({
-          defaultMessage: '根据 HTTP 响应状态码，显示对应的页面',
+          defaultMessage:
+            '用于反馈一系列操作任务的处理结果。当有重要操作需告知用户处理结果，且反馈内容较为复杂时使用。',
         })}
       </p>
+      <p>
+        <a href="https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4093%3A47838">
+          Figma
+        </a>
+      </p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>将empty和page合并了，用type控制预制图片和描述</li>
+        <li>新增size属性，控制两种大小，normal宽度为450，small宽度为220，empty图normal宽度为300，small宽度为150</li>
+        <li>
+          兼容了过去的304,404，新的type有 empty | noData | noResult | noFind | noAuth | noResource | noShared | 304 |
+          404 | 500
+        </li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
-      <Subheading>{formatMessage({ defaultMessage: '403 你还没有此页面的访问权限' })}</Subheading>
+
+      <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
       <Canvas>
-        <Story id="components-page--forbidden" />
+        <Story id="upgraded-page--demo" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '无权限' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-page--no-auth" />
       </Canvas>
 
+      <Subheading>{formatMessage({ defaultMessage: '无资源权限' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-page--no-resource" />
+      </Canvas>
+
+      <Subheading>{formatMessage({ defaultMessage: '无共享' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-page--no-shared" />
+      </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '404 此页面未找到' })}</Subheading>
       <Canvas>
-        <Story id="components-page--not-found" />
+        <Story id="upgraded-page--not-found" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '500 服务器发生了错误' })}</Subheading>
       <Canvas>
-        <Story id="components-page--internal-server-error" />
+        <Story id="upgraded-page--internal-server-error" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

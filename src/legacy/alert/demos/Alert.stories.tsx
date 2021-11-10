@@ -7,7 +7,7 @@ import { AlertProps } from '../interfaces';
 import '../style';
 
 export default {
-  title: 'Components/Alert',
+  title: 'Legacy/Alert',
   component: Alert,
   parameters: {
     docs: {

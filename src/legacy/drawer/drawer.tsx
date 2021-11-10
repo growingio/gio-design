@@ -9,7 +9,7 @@ import { CloseOutlined, LeftOutlined, RightOutlined } from '@gio-design/icons';
 import classNames from 'classnames';
 import { IconButton } from '../../button';
 import Skeleton from '../../skeleton';
-import { ConfigConsumerProps, withConfigConsumer, ConfigConsumer } from '../../components/config-provider';
+import { ConfigConsumerProps, withConfigConsumer, ConfigConsumer } from '../config-provider';
 import { PushState, IDrawerState, DrawerProps, placementType } from './interfaces';
 
 const DrawerContext = React.createContext<Drawer | null>(null);

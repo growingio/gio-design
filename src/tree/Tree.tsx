@@ -3,7 +3,7 @@ import RcTree, { TreeNode, TreeProps as RcTreeProps } from 'rc-tree';
 import classNames from 'classnames';
 import { DataNode, Key } from 'rc-tree/lib/interface';
 import { usePrefixCls } from '@gio-design/utils';
-import { ConfigContext } from '../components/config-provider';
+import { ConfigContext } from '../legacy/config-provider';
 import renderSwitcherIcon from './iconUtil';
 
 export interface GioTreeNodeAttribute {

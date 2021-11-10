@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { difference } from 'lodash';
-import Typography from '../typography';
+import Typography from '../legacy/typograhy';
 import Tabs, { Tab } from '../tabs';
 import Divider from '../divider';
 import { PanelProps, TabPaneProps } from './interfaces';

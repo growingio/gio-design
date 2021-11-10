@@ -22,7 +22,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="components-loading--default" />
+        <Story id="legacy-loading--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '赋予内容加载状态' })}</Subheading>
@@ -32,7 +32,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="components-loading--container" />
+        <Story id="legacy-loading--container" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自定义符号' })}</Subheading>
@@ -42,7 +42,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="components-loading--indicator" />
+        <Story id="legacy-loading--indicator" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '设置延时' })}</Subheading>
@@ -52,7 +52,7 @@ export default function ListPage() {
         })}
       </p>
       <Canvas>
-        <Story id="components-loading--delay" />
+        <Story id="legacy-loading--delay" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

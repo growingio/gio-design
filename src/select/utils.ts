@@ -1,6 +1,6 @@
 import { isNil } from 'lodash';
 import { useCallback, useRef } from 'react';
-import { OptionProps } from './interfance';
+import { OptionProps } from './interface';
 
 const optionSet = (map: Map<string | number, OptionProps>, key: string | number, value: OptionProps) =>
   map.set(key, value);

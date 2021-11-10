@@ -4,9 +4,10 @@ import { MoreOutlined } from '@gio-design/icons';
 import Docs from './DropdownPage';
 import Dropdown, { DropdownProps } from '../index';
 import '../style';
-import { IconButton, Button, List } from '../../index';
-import ListPro from '../../components/list-pro';
-import { properties } from '../../components/list/__tests__/data';
+import { IconButton, Button } from '../../index';
+import List from '../../legacy/list';
+import ListPro from '../../legacy/list-pro';
+import { properties } from '../../legacy/list/__tests__/data';
 
 export default {
   title: 'Components/Dropdown',

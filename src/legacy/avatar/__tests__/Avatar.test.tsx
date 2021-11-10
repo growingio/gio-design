@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { PlusCircleFilled } from '@gio-design/icons';
 import Avatar from '../index';
-import Dropdown from '../../../components/dropdown';
+import Dropdown from '../../dropdown';
 import AvatarGroup from '../AvatarGroup';
 import { Default } from '../demos/Avatar.stories';
 

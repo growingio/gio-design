@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { isEmpty } from 'lodash';
-import { SelectProps } from './interfance';
+import { SelectProps } from './interface';
 import Popover from '../popover';
 import Trigger from './Trigger';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
@@ -9,7 +9,7 @@ import List from '../list';
 import { useCacheOptions } from './utils';
 import useControlledState from '../utils/hooks/useControlledState';
 import './style/index';
-import { OptionProps } from '../components/select';
+import { OptionProps } from '../legacy/select';
 
 const Select: React.FC<SelectProps> = (props) => {
   const {

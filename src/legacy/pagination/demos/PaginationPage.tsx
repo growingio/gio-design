@@ -23,7 +23,7 @@ export default function PaginationPage() {
         {formatMessage({ defaultMessage: '当设置 current 参数后，只能通过 onChange 回调改变页码。' })}
       </p>
       <Canvas>
-        <Story id="components-pagination--default" />
+        <Story id="legacy-pagination--default" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

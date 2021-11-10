@@ -162,7 +162,11 @@ InputNumberDemo.args = {
   style: { width: '200px' },
   onChange: () => action('action'),
 };
-const PasswordTemplate = (args: InputProps) => <Password {...args} value="password" />;
+const PasswordTemplate = (args: InputProps) => (
+  <div style={{ width: '200px' }}>
+    <Password {...args} value="password" />
+  </div>
+);
 
 export const PasswordDemo = PasswordTemplate.bind({});
 PasswordDemo.args = {

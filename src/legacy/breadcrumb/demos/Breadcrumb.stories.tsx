@@ -33,7 +33,7 @@ export const Default = Template.bind({});
 Default.args = {
   routes: [
     {
-      path: '?path=/story/basic-components-breadcrumb--default',
+      path: '?path=/story/basic-legacy-breadcrumb--default',
       breadcrumbName: '首页',
     },
     {

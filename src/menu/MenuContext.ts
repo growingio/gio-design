@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { defaultRootPrefixCls } from '../components/config-provider';
+import { defaultRootPrefixCls } from '../legacy/config-provider';
 
 export const MenuContext = createContext({
   prefixCls: `${defaultRootPrefixCls}-menu`,

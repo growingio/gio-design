@@ -1,6 +1,6 @@
-@import '../../stylesheet/index.less';
+@import '../../stylesheet/variables/index.less';
 
-@toast-prefix-cls: ~'@{component-prefix}-toast';
+@toast-prefix-cls: ~'@{component-prefix}-toast-new';
 
 .@{toast-prefix-cls} {
   position: fixed;
@@ -20,16 +20,20 @@
 
   &-notice-content {
     display: inline-block;
+    box-sizing: border-box;
+    height: 40px;
     padding: 9px 60px;
-    color: #313e75;
+    color: @gray-5;
     font-size: 14px;
     line-height: 22px;
-    background-color: #fff;
+    background-color: @gray-0;
     border-radius: 4px;
-    box-shadow: 0 2px 14px 0 rgba(223, 226, 237, 0.8);
     pointer-events: all;
+    .elevation(2);
   }
-
+  &-custom-content {
+    height: 22px;
+  }
   &-icon {
     margin-right: 8px;
     vertical-align: middle;

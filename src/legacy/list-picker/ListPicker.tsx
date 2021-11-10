@@ -2,7 +2,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { useControlledState, useLocale, usePrefixCls } from '@gio-design/utils';
-import Empty from '../../components/empty';
+import Empty from '../empty';
 import Group from './Group';
 import Subgroup from './Subgroup';
 import Item from './Item';

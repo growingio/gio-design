@@ -2,12 +2,12 @@ import React from 'react';
 import RcTreeSelect, { TreeNode, SHOW_ALL, SHOW_PARENT, SHOW_CHILD } from 'rc-tree-select';
 import classNames from 'classnames';
 import { omit } from 'lodash';
-import { ConfigConsumer, ConfigConsumerProps } from '../components/config-provider';
+import { ConfigConsumer, ConfigConsumerProps } from '../legacy/config-provider';
 import devWarning from '../utils/devWarning';
 import { GioTreeNodeProps } from '../tree';
 import getIcons from './iconUtil';
 import renderSwitcherIcon from '../tree/iconUtil';
-import SizeContext from '../components/config-provider/SizeContext';
+import SizeContext from '../legacy/config-provider/SizeContext';
 import { TreeSelectProps } from './interface';
 
 class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {

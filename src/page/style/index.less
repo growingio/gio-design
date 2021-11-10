@@ -1,28 +1,63 @@
-@import '../../stylesheet/index.less';
+@import '../../stylesheet/variables/index.less';
 
-@page-prefix-cls: ~'@{component-prefix}-page';
+@page-prefix-cls: ~'@{component-prefix}-page-new';
 
 .@{page-prefix-cls} {
   text-align: center;
 
   &__image {
     display: inline-block;
-    width: 450px;
     margin: 0;
+    &-normal {
+      width: 450px;
+    }
+    &-small {
+      width: 220px;
+    }
   }
 
   &__description {
     margin: 8px 0 0;
-    color: @palette-black-6;
+    color: @gray-5;
     font-weight: 500;
-    font-size: 18px;
     font-family: 'PingFang SC', sans-serif;
-    line-height: 28px;
     text-align: center;
+    &-normal {
+      font-size: 18px;
+      line-height: 28px;
+    }
+    &-small {
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 22px;
+    }
   }
-
   &__footer {
     margin: 16px 0 0;
     text-align: center;
+  }
+}
+
+.@{page-prefix-cls}-empty {
+  .@{page-prefix-cls}__image {
+    &-normal {
+      width: 300px;
+    }
+    &-small {
+      width: 150px;
+    }
+  }
+  .@{page-prefix-cls}__description {
+    color: @gray-4;
+    font-weight: normal;
+    &-normal {
+      font-size: 14px;
+      line-height: 22px;
+    }
+    &-small {
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 22px;
+    }
   }
 }

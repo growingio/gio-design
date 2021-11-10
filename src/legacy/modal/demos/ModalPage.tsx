@@ -17,27 +17,27 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="components-modal--default" />
+        <Story id="legacy-modal--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自定义高的 Modal' })}</Subheading>
       <Canvas>
-        <Story id="components-modal--custom-height" />
+        <Story id="legacy-modal--custom-height" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '分步骤的 Modal' })}</Subheading>
       <Canvas>
-        <Story id="components-modal--step-modal-demo" />
+        <Story id="legacy-modal--step-modal-demo" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '函数式调用' })}</Subheading>
       <Canvas>
-        <Story id="components-modal--function-modal" />
+        <Story id="legacy-modal--function-modal" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'Hook 调用' })}</Subheading>
       <Canvas>
-        <Story id="components-modal--use-modal" />
+        <Story id="legacy-modal--use-modal" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

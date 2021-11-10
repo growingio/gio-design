@@ -17,17 +17,17 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="components-tooltip--default" />
+        <Story id="legacy-tooltip--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '链接' })}</Subheading>
       <Canvas>
-        <Story id="components-tooltip--link" />
+        <Story id="legacy-tooltip--link" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '多行' })}</Subheading>
       <Canvas>
-        <Story id="components-tooltip--multi-line" />
+        <Story id="legacy-tooltip--multi-line" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

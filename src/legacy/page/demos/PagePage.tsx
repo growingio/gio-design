@@ -17,17 +17,17 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '403 你还没有此页面的访问权限' })}</Subheading>
       <Canvas>
-        <Story id="components-page--forbidden" />
+        <Story id="legacy-page--forbidden" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '404 此页面未找到' })}</Subheading>
       <Canvas>
-        <Story id="components-page--not-found" />
+        <Story id="legacy-page--not-found" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '500 服务器发生了错误' })}</Subheading>
       <Canvas>
-        <Story id="components-page--internal-server-error" />
+        <Story id="legacy-page--internal-server-error" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

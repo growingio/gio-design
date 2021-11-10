@@ -301,7 +301,7 @@ describe('Testing table', () => {
         }}
       />
     );
-    expect(screen.getByText('No data'));
+    expect(screen.getByText('No data image'));
   });
 
   it('empty table', () => {

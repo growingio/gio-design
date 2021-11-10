@@ -3,7 +3,7 @@ import { TableProps as GioTableProps } from '@gio-design/table/es/Table';
 import { PaginationProps } from '../pagination';
 import { CheckboxProps } from '../checkbox';
 import { TooltipProps } from '../tooltip';
-import { EmptyProps } from '../empty';
+import { PageProps } from '../page';
 
 type SortOrder = 'descend' | 'ascend' | null;
 type ExpandType = null | 'row' | 'nest';
@@ -172,7 +172,7 @@ interface TableProps<RecordType> extends Omit<GioTableProps<RecordType>, 'title'
    * 表格数据为空时的占位内容
    */
   emptyText?: React.ReactNode;
-  empty?: EmptyProps;
+  empty?: PageProps;
   /**
    * 分页/排序/筛选变化时触发
    */

@@ -13,7 +13,7 @@ import usePagination from './hook/usePagination';
 import useSelection, { getRowKey } from './hook/useSelection';
 import Title from './Title';
 import { TableProps, ColumnsType, OnTriggerStateUpdateProps } from './interface';
-import Empty from '../../components/empty';
+import Empty from '../empty';
 import { translateInnerColumns } from './utils';
 import Loading from '../loading';
 import useHackOnRow from './hook/useHackOnRow';

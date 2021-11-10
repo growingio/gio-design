@@ -17,12 +17,12 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '默认' })}</Subheading>
       <Canvas>
-        <Story id="components-toast--default" />
+        <Story id="upgraded-toast--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '分步骤的 Modal' })}</Subheading>
       <Canvas>
-        <Story id="components-toast--next-step" />
+        <Story id="upgraded-toast--next-step" />
       </Canvas>
     </>
   );

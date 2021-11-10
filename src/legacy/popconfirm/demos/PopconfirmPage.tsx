@@ -18,17 +18,17 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="components-popconfirm--default" />
+        <Story id="legacy-popconfirm--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '受控模式' })}</Subheading>
       <Canvas>
-        <Story id="components-popconfirm--controlled" />
+        <Story id="legacy-popconfirm--controlled" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '位置' })}</Subheading>
       <Canvas>
-        <Story id="components-popconfirm--placement" />
+        <Story id="legacy-popconfirm--placement" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

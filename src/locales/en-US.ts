@@ -3,9 +3,9 @@ import datePickerLocale from '../static-date-picker/locales/en-US';
 import dateRangePickerLocale from '../static-date-range-picker/locales/en-US';
 import dateRangeSelectorLocale from '../date-range-selector/locales/en-US';
 import dateSelectorLocale from '../date-selector/locales/en-US';
-import emptyLocale from '../empty/locales/en-US';
 import listPickerLocale from '../legacy/list-picker/locales/en-US';
 import modalLocale from '../modal/locales/en-US';
+import PageLocale from '../page/locales/en-US';
 import timePickerLocale from '../static-time-picker/locales/en-US';
 import timeSelectorLocale from '../time-selector/locales/en-US';
 import searchBarLocale from '../legacy/search-bar/locales/en-US';
@@ -29,8 +29,8 @@ export const locale: Locale = {
   DateSelector: {
     ...dateSelectorLocale,
   },
-  Empty: {
-    ...emptyLocale,
+  Page: {
+    ...PageLocale,
   },
   ListPicker: {
     ...listPickerLocale,

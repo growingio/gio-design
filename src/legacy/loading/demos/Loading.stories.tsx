@@ -5,7 +5,7 @@ import { LoadingOutlined } from '@gio-design/icons';
 import Docs from './LoadingPage';
 import Loading from '../index';
 import Button from '../../button';
-import Tabs, { TabPane } from '../../../components/tabs';
+import Tabs, { TabPane } from '../../tabs';
 import { LoadingProps } from '../interface';
 import '../style';
 

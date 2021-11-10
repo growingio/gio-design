@@ -1,7 +1,7 @@
 import { isNil } from 'lodash';
 import React from 'react';
 import Input from '../input';
-import { TriggerProps } from './interfance';
+import { TriggerProps } from './interface';
 
 const Trigger: React.FC<TriggerProps> = (props) => {
   const { value, ...rest } = props;
