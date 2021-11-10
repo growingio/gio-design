@@ -11,6 +11,24 @@ export const Demo = () => (
     <span> Shadow :</span>
     <div className="mixin-demo-elevation">elevation</div>
     <hr />
+    <span> Scroll-bar :</span>
+    <div
+      className="scroll-bar"
+      style={{
+        width: '100%',
+        height: '20px',
+      }}
+    >
+      <span
+        style={{
+          width: '2000px',
+          display: 'inline-block',
+        }}
+      >
+        》〉》〉》〉》〉》〉》〉》〉😎 》〉》〉》〉》〉》〉》〉》〉😎 》〉》〉》〉》〉》〉》〉》〉😎
+        》〉》〉》〉》〉》〉》〉》〉😎
+      </span>
+    </div>
     <p> Palette:</p>
     {[...Array(6)].map((item, index) => (
       <div className={`mixin-demo-gray-${index}`}>gray-{index}</div>
@@ -26,6 +44,14 @@ export const Demo = () => (
     ))}
     {[...Array(3)].map((item, index) => (
       <div className={`mixin-demo-red-${index + 1}`}>red-{index + 1}</div>
+    ))}
+    <hr />
+
+    {[...Array(5)].map((item, index) => (
+      <div className={`text-h${index + 1}`}> 我是text-h{index} </div>
+    ))}
+    {[...Array(2)].map((item, index) => (
+      <div className={`text-body${index + 1}`}> 我是text-body{index} </div>
     ))}
   </div>
 );

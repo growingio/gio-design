@@ -2,6 +2,7 @@
 @import '../mixin/elevation.less';
 @import '../variables/index.less';
 .box {
+  width: 100%;
   div {
     display: inline-block;
     width: 100px;
@@ -13,6 +14,12 @@
   }
   .mixin-demo-elevation {
     .elevation(@level:2);
+  }
+  .scroll-bar {
+    .scrollbar(@x: overlay, @y: overlay);
+    div {
+      background-color: @gray-2;
+    }
   }
   .mixin-demo-gray-0 {
     background-color: @gray-0;
@@ -67,5 +74,20 @@
   }
   .mixin-demo-red-3 {
     background-color: @red-3;
+  }
+  .text-h1 {
+    .text-h1();
+  }
+  .text-h2 {
+    .text-h2();
+  }
+  .text-h3 {
+    .text-h3();
+  }
+  .text-h4 {
+    .text-h4();
+  }
+  .text-h5 {
+    .text-h5();
   }
 }

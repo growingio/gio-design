@@ -15,7 +15,7 @@ import Button from '../button';
 import defaultLocale from './locales/zh-CN';
 
 function Page({ className, style, type = 'noData', image, description, cta, size = 'normal' }: PageProps) {
-  const locale = useLocale('Table');
+  const locale = useLocale('Page');
   const localeContent: { [key: string]: string } = {
     ...defaultLocale,
     ...locale,
@@ -63,8 +63,8 @@ function Page({ className, style, type = 'noData', image, description, cta, size
     },
   };
   const prefixCls = usePrefixCls('page-new');
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}-empty`]: ['empty', 'noData', 'noResult', 'noFind'].includes(type),
+  const cls = classnames(prefixCls, `${prefixCls}-${size}`, className, {
+    [`${prefixCls}-${size}-empty`]: ['empty', 'noData', 'noResult', 'noFind'].includes(type),
   });
   const des = description || typeMap[type].description;
   const img = image || typeMap[type].image;
@@ -72,7 +72,7 @@ function Page({ className, style, type = 'noData', image, description, cta, size
   return (
     <div className={cls} style={style}>
       <div className={classnames(`${prefixCls}__image`, `${prefixCls}__image-${size}`)}>
-        {React.createElement(img as React.FC)}
+        {React.createElement(img as React.ElementType)}
       </div>
       <div className={classnames(`${prefixCls}__description`, `${prefixCls}__description-${size}`)}>{des}</div>
       {cta && (

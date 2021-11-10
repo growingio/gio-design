@@ -105,14 +105,22 @@ Default.args = {
   onSearch: () => action('onChange'),
 };
 
-const DisableTemplate = (args: SearchBarProps) => <SearchBar {...args} />;
+const DisableTemplate = (args: SearchBarProps) => (
+  <div style={{ width: '200px' }}>
+    <SearchBar {...args} />
+  </div>
+);
 
 export const Disabled = DisableTemplate.bind({});
 Disabled.args = {
   style: { width: '200px' },
   disabled: true,
 };
-const DisableValueTemplate = (args: SearchBarProps) => <SearchBar {...args} />;
+const DisableValueTemplate = (args: SearchBarProps) => (
+  <div style={{ width: '200px' }}>
+    <SearchBar {...args} />
+  </div>
+);
 
 export const DisableValue = DisableValueTemplate.bind({});
 DisableValue.args = {
