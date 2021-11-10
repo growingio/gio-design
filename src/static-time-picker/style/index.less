@@ -1,4 +1,6 @@
 @import '../../stylesheet/index.less';
+@import '../../stylesheet/mixin/index.less';
+@import '../../stylesheet/variables/index.less';
 
 @new-time-picker-prefix-cls: ~'@{component-prefix}-new-time-picker';
 
@@ -9,7 +11,7 @@
     width: fit-content;
     height: fit-content;
     padding-top: 4px;
-    background-color: @palette-white;
+    background-color: @gray-0;
     filter: drop-shadow(0 8px 24px rgba(36, 46, 89, 0.1));
   }
   &--three-columns {
@@ -44,11 +46,11 @@
     &-cell {
       margin-top: 4px;
       padding: 4px 12px;
-      color: @palette-black-6;
+      color: @gray-5;
       .font();
       line-height: 22px;
       list-style-type: none;
-      background-color: @palette-white;
+      background-color: @gray-0;
       border-radius: 4px;
       cursor: pointer;
 
@@ -58,7 +60,7 @@
 
       &-selected,
       &:active {
-        color: @palette-blue-5;
+        color: @blue-3;
         font-weight: 500;
         background-color: @palette-gray-1;
       }

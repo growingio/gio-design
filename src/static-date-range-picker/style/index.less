@@ -1,4 +1,6 @@
 @import '../../stylesheet/index.less';
+@import '../../stylesheet/mixin/index.less';
+@import '../../stylesheet/variables/index.less';
 
 @date-range-picker-prefix-cls: ~'@{component-prefix}-date-range-picker';
 @picker-prefix-cls: ~'@{component-prefix}-picker';
@@ -24,7 +26,7 @@
   &-cell {
     &-in-view&-range-start,
     &-in-view&-range-end {
-      color: @palette-white;
+      color: @gray-0;
     }
     &-in-view&-range-start &-inner,
     &-in-view&-range-end &-inner {

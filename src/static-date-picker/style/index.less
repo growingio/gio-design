@@ -1,4 +1,6 @@
 @import '../../stylesheet/index.less';
+@import '../../stylesheet/mixin/index.less';
+@import '../../stylesheet/variables/index.less';
 
 @new-date-picker-prefix-cls: ~'@{component-prefix}-picker';
 @icon-prefix-cls: ~'@{component-prefix}-icon';
@@ -10,9 +12,9 @@
     height: 24px;
     .font(@weight: 500);
 
-    color: @palette-black-6;
+    color: @gray-5;
     line-height: 22px;
-    background: @palette-white;
+    background: @gray-0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -31,7 +33,7 @@
   &-panel {
     width: 280px;
     text-align: center;
-    background: @palette-white;
+    background: @gray-0;
     border-radius: 4px;
     filter: drop-shadow(0 8px 24px rgba(36, 46, 89, 0.1));
   }
@@ -53,13 +55,13 @@
       height: 24px;
       margin: 0 2px;
       padding: 4px;
-      background: @palette-white;
+      background: @gray-0;
       border: none;
       border-radius: 4px;
       cursor: pointer;
 
       .@{icon-prefix-cls} {
-        color: @palette-black-6;
+        color: @gray-5;
       }
     }
     &-super-prev-btn {
@@ -83,7 +85,7 @@
 
     &-view {
       flex-grow: 1;
-      color: @palette-black-6;
+      color: @gray-5;
       line-height: 24px;
       text-align: center;
       .font(@weight: 500);
@@ -93,7 +95,7 @@
   &-body {
     box-sizing: border-box;
     padding: 20px;
-    background: @palette-white;
+    background: @gray-0;
     border-radius: 0 0 4px 4px;
   }
   &-decade-panel > &-body {
@@ -113,7 +115,7 @@
     tr > th {
       .font();
       margin: 5px;
-      color: @palette-black-6;
+      color: @gray-5;
 
       line-height: 22px;
       text-align: center;
@@ -123,7 +125,6 @@
   &-cell {
     box-sizing: border-box;
     padding: 4px 0;
-    color: @palette-black-3;
     cursor: pointer;
 
     &::before {
@@ -152,7 +153,7 @@
     }
 
     &-in-view {
-      color: @palette-black-6;
+      color: @gray-5;
     }
 
     &-today {
@@ -160,7 +161,8 @@
     }
 
     &-in-view&-today {
-      color: @palette-blue-4;
+      color: @blue-3;
+      font-weight: 400;
     }
     &-in-view&-today &-inner::before {
       position: absolute;
@@ -169,16 +171,16 @@
       bottom: 0;
       left: 0;
       z-index: 1;
-      border: 1px solid @palette-blue-4;
+      border: 1px solid @blue-3;
       border-radius: 4px;
       content: '';
     }
 
     &-in-view&-selected {
-      color: @palette-white;
+      color: @gray-0;
     }
     &-in-view&-selected &-inner {
-      background: @palette-blue-4;
+      background: @blue-3;
     }
 
     &-disabled {
@@ -188,13 +190,6 @@
       &::before {
         background: @palette-gray-1;
       }
-    }
-    &-disabled&-in-view,
-    &-disabled&-today {
-      color: @palette-black-3;
-    }
-    &-disabled&-today &-inner::before {
-      border-color: @palette-black-3;
     }
   }
 

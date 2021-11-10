@@ -37,11 +37,13 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
   const prefixCls = usePrefixCls('date-range-picker-new');
   const overlayCls = classnames(`${prefixCls}-overlay`, overlayClassName);
 
+  const validValue = (val: [NullableDate, NullableDate]) => val?.filter((v) => !!v)?.length === 2;
+
   const [visible, setVisible] = useControlledState(popoverVisible, false);
 
-  const [controlledValue, setControlledValue] = useControlledState<[NullableDate, NullableDate] | undefined>(
-    value,
-    defaultValue
+  const [controlledValue, setControlledValue] = useControlledState<[NullableDate, NullableDate]>(
+    value as [NullableDate, NullableDate],
+    defaultValue as [NullableDate, NullableDate]
   );
 
   const handleVisibleChange = (current: boolean) => {
@@ -75,7 +77,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
         placeholder={placeholder}
         disabled={disabled}
         allowClear={allowClear}
-        value={controlledValue && formatDates(controlledValue)}
+        value={validValue(controlledValue) ? formatDates(controlledValue) : undefined}
         size={size}
         suffix={suffix}
         hidePrefix={hidePrefix}
