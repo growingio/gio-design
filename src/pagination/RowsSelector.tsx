@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react';
-import Select from '../legacy/select';
+import Select from '../select';
 import { PaginationContext } from './Pagination';
 
 const RowsSelector: React.FC<{
@@ -25,9 +25,7 @@ const RowsSelector: React.FC<{
           defaultValue={defaultPageSize}
           value={pageSize}
           size="small"
-          className={`${prefixCls}__rows__select`}
           getContainer={(node) => node.parentElement || document.body}
-          autoWidth
           options={pageSizeOptions.map((rowSize) => {
             const value = Number.parseInt(`${rowSize}`, 10);
             return {
@@ -35,11 +33,19 @@ const RowsSelector: React.FC<{
               value,
             };
           })}
-          onSelect={(value) => {
+          onChange={(value) => {
             const currentPageSize = Number.parseInt(`${value}`, 10);
             onRowsChange?.(currentPageSize);
             onPageSizeChange?.(currentPageSize, previousPageSizeRef.current);
             previousPageSizeRef.current = currentPageSize;
+          }}
+          triggerOption={{
+            hidePrefix: true,
+            allowClear: false,
+            style: {
+              width: 85,
+              textAlign: 'left',
+            },
           }}
         />
       )}
