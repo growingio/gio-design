@@ -10,7 +10,7 @@ import timePickerLocale from '../time-picker/locales/zh-CN';
 import timeSelectorLocale from '../time-selector/locales/zh-CN';
 import searchBarLocale from '../legacy/search-bar/locales/zh-CN';
 import cascaderLocale from '../legacy/cascader/locales/zh-CN';
-import paginationLocale from '../legacy/pagination/locales/zh-CN';
+import paginationLocale from '../pagination/locales/zh-CN';
 import tableLocale from '../legacy/table/locales/zh-CN';
 import uploadLocale from '../upload/locales/zh-CN';
 import staticPastTimePickerLocale from '../static-past-time-picker/locales/zh-CN';
