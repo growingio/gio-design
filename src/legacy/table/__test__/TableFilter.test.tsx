@@ -2,7 +2,7 @@ import React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { isEqual, cloneDeep } from 'lodash';
-import { DesignProvider } from '@gio-design/utils';
+import { DesignContext, DefaultContextProps } from '@gio-design/utils';
 import enUS from '../../../locales/en-US';
 import useFilter, { collectFilterStates } from '../hook/useFilter';
 import FilterPopover from '../FilterPopover';
@@ -149,7 +149,7 @@ describe('Testing Table Filter', () => {
     expect(container.getElementsByClassName('gio-checkbox-checked')).toBeTruthy();
 
     rerender(
-      <DesignProvider locale={enUS}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
         <FilterPopover
           prefixCls="gio-table"
           values={[]}
@@ -161,7 +161,7 @@ describe('Testing Table Filter', () => {
         >
           <span>trigger</span>
         </FilterPopover>
-      </DesignProvider>
+      </DesignContext.Provider>
     );
     fireEvent.click(getByText('trigger'));
     expect(screen.getByText('Confirm')).toBeTruthy();

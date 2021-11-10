@@ -1,4 +1,4 @@
-import { CommonProps, SizeType } from '@gio-design/utils';
+import { CommonProps } from '@gio-design/utils';
 import React from 'react';
 import { EmptyLocale } from '../empty/interfaces';
 
@@ -67,7 +67,7 @@ export interface ListPickerProps
   /**
    * 列表项的尺寸
    */
-  size?: SizeType;
+  size?: 'small' | 'middle' | 'large';
 }
 
 export interface ItemType extends Pick<ValueableProps, 'value'> {

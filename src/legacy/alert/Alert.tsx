@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-import { usePrefixCls, useSize } from '@gio-design/utils';
+import { usePrefixCls } from '@gio-design/utils';
 
 import _ from 'lodash';
 import {
@@ -11,6 +11,7 @@ import {
   CloseOutlined,
 } from '@gio-design/icons';
 import { PaletteGreen7, PaletteYellow7, PaletteRed5, PaletteBlue6 } from '@gio-design/tokens';
+import useSize from '../../utils/hooks/useSize';
 import { AlertProps } from './interfaces';
 
 export const Alert: React.FC<AlertProps> = (props: AlertProps) => {

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { DocumentFilled } from '@gio-design/icons';
-import { useSize, useLocale } from '@gio-design/utils';
+import { useLocale } from '@gio-design/utils';
 import Button from '../../legacy/button';
 import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import Preview from '../Preview';
@@ -10,7 +10,7 @@ import defaultLocale from '../locales/zh-CN';
 
 const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps, disabled }: ITriggerProps) => {
   const prefixCls = useContext(UploadPrefixClsContext);
-  const size = useSize() || 'large';
+  const size = 'large';
   const locale = useLocale('Upload');
   const { buttonLabel }: { buttonLabel: string } = {
     ...defaultLocale,

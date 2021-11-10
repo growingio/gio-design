@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
-import { DesignProvider } from '@gio-design/utils';
+import { DesignContext, DefaultContextProps } from '@gio-design/utils';
 import { Default } from '../demos/SearchBar.stories';
 import SearchBar from '../index';
 import enUS from '../../../locales/en-US';
@@ -108,9 +108,9 @@ describe('Testing search-bar', () => {
 
   it('multiple language', async () => {
     render(
-      <DesignProvider locale={enUS}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
         <SearchBar showClear showStorage id="demo" allowClearStorage />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
 
     act(() => {

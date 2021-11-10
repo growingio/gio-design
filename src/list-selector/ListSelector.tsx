@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import classnames from 'classnames';
-import { useControlledState, usePrefixCls, useSize } from '@gio-design/utils';
+import { useControlledState, usePrefixCls } from '@gio-design/utils';
 import ListPicker from '../list-picker';
 import Selector from '../selector';
 import { ListSelectorProps } from './interfaces';
@@ -28,7 +28,6 @@ function ListSelector({
   const [dropdownVisible, setDropdownVisible] = useControlledState(visible, defaultVisible);
   const [currentItem, setCurrentItem] = React.useState<React.ReactNode>();
   const prefixCls = usePrefixCls('list-selector');
-  const size = useSize();
 
   const handleOnSelect = (currentValue: string, item: ItemProps) => {
     setDropdownVisible(false);
@@ -52,7 +51,7 @@ function ListSelector({
       fitContent={fitContent}
       getContainer={getContainer}
       style={style}
-      size={customizeSize ?? size}
+      size={customizeSize}
       triggerClassName={triggerClassName}
       triggerStyle={triggerStyle}
       overlay={overlay}

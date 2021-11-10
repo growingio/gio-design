@@ -2,7 +2,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-console */
 import React from 'react';
-import { DesignProvider } from '@gio-design/utils';
+import { DesignContext, DefaultContextProps } from '@gio-design/utils';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import { Default } from '../demos/Modal.stories';
 import Modal from '..';
@@ -13,17 +13,17 @@ import zhCN from '../../../locales/zh-CN';
 describe('Modal Testing', () => {
   it('renders with multi languages', () => {
     const { rerender } = render(
-      <DesignProvider locale={enUS}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
         <Default {...Default.args} />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
     fireEvent.click(screen.getByText('Open Modal'));
     expect(screen.queryByText(/Cancel/)).not.toBeNull();
 
     rerender(
-      <DesignProvider locale={zhCN}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: zhCN }}>
         <Default {...Default.args} />
-      </DesignProvider>
+      </DesignContext.Provider>
     );
     fireEvent.click(screen.getByText('Open Modal'));
     expect(screen.queryByText(/取 消/)).not.toBeNull();

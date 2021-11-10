@@ -42,11 +42,7 @@ const Pagination = ({
   );
   const offset = 5;
 
-  const locale = useLocale('Pagination');
-  const { all, totals, jumpTo, pages }: { [key: string]: string } = {
-    ...defaultLocale,
-    ...locale,
-  };
+  const { all, totals, jumpTo, pages } = useLocale<typeof defaultLocale>('Pagination') || defaultLocale;
 
   const showTotals = useMemo(
     () => showTotal ?? ((tol: number) => `${all} ${tol.toLocaleString()} ${totals}`),

@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePrefixCls, useSize } from '@gio-design/utils';
+import { usePrefixCls } from '@gio-design/utils';
 import classnames from 'classnames';
 import InnerLinesEllipsis from 'react-lines-ellipsis';
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC';
@@ -18,11 +18,11 @@ function Text({
   trimRight = true,
   style,
 }: TextProps) {
-  const size = useSize();
   const prefixCls = usePrefixCls('text');
   const ref = React.useRef<{ isClamped: () => boolean }>(null);
   const [clamped, setClamped] = React.useState(false);
-  const mergedSize = customizeSize ?? size;
+
+  const mergedSize = customizeSize;
   const cls = classnames(
     prefixCls,
     {

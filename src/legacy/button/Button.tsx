@@ -2,9 +2,10 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { LoadingOutlined } from '@gio-design/icons';
-import { usePrefixCls, useSize } from '@gio-design/utils';
+import { usePrefixCls } from '@gio-design/utils';
 import { ButtonProps } from './interface';
 import { cloneElement } from '../../utils/reactNode';
+import useSize from '../../utils/hooks/useSize';
 
 const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
 const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);

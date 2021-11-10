@@ -1612,12 +1612,13 @@
   resolved "https://registry.npmmirror.com/@gio-design/tokens/download/@gio-design/tokens-22.0.0-alpha.0.tgz#3089471e2e52f73914952f9448e3894e599bad97"
   integrity sha1-MIlHHi5S9zkUlS+USOOJTlmbrZc=
 
-"@gio-design/utils@21.8.6":
-  version "21.8.6"
-  resolved "https://registry.npmmirror.com/@gio-design/utils/download/@gio-design/utils-21.8.6.tgz#0e66bebf8b35d14cc93030e34283926bb30a9bef"
-  integrity sha1-Dma+v4s10UzJMDDjQoOSa7MKm+8=
+"@gio-design/utils@^23.0.0":
+  version "23.0.0"
+  resolved "https://registry.npmmirror.com/@gio-design/utils/download/@gio-design/utils-23.0.0.tgz#cd381c273539687591e7230e19136b93234daaa4"
+  integrity sha512-072jLRYmcGujpNuCsB5ary1z048l8YEH7AQZOSxZvZl1nvd6DiDf8wY3h0KY1BadLwDh67i7Mc/7zlDOs1ijzQ==
   dependencies:
     "@babel/runtime" "^7.14.8"
+    date-fns "^2.25.0"
     lodash "^4.17.21"
     pinyin "^2.9.1"
 
@@ -6361,7 +6362,7 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-date-fns@2.x, date-fns@^2.21.3:
+date-fns@2.x, date-fns@^2.21.3, date-fns@^2.25.0:
   version "2.25.0"
   resolved "https://registry.npmmirror.com/date-fns/download/date-fns-2.25.0.tgz#8c5c8f1d958be3809a9a03f4b742eba894fc5680"
   integrity sha1-jFyPHZWL44CamgP0t0LrqJT8VoA=

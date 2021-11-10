@@ -1,5 +1,3 @@
-import { SizeType } from '@gio-design/utils';
-
 export type ButtonType = 'primary' | 'secondary' | 'text';
 export type ButtonHTMLType = 'submit' | 'button' | 'reset';
 
@@ -15,7 +13,7 @@ export interface BaseButtonProps {
   /**
    设置按钮大小
    */
-  size?: SizeType;
+  size?: 'small' | 'middle' | 'large';
   /**
    设置按钮载入状态
    */

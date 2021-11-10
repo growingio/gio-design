@@ -1,5 +1,5 @@
 import React from 'react';
-import { CommonProps, SizeType } from '@gio-design/utils';
+import { CommonProps } from '@gio-design/utils';
 import { DropdownProps } from '../components/dropdown';
 
 export interface InputTriggerProps extends CommonProps {
@@ -30,7 +30,7 @@ export interface InputTriggerProps extends CommonProps {
   /**
    * 组件输入框的尺寸
    */
-  size?: SizeType;
+  size?: 'small' | 'middle' | 'large';
   /**
    * 带有图标后缀的 `InputTrigger`
    */
