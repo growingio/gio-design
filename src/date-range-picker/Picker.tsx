@@ -8,6 +8,11 @@ import { InputButton } from '../input';
 import StaticDateRangePicker from '../static-date-range-picker';
 import { DateRangePickerProps, NullableDate, NullableString } from './interfaces';
 
+export const formatDates = (dates: [NullableDate, NullableDate], formatString = 'yyyy/MM/dd'): NullableString => {
+  const strongFormat = (date: NullableDate) => (date ? format(date, formatString) : undefined);
+  return `${strongFormat(dates[0]) || ''} - ${strongFormat(dates[1]) || ''}`;
+};
+
 export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerProps) => {
   const {
     onVisibleChange: onPopoverVisibleChange,
@@ -32,11 +37,6 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
   const prefixCls = usePrefixCls('date-range-picker-new');
   const overlayCls = classnames(`${prefixCls}-overlay`, overlayClassName);
 
-  const formatDates = (dates: [NullableDate, NullableDate]): NullableString => {
-    const strongFormat = (date: NullableDate) => (date ? format(date, formatString ?? 'yyyy/MM/dd') : undefined);
-    return `${strongFormat(dates[0]) || ''} - ${strongFormat(dates[1]) || ''}`;
-  };
-
   const [visible, setVisible] = useControlledState(popoverVisible, false);
 
   const [controlledValue, setControlledValue] = useControlledState<[NullableDate, NullableDate] | undefined>(
@@ -53,7 +53,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
     setControlledValue(currentValue);
     if (index) {
       setVisible(false);
-      onSelect?.(currentValue, formatDates(currentValue));
+      onSelect?.(currentValue, formatDates(currentValue, formatString));
     }
   };
 

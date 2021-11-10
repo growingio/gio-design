@@ -13,6 +13,7 @@ import cascaderLocale from '../legacy/cascader/locales/en-US';
 import paginationLocale from '../legacy/pagination/locales/en-US';
 import tableLocale from '../legacy/table/locales/en-US';
 import uploadLocale from '../upload/locales/en-US';
+import staticPastTimePickerLocale from '../static-past-time-picker/locales/en-US';
 
 export const locale: Locale = {
   code: 'en-US',
@@ -57,6 +58,9 @@ export const locale: Locale = {
   },
   Upload: {
     ...uploadLocale,
+  },
+  StaticPastTimePicker: {
+    ...staticPastTimePickerLocale,
   },
 };
 
