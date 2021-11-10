@@ -3,8 +3,8 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { DesignContext, DefaultContextProps } from '@gio-design/utils';
 import { Basic, Disabled, Empty, Groups, Size } from '../demos/ListPicker.stories';
 import ListPicker from '../ListPicker';
-import enUS from '../../locales/en-US';
-import zhCN from '../../locales/zh-CN';
+import enUS from '../../../locales/en-US';
+import zhCN from '../../../locales/zh-CN';
 
 describe('ListPicker', () => {
   it('has static propties', () => {

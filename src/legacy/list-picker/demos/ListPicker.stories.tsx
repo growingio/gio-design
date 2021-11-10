@@ -5,10 +5,10 @@ import { CalendarOutlined } from '@gio-design/icons';
 import ListPickerPage from './ListPickerPage';
 import ListPicker from '../ListPicker';
 import { ListPickerProps } from '../interfaces';
-import Typography from '../../typography';
+import Typography from '../../../typography';
 
 import '../style';
-import '../../typography/style';
+import '../../../typography/style';
 import './ListPicker.stories.less';
 
 const defaultItems = Array.from({ length: 5 }, (_, index) => index).map((i) => ({
@@ -113,7 +113,7 @@ Ellipsis.args = {
 };
 
 export default {
-  title: 'Components/ListPicker',
+  title: 'Legacy/ListPicker',
   component: ListPicker,
   subcomponents: {
     Divider: ListPicker.Divider,
