@@ -10,6 +10,7 @@ import './style.less';
 import DragList from '../Drag';
 import SelectionList from '../Selection';
 import SelectionItem from '../SelectionItem';
+import CascaderItem from '../inner/CascaderItem';
 
 export default {
   title: 'Upgraded/List',
@@ -33,8 +34,43 @@ const options = [
 
 const Template: Story<ListProps> = (props) => {
   const [value, setValue] = useState([]);
+  const [cascaderValue, setCascadervalue] = useState('1.1-1');
   return (
     <>
+      <div className="demo-box">
+        <List
+          isCascader
+          value={cascaderValue}
+          onChange={(val) => {
+            console.log('cascader val', val);
+            setCascadervalue(val as any);
+          }}
+        >
+          <CascaderItem label="1" value="1">
+            <List>
+              <Item label="1-1" value="1-1" />
+              <Item label="1-2" value="1-2" />
+            </List>
+          </CascaderItem>
+          <CascaderItem label="2" value="2">
+            <List>
+              <Item label="2-1" value="1-1" />
+              <Item label="2-2" value="1-2" />
+            </List>
+          </CascaderItem>
+          <CascaderItem label="3" value="3" />
+          <CascaderItem label="4" value="4">
+            <List>
+              <CascaderItem label="4-1" value="4-1">
+                <List>
+                  <Item label="4-1-1" value="4-1-1" />
+                  <Item label="4-1-2" value="4-1-2" />
+                </List>
+              </CascaderItem>
+            </List>
+          </CascaderItem>
+        </List>
+      </div>
       <div className="demo-box">
         <List {...props}>
           <Item value="1" prefix={<PlusOutlined size="14px" />} suffix={<FilterOutlined size="14px" />}>

@@ -4,14 +4,15 @@ import { isEmpty, isString } from 'lodash';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { PREFIX } from '../constants';
 import { BaseItemProps } from '../interfance';
-import Checkbox from '../../checkbox/Checkbox';
 import Tooltip from '../../legacy/tooltip';
 import WithRef from '../../utils/withRef';
 
-const BaseItem: React.ForwardRefRenderFunction<HTMLLIElement, BaseItemProps & DOMAttributes<HTMLLIElement>> = (
-  props,
-  ref?
-) => {
+const defaultContentRender = (element: React.ReactNode | Element) => element;
+
+const BaseItem: React.ForwardRefRenderFunction<
+  HTMLLIElement,
+  BaseItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>
+> = (props, ref?) => {
   const {
     label,
     value,
@@ -23,16 +24,27 @@ const BaseItem: React.ForwardRefRenderFunction<HTMLLIElement, BaseItemProps & DO
     disabled,
     selected,
     disabledTooltip,
-    isMultiple,
+    onClick,
+    contentRender = defaultContentRender,
     ...rest
   } = props;
 
   const prefixCls = `${usePrefixCls(PREFIX)}--item`;
 
-  const context = children ?? label;
+  const content = children ?? label;
   const prefixIcon = prefix ? <span className={`${prefixCls}-prefix-icon`}>{prefix}</span> : undefined;
   const suffixIcon = suffix ? <span className={`${prefixCls}-suffix-icon`}>{suffix}</span> : undefined;
-
+  const contentElement = isString(content) ? (
+    <>
+      {prefixIcon}
+      <span className={classNames(`${prefixCls}--text`, `${prefixCls}--ellipsis`)} title={content}>
+        {content}
+      </span>
+      {suffixIcon}
+    </>
+  ) : (
+    <>{content}</>
+  );
   return (
     <Tooltip disabled={!(disabled && !isEmpty(disabledTooltip))} title={disabledTooltip}>
       <li
@@ -43,7 +55,6 @@ const BaseItem: React.ForwardRefRenderFunction<HTMLLIElement, BaseItemProps & DO
           {
             [`${prefixCls}--disabled`]: disabled,
             [`${prefixCls}--actived`]: selected,
-            [`${prefixCls}--multiple`]: isMultiple,
           },
           className
         )}
@@ -51,19 +62,9 @@ const BaseItem: React.ForwardRefRenderFunction<HTMLLIElement, BaseItemProps & DO
         aria-hidden="true"
         ref={ref}
         {...rest}
+        onClick={() => onClick?.(value)}
       >
-        {isMultiple && <Checkbox className={`${prefixCls}--checkbox`} checked={selected} disabled={disabled} />}
-        {isString(context) ? (
-          <>
-            {prefixIcon}
-            <span className={classNames(`${prefixCls}--text`, `${prefixCls}--ellipsis`)} title={context}>
-              {context}
-            </span>
-            {suffixIcon}
-          </>
-        ) : (
-          <>{context}</>
-        )}
+        {contentRender?.(contentElement)}
       </li>
     </Tooltip>
   );

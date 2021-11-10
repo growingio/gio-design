@@ -5,12 +5,14 @@ import { PREFIX } from './constants';
 import { SelectionItemProps } from './interfance';
 
 const Selection: React.FC<SelectionItemProps> = (props) => {
-  const { className, style, title, children } = props;
+  const { className, style, title, children, onChange } = props;
   const prefixCls = `${usePrefixCls(PREFIX)}--selection--item`;
   return (
     <div className={classNames(prefixCls, className)} style={style}>
       <div className={`${prefixCls}--title`}>{title}</div>
-      {children}
+      {React.cloneElement(children as React.ReactElement, {
+        onChange,
+      })}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import {
   ItemProps as InnerItemProps,
-  ListProps,
+  ListProps as InnerListProps,
   OptionProps,
   DragListProps as DragProps,
   DragItemProps,
@@ -15,7 +15,8 @@ import SelectionItem from './SelectionItem';
 import BaseItem from './inner/baseItem';
 import WithSubComponent from '../utils/withSubComponent';
 
-type ItemProps = Omit<InnerItemProps, 'selected' | 'isMultiple'>;
+type ItemProps = Omit<InnerItemProps, 'selected' | 'selectValue'>;
+type ListProps = Omit<InnerListProps, 'selectedParent'>;
 
 export type { ItemProps, ListProps, OptionProps, DragProps, DragItemProps, BaseItemProps };
 
