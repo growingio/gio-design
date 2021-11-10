@@ -6,7 +6,7 @@ import Popover from '../popover';
 import FilterList from './FilterList';
 import SearchBar from '../search-bar';
 import { TableContext } from './Table';
-import { FilterType , Key } from './interface';
+import { FilterType, Key } from './interface';
 import defaultLocale from './locales/zh-CN';
 
 interface FilterPopoverProps {
@@ -22,17 +22,17 @@ interface FilterPopoverProps {
 }
 
 const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
-  const { children, onClick, filters = [], values, prefixCls, placeholder = '搜索过滤条件' } = props;
+  const locale = useLocale('Table');
+  const { clearText, okText, searchText }: typeof defaultLocale = {
+    ...defaultLocale,
+    ...locale,
+  };
+
+  const { children, onClick, filters = [], values, prefixCls, placeholder = searchText } = props;
   const [searchValue, setSearchValue] = useState<string>('');
   const [selectFilterKeys, setSelectFilterKeys] = useState<string[]>(values.map((value) => `${value}`));
   const [visible, setVisible] = useState<boolean>(false);
   const { tableRef } = useContext(TableContext);
-
-  const locale = useLocale('Table');
-  const { clearText, okText }: { clearText: string; okText: string } = {
-    ...defaultLocale,
-    ...locale,
-  };
 
   useEffect(() => {
     if (visible) {

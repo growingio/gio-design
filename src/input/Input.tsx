@@ -60,10 +60,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     () => (customizeSuffix ? <div className={suffixCls}>{customizeSuffix}</div> : null),
     [suffixCls, customizeSuffix]
   );
-
-  const input = (
-    <input {...rest} disabled={disabled} className={inputClass} placeholder={placeholder || '请输入...'} ref={ref} />
-  );
+  const input = <input {...rest} disabled={disabled} className={inputClass} placeholder={placeholder} ref={ref} />;
 
   if (!suffix && !prefix) {
     return input;

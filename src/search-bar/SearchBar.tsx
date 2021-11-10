@@ -58,12 +58,11 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
     [onChangeFC, onSearch]
   );
 
-  const resetPlaceholder = useMemo(() => (placeholder || disabled ? '无法搜索' : '搜索'), [placeholder, disabled]);
   return (
     <Input
       {...props}
       type="text"
-      placeholder={resetPlaceholder}
+      placeholder={placeholder}
       value={value}
       onChange={onChange}
       suffix={suffix}

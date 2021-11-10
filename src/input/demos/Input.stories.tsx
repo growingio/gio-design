@@ -51,61 +51,61 @@ const Template: Story<InputProps> = (args) => (
       <tr>
         <td>Text</td>
         <td>
-          <Input {...args} />
+          <Input placeholder="请输入..." {...args} />
         </td>
         <td>
-          <Input {...args} />
+          <Input placeholder="请输入..." {...args} />
         </td>
         <td>
-          <Input {...args} />
+          <Input placeholder="请输入..." {...args} />
         </td>
         <td>
-          <Input {...args} value="数据可视化" disabled />
+          <Input placeholder="请输入..." {...args} value="数据可视化" disabled />
         </td>
       </tr>
       <tr>
         <td>Number</td>
         <td>
-          <InputNumber {...args} defaultValue={12} value={15} />
+          <InputNumber placeholder="请输入数字..." {...args} defaultValue={12} value={15} />
         </td>
         <td>
-          <InputNumber {...args} />
+          <InputNumber placeholder="请输入数字..." {...args} />
         </td>
         <td>
-          <InputNumber {...args} />
+          <InputNumber placeholder="请输入数字..." {...args} />
         </td>
         <td>
-          <InputNumber {...args} value={365} disabled />
+          <InputNumber placeholder="请输入数字..." {...args} value={365} disabled />
         </td>
       </tr>
       <tr>
         <td>Password</td>
         <td>
-          <Password {...args} />
+          <Password placeholder="请输入密码..." {...args} />
         </td>
         <td>
-          <Password {...args} size="small" />
+          <Password placeholder="请输入密码..." {...args} size="small" />
         </td>
         <td>
-          <Password {...args} />
+          <Password placeholder="请输入密码..." {...args} />
         </td>
         <td>
-          <Password {...args} value="密码无法输入" disabled />
+          <Password placeholder="请输入密码..." {...args} value="密码无法输入" disabled />
         </td>
       </tr>
       <tr>
         <td>TextArea</td>
         <td>
-          <TextArea {...(args as any)} />
+          <TextArea placeholder="请输入..." {...(args as any)} />
         </td>
         <td>
-          <TextArea {...(args as any)} />
+          <TextArea placeholder="请输入..." {...(args as any)} />
         </td>
         <td>
-          <TextArea {...(args as any)} />
+          <TextArea placeholder="请输入..." {...(args as any)} />
         </td>
         <td>
-          <TextArea {...(args as any)} disabled />
+          <TextArea placeholder="请输入..." {...(args as any)} disabled />
         </td>
       </tr>
     </table>
@@ -121,20 +121,20 @@ const Template: Story<InputProps> = (args) => (
         <td>Size</td>
         <td>拥有两种尺寸：大号为高度36px，小号为高度30px</td>
         <td>
-          <Input {...args} />
+          <Input placeholder="请输入..." {...args} />
         </td>
         <td>
-          <Input {...args} size="small" />
+          <Input placeholder="请输入..." {...args} size="small" />
         </td>
       </tr>
       <tr>
         <td>Disabled</td>
         <td>disabled状态的样式，可配置是否hover有tooltip</td>
         <td>
-          <Input {...args} value="数据可视化" disabled />
+          <Input placeholder="请输入..." {...args} value="数据可视化" disabled />
         </td>
         <td>
-          <Input {...args} value="数据可视化" disabled size="small" />
+          <Input placeholder="请输入..." {...args} value="数据可视化" disabled size="small" />
         </td>
       </tr>
     </table>
