@@ -27,7 +27,7 @@ const withDesignProvider = (Story, context) => {
     globals: { locale },
   } = context;
   return (
-    <DesignContext.Provider value={{ ...DefaultContextProps, locale: 'en-US' ? enUS : undefined }}>
+    <DesignContext.Provider value={{ ...DefaultContextProps, locale: locale === 'en-US' ? enUS : undefined }}>
       <Story {...context} />
     </DesignContext.Provider>
   );

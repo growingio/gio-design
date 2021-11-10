@@ -3,11 +3,6 @@ import { ButtonProps, ButtonType } from '../button';
 
 export type TModalSize = 'normal' | 'fixed' | 'full';
 
-export type ModalLocale = {
-  okText: string;
-  closeText: string;
-};
-
 type getContainerFunc = () => HTMLElement;
 
 export interface ConfirmModalProps extends ModalFuncProps {
