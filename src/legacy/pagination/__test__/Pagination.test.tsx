@@ -5,7 +5,7 @@ import { Default } from '../demos/Pagination.stories';
 import Pagination from '../Pagination';
 import { generatePageArray } from '../until';
 import 'raf/polyfill';
-import enUS from '../../../locales/en-US';
+import enUS from '../locales/en-US';
 
 describe('Testing pagination', () => {
   it('basic pagination', () => {
@@ -172,7 +172,7 @@ describe('Testing pagination', () => {
 
   it('multiple language', () => {
     render(
-      <DesignContext.Provider value={{ ...DefaultContextProps, locale: enUS }}>
+      <DesignContext.Provider value={{ ...DefaultContextProps, locale: { Pagination: enUS, code: 'en-US' } }}>
         <Default {...Default.args} />
       </DesignContext.Provider>
     );

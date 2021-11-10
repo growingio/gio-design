@@ -1,18 +1,20 @@
 import React, { createContext, useMemo } from 'react';
 import classNames from 'classnames';
+import { useLocale } from '@gio-design/utils';
 import PaginationProps, { PaginationItemType } from './interface';
 import WithRef from '../utils/withRef';
-import { usePrefixCls } from '../index';
 import usePagination from './hooks/usePagination';
 import PaginationItem from './PaginationItem';
 import RowsSelector from './RowsSelector';
-import { useControlledState } from '..';
 import QuickJumper from './QuickJumper';
+import defaultLocaleTextObject from './locales/zh-CN';
+import { useControlledState, usePrefixCls } from '..';
 
 type PaginationContextType = Required<Pick<PaginationProps, 'pageSizeOptions' | 'defaultPageSize' | 'total'>> &
   Partial<Pick<PaginationProps, 'onPageSizeChange' | 'totalTextRender' | 'pageSize'>> & {
     prefixCls: string;
     maxPages: number;
+    textObject: typeof defaultLocaleTextObject;
   };
 
 export const PaginationContext = createContext<PaginationContextType>({
@@ -21,6 +23,7 @@ export const PaginationContext = createContext<PaginationContextType>({
   pageSizeOptions: [10, 20, 50],
   defaultPageSize: 10,
   total: 0,
+  textObject: defaultLocaleTextObject,
 });
 
 const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
@@ -43,6 +46,9 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
     ...otherProps
   } = props;
 
+  const localeTextObject: typeof defaultLocaleTextObject = useLocale('Pagination');
+  const textObject = useMemo(() => ({ ...defaultLocaleTextObject, ...localeTextObject }), [localeTextObject]);
+
   const prefixCls = usePrefixCls('pagination-new');
   const [pageSize, setPageSize] = useControlledState(pageSizeProp, defaultPageSize);
   const {
@@ -61,15 +67,15 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
 
   const getAriaLabel = (type: PaginationItemType | 'rows' | 'total' | 'jumper' | 'nav', active = false, page = 0) =>
     ({
-      rows: '分页导航的行数选择器',
-      total: '分页导航的数据总数',
-      [PaginationItemType.First]: '转到第一页',
-      [PaginationItemType.Previous]: '转到上一页',
-      [PaginationItemType.Page]: active ? '' : `转到第 ${page} 页`,
-      [PaginationItemType.Next]: '转到下一页',
-      [PaginationItemType.Last]: '转到最后一页',
-      jumper: '分页导航的页码跳转器',
-      nav: '分页导航',
+      rows: textObject.ariaLabelRows,
+      total: textObject.ariaLabelTotal,
+      [PaginationItemType.First]: textObject.ariaLabelFirst,
+      [PaginationItemType.Previous]: textObject.ariaLabelPrevious,
+      [PaginationItemType.Page]: active ? '' : textObject.ariaLabelPage(page),
+      [PaginationItemType.Next]: textObject.ariaLabelNext,
+      [PaginationItemType.Last]: textObject.ariaLabelLast,
+      jumper: textObject.ariaLabelJumper,
+      nav: textObject.ariaLabelNav,
     }[type]);
 
   if (hideOnSinglePage && maxPages <= 1) return null;
@@ -84,8 +90,19 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
       prefixCls,
       total,
       maxPages,
+      textObject,
     }),
-    [onPageSizeChange, pageSize, defaultPageSize, pageSizeOptions, totalTextRender, prefixCls, total, maxPages]
+    [
+      onPageSizeChange,
+      pageSize,
+      defaultPageSize,
+      pageSizeOptions,
+      totalTextRender,
+      prefixCls,
+      total,
+      maxPages,
+      textObject,
+    ]
   );
 
   return (
@@ -95,7 +112,7 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
           <RowsSelector onRowsChange={(rows) => setPageSize(rows)} aria-label={getAriaLabel('rows')} />
         )}
         <p aria-label={getAriaLabel('total')} className={`${prefixCls}__total`}>
-          {totalTextRender?.(total) ?? `总共 ${total.toLocaleString('zh-CN')} 条`}
+          {totalTextRender?.(total) ?? textObject.total(total)}
         </p>
         <nav aria-label={getAriaLabel('nav')} className={`${prefixCls}__nav`}>
           <ul className={`${prefixCls}__ul`}>
