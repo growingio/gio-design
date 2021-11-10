@@ -83,13 +83,12 @@ const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
         ref={ref}
         disabled={disabled}
         className={classes}
-        indeterminate={indeterminate}
+        indeterminate={`${indeterminate}`}
         value={value}
         checked={checkedStatus}
         onChange={handleChange}
         style={style}
         color={color}
-        defaultChecked={defaultChecked}
         {...checkboxProps}
       />
       <span>{children}</span>
