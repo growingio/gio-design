@@ -52,7 +52,7 @@ export interface PopoverProps {
 
   placement?: Placement;
   trigger?: TriggerAction | TriggerAction[];
-  content?: string | React.ReactNode;
+  content?: React.ReactNode;
 
   /**
    * 气泡被遮挡时自动调整位置

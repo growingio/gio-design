@@ -3,10 +3,9 @@
 @dropdown-prefix-cls: ~'@{component-prefix}-dropdown-new';
 
 .@{dropdown-prefix-cls} {
-  width: 160px;
-  max-height: 200px;
+  min-width: 160px;
   padding: 12px 8px;
-  overflow: auto;
+  overflow: visible;
   background-color: @gray-0;
   .border(4);
   .elevation(2);
