@@ -1,8 +1,5 @@
-import { TooltipProps } from '../legacy/tooltip/interface';
+import { PopoverProps } from '../popover';
 
-export interface DropdownProps extends Omit<TooltipProps, 'title' | 'tooltipLink' | 'arrowPointAtCenter' | 'overlay'> {
-  /**
-   下拉区域
-   */
-  overlay: (() => React.ReactElement) | React.ReactElement;
-}
+type DropdownProps = PopoverProps;
+
+export default DropdownProps;
