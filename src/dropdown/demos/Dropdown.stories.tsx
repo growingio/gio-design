@@ -1,16 +1,23 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
-import { MoreOutlined } from '@gio-design/icons';
+import { Meta } from '@storybook/react/types-6-0';
+import {
+  DownloadOutlined,
+  EmailOutlined,
+  FullScreenOutlined,
+  PlusOutlined,
+  ReloadOutlined,
+  SettingOutlined,
+} from '@gio-design/icons';
 import Docs from './DropdownPage';
-import Dropdown, { DropdownProps } from '../index';
+import Dropdown from '../index';
 import '../style';
-import { IconButton, Button } from '../../index';
-import List from '../../legacy/list';
-import ListPro from '../../legacy/list-pro';
-import { properties } from '../../legacy/list/__tests__/data';
+import Button from '../../button';
+import List, { Item } from '../../list';
+import Divider from '../../divider';
+import CascaderItem from '../../list/inner/CascaderItem';
 
 export default {
-  title: 'Components/Dropdown',
+  title: 'Upgraded/Dropdown',
   component: Dropdown,
   parameters: {
     docs: {
@@ -19,54 +26,30 @@ export default {
   },
 } as Meta;
 
-const overlay = (
-  <div
-    style={{
-      width: 120,
-      height: 120,
-      border: '1px dashed #DCDFED',
-      borderRadius: '4px',
-      backgroundColor: '#FFF',
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}
+export const Default = () => (
+  <Dropdown
+    content={
+      <List>
+        <Item prefix={<ReloadOutlined />} value="1">
+          刷新数据
+        </Item>
+        <Item prefix={<FullScreenOutlined />} value="2">
+          进入全屏
+        </Item>
+        <Item prefix={<DownloadOutlined />} value="3">
+          下载 PDF
+        </Item>
+        <Divider style={{ margin: 0 }} />
+        <CascaderItem label="邮件推送" value="4" prefix={<EmailOutlined />}>
+          <List>
+            <Item value="4-1" label="创建邮件推送" prefix={<PlusOutlined />} />
+            <Item value="4-1" label="邮件推送管理" prefix={<SettingOutlined />} />
+          </List>
+        </CascaderItem>
+      </List>
+    }
+    placement="bottomLeft"
   >
-    {/* <SearchBar /> */}
-    <List items={properties} />
-  </div>
-);
-
-const options = [
-  { value: 'a', label: '功能名称' },
-  { value: 'b', label: '功能名称' },
-  { value: 'c', label: '功能名称' },
-  { value: 'd', label: '功能名称' },
-  { value: 'e', label: '功能名称' },
-  { value: 'f', label: '功能名称' },
-  { value: 'g', label: '功能名称' },
-];
-
-const Template: Story<DropdownProps> = (args) => (
-  <Dropdown {...args}>
-    <Button>更多功能</Button>
+    <Button>Dropdown</Button>
   </Dropdown>
 );
-export const Default = Template.bind({});
-Default.args = {
-  overlay,
-  placement: 'bottom',
-};
-
-const IconTemplate: Story<DropdownProps> = (args) => (
-  <Dropdown {...args} placement="bottomLeft">
-    <IconButton type="text" style={{ margin: '50px' }}>
-      <MoreOutlined />
-    </IconButton>
-  </Dropdown>
-);
-export const IconTrigger = IconTemplate.bind({});
-
-IconTrigger.args = {
-  overlay: <ListPro dataSource={options} />,
-};

@@ -37,7 +37,11 @@ const Tooltip = (props: TooltipProps) => {
     return isNoTitle ? null : (
       <>
         <span className={`${prefixCls}__inner-title`}>{computedTitle}</span>
-        {tooltipLink?.link && <Link href={tooltipLink.link}>{tooltipLink.name || tooltipLink.link}</Link>}
+        {tooltipLink?.link && (
+          <Link href={tooltipLink.link} className={`${prefixCls}__link`}>
+            {tooltipLink.name || tooltipLink.link}
+          </Link>
+        )}
       </>
     );
   }, [prefixCls, computedTitle, tooltipLink]);

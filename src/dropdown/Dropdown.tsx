@@ -1,59 +1,85 @@
-import React, { cloneElement, Children } from 'react';
-import { isFunction, isUndefined } from 'lodash';
+import React, { cloneElement, Children, forwardRef } from 'react';
 import classnames from 'classnames';
-import Tooltip from '../legacy/tooltip';
-import { DropdownProps } from './interface';
+import { usePrefixCls } from '@gio-design/utils';
+import { isFunction, isUndefined } from 'lodash';
+import DropdownProps from './interface';
 import useControlledState from '../utils/hooks/useControlledState';
+import Popover from '../popover';
 
-export const Dropdown = (props: DropdownProps) => {
-  const placementList = ['top', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'];
+export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.ForwardedRef<T>): React.ReactElement {
   const {
     children,
-    prefixCls,
-    subPrefixCls = 'dropdown',
-    placement = 'bottom',
+    placement = 'bottomLeft',
     trigger = 'click',
+    defaultVisible = false,
     visible,
     onVisibleChange,
-    overlay,
+    content,
+    overlayClassName,
     ...rest
   } = props;
-  const [controlledVisible, setControlledVisible] = useControlledState(visible, false);
+
+  const [controlledVisible, setControlledVisible] = useControlledState(visible, defaultVisible);
+  const prefixCls = usePrefixCls('dropdown-new');
 
   const getDropdownTrigger = () => {
     const child = Children.only(children);
     return cloneElement(child, {
-      className: classnames(controlledVisible ? 'dropdown-active' : '', child.props.className),
+      className: classnames(
+        {
+          'dropdown-active': controlledVisible,
+        },
+        child.props.className,
+        ref
+      ),
     });
   };
 
-  const getOverlay = () => {
-    const _overlay: React.ReactElement = isFunction(overlay) ? overlay() : overlay;
-    const onOverlayClick = (e: React.MouseEvent) => {
-      setControlledVisible(false, true);
-      onVisibleChange?.(false);
-      _overlay.props.onClick?.(e);
+  const withOnClick = (contentNode: DropdownProps['content']) => {
+    const close = () => {
+      setControlledVisible(false);
+      if (isFunction(onVisibleChange)) {
+        onVisibleChange(false);
+      }
     };
-    return isUndefined(visible) ? cloneElement(_overlay, { onClick: onOverlayClick }) : _overlay;
+    const onClick = close;
+    const onKeyDown = ({ key }: React.KeyboardEvent<HTMLDivElement>) => {
+      if ([' ', 'Enter', 'Escape'].includes(key)) {
+        close();
+      }
+    };
+    return (
+      <div role="button" tabIndex={0} onClick={isUndefined(visible) ? onClick : undefined} onKeyDown={onKeyDown}>
+        {contentNode}
+      </div>
+    );
   };
 
   return (
-    <Tooltip
-      prefixCls={prefixCls}
-      subPrefixCls={subPrefixCls}
+    <Popover
       trigger={trigger}
-      placement={placementList.includes(placement) ? placement : 'bottom'}
+      arrowPointAtCenter
+      placement={placement}
       visible={controlledVisible}
-      overlay={getOverlay()}
-      onVisibleChange={(_visible) => {
-        setControlledVisible(_visible);
-        onVisibleChange?.(_visible);
+      content={withOnClick(content)}
+      overlayClassName={classnames(prefixCls, overlayClassName)}
+      onVisibleChange={(changedVisible) => {
+        setControlledVisible(changedVisible);
+        if (isFunction(onVisibleChange)) {
+          onVisibleChange(changedVisible);
+        }
       }}
       {...rest}
     >
       {getDropdownTrigger()}
-    </Tooltip>
+    </Popover>
   );
-};
+}
 
-export default Dropdown;
+// 支持 ForwardRef 传入泛型
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type ForwardRefFn = <T = HTMLElement>(
+  props: React.PropsWithChildren<DropdownProps> & React.RefAttributes<T>
+) => React.ReactElement;
+
+export default forwardRef(Dropdown) as ForwardRefFn;

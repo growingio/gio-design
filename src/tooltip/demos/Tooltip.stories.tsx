@@ -5,8 +5,6 @@ import Tooltip from '../Tooltip';
 import { TooltipProps } from '../interface';
 import Input from '../../input';
 import { Button } from '../../button';
-
-import '../../popover/style';
 import '../style';
 import '../../popover/demos/demo.stories.less';
 
@@ -109,6 +107,7 @@ export const Placement = Template.bind({});
 Placement.args = {
   arrowPointAtCenter: true,
   overlay,
+  trigger: 'click',
 };
 
 const TriggerTemplate: Story<TooltipProps> = (args) => (

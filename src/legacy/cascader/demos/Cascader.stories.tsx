@@ -8,7 +8,7 @@ import { Props } from '../interface';
 import '../style';
 import '../style/stories.less';
 import '../../input/style';
-import '../../../dropdown/style';
+import '../../dropdown/style';
 import '../../search-bar/style';
 import Docs from './CascaderPage';
 

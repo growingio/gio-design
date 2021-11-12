@@ -1,61 +1,12 @@
-@import '../../stylesheet/index.less';
-@import '../../stylesheet/mixin/trigger.less';
+@import '../../stylesheet/variables/index.less';
 
-@dropdown-prefix-cls: ~'@{component-prefix}-dropdown';
-@dropdown-arrow-width: 0px;
-@dropdown-distance: 0px;
-@dropdown-duration: 10ms;
+@dropdown-prefix-cls: ~'@{component-prefix}-dropdown-new';
 
 .@{dropdown-prefix-cls} {
-  position: absolute;
-  z-index: @zindex-dropdown;
-  margin: auto;
-
-  &-hidden {
-    display: none;
-  }
-
-  &-content {
-    position: relative;
-    background-color: @color-background-dropdown;
-    border-radius: 4px;
-    box-shadow: @shadow-dropdown;
-  }
-
-  &-inner {
-    overflow: hidden;
-    border-radius: 4px;
-    &-content {
-      position: relative;
-      margin: 20px;
-      overflow: hidden;
-    }
-    &-footer {
-      position: relative;
-      margin: -4px 20px 16px;
-      overflow: hidden;
-    }
-  }
-
-  &-arrow {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    pointer-events: none;
-    &-content {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 0;
-      margin: auto;
-      border: @dropdown-arrow-width / 2 solid;
-      pointer-events: auto;
-    }
-  }
-  .trigger-placement(@dropdown-prefix-cls, @color-background-dropdown, @dropdown-arrow-width, @dropdown-distance);
+  min-width: 160px;
+  padding: 12px 8px;
+  overflow: visible;
+  background-color: @gray-0;
+  .border(4);
+  .elevation(2);
 }
-
-.trigger-transition(@dropdown-prefix-cls, @dropdown-duration);
