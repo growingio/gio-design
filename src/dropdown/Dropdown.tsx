@@ -1,7 +1,7 @@
 import React, { cloneElement, Children, forwardRef } from 'react';
 import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
-import { isFunction } from 'lodash';
+import { isFunction, isUndefined } from 'lodash';
 import DropdownProps from './interface';
 import useControlledState from '../utils/hooks/useControlledState';
 import Popover from '../popover';
@@ -35,13 +35,33 @@ export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.Forwa
     });
   };
 
+  const withOnClick = (contentNode: DropdownProps['content']) => {
+    const close = () => {
+      setControlledVisible(false);
+      if (isFunction(onVisibleChange)) {
+        onVisibleChange(false);
+      }
+    };
+    const onClick = close;
+    const onKeyDown = ({ key }: React.KeyboardEvent<HTMLDivElement>) => {
+      if ([' ', 'Enter', 'Escape'].includes(key)) {
+        close();
+      }
+    };
+    return (
+      <div role="button" tabIndex={0} onClick={isUndefined(visible) ? onClick : undefined} onKeyDown={onKeyDown}>
+        {contentNode}
+      </div>
+    );
+  };
+
   return (
     <Popover
       trigger={trigger}
       arrowPointAtCenter
       placement={placement}
       visible={controlledVisible}
-      content={content}
+      content={withOnClick(content)}
       overlayClassName={classnames(prefixCls, overlayClassName)}
       onVisibleChange={(changedVisible) => {
         setControlledVisible(changedVisible);
