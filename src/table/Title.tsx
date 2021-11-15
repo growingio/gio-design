@@ -5,7 +5,7 @@ import { isEmpty, isUndefined } from 'lodash';
 import Button from '../button';
 import Tooltip from '../tooltip';
 import FilterPopover from './FilterPopover';
-import { SortOrder, TitleProps } from './interface';
+import { Key, SortOrder, TitleProps } from './interface';
 
 export const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): SortOrder =>
   current === null ? sortDirections[0] : sortDirections[sortDirections.indexOf(current) + 1];
@@ -52,7 +52,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
       return null;
     }
     const { filteredKeys, filters } = filterState;
-    const handleFilterPopoverClick = (newFilteredKeys: string[]): void => {
+    const handleFilterPopoverClick = (newFilteredKeys: Key[]): void => {
       onTriggerStateUpdate({ filterStates: updateFilterStates({ ...filterState, filteredKeys: newFilteredKeys }) });
     };
 

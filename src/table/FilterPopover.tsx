@@ -12,7 +12,7 @@ import defaultLocale from './locales/zh-CN';
 interface FilterPopoverProps {
   prefixCls: string;
   children: React.ReactElement;
-  onClick: (newFilterState: string[]) => void;
+  onClick: (newFilterState: Key[]) => void;
   filters?: FilterType[];
   values: Key[];
   /**
@@ -30,13 +30,13 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
 
   const { children, onClick, filters = [], values, prefixCls, placeholder = searchText } = props;
   const [searchValue, setSearchValue] = useState<string>('');
-  const [selectFilterKeys, setSelectFilterKeys] = useState<string[]>(values.map((value) => `${value}`));
+  const [selectFilterKeys, setSelectFilterKeys] = useState<Key[]>(values);
   const [visible, setVisible] = useState<boolean>(false);
   const { tableRef } = useContext(TableContext);
 
   useEffect(() => {
     if (visible) {
-      setSelectFilterKeys(values.map((value) => `${value}`));
+      setSelectFilterKeys(values);
     }
   }, [values, visible]);
 
@@ -50,7 +50,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
         setVisible(_visible);
         if (_visible === false) {
           setSearchValue('');
-          setSelectFilterKeys(values.map((value) => `${value}`));
+          setSelectFilterKeys(values);
         }
       }}
       placement="bottomLeft"
@@ -69,7 +69,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
             prefixCls={prefixCls}
             value={selectFilterKeys}
             onChange={(keys) => {
-              setSelectFilterKeys(keys.map((key) => `${key}`));
+              setSelectFilterKeys(keys);
             }}
             dataSource={filters
               .filter((item) => {
@@ -80,9 +80,9 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
               })
               .map((item) => {
                 if (isObject(item)) {
-                  return { key: item.value, value: item.label };
+                  return { value: item.value, label: item.label };
                 }
-                return { key: item.toString(), value: item.toString() };
+                return { value: item.toString(), label: item.toString() };
               })}
           />
           <div className={`${prefixCls}-filter-popover-footer`}>

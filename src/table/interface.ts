@@ -172,6 +172,10 @@ interface TableProps<RecordType> extends Omit<GioTableProps<RecordType>, 'title'
    * 表格数据为空时的占位内容
    */
   emptyText?: React.ReactNode;
+
+  /**
+   * 自定义表格数据为空时的页面，请参考 Page 组件
+   */
   empty?: PageProps;
   /**
    * 分页/排序/筛选变化时触发

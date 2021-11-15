@@ -197,7 +197,7 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
 
   const emptyElement = (
     <div className={`${prefixCls}-empty`}>
-      <Page description={emptyText} size="small" {...empty} />
+      <Page description={emptyText} size="normal" type="noData" {...empty} />
     </div>
   );
 
