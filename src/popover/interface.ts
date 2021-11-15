@@ -78,6 +78,12 @@ export interface PopoverProps {
    */
   overlayInnerStyle?: React.CSSProperties;
   /**
+   * position 布局方式
+   * This can be useful if you want to position a tooltip inside an overflow: hidden container that you want to make overflow.
+   * Please note that you can also try strategy: 'fixed' to obtain a similar effect with less hassle.
+   */
+  strategy?: 'fixed' | 'absolute';
+  /**
    * 浮动显示的层
    */
   getContainer?: (node: HTMLElement) => HTMLElement;
