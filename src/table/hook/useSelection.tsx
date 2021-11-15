@@ -4,9 +4,8 @@
 import React, { useMemo, useCallback } from 'react';
 import { get, intersection, isUndefined, difference, union, isFunction, isString, flatten, flattenDeep } from 'lodash';
 import { ColumnsType, RowSelection, ColumnType, TableProps, Key } from '../interface';
-
 import Checkbox from '../../checkbox';
-import Tooltip from '../../legacy/tooltip';
+import Tooltip from '../../tooltip';
 import useControlledState from '../../utils/hooks/useControlledState';
 
 // 拿到row及其children 所有的key
@@ -156,35 +155,40 @@ const useSelection = <RecordType,>(
       const key = getRowKey(rest[1], rowKey);
       const thisCheckboxProps = getCheckboxProps?.(rest[1]) || {};
       const { tooltipProps, disabled, ...restCheckboxProps } = thisCheckboxProps;
-      return (
-        <Tooltip placement="topLeft" arrowPointAtCenter disabled={!disabled} {...tooltipProps}>
-          <div>
-            <Checkbox
-              {...restCheckboxProps}
-              disabled={disabled || isParentDisabled(key) || isChildDisabled(key)}
-              indeterminate={!isRowAllSelected(key) && isRowPartSelected(key)}
-              checked={
-                Array.isArray(key)
-                  ? key.some((keyItem) => localSelectedRowKeys.includes(keyItem))
-                  : localSelectedRowKeys.includes(key)
-              }
-              onClick={(e) => e.stopPropagation()}
-              onChange={(e) => {
-                getAllDisabledKey(data);
-                const latestLocalSelectedRowKeys = e.target.checked
-                  ? flattenDeep(difference(union(localSelectedRowKeys, flattenDeep([key])), allDisabledKey))
-                  : flattenDeep(difference(localSelectedRowKeys, flattenDeep([key]), allDisabledKey));
-                setLocalSelectedRowKeys(latestLocalSelectedRowKeys);
+      const contentNode = (
+        <div>
+          <Checkbox
+            {...restCheckboxProps}
+            disabled={disabled || isParentDisabled(key) || isChildDisabled(key)}
+            indeterminate={!isRowAllSelected(key) && isRowPartSelected(key)}
+            checked={
+              Array.isArray(key)
+                ? key.some((keyItem) => localSelectedRowKeys.includes(keyItem))
+                : localSelectedRowKeys.includes(key)
+            }
+            onClick={(e) => e.stopPropagation()}
+            onChange={(e) => {
+              getAllDisabledKey(data);
+              const latestLocalSelectedRowKeys = e.target.checked
+                ? flattenDeep(difference(union(localSelectedRowKeys, flattenDeep([key])), allDisabledKey))
+                : flattenDeep(difference(localSelectedRowKeys, flattenDeep([key]), allDisabledKey));
+              setLocalSelectedRowKeys(latestLocalSelectedRowKeys);
 
-                const updatedSelectedRowKeys = updateParentCheck(latestLocalSelectedRowKeys, key);
-                setLocalSelectedRowKeys(updatedSelectedRowKeys);
+              const updatedSelectedRowKeys = updateParentCheck(latestLocalSelectedRowKeys, key);
+              setLocalSelectedRowKeys(updatedSelectedRowKeys);
 
-                onChange?.(updatedSelectedRowKeys, getSelectRows(updatedSelectedRowKeys));
-              }}
-            >
-              {disabled ? null : undefined}
-            </Checkbox>
-          </div>
+              onChange?.(updatedSelectedRowKeys, getSelectRows(updatedSelectedRowKeys));
+            }}
+          >
+            {disabled ? null : undefined}
+          </Checkbox>
+        </div>
+      );
+      return disabled ? (
+        contentNode
+      ) : (
+        <Tooltip placement="topLeft" arrowPointAtCenter {...tooltipProps}>
+          {contentNode}
         </Tooltip>
       );
     },

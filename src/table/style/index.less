@@ -1,7 +1,4 @@
 @import '../../stylesheet/variables/index.less';
-@import (reference) '../../checkbox/style/index.less';
-@import (reference) '../../popover/style/index.less';
-@import (reference) '../../legacy/empty/style/index.less';
 
 @table-prefix-cls: ~'@{component-prefix}-table-new';
 
@@ -46,9 +43,6 @@
       .@{table-prefix-cls}-resizable-handle {
         display: none;
       }
-    }
-    .@{checkbox-wrapper-cls} + .@{table-prefix-cls}-resizable-handle {
-      display: none;
     }
 
     &:hover {
@@ -354,6 +348,7 @@
 
   &-filter-list {
     height: 160px;
+    margin-top: 4px;
   }
 
   &-search-bar {

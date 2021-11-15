@@ -669,13 +669,13 @@ export const Empty = () => {
 
   return (
     <Table.ResizableTable<DataSourceType>
-      title="无数据，参考 Empty 组件"
+      title="表格无数据时的展示页面，请参考 Page 组件"
       columns={columns}
       rowKey="id"
       pagination={false}
       empty={{
-        image: 'no-data',
-        description: 'description',
+        description: '无数据',
+        type: 'noData',
       }}
     />
   );
