@@ -16,5 +16,5 @@ export interface TooltipProps extends Omit<PopoverProps, 'content'> {
   /**
    被包裹的元素
    */
-  children: React.ReactElement;
+  children: React.ReactNode;
 }
