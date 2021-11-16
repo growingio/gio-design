@@ -1,6 +1,6 @@
 import React, { createContext, useMemo } from 'react';
 import classNames from 'classnames';
-import { useLocale } from '@gio-design/utils';
+import { useLocale, useControlledState, usePrefixCls } from '@gio-design/utils';
 import PaginationProps, { PaginationItemType } from './interface';
 import WithRef from '../utils/withRef';
 import usePagination from './hooks/usePagination';
@@ -8,7 +8,6 @@ import PaginationItem from './PaginationItem';
 import RowsSelector from './RowsSelector';
 import QuickJumper from './QuickJumper';
 import defaultLocaleTextObject from './locales/zh-CN';
-import { useControlledState, usePrefixCls } from '..';
 
 type PaginationContextType = Required<Pick<PaginationProps, 'pageSizeOptions' | 'defaultPageSize' | 'total'>> &
   Partial<Pick<PaginationProps, 'onPageSizeChange' | 'totalTextRender' | 'pageSize'>> & {
