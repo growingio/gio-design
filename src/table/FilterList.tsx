@@ -15,10 +15,18 @@ interface FilterListProps {
 const FilterList = ({ prefixCls, value, onChange, dataSource }: FilterListProps) => (
   <List
     className={`${prefixCls}-filter-list`}
-    value={value}
-    isMultiple
+    value={value.map((item) => `${item}`)}
+    model="multiple"
     onChange={(changedKeys) => {
-      onChange(Array.isArray(changedKeys) ? changedKeys : [changedKeys]);
+      if (!changedKeys) {
+        onChange([]);
+        return;
+      }
+      if (Array.isArray(changedKeys)) {
+        onChange(changedKeys);
+        return;
+      }
+      onChange([changedKeys]);
     }}
   >
     {dataSource.map((item) => (
