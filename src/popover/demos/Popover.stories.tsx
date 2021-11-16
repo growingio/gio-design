@@ -279,3 +279,14 @@ NotSupportRef.args = {
   trigger: 'click',
   content,
 };
+
+const DisabledTemplate: Story<PopoverProps> = (args) => (
+  <Popover {...args} strategy="fixed" disabled>
+    Disabled
+  </Popover>
+);
+
+export const Disabled = DisabledTemplate.bind({});
+Disabled.args = {
+  content,
+};
