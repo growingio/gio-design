@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { MoreOutlined } from '@gio-design/icons';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
@@ -9,8 +9,10 @@ import Avatar from '../../avatar';
 import Card from '../index';
 import Table from '../../table';
 import Button, { IconButton } from '../../button';
-import { Dropdown, Skeleton } from '../..';
+import { Dropdown } from '../..';
 import { Item, List } from '../../list';
+import { Basic, Empty, TreeData } from '../../table/demos/Table.stories';
+import { HaveChildren } from '../../tabs/demos/Tabs.stories';
 
 export default {
   title: 'upgraded/Card',
@@ -27,57 +29,49 @@ export default {
     },
   },
 } as Meta;
-const a = 'https://api.github.com/repos/growingio/gio-design/contributors';
 
-const DemoTemplate = () => {
-  const [data, setData] = useState<Array<any>>([]);
-
-  useEffect(() => {
-    const fet = async () => {
-      const s = await fetch(a).then((response) => response.json());
-      setData(s);
-      return s;
-    };
-    fet();
-  }, []);
-
-  return (
-    <div>
-      <Skeleton loading={!data.length}>
-        {data &&
-          data.map((item) => (
-            <div style={{ margin: '20px', display: 'inline-block' }}>
-              <Card>
-                <Card.Meta
-                  image={<Avatar src={item.avatar_url} />}
-                  title={item.login}
-                  description="卡片副标题"
-                  action={
-                    <Dropdown
-                      placement="bottomRight"
-                      overlay={
-                        <List>
-                          <Item value={1}>test</Item>
-                        </List>
-                      }
-                    >
-                      <IconButton size="small" type="text">
-                        <MoreOutlined />
-                      </IconButton>
-                    </Dropdown>
-                  }
-                >
-                  <Card.Meta>
-                    <img src={item.avatar_url} alt="" />
-                  </Card.Meta>
-                </Card.Meta>
-              </Card>
-            </div>
-          ))}
-      </Skeleton>
+const DemoTemplate = () => (
+  <div>
+    <div style={{ margin: '20px', display: 'inline-block' }}>
+      <Card>
+        <Card.Meta
+          image={<Avatar>L</Avatar>}
+          title="卡片标题"
+          description="卡片副标题"
+          action={
+            <Dropdown placement="bottomRight">
+              <IconButton size="small" type="text">
+                <MoreOutlined />
+              </IconButton>
+            </Dropdown>
+          }
+        />
+        <Card.Meta>
+          <Basic />
+        </Card.Meta>
+      </Card>
     </div>
-  );
-};
+    <div style={{ margin: '20px', display: 'inline-block' }}>
+      <Card>
+        <Card.Meta title="变量使用量" description="variable_userd" />
+        <Card.Meta>
+          <Empty />
+        </Card.Meta>
+        <Card.Meta>
+          <TreeData />
+        </Card.Meta>
+      </Card>
+    </div>
+    <div style={{ margin: '20px', display: 'inline-block' }}>
+      <Card>
+        <Card.Meta title="变量使用量" description="variable_userd" />
+        <Card.Meta>
+          <HaveChildren />
+        </Card.Meta>
+      </Card>
+    </div>
+  </div>
+);
 
 export const Demo = DemoTemplate.bind({});
 const Template: Story<CardProps> = (args) => <Card {...args} />;

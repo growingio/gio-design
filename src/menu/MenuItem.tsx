@@ -3,7 +3,7 @@ import { Item as RcMenuItem } from 'rc-menu';
 import { IMenuItemProps } from './interface';
 import MenuTitle from './MenuTitle';
 import { MenuContext, SubMenuContext, getInlineIndent } from './MenuContext';
-import Tooltip from '../legacy/tooltip';
+import Tooltip from '../tooltip';
 
 const MenuItem = (props: IMenuItemProps) => {
   const { icon, children, ...restProps } = props;
@@ -12,7 +12,7 @@ const MenuItem = (props: IMenuItemProps) => {
   const inlineIndent = getInlineIndent(verticalIndent, inSubMenu, inIconSubMenu);
 
   return (
-    <Tooltip title={children} disabled={!inlineCollapsed || inSubMenu} placement="right">
+    <Tooltip title={children} visible={!(!inlineCollapsed || inSubMenu)} placement="right">
       <RcMenuItem {...restProps} inlineIndent={inlineIndent}>
         <MenuTitle title={children} icon={icon} />
       </RcMenuItem>
