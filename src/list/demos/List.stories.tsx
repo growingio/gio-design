@@ -8,8 +8,7 @@ import Item from '../Item';
 import './style.less';
 // import { DragList } from '../../components/list-pro';
 import DragList from '../Drag';
-import SelectionList from '../Selection';
-import SelectionItem from '../SelectionItem';
+import Selection from '../Selection';
 import CascaderItem from '../inner/CascaderItem';
 
 export default {
@@ -39,10 +38,9 @@ const Template: Story<ListProps> = (props) => {
     <>
       <div className="demo-box">
         <List
-          isCascader
+          model="cascader"
           value={cascaderValue}
           onChange={(val) => {
-            console.log('cascader val', val);
             setCascadervalue(val as any);
           }}
         >
@@ -101,7 +99,7 @@ const Template: Story<ListProps> = (props) => {
       <div className="demo-box">
         <List
           value={value}
-          isMultiple
+          model="multiple"
           onChange={(v) => {
             console.log('v', v);
             setValue(v as any);
@@ -168,25 +166,17 @@ const SelectionTemplate: Story<ItemProps> = () => (
   <>
     <h3>normal</h3>
     <div className="demo-box">
-      <SelectionList>
-        <SelectionItem title="Selection1">
-          <List options={options} onChange={(value) => console.log('value', value)} />
-        </SelectionItem>
-        <SelectionItem title="Selection2">
-          <List options={options} onChange={(value) => console.log('value', value)} />
-        </SelectionItem>
-      </SelectionList>
+      <Selection>
+        <List options={options} onChange={(value) => console.log('value', value)} />
+        <List options={options} onChange={(value) => console.log('value', value)} />
+      </Selection>
     </div>
     <h3>no title</h3>
     <div className="demo-box">
-      <SelectionList>
-        <SelectionItem title="">
-          <List options={options} onChange={(value) => console.log('value', value)} />
-        </SelectionItem>
-        <SelectionItem title="">
-          <List options={options} onChange={(value) => console.log('value', value)} />
-        </SelectionItem>
-      </SelectionList>
+      <Selection>
+        <List title="123" options={options} onChange={(value) => console.log('value', value)} />
+        <List options={options} onChange={(value) => console.log('value', value)} />
+      </Selection>
     </div>
   </>
 );
@@ -212,7 +202,7 @@ const CollapseTemplate: Story<ItemProps> = () => {
 export const Default = Template.bind({});
 export const Items = ItemTemplate.bind({});
 export const Drag = dragTemplate.bind({});
-export const Selection = SelectionTemplate.bind({});
+export const SelectionList = SelectionTemplate.bind({});
 export const Collapse = CollapseTemplate.bind({});
 Default.args = {
   onChange: (value: OptionProps) => {

@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import { isEmpty } from 'lodash';
 import { SelectProps } from './interface';
 import Popover from '../popover';
 import Trigger from './Trigger';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
-import List from '../list';
-import { useCacheOptions } from './utils';
+import List, { OptionProps } from '../list';
 import useControlledState from '../utils/hooks/useControlledState';
 import './style/index';
-import { OptionProps } from '../legacy/select';
 
 const Select: React.FC<SelectProps> = (props) => {
   const {
@@ -18,7 +16,7 @@ const Select: React.FC<SelectProps> = (props) => {
     defaultValue = '',
     options = [],
     size,
-    triggerOption = {},
+    triggerProps = {},
     visible: controlledVisible,
     onVisibleChange,
     getContainer,
@@ -36,18 +34,15 @@ const Select: React.FC<SelectProps> = (props) => {
   } = props;
   const [value, setSelectValue] = useControlledState(controlledValue, defaultValue);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
+  const [selectedOption, setSelectedOption] = useState<OptionProps | undefined>(undefined);
   const defaultPrefixCls = usePrefixCls(prefixCls);
-  const { setCacheOptions, getOptionByValue } = useCacheOptions();
-  setCacheOptions(options);
-  const prefixIcon = value ? prefix?.(getOptionByValue(value)) : undefined;
-  const suffixIcon = value ? suffix?.(getOptionByValue(value)) : undefined;
-
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);
     onVisibleChange?.(vis);
   };
-  const handleChange = (val?: string | number) => {
-    onChange?.(val, getOptionByValue(val));
+  const handleChange = (val?: string, opts?: OptionProps) => {
+    onChange?.(val, opts);
+    setSelectedOption(opts);
     setSelectValue(val ?? '');
     setVisible(false);
   };
@@ -65,16 +60,16 @@ const Select: React.FC<SelectProps> = (props) => {
       onClick={() => setVisible(!visible)}
     >
       <Trigger
-        value={getOptionByValue(value)?.label as string}
+        value={selectedOption?.label ?? ''}
         size={size}
-        prefix={prefixIcon}
-        suffix={suffixIcon}
+        prefix={prefix?.(selectedOption)}
+        suffix={suffix?.(selectedOption)}
         disabled={disabled}
         onClear={handleOnClear}
         onInputChange={(val) => {
           isEmpty(val) && handleChange('');
         }}
-        {...triggerOption}
+        {...triggerProps}
       />
     </div>
   );
@@ -88,8 +83,10 @@ const Select: React.FC<SelectProps> = (props) => {
       suffix={suffix}
       options={options}
       disabled={disabled}
+      onChange={(val?: string | string[], o?: OptionProps | OptionProps[]) =>
+        handleChange(val as string, o as OptionProps)
+      }
       {...rest}
-      onChange={(val) => handleChange(val as string | number)}
     >
       {options?.map((option: OptionProps) => (
         <List.Item {...option} />

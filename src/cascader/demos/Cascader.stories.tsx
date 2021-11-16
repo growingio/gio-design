@@ -34,14 +34,20 @@ const Template: Story<CascaderProps> = (props) => {
         <Cascader options={options} triggerProps={{ placeholder: '请选择' }} size="normal" {...props} />
       </div>
       <div className="demo-box">
-        <Cascader disabled options={options} triggerProps={{ placeholder: '请选择' }} size="normal" {...props} />
+        <Cascader
+          disabled
+          options={options}
+          triggerProps={{ placeholder: '请选择', allowClear: false }}
+          size="normal"
+          {...props}
+        />
       </div>
       <h3>自定义list,trigger宽度</h3>
       <div className="demo-box">
         <Cascader
           options={options}
           overlayStyle={{ width: 240 }}
-          triggerProps={{ placeholder: '请选择', style: { width: 240, textAlign: 'left' } }}
+          triggerProps={{ placeholder: '请选择', allowClear: false, style: { width: 240, textAlign: 'left' } }}
           size="small"
           {...props}
         />

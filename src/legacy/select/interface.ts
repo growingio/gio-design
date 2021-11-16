@@ -253,7 +253,7 @@ export interface SelectorProps {
   deleteValue: (value: React.ReactText[], v: string | number) => void;
   arrowComponent?: React.ReactElement | undefined;
   closeComponent?: React.ReactElement | undefined;
-  [key: string]: any
+  [key: string]: any;
 }
 
 export interface VirtualListProps {
@@ -294,6 +294,6 @@ export interface OptionsListProps {
   height?: number | undefined;
   itemHeight?: number | undefined;
   activeIndex: number;
-  setActiveIndex: React.Dispatch<React.SetStateAction<number>>
-  onOptionListKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => void
+  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
+  onOptionListKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => void;
 }

@@ -12,12 +12,12 @@ import List from './List';
 const Drag: React.FC<DragListProps> & {
   Item: React.FC<DragItemProps>;
 } = (props) => {
-  const { onChange, className, style, options: propsOPtions, disabled, ...rest } = props;
+  const { onChange, className, style, options: propsOptions, disabled, ...rest } = props;
 
-  const [options, setOptions] = useState(propsOPtions);
+  const [options, setOptions] = useState(propsOptions);
   useEffect(() => {
-    setOptions(propsOPtions);
-  }, [propsOPtions]);
+    setOptions(propsOptions);
+  }, [propsOptions]);
   const prefixCls = `${usePrefixCls(PREFIX)}`;
 
   const onMoved = (dragIndex: number, hoverIndex: number) => {

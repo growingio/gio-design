@@ -8,12 +8,11 @@ const Item: React.FC<ItemProps & { isMultiple?: boolean; isCascader?: boolean }>
   const { label, value, disabled, isMultiple = false, isCascader, selectedParent = [], selectValue, ...rest } = props;
 
   if (isMultiple) {
-    return <CheckboxItem key={value} label={label} value={value} disabled={disabled} {...rest} />;
+    return <CheckboxItem label={label} value={value} disabled={disabled} {...rest} />;
   }
   if (isCascader) {
     return (
       <CalcaderItem
-        key={value}
         label={label as string}
         value={value as string}
         selectValue={selectValue as string}
@@ -23,7 +22,7 @@ const Item: React.FC<ItemProps & { isMultiple?: boolean; isCascader?: boolean }>
       />
     );
   }
-  return <BaseItem key={value} label={label} value={value} disabled={disabled} {...rest} />;
+  return <BaseItem label={label} value={value} disabled={disabled} {...rest} />;
 };
 
 export default Item;

@@ -1,5 +1,4 @@
 import React, { DOMAttributes } from 'react';
-import { noop } from 'lodash';
 import Checkbox from '../../checkbox/Checkbox';
 import { PREFIX } from '../constants';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
@@ -28,7 +27,7 @@ const CheckboxItem: React.FC<BaseItemProps & Omit<DOMAttributes<HTMLInputElement
     </>
   );
   return (
-    <Item disabled={disabled} onClick={noop} value={value} contentRender={contentRender} {...rest}>
+    <Item disabled={disabled} onClick={onClick} value={value} contentRender={contentRender} {...rest}>
       {children}
     </Item>
   );

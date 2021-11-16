@@ -22,12 +22,12 @@ const RowsSelector: React.FC<{
     <div aria-label={ariaLabel} className={`${prefixCls}__rows`}>
       {textObject.rowsPerPage(
         <Select
-          defaultValue={defaultPageSize}
-          value={pageSize}
+          defaultValue={defaultPageSize?.toString()}
+          value={pageSize?.toString()}
           size="small"
           getContainer={(node) => node.parentElement || document.body}
           options={pageSizeOptions.map((rowSize) => {
-            const value = Number.parseInt(`${rowSize}`, 10);
+            const value = Number.parseInt(`${rowSize}`, 10)?.toString();
             return {
               label: value,
               value,
@@ -39,7 +39,7 @@ const RowsSelector: React.FC<{
             onPageSizeChange?.(currentPageSize, previousPageSizeRef.current);
             previousPageSizeRef.current = currentPageSize;
           }}
-          triggerOption={{
+          triggerProps={{
             hidePrefix: true,
             allowClear: false,
             style: {

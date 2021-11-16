@@ -28,8 +28,8 @@ function QuickPicker({ options, optionsFilter, onSelect, timeRange, experimental
 
   return (
     <div className={prefixCls}>
-      <SelectList value={currentValue} options={filter(left)} onChange={handleOnSelect} />
-      <SelectList value={currentValue} options={filter(right)} onChange={handleOnSelect} />
+      <SelectList value={currentValue} options={filter(left as any)} onChange={handleOnSelect} />
+      <SelectList value={currentValue} options={filter(right as any)} onChange={handleOnSelect} />
     </div>
   );
 }
