@@ -1,5 +1,5 @@
 import { ListPickerProps } from '../list-picker';
-import { SelectorProps } from '../../selector';
+import { SelectorProps } from '../selector';
 
 export interface ListSelectorProps
   extends Pick<

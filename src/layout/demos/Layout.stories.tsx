@@ -37,7 +37,7 @@ const Header = () => (
       <Select
         size="normal"
         overlayStyle={{ width: 144 }}
-        triggerOption={{ placeholder: '请选择', style: { width: 144, textAlign: 'left' }, allowClear: false }}
+        triggerProps={{ placeholder: '请选择', style: { width: 144, textAlign: 'left' }, allowClear: false }}
         options={[
           { value: '1', label: '金融行业 Demo' },
           { value: '2', label: '项目名称' },

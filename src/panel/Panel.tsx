@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { difference } from 'lodash';
 import { useControlledState, usePrefixCls } from '@gio-design/utils';
-import Typography from '../legacy/typograhy';
+import Typography from '../typograhy';
 import Tabs, { Tab } from '../tabs';
 import Divider from '../divider';
 import { PanelProps, TabPaneProps } from './interfaces';

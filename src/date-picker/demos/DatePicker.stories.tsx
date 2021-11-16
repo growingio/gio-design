@@ -9,6 +9,7 @@ import Toast from '../../toast';
 import DatePicker, { DatePickerProps } from '../index';
 
 import '../style';
+import '../../static-date-picker/style';
 
 export default {
   title: 'Upgraded/DatePicker',
@@ -65,7 +66,7 @@ const CustomizeTriggerTemplate: Story<DatePickerProps> = (args) => {
 export const CustomizeTrigger = CustomizeTriggerTemplate.bind({});
 CustomizeTrigger.args = {};
 
-const StaticTemplate: Story = (args) => <DatePicker {...args} />;
+const StaticTemplate: Story = (args) => <DatePicker.Static {...args} />;
 
 export const StaticBasic = StaticTemplate.bind({});
 StaticBasic.args = {};

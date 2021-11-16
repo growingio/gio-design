@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import Drawer from '../index';
-import Button from '../../legacy/button';
+import Button from '../../button';
 import { DrawerProps } from '../interfaces';
 import Docs from './DrawerPage';
 import '../style';

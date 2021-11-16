@@ -68,7 +68,7 @@ export { default as TimePicker, TimePickerProps } from './time-picker';
 export { default as DatePicker, DatePickerProps } from './date-picker';
 export { default as DataRangePicker, DateRangePickerProps } from './date-range-picker';
 export { default as PastTimePicker, PastTimePickerProps } from './past-time-picker';
-export { default as TreeSelect, TreeNode, LabeledValue, SelectValue, TreeSelectProps } from './legacy/tree-select';
+export { default as TreeSelect, TreeNode, LabeledValue, SelectValue, TreeSelectProps } from './tree-select';
 export { default as Steps } from './legacy/steps';
 export { default as ListPicker, ListPickerProps } from './list-picker';
 export { default as Panel, PanelProps } from './panel';

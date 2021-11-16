@@ -4,7 +4,7 @@ import { isEmpty, isString } from 'lodash';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { PREFIX } from '../constants';
 import { BaseItemProps } from '../interfance';
-import Tooltip from '../../legacy/tooltip';
+import Tooltip from '../../tooltip';
 import WithRef from '../../utils/withRef';
 
 const defaultContentRender = (element: React.ReactNode | Element) => element;
@@ -46,7 +46,7 @@ const BaseItem: React.ForwardRefRenderFunction<
     <>{content}</>
   );
   return (
-    <Tooltip disabled={!(disabled && !isEmpty(disabledTooltip))} title={disabledTooltip}>
+    <Tooltip visible={disabled && !isEmpty(disabledTooltip)} title={disabledTooltip}>
       <li
         style={style}
         className={classNames(

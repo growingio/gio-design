@@ -5,6 +5,7 @@ import TimePicker, { StaticTimePickerProps } from '../index';
 import Docs from './TimePickerPage';
 
 import '../style';
+import '../../static-time-picker/style';
 
 export default {
   title: 'Upgraded/TimePicker',

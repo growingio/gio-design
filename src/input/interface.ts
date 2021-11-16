@@ -27,6 +27,7 @@ export interface InputProps extends Omit<BaseInputProps, 'onChange'> {
    * 修改值时触发的回调函数
    */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 
   allowClear?: boolean;
 

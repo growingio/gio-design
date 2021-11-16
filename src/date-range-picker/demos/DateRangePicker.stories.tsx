@@ -6,6 +6,7 @@ import Docs from './DateRangePickerPage';
 import DateRangePicker, { DateRangePickerProps, StaticDateRangePickerProps } from '../index';
 
 import '../style';
+import '../../static-date-range-picker/style';
 
 export default {
   title: 'Upgraded/DateRangePicker',

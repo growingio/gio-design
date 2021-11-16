@@ -12,7 +12,7 @@ const MenuItem = (props: IMenuItemProps) => {
   const inlineIndent = getInlineIndent(verticalIndent, inSubMenu, inIconSubMenu);
 
   return (
-    <Tooltip title={children} visible={!(!inlineCollapsed || inSubMenu)} placement="right">
+    <Tooltip title={children} disabled={!inlineCollapsed || inSubMenu} placement="right">
       <RcMenuItem {...restProps} inlineIndent={inlineIndent}>
         <MenuTitle title={children} icon={icon} />
       </RcMenuItem>

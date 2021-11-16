@@ -9,7 +9,7 @@ import Avatar from '../../avatar';
 import Card from '../index';
 import Table from '../../table';
 import Button, { IconButton } from '../../button';
-import { Dropdown } from '../..';
+import Dropdown from '../../dropdown';
 import { Item, List } from '../../list';
 import { Basic, Empty, TreeData } from '../../table/demos/Table.stories';
 import { HaveChildren } from '../../tabs/demos/Tabs.stories';
@@ -39,7 +39,15 @@ const DemoTemplate = () => (
           title="卡片标题"
           description="卡片副标题"
           action={
-            <Dropdown placement="bottomRight">
+            <Dropdown
+              placement="bottomRight"
+              content={
+                <List>
+                  <Item value="1">111111</Item>
+                  <Item value="2">222222</Item>
+                </List>
+              }
+            >
               <IconButton size="small" type="text">
                 <MoreOutlined />
               </IconButton>
@@ -89,10 +97,10 @@ Default.args = {
         action={
           <Dropdown
             placement="bottomRight"
-            overlay={
+            content={
               <List>
-                <Item value={1}>111111</Item>
-                <Item value={2}>222222</Item>
+                <Item value="1">111111</Item>
+                <Item value="2">222222</Item>
               </List>
             }
           >
@@ -166,10 +174,10 @@ Footer.args = {
         action={
           <Dropdown
             placement="bottomRight"
-            overlay={
+            content={
               <List>
-                <Item value={1}>111111</Item>
-                <Item value={2}>222222</Item>
+                <Item value="1">111111</Item>
+                <Item value="2">222222</Item>
               </List>
             }
           >

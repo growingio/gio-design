@@ -6,6 +6,7 @@ import Docs from './PastTimePickerPage';
 import PastTimePicker, { PastTimePickerProps } from '../index';
 
 import '../style';
+import '../../static-past-time-picker/style';
 
 export default {
   title: 'Upgraded/PastTimePicker',
