@@ -48,12 +48,15 @@ const Popover = (props: PopoverProps) => {
     [prefixCls, overlayClassName, visible, allowArrow]
   );
 
-  const triggerChildEvent = (name: string, e: any) => {
-    if (supportRef(children)) {
-      const fireEvent = (children as React.ReactElement)?.props?.[name];
-      fireEvent?.(e);
-    }
-  };
+  const triggerChildEvent = useCallback(
+    (name: string, e: any) => {
+      if (supportRef(children)) {
+        const fireEvent = (children as React.ReactElement)?.props?.[name];
+        fireEvent?.(e);
+      }
+    },
+    [children]
+  );
 
   const contentInnerCls = useMemo(
     () => classNames(overlayInnerClassName, `${prefixCls}__content-inner`),
@@ -119,23 +122,32 @@ const Popover = (props: PopoverProps) => {
         triggerChildEvent('onMouseLeave', e);
         isHoverToShow && updateVisible(false);
       }, 100),
-    [isHoverToShow, updateVisible]
+    [triggerChildEvent, isHoverToShow, updateVisible]
   );
 
-  const onClick = (e: Event) => {
-    triggerChildEvent('onClick', e);
-    if (!isHoverToShow && !isFocusToShow) {
-      isClickToShow && updateVisible(!visible);
-    }
-  };
-  const onFocus = (e: Event) => {
-    triggerChildEvent('onFocus', e);
-    isFocusToShow && updateVisible(true);
-  };
-  const onBlur = (e: Event) => {
-    triggerChildEvent('onBlur', e);
-    isFocusToShow && updateVisible(false);
-  };
+  const onClick = useCallback(
+    (e: Event) => {
+      triggerChildEvent('onClick', e);
+      if (!isHoverToShow && !isFocusToShow) {
+        isClickToShow && updateVisible(!visible);
+      }
+    },
+    [triggerChildEvent, isHoverToShow, isFocusToShow, isClickToShow, updateVisible, visible]
+  );
+  const onFocus = useCallback(
+    (e: Event) => {
+      triggerChildEvent('onFocus', e);
+      isFocusToShow && updateVisible(true);
+    },
+    [triggerChildEvent, isFocusToShow, updateVisible]
+  );
+  const onBlur = useCallback(
+    (e: Event) => {
+      triggerChildEvent('onBlur', e);
+      isFocusToShow && updateVisible(false);
+    },
+    [triggerChildEvent, isFocusToShow, updateVisible]
+  );
 
   const onContentMouseEnter = useCallback(() => {
     overContentRef.current = true;
