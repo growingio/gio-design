@@ -5,6 +5,7 @@ import { usePopper } from 'react-popper';
 import ReactDOM from 'react-dom';
 import { PopoverProps, placements } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import { composeRef, supportRef } from '../utils/composeRef';
 
 const Popover = (props: PopoverProps) => {
   const {
@@ -45,6 +46,16 @@ const Popover = (props: PopoverProps) => {
         overlayClassName
       ),
     [prefixCls, overlayClassName, visible, allowArrow]
+  );
+
+  const triggerChildEvent = useCallback(
+    (name: string, e: any) => {
+      if (supportRef(children)) {
+        const fireEvent = (children as React.ReactElement)?.props?.[name];
+        fireEvent?.(e);
+      }
+    },
+    [children]
   );
 
   const contentInnerCls = useMemo(
@@ -98,25 +109,45 @@ const Popover = (props: PopoverProps) => {
   const isFocusToShow = useMemo(() => trigger.indexOf('focus') !== -1, [trigger]);
 
   const onMouseEnter = useMemo(
-    () => debounce(() => isHoverToShow && updateVisible(true), 100),
-    [isHoverToShow, updateVisible]
+    () =>
+      debounce((e: Event) => {
+        triggerChildEvent('onMouseEnter', e);
+        isHoverToShow && updateVisible(true);
+      }, 100),
+    [triggerChildEvent, isHoverToShow, updateVisible]
   );
   const onMouseLeave = useMemo(
-    () => debounce(() => isHoverToShow && updateVisible(false), 100),
-    [isHoverToShow, updateVisible]
+    () =>
+      debounce((e: Event) => {
+        triggerChildEvent('onMouseLeave', e);
+        isHoverToShow && updateVisible(false);
+      }, 100),
+    [triggerChildEvent, isHoverToShow, updateVisible]
   );
 
-  const onClick = useCallback(() => {
-    if (!isHoverToShow && !isFocusToShow) {
-      isClickToShow && updateVisible(!visible);
-    }
-  }, [isClickToShow, isHoverToShow, isFocusToShow, visible, updateVisible]);
-  const onFocus = useCallback(() => {
-    isFocusToShow && updateVisible(true);
-  }, [isFocusToShow, updateVisible]);
-  const onBlur = useCallback(() => {
-    isFocusToShow && updateVisible(false);
-  }, [isFocusToShow, updateVisible]);
+  const onClick = useCallback(
+    (e: Event) => {
+      triggerChildEvent('onClick', e);
+      if (!isHoverToShow && !isFocusToShow) {
+        isClickToShow && updateVisible(!visible);
+      }
+    },
+    [triggerChildEvent, isHoverToShow, isFocusToShow, isClickToShow, updateVisible, visible]
+  );
+  const onFocus = useCallback(
+    (e: Event) => {
+      triggerChildEvent('onFocus', e);
+      isFocusToShow && updateVisible(true);
+    },
+    [triggerChildEvent, isFocusToShow, updateVisible]
+  );
+  const onBlur = useCallback(
+    (e: Event) => {
+      triggerChildEvent('onBlur', e);
+      isFocusToShow && updateVisible(false);
+    },
+    [triggerChildEvent, isFocusToShow, updateVisible]
+  );
 
   const onContentMouseEnter = useCallback(() => {
     overContentRef.current = true;
@@ -163,11 +194,29 @@ const Popover = (props: PopoverProps) => {
       </div>
     </div>
   );
+
+  // =============== refs =====================
+  let triggerNode = (
+    <div className={`${prefixCls}__popcorn`} ref={referenceElement} {...divRoles}>
+      {children}
+    </div>
+  );
+
+  if (supportRef(children)) {
+    const cloneProps = {
+      ...divRoles,
+      className: classNames((children as React.ReactElement)?.props?.className, overlayClassName),
+      style: { ...(children as React.ReactElement)?.props?.style, ...overlayInnerStyle },
+    };
+
+    const child = React.Children.only(children);
+    cloneProps.ref = composeRef(referenceElement, (child as any).ref);
+    triggerNode = React.cloneElement(child as React.ReactElement, cloneProps);
+  }
+
   return (
     <>
-      <div className={`${prefixCls}__popcorn`} ref={referenceElement} {...divRoles}>
-        {children}
-      </div>
+      {triggerNode}
       {typeof getContainer === 'function'
         ? ReactDOM.createPortal(contentRender, getContainer(referenceElement.current as HTMLDivElement))
         : contentRender}
