@@ -7,7 +7,7 @@ import { Locale } from 'rc-picker/lib/interface';
 import defaultLocale from './locales/zh-CN';
 import { StaticTimePickerProps } from './interfaces';
 
-function StaticTimePicker({ className, showSecond = false, renderFooter, ...restProps }: StaticTimePickerProps) {
+export function StaticTimePicker({ className, showSecond = false, renderFooter, ...restProps }: StaticTimePickerProps) {
   const prefixCls = usePrefixCls('new-time-picker');
   const locale = useLocale<Locale>('StaticTimePicker') || defaultLocale;
 

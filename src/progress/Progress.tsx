@@ -38,7 +38,7 @@ const Progress: React.FC<ProgressProps> = (props: ProgressProps) => {
       </div>
       {showInfo ? (
         <div className={`${prefixCls}-info`}>
-          <span className={`${prefixCls}-text`}>{status === 'exception' ? '中断' : format(percent)}</span>
+          <span className={`${prefixCls}-text`}>{format(percent)}</span>
           <span className={`${prefixCls}-icon`}>{getStatusIcon(status, prefixCls)}</span>
         </div>
       ) : null}

@@ -14,7 +14,7 @@ import { StaticPastTimePickerProps } from '../interfaces';
 import '../style';
 
 export default {
-  title: 'Upgraded/StaticPastTimePicker',
+  title: 'legacy/StaticPastTimePicker',
   component: StaticPastTimePicker,
   decorators: [withDesign],
   parameters: {

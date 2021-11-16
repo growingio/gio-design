@@ -7,7 +7,7 @@ import DatePicker from '../DatePicker';
 import '../style';
 
 export default {
-  title: 'Upgraded/StaticDatePicker',
+  title: 'legacy/StaticDatePicker',
   component: DatePicker,
   parameters: {
     design: {

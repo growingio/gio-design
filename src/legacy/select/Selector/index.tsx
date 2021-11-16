@@ -2,9 +2,9 @@ import { DownFilled, CloseCircleFilled } from '@gio-design/icons';
 import classnames from 'classnames';
 import { isEmpty, isNil } from 'lodash';
 import React, { useRef, useState, useImperativeHandle, useMemo, useCallback } from 'react';
-import ToolTip from '../../../legacy/tooltip';
+import ToolTip from '../../tooltip';
 import Tag from '../../../tag';
-import Text from '../../../text';
+import Text from '../../text';
 import { SelectorProps } from '../interface';
 import SearchInput from './input';
 

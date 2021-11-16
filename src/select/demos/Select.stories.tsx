@@ -1,8 +1,9 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { PlusOutlined, FilterOutlined } from '@gio-design/icons';
+import { action } from '@storybook/addon-actions';
 
-import { SelectProps } from '../interfance';
+import { SelectProps } from '../interface';
 import Select from '../Select';
 import '../style';
 import './style.less';
@@ -23,7 +24,7 @@ const Template: Story<SelectProps> = (props) => {
           triggerProps={{ placeholder: '请选择' }}
           size="normal"
           {...props}
-          onVisibleChange={(v) => console.log('visibleChange', v)}
+          onVisibleChange={() => action('visibleChange')}
         />
       </div>
       <div className="demo-box">

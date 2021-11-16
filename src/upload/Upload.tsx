@@ -4,7 +4,7 @@ import useControlledState from 'rc-util/es/hooks/useMergedState';
 import { template } from 'lodash';
 import classnames from 'classnames';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
-import { defaultRootPrefixCls } from '../legacy/config-provider';
+import { defaultRootPrefixCls } from '../config-provider';
 import {
   IUploadProps,
   ITriggerProps,

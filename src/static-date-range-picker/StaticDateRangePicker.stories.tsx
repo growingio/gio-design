@@ -19,7 +19,7 @@ export default {
       page: Docs,
     },
   },
-  title: 'Upgraded/StaticDateRangePicker',
+  title: 'legacy/StaticDateRangePicker',
 } as Meta;
 
 const Template: Story<StaticDateRangePickerProps> = (args) => (

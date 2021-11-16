@@ -7,7 +7,7 @@ import Docs from './StaticTimePicker.mdx';
 import '../style';
 
 export default {
-  title: 'Upgraded/StaticTimePicker',
+  title: 'legacy/StaticTimePicker',
   component: StaticTimePicker,
   parameters: {
     design: {

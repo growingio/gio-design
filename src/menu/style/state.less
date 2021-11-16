@@ -1,0 +1,72 @@
+@import './index.less';
+
+.@{menu-prefix-cls} {
+  // item state
+  // normal
+  &-item,
+  &-submenu-title {
+    position: relative;
+    color: #313e75;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  // active
+  &-item&-item-selected {
+    color: @blue-3;
+    font-weight: 500;
+    background-color: #f1f2f8;
+  }
+
+  &-horizontal &-item&-item-selected {
+    background-color: @gray-0;
+  }
+
+  &-horizontal &-item&-item-active {
+    background-color: #f1f2f8;
+  }
+
+  &-submenu&-submenu-selected > &-submenu-title {
+    color: @blue-3;
+    font-weight: 500;
+    // fix chrome render bug
+    transform: translateZ(0);
+  }
+
+  // hover
+  &-item&-item-active,
+  &-submenu&-submenu-active > &-submenu-title {
+    background-color: #f1f2f8;
+  }
+
+  // Disabled state sets text to gray and nukes hover/tab effects
+  & &-item-disabled,
+  & &-submenu-disabled > &-submenu-title {
+    color: #c7cbd8 !important;
+    cursor: not-allowed;
+  }
+
+  // item state in popup
+  // normal
+  &-submenu-popup &-item,
+  &-submenu-popup &-submenu-title {
+    color: #313e75;
+  }
+  // active
+  &-submenu-popup &-item-selected,
+  &-submenu-popup &-submenu-selected > &-submenu-title {
+    color: @blue-3;
+    background-color: #ebedf5;
+  }
+  // hover
+  &-submenu-popup &-item-active,
+  &-submenu-popup &-submenu-active > &-submenu-title {
+    color: #313e75;
+    background-color: #ebedf5;
+  }
+  // disabled
+  &-submenu-popup &-item-disabled,
+  &-submenu-popup &-submenu-disabled > &-submenu-title {
+    color: #c7cbd8;
+  }
+}

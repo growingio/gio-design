@@ -76,6 +76,6 @@ export { default as ListPicker, ListPickerProps } from './legacy/list-picker';
 export { default as ListSelector, ListSelectorProps } from './legacy/list-selector';
 
 // provide config context
-export { ConfigContext, ConfigConsumer, withConfigConsumer } from './legacy/config-provider';
+export { ConfigContext, ConfigConsumer, withConfigConsumer } from './config-provider';
 export { default as usePrefixCls } from './utils/hooks/use-prefix-cls';
 export { default as useControlledState } from './utils/hooks/useControlledState';

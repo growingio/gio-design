@@ -127,7 +127,6 @@ const DefaultTemplate: Story<TagProps> = (args) => (
               status={Object.values(obj)[index] as TagProps['status']}
               {...args}
               size="middle"
-              persistCloseIcon={false}
               closable
             >
               {Object.keys(obj)[index]}
@@ -171,9 +170,6 @@ const DelayTemplate: Story<TagProps> = (args) => (
     </Tag>
     <Tag className="tag_website_demo_tag" {...args}>
       控件内的过滤条件
-    </Tag>
-    <Tag className="tag_website_demo_tag" {...args} persistCloseIcon={false}>
-      可删除的标签
     </Tag>
   </>
 );
