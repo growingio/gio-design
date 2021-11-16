@@ -4,10 +4,12 @@ import { PREFIX } from '../constants';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { BaseItemProps } from '../interfance';
 import Item from './baseItem';
+import WithRef from '../../utils/withRef';
 
-const CheckboxItem: React.FC<BaseItemProps & Omit<DOMAttributes<HTMLInputElement | HTMLLIElement>, 'onClick'>> = (
-  props
-) => {
+const CheckboxItem: React.ForwardRefRenderFunction<
+  HTMLLIElement,
+  BaseItemProps & Omit<DOMAttributes<HTMLInputElement | HTMLLIElement>, 'onClick'>
+> = (props, ref?) => {
   const { selected, value, children, onClick, disabled, ...rest } = props;
   const prefixCls = `${usePrefixCls(PREFIX)}--item`;
 
@@ -27,10 +29,10 @@ const CheckboxItem: React.FC<BaseItemProps & Omit<DOMAttributes<HTMLInputElement
     </>
   );
   return (
-    <Item disabled={disabled} onClick={onClick} value={value} contentRender={contentRender} {...rest}>
+    <Item ref={ref} disabled={disabled} onClick={onClick} value={value} contentRender={contentRender} {...rest}>
       {children}
     </Item>
   );
 };
 
-export default CheckboxItem;
+export default WithRef(CheckboxItem);

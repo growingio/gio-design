@@ -24,7 +24,7 @@ export interface ListPickerProps extends Omit<ListProps, 'title' | 'id'> {
    */
   triggerProps?: Pick<
     InputButtonProps,
-    'disabled' | 'className' | 'style' | 'allowClear' | 'hidePrefix' | 'maxWidth' | 'value'
+    'disabled' | 'className' | 'style' | 'allowClear' | 'hidePrefix' | 'maxWidth' | 'value' | 'prefix' | 'suffix'
   >;
   /**
    * custom trigger render
@@ -38,6 +38,7 @@ export interface ListPickerProps extends Omit<ListProps, 'title' | 'id'> {
   onConfim?: (value: string | string[] | undefined, options?: OptionProps | OptionProps[]) => void;
   placement?: Placement;
   overlayStyle?: React.CSSProperties;
+  empty?: () => React.ReactNode;
 }
 export interface OptionProps extends ListOptionProps {
   selectionValue?: string;

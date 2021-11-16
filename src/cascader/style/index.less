@@ -1,5 +1,5 @@
 @import '../../stylesheet/variables/index.less';
-
+@import '~@gio-design/utils/lib/less/mixins.less';
 @list-prefix-cls: ~'@{component-prefix}-cascader-new';
 
 .@{list-prefix-cls} {
@@ -12,8 +12,7 @@
     max-width: 320px;
     height: auto;
     max-height: 520px;
-    // padding: 12px 8px !important;
-    overflow-y: auto;
+    .scrollbar();
     background: @gray-0;
     border: 1px solid #dfe4ee;
     border-radius: 8px;

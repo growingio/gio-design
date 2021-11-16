@@ -1,5 +1,5 @@
 @import '../../stylesheet/variables/index.less';
-
+@import '~@gio-design/utils/lib/less/mixins.less';
 @list-prefix-cls: ~'@{component-prefix}-list-new';
 @cascader-prefix-cls: ~'gio-cascader--new';
 @cascader-content-prefix-cls: ~'gio-cascader--new--cascader--content';
@@ -18,13 +18,20 @@
   }
 
   &[data-popper-placement^='right'] {
-    padding-left: 8px !important;
+    margin-left: 8px !important;
   }
 }
 .@{list-prefix-cls} {
   margin: 0;
   padding: 8px;
   list-style-type: none;
+  &--preview {
+    &--overlay {
+      &[data-popper-placement^='right'] {
+        margin-left: 12px !important;
+      }
+    }
+  }
   .@{cascader-prefix-cls} {
     display: block;
     box-sizing: border-box;
@@ -34,7 +41,7 @@
     max-height: 520px;
     margin-right: 4px;
     padding: 8px;
-    overflow-y: auto;
+    .scrollbar();
     background: @gray-0;
     border: 1px solid #dfe4ee;
     border-radius: 8px;
@@ -54,6 +61,7 @@
     }
     &--title {
       margin-bottom: 4px;
+      padding-left: 12px;
       color: @gray-4;
       font-weight: 500;
       font-size: 12px;
@@ -113,9 +121,15 @@
     &:not(&--disabled):not(&--drag):active {
       color: @blue-3;
     }
+    &:not(&--disabled):not(&--drag):active &-prefix-icon {
+      color: @blue-3;
+    }
     &--actived:not(&--multiple) {
       color: @blue-3;
       background-color: @gray-1;
+    }
+    &--actived:not(&--multiple) &-prefix-icon {
+      color: @blue-3;
     }
     &--disabled {
       color: @gray-3;
@@ -148,7 +162,7 @@
     &-prefix-icon {
       display: inherit;
       margin-right: 8px;
-      color: @gray-3;
+      color: @gray-5;
     }
     &-suffix-icon {
       display: inherit;
@@ -156,8 +170,6 @@
       color: @gray-3;
     }
     &--checkbox {
-      // overflow: hidden;
-      // width: 100%;
       font-size: 0;
     }
   }

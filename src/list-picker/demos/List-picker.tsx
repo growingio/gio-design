@@ -13,6 +13,7 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
         <Story id="components-list-picker--default" />
+        <Story id="components-list-picker--eventPicker" />
       </Canvas>
 
       <ArgsTable of={ListPicker} />

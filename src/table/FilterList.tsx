@@ -15,8 +15,8 @@ interface FilterListProps {
 const FilterList = ({ prefixCls, value, onChange, dataSource }: FilterListProps) => (
   <List
     className={`${prefixCls}-filter-list`}
-    value={value}
-    isMultiple
+    value={value?.toString()}
+    model="multiple"
     onChange={(changedKeys) => {
       onChange(Array.isArray(changedKeys) ? changedKeys : [changedKeys]);
     }}
