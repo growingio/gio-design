@@ -17,6 +17,7 @@ const Popover = (props: PopoverProps) => {
     onVisibleChange,
     defaultVisible,
     allowArrow = false,
+    disabled,
     enterable = true,
     overlayClassName,
     overlayInnerStyle,
@@ -71,13 +72,14 @@ const Popover = (props: PopoverProps) => {
 
   const updateVisible = useCallback(
     (resetVisible: boolean) => {
-      const realVisible = isUndefined(enterVisible) ? resetVisible : enterVisible;
+      let realVisible = isUndefined(enterVisible) ? resetVisible : enterVisible;
+      realVisible = disabled === true ? false : realVisible;
       if (!(overContentRef.current && enterable)) {
         setVisible(realVisible);
         onVisibleChange?.(resetVisible);
       }
     },
-    [onVisibleChange, enterVisible, enterable]
+    [onVisibleChange, enterVisible, enterable, disabled]
   );
   const onDocumentClick = useCallback(
     (event: MouseEvent) => {
@@ -93,7 +95,10 @@ const Popover = (props: PopoverProps) => {
     if (!isUndefined(enterVisible)) {
       setVisible(enterVisible);
     }
-  }, [enterVisible]);
+    if (disabled === true) {
+      setVisible(false);
+    }
+  }, [enterVisible, disabled]);
 
   useLayoutEffect(() => {
     document.addEventListener('mousedown', onDocumentClick);
