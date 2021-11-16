@@ -305,3 +305,10 @@ const InputButtonActiveTemplate = (args: InputButtonProps) => <InputButton {...a
 
 export const InputButtonActive = InputButtonActiveTemplate.bind({});
 InputButtonActive.args = {};
+
+const InputButtonCustomWidthExample = (args: InputButtonProps) => (
+  <InputButton {...args} value="请选择事件" style={{ width: 300 }} />
+);
+
+export const InputButtonCustomWidth = InputButtonCustomWidthExample.bind({});
+InputButtonCustomWidth.args = {};
