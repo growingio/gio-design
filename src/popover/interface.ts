@@ -48,7 +48,7 @@ export interface PopoverProps {
   /**
    被包裹的元素
    */
-  children: React.ReactElement | string;
+  children: React.ReactNode;
 
   placement?: Placement;
   trigger?: TriggerAction | TriggerAction[];

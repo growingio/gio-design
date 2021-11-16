@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import { InputProps } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
@@ -12,6 +12,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     disabled,
     className,
     placeholder,
+    onPressEnter,
+    onKeyPress,
     ...rest
   } = props;
 
@@ -33,6 +35,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         [`${prefixCls}__prefix-wrapper`]: !!customizePrefix,
       }),
     [prefixCls, customizeSuffix, customizePrefix]
+  );
+
+  const handleKeyPress = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        onPressEnter?.(e);
+      }
+      onKeyPress?.(e);
+    },
+    [onPressEnter, onKeyPress]
   );
 
   const prefixFcCls = useMemo(
@@ -60,7 +72,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     () => (customizeSuffix ? <div className={suffixCls}>{customizeSuffix}</div> : null),
     [suffixCls, customizeSuffix]
   );
-  const input = <input {...rest} disabled={disabled} className={inputClass} placeholder={placeholder} ref={ref} />;
+  const input = (
+    <input
+      {...rest}
+      disabled={disabled}
+      className={inputClass}
+      onKeyPress={handleKeyPress}
+      placeholder={placeholder}
+      ref={ref}
+    />
+  );
 
   if (!suffix && !prefix) {
     return input;
