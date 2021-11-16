@@ -2,6 +2,7 @@ import React, { useState, useMemo, useCallback, useEffect, useRef, useLayoutEffe
 import classNames from 'classnames';
 import { debounce, isUndefined } from 'lodash';
 import { usePopper } from 'react-popper';
+import ReactDOM from 'react-dom';
 import { PopoverProps, placements } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 
@@ -21,6 +22,8 @@ const Popover = (props: PopoverProps) => {
     overlayInnerClassName,
     overlayStyle,
     children,
+    strategy = 'absolute',
+    getContainer,
   } = props;
 
   const prefixCls = usePrefixCls('popover-new', customPrefixCls);
@@ -52,6 +55,7 @@ const Popover = (props: PopoverProps) => {
   const { styles, attributes } = usePopper(referenceElement.current, popperElement.current, {
     placement: placements[placement],
     modifiers: [{ name: 'arrow', options: { element: arrowElement.current } }],
+    strategy,
   });
 
   const updateVisible = useCallback(
@@ -144,27 +148,29 @@ const Popover = (props: PopoverProps) => {
     }
     return roles;
   }, [isClickToShow, isFocusToShow, isHoverToShow, onClick, onFocus, onBlur, onMouseEnter, onMouseLeave]);
-
+  const contentRender = content && (
+    <div
+      {...attributes.popper}
+      className={contentCls}
+      ref={popperElement}
+      style={{ ...(overlayStyle || {}), ...styles.popper }}
+      onMouseEnter={onContentMouseEnter}
+      onMouseLeave={onContentMouseLeave}
+    >
+      {allowArrow && <div className={`${prefixCls}__arrow`} ref={arrowElement} style={{ ...styles.arrow }} />}
+      <div className={contentInnerCls} style={overlayInnerStyle}>
+        {content}
+      </div>
+    </div>
+  );
   return (
     <>
       <div className={`${prefixCls}__popcorn`} ref={referenceElement} {...divRoles}>
         {children}
       </div>
-      {content && (
-        <div
-          {...attributes.popper}
-          className={contentCls}
-          ref={popperElement}
-          style={{ ...(overlayStyle || {}), ...styles.popper }}
-          onMouseEnter={onContentMouseEnter}
-          onMouseLeave={onContentMouseLeave}
-        >
-          {allowArrow && <div className={`${prefixCls}__arrow`} ref={arrowElement} style={{ ...styles.arrow }} />}
-          <div className={contentInnerCls} style={overlayInnerStyle}>
-            {content}
-          </div>
-        </div>
-      )}
+      {typeof getContainer === 'function'
+        ? ReactDOM.createPortal(contentRender, getContainer(referenceElement.current as HTMLDivElement))
+        : contentRender}
     </>
   );
 };

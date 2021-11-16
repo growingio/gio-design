@@ -224,3 +224,22 @@ export const Enterable = EnterableTemplate.bind({});
 Enterable.args = {
   content,
 };
+
+const PortalTemplate: Story<PopoverProps> = (args) => (
+  <>
+    <div style={{ overflow: 'hidden' }}>
+      <Popover {...args} strategy="fixed">
+        <Input value="Popover supports mouse enter!" />
+      </Popover>
+    </div>
+    <span>|</span>
+    <Popover {...args} getContainer={(node) => node?.parentElement || document.body}>
+      <Input value="Popover does't support mouse enter!" />
+    </Popover>
+  </>
+);
+
+export const Portal = PortalTemplate.bind({});
+Portal.args = {
+  content,
+};
