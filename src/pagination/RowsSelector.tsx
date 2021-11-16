@@ -25,7 +25,7 @@ const RowsSelector: React.FC<{
           defaultValue={defaultPageSize?.toString()}
           value={pageSize?.toString()}
           size="small"
-          getContainer={(node) => node.parentElement || document.body}
+          getContainer={(node) => node?.parentElement || document.body}
           options={pageSizeOptions.map((rowSize) => {
             const value = Number.parseInt(`${rowSize}`, 10)?.toString();
             return {
