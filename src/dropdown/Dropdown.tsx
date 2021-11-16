@@ -24,12 +24,12 @@ export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.Forwa
 
   const getDropdownTrigger = () => {
     const child = Children.only(children);
-    return cloneElement(child, {
+    return cloneElement(child as React.ReactElement, {
       className: classnames(
         {
           'dropdown-active': controlledVisible,
         },
-        child.props.className,
+        (child as React.ReactElement).props.className,
         ref
       ),
     });
