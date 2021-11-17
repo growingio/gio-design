@@ -1,13 +1,14 @@
 import classNames from 'classnames';
 import { isEmpty } from 'lodash';
-import React, { useState } from 'react';
-import List, { OptionProps } from '../list';
+import React, { useEffect, useState } from 'react';
+import { List, OptionProps } from '../list';
 import Popover from '../popover';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import useControlledState from '../utils/hooks/useControlledState';
 import { CascaderProps } from './interfance';
-import { getLabelByValue } from './util';
 import Trigger from './Trigger';
+import { ListContext } from '../list/context';
+import useChacheOptions from '../list/hooks/useCacheOptions';
 
 const Cascader: React.FC<CascaderProps> = (props) => {
   const {
@@ -16,7 +17,7 @@ const Cascader: React.FC<CascaderProps> = (props) => {
     defaultValue = '',
     visible: controlledVisible,
     onChange,
-    prefixCls = 'cascader-new',
+    prefixCls = 'cascader--new',
     getContainer,
     onVisibleChange,
     triggerProps,
@@ -26,29 +27,35 @@ const Cascader: React.FC<CascaderProps> = (props) => {
     suffix,
     disabled,
     size,
+    overlayClassName,
+    contentClassName,
     overlayStyle,
+    contentStyle,
     separator = '',
     placement = 'bottomLeft',
+    children,
     ...rest
   } = props;
+  const defaultPrefixCls = usePrefixCls(prefixCls);
   const [value, setSelectValue] = useControlledState(controlledValue, defaultValue);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
-  const [selectedTitle, setSelectedTitle] = useState(undefined);
-  const defaultPrefixCls = usePrefixCls(prefixCls);
-  const prefixIcon = prefix?.(undefined);
-  const suffixIcon = suffix?.(undefined);
-  // 这里实现的不好
+  const [title, setTitle] = useState('');
+  const cache = useChacheOptions();
+
+  const setOptions = (opts: OptionProps[]) => cache.setOptions(opts);
+
+  useEffect(() => {
+    setTitle(cache.getLabelByValue(value, separator));
+  }, [cache, separator, value]);
 
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);
     onVisibleChange?.(vis);
   };
 
-  const handleChange = (val?: string | string[], opts?: OptionProps | OptionProps[]) => {
+  const handleChange = (val?: string | string[]) => {
     onChange?.(val);
     setSelectValue((val as string) ?? '');
-    setSelectedTitle(getLabelByValue(val, opts, separator));
-
     setVisible(false);
   };
 
@@ -65,10 +72,8 @@ const Cascader: React.FC<CascaderProps> = (props) => {
       onClick={() => setVisible(!visible)}
     >
       <Trigger
-        value={selectedTitle}
+        value={title}
         size={size}
-        prefix={prefixIcon}
-        suffix={suffixIcon}
         disabled={disabled}
         onClear={handleOnClear}
         onInputChange={(val) => {
@@ -78,46 +83,35 @@ const Cascader: React.FC<CascaderProps> = (props) => {
       />
     </div>
   );
-  // const renderItems = () =>
-  //   options?.map((option: CascaderItemProps) => {
-  //     const { childrens = [], ...optionRest } = option;
-  //     if (!isEmpty(childrens)) {
-  //       return (
-  //         <Item isCascader {...optionRest}>
-  //           <List model="cascader" className={`${defaultPrefixCls}--list`}>
-  //             {childrens.map((child) => (
-  //               <Item isCascader {...child} />
-  //             ))}
-  //           </List>
-  //         </Item>
-  //       );
-  //     }
-  //     return <Item {...optionRest} />;
-  //   });
   const renderOverlay = () => (
     <List
       {...rest}
       options={options}
-      className={`${defaultPrefixCls}--list`}
+      className={classNames(`${defaultPrefixCls}--list`, contentClassName)}
+      prefix={prefix}
+      suffix={suffix}
+      style={contentStyle}
       model="cascader"
-      value={value}
-      onChange={handleChange}
-    />
+    >
+      {children}
+    </List>
   );
 
   return (
-    <Popover
-      content={renderOverlay()}
-      trigger="click"
-      visible={visible}
-      onVisibleChange={handVisibleChange}
-      getContainer={getContainer}
-      overlayClassName={`${defaultPrefixCls}--content`}
-      placement={placement}
-      overlayStyle={overlayStyle}
-    >
-      {renderTrigger()}
-    </Popover>
+    <ListContext.Provider value={{ value, onChange: handleChange, setOptions }}>
+      <Popover
+        content={renderOverlay()}
+        trigger="click"
+        visible={visible}
+        onVisibleChange={handVisibleChange}
+        getContainer={getContainer}
+        overlayClassName={classNames(`${defaultPrefixCls}--content`, overlayClassName)}
+        overlayStyle={overlayStyle}
+        placement={placement}
+      >
+        {renderTrigger()}
+      </Popover>
+    </ListContext.Provider>
   );
 };
 

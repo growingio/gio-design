@@ -16,7 +16,7 @@ import BaseItem from './inner/baseItem';
 import WithSubComponent from '../utils/withSubComponent';
 
 type ItemProps = Omit<InnerItemProps, 'selected' | 'selectValue'>;
-type ListProps = Omit<InnerListProps, 'selectedParent'>;
+type ListProps = Omit<InnerListProps, 'selectParent'>;
 
 export type { ItemProps, ListProps, OptionProps, DragProps, DragItemProps, BaseItemProps, CascaderItemProps };
 

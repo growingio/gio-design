@@ -18,7 +18,13 @@ export interface CascaderProps extends Omit<ListProps, 'options' | 'onChange' | 
   triggerProps: Omit<TriggerProps, 'prefixCls' | 'onInputChange' | 'disabled' | 'getOptionByValue' | 'separator'>;
   onChange?: (val?: string | string[], options?: OptionProps | OptionProps[]) => void;
   getContainer?: (node: HTMLElement) => HTMLElement;
+  overlayClassName?: string;
   overlayStyle?: React.CSSProperties;
+  /**
+   * contentClassName?:string;
+   */
+  contentClassName?: string;
+  contentStyle?: React.CSSProperties;
   placement?: Placement;
 }
 export interface OptionProps extends ListOptionProps {

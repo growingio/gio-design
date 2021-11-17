@@ -6,6 +6,8 @@ import { CascaderProps } from '../interfance';
 import Cascader from '../Cascader';
 import '../style';
 import './style.less';
+import CascaderItem from '../../list/inner/CascaderItem';
+import { List } from '../../list';
 
 export default {
   title: 'Upgraded/Cascader',
@@ -13,6 +15,42 @@ export default {
 } as Meta;
 const defaultLabels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 
+const defaultOptions = [
+  {
+    label: '苹果',
+    value: 'apple',
+    childrens: [
+      {
+        label: '切',
+        value: 'cut',
+        childrens: [
+          {
+            label: '坏了',
+            value: 'bad',
+          },
+          {
+            label: '没坏',
+            value: 'good',
+          },
+        ],
+      },
+      {
+        label: '掰开',
+        value: 'bye',
+        childrens: [
+          {
+            label: '坏了',
+            value: 'bad',
+          },
+          {
+            label: '没坏',
+            value: 'good',
+          },
+        ],
+      },
+    ],
+  },
+];
 const Template: Story<CascaderProps> = (props) => {
   const options = defaultLabels.reduce(
     (prev, curr) => [
@@ -31,22 +69,28 @@ const Template: Story<CascaderProps> = (props) => {
   return (
     <>
       <div className="demo-box">
-        <Cascader options={options} triggerProps={{ placeholder: '请选择' }} size="normal" {...props} />
+        <Cascader options={defaultOptions} triggerProps={{ placeholder: '请选择' }} size="normal" {...props} />
       </div>
       <div className="demo-box">
-        <Cascader
-          disabled
-          options={options}
-          triggerProps={{ placeholder: '请选择', allowClear: false }}
-          size="normal"
-          {...props}
-        />
+        <Cascader triggerProps={{ placeholder: '请选择', allowClear: false }} size="normal" {...props}>
+          <CascaderItem label="苹果" value="apple">
+            <List model="cascader">
+              <CascaderItem label="切" value="cat">
+                <List model="cascader">
+                  <CascaderItem label="坏了" value="bad" />
+                  <CascaderItem label="没坏" value="good" />
+                </List>
+              </CascaderItem>
+              <CascaderItem label="掰开" value="bye" />
+            </List>
+          </CascaderItem>
+        </Cascader>
       </div>
       <h3>自定义list,trigger宽度</h3>
       <div className="demo-box">
         <Cascader
           options={options}
-          overlayStyle={{ width: 240 }}
+          contentStyle={{ width: 240 }}
           triggerProps={{ placeholder: '请选择', allowClear: false, style: { width: 240, textAlign: 'left' } }}
           size="small"
           {...props}

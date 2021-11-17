@@ -1,28 +1,25 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { isArray } from 'lodash';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
 import Trigger from './Trigger';
 import useControlledState from '../utils/hooks/useControlledState';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
-import StaticListPicker from './StaticListPicker';
 import { OptionProps } from '../list/interfance';
-import { getFlattenOptions, getLabelByValue } from './util';
 import Button from '../button';
-import { useCacheOptions } from '../list/util';
-import Page from '../page';
+// import Page from '../page';
+import { ListContext } from '../list/context';
+import useCacheOptions from '../list/hooks/useCacheOptions';
 
-const defaultEmpty = () => <Page type="noData" size="small" style={{ margin: '0 auto', padding: '40px 0px' }} />;
+// const defaultEmpty = () => <Page type="noData" size="small" style={{ margin: '0 auto', padding: '40px 0px' }} />;
 
 const ListPicker: React.FC<ListPickerProps> = (props) => {
   const {
-    disabled,
     size,
     placeholder,
     onClear,
     value: controlledValue,
-    model = 'simple',
-    options = [],
     trigger = 'click',
     visible: controlledVisible,
     onVisibleChange,
@@ -35,27 +32,31 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     overlayStyle,
     children,
     onConfim,
-    needConfim = model === 'multiple',
+    needConfim = false,
     confimText = '确定',
-    separator,
-    empty = defaultEmpty,
+    separator = '',
     className,
     style,
-
-    ...otherProps // list props
+    model,
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
   const [value, setValue] = useState(controlledValue);
-  const [title, setTitle] = useState(getLabelByValue(value, options as OptionProps[]));
-  const { setCacheOptions, getOptionByValue, getOptionsByValue } = useCacheOptions();
-  setCacheOptions(options);
-  const isSelection = useMemo(() => options?.every((val) => 'selectionValue' in val), [options]);
-  const selections = useMemo(() => getFlattenOptions(options, isSelection), [isSelection, options]);
+  const [title, setTitle] = useState<string | React.ReactNode>('');
+
+  const { options, setOptions, getLabelByValue, getOptionsByValue } = useCacheOptions();
+
+  useEffect(() => {
+    setValue(controlledValue);
+  }, [controlledValue]);
+
+  useEffect(() => {
+    console.log('getLabelByValue(value, separator)', getLabelByValue(value, separator));
+    setTitle(getLabelByValue(value, separator));
+  }, [value, getLabelByValue, separator]);
 
   useEffect(() => {
     if (!needConfim) {
-      console.log('setValue');
       setValue(controlledValue);
     }
   }, [controlledValue, needConfim]);
@@ -69,12 +70,9 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     onConfim?.(value, getOptionsByValue(value));
   };
 
-  useEffect(() => {
-    setTitle(getLabelByValue(value, options as OptionProps[], separator, getOptionByValue));
-  }, [getOptionByValue, options, separator, value]);
-
   const handleChange = (val?: string | string[], opts?: OptionProps | OptionProps[]) => {
     setValue(val);
+    setTitle(!isArray(opts) ? opts?.label : '');
     if (!needConfim) {
       onChange?.(val, opts);
     }
@@ -96,7 +94,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
       <Trigger
         value={title}
         {...triggerProp}
-        disabled={disabled}
+        // disabled={disabled}
         size={size}
         placeholder={placeholder}
         onClear={clearInput}
@@ -108,18 +106,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   // render
   const renderOverlay = () => (
     <div className={classNames(defaultPrefix, className)} style={style}>
-      <StaticListPicker
-        value={value}
-        onChange={handleChange}
-        options={selections}
-        isSelection={isSelection}
-        model={model}
-        disabled={disabled}
-        empty={empty}
-        {...otherProps}
-      >
-        {children}
-      </StaticListPicker>
+      {children}
       {model === 'multiple' && (
         <Button style={{ width: '100%' }} onClick={() => handleConfim()}>
           {confimText}
@@ -129,18 +116,20 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   );
 
   return (
-    <Popover
-      content={renderOverlay()}
-      trigger={trigger}
-      visible={visible}
-      onVisibleChange={handVisibleChange}
-      getContainer={getContainer}
-      overlayClassName={`${defaultPrefix}--content`}
-      placement={placement}
-      overlayStyle={overlayStyle}
-    >
-      {renderTrigger()}
-    </Popover>
+    <ListContext.Provider value={{ value, onChange: handleChange, options, setOptions }}>
+      <Popover
+        content={renderOverlay()}
+        trigger={trigger}
+        visible={visible}
+        onVisibleChange={handVisibleChange}
+        getContainer={getContainer}
+        overlayClassName={`${defaultPrefix}--content`}
+        placement={placement}
+        overlayStyle={overlayStyle}
+      >
+        {renderTrigger()}
+      </Popover>
+    </ListContext.Provider>
   );
 };
 

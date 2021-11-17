@@ -7,7 +7,7 @@ import WithRef from '../utils/withRef';
 
 const Item: React.ForwardRefRenderFunction<HTMLLIElement, ItemProps & { isMultiple?: boolean; isCascader?: boolean }> =
   (props, ref?) => {
-    const { label, value, disabled, isMultiple = false, isCascader, selectedParent = [], selectValue, ...rest } = props;
+    const { label, value, disabled, isMultiple = false, isCascader, selectValue, ...rest } = props;
 
     if (isMultiple) {
       return <CheckboxItem ref={ref} label={label} value={value} disabled={disabled} {...rest} />;
@@ -20,7 +20,6 @@ const Item: React.ForwardRefRenderFunction<HTMLLIElement, ItemProps & { isMultip
           value={value as string}
           selectValue={selectValue as string}
           disabled={disabled}
-          selectedParent={selectedParent}
           {...rest}
         />
       );

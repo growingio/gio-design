@@ -196,6 +196,15 @@ const CollapseTemplate: Story<ItemProps> = () => {
           ))}
         </List>
       </div>
+      <div className="demo-box">
+        <List onChange={(value) => console.log('value', value)}>
+          {collapseOptions.map((option) => (
+            <Item value={option?.value}>
+              <div style={{ background: 'black' }}>{option?.label}</div>
+            </Item>
+          ))}
+        </List>
+      </div>
     </>
   );
 };

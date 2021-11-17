@@ -1,14 +1,16 @@
-import React, { DOMAttributes, useMemo } from 'react';
+import React, { DOMAttributes, useContext, useEffect, useMemo } from 'react';
 import { isEmpty, noop } from 'lodash';
 import { RightFilled } from '@gio-design/icons';
+import classNames from 'classnames';
 import Popover from '../../popover';
-import { CascaderItemProps, ListProps, OptionProps } from '../interfance';
+import { CascaderItemProps, OptionProps, ListProps } from '../interfance';
 import BaseItem from './baseItem';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import List from '../List';
 import WithRef from '../../utils/withRef';
+import List from '../List';
+import { convertChildrenToData, generateSelectParent, generateString } from '../util';
+import { ListContext } from '../context';
 
-// 1.2
 const CascaderItem: React.ForwardRefRenderFunction<
   HTMLLIElement,
   CascaderItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>
@@ -17,53 +19,66 @@ const CascaderItem: React.ForwardRefRenderFunction<
     label,
     value,
     children,
-    childrens,
+    childrens = [],
     selectValue: initValue = '',
-    selectedParent = [],
+    selectParent,
     disabled = false,
-    onClick,
+    onClick: propsOnClick,
     ...rest
   } = props;
   const prefixCls = usePrefixCls('cascader--new');
   const popoverClassName = `${prefixCls}--cascader--content`;
-  // todo 需要改 这里实现的不好
-  const arrValue = useMemo(() => initValue?.split('.'), [initValue]);
-  const isParentChecked =
-    (!isEmpty(selectedParent) && selectedParent?.every((parentValue, index) => arrValue?.[index] === parentValue)) ||
-    arrValue?.[0] === value;
-  const isSelected = isParentChecked && arrValue?.[selectedParent?.length ?? 0] === value;
+  const isSelected = initValue?.startsWith(generateString(value, selectParent));
+  const { setOptions } = useContext(ListContext);
+  const childSelectPrent = generateSelectParent(label, value, selectParent);
+
+  const childNodeOptions = convertChildrenToData(children);
+  const mergedOptions = useMemo(() => [...childNodeOptions, ...childrens], [childNodeOptions, childrens]);
+
+  useEffect(() => {
+    setOptions?.(mergedOptions as OptionProps[]);
+  }, [mergedOptions, setOptions]);
 
   // list
-  const contentRender = (node: React.ReactElement<ListProps>) =>
-    React.cloneElement(node, {
-      value: initValue,
-      model: 'cascader',
-      className: prefixCls,
-      disabled: disabled as boolean,
-      selectedParent: isSelected ? selectedParent.concat([value]) : selectedParent,
-      onChange: (val?: string) => onClick?.(`${value}.${val}`),
-    });
   const prefixClsItem = `${prefixCls}--item`;
+  const onClick = () =>
+    !disabled
+      ? propsOnClick?.(generateString(value, selectParent), selectParent?.[0] ?? { label: '', value: '' })
+      : noop;
 
   const content = () => {
-    //
-    if (React.isValidElement(children)) {
-      return children;
+    if (!isEmpty(childrens)) {
+      return (
+        <List model="cascader" className={prefixCls}>
+          {childrens?.map((child) => (
+            <CascaderItem
+              label={child?.label}
+              value={child?.value}
+              childrens={child?.childrens as CascaderItemProps[]}
+              selectParent={childSelectPrent}
+            />
+          ))}
+        </List>
+      );
     }
-    return !isEmpty(childrens) ? (
-      <List
-        options={childrens as OptionProps[]}
-        value={value}
-        onChange={(val) => onClick?.(val as string)}
-        model={childrens?.some((child) => 'childrens' in child) ? 'cascader' : undefined}
-      />
-    ) : (
-      <></>
-    );
+
+    if (React.isValidElement(children)) {
+      return React.cloneElement<ListProps>(children, {
+        ...children.props,
+        model: 'cascader',
+        className: classNames(children.props?.className, prefixCls),
+        children: React.Children.toArray(children?.props.children).map((child) =>
+          React.cloneElement<OptionProps>(child as React.ReactElement, {
+            selectParent: childSelectPrent,
+          })
+        ),
+      });
+    }
+    return <></>;
   };
 
   const PopoverRender = (trigger: React.ReactNode): React.ReactElement => {
-    if (childrens || React.isValidElement(children)) {
+    if (!isEmpty(childrens) || React.isValidElement(children)) {
       return (
         <div className={prefixClsItem}>
           <Popover
@@ -71,7 +86,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
             strategy="fixed"
             trigger="hover"
             overlayClassName={popoverClassName}
-            content={contentRender(content())}
+            content={content()}
           >
             {trigger as React.ReactElement}
           </Popover>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { PlusOutlined, FilterOutlined } from '@gio-design/icons';
 import { action } from '@storybook/addon-actions';
-
+import Option from '../Option';
 import { SelectProps } from '../interface';
 import Select from '../Select';
 import '../style';
@@ -21,6 +21,7 @@ const Template: Story<SelectProps> = (props) => {
       <div className="demo-box">
         <Select
           options={options}
+          value="1"
           triggerProps={{ placeholder: '请选择' }}
           size="normal"
           {...props}
@@ -69,6 +70,27 @@ const Template: Story<SelectProps> = (props) => {
           size="small"
           {...props}
         />
+      </div>
+      <h3>JSX</h3>
+      <div className="demo-box">
+        <Select
+          triggerProps={{
+            placeholder: '请选择',
+            style: { width: 240, textAlign: 'left' },
+          }}
+        >
+          <Option label="JSX1" value="JSX1" />
+          <Option label="JSX2" value="JSX2" />
+        </Select>
+        <Select
+          triggerProps={{
+            placeholder: '请选择',
+            style: { width: 240, textAlign: 'left' },
+          }}
+        >
+          <Option value="JSX1">JSX1</Option>
+          <Option value="JSX2">JSX2</Option>
+        </Select>
       </div>
     </>
   );
