@@ -1,0 +1,110 @@
+@import '../../../../../stylesheet/index.less';
+
+@list-prefix-cls: ~'@{component-prefix}-list-property-selector';
+
+.@{list-prefix-cls} {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  &__item-group,
+  &__item-subgroup {
+    &__title {
+      padding: 8px 12px;
+      font-weight: @weight-font-regular;
+      font-size: @size-font-12;
+      font-family: @font-family-primary;
+      font-style: normal;
+      line-height: 20px;
+    }
+
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+  }
+
+  &__item-group {
+    &__title {
+      color: @palette-blue-5;
+      font-weight: @weight-font-medium;
+    }
+  }
+
+  &__item-subgroup {
+    &__title {
+      color: #a3adc8;
+    }
+  }
+
+  &__item {
+    margin-top: 4px;
+    padding: 7px 12px;
+    color: @palette-black-6;
+    font-weight: @weight-font-regular;
+    font-size: @size-font-14;
+    font-family: @font-family-primary;
+    font-style: normal;
+    line-height: 22px;
+    background-color: @palette-white;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background-color: @palette-gray-3;
+    }
+
+    &:active {
+      color: @palette-blue-5;
+    }
+    &.selected,
+    &.active {
+      color: @palette-blue-5;
+      background-color: @palette-gray-1;
+    }
+    &--ellipsis {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &--disabled {
+      color: @palette-black-3;
+      cursor: not-allowed;
+    }
+    &--disabled:hover {
+      background-color: @palette-white;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    margin: 8px 12px;
+    line-height: 0;
+    background-color: @palette-gray-3;
+  }
+
+  &__expand-item {
+    margin-top: 4px;
+    padding: 8px 12px;
+    color: @palette-black-3;
+    font-size: @size-font-12;
+    line-height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &__icon {
+      padding-top: 3px;
+    }
+
+    &__text {
+      margin-left: 8px;
+      vertical-align: top;
+    }
+
+    &:hover {
+      color: @palette-blue-5;
+      background-color: @palette-gray-3;
+    }
+  }
+}

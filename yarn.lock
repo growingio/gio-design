@@ -12883,6 +12883,13 @@ pinkie@^2.0.0:
   resolved "https://registry.nlark.com/pinkie/download/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
+pinyin-match@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/pinyin-match/-/pinyin-match-1.2.2.tgz#24a60a5bce89fb2903f33f37492782d3f8e34eeb"
+  integrity sha512-C0yOq4LkToJMkDHiQFKOY69El2GRcwdS2lVEjgWjIV8go3wE4mloGFNkVicGHFGYHDg523m2/lKzW8Hh+JR9nw==
+  dependencies:
+    rollup "^2.44.0"
+
 pinyin@^2.9.1:
   version "2.10.2"
   resolved "https://registry.nlark.com/pinyin/download/pinyin-2.10.2.tgz#93e3b3cb4430009925163bad10c741778c85b013"
@@ -14832,6 +14839,13 @@ rollup@^1.31.0:
     "@types/estree" "*"
     "@types/node" "*"
     acorn "^7.1.0"
+
+rollup@^2.44.0:
+  version "2.60.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.60.0.tgz#4ee60ab7bdd0356763f87d7099f413e5460fc193"
+  integrity sha512-cHdv9GWd58v58rdseC8e8XIaPUo8a9cgZpnCMMDGZFDZKEODOiPPEQFXLriWr/TjXzhPPmG5bkAztPsOARIcGQ==
+  optionalDependencies:
+    fsevents "~2.3.2"
 
 rst-selector-parser@^2.2.3:
   version "2.2.3"

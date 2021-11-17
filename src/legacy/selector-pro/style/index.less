@@ -1,0 +1,110 @@
+@import '../../../stylesheet/index.less';
+@import (reference) '../../dropdown/style/index.less';
+
+@selector-prefix-cls: ~'@{component-prefix}-selector-pro';
+
+.@{selector-prefix-cls} {
+  position: relative;
+  box-sizing: border-box;
+  width: fit-content;
+  min-width: 160px;
+  max-width: 360px;
+  height: 36px;
+  padding: 0 32px 0 16px;
+  background: @palette-white;
+  border: 1px solid @color-border-input-normal;
+  border-radius: 4px;
+
+  &:not(&--disabled):hover {
+    border: 1px solid @color-border-input-hover;
+  }
+
+  &--borderless {
+    border: 1px solid transparent;
+    .@{selector-prefix-cls}__placeholder {
+      color: @palette-black-6;
+    }
+  }
+  &--disabled {
+    background: @palette-gray-1;
+    border: 1px solid @palette-gray-4;
+  }
+  &--borderless:not(&--disabled):hover {
+    background: @palette-gray-3;
+    border: 1px solid transparent;
+  }
+
+  &:not(&--disabled):active,
+  &--actived:not(&--disabled) {
+    border: 1px solid @color-border-input-active;
+  }
+
+  &__item,
+  &__placeholder {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    font-weight: normal;
+    font-size: 14px;
+    font-family: @font-family-primary;
+    font-style: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  &__item {
+    color: @palette-black-6;
+  }
+  &__placeholder {
+    color: @palette-black-2;
+  }
+  &--disabled > &__item {
+    color: @palette-black-3;
+  }
+  &--small {
+    height: 30px;
+  }
+  &--small > &__item,
+  &--small > &__placeholder {
+    line-height: 28px;
+  }
+
+  &--middle {
+    height: 36px;
+  }
+  &--middle > &__item,
+  &--middle > &__placeholder {
+    line-height: 34px;
+  }
+
+  &--large {
+    height: 40px;
+  }
+  &--large > &__item,
+  &--large > &__placeholder {
+    line-height: 38px;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    color: @palette-black-3;
+  }
+}
+
+.@{selector-prefix-cls}-dropdown {
+  height: fit-content;
+  min-height: 200px;
+  max-height: 520px;
+  background: @palette-white;
+  border-radius: 4px;
+  box-shadow: 0 6px 14px rgba(223, 226, 237, 0.8);
+}
+.@{selector-prefix-cls}-overlay-dropdown {
+  .@{dropdown-prefix-cls}-inner {
+    overflow: visible;
+  }
+}

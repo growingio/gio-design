@@ -64,7 +64,7 @@ function Page({ className, style, type = 'noData', image, description, cta, size
   };
   const prefixCls = usePrefixCls('page-new');
   const cls = classnames(prefixCls, `${prefixCls}-${size}`, className, {
-    [`${prefixCls}-${size}-empty`]: ['empty', 'noData', 'noResult', 'noFind'].includes(type),
+    [`${prefixCls}-empty`]: ['empty', 'noData', 'noResult', 'noFind'].includes(type),
   });
   const des = description || typeMap[type].description;
   const img = image || typeMap[type].image;
