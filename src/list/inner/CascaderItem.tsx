@@ -6,9 +6,13 @@ import { CascaderItemProps, ListProps, OptionProps } from '../interfance';
 import BaseItem from './baseItem';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import List from '../List';
+import WithRef from '../../utils/withRef';
 
 // 1.2
-const CascaderItem: React.FC<CascaderItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>> = (props) => {
+const CascaderItem: React.ForwardRefRenderFunction<
+  HTMLLIElement,
+  CascaderItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>
+> = (props, ref?) => {
   const {
     label,
     value,
@@ -64,6 +68,7 @@ const CascaderItem: React.FC<CascaderItemProps & Omit<DOMAttributes<HTMLLIElemen
         <div className={prefixClsItem}>
           <Popover
             placement="rightTop"
+            strategy="fixed"
             trigger="hover"
             overlayClassName={popoverClassName}
             content={contentRender(content())}
@@ -79,6 +84,7 @@ const CascaderItem: React.FC<CascaderItemProps & Omit<DOMAttributes<HTMLLIElemen
   const renderItem = (
     <BaseItem
       {...rest}
+      ref={ref}
       label={label}
       value={value}
       disabled={disabled}
@@ -91,4 +97,4 @@ const CascaderItem: React.FC<CascaderItemProps & Omit<DOMAttributes<HTMLLIElemen
   return PopoverRender(renderItem);
 };
 
-export default CascaderItem;
+export default WithRef(CascaderItem);

@@ -1,5 +1,5 @@
 @import '../../stylesheet/variables/index.less';
-
+@import '~@gio-design/utils/lib/less/mixins.less';
 @list-prefix-cls: ~'@{component-prefix}-select-new';
 
 .@{list-prefix-cls} {
@@ -13,7 +13,7 @@
     height: auto;
     max-height: 520px;
     padding: 12px 8px;
-    overflow-y: auto;
+    .scrollbar();
     background: @gray-0;
     border: 1px solid #dfe4ee;
     border-radius: 8px;

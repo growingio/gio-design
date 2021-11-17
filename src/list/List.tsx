@@ -9,6 +9,7 @@ import utils, { isCascader, isMultipe, useCacheOptions } from './util';
 import WithRef from '../utils/withRef';
 import './style';
 import BaseItem from './inner/baseItem';
+import Popover from '../popover';
 
 const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
   isGIOList?: boolean;
@@ -28,7 +29,10 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
     suffix,
     onChange,
     selectedParent = [],
+    showPreview,
     renderItem,
+    previewRender,
+    previewRenderContainer,
   } = props;
   const prefixCls = usePrefixCls(PREFIX);
   const { setCacheOptions, getOptionsByValue } = useCacheOptions();
@@ -55,6 +59,24 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
       // debugger;
       onChange?.(val, getOptionsByValue(val));
     }
+  };
+  const renderPreview = (option: OptionProps, content: React.ReactElement) => {
+    if (showPreview) {
+      return (
+        <div className={`${prefixCls}--preview`}>
+          <Popover
+            placement="rightTop"
+            strategy="fixed"
+            getContainer={previewRenderContainer}
+            content={previewRender?.(option)}
+            overlayClassName={`${prefixCls}--preview--overlay`}
+          >
+            {content}
+          </Popover>
+        </div>
+      );
+    }
+    return content;
   };
   const renderChildren = (option: OptionProps) => {
     if (typeof renderItem === 'function') {
@@ -92,7 +114,7 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
   const renderChildrens = (child: React.ReactNode[] | OptionProps[]) => {
     // options render
     if (isArray(initOptions)) {
-      return (child as OptionProps[])?.map((option: OptionProps) => renderChildren(option));
+      return (child as OptionProps[])?.map((option: OptionProps) => renderPreview(option, renderChildren(option)));
     }
     // childrens render
     return (child as React.ReactNode[]).map(

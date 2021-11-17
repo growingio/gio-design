@@ -1,18 +1,39 @@
 import React, { useMemo, useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import '../style';
-import { groupBy, uniqBy } from 'lodash';
-import { AddCircleOutlined } from '@gio-design/icons';
+import { groupBy, uniqBy, uniqueId } from 'lodash';
+import {
+  AddCircleOutlined,
+  AttributionPropertyOutlined,
+  EditOutlined,
+  ItemOutlined,
+  TagOutlined,
+  UserOutlined,
+} from '@gio-design/icons';
 import { ListPickerProps, OptionProps } from '../interfance';
 import ListPicker from '../listPicker';
 import SearchBar from '../../search-bar';
 import { Tab } from '../../tabs';
 import { Tabs } from '../..';
+import Page from '../../page';
 
 export default {
   title: 'Upgraded/ListPicker',
   component: ListPicker,
 } as Meta;
+const groupIds = ['custom', 'virtual', 'tag', 'visible'];
+const groupNames = ['埋点', '虚拟', '标签', '属性'];
+const selectionValues = ['all', 'apple', 'banana'];
+const selectionNames = ['全局', '苹果', '香蕉'];
+const createOption = (index: number) => ({
+  label: uniqueId(`label-${index.toString()}`),
+  value: uniqueId(`value-${index.toString()}`),
+  groupId: groupIds[Math.floor(index % 4)],
+  groupName: groupNames[Math.floor(index % 4)],
+  selectionValue: selectionValues[Math.floor(index % 3)],
+  selectionTitle: selectionNames[Math.floor(index % 3)],
+});
+const largeOptions = new Array(200).fill(0).map((v, i) => createOption(i));
 const options = [
   {
     label: '访问',
@@ -356,7 +377,133 @@ const Template: Story<ListPickerProps> = () => {
   );
 };
 export const Default = Template.bind({});
-
 Default.args = {
   searchPlaceholder: '请输入',
 };
+
+const EventPickerTemplate: Story<ListPickerProps> = () => {
+  const [value, setValue] = useState(undefined);
+  const [selectedOption, setSelectedOption] = useState(undefined);
+  const [activeTab, setActiveTab] = useState('All');
+  const [search, setSearch] = useState('');
+  const tabs = [{ label: '全部', value: 'All' }].concat(
+    uniqBy(
+      largeOptions.reduce((prev, curr) => [...prev, { label: curr?.groupName, value: curr.groupId }], []),
+      'value'
+    )
+  );
+
+  const GroupOptions = useMemo(
+    () =>
+      Object.assign(
+        groupBy(
+          largeOptions?.filter((option) => activeTab === option.groupId),
+          'groupId'
+        ),
+        { All: largeOptions }
+      ),
+    [activeTab]
+  );
+  const searchOptions = useMemo(
+    () => (GroupOptions[activeTab] ?? []).filter((o: OptionProps) => o.label.includes(search)),
+    [GroupOptions, activeTab, search]
+  );
+  const onChange = (val?: string | string[], opt?: OptionProps | OptionProps[]) => {
+    console.log('onChange执行', val, opt);
+    setValue(val);
+    setSelectedOption(opt);
+  };
+  const searchEmptyRender = () => (
+    <div style={{ width: '100%' }}>
+      <Page type="noResult" size="small" style={{ margin: '0 auto', padding: '40px 0px' }} />
+    </div>
+  );
+  // ['custom', 'virtual', 'tag', 'visible']
+  const renderPrefix = (option: OptionProps) => {
+    switch (option?.groupId) {
+      case 'custom':
+        return <UserOutlined size="14px" />;
+      case 'virtual':
+        return <AttributionPropertyOutlined size="14px" />;
+      case 'tag':
+        return <TagOutlined size="14px" />;
+      case 'visible':
+        return <ItemOutlined size="14px" />;
+      default:
+        return <EditOutlined size="14px" />;
+    }
+  };
+  const renderPreview = (opt: OptionProps) => (
+    <div
+      style={{
+        width: '320px',
+        padding: '8px',
+        height: '150px',
+        background: 'white',
+        border: '1px solid #DFE4EE',
+        boxShadow: '0px 8px 24px rgba(36, 46, 89, 0.1)',
+        borderRadius: '8px',
+      }}
+    >
+      <h2>{opt.label}</h2>
+    </div>
+  );
+  return (
+    <div>
+      <h3> event Picker Demo</h3>
+      <ListPicker
+        value={value}
+        options={searchOptions}
+        style={{ width: '320px' }}
+        size="small"
+        onChange={onChange}
+        showPreview
+        previewRender={renderPreview}
+        onClear={() => {
+          setValue('');
+        }}
+        triggerProps={{
+          allowClear: false,
+          prefix: renderPrefix(selectedOption),
+        }}
+        prefix={renderPrefix}
+        empty={!searchOptions.length ? searchEmptyRender : undefined}
+        placeholder="请选择"
+      >
+        <SearchBar style={{ width: '100%' }} placeholder="搜索名称" onSearch={(val: string) => setSearch(val)} />
+        <div style={{ margin: '8px 0px' }}>
+          <Tabs
+            value={activeTab}
+            defaultValue="fruits"
+            onChange={(key: string) => {
+              setActiveTab(key);
+            }}
+          >
+            {tabs.map((tab) => (
+              <Tab label={tab.label} value={tab.value} />
+            ))}
+          </Tabs>
+        </div>
+      </ListPicker>
+      <h3>options empty</h3>
+      <ListPicker value={value} options={[]} style={{ width: '320px' }} size="small" placeholder="请选择">
+        <SearchBar style={{ width: '100%' }} placeholder="搜索名称" onSearch={(val: string) => setSearch(val)} />
+        <div style={{ margin: '8px 0px' }}>
+          <Tabs
+            value={activeTab}
+            defaultValue="fruits"
+            onChange={(key: string) => {
+              setActiveTab(key);
+            }}
+          >
+            {tabs.map((tab) => (
+              <Tab label={tab.label} value={tab.value} />
+            ))}
+          </Tabs>
+        </div>
+      </ListPicker>
+    </div>
+  );
+};
+export const EventPicker = EventPickerTemplate.bind({});
+EventPicker.args = {};

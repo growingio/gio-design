@@ -3,8 +3,17 @@ import List, { OptionProps } from '../list';
 import { SelectionProps, StaticListPickerProps } from './interfance';
 
 const StaticListPicker: React.FC<StaticListPickerProps & { needConfim?: boolean }> = (props) => {
-  const { children, model, isSelection, options, ...rest } = props;
+  const { children, model, isSelection, options, empty, ...rest } = props;
   // children has filter options, custom filter model such as :search | select | tab | other
+
+  if (!options.length) {
+    return (
+      <>
+        {children}
+        {empty?.()}
+      </>
+    );
+  }
   return (
     <>
       {children}

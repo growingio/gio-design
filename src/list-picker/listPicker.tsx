@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import classNames from 'classnames';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
 import Trigger from './Trigger';
@@ -9,6 +10,9 @@ import { OptionProps } from '../list/interfance';
 import { getFlattenOptions, getLabelByValue } from './util';
 import Button from '../button';
 import { useCacheOptions } from '../list/util';
+import Page from '../page';
+
+const defaultEmpty = () => <Page type="noData" size="small" style={{ margin: '0 auto', padding: '40px 0px' }} />;
 
 const ListPicker: React.FC<ListPickerProps> = (props) => {
   const {
@@ -34,6 +38,10 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     needConfim = model === 'multiple',
     confimText = '确定',
     separator,
+    empty = defaultEmpty,
+    className,
+    style,
+
     ...otherProps // list props
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
@@ -99,7 +107,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
 
   // render
   const renderOverlay = () => (
-    <div className={defaultPrefix}>
+    <div className={classNames(defaultPrefix, className)} style={style}>
       <StaticListPicker
         value={value}
         onChange={handleChange}
@@ -107,6 +115,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
         isSelection={isSelection}
         model={model}
         disabled={disabled}
+        empty={empty}
         {...otherProps}
       >
         {children}

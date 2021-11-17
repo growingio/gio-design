@@ -1,5 +1,5 @@
 @import '../../stylesheet/variables/index.less';
-
+@import '~@gio-design/utils/lib/less/mixins.less';
 @list-picker-prefix-cls: ~'@{component-prefix}-list-picker--new';
 @selection-prefix-cls: ~'gio-list-new--selection';
 @list-prefix-cls: ~'gio-list-new';
@@ -21,13 +21,13 @@
     max-height: 360px;
     // margin-bottom: 8px;
     padding: 0;
-    overflow-y: auto;
+    .scrollbar();
   }
   & > .@{list-prefix-cls} {
     height: auto;
     max-height: 360px;
     // margin-bottom: 8px;
     padding: 0;
-    overflow-y: auto;
+    .scrollbar();
   }
 }
