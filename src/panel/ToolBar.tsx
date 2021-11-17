@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import { ToolBarProps } from './interfaces';
-import { usePrefixCls } from '..';
 
 const ToolBar: React.FC<ToolBarProps> = (props) => {
   const { children, className, style = {}, float = 'left' } = props;

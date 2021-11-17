@@ -17,12 +17,12 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '骨架图' })}</Subheading>
       <Canvas>
-        <Story id="components-skeleton--default" />
+        <Story id="upgraded-skeleton--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '占位图' })}</Subheading>
       <Canvas>
-        <Story id="components-skeleton--image" />
+        <Story id="upgraded-skeleton--image" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

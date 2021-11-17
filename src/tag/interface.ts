@@ -7,7 +7,7 @@ export interface TagProps {
   /**
    * 状态
    */
-  status?: 'default' | 'draft'| 'info'|'success' | 'warning' | 'error';
+  status?: 'default' | 'draft' | 'info' | 'success' | 'warning' | 'error';
   /**
    * 大小
    * @default 'large'
@@ -23,11 +23,6 @@ export interface TagProps {
    * @default false
    */
   disabled?: boolean;
-  /**
-   * 关闭图标是否由 hover 触发
-   * @default false
-   */
-  persistCloseIcon?: boolean;
   /**
    * 点击关闭图标的回调
    */

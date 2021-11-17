@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { difference } from 'lodash';
-import Typography from '../legacy/typograhy';
+import { useControlledState, usePrefixCls } from '@gio-design/utils';
+import Typography from '../typograhy';
 import Tabs, { Tab } from '../tabs';
 import Divider from '../divider';
 import { PanelProps, TabPaneProps } from './interfaces';
 import TabPanel from './TabPanel';
-import { useControlledState, usePrefixCls } from '..';
 
 const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (props, ref) => {
   const {

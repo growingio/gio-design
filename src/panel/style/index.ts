@@ -6,4 +6,4 @@ import './batchActions.less';
 import '../../button/style';
 import '../../table/style';
 import '../../tabs/style';
-import '../../legacy/typograhy/style';
+import '../../typograhy/style';

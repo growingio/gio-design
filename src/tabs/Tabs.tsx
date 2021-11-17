@@ -36,6 +36,7 @@ const Tabs: React.ForwardRefRenderFunction<
       onClick={onClick}
       prefix={tab.props.prefix}
       active={activeValue === tab.props.value}
+      disabled={tab.props.disabled}
     >
       {tab.props.label}
     </TabButton>

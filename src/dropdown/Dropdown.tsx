@@ -16,6 +16,7 @@ export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.Forwa
     onVisibleChange,
     content,
     overlayClassName,
+    disabled,
     ...rest
   } = props;
 
@@ -57,6 +58,7 @@ export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.Forwa
 
   return (
     <Popover
+      disabled={disabled}
       trigger={trigger}
       arrowPointAtCenter
       placement={placement}

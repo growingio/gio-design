@@ -2,7 +2,7 @@ import React from 'react';
 import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
 import { difference } from 'lodash';
-import { TabNavProps } from '../legacy/tab-nav';
+import { TabsProps } from '../tabs';
 import { TabPaneProps } from './interfaces';
 import ToolBar from './ToolBar';
 
@@ -13,7 +13,7 @@ const TabPanel: React.FC<TabPaneProps> = (props) => {
 
   const toolBars = tabChildren.filter(
     (toolBar) => React.isValidElement(toolBar) && toolBar.type === ToolBar
-  ) as React.ReactElement<TabNavProps>[];
+  ) as React.ReactElement<TabsProps>[];
 
   const otherChildren = difference(tabChildren, toolBars);
 

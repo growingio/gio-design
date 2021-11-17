@@ -210,7 +210,7 @@ const Popover = (props: PopoverProps) => {
   if (supportRef(children)) {
     const cloneProps = {
       ...divRoles,
-      className: classNames((children as React.ReactElement)?.props?.className, overlayClassName),
+      className: classNames((children as React.ReactElement)?.props?.className),
       style: { ...(children as React.ReactElement)?.props?.style, ...overlayInnerStyle },
     };
 
