@@ -49,7 +49,7 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
     return (
       <div className={`${prefixCls}-ring`}>
         {[1, 2, 3, 4].map((item) => (
-          <div className={`${prefixCls}-ring-line ${prefixCls}-ring-line-${item}`}>
+          <div key={item} className={`${prefixCls}-ring-line ${prefixCls}-ring-line-${item}`}>
             <div className={`${prefixCls}-ring-line-cog`}>
               <div className={`${prefixCls}-ring-line-cog-inner ${prefixCls}-ring-line-cog-inner-left`} />
             </div>
