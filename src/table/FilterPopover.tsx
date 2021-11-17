@@ -43,7 +43,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
   return (
     <Popover
       getContainer={(triggerNode) =>
-        (!isFunction(tableRef) && tableRef?.current) || triggerNode.parentElement || document.body
+        (!isFunction(tableRef) && tableRef?.current) || triggerNode?.parentElement || document.body
       }
       visible={visible}
       onVisibleChange={(_visible: boolean) => {
