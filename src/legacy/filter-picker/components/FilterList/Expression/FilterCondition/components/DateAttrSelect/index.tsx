@@ -7,7 +7,7 @@ import RelativeBetween from './components/RelativeBetween';
 import IncludeToday from './components/IncludeToday';
 import DatePicker from '../../../../../../../../date-picker'; // new
 import DateRangePicker from '../../../../../../../../date-range-picker'; // new
-import { NullableDate } from '../../../../../../../../date-range-picker/interfaces';
+import { NullableDate } from '../../../../../../../../date-range-picker/interfaces'; // new
 
 interface DateAttrSelectProps {
   attrSelect: string;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Input from '../../../../../../../../../input';
-import Select from '../../../../../../../../../select';
+import Input from '../../../../../../../../../input'; // new
+import Select from '../../../../../../../../../select'; // new
 
 interface RelativeCurrentProps {
   onChange: (v: string) => void;

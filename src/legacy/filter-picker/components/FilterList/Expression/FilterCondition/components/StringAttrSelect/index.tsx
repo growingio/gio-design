@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Input from '../../../../../../../../input';
+import Input from '../../../../../../../../input'; // new
 import List from '../../../../../../../list-pro';
-import Loading from '../../../../../../../../loading';
+import Loading from '../../../../../../../../loading'; // new
 import { attributeValue } from '../../interfaces';
 import InOrNotIn from './InOrNotIn';
 
