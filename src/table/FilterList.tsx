@@ -18,7 +18,15 @@ const FilterList = ({ prefixCls, value, onChange, dataSource }: FilterListProps)
     value={value?.toString()}
     model="multiple"
     onChange={(changedKeys) => {
-      onChange(Array.isArray(changedKeys) ? changedKeys : [changedKeys]);
+      if (!changedKeys) {
+        onChange([]);
+        return;
+      }
+      if (Array.isArray(changedKeys)) {
+        onChange(changedKeys);
+        return;
+      }
+      onChange([changedKeys]);
     }}
   >
     {dataSource.map((item) => (

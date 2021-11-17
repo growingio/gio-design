@@ -29,7 +29,11 @@ export interface TabProps {
    */
   label?: React.ReactNode;
   /**
-   选项卡头显示文字
+   classname 前缀
    */
   prefix?: React.ReactNode;
+  /**
+   不可选状态
+   */
+  disabled?: boolean;
 }

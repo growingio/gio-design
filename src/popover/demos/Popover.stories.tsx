@@ -243,3 +243,50 @@ export const Portal = PortalTemplate.bind({});
 Portal.args = {
   content,
 };
+
+const SupportRefTemplate: Story<PopoverProps> = (args) => (
+  <Popover {...args} strategy="fixed">
+    Only String
+  </Popover>
+);
+
+export const SupportRef = SupportRefTemplate.bind({});
+SupportRef.args = {
+  content,
+};
+
+const NotSupportRefTemplate: Story<PopoverProps> = (args) => {
+  const onClick = () => {
+    console.log('Click trigger button!');
+  };
+  return (
+    <>
+      <span>margin: 30px</span>
+      <br />
+      <div style={{ border: '1px solid #3c3c3c', borderRadius: '4px', display: 'inline-block' }}>
+        <Popover {...args} strategy="fixed">
+          <Button style={{ margin: 30 }} onClick={onClick}>
+            Button Trigger
+          </Button>
+        </Popover>
+      </div>
+    </>
+  );
+};
+
+export const NotSupportRef = NotSupportRefTemplate.bind({});
+NotSupportRef.args = {
+  trigger: 'click',
+  content,
+};
+
+const DisabledTemplate: Story<PopoverProps> = (args) => (
+  <Popover {...args} strategy="fixed" disabled>
+    Disabled
+  </Popover>
+);
+
+export const Disabled = DisabledTemplate.bind({});
+Disabled.args = {
+  content,
+};

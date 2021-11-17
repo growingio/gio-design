@@ -20,6 +20,11 @@ export interface BaseInputProps
    * input 的后缀图标
    */
   suffix?: React.ReactNode;
+
+  /**
+   * 当点击回车键时调用
+   */
+  onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export interface InputProps extends Omit<BaseInputProps, 'onChange'> {
@@ -27,6 +32,7 @@ export interface InputProps extends Omit<BaseInputProps, 'onChange'> {
    * 修改值时触发的回调函数
    */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 
   allowClear?: boolean;
 
@@ -136,6 +142,7 @@ export interface InputButtonProps
    * 当Input Button的值修改后的方法
    */
   onInputChange?: (value: string) => void;
+
   /**
    * 点击onClear回调
    *

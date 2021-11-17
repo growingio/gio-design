@@ -1,11 +1,12 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import Button from '../../legacy/button';
+import Button from '../../button';
 import Docs from './ToastPage';
 import Toast from '../index';
 import { ArgsProps } from '../interface';
 import '../style';
+import { Link } from '../..';
 
 export default {
   title: 'upgraded/Toast',
@@ -24,13 +25,13 @@ export default {
 
 export const Default: Story<ArgsProps> = (args) => {
   const handleSuccess = () => {
-    Toast.success('操作成功！');
+    Toast.success(args);
   };
   const handleFail = () => {
-    Toast.error('操作失败！');
+    Toast.error(args);
   };
   const handleWarn = () => {
-    Toast.warning('警告文案！');
+    Toast.warning(args);
   };
   const handleInfo = () => {
     Toast.info(args);
@@ -92,9 +93,9 @@ NextStep.args = {
   content: (
     <span>
       文案
-      <a style={{ color: '#3867f4', textDecoration: 'underline' }} href="https://www.growingio.com">
+      <Link style={{ color: '#3867f4', marginLeft: '8px' }} href="https://www.growingio.com">
         去看看
-      </a>
+      </Link>
     </span>
   ),
   duration: 5,

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { ConfigContext } from '../../legacy/config-provider';
+import { ConfigContext } from '../../config-provider';
 
 const usePrefixCls = (subPrefixCls?: string, customRootPrefixCls?: string): string => {
   const { rootPrefixCls, getPrefixCls } = useContext(ConfigContext);

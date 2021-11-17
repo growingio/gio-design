@@ -48,7 +48,7 @@ export interface PopoverProps {
   /**
    被包裹的元素
    */
-  children: React.ReactElement;
+  children: React.ReactNode;
 
   placement?: Placement;
   trigger?: TriggerAction | TriggerAction[];
@@ -59,8 +59,16 @@ export interface PopoverProps {
    * @default false
    */
   allowArrow?: boolean;
+  /**
+   * 鼠标时候可以放入到气泡中
+   * @default false
+   */
   enterable?: boolean;
-
+  /**
+   * 是否禁用popover
+   * @default undefined
+   */
+  disabled?: boolean;
   /**
    * 卡片类名
    */

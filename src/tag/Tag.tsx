@@ -4,8 +4,6 @@ import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
 import { TagProps } from './interface';
 
-export const isToggleClose = (closable = false, persistCloseIcon = false): boolean => closable && !persistCloseIcon;
-
 const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: TagProps) => {
   const {
     children,
@@ -16,7 +14,6 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
     onClose,
     onClick,
     disabled,
-    persistCloseIcon = true,
     className,
     customizePrefixCls,
     style,
@@ -31,7 +28,6 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
         classnames({ [`${prefix}-type-${type}`]: type }),
         classnames({ [`${prefix}-status-${status}`]: status }),
         classnames({ [`${prefix}-closable`]: closable }),
-        classnames({ [`${prefix}-closable-toggle`]: isToggleClose(closable, persistCloseIcon) }),
         classnames({ [`${prefix}-closable-disabled`]: disabled }),
         className
       )}

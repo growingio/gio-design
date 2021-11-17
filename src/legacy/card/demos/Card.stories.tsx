@@ -109,7 +109,6 @@ Footer.args = {
           ]}
         />
       </Card.Meta>
-      <Card.Meta />
     </>
   ),
 };

@@ -83,5 +83,4 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
     </Popover>
   );
 };
-
 export default DatePicker;

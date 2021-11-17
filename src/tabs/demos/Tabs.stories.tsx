@@ -41,6 +41,10 @@ const renderItems = () =>
   templateIconArr.map((item, index) => <Tab label={`Option${index}`} value={index} prefix={item} />);
 const noTabItem = () => templateIconArr.map((item, index) => <Tab value={index} prefix={item} />);
 const noPrefixItems = () => templateIconArr.map((item, index) => <Tab label={`Option${index}`} value={index} />);
+const disabledItems = () =>
+  templateIconArr.map((item, index) => (
+    <Tab label={`Option${index}`} value={index} disabled={!Math.round(Math.random())} />
+  ));
 const haveChildrenItems = () =>
   templateIconArr.map((item, index) => (
     <Tab label={`Option${index}`} value={index}>
@@ -50,6 +54,9 @@ const haveChildrenItems = () =>
           textAlign: 'center',
           height: 150,
           fontSize: 100,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         {`Option${index}`}
@@ -69,6 +76,11 @@ const noTabTemplate: Story<TabProps> = (args) => (
 const noPrefixTemplate: Story<TabProps> = (args) => (
   <div>
     <Tabs {...args}>{noPrefixItems()}</Tabs>
+  </div>
+);
+const DisabledTemplate: Story<TabProps> = (args) => (
+  <div>
+    <Tabs {...args}>{disabledItems()}</Tabs>
   </div>
 );
 const childrenTemplate: Story<TabProps> = (args) => (
@@ -157,13 +169,24 @@ const DemoTemplate: Story<TabProps> = (args) => (
         </td>
       </tr>
       <tr>
+        <td>disabled</td>
+        <td>不可选</td>
+        <td>
+          <Tabs {...args}>
+            {templateIconArr.map((item, index) => (
+              <Tab label={`Option${index}`} value={index} disabled={!Math.round(Math.random())} />
+            ))}
+          </Tabs>
+        </td>
+      </tr>
+      <tr>
         <td>children</td>
         <td>有内容联动</td>
         <td>
           <Tabs
             {...args}
             onChange={() => {
-              console.log(1);
+              action('onchange');
             }}
           >
             {templateIconArr.map((item, index) => (
@@ -213,9 +236,16 @@ noPrefix.args = {
   defaultValue: 1,
   onChange: action('onchange'),
 };
+// disable
+export const Disabled = DisabledTemplate.bind({});
+noPrefix.args = {
+  className: 'cc',
+  defaultValue: 1,
+  onChange: action('onchange'),
+};
 // have children
-export const haveChildren = childrenTemplate.bind({});
-haveChildren.args = {
+export const HaveChildren = childrenTemplate.bind({});
+HaveChildren.args = {
   className: 'cc',
   defaultValue: 1,
   onChange: action('onchange'),

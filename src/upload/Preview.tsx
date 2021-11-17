@@ -4,8 +4,8 @@ import React, { useContext } from 'react';
 import classnames from 'classnames';
 import { CheckCircleFilled, CloseCircleFilled } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
-import Button from '../legacy/button';
-import Text from '../text';
+import Button from '../button';
+import Text from '../typograhy/text';
 import { STATUS_SUCCESS, STATUS_ERROR, IPreviewProps, IUploadFile } from './interface';
 import { UploadPrefixClsContext } from './Upload';
 import { CsvSVG, DocxSVG, PdfSVG, XlsxSVG, FolderSVG, TxtSVG } from './svg';
@@ -68,8 +68,8 @@ export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file, onReSelect, 
           {file.status === STATUS_ERROR && <CloseCircleFilled color="#ec134b" size="14px" />}
         </div>
         <div onClick={(e: any) => e.stopPropagation()}>
-          <Text width={300} style={{ zIndex: 1 }} className="drag-file-preview-text">
-            {message}
+          <Text style={{ zIndex: 1 }} className="drag-file-preview-text">
+            {message as string}
           </Text>
         </div>
         <div>
