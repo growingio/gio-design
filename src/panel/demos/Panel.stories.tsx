@@ -104,7 +104,7 @@ const SinglePanel: Story<PanelProps> = (args) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
 
   return (
-    <Panel {...args} style={{ height: 'calc(100vh - 40px)' }}>
+    <Panel {...args}>
       <TabPanel key="1" name="成员">
         <Table
           dataSource={dataSource1}
