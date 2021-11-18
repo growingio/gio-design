@@ -84,7 +84,7 @@ const Popover = (props: PopoverProps) => {
   const onDocumentClick = useCallback(
     (event: MouseEvent) => {
       const { target } = event;
-      if (!referenceElement.current?.contains(target as Node) && !popperElement.current?.contains(target as Node)) {
+      if (!referenceElement?.current?.contains(target as Node) && !popperElement?.current?.contains(target as Node)) {
         updateVisible(false);
       }
     },
