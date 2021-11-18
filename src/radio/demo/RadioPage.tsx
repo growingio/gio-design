@@ -43,6 +43,10 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-radio--group" />
       </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'JSX' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-radio--jsx" />
+      </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Radio} />
     </>

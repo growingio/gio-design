@@ -41,6 +41,10 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-switch--disabled" />
       </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'JSX' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-switch--jsx" />
+      </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Switch} />
     </>

@@ -57,6 +57,7 @@ const InnerRadio: React.ForwardRefRenderFunction<HTMLInputElement, IRadioProps> 
         color={color}
         disabled={restProps.disabled}
         defaultChecked={defaultChecked}
+        {...radioProps}
       />
       <span>{children}</span>
     </label>
