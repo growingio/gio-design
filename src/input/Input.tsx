@@ -14,6 +14,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     placeholder,
     onPressEnter,
     onKeyPress,
+    style,
     ...rest
   } = props;
 
@@ -21,20 +22,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   const inputClass = useMemo(
     () =>
-      classNames(className, prefixCls, {
-        [`${prefixCls}__disabled`]: disabled,
-        [`${prefixCls}__small`]: size === 'small',
-      }),
+      classNames(
+        className,
+        {
+          [`${prefixCls}__hover`]: !disabled,
+          [`${prefixCls}__disabled`]: disabled,
+          [`${prefixCls}__small`]: size === 'small',
+        },
+        prefixCls
+      ),
     [prefixCls, className, size, disabled]
-  );
-
-  const wrapper = useMemo(
-    () =>
-      classNames({
-        [`${prefixCls}__suffix-wrapper`]: !!customizeSuffix,
-        [`${prefixCls}__prefix-wrapper`]: !!customizePrefix,
-      }),
-    [prefixCls, customizeSuffix, customizePrefix]
   );
 
   const handleKeyPress = useCallback(
@@ -72,25 +69,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     () => (customizeSuffix ? <div className={suffixCls}>{customizeSuffix}</div> : null),
     [suffixCls, customizeSuffix]
   );
-  const input = (
-    <input
-      {...rest}
-      disabled={disabled}
-      className={inputClass}
-      onKeyPress={handleKeyPress}
-      placeholder={placeholder}
-      ref={ref}
-    />
-  );
-
-  if (!suffix && !prefix) {
-    return input;
-  }
 
   return (
-    <span className={wrapper}>
+    <span className={inputClass} {...rest} style={style}>
       {prefix}
-      {input}
+      <input {...rest} disabled={disabled} onKeyPress={handleKeyPress} placeholder={placeholder} ref={ref} />
       {suffix}
     </span>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
-import { PlusOutlined, FilterOutlined } from '@gio-design/icons';
+import { PlusOutlined, FilterOutlined, EventsPresetOutlined } from '@gio-design/icons';
 import { InputProps, InputButtonProps } from '../interface';
 import Input from '../Input';
 import '../style';
@@ -248,17 +248,17 @@ const InputButtonTemplate: Story<InputButtonProps> = (args) => (
           <InputButton {...args} />
         </td>
         <td>
-          <InputButton {...args} hidePrefix />
+          <InputButton {...args} prefix="" />
         </td>
       </tr>
       <tr>
         <td>Removable</td>
         <td>是否可以清除选中内容</td>
         <td>
-          <InputButton {...args} value="浏览商品详情页" />
+          <InputButton {...args} value="浏览商品详情页" allowClear />
         </td>
         <td>
-          <InputButton {...args} value="浏览商品详情页" allowClear={false} />
+          <InputButton {...args} value="浏览商品详情页" />
         </td>
       </tr>
     </table>
@@ -268,6 +268,7 @@ const InputButtonTemplate: Story<InputButtonProps> = (args) => (
 export const InputButtonDemo = InputButtonTemplate.bind({});
 InputButtonDemo.args = {
   onChange: () => action('onChange'),
+  prefix: <EventsPresetOutlined />,
   placeholder: '请选择事件',
 };
 
@@ -275,6 +276,7 @@ const InputButtonDefaultTemplate = () => <InputButton />;
 export const InputButtonDefault = InputButtonDefaultTemplate.bind({});
 InputButtonDefault.args = {
   allowClear: false,
+  prefix: <EventsPresetOutlined />,
   onChange: () => action('onChange'),
 };
 
@@ -283,6 +285,7 @@ export const InputButtonHidePrefix = HidePrefixTemplate.bind({});
 InputButtonHidePrefix.args = {
   hidePrefix: true,
   onChange: () => action('onChange'),
+  prefix: <EventsPresetOutlined />,
   placeholder: '请选择事件',
 };
 const customPrefixTemplate = (args: InputButtonProps) => (
@@ -304,11 +307,27 @@ InputButtonMaxWidth.args = {};
 const InputButtonActiveTemplate = (args: InputButtonProps) => <InputButton {...args} value="请选择事件" active />;
 
 export const InputButtonActive = InputButtonActiveTemplate.bind({});
-InputButtonActive.args = {};
+InputButtonActive.args = {
+  prefix: <EventsPresetOutlined />,
+  allowClear: true,
+};
 
 const InputButtonCustomWidthExample = (args: InputButtonProps) => (
   <InputButton {...args} value="请选择事件" style={{ width: 300 }} />
 );
 
 export const InputButtonCustomWidth = InputButtonCustomWidthExample.bind({});
-InputButtonCustomWidth.args = {};
+InputButtonCustomWidth.args = {
+  prefix: <EventsPresetOutlined />,
+  allowClear: true,
+};
+
+const InputButtonWidthExample = (args: InputButtonProps) => (
+  <InputButton {...args} value="请选择事件" style={{ width: '100%' }} />
+);
+
+export const InputButtonWidth = InputButtonWidthExample.bind({});
+InputButtonWidth.args = {
+  prefix: <EventsPresetOutlined />,
+};
+InputButtonWidth.storyName = 'Input Button Width 100%';

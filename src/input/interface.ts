@@ -100,13 +100,10 @@ export interface InputButtonProps
 
   /**
    * 是否可以被清空
+   * @default false
    */
   allowClear?: boolean;
 
-  /**
-   * 是否隐藏前缀的icon，默认是false
-   */
-  hidePrefix?: boolean;
   /**
    * 自定义前缀icon
    */

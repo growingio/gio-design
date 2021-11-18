@@ -5,24 +5,38 @@
 @icon-prefix-cls: ~'@{component-prefix}-icon';
 
 .@{input-prefix-cls} {
+  display: inline-flex;
   box-sizing: border-box;
   height: 36px;
-  padding: 6px 12px;
-  color: @gray-5;
-  font-family+: @font-family-primary;
-  font-family+: @font-family-number;
-  text-align: left;
+  padding: 0 8px;
   border: 1px solid @gray-2;
   border-radius: @radius-border-small;
   .text-body1();
 
+  & > input {
+    width: 100%;
+    padding: 0;
+    background-color: #00000000;
+    border: none;
+    text-align: left;
+    overflow: hidden;
+    color: @gray-5;
+    font-family+: @font-family-primary;
+    font-family+: @font-family-number;
+    &:not([disabled]):hover,
+    &:not([disabled]):focus {
+      border: none;
+      outline: none;
+    }
+    &:not([disabled])::placeholder {
+      color: @gray-2;
+      .text-body1();
+    }
+  }
+
   &::placeholder {
     color: @gray-2;
     .text-body1();
-  }
-
-  &:not([disabled]):hover {
-    border: 1px solid @blue-3;
   }
 
   &:not([disabled]):focus {
@@ -30,8 +44,13 @@
     outline: none;
   }
 
-  &:disabled {
-    color: @gray-3;
+  &__hover {
+    &:not([disabled]):hover {
+      border: 1px solid @blue-3;
+    }
+  }
+
+  &__disabled {
     background-color: @gray-1;
     border: 1px solid @gray-2;
     cursor: not-allowed;
@@ -39,32 +58,27 @@
       background-color: @gray-1;
       border: 1px solid @gray-2;
     }
+    & > input {
+      color: @gray-3;
+      cursor: not-allowed;
+    }
+    &__suffix,
+    &__prefix {
+      cursor: not-allowed;
+    }
   }
   &__small {
     height: 30px;
-    padding: 3px 12px;
   }
   &__error {
     border: 1px solid @red-3;
   }
 
   &__suffix {
-    position: absolute;
-    right: 0;
-    display: flex;
+    margin: 0 4px;
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
-    padding-right: 12px;
-
-    &-wrapper {
-      position: relative;
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: center;
-
-      .@{input-prefix-cls} {
-        padding-right: 36px;
-      }
-    }
 
     .@{icon-prefix-cls} {
       cursor: pointer;
@@ -77,21 +91,10 @@
   }
 
   &__prefix {
-    position: absolute;
-    left: 0;
-    display: flex;
+    margin: 0 4px;
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
-    padding-left: 12px;
-
-    &-wrapper {
-      position: relative;
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: center;
-      .@{input-prefix-cls} {
-        padding-left: 34px;
-      }
-    }
 
     .@{icon-prefix-cls} {
       cursor: pointer;
@@ -108,4 +111,11 @@
   height: auto;
   min-height: 36px;
   resize: vertical;
+  color: @gray-5;
+  font-family+: @font-family-primary;
+  font-family+: @font-family-number;
+  .text-body1();
+  &:disabled {
+    background-color: @gray-1;
+  }
 }
