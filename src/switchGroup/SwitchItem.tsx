@@ -42,7 +42,6 @@ const InnerSwitchItem: React.ForwardRefRenderFunction<HTMLInputElement, ISwitchP
         className={classes}
         value={restProps.value}
         checked={restProps.checked}
-        onChange={handleChange}
         style={style}
         disabled={restProps.disabled}
         defaultChecked={defaultChecked}
