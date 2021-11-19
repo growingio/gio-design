@@ -1,4 +1,4 @@
-import { ListProps, OptionProps as ListOptionProps } from '../list';
+import { ListProps, OptionProps } from '../list';
 import { InputButtonProps } from '../input/interface';
 import { Placement } from '../popover/interface';
 // 无group 无 multiple
@@ -7,7 +7,7 @@ export interface SelectProps extends Omit<ListProps, 'isMultiple' | 'onChange' |
   /**
    * dataSource 数据源
    */
-  options?: ListOptionProps[];
+  options?: OptionProps[];
   className?: string;
   style?: React.CSSProperties;
   size?: 'small' | 'normal';
@@ -17,7 +17,7 @@ export interface SelectProps extends Omit<ListProps, 'isMultiple' | 'onChange' |
    * 触发器参数
    */
   triggerProps?: Omit<TriggerProps, 'value' | 'size' | 'prefixCls' | 'onInputChange' | 'disabled'>;
-  onChange?: (val?: string, options?: ListOptionProps) => void;
+  onChange?: (val?: string, options?: OptionProps) => void;
   /**
    * 卡片类名
    */
@@ -26,6 +26,11 @@ export interface SelectProps extends Omit<ListProps, 'isMultiple' | 'onChange' |
    * 卡片样式
    */
   overlayStyle?: React.CSSProperties;
+  /**
+   * contentClassName?:string;
+   */
+  contentClassName?: string;
+  contentStyle?: React.CSSProperties;
   /**
    * popover 位置
    */
@@ -36,5 +41,5 @@ export interface SelectProps extends Omit<ListProps, 'isMultiple' | 'onChange' |
 }
 
 export interface TriggerProps extends Omit<InputButtonProps, 'value' | 'active'> {
-  value?: string;
+  value?: string | React.ReactNode;
 }

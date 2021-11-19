@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { DOMAttributes } from 'react';
-import { isEmpty, isString } from 'lodash';
+import { isEmpty, isString, noop } from 'lodash';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { PREFIX } from '../constants';
 import { BaseItemProps } from '../interfance';
@@ -8,7 +8,7 @@ import Tooltip from '../../tooltip';
 import WithRef from '../../utils/withRef';
 
 const defaultContentRender = (element: React.ReactNode | Element) => element;
-
+const renderIcon = (className: string, prefix: React.ReactNode) => <span className={className}>{prefix}</span>;
 const BaseItem: React.ForwardRefRenderFunction<
   HTMLLIElement,
   BaseItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>
@@ -32,12 +32,13 @@ const BaseItem: React.ForwardRefRenderFunction<
   const prefixCls = `${usePrefixCls(PREFIX)}--item`;
 
   const content = children ?? label;
-  const prefixIcon = prefix ? <span className={`${prefixCls}-prefix-icon`}>{prefix}</span> : undefined;
-  const suffixIcon = suffix ? <span className={`${prefixCls}-suffix-icon`}>{suffix}</span> : undefined;
+  const prefixIcon = prefix ? renderIcon(`${prefixCls}-prefix-icon`, prefix) : undefined;
+  const suffixIcon = suffix ? renderIcon(`${prefixCls}-suffix-icon`, suffix) : undefined;
+
   const contentElement = isString(content) ? (
     <>
       {prefixIcon}
-      <span className={classNames(`${prefixCls}--text`, `${prefixCls}--ellipsis`)} title={content}>
+      <span className={classNames(`${prefixCls}--text`, `${prefixCls}--ellipsis`)} title={content?.toString()}>
         {content}
       </span>
       {suffixIcon}
@@ -46,7 +47,12 @@ const BaseItem: React.ForwardRefRenderFunction<
     <>{content}</>
   );
   return (
-    <Tooltip visible={disabled && !isEmpty(disabledTooltip)} title={disabledTooltip}>
+    <Tooltip
+      disabled={disabled && !isEmpty(disabledTooltip)}
+      strategy="fixed"
+      getContainer={() => document.body}
+      title={disabledTooltip}
+    >
       <li
         style={style}
         className={classNames(
@@ -62,7 +68,7 @@ const BaseItem: React.ForwardRefRenderFunction<
         aria-hidden="true"
         ref={ref}
         {...rest}
-        onClick={() => onClick?.(value)}
+        onClick={() => (!disabled ? onClick?.(value, { label: content as string, value }) : noop)}
       >
         {contentRender?.(contentElement)}
       </li>

@@ -1,77 +1,61 @@
-import { isArray, isEmpty, isNil, isString } from 'lodash';
-import { useCallback, useRef } from 'react';
-import { CascaderItemProps } from '.';
+import { isEmpty } from 'lodash';
+import React from 'react';
 import { ModelType, OptionProps } from './interfance';
 
 export const isMultipe = (model: ModelType) => model === 'multiple';
 export const isCascader = (model: ModelType) => model === 'cascader';
 
-const selectedStatus = (value?: string, values?: string | string[]) => {
-  if (!isNil(value)) {
-    return isArray(values) ? (values as string[])?.indexOf(value) !== -1 : values === value;
+const deepChildren = (children?: OptionProps[]): any[] => {
+  if (children) {
+    return [...children, ...deepChildren(children?.[0]?.childrens as OptionProps[])];
   }
-  return undefined;
+  return [];
 };
-const initValue = (isMultiple: boolean, value?: string | string[]) => {
-  if (isMultiple) {
-    if (isNil(value)) {
-      return [];
+const generateValue = (child?: OptionProps[]) =>
+  child?.reduce((prev, curr) => (curr.value ? [...prev, curr.value] : prev), []).join('.');
+export const generateString = (value?: string, children?: OptionProps[]) => {
+  if (!isEmpty(children)) {
+    return `${generateValue(deepChildren(children))}.${value}`;
+  }
+  return value ?? '';
+};
+
+// ReactNode To Options
+export function convertNodeToOption(node: React.ReactElement): OptionProps {
+  const {
+    props: { value, children, label, ...restProps },
+  } = node as React.ReactElement & { props: OptionProps };
+  return { value, label: label ?? children, ...restProps };
+}
+
+export function convertChildrenToData(nodes: React.ReactNode): OptionProps[] {
+  const nodeOptions: OptionProps[] = [];
+  React.Children.forEach(nodes, (node: React.ReactElement) => {
+    if (!React.isValidElement(node)) {
+      return;
     }
-    if (isString(value)) {
-      return [value];
-    }
-    return value;
-  }
-  if (isNil(value)) {
-    return '';
-  }
-  return value;
-};
+    nodeOptions.push(convertNodeToOption(node));
+  });
+  return nodeOptions;
+}
 
-const optionSet = (map: Map<string, OptionProps>, key: string, value: OptionProps) => map.set(key, value);
-
-export const useCacheOptions = () => {
-  const cacheOptions = useRef<Map<string, OptionProps>>(new Map());
-  const cacheOptionsMap = cacheOptions.current;
-
-  const setCacheOptions = (options?: OptionProps[] | CascaderItemProps[]) => {
-    options?.forEach((option: OptionProps) => {
-      optionSet(cacheOptionsMap, option.value, option);
-      if (!isEmpty(option?.childrens)) {
-        setCacheOptions(option?.childrens as OptionProps[]);
-      }
-    });
-  };
-  // value to option || options
-  const getOptionByValue = useCallback(
-    (optValue?: string): OptionProps | undefined => {
-      if (!isNil(optValue)) {
-        return cacheOptionsMap.get(optValue);
-      }
-      return undefined;
-    },
-    [cacheOptionsMap]
-  );
-  const getOptionsByValue = (optValue?: string | string[]): OptionProps | OptionProps[] | undefined =>
-    Array.isArray(optValue)
-      ? optValue.reduce((prev: OptionProps[], v) => {
-          const op = getOptionByValue(v);
-          if (op) {
-            prev.push(op);
-          }
-          return prev;
-        }, [] as any)
-      : getOptionByValue(optValue);
-
-  return {
-    setCacheOptions,
-    getOptionByValue,
-    getOptionsByValue,
-    cacheOptionsMap,
-  };
-};
-
-export default {
-  selectedStatus,
-  initValue,
-};
+export const generateSelectParent = (label: string | React.ReactNode, value: string, parent?: OptionProps[]) =>
+  parent
+    ? [
+        {
+          label: parent?.[0]?.label,
+          value: parent?.[0]?.value,
+          childrens: [
+            {
+              label,
+              value,
+            },
+          ],
+        },
+      ]
+    : [
+        {
+          label,
+          value,
+        },
+      ];

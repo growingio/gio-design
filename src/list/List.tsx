@@ -1,15 +1,24 @@
 import classNames from 'classnames';
-import React, { useMemo, useState } from 'react';
-import { difference, indexOf, isArray } from 'lodash';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { difference, indexOf, isArray, isEmpty, isNil } from 'lodash';
 import { OptionProps, ItemProps, ListProps } from './interfance';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { PREFIX } from './constants';
 import Item from './Item';
-import utils, { isCascader, isMultipe, useCacheOptions } from './util';
+import { convertChildrenToData, isCascader, isMultipe } from './util';
 import WithRef from '../utils/withRef';
 import './style';
-import BaseItem from './inner/baseItem';
 import Popover from '../popover';
+import { ListContext } from './context';
+import useValue from './hooks/useValue';
+import useCacheOptions from './hooks/useCacheOptions';
+
+const selectStatus = (value?: string, values?: string | string[]) => {
+  if (!isNil(value)) {
+    return isArray(values) ? (values as string[])?.indexOf(value) !== -1 : values === value;
+  }
+  return undefined;
+};
 
 const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
   isGIOList?: boolean;
@@ -19,7 +28,7 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
     title,
     className,
     style,
-    options: initOptions,
+    options: initOptions = [],
     children,
     disabled = false,
     value: controlledValue,
@@ -27,39 +36,62 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
     collapse: initCollapse = 10,
     prefix,
     suffix,
-    onChange,
-    selectedParent = [],
+    onChange: controlledOnChange,
     showPreview,
     renderItem,
     previewRender,
     previewRenderContainer,
   } = props;
+
   const prefixCls = usePrefixCls(PREFIX);
-  const { setCacheOptions, getOptionsByValue } = useCacheOptions();
-  setCacheOptions(initOptions);
-  // collapse slice
   const [collapse, setCollapse] = useState(initCollapse);
 
-  const selectValue = useMemo(() => utils.initValue(isMultipe(model), controlledValue), [controlledValue, model]);
-  const options = initOptions ?? React.Children.toArray(children);
-  const childrens = options.slice(0, collapse);
+  // value and onChange
+  const { value: contextValue, onChange: contextOnChange, setOptions: contextSetOptions } = useContext(ListContext);
+  const { value, onChange } = useValue(
+    controlledValue,
+    controlledOnChange,
+    contextValue,
+    contextOnChange,
+    isMultipe(model)
+  );
 
-  const handleClick = (val: string) => {
+  const cache = useCacheOptions();
+  const childNodeOptions = convertChildrenToData(children);
+  const mergedOptions = useMemo(() => [...childNodeOptions, ...initOptions], [childNodeOptions, initOptions]);
+
+  const setOptions = useCallback(
+    (options: OptionProps[]) => {
+      cache.setOptions(options);
+      contextSetOptions?.(options);
+    },
+    [contextSetOptions, cache]
+  );
+
+  useEffect(() => {
+    setOptions(mergedOptions);
+  }, [mergedOptions, setOptions]);
+
+  const renderOptions = initOptions?.length ? initOptions : React.Children.toArray(children);
+  console.log('renderOptions', renderOptions);
+  const childrens = renderOptions.slice(0, collapse);
+  const isNeedCollapse = useMemo(() => renderOptions?.length > collapse, [renderOptions, collapse]);
+  const handleClick = (val: string, opt?: OptionProps) => {
     // multiple
-    if (isArray(selectValue)) {
-      const value = indexOf(selectValue, val) !== -1 ? difference(selectValue, [val]) : [...selectValue, val];
-      onChange?.(value, getOptionsByValue(value));
+    if (isArray(value)) {
+      const resultValue = indexOf(value, val) !== -1 ? difference(value, [val]) : [...value, val];
+      onChange?.(resultValue, opt ?? cache.getOptionsByValue(resultValue));
     }
     // cascader
     else if (isCascader(model)) {
-      onChange?.(val, getOptionsByValue(val?.split('.')));
+      onChange?.(val, opt);
     }
     // normal
-    else if (selectValue !== val) {
-      // debugger;
-      onChange?.(val, getOptionsByValue(val));
+    else if (value !== val) {
+      onChange?.(val, opt ?? cache.getOptionsByValue(val));
     }
   };
+
   const renderPreview = (option: OptionProps, content: React.ReactElement) => {
     if (showPreview) {
       return (
@@ -79,22 +111,7 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
     return content;
   };
   const renderChildren = (option: OptionProps) => {
-    if (typeof renderItem === 'function') {
-      const renderedItem = renderItem(option);
-      return (
-        <BaseItem
-          {...option}
-          key={option.value}
-          prefix={prefix?.(option)}
-          suffix={suffix?.(option)}
-          disabled={option?.disabled ?? disabled}
-          selected={utils.selectedStatus(option?.value, selectValue)}
-          onClick={handleClick}
-        >
-          {renderedItem}
-        </BaseItem>
-      );
-    }
+    const renderedItem = renderItem?.(option);
     return (
       <Item
         {...option}
@@ -104,26 +121,29 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
         disabled={option?.disabled ?? disabled}
         isMultiple={isMultipe(model)}
         isCascader={isCascader(model)}
-        selectValue={selectValue}
-        selected={utils.selectedStatus(option?.value, selectValue)}
+        selectValue={value}
+        selected={selectStatus(option?.value, value)}
         onClick={handleClick}
-      />
+      >
+        {renderedItem}
+      </Item>
     );
   };
 
   const renderChildrens = (child: React.ReactNode[] | OptionProps[]) => {
     // options render
-    if (isArray(initOptions)) {
+    if (!isEmpty(initOptions)) {
       return (child as OptionProps[])?.map((option: OptionProps) => renderPreview(option, renderChildren(option)));
     }
     // childrens render
-    return (child as React.ReactNode[]).map(
+    return (child as React.ReactNode[])?.map(
       (node: React.ReactElement<ItemProps & { isMultiple: boolean; isCascader: boolean }>) => {
         const {
           props: { disabled: itemDisabled, prefix: itemPrefix, suffix: itemSuffix, onClick, ...rest },
         } = node;
 
         const item = { label: node?.props?.label, value: node?.props?.value } as OptionProps;
+        console.log('item', item);
         return React.cloneElement(node, {
           ...rest,
           disabled: itemDisabled ?? disabled,
@@ -131,37 +151,38 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
           suffix: itemSuffix ?? suffix?.(item),
           isMultiple: isMultipe(model),
           isCascader: isCascader(model),
-          selectedParent,
-          selectValue,
-          selected: utils.selectedStatus(item.value, selectValue),
-          onClick: (value: string) => {
-            handleClick(value);
-            onClick?.(value);
+          selectValue: value,
+          selected: selectStatus(item.value, value),
+          onClick: (val: string, opt: OptionProps) => {
+            handleClick(val);
+            onClick?.(val, opt);
           },
         });
       }
     );
   };
 
-  const renderExpandedItem = (length: number) => {
-    if (length > collapse) {
+  const renderExpandedItem = (needCollapse = false) => {
+    if (needCollapse) {
       return (
         <Item
           disabled={disabled}
           key={`${prefixCls}-collapse`}
           value={`${prefixCls}-collapse`}
           onClick={() => setCollapse(Infinity)}
-        >{`展开全部(${length - collapse})`}</Item>
+        >{`展开全部(${renderOptions?.length ?? 0})`}</Item>
       );
     }
     return null;
   };
 
   return (
-    <div className={classNames(prefixCls, className)} style={style} ref={ref} id={id} title={title}>
-      {renderChildrens(childrens)}
-      {renderExpandedItem(options?.length)}
-    </div>
+    <ListContext.Provider value={{ value, onChange, setOptions }}>
+      <div className={classNames(prefixCls, className)} style={style} ref={ref} id={id} title={title}>
+        {renderChildrens(childrens)}
+        {renderExpandedItem(isNeedCollapse)}
+      </div>
+    </ListContext.Provider>
   );
 };
 List.isGIOList = true;

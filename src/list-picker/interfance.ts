@@ -1,10 +1,10 @@
 import { InputButtonProps } from '../input';
 // import { OptionProps as CascaderOptionProps } from '../cascader/interfance';
-import { OptionProps as ListOptionProps } from '../list/interfance';
+import { OptionProps } from '../list/interfance';
 import { Placement, TriggerAction } from '../popover/interface';
 import { ListProps } from '../list';
 
-export interface ListPickerProps extends Omit<ListProps, 'title' | 'id'> {
+export interface ListPickerProps extends Pick<ListProps, 'model' | 'disabled' | 'className' | 'style'> {
   size?: 'small' | 'normal';
   /**
    * 触发方式
@@ -12,6 +12,7 @@ export interface ListPickerProps extends Omit<ListProps, 'title' | 'id'> {
   trigger?: TriggerAction | TriggerAction[];
   value?: string | string[];
   defaultValue?: string | string[];
+  onChange?: (value?: string | string[], options?: OptionProps | OptionProps[]) => void;
   prefixCls?: string;
   placeholder?: string;
   /**
@@ -38,25 +39,14 @@ export interface ListPickerProps extends Omit<ListProps, 'title' | 'id'> {
   onConfim?: (value: string | string[] | undefined, options?: OptionProps | OptionProps[]) => void;
   placement?: Placement;
   overlayStyle?: React.CSSProperties;
-  empty?: () => React.ReactNode;
-}
-export interface OptionProps extends ListOptionProps {
-  selectionValue?: string;
-  selectionTitle?: string;
 }
 
-export interface SelectionProps {
-  selectionValue?: string;
-  selectionTitle?: string;
-  options: OptionProps[];
-}
-
-export interface StaticListPickerProps extends Omit<ListProps, 'options'> {
-  options: SelectionProps[] | OptionProps[];
-  isSelection?: boolean;
-}
+// export interface StaticListPickerProps extends Omit<ListProps, 'options'> {
+//   options: SelectionProps[] | OptionProps[];
+//   isSelection?: boolean;
+// }
 
 export interface TriggerProps extends Omit<InputButtonProps, 'value' | 'active'> {
-  value?: string;
+  value?: string | React.ReactNode;
   separator?: string;
 }

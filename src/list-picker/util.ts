@@ -1,52 +1,34 @@
-import { isArray } from 'lodash';
-import { SelectionProps, OptionProps } from './interfance';
+import { OptionProps, SelectionItemProps } from '../list/interfance';
 
-export const getLabelByValue = (
-  val?: string | string[],
-  opts?: OptionProps | OptionProps[],
-  separator = '',
-  getOptionByValue?: (optValue?: string) => OptionProps | undefined
-) => {
-  if (val === '' || typeof val === 'undefined') {
-    return '';
-  }
-  if (val?.includes('.')) {
-    return (val as any)
-      ?.split('.')
-      ?.reduce((prev: string[], curr: string) => [...prev, getOptionByValue?.(curr)?.label], [])
-      ?.join(separator);
-  }
-  if (isArray(val)) {
-    return val?.reduce((prev, curr: string) => [...prev, getOptionByValue?.(curr)?.label], [])?.join(',');
-  }
-  return isArray(opts) ? (opts as OptionProps[])?.find((o) => o.value === val)?.label : opts?.label;
-};
-
-export const getFlattenOptions = (data: OptionProps[], isSelection = false): SelectionProps[] | OptionProps[] => {
+export const getFlattenOptions = (
+  data: OptionProps[] | SelectionItemProps[],
+  isSelection = false
+): { groupName: string; groupId: string; options: OptionProps[] }[] | OptionProps[] => {
   const groupMap = new Map();
   if (!isSelection) {
     return data;
   }
-  data?.map((cur: OptionProps) => {
-    const gValue = groupMap.get(cur.selectionValue);
+  (data as SelectionItemProps[])?.map((cur: SelectionItemProps) => {
+    const gValue = groupMap.get(cur.groupId);
     if (gValue) {
       const { options, ...rest } = gValue;
-      return groupMap.set(cur.selectionValue, {
+      return groupMap.set(cur.groupId, {
         options: [...options, cur],
         ...rest,
       });
     }
-    return groupMap.set(cur.selectionValue, {
-      label: cur.selectionTitle,
-      value: cur.selectionValue,
+    return groupMap.set(cur.groupId, {
+      label: cur.groupName,
+      value: cur.groupId,
       options: [cur],
     });
   });
-  const flattenOption: SelectionProps[] = [];
+  const flattenOption: { groupName: string; groupId: string; options: OptionProps[] }[] = [];
+  console.log('groupMap', groupMap);
   groupMap.forEach((value) => {
     flattenOption.push({
-      selectionTitle: value.label,
-      selectionValue: value.value,
+      groupName: value.label,
+      groupId: value.value,
       options: value.options ?? [],
     });
   });
@@ -54,5 +36,5 @@ export const getFlattenOptions = (data: OptionProps[], isSelection = false): Sel
 };
 
 export default {
-  getLabelByValue,
+  getFlattenOptions,
 };

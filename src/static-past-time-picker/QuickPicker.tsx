@@ -10,7 +10,8 @@ function QuickPicker({ options, optionsFilter, onSelect, timeRange, experimental
 
   const filter = (currentOptions: Option[]) => {
     if (optionsFilter) {
-      return currentOptions.filter(optionsFilter);
+      // # Option  !== OptionProps#
+      return currentOptions.filter((o: any) => optionsFilter(o));
     }
     return currentOptions;
   };

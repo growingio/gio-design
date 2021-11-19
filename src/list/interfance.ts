@@ -4,9 +4,13 @@ export type ModelType = 'cascader' | 'multiple' | 'simple';
 
 export interface SelectionProps extends ListProps {
   className?: string;
-  value?: string | string[];
-  onChange?: (value?: string | string[], options?: OptionProps | OptionProps[]) => void;
   style?: React.CSSProperties;
+  options?: SelectionItemProps[] | OptionProps[];
+}
+
+export interface SelectionItemProps extends OptionProps {
+  groupId: string;
+  groupName: string;
 }
 
 export interface ListProps {
@@ -64,10 +68,6 @@ export interface ListProps {
   previewRender?: (option: OptionProps) => React.ReactNode;
   previewRenderContainer?: (node: HTMLElement) => HTMLElement;
   /**
-   *
-   */
-  selectedParent?: string[];
-  /**
    * empty
    */
   empty?: () => React.ReactNode;
@@ -79,7 +79,7 @@ export interface DragListProps extends Omit<ListProps, 'model' | 'onChange' | 'v
 }
 
 export interface OptionProps {
-  label: string;
+  label?: string | React.ReactNode;
   value: string;
   disabled?: boolean;
   disabledTooltip?: string;
@@ -95,8 +95,8 @@ export interface CascaderItemProps extends BaseItemProps {
   label: string;
   value: string;
   selectValue?: string;
-  selectedParent?: string[];
-  onChange?: (value: string) => void;
+  selectParent?: OptionProps[];
+  onChange?: (value: string, option?: CascaderItemProps) => void;
   childrens?: CascaderItemProps[];
 }
 export interface ItemProps
@@ -113,21 +113,20 @@ export interface ItemProps
     | 'value'
     | 'disabled'
     | 'selected'
+    | 'disabledTooltip'
   > {
-  disabledTooltip?: string;
-  selectedParent?: string[];
   selectValue?: string | string[];
 }
 
 export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled'> {
   className?: string;
   style?: React.CSSProperties;
-  label?: string;
+  label?: string | React.ReactNode;
   contentRender?: (element: React.ReactNode) => React.ReactNode | Element;
   children?: React.ReactNode;
   disabledTooltip?: string;
   selected?: boolean;
   prefix?: string | React.ReactNode;
   suffix?: string | React.ReactNode;
-  onClick?: (value: string) => void;
+  onClick?: (value: string, option: OptionProps) => void;
 }

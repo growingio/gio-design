@@ -8,7 +8,7 @@ const Trigger: React.FC<TriggerProps> = (props) => {
     onClear?.(e);
     e.stopPropagation();
   };
-  return <Input.Button placeholder={placeholder} value={value} onClear={handleClear} {...rest} />;
+  return <Input.Button placeholder={placeholder} value={value as string} onClear={handleClear} {...rest} />;
 };
 
 export default Trigger;
