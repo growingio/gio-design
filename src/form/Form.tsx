@@ -6,8 +6,8 @@ import { Props } from './interface';
 import { FormContext } from './context';
 import { SizeContextProvider, SizeType } from '../config-provider/SizeContext';
 
-const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props, ref) => {
-  const {
+export const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (
+  {
     name,
     prefixCls: customizePrefixCls,
     className,
@@ -21,7 +21,9 @@ const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (props: Props,
     colon = false,
     requiredMark = true,
     ...restProps
-  } = props;
+  }: Props,
+  ref
+) => {
   const prefixCls = usePrefixCls('form-new', customizePrefixCls);
   const cls = classNames(prefixCls, className, `${prefixCls}-${size || 'middle'}`, `${prefixCls}-${layout}`);
   // @TODO: wrap form with custom functions

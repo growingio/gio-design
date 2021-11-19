@@ -35,7 +35,15 @@ const withDesignProvider = (Story, context) => {
 export const decorators = [withDesign, withDesignProvider];
 
 export const parameters = {
-  controls: { expanded: true, hideNoControlsWarning: true },
+  controls: {
+    expanded: true,
+    hideNoControlsWarning: true,
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
+
   docs: {
     container: ({ children, context }) => {
       const {

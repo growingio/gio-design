@@ -12,18 +12,17 @@ const getStatusIcon = (status: string, prefix: string) => {
   return Icon && <Icon className={`${prefix}-${status}-icon`} />;
 };
 
-const Progress: React.FC<ProgressProps> = (props: ProgressProps) => {
-  const {
-    percent,
-    status = 'active',
-    format = defaultFormat,
-    customizePrefixCls,
-    animation,
-    className,
-    style,
-    showInfo = true,
-    size = 'default',
-  } = props;
+const Progress: React.FC<ProgressProps> = ({
+  percent,
+  status = 'active',
+  format = defaultFormat,
+  customizePrefixCls,
+  animation,
+  className,
+  style,
+  showInfo = true,
+  size = 'default',
+}: ProgressProps) => {
   const prefixCls = usePrefixCls('progress-new', customizePrefixCls);
 
   return (

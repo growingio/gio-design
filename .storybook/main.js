@@ -12,9 +12,10 @@ module.exports = {
     '@storybook/addon-measure',
     '@storybook/addon-outline',
     '@storybook/addon-toolbars',
+    '@storybook/addon-backgrounds',
     // addons on right side
-    '@storybook/addon-actions',
     '@storybook/addon-controls',
+    '@storybook/addon-actions',
     'storybook-addon-designs',
     {
       name: '@storybook/addon-storysource',

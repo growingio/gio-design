@@ -19,7 +19,7 @@ export interface AvatarProps {
   size?: 'small' | 'medium' | 'large' | 'x-large';
   droppable?: boolean;
   /**
-    设置头像的尺寸大小
+    设置自定义图片
    */
   src?: string;
   /**

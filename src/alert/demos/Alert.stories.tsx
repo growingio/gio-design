@@ -19,9 +19,15 @@ export default {
       page: Docs,
     },
   },
+
+  argTypes: {
+    message: {
+      type: { name: 'string' },
+    },
+  },
 } as Meta;
 
-const Template: Story<AlertProps> = (args) => (
+const DemoTemplate: Story<AlertProps> = (args) => (
   <div>
     <Alert {...args} type="info" style={{ width: '%100' }} onClose={action('close')} />
     <br />
@@ -32,14 +38,28 @@ const Template: Story<AlertProps> = (args) => (
     <Alert {...args} type="error" style={{ width: 300 }} onClose={action('close')} />
   </div>
 );
+const Template: Story<AlertProps> = (args) => (
+  <div>
+    <Alert type="info" style={{ width: '%100' }} onClose={action('close')} {...args} />
+  </div>
+);
 
-export const Default = Template.bind({});
+export const Demo = DemoTemplate.bind({});
+Demo.args = {
+  message: 'This is an example of an embedded banner',
+  description:
+    'Use this if you want to put it inside of another thing like this panel. Heres how you would format it, syntax.',
+};
+export const Default: Story<AlertProps> = (args) => (
+  <div>
+    <Alert style={{ width: '%100' }} onClose={action('close')} {...args} />
+  </div>
+);
 Default.args = {
   message: 'This is an example of an embedded banner',
   description:
     'Use this if you want to put it inside of another thing like this panel. Heres how you would format it, syntax.',
 };
-
 export const NoDescription = Template.bind({});
 NoDescription.args = {
   showIcon: true,

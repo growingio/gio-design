@@ -12,10 +12,18 @@ import {
 import IconButton from '../button/IconButton';
 import { AlertProps } from './interfaces';
 
-export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
+export const Alert: React.FC<AlertProps> = ({
+  message,
+  description,
+  closeable,
+  showIcon = false,
+  onClose,
+  icon,
+  type = 'info',
+  style,
+}: AlertProps) => {
   const prefixCls = usePrefixCls('alert-new');
   const [alertStatus, setAlertStatus] = useState(true);
-  const { message, description, closeable, showIcon = false, onClose, icon, type, style } = props;
 
   const getIcon = () => {
     switch (type) {

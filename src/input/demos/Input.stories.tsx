@@ -14,7 +14,7 @@ import InputButton from '../InputButton';
 export default {
   title: 'Upgraded/Input',
   component: Input,
-  subcomponents: { InputButton },
+  subcomponents: { InputButton, Password, TextArea, InputNumber },
   argTypes: {
     prefix: {
       control: { type: 'text' }, // 不约束react_node会传入对象导致报错

@@ -21,6 +21,11 @@ export default {
       allowFullscreen: true,
     },
   },
+  argTypes: {
+    icon: {
+      type: { name: 'string' },
+    },
+  },
 } as Meta;
 const arr = ['small', 'medium', 'large', 'x-large'];
 const Template: Story<AvatarProps> = (args) => (
@@ -37,7 +42,7 @@ const Template: Story<AvatarProps> = (args) => (
         <td>default</td>
         {arr.map((item: AvatarProps['size']) => (
           <td>
-            <Avatar size={item} />
+            <Avatar {...args} size={item} />
           </td>
         ))}
       </tr>
@@ -174,6 +179,12 @@ const SizeTemplate: Story<AvatarProps> = (args) => (
 );
 export const Size = SizeTemplate.bind({});
 
+const DefaultTemplate: Story<AvatarProps> = (args) => (
+  <>
+    <Avatar {...args} />
+  </>
+);
+export const Default = DefaultTemplate.bind({});
 const HoverTemplate: Story<AvatarProps> = (args) => (
   <>
     <Avatar src={image} {...args} />

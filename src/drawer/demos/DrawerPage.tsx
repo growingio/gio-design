@@ -11,9 +11,16 @@ export default function ListPage() {
       <Title>{formatMessage({ defaultMessage: 'Drawer 抽屉' })}</Title>
       <p>
         {formatMessage({
-          defaultMessage: '在当前页面正中打开一个浮层',
+          defaultMessage: '基于modal，可支持固定宽度（默认为500px）和 内容撑开。',
         })}
       </p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>
+          封装自rc-dialog
+          <a href="https://github.com/react-component/dialog">rc-dialog</a>
+        </li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>

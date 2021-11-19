@@ -17,6 +17,10 @@ export interface TabsProps {
    * 组件大小
    */
   size?: 'small' | 'normal';
+  /**
+   * tabList样式
+   */
+  tabListStyle?: React.CSSProperties;
 }
 
 export interface TabProps {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
 import { LoadingOutlined } from '@gio-design/icons';
 import Loading from '../index';
 import Button from '../../button';
@@ -11,15 +10,11 @@ import '../style';
 export default {
   title: 'Upgraded/Loading',
   component: Loading,
-  decorators: [withDesign],
   parameters: {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A1142',
       allowFullscreen: true,
-    },
-    docs: {
-      page: null,
     },
   },
 } as Meta;

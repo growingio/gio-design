@@ -13,6 +13,11 @@ export default {
     docs: {
       page: Docs,
     },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4093%3A44793',
+      allowFullscreen: true,
+    },
   },
 } as Meta;
 
