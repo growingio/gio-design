@@ -6,8 +6,8 @@ import DropdownProps from './interface';
 import useControlledState from '../utils/hooks/useControlledState';
 import Popover from '../popover';
 
-export function Dropdown<T = HTMLElement>(
-  {
+export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.ForwardedRef<T>): React.ReactElement {
+  const {
     children,
     placement = 'bottomLeft',
     trigger = 'click',
@@ -18,9 +18,8 @@ export function Dropdown<T = HTMLElement>(
     overlayClassName,
     disabled,
     ...rest
-  }: DropdownProps,
-  ref: React.ForwardedRef<T>
-): React.ReactElement {
+  } = props;
+
   const [controlledVisible, setControlledVisible] = useControlledState(visible, defaultVisible);
   const prefixCls = usePrefixCls('dropdown-new');
 
