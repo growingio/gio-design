@@ -24,7 +24,8 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     } else {
       attrChange([num]);
     }
-  }, [attrChange, attrSelect, values]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [attrSelect]);
 
   const checkRegExp = (numType: string | undefined, v: string) => {
     const typeLowCase = numType?.toLowerCase();
@@ -100,7 +101,7 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     case 'noValue':
       return null;
     default:
-      return <Input value={value} onChange={setNumberValue} />;
+      return <Input value={value} style={{ width: '100%' }} onChange={setNumberValue} />;
   }
 }
 

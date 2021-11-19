@@ -119,11 +119,12 @@ function StringAttrSelect(props: StringAttrSelectProps) {
         );
       setLoadingStatue(false);
     });
-  }, [valueType, exprKey, attrSelect, curryDimensionValueRequest, defaultList]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [valueType, exprKey, attrSelect]);
 
   return (
     <div style={{ height: '330px' }}>
-      <Input placeholder="请输入…" value={inputValue} onChange={changInputValue} />
+      <Input placeholder="请输入…" style={{ width: '100%' }} value={inputValue} onChange={changInputValue} />
       {loadingStatue ? (
         <div
           style={{

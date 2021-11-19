@@ -11,3 +11,4 @@ import '../../../tooltip/style'; // new
 import '../../selector-pro/style';
 import '../../../input/style'; // new
 import '../../../loading/style'; // new
+import '../../../divider/style'; // new

@@ -429,6 +429,7 @@ Default.args = {
       __typename: 'Measurement265f',
     },
   ],
+  onConfirm: (value: any) => console.log('onConfirm: ', value),
   dimensionValueRequest: () =>
     new Promise((resolve) => {
       resolve(dimissionValue);

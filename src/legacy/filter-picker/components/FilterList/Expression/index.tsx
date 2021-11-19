@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
-import PropertyPicker from '../../../../property-selector';
+import PropertySelector from '../../../../property-selector';
 import FilterCondition from './FilterCondition';
 import './index.less';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from '../../../interfaces';
@@ -89,7 +89,7 @@ function Expression(props: ExpressionProps) {
     <div className="expression-box" id="expression-box">
       <div className="express-regular_select">
         <div className="expression-icon">{index + 1}</div>
-        <PropertyPicker
+        <PropertySelector
           data-testid="propertySelect"
           className="express-propertySelect"
           placeholder="选择属性"
@@ -101,6 +101,7 @@ function Expression(props: ExpressionProps) {
           onChange={changePropertyPicker}
           recentlyStorePrefix={recentlyStorePrefix}
           fetchDetailData={fetchDetailData}
+          hideInputDetail
         />
 
         <FilterCondition

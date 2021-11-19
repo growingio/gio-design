@@ -15,6 +15,8 @@ export interface DatePickerProps
   trigger?: React.ReactNode;
   /**
    * 日期展示格式
+   * @see https://date-fns.org/v2.25.0/docs/fp/format
+   * @default `YYYY/MM/dd`
    */
   format?: string;
   /**

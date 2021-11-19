@@ -7,6 +7,13 @@ export const titleMap: titleGroup = {
   date: '日期类型',
 };
 
+export const enTitleMap: titleGroup = {
+  string: 'String',
+  STRING: 'String',
+  int: 'Int',
+  date: 'Date',
+};
+
 export const defaultFilterItem: FilterValueType = {
   op: '=',
   values: [],

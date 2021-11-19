@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect, useMemo } from 'react';
+import React, { useRef, useState, useMemo } from 'react';
 import classNames from 'classnames';
-import { useLocale, usePrefixCls } from '@gio-design/utils';
+import { useControlledState, useLocale, usePrefixCls } from '@gio-design/utils';
 import Popover from '../../popover';
 import PropertyPicker from './PropertyPicker';
 import { PropertyValue, PropertySelectorProps } from './interfaces';
@@ -26,14 +26,12 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
     dataSource,
     onSelect,
     onChange,
+    hideInputDetail = false,
     ...pickerRestProps
   } = props;
   const [dropdownVisibleInner, setDropdownVisibleInner] = useState(dropdownVisible);
-  const [currentValue, setCurrentValue] = useState<PropertyValue | undefined>(value);
+  const [currentValue, setCurrentValue] = useControlledState(value, undefined);
 
-  useEffect(() => {
-    setCurrentValue(value);
-  }, [value]);
   const inputText = useMemo(() => currentValue?.name || currentValue?.label, [currentValue]);
   const inputValueRef = useRef<HTMLSpanElement | null>(null);
 
@@ -68,7 +66,12 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
     return (
       currentValue && (
         <>
-          <Popover overlayClassName="property-card-overlay" placement="bottomLeft" content={content()}>
+          <Popover
+            overlayClassName="property-card-overlay"
+            placement="bottomLeft"
+            disabled={hideInputDetail}
+            content={content()}
+          >
             <span className="inner-input-wrap" ref={inputValueRef}>
               <span className="icon">
                 <IconRender group={currentValue?.subGroupId} />

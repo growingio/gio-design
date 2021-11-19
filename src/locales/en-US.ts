@@ -11,6 +11,7 @@ import paginationLocale from '../pagination/locales/en-US';
 import tableLocale from '../table/locales/en-US';
 import uploadLocale from '../upload/locales/en-US';
 import staticPastTimePickerLocale from '../static-past-time-picker/locales/en-US';
+import FilterPickerLocale from '../legacy/filter-picker/locales/en-US';
 
 export const locale: Locale = {
   code: 'en-US',
@@ -49,6 +50,9 @@ export const locale: Locale = {
   },
   StaticPastTimePicker: {
     ...staticPastTimePickerLocale,
+  },
+  FilterPicker: {
+    ...FilterPickerLocale,
   },
 };
 

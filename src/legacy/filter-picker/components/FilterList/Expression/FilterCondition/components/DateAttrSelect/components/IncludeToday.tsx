@@ -5,17 +5,17 @@ import DatePicker from '../../../../../../../../../date-picker'; // new
 interface IncludeTodayProps {
   time: Moment;
   onChange: (v: Date) => void;
-  attrSelect: string;
+  style?: React.CSSProperties;
 }
 function IncludeToday(props: IncludeTodayProps) {
-  const { time, onChange } = props;
+  const { time, onChange, style } = props;
 
   const changeDate = (value: Date) => {
     onChange?.(value);
   };
   return (
     <>
-      <DatePicker value={time.toDate()} onSelect={changeDate} format="YYYY/MM/DD" />
+      <DatePicker style={style} value={time.toDate()} onSelect={changeDate} format="yyyy/MM/dd" />
     </>
   );
 }
