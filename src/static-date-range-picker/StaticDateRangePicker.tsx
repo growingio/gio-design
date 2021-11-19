@@ -81,7 +81,7 @@ function StaticDateRangePicker({
         onSelect: (currentValue) => {
           const newValue = mergeDates(selectedValue, currentValue, dateIndex);
           onSelect?.(newValue as [Date, Date], dateIndex);
-          setSelectedValue(newValue);
+          setSelectedValue(newValue, true);
           setDateIndex(1 - dateIndex);
         },
       }}
