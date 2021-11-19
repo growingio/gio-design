@@ -41,10 +41,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
 
   // list
   const prefixClsItem = `${prefixCls}--item`;
-  const onClick = () =>
-    !disabled
-      ? propsOnClick?.(generateString(value, selectParent), selectParent?.[0] ?? { label: '', value: '' })
-      : noop;
+  const onClick = () => (!disabled ? propsOnClick?.(generateString(value, selectParent)) : noop);
 
   const content = () => {
     if (!isEmpty(childrens)) {

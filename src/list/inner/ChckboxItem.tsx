@@ -22,7 +22,7 @@ const CheckboxItem: React.ForwardRefRenderFunction<
         disabled={disabled}
         onClick={(e) => {
           if (!disabled) {
-            onClick?.(value, { label: '', value: '' });
+            onClick?.(value);
             e?.stopPropagation();
           }
         }}

@@ -16,7 +16,7 @@ const Select: React.FC<SelectProps> = (props) => {
   const {
     prefixCls = 'select--new',
     value: controlledValue,
-    defaultValue = '',
+    defaultValue = undefined,
     options = [],
     size,
     triggerProps = {},
@@ -42,18 +42,18 @@ const Select: React.FC<SelectProps> = (props) => {
   const defaultPrefixCls = usePrefixCls(prefixCls);
   const [value, setValue] = useControlledState(controlledValue, defaultValue);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
-  const [title, setTitle] = useState<string | React.ReactNode>(undefined);
+  const [title, setTitle] = useState<string | React.ReactNode | undefined>(undefined);
   const cache = useChacheOptions();
 
   // options
   const nodesToOptions = useMemo<OptionProps[]>(() => convertChildrenToData(children), [children]);
   const mergedOptions = useMemo(() => [...nodesToOptions, ...options], [nodesToOptions, options]);
   cache.setOptions(mergedOptions);
-  const activeOption = useMemo(() => cache.options.get(value), [cache.options, value]);
+  const activeOption = useMemo(() => cache.getOptionByValue(value), [cache, value]);
 
   // update trigger value
   useEffect(() => {
-    setTitle(activeOption?.label ?? '');
+    setTitle(activeOption?.label);
   }, [activeOption?.label]);
 
   const handVisibleChange = (vis: boolean) => {
@@ -63,7 +63,7 @@ const Select: React.FC<SelectProps> = (props) => {
 
   const handleChange = (val?: string, opts?: OptionProps) => {
     onChange?.(val, opts);
-    setValue(val ?? '');
+    setValue(val);
     setVisible(false);
   };
 
@@ -85,7 +85,7 @@ const Select: React.FC<SelectProps> = (props) => {
         disabled={disabled}
         onClear={handleOnClear}
         onInputChange={(val) => {
-          isEmpty(val) && handleChange('');
+          isEmpty(val) && handleChange();
         }}
         {...triggerProps}
       />

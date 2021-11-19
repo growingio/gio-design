@@ -5,12 +5,14 @@ import { OptionProps, ListProps } from './interfance';
 
 interface ListContextProps {
   value?: string | string[];
+  model?: 'simple' | 'cascader' | 'multiple';
   onChange?: (value?: string | string[], options?: OptionProps | OptionProps[]) => void;
   options?: Map<string, OptionProps>;
   setOptions?: (options?: OptionProps[]) => void;
 }
-const defaultList = {
+const defaultList: ListContextProps = {
   value: '',
+  model: undefined,
   onChange: noop,
   setOptions: noop,
 };

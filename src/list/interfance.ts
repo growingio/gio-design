@@ -128,5 +128,5 @@ export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled'> {
   selected?: boolean;
   prefix?: string | React.ReactNode;
   suffix?: string | React.ReactNode;
-  onClick?: (value: string, option: OptionProps) => void;
+  onClick?: (value: string) => void;
 }

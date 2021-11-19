@@ -69,7 +69,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     () => (customizeSuffix ? <div className={suffixCls}>{customizeSuffix}</div> : null),
     [suffixCls, customizeSuffix]
   );
-
   return (
     <span className={inputClass} {...rest} style={style}>
       {prefix}
