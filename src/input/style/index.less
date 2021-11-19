@@ -9,18 +9,18 @@
   box-sizing: border-box;
   height: 36px;
   padding: 0 8px;
-  border: 1px solid @gray-2;
   border-radius: @radius-border-small;
+  .border();
   .text-body1();
 
   & > input {
     width: 100%;
     padding: 0;
-    background-color: #00000000;
-    border: none;
-    text-align: left;
     overflow: hidden;
     color: @gray-5;
+    text-align: left;
+    background-color: #0000;
+    border: none;
     font-family+: @font-family-primary;
     font-family+: @font-family-number;
     &:not([disabled]):hover,
@@ -52,11 +52,11 @@
 
   &__disabled {
     background-color: @gray-1;
-    border: 1px solid @gray-2;
+    .border();
     cursor: not-allowed;
     &:hover {
       background-color: @gray-1;
-      border: 1px solid @gray-2;
+      .border();
     }
     & > input {
       color: @gray-3;
@@ -75,10 +75,10 @@
   }
 
   &__suffix {
-    margin: 0 4px;
     display: inline-flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    margin: 0 4px;
 
     .@{icon-prefix-cls} {
       cursor: pointer;
@@ -91,10 +91,10 @@
   }
 
   &__prefix {
-    margin: 0 4px;
     display: inline-flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    margin: 0 4px;
 
     .@{icon-prefix-cls} {
       cursor: pointer;
@@ -110,8 +110,8 @@
 .@{textarea-prefix-cls} {
   height: auto;
   min-height: 36px;
-  resize: vertical;
   color: @gray-5;
+  resize: vertical;
   font-family+: @font-family-primary;
   font-family+: @font-family-number;
   .text-body1();
