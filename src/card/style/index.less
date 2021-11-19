@@ -1,111 +1,73 @@
 @import '../../stylesheet/variables/index.less';
 
 @card-prefix-cls: ~'@{component-prefix}-card-new';
+@card-meta-prefix-cls: ~'@{component-prefix}-card-meta-new';
 
 .@{card-prefix-cls} {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  align-items: flex-start;
   padding: 16px;
-  color: @gray-4;
-  letter-spacing: 0.5px;
   background-color: @gray-0;
   border: 1px solid @gray-2;
   border-radius: 8px;
-  .text-body2();
-  .elevation(1);
-
+  overflow: hidden;
   &-clickable:not(&-disabled):hover {
-    box-shadow: 0 2px 14px -2px rgb(123 129 156 / 50%);
+    .elevation(1);
     cursor: pointer;
   }
-
   &-disabled {
     color: @gray-3;
     background-color: @gray-1;
   }
-
+  &-full-width-content {
+    padding: 0;
+    .@{card-meta-prefix-cls} {
+      padding: 16px;
+      width: calc(100% - 32px);
+    }
+  }
   &-disabled &-title,
-  &-disabled &-footer,
-  &-disabled &-meta-title,
-  &-disabled &-meta-description {
+  &-disabled .@{card-meta-prefix-cls}-title,
+  &-disabled .@{card-meta-prefix-cls}-description {
     color: @gray-3;
   }
+}
 
+.@{card-meta-prefix-cls} {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  .text-body2();
+  color: @gray-4;
+
+  &-detail {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  &-image {
+    margin-right: 16px;
+  }
   &-title {
-    color: @gray-5;
     .text-h4();
+    color: @gray-5;
+    white-space: nowrap;
+  }
+  &-description {
+    margin-top: 4px;
+    color: #7b819c;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  &-action {
+    margin-left: 16px;
   }
 
-  &-title + &-footer {
-    margin-top: 16px;
-  }
-
-  &-footer {
-    .text-body2();
-    margin-top: auto;
-    padding-top: 16px;
-    color: @gray-4;
-    border-top: 1px solid #ebedf5;
-  }
-
-  &-meta {
-    margin-bottom: 16px;
-
-    &-info {
-      display: flex;
-      align-items: center;
-      margin-bottom: 16px;
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    &-detail {
-      width: 100%;
-      overflow: hidden;
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    &-image {
-      flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      margin-right: 16px;
-    }
-
-    &-title {
-      color: @gray-5;
-      .text-h4();
-    }
-
-    &-description {
-      .text-body2();
-      margin-top: 4px;
-      color: @gray-4;
-    }
-
-    &-action {
-      height: 46px;
-      margin-left: 16px;
-      white-space: nowrap;
-    }
-
-    &-title,
-    &-description {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+  &-title,
+  &-description {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }

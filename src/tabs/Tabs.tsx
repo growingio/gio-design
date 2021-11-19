@@ -14,7 +14,7 @@ const Tabs: React.ForwardRefRenderFunction<
   HTMLDivElement,
   WithCommonProps<TabsProps> & Omit<DOMAttributes<HTMLDivElement>, 'onChange'>
 > = (props: WithCommonProps<TabsProps> & Omit<DOMAttributes<HTMLDivElement>, 'onChange'>, ref?) => {
-  const { defaultValue = 0, value, onChange, classname, children, size = 'normal', ...restProps } = props;
+  const { defaultValue = 0, value, onChange, classname, children, size = 'normal', tabListStyle, ...restProps } = props;
   const [activeValue, setActiveValue] = useControlledState<React.Key>(value, defaultValue);
   const prefixCls = usePrefixCls('tabs-new');
   const tabClasses = classnames(classname, prefixCls);
@@ -52,7 +52,7 @@ const Tabs: React.ForwardRefRenderFunction<
   return (
     <TabsContext.Provider value={{ activeValue }}>
       <div className={tabClasses} data-testid="tabs" ref={ref} {...restProps}>
-        <div data-testid="tablist" className={`${prefixCls}-tablist`}>
+        <div data-testid="tablist" className={`${prefixCls}-tablist`} style={tabListStyle}>
           {tabs}
         </div>
         <div data-testid="tabpanels" className={`${prefixCls}-tabpanels`}>

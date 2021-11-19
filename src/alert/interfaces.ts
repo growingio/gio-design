@@ -8,10 +8,6 @@ export interface AlertProps {
    */
   closeable?: boolean;
   /**
-   自定义关闭按钮
-   */
-  closeText?: React.ReactNode;
-  /**
    警告提示的辅助性文字介绍
    */
   description?: React.ReactNode;
@@ -32,7 +28,7 @@ export interface AlertProps {
    */
   onClose?: () => void;
   /**
-   外层样式
+   外层div样式
    */
   style?: React.CSSProperties;
 }

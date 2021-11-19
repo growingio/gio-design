@@ -1,7 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { PlusOutlined, FilterOutlined } from '@gio-design/icons';
-import { withDesign } from 'storybook-addon-designs';
 import Button from '../index';
 import IconButton from '../IconButton';
 import { ButtonProps, IconButtonProps } from '../interface';
@@ -19,7 +18,6 @@ export default {
       control: { type: 'text' },
     },
   },
-  decorators: [withDesign],
   parameters: {
     design: {
       type: 'figma',

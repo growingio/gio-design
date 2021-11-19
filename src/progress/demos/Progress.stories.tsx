@@ -17,6 +17,13 @@ export default {
     showInfo: {
       defaultValue: true,
     },
+    percent: {
+      control: {
+        type: 'range',
+        min: 0,
+        max: 100,
+      },
+    },
   },
   parameters: {
     design: {

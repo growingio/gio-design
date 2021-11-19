@@ -7,23 +7,22 @@ import { clip, dataMap, isNumber } from './help';
 
 export { GridProps } from './interface';
 
-const Grid: React.FC<GridProps> = (props: React.PropsWithChildren<GridProps>) => {
-  const {
-    component: Component = 'div',
-    prefixCls: customizePrefixCls,
-    className,
-    children,
-    direction,
-    justify,
-    alignItems,
-    alignContent,
-    wrap,
-    span,
-    gap,
-    container = false,
-    collapse = false,
-    style,
-  } = props;
+export const Grid: React.FC<GridProps> = ({
+  component: Component = 'div',
+  prefixCls: customizePrefixCls,
+  className,
+  children,
+  direction,
+  justify,
+  alignItems,
+  alignContent,
+  wrap,
+  span,
+  gap,
+  container = false,
+  collapse = false,
+  style,
+}: React.PropsWithChildren<GridProps>) => {
   const prefixCls = usePrefixCls('grid', customizePrefixCls);
   const cssProps = dataMap(
     {

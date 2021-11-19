@@ -24,7 +24,10 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-avatar--demo" />
       </Canvas>
-
+      <Subheading>{formatMessage({ defaultMessage: 'default' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-avatar--default" />
+      </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '尺寸' })}</Subheading>
       <p>
         {formatMessage({
