@@ -29,7 +29,7 @@ export default {
 export const Default = () => (
   <Dropdown
     content={
-      <List>
+      <List style={{ padding: 0 }}>
         <Item prefix={<ReloadOutlined />} value="1">
           刷新数据
         </Item>
@@ -39,7 +39,7 @@ export const Default = () => (
         <Item prefix={<DownloadOutlined />} value="3">
           下载 PDF
         </Item>
-        <Divider style={{ margin: 0 }} />
+        <Divider style={{ margin: '0 0 4px' }} />
         <CascaderItem label="邮件推送" value="4" prefix={<EmailOutlined />}>
           <List>
             <Item value="4-1" label="创建邮件推送" prefix={<PlusOutlined />} />
