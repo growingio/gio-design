@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { isBefore, startOfToday, subMonths } from 'date-fns';
@@ -32,6 +32,20 @@ const Template: Story<DateRangePickerProps> = (args) => (
     <DateRangePicker {...args} />
   </div>
 );
+
+const ControlledTemplate: Story<DateRangePickerProps> = (args) => {
+  const [TimeRange, setTimeRange] = useState([new Date(), new Date()] as [Date, Date]);
+  const onSelect = (timeRange: [Date, Date]) => {
+    setTimeRange(timeRange);
+  };
+  return (
+    <div style={{ width: 280 }}>
+      <DateRangePicker {...args} value={TimeRange} onSelect={onSelect} />
+    </div>
+  );
+};
+
+export const ControlledBasic = ControlledTemplate.bind({});
 
 export const Basic = Template.bind({});
 Basic.args = {
