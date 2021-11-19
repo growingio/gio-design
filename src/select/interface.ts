@@ -15,6 +15,7 @@ export interface SelectProps extends Omit<ListProps, 'isMultiple' | 'onChange' |
   value?: string;
   /**
    * 触发器参数
+   * @default `{ style: { width: '100%' } }`
    */
   triggerProps?: Omit<TriggerProps, 'value' | 'size' | 'prefixCls' | 'onInputChange' | 'disabled'>;
   onChange?: (val?: string, options?: OptionProps) => void;
