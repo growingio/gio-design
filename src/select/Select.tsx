@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
-import { isEmpty } from 'lodash';
+import { isEmpty, isObject, omit } from 'lodash';
 import { SelectProps } from './interface';
 import Popover from '../popover';
 import Trigger from './Trigger';
@@ -19,7 +19,7 @@ const Select: React.FC<SelectProps> = (props) => {
     defaultValue = undefined,
     options = [],
     size,
-    triggerProps = {},
+    triggerProps,
     visible: controlledVisible,
     onVisibleChange,
     getContainer,
@@ -72,6 +72,10 @@ const Select: React.FC<SelectProps> = (props) => {
     e.stopPropagation();
   };
 
+  const triggerStyle: React.CSSProperties = isObject(triggerProps?.style)
+    ? { width: '100%', ...triggerProps?.style }
+    : { width: '100%' };
+
   const renderTrigger = () => (
     <div
       className={classNames(`${prefixCls}--trigger`, className)}
@@ -87,7 +91,8 @@ const Select: React.FC<SelectProps> = (props) => {
         onInputChange={(val) => {
           isEmpty(val) && handleChange();
         }}
-        {...triggerProps}
+        style={triggerStyle}
+        {...omit(triggerProps, 'style')}
       />
     </div>
   );

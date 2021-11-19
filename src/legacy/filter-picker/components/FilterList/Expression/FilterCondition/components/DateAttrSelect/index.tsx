@@ -13,9 +13,10 @@ interface DateAttrSelectProps {
   attrSelect: string;
   attrChange: (v: string[]) => void;
   values: string[];
+  style?: React.CSSProperties;
 }
 function DateAttrSelect(props: DateAttrSelectProps) {
-  const { attrSelect, attrChange, values } = props;
+  const { attrSelect, attrChange, values, style } = props;
   const [time, setTime] = useState<Moment>(
     values?.[0] && parseFloat(values?.[0]).toString() !== 'NaN' ? moment(parseInt(values?.[0], 10)) : moment(Date.now())
   );
@@ -52,8 +53,6 @@ function DateAttrSelect(props: DateAttrSelectProps) {
       return false;
     }
     const val = vals[0];
-    // console.log(val, 'val')
-    // console.log(val.split(":"), val.split(":")[1].split(','), '=================')
     if (attr.includes('relative') && attr !== 'relativeTime') {
       const valsList = val.split(':')[1].split(',');
       if (attr.includes('Current')) {
@@ -67,10 +66,8 @@ function DateAttrSelect(props: DateAttrSelectProps) {
   useEffect(() => {
     // values值的初始化
     if (attrSelect !== 'relativeTime' && (!values.length || checkInitValue(attrSelect, values))) {
-      // console.log(checkInitValue(attrSelect, values), 'checkInitValue(attrSelect, values)')
       if (attrSelect.includes('relative')) {
         if (attrSelect.includes('Current')) {
-          // console.log('current')
           // 相对现在，values值的初始化
           attrChange(['relativeTime:-1,0']);
         } else {
@@ -88,7 +85,8 @@ function DateAttrSelect(props: DateAttrSelectProps) {
         attrChange([`${moment(Date.now()).valueOf()}`]);
       }
     }
-  }, [attrChange, attrSelect, timeRange, values]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [attrSelect]);
 
   const changeDate = (value: Date | null) => {
     const date = moment(value);
@@ -96,7 +94,6 @@ function DateAttrSelect(props: DateAttrSelectProps) {
     attrChange([`${moment(date, 'YYYY-MM-DD').startOf('day').valueOf()}`]);
   };
   const relativeDateChange = (v: string) => {
-    // console.log(v, 'vvvvv');
     attrChange([v]);
   };
   const dateRangeChange = (value?: [NullableDate, NullableDate]) => {
@@ -114,12 +111,12 @@ function DateAttrSelect(props: DateAttrSelectProps) {
   switch (attrSelect) {
     case '=':
     case '!=':
-      return <DatePicker value={time.toDate()} onSelect={changeDate} format="YYYY/MM/DD" />;
+      return <DatePicker style={style} value={time.toDate()} onSelect={changeDate} format="yyyy/MM/dd" />;
     case '>':
     case '>=':
     case '<=':
     case '<':
-      return <IncludeToday time={time} onChange={changeDate} attrSelect={attrSelect} />;
+      return <IncludeToday time={time} onChange={changeDate} style={style} />;
     case 'relativeCurrent':
       return <RelativeCurrent onChange={relativeDateChange} attrSelect={attrSelect} values={values} />;
     case 'relativeBetween':
@@ -130,7 +127,8 @@ function DateAttrSelect(props: DateAttrSelectProps) {
         <DateRangePicker
           value={[timeRange?.[0]?.toDate(), timeRange?.[1]?.toDate()]}
           onSelect={dateRangeChange}
-          format="YYYY/MM/DD"
+          format="yyyy/MM/dd"
+          style={style}
         />
       );
     default:

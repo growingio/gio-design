@@ -21,7 +21,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
     disabledDate,
     placeholder,
     allowClear,
-    format: formatString,
+    format: formatString = 'yyyy/MM/dd',
     prefix,
     suffix,
     size,
@@ -37,7 +37,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
 
   const [controlledValue, setControlledValue] = useControlledState(value, defaultValue);
 
-  const formatDate = (date: Date) => format(formatString ?? 'yyyy/MM/dd', date);
+  const formatDate = (date: Date) => format(formatString, date);
 
   const handleVisibleChange = (current: boolean) => {
     setVisible(current);
@@ -54,7 +54,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
 
   function renderTrigger() {
     if (trigger) {
-      return <div>{trigger}</div>;
+      return trigger;
     }
     return (
       <InputButton

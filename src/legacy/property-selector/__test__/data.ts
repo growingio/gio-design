@@ -25,6 +25,16 @@ const insightDimensions: ReadonlyArray<any> = [
     valueType: 'string',
   },
   {
+    id: 'vvar_virtual_1',
+    associatedKey: null,
+    description: null,
+    groupId: 'virtual',
+    groupName: 'Virtual Variable',
+    name: '虚拟属性1',
+    type: 'vvar',
+    valueType: 'string',
+  },
+  {
     associatedKey: null,
     description:
       '示例：www.example.com\nWeb 端理解为： "www.example.com" 是 https://www.example.com/about 的域名。APP 理解为应用的包名。小程序理解为 AppID',

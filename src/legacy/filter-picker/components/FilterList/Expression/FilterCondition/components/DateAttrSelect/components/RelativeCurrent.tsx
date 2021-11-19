@@ -6,6 +6,7 @@ interface RelativeCurrentProps {
   onChange: (v: string) => void;
   attrSelect: string;
   values: string[];
+  style?: React.CSSProperties;
 }
 
 function RelativeCurrent(props: RelativeCurrentProps) {
@@ -109,7 +110,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
         value={nowOrFuturevalue}
         options={SelectOptions}
         onChange={selectChange}
-        style={{ marginRight: '4px', width: '90px' }}
+        style={{ marginRight: '4px', width: '120px' }}
       />
       <Input.InputNumber value={days} onChange={setDaysChange} style={{ width: '80px', margin: '0 4px' }} min={1} />
       <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>天</div>

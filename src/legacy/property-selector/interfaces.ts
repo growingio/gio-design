@@ -133,7 +133,13 @@ export interface PropertyItem extends PropertyValue {
 
 export interface PropertySelectorProps
   extends Omit<PropertyPickerProps, 'className' | 'style' | 'shouldUpdateRecentlyUsed'>,
-    Omit<SelectorProps, 'dropdownRender' | 'valueRender'> {}
+    Omit<SelectorProps, 'dropdownRender' | 'valueRender'> {
+  /**
+   * 如果 value 不为空，并且鼠标 hover，控制是否显示详细信息
+   * @default false
+   */
+  hideInputDetail?: boolean;
+}
 export interface PropertyCardProps {
   // nodeData: NodeData;
   // fetchData?: (nodeData: NodeData) => Promise<PropertyInfo> | PropertyInfo;

@@ -26,7 +26,7 @@ function StaticDateRangePicker({
   const [dateIndex, setDateIndex] = React.useState<number>(0);
   // @ts-ignore
   const [selectedValue, setSelectedValue] = useControlledState<RangeValue<Date>>(value, defaultValue);
-  const preficCls = usePrefixCls('date-range-picker');
+  const prefixCls = usePrefixCls('date-range-picker');
 
   function renderPicker(position: 'left' | 'right') {
     const index = position === 'left' ? 0 : 1;
@@ -40,7 +40,7 @@ function StaticDateRangePicker({
         }}
       >
         <StaticDatePicker
-          className={`${preficCls}__${position}`}
+          className={`${prefixCls}__${position}`}
           disabledDate={(currentDate: Date) => {
             const isBeforeStartDate =
               selectedValue && selectedValue[0] && !selectedValue[1] ? isBefore(currentDate, selectedValue[0]) : false;
@@ -64,7 +64,7 @@ function StaticDateRangePicker({
     );
   }
 
-  const cls = classnames(className, preficCls);
+  const cls = classnames(className, prefixCls);
   return (
     <StaticDatePickerContext.Provider
       value={{

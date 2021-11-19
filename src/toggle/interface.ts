@@ -32,4 +32,6 @@ export interface TogglesProps {
     Toggles控制字段
   */
   on?: boolean;
+
+  style?: React.CSSProperties;
 }

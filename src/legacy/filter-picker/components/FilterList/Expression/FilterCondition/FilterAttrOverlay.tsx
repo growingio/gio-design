@@ -9,6 +9,7 @@ import { attributeValue, StringValue, NumberValue, DateValue, FilterValueType } 
 import { operationsOptionType } from '../../../../interfaces';
 import Checkbox from '../../../../../../checkbox'; // new
 import Select from '../../../../../../select'; // new
+import Divider from '../../../../../../divider';
 
 interface FilterAttrOverlayProps {
   valueType: attributeValue;
@@ -49,13 +50,8 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     if (values?.[0] === ' ') {
       setOperationValue(op === '!=' ? 'hasValue' : 'noValue');
     }
-  }, [op, valueType, values]);
-
-  // useEffect(() => {
-  //   console.log(values, 'values-1');
-  //   // setOperationValue(op);
-  //   // setAttrValue(values);
-  // }, [values, valueType, op]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [op, valueType]);
 
   const handleChange = (e: any) => {
     setChecked(e.target.checked);
@@ -108,7 +104,6 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   };
 
   const cancel = () => {
-    // setAttrValue([]);
     onSubmit({
       op: '=',
       values: [],
@@ -120,7 +115,14 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     switch (attr) {
       case AttributeMap.date:
         // 日期类型
-        return <DateAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} />;
+        return (
+          <DateAttrSelect
+            style={{ width: '100%' }}
+            attrSelect={selectValue}
+            attrChange={setAttrValue}
+            values={attrValue}
+          />
+        );
       case AttributeMap.string:
       case AttributeMap.STRING:
         return (
@@ -148,22 +150,25 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
         <Select
           options={
             operationsOption
-              ? selectOptionMap?.[valueType]?.filter((opItem: any) =>
-                  operationsOption?.[valueType].includes(opItem.value)
+              ? selectOptionMap?.[valueType]?.filter((opItem) =>
+                  operationsOption?.[valueType].includes(opItem.value as any)
                 )
               : selectOptionMap?.[valueType]
           }
           value={operationValue}
-          style={{ width: '100%', marginTop: '16px' }}
+          style={{ marginTop: '16px' }}
           triggerProps={{
             placeholder: '请选择',
+            style: {
+              width: '100%',
+            },
           }}
           onChange={selectChange}
         />
-        <div className="filter-attr_dividingLine" />
+        <Divider style={{ margin: '14px 0 16px' }} />
         {getAttrSelect(valueType, operationValue)}
         {valueType === AttributeMap.date && (operationValue === '>' || operationValue === '<') && (
-          <Checkbox checked={checked} onChange={handleChange} style={{ marginTop: '16px' }}>
+          <Checkbox checked={checked} onChange={handleChange} style={{ marginTop: 16 }}>
             包含当日
           </Checkbox>
         )}

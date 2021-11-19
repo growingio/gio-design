@@ -15,6 +15,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     onPressEnter,
     onKeyPress,
     style,
+    value,
     ...rest
   } = props;
 
@@ -72,7 +73,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   return (
     <span className={inputClass} {...rest} style={style}>
       {prefix}
-      <input {...rest} disabled={disabled} onKeyPress={handleKeyPress} placeholder={placeholder} ref={ref} />
+      <input
+        {...rest}
+        value={value ?? ''}
+        disabled={disabled}
+        onKeyPress={handleKeyPress}
+        placeholder={placeholder}
+        ref={ref}
+      />
       {suffix}
     </span>
   );

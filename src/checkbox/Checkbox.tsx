@@ -77,7 +77,7 @@ const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
-    <label className={checkboxCls}>
+    <label className={checkboxCls} style={style}>
       <input
         type="checkbox"
         ref={ref}
@@ -87,7 +87,6 @@ const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
         value={value}
         checked={checkedStatus}
         onChange={handleChange}
-        style={style}
         color={color}
         {...checkboxProps}
       />

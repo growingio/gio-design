@@ -36,7 +36,8 @@ function FilterList(props: FilterListProps) {
     } else {
       setFilterList(list);
     }
-  }, [list, list.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [list.length]);
 
   const expressChange = (v: FilterValueType, index: number) => {
     const subFilter = [...filterList];

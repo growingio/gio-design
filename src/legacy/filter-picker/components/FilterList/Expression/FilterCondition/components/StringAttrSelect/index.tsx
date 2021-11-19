@@ -77,7 +77,8 @@ function StringAttrSelect(props: StringAttrSelectProps) {
       }
       setLoadingStatue(false);
     });
-  }, [valueType, exprKey, attrSelect, curryDimensionValueRequest]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [valueType, exprKey, attrSelect]);
 
   switch (attrSelect) {
     case 'in':
@@ -98,7 +99,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     default:
       return (
         <div style={{ width: '100%', height: '100%' }}>
-          <Input placeholder="请输入…" value={inputValue} onChange={changInputValue} />
+          <Input placeholder="请输入…" style={{ width: '100%' }} value={inputValue} onChange={changInputValue} />
           {loadingStatue ? (
             <div
               style={{
@@ -116,8 +117,8 @@ function StringAttrSelect(props: StringAttrSelectProps) {
               stateless
               value={listValue}
               dataSource={listOptions}
-              width={293}
-              height={250}
+              width="100%"
+              height={280}
               onClick={changeListValue}
             />
           )}

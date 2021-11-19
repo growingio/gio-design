@@ -11,8 +11,7 @@ export const calcClosingViewDate = (currentDate: Date, offset?: number) =>
 
 export const mergeDates = (dates: RangeValue<Date>, currentDate: Date | undefined, index: number) => {
   if (index) {
-    // @ts-ignore
-    return [dates[0], currentDate] as RangeValue<Date>;
+    return [dates?.[0], currentDate] as RangeValue<Date>;
   }
   return [currentDate, null] as RangeValue<Date>;
 };

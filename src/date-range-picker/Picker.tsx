@@ -26,7 +26,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
     disabledDate,
     placeholder,
     allowClear,
-    format: formatString,
+    format: formatString = 'yyyy/MM/dd',
     prefix,
     suffix,
     size,
@@ -70,7 +70,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
 
   function renderTrigger() {
     if (trigger) {
-      return <div>{trigger}</div>;
+      return trigger;
     }
     return (
       <InputButton

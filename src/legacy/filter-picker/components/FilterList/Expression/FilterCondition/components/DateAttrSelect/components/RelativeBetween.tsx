@@ -84,7 +84,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
           value={nowOrFuturevalue}
           options={selectOptions}
           onChange={selectChange}
-          style={{ marginRight: '4px', width: '90px' }}
+          style={{ marginRight: '4px', width: '120px' }}
         />
         <Input.InputNumber
           value={value1}
