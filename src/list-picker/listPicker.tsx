@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { isArray } from 'lodash';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
 import Trigger from './Trigger';
@@ -32,12 +31,12 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     overlayStyle,
     children,
     onConfim,
-    needConfim = false,
     confimText = '确定',
     separator = '',
     className,
     style,
-    model,
+    model = 'simple',
+    needConfim = model === 'multiple',
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
@@ -46,20 +45,16 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
 
   const { options, setOptions, getLabelByValue, getOptionsByValue } = useCacheOptions();
 
+  // title仅跟随controlledValue变动
   useEffect(() => {
-    setValue(controlledValue);
-  }, [controlledValue]);
-
-  useEffect(() => {
-    console.log('getLabelByValue(value, separator)', getLabelByValue(value, separator));
-    setTitle(getLabelByValue(value, separator));
-  }, [value, getLabelByValue, separator]);
+    setTitle(getLabelByValue(controlledValue, separator));
+  }, [controlledValue, getLabelByValue, separator]);
 
   useEffect(() => {
     if (!needConfim) {
       setValue(controlledValue);
     }
-  }, [controlledValue, needConfim]);
+  }, [controlledValue, needConfim, setValue]);
   // methods
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);
@@ -72,7 +67,6 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
 
   const handleChange = (val?: string | string[], opts?: OptionProps | OptionProps[]) => {
     setValue(val);
-    setTitle(!isArray(opts) ? opts?.label : '');
     if (!needConfim) {
       onChange?.(val, opts);
     }
@@ -116,7 +110,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   );
 
   return (
-    <ListContext.Provider value={{ value, onChange: handleChange, options, setOptions }}>
+    <ListContext.Provider value={{ value, model, onChange: handleChange, options, setOptions }}>
       <Popover
         content={renderOverlay()}
         trigger={trigger}

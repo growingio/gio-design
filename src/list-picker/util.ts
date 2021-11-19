@@ -24,7 +24,6 @@ export const getFlattenOptions = (
     });
   });
   const flattenOption: { groupName: string; groupId: string; options: OptionProps[] }[] = [];
-  console.log('groupMap', groupMap);
   groupMap.forEach((value) => {
     flattenOption.push({
       groupName: value.label,

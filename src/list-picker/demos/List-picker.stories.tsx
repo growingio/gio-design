@@ -30,6 +30,7 @@ export default {
 
 const Template: Story<ListPickerProps> = () => {
   const [value, setValue] = useState('banana2');
+  const [multipleValue, setMultipleValue] = useState(['ziyi']);
   const [activeTab, setActiveTab] = useState('tab1');
   const [search, setSearch] = useState('');
   const onChange = (val?: string, opt?: OptionProps | OptionProps[]) => {
@@ -130,6 +131,37 @@ const Template: Story<ListPickerProps> = () => {
             value={value}
             onChange={onChange}
             overlayStyle={{ width: '240px' }}
+            onClear={() => {
+              setValue('');
+            }}
+            placeholder="请选择"
+          >
+            <SearchBar
+              size="small"
+              style={{ width: '100%' }}
+              placeholder="请搜索名称"
+              onSearch={(val: string) => setSearch(val)}
+            />
+            <List.Selection
+              options={[
+                { label: '子一', value: 'ziyi' },
+                { label: '子二', value: 'zier' },
+              ]}
+            />
+          </ListPicker>
+        </div>
+        <div className="demo-box">
+          <ListPicker
+            value={multipleValue}
+            onChange={(val) => {
+              console.log('multiple onChange 并不会触发', val);
+            }}
+            onConfim={(val) => {
+              console.log(val);
+              setMultipleValue(val as string[]);
+            }}
+            overlayStyle={{ width: '240px' }}
+            model="multiple"
             onClear={() => {
               setValue('');
             }}

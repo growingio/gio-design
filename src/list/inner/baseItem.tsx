@@ -68,7 +68,7 @@ const BaseItem: React.ForwardRefRenderFunction<
         aria-hidden="true"
         ref={ref}
         {...rest}
-        onClick={() => (!disabled ? onClick?.(value, { label: content as string, value }) : noop)}
+        onClick={() => (!disabled ? onClick?.(value) : noop)}
       >
         {contentRender?.(contentElement)}
       </li>

@@ -14,7 +14,7 @@ const Cascader: React.FC<CascaderProps> = (props) => {
   const {
     options,
     value: controlledValue,
-    defaultValue = '',
+    defaultValue = undefined,
     visible: controlledVisible,
     onChange,
     prefixCls = 'cascader--new',
@@ -37,7 +37,7 @@ const Cascader: React.FC<CascaderProps> = (props) => {
     ...rest
   } = props;
   const defaultPrefixCls = usePrefixCls(prefixCls);
-  const [value, setSelectValue] = useControlledState(controlledValue, defaultValue);
+  const [value, setValue] = useControlledState(controlledValue, defaultValue);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
   const [title, setTitle] = useState('');
   const cache = useChacheOptions();
@@ -55,7 +55,7 @@ const Cascader: React.FC<CascaderProps> = (props) => {
 
   const handleChange = (val?: string | string[]) => {
     onChange?.(val);
-    setSelectValue((val as string) ?? '');
+    setValue(val as string);
     setVisible(false);
   };
 
@@ -77,7 +77,7 @@ const Cascader: React.FC<CascaderProps> = (props) => {
         disabled={disabled}
         onClear={handleOnClear}
         onInputChange={(val) => {
-          isEmpty(val) && handleChange('');
+          isEmpty(val) && handleChange();
         }}
         {...triggerProps}
       />

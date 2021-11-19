@@ -47,13 +47,19 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
   const [collapse, setCollapse] = useState(initCollapse);
 
   // value and onChange
-  const { value: contextValue, onChange: contextOnChange, setOptions: contextSetOptions } = useContext(ListContext);
+  const {
+    value: contextValue,
+    model: contextModel,
+    onChange: contextOnChange,
+    setOptions: contextSetOptions,
+  } = useContext(ListContext);
+  const mergedModel = contextModel ?? model;
   const { value, onChange } = useValue(
     controlledValue,
     controlledOnChange,
     contextValue,
     contextOnChange,
-    isMultipe(model)
+    isMultipe(mergedModel)
   );
 
   const cache = useCacheOptions();
@@ -73,22 +79,21 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
   }, [mergedOptions, setOptions]);
 
   const renderOptions = initOptions?.length ? initOptions : React.Children.toArray(children);
-  console.log('renderOptions', renderOptions);
   const childrens = renderOptions.slice(0, collapse);
   const isNeedCollapse = useMemo(() => renderOptions?.length > collapse, [renderOptions, collapse]);
-  const handleClick = (val: string, opt?: OptionProps) => {
+  const handleClick = (val: string) => {
     // multiple
     if (isArray(value)) {
       const resultValue = indexOf(value, val) !== -1 ? difference(value, [val]) : [...value, val];
-      onChange?.(resultValue, opt ?? cache.getOptionsByValue(resultValue));
+      onChange?.(resultValue, cache.getOptionsByValue(resultValue));
     }
     // cascader
-    else if (isCascader(model)) {
-      onChange?.(val, opt);
+    else if (isCascader(mergedModel)) {
+      onChange?.(val, cache.getOptionsByValue(val));
     }
     // normal
     else if (value !== val) {
-      onChange?.(val, opt ?? cache.getOptionsByValue(val));
+      onChange?.(val, cache.getOptionsByValue(val));
     }
   };
 
@@ -119,8 +124,8 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
         prefix={prefix?.(option)}
         suffix={suffix?.(option)}
         disabled={option?.disabled ?? disabled}
-        isMultiple={isMultipe(model)}
-        isCascader={isCascader(model)}
+        isMultiple={isMultipe(mergedModel)}
+        isCascader={isCascader(mergedModel)}
         selectValue={value}
         selected={selectStatus(option?.value, value)}
         onClick={handleClick}
@@ -143,19 +148,19 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
         } = node;
 
         const item = { label: node?.props?.label, value: node?.props?.value } as OptionProps;
-        console.log('item', item);
+
         return React.cloneElement(node, {
           ...rest,
           disabled: itemDisabled ?? disabled,
           prefix: itemPrefix ?? prefix?.(item),
           suffix: itemSuffix ?? suffix?.(item),
-          isMultiple: isMultipe(model),
-          isCascader: isCascader(model),
+          isMultiple: isMultipe(mergedModel),
+          isCascader: isCascader(mergedModel),
           selectValue: value,
           selected: selectStatus(item.value, value),
-          onClick: (val: string, opt: OptionProps) => {
+          onClick: (val: string) => {
             handleClick(val);
-            onClick?.(val, opt);
+            onClick?.(val);
           },
         });
       }

@@ -34,7 +34,6 @@ const useCacheOptions = () => {
       : getOptionByValue(optValue);
 
   const getLabelByValue = (val?: string | string[], separator = '') => {
-    console.log('val', val, separator);
     if (val === '' || typeof val === 'undefined') {
       return '';
     }
