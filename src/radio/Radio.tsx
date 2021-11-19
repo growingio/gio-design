@@ -45,14 +45,13 @@ const InnerRadio: React.ForwardRefRenderFunction<HTMLInputElement, IRadioProps> 
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
-    <label className={wrapperCls}>
+    <label className={wrapperCls} style={style}>
       <input
         type="radio"
         ref={ref}
         className={classes}
         value={restProps.value}
         checked={restProps.checked}
-        style={style}
         color={color}
         disabled={restProps.disabled}
         defaultChecked={defaultChecked}

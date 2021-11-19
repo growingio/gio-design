@@ -9,7 +9,7 @@ import { TogglesProps } from './interface';
 import WithRef from '../utils/withRef';
 
 const InnerToggle: React.ForwardRefRenderFunction<HTMLInputElement, TogglesProps> = (props, ref) => {
-  const { defaultOn = false, on, disabled, className, checkedChildren, uncheckedChildren, onChange } = props;
+  const { defaultOn = false, on, disabled, className, checkedChildren, uncheckedChildren, onChange, style } = props;
   const prefixCls = usePrefixCls('toggle-new');
 
   const [status, setStatus] = useControlledState<boolean>(on, defaultOn);
@@ -30,7 +30,7 @@ const InnerToggle: React.ForwardRefRenderFunction<HTMLInputElement, TogglesProps
   const wrapperCls = classnames({ [`${prefixCls}-disabled`]: disabled }, `${prefixCls}-normal`, className);
 
   return (
-    <label aria-hidden="true" className={wrapperCls}>
+    <label aria-hidden="true" className={wrapperCls} style={style}>
       <input
         disabled={disabled}
         type="checkbox"
