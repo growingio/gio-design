@@ -30,6 +30,8 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
     prefix,
     suffix,
     size,
+    className,
+    style,
     ...restProps
   } = props;
 
@@ -79,6 +81,8 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
         value={validValue(controlledValue) ? formatDates(controlledValue) : undefined}
         size={size}
         suffix={suffix}
+        className={className}
+        style={style}
       />
     );
   }
