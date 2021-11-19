@@ -280,14 +280,6 @@ InputButtonDefault.args = {
   onChange: () => action('onChange'),
 };
 
-const HidePrefixTemplate = (args: InputButtonProps) => <InputButton {...args} value="请选择事件" />;
-export const InputButtonHidePrefix = HidePrefixTemplate.bind({});
-InputButtonHidePrefix.args = {
-  hidePrefix: true,
-  onChange: () => action('onChange'),
-  prefix: <EventsPresetOutlined />,
-  placeholder: '请选择事件',
-};
 const customPrefixTemplate = (args: InputButtonProps) => (
   <InputButton {...args} value="请选择事件" prefix={<PlusOutlined />} suffix={<FilterOutlined />} />
 );

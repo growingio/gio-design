@@ -40,7 +40,6 @@ const RowsSelector: React.FC<{
             previousPageSizeRef.current = currentPageSize;
           }}
           triggerProps={{
-            hidePrefix: true,
             allowClear: false,
             style: {
               width: 85,

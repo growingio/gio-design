@@ -27,7 +27,6 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     allowClear = false,
     prefix,
     suffix,
-    hidePrefix,
     size,
     ...restProps
   } = props;
@@ -154,7 +153,6 @@ const PastTimePicker = (props: PastTimePickerProps) => {
         value={timeRange && humanizeTimeRange(timeRange)}
         size={size}
         suffix={suffix}
-        hidePrefix={hidePrefix}
       />
     );
   }
