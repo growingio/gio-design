@@ -29,6 +29,8 @@ export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) =>
     suffix,
     locale: customizeLocale,
     onVisibleChange,
+    className,
+    style,
     ...restProps
   } = props;
   const [visible, setVisible] = useControlledState(popoverVisible, false);
@@ -93,6 +95,8 @@ export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) =>
         placeholder={placeholder ?? timeSelect}
         size={size}
         suffix={suffix}
+        className={className}
+        style={style}
       />
     );
   }

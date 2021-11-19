@@ -28,6 +28,8 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     prefix,
     suffix,
     size,
+    className,
+    style,
     ...restProps
   } = props;
 
@@ -153,6 +155,8 @@ const PastTimePicker = (props: PastTimePickerProps) => {
         value={timeRange && humanizeTimeRange(timeRange)}
         size={size}
         suffix={suffix}
+        className={className}
+        style={style}
       />
     );
   }
