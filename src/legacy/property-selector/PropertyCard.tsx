@@ -10,7 +10,7 @@ import { useLocale, usePrefixCls } from '@gio-design/utils';
 import { PropertyTypes, PropertyCardProps } from './interfaces';
 import useAsync from '../hooks/useAsync';
 import defaultLocale from './locales/zh-CN';
-import Card from '../../card'; // new
+import Card from '../../legacy/card';
 import Loading from '../../loading'; // new
 import Tag from '../../tag'; // new
 

@@ -23,6 +23,8 @@ export default function CardPage() {
       <p>Upgrading Guide</p>
       <ul>
         <li>action属性支持，右上角标题可以放ReactNode</li>
+        <li>去除footer</li>
+        <li>支持fullWidthContent 让内容宽度拉满</li>
       </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '简单结构' })}</Subheading>
@@ -54,17 +56,20 @@ export default function CardPage() {
         <Story id="upgraded-card--multiple" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: '有底脚的卡片' })}</Subheading>
-      <p>
-        {formatMessage({ defaultMessage: '1、有【底脚】的卡片一般底脚信息可为状态描述或按钮。' })}
-        <br />
-        {formatMessage({
-          defaultMessage:
-            '2、若卡片底脚有按钮的情况，默认使用小号（30px）按钮；当卡片存在按钮时，默认卡片为不可点击，只有按钮为可点击。',
-        })}
-      </p>
+      <Subheading>{formatMessage({ defaultMessage: 'info-card' })}</Subheading>
+      <p>pro中的infocard情况</p>
       <Canvas>
-        <Story id="upgraded-card--footer" />
+        <Story id="upgraded-card--info-card" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'info-card' })}</Subheading>
+      <p>仅有description情况</p>
+      <Canvas>
+        <Story id="upgraded-card--only-des" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'table-card' })}</Subheading>
+      <p>pro中的tablecards 情况</p>
+      <Canvas>
+        <Story id="upgraded-card--table-card" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
