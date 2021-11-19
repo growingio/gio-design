@@ -1,6 +1,5 @@
 import { Placement as PlacementRepo } from '@popperjs/core';
 import React from 'react';
-import { PropsWithChildren } from '../utils/interfaces';
 
 export type TriggerAction = 'click' | 'hover' | 'focus';
 
