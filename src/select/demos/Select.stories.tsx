@@ -47,7 +47,6 @@ const Template: Story<SelectProps> = (props) => {
           overlayStyle={{ width: 240 }}
           triggerProps={{
             placeholder: '请选择',
-            hidePrefix: true,
             style: { width: 240, textAlign: 'left' },
             allowClear: false,
           }}

@@ -7,13 +7,13 @@
 @input-btn-input-prefix-cls: ~'@{component-prefix}-input-btn-new__input';
 
 .@{input-btn-prefix-cls} {
-  display: flex;
   cursor: pointer;
-
   .@{input-btn-input-prefix-cls} {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    input {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
     background-color: @gray-0;
     cursor: pointer;
 
@@ -52,24 +52,33 @@
     }
   }
   &__active,
-  &:hover {
-    .@{input-btn-input-prefix-cls} {
-      color: @blue-3;
-      background-color: @gray-1;
-    }
-    .@{input-prefix-cls} {
-      &__prefix {
+  &__hover {
+    &:hover {
+      .@{input-btn-input-prefix-cls} {
+        background-color: @gray-1;
+      }
+      input {
         color: @blue-3;
         cursor: pointer;
-        svg {
+      }
+      .@{input-prefix-cls} {
+        &__prefix {
           color: @blue-3;
           cursor: pointer;
+          svg {
+            color: @blue-3;
+            cursor: pointer;
+          }
         }
       }
     }
   }
   &__disabled {
     background-color: @gray-0;
+
+    input {
+      color: @gray-3;
+    }
     svg {
       color: @gray-3;
       cursor: not-allowed;

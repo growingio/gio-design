@@ -24,7 +24,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
     format: formatString,
     prefix,
     suffix,
-    hidePrefix,
     size,
     ...restProps
   } = props;
@@ -64,7 +63,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
         value={controlledValue && formatDate(controlledValue)}
         size={size}
         suffix={suffix}
-        hidePrefix={hidePrefix}
       />
     );
   }

@@ -1,4 +1,4 @@
-import { CloseCircleFilled, DownFilled, EventsPresetOutlined } from '@gio-design/icons';
+import { CloseCircleFilled, DownFilled } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
 import React, { useCallback, useMemo } from 'react';
@@ -17,8 +17,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     defaultValue,
     value: enterValue,
     disabled,
-    hidePrefix = false,
-    allowClear,
+    allowClear = false,
     className,
     style = {},
     maxWidth,
@@ -54,13 +53,13 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   );
 
   const wrapperCls = useMemo(
-    () => classNames(className, prefixCls, { [`${prefixCls}__disabled`]: disabled, [`${prefixCls}__active`]: active }),
+    () =>
+      classNames(className, prefixCls, {
+        [`${prefixCls}__hover`]: !disabled,
+        [`${prefixCls}__disabled`]: disabled,
+        [`${prefixCls}__active`]: active,
+      }),
     [className, prefixCls, disabled, active]
-  );
-
-  const prefix = useMemo(
-    () => (hidePrefix ? null : customizePrefix || <EventsPresetOutlined />),
-    [customizePrefix, hidePrefix]
   );
 
   const suffix = useMemo(() => {
@@ -78,9 +77,10 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
         style={{ ...style, ...styles }}
         className={inputCls}
         type="button"
-        value={value || placeholder}
+        value={value}
+        placeholder={placeholder}
         onChange={onChange}
-        prefix={prefix}
+        prefix={customizePrefix}
         suffix={suffix}
         ref={ref}
         size={size}

@@ -24,7 +24,7 @@ export interface ListPickerProps extends Omit<ListProps, 'title' | 'id'> {
    */
   triggerProps?: Pick<
     InputButtonProps,
-    'disabled' | 'className' | 'style' | 'allowClear' | 'hidePrefix' | 'maxWidth' | 'value' | 'prefix' | 'suffix'
+    'disabled' | 'className' | 'style' | 'allowClear' | 'maxWidth' | 'value' | 'prefix' | 'suffix'
   >;
   /**
    * custom trigger render

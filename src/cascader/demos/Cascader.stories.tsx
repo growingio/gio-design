@@ -57,7 +57,7 @@ const Template: Story<CascaderProps> = (props) => {
         <Cascader
           options={options}
           overlayStyle={{ width: 240 }}
-          triggerProps={{ placeholder: '请选择', hidePrefix: true, style: { width: 240, textAlign: 'left' } }}
+          triggerProps={{ placeholder: '请选择', style: { width: 240, textAlign: 'left' } }}
           size="small"
           {...props}
         />

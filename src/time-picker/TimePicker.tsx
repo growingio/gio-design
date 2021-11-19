@@ -26,7 +26,6 @@ export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) =>
     overlayClassName,
     size,
     prefix,
-    hidePrefix,
     suffix,
     locale: customizeLocale,
     onVisibleChange,
@@ -94,7 +93,6 @@ export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) =>
         placeholder={placeholder ?? timeSelect}
         size={size}
         suffix={suffix}
-        hidePrefix={hidePrefix}
       />
     );
   }
