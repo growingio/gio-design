@@ -143,8 +143,8 @@ function StringAttrSelect(props: StringAttrSelectProps) {
           stateless
           value={checkValue}
           dataSource={checkOptions}
-          width={293}
-          height={250}
+          width="100%"
+          height={280}
           onClick={changeCheckValue}
         />
       )}

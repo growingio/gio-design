@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useState } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import RangeContext from 'rc-picker/lib/RangeContext';
 import { RangeValue } from 'rc-picker/lib/interface';
-import { usePrefixCls } from '@gio-design/utils';
+import { useControlledState, usePrefixCls } from '@gio-design/utils';
 import isBefore from 'date-fns/isBefore';
 import StaticDatePicker, { StaticDatePickerContext } from '../static-date-picker';
 import { StaticDateRangePickerProps } from './interfaces';
@@ -24,7 +24,8 @@ function StaticDateRangePicker({
   const [viewDates, setViewDates] = React.useState<[Date, Date]>(defaultViewDates ?? getDefaultViewDates());
   const [hoveredDates, setHoveredDates] = React.useState<RangeValue<Date>>();
   const [dateIndex, setDateIndex] = React.useState<number>(0);
-  const [selectedValue, setSelectedValue] = useState<RangeValue<Date>>(value ?? defaultValue);
+  // @ts-ignore
+  const [selectedValue, setSelectedValue] = useControlledState<RangeValue<Date>>(value, defaultValue);
   const prefixCls = usePrefixCls('date-range-picker');
 
   function renderPicker(position: 'left' | 'right') {

@@ -73,7 +73,7 @@ const Select: React.FC<SelectProps> = (props) => {
   };
 
   const triggerStyle: React.CSSProperties = isObject(triggerProps?.style)
-    ? { width: '100%', ...triggerProps.style }
+    ? { width: '100%', ...triggerProps?.style }
     : { width: '100%' };
 
   const renderTrigger = () => (
