@@ -315,3 +315,25 @@ Disabled.args = {
     },
   ],
 };
+
+const JSXTemplateGroup: Story<ISwitchGroupProps> = (args) => {
+  const tabs = [
+    { key: 'key1', value: 'value1' },
+    { key: 'key2', value: 'value2' },
+  ];
+  const [selectedValue, setSelectedValue] = React.useState('value1');
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue(e.target.value);
+  };
+  return (
+    <>
+      <Switch {...args} size="normal" value={selectedValue} onChange={onChange}>
+        {tabs.map((t) => (
+          <Switch.Item value={t.value}>{t.value}</Switch.Item>
+        ))}
+      </Switch>
+    </>
+  );
+};
+
+export const JSX = JSXTemplateGroup.bind({});

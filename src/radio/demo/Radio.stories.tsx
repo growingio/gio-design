@@ -168,3 +168,25 @@ Group.args = {
     },
   ],
 };
+
+const JSXTemplateGroup: Story<IRadioGroupProps> = (args) => {
+  const tabs = [
+    { key: 'key1', value: 'value1' },
+    { key: 'key2', value: 'value2' },
+  ];
+  const [selectedValue, setSelectedValue] = React.useState('value1');
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue(e.target.value);
+  };
+  return (
+    <>
+      <RadioGroup {...args} value={selectedValue} onChange={onChange}>
+        {tabs.map((t) => (
+          <Radio value={t.value}>{t.value}</Radio>
+        ))}
+      </RadioGroup>
+    </>
+  );
+};
+
+export const JSX = JSXTemplateGroup.bind({});

@@ -24,13 +24,13 @@ const InnerSwitchItem: React.ForwardRefRenderFunction<HTMLInputElement, ISwitchP
   }
 
   const wrapperCls = classnames(className, `${prefixCls}__wrapper`, {
-    [`${prefixCls}__wrapper__checked`]: restProps.checked,
+    [`${prefixCls}__wrapper__checked`]: switchProps.checked,
     [`${prefixCls}__wrapper__disabled`]: switchProps.disabled,
   });
 
   const classes = classnames([className, prefixCls], {
-    [`${prefixCls}-${restProps.checked ? 'checked' : ''}`]: restProps.checked,
-    [`${prefixCls}-${restProps.disabled ? 'disabled' : ''}`]: restProps.disabled,
+    [`${prefixCls}-${restProps.checked ? 'checked' : ''}`]: switchProps.checked,
+    [`${prefixCls}-${restProps.disabled ? 'disabled' : ''}`]: switchProps.disabled,
   });
 
   return (
@@ -42,10 +42,10 @@ const InnerSwitchItem: React.ForwardRefRenderFunction<HTMLInputElement, ISwitchP
         className={classes}
         value={restProps.value}
         checked={restProps.checked}
-        onChange={handleChange}
         style={style}
         disabled={restProps.disabled}
         defaultChecked={defaultChecked}
+        {...switchProps}
       />
       <span>
         {prefix}
