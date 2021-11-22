@@ -1,0 +1,26 @@
+@import '../../stylesheet/variables/index.less';
+@import '../../tabs/style/index.less';
+
+@tabs-prefix-cls: ~'@{component-prefix}-tabs-new';
+
+.@{tabs-prefix-cls} {
+  &-tablist {
+    display: flex;
+    &-stepbar {
+      flex: 1;
+      & > button {
+        width: 100%;
+      }
+    }
+    .stepbar-uncomplete {
+      & > button {
+        color: @gray-3;
+        outline-style: none;
+        cursor: not-allowed;
+        &:hover {
+          color: @gray-3;
+        }
+      }
+    }
+  }
+}
