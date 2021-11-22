@@ -77,7 +77,7 @@ const Template: Story<CascaderProps> = (props) => {
             <List>
               <CascaderItem label="切" value="cat">
                 <List>
-                  <CascaderItem label="坏了" value="bad" />
+                  <CascaderItem label="坏了" value="bad" disabledTooltip="123123121" />
                   <CascaderItem label="没坏" value="good" />
                 </List>
               </CascaderItem>

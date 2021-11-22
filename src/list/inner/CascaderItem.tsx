@@ -31,7 +31,6 @@ const CascaderItem: React.ForwardRefRenderFunction<
   const isSelected = initValue?.startsWith(generateString(value, selectParent));
   const { setOptions } = useContext(ListContext);
   const childSelectPrent = generateSelectParent(label, value, selectParent);
-
   const childNodeOptions = convertChildrenToData(children);
   const mergedOptions = useMemo(() => [...childNodeOptions, ...childrens], [childNodeOptions, childrens]);
 
@@ -82,12 +81,11 @@ const CascaderItem: React.ForwardRefRenderFunction<
         <div className={prefixClsItem}>
           <Popover
             placement="rightTop"
-            strategy="fixed"
-            trigger="hover"
             overlayClassName={popoverClassName}
             content={content()}
+            getContainer={(node) => node || document.body}
           >
-            {trigger as React.ReactElement}
+            <div className={`${prefixClsItem}--trigger`}>{trigger as React.ReactElement}</div>
           </Popover>
         </div>
       );

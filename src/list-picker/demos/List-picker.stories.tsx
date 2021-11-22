@@ -26,8 +26,12 @@ const createOption = (index: number) => ({
   groupId: groupIds[Math.floor(index % 4)],
   groupName: groupNames[Math.floor(index % 4)],
 });
+const createSingleOption = (index: number) => ({
+  label: uniqueId(`label-${index.toString()}`),
+  value: uniqueId(`value-${index.toString()}`),
+});
 const largeOptions = new Array(200).fill(0).map((v, i) => createOption(i));
-
+const simpleLargeOptions = new Array(200).fill(0).map((v, i) => createSingleOption(i));
 const Template: Story<ListPickerProps> = () => {
   const [value, setValue] = useState<undefined | string>('banana');
   const [multipleValue, setMultipleValue] = useState<undefined | string[]>(undefined);
@@ -96,6 +100,28 @@ const Template: Story<ListPickerProps> = () => {
                     { label: '标签2', value: 'tag2' },
                   ]}
                 />
+              </List.Selection>
+            </Tab>
+          </Tabs>
+        </ListPicker>
+      </div>
+      <div>
+        <h3>scroll list</h3>
+        <ListPicker placeholder="请选择">
+          <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>
+            <Tab label="tab1" value="tab1">
+              <List style={{ width: '240px' }} options={simpleLargeOptions} />
+            </Tab>
+          </Tabs>
+        </ListPicker>
+      </div>
+      <div>
+        <h3>scroll selection list</h3>
+        <ListPicker placeholder="请选择">
+          <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>
+            <Tab label="tab1" value="tab1">
+              <List.Selection>
+                <List id="group2" title="分组2" style={{ width: '240px' }} options={simpleLargeOptions} />
               </List.Selection>
             </Tab>
           </Tabs>
