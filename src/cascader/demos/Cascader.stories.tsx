@@ -73,15 +73,15 @@ const Template: Story<CascaderProps> = (props) => {
       </div>
       <div className="demo-box">
         <Cascader triggerProps={{ placeholder: '请选择', allowClear: false }} size="normal" {...props}>
-          <CascaderItem label="苹果" value="apple">
-            <List model="cascader">
+          <CascaderItem label="苹果" value="apple" disabled>
+            <List>
               <CascaderItem label="切" value="cat">
-                <List model="cascader">
+                <List>
                   <CascaderItem label="坏了" value="bad" />
                   <CascaderItem label="没坏" value="good" />
                 </List>
               </CascaderItem>
-              <CascaderItem label="掰开" value="bye" />
+              <CascaderItem prefix="233" label="掰开" value="bye" />
             </List>
           </CascaderItem>
         </Cascader>

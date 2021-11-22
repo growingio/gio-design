@@ -31,8 +31,8 @@ const Popover = (props: PopoverProps) => {
   const prefixCls = usePrefixCls('popover-new', customPrefixCls);
   const [visible, setVisible] = useState(defaultVisible);
   const overContentRef = useRef<boolean>(false);
-  const referenceElement = useRef<HTMLDivElement | null>(null);
-  const popperElement = useRef<HTMLDivElement | null>(null);
+  const [referenceElement, setReferenceELement] = useState<null | HTMLElement>(null);
+  const [popperElement, setPopperElement] = useState<null | HTMLElement>(null);
   const arrowElement = useRef<HTMLDivElement | null>(null);
 
   const contentCls = useMemo(
@@ -64,12 +64,12 @@ const Popover = (props: PopoverProps) => {
     [prefixCls, overlayInnerClassName]
   );
 
-  const { styles, attributes } = usePopper(referenceElement.current, popperElement.current, {
+  const { styles, attributes, ...popperProps } = usePopper(referenceElement, popperElement, {
     placement: placements[placement],
     modifiers: [{ name: 'arrow', options: { element: arrowElement.current } }],
     strategy,
   });
-
+  const { update } = popperProps;
   const updateVisible = useCallback(
     (resetVisible: boolean) => {
       let realVisible = isUndefined(enterVisible) ? resetVisible : enterVisible;
@@ -84,13 +84,12 @@ const Popover = (props: PopoverProps) => {
   const onDocumentClick = useCallback(
     (event: MouseEvent) => {
       const { target } = event;
-      if (!referenceElement?.current?.contains(target as Node) && !popperElement?.current?.contains(target as Node)) {
+      if (!referenceElement?.contains(target as Node) && !popperElement?.contains(target as Node)) {
         updateVisible(false);
       }
     },
-    [updateVisible]
+    [popperElement, referenceElement, updateVisible]
   );
-
   useEffect(() => {
     if (!isUndefined(enterVisible)) {
       setVisible(enterVisible);
@@ -107,6 +106,18 @@ const Popover = (props: PopoverProps) => {
     };
   }, [onDocumentClick]);
 
+  // Handle tooltip DOM mutation changes (aka mutation observer)
+  useEffect(() => {
+    if (popperElement != null && update != null) {
+      const observer = new MutationObserver(update);
+      observer.observe(popperElement, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+      });
+      observer.disconnect();
+    }
+  }, [popperElement, update]);
   const isClickToShow = useMemo(() => trigger.indexOf('click') !== -1, [trigger]);
 
   const isHoverToShow = useMemo(() => trigger.indexOf('hover') !== -1, [trigger]);
@@ -188,7 +199,7 @@ const Popover = (props: PopoverProps) => {
     <div
       {...attributes.popper}
       className={contentCls}
-      ref={popperElement}
+      ref={(instance) => setPopperElement(instance)}
       style={{ ...(overlayStyle || {}), ...styles.popper }}
       onMouseEnter={onContentMouseEnter}
       onMouseLeave={onContentMouseLeave}
@@ -202,7 +213,7 @@ const Popover = (props: PopoverProps) => {
 
   // =============== refs =====================
   let triggerNode = (
-    <div className={`${prefixCls}__popcorn`} ref={referenceElement} {...divRoles}>
+    <div className={`${prefixCls}__popcorn`} ref={(instance) => setReferenceELement(instance)} {...divRoles}>
       {children}
     </div>
   );
@@ -215,16 +226,19 @@ const Popover = (props: PopoverProps) => {
     };
 
     const child = React.Children.only(children);
-    cloneProps.ref = composeRef(referenceElement, (child as any).ref);
+    cloneProps.ref = composeRef(setReferenceELement, (child as any).ref);
     triggerNode = React.cloneElement(child as React.ReactElement, cloneProps);
   }
 
   return (
     <>
       {triggerNode}
-      {typeof getContainer === 'function'
-        ? ReactDOM.createPortal(contentRender, getContainer(referenceElement.current as HTMLDivElement))
-        : contentRender}
+      {
+        // visible &&
+        typeof getContainer === 'function'
+          ? ReactDOM.createPortal(contentRender, getContainer(referenceElement as HTMLDivElement))
+          : contentRender
+      }
     </>
   );
 };

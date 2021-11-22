@@ -2,6 +2,8 @@
 @import '~@gio-design/utils/lib/less/mixins.less';
 @list-picker-prefix-cls: ~'@{component-prefix}-list-picker--new';
 @selection-prefix-cls: ~'@{component-prefix}-list-new--selection';
+@tab-panel-cls: ~'@{component-prefix}-tabs-new-tabpanel';
+
 @list-prefix-cls: ~'@{component-prefix}-list-new';
 .@{list-picker-prefix-cls} {
   box-sizing: border-box;
@@ -34,5 +36,21 @@
     // margin-bottom: 8px;
     padding: 0;
     .scrollbar();
+  }
+  & .@{tab-panel-cls} {
+    .@{selection-prefix-cls} {
+      height: auto;
+      max-height: 360px;
+      // margin-bottom: 8px;
+      padding-top: 8px;
+      .scrollbar();
+    }
+    & > .@{list-prefix-cls} {
+      height: auto;
+      max-height: 360px;
+      // margin-bottom: 8px;
+      padding-top: 8px;
+      .scrollbar();
+    }
   }
 }
