@@ -1,8 +1,9 @@
 import Select from './Select';
 import Option from './Option';
+import WithSubComponent from '../utils/withSubComponent';
 
 export type { SelectProps, TriggerProps } from './interface';
 export type { OptionProps } from '../list/interfance';
 export { Select, Option };
 
-export default Select;
+export default WithSubComponent(Select, { Option });

@@ -121,8 +121,8 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
       <Item
         {...option}
         key={option.value}
-        prefix={prefix?.(option)}
-        suffix={suffix?.(option)}
+        prefix={option?.prefix ?? prefix?.(option)}
+        suffix={option?.suffix ?? suffix?.(option)}
         disabled={option?.disabled ?? disabled}
         isMultiple={isMultipe(mergedModel)}
         isCascader={isCascader(mergedModel)}

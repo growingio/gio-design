@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import '../style';
+import { uniqueId } from 'lodash';
 import { OptionProps } from '../../list/interfance';
 // import { uniqueId } from 'lodash';
 // import { uniqBy, uniqueId } from 'lodash';
@@ -15,22 +16,21 @@ export default {
   title: 'Upgraded/ListPicker',
   component: ListPicker,
 } as Meta;
-// const groupIds = ['custom', 'virtual', 'tag', 'visible'];
-// const groupNames = ['埋点', '虚拟', '标签', '属性'];
+const groupIds = ['custom', 'virtual', 'tag', 'visible'];
+const groupNames = ['埋点', '虚拟', '标签', '属性'];
 // const selectionValues = ['all', 'apple', 'banana'];
 // const selectionNames = ['全局', '苹果', '香蕉'];
-// const createOption = (index: number) => ({
-//   label: uniqueId(`label-${index.toString()}`),
-//   value: uniqueId(`value-${index.toString()}`),
-//   groupId: groupIds[Math.floor(index % 4)],
-//   groupName: groupNames[Math.floor(index % 4)],
-//   selectionValue: selectionValues[Math.floor(index % 3)],
-//   selectionTitle: selectionNames[Math.floor(index % 3)],
-// });
+const createOption = (index: number) => ({
+  label: uniqueId(`label-${index.toString()}`),
+  value: uniqueId(`value-${index.toString()}`),
+  groupId: groupIds[Math.floor(index % 4)],
+  groupName: groupNames[Math.floor(index % 4)],
+});
+const largeOptions = new Array(200).fill(0).map((v, i) => createOption(i));
 
 const Template: Story<ListPickerProps> = () => {
-  const [value, setValue] = useState('banana2');
-  const [multipleValue, setMultipleValue] = useState(['ziyi']);
+  const [value, setValue] = useState<undefined | string>('banana');
+  const [multipleValue, setMultipleValue] = useState<undefined | string[]>(undefined);
   const [activeTab, setActiveTab] = useState('tab1');
   const [search, setSearch] = useState('');
   const onChange = (val?: string, opt?: OptionProps | OptionProps[]) => {
@@ -46,8 +46,9 @@ const Template: Story<ListPickerProps> = () => {
           onChange={onChange}
           overlayStyle={{ width: '240px' }}
           onClear={() => {
-            setValue('');
+            // setValue(undefined);
           }}
+          triggerProps={{ allowClear: true }}
           placeholder="请选择"
         >
           <SearchBar
@@ -179,6 +180,30 @@ const Template: Story<ListPickerProps> = () => {
                 { label: '子二', value: 'zier' },
               ]}
             />
+          </ListPicker>
+        </div>
+
+        <div className="demo-box">
+          <ListPicker
+            value={multipleValue}
+            onChange={(val) => {
+              console.log('multiple onChange 并不会触发', val);
+            }}
+            overlayStyle={{ width: '240px' }}
+            model="multiple"
+            onClear={() => {
+              setMultipleValue(undefined);
+            }}
+            onConfim={(val) => setMultipleValue(val as any)}
+            placeholder="请选择"
+          >
+            <SearchBar
+              size="small"
+              style={{ width: '100%' }}
+              placeholder="请搜索名称"
+              onSearch={(val: string) => setSearch(val)}
+            />
+            <List.Selection options={largeOptions} />
           </ListPicker>
         </div>
       </div>

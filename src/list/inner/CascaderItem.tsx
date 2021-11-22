@@ -46,13 +46,14 @@ const CascaderItem: React.ForwardRefRenderFunction<
   const content = () => {
     if (!isEmpty(childrens)) {
       return (
-        <List model="cascader" className={prefixCls}>
+        <List model="cascader" className={prefixCls} disabled={disabled}>
           {childrens?.map((child) => (
             <CascaderItem
               label={child?.label}
               value={child?.value}
               childrens={child?.childrens as CascaderItemProps[]}
               selectParent={childSelectPrent}
+              disabled={disabled}
             />
           ))}
         </List>
@@ -63,6 +64,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
       return React.cloneElement<ListProps>(children, {
         ...children.props,
         model: 'cascader',
+        disabled,
         className: classNames(children.props?.className, prefixCls),
         children: React.Children.toArray(children?.props.children).map((child) =>
           React.cloneElement<OptionProps>(child as React.ReactElement, {

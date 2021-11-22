@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { isEqual } from 'lodash';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
 import Trigger from './Trigger';
@@ -19,6 +20,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     placeholder,
     onClear,
     value: controlledValue,
+    defaultValue,
     trigger = 'click',
     visible: controlledVisible,
     onVisibleChange,
@@ -40,21 +42,28 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
-  const [value, setValue] = useState(controlledValue);
-  const [title, setTitle] = useState<string | React.ReactNode>('');
+  const [value, setValue] = useState(controlledValue || defaultValue);
+  const [title, setTitle] = useState<string | React.ReactNode>(undefined);
 
   const { options, setOptions, getLabelByValue, getOptionsByValue } = useCacheOptions();
 
   // title仅跟随controlledValue变动
   useEffect(() => {
     setTitle(getLabelByValue(controlledValue, separator));
-  }, [controlledValue, getLabelByValue, separator]);
+  }, [controlledValue, getLabelByValue, separator, options]);
 
   useEffect(() => {
     if (!needConfim) {
+      console.log('执行', controlledValue);
       setValue(controlledValue);
     }
   }, [controlledValue, needConfim, setValue]);
+  useEffect(() => {
+    if (needConfim && !visible && !isEqual(controlledValue, value)) {
+      setValue(controlledValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible]);
   // methods
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);
@@ -86,6 +95,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     }
     return (
       <Trigger
+        onClick={() => setVisible(!visible)}
         value={title}
         {...triggerProp}
         // disabled={disabled}
@@ -101,7 +111,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   const renderOverlay = () => (
     <div className={classNames(defaultPrefix, className)} style={style}>
       {children}
-      {model === 'multiple' && (
+      {model === 'multiple' && needConfim && (
         <Button style={{ width: '100%' }} onClick={() => handleConfim()}>
           {confimText}
         </Button>

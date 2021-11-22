@@ -48,7 +48,7 @@ const BaseItem: React.ForwardRefRenderFunction<
   );
   return (
     <Tooltip
-      disabled={disabled && !isEmpty(disabledTooltip)}
+      disabled={!disabled || isEmpty(disabledTooltip)}
       strategy="fixed"
       getContainer={() => document.body}
       title={disabledTooltip}
