@@ -269,6 +269,7 @@ export const InputButtonDemo = InputButtonTemplate.bind({});
 InputButtonDemo.args = {
   onChange: () => action('onChange'),
   prefix: <EventsPresetOutlined />,
+  value: '',
   placeholder: '请选择事件',
 };
 
