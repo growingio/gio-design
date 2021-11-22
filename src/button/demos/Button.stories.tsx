@@ -10,6 +10,7 @@ import Docs from './ButtonPage';
 export default {
   title: 'Upgraded/Button',
   component: Button,
+  subcomponents: { IconButton: Button.IconButton },
   argTypes: {
     prefix: {
       control: { type: 'text' }, // 不约束react_node会传入对象导致报错

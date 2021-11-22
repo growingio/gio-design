@@ -3,6 +3,7 @@ import { usePrefixCls } from '@gio-design/utils';
 import classnames from 'classnames';
 import type { TitleProps } from './interfaces';
 
+export { TitleProps };
 const TITLE_ELE_LIST = [1, 2, 3, 4];
 
 const Title: React.FC<TitleProps> = ({ className, level = 1, ...restProps }: TitleProps) => {

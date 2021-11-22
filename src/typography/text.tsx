@@ -6,6 +6,7 @@ import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC';
 import type { TextProps } from './interfaces';
 import Tooltip from '../tooltip';
 
+export { TextProps };
 const LinesEllipsis = responsiveHOC()(InnerLinesEllipsis);
 
 function Text({
