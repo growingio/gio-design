@@ -20,7 +20,7 @@ export default {
     },
   },
 } as Meta;
-const obj: any = {
+const obj: Record<string, TagProps['status']> = {
   普通标签: 'default',
   灰色标签: 'draft',
   信息标签: 'info',
@@ -39,7 +39,7 @@ const DefaultTemplate: Story<TagProps> = (args) => (
         <td>status</td>
         <td>
           {[...new Array(6)].map((item, index) => (
-            <Tag className="tag_website_demo_tag" status={Object.values(obj)[index] as TagProps['status']} {...args}>
+            <Tag {...args} className="tag_website_demo_tag" status={Object.values(obj)[index] as TagProps['status']}>
               {Object.keys(obj)[index]}
             </Tag>
           ))}
@@ -50,9 +50,9 @@ const DefaultTemplate: Story<TagProps> = (args) => (
         <td>
           {[...new Array(6)].map((item, index) => (
             <Tag
+              {...args}
               className="tag_website_demo_tag"
               status={Object.values(obj)[index] as TagProps['status']}
-              {...args}
               type="highlight"
             >
               {Object.keys(obj)[index]}
@@ -65,9 +65,9 @@ const DefaultTemplate: Story<TagProps> = (args) => (
         <td>
           {[...new Array(6)].map((item, index) => (
             <Tag
+              {...args}
               className="tag_website_demo_tag"
               status={Object.values(obj)[index] as TagProps['status']}
-              {...args}
               size="small"
               style={{ margin: '10' }}
             >
@@ -77,9 +77,9 @@ const DefaultTemplate: Story<TagProps> = (args) => (
           <br />
           {[...new Array(6)].map((item, index) => (
             <Tag
+              {...args}
               className="tag_website_demo_tag"
               status={Object.values(obj)[index] as TagProps['status']}
-              {...args}
               size="middle"
             >
               {Object.keys(obj)[index]}
@@ -92,9 +92,9 @@ const DefaultTemplate: Story<TagProps> = (args) => (
         <td>
           {[...new Array(6)].map((item, index) => (
             <Tag
+              {...args}
               className="tag_website_demo_tag"
               status={Object.values(obj)[index] as TagProps['status']}
-              {...args}
               size="small"
               type="highlight"
               style={{ margin: '10' }}
@@ -106,9 +106,9 @@ const DefaultTemplate: Story<TagProps> = (args) => (
           <br />
           {[...new Array(6)].map((item, index) => (
             <Tag
+              {...args}
               className="tag_website_demo_tag"
               status={Object.values(obj)[index] as TagProps['status']}
-              {...args}
               type="highlight"
               size="middle"
               disabled
@@ -123,9 +123,9 @@ const DefaultTemplate: Story<TagProps> = (args) => (
         <td>
           {[...new Array(6)].map((item, index) => (
             <Tag
+              {...args}
               className="tag_website_demo_tag"
               status={Object.values(obj)[index] as TagProps['status']}
-              {...args}
               size="middle"
               closable
             >
@@ -135,9 +135,9 @@ const DefaultTemplate: Story<TagProps> = (args) => (
           <br />
           {[...new Array(6)].map((item, index) => (
             <Tag
+              {...args}
               className="tag_website_demo_tag"
               status={Object.values(obj)[index] as TagProps['status']}
-              {...args}
               size="middle"
               closable
             >

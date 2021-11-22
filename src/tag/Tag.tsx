@@ -4,20 +4,19 @@ import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
 import { TagProps } from './interface';
 
-const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: TagProps) => {
-  const {
-    children,
-    type = 'normal',
-    size = 'middle',
-    status,
-    closable,
-    onClose,
-    onClick,
-    disabled,
-    className,
-    customizePrefixCls,
-    style,
-  } = props;
+const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = ({
+  children,
+  type = 'normal',
+  size = 'middle',
+  status,
+  closable,
+  onClose,
+  onClick,
+  disabled,
+  className,
+  customizePrefixCls,
+  style,
+}: TagProps) => {
   const prefix = usePrefixCls('tag-new', customizePrefixCls);
 
   return (

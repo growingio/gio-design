@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
-import Text from '../typograhy/text';
+import Text from '../typography/text';
 import { isOnlyAcceptImg } from './utils';
 import { UploadPrefixClsContext } from './Upload';
 import { IUploadProps, IUploadListProps, IUploadFile, STATUS_SUCCESS, STATUS_ERROR } from './interface';

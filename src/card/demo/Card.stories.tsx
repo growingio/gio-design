@@ -13,7 +13,7 @@ import { Item, List } from '../../list';
 import { Basic, Empty, TreeData } from '../../table/demos/Table.stories';
 import { HaveChildren } from '../../tabs/demos/Tabs.stories';
 import { Card, Divider } from '../..';
-import Text from '../../typograhy/text';
+import Text from '../../typography/text';
 
 export default {
   title: 'upgraded/Card',
@@ -58,7 +58,7 @@ const infoCardTemplate = () => (
     <Divider
       style={{
         width: '100%',
-        marginTop: '0px',
+        margin: '0px',
       }}
     />
     <Basic />
@@ -152,7 +152,7 @@ Default.args = {
         <Dropdown
           placement="bottomRight"
           content={
-            <List>
+            <List style={{ padding: '0' }}>
               <Item value="1">111111</Item>
               <Item value="2">222222</Item>
             </List>
@@ -226,7 +226,7 @@ onlyDes.args = {
           <Dropdown
             placement="bottomRight"
             content={
-              <List>
+              <List style={{ padding: '0' }}>
                 <Item value="1">111111</Item>
                 <Item value="2">222222</Item>
               </List>

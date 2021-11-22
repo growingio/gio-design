@@ -4,7 +4,7 @@ import { usePrefixCls } from '@gio-design/utils';
 import { CardProps } from './interfaces';
 import WithRef from '../utils/withRef';
 
-const CardMeta = WithRef<HTMLDivElement, HTMLAttributes<CardProps> & CardProps>(
+export const Card = WithRef<HTMLDivElement, HTMLAttributes<CardProps> & CardProps>(
   (
     {
       fullWidthContent = false,
@@ -23,7 +23,6 @@ const CardMeta = WithRef<HTMLDivElement, HTMLAttributes<CardProps> & CardProps>(
       [`${prefixCls}-clickable`]: clickable,
       [`${prefixCls}-full-width-content`]: fullWidthContent,
     });
-    // const renderContent = children ? <div className={`${prefixCls}-content`}>{children}</div> : null;
 
     return (
       <div className={cardClassName} ref={ref} {...restProps}>
@@ -32,4 +31,13 @@ const CardMeta = WithRef<HTMLDivElement, HTMLAttributes<CardProps> & CardProps>(
     );
   }
 );
-export default CardMeta;
+
+Card.defaultProps = {
+  fullWidthContent: false,
+  disabled: false,
+  clickable: true,
+};
+
+Card.displayName = 'Card';
+
+export default Card;

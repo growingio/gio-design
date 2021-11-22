@@ -9,16 +9,18 @@ export default function DropdownPage() {
   return (
     <>
       <Title>{formatMessage({ defaultMessage: 'Dropdown 下拉菜单' })}</Title>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>Dropdown 封装自popover</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
-
+      <Subheading>{formatMessage({ defaultMessage: '样例' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-dropdown--demo" />
+      </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="components-dropdown--default" />
-      </Canvas>
-
-      <Subheading>{formatMessage({ defaultMessage: 'Icon' })}</Subheading>
-      <Canvas>
-        <Story id="components-dropdown--icon-trigger" />
+        <Story id="upgraded-dropdown--default" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
