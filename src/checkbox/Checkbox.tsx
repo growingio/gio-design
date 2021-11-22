@@ -14,7 +14,7 @@ const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
     defaultChecked = false,
     checked,
     disabled = false,
-    color = 'transparent',
+    color,
     value = '',
     children,
     className,
@@ -75,6 +75,8 @@ const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
     checkboxProps.disabled = disabled || checkboxGroup.disabled;
   }
 
+  const inputStyle = { background: color, borderColor: color };
+
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label className={checkboxCls} style={style}>
@@ -87,7 +89,7 @@ const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
         value={value}
         checked={checkedStatus}
         onChange={handleChange}
-        color={color}
+        style={inputStyle}
         {...checkboxProps}
       />
       <span>{children}</span>
@@ -101,7 +103,6 @@ Checkbox.defaultProps = {
   indeterminate: false,
   defaultChecked: false,
   disabled: false,
-  color: 'transparent',
 };
 
 export default Checkbox;
