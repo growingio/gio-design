@@ -26,7 +26,6 @@ const BaseItem: React.ForwardRefRenderFunction<
     disabledTooltip,
     onClick,
     contentRender = defaultContentRender,
-    ...rest
   } = props;
 
   const prefixCls = `${usePrefixCls(PREFIX)}--item`;
@@ -47,7 +46,12 @@ const BaseItem: React.ForwardRefRenderFunction<
     <>{content}</>
   );
   return (
-    <Tooltip disabled={!disabled || isEmpty(disabledTooltip)} strategy="fixed" title={disabledTooltip}>
+    <Tooltip
+      disabled={!disabled || isEmpty(disabledTooltip)}
+      strategy="fixed"
+      title={disabledTooltip}
+      getContainer={() => document.body}
+    >
       <li
         style={style}
         className={classNames(
@@ -62,7 +66,6 @@ const BaseItem: React.ForwardRefRenderFunction<
         key={value}
         aria-hidden="true"
         ref={ref}
-        {...rest}
         onClick={() => (!disabled ? onClick?.(value) : noop)}
       >
         {contentRender?.(contentElement)}

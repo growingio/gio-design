@@ -54,7 +54,6 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
 
   useEffect(() => {
     if (!needConfim) {
-      console.log('执行', controlledValue);
       setValue(controlledValue);
     }
   }, [controlledValue, needConfim, setValue]);

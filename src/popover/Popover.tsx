@@ -78,8 +78,11 @@ const Popover = (props: PopoverProps) => {
         setVisible(realVisible);
         onVisibleChange?.(resetVisible);
       }
+      if (realVisible) {
+        update?.();
+      }
     },
-    [onVisibleChange, enterVisible, enterable, disabled]
+    [onVisibleChange, enterVisible, enterable, update, disabled]
   );
   const onDocumentClick = useCallback(
     (event: MouseEvent) => {
@@ -106,18 +109,6 @@ const Popover = (props: PopoverProps) => {
     };
   }, [onDocumentClick]);
 
-  // Handle tooltip DOM mutation changes (aka mutation observer)
-  useEffect(() => {
-    if (popperElement != null && update != null) {
-      const observer = new MutationObserver(update);
-      observer.observe(popperElement, {
-        attributes: true,
-        childList: true,
-        subtree: true,
-      });
-      observer.disconnect();
-    }
-  }, [popperElement, update]);
   const isClickToShow = useMemo(() => trigger.indexOf('click') !== -1, [trigger]);
 
   const isHoverToShow = useMemo(() => trigger.indexOf('hover') !== -1, [trigger]);
@@ -233,12 +224,9 @@ const Popover = (props: PopoverProps) => {
   return (
     <>
       {triggerNode}
-      {
-        // visible &&
-        typeof getContainer === 'function'
-          ? ReactDOM.createPortal(contentRender, getContainer(referenceElement as HTMLDivElement))
-          : contentRender
-      }
+      {typeof getContainer === 'function'
+        ? ReactDOM.createPortal(contentRender, getContainer(referenceElement as HTMLDivElement))
+        : contentRender}
     </>
   );
 };

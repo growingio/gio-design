@@ -23,34 +23,40 @@
   &--content {
     z-index: 1000;
   }
+  & .@{list-prefix-cls} {
+    height: auto;
+    max-height: 360px;
+    // margin-bottom: 8px;
+    padding: 0;
+    .scrollbar(@x: hidden, @y: overlay);
+  }
   & .@{selection-prefix-cls} {
     height: auto;
     max-height: 360px;
-    // margin-bottom: 8px;
     padding: 0;
-    .scrollbar();
+    .scrollbar(@x: hidden, @y: overlay);
+    & .@{list-prefix-cls} {
+      height: auto;
+      max-height: none;
+      padding: 0;
+    }
   }
-  & > .@{list-prefix-cls} {
-    height: auto;
-    max-height: 360px;
-    // margin-bottom: 8px;
-    padding: 0;
-    .scrollbar();
-  }
+
   & .@{tab-panel-cls} {
+    & .@{list-prefix-cls} {
+      height: auto;
+      max-height: 360px;
+      padding-top: 8px;
+    }
     .@{selection-prefix-cls} {
       height: auto;
       max-height: 360px;
-      // margin-bottom: 8px;
       padding-top: 8px;
-      .scrollbar();
-    }
-    & > .@{list-prefix-cls} {
-      height: auto;
-      max-height: 360px;
-      // margin-bottom: 8px;
-      padding-top: 8px;
-      .scrollbar();
+      .scrollbar(@x: hidden, @y: overlay);
+      & .@{list-prefix-cls} {
+        max-height: none;
+        padding: 0;
+      }
     }
   }
 }
