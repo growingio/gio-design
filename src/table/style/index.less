@@ -1,4 +1,4 @@
-@import '../../stylesheet/variables/index.less';
+@import (reference) '../../stylesheet/variables/index.less';
 
 @table-prefix-cls: ~'@{component-prefix}-table-new';
 
@@ -341,7 +341,7 @@
     .border(0);
   }
 
-  .@{table-prefix-cls}-filter-popover {
+  &-filter-popover {
     box-sizing: border-box;
     width: 250px;
     padding: 16px 16px 0;

@@ -36,7 +36,7 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
   );
 
   const onCancel = useCallback(
-    (e) => {
+    (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       setVisible(false);
       onCustomizeCancel?.(e);
       onCustomizeVisibleChange?.(false);
@@ -44,7 +44,7 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
     [onCustomizeCancel, onCustomizeVisibleChange]
   );
   const onConfirm = useCallback(
-    (e) => {
+    (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       const confirmCode = onCustomizeConfirm?.(e);
       if (confirmCode !== false) {
         setVisible(false);
