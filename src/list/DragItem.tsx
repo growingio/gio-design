@@ -62,7 +62,7 @@ const DragItem: React.FC<DragItemProps> = (props) => {
       ref={ref}
       data-handler-id={handlerId}
     >
-      <MoveOutlined className={`${prefixCls}--item--drag--icon`} color="#DFE2ED" size="14px" />
+      <MoveOutlined className={`${prefixCls}--item--drag--icon`} color="#ADB2C2" size="14px" />
       <Item label={label} value={value} disabled={disabled} {...rest} />
     </div>
   );
