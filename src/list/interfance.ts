@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type ModelType = 'cascader' | 'multiple' | 'simple';
+export type ModelType = 'cascader' | 'multiple' | 'single';
 
 export interface SelectionProps extends ListProps {
   className?: string;

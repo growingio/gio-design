@@ -11,6 +11,7 @@ import ListPicker from '../listPicker';
 import SearchBar from '../../search-bar';
 import Tabs, { Tab } from '../../tabs';
 import List from '../../list';
+import Button from '../../button/Button';
 
 export default {
   title: 'Upgraded/ListPicker',
@@ -45,6 +46,11 @@ const Template: Story<ListPickerProps> = () => {
     <div>
       <h3>单选</h3>
       <div className="demo-box">
+        <div style={{ padding: '10px' }}>
+          <Button size="small" onClick={() => setValue(undefined)}>
+            清空
+          </Button>
+        </div>
         <ListPicker
           value={value}
           onChange={onChange}
@@ -178,6 +184,11 @@ const Template: Story<ListPickerProps> = () => {
           </ListPicker>
         </div>
         <div className="demo-box">
+          <div style={{ padding: '10px' }}>
+            <Button size="small" onClick={() => setMultipleValue(['ziyi', 'zier'])}>
+              全选
+            </Button>
+          </div>
           <ListPicker
             value={multipleValue}
             onChange={(val) => {

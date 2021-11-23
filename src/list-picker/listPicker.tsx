@@ -37,7 +37,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     separator = '',
     className,
     style,
-    model = 'simple',
+    model = 'single',
     needConfim = model === 'multiple',
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
@@ -53,9 +53,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   }, [controlledValue, getLabelByValue, separator, options]);
 
   useEffect(() => {
-    if (!needConfim) {
-      setValue(controlledValue);
-    }
+    setValue(controlledValue);
   }, [controlledValue, needConfim, setValue]);
   useEffect(() => {
     if (needConfim && !visible && !isEqual(controlledValue, value)) {
