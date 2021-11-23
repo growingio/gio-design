@@ -41,62 +41,50 @@ export const Demo = () => (
     <Dropdown
       content={
         <List style={{ padding: 0 }}>
-          <Item prefix={<ReloadOutlined />} value="1">
+          <Item prefix={<ReloadOutlined size="14px" />} value="1">
             刷新数据
           </Item>
-          <Item prefix={<FullScreenOutlined />} value="2">
+          <Item prefix={<FullScreenOutlined size="14px" />} value="2">
             进入全屏
           </Item>
-          <Item prefix={<DownloadOutlined />} value="3">
+          <Item prefix={<DownloadOutlined size="14px" />} value="3">
             下载PDF
           </Item>
-          <Item prefix={<DownloadOutlined />} value="4">
+          <Item prefix={<DownloadOutlined size="14px" />} value="4">
             下载图片
           </Item>
-          <Item prefix={<PinOutlined />} value="5">
+          <Item prefix={<PinOutlined size="14px" />} value="5">
             取消订阅
           </Item>
-          <Item prefix={<DeleteOutlined />} value="6">
+          <Item prefix={<DeleteOutlined size="14px" />} value="6">
             删除看板
           </Item>
           <Divider style={{ margin: '0 0 4px' }} />
-          <CascaderItem label="邮件推送" value="4" prefix={<EmailOutlined />}>
+          <CascaderItem label="邮件推送" value="4" prefix={<EmailOutlined size="14px" />}>
             <List>
-              <Item value="4-1" label="创建邮件推送" prefix={<PlusOutlined />} />
-              <Item value="4-1" label="邮件推送管理" prefix={<SettingOutlined />} />
+              <Item value="4-1" label="创建邮件推送" prefix={<PlusOutlined size="14px" />} />
+              <Item value="4-1" label="邮件推送管理" prefix={<SettingOutlined size="14px" />} />
             </List>
           </CascaderItem>
         </List>
       }
       placement="bottomLeft"
     >
-      <Button type="secondary">
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
-          <MoreHorizonalOutlined
-            style={{
-              marginRight: '8px',
-            }}
-          />
-          更多
-        </div>
+      <Button type="secondary" prefix={<MoreHorizonalOutlined />}>
+        更多
       </Button>
     </Dropdown>
     <h3>Use Case -2列表/卡片中的操作菜单</h3>
     <Dropdown
       content={
         <List style={{ padding: 0 }}>
-          <Item prefix={<ReloadOutlined />} value="1">
+          <Item prefix={<ReloadOutlined size="14px" />} value="1">
             添加到看板
           </Item>
-          <Item prefix={<FullScreenOutlined />} value="2">
+          <Item prefix={<FullScreenOutlined size="14px" />} value="2">
             编辑
           </Item>
-          <Item prefix={<DownloadOutlined />} value="3">
+          <Item prefix={<DownloadOutlined size="14px" />} value="3">
             删除
           </Item>
         </List>
@@ -113,39 +101,27 @@ export const Default = Template.bind({});
 Default.args = {
   content: (
     <List style={{ padding: 0 }}>
-      <Item prefix={<ReloadOutlined />} value="1">
+      <Item prefix={<ReloadOutlined size="14px" />} value="1">
         刷新数据
       </Item>
-      <Item prefix={<FullScreenOutlined />} value="2">
+      <Item prefix={<FullScreenOutlined size="14px" />} value="2">
         进入全屏
       </Item>
-      <Item prefix={<DownloadOutlined />} value="3">
+      <Item prefix={<DownloadOutlined size="14px" />} value="3">
         下载 PDF
       </Item>
       <Divider style={{ margin: '0 0 4px' }} />
-      <CascaderItem label="邮件推送" value="4" prefix={<EmailOutlined />}>
+      <CascaderItem label="邮件推送" value="4" prefix={<EmailOutlined size="14px" />}>
         <List>
-          <Item value="4-1" label="创建邮件推送" prefix={<PlusOutlined />} />
-          <Item value="4-1" label="邮件推送管理" prefix={<SettingOutlined />} />
+          <Item value="4-1" label="创建邮件推送" prefix={<PlusOutlined size="14px" />} />
+          <Item value="4-1" label="邮件推送管理" prefix={<SettingOutlined size="14px" />} />
         </List>
       </CascaderItem>
     </List>
   ),
   children: (
-    <Button type="secondary">
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <MoreHorizonalOutlined
-          style={{
-            marginRight: '8px',
-          }}
-        />
-        更多
-      </div>
+    <Button type="secondary" prefix={<MoreHorizonalOutlined />}>
+      更多
     </Button>
   ),
 };
