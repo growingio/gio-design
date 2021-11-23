@@ -12,11 +12,11 @@ export interface PopConfirmProps extends Omit<PopoverProps, 'title'> {
   /**
    	点击取消的回调
    */
-  onCancel?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  onCancel?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   /**
-   	点击确认的回调
+   	点击确认的回调，返回 false 可以阻止关闭
    */
-  onConfirm?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => boolean | undefined;
+  onConfirm?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => boolean | void;
   /**
    	确认按钮文字
    */
