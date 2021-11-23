@@ -112,4 +112,5 @@ export interface PopoverProps {
    */
   triggerStyle?: React.CSSProperties;
   triggerClassName?: string;
+  distoryOnHide?: boolean;
 }
