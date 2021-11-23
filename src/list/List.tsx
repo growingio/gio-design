@@ -32,7 +32,7 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
     children,
     disabled = false,
     value: controlledValue,
-    model = 'simple',
+    model = 'single',
     collapse: initCollapse = 10,
     prefix,
     suffix,
