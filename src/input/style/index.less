@@ -8,10 +8,9 @@
   display: inline-flex;
   box-sizing: border-box;
   height: 36px;
-  padding: 0 8px;
+  padding: 0 12px;
   border-radius: 4px;
   .border();
-  .text-body1();
 
   & > input {
     width: 100%;
@@ -23,6 +22,8 @@
     border: none;
     font-family+: @font-family-primary;
     font-family+: @font-family-number;
+    .text-body1();
+
     &:not([disabled]):hover,
     &:not([disabled]):focus {
       border: none;
@@ -78,7 +79,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: 0 4px;
+    margin-left: 8px;
 
     .@{icon-prefix-cls} {
       cursor: pointer;
@@ -94,7 +95,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: 0 4px;
+    margin-right: 8px;
 
     .@{icon-prefix-cls} {
       cursor: pointer;
