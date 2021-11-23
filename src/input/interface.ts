@@ -141,6 +141,11 @@ export interface InputButtonProps
   onChange?: (value: string) => void;
 
   /**
+   * 当Input Button的值修改后的方法
+   */
+  onInputChange?: (value: string) => void;
+
+  /**
    * 点击onClear回调
    *
    */
