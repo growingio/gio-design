@@ -37,7 +37,6 @@ const useCacheOptions = () => {
     if (val === '' || typeof val === 'undefined') {
       return undefined;
     }
-
     if (val?.includes('.')) {
       return (val as any)
         ?.split('.')

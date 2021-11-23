@@ -10,6 +10,7 @@ import './style.less';
 import DragList from '../Drag';
 import Selection from '../Selection';
 import CascaderItem from '../inner/CascaderItem';
+import Popover from '../../popover';
 
 export default {
   title: 'Upgraded/List',
@@ -34,6 +35,19 @@ const options = [
 const Template: Story<ListProps> = (props) => {
   const [value, setValue] = useState([]);
   const [cascaderValue, setCascadervalue] = useState('1.1-1');
+  const wrapper = (e: React.ReactNode) => (
+    <Popover
+      placement="rightTop"
+      triggerStyle={{ display: 'initial' }}
+      content={
+        <div style={{ width: '200px', height: '200px', background: 'white', border: '1px solid black' }}>
+          <h3>preview</h3>
+        </div>
+      }
+    >
+      {e}
+    </Popover>
+  );
   return (
     <>
       <div className="demo-box">
@@ -68,6 +82,16 @@ const Template: Story<ListProps> = (props) => {
             </List>
           </CascaderItem>
         </List>
+      </div>
+      <div className="demo-box">
+        <h3>JSX render preview</h3>
+        <List>
+          <Item value="1" wrapper={wrapper}>
+            1
+          </Item>
+        </List>
+        <h3>option render preview</h3>
+        <List options={[{ label: '1', value: '1', wrapper }]} />
       </div>
       <div className="demo-box">
         <List {...props}>

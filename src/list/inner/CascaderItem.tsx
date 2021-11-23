@@ -75,7 +75,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
     return <></>;
   };
 
-  const PopoverRender = (trigger: React.ReactNode): React.ReactElement => {
+  const PopoverRender = (element: React.ReactNode): React.ReactElement => {
     if (!isEmpty(childrens) || React.isValidElement(children)) {
       return (
         <div className={prefixClsItem}>
@@ -85,13 +85,13 @@ const CascaderItem: React.ForwardRefRenderFunction<
             content={content()}
             getContainer={(node) => node || document.body}
           >
-            <div className={`${prefixClsItem}--trigger`}>{trigger as React.ReactElement}</div>
+            {element}
           </Popover>
         </div>
       );
     }
 
-    return trigger as React.ReactElement;
+    return <>{element}</>;
   };
   const renderItem = (
     <BaseItem
@@ -104,9 +104,10 @@ const CascaderItem: React.ForwardRefRenderFunction<
       onChange={noop}
       onClick={React.isValidElement(children) || !isEmpty(childrens) ? noop : onClick}
       selected={isSelected}
+      wrapper={PopoverRender}
     />
   );
-  return PopoverRender(renderItem);
+  return renderItem;
 };
 
 export default WithRef(CascaderItem);

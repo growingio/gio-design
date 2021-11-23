@@ -85,6 +85,8 @@ export interface OptionProps {
   disabledTooltip?: string;
   prefix?: string | React.ReactNode;
   suffix?: string | React.ReactNode;
+  wrapper?: (element: React.ReactNode) => React.ReactElement;
+
   [key: string]: unknown;
 }
 
@@ -116,15 +118,16 @@ export interface ItemProps
     | 'disabled'
     | 'selected'
     | 'disabledTooltip'
+    | 'wrapper'
   > {
   selectValue?: string | string[];
 }
 
-export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled' | 'prefix' | 'suffix'> {
+export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled' | 'prefix' | 'suffix' | 'wrapper'> {
   className?: string;
   style?: React.CSSProperties;
   label?: string | React.ReactNode;
-  contentRender?: (element: React.ReactNode) => React.ReactNode | Element;
+  contentRender?: (element: React.ReactNode) => React.ReactElement;
   children?: React.ReactNode;
   disabledTooltip?: string;
   selected?: boolean;

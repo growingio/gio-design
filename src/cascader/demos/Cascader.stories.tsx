@@ -58,7 +58,7 @@ const defaultOptions = [
 ];
 const options = [...new Array(12)].map((_, index) => ({
   label: `第${index}条咸鱼`,
-  value: index,
+  value: index.toString(),
   childrens: [
     { label: '要', value: 'yes' },
     { label: '不要', value: 'no' },

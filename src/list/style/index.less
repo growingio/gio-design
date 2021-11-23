@@ -3,6 +3,7 @@
 @list-prefix-cls: ~'@{component-prefix}-list-new';
 @cascader-prefix-cls: ~'@{component-prefix}-cascader--new';
 @cascader-content-prefix-cls: ~'@{cascader-prefix-cls}--cascader--content';
+@popover-new__popcorn-prefix-cls: ~'@{component-prefix}-popover-new__popcorn';
 
 .@{cascader-content-prefix-cls} {
   &[data-popper-placement^='top'] {
@@ -46,6 +47,18 @@
     box-shadow: 0 8px 24px rgba(36, 46, 89, 0.1);
     .scrollbar(@x: hidden, @y: overlay);
     &--item {
+      margin-bottom: 4px;
+      .@{list-prefix-cls}--item {
+        margin-bottom: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .@{popover-new__popcorn-prefix-cls} {
+        display: inherit;
+      }
+    }
+    & > .@{list-prefix-cls}--item {
       margin-bottom: 4px;
       &:last-child {
         margin-bottom: 0;

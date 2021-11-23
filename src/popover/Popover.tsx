@@ -25,6 +25,8 @@ const Popover = (props: PopoverProps) => {
     overlayStyle,
     children,
     strategy = 'absolute',
+    triggerClassName,
+    triggerStyle,
     getContainer,
   } = props;
 
@@ -206,7 +208,12 @@ const Popover = (props: PopoverProps) => {
 
   // =============== refs =====================
   let triggerNode = (
-    <div className={`${prefixCls}__popcorn`} ref={(instance) => setReferenceELement(instance)} {...divRoles}>
+    <div
+      className={classNames(`${prefixCls}__popcorn`, triggerClassName)}
+      style={triggerStyle}
+      ref={(instance) => setReferenceELement(instance)}
+      {...divRoles}
+    >
       {children}
     </div>
   );
