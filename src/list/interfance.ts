@@ -62,12 +62,6 @@ export interface ListProps {
    */
   renderItem?: (option: OptionProps) => React.ReactElement;
   /**
-   * 是否显示preview 弹出面板 目前仅支持了options参数形式
-   */
-  showPreview?: boolean;
-  previewRender?: (option: OptionProps) => React.ReactNode;
-  previewRenderContainer?: (node: HTMLElement) => HTMLElement;
-  /**
    * empty
    */
   empty?: () => React.ReactNode;

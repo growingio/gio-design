@@ -39,6 +39,7 @@ export interface ListPickerProps extends Pick<ListProps, 'model' | 'disabled' | 
   onConfim?: (value: string | string[] | undefined, options?: OptionProps | OptionProps[]) => void;
   placement?: Placement;
   overlayStyle?: React.CSSProperties;
+  overlayClassName?: string;
 }
 
 // export interface StaticListPickerProps extends Omit<ListProps, 'options'> {

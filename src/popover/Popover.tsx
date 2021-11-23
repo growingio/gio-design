@@ -28,6 +28,7 @@ const Popover = (props: PopoverProps) => {
     triggerClassName,
     triggerStyle,
     getContainer,
+    distoryOnHide = true,
   } = props;
 
   const prefixCls = usePrefixCls('popover-new', customPrefixCls);
@@ -230,12 +231,17 @@ const Popover = (props: PopoverProps) => {
     triggerNode = React.cloneElement(child as React.ReactElement, cloneProps);
   }
 
-  return (
+  const renderContent = (
     <>
-      {triggerNode}
       {typeof getContainer === 'function'
         ? ReactDOM.createPortal(contentRender, getContainer(referenceElement as HTMLDivElement))
         : contentRender}
+    </>
+  );
+  return (
+    <>
+      {triggerNode}
+      {distoryOnHide ? visible && renderContent : renderContent}
     </>
   );
 };

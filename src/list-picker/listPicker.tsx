@@ -8,7 +8,6 @@ import useControlledState from '../utils/hooks/useControlledState';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { OptionProps } from '../list/interfance';
 import Button from '../button';
-// import Page from '../page';
 import { ListContext } from '../list/context';
 import useCacheOptions from '../list/hooks/useCacheOptions';
 
@@ -31,6 +30,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     getContainer,
     placement = 'bottomLeft',
     overlayStyle,
+    overlayClassName,
     children,
     onConfim,
     confimText = '确定',
@@ -121,12 +121,13 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   return (
     <ListContext.Provider value={{ value, model, onChange: handleChange, options, setOptions }}>
       <Popover
+        distoryOnHide={false}
         content={renderOverlay()}
         trigger={trigger}
         visible={visible}
         onVisibleChange={handVisibleChange}
         getContainer={getContainer}
-        overlayClassName={`${defaultPrefix}--content`}
+        overlayClassName={classNames(`${defaultPrefix}--content`, overlayClassName)}
         placement={placement}
         overlayStyle={overlayStyle}
       >
