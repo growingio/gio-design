@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback, useEffect, useRef, useLayoutEffect } from 'react';
 import classNames from 'classnames';
-import { debounce, isUndefined } from 'lodash';
+import { debounce, isUndefined, isFunction } from 'lodash';
 import { usePopper } from 'react-popper';
 import ReactDOM from 'react-dom';
 import { PopoverProps, placements } from './interface';
@@ -87,8 +87,10 @@ const Popover = (props: PopoverProps) => {
   const onDocumentClick = useCallback(
     (event: MouseEvent) => {
       const { target } = event;
-      if (!referenceElement?.contains(target as Node) && !popperElement?.contains(target as Node)) {
-        updateVisible(false);
+      if (isFunction(referenceElement?.contains) && isFunction(popperElement?.contains)) {
+        if (!referenceElement?.contains(target as Node) && !popperElement?.contains(target as Node)) {
+          updateVisible(false);
+        }
       }
     },
     [popperElement, referenceElement, updateVisible]
