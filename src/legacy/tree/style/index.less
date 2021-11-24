@@ -1,14 +1,14 @@
 @import '../../../stylesheet/index.less';
 @import '../../../stylesheet/mixin/index.less';
 
-@tree-prefix-cls: ~'@{component-prefix}-tree';
-@tree-node-prefix-cls: ~'@{tree-prefix-cls}-treenode';
+@tree-prefix-cls-legacy: ~'@{component-prefix}-tree';
+@tree-node-prefix-cls-legacy: ~'@{tree-prefix-cls-legacy}-treenode';
 
-.gioTreeFn(@tree-prefix-cls);
+.gioTreeFn(@tree-prefix-cls-legacy);
 
-.gioTreeFn(@custom-tree-prefix-cls) {
-  @custom-tree-node-prefix-cls: ~'@{custom-tree-prefix-cls}-treenode';
-  .@{custom-tree-prefix-cls} {
+.gioTreeFn(@custom-tree-prefix-cls-legacy) {
+  @custom-tree-node-prefix-cls-legacy: ~'@{custom-tree-prefix-cls-legacy}-treenode';
+  .@{custom-tree-prefix-cls-legacy} {
     .reset-component;
     background: @color-background-tree-normal;
     border-radius: @radius-border-small;
@@ -20,7 +20,7 @@
     }
 
     // ===================== TreeNode =====================
-    .@{custom-tree-node-prefix-cls} {
+    .@{custom-tree-node-prefix-cls-legacy} {
       display: flex;
       align-items: flex-start;
       width: 100%;
@@ -38,10 +38,10 @@
       }
       // Disabled
       &-disabled {
-        .@{custom-tree-prefix-cls}-node-content-wrapper {
+        .@{custom-tree-prefix-cls-legacy}-node-content-wrapper {
           color: @color-text-tree-disable;
           cursor: not-allowed;
-          .@{custom-tree-prefix-cls}-iconEle {
+          .@{custom-tree-prefix-cls-legacy}-iconEle {
             svg {
               color: @color-text-tree-disable;
               path {
@@ -54,10 +54,10 @@
       // Selected
       &-selected {
         background-color: @color-background-tree-active;
-        .@{custom-tree-prefix-cls}-node-content-wrapper {
+        .@{custom-tree-prefix-cls-legacy}-node-content-wrapper {
           color: @color-text-tree-selected;
           font-weight: @weight-font-medium;
-          .@{custom-tree-prefix-cls}-iconEle {
+          .@{custom-tree-prefix-cls-legacy}-iconEle {
             svg {
               color: @color-text-tree-selected;
               path {
@@ -105,7 +105,7 @@
       }
 
       &_close {
-        .@{custom-tree-prefix-cls}-switcher-icon {
+        .@{custom-tree-prefix-cls-legacy}-switcher-icon {
           svg {
             transform: rotate(-90deg);
           }
@@ -117,14 +117,14 @@
     & &-node-content-wrapper {
       width: 100%;
       cursor: pointer;
-      .@{custom-tree-prefix-cls}-title {
+      .@{custom-tree-prefix-cls-legacy}-title {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
       }
 
       // Icon
-      .@{custom-tree-prefix-cls}-iconEle {
+      .@{custom-tree-prefix-cls-legacy}-iconEle {
         display: inline-block;
         width: 16px;
         height: 16px;

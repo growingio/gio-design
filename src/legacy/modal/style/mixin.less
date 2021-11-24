@@ -1,11 +1,11 @@
 @import '../../../stylesheet/index.less';
 @import '../../../stylesheet/mixin/animation.less';
 
-@modal-prefix-cls: ~'@{component-prefix}-modal';
-@modal-small: ~'@{modal-prefix-cls}--small';
-@modal-middle: ~'@{modal-prefix-cls}--middle';
-@modal-full: ~'@{modal-prefix-cls}--full';
-@modal-callout: ~'@{modal-prefix-cls}-callout';
+@modal-prefix-cls-legacy: ~'@{component-prefix}-modal';
+@modal-small: ~'@{modal-prefix-cls-legacy}--small';
+@modal-middle: ~'@{modal-prefix-cls-legacy}--middle';
+@modal-full: ~'@{modal-prefix-cls-legacy}--full';
+@modal-callout: ~'@{modal-prefix-cls-legacy}-callout';
 @btn-cls: ~'@{component-prefix}-btn';
 
 @modal-radius: 8px;
@@ -31,7 +31,7 @@
   height: 100%;
   margin: 0;
 
-  .@{modal-prefix-cls} {
+  .@{modal-prefix-cls-legacy} {
     &-content {
       height: 100%;
       max-height: none;

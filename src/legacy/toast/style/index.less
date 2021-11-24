@@ -1,8 +1,8 @@
 @import '../../../stylesheet/index.less';
 
-@toast-prefix-cls: ~'@{component-prefix}-toast';
+@toast-prefix-cls-legacy: ~'@{component-prefix}-toast';
 
-.@{toast-prefix-cls} {
+.@{toast-prefix-cls-legacy} {
   position: fixed;
   top: 16px;
   left: 0;
@@ -70,7 +70,7 @@
   }
 }
 
-.@{toast-prefix-cls}-rtl {
+.@{toast-prefix-cls-legacy}-rtl {
   direction: rtl;
 
   span {

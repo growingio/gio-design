@@ -1,6 +1,6 @@
 @import './index.less';
 
-.@{menu-prefix-cls} {
+.@{menu-prefix-cls-legacy} {
   // 水平模式
   &-horizontal {
     overflow: hidden;
@@ -9,16 +9,16 @@
     border: none;
     box-shadow: none;
 
-    & > .@{menu-prefix-cls}-item,
-    & > .@{menu-prefix-cls}-submenu > .@{menu-prefix-cls}-submenu-title {
+    & > .@{menu-prefix-cls-legacy}-item,
+    & > .@{menu-prefix-cls-legacy}-submenu > .@{menu-prefix-cls-legacy}-submenu-title {
       height: 40px;
       margin-right: 4px;
       padding: 0 24px;
       line-height: 40px;
     }
 
-    & > .@{menu-prefix-cls}-submenu,
-    & > .@{menu-prefix-cls}-item {
+    & > .@{menu-prefix-cls-legacy}-submenu,
+    & > .@{menu-prefix-cls-legacy}-item {
       display: inline-block;
       vertical-align: bottom;
       border-radius: @radius-border-small;
@@ -38,11 +38,11 @@
     width: 100%;
     font-size: @size-font-14;
     transition: width 0.2s;
-    &:not(.@{menu-prefix-cls}-sub) > *:first-child {
+    &:not(.@{menu-prefix-cls-legacy}-sub) > *:first-child {
       margin-top: 0 !important;
     }
 
-    .@{menu-prefix-cls} {
+    .@{menu-prefix-cls-legacy} {
       &-item,
       &-submenu {
         margin-top: 8px;
@@ -50,7 +50,7 @@
 
       &-item,
       &-submenu-title,
-      &-submenu:not(.@{menu-prefix-cls}-submenu-open) {
+      &-submenu:not(.@{menu-prefix-cls-legacy}-submenu-open) {
         box-sizing: border-box;
         height: 36px;
         line-height: 36px;
@@ -95,7 +95,7 @@
     z-index: @zindex-dropdown;
     box-sizing: border-box;
 
-    .@{menu-prefix-cls} {
+    .@{menu-prefix-cls-legacy} {
       width: 200px;
       margin-top: -40px;
       padding: 16px 8px;
@@ -137,7 +137,7 @@
   // collapse 设置折叠默认会将模式改为垂直模式
   &-inlineCollapsed {
     width: 80px;
-    .@{menu-prefix-cls} {
+    .@{menu-prefix-cls-legacy} {
       &-item,
       &-submenu-title {
         padding: 0 32px;

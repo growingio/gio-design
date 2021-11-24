@@ -1,7 +1,7 @@
 @import '../../../stylesheet/index.less';
 
-@pagination-prefix-cls: ~'@{component-prefix}-pagination';
-@input-prefix-cls: ~'@{component-prefix}-input';
+@pagination-prefix-cls-legacy: ~'@{component-prefix}-pagination';
+@input-prefix-cls-legacy: ~'@{component-prefix}-input';
 
 .pagination-item {
   display: inline-flex;
@@ -30,7 +30,7 @@
   }
 }
 
-.@{pagination-prefix-cls} {
+.@{pagination-prefix-cls-legacy} {
   padding: 0;
   line-height: 28px;
   list-style: none;
@@ -176,7 +176,7 @@
       display: inline-block;
       height: 100%;
       margin: 0 8px 0 0;
-      .@{input-prefix-cls} {
+      .@{input-prefix-cls-legacy} {
         box-sizing: border-box;
         width: auto;
         margin: 0 8px;

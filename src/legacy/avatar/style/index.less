@@ -1,8 +1,8 @@
 @import '../../../stylesheet/index.less';
 
-@avatar-prefix-cls: ~'@{component-prefix}-avatar';
+@avatar-prefix-cls-legacy: ~'@{component-prefix}-avatar';
 
-.@{avatar-prefix-cls} {
+.@{avatar-prefix-cls-legacy} {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -78,16 +78,16 @@
     font-size: 12px;
     line-height: 24px;
 
-    .@{avatar-prefix-cls}-icon {
+    .@{avatar-prefix-cls-legacy}-icon {
       & svg {
         width: 10px;
         height: 10px;
       }
     }
 
-    &.@{avatar-prefix-cls}-square {
+    &.@{avatar-prefix-cls-legacy}-square {
       border-radius: 2px;
-      .@{avatar-prefix-cls}-icon {
+      .@{avatar-prefix-cls-legacy}-icon {
         & svg {
           width: 12px;
           height: 12px;
@@ -102,16 +102,16 @@
     font-size: 12px;
     line-height: 32px;
 
-    .@{avatar-prefix-cls}-icon {
+    .@{avatar-prefix-cls-legacy}-icon {
       & svg {
         width: 14px;
         height: 14px;
       }
     }
 
-    &.@{avatar-prefix-cls}-square {
+    &.@{avatar-prefix-cls-legacy}-square {
       border-radius: 4px;
-      .@{avatar-prefix-cls}-icon {
+      .@{avatar-prefix-cls-legacy}-icon {
         & svg {
           width: 16px;
           height: 16px;
@@ -126,16 +126,16 @@
     font-size: 16px;
     line-height: 56px;
 
-    .@{avatar-prefix-cls}-icon {
+    .@{avatar-prefix-cls-legacy}-icon {
       & svg {
         width: 24px;
         height: 24px;
       }
     }
 
-    &.@{avatar-prefix-cls}-square {
+    &.@{avatar-prefix-cls-legacy}-square {
       border-radius: 8px;
-      .@{avatar-prefix-cls}-icon {
+      .@{avatar-prefix-cls-legacy}-icon {
         & svg {
           width: 28px;
           height: 28px;
@@ -150,16 +150,16 @@
     font-size: 20px;
     line-height: 80px;
 
-    .@{avatar-prefix-cls}-icon {
+    .@{avatar-prefix-cls-legacy}-icon {
       & svg {
         width: 32px;
         height: 32px;
       }
     }
 
-    &.@{avatar-prefix-cls}-square {
+    &.@{avatar-prefix-cls-legacy}-square {
       border-radius: 10px;
-      .@{avatar-prefix-cls}-icon {
+      .@{avatar-prefix-cls-legacy}-icon {
         & svg {
           width: 40px;
           height: 40px;
@@ -170,7 +170,7 @@
 
   &-group {
     display: flex;
-    .@{avatar-prefix-cls} {
+    .@{avatar-prefix-cls-legacy} {
       border: 1.4px solid @color-border-avatar;
       span {
         top: -1.5px;
@@ -182,7 +182,7 @@
       }
     }
 
-    .@{avatar-prefix-cls}:not(:first-child) {
+    .@{avatar-prefix-cls-legacy}:not(:first-child) {
       margin-left: -8px;
     }
   }

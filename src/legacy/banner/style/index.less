@@ -1,8 +1,8 @@
 @import '../../../stylesheet/index.less';
 
-@banner-prefix-cls: ~'@{component-prefix}-banner';
+@banner-prefix-cls-legacy: ~'@{component-prefix}-banner';
 
-.@{banner-prefix-cls} {
+.@{banner-prefix-cls-legacy} {
   display: flex;
   align-items: center;
   width: 100%;
@@ -54,24 +54,24 @@
   }
 }
 
-.@{banner-prefix-cls}-alert {
+.@{banner-prefix-cls-legacy}-alert {
   background-color: @color-background-banner-alert;
-  .@{banner-prefix-cls}-content {
+  .@{banner-prefix-cls-legacy}-content {
     color: @color-text-banner-alert;
     font-size: @size-font-14;
     font-family: @font-family-primary;
   }
-  .@{banner-prefix-cls}-closeIcon {
+  .@{banner-prefix-cls-legacy}-closeIcon {
     color: @color-text-banner-alert;
   }
 }
 
-.@{banner-prefix-cls}-close {
+.@{banner-prefix-cls-legacy}-close {
   display: none;
 }
 
-.@{banner-prefix-cls}-closeable {
-  .@{banner-prefix-cls}-content {
+.@{banner-prefix-cls-legacy}-closeable {
+  .@{banner-prefix-cls-legacy}-content {
     margin: 0 40px 0 64px;
   }
 }

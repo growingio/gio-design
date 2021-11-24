@@ -1,28 +1,28 @@
 @import '../../tree/style/index';
 @import '../../../stylesheet/index.less';
 
-@tree-select-prefix-cls: ~'@{component-prefix}-tree-select';
-@select-tree-prefix-cls: ~'@{component-prefix}-select-tree';
-@select-prefix-cls: ~'@{component-prefix}-select';
+@tree-select-prefix-cls-legacy: ~'@{component-prefix}-tree-select';
+@select-tree-prefix-cls-legacy: ~'@{component-prefix}-select-tree';
+@select-prefix-cls-legacy: ~'@{component-prefix}-select';
 @iconfont-css-prefix: gio-icon;
 
-.@{select-prefix-cls}-dropdown-hidden,
-.@{select-prefix-cls}-dropdown-menu-hidden {
+.@{select-prefix-cls-legacy}-dropdown-hidden,
+.@{select-prefix-cls-legacy}-dropdown-menu-hidden {
   display: none !important;
 }
-.@{tree-select-prefix-cls}-search-empty {
+.@{tree-select-prefix-cls-legacy}-search-empty {
   padding-left: 10px;
 }
 
-.@{tree-select-prefix-cls}.@{select-prefix-cls}-open,
-.@{tree-select-prefix-cls}.@{select-prefix-cls}-focused {
-  .@{select-prefix-cls}-selector {
+.@{tree-select-prefix-cls-legacy}.@{select-prefix-cls-legacy}-open,
+.@{tree-select-prefix-cls-legacy}.@{select-prefix-cls-legacy}-focused {
+  .@{select-prefix-cls-legacy}-selector {
     border: 1px solid @color-border-select-focused !important;
     box-shadow: 0 0 6px 0 #c0c4d3;
   }
 }
 
-.@{select-prefix-cls}-clear {
+.@{select-prefix-cls-legacy}-clear {
   position: absolute;
   top: 50%;
   right: 10px;
@@ -51,12 +51,12 @@
     display: block;
   }
 
-  .@{select-prefix-cls}:hover & {
+  .@{select-prefix-cls-legacy}:hover & {
     opacity: 1;
   }
 }
 
-.@{tree-select-prefix-cls} {
+.@{tree-select-prefix-cls-legacy} {
   position: relative;
   display: inline-block;
   -webkit-box-sizing: border-box;
@@ -72,7 +72,7 @@
   cursor: pointer;
   -webkit-font-feature-settings: 'tnum';
   font-feature-settings: 'tnum';
-  .@{select-prefix-cls}-selector {
+  .@{select-prefix-cls-legacy}-selector {
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -89,9 +89,9 @@
     &:hover {
       border: 1px solid @palette-blue-5;
     }
-    .@{select-prefix-cls}-selection-search {
+    .@{select-prefix-cls-legacy}-selection-search {
       position: absolute;
-      .@{select-prefix-cls}-selection-search-input {
+      .@{select-prefix-cls-legacy}-selection-search-input {
         width: 100%;
         min-width: 4px;
         height: 38px;
@@ -103,8 +103,8 @@
         cursor: auto;
       }
     }
-    .@{select-prefix-cls}-selection-item,
-    .@{select-prefix-cls}-selection-placeholder {
+    .@{select-prefix-cls-legacy}-selection-item,
+    .@{select-prefix-cls-legacy}-selection-placeholder {
       overflow: hidden;
       line-height: 38px;
       white-space: nowrap;
@@ -113,17 +113,17 @@
       transition: all 0.3s;
       -webkit-box-flex: 1;
     }
-    .@{select-prefix-cls}-selection-item {
+    .@{select-prefix-cls-legacy}-selection-item {
       position: relative;
       user-select: none;
     }
-    .@{select-prefix-cls}-selection-placeholder {
+    .@{select-prefix-cls-legacy}-selection-placeholder {
       color: @palette-black-4;
       font-size: 14px;
       pointer-events: none;
     }
   }
-  .@{select-prefix-cls}-arrow {
+  .@{select-prefix-cls-legacy}-arrow {
     position: absolute;
     right: 8px;
     display: flex;
@@ -148,13 +148,13 @@
     border-radius: 6px;
     box-shadow: 0 2px 14px 1px rgba(223, 226, 237, 0.8);
     // ======================== Tree ========================
-    .@{select-tree-prefix-cls} {
+    .@{select-tree-prefix-cls-legacy} {
       border-radius: 0;
 
       &-list-holder-inner {
         align-items: stretch;
 
-        .@{select-tree-prefix-cls}-treenode {
+        .@{select-tree-prefix-cls-legacy}-treenode {
           display: flex;
           width: 100%;
           height: 40px;
@@ -173,10 +173,10 @@
 
           // Disabled
           &-disabled {
-            .@{select-tree-prefix-cls}-node-content-wrapper {
+            .@{select-tree-prefix-cls-legacy}-node-content-wrapper {
               color: @color-text-tree-disable;
               cursor: not-allowed !important;
-              .@{select-tree-prefix-cls}-iconEle {
+              .@{select-tree-prefix-cls-legacy}-iconEle {
                 svg {
                   color: @color-text-tree-disable;
                   path {
@@ -190,9 +190,9 @@
           // Selected
           &-selected {
             background-color: @color-background-tree-active;
-            .@{select-tree-prefix-cls}-node-content-wrapper {
+            .@{select-tree-prefix-cls-legacy}-node-content-wrapper {
               color: @color-text-tree-selected;
-              .@{select-tree-prefix-cls}-iconEle {
+              .@{select-tree-prefix-cls-legacy}-iconEle {
                 svg {
                   color: @color-text-tree-selected;
                   path {
@@ -203,7 +203,7 @@
             }
           }
           // >>> CheckBox
-          .@{select-tree-prefix-cls}-checkbox {
+          .@{select-tree-prefix-cls-legacy}-checkbox {
             top: initial;
             display: inline-block;
             margin: 12px 8px 0 0;
@@ -212,7 +212,7 @@
             vertical-align: middle;
             outline: none;
             cursor: pointer;
-            .@{select-tree-prefix-cls}-checkbox-inner {
+            .@{select-tree-prefix-cls-legacy}-checkbox-inner {
               position: relative;
               top: 0;
               left: 0;
@@ -229,10 +229,10 @@
               transition: all 0.3s;
             }
           }
-          .@{select-tree-prefix-cls}-checkbox-disabled {
+          .@{select-tree-prefix-cls-legacy}-checkbox-disabled {
             cursor: not-allowed;
           }
-          .@{select-tree-prefix-cls}-checkbox-checked {
+          .@{select-tree-prefix-cls-legacy}-checkbox-checked {
             &::after {
               position: absolute;
               top: 0;
@@ -244,7 +244,7 @@
               visibility: hidden;
               content: '';
             }
-            .@{select-tree-prefix-cls}-checkbox-inner {
+            .@{select-tree-prefix-cls-legacy}-checkbox-inner {
               background-color: @color-background-checkbox-checked;
               border: 0.5px solid @color-border-checkbox-checked;
               &::after {
@@ -277,8 +277,8 @@
               opacity: 0;
             }
           }
-          .@{select-tree-prefix-cls}-checkbox-indeterminate {
-            .@{select-tree-prefix-cls}-checkbox-inner {
+          .@{select-tree-prefix-cls-legacy}-checkbox-indeterminate {
+            .@{select-tree-prefix-cls-legacy}-checkbox-inner {
               background-color: @color-background-checkbox-checked;
               border: 0.5px solid @color-border-checkbox-checked;
               &::after {
@@ -299,7 +299,7 @@
           }
 
           // >>> Switcher
-          .@{select-tree-prefix-cls}-switcher {
+          .@{select-tree-prefix-cls-legacy}-switcher {
             flex: none;
             width: 14px;
             height: 14px;
@@ -314,7 +314,7 @@
             }
 
             &_close {
-              .@{select-tree-prefix-cls}-switcher-icon {
+              .@{select-tree-prefix-cls-legacy}-switcher-icon {
                 svg {
                   transform: rotate(-90deg);
                 }
@@ -323,18 +323,18 @@
           }
 
           // >>> Title
-          .@{select-tree-prefix-cls}-node-content-wrapper {
+          .@{select-tree-prefix-cls-legacy}-node-content-wrapper {
             width: 100%;
             cursor: pointer;
 
-            .@{select-tree-prefix-cls}-title {
+            .@{select-tree-prefix-cls-legacy}-title {
               overflow: hidden;
               white-space: nowrap;
               text-overflow: ellipsis;
             }
 
             // Icon
-            .@{select-tree-prefix-cls}-iconEle {
+            .@{select-tree-prefix-cls-legacy}-iconEle {
               display: inline-block;
               width: 16px;
               height: 16px;
@@ -349,7 +349,7 @@
           }
 
           // >>> Indent
-          .@{select-tree-prefix-cls}-indent {
+          .@{select-tree-prefix-cls-legacy}-indent {
             align-self: stretch;
             white-space: nowrap;
             user-select: none;
@@ -365,17 +365,17 @@
   }
 }
 
-.@{select-prefix-cls}-single {
-  .@{select-prefix-cls}-selection-search {
+.@{select-prefix-cls-legacy}-single {
+  .@{select-prefix-cls-legacy}-selection-search {
     top: 0;
     right: 8px;
     left: 16px;
   }
 }
 
-.@{select-prefix-cls}-multiple {
-  .@{select-prefix-cls}-selector {
-    .@{select-prefix-cls}-selection-placeholder {
+.@{select-prefix-cls-legacy}-multiple {
+  .@{select-prefix-cls-legacy}-selector {
+    .@{select-prefix-cls-legacy}-selection-placeholder {
       position: absolute;
       top: 50%;
       right: 32px;
@@ -384,7 +384,7 @@
       transition: all 0.3s;
     }
   }
-  .@{select-prefix-cls}-selection-item {
+  .@{select-prefix-cls-legacy}-selection-item {
     display: flex;
     height: 24px;
     margin-top: 7px;
@@ -435,7 +435,7 @@
       }
     }
   }
-  .@{select-prefix-cls}-selection-search {
+  .@{select-prefix-cls-legacy}-selection-search {
     position: relative !important;
     max-width: 100%;
     &-input,
@@ -443,7 +443,7 @@
       line-height: 38px;
       transition: all 0.3s;
     }
-    .@{select-prefix-cls}-selection-search-input {
+    .@{select-prefix-cls-legacy}-selection-search-input {
       min-width: 10px;
     }
     &-input {
@@ -464,7 +464,7 @@
       white-space: nowrap;
       visibility: hidden;
     }
-    &:first-child .@{select-prefix-cls}-selection-search-input {
+    &:first-child .@{select-prefix-cls-legacy}-selection-search-input {
       margin-left: 0;
     }
 

@@ -4,13 +4,13 @@
 @radio-normal-shadow: inset -0.5px 1px 2px 0 rgba(163, 173, 200, 0.8);
 @radio-hover-shadow: @radio-normal-shadow, 0 2px 4px 0 rgba(223, 226, 237, 1);
 
-@radio-prefix-cls: ~'@{component-prefix}-radio';
-@radio-input: ~'@{radio-prefix-cls}-input'; // input
-@radio-inner: ~'@{radio-prefix-cls}-inner'; // inner
-@radio-checked: ~'@{radio-prefix-cls}-checked'; // checked
-@radio-disabled: ~'@{radio-prefix-cls}-disabled'; // disabled
-@radio__wrapper: ~'@{radio-prefix-cls}__wrapper'; // wrapper
-@radio__group: ~'@{radio-prefix-cls}__group'; // group
+@radio-prefix-cls-legacy: ~'@{component-prefix}-radio';
+@radio-input: ~'@{radio-prefix-cls-legacy}-input'; // input
+@radio-inner: ~'@{radio-prefix-cls-legacy}-inner'; // inner
+@radio-checked: ~'@{radio-prefix-cls-legacy}-checked'; // checked
+@radio-disabled: ~'@{radio-prefix-cls-legacy}-disabled'; // disabled
+@radio__wrapper: ~'@{radio-prefix-cls-legacy}__wrapper'; // wrapper
+@radio__group: ~'@{radio-prefix-cls-legacy}__group'; // group
 
 .@{radio__wrapper} {
   position: relative;
@@ -20,7 +20,7 @@
 
   &:not(&--disabled):hover {
     & :not(.@{radio-checked}) {
-      .@{radio-prefix-cls}-inner {
+      .@{radio-prefix-cls-legacy}-inner {
         border-color: @color-border-checkbox-hover;
         box-shadow: @radio-hover-shadow;
       }
@@ -33,7 +33,7 @@
 }
 
 // normal
-.@{radio-prefix-cls} {
+.@{radio-prefix-cls-legacy} {
   position: relative;
   top: 0;
   display: inline-block;
@@ -173,7 +173,7 @@
       justify-content: flex-start;
       margin-bottom: 16px;
 
-      .@{radio-prefix-cls} {
+      .@{radio-prefix-cls-legacy} {
         margin-top: 3px;
       }
     }

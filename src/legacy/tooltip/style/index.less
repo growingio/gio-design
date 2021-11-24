@@ -1,15 +1,15 @@
 @import '../../../stylesheet/index.less';
 @import '../../../stylesheet/mixin/trigger.less';
 
-@tooltip-prefix-cls: ~'@{component-prefix}-tooltip';
-@link-prefix-cls: ~'@{component-prefix}-link';
+@tooltip-prefix-cls-legacy: ~'@{component-prefix}-tooltip';
+@link-prefix-cls-legacy: ~'@{component-prefix}-link';
 
 @tooltip-distance: 6px;
 @tooltip-arrow-width: 12px;
 @tooltip-arrow-offset: 14px;
 @tooltip-duration: 0.5s;
 
-.@{tooltip-prefix-cls} {
+.@{tooltip-prefix-cls-legacy} {
   position: absolute;
   z-index: @zindex-tooltip;
   max-width: 500px;
@@ -38,7 +38,7 @@
       vertical-align: middle;
       word-break: break-word;
     }
-    .@{link-prefix-cls} {
+    .@{link-prefix-cls-legacy} {
       color: @color-text-tooltip;
     }
   }
@@ -62,7 +62,7 @@
       pointer-events: auto;
     }
   }
-  .trigger-placement(@tooltip-prefix-cls, @color-background-tooltip, @tooltip-arrow-width, @tooltip-distance, @tooltip-arrow-offset);
+  .trigger-placement(@tooltip-prefix-cls-legacy, @color-background-tooltip, @tooltip-arrow-width, @tooltip-distance, @tooltip-arrow-offset);
 }
 
-.trigger-transition(@tooltip-prefix-cls, @tooltip-duration);
+.trigger-transition(@tooltip-prefix-cls-legacy, @tooltip-duration);

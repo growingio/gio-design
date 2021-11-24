@@ -1,16 +1,16 @@
 @import '../../../stylesheet/index.less';
 
-@breadcrumb-prefix-cls: ~'@{component-prefix}-breadcrumb';
+@breadcrumb-prefix-cls-legacy: ~'@{component-prefix}-breadcrumb';
 
-.@{breadcrumb-prefix-cls} {
+.@{breadcrumb-prefix-cls-legacy} {
   display: flex;
   align-items: center;
   height: 22px;
   color: @color-text-breadcrumb-normal;
   font-size: 14px;
 
-  &-item.@{breadcrumb-prefix-cls}-item-link {
-    .@{breadcrumb-prefix-cls}-item-link-target {
+  &-item.@{breadcrumb-prefix-cls-legacy}-item-link {
+    .@{breadcrumb-prefix-cls-legacy}-item-link-target {
       cursor: pointer;
 
       &:hover {

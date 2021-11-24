@@ -1,8 +1,8 @@
 @import '../../../stylesheet/index.less';
 
-@empty-prefix-cls: ~'@{component-prefix}-empty';
+@empty-prefix-cls-legacy: ~'@{component-prefix}-empty';
 
-.@{empty-prefix-cls} {
+.@{empty-prefix-cls-legacy} {
   text-align: center;
 
   &__image {
@@ -27,24 +27,24 @@
   }
 }
 
-.@{empty-prefix-cls}--large {
-  .@{empty-prefix-cls}__image {
+.@{empty-prefix-cls-legacy}--large {
+  .@{empty-prefix-cls-legacy}__image {
     width: 300px;
     height: 200px;
   }
 
-  .@{empty-prefix-cls}__footer {
+  .@{empty-prefix-cls-legacy}__footer {
     margin-top: 16px;
   }
 }
 
-.@{empty-prefix-cls}--small {
-  .@{empty-prefix-cls}__image {
+.@{empty-prefix-cls-legacy}--small {
+  .@{empty-prefix-cls-legacy}__image {
     width: 150px;
     height: 100px;
   }
 
-  .@{empty-prefix-cls}__footer {
+  .@{empty-prefix-cls-legacy}__footer {
     margin-top: 12px;
   }
 }
