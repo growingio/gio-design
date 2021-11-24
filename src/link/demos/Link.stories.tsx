@@ -1,6 +1,5 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
 import { PlusOutlined } from '@gio-design/icons';
 import { LinkProps } from '../interface';
 import Link from '../Link';

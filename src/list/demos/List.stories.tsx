@@ -99,11 +99,11 @@ const Template: Story<ListProps> = (props) => {
       simple(default)
       <div className="demo-box">
         <h3>JSX render preview</h3>
-        <List>
+        {/* <List>
           <Item value="1" wrapper={wrapper}>
             1
           </Item>
-        </List>
+        </List> */}
         <h3>option render preview</h3>
         <List options={[{ label: '1', value: '1', wrapper }]} />
       </div>

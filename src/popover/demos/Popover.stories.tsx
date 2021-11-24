@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
 import Popover from '../Popover';
 import { PopoverProps } from '../interface';
 import Input from '../../input';
