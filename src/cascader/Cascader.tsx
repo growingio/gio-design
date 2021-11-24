@@ -34,6 +34,7 @@ const Cascader: React.FC<CascaderProps> = (props) => {
     separator = '',
     placement = 'bottomLeft',
     children,
+    strategy = 'fixed',
     ...rest
   } = props;
   const defaultPrefixCls = usePrefixCls(prefixCls);
@@ -69,7 +70,7 @@ const Cascader: React.FC<CascaderProps> = (props) => {
       className={classNames(`${defaultPrefixCls}-trigger`, className)}
       style={style}
       aria-hidden="true"
-      onClick={() => setVisible(!visible)}
+      onClick={() => !disabled && setVisible(!visible)}
     >
       <Trigger
         value={title}
@@ -102,12 +103,14 @@ const Cascader: React.FC<CascaderProps> = (props) => {
       <Popover
         content={renderOverlay()}
         trigger="click"
+        distoryOnHide={false}
         visible={visible}
         onVisibleChange={handVisibleChange}
         getContainer={getContainer}
         overlayClassName={classNames(`${defaultPrefixCls}--content`, overlayClassName)}
         overlayStyle={overlayStyle}
         placement={placement}
+        strategy={strategy}
       >
         {renderTrigger()}
       </Popover>

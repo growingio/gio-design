@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { isEqual } from 'lodash';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
 import Trigger from './Trigger';
@@ -7,9 +8,9 @@ import useControlledState from '../utils/hooks/useControlledState';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { OptionProps } from '../list/interfance';
 import Button from '../button';
-// import Page from '../page';
 import { ListContext } from '../list/context';
 import useCacheOptions from '../list/hooks/useCacheOptions';
+// import CheckboxItem from '../list/inner/ChckboxItem';
 
 // const defaultEmpty = () => <Page type="noData" size="small" style={{ margin: '0 auto', padding: '40px 0px' }} />;
 
@@ -17,8 +18,10 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   const {
     size,
     placeholder,
+    disabled,
     onClear,
     value: controlledValue,
+    defaultValue,
     trigger = 'click',
     visible: controlledVisible,
     onVisibleChange,
@@ -29,32 +32,39 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     getContainer,
     placement = 'bottomLeft',
     overlayStyle,
+    overlayClassName,
     children,
     onConfim,
     confimText = '确定',
     separator = '',
     className,
     style,
-    model = 'simple',
+    model = 'single',
     needConfim = model === 'multiple',
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
-  const [value, setValue] = useState(controlledValue);
-  const [title, setTitle] = useState<string | React.ReactNode>('');
+  const [value, setValue] = useState(controlledValue || defaultValue);
+  const [title, setTitle] = useState<string | React.ReactNode>(undefined);
 
   const { options, setOptions, getLabelByValue, getOptionsByValue } = useCacheOptions();
 
   // title仅跟随controlledValue变动
   useEffect(() => {
     setTitle(getLabelByValue(controlledValue, separator));
-  }, [controlledValue, getLabelByValue, separator]);
+  }, [controlledValue, getLabelByValue, separator, options]);
 
   useEffect(() => {
     if (!needConfim) {
       setValue(controlledValue);
     }
   }, [controlledValue, needConfim, setValue]);
+  useEffect(() => {
+    if (needConfim && !visible && !isEqual(controlledValue, value)) {
+      setValue(controlledValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible]);
   // methods
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);
@@ -66,12 +76,11 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   };
 
   const handleChange = (val?: string | string[], opts?: OptionProps | OptionProps[]) => {
-    setValue(val);
-    if (!needConfim) {
-      onChange?.(val, opts);
-    }
     if (model !== 'multiple') {
+      onChange?.(val, opts);
       handVisibleChange(false);
+    } else {
+      setValue(val);
     }
   };
   const clearInput = () => {
@@ -86,9 +95,10 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     }
     return (
       <Trigger
+        onClick={() => setVisible(!visible)}
         value={title}
         {...triggerProp}
-        // disabled={disabled}
+        disabled={disabled}
         size={size}
         placeholder={placeholder}
         onClear={clearInput}
@@ -96,12 +106,12 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
       />
     );
   };
-
   // render
   const renderOverlay = () => (
     <div className={classNames(defaultPrefix, className)} style={style}>
+      {/* {model === 'multiple' && selectAll && renderSelectAll()} */}
       {children}
-      {model === 'multiple' && (
+      {model === 'multiple' && needConfim && (
         <Button style={{ width: '100%' }} onClick={() => handleConfim()}>
           {confimText}
         </Button>
@@ -112,12 +122,14 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   return (
     <ListContext.Provider value={{ value, model, onChange: handleChange, options, setOptions }}>
       <Popover
+        distoryOnHide={false}
+        disabled={disabled}
         content={renderOverlay()}
         trigger={trigger}
         visible={visible}
         onVisibleChange={handVisibleChange}
         getContainer={getContainer}
-        overlayClassName={`${defaultPrefix}--content`}
+        overlayClassName={classNames(`${defaultPrefix}--content`, overlayClassName)}
         placement={placement}
         overlayStyle={overlayStyle}
       >

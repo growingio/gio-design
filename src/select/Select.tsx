@@ -112,6 +112,7 @@ const Select: React.FC<SelectProps> = (props) => {
   return (
     <ListContext.Provider value={{ value, onChange: handleChange }}>
       <Popover
+        distoryOnHide={false}
         content={renderOverlay()}
         trigger="click"
         visible={visible}

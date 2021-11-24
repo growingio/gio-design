@@ -70,7 +70,7 @@ const Template: Story<SelectProps> = (props) => {
           {...props}
         />
       </div>
-      <h3>JSX</h3>
+      <h3>JSX--prefix</h3>
       <div className="demo-box">
         <Select
           triggerProps={{
@@ -87,7 +87,9 @@ const Template: Story<SelectProps> = (props) => {
             style: { width: 240, textAlign: 'left' },
           }}
         >
-          <Option value="JSX1">JSX1</Option>
+          <Option value="JSX1" prefix="123">
+            JSX1
+          </Option>
           <Option value="JSX2">JSX2</Option>
         </Select>
       </div>

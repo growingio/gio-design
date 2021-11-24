@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { DOMAttributes } from 'react';
+import React, { DOMAttributes, ReactElement } from 'react';
 import { isEmpty, isString, noop } from 'lodash';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { PREFIX } from '../constants';
@@ -7,7 +7,7 @@ import { BaseItemProps } from '../interfance';
 import Tooltip from '../../tooltip';
 import WithRef from '../../utils/withRef';
 
-const defaultContentRender = (element: React.ReactNode | Element) => element;
+const defaultContentRender = (element: React.ReactNode | Element): React.ReactElement => element as React.ReactElement;
 const renderIcon = (className: string, prefix: React.ReactNode) => <span className={className}>{prefix}</span>;
 const BaseItem: React.ForwardRefRenderFunction<
   HTMLLIElement,
@@ -26,7 +26,7 @@ const BaseItem: React.ForwardRefRenderFunction<
     disabledTooltip,
     onClick,
     contentRender = defaultContentRender,
-    ...rest
+    wrapper = defaultContentRender,
   } = props;
 
   const prefixCls = `${usePrefixCls(PREFIX)}--item`;
@@ -46,12 +46,12 @@ const BaseItem: React.ForwardRefRenderFunction<
   ) : (
     <>{content}</>
   );
-  return (
+  const renderElement = (
     <Tooltip
-      disabled={disabled && !isEmpty(disabledTooltip)}
+      disabled={!disabled || isEmpty(disabledTooltip)}
       strategy="fixed"
-      getContainer={() => document.body}
       title={disabledTooltip}
+      getContainer={() => document.body}
     >
       <li
         style={style}
@@ -67,13 +67,14 @@ const BaseItem: React.ForwardRefRenderFunction<
         key={value}
         aria-hidden="true"
         ref={ref}
-        {...rest}
         onClick={() => (!disabled ? onClick?.(value) : noop)}
       >
         {contentRender?.(contentElement)}
       </li>
     </Tooltip>
   );
+
+  return wrapper(renderElement) as ReactElement;
 };
 
 export default WithRef(BaseItem);

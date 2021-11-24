@@ -107,4 +107,10 @@ export interface PopoverProps {
    * 显示隐藏的回掉
    */
   onVisibleChange?: (visible: boolean) => void;
+  /**
+   *
+   */
+  triggerStyle?: React.CSSProperties;
+  triggerClassName?: string;
+  distoryOnHide?: boolean;
 }

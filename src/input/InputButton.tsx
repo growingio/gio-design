@@ -12,7 +12,8 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     prefixCls: customizePrefixCls,
     prefix: customizePrefix,
     suffix: customizeSuffix,
-    onInputChange,
+    onInputChange: onInputUpdate,
+    onChange: onChangeEvent,
     placeholder,
     defaultValue,
     value: enterValue,
@@ -30,6 +31,14 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   const inputCls = usePrefixCls('input-btn-new__input', customizePrefixCls);
 
   const [value, setValue] = useControlledState(enterValue, defaultValue);
+
+  const onInputChange = useCallback(
+    (val?: string) => {
+      onInputUpdate?.(val);
+      onChangeEvent?.(val);
+    },
+    [onInputUpdate, onChangeEvent]
+  );
 
   const onClear = useCallback(
     (event: React.MouseEvent<Element, MouseEvent>) => {

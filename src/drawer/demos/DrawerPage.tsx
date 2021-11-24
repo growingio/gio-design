@@ -17,7 +17,7 @@ export default function ListPage() {
       <p>Upgrading Guide</p>
       <ul>
         <li>
-          封装自rc-dialog
+          封装自rc-dialog，详情
           <a href="https://github.com/react-component/dialog">rc-dialog</a>
         </li>
       </ul>

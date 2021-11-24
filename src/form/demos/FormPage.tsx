@@ -10,6 +10,13 @@ export default function FormPage() {
     <>
       <Title>{formatMessage({ defaultMessage: 'Form 表单' })}</Title>
       <p>{formatMessage({ defaultMessage: '高性能表单控件，自带数据域管理。包含数据录入、校验以及对应样式。' })}</p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>
+          封装自rc-field-form，详情
+          <a href="https://www.npmjs.com/package/rc-field-form">rc-dialog</a>
+        </li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
 
       <Subheading>{formatMessage({ defaultMessage: '基础用法' })}</Subheading>

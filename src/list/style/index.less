@@ -3,6 +3,7 @@
 @list-prefix-cls: ~'@{component-prefix}-list-new';
 @cascader-prefix-cls: ~'@{component-prefix}-cascader--new';
 @cascader-content-prefix-cls: ~'@{cascader-prefix-cls}--cascader--content';
+@popover-new__popcorn-prefix-cls: ~'@{component-prefix}-popover-new__popcorn';
 
 .@{cascader-content-prefix-cls} {
   &[data-popper-placement^='top'] {
@@ -14,7 +15,7 @@
   }
 
   &[data-popper-placement^='left'] {
-    padding-right: 12px !important;
+    margin-right: 8px !important;
   }
 
   &[data-popper-placement^='right'] {
@@ -40,12 +41,24 @@
     max-height: 520px;
     margin-right: 4px;
     padding: 8px;
-    .scrollbar();
     background: @gray-0;
     border: 1px solid #dfe4ee;
     border-radius: 8px;
     box-shadow: 0 8px 24px rgba(36, 46, 89, 0.1);
+    .scrollbar(@x: hidden, @y: overlay);
     &--item {
+      margin-bottom: 4px;
+      .@{list-prefix-cls}--item {
+        margin-bottom: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .@{popover-new__popcorn-prefix-cls} {
+        display: inherit;
+      }
+    }
+    & > .@{list-prefix-cls}--item {
       margin-bottom: 4px;
       &:last-child {
         margin-bottom: 0;
@@ -130,9 +143,25 @@
     &--actived:not(&--multiple) &-prefix-icon {
       color: @blue-3;
     }
+    &-prefix-icon {
+      display: inherit;
+      margin-right: 8px;
+      color: @gray-5;
+    }
+    &-suffix-icon {
+      display: inherit;
+      margin-left: 8px;
+      color: @gray-3;
+    }
     &--disabled {
       color: @gray-3;
       cursor: not-allowed;
+    }
+    &--disabled > &-prefix-icon {
+      color: @gray-3;
+    }
+    &--disabled > &-suffix-icon {
+      color: @gray-3;
     }
     &--interval {
       margin-top: 4px;
@@ -158,16 +187,7 @@
     > span > .gio-text--black {
       color: inherit;
     }
-    &-prefix-icon {
-      display: inherit;
-      margin-right: 8px;
-      color: @gray-5;
-    }
-    &-suffix-icon {
-      display: inherit;
-      margin-left: 8px;
-      color: @gray-3;
-    }
+
     &--checkbox {
       font-size: 0;
     }

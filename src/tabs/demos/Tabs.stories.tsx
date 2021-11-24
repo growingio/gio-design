@@ -11,7 +11,7 @@ import {
 } from '@gio-design/icons';
 import { action } from '@storybook/addon-actions';
 import Docs from './TabsPage';
-import Tabs, { Tab, TabProps } from '../index';
+import Tabs, { Tab, TabsProps } from '../index';
 import '../style';
 
 export default {
@@ -63,32 +63,32 @@ const haveChildrenItems = () =>
       </div>
     </Tab>
   ));
-const Template: Story<TabProps> = (args) => (
+const Template: Story<TabsProps> = (args) => (
   <div>
     <Tabs {...args}>{renderItems()}</Tabs>
   </div>
 );
-const noTabTemplate: Story<TabProps> = (args) => (
+const noTabTemplate: Story<TabsProps> = (args) => (
   <div>
     <Tabs {...args}>{noTabItem()}</Tabs>
   </div>
 );
-const noPrefixTemplate: Story<TabProps> = (args) => (
+const noPrefixTemplate: Story<TabsProps> = (args) => (
   <div>
     <Tabs {...args}>{noPrefixItems()}</Tabs>
   </div>
 );
-const DisabledTemplate: Story<TabProps> = (args) => (
+const DisabledTemplate: Story<TabsProps> = (args) => (
   <div>
     <Tabs {...args}>{disabledItems()}</Tabs>
   </div>
 );
-const childrenTemplate: Story<TabProps> = (args) => (
+const childrenTemplate: Story<TabsProps> = (args) => (
   <div>
     <Tabs {...args}>{haveChildrenItems()}</Tabs>
   </div>
 );
-const DemoTemplate: Story<TabProps> = (args) => (
+const DemoTemplate: Story<TabsProps> = (args) => (
   <>
     <table
       style={{

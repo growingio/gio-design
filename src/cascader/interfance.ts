@@ -11,7 +11,6 @@ export interface CascaderProps extends Omit<ListProps, 'options' | 'onChange' | 
      多级文本的连接字符
      */
   separator?: string;
-
   visible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
   prefixCls?: string;
@@ -26,6 +25,7 @@ export interface CascaderProps extends Omit<ListProps, 'options' | 'onChange' | 
   contentClassName?: string;
   contentStyle?: React.CSSProperties;
   placement?: Placement;
+  strategy?: 'fixed' | 'absolute';
 }
 export interface OptionProps extends ListOptionProps {
   label: string;

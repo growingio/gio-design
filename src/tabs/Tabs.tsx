@@ -10,11 +10,22 @@ import { WithCommonProps } from '../utils/interfaces';
 import WithRef from '../utils/withRef';
 import TabsContext from './context';
 
-const Tabs: React.ForwardRefRenderFunction<
+export const Tabs: React.ForwardRefRenderFunction<
   HTMLDivElement,
   WithCommonProps<TabsProps> & Omit<DOMAttributes<HTMLDivElement>, 'onChange'>
-> = (props: WithCommonProps<TabsProps> & Omit<DOMAttributes<HTMLDivElement>, 'onChange'>, ref?) => {
-  const { defaultValue = 0, value, onChange, classname, children, size = 'normal', tabListStyle, ...restProps } = props;
+> = (
+  {
+    defaultValue = 0,
+    value,
+    onChange,
+    classname,
+    children,
+    size = 'normal',
+    tabListStyle,
+    ...restProps
+  }: WithCommonProps<TabsProps> & Omit<DOMAttributes<HTMLDivElement>, 'onChange'>,
+  ref?
+) => {
   const [activeValue, setActiveValue] = useControlledState<React.Key>(value, defaultValue);
   const prefixCls = usePrefixCls('tabs-new');
   const tabClasses = classnames(classname, prefixCls);

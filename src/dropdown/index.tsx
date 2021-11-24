@@ -1,6 +1,6 @@
 import Dropdown from './Dropdown';
 import DropdownProps from './interface';
 
-export { DropdownProps };
+export { Dropdown, DropdownProps };
 
 export default Dropdown;

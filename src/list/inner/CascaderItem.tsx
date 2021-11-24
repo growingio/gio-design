@@ -2,6 +2,7 @@ import React, { DOMAttributes, useContext, useEffect, useMemo } from 'react';
 import { isEmpty, noop } from 'lodash';
 import { RightFilled } from '@gio-design/icons';
 import classNames from 'classnames';
+import toArray from 'rc-util/lib/Children/toArray';
 import Popover from '../../popover';
 import { CascaderItemProps, OptionProps, ListProps } from '../interfance';
 import BaseItem from './baseItem';
@@ -31,7 +32,6 @@ const CascaderItem: React.ForwardRefRenderFunction<
   const isSelected = initValue?.startsWith(generateString(value, selectParent));
   const { setOptions } = useContext(ListContext);
   const childSelectPrent = generateSelectParent(label, value, selectParent);
-
   const childNodeOptions = convertChildrenToData(children);
   const mergedOptions = useMemo(() => [...childNodeOptions, ...childrens], [childNodeOptions, childrens]);
 
@@ -46,13 +46,14 @@ const CascaderItem: React.ForwardRefRenderFunction<
   const content = () => {
     if (!isEmpty(childrens)) {
       return (
-        <List model="cascader" className={prefixCls}>
+        <List model="cascader" className={prefixCls} disabled={disabled}>
           {childrens?.map((child) => (
             <CascaderItem
               label={child?.label}
               value={child?.value}
               childrens={child?.childrens as CascaderItemProps[]}
               selectParent={childSelectPrent}
+              disabled={disabled}
             />
           ))}
         </List>
@@ -63,8 +64,9 @@ const CascaderItem: React.ForwardRefRenderFunction<
       return React.cloneElement<ListProps>(children, {
         ...children.props,
         model: 'cascader',
+        disabled,
         className: classNames(children.props?.className, prefixCls),
-        children: React.Children.toArray(children?.props.children).map((child) =>
+        children: toArray(children?.props.children).map((child) =>
           React.cloneElement<OptionProps>(child as React.ReactElement, {
             selectParent: childSelectPrent,
           })
@@ -74,24 +76,24 @@ const CascaderItem: React.ForwardRefRenderFunction<
     return <></>;
   };
 
-  const PopoverRender = (trigger: React.ReactNode): React.ReactElement => {
+  const PopoverRender = (element: React.ReactNode): React.ReactElement => {
     if (!isEmpty(childrens) || React.isValidElement(children)) {
       return (
         <div className={prefixClsItem}>
           <Popover
             placement="rightTop"
-            strategy="fixed"
-            trigger="hover"
             overlayClassName={popoverClassName}
             content={content()}
+            getContainer={(node) => node || document.body}
+            distoryOnHide={false}
           >
-            {trigger as React.ReactElement}
+            {element}
           </Popover>
         </div>
       );
     }
 
-    return trigger as React.ReactElement;
+    return <>{element}</>;
   };
   const renderItem = (
     <BaseItem
@@ -104,9 +106,10 @@ const CascaderItem: React.ForwardRefRenderFunction<
       onChange={noop}
       onClick={React.isValidElement(children) || !isEmpty(childrens) ? noop : onClick}
       selected={isSelected}
+      wrapper={PopoverRender}
     />
   );
-  return PopoverRender(renderItem);
+  return renderItem;
 };
 
 export default WithRef(CascaderItem);

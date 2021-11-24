@@ -1,11 +1,13 @@
 import React from 'react';
+import { ListContextProps } from './context';
 
-export type ModelType = 'cascader' | 'multiple' | 'simple';
+export type ModelType = 'cascader' | 'multiple' | 'single';
 
 export interface SelectionProps extends ListProps {
   className?: string;
   style?: React.CSSProperties;
   options?: SelectionItemProps[] | OptionProps[];
+  children?: ((context: ListContextProps) => JSX.Element | React.ReactNode) | React.ReactNode;
 }
 
 export interface SelectionItemProps extends OptionProps {
@@ -62,12 +64,6 @@ export interface ListProps {
    */
   renderItem?: (option: OptionProps) => React.ReactElement;
   /**
-   * 是否显示preview 弹出面板 目前仅支持了options参数形式
-   */
-  showPreview?: boolean;
-  previewRender?: (option: OptionProps) => React.ReactNode;
-  previewRenderContainer?: (node: HTMLElement) => HTMLElement;
-  /**
    * empty
    */
   empty?: () => React.ReactNode;
@@ -83,6 +79,10 @@ export interface OptionProps {
   value: string;
   disabled?: boolean;
   disabledTooltip?: string;
+  prefix?: string | React.ReactNode;
+  suffix?: string | React.ReactNode;
+  wrapper?: (element: React.ReactNode) => React.ReactElement;
+
   [key: string]: unknown;
 }
 
@@ -106,27 +106,26 @@ export interface ItemProps
     | 'style'
     | 'label'
     | 'children'
+    | 'onClick'
     | 'prefix'
     | 'suffix'
-    | 'onClick'
     | 'label'
     | 'value'
     | 'disabled'
     | 'selected'
     | 'disabledTooltip'
+    | 'wrapper'
   > {
   selectValue?: string | string[];
 }
 
-export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled'> {
+export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled' | 'prefix' | 'suffix' | 'wrapper'> {
   className?: string;
   style?: React.CSSProperties;
   label?: string | React.ReactNode;
-  contentRender?: (element: React.ReactNode) => React.ReactNode | Element;
+  contentRender?: (element: React.ReactNode) => React.ReactElement;
   children?: React.ReactNode;
   disabledTooltip?: string;
   selected?: boolean;
-  prefix?: string | React.ReactNode;
-  suffix?: string | React.ReactNode;
   onClick?: (value: string) => void;
 }

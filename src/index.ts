@@ -56,6 +56,9 @@ export {
   GioTreeNodeSelectedEvent,
   GioTreeNodeProps,
 } from './tree';
+export { default as Text, TextProps } from './typography/text';
+export { default as Title, TitleProps } from './typography/title';
+export { default as Typography } from './typography';
 export { default as Upload, UploadProps, UploadType, UploadStatus } from './upload';
 export { default as Select, SelectProps, OptionProps } from './select';
 export { default as Switch, SwitchGroupProps } from './switchGroup';

@@ -7,10 +7,7 @@ import CheckboxGroupContext from './CheckboxGroupContext';
 import { CheckboxOptionType, CheckboxValueType, CheckboxGroupProps } from './interface';
 
 const InternalCheckboxGroup: React.ForwardRefRenderFunction<HTMLDivElement, CheckboxGroupProps<CheckboxValueType>> = (
-  props,
-  ref
-) => {
-  const {
+  {
     options = [],
     prefixCls: customizePrefixCls,
     defaultValue,
@@ -20,8 +17,9 @@ const InternalCheckboxGroup: React.ForwardRefRenderFunction<HTMLDivElement, Chec
     layout = 'horizontal',
     children,
     ...restProps
-  } = props;
-
+  },
+  ref
+) => {
   const [value, setValue] = React.useState<CheckboxValueType[]>(restProps.value || defaultValue || []);
   const [registeredValues, setRegisteredValues] = React.useState<CheckboxValueType[]>([]);
 

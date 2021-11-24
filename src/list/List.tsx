@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { difference, indexOf, isArray, isEmpty, isNil } from 'lodash';
+import { difference, indexOf, isArray, isEmpty, isNil, toArray } from 'lodash';
 import { OptionProps, ItemProps, ListProps } from './interfance';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { PREFIX } from './constants';
@@ -8,7 +8,6 @@ import Item from './Item';
 import { convertChildrenToData, isCascader, isMultipe } from './util';
 import WithRef from '../utils/withRef';
 import './style';
-import Popover from '../popover';
 import { ListContext } from './context';
 import useValue from './hooks/useValue';
 import useCacheOptions from './hooks/useCacheOptions';
@@ -32,15 +31,12 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
     children,
     disabled = false,
     value: controlledValue,
-    model = 'simple',
+    model = 'single',
     collapse: initCollapse = 10,
     prefix,
     suffix,
     onChange: controlledOnChange,
-    showPreview,
     renderItem,
-    previewRender,
-    previewRenderContainer,
   } = props;
 
   const prefixCls = usePrefixCls(PREFIX);
@@ -78,7 +74,7 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
     setOptions(mergedOptions);
   }, [mergedOptions, setOptions]);
 
-  const renderOptions = initOptions?.length ? initOptions : React.Children.toArray(children);
+  const renderOptions = initOptions?.length ? initOptions : toArray(children);
   const childrens = renderOptions.slice(0, collapse);
   const isNeedCollapse = useMemo(() => renderOptions?.length > collapse, [renderOptions, collapse]);
   const handleClick = (val: string) => {
@@ -97,32 +93,14 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
     }
   };
 
-  const renderPreview = (option: OptionProps, content: React.ReactElement) => {
-    if (showPreview) {
-      return (
-        <div className={`${prefixCls}--preview`}>
-          <Popover
-            placement="rightTop"
-            strategy="fixed"
-            getContainer={previewRenderContainer}
-            content={previewRender?.(option)}
-            overlayClassName={`${prefixCls}--preview--overlay`}
-          >
-            {content}
-          </Popover>
-        </div>
-      );
-    }
-    return content;
-  };
   const renderChildren = (option: OptionProps) => {
     const renderedItem = renderItem?.(option);
     return (
       <Item
         {...option}
         key={option.value}
-        prefix={prefix?.(option)}
-        suffix={suffix?.(option)}
+        prefix={option?.prefix ?? prefix?.(option)}
+        suffix={option?.suffix ?? suffix?.(option)}
         disabled={option?.disabled ?? disabled}
         isMultiple={isMultipe(mergedModel)}
         isCascader={isCascader(mergedModel)}
@@ -138,7 +116,7 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
   const renderChildrens = (child: React.ReactNode[] | OptionProps[]) => {
     // options render
     if (!isEmpty(initOptions)) {
-      return (child as OptionProps[])?.map((option: OptionProps) => renderPreview(option, renderChildren(option)));
+      return (child as OptionProps[])?.map((option: OptionProps) => renderChildren(option));
     }
     // childrens render
     return (child as React.ReactNode[])?.map(
