@@ -80,7 +80,7 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
 }
 
 export interface InputButtonProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'suffix'> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'suffix' | 'onChange'> {
   /**
    * Input button 的 class name
    */
@@ -135,6 +135,11 @@ export interface InputButtonProps
    * @default false
    */
   active?: boolean;
+  /**
+   * 当Input Button的值修改后的方法
+   */
+  onChange?: (value: string) => void;
+
   /**
    * 当Input Button的值修改后的方法
    */
