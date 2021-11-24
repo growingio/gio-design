@@ -17,7 +17,7 @@ const Empty: React.FC<EmptyProps> & { NO_DATA_IMAGE: React.ReactNode; NO_RESULT_
   locale: customizeLocale,
 }: EmptyProps) => {
   const locale = useLocale('Empty');
-  const prefixCls = usePrefixCls('empty');
+  const prefixCls = usePrefixCls('empty-legacy');
 
   const { description } = customizeLocale ?? locale ?? defaultLocale;
   const cls = classnames(

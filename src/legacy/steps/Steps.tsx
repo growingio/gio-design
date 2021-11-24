@@ -9,7 +9,7 @@ import { StepsProps, StepProps } from './interface';
 
 const Steps: React.FC<StepsProps> & { Step: React.FC<StepProps> } = (props: StepsProps) => {
   const { current = 0, className, onClick, children: ch } = props;
-  const prefixCls = usePrefixCls('steps');
+  const prefixCls = usePrefixCls('steps-legacy');
   if (!ch) return null;
   const children = toArray(ch);
 

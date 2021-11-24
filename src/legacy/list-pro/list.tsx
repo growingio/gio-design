@@ -196,6 +196,8 @@ class SelectList extends React.Component<SelectListProps & ConfigConsumerProps> 
   }
 }
 
-const WithGroupList = withGroupedOptions(withConfigConsumer<SelectListProps>({ subPrefixCls: 'select' })(SelectList));
+const WithGroupList = withGroupedOptions(
+  withConfigConsumer<SelectListProps>({ subPrefixCls: 'select-legacy' })(SelectList)
+);
 
 export default WithGroupList;

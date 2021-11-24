@@ -18,7 +18,7 @@ export const LayoutContext = createContext<LayoutContextType>({
 
 const Layout = ({ prefixCls: customizePrefixCls, fixed, className, style, children }: LayoutProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const prefixCls = usePrefixCls('layout', customizePrefixCls);
+  const prefixCls = usePrefixCls('layout-legacy', customizePrefixCls);
   const [localLayoutState, setLayoutState] = useSetState<LayoutState>(initLayoutState);
   const [localContentState, setContentState] = useSetState<ContentState>(initContentState);
   const [siders, removeSider, updateSiders, margin] = useSiders();

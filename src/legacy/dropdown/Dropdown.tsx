@@ -10,7 +10,7 @@ const Dropdown = (props: DropdownProps) => {
   const {
     children,
     prefixCls,
-    subPrefixCls = 'dropdown',
+    subPrefixCls = 'dropdown-legacy',
     placement = 'bottom',
     trigger = 'click',
     visible,

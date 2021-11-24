@@ -56,7 +56,7 @@ export const Breadcrumb: BreadcrumbInterface = ({
   ...restProps
 }: BreadcrumbProps) => {
   let crumbs;
-  const prefixCls = usePrefixCls('breadcrumb', customizePrefixCls);
+  const prefixCls = usePrefixCls('breadcrumb-legacy', customizePrefixCls);
   if (routes && routes.length > 0) {
     const paths: string[] = [];
     crumbs = routes.map((route: Route) => {

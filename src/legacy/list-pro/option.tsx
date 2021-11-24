@@ -24,7 +24,7 @@ const SelectOption = (props: OptionProps) => {
     placement,
   } = props;
 
-  const prefixCls = usePrefixCls('select');
+  const prefixCls = usePrefixCls('select-legacy');
   const ref = useRef(null);
   const handleSelect = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {

@@ -7,7 +7,7 @@ import { AvatarGroupProps, UserAvatarType } from './interfaces';
 
 const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
   const { number = 5, users = [], className, placement = 'bottom', style, displayTooltip = true } = props;
-  const prefixCls = usePrefixCls('avatar');
+  const prefixCls = usePrefixCls('avatar-legacy');
 
   let children = null;
   const renderAvatarGroup = (sliceUsers: UserAvatarType[]) =>

@@ -22,7 +22,7 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   } = props;
 
   const [localActiveKey, setLocalActiveKey] = useControlledState<string>(activeKey, defaultActiveKey);
-  const wrapperRefKey = useRef<symbol>(Symbol('tabNav'));
+  const wrapperRefKey = useRef<symbol>(Symbol('tabNav-legacy'));
   const [setRef, getRef] = useRefs<HTMLDivElement>();
   const [inkStyle, setInkStyle] = useState<React.CSSProperties>({});
 

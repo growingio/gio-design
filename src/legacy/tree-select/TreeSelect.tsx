@@ -67,7 +67,7 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
       bordered,
     } = this.props;
 
-    const prefixCls = getPrefixCls('select', customizePrefixCls ?? rootPrefixCls);
+    const prefixCls = getPrefixCls('select-legacy', customizePrefixCls ?? rootPrefixCls);
     const treePrefixCls = getPrefixCls('select-tree', customizePrefixCls ?? rootPrefixCls);
     const treeSelectPrefixCls = getPrefixCls('tree-select', customizePrefixCls ?? rootPrefixCls);
 

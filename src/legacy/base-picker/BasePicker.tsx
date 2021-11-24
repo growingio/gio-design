@@ -19,7 +19,7 @@ function BasePicker({
   detailVisible = false,
   renderDetail,
 }: BasePickerProps) {
-  const prefixCls = usePrefixCls('base-picker');
+  const prefixCls = usePrefixCls('base-picker-legacy');
   const [query, setQuery] = React.useState<string>('');
 
   function handleQueryChange(current: string) {

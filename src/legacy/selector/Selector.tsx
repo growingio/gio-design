@@ -23,7 +23,7 @@ function Selector({
   trigger,
   ...restProps
 }: SelectorProps) {
-  const prefixCls = usePrefixCls('selector');
+  const prefixCls = usePrefixCls('selector-legacy');
   const [visible, setVisible] = useControlledState(dropdownVisible, false);
   const [triggerHovered, setTriggerHovered] = React.useState<boolean>(false);
 

@@ -27,7 +27,7 @@ function ListSelector({
   const [controlledValue, setControlledValue] = useControlledState(value, defaultValue);
   const [dropdownVisible, setDropdownVisible] = useControlledState(visible, defaultVisible);
   const [currentItem, setCurrentItem] = React.useState<React.ReactNode>();
-  const prefixCls = usePrefixCls('list-selector');
+  const prefixCls = usePrefixCls('list-selector-legacy');
 
   const handleOnSelect = (currentValue: string, item: ItemProps) => {
     setDropdownVisible(false);

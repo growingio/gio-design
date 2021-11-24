@@ -12,7 +12,7 @@ const Popover: React.FC<PopoverProps> = (props: PopoverProps) => {
     contentArea,
     footerArea,
     prefixCls: customizePrefixCls,
-    subPrefixCls = 'popover',
+    subPrefixCls = 'popover-legacy',
     arrowPointAtCenter,
     autoAdjustOverflow,
     ...rest

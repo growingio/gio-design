@@ -16,7 +16,7 @@ const InnerRadio: React.ForwardRefRenderFunction<unknown, IRadioProps> = (
   ref
 ) => {
   const groupContext = useContext(RadioGroupContext);
-  const prefixCls = usePrefixCls('radio', customPrefixCls);
+  const prefixCls = usePrefixCls('radio-legacy', customPrefixCls);
 
   const labelCls = classnames(`${prefixCls}__label`);
 

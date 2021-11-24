@@ -18,7 +18,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   className,
   ...rest
 }: TextAreaProps) => {
-  const prefixCls = usePrefixCls('input');
+  const prefixCls = usePrefixCls('input-legacy');
   const hasMaxLength = maxLength !== undefined && maxLength > 0;
   const wrapClass = classNames(className, prefixCls, `${prefixCls}__textarea-wrapper`, {
     [`${prefixCls}--show-count`]: hasMaxLength && showCount,

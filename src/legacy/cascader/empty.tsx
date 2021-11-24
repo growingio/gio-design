@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Empty: React.FC<Props> = (props: Props) => {
-  const locale = useLocale('Cascader');
+  const locale = useLocale('Cascader-legacy');
   const { noData }: { noData: string } = {
     ...defaultLocale,
     ...locale,

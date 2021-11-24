@@ -7,7 +7,7 @@ import { InputProps } from './interfaces';
 
 const Password: React.FC<InputProps> = (props) => {
   const { disabled } = props;
-  const prefixCls = usePrefix('input');
+  const prefixCls = usePrefix('input-legacy');
   const [visible, setVisible] = React.useState(false);
 
   const passwordSuffixIconCls = classnames(`${prefixCls}__suffix-icon`, {

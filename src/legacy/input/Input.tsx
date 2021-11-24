@@ -7,7 +7,7 @@ import useMergeRef from '../../utils/hooks/useMergeRef';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 
 const InputFC: React.FC<InputProps> = (props: InputProps) => {
-  const prefixCls = usePrefixCls('input');
+  const prefixCls = usePrefixCls('input-legacy');
   const sizeContext = useContext(SizeContext);
   const {
     type = 'text',

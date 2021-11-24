@@ -26,7 +26,7 @@ function Selector({
   type = 'secondary',
   destroyTooltipOnHide,
 }: SelectorProps) {
-  const prefixCls = usePrefixCls('selector-pro');
+  const prefixCls = usePrefixCls('selector-pro-legacy');
   const contextSize = useSize();
   const size = customizeSize || contextSize;
   const [visible, setVisible] = useControlledState(dropdownVisible, false);

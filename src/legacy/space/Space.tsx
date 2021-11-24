@@ -24,7 +24,7 @@ const Space: React.FC<SpaceProps> = (props) => {
     autoWrap = true,
     align = 'center',
   } = props;
-  const prefixCls = usePrefixCls('space', customizePrefixCls);
+  const prefixCls = usePrefixCls('space-legacy', customizePrefixCls);
   const [horizontalSize, verticalSize] = useMemo(
     () => (Array.isArray(size) ? size : [size, size]) as [SpaceSize, SpaceSize],
     [size]
