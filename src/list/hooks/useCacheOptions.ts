@@ -35,7 +35,7 @@ const useCacheOptions = () => {
 
   const getLabelByValue = (val?: string | string[], separator = '') => {
     if (val === '' || typeof val === 'undefined') {
-      return undefined;
+      return '';
     }
     if (val?.includes('.')) {
       return (val as any)
@@ -46,7 +46,7 @@ const useCacheOptions = () => {
     if (isArray(val)) {
       return val?.reduce((prev, curr: string) => [...prev, getOptionByValue?.(curr)?.label], [])?.join(',');
     }
-    return getOptionByValue(val)?.label;
+    return getOptionByValue(val)?.label ?? '';
   };
   return {
     options: options.current,

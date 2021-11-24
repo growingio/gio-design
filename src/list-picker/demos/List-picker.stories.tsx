@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import '../style';
 import { uniqueId } from 'lodash';
+import CheckboxItem from '../../list/inner/ChckboxItem';
 import { OptionProps } from '../../list/interfance';
 // import { uniqueId } from 'lodash';
 // import { uniqBy, uniqueId } from 'lodash';
@@ -38,6 +39,10 @@ const Template: Story<ListPickerProps> = () => {
   const [multipleValue, setMultipleValue] = useState<undefined | string[]>(undefined);
   const [activeTab, setActiveTab] = useState('tab1');
   const [search, setSearch] = useState('');
+  const multipleOptions = [
+    { label: '子一', value: 'ziyi' },
+    { label: '子二', value: 'zier' },
+  ];
   const onChange = (val?: string, opt?: OptionProps | OptionProps[]) => {
     setValue(val);
     console.log('onChange执行', val, opt, search);
@@ -47,7 +52,7 @@ const Template: Story<ListPickerProps> = () => {
       <h3>单选</h3>
       <div className="demo-box">
         <div style={{ padding: '10px' }}>
-          <Button size="small" onClick={() => setValue(undefined)}>
+          <Button size="small" onClick={() => setValue('')}>
             清空
           </Button>
         </div>
@@ -56,7 +61,7 @@ const Template: Story<ListPickerProps> = () => {
           onChange={onChange}
           overlayStyle={{ width: '240px' }}
           onClear={() => {
-            // setValue(undefined);
+            setValue('');
           }}
           triggerProps={{ allowClear: true }}
           placeholder="请选择"
@@ -175,6 +180,7 @@ const Template: Story<ListPickerProps> = () => {
               placeholder="请搜索名称"
               onSearch={(val: string) => setSearch(val)}
             />
+
             <List.Selection
               options={[
                 { label: '子一', value: 'ziyi' },
@@ -183,6 +189,7 @@ const Template: Story<ListPickerProps> = () => {
             />
           </ListPicker>
         </div>
+        <h3>不同全选的方式</h3>
         <div className="demo-box">
           <div style={{ padding: '10px' }}>
             <Button size="small" onClick={() => setMultipleValue(['ziyi', 'zier'])}>
@@ -211,17 +218,75 @@ const Template: Story<ListPickerProps> = () => {
               placeholder="请搜索名称"
               onSearch={(val: string) => setSearch(val)}
             />
-            <List.Selection
-              options={[
-                { label: '子一', value: 'ziyi' },
-                { label: '子二', value: 'zier' },
-              ]}
-            />
+
+            <List.Selection>
+              {(context) => (
+                <>
+                  <CheckboxItem
+                    selected={context.value?.length === 2}
+                    onClick={() => {
+                      if (context.value?.length === 2) {
+                        context.onChange([]);
+                      } else {
+                        context.onChange(['ziyi', 'zier']);
+                      }
+                    }}
+                    label="全部"
+                    value="all"
+                  />
+                  <List options={multipleOptions} id="id" title="有item" />
+                </>
+              )}
+            </List.Selection>
           </ListPicker>
         </div>
-
+        <h3>selection下list 无 item</h3>
+        <div className="demo-box">
+          <ListPicker overlayStyle={{ width: '240px' }} placeholder="请选择" onChange={(v) => console.log('v', v)}>
+            <SearchBar
+              size="small"
+              style={{ width: '100%' }}
+              placeholder="请搜索名称"
+              onSearch={(val: string) => setSearch(val)}
+            />
+            <List.Selection>
+              <List options={multipleOptions} id="id" title="有item" />
+              <List options={[]} id="id2" title="无item" />
+              <List id="id3" title="有JSX item">
+                <List.Item value="id3-1">JSX-1</List.Item>
+                <List.Item value="id3-2">JSX-2</List.Item>
+              </List>
+            </List.Selection>
+          </ListPicker>
+        </div>
+        <h3>超长的ListPicker</h3>
         <div className="demo-box">
           <ListPicker
+            value={multipleValue}
+            onChange={(val) => {
+              console.log('multiple onChange 并不会触发', val);
+            }}
+            overlayStyle={{ width: '240px' }}
+            model="multiple"
+            onClear={() => {
+              setMultipleValue(undefined);
+            }}
+            onConfim={(val) => setMultipleValue(val as any)}
+            placeholder="请选择"
+          >
+            <SearchBar
+              size="small"
+              style={{ width: '100%' }}
+              placeholder="请搜索名称"
+              onSearch={(val: string) => setSearch(val)}
+            />
+            <List.Selection options={largeOptions} />
+          </ListPicker>
+        </div>
+        <h3>disabled</h3>
+        <div className="demo-box">
+          <ListPicker
+            disabled
             value={multipleValue}
             onChange={(val) => {
               console.log('multiple onChange 并不会触发', val);
