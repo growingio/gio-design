@@ -109,7 +109,7 @@ const Upload: React.FC<IUploadProps> = ({
   }, [defaultFileList, fileList, maxCount]);
 
   const rcUploadRef = useRef(null);
-  const prefixCls = usePrefixCls('upload-new', customPrefixCls);
+  const prefixCls = usePrefixCls('upload', customPrefixCls);
 
   const rootCls = classnames(className, prefixCls, {
     [`${prefixCls}--disabled`]: disabled || (type === 'drag' && uploadDisabled),

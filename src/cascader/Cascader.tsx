@@ -16,7 +16,7 @@ export const Cascader: React.FC<CascaderProps> = ({
   defaultValue = undefined,
   visible: controlledVisible,
   onChange,
-  prefixCls = 'cascader--new',
+  prefixCls = 'cascader-',
   getContainer,
   onVisibleChange,
   triggerProps,

@@ -20,7 +20,7 @@ const Button = WithRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     ...restProps
   } = props;
 
-  const prefixCls = usePrefixCls('button-new');
+  const prefixCls = usePrefixCls('button');
   const classes = classNames([className, prefixCls], {
     [`${prefixCls}_${type}`]: type,
     [`${prefixCls}_${size}`]: size,

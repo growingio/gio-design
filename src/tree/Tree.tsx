@@ -102,7 +102,7 @@ const Tree = React.forwardRef<RcTree, TreeProps>((props: TreeProps, ref) => {
   const { prefixCls: customizePrefixCls, className, showIcon, children, switcherIcon } = props;
 
   const newProps = { ...props };
-  const prefixCls = usePrefixCls('tree-new', customizePrefixCls);
+  const prefixCls = usePrefixCls('tree', customizePrefixCls);
 
   return (
     <RcTree

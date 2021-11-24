@@ -29,7 +29,7 @@ export const Steps = WithRef<
     ref?
   ) => {
     const [activeValue, setActiveValue] = useControlledState<React.Key>(value, current - 1);
-    const prefixCls = usePrefixCls('tabs-new');
+    const prefixCls = usePrefixCls('tabs');
     const tabClasses = classnames(classname, prefixCls);
 
     const elementList = React.Children.toArray(children).filter(

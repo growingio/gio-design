@@ -23,7 +23,7 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>(
     },
     ref
   ) => {
-    const prefixCls = usePrefixCls('loading-new', customizePrefixCls);
+    const prefixCls = usePrefixCls('loading', customizePrefixCls);
     const shouldLoading = useDebounceLoading(loading, delay);
     const loadingRef = useRef<HTMLDivElement>(null);
 

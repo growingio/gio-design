@@ -31,7 +31,7 @@ const Popover = (props: PopoverProps) => {
     distoryOnHide = true,
   } = props;
 
-  const prefixCls = usePrefixCls('popover-new', customPrefixCls);
+  const prefixCls = usePrefixCls('popover', customPrefixCls);
   const [visible, setVisible] = useState(defaultVisible);
   const overContentRef = useRef<boolean>(false);
   const [referenceElement, setReferenceELement] = useState<null | HTMLElement>(null);

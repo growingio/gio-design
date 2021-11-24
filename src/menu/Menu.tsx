@@ -21,7 +21,7 @@ const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
     ...restProps
   } = props;
 
-  const prefixCls = usePrefixCls('menu-new', customPrefixCls);
+  const prefixCls = usePrefixCls('menu', customPrefixCls);
   const cls = classnames(className, { [`${prefixCls}-inlineCollapsed`]: inlineCollapsed });
 
   const realMode = transform2RcMode(mode);

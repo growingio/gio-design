@@ -29,7 +29,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     onChange,
     triggerProps,
     renderTrigger: propsRenderTrigger,
-    prefixCls = 'list-picker--new',
+    prefixCls = 'list-picker-',
     getContainer,
     placement = 'bottomLeft',
     overlayStyle,

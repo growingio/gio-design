@@ -30,7 +30,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
     ...restProps
   } = props;
 
-  const prefixCls = usePrefixCls('date-picker-new');
+  const prefixCls = usePrefixCls('date-picker');
   const overlayCls = classnames(`${prefixCls}-overlay`, overlayClassName);
 
   const [visible, setVisible] = useControlledState(popoverVisible, false);

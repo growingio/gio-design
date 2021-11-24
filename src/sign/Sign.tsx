@@ -20,7 +20,7 @@ const Sign: React.FC<ISignNumberProps> = ({
   children,
   offset,
 }: ISignNumberProps) => {
-  const prefix = usePrefixCls('sign-new', customPrefixCls);
+  const prefix = usePrefixCls('sign', customPrefixCls);
   const noChildren = Children.count(children) === 0;
 
   const cls = classnames(className, prefix, `${prefix}__number-wrapper`, {

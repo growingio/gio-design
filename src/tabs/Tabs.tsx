@@ -28,7 +28,7 @@ export const Tabs = WithRef<
     ref?
   ) => {
     const [activeValue, setActiveValue] = useControlledState<React.Key>(value, defaultValue);
-    const prefixCls = usePrefixCls('tabs-new');
+    const prefixCls = usePrefixCls('tabs');
     const tabClasses = classnames(classname, prefixCls);
 
     const elementList = React.Children.toArray(children).filter(

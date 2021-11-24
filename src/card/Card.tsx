@@ -18,7 +18,7 @@ export const Card = WithRef<HTMLDivElement, WithCommonProps<CardProps>>(
     }: CardProps,
     ref?
   ) => {
-    const prefixCls = usePrefixCls('card-new', customizePrefixCls);
+    const prefixCls = usePrefixCls('card', customizePrefixCls);
     const cardClassName = classNames(prefixCls, className, {
       [`${prefixCls}-disabled`]: disabled,
       [`${prefixCls}-clickable`]: clickable,

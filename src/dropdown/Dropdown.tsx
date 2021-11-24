@@ -21,7 +21,7 @@ export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.Forwa
   } = props;
 
   const [controlledVisible, setControlledVisible] = useControlledState(visible, defaultVisible);
-  const prefixCls = usePrefixCls('dropdown-new');
+  const prefixCls = usePrefixCls('dropdown');
 
   const getDropdownTrigger = () => {
     const child = Children.only(children);

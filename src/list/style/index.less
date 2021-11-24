@@ -1,9 +1,9 @@
 @import '../../stylesheet/variables/index.less';
 @import '~@gio-design/utils/lib/less/mixins.less';
-@list-prefix-cls: ~'@{component-prefix}-list-new';
-@cascader-prefix-cls: ~'@{component-prefix}-cascader--new';
+@list-prefix-cls: ~'@{component-prefix}-list';
+@cascader-prefix-cls: ~'@{component-prefix}-cascader';
 @cascader-content-prefix-cls: ~'@{cascader-prefix-cls}--cascader--content';
-@popover-new__popcorn-prefix-cls: ~'@{component-prefix}-popover-new__popcorn';
+@popover__popcorn-prefix-cls: ~'@{component-prefix}-popover__popcorn';
 
 .@{cascader-content-prefix-cls} {
   &[data-popper-placement^='top'] {
@@ -54,7 +54,7 @@
       &:last-child {
         margin-bottom: 0;
       }
-      .@{popover-new__popcorn-prefix-cls} {
+      .@{popover__popcorn-prefix-cls} {
         display: inherit;
       }
     }

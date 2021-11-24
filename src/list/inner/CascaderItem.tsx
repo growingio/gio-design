@@ -27,7 +27,7 @@ const CascaderItem = WithRef<HTMLLIElement, CascaderItemProps & Omit<DOMAttribut
     },
     ref?
   ) => {
-    const prefixCls = usePrefixCls('cascader--new');
+    const prefixCls = usePrefixCls('cascader');
     const popoverClassName = `${prefixCls}--cascader--content`;
     const isSelected = initValue?.startsWith(generateString(value, selectParent));
     const { setOptions } = useContext(ListContext);

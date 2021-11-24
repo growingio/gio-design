@@ -33,7 +33,6 @@ const setStorage = (key: string, value: string) => {
     return [];
   }
 };
-k;
 const findStorage = (key: string, value: string): string[] => {
   const storages = getStorage(key);
   return storages.filter((item) => item.startsWith(value));
@@ -47,7 +46,6 @@ const clearStorage = (key: string): string[] => {
 const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
   const prefixCls = usePrefixCls('searchbar-legacy');
   const [searchValue, setSearchValue] = useState('');
-  k;
   const {
     showStorage = false,
     storageNum = 5,

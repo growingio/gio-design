@@ -1,7 +1,7 @@
 import { clone, has, get, join, set } from 'lodash';
 import { ColumnsType } from './interface';
 
-export const TABLE_PREFIX_CLS = 'table-new';
+export const TABLE_PREFIX_CLS = 'table';
 
 // eslint-disable-next-line import/prefer-default-export
 export const translateInnerColumns = <RecordType>(

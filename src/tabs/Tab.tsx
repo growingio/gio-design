@@ -6,7 +6,7 @@ import { TabProps } from './interface';
 import TabsContext from './context';
 
 const Tab: React.FC<WithCommonProps<TabProps>> = ({ value, children, classname, style }) => {
-  const prefixCls = usePrefixCls('tabs-new-tabpanel');
+  const prefixCls = usePrefixCls('tabs-tabpanel');
   const { activeValue } = useContext(TabsContext);
 
   if (!children) return null;

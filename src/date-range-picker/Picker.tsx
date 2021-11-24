@@ -35,7 +35,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
     ...restProps
   } = props;
 
-  const prefixCls = usePrefixCls('date-range-picker-new');
+  const prefixCls = usePrefixCls('date-range-picker');
   const overlayCls = classnames(`${prefixCls}-overlay`, overlayClassName);
 
   const validValue = (val: [NullableDate, NullableDate]) => val?.filter((v) => !!v)?.length === 2;

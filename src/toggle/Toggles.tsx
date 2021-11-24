@@ -10,7 +10,7 @@ import WithRef from '../utils/withRef';
 
 const InnerToggle: React.ForwardRefRenderFunction<HTMLInputElement, TogglesProps> = (props, ref) => {
   const { defaultOn = false, on, disabled, className, checkedChildren, uncheckedChildren, onChange, style } = props;
-  const prefixCls = usePrefixCls('toggle-new');
+  const prefixCls = usePrefixCls('toggle');
 
   const [status, setStatus] = useControlledState<boolean>(on, defaultOn);
 
