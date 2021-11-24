@@ -31,9 +31,9 @@ interface ColumnType<RecordType> extends GioColumnType<RecordType> {
   info?: string;
 
   /**
-   * 排序函数，本地排序使用一个函数(参考 Array.sort)
+   * 排序函数，本地排序使用一个函数(参考 Array.sort)，传入 `true` 开启服务端排序
    */
-  sorter?: ((a: RecordType, b: RecordType) => number) | boolean;
+  sorter?: ((a: RecordType, b: RecordType) => number) | true;
 
   /**
    * 支持的排序方式
