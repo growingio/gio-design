@@ -1,11 +1,9 @@
 import React, { DOMAttributes, useEffect } from 'react';
 import classnames from 'classnames';
 import { isNil } from 'lodash';
-import {
-  CheckOutlined
-} from '@gio-design/icons';
+import { CheckOutlined } from '@gio-design/icons';
 import { StepsProps } from './interface';
-import { TabProps } from '../tabs/interface'
+import { TabProps } from '../tabs/interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import useControlledState from '../utils/hooks/useControlledState';
 import Tab from '../tabs/Tab';
@@ -14,7 +12,7 @@ import { WithCommonProps } from '../utils/interfaces';
 import WithRef from '../utils/withRef';
 import StepsContext from '../tabs/context';
 
-const Steps: React.ForwardRefRenderFunction<
+export const Steps: React.ForwardRefRenderFunction<
   HTMLDivElement,
   WithCommonProps<StepsProps> & Omit<DOMAttributes<HTMLDivElement>, 'onChange'>
 > = (props: WithCommonProps<StepsProps> & Omit<DOMAttributes<HTMLDivElement>, 'onChange'>, ref?) => {
@@ -30,14 +28,14 @@ const Steps: React.ForwardRefRenderFunction<
   useEffect(() => {
     let currentVal: number;
     if (current > elementList.length) {
-      currentVal = elementList?.length + 1
+      currentVal = elementList?.length + 1;
     } else if (current <= 1) {
-      currentVal = 1
+      currentVal = 1;
     } else {
       currentVal = current;
     }
-    setActiveValue(currentVal - 1)
-  }, [current, elementList.length, setActiveValue])
+    setActiveValue(currentVal - 1);
+  }, [current, elementList.length, setActiveValue]);
 
   const onClick = (v: React.Key) => {
     if (v <= current - 1) {
@@ -47,15 +45,15 @@ const Steps: React.ForwardRefRenderFunction<
   };
 
   const tabs = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>, index) => {
-    let prefix = null
-    let className = ''
+    let prefix = null;
+    let className = '';
     if (index < current - 1) {
-      prefix = <CheckOutlined />
-      className = 'complete'
+      prefix = <CheckOutlined />;
+      className = 'complete';
     } else if (index === current - 1) {
-      className = 'process'
+      className = 'process';
     } else if (index >= current) {
-      className = 'uncomplete'
+      className = 'uncomplete';
     }
     return (
       <span className={`${prefixCls}-tablist-stepbar stepbar-${className}`} key={tab.props.value}>
@@ -70,7 +68,7 @@ const Steps: React.ForwardRefRenderFunction<
           {tab.props.label}
         </TabButton>
       </span>
-    )
+    );
   });
 
   const tabPanels = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>, index) => {

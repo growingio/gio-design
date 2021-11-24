@@ -14,6 +14,11 @@ export default function ListPage() {
           defaultMessage: '提供平级的区域将大块内容进行收纳和展现，保持界面整洁、层级清晰。',
         })}
       </p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>样式变化：内部使用的popover和tooltip发生改变，圆角变化。</li>
+        <li>APi变动：无；</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '垂直模式' })}</Subheading>
       <Canvas>

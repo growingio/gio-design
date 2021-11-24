@@ -20,7 +20,6 @@ export default {
       page: Docs,
     },
   },
-  decorators: [withDesign],
   argTypes: {
     prefix: {
       control: { type: 'text' }, // 不约束react_node会传入对象导致报错

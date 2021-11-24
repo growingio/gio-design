@@ -7,14 +7,20 @@ import { SelectProps } from '../interface';
 import Select from '../Select';
 import '../style';
 import './style.less';
+import Docs from './SelectPage';
 
 export default {
   title: 'Upgraded/Select',
   component: Select,
+  parameters: {
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 const defaultLabels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 
-const Template: Story<SelectProps> = (props) => {
+const demoTemplate: Story<SelectProps> = (props) => {
   const options = defaultLabels.reduce((prev, curr) => [...prev, { label: `第${curr}条咸鱼`, value: curr }], []);
   return (
     <>
@@ -97,8 +103,21 @@ const Template: Story<SelectProps> = (props) => {
   );
 };
 
-export const Default = Template.bind({
+export const Demo = demoTemplate.bind({
   triggerProps: {
     placeholder: '请选择',
   },
 });
+
+export const Default = () => {
+  const options = defaultLabels.reduce((prev, curr) => [...prev, { label: `第${curr}条咸鱼`, value: curr }], []);
+  return (
+    <Select
+      options={options}
+      value="1"
+      triggerProps={{ placeholder: '请选择' }}
+      size="normal"
+      onVisibleChange={() => action('visibleChange')}
+    />
+  );
+};

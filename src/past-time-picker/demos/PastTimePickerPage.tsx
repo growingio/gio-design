@@ -10,6 +10,13 @@ export default function DatePickerPage() {
     <>
       <Title>StaticPastTimePicker 过去时间选择器</Title>
       <Subtitle>用户可以通过选择器，选择相对和绝对日期区间。</Subtitle>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>样式：无变化。</li>
+        <li>api变化：无。</li>
+        <li>同pro中的pasttimepicker，包含了Staticpasttimepicker，pro中的select和picker进行了整合。</li>
+      </ul>
+
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
 
       <Subheading>{formatMessage({ defaultMessage: '样式 - 「常用时间」' })}</Subheading>

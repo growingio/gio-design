@@ -26,7 +26,7 @@
       height: 36px;
       margin: 2px 0;
       padding: 0;
-      color: #313e75;
+      color: @gray-5;
       font-weight: 400;
       font-size: 14px;
       line-height: 36px;
@@ -38,13 +38,13 @@
       // Disabled
       &-disabled {
         .@{custom-tree-prefix-cls}-node-content-wrapper {
-          color: #d3d7e7;
+          color: @gray-3;
           cursor: not-allowed;
           .@{custom-tree-prefix-cls}-iconEle {
             svg {
-              color: #d3d7e7;
+              color: @gray-3;
               path {
-                fill: #d3d7e7;
+                fill: @gray-3;
               }
             }
           }
@@ -52,7 +52,7 @@
       }
       // Selected
       &-selected {
-        background-color: @color-background-tree-active;
+        background-color: @gray-1;
         .@{custom-tree-prefix-cls}-node-content-wrapper {
           color: @blue-3;
           font-weight: @weight-font-medium;

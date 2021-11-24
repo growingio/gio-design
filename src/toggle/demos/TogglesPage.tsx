@@ -21,7 +21,10 @@ export default function ListPage() {
         </a>
       </p>
       <p>Upgrading Guide</p>
-      <ul />
+      <ul>
+        <li>样式：新颜色样式</li>
+        <li>去除冗余api</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
       <Canvas>

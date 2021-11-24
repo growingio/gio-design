@@ -7,16 +7,19 @@ import Input from '../../input';
 import { Button } from '../../button';
 import '../style';
 import './demo.stories.less';
+import Docs from './PopoverPage';
 
 export default {
   title: 'Upgraded/Popover',
   component: Popover,
-  decorators: [withDesign],
   parameters: {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A1753',
       allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
     },
   },
 } as Meta;

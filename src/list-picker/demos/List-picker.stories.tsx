@@ -14,10 +14,21 @@ import Tabs, { Tab } from '../../tabs';
 import List from '../../list';
 import Button from '../../button/Button';
 import Recent from '../Recent';
+import Docs from './List-pickerPage';
 
 export default {
   title: 'Upgraded/ListPicker',
   component: ListPicker,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=6379%3A64447',
+      allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 const groupIds = ['custom', 'virtual', 'tag', 'visible'];
 const groupNames = ['埋点', '虚拟', '标签', '属性'];

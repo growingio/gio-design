@@ -19,6 +19,12 @@ export default function ListPage() {
           Figma
         </a>
       </p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>样式：两种大小，新边框样式</li>
+        <li>Api：删除冗余api</li>
+        <li>包装的input，type=text，</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
       <Canvas>

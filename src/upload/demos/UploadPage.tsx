@@ -25,9 +25,10 @@ export default function UploadPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
+        <li>无新功能</li>
         <li>修复了drag单文件传输状态无disable样式</li>
         <li>type=button disable样式修改</li>
-        <li>修复了上传网址跨域问题</li>
+        <li>修复了storybook上传网址跨域问题</li>
         <li>修复了avatar状态 阴影超出边界问题</li>
       </ul>
 

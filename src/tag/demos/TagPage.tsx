@@ -17,7 +17,8 @@ export default function EmptyPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
-        <li> 移除了color借口</li>
+        <li>样式更新：颜色更新</li>
+        <li> 移除了color接口，移除了hover时closeicon</li>
         <li> status 有6种状态default, draft, info, success, warning, error,</li>
         <li>type=prorupt变成了type=highlight变成高亮状态</li>
       </ul>

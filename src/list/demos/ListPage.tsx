@@ -1,7 +1,7 @@
 import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
-import Item from '../Item';
+import List from '../List';
 
 export default function ListPage() {
   const { formatMessage } = useIntl();
@@ -9,13 +9,36 @@ export default function ListPage() {
   return (
     <>
       <Title>{formatMessage({ defaultMessage: 'List' })}</Title>
+      <p>以列表的形式展示同一类型的内容，可承载文字、头像、多选框、按钮等元素组合。</p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>样式变化：list无外层样式,</li>
+        <li>APi变动：model支持三种模式：1，simple(默认)，2，cascader，3，multiple。</li>
+        <li>DragList,可拖拽list，代替listPro的drag</li>
+        <li>Selection，分组list。</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="components-list--default" />
+        <Story id="upgraded-list--default" />
       </Canvas>
-
-      <ArgsTable of={Item} />
+      <Subheading>{formatMessage({ defaultMessage: 'collapse' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-list--collapse" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'drag' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-list--drag" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'items' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-list--items" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'selection list' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-list--items" />
+      </Canvas>
+      <ArgsTable of={List} />
     </>
   );
 }

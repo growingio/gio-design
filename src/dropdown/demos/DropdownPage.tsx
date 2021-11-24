@@ -11,6 +11,8 @@ export default function DropdownPage() {
       <Title>{formatMessage({ defaultMessage: 'Dropdown 下拉菜单' })}</Title>
       <p>Upgrading Guide</p>
       <ul>
+        <li>样式变化：新版dropdown等下拉菜单拥有更圆润的边框。</li>
+        <li>APi变动：包装的Popover，弹出内容更名为content，children包装触发器。</li>
         <li>Dropdown 封装自popover</li>
       </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
