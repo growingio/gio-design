@@ -32,10 +32,13 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
 
   const [value, setValue] = useControlledState(enterValue, defaultValue);
 
-  const onInputChange = (val?: string) => {
-    onInputUpdate?.(val);
-    onChangeEvent?.(val);
-  };
+  const onInputChange = useCallback(
+    (val?: string) => {
+      onInputUpdate?.(val);
+      onChangeEvent?.(val);
+    },
+    [onInputUpdate, onChangeEvent]
+  );
 
   const onClear = useCallback(
     (event: React.MouseEvent<Element, MouseEvent>) => {
