@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import '../style';
-import { uniqueId } from 'lodash';
+import { isEqual, uniqueId } from 'lodash';
 import CheckboxItem from '../../list/inner/ChckboxItem';
 import { OptionProps } from '../../list/interfance';
 // import { uniqueId } from 'lodash';
@@ -13,6 +13,7 @@ import SearchBar from '../../search-bar';
 import Tabs, { Tab } from '../../tabs';
 import List from '../../list';
 import Button from '../../button/Button';
+import Recent from '../Recent';
 
 export default {
   title: 'Upgraded/ListPicker',
@@ -48,7 +49,7 @@ const Template: Story<ListPickerProps> = () => {
     console.log('onChange执行', val, opt, search);
   };
   return (
-    <div>
+    <div style={{ height: '3000px' }}>
       <h3>单选</h3>
       <div className="demo-box">
         <div style={{ padding: '10px' }}>
@@ -75,6 +76,7 @@ const Template: Story<ListPickerProps> = () => {
           <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>
             <Tab label="tab1" value="tab1">
               <List.Selection>
+                <Recent title="最近使用" />
                 <List
                   id="group1"
                   title="分组1"
@@ -95,6 +97,7 @@ const Template: Story<ListPickerProps> = () => {
             </Tab>
             <Tab label="tab2" value="tab2">
               <List.Selection>
+                <Recent title="最近使用" />
                 <List
                   id="group2"
                   title="分组2"
@@ -118,7 +121,7 @@ const Template: Story<ListPickerProps> = () => {
       </div>
       <div>
         <h3>scroll list</h3>
-        <ListPicker placeholder="请选择">
+        <ListPicker placeholder="请选择" getContainer={(node) => node?.parentElement || document.body}>
           <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>
             <Tab label="tab1" value="tab1">
               <List style={{ width: '240px' }} options={simpleLargeOptions} />
@@ -208,7 +211,7 @@ const Template: Story<ListPickerProps> = () => {
             overlayStyle={{ width: '240px' }}
             model="multiple"
             onClear={() => {
-              setValue('');
+              setMultipleValue([]);
             }}
             placeholder="请选择"
           >
@@ -219,25 +222,72 @@ const Template: Story<ListPickerProps> = () => {
               onSearch={(val: string) => setSearch(val)}
             />
 
-            <List.Selection>
-              {(context) => (
-                <>
-                  <CheckboxItem
-                    selected={context.value?.length === 2}
-                    onClick={() => {
-                      if (context.value?.length === 2) {
-                        context.onChange([]);
-                      } else {
-                        context.onChange(['ziyi', 'zier']);
-                      }
-                    }}
-                    label="全部"
-                    value="all"
-                  />
-                  <List options={multipleOptions} id="id" title="有item" />
-                </>
-              )}
-            </List.Selection>
+            <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>
+              <Tab label="tab1" value="tab1">
+                <List.Selection>
+                  {(context) => {
+                    const isEqualValue = isEqual(
+                      Array.from(context.options.values()).reduce((p, v) => [...p, v.value], []),
+                      context.value
+                    );
+                    console.log(isEqualValue);
+                    return (
+                      <>
+                        <CheckboxItem
+                          selected={isEqualValue}
+                          onClick={() => {
+                            if (isEqualValue) {
+                              context.onChange([]);
+                            } else {
+                              context.onChange(Array.from(context.options.keys()));
+                            }
+                          }}
+                          label="全部"
+                          value="all"
+                        />
+
+                        <List options={multipleOptions} id="id" title="有item" />
+                      </>
+                    );
+                  }}
+                </List.Selection>
+              </Tab>
+              <Tab label="tab2" value="tab2">
+                <List.Selection>
+                  {(context) => {
+                    const isEqualValue = isEqual(
+                      Array.from(context.options.values()).reduce((p, v) => [...p, v.value], []),
+                      context.value
+                    );
+                    return (
+                      <>
+                        <CheckboxItem
+                          selected={isEqualValue}
+                          onClick={() => {
+                            if (isEqualValue) {
+                              context.onChange([]);
+                            } else {
+                              context.onChange(Array.from(context.options.keys()));
+                            }
+                          }}
+                          label="全部"
+                          value="all"
+                        />
+
+                        <List
+                          options={[
+                            { label: '1', value: '1' },
+                            { label: '2', value: '2' },
+                          ]}
+                          id="id"
+                          title="有item"
+                        />
+                      </>
+                    );
+                  }}
+                </List.Selection>
+              </Tab>
+            </Tabs>
           </ListPicker>
         </div>
         <h3>selection下list 无 item</h3>

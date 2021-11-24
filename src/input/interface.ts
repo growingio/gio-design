@@ -138,12 +138,12 @@ export interface InputButtonProps
   /**
    * 当Input Button的值修改后的方法
    */
-  onChange?: (value: string) => void;
+  onChange?: (value?: string) => void;
 
   /**
    * 当Input Button的值修改后的方法
    */
-  onInputChange?: (value: string) => void;
+  onInputChange?: (value?: string) => void;
 
   /**
    * 点击onClear回调
