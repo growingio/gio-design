@@ -2,6 +2,7 @@ import React, { DOMAttributes, useContext, useEffect, useMemo } from 'react';
 import { isEmpty, noop } from 'lodash';
 import { RightFilled } from '@gio-design/icons';
 import classNames from 'classnames';
+import toArray from 'rc-util/lib/Children/toArray';
 import Popover from '../../popover';
 import { CascaderItemProps, OptionProps, ListProps } from '../interfance';
 import BaseItem from './baseItem';
@@ -65,7 +66,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
         model: 'cascader',
         disabled,
         className: classNames(children.props?.className, prefixCls),
-        children: React.Children.toArray(children?.props.children).map((child) =>
+        children: toArray(children?.props.children).map((child) =>
           React.cloneElement<OptionProps>(child as React.ReactElement, {
             selectParent: childSelectPrent,
           })

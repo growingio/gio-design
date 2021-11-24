@@ -3,7 +3,7 @@ import React from 'react';
 import { List } from '.';
 import { OptionProps, ListProps } from './interfance';
 
-interface ListContextProps {
+export interface ListContextProps {
   value?: string | string[];
   model?: 'single' | 'cascader' | 'multiple';
   onChange?: (value?: string | string[], options?: OptionProps | OptionProps[]) => void;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ListContextProps } from './context';
 
 export type ModelType = 'cascader' | 'multiple' | 'single';
 
@@ -6,6 +7,7 @@ export interface SelectionProps extends ListProps {
   className?: string;
   style?: React.CSSProperties;
   options?: SelectionItemProps[] | OptionProps[];
+  children?: ((context: ListContextProps) => JSX.Element | React.ReactNode) | React.ReactNode;
 }
 
 export interface SelectionItemProps extends OptionProps {

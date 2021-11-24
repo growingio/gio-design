@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { difference, indexOf, isArray, isEmpty, isNil } from 'lodash';
+import { difference, indexOf, isArray, isEmpty, isNil, toArray } from 'lodash';
 import { OptionProps, ItemProps, ListProps } from './interfance';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { PREFIX } from './constants';
@@ -74,7 +74,7 @@ const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
     setOptions(mergedOptions);
   }, [mergedOptions, setOptions]);
 
-  const renderOptions = initOptions?.length ? initOptions : React.Children.toArray(children);
+  const renderOptions = initOptions?.length ? initOptions : toArray(children);
   const childrens = renderOptions.slice(0, collapse);
   const isNeedCollapse = useMemo(() => renderOptions?.length > collapse, [renderOptions, collapse]);
   const handleClick = (val: string) => {

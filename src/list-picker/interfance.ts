@@ -4,11 +4,12 @@ import { OptionProps } from '../list/interfance';
 import { Placement, TriggerAction } from '../popover/interface';
 import { ListProps } from '../list';
 
-export interface ListPickerProps extends Pick<ListProps, 'model' | 'disabled' | 'className' | 'style'> {
+export interface ListPickerProps extends Pick<ListProps, 'model' | 'className' | 'style'> {
   size?: 'small' | 'normal';
   /**
    * 触发方式
    */
+  disabled?: boolean;
   trigger?: TriggerAction | TriggerAction[];
   value?: string | string[];
   defaultValue?: string | string[];
@@ -23,10 +24,7 @@ export interface ListPickerProps extends Pick<ListProps, 'model' | 'disabled' | 
   /**
    * 触发器样式
    */
-  triggerProps?: Pick<
-    InputButtonProps,
-    'disabled' | 'className' | 'style' | 'allowClear' | 'maxWidth' | 'value' | 'prefix' | 'suffix'
-  >;
+  triggerProps?: Pick<InputButtonProps, 'className' | 'style' | 'allowClear' | 'maxWidth' | 'prefix' | 'suffix'>;
   /**
    * custom trigger render
    */
@@ -48,6 +46,7 @@ export interface ListPickerProps extends Pick<ListProps, 'model' | 'disabled' | 
 // }
 
 export interface TriggerProps extends Omit<InputButtonProps, 'value' | 'active'> {
+  disabled?: boolean;
   value?: string | React.ReactNode;
   separator?: string;
 }

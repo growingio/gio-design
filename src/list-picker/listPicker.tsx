@@ -10,6 +10,7 @@ import { OptionProps } from '../list/interfance';
 import Button from '../button';
 import { ListContext } from '../list/context';
 import useCacheOptions from '../list/hooks/useCacheOptions';
+// import CheckboxItem from '../list/inner/ChckboxItem';
 
 // const defaultEmpty = () => <Page type="noData" size="small" style={{ margin: '0 auto', padding: '40px 0px' }} />;
 
@@ -17,6 +18,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   const {
     size,
     placeholder,
+    disabled,
     onClear,
     value: controlledValue,
     defaultValue,
@@ -53,7 +55,9 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   }, [controlledValue, getLabelByValue, separator, options]);
 
   useEffect(() => {
-    setValue(controlledValue);
+    if (!needConfim) {
+      setValue(controlledValue);
+    }
   }, [controlledValue, needConfim, setValue]);
   useEffect(() => {
     if (needConfim && !visible && !isEqual(controlledValue, value)) {
@@ -72,12 +76,11 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   };
 
   const handleChange = (val?: string | string[], opts?: OptionProps | OptionProps[]) => {
-    setValue(val);
-    if (!needConfim) {
-      onChange?.(val, opts);
-    }
     if (model !== 'multiple') {
+      onChange?.(val, opts);
       handVisibleChange(false);
+    } else {
+      setValue(val);
     }
   };
   const clearInput = () => {
@@ -95,7 +98,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
         onClick={() => setVisible(!visible)}
         value={title}
         {...triggerProp}
-        // disabled={disabled}
+        disabled={disabled}
         size={size}
         placeholder={placeholder}
         onClear={clearInput}
@@ -103,10 +106,10 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
       />
     );
   };
-
   // render
   const renderOverlay = () => (
     <div className={classNames(defaultPrefix, className)} style={style}>
+      {/* {model === 'multiple' && selectAll && renderSelectAll()} */}
       {children}
       {model === 'multiple' && needConfim && (
         <Button style={{ width: '100%' }} onClick={() => handleConfim()}>
@@ -120,6 +123,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     <ListContext.Provider value={{ value, model, onChange: handleChange, options, setOptions }}>
       <Popover
         distoryOnHide={false}
+        disabled={disabled}
         content={renderOverlay()}
         trigger={trigger}
         visible={visible}
