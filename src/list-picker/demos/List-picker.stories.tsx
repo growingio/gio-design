@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import '../style';
 import { isEqual, uniqueId } from 'lodash';
-import CheckboxItem from '../../list/inner/ChckboxItem';
+import CheckboxItem from '../../list/inner/CheckboxItem';
 import { OptionProps } from '../../list/interfance';
 // import { uniqueId } from 'lodash';
 // import { uniqBy, uniqueId } from 'lodash';

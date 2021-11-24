@@ -1,10 +1,11 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
 import { CardProps } from './interfaces';
 import WithRef from '../utils/withRef';
+import { WithCommonProps } from '../utils/interfaces';
 
-export const Card = WithRef<HTMLDivElement, HTMLAttributes<CardProps> & CardProps>(
+export const Card = WithRef<HTMLDivElement, WithCommonProps<CardProps>>(
   (
     {
       fullWidthContent = false,
