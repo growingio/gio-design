@@ -33,7 +33,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   const [value, setValue] = useControlledState(enterValue, defaultValue);
 
   const onInputChange = useCallback(
-    (val?: string) => {
+    (val: string) => {
       onInputUpdate?.(val);
       onChangeEvent?.(val);
     },
