@@ -56,10 +56,8 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   }, [controlledValue, getLabelByValue, separator, options]);
 
   useEffect(() => {
-    if (!needConfim) {
-      setValue(controlledValue);
-    }
-  }, [controlledValue, needConfim, setValue]);
+    setValue(controlledValue);
+  }, [controlledValue, setValue]);
   useEffect(() => {
     if (needConfim && !visible && !isEqual(controlledValue, value)) {
       setValue(controlledValue);
