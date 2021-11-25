@@ -5,6 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { MoreOutlined, EditOutlined, RightOutlined } from '@gio-design/icons'
 import Docs from './CollapsePage';
 import Collapse from '../Collapse';
+import { IconButton } from '../../button';
 
 import '../style';
 
@@ -27,15 +28,14 @@ export default {
 
 const genExtra = () => (
   <>
-    <EditOutlined
-      onClick={event => {
-        event.stopPropagation();
-      }} />
-    <MoreOutlined
-      onClick={event => {
-        event.stopPropagation();
-      }}
-    />
+    <IconButton onClick={(e) => { e.stopPropagation() }}
+      type="text">
+      <EditOutlined />
+    </IconButton>
+    <IconButton onClick={(e) => { e.stopPropagation() }}
+      type="text">
+      <MoreOutlined />
+    </IconButton>
   </>
 );
 const text = '哈哈哈嘿嘿嘿嘻嘻嘻'

@@ -1,20 +1,19 @@
 @import '../../stylesheet/variables/index.less';
 
-@collapse-prefix-cls: ~'@{component-prefix}-collapse-new';
-
-@margin-sm: 8px;
-@font-size-sm: 14px;
-@padding-sm: 8px;
-@padding-md: 12px;
-// Collapse
-@collapse-panel-border-radius: 8px;
-@collapse-header-padding: 24px 20px;
-@collapse-header-padding-extra: 40px;
-@collapse-header-bg: @gray-1;
-@collapse-content-bg: @gray-0;
-@collapse-header-arrow-left: 16px;
+@collapse-prefix-cls: ~'@{component-prefix}-collapse';
 
 .@{collapse-prefix-cls} {
+  @margin-sm: 8px;
+  @font-size-sm: 14px;
+  @padding-sm: 8px;
+  @padding-md: 12px;
+  // Collapse
+  @collapse-panel-border-radius: 8px;
+  @collapse-header-padding: 16px 20px;
+  @collapse-header-padding-extra: 40px;
+  @collapse-header-bg: @gray-1;
+  @collapse-content-bg: @gray-0;
+  @collapse-header-arrow-left: 16px;
   font-size: 14px;
   background-color: @gray-0;
   border-bottom: 0;
@@ -36,7 +35,7 @@
       padding: @collapse-header-padding;
       color: @gray-5;
       font-weight: bold;
-      line-height: @line-height-base;
+      line-height: 36px;
       cursor: pointer;
       transition: all 0.3s, visibility 0s;
 
@@ -46,11 +45,12 @@
         }
       }
 
-      .gio-icon {
+      .collapse-arrow-bar {
         margin-right: 10px;
         & svg {
-          width: 12px;
-          height: 12px;
+          width: 14px;
+          height: 14px;
+          color: @gray-3;
           transition: transform 0.24s;
         }
       }

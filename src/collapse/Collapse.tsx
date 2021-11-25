@@ -1,7 +1,5 @@
 import React from 'react'
 import RcCollapse from 'rc-collapse'
-import toArray from 'rc-util/lib/Children/toArray';
-import { omit } from 'lodash'
 import classnames from 'classnames';
 import { RightFilled } from '@gio-design/icons'
 import { cloneElement } from '../utils/reactNode';
@@ -14,7 +12,8 @@ interface CollapseInterface extends React.FC<CollapseProps> {
 }
 
 const Collapse: CollapseInterface = props => {
-  const prefixCls = usePrefixCls('collapse-new');
+  const { destoryOnHide, disabled, children } = props
+  const prefixCls = usePrefixCls('collapse');
   const renderExpandIcon = (panelProps: PanelProps = {}) => {
     const { expandIcon } = props;
     const icon = (
@@ -23,37 +22,21 @@ const Collapse: CollapseInterface = props => {
       ) : (
         <RightFilled />
       )
-    ) as React.ReactNode;
+    );
     return (
-      <div className={(panelProps.isActive ? 'arrow-isRotate' : undefined)}>
+      <div className={classnames('collapse-arrow-bar', panelProps.isActive ? 'arrow-isRotate' : undefined)}>
         {cloneElement(icon, () => ({
           className: classnames((icon as any).props.className, `${prefixCls}-arrow`),
         }))}
       </div>
     );
   };
-  const getItems = () => {
-    const { children } = props;
-    return toArray(children).map((child: React.ReactElement, index: number) => {
-      if (child.props?.disabled) {
-        const key = child.key || String(index);
-        const { disabled, collapsible } = child.props;
-        const childProps: CollapseProps & { key: React.Key } = {
-          ...omit(child.props, ['disabled']),
-          key,
-          collapsible: collapsible ?? (disabled ? 'disabled' : undefined),
-        };
-        return cloneElement(child, childProps);
-      }
-      return child;
-    });
-  }
   return (
     <RcCollapse
       {...props}
-      prefixCls={prefixCls} expandIcon={renderExpandIcon}
+      prefixCls={prefixCls} expandIcon={renderExpandIcon} destroyInactivePanel={destoryOnHide} collapsible={(disabled ? 'disabled' : undefined)}
     >
-      {getItems()}
+      {children}
     </RcCollapse >
   )
 }
