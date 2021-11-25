@@ -3,7 +3,6 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import Docs from './List.mdx';
 import List from '.';
 import { ListProps } from './interfaces';
-import { properties } from './__tests__/data';
 import './style';
 
 export default {
@@ -53,7 +52,6 @@ Default.args = {
 
 export const Items = Template.bind({});
 Items.args = {
-  items: properties,
   expandable: true,
 };
 

@@ -14,6 +14,11 @@ export default {
     docs: {
       page: Docs,
     },
+    argTypes: {
+      description: {
+        control: { type: 'text' },
+      },
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4093%3A45839',
