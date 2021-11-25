@@ -20,6 +20,31 @@ export default function ListPage() {
         <li>样式：无变化。</li>
         <li>api变化：内容由content包裹，去除了footer，组件用到了react-popper</li>
       </ul>
+      <p>注意点⚠️</p>
+      <ul>
+        <li>被包裹的元素必须是一个原生 HTML 标签或者 React 组件</li>
+        <li>被包裹的组件尽量能传递 ref（及使用 React.forwardRef()），因为底层使用 ref 定位</li>
+        <li>如果不支持传递 ref，则通过 className 定位元素</li>
+        <li>
+          被包裹的元素必须能接收剩余的 props，如下：
+          <br />
+          <br />
+          <code>{`const Trigger = (props) => <Button {...props}>Trigger</Button>`}</code>
+          <br />
+          <br />
+          <code>ReactDOM.render((</code>
+          <br />
+          <code style={{ paddingLeft: '2em' }}>{`<Popover>`}</code>
+          <br />
+          <code style={{ paddingLeft: '4em' }}>{`<Trigger />`}</code>
+          <br />
+          <code style={{ paddingLeft: '2em' }}>{`</Popover>`}</code>
+          <br />
+          <code>), document.body)</code>
+          <br />
+          <br />
+        </li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: 'controlled' })}</Subheading>
       <Canvas>

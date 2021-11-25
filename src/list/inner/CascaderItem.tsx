@@ -76,7 +76,7 @@ const CascaderItem = WithRef<HTMLLIElement, CascaderItemProps & Omit<DOMAttribut
       return <></>;
     };
 
-    const PopoverRender = (element: React.ReactNode): React.ReactElement => {
+    const PopoverRender = (element: React.ReactElement): React.ReactElement => {
       if (!isEmpty(childrens) || React.isValidElement(children)) {
         return (
           <div className={prefixClsItem}>

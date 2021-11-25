@@ -248,7 +248,7 @@ Portal.args = {
 
 const SupportRefTemplate: Story<PopoverProps> = (args) => (
   <Popover {...args} strategy="fixed">
-    Only String
+    <span>Only String</span>
   </Popover>
 );
 
@@ -261,15 +261,12 @@ const NotSupportRefTemplate: Story<PopoverProps> = (args) => {
   const onClick = () => {
     console.log('Click trigger button!');
   };
+  const NotSupportRefNode = (props: any) => <Button {...props}>Button Trigger</Button>;
   return (
     <>
-      <span>margin: 30px</span>
-      <br />
-      <div style={{ border: '1px solid #3c3c3c', borderRadius: '4px', display: 'inline-block' }}>
+      <div style={{ border: '1px solid #3c3c3c', borderRadius: '4px', padding: 300 }}>
         <Popover {...args} strategy="fixed">
-          <Button style={{ margin: 30 }} onClick={onClick}>
-            Button Trigger
-          </Button>
+          <NotSupportRefNode onClick={onClick} />
         </Popover>
       </div>
     </>
@@ -284,7 +281,7 @@ NotSupportRef.args = {
 
 const DisabledTemplate: Story<PopoverProps> = (args) => (
   <Popover {...args} strategy="fixed" disabled>
-    Disabled
+    <span>Disabled</span>
   </Popover>
 );
 
