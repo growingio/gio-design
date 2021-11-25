@@ -18,7 +18,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   maskClosable = true,
   ...restProps
 }: DrawerProps) => {
-  const prefix = usePrefixCls('drawer-new', customPrefixCls);
+  const prefix = usePrefixCls('drawer', customPrefixCls);
   const wrapperCls = classnames(wrapClassName, `${prefix}__wrapper`);
   const closeCls = classnames(`${prefix}__close`);
 

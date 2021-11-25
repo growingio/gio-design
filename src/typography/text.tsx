@@ -19,7 +19,7 @@ function Text({
   trimRight = true,
   style,
 }: TextProps) {
-  const prefixCls = usePrefixCls('text-new');
+  const prefixCls = usePrefixCls('text');
   const ref = React.useRef<{ isClamped: () => boolean }>(null);
   const [clamped, setClamped] = React.useState(false);
 

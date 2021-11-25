@@ -1,7 +1,7 @@
 @import '../../../stylesheet/index.less';
 
-@list-prefix-cls: ~'@{component-prefix}-list';
-@select-prefix-cls: ~'@{component-prefix}-select';
+@list-prefix-cls-legacy: ~'@{component-prefix}-list-legacy';
+@select-prefix-cls-legacy: ~'@{component-prefix}-select-legacy';
 @sortable-cls: ~'@{component-prefix}-sortable';
 
 @link-font-color-normal: #313e75;
@@ -34,7 +34,7 @@
 @color-font-list-secondary-disable: #c7cbd8; // $color-black-2
 @color-font-list-title-normal: #1248e9; // $color-blue-5
 
-.@{list-prefix-cls}-wrapper {
+.@{list-prefix-cls-legacy}-wrapper {
   display: inline-block;
   box-sizing: border-box;
   // background-color: @color-background-list-single-normal;
@@ -61,13 +61,13 @@
     }
   }
 
-  .@{select-prefix-cls}-core {
+  .@{select-prefix-cls-legacy}-core {
     position: relative;
 
-    .@{select-prefix-cls}-list-wrapper {
+    .@{select-prefix-cls-legacy}-list-wrapper {
       background-color: #fff;
 
-      .@{select-prefix-cls}-list {
+      .@{select-prefix-cls-legacy}-list {
         &:focus {
           outline: none;
         }

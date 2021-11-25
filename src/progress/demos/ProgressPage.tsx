@@ -22,6 +22,7 @@ export default function ListPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
+        <li>样式：新颜色圆角样式。</li>
         <li>size有两种，default和small</li>
         <li>exception状态percent会替换成中断</li>
         <li>style作用于外层div</li>

@@ -43,7 +43,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>((props: AvatarProp
     }
   }, [userName, isImgExist]);
 
-  const prefixCls = usePrefixCls('avatar', customizePrefixCls);
+  const prefixCls = usePrefixCls('avatar-legacy', customizePrefixCls);
   const classString = classNames(className, prefixCls, {
     [`${prefixCls}-sm`]: size === 'small',
     [`${prefixCls}-df`]: size === 'default',

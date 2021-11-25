@@ -1,11 +1,11 @@
 @import '../../../stylesheet/index.less';
 
-@table-prefix-cls: ~'@{component-prefix}-table';
-@checkbox-prefix-cls: ~'@{component-prefix}-checkbox';
-@popover-prefix-cls: ~'@{component-prefix}-popover';
-@empty-prefix-cls: ~'@{component-prefix}-empty';
+@table-prefix-cls-legacy: ~'@{component-prefix}-table-legacy';
+@checkbox-prefix-cls-legacy: ~'@{component-prefix}-checkbox';
+@popover-prefix-cls-legacy: ~'@{component-prefix}-popover';
+@empty-prefix-cls-legacy: ~'@{component-prefix}-empty';
 
-.@{table-prefix-cls} {
+.@{table-prefix-cls-legacy} {
   font-size: @size-font-14;
   text-align: left;
   &-title {
@@ -82,16 +82,16 @@
     &:last-child {
       border-right: 0.5px solid @color-border-table;
 
-      .@{table-prefix-cls}-resizable-handle {
+      .@{table-prefix-cls-legacy}-resizable-handle {
         display: none;
       }
     }
-    .gio-checkbox-wrapper + .@{table-prefix-cls}-resizable-handle {
+    .gio-checkbox-wrapper + .@{table-prefix-cls-legacy}-resizable-handle {
       display: none;
     }
 
     &:hover {
-      .@{table-prefix-cls}-resizable-handle {
+      .@{table-prefix-cls-legacy}-resizable-handle {
         background: #5f87ff;
       }
     }
@@ -157,7 +157,7 @@
     }
   }
 
-  &-showHover &-tbody .@{table-prefix-cls}-expanded-row:hover {
+  &-showHover &-tbody .@{table-prefix-cls-legacy}-expanded-row:hover {
     td {
       background-color: unset;
     }
@@ -218,7 +218,7 @@
       }
     }
 
-    .@{checkbox-prefix-cls} {
+    .@{checkbox-prefix-cls-legacy} {
       & + span {
         display: block;
         width: 16px;
@@ -376,7 +376,7 @@
 
   &-filter {
     &-popover {
-      .@{popover-prefix-cls}-inner-content {
+      .@{popover-prefix-cls-legacy}-inner-content {
         width: 220px;
         margin: 16px 16px 0;
       }
@@ -393,7 +393,7 @@
       overflow: auto;
       &-item {
         line-height: 22px;
-        .@{checkbox-prefix-cls} {
+        .@{checkbox-prefix-cls-legacy} {
           margin-right: 10px;
         }
       }
@@ -404,7 +404,7 @@
     width: 64px;
     text-align: center;
 
-    .@{table-prefix-cls}-expanded-icon {
+    .@{table-prefix-cls-legacy}-expanded-icon {
       background: #f1f2f8;
       border-radius: 4px;
     }
@@ -500,38 +500,38 @@
 }
 
 .table-size(@size, @padding-vertical, @padding-horizontal) {
-  .@{table-prefix-cls}.@{table-prefix-cls}-@{size} {
-    .@{table-prefix-cls}-title,
-    .@{table-prefix-cls}-footer,
-    .@{table-prefix-cls}-thead > tr > th,
-    .@{table-prefix-cls}-tbody > tr > td,
+  .@{table-prefix-cls-legacy}.@{table-prefix-cls-legacy}-@{size} {
+    .@{table-prefix-cls-legacy}-title,
+    .@{table-prefix-cls-legacy}-footer,
+    .@{table-prefix-cls-legacy}-thead > tr > th,
+    .@{table-prefix-cls-legacy}-tbody > tr > td,
     tfoot > tr > th,
     tfoot > tr > td {
       padding: @padding-vertical @padding-horizontal;
     }
 
-    .@{table-prefix-cls}-tbody .@{table-prefix-cls}-row-expand-icon-cell {
+    .@{table-prefix-cls-legacy}-tbody .@{table-prefix-cls-legacy}-row-expand-icon-cell {
       padding: calc(@padding-vertical - 1px) 20px;
     }
 
-    .@{table-prefix-cls}-tbody .@{table-prefix-cls}-expanded-row > .@{table-prefix-cls}-cell {
+    .@{table-prefix-cls-legacy}-tbody .@{table-prefix-cls-legacy}-expanded-row > .@{table-prefix-cls-legacy}-cell {
       padding: @padding-vertical 20px;
 
-      .@{table-prefix-cls}-expanded-row-fixed {
+      .@{table-prefix-cls-legacy}-expanded-row-fixed {
         margin: -@padding-vertical -21px;
         padding: @padding-vertical 20px;
       }
     }
 
-    .@{table-prefix-cls}-tbody .@{table-prefix-cls}-cell-with-append {
+    .@{table-prefix-cls-legacy}-tbody .@{table-prefix-cls-legacy}-cell-with-append {
       padding: calc(@padding-vertical - 1px) 16px;
 
-      .@{table-prefix-cls}-row-indent {
+      .@{table-prefix-cls-legacy}-row-indent {
         float: left;
         height: 1px;
       }
 
-      .@{table-prefix-cls}-expanded-icon {
+      .@{table-prefix-cls-legacy}-expanded-icon {
         background: #f1f2f8;
         border-radius: 4px;
       }

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import Table from '../index';
-import { ColumnsType, TableProps } from '../interface';
+import { ColumnsType, SortOrder, TableProps } from '../interface';
 import '../style';
 import { Tooltip } from '../..';
+import Docs from './TablePage';
 
 type DataSourceType = {
   id: string;
@@ -27,6 +28,16 @@ const genDataSource = (length = 5) =>
 export default {
   title: 'Upgraded/Table',
   component: Table,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4066%3A42548',
+      allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 
 // ----------------------- Basic -----------------------//
@@ -180,6 +191,72 @@ export const Sortable = () => {
 };
 
 // ----------------------- Sortable -----------------------//
+
+// ----------------------- Controlled Sortable -----------------------//
+
+export const ControlledSortable = () => {
+  const [sortedInfo, setSortedInfo] = useState<{
+    sortOrder: SortOrder;
+    columnKey: 'age' | 'id';
+  }>({
+    sortOrder: null,
+    columnKey: 'age',
+  });
+
+  const handleTableChange: Required<TableProps<DataSourceType>>['onChange'] = (
+    changedPaginationState,
+    changedFilterState,
+    changedSortState
+  ) => {
+    action('handleTableChange')(changedPaginationState, changedFilterState, changedSortState);
+
+    const { key, sortOrder } = changedSortState;
+
+    setSortedInfo({
+      columnKey: key as 'age' | 'id',
+      sortOrder,
+    });
+  };
+
+  const columns: ColumnsType<DataSourceType> = [
+    {
+      dataIndex: 'id',
+      title: 'Id',
+      sortOrder: sortedInfo.columnKey === 'id' ? sortedInfo.sortOrder : undefined,
+      sorter: (first, second) => parseInt(first.id, 10) + parseInt(second.id, 10),
+    },
+    {
+      dataIndex: 'name',
+      title: 'Name',
+    },
+    {
+      dataIndex: 'age',
+      title: 'Age',
+      defaultSortOrder: 'descend',
+      info: '你可以通过设置 `sortDirections: ["ascend", "descend", "ascend"]` 来禁止排序恢复到默认状态',
+      sortDirections: ['ascend', 'descend', 'ascend'],
+      sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.sortOrder : undefined,
+      sorter: (first, second) => first.age + second.age,
+    },
+    {
+      dataIndex: 'address',
+      title: 'Address',
+    },
+  ];
+
+  return (
+    <Table<DataSourceType>
+      pagination={false}
+      title="受控的排序，设置 `sorter = true` 开启服务端排序"
+      dataSource={genDataSource()}
+      columns={columns}
+      rowKey="id"
+      onChange={handleTableChange}
+    />
+  );
+};
+
+// ----------------------- Controlled Sortable -----------------------//
 
 // ----------------------- Collapsible -----------------------//
 

@@ -7,7 +7,7 @@ const TITLE_ELE_LIST = [1, 2, 3, 4];
 
 const Title: React.FC<TitleProps> = ({ className, level = 1, ...restProps }: TitleProps) => {
   let componentName = 'h1';
-  const prefixCls = usePrefixCls('title');
+  const prefixCls = usePrefixCls('title-legacy');
   const cls = classnames(
     prefixCls,
     {

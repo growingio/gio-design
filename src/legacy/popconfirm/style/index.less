@@ -1,13 +1,13 @@
 @import '../../../stylesheet/index.less';
 @import '../../../stylesheet/mixin/trigger.less';
 
-@popconfirm-prefix-cls: ~'@{component-prefix}-popconfirm';
+@popconfirm-prefix-cls-legacy: ~'@{component-prefix}-popconfirm-legacy';
 @popconfirm-arrow-width: 12px;
 @popconfirm-distance: 6px;
 @popconfirm-offset: 20px;
 @popconfirm-duration: 10ms;
 
-.@{popconfirm-prefix-cls} {
+.@{popconfirm-prefix-cls-legacy} {
   position: absolute;
   z-index: @zindex-popconfirm;
   margin: auto;
@@ -80,7 +80,7 @@
     }
   }
 
-  .trigger-placement(@popconfirm-prefix-cls, @color-background-popconfirm, @popconfirm-arrow-width, @popconfirm-distance, @popconfirm-offset);
+  .trigger-placement(@popconfirm-prefix-cls-legacy, @color-background-popconfirm, @popconfirm-arrow-width, @popconfirm-distance, @popconfirm-offset);
 }
 
-.trigger-transition(@popconfirm-prefix-cls, @popconfirm-duration);
+.trigger-transition(@popconfirm-prefix-cls-legacy, @popconfirm-duration);

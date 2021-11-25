@@ -10,8 +10,10 @@ import '../style';
 export default {
   title: 'Upgraded/Modal',
   component: Modal,
-  docs: {
-    page: Docs,
+  parameters: {
+    docs: {
+      page: Docs,
+    },
   },
 } as Meta;
 
@@ -151,3 +153,71 @@ const UseModalTemplate: Story<IModalStaticFuncConfig> = (args) => {
 
 export const UseModal = UseModalTemplate.bind({});
 UseModal.args = {};
+
+export const Demo = () => {
+  const [modalFuncs, hookModal] = Modal.useModal();
+  const handleConfirm = () => {
+    modalFuncs.open({
+      title: '弹窗标题',
+      content: 'Confirm content',
+      size: 'fixed',
+    });
+  };
+  return (
+    <>
+      <table className="table-demo">
+        <tr>
+          <th>Controls</th>
+          <th>Example</th>
+        </tr>
+        <tr>
+          <td>AdaptiveWidthDemo</td>
+          <td>
+            <AdaptiveWidthDemo />
+          </td>
+        </tr>
+        <tr>
+          <td>FixedTemplate</td>
+          <td>
+            <FixedTemplate size="fixed" />
+          </td>
+        </tr>
+        <tr>
+          <td>FullModal</td>
+          <td>
+            <FullModal />
+          </td>
+        </tr>
+        <tr>
+          <td>HeightOverflowModalTemplate</td>
+          <td>
+            <HeightOverflowModalTemplate size="full" />
+          </td>
+        </tr>
+        <tr>
+          <td>ConfirmTemplate</td>
+          <td>
+            <ConfirmTemplate size="fixed" />
+          </td>
+        </tr>
+        <tr>
+          <td>OpenModal(</td>
+          <td>
+            <OpenModal />
+          </td>
+        </tr>
+        <tr>
+          <td>UseModalTemplate</td>
+          <td>
+            <>
+              <Button type="secondary" onClick={() => handleConfirm()}>
+                open
+              </Button>
+              {hookModal}
+            </>
+          </td>
+        </tr>
+      </table>
+    </>
+  );
+};

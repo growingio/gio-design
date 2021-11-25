@@ -24,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({
   maskClosable = false,
   ...restProps
 }: ModalProps) => {
-  const prefix = usePrefixCls('modal-new', customPrefixCls);
+  const prefix = usePrefixCls('modal', customPrefixCls);
   const modalCls = classnames(className, {
     [`${prefix}-normal`]: size === 'normal',
     [`${prefix}-fixed`]: size === 'fixed',

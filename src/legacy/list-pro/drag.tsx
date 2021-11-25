@@ -16,12 +16,12 @@ const DragableList = ({
   onRemove = noop,
   selected,
 }: any) => {
-  const prefixCls = usePrefixCls('list', customPrefixCls);
+  const prefixCls = usePrefixCls('list-legacy', customPrefixCls);
   const [data, setData] = useState(dataSource);
 
   useEffect(() => {
     setData(dataSource);
-  }, [dataSource])
+  }, [dataSource]);
 
   const innerHandleSort = (steps: any) => {
     const combineDashbord = unionBy(steps, dataSource, 'value');

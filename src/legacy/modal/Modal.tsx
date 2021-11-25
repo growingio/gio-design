@@ -30,7 +30,7 @@ const Modal: React.FC<IModalProps> = ({
   pending,
   ...restProps
 }: IModalProps) => {
-  const prefix = usePrefixCls('modal', customPrefixCls);
+  const prefix = usePrefixCls('modal-legacy', customPrefixCls);
   const locale = useLocale('Modal');
   const { closeText, okText } = {
     ...defaultLocale,

@@ -21,6 +21,7 @@ export default function ListPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
+        <li>包装自tabs，样式调整，</li>
         <li>Steps 组件基于 Tabs 组件（size = normal)，增加是否完成的判断，完成的步骤有 icon、未完成步骤没有。</li>
         <li>Steps 组件在使用时，通常只有当前步骤完成后，下一步骤才会解除 disabled 状态。</li>
         <li>current 指定当前步骤，从 1 开始记数。</li>

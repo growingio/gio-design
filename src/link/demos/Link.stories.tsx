@@ -1,6 +1,5 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
 import { PlusOutlined } from '@gio-design/icons';
 import { LinkProps } from '../interface';
 import Link from '../Link';
@@ -20,7 +19,6 @@ export default {
       page: Docs,
     },
   },
-  decorators: [withDesign],
   argTypes: {
     prefix: {
       control: { type: 'text' }, // 不约束react_node会传入对象导致报错

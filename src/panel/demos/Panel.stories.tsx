@@ -9,8 +9,68 @@ import { PanelProps } from '../interfaces';
 import ToolBar from '../ToolBar';
 import Table from '../Table';
 import { Default as BatchActions } from './batchActions.stories';
-import { dataSource1, dataSource2, columns1, columns2 } from '../__test__/tableData';
 import '../style';
+
+interface ExampleData {
+  a: string;
+  b: string;
+  c: string;
+  d: string;
+}
+
+const dataSource1: ExampleData[] = Array.from({ length: 100 }, (_, key) => ({
+  a: '表格内容',
+  b: '表格内容',
+  c: '表格内容',
+  d: '表格内容',
+  key: key.toString(),
+}));
+
+const dataSource2: ExampleData[] = Array.from({ length: 110 }, (_, key) => ({
+  a: '表格内容2',
+  b: '表格内容2',
+  c: '表格内容2',
+  d: '表格内容2',
+  key: key.toString(),
+}));
+
+const columns1 = [
+  {
+    title: '头像',
+    dataIndex: 'a',
+  },
+  {
+    title: '列标题',
+    dataIndex: 'd',
+  },
+  {
+    title: '列标题',
+    dataIndex: 'c',
+  },
+  {
+    title: '列标题',
+    dataIndex: 'd',
+  },
+];
+
+const columns2 = [
+  {
+    title: '头像',
+    dataIndex: 'a',
+  },
+  {
+    title: '列标题2',
+    dataIndex: 'd',
+  },
+  {
+    title: '列标题2',
+    dataIndex: 'c',
+  },
+  {
+    title: '列标题2',
+    dataIndex: 'd',
+  },
+];
 
 export default {
   component: Panel,

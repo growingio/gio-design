@@ -22,6 +22,9 @@ export default function ListPage() {
       <p>Upgrading Guide</p>
       <ul>
         <li>内部使用link作为按钮，icon来源于link</li>
+        <li>样式变化：无</li>
+        <li>接口变化：无，</li>
+        <li>使用方法有变：从传对象参数变成了JSX直接传，实现方式(nav-&gt;ol-&gt;li)</li>
         <li> &lt;Breadcrumbs&gt;&lt;Link /&gt;&lt;/Breadcrumbs&gt;</li>
       </ul>
 

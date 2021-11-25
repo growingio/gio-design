@@ -1,8 +1,8 @@
 @import '../../../stylesheet/index.less';
 
-@alert-prefix-cls: ~'@{component-prefix}-alert';
+@alert-prefix-cls-legacy: ~'@{component-prefix}-alert-legacy';
 
-.@{alert-prefix-cls} {
+.@{alert-prefix-cls-legacy} {
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -18,7 +18,7 @@
     padding-top: 1px;
   }
 
-  & .@{alert-prefix-cls}-content {
+  & .@{alert-prefix-cls-legacy}-content {
     flex: 1;
     margin: 0 8px;
     color: @color-text-alert-content;
@@ -26,20 +26,20 @@
     font-family: @font-family-primary;
     line-height: 22px;
 
-    & .@{alert-prefix-cls}-content-title {
+    & .@{alert-prefix-cls-legacy}-content-title {
       width: 100%;
       overflow: hidden;
       font-weight: @weight-font-medium;
       text-overflow: ellipsis;
     }
 
-    & .@{alert-prefix-cls}-content-description {
+    & .@{alert-prefix-cls-legacy}-content-description {
       width: 100%;
       letter-spacing: 0;
     }
   }
 
-  & .@{alert-prefix-cls}-closeIcon {
+  & .@{alert-prefix-cls-legacy}-closeIcon {
     flex-shrink: 0;
     align-self: flex-start;
     font-weight: @weight-font-semi-bold;
@@ -47,70 +47,70 @@
   }
 }
 
-.@{alert-prefix-cls}-close {
+.@{alert-prefix-cls-legacy}-close {
   display: none;
 }
 
-.@{alert-prefix-cls}-info {
+.@{alert-prefix-cls-legacy}-info {
   background-color: @color-background-alert-information;
 
-  & .@{alert-prefix-cls}-closeIcon {
+  & .@{alert-prefix-cls-legacy}-closeIcon {
     svg {
       fill: @palette-blue-6;
     }
   }
 
-  & .@{alert-prefix-cls}-icon {
+  & .@{alert-prefix-cls-legacy}-icon {
     svg {
       fill: @palette-blue-6;
     }
   }
 }
 
-.@{alert-prefix-cls}-success {
+.@{alert-prefix-cls-legacy}-success {
   background-color: @color-background-alert-success;
 
-  & .@{alert-prefix-cls}-closeIcon {
+  & .@{alert-prefix-cls-legacy}-closeIcon {
     fill: @palette-green-6;
   }
 
-  & .@{alert-prefix-cls}-icon {
+  & .@{alert-prefix-cls-legacy}-icon {
     fill: @palette-green-6;
   }
 }
 
-.@{alert-prefix-cls}-warning {
+.@{alert-prefix-cls-legacy}-warning {
   background-color: @color-background-alert-warning;
 
-  & .@{alert-prefix-cls}-closeIcon {
+  & .@{alert-prefix-cls-legacy}-closeIcon {
     svg {
       fill: @palette-yellow-6;
     }
   }
 
-  & .@{alert-prefix-cls}-icon {
+  & .@{alert-prefix-cls-legacy}-icon {
     svg {
       fill: @palette-yellow-6;
     }
   }
 }
 
-.@{alert-prefix-cls}-error {
+.@{alert-prefix-cls-legacy}-error {
   background-color: @color-background-alert-error;
 
-  & .@{alert-prefix-cls}-closeIcon {
+  & .@{alert-prefix-cls-legacy}-closeIcon {
     fill: @palette-red-6;
   }
 
-  & .@{alert-prefix-cls}-icon {
+  & .@{alert-prefix-cls-legacy}-icon {
     fill: @palette-red-6;
   }
 }
 
-.@{alert-prefix-cls}-small {
+.@{alert-prefix-cls-legacy}-small {
   padding: 8px 16px;
 
-  & .@{alert-prefix-cls}-content {
+  & .@{alert-prefix-cls-legacy}-content {
     font-size: @size-font-12;
   }
 }

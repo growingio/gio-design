@@ -21,8 +21,8 @@ export default function ListPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
-        <li>移除size样式控制</li>
-        <li>移除texticon自定义关闭按钮</li>
+        <li>样式变化：4种颜色样式变化，边框，对齐问题，样式更新。</li>
+        <li>API变化：size大小控制去除，texticon自定义关闭按钮去除。</li>
       </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: 'Demo' })}</Subheading>

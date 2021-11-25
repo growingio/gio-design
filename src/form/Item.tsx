@@ -44,7 +44,7 @@ const Item: React.FC<FormItemProps> = (props: FormItemProps) => {
     colon = _colon,
     labelAlign = _labelAlign,
   } = props;
-  const prefixCls = usePrefixCls('field-new', customizePrefixCls);
+  const prefixCls = usePrefixCls('field', customizePrefixCls);
   const { validateTrigger: contextValidateTrigger = 'onChange' } = useContext(FieldContext);
   const mergedValidateTrigger = validateTrigger === undefined ? contextValidateTrigger : validateTrigger;
 

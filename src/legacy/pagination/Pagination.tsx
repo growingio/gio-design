@@ -29,7 +29,7 @@ const Pagination = ({
   pageSizeOptions = ['10', '20', '50'],
   onShowSizeChange,
 }: PaginationProps) => {
-  const prefixCls = usePrefixCls('pagination', customizePrefixCls);
+  const prefixCls = usePrefixCls('pagination-legacy', customizePrefixCls);
   const [controlledCurrent, setControlledCurrent] = useControlledState(current, defaultCurrent);
   const [controlledPageSize, setControlledPageSize] = useControlledState(pageSize, defaultPageSize);
   const [inputValue, setInputValue] = useState<number>(1);

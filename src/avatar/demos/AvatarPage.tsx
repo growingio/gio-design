@@ -19,6 +19,11 @@ export default function ListPage() {
           Figma
         </a>
       </p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>样式变化：方形头像颜色与背景互换了。</li>
+        <li>API变化：无接口改动。</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
       <Canvas>

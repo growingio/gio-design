@@ -6,8 +6,6 @@ import Dropdown, { DropdownProps } from './index';
 import './style';
 import { Button, IconButton } from '../..';
 import ListPro from '../../legacy/list-pro';
-import List from '../../legacy/list';
-import { properties } from '../list/__tests__/data';
 
 export default {
   title: 'legacy/Dropdown',
@@ -33,7 +31,6 @@ const overlay = (
     }}
   >
     {/* <SearchBar /> */}
-    <List items={properties} />
   </div>
 );
 

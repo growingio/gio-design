@@ -24,7 +24,7 @@ const Grid: React.FC<GridProps> = (props: React.PropsWithChildren<GridProps>) =>
     collapse = false,
     style,
   } = props;
-  const prefixCls = usePrefixCls('grid', customizePrefixCls);
+  const prefixCls = usePrefixCls('grid-legacy', customizePrefixCls);
   const cssProps = dataMap(
     {
       direction,

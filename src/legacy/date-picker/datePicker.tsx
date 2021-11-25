@@ -25,7 +25,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
     disabledDate,
     disabled,
   } = props;
-  const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
+  const prefixCls = usePrefixCls('date-picker-legacy', customizePrefixCls);
 
   const calendarContainerRef = useRef(null);
   const inputRef = useRef(null);

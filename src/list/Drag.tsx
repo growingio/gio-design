@@ -9,7 +9,7 @@ import { DragItemProps, DragListProps, OptionProps } from './interfance';
 import DragItem from './DragItem';
 import List from './List';
 
-const Drag: React.FC<DragListProps> & {
+export const Drag: React.FC<DragListProps> & {
   Item: React.FC<DragItemProps>;
 } = (props) => {
   const { onChange, className, style, options: propsOptions, disabled, ...rest } = props;

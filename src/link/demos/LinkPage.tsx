@@ -21,8 +21,9 @@ export default function ButtonPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
-        <li> 支持所有原生html属性</li>
-        <li> 参数 icon 更改为 参数 prefix</li>
+        <li>Api变化: 参数icon 更改为 参数 prefix</li>
+        <li>样式变化:颜色变化</li>
+        <li> 支持原生a标签</li>
         <li> 原 icon 现在需要在prefix内传入如&lt;PlusOutlined/&gt;</li>
       </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>

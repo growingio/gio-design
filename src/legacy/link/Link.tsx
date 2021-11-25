@@ -17,7 +17,7 @@ const Link: React.FC<LinkProps> = (props: LinkProps) => {
     ...otherProps
   } = props;
 
-  const prefixCls = usePrefixCls('link', customPrefixCls);
+  const prefixCls = usePrefixCls('link-list', customPrefixCls);
   const cls = classnames(className, prefixCls, {
     [`${prefixCls}--disabled`]: disabled,
   });

@@ -21,7 +21,7 @@ const Text: React.FC<TextProps> = (props: TextProps) => {
 
   const containerRef = useRef<any>(null);
   const contentRef = useRef<any>(null);
-  const prefixCls = usePrefixCls('text');
+  const prefixCls = usePrefixCls('text-old-legacy');
   const cls = classnames(prefixCls, className);
 
   const [currentWidth, setCurrentWidth] = useState(width);

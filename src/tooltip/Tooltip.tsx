@@ -15,7 +15,7 @@ const Tooltip = (props: TooltipProps) => {
     tooltipLink,
     allowArrow = true,
     prefixCls: customizePrefixCls,
-    subPrefixCls = 'tooltip-new',
+    subPrefixCls = 'tooltip',
     overlayClassName,
     overlayInnerClassName,
     ...rest

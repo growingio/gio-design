@@ -67,7 +67,7 @@ export function CheckboxGroup<T extends CheckboxValueType>({
     [onChange]
   );
 
-  const prefixCls = usePrefixCls('checkbox', customizePrefixCls);
+  const prefixCls = usePrefixCls('checkbox-legacy', customizePrefixCls);
   const selectedValues = refValue.current || selected;
   let customChildren = children;
   if (options.length > 0) {

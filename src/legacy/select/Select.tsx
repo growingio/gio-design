@@ -78,7 +78,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       children,
     } = props;
 
-    const prefix = usePrefixCls('select', customizePrefixCls);
+    const prefix = usePrefixCls('select-legacy', customizePrefixCls);
     const [value, setSelectValue] = useControlledState(controlledValue, defaultValue);
     const [tempValue, setTempValue] = useState<React.ReactText[]>([]);
     const [isFocused, setFocused] = useState<boolean>(false);

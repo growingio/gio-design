@@ -17,7 +17,7 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = ({
   customizePrefixCls,
   style,
 }: TagProps) => {
-  const prefix = usePrefixCls('tag-new', customizePrefixCls);
+  const prefix = usePrefixCls('tag', customizePrefixCls);
 
   return (
     <span

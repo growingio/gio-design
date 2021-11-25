@@ -116,6 +116,34 @@ const SizeTemplate: Story<LoadingProps> = () => {
     </>
   );
 };
-
 export const Size = SizeTemplate.bind({});
+
+export const Demo = () => (
+  <>
+    <table className="table-demo">
+      <tr>
+        <th>control</th>
+        <th>example</th>
+      </tr>
+      <tr>
+        <td>点击按钮切换状态</td>
+        <td style={{ width: '500px' }}>
+          <Delay />
+        </td>
+      </tr>
+      <tr>
+        <td>三种大小</td>
+        <td>
+          <Size />
+        </td>
+      </tr>
+      <tr>
+        <td>自定义图标</td>
+        <td>
+          <Loading indicator={<LoadingOutlined rotating />} />
+        </td>
+      </tr>
+    </table>
+  </>
+);
 Size.args = {};

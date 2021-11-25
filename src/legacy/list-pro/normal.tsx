@@ -17,7 +17,7 @@ const NormalList = ({
   allowDeselect,
   ...restProps
 }: IBaseListProps): React.ReactElement => {
-  const prefixCls = usePrefixCls('list', customPrefixCls);
+  const prefixCls = usePrefixCls('list-legacy', customPrefixCls);
   return (
     <div className={`${prefixCls}-wrapper`} style={{ ...wrapStyle, width }}>
       <Core

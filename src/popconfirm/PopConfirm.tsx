@@ -22,7 +22,7 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
     disabled,
     ...rest
   } = props;
-  const prefixCls = usePrefixCls('confirm-new', customizePrefixCls);
+  const prefixCls = usePrefixCls('confirm', customizePrefixCls);
 
   const [visible, setVisible] = useState(customizaVisible);
 

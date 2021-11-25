@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { isEqual } from 'lodash';
+import { isEqual, isNil } from 'lodash';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
 import Trigger from './Trigger';
@@ -10,6 +10,7 @@ import { OptionProps } from '../list/interfance';
 import Button from '../button';
 import { ListContext } from '../list/context';
 import useCacheOptions from '../list/hooks/useCacheOptions';
+import { ITEM_KEY } from './Recent';
 // import CheckboxItem from '../list/inner/ChckboxItem';
 
 // const defaultEmpty = () => <Page type="noData" size="small" style={{ margin: '0 auto', padding: '40px 0px' }} />;
@@ -28,7 +29,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     onChange,
     triggerProps,
     renderTrigger: propsRenderTrigger,
-    prefixCls = 'list-picker--new',
+    prefixCls = 'list-picker-',
     getContainer,
     placement = 'bottomLeft',
     overlayStyle,
@@ -77,6 +78,11 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
 
   const handleChange = (val?: string | string[], opts?: OptionProps | OptionProps[]) => {
     if (model !== 'multiple') {
+      const localStorageValue = localStorage?.getItem(ITEM_KEY);
+      const recentKey: string[] = (JSON.parse(isNil(localStorageValue) ? '' : localStorageValue) || []).filter(
+        (v: string) => v !== val
+      );
+      localStorage?.setItem(ITEM_KEY, JSON.stringify([val, ...recentKey].slice(0, 20)));
       onChange?.(val, opts);
       handVisibleChange(false);
     } else {

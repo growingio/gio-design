@@ -15,7 +15,7 @@ import useSize from '../../utils/hooks/useSize';
 import { AlertProps } from './interfaces';
 
 export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
-  const prefixCls = usePrefixCls('alert');
+  const prefixCls = usePrefixCls('alert-legacy');
   const [alertStatus, setAlertStatus] = useState(true);
   const { message, description, closeable, showIcon = false, onClose, icon, type, size: customizeSize, style } = props;
 

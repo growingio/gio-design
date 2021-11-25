@@ -14,6 +14,11 @@ export default {
     docs: {
       page: Docs,
     },
+    argTypes: {
+      description: {
+        control: { type: 'text' },
+      },
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4093%3A45839',
@@ -41,31 +46,34 @@ const arr: PageProps['type'][] = [
 ];
 const demoTemplate: Story<PageProps> = (args) => (
   <>
-    {arr.map((item: PageProps['type']) => (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-evenly',
-          alignItems: 'flex-end',
-        }}
-      >
-        <Page {...args} type={item} />
-
-        <Page
-          {...args}
-          size="small"
-          type={item}
-          cta={null}
-          description={
-            <>
-              {item} <Link href="http://localhost:6006/?path=/story/components-page--demo">从{item}中移除</Link>
-            </>
-          }
-        />
-      </div>
-    ))}
+    <table className="table-demo">
+      <tr>
+        <th>Controls</th>
+        <th>Example</th>
+      </tr>
+      {arr.map((item: PageProps['type']) => (
+        <tr>
+          <td>{item}</td>
+          <td>
+            <Page {...args} type={item} />
+            <Page
+              {...args}
+              size="small"
+              type={item}
+              cta={null}
+              description={
+                <>
+                  {item} <Link href="http://localhost:6006/?path=/story/components-page--demo">从{item}中移除</Link>
+                </>
+              }
+            />
+          </td>
+        </tr>
+      ))}
+    </table>
   </>
 );
+
 export const Demo = demoTemplate.bind({});
 Demo.args = {
   cta: defaultCTA,

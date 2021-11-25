@@ -21,8 +21,9 @@ export default function ListPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
+        <li>样式：全新颜色样式</li>
         <li>子元素为tab</li>
-        <li>不再区分tabnav，tabs</li>
+        <li>不再区分tabnav，tabs，移除了tabnav</li>
         <li>block参数取消</li>
         <li>去掉了过渡动画</li>
       </ul>

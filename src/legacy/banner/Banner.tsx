@@ -7,7 +7,7 @@ import { BannerProps } from './interface';
 const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   const { type = 'normal', content, closeable = true, onClose, button, prefixCls: customizePrefixCls } = props;
   const [visible, setVisible] = useState(true);
-  const prefixCls = usePrefixCls('banner', customizePrefixCls);
+  const prefixCls = usePrefixCls('banner-legacy', customizePrefixCls);
   const onCloseBanner = () => {
     setVisible(false);
     onClose?.();

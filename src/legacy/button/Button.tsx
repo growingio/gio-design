@@ -80,7 +80,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
   const size = useSize();
   const [innerLoading, setLoading] = React.useState<boolean | undefined>(loading);
   const [hasTwoCNChar, setHasTwoCNChar] = React.useState(false);
-  const prefixCls = usePrefixCls('btn', customizePrefixCls);
+  const prefixCls = usePrefixCls('btn-legacy', customizePrefixCls);
   const buttonRef = (ref as any) || React.createRef<HTMLElement>();
 
   const isNeedInserted = () => React.Children.count(children) === 1 && !icon;

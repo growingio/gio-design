@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
 import Tooltip from '../Tooltip';
 import { TooltipProps } from '../interface';
 import Input from '../../input';
 import { Button } from '../../button';
 import '../style';
 import '../../popover/demos/demo.stories.less';
+import Docs from './TooltipPage';
 
 export default {
   title: 'Upgraded/Tooltip',
   component: Tooltip,
-  decorators: [withDesign],
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A1753',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4093%3A45835',
       allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
     },
   },
 } as Meta;

@@ -10,7 +10,11 @@ export default function LayoutPage() {
     <>
       <Title>{formatMessage({ defaultMessage: 'Layout 布局' })}</Title>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
-
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>样式变化：内部的tooltip和list重做，样式有些变化，</li>
+        <li>APi变动：无变化。</li>
+      </ul>
       <Subheading>{formatMessage({ defaultMessage: '无侧导航页面' })}</Subheading>
       <Canvas>
         <Story id="upgraded-layout--default" />

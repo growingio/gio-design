@@ -22,6 +22,8 @@ export default function ListPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
+        <li>样式：全新样式</li>
+        <li>Api：删除冗余api</li>
         <li>不支持多选</li>
       </ul>
 

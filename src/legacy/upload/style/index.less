@@ -1,17 +1,17 @@
 @import '../../../stylesheet/index.less';
 
-@upload-prefix-cls: ~'@{component-prefix}-upload';
-@avatar-prefix-cls: ~'@{component-prefix}-avatar';
+@upload-prefix-cls-legacy: ~'@{component-prefix}-upload-legacy';
+@avatar-prefix-cls-legacy: ~'@{component-prefix}-avatar';
 
-@upload-btn: ~'@{upload-prefix-cls}__btn';
-@upload-input: ~'@{upload-prefix-cls}__input';
-@upload-card: ~'@{upload-prefix-cls}__card';
-@upload-avatar: ~'@{upload-prefix-cls}__avatar';
-@upload-drag: ~'@{upload-prefix-cls}__drag';
-@upload-preview: ~'@{upload-prefix-cls}__preview';
-@upload-actions: ~'@{upload-prefix-cls}__actions';
+@upload-btn: ~'@{upload-prefix-cls-legacy}__btn';
+@upload-input: ~'@{upload-prefix-cls-legacy}__input';
+@upload-card: ~'@{upload-prefix-cls-legacy}__card';
+@upload-avatar: ~'@{upload-prefix-cls-legacy}__avatar';
+@upload-drag: ~'@{upload-prefix-cls-legacy}__drag';
+@upload-preview: ~'@{upload-prefix-cls-legacy}__preview';
+@upload-actions: ~'@{upload-prefix-cls-legacy}__actions';
 
-.@{upload-prefix-cls} {
+.@{upload-prefix-cls-legacy} {
   display: inline-block;
   font-size: @size-font-14;
   line-height: 20px;
@@ -83,25 +83,25 @@
         margin-right: 16px;
       }
 
-      .@{upload-prefix-cls}-file-name {
+      .@{upload-prefix-cls-legacy}-file-name {
         width: fit-content;
         margin-right: 16px;
         color: #313e75;
       }
 
-      .@{upload-prefix-cls}-file-success {
+      .@{upload-prefix-cls-legacy}-file-success {
         width: fit-content;
         margin-right: 16px;
         color: #00875a;
       }
 
-      .@{upload-prefix-cls}-file-error {
+      .@{upload-prefix-cls-legacy}-file-error {
         width: fit-content;
         margin-right: 16px;
         color: #ec134b;
       }
 
-      .@{upload-prefix-cls}-file-delete {
+      .@{upload-prefix-cls-legacy}-file-delete {
         display: none;
         width: 24px;
         height: 22px;
@@ -110,7 +110,7 @@
       }
 
       &:hover {
-        .@{upload-prefix-cls}-file-delete {
+        .@{upload-prefix-cls-legacy}-file-delete {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -200,7 +200,7 @@
   border-radius: 50%;
   cursor: pointer;
 
-  & .@{avatar-prefix-cls} {
+  & .@{avatar-prefix-cls-legacy} {
     margin: 0;
 
     & img {
@@ -209,7 +209,7 @@
   }
 }
 
-.@{upload-prefix-cls}-drag-container {
+.@{upload-prefix-cls-legacy}-drag-container {
   width: 100%;
 }
 

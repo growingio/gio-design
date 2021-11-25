@@ -1,8 +1,8 @@
 import Steps from './Steps';
 import Tab from '../tabs/Tab';
 import withSubComponent from '../utils/withSubComponent';
-import { TabProps } from '../tabs/interface';
-import { StepsProps } from './interface'
+import { TabProps as StepProps } from '../tabs/interface';
+import { StepsProps } from './interface';
 
-export { Tab, StepsProps, TabProps };
-export default withSubComponent(Steps, { Tab });
+export { Tab as Step, StepsProps, StepProps };
+export default withSubComponent(Steps, { Step: Tab });

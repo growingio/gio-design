@@ -1,9 +1,9 @@
 @import '../../../stylesheet/index.less';
 
-@space-prefix-cls: ~'@{component-prefix}-space';
-@space-item-prefix-cls: ~'@{component-prefix}-space-item';
+@space-prefix-cls-legacy: ~'@{component-prefix}-space-legacy';
+@space-item-prefix-cls-legacy: ~'@{component-prefix}-space-item';
 
-.@{space-prefix-cls} {
+.@{space-prefix-cls-legacy} {
   display: inline-flex;
 
   &-vertical {
@@ -33,7 +33,7 @@
   }
 }
 
-.@{space-item-prefix-cls} {
+.@{space-item-prefix-cls-legacy} {
   &:empty {
     display: none;
   }

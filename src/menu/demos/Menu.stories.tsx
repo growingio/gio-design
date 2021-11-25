@@ -90,3 +90,26 @@ export const Horizontal: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (a
 Horizontal.args = {
   disabled: false,
 };
+
+export const Demo = () => (
+  <>
+    <table className="table-demo">
+      <tr>
+        <th>Controls</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>Vertical</td>
+        <td>
+          <Vertical key={undefined} />
+        </td>
+      </tr>
+      <tr>
+        <td>horizontal</td>
+        <td>
+          <Horizontal key={undefined} />
+        </td>
+      </tr>
+    </table>
+  </>
+);

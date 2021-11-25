@@ -19,7 +19,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
     disabledDate,
     disabled,
   } = props;
-  const prefixCls = usePrefixCls('date-picker', customizePrefixCls);
+  const prefixCls = usePrefixCls('date-picker-legacy', customizePrefixCls);
 
   const { footerField, inputField, panelField, ref } = useDateRangePicker(props);
 

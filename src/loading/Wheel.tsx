@@ -4,7 +4,7 @@ import { WheelProps } from './interface';
 
 const Wheel: React.FC<WheelProps> = (props: WheelProps) => {
   const { indicator, prefixCls: customizePrefixCls } = props;
-  const prefixCls = usePrefixCls('loading-new', customizePrefixCls);
+  const prefixCls = usePrefixCls('loading', customizePrefixCls);
   if (indicator) {
     return <span className={`${prefixCls}-indicator`}>{indicator}</span>;
   }

@@ -3,18 +3,18 @@
 @import (reference) '../../selector-pro/style/index.less';
 @import (reference) '../../base-picker/style/index.less';
 
-@property-picker-prefix-cls: ~'@{component-prefix}-property-picker';
-@property-selector-prefix-cls: ~'@{component-prefix}-property-selector';
+@property-picker-prefix-cls-legacy: ~'@{component-prefix}-property-picker-legacy';
+@property-selector-prefix-cls-legacy: ~'@{component-prefix}-property-selector';
 
-.@{property-picker-prefix-cls} {
-  &.@{picker-prefix-cls} {
+.@{property-picker-prefix-cls-legacy} {
+  &.@{picker-prefix-cls-legacy} {
     width: 366px;
   }
 
-  .@{picker-prefix-cls}__content {
+  .@{picker-prefix-cls-legacy}__content {
     max-height: 424px;
   }
-  .@{list-prefix-cls}__item {
+  .@{list-prefix-cls-legacy}__item {
     transition: all 0.3s ease;
     &.selected,
     &.active {
@@ -29,8 +29,8 @@
     }
   }
 }
-.@{property-selector-prefix-cls} {
-  &.@{selector-prefix-cls} {
+.@{property-selector-prefix-cls-legacy} {
+  &.@{selector-prefix-cls-legacy} {
     width: fit-content;
     max-width: 100%;
   }
@@ -50,7 +50,7 @@
     }
   }
 }
-.@{property-picker-prefix-cls}-card {
+.@{property-picker-prefix-cls-legacy}-card {
   width: 320px;
   white-space: normal;
   &-title {

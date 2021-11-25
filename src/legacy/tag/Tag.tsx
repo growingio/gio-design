@@ -22,7 +22,7 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = (props: 
     customizePrefixCls,
     style,
   } = props;
-  const prefix = usePrefixCls('tag', customizePrefixCls);
+  const prefix = usePrefixCls('tag-legacy', customizePrefixCls);
 
   return (
     <span
