@@ -77,7 +77,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   const handleChange = (val?: string | string[], opts?: OptionProps | OptionProps[]) => {
     if (model !== 'multiple') {
       const localStorageValue = localStorage?.getItem(ITEM_KEY);
-      const recentKey: string[] = (JSON.parse(isNil(localStorageValue) ? '' : localStorageValue) || []).filter(
+      const recentKey: string[] = (JSON.parse(isNil(localStorageValue) ? '[]' : localStorageValue) || []).filter(
         (v: string) => v !== val
       );
       localStorage?.setItem(ITEM_KEY, JSON.stringify([val, ...recentKey].slice(0, 20)));
