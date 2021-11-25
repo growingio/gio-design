@@ -6,7 +6,7 @@ import BreadcrumbsProps from './interface';
 
 const Breadcrumbs = WithRef<HTMLElement, BreadcrumbsProps>(
   ({ separator = '/', className, children, ...otherProps }: BreadcrumbsProps, ref) => {
-    const prefixCls = usePrefixCls('breadcrumbs-new');
+    const prefixCls = usePrefixCls('breadcrumbs');
     const classes = classNames([className, prefixCls]);
 
     const breadcrumbsItems = React.Children.toArray(children)

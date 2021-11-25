@@ -24,7 +24,7 @@ const Sign: React.FC<ISignProps> = ({
   children,
   offset,
 }: ISignProps) => {
-  const prefix = usePrefixCls('sign', customPrefixCls);
+  const prefix = usePrefixCls('sign-legacy', customPrefixCls);
   const noChildren = Children.count(children) === 0;
 
   const cls = classnames(className, prefix, `${prefix}__${variant}-wrapper`, {

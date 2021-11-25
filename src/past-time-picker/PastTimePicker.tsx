@@ -33,7 +33,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     ...restProps
   } = props;
 
-  const prefixCls = usePrefixCls('past-time-picker-new');
+  const prefixCls = usePrefixCls('past-time-picker');
 
   const locale = useLocale('StaticPastTimePicker');
 

@@ -17,7 +17,7 @@ const Card = ({
   onClick,
   ...rest
 }: CardProps) => {
-  const prefixCls = usePrefixCls('card', customizePrefixCls);
+  const prefixCls = usePrefixCls('card-legacy', customizePrefixCls);
 
   const renderTitle = () => (isUndefined(title) ? undefined : <div className={`${prefixCls}-title`}>{title}</div>);
 

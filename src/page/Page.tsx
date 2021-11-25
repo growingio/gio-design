@@ -62,7 +62,7 @@ function Page({ className, style, type = 'noData', image, description, cta, size
       description: localeContent.type500,
     },
   };
-  const prefixCls = usePrefixCls('page-new');
+  const prefixCls = usePrefixCls('page');
   const cls = classnames(prefixCls, `${prefixCls}-${size}`, className, {
     [`${prefixCls}-empty`]: ['empty', 'noData', 'noResult', 'noFind'].includes(type),
   });

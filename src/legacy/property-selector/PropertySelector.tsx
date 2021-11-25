@@ -12,7 +12,7 @@ import { promisify } from './util';
 import defaultLocale from './locales/zh-CN';
 
 const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
-  const locale = useLocale('PropertyPicker');
+  const locale = useLocale('PropertyPicker-legacy');
   const { placeholderText } = { ...defaultLocale, ...locale } as any;
   const {
     borderless = true,

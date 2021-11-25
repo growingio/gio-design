@@ -21,7 +21,9 @@ export default function ListPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
-        <li> checkbox 支持多选</li>
+        <li>样式变化：无变动</li>
+        <li>APi变化：无变动</li>
+        <li> checkbox和switch区别，checkbox 支持多选</li>
       </ul>
 
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>

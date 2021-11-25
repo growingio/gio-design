@@ -11,7 +11,7 @@ interface BreadcrumbItemInterface extends React.FC<BreadcrumbItemProps> {
 
 const BreadcrumbItem: BreadcrumbItemInterface = (props: BreadcrumbItemProps) => {
   const { children, separator, ...restProps } = props;
-  const prefixCls = usePrefixCls('breadcrumb');
+  const prefixCls = usePrefixCls('breadcrumb-legacy');
   const link =
     'href' in restProps ? (
       <a className={`${prefixCls}-item-link-target`} {...restProps}>

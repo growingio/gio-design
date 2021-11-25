@@ -22,12 +22,15 @@ export default function CardPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
+        <li>样式变化：颜色，对齐</li>
+        <li>Api变化</li>
         <li>action属性支持，右上角标题可以放ReactNode</li>
         <li>去除footer,去除外部title</li>
         <li>支持fullWidthContent 让内容宽度拉满</li>
         <li>底层div标签，支持div事件</li>
         <li>tablecard 和infocard 可兼容</li>
       </ul>
+
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '简单结构' })}</Subheading>
       <p>

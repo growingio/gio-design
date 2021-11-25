@@ -33,7 +33,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     [onChange, check]
   );
 
-  const prefixCls = usePrefixCls('checkbox', customizePrefixCls);
+  const prefixCls = usePrefixCls('checkbox-legacy', customizePrefixCls);
   const checkProps: CheckboxProps = { ...restProps };
 
   if (checkGroup) {

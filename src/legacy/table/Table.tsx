@@ -51,7 +51,7 @@ function Table<RecordType>(
     ...rest
   } = props;
   const mergedRef = useMergeRef(ref);
-  const prefixCls = usePrefixCls('table', customizePrefixCls);
+  const prefixCls = usePrefixCls('table-legacy', customizePrefixCls);
   const onHackRow = useHackOnRow(onRow, hackRowEvent);
   const innerColumns = useMemo(() => translateInnerColumns(columns), [columns]);
   const [activeSorterStates, updateSorterStates, sortedData, sorter] = useSorter(innerColumns, dataSource);

@@ -21,7 +21,7 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
     blurColor = 'white',
     autoCenter = false,
   } = props;
-  const prefixCls = usePrefixCls('loading', customizePrefixCls);
+  const prefixCls = usePrefixCls('loading-legacy', customizePrefixCls);
   const shouldLoading = useDebounceLoading(loading, delay);
   const loadingRef = useRef<HTMLDivElement>(null);
   const [centerStyle, setCenterStyle] = useState({});

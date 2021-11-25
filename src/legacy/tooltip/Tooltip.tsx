@@ -17,7 +17,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     disabled = false,
     onVisibleChange,
     prefixCls: customizePrefixCls,
-    subPrefixCls = 'tooltip',
+    subPrefixCls = 'tooltip-legacy',
     overlay,
     children,
     arrowPointAtCenter = false,

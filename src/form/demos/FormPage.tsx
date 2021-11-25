@@ -16,6 +16,7 @@ export default function FormPage() {
           封装自rc-field-form，详情
           <a href="https://www.npmjs.com/package/rc-field-form">rc-dialog</a>
         </li>
+        <li>样式改动：颜色替换，warning的padding去掉</li>
       </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
 

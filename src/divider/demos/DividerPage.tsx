@@ -21,7 +21,8 @@ export default function ListPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
-        <Divider orientation="vertical" />
+        <li>新增组件</li>
+        <li>APi: orientation参数控制分割线方向，flexItem参数兼容flex布局高度</li>
       </ul>
 
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>

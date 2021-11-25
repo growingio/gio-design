@@ -17,7 +17,7 @@ const Popconfirm: React.FC<PopconfirmProps> = (props: PopconfirmProps) => {
     cancelText = '取消',
     children,
     prefixCls: customizePrefixCls,
-    subPrefixCls = 'popconfirm',
+    subPrefixCls = 'popconfirm-legacy',
     visible,
     arrowPointAtCenter,
     autoAdjustOverflow,

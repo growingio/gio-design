@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import Docs from './StepsPage';
-import Steps, { Tab, TabProps } from '../index';
+import Steps, { Step, StepProps } from '../index';
 import '../style';
-import Button from '../../button'
+import Button from '../../button';
 
 export default {
   title: 'Upgraded/Steps',
   component: Steps,
-  subcomponents: { Tab },
+  subcomponents: { Step },
   parameters: {
     docs: {
       page: Docs,
@@ -28,12 +28,12 @@ const templateArr = [
   { lable: '第三步' },
   { lable: '第四步' },
   { lable: '第五步' },
-  { lable: '第六步' }
+  { lable: '第六步' },
 ];
 const renderItems = () =>
-  templateArr.map((item, index) => <Tab label={`Step ${index + 1}`} value={index} prefix={item} />);
-const Template: Story<TabProps> = (args) => {
-  const [current, setCurrent] = useState(3)
+  templateArr.map((item, index) => <Step label={`Step ${index + 1}`} value={index} prefix={item} />);
+const Template: Story<StepProps> = (args) => {
+  const [current, setCurrent] = useState(3);
   const next = () => {
     setCurrent(current + 1);
   };
@@ -49,7 +49,9 @@ const Template: Story<TabProps> = (args) => {
   };
   return (
     <div>
-      <Steps {...args} current={current} >{renderItems()}</Steps>
+      <Steps {...args} current={current}>
+        {renderItems()}
+      </Steps>
       <div className="steps-action" style={{ padding: '30px 0 0 0' }}>
         {current > 1 && current < templateArr.length && (
           <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
@@ -71,14 +73,13 @@ const Template: Story<TabProps> = (args) => {
             重置
           </Button>
         )}
-
       </div>
     </div>
-  )
+  );
 };
 const haveChildrenItems = () =>
   templateArr.map((item, index) => (
-    <Tab label={`Step${index + 1}`} value={index}>
+    <Step label={`Step${index + 1}`} value={index}>
       <div
         style={{
           backgroundColor: '#f7f8fc',
@@ -92,14 +93,16 @@ const haveChildrenItems = () =>
       >
         {`Step${index + 1}`}
       </div>
-    </Tab>
+    </Step>
   ));
-const childrenTemplate: Story<TabProps> = (args) => (
+const childrenTemplate: Story<StepProps> = (args) => (
   <div>
-    <Steps {...args} current={4}>{haveChildrenItems()}</Steps>
+    <Steps {...args} current={4}>
+      {haveChildrenItems()}
+    </Steps>
   </div>
 );
-const DemoTemplate: Story<TabProps> = (args) => (
+const DemoTemplate: Story<StepProps> = (args) => (
   <>
     <table
       style={{
@@ -119,12 +122,12 @@ const DemoTemplate: Story<TabProps> = (args) => (
           <td>
             <Steps style={{ marginBottom: 10 }} {...args} current={3}>
               {templateArr.map((item, index) => (
-                <Tab label={`Step${index + 1}`} value={index} />
+                <Step label={`Step${index + 1}`} value={index} />
               ))}
             </Steps>
             <Steps size="small" {...args} current={3}>
               {templateArr.map((item, index) => (
-                <Tab label={`Step${index + 1}`} value={index} />
+                <Step label={`Step${index + 1}`} value={index} />
               ))}
             </Steps>
           </td>
@@ -135,32 +138,26 @@ const DemoTemplate: Story<TabProps> = (args) => (
           <td style={{ width: 500 }}>
             <Steps {...args} current={4}>
               {[...Array(10)].map((item, index) => (
-                <Tab label={`Step${index + 1}`} value={index} />
+                <Step label={`Step${index + 1}`} value={index} />
               ))}
             </Steps>
           </td>
         </tr>
       </tbody>
-    </table>
-    <table className="table-demo">
       <tbody>
-        <tr>
-          <th>Steps control</th>
-          <th>描述</th>
-          <th>Example</th>
-        </tr>
         <tr>
           <td>children</td>
           <td>有内容联动</td>
           <td>
             <Steps
-              {...args} current={4}
+              {...args}
+              current={4}
               onChange={() => {
                 action('onchange');
               }}
             >
               {templateArr.map((item, index) => (
-                <Tab label={`Step${index + 1}`} value={index}>
+                <Step label={`Step${index + 1}`} value={index}>
                   <div
                     style={{
                       backgroundColor: '#f7f8fc',
@@ -171,7 +168,7 @@ const DemoTemplate: Story<TabProps> = (args) => (
                   >
                     {`Step${index + 1}`}
                   </div>
-                </Tab>
+                </Step>
               ))}
             </Steps>
           </td>
@@ -200,4 +197,3 @@ HaveChildren.args = {
   defaultValue: 1,
   onChange: action('onchange'),
 };
-

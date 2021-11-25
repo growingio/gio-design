@@ -17,7 +17,7 @@ type PaginationContextType = Required<Pick<PaginationProps, 'pageSizeOptions' | 
   };
 
 export const PaginationContext = createContext<PaginationContextType>({
-  prefixCls: 'gio-pagination-new',
+  prefixCls: 'gio-pagination',
   maxPages: 0,
   pageSizeOptions: [10, 20, 50],
   defaultPageSize: 10,
@@ -48,7 +48,7 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
   const localeTextObject: typeof defaultLocaleTextObject = useLocale('Pagination');
   const textObject = useMemo(() => ({ ...defaultLocaleTextObject, ...localeTextObject }), [localeTextObject]);
 
-  const prefixCls = usePrefixCls('pagination-new');
+  const prefixCls = usePrefixCls('pagination');
   const [pageSize, setPageSize] = useControlledState(pageSizeProp, defaultPageSize);
   const {
     maxPages,

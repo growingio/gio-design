@@ -11,10 +11,22 @@ import DragList from '../Drag';
 import Selection from '../Selection';
 import CascaderItem from '../inner/CascaderItem';
 import Popover from '../../popover';
+import Docs from './ListPage';
 
 export default {
   title: 'Upgraded/List',
   component: List,
+  subcomponents: { DragList, Selection, Item, CascaderItem },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=6379%3A64447',
+      allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 const defaultLabels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 const options = [
@@ -50,6 +62,7 @@ const Template: Story<ListProps> = (props) => {
   );
   return (
     <>
+      cascaderitem
       <div className="demo-box">
         <List
           model="cascader"
@@ -83,13 +96,14 @@ const Template: Story<ListProps> = (props) => {
           </CascaderItem>
         </List>
       </div>
+      simple(default)
       <div className="demo-box">
         <h3>JSX render preview</h3>
-        <List>
+        {/* <List>
           <Item value="1" wrapper={wrapper}>
             1
           </Item>
-        </List>
+        </List> */}
         <h3>option render preview</h3>
         <List options={[{ label: '1', value: '1', wrapper }]} />
       </div>
@@ -120,6 +134,7 @@ const Template: Story<ListProps> = (props) => {
           </Item>
         </List>
       </div>
+      multiple
       <div className="demo-box">
         <List
           value={value}

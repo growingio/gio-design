@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
 import PopConfirm from '../PopConfirm';
 import { PopConfirmProps } from '../interface';
 import Input from '../../input';
 import { Button } from '../../button';
 import '../style';
 import '../../popover/demos/demo.stories.less';
+import Docs from './PopconfirmPage';
 
 export default {
   title: 'Upgraded/PopConfirm',
   component: PopConfirm,
-  decorators: [withDesign],
   parameters: {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=6392%3A67234',
       allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
     },
   },
 } as Meta;

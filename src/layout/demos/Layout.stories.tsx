@@ -33,7 +33,7 @@ const Header = () => (
         style={{ width: 120, height: 26, marginTop: 7, marginLeft: 8 }}
         alt=""
       />
-      <Layout.Header.HeaderDivider style={{ marginLeft: 16, height: 30 }} />
+      <Layout.Header.HeaderDivider style={{ marginLeft: 16, height: 30, marginRight: 16 }} />
       <Select
         size="normal"
         overlayStyle={{ width: 144 }}

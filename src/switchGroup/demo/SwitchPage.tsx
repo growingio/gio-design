@@ -21,6 +21,9 @@ export default function ListPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
+        <li>样式：两种大小，icon对齐</li>
+        <li>内部input radio包span</li>
+        <li>使用传入options</li>
         <li>switch Item 无意义</li>
       </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>

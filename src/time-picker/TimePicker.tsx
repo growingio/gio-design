@@ -36,7 +36,7 @@ export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) =>
   const [visible, setVisible] = useControlledState(popoverVisible, false);
   const [controlledValue, setControlledValue] = useControlledState(value, defaultValue);
   const [time, setTime] = React.useState<Date | undefined>(controlledValue);
-  const prefixCls = usePrefixCls('time-picker-new');
+  const prefixCls = usePrefixCls('time-picker');
   const locale = useLocale<Locale>('TimePicker');
   const coalescedLocale = customizeLocale ?? locale ?? defaultLocale;
   const { now, ok, timeSelect } = coalescedLocale;

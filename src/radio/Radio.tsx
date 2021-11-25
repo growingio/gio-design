@@ -10,7 +10,7 @@ const InnerRadio: React.ForwardRefRenderFunction<HTMLInputElement, IRadioProps> 
   const { prefixCls: customPrefixCls, className, style, children, defaultChecked, color, ...restProps } = props;
 
   const groupContext = useContext(RadioGroupContext);
-  const prefixCls = usePrefixCls('radio-new', customPrefixCls);
+  const prefixCls = usePrefixCls('radio', customPrefixCls);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (restProps.onChange) {

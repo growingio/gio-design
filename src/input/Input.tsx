@@ -19,7 +19,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     ...rest
   } = props;
 
-  const prefixCls = usePrefixCls('input-new', customizePrefixCls);
+  const prefixCls = usePrefixCls('input', customizePrefixCls);
 
   const inputClass = useMemo(
     () =>

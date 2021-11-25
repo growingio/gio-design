@@ -1,12 +1,12 @@
 @import '../../../stylesheet/index.less';
 
 @gio-prefix: ~'@{component-prefix}';
-@select-prefix-cls: ~'@{component-prefix}-select';
+@select-prefix-cls-legacy: ~'@{component-prefix}-select-legacy';
 @select-input-fontSize: 14px;
 @color-font-list-primary-normal: @palette-black-6; // $color-black-6
 @color-box-shadow-focused: #c0c4d3;
 @color-background-matchHeight: #ffcf3c;
-.@{select-prefix-cls} {
+.@{select-prefix-cls-legacy} {
   position: relative;
   display: inline-block;
   min-width: 120px;
@@ -65,7 +65,7 @@
   &-focused {
     box-shadow: 0 0 6px 0 @color-box-shadow-focused;
 
-    .@{select-prefix-cls} {
+    .@{select-prefix-cls-legacy} {
       &-item-all {
         opacity: 0.5;
       }
@@ -153,7 +153,7 @@
     visibility: hidden;
   }
   &-small {
-    .@{select-prefix-cls} {
+    .@{select-prefix-cls-legacy} {
       &-selector {
         min-height: 28px;
         max-height: 28px * 3.5px;
@@ -176,7 +176,7 @@
   }
 
   &-large {
-    .@{select-prefix-cls} {
+    .@{select-prefix-cls-legacy} {
       &-selector {
         min-height: 38px;
         max-height: 34px * 3.5px;
@@ -215,7 +215,7 @@
   }
 
   &-single {
-    .@{select-prefix-cls} {
+    .@{select-prefix-cls-legacy} {
       &-item {
         display: inline-flex;
       }
@@ -223,7 +223,7 @@
   }
 
   &-single&-focused {
-    .@{select-prefix-cls} {
+    .@{select-prefix-cls-legacy} {
       &-item {
         opacity: 0.5;
       }
@@ -270,14 +270,14 @@
   }
 }
 
-.@{select-prefix-cls}-list {
+.@{select-prefix-cls-legacy}-list {
   box-sizing: border-box;
   min-width: 160px;
   padding: 16px 0 16px 8px;
   outline: none;
 }
 
-.@{select-prefix-cls}-list-option {
+.@{select-prefix-cls-legacy}-list-option {
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -314,7 +314,7 @@
   }
 }
 
-.@{select-prefix-cls}-list-option-all {
+.@{select-prefix-cls-legacy}-list-option-all {
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -337,7 +337,7 @@
   }
 }
 
-.@{select-prefix-cls}-footer-button-group {
+.@{select-prefix-cls-legacy}-footer-button-group {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -348,17 +348,17 @@
   padding: 0 20px;
 }
 
-.@{select-prefix-cls}-footer-button-group:first-child button {
+.@{select-prefix-cls-legacy}-footer-button-group:first-child button {
   margin-right: 8px;
 }
 
-.@{select-prefix-cls}-list-search-bar {
+.@{select-prefix-cls-legacy}-list-search-bar {
   box-sizing: border-box;
   max-width: 100%;
   padding: 0 20px 16px 12px;
 }
 
-.@{select-prefix-cls}-list-group {
+.@{select-prefix-cls-legacy}-list-group {
   padding: 6px 12px;
   color: @color-background-button-primary-hover;
   font-weight: 500;

@@ -22,7 +22,7 @@ export const Tabs = (props: TabProps, ref: React.Ref<HTMLDivElement>) => {
     onChange,
   } = props;
   const [localActiveKey, setLocalActiveKey] = useControlledState<string>(activeKey, defaultActiveKey);
-  const prefixCls = usePrefixCls('tabs', customizePrefixCls);
+  const prefixCls = usePrefixCls('tabs-legacy', customizePrefixCls);
   const classString = classNames(prefixCls, className, {
     [`${prefixCls}-${type}`]: true,
     [`${prefixCls}-sm`]: size === 'small',

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import '../style';
 import { isEqual, uniqueId } from 'lodash';
-import CheckboxItem from '../../list/inner/ChckboxItem';
+import CheckboxItem from '../../list/inner/CheckboxItem';
 import { OptionProps } from '../../list/interfance';
 // import { uniqueId } from 'lodash';
 // import { uniqBy, uniqueId } from 'lodash';
@@ -14,10 +14,21 @@ import Tabs, { Tab } from '../../tabs';
 import List from '../../list';
 import Button from '../../button/Button';
 import Recent from '../Recent';
+import Docs from './List-pickerPage';
 
 export default {
   title: 'Upgraded/ListPicker',
   component: ListPicker,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=6379%3A64447',
+      allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 const groupIds = ['custom', 'virtual', 'tag', 'visible'];
 const groupNames = ['埋点', '虚拟', '标签', '属性'];

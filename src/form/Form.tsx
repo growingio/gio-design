@@ -24,7 +24,7 @@ export const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (
   }: Props,
   ref
 ) => {
-  const prefixCls = usePrefixCls('form-new', customizePrefixCls);
+  const prefixCls = usePrefixCls('form', customizePrefixCls);
   const cls = classNames(prefixCls, className, `${prefixCls}-${size || 'middle'}`, `${prefixCls}-${layout}`);
   // @TODO: wrap form with custom functions
   const [wrapForm] = useForm(form);

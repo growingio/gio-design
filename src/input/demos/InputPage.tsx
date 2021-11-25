@@ -20,6 +20,12 @@ export default function ListPage() {
           Figma
         </a>
       </p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>样式变化：边框，圆角，字体颜色，</li>
+        <li>APi变动：Input，InputNumber,Password,TextArea,InputButton,提供了4种input需求</li>
+        <li>改动较多，删除了非必须api</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: 'Input样例展示' })}</Subheading>
       <Canvas>
@@ -33,11 +39,11 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-input--input-number-demo" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '密码输入框' })}</Subheading>、
+      <Subheading>{formatMessage({ defaultMessage: '密码输入框' })}</Subheading>
       <Canvas>
         <Story id="upgraded-input--password-demo" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '文本区域' })}</Subheading>、
+      <Subheading>{formatMessage({ defaultMessage: '文本区域' })}</Subheading>
       <Canvas>
         <Story id="upgraded-input--textarea-demo" />
       </Canvas>
@@ -48,10 +54,6 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: 'default' })}</Subheading>
       <Canvas>
         <Story id="upgraded-input--input-button-default" />
-      </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '隐藏前缀' })}</Subheading>
-      <Canvas>
-        <Story id="upgraded-input--input-button-hide-prefix" />
       </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '自定义前后缀icon' })}</Subheading>
       <Canvas>

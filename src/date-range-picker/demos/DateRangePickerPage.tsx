@@ -8,8 +8,14 @@ export default function DatePickerPage() {
 
   return (
     <>
-      <Title>{formatMessage({ defaultMessage: 'DatePicker 日期选择器' })}</Title>
-      <p>{formatMessage({ defaultMessage: '当用户需要一个日期，可以在面板中进行选择。' })}</p>
+      <Title>{formatMessage({ defaultMessage: 'DateRangePicker 日期范围选择器' })}</Title>
+      <p>{formatMessage({ defaultMessage: '当用户需要一个日期区间，可以在面板中进行选择。' })}</p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>样式变化：无变动</li>
+        <li>APi变化：无变动</li>
+        <li>老版的datepicker拆出来的DateRangePicker</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>

@@ -190,22 +190,18 @@ Multiple.args = {
   style: { width: 320 },
   children: (
     <>
-      <Card.Meta image={<Avatar>L</Avatar>} title="卡片标题" description="卡片副标题" action={<Button>提交</Button>}>
-        这里是卡片的描述，可以有很多很多字。这里是卡片的描述，可以有很多很多字。这里是卡片的描述，可以有很多很多字。
-      </Card.Meta>
-      <Card.Meta>
-        <Table
-          pagination={false}
-          dataSource={[
-            { a: 1, b: 1 },
-            { a: 2, b: 2 },
-          ]}
-          columns={[
-            { dataIndex: 'a', title: 'A' },
-            { dataIndex: 'b', title: 'B' },
-          ]}
-        />
-      </Card.Meta>
+      <Card.Meta image={<Avatar>L</Avatar>} title="卡片标题" description="卡片副标题" action={<Button>提交</Button>} />
+      <Table
+        pagination={false}
+        dataSource={[
+          { a: 1, b: 1 },
+          { a: 2, b: 2 },
+        ]}
+        columns={[
+          { dataIndex: 'a', title: 'A' },
+          { dataIndex: 'b', title: 'B' },
+        ]}
+      />
     </>
   ),
 };

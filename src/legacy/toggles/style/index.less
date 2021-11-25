@@ -1,11 +1,11 @@
 @import '../../../stylesheet/index.less';
 
-@toggles-prefix-cls: ~'@{component-prefix}-toggles-legacy';
+@toggles-prefix-cls-legacy: ~'@{component-prefix}-toggles-legacy';
 
-.@{toggles-prefix-cls}-normal {
+.@{toggles-prefix-cls-legacy}-normal {
   line-height: 0px;
   vertical-align: middle;
-  .@{toggles-prefix-cls} {
+  .@{toggles-prefix-cls-legacy} {
     position: relative;
     display: inline-block;
     width: 40px;
@@ -18,7 +18,7 @@
     cursor: pointer;
     transition: all ease 0.4s;
 
-    .@{toggles-prefix-cls}-handle {
+    .@{toggles-prefix-cls-legacy}-handle {
       position: absolute;
       left: 0;
       width: 14px;
@@ -31,11 +31,11 @@
     }
   }
 
-  .@{toggles-prefix-cls}-checked {
+  .@{toggles-prefix-cls-legacy}-checked {
     background-color: @color-background-toggles-on-normal;
     border: @color-border-toggles-normal-checked;
     box-shadow: none;
-    .@{toggles-prefix-cls}-handle {
+    .@{toggles-prefix-cls-legacy}-handle {
       left: 100%;
       margin-left: -16px;
       background-color: @color-background-toggles-knob-on-normal;
@@ -43,7 +43,7 @@
     }
   }
 
-  .@{toggles-prefix-cls}-suffixContent {
+  .@{toggles-prefix-cls-legacy}-suffixContent {
     display: inline-block;
     height: 20px;
     margin-left: 8px;
@@ -55,28 +55,28 @@
     user-select: none;
   }
 }
-.@{toggles-prefix-cls}-disabled {
-  .@{toggles-prefix-cls} {
+.@{toggles-prefix-cls-legacy}-disabled {
+  .@{toggles-prefix-cls-legacy} {
     background-color: @color-background-toggles-off-disable;
     border: @color-border-toggles-disable-default;
     cursor: not-allowed;
 
-    .@{toggles-prefix-cls}-handle {
+    .@{toggles-prefix-cls-legacy}-handle {
       background-color: @color-background-toggles-knob-off-disable;
       box-shadow: @shadow-toggles-disable-knob;
     }
   }
 
-  .@{toggles-prefix-cls}-checked {
+  .@{toggles-prefix-cls-legacy}-checked {
     background-color: @color-background-toggles-on-disable;
     border: @color-border-toggles-disable-checked;
 
-    .@{toggles-prefix-cls}-handle {
+    .@{toggles-prefix-cls-legacy}-handle {
       background-color: @color-background-toggles-knob-on-disable;
     }
   }
 
-  .@{toggles-prefix-cls}-suffixContent {
+  .@{toggles-prefix-cls-legacy}-suffixContent {
     color: @color-text-toggles-disabled;
   }
 }

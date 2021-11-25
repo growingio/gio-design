@@ -14,7 +14,7 @@ const statusCodeMap = {
 };
 
 function Page({ className, style, statusCode, description, cta }: PageProps) {
-  const prefixCls = usePrefixCls('page');
+  const prefixCls = usePrefixCls('page-legacy');
   const cls = classnames(prefixCls, className);
   return (
     <div className={cls} style={style}>

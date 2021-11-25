@@ -23,7 +23,7 @@ const Progress: React.FC<ProgressProps> = (props: ProgressProps) => {
     style,
     showInfo = true,
   } = props;
-  const prefixCls = usePrefixCls('progress', customizePrefixCls);
+  const prefixCls = usePrefixCls('progress-legacy', customizePrefixCls);
 
   return (
     <div className={prefixCls}>

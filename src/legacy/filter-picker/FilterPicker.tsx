@@ -41,7 +41,7 @@ const FilterPicker = (props: FilterPickerProps) => {
     disabled,
   } = props;
 
-  const localeTextObject: typeof defaultLocaleTextObject = useLocale('FilterPicker');
+  const localeTextObject: typeof defaultLocaleTextObject = useLocale('FilterPicker-legacy');
   const textObject = useMemo(() => ({ ...defaultLocaleTextObject, ...localeTextObject }), [localeTextObject]);
 
   const [localVisible, setLocalVisible] = useState(false);

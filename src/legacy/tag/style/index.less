@@ -1,9 +1,9 @@
 @import '../../../stylesheet/index.less';
 
-@tag-prefix-cls: ~'@{component-prefix}-tag';
+@tag-prefix-cls-legacy: ~'@{component-prefix}-tag-legacy';
 @tag-padding: @size-spacing-xs;
 
-.@{tag-prefix-cls} {
+.@{tag-prefix-cls-legacy} {
   display: inline-block;
   padding-right: @tag-padding;
   padding-left: @tag-padding;
@@ -43,19 +43,19 @@
     &-success {
       color: @color-text-tag-sign-inline;
     }
-    &-success.@{tag-prefix-cls}-type-prorupt {
+    &-success.@{tag-prefix-cls-legacy}-type-prorupt {
       background-color: @color-background-tag-status-success;
     }
     &-warning {
       color: @color-text-tag-sign-processing;
     }
-    &-warning.@{tag-prefix-cls}-type-prorupt {
+    &-warning.@{tag-prefix-cls-legacy}-type-prorupt {
       background-color: @color-background-tag-status-warning;
     }
     &-error {
       color: @color-background-tag-status-error;
     }
-    &-error.@{tag-prefix-cls}-type-prorupt {
+    &-error.@{tag-prefix-cls-legacy}-type-prorupt {
       background-color: @color-background-tag-status-error;
     }
     &-draft {
@@ -102,7 +102,7 @@
       background-color: @color-background-tag-filter-light-click;
     }
 
-    &.@{tag-prefix-cls}-type-prorupt {
+    &.@{tag-prefix-cls-legacy}-type-prorupt {
       background-color: @color-background-tag-filter-dark-normal;
       &:hover {
         background-color: @color-background-tag-filter-dark-hover;

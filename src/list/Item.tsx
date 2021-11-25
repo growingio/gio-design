@@ -1,11 +1,11 @@
 import React from 'react';
 import { ItemProps } from './interfance';
 import BaseItem from './inner/baseItem';
-import CheckboxItem from './inner/ChckboxItem';
+import CheckboxItem from './inner/CheckboxItem';
 import CalcaderItem from './inner/CascaderItem';
 import WithRef from '../utils/withRef';
 
-const Item: React.ForwardRefRenderFunction<HTMLLIElement, ItemProps & { isMultiple?: boolean; isCascader?: boolean }> =
+export const Item = WithRef<HTMLLIElement, ItemProps & { isMultiple?: boolean; isCascader?: boolean }>(
   (props, ref?) => {
     const { label, value, disabled, isMultiple = false, isCascader, selectValue, ...rest } = props;
 
@@ -25,6 +25,7 @@ const Item: React.ForwardRefRenderFunction<HTMLLIElement, ItemProps & { isMultip
       );
     }
     return <BaseItem ref={ref} label={label} value={value} disabled={disabled} {...rest} />;
-  };
+  }
+);
 
-export default WithRef(Item);
+export default Item;

@@ -19,7 +19,7 @@ const selectStatus = (value?: string, values?: string | string[]) => {
   return undefined;
 };
 
-const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
+export const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
   isGIOList?: boolean;
 } = (props, ref?) => {
   const {

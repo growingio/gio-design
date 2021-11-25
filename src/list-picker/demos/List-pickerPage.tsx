@@ -8,12 +8,16 @@ export default function ListPage() {
 
   return (
     <>
-      <Title>{formatMessage({ defaultMessage: 'List' })}</Title>
+      <Title>{formatMessage({ defaultMessage: 'ListPicker' })}</Title>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>样式变化：圆角样式，新popover样式。</li>
+        <li>APi变动：children是popover弹出的内容，无冗余api</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
-        <Story id="components-list-picker--default" />
-        <Story id="components-list-picker--eventPicker" />
+        <Story id="upgraded-listpicker--default" />
       </Canvas>
 
       <ArgsTable of={ListPicker} />

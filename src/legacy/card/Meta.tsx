@@ -6,7 +6,7 @@ import { usePrefixCls } from '@gio-design/utils';
 import { CardMetaProps } from './interfaces';
 
 const Meta = ({ title, description, image = '', className, children, style }: CardMetaProps) => {
-  const prefixCls = usePrefixCls('card-meta');
+  const prefixCls = usePrefixCls('card-legacy-meta');
 
   const renderImage = () => {
     if (isString(image)) return <img src={image} className={`${prefixCls}-image`} alt="" />;

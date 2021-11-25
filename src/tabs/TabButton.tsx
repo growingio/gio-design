@@ -36,7 +36,7 @@ export interface TabButtonProps {
 const TabButton: React.FC<TabButtonProps> = (props) => {
   const { children, disabled, prefix, size = 'normal', value, active, onClick } = props;
 
-  const prefixCls = usePrefixCls('tabs-new-tablist-button');
+  const prefixCls = usePrefixCls('tabs-tablist-button');
   const buttonClassnames = classnames(`${prefixCls}`, `${prefixCls}-${size}`, {
     [`${prefixCls}-active`]: active,
     [`${prefixCls}-disabled`]: disabled,

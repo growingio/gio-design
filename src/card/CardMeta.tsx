@@ -11,7 +11,7 @@ const CardMeta: React.FC<CardMetaProps> = ({
   action,
   ...resetProps
 }: CardMetaProps) => {
-  const prefixCls = usePrefixCls('card-meta-new');
+  const prefixCls = usePrefixCls('card-meta');
 
   const renderImage = () => {
     if (isString(image)) return image ? <img src={image} className={`${prefixCls}-image`} alt="" /> : null;

@@ -7,7 +7,7 @@ import { ISubMenuProps } from './interface';
 import MenuTitle from './MenuTitle';
 import { MenuContext, SubMenuContext, getInlineIndent } from './MenuContext';
 
-const SubMenu = (props: ISubMenuProps) => {
+export const SubMenu = (props: ISubMenuProps) => {
   const { icon, title, children, expandIcon, ...restProps } = props;
   const { verticalIndent, inlineCollapsed } = useContext(MenuContext);
   const { inSubMenu, inIconSubMenu } = useContext(SubMenuContext);

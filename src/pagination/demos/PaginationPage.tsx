@@ -19,10 +19,15 @@ export default function ListPage() {
           Figma
         </a>
       </p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>样式变化：全新样式</li>
+        <li>Api变化：移除冗余api</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
       <Canvas>
-        <Story id="upgraded-input--demo" />
+        <Story id="upgraded-pagination--demo" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'default' })}</Subheading>

@@ -21,6 +21,7 @@ export default function ListPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
+        <li>样式变化：颜色调整</li>
         <li>去处了dot样式</li>
         <li>variant,status参数取消</li>
       </ul>

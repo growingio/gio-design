@@ -22,7 +22,7 @@ export const Alert: React.FC<AlertProps> = ({
   type = 'info',
   style,
 }: AlertProps) => {
-  const prefixCls = usePrefixCls('alert-new');
+  const prefixCls = usePrefixCls('alert');
   const [alertStatus, setAlertStatus] = useState(true);
 
   const getIcon = () => {

@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Testing select disable 1`] = `ReactWrapper {}`;
-
-exports[`Testing select should render null 1`] = `ReactWrapper {}`;
-
-exports[`onScroll 1`] = `[Function]`;
