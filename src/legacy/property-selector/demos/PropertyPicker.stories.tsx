@@ -3,9 +3,10 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import _ from 'lodash';
-import PropertyPicker from './PropertyPicker';
-import { PropertyPickerProps } from './interfaces';
-import './style/index.less';
+import PropertyPicker from '../PropertyPicker';
+import { PropertyPickerProps } from '../interfaces';
+import '../style/index';
+import insightDimensions from './insightDimensions';
 
 export default {
   title: 'Pro/PropertyPicker',
@@ -27,6 +28,7 @@ const Template: Story<PropertyPickerProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   disabledValues: ['b'],
+  dataSource: insightDimensions,
   // placeholder: '请选择...',
   onChange: (v: any) => {
     console.log('onchange', v);

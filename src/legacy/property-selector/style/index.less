@@ -4,17 +4,17 @@
 @import (reference) '../../base-picker/style/index.less';
 
 @property-picker-prefix-cls-legacy: ~'@{component-prefix}-property-picker-legacy';
-@property-selector-prefix-cls-legacy: ~'@{component-prefix}-property-selector';
+@property-selector-prefix-cls-legacy: ~'@{component-prefix}-property-selector-legacy';
 
 .@{property-picker-prefix-cls-legacy} {
-  &.@{picker-prefix-cls-legacy} {
+  &.@{base-picker-prefix-cls-legacy} {
     width: 366px;
   }
 
-  .@{picker-prefix-cls-legacy}__content {
+  .@{base-picker-prefix-cls-legacy}__content {
     max-height: 424px;
   }
-  .@{list-prefix-cls-legacy}__item {
+  .@{list-property-selector-prefix-cls-legacy}__item {
     transition: all 0.3s ease;
     &.selected,
     &.active {

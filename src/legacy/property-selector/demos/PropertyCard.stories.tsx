@@ -3,8 +3,9 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import _ from 'lodash';
-import PropertyCard from './PropertyCard';
-import { PropertyCardProps } from './interfaces';
+import PropertyCard from '../PropertyCard';
+import { PropertyCardProps } from '../interfaces';
+import '../style/index';
 
 export default {
   title: 'Pro/PropertyCard',
