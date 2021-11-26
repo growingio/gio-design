@@ -27,7 +27,7 @@ const Popover = (props: PopoverProps) => {
     strategy = 'absolute',
     triggerClassName,
     triggerStyle,
-    getContainer = () => document.body,
+    getContainer,
     distoryOnHide = true,
   } = props;
 
@@ -55,7 +55,7 @@ const Popover = (props: PopoverProps) => {
   const triggerChildEvent = useCallback(
     (name: string, e: any) => {
       if (supportRef(children)) {
-        const fireEvent = children?.props?.[name];
+        const fireEvent = (children as React.ReactElement)?.props?.[name];
         fireEvent?.(e);
       }
     },
@@ -120,19 +120,20 @@ const Popover = (props: PopoverProps) => {
 
   const isFocusToShow = useMemo(() => trigger.indexOf('focus') !== -1, [trigger]);
 
-  const onMouseEnter = useCallback(
-    (e: Event) => {
-      triggerChildEvent('onMouseEnter', e);
-      isHoverToShow && updateVisible(true);
-    },
-    [isHoverToShow, triggerChildEvent, updateVisible]
+  const onMouseEnter = useMemo(
+    () =>
+      debounce((e: Event) => {
+        triggerChildEvent('onMouseEnter', e);
+        isHoverToShow && updateVisible(true);
+      }, 100),
+    [triggerChildEvent, isHoverToShow, updateVisible]
   );
-
-  const onMouseLeave = useCallback(
-    (e: Event) => {
-      triggerChildEvent('onMouseLeave', e);
-      isHoverToShow && updateVisible(false);
-    },
+  const onMouseLeave = useMemo(
+    () =>
+      debounce((e: Event) => {
+        triggerChildEvent('onMouseLeave', e);
+        isHoverToShow && updateVisible(false);
+      }, 100),
     [triggerChildEvent, isHoverToShow, updateVisible]
   );
 
@@ -175,6 +176,21 @@ const Popover = (props: PopoverProps) => {
     [trigger, updateVisible]
   );
 
+  const divRoles = useMemo(() => {
+    const roles: any = {};
+    if (isClickToShow) {
+      roles.onClick = onClick;
+    }
+    if (isFocusToShow) {
+      roles.onFocus = onFocus;
+      roles.onBlur = onBlur;
+    }
+    if (isHoverToShow) {
+      roles.onMouseEnter = onMouseEnter;
+      roles.onMouseLeave = onMouseLeave;
+    }
+    return roles;
+  }, [isClickToShow, isFocusToShow, isHoverToShow, onClick, onFocus, onBlur, onMouseEnter, onMouseLeave]);
   const contentRender = content && (
     <div
       {...attributes.popper}
@@ -191,75 +207,29 @@ const Popover = (props: PopoverProps) => {
     </div>
   );
 
-  const triggerNode = useMemo(() => {
-    const child = React.Children.only(children);
+  // =============== refs =====================
+  let triggerNode = (
+    <div
+      className={classNames(`${prefixCls}__popcorn`, triggerClassName)}
+      style={triggerStyle}
+      ref={(instance) => setReferenceELement(instance)}
+      {...divRoles}
+    >
+      {children}
+    </div>
+  );
 
-    const { props: childProps } = child;
-
-    const handleEvents: {
-      onClick?: typeof onClick;
-      onFocus?: typeof onFocus;
-      onBlur?: typeof onBlur;
-      onMouseEnter?: typeof onMouseEnter;
-      onMouseLeave?: typeof onMouseLeave;
-    } = {};
-
-    if (isClickToShow) {
-      handleEvents.onClick = (event) => {
-        onClick(event);
-        childProps.onClick?.(event);
-      };
-    }
-    if (isFocusToShow) {
-      handleEvents.onFocus = (event) => {
-        onFocus(event);
-        childProps.onFocus?.(event);
-      };
-      handleEvents.onBlur = (event) => {
-        onBlur(event);
-        childProps.onBlur?.(event);
-      };
-    }
-    if (isHoverToShow) {
-      handleEvents.onMouseEnter = (event) => {
-        onMouseEnter(event);
-        childProps.onMouseEnter?.(event);
-      };
-      handleEvents.onMouseLeave = (event) => {
-        onMouseLeave(event);
-        childProps.onMouseLeave?.(event);
-      };
-    }
-
-    const cloneProps: Partial<any> & React.Attributes = {
-      ...handleEvents,
-      className: classNames(childProps.className, triggerClassName, `${prefixCls}__popcorn`),
-      style: { ...childProps.style, ...triggerStyle },
+  if (supportRef(children)) {
+    const cloneProps = {
+      ...divRoles,
+      className: classNames((children as React.ReactElement)?.props?.className),
+      style: { ...(children as React.ReactElement)?.props?.style, ...overlayInnerStyle },
     };
 
-    if (supportRef(child)) {
-      cloneProps.ref = composeRef(setReferenceELement, (child as any).ref);
-      return React.cloneElement(child, cloneProps);
-    }
-
-    const referenceNode = document.getElementsByClassName(`${prefixCls}__popcorn`)?.[0] as HTMLElement;
-    setReferenceELement(referenceNode);
-
-    return React.cloneElement(child, cloneProps);
-  }, [
-    children,
-    isClickToShow,
-    isFocusToShow,
-    isHoverToShow,
-    onBlur,
-    onClick,
-    onFocus,
-    onMouseEnter,
-    onMouseLeave,
-    prefixCls,
-    triggerClassName,
-    triggerStyle,
-  ]);
+    const child = React.Children.only(children);
+    cloneProps.ref = composeRef(setReferenceELement, (child as any).ref);
+    triggerNode = React.cloneElement(child as React.ReactElement, cloneProps);
+  }
 
   const renderContent = (
     <>
@@ -268,7 +238,6 @@ const Popover = (props: PopoverProps) => {
         : contentRender}
     </>
   );
-
   return (
     <>
       {triggerNode}

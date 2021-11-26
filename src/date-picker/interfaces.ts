@@ -12,7 +12,7 @@ export interface DatePickerProps
   /**
    * 自定义的触发器
    */
-  trigger?: React.ReactElement;
+  trigger?: React.ReactNode;
   /**
    * 日期展示格式
    * @see https://date-fns.org/v2.25.0/docs/fp/format

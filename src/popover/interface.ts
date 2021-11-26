@@ -48,7 +48,7 @@ export interface PopoverProps {
   /**
    被包裹的元素
    */
-  children: React.ReactElement;
+  children: React.ReactNode;
 
   placement?: Placement;
   trigger?: TriggerAction | TriggerAction[];
@@ -93,7 +93,6 @@ export interface PopoverProps {
   strategy?: 'fixed' | 'absolute';
   /**
    * 浮动显示的层
-   * @default () => document.body
    */
   getContainer?: (node: HTMLElement) => HTMLElement;
   /**
