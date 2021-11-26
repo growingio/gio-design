@@ -19,9 +19,7 @@ const selectStatus = (value?: string, values?: string | string[]) => {
   return undefined;
 };
 
-export const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
-  isGIOList?: boolean;
-} = (props, ref?) => {
+export const List = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const {
     id,
     title,
@@ -167,6 +165,5 @@ export const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
       </div>
     </ListContext.Provider>
   );
-};
-List.isGIOList = true;
-export default WithRef(List);
+});
+export default List;

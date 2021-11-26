@@ -9,7 +9,7 @@ export default function ListPage() {
   return (
     <>
       <Title>{formatMessage({ defaultMessage: 'List' })}</Title>
-      <p>以列表的形式展示同一类型的内容，可承载文字、头像、多选框、按钮等元素组合。</p>
+      <p>最基础的列表展示，可承载文字、列表、图片、段落，常用于后台数据展示页面。</p>
       <p>Upgrading Guide</p>
       <ul>
         <li>样式变化：list无外层样式,</li>
