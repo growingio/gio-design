@@ -32,7 +32,7 @@ const CascaderItem = WithRef<HTMLLIElement, CascaderItemProps & Omit<DOMAttribut
     const isSelected = initValue?.startsWith(generateString(value, selectParent));
     const { setOptions } = useContext(ListContext);
     const childSelectPrent = generateSelectParent(label, value, selectParent);
-    const childNodeOptions = convertChildrenToData(children);
+    const childNodeOptions = convertChildrenToData(children, {});
     const mergedOptions = useMemo(() => [...childNodeOptions, ...childrens], [childNodeOptions, childrens]);
 
     useEffect(() => {

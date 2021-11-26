@@ -38,6 +38,7 @@ export interface SelectProps extends Omit<ListProps, 'isMultiple' | 'onChange' |
   placement?: Placement;
   getContainer?: (node: HTMLElement) => HTMLElement;
   visible?: boolean;
+  hidePrefix?: boolean;
   onVisibleChange?: (visible: boolean) => void;
 }
 

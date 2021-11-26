@@ -9,7 +9,7 @@ import List, { OptionProps } from '../list';
 import useControlledState from '../utils/hooks/useControlledState';
 import './style/index';
 import { ListContext } from '../list/context';
-import { convertChildrenToData } from '../list/util';
+import { convertChildrenToData, convertOptions } from '../list/util';
 import useChacheOptions from '../list/hooks/useCacheOptions';
 
 const Select: React.FC<SelectProps> = (props) => {
@@ -35,6 +35,7 @@ const Select: React.FC<SelectProps> = (props) => {
     placement = 'bottomLeft',
     disabled,
     children,
+    hidePrefix = false,
     // list props
     ...rest
   } = props;
@@ -43,11 +44,16 @@ const Select: React.FC<SelectProps> = (props) => {
   const [value, setValue] = useControlledState(controlledValue, defaultValue);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
   const [title, setTitle] = useState<string | React.ReactNode | undefined>(undefined);
+  const [triggerPrefix, setTriggerPrefix] = useState<string | React.ReactNode>(undefined);
   const cache = useChacheOptions();
 
   // options
-  const nodesToOptions = useMemo<OptionProps[]>(() => convertChildrenToData(children), [children]);
-  const mergedOptions = useMemo(() => [...nodesToOptions, ...options], [nodesToOptions, options]);
+  const nodesToOptions = useMemo<OptionProps[]>(
+    () => convertChildrenToData(children, { prefix, suffix }),
+    [children, prefix, suffix]
+  );
+  const convertedOptions = useMemo(() => convertOptions(options, { prefix, suffix }), [options, prefix, suffix]);
+  const mergedOptions = useMemo(() => [...nodesToOptions, ...convertedOptions], [nodesToOptions, convertedOptions]);
   cache.setOptions(mergedOptions);
   const activeOption = useMemo(() => cache.getOptionByValue(value), [cache, value]);
 
@@ -55,6 +61,12 @@ const Select: React.FC<SelectProps> = (props) => {
   useEffect(() => {
     setTitle(activeOption?.label);
   }, [activeOption?.label]);
+
+  useEffect(() => {
+    if (!hidePrefix) {
+      setTriggerPrefix(activeOption?.prefix ?? triggerProps?.prefix);
+    }
+  }, [activeOption?.prefix, controlledValue, hidePrefix, triggerProps?.prefix]);
 
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);
@@ -91,8 +103,9 @@ const Select: React.FC<SelectProps> = (props) => {
         onInputChange={(val) => {
           isEmpty(val) && handleChange();
         }}
+        prefix={triggerPrefix}
         style={triggerStyle}
-        {...omit(triggerProps, 'style')}
+        {...omit(triggerProps, 'style', 'prefix')}
       />
     </div>
   );
