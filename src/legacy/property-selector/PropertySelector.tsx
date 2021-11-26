@@ -35,7 +35,7 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   const inputText = useMemo(() => currentValue?.name || currentValue?.label, [currentValue]);
   const inputValueRef = useRef<HTMLSpanElement | null>(null);
 
-  const clsPrifx = usePrefixCls('property-selector');
+  const clsPrifx = usePrefixCls('property-selector-legacy');
   const selectorCls = classNames(clsPrifx, className);
   function handleDropDownVisibleChange(show: boolean) {
     onDropdownVisibleChange?.(show);

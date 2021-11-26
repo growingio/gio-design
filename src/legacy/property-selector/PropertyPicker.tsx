@@ -99,7 +99,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
 
   const [currentValue, setCurrentValue] = useState<PropertyValue | undefined>(initialValue);
 
-  const prefixCls = usePrefixCls('property-picker');
+  const prefixCls = usePrefixCls('property-picker-legacy');
 
   const [detailVisible, setDetailVisible] = useState(false);
   const debounceSetDetailVisible = useDebounceFn((visible: boolean) => {

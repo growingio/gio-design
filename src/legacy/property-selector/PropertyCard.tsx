@@ -33,7 +33,7 @@ function PropertyCard(props: PropertyCardProps) {
     const res = await fetchData?.(nodeData);
     return res;
   }, [nodeData]);
-  const prefixCls = usePrefixCls('property-picker');
+  const prefixCls = usePrefixCls('property-picker-legacy');
   const propCardPrefixCls = `${prefixCls}-card`;
   const valueType = ValueTypeMap[data?.valueType ? data?.valueType?.toLowerCase() : ''] || null;
   return (
