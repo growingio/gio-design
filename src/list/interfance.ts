@@ -81,7 +81,7 @@ export interface OptionProps {
   disabledTooltip?: string;
   prefix?: string | React.ReactNode;
   suffix?: string | React.ReactNode;
-  wrapper?: (element: React.ReactElement) => React.ReactElement;
+  wrapper?: (element: React.ReactNode) => React.ReactElement;
 
   [key: string]: unknown;
 }
