@@ -48,12 +48,30 @@ const useCacheOptions = () => {
     }
     return getOptionByValue(val)?.label ?? '';
   };
+  const getOptionTreeByValue = (val?: string) => {
+    if (val === '' || typeof val === 'undefined') {
+      return '';
+    }
+    if (val?.includes('.')) {
+      return (val as any)?.split('.')?.reduceRight((prev: { key: string; value: string }, curr: string) => {
+        if (isEmpty(prev)) {
+          return { ...getOptionByValue?.(curr) };
+        }
+        return {
+          ...getOptionByValue?.(curr),
+          childrens: [{ ...prev }],
+        };
+      }, {});
+    }
+    return getOptionByValue(val);
+  };
   return {
     options: options.current,
     setOptions: updateOptions,
     getOptionByValue,
     getOptionsByValue,
     getLabelByValue,
+    getOptionTreeByValue,
   };
 };
 

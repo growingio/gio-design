@@ -90,7 +90,7 @@ export const List = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     }
     // cascader
     else if (isCascader(mergedModel)) {
-      onChange?.(val, cache.getOptionsByValue(val));
+      onChange?.(val);
     }
     // normal
     else if (value !== val) {
