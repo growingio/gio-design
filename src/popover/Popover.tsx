@@ -234,7 +234,7 @@ const Popover = (props: PopoverProps) => {
 
   const renderContent = (
     <>
-      <ResizeObserver onResize={() => { updateVisible(true) }}>
+      <ResizeObserver disabled={!visible} onResize={() => { update() }}>
         {typeof getContainer === 'function'
           ? ReactDOM.createPortal(contentRender, getContainer(referenceElement as HTMLDivElement))
           : contentRender}
