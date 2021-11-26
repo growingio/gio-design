@@ -13626,6 +13626,17 @@ rc-checkbox@^2.2.0:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.1"
 
+rc-collapse@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.nlark.com/rc-collapse/download/rc-collapse-3.1.2.tgz?cache=0&sync_timestamp=1630552186473&other_urls=https%3A%2F%2Fregistry.nlark.com%2Frc-collapse%2Fdownload%2Frc-collapse-3.1.2.tgz#76028a811b845d03d9460ccc409c7ea8ad09db14"
+  integrity sha1-dgKKgRuEXQPZRgzMQJx+qK0J2xQ=
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "2.x"
+    rc-motion "^2.3.4"
+    rc-util "^5.2.1"
+    shallowequal "^1.1.0"
+
 rc-dialog@^8.6.0:
   version "8.6.0"
   resolved "https://registry.nlark.com/rc-dialog/download/rc-dialog-8.6.0.tgz?cache=0&sync_timestamp=1627273146390&other_urls=https%3A%2F%2Fregistry.nlark.com%2Frc-dialog%2Fdownload%2Frc-dialog-8.6.0.tgz#3b228dac085de5eed8c6237f31162104687442e7"
@@ -13678,7 +13689,7 @@ rc-motion@^1.0.0:
     raf "^3.4.1"
     rc-util "^5.0.6"
 
-rc-motion@^2.0.0, rc-motion@^2.0.1, rc-motion@^2.2.0, rc-motion@^2.3.0:
+rc-motion@^2.0.0, rc-motion@^2.0.1, rc-motion@^2.2.0, rc-motion@^2.3.0, rc-motion@^2.3.4:
   version "2.4.4"
   resolved "https://registry.nlark.com/rc-motion/download/rc-motion-2.4.4.tgz#e995d5fa24fc93065c24f714857cf2677d655bb0"
   integrity sha1-6ZXV+iT8kwZcJPcUhXzyZ31lW7A=
