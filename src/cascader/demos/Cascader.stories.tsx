@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { PlusOutlined, FilterOutlined } from '@gio-design/icons';
+import { uniqueId } from 'lodash';
 import { CascaderProps } from '../interfance';
 import Cascader from '../Cascader';
 import '../style';
@@ -24,32 +25,42 @@ const defaultOptions = [
   {
     label: '苹果',
     value: 'apple',
+    id: uniqueId(),
+    description: uniqueId(),
     childrens: [
       {
         label: '切',
         value: 'cut',
+        id: uniqueId(),
+        description: uniqueId(),
         childrens: [
           {
             label: '坏了',
             value: 'bad',
+            id: uniqueId(),
+            description: uniqueId(),
           },
           {
             label: '没坏',
             value: 'good',
+            id: uniqueId(),
           },
         ],
       },
       {
         label: '掰开',
         value: 'bye',
+        id: uniqueId(),
         childrens: [
           {
             label: '坏了',
             value: 'bad',
+            id: uniqueId(),
           },
           {
             label: '没坏',
             value: 'good',
+            id: uniqueId(),
           },
         ],
       },
@@ -68,11 +79,22 @@ const demoTemplate: Story<CascaderProps> = (props) => (
   <>
     <h3>default传option</h3>
     <div className="demo-box">
-      <Cascader options={defaultOptions} triggerProps={{ placeholder: '请选择' }} size="normal" {...props} />
+      <Cascader
+        onChange={(val: any, opt: any) => console.log('val', val, opt)}
+        options={defaultOptions}
+        triggerProps={{ placeholder: '请选择' }}
+        size="normal"
+        {...props}
+      />
     </div>
     <h3>default传jsx</h3>
     <div className="demo-box">
-      <Cascader triggerProps={{ placeholder: '请选择', allowClear: false }} size="normal" {...props}>
+      <Cascader
+        onChange={(val: any, opt: any) => console.log('val', val, opt)}
+        triggerProps={{ placeholder: '请选择', allowClear: false }}
+        size="normal"
+        {...props}
+      >
         <CascaderItem label="苹果" value="apple">
           <List model="cascader">
             <CascaderItem label="切" value="cat">
@@ -89,6 +111,7 @@ const demoTemplate: Story<CascaderProps> = (props) => (
     <h3>自定义list,trigger宽度</h3>
     <div className="demo-box">
       <Cascader
+        onChange={(val: any, opt: any) => console.log('val', val, opt)}
         options={options}
         contentStyle={{ width: 240 }}
         triggerProps={{ placeholder: '请选择', allowClear: false, style: { width: 240, textAlign: 'left' } }}
@@ -99,6 +122,7 @@ const demoTemplate: Story<CascaderProps> = (props) => (
     <h3>hide trigger Prefix</h3>
     <div className="demo-box">
       <Cascader
+        onChange={(val: any, opt: any) => console.log('val', val, opt)}
         options={options}
         overlayStyle={{ width: 240 }}
         triggerProps={{ placeholder: '请选择', style: { width: 240, textAlign: 'left' } }}
@@ -109,6 +133,7 @@ const demoTemplate: Story<CascaderProps> = (props) => (
     <h3>prefix,suffix(如果设置prefix、suffix trigger在有值时会render Select的prefix、suffix)</h3>
     <div className="demo-box">
       <Cascader
+        onChange={(val: any, opt: any) => console.log('val', val, opt)}
         options={options}
         prefix={() => <PlusOutlined size="14px" />}
         suffix={() => <FilterOutlined size="14px" />}

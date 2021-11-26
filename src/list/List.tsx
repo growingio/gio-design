@@ -85,7 +85,7 @@ export const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
     }
     // cascader
     else if (isCascader(mergedModel)) {
-      onChange?.(val, cache.getOptionsByValue(val));
+      onChange?.(val);
     }
     // normal
     else if (value !== val) {
