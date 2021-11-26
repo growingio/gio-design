@@ -57,6 +57,7 @@
     "rc-menu": "^8.5.1",
     "rc-notification": "^4.5.4",
     "rc-picker": "^2.5.10",
+    "rc-resize-observer": "^1.0.1",
     "rc-tooltip": "^5.0.1",
     "rc-tree": "5.0.2",
     "rc-tree-select": "4.1.2",

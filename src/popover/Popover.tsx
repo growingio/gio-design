@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { debounce, isUndefined, isFunction } from 'lodash';
 import { usePopper } from 'react-popper';
 import ReactDOM from 'react-dom';
+import ResizeObserver from 'rc-resize-observer';
 import { PopoverProps, placements } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { composeRef, supportRef } from '../utils/composeRef';
@@ -233,9 +234,11 @@ const Popover = (props: PopoverProps) => {
 
   const renderContent = (
     <>
-      {typeof getContainer === 'function'
-        ? ReactDOM.createPortal(contentRender, getContainer(referenceElement as HTMLDivElement))
-        : contentRender}
+      <ResizeObserver onResize={() => { updateVisible(true) }}>
+        {typeof getContainer === 'function'
+          ? ReactDOM.createPortal(contentRender, getContainer(referenceElement as HTMLDivElement))
+          : contentRender}
+      </ResizeObserver>
     </>
   );
   return (
