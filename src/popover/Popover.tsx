@@ -77,10 +77,11 @@ const Popover = (props: PopoverProps) => {
   const updateVisible = useCallback(
     (resetVisible: boolean) => {
       let realVisible = isUndefined(enterVisible) ? resetVisible : enterVisible;
-      realVisible = disabled === true ? false : realVisible;
+      realVisible = disabled ? false : realVisible;
+
       if (!(overContentRef.current && enterable)) {
         setVisible(realVisible);
-        onVisibleChange?.(resetVisible);
+        onVisibleChange?.(realVisible);
       }
       if (realVisible) {
         update?.();
@@ -103,7 +104,7 @@ const Popover = (props: PopoverProps) => {
     if (!isUndefined(enterVisible)) {
       setVisible(enterVisible);
     }
-    if (disabled === true) {
+    if (disabled) {
       setVisible(false);
     }
   }, [enterVisible, disabled]);
@@ -234,7 +235,11 @@ const Popover = (props: PopoverProps) => {
 
   const renderContent = (
     <>
-      <ResizeObserver onResize={() => { updateVisible(true) }}>
+      <ResizeObserver
+        onResize={() => {
+          updateVisible(true);
+        }}
+      >
         {typeof getContainer === 'function'
           ? ReactDOM.createPortal(contentRender, getContainer(referenceElement as HTMLDivElement))
           : contentRender}
