@@ -35,6 +35,7 @@ export interface ListPickerProps extends Pick<ListProps, 'model' | 'className' |
   needConfim?: boolean;
   confimText?: string;
   onConfim?: (value: string | string[] | undefined, options?: OptionProps | OptionProps[]) => void;
+  hidePrefix?: boolean;
   placement?: Placement;
   overlayStyle?: React.CSSProperties;
   overlayClassName?: string;

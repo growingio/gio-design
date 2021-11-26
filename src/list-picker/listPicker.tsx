@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { isEqual, isNil } from 'lodash';
+import { isEqual, isNil, isString, omit } from 'lodash';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
 import Trigger from './Trigger';
@@ -11,9 +11,6 @@ import Button from '../button';
 import { ListContext } from '../list/context';
 import useCacheOptions from '../list/hooks/useCacheOptions';
 import { ITEM_KEY } from './Recent';
-// import CheckboxItem from '../list/inner/ChckboxItem';
-
-// const defaultEmpty = () => <Page type="noData" size="small" style={{ margin: '0 auto', padding: '40px 0px' }} />;
 
 const ListPicker: React.FC<ListPickerProps> = (props) => {
   const {
@@ -42,19 +39,25 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     style,
     model = 'single',
     needConfim = model === 'multiple',
+    hidePrefix = false,
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
   const [value, setValue] = useState(controlledValue || defaultValue);
   const [title, setTitle] = useState<string | React.ReactNode>(undefined);
-
-  const { options, setOptions, getLabelByValue, getOptionsByValue } = useCacheOptions();
+  const [triggerPrefix, setTriggerPrefix] = useState<string | React.ReactNode>(undefined);
+  const { options, setOptions, getLabelByValue, getOptionByValue, getOptionsByValue } = useCacheOptions();
 
   // title仅跟随controlledValue变动
   useEffect(() => {
     setTitle(getLabelByValue(controlledValue, separator));
-  }, [controlledValue, getLabelByValue, separator, options]);
-
+  }, [controlledValue, getLabelByValue, separator]);
+  // prefix
+  useEffect(() => {
+    if (model === 'single' && isString(controlledValue) && !hidePrefix) {
+      setTriggerPrefix(getOptionByValue(controlledValue)?.prefix ?? triggerProps?.prefix);
+    }
+  }, [controlledValue, getOptionByValue, hidePrefix, model, triggerProps?.prefix]);
   useEffect(() => {
     setValue(controlledValue);
   }, [controlledValue, setValue]);
@@ -93,7 +96,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   };
   // trigger
   const renderTrigger = (): React.ReactElement => {
-    const triggerProp = { size, placeholder, onClear, separator, ...triggerProps };
+    const triggerProp = { size, placeholder, onClear, separator, ...omit(triggerProps, 'prefix') };
     if (typeof propsRenderTrigger === 'function') {
       return propsRenderTrigger?.();
     }
@@ -101,6 +104,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
       <Trigger
         onClick={() => setVisible(!visible)}
         value={title}
+        prefix={triggerPrefix}
         {...triggerProp}
         disabled={disabled}
         size={size}

@@ -53,8 +53,8 @@ export const Cascader: React.FC<CascaderProps> = ({
     onVisibleChange?.(vis);
   };
 
-  const handleChange = (val?: string | string[]) => {
-    onChange?.(val);
+  const handleChange = (val?: string) => {
+    onChange?.(val, cache?.getOptionTreeByValue(val));
     setValue(val as string);
     setVisible(false);
   };

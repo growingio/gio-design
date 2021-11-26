@@ -5,7 +5,7 @@ import { OptionProps, ItemProps, ListProps } from './interfance';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { PREFIX } from './constants';
 import Item from './Item';
-import { convertChildrenToData, isCascader, isMultipe } from './util';
+import { convertChildrenToData, convertOptions, isCascader, isMultipe } from './util';
 import WithRef from '../utils/withRef';
 import './style';
 import { ListContext } from './context';
@@ -19,9 +19,7 @@ const selectStatus = (value?: string, values?: string | string[]) => {
   return undefined;
 };
 
-export const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
-  isGIOList?: boolean;
-} = (props, ref?) => {
+export const List = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const {
     id,
     title,
@@ -59,8 +57,15 @@ export const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
   );
 
   const cache = useCacheOptions();
-  const childNodeOptions = convertChildrenToData(children);
-  const mergedOptions = useMemo(() => [...childNodeOptions, ...initOptions], [childNodeOptions, initOptions]);
+  const childNodeOptions = useMemo(
+    () => convertChildrenToData(children, { prefix, suffix }),
+    [children, prefix, suffix]
+  );
+  const convertedOptions = useMemo(
+    () => convertOptions(initOptions, { prefix, suffix }),
+    [initOptions, prefix, suffix]
+  );
+  const mergedOptions = useMemo(() => [...childNodeOptions, ...convertedOptions], [childNodeOptions, convertedOptions]);
 
   const setOptions = useCallback(
     (options: OptionProps[]) => {
@@ -85,7 +90,7 @@ export const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
     }
     // cascader
     else if (isCascader(mergedModel)) {
-      onChange?.(val, cache.getOptionsByValue(val));
+      onChange?.(val);
     }
     // normal
     else if (value !== val) {
@@ -167,6 +172,5 @@ export const List: React.ForwardRefRenderFunction<HTMLDivElement, ListProps> & {
       </div>
     </ListContext.Provider>
   );
-};
-List.isGIOList = true;
-export default WithRef(List);
+});
+export default List;
