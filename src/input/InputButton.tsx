@@ -80,22 +80,20 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   const styles = maxWidth ? { maxWidth } : {};
 
   return (
-    <span className={wrapperCls}>
-      <Input
-        {...rest}
-        style={{ ...style, ...styles }}
-        className={inputCls}
-        type="button"
-        // when set Input type=button, the placeholder is invalid
-        value={value || placeholder}
-        onChange={onChange}
-        prefix={customizePrefix}
-        suffix={suffix}
-        ref={ref}
-        size={size}
-        disabled={disabled}
-      />
-    </span>
+    <Input
+      {...rest}
+      style={{ ...style, ...styles }}
+      className={classNames(inputCls, wrapperCls)}
+      type="button"
+      // when set Input type=button, the placeholder is invalid
+      value={value || placeholder}
+      onChange={onChange}
+      prefix={customizePrefix}
+      suffix={suffix}
+      ref={ref}
+      size={size}
+      disabled={disabled}
+    />
   );
 });
 

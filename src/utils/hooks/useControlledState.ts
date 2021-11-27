@@ -12,6 +12,9 @@ const useControlledState = <T>(
   defaultOutterState: T,
   callback?: (state: T | (() => T)) => void
 ): [T, (state: T | (() => T), force?: boolean) => void] => {
+  // if (outterState === undefined && defaultOutterState === undefined) {
+  //   throw new TypeError('Either "value" or "defaultValue" variable must be set. Now both are undefined');
+  // }
   const [innerState, setInnerState] = useState<T>(isUndefined(outterState) ? defaultOutterState : outterState);
 
   const setState = useRef((state: T | (() => T), force = false) => {

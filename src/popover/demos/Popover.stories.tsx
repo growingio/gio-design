@@ -99,11 +99,11 @@ const Template: Story<PopoverProps> = (args) => (
 );
 
 const content = (
-  <>
+  <div style={{ border: '1px solid black' }}>
     这是提示文案。
     <br />
     <button type="button">button</button>
-  </>
+  </div>
 );
 export const Placement = Template.bind({});
 Placement.args = {
@@ -247,8 +247,8 @@ Portal.args = {
 };
 
 const SupportRefTemplate: Story<PopoverProps> = (args) => (
-  <Popover {...args} strategy="fixed">
-    Only String
+  <Popover {...args} strategy="absolute">
+    <p style={{ border: '1px solid black' }}>Only string</p>
   </Popover>
 );
 
@@ -284,7 +284,7 @@ NotSupportRef.args = {
 
 const DisabledTemplate: Story<PopoverProps> = (args) => (
   <Popover {...args} strategy="fixed" disabled>
-    Disabled
+    <p style={{ border: '1px solid black' }}>Disabled</p>
   </Popover>
 );
 

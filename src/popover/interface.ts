@@ -111,6 +111,11 @@ export interface PopoverProps {
    *
    */
   triggerStyle?: React.CSSProperties;
+
+  /**
+   * tooltip 与 trigger 之间的距离
+   */
+  offset?: number[];
   triggerClassName?: string;
   distoryOnHide?: boolean;
 }

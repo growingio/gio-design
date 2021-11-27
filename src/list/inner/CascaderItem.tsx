@@ -86,6 +86,7 @@ const CascaderItem = WithRef<HTMLLIElement, CascaderItemProps & Omit<DOMAttribut
               content={content()}
               getContainer={(node) => node || document.body}
               distoryOnHide={false}
+              offset={[0, 12]}
             >
               {element}
             </Popover>

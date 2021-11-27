@@ -1,12 +1,13 @@
-import React, { useState, useMemo, useCallback, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useMemo, useCallback, useRef, useLayoutEffect } from 'react';
 import classNames from 'classnames';
-import { debounce, isUndefined, isFunction } from 'lodash';
+import { debounce, isFunction } from 'lodash';
 import { usePopper } from 'react-popper';
 import ReactDOM from 'react-dom';
 import ResizeObserver from 'rc-resize-observer';
 import { PopoverProps, placements } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { composeRef, supportRef } from '../utils/composeRef';
+import useControlledState from '../utils/hooks/useControlledState';
 
 const Popover = (props: PopoverProps) => {
   const {
@@ -16,7 +17,7 @@ const Popover = (props: PopoverProps) => {
     prefixCls: customPrefixCls,
     visible: enterVisible,
     onVisibleChange,
-    defaultVisible,
+    defaultVisible = false,
     allowArrow = false,
     disabled,
     enterable = true,
@@ -26,6 +27,7 @@ const Popover = (props: PopoverProps) => {
     overlayStyle,
     children,
     strategy = 'absolute',
+    offset = [0, 4],
     triggerClassName,
     triggerStyle,
     getContainer,
@@ -33,7 +35,7 @@ const Popover = (props: PopoverProps) => {
   } = props;
 
   const prefixCls = usePrefixCls('popover', customPrefixCls);
-  const [visible, setVisible] = useState(defaultVisible);
+  const [visible, setVisible] = useControlledState(enterVisible, defaultVisible);
   const overContentRef = useRef<boolean>(false);
   const [referenceElement, setReferenceELement] = useState<null | HTMLElement>(null);
   const [popperElement, setPopperElement] = useState<null | HTMLElement>(null);
@@ -68,17 +70,23 @@ const Popover = (props: PopoverProps) => {
     [prefixCls, overlayInnerClassName]
   );
 
+  const defaultModifiers = React.useMemo(
+    () => [
+      { name: 'arrow', options: { element: arrowElement.current } },
+      { name: 'offset', options: { offset } },
+    ],
+    [offset]
+  );
+
   const { styles, attributes, ...popperProps } = usePopper(referenceElement, popperElement, {
     placement: placements[placement],
-    modifiers: [{ name: 'arrow', options: { element: arrowElement.current } }],
+    modifiers: defaultModifiers,
     strategy,
   });
   const { update } = popperProps;
   const updateVisible = useCallback(
     (resetVisible: boolean) => {
-      let realVisible = isUndefined(enterVisible) ? resetVisible : enterVisible;
-      realVisible = disabled ? false : realVisible;
-
+      const realVisible = disabled ? false : resetVisible;
       if (!(overContentRef.current && enterable)) {
         setVisible(realVisible);
         onVisibleChange?.(realVisible);
@@ -87,7 +95,7 @@ const Popover = (props: PopoverProps) => {
         update?.();
       }
     },
-    [onVisibleChange, enterVisible, enterable, update, disabled]
+    [disabled, enterable, setVisible, onVisibleChange, update]
   );
   const onDocumentClick = useCallback(
     (event: MouseEvent) => {
@@ -100,14 +108,6 @@ const Popover = (props: PopoverProps) => {
     },
     [popperElement, referenceElement, updateVisible]
   );
-  useEffect(() => {
-    if (!isUndefined(enterVisible)) {
-      setVisible(enterVisible);
-    }
-    if (disabled) {
-      setVisible(false);
-    }
-  }, [enterVisible, disabled]);
 
   useLayoutEffect(() => {
     document.addEventListener('mousedown', onDocumentClick);
@@ -235,7 +235,12 @@ const Popover = (props: PopoverProps) => {
 
   const renderContent = (
     <>
-<ResizeObserver disabled={!visible} onResize={() => { update?.() }}>
+      <ResizeObserver
+        disabled={!visible}
+        onResize={() => {
+          update?.();
+        }}
+      >
         {typeof getContainer === 'function'
           ? ReactDOM.createPortal(contentRender, getContainer(referenceElement as HTMLDivElement))
           : contentRender}
