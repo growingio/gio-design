@@ -93,7 +93,9 @@ const Select: React.FC<SelectProps> = (props) => {
       className={classNames(`${prefixCls}--trigger`, className)}
       style={style}
       aria-hidden="true"
-      onClick={() => setVisible(!visible)}
+      onClick={() => {
+        setVisible(!visible);
+      }}
     >
       <Trigger
         value={title}
