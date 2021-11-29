@@ -92,11 +92,12 @@ export const Selectable = () => {
     onChange: (selectedKeys) => {
       // eslint-disable-next-line no-console
       console.log(`🚀 selectedKeys: `, selectedKeys);
+      action(`rowSelection onChange`)(selectedKeys);
     },
     columnWidth: 60,
     fixed: false,
     // selectedRowKeys: [], // Controlled
-    getCheckboxProps: (record) => ({ disabled: record.id === '1' }),
+    getCheckboxProps: (record) => ({ disabled: record.age % 2 === 0 }),
   };
   return (
     <Table<DataSourceType>
