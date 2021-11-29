@@ -3,7 +3,7 @@
 @import '../../stylesheet/variables/index.less';
 
 @date-range-picker-prefix-cls: ~'@{component-prefix}-date-range-picker';
-@picker-prefix-cls: ~'@{component-prefix}-picker';
+@static-date-range-picker-prefix-cls: ~'@{component-prefix}-picker';
 
 .@{date-range-picker-prefix-cls} {
   display: flex;
@@ -16,13 +16,13 @@
   }
 
   &__left {
-    .@{picker-prefix-cls}-body {
+    .@{static-date-range-picker-prefix-cls}-body {
       border-right: 1px solid @palette-gray-3;
     }
   }
 }
 
-.@{picker-prefix-cls} {
+.@{static-date-range-picker-prefix-cls} {
   &-cell {
     &-in-view&-range-start,
     &-in-view&-range-end {
