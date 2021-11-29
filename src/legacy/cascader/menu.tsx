@@ -31,11 +31,11 @@ const InnerMenu: React.FC<Props> = (props) => {
   const [offset, setOffset] = useState([0, 0]);
 
   const onTrigger = (event: React.MouseEvent | React.KeyboardEvent, nodeData: NodeData) => {
-    const menu = event.currentTarget.closest('.cascader-menu');
+    const menu = event.currentTarget.closest('.cascader-legacy-menu');
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const { width, paddingLeft, paddingTop } = getComputedStyle(menu!);
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const { scrollTop, scrollLeft } = menu!.querySelector('.cascader-menu-body')!;
+    const { scrollTop, scrollLeft } = menu!.querySelector('.cascader-legacy-menu-body')!;
     const { offsetLeft = 0, offsetTop = 0 } = (event.currentTarget || {}) as HTMLElement;
     setOffset([toInt(width) + offsetLeft - toInt(paddingLeft) - scrollLeft, offsetTop - toInt(paddingTop) - scrollTop]);
     setTriggerData(nodeData);
@@ -163,7 +163,7 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   }, [autoInit, inited, value, dataSource, keyMapping.label, keyMapping.value]);
 
   return (
-    <div ref={wrapRef} className={classNames('cascader-menu-outer', className)} style={style}>
+    <div ref={wrapRef} className={classNames('cascader-legacy-menu-outer', className)} style={style}>
       <InnerMenu
         {...others}
         open={canOpen}

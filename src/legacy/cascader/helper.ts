@@ -9,7 +9,10 @@ import { KeyMapping, NodeData, Value } from './interface';
 /**
  * 以分割符组合 前缀、后缀
  */
-export const withPrefix = (prefix?: string) => (value?: string, sep = '-') => [prefix, value].filter((s) => !!s).join(sep);
+export const withPrefix =
+  (prefix?: string) =>
+  (value?: string, sep = '-') =>
+    [prefix, value].filter((s) => !!s).join(sep);
 
 /**
  * 以关键字生成正则运算表达式
@@ -78,17 +81,17 @@ export const dataKeyMapping = (data: NodeData, keyMapping = {} as KeyMapping) =>
 const keyboardNavHandler = (e: KeyboardEvent) => {
   const { target: _target, key } = e;
   const targetEl = _target as HTMLDivElement;
-  const cls = 'cascader-menu-item-inner';
+  const cls = 'cascader-legacy-menu-item-inner';
   const isMenuItem = targetEl.classList.contains(cls);
   if (!isMenuItem) {
     return;
   }
   const silbing =
-    targetEl.closest('.cascader-menu-outer')?.querySelectorAll<HTMLElement>(`.${cls}`) || ([] as HTMLElement[]);
+    targetEl.closest('.cascader-legacy-menu-outer')?.querySelectorAll<HTMLElement>(`.${cls}`) || ([] as HTMLElement[]);
   const total = silbing.length;
   const idx = findIndex(silbing, (o) => o === targetEl);
 
-  let nextEl = (null as unknown) as HTMLElement;
+  let nextEl = null as unknown as HTMLElement;
   switch (key) {
     case 'ArrowDown':
       nextEl = silbing[(idx + 1) % total];
@@ -97,7 +100,7 @@ const keyboardNavHandler = (e: KeyboardEvent) => {
       nextEl = silbing[(total + idx - 1) % total];
       break;
     case 'ArrowLeft': {
-      const nextMenu = targetEl.closest('.cascader-menu')?.previousSibling as HTMLDivElement;
+      const nextMenu = targetEl.closest('.cascader-legacy-menu')?.previousSibling as HTMLDivElement;
       nextEl = nextMenu?.querySelector(`[aria-expanded="true"] .${cls}`) as HTMLDivElement;
       break;
     }
@@ -158,16 +161,21 @@ export const getParentsByValue = (
   return [];
 };
 
-export const getTitleBySelected = (keyMapping:KeyMapping,separator:string,list?:NodeData[], value?:string|number ):string | undefined => {
+export const getTitleBySelected = (
+  keyMapping: KeyMapping,
+  separator: string,
+  list?: NodeData[],
+  value?: string | number
+): string | undefined => {
   if (isUndefined(value) || isUndefined(list)) {
     return undefined;
   }
-  const { label:labelKey = 'label', value:valueKey = 'value' } = keyMapping;
+  const { label: labelKey = 'label', value: valueKey = 'value' } = keyMapping;
   const { length } = list;
   let title;
-  for(let i = 0; i < length; i+=1){
+  for (let i = 0; i < length; i += 1) {
     const item = list[i];
-    if(item[valueKey] === value){
+    if (item[valueKey] === value) {
       title = item[labelKey] as string;
       break;
     }
@@ -175,7 +183,7 @@ export const getTitleBySelected = (keyMapping:KeyMapping,separator:string,list?:
     if (Array.isArray(item.children)) {
       children = find(item.children, (childval) => childval[valueKey] === value);
     }
-    if(children){
+    if (children) {
       title = `${item[labelKey]}${separator}${children[labelKey]}`;
       break;
     }

@@ -45,7 +45,7 @@ const SingleMenu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   } as React.CSSProperties);
   const keyword = trim(originKeyword);
   const wrapRef = useMergeRef(ref);
-  const withWrapperCls = withPrefix('cascader-menu');
+  const withWrapperCls = withPrefix('cascader-legacy-menu');
 
   const locale = useLocale('Cascader');
   const { noResult }: { noResult: string } = {
@@ -71,7 +71,7 @@ const SingleMenu = React.forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
 
   useEffect(() => {
     if (autoFocus && wrapRef.current) {
-      const firstItem = wrapRef.current.querySelector('.cascader-menu-item-inner') as HTMLElement;
+      const firstItem = wrapRef.current.querySelector('.cascader-legacy-menu-item-inner') as HTMLElement;
       setTimeout(() => {
         firstItem?.focus();
       }, 50);

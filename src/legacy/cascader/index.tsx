@@ -2,14 +2,13 @@ import { DownFilled } from '@gio-design/icons';
 import React, { useEffect, useRef, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
-import { usePrefixCls, useLocale } from '@gio-design/utils';
+import { usePrefixCls, useLocale, useControlledState } from '@gio-design/utils';
 import { Props, CascaderInstance } from './interface';
 import { dataKeyMapping, getTitleBySelected, mergeKeyMapping, useDynamicData, withPrefix } from './helper';
 import Dropdown from '../dropdown';
 import Input from '../input';
 import Menu, { Props as MenuProps } from './menu';
 import SearchBar from './search-bar';
-import useControlledState from '../../utils/hooks/useControlledState';
 import defaultLocale from './locales/zh-CN';
 
 export type CascaderProps = Props;
@@ -67,7 +66,7 @@ export const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Pro
   const [keyword, setKeyword] = useDynamicData(originKeyword);
   const [canOpen, setCanOpen] = useDynamicData(open);
   const [dropdownVisible, setDropdownVisible] = useDynamicData(!!visible);
-  const wrapperCls = usePrefixCls('cascader', prefixCls);
+  const wrapperCls = usePrefixCls('cascader-legacy', prefixCls);
   const withWrapperCls = withPrefix(wrapperCls);
   const onSelect: Props['onSelect'] = (data, parents = [], event) => {
     const { label: mapLabel, value: mapValue } = dataKeyMapping(data, keyMapping);
@@ -160,7 +159,7 @@ export const Cascader = React.forwardRef<CascaderInstance, PropsWithChildren<Pro
       destroyTooltipOnHide={destroyTooltipOnHide}
       overlay={
         // eslint-disable-next-line react/jsx-wrap-multilines
-        <div ref={overlayRef} className={classNames(className, withWrapperCls('panel'), 'cascader-menu-list')}>
+        <div ref={overlayRef} className={classNames(className, withWrapperCls('panel'), 'cascader-legacy-menu-list')}>
           <Menu
             {...others}
             onClick={onClick}

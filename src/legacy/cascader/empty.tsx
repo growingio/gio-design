@@ -17,9 +17,9 @@ const Empty: React.FC<Props> = (props: Props) => {
   const { tip = noData } = props;
 
   return (
-    <div className="cascader-menu-empty">
+    <div className="cascader-legacy-menu-empty">
       <IconEmpty size="60" className="icon-empty" />
-      <p className="cascader-menu-empty-tip">{tip}</p>
+      <p className="cascader-legacy-menu-empty-tip">{tip}</p>
     </div>
   );
 };

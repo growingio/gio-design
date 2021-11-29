@@ -1,9 +1,9 @@
 @import '../../../stylesheet/index.less';
 
-.cascader-menu-list {
+.cascader-legacy-menu-list {
   position: relative;
 
-  .cascader-menu-empty {
+  .cascader-legacy-menu-empty {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,7 +24,7 @@
   }
 }
 
-.cascader-menu {
+.cascader-legacy-menu {
   position: absolute;
   display: inline-block;
   box-sizing: border-box;
@@ -113,10 +113,10 @@
 
     &[data-checked='true'],
     &[data-child-checked='true'] {
-      > .cascader-menu-item-inner {
+      > .cascader-legacy-menu-item-inner {
         background: #f7f8fc;
 
-        .cascader-menu-item-content {
+        .cascader-legacy-menu-item-content {
           cursor: default;
         }
       }
@@ -137,7 +137,7 @@
     }
 
     &[aria-expanded='true'] {
-      > .cascader-menu-item-inner {
+      > .cascader-legacy-menu-item-inner {
         color: #1248e9;
         background-color: #ebedf5;
         border-radius: 4px;
