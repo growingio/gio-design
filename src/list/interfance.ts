@@ -58,6 +58,10 @@ export interface ListProps {
   /**
    *
    */
+  onClick?: (value: string) => void;
+  /**
+   *
+   */
   onChange?: (value?: string | string[], options?: OptionProps | OptionProps[]) => void;
   /**
    * 仅支持options 形式。自定义 item render 自定义render时会劫持onClick方法提供给List来使用
@@ -82,7 +86,7 @@ export interface OptionProps {
   prefix?: string | React.ReactNode;
   suffix?: string | React.ReactNode;
   wrapper?: (element: React.ReactNode) => React.ReactElement;
-
+  onClick?: (v: string) => void;
   [key: string]: unknown;
 }
 

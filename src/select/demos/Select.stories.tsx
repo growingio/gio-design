@@ -28,21 +28,23 @@ const demoTemplate: Story<SelectProps> = (props) => {
         <Select
           options={options}
           value="1"
-          triggerProps={{ placeholder: '请选择' }}
+          placeholder="请选择"
           size="normal"
           {...props}
           onVisibleChange={() => action('visibleChange')}
         />
       </div>
       <div className="demo-box">
-        <Select disabled options={options} triggerProps={{ placeholder: '请选择' }} size="normal" {...props} />
+        <Select disabled options={options} placeholder="请选择" size="normal" {...props} />
       </div>
       <h3>自定义list,trigger宽度</h3>
       <div className="demo-box">
         <Select
           options={options}
-          overlayStyle={{ width: 240 }}
-          triggerProps={{ placeholder: '请选择', style: { width: 240, textAlign: 'left' }, allowClear: false }}
+          contentStyle={{ width: 240 }}
+          placeholder="请选择"
+          allowClear={false}
+          // triggerProps={{ placeholder: '请选择', style: { width: 240, textAlign: 'left' }, allowClear: false }}
           size="small"
           {...props}
         />
@@ -51,12 +53,9 @@ const demoTemplate: Story<SelectProps> = (props) => {
       <div className="demo-box">
         <Select
           options={options}
-          overlayStyle={{ width: 240 }}
-          triggerProps={{
-            placeholder: '请选择',
-            style: { width: 240, textAlign: 'left' },
-            allowClear: false,
-          }}
+          contentStyle={{ width: 240 }}
+          placeholder="请选择"
+          allowClear={false}
           size="small"
           {...props}
         />
@@ -67,32 +66,20 @@ const demoTemplate: Story<SelectProps> = (props) => {
           options={options}
           prefix={() => <PlusOutlined size="14px" />}
           suffix={() => <FilterOutlined size="14px" />}
-          overlayStyle={{ width: 240 }}
-          triggerProps={{
-            placeholder: '请选择',
-            style: { width: 240, textAlign: 'left' },
-          }}
+          contentStyle={{ width: 240 }}
+          placeholder="请选择"
+          allowClear={false}
           size="small"
           {...props}
         />
       </div>
       <h3>JSX--prefix</h3>
       <div className="demo-box">
-        <Select
-          triggerProps={{
-            placeholder: '请选择',
-            style: { width: 240, textAlign: 'left' },
-          }}
-        >
+        <Select style={{ width: '240px' }} placeholder="请选择" allowClear={false}>
           <Option label="JSX1" value="JSX1" />
           <Option label="JSX2" value="JSX2" />
         </Select>
-        <Select
-          triggerProps={{
-            placeholder: '请选择',
-            style: { width: 240, textAlign: 'left' },
-          }}
-        >
+        <Select style={{ width: '240px' }} placeholder="请选择" allowClear={false}>
           <Option value="JSX1" prefix="123">
             JSX1
           </Option>
@@ -115,7 +102,8 @@ export const Default = () => {
     <Select
       options={options}
       value="1"
-      triggerProps={{ placeholder: '请选择' }}
+      contentStyle={{ width: '300px' }}
+      placeholder="请选择"
       size="normal"
       onVisibleChange={() => action('visibleChange')}
     />

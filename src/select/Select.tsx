@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { isEmpty, isObject, omit } from 'lodash';
+import { isEmpty } from 'lodash';
 import { SelectProps } from './interface';
 import Popover from '../popover';
 import Trigger from './Trigger';
@@ -19,7 +19,6 @@ const Select: React.FC<SelectProps> = (props) => {
     defaultValue = undefined,
     options = [],
     size,
-    triggerProps,
     visible: controlledVisible,
     onVisibleChange,
     getContainer,
@@ -35,7 +34,16 @@ const Select: React.FC<SelectProps> = (props) => {
     placement = 'bottomLeft',
     disabled,
     children,
+    placeholder,
+    triggerPrefix,
+    triggerSuffix,
+    maxWidth,
     hidePrefix = false,
+    title: controlledTitle,
+    allowClear,
+    onClear,
+    renderTrigger: propsRenderTrigger,
+    autoWidth = true,
     // list props
     ...rest
   } = props;
@@ -44,9 +52,9 @@ const Select: React.FC<SelectProps> = (props) => {
   const [value, setValue] = useControlledState(controlledValue, defaultValue);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
   const [title, setTitle] = useState<string | React.ReactNode | undefined>(undefined);
-  const [triggerPrefix, setTriggerPrefix] = useState<string | React.ReactNode>(undefined);
+  const [titlePrefix, setTitlePrefix] = useState<string | React.ReactNode>(undefined);
   const cache = useChacheOptions();
-
+  const triggerRef = useRef<HTMLInputElement | undefined>(undefined);
   // options
   const nodesToOptions = useMemo<OptionProps[]>(
     () => convertChildrenToData(children, { prefix, suffix }),
@@ -64,9 +72,9 @@ const Select: React.FC<SelectProps> = (props) => {
 
   useEffect(() => {
     if (!hidePrefix) {
-      setTriggerPrefix(activeOption?.prefix ?? triggerProps?.prefix);
+      setTitlePrefix(activeOption?.prefix ?? triggerPrefix);
     }
-  }, [activeOption?.prefix, controlledValue, hidePrefix, triggerProps?.prefix]);
+  }, [activeOption?.prefix, controlledValue, hidePrefix, triggerPrefix]);
 
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);
@@ -80,42 +88,43 @@ const Select: React.FC<SelectProps> = (props) => {
   };
 
   const handleOnClear = (e: React.MouseEvent<Element, MouseEvent>) => {
+    onClear?.();
     handVisibleChange(false);
     e.stopPropagation();
   };
 
-  const triggerStyle: React.CSSProperties = isObject(triggerProps?.style)
-    ? { width: '100%', ...triggerProps?.style }
-    : { width: '100%' };
-
-  const renderTrigger = () => (
-    <div
-      className={classNames(`${prefixCls}--trigger`, className)}
-      style={style}
-      aria-hidden="true"
-      onClick={() => {
-        setVisible(!visible);
-      }}
-    >
+  const renderTrigger = () => {
+    if (typeof propsRenderTrigger === 'function') {
+      return propsRenderTrigger?.();
+    }
+    return (
       <Trigger
-        value={title}
         size={size}
+        value={controlledTitle ?? title}
         disabled={disabled}
-        onClear={handleOnClear}
+        placeholder={placeholder}
         onInputChange={(val) => {
           isEmpty(val) && handleChange();
         }}
-        prefix={triggerPrefix}
-        style={triggerStyle}
-        {...omit(triggerProps, 'style', 'prefix')}
+        ref={triggerRef as React.RefObject<HTMLInputElement>}
+        style={style}
+        className={className}
+        prefix={titlePrefix}
+        suffix={triggerSuffix}
+        allowClear={allowClear}
+        onClear={handleOnClear}
+        maxWidth={maxWidth}
+        onClick={() => !disabled && setVisible(!visible)}
       />
-    </div>
-  );
-
+    );
+  };
   const renderOverlay = () => (
     <List
       className={classNames(`${defaultPrefixCls}--list`, contentClassName)}
-      style={contentStyle}
+      style={{
+        width: autoWidth ? Math.max(120, triggerRef?.current?.clientWidth || 0) : undefined,
+        ...contentStyle,
+      }}
       prefix={prefix}
       suffix={suffix}
       options={mergedOptions}
@@ -133,8 +142,8 @@ const Select: React.FC<SelectProps> = (props) => {
         visible={visible}
         onVisibleChange={handVisibleChange}
         getContainer={getContainer}
-        overlayClassName={classNames(`${defaultPrefixCls}--content`, overlayClassName)}
         overlayStyle={overlayStyle}
+        overlayClassName={classNames(`${defaultPrefixCls}--content`, overlayClassName)}
         placement={placement}
       >
         {renderTrigger()}

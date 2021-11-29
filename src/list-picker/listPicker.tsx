@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { isEqual, isNil, isString, omit } from 'lodash';
+import { isEqual, isNil, isString } from 'lodash';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
 import Trigger from './Trigger';
@@ -24,40 +24,47 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     visible: controlledVisible,
     onVisibleChange,
     onChange,
-    triggerProps,
     renderTrigger: propsRenderTrigger,
     prefixCls = 'list-picker-',
     getContainer,
     placement = 'bottomLeft',
-    overlayStyle,
-    overlayClassName,
     children,
     onConfim,
     confimText = '确定',
     separator = '',
-    className,
     style,
+    overlayStyle,
+    contentStyle,
+    className,
+    overlayClassName,
+    contentClassName,
     model = 'single',
     needConfim = model === 'multiple',
+
+    allowClear,
+    title: controlledTitle,
+    triggerPrefix,
+    triggerSuffix,
     hidePrefix = false,
+    maxWidth,
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
   const [value, setValue] = useState(controlledValue || defaultValue);
-  const [title, setTitle] = useState<string | React.ReactNode>(undefined);
-  const [triggerPrefix, setTriggerPrefix] = useState<string | React.ReactNode>(undefined);
+  const [title, setTitle] = useState<string | React.ReactNode>(controlledTitle);
+  const [titlePrefix, setTitlePrefix] = useState<string | React.ReactNode>(undefined);
   const { options, setOptions, getLabelByValue, getOptionByValue, getOptionsByValue } = useCacheOptions();
 
   // title仅跟随controlledValue变动
   useEffect(() => {
     setTitle(getLabelByValue(controlledValue, separator));
-  }, [controlledValue, getLabelByValue, separator]);
+  }, [controlledValue, getLabelByValue, separator, setTitle]);
   // prefix
   useEffect(() => {
     if (model === 'single' && isString(controlledValue) && !hidePrefix) {
-      setTriggerPrefix(getOptionByValue(controlledValue)?.prefix ?? triggerProps?.prefix);
+      setTitlePrefix(triggerPrefix ?? getOptionByValue(controlledValue)?.prefix);
     }
-  }, [controlledValue, getOptionByValue, hidePrefix, model, triggerProps?.prefix]);
+  }, [controlledValue, getOptionByValue, hidePrefix, model, triggerPrefix]);
   useEffect(() => {
     setValue(controlledValue);
   }, [controlledValue, setValue]);
@@ -96,27 +103,30 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   };
   // trigger
   const renderTrigger = (): React.ReactElement => {
-    const triggerProp = { size, placeholder, onClear, separator, ...omit(triggerProps, 'prefix') };
     if (typeof propsRenderTrigger === 'function') {
       return propsRenderTrigger?.();
     }
     return (
       <Trigger
-        onClick={() => setVisible(!visible)}
-        value={title}
-        prefix={triggerPrefix}
-        {...triggerProp}
-        disabled={disabled}
         size={size}
+        value={controlledTitle ?? title}
+        style={style}
+        className={className}
+        maxWidth={maxWidth}
+        disabled={disabled}
         placeholder={placeholder}
+        suffix={triggerSuffix}
+        prefix={titlePrefix}
+        allowClear={allowClear}
         onClear={clearInput}
         separator={separator}
+        onClick={() => !disabled && setVisible(!visible)}
       />
     );
   };
   // render
   const renderOverlay = () => (
-    <div className={classNames(defaultPrefix, className)} style={style}>
+    <div className={classNames(defaultPrefix, contentClassName)} style={contentStyle}>
       {/* {model === 'multiple' && selectAll && renderSelectAll()} */}
       {children}
       {model === 'multiple' && needConfim && (

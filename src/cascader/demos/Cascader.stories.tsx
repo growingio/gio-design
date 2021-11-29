@@ -82,7 +82,7 @@ const demoTemplate: Story<CascaderProps> = (props) => (
       <Cascader
         onChange={(val: any, opt: any) => console.log('val', val, opt)}
         options={defaultOptions}
-        triggerProps={{ placeholder: '请选择' }}
+        placeholder="请选择"
         size="normal"
         {...props}
       />
@@ -91,7 +91,8 @@ const demoTemplate: Story<CascaderProps> = (props) => (
     <div className="demo-box">
       <Cascader
         onChange={(val: any, opt: any) => console.log('val', val, opt)}
-        triggerProps={{ placeholder: '请选择', allowClear: false }}
+        placeholder="请选择"
+        allowClear={false}
         size="normal"
         {...props}
       >
@@ -114,7 +115,9 @@ const demoTemplate: Story<CascaderProps> = (props) => (
         onChange={(val: any, opt: any) => console.log('val', val, opt)}
         options={options}
         contentStyle={{ width: 240 }}
-        triggerProps={{ placeholder: '请选择', allowClear: false, style: { width: 240, textAlign: 'left' } }}
+        style={{ width: '100%', textAlign: 'left' }}
+        placeholder="请选择"
+        allowClear={false}
         size="small"
         {...props}
       />
@@ -125,7 +128,8 @@ const demoTemplate: Story<CascaderProps> = (props) => (
         onChange={(val: any, opt: any) => console.log('val', val, opt)}
         options={options}
         overlayStyle={{ width: 240 }}
-        triggerProps={{ placeholder: '请选择', style: { width: 240, textAlign: 'left' } }}
+        style={{ width: '100%', textAlign: 'left' }}
+        placeholder="请选择"
         size="small"
         {...props}
       />
@@ -138,10 +142,9 @@ const demoTemplate: Story<CascaderProps> = (props) => (
         prefix={() => <PlusOutlined size="14px" />}
         suffix={() => <FilterOutlined size="14px" />}
         overlayStyle={{ width: 240 }}
-        triggerProps={{
-          placeholder: '请选择',
-          style: { width: 240, textAlign: 'left' },
-        }}
+        placeholder="请选择"
+        allowClear={false}
+        style={{ width: 240, textAlign: 'left' }}
         size="small"
         {...props}
       />
@@ -156,6 +159,6 @@ export const Demo = demoTemplate.bind({
   },
 });
 export const Default: Story<CascaderProps> = (args) => (
-  <Cascader {...args} options={defaultOptions} triggerProps={{ placeholder: '请选择' }} size="normal" />
+  <Cascader {...args} options={defaultOptions} placeholder="请选择" size="normal" />
 );
 Default.args = {};

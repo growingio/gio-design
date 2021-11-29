@@ -39,12 +39,10 @@ const RowsSelector: React.FC<{
             onPageSizeChange?.(currentPageSize, previousPageSizeRef.current);
             previousPageSizeRef.current = currentPageSize;
           }}
-          triggerProps={{
-            allowClear: false,
-            style: {
-              width: 85,
-              textAlign: 'left',
-            },
+          allowClear={false}
+          style={{
+            width: 85,
+            textAlign: 'left',
           }}
         />
       )}
