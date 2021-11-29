@@ -242,3 +242,18 @@ MultiLine.args = {
   placement: 'right',
   trigger: 'click',
 };
+
+export const Disabled = () => (
+  <div>
+    <p>
+      默认情况下，被禁用的元素（如 Button）不会触发用户交互行为，因此 hover 等普通的事件不会激活工具提示的显示。
+      若想容纳已禁用的元素激活工具提示，请添加一个简单的包装元素，如 span。
+    </p>
+
+    <Tooltip title="Button 被禁用了" placement="right">
+      <span>
+        <Button disabled>Disabled Button</Button>
+      </span>
+    </Tooltip>
+  </div>
+);
