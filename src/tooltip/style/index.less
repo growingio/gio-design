@@ -1,0 +1,29 @@
+@import '../../stylesheet/variables/index.less';
+@import (reference) '../../popover/style/index.less';
+
+@tooltip-prefix-cls: ~'@{component-prefix}-tooltip';
+
+.@{tooltip-prefix-cls} {
+  &__inner {
+    max-width: 500px;
+    padding: 8px 16px;
+    color: @gray-0;
+    font-size: 14px;
+    background-color: @gray-5;
+    border-radius: 4px;
+  }
+
+  &__link {
+    color: @gray-0;
+    &:hover {
+      color: @gray-0;
+    }
+  }
+
+  .@{popover-arrow-prefix-cls} {
+    background-color: @gray-5;
+    &::before {
+      background-color: @gray-5;
+    }
+  }
+}

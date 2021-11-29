@@ -1,0 +1,15 @@
+.grid-demo {
+  .box {
+    color: #fff;
+    & > div {
+      width: 100%;
+      height: 200px;
+    }
+    &:nth-child(odd) > div {
+      background-color: #1248e9;
+    }
+    &:nth-child(even) > div {
+      background-color: #3867f4;
+    }
+  }
+}

@@ -1,0 +1,238 @@
+@import '../../stylesheet/variables/index.less';
+
+@avatar-prefix-cls: ~'@{component-prefix}-avatar';
+
+.@{avatar-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: @gray-0;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 20px;
+  background-color: @blue-2;
+  border-radius: 100%;
+  opacity: 1;
+  user-select: none;
+  &:hover &-droppable {
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    background-color: rgba(36, 46, 89, 0.5);
+    border: 1px solid @gray-0;
+    border-radius: 100%;
+    span {
+      transform: scale(1);
+    }
+  }
+
+  &-default {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+
+    & svg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      color: @gray-0;
+    }
+  }
+
+  &-droppable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+    span {
+      vertical-align: middle;
+      transform: scale(0);
+      transition: all 0.3s;
+    }
+  }
+
+  &-string {
+    position: absolute;
+    left: 50%;
+    transform-origin: 0 center;
+  }
+
+  img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &-sm {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    line-height: 24px;
+
+    .@{avatar-prefix-cls}-icon {
+      & svg {
+        width: 10px;
+        height: 10px;
+      }
+    }
+
+    &.@{avatar-prefix-cls}-square-small {
+      background-color: @gray-2;
+      border: 1px solid @gray-2;
+      border-radius: 2px;
+      .@{avatar-prefix-cls}-droppable {
+        border-radius: 2px;
+      }
+      .@{avatar-prefix-cls}-default {
+        background-color: @gray-0;
+        svg {
+          color: @blue-2;
+        }
+      }
+      .@{avatar-prefix-cls}-icon {
+        & svg {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+  }
+
+  &-me {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    line-height: 32px;
+
+    .@{avatar-prefix-cls}-icon {
+      & svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    &.@{avatar-prefix-cls}-square-medium {
+      background-color: @gray-2;
+      border: 1px solid @gray-2;
+      border-radius: 4px;
+      .@{avatar-prefix-cls}-droppable {
+        border-radius: 4px;
+      }
+      .@{avatar-prefix-cls}-default {
+        background-color: @gray-0;
+        svg {
+          color: @blue-2;
+        }
+      }
+      .@{avatar-prefix-cls}-icon {
+        & svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+
+  &-la {
+    width: 56px;
+    height: 56px;
+    font-size: 16px;
+    line-height: 56px;
+
+    .@{avatar-prefix-cls}-icon {
+      & svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &.@{avatar-prefix-cls}-square-large {
+      background-color: @gray-2;
+      border: 1px solid @gray-2;
+      border-radius: 8px;
+
+      .@{avatar-prefix-cls}-droppable {
+        border-radius: 8px;
+      }
+      .@{avatar-prefix-cls}-default {
+        background-color: @gray-0;
+        svg {
+          color: @blue-2;
+        }
+      }
+      .@{avatar-prefix-cls}-icon {
+        & svg {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+  }
+
+  &-xl {
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
+    line-height: 80px;
+
+    .@{avatar-prefix-cls}-icon {
+      & svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+    &.@{avatar-prefix-cls}-square-x-large {
+      background-color: @gray-2;
+      border: 1px solid @gray-2;
+      border-radius: 10px;
+
+      .@{avatar-prefix-cls}-droppable {
+        border-radius: 10px;
+      }
+      .@{avatar-prefix-cls}-default {
+        background-color: @gray-0;
+        svg {
+          color: @blue-2;
+        }
+      }
+      .@{avatar-prefix-cls}-icon {
+        & svg {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
+
+  &-group {
+    display: flex;
+    .@{avatar-prefix-cls} {
+      border: 1.4px solid @gray-0;
+      span {
+        top: -1.5px;
+      }
+      &:hover {
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    .@{avatar-prefix-cls}:not(:first-child) {
+      margin-left: -8px;
+    }
+  }
+}

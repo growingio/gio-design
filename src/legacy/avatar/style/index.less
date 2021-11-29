@@ -1,0 +1,189 @@
+@import '../../../stylesheet/index.less';
+
+@avatar-prefix-cls-legacy: ~'@{component-prefix}-avatar-legacy';
+
+.@{avatar-prefix-cls-legacy} {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: @color-text-avatar-normal;
+  font-weight: @weight-font-semi-bold;
+  background-color: @color-background-avatar-normal;
+  border-radius: 100%;
+  opacity: 1;
+  user-select: none;
+
+  &:hover &-droppable {
+    background-color: @color-background-avatar-hover-dropdown;
+    span {
+      transform: scale(1);
+    }
+  }
+
+  &-default {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: @color-background-avatar-normal;
+
+    & svg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      color: #fff;
+    }
+  }
+
+  &-droppable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    span {
+      vertical-align: middle;
+      transform: scale(0);
+      transition: all 0.3s;
+    }
+  }
+
+  &-string {
+    position: absolute;
+    left: 50%;
+    transform-origin: 0 center;
+  }
+
+  img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &-sm {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    line-height: 24px;
+
+    .@{avatar-prefix-cls-legacy}-icon {
+      & svg {
+        width: 10px;
+        height: 10px;
+      }
+    }
+
+    &.@{avatar-prefix-cls-legacy}-square {
+      border-radius: 2px;
+      .@{avatar-prefix-cls-legacy}-icon {
+        & svg {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+  }
+
+  &-df {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    line-height: 32px;
+
+    .@{avatar-prefix-cls-legacy}-icon {
+      & svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    &.@{avatar-prefix-cls-legacy}-square {
+      border-radius: 4px;
+      .@{avatar-prefix-cls-legacy}-icon {
+        & svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+
+  &-lg {
+    width: 56px;
+    height: 56px;
+    font-size: 16px;
+    line-height: 56px;
+
+    .@{avatar-prefix-cls-legacy}-icon {
+      & svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &.@{avatar-prefix-cls-legacy}-square {
+      border-radius: 8px;
+      .@{avatar-prefix-cls-legacy}-icon {
+        & svg {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+  }
+
+  &-hg {
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
+    line-height: 80px;
+
+    .@{avatar-prefix-cls-legacy}-icon {
+      & svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &.@{avatar-prefix-cls-legacy}-square {
+      border-radius: 10px;
+      .@{avatar-prefix-cls-legacy}-icon {
+        & svg {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
+
+  &-group {
+    display: flex;
+    .@{avatar-prefix-cls-legacy} {
+      border: 1.4px solid @color-border-avatar;
+      span {
+        top: -1.5px;
+      }
+      &:hover {
+        position: relative;
+        z-index: 1;
+        filter: @shadow-avatar;
+      }
+    }
+
+    .@{avatar-prefix-cls-legacy}:not(:first-child) {
+      margin-left: -8px;
+    }
+  }
+}

@@ -1,7 +1,8 @@
-import DatePicker from './DatePicker';
+import DatePicker from './Picker';
+import WithSubComponent from '../utils/withSubComponent';
+import StaticDatePicker from '../static-date-picker';
 
-export { default as DatePicker } from './DatePicker';
-export { DatePickerProps } from './interfaces';
-export { default as DatePickerContext } from 'rc-picker/lib/PanelContext';
+export type { StaticDatePickerProps } from '../static-date-picker/interfaces';
 
-export default DatePicker;
+export type { DatePickerProps } from './interfaces';
+export default WithSubComponent(DatePicker, { Static: StaticDatePicker });

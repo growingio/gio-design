@@ -1,0 +1,12 @@
+@import '../../stylesheet/variables/index.less';
+
+@panel-tool-bar-prefix-cls: ~'@{component-prefix}-panel__tool-bar';
+
+.@{panel-tool-bar-prefix-cls} {
+  > * {
+    margin-right: 12px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

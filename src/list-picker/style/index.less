@@ -1,0 +1,61 @@
+@import '../../stylesheet/variables/index.less';
+@import '~@gio-design/utils/lib/less/mixins.less';
+@list-picker-prefix-cls: ~'@{component-prefix}-list-picker-';
+@selection-prefix-cls: ~'@{component-prefix}-list--selection';
+@tab-panel-cls: ~'@{component-prefix}-tabs-tabpanel';
+
+@list-prefix-cls: ~'@{component-prefix}-list';
+.@{list-picker-prefix-cls} {
+  box-sizing: border-box;
+  min-width: 120px;
+  height: auto;
+  padding: 8px;
+  background: @gray-0;
+  border: 1px solid #dfe4ee;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(36, 46, 89, 0.1);
+  & > :nth-child(n) {
+    margin-bottom: 8px;
+  }
+  & > :last-child {
+    margin-bottom: 0;
+  }
+  &--content {
+    z-index: 1000;
+  }
+  & .@{list-prefix-cls} {
+    height: auto;
+    max-height: 360px;
+    padding: 0;
+    .scrollbar(@x: hidden, @y: overlay);
+  }
+  & .@{selection-prefix-cls} {
+    height: auto;
+    max-height: 360px;
+    padding: 0;
+    .scrollbar(@x: hidden, @y: overlay);
+    & .@{list-prefix-cls} {
+      height: auto;
+      max-height: none;
+      padding: 0;
+    }
+  }
+
+  & .@{tab-panel-cls} {
+    & .@{list-prefix-cls} {
+      height: auto;
+      max-height: 360px;
+      padding-top: 8px;
+    }
+    .@{selection-prefix-cls} {
+      height: auto;
+      max-height: 360px;
+      padding-top: 8px;
+      .scrollbar(@x: hidden, @y: overlay);
+      & .@{list-prefix-cls} {
+        max-height: none;
+        padding: 0;
+      }
+    }
+  }
+}

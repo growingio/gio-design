@@ -1,0 +1,98 @@
+@import '../../../stylesheet/index.less';
+
+@base-picker-prefix-cls-legacy: ~'@{component-prefix}-base-picker-legacy';
+
+.@{base-picker-prefix-cls-legacy} {
+  position: relative;
+  width: 360px;
+  height: fit-content;
+  // max-height: 520px;
+  margin: 0;
+  padding: 12px 0 0;
+  background-color: #fff;
+  border: 1px solid #e7eaf9;
+  border-radius: 4px;
+
+  &__header {
+    height: 36px;
+    margin: 0 16px;
+
+    .gio-searchbar {
+      display: inline-block;
+      vertical-align: top;
+
+      input {
+        box-sizing: border-box;
+      }
+    }
+
+    .gio-alert {
+      position: absolute;
+      top: 72px;
+      z-index: 9999;
+      width: 320px;
+    }
+  }
+
+  .gio-tabnav {
+    margin: 8px;
+  }
+
+  .gio-empty {
+    margin-top: 100px;
+  }
+
+  .gio-loading-wrapper {
+    height: 406px;
+    padding-top: 170px;
+    text-align: center;
+  }
+
+  &__content {
+    position: relative;
+    height: fit-content;
+    max-height: 379px;
+    padding: 0 8px 36px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none; // firefox
+    -ms-overflow-style: none; // IE 10+
+
+    .gio-list__item-group__title {
+      position: sticky;
+      top: 0;
+      background-color: @palette-white;
+    }
+  }
+
+  &__content::-webkit-scrollbar {
+    display: none; // Chrome Safari
+  }
+
+  &__footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    height: 46px;
+    margin-top: 1px;
+    padding: 8px 0;
+    text-align: center;
+    background-color: @palette-white;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 -1px 0 #dfe4ee;
+  }
+
+  &__detail {
+    position: absolute;
+    top: 0;
+    right: -324px;
+    width: 320px;
+    height: fit-content;
+    max-height: 520px;
+    border: 1px solid #e7eaf9;
+    border-radius: 4px;
+    box-shadow: inset 0 -1px 0 0 #ebedf5;
+  }
+}

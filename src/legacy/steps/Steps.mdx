@@ -1,0 +1,38 @@
+import { Subtitle, ArgsTable, Story, Canvas } from '@storybook/addon-docs/blocks';
+import Steps, { Step } from './Steps';
+
+# Steps 步骤条
+
+<Subtitle>分步完成复杂的操作流程</Subtitle>
+
+## 使用规范
+
+## 参数说明
+
+<ArgsTable of={Steps} />
+
+## 代码演示
+
+### 默认情况
+
+<Canvas>
+  <Story id="legacy-steps--default-steps" />
+</Canvas>
+
+### 步骤可点击
+
+<Canvas>
+  <Story id="legacy-steps--clickable-steps" />
+</Canvas>
+
+### 无描述信息
+
+<Canvas>
+  <Story id="legacy-steps--not-desc-steps" />
+</Canvas>
+
+### 控制状态
+
+<Canvas>
+  <Story id="legacy-steps--custom-state-steps" />
+</Canvas>

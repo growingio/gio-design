@@ -1,0 +1,173 @@
+@import '../../stylesheet/variables/index.less';
+
+@collapse-prefix-cls: ~'@{component-prefix}-collapse';
+
+.@{collapse-prefix-cls} {
+  @margin-sm: 8px;
+  @font-size-sm: 14px;
+  @padding-sm: 8px;
+  @padding-md: 12px;
+  // Collapse
+  @collapse-panel-border-radius: 8px;
+  @collapse-header-padding: 16px 20px;
+  @collapse-header-padding-extra: 40px;
+  @collapse-header-bg: @gray-1;
+  @collapse-content-bg: @gray-0;
+  @collapse-header-arrow-left: 16px;
+  font-size: 14px;
+  background-color: @gray-0;
+  border-bottom: 0;
+  .border(4);
+  & > &-item {
+    border-bottom: 1px solid @gray-2;
+
+    &:last-child {
+      &,
+      & > .@{collapse-prefix-cls}-header {
+        border: none;
+      }
+    }
+
+    > .@{collapse-prefix-cls}-header {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      padding: @collapse-header-padding;
+      color: @gray-5;
+      font-weight: bold;
+      line-height: 36px;
+      cursor: pointer;
+      transition: all 0.3s, visibility 0s;
+
+      .arrow-isRotate {
+        & svg {
+          transform: rotate(90deg);
+        }
+      }
+
+      .collapse-arrow-bar {
+        margin-right: 10px;
+        & svg {
+          width: 14px;
+          height: 14px;
+          color: @gray-3;
+          transition: transform 0.24s;
+        }
+      }
+
+      .@{collapse-prefix-cls}-arrow {
+        display: inline-block;
+        margin-right: @margin-sm;
+        font-size: @font-size-sm;
+        vertical-align: -1px;
+      }
+
+      .@{collapse-prefix-cls}-extra {
+        margin-left: auto;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .@{collapse-prefix-cls}-header-collapsible-only {
+      cursor: default;
+      .@{collapse-prefix-cls}-header-text {
+        cursor: pointer;
+      }
+    }
+
+    &.@{collapse-prefix-cls}-no-arrow {
+      > .@{collapse-prefix-cls}-header {
+        padding-left: @padding-sm;
+      }
+    }
+  }
+
+  // Expand Icon right
+  &-icon-position-right {
+    & > .@{collapse-prefix-cls}-item {
+      > .@{collapse-prefix-cls}-header {
+        position: relative;
+        padding: @collapse-header-padding;
+        padding-right: @collapse-header-padding-extra;
+
+        .@{collapse-prefix-cls}-arrow {
+          position: absolute;
+          top: 50%;
+          right: @padding-md;
+          left: auto;
+          margin: 0;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+
+  &-content {
+    color: @gray-5;
+    background-color: @collapse-content-bg;
+
+    & > &-box {
+      padding: 0 20px 20px;
+    }
+
+    &-hidden {
+      display: none;
+    }
+  }
+
+  &-item:last-child {
+    > .@{collapse-prefix-cls}-content {
+      border-radius: 0 0 @collapse-panel-border-radius @collapse-panel-border-radius;
+    }
+  }
+
+  &-borderless {
+    background-color: @collapse-header-bg;
+    border: 0;
+  }
+
+  &-borderless > &-item {
+    border-bottom: 1px solid @border-color-base;
+  }
+
+  &-borderless > &-item:last-child,
+  &-borderless > &-item:last-child &-header {
+    border-radius: 0;
+  }
+
+  &-borderless > &-item > &-content {
+    background-color: transparent;
+    border-top: 0;
+  }
+
+  &-borderless > &-item > &-content > &-content-box {
+    padding-top: 4px;
+  }
+
+  &-ghost {
+    background-color: transparent;
+    border: 0;
+    > .@{collapse-prefix-cls}-item {
+      border-bottom: 0;
+      > .@{collapse-prefix-cls}-content {
+        background-color: transparent;
+        border-top: 0;
+        > .@{collapse-prefix-cls}-content-box {
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+      }
+    }
+  }
+
+  & &-item-disabled > &-header {
+    &,
+    & > .arrow {
+      color: @gray-4;
+      cursor: not-allowed;
+    }
+  }
+}

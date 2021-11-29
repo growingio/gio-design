@@ -1,0 +1,72 @@
+@import './index.less';
+
+.@{menu-prefix-cls-legacy} {
+  // item state
+  // normal
+  &-item,
+  &-submenu-title {
+    position: relative;
+    color: #313e75;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  // active
+  &-item&-item-selected {
+    color: @color-text-menu-active;
+    font-weight: @weight-font-medium;
+    background-color: #f1f2f8;
+  }
+
+  &-horizontal &-item&-item-selected {
+    background-color: #fff;
+  }
+
+  &-horizontal &-item&-item-active {
+    background-color: #f1f2f8;
+  }
+
+  &-submenu&-submenu-selected > &-submenu-title {
+    color: @color-text-menu-active;
+    font-weight: @weight-font-medium;
+    // fix chrome render bug
+    transform: translateZ(0);
+  }
+
+  // hover
+  &-item&-item-active,
+  &-submenu&-submenu-active > &-submenu-title {
+    background-color: #f1f2f8;
+  }
+
+  // Disabled state sets text to gray and nukes hover/tab effects
+  & &-item-disabled,
+  & &-submenu-disabled > &-submenu-title {
+    color: @color-text-menu-disable !important;
+    cursor: not-allowed;
+  }
+
+  // item state in popup
+  // normal
+  &-submenu-popup &-item,
+  &-submenu-popup &-submenu-title {
+    color: #313e75;
+  }
+  // active
+  &-submenu-popup &-item-selected,
+  &-submenu-popup &-submenu-selected > &-submenu-title {
+    color: #1248e9;
+    background-color: #ebedf5;
+  }
+  // hover
+  &-submenu-popup &-item-active,
+  &-submenu-popup &-submenu-active > &-submenu-title {
+    color: #313e75;
+    background-color: #ebedf5;
+  }
+  // disabled
+  &-submenu-popup &-item-disabled,
+  &-submenu-popup &-submenu-disabled > &-submenu-title {
+    color: #c7cbd8;
+  }
+}

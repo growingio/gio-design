@@ -1,160 +1,31 @@
 name: Continuous Delivery
-on:
-  push:
-    branches:
-      - master
+on: workflow_dispatch
 jobs:
-  install:
-    name: Install dependencies
+  publish-package:
+    name: Publish package
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
       - name: Setup Node.js
-        uses: actions/setup-node@v2.2.0
+        uses: actions/setup-node@v2.4.1
         with:
           node-version: 14
-      - name: Cache Node.js modules
+          registry-url: 'https://registry.npmjs.org'
+      - name: Restore Node.js modules
         id: cache-node-modules
         uses: actions/cache@v2.1.6
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Install
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
         run: yarn install
-  lint:
-    name: Lint codes
-    needs: install
-    if: ${{ !startsWith(github.event.head_commit.message, 'docs') }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.2.0
-        with:
-          node-version: 14
-      - name: Restore Node.js modules
-        uses: actions/cache@v2.1.6
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Cache lint reports
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            stylelint-report.json
-            eslint-report.json
-          key: lint-reports-${{ github.sha }}
-      - name: StyleLint
-        run: yarn stylelint -f json -o stylelint-report.json
-      - name: ESLint
-        run: yarn eslint -f json -o eslint-report.json
-  unit_test:
-    name: Unit test
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.2.0
-        with:
-          node-version: 14
-      - name: Restore Node.js modules
-        uses: actions/cache@v2.1.6
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Cache test report
-        uses: actions/cache@v2.1.6
-        with:
-          path: coverage/lcov.info
-          key: test-report-${{ github.sha }}
-      - name: Test
-        run: yarn test --coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          directory: coverage/
-  build:
-    name: Build package
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: '1'
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.2.0
-        with:
-          node-version: 14
-      - name: Restore Node.js modules
-        uses: actions/cache@v2.1.6
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Cache package
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            dist
-            es
-          key: package-${{ github.sha }}
       - name: Build package
         run: yarn build
-  publish-storybook:
-    name: Publish storybook
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: '0'
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.2.0
-        with:
-          node-version: 14
-      - name: Restore Node.js modules
-        uses: actions/cache@v2.1.6
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Build Storybook
-        run: yarn build-storybook
-      - name: Upload to Chromatic
-        uses: chromaui/action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
-          storybookBuildDir: storybook-static/
-          exitZeroOnChanges: true
-          exitOnceUploaded: true
-          allowConsoleErrors: true
-  publish-package:
-    name: Publish package
-    needs: build
-    if: ${{ startsWith(github.event.head_commit.message, 'docs(release)') }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.2.0
-        with:
-          node-version: 14
-          registry-url: 'https://registry.npmjs.org'
-      - name: Restore package from cache
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            dist
-            es
-          key: package-${{ github.sha }}
       - name: Publish package
         run: yarn publish --non-interactive --access public
         env:
@@ -172,29 +43,3 @@ jobs:
           body_path: VERSION.md
           draft: false
           prerelease: false
-  sonar:
-    name: Sonar scan
-    needs: [lint, unit_test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Restore lint reports
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            stylelint-report.json
-            eslint-report.json
-          key: lint-reports-${{ github.sha }}
-      - name: Restore test report
-        uses: actions/cache@v2.1.6
-        with:
-          path: coverage/lcov.info
-          key: test-report-${{ github.sha }}
-      - name: Upload reports to SonarCloud
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

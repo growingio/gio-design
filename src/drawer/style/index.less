@@ -1,0 +1,149 @@
+@import '../../stylesheet/index.less';
+@import '../../stylesheet/mixin/animation.less';
+@import '../../stylesheet/mixin/index.less';
+@import '../../stylesheet/variables/index.less';
+
+@drawer-prefix-cls: ~'@{component-prefix}-drawer';
+@drawer-normal: ~'@{drawer-prefix-cls}-normal';
+@drawer-fixed: ~'@{drawer-prefix-cls}-fixed';
+
+.@{drawer-prefix-cls} {
+  @drawer-radius: 8px;
+  position: relative;
+
+  &-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: @z-index-drawer;
+    height: 100%;
+    background-color: @gray-5;
+    opacity: 0.8;
+
+    &-hidden {
+      display: none;
+    }
+  }
+
+  .btn-style() {
+    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    color: @gray-5;
+    background-color: @gray-0;
+    border: 0;
+    border-radius: 50%;
+    outline: 0;
+    cursor: pointer;
+  }
+
+  &-wrap {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: @z-index-drawer;
+    overflow: hidden;
+    outline: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &-header {
+    padding: 23px 36px;
+    background: @gray-0;
+    border-radius: @drawer-radius 0 0 0;
+  }
+
+  &-footer {
+    padding: 20px 36px;
+    text-align: right;
+    border-radius: 0 0 0 @drawer-radius;
+  }
+
+  &__footer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+
+    .@{drawer-prefix-cls}__btn-close {
+      margin-right: 8px;
+    }
+  }
+
+  &-title {
+    position: relative;
+    overflow: hidden;
+    color: @gray-5;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    white-space: nowrap;
+    text-align: center;
+    text-overflow: ellipsis;
+  }
+
+  &-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: @gray-0;
+    background-clip: padding-box;
+    border: 1px solid @gray-2;
+    border-radius: 8px 0 0 8px;
+    @drawer-full-height: 100vh;
+    .elevation(2);
+  }
+
+  &-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    color: @gray-5;
+    background-color: @gray-0;
+    border: 0;
+    border-radius: 50%;
+    outline: 0;
+    cursor: pointer;
+  }
+
+  &__close-disabled {
+    color: @gray-0;
+    cursor: not-allowed;
+  }
+
+  &-body {
+    height: 100%;
+    margin-bottom: 20px;
+    padding: 0 36px;
+    overflow-y: auto;
+    color: @gray-5;
+  }
+}
+
+.@{drawer-normal} {
+  float: right;
+  width: fit-content;
+}
+.@{drawer-fixed} {
+  float: right;
+  .@{drawer-prefix-cls} {
+    &-content {
+      width: 500px;
+    }
+  }
+}

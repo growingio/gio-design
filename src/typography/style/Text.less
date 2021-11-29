@@ -1,0 +1,20 @@
+@import '../../stylesheet/variables/index.less';
+
+@text-prefix-cls: ~'@{component-prefix}-text';
+
+.@{text-prefix-cls} {
+  .font();
+  color: var(--color, 'inherit');
+  &--small {
+    font-size: 12px;
+    line-height: 20px;
+  }
+  &--midlle {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  &--large {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}

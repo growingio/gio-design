@@ -1,0 +1,39 @@
+@transition: all 0.3s ease-in-out;
+
+.background() {
+  .default() {
+    background-color: @red-3;
+  }
+
+  .error() {
+    background-color: @red-3;
+  }
+
+  .normal() {
+    background-color: @green-3;
+  }
+
+  .warning() {
+    background-color: @yellow-3;
+  }
+
+  .disabled() {
+    background-color: @gray-3;
+  }
+}
+
+.square(@size) {
+  width: @size;
+  height: @size;
+}
+
+.place() {
+  position: absolute;
+  display: inline-block;
+  opacity: 1;
+  transition: @transition;
+}
+
+.transform(@scale, @x, @y) {
+  transform: scale(@scale) translate(@x, @y);
+}

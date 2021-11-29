@@ -1,0 +1,19 @@
+@import '../../stylesheet/variables/index.less';
+
+@search-prefix-cls: ~'@{component-prefix}-search';
+
+@input-prefix-cls: ~'@{component-prefix}-input-bew';
+.@{search-prefix-cls} {
+  &__suffix {
+    &-clear {
+      cursor: pointer;
+    }
+    &-disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  .@{input-prefix-cls}::--webkit-search-cancel-button {
+    appearance: none;
+  }
+}

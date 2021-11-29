@@ -1,7 +1,6 @@
-const path = require('path');
-
 module.exports = {
   addons: [
+    // addons on top
     {
       name: '@storybook/addon-docs',
       options: {
@@ -10,8 +9,14 @@ module.exports = {
         },
       },
     },
+    '@storybook/addon-measure',
+    '@storybook/addon-outline',
+    '@storybook/addon-toolbars',
+    '@storybook/addon-backgrounds',
+    // addons on right side
     '@storybook/addon-controls',
     '@storybook/addon-actions',
+    'storybook-addon-designs',
     {
       name: '@storybook/addon-storysource',
       options: {
@@ -20,8 +25,6 @@ module.exports = {
         },
       },
     },
-    'storybook-addon-designs',
-    path.resolve('./.storybook/footer/preset'),
   ],
   features: {
     postcss: false,
@@ -32,7 +35,6 @@ module.exports = {
       test: /\.less$/,
       use: ['style-loader', 'css-loader', 'less-loader'],
     });
-
     return config;
   },
 };

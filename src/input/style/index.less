@@ -1,0 +1,122 @@
+@import '../../stylesheet/variables/index.less';
+
+@input-prefix-cls: ~'@{component-prefix}-input';
+@textarea-prefix-cls: ~'@{component-prefix}-textarea';
+@icon-prefix-cls: ~'@{component-prefix}-icon';
+
+.@{input-prefix-cls} {
+  display: inline-flex;
+  box-sizing: border-box;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 4px;
+  .border();
+
+  & > input {
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    color: @gray-5;
+    text-align: left;
+    background-color: #0000;
+    border: none;
+    font-family+: @font-family-primary;
+    font-family+: @font-family-number;
+    .text-body1();
+
+    &:not([disabled]):hover,
+    &:not([disabled]):focus {
+      border: none;
+      outline: none;
+    }
+    &:not([disabled])::placeholder {
+      color: @gray-2;
+      .text-body1();
+    }
+  }
+
+  &::placeholder {
+    color: @gray-2;
+    .text-body1();
+  }
+
+  &:not([disabled]):focus {
+    border: 1px solid @blue-3;
+    outline: none;
+  }
+
+  &__hover {
+    &:not([disabled]):hover {
+      border: 1px solid @blue-3;
+    }
+  }
+
+  &__disabled {
+    background-color: @gray-1;
+    .border();
+    cursor: not-allowed;
+    &:hover {
+      background-color: @gray-1;
+      .border();
+    }
+    & > input {
+      color: @gray-3;
+      cursor: not-allowed;
+    }
+    &__suffix,
+    &__prefix {
+      cursor: not-allowed;
+    }
+  }
+  &__small {
+    height: 30px;
+  }
+  &__error {
+    border: 1px solid @red-3;
+  }
+
+  &__suffix {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+
+    .@{icon-prefix-cls} {
+      cursor: pointer;
+      svg {
+        width: 14px;
+        height: 14px;
+        color: @gray-3;
+      }
+    }
+  }
+
+  &__prefix {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+
+    .@{icon-prefix-cls} {
+      cursor: pointer;
+      svg {
+        width: 14px;
+        height: 14px;
+        color: @gray-5;
+      }
+    }
+  }
+}
+
+.@{textarea-prefix-cls} {
+  height: auto;
+  min-height: 36px;
+  color: @gray-5;
+  resize: vertical;
+  font-family+: @font-family-primary;
+  font-family+: @font-family-number;
+  .text-body1();
+  &:disabled {
+    background-color: @gray-1;
+  }
+}

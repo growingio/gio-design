@@ -1,0 +1,126 @@
+@import '../../../stylesheet/index.less';
+
+@progress-prefix-cls-legacy: ~'@{component-prefix}-progress-legacy';
+
+@progress-height: 16px;
+
+// progress无token 暂时使用色值 之后替换为新版color palette值
+@progress-text-color: #242e59;
+@progress-trail-bg-color: #ebedf5;
+@progress-trail-border-color: #dfe2ed;
+@progress-trail-bg-shadow-color: #dcdfed;
+@progress-active-bg-color: #3867f4;
+@progress-active-bg-shadow-color: #1248e9;
+@progress-success-bg-color: #0ba471;
+@progress-success-bg-shadow-color: #00875a;
+@progress-exception-bg-color: #de350b;
+@progress-exception-bg-shadow-color: #bc2b07;
+
+.@{progress-prefix-cls-legacy} {
+  display: flex;
+  align-items: center;
+  color: @progress-text-color;
+  font-weight: @weight-font-regular;
+  font-size: @size-font-16;
+  &-trail {
+    flex-basis: 100%;
+    height: @progress-height;
+    overflow: hidden;
+    background-color: @progress-trail-bg-color;
+    border: 0.5px solid @progress-trail-border-color;
+    border-radius: 999px;
+    box-shadow: inset 0 0 3px @progress-trail-bg-shadow-color;
+  }
+
+  &-stroke {
+    position: relative;
+    width: 0;
+    height: 100%;
+    border-radius: 999px;
+    transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
+  }
+
+  &-active {
+    background-color: @progress-active-bg-color;
+    box-shadow: inset 0 0 5px @progress-active-bg-shadow-color;
+  }
+
+  &-success {
+    background-color: @progress-success-bg-color;
+    box-shadow: inset 0 0 5px @progress-success-bg-shadow-color;
+    &-icon {
+      color: @progress-success-bg-color;
+      vertical-align: text-top;
+    }
+  }
+
+  &-exception {
+    background-color: @progress-exception-bg-color;
+    box-shadow: inset 0 0 5px @progress-exception-bg-shadow-color;
+    &-icon {
+      margin-top: 1.5px;
+      color: @progress-exception-bg-color;
+      vertical-align: text-top;
+    }
+  }
+
+  &-animate {
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: #fff;
+      border-radius: 999px;
+      opacity: 0;
+      -webkit-animation: progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+      animation: progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+      content: '';
+    }
+  }
+
+  &-info {
+    width: 96px;
+    margin-left: @size-spacing-m;
+    white-space: nowrap;
+  }
+
+  &-text {
+    vertical-align: middle;
+  }
+
+  &-icon {
+    margin-left: @size-spacing-xs;
+    vertical-align: middle;
+  }
+}
+
+@-webkit-keyframes progress-active {
+  0% {
+    width: 0;
+    opacity: 0.1;
+  }
+  20% {
+    width: 0;
+    opacity: 0.5;
+  }
+  to {
+    width: 100%;
+    opacity: 0;
+  }
+}
+@keyframes progress-active {
+  0% {
+    width: 0;
+    opacity: 0.1;
+  }
+  20% {
+    width: 0;
+    opacity: 0.5;
+  }
+  to {
+    width: 100%;
+    opacity: 0;
+  }
+}

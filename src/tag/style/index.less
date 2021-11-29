@@ -1,0 +1,128 @@
+@import '../../stylesheet/variables/index.less';
+
+@tag-prefix-cls: ~'@{component-prefix}-tag';
+@tag-padding: @size-spacing-xs;
+
+.@{tag-prefix-cls} {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 8px;
+  color: @gray-5;
+  background-color: @gray-1;
+  border-radius: 4px;
+  cursor: default;
+  &-label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &-size {
+    &-small {
+      height: 20px;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    &-middle {
+      height: 24px;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+
+  &-status {
+    &-default {
+      color: @gray-5;
+      background-color: @gray-1;
+    }
+    &-default.@{tag-prefix-cls}-type-highlight {
+      background-color: @gray-5;
+    }
+    &-draft {
+      color: @gray-3;
+      background-color: @gray-1;
+    }
+    &-draft.@{tag-prefix-cls}-type-highlight {
+      background-color: @gray-3;
+    }
+    &-info {
+      color: @blue-3;
+      background-color: @gray-1;
+    }
+    &-info.@{tag-prefix-cls}-type-highlight {
+      background-color: @blue-3;
+    }
+    &-success {
+      color: @green-3;
+      background-color: @green-1;
+    }
+    &-success.@{tag-prefix-cls}-type-highlight {
+      background-color: @green-3;
+    }
+    &-warning {
+      color: @yellow-3;
+      background-color: @yellow-1;
+    }
+    &-warning.@{tag-prefix-cls}-type-highlight {
+      background-color: @yellow-3;
+    }
+    &-error {
+      color: @red-3;
+      background-color: @red-1;
+    }
+    &-error.@{tag-prefix-cls}-type-highlight {
+      background-color: @red-3;
+    }
+  }
+
+  &-type {
+    &-highlight {
+      color: @gray-0;
+    }
+  }
+
+  &-closable {
+    display: inline-flex;
+    align-items: center;
+    color: #313e75;
+    background-color: @gray-1;
+    &:hover {
+      color: #313e75;
+      background-color: @gray-2;
+    }
+    &:focus {
+      color: #313e75;
+      background-color: @gray-2;
+    }
+
+    &.@{tag-prefix-cls}-type-highlight {
+      color: #313e75;
+      background-color: @gray-1;
+      &:hover {
+        background-color: @gray-2;
+      }
+      &:focus {
+        background-color: @gray-2;
+      }
+    }
+
+    &-icon {
+      margin-left: 8px;
+      color: @gray-3;
+      vertical-align: middle;
+      cursor: pointer;
+      svg {
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    &-disabled {
+      color: @gray-3 !important;
+      background-color: @gray-1 !important;
+    }
+  }
+}

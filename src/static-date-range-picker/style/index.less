@@ -1,0 +1,98 @@
+@import '../../stylesheet/index.less';
+@import '../../stylesheet/mixin/index.less';
+@import '../../stylesheet/variables/index.less';
+
+@date-range-picker-prefix-cls: ~'@{component-prefix}-date-range-picker';
+@picker-prefix-cls: ~'@{component-prefix}-picker';
+
+.@{date-range-picker-prefix-cls} {
+  display: flex;
+  width: fit-content;
+  border-radius: 4px;
+
+  &__left,
+  &__right {
+    filter: none;
+  }
+
+  &__left {
+    .@{picker-prefix-cls}-body {
+      border-right: 1px solid @palette-gray-3;
+    }
+  }
+}
+
+.@{picker-prefix-cls} {
+  &-cell {
+    &-in-view&-range-start,
+    &-in-view&-range-end {
+      color: @gray-0;
+    }
+    &-in-view&-range-start &-inner,
+    &-in-view&-range-end &-inner {
+      background: @palette-blue-4;
+    }
+    &-in-view&-range-start:not(&-range-start-single)::before,
+    &-in-view&-range-end:not(&-range-end-single)::before,
+    &-in-view&-in-range::before {
+      background-color: @palette-blue-1;
+    }
+    &-in-view&-range-start::before {
+      left: 50%;
+    }
+    &-in-view&-range-end::before {
+      right: 50%;
+    }
+
+    // the styles for hovered cells
+    &-in-view&-range-hover-start:not(&-in-range):not(&-range-start):not(&-range-end),
+    &-in-view&-range-hover-end:not(&-in-range):not(&-range-start):not(&-range-end),
+    &-in-view&-range-hover-start&-range-start-single,
+    &-in-view&-range-hover-start&-range-start&-range-end&-range-end-near-hover,
+    &-in-view&-range-hover-end&-range-start&-range-end&-range-start-near-hover,
+    &-in-view&-range-hover-end&-range-end-single,
+    &-in-view&-range-hover:not(&-in-range) {
+      &::after {
+        position: absolute;
+        z-index: 0;
+        box-sizing: content-box;
+        height: 22px;
+        border-top: 1px dashed @palette-blue-4;
+        border-bottom: 1px dashed @palette-blue-4;
+        content: '';
+      }
+    }
+
+    // the styles for start cell of row
+    tr > &-in-view&-range-hover:first-child::after,
+    tr > &-in-view&-range-hover-end:first-child::after,
+    &-in-view&-start&-range-hover-edge-start&-range-hover-edge-start-near-range::after,
+    &-in-view&-range-hover-edge-start:not(&-range-hover-edge-start-near-range)::after,
+    &-in-view&-range-hover-start::after {
+      left: 6px;
+      border-left: 1px dashed @palette-blue-4;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+
+    // the styles for end cell of row
+    tr > &-in-view&-range-hover:last-child::after,
+    tr > &-in-view&-range-hover-start:last-child::after,
+    &-in-view&-end&-range-hover-edge-end&-range-hover-edge-end-near-range::after,
+    &-in-view&-range-hover-edge-end:not(&-range-hover-edge-end-near-range)::after,
+    &-in-view&-range-hover-end::after {
+      right: 6px;
+      border-right: 1px dashed @palette-blue-4;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+
+    // set space for stash of hovered cell
+    &-range-hover-start::after,
+    &-range-hover-end::after,
+    &-range-hover::after {
+      right: 0;
+      left: 2px;
+    }
+  }
+}

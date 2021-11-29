@@ -1,0 +1,169 @@
+@import '../../../stylesheet/mixin/index.less';
+@import '~@gio-design/tokens/dist/variables.less';
+
+@date-picker-prefix-cls-legacy: ~'@{component-prefix}-date-picker-legacy';
+
+.@{date-picker-prefix-cls-legacy}-decade-panel {
+  position: absolute;
+  top: 37px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  height: 240px;
+  font-size: 12px;
+  background: @palette-white;
+  outline: none;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    // height: 100%;
+  }
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel-hidden {
+  display: none;
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel-header {
+  position: relative;
+  height: 39px;
+  color: #3867f4;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 39px;
+  text-align: center;
+  border: 1px solid @color-background-date-picker-hover;
+  border-radius: 4px 4px 0 0;
+  -webkit-user-select: none;
+  user-select: none;
+
+  > a {
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel-prev-century-btn,
+.@{date-picker-prefix-cls-legacy}-decade-panel-next-century-btn {
+  position: absolute;
+  top: 0;
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel-next-century-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  user-select: none;
+
+  &:hover {
+    color: @color-text-date-picker-normal;
+    background-color: @color-background-date-picker-hover;
+    border-radius: 4px;
+  }
+
+  &::after {
+    //display: inline-block;
+    //width: 8px;
+    //height: 8px;
+    //content: url('../../../assets/images/nextYear.svg');
+    content: '»';
+  }
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel-prev-century-btn {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  user-select: none;
+
+  &:hover {
+    color: @color-text-date-picker-normal;
+    background-color: @color-background-date-picker-hover;
+    border-radius: 4px;
+  }
+
+  &::after {
+    //display: inline-block;
+    //width: 8px;
+    //height: 8px;
+    //content: url('../../../assets/images/previousYear.svg');
+    content: '«';
+  }
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel .@{date-picker-prefix-cls-legacy}-decade-panel-decade-select {
+  width: 180px;
+  color: @color-text-date-picker-year-normal;
+  // pointer-events: none;
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel-decade-select-arrow {
+  display: none;
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel-body {
+  flex: 1;
+  height: 201px;
+  padding: 8px 3px;
+  border-right: 1px solid @color-background-date-picker-hover;
+  border-left: 1px solid @color-background-date-picker-hover;
+  border-radius: 0 0 4px 4px;
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel-footer {
+  display: none;
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel-table {
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel-cell {
+  color: @color-text-date-picker-normal;
+  text-align: center;
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel-decade {
+  display: block;
+  width: 76px;
+  height: 30px;
+  margin: auto;
+  padding: 0;
+  color: @color-text-date-picker-normal;
+  line-height: 30px;
+  text-align: center;
+  background: transparent;
+  border-radius: 4px 4px;
+
+  &:hover {
+    color: @color-text-date-picker-normal;
+    background: @color-background-date-picker-hover;
+    cursor: pointer;
+  }
+}
+
+.@{date-picker-prefix-cls-legacy}-decade-panel-selected-cell .@{date-picker-prefix-cls-legacy}-decade-panel-decade {
+  color: @palette-white;
+  background: @color-background-date-picker-active;
+
+  &:hover {
+    color: @palette-white;
+    background: @color-background-date-picker-active;
+  }
+}

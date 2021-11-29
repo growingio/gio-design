@@ -1,0 +1,91 @@
+@import '../../stylesheet/variables/index.less';
+
+@alert-prefix-cls: ~'@{component-prefix}-alert';
+
+.@{alert-prefix-cls} {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  transition: all ease 0.8s;
+
+  & &-icon {
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+
+  & .@{alert-prefix-cls}-content {
+    flex: 1;
+    margin: 0 0 0 8px;
+    color: @gray-5;
+
+    & .@{alert-prefix-cls}-content-title {
+      width: 100%;
+      overflow: hidden;
+      font-weight: 500;
+      font-size: 14px;
+      font-style: normal;
+      line-height: 22px;
+      text-overflow: ellipsis;
+    }
+    & .@{alert-prefix-cls}-content-gap {
+      height: 8px;
+    }
+    & .@{alert-prefix-cls}-content-description {
+      width: 100%;
+      letter-spacing: 0;
+      .text-body1();
+    }
+  }
+  & .@{alert-prefix-cls}-content-no-icon {
+    margin: 0;
+  }
+  & .@{alert-prefix-cls}-closeButton {
+    flex-shrink: 0;
+    align-self: flex-start;
+    width: 30px;
+    margin: 0;
+    padding: 0;
+    font-weight: @weight-font-semi-bold;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.@{alert-prefix-cls}-close {
+  display: none;
+}
+
+.@{alert-prefix-cls}-info {
+  background-color: @blue-1;
+  border: 1px solid @blue-3;
+  & .@{alert-prefix-cls}-icon {
+    color: @blue-3;
+  }
+}
+
+.@{alert-prefix-cls}-success {
+  background-color: @green-1;
+  border: 1px solid @green-3;
+  & .@{alert-prefix-cls}-icon {
+    color: @green-3;
+  }
+}
+
+.@{alert-prefix-cls}-warning {
+  background-color: @yellow-1;
+  border: 1px solid @yellow-3;
+  & .@{alert-prefix-cls}-icon {
+    color: @yellow-3;
+  }
+}
+
+.@{alert-prefix-cls}-error {
+  background-color: @red-1;
+  border: 1px solid @red-3;
+  & .@{alert-prefix-cls}-icon {
+    color: @red-3;
+  }
+}

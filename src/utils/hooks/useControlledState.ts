@@ -1,24 +1,39 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useDebugValue } from 'react';
+import { isUndefined } from 'lodash';
+
+function format<T>([innerState, outterState]: [T, T]) {
+  const isControlled = isUndefined(outterState) ? 'uncontrolled' : 'controlled';
+  const value = isUndefined(outterState) ? innerState : outterState;
+  return `State is ${isControlled} | Value is ${value}`;
+}
 
 const useControlledState = <T>(
-  controlledState: T | (() => T) | undefined,
-  empty: T
-): [T, (_state: T | (() => T), force?: boolean) => void] => {
-  const [_controlledState, setControlledState] = useState<T>(controlledState === undefined ? empty : controlledState);
-  
-  const setState = useRef((_state: T | (() => T), force = false) => {
-    if (controlledState === undefined || force) {
-      setControlledState(_state);
+  outterState: T | (() => T) | undefined,
+  defaultOutterState: T,
+  callback?: (state: T | (() => T)) => void
+): [T, (state: T | (() => T), force?: boolean) => void] => {
+  // if (outterState === undefined && defaultOutterState === undefined) {
+  //   throw new TypeError('Either "value" or "defaultValue" variable must be set. Now both are undefined');
+  // }
+  const [innerState, setInnerState] = useState<T>(isUndefined(outterState) ? defaultOutterState : outterState);
+
+  const setState = useRef((state: T | (() => T), force = false) => {
+    if (isUndefined(outterState) || force) {
+      setInnerState(state);
     }
+
+    callback?.(state);
   }).current;
 
-  useEffect(() => {
-    if (controlledState !== undefined) {
-      setControlledState(controlledState);
-    }
-  }, [controlledState]);
+  useDebugValue([innerState, outterState], format);
 
-  return [_controlledState, setState];
+  useEffect(() => {
+    if (!isUndefined(outterState)) {
+      setInnerState(outterState);
+    }
+  }, [outterState]);
+
+  return [innerState, setState];
 };
 
 export default useControlledState;

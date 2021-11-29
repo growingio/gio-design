@@ -1,5 +1,6 @@
 declare module 'rc-notification';
 declare module 'rc-upload';
+declare module 'react-modal';
 declare module 'rc-util/lib/guid';
 declare module '*.png';
 declare module '*.svg';
@@ -9,3 +10,6 @@ declare module 'rc-calendar/lib/locale/zh_CN';
 declare module 'rc-calendar/lib/RangeCalendar';
 declare module '*.md';
 declare module '*.mdx';
+declare module 'react-lines-ellipsis';
+declare module 'react-lines-ellipsis/lib/responsiveHOC';
+declare module 'react-is';

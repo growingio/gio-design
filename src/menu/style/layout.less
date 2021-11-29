@@ -1,0 +1,152 @@
+@import './index.less';
+
+.@{menu-prefix-cls} {
+  // 水平模式
+  &-horizontal {
+    overflow: hidden;
+    font-size: 16px;
+    white-space: nowrap;
+    border: none;
+    box-shadow: none;
+
+    & > .@{menu-prefix-cls}-item,
+    & > .@{menu-prefix-cls}-submenu > .@{menu-prefix-cls}-submenu-title {
+      height: 40px;
+      margin-right: 4px;
+      padding: 0 24px;
+      line-height: 40px;
+    }
+
+    & > .@{menu-prefix-cls}-submenu,
+    & > .@{menu-prefix-cls}-item {
+      display: inline-block;
+      vertical-align: bottom;
+      border-radius: 4px;
+    }
+
+    &::after {
+      display: block;
+      clear: both;
+      height: 0;
+      content: '\20';
+    }
+  }
+
+  // 内嵌模式和垂直模式的公共样式
+  &-inline,
+  &-vertical {
+    width: 100%;
+    font-size: @size-font-14;
+    transition: width 0.2s;
+    &:not(.@{menu-prefix-cls}-sub) > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    .@{menu-prefix-cls} {
+      &-item,
+      &-submenu {
+        margin-top: 8px;
+      }
+
+      &-item,
+      &-submenu-title,
+      &-submenu:not(.@{menu-prefix-cls}-submenu-open) {
+        box-sizing: border-box;
+        height: 36px;
+        line-height: 36px;
+        transition: padding 0.2s;
+      }
+    }
+  }
+
+  // 内嵌模式子菜单
+  &-inline&-sub {
+    transition: max-height 0.3s, visibility 0.2s;
+  }
+
+  &-inline&-sub&-hidden {
+    max-height: 0;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &-inline&-sub:not(&-hidden) {
+    max-height: 9999px;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  // 内嵌模式下的箭头
+  &-submenu-arrow {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%) rotate(0deg);
+    transition: all 0.2s;
+  }
+
+  &-submenu-open > &-submenu-title > &-submenu-arrow {
+    transform: translateY(-50%) rotate(-180deg);
+  }
+
+  // 垂直模式子菜单
+  &-submenu-popup {
+    position: absolute;
+    z-index: @zindex-dropdown;
+    box-sizing: border-box;
+
+    .@{menu-prefix-cls} {
+      width: 200px;
+      margin-top: -40px;
+      padding: 16px 8px;
+      background-color: #fff;
+      box-shadow: 0 0 4px @palette-gray-5;
+      &-collapsed-submenu-title {
+        height: 20px;
+        padding: 0 12px;
+        color: @blue-3;
+        font-weight: @weight-font-medium;
+        font-size: 12px;
+        line-height: 20px;
+      }
+
+      &-item,
+      &-submenu {
+        margin-top: 4px;
+      }
+
+      &-item,
+      &-submenu-title {
+        height: 36px;
+        padding: 8px 12px;
+        font-weight: @weight-font-regular;
+        line-height: 22px;
+        border-radius: 4px;
+      }
+
+      &-submenu-arrow {
+        display: none;
+      }
+    }
+  }
+
+  &-hidden&-submenu-popup {
+    display: none;
+  }
+
+  // collapse 设置折叠默认会将模式改为垂直模式
+  &-inlineCollapsed {
+    width: 80px;
+    .@{menu-prefix-cls} {
+      &-item,
+      &-submenu-title {
+        padding: 0 32px;
+        & > * {
+          &:not(.@{menu-icon-cls}) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

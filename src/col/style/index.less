@@ -1,0 +1,41 @@
+@import '../../stylesheet/index.less';
+
+@col-prefix-cls: ~'@{component-prefix}-col';
+@grid-column-number: 12;
+
+.@{col-prefix-cls} {
+  box-sizing: border-box;
+}
+
+.loop-genrate-class(@grid-column-number);
+
+.loop-genrate-class(@i) when (@i > 0) {
+  .@{col-prefix-cls}-span-@{i} {
+    display: block;
+    flex: 0 0 percentage((@i / @grid-column-number));
+    max-width: percentage((@i / @grid-column-number));
+  }
+
+  .@{col-prefix-cls}-offset-@{i} {
+    margin-left: percentage((@i / @grid-column-number));
+  }
+
+  .@{col-prefix-cls}-order-@{i} {
+    order: @i;
+  }
+  .loop-genrate-class(@i - 1);
+}
+
+.loop-genrate-class(@i) when (@i = 0) {
+  .@{col-prefix-cls}-span-@{i} {
+    display: none;
+  }
+
+  .@{col-prefix-cls}-offset-@{i} {
+    margin-left: 0;
+  }
+
+  .@{col-prefix-cls}-order-@{i} {
+    order: 0;
+  }
+}

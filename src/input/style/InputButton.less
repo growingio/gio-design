@@ -1,0 +1,123 @@
+@import '../../stylesheet/variables/index.less';
+
+@input-btn-prefix-cls: ~'@{component-prefix}-input-btn';
+@icon-prefix-cls: ~'@{component-prefix}-input__prefix';
+@input-prefix-cls: ~'@{component-prefix}-input';
+
+@input-btn-input-prefix-cls: ~'@{component-prefix}-input-btn__input';
+
+.@{input-btn-prefix-cls} {
+  cursor: pointer;
+  .@{input-btn-input-prefix-cls} {
+    input {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    background-color: @gray-0;
+    cursor: pointer;
+
+    &:not([disabled])::placeholder {
+      color: @gray-5;
+      .text-body1();
+    }
+    &:disabled {
+      color: @gray-3;
+      background-color: @gray-0;
+      &::placeholder {
+        color: @gray-3;
+        .text-body1();
+      }
+      &:hover {
+        color: @gray-3;
+        background-color: @gray-0;
+        &::placeholder {
+          color: @gray-3;
+        }
+      }
+    }
+
+    &:not([disabled]):hover {
+      color: @blue-3;
+      border: 1px solid @gray-2;
+    }
+    &:is([disabled]):hover {
+      color: @gray-3;
+      border: 1px solid @gray-2;
+    }
+
+    &:not([disabled]):focus {
+      border: 1px solid @gray-2;
+      outline: none;
+    }
+  }
+  &__active,
+  &__hover {
+    &:hover {
+      .@{input-btn-input-prefix-cls} {
+        background-color: @gray-1;
+      }
+      input {
+        color: @blue-3;
+        cursor: pointer;
+      }
+      .@{input-prefix-cls} {
+        &__prefix {
+          color: @blue-3;
+          cursor: pointer;
+          svg {
+            color: @blue-3;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  &__disabled {
+    background-color: @gray-0;
+
+    input {
+      color: @gray-3;
+    }
+    svg {
+      color: @gray-3;
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      .@{input-btn-input-prefix-cls} {
+        color: @gray-3;
+        background-color: @gray-0;
+        cursor: not-allowed;
+      }
+      .@{input-prefix-cls} {
+        &__prefix {
+          color: @gray-3;
+          cursor: not-allowed;
+          svg {
+            color: @gray-3;
+            cursor: not-allowed;
+          }
+        }
+
+        &__suffix {
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    .@{input-btn-input-prefix-cls} {
+      background-color: @gray-0;
+    }
+    .@{input-prefix-cls} {
+      &__prefix-disabled {
+        color: @gray-3;
+        cursor: not-allowed;
+        svg {
+          color: @gray-3;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

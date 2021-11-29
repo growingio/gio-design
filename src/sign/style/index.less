@@ -1,0 +1,118 @@
+@import '../../stylesheet/variables/index.less';
+@import './mixin.less';
+
+@sign-prefix-cls: ~'@{component-prefix}-sign';
+@sign-number: ~'@{sign-prefix-cls}__number';
+@sign-hide: ~'@{sign-prefix-cls}--hide';
+
+// Number
+.@{sign-number} {
+  height: 16px;
+  padding: 0 4px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 8px;
+
+  .place();
+  .background.default();
+}
+
+// wrapper
+.@{sign-prefix-cls} {
+  position: relative;
+  display: inline-block;
+
+  &--no-children {
+    .@{sign-number} {
+      position: relative;
+      top: auto;
+      transform: scale(1) translate(0, 0);
+      transform-origin: 50% 50%;
+    }
+  }
+
+  &--hide {
+    &.@{sign-number} {
+      opacity: 0;
+      transition: @transition;
+    }
+  }
+
+  &--top {
+    top: 0;
+    left: 50%;
+    .transform(1, -50%, -50%);
+    transform-origin: 0 0;
+    &.@{sign-hide} {
+      .transform(0, -50%, -50%);
+    }
+  }
+
+  &--right {
+    top: 50%;
+    right: 0;
+    .transform(1, 50%, -50%);
+    transform-origin: 100% 0;
+    &.@{sign-hide} {
+      .transform(0, 50%, -50%);
+    }
+  }
+  &--bottom {
+    bottom: 0;
+    left: 50%;
+    .transform(1, -50%, 50%);
+    transform-origin: 0 100%;
+    &.@{sign-hide} {
+      .transform(0, -50%, 50%);
+    }
+  }
+  &--left {
+    top: 50%;
+    left: 0;
+    .transform(1, -50%, -50%);
+    transform-origin: 0 0;
+    &.@{sign-hide} {
+      .transform(0, -50%, -50%);
+    }
+  }
+
+  &--right-top {
+    top: 0;
+    right: 0;
+    .transform(1, 50%, -50%);
+    transform-origin: 100% 0;
+    &.@{sign-hide} {
+      .transform(0, 50%, -50%);
+    }
+  }
+
+  &--right-bottom {
+    right: 0;
+    bottom: 0;
+    .transform(1, 50%, 50%);
+    transform-origin: 100% 100%;
+    &.@{sign-hide} {
+      .transform(0, 50%, 50%);
+    }
+  }
+  &--left-top {
+    top: 0;
+    left: 0;
+    .transform(1, -50%, -50%);
+    transform-origin: 0 0;
+    &.@{sign-hide} {
+      .transform(0, -50%, -50%);
+    }
+  }
+
+  &--left-bottom {
+    bottom: 0;
+    left: 0;
+    .transform(1, -50%, 50%);
+    transform-origin: 0% 100%;
+    &.@{sign-hide} {
+      .transform(0, -50%, 50%);
+    }
+  }
+}

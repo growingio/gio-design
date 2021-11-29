@@ -1,0 +1,58 @@
+@import '../../stylesheet/variables/index.less';
+
+@page-prefix-cls: ~'@{component-prefix}-page';
+
+.@{page-prefix-cls} {
+  text-align: center;
+  &__image {
+    display: inline-block;
+    width: inherit;
+    margin: 0;
+  }
+
+  &__description {
+    margin: 8px auto 0;
+    color: @gray-5;
+    font-family: 'PingFang SC', sans-serif;
+    text-align: center;
+  }
+  &__footer {
+    margin: 16px 0 0;
+    text-align: center;
+  }
+  &-normal {
+    .@{page-prefix-cls}__description {
+      .text-h2();
+    }
+    .@{page-prefix-cls}__image {
+      width: 450px;
+    }
+  }
+  &-normal&-empty {
+    .@{page-prefix-cls}__description {
+      color: @gray-4;
+      .text-body1();
+    }
+    .@{page-prefix-cls}__image {
+      width: 300px;
+    }
+  }
+
+  &-small {
+    .@{page-prefix-cls}__description {
+      .text-body1();
+    }
+    .@{page-prefix-cls}__image {
+      width: 220px;
+    }
+  }
+  &-small&-empty {
+    .@{page-prefix-cls}__description {
+      color: @gray-4;
+      .text-body1();
+    }
+    .@{page-prefix-cls}__image {
+      width: 150px;
+    }
+  }
+}

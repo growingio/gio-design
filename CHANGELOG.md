@@ -1,3 +1,362 @@
+# [22.2.0](https://github.com/growingio/gio-design/compare/v22.1.0...v22.2.0) (2021-11-25)
+
+
+### Bug Fixes
+
+* **list-picker:** fix multiple value error ([#1526](https://github.com/growingio/gio-design/issues/1526)) ([520f170](https://github.com/growingio/gio-design/commit/520f17078a9931751ce21fa26d63f240db14eef8))
+* **list-picker:** jSON.parse.('') error ([#1528](https://github.com/growingio/gio-design/issues/1528)) ([2d3625f](https://github.com/growingio/gio-design/commit/2d3625f96bd1bde7cee7c4b186c30ef638dcc810))
+
+
+### Features
+
+* **popover:** popover 不再对触发元素包裹 div；popover 默认挂载到 body 上 ([#1527](https://github.com/growingio/gio-design/issues/1527)) ([e186fb0](https://github.com/growingio/gio-design/commit/e186fb00116779dd46cbf5dedbbe4b3f625a13aa))
+
+
+
+# [22.1.0](https://github.com/growingio/gio-design/compare/v22.0.2...v22.1.0) (2021-11-25)
+
+
+### Bug Fixes
+
+* **InputButton:** support input change event ([#1518](https://github.com/growingio/gio-design/issues/1518)) ([d06bd39](https://github.com/growingio/gio-design/commit/d06bd39a86fdaeff595924abfe274a4d6cc17b51))
+* **legacy/dropdown:** fix prefix-cls ([#1514](https://github.com/growingio/gio-design/issues/1514)) ([1b56d47](https://github.com/growingio/gio-design/commit/1b56d47bc42b33c3135ee921b378aa9cfa391db9))
+* **list-picker:** add recent component ([#1522](https://github.com/growingio/gio-design/issues/1522)) ([853048d](https://github.com/growingio/gio-design/commit/853048da3479cfd26d8303c19834d10f193d3d09))
+* **list-picker:** list-picker mutiple controlled error ([#1517](https://github.com/growingio/gio-design/issues/1517)) ([23a1ace](https://github.com/growingio/gio-design/commit/23a1ace12557c3b88e875a0b13d329dec65f66bc))
+* **list-picker:** selection consumer render children ([#1519](https://github.com/growingio/gio-design/issues/1519)) ([0485f54](https://github.com/growingio/gio-design/commit/0485f54ba2ea133db88b4cf5e8f2bc817bea192c))
+* **list:** list option support JSX preview ([#1515](https://github.com/growingio/gio-design/issues/1515)) ([f02637d](https://github.com/growingio/gio-design/commit/f02637d21d975f81b191d4835d19827f62a04896))
+* **select:** fix style error ([#1509](https://github.com/growingio/gio-design/issues/1509)) ([96e8037](https://github.com/growingio/gio-design/commit/96e803767cf1a844712d273ef7b2db6f27a62366))
+* **style:** update InputButton styles ([#1511](https://github.com/growingio/gio-design/issues/1511)) ([9f8af23](https://github.com/growingio/gio-design/commit/9f8af2385cf2aa46330f9423f7d7a198d90f8a50))
+* **table:** fix table filter error ([#1513](https://github.com/growingio/gio-design/issues/1513)) ([a3bde92](https://github.com/growingio/gio-design/commit/a3bde9264a1c1f5c819e5d1f6305eb3e29acd7ba))
+* **table:** fix table scrollbar style ([#1512](https://github.com/growingio/gio-design/issues/1512)) ([3d2b6b0](https://github.com/growingio/gio-design/commit/3d2b6b014681978c0b4a6684cfea06f2f068404e))
+
+
+### Features
+
+* **popover:** add distoryOnHide attribute ([#1516](https://github.com/growingio/gio-design/issues/1516)) ([187aa45](https://github.com/growingio/gio-design/commit/187aa45d2ba1fa233ed33a951f12e7927da01773))
+
+
+
+## [22.0.2](https://github.com/growingio/gio-design/compare/v22.0.1...v22.0.2) (2021-11-22)
+
+
+### Bug Fixes
+
+* **checkbox:** fix color params ([#1497](https://github.com/growingio/gio-design/issues/1497)) ([3f2e640](https://github.com/growingio/gio-design/commit/3f2e640994c4f5917499797d44049bb2b3a93bc2))
+* **InputButton:** fix placeholder issue ([#1496](https://github.com/growingio/gio-design/issues/1496)) ([a690e18](https://github.com/growingio/gio-design/commit/a690e18b787f98fb0257141dcaa2abef6032615c))
+* **list-picker:** disabledTooltip position errot ([#1500](https://github.com/growingio/gio-design/issues/1500)) ([1149827](https://github.com/growingio/gio-design/commit/114982767a995d06e5c29992af75a7f44c51ad8c))
+* **popover:** async render ([#1495](https://github.com/growingio/gio-design/issues/1495)) ([2d06edc](https://github.com/growingio/gio-design/commit/2d06edc6b8dc5c582fec26f183cee98f9ae131c7))
+* **popper:** fix popper position error ([#1501](https://github.com/growingio/gio-design/issues/1501)) ([6308e5b](https://github.com/growingio/gio-design/commit/6308e5b2f7fba7e306f0c720d8422a1894ee6ed4))
+
+
+
+## [22.0.1](https://github.com/growingio/gio-design/compare/22.0.0...22.0.1) (2021-11-19)
+
+
+### Bug Fixes
+
+* **card:** css stylelint ([#1493](https://github.com/growingio/gio-design/issues/1493)) ([c3c1d69](https://github.com/growingio/gio-design/commit/c3c1d695d296dd17380c94bc5b8b04bea726fa8e))
+* **date-picker, time-picker,past-time-picker:** fix input params ([#1488](https://github.com/growingio/gio-design/issues/1488)) ([2953c69](https://github.com/growingio/gio-design/commit/2953c6930dbfdb1766190916f54647853a5fbf62))
+* **dateRangePicker:** fix use controlled state ([#1490](https://github.com/growingio/gio-design/issues/1490)) ([890466e](https://github.com/growingio/gio-design/commit/890466ea45dba1c35bc5ba0088295de7a1bf76ca))
+* **dropdown:** fix style ([#1491](https://github.com/growingio/gio-design/issues/1491)) ([f3a8786](https://github.com/growingio/gio-design/commit/f3a8786db1cc858d4d768b06a276e031b112300c))
+* **filter-picker:** fix filter-picker style ([#1489](https://github.com/growingio/gio-design/issues/1489)) ([05eba70](https://github.com/growingio/gio-design/commit/05eba70612964bf92fb715231ea9442185baf9d7))
+* **inputbutton:** update inputbutton styles ([#1486](https://github.com/growingio/gio-design/issues/1486)) ([c4577a8](https://github.com/growingio/gio-design/commit/c4577a861bc734b4b599732c7b704efebef715ed))
+* **listpicker:** listPicker JSX ([#1481](https://github.com/growingio/gio-design/issues/1481)) ([a499a2d](https://github.com/growingio/gio-design/commit/a499a2d58ec004f855c4594b7f83800f2a41fc6a))
+* **switch, radio:** support jsx ([#1484](https://github.com/growingio/gio-design/issues/1484)) ([5558a2b](https://github.com/growingio/gio-design/commit/5558a2bfca23082815163e189fe78835de188043))
+* **table:** fix error ([#1479](https://github.com/growingio/gio-design/issues/1479)) ([2187767](https://github.com/growingio/gio-design/commit/218776785d6c2e49ba390dbf86f30cbdd09da88d))
+
+
+### Features
+
+* **list-picker:** list-picker multiple mode ([#1487](https://github.com/growingio/gio-design/issues/1487)) ([f4666bc](https://github.com/growingio/gio-design/commit/f4666bc3557419af9d5272a4c3ee9f39408149b8))
+
+
+### Performance Improvements
+
+* **table:** fix style ([#1483](https://github.com/growingio/gio-design/issues/1483)) ([01af759](https://github.com/growingio/gio-design/commit/01af7595173c746454de42ab1d1c9628cbe59665))
+
+
+
+# [22.0.0](https://github.com/growingio/gio-design/compare/v21.9.4...v22.0.0) (2021-11-17)
+
+
+### Bug Fixes
+
+* **button:** fix export method ([#1434](https://github.com/growingio/gio-design/issues/1434)) ([4710118](https://github.com/growingio/gio-design/commit/4710118daba5f3b325b554c2e2e1cd8f7a2a1e21))
+* **checkbox, toggle, radio, switch:** fix prefixCls & style ([#1397](https://github.com/growingio/gio-design/issues/1397)) ([31ce6b3](https://github.com/growingio/gio-design/commit/31ce6b30dd9f4a61048e4e423b7babf4332beab4))
+* **checkbox:** fix prefixCls & style ([#1392](https://github.com/growingio/gio-design/issues/1392)) ([6392c3f](https://github.com/growingio/gio-design/commit/6392c3f6fe86e32f573ff95d20421d11e22971db))
+* **DatePicker, TimePicker:** fix style ([#1453](https://github.com/growingio/gio-design/issues/1453)) ([9991fad](https://github.com/growingio/gio-design/commit/9991fad7a79ad9273b555a149536ee9b2de89329))
+* **divider:** fix some style of divider component ([#1391](https://github.com/growingio/gio-design/issues/1391)) ([60e41c6](https://github.com/growingio/gio-design/commit/60e41c6d48fcb97c2fb91e2d18736cca4ff3d7d0))
+* **inputbutton:** text align should be left ([#1470](https://github.com/growingio/gio-design/issues/1470)) ([f61ea44](https://github.com/growingio/gio-design/commit/f61ea4422b7c2db90875b8f4a963b3d1c3eabba1))
+* **input:** Fix input feedbacks ([#1419](https://github.com/growingio/gio-design/issues/1419)) ([7da7364](https://github.com/growingio/gio-design/commit/7da73643b7baf29039f8f32a2cf8815d9944e49a))
+* **input:** fix input style feedbacks ([#1425](https://github.com/growingio/gio-design/issues/1425)) ([52c2000](https://github.com/growingio/gio-design/commit/52c200044879041adaf7177831dee54e71847907))
+* **Input:** support onPressEnter ([#1476](https://github.com/growingio/gio-design/issues/1476)) ([4418d99](https://github.com/growingio/gio-design/commit/4418d998857402012960cb9bcc74c59c42abb511))
+* **link, button:** cursor is 'not-allowed' when disabled and loading ([#1373](https://github.com/growingio/gio-design/issues/1373)) ([b128824](https://github.com/growingio/gio-design/commit/b128824b3b92797e5754764cf0a8807a66472062))
+* **list:** fix error of selection component ([#1460](https://github.com/growingio/gio-design/issues/1460)) ([3a17098](https://github.com/growingio/gio-design/commit/3a170982fc1c7bdd6f4a1b5574bf4731157d528c))
+* **pagination:** fix TypeError ([#1472](https://github.com/growingio/gio-design/issues/1472)) ([e19fe2c](https://github.com/growingio/gio-design/commit/e19fe2cc523c5683af1069a072bf4cdf5639f199))
+* **pagination:** import dependent style file ([#1437](https://github.com/growingio/gio-design/issues/1437)) ([0f4b524](https://github.com/growingio/gio-design/commit/0f4b524b677fdf3031e44dacf5bc3fc16c4fc138))
+* **popover:** render Portal ([#1464](https://github.com/growingio/gio-design/issues/1464)) ([1e8458a](https://github.com/growingio/gio-design/commit/1e8458aa48071b145c921fc98ad428adf7695834))
+* **Popover:** support bind ref with children ([#1473](https://github.com/growingio/gio-design/issues/1473)) ([d56229a](https://github.com/growingio/gio-design/commit/d56229a8d7b27eba756ac6559781689b85952a22))
+* **Popover:** support disabled ([#1475](https://github.com/growingio/gio-design/issues/1475)) ([d28a8c0](https://github.com/growingio/gio-design/commit/d28a8c0e82baa904fe6df3bbeb6647091278db84))
+* **scripts:** fix build ([#1459](https://github.com/growingio/gio-design/issues/1459)) ([3dfca86](https://github.com/growingio/gio-design/commit/3dfca86137fdd6c7cc9ba524e145e5e624dcd0e0))
+* **table, pagination:** 替换新组件及样式 ([#1463](https://github.com/growingio/gio-design/issues/1463)) ([4681bdc](https://github.com/growingio/gio-design/commit/4681bdc296c3114ca0fd50d4259dc0563453b0ea))
+* **table:** fix title info font-weight ([#1442](https://github.com/growingio/gio-design/issues/1442)) ([f20464a](https://github.com/growingio/gio-design/commit/f20464adf0b350395989f7db6427f32c0becc491))
+
+
+### Code Refactoring
+
+* move components to src ([#1354](https://github.com/growingio/gio-design/issues/1354)) ([b90e301](https://github.com/growingio/gio-design/commit/b90e301ac6165fac54a2be954ebf54b668db28ed))
+
+
+### Features
+
+* **alert:** add alert component ([#1415](https://github.com/growingio/gio-design/issues/1415)) ([601e069](https://github.com/growingio/gio-design/commit/601e069c21ca2bcb0197d3d22a485e03c0108e04))
+* **button:** add button component ([#1358](https://github.com/growingio/gio-design/issues/1358)) ([046fa58](https://github.com/growingio/gio-design/commit/046fa58d76b76c7fac1a5ba895f0092770ebf5a0))
+* **button:** IconButton was mounted in Button ([#1404](https://github.com/growingio/gio-design/issues/1404)) ([1090f89](https://github.com/growingio/gio-design/commit/1090f898d733ce4a88b0f0777b231a206a6cedc2))
+* **cascader:** add cascader component and upgrade list ([#1446](https://github.com/growingio/gio-design/issues/1446)) ([695e2dc](https://github.com/growingio/gio-design/commit/695e2dce879adfd35d270d637bfa9983f63e721d))
+* **checkbox:** add checkbox & checkbox Group ([#1371](https://github.com/growingio/gio-design/issues/1371)) ([4135236](https://github.com/growingio/gio-design/commit/4135236103caff90148c1fb98b3b1d144d18c9cb))
+* **Confirm:** add confirm component ([#1409](https://github.com/growingio/gio-design/issues/1409)) ([3dfb19c](https://github.com/growingio/gio-design/commit/3dfb19c35bd1fe7a76a2111189905d16108cbd04))
+* **DatePicker:**  add new DatePicker, DateRangePicker ([#1427](https://github.com/growingio/gio-design/issues/1427)) ([012f195](https://github.com/growingio/gio-design/commit/012f195e28d7c765ada9c86bb18a5ec3a480bdc0))
+* **Divider:** add the divider component  ([#1378](https://github.com/growingio/gio-design/issues/1378)) ([90598f5](https://github.com/growingio/gio-design/commit/90598f5cb05d09b4299f58d5e0a6059b3e22b2f4))
+* **drawer:** add drawer component ([#1416](https://github.com/growingio/gio-design/issues/1416)) ([dc4cde5](https://github.com/growingio/gio-design/commit/dc4cde5663c363bffed127a25cf82592bdf5c083))
+* **hooks:** add useControlled State ([#1355](https://github.com/growingio/gio-design/issues/1355)) ([4648d23](https://github.com/growingio/gio-design/commit/4648d231388290c233d06b96b3a0501e075c38f9))
+* **input:** add new input and search bar component ([#1396](https://github.com/growingio/gio-design/issues/1396)) ([fa4c577](https://github.com/growingio/gio-design/commit/fa4c5775f772d8b60c98a2e02167893f612febb0))
+* **link:** add link component ([#1360](https://github.com/growingio/gio-design/issues/1360)) ([c4281f8](https://github.com/growingio/gio-design/commit/c4281f8688e197f2c02c483928fa656f89d5a4ad))
+* **list-picker:** add list-picker ([#1461](https://github.com/growingio/gio-design/issues/1461)) ([c5bc076](https://github.com/growingio/gio-design/commit/c5bc0764d153aa9a260451b6b46ba7d914ca4d2e))
+* **list-picker:** move list-picker list-selector to legacy ([#1454](https://github.com/growingio/gio-design/issues/1454)) ([ef58e6b](https://github.com/growingio/gio-design/commit/ef58e6b9a8a85460bf04838c926722bac962bc0d))
+* **list:** add list ([#1405](https://github.com/growingio/gio-design/issues/1405)) ([be6ddb5](https://github.com/growingio/gio-design/commit/be6ddb5c486de885fd07f4127fdcf6be5ea7fde0))
+* **listpicker:** add list-picker demo ([#1474](https://github.com/growingio/gio-design/issues/1474)) ([00b89f7](https://github.com/growingio/gio-design/commit/00b89f78d225b464c59f610fd558a8c3c3cb40ad))
+* **Loading:** add new Loading component ([#1424](https://github.com/growingio/gio-design/issues/1424)) ([2aa4034](https://github.com/growingio/gio-design/commit/2aa4034e08c56b2c95e605f2d961120f45effdbf))
+* **modal:** add modal component ([#1400](https://github.com/growingio/gio-design/issues/1400)) ([74a0d9e](https://github.com/growingio/gio-design/commit/74a0d9e3c93ac014fad08337a273896b3bb07844))
+* **pagination:** pagination 组件支持国际化 ([#1455](https://github.com/growingio/gio-design/issues/1455)) ([a5f6f0e](https://github.com/growingio/gio-design/commit/a5f6f0e9edb76ac900665df8a6142cd57df241fd))
+* **panel:** add panel component ([#1436](https://github.com/growingio/gio-design/issues/1436)) ([af96550](https://github.com/growingio/gio-design/commit/af96550e00af2b7238a64a605db3e48f65a8786a))
+* **past-time-picker:**  add past-time-picker ([#1443](https://github.com/growingio/gio-design/issues/1443)) ([3a2b779](https://github.com/growingio/gio-design/commit/3a2b77973ff2b84cef5a274168ddad0c8d843d98))
+* **popover:** add document click case ([#1431](https://github.com/growingio/gio-design/issues/1431)) ([13a9c87](https://github.com/growingio/gio-design/commit/13a9c871d4856c525a0c73eb0ed23032e52b6fdd))
+* **Popover:** add popover  ([#1394](https://github.com/growingio/gio-design/issues/1394)) ([0dd7c39](https://github.com/growingio/gio-design/commit/0dd7c39832125a723fb81b9e6cff199a50177208))
+* **radio:** add radio component ([#1372](https://github.com/growingio/gio-design/issues/1372)) ([0e96222](https://github.com/growingio/gio-design/commit/0e962227a175ad0e865e78a047412fee772518de))
+* **select:** add select component ([#1429](https://github.com/growingio/gio-design/issues/1429)) ([87639e5](https://github.com/growingio/gio-design/commit/87639e5d5ce4541f64211f3670d8c199ce1329ef))
+* **storybook:** add storybook breadcrumbs checkbox divider radio switch toggle ([#1393](https://github.com/growingio/gio-design/issues/1393)) ([5421fc1](https://github.com/growingio/gio-design/commit/5421fc12601ef93bbaa894de98551b0c0ad3bce4))
+* **stylesheet:** add less variables & mixins ([#1357](https://github.com/growingio/gio-design/issues/1357)) ([5f4852d](https://github.com/growingio/gio-design/commit/5f4852dccd3227d1fffc672eaeecfbea3e6d8a21))
+* **switch:** add switch component ([#1383](https://github.com/growingio/gio-design/issues/1383)) ([51976a7](https://github.com/growingio/gio-design/commit/51976a726224873bc7c71fa128581e569a0b19a2))
+* **table:** table 国际化 ([#1458](https://github.com/growingio/gio-design/issues/1458)) ([7f96b7a](https://github.com/growingio/gio-design/commit/7f96b7a6d5eb4c5b4320faf24374e77b58654850))
+* **tabs:** add tabs component ([#1377](https://github.com/growingio/gio-design/issues/1377)) ([169c9a7](https://github.com/growingio/gio-design/commit/169c9a7e67c60b3fee6030c873ff074199e4755f)), closes [#1420](https://github.com/growingio/gio-design/issues/1420)
+* **timePicker:** timePicker =< staticTimePicker, add new timePicker ([#1430](https://github.com/growingio/gio-design/issues/1430)) ([b58df1d](https://github.com/growingio/gio-design/commit/b58df1d69f4411d4e0c85cca6a8077d652231876))
+* **toggle:** add toggle component ([#1374](https://github.com/growingio/gio-design/issues/1374)) ([a9bd24e](https://github.com/growingio/gio-design/commit/a9bd24e829a5c07877d847fcb34e3b64d71d7704))
+* **tooltip:** add new tooltip ([#1399](https://github.com/growingio/gio-design/issues/1399)) ([da94622](https://github.com/growingio/gio-design/commit/da946227927a6ebfb97be430ef0cbdcacd395e2b))
+* **upload:** add fileList prop ([f6f1651](https://github.com/growingio/gio-design/commit/f6f1651f1ab4e08473217bdb59904771108dc7a2))
+* **utils:** add withRef hoc ([#1356](https://github.com/growingio/gio-design/issues/1356)) ([86312e5](https://github.com/growingio/gio-design/commit/86312e526ac0798c4728f3eb93fbb9a17b9636b2))
+
+
+### BREAKING CHANGES
+
+* change the importing path of components.
+Using DesignContext for global configuration.
+
+
+
+## [21.9.4](https://github.com/growingio/gio-design/compare/v21.9.3...v21.9.4) (2021-09-24)
+
+
+### Bug Fixes
+
+* **cascader:** fix onVisibleChange not trigger ([#1292](https://github.com/growingio/gio-design/issues/1292)) ([72b8236](https://github.com/growingio/gio-design/commit/72b823651bcb6938ba740ea7619586df9f2716f1))
+* **select:** auto width error ([#1301](https://github.com/growingio/gio-design/issues/1301)) ([9ec7f85](https://github.com/growingio/gio-design/commit/9ec7f85ba2cf87928204b2014a6ec91fbbbf13c0))
+* **Upload:** resolve the disable issue ([#1303](https://github.com/growingio/gio-design/issues/1303)) ([b8af8a9](https://github.com/growingio/gio-design/commit/b8af8a99ffe40fe39d9ce08e04951348076b3999))
+
+
+
+## [21.9.3](https://github.com/growingio/gio-design/compare/v21.9.2...v21.9.3) (2021-09-18)
+
+
+### Bug Fixes
+
+* **pagination:** fix the button size ([#1289](https://github.com/growingio/gio-design/issues/1289)) ([8dbde55](https://github.com/growingio/gio-design/commit/8dbde555c2791f25b04a32c986d2cebc2934f339))
+
+
+
+## [21.9.2](https://github.com/growingio/gio-design/compare/v21.9.1...v21.9.2) (2021-09-18)
+
+
+### Bug Fixes
+
+* Select.tsx add searchType 'normal' and invoke clearInput ([#1276](https://github.com/growingio/gio-design/issues/1276)) ([fd93c4e](https://github.com/growingio/gio-design/commit/fd93c4ee77986238021a4f71d12393c22ce05de5))
+* **pagination:** fix pagination style ([8b20c2f](https://github.com/growingio/gio-design/commit/8b20c2fa069285c1b84861e2d96a6bbf9c8ee770))
+* **table:** remove a debounceLoading of Table ([238f6fc](https://github.com/growingio/gio-design/commit/238f6fcc3db94a5ecd95a741bb2e6c0b755e4640))
+
+
+
+# [21.9.1](https://github.com/growingio/gio-design/compare/v21.8.7...v21.9.1) (2021-09-09)
+
+
+### Bug Fixes
+
+* **input:** change input size small height from 32px to 30px ([#1265](https://github.com/growingio/gio-design/issues/1265)) ([b1389e7](https://github.com/growingio/gio-design/commit/b1389e78bd729a34c91978121b55b1c642173302))
+* **pagination:** fix the pagination style ([#1247](https://github.com/growingio/gio-design/issues/1247)) ([06798b7](https://github.com/growingio/gio-design/commit/06798b762ca02ca2b50ccce3bea60a8e7f1c3e41))
+* **table:** add title props ([5f96b3c](https://github.com/growingio/gio-design/commit/5f96b3c02d4dc766d2dd074e70582af1d318256b))
+* **upload:** fix the upload style ([#1268](https://github.com/growingio/gio-design/issues/1268)) ([8726a1a](https://github.com/growingio/gio-design/commit/8726a1aa872af9c67d0b932c6636a747a023074e))
+
+
+### Features
+
+* **locale:** date range picker support english ([#1226](https://github.com/growingio/gio-design/issues/1226)) ([f5ed042](https://github.com/growingio/gio-design/commit/f5ed0422883dc863e4f5990f70dbc18a66b25c1d))
+* **locale:** selector and picker support english ([876e316](https://github.com/growingio/gio-design/commit/876e316cc5603e93702d0b6c75a12b8f676b3043))
+* **table:** add prop expandable ([#1244](https://github.com/growingio/gio-design/issues/1244)) ([31e678c](https://github.com/growingio/gio-design/commit/31e678c938a93063c40e8eaa36a9d5fba4a25c81))
+* **title:** feat the title ([00cab89](https://github.com/growingio/gio-design/commit/00cab899b1d64177ad5bcfa3a1c9cec657472b47))
+* **typography:** add text component ([4ee91a3](https://github.com/growingio/gio-design/commit/4ee91a39ec16a7f60116cb3894e2a5b6399a41e4))
+* **upload:** support control fileList ([#1255](https://github.com/growingio/gio-design/issues/1255)) ([f21083e](https://github.com/growingio/gio-design/commit/f21083e62052c4ac26d4d1d1672cbf5985d5f458))
+
+
+### BREAKING CHANGES
+
+* **input:** change input size small height from 32px to 30px
+
+
+
+## [21.8.7](https://github.com/growingio/gio-design/compare/v21.8.6...v21.8.7) (2021-08-30)
+
+
+### Bug Fixes
+
+* **cascader:** controlled error ([#1220](https://github.com/growingio/gio-design/issues/1220)) ([b6c7868](https://github.com/growingio/gio-design/commit/b6c7868f4a00f14e510d8933588805a2448e6b26))
+* **select:** select Multiple error ([#1216](https://github.com/growingio/gio-design/issues/1216)) ([f0a0df7](https://github.com/growingio/gio-design/commit/f0a0df7e27f54e9f29cf9d24c966e5468b56ced2))
+* **text:** empty error ([#1222](https://github.com/growingio/gio-design/issues/1222)) ([f183439](https://github.com/growingio/gio-design/commit/f183439d3390d96fbab00c31b5305c7e89a034a9))
+
+
+### Features
+
+* **avatar:** feat avatar test ([#1204](https://github.com/growingio/gio-design/issues/1204)) ([85ecfb1](https://github.com/growingio/gio-design/commit/85ecfb1a29c74b19646ca46c14ad8dd5a292ed60))
+* **locale:** date picker support english ([d4346b4](https://github.com/growingio/gio-design/commit/d4346b41416ba7f32d08011bd40cd96f8d691054))
+* **menu:** feat menu uses scroll bar ([#1224](https://github.com/growingio/gio-design/issues/1224)) ([64ac093](https://github.com/growingio/gio-design/commit/64ac0930add50b870b10d0aa9542f93aa9e8be63))
+* **table:** improve the table version ([#1221](https://github.com/growingio/gio-design/issues/1221)) ([1764387](https://github.com/growingio/gio-design/commit/17643871bedf3e134dbe08d20ffe130cd6847b38))
+* **toast:** feat toast test ([#1206](https://github.com/growingio/gio-design/issues/1206)) ([1433e95](https://github.com/growingio/gio-design/commit/1433e95d680b0fed0ade752c8d7c1d17bd2e1e30))
+* **upload:** feat the file upload ([#1203](https://github.com/growingio/gio-design/issues/1203)) ([1075606](https://github.com/growingio/gio-design/commit/1075606beb88c49e273ad13b5cacaa20264af385))
+
+
+
+## [21.8.6](https://github.com/growingio/gio-design/compare/v21.8.5...v21.8.6) (2021-08-24)
+
+
+### Features
+
+* **selector:** do not allow clear when disabled ([83b477d](https://github.com/growingio/gio-design/commit/83b477daa67a6213aaebadaed19fe44eb7e26473)), closes [#1205](https://github.com/growingio/gio-design/issues/1205)
+
+
+
+## [21.8.5](https://github.com/growingio/gio-design/compare/v21.8.4...v21.8.5) (2021-08-19)
+
+
+### Bug Fixes
+
+* **modal:** add margin top and bottom ([#1186](https://github.com/growingio/gio-design/issues/1186)) ([194a520](https://github.com/growingio/gio-design/commit/194a520c7b71b1468c2901c5fdef55b3fc350691))
+* **select:** align center ([597bfda](https://github.com/growingio/gio-design/commit/597bfda4702b6e37c0405e4b276c6cacb9957aed))
+* **upload:** fix the prevent file upload ([0aba2d6](https://github.com/growingio/gio-design/commit/0aba2d62e361013da381dbfd33ffa498c2dffff5))
+
+
+### Features
+
+* **upload:** support directory and multiple upload ([#1178](https://github.com/growingio/gio-design/issues/1178)) ([47f4544](https://github.com/growingio/gio-design/commit/47f4544c59d78579a7ba63cbda5a72e49995827b))
+
+
+
+## [21.8.4](https://github.com/growingio/gio-design/compare/v21.8.3...v21.8.4) (2021-08-13)
+
+
+### Bug Fixes
+
+* **date-picker, date-range-picker:** add `box-sizing: content-box` style ([#1184](https://github.com/growingio/gio-design/issues/1184)) ([d685252](https://github.com/growingio/gio-design/commit/d685252c455911272e1cfb393213eca59909bbab))
+* **text:** change text children type ([#1181](https://github.com/growingio/gio-design/issues/1181)) ([69fdfef](https://github.com/growingio/gio-design/commit/69fdfefa90bbddcd6567b5ec2d3b315b5fef8fa0))
+
+
+### Features
+
+* **DateRangeSelector:** support onClear callback functions ([#1180](https://github.com/growingio/gio-design/issues/1180)) ([ef600ab](https://github.com/growingio/gio-design/commit/ef600ab97d6267eab415393356dc2372ad0e8275))
+
+
+
+## [21.8.3](https://github.com/growingio/gio-design/compare/v21.8.2...v21.8.3) (2021-08-12)
+
+
+### Bug Fixes
+
+* **time-picker:** add background color for actived item ([7e0a43e](https://github.com/growingio/gio-design/commit/7e0a43e45d68ff1b1625a1505bfd030d7f158198))
+
+
+### Features
+
+* **modal:** modify modal style ([bd35357](https://github.com/growingio/gio-design/commit/bd353576daca94c3d165fbb04a3928ec341f06cc))
+* **modal:** modify modal style ([557192a](https://github.com/growingio/gio-design/commit/557192a221944bd21685d1296ef2acdadd3021a8))
+* **selector:** add allowClear prop to disable clear ([c3e7ed1](https://github.com/growingio/gio-design/commit/c3e7ed1906df82c028b389ac516eebf6da11dabb))
+
+
+
+## [21.8.2](https://github.com/growingio/gio-design/compare/v21.8.1...v21.8.2) (2021-08-09)
+
+
+### Bug Fixes
+
+* **text:** fix the text error ([#1164](https://github.com/growingio/gio-design/issues/1164)) ([9085b35](https://github.com/growingio/gio-design/commit/9085b359d7fc089e73ea39cbe11b7c876887ac61))
+* **upload:** change drag icon to svg ([#1165](https://github.com/growingio/gio-design/issues/1165)) ([47e7ef3](https://github.com/growingio/gio-design/commit/47e7ef372b43d0d5ff345ad8af418904c91f2b3a))
+
+
+
+## [21.8.1](https://github.com/growingio/gio-design/compare/v21.8.0...v21.8.1) (2021-08-06)
+
+
+### Features
+
+* **DateRangeSelector:** add disabledDate props([#1166](https://github.com/growingio/gio-design/issues/1166)) ([c06d5e7](https://github.com/growingio/gio-design/commit/c06d5e77bf5aba1a378de3f05b37935eefbb8e70))
+* add time picker and time selector components ([c2da398](https://github.com/growingio/gio-design/commit/c2da39868aaf24094218f4a6dc0f87dbf56cab67))
+
+
+
+# [21.8.0](https://github.com/growingio/gio-design/compare/v21.7.7...v21.8.0) (2021-08-02)
+
+
+### Bug Fixes
+
+* **loading:** add prop's classname to loading wrapper ([#1149](https://github.com/growingio/gio-design/issues/1149)) ([6f8c21b](https://github.com/growingio/gio-design/commit/6f8c21bccb99fe06f0b220f566903439b38340a1))
+
+
+### Features
+
+* **date-range-picker:** add defaultViewDates prop for setting view dates ([#1156](https://github.com/growingio/gio-design/issues/1156)) ([cab3bdb](https://github.com/growingio/gio-design/commit/cab3bdb6a06d5de1ed4ca9d089f73ac62a4e9ed8))
+* **steps:** update steps style ([#1153](https://github.com/growingio/gio-design/issues/1153)) ([57e0f84](https://github.com/growingio/gio-design/commit/57e0f84bee58fcf2537dab70655409b9ed3a3c29))
+* **upload:** add emptyImage prop ([190ec67](https://github.com/growingio/gio-design/commit/190ec675bb97f2af57f89fc06c7e0b91634f25b7))
+
+
+
+## [21.7.7](https://github.com/growingio/gio-design/compare/v21.7.6...v21.7.7) (2021-07-29)
+
+
+### Features
+
+* **pickers:** add list picker component ([a9107eb](https://github.com/growingio/gio-design/commit/a9107eb9ad908b41afb8ad60c05ec5b0ca851709))
+* add date range selector component ([a4f5ab5](https://github.com/growingio/gio-design/commit/a4f5ab5eeff2eff565c9dcb7c11e7e3b4caed0a8))
+
+
+
+## [21.7.6](https://github.com/growingio/gio-design/compare/v21.7.5...v21.7.6) (2021-07-28)
+
+
+### Bug Fixes
+
+* add prefix for new date picker class ([9b15caa](https://github.com/growingio/gio-design/commit/9b15caaa8fed50e3e6a9bd7964ad58bf62ba43c9))
+
+
+
+## [21.7.5](https://github.com/growingio/gio-design/compare/v21.7.4...v21.7.5) (2021-07-27)
+
+
+### Bug Fixes
+
+* fix the prefix name of components' style ([c90a64e](https://github.com/growingio/gio-design/commit/c90a64ef0ac834c64b3bf101b76f0cda7b7e8bb8))
+
+
+### Reverts
+
+* chore(deps): bump rc-upload from 3.2.0 to 4.3.1 [#1143](https://github.com/growingio/gio-design/issues/1143) ([e10af78](https://github.com/growingio/gio-design/commit/e10af781e3480bc0bdcd8a1e4eaceecfb777f919))
+
+
+
 ## [21.7.3](https://github.com/growingio/gio-design/compare/v21.7.3...v21.7.4) (2021-07-26)
 
 

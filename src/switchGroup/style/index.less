@@ -1,0 +1,106 @@
+@import '../../stylesheet/index.less';
+@import '../../stylesheet/mixin/index.less';
+@import '../../stylesheet/variables/index.less';
+
+@switch-prefix-cls: ~'@{component-prefix}-switch';
+
+@switch-disabled: ~'@{switch-prefix-cls}-disabled';
+@switch__wrapper: ~'@{switch-prefix-cls}__wrapper';
+@switch__wrapper__checked: ~'@{switch-prefix-cls}__wrapper__checked';
+@switch__wrapper__disabled: ~'@{switch-prefix-cls}__wrapper__disabled';
+@switch__group: ~'@{switch-prefix-cls}__group';
+
+.@{switch__wrapper} {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  color: @gray-5;
+  font-weight: normal;
+  white-space: nowrap;
+  cursor: pointer;
+
+  @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    input[type='radio'].@{switch-prefix-cls} {
+      display: none;
+    }
+    input[type='radio'].@{switch-disabled} {
+      display: none;
+    }
+  }
+
+  &:hover {
+    color: @blue-3;
+  }
+
+  &__disabled {
+    cursor: not-allowed;
+    &:hover {
+      color: @gray-3;
+    }
+  }
+}
+
+.@{switch__wrapper__checked} {
+  color: @blue-3;
+  background: @gray-1;
+}
+
+.@{switch__wrapper__disabled} {
+  color: @gray-3;
+  background: @gray-1;
+}
+
+.@{switch-prefix-cls} {
+  position: relative;
+  top: 0;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: none;
+  cursor: pointer;
+
+  & + * {
+    display: inline-block;
+    padding: 0 12px;
+    font-weight: normal;
+    font-size: 14px;
+    font-style: normal;
+  }
+}
+
+.@{switch-disabled} {
+  background-color: @gray-1;
+  border-color: @gray-2;
+  box-shadow: none;
+}
+
+.@{switch__group} {
+  @switch-small-height: 28px;
+  @switch-normal-height: 34px;
+
+  display: inline-flex;
+  justify-content: flex-start;
+  border: 1px solid @gray-2;
+  border-radius: 4px;
+
+  &_small {
+    height: @switch-small-height;
+    line-height: @switch-small-height;
+  }
+
+  &_normal {
+    height: @switch-normal-height;
+    line-height: @switch-normal-height;
+  }
+
+  label:nth-child(n + 2) {
+    border-left: 1px solid @gray-2;
+  }
+}

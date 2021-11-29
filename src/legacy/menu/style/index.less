@@ -1,0 +1,164 @@
+@import '../../../stylesheet/index.less';
+@import './state.less';
+@import './mixin.less';
+@import './layout.less';
+
+@menu-prefix-cls-legacy: ~'@{component-prefix}-menu-legacy';
+@menu-icon-cls: ~'@{menu-prefix-cls-legacy}__icon';
+
+.@{menu-prefix-cls-legacy} {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: @color-text-menu-normal;
+  line-height: 0;
+  list-style: none;
+  outline: none;
+  user-select: none;
+  .scrollbar();
+
+  &-title {
+    padding: 8px 20px;
+    color: #313e75;
+    font-weight: @weight-font-medium;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .@{menu-icon-cls} {
+    margin-right: 12px;
+  }
+
+  &-overflowed-submenu {
+    border-radius: 4px;
+  }
+
+  &-collapse {
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+  }
+
+  &-item-group-list {
+    margin: 0;
+    padding: 0;
+  }
+
+  &-item-group-title {
+    padding: 0 10px;
+    color: @color-text-menu-sub-menu;
+    line-height: 1.5;
+  }
+
+  &-horizontal&-sub {
+    min-width: 160px;
+    margin-top: 0;
+  }
+
+  &-item-divider {
+    height: 1px;
+    margin: 8px;
+    padding: 0;
+    overflow: hidden;
+    line-height: 0;
+    list-style: none;
+    background-color: #dfe4ee;
+  }
+
+  &-open {
+    &-slide-up-enter,
+    &-slide-up-appear {
+      .effect();
+      opacity: 0;
+      animation-play-state: paused;
+      animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
+    }
+
+    &-slide-up-leave {
+      .effect();
+      opacity: 1;
+      animation-play-state: paused;
+      animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+    }
+
+    &-slide-up-enter&-slide-up-enter-active,
+    &-slide-up-appear&-slide-up-appear-active {
+      animation-name: gioMenuOpenSlideUpIn;
+      animation-play-state: running;
+    }
+
+    &-slide-up-leave&-slide-up-leave-active {
+      animation-name: gioMenuOpenSlideUpOut;
+      animation-play-state: running;
+    }
+
+    @keyframes gioMenuOpenSlideUpIn {
+      0% {
+        transform: scaleY(0);
+        transform-origin: 0% 0%;
+        opacity: 0;
+      }
+      100% {
+        transform: scaleY(1);
+        transform-origin: 0% 0%;
+        opacity: 1;
+      }
+    }
+    @keyframes gioMenuOpenSlideUpOut {
+      0% {
+        transform: scaleY(1);
+        transform-origin: 0% 0%;
+        opacity: 1;
+      }
+      100% {
+        transform: scaleY(0);
+        transform-origin: 0% 0%;
+        opacity: 0;
+      }
+    }
+
+    &-zoom-enter,
+    &-zoom-appear {
+      opacity: 0;
+      animation-play-state: paused;
+      animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
+      .effect();
+    }
+
+    &-zoom-leave {
+      .effect();
+      animation-play-state: paused;
+      animation-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+    }
+
+    &-zoom-enter&-zoom-enter-active,
+    &-zoom-appear&-zoom-appear-active {
+      animation-name: gioMenuOpenZoomIn;
+      animation-play-state: running;
+    }
+
+    &-zoom-leave&-zoom-leave-active {
+      animation-name: gioMenuOpenZoomOut;
+      animation-play-state: running;
+    }
+
+    @keyframes gioMenuOpenZoomIn {
+      0% {
+        transform: scale(0, 0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1, 1);
+        opacity: 1;
+      }
+    }
+    @keyframes gioMenuOpenZoomOut {
+      0% {
+        transform: scale(1, 1);
+      }
+      100% {
+        transform: scale(0, 0);
+        opacity: 0;
+      }
+    }
+  }
+}

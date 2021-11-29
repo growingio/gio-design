@@ -1,0 +1,50 @@
+@import '../../../stylesheet/index.less';
+
+@empty-prefix-cls-legacy: ~'@{component-prefix}-empty-legacy';
+
+.@{empty-prefix-cls-legacy} {
+  text-align: center;
+
+  &__image {
+    display: inline-block;
+    width: 300px;
+    height: 200px;
+    margin: 0;
+  }
+
+  &__description {
+    margin: 0;
+    color: @palette-black-4;
+    font-size: 14px;
+    font-family: 'PingFang SC', sans-serif;
+    line-height: 22px;
+    text-align: center;
+  }
+
+  &__footer {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.@{empty-prefix-cls-legacy}--large {
+  .@{empty-prefix-cls-legacy}__image {
+    width: 300px;
+    height: 200px;
+  }
+
+  .@{empty-prefix-cls-legacy}__footer {
+    margin-top: 16px;
+  }
+}
+
+.@{empty-prefix-cls-legacy}--small {
+  .@{empty-prefix-cls-legacy}__image {
+    width: 150px;
+    height: 100px;
+  }
+
+  .@{empty-prefix-cls-legacy}__footer {
+    margin-top: 12px;
+  }
+}

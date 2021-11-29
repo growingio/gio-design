@@ -1,0 +1,167 @@
+@import (reference) '../../stylesheet/variables/index.less';
+
+@button-prefix-cls: ~'@{component-prefix}-button';
+@icon-button-prefix-cls: ~'@{component-prefix}-icon-button';
+
+@small-height: 30px;
+@normal-height: 36px;
+
+// ----------------------- Button Style --------------------------- //
+.@{button-prefix-cls} {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: @normal-height;
+  margin: 0;
+  padding: 7px 12px;
+  overflow: hidden;
+  text-align: center;
+  text-transform: none;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  appearance: none;
+  user-select: none;
+  .text-body1();
+  .border(2, transparent);
+
+  &_primary {
+    color: @gray-0;
+    background-color: @blue-2;
+    .elevation(1);
+
+    &:enabled:hover,
+    &.@{button-prefix-cls}_active {
+      background-color: @blue-3;
+      .elevation(2);
+    }
+
+    &:disabled:not(.@{button-prefix-cls}_loading) {
+      color: @gray-3;
+      background-color: @gray-1;
+      cursor: not-allowed;
+      .elevation(none);
+    }
+
+    &.@{button-prefix-cls}_loading {
+      background-color: @blue-3;
+      cursor: not-allowed;
+      .elevation(2);
+    }
+  }
+
+  &_secondary {
+    color: @gray-5;
+    background-color: transparent;
+    .border(2, @gray-2);
+
+    &:enabled:hover,
+    &.@{button-prefix-cls}_active {
+      color: @blue-3;
+      background-color: @gray-1;
+    }
+
+    &:disabled:not(.@{button-prefix-cls}_loading) {
+      color: @gray-3;
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+
+    &.@{button-prefix-cls}_loading {
+      color: @blue-3;
+      background-color: @gray-1;
+      cursor: not-allowed;
+    }
+  }
+
+  &_text {
+    padding: 7px 8px;
+    color: @gray-5;
+    background-color: transparent;
+    .border(2, transparent);
+    &:enabled:hover,
+    &.@{button-prefix-cls}_active {
+      color: @blue-3;
+      background-color: @gray-1;
+    }
+    &:disabled:not(.@{button-prefix-cls}_loading) {
+      color: @gray-3;
+      background-color: transparent;
+      cursor: not-allowed;
+    }
+    &.@{button-prefix-cls}_loading {
+      color: @blue-3;
+      background-color: @gray-1;
+      cursor: not-allowed;
+    }
+  }
+
+  &_small {
+    height: @small-height;
+    padding: 4px 12px;
+    line-height: 20 / 14;
+    &.@{button-prefix-cls}_text {
+      padding: 4px 8px;
+    }
+  }
+
+  // ripple effect
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: no-repeat 50% radial-gradient(circle, currentColor 10%, transparent 10%);
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform 0.3s, opacity 1s;
+    content: '';
+    pointer-events: none;
+  }
+
+  &:enabled:active::after {
+    transform: scale(0, 0);
+    opacity: 0.3;
+    transition: 0s;
+  }
+
+  &:enabled:active {
+    .elevation(1);
+  }
+
+  .icon() {
+    display: inherit;
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  &-prefix-icon {
+    margin-right: 8px;
+    .icon();
+  }
+  &-suffix-icon {
+    margin-left: 8px;
+    .icon();
+  }
+}
+// ----------------------- Button Style --------------------------- //
+
+// ----------------------- IconButton Style --------------------------- //
+.@{icon-button-prefix-cls} {
+  padding: 5px 10px;
+
+  &.@{button-prefix-cls}_small {
+    padding: 3px 7px;
+  }
+  & > .@{button-prefix-cls}-prefix-icon,
+  & > .@{button-prefix-cls}-suffix-icon {
+    margin: 0;
+  }
+}
+// ----------------------- IconButton Style --------------------------- //
