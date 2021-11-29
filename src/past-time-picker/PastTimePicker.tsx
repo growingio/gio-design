@@ -157,6 +157,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
         suffix={suffix}
         className={className}
         style={style}
+        onClick={() => setControlledVisible(!controlledVisible)}
       />
     );
   }
@@ -164,11 +165,12 @@ const PastTimePicker = (props: PastTimePickerProps) => {
   return (
     <Popover
       content={content()}
-      trigger={['click', 'focus']}
+      trigger="click"
       visible={controlledVisible}
       placement="bottomLeft"
       overlayClassName={overlayCls}
       onVisibleChange={handleVisibleChange}
+      disabled={disabled}
       {...restProps}
     >
       {renderTrigger()}

@@ -83,6 +83,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
         suffix={suffix}
         className={className}
         style={style}
+        onClick={() => setVisible(!visible)}
       />
     );
   }
@@ -90,7 +91,8 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
   return (
     <Popover
       content={content}
-      trigger={['click', 'focus']}
+      disabled={disabled}
+      trigger="click"
       visible={visible}
       placement="bottomLeft"
       overlayClassName={overlayCls}

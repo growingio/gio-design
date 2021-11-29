@@ -67,6 +67,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
         suffix={suffix}
         className={className}
         style={style}
+        onClick={() => setVisible(!visible)}
       />
     );
   }
@@ -74,11 +75,12 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
   return (
     <Popover
       content={content}
-      trigger={['click', 'focus']}
+      trigger="click"
       visible={visible}
       placement="bottomLeft"
       overlayClassName={overlayCls}
       onVisibleChange={handleVisibleChange}
+      disabled={disabled}
       {...restProps}
     >
       {renderTrigger()}
