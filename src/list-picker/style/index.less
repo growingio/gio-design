@@ -27,13 +27,13 @@
     height: auto;
     max-height: 360px;
     padding: 0;
-    .scrollbar(@x: hidden, @y: overlay);
+    .scrollbar(@x: hidden, @y: initial);
   }
   & .@{selection-prefix-cls} {
     height: auto;
     max-height: 360px;
     padding: 0;
-    .scrollbar(@x: hidden, @y: overlay);
+    .scrollbar(@x: hidden, @y: initial);
     & .@{list-prefix-cls} {
       height: auto;
       max-height: none;
@@ -51,7 +51,7 @@
       height: auto;
       max-height: 360px;
       padding-top: 8px;
-      .scrollbar(@x: hidden, @y: overlay);
+      .scrollbar(@x: hidden, @y: initial);
       & .@{list-prefix-cls} {
         max-height: none;
         padding: 0;

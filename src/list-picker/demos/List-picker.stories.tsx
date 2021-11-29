@@ -72,10 +72,11 @@ const Template: Story<ListPickerProps> = () => {
           value={value}
           onChange={onChange}
           overlayStyle={{ width: '240px' }}
+          style={{ width: '100%' }}
           onClear={() => {
             setValue('');
           }}
-          triggerProps={{ allowClear: true }}
+          allowClear
           placeholder="请选择"
         >
           <SearchBar

@@ -156,13 +156,8 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
               : selectOptionMap?.[valueType]
           }
           value={operationValue}
-          style={{ marginTop: '16px' }}
-          triggerProps={{
-            placeholder: '请选择',
-            style: {
-              width: '100%',
-            },
-          }}
+          style={{ marginTop: '16px', width: '100%' }}
+          placeholder="请选择"
           onChange={selectChange}
         />
         <Divider style={{ margin: '14px 0 16px' }} />

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { InputProps } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   const {
     size,
     prefix: customizePrefix,
@@ -16,11 +16,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     onKeyPress,
     style,
     value,
+    inputRef: propsInputRef,
     ...rest
   } = props;
 
   const prefixCls = usePrefixCls('input', customizePrefixCls);
-
   const inputClass = useMemo(
     () =>
       classNames(
@@ -71,7 +71,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     [suffixCls, customizeSuffix]
   );
   return (
-    <span className={inputClass} {...rest} style={style}>
+    <span className={inputClass} {...rest} style={style} ref={ref}>
       {prefix}
       <input
         {...rest}
@@ -79,7 +79,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         disabled={disabled}
         onKeyPress={handleKeyPress}
         placeholder={placeholder}
-        ref={ref}
+        ref={propsInputRef}
       />
       {suffix}
     </span>

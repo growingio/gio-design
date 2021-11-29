@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { PlusOutlined, FilterOutlined, EventsPresetOutlined } from '@gio-design/icons';
@@ -273,11 +273,24 @@ InputButtonDemo.args = {
   placeholder: '请选择事件',
 };
 
-const InputButtonDefaultTemplate = () => <InputButton />;
+const InputButtonDefaultTemplate = (arg: InputButtonProps) => {
+  const ref = useRef(undefined);
+  console.log('ref', ref);
+  return (
+    <InputButton
+      {...arg}
+      ref={ref}
+      onClick={(e) => {
+        console.log('onClick', e?.target);
+      }}
+    />
+  );
+};
 export const InputButtonDefault = InputButtonDefaultTemplate.bind({});
 InputButtonDefault.args = {
   allowClear: false,
   prefix: <EventsPresetOutlined />,
+  placeholder: '请选择',
   onChange: () => action('onChange'),
 };
 

@@ -25,6 +25,10 @@ export interface BaseInputProps
    * 当点击回车键时调用
    */
   onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  /**
+   * inputRef
+   */
+  inputRef?: React.Ref<HTMLInputElement>;
 }
 
 export interface InputProps extends Omit<BaseInputProps, 'onChange'> {

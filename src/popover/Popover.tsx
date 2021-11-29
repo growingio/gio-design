@@ -27,7 +27,7 @@ const Popover = (props: PopoverProps) => {
     overlayStyle,
     children,
     strategy = 'absolute',
-    offset = [0, 4],
+    offset = allowArrow ? [0, -2] : [0, 4],
     triggerClassName,
     triggerStyle,
     getContainer,
@@ -48,7 +48,6 @@ const Popover = (props: PopoverProps) => {
         {
           [`${prefixCls}__content-display`]: visible,
           [`${prefixCls}__content-arrow-allowed`]: allowArrow,
-          [`${prefixCls}__content-arrow-rejected`]: !allowArrow,
         },
         overlayClassName
       ),
@@ -220,7 +219,6 @@ const Popover = (props: PopoverProps) => {
       {children}
     </div>
   );
-
   if (supportRef(children)) {
     const cloneProps = {
       ...divRoles,

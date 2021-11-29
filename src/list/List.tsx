@@ -35,6 +35,7 @@ export const List = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     suffix,
     onChange: controlledOnChange,
     renderItem,
+    onClick,
   } = props;
 
   const prefixCls = usePrefixCls(PREFIX);
@@ -83,6 +84,7 @@ export const List = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const childrens = renderOptions.slice(0, collapse);
   const isNeedCollapse = useMemo(() => renderOptions?.length > collapse, [renderOptions, collapse]);
   const handleClick = (val: string) => {
+    onClick?.(val);
     // multiple
     if (isArray(value)) {
       const resultValue = indexOf(value, val) !== -1 ? difference(value, [val]) : [...value, val];
@@ -100,6 +102,7 @@ export const List = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
 
   const renderChildren = (option: OptionProps) => {
     const renderedItem = renderItem?.(option);
+    const { onClick: optionOnClick } = option;
     return (
       <Item
         {...option}
@@ -111,7 +114,10 @@ export const List = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
         isCascader={isCascader(mergedModel)}
         selectValue={value}
         selected={selectStatus(option?.value, value)}
-        onClick={handleClick}
+        onClick={(v) => {
+          optionOnClick?.(v);
+          handleClick(v);
+        }}
       >
         {renderedItem}
       </Item>
@@ -127,7 +133,13 @@ export const List = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     return (child as React.ReactNode[])?.map(
       (node: React.ReactElement<ItemProps & { isMultiple: boolean; isCascader: boolean }>) => {
         const {
-          props: { disabled: itemDisabled = undefined, prefix: itemPrefix, suffix: itemSuffix, onClick, ...rest },
+          props: {
+            disabled: itemDisabled = undefined,
+            prefix: itemPrefix,
+            suffix: itemSuffix,
+            onClick: nodeOnClick,
+            ...rest
+          },
         } = node;
 
         const item = { label: node?.props?.label, value: node?.props?.value } as OptionProps;
@@ -143,7 +155,7 @@ export const List = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
           selected: selectStatus(item.value, value),
           onClick: (val: string) => {
             handleClick(val);
-            onClick?.(val);
+            nodeOnClick?.(val);
           },
         });
       }

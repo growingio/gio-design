@@ -85,6 +85,7 @@ const Template: Story<ListProps> = (props) => {
   const wrapper = (e: React.ReactNode) => (
     <Popover
       placement="rightTop"
+      triggerStyle={{ display: 'inline' }}
       content={
         <div style={{ width: '200px', height: '200px', background: 'white', border: '1px solid black' }}>
           <h3>preview</h3>
@@ -337,13 +338,13 @@ const SelectionTemplate = () => {
       <div className="demo-box">
         <Selection>
           <List title="普通列表" onChange={(value) => console.log('value', value)}>
-            <Item lable="选中的List" prefix={renderEventIcon}>
+            <Item label="选中的List" prefix={renderEventIcon} value="123">
               选中的List
             </Item>
-            <Item lable="Regular Item" prefix={renderEventIcon}>
+            <Item label="Regular Item" prefix={renderEventIcon} value="234">
               Regular Item
             </Item>
-            <Item lable="Disabled Item" prefix={renderEventIcon} disabled>
+            <Item label="Disabled Item" prefix={renderEventIcon} value="456" disabled>
               Disabled Item
             </Item>
           </List>
@@ -392,20 +393,24 @@ const CollapseTemplate: Story<ItemProps> = () => {
     <>
       <h3>options</h3>
       <div className="demo-box">
-        <List options={collapseOptions} onChange={(value) => console.log('value', value)} />
+        <List
+          options={collapseOptions}
+          onChange={(value) => console.log('value', value)}
+          onClick={(v) => console.log('v', v)}
+        />
       </div>
       <h3>{`<Item> JSX`}</h3>
       <div className="demo-box">
         <List onChange={(value) => console.log('value', value)}>
           {collapseOptions.map((option) => (
-            <Item label={option?.label} value={option?.value} />
+            <Item label={option?.label} value={option?.value} onClick={(v) => console.log('v', v)} />
           ))}
         </List>
       </div>
       <div className="demo-box">
         <List onChange={(value) => console.log('value', value)}>
           {collapseOptions.map((option) => (
-            <Item value={option?.value}>
+            <Item value={option?.value} onClick={(v) => console.log('v', v)}>
               <div style={{ background: 'black' }}>{option?.label}</div>
             </Item>
           ))}

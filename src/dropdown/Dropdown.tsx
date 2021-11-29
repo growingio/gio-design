@@ -33,6 +33,10 @@ export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.Forwa
         (child as React.ReactElement).props.className,
         ref
       ),
+      onClick: (...arg: any) => {
+        setControlledVisible(!controlledVisible);
+        (child as React.ReactElement).props.onClick?.(...arg);
+      },
     });
   };
 

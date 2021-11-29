@@ -19,7 +19,6 @@ export const Cascader: React.FC<CascaderProps> = ({
   prefixCls = 'cascader-',
   getContainer,
   onVisibleChange,
-  triggerProps,
   className,
   style,
   prefix,
@@ -34,6 +33,15 @@ export const Cascader: React.FC<CascaderProps> = ({
   placement = 'bottomLeft',
   children,
   strategy = 'fixed',
+  onClear,
+  allowClear,
+  title: controlledTitle,
+  placeholder,
+  triggerPrefix,
+  triggerSuffix,
+  maxWidth,
+  hidePrefix,
+  renderTrigger: propsRenderTrigger,
   ...rest
 }) => {
   const defaultPrefixCls = usePrefixCls(prefixCls);
@@ -60,29 +68,35 @@ export const Cascader: React.FC<CascaderProps> = ({
   };
 
   const handleOnClear = (e: React.MouseEvent<Element, MouseEvent>) => {
+    onClear?.();
     handVisibleChange(false);
     e.stopPropagation();
   };
 
-  const renderTrigger = () => (
-    <div
-      className={classNames(`${defaultPrefixCls}-trigger`, className)}
-      style={style}
-      aria-hidden="true"
-      onClick={() => !disabled && setVisible(!visible)}
-    >
+  const renderTrigger = () => {
+    if (typeof propsRenderTrigger === 'function') {
+      return propsRenderTrigger?.();
+    }
+    return (
       <Trigger
-        value={title}
+        value={controlledTitle ?? title}
+        placeholder={placeholder}
+        prefix={!hidePrefix ? triggerPrefix : undefined}
+        suffix={triggerSuffix}
+        maxWidth={maxWidth}
         size={size}
+        style={style}
+        className={className}
         disabled={disabled}
+        allowClear={allowClear}
         onClear={handleOnClear}
+        onClick={() => !disabled && setVisible(!visible)}
         onInputChange={(val) => {
           isEmpty(val) && handleChange();
         }}
-        {...triggerProps}
       />
-    </div>
-  );
+    );
+  };
   const renderOverlay = () => (
     <List
       {...rest}
