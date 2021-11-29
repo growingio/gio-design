@@ -66,7 +66,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   const { label: dataLabel, value: dataValue, disabled } = dataKeyMapping(dataSource, keyMapping);
   const { children } = dataSource;
   const noChild = isEmpty(children);
-  const withWrapperCls = withPrefix('cascader-menu-item');
+  const withWrapperCls = withPrefix('cascader-legacy-menu-item');
   const mergedTrigger = triggerMap[trigger.toLowerCase() as typeof trigger];
 
   const getCopyEvent = <T extends React.MouseEvent | React.KeyboardEvent>(event: T) => {
@@ -109,7 +109,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.nativeEvent.target as HTMLDivElement;
     // 这里有个奇怪的问题，点 input 会触发这里的 MouseEvent 事件
-    if (trigger === 'hover' && target.closest('.cascader-menu-outer') && !disabled) {
+    if (trigger === 'hover' && target.closest('.cascader-legacy-menu-outer') && !disabled) {
       onTrigger?.(event, dataSource);
     }
     onMouseEnter?.(event, dataSource);
