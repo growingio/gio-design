@@ -30,7 +30,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       if (onChange) onChange(e);
       checkGroup?.toggleOption?.({ label: children, value: restProps.value });
     },
-    [onChange, check]
+    [onChange, check, checkGroup?.toggleOption]
   );
 
   const prefixCls = usePrefixCls('checkbox', customizePrefixCls);
