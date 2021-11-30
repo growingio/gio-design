@@ -222,8 +222,8 @@ const Popover = (props: PopoverProps) => {
   if (supportRef(children)) {
     const cloneProps = {
       ...divRoles,
-      className: classNames((children as React.ReactElement)?.props?.className),
-      style: { ...(children as React.ReactElement)?.props?.style, ...overlayInnerStyle },
+      className: classNames((children as React.ReactElement)?.props?.className, triggerClassName),
+      style: { ...(children as React.ReactElement)?.props?.style, ...triggerStyle },
     };
 
     const child = React.Children.only(children);
