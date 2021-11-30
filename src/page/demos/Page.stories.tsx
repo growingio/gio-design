@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import Docs from './PagePage';
 import Page, { PageProps } from '../index';
 import { Link } from '../..';
-
+import TablePng from '../assets/table.png';
 import '../style';
 
 export default {
@@ -88,6 +88,12 @@ noAuth.args = {
   type: 'noAuth',
   description: '无访问权限，请联系管理员',
   cta: defaultCTA,
+};
+
+export const Custom = Template.bind({});
+Custom.args = {
+  image: <img src={TablePng} alt="" />,
+  description: 'this is custom description',
 };
 export const noResource = Template.bind({});
 noResource.args = {
