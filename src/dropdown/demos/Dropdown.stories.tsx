@@ -40,7 +40,7 @@ export const Demo = () => (
     <h3>Use Case -1看板中“更多”按钮</h3>
     <Dropdown
       content={
-        <List style={{ padding: 0 }}>
+        <List>
           <Item prefix={<ReloadOutlined size="14px" />} value="1">
             刷新数据
           </Item>
@@ -77,7 +77,7 @@ export const Demo = () => (
     <h3>Use Case -2列表/卡片中的操作菜单</h3>
     <Dropdown
       content={
-        <List style={{ padding: 0 }}>
+        <List>
           <Item prefix={<ReloadOutlined size="14px" />} value="1">
             添加到看板
           </Item>
@@ -100,7 +100,7 @@ const Template: Story<DropdownProps> = (args) => <Dropdown {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   content: (
-    <List style={{ padding: 0 }}>
+    <List>
       <Item prefix={<ReloadOutlined size="14px" />} value="1">
         刷新数据
       </Item>

@@ -40,6 +40,15 @@ export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.Forwa
     });
   };
 
+  const withoutPadding = (contentNode: DropdownProps['content']) => {
+    if (React.isValidElement(contentNode)) {
+      return React.cloneElement(contentNode, {
+        className: classnames(`${prefixCls}-p-0`, contentNode.props.className),
+      });
+    }
+    return contentNode;
+  };
+
   const withOnClick = (contentNode: DropdownProps['content']) => {
     const close = () => {
       setControlledVisible(false);
@@ -67,7 +76,7 @@ export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.Forwa
       arrowPointAtCenter
       placement={placement}
       visible={controlledVisible}
-      content={withOnClick(content)}
+      content={withOnClick(withoutPadding(content))}
       overlayClassName={classnames(prefixCls, overlayClassName)}
       onVisibleChange={(changedVisible) => {
         setControlledVisible(changedVisible);
