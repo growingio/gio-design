@@ -25,7 +25,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     onVisibleChange,
     onChange,
     renderTrigger: propsRenderTrigger,
-    prefixCls = 'list-picker-',
+    prefixCls = 'list-picker',
     getContainer,
     placement = 'bottomLeft',
     children,

@@ -14,7 +14,7 @@ import useChacheOptions from '../list/hooks/useCacheOptions';
 
 const Select: React.FC<SelectProps> = (props) => {
   const {
-    prefixCls = 'select-',
+    prefixCls = 'select',
     value: controlledValue,
     defaultValue = undefined,
     options = [],
