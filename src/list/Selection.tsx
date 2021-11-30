@@ -12,7 +12,7 @@ import useCacheOptions from './hooks/useCacheOptions';
 
 type nodeType = React.ReactElement<ListProps> & { type: { isGIOList: boolean; isRecent: boolean } };
 
-const Selection: React.FC<SelectionProps> = (props) => {
+const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) => {
   const { className, style, options = [], children, ...rest } = props;
   const prefixCls = `${usePrefixCls(PREFIX)}--selection`;
   const isSelection = options?.every((val) => 'groupId' in val) ?? false;
@@ -108,5 +108,5 @@ const Selection: React.FC<SelectionProps> = (props) => {
   );
   return selectionProvider(renderNormal);
 };
-
+Selection.isSelection = true;
 export default Selection;

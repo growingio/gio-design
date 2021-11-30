@@ -4,53 +4,51 @@
 @input-btn-prefix-cls: ~'@{component-prefix}-input-btn';
 @icon-prefix-cls: ~'@{component-prefix}-input__prefix';
 
-@input-btn-input-prefix-cls: ~'@{component-prefix}-input-btn__input';
+@input-btn-input-prefix-cls: ~'@{component-prefix}-input-btn';
 
-.@{input-btn-prefix-cls} {
+.@{input-btn-input-prefix-cls} {
+  input {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  background-color: @gray-0;
   cursor: pointer;
-  .@{input-btn-input-prefix-cls} {
-    input {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-    background-color: @gray-0;
-    cursor: pointer;
 
-    &:not([disabled])::placeholder {
-      color: @gray-5;
+  &:not([disabled])::placeholder {
+    color: @gray-5;
+    .text-body1();
+  }
+  &:disabled {
+    color: @gray-3;
+    background-color: @gray-0;
+    &::placeholder {
+      color: @gray-3;
       .text-body1();
     }
-    &:disabled {
+    &:hover {
       color: @gray-3;
       background-color: @gray-0;
       &::placeholder {
         color: @gray-3;
-        .text-body1();
       }
-      &:hover {
-        color: @gray-3;
-        background-color: @gray-0;
-        &::placeholder {
-          color: @gray-3;
-        }
-      }
-    }
-
-    &:not([disabled]):hover {
-      color: @blue-3;
-      border: 1px solid @gray-2;
-    }
-    &:is([disabled]):hover {
-      color: @gray-3;
-      border: 1px solid @gray-2;
-    }
-
-    &:not([disabled]):focus {
-      border: 1px solid @gray-2;
-      outline: none;
     }
   }
+
+  &:not([disabled]):hover {
+    color: @blue-3;
+    border: 1px solid @gray-2;
+  }
+  &:is([disabled]):hover {
+    color: @gray-3;
+    border: 1px solid @gray-2;
+  }
+
+  &:not([disabled]):focus {
+    border: 1px solid @gray-2;
+    outline: none;
+  }
+
   &__active,
   &__hover {
     &:hover {

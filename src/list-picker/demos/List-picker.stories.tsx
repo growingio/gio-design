@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import '../style';
 import { isEqual, uniqueId } from 'lodash';
+// import { UserOutlined } from '@gio-design/icons';
 import CheckboxItem from '../../list/inner/CheckboxItem';
 import { OptionProps } from '../../list/interfance';
 // import { uniqueId } from 'lodash';
 // import { uniqBy, uniqueId } from 'lodash';
-// import { AttributionPropertyOutlined, EditOutlined, ItemOutlined, TagOutlined, UserOutlined } from '@gio-design/icons';
 import { ListPickerProps } from '../interfance';
 import ListPicker from '../listPicker';
 import SearchBar from '../../search-bar';
@@ -47,7 +47,7 @@ const createSingleOption = (index: number) => ({
 const largeOptions = new Array(200).fill(0).map((v, i) => createOption(i));
 const simpleLargeOptions = new Array(200).fill(0).map((v, i) => createSingleOption(i));
 const Template: Story<ListPickerProps> = () => {
-  const [value, setValue] = useState<undefined | string>('banana');
+  const [value, setValue] = useState<undefined | string>('ziyi');
   const [multipleValue, setMultipleValue] = useState<undefined | string[]>(undefined);
   const [activeTab, setActiveTab] = useState('tab1');
   const [search, setSearch] = useState('');
@@ -238,11 +238,7 @@ const Template: Story<ListPickerProps> = () => {
               <Tab label="tab1" value="tab1">
                 <List.Selection>
                   {(context) => {
-                    const isEqualValue = isEqual(
-                      Array.from(context.options.values()).reduce((p, v) => [...p, v.value], []),
-                      context.value
-                    );
-                    console.log(isEqualValue);
+                    const isEqualValue = context.value.length === 2;
                     return (
                       <>
                         <CheckboxItem
@@ -370,6 +366,7 @@ const Template: Story<ListPickerProps> = () => {
             <List.Selection options={largeOptions} />
           </ListPicker>
         </div>
+        <div className="demo-box" />
       </div>
     </div>
   );

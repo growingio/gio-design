@@ -1,4 +1,4 @@
-import { isArray, isEmpty, isNil } from 'lodash';
+import { isArray, isEmpty, isNil, isNumber } from 'lodash';
 import { useCallback, useRef } from 'react';
 import { OptionProps } from '../interfance';
 
@@ -34,7 +34,7 @@ const useCacheOptions = () => {
       : getOptionByValue(optValue);
 
   const getLabelByValue = (val?: string | string[], separator = '') => {
-    if (val === '' || typeof val === 'undefined') {
+    if (val === '' || typeof val === 'undefined' || isNumber(val)) {
       return '';
     }
     if (val?.includes('.')) {
@@ -49,7 +49,7 @@ const useCacheOptions = () => {
     return getOptionByValue(val)?.label ?? '';
   };
   const getOptionTreeByValue = (val?: string) => {
-    if (val === '' || typeof val === 'undefined') {
+    if (val === '' || typeof val === 'undefined' || isNumber(val)) {
       return '';
     }
     if (val?.includes('.')) {

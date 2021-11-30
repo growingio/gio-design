@@ -19,7 +19,7 @@ const selectStatus = (value?: string, values?: string | string[]) => {
   return undefined;
 };
 
-export const List = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
+export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const {
     id,
     title,
@@ -185,4 +185,8 @@ export const List = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     </ListContext.Provider>
   );
 });
+
+const List: React.ForwardRefExoticComponent<ListProps & React.RefAttributes<HTMLDivElement>> & { isList?: boolean } =
+  InnerList;
+List.isList = true;
 export default List;

@@ -65,6 +65,7 @@ export interface OptionProps extends ListOptionProps {
   value: string;
   childrens?: OptionProps[];
 }
+
 export interface TriggerProps extends Omit<InputButtonProps, 'value' | 'active'> {
   value?: string;
 }

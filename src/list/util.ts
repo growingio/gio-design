@@ -1,4 +1,5 @@
-import { isEmpty } from 'lodash';
+import { isArray, isEmpty, isUndefined } from 'lodash';
+import toArray from 'rc-util/lib/Children/toArray';
 import React from 'react';
 import { ListProps } from '.';
 import { ModelType, OptionProps } from './interfance';
@@ -72,3 +73,60 @@ export const generateSelectParent = (label: string | React.ReactNode, value: str
           value,
         },
       ];
+
+export const collectOption = (child: React.ReactNode, otherProps?: OtherProps): OptionProps | undefined => {
+  if (React.isValidElement(child)) {
+    const {
+      props: { value, children, label, ...restProps },
+    } = child as React.ReactElement & { props: OptionProps };
+    const option = { value, label: label ?? children, ...restProps };
+    return { prefix: otherProps?.prefix?.(option), suffix: otherProps?.suffix?.(option), ...option };
+  }
+  return undefined;
+};
+
+export const collectOptions = (childs?: React.ReactNode | OptionProps): OptionProps[] => {
+  const optionsArr: OptionProps[] = [];
+  toArray(childs).forEach((child) => {
+    const { props, type } = child as React.ReactElement & { props: OptionProps } & {
+      props: { options?: OptionProps[] };
+    } & { type: any };
+    const value = props?.value;
+    const children = props?.children;
+    const prefix = props?.prefix;
+    const options = props?.options;
+    const suffix = props?.suffix;
+
+    const isBaseItem = type?.isBaseItem;
+    const isList = type?.isList;
+    const isRecent = type?.isRecent;
+    const isSelection = type?.isSelection;
+    const isSelect = type?.isSelect;
+
+    if (React.isValidElement(child) && isUndefined(isRecent)) {
+      let listPrefix;
+      let listSuffix;
+      if (isSelection && isArray(options)) {
+        optionsArr.push(...convertOptions(options, {}));
+      }
+      // options
+      if ((isList || isSelect) && isArray(options)) {
+        listPrefix = prefix;
+        listSuffix = suffix;
+        optionsArr.push(...convertOptions(options, { prefix: listPrefix, suffix: listSuffix }));
+      }
+
+      // JSX item
+      if (isBaseItem && !isUndefined(value)) {
+        const opt = collectOption(child, { prefix: listPrefix, suffix: listSuffix });
+        if (!isUndefined(opt)) optionsArr?.push(opt);
+      }
+
+      if (!isUndefined(children)) {
+        // 继续遍历
+        optionsArr.push(...collectOptions(children));
+      }
+    }
+  });
+  return optionsArr;
+};

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
-import { isEqual, isNil, isString } from 'lodash';
+import { isEqual, isNil } from 'lodash';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
 import Trigger from './Trigger';
@@ -42,7 +42,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     needConfim = model === 'multiple',
 
     allowClear,
-    title: controlledTitle,
+    title,
     triggerPrefix,
     triggerSuffix,
     hidePrefix = false,
@@ -50,21 +50,10 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
-  const [value, setValue] = useState(controlledValue || defaultValue);
-  const [title, setTitle] = useState<string | React.ReactNode>(controlledTitle);
-  const [titlePrefix, setTitlePrefix] = useState<string | React.ReactNode>(undefined);
-  const { options, setOptions, getLabelByValue, getOptionByValue, getOptionsByValue } = useCacheOptions();
 
-  // title仅跟随controlledValue变动
-  useEffect(() => {
-    setTitle(getLabelByValue(controlledValue, separator));
-  }, [controlledValue, getLabelByValue, separator, setTitle]);
-  // prefix
-  useEffect(() => {
-    if (model === 'single' && isString(controlledValue) && !hidePrefix) {
-      setTitlePrefix(triggerPrefix ?? getOptionByValue(controlledValue)?.prefix);
-    }
-  }, [controlledValue, getOptionByValue, hidePrefix, model, triggerPrefix]);
+  const [value, setValue] = useControlledState(controlledValue, defaultValue);
+  const { options, setOptions, getOptionByValue, getLabelByValue, getOptionsByValue } = useCacheOptions();
+
   useEffect(() => {
     setValue(controlledValue);
   }, [controlledValue, setValue]);
@@ -101,27 +90,35 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     setValue(undefined);
     onClear?.();
   };
+  const triggerClick = () => !disabled && setVisible(!visible);
   // trigger
   const renderTrigger = (): React.ReactElement => {
     if (typeof propsRenderTrigger === 'function') {
-      return propsRenderTrigger?.();
+      const node = propsRenderTrigger?.();
+      return React.cloneElement(node, {
+        onClick: triggerClick,
+      });
     }
     return (
       <Trigger
         size={size}
-        value={controlledTitle ?? title}
+        value={controlledValue}
         style={style}
         className={className}
         maxWidth={maxWidth}
         disabled={disabled}
         placeholder={placeholder}
         suffix={triggerSuffix}
-        prefix={titlePrefix}
+        prefix={triggerPrefix}
         allowClear={allowClear}
         onClear={clearInput}
         separator={separator}
-        onClick={() => !disabled && setVisible(!visible)}
-      />
+        onClick={triggerClick}
+        title={title}
+        hidePrefix={hidePrefix}
+      >
+        {children}
+      </Trigger>
     );
   };
   // render
@@ -138,9 +135,19 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   );
 
   return (
-    <ListContext.Provider value={{ value, model, onChange: handleChange, options, setOptions }}>
+    <ListContext.Provider
+      value={{
+        value,
+        model,
+        onChange: handleChange,
+        options,
+        setOptions,
+        getOptionByValue,
+        getOptionsByValue,
+        getLabelByValue,
+      }}
+    >
       <Popover
-        distoryOnHide={false}
         disabled={disabled}
         content={renderOverlay()}
         trigger={trigger}
@@ -150,6 +157,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
         overlayClassName={classNames(`${defaultPrefix}--content`, overlayClassName)}
         placement={placement}
         overlayStyle={overlayStyle}
+        strategy="fixed"
       >
         {renderTrigger()}
       </Popover>

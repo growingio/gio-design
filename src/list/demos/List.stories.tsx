@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { PlusOutlined, FilterOutlined, EventsPresetOutlined } from '@gio-design/icons';
 import { action } from '@storybook/addon-actions';
@@ -286,10 +286,10 @@ const ItemTemplate: Story<ItemProps> = () => {
     console.log('e suffix触发', e);
     e.stopPropagation();
   };
-
+  const ref = useRef(null);
   return (
     <div className="demo-box">
-      <List onChange={() => console.log('list onChange触发')}>
+      <List onChange={() => console.log('list onChange触发')} ref={ref}>
         <Item value="first">第1条咸鱼</Item>
         <Item value="second" prefix={<PlusOutlined size="14px" />}>
           第2条咸鱼
