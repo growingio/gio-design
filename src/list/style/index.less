@@ -106,7 +106,7 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-    &:hover {
+    &:not(&--disabled):hover {
       background-color: @gray-1;
     }
     &:last-child {
@@ -118,11 +118,11 @@
     &:not(&--disabled):not(&--drag):active &-prefix-icon {
       color: @blue-3;
     }
-    &--actived:not(&--multiple) {
+    &--actived:not(&--disabled):not(&--multiple) {
       color: @blue-3;
       background-color: @gray-1;
     }
-    &--actived:not(&--multiple) &-prefix-icon {
+    &--actived:not(&--disabled):not(&--multiple) &-prefix-icon {
       color: @blue-3;
     }
     &-prefix-icon {

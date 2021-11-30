@@ -64,7 +64,6 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   const wrapperCls = useMemo(
     () =>
       classNames(className, prefixCls, {
-        [`${prefixCls}__hover`]: !disabled,
         [`${prefixCls}__disabled`]: disabled,
         [`${prefixCls}__active`]: active,
       }),
