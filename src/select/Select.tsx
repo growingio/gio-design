@@ -1,18 +1,17 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef } from 'react';
 import classNames from 'classnames';
-import { isEmpty } from 'lodash';
 import { SelectProps } from './interface';
 import Popover from '../popover';
-import Trigger from './Trigger';
+import Trigger from '../list-picker/Trigger';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import List, { OptionProps } from '../list';
 import useControlledState from '../utils/hooks/useControlledState';
 import './style/index';
 import { ListContext } from '../list/context';
 import { convertChildrenToData, convertOptions } from '../list/util';
-import useChacheOptions from '../list/hooks/useCacheOptions';
+import useCacheOptions from '../list/hooks/useCacheOptions';
 
-const Select: React.FC<SelectProps> = (props) => {
+const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
   const {
     prefixCls = 'select',
     value: controlledValue,
@@ -32,15 +31,15 @@ const Select: React.FC<SelectProps> = (props) => {
     className,
     style,
     placement = 'bottomLeft',
-    disabled,
+    disabled = false,
     children,
     placeholder,
     triggerPrefix,
     triggerSuffix,
     maxWidth,
     hidePrefix = false,
-    title: controlledTitle,
     allowClear,
+    title,
     onClear,
     renderTrigger: propsRenderTrigger,
     autoWidth = true,
@@ -51,9 +50,7 @@ const Select: React.FC<SelectProps> = (props) => {
   const defaultPrefixCls = usePrefixCls(prefixCls);
   const [value, setValue] = useControlledState(controlledValue, defaultValue);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
-  const [title, setTitle] = useState<string | React.ReactNode | undefined>(undefined);
-  const [titlePrefix, setTitlePrefix] = useState<string | React.ReactNode>(undefined);
-  const cache = useChacheOptions();
+  const { options: cacheOptions, setOptions, getOptionByValue, getLabelByValue, getOptionsByValue } = useCacheOptions();
   const triggerRef = useRef<HTMLInputElement | undefined>(undefined);
   // options
   const nodesToOptions = useMemo<OptionProps[]>(
@@ -62,20 +59,8 @@ const Select: React.FC<SelectProps> = (props) => {
   );
   const convertedOptions = useMemo(() => convertOptions(options, { prefix, suffix }), [options, prefix, suffix]);
   const mergedOptions = useMemo(() => [...nodesToOptions, ...convertedOptions], [nodesToOptions, convertedOptions]);
-  cache.setOptions(mergedOptions);
-  const activeOption = useMemo(() => cache.getOptionByValue(value), [cache, value]);
-
-  // update trigger value
-  useEffect(() => {
-    setTitle(activeOption?.label);
-  }, [activeOption?.label]);
-
-  useEffect(() => {
-    if (!hidePrefix) {
-      setTitlePrefix(activeOption?.prefix ?? triggerPrefix);
-    }
-  }, [activeOption?.prefix, controlledValue, hidePrefix, triggerPrefix]);
-
+  // 如果不是children 的话 需要在这里进行收集
+  setOptions(mergedOptions);
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);
     onVisibleChange?.(vis);
@@ -92,29 +77,32 @@ const Select: React.FC<SelectProps> = (props) => {
     handVisibleChange(false);
     e.stopPropagation();
   };
+  const triggerClick = () => !disabled && setVisible(!visible);
 
   const renderTrigger = () => {
     if (typeof propsRenderTrigger === 'function') {
-      return propsRenderTrigger?.();
+      const node = propsRenderTrigger?.();
+      return React.cloneElement(node, {
+        onClick: triggerClick,
+      });
     }
     return (
       <Trigger
         size={size}
-        value={controlledTitle ?? title}
+        value={value}
         disabled={disabled}
         placeholder={placeholder}
-        onInputChange={(val) => {
-          isEmpty(val) && handleChange();
-        }}
         ref={triggerRef as React.RefObject<HTMLInputElement>}
         style={style}
         className={className}
-        prefix={titlePrefix}
+        prefix={triggerPrefix}
         suffix={triggerSuffix}
         allowClear={allowClear}
         onClear={handleOnClear}
         maxWidth={maxWidth}
-        onClick={() => !disabled && setVisible(!visible)}
+        hidePrefix={hidePrefix}
+        title={title}
+        onClick={triggerClick}
       />
     );
   };
@@ -134,9 +122,19 @@ const Select: React.FC<SelectProps> = (props) => {
   );
 
   return (
-    <ListContext.Provider value={{ value, onChange: handleChange }}>
+    <ListContext.Provider
+      value={{
+        value,
+        options: cacheOptions,
+        getLabelByValue,
+        getOptionByValue,
+        getOptionsByValue,
+        onChange: handleChange,
+        setOptions,
+      }}
+    >
       <Popover
-        distoryOnHide={false}
+        disabled={disabled}
         content={renderOverlay()}
         trigger="click"
         visible={visible}
@@ -151,5 +149,5 @@ const Select: React.FC<SelectProps> = (props) => {
     </ListContext.Provider>
   );
 };
-
+Select.isSelect = true;
 export default Select;

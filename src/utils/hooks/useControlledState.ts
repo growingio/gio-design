@@ -16,7 +16,6 @@ const useControlledState = <T>(
   //   throw new TypeError('Either "value" or "defaultValue" variable must be set. Now both are undefined');
   // }
   const [innerState, setInnerState] = useState<T>(isUndefined(outterState) ? defaultOutterState : outterState);
-
   const setState = useRef((state: T | (() => T), force = false) => {
     if (isUndefined(outterState) || force) {
       setInnerState(state);

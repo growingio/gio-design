@@ -86,4 +86,5 @@ export interface TriggerProps extends Omit<InputButtonProps, 'value' | 'active'>
   disabled?: boolean;
   value?: string | React.ReactNode;
   separator?: string;
+  [key: string]: any;
 }

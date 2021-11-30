@@ -73,9 +73,14 @@ export const Cascader: React.FC<CascaderProps> = ({
     e.stopPropagation();
   };
 
-  const renderTrigger = () => {
+  const triggerClick = () => !disabled && setVisible(!visible);
+  // trigger
+  const renderTrigger = (): React.ReactElement => {
     if (typeof propsRenderTrigger === 'function') {
-      return propsRenderTrigger?.();
+      const node = propsRenderTrigger?.();
+      return React.cloneElement(node, {
+        onClick: triggerClick,
+      });
     }
     return (
       <Trigger
@@ -90,7 +95,7 @@ export const Cascader: React.FC<CascaderProps> = ({
         disabled={disabled}
         allowClear={allowClear}
         onClear={handleOnClear}
-        onClick={() => !disabled && setVisible(!visible)}
+        onClick={triggerClick}
         onInputChange={(val) => {
           isEmpty(val) && handleChange();
         }}

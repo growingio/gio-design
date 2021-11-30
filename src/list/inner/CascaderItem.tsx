@@ -34,7 +34,6 @@ const CascaderItem = WithRef<HTMLLIElement, CascaderItemProps & Omit<DOMAttribut
     const childSelectPrent = generateSelectParent(label, value, selectParent);
     const childNodeOptions = convertChildrenToData(children, {});
     const mergedOptions = useMemo(() => [...childNodeOptions, ...childrens], [childNodeOptions, childrens]);
-
     useEffect(() => {
       setOptions?.(mergedOptions as OptionProps[]);
     }, [mergedOptions, setOptions]);
@@ -104,7 +103,6 @@ const CascaderItem = WithRef<HTMLLIElement, CascaderItemProps & Omit<DOMAttribut
         value={value}
         disabled={disabled}
         suffix={React.isValidElement(children) || !isEmpty(childrens) ? <RightFilled size="14px" /> : undefined}
-        onChange={noop}
         onClick={React.isValidElement(children) || !isEmpty(childrens) ? noop : onClick}
         selected={isSelected}
         wrapper={PopoverRender}

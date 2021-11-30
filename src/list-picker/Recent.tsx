@@ -11,7 +11,7 @@ interface RecentProps {
 }
 
 const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
-  const { max = 5, title } = props;
+  const { max = 5, title = '最近使用' } = props;
   const context = useContext(ListContext);
   const localStorageValue = window?.localStorage?.getItem(ITEM_KEY) || '[]';
   const matchValue = JSON.parse(localStorageValue); // localStorage.getItem('__GIO_SELECTION_KEY')

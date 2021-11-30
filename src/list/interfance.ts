@@ -133,3 +133,13 @@ export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled' | 
   selected?: boolean;
   onClick?: (value: string) => void;
 }
+
+export interface TriggerProps {
+  disabled?: boolean;
+  value?: string | React.ReactNode;
+  separator?: string;
+  children?: React.ReactNode;
+  placeholder?: string;
+  size?: 'small' | 'normal';
+  onClear?: (e?: React.MouseEvent<Element, MouseEvent>) => void;
+}

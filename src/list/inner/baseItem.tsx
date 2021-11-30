@@ -9,7 +9,7 @@ import WithRef from '../../utils/withRef';
 
 const defaultContentRender = (element: React.ReactNode | Element): React.ReactElement => element as React.ReactElement;
 const renderIcon = (className: string, prefix: React.ReactNode) => <span className={className}>{prefix}</span>;
-const BaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>>(
+const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>>(
   (props, ref?) => {
     const {
       label,
@@ -75,5 +75,10 @@ const BaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<HTMLL
     return wrapper(renderElement) as ReactElement;
   }
 );
-
+const BaseItem: React.ForwardRefExoticComponent<
+  BaseItemProps & Omit<React.RefAttributes<HTMLLIElement>, 'onClick' | 'onChange'>
+> & {
+  isBaseItem?: boolean;
+} = InnerBaseItem;
+BaseItem.isBaseItem = true;
 export default BaseItem;
