@@ -3,11 +3,10 @@
 @button-prefix-cls: ~'@{component-prefix}-button';
 @icon-button-prefix-cls: ~'@{component-prefix}-icon-button';
 
-@small-height: 30px;
-@normal-height: 36px;
-
 // ----------------------- Button Style --------------------------- //
 .@{button-prefix-cls} {
+  @small-height: 30px;
+  @normal-height: 36px;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -107,7 +106,7 @@
     }
   }
 
-  // ripple effect
+  // ripple effect start
   &::after {
     position: absolute;
     top: 0;
@@ -115,19 +114,23 @@
     display: block;
     width: 100%;
     height: 100%;
-    background: no-repeat 50% radial-gradient(circle, currentColor 10%, transparent 10%);
-    transform: scale(10, 10);
+    background-color: currentColor;
+    border-radius: 0;
+    transform: scale(1);
     opacity: 0;
-    transition: transform 0.3s, opacity 1s;
+    transition: border-radius 0.3s, transform 0.3s, opacity 1s;
+    transition-timing-function: ease-out;
     content: '';
     pointer-events: none;
   }
 
   &:enabled:active::after {
-    transform: scale(0, 0);
+    border-radius: 50%;
+    transform: scale(0, 1);
     opacity: 0.3;
     transition: 0s;
   }
+  // ripple effect end
 
   &:enabled:active {
     .elevation(1);
