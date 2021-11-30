@@ -67,13 +67,10 @@ function Page({ className, style, type = 'noData', image, description, cta, size
     [`${prefixCls}-empty`]: ['empty', 'noData', 'noResult', 'noFind'].includes(type),
   });
   const des = description || typeMap[type].description;
-  const img = image || typeMap[type].image;
-
+  const img = image || React.createElement(typeMap[type].image);
   return (
     <div className={cls} style={style}>
-      <div className={classnames(`${prefixCls}__image`, `${prefixCls}__image-${size}`)}>
-        {React.createElement(img as React.ElementType)}
-      </div>
+      <div className={classnames(`${prefixCls}__image`, `${prefixCls}__image-${size}`)}>{img}</div>
       <div className={classnames(`${prefixCls}__description`, `${prefixCls}__description-${size}`)}>{des}</div>
       {cta && (
         <div className={`${prefixCls}__footer`}>
