@@ -55,7 +55,6 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   const { options, setOptions, getOptionByValue, getLabelByValue, getOptionsByValue } = useCacheOptions();
 
   useEffect(() => {
-    console.log('执行');
     setValue(controlledValue);
   }, [controlledValue, setValue]);
   useEffect(() => {
@@ -84,7 +83,6 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
       onChange?.(val, opts);
       handVisibleChange(false);
     } else {
-      console.log('val', val);
       setValue(val);
     }
   };
@@ -98,7 +96,10 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     if (typeof propsRenderTrigger === 'function') {
       const node = propsRenderTrigger?.();
       return React.cloneElement(node, {
-        onClick: triggerClick,
+        onClick: (e: MouseEvent) => {
+          node?.props?.onClick?.(e);
+          triggerClick();
+        },
       });
     }
     return (
