@@ -101,7 +101,6 @@ export const Default = () => {
   return (
     <Select
       options={options}
-      value="1"
       contentStyle={{ width: '300px' }}
       placeholder="请选择"
       size="normal"

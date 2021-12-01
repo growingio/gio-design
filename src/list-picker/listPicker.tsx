@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { isEqual, isNil } from 'lodash';
 import { ListPickerProps } from './interfance';
@@ -51,10 +51,11 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
 
-  const [value, setValue] = useControlledState(controlledValue, defaultValue);
+  const [value, setValue] = useState(controlledValue || defaultValue);
   const { options, setOptions, getOptionByValue, getLabelByValue, getOptionsByValue } = useCacheOptions();
 
   useEffect(() => {
+    console.log('执行');
     setValue(controlledValue);
   }, [controlledValue, setValue]);
   useEffect(() => {
@@ -83,6 +84,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
       onChange?.(val, opts);
       handVisibleChange(false);
     } else {
+      console.log('val', val);
       setValue(val);
     }
   };
