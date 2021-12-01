@@ -82,19 +82,6 @@ const CascaderDemo = (props: any) => {
 const Template: Story<ListProps> = (props) => {
   const [value, setValue] = useState([]);
   const [cascaderValue, setCascadervalue] = useState('1.1-1');
-  const wrapper = (e: React.ReactNode) => (
-    <Popover
-      placement="rightTop"
-      triggerStyle={{ display: 'inline' }}
-      content={
-        <div style={{ width: '200px', height: '200px', background: 'white', border: '1px solid black' }}>
-          <h3>preview</h3>
-        </div>
-      }
-    >
-      {e}
-    </Popover>
-  );
   return (
     <>
       cascaderitem
@@ -140,7 +127,23 @@ const Template: Story<ListProps> = (props) => {
           </Item>
         </List> */}
         <h3>option render preview</h3>
-        <List options={[{ label: '1', value: '1', wrapper }]} />
+        <List
+          onClick={(v) => console.log('list触发 onClick', v)}
+          onChange={(v, o) => console.log('list触发 onChange', v, o)}
+        >
+          <Popover
+            placement="rightTop"
+            content={
+              <div style={{ width: '200px', height: '200px', background: 'white', border: '1px solid black' }}>
+                <h3>preview</h3>
+              </div>
+            }
+          >
+            <span>
+              <Item value="1" label="1" onClick={(v) => console.log('item click', v)} />
+            </span>
+          </Popover>
+        </List>
       </div>
       <div className="demo-box">
         <List {...props}>

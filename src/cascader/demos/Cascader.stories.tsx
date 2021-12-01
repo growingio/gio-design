@@ -82,7 +82,7 @@ const demoTemplate: Story<CascaderProps> = (props) => (
       <Cascader
         onChange={(val: any, opt: any) => console.log('val', val, opt)}
         options={defaultOptions}
-        placeholder="请选择"
+        placeholder="haha"
         size="normal"
         {...props}
       />
@@ -159,6 +159,6 @@ export const Demo = demoTemplate.bind({
   },
 });
 export const Default: Story<CascaderProps> = (args) => (
-  <Cascader {...args} options={defaultOptions} placeholder="请选择" size="normal" />
+  <Cascader {...args} value="apple.cut.bad" options={defaultOptions} placeholder="请选择" size="normal" />
 );
 Default.args = {};

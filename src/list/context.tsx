@@ -6,8 +6,13 @@ import { OptionProps, ListProps } from './interfance';
 export interface ListContextProps {
   value?: string | string[];
   model?: 'single' | 'cascader' | 'multiple';
+  disabled?: boolean;
+  selectParent?: any;
   onChange?: (value?: string | string[], options?: OptionProps | OptionProps[]) => void;
+  onClick?: (value?: string) => void;
   options?: Map<string, OptionProps>;
+  prefix?: (option?: OptionProps) => string | React.ReactNode;
+  suffix?: (option?: OptionProps) => string | React.ReactNode;
   setOptions?: (options?: OptionProps[]) => void;
   getOptionByValue?: (optValue?: string) => OptionProps | undefined;
   getOptionsByValue?: (optValue?: string | string[]) => OptionProps | OptionProps[] | undefined;
@@ -15,9 +20,14 @@ export interface ListContextProps {
 }
 const defaultList: ListContextProps = {
   value: '',
-  model: undefined,
+  model: 'single',
+  disabled: false,
+  selectParent: undefined,
   onChange: noop,
+  onClick: noop,
   setOptions: noop,
+  prefix: undefined,
+  suffix: undefined,
   getOptionByValue: undefined,
   getOptionsByValue: undefined,
   getLabelByValue: undefined,

@@ -1,10 +1,8 @@
 import React, { DOMAttributes, useContext, useEffect, useMemo } from 'react';
 import { isEmpty, noop } from 'lodash';
 import { RightFilled } from '@gio-design/icons';
-import classNames from 'classnames';
-import toArray from 'rc-util/lib/Children/toArray';
 import Popover from '../../popover';
-import { CascaderItemProps, OptionProps, ListProps } from '../interfance';
+import { CascaderItemProps, OptionProps } from '../interfance';
 import BaseItem from './baseItem';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import WithRef from '../../utils/withRef';
@@ -13,66 +11,53 @@ import { convertChildrenToData, generateSelectParent, generateString } from '../
 import { ListContext } from '../context';
 
 const CascaderItem = WithRef<HTMLLIElement, CascaderItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>>(
-  (
-    {
-      label,
-      value,
-      children,
-      childrens = [],
-      selectValue: initValue = '',
-      selectParent,
-      disabled = false,
-      onClick: propsOnClick,
-      ...rest
-    },
-    ref?
-  ) => {
+  ({ label, value, children, childrens = [], disabled, onClick: propsOnClick, ...rest }, ref?) => {
     const prefixCls = usePrefixCls('cascader');
     const popoverClassName = `${prefixCls}--cascader--content`;
-    const isSelected = initValue?.startsWith(generateString(value, selectParent));
-    const { setOptions } = useContext(ListContext);
+    /** context */
+    const context = useContext(ListContext);
+    const { disabled: contextDisabled, selectParent, onClick: contextOnClick, setOptions } = context;
+    /** end */
     const childSelectPrent = generateSelectParent(label, value, selectParent);
     const childNodeOptions = convertChildrenToData(children, {});
     const mergedOptions = useMemo(() => [...childNodeOptions, ...childrens], [childNodeOptions, childrens]);
+    const mergedDisabled = disabled ?? contextDisabled;
+
     useEffect(() => {
       setOptions?.(mergedOptions as OptionProps[]);
     }, [mergedOptions, setOptions]);
 
     // list
     const prefixClsItem = `${prefixCls}--item`;
-    const onClick = () => (!disabled ? propsOnClick?.(generateString(value, selectParent)) : noop);
 
+    const handleOnClick = () => {
+      if (!mergedDisabled) {
+        contextOnClick?.(generateString(value, selectParent));
+        propsOnClick?.(generateString(value, selectParent));
+      }
+    };
     const content = () => {
+      /** options render */
       if (!isEmpty(childrens)) {
         return (
-          <List model="cascader" className={prefixCls} disabled={disabled}>
-            {childrens?.map((child) => (
-              <CascaderItem
-                label={child?.label}
-                value={child?.value}
-                childrens={child?.childrens as CascaderItemProps[]}
-                selectParent={childSelectPrent}
-                disabled={disabled}
-              />
-            ))}
-          </List>
+          <ListContext.Provider value={{ ...context, selectParent: childSelectPrent }}>
+            <List model="cascader" className={`${prefixCls}--cascader--list`}>
+              {childrens?.map((child) => (
+                <CascaderItem
+                  {...child}
+                  label={child?.label}
+                  value={child?.value}
+                  childrens={child?.childrens as CascaderItemProps[]}
+                />
+              ))}
+            </List>
+          </ListContext.Provider>
         );
       }
-
-      if (React.isValidElement(children)) {
-        return React.cloneElement<ListProps>(children, {
-          ...children.props,
-          model: 'cascader',
-          disabled,
-          className: classNames(children.props?.className, prefixCls),
-          children: toArray(children?.props.children).map((child) =>
-            React.cloneElement<OptionProps>(child as React.ReactElement, {
-              selectParent: childSelectPrent,
-            })
-          ),
-        });
-      }
-      return <></>;
+      /** JSX */
+      return (
+        <ListContext.Provider value={{ ...context, selectParent: childSelectPrent }}>{children}</ListContext.Provider>
+      );
     };
 
     const PopoverRender = (element: React.ReactNode): React.ReactElement => {
@@ -83,11 +68,11 @@ const CascaderItem = WithRef<HTMLLIElement, CascaderItemProps & Omit<DOMAttribut
               placement="rightTop"
               overlayClassName={popoverClassName}
               content={content()}
-              getContainer={(node) => node || document.body}
+              strategy="fixed"
               distoryOnHide={false}
               offset={[0, 12]}
             >
-              {element}
+              <span>{element}</span>
             </Popover>
           </div>
         );
@@ -101,14 +86,12 @@ const CascaderItem = WithRef<HTMLLIElement, CascaderItemProps & Omit<DOMAttribut
         ref={ref}
         label={label}
         value={value}
-        disabled={disabled}
+        disabled={mergedDisabled}
         suffix={React.isValidElement(children) || !isEmpty(childrens) ? <RightFilled size="14px" /> : undefined}
-        onClick={React.isValidElement(children) || !isEmpty(childrens) ? noop : onClick}
-        selected={isSelected}
-        wrapper={PopoverRender}
+        onClick={React.isValidElement(children) || !isEmpty(childrens) ? noop : handleOnClick}
       />
     );
-    return renderItem;
+    return PopoverRender(renderItem);
   }
 );
 

@@ -22,12 +22,8 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
     [isSelection, options]
   );
   const cache = useCacheOptions();
-  const {
-    value: contextValue,
-    model: contextModel,
-    setOptions: contextSetOptions,
-    onChange: contextOnChange,
-  } = useContext(ListContext);
+  const contextVal = useContext(ListContext);
+  const { setOptions: contextSetOptions, onChange: contextOnChange } = contextVal;
   const setOptions = (opts?: OptionProps[]) => {
     cache?.setOptions(opts);
     contextSetOptions?.(opts);
@@ -61,10 +57,9 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
   const selectionProvider = (child: React.ReactNode) => (
     <ListContext.Provider
       value={{
-        value: contextValue,
+        ...contextVal,
         options: cache.options,
         onChange: contextOnChange,
-        model: contextModel,
         setOptions,
       }}
     >
