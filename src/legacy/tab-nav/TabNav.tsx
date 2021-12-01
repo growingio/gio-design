@@ -22,11 +22,11 @@ const TabNav = (props: TabNavProps, ref?: React.RefObject<HTMLDivElement>) => {
   } = props;
 
   const [localActiveKey, setLocalActiveKey] = useControlledState<string>(activeKey, defaultActiveKey);
-  const wrapperRefKey = useRef<symbol>(Symbol('tabNav-legacy'));
+  const wrapperRefKey = useRef<symbol>(Symbol('tabNav'));
   const [setRef, getRef] = useRefs<HTMLDivElement>();
   const [inkStyle, setInkStyle] = useState<React.CSSProperties>({});
 
-  const prefixCls = usePrefixCls('tabnav', customizePrefixCls);
+  const prefixCls = usePrefixCls('tabnav-legacy', customizePrefixCls);
   const classString = classNames(prefixCls, `${prefixCls}-${type}`, {
     [`${prefixCls}-lg`]: size === 'large',
     [`${prefixCls}-md`]: size === 'middle',
