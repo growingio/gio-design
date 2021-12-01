@@ -114,13 +114,13 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       if (!('value' in originDataSource[0])) {
         propertiItemList = originDataSource.map((v) => {
           const item = dimensionToPropertyItem(v as Dimension);
-          item.itemIcon = () => <IconRender group={item.associatedKey ? 'item' : item.groupId} />;
+          item.itemIcon = () => <IconRender group={item.iconId} />;
           return item;
         });
       } else {
         propertiItemList = originDataSource.map((v) => {
           const item = v as PropertyItem;
-          item.itemIcon = () => <IconRender group={item.associatedKey ? 'item' : item.groupId} />;
+          item.itemIcon = () => <IconRender group={item.iconId} />;
           return item;
         });
       }
@@ -182,7 +182,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
       if (r) {
         recent.push({
           ...r,
-          itemIcon: () => <IconRender group={r.associatedKey ? 'item' : r?.groupId} />,
+          itemIcon: () => <IconRender group={r.iconId} />,
           _groupKey: 'recently',
         });
       }

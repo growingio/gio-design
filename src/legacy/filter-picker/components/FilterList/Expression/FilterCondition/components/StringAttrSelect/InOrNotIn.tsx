@@ -36,7 +36,6 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   useEffect(() => {
     setCheckValue(values);
     setDefaultList(values);
-    setInputValue(values?.length ? values[0] : '');
   }, [values]);
 
   const changInputValue = (v: React.ChangeEvent<HTMLInputElement>) => {

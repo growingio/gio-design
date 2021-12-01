@@ -7,7 +7,7 @@ import {
   BooleanTypeOutlined,
 } from '@gio-design/icons';
 import { useLocale, usePrefixCls } from '@gio-design/utils';
-import { PropertyTypes, PropertyCardProps } from './interfaces';
+import { PropertyCardProps } from './interfaces';
 import useAsync from '../hooks/useAsync';
 import defaultLocale from './locales/zh-CN';
 import Card from '../../legacy/card';
@@ -42,9 +42,9 @@ function PropertyCard(props: PropertyCardProps) {
         <Card.Meta style={{ minHeight: '40px' }}>
           <Card.Meta>
             <span className={`${propCardPrefixCls}-title`}>{data?.name}</span>
-            {data?.type && (
+            {data?.previewTypeName && (
               <Tag size="small" status="draft">
-                {PropertyTypes[data?.subType ?? ''] || ''}
+                {data.previewTypeName}
               </Tag>
             )}
             <div className={`${propCardPrefixCls}-key`}>{data?.key ?? data?.id}</div>
