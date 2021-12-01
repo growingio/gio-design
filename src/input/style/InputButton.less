@@ -19,61 +19,36 @@
     color: @gray-5;
     .text-body1();
   }
-  &:disabled {
-    color: @gray-3;
-    background-color: @gray-0;
-    &::placeholder {
-      color: @gray-3;
-      .text-body1();
-    }
-    &:hover {
-      color: @gray-3;
-      background-color: @gray-0;
-      &::placeholder {
-        color: @gray-3;
+  &:not(&__disabled) &__hover,
+  &:not(&__disabled) &__active,
+  &:not(&__disabled):hover {
+    color: @blue-3;
+    background-color: @gray-1;
+    border: 1px solid @gray-2;
+
+    .@{icon-prefix-cls} {
+      svg {
+        color: @blue-3;
+        // cursor: not-allowed;
       }
     }
-  }
-
-  &:not([disabled]):hover {
-    color: @blue-3;
-    border: 1px solid @gray-2;
+    input {
+      color: @blue-3;
+      cursor: pointer;
+    }
   }
   &:is([disabled]):hover {
     color: @gray-3;
     border: 1px solid @gray-2;
   }
 
-  &:not([disabled]):focus {
+  &:not(&__disabled):focus {
     border: 1px solid @gray-2;
     outline: none;
   }
-
-  &__active,
-  &__hover {
-    &:hover {
-      .@{input-btn-input-prefix-cls} {
-        background-color: @gray-1;
-      }
-      input {
-        color: @blue-3;
-        cursor: pointer;
-      }
-      .@{input-prefix-cls} {
-        &__prefix {
-          color: @blue-3;
-          cursor: pointer;
-          svg {
-            color: @blue-3;
-            cursor: pointer;
-          }
-        }
-      }
-    }
-  }
   &__disabled {
     background-color: @gray-0;
-
+    cursor: not-allowed;
     input {
       color: @gray-3;
     }
