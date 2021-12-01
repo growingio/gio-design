@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   DevicePropertyOutlined,
-  // AttributionPropertyOutlined,
   ElementPropertyOutlined,
   EventPropertyOutlined,
   GeoPropertyOutlined,
@@ -10,6 +9,7 @@ import {
   UserOriginOutlined,
   UserPropertyOutlined,
   TagOutlined,
+  VirtualPropertyOutlined,
 } from '@gio-design/icons';
 
 const IconRender = (props: { group?: string }) => {
@@ -45,8 +45,10 @@ const IconRender = (props: { group?: string }) => {
       return <DevicePropertyOutlined />;
     case 'origin':
       return <UserOriginOutlined />;
+    case 'virtual':
+      return <VirtualPropertyOutlined />;
     default:
-      return <></>;
+      return <EventPropertyOutlined />;
   }
 };
 export default IconRender;

@@ -1,3 +1,5 @@
+@import (reference) '../../../../../list-pro/style/base.less';
+
 .filter-attr_select-box {
   display: flex;
   flex-direction: column;
@@ -18,26 +20,11 @@
     justify-content: flex-end;
   }
 
-  .gio-date-picker-range-input {
-    width: 100%;
-    border: none;
-    .gio-input {
-      width: 137px;
-    }
-  }
-
-  .gio-date-picker-wrap .gio-input {
-    width: 100%;
-  }
-
-  .gio-select-list {
-    padding: 0;
-    .gio-select-option {
-      padding: 0 16px;
-    }
-  }
-
-  .gio-list-wrapper {
+  .@{list-prefix-cls-legacy}-wrapper {
     padding: 16px 0;
+  }
+
+  .@{select-prefix-cls-legacy}-list {
+    padding: 0;
   }
 }

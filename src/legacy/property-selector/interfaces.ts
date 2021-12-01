@@ -14,7 +14,7 @@ export interface PropertyInfo {
   type?: string;
   description?: string;
   valueType?: string;
-  subType?: string;
+  previewTypeName?: string;
 }
 interface Iterable {
   [key: string]: any;
@@ -94,7 +94,6 @@ export const PropertyTypes: { [key: string]: string } = {
   event: '事件属性',
   avar: '访问属性',
   usr: '用户属性',
-  itm: '维度表',
 };
 
 // export type ItemValueType = 'int' | 'string' | 'double' | 'date' | 'list' | 'boolean';

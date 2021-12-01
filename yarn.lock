@@ -1587,10 +1587,10 @@
   resolved "https://registry.nlark.com/@gar/promisify/download/@gar/promisify-1.1.2.tgz?cache=0&sync_timestamp=1630000133403&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40gar%2Fpromisify%2Fdownload%2F%40gar%2Fpromisify-1.1.2.tgz#30aa825f11d438671d585bd44e7fd564535fc210"
   integrity sha1-MKqCXxHUOGcdWFvUTn/VZFNfwhA=
 
-"@gio-design/icons@^21.9.1":
-  version "21.9.1"
-  resolved "https://registry.npmmirror.com/@gio-design/icons/download/@gio-design/icons-21.9.1.tgz#a548df3746777dd229dbbdd1674552907096a375"
-  integrity sha1-pUjfN0Z3fdIp273RZ0VSkHCWo3U=
+"@gio-design/icons@^21.11.1":
+  version "21.11.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.11.1.tgz#c96e34d341dfd72f6755ef6f0452d00ec58e28a7"
+  integrity sha512-SVQk3xhBJc+YfWZC51l8eAVQQz9Axe9JGnuL+sZr4LO73soSxvzO5Dllh1xXhmsQJqhVKebeHXsKo/+TPgnR5w==
   dependencies:
     "@babel/runtime" "^7.14.8"
     classnames "^2.2.6"
