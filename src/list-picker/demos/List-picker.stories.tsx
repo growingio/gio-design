@@ -329,6 +329,7 @@ const Template: Story<ListPickerProps> = () => {
             onClear={() => {
               setMultipleValue(undefined);
             }}
+            allowClear
             onConfim={(val) => setMultipleValue(val as any)}
             placeholder="请选择"
           >

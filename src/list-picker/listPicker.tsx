@@ -84,7 +84,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
       onChange?.(val, opts);
       handVisibleChange(false);
     } else {
-      console.log('val', val);
+      // console.log('val', val);
       setValue(val);
     }
   };
