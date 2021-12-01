@@ -1,4 +1,10 @@
 @import '../../../stylesheet/index.less';
+@import (reference) '../../search-bar/style/index.less';
+@import (reference) '../../alert/style/index.less';
+@import (reference) '../../tab-nav/style/index.less';
+@import (reference) '../../empty/style/index.less';
+@import (reference) '../../loading/style/index.less';
+@import (reference) '../../list/style/index.less';
 
 @base-picker-prefix-cls-legacy: ~'@{component-prefix}-base-picker-legacy';
 
@@ -6,7 +12,6 @@
   position: relative;
   width: 360px;
   height: fit-content;
-  // max-height: 520px;
   margin: 0;
   padding: 12px 0 0;
   background-color: #fff;
@@ -17,7 +22,7 @@
     height: 36px;
     margin: 0 16px;
 
-    .gio-searchbar {
+    .@{searchbar-prefix-cls-legacy} {
       display: inline-block;
       vertical-align: top;
 
@@ -26,7 +31,7 @@
       }
     }
 
-    .gio-alert {
+    .@{alert-prefix-cls-legacy} {
       position: absolute;
       top: 72px;
       z-index: 9999;
@@ -34,15 +39,15 @@
     }
   }
 
-  .gio-tabnav {
+  .@{tabnav-prefix-cls-legacy} {
     margin: 8px;
   }
 
-  .gio-empty {
+  .@{empty-prefix-cls-legacy} {
     margin-top: 100px;
   }
 
-  .gio-loading-wrapper {
+  .@{loading-prefix-cls-legacy}-wrapper-loading {
     height: 406px;
     padding-top: 170px;
     text-align: center;
@@ -58,7 +63,7 @@
     scrollbar-width: none; // firefox
     -ms-overflow-style: none; // IE 10+
 
-    .gio-list__item-group__title {
+    .@{list-prefix-cls-legacy}__item-group__title {
       position: sticky;
       top: 0;
       background-color: @palette-white;
