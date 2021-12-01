@@ -25,7 +25,7 @@ export default {
 
 const Template: Story<TooltipProps> = (args) => (
   <div style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ width: '610px', margin: '70px 0px' }}>
+    <div style={{ width: '610px', margin: '70px 120px' }}>
       <div className="tooltip-top">
         <span className="popover-wrapper">
           <Tooltip {...args} placement="topLeft">

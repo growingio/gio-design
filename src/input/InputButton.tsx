@@ -86,6 +86,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
       type="button"
       // when set Input type=button, the placeholder is invalid
       value={value || placeholder}
+      title={value as string}
       onChange={onChange}
       prefix={customizePrefix}
       suffix={suffix}
