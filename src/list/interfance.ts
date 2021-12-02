@@ -67,10 +67,6 @@ export interface ListProps {
    * 仅支持options 形式。自定义 item render 自定义render时会劫持onClick方法提供给List来使用
    */
   renderItem?: (option: OptionProps) => React.ReactElement;
-  /**
-   * empty
-   */
-  empty?: () => React.ReactNode;
 }
 
 export interface DragListProps extends Omit<ListProps, 'model' | 'onChange' | 'value' | 'children'> {

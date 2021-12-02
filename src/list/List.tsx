@@ -13,6 +13,7 @@ import { ListContext } from './context';
 import useValue from './hooks/useValue';
 import useCacheOptions from './hooks/useCacheOptions';
 import defaultLocaleTextObject from './locales/zh-CN';
+import Empty from './Empty';
 
 export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const {
@@ -46,6 +47,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     disabled: contextDisabled,
     onChange: contextOnChange,
     setOptions: contextSetOptions,
+    isSelection,
   } = context;
   const mergedModel = useMemo(() => model ?? contextModel, [contextModel, model]);
   const mergedDisabled = disabled ?? contextDisabled;
@@ -139,7 +141,12 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     }
     return null;
   };
-
+  const renderContent = (
+    <>
+      {renderChildrens(childrens)}
+      {renderExpandedItem(isNeedCollapse)}
+    </>
+  );
   return (
     <ListContext.Provider
       value={{
@@ -163,8 +170,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
         id={id}
         title={title}
       >
-        {renderChildrens(childrens)}
-        {renderExpandedItem(isNeedCollapse)}
+        {isSelection ? renderContent : <Empty>{renderContent}</Empty>}
       </div>
     </ListContext.Provider>
   );

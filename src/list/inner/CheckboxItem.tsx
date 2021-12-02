@@ -11,7 +11,7 @@ import { selectStatus } from '../util';
 const CheckboxItem: React.ForwardRefRenderFunction<
   HTMLLIElement,
   BaseItemProps & Omit<DOMAttributes<HTMLInputElement | HTMLLIElement>, 'onClick'>
-> = (props, ref?) => {
+> & { isItem?: boolean } = (props, ref?) => {
   const { value, children, onClick, disabled, selected, ...rest } = props;
   const prefixCls = `${usePrefixCls(PREFIX)}--item`;
 
@@ -46,5 +46,5 @@ const CheckboxItem: React.ForwardRefRenderFunction<
     </Item>
   );
 };
-
+CheckboxItem.isItem = true;
 export default WithRef(CheckboxItem);

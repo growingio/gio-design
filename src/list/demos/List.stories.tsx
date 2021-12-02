@@ -13,7 +13,10 @@ import CascaderItem from '../inner/CascaderItem';
 import CheckboxItem from '../inner/CheckboxItem';
 import Popover from '../../popover';
 import Docs from './ListPage';
-import { Divider } from '../..';
+import { Divider, SearchBar } from '../..';
+import { Dropdown } from '../../dropdown/Dropdown';
+import Button from '../../button/Button';
+import PopConfirm from '../../popconfirm';
 
 export default {
   title: 'Upgraded/List',
@@ -390,6 +393,112 @@ const SelectionTemplate = () => {
     </>
   );
 };
+
+const DropdownTemplate = () => {
+  const [visible, setVisible] = useState(false);
+
+  const [secndVisible, setSecondVisible] = useState(false);
+  const [thirdVisible, setThirdVisible] = useState(false);
+  const [search, setSearch] = useState('');
+  const otherOptions = [
+    { label: 'item1', value: 'item1' },
+    { label: 'item2', value: 'item2' },
+  ];
+  const secondOptions = [
+    { label: 'item3', value: 'item3' },
+    { label: 'item4', value: 'item4' },
+  ];
+  const itemClick = (v: string) => {
+    console.log('item onClick 触发', v);
+    if (v !== 'item 1') {
+      setVisible(false);
+    }
+  };
+  const searchOnChange = (v: string) => {
+    console.log(v);
+    setSearch(v);
+  };
+  return (
+    <div style={{ height: '300px', display: 'flex', columnGap: '30px' }}>
+      <Dropdown
+        visible={visible}
+        onVisibleChange={(vis) => setVisible(vis)}
+        content={
+          <List
+            onClick={(v) => console.log('list onClick 方法触发', v)}
+            onChange={(v: string) => console.log('listPicker onChange 触发', v)}
+          >
+            <PopConfirm
+              title="确定要删除吗?"
+              desc="123"
+              trigger="click"
+              onConfirm={() => setVisible(false)}
+              onCancel={() => setVisible(false)}
+            >
+              <Item value="item 1" label="点击我弹出Popconfim" onClick={itemClick} />
+            </PopConfirm>
+            <Item
+              value="item 2"
+              label="item 2"
+              disabled
+              onClick={itemClick}
+              disabledTooltip="该item 无法触发 list的onChange、onClick"
+            />
+            <Item value="item 3" label="item 3" onClick={itemClick} />
+          </List>
+        }
+      >
+        <Button>点击我</Button>
+      </Dropdown>
+
+      <Dropdown
+        visible={secndVisible}
+        onVisibleChange={(vis) => setSecondVisible(vis)}
+        content={
+          <>
+            <SearchBar value={search} onSearch={searchOnChange} />
+            <List
+              style={{ padding: '8px 0px 0px 0px' }}
+              options={otherOptions.filter((v) => v.value.includes(search))}
+              onClick={(v) => console.log('list onClick 方法触发', v)}
+              onChange={(v: string) => console.log('listPicker onChange 触发', v)}
+            />
+          </>
+        }
+      >
+        <Button>search功能</Button>
+      </Dropdown>
+
+      <Dropdown
+        visible={thirdVisible}
+        onVisibleChange={(vis) => setThirdVisible(vis)}
+        content={
+          <>
+            <SearchBar value={search} onSearch={searchOnChange} />
+            <Selection style={{ padding: '8px 0 0 0' }}>
+              <List
+                id="group1"
+                title="group1"
+                options={otherOptions.filter((v) => v.value.includes(search))}
+                onClick={(v) => console.log('list onClick 方法触发', v)}
+                onChange={(v: string) => console.log('listPicker onChange 触发', v)}
+              />
+              <List
+                id="group2"
+                title="group2"
+                options={secondOptions.filter((v) => v.value.includes(search))}
+                onClick={(v) => console.log('list onClick 方法触发', v)}
+                onChange={(v: string) => console.log('listPicker onChange 触发', v)}
+              />
+            </Selection>
+          </>
+        }
+      >
+        <Button>group List search功能</Button>
+      </Dropdown>
+    </div>
+  );
+};
 const CollapseTemplate: Story<ItemProps> = () => {
   const collapseOptions = defaultLabels.reduce((prev, curr) => [...prev, { label: curr, value: curr }], []);
   return (
@@ -597,6 +706,12 @@ const demoTemplate: Story<ListProps> = () => (
         <td>Section list</td>
         <td>
           <SelectionTemplate />
+        </td>
+      </tr>
+      <tr>
+        <td>实际应用</td>
+        <td>
+          <DropdownTemplate />
         </td>
       </tr>
     </table>

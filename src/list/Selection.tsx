@@ -9,6 +9,7 @@ import { getFlattenOptions } from '../list-picker/util';
 import List from './List';
 import { ListContext } from './context';
 import useCacheOptions from './hooks/useCacheOptions';
+import Empty from './Empty';
 
 type nodeType = React.ReactElement<ListProps> & { type: { isGIOList: boolean; isRecent: boolean } };
 
@@ -59,6 +60,7 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
       value={{
         ...contextVal,
         options: cache.options,
+        isSelection: true,
         onChange: contextOnChange,
         setOptions,
       }}
@@ -83,7 +85,7 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
         {!isSelection && !isEmpty(selectionOptions) && <List options={selectionOptions as OptionProps[]} />}
       </div>
     );
-    return selectionProvider(renderOptionsChildren);
+    return selectionProvider(<Empty>{renderOptionsChildren}</Empty>);
   }
 
   if (isFunction(children)) {
@@ -102,7 +104,7 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
       {toArray(children)?.map((node: nodeType) => renderContent(node))}
     </div>
   );
-  return selectionProvider(renderNormal);
+  return selectionProvider(<Empty>{renderNormal}</Empty>);
 };
 Selection.isSelection = true;
 export default Selection;
