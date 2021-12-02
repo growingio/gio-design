@@ -498,7 +498,7 @@ export const TheadGroup = () => {
 
 // ----------------------- Ellipsis -----------------------//
 
-export const Ellipsis = () => {
+export const Ellipsis = (props: any) => {
   const columns: ColumnsType<DataSourceType> = [
     {
       dataIndex: 'id',
@@ -531,10 +531,11 @@ export const Ellipsis = () => {
   return (
     <Table<DataSourceType>
       pagination={false}
-      title="内容省略"
+      title="内容"
       columns={columns}
       dataSource={genDataSource()}
       rowKey="id"
+      {...props}
     />
   );
 };

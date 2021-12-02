@@ -38,6 +38,7 @@ const TemplateImage: Story<SkeletonImageProps> = (args) => (
 
 export const Image = TemplateImage.bind({});
 Image.args = {
+  style: { width: '100%' },
   loading: true,
   delay: 1000,
 };

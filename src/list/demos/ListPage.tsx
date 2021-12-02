@@ -18,9 +18,21 @@ export default function ListPage() {
         <li>Selection，分组list。</li>
       </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
+      <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-list--demo" />
+      </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
         <Story id="upgraded-list--default" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'mutiple' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-list--mutiple" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'cascader' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-list--cascader" />
       </Canvas>
       <Subheading>{formatMessage({ defaultMessage: 'collapse' })}</Subheading>
       <Canvas>
@@ -30,13 +42,9 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-list--drag" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: 'items' })}</Subheading>
-      <Canvas>
-        <Story id="upgraded-list--items" />
-      </Canvas>
       <Subheading>{formatMessage({ defaultMessage: 'selection list' })}</Subheading>
       <Canvas>
-        <Story id="upgraded-list--items" />
+        <Story id="upgraded-list--selection-list" />
       </Canvas>
       <ArgsTable of={List} />
     </>
