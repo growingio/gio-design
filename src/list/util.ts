@@ -1,4 +1,4 @@
-import { isArray, isEmpty, isUndefined } from 'lodash';
+import { concat, difference, indexOf, isArray, isEmpty, isNil, isUndefined } from 'lodash';
 import toArray from 'rc-util/lib/Children/toArray';
 import React from 'react';
 import { ListProps } from '.';
@@ -8,7 +8,22 @@ type OtherProps = ListProps;
 
 export const isMultipe = (model: ModelType) => model === 'multiple';
 export const isCascader = (model: ModelType) => model === 'cascader';
-
+export const getResultValue = (value?: string[], val?: string) => {
+  if (indexOf(value, val) !== -1) {
+    return difference(value, [val]);
+  }
+  if (typeof val === 'string') {
+    return concat(value, val);
+  }
+  return value;
+  //  ?  :
+};
+export const selectStatus = (value?: string, values?: string | string[]) => {
+  if (!isNil(value)) {
+    return isArray(values) ? (values as string[])?.indexOf(value) !== -1 : values === value;
+  }
+  return undefined;
+};
 const deepChildren = (children?: OptionProps[]): any[] => {
   if (children) {
     return [...children, ...deepChildren(children?.[0]?.childrens as OptionProps[])];

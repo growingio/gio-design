@@ -3,6 +3,7 @@
 @list-picker-prefix-cls: ~'@{component-prefix}-list-picker';
 @selection-prefix-cls: ~'@{component-prefix}-list--selection';
 @tab-panel-cls: ~'@{component-prefix}-tabs-tabpanel';
+@cascader-prefix-cls: ~'@{component-prefix}-cascader';
 
 @list-prefix-cls: ~'@{component-prefix}-list';
 .@{list-picker-prefix-cls} {
@@ -28,6 +29,9 @@
     max-height: 360px;
     padding: 0;
     .scrollbar(@x: hidden, @y: initial);
+  }
+  & .@{cascader-prefix-cls}--list {
+    padding: 8px;
   }
   & .@{selection-prefix-cls} {
     height: auto;

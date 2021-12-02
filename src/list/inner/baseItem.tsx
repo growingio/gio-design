@@ -1,11 +1,13 @@
 import classNames from 'classnames';
-import React, { DOMAttributes, ReactElement } from 'react';
-import { isEmpty, isString, noop } from 'lodash';
+import React, { DOMAttributes, ReactElement, useContext, useMemo } from 'react';
+import { isEmpty, isString } from 'lodash';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { PREFIX } from '../constants';
 import { BaseItemProps } from '../interfance';
 import Tooltip from '../../tooltip';
 import WithRef from '../../utils/withRef';
+import { ListContext } from '../context';
+import { generateString, selectStatus } from '../util';
 
 const defaultContentRender = (element: React.ReactNode | Element): React.ReactElement => element as React.ReactElement;
 const renderIcon = (className: string, prefix: React.ReactNode) => <span className={className}>{prefix}</span>;
@@ -16,22 +18,57 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       value,
       className,
       style,
-      prefix,
-      suffix,
+      prefix: propPrefix,
+      suffix: propSuffix,
       children,
       disabled,
-      selected,
       disabledTooltip,
       onClick,
       contentRender = defaultContentRender,
       wrapper = defaultContentRender,
     } = props;
-
     const prefixCls = `${usePrefixCls(PREFIX)}--item`;
-
-    const content = children ?? label;
+    const {
+      model,
+      value: contextValue,
+      disabled: contextDisabled,
+      prefix: contextPrefix,
+      suffix: contextSuffix,
+      onClick: contextOnClick,
+      selectParent,
+    } = useContext(ListContext);
+    const mergedDisabled = disabled ?? contextDisabled;
+    const selected = useMemo(() => {
+      if (model === 'cascader') {
+        return (contextValue as string)?.startsWith(generateString(value, selectParent));
+      }
+      return selectStatus?.(value, contextValue);
+    }, [contextValue, model, selectParent, value]);
+    /** ============ prefix suffix  ================  */
+    const prefix = useMemo(
+      () => propPrefix ?? contextPrefix?.({ label, value, disabled, disabledTooltip }),
+      [contextPrefix, disabled, disabledTooltip, label, propPrefix, value]
+    );
+    const suffix = useMemo(
+      () => propSuffix ?? contextSuffix?.({ label, value, disabled, disabledTooltip }),
+      [contextSuffix, disabled, disabledTooltip, label, propSuffix, value]
+    );
     const prefixIcon = prefix ? renderIcon(`${prefixCls}-prefix-icon`, prefix) : undefined;
     const suffixIcon = suffix ? renderIcon(`${prefixCls}-suffix-icon`, suffix) : undefined;
+    /** ======= end =========== */
+
+    /** =================== events =================== */
+
+    const handleOnClick = () => {
+      if (!mergedDisabled) {
+        /** cascader click 从上级来 */
+        if (model !== 'cascader') {
+          contextOnClick?.(value);
+        }
+        onClick?.(value);
+      }
+    };
+    const content = children ?? label;
 
     const contentElement = isString(content) ? (
       <>
@@ -45,19 +82,14 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       <>{content}</>
     );
     const renderElement = (
-      <Tooltip
-        disabled={!disabled || isEmpty(disabledTooltip)}
-        strategy="fixed"
-        title={disabledTooltip}
-        getContainer={() => document.body}
-      >
+      <Tooltip disabled={!mergedDisabled || isEmpty(disabledTooltip)} strategy="fixed" title={disabledTooltip}>
         <li
           style={style}
           className={classNames(
             className,
             prefixCls,
             {
-              [`${prefixCls}--disabled`]: disabled,
+              [`${prefixCls}--disabled`]: mergedDisabled,
               [`${prefixCls}--actived`]: selected,
             },
             className
@@ -65,7 +97,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
           key={value}
           aria-hidden="true"
           ref={ref}
-          onClick={() => (!disabled ? onClick?.(value) : noop)}
+          onClick={handleOnClick}
         >
           {contentRender?.(contentElement)}
         </li>

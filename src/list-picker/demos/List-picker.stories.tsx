@@ -237,27 +237,24 @@ const Template: Story<ListPickerProps> = () => {
             <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>
               <Tab label="tab1" value="tab1">
                 <List.Selection>
-                  {(context) => {
-                    const isEqualValue = context.value.length === 2;
-                    return (
-                      <>
-                        <CheckboxItem
-                          selected={isEqualValue}
-                          onClick={() => {
-                            if (isEqualValue) {
-                              context.onChange([]);
-                            } else {
-                              context.onChange(Array.from(context.options.keys()));
-                            }
-                          }}
-                          label="全部"
-                          value="all"
-                        />
+                  {(context) => (
+                    <>
+                      <CheckboxItem
+                        selected={context?.value?.length === 2}
+                        onClick={() => {
+                          if (context?.value?.length === 2) {
+                            context?.onChange([]);
+                          } else {
+                            context?.onChange(Array.from(context?.options.keys()));
+                          }
+                        }}
+                        label="全部"
+                        value="all"
+                      />
 
-                        <List options={multipleOptions} id="id" title="有item" />
-                      </>
-                    );
-                  }}
+                      <List options={multipleOptions} id="id" title="有item" />
+                    </>
+                  )}
                 </List.Selection>
               </Tab>
               <Tab label="tab2" value="tab2">
@@ -366,7 +363,11 @@ const Template: Story<ListPickerProps> = () => {
             <List.Selection options={largeOptions} />
           </ListPicker>
         </div>
-        <div className="demo-box" />
+        <div className="demo-box">
+          <ListPicker value="1.2" model="cascader">
+            <List options={[{ label: '1', value: '1', childrens: [{ label: '2', value: '2' }] }]} />
+          </ListPicker>
+        </div>
       </div>
     </div>
   );

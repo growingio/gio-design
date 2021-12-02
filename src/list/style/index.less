@@ -100,6 +100,24 @@
     vertical-align: middle;
     border-radius: 4px;
     cursor: pointer;
+    &--drag {
+      justify-content: flex-start;
+      cursor: all-scroll;
+      & > .@{list-prefix-cls}--item {
+        margin-bottom: 0;
+        padding: 0;
+        background-color: inherit;
+      }
+      &--icon {
+        margin-right: 8px;
+        &--disabled {
+          cursor: not-allowed;
+        }
+      }
+      &--disabled {
+        cursor: no-drop;
+      }
+    }
     &--ellipsis {
       display: inline-block;
       overflow: hidden;
@@ -148,21 +166,7 @@
     &--interval {
       margin-top: 4px;
     }
-    &--drag {
-      justify-content: flex-start;
-      cursor: all-scroll;
-      & > .@{list-prefix-cls}--item {
-        margin-bottom: 0;
-        padding: 0;
-        background-color: inherit;
-      }
-      &--icon {
-        margin-right: 8px;
-      }
-      &--disabled {
-        cursor: no-drop;
-      }
-    }
+
     &--text {
       flex-grow: 1;
     }

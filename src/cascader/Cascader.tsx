@@ -79,7 +79,10 @@ export const Cascader: React.FC<CascaderProps> = ({
     if (typeof propsRenderTrigger === 'function') {
       const node = propsRenderTrigger?.();
       return React.cloneElement(node, {
-        onClick: triggerClick,
+        onClick: (e: MouseEvent) => {
+          node?.props?.onClick?.(e);
+          triggerClick();
+        },
       });
     }
     return (

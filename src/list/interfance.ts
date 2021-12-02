@@ -58,7 +58,7 @@ export interface ListProps {
   /**
    *
    */
-  onClick?: (value: string) => void;
+  onClick?: (value?: string) => void;
   /**
    *
    */
@@ -85,8 +85,11 @@ export interface OptionProps {
   disabledTooltip?: string;
   prefix?: string | React.ReactNode;
   suffix?: string | React.ReactNode;
+  /**
+   * @deprecated 未来版本迭代后会弃用 1.x.x -> 2.x.x
+   */
   wrapper?: (element: React.ReactNode) => React.ReactElement;
-  onClick?: (v: string) => void;
+  onClick?: (v?: string) => void;
   [key: string]: unknown;
 }
 
@@ -98,9 +101,6 @@ export interface DragItemProps extends ItemProps {
 export interface CascaderItemProps extends BaseItemProps {
   label: string;
   value: string;
-  selectValue?: string;
-  selectParent?: OptionProps[];
-  onChange?: (value: string, option?: CascaderItemProps) => void;
   childrens?: CascaderItemProps[];
 }
 export interface ItemProps
@@ -131,7 +131,7 @@ export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled' | 
   children?: React.ReactNode;
   disabledTooltip?: string;
   selected?: boolean;
-  onClick?: (value: string) => void;
+  onClick?: (value?: string) => void;
 }
 
 export interface TriggerProps {
