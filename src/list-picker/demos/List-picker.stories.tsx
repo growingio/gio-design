@@ -88,7 +88,7 @@ const Template: Story<ListPickerProps> = () => {
           <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>
             <Tab label="tab1" value="tab1">
               <List.Selection>
-                <Recent title="最近使用" />
+                <Recent />
                 <List
                   id="group1"
                   title="分组1"

@@ -29,8 +29,8 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
     contextSetOptions?.(opts);
   };
   const IsRenderSelectionItem = (node: nodeType) => {
-    if (node.type?.isRecent) {
-      return true;
+    if (node?.type?.isRecent) {
+      return false;
     }
     return (
       !isEmpty(node?.props.options) ||
@@ -69,6 +69,7 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
   if (options.length) {
     const renderOptionsChildren = (
       <div className={classNames(prefixCls, className)} style={style}>
+        {toArray(children)?.map((node: nodeType) => renderContent(node))}
         {isSelection &&
           (selectionOptions as { groupId: string; groupName: string; options: OptionProps[] }[])?.map(
             (option) =>

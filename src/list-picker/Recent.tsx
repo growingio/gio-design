@@ -1,7 +1,9 @@
 import { slice } from 'lodash';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { List, OptionProps } from '../list';
+import { PREFIX } from '../list/constants';
 import { ListContext } from '../list/context';
+import usePrefixCls from '../utils/hooks/use-prefix-cls';
 
 export const ITEM_KEY = '__GIO_SELECTION_KEY';
 
@@ -13,8 +15,9 @@ interface RecentProps {
 const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
   const { max = 5, title = '最近使用' } = props;
   const [mayBeArray, setMayBearray] = useState<Map<string, OptionProps> | undefined>(new Map());
+  const selectionPrefixCls = `${usePrefixCls(PREFIX)}--selection`;
   const context = useContext(ListContext);
-  const { options } = context;
+  const { options, model } = context;
   const localStorageValue = window?.localStorage?.getItem(ITEM_KEY) || '[]';
   const matchValue = JSON.parse(localStorageValue); // localStorage.getItem('__GIO_SELECTION_KEY')
   useEffect(() => {
@@ -39,7 +42,15 @@ const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
   );
   const handleOnChange = (value?: string | string[], opts?: OptionProps | OptionProps[]) =>
     context?.onChange?.(value, opts);
-  return <List title={title} id={ITEM_KEY} options={listOptions} value="" onChange={handleOnChange} />;
+  if (!!listOptions?.length && model !== 'multiple') {
+    return (
+      <div className={`${selectionPrefixCls}--item`}>
+        {title && <div className={`${selectionPrefixCls}--title`}>{title}</div>}
+        <List title={title} id={ITEM_KEY} options={listOptions} value="" onChange={handleOnChange} />
+      </div>
+    );
+  }
+  return <></>;
 };
 Recent.isRecent = true;
 export default Recent;
