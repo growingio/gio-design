@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { isFunction, isObject } from 'lodash';
+import { invoke, isFunction, isObject } from 'lodash';
 import { useLocale } from '@gio-design/utils';
 import Button from '../button';
 import Popover from '../popover';
@@ -33,6 +33,22 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
   const [selectFilterKeys, setSelectFilterKeys] = useState<Key[]>(values);
   const [visible, setVisible] = useState<boolean>(false);
   const { tableRef } = useContext(TableContext);
+
+  const withClick = (
+    trigger: React.ReactElement<{
+      onClick?: (event: React.MouseEvent) => void;
+    }>
+  ) => {
+    if (React.isValidElement(trigger)) {
+      return React.cloneElement(trigger, {
+        onClick: (event: React.MouseEvent) => {
+          setVisible((oldVisible) => !oldVisible);
+          invoke(trigger, 'props.onClick', event);
+        },
+      });
+    }
+    return trigger;
+  };
 
   useEffect(() => {
     if (visible) {
@@ -111,7 +127,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
         </>
       }
     >
-      {children}
+      {withClick(children)}
     </Popover>
   );
 };
