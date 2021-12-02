@@ -32,8 +32,7 @@ const Template: Story<ModalProps> = (args) => {
           setVisible(false);
         }}
       >
-        宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开
-        宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开
+        宽度自动撑开 宽度自动撑开
       </Modal>
     </div>
   );
@@ -173,25 +172,25 @@ export const Demo = () => {
         <tr>
           <td>AdaptiveWidthDemo</td>
           <td>
-            <AdaptiveWidthDemo />
+            <AdaptiveWidthDemo title="AdaptiveWidthDemo" />
           </td>
         </tr>
         <tr>
           <td>FixedTemplate</td>
           <td>
-            <FixedTemplate size="fixed" />
+            <FixedTemplate size="fixed" title="FixedTemplate" />
           </td>
         </tr>
         <tr>
           <td>FullModal</td>
           <td>
-            <FullModal />
+            <FullModal title="FullModal" />
           </td>
         </tr>
         <tr>
           <td>HeightOverflowModalTemplate</td>
           <td>
-            <HeightOverflowModalTemplate size="full" />
+            <HeightOverflowModalTemplate size="full" title="HeightOverflowModalTemplate" />
           </td>
         </tr>
         <tr>
