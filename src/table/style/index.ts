@@ -6,3 +6,4 @@ import '../../button/style';
 import '../../popover/style';
 import '../../search-bar/style';
 import '../../pagination/style';
+import '../../checkbox/style';
