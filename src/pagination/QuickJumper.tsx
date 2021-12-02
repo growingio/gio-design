@@ -21,7 +21,6 @@ const QuickJumper: React.FC<{
           max={maxPages}
           size="small"
           className={`${prefixCls}__jumper__input`}
-          placeholder=" "
           onKeyDown={({ key, currentTarget }) => {
             if (key === 'Enter') {
               onQuickGo?.(Number.parseInt(`${currentTarget.value}`, 10));
