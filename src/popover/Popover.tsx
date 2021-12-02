@@ -89,9 +89,11 @@ const Popover = (props: PopoverProps) => {
       if (!(overContentRef.current && enterable)) {
         setVisible(realVisible);
         onVisibleChange?.(realVisible);
-      }
-      if (realVisible) {
-        update?.();
+        if (realVisible) {
+          setTimeout(() => {
+            update?.();
+          }, 0);
+        }
       }
     },
     [disabled, enterable, setVisible, onVisibleChange, update]
