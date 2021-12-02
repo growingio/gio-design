@@ -56,7 +56,9 @@ const CascaderItem = WithRef<HTMLLIElement, CascaderItemProps & Omit<DOMAttribut
       }
       /** JSX */
       return (
-        <ListContext.Provider value={{ ...context, selectParent: childSelectPrent }}>{children}</ListContext.Provider>
+        <ListContext.Provider value={{ ...context, model: 'cascader', selectParent: childSelectPrent }}>
+          {children}
+        </ListContext.Provider>
       );
     };
 
