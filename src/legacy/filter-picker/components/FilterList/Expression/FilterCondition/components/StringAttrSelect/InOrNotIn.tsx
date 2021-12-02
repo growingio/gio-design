@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Input from '../../../../../../../../input'; // new
 import List from '../../../../../../../list-pro';
 import Loading from '../../../../../../../../loading'; // new
 import { attributeValue } from '../../interfaces';
+import { FilterPickerContext } from '../../../../../../FilterPicker';
 
 interface StringAttrSelectProps {
   valueType: attributeValue;
@@ -21,6 +22,7 @@ type checkOptionsItem = {
 let timer: any = null;
 
 function StringAttrSelect(props: StringAttrSelectProps) {
+  const { textObject: t } = useContext(FilterPickerContext);
   const { valueType, curryDimensionValueRequest, attrChange, values = [], exprKey, attrSelect } = props;
   const [inputValue, setInputValue] = useState<string>('');
   const [checkValue, setCheckValue] = useState<string[]>(values);
@@ -56,7 +58,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
       setInputCheckList(checkList);
       setCheckOptions(
         checkList.map((ele: string) => ({
-          label: `自由输入：${ele}`,
+          label: `${t.freeInput}${ele}`,
           value: ele,
         }))
       );
@@ -76,7 +78,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
               // 所有的自由输入选项
               ...inputCheckList
                 .filter((ele: string) => checkList.includes(ele))
-                .map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })),
+                .map((ele: string) => ({ label: `${t.freeInput}${ele}`, value: ele })),
               // 已选中的，过滤掉自由输入的选项
               ...Array.from(new Set([...filterCheckedList, ...res])).map((ele: string) => ({ label: ele, value: ele })),
             ]);
@@ -85,7 +87,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
               // 所有的自由输入选项
               ...inputCheckList
                 .filter((ele: string) => checkList.includes(ele))
-                .map((ele: string) => ({ label: `自由输入：${ele}`, value: ele })),
+                .map((ele: string) => ({ label: `${t.freeInput}${ele}`, value: ele })),
             ]);
           }
           setLoadingStatue(false);
@@ -123,7 +125,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
 
   return (
     <div style={{ height: '330px' }}>
-      <Input placeholder="请输入…" style={{ width: '100%' }} value={inputValue} onChange={changInputValue} />
+      <Input placeholder={t.pleaseEnter} style={{ width: '100%' }} value={inputValue} onChange={changInputValue} />
       {loadingStatue ? (
         <div
           style={{

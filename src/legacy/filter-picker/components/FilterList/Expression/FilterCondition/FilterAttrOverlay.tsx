@@ -1,15 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { titleMap, selectOptionMap, AttributeMap } from '../../../../filterMap';
+import React, { useContext, useEffect, useState } from 'react';
 import NumberAttrSelect from './components/NumberAttrSelect';
 import DateAttrSelect from './components/DateAttrSelect';
 import StringAttrSelect from './components/StringAttrSelect/index';
 import Footer from '../../../Footer';
 import './attrSelect.less';
-import { attributeValue, StringValue, NumberValue, DateValue, FilterValueType } from './interfaces';
-import { operationsOptionType } from '../../../../interfaces';
+import {
+  attributeValue,
+  StringValue,
+  NumberValue,
+  DateValue,
+  FilterValueType,
+  useSelectOptions,
+  AttributeMap,
+} from './interfaces';
+import { operationsOptionType, titleGroup } from '../../../../interfaces';
 import Checkbox from '../../../../../../checkbox'; // new
 import Select from '../../../../../../select'; // new
 import Divider from '../../../../../../divider';
+import { FilterPickerContext } from '../../../../FilterPicker';
 
 interface FilterAttrOverlayProps {
   valueType: attributeValue;
@@ -24,15 +32,24 @@ interface FilterAttrOverlayProps {
 }
 
 function FilterAttrOverlay(props: FilterAttrOverlayProps) {
+  const { textObject: t } = useContext(FilterPickerContext);
+  const selectOptions = useSelectOptions();
   const { valueType, onSubmit, onCancel, op, curryDimensionValueRequest, values, exprKey, operationsOption, numType } =
     props;
   const [operationValue, setOperationValue] = useState<StringValue | NumberValue | DateValue>(op);
   const [attrValue, setAttrValue] = useState<string[]>(values);
   const [checked, setChecked] = useState<boolean>(valueType === 'date' && (op === '>=' || op === '<='));
 
+  const titleMap: titleGroup = {
+    string: t.string,
+    STRING: t.string,
+    int: t.int,
+    date: t.date,
+  };
+
   useEffect(() => {
     if (valueType === 'date') {
-      // 此处是为了处理，日期类型时，包含当天，选项('>=', '<=')不在selectOptionMap里面
+      // 此处是为了处理，日期类型时，包含当天，选项('>=', '<=')不在 selectOptions 里面
       if (op === '>=') {
         setOperationValue('>');
       } else if (op === '<=') {
@@ -53,7 +70,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [op, valueType]);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
   };
 
@@ -146,25 +163,25 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   return (
     <div className="filter-attr_select-box">
       <div>
-        <div className="filter-attr_select-title">{titleMap[valueType] || '字符串类型'}</div>
+        <div className="filter-attr_select-title">{titleMap[valueType] || t.string}</div>
         <Select
           options={
             operationsOption
-              ? selectOptionMap?.[valueType]?.filter((opItem) =>
+              ? selectOptions?.[valueType]?.filter((opItem) =>
                   operationsOption?.[valueType].includes(opItem.value as any)
                 )
-              : selectOptionMap?.[valueType]
+              : selectOptions?.[valueType]
           }
           value={operationValue}
           style={{ marginTop: '16px', width: '100%' }}
-          placeholder="请选择"
+          placeholder={t.select}
           onChange={selectChange}
         />
         <Divider style={{ margin: '14px 0 16px' }} />
         {getAttrSelect(valueType, operationValue)}
         {valueType === AttributeMap.date && (operationValue === '>' || operationValue === '<') && (
           <Checkbox checked={checked} onChange={handleChange} style={{ marginTop: 16 }}>
-            包含当日
+            {t.includeToday}
           </Checkbox>
         )}
       </div>

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Input from '../../../../../../../../input'; // new
 import List from '../../../../../../../list-pro';
 import Loading from '../../../../../../../../loading'; // new
 import { attributeValue } from '../../interfaces';
 import InOrNotIn from './InOrNotIn';
+import { FilterPickerContext } from '../../../../../../FilterPicker';
 
 interface StringAttrSelectProps {
   // 维度类型
@@ -25,6 +26,7 @@ type listOptionsItem = {
 let timer: any = null;
 
 function StringAttrSelect(props: StringAttrSelectProps) {
+  const { textObject: t } = useContext(FilterPickerContext);
   const { attrSelect, valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
   const [inputValue, setInputValue] = useState<string>(values.join(','));
   const [listOptions, setListOptions] = useState<listOptionsItem[]>([]);
@@ -99,7 +101,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     default:
       return (
         <div style={{ width: '100%', height: '100%' }}>
-          <Input placeholder="请输入…" style={{ width: '100%' }} value={inputValue} onChange={changInputValue} />
+          <Input placeholder={t.pleaseEnter} style={{ width: '100%' }} value={inputValue} onChange={changInputValue} />
           {loadingStatue ? (
             <div
               style={{

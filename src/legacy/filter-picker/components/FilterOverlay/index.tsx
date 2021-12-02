@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import FilterList from '../FilterList';
 import { FilterValueType } from '../../interfaces';
 import './index.less';
+import { FilterPickerContext } from '../../FilterPicker';
 
 interface FilterOverflyProps {
   onCancel: () => void;
@@ -14,6 +15,7 @@ interface FilterOverflyProps {
   recentlyStorePrefix: string;
 }
 function FilterOverlay(props: FilterOverflyProps) {
+  const { textObject } = useContext(FilterPickerContext);
   const {
     onCancel,
     onSubmit,
@@ -26,7 +28,7 @@ function FilterOverlay(props: FilterOverflyProps) {
   } = props;
   return (
     <div className="filter-condition_box">
-      <div className="filter-condition_title">选择过滤条件</div>
+      <div className="filter-condition_title">{textObject.selectFilter}</div>
       <FilterList
         list={filterList}
         dimensionValueRequest={dimensionValueRequest}

@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { PlusCircleFilled } from '@gio-design/icons';
 import Expression from './Expression';
 import './index.less';
 import { FilterValueType } from '../../interfaces';
-import { defaultFilterItem } from '../../filterMap';
 import Footer from '../Footer';
 import Button from '../../../../button'; // new
+import { FilterPickerContext } from '../../FilterPicker';
+
+const defaultFilterItem: FilterValueType = {
+  op: '=',
+  values: [],
+  valueType: 'string',
+  name: '',
+  key: '',
+};
 
 interface FilterListProps {
   list: FilterValueType[];
@@ -29,6 +37,8 @@ function FilterList(props: FilterListProps) {
     recentlyStorePrefix,
   } = props;
   const [filterList, setFilterList] = useState<FilterValueType[]>([...list]);
+
+  const { textObject: t } = useContext(FilterPickerContext);
 
   useEffect(() => {
     if (!list.length) {
@@ -90,7 +100,7 @@ function FilterList(props: FilterListProps) {
         disabled={filterList.length >= 5 || filterList.some((ele: FilterValueType) => !ele.values.length)}
         onClick={addFilter}
       >
-        添加过滤条件
+        {t.addFilter}
       </Button>
       <Footer
         onCancel={cancel}

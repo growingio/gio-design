@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '../../../../button'; // new
+import { FilterPickerContext } from '../../FilterPicker';
 import './index.less';
 
 interface FilterFooterProps {
@@ -10,14 +11,15 @@ interface FilterFooterProps {
 
 function FilterFooter(props: FilterFooterProps) {
   const { onCancel, onSubmit, comfirmStatus = false } = props;
+  const { textObject } = useContext(FilterPickerContext);
   return (
     <div className="filter-contidion-footer">
       <Button type="secondary" onClick={onCancel} size="small">
-        取消
+        {textObject.cancel}
       </Button>
       <div style={{ width: '12px' }} />
       <Button type="primary" onClick={onSubmit} size="small" disabled={comfirmStatus}>
-        确认
+        {textObject.submit}
       </Button>
     </div>
   );

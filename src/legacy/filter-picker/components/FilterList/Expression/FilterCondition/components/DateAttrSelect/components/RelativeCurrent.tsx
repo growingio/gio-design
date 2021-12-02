@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Input from '../../../../../../../../../input'; // new
 import Select from '../../../../../../../../../select'; // new
+import { FilterPickerContext } from '../../../../../../../FilterPicker';
 
 interface RelativeCurrentProps {
   onChange: (v: string) => void;
@@ -10,6 +11,7 @@ interface RelativeCurrentProps {
 }
 
 function RelativeCurrent(props: RelativeCurrentProps) {
+  const { textObject: t } = useContext(FilterPickerContext);
   const { onChange, attrSelect, values } = props;
   const [nowOrFuturevalue, setValue] = useState('-1');
   const [inOrOutValue, setAfterValue] = useState('-1');
@@ -17,31 +19,31 @@ function RelativeCurrent(props: RelativeCurrentProps) {
   const SelectOptions = [
     {
       value: '-1',
-      label: '过去',
+      label: t.past,
     },
     {
       value: '1',
-      label: '未来',
+      label: t.future,
     },
   ];
   const beforeSelectOptions = [
     {
       value: '-1',
-      label: '之内',
+      label: t.within,
     },
     {
       value: '1',
-      label: '之前',
+      label: t.before,
     },
   ];
   const afterSelectOptions = [
     {
       value: '-1',
-      label: '之内',
+      label: t.within,
     },
     {
       value: '1',
-      label: '之后',
+      label: t.after,
     },
   ];
   // 解析初始值
@@ -69,13 +71,13 @@ function RelativeCurrent(props: RelativeCurrentProps) {
     // 在此处，返回的数据有两种格式
     // 当选择过去| 未来 + 之内，则返回relativeTime：（number):（number）
     // 当选择过去| 未来 + 之前| 之后，则返回relativeTime: (number)
-    let t = '';
+    let time = '';
     if (afterValue === '-1') {
-      t = value === '-1' ? `-${dayValue},0` : `0,${dayValue}`;
+      time = value === '-1' ? `-${dayValue},0` : `0,${dayValue}`;
     } else {
-      t = value === '-1' ? `-${dayValue}` : `${dayValue}`;
+      time = value === '-1' ? `-${dayValue}` : `${dayValue}`;
     }
-    onChange(`relativeTime:${t}`);
+    onChange(`relativeTime:${time}`);
   };
 
   useEffect(() => {
@@ -104,23 +106,20 @@ function RelativeCurrent(props: RelativeCurrentProps) {
       createAttrValue(0, nowOrFuturevalue, inOrOutValue);
     }
   };
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-      <Select
-        value={nowOrFuturevalue}
-        options={SelectOptions}
-        onChange={selectChange}
-        style={{ marginRight: '4px', width: '120px' }}
-      />
+
+  // eslint-disable-next-line camelcase
+  const zh_RelativeSelect = (
+    <>
+      <Select value={nowOrFuturevalue} options={SelectOptions} onChange={selectChange} style={{ marginRight: '4px' }} />
       <Input.InputNumber value={days} onChange={setDaysChange} style={{ width: '80px', margin: '0 4px' }} min={1} />
-      <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>天</div>
+      <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>{t.day}</div>
       {nowOrFuturevalue === '-1' ? (
         <Select
           key="beforeSelect"
           value={inOrOutValue}
           options={beforeSelectOptions}
           onChange={selectAfterChange}
-          style={{ marginLeft: '4px', width: '85px' }}
+          style={{ marginLeft: '4px', width: '100px' }}
         />
       ) : (
         <Select
@@ -128,9 +127,42 @@ function RelativeCurrent(props: RelativeCurrentProps) {
           value={inOrOutValue}
           options={afterSelectOptions}
           onChange={selectAfterChange}
-          style={{ marginLeft: '4px', width: '85px' }}
+          style={{ marginLeft: '4px', width: '100px' }}
         />
       )}
+    </>
+  );
+
+  // eslint-disable-next-line camelcase
+  const en_RelativeSelect = (
+    <>
+      {nowOrFuturevalue === '-1' ? (
+        <Select
+          key="beforeSelect"
+          value={inOrOutValue}
+          options={beforeSelectOptions}
+          onChange={selectAfterChange}
+          style={{ marginLeft: '4px', width: '100px' }}
+        />
+      ) : (
+        <Select
+          key="afterSelect"
+          value={inOrOutValue}
+          options={afterSelectOptions}
+          onChange={selectAfterChange}
+          style={{ marginLeft: '4px', width: '100px' }}
+        />
+      )}
+      <Select value={nowOrFuturevalue} options={SelectOptions} onChange={selectChange} style={{ marginRight: '4px' }} />
+      <Input.InputNumber value={days} onChange={setDaysChange} style={{ width: '80px', margin: '0 4px' }} min={1} />
+      <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>{t.day}</div>
+    </>
+  );
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+      {/* eslint-disable-next-line camelcase */}
+      {t.code === 'en-US' ? en_RelativeSelect : zh_RelativeSelect}
     </div>
   );
 }
