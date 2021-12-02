@@ -1,10 +1,11 @@
-import React, { useMemo, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import parseValuesToText from './utils';
 import FilterAttrOverlay from './FilterAttrOverlay';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from './interfaces';
 import Selector from '../../../../../selector-pro';
 import { operationsOptionType } from '../../../../interfaces';
 import Tooltip from '../../../../../../tooltip'; // new
+import { FilterPickerContext } from '../../../../FilterPicker';
 
 const defaultOperationsOption: operationsOptionType = {
   string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
@@ -47,8 +48,13 @@ function FilterCondition(props: FilterConditionProps) {
     borderless = true,
     size = 'middle',
   } = props;
+  const { textObject } = useContext(FilterPickerContext);
   const [visible, setVisible] = useState(false);
-  const conditionText = useMemo<string>(() => parseValuesToText(valueType, op, values), [valueType, op, values]);
+  const { textObject: t } = useContext(FilterPickerContext);
+  const conditionText = useMemo<string>(
+    () => parseValuesToText(valueType, op, values, textObject),
+    [valueType, op, values, textObject]
+  );
   const visibleChange = (v: boolean) => {
     setVisible(v);
   };
@@ -76,7 +82,7 @@ function FilterCondition(props: FilterConditionProps) {
     <span className="filter-condition_select">
       <Tooltip
         title={conditionText}
-        disabled={conditionText === '选择过滤条件'}
+        disabled={conditionText === t.selectFilter}
         getContainer={() => document.body}
         placement="topLeft"
       >

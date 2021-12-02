@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Input from '../../../../../../../../../input'; // new
 import Select from '../../../../../../../../../select'; // new
+import { FilterPickerContext } from '../../../../../../../FilterPicker';
 
 interface RelativeBetweenProps {
   onChange: (v: string) => void;
@@ -9,9 +10,10 @@ interface RelativeBetweenProps {
 }
 function RelativeBetween(props: RelativeBetweenProps) {
   const { onChange, attrSelect, values } = props;
-  const [nowOrFuturevalue, setValue] = useState('-1');
+  const [nowOrFutureValue, setValue] = useState('-1');
   const [value1, setValue1] = useState<number>(1);
   const [value2, setValue2] = useState<number>(1);
+  const { textObject: t } = useContext(FilterPickerContext);
   // 解析初始values值
   useEffect(() => {
     if (values.length && typeof values[0] === 'string') {
@@ -26,44 +28,34 @@ function RelativeBetween(props: RelativeBetweenProps) {
     }
   }, [values]);
   const createAttrValue = (v1: number, v2: number, nowOrFuture: string) => {
-    let t = '';
+    let time = '';
     if (nowOrFuture === '-1') {
-      t = `relativeTime:-${v1},-${v2}`;
+      time = `relativeTime:-${v1},-${v2}`;
     } else {
-      t = `relativeTime:${v1},${v2}`;
+      time = `relativeTime:${v1},${v2}`;
     }
-    onChange(t);
+    onChange(time);
   };
   const setInputValue1 = (event: React.ChangeEvent<HTMLInputElement>) => {
     const v = Number.parseInt(event.target.value, 10);
     if (v && /^\d+$/.test(`${v}`)) {
       setValue1(v);
-      createAttrValue(v, value2, nowOrFuturevalue);
+      createAttrValue(v, value2, nowOrFutureValue);
     } else if (!v) {
       setValue1(v);
-      createAttrValue(0, value2, nowOrFuturevalue);
+      createAttrValue(0, value2, nowOrFutureValue);
     }
   };
   const setInputValue2 = (event: React.ChangeEvent<HTMLInputElement>) => {
     const v = Number.parseInt(event.target.value, 10);
     if (v && /^\d+$/.test(`${v}`)) {
       setValue2(v);
-      createAttrValue(value1, v, nowOrFuturevalue);
+      createAttrValue(value1, v, nowOrFutureValue);
     } else if (!v) {
       setValue2(v);
-      createAttrValue(value1, 0, nowOrFuturevalue);
+      createAttrValue(value1, 0, nowOrFutureValue);
     }
   };
-  const selectOptions = [
-    {
-      value: '-1',
-      label: '过去',
-    },
-    {
-      value: '1',
-      label: '未来',
-    },
-  ];
 
   const selectChange = (v: string) => {
     setValue(v);
@@ -73,18 +65,68 @@ function RelativeBetween(props: RelativeBetweenProps) {
   useEffect(() => {
     // values值的初始化设置
     if (!values.length) {
-      createAttrValue(value1, value2, nowOrFuturevalue);
+      createAttrValue(value1, value2, nowOrFutureValue);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attrSelect]);
+
+  if (t.code === 'en-US') {
+    return (
+      <>
+        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+          <Select
+            value={nowOrFutureValue}
+            options={[
+              {
+                value: '-1',
+                label: `${t.within} ${t.past}`,
+              },
+              {
+                value: '1',
+                label: `${t.within} ${t.future}`,
+              },
+            ]}
+            onChange={selectChange}
+            style={{ marginRight: '4px' }}
+          />
+          <Input.InputNumber
+            value={value1}
+            onChange={setInputValue1}
+            style={{ width: '150px', margin: '0 4px' }}
+            min={1}
+          />
+          <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>{t.to}</div>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+          <Input.InputNumber
+            value={value2}
+            onChange={setInputValue2}
+            style={{ width: '150px', margin: '0 4px 0 0' }}
+            min={1}
+          />
+          <div style={{ whiteSpace: 'nowrap', margin: '16px 4px' }}>{`${t.day}`}</div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
         <Select
-          value={nowOrFuturevalue}
-          options={selectOptions}
+          value={nowOrFutureValue}
+          options={[
+            {
+              value: '-1',
+              label: t.past,
+            },
+            {
+              value: '1',
+              label: t.future,
+            },
+          ]}
           onChange={selectChange}
-          style={{ marginRight: '4px', width: '120px' }}
+          style={{ marginRight: '4px' }}
         />
         <Input.InputNumber
           value={value1}
@@ -92,7 +134,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
           style={{ width: '150px', margin: '0 4px' }}
           min={1}
         />
-        <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>天至</div>
+        <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>{t.to}</div>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
         <Input.InputNumber
@@ -101,7 +143,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
           style={{ width: '150px', margin: '0 4px 0 0' }}
           min={1}
         />
-        <div style={{ whiteSpace: 'nowrap', margin: '16px 4px' }}>天之内</div>
+        <div style={{ whiteSpace: 'nowrap', margin: '16px 4px' }}>{`${t.day} ${t.within}`}</div>
       </div>
     </>
   );

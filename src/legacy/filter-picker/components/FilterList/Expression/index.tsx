@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useContext } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
 import PropertySelector from '../../../../property-selector';
 import FilterCondition from './FilterCondition';
@@ -20,6 +20,7 @@ interface ExpressionProps {
   recentlyStorePrefix: string;
 }
 function Expression(props: ExpressionProps) {
+  const { textObject } = useContext(FilterPickerContext);
   const {
     index = 0,
     filterItem,
@@ -92,12 +93,10 @@ function Expression(props: ExpressionProps) {
         <PropertySelector
           data-testid="propertySelect"
           className="express-propertySelect"
-          placeholder="选择属性"
+          placeholder={textObject.selectProperty}
           value={propertyValue}
-          dataSource={propertyOptions.filter((option: any) => {
-            const inavailableOptions = exprs ? exprs.map((expr: any) => expr.key) : [];
-            return option.id === exprKey || inavailableOptions.indexOf(option.id) === -1; // && !(/like/.test(operator) && option.id === 'cs1'）saas老逻辑，暂时不需要
-          })}
+          dataSource={propertyOptions}
+          disabledValues={exprs.map((expr: any) => expr.key)}
           onChange={changePropertyPicker}
           recentlyStorePrefix={recentlyStorePrefix}
           fetchDetailData={fetchDetailData}

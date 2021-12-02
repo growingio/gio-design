@@ -8,11 +8,13 @@ import Dropdown from '../dropdown';
 import defaultLocaleTextObject from './locales/zh-CN';
 import './style';
 
+export type TextObject = typeof defaultLocaleTextObject & { code: 'zh-CN' | 'en-US' };
+
 export const FilterPickerContext = React.createContext<
   Pick<FilterPickerProps, 'fetchDetailData' | 'operationsOption'> & {
-    textObject: typeof defaultLocaleTextObject;
+    textObject: TextObject;
   }
->({ textObject: defaultLocaleTextObject });
+>({ textObject: { ...defaultLocaleTextObject, code: 'zh-CN' } });
 
 const defaultOperationsOption: operationsOptionType = {
   string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
@@ -41,7 +43,7 @@ const FilterPicker = (props: FilterPickerProps) => {
     disabled,
   } = props;
 
-  const localeTextObject: typeof defaultLocaleTextObject = useLocale('FilterPicker');
+  const localeTextObject: TextObject = useLocale('FilterPicker');
   const textObject = useMemo(() => ({ ...defaultLocaleTextObject, ...localeTextObject }), [localeTextObject]);
 
   const [localVisible, setLocalVisible] = useState(false);

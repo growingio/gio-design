@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Input from '../../../../../../../input'; // new
+import { FilterPickerContext } from '../../../../../FilterPicker';
 
 interface NumberAttrSelectProps {
   attrSelect: string;
@@ -8,6 +9,7 @@ interface NumberAttrSelectProps {
   type?: 'positivedecimal' | 'decimal';
 }
 function NumberAttrSelect(props: NumberAttrSelectProps) {
+  const { textObject: t } = useContext(FilterPickerContext);
   const { attrSelect, attrChange, values, type } = props;
   const [value, setValue] = useState<number | string>(values?.[0] ? parseFloat(values?.[0]) : 0);
   const [value1, setValue1] = useState<number | string>(values?.[0] ? parseFloat(values?.[0]) : 0);
@@ -92,9 +94,9 @@ function NumberAttrSelect(props: NumberAttrSelectProps) {
     case 'not between':
       return (
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <Input value={value1} onChange={setValue1Number} style={{ width: '120px' }} />
-          <div style={{ margin: '0 16px' }}>与</div>
-          <Input value={value2} onChange={setBetweenNumberValue} style={{ width: '120px' }} />
+          <Input value={value1} onChange={setValue1Number} />
+          <div style={{ margin: '0 16px' }}>{t.and}</div>
+          <Input value={value2} onChange={setBetweenNumberValue} />
         </div>
       );
     case 'hasValue':
