@@ -70,7 +70,7 @@ export { default as Col, ColProps } from './col';
 export { default as Cascader, CascaderProps } from './cascader';
 export { default as TimePicker, TimePickerProps } from './time-picker';
 export { default as DatePicker, DatePickerProps } from './date-picker';
-export { default as DataRangePicker, DateRangePickerProps } from './date-range-picker';
+export { default as DateRangePicker, DateRangePickerProps } from './date-range-picker';
 export { default as PastTimePicker, PastTimePickerProps } from './past-time-picker';
 export { default as TreeSelect, TreeNode, LabeledValue, SelectValue, TreeSelectProps } from './tree-select';
 export { default as Steps, Step } from './steps';
