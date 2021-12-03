@@ -29,7 +29,7 @@ export function renderExpandableItems(
       .map(renderItem)
       .concat(
         <ExpandItem
-          title={localesText.expandAll(currentItems.length - showItems.length)}
+          title={localesText.expandAll?.(currentItems.length - showItems.length)}
           key={`expand-item-${currentItems[0].key}-${showItems.length + 1}`}
           onClick={onExpand}
         />
