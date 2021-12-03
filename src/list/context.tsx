@@ -1,22 +1,22 @@
 import { noop } from 'lodash';
 import React from 'react';
-import { List } from '.';
-import { OptionProps, ListProps } from './interfance';
+import List from './List';
+import { OptionProps, ListProps, MaybeArray } from './interfance';
 
 export interface ListContextProps {
-  value?: string | string[];
+  value?: string | (string | number)[] | number;
   model?: 'single' | 'cascader' | 'multiple';
   disabled?: boolean;
   selectParent?: any;
-  onChange?: (value?: string | string[], options?: OptionProps | OptionProps[]) => void;
-  onClick?: (value?: string) => void;
-  options?: Map<string, OptionProps>;
+  onChange?: (value?: MaybeArray<string | number>, options?: OptionProps | OptionProps[]) => void;
+  onClick?: (value?: string | number) => void;
+  options?: Map<string | number, OptionProps>;
   prefix?: (option?: OptionProps) => string | React.ReactNode;
   suffix?: (option?: OptionProps) => string | React.ReactNode;
   setOptions?: (options?: OptionProps[]) => void;
-  getOptionByValue?: (optValue?: string) => OptionProps | undefined;
-  getOptionsByValue?: (optValue?: string | string[]) => OptionProps | OptionProps[] | undefined;
-  getLabelByValue?: (val?: string | string[], separator?: string) => any;
+  getOptionByValue?: (optValue?: string | number) => OptionProps | undefined;
+  getOptionsByValue?: (optValue?: MaybeArray<string | number>) => OptionProps | OptionProps[] | undefined;
+  getLabelByValue?: (val?: MaybeArray<string | number>, separator?: string) => any;
 }
 const defaultList: ListContextProps = {
   value: '',

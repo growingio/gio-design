@@ -3,7 +3,7 @@ import { ListProps, OptionProps as ListOptionProps } from '../list/interfance';
 import { Placement } from '../popover/interface';
 
 export interface CascaderProps extends Omit<ListProps, 'options' | 'onChange' | 'value'> {
-  value?: string;
+  value?: string | number;
   defaultValue?: string;
   options: OptionProps[];
   size?: 'small' | 'normal';
@@ -62,10 +62,10 @@ export interface CascaderProps extends Omit<ListProps, 'options' | 'onChange' | 
 }
 export interface OptionProps extends ListOptionProps {
   label: string;
-  value: string;
+  value: string | number;
   childrens?: OptionProps[];
 }
 
 export interface TriggerProps extends Omit<InputButtonProps, 'value' | 'active'> {
-  value?: string;
+  value?: string | number;
 }

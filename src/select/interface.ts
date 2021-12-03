@@ -10,8 +10,8 @@ export interface SelectProps extends Omit<ListProps, 'isMultiple' | 'onChange' |
   options?: OptionProps[];
   size?: 'small' | 'normal';
   defaultValue?: string;
-  value?: string;
-  onChange?: (val?: string, options?: OptionProps) => void;
+  value?: string | number;
+  onChange?: (val?: string | number, options?: OptionProps) => void;
   overlayClassName?: string;
   overlayStyle?: React.CSSProperties;
 
