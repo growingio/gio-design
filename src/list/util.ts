@@ -106,14 +106,13 @@ export const collectOptions = (childs?: React.ReactNode | OptionProps): OptionPr
     const { props, type } = child as React.ReactElement & { props: OptionProps } & {
       props: { options?: OptionProps[] };
     } & { type: any };
-    const label = props?.label;
     const value = props?.value;
     const children = props?.children;
     const prefix = props?.prefix;
     const options = props?.options;
     const suffix = props?.suffix;
 
-    const isBaseItem = type?.isBaseItem;
+    const isItem = type?.isItem;
     const isList = type?.isList;
     const isRecent = type?.isRecent;
     const isSelection = type?.isSelection;
@@ -131,7 +130,7 @@ export const collectOptions = (childs?: React.ReactNode | OptionProps): OptionPr
         optionsArr.push(...convertOptions(options, { prefix: listPrefix, suffix: listSuffix }));
       }
       // JSX items
-      if ((isBaseItem && !isUndefined(value)) || (!isUndefined(value) && !isUndefined(label))) {
+      if (isItem && !isUndefined(value)) {
         const opt = collectOption(child, { prefix: listPrefix, suffix: listSuffix });
         if (!isUndefined(opt)) optionsArr?.push(opt);
       }

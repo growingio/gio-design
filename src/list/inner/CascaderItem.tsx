@@ -10,91 +10,95 @@ import List from '../List';
 import { convertChildrenToData, generateSelectParent, generateString } from '../util';
 import { ListContext } from '../context';
 
-const CascaderItem = WithRef<HTMLLIElement, CascaderItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>>(
-  ({ label, value, children, childrens = [], disabled, onClick: propsOnClick, ...rest }, ref?) => {
-    const prefixCls = usePrefixCls('cascader');
-    const popoverClassName = `${prefixCls}--cascader--content`;
-    /** context */
-    const context = useContext(ListContext);
-    const { disabled: contextDisabled, selectParent, onClick: contextOnClick, setOptions } = context;
-    /** end */
-    const childSelectPrent = generateSelectParent(label, value, selectParent);
-    const childNodeOptions = convertChildrenToData(children, {});
-    const mergedOptions = useMemo(() => [...childNodeOptions, ...childrens], [childNodeOptions, childrens]);
-    const mergedDisabled = disabled ?? contextDisabled;
+const CascaderItem: React.ForwardRefRenderFunction<
+  HTMLLIElement,
+  CascaderItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>
+> & { isItem?: boolean } = (
+  { label, value, children, childrens = [], disabled, onClick: propsOnClick, ...rest },
+  ref?
+) => {
+  const prefixCls = usePrefixCls('cascader');
+  const popoverClassName = `${prefixCls}--content`;
+  /** context */
+  const context = useContext(ListContext);
+  const { disabled: contextDisabled, selectParent, onClick: contextOnClick, setOptions } = context;
+  /** end */
+  const childSelectPrent = generateSelectParent(label, value, selectParent);
+  const childNodeOptions = convertChildrenToData(children, {});
+  const mergedOptions = useMemo(() => [...childNodeOptions, ...childrens], [childNodeOptions, childrens]);
+  const mergedDisabled = disabled ?? contextDisabled;
 
-    useEffect(() => {
-      setOptions?.(mergedOptions as OptionProps[]);
-    }, [mergedOptions, setOptions]);
+  useEffect(() => {
+    setOptions?.(mergedOptions as OptionProps[]);
+  }, [mergedOptions, setOptions]);
 
-    // list
-    const prefixClsItem = `${prefixCls}--item`;
+  // list
+  const prefixClsItem = `${prefixCls}--item`;
 
-    const handleOnClick = () => {
-      if (!mergedDisabled) {
-        contextOnClick?.(generateString(value, selectParent));
-        propsOnClick?.(generateString(value, selectParent));
-      }
-    };
-    const content = () => {
-      /** options render */
-      if (!isEmpty(childrens)) {
-        return (
-          <ListContext.Provider value={{ ...context, selectParent: childSelectPrent }}>
-            <List model="cascader" className={`${prefixCls}--cascader--list`}>
-              {childrens?.map((child) => (
-                <CascaderItem
-                  {...child}
-                  label={child?.label}
-                  value={child?.value}
-                  childrens={child?.childrens as CascaderItemProps[]}
-                />
-              ))}
-            </List>
-          </ListContext.Provider>
-        );
-      }
-      /** JSX */
+  const handleOnClick = () => {
+    if (!mergedDisabled) {
+      contextOnClick?.(generateString(value, selectParent));
+      propsOnClick?.(generateString(value, selectParent));
+    }
+  };
+  const content = () => {
+    /** options render */
+    if (!isEmpty(childrens)) {
       return (
         <ListContext.Provider value={{ ...context, model: 'cascader', selectParent: childSelectPrent }}>
-          {children}
+          <List>
+            {childrens?.map((child) => (
+              <CascaderItem
+                {...child}
+                label={child?.label}
+                value={child?.value}
+                childrens={child?.childrens as CascaderItemProps[]}
+              />
+            ))}
+          </List>
         </ListContext.Provider>
       );
-    };
-
-    const PopoverRender = (element: React.ReactNode): React.ReactElement => {
-      if (!isEmpty(childrens) || React.isValidElement(children)) {
-        return (
-          <div className={prefixClsItem}>
-            <Popover
-              placement="rightTop"
-              overlayClassName={popoverClassName}
-              content={content()}
-              strategy="fixed"
-              distoryOnHide={false}
-              offset={[0, 12]}
-            >
-              <span>{element}</span>
-            </Popover>
-          </div>
-        );
-      }
-
-      return <>{element}</>;
-    };
-    const renderItem = (
-      <BaseItem
-        {...rest}
-        ref={ref}
-        label={label}
-        value={value}
-        disabled={mergedDisabled}
-        suffix={React.isValidElement(children) || !isEmpty(childrens) ? <RightFilled size="14px" /> : undefined}
-        onClick={React.isValidElement(children) || !isEmpty(childrens) ? noop : handleOnClick}
-      />
+    }
+    /** JSX */
+    return (
+      <ListContext.Provider value={{ ...context, model: 'cascader', selectParent: childSelectPrent }}>
+        {children}
+      </ListContext.Provider>
     );
-    return PopoverRender(renderItem);
-  }
-);
+  };
 
-export default CascaderItem;
+  const PopoverRender = (element: React.ReactNode): React.ReactElement => {
+    if (!isEmpty(childrens) || React.isValidElement(children)) {
+      return (
+        <div className={prefixClsItem}>
+          <Popover
+            placement="rightTop"
+            overlayClassName={popoverClassName}
+            content={content()}
+            strategy="fixed"
+            distoryOnHide={false}
+            offset={[0, 12]}
+          >
+            <span>{element}</span>
+          </Popover>
+        </div>
+      );
+    }
+
+    return <>{element}</>;
+  };
+  const renderItem = (
+    <BaseItem
+      {...rest}
+      ref={ref}
+      label={label}
+      value={value}
+      disabled={mergedDisabled}
+      suffix={React.isValidElement(children) || !isEmpty(childrens) ? <RightFilled size="14px" /> : undefined}
+      onClick={React.isValidElement(children) || !isEmpty(childrens) ? noop : handleOnClick}
+    />
+  );
+  return PopoverRender(renderItem);
+};
+CascaderItem.isItem = true;
+export default WithRef(CascaderItem);

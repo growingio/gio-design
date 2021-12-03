@@ -110,7 +110,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
 const BaseItem: React.ForwardRefExoticComponent<
   BaseItemProps & Omit<React.RefAttributes<HTMLLIElement>, 'onClick' | 'onChange'>
 > & {
-  isBaseItem?: boolean;
+  isItem?: boolean;
 } = InnerBaseItem;
-BaseItem.isBaseItem = true;
+BaseItem.isItem = true;
 export default BaseItem;

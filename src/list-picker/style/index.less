@@ -41,12 +41,12 @@
     & .@{list-prefix-cls} {
       height: auto;
       max-height: none;
-      padding: 0;
+      // padding: 0;
     }
   }
 
   & .@{tab-panel-cls} {
-    & .@{list-prefix-cls} {
+    & > .@{list-prefix-cls} {
       height: auto;
       max-height: 360px;
       padding-top: 8px;
@@ -58,7 +58,7 @@
       .scrollbar(@x: hidden, @y: initial);
       & .@{list-prefix-cls} {
         max-height: none;
-        padding: 0;
+        // padding: 0;
       }
     }
   }

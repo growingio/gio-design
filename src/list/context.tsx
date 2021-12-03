@@ -7,6 +7,8 @@ export interface ListContextProps {
   value?: string | (string | number)[] | number;
   model?: 'single' | 'cascader' | 'multiple';
   disabled?: boolean;
+  isSelection?: boolean;
+  isEmpty?: boolean;
   selectParent?: any;
   onChange?: (value?: MaybeArray<string | number>, options?: OptionProps | OptionProps[]) => void;
   onClick?: (value?: string | number) => void;
@@ -23,6 +25,7 @@ const defaultList: ListContextProps = {
   model: 'single',
   disabled: false,
   selectParent: undefined,
+  isSelection: false,
   onChange: noop,
   onClick: noop,
   setOptions: noop,

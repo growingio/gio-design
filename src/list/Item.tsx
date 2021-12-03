@@ -6,7 +6,7 @@ import CalcaderItem from './inner/CascaderItem';
 import WithRef from '../utils/withRef';
 import { ListContext } from './context';
 
-export const Item = WithRef<HTMLLIElement, ItemProps>((props, ref?) => {
+export const InnerItem = WithRef<HTMLLIElement, ItemProps>((props, ref?) => {
   const { label, value, disabled, ...rest } = props;
   const { model } = useContext(ListContext);
   if (model === 'multiple') {
@@ -17,5 +17,7 @@ export const Item = WithRef<HTMLLIElement, ItemProps>((props, ref?) => {
   }
   return <BaseItem ref={ref} label={label} value={value} disabled={disabled} {...rest} />;
 });
-
+const Item: React.ForwardRefExoticComponent<ItemProps & React.RefAttributes<HTMLLIElement>> & { isItem?: boolean } =
+  InnerItem;
+Item.isItem = true;
 export default Item;
