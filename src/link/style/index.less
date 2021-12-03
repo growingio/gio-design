@@ -11,18 +11,21 @@
 
   &:not([aria-disabled='true']):hover {
     color: @blue-3;
+    text-decoration: none;
   }
 
   &_loading {
     color: @blue-3;
     cursor: not-allowed;
     &:active {
+      text-decoration: none;
       pointer-events: none;
     }
   }
 
   &[aria-disabled='true']:not(&_loading) {
     color: @gray-3;
+    text-decoration: none;
     cursor: not-allowed;
     &:active {
       pointer-events: none;
