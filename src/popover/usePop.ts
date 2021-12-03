@@ -38,7 +38,7 @@ const usePop = ({ referenceElement, popperElement, placement, modifiers, strateg
     strategy,
   });
   if (popperElement) {
-    const three = clear3D(styles.popper.transform);
+    const three = clear3D(styles?.popper?.transform as string);
     if (Array.isArray(three)) {
       const [x, y, z] = three;
       const divHeight = popperElement.offsetHeight;
