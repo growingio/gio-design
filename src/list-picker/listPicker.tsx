@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { isEqual, isNil } from 'lodash';
+import { useLocale } from '@gio-design/utils';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
 import Trigger from './Trigger';
@@ -11,8 +12,10 @@ import Button from '../button';
 import { ListContext } from '../list/context';
 import useCacheOptions from '../list/hooks/useCacheOptions';
 import { ITEM_KEY } from './Recent';
+import defaultLocaleTextObject from './locales/zh-CN';
 
 const ListPicker: React.FC<ListPickerProps> = (props) => {
+  const localeTextObject: typeof defaultLocaleTextObject = useLocale('ListPicker') || defaultLocaleTextObject;
   const {
     size,
     placeholder,
@@ -30,7 +33,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     placement = 'bottomLeft',
     children,
     onConfim,
-    confimText = '确定',
+    confimText = localeTextObject.confirm,
     separator = '',
     style,
     overlayStyle,

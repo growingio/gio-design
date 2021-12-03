@@ -1,3 +1,5 @@
+import { Key } from 'react';
+
 export default {
   stringText: 'string',
   intText: 'int',
@@ -8,4 +10,17 @@ export default {
   allText: 'all',
   searchPlaceholder: 'search variable name',
   placeholderText: 'select variable',
+  recent: 'recent',
+  page: 'Page',
+  device: 'Device',
+  element: 'Autotrack Event',
+  tag: 'User Tags',
+  preset: (text: Key) => `Preset ${text}`,
+  custom: (text: Key) => `Custom ${text}`,
+  dimensionTable: 'Dimension Table',
+  eventVariables: 'Event Variables',
+  virtualProperties: 'Virtual Properties',
+  eventProperties: 'Event Properties',
+  accessProperties: 'Access Properties',
+  userProperties: 'User Properties',
 };

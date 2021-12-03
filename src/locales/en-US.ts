@@ -11,7 +11,12 @@ import paginationLocale from '../pagination/locales/en-US';
 import tableLocale from '../table/locales/en-US';
 import uploadLocale from '../upload/locales/en-US';
 import staticPastTimePickerLocale from '../static-past-time-picker/locales/en-US';
-import FilterPickerLocale from '../legacy/filter-picker/locales/en-US';
+import filterPickerLocale from '../legacy/filter-picker/locales/en-US';
+import formLocale from '../form/locales/en-US';
+import listLocale from '../list/locales/en-US';
+import panelLocale from '../panel/locales/en-US';
+import basePickerLocale from '../legacy/base-picker/locales/en-US';
+import propertyPickerLocale from '../legacy/property-selector/locales/en-US';
 
 export const locale: Locale = {
   code: 'en-US',
@@ -52,7 +57,22 @@ export const locale: Locale = {
     ...staticPastTimePickerLocale,
   },
   FilterPicker: {
-    ...FilterPickerLocale,
+    ...filterPickerLocale,
+  },
+  Form: {
+    ...formLocale,
+  },
+  List: {
+    ...listLocale,
+  },
+  Panel: {
+    ...panelLocale,
+  },
+  BasePicker: {
+    ...basePickerLocale,
+  },
+  PropertyPicker: {
+    ...propertyPickerLocale,
   },
 };
 

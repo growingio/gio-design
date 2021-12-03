@@ -11,7 +11,12 @@ import paginationLocale from '../pagination/locales/zh-CN';
 import tableLocale from '../table/locales/zh-CN';
 import uploadLocale from '../upload/locales/zh-CN';
 import staticPastTimePickerLocale from '../static-past-time-picker/locales/zh-CN';
-import FilterPickerLocale from '../legacy/filter-picker/locales/zh-CN';
+import filterPickerLocale from '../legacy/filter-picker/locales/zh-CN';
+import formLocale from '../form/locales/zh-CN';
+import listLocale from '../list/locales/zh-CN';
+import panelLocale from '../panel/locales/zh-CN';
+import basePicker from '../legacy/base-picker/locales/zh-CN';
+import propertyPickerLocale from '../legacy/property-selector/locales/zh-CN';
 
 export const locale: Locale = {
   code: 'zh-CN',
@@ -52,7 +57,22 @@ export const locale: Locale = {
     ...staticPastTimePickerLocale,
   },
   FilterPicker: {
-    ...FilterPickerLocale,
+    ...filterPickerLocale,
+  },
+  Form: {
+    ...formLocale,
+  },
+  List: {
+    ...listLocale,
+  },
+  Panel: {
+    ...panelLocale,
+  },
+  BasePicker: {
+    ...basePicker,
+  },
+  PropertyPicker: {
+    ...propertyPickerLocale,
   },
 };
 

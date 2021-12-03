@@ -1,4 +1,5 @@
 import { DATE_FORMAT, experimentalQuickOptions } from '../constant';
+import defaultLocaleText from '../locales/zh-CN';
 
 describe('StaticPastTimePicker constant', () => {
   it('has date format', () => {
@@ -6,10 +7,10 @@ describe('StaticPastTimePicker constant', () => {
   });
 
   it('has experimental shortcut options', () => {
-    expect(experimentalQuickOptions).toHaveLength(2);
-    expect(experimentalQuickOptions[0]).toHaveLength(2);
-    expect(experimentalQuickOptions[1]).toHaveLength(1);
-    experimentalQuickOptions.forEach((os) => {
+    expect(experimentalQuickOptions(defaultLocaleText)).toHaveLength(2);
+    expect(experimentalQuickOptions(defaultLocaleText)[0]).toHaveLength(2);
+    expect(experimentalQuickOptions(defaultLocaleText)[1]).toHaveLength(1);
+    experimentalQuickOptions(defaultLocaleText).forEach((os) => {
       os.forEach((o) => {
         expect(o.value.startsWith('hour:')).toBeTruthy();
       });

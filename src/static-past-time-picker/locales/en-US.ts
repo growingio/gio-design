@@ -1,3 +1,5 @@
+import { Key } from 'react';
+
 export default {
   okText: 'OK',
   closeText: 'Cancel',
@@ -23,10 +25,12 @@ export default {
   lastQuarterText: 'Last Quarter',
   thisYearText: 'Current Year',
   lastYearText: 'Last Year',
+  lastSomeHours: (text: Key) => `Last ${text} hour(s)`,
   last7DaysText: 'Previous 7 days',
   last14DaysText: 'Previous 14 days',
   last30daysText: 'Previous 30 days',
   last90daysText: 'Previous 90 days',
   last180DaysText: 'Previous 180 days',
   last365DaysText: 'Previous 365 days',
+  timeRangeText: 'Time Range',
 };

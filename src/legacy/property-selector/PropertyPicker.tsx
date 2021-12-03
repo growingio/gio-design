@@ -29,6 +29,7 @@ import './style';
 import { Dimension } from './types';
 import IconRender from './PropertyValueIconRender';
 import defaultLocale from './locales/zh-CN';
+import defaultLocaleFromList from '../../list/locales/zh-CN';
 
 export const ExpandableGroupOrSubGroup = (props: {
   title?: string;
@@ -37,11 +38,12 @@ export const ExpandableGroupOrSubGroup = (props: {
   groupKey?: string;
 }) => {
   const { items = [], type = 'subgroup', title, groupKey: key } = props;
+  const localesText: typeof defaultLocaleFromList = useLocale('List') || defaultLocaleFromList;
   const [expanded, setExpand] = useState(false);
   const onExpand = () => {
     setExpand(true);
   };
-  const content = renderExpandableItems(expanded, items, onExpand);
+  const content = renderExpandableItems(expanded, items, onExpand, localesText);
   return (
     <>
       {type === 'group' && (
@@ -79,7 +81,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     ...rest
   } = props;
   const locale = useLocale('PropertyPicker');
-  const { allText, searchPlaceholder } = { ...defaultLocale, ...locale } as any;
+  const localeText = { ...defaultLocale, ...locale } as typeof defaultLocale;
   const [scope, setScope] = useState('all');
   const [keyword, setKeyword] = useState<string | undefined>('');
   const [recentlyUsedInMemo, setRecentlyUsedInMemo] = useState<{
@@ -106,14 +108,14 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
     setDetailVisible(visible);
   }, detailVisibleDelay);
   const [dataList, setDataList] = useState<PropertyItem[]>([]);
-  const navRef = useRef([{ key: 'all', children: allText }]);
+  const navRef = useRef([{ key: 'all', children: localeText.allText }]);
   useEffect(() => {
     // 如果是Dimension类型 需要做一个数据转换
     let propertiItemList: PropertyItem[] = [];
     if (originDataSource && originDataSource.length) {
       if (!('value' in originDataSource[0])) {
         propertiItemList = originDataSource.map((v) => {
-          const item = dimensionToPropertyItem(v as Dimension);
+          const item = dimensionToPropertyItem(v as Dimension, localeText);
           item.itemIcon = () => <IconRender group={item.iconId} />;
           return item;
         });
@@ -141,9 +143,9 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
      */
     const types = uniq(propertiItemList.map((p) => p.type));
     const tabs = Tabs.filter((t) => types.indexOf(t.key) > -1);
-    navRef.current = [{ key: 'all', children: allText }].concat(tabs);
+    navRef.current = [{ key: 'all', children: localeText.allText }].concat(tabs);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allText, originDataSource]);
+  }, [localeText.allText, originDataSource]);
 
   /**
    * 搜索关键字的方法，支持拼音匹配
@@ -311,7 +313,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         <ExpandableGroupOrSubGroup
           groupKey="recently"
           key="exp-group-recently"
-          title="最近使用"
+          title={localeText.recent}
           type="group"
           items={getListItems(recentlyPropertyItems, 'recently')}
         />
@@ -403,7 +405,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
         renderDetail={renderDetail}
         loading={loading}
         searchBar={{
-          placeholder: searchBar?.placeholder || searchPlaceholder,
+          placeholder: searchBar?.placeholder || localeText.searchPlaceholder,
           onSearch: handleSearch,
         }}
         tabNav={{

@@ -60,7 +60,8 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     ToText,
     lastText,
     dayText,
-  }: { [key: string]: string } = {
+    timeRangeText,
+  } = {
     ...defaultLocale,
     ...locale,
   };
@@ -90,7 +91,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     'day:366,1': last365DaysText,
   };
 
-  const humanizeTimeRange = (time: string, defaultString = '时间范围') => {
+  const humanizeTimeRange = (time: string, defaultString = timeRangeText) => {
     if (!time || time.split(':').length !== 2) {
       return defaultString;
     }

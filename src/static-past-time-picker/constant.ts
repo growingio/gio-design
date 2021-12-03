@@ -1,11 +1,13 @@
+import defaultLocaleText from './locales/zh-CN';
+
 export const DATE_FORMAT = 'yyyy/MM/dd';
 
-export const experimentalQuickOptions = [
+export const experimentalQuickOptions = (localeText: typeof defaultLocaleText) => [
   [
-    { value: 'hour:25,1', label: '过去 24 小时' },
-    { value: 'hour:73,1', label: '过去 72 小时' },
+    { value: 'hour:25,1', label: localeText.lastSomeHours(24) },
+    { value: 'hour:73,1', label: localeText.lastSomeHours(72) },
   ],
-  [{ value: 'hour:49,1', label: '过去 48 小时' }],
+  [{ value: 'hour:49,1', label: localeText.lastSomeHours(48) }],
 ];
 
 export const QUICK_MAPPING = {

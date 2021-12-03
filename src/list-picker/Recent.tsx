@@ -1,9 +1,11 @@
+import { useLocale } from '@gio-design/utils';
 import { slice } from 'lodash';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { List, OptionProps } from '../list';
 import { PREFIX } from '../list/constants';
 import { ListContext } from '../list/context';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import defaultLocaleTextObject from './locales/zh-CN';
 
 export const ITEM_KEY = '__GIO_SELECTION_KEY';
 
@@ -13,7 +15,8 @@ interface RecentProps {
 }
 
 const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
-  const { max = 5, title = '最近使用' } = props;
+  const localeTextObject: typeof defaultLocaleTextObject = useLocale('ListPicker') || defaultLocaleTextObject;
+  const { max = 5, title = localeTextObject.recent } = props;
   const [mayBeArray, setMayBearray] = useState<Map<string, OptionProps> | undefined>(new Map());
   const selectionPrefixCls = `${usePrefixCls(PREFIX)}--selection`;
   const context = useContext(ListContext);
