@@ -11,7 +11,6 @@ import DragList from '../Drag';
 import Selection from '../Selection';
 import CascaderItem from '../inner/CascaderItem';
 import CheckboxItem from '../inner/CheckboxItem';
-import Popover from '../../popover';
 import Docs from './ListPage';
 import { Divider, SearchBar } from '../..';
 import { Dropdown } from '../../dropdown/Dropdown';
@@ -82,115 +81,63 @@ const CascaderDemo = (props: any) => {
     </div>
   );
 };
-const Template: Story<ListProps> = (props) => {
-  const [value, setValue] = useState([]);
+const CascaderTemplate = () => {
   const [cascaderValue, setCascadervalue] = useState('1.1-1');
+
   return (
-    <>
-      cascaderitem
-      <div className="demo-box">
-        <List
-          model="cascader"
-          value={cascaderValue}
-          onChange={(val) => {
-            setCascadervalue(val as any);
-          }}
-        >
-          <CascaderItem label="1" value="1">
-            <List>
-              <Item label="1-1" value="1-1" />
-              <Item label="1-2" value="1-2" />
-            </List>
-          </CascaderItem>
-          <CascaderItem label="2" value="2">
-            <List>
-              <Item label="2-1" value="1-1" />
-              <Item label="2-2" value="1-2" />
-            </List>
-          </CascaderItem>
-          <CascaderItem label="3" value="3" />
-          <CascaderItem label="4" value="4">
-            <List>
-              <CascaderItem label="4-1" value="4-1">
-                <List>
-                  <Item label="4-1-1" value="4-1-1" />
-                  <Item label="4-1-2" value="4-1-2" />
-                </List>
-              </CascaderItem>
-            </List>
-          </CascaderItem>
-        </List>
-      </div>
-      simple(default)
-      <div className="demo-box">
-        <h3>JSX render preview</h3>
-        {/* <List>
-          <Item value="1" wrapper={wrapper}>
-            1
-          </Item>
-        </List> */}
-        <h3>option render preview</h3>
-        <List
-          onClick={(v) => console.log('list触发 onClick', v)}
-          onChange={(v, o) => console.log('list触发 onChange', v, o)}
-        >
-          <Popover
-            placement="rightTop"
-            content={
-              <div style={{ width: '200px', height: '200px', background: 'white', border: '1px solid black' }}>
-                <h3>preview</h3>
-              </div>
-            }
-          >
-            <span>
-              <Item value="1" label="1" onClick={(v) => console.log('item click', v)} />
-            </span>
-          </Popover>
-        </List>
-      </div>
-      <div className="demo-box">
-        <List {...props}>
-          <Item value="1" prefix={<PlusOutlined size="14px" />} suffix={<FilterOutlined size="14px" />}>
-            第一条咸鱼
-          </Item>
-          <Item value="2">第二条咸鱼</Item>
-          <Item value="3">第三条超级超级超级超级超级超级超级超级超级超级长的咸鱼</Item>
-          <Item value="4" disabled>
-            第四条disabled的咸鱼
-          </Item>
-          <Item value="5" disabledTooltip="disabledTooltip">
-            第4-1条disabled的咸鱼
-          </Item>
-          <Item value="5-1" disabledTooltip="disabledTooltip">
-            第4-1条disabled的咸鱼第4-1条disabled的咸鱼第4-1条disabled的咸鱼
-          </Item>
-          <Item value="6" disabled disabledTooltip="disabledTooltip">
-            第五条是带disabledTooltip的咸鱼
-          </Item>
-          <Item value="7" disabled disabledTooltip="disabledTooltip">
-            第六条是超级超级超级超级超级超级超级超级超级超级长带disabledTooltip的咸鱼
-          </Item>
-          <Item value="8" disabled>
-            第七条是超级超级超级超级超级超级超级超级超级超级长不带disabledTooltip的咸鱼
-          </Item>
-        </List>
-      </div>
-      multiple
-      <div className="demo-box">
-        <List
-          value={value}
-          model="multiple"
-          onChange={(v) => {
-            console.log('v', v);
-            setValue(v as any);
-          }}
-        >
-          <Item value="1">第一条咸鱼</Item>
-          <Item value="2">第二条咸鱼</Item>
-          <Item value="3">第三条超级超级超级超级超级超级超级超级超级超级长的咸鱼</Item>
-        </List>
-      </div>
-    </>
+    <div className="demo-box">
+      <List
+        model="cascader"
+        value={cascaderValue}
+        onChange={(val) => {
+          setCascadervalue(val as any);
+        }}
+      >
+        <CascaderItem label="1" value="1">
+          <List>
+            <Item label="1-1" value="1-1" />
+            <Item label="1-2" value="1-2" />
+          </List>
+        </CascaderItem>
+        <CascaderItem label="2" value="2">
+          <List>
+            <Item label="2-1" value="1-1" />
+            <Item label="2-2" value="1-2" />
+          </List>
+        </CascaderItem>
+        <CascaderItem label="3" value="3" />
+        <CascaderItem label="4" value="4">
+          <List>
+            <CascaderItem label="4-1" value="4-1">
+              <List>
+                <Item label="4-1-1" value="4-1-1" />
+                <Item label="4-1-2" value="4-1-2" />
+              </List>
+            </CascaderItem>
+          </List>
+        </CascaderItem>
+      </List>
+    </div>
+  );
+};
+const MutilpleTemplate = () => {
+  const [value, setValue] = useState([]);
+
+  return (
+    <div className="demo-box">
+      <List
+        value={value}
+        model="multiple"
+        onChange={(v) => {
+          console.log('v', v);
+          setValue(v as any);
+        }}
+      >
+        <Item value="1">第一条咸鱼</Item>
+        <Item value="2">第二条咸鱼</Item>
+        <Item value="3">第三条超级超级超级超级超级超级超级超级超级超级长的咸鱼</Item>
+      </List>
+    </div>
   );
 };
 const SuffixTemplate = (props: any) => (
@@ -519,15 +466,6 @@ const CollapseTemplate: Story<ItemProps> = () => {
           ))}
         </List>
       </div>
-      <div className="demo-box">
-        <List onChange={(value) => console.log('value', value)}>
-          {collapseOptions.map((option) => (
-            <Item value={option?.value} onClick={(v) => console.log('v', v)}>
-              <div style={{ background: 'black' }}>{option?.label}</div>
-            </Item>
-          ))}
-        </List>
-      </div>
     </>
   );
 };
@@ -717,8 +655,9 @@ const demoTemplate: Story<ListProps> = () => (
     </table>
   </>
 );
-export const Default = Template.bind({});
-export const Items = ItemTemplate.bind({});
+export const Mutiple = MutilpleTemplate.bind({});
+export const Cascader = CascaderTemplate.bind({});
+export const Default = ItemTemplate.bind({});
 export const Drag = DragTemplate.bind({});
 export const SelectionList = SelectionTemplate.bind({});
 export const Collapse = CollapseTemplate.bind({});
