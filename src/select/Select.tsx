@@ -74,6 +74,7 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
 
   const handleOnClear = (e: React.MouseEvent<Element, MouseEvent>) => {
     onClear?.();
+    onChange?.();
     handVisibleChange(false);
     e.stopPropagation();
   };

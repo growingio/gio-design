@@ -69,6 +69,7 @@ export const Cascader: React.FC<CascaderProps> = ({
 
   const handleOnClear = (e: React.MouseEvent<Element, MouseEvent>) => {
     onClear?.();
+    onChange?.();
     handVisibleChange(false);
     e.stopPropagation();
   };

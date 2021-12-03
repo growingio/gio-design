@@ -33,7 +33,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     placement = 'bottomLeft',
     children,
     onConfim,
-    confimText = localeTextObject.confirm,
+    confimText = localeTextObject?.confirm,
     separator = '',
     style,
     overlayStyle,
@@ -92,6 +92,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   const clearInput = () => {
     setValue(undefined);
     onClear?.();
+    onChange?.();
   };
   const triggerClick = () => !disabled && setVisible(!visible);
   // trigger
