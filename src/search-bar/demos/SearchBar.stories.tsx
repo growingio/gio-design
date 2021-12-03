@@ -35,6 +35,12 @@ const Template: Story<SearchBarProps> = (args) => (
     <h3>定义</h3>
     <p>在所有内容中，通过输入内容的关键信息筛选出某个内容。</p>
     <br />
+    <h3>Tips</h3>
+    <p>
+      由于底层的实现不是使用{`<input type="search" />`}此方式，所以当点击清除图标时无法触发 `onChange`
+      事件，如有此需求，请改用 `onSearch` 事件
+    </p>
+    <br />
     <h3>Search Bar 样式</h3>
     <p>
       适用于对页面或弹窗内容的搜索。 当搜索框内出现搜索的内容后，原本的“搜索” Icon 变为“清除”
