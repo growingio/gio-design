@@ -2,7 +2,10 @@
   "name": "@gio-design/components",
   "version": "22.3.0",
   "description": "GrowingIO Design components",
-  "repository": "https://github.com/growingio/gio-design.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://github.com/growingio/gio-design.git"
+  },
   "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
   "main": "./es/index.js",
   "module": "./es/index.js",
