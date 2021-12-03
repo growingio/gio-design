@@ -10,19 +10,17 @@ export interface UsePopProps {
   strategy: PositioningStrategy;
 }
 
-const clear = (text: string) => {
-  return (replaces: string[]) => {
-    let replaceText = text;
-    replaces.forEach((replace) => {
-      while (replaceText.indexOf(replace) > -1) {
-        replaceText = replaceText.replace(replace, '');
-      }
-    });
-    return replaceText;
-  };
+const clear = (text: string) => (replaces: string[]) => {
+  let replaceText = text;
+  replaces.forEach((replace) => {
+    while (replaceText.indexOf(replace) > -1) {
+      replaceText = replaceText.replace(replace, '');
+    }
+  });
+  return replaceText;
 };
 
-const clear3D = (transform: string): string | Number[] => {
+const clear3D = (transform: string): string | number[] => {
   if (!transform) {
     return transform;
   }
@@ -41,16 +39,18 @@ const usePop = ({ referenceElement, popperElement, placement, modifiers, strateg
   });
   if (popperElement) {
     const three = clear3D(styles.popper.transform);
-    if (three && typeof three !== 'string') {
+    if (Array.isArray(three)) {
       const [x, y, z] = three;
-
       const divHeight = popperElement.offsetHeight;
       const winHeight = window.innerHeight;
-
-      let yField = y < 0 ? 0 : y;
-      yField = yField + divHeight > winHeight ? winHeight - divHeight : yField;
-
-      styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z}px)`;
+      if (styles?.popper?.bottom === 'auto') {
+        let yField = y < 0 ? 0 : y;
+        yField = yField + divHeight > winHeight ? winHeight - divHeight : yField;
+        styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z}px)`;
+      } else if (styles?.popper?.bottom === '0') {
+        let yField = y + divHeight > 0 ? 0 : y;
+        styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z}px)`;
+      }
     }
   }
   return { styles, attributes, ...popperProps };
