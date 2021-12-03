@@ -4,10 +4,10 @@ export const DATE_FORMAT = 'yyyy/MM/dd';
 
 export const experimentalQuickOptions = (localeText: typeof defaultLocaleText) => [
   [
-    { value: 'hour:25,1', label: localeText.lastSomeHours(24) },
-    { value: 'hour:73,1', label: localeText.lastSomeHours(72) },
+    { value: 'hour:25,1', label: localeText.lastSomeHours?.(24) },
+    { value: 'hour:73,1', label: localeText.lastSomeHours?.(72) },
   ],
-  [{ value: 'hour:49,1', label: localeText.lastSomeHours(48) }],
+  [{ value: 'hour:49,1', label: localeText.lastSomeHours?.(48) }],
 ];
 
 export const QUICK_MAPPING = {

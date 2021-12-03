@@ -135,7 +135,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
           value={`${prefixCls}-collapse`}
           onClick={() => setCollapse(Infinity)}
         >
-          {localeTextObject.expandAll(renderOptions?.length ?? 0)}
+          {localeTextObject.expandAll?.(renderOptions?.length ?? 0)}
         </Item>
       );
     }

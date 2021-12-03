@@ -10,7 +10,7 @@ const BatchActions: React.FC<BatchActionProps> = ({ onClose, count = 0, children
   const prefixCls = usePrefixCls('panel__batch-actions');
   return (
     <div className={prefixCls}>
-      <span className={`${prefixCls}__text`}>{localeTextObject.hasSelected(count)}</span>
+      <span className={`${prefixCls}__text`}>{localeTextObject.hasSelected?.(count)}</span>
       <IconButton type="text" size="small" onClick={onClose}>
         <CloseOutlined />
       </IconButton>

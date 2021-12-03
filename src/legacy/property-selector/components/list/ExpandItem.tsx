@@ -14,7 +14,7 @@ function ExpandItem({ className, title, ...restProps }: ExpandItemProps) {
     // eslint-disable-next-line react/jsx-props-no-spreading
     <li role="option" aria-selected {...restProps} className={cls}>
       <DownOutlined className={`${prefixCls}__icon`} size="14px" />
-      <span className={`${prefixCls}__text`}>{title ?? localeTextObject.expandAll()}</span>
+      <span className={`${prefixCls}__text`}>{title ?? localeTextObject.expandAll?.()}</span>
     </li>
   );
 }
