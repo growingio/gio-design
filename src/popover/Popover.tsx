@@ -1,13 +1,13 @@
 import React, { useState, useMemo, useCallback, useRef, useLayoutEffect, useEffect } from 'react';
 import classNames from 'classnames';
 import { debounce, isFunction } from 'lodash';
-import { usePopper } from 'react-popper';
 import ReactDOM from 'react-dom';
 import ResizeObserver from 'rc-resize-observer';
-import { PopoverProps, placements } from './interface';
+import { PopoverProps } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { composeRef, supportRef } from '../utils/composeRef';
 import useControlledState from '../utils/hooks/useControlledState';
+import usePop from './usePop';
 
 const Popover = (props: PopoverProps) => {
   const {
@@ -26,7 +26,7 @@ const Popover = (props: PopoverProps) => {
     overlayInnerClassName,
     overlayStyle,
     children,
-    strategy = 'absolute',
+    strategy = 'fixed',
     offset = allowArrow ? [0, -2] : [0, 4],
     triggerClassName,
     triggerStyle,
@@ -81,8 +81,10 @@ const Popover = (props: PopoverProps) => {
     [offset]
   );
 
-  const { styles, attributes, ...popperProps } = usePopper(referenceElement, popperElement, {
-    placement: placements[placement],
+  const { styles, attributes, ...popperProps } = usePop({
+    referenceElement,
+    popperElement,
+    placement,
     modifiers: defaultModifiers,
     strategy,
   });
