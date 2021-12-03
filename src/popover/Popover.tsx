@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useRef, useLayoutEffect } from 'react';
+import React, { useState, useMemo, useCallback, useRef, useLayoutEffect, useEffect } from 'react';
 import classNames from 'classnames';
 import { debounce, isFunction } from 'lodash';
 import { usePopper } from 'react-popper';
@@ -40,6 +40,10 @@ const Popover = (props: PopoverProps) => {
   const [referenceElement, setReferenceELement] = useState<null | HTMLElement>(null);
   const [popperElement, setPopperElement] = useState<null | HTMLElement>(null);
   const arrowElement = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!visible) overContentRef.current = false;
+  }, [visible]);
 
   const contentCls = useMemo(
     () =>
