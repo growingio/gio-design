@@ -74,7 +74,7 @@ const Template: Story<ListPickerProps> = () => {
           overlayStyle={{ width: '240px' }}
           style={{ width: '100%' }}
           onClear={() => {
-            setValue('');
+            console.log('onClear执行');
           }}
           allowClear
           placeholder="请选择"
