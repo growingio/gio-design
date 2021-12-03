@@ -48,7 +48,7 @@ const usePop = ({ referenceElement, popperElement, placement, modifiers, strateg
         yField = yField + divHeight > winHeight ? winHeight - divHeight : yField;
         styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z}px)`;
       } else if (styles?.popper?.bottom === '0') {
-        let yField = y + divHeight > 0 ? 0 : y;
+        const yField = y + divHeight > 0 ? 0 : y;
         styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z}px)`;
       }
     }
