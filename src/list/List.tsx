@@ -134,12 +134,11 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
           key={`${prefixCls}-collapse`}
           value={`${prefixCls}-collapse`}
           onClick={() => setCollapse(Infinity)}
-        >
-          {localeTextObject.expandAll?.(renderOptions?.length ?? 0)}
-        </Item>
+          label={localeTextObject?.expandAll(renderOptions?.length ?? 0)}
+        />
       );
     }
-    return null;
+    return <></>;
   };
   const renderContent = (
     <>
