@@ -2,13 +2,13 @@ import { concat, difference, indexOf, isArray, isEmpty, isNil, isUndefined } fro
 import toArray from 'rc-util/lib/Children/toArray';
 import React from 'react';
 import { ListProps } from '.';
-import { ModelType, OptionProps } from './interfance';
+import { MaybeArray, ModelType, OptionProps } from './interfance';
 
 type OtherProps = ListProps;
 
 export const isMultipe = (model: ModelType) => model === 'multiple';
 export const isCascader = (model: ModelType) => model === 'cascader';
-export const getResultValue = (value?: string[], val?: string) => {
+export const getResultValue = (value?: (string | number)[], val?: string | number) => {
   if (indexOf(value, val) !== -1) {
     return difference(value, [val]);
   }
@@ -18,9 +18,9 @@ export const getResultValue = (value?: string[], val?: string) => {
   return value;
   //  ?  :
 };
-export const selectStatus = (value?: string, values?: string | string[]) => {
+export const selectStatus = (value?: string | number, values?: MaybeArray<string | number>) => {
   if (!isNil(value)) {
-    return isArray(values) ? (values as string[])?.indexOf(value) !== -1 : values === value;
+    return isArray(values) ? (values as (string | number)[])?.indexOf(value) !== -1 : values === value;
   }
   return undefined;
 };
@@ -32,7 +32,7 @@ const deepChildren = (children?: OptionProps[]): any[] => {
 };
 const generateValue = (child?: OptionProps[]) =>
   child?.reduce((prev, curr) => (curr.value ? [...prev, curr.value] : prev), []).join('.');
-export const generateString = (value?: string, children?: OptionProps[]) => {
+export const generateString = (value?: string | number, children?: OptionProps[]) => {
   if (!isEmpty(children)) {
     return `${generateValue(deepChildren(children))}.${value}`;
   }
@@ -68,7 +68,7 @@ export function convertOptions(options: OptionProps[], otherProps: OtherProps): 
   return options.reduce((prev, curr) => [...prev, convertOption(curr, otherProps)], []);
 }
 
-export const generateSelectParent = (label: string | React.ReactNode, value: string, parent?: OptionProps[]) =>
+export const generateSelectParent = (label: string | React.ReactNode, value: string | number, parent?: OptionProps[]) =>
   parent
     ? [
         {

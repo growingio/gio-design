@@ -40,7 +40,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
     const mergedDisabled = disabled ?? contextDisabled;
     const selected = useMemo(() => {
       if (model === 'cascader') {
-        return (contextValue as string)?.startsWith(generateString(value, selectParent));
+        return (contextValue as string)?.startsWith(generateString(value, selectParent)?.toString());
       }
       return selectStatus?.(value, contextValue);
     }, [contextValue, model, selectParent, value]);

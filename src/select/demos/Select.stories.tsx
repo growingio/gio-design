@@ -98,13 +98,28 @@ export const Demo = demoTemplate.bind({
 
 export const Default = () => {
   const options = defaultLabels.reduce((prev, curr) => [...prev, { label: `第${curr}条咸鱼`, value: curr }], []);
+  const numberOptions = defaultLabels.reduce(
+    (prev, curr) => [...prev, { label: `第${curr}条咸鱼`, value: Number(curr) }],
+    []
+  );
   return (
-    <Select
-      options={options}
-      contentStyle={{ width: '300px' }}
-      placeholder="请选择"
-      size="normal"
-      onVisibleChange={() => action('visibleChange')}
-    />
+    <div style={{ display: 'flex', columnGap: '40px' }}>
+      <Select
+        options={options}
+        onChange={(v: string | number) => console.log('value', v)}
+        contentStyle={{ width: '120px' }}
+        placeholder="请选择"
+        size="normal"
+        onVisibleChange={() => action('visibleChange')}
+      />
+      <Select
+        options={numberOptions}
+        onChange={(v: string | number) => console.log('value', v)}
+        contentStyle={{ width: '120px' }}
+        placeholder="number 类型的value"
+        size="normal"
+        onVisibleChange={() => action('visibleChange')}
+      />
+    </div>
   );
 };

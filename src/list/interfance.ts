@@ -2,7 +2,7 @@ import React from 'react';
 import { ListContextProps } from './context';
 
 export type ModelType = 'cascader' | 'multiple' | 'single';
-
+export type MaybeArray<T> = T | T[];
 export interface SelectionProps extends ListProps {
   className?: string;
   style?: React.CSSProperties;
@@ -37,7 +37,7 @@ export interface ListProps {
   /**
    * 值
    */
-  value?: string | string[];
+  value?: MaybeArray<string | number>;
   /**
    *
    */
@@ -58,11 +58,11 @@ export interface ListProps {
   /**
    *
    */
-  onClick?: (value?: string) => void;
+  onClick?: (value?: string | number) => void;
   /**
    *
    */
-  onChange?: (value?: string | string[], options?: OptionProps | OptionProps[]) => void;
+  onChange?: (value?: MaybeArray<string | number>, options?: OptionProps | OptionProps[]) => void;
   /**
    * 仅支持options 形式。自定义 item render 自定义render时会劫持onClick方法提供给List来使用
    */
@@ -80,7 +80,7 @@ export interface DragListProps extends Omit<ListProps, 'model' | 'onChange' | 'v
 
 export interface OptionProps {
   label?: string | React.ReactNode;
-  value: string;
+  value: string | number;
   disabled?: boolean;
   disabledTooltip?: string;
   prefix?: string | React.ReactNode;
@@ -100,7 +100,7 @@ export interface DragItemProps extends ItemProps {
 
 export interface CascaderItemProps extends BaseItemProps {
   label: string;
-  value: string;
+  value: string | number;
   childrens?: CascaderItemProps[];
 }
 export interface ItemProps
@@ -131,12 +131,12 @@ export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled' | 
   children?: React.ReactNode;
   disabledTooltip?: string;
   selected?: boolean;
-  onClick?: (value?: string) => void;
+  onClick?: (value?: string | number) => void;
 }
 
 export interface TriggerProps {
   disabled?: boolean;
-  value?: string | React.ReactNode;
+  value?: string | number | React.ReactNode;
   separator?: string;
   children?: React.ReactNode;
   placeholder?: string;

@@ -75,6 +75,14 @@ const options = [...new Array(12)].map((_, index) => ({
     { label: '不要', value: 'no' },
   ],
 }));
+const numberOptions = [...new Array(12)].map((_, index) => ({
+  label: `第${index + 1}条咸鱼`,
+  value: index + 1,
+  childrens: [
+    { label: '要', value: 1 },
+    { label: '不要', value: 2 },
+  ],
+}));
 const demoTemplate: Story<CascaderProps> = (props) => (
   <>
     <h3>default传option</h3>
@@ -82,6 +90,16 @@ const demoTemplate: Story<CascaderProps> = (props) => (
       <Cascader
         onChange={(val: any, opt: any) => console.log('val', val, opt)}
         options={defaultOptions}
+        placeholder="haha"
+        size="normal"
+        {...props}
+      />
+    </div>
+    <h3> number Options</h3>
+    <div className="demo-box">
+      <Cascader
+        onChange={(val: any, opt: any) => console.log('val', val, opt)}
+        options={numberOptions}
         placeholder="haha"
         size="normal"
         {...props}

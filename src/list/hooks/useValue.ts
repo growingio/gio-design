@@ -1,12 +1,13 @@
-import { isNil, isString } from 'lodash';
+import { isNil, isNumber, isString } from 'lodash';
 import { OptionProps } from '..';
+import { MaybeArray } from '../interfance';
 
-const formatValue = (isMultiple: boolean, value?: string | string[]) => {
+const formatValue = (isMultiple: boolean, value?: MaybeArray<string | number>) => {
   if (isMultiple) {
     if (isNil(value)) {
       return [];
     }
-    if (isString(value)) {
+    if (isString(value) || isNumber(value)) {
       return [value];
     }
     return value;
@@ -18,10 +19,10 @@ const formatValue = (isMultiple: boolean, value?: string | string[]) => {
 };
 
 const useValue = (
-  value?: string | string[],
-  onChange?: (value?: string | string[], options?: OptionProps | OptionProps[]) => void,
-  contextValue?: string | string[],
-  contextOnChange?: (value?: string | string[], options?: OptionProps | OptionProps[]) => void,
+  value?: MaybeArray<string | number>,
+  onChange?: (value?: MaybeArray<string | number>, options?: OptionProps | OptionProps[]) => void,
+  contextValue?: MaybeArray<string | number>,
+  contextOnChange?: (value?: MaybeArray<string | number>, options?: OptionProps | OptionProps[]) => void,
   isMultiple = false
 ) => ({
   value: formatValue(isMultiple, value ?? contextValue),

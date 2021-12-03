@@ -1,9 +1,9 @@
 import { isArray, isEmpty, isNil, isNumber } from 'lodash';
 import { useCallback, useRef } from 'react';
-import { OptionProps } from '../interfance';
+import { MaybeArray, OptionProps } from '../interfance';
 
 const useCacheOptions = () => {
-  const options = useRef<Map<string, OptionProps>>(new Map());
+  const options = useRef<Map<string | number, OptionProps>>(new Map());
   const optionsMap = options.current;
   const updateOptions = (opts?: OptionProps[]) => {
     opts?.forEach((o: OptionProps) => {
@@ -14,7 +14,7 @@ const useCacheOptions = () => {
     });
   };
   const getOptionByValue = useCallback(
-    (optValue?: string): OptionProps | undefined => {
+    (optValue?: string | number): OptionProps | undefined => {
       if (!isNil(optValue)) {
         return optionsMap.get(optValue);
       }
@@ -33,22 +33,22 @@ const useCacheOptions = () => {
         }, [] as any)
       : getOptionByValue(optValue);
 
-  const getLabelByValue = (val?: string | string[], separator = '') => {
+  const getLabelByValue = (val?: MaybeArray<string | number>, separator = '') => {
     if (val === '' || typeof val === 'undefined' || isNumber(val)) {
       return '';
     }
     if (val?.includes('.')) {
       return (val as any)
         ?.split('.')
-        ?.reduce((prev: string[], curr: string) => [...prev, getOptionByValue?.(curr)?.label], [])
+        ?.reduce((prev: string[], curr: string | number) => [...prev, getOptionByValue?.(curr)?.label], [])
         ?.join(separator);
     }
     if (isArray(val)) {
-      return val?.reduce((prev, curr: string) => [...prev, getOptionByValue?.(curr)?.label], [])?.join(',');
+      return val?.reduce((prev, curr: string | number) => [...prev, getOptionByValue?.(curr)?.label], [])?.join(',');
     }
     return getOptionByValue(val)?.label ?? '';
   };
-  const getOptionTreeByValue = (val?: string) => {
+  const getOptionTreeByValue = (val?: string | number) => {
     if (val === '' || typeof val === 'undefined' || isNumber(val)) {
       return '';
     }
