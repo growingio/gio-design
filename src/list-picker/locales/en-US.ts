@@ -3,4 +3,6 @@ export default {
     description: 'No data',
   },
   expandText: 'Expand all',
+  confirm: 'Confirm',
+  recent: 'Recent',
 };

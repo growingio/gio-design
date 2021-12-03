@@ -14,7 +14,7 @@ function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onCancel }: Ra
 
   const locale = useLocale('StaticPastTimePicker');
 
-  const { startDayText, endDayText, FromText, ToText }: { [key: string]: string } = {
+  const { startDayText, endDayText, FromText, ToText } = {
     ...defaultLocale,
     ...locale,
   };

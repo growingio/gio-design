@@ -1,13 +1,15 @@
 import React from 'react';
 import classnames from 'classnames';
+import { useLocale } from '@gio-design/utils';
 import Divider from './Divider';
 import { ListItemGroupProps, ListItemSubgroupProps } from './interfaces';
 import { useRootPrefixCls, renderItem, renderExpandableItems } from './utils';
 import ItemSubgroup from './ItemSubgroup';
+import defaultLocaleFromList from '../../../../list/locales/zh-CN';
 
 function ItemGroup({ className, style, title, children, subgroups, items, expandable = false }: ListItemGroupProps) {
   const [expanded, setExpanded] = React.useState(false);
-
+  const localesText: typeof defaultLocaleFromList = useLocale('List') || defaultLocaleFromList;
   function onExpand() {
     setExpanded(true);
   }
@@ -23,7 +25,7 @@ function ItemGroup({ className, style, title, children, subgroups, items, expand
     content = renderSubgroups(subgroups);
   } else if (items) {
     if (expandable) {
-      content = renderExpandableItems(expanded, items, onExpand);
+      content = renderExpandableItems(expanded, items, onExpand, localesText);
     } else {
       content = items.map(renderItem);
     }

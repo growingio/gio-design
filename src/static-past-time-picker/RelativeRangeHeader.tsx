@@ -17,7 +17,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
 
   const locale = useLocale('StaticPastTimePicker');
 
-  const { lastText, dayText, endDayText, toText }: { [key: string]: string } = {
+  const { lastText, dayText, endDayText, ToText } = {
     ...defaultLocale,
     ...locale,
   };
@@ -81,7 +81,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
           size="small"
         />
       </span>
-      <span className={`${basePrefixCls}__text`}>{toText}</span>
+      <span className={`${basePrefixCls}__text`}>{ToText}</span>
       <span className={`${basePrefixCls}__input-number`} data-testid="start-days">
         <Input.InputNumber
           min={endDays + 1}

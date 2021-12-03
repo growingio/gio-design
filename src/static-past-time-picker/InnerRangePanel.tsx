@@ -11,7 +11,7 @@ function InnerRangePanel({ disableOK, header, body, onOK, onCancel }: InnerRange
 
   const locale = useLocale('StaticPastTimePicker');
 
-  const { okText, closeText }: { [key: string]: string } = {
+  const { okText, closeText } = {
     ...defaultLocale,
     ...locale,
   };

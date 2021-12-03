@@ -4,6 +4,7 @@ import React from 'react';
 import { BasePickerProps } from '../base-picker';
 import { Dimension } from './types';
 import { SelectorProps } from '../selector-pro/interfaces';
+import defaultLocale from './locales/zh-CN';
 /**
  * 属性详情组件的参数
  */
@@ -90,11 +91,11 @@ export interface PropertyPickerProps
 /**
  * 属性的类型 event|avar|usr
  */
-export const PropertyTypes: { [key: string]: string } = {
-  event: '事件属性',
-  avar: '访问属性',
-  usr: '用户属性',
-};
+export const PropertyTypes: (localeText: typeof defaultLocale) => { [key: string]: string } = (localeText) => ({
+  event: localeText.eventProperties,
+  avar: localeText.accessProperties,
+  usr: localeText.userProperties,
+});
 
 // export type ItemValueType = 'int' | 'string' | 'double' | 'date' | 'list' | 'boolean';
 /**

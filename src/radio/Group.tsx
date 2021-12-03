@@ -29,12 +29,14 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, IRadioGroupProp
     filterChildren(children, (child) => {
       if (React.isValidElement(child)) {
         if (typeof child.type !== 'object' || (child.type as typeof Radio).displayName !== 'Radio') {
+          // eslint-disable-next-line no-console
           console.error(
             'Warning: Children wrapped by RadioGroup component should be a Radio. Please check the Radio Component in your RadioGroup.'
           );
           return false;
         }
         if (!Reflect.has(child.props, 'value')) {
+          // eslint-disable-next-line no-console
           console.error(
             'Warning: Radio wrapped by RadioGroup component which has no "value" prop will not be rendered. Please check the Radio Component in your RadioGroup.'
           );
@@ -46,7 +48,7 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, IRadioGroupProp
     });
 
   const renderRadio = () => {
-    let renderedChildren: React.ReactNodeArray = [];
+    let renderedChildren: React.ReactNode[] = [];
     if (options && options.length > 0) {
       renderedChildren = options
         .filter((_) => !!_)

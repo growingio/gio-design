@@ -48,7 +48,7 @@ function StaticPastTimePicker({
     last90daysText,
     last180DaysText,
     last365DaysText,
-  }: { [key: string]: string } = {
+  } = {
     ...defaultLocale,
     ...locale,
   };

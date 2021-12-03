@@ -2,7 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import isNumber from 'lodash/isNumber';
 import isString from 'lodash/isString';
-
+import { useLocale } from '@gio-design/utils';
+import defaultLocaleTextObject from './locales/zh-CN';
 import { FormLabelAlign, RequiredMark } from './context';
 
 export interface Props {
@@ -35,9 +36,10 @@ const ItemLabel: React.FC<Props> = (props: Props) => {
     htmlFor = fieldId,
     labelAlign,
   } = props;
+  const localeTextObject: typeof defaultLocaleTextObject = useLocale('Form') || defaultLocaleTextObject;
   const isRequired = required && (requiredMark === true || requiredMark === undefined);
   const isOptional = !required && requiredMark === 'optional';
-  const innerMarker = isOptional ? '（选填）' : '*';
+  const innerMarker = isOptional ? localeTextObject.optional : ' *';
   const mergedRequiredMarker = marker !== undefined ? marker : innerMarker;
   const mergedTitle = isNumber(title) || isString(title) ? (title as string) : '';
   const cls = classNames(`${prefixCls}-label`, {

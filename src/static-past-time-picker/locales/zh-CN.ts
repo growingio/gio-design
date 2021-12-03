@@ -1,3 +1,5 @@
+import { Key } from 'react';
+
 export default {
   okText: '确定',
   closeText: '取消',
@@ -23,10 +25,12 @@ export default {
   lastQuarterText: '上季度',
   thisYearText: '今年',
   lastYearText: '去年',
+  lastSomeHours: (text: Key) => `过去 ${text} 小时`,
   last7DaysText: '过去7天',
   last14DaysText: '过去14天',
   last30daysText: '过去30天',
   last90daysText: '过去90天',
   last180DaysText: '过去180天',
   last365DaysText: '过去365天',
+  timeRangeText: '时间范围',
 };

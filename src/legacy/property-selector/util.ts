@@ -1,9 +1,10 @@
 import { has } from 'lodash';
 import { PropertyItem, PropertyTypes } from './interfaces';
 import { Dimension } from './types';
+import defaultLocale from './locales/zh-CN';
 
 type MapedType = 'usr' | 'event' | 'avar' | 'itm';
-type TypeMapping = (input: Dimension) => PropertyItem;
+type TypeMapping = (input: Dimension, localeText: typeof defaultLocale) => PropertyItem;
 
 type Mapper = {
   [key: string]: MapedType;
@@ -44,29 +45,29 @@ export const PropertyGroupOrder = [
   'user',
   'tag',
 ];
-const PreparedNormalDimensionIdMap = (id: string) => {
+const PreparedNormalDimensionIdMap = (id: string, localeText: typeof defaultLocale) => {
   const groupMap = {
     page: ['p', 'd', 'rp'], // 域名,页面,页面来源
     element: ['v', 'idx'], // ，元素内容，元素位置
     device: ['b', 'cv'], // 应用平台和app版本归属到-设备分类
   };
-  if (groupMap.page.includes(id)) return ['page', '页面'];
-  if (groupMap.element.includes(id)) return ['element', '无埋点事件属性'];
-  return ['device', '设备'];
+  if (groupMap.page.includes(id)) return ['page', localeText.page];
+  if (groupMap.element.includes(id)) return ['element', localeText.element];
+  return ['device', localeText.device];
 };
 
-const regroup = (data: PropertyItem): PropertyItem => {
+const regroup = (data: PropertyItem, localeText: typeof defaultLocale): PropertyItem => {
   const { isSystem, groupId, type, typeName } = data;
   let newType = type;
   let newTypeName = typeName;
   if (type === 'avar') {
     newType = 'event';
-    newTypeName = PropertyTypes[newType];
+    newTypeName = PropertyTypes(localeText)[newType];
   }
 
-  let groupName = isSystem ? `预置${typeName}` : `自定义${typeName}`;
+  let groupName = isSystem ? localeText.preset(typeName) : localeText.custom(typeName);
   if (groupId === 'tag') {
-    groupName = '用户标签';
+    groupName = localeText.tag;
   }
 
   return {
@@ -78,52 +79,49 @@ const regroup = (data: PropertyItem): PropertyItem => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const dimensionToPropertyItem: TypeMapping = (item: Dimension, locale = 'zh-CN') => {
+export const dimensionToPropertyItem: TypeMapping = (item: Dimension, localeText: typeof defaultLocale) => {
   const result: PropertyItem = { label: item.name, value: item.id, ...item };
   const { id, groupId, type: _type, associatedKey } = item;
 
   result.iconId = groupId;
 
   if (groupId === 'normal' && _type === 'global') {
-    const [newGroupId, newGroupName] = PreparedNormalDimensionIdMap(id);
+    const [newGroupId, newGroupName] = PreparedNormalDimensionIdMap(id, localeText);
     result.groupId = newGroupId;
     result.groupName = newGroupName;
     result.iconId = newGroupId;
   }
 
   const dimensionGroupType = DimensionGroupTypeMapper[result.groupId ?? 'event'];
-  result.previewTypeName = PropertyTypes[dimensionGroupType === 'avar' ? 'event' : dimensionGroupType];
+  result.previewTypeName = PropertyTypes(localeText)[dimensionGroupType === 'avar' ? 'event' : dimensionGroupType];
 
   // 多物品模型，物品属性不再作为事件绑定属性，而是作为事件属性的属性来展示，作为事件属性的子集
   // 所以，当存在parentId的时候，物品属性，和事件属性同组
   if (groupId === 'item' && _type === 'itm' && associatedKey) {
     result.iconId = 'item';
     result.groupId = 'event';
-    result.previewTypeName = '维度表';
-    if (locale === 'en-US') {
-      result.groupName = 'event variable';
-    }
-    result.groupName = '事件变量';
+    result.previewTypeName = localeText.dimensionTable;
+    result.groupName = localeText.eventVariables;
   }
 
   // 虚拟属性需要添加到事件属性中，但是有自己的type和groupId，所以和维度表（多物品模型）做相同处理
   if (groupId === 'virtual' && _type === 'vvar') {
     result.iconId = 'virtual';
     result.groupId = 'event';
-    result.groupName = '虚拟属性';
-    result.previewTypeName = '虚拟属性';
+    result.groupName = localeText.virtualProperties;
+    result.previewTypeName = localeText.virtualProperties;
   }
 
   const gOrder = PropertyGroupOrder.indexOf(result.groupId as string);
   result.groupOrder = gOrder > -1 ? gOrder : 99999;
 
   result.type = DimensionGroupTypeMapper[result.groupId || 'unkown'];
-  result.typeName = PropertyTypes[result.type];
+  result.typeName = PropertyTypes(localeText)[result.type];
   const tOrder = ['event', 'avar', 'usr'].indexOf(result.type);
   result.typeOrder = tOrder > -1 ? tOrder : 99999;
 
   if (has(item, 'isSystem')) {
-    return regroup(result);
+    return regroup(result, localeText);
   }
   return result;
 };

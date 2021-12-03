@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { isArray, isEmpty } from 'lodash';
+import { useLocale } from '@gio-design/utils';
 import { OptionProps, ListProps } from './interfance';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { PREFIX } from './constants';
@@ -11,6 +12,7 @@ import './style';
 import { ListContext } from './context';
 import useValue from './hooks/useValue';
 import useCacheOptions from './hooks/useCacheOptions';
+import defaultLocaleTextObject from './locales/zh-CN';
 
 export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const {
@@ -30,6 +32,8 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     renderItem,
     onClick,
   } = props;
+
+  const localeTextObject: typeof defaultLocaleTextObject = useLocale('List') || defaultLocaleTextObject;
 
   const prefixCls = usePrefixCls(PREFIX);
   const [collapse, setCollapse] = useState(initCollapse);
@@ -128,7 +132,9 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
           key={`${prefixCls}-collapse`}
           value={`${prefixCls}-collapse`}
           onClick={() => setCollapse(Infinity)}
-        >{`展开全部(${renderOptions?.length ?? 0})`}</Item>
+        >
+          {localeTextObject.expandAll(renderOptions?.length ?? 0)}
+        </Item>
       );
     }
     return null;

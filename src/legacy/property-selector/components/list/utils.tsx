@@ -4,6 +4,7 @@ import { usePrefixCls } from '@gio-design/utils';
 import Item from './Item';
 import ExpandItem from './ExpandItem';
 import { ListItemProps } from './interfaces';
+import defaultLocalText from '../../../../list/locales/zh-CN';
 
 const DEFAULT_SHOW_ITEMS_COUNT = 10;
 
@@ -13,7 +14,12 @@ export function renderItem(i: ListItemProps, idx: number) {
   return <Item {...i} key={i.key ?? `item-${idx}`} />;
 }
 
-export function renderExpandableItems(expanded: boolean, currentItems: ListItemProps[], onExpand: () => void) {
+export function renderExpandableItems(
+  expanded: boolean,
+  currentItems: ListItemProps[],
+  onExpand: () => void,
+  localesText: typeof defaultLocalText
+) {
   if (expanded) {
     return currentItems.map(renderItem);
   }
@@ -23,7 +29,7 @@ export function renderExpandableItems(expanded: boolean, currentItems: ListItemP
       .map(renderItem)
       .concat(
         <ExpandItem
-          title={`展开全部 (${currentItems.length - showItems.length})`}
+          title={localesText.expandAll(currentItems.length - showItems.length)}
           key={`expand-item-${currentItems[0].key}-${showItems.length + 1}`}
           onClick={onExpand}
         />
