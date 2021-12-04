@@ -44,7 +44,7 @@ const Trigger: React.ForwardRefRenderFunction<HTMLInputElement, TriggerProps> = 
       prefix={prefix}
       suffix={suffix}
       placeholder={placeholder}
-      value={title ?? getLabelByValue?.(value as string)}
+      value={title ?? getLabelByValue?.(value as React.ReactText)}
       onClear={handleClear}
       {...rest}
     />

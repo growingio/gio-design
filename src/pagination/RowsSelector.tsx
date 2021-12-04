@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Select from '../select';
 import { PaginationContext } from './Pagination';
 
@@ -16,28 +16,32 @@ const RowsSelector: React.FC<{
   const { defaultPageSize, onPageSizeChange, pageSize, pageSizeOptions, prefixCls, textObject } =
     useContext(PaginationContext);
 
-  const previousPageSizeRef = useRef<number>(pageSize || defaultPageSize);
-
+  const [previousPageSize, setPreviousPageSize] = useState<number>(pageSize || defaultPageSize);
+  useEffect(() => {
+    if (pageSize) {
+      setPreviousPageSize(pageSize);
+    }
+  }, [pageSize]);
   return (
     <div aria-label={ariaLabel} className={`${prefixCls}__rows`}>
       {textObject.rowsPerPage(
         <Select
-          defaultValue={defaultPageSize?.toString()}
-          value={pageSize?.toString()}
+          defaultValue={defaultPageSize}
+          value={pageSize}
           size="small"
           getContainer={(node) => node?.parentElement || document.body}
           options={pageSizeOptions.map((rowSize) => {
-            const value = Number.parseInt(`${rowSize}`, 10)?.toString();
+            const value = Number.parseInt(`${rowSize}`, 10);
             return {
-              label: value,
+              label: rowSize?.toString(),
               value,
             };
           })}
-          onChange={(value) => {
-            const currentPageSize = Number.parseInt(`${value}`, 10);
+          onChange={(value: number) => {
+            const currentPageSize = value;
             onRowsChange?.(currentPageSize);
-            onPageSizeChange?.(currentPageSize, previousPageSizeRef.current);
-            previousPageSizeRef.current = currentPageSize;
+            onPageSizeChange?.(currentPageSize, previousPageSize);
+            setPreviousPageSize(currentPageSize);
           }}
           allowClear={false}
           style={{
