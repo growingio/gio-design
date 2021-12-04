@@ -74,6 +74,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
           <Popover
             placement="rightTop"
             overlayClassName={popoverClassName}
+            disabled={mergedDisabled}
             content={content()}
             strategy="fixed"
             distoryOnHide={false}
