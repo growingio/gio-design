@@ -1,4 +1,4 @@
-import { isArray, isEmpty, isNil, isNumber } from 'lodash';
+import { isArray, isEmpty, isNil, isString } from 'lodash';
 import { useCallback, useRef } from 'react';
 import { MaybeArray, OptionProps } from '../interfance';
 
@@ -34,10 +34,10 @@ const useCacheOptions = () => {
       : getOptionByValue(optValue);
 
   const getLabelByValue = (val?: MaybeArray<string | number>, separator = '') => {
-    if (val === '' || typeof val === 'undefined' || isNumber(val)) {
+    if (val === '' || typeof val === 'undefined') {
       return '';
     }
-    if (val?.includes('.')) {
+    if (isString(val) && val?.includes('.')) {
       return (val as any)
         ?.split('.')
         ?.reduce((prev: string[], curr: string | number) => [...prev, getOptionByValue?.(curr)?.label], [])
@@ -49,10 +49,10 @@ const useCacheOptions = () => {
     return getOptionByValue(val)?.label ?? '';
   };
   const getOptionTreeByValue = (val?: string | number) => {
-    if (val === '' || typeof val === 'undefined' || isNumber(val)) {
+    if (val === '' || typeof val === 'undefined') {
       return '';
     }
-    if (val?.includes('.')) {
+    if (isString(val) && val?.includes('.')) {
       return (val as any)?.split('.')?.reduceRight((prev: { key: string; value: string }, curr: string) => {
         if (isEmpty(prev)) {
           return { ...getOptionByValue?.(curr) };

@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback, useEffect } from 'react';
-import { isFunction, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 import Pagination, { PaginationProps } from '../../pagination';
 import { ColumnType, ColumnsType, PaginationState } from '../interface';
 import useControlledState from '../../utils/hooks/useControlledState';
@@ -95,19 +95,13 @@ const usePagination = <RecordType,>(
         current={controlledCurrent}
         pageSize={controlledPageSize}
         onPageSizeChange={(currentPageSize, previousPageSize) => {
-          setControlledPageSize(previousPageSize);
-          if (isFunction(onPageSizeChange)) {
-            onPageSizeChange(currentPageSize, previousPageSize);
-          }
+          setControlledPageSize(currentPageSize);
+          onPageSizeChange?.(currentPageSize, previousPageSize);
         }}
         onChange={(currentPage, currentPageSize) => {
           setControlledCurrent(currentPage);
-          if (isFunction(onChange)) {
-            onChange(currentPage, currentPageSize);
-          }
-          if (isFunction(onPaginationChange)) {
-            onPaginationChange(currentPage, currentPageSize);
-          }
+          onChange?.(currentPage, currentPageSize);
+          onPaginationChange?.(currentPage, currentPageSize);
         }}
         {...rest}
       />
