@@ -11,7 +11,7 @@
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fgrowingio%2Fgio-design.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fgrowingio%2Fgio-design?ref=badge_shield)
 ![License](https://img.shields.io/github/license/growingio/gio-design)
 
-## Getting Started
+## 开始
 
 安装依赖：
 
@@ -37,16 +37,16 @@ yarn watch
 yarn start
 ```
 
-
 ## License
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fgrowingio%2Fgio-design.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fgrowingio%2Fgio-design?ref=badge_large)
 
+## 统计
+
+![Alt](https://repobeats.axiom.co/api/embed/d97950a5273fc1c63612f4e41aae8c653311ed06.svg 'Repobeats analytics image')
+
 ---
 
-Powered by
+[![Powered by Vercel](public/powered-by-vercel.svg)][vercel]
 
-<p>
-  <a href="https://vercel.com/?utm_source=gio-design&utm_campaign=oss" target="_blank"><img src="./assets/vercel.svg" alt="Vercel Inc." height=32 /></a>
-</p>
-
+[vercel]: https://vercel.com/?utm_source=gio-design&utm_campaign=oss
