@@ -41,7 +41,9 @@ const usePagination = <RecordType,>(
     if (controlledCurrent * controlledPageSize > totalMemo) {
       onChange?.(Math.ceil(totalMemo / controlledPageSize) || 1, controlledPageSize);
     }
-  }, [controlledCurrent, controlledPageSize, onChange, totalMemo]);
+    // 不应该检测 onChange 依赖
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [controlledCurrent, controlledPageSize, totalMemo]);
 
   const paginationData = useMemo(() => {
     if (pagination === false || !controlledPageSize) {
