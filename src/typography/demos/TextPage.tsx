@@ -10,6 +10,12 @@ export default function TextPage() {
     <>
       <Title>{formatMessage({ defaultMessage: 'Text 文本' })}</Title>
       <p>{formatMessage({ defaultMessage: '文本的基本格式。' })}</p>
+      <p>Upgrading Guide</p>
+      <ul>
+        <li>去除了外层的tooltip，改为title属性</li>
+        <li>内容只接收string</li>
+        <li>children接受空值，默认为‘‘</li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '单行样式' })}</Subheading>
       <Canvas>
