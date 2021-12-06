@@ -7,6 +7,7 @@ import { Button } from '../../button';
 import '../style';
 import '../../popover/demos/demo.stories.less';
 import Docs from './TooltipPage';
+import { PopConfirm } from '../..';
 
 export default {
   title: 'Upgraded/Tooltip',
@@ -256,4 +257,24 @@ export const Disabled = () => (
       </span>
     </Tooltip>
   </div>
+);
+
+export const Demo = () => (
+  <>
+    <Tooltip>
+      <PopConfirm
+        title={123 as any}
+        desc={321 as any}
+        trigger="click"
+        placement="top"
+        // onConfirm={this.handleSelect(item)}
+        // onCancel={this.handleConfirmCancel}
+        overlayStyle={{ zIndex: 1060 }}
+        okText="确认"
+        cancelText="取消"
+      >
+        删除
+      </PopConfirm>
+    </Tooltip>
+  </>
 );

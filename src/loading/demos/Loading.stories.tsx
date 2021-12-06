@@ -55,6 +55,7 @@ Default.args = {
   loading: true,
   titlePosition: 'right',
   autoCenter: true,
+  title: '123',
 };
 
 export const Container = Template.bind({});
@@ -141,6 +142,12 @@ export const Demo = () => (
         <td>自定义图标</td>
         <td>
           <Loading indicator={<LoadingOutlined rotating />} />
+        </td>
+      </tr>
+      <tr>
+        <td>title</td>
+        <td>
+          <Loading title="title" />
         </td>
       </tr>
     </table>
