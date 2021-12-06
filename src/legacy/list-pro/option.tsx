@@ -22,6 +22,8 @@ const SelectOption = (props: OptionProps) => {
     option,
     getPopupContainer,
     placement,
+    title,
+    children,
   } = props;
 
   const prefixCls = usePrefixCls('select-legacy');
@@ -51,7 +53,7 @@ const SelectOption = (props: OptionProps) => {
       })}
       style={style}
       onClick={disabled ? undefined : handleSelect}
-      title={props.title}
+      title={title}
       ref={ref}
       aria-hidden="true"
     >
@@ -62,7 +64,7 @@ const SelectOption = (props: OptionProps) => {
           <span style={{ width: 8 }} />
         </>
       )}
-      {props.children}
+      {children}
     </div>
   );
 
