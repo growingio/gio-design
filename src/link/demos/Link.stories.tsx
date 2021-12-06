@@ -73,7 +73,7 @@ const Template: Story<LinkProps> = (args) => (
 );
 export const Demo = Template.bind({});
 Demo.args = {
-  href: '',
+  href: '//www.growingio.com',
   style: {
     margin: '4px 8px',
   },
@@ -82,23 +82,23 @@ const LinkTemplate: Story<LinkProps> = (args) => <Link {...args}>GrowingIO</Link
 
 export const Default = LinkTemplate.bind({});
 Default.args = {
-  href: '',
+  href: '//www.growingio.com',
 };
 
 export const Disable = LinkTemplate.bind({});
 Disable.args = {
-  href: '',
+  href: '//www.growingio.com',
   disabled: true,
 };
 
 export const Loading = LinkTemplate.bind({});
 Loading.args = {
-  href: '',
+  href: '//www.growingio.com',
   loading: true,
 };
 
 export const IconLink = LinkTemplate.bind({});
 IconLink.args = {
-  href: '',
+  href: '//www.growingio.com',
   prefix: <PlusOutlined />,
 };
