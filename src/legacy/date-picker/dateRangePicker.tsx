@@ -18,6 +18,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
     showFooter,
     disabledDate,
     disabled,
+    renderExtraFooter,
   } = props;
   const prefixCls = usePrefixCls('date-picker-legacy', customizePrefixCls);
 
@@ -29,9 +30,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
 
   const renderFooter = () => (
     <>
-      {props.renderExtraFooter && (
-        <div className={classNames(`${prefixCls}-extra-footer`)}>{props.renderExtraFooter()}</div>
-      )}
+      {renderExtraFooter && <div className={classNames(`${prefixCls}-extra-footer`)}>{renderExtraFooter()}</div>}
       <Button onClick={footerField.onCancel} type="secondary" size="middle" style={{ margin: ' 0 12px 0 0 ' }}>
         取消
       </Button>

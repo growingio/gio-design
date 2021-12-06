@@ -86,7 +86,7 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, IRadioGroupProp
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!props.value) {
+    if (!value) {
       setSelectedValue(e.target.value);
     }
     if (onChange && e.target.value !== prevSelectedValue) {
