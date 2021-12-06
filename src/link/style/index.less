@@ -3,15 +3,33 @@
 @link-prefix-cls: ~'@{component-prefix}-link';
 
 .@{link-prefix-cls} {
+  .reset() {
+    margin: 0;
+    text-decoration: none;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    -webkit-appearance: none;
+  }
   box-sizing: border-box;
   color: @blue-2;
-  .text-body1();
-  text-decoration: none;
   cursor: pointer;
+  .text-body1();
+  .reset();
 
-  &:not([aria-disabled='true']):hover {
+  &::-moz-focus-inner {
+    border-style: none;
+  }
+
+  &:not([aria-disabled='true']):hover,
+  &:not([aria-disabled='true']):active,
+  &:not([aria-disabled='true'], :focus-visible):focus {
     color: @blue-3;
-    text-decoration: none;
+    .reset();
+  }
+  &:not([aria-disabled='true']):focus-visible {
+    color: @blue-3;
+    outline: auto;
   }
 
   &_loading {
