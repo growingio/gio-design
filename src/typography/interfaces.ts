@@ -1,12 +1,11 @@
 import { CommonProps } from '@gio-design/utils';
 import React from 'react';
-import { TooltipProps } from '../tooltip';
 
 export interface TextProps extends CommonProps {
   /**
    * The text you want to clamp.
    */
-  children: React.ReactNode;
+  children?: string;
   /**
    * The color of text
    * @default `inherit`
@@ -20,10 +19,6 @@ export interface TextProps extends CommonProps {
    * The font size of text
    */
   size?: 'small' | 'middle' | 'large';
-  /**
-   * Show tooltip when clamp text
-   */
-  tooltip?: Pick<TooltipProps, 'placement'>;
   /**
    * Trim right the clamped text to avoid putting the ellipsis on an empty line.
    */

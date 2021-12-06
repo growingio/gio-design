@@ -50,6 +50,7 @@ export const Styles = () => (
     <Text size="small" color="gray">
       Small Gray Text Paragraph
     </Text>
+    <Text />
   </>
 );
 

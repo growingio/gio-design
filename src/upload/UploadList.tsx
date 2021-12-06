@@ -31,12 +31,13 @@ const UploadList = (props: IUploadListProps<IUploadProps>) => {
         <div className={`${prefixCls}-file-list-item`} key={file.uid}>
           <Text className={`${prefixCls}-file-name`}>{file.name}</Text>
           {file.status === STATUS_SUCCESS && (
-            <Text className={`${prefixCls}-file-success`}>
-              {name}
-              {uploadSuccess}!
+            <Text className={`${prefixCls}-file-success`}>{`${name}${uploadSuccess}!`}</Text>
+          )}
+          {file.status === STATUS_ERROR && (
+            <Text className={`${prefixCls}-file-error`} style={{ width: '100px' }}>
+              {file.errorMessage as string}
             </Text>
           )}
-          {file.status === STATUS_ERROR && <Text className={`${prefixCls}-file-error`}>{file.errorMessage}</Text>}
           <DeleteOutlined size="12px" className={`${prefixCls}-file-delete`} onClick={() => handleRemove(file)} />
         </div>
       ))}
