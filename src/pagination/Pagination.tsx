@@ -77,8 +77,6 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
       nav: textObject.ariaLabelNav,
     }[type]);
 
-  if (hideOnSinglePage && maxPages <= 1) return null;
-
   const paginationProviderValue = useMemo<PaginationContextType>(
     () => ({
       onPageSizeChange,
@@ -103,6 +101,8 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
       textObject,
     ]
   );
+
+  if (hideOnSinglePage && maxPages <= 1) return null;
 
   return (
     <div ref={ref} data-testid="pagination" className={classNames([className, prefixCls])} {...otherProps}>
