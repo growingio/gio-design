@@ -5,6 +5,7 @@ import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import Button from '../button';
 import Popover from '../popover/Popover';
 import { PopConfirmProps } from './interface';
+import { useControlledState } from '@gio-design/utils';
 
 const PopConfirm: React.FC<PopConfirmProps> = (props) => {
   const {
@@ -18,13 +19,14 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
     cancelText,
     icon,
     visible: customizaVisible,
+    defaultVisible,
     children,
     disabled,
     ...rest
   } = props;
   const prefixCls = usePrefixCls('confirm', customizePrefixCls);
 
-  const [visible, setVisible] = useState(customizaVisible);
+  const [visible, setVisible] = useControlledState(customizaVisible, defaultVisible);
 
   const onVisibleChange = useCallback(
     (resetVisible: boolean) => {
