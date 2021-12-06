@@ -8,6 +8,7 @@ import Item from './Item';
 import Divider from './Divider';
 import { ListProps, ListItemProps, ListItemGroupProps, DividerProps, ListItemSubgroupProps } from './interfaces';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
+import { PREFIX } from './constants';
 
 const List: React.FC<ListProps> & {
   Item: React.FC<ListItemProps>;
@@ -24,7 +25,7 @@ const List: React.FC<ListProps> & {
     });
   }
 
-  const prefixCls = usePrefixCls('list');
+  const prefixCls = usePrefixCls(PREFIX);
   const content = React.useMemo(() => {
     if (items && items.length > 0) {
       return renderItems(items, expandable);
