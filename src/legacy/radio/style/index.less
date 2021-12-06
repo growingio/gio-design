@@ -7,19 +7,19 @@
 @radio-prefix-cls-legacy: ~'@{component-prefix}-radio-legacy';
 @radio-input: ~'@{radio-prefix-cls-legacy}-input'; // input
 @radio-inner: ~'@{radio-prefix-cls-legacy}-inner'; // inner
-@radio-checked: ~'@{radio-prefix-cls-legacy}-checked'; // checked
-@radio-disabled: ~'@{radio-prefix-cls-legacy}-disabled'; // disabled
-@radio__wrapper: ~'@{radio-prefix-cls-legacy}__wrapper'; // wrapper
-@radio__group: ~'@{radio-prefix-cls-legacy}__group'; // group
+@radio-checked-legacy: ~'@{radio-prefix-cls-legacy}-checked'; // checked
+@radio-disabled-legacy: ~'@{radio-prefix-cls-legacy}-disabled'; // disabled
+@radio__wrapper-legacy: ~'@{radio-prefix-cls-legacy}__wrapper'; // wrapper
+@radio__group-legacy: ~'@{radio-prefix-cls-legacy}__group'; // group
 
-.@{radio__wrapper} {
+.@{radio__wrapper-legacy} {
   position: relative;
   display: inline-block;
   white-space: nowrap;
   cursor: pointer;
 
   &:not(&--disabled):hover {
-    & :not(.@{radio-checked}) {
+    & :not(.@{radio-checked-legacy}) {
       .@{radio-prefix-cls-legacy}-inner {
         border-color: @color-border-checkbox-hover;
         box-shadow: @radio-hover-shadow;
@@ -106,7 +106,7 @@
 }
 
 // checked
-.@{radio-checked} {
+.@{radio-checked-legacy} {
   .@{radio-inner} {
     background-color: @color-background-checkbox-checked;
     border-color: @color-border-checkbox-checked;
@@ -120,7 +120,7 @@
 }
 
 // disabled
-.@{radio-disabled} {
+.@{radio-disabled-legacy} {
   &,
   .@{radio-input} {
     cursor: not-allowed;
@@ -143,14 +143,14 @@
 }
 
 // The selected but disabled text color
-.@{radio-checked}.@{radio-disabled} {
+.@{radio-checked-legacy}.@{radio-disabled-legacy} {
   & + * {
     opacity: 1;
   }
 }
 
 // radio group
-.@{radio__group} {
+.@{radio__group-legacy} {
   display: inline-flex;
   justify-content: flex-start;
 
@@ -158,7 +158,7 @@
     flex-direction: row;
     align-items: center;
 
-    .@{radio__wrapper} {
+    .@{radio__wrapper-legacy} {
       margin-right: 16px;
     }
   }
@@ -167,7 +167,7 @@
     flex-direction: column;
     align-items: flex-start;
 
-    .@{radio__wrapper} {
+    .@{radio__wrapper-legacy} {
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
