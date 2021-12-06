@@ -29,6 +29,7 @@ module.exports = {
   features: {
     postcss: false,
   },
+  staticDirs: ['../public'],
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   webpackFinal: async (config) => {
     config.module.rules.push({
