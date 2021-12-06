@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { WarningCircleFilled } from '@gio-design/icons';
+import { useControlledState } from '@gio-design/utils';
 import { isUndefined } from 'lodash';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import Button from '../button';
@@ -18,13 +19,14 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
     cancelText,
     icon,
     visible: customizaVisible,
+    defaultVisible,
     children,
     disabled,
     ...rest
   } = props;
   const prefixCls = usePrefixCls('confirm', customizePrefixCls);
 
-  const [visible, setVisible] = useState(customizaVisible);
+  const [visible, setVisible] = useControlledState(customizaVisible, defaultVisible);
 
   const onVisibleChange = useCallback(
     (resetVisible: boolean) => {
@@ -32,7 +34,7 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
       setVisible(realVisible);
       onCustomizeVisibleChange?.(realVisible);
     },
-    [disabled, onCustomizeVisibleChange]
+    [disabled, onCustomizeVisibleChange, setVisible]
   );
 
   const onCancel = useCallback(
@@ -41,7 +43,7 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
       onCustomizeCancel?.(e);
       onCustomizeVisibleChange?.(false);
     },
-    [onCustomizeCancel, onCustomizeVisibleChange]
+    [onCustomizeCancel, onCustomizeVisibleChange, setVisible]
   );
   const onConfirm = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -51,14 +53,14 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
         onCustomizeVisibleChange?.(false);
       }
     },
-    [onCustomizeConfirm, onCustomizeVisibleChange]
+    [onCustomizeConfirm, onCustomizeVisibleChange, setVisible]
   );
 
   useEffect(() => {
     if (!isUndefined(customizaVisible)) {
       setVisible(customizaVisible);
     }
-  }, [customizaVisible]);
+  }, [customizaVisible, setVisible]);
 
   const content = (
     <div className={`${prefixCls}`}>
