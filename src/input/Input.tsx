@@ -17,7 +17,6 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     onKeyPress,
     style,
     value,
-    defaultValue,
     inputRef: propsInputRef,
     ...rest
   } = props;
