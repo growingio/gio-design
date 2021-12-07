@@ -6,7 +6,7 @@ import Avatar from './Avatar';
 import { AvatarGroupProps, UserAvatarType } from './interfaces';
 
 const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
-  const { number = 5, users = [], className, placement = 'bottom', style, displayTooltip = true } = props;
+  const { number = 5, users = [], className, placement = 'bottom', style, displayTooltip = true, ...restProps } = props;
   const prefixCls = usePrefixCls('avatar');
 
   let children = null;
@@ -38,7 +38,7 @@ const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
   }
 
   return (
-    <div className={classString} style={style}>
+    <div className={classString} style={style} test-dataId={"avatarGroup"} {...restProps} >
       {children}
     </div>
   );
