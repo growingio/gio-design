@@ -45,7 +45,7 @@ const callback = (key: any) => {
 
 const Template: Story = () => (
   <div>
-    <Collapse defaultActiveKey={['1']} onChange={callback}>
+    <Collapse defaultActiveKey={['2']} onChange={callback}>
       <Panel header="折叠面板标题" key="1" extra={genExtra()}>
         <p>{text}</p>
         <p>{text}</p>

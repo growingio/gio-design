@@ -16,6 +16,7 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = ({
   className,
   customizePrefixCls,
   style,
+  ...restProps
 }: TagProps) => {
   const prefix = usePrefixCls('tag', customizePrefixCls);
 
@@ -33,6 +34,8 @@ const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = ({
       aria-hidden="true"
       onClick={onClick}
       style={style}
+      data-testid="tag"
+      {...restProps}
     >
       <span className={`${prefix}-label`}>{children}</span>
       {closable && !disabled ? <CloseOutlined className={`${prefix}-closable-icon`} onClick={onClose} /> : null}

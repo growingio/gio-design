@@ -32,6 +32,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
     size,
     className,
     style,
+    dataTestId = "dataRangePicker",
     ...restProps
   } = props;
 
@@ -84,6 +85,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
         className={className}
         style={style}
         onClick={() => setVisible(!visible)}
+        data-testid={dataTestId}
       />
     );
   }
@@ -97,6 +99,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
       placement="bottomLeft"
       overlayClassName={overlayCls}
       onVisibleChange={handleVisibleChange}
+      data-testid="dataRangePicker"
       {...restProps}
     >
       {renderTrigger()}

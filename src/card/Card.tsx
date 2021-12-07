@@ -26,7 +26,7 @@ export const Card = WithRef<HTMLDivElement, WithCommonProps<CardProps>>(
     });
 
     return (
-      <div className={cardClassName} ref={ref} {...restProps}>
+      <div className={cardClassName} ref={ref} data-testid="card" {...restProps}>
         {children}
       </div>
     );

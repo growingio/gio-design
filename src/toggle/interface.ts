@@ -34,4 +34,5 @@ export interface TogglesProps {
   on?: boolean;
 
   style?: React.CSSProperties;
+  dataTestId: string;
 }
