@@ -61,6 +61,7 @@ export interface ISwitchGroupProps {
   options?: Array<TSwitchGroupOption | string>;
   // 子元素
   children?: React.ReactNode;
+  dataTestId?: string;
 }
 
 export interface SwitchGroupContextType extends Pick<TSwitchGroupOption, 'value' | 'disabled'> {

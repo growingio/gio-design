@@ -107,7 +107,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
     return renderTooltip(
       // For Dropdown trigger will set Event on rest
       // eslint-disable-next-line react/jsx-props-no-spreading
-      <span ref={mergedRef} className={classString} {...rest} style={{ backgroundColor }}>
+      <span data-testid="avatar" ref={mergedRef} className={classString} {...rest} style={{ backgroundColor }}>
         {renderMore()}
         {renderAvatar()}
       </span>

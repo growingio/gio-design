@@ -50,7 +50,7 @@ const Template: Story<ButtonProps> = (args) => (
       <td>拥有两种尺寸：大号为高度36px，小号为高度30px</td>
       {Context.map((item: any) => (
         <td>
-          <Button {...args} size="normal" type={item.type} />
+          <Button {...args} data-testid="normal-button" size="normal" type={item.type} />
           <Button {...args} size="small" type={item.type} />
         </td>
       ))}

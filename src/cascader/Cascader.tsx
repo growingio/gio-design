@@ -88,6 +88,7 @@ export const Cascader: React.FC<CascaderProps> = ({
     }
     return (
       <Trigger
+        data-testid="cascader"
         value={controlledTitle ?? title}
         placeholder={placeholder}
         prefix={!hidePrefix ? triggerPrefix : undefined}
@@ -98,6 +99,7 @@ export const Cascader: React.FC<CascaderProps> = ({
         className={className}
         disabled={disabled}
         allowClear={allowClear}
+        {...rest}
         onClear={handleOnClear}
         onClick={triggerClick}
         onInputChange={(val) => {

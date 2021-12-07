@@ -9,9 +9,9 @@ export type NullableString = string | undefined;
 
 export interface DateRangePickerProps
   extends CommonProps,
-    Omit<InputButtonProps, 'value' | 'onSelect' | 'defaultValue'>,
-    Omit<StaticDateRangePickerProps, 'onSelect' | 'value' | 'defaultValue'>,
-    Omit<PopoverProps, 'trigger' | 'placement' | 'prefixCls' | 'children' | 'content'> {
+  Omit<InputButtonProps, 'value' | 'onSelect' | 'defaultValue'>,
+  Omit<StaticDateRangePickerProps, 'onSelect' | 'value' | 'defaultValue'>,
+  Omit<PopoverProps, 'trigger' | 'placement' | 'prefixCls' | 'children' | 'content'> {
   /**
    * 自定义的触发器
    */
@@ -34,4 +34,5 @@ export interface DateRangePickerProps
    */
   value?: [NullableDate, NullableDate];
   defaultValue?: [NullableDate, NullableDate];
+  dataTestId?: string;
 }

@@ -6,9 +6,9 @@ import { InputButtonProps } from '../input';
 
 export interface DatePickerProps
   extends CommonProps,
-    Omit<InputButtonProps, 'value' | 'onSelect' | 'defaultValue'>,
-    Omit<StaticDatePickerProps, 'onSelect'>,
-    Omit<PopoverProps, 'trigger' | 'placement' | 'prefixCls' | 'children' | 'content'> {
+  Omit<InputButtonProps, 'value' | 'onSelect' | 'defaultValue'>,
+  Omit<StaticDatePickerProps, 'onSelect'>,
+  Omit<PopoverProps, 'trigger' | 'placement' | 'prefixCls' | 'children' | 'content'> {
   /**
    * 自定义的触发器
    */
@@ -23,4 +23,5 @@ export interface DatePickerProps
    *选中的回掉
    */
   onSelect?: (date: Date, dateString: string) => void;
+  dataTestId?: string;
 }

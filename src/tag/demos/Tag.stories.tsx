@@ -39,7 +39,7 @@ const DefaultTemplate: Story<TagProps> = (args) => (
         <td>status</td>
         <td>
           {[...new Array(6)].map((item, index) => (
-            <Tag {...args} className="tag_website_demo_tag" status={Object.values(obj)[index] as TagProps['status']}>
+            <Tag {...args} data-testid="tag-status" className="tag_website_demo_tag" status={Object.values(obj)[index] as TagProps['status']}>
               {Object.keys(obj)[index]}
             </Tag>
           ))}
