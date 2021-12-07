@@ -107,7 +107,6 @@ function FilterCondition(props: FilterConditionProps) {
 
   return exprKey ? (
     <Selector
-      style={{ width: 250 }}
       valueRender={valueRender}
       dropdownVisible={visible}
       dropdownRender={dropdownRender}
