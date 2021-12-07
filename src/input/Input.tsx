@@ -2,7 +2,6 @@ import React, { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import { InputProps } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
-import useControlledState from '../utils/hooks/useControlledState';
 
 const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   const {
@@ -13,16 +12,15 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     disabled,
     className,
     placeholder,
+    onChange,
     onPressEnter,
     onKeyPress,
     style,
-    value: valueProp,
+    value,
     defaultValue,
     inputRef: propsInputRef,
     ...rest
   } = props;
-
-  const [value, setValue] = useControlledState(valueProp, Array.isArray(defaultValue) ? undefined : defaultValue);
 
   const prefixCls = usePrefixCls('input', customizePrefixCls);
   const inputClass = useMemo(
@@ -47,6 +45,13 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
       onKeyPress?.(e);
     },
     [onPressEnter, onKeyPress]
+  );
+
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange?.(e);
+    },
+    [onChange]
   );
 
   const prefixFcCls = useMemo(
@@ -81,7 +86,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
         {...rest}
         value={value ?? ''}
         disabled={disabled}
-        onChange={(event) => setValue(event.target.value)}
+        onChange={handleChange}
         onKeyPress={handleKeyPress}
         placeholder={placeholder}
         ref={propsInputRef}

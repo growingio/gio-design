@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import SearchBar from '../SearchBar';
@@ -136,3 +136,16 @@ DisableValue.args = {
   value: '数据可视化',
   disabled: true,
 };
+
+const ControlInputExample = (args: SearchBarProps) => {
+  const [value, setValue] = useState('');
+  const onChange = useCallback((e) => {
+    console.log('value', e.target.value);
+    setValue(e.target.value);
+  }, []);
+
+  return <SearchBar {...args} value={value} onChange={onChange} style={{ width: 300 }} />;
+};
+
+export const ControlInput = ControlInputExample.bind({});
+ControlInput.args = {};
