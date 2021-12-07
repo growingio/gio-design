@@ -22,6 +22,7 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
   closeIcon,
   maskClosable = false,
+  footer,
   ...restProps
 }: ModalProps) => {
   const prefix = usePrefixCls('modal', customPrefixCls);
@@ -43,7 +44,7 @@ const Modal: React.FC<ModalProps> = ({
 
     return (
       <div className={cls}>
-        {restProps.footer || (
+        {footer || (
           <div>
             <Button
               type="secondary"
