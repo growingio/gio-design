@@ -29,7 +29,7 @@ const Template: Story<TooltipProps> = (args) => (
     <div style={{ width: '610px', margin: '70px 120px' }}>
       <div className="tooltip-top">
         <span className="popover-wrapper">
-          <Tooltip {...args} placement="topLeft">
+          <Tooltip {...args} data-testid="tooltip" placement="topLeft">
             <span className="popover-span">TopLeft</span>
           </Tooltip>
         </span>

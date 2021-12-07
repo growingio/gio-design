@@ -27,6 +27,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
     size,
     className,
     style,
+    dataTestId = "dataPicker",
     ...restProps
   } = props;
 
@@ -68,6 +69,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
         className={className}
         style={style}
         onClick={() => setVisible(!visible)}
+        data-testid={dataTestId}
       />
     );
   }

@@ -11,6 +11,7 @@ export interface CollapseProps {
   prefixCls?: string;
   expandIcon?: (panelProps: PanelProps) => React.ReactNode;
   disabled?: boolean;
+  dataTestId?: string;
 }
 export interface PanelProps {
   isActive?: boolean;
