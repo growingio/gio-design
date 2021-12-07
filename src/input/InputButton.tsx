@@ -80,6 +80,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
 
   return (
     <Input
+      data-testid="input-button"
       {...rest}
       style={{ ...style, ...styles }}
       className={classNames(inputCls, wrapperCls)}

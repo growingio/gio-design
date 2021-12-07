@@ -89,6 +89,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) =
           onVisibleChange(changedVisible);
         }
       }}
+      data-testid="dropdown"
       {...rest}
     >
       {getDropdownTrigger()}

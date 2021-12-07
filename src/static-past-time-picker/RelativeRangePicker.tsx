@@ -6,7 +6,7 @@ import InnerRangePanel from './InnerRangePanel';
 import { RangePickerProps } from './interfaces';
 import { parseStartAndEndDate } from './utils';
 
-function RelativeRangePciker({ disabledDate, timeRange, onSelect, onCancel }: RangePickerProps) {
+function RelativeRangePciker({ disabledDate, timeRange, onSelect, onCancel, ...rest }: RangePickerProps) {
   const defaultDates = parseStartAndEndDate(timeRange ?? 'day:2,1');
   const [dates, setDates] = React.useState<[Date, Date]>(defaultDates as [Date, Date]);
   const [endDateHidden, setEndDateHidden] = React.useState<boolean>(isYesterday(dates[1]));
@@ -18,6 +18,7 @@ function RelativeRangePciker({ disabledDate, timeRange, onSelect, onCancel }: Ra
   };
   return (
     <InnerRangePanel
+      data-testid="relative-range-picker"
       disableOK={!isValid(dates[0]) || !isValid(dates[1])}
       header={<RelativeRangeHeader dateRange={dates} onRangeChange={setDates} onModeChange={setEndDateHidden} />}
       body={
@@ -30,6 +31,7 @@ function RelativeRangePciker({ disabledDate, timeRange, onSelect, onCancel }: Ra
       }
       onCancel={onCancel}
       onOK={handleOnOK}
+      {...rest}
     />
   );
 }

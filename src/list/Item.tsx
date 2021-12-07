@@ -10,12 +10,30 @@ export const InnerItem = WithRef<HTMLLIElement, ItemProps>((props, ref?) => {
   const { label, value, disabled, ...rest } = props;
   const { model } = useContext(ListContext);
   if (model === 'multiple') {
-    return <CheckboxItem ref={ref} label={label} value={value} disabled={disabled} {...rest} />;
+    return (
+      <CheckboxItem
+        ref={ref}
+        data-testid="list-item-checkbox"
+        label={label}
+        value={value}
+        disabled={disabled}
+        {...rest}
+      />
+    );
   }
   if (model === 'cascader') {
-    return <CalcaderItem ref={ref} label={label as string} value={value as string} disabled={disabled} {...rest} />;
+    return (
+      <CalcaderItem
+        ref={ref}
+        data-testid="list-item-cascader"
+        label={label as string}
+        value={value as string}
+        disabled={disabled}
+        {...rest}
+      />
+    );
   }
-  return <BaseItem ref={ref} label={label} value={value} disabled={disabled} {...rest} />;
+  return <BaseItem ref={ref} data-testid="list-item-base" label={label} value={value} disabled={disabled} {...rest} />;
 });
 const Item: React.ForwardRefExoticComponent<ItemProps & React.RefAttributes<HTMLLIElement>> & { isItem?: boolean } =
   InnerItem;

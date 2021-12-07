@@ -79,7 +79,14 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   return (
     <span className={inputClass} {...rest} style={style} ref={ref}>
       {prefix}
-      <input {...rest} disabled={disabled} onKeyPress={handleKeyPress} placeholder={placeholder} ref={propsInputRef} />
+      <input
+        data-testid="input"
+        {...rest}
+        disabled={disabled}
+        onKeyPress={handleKeyPress}
+        placeholder={placeholder}
+        ref={propsInputRef}
+      />
       {suffix}
     </span>
   );

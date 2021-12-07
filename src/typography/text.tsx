@@ -16,6 +16,7 @@ function Text({
   size: customizeSize,
   trimRight = true,
   style,
+  ...rest
 }: TextProps) {
   const prefixCls = usePrefixCls('text');
   const mergedSize = customizeSize;
@@ -29,6 +30,7 @@ function Text({
 
   return (
     <LinesEllipsis
+      data-testid="typography"
       className={cls}
       style={{ '--color': color, ...style }}
       maxLine={lines}
@@ -36,6 +38,7 @@ function Text({
       trimRight={trimRight}
       title={children}
       ellipsis="..."
+      {...rest}
     />
   );
 }

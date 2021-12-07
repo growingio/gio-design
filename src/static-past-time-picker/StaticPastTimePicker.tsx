@@ -18,6 +18,7 @@ function StaticPastTimePicker({
   onCancel,
   experimental = false,
   quickOptionsFilter,
+  ...rest
 }: StaticPastTimePickerProps) {
   const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange);
   const originMode = parseMode(timeRange) ?? 'quick';
@@ -113,7 +114,7 @@ function StaticPastTimePicker({
   }, [timeRange]);
 
   return (
-    <div className={prefixCls}>
+    <div data-testid="static-past-time-picker" className={prefixCls} {...rest}>
       <div className={`${prefixCls}__time-mode`}>
         <SelectList
           options={filter(PICKER_OPTIONS, (o) => o.value === 'quick' || modes.includes(o.value))}

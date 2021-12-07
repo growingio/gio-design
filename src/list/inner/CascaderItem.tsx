@@ -89,6 +89,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
   };
   const renderItem = (
     <BaseItem
+      data-testid="item-base"
       {...rest}
       ref={ref}
       label={label}

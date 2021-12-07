@@ -8,6 +8,7 @@ export interface SelectionProps extends ListProps {
   style?: React.CSSProperties;
   options?: SelectionItemProps[] | OptionProps[];
   children?: ((context: ListContextProps) => JSX.Element | React.ReactNode) | React.ReactNode;
+  // ['data-testid']?: string;
 }
 
 export interface SelectionItemProps extends OptionProps {

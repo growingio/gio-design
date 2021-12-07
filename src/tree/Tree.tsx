@@ -106,6 +106,7 @@ const Tree = React.forwardRef<RcTree, TreeProps>((props: TreeProps, ref) => {
 
   return (
     <RcTree
+      data-testid="tree"
       ref={ref}
       virtual={virtual}
       {...newProps}

@@ -60,6 +60,7 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
 
   return (
     <Input
+      data-testid="search-bar"
       {...props}
       type="text"
       placeholder={placeholder}

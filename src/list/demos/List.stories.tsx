@@ -47,6 +47,7 @@ const CascaderDemo = (props: any) => {
   return (
     <div className="demo-box">
       <List
+        data-testid="demo-box"
         model="cascader"
         value={cas}
         onChange={(val) => {
@@ -56,8 +57,8 @@ const CascaderDemo = (props: any) => {
       >
         <CascaderItem label="1" value="1" {...props}>
           <List>
-            <Item label="1-1" value="1-1" />
-            <Item label="1-2" value="1-2" />
+            <Item data-testid="demo-box" label="1-1" value="1-1" />
+            <Item data-testid="demo-box" label="1-2" value="1-2" />
           </List>
         </CascaderItem>
         <CascaderItem label="2" value="2" {...props}>

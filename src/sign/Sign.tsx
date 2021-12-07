@@ -19,6 +19,7 @@ const Sign: React.FC<ISignNumberProps> = ({
   magnitude = 100,
   children,
   offset,
+  ...rest
 }: ISignNumberProps) => {
   const prefix = usePrefixCls('sign', customPrefixCls);
   const noChildren = Children.count(children) === 0;
@@ -43,6 +44,7 @@ const Sign: React.FC<ISignNumberProps> = ({
         visible={visible}
         offset={offset}
         placement={placement}
+        {...rest}
       />
       {children}
     </span>

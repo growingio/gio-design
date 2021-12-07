@@ -32,6 +32,7 @@ const Popover = (props: PopoverProps) => {
     triggerStyle,
     getContainer,
     distoryOnHide = true,
+    ...rest
   } = props;
 
   const prefixCls = usePrefixCls('popover', customPrefixCls);
@@ -208,6 +209,7 @@ const Popover = (props: PopoverProps) => {
       style={{ ...(overlayStyle || {}), ...styles.popper }}
       onMouseEnter={onContentMouseEnter}
       onMouseLeave={onContentMouseLeave}
+      {...rest}
     >
       {allowArrow && <div className={`${prefixCls}__arrow`} ref={arrowElement} style={{ ...styles.arrow }} />}
       <div className={contentInnerCls} style={overlayInnerStyle}>

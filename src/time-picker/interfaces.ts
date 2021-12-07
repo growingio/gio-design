@@ -27,4 +27,5 @@ export interface TimePickerProps
    * @param timeString - `string` 类型的时间
    */
   onSelect?: (time: Date, timeString: string) => void;
+  ['data-testid']?: string;
 }

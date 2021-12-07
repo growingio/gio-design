@@ -121,6 +121,7 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
       suffix={suffix}
       options={mergedOptions}
       disabled={disabled}
+      data-testid="select"
       {...rest}
     />
   );

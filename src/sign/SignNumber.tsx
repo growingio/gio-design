@@ -59,6 +59,7 @@ const SignNumber: React.FC<ISignNumberProps> = ({
   magnitude,
   offset = [0, 0],
   placement = 'rightTop',
+  ...rest
 }: ISignNumberProps) => {
   const displayCount = count >= magnitude ? `${magnitude - 1}+` : count;
   const isZero = count === 0 || !count;
@@ -74,7 +75,7 @@ const SignNumber: React.FC<ISignNumberProps> = ({
   };
 
   return (
-    <span className={numberCls} style={numberStyle}>
+    <span data-testid="sign" className={numberCls} style={numberStyle} {...rest}>
       {displayCount}
     </span>
   );

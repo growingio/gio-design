@@ -16,7 +16,7 @@ interface RecentProps {
 
 const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
   const localeTextObject: typeof defaultLocaleTextObject = useLocale('ListPicker') || defaultLocaleTextObject;
-  const { max = 5, title = localeTextObject.recent } = props;
+  const { max = 5, title = localeTextObject.recent, ...rest } = props;
   const [mayBeArray, setMayBearray] = useState<Map<string | number, OptionProps> | undefined>(new Map());
   const selectionPrefixCls = `${usePrefixCls(PREFIX)}--selection`;
   const context = useContext(ListContext);
@@ -50,7 +50,15 @@ const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
     return (
       <div className={`${selectionPrefixCls}--item`}>
         {title && <div className={`${selectionPrefixCls}--title`}>{title}</div>}
-        <List title={title} id={ITEM_KEY} options={listOptions} value="" onChange={handleOnChange} />
+        <List
+          data-testid="list-recent"
+          title={title}
+          id={ITEM_KEY}
+          options={listOptions}
+          value=""
+          onChange={handleOnChange}
+          {...rest}
+        />
       </div>
     );
   }

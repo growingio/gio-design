@@ -38,7 +38,7 @@ const Template: Story<LinkProps> = (args) => (
         <td>Prefix </td>
         <td>文案右侧是否有icon</td>
         <td>
-          <Link prefix={<PlusOutlined />} {...args}>
+          <Link data-testid="growingio" prefix={<PlusOutlined />} {...args}>
             GrowingIO
           </Link>
           <Link {...args}>GrowingIO</Link>

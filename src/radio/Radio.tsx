@@ -48,6 +48,7 @@ const InnerRadio: React.ForwardRefRenderFunction<HTMLInputElement, IRadioProps> 
     <label className={wrapperCls} style={style}>
       <input
         type="radio"
+        data-testid="radio"
         ref={ref}
         className={classes}
         value={restProps.value}
