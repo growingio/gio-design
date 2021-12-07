@@ -91,7 +91,7 @@ export const Steps = WithRef<
 
     return (
       <StepsContext.Provider value={{ activeValue }}>
-        <div className={tabClasses} data-testid="tabs" ref={ref} {...restProps}>
+        <div className={tabClasses} data-testid="steps" ref={ref}  {...restProps}>
           <div data-testid="tablist" className={`${prefixCls}-tablist`}>
             {tabs}
           </div>
