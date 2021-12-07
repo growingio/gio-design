@@ -86,6 +86,7 @@ export const Single = (args: ListPickerProps) => {
       onClear={() => {
         setValue('');
       }}
+      recentId="test_2"
       allowClear
       placeholder="请选择"
     >

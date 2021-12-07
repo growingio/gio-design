@@ -75,6 +75,10 @@ export interface ListPickerProps extends Pick<ListProps, 'model'> {
    * custom trigger render
    */
   renderTrigger?: () => React.ReactElement;
+  /**
+   * recentId Recent取值
+   */
+  recentId?: string;
 }
 
 // export interface StaticListPickerProps extends Omit<ListProps, 'options'> {

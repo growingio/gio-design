@@ -50,10 +50,10 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     triggerSuffix,
     hidePrefix = false,
     maxWidth,
+    recentId: propsRecentId,
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
-
   const [value, setValue] = useState(controlledValue || defaultValue);
   const { options, setOptions, getOptionByValue, getLabelByValue, getOptionsByValue } = useCacheOptions();
 
@@ -78,11 +78,12 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
 
   const handleChange = (val?: string | string[], opts?: OptionProps | OptionProps[]) => {
     if (model !== 'multiple') {
-      const localStorageValue = localStorage?.getItem(ITEM_KEY);
+      const localKey = isNil(propsRecentId) ? ITEM_KEY : `${ITEM_KEY}_${propsRecentId}`;
+      const localStorageValue = localStorage?.getItem(localKey);
       const recentKey: string[] = (JSON.parse(isNil(localStorageValue) ? '[]' : localStorageValue) || []).filter(
         (v: string) => v !== val
       );
-      localStorage?.setItem(ITEM_KEY, JSON.stringify([val, ...recentKey].slice(0, 20)));
+      localStorage?.setItem(localKey, JSON.stringify([val, ...recentKey].slice(0, 50)));
       onChange?.(val, opts);
       handVisibleChange(false);
     } else {
@@ -152,6 +153,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
         getOptionByValue,
         getOptionsByValue,
         getLabelByValue,
+        recentId: propsRecentId,
       }}
     >
       <Popover
