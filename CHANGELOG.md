@@ -1,3 +1,22 @@
+## [22.4.1](https://github.com/growingio/gio-design/compare/v22.4.0...v22.4.1) (2021-12-07)
+
+
+### Bug Fixes
+
+* **dropdown:** transmit ref to popover wrapper ([#1630](https://github.com/growingio/gio-design/issues/1630)) ([1397868](https://github.com/growingio/gio-design/commit/1397868ddea9dc8b7633d7ec293caa2b537bee59))
+* **filterpicker:** modify width of selector in the FilterPicker ([#1616](https://github.com/growingio/gio-design/issues/1616)) ([e173d78](https://github.com/growingio/gio-design/commit/e173d78b6ddb1b502deb47519dff5c808ac9f8a9))
+* **input-button:** specificity of input-button ([#1629](https://github.com/growingio/gio-design/issues/1629)) ([14e74aa](https://github.com/growingio/gio-design/commit/14e74aa713f2608e5109a34c065d8bb7e0838a6e))
+* **Input:** input value by Chinese ([#1632](https://github.com/growingio/gio-design/issues/1632)) ([1b9cfc8](https://github.com/growingio/gio-design/commit/1b9cfc846bb2b9719caca4d23b07b648e4953020))
+* **legacy/list:** modify prefix-cls from `list` to `list-legacy` ([#1615](https://github.com/growingio/gio-design/issues/1615)) ([4d8de84](https://github.com/growingio/gio-design/commit/4d8de8428f7b32d7ec04daa16058d94000de9c6a))
+* **link:** fix style of Link ([#1619](https://github.com/growingio/gio-design/issues/1619)) ([af39027](https://github.com/growingio/gio-design/commit/af39027196982aaff92528158129df98492bb53c))
+* **PopConfirm:** control visible ([#1620](https://github.com/growingio/gio-design/issues/1620)) ([ad0c1f3](https://github.com/growingio/gio-design/commit/ad0c1f3cf69e33249d9257a724ea6074a426eb87))
+* **table:** fix legacy table of style ([#1634](https://github.com/growingio/gio-design/issues/1634)) ([5e6db5d](https://github.com/growingio/gio-design/commit/5e6db5d899d717636ff4518043772b78357efe3b))
+* **table:** fix table error ([#1623](https://github.com/growingio/gio-design/issues/1623)) ([860e1a3](https://github.com/growingio/gio-design/commit/860e1a3ed597577fd9b9130473ebb30c6d318b2a))
+* **table:** fix table pagination onPageSizeChange error ([#1614](https://github.com/growingio/gio-design/issues/1614)) ([d9a3b51](https://github.com/growingio/gio-design/commit/d9a3b5181b080490ecbf30bf8203fb4baa552505))
+* **text:** remove text tooltip ([#1621](https://github.com/growingio/gio-design/issues/1621)) ([4938202](https://github.com/growingio/gio-design/commit/4938202d398adbe36be95b190d84bc9113b5689d))
+
+
+
 # [22.4.0](https://github.com/growingio/gio-design/compare/v22.3.0...v22.4.0) (2021-12-03)
 
 
