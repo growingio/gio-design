@@ -6,7 +6,7 @@ import DropdownProps from './interface';
 import useControlledState from '../utils/hooks/useControlledState';
 import Popover from '../popover';
 
-export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.ForwardedRef<T>): React.ReactElement {
+export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   const {
     children,
     placement = 'bottomLeft',
@@ -30,8 +30,7 @@ export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.Forwa
         {
           'dropdown-active': controlledVisible,
         },
-        (child as React.ReactElement).props.className,
-        ref
+        (child as React.ReactElement).props.className
       ),
       onClick: (...arg: any) => {
         setControlledVisible(!controlledVisible);
@@ -63,7 +62,13 @@ export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.Forwa
       }
     };
     return (
-      <div role="button" tabIndex={0} onClick={isUndefined(visible) ? onClick : undefined} onKeyDown={onKeyDown}>
+      <div
+        role="button"
+        ref={ref}
+        tabIndex={0}
+        onClick={isUndefined(visible) ? onClick : undefined}
+        onKeyDown={onKeyDown}
+      >
         {contentNode}
       </div>
     );
@@ -89,12 +94,6 @@ export function Dropdown<T = HTMLElement>(props: DropdownProps, ref: React.Forwa
       {getDropdownTrigger()}
     </Popover>
   );
-}
+});
 
-// 支持 ForwardRef 传入泛型
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type ForwardRefFn = <T = HTMLElement>(
-  props: React.PropsWithChildren<DropdownProps> & React.RefAttributes<T>
-) => React.ReactElement;
-
-export default forwardRef(Dropdown) as ForwardRefFn;
+export default Dropdown;
