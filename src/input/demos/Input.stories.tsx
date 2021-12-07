@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { PlusOutlined, FilterOutlined, EventsPresetOutlined } from '@gio-design/icons';
@@ -337,3 +337,16 @@ InputButtonWidth.args = {
   prefix: <EventsPresetOutlined />,
 };
 InputButtonWidth.storyName = 'Input Button Width 100%';
+
+const ControlInputExample = (args: InputProps) => {
+  const [value, setValue] = useState('');
+  const onChange = useCallback((e) => {
+    console.log('value', e.target.value);
+    setValue(e.target.value);
+  }, []);
+
+  return <Input {...args} value={value} onChange={onChange} style={{ width: 300 }} />;
+};
+
+export const ControlInput = ControlInputExample.bind({});
+ControlInput.args = {};
