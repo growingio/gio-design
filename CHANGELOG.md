@@ -1,3 +1,28 @@
+# [22.4.0](https://github.com/growingio/gio-design/compare/v22.3.0...v22.4.0) (2021-12-03)
+
+
+### Bug Fixes
+
+* **cascader:** collapse Item render label error ([#1606](https://github.com/growingio/gio-design/issues/1606)) ([2f84d5e](https://github.com/growingio/gio-design/commit/2f84d5eee112448fb1391d436e95497c7046fa35))
+* **grid:** modify less variable ([#1611](https://github.com/growingio/gio-design/issues/1611)) ([d5f5618](https://github.com/growingio/gio-design/commit/d5f56183389624c1a744fca588ebe72b7d1da1a2))
+* **Link:** fix style ([#1604](https://github.com/growingio/gio-design/issues/1604)) ([1262739](https://github.com/growingio/gio-design/commit/126273926c7e9c783c595a05982b785db1c10581))
+* **list-picker:** clear error ([#1602](https://github.com/growingio/gio-design/issues/1602)) ([903517e](https://github.com/growingio/gio-design/commit/903517efdd63f7c3823325afb36f780c9d2432d7))
+* **list-picker:** fix list-picker empty error ([#1600](https://github.com/growingio/gio-design/issues/1600)) ([f37fbed](https://github.com/growingio/gio-design/commit/f37fbedc77a8130d7ee5c7831ec17408334192fb))
+* **list-picker:** fix list-picker storydemo ([#1598](https://github.com/growingio/gio-design/issues/1598)) ([84f8e08](https://github.com/growingio/gio-design/commit/84f8e08fdd19512d69ed2f017197a7478cab97c3))
+* **popover:** fix popover update visible error ([#1596](https://github.com/growingio/gio-design/issues/1596)) ([a40bddc](https://github.com/growingio/gio-design/commit/a40bddcd118626126bd891c84c7951759b0fe621))
+* **Popover:** update offset to make sure the popover panel in window ([#1608](https://github.com/growingio/gio-design/issues/1608)) ([5557aca](https://github.com/growingio/gio-design/commit/5557aca7f833976c47beb360a2c0cd0b9e04722e))
+* **popover:** visible error ([#1603](https://github.com/growingio/gio-design/issues/1603)) ([91fa0d2](https://github.com/growingio/gio-design/commit/91fa0d2739628c930d5f60c006c3fc79fc69ec56))
+* **propertyselector:** fix bug ([#1607](https://github.com/growingio/gio-design/issues/1607)) ([d477af8](https://github.com/growingio/gio-design/commit/d477af8d91314f7562dea052a03431f14010670b))
+* **tabs:** 解决按shift键，有蓝框 ([#1609](https://github.com/growingio/gio-design/issues/1609)) ([68ba6a9](https://github.com/growingio/gio-design/commit/68ba6a9943c787fb6546a3cbd447ac77f6553fd1))
+
+
+### Features
+
+* **form, basepicker, propertyselector, listpicker, panel:** i18n ([#1601](https://github.com/growingio/gio-design/issues/1601)) ([50158a0](https://github.com/growingio/gio-design/commit/50158a0b726a50452c3b8a53599eb3587fb1fc5b))
+* **select:** select、 cascader、list-picker、value新增number类型 ([#1605](https://github.com/growingio/gio-design/issues/1605)) ([47139ee](https://github.com/growingio/gio-design/commit/47139ee160645aee7e8807f4b8d15b25438f54e9))
+
+
+
 # [22.3.0](https://github.com/growingio/gio-design/compare/v22.2.1...v22.3.0) (2021-12-02)
 
 
@@ -106,10 +131,11 @@
 * **list-picker:** disabledTooltip position errot ([#1500](https://github.com/growingio/gio-design/issues/1500)) ([1149827](https://github.com/growingio/gio-design/commit/114982767a995d06e5c29992af75a7f44c51ad8c))
 * **popover:** async render ([#1495](https://github.com/growingio/gio-design/issues/1495)) ([2d06edc](https://github.com/growingio/gio-design/commit/2d06edc6b8dc5c582fec26f183cee98f9ae131c7))
 * **popper:** fix popper position error ([#1501](https://github.com/growingio/gio-design/issues/1501)) ([6308e5b](https://github.com/growingio/gio-design/commit/6308e5b2f7fba7e306f0c720d8422a1894ee6ed4))
+* **storybook:** fix storybook and bugs ([#1502](https://github.com/growingio/gio-design/issues/1502)) ([104a427](https://github.com/growingio/gio-design/commit/104a427c583f3914604bdeeb3f0b0425f1886246))
 
 
 
-## [22.0.1](https://github.com/growingio/gio-design/compare/22.0.0...22.0.1) (2021-11-19)
+## [22.0.1](https://github.com/growingio/gio-design/compare/22.0.0...v22.0.1) (2021-11-19)
 
 
 ### Bug Fixes
@@ -136,7 +162,7 @@
 
 
 
-# [22.0.0](https://github.com/growingio/gio-design/compare/v21.9.4...v22.0.0) (2021-11-17)
+# [22.0.0](https://github.com/growingio/gio-design/compare/v21.9.4...22.0.0) (2021-11-17)
 
 
 ### Bug Fixes
