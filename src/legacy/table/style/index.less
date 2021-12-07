@@ -125,24 +125,6 @@
     }
   }
 
-  &-thead,
-  &-tbody {
-    tr {
-      th,
-      td {
-        &:first-child {
-          position: sticky;
-          left: 0;
-          z-index: 1;
-          padding-left: 20px;
-        }
-        &:last-child {
-          padding-right: 20px;
-        }
-      }
-    }
-  }
-
   &-tbody > &-row-selected > &-cell {
     background-color: #edf2fc;
     transition: background-color 0.3s ease-in-out;
