@@ -12,6 +12,7 @@ export default {
   string: '字符串类型',
   int: '数值类型',
   date: '日期类型',
+  double: '数值类型',
   '=': '等于',
   '!=': '不等于',
   in: (text: Key) => `在 ${text} 范围内`,

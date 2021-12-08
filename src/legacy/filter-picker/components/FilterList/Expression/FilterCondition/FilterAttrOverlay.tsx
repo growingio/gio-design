@@ -42,9 +42,9 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
 
   const titleMap: titleGroup = {
     string: t.string,
-    STRING: t.string,
     int: t.int,
     date: t.date,
+    double: t.double,
   };
 
   useEffect(() => {
@@ -141,7 +141,6 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
           />
         );
       case AttributeMap.string:
-      case AttributeMap.STRING:
         return (
           // 字符串类型
           <StringAttrSelect
@@ -155,7 +154,12 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
         );
       default:
         return (
-          <NumberAttrSelect attrSelect={selectValue} attrChange={setAttrValue} values={attrValue} type={numType} />
+          <NumberAttrSelect
+            attrSelect={selectValue}
+            attrChange={setAttrValue}
+            values={attrValue}
+            type={numType || 'decimal'}
+          />
         );
     }
   };

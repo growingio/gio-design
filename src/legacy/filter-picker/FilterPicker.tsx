@@ -2,11 +2,12 @@ import React, { useMemo, useState } from 'react';
 import { FilterOutlined } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
 import FilterOverlay from './components/FilterOverlay/index';
-import { FilterPickerProps, FilterValueType, operationsOptionType } from './interfaces';
+import { FilterPickerProps, FilterValueType } from './interfaces';
 import Button from '../../button'; // new
 import Dropdown from '../dropdown';
 import defaultLocaleTextObject from './locales/zh-CN';
 import './style';
+import { defaultOperationsOption } from './components/FilterList/Expression/FilterCondition';
 
 export type TextObject = typeof defaultLocaleTextObject & { code: 'zh-CN' | 'en-US' };
 
@@ -15,13 +16,6 @@ export const FilterPickerContext = React.createContext<
     textObject: TextObject;
   }
 >({ textObject: { ...defaultLocaleTextObject, code: 'zh-CN' } });
-
-const defaultOperationsOption: operationsOptionType = {
-  string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
-  int: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
-  date: ['=', '!=', '>', '<', 'relativeBetween', 'relativeCurrent', 'between', 'not between', 'hasValue', 'noValue'],
-  STRING: ['=', '!=', 'in', 'not in', 'like', 'not like'],
-};
 
 const FilterPicker = (props: FilterPickerProps) => {
   const {

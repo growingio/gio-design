@@ -33,7 +33,9 @@ function Expression(props: ExpressionProps) {
     exprs,
     recentlyStorePrefix,
   } = props;
-  const [valueType, setValueType] = useState<attributeValue>(filterItem?.valueType || 'string');
+  const [valueType, setValueType] = useState<attributeValue>(
+    (filterItem?.valueType?.toLowerCase() as attributeValue) || 'string'
+  );
   const [values, setValues] = useState<string[]>(filterItem?.values);
   const [exprKey, setExprKey] = useState<string>(filterItem?.key || '');
   const [exprName, setExprName] = useState<string>(filterItem?.name || '');
@@ -95,7 +97,10 @@ function Expression(props: ExpressionProps) {
           className="express-propertySelect"
           placeholder={textObject.selectProperty}
           value={propertyValue}
-          dataSource={propertyOptions}
+          dataSource={propertyOptions.map((propertyOption: any) => ({
+            ...propertyOption,
+            ...{ valueType: propertyOption.valueType?.toLowerCase() },
+          }))}
           disabledValues={exprs.map((expr: any) => expr.key)}
           onChange={changePropertyPicker}
           recentlyStorePrefix={recentlyStorePrefix}

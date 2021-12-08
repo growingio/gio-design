@@ -11,6 +11,7 @@ export default {
   pleaseEnter: 'Please enter',
   string: 'String',
   int: 'Numerical Type',
+  double: 'Numerical Type',
   date: 'Date',
   '=': 'equal',
   '!=': 'not equal to',

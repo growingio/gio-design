@@ -15,14 +15,6 @@ const parseStringValuesToText = (operation: string, value: string[], t: TextObje
    *   hasValue: '有值',
    *   noValue: '无值',
    * }
-   * STRING: {
-   *   '=': '等于',
-   *   '!=': '不等于',
-   *   in: '在,范围内',
-   *   'not in': '不在,范围内',
-   *   like: '包含',
-   *   'not like': '不包含',
-   * }
    */
   switch (operation) {
     // 判断当op ： ”=“ 时，是否为无值状态，如果无值，返回’有值’
@@ -58,7 +50,7 @@ const parseStringValuesToText = (operation: string, value: string[], t: TextObje
 
 const parseIntValuesToText = (operation: string, value: string[], t: TextObject) => {
   /**
-   * int: {
+   * int / double: {
    *   '=': '等于',
    *   '!=': '不等于',
    *   '>': '大于',
@@ -226,11 +218,11 @@ export default function parseValuesToText(
   t: TextObject
 ): string {
   if (value.length && !!value?.[0]) {
-    if (type === 'string' || type === 'STRING') {
+    if (type === 'string') {
       // 字符串类型
       return parseStringValuesToText(operation, value, t);
     }
-    if (type === 'int') {
+    if (type === 'int' || type === 'double') {
       return parseIntValuesToText(operation, value, t);
     }
     if (type === 'date') {
