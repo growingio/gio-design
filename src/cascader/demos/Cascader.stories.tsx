@@ -7,7 +7,6 @@ import Cascader from '../Cascader';
 import '../style';
 import './style.less';
 import CascaderItem from '../../list/inner/CascaderItem';
-import { List } from '../../list';
 import Docs from './CascaderPage';
 
 export default {
@@ -100,7 +99,7 @@ export function Demo(props: CascaderProps) {
           />
         </td>
       </tr>
-      <tr>
+      {/* <tr>
         <td>jsx</td>
         <td>
           <Cascader
@@ -124,7 +123,7 @@ export function Demo(props: CascaderProps) {
             </CascaderItem>
           </Cascader>
         </td>
-      </tr>
+      </tr> */}
       <tr>
         <td>hide prefix suffix</td>
         <td>

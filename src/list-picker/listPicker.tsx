@@ -16,7 +16,7 @@ import defaultLocaleTextObject from './locales/zh-CN';
 
 const DEFAULT_DATA_TESTID = 'list-picker';
 
-const ListPicker: React.FC<ListPickerProps> = (props) => {
+export const ListPicker: React.FC<ListPickerProps> = (props) => {
   const localeTextObject: typeof defaultLocaleTextObject = useLocale('ListPicker') || defaultLocaleTextObject;
   const {
     size,

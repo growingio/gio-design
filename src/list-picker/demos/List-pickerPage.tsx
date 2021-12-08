@@ -15,11 +15,14 @@ export default function ListPage() {
         <li>APi变动：children是popover弹出的内容，无冗余api</li>
       </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
+      <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-listpicker--demo" />
+      </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
         <Story id="upgraded-listpicker--default" />
       </Canvas>
-
       <ArgsTable of={ListPicker} />
     </>
   );
