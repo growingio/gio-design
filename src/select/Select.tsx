@@ -42,7 +42,7 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
     title,
     onClear,
     renderTrigger: propsRenderTrigger,
-    autoWidth = true,
+    autoWidth = false,
     // list props
     ...rest
   } = props;
