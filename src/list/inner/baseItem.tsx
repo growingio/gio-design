@@ -82,7 +82,12 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       <>{content}</>
     );
     const renderElement = (
-      <Tooltip disabled={!mergedDisabled || isEmpty(disabledTooltip)} strategy="fixed" title={disabledTooltip}>
+      <Tooltip
+        disabled={!mergedDisabled || isEmpty(disabledTooltip)}
+        strategy="fixed"
+        title={disabledTooltip}
+        getContainer={() => document.body}
+      >
         <li
           style={style}
           className={classNames(
