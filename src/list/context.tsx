@@ -13,8 +13,10 @@ export interface ListContextProps {
   onChange?: (value?: MaybeArray<string | number>, options?: OptionProps | OptionProps[]) => void;
   onClick?: (value?: string | number) => void;
   options?: Map<string | number, OptionProps>;
+  recentId?: string;
   prefix?: (option?: OptionProps) => string | React.ReactNode;
   suffix?: (option?: OptionProps) => string | React.ReactNode;
+  setRecentId?: (value?: string) => void;
   setOptions?: (options?: OptionProps[]) => void;
   getOptionByValue?: (optValue?: string | number) => OptionProps | undefined;
   getOptionsByValue?: (optValue?: MaybeArray<string | number>) => OptionProps | OptionProps[] | undefined;
@@ -26,6 +28,7 @@ const defaultList: ListContextProps = {
   disabled: false,
   selectParent: undefined,
   isSelection: false,
+  recentId: undefined,
   onChange: noop,
   onClick: noop,
   setOptions: noop,

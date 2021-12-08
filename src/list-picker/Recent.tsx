@@ -1,5 +1,5 @@
 import { useLocale } from '@gio-design/utils';
-import { slice } from 'lodash';
+import { isNil, slice } from 'lodash';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { List, OptionProps } from '../list';
 import { PREFIX } from '../list/constants';
@@ -21,7 +21,8 @@ const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
   const selectionPrefixCls = `${usePrefixCls(PREFIX)}--selection`;
   const context = useContext(ListContext);
   const { options, model } = context;
-  const localStorageValue = window?.localStorage?.getItem(ITEM_KEY) || '[]';
+  const localKey = isNil(context?.recentId) ? ITEM_KEY : `${ITEM_KEY}_${context?.recentId}`;
+  const localStorageValue = window?.localStorage?.getItem(localKey) || '[]';
   const matchValue = JSON.parse(localStorageValue); // localStorage.getItem('__GIO_SELECTION_KEY')
   useEffect(() => {
     setTimeout(() => {
