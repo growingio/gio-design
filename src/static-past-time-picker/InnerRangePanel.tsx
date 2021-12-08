@@ -5,7 +5,7 @@ import Button from '../button';
 import defaultLocale from './locales/zh-CN';
 import { InnerRangePanelProps } from './interfaces';
 
-function InnerRangePanel({ disableOK, header, body, onOK, onCancel }: InnerRangePanelProps) {
+function InnerRangePanel({ disableOK, header, body, onOK, onCancel, ...rest }: InnerRangePanelProps) {
   const prefixCls = usePrefixCls('range-panel');
   const cls = classnames(prefixCls);
 
@@ -17,7 +17,7 @@ function InnerRangePanel({ disableOK, header, body, onOK, onCancel }: InnerRange
   };
 
   return (
-    <div className={cls}>
+    <div data-testid="inner-range-panel" className={cls} {...rest}>
       <div className={`${prefixCls}__header`}>{header}</div>
       <div className={`${prefixCls}__divider`} />
       <div className={`${prefixCls}__body`}>{body}</div>

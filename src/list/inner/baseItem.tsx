@@ -26,6 +26,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       onClick,
       contentRender = defaultContentRender,
       wrapper = defaultContentRender,
+      ...rest
     } = props;
     const prefixCls = `${usePrefixCls(PREFIX)}--item`;
     const {
@@ -89,6 +90,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
         getContainer={() => document.body}
       >
         <li
+          data-testid="item-base"
           style={style}
           className={classNames(
             className,
@@ -103,6 +105,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
           aria-hidden="true"
           ref={ref}
           onClick={handleOnClick}
+          {...rest}
         >
           {contentRender?.(contentElement)}
         </li>

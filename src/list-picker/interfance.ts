@@ -79,6 +79,7 @@ export interface ListPickerProps extends Pick<ListProps, 'model'> {
    * recentId Recent取值
    */
   recentId?: string;
+  ['data-testid']?: string;
 }
 
 // export interface StaticListPickerProps extends Omit<ListProps, 'options'> {

@@ -12,6 +12,7 @@ function DatePicker({ viewDate, ...restProps }: StaticDatePickerProps) {
   const locale = useLocale<Locale>('DatePicker') || defaultLocale;
   return (
     <PickerPanel<Date>
+      data-testid="static-date-picker"
       {...restProps}
       pickerValue={viewDate}
       locale={locale}

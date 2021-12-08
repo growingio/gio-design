@@ -378,7 +378,7 @@ const Upload: React.FC<IUploadProps> = ({
       <UploadPrefixClsContext.Provider value={prefixCls}>
         <div className={rootCls} style={style}>
           {showBeyondAlert()}
-          <RcUpload {...rcUploadProps} ref={rcUploadRef}>
+          <RcUpload data-testid="upload" {...rcUploadProps} ref={rcUploadRef}>
             <Trigger {...triggerComponentProps}>{children}</Trigger>
           </RcUpload>
           {renderUploadList()}
@@ -390,7 +390,7 @@ const Upload: React.FC<IUploadProps> = ({
   return (
     <UploadPrefixClsContext.Provider value={prefixCls}>
       <div className={rootCls} style={style}>
-        <RcUpload {...rcUploadProps} ref={rcUploadRef}>
+        <RcUpload data-testid="upload" {...rcUploadProps} ref={rcUploadRef}>
           <Trigger {...triggerComponentProps}>{children}</Trigger>
         </RcUpload>
       </div>

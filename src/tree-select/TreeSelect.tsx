@@ -100,6 +100,7 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
       'switcherIcon',
       'size',
       'bordered',
+      'data-testid',
     ]);
 
     return (
@@ -118,6 +119,7 @@ class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
 
           return (
             <RcTreeSelect
+              data-testid="tree-select"
               virtual={virtual}
               dropdownMatchSelectWidth={dropdownMatchSelectWidth}
               {...selectProps}

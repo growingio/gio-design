@@ -30,7 +30,15 @@ const Password = React.forwardRef<HTMLInputElement, PasswordProps>((props, ref) 
       ),
     [passwordSuffixIconCls, toggleVisible, visible]
   );
-  return <Input {...props} type={visible ? 'text' : 'password'} suffix={passwordSuffix} ref={ref} />;
+  return (
+    <Input
+      data-testid="input-password"
+      {...props}
+      type={visible ? 'text' : 'password'}
+      suffix={passwordSuffix}
+      ref={ref}
+    />
+  );
 });
 
 export default Password;

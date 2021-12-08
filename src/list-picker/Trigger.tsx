@@ -41,6 +41,7 @@ const Trigger: React.ForwardRefRenderFunction<HTMLInputElement, TriggerProps> = 
   return (
     <Input.Button
       ref={ref}
+      data-testid="list-picker-trigger"
       prefix={prefix}
       suffix={suffix}
       placeholder={placeholder}

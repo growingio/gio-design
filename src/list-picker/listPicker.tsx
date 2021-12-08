@@ -14,6 +14,8 @@ import useCacheOptions from '../list/hooks/useCacheOptions';
 import { ITEM_KEY } from './Recent';
 import defaultLocaleTextObject from './locales/zh-CN';
 
+const DEFAULT_DATA_TESTID = 'list-picker';
+
 const ListPicker: React.FC<ListPickerProps> = (props) => {
   const localeTextObject: typeof defaultLocaleTextObject = useLocale('ListPicker') || defaultLocaleTextObject;
   const {
@@ -51,6 +53,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
     hidePrefix = false,
     maxWidth,
     recentId: propsRecentId,
+    ...rest
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
@@ -124,6 +127,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
         onClick={triggerClick}
         title={title}
         hidePrefix={hidePrefix}
+        data-testid={isNil(rest['data-testid']) ? `${DEFAULT_DATA_TESTID}-trigger` : `${rest['data-testid']}-trigger`}
       >
         {children}
       </Trigger>
@@ -131,7 +135,11 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
   };
   // render
   const renderOverlay = () => (
-    <div className={classNames(defaultPrefix, contentClassName)} style={contentStyle}>
+    <div
+      data-testid={isNil(rest['data-testid']) ? `${DEFAULT_DATA_TESTID}-overlay` : `${rest['data-testid']}-overlay`}
+      className={classNames(defaultPrefix, contentClassName)}
+      style={contentStyle}
+    >
       {/* {model === 'multiple' && selectAll && renderSelectAll()} */}
       {children}
       {model === 'multiple' && needConfim && (
@@ -167,6 +175,7 @@ const ListPicker: React.FC<ListPickerProps> = (props) => {
         placement={placement}
         overlayStyle={overlayStyle}
         strategy="fixed"
+        {...rest}
       >
         {renderTrigger()}
       </Popover>

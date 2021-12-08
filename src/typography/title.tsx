@@ -22,7 +22,7 @@ const Title: React.FC<TitleProps> = ({ className, level = 1, ...restProps }: Tit
   }
 
   const Component = componentName as keyof JSX.IntrinsicElements;
-  return <Component className={cls} {...restProps} />;
+  return <Component data-testid="typography" className={cls} {...restProps} />;
 };
 
 export default Title;

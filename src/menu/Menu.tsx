@@ -38,6 +38,7 @@ const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
         <div className={`${prefixCls}-title`}>{title}</div>
       )}
       <RcMenu
+        data-testid="menu"
         {...restProps}
         mode={realMode}
         selectedKeys={[selectedKey]}

@@ -41,7 +41,15 @@ const CheckboxItem: React.ForwardRefRenderFunction<
     </>
   );
   return (
-    <Item ref={ref} disabled={mergedDisabled} onClick={onClick} value={value} contentRender={contentRender} {...rest}>
+    <Item
+      data-testid="list-item"
+      ref={ref}
+      disabled={mergedDisabled}
+      onClick={onClick}
+      value={value}
+      contentRender={contentRender}
+      {...rest}
+    >
       {children}
     </Item>
   );

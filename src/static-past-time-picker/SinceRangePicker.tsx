@@ -18,7 +18,7 @@ import { DATE_FORMAT } from './constant';
 import { parseStartAndEndDate } from './utils';
 import defaultLocale from './locales/zh-CN';
 
-function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experimental }: RangePickerProps) {
+function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experimental, ...rest }: RangePickerProps) {
   const endDateKeys = ['today', experimental ? 'yesterday' : undefined];
   const dates = parseStartAndEndDate(timeRange);
   const prefixCls = usePrefixCls('range-panel__header');
@@ -68,6 +68,7 @@ function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experim
       body={<DatePicker disabledDate={handleDisabledDate} value={startDate} onSelect={setStartDate} />}
       onCancel={onCancel}
       onOK={handleOnOK}
+      {...rest}
     />
   );
 }

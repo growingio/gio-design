@@ -13,7 +13,7 @@ const MenuItem = (props: IMenuItemProps) => {
 
   return (
     <Tooltip title={children} disabled={!inlineCollapsed || inSubMenu} placement="right">
-      <RcMenuItem {...restProps} inlineIndent={inlineIndent}>
+      <RcMenuItem data-testid="menu-item" {...restProps} inlineIndent={inlineIndent}>
         <MenuTitle title={children} icon={icon} />
       </RcMenuItem>
     </Tooltip>

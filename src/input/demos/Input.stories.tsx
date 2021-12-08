@@ -51,7 +51,7 @@ const Template: Story<InputProps> = (args) => (
       <tr>
         <td>Text</td>
         <td>
-          <Input placeholder="请输入..." {...args} />
+          <Input data-testid="placeholder-input" placeholder="请输入..." {...args} />
         </td>
         <td>
           <Input placeholder="请输入..." {...args} />
@@ -66,7 +66,13 @@ const Template: Story<InputProps> = (args) => (
       <tr>
         <td>Number</td>
         <td>
-          <InputNumber placeholder="请输入数字..." {...args} defaultValue={12} value={15} />
+          <InputNumber
+            data-testid="placeholder-input"
+            placeholder="请输入数字..."
+            {...args}
+            defaultValue={12}
+            value={15}
+          />
         </td>
         <td>
           <InputNumber placeholder="请输入数字..." {...args} />
@@ -81,7 +87,7 @@ const Template: Story<InputProps> = (args) => (
       <tr>
         <td>Password</td>
         <td>
-          <Password placeholder="请输入密码..." {...args} />
+          <Password data-testid="placeholder-input" placeholder="请输入密码..." {...args} />
         </td>
         <td>
           <Password placeholder="请输入密码..." {...args} size="small" />
@@ -96,7 +102,7 @@ const Template: Story<InputProps> = (args) => (
       <tr>
         <td>TextArea</td>
         <td>
-          <TextArea placeholder="请输入..." {...(args as any)} />
+          <TextArea data-testid="placeholder-input" placeholder="请输入..." {...(args as any)} />
         </td>
         <td>
           <TextArea placeholder="请输入..." {...(args as any)} />

@@ -13,6 +13,7 @@ export function StaticTimePicker({ className, showSecond = false, renderFooter, 
 
   return (
     <PickerPanel<Date>
+      data-testid="static-time-picker"
       {...restProps}
       className={classnames({ [`${prefixCls}--three-columns`]: showSecond }, className)}
       hideHeader

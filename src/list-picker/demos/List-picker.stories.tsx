@@ -87,6 +87,7 @@ export const Single = (args: ListPickerProps) => {
         setValue('');
       }}
       recentId="test_2"
+      data-testid="123"
       allowClear
       placeholder="请选择"
     >

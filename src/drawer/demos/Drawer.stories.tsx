@@ -28,12 +28,13 @@ const Template: Story<DrawerProps> = (args) => {
       <Button onClick={() => setVisible(true)}>Open Drawer</Button>
       <Drawer
         {...args}
+        data-testid="drawer"
         visible={visible}
         onClose={() => {
           setVisible(false);
         }}
       >
-        宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开
+        <>宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开 宽度自动撑开</>
       </Drawer>
     </div>
   );

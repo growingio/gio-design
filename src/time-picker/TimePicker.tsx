@@ -4,6 +4,7 @@ import { StopWatchOutlined } from '@gio-design/icons';
 import { useLocale, useControlledState, usePrefixCls } from '@gio-design/utils';
 import { format } from 'date-fns';
 import { Locale } from 'rc-picker/lib/interface';
+import { isNil } from 'lodash';
 import Button from '../button';
 import Popover from '../popover';
 import { InputButton } from '../input';
@@ -11,6 +12,8 @@ import StaticTimePicker from '../static-time-picker/StaticTimePicker';
 import { TimePickerProps } from './interfaces';
 import { TIME_FORMAT, TIME_WITH_SECOND_FORMAT } from './constant';
 import defaultLocale from './locales/zh-CN';
+
+const DEFAULT_DATA_TESTID = 'time-picker';
 
 export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
   const {
@@ -79,6 +82,9 @@ export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) =>
       )}
       showSecond={showSecond}
       value={time}
+      data-testid={
+        isNil(restProps['data-testid']) ? `${DEFAULT_DATA_TESTID}-overlay` : `${restProps['data-testid']}-overlay`
+      }
     />
   );
 
@@ -88,6 +94,9 @@ export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) =>
     }
     return (
       <InputButton
+        data-testid={
+          isNil(restProps['data-testid']) ? `${DEFAULT_DATA_TESTID}-trigger` : `${restProps['data-testid']}-trigger`
+        }
         prefix={prefix || <StopWatchOutlined />}
         disabled={disabled}
         allowClear={allowClear}
@@ -103,6 +112,7 @@ export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) =>
 
   return (
     <Popover
+      data-testid={DEFAULT_DATA_TESTID}
       content={overlay}
       trigger={['click', 'focus']}
       visible={visible}

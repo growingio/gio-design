@@ -20,6 +20,7 @@ function StaticDateRangePicker({
   style,
   value,
   locale,
+  ...rest
 }: StaticDateRangePickerProps) {
   const [viewDates, setViewDates] = React.useState<[Date, Date]>(defaultViewDates ?? getDefaultViewDates());
   const [hoveredDates, setHoveredDates] = React.useState<RangeValue<Date>>();
@@ -41,6 +42,7 @@ function StaticDateRangePicker({
       >
         <StaticDatePicker
           className={`${prefixCls}__${position}`}
+          data-testid="static-date-picker"
           disabledDate={(currentDate: Date) => {
             const isBeforeStartDate =
               selectedValue && selectedValue[0] && !selectedValue[1] ? isBefore(currentDate, selectedValue[0]) : false;
@@ -59,6 +61,7 @@ function StaticDateRangePicker({
           value={selectedValue ? selectedValue[index] : undefined}
           viewDate={viewDates[index]}
           locale={locale}
+          {...rest}
         />
       </RangeContext.Provider>
     );

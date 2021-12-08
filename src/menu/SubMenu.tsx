@@ -18,6 +18,7 @@ export const SubMenu = (props: ISubMenuProps) => {
   return (
     <SubMenuContext.Provider value={{ inSubMenu: true, inIconSubMenu: !!icon }}>
       <RcSubMenu
+        data-testid="menu-submenu"
         title={renderTitle()}
         expandIcon={
           isUndefined(expandIcon) ? (

@@ -5,7 +5,7 @@ import { QuickPickerProps } from './interfaces';
 import { experimentalQuickOptions } from './constant';
 import defaultLocaleText from './locales/zh-CN';
 
-function QuickPicker({ options, optionsFilter, onSelect, timeRange, experimental }: QuickPickerProps) {
+function QuickPicker({ options, optionsFilter, onSelect, timeRange, experimental, ...rest }: QuickPickerProps) {
   const [currentValue, setCurrentValue] = useState(timeRange, '');
   const prefixCls = usePrefixCls('quick-picker');
   const localeText: typeof defaultLocaleText = useLocale('StaticPastTimePicker') || defaultLocaleText;
@@ -30,7 +30,7 @@ function QuickPicker({ options, optionsFilter, onSelect, timeRange, experimental
   };
 
   return (
-    <div className={prefixCls}>
+    <div data-testid="quick-picker" className={prefixCls} {...rest}>
       <SelectList value={currentValue} options={filter(left as any)} onChange={handleOnSelect} />
       <SelectList value={currentValue} options={filter(right as any)} onChange={handleOnSelect} />
     </div>

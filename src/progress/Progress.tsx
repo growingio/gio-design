@@ -22,11 +22,12 @@ const Progress: React.FC<ProgressProps> = ({
   style,
   showInfo = true,
   size = 'default',
+  ...rest
 }: ProgressProps) => {
   const prefixCls = usePrefixCls('progress', customizePrefixCls);
 
   return (
-    <div className={prefixCls} style={style}>
+    <div data-testid="progress" className={prefixCls} style={style} {...rest}>
       <div className={classNames(`${prefixCls}-trail`, `${prefixCls}-${size}`, className)}>
         <div
           className={classNames(`${prefixCls}-stroke`, `${prefixCls}-${status}`, {

@@ -25,7 +25,17 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
     };
   }, [style, disabled]);
 
-  return <textarea {...rest} disabled={disabled} className={textAreaClass} rows={rows} style={styles} ref={ref} />;
+  return (
+    <textarea
+      data-testid="input-textarea"
+      {...rest}
+      disabled={disabled}
+      className={textAreaClass}
+      rows={rows}
+      style={styles}
+      ref={ref}
+    />
+  );
 });
 
 export default TextArea;

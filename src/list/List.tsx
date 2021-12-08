@@ -32,6 +32,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     onChange: controlledOnChange,
     renderItem,
     onClick,
+    ...listRestProps
   } = props;
 
   const localeTextObject: typeof defaultLocaleTextObject = useLocale('List') || defaultLocaleTextObject;
@@ -130,6 +131,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     if (needCollapse) {
       return (
         <Item
+          data-testid="list-item-collapse"
           disabled={mergedDisabled}
           key={`${prefixCls}-collapse`}
           value={`${prefixCls}-collapse`}
@@ -164,10 +166,12 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
         className={classNames(`${prefixCls}`, className, {
           [`${usePrefixCls('cascader')}`]: mergedModel === 'cascader',
         })}
+        data-testid="list"
         style={style}
         ref={ref}
         id={id}
         title={title}
+        {...listRestProps}
       >
         {isSelection ? renderContent : <Empty>{renderContent}</Empty>}
       </div>

@@ -127,7 +127,7 @@ export const Demo = () => {
     </>
   );
 };
-const Template: Story<DropdownProps> = (args) => <Dropdown {...args} />;
+const Template: Story<DropdownProps> = (args) => <Dropdown {...args} data-testid="template-dropdown" />;
 export const Default = Template.bind({});
 Default.args = {
   content: (
