@@ -1,11 +1,13 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import { useLocale } from '@gio-design/utils';
 import parseValuesToText from './utils';
 import FilterAttrOverlay from './FilterAttrOverlay';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from './interfaces';
 import Selector from '../../../../../selector-pro';
 import { operationsOptionType } from '../../../../interfaces';
 import Tooltip from '../../../../../../tooltip'; // new
-import { FilterPickerContext } from '../../../../FilterPicker';
+import { FilterPickerContext, TextObject } from '../../../../FilterPicker';
+import defaultLocaleTextObject from '../../../../locales/zh-CN';
 
 export const defaultOperationsOption: operationsOptionType = {
   string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
@@ -48,9 +50,9 @@ function FilterCondition(props: FilterConditionProps) {
     borderless = true,
     size = 'middle',
   } = props;
-  const { textObject } = useContext(FilterPickerContext);
+  const localeTextObject: TextObject = useLocale('FilterPicker');
+  const textObject = useMemo(() => ({ ...defaultLocaleTextObject, ...localeTextObject }), [localeTextObject]);
   const [visible, setVisible] = useState(false);
-  const { textObject: t } = useContext(FilterPickerContext);
   const conditionText = useMemo<string>(
     () => parseValuesToText(valueType, op, values, textObject),
     [valueType, op, values, textObject]
@@ -82,7 +84,7 @@ function FilterCondition(props: FilterConditionProps) {
     <span className="filter-condition_select">
       <Tooltip
         title={conditionText}
-        disabled={conditionText === t.selectFilter}
+        disabled={conditionText === textObject.selectFilter}
         getContainer={() => document.body}
         placement="topLeft"
       >
@@ -106,15 +108,17 @@ function FilterCondition(props: FilterConditionProps) {
   );
 
   return exprKey ? (
-    <Selector
-      valueRender={valueRender}
-      dropdownVisible={visible}
-      dropdownRender={dropdownRender}
-      onDropdownVisibleChange={visibleChange}
-      disabled={disabled}
-      borderless={borderless}
-      size={size}
-    />
+    <FilterPickerContext.Provider value={{ textObject }}>
+      <Selector
+        valueRender={valueRender}
+        dropdownVisible={visible}
+        dropdownRender={dropdownRender}
+        onDropdownVisibleChange={visibleChange}
+        disabled={disabled}
+        borderless={borderless}
+        size={size}
+      />
+    </FilterPickerContext.Provider>
   ) : null;
 }
 export default FilterCondition;
