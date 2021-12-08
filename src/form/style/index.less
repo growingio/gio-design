@@ -4,6 +4,7 @@
 @icon-prefix-cls: ~'@{component-prefix}-icon';
 @form-prefix-cls: ~'@{component-prefix}-form';
 @field-prefix-cls: ~'@{component-prefix}-field';
+@input-prefix-cls: ~'@{component-prefix}-input';
 
 // form tokens map
 @info-color: @blue-3;
@@ -49,6 +50,16 @@
   &&-has-help,
   &&-has-feedback {
     margin-bottom: 0;
+  }
+
+  &&-has-error {
+    .@{field-prefix-cls}-control {
+      &-input {
+        .@{input-prefix-cls} {
+          border-color: @error-color;
+        }
+      }
+    }
   }
 
   & &-label {
