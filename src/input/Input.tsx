@@ -12,11 +12,9 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     disabled,
     className,
     placeholder,
-    onChange,
     onPressEnter,
     onKeyPress,
     style,
-    value,
     inputRef: propsInputRef,
     ...rest
   } = props;
@@ -46,12 +44,12 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     [onPressEnter, onKeyPress]
   );
 
-  const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      onChange?.(e);
-    },
-    [onChange]
-  );
+  // const handleChange = useCallback(
+  //   (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     onChange?.(e);
+  //   },
+  //   [onChange]
+  // );
 
   const prefixFcCls = useMemo(
     () =>
@@ -81,15 +79,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   return (
     <span className={inputClass} {...rest} style={style} ref={ref}>
       {prefix}
-      <input
-        {...rest}
-        value={value ?? ''}
-        disabled={disabled}
-        onChange={handleChange}
-        onKeyPress={handleKeyPress}
-        placeholder={placeholder}
-        ref={propsInputRef}
-      />
+      <input {...rest} disabled={disabled} onKeyPress={handleKeyPress} placeholder={placeholder} ref={propsInputRef} />
       {suffix}
     </span>
   );
