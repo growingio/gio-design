@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import { InputProps } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
