@@ -17,7 +17,7 @@ export interface FilterPickerProps extends Pick<PropertyPickerProps, 'fetchDetai
   placement?: 'bottomLeft' | 'bottom' | 'bottomRight';
   disabled?: boolean;
 }
-export type attributeValue = 'string' | 'int' | 'date';
+export type attributeValue = 'string' | 'int' | 'date' | 'double';
 
 export type FilterValueType = {
   op: StringValue | NumberValue | DateValue;
@@ -51,13 +51,11 @@ export type opDateType =
   | 'hasValue'
   | 'noValue';
 
-type opSTRINGType = '=' | '!=' | 'in' | 'not in' | 'like' | 'not like';
-
 export interface titleGroup {
   string: string;
   int: string;
   date: string;
-  STRING: string;
+  double: string;
 }
 
 type selectItem = {
@@ -67,8 +65,8 @@ type selectItem = {
 
 export interface selectOption {
   string: selectItem[];
-  STRING: selectItem[];
   int: selectItem[];
+  double: selectItem[];
   date: selectItem[];
 }
 
@@ -76,5 +74,5 @@ export interface operationsOptionType {
   string: opStringType[];
   int: opNumberType[];
   date: opDateType[];
-  STRING: opSTRINGType[];
+  double: opNumberType[];
 }

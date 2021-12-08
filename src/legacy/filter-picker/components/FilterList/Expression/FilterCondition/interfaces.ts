@@ -7,7 +7,7 @@ export enum AttributeMap {
   string = 'string',
   int = 'int',
   date = 'date',
-  STRING = 'STRING',
+  double = 'double',
 }
 
 export type StringValue = '=' | '!=' | '<' | '>' | 'in' | 'not in' | 'like' | 'not like' | 'hasValue' | 'noValue';
@@ -24,7 +24,7 @@ export type DateValue =
   | 'relativeCurrent'
   | 'relativeBetween';
 
-export type attributeValue = 'string' | 'int' | 'date' | 'STRING';
+export type attributeValue = 'string' | 'int' | 'date' | 'double';
 
 export type FilterValueType = {
   op: StringValue | NumberValue | DateValue;
@@ -77,8 +77,7 @@ export const useSelectOptions = () => {
           label: t.noValue,
         },
       ],
-      // Tag类型
-      STRING: [
+      int: [
         {
           value: '=',
           label: t['='],
@@ -88,23 +87,39 @@ export const useSelectOptions = () => {
           label: t['!='],
         },
         {
-          value: 'in',
-          label: t.in('...'),
+          value: '>',
+          label: t['>'],
         },
         {
-          value: 'not in',
-          label: t.notIn('...'),
+          value: '>=',
+          label: t['>='],
         },
         {
-          value: 'like',
-          label: t.like,
+          value: '<',
+          label: t['<'],
         },
         {
-          value: 'not like',
-          label: t.notLike,
+          value: '<=',
+          label: t['<='],
+        },
+        {
+          value: 'between',
+          label: t.between(listFormat(['...', '...'], t.code)),
+        },
+        {
+          value: 'not between',
+          label: t.notBetween(listFormat(['...', '...'], t.code)),
+        },
+        {
+          value: 'hasValue',
+          label: t.hasValue,
+        },
+        {
+          value: 'noValue',
+          label: t.noValue,
         },
       ],
-      int: [
+      double: [
         {
           value: '=',
           label: t['='],

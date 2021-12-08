@@ -7,11 +7,11 @@ import { operationsOptionType } from '../../../../interfaces';
 import Tooltip from '../../../../../../tooltip'; // new
 import { FilterPickerContext } from '../../../../FilterPicker';
 
-const defaultOperationsOption: operationsOptionType = {
+export const defaultOperationsOption: operationsOptionType = {
   string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
   int: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
+  double: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
   date: ['=', '!=', '>', '<', 'relativeBetween', 'relativeCurrent', 'between', 'not between', 'hasValue', 'noValue'],
-  STRING: ['=', '!=', 'in', 'not in', 'like', 'not like'],
 };
 
 interface FilterConditionProps {

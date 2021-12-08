@@ -26,6 +26,7 @@ function FilterOverlay(props: FilterOverflyProps) {
     propertyOptions,
     recentlyStorePrefix,
   } = props;
+
   return (
     <div className="filter-condition_box">
       <div className="filter-condition_title">{textObject.selectFilter}</div>
