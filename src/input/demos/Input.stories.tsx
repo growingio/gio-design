@@ -155,12 +155,11 @@ Text.args = {
   onChange: () => action('action'),
 };
 
-const InputNumberTemplate = (args: InputProps) => <InputNumber {...args} value="请输入..." />;
+const InputNumberTemplate = (args: InputProps) => <InputNumber {...args} placeholder="请输入..." />;
 
 export const InputNumberDemo = InputNumberTemplate.bind({});
 InputNumberDemo.args = {
   style: { width: '200px' },
-  onChange: () => action('action'),
 };
 const PasswordTemplate = (args: InputProps) => (
   <div style={{ width: '200px' }}>
