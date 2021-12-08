@@ -1,7 +1,7 @@
 import React, { useMemo, forwardRef, createContext, useCallback, useRef } from 'react';
 import GioTable from '@gio-design/table';
 import classNames from 'classnames';
-import { cloneDeep, get, has, set, isFunction, isNil } from 'lodash';
+import { cloneDeep, get, has, set, isFunction, isNil, isEmpty } from 'lodash';
 import { ExpandableConfig } from '@gio-design/table/lib/interface';
 import { compose } from 'lodash/fp';
 import { RightOutlined, DownOutlined } from '@gio-design/icons';
@@ -223,6 +223,7 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
       <div
         className={classNames(`${prefixCls}-wrapper`, className, {
           [`${prefixCls}-showHover`]: showHover,
+          [`${prefixCls}-is-empty`]: isEmpty(paginationData),
         })}
         style={{ ...style, '--table-cell-padding': padding }}
         ref={mergedRef}

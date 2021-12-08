@@ -363,6 +363,15 @@
   }
 }
 
+.@{table-prefix-cls}-wrapper.@{table-prefix-cls}-is-empty .@{table-prefix-cls}-expanded-row-fixed {
+  &::after {
+    content: none;
+  }
+  &::before {
+    content: none;
+  }
+}
+
 .table-size(@size, @padding: 12px 16px) {
   .@{table-prefix-cls}.@{table-prefix-cls}-@{size} {
     .@{table-prefix-cls}-title,
