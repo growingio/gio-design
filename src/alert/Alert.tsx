@@ -21,6 +21,7 @@ export const Alert: React.FC<AlertProps> = ({
   icon,
   type = 'info',
   style,
+  ...restProps
 }: AlertProps) => {
   const prefixCls = usePrefixCls('alert');
   const [alertStatus, setAlertStatus] = useState(true);
@@ -46,7 +47,7 @@ export const Alert: React.FC<AlertProps> = ({
   };
 
   return alertStatus ? (
-    <div style={style} className={classnames(prefixCls, `${prefixCls}-${type}`)}>
+    <div style={style} className={classnames(prefixCls, `${prefixCls}-${type}`)} data-testid="alert" {...restProps}>
       {showIcon && <div className={classnames(`${prefixCls}-icon`)}>{getIcon()}</div>}
       <div className={classnames(showIcon ? null : `${prefixCls}-content-no-icon`, `${prefixCls}-content`)}>
         {message && <div className={classnames(`${prefixCls}-content-title`)}>{message}</div>}

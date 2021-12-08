@@ -12,7 +12,7 @@ interface CollapseInterface extends React.FC<CollapseProps> {
 }
 
 const Collapse: CollapseInterface = props => {
-  const { destoryOnHide, disabled, children } = props
+  const { destoryOnHide, disabled, children, dataTestId = "collapse" } = props
   const prefixCls = usePrefixCls('collapse');
   const renderExpandIcon = (panelProps: PanelProps = {}) => {
     const { expandIcon } = props;
@@ -32,12 +32,14 @@ const Collapse: CollapseInterface = props => {
     );
   };
   return (
-    <RcCollapse
-      {...props}
-      prefixCls={prefixCls} expandIcon={renderExpandIcon} destroyInactivePanel={destoryOnHide} collapsible={(disabled ? 'disabled' : undefined)}
-    >
-      {children}
-    </RcCollapse >
+    <div className="gio-collapse-contain" data-testid={dataTestId}>
+      <RcCollapse
+        {...props}
+        prefixCls={prefixCls} expandIcon={renderExpandIcon} destroyInactivePanel={destoryOnHide} collapsible={(disabled ? 'disabled' : undefined)}
+      >
+        {children}
+      </RcCollapse >
+    </div>
   )
 }
 Collapse.Panel = CollapsePanel

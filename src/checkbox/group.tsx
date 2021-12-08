@@ -100,7 +100,7 @@ const InternalCheckboxGroup: React.ForwardRefRenderFunction<HTMLDivElement, Chec
   };
 
   return (
-    <div ref={ref} className={cls}>
+    <div ref={ref} className={cls} data-testid="checkboxGroup" {...restProps}>
       <CheckboxGroupContext.Provider value={context}>{customChildren}</CheckboxGroupContext.Provider>
     </div>
   );

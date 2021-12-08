@@ -38,7 +38,7 @@ export const Default: Story<ArgsProps> = (args) => {
   };
   return (
     <div>
-      <Button style={{ marginRight: 10 }} onClick={handleSuccess}>
+      <Button data-testid="toast" style={{ marginRight: 10 }} onClick={handleSuccess}>
         成功
       </Button>
       <Button style={{ marginRight: 10 }} onClick={handleFail}>
