@@ -22,7 +22,6 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
   closeIcon,
   maskClosable = false,
-  footer,
   ...restProps
 }: ModalProps) => {
   const prefix = usePrefixCls('modal', customPrefixCls);
@@ -36,7 +35,7 @@ const Modal: React.FC<ModalProps> = ({
 
   const { closeText, okText } = useLocale<typeof defaultLocale>('Modal') || defaultLocale;
 
-  const renderFooter = () => {
+  const renderDefaultFooter = () => {
     const cls = classnames(`${prefix}__footer`);
     const closeBtnCls = classnames(`${prefix}__btn-close`, closeButtonProps?.className ?? '');
     const okBtnCls = classnames(`${prefix}__btn-ok`, okButtonProps?.className ?? '');
@@ -44,31 +43,29 @@ const Modal: React.FC<ModalProps> = ({
 
     return (
       <div className={cls}>
-        {footer || (
-          <div>
+        <div>
+          <Button
+            type="secondary"
+            {...closeButtonProps}
+            style={{ padding: '7px 13px' }}
+            className={closeBtnCls}
+            onClick={onClose}
+          >
+            {customizeCloseText ?? closeText ?? '取消'}
+          </Button>
+          {useOkBtn && (
             <Button
-              type="secondary"
-              {...closeButtonProps}
+              type="primary"
+              {...okButtonProps}
+              loading={confirmLoading}
+              className={okBtnCls}
               style={{ padding: '7px 13px' }}
-              className={closeBtnCls}
-              onClick={onClose}
+              onClick={onOk}
             >
-              {customizeCloseText ?? closeText ?? '取消'}
+              {customizeOKText ?? okText ?? '确定'}
             </Button>
-            {useOkBtn && (
-              <Button
-                type="primary"
-                {...okButtonProps}
-                loading={confirmLoading}
-                className={okBtnCls}
-                style={{ padding: '7px 13px' }}
-                onClick={onOk}
-              >
-                {customizeOKText ?? okText ?? '确定'}
-              </Button>
-            )}
-          </div>
-        )}
+          )}
+        </div>
       </div>
     );
   };
@@ -97,7 +94,7 @@ const Modal: React.FC<ModalProps> = ({
         )
       }
       title={title}
-      footer={renderFooter()}
+      footer={renderDefaultFooter()}
       {...restProps}
     />
   );
