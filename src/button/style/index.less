@@ -40,7 +40,6 @@
     &:disabled:not(.@{button-prefix-cls}_loading) {
       color: @gray-3;
       background-color: @gray-1;
-      cursor: not-allowed;
       pointer-events: none;
       .elevation(none);
     }
@@ -66,7 +65,7 @@
     &:disabled:not(.@{button-prefix-cls}_loading) {
       color: @gray-3;
       background-color: transparent;
-      cursor: not-allowed;
+      pointer-events: none;
     }
 
     &.@{button-prefix-cls}_loading {
@@ -89,7 +88,7 @@
     &:disabled:not(.@{button-prefix-cls}_loading) {
       color: @gray-3;
       background-color: transparent;
-      cursor: not-allowed;
+      pointer-events: none;
     }
     &.@{button-prefix-cls}_loading {
       color: @blue-3;
@@ -105,6 +104,20 @@
     &.@{button-prefix-cls}_text {
       padding: 4px 8px;
     }
+  }
+
+  // button 设置了 pointer-events: none; 时，cursor 会失效
+  &:disabled:not(.@{button-prefix-cls}_loading)::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    cursor: not-allowed;
+    content: '';
+    pointer-events: auto;
   }
 
   // ripple effect start
