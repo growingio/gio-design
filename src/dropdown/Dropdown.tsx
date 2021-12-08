@@ -1,7 +1,7 @@
 import React, { cloneElement, Children, forwardRef } from 'react';
 import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
-import { isFunction, isUndefined } from 'lodash';
+import { isFunction, isUndefined, noop } from 'lodash';
 import DropdownProps from './interface';
 import useControlledState from '../utils/hooks/useControlledState';
 import Popover from '../popover';
@@ -56,19 +56,9 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) =
       }
     };
     const onClick = close;
-    const onKeyDown = ({ key }: React.KeyboardEvent<HTMLDivElement>) => {
-      if ([' ', 'Enter', 'Escape'].includes(key)) {
-        close();
-      }
-    };
+
     return (
-      <div
-        role="button"
-        ref={ref}
-        tabIndex={0}
-        onClick={isUndefined(visible) ? onClick : undefined}
-        onKeyDown={onKeyDown}
-      >
+      <div role="none" ref={ref} onKeyDown={noop} onClick={isUndefined(visible) ? onClick : noop}>
         {contentNode}
       </div>
     );
