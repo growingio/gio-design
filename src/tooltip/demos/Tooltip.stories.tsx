@@ -251,10 +251,14 @@ export const Disabled = () => (
       若想容纳已禁用的元素激活工具提示，请添加一个简单的包装元素，如 span。
     </p>
 
+    <p>
+      <b>
+        现在 最新的 <em>gio-desgin</em> 版本已经不需要包装span就可以正常工作
+      </b>
+    </p>
+
     <Tooltip title="Button 被禁用了" placement="right">
-      <span>
-        <Button disabled>Disabled Button</Button>
-      </span>
+      <Button disabled>Disabled Button</Button>
     </Tooltip>
   </div>
 );
