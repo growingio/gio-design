@@ -7,6 +7,18 @@ import usePrefixCls from '../utils/hooks/use-prefix-cls';
 
 import Link from '../link';
 
+const splitObject = (obj: any, keys: string[]) => {
+  const picked: any = {};
+  const omitted: any = { ...obj };
+  keys.forEach((key) => {
+    if (obj && key in obj) {
+      picked[key] = obj[key];
+      delete omitted[key];
+    }
+  });
+  return { picked, omitted };
+};
+
 const Tooltip = (props: TooltipProps) => {
   const {
     children,
@@ -46,6 +58,47 @@ const Tooltip = (props: TooltipProps) => {
     );
   }, [prefixCls, computedTitle, tooltipLink]);
 
+  // Fix Tooltip won't hide at disabled button
+  // mouse events don't trigger at disabled button in Chrome
+  // https://github.com/react-component/tooltip/issues/18
+  function getDisabledCompatibleChildren(element: React.ReactElement<any>, prefixFunCls: string) {
+    if ((element?.type as any)?.displayName === 'Button' && element?.props?.disabled) {
+      const { picked, omitted } = splitObject(element?.props?.style, [
+        'position',
+        'left',
+        'right',
+        'top',
+        'bottom',
+        'float',
+        'display',
+        'zIndex',
+      ]);
+      const spanStyle = {
+        display: 'inline-block', // default inline-block is important
+        ...picked,
+        cursor: 'not-allowed',
+        width: element.props.block ? '100%' : null,
+      };
+      const buttonStyle = {
+        ...omitted,
+        pointerEvents: 'none',
+      };
+      const child = React.cloneElement(element, {
+        style: buttonStyle,
+        className: null,
+      });
+      return (
+        <span
+          style={spanStyle}
+          className={classNames(element.props.className, `${prefixFunCls}-disabled-compatible-wrapper`)}
+        >
+          {child}
+        </span>
+      );
+    }
+    return element;
+  }
+
   return (
     <Popover
       {...rest}
@@ -55,7 +108,7 @@ const Tooltip = (props: TooltipProps) => {
       overlayInnerClassName={contentInnerCls}
       content={computedOverlay || tooltipOverlay}
     >
-      {children}
+      {getDisabledCompatibleChildren(React.isValidElement(children) ? children : <span>{children}</span>, prefixCls)}
     </Popover>
   );
 };
