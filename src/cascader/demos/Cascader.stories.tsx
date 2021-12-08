@@ -7,7 +7,6 @@ import Cascader from '../Cascader';
 import '../style';
 import './style.less';
 import CascaderItem from '../../list/inner/CascaderItem';
-import { List } from '../../list';
 import Docs from './CascaderPage';
 
 export default {
@@ -67,7 +66,7 @@ const defaultOptions = [
     ],
   },
 ];
-const options = [...new Array(12)].map((_, index) => ({
+const options = new Array(12).fill('').map((_, index) => ({
   label: `第${index}条咸鱼`,
   value: index.toString(),
   childrens: [
@@ -75,108 +74,87 @@ const options = [...new Array(12)].map((_, index) => ({
     { label: '不要', value: 'no' },
   ],
 }));
-const numberOptions = [...new Array(12)].map((_, index) => ({
-  label: `第${index + 1}条咸鱼`,
-  value: index + 1,
-  childrens: [
-    { label: '要', value: 1 },
-    { label: '不要', value: 2 },
-  ],
-}));
-const demoTemplate: Story<CascaderProps> = (props) => (
-  <>
-    <h3>default传option</h3>
-    <div className="demo-box">
-      <Cascader
-        onChange={(val: any, opt: any) => console.log('val', val, opt)}
-        options={defaultOptions}
-        placeholder="haha"
-        size="normal"
-        {...props}
-      />
-    </div>
-    <h3> number Options</h3>
-    <div className="demo-box">
-      <Cascader
-        onChange={(val: any, opt: any) => console.log('val', val, opt)}
-        options={numberOptions}
-        placeholder="haha"
-        size="normal"
-        {...props}
-      />
-    </div>
-    <h3>default传jsx</h3>
-    <div className="demo-box">
-      <Cascader
-        onChange={(val: any, opt: any) => console.log('val', val, opt)}
-        placeholder="请选择"
-        allowClear={false}
-        size="normal"
-        {...props}
-      >
-        <CascaderItem label="苹果" value="apple">
-          <List model="cascader">
-            <CascaderItem label="切" value="cat">
-              <List model="cascader">
-                <CascaderItem label="坏了" value="bad" />
-                <CascaderItem label="没坏" value="good" />
-              </List>
-            </CascaderItem>
-            <CascaderItem label="掰开" value="bye" />
-          </List>
-        </CascaderItem>
-      </Cascader>
-    </div>
-    <h3>自定义list,trigger宽度</h3>
-    <div className="demo-box">
-      <Cascader
-        onChange={(val: any, opt: any) => console.log('val', val, opt)}
-        options={options}
-        contentStyle={{ width: 240 }}
-        style={{ width: '100%', textAlign: 'left' }}
-        placeholder="请选择"
-        allowClear={false}
-        size="small"
-        {...props}
-      />
-    </div>
-    <h3>hide trigger Prefix</h3>
-    <div className="demo-box">
-      <Cascader
-        onChange={(val: any, opt: any) => console.log('val', val, opt)}
-        options={options}
-        overlayStyle={{ width: 240 }}
-        style={{ width: '100%', textAlign: 'left' }}
-        placeholder="请选择"
-        size="small"
-        {...props}
-      />
-    </div>
-    <h3>prefix,suffix(如果设置prefix、suffix trigger在有值时会render Select的prefix、suffix)</h3>
-    <div className="demo-box">
-      <Cascader
-        onChange={(val: any, opt: any) => console.log('val', val, opt)}
-        options={options}
-        prefix={() => <PlusOutlined size="14px" />}
-        suffix={() => <FilterOutlined size="14px" />}
-        overlayStyle={{ width: 240 }}
-        placeholder="请选择"
-        allowClear={false}
-        style={{ width: 240, textAlign: 'left' }}
-        size="small"
-        {...props}
-      />
-    </div>
-  </>
-);
-
-export const Demo = demoTemplate.bind({
-  triggerProps: {
-    placeholder: '请选择',
-    allowClear: false,
-  },
-});
 export const Default: Story<CascaderProps> = (args) => (
   <Cascader {...args} value="apple.cut.bad" options={defaultOptions} placeholder="请选择" size="normal" />
 );
 Default.args = {};
+
+export function Demo(props: CascaderProps) {
+  return (
+    <table className="table-demo">
+      <tr>
+        <th>Cascader</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>options</td>
+        <td>
+          <Cascader
+            onChange={(val: any, opt: any) => console.log('val', val, opt)}
+            options={defaultOptions}
+            placeholder="haha"
+            style={{ width: '240px', textAlign: 'left' }}
+            size="normal"
+            {...props}
+          />
+        </td>
+      </tr>
+      {/* <tr>
+        <td>jsx</td>
+        <td>
+          <Cascader
+            onChange={(val: any, opt: any) => console.log('val', val, opt)}
+            placeholder="请选择"
+            allowClear={false}
+            size="normal"
+            style={{ width: '240px', textAlign: 'left' }}
+            {...props}
+          >
+            <CascaderItem label="苹果" value="apple">
+              <List model="cascader">
+                <CascaderItem label="切" value="cat">
+                  <List model="cascader">
+                    <CascaderItem label="坏了" value="bad" />
+                    <CascaderItem label="没坏" value="good" />
+                  </List>
+                </CascaderItem>
+                <CascaderItem label="掰开" value="bye" />
+              </List>
+            </CascaderItem>
+          </Cascader>
+        </td>
+      </tr> */}
+      <tr>
+        <td>hide prefix suffix</td>
+        <td>
+          <Cascader
+            onChange={(val: any, opt: any) => console.log('val', val, opt)}
+            options={options}
+            overlayStyle={{ width: 240 }}
+            style={{ width: '240px', textAlign: 'left' }}
+            placeholder="请选择"
+            size="small"
+            {...props}
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>prefix suffix</td>
+        <td>
+          <Cascader
+            onChange={(val: any, opt: any) => console.log('val', val, opt)}
+            options={options}
+            prefix={() => <PlusOutlined size="14px" />}
+            suffix={() => <FilterOutlined size="14px" />}
+            overlayStyle={{ width: 240 }}
+            style={{ width: '240px', textAlign: 'left' }}
+            placeholder="请选择"
+            allowClear={false}
+            size="small"
+            {...props}
+          />
+        </td>
+      </tr>
+    </table>
+  );
+}
