@@ -33,6 +33,11 @@
       color: @gray-2;
       .text-body1();
     }
+
+    &:-internal-autofill-previewed,
+    &:-internal-autofill-selected {
+      transition: background-color 50000s ease-out 0.5s;
+    }
   }
 
   &::placeholder {
