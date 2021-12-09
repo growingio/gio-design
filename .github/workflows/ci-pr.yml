@@ -47,7 +47,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: commitlint
-        run: yarn commitlint "${{ github.event.pull_request.title }}"
+        run: echo "${{ github.event.pull_request.title }}" | yarn commitlint
       - name: StyleLint
         run: yarn stylelint
       - name: ESLint
