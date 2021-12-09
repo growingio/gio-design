@@ -117,15 +117,5 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Cache package
-        id: cache-package
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            dist
-            es
-            lib
-          key: package-${{ github.event.pull_request.head.sha }}
       - name: Build
-        if: steps.cache-package.outputs.cache-hit != 'true'
         run: yarn build
