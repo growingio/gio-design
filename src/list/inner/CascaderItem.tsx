@@ -45,7 +45,9 @@ const CascaderItem: React.ForwardRefRenderFunction<
     /** options render */
     if (!isEmpty(childrens)) {
       return (
-        <ListContext.Provider value={{ ...context, model: 'cascader', selectParent: childSelectPrent }}>
+        <ListContext.Provider
+          value={{ ...context, disabled: mergedDisabled, model: 'cascader', selectParent: childSelectPrent }}
+        >
           <List>
             {childrens?.map((child) => (
               <CascaderItem
@@ -59,9 +61,12 @@ const CascaderItem: React.ForwardRefRenderFunction<
         </ListContext.Provider>
       );
     }
+
     /** JSX */
     return (
-      <ListContext.Provider value={{ ...context, model: 'cascader', selectParent: childSelectPrent }}>
+      <ListContext.Provider
+        value={{ ...context, disabled: mergedDisabled, model: 'cascader', selectParent: childSelectPrent }}
+      >
         {children}
       </ListContext.Provider>
     );
