@@ -1,7 +1,7 @@
 import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState, useEffect } from 'react';
 import Input from '../input/Input';
 import { SearchBarProps } from './interface';
 
@@ -27,6 +27,12 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
       setValue('');
     }
   }, [onSearch, disabled]);
+
+  useEffect(() => {
+    if (value !== enterValue) {
+      setValue(enterValue);
+    }
+  }, [enterValue, value]);
 
   const suffixCls = useMemo(
     () =>
