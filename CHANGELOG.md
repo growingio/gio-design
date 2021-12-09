@@ -1,3 +1,25 @@
+# [22.5.0](https://github.com/growingio/gio-design/compare/v22.4.1...v22.5.0) (2021-12-09)
+
+
+### Bug Fixes
+
+* **button:** button disabled error ([#1649](https://github.com/growingio/gio-design/issues/1649)) ([89df998](https://github.com/growingio/gio-design/commit/89df998e1ef976fb7933b8d11b21970cdcd48a98))
+* **button:** mouseLeave trigger error ([#1641](https://github.com/growingio/gio-design/issues/1641)) ([b0d78b4](https://github.com/growingio/gio-design/commit/b0d78b40236c8fd11a857bfc90a6da5d2b93d5df))
+* **components:** fix some components data-testid ([#1635](https://github.com/growingio/gio-design/issues/1635)) ([f76ef30](https://github.com/growingio/gio-design/commit/f76ef30614be5a0057af046e37ed1645a3d3265d))
+* **dropdown:** dropdown keydown error ([#1653](https://github.com/growingio/gio-design/issues/1653)) ([0759445](https://github.com/growingio/gio-design/commit/0759445310210c5cc387dd2bf81dfc3f566dbd51))
+* **filter-condition:** 组件国际化问题 ([#1650](https://github.com/growingio/gio-design/issues/1650)) ([eb25fc2](https://github.com/growingio/gio-design/commit/eb25fc2f1ccd9297d16c59ced87dfdcd5c9654aa))
+* **Input:** fix input issues ([#1644](https://github.com/growingio/gio-design/issues/1644)) ([d5d03c3](https://github.com/growingio/gio-design/commit/d5d03c37451829d04a31c8d1e9902bd86bd8d326))
+* **list-picker:** add recent id change localKey ([#1636](https://github.com/growingio/gio-design/issues/1636)) ([3590ced](https://github.com/growingio/gio-design/commit/3590ced10c5070097880e55ff95f544f22e36a01))
+* **list:** list style ([#1652](https://github.com/growingio/gio-design/issues/1652)) ([4a9946c](https://github.com/growingio/gio-design/commit/4a9946c620a3bd102483b40a3205a3f9f12c8d2a))
+* **select:** attr autoWidth default false ([#1646](https://github.com/growingio/gio-design/issues/1646)) ([8ef8e75](https://github.com/growingio/gio-design/commit/8ef8e75992404a155049bf661fe57711baf25892))
+* **table:** fix table style ([#1640](https://github.com/growingio/gio-design/issues/1640)) ([0018d49](https://github.com/growingio/gio-design/commit/0018d49198fe8c9455d97bd432b1134680aa5411))
+* **table:** modify empty node size from 'normal' to 'small' ([#1643](https://github.com/growingio/gio-design/issues/1643)) ([0254879](https://github.com/growingio/gio-design/commit/0254879ebc0c4e8dbefda054301b03d08d887ecc))
+
+
+### Features
+
+* **filter-picker:** 支出用户标签数值日期类型 ([#1645](https://github.com/growingio/gio-design/issues/1645)) ([9c8c2ed](https://github.com/growingio/gio-design/commit/9c8c2ed1870252aacfb4ec7ac176e6125f6ac90e))
+
 ## [22.4.1](https://github.com/growingio/gio-design/compare/v22.4.0...v22.4.1) (2021-12-07)
 
 
@@ -255,5 +277,3 @@
 
 * change the importing path of components.
 Using DesignContext for global configuration.
-
-
