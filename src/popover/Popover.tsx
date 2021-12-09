@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback, useRef, useLayoutEffect, useEffect } from 'react';
 import classNames from 'classnames';
-import { debounce, isFunction } from 'lodash';
+import { debounce, isFunction, isNil } from 'lodash';
 import ReactDOM from 'react-dom';
 import ResizeObserver from 'rc-resize-observer';
 import { PopoverProps } from './interface';
@@ -240,7 +240,12 @@ const Popover = (props: PopoverProps) => {
     cloneProps.ref = composeRef(setReferenceELement, (child as any).ref);
     triggerNode = React.cloneElement(child as React.ReactElement, cloneProps);
   }
-
+  const container = useMemo(() => {
+    if (isFunction(getContainer) && !isNil(referenceElement)) {
+      return getContainer(referenceElement);
+    }
+    return document.body;
+  }, [referenceElement, getContainer]);
   const renderContent = (
     <>
       <ResizeObserver
@@ -249,9 +254,7 @@ const Popover = (props: PopoverProps) => {
           update?.();
         }}
       >
-        {typeof getContainer === 'function'
-          ? ReactDOM.createPortal(contentRender, getContainer(referenceElement as HTMLDivElement))
-          : contentRender}
+        {ReactDOM.createPortal(contentRender, container)}
       </ResizeObserver>
     </>
   );
