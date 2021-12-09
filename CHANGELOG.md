@@ -1,3 +1,13 @@
+## [22.5.1](https://github.com/growingio/gio-design/compare/v22.5.0...v22.5.1) (2021-12-09)
+
+
+### Bug Fixes
+
+* **cascader:** fix cascader item disabled pass down ([#1658](https://github.com/growingio/gio-design/issues/1658)) ([783e14f](https://github.com/growingio/gio-design/commit/783e14f2a9ae0d4470ab5c7cfd8decc0dd14e7e3))
+* **Input:** resolve input button selected issue ([#1657](https://github.com/growingio/gio-design/issues/1657)) ([464d269](https://github.com/growingio/gio-design/commit/464d2695b29dffc31d1a27a98fc7b47d8ed56c1f))
+* **popover:** popover createPortal default document.body ([#1654](https://github.com/growingio/gio-design/issues/1654)) ([98b04e3](https://github.com/growingio/gio-design/commit/98b04e3a494f713738e91f7e97ce3e1639b8a4fc))
+* **SearchBar:** support clear value ([#1659](https://github.com/growingio/gio-design/issues/1659)) ([2caee20](https://github.com/growingio/gio-design/commit/2caee20f028f4f204bbb82a757541c661f29055c))
+
 # [22.5.0](https://github.com/growingio/gio-design/compare/v22.4.1...v22.5.0) (2021-12-09)
 
 
