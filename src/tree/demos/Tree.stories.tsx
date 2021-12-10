@@ -34,7 +34,7 @@ const treeData = [
         disabled: true,
         children: [
           {
-            title: '产品一组',
+            title: '产品一组产品一组产品一组产品一组产品一组产品一组产品一组产品一组产品一组',
             key: '0-0-0-0',
             icon: <CheckOutlined />,
             disableCheckbox: true,
