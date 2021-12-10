@@ -4,6 +4,7 @@ import { CalendarOutlined } from '@gio-design/icons';
 import classnames from 'classnames';
 import has from 'lodash/has';
 import get from 'lodash/get';
+import omit from 'lodash/omit';
 import { format } from 'date-fns';
 import Popover from '../popover';
 import { InputButton } from '../input';
@@ -150,6 +151,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     return (
       <InputButton
         prefix={prefix || <CalendarOutlined />}
+        data-testid={restProps?.['data-testid'] ? restProps?.['data-testid'] : 'past-time-picker'}
         placeholder={placeholder}
         disabled={disabled}
         allowClear={allowClear}
@@ -172,7 +174,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
       overlayClassName={overlayCls}
       onVisibleChange={handleVisibleChange}
       disabled={disabled}
-      {...restProps}
+      {...omit(restProps, 'data-testid')}
     >
       {renderTrigger()}
     </Popover>

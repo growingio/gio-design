@@ -35,6 +35,7 @@ const FilterPicker = (props: FilterPickerProps) => {
     onVisibleChange,
     placement = 'bottomRight',
     disabled,
+    ...rest
   } = props;
 
   const localeTextObject: TextObject = useLocale('FilterPicker');
@@ -80,7 +81,12 @@ const FilterPicker = (props: FilterPickerProps) => {
         disabled={disabled}
       >
         {children || (
-          <Button.IconButton size="small" type={!localVisible ? 'text' : 'secondary'}>
+          <Button.IconButton
+            data-testid="filter-picker"
+            {...rest}
+            size="small"
+            type={!localVisible ? 'text' : 'secondary'}
+          >
             <FilterOutlined size="14px" />
           </Button.IconButton>
         )}

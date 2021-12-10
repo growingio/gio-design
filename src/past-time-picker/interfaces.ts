@@ -15,4 +15,5 @@ export interface PastTimePickerProps
    *  选择的时间范围
    */
   value?: string;
+  'data-testid'?: string;
 }
