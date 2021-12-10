@@ -1,5 +1,6 @@
 import React, { DOMAttributes, useContext, useEffect, useMemo } from 'react';
 import { isEmpty, noop } from 'lodash';
+import classNames from 'classnames';
 import { RightFilled } from '@gio-design/icons';
 import Popover from '../../popover';
 import { CascaderItemProps, OptionProps } from '../interfance';
@@ -48,7 +49,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
         <ListContext.Provider
           value={{ ...context, disabled: mergedDisabled, model: 'cascader', selectParent: childSelectPrent }}
         >
-          <List>
+          <List className={`${prefixCls}--list`}>
             {childrens?.map((child) => (
               <CascaderItem
                 {...child}
@@ -67,7 +68,9 @@ const CascaderItem: React.ForwardRefRenderFunction<
       <ListContext.Provider
         value={{ ...context, disabled: mergedDisabled, model: 'cascader', selectParent: childSelectPrent }}
       >
-        {children}
+        {React.isValidElement(children)
+          ? React.cloneElement(children, { className: classNames(children?.props?.className, `${prefixCls}--list`) })
+          : children}
       </ListContext.Provider>
     );
   };

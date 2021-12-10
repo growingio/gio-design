@@ -59,6 +59,7 @@ export interface SelectProps extends Omit<ListProps, 'isMultiple' | 'onChange' |
    * content 跟随 trigger宽度
    */
   autoWidth?: boolean;
+  'data-testid'?: string;
 }
 
 export interface TriggerProps extends Omit<InputButtonProps, 'value' | 'active'> {

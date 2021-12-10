@@ -1,5 +1,6 @@
 import React, { useMemo, useRef } from 'react';
 import classNames from 'classnames';
+import { omit } from 'lodash';
 import { SelectProps } from './interface';
 import Popover from '../popover';
 import Trigger from '../list-picker/Trigger';
@@ -107,6 +108,7 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
         hidePrefix={hidePrefix}
         title={title}
         onClick={triggerClick}
+        data-testid={rest?.['data-testid'] ? rest?.['data-testid'] : 'select'}
       />
     );
   };
@@ -121,8 +123,7 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
       suffix={suffix}
       options={mergedOptions}
       disabled={disabled}
-      data-testid="select"
-      {...rest}
+      {...omit({ ...rest }, 'data-testid')}
     />
   );
 
