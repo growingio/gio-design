@@ -43,6 +43,9 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       if (model === 'cascader') {
         return (contextValue as string)?.startsWith(generateString(value, selectParent)?.toString());
       }
+      if (model === 'multiple') {
+        return false;
+      }
       return selectStatus?.(value, contextValue);
     }, [contextValue, model, selectParent, value]);
     /** ============ prefix suffix  ================  */
