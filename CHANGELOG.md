@@ -1,3 +1,17 @@
+## [22.5.2](https://github.com/growingio/gio-design/compare/v22.5.1...v22.5.2) (2021-12-13)
+
+
+### Bug Fixes
+
+* **components:** data testid ([#1661](https://github.com/growingio/gio-design/issues/1661)) ([d4f0c15](https://github.com/growingio/gio-design/commit/d4f0c1592d113060a4117ee1d8a3ac046b711697))
+* **filter-picker:** fix container ([#1667](https://github.com/growingio/gio-design/issues/1667)) ([366c3be](https://github.com/growingio/gio-design/commit/366c3be6920bfdd9558a26d30d35f1ac0c957533))
+* **panel:** the title should be vertically centered with the icon when there is no description ([#1665](https://github.com/growingio/gio-design/issues/1665)) ([12c98d5](https://github.com/growingio/gio-design/commit/12c98d51124e3d59878d3050483e2f2d3c5ff4e7))
+* **switch, modal:** fix style ([#1664](https://github.com/growingio/gio-design/issues/1664)) ([6de60fe](https://github.com/growingio/gio-design/commit/6de60fe9bc2beef4f9255c844be14f5b300f4fe8))
+* **tab-nav:** 修复当tab文字超出时,折行溢出 ([#1662](https://github.com/growingio/gio-design/issues/1662)) ([1ab5bf5](https://github.com/growingio/gio-design/commit/1ab5bf5e76107478d27a98d2913dc914a1193a01))
+* **table:** fix scroll-bar of table ([#1666](https://github.com/growingio/gio-design/issues/1666)) ([fc27a58](https://github.com/growingio/gio-design/commit/fc27a5812fccab58ef72e9c05a8ca7ef266c80af))
+* **textarea:** update the style of textarea ([#1663](https://github.com/growingio/gio-design/issues/1663)) ([ada7e49](https://github.com/growingio/gio-design/commit/ada7e494fe4e0b318077d56b3f47e01ae3b9d50c))
+* **tree:** fix tree not ellipsis ([#1660](https://github.com/growingio/gio-design/issues/1660)) ([83fdc80](https://github.com/growingio/gio-design/commit/83fdc80c2d01f48d75fa559bbfb27ef794772b7c))
+
 ## [22.5.1](https://github.com/growingio/gio-design/compare/v22.5.0...v22.5.1) (2021-12-09)
 
 
