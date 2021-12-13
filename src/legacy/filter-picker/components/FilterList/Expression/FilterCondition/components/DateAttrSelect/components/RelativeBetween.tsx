@@ -88,6 +88,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
             ]}
             onChange={selectChange}
             style={{ marginRight: '4px' }}
+            getContainer={(node) => node.parentNode as HTMLDivElement}
           />
           <Input.InputNumber
             value={value1}
@@ -127,6 +128,7 @@ function RelativeBetween(props: RelativeBetweenProps) {
           ]}
           onChange={selectChange}
           style={{ marginRight: '4px' }}
+          getContainer={(node) => node.parentNode as HTMLDivElement}
         />
         <Input.InputNumber
           value={value1}

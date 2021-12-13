@@ -110,7 +110,13 @@ function RelativeCurrent(props: RelativeCurrentProps) {
   // eslint-disable-next-line camelcase
   const zh_RelativeSelect = (
     <>
-      <Select value={nowOrFuturevalue} options={SelectOptions} onChange={selectChange} style={{ marginRight: '4px' }} />
+      <Select
+        value={nowOrFuturevalue}
+        options={SelectOptions}
+        onChange={selectChange}
+        style={{ marginRight: '4px' }}
+        getContainer={(node) => node.parentNode as HTMLDivElement}
+      />
       <Input.InputNumber value={days} onChange={setDaysChange} style={{ width: '80px', margin: '0 4px' }} min={1} />
       <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>{t.day}</div>
       {nowOrFuturevalue === '-1' ? (
@@ -120,6 +126,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
           options={beforeSelectOptions}
           onChange={selectAfterChange}
           style={{ marginLeft: '4px', width: '100px' }}
+          getContainer={(node) => node.parentNode as HTMLDivElement}
         />
       ) : (
         <Select
@@ -128,6 +135,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
           options={afterSelectOptions}
           onChange={selectAfterChange}
           style={{ marginLeft: '4px', width: '100px' }}
+          getContainer={(node) => node.parentNode as HTMLDivElement}
         />
       )}
     </>
@@ -143,6 +151,7 @@ function RelativeCurrent(props: RelativeCurrentProps) {
           options={beforeSelectOptions}
           onChange={selectAfterChange}
           style={{ marginLeft: '4px', width: '100px' }}
+          getContainer={(node) => node.parentNode as HTMLDivElement}
         />
       ) : (
         <Select
@@ -151,9 +160,16 @@ function RelativeCurrent(props: RelativeCurrentProps) {
           options={afterSelectOptions}
           onChange={selectAfterChange}
           style={{ marginLeft: '4px', width: '100px' }}
+          getContainer={(node) => node.parentNode as HTMLDivElement}
         />
       )}
-      <Select value={nowOrFuturevalue} options={SelectOptions} onChange={selectChange} style={{ marginRight: '4px' }} />
+      <Select
+        value={nowOrFuturevalue}
+        options={SelectOptions}
+        onChange={selectChange}
+        style={{ marginRight: '4px' }}
+        getContainer={(node) => node.parentNode as HTMLDivElement}
+      />
       <Input.InputNumber value={days} onChange={setDaysChange} style={{ width: '80px', margin: '0 4px' }} min={1} />
       <div style={{ whiteSpace: 'nowrap', margin: '0 4px' }}>{t.day}</div>
     </>
