@@ -85,7 +85,7 @@
     "@commitlint/config-conventional": "^13.1.0",
     "@formatjs/cli": "^4.2.31",
     "@formatjs/ts-transformer": "^3.4.8",
-    "@gio-design/icons": "^21.11.1",
+    "@gio-design/icons": "^22.0.1",
     "@gio-design/tokens": "22.0.0-alpha.0",
     "@gio-design/utils": "^23.0.0",
     "@semantic-release/changelog": "^6.0.1",

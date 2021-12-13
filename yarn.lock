@@ -1587,13 +1587,12 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.2.tgz#30aa825f11d438671d585bd44e7fd564535fc210"
   integrity sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==
 
-"@gio-design/icons@^21.11.1":
-  version "21.11.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-21.11.1.tgz#c96e34d341dfd72f6755ef6f0452d00ec58e28a7"
-  integrity sha512-SVQk3xhBJc+YfWZC51l8eAVQQz9Axe9JGnuL+sZr4LO73soSxvzO5Dllh1xXhmsQJqhVKebeHXsKo/+TPgnR5w==
+"@gio-design/icons@^22.0.1":
+  version "22.0.1"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-22.0.1.tgz#7e682a3d9f601cdfbdb8a1a7453a7feeb00d25fe"
+  integrity sha512-hzl9mpDDm26XCH9MgCRcVkTSamYyCkngIeRPU16L72kzd+5MnBIa4UkSYL3N89BFVbvdxiUG7QqdrOlyXfeWpA==
   dependencies:
     "@babel/runtime" "^7.14.8"
-    classnames "^2.2.6"
 
 "@gio-design/table@7.18.1-patch.1":
   version "7.18.1-patch.1"
