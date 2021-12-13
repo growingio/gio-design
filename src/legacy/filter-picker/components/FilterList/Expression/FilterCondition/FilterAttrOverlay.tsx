@@ -180,6 +180,8 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
           style={{ marginTop: '16px', width: '100%' }}
           placeholder={t.select}
           onChange={selectChange}
+          getContainer={(node) => node.parentNode as HTMLDivElement}
+          overlayStyle={{ maxWidth: 350, minWidth: 150 }}
         />
         <Divider style={{ margin: '14px 0 16px' }} />
         {getAttrSelect(valueType, operationValue)}
