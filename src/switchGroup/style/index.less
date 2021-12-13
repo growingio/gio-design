@@ -42,8 +42,11 @@
 }
 
 .@{switch__wrapper__checked} {
-  color: @blue-3;
-  background: @gray-1;
+  span {
+    color: @blue-3;
+    vertical-align: bottom;
+    background: @gray-1;
+  }
 }
 
 .@{switch__wrapper__disabled} {
@@ -103,5 +106,15 @@
 
   label:nth-child(n + 2) {
     border-left: 1px solid @gray-2;
+  }
+  label:nth-child(1) {
+    span {
+      border-radius: 4px 0 0 4px;
+    }
+  }
+  label:last-child {
+    span {
+      border-radius: 0 4px 4px 0;
+    }
   }
 }
