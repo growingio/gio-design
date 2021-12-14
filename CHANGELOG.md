@@ -1,3 +1,13 @@
+## [22.5.3](https://github.com/growingio/gio-design/compare/v22.5.2...v22.5.3) (2021-12-14)
+
+
+### Bug Fixes
+
+* **cascader:** item 点击方法不稳定 ([#1669](https://github.com/growingio/gio-design/issues/1669)) ([8e8244a](https://github.com/growingio/gio-design/commit/8e8244a95fed6ba993a21319c3d2d8e43775f4a3))
+* **InputButton:** fix icon-prefix-cls of InputButton ([#1675](https://github.com/growingio/gio-design/issues/1675)) ([980f51b](https://github.com/growingio/gio-design/commit/980f51b33e097c65426f6bc18b6d05c401813ac1))
+* **legacy/list-pro:** use legacy/checkbox in /legacy/list-pro ([#1677](https://github.com/growingio/gio-design/issues/1677)) ([9f8dde8](https://github.com/growingio/gio-design/commit/9f8dde892510c464c0ddd981c4722b2bfa68febb))
+* **list:** list multiple style error ([#1668](https://github.com/growingio/gio-design/issues/1668)) ([ff1c61d](https://github.com/growingio/gio-design/commit/ff1c61d284cd7932f81da40561cad4378cf3eeb5))
+
 ## [22.5.2](https://github.com/growingio/gio-design/compare/v22.5.1...v22.5.2) (2021-12-13)
 
 
