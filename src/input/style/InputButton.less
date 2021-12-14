@@ -2,11 +2,8 @@
 @import (reference) '../../input/style/index.less';
 
 @input-btn-prefix-cls: ~'@{component-prefix}-input-btn';
-@icon-prefix-cls: ~'@{component-prefix}-input__prefix';
 
-@input-btn-input-prefix-cls: ~'@{component-prefix}-input-btn';
-
-.@{input-prefix-cls}.@{input-btn-input-prefix-cls} {
+.@{input-prefix-cls}.@{input-btn-prefix-cls} {
   input {
     overflow: hidden;
     white-space: nowrap;
@@ -26,7 +23,7 @@
     background-color: @gray-1;
     border: 1px solid @gray-2;
 
-    .@{icon-prefix-cls} {
+    .@{input-prefix-cls}__prefix {
       svg {
         color: @blue-3;
         // cursor: not-allowed;
@@ -58,7 +55,7 @@
     }
 
     &:hover {
-      .@{input-btn-input-prefix-cls} {
+      .@{input-btn-prefix-cls} {
         color: @gray-3;
         background-color: @gray-0;
         cursor: not-allowed;
@@ -79,7 +76,7 @@
       }
     }
 
-    .@{input-btn-input-prefix-cls} {
+    .@{input-btn-prefix-cls} {
       background-color: @gray-0;
     }
     .@{input-prefix-cls} {
