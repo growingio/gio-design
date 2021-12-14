@@ -1,5 +1,5 @@
 import { useLocale } from '@gio-design/utils';
-import { isNil, slice } from 'lodash';
+import { filter as lodashFilter, isNil, slice } from 'lodash';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { List, OptionProps } from '../list';
 import { PREFIX } from '../list/constants';
@@ -12,11 +12,12 @@ export const ITEM_KEY = '__GIO_SELECTION_KEY';
 interface RecentProps {
   title?: string;
   max?: number;
+  filter?: (option: OptionProps) => boolean;
 }
 
 const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
   const localeTextObject: typeof defaultLocaleTextObject = useLocale('ListPicker') || defaultLocaleTextObject;
-  const { max = 5, title = localeTextObject.recent, ...rest } = props;
+  const { max = 5, title = localeTextObject.recent, filter: filterFc = (o) => !!o, ...rest } = props;
   const [mayBeArray, setMayBearray] = useState<Map<string | number, OptionProps> | undefined>(new Map());
   const selectionPrefixCls = `${usePrefixCls(PREFIX)}--selection`;
   const context = useContext(ListContext);
@@ -29,21 +30,24 @@ const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
       setMayBearray(options);
     }, 0);
   }, [options]);
-  const listOptions: OptionProps[] = useMemo(
-    () =>
-      slice(
-        matchValue?.reduce((prev: OptionProps[], curr: string) => {
-          if (mayBeArray?.has(curr)) {
-            return [...prev, mayBeArray?.get(curr)];
-          }
-          return [...prev];
-        }, []),
-        0,
-        max
-      ),
 
-    [matchValue, max, mayBeArray]
+  const matchOptions = useMemo(
+    () =>
+      matchValue?.reduce((prev: OptionProps[], curr: string) => {
+        if (mayBeArray?.has(curr)) {
+          return [...prev, mayBeArray?.get(curr)];
+        }
+        return [...prev];
+      }, []),
+    [matchValue, mayBeArray]
   );
+
+  const listOptions: OptionProps[] = useMemo(
+    () => slice(lodashFilter(matchOptions, filterFc), 0, max),
+
+    [matchOptions, max, filterFc]
+  );
+
   const handleOnChange = (value?: string | string[], opts?: OptionProps | OptionProps[]) =>
     context?.onChange?.(value, opts);
   if (!!listOptions?.length && model !== 'multiple') {
@@ -64,5 +68,6 @@ const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
   }
   return <></>;
 };
+
 Recent.isRecent = true;
 export default Recent;
