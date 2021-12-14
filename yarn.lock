@@ -14928,16 +14928,16 @@ rc-tree-select@4.1.2:
     rc-tree "^3.8.0"
     rc-util "^5.0.5"
 
-rc-tree@5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-5.0.2.tgz#d420e4f0c07f70eb571a46b2103b2e18a2436b6a"
-  integrity sha512-K2EIBWtefYSiq8tq5Wf97IaemjR7xGPhfvE6jTlKt+wVZrqwRnxln/Ps6g53r+eu2k+wf5+nQ4KkbvqPDekE1A==
+rc-tree@5.3.2:
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-5.3.2.tgz#f8b400063a3c58dec32f2cff37286e4768d86c33"
+  integrity sha512-ypPn6BTDupBM3WozPe7bZoaAV/7nomg8Yket/YfvkSiTkAjkUW3APzO6MpYLgMrQaPTGHcIeFXpgU5ZusNFQwg==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "2.x"
     rc-motion "^2.0.1"
-    rc-util "^5.0.0"
-    rc-virtual-list "^3.2.0"
+    rc-util "^5.16.1"
+    rc-virtual-list "^3.4.1"
 
 rc-tree@^3.8.0:
   version "3.11.0"
@@ -15006,7 +15006,7 @@ rc-util@^4.0.4, rc-util@^4.1.1, rc-util@^4.15.3, rc-util@^4.4.0:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.1.0"
 
-rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, rc-util@^5.14.0, rc-util@^5.15.0, rc-util@^5.2.0, rc-util@^5.2.1, rc-util@^5.3.0, rc-util@^5.4.0, rc-util@^5.5.0, rc-util@^5.6.1, rc-util@^5.7.0, rc-util@^5.8.0:
+rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, rc-util@^5.14.0, rc-util@^5.15.0, rc-util@^5.16.1, rc-util@^5.2.0, rc-util@^5.2.1, rc-util@^5.3.0, rc-util@^5.4.0, rc-util@^5.5.0, rc-util@^5.6.1, rc-util@^5.7.0, rc-util@^5.8.0:
   version "5.16.1"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-5.16.1.tgz#374db7cb735512f05165ddc3d6b2c61c21b8b4e3"
   integrity sha512-kSCyytvdb3aRxQacS/71ta6c+kBWvM1v8/2h9d/HaNWauc3qB8pLnF20PJ8NajkNN8gb+rR1l0eWO+D4Pz+LLQ==
@@ -15015,7 +15015,7 @@ rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, 
     react-is "^16.12.0"
     shallowequal "^1.1.0"
 
-rc-virtual-list@^3.0.1, rc-virtual-list@^3.2.0, rc-virtual-list@^3.2.6:
+rc-virtual-list@^3.0.1, rc-virtual-list@^3.2.0, rc-virtual-list@^3.2.6, rc-virtual-list@^3.4.1:
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/rc-virtual-list/-/rc-virtual-list-3.4.2.tgz#1078327aa7230b5e456d679ed2ce99f3c036ebd1"
   integrity sha512-OyVrrPvvFcHvV0ssz5EDZ+7Rf5qLat/+mmujjchNw5FfbJWNDwkpQ99EcVE6+FtNRmX9wFa1LGNpZLUTvp/4GQ==
