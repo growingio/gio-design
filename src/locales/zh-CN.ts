@@ -17,6 +17,7 @@ import listLocale from '../list/locales/zh-CN';
 import panelLocale from '../panel/locales/zh-CN';
 import basePicker from '../legacy/base-picker/locales/zh-CN';
 import propertyPickerLocale from '../legacy/property-selector/locales/zh-CN';
+import popConfirmLocale from '../popconfirm/locales/zh-CN';
 
 export const locale: Locale = {
   code: 'zh-CN',
@@ -73,6 +74,9 @@ export const locale: Locale = {
   },
   PropertyPicker: {
     ...propertyPickerLocale,
+  },
+  PopConfirm: {
+    ...popConfirmLocale,
   },
 };
 
