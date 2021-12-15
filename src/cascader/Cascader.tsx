@@ -96,6 +96,7 @@ export const Cascader: React.FC<CascaderProps> = ({
         maxWidth={maxWidth}
         size={size}
         style={style}
+        visible={visible}
         className={className}
         disabled={disabled}
         allowClear={allowClear}

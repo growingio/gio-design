@@ -68,4 +68,5 @@ export interface OptionProps extends ListOptionProps {
 
 export interface TriggerProps extends Omit<InputButtonProps, 'value' | 'active'> {
   value?: string | number;
+  visible?: boolean;
 }

@@ -16,8 +16,8 @@
     color: @gray-5;
     .text-body1();
   }
-  &:not(&__disabled) &__hover,
-  &:not(&__disabled) &__active,
+  &__hover:not(&__disabled),
+  &__active:not(&__disabled),
   &:not(&__disabled):hover {
     color: @blue-3;
     background-color: @gray-1;
