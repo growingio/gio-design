@@ -30,7 +30,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
   };
 
   const renderDuration = () => {
-    const duration = startDays - endDays;
+    const duration = endDays === 1 ? startDays : startDays - endDays;
     return (
       <>
         <span className={`${basePrefixCls}__text`}>{lastText}</span>
@@ -86,7 +86,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
         <Input.InputNumber
           min={endDays + 1}
           max={10000}
-          value={startDays}
+          value={startDays + 1}
           onChange={(e) => {
             const value = parseInt(e.target.value, 10);
             if (value && value > endDays) {

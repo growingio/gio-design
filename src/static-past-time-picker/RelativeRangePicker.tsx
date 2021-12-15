@@ -14,7 +14,7 @@ function RelativeRangePciker({ disabledDate, timeRange, onSelect, onCancel, ...r
   const handleDisabledDate = (current: Date) =>
     disabledDate?.(current) || isAfter(startOfDay(current), endDateHidden ? startOfYesterday() : startOfToday());
   const handleOnOK = () => {
-    onSelect(`day:${differenceInDays(startOfToday(), dates[0])},${differenceInDays(startOfToday(), dates[1])}`);
+    onSelect(`day:${differenceInDays(startOfToday(), dates[0]) + 1},${differenceInDays(startOfToday(), dates[1])}`);
   };
   return (
     <InnerRangePanel

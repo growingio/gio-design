@@ -13,7 +13,7 @@ function RelativeRangeBody({ dateRange, fixedMode, onRangeChange, disabledDate }
   }
   return (
     <DateRangePicker
-      defaultViewDates={[subMonths(startOfToday(), 1), startOfToday()]}
+      defaultViewDates={[subMonths(startOfToday(), 1), startOfYesterday()]}
       disabledDate={disabledDate}
       onSelect={onRangeChange}
       value={dateRange as [Date, Date]}

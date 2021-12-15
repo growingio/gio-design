@@ -40,7 +40,7 @@ export const parseStartAndEndDate = (timeRange: string | undefined): [Date | und
     return [new Date(times[0]), new Date(times[1])];
   }
   if (items[0] === 'day') {
-    return [sub(today, { days: times[0] }), sub(today, { days: times[1] })];
+    return [sub(today, { days: times[0] - 1 }), sub(today, { days: times[1] })];
   }
   return [undefined, undefined];
 };
