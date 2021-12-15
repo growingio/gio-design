@@ -1,7 +1,6 @@
-import { startOfToday, startOfYesterday } from 'date-fns';
 import { get } from 'lodash';
 import { TimeMode } from '../interfaces';
-import { parseFixedMode, parseStartAndEndDate, parseTimeMode } from '../utils';
+import { parseFixedMode, parseTimeMode } from '../utils';
 
 describe('StaticPastTimePicker utils', () => {
   it('can parse fixed mode', () => {
@@ -18,29 +17,29 @@ describe('StaticPastTimePicker utils', () => {
     });
   });
 
-  it('can parse start and end date', () => {
-    expect(parseStartAndEndDate('')).toEqual([undefined, undefined]);
-    expect(parseStartAndEndDate('hour')).toEqual([undefined, undefined]);
-    expect(parseStartAndEndDate('hour:2,1')).toEqual([undefined, undefined]);
+  // it('can parse start and end date', () => {
+  //   expect(parseStartAndEndDate('')).toEqual([undefined, undefined]);
+  //   expect(parseStartAndEndDate('hour')).toEqual([undefined, undefined]);
+  //   expect(parseStartAndEndDate('hour:2,1')).toEqual([undefined, undefined]);
 
-    const today = startOfToday();
-    const yesterday = startOfYesterday();
+  //   const today = startOfToday();
+  //   const yesterday = startOfYesterday();
 
-    const sinceTimeRange = `since:${today.valueOf()}`;
-    const sinceTimeRangeToYesterday = `since:${today.valueOf()},1`;
-    let [start, end] = parseStartAndEndDate(sinceTimeRange);
-    expect([start.valueOf(), end.valueOf()]).toEqual([today.valueOf(), today.valueOf()]);
-    [start, end] = parseStartAndEndDate(sinceTimeRangeToYesterday);
-    expect([start.valueOf(), end.valueOf()]).toEqual([today.valueOf(), yesterday.valueOf()]);
+  //   const sinceTimeRange = `since:${today.valueOf()}`;
+  //   const sinceTimeRangeToYesterday = `since:${today.valueOf()},1`;
+  //   let [start, end] = parseStartAndEndDate(sinceTimeRange);
+  //   expect([start.valueOf(), end.valueOf()]).toEqual([today.valueOf(), today.valueOf()]);
+  //   [start, end] = parseStartAndEndDate(sinceTimeRangeToYesterday);
+  //   expect([start.valueOf(), end.valueOf()]).toEqual([today.valueOf(), yesterday.valueOf()]);
 
-    const dynamicTimeRange = 'day:1,0';
-    [start, end] = parseStartAndEndDate(dynamicTimeRange);
-    expect([start.valueOf(), end.valueOf()]).toEqual([yesterday.valueOf(), today.valueOf()]);
+  //   const dynamicTimeRange = 'day:1,0';
+  //   [start, end] = parseStartAndEndDate(dynamicTimeRange);
+  //   expect([start.valueOf(), end.valueOf()]).toEqual([yesterday.valueOf(), today.valueOf()]);
 
-    const absoluteTimeRange = `abs:${yesterday.valueOf()},${today.valueOf()}`;
-    [start, end] = parseStartAndEndDate(absoluteTimeRange);
-    expect([start.valueOf(), end.valueOf()]).toEqual([yesterday.valueOf(), today.valueOf()]);
-  });
+  //   const absoluteTimeRange = `abs:${yesterday.valueOf()},${today.valueOf()}`;
+  //   [start, end] = parseStartAndEndDate(absoluteTimeRange);
+  //   expect([start.valueOf(), end.valueOf()]).toEqual([yesterday.valueOf(), today.valueOf()]);
+  // });
 
   it('can parse time calc mode', () => {
     let timeRange = 'day:8,1';
