@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect } from 'react';
 import { WarningCircleFilled } from '@gio-design/icons';
-import { useControlledState } from '@gio-design/utils';
+import { useControlledState, useLocale } from '@gio-design/utils';
 import { isUndefined } from 'lodash';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import Button from '../button';
 import Popover from '../popover/Popover';
 import { PopConfirmProps } from './interface';
+import defaultLocaleText from './locales/zh-CN';
 
 const PopConfirm: React.FC<PopConfirmProps> = (props) => {
   const {
@@ -25,7 +26,7 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
     ...rest
   } = props;
   const prefixCls = usePrefixCls('confirm', customizePrefixCls);
-
+  const textObject: typeof defaultLocaleText = useLocale('PopConfirm') || defaultLocaleText;
   const [visible, setVisible] = useControlledState(customizaVisible, defaultVisible);
 
   const onVisibleChange = useCallback(
@@ -74,10 +75,10 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
       <div className={`${prefixCls}__footer`}>
         <div>
           <Button onClick={onCancel} size="small" type="secondary">
-            {cancelText || '取消'}
+            {cancelText || textObject.cancelText}
           </Button>
           <Button onClick={onConfirm} size="small">
-            {okText || '确认'}
+            {okText || textObject.okText}
           </Button>
         </div>
       </div>
