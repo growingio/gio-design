@@ -54,6 +54,8 @@ export interface PopoverProps {
   trigger?: TriggerAction | TriggerAction[];
   content?: React.ReactNode;
 
+  onContentClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+
   /**
    * 气泡被遮挡时自动调整位置
    * @default false
