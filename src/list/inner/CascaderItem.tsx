@@ -83,7 +83,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
             placement="rightTop"
             overlayClassName={popoverClassName}
             // document click contains node
-            getContainer={(node) => node.parentElement || node || document.body}
+            getContainer={(node) => node || document.body}
             content={content()}
             strategy="fixed"
             distoryOnHide={false}
