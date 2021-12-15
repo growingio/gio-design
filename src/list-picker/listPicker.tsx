@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { isEqual, isNil } from 'lodash';
 import { useLocale } from '@gio-design/utils';
@@ -53,13 +53,14 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     hidePrefix = false,
     maxWidth,
     recentId: propsRecentId,
+    autoWidth = false,
     ...rest
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
   const [value, setValue] = useState(controlledValue || defaultValue);
   const { options, setOptions, getOptionByValue, getLabelByValue, getOptionsByValue } = useCacheOptions();
-
+  const triggerRef = useRef<HTMLInputElement | undefined>(undefined);
   useEffect(() => {
     setValue(controlledValue);
   }, [controlledValue, setValue]);
@@ -126,6 +127,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
         separator={separator}
         onClick={triggerClick}
         title={title}
+        visible={visible}
         hidePrefix={hidePrefix}
         data-testid={isNil(rest['data-testid']) ? `${DEFAULT_DATA_TESTID}-trigger` : `${rest['data-testid']}-trigger`}
       >
@@ -138,7 +140,10 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     <div
       data-testid={isNil(rest['data-testid']) ? `${DEFAULT_DATA_TESTID}-overlay` : `${rest['data-testid']}-overlay`}
       className={classNames(defaultPrefix, contentClassName)}
-      style={contentStyle}
+      style={{
+        width: autoWidth ? Math.max(120, triggerRef?.current?.clientWidth || 0) : undefined,
+        ...contentStyle,
+      }}
     >
       {/* {model === 'multiple' && selectAll && renderSelectAll()} */}
       {children}

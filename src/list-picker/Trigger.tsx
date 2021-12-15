@@ -15,6 +15,7 @@ const Trigger: React.ForwardRefRenderFunction<HTMLInputElement, TriggerProps> = 
     hidePrefix = false,
     prefix: propPrefix,
     suffix: propSuffix,
+    visible,
     ...rest
   } = props;
   const { options, setOptions, getOptionByValue, getLabelByValue } = useContext(ListContext);
@@ -44,6 +45,7 @@ const Trigger: React.ForwardRefRenderFunction<HTMLInputElement, TriggerProps> = 
       data-testid="list-picker-trigger"
       prefix={prefix}
       suffix={suffix}
+      active={visible}
       placeholder={placeholder}
       value={title ?? getLabelByValue?.(value as React.ReactText)}
       onClear={handleClear}

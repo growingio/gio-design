@@ -104,6 +104,7 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
         suffix={triggerSuffix}
         allowClear={allowClear}
         onClear={handleOnClear}
+        visible={visible}
         maxWidth={maxWidth}
         hidePrefix={hidePrefix}
         title={title}
