@@ -7,7 +7,7 @@ import WithRef from '../utils/withRef';
 import { ListContext } from './context';
 
 export const InnerItem = WithRef<HTMLLIElement, ItemProps>((props, ref?) => {
-  const { label, value, disabled, ...rest } = props;
+  const { label, value, disabled, strategy, ...rest } = props;
   const { model } = useContext(ListContext);
   if (model === 'multiple') {
     return (
@@ -29,6 +29,7 @@ export const InnerItem = WithRef<HTMLLIElement, ItemProps>((props, ref?) => {
         label={label as string}
         value={value as string}
         disabled={disabled}
+        strategy={strategy}
         {...rest}
       />
     );

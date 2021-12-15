@@ -32,6 +32,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     onChange: controlledOnChange,
     renderItem,
     onClick,
+    itemStrategy,
     ...listRestProps
   } = props;
 
@@ -112,7 +113,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const renderChildren = (option: OptionProps) => {
     const renderedItem = renderItem?.(option);
     return (
-      <Item {...option} key={option.value}>
+      <Item {...option} strategy={itemStrategy} key={option.value}>
         {renderedItem}
       </Item>
     );
