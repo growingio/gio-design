@@ -1,3 +1,10 @@
+## [22.5.4](https://github.com/growingio/gio-design/compare/v22.5.3...v22.5.4) (2021-12-15)
+
+
+### Bug Fixes
+
+* **list-picker:** recent component add filter methods ([#1676](https://github.com/growingio/gio-design/issues/1676)) ([0d1aa0d](https://github.com/growingio/gio-design/commit/0d1aa0de7b86dc436d70f90d9e47bfd129e92bc9))
+
 ## [22.5.3](https://github.com/growingio/gio-design/compare/v22.5.2...v22.5.3) (2021-12-14)
 
 
