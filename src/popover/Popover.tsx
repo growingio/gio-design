@@ -32,6 +32,7 @@ const Popover = (props: PopoverProps) => {
     triggerStyle,
     getContainer,
     distoryOnHide = true,
+    onContentClick,
     ...rest
   } = props;
 
@@ -215,6 +216,8 @@ const Popover = (props: PopoverProps) => {
       style={{ ...(overlayStyle || {}), ...styles.popper }}
       onMouseEnter={onContentMouseEnter}
       onMouseLeave={onContentMouseLeave}
+      onClick={onContentClick}
+      role="none"
       {...rest}
     >
       {allowArrow && <div className={`${prefixCls}__arrow`} ref={arrowElement} style={{ ...styles.arrow }} />}
