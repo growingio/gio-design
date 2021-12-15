@@ -1,3 +1,22 @@
+# [22.6.0](https://github.com/growingio/gio-design/compare/v22.5.4...v22.6.0) (2021-12-15)
+
+
+### Bug Fixes
+
+* **cascader:** cascader position ([#1687](https://github.com/growingio/gio-design/issues/1687)) ([f5fced9](https://github.com/growingio/gio-design/commit/f5fced937236927c3edbd1e8c278b604e6a9a9b6))
+* **pase-time-picker:** show error ([#1685](https://github.com/growingio/gio-design/issues/1685)) ([35f9efb](https://github.com/growingio/gio-design/commit/35f9efb25bffcb03cd4102c9b03b836d8ed91963))
+* **Popover:** update display ([#1681](https://github.com/growingio/gio-design/issues/1681)) ([b2425f6](https://github.com/growingio/gio-design/commit/b2425f6d41f43fc7f0f454ab67621b71c752fa34))
+
+
+### Features
+
+* **popconfirm:** popConfirm support for i18n ([#1683](https://github.com/growingio/gio-design/issues/1683)) ([b763aa1](https://github.com/growingio/gio-design/commit/b763aa120791d4565a26315b36330c17c16a2f81))
+
+
+### Reverts
+
+* **popover:** revert [#1681](https://github.com/growingio/gio-design/issues/1681) ([#1686](https://github.com/growingio/gio-design/issues/1686)) ([1569da6](https://github.com/growingio/gio-design/commit/1569da64a9e870143857414a922cfa9c2bf0e6e8))
+
 ## [22.5.4](https://github.com/growingio/gio-design/compare/v22.5.3...v22.5.4) (2021-12-15)
 
 
