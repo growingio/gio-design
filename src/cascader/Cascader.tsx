@@ -43,6 +43,8 @@ export const Cascader: React.FC<CascaderProps> = ({
   maxWidth,
   hidePrefix,
   renderTrigger: propsRenderTrigger,
+  empty,
+  needEmpty = true,
   ...rest
 }) => {
   const defaultPrefixCls = usePrefixCls(prefixCls);
@@ -120,13 +122,15 @@ export const Cascader: React.FC<CascaderProps> = ({
       style={contentStyle}
       model="cascader"
       itemStrategy={itemStrategy}
+      empty={empty}
+      needEmpty={needEmpty}
     >
       {children}
     </List>
   );
 
   return (
-    <ListContext.Provider value={{ value, onChange: handleChange, setOptions }}>
+    <ListContext.Provider value={{ value, onChange: handleChange, setOptions, emptyNode: empty, isEmpty: needEmpty }}>
       <Popover
         content={renderOverlay()}
         trigger="click"

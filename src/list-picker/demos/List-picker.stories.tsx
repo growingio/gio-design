@@ -19,7 +19,7 @@ import Tabs, { Tab } from '../../tabs';
 import List from '../../list';
 import Recent from '../Recent';
 import Docs from './List-pickerPage';
-import { Card, Divider, Popover, Skeleton, Table, Tag } from '../..';
+import { Card, Divider, Popover, Skeleton, Table, Tag, Page } from '../..';
 
 interface Tmesurements {
   id: string;
@@ -327,18 +327,30 @@ export const Selection = (args: ListPickerProps) => {
 export const Default: Story<ListPickerProps> = (args: ListPickerProps) => {
   const [activeTab, setActiveTab] = useState('tab1');
   return (
-    <ListPicker
-      {...args}
-      style={{ width: '240px' }}
-      placeholder="请选择"
-      getContainer={(node) => node?.parentElement || document.body}
-    >
-      <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>
-        <Tab label="tab1" value="tab1">
-          <List style={{ width: '240px' }} options={simpleLargeOptions} />
-        </Tab>
-      </Tabs>
-    </ListPicker>
+    <>
+      <ListPicker
+        {...args}
+        style={{ width: '240px' }}
+        placeholder="请选择"
+        getContainer={(node) => node?.parentElement || document.body}
+      >
+        <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>
+          <Tab label="tab1" value="tab1">
+            <List style={{ width: '240px' }} options={simpleLargeOptions} />
+          </Tab>
+          <Tab label="tab2" value="tab2">
+            <List style={{ width: '240px' }} options={[]} />
+          </Tab>
+          <Tab label="tab3" value="tab3">
+            <List
+              style={{ width: '240px' }}
+              options={[]}
+              empty={<Page type="noFind" description="暂无数据" size="small" />}
+            />
+          </Tab>
+        </Tabs>
+      </ListPicker>
+    </>
   );
 };
 const getGroup = (type: string, isSystem = false) => {

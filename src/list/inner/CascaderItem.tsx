@@ -48,7 +48,13 @@ const CascaderItem: React.ForwardRefRenderFunction<
     if (!isEmpty(childrens)) {
       return (
         <ListContext.Provider
-          value={{ ...context, disabled: mergedDisabled, model: 'cascader', selectParent: childSelectPrent }}
+          value={{
+            ...context,
+            isEmpty: false,
+            disabled: mergedDisabled,
+            model: 'cascader',
+            selectParent: childSelectPrent,
+          }}
         >
           <List className={`${prefixCls}--list`}>
             {childrens?.map((child) => (
@@ -67,7 +73,13 @@ const CascaderItem: React.ForwardRefRenderFunction<
     /** JSX */
     return (
       <ListContext.Provider
-        value={{ ...context, disabled: mergedDisabled, model: 'cascader', selectParent: childSelectPrent }}
+        value={{
+          ...context,
+          isEmpty: false,
+          disabled: mergedDisabled,
+          model: 'cascader',
+          selectParent: childSelectPrent,
+        }}
       >
         {React.isValidElement(children)
           ? React.cloneElement(children, { className: classNames(children?.props?.className, `${prefixCls}--list`) })

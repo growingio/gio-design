@@ -45,7 +45,8 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     contentClassName,
     model = 'single',
     needConfim = model === 'multiple',
-
+    empty,
+    needEmpty = true,
     allowClear,
     title,
     triggerPrefix,
@@ -166,6 +167,8 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
         getOptionByValue,
         getOptionsByValue,
         getLabelByValue,
+        emptyNode: empty,
+        isEmpty: needEmpty,
         recentId: propsRecentId,
       }}
     >

@@ -44,6 +44,8 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
     onClear,
     renderTrigger: propsRenderTrigger,
     autoWidth = false,
+    empty,
+    needEmpty = true,
     // list props
     ...rest
   } = props;
@@ -124,6 +126,8 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
       suffix={suffix}
       options={mergedOptions}
       disabled={disabled}
+      empty={empty}
+      needEmpty={needEmpty}
       {...omit({ ...rest }, 'data-testid')}
     />
   );
@@ -133,6 +137,9 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
       value={{
         value,
         options: cacheOptions,
+        isEmpty: needEmpty,
+        emptyNode: empty,
+        isSelection: false,
         getLabelByValue,
         getOptionByValue,
         getOptionsByValue,

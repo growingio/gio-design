@@ -9,6 +9,7 @@ export interface ListContextProps {
   disabled?: boolean;
   isSelection?: boolean;
   isEmpty?: boolean;
+  emptyNode?: React.ReactNode;
   selectParent?: any;
   onChange?: (value?: MaybeArray<string | number>, options?: OptionProps | OptionProps[]) => void;
   onClick?: (value?: string | number, event?: React.MouseEvent<HTMLLIElement | HTMLInputElement>) => void;
@@ -34,6 +35,7 @@ const defaultList: ListContextProps = {
   setOptions: noop,
   prefix: undefined,
   suffix: undefined,
+  emptyNode: undefined,
   getOptionByValue: undefined,
   getOptionsByValue: undefined,
   getLabelByValue: undefined,

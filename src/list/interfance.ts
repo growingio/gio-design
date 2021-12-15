@@ -69,6 +69,8 @@ export interface ListProps {
    */
   renderItem?: (option: OptionProps) => React.ReactElement;
   itemStrategy?: 'fixed' | 'absolute';
+  empty?: React.ReactNode;
+  needEmpty?: boolean;
 }
 
 export interface DragListProps extends Omit<ListProps, 'model' | 'onChange' | 'value' | 'children'> {

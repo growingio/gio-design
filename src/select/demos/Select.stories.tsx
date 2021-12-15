@@ -75,16 +75,17 @@ const demoTemplate: Story<SelectProps> = (props) => {
       </div>
       <h3>JSX--prefix</h3>
       <div className="demo-box">
-        <Select style={{ width: '240px' }} placeholder="请选择" allowClear={false}>
+        <Select autoWidth style={{ width: '240px' }} placeholder="请选择" allowClear={false}>
           <Option label="JSX1" value="JSX1" />
           <Option label="JSX2" value="JSX2" />
         </Select>
-        <Select style={{ width: '240px' }} placeholder="请选择" allowClear={false}>
+        <Select autoWidth style={{ width: '240px' }} placeholder="请选择" allowClear={false}>
           <Option value="JSX1" prefix="123">
             JSX1
           </Option>
           <Option value="JSX2">JSX2</Option>
         </Select>
+        <Select autoWidth style={{ width: '240px' }} placeholder="empty" />
       </div>
     </>
   );
@@ -110,6 +111,7 @@ export const Default = () => {
         contentStyle={{ width: '120px' }}
         placeholder="请选择"
         size="normal"
+        autoWidth
         onVisibleChange={() => action('visibleChange')}
       />
       <Select
@@ -118,6 +120,7 @@ export const Default = () => {
         contentStyle={{ width: '120px' }}
         placeholder="number 类型的value"
         size="normal"
+        autoWidth
         onVisibleChange={() => action('visibleChange')}
       />
     </div>
