@@ -33,6 +33,7 @@ export const Cascader: React.FC<CascaderProps> = ({
   placement = 'bottomLeft',
   children,
   strategy = 'fixed',
+  itemStrategy = 'fixed',
   onClear,
   allowClear,
   title: controlledTitle,
@@ -117,6 +118,7 @@ export const Cascader: React.FC<CascaderProps> = ({
       suffix={suffix}
       style={contentStyle}
       model="cascader"
+      itemStrategy={itemStrategy}
     >
       {children}
     </List>

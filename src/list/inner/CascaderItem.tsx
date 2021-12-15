@@ -15,7 +15,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
   HTMLLIElement,
   CascaderItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>
 > & { isItem?: boolean } = (
-  { label, value, children, childrens = [], disabled, onClick: propsOnClick, ...rest },
+  { label, value, children, childrens = [], disabled, onClick: propsOnClick, strategy = 'fixed', ...rest },
   ref?
 ) => {
   const prefixCls = usePrefixCls('cascader');
@@ -85,7 +85,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
             // document click contains node
             getContainer={(node) => node || document.body}
             content={content()}
-            strategy="fixed"
+            strategy={strategy}
             distoryOnHide={false}
             offset={[0, 12]}
           >

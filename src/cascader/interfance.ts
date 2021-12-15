@@ -21,6 +21,7 @@ export interface CascaderProps extends Omit<ListProps, 'options' | 'onChange' | 
   contentStyle?: React.CSSProperties;
   placement?: Placement;
   strategy?: 'fixed' | 'absolute';
+  itemStrategy?: 'fixed' | 'absolute';
   /** ================ trigger 相关的属性 ============== */
   /**
    * trigger className
