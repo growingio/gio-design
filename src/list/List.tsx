@@ -126,7 +126,9 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     // childrens render
     return childs;
   };
-
+  if (mergedOptions.length === 0) {
+    return <></>;
+  }
   const renderExpandedItem = (needCollapse = false) => {
     if (needCollapse) {
       return (
@@ -148,6 +150,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
       {renderExpandedItem(isNeedCollapse)}
     </>
   );
+
   return (
     <ListContext.Provider
       value={{
