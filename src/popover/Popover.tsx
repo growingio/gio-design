@@ -78,6 +78,12 @@ const Popover = (props: PopoverProps) => {
     () => [
       { name: 'arrow', options: { element: arrowElement.current } },
       { name: 'offset', options: { offset } },
+      {
+        name: 'flip',
+        options: {
+          fallbackPlacements: ['right', 'left', 'left-top', 'left-end'],
+        },
+      },
     ],
     [offset]
   );
