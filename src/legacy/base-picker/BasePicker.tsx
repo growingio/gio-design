@@ -5,7 +5,7 @@ import List from '../list';
 import { BasePickerProps } from './interfaces';
 import SearchBar from '../search-bar';
 import Alert from '../alert';
-import TabNav from '../tab-nav';
+import TabNav, {Tab} from '../../tabs';
 import defaultLocaleText from './locales/zh-CN';
 
 function BasePicker({
@@ -29,7 +29,7 @@ function BasePicker({
     searchBar?.onSearch(current.slice(0, 200).toLocaleLowerCase());
   }
 
-  const tabs = React.useMemo(() => tabNav?.items?.map((i) => <TabNav.Item {...i} />), [tabNav]);
+  const tabs = React.useMemo(() => tabNav?.items?.map((i) => <Tab label={i.children} value={i.key} />), [tabNav]);
 
   const cls = classnames(prefixCls, className);
   let content;
@@ -50,7 +50,7 @@ function BasePicker({
         </div>
       )}
       {tabNav && (
-        <TabNav type="line" size="small" onChange={tabNav.onChange}>
+        <TabNav style={{marginTop: '8px'}} onChange={tabNav.onChange} defaultValue="all">
           {tabs}
         </TabNav>
       )}
