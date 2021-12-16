@@ -82,7 +82,8 @@ const Popover = (props: PopoverProps) => {
       {
         name: 'flip',
         options: {
-          fallbackPlacements: ['right', 'left', 'left-top', 'left-end'],
+          allowedAutoPlacements: ['left-end', 'left-start', 'left'],
+          flipVariations: false,
         },
       },
     ],
