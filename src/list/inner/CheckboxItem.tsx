@@ -31,8 +31,8 @@ const CheckboxItem: React.ForwardRefRenderFunction<
         disabled={mergedDisabled}
         onClick={(e) => {
           if (!mergedDisabled) {
-            contextOnClick?.(value);
-            onClick?.(value);
+            contextOnClick?.(value, e);
+            onClick?.(value, e);
             e?.stopPropagation();
           }
         }}

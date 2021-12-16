@@ -11,7 +11,7 @@ export interface ListContextProps {
   isEmpty?: boolean;
   selectParent?: any;
   onChange?: (value?: MaybeArray<string | number>, options?: OptionProps | OptionProps[]) => void;
-  onClick?: (value?: string | number) => void;
+  onClick?: (value?: string | number, event?: React.MouseEvent<HTMLLIElement | HTMLInputElement>) => void;
   options?: Map<string | number, OptionProps>;
   recentId?: string;
   prefix?: (option?: OptionProps) => string | React.ReactNode;
