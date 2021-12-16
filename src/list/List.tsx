@@ -90,11 +90,11 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const childrens = renderOptions.slice(0, collapse);
   const isNeedCollapse = useMemo(() => renderOptions?.length > collapse, [renderOptions, collapse]);
 
-  const handleClick = (val?: string) => {
+  const handleClick = (val?: string, event?: React.MouseEvent<HTMLLIElement | HTMLInputElement>) => {
     if (val === `${prefixCls}-collapse`) {
       return;
     }
-    onClick?.(val);
+    onClick?.(val, event);
     // multiple
     if (isArray(value)) {
       const resultValue = getResultValue(value, val) as string[];

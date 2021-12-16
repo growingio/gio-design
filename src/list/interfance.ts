@@ -59,7 +59,7 @@ export interface ListProps {
   /**
    *
    */
-  onClick?: (value?: string | number) => void;
+  onClick?: (value?: string | number, event?: React.MouseEvent<HTMLLIElement | HTMLInputElement>) => void;
   /**
    *
    */
@@ -87,7 +87,7 @@ export interface OptionProps {
    * @deprecated 未来版本迭代后会弃用 1.x.x -> 2.x.x
    */
   wrapper?: (element: React.ReactNode) => React.ReactElement;
-  onClick?: (v?: string) => void;
+  onClick?: (v?: string, event?: React.MouseEvent<HTMLLIElement | HTMLInputElement>) => void;
   [key: string]: unknown;
 }
 
@@ -131,7 +131,7 @@ export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled' | 
   children?: React.ReactNode;
   disabledTooltip?: string;
   selected?: boolean;
-  onClick?: (value?: string | number) => void;
+  onClick?: (value?: string | number, event?: React.MouseEvent<HTMLLIElement | HTMLInputElement>) => void;
 }
 
 export interface TriggerProps {

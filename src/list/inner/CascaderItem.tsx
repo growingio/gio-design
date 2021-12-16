@@ -1,5 +1,5 @@
 import React, { DOMAttributes, useContext, useEffect, useMemo } from 'react';
-import { isEmpty, noop } from 'lodash';
+import { isEmpty } from 'lodash';
 import classNames from 'classnames';
 import { RightFilled } from '@gio-design/icons';
 import Popover from '../../popover';
@@ -10,6 +10,7 @@ import WithRef from '../../utils/withRef';
 import List from '../List';
 import { convertChildrenToData, generateSelectParent, generateString } from '../util';
 import { ListContext } from '../context';
+import { BaseItemProps } from '..';
 
 const CascaderItem: React.ForwardRefRenderFunction<
   HTMLLIElement,
@@ -36,10 +37,10 @@ const CascaderItem: React.ForwardRefRenderFunction<
   // list
   const prefixClsItem = `${prefixCls}--item`;
 
-  const handleOnClick = () => {
+  const handleOnClick: BaseItemProps['onClick'] = (_, event) => {
     if (!mergedDisabled) {
-      contextOnClick?.(generateString(value, selectParent));
-      propsOnClick?.(generateString(value, selectParent));
+      contextOnClick?.(generateString(value, selectParent), event);
+      propsOnClick?.(generateString(value, selectParent), event);
     }
   };
   const content = () => {
@@ -106,7 +107,11 @@ const CascaderItem: React.ForwardRefRenderFunction<
       value={value}
       disabled={mergedDisabled}
       suffix={React.isValidElement(children) || !isEmpty(childrens) ? <RightFilled size="14px" /> : undefined}
-      onClick={React.isValidElement(children) || !isEmpty(childrens) ? noop : handleOnClick}
+      onClick={
+        React.isValidElement(children) || !isEmpty(childrens)
+          ? (itemValue, event) => propsOnClick?.(itemValue, event)
+          : handleOnClick
+      }
     />
   );
   return PopoverRender(renderItem);
