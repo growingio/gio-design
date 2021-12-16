@@ -64,13 +64,15 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
     /** =================== events =================== */
 
     const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
-      if (!mergedDisabled) {
-        /** cascader click 从上级来 */
-        if (model !== 'cascader') {
-          contextOnClick?.(value, event);
-        }
-        onClick?.(value, event);
+      if (mergedDisabled) {
+        event.stopPropagation();
+        return;
       }
+      /** cascader click 从上级来 */
+      if (model !== 'cascader') {
+        contextOnClick?.(value, event);
+      }
+      onClick?.(value, event);
     };
     const content = children ?? label;
 
