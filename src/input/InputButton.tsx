@@ -1,7 +1,7 @@
 import { CloseCircleFilled, DownFilled } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import useControlledState from '../utils/hooks/useControlledState';
 import Input from './Input';
 import { InputButtonProps } from './interface';
@@ -31,7 +31,9 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   const inputCls = usePrefixCls('input-btn__input', customizePrefixCls);
 
   const [value, setValue] = useControlledState(enterValue, defaultValue);
-
+  useEffect(() => {
+    console.log('active', active);
+  }, [active]);
   const onInputChange = useCallback(
     (val: string) => {
       onInputUpdate?.(val);
