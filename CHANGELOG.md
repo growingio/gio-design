@@ -1,3 +1,20 @@
+# [22.7.0](https://github.com/growingio/gio-design/compare/v22.6.0...v22.7.0) (2021-12-16)
+
+
+### Bug Fixes
+
+* **cascader:** add itemPosition attr ([#1689](https://github.com/growingio/gio-design/issues/1689)) ([b554264](https://github.com/growingio/gio-design/commit/b554264eb4915f068256ef366a19eefd168399ab))
+* **input-button:** fix input button active style ([#1679](https://github.com/growingio/gio-design/issues/1679)) ([1f11cce](https://github.com/growingio/gio-design/commit/1f11cce4646e0930931ddcdc81376ad7fe4d54c3))
+* **popover:** add popover flip ([#1690](https://github.com/growingio/gio-design/issues/1690)) ([513ee54](https://github.com/growingio/gio-design/commit/513ee546366afe4c3e09902f558a94065b6196c1))
+* **popover:** fixed popover flip ([#1692](https://github.com/growingio/gio-design/issues/1692)) ([f062748](https://github.com/growingio/gio-design/commit/f062748eb549acf81bbd1e599016454b8cf79de7))
+* **property-picker:** 修改属性选择器分类导航使用新的tabs,可左右滑动 ([#1695](https://github.com/growingio/gio-design/issues/1695)) ([b6508e0](https://github.com/growingio/gio-design/commit/b6508e05f8d31dcdf65eb0812d6f5ce6b48d750c))
+
+
+### Features
+
+* **list:** add event param in the onClick ([#1693](https://github.com/growingio/gio-design/issues/1693)) ([0feb381](https://github.com/growingio/gio-design/commit/0feb381741321f4f84f701e31b1aa82f28008dda))
+* **popover:** support onContentClick event ([#1691](https://github.com/growingio/gio-design/issues/1691)) ([6d8fef2](https://github.com/growingio/gio-design/commit/6d8fef24a67f009f367aa547a8eac7c2c089a13d))
+
 # [22.6.0](https://github.com/growingio/gio-design/compare/v22.5.4...v22.6.0) (2021-12-15)
 
 
