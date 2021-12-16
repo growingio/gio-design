@@ -1,10 +1,12 @@
 import React, { cloneElement, Children, forwardRef } from 'react';
 import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
-import { isFunction, isUndefined, noop } from 'lodash';
+import { get, isFunction, isUndefined, noop } from 'lodash';
 import DropdownProps from './interface';
 import useControlledState from '../utils/hooks/useControlledState';
 import Popover from '../popover';
+import { BUTTON_DISPLAY_NAME } from '../button/Button';
+import { ICON_BUTTON_DISPLAY_NAME } from '../button/IconButton';
 
 export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
   const {
@@ -25,18 +27,28 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>((props, ref) =
 
   const getDropdownTrigger = () => {
     const child = Children.only(children);
-    return cloneElement(child as React.ReactElement, {
+    const childProps: {
+      className?: string;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      onClick?: (...args: any) => void;
+      active?: boolean;
+    } = {
       className: classnames(
         {
           'dropdown-active': controlledVisible,
         },
-        (child as React.ReactElement).props.className
+        child.props.className
       ),
-      onClick: (...arg: any) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      onClick: (...args: any) => {
         setControlledVisible(!controlledVisible);
-        (child as React.ReactElement).props.onClick?.(...arg);
+        child.props.onClick?.(...args);
       },
-    });
+    };
+    if ([BUTTON_DISPLAY_NAME, ICON_BUTTON_DISPLAY_NAME].includes(get(child.type, 'displayName'))) {
+      childProps.active = child.props.active ?? controlledVisible;
+    }
+    return cloneElement(child, childProps);
   };
 
   const withoutPadding = (contentNode: DropdownProps['content']) => {
