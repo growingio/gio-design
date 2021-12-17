@@ -1,5 +1,5 @@
-import React,{ DOMAttributes } from 'react'
-import RcCollapse from 'rc-collapse'
+import React from 'react';
+import RcCollapse from 'rc-collapse';
 import classnames from 'classnames';
 import { RightFilled } from '@gio-design/icons';
 import { cloneElement } from '../utils/reactNode';
@@ -8,13 +8,10 @@ import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import WithRef from '../utils/withRef';
 import { WithCommonProps } from '../utils/interfaces';
 
-export const Collapse = WithRef<HTMLDivElement, WithCommonProps<CollapseProps>>(
-  (
-    props: CollapseProps,
-  ) => {
-   const  {destoryOnHide, disabled, children, dataTestId = "collapse" ,...restProps} = props
-   const prefixCls = usePrefixCls('collapse');
-    const renderExpandIcon = (panelProps: PanelProps = {}) => {
+export const Collapse = WithRef<HTMLDivElement, WithCommonProps<CollapseProps>>((props: CollapseProps) => {
+  const { destoryOnHide, disabled, children, dataTestId = 'collapse' } = props;
+  const prefixCls = usePrefixCls('collapse');
+  const renderExpandIcon = (panelProps: PanelProps = {}) => {
     const { expandIcon } = props;
     const icon = expandIcon ? expandIcon(panelProps) : <RightFilled />;
     return (
@@ -37,11 +34,9 @@ export const Collapse = WithRef<HTMLDivElement, WithCommonProps<CollapseProps>>(
         {children}
       </RcCollapse>
     </div>
-  )
-  }
-);
+  );
+});
 
 Collapse.displayName = 'Collapse';
 
 export default Collapse;
-
