@@ -1,49 +1,60 @@
 import { LoadingOutlined } from '@gio-design/icons';
 import classNames from 'classnames';
 import React from 'react';
+import { OverridableComponent } from '@gio-design/utils';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
-import { LinkProps } from './interface';
+import { LinkTypeMap } from './interface';
 
-const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ className, children, prefix, loading = false, disabled: disabledProp = false, href, ...restProps }, ref) => {
-    const prefixCls = usePrefixCls('link');
-    const classes = classNames([prefixCls, className], {
-      [`${prefixCls}_disabled`]: disabledProp,
-      [`${prefixCls}_loading`]: loading,
-    });
+const Link = React.forwardRef((props, ref) => {
+  const {
+    className,
+    children,
+    prefix,
+    loading,
+    disabled: disabledProp,
+    href,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: 在使用 Link 组件的时候能识别出 component prop，但是在这里却无法识别
+    component = 'a',
+    ...restProps
+  } = props;
+  const prefixCls = usePrefixCls('link');
+  const classes = classNames([prefixCls, className], {
+    [`${prefixCls}_disabled`]: disabledProp,
+    [`${prefixCls}_loading`]: loading,
+  });
 
-    const prefixIcon = loading ? (
-      <span className={`${prefixCls}-prefix-icon`}>
-        <LoadingOutlined rotating />
-      </span>
-    ) : (
-      prefix && <span className={`${prefixCls}-prefix-icon`}>{prefix}</span>
-    );
+  const prefixIcon = loading ? (
+    <span className={`${prefixCls}-prefix-icon`}>
+      <LoadingOutlined rotating />
+    </span>
+  ) : (
+    prefix && <span className={`${prefixCls}-prefix-icon`}>{prefix}</span>
+  );
 
-    const disabled = disabledProp || loading;
+  const disabled = disabledProp || loading;
 
-    return (
-      <a
-        className={classes}
-        ref={ref}
-        aria-disabled={disabled}
-        tabIndex={disabled ? -1 : 0}
-        data-testid="link"
-        href={disabled ? undefined : href}
-        {...restProps}
-      >
-        {prefixIcon}
-        {children}
-      </a>
-    );
-  }
-);
+  const Component: React.ElementType = component;
+  return (
+    <Component
+      className={classes}
+      disabled={disabledProp}
+      aria-disabled={disabled}
+      tabIndex={disabled ? -1 : 0}
+      ref={ref}
+      href={disabled ? undefined : href}
+      data-testid="link"
+      loading={component === 'a' ? undefined : loading}
+      {...restProps}
+    >
+      {prefixIcon}
+      {children}
+    </Component>
+  );
+}) as OverridableComponent<LinkTypeMap>;
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore: 存在 displayName 属性
 Link.displayName = 'Link';
-
-Link.defaultProps = {
-  loading: false,
-  disabled: false,
-};
 
 export default Link;
