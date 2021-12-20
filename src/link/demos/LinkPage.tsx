@@ -4,7 +4,7 @@ import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook
 import { useIntl } from 'react-intl';
 import Link from '../index';
 
-export default function ButtonPage() {
+export default function LinkPage() {
   const { formatMessage } = useIntl();
 
   return (
@@ -25,6 +25,7 @@ export default function ButtonPage() {
         <li>样式变化:颜色变化</li>
         <li> 支持原生a标签</li>
         <li> 原 icon 现在需要在prefix内传入如&lt;PlusOutlined/&gt;</li>
+        <li>支持自定义渲染根组件</li>
       </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
@@ -46,6 +47,10 @@ export default function ButtonPage() {
       <Subheading>{formatMessage({ defaultMessage: 'IconLink' })}</Subheading>
       <Canvas>
         <Story id="upgraded-link--icon-link" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '自定义节点' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-link--custom-root-node" />
       </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Link} />

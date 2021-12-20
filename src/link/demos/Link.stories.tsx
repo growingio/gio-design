@@ -5,6 +5,7 @@ import { LinkProps } from '../interface';
 import Link from '../Link';
 import '../style';
 import Docs from './LinkPage';
+import { Button } from '../..';
 
 export default {
   title: 'Upgraded/Link',
@@ -102,3 +103,17 @@ IconLink.args = {
   href: '//www.growingio.com',
   prefix: <PlusOutlined />,
 };
+
+export const CustomRootNode = () => (
+  <>
+    <h4>支持渲染自定义跟组件</h4>
+    <p>如果您需要 Link 组件的根节点渲染特定的组件（比如 React-Router Link），可以传入 `component` prop。</p>
+    <Link component={Button} size="normal" href="https://growingio.com" type="text" style={{ marginRight: '2rem' }}>
+      Button
+    </Link>
+
+    <Link component="span" href="https://growingio.com">
+      span tag
+    </Link>
+  </>
+);
