@@ -11,8 +11,7 @@ import Button, { IconButton } from '../../button';
 import Dropdown from '../../dropdown';
 import { Item, List } from '../../list';
 import { Basic, Empty, TreeData } from '../../table/demos/Table.stories';
-import { HaveChildren } from '../../tabs/demos/Tabs.stories';
-import { Card, Divider } from '../..';
+import { Card, Divider, Skeleton } from '../..';
 import Text from '../../typography/text';
 
 export default {
@@ -34,19 +33,37 @@ export default {
 const infoCardTemplate = () => (
   <Card fullWidthContent>
     <Card.Meta
+      style={{ alignItems: 'flex-start' }}
       image={<Avatar mode="square" size="large" />}
-      description="这里是副标题"
+      description={
+        <Text
+          style={{
+            color: '#7b819c',
+            fontSize: '14px',
+            width: '100%',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'normal',
+          }}
+          lines={3}
+        >
+          {'这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题'.repeat(
+            5
+          )}
+        </Text>
+      }
       title={
-        <div
+        <Text
           style={{
             fontWeight: 500,
             fontSize: '18px',
             lineHeight: '28px',
             color: '#242e59',
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
           }}
         >
-          北区项目组
-        </div>
+          {'北区项目组'.repeat(20)}
+        </Text>
       }
       action={
         <>
@@ -115,25 +132,60 @@ const tableCardTemplate = () => (
 export const tableCard = tableCardTemplate.bind({});
 
 const DemoTemplate = () => (
-  <div>
-    <div style={{ margin: '20px', display: 'inline-block' }}>
-      {infoCardTemplate()}
-      {tableCardTemplate()}
-    </div>
-    <div style={{ margin: '20px', display: 'inline-block' }}>
-      <Card>
-        <Card.Meta title="变量使用量" description="variable_userd" />
-        <Empty />
-        <TreeData />
-      </Card>
-    </div>
-    <div style={{ margin: '20px', display: 'inline-block' }}>
-      <Card>
-        <Card.Meta title="变量使用量" description="variable_userd" />
-        <HaveChildren />
-      </Card>
-    </div>
-  </div>
+  <table className="table-demo">
+    <tr>
+      <th>Card</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td>InfoCard</td>
+      <td>{infoCardTemplate()}</td>
+    </tr>
+    <tr>
+      <td>TableCard</td>
+      <td>{tableCardTemplate()}</td>
+    </tr>
+    <tr>
+      <td>TableCard</td>
+      <td>
+        <Card>
+          <Card.Meta title="变量使用量" description="variable_userd" />
+          <Empty />
+          <TreeData />
+        </Card>
+      </td>
+    </tr>
+    <tr>
+      <td>previewCard</td>
+      <td>
+        <Card style={{ width: '320px' }}>
+          <Card.Meta title="计算指标" description="123" />
+          <p>计算属性如下</p>
+          <Skeleton.Image style={{ width: '100%' }} />
+          <Table
+            title="事件属性"
+            pagination={false}
+            columns={[
+              {
+                dataIndex: 'id',
+                title: 'Id',
+              },
+              {
+                dataIndex: 'name',
+                title: 'Name',
+              },
+            ]}
+            dataSource={Array(2)
+              .fill('')
+              .map((_, index) => ({
+                id: `${index + 1 * 1000}`,
+                name: `Name ${index + 1}`,
+              }))}
+          />
+        </Card>
+      </td>
+    </tr>
+  </table>
 );
 
 export const Demo = DemoTemplate.bind({});
@@ -146,8 +198,10 @@ Default.args = {
   children: (
     <Card.Meta
       image={<Avatar>L</Avatar>}
-      title="卡片标题"
-      description="卡片副标题"
+      title={'卡片标题'.repeat(20)}
+      description={'卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题'.repeat(
+        5
+      )}
       action={
         <Dropdown
           placement="bottomRight"

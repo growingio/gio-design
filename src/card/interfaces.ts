@@ -12,7 +12,7 @@ export interface CardMetaProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   /**
    * meta副标题
    */
-  description?: string;
+  description?: React.ReactNode;
   /**
    * meta内容
    */

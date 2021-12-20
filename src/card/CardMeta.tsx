@@ -17,15 +17,18 @@ const CardMeta: React.FC<CardMetaProps> = ({
     if (isString(image)) return image ? <img src={image} className={`${prefixCls}-image`} alt="" /> : null;
     return React.cloneElement(image, { className: classNames(`${prefixCls}-image`, image.props.className) });
   };
-  const renderTitle = () => <div className={`${prefixCls}-title`}>{title}</div>;
+
+  const renderOption = (opt: React.ReactNode, type: 'title' | 'description') =>
+    opt && React.cloneElement(<div />, { title: isString(opt) ? opt : '', className: `${prefixCls}-${type}` }, opt);
 
   const renderDetail = () =>
     (title || description) && (
       <div className={`${prefixCls}-detail`}>
-        {renderTitle()}
-        {description && <div className={`${prefixCls}-description`}>{description}</div>}
+        {renderOption(title, 'title')}
+        {renderOption(description, 'description')}
       </div>
     );
+
   const renderAction = () => (title || description || image) && <div className={`${prefixCls}-action`}>{action}</div>;
 
   const renderHeader =
