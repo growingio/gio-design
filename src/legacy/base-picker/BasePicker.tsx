@@ -5,7 +5,7 @@ import List from '../list';
 import { BasePickerProps } from './interfaces';
 import SearchBar from '../search-bar';
 import Alert from '../alert';
-import TabNav, {Tab} from '../../tabs';
+import TabNav, { Tab } from '../../tabs';
 import defaultLocaleText from './locales/zh-CN';
 
 function BasePicker({
@@ -50,9 +50,11 @@ function BasePicker({
         </div>
       )}
       {tabNav && (
-        <TabNav style={{marginTop: '8px'}} onChange={tabNav.onChange} defaultValue="all">
-          {tabs}
-        </TabNav>
+        <div style={{ margin: 8 }}>
+          <TabNav onChange={tabNav.onChange} defaultValue="all">
+            {tabs}
+          </TabNav>
+        </div>
       )}
       <div className={`${prefixCls}__content`}>{content}</div>
       {footer && <div className={`${prefixCls}__footer`}>{footer}</div>}
