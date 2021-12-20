@@ -9,17 +9,17 @@ import { ListContext } from './context';
 export const InnerItem = WithRef<HTMLLIElement, ItemProps>((props, ref?) => {
   const { label, value, disabled, strategy, ...rest } = props;
   const { model } = useContext(ListContext);
+
+  const defaultProps = {
+    ref,
+    key: value,
+    label,
+    value,
+    disabled,
+    ...rest,
+  };
   if (model === 'multiple') {
-    return (
-      <CheckboxItem
-        ref={ref}
-        data-testid="list-item-checkbox"
-        label={label}
-        value={value}
-        disabled={disabled}
-        {...rest}
-      />
-    );
+    return <CheckboxItem {...defaultProps} data-testid="list-item-checkbox" />;
   }
   if (model === 'cascader') {
     return (
@@ -34,7 +34,7 @@ export const InnerItem = WithRef<HTMLLIElement, ItemProps>((props, ref?) => {
       />
     );
   }
-  return <BaseItem ref={ref} data-testid="list-item-base" label={label} value={value} disabled={disabled} {...rest} />;
+  return <BaseItem {...defaultProps} data-testid="list-item-base" />;
 });
 const Item: React.ForwardRefExoticComponent<ItemProps & React.RefAttributes<HTMLLIElement>> & { isItem?: boolean } =
   InnerItem;

@@ -79,6 +79,10 @@ export interface ListPickerProps extends Pick<ListProps, 'model'> {
    * recentId Recent取值
    */
   recentId?: string;
+  /**
+   * 是否跟随trigger宽度
+   */
+  autoWidth?: boolean;
   ['data-testid']?: string;
 }
 

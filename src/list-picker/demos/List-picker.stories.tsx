@@ -342,24 +342,20 @@ export const Default: Story<ListPickerProps> = (args: ListPickerProps) => {
   );
 };
 const getGroup = (type: string, isSystem = false) => {
-  if (type === 'custom') {
-    return isSystem ? ['preparedEvent', '预置事件'] : ['custom', '埋点事件'];
+  switch (type) {
+    case 'custom':
+      return isSystem ? ['preparedEvent', '预置事件'] : ['custom', '埋点事件'];
+    case 'simple':
+      return ['simple', '无埋点事件'];
+    case 'virtual':
+      return ['virtual', '虚拟事件'];
+    case 'prepared':
+      return ['prepared', '预置指标'];
+    case 'complex':
+      return ['complex', '自定义指标'];
+    default:
+      return ['unknow', '未知类型'];
   }
-  if (type === 'simple') {
-    return ['simple', '无埋点事件'];
-  }
-  if (type === 'virtual') {
-    return ['virtual', '虚拟事件'];
-  }
-
-  if (type === 'prepared') {
-    return ['prepared', '预置指标'];
-  }
-
-  if (type === 'complex') {
-    return ['complex', '自定义指标'];
-  }
-  return ['unknow', '未知类型'];
 };
 
 const measurements: Tmesurements[] = [
@@ -377,62 +373,98 @@ const measurements: Tmesurements[] = [
   { id: 'KzpNzpkv', name: 'E_搜索结果', type: 'custom', action: '', elementId: '', isSystem: false },
   { id: 'zZDbKQ9o', name: 'E_搜索结果点击', type: 'custom', action: '', elementId: '', isSystem: false },
 ];
-const iconMap = (e: Types, size = '14px') =>
-  ({
-    simple: <CodelessTrackingOutlined size={size} />,
-    virtual: <EventsTrackingOutlined size={size} />,
-    custom: <EventsTrackingOutlined size={size} />,
-    complex: <MetricsPresetOutlined size={size} />,
-    prepared: <EventsPresetOutlined size={size} />,
-  }[e]);
-const searchData = () =>
-  measurements.map((o: Tmesurements) => ({
+const iconMap = {
+  simple: <CodelessTrackingOutlined size="14px" />,
+  virtual: <EventsTrackingOutlined size="14px" />,
+  custom: <EventsTrackingOutlined size="14px" />,
+  complex: <MetricsPresetOutlined size="14px" />,
+  prepared: <EventsPresetOutlined size="14px" />,
+};
+const renderWrapper = (o: Tmesurements) => (element: React.ReactElement) =>
+  (
+    <Popover
+      allowArrow
+      placement="right"
+      strategy="fixed"
+      triggerStyle={{ display: 'block' }}
+      content={
+        <Card style={{ width: '320px' }}>
+          <Card.Meta title={o.name} description={o.id} />
+          <p>{`${o.id}${o.name}${o.type}`}</p>
+          <Skeleton.Image style={{ width: '100%' }} />
+          <Table
+            title="事件属性"
+            pagination={false}
+            columns={[
+              {
+                dataIndex: 'id',
+                title: 'Id',
+              },
+              {
+                dataIndex: 'name',
+                title: 'Name',
+              },
+            ]}
+            dataSource={Array(2)
+              .fill('')
+              .map((_, index) => ({
+                id: `${index + 1 * 1000}`,
+                name: `Name ${index + 1}`,
+              }))}
+          />
+        </Card>
+      }
+    >
+      {element}
+    </Popover>
+  );
+const renderWrapper2 = (o: Tmesurements) => (element: React.ReactElement) =>
+  (
+    <Popover
+      allowArrow
+      strategy="fixed"
+      placement="right"
+      content={
+        <Card style={{ width: 320 }}>
+          <Card.Meta
+            title={
+              <div>
+                {o.name}
+                <Tag status="draft" style={{ marginLeft: 8 }}>
+                  {o.type}
+                </Tag>
+              </div>
+            }
+            description={o.id}
+          />
+          <Divider style={{ width: '100%' }} />
+          <div>{o.type}</div>
+        </Card>
+      }
+      triggerStyle={{ display: 'block' }}
+    >
+      {element}
+    </Popover>
+  );
+const dataFactory = (
+  arr: Tmesurements[],
+  wrapperFC: (o: Tmesurements) => (element: React.ReactElement) => JSX.Element
+): OptionProps[] =>
+  arr?.map((o: Tmesurements) => ({
     ...o,
     label: o.name,
     value: o.id,
-    prefix: iconMap(o.type),
+    prefix: iconMap[o.type],
     groupId: getGroup(o.type, o.isSystem)[0],
     groupName: getGroup(o.type, o.isSystem)[1],
-    wrapper: (element: React.ReactElement) => (
-      <Popover
-        allowArrow
-        placement="right"
-        strategy="fixed"
-        triggerStyle={{ display: 'block' }}
-        content={
-          <Card style={{ width: '320px' }}>
-            <Card.Meta title={o.name} description={o.id} />
-            <p>{`${o.id}${o.name}${o.type}`}</p>
-            <Skeleton.Image style={{ width: '100%' }} />
-            <Table
-              title="事件属性"
-              pagination={false}
-              columns={[
-                {
-                  dataIndex: 'id',
-                  title: 'Id',
-                },
-                {
-                  dataIndex: 'name',
-                  title: 'Name',
-                },
-              ]}
-              dataSource={Array(2)
-                .fill('')
-                .map((_, index) => ({
-                  id: `${index + 1 * 1000}`,
-                  name: `Name ${index + 1}`,
-                }))}
-            />
-          </Card>
-        }
-      >
-        {element}
-      </Popover>
-    ),
+    wrapper: wrapperFC(o),
   }));
+
+const searchData = dataFactory(measurements, renderWrapper);
+const searchData2 = dataFactory(measurements, renderWrapper2);
+const searchData3 = (v: number) => searchData.filter((_: any, index: number) => index % v === 0);
 export const EventTargetPicker = (args: ListPickerProps) => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>('');
   return (
     <ListPicker
       {...args}
@@ -448,15 +480,15 @@ export const EventTargetPicker = (args: ListPickerProps) => {
       <SearchBar style={{ width: '100%' }} onChange={null} placeholder="搜索事件名称" />
       <Tabs defaultValue="all">
         <Tabs.Tab value="all" label="全部">
-          <List.Selection options={searchData()}>
+          <List.Selection options={searchData}>
             <Recent />
           </List.Selection>
         </Tabs.Tab>
         <Tabs.Tab value="event" label="事件">
-          <List.Selection options={searchData().filter((_: any, index: number) => index % 2 === 0)} />
+          <List.Selection options={searchData3(2)} />
         </Tabs.Tab>
         <Tabs.Tab value="metrics" label="计算指标">
-          <List.Selection options={searchData().reverse()} />
+          <List.Selection options={searchData} />
         </Tabs.Tab>
       </Tabs>
     </ListPicker>
@@ -465,7 +497,6 @@ export const EventTargetPicker = (args: ListPickerProps) => {
 
 export const UserPicker = (args: ListPickerProps) => {
   const [value, setValue] = useState<string[]>([]);
-
   return (
     <ListPicker
       {...args}
@@ -541,46 +572,9 @@ export const TargetUserPicker = (args: ListPickerProps) => {
   );
 };
 
-export const DimensionPicker = (args: ListPickerProps) => {
+export const DimensionPicker = () => {
   const [value, setValue] = useState('');
-
-  const searchData2 = () =>
-    measurements.map((o: Tmesurements) => ({
-      ...o,
-      label: o.name,
-      value: o.id,
-      prefix: iconMap(o.type),
-      groupId: getGroup(o.type, o.isSystem)[0],
-      groupName: getGroup(o.type, o.isSystem)[1],
-      wrapper: (element: React.ReactElement) => (
-        <Popover
-          distoryOnHide
-          allowArrow
-          strategy="fixed"
-          placement="right"
-          content={
-            <Card style={{ width: 320 }}>
-              <Card.Meta
-                title={
-                  <div>
-                    {o.name}
-                    <Tag status="draft" style={{ marginLeft: 8 }}>
-                      {o.type}
-                    </Tag>
-                  </div>
-                }
-                description={o.id}
-              />
-              <Divider style={{ width: '100%' }} />
-              <div>{o.type}</div>
-            </Card>
-          }
-          triggerStyle={{ display: 'block' }}
-        >
-          {element}
-        </Popover>
-      ),
-    }));
+  const renderSelection = (v: number) => <List.Selection options={searchData3(v)} />;
   return (
     <ListPicker
       value={value}
@@ -592,7 +586,6 @@ export const DimensionPicker = (args: ListPickerProps) => {
       }}
       getContainer={() => document.body}
       overlayStyle={{ width: 320 }}
-      {...args}
     >
       <SearchBar
         style={{ width: '100%' }}
@@ -603,19 +596,17 @@ export const DimensionPicker = (args: ListPickerProps) => {
       />
       <Tabs defaultValue="all">
         <Tabs.Tab value="all" label="全部">
-          <List.Selection options={searchData2()}>
-            <Recent />
-          </List.Selection>
+          <List.Selection options={searchData2} />
         </Tabs.Tab>
         <Tabs.Tab value="event" label="事件属性">
-          <List.Selection options={searchData2().filter((_: any, index: number) => index % 2 === 0)} />
+          {renderSelection(2)}
         </Tabs.Tab>
-        <Tabs.Tab value="" label="访问属性">
-          <List.Selection options={searchData2().reverse()} />
+        {/* <Tabs.Tab value="visit" label="访问属性">
+          <List.Selection options={searchData3(3)} />
         </Tabs.Tab>
         <Tabs.Tab value="segements" label="用户属性">
-          <List.Selection options={searchData2().reverse()} />
-        </Tabs.Tab>
+          <List.Selection options={searchData3(4)} />
+        </Tabs.Tab> */}
       </Tabs>
     </ListPicker>
   );
