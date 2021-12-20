@@ -20,7 +20,11 @@ export default function ListPage() {
         </a>
       </p>
       <p>Upgrading Guide</p>
-
+      <ul>
+        <li>
+          <a href="https://www.npmjs.com/package/rc-collapse">rc-collapse</a>
+        </li>
+      </ul>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
       <Canvas>

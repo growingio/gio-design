@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import Docs from './PagePage';
 import Page, { PageProps } from '../index';
-import { Link } from '../..';
+import { Button } from '../..';
 import TablePng from '../assets/table.png';
 import '../style';
 
@@ -63,7 +63,10 @@ const demoTemplate: Story<PageProps> = (args) => (
               cta={null}
               description={
                 <>
-                  {item} <Link href="http://localhost:6006/?path=/story/components-page--demo">从{item}中移除</Link>
+                  {item}
+                  <Button type="text" size="small">
+                    从{item}中移除
+                  </Button>
                 </>
               }
             />
@@ -100,7 +103,10 @@ noResource.args = {
   type: 'noResource',
   description: (
     <>
-      该看板已删除 <Link href="http://localhost:6006/?path=/story/components-page--demo">取消订阅</Link>
+      该看板已删除{' '}
+      <Button size="small" type="text">
+        取消订阅
+      </Button>
     </>
   ),
   cta: defaultCTA,
@@ -110,7 +116,10 @@ noShared.args = {
   type: 'noShared',
   description: (
     <>
-      此看板已取消与你共享 <Link href="http://localhost:6006/?path=/story/components-page--demo">取消订阅</Link>
+      此看板已取消与你共享{' '}
+      <Button size="small" type="text">
+        取消订阅
+      </Button>
     </>
   ),
   cta: defaultCTA,

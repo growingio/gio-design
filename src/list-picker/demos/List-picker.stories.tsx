@@ -703,7 +703,7 @@ export const Demo: Story<ListPickerProps> = (args) => (
         </td>
       </tr>
       <tr>
-        <td>Section</td>
+        <td>Selection</td>
         <td className="list-picker-demo-td">
           <Selection {...args} />
         </td>

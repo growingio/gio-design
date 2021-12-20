@@ -1,9 +1,9 @@
-import React from 'react'
-import RcCollapse from 'rc-collapse'
+import React from 'react';
+import RcCollapse from 'rc-collapse';
 import classnames from 'classnames';
-import { RightFilled } from '@gio-design/icons'
+import { RightFilled } from '@gio-design/icons';
 import { cloneElement } from '../utils/reactNode';
-import { CollapseProps, PanelProps } from './interface'
+import { CollapseProps, PanelProps } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import CollapsePanel from './CollapsePanel';
 
@@ -11,18 +11,12 @@ interface CollapseInterface extends React.FC<CollapseProps> {
   Panel: typeof CollapsePanel;
 }
 
-const Collapse: CollapseInterface = props => {
-  const { destoryOnHide, disabled, children, dataTestId = "collapse" } = props
+export const Collapse: CollapseInterface = (props) => {
+  const { destoryOnHide, disabled, children, dataTestId = 'collapse' } = props;
   const prefixCls = usePrefixCls('collapse');
   const renderExpandIcon = (panelProps: PanelProps = {}) => {
     const { expandIcon } = props;
-    const icon = (
-      expandIcon ? (
-        expandIcon(panelProps)
-      ) : (
-        <RightFilled />
-      )
-    );
+    const icon = expandIcon ? expandIcon(panelProps) : <RightFilled />;
     return (
       <div className={classnames('collapse-arrow-bar', panelProps.isActive ? 'arrow-isRotate' : undefined)}>
         {cloneElement(icon, () => ({
@@ -35,13 +29,16 @@ const Collapse: CollapseInterface = props => {
     <div className="gio-collapse-contain" data-testid={dataTestId}>
       <RcCollapse
         {...props}
-        prefixCls={prefixCls} expandIcon={renderExpandIcon} destroyInactivePanel={destoryOnHide} collapsible={(disabled ? 'disabled' : undefined)}
+        prefixCls={prefixCls}
+        expandIcon={renderExpandIcon}
+        destroyInactivePanel={destoryOnHide}
+        collapsible={disabled ? 'disabled' : undefined}
       >
         {children}
-      </RcCollapse >
+      </RcCollapse>
     </div>
-  )
-}
-Collapse.Panel = CollapsePanel
+  );
+};
+Collapse.Panel = CollapsePanel;
 
 export default Collapse;
