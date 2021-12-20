@@ -5,7 +5,7 @@ import { OverridableComponent } from '@gio-design/utils';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { LinkTypeMap } from './interface';
 
-const Link = React.forwardRef((props, ref) => {
+export const Link = React.forwardRef((props, ref) => {
   const {
     className,
     children,
