@@ -13,7 +13,9 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>((props, 
   return <Button ref={ref} className={classes} prefix={children} {...restProps} />;
 });
 
-IconButton.displayName = 'IconButton';
+export const ICON_BUTTON_DISPLAY_NAME = 'IconButton';
+
+IconButton.displayName = ICON_BUTTON_DISPLAY_NAME;
 
 IconButton.defaultProps = {
   type: 'primary',

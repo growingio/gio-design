@@ -56,7 +56,9 @@ const Button = WithRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   );
 });
 
-Button.displayName = 'Button';
+export const BUTTON_DISPLAY_NAME = 'Button';
+
+Button.displayName = BUTTON_DISPLAY_NAME;
 
 Button.defaultProps = {
   type: 'primary',

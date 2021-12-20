@@ -1,5 +1,6 @@
+/* eslint-disable no-console */
 import React, { useState } from 'react';
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Meta } from '@storybook/react/types-6-0';
 import {
   DownloadOutlined,
   EmailOutlined,
@@ -13,7 +14,7 @@ import {
   MoreOutlined,
 } from '@gio-design/icons';
 import Docs from './DropdownPage';
-import Dropdown, { DropdownProps } from '../index';
+import Dropdown from '../index';
 import '../style';
 import Button from '../../button';
 import List, { Item } from '../../list';
@@ -127,32 +128,84 @@ export const Demo = () => {
     </>
   );
 };
-const Template: Story<DropdownProps> = (args) => <Dropdown {...args} data-testid="template-dropdown" />;
-export const Default = Template.bind({});
-Default.args = {
-  content: (
-    <List>
-      <Item prefix={<ReloadOutlined size="14px" />} value="1">
-        刷新数据
-      </Item>
-      <Item prefix={<FullScreenOutlined size="14px" />} value="2">
-        进入全屏
-      </Item>
-      <Item prefix={<DownloadOutlined size="14px" />} value="3">
-        下载 PDF
-      </Item>
-      <Divider style={{ margin: '0 0 4px' }} />
-      <CascaderItem label="邮件推送" value="4" prefix={<EmailOutlined size="14px" />}>
-        <List>
-          <Item value="4-1" label="创建邮件推送" prefix={<PlusOutlined size="14px" />} />
-          <Item value="4-1" label="邮件推送管理" prefix={<SettingOutlined size="14px" />} />
+
+export const Default = () => (
+  <>
+    <p>Dropdown 在非受控模式下，会在 content 外包一层 div，并且监听该 div 的 onClick 事件，以实现自动隐藏和显示。</p>
+    <p>
+      如果触发元素为 Button 或者 IconButton，Dropdown 在展开的时候会添加一个 active 参数，如果不需要，可以在 Button 或者
+      IconButton 中设置 active={`{false}`} 来强制覆盖。
+    </p>
+    <Dropdown
+      data-testid="template-dropdown"
+      content={
+        <List onChange={(changedValue, options) => console.log(changedValue, options)}>
+          <List.Item prefix={<ReloadOutlined size="14px" />} value="1">
+            刷新数据
+          </List.Item>
+          <List.Item prefix={<FullScreenOutlined size="14px" />} value="2">
+            进入全屏
+          </List.Item>
+          <List.Item prefix={<DownloadOutlined size="14px" />} value="3">
+            下载 PDF
+          </List.Item>
+          <PopConfirm
+            title="您确认要删除吗？"
+            trigger="click"
+            getContainer={() => document.body}
+            onContentClick={(event) => event.stopPropagation()}
+          >
+            {/** 需要包裹一层 div，因为 List.Item onClick 的参数跟 PopConfirm 里监听 trigger onClick 的参数不一致，List.Item onClick 返回的参数为 value 而不是 event */}
+            <div role="none" onClick={(event) => event.stopPropagation()}>
+              <List.Item value="delete" prefix={<DeleteOutlined size="14px" />}>
+                删除
+              </List.Item>
+            </div>
+          </PopConfirm>
+          <Divider style={{ margin: '0 0 4px' }} />
+          <CascaderItem
+            label="邮件推送"
+            value="4"
+            prefix={<EmailOutlined size="14px" />}
+            // 阻止 Dropdown 自动关闭
+            onClick={(_, event) => event.stopPropagation()}
+          >
+            <List>
+              <List.Item value="4-1" label="创建邮件推送" prefix={<PlusOutlined size="14px" />} />
+              <List.Item value="4-1" label="邮件推送管理" prefix={<SettingOutlined size="14px" />} />
+            </List>
+          </CascaderItem>
         </List>
-      </CascaderItem>
-    </List>
-  ),
-  children: (
-    <Button type="secondary" prefix={<MoreHorizonalOutlined />}>
-      更多
-    </Button>
-  ),
-};
+      }
+      // 如果在 Table 中使用，并监听了 rowClick 事件，则需要使用此参数
+      onContentClick={(event) => event.stopPropagation()}
+    >
+      <Button type="secondary" prefix={<MoreHorizonalOutlined />}>
+        更多
+      </Button>
+    </Dropdown>
+  </>
+);
+
+export const Disabled = () => (
+  <>
+    <h4>不可用的菜单项，和分割线。</h4>
+    <p>如果不想 Dropdown 自动隐藏，可以在 ListItem 上添加 onClick 监听器，阻止事件冒泡。</p>
+    <Dropdown
+      content={
+        <List>
+          <List.Item value="Apple">Apple</List.Item>
+          <List.Item value="Orange">Orange</List.Item>
+          <Divider style={{ margin: 0 }} />
+          <List.Item value="Banana" disabled>
+            Banana
+          </List.Item>
+        </List>
+      }
+    >
+      <Button type="secondary" prefix={<MoreHorizonalOutlined />}>
+        更多
+      </Button>
+    </Dropdown>
+  </>
+);

@@ -1,5 +1,7 @@
 import { PopoverProps } from '../popover';
 
-type DropdownProps = PopoverProps;
+interface DropdownProps extends Omit<PopoverProps, 'children'> {
+  children: React.ReactElement;
+}
 
 export default DropdownProps;
