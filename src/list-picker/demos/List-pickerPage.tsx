@@ -23,6 +23,46 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-listpicker--default" />
       </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '单选' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-listpicker--single" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '多选' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-listpicker--multiple" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '不可选' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-listpicker--disable" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '全选' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-listpicker--all-chose" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '分组' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-listpicker--selection" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '事件选择器' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-listpicker--event-target-picker" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '用户选择器' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-listpicker--user-picker" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '目标用户选择器' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-listpicker--target-user-picker" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '属性选择器' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-listpicker--dimension-picker" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '分群选择器' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-listpicker--split-picker" />
+      </Canvas>
       <ArgsTable of={ListPicker} />
     </>
   );
