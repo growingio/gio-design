@@ -157,6 +157,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
         allowClear={allowClear}
         value={timeRange && humanizeTimeRange(timeRange)}
         size={size}
+        active={controlledVisible}
         suffix={suffix}
         className={className}
         style={style}
