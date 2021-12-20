@@ -52,8 +52,7 @@ export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file, onReSelect, 
 
   const message = file.status === 'success' ? `${uploadSuccess}!` : file.errorMessage;
 
-  const handleSelect = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleSelect = () => {
     onReSelect?.(file);
     onRemove?.();
   };
