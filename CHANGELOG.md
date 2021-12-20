@@ -1,3 +1,22 @@
+# [22.8.0](https://github.com/growingio/gio-design/compare/v22.7.0...v22.8.0) (2021-12-20)
+
+
+### Bug Fixes
+
+* **input:** fix input console ([#1696](https://github.com/growingio/gio-design/issues/1696)) ([7879bb4](https://github.com/growingio/gio-design/commit/7879bb4b7f8bf750cbc596d4185c993e942e9239))
+* **list-picker:** fix list-picker demo ([#1678](https://github.com/growingio/gio-design/issues/1678)) ([a38017f](https://github.com/growingio/gio-design/commit/a38017fa479aa7ed6219a90d16b4f115791e69d3))
+* **list:** support empty ([#1682](https://github.com/growingio/gio-design/issues/1682)) ([c1500f6](https://github.com/growingio/gio-design/commit/c1500f621989eec3869443e8c5b6516281bbff24))
+* **page:** fix page storybook and collapse parameters not show ([#1684](https://github.com/growingio/gio-design/issues/1684)) ([b138552](https://github.com/growingio/gio-design/commit/b1385521e65137393ef66338b5ceee28dc4682ea))
+* **past-time-picker:** fix active style ([#1700](https://github.com/growingio/gio-design/issues/1700)) ([c3c718c](https://github.com/growingio/gio-design/commit/c3c718c092f7cb38f3e633d8a52a56963b4da496))
+* **select:** fix select model prop error ([#1702](https://github.com/growingio/gio-design/issues/1702)) ([a40b4a4](https://github.com/growingio/gio-design/commit/a40b4a49e0adbe76e785af24a30c358915475ac0))
+* **upload:** fix upload reSelect not invoke model ([#1698](https://github.com/growingio/gio-design/issues/1698)) ([292f45a](https://github.com/growingio/gio-design/commit/292f45aa085472bc1d5d662edc5b8ad3280c42c5))
+
+
+### Features
+
+* **dropdown:** set active status on Button or IconButton when visible ([#1697](https://github.com/growingio/gio-design/issues/1697)) ([33d72d5](https://github.com/growingio/gio-design/commit/33d72d53a0798778d7840bb386d92cc369f92e1a))
+* **link:** support `component` prop ([#1699](https://github.com/growingio/gio-design/issues/1699)) ([0bb93f0](https://github.com/growingio/gio-design/commit/0bb93f0ff1199b151447ad85594bbd224863cdf2))
+
 # [22.7.0](https://github.com/growingio/gio-design/compare/v22.6.0...v22.7.0) (2021-12-16)
 
 
