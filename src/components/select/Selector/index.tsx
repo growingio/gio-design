@@ -62,7 +62,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
     },
     onFocus: () => {
       selectorRef?.current?.focus();
-    }
+    },
   }));
 
   const onMouseEnter = () => {
@@ -80,18 +80,14 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
     if (allowClear) onAllowClear();
   };
   const onFocus = useCallback(() => {
-    rest?.onFocus?.() // dropdown event mothods
-    onFocusChange?.(true)
-  },
-    [onFocusChange, rest],
-  )
+    rest?.onFocus?.(); // dropdown event mothods
+    onFocusChange?.(true);
+  }, [onFocusChange, rest]);
 
   const onBlur = useCallback(() => {
-    rest?.onBlur?.()
-    onFocusChange?.(false)
-  },
-    [onFocusChange, rest],
-  )
+    rest?.onBlur?.();
+    onFocusChange?.(false);
+  }, [onFocusChange, rest]);
 
   // ========================== render =======================
   const renderPlaceHolder = () => {
@@ -134,39 +130,31 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
         disabled={!isShowTooltip}
         title={allValueLabel?.join(',')}
         placement="bottom"
-        getTooltipContainer={()=> selectorRef?.current?.parentElement || document.body}
+        getTooltipContainer={() => selectorRef?.current?.parentElement || document.body}
       >
         <div
           className={`${prefix}-item-all`}
           style={{ maxWidth: style && style.width && style?.width > 0 ? 'fill-available' : undefined }}
         >
-           <span
-              ref={selectorAllRef}
-              className={classnames(`${prefix}-item-all-text`,{
-            })}
-            >
-              {allValueLabel?.join('，')}
-            </span>
+          <span ref={selectorAllRef} className={classnames(`${prefix}-item-all-text`, {})}>
+            {allValueLabel?.join('，')}
+          </span>
         </div>
       </ToolTip>
     ) : null;
-    
   };
 
   const renderSingleValue = () => {
     const text = optionLabelRenderer(value as string | number, getOptionByValue(value as string | number));
-    return !input && (typeof value === 'string' || typeof value === 'number') ? (
+    return (!input || searchType === 'inner') && (typeof value === 'string' || typeof value === 'number') ? (
       <ToolTip
         disabled={!isShowTooltip}
         title={text}
         placement="bottom"
-        getTooltipContainer={()=>selectorRef?.current?.parentElement || document.body}
+        getTooltipContainer={() => selectorRef?.current?.parentElement || document.body}
       >
-        <div className={classnames(`${prefix}-item`)}>      
-          <span
-            ref={selectorAllRef}
-            className={classnames(`${prefix}-item-text`)}
-          >
+        <div className={classnames(`${prefix}-item`)}>
+          <span ref={selectorAllRef} className={classnames(`${prefix}-item-text`)}>
             {text}
           </span>
         </div>
@@ -188,7 +176,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
         [`${prefix}-disabled`]: disabled,
       },className)}
       aria-disabled={disabled}
-      aria-hidden='true'
+      aria-hidden="true"
       style={style}
       ref={selectorRef as any}
       // Dropdown trigger set Event on rest, fix dropdown can not onclick trigger
@@ -198,7 +186,7 @@ const Selector: React.ForwardRefRenderFunction<unknown, SelectorProps> = (props,
       onBlur={onBlur}
       onKeyDown={onSelectorKeyDown}
     >
-      <div id='selector' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+      <div id="selector" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         <div className={`${prefix}-selector`}>
           <div className={classnames(`${prefix}-values-wrapper`)} ref={selectValuesRef}>
             {multiple ? renderMultipleValue() : renderSingleValue()}

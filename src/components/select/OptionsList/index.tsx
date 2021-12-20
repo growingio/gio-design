@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React, {LegacyRef, useCallback, useImperativeHandle, useMemo, useRef } from 'react';
+import React, { LegacyRef, useCallback, useImperativeHandle, useMemo, useRef } from 'react';
 import classnames from 'classnames';
 import { ListRef } from 'rc-virtual-list';
 import VirtualList from '../VirtualList';
@@ -8,8 +8,6 @@ import Checkbox from '../../checkbox';
 import { ForwardRenderGroup, ForwardRenderOption, ForwardRenderTooltip } from './OptionItem';
 import SearchBar from '../../search-bar';
 import Button from '../../button';
-
-
 
 const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (props, ref) => {
   const {
@@ -46,10 +44,10 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
 
   useImperativeHandle(ref, () => ({
     onConfirm: () => {
-      onConfirm()
+      onConfirm();
     },
     onCancel: () => {
-      onCancel()
+      onCancel();
     },
     onFocus: () => {
       OptionListRef?.current?.focus();
@@ -58,16 +56,12 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
       OptionListRef?.current?.blur();
     },
     scrollIntoView: (index: number, offset?: number) => {
-      scrollIntoView(index, offset)
-    }
-    
+      scrollIntoView(index, offset);
+    },
   }));
 
-
-  
   const filterflattenOptions = useMemo(
-    () =>
-      data.filter((filterOption: Option & { isSelectOptGroup: boolean }) => !filterOption.isSelectOptGroup),
+    () => data.filter((filterOption: Option & { isSelectOptGroup: boolean }) => !filterOption.isSelectOptGroup),
     [data]
   );
 
@@ -79,11 +73,10 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
       if (checked) {
         setTempValue((value || []) as React.ReactText[]);
       } else {
-        const values = filterflattenOptions.reduce(
-          (prev: unknown[], curr: Option) => [...prev, curr.value || curr.label],
-          []
-        ).filter((v:any) => !tempValue.includes(v))
-        
+        const values = filterflattenOptions
+          .reduce((prev: unknown[], curr: Option) => [...prev, curr.value || curr.label], [])
+          .filter((v: any) => !tempValue.includes(v));
+
         setTempValue(values as React.ReactText[]);
       }
       return;
@@ -94,10 +87,10 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
         : filterflattenOptions.reduce((prev: any[], curr: Option) => [...prev, curr.value || curr.label], [])
     );
   };
-  const onConfirm = useCallback(() => onTempValueChange(tempValue),[onTempValueChange, tempValue]);
+  const onConfirm = useCallback(() => onTempValueChange(tempValue), [onTempValueChange, tempValue]);
   const onCancel = useCallback(() => onTempValueChange([]), [onTempValueChange]);
 
-  const scrollIntoView = (index: number,offset?: number) => {
+  const scrollIntoView = (index: number, offset?: number) => {
     VirtualListRef?.current?.scrollTo({ index, offset });
   };
   const renderAllOptions = () => (
@@ -105,9 +98,9 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
       ref={selectAllRef}
       className={classnames(`${prefixCls}-list-option-all`, {})}
       onClick={(e) => {
-          e.stopPropagation();
-          onAllClick(isChecked);
-        }}
+        e.stopPropagation();
+        onAllClick(isChecked);
+      }}
       aria-hidden="true"
     >
       <>
@@ -116,21 +109,22 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
       </>
       全部
     </div>
-    );
+  );
   return (
     <div
       className={`${prefixCls}-list`}
       style={style}
       ref={OptionListRef as LegacyRef<HTMLDivElement>}
-      role='list'
-      aria-hidden='true'
+      role="list"
+      aria-hidden="true"
       // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
       tabIndex={0}
       onMouseLeave={() => setActiveIndex(-1)}
       onKeyDown={onOptionListKeyDown}
     >
       {searchType === 'inner' && (
-        <div className={classnames(`${prefixCls}-list-search-bar`, {})}>
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+        <div className={classnames(`${prefixCls}-list-search-bar`, {})} onKeyDown={(e) => e.stopPropagation()}>
           <SearchBar onChange={onInputChange} value={input} placeholder={placeholder} />
         </div>
       )}
@@ -145,12 +139,13 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
           itemHeight={itemHeight}
           {...restProps}
         >
-          {(option: Option & { isSelectOptGroup: boolean}, index: number) => option.isSelectOptGroup ? (
-            <ForwardRenderGroup option={option} prefixCls={prefixCls} groupStyle={groupStyle} />
+          {(option: Option & { isSelectOptGroup: boolean }, index: number) =>
+            option.isSelectOptGroup ? (
+              <ForwardRenderGroup option={option} prefixCls={prefixCls} groupStyle={groupStyle} />
             ) : (
               <ForwardRenderTooltip
                 tooltip={option?.tooltip}
-                render={(
+                render={
                   <ForwardRenderOption
                     option={option}
                     prefixCls={prefixCls}
@@ -162,9 +157,10 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
                     setActiveIndex={setActiveIndex}
                     {...restProps}
                   />
-                )}
+                }
               />
-            )}
+            )
+          }
         </VirtualList>
       ) : (
         notFoundContent
@@ -183,7 +179,7 @@ const OptionsList: React.ForwardRefRenderFunction<any, OptionsListProps> = (prop
             取消
           </Button>
           <Button
-            className={classnames({[`${prefixCls}-button-active`]: activeIndex === data.length + 1})}
+            className={classnames({ [`${prefixCls}-button-active`]: activeIndex === data.length + 1 })}
             size="middle"
             onClick={onConfirm}
           >
