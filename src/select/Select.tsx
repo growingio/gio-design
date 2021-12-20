@@ -122,6 +122,7 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
         width: autoWidth ? Math.max(120, triggerRef?.current?.clientWidth || 0) : undefined,
         ...contentStyle,
       }}
+      model="single"
       prefix={prefix}
       suffix={suffix}
       options={mergedOptions}
