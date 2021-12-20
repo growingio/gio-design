@@ -6,4 +6,5 @@ export default {
     if (isNil(text)) return `展开全部`;
     return `展开全部（${text}）`;
   },
+  exptyText: '暂无数据',
 };

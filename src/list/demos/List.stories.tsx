@@ -242,29 +242,34 @@ const ItemTemplate: Story<ItemProps> = () => {
   };
   const ref = useRef(null);
   return (
-    <div className="demo-box">
-      <List onChange={() => console.log('list onChange触发')} ref={ref}>
-        <Item value="first">第1条咸鱼</Item>
-        <Item value="second" prefix={<PlusOutlined size="14px" />}>
-          第2条咸鱼
-        </Item>
-        <Item value="second-1" prefix={<PlusOutlined size="14px" />} suffix={<FilterOutlined size="14px" />}>
-          第2-1条咸鱼
-        </Item>
-        <Item value="third" suffix={<FilterOutlined size="14px" />} onClick={itemClick}>
-          mouseEvent
-        </Item>
-        <Item value="third" onClick={itemClick} suffix={<FilterOutlined size="14px" onClick={suffixClick} />}>
-          第3-1 拦截suffix点击
-        </Item>
-        <Item value="four" disabled onClick={itemClick}>
-          第4条咸鱼
-        </Item>
-        <Item value="five" disabled disabledTooltip="disabledTooltip">
-          第5条咸鱼
-        </Item>
-        <Item value="six">{'第666666条咸鱼'.repeat(5)}</Item>
-      </List>
+    <div style={{ display: 'flex' }}>
+      <div className="demo-box">
+        <List onChange={() => console.log('list onChange触发')} ref={ref}>
+          <Item value="first">第1条咸鱼</Item>
+          <Item value="second" prefix={<PlusOutlined size="14px" />}>
+            第2条咸鱼
+          </Item>
+          <Item value="second-1" prefix={<PlusOutlined size="14px" />} suffix={<FilterOutlined size="14px" />}>
+            第2-1条咸鱼
+          </Item>
+          <Item value="third" suffix={<FilterOutlined size="14px" />} onClick={itemClick}>
+            mouseEvent
+          </Item>
+          <Item value="third" onClick={itemClick} suffix={<FilterOutlined size="14px" onClick={suffixClick} />}>
+            第3-1 拦截suffix点击
+          </Item>
+          <Item value="four" disabled onClick={itemClick}>
+            第4条咸鱼
+          </Item>
+          <Item value="five" disabled disabledTooltip="disabledTooltip">
+            第5条咸鱼
+          </Item>
+          <Item value="six">{'第666666条咸鱼'.repeat(5)}</Item>
+        </List>
+      </div>
+      <div className="demo-box">
+        <List options={[]} needEmpty />
+      </div>
     </div>
   );
 };

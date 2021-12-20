@@ -6,4 +6,5 @@ export default {
     if (isNil(text)) return `Expand All`;
     return `Expand All（${text}）`;
   },
+  exptyText: 'No data',
 };

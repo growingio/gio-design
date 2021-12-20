@@ -1,10 +1,11 @@
+import React from 'react';
 import { InputButtonProps } from '../input';
 // import { OptionProps as CascaderOptionProps } from '../cascader/interfance';
 import { OptionProps } from '../list/interfance';
 import { Placement, TriggerAction } from '../popover/interface';
 import { ListProps } from '../list';
 
-export interface ListPickerProps extends Pick<ListProps, 'model'> {
+export interface ListPickerProps extends Pick<ListProps, 'model' | 'empty' | 'needEmpty'> {
   size?: 'small' | 'normal';
   /**
    * 触发方式

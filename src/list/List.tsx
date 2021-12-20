@@ -33,6 +33,8 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     renderItem,
     onClick,
     itemStrategy,
+    empty,
+    needEmpty = false,
     ...listRestProps
   } = props;
 
@@ -52,6 +54,8 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     isSelection,
   } = context;
   const mergedModel = useMemo(() => model ?? contextModel, [contextModel, model]);
+  const mergedEmpty = empty ?? context.emptyNode;
+  const mergedIsEmpty = needEmpty || context.isEmpty;
   const mergedDisabled = disabled ?? contextDisabled;
   /** end */
 
@@ -128,7 +132,24 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     return childs;
   };
   if (mergedOptions.length === 0) {
-    return <></>;
+    if (isSelection || !mergedIsEmpty) {
+      return <></>;
+    }
+    return (
+      <div
+        className={classNames(`${prefixCls}`, className, {
+          [`${usePrefixCls('cascader')}`]: mergedModel === 'cascader',
+          [`${usePrefixCls('list')}--empty`]: mergedOptions.length === 0,
+        })}
+        data-testid="list-empty"
+        style={style}
+        ref={ref}
+        id={id}
+        title={title}
+      >
+        <Empty emptyNode={mergedEmpty} />
+      </div>
+    );
   }
   const renderExpandedItem = (needCollapse = false) => {
     if (needCollapse) {
@@ -157,6 +178,8 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
       value={{
         ...context,
         model: mergedModel,
+        isEmpty: mergedIsEmpty,
+        emptyNode: mergedEmpty,
         value,
         disabled: mergedDisabled,
         prefix,
@@ -177,7 +200,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
         title={title}
         {...listRestProps}
       >
-        {isSelection ? renderContent : <Empty>{renderContent}</Empty>}
+        {isSelection || !mergedIsEmpty ? renderContent : <Empty emptyNode={mergedEmpty}>{renderContent}</Empty>}
       </div>
     </ListContext.Provider>
   );

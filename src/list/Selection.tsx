@@ -14,7 +14,7 @@ import Empty from './Empty';
 type nodeType = React.ReactElement<ListProps> & { type: { isGIOList: boolean; isRecent: boolean } };
 
 const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) => {
-  const { className, style, options = [], children, ...rest } = props;
+  const { className, style, options = [], children, empty, ...rest } = props;
   const prefixCls = `${usePrefixCls(PREFIX)}--selection`;
   const isSelection = options?.every((val) => 'groupId' in val) ?? false;
 
@@ -24,7 +24,7 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
   );
   const cache = useCacheOptions();
   const contextVal = useContext(ListContext);
-  const { setOptions: contextSetOptions, onChange: contextOnChange } = contextVal;
+  const { setOptions: contextSetOptions, onChange: contextOnChange, emptyNode, isEmpty: needEmpty } = contextVal;
   const setOptions = (opts?: OptionProps[]) => {
     cache?.setOptions(opts);
     contextSetOptions?.(opts);
@@ -85,7 +85,9 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
         {!isSelection && !isEmpty(selectionOptions) && <List options={selectionOptions as OptionProps[]} />}
       </div>
     );
-    return selectionProvider(<Empty>{renderOptionsChildren}</Empty>);
+    return selectionProvider(
+      needEmpty ? <Empty emptyNode={empty ?? emptyNode}>{renderOptionsChildren}</Empty> : renderOptionsChildren
+    );
   }
 
   if (isFunction(children)) {
@@ -104,7 +106,7 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
       {toArray(children)?.map((node: nodeType) => renderContent(node))}
     </div>
   );
-  return selectionProvider(<Empty>{renderNormal}</Empty>);
+  return selectionProvider(needEmpty ? <Empty emptyNode={empty ?? emptyNode}>{renderNormal}</Empty> : renderNormal);
 };
 Selection.isSelection = true;
 export default Selection;

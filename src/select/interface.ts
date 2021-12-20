@@ -2,7 +2,7 @@ import { ListProps, OptionProps } from '../list';
 import { InputButtonProps } from '../input/interface';
 import { Placement } from '../popover/interface';
 // 无group 无 multiple
-export interface SelectProps extends Omit<ListProps, 'isMultiple' | 'onChange' | 'options' | 'collapse'> {
+export interface SelectProps extends Omit<ListProps, 'isMultiple' | 'onChange' | 'options'> {
   prefixCls?: string;
   /**
    * dataSource 数据源
