@@ -24,11 +24,16 @@ const clear3D = (transform: string): string | number[] => {
   if (!transform) {
     return transform;
   }
-  if (transform.indexOf('translate3d') === -1) {
-    return transform;
+
+  if (transform.indexOf('translate3d') !== -1) {
+    const text = clear(transform)(['translate3d(', 'px', ')']);
+    return text.split(',').map((value) => Number(value));
   }
-  const text = clear(transform)(['translate3d(', 'px', ')']);
-  return text.split(',').map((value) => Number(value));
+  if (transform.indexOf('translate') !== -1) {
+    const text = clear(transform)(['translate(', 'px', ')']);
+    return text.split(',').map((value) => Number(value));
+  }
+  return transform;
 };
 
 const usePop = ({ referenceElement, popperElement, placement, modifiers, strategy }: UsePopProps) => {
@@ -46,10 +51,10 @@ const usePop = ({ referenceElement, popperElement, placement, modifiers, strateg
       if (styles?.popper?.bottom === 'auto') {
         let yField = y < 0 ? 0 : y;
         yField = yField + divHeight > winHeight ? winHeight - divHeight : yField;
-        styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z}px)`;
+        styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z || 0}px)`;
       } else if (styles?.popper?.bottom === '0') {
         const yField = y + divHeight > 0 ? 0 : y;
-        styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z}px)`;
+        styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z || 0}px)`;
       }
     }
   }
