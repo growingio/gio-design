@@ -19,7 +19,7 @@ export const InnerItem = WithRef<HTMLLIElement, ItemProps>((props, ref?) => {
     ...rest,
   };
   if (model === 'multiple') {
-    return <CheckboxItem {...defaultProps} data-testid="list-item-checkbox" />;
+    return <CheckboxItem data-testid="list-item-checkbox" {...defaultProps} />;
   }
   if (model === 'cascader') {
     return (
@@ -34,7 +34,7 @@ export const InnerItem = WithRef<HTMLLIElement, ItemProps>((props, ref?) => {
       />
     );
   }
-  return <BaseItem {...defaultProps} data-testid="list-item-base" />;
+  return <BaseItem data-testid="list-item-base" {...defaultProps} />;
 });
 const Item: React.ForwardRefExoticComponent<ItemProps & React.RefAttributes<HTMLLIElement>> & { isItem?: boolean } =
   InnerItem;
