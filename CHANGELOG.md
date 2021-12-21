@@ -1,3 +1,11 @@
+## [22.8.2](https://github.com/growingio/gio-design/compare/v22.8.1...v22.8.2) (2021-12-21)
+
+
+### Bug Fixes
+
+* **listPicker:** fix listPicker lines ellipsis ([#1711](https://github.com/growingio/gio-design/issues/1711)) ([41ed2a1](https://github.com/growingio/gio-design/commit/41ed2a17b2bd1fc93232cafbe79da78f2f981fe6))
+* **Popover:** fix popover position for window browser ([#1712](https://github.com/growingio/gio-design/issues/1712)) ([d20aa1d](https://github.com/growingio/gio-design/commit/d20aa1dfbdd507d18803cd0488f316c277d624ec))
+
 ## [22.8.1](https://github.com/growingio/gio-design/compare/v22.8.0...v22.8.1) (2021-12-21)
 
 
