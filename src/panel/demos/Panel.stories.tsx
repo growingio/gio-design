@@ -196,7 +196,7 @@ export const TitleInfoCard = TitleInfoCardStory.bind({});
 TitleInfoCard.args = {
   title: '北区项目组',
   footer: '这里是footer区域',
-  description: '这是一个副标题这是一个副标题',
+  description: '这是一个副标题这是一个副标题'.repeat(10),
   avatar: <UserOutlined />,
   actions: (
     <div>

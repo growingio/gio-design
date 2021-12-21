@@ -42,28 +42,28 @@
   .text-body2();
 
   &-detail {
-    flex-grow: 1;
+    display: grid;
+    flex: 1 1 100%;
     overflow: hidden;
   }
   &-image {
+    flex: none;
     margin-right: 16px;
   }
   &-title {
     .text-h4();
     color: @gray-5;
-    white-space: nowrap;
   }
   &-description {
     margin-top: 4px;
-    color: #7b819c;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 20px;
+    color: @gray-4;
+    .text-body2();
   }
   &-action {
+    flex: none;
+    align-self: flex-start;
     margin-left: 16px;
   }
-
   &-title,
   &-description {
     overflow: hidden;
