@@ -13,6 +13,7 @@ import defaultLocale from './locales/zh-CN';
 import Card from '../../legacy/card';
 import Loading from '../../loading'; // new
 import Tag from '../../tag'; // new
+import { Text } from '../../index'; // new
 
 function PropertyCard(props: PropertyCardProps) {
   const locale = useLocale('PropertyPicker');
@@ -41,7 +42,7 @@ function PropertyCard(props: PropertyCardProps) {
       <Loading size="small" title={false} loading={loading}>
         <Card.Meta style={{ minHeight: '40px' }}>
           <Card.Meta>
-            <span className={`${propCardPrefixCls}-title`}>{data?.name}</span>
+            <Text className={`${propCardPrefixCls}-title`}>{data?.name}</Text>
             {data?.previewTypeName && (
               <Tag size="small" status="draft">
                 {data.previewTypeName}
