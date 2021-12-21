@@ -12,62 +12,62 @@ import {
 import IconButton from '../button/IconButton';
 import { AlertProps } from './interfaces';
 
-export const Alert: React.FC<AlertProps> = ({
-  message,
-  description,
-  closeable,
-  showIcon = false,
-  onClose,
-  icon,
-  type = 'info',
-  style,
-  ...restProps
-}: AlertProps) => {
-  const prefixCls = usePrefixCls('alert');
-  const [alertStatus, setAlertStatus] = useState(true);
+export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
+  (
+    { message, description, closeable, showIcon = false, onClose, icon, type = 'info', className, ...restProps },
+    ref
+  ) => {
+    const prefixCls = usePrefixCls('alert');
+    const [alertStatus, setAlertStatus] = useState(true);
 
-  const getIcon = () => {
-    switch (type) {
-      case 'success':
-        return <CheckCircleFilled />;
-      case 'warning':
-        return <WarningCircleFilled />;
-      case 'error':
-        return <CloseCircleFilled />;
-      case 'info':
-        return <InfoCircleFilled />;
-      default:
-        return icon || <InfoCircleFilled />;
-    }
-  };
+    const getIcon = () => {
+      switch (type) {
+        case 'success':
+          return <CheckCircleFilled />;
+        case 'warning':
+          return <WarningCircleFilled />;
+        case 'error':
+          return <CloseCircleFilled />;
+        case 'info':
+          return <InfoCircleFilled />;
+        default:
+          return icon || <InfoCircleFilled />;
+      }
+    };
 
-  const closeAlert = () => {
-    setAlertStatus(false);
-    onClose?.();
-  };
+    const closeAlert = () => {
+      setAlertStatus(false);
+      onClose?.();
+    };
 
-  return alertStatus ? (
-    <div style={style} className={classnames(prefixCls, `${prefixCls}-${type}`)} data-testid="alert" {...restProps}>
-      {showIcon && <div className={classnames(`${prefixCls}-icon`)}>{getIcon()}</div>}
-      <div className={classnames(showIcon ? null : `${prefixCls}-content-no-icon`, `${prefixCls}-content`)}>
-        {message && <div className={classnames(`${prefixCls}-content-title`)}>{message}</div>}
-        {message && description && <div className={classnames(`${prefixCls}-content-gap`)} />}
-        {description && <div className={classnames(`${prefixCls}-content-description`)}>{description}</div>}
+    return alertStatus ? (
+      <div
+        className={classnames(prefixCls, `${prefixCls}-${type}`, className)}
+        data-testid="alert"
+        ref={ref}
+        {...restProps}
+      >
+        {showIcon && <div className={classnames(`${prefixCls}-icon`)}>{getIcon()}</div>}
+        <div className={classnames(`${prefixCls}-content`, { [`${prefixCls}-content-no-icon`]: !showIcon })}>
+          {message && <div className={classnames(`${prefixCls}-content-title`)}>{message}</div>}
+          {message && description && <div className={classnames(`${prefixCls}-content-gap`)} />}
+          {description && <div className={classnames(`${prefixCls}-content-description`)}>{description}</div>}
+        </div>
+        {closeable && (
+          <IconButton
+            className={classnames(`${prefixCls}-closeButton`)}
+            onClick={closeAlert}
+            tabIndex={0}
+            onKeyPress={_.noop}
+            type="text"
+            size="small"
+          >
+            <CloseOutlined />
+          </IconButton>
+        )}
       </div>
-      {closeable && (
-        <IconButton
-          className={classnames(`${prefixCls}-closeButton`)}
-          onClick={closeAlert}
-          tabIndex={0}
-          onKeyPress={_.noop}
-          type="text"
-          size="small"
-        >
-          <CloseOutlined />
-        </IconButton>
-      )}
-    </div>
-  ) : null;
-};
+    ) : null;
+  }
+);
 
 export default Alert;
