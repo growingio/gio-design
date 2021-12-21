@@ -1,3 +1,11 @@
+## [22.8.1](https://github.com/growingio/gio-design/compare/v22.8.0...v22.8.1) (2021-12-21)
+
+
+### Bug Fixes
+
+* **card:** fix card bug about description atttribute can't enter reactNode ([#1703](https://github.com/growingio/gio-design/issues/1703)) ([5d5d156](https://github.com/growingio/gio-design/commit/5d5d156a9d7d375812c8a9a95fcbf2d725c711e2))
+* **list:** fix list item data-testid ([#1710](https://github.com/growingio/gio-design/issues/1710)) ([cdb66d6](https://github.com/growingio/gio-design/commit/cdb66d6014feb2a35dee1558fa541bff59b2516e))
+
 # [22.8.0](https://github.com/growingio/gio-design/compare/v22.7.0...v22.8.0) (2021-12-20)
 
 
