@@ -100,8 +100,8 @@ export const collectOption = (child: React.ReactNode, otherProps?: OtherProps): 
   return undefined;
 };
 
-export const collectOptions = (childs?: React.ReactNode | OptionProps): OptionProps[] => {
-  const optionsArr: OptionProps[] = [];
+export const collectOptions = (childs?: React.ReactNode): OptionProps[] => {
+  let optionsArr: OptionProps[] = [];
   toArray(childs).forEach((child) => {
     const { props, type } = child as React.ReactElement & { props: OptionProps } & {
       props: { options?: OptionProps[] };
@@ -121,23 +121,23 @@ export const collectOptions = (childs?: React.ReactNode | OptionProps): OptionPr
       let listPrefix;
       let listSuffix;
       if (isSelection && isArray(options)) {
-        optionsArr.push(...convertOptions(options, {}));
+        optionsArr = concat(optionsArr, convertOptions(options, {}));
       }
       // options
       if ((isList || isSelect) && isArray(options)) {
         listPrefix = prefix;
         listSuffix = suffix;
-        optionsArr.push(...convertOptions(options, { prefix: listPrefix, suffix: listSuffix }));
+        optionsArr = concat(optionsArr, convertOptions(options, { prefix: listPrefix, suffix: listSuffix }));
       }
       // JSX items
       if (isItem && !isUndefined(value)) {
         const opt = collectOption(child, { prefix: listPrefix, suffix: listSuffix });
-        if (!isUndefined(opt)) optionsArr?.push(opt);
+        if (!isUndefined(opt)) optionsArr = concat(optionsArr, opt);
       }
 
       if (!isUndefined(children)) {
         // 继续遍历
-        optionsArr.push(...collectOptions(children));
+        optionsArr = concat(optionsArr, collectOptions(children));
       }
     }
   });

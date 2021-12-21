@@ -109,7 +109,7 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
         visible={visible}
         maxWidth={maxWidth}
         hidePrefix={hidePrefix}
-        title={title}
+        title={title ?? getLabelByValue(value)}
         onClick={triggerClick}
         data-testid={rest?.['data-testid'] ? rest?.['data-testid'] : 'select'}
       />

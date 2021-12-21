@@ -476,7 +476,7 @@ const searchData = dataFactory(measurements, renderWrapper);
 const searchData2 = dataFactory(measurements, renderWrapper2);
 const searchData3 = (v: number) => searchData.filter((_: any, index: number) => index % v === 0);
 export const EventTargetPicker = (args: ListPickerProps) => {
-  const [value, setValue] = useState<string>('');
+  const [value, setValue] = useState<string>('KzpNzpkv');
   return (
     <ListPicker
       {...args}

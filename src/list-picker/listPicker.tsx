@@ -13,6 +13,7 @@ import { ListContext } from '../list/context';
 import useCacheOptions from '../list/hooks/useCacheOptions';
 import { ITEM_KEY } from './Recent';
 import defaultLocaleTextObject from './locales/zh-CN';
+import { collectOptions } from '../list/util';
 
 const DEFAULT_DATA_TESTID = 'list-picker';
 
@@ -61,6 +62,9 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
   const [visible, setVisible] = useControlledState(controlledVisible, false);
   const [value, setValue] = useState(controlledValue || defaultValue);
   const { options, setOptions, getOptionByValue, getLabelByValue, getOptionsByValue } = useCacheOptions();
+  // collect
+  setOptions?.(collectOptions(children));
+
   const triggerRef = useRef<HTMLInputElement | undefined>(undefined);
   useEffect(() => {
     setValue(controlledValue);
@@ -127,13 +131,11 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
         onClear={clearInput}
         separator={separator}
         onClick={triggerClick}
-        title={title}
+        title={title ?? getLabelByValue(controlledValue)}
         visible={visible}
         hidePrefix={hidePrefix}
         data-testid={isNil(rest['data-testid']) ? `${DEFAULT_DATA_TESTID}-trigger` : `${rest['data-testid']}-trigger`}
-      >
-        {children}
-      </Trigger>
+      />
     );
   };
   // render
@@ -146,7 +148,6 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
         ...contentStyle,
       }}
     >
-      {/* {model === 'multiple' && selectAll && renderSelectAll()} */}
       {children}
       {model === 'multiple' && needConfim && (
         <Button style={{ width: '100%' }} onClick={() => handleConfim()}>

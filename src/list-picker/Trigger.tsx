@@ -1,7 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import Input from '../input';
 import { ListContext } from '../list/context';
-import { collectOptions } from '../list/util';
 import WithRef from '../utils/withRef';
 import { TriggerProps } from './interfance';
 
@@ -11,15 +10,13 @@ const Trigger: React.ForwardRefRenderFunction<HTMLInputElement, TriggerProps> = 
     title,
     placeholder,
     onClear,
-    children,
     hidePrefix = false,
     prefix: propPrefix,
     suffix: propSuffix,
     visible,
     ...rest
   } = props;
-  const { options, setOptions, getOptionByValue, getLabelByValue } = useContext(ListContext);
-  setOptions?.(collectOptions(children));
+  const { options, getOptionByValue } = useContext(ListContext);
 
   const handleClear = (e: React.MouseEvent<Element, MouseEvent>) => {
     onClear?.(e);
@@ -47,7 +44,7 @@ const Trigger: React.ForwardRefRenderFunction<HTMLInputElement, TriggerProps> = 
       suffix={suffix}
       active={visible}
       placeholder={placeholder}
-      value={title ?? getLabelByValue?.(value as React.ReactText)}
+      value={title}
       onClear={handleClear}
       {...rest}
     />
