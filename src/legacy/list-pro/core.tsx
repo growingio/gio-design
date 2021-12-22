@@ -10,9 +10,7 @@ interface State {
   stateChanged: boolean;
 }
 
-const getLocale = () => {
-  return localStorage.getItem('locale') || 'zh-CN';
-};
+const getLocale = () => localStorage.getItem('locale') || 'zh-CN';
 
 const isEnLocale = () => getLocale().includes('en');
 
