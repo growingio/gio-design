@@ -513,6 +513,7 @@ export const UserPicker = (args: ListPickerProps) => {
     <ListPicker
       {...args}
       style={style}
+      max={5}
       size="small"
       placeholder="请选择用户"
       // onChange={() => {}}
@@ -520,7 +521,10 @@ export const UserPicker = (args: ListPickerProps) => {
         action('onConfim');
         setValue(e);
       }}
-      onClear={() => action('onClear')}
+      onClear={() => {
+        action('onClear');
+        setValue([]);
+      }}
       allowClear
       model="multiple"
       value={value}
@@ -559,7 +563,9 @@ export const TargetUserPicker = (args: ListPickerProps) => {
         action('onChange');
         setValue(e);
       }}
-      onClear={() => action('onClear')}
+      onClear={() => {
+        action('onClear');
+      }}
       allowClear
       value={value}
     >

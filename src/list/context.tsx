@@ -9,6 +9,7 @@ export interface ListContextProps {
   disabled?: boolean;
   isSelection?: boolean;
   isEmpty?: boolean;
+  max?: number;
   emptyNode?: React.ReactNode;
   selectParent?: any;
   onChange?: (value?: MaybeArray<string | number>, options?: OptionProps | OptionProps[]) => void;
@@ -33,6 +34,7 @@ const defaultList: ListContextProps = {
   onChange: noop,
   onClick: noop,
   setOptions: noop,
+  max: Infinity,
   prefix: undefined,
   suffix: undefined,
   emptyNode: undefined,

@@ -52,6 +52,11 @@ export interface ListProps {
    *
    */
   model?: ModelType;
+
+  /**
+   * 多选时最多选择多少个
+   */
+  max?: number;
   /**
    *
    */
