@@ -1,3 +1,10 @@
+## [22.10.1](https://github.com/growingio/gio-design/compare/v22.10.0...v22.10.1) (2021-12-22)
+
+
+### Bug Fixes
+
+* **ListPro:** update no result ([#1723](https://github.com/growingio/gio-design/issues/1723)) ([04d08cf](https://github.com/growingio/gio-design/commit/04d08cf3c6763502cd10732dc799138f82b72eb3))
+
 # [22.10.0](https://github.com/growingio/gio-design/compare/v22.9.0...v22.10.0) (2021-12-22)
 
 
