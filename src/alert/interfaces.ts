@@ -1,4 +1,4 @@
-export interface AlertProps {
+export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    指定警告提示的样式
    */
@@ -27,8 +27,4 @@ export interface AlertProps {
    关闭时触发的回调函数
    */
   onClose?: () => void;
-  /**
-   外层div样式
-   */
-  style?: React.CSSProperties;
 }
