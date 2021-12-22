@@ -14,6 +14,7 @@ import useValue from './hooks/useValue';
 import useCacheOptions from './hooks/useCacheOptions';
 import defaultLocaleTextObject from './locales/zh-CN';
 import Empty from './Empty';
+import BaseItem from './inner/baseItem';
 
 export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const {
@@ -154,13 +155,13 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const renderExpandedItem = (needCollapse = false) => {
     if (needCollapse) {
       return (
-        <Item
+        <BaseItem
           data-testid="list-item-collapse"
           disabled={mergedDisabled}
           key={`${prefixCls}-collapse`}
           value={`${prefixCls}-collapse`}
           onClick={() => setCollapse(Infinity)}
-          label={localeTextObject?.expandAll(renderOptions?.length ?? 0)}
+          label={localeTextObject?.expandAll(renderOptions?.length - collapse ?? 0)}
         />
       );
     }
