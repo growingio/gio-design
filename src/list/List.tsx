@@ -35,6 +35,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     onClick,
     itemStrategy,
     empty,
+    max,
     needEmpty = false,
     ...listRestProps
   } = props;
@@ -58,6 +59,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const mergedEmpty = empty ?? context.emptyNode;
   const mergedIsEmpty = needEmpty || context.isEmpty;
   const mergedDisabled = disabled ?? contextDisabled;
+  const mergedMax = max ?? context.max;
   /** end */
 
   const { value, onChange } = useValue(
@@ -178,6 +180,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     <ListContext.Provider
       value={{
         ...context,
+        max: mergedMax,
         model: mergedModel,
         isEmpty: mergedIsEmpty,
         emptyNode: mergedEmpty,
