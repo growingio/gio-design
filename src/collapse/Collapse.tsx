@@ -5,13 +5,10 @@ import { RightFilled } from '@gio-design/icons';
 import { cloneElement } from '../utils/reactNode';
 import { CollapseProps, PanelProps } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
-import CollapsePanel from './CollapsePanel';
+import WithRef from '../utils/withRef';
+import { WithCommonProps } from '../utils/interfaces';
 
-interface CollapseInterface extends React.FC<CollapseProps> {
-  Panel: typeof CollapsePanel;
-}
-
-export const Collapse: CollapseInterface = (props) => {
+export const Collapse = WithRef<HTMLDivElement, WithCommonProps<CollapseProps>>((props: CollapseProps) => {
   const { destoryOnHide, disabled, children, dataTestId = 'collapse' } = props;
   const prefixCls = usePrefixCls('collapse');
   const renderExpandIcon = (panelProps: PanelProps = {}) => {
@@ -38,7 +35,8 @@ export const Collapse: CollapseInterface = (props) => {
       </RcCollapse>
     </div>
   );
-};
-Collapse.Panel = CollapsePanel;
+});
+
+Collapse.displayName = 'Collapse';
 
 export default Collapse;

@@ -9,7 +9,6 @@ import { IconButton } from '../../button';
 
 import '../style';
 
-const { Panel } = Collapse;
 export default {
   title: 'Upgraded/Collapse',
   component: Collapse,
