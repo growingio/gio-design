@@ -2,14 +2,13 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
-import { MoreOutlined, EditOutlined, RightOutlined } from '@gio-design/icons'
+import { MoreOutlined, EditOutlined, RightOutlined } from '@gio-design/icons';
 import Docs from './CollapsePage';
-import Collapse from '../Collapse';
+import Collapse, { Panel } from '../index';
 import { IconButton } from '../../button';
 
 import '../style';
 
-const { Panel } = Collapse;
 export default {
   title: 'Upgraded/Collapse',
   component: Collapse,
@@ -28,20 +27,28 @@ export default {
 
 const genExtra = () => (
   <>
-    <IconButton onClick={(e) => { e.stopPropagation() }}
-      type="text">
+    <IconButton
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+      type="text"
+    >
       <EditOutlined />
     </IconButton>
-    <IconButton onClick={(e) => { e.stopPropagation() }}
-      type="text">
+    <IconButton
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+      type="text"
+    >
       <MoreOutlined />
     </IconButton>
   </>
 );
-const text = '哈哈哈嘿嘿嘿嘻嘻嘻'
+const text = '哈哈哈嘿嘿嘿嘻嘻嘻';
 const callback = (key: any) => {
   console.log(key);
-}
+};
 
 const Template: Story = () => (
   <div>
