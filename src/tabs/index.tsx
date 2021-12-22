@@ -6,3 +6,4 @@ export { TabProps, TabsProps } from './interface';
 
 export default withSubComponent(Tabs, { Tab });
 export { Tab };
+  

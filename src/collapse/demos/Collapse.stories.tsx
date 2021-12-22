@@ -4,12 +4,11 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { MoreOutlined, EditOutlined, RightOutlined } from '@gio-design/icons'
 import Docs from './CollapsePage';
-import Collapse from '../Collapse';
+import Collapse,{Panel} from '../index';
 import { IconButton } from '../../button';
 
 import '../style';
 
-const { Panel } = Collapse;
 export default {
   title: 'Upgraded/Collapse',
   component: Collapse,
