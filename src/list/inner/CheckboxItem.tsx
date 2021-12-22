@@ -22,7 +22,8 @@ const CheckboxItem: React.ForwardRefRenderFunction<
 
   const mergeSelected = useMemo(() => selected ?? selectStatus(value, contextValue), [selected, contextValue, value]);
   const isMax =
-    (contextValue as string[])?.length >= context.max && !(contextValue as [string | number]).includes(value);
+    (contextValue as string[])?.length >= (context?.max ?? Infinity) &&
+    !(contextValue as [string | number]).includes(value);
   const contentRender = (element: React.ReactNode) => (
     <>
       <Checkbox
