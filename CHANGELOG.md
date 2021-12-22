@@ -1,3 +1,10 @@
+# [22.9.0](https://github.com/growingio/gio-design/compare/v22.8.2...v22.9.0) (2021-12-22)
+
+
+### Features
+
+* **alert:** support className and ref ([#1713](https://github.com/growingio/gio-design/issues/1713)) ([573c24c](https://github.com/growingio/gio-design/commit/573c24c5c23c74601b367cf07a7bb9eec067d3c9))
+
 ## [22.8.2](https://github.com/growingio/gio-design/compare/v22.8.1...v22.8.2) (2021-12-21)
 
 
