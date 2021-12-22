@@ -1,3 +1,18 @@
+# [22.10.0](https://github.com/growingio/gio-design/compare/v22.9.0...v22.10.0) (2021-12-22)
+
+
+### Bug Fixes
+
+* **collapse:** change create style ([#1718](https://github.com/growingio/gio-design/issues/1718)) ([ddbbc3e](https://github.com/growingio/gio-design/commit/ddbbc3ee343faf1088ae9663f8e4f4118ff3673d))
+* **list:** fix context interfance ([#1722](https://github.com/growingio/gio-design/issues/1722)) ([0a78246](https://github.com/growingio/gio-design/commit/0a78246d752640e33df41e6a26d0619a6fcd0687))
+* **list:** fix list collapse style error ([#1719](https://github.com/growingio/gio-design/issues/1719)) ([3369329](https://github.com/growingio/gio-design/commit/33693293d1b60cae036ff416a5892a8230cf8ab9))
+* **SearchBar:** add search classname for SearchBar ([#1720](https://github.com/growingio/gio-design/issues/1720)) ([0bd38de](https://github.com/growingio/gio-design/commit/0bd38de4eca3a0196dbb992253199e3b54a0bdc1))
+
+
+### Features
+
+* **list:** model === 'multiple' add max attribute ([#1721](https://github.com/growingio/gio-design/issues/1721)) ([782857e](https://github.com/growingio/gio-design/commit/782857e0626ab5795b14f6f27df7a533862a776a))
+
 # [22.9.0](https://github.com/growingio/gio-design/compare/v22.8.2...v22.9.0) (2021-12-22)
 
 
