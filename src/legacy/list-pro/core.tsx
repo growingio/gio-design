@@ -10,6 +10,10 @@ interface State {
   stateChanged: boolean;
 }
 
+const getLocale = () => localStorage.getItem('locale') || 'zh-CN';
+
+const isEnLocale = () => getLocale().includes('en');
+
 class SelectCore extends React.Component<SelectCoreProps & ConfigConsumerProps, State> {
   public static defaultProps: Partial<SelectCoreProps & ConfigConsumerProps> = {
     showSearch: true,
@@ -19,7 +23,7 @@ class SelectCore extends React.Component<SelectCoreProps & ConfigConsumerProps, 
     isLoading: false,
     required: false,
     rowHeight: 44,
-    emptyPlaceholder: '没有找到相关结果',
+    emptyPlaceholder: isEnLocale() ? 'No Result' : '没有找到相关结果',
   };
 
   constructor(props: SelectCoreProps & ConfigConsumerProps) {
