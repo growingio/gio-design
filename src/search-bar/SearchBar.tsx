@@ -13,6 +13,7 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
     disabled,
     placeholder,
     onSearch,
+    className,
   } = props;
 
   const prefixCls = usePrefixCls('search', customizePrefixCls);
@@ -68,6 +69,7 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
     <Input
       data-testid="search-bar"
       {...props}
+      className={classNames(className, prefixCls)}
       type="text"
       placeholder={placeholder}
       value={value}
