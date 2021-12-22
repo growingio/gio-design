@@ -5,7 +5,7 @@ import { OptionProps } from '../list/interfance';
 import { Placement, TriggerAction } from '../popover/interface';
 import { ListProps } from '../list';
 
-export interface ListPickerProps extends Pick<ListProps, 'model' | 'empty' | 'needEmpty'> {
+export interface ListPickerProps extends Pick<ListProps, 'model' | 'empty' | 'needEmpty' | 'max'> {
   size?: 'small' | 'normal';
   /**
    * 触发方式
@@ -84,6 +84,7 @@ export interface ListPickerProps extends Pick<ListProps, 'model' | 'empty' | 'ne
    * 是否跟随trigger宽度
    */
   autoWidth?: boolean;
+
   ['data-testid']?: string;
 }
 

@@ -55,6 +55,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     maxWidth,
     recentId: propsRecentId,
     autoWidth = false,
+    max,
     ...rest
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
@@ -161,6 +162,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
       value={{
         value,
         model,
+        max,
         onChange: handleChange,
         options,
         setOptions,

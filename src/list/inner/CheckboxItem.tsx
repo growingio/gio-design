@@ -21,14 +21,15 @@ const CheckboxItem: React.ForwardRefRenderFunction<
   const mergedDisabled = disabled ?? contextDisabled;
 
   const mergeSelected = useMemo(() => selected ?? selectStatus(value, contextValue), [selected, contextValue, value]);
-
+  const isMax =
+    (contextValue as string[])?.length >= context.max && !(contextValue as [string | number]).includes(value);
   const contentRender = (element: React.ReactNode) => (
     <>
       <Checkbox
         checked={mergeSelected}
         className={`${prefixCls}--checkbox`}
         value={value}
-        disabled={mergedDisabled}
+        disabled={mergedDisabled || isMax}
         onClick={(e) => {
           if (!mergedDisabled) {
             contextOnClick?.(value, e);
@@ -44,7 +45,7 @@ const CheckboxItem: React.ForwardRefRenderFunction<
     <Item
       data-testid="list-item"
       ref={ref}
-      disabled={mergedDisabled}
+      disabled={mergedDisabled || isMax}
       onClick={onClick}
       value={value}
       contentRender={contentRender}
