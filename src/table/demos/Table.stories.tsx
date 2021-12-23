@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import Table from '../index';
 import { ColumnsType, SortOrder, TableProps } from '../interface';
 import '../style';
-import { Tooltip } from '../..';
+import { Divider, Tooltip } from '../..';
 import Docs from './TablePage';
 
 type DataSourceType = {
@@ -421,12 +421,10 @@ export const Fixed = () => {
     {
       dataIndex: 'name',
       title: 'Name',
-      width: 300,
     },
     {
       dataIndex: 'age',
       title: 'Age',
-      width: 100,
     },
     {
       dataIndex: 'address',
@@ -437,15 +435,30 @@ export const Fixed = () => {
   ];
 
   return (
-    <Table<DataSourceType>
-      title="可固定表头和列"
-      style={{ width: 900 }}
-      scroll={{ y: 300 }}
-      columns={columns}
-      pagination={false}
-      dataSource={genDataSource(30)}
-      rowKey="id"
-    />
+    <>
+      <h4>可固定表头和列</h4>
+      <p>对于列数很多的数据，可以固定前后的列，横向滚动查看其它数据，需要和 scroll.x 配合使用。</p>
+      <ol style={{ fontSize: '.9em', color: 'rgb(161, 157, 157)', lineHeight: '2' }}>
+        <li>若列头与内容不对齐或出现列重复，请指定固定列的宽度 width。</li>
+        <li>
+          如果指定 width
+          不生效或出现白色垂直空隙，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有超长连续字段破坏布局。
+        </li>
+        <li>建议指定 scroll.x 为大于表格宽度的固定值或百分比。</li>
+        <li>注意，且非固定列宽度之和不要超过 scroll.x。</li>
+      </ol>
+      <Divider style={{ width: '100%' }} />
+      <div style={{ maxWidth: 1320, minWidth: 1000 }}>
+        <Table<DataSourceType>
+          style={{ width: '100%' }}
+          scroll={{ x: 1600, y: 600 }}
+          columns={columns}
+          pagination={false}
+          dataSource={genDataSource(30)}
+          rowKey="id"
+        />
+      </div>
+    </>
   );
 };
 
