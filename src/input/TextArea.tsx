@@ -14,7 +14,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, re
       classNames(inputPrefixCls, prefixCls, className, {
         [`${prefixCls}__disabled`]: disabled,
       }),
-    [inputPrefixCls, prefixCls, disabled]
+    [inputPrefixCls, prefixCls, disabled, className]
   );
 
   const styles = useMemo(() => {
