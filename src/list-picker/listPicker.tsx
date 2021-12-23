@@ -37,6 +37,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     onConfim,
     confimText = localeTextObject?.confirm,
     separator = '',
+    valueSeparator = '.',
     style,
     overlayStyle,
     contentStyle,
@@ -115,6 +116,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     }
     return (
       <Trigger
+        model={model}
         size={size}
         value={controlledValue}
         style={style}
@@ -127,6 +129,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
         allowClear={allowClear}
         onClear={clearInput}
         separator={separator}
+        valueSeparator={valueSeparator}
         onClick={triggerClick}
         title={title}
         visible={visible}

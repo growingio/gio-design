@@ -52,6 +52,10 @@ export interface CascaderProps extends Omit<ListProps, 'options' | 'onChange' | 
    */
   separator?: string;
   /**
+   * value解析连接符 默认为'.'
+   */
+  valueSeparator?: string;
+  /**
    * 是否允许clear
    */
   allowClear?: boolean;

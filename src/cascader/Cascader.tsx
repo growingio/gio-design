@@ -30,6 +30,7 @@ export const Cascader: React.FC<CascaderProps> = ({
   overlayStyle,
   contentStyle,
   separator = '',
+  valueSeparator = '.',
   placement = 'bottomLeft',
   children,
   strategy = 'fixed',
@@ -56,8 +57,8 @@ export const Cascader: React.FC<CascaderProps> = ({
   const setOptions = (opts: OptionProps[]) => cache.setOptions(opts);
 
   useEffect(() => {
-    setTitle(cache.getLabelByValue(value, separator));
-  }, [cache, separator, value]);
+    setTitle(cache.getLabelByValue(value, separator, valueSeparator, 'cascader'));
+  }, [cache, separator, value, valueSeparator]);
 
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);
@@ -65,7 +66,7 @@ export const Cascader: React.FC<CascaderProps> = ({
   };
 
   const handleChange = (val?: string) => {
-    onChange?.(val, cache?.getOptionTreeByValue(val));
+    onChange?.(val, cache?.getOptionTreeByValue(val, valueSeparator, 'cascader'));
     setValue(val as string);
     setVisible(false);
   };

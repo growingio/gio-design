@@ -1,7 +1,7 @@
 import { noop } from 'lodash';
 import React from 'react';
 import List from './List';
-import { OptionProps, ListProps, MaybeArray } from './interfance';
+import { OptionProps, ListProps, MaybeArray, ModelType } from './interfance';
 
 export interface ListContextProps {
   value?: string | (string | number)[] | number;
@@ -22,7 +22,12 @@ export interface ListContextProps {
   setOptions?: (options?: OptionProps[]) => void;
   getOptionByValue?: (optValue?: string | number) => OptionProps | undefined;
   getOptionsByValue?: (optValue?: MaybeArray<string | number>) => OptionProps | OptionProps[] | undefined;
-  getLabelByValue?: (val?: MaybeArray<string | number>, separator?: string) => any;
+  getLabelByValue?: (
+    val?: MaybeArray<string | number>,
+    separator?: string,
+    valueSeparator?: string,
+    model?: ModelType
+  ) => any;
 }
 const defaultList: ListContextProps = {
   value: '',

@@ -6,6 +6,7 @@ import {
   DragItemProps,
   BaseItemProps,
   CascaderItemProps,
+  ModelType,
 } from './interfance';
 import List from './List';
 import Item from './Item';
@@ -18,8 +19,16 @@ import WithSubComponent from '../utils/withSubComponent';
 type ItemProps = Omit<InnerItemProps, 'selected' | 'selectValue'>;
 type ListProps = Omit<InnerListProps, 'selectParent'>;
 
-export type { ItemProps, ListProps, OptionProps, DragProps, DragItemProps, BaseItemProps, CascaderItemProps };
-
+export type {
+  ItemProps,
+  ListProps,
+  OptionProps,
+  DragProps,
+  DragItemProps,
+  BaseItemProps,
+  CascaderItemProps,
+  ModelType,
+};
 export { List, Item, Drag, DragItem, Selection, BaseItem };
 
 export default WithSubComponent(List, { Item, Drag, DragItem, Selection });

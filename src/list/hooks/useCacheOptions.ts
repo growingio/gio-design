@@ -33,13 +33,18 @@ const useCacheOptions = () => {
         }, [] as any)
       : getOptionByValue(optValue);
 
-  const getLabelByValue = (val?: MaybeArray<string | number>, separator = '') => {
+  const getLabelByValue = (
+    val?: MaybeArray<string | number>,
+    separator = '',
+    valueSeparator = '.',
+    model = 'single'
+  ) => {
     if (val === '' || typeof val === 'undefined') {
       return '';
     }
-    if (isString(val) && val?.includes('.')) {
+    if (isString(val) && val?.includes(valueSeparator) && model === 'cascader') {
       return (val as any)
-        ?.split('.')
+        ?.split(valueSeparator)
         ?.reduce((prev: string[], curr: string | number) => [...prev, getOptionByValue?.(curr)?.label], [])
         ?.join(separator);
     }
@@ -48,12 +53,12 @@ const useCacheOptions = () => {
     }
     return getOptionByValue(val)?.label ?? '';
   };
-  const getOptionTreeByValue = (val?: string | number) => {
+  const getOptionTreeByValue = (val?: string | number, valueSeparator = '.', model = 'single') => {
     if (val === '' || typeof val === 'undefined') {
       return '';
     }
-    if (isString(val) && val?.includes('.')) {
-      return (val as any)?.split('.')?.reduceRight((prev: { key: string; value: string }, curr: string) => {
+    if (isString(val) && val?.includes(valueSeparator) && model === 'cascader') {
+      return (val as any)?.split(valueSeparator)?.reduceRight((prev: { key: string; value: string }, curr: string) => {
         if (isEmpty(prev)) {
           return { ...getOptionByValue?.(curr) };
         }
