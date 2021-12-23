@@ -16,7 +16,7 @@
 安装依赖：
 
 ```
-yarn bootstrap
+yarn install
 ```
 
 生成组件库：
