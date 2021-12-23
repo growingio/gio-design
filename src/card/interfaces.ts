@@ -23,7 +23,7 @@ export interface CardMetaProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   action?: React.ReactNode;
 }
 
-export interface CardProps {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * 是否宽度平铺
    */
@@ -44,8 +44,4 @@ export interface CardProps {
    * 自定义className前缀
    */
   prefixCls?: string;
-  /**
-   * 自定义className
-   */
-  className?: string;
 }
