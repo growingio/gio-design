@@ -26,7 +26,7 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
     if (!disabled) {
       if (inputRef.current) {
         const inputObj = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value');
-        inputObj.set.call(inputRef.current, '');
+        inputObj?.set?.call(inputRef.current, '');
         const event = new Event('change', { bubbles: true });
         inputRef.current?.dispatchEvent(event);
       }
