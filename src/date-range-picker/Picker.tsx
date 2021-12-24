@@ -32,7 +32,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
     size,
     className,
     style,
-    dataTestId = "dataRangePicker",
+    dataTestId = 'dataRangePicker',
     ...restProps
   } = props;
 
@@ -84,6 +84,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
         suffix={suffix}
         className={className}
         style={style}
+        active={visible}
         onClick={() => setVisible(!visible)}
         data-testid={dataTestId}
       />

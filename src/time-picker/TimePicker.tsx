@@ -106,6 +106,7 @@ export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) =>
         suffix={suffix}
         className={className}
         style={style}
+        active={visible}
       />
     );
   }
