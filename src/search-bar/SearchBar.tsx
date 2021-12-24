@@ -18,13 +18,13 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
 
   const prefixCls = usePrefixCls('search', customizePrefixCls);
   const [value, setValue] = useState(enterValue);
-  const inputRef = useRef<HTMLInputElement | null>();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [canClear, setClear] = useState(!!enterValue);
 
   const onClear = useCallback(() => {
     if (!disabled) {
-      if (inputRef.current) {
+      if (inputRef?.current) {
         const inputObj = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value');
         inputObj?.set?.call(inputRef.current, '');
         const event = new Event('change', { bubbles: true });
