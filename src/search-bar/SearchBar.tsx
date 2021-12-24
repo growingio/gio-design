@@ -35,7 +35,6 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
       setValue('');
     }
   }, [onSearch, disabled]);
-
   useEffect(() => {
     if (value !== enterValue) {
       setValue(enterValue);
