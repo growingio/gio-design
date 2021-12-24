@@ -23,6 +23,7 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
     defaultVisible,
     children,
     disabled,
+    trigger = 'click',
     ...rest
   } = props;
   const prefixCls = usePrefixCls('confirm', customizePrefixCls);
@@ -85,7 +86,14 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
     </div>
   );
   return (
-    <Popover {...rest} visible={visible} enterable onVisibleChange={onVisibleChange} content={content}>
+    <Popover
+      {...rest}
+      trigger={trigger}
+      visible={visible}
+      enterable
+      onVisibleChange={onVisibleChange}
+      content={content}
+    >
       {children}
     </Popover>
   );

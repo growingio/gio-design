@@ -5,6 +5,7 @@
 @form-prefix-cls: ~'@{component-prefix}-form';
 @field-prefix-cls: ~'@{component-prefix}-field';
 @input-prefix-cls: ~'@{component-prefix}-input';
+@textarea-prefix-cls: ~'@{component-prefix}-textarea';
 
 // form tokens map
 @info-color: @blue-3;
@@ -169,6 +170,17 @@
 
         > label {
           height: auto;
+        }
+      }
+    }
+
+    .@{field-prefix-cls}-control {
+      &-input {
+        .@{input-prefix-cls} {
+          width: 100%;
+        }
+        .@{textarea-prefix-cls} {
+          width: 100%;
         }
       }
     }
