@@ -5,8 +5,21 @@
 @quick-picker-prefix-cls: ~'@{component-prefix}-quick-picker';
 
 .@{quick-picker-prefix-cls} {
-  display: flex;
+  &__list {
+    display: flex;
+  }
+
+  &__bottom {
+    height: 30px;
+    padding: 8px 0;
+    &__button-group {
+      display: flex;
+      gap: 5px;
+      float: right;
+    }
+  }
+
   width: fit-content;
   max-width: fit-content;
-  padding: 8px 8px 28px;
+  padding: 8px 8px 20px;
 }

@@ -59,7 +59,7 @@ function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experim
     disabledDate?.(current) || isAfter(current, endKey === 'yesterday' ? startOfYesterday() : startOfToday());
 
   const handleOnOK = () => {
-    onSelect(`since:${getTime(startOfDay(startDate as Date))}${endKey === 'yesterday' ? ',1' : ''}`);
+    onSelect(`${endKey === 'yesterday' ? 'since-lt-today' : 'since'}:${getTime(startOfDay(startDate as Date))}`);
   };
   return (
     <InnerRangePanel
