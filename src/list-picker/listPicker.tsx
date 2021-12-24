@@ -121,6 +121,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
         className={className}
         maxWidth={maxWidth}
         disabled={disabled}
+        ref={triggerRef as React.RefObject<HTMLInputElement>}
         placeholder={placeholder}
         suffix={triggerSuffix}
         prefix={triggerPrefix}

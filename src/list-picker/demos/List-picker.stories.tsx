@@ -598,12 +598,12 @@ export const DimensionPicker = () => {
       value={value}
       style={style}
       placeholder="请选择属性"
+      autoWidth
       onChange={(e: string) => {
         setValue(e);
         action('onChange');
       }}
       getContainer={() => document.body}
-      overlayStyle={{ width: 320 }}
     >
       <SearchBar
         style={{ width: '100%' }}
