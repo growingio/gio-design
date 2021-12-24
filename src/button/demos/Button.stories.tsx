@@ -1,11 +1,12 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { PlusOutlined, FilterOutlined } from '@gio-design/icons';
+import { PlusOutlined, FilterOutlined, ExplainOutlined } from '@gio-design/icons';
 import Button from '../index';
 import IconButton from '../IconButton';
 import { ButtonProps, IconButtonProps } from '../interface';
 import '../style';
 import Docs from './ButtonPage';
+import { Divider } from '../..';
 
 export default {
   title: 'Upgraded/Button',
@@ -141,9 +142,21 @@ Disable.args = {
 };
 
 const IconButtonTemplate: Story<IconButtonProps> = (args) => (
-  <IconButton {...args}>
-    <FilterOutlined />
-  </IconButton>
+  <>
+    <div>
+      <p>图标的默认大小为 14px</p>
+      <IconButton {...args}>
+        <FilterOutlined />
+      </IconButton>
+    </div>
+    <Divider style={{ width: '100%' }} />
+    <div>
+      <p>可以设置 IconButton 的 font-size: 20px; 来改变图标大小</p>
+      <IconButton {...args} style={{ fontSize: '20px' }}>
+        <ExplainOutlined />
+      </IconButton>
+    </div>
+  </>
 );
 export const IconButtonDemo = IconButtonTemplate.bind({});
 IconButtonDemo.args = {};
