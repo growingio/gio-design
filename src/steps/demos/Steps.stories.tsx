@@ -186,14 +186,14 @@ Demo.args = {
 // default
 export const Default = Template.bind({});
 Default.args = {
-  className: 'cc',
+  className: 'steps',
   defaultValue: 3,
   onChange: action('onchange'),
 };
 // have children
 export const HaveChildren = childrenTemplate.bind({});
 HaveChildren.args = {
-  className: 'cc',
+  className: 'steps',
   defaultValue: 1,
   onChange: action('onchange'),
 };

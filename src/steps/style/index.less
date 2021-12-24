@@ -4,8 +4,10 @@
 @tabs-prefix-cls: ~'@{component-prefix}-tabs';
 
 .@{tabs-prefix-cls} {
-  &-tablist {
+  &-tablist.steps-container {
     display: flex;
+  }
+  &-tablist {
     &-stepbar {
       flex: 1;
       & > button {
