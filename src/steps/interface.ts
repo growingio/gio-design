@@ -6,7 +6,7 @@ export interface StepsProps {
   */
   defaultValue?: React.Key;
   /**
-  初始化选中面板的 `key`
+  初始化选中面板的 `key`，默认从1开始，一定要注意!!!
   */
   current?: number;
   /**
@@ -26,4 +26,3 @@ export interface StepsProps {
    */
   size?: 'small' | 'normal';
 }
-
