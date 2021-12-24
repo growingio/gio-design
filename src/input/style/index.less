@@ -2,7 +2,6 @@
 
 @input-prefix-cls: ~'@{component-prefix}-input';
 @textarea-prefix-cls: ~'@{component-prefix}-textarea';
-@icon-prefix-cls: ~'@{component-prefix}-icon';
 
 .@{input-prefix-cls} {
   display: inline-flex;
@@ -85,14 +84,11 @@
     align-items: center;
     justify-content: center;
     margin-left: 8px;
-
-    .@{icon-prefix-cls} {
-      cursor: pointer;
-      svg {
-        width: 14px;
-        height: 14px;
-        color: @gray-3;
-      }
+    cursor: pointer;
+    svg {
+      width: 14px;
+      height: 14px;
+      color: @gray-3;
     }
   }
 
@@ -101,14 +97,11 @@
     align-items: center;
     justify-content: center;
     margin-right: 8px;
-
-    .@{icon-prefix-cls} {
-      cursor: pointer;
-      svg {
-        width: 14px;
-        height: 14px;
-        color: @gray-5;
-      }
+    cursor: pointer;
+    svg {
+      width: 14px;
+      height: 14px;
+      color: @gray-5;
     }
   }
 }

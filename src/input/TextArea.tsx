@@ -4,17 +4,17 @@ import { TextAreaProps } from './interface';
 import usePrefixCls from '../utils/hooks/use-prefix-cls';
 
 const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
-  const { prefixCls: customizePrefixCls, disabled, rows = 2, style, ...rest } = props;
+  const { prefixCls: customizePrefixCls, disabled, rows = 2, style, className, ...rest } = props;
 
   const inputPrefixCls = usePrefixCls('input', customizePrefixCls);
   const prefixCls = usePrefixCls('textarea');
 
   const textAreaClass = useMemo(
     () =>
-      classNames(inputPrefixCls, prefixCls, {
+      classNames(inputPrefixCls, prefixCls, className, {
         [`${prefixCls}__disabled`]: disabled,
       }),
-    [inputPrefixCls, prefixCls, disabled]
+    [inputPrefixCls, prefixCls, disabled, className]
   );
 
   const styles = useMemo(() => {
