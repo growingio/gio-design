@@ -59,10 +59,24 @@
     font-weight: @weight-font-medium;
     font-size: @size-font-14;
     line-height: 22px;
-    letter-spacing: 0;
+    vertical-align: middle;
+    word-break: break-all;
+  }
+  &-label {
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: middle;
   }
   &-key {
     margin-top: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  &-description {
+    word-break: break-all;
   }
   &__divide {
     display: block;

@@ -13,7 +13,6 @@ import defaultLocale from './locales/zh-CN';
 import Card from '../../legacy/card';
 import Loading from '../../loading'; // new
 import Tag from '../../tag'; // new
-import { Text } from '../../index'; // new
 
 function PropertyCard(props: PropertyCardProps) {
   const locale = useLocale('PropertyPicker');
@@ -42,15 +41,21 @@ function PropertyCard(props: PropertyCardProps) {
       <Loading size="small" title={false} loading={loading}>
         <Card.Meta style={{ minHeight: '40px' }}>
           <Card.Meta>
-            <Text className={`${propCardPrefixCls}-title`}>{data?.name}</Text>
+            <span className={`${propCardPrefixCls}-title`} title={data?.name}>
+              {data?.name}
+            </span>
             {data?.previewTypeName && (
-              <Tag size="small" status="draft">
+              <Tag status="draft" className={`${propCardPrefixCls}-label`} title={data.previewTypeName}>
                 {data.previewTypeName}
               </Tag>
             )}
-            <div className={`${propCardPrefixCls}-key`}>{data?.key ?? data?.id}</div>
+            <div className={`${propCardPrefixCls}-key`} title={data?.key ?? data?.id}>
+              {data?.key ?? data?.id}
+            </div>
           </Card.Meta>
-          {data?.description && <Card.Meta>{data?.description}</Card.Meta>}
+          {data?.description && (
+            <Card.Meta className={`${propCardPrefixCls}-description`}>{data?.description}</Card.Meta>
+          )}
           {data?.valueType && valueType && (
             <Card.Meta data-testid="value_type_meta">
               <div className={`${propCardPrefixCls}__divide`} />
