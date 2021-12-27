@@ -204,9 +204,34 @@ const parseDateValuesToText = (operation: string, value: string[], t: TextObject
       return parseDateValuesRelativeToText(relativeTime, t);
     }
     case 'hasValue':
-      return `${t.hasValue} moment(value[0]).format('YYYY-MM-DD')`;
+      return `${t.hasValue} ${moment(value[0]).format('YYYY-MM-DD')}`;
     default:
       return moment(value[0]).format('YYYY-MM-DD');
+  }
+};
+
+const parseListValuesToText = (operation: string, value: string[], t: TextObject) => {
+  /**
+   * list: {
+   *    'hasAll': '全包含',
+   *    'not hasAll': '不全包含',
+   *    'empty': '为空',
+   *    'not empty: '不为空',
+   * }
+   */
+  switch (operation) {
+    case 'hasAll':
+      // 全包含
+      return `${t.allLike} ${listFormat(value, t.code)}`;
+    case 'not hasAll': {
+      return `${t.notAllLike} ${listFormat(value, t.code)}`;
+    }
+    case 'empty':
+      return t.empty;
+    case 'not empty':
+      return t.notEmpty;
+    default:
+      return value[0];
   }
 };
 
@@ -227,6 +252,9 @@ export default function parseValuesToText(
     }
     if (type === 'date') {
       return parseDateValuesToText(operation, value, t);
+    }
+    if (type === 'list') {
+      return parseListValuesToText(operation, value, t);
     }
   }
   return t.selectFilter;

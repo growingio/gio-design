@@ -2,12 +2,19 @@ import React, { useMemo, useState } from 'react';
 import { FilterOutlined } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
 import FilterOverlay from './components/FilterOverlay/index';
-import { FilterPickerProps, FilterValueType } from './interfaces';
+import { FilterPickerProps, FilterValueType, operationsOptionType } from './interfaces';
 import Button from '../../button'; // new
 import Dropdown from '../dropdown';
 import defaultLocaleTextObject from './locales/zh-CN';
 import './style';
-import { defaultOperationsOption } from './components/FilterList/Expression/FilterCondition';
+
+const defaultOperationsOption: operationsOptionType = {
+  string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
+  int: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
+  double: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
+  date: ['=', '!=', '>', '<', 'relativeBetween', 'relativeCurrent', 'between', 'not between', 'hasValue', 'noValue'],
+  list: ['hasAll', 'not hasAll', 'empty', 'not empty'],
+};
 
 export type TextObject = typeof defaultLocaleTextObject & { code: 'zh-CN' | 'en-US' };
 
@@ -81,12 +88,7 @@ const FilterPicker = (props: FilterPickerProps) => {
         disabled={disabled}
       >
         {children || (
-          <Button.IconButton
-            data-testid="filter-picker"
-            {...rest}
-            size="small"
-            type={!localVisible ? 'text' : 'secondary'}
-          >
+          <Button.IconButton data-testid="filter-picker" size="small" active={localVisible} type="secondary" {...rest}>
             <FilterOutlined size="14px" />
           </Button.IconButton>
         )}
