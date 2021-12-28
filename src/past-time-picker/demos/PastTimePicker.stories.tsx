@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { differenceInDays, getTime, startOfToday, subDays, subMonths } from 'date-fns';
 import Docs from './PastTimePickerPage';
+import { Option } from '../../static-past-time-picker/interfaces';
 import PastTimePicker, { PastTimePickerProps } from '../index';
 
 import '../style';
@@ -41,6 +42,29 @@ Relative.args = {
 export const Absolute = Template.bind({});
 Absolute.args = {
   value: `abs:${getTime(subMonths(startOfToday(), 1))},${getTime(startOfToday())}`,
+};
+
+export const ToYesterday = Template.bind({});
+ToYesterday.args = {
+  value: 'week:1,0',
+  experimental: true,
+  quickOptionsFilter: (s: Option) =>
+    [
+      'day:1,0',
+      'day:2,1',
+      'week-lt-today:1,0',
+      'week:2,1',
+      'month-lt-today:1,0',
+      'month:2,1',
+      'quarter-lt-today:1,0',
+      'quarter:2,1',
+      'year-lt-today:1,0',
+      'year:2,1',
+      'day:8,1',
+      'day:31,1',
+      'day:91,1',
+      'day:181,1',
+    ].includes(s.value),
 };
 
 export const Experiment = Template.bind({});

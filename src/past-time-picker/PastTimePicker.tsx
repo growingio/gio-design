@@ -42,12 +42,20 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     todayText,
     yesterdayText,
     thisWeekText,
+    thisWeekToToday,
+    thisWeekToYesterday,
     lastWeekText,
     thisMonthText,
+    thisMonthToToday,
+    thisMonthToYesterday,
     lastMonthText,
     thisQuarterText,
+    thisQuarterTextToToday,
+    thisQuarterTextToYesterday,
     lastQuarterText,
     thisYearText,
+    thisYearTextToToday,
+    thisYearTextToYesterday,
     lastYearText,
     last7DaysText,
     last14DaysText,
@@ -75,10 +83,14 @@ const PastTimePicker = (props: PastTimePickerProps) => {
 
   const QUICK_MAPPING = {
     'day:1,0': todayText,
-    'week:1,0': thisWeekText,
-    'month:1,0': thisMonthText,
-    'quarter:1,0': thisQuarterText,
-    'year:1,0': thisYearText,
+    'week:1,0': experimental ? thisWeekToToday : thisWeekText,
+    'week-lt-today:1,0': thisWeekToYesterday,
+    'month:1,0': experimental ? thisMonthToToday : thisMonthText,
+    'month-lt-today:1,0': thisMonthToYesterday,
+    'quarter:1,0': experimental ? thisQuarterTextToToday : thisQuarterText,
+    'quarter-lt-today:1,0': thisQuarterTextToYesterday,
+    'year:1,0': experimental ? thisYearTextToToday : thisYearText,
+    'year-lt-today:1,0': thisYearTextToYesterday,
     'day:8,1': last7DaysText,
     'day:31,1': last30daysText,
     'day:181,1': last180DaysText,
@@ -103,11 +115,13 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     const times = items[1].split(',').map((str) => parseInt(str, 10));
     if (items[0] === 'since') {
       const start = format(times[0], 'yyyy/MM/dd');
-      if (times.length === 1) {
-        return `${FromText} ${start} ${toTodayText}`;
-      }
+      return `${FromText} ${start} ${toTodayText}`;
+    }
+    if (items[0] === 'since-lt-today') {
+      const start = format(times[0], 'yyyy/MM/dd');
       return `${FromText} ${start} ${toYesterdayText}`;
     }
+
     if (items[0] === 'abs') {
       const start = format(times[0], 'yyyy/MM/dd');
       const end = format(times[1], 'yyyy/MM/dd');

@@ -64,13 +64,13 @@ function StaticPastTimePicker({
   const quickOptions = [
     [
       { value: 'day:1,0', label: todayText },
-      { value: 'week:1,0', label: thisWeekText },
-      { value: 'month:1,0', label: thisMonthText },
-      { value: 'quarter:1,0', label: thisQuarterText },
-      { value: 'year:1,0', label: thisYearText },
+      { value: experimental ? 'week-lt-today:1,0' : 'week:1,0', label: thisWeekText },
+      { value: experimental ? 'month-lt-today:1,0' : 'month:1,0', label: thisMonthText },
+      { value: experimental ? 'quarter-lt-today:1,0' : 'quarter:1,0', label: thisQuarterText },
+      { value: experimental ? 'year-lt-today:1,0' : 'year:1,0', label: thisYearText },
       { value: 'day:8,1', label: last7DaysText },
-      { value: 'day:31,1', label: last30daysText },
-      { value: 'day:181,1', label: last180DaysText },
+      { value: 'day:15,1', label: last14DaysText },
+      { value: 'day:91,1', label: last90daysText },
     ],
     [
       { value: 'day:2,1', label: yesterdayText },
@@ -78,8 +78,8 @@ function StaticPastTimePicker({
       { value: 'month:2,1', label: lastMonthText },
       { value: 'quarter:2,1', label: lastQuarterText },
       { value: 'year:2,1', label: lastYearText },
-      { value: 'day:15,1', label: last14DaysText },
-      { value: 'day:91,1', label: last90daysText },
+      { value: 'day:31,1', label: last30daysText },
+      { value: 'day:181,1', label: last180DaysText },
       { value: 'day:366,1', label: last365DaysText },
     ],
   ];

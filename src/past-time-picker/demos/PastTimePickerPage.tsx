@@ -49,6 +49,10 @@ export default function DatePickerPage() {
       <Subheading>{formatMessage({ defaultMessage: '实验特性' })}</Subheading>
 
       <Canvas>
+        <Story id="upgraded-pasttimepicker--ToYesterday" />
+      </Canvas>
+
+      <Canvas>
         <Story id="upgraded-pasttimepicker--experiment" />
       </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '自定义模式' })}</Subheading>

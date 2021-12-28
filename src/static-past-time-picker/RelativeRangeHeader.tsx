@@ -42,7 +42,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
             onChange={(e) => {
               const value = parseInt(e.target.value, 10);
               if (value && value >= 1 && value <= 9999) {
-                setRange(value + (endDays as number), endDays as number);
+                setRange(value + (endDays as number) - 1, endDays as number);
               }
             }}
             size="small"
