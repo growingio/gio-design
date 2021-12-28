@@ -12,10 +12,14 @@ export const experimentalQuickOptions = (localeText: typeof defaultLocaleText) =
 
 export const QUICK_MAPPING = {
   'day:1,0': '今日',
-  'week:1,0': '本周',
-  'month:1,0': '本月',
-  'quarter:1,0': '本季度',
-  'year:1,0': '今年',
+  'week:1,0': '本周(至昨日)',
+  'week-lt-today:1,0': '本周(至今日)',
+  'month:1,0': '本月(至昨日)',
+  'month-lt-tod:1,0': '本月(至今日)',
+  'quarter:1,0': '本季度(至昨日)',
+  'quarter-lt-today:1,0': '本季度(至今日)',
+  'year:1,0': '今年(至今日)',
+  'year-lt-today:1,0': '今年(至昨日)',
   'day:8,1': '过去 7 天',
   'day:31,1': '过去 30 天',
   'day:181,1': '过去 180 天',

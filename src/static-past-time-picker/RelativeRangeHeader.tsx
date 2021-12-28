@@ -67,9 +67,10 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
   const renderRange = () => (
     <>
       <span className={`${basePrefixCls}__text`}>{lastText}</span>
-      <span className={`${basePrefixCls}__input-number`} data-testid="end-days">
+      <span data-testid="end-days">
         <Input.InputNumber
           min={0}
+          className={`${basePrefixCls}__input-number`}
           max={startDays - 1}
           value={endDays}
           onChange={(e) => {
@@ -82,15 +83,16 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
         />
       </span>
       <span className={`${basePrefixCls}__text`}>{ToText}</span>
-      <span className={`${basePrefixCls}__input-number`} data-testid="start-days">
+      <span data-testid="start-days">
         <Input.InputNumber
           min={endDays + 1}
           max={10000}
+          className={`${basePrefixCls}__input-number`}
           value={startDays + 1}
           onChange={(e) => {
             const value = parseInt(e.target.value, 10);
             if (value && value > endDays) {
-              setRange(value as number, endDays as number);
+              setRange((value as number) - 1, endDays as number);
             }
           }}
           size="small"

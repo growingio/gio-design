@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
 import Checkbox from '../checkbox/Checkbox';
 import Button from '../button/Button';
@@ -13,6 +13,12 @@ function QuickPicker({ options, optionsFilter, onSelect, timeRange, experimental
   const prefixCls = usePrefixCls('quick-picker');
   const localeText: typeof defaultLocaleText = useLocale('StaticPastTimePicker') || defaultLocaleText;
 
+  const locale = useLocale('StaticPastTimePicker');
+
+  const { okText, closeText, includeToday } = {
+    ...localeText,
+    ...locale,
+  };
   const filter = (currentOptions: Option[]) => {
     if (optionsFilter) {
       // # Option  !== OptionProps#
@@ -26,7 +32,6 @@ function QuickPicker({ options, optionsFilter, onSelect, timeRange, experimental
     left = [...left, ...experimentalQuickOptions(localeText)[0]];
     right = [...right, ...experimentalQuickOptions(localeText)[1]];
   }
-
   const handleOnSelect = (selectedValue: string) => {
     setCurrentValue(selectedValue);
   };
@@ -42,6 +47,13 @@ function QuickPicker({ options, optionsFilter, onSelect, timeRange, experimental
   const handleCancel = () => {
     onSelect(timeRange as string);
   };
+
+  useEffect(() => {
+    if (experimental && ['year:1,0', 'quarter:1,0', 'month:1,0', 'week:1,0'].includes(currentValue as string)) {
+      setCurrentValue(`${currentValue && currentValue.split(':')[0]}-lt-today:1,0` as string);
+      setToToday(true);
+    }
+  }, [currentValue, experimental, toToday]);
 
   return (
     <div data-testid="quick-picker" className={prefixCls} {...rest}>
@@ -62,15 +74,15 @@ function QuickPicker({ options, optionsFilter, onSelect, timeRange, experimental
             'week:1,0',
           ].includes(currentValue as string) && (
             <Checkbox checked={toToday} onChange={handleOnTodayCheck}>
-              至今日
+              {includeToday}
             </Checkbox>
           )}
         <div className={`${prefixCls}__bottom__button-group`}>
           <Button type="secondary" size="small" onClick={handleCancel}>
-            取消
+            {closeText}
           </Button>
           <Button type="primary" size="small" onClick={handleOk}>
-            确定
+            {okText}
           </Button>
         </div>
       </div>

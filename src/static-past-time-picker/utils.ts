@@ -1,5 +1,5 @@
 import has from 'lodash/has';
-import { startOfToday, sub } from 'date-fns';
+import { startOfToday, sub, startOfYesterday } from 'date-fns';
 import { TimeMode } from './interfaces';
 import { QUICK_MAPPING } from './constant';
 
@@ -13,6 +13,8 @@ export const parseTimeMode = (timeRange: string | undefined) => {
   const items = timeRange.split(':');
   switch (items[0]) {
     case 'since':
+      return TimeMode.Since;
+    case 'since-lt-today':
       return TimeMode.Since;
     case 'abs':
       return TimeMode.Absolute;
@@ -30,11 +32,18 @@ export const parseStartAndEndDate = (timeRange: string | undefined): [Date | und
   const items = timeRange.split(':');
   const times = items[1].split(',').map((str) => parseInt(str, 10));
   const today = startOfToday();
+  const yesterday = startOfYesterday();
   if (items[0] === 'since') {
     if (times.length === 1) {
       return [new Date(times[0]), today];
     }
     return [new Date(times[0]), sub(today, { days: times[1] })];
+  }
+  if (items[0] === 'since-lt-today') {
+    if (times.length === 1) {
+      return [new Date(times[0]), yesterday];
+    }
+    return [new Date(times[0]), sub(yesterday, { days: times[1] })];
   }
   if (items[0] === 'abs') {
     return [new Date(times[0]), new Date(times[1])];
