@@ -127,7 +127,7 @@ function ListAttrSelect(props: ListAttrSelectProps) {
     case 'not hasAll':
       return (
         <div style={{ height: '330px' }}>
-          <Input placeholder={textObject.pleaseEnter} value={inputValue} onChange={changInputValue} />
+          <Input placeholder={textObject.pleaseEnter} value={inputValue} onChange={changInputValue} style={{width: '100%'}}/>
           {loadingStatue ? (
             <div
               style={{
