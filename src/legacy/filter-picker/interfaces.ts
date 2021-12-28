@@ -17,10 +17,10 @@ export interface FilterPickerProps extends Pick<PropertyPickerProps, 'fetchDetai
   placement?: 'bottomLeft' | 'bottom' | 'bottomRight';
   disabled?: boolean;
 }
-export type attributeValue = 'string' | 'int' | 'date' | 'double';
+export type attributeValue = 'string' | 'int' | 'date' | 'double' | 'list';
 
 export type FilterValueType = {
-  op: StringValue | NumberValue | DateValue;
+  op: StringValue | NumberValue | DateValue | ListValue;
   values: string[];
   key?: string;
   name?: string;
@@ -36,6 +36,7 @@ export type FilterValue = {
 export type StringValue = '=' | '!=' | '<' | '>';
 export type NumberValue = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'hasValue';
 export type DateValue = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'relativeTime';
+export type ListValue = 'hasAll' | 'not hasAll' | 'empty' | 'not empty';
 
 export type opStringType = '=' | '!=' | 'in' | 'not in' | 'like' | 'not like' | 'hasValue' | 'noValue';
 export type opNumberType = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'not between' | 'hasValue' | 'noValue';
@@ -51,15 +52,18 @@ export type opDateType =
   | 'hasValue'
   | 'noValue';
 
+export type opListType = 'hasAll' | 'not hasAll' | 'empty' | 'not empty';
+
 export interface titleGroup {
   string: string;
   int: string;
   date: string;
   double: string;
+  list: string;
 }
 
-type selectItem = {
-  value: string;
+export type selectItem = {
+  value: opStringType | opNumberType | opDateType | opListType;
   label: string;
 };
 
@@ -68,6 +72,7 @@ export interface selectOption {
   int: selectItem[];
   double: selectItem[];
   date: selectItem[];
+  list: selectItem[];
 }
 
 export interface operationsOptionType {
@@ -75,4 +80,5 @@ export interface operationsOptionType {
   int: opNumberType[];
   date: opDateType[];
   double: opNumberType[];
+  list: opListType[];
 }

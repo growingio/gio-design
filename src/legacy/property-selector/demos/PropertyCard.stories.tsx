@@ -27,6 +27,7 @@ Default.args = {
     id: 'usr_sex002',
     name: 'sex002 用户属性名称用户属性用户属性用户属性用户属性用户',
     type: 'usr',
+    previewTypeName: '用户属性',
     valueType: 'string',
     description:
       '为了便于分析，我们将访问来源进行了归类。分为直接访问，搜索引擎，社交媒体，外部链接四大部分。直接访问： 可能是用户直接在浏览器中输入了一个域名或使用书签进行访问；搜索引擎： www.baidu.com，m.baidu.com，so.com，sogou.com 等；社交媒体：weibo.com，zhihu.com，linkedin.com， facebook.com，mp.weixin.qq.com 等；外部链接： 除了社交媒体，搜索⽹站之外的来源',

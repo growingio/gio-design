@@ -1,13 +1,14 @@
 import { useContext, useMemo } from 'react';
 import { listFormat } from '../../../..';
 import { FilterPickerContext } from '../../../../FilterPicker';
-import { selectOption } from '../../../../interfaces';
+import { ListValue, selectOption } from '../../../../interfaces';
 
 export enum AttributeMap {
   string = 'string',
   int = 'int',
   date = 'date',
   double = 'double',
+  list = 'list',
 }
 
 export type StringValue = '=' | '!=' | '<' | '>' | 'in' | 'not in' | 'like' | 'not like' | 'hasValue' | 'noValue';
@@ -24,10 +25,10 @@ export type DateValue =
   | 'relativeCurrent'
   | 'relativeBetween';
 
-export type attributeValue = 'string' | 'int' | 'date' | 'double';
+export type attributeValue = 'string' | 'int' | 'date' | 'double' | 'list';
 
 export type FilterValueType = {
-  op: StringValue | NumberValue | DateValue;
+  op: StringValue | NumberValue | DateValue | ListValue;
   values: string[] | number[];
   key?: string;
   name?: string;
@@ -201,6 +202,24 @@ export const useSelectOptions = () => {
         {
           value: 'noValue',
           label: t.noValue,
+        },
+      ],
+      list: [
+        {
+          value: 'hasAll',
+          label: t.allLike,
+        },
+        {
+          value: 'not hasAll',
+          label: t.notAllLike,
+        },
+        {
+          value: 'empty',
+          label: t.empty,
+        },
+        {
+          value: 'not empty',
+          label: t.notEmpty,
         },
       ],
     }),

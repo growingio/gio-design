@@ -4,23 +4,16 @@ import parseValuesToText from './utils';
 import FilterAttrOverlay from './FilterAttrOverlay';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from './interfaces';
 import Selector from '../../../../../selector-pro';
-import { operationsOptionType } from '../../../../interfaces';
+import { ListValue, operationsOptionType } from '../../../../interfaces';
 import Tooltip from '../../../../../../tooltip'; // new
 import { FilterPickerContext, TextObject } from '../../../../FilterPicker';
 import defaultLocaleTextObject from '../../../../locales/zh-CN';
-
-export const defaultOperationsOption: operationsOptionType = {
-  string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
-  int: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
-  double: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
-  date: ['=', '!=', '>', '<', 'relativeBetween', 'relativeCurrent', 'between', 'not between', 'hasValue', 'noValue'],
-};
 
 interface FilterConditionProps {
   valueType: attributeValue;
   onSubmit: (v: FilterValueType) => void;
   onCancel: () => void;
-  op: StringValue | NumberValue | DateValue;
+  op: StringValue | NumberValue | DateValue | ListValue;
   dimensionValueRequest?: (data: any) => Promise<any>;
   timeRange: string;
   measurements: any[];
@@ -102,7 +95,7 @@ function FilterCondition(props: FilterConditionProps) {
       curryDimensionValueRequest={curryDimensionValueRequest}
       values={values}
       exprKey={exprKey}
-      operationsOption={{ ...defaultOperationsOption, ...operationsOption }}
+      operationsOption={operationsOption}
       numType={numType}
     />
   );

@@ -3,7 +3,7 @@ import { DeleteOutlined } from '@gio-design/icons';
 import PropertySelector from '../../../../property-selector';
 import FilterCondition from './FilterCondition';
 import './index.less';
-import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from '../../../interfaces';
+import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue, ListValue } from '../../../interfaces';
 import { FilterPickerContext } from '../../../FilterPicker';
 import Button from '../../../../../button'; // new
 
@@ -40,7 +40,7 @@ function Expression(props: ExpressionProps) {
   const [exprKey, setExprKey] = useState<string>(filterItem?.key || '');
   const [exprName, setExprName] = useState<string>(filterItem?.name || '');
   const [groupId, setGroupId] = useState<string>(filterItem?.groupId || '');
-  const [op, setOp] = useState<StringValue | NumberValue | DateValue>(filterItem?.op);
+  const [op, setOp] = useState<StringValue | NumberValue | DateValue | ListValue>(filterItem?.op);
   const [subFilterItem, setSubFilterItem] = useState<FilterValueType>(filterItem);
   const { fetchDetailData, operationsOption } = React.useContext(FilterPickerContext);
 
@@ -72,11 +72,12 @@ function Expression(props: ExpressionProps) {
     v && setValues([]);
     v && setOp('=');
     v && setGroupId(v.subGroupId);
+    const type = v?.valueType ? v?.valueType.toLowerCase() : 'string';
     const expr: FilterValueType = {
       key: v.value,
       name: v.label,
-      valueType: v?.valueType || 'string',
-      op: '=',
+      valueType: type,
+      op: type === 'list' ? 'hasAll' : '=',
       groupId: v.subGroupId,
       values: [],
     };
