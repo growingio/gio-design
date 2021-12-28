@@ -16,6 +16,9 @@ const Trigger: React.ForwardRefRenderFunction<HTMLInputElement, TriggerProps> = 
     prefix: propPrefix,
     suffix: propSuffix,
     visible,
+    separator = '',
+    valueSeparator = '.',
+    model = 'single',
     ...rest
   } = props;
   const { options, setOptions, getOptionByValue, getLabelByValue } = useContext(ListContext);
@@ -47,7 +50,7 @@ const Trigger: React.ForwardRefRenderFunction<HTMLInputElement, TriggerProps> = 
       suffix={suffix}
       active={visible}
       placeholder={placeholder}
-      value={title ?? getLabelByValue?.(value as React.ReactText)}
+      value={title ?? getLabelByValue?.(value as React.ReactText, separator, valueSeparator, model)}
       onClear={handleClear}
       {...rest}
     />

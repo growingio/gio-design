@@ -68,6 +68,10 @@ export interface ListPickerProps extends Pick<ListProps, 'model' | 'empty' | 'ne
    */
   separator?: string;
   /**
+   * value解析连接符 默认为 '.'
+   */
+  valueSeparator?: string;
+  /**
    * 是否允许clear
    */
   allowClear?: boolean;
