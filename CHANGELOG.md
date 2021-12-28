@@ -1,3 +1,25 @@
+# [22.11.0](https://github.com/growingio/gio-design/compare/v22.10.1...v22.11.0) (2021-12-28)
+
+
+### Bug Fixes
+
+* **card:** fix props and className ([#1726](https://github.com/growingio/gio-design/issues/1726)) ([c2cab83](https://github.com/growingio/gio-design/commit/c2cab8345839b7a00216e811655690f2daad2823))
+* **filter-picker, property-selector:** fix i18n ([#1714](https://github.com/growingio/gio-design/issues/1714)) ([270d412](https://github.com/growingio/gio-design/commit/270d412609dfc86855210c08bf4d16e3eded633e))
+* **icon-button:** change padding and fixed width  ([#1727](https://github.com/growingio/gio-design/issues/1727)) ([015eaf6](https://github.com/growingio/gio-design/commit/015eaf688df916d9936aa4b942759c0e6d411fc9))
+* **input:** add input width 100% in form ([#1738](https://github.com/growingio/gio-design/issues/1738)) ([0b167a2](https://github.com/growingio/gio-design/commit/0b167a2e857b1723636d82d6a6afa2952eddd9d9))
+* **list-picker:** fix listpicker autoWidth ([#1737](https://github.com/growingio/gio-design/issues/1737)) ([31d1351](https://github.com/growingio/gio-design/commit/31d1351313953eea41bfb9dc8b7d4ab5acd087a8))
+* **list:** fix list value separator ([#1724](https://github.com/growingio/gio-design/issues/1724)) ([4c28824](https://github.com/growingio/gio-design/commit/4c288244a523abf977a75f8576816d1fb235804d))
+* **popover, static-date-picker:** remove focus style ([#1735](https://github.com/growingio/gio-design/issues/1735)) ([fce28f2](https://github.com/growingio/gio-design/commit/fce28f2013dcc4dcdb80b1e64e1ec1c30dc917be))
+* **SearchBar:** update search bar styles ([#1728](https://github.com/growingio/gio-design/issues/1728)) ([a4f0dee](https://github.com/growingio/gio-design/commit/a4f0dee1b3de90f726a677ad0564be086efc859a))
+* **steps:** change steps style ([#1733](https://github.com/growingio/gio-design/issues/1733)) ([87eff12](https://github.com/growingio/gio-design/commit/87eff1241aff11a694b9f9f80d64a036fc769a6e))
+
+
+### Features
+
+* **date-picker, time-picker:** set active status on InputButton when visible ([#1736](https://github.com/growingio/gio-design/issues/1736)) ([47e4976](https://github.com/growingio/gio-design/commit/47e4976a077c8cc08cb00c3c5981adc07d4d3468))
+* **filter-picker:** support `list` type ([#1739](https://github.com/growingio/gio-design/issues/1739)) ([e178062](https://github.com/growingio/gio-design/commit/e178062c3990b900dca18e11e0c0b90a2bf19607))
+* **past-time-picker:** relative timeRange support toToday ([#1731](https://github.com/growingio/gio-design/issues/1731)) ([f240f9e](https://github.com/growingio/gio-design/commit/f240f9e0dc804efe074f86feb733366ea0a7f034))
+
 ## [22.10.1](https://github.com/growingio/gio-design/compare/v22.10.0...v22.10.1) (2021-12-22)
 
 
