@@ -33,6 +33,7 @@ const Popover = (props: PopoverProps) => {
     getContainer,
     distoryOnHide = true,
     onContentClick,
+    delay = 100,
     ...rest
   } = props;
 
@@ -84,6 +85,12 @@ const Popover = (props: PopoverProps) => {
         options: {
           allowedAutoPlacements: ['left-end', 'left-start', 'left'],
           flipVariations: false,
+        },
+      },
+      {
+        name: 'preventOverflow',
+        options: {
+          boundary: 'window',
         },
       },
     ],
@@ -143,16 +150,16 @@ const Popover = (props: PopoverProps) => {
       debounce((e: Event) => {
         triggerChildEvent('onMouseEnter', e);
         isHoverToShow && updateVisible(true);
-      }, 100),
-    [triggerChildEvent, isHoverToShow, updateVisible]
+      }, delay),
+    [delay, triggerChildEvent, isHoverToShow, updateVisible]
   );
   const onMouseLeave = useMemo(
     () =>
       debounce((e: Event) => {
         triggerChildEvent('onMouseLeave', e);
         isHoverToShow && updateVisible(false);
-      }, 100),
-    [triggerChildEvent, isHoverToShow, updateVisible]
+      }, delay),
+    [delay, triggerChildEvent, isHoverToShow, updateVisible]
   );
 
   const onClick = useCallback(

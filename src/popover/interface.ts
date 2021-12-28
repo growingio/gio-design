@@ -119,6 +119,10 @@ export interface PopoverProps {
    * tooltip 与 trigger 之间的距离
    */
   offset?: number[];
+  /**
+   * delay mouseEnter mouseLeave 延迟
+   */
+  delay?: number;
   triggerClassName?: string;
   distoryOnHide?: boolean;
 }
