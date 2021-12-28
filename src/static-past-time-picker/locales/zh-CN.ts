@@ -41,4 +41,5 @@ export default {
   last180DaysText: '过去180天',
   last365DaysText: '过去365天',
   timeRangeText: '时间范围',
+  includeToday: '至今日',
 };

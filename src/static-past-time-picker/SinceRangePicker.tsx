@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  format,
-  getTime,
-  startOfToday,
-  startOfYesterday,
-  differenceInDays,
-  startOfDay,
-  isValid,
-  isAfter,
-} from 'date-fns';
+import { format, getTime, startOfToday, startOfYesterday, startOfDay, isValid, isAfter } from 'date-fns';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
 import SwitchGroup from '../switchGroup';
 import DatePicker from '../static-date-picker';
@@ -23,7 +14,9 @@ function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experim
   const dates = parseStartAndEndDate(timeRange);
   const prefixCls = usePrefixCls('range-panel__header');
   const [startDate, setStartDate] = React.useState<Date | undefined>(dates[0]);
-  const [endKey, setEndKey] = React.useState(endDateKeys[dates[1] ? differenceInDays(startOfToday(), dates[1]) : 0]);
+  const [endKey, setEndKey] = React.useState(
+    endDateKeys[timeRange && timeRange.split(':')[0] === 'since' ? 0 : 1] || 0
+  );
   const locale = useLocale<typeof defaultLocale>('StaticPastTimePicker') || defaultLocale;
 
   const { startDayText, FromText, toTodayText, toYesterdayText } = {
