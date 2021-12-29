@@ -1,3 +1,10 @@
+## [22.11.1](https://github.com/growingio/gio-design/compare/v22.11.0...v22.11.1) (2021-12-29)
+
+
+### Bug Fixes
+
+* **pasttimepicker:** add internationallization and fix value echo ([#1748](https://github.com/growingio/gio-design/issues/1748)) ([73edb21](https://github.com/growingio/gio-design/commit/73edb21965297b2d4a0b512b85ad1c73a34673db))
+
 # [22.11.0](https://github.com/growingio/gio-design/compare/v22.10.1...v22.11.0) (2021-12-28)
 
 
