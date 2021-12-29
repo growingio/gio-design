@@ -79,7 +79,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
       if (!userName) {
         return (
           <span className={`${prefixCls}-default ${prefixCls}-icon`}>
-            <UserOutlined />
+            <UserOutlined color={backgroundColor} />
           </span>
         );
       }
