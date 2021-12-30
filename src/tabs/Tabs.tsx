@@ -19,7 +19,7 @@ export const Tabs = WithRef<
       defaultValue = 0,
       value,
       onChange,
-      classname,
+      className: classname,
       children,
       size = 'normal',
       tabListStyle,
