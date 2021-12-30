@@ -1,10 +1,9 @@
-import { useLocale } from '@gio-design/utils';
+import { useLocale, usePrefixCls } from '@gio-design/utils';
 import { filter as lodashFilter, isNil, slice } from 'lodash';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { List, OptionProps } from '../list';
 import { PREFIX } from '../list/constants';
 import { ListContext } from '../list/context';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import defaultLocaleTextObject from './locales/zh-CN';
 
 export const ITEM_KEY = '__GIO_SELECTION_KEY';

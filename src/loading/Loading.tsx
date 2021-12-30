@@ -1,8 +1,8 @@
 import React, { useMemo, forwardRef, useRef } from 'react';
 import classNames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import useDebounceLoading from '../utils/hooks/useDebounceLoading';
 import composeRef from '../utils/composeRef';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { LoadingProps } from './interface';
 import Wheel from './Wheel';
 

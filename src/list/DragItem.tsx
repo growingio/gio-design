@@ -2,7 +2,7 @@ import { MoveOutlined } from '@gio-design/icons';
 import classNames from 'classnames';
 import React, { useRef } from 'react';
 import { DragSourceMonitor, DropTargetMonitor, useDrag, useDrop, XYCoord } from 'react-dnd';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
 import { PREFIX } from './constants';
 import { DragItemProps } from './interfance';
 import Item from './Item';

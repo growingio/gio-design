@@ -1,9 +1,8 @@
 import classNames from 'classnames';
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { isArray, isEmpty } from 'lodash';
-import { useLocale } from '@gio-design/utils';
+import { useLocale , usePrefixCls } from '@gio-design/utils';
 import { OptionProps, ListProps } from './interfance';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { PREFIX } from './constants';
 import Item from './Item';
 import { convertChildrenToData, convertOptions, getResultValue } from './util';

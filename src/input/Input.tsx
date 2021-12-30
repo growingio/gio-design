@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import { InputProps } from './interface';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 
 const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   const {

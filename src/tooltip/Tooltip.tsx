@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import { isFunction } from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import { TooltipProps } from './interface';
 import Popover from '../popover/Popover';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 
 import Link from '../link';
 

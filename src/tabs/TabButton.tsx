@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
 
 export interface TabButtonProps {
   /**

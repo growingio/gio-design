@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import { isUndefined } from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import usePrevious from '../utils/hooks/usePrevious';
 import filterChildren from '../utils/filterChildren';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import Radio from './Radio';
 import RadioGroupContext from './context';
 import { IRadioGroupProps, RadioValueType } from './interface';

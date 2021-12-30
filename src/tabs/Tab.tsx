@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import { WithCommonProps } from '../utils/interfaces';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { TabProps } from './interface';
 import TabsContext from './context';
 

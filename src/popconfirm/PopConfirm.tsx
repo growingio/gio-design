@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { WarningCircleFilled } from '@gio-design/icons';
-import { useControlledState, useLocale } from '@gio-design/utils';
+import { useControlledState, useLocale, usePrefixCls } from '@gio-design/utils';
 import { isUndefined } from 'lodash';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import Button from '../button';
 import Popover from '../popover/Popover';
 import { PopConfirmProps } from './interface';

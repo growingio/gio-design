@@ -2,9 +2,9 @@ import React from 'react';
 import RcCollapse from 'rc-collapse';
 import classnames from 'classnames';
 import { RightFilled } from '@gio-design/icons';
+import { usePrefixCls } from '@gio-design/utils';
 import { cloneElement } from '../utils/reactNode';
 import { CollapseProps, PanelProps } from './interface';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import WithRef from '../utils/withRef';
 import { WithCommonProps } from '../utils/interfaces';
 

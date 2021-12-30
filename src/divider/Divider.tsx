@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
 import WithRef from '../utils/withRef';
 import DividerProps from './interface';
 

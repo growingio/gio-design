@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { isEmpty } from 'lodash';
 import React, { useEffect, useState } from 'react';
+import { usePrefixCls } from '@gio-design/utils';
 import { List, OptionProps } from '../list';
 import Popover from '../popover';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import useControlledState from '../utils/hooks/useControlledState';
 import { CascaderProps } from './interfance';
 import Trigger from './Trigger';

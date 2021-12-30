@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
 import { LoadingOutlined } from '@gio-design/icons';
+import { usePrefixCls } from '@gio-design/utils';
 import { ButtonProps } from './interface';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import WithRef from '../utils/withRef';
 
 const Button = WithRef<HTMLButtonElement, ButtonProps>((props, ref) => {

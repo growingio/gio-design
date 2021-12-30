@@ -2,10 +2,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import classNames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import CheckboxGroupContext from './CheckboxGroupContext';
 import { CheckboxProps, CheckboxValueType } from './interface';
 import WithRef from '../utils/withRef';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import useControlledState from '../utils/hooks/useControlledState';
 
 const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
@@ -79,7 +79,7 @@ const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
-    <label className={checkboxCls} style={style} >
+    <label className={checkboxCls} style={style}>
       <input
         type="checkbox"
         ref={ref}
