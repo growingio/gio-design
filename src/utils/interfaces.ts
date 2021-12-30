@@ -81,6 +81,6 @@ export type PropsWithChildren<P> = P & { children?: React.ReactNode };
 
 export type PropsWithStyle<P> = P & { style?: CSSProperties };
 
-export type PropsWithClassname<P> = P & { classname?: string };
+export type PropsWithClassName<P> = P & { className?: string };
 
-export type WithCommonProps<P> = PropsWithChildren<PropsWithStyle<PropsWithClassname<P>>>;
+export type WithCommonProps<P> = PropsWithChildren<PropsWithStyle<PropsWithClassName<P>>>;

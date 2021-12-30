@@ -7,6 +7,7 @@ import Tabs, { Tab } from '../tabs';
 import Divider from '../divider';
 import { PanelProps, TabPaneProps } from './interfaces';
 import TabPanel from './TabPanel';
+import { Avatar } from '..';
 
 const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (props, ref) => {
   const {
@@ -59,7 +60,7 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
       <div className={classnames(prefix('__header'), { [prefix('__header--hidden')]: !showHeader })}>
         {avatar && (
           <div className={prefix('__header__avatar')}>
-            <div className={prefix('__header__avatar--icon')}>{avatar}</div>
+            <Avatar size="large" icon={avatar} mode="square" />
           </div>
         )}
         <div className={prefix('__header__meta')}>
@@ -92,7 +93,7 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
                   props: { name },
                 } = tab;
                 return (
-                  <Tab value={String(tabKey).slice(2)} label={name} key={tabKey} classname={prefix('__tabs__tab')} />
+                  <Tab value={String(tabKey).slice(2)} label={name} key={tabKey} className={prefix('__tabs__tab')} />
                 );
               })}
             </Tabs>

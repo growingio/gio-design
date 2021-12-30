@@ -21,7 +21,7 @@ export const Steps = WithRef<
       current = 1,
       value,
       onChange,
-      classname,
+      className: classname,
       children,
       size = 'normal',
       ...restProps
