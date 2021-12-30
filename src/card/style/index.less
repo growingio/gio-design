@@ -1,4 +1,4 @@
-@import '../../stylesheet/variables/index.less';
+@import (reference) '../../stylesheet/variables/index.less';
 
 @card-prefix-cls: ~'@{component-prefix}-card';
 @card-meta-prefix-cls: ~'@{component-prefix}-card-meta';
@@ -7,13 +7,14 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  box-sizing: border-box;
   padding: 16px;
   overflow: hidden;
   background-color: @gray-0;
   border: 1px solid @gray-2;
   border-radius: 8px;
   &-clickable:not(&-disabled):hover {
-    .elevation(1);
+    .elevation(2);
     cursor: pointer;
   }
   &-disabled {
@@ -23,7 +24,6 @@
   &-full-width-content {
     padding: 0;
     .@{card-meta-prefix-cls} {
-      width: calc(100% - 32px);
       padding: 16px;
     }
   }
@@ -37,6 +37,7 @@
 .@{card-meta-prefix-cls} {
   display: flex;
   align-items: center;
+  box-sizing: border-box;
   width: 100%;
   color: @gray-4;
   .text-body2();
