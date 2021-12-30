@@ -11,7 +11,7 @@ import Button, { IconButton } from '../../button';
 import Dropdown from '../../dropdown';
 import { Item, List } from '../../list';
 import { Basic, Empty, TreeData } from '../../table/demos/Table.stories';
-import { Card, Divider, Skeleton } from '../..';
+import { Card, Skeleton } from '../..';
 import Text from '../../typography/text';
 
 export default {
@@ -30,61 +30,8 @@ export default {
   },
 } as Meta;
 
-const infoCardTemplate = () => (
-  <Card fullWidthContent>
-    <Card.Meta
-      style={{ alignItems: 'flex-start' }}
-      image={<Avatar mode="square" size="large" />}
-      description={
-        <Text
-          style={{
-            color: '#7b819c',
-            fontSize: '14px',
-            width: '100%',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'normal',
-          }}
-          lines={3}
-        >
-          {'这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题 这里是副标题'.repeat(
-            5
-          )}
-        </Text>
-      }
-      title={
-        <Text
-          style={{
-            fontWeight: 500,
-            fontSize: '18px',
-            lineHeight: '28px',
-            color: '#242e59',
-            textOverflow: 'ellipsis',
-            overflow: 'hidden',
-          }}
-        >
-          {'北区项目组'.repeat(20)}
-        </Text>
-      }
-      action={
-        <>
-          <Button style={{ marginRight: '8px' }}>Button</Button>
-          <Button type="secondary">Button</Button>
-        </>
-      }
-    />
-    <Divider
-      style={{
-        width: '100%',
-        margin: '0px',
-      }}
-    />
-    <Basic />
-  </Card>
-);
-
-export const infoCard = infoCardTemplate.bind({});
 const tableCardTemplate = () => (
-  <Card fullWidthContent>
+  <Card fullWidthContent clickable={false} style={{ boxShadow: '0px 3px 8px rgba(36, 46, 89, 0.05)' }}>
     <Card.Meta
       title={
         <div
@@ -98,24 +45,34 @@ const tableCardTemplate = () => (
           全部成员(233)
         </div>
       }
+      style={{ alignItems: 'flex-start' }}
+      description={
+        <Text
+          style={{
+            color: '#7b819c',
+            fontSize: '14px',
+            width: '100%',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'normal',
+          }}
+          lines={2}
+        >
+          这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副
+        </Text>
+      }
+      image={<Avatar mode="square" size="large" />}
+      action={
+        <>
+          <Button style={{ marginRight: '8px' }}>Button</Button>
+          <Button type="secondary">Button</Button>
+        </>
+      }
     />
-    <Text
-      style={{
-        color: '#7b819c',
-        fontSize: '14px',
-        padding: '0 16px',
-        marginTop: '-8px',
-        marginBottom: '20px',
-      }}
-      lines={3}
-    >
-      这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副
-    </Text>
     <Tabs
       tabListStyle={{
         borderBottom: '1px solid #dfe4ee',
         borderRadius: '0px',
-        paddingLeft: '8px',
+        padding: '0 20px',
       }}
       defaultValue="1"
     >
@@ -136,10 +93,6 @@ const DemoTemplate = () => (
     <tr>
       <th>Card</th>
       <th>Example</th>
-    </tr>
-    <tr>
-      <td>InfoCard</td>
-      <td>{infoCardTemplate()}</td>
     </tr>
     <tr>
       <td>TableCard</td>
