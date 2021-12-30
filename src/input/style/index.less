@@ -16,11 +16,12 @@
     padding: 0;
     overflow: hidden;
     color: @gray-5;
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif, Lato;
     text-align: left;
     background-color: #0000;
     border: none;
-    font-family+: @font-family-primary;
-    font-family+: @font-family-number;
+    -webkit-appearance: none;
+    appearance: none;
     .text-body1();
 
     &:not([disabled]):hover,
@@ -111,9 +112,8 @@
   min-height: 36px;
   padding: 7px 12px;
   color: @gray-5;
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif, Lato;
   resize: vertical;
-  font-family+: @font-family-primary;
-  font-family+: @font-family-number;
   .text-body1();
   &:disabled {
     background-color: @gray-1;
