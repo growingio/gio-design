@@ -1,3 +1,16 @@
+# [22.12.0](https://github.com/growingio/gio-design/compare/v22.11.1...v22.12.0) (2021-12-31)
+
+
+### Bug Fixes
+
+* **avatar:** border-box ([#1750](https://github.com/growingio/gio-design/issues/1750)) ([0511fae](https://github.com/growingio/gio-design/commit/0511fae37872972ab0d35fd744cc756b54928d85))
+* **card:** fix style ([#1753](https://github.com/growingio/gio-design/issues/1753)) ([760f763](https://github.com/growingio/gio-design/commit/760f763b34f4190a9992272ba102d0b7f985de40))
+
+
+### Features
+
+* **card:** add `boxShadow` prop ([#1754](https://github.com/growingio/gio-design/issues/1754)) ([9843887](https://github.com/growingio/gio-design/commit/984388708e76a351f81f2261bd1f4ad8c8022d2b))
+
 ## [22.11.1](https://github.com/growingio/gio-design/compare/v22.11.0...v22.11.1) (2021-12-29)
 
 
