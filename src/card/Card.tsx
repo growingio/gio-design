@@ -13,6 +13,7 @@ export const Card = WithRef<HTMLDivElement, CardProps>(
       children,
       className,
       prefixCls: customizePrefixCls,
+      boxShadow = false,
       ...restProps
     }: CardProps,
     ref?
@@ -22,6 +23,7 @@ export const Card = WithRef<HTMLDivElement, CardProps>(
       [`${prefixCls}-disabled`]: disabled,
       [`${prefixCls}-clickable`]: clickable,
       [`${prefixCls}-full-width-content`]: fullWidthContent,
+      [`${prefixCls}-box-shadow`]: boxShadow,
     });
 
     return (
