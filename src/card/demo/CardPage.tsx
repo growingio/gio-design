@@ -61,12 +61,6 @@ export default function CardPage() {
         <Story id="upgraded-card--multiple" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'info-card' })}</Subheading>
-      <p>pro中的infocard情况</p>
-      <Canvas>
-        <Story id="upgraded-card--info-card" />
-      </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: 'info-card' })}</Subheading>
       <p>仅有description情况</p>
       <Canvas>
         <Story id="upgraded-card--only-des" />
