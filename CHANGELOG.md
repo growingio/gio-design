@@ -1,3 +1,14 @@
+## [22.12.2](https://github.com/growingio/gio-design/compare/v22.12.1...v22.12.2) (2022-01-04)
+
+
+### Bug Fixes
+
+* **avatar:** icon size ([#1758](https://github.com/growingio/gio-design/issues/1758)) ([eef1e35](https://github.com/growingio/gio-design/commit/eef1e357af8f6efc22687d1e0bd68e38cfc43798))
+* **filter-picker:** 过滤选择器,选择过滤条件的时候,点击取消,触发submit事件 ([#1767](https://github.com/growingio/gio-design/issues/1767)) ([d6f1b49](https://github.com/growingio/gio-design/commit/d6f1b4920f2c8afeba11614ce7cee8656fd9b68b))
+* **input:** -webkit-appearance: none ([#1755](https://github.com/growingio/gio-design/issues/1755)) ([fbbea02](https://github.com/growingio/gio-design/commit/fbbea02924e87ce3ef771f6976fc546f2a25867e)), closes [#1701](https://github.com/growingio/gio-design/issues/1701)
+* **list:** fix list selection component arguments error ([#1747](https://github.com/growingio/gio-design/issues/1747)) ([23eda81](https://github.com/growingio/gio-design/commit/23eda81420523fbaa2f383e0f5d3272b3eb26395))
+* **switch:** fix style ([#1768](https://github.com/growingio/gio-design/issues/1768)) ([45c05bb](https://github.com/growingio/gio-design/commit/45c05bb53f1107ffea315f9d1cfbede087623513))
+
 ## [22.12.1](https://github.com/growingio/gio-design/compare/v22.12.0...v22.12.1) (2022-01-04)
 
 
