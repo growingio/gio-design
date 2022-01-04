@@ -78,11 +78,11 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
               !isEmpty(option.options) && (
                 <div className={`${prefixCls}--item`}>
                   {option?.groupId && <div className={`${prefixCls}--title`}>{option?.groupName}</div>}
-                  <List options={option.options} />
+                  <List {...rest} options={option.options} />
                 </div>
               )
           )}
-        {!isSelection && !isEmpty(selectionOptions) && <List options={selectionOptions as OptionProps[]} />}
+        {!isSelection && !isEmpty(selectionOptions) && <List {...rest} options={selectionOptions as OptionProps[]} />}
       </div>
     );
     return selectionProvider(
