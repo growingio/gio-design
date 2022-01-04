@@ -31,7 +31,7 @@ export default {
 } as Meta;
 
 const tableCardTemplate = () => (
-  <Card fullWidthContent clickable={false} style={{ boxShadow: '0px 3px 8px rgba(36, 46, 89, 0.05)' }}>
+  <Card fullWidthContent clickable={false} boxShadow>
     <Card.Meta
       title={
         <div
