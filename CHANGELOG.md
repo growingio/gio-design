@@ -1,3 +1,10 @@
+## [22.12.1](https://github.com/growingio/gio-design/compare/v22.12.0...v22.12.1) (2022-01-04)
+
+
+### Bug Fixes
+
+* **filter-picker:** 修复过滤选择器,当默认为不为空或为空,切换到不包含或包含,有空格选项存在.以及文案不全包含->不包含 ([#1766](https://github.com/growingio/gio-design/issues/1766)) ([b36b266](https://github.com/growingio/gio-design/commit/b36b2663197b0caa71d61bc0bc958bae784c1bbe))
+
 # [22.12.0](https://github.com/growingio/gio-design/compare/v22.11.1...v22.12.0) (2021-12-31)
 
 
