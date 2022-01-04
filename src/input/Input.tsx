@@ -77,7 +77,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     [suffixCls, customizeSuffix]
   );
   return (
-    <span className={inputClass} {...rest} style={style} ref={ref}>
+    <span className={inputClass} style={style} ref={ref}>
       {prefix}
       <input
         data-testid="input"
