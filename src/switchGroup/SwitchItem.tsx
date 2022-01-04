@@ -6,7 +6,7 @@ import SwitchGroupContext from './context';
 import { ISwitchProps } from './interface';
 import WithRef from '../utils/withRef';
 
-const InnerSwitchItem: React.ForwardRefRenderFunction<HTMLInputElement, ISwitchProps> = (props: ISwitchProps, ref) => {
+const InnerSwitchItem: React.ForwardRefRenderFunction<HTMLInputElement, ISwitchProps> = (props, ref) => {
   const { prefixCls: customPrefixCls, className, style, children, defaultChecked, prefix, ...restProps } = props;
 
   const groupContext = useContext(SwitchGroupContext);
@@ -33,8 +33,11 @@ const InnerSwitchItem: React.ForwardRefRenderFunction<HTMLInputElement, ISwitchP
     [`${prefixCls}-${restProps.disabled ? 'disabled' : ''}`]: switchProps.disabled,
   });
 
+  const prefixIcon = React.isValidElement(prefix)
+    ? React.cloneElement(prefix, { className: `${prefixCls}-prefix` })
+    : prefix;
+
   return (
-    // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label className={wrapperCls}>
       <input
         type="radio"
@@ -45,12 +48,11 @@ const InnerSwitchItem: React.ForwardRefRenderFunction<HTMLInputElement, ISwitchP
         style={style}
         disabled={restProps.disabled}
         defaultChecked={defaultChecked}
+        data-testid="switch-item"
         {...switchProps}
       />
-      <span>
-        {prefix}
-        {children}
-      </span>
+      {prefixIcon}
+      {children}
     </label>
   );
 };

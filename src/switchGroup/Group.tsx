@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import { isUndefined } from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import usePrevious from '../utils/hooks/usePrevious';
 import filterChildren from '../utils/filterChildren';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import SwitchItem from './SwitchItem';
 import SwitchGroupContext from './context';
 import { ISwitchGroupProps, SwitchItemValueType } from './interface';
@@ -13,7 +13,18 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, ISwitchGroupPro
   props: ISwitchGroupProps,
   ref
 ) => {
-  const { className, style, disabled, defaultValue, value, onChange, children, options, size = 'normal', dataTestId = "switch" } = props;
+  const {
+    className,
+    style,
+    disabled,
+    defaultValue,
+    value,
+    onChange,
+    children,
+    options,
+    size = 'normal',
+    dataTestId = 'switch',
+  } = props;
 
   const prefixCls = usePrefixCls('switch');
   const [selectedValue, setSelectedValue] = useState(() => (!isUndefined(value) ? value : defaultValue));
@@ -40,7 +51,7 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, ISwitchGroupPro
     });
 
   const renderItems = () => {
-    let renderedChildren: React.ReactNodeArray = [];
+    let renderedChildren: React.ReactNode[] = [];
     if (options && options.length > 0) {
       renderedChildren = options
         .filter((_) => !!_)
