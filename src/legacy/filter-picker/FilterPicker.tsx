@@ -13,7 +13,7 @@ const defaultOperationsOption: operationsOptionType = {
   int: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
   double: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
   date: ['=', '!=', '>', '<', 'relativeBetween', 'relativeCurrent', 'between', 'not between', 'hasValue', 'noValue'],
-  list: ['hasAll', 'not hasAll', 'empty', 'not empty'],
+  list: ['hasAll', 'not hasAny', 'empty', 'not empty'],
 };
 
 export type TextObject = typeof defaultLocaleTextObject & { code: 'zh-CN' | 'en-US' };

@@ -210,7 +210,7 @@ export const useSelectOptions = () => {
           label: t.allLike,
         },
         {
-          value: 'not hasAll',
+          value: 'not hasAny',
           label: t.notAllLike,
         },
         {
