@@ -9,14 +9,12 @@ const Breadcrumbs = WithRef<HTMLElement, BreadcrumbsProps>(
     const prefixCls = usePrefixCls('breadcrumbs');
     const classes = classNames([className, prefixCls]);
 
-    const breadcrumbsItems = React.Children.toArray(children)
-      .filter((child) => React.isValidElement(child))
-      .map((child, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <li className={`${prefixCls}__li`} key={`${prefixCls}-li-${index}`}>
-          {child}
-        </li>
-      ));
+    const breadcrumbsItems = React.Children.toArray(children).map((child, index) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <li className={`${prefixCls}__li`} key={`${prefixCls}-li-${index}`}>
+        {child}
+      </li>
+    ));
 
     return (
       <nav ref={ref} className={classes} aria-label="breadcrumbs" data-testid="breadcrumbs" {...otherProps}>
