@@ -20,7 +20,7 @@ export default {
   notIn: (text: Key) => `不在 ${text} 范围内`,
   like: '包含',
   allLike: '全包含',
-  notAllLike: '不全包含',
+  notAllLike: '不包含',
   notLike: '不包含',
   hasValue: '有值',
   noValue: '无值',

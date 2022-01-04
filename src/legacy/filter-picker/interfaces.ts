@@ -36,7 +36,7 @@ export type FilterValue = {
 export type StringValue = '=' | '!=' | '<' | '>';
 export type NumberValue = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'hasValue';
 export type DateValue = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'relativeTime';
-export type ListValue = 'hasAll' | 'not hasAll' | 'empty' | 'not empty';
+export type ListValue = 'hasAll' | 'not hasAny' | 'empty' | 'not empty';
 
 export type opStringType = '=' | '!=' | 'in' | 'not in' | 'like' | 'not like' | 'hasValue' | 'noValue';
 export type opNumberType = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between' | 'not between' | 'hasValue' | 'noValue';
@@ -52,7 +52,7 @@ export type opDateType =
   | 'hasValue'
   | 'noValue';
 
-export type opListType = 'hasAll' | 'not hasAll' | 'empty' | 'not empty';
+export type opListType = 'hasAll' | 'not hasAny' | 'empty' | 'not empty';
 
 export interface titleGroup {
   string: string;

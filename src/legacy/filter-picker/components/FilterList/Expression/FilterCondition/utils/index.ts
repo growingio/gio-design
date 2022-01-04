@@ -214,7 +214,7 @@ const parseListValuesToText = (operation: string, value: string[], t: TextObject
   /**
    * list: {
    *    'hasAll': '全包含',
-   *    'not hasAll': '不全包含',
+   *    'not hasAny': '不包含',
    *    'empty': '为空',
    *    'not empty: '不为空',
    * }
@@ -223,7 +223,7 @@ const parseListValuesToText = (operation: string, value: string[], t: TextObject
     case 'hasAll':
       // 全包含
       return `${t.allLike} ${listFormat(value, t.code)}`;
-    case 'not hasAll': {
+    case 'not hasAny': {
       return `${t.notAllLike} ${listFormat(value, t.code)}`;
     }
     case 'empty':

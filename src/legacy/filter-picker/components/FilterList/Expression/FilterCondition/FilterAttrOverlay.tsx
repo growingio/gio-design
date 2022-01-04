@@ -167,7 +167,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
             attrSelect={selectValue}
             attrChange={setAttrValue}
             curryDimensionValueRequest={curryDimensionValueRequest}
-            values={attrValue}
+            values={attrValue.filter(item => item !== ' ')}
             exprKey={exprKey}
           />
         );
