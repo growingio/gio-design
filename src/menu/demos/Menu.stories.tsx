@@ -33,27 +33,39 @@ export const Vertical: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (arg
         selectedKey={selectedKey}
         inlineCollapsed={inlineCollapsed}
         onClick={handleClick}
-        defaultOpenKeys={['sub-1']}
+        defaultOpenKeys={[]}
         style={{ height: 300 }}
       >
-        <SubMenu disabled={disabled} key="sub-1" title="功能名称-1" icon={<AppOutlined />} expandIcon={expandIcon}>
+        <SubMenu
+          disabled={disabled}
+          key="sub-1"
+          title="功能名称-1"
+          icon={<AppOutlined size="1em" />}
+          expandIcon={expandIcon}
+        >
           <MenuItem key="sub-menu-1-1">功能名称-1-1</MenuItem>
           <MenuItem key="sub-menu-1-2">功能名称-1-2</MenuItem>
         </SubMenu>
-        <SubMenu key="sub-2" title="功能名称-2" icon={<MapChartOutlined />}>
-          <MenuItem key="sub-menu-2-1">功能名称-2-1</MenuItem>
+        <SubMenu
+          key="sub-2"
+          title="功能名称-2功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1"
+          icon={<MapChartOutlined size="1em" />}
+        >
+          <MenuItem key="sub-menu-2-1">
+            功能名称-2-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1
+          </MenuItem>
           <MenuItem key="sub-menu-2-2">功能名称-2-2</MenuItem>
         </SubMenu>
-        <SubMenu key="sub-3" title="功能名称-3" icon={<AppOutlined />}>
+        <SubMenu key="sub-3" title="功能名称-3" icon={<AppOutlined size="1em" />}>
           <MenuItem key="sub-menu-3-1">功能名称-3-1</MenuItem>
           <MenuItem key="sub-menu-3-2">功能名称-3-2</MenuItem>
         </SubMenu>
-        <SubMenu key="sub-4" title="功能名称-4" icon={<AppOutlined />}>
+        <SubMenu key="sub-4" title="功能名称-4" icon={<AppOutlined size="1em" />}>
           <MenuItem key="sub-menu-4-1">功能名称-4-1</MenuItem>
           <MenuItem key="sub-menu-4-2">功能名称-4-2</MenuItem>
         </SubMenu>
-        <MenuItem key="sub-5" icon={<CalendarOutlined />}>
-          功能名称-5
+        <MenuItem key="sub-5" icon={<CalendarOutlined size="1em" />}>
+          fdlksfdlksfdsffdlksfdsffdlksfdsffdlksfdsffdlksfdsffdsf
         </MenuItem>
       </Menu>
     </div>

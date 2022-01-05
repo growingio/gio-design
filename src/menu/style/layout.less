@@ -78,15 +78,14 @@
 
   // 内嵌模式下的箭头
   &-submenu-arrow {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%) rotate(0deg);
+    flex: none;
+    margin-right: 20px;
+    transform: rotate(0deg);
     transition: all 0.2s;
   }
 
   &-submenu-open > &-submenu-title > &-submenu-arrow {
-    transform: translateY(-50%) rotate(-180deg);
+    transform: rotate(-180deg);
   }
 
   // 垂直模式子菜单
@@ -104,10 +103,13 @@
       &-collapsed-submenu-title {
         height: 20px;
         padding: 0 12px;
+        overflow: hidden;
         color: @blue-3;
         font-weight: @weight-font-medium;
         font-size: 12px;
         line-height: 20px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       &-item,
@@ -142,7 +144,7 @@
       &-submenu-title {
         padding: 0 32px;
         & > * {
-          &:not(.@{menu-icon-cls}) {
+          &:not(.@{menu-prefix-cls}__icon) {
             display: none;
           }
         }

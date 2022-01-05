@@ -23,7 +23,8 @@ type TOmitRcMenuProps =
   | 'forceSubMenuRender'
   | 'getPopupContainer'
   | 'builtinPlacements'
-  | 'direction';
+  | 'direction'
+  | 'title';
 
 export type TMenuMode = 'vertical' | 'horizontal';
 
@@ -77,7 +78,7 @@ export interface IMenuProps extends Omit<MenuProps, TOmitRcMenuProps> {
   /**
    * 菜单的标题
    */
-  title?: string;
+  title?: React.ReactNode;
 }
 
 export interface DividerProps {
