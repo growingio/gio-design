@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import update from 'immutability-helper';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
 import { PREFIX } from './constants';
 import { DragItemProps, DragListProps, OptionProps } from './interfance';
 import DragItem from './DragItem';

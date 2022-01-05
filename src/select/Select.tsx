@@ -1,10 +1,10 @@
 import React, { useMemo, useRef } from 'react';
 import classNames from 'classnames';
 import { omit } from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import { SelectProps } from './interface';
 import Popover from '../popover';
 import Trigger from '../list-picker/Trigger';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import List, { OptionProps } from '../list';
 import useControlledState from '../utils/hooks/useControlledState';
 import './style/index';

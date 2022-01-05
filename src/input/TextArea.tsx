@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import { TextAreaProps } from './interface';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 
 const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
   const { prefixCls: customizePrefixCls, disabled, rows = 2, style, className, ...rest } = props;

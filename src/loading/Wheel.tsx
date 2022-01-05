@@ -1,5 +1,5 @@
 import React from 'react';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import { usePrefixCls } from '@gio-design/utils';
 import { WheelProps } from './interface';
 
 const Wheel: React.FC<WheelProps> = (props: WheelProps) => {

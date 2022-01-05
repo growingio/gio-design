@@ -1,8 +1,7 @@
 import { LoadingOutlined } from '@gio-design/icons';
 import classNames from 'classnames';
 import React from 'react';
-import { OverridableComponent } from '@gio-design/utils';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
+import { OverridableComponent, usePrefixCls } from '@gio-design/utils';
 import { LinkTypeMap } from './interface';
 
 export const Link = React.forwardRef((props, ref) => {

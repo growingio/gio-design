@@ -1,8 +1,8 @@
 import React, { DOMAttributes } from 'react';
 import classnames from 'classnames';
 import { isNil } from 'lodash';
+import { usePrefixCls } from '@gio-design/utils';
 import { TabProps, TabsProps } from './interface';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import useControlledState from '../utils/hooks/useControlledState';
 import Tab from './Tab';
 import TabButton from './TabButton';

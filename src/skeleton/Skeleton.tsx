@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
+import { usePrefixCls } from '@gio-design/utils';
 import Avatar from '../avatar';
 import useDebounceLoading from '../utils/hooks/useDebounceLoading';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { SkeletonProps } from './interface';
 import SkeletonImage from './Image';
 

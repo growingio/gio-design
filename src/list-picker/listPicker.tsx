@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { isEqual, isNil } from 'lodash';
-import { useLocale } from '@gio-design/utils';
+import { useLocale , usePrefixCls } from '@gio-design/utils';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
 import Trigger from './Trigger';
 import useControlledState from '../utils/hooks/useControlledState';
-import usePrefixCls from '../utils/hooks/use-prefix-cls';
 import { OptionProps } from '../list/interfance';
 import Button from '../button';
 import { ListContext } from '../list/context';
