@@ -20,7 +20,7 @@ export default {
 
 export const Vertical: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (args) => {
   const { disabled, inlineCollapsed, title, expandIcon } = args;
-  const [selectedKey, setSelectedKey] = useState('sub-menu-1-1');
+  const [selectedKey, setSelectedKey] = useState('');
   const handleClick = (e: any) => {
     setSelectedKey(e.key);
   };
@@ -52,7 +52,7 @@ export const Vertical: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (arg
           <MenuItem key="sub-menu-4-1">功能名称-4-1</MenuItem>
           <MenuItem key="sub-menu-4-2">功能名称-4-2</MenuItem>
         </SubMenu>
-        <MenuItem disabled={disabled} key="sub-5" icon={<CalendarOutlined />}>
+        <MenuItem key="sub-5" icon={<CalendarOutlined />}>
           功能名称-5
         </MenuItem>
       </Menu>
