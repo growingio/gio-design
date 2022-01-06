@@ -3,8 +3,7 @@ import { Resizable, ResizableProps } from 'react-resizable';
 import { usePrefixCls } from '@gio-design/utils';
 import { isFunction, omit } from 'lodash';
 import { ColumnsType, ColumnType, ForwardRefFn, TableProps } from './interface';
-import Table from './index';
-import { TABLE_PREFIX_CLS } from './utils';
+import Table, { TABLE_PREFIX_CLS } from './index';
 
 const ResizableTitle = (props: Pick<ResizableProps, 'onResize' | 'width'>) => {
   const { onResize, width, ...restProps } = props;

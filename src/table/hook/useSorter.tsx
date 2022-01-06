@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
-import { get, isNil, clone, has, isFunction } from 'lodash';
+import { get, isNil, has, isFunction } from 'lodash';
 import { GetRowKey } from '@gio-design/table/es/interface';
 import { ColumnsType, SortState } from '../interface';
 import { getRowKey } from './useSelection';
@@ -98,17 +98,16 @@ const useSorter = <RecordType,>(
 
   // sorted data
   const sortedData: RecordType[] = useMemo(() => {
-    const cloneSortStates = clone(activeSortStates).sort((a, b) => {
+    const cloneSortStates = [...activeSortStates].sort((a, b) => {
       if (isNil(a) || isNil(b)) return 0;
       if (isNil(a.sortPriorityOrder) || isNil(b.sortPriorityOrder)) return 0;
       return b.sortPriorityOrder - a.sortPriorityOrder;
     });
 
-    const cloneData = clone(data);
     if (cloneSortStates.length === 0) {
-      return cloneData;
+      return data;
     }
-    return cloneData.sort((record1, record2) => {
+    return data.sort((record1, record2) => {
       // eslint-disable-next-line no-restricted-syntax
       for (const sorterState of cloneSortStates) {
         const {

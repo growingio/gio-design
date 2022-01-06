@@ -65,8 +65,8 @@ const usePagination = <RecordType,>(
         key: 'index',
         width: 68,
         align: 'center',
-        render(...columnRest) {
-          return (controlledCurrent - 1) * controlledPageSize + columnRest[2] + 1;
+        render(_, __, index) {
+          return (controlledCurrent - 1) * controlledPageSize + index + 1;
         },
       };
       return showIndex ? [indexColumn, ...columns] : columns;

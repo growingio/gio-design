@@ -1,7 +1,7 @@
 import React, { useMemo, forwardRef, createContext, useCallback, useRef } from 'react';
 import GioTable from '@gio-design/table';
 import classNames from 'classnames';
-import { cloneDeep, get, has, set, isFunction, isNil, isEmpty } from 'lodash';
+import { get, isFunction, isNil, isEmpty, isArray, has, set, join } from 'lodash';
 import { ExpandableConfig } from '@gio-design/table/lib/interface';
 import { compose } from 'lodash/fp';
 import { RightOutlined, DownOutlined } from '@gio-design/icons';
@@ -15,7 +15,7 @@ import useSelection, { getRowKey } from './hook/useSelection';
 import Title from './Title';
 import { TableProps, ColumnsType, OnTriggerStateUpdateProps, SortState, ForwardRefFn } from './interface';
 import Page from '../page';
-import { TABLE_PREFIX_CLS, translateInnerColumns } from './utils';
+import { TABLE_PREFIX_CLS } from '.';
 import Loading from '../loading';
 import useHackOnRow from './hook/useHackOnRow';
 
@@ -30,10 +30,30 @@ interface TableContextType {
 }
 export const TableContext = createContext<TableContextType>({ tableRef: null });
 
+const injectKey = <RecordType,>(columns: ColumnsType<RecordType>): ColumnsType<RecordType> =>
+  columns.map((cloneColumn) => {
+    if (!has(cloneColumn, 'key')) {
+      if (has(cloneColumn, 'dataIndex')) {
+        if (Array.isArray(get(cloneColumn, 'dataIndex'))) {
+          set(cloneColumn, 'key', join(get(cloneColumn, 'dataIndex'), '-'));
+        } else {
+          set(cloneColumn, 'key', get(cloneColumn, 'dataIndex'));
+        }
+      } else {
+        // eslint-disable-next-line no-console
+        console.warn('gio-design table: column key or dataIndex must have one');
+      }
+    }
+    if (has(cloneColumn, 'children')) {
+      set(cloneColumn, 'children', injectKey(get(cloneColumn, 'children')));
+    }
+    return cloneColumn;
+  }) || [];
+
 function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRef<HTMLDivElement>): React.ReactElement {
   const {
     title,
-    columns,
+    columns = [],
     dataSource = [],
     pagination = {},
     rowSelection,
@@ -56,7 +76,7 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
   const mergedRef = useMergeRef(ref);
   const prefixCls = usePrefixCls(TABLE_PREFIX_CLS);
   const onHackRow = useHackOnRow(onRow, hackRowEvent);
-  const innerColumns = useMemo(() => translateInnerColumns(columns), [columns]);
+  const innerColumns = useMemo(() => injectKey(columns), [columns]);
 
   const changeEventInfo = useRef<OnTriggerStateUpdateProps<RecordType> & { refreshPagination?: () => void }>(
     {}
@@ -156,33 +176,35 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
   });
 
   const transformColumnTitle = useMemo(() => {
-    function renderTitle(_columns: ColumnsType<RecordType>): ColumnsType<RecordType> {
-      return cloneDeep(_columns).map((column) => {
-        const sortState = activeSorterStates.find(({ key }) => key === column.key);
-        const filterState = activeFilterStates.find(({ key }) => key === column.key);
-        if (sortState || filterState || !isNil(column.info)) {
-          const oldColumn = cloneDeep(column);
-          set(
-            column,
-            'title',
-            <Title
-              sorterState={sortState}
-              filterState={filterState}
-              prefixCls={prefixCls}
-              column={oldColumn}
-              updateSorterStates={updateSorterStates}
-              updateFilterStates={updateFilterStates}
-              onTriggerStateUpdate={onTriggerStateUpdate}
-            />
-          );
-        }
-        if (has(column, 'children')) {
-          set(column, 'children', renderTitle(get(column, 'children')));
-        }
-        return column;
-      });
-    }
-    return renderTitle(innerColumns);
+    const renderTitle = (column: ColumnsType<RecordType>[number]): ColumnsType<RecordType>[number] => {
+      const { key, info, sortDirections, align, title: columnTitle } = column;
+      const sortState = activeSorterStates.find(({ key: k }) => k === key);
+      const filterState = activeFilterStates.find(({ key: k }) => k === key);
+
+      const newColumn = { ...column };
+      if (sortState || filterState || !isNil(info)) {
+        newColumn.title = (
+          <Title
+            sorterState={sortState}
+            filterState={filterState}
+            prefixCls={prefixCls}
+            updateSorterStates={updateSorterStates}
+            updateFilterStates={updateFilterStates}
+            onTriggerStateUpdate={onTriggerStateUpdate}
+            sortDirections={sortDirections}
+            align={align}
+            title={columnTitle}
+          />
+        );
+      }
+      const children: ColumnsType<RecordType> = get(column, 'children');
+      if ('children' in newColumn && isArray(children)) {
+        newColumn.children = children.map((child) => renderTitle(child));
+      }
+      return newColumn;
+    };
+
+    return innerColumns.map((column) => renderTitle(column));
   }, [
     innerColumns,
     activeSorterStates,

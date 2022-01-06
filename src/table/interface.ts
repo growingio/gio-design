@@ -105,11 +105,11 @@ interface FilterState<RecordType> {
   isControlled: boolean;
 }
 
-interface TitleProps<RecordType> {
+interface TitleProps<RecordType>
+  extends Pick<ColumnType<RecordType>, 'title' | 'info' | 'align' | 'filterSearchPlaceHolder' | 'sortDirections'> {
   prefixCls: string;
   sorterState?: SortState<RecordType>;
   filterState?: FilterState<RecordType>;
-  column: ColumnType<RecordType>;
   updateSorterStates: (sortState: SortState<RecordType>) => SortState<RecordType>;
   updateFilterStates: (filterState: FilterState<RecordType>) => Record<string, string[]>;
   onTriggerStateUpdate: (onTriggerStateUpdateProps?: OnTriggerStateUpdateProps<RecordType>) => void;
