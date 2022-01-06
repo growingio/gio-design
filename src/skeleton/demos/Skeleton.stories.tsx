@@ -26,8 +26,9 @@ export const Default = Template.bind({});
 Default.args = {
   loading: true,
   delay: 1000,
-  avatar: true,
+  avatar: false,
   active: true,
+  paragraph: { row: 5, width: [100, 200, 300, 400, 500] },
 };
 
 const TemplateImage: Story<SkeletonImageProps> = (args) => (

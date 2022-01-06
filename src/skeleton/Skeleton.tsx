@@ -1,13 +1,25 @@
 import React from 'react';
 import classNames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
+import { isArray, isObject } from 'lodash';
 import Avatar from '../avatar';
 import useDebounceLoading from '../utils/hooks/useDebounceLoading';
 import { SkeletonProps } from './interface';
 import SkeletonImage from './Image';
+import WithSubComponent from '../utils/withSubComponent';
 
-const Skeleton = (props: SkeletonProps) => {
-  const { prefixCls: customizePrefixCls, delay = 0, loading = true, children, active = true, className, style } = props;
+const InnerSkeleton = React.forwardRef<HTMLDivElement, SkeletonProps>((props, ref) => {
+  const {
+    prefixCls: customizePrefixCls,
+    delay = 0,
+    loading = true,
+    children,
+    active = true,
+    className,
+    paragraph,
+    title,
+    ...otherProps
+  } = props;
   const prefixCls = usePrefixCls('skeleton', customizePrefixCls);
   const shouldLoading = useDebounceLoading(loading, delay);
 
@@ -26,11 +38,11 @@ const Skeleton = (props: SkeletonProps) => {
     );
   };
   const renderSkeletonParagraph = () => {
-    const { paragraph = true, title = true } = props;
     if (!paragraph && !title) {
       return null;
     }
-    const row = 3;
+    const { row, width } = isObject(paragraph) ? paragraph : { row: 3, width: '100%' };
+
     return (
       <div className={`${prefixCls}-content`}>
         {title && <div className={`${prefixCls}-title`} />}
@@ -38,8 +50,9 @@ const Skeleton = (props: SkeletonProps) => {
           <div className={`${prefixCls}-paragraph`}>
             {Array(row)
               .fill(0)
-              .map((...args) => (
-                <p key={args[1]} />
+              .map((_, index) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <p key={index} style={{ width: isArray(width) ? width[index] : width }} />
               ))}
           </div>
         )}
@@ -52,7 +65,9 @@ const Skeleton = (props: SkeletonProps) => {
       className={classNames(prefixCls, className, {
         [`${prefixCls}-active`]: active,
       })}
-      style={style}
+      ref={ref}
+      data-testid="skeleton"
+      {...otherProps}
     >
       {renderSkeletonAvatar()}
       {renderSkeletonParagraph()}
@@ -60,8 +75,10 @@ const Skeleton = (props: SkeletonProps) => {
   ) : (
     <>{children}</>
   );
-};
+});
 
-Skeleton.Image = SkeletonImage;
+const Skeleton = WithSubComponent(InnerSkeleton, {
+  Image: SkeletonImage,
+});
 
 export default Skeleton;

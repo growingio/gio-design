@@ -2,7 +2,17 @@ import { AvatarProps } from '../avatar';
 
 export type SkeletonAvatarProps = Pick<AvatarProps, 'size'>;
 export interface SkeletonParagraphProps {
+  /**
+   * 段落展位图行数
+   * @default 3
+   */
   row?: number;
+
+  /**
+   * 设置段落占位图的宽度，若为数组时则为对应的每行宽度
+   * @default 100%
+   */
+  width?: string | number | (string | number)[];
 }
 
 export interface SkeletonImageProps {
@@ -34,9 +44,7 @@ export interface SkeletonImageProps {
   color?: string;
 }
 
-export interface SkeletonProps {
-  className?: string;
-  style?: React.CSSProperties;
+export interface SkeletonProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   /**
    替代组件的类前缀
    */
