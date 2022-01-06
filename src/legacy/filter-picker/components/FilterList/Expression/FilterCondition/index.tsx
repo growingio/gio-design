@@ -6,7 +6,7 @@ import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } 
 import Selector from '../../../../../selector-pro';
 import { ListValue, operationsOptionType } from '../../../../interfaces';
 import Tooltip from '../../../../../../tooltip'; // new
-import { FilterPickerContext, TextObject } from '../../../../FilterPicker';
+import { defaultOperationsOption, FilterPickerContext, TextObject } from '../../../../FilterPicker';
 import defaultLocaleTextObject from '../../../../locales/zh-CN';
 
 interface FilterConditionProps {
@@ -95,7 +95,7 @@ function FilterCondition(props: FilterConditionProps) {
       curryDimensionValueRequest={curryDimensionValueRequest}
       values={values}
       exprKey={exprKey}
-      operationsOption={operationsOption}
+      operationsOption={{ ...defaultOperationsOption, ...operationsOption }}
       numType={numType}
     />
   );
