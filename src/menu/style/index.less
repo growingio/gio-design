@@ -1,10 +1,9 @@
+@import (reference) './mixin.less';
+@import (reference) '../../stylesheet/variables/index.less';
 @import './state.less';
-@import './mixin.less';
 @import './layout.less';
-@import '../../stylesheet/variables/index.less';
 
 @menu-prefix-cls: ~'@{component-prefix}-menu';
-@menu-icon-cls: ~'@{menu-prefix-cls}__icon';
 
 .@{menu-prefix-cls} {
   box-sizing: border-box;
@@ -25,8 +24,19 @@
     line-height: 20px;
   }
 
-  .@{menu-icon-cls} {
+  &__icon {
+    display: flex;
+    flex: none;
+    align-items: center;
     margin-right: 12px;
+  }
+
+  &__name {
+    display: block;
+    flex: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   &-overflowed-submenu {

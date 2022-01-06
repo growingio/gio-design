@@ -1,4 +1,4 @@
-@import './index.less';
+@import (reference) './index.less';
 
 .@{menu-prefix-cls} {
   // item state
@@ -6,11 +6,14 @@
   &-item,
   &-submenu-title {
     position: relative;
+    display: flex;
+    align-items: center;
     color: #313e75;
     white-space: nowrap;
     cursor: pointer;
     transition: all 0.2s;
   }
+
   // active
   &-item&-item-selected {
     color: @blue-3;

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { SubMenu as RcSubMenu } from 'rc-menu';
 import { DownOutlined } from '@gio-design/icons';
-import { isUndefined } from 'lodash';
+import { isString, isUndefined } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
 import { ISubMenuProps } from './interface';
 import MenuTitle from './MenuTitle';
@@ -30,7 +30,11 @@ export const SubMenu = (props: ISubMenuProps) => {
         {...restProps}
         inlineIndent={inlineIndent}
       >
-        {inlineCollapsed && <li className={`${prefixCls}-collapsed-submenu-title`}>{title}</li>}
+        {inlineCollapsed && (
+          <li className={`${prefixCls}-collapsed-submenu-title`} title={isString(title) ? title : undefined}>
+            {title}
+          </li>
+        )}
         {children}
       </RcSubMenu>
     </SubMenuContext.Provider>
