@@ -148,9 +148,7 @@ const CustomSeparatorTemplate: Story<BreadcrumbsProps> = (args) => (
     <Breadcrumbs separator={<RightDoubleOutlined size="14px" />} {...args}>
       <Link href="/">主页</Link>
       <Link href="https://www.growingio.com">二级导航</Link>
-      <Link aria-current="page" href="/?path=/story/upgraded-breadcrumb--default">
-        当前页面
-      </Link>
+      当前页面
     </Breadcrumbs>
   </>
 );
