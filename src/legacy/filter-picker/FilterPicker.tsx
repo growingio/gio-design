@@ -8,7 +8,7 @@ import Dropdown from '../dropdown';
 import defaultLocaleTextObject from './locales/zh-CN';
 import './style';
 
-const defaultOperationsOption: operationsOptionType = {
+export const defaultOperationsOption: operationsOptionType = {
   string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
   int: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
   double: ['=', '!=', '>', '>=', '<', '<=', 'between', 'not between', 'hasValue', 'noValue'],
