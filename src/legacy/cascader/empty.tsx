@@ -1,7 +1,7 @@
 import React from 'react';
-import { Empty as IconEmpty } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
 import defaultLocale from './locales/zh-CN';
+import EmptyIcon from './svg/EmptyImageSVG';
 
 type Props = {
   tip?: string;
@@ -18,7 +18,7 @@ const Empty: React.FC<Props> = (props: Props) => {
 
   return (
     <div className="cascader-legacy-menu-empty">
-      <IconEmpty size="60" className="icon-empty" />
+      <EmptyIcon className="icon-empty" />
       <p className="cascader-legacy-menu-empty-tip">{tip}</p>
     </div>
   );

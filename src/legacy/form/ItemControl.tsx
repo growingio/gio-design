@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircleFilled, LoadingOutlined, WarningCircleFilled, CloseCircleFilled } from '@gio-design/icons';
+import { CheckCircleFilled, LoadingTwoTone, WarningCircleFilled, CloseCircleFilled } from '@gio-design/icons';
 
 export type FormItemFeedbackType = 'validating' | 'error' | 'warning' | 'success';
 
@@ -20,7 +20,7 @@ const iconMap = {
   warning: WarningCircleFilled,
   error: CloseCircleFilled,
   success: CheckCircleFilled,
-  validating: LoadingOutlined,
+  validating: LoadingTwoTone,
 };
 
 const ItemControl: React.FC<Props> = (props: Props) => {

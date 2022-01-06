@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { noop, pick, get } from 'lodash';
-import { DragMove, CloseCircleFilled } from '@gio-design/icons';
+import { DragMoveFilled, CloseCircleFilled } from '@gio-design/icons';
 import { withConfigConsumer, ConfigConsumerProps } from '../../config-provider';
 
 const bemClsFactor = (blockName: string) => (elemName?: string, modifierName?: string) => {
@@ -59,7 +59,7 @@ class SiderSelectedItem extends React.PureComponent<SiderSelectedItemProps & Con
       >
         {get(item, 'canDrag') !== false && (
           <IconCircle className={classnames({ selected: item.value === props.selected, collapsed: props.collapsed })}>
-            <DragMove size="14px" className="icon-drag" />
+            <DragMoveFilled size="14px" className="icon-drag" />
           </IconCircle>
         )}
 

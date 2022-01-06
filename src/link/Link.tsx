@@ -1,4 +1,4 @@
-import { LoadingOutlined } from '@gio-design/icons';
+import { LoadingTwoTone } from '@gio-design/icons';
 import classNames from 'classnames';
 import React from 'react';
 import { OverridableComponent, usePrefixCls } from '@gio-design/utils';
@@ -25,7 +25,7 @@ export const Link = React.forwardRef((props, ref) => {
 
   const prefixIcon = loading ? (
     <span className={`${prefixCls}-prefix-icon`}>
-      <LoadingOutlined rotating />
+      <LoadingTwoTone rotating />
     </span>
   ) : (
     prefix && <span className={`${prefixCls}-prefix-icon`}>{prefix}</span>

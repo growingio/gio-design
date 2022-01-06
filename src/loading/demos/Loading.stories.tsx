@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { LoadingOutlined } from '@gio-design/icons';
+import { LoadingTwoTone } from '@gio-design/icons';
 import Loading from '../index';
 import Button from '../../button';
 import Tabs, { Tab } from '../../tabs';
@@ -65,7 +65,7 @@ Container.args = {
 export const Indicator = Template.bind({});
 
 Indicator.args = {
-  indicator: <LoadingOutlined rotating />,
+  indicator: <LoadingTwoTone rotating />,
   title: false,
 };
 
@@ -140,7 +140,7 @@ export const Demo = () => (
       <tr>
         <td>自定义图标</td>
         <td>
-          <Loading indicator={<LoadingOutlined rotating />} />
+          <Loading indicator={<LoadingTwoTone rotating />} />
         </td>
       </tr>
       <tr>
