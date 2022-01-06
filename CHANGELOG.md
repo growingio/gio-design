@@ -1,3 +1,13 @@
+## [22.12.3](https://github.com/growingio/gio-design/compare/v22.12.2...v22.12.3) (2022-01-06)
+
+
+### Bug Fixes
+
+* **breadcrumbs:** support string children ([#1769](https://github.com/growingio/gio-design/issues/1769)) ([ebd7e7b](https://github.com/growingio/gio-design/commit/ebd7e7bd59fe140838df3891d44833efd8fee47d))
+* **menu:** menu tooltip ([#1770](https://github.com/growingio/gio-design/issues/1770)) ([0b0de22](https://github.com/growingio/gio-design/commit/0b0de22ff141b19ce250ae14cdc1033b2cf3beb4))
+* **skeleton:** fix skeleton row and width ([#1772](https://github.com/growingio/gio-design/issues/1772)) ([09e740c](https://github.com/growingio/gio-design/commit/09e740c42f90ce774d4011cd42760149747b73e3))
+* **use-prefix-cls:** use `usePrefixCls` hook of @gio-design/utils ([#1756](https://github.com/growingio/gio-design/issues/1756)) ([30a250c](https://github.com/growingio/gio-design/commit/30a250c13f076b6b51808e5f21f99080512bbe7e))
+
 ## [22.12.2](https://github.com/growingio/gio-design/compare/v22.12.1...v22.12.2) (2022-01-04)
 
 
