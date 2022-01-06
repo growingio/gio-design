@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import { LoadingOutlined } from '@gio-design/icons';
+import { LoadingTwoTone } from '@gio-design/icons';
 import Docs from './LoadingPage';
 import Loading from '../index';
 import Button from '../../button';
@@ -71,7 +71,7 @@ Container.args = {
 export const Indicator = Template.bind({});
 
 Indicator.args = {
-  indicator: <LoadingOutlined rotating />,
+  indicator: <LoadingTwoTone rotating />,
   title: false,
 };
 

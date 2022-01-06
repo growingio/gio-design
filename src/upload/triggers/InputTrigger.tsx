@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import classnames from 'classnames';
-import { LoadingOutlined } from '@gio-design/icons';
+import { LoadingTwoTone } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
 import Loading from '../../loading';
 import Input from '../../input';
@@ -37,7 +37,7 @@ const InputTrigger: React.FC<ITriggerProps> = ({
   return (
     <span className={inputWrapperCls}>
       {hideInput ? (
-        <Loading loading={file.status === STATUS_UPLOADING} indicator={<LoadingOutlined rotating />} title={false}>
+        <Loading loading={file.status === STATUS_UPLOADING} indicator={<LoadingTwoTone rotating />} title={false}>
           <span className={inputPreviewCls} onClick={handlePreviewClick} aria-hidden="true">
             {file.status === STATUS_SUCCESS && <Preview file={file} />}
             <span>{file.name}</span>

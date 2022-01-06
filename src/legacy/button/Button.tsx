@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
 import classNames from 'classnames';
-import { LoadingOutlined } from '@gio-design/icons';
+import { LoadingTwoTone } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
 import { ButtonProps } from './interface';
 import { cloneElement } from '../../utils/reactNode';
@@ -136,7 +136,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
   if (icon && !innerLoading) {
     iconNode = icon;
   } else if (innerLoading) {
-    iconNode = <LoadingOutlined rotating />;
+    iconNode = <LoadingTwoTone rotating />;
   }
 
   const kids = children || children === 0 ? spaceChildren(children, isNeedInserted() && autoInsertSpace) : null;
