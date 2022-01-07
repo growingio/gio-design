@@ -7,28 +7,20 @@ import Tooltip from '../tooltip';
 import FilterPopover from './FilterPopover';
 import { Key, SortOrder, TitleProps } from './interface';
 
-const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): SortOrder =>
+export const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): SortOrder =>
   current === null ? sortDirections[0] : sortDirections[sortDirections.indexOf(current) + 1];
 
 const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement => {
-  const {
-    prefixCls,
-    onTriggerStateUpdate,
-    sorterState,
-    updateSorterStates,
-    filterState,
-    updateFilterStates,
-    sortDirections = [],
-    filterSearchPlaceHolder,
-    align,
-    info,
-    title,
-  } = props;
+  const { prefixCls, column, onTriggerStateUpdate } = props;
+
+  const { align } = column;
 
   const renderSorter = (): React.ReactNode => {
+    const { sorterState, updateSorterStates } = props;
     if (isUndefined(sorterState)) {
       return null;
     }
+    const { sortDirections = ['ascend', 'descend', null] } = column;
     const { sortOrder: sorterOrder } = sorterState;
 
     const handleSorterChange = (): void => {
@@ -54,6 +46,8 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
   };
 
   const renderFilter = (): React.ReactNode => {
+    const { filterState, updateFilterStates } = props;
+    const { filterSearchPlaceHolder } = column;
     if (isUndefined(filterState)) {
       return null;
     }
@@ -83,6 +77,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
   };
 
   const renderInfo = (): React.ReactNode => {
+    const { info } = column;
     if (isUndefined(info)) {
       return null;
     }
@@ -105,9 +100,9 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
     <div className={cls}>
       <span
         className={classNames(`${prefixCls}-column-title-text`, `${prefixCls}-column-title-text-ellipsis`)}
-        title={isString(title) ? title : undefined}
+        title={isString(column.title) ? column.title : undefined}
       >
-        {title}
+        {column.title}
       </span>
       {renderInfo()}
       {renderSorter()}
