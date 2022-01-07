@@ -5,7 +5,7 @@ import { OptionProps } from '../list/interfance';
 import { Placement, TriggerAction } from '../popover/interface';
 import { ListProps } from '../list';
 
-export interface ListPickerProps extends Pick<ListProps, 'model' | 'empty' | 'needEmpty' | 'max'> {
+export interface ListPickerProps extends Pick<ListProps, 'model' | 'empty' | 'needEmpty' | 'max' | 'valueSeparator'> {
   size?: 'small' | 'normal';
   /**
    * 触发方式
@@ -67,10 +67,6 @@ export interface ListPickerProps extends Pick<ListProps, 'model' | 'empty' | 'ne
    * cascader 级联文本连接符
    */
   separator?: string;
-  /**
-   * value解析连接符 默认为 '.'
-   */
-  valueSeparator?: string;
   /**
    * 是否允许clear
    */

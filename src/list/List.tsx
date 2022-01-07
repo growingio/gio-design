@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { isArray, isEmpty } from 'lodash';
-import { useLocale , usePrefixCls } from '@gio-design/utils';
+import { useLocale, usePrefixCls } from '@gio-design/utils';
 import { OptionProps, ListProps } from './interfance';
 import { PREFIX } from './constants';
 import Item from './Item';
@@ -36,6 +36,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     empty,
     max,
     needEmpty = false,
+    valueSeparator,
     ...listRestProps
   } = props;
 
@@ -52,6 +53,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     disabled: contextDisabled,
     onChange: contextOnChange,
     setOptions: contextSetOptions,
+    getOptionTreeByValue: contextGetOptionTreeByValue,
     isSelection,
   } = context;
   const mergedModel = useMemo(() => model ?? contextModel, [contextModel, model]);
@@ -108,7 +110,11 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     }
     // cascader
     else if (mergedModel === 'cascader') {
-      onChange?.(val);
+      onChange?.(
+        val,
+        contextGetOptionTreeByValue?.(val, valueSeparator, mergedModel) ??
+          cache?.getOptionTreeByValue(val, valueSeparator, mergedModel)
+      );
     }
     // normal
     else if (value !== val) {
@@ -185,6 +191,10 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
         emptyNode: mergedEmpty,
         value,
         disabled: mergedDisabled,
+        getLabelByValue: context.getLabelByValue ?? cache.getLabelByValue,
+        getOptionTreeByValue: context.getOptionTreeByValue ?? cache.getOptionTreeByValue,
+        getOptionByValue: context.getOptionByValue ?? cache.getOptionByValue,
+        getOptionsByValue: context.getOptionsByValue ?? cache.getOptionsByValue,
         prefix,
         suffix,
         onChange,
