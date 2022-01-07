@@ -88,6 +88,12 @@
     }
   }
 
+  .ellipsis() {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   &-cell {
     box-sizing: border-box;
     &-scrollbar {
@@ -95,9 +101,7 @@
       padding: 0 !important;
     }
     &-ellipsis {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      .ellipsis();
     }
     &-fix-left,
     &-fix-right {
@@ -154,6 +158,7 @@
   &-column-title {
     display: flex;
     align-items: center;
+    width: 100%;
     min-height: 22px;
     &-info {
       display: inline-flex;
@@ -164,6 +169,11 @@
       margin-left: 8px;
       .gio-icon {
         vertical-align: 0;
+      }
+    }
+    &-text {
+      &-ellipsis {
+        .ellipsis();
       }
     }
   }
