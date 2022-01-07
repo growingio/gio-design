@@ -47,20 +47,16 @@ const usePop = ({ referenceElement, popperElement, placement, modifiers, strateg
   });
   if (popperElement) {
     const three = clear3D(styles?.popper?.transform as string);
-    console.log(styles.popper);
     if (Array.isArray(three)) {
       const [x, y, z] = three;
       const divHeight = popperElement.offsetHeight;
       const winHeight = getShowHeight(container);
-      console.log(winHeight);
       if (styles?.popper?.bottom === 'auto') {
-        // let yField = y < 0 ? 0 : y;
-        let yField = y;
+        let yField = y < 0 ? 0 : y;
         yField = yField + divHeight > winHeight ? winHeight - divHeight : yField;
         styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z || 0}px)`;
       } else if (styles?.popper?.bottom === '0') {
-        // const yField = y + divHeight > 0 ? 0 : y;
-        const yField = y;
+        const yField = y + divHeight > 0 ? 0 : y;
         styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z || 0}px)`;
       }
     }

@@ -302,11 +302,9 @@ const ScrollTemplate: Story<PopoverProps> = (args) => {
     <div>
       <div>
         外框高度
-        <Input value={divHeight} onChange={(e) => setDivHeight(Number(e.target.value))} />
-      </div>
-      <div>
+        <Input value={divHeight} style={{ margin: 4 }} onChange={(e) => setDivHeight(Number(e.target.value))} />
         间距高度
-        <Input value={marginHeight} onChange={(e) => setMarginHeight(Number(e.target.value))} />
+        <Input value={marginHeight} style={{ margin: 4 }} onChange={(e) => setMarginHeight(Number(e.target.value))} />
       </div>
       <div ref={divRef} style={{ height: divHeight, width: 400, backgroundColor: '#eeeeee' }}>
         <Popover {...args} strategy="fixed" trigger={'click'} getContainer={() => divRef.current}>
