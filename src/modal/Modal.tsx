@@ -9,7 +9,7 @@ import defaultLocale from '../locales/zh-CN';
 
 const Modal: React.FC<ModalProps> = ({
   prefixCls: customPrefixCls,
-  size = 'normal',
+  size = 'fixed',
   className,
   wrapClassName,
   title,
@@ -26,9 +26,7 @@ const Modal: React.FC<ModalProps> = ({
 }: ModalProps) => {
   const prefix = usePrefixCls('modal', customPrefixCls);
   const modalCls = classnames(className, {
-    [`${prefix}-normal`]: size === 'normal',
-    [`${prefix}-fixed`]: size === 'fixed',
-    [`${prefix}-full`]: size === 'full',
+    [`${prefix}-${size}`]: ['full', 'normal', 'fixed'].includes(size),
   });
   const wrapperCls = classnames(wrapClassName, `${prefix}__wrapper`);
   const closeCls = classnames(`${prefix}__close`);
