@@ -1,3 +1,19 @@
+## [22.12.4](https://github.com/growingio/gio-design/compare/v22.12.3...v22.12.4) (2022-01-07)
+
+
+### Bug Fixes
+
+* **filter-picker:** add `defaultOperationsOption` on FilterCondition ([#1773](https://github.com/growingio/gio-design/issues/1773)) ([127648b](https://github.com/growingio/gio-design/commit/127648b10afbf5cc0595f6e3055fb2c1a3157618))
+* **list:** list mode=cascader onChange return value and options ([#1779](https://github.com/growingio/gio-design/issues/1779)) ([63a4e16](https://github.com/growingio/gio-design/commit/63a4e16f67d1c7bf2709def2ba6c927ee10b2e1a))
+* **modal:** add `min-heigh: 140px` to content of Modal ([#1775](https://github.com/growingio/gio-design/issues/1775)) ([2b3b048](https://github.com/growingio/gio-design/commit/2b3b048f73d28bc6772ebba2b2d63443a47fe23d))
+* **Popover:** use max height to set popover position ([#1778](https://github.com/growingio/gio-design/issues/1778)) ([ee271d4](https://github.com/growingio/gio-design/commit/ee271d450a768143b03e9de6501386f3fc9d0068))
+* **table:** title ellipsis ([#1777](https://github.com/growingio/gio-design/issues/1777)) ([f779034](https://github.com/growingio/gio-design/commit/f7790344f3693f6f81a3c2f0f7f5be24e4fcbb6e))
+
+
+### Performance Improvements
+
+* **table:** optimize `Table` ([#1774](https://github.com/growingio/gio-design/issues/1774)) ([cb32a9b](https://github.com/growingio/gio-design/commit/cb32a9bc2da0c2193b60e2398cfb53a2c804655a))
+
 ## [22.12.3](https://github.com/growingio/gio-design/compare/v22.12.2...v22.12.3) (2022-01-06)
 
 
