@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import Popover from '../Popover';
 import { PopoverProps } from '../interface';
@@ -291,4 +291,53 @@ const DisabledTemplate: Story<PopoverProps> = (args) => (
 export const Disabled = DisabledTemplate.bind({});
 Disabled.args = {
   content,
+};
+
+const ScrollTemplate: Story<PopoverProps> = (args) => {
+  const divRef = useRef();
+  const [divHeight, setDivHeight] = useState(1000);
+  const [marginHeight, setMarginHeight] = useState(400);
+  return (
+    <div>
+      <div>
+        外框高度
+        <Input value={divHeight} style={{ margin: 4 }} onChange={(e) => setDivHeight(Number(e.target.value))} />
+        间距高度
+        <Input value={marginHeight} style={{ margin: 4 }} onChange={(e) => setMarginHeight(Number(e.target.value))} />
+      </div>
+      <div ref={divRef} style={{ height: divHeight, width: 400, backgroundColor: '#eeeeee' }}>
+        <Popover {...args} strategy="fixed" trigger="click" getContainer={() => divRef.current}>
+          <Button style={{ margin: `${marginHeight}px 0 0 100px` }}>Show Popover</Button>
+        </Popover>
+      </div>
+    </div>
+  );
+};
+export const ScrollPopover = ScrollTemplate.bind({});
+ScrollPopover.args = {
+  content: (
+    <div>
+      这是一个测试！
+      <br />
+      这是一个测试！
+      <br />
+      这是一个测试！
+      <br />
+      这是一个测试！
+      <br />
+      这是一个测试！
+      <br />
+      这是一个测试！
+      <br />
+      这是一个测试！
+      <br />
+      这是一个测试！
+      <br />
+      这是一个测试！
+      <br />
+      这是一个测试！
+      <br />
+      这是一个测试!
+    </div>
+  ),
 };
