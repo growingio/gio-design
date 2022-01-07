@@ -7,7 +7,6 @@ import { Button } from '../../button';
 import '../style';
 import './demo.stories.less';
 import Docs from './PopoverPage';
-import useRefs from '../../utils/hooks/useRefs';
 
 export default {
   title: 'Upgraded/Popover',
@@ -307,7 +306,7 @@ const ScrollTemplate: Story<PopoverProps> = (args) => {
         <Input value={marginHeight} style={{ margin: 4 }} onChange={(e) => setMarginHeight(Number(e.target.value))} />
       </div>
       <div ref={divRef} style={{ height: divHeight, width: 400, backgroundColor: '#eeeeee' }}>
-        <Popover {...args} strategy="fixed" trigger={'click'} getContainer={() => divRef.current}>
+        <Popover {...args} strategy="fixed" trigger="click" getContainer={() => divRef.current}>
           <Button style={{ margin: `${marginHeight}px 0 0 100px` }}>Show Popover</Button>
         </Popover>
       </div>

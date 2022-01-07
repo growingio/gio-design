@@ -36,7 +36,7 @@ const clear3D = (transform: string): string | number[] => {
   return transform;
 };
 
-const getMaxHeight = (element: HTMLElement, maxHeight: number = 0): number => {
+const getMaxHeight = (element: HTMLElement, maxHeight = 0): number => {
   if (!element) {
     return maxHeight;
   }
