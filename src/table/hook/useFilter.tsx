@@ -1,5 +1,5 @@
 import { useMemo, useCallback, useState, useEffect } from 'react';
-import { get, isUndefined, has, clone, isFunction } from 'lodash';
+import { get, isUndefined, has, isFunction } from 'lodash';
 import { GetRowKey } from '@gio-design/table/es/interface';
 import { ColumnsType, FilterState } from '../interface';
 import { getRowKey } from './useSelection';
@@ -14,16 +14,14 @@ export const collectFilterStates = <RecordType,>(
       filterStates.push(...collectFilterStates(get(column, 'children'), rowKey));
     } else if (column.filters) {
       const { key, filters, onFilter, defaultFilteredValue = [], filteredValue } = column;
-      filterStates.push(
-        clone({
-          column,
-          key: key || getRowKey(column, rowKey),
-          filteredKeys: filteredValue ?? defaultFilteredValue,
-          onFilter,
-          filters,
-          isControlled: !isUndefined(filteredValue),
-        })
-      );
+      filterStates.push({
+        column,
+        key: key || getRowKey(column, rowKey),
+        filteredKeys: filteredValue ?? defaultFilteredValue,
+        onFilter,
+        filters,
+        isControlled: !isUndefined(filteredValue),
+      });
     }
   });
   return filterStates;

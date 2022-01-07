@@ -228,7 +228,7 @@ export const ControlledSortable = () => {
     },
     {
       dataIndex: 'name',
-      title: 'Name',
+      title: <div style={{ color: 'red' }}>Name</div>,
     },
     {
       dataIndex: 'age',
@@ -265,18 +265,22 @@ export const collapsible = () => {
   const columns: ColumnsType<DataSourceType> = [
     {
       dataIndex: 'id',
+      key: 'id',
       title: 'Id',
     },
     {
       dataIndex: 'name',
+      key: 'name',
       title: 'Name',
     },
     {
       dataIndex: 'age',
+      key: 'age',
       title: 'Age',
     },
     {
       dataIndex: 'address',
+      key: 'address',
       title: 'Address',
     },
   ];
