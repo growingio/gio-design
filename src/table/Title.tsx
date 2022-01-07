@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { UpFilled, DownFilled, FilterOutlined, QuestionCircleOutlined } from '@gio-design/icons';
-import { isEmpty, isUndefined } from 'lodash';
+import { isEmpty, isString, isUndefined } from 'lodash';
 import Button from '../button';
 import Tooltip from '../tooltip';
 import FilterPopover from './FilterPopover';
@@ -98,7 +98,12 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
 
   return (
     <div className={cls}>
-      {column.title}
+      <span
+        className={classNames(`${prefixCls}-column-title-text`, `${prefixCls}-column-title-text-ellipsis`)}
+        title={isString(column.title) ? column.title : undefined}
+      >
+        {column.title}
+      </span>
       {renderInfo()}
       {renderSorter()}
       {renderFilter()}
