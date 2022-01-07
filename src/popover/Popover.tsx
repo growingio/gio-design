@@ -90,20 +90,12 @@ const Popover = (props: PopoverProps) => {
     [offset]
   );
 
-  const container = useMemo(() => {
-    if (isFunction(getContainer) && !isNil(referenceElement)) {
-      return getContainer(referenceElement);
-    }
-    return document.body;
-  }, [referenceElement, getContainer]);
-
   const { styles, attributes, ...popperProps } = usePop({
     referenceElement,
     popperElement,
     placement,
     modifiers: defaultModifiers,
     strategy,
-    container,
   });
   const { update } = popperProps;
   const updateVisible = useCallback(
@@ -258,6 +250,12 @@ const Popover = (props: PopoverProps) => {
     cloneProps.ref = composeRef(setReferenceELement, (child as any).ref);
     triggerNode = React.cloneElement(child as React.ReactElement, cloneProps);
   }
+  const container = useMemo(() => {
+    if (isFunction(getContainer) && !isNil(referenceElement)) {
+      return getContainer(referenceElement);
+    }
+    return document.body;
+  }, [referenceElement, getContainer]);
   const renderContent = (
     <>
       <ResizeObserver
