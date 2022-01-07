@@ -98,13 +98,14 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    @modal-full-height: 100vh;
+    min-height: 140px;
     max-height: calc(~'@{modal-full-height} - 200px');
     background-color: @gray-0;
     background-clip: padding-box;
     border: 1px solid @gray-2;
-    .elevation(2);
     border-radius: 8px;
+    @modal-full-height: 100vh;
+    .elevation(2);
   }
 
   &-close {
