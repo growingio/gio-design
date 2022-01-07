@@ -28,6 +28,7 @@ export interface ListContextProps {
     valueSeparator?: string,
     model?: ModelType
   ) => any;
+  getOptionTreeByValue?: (val?: string | number, valueSeparator?: string, model?: string) => any;
 }
 const defaultList: ListContextProps = {
   value: '',
@@ -46,6 +47,7 @@ const defaultList: ListContextProps = {
   getOptionByValue: undefined,
   getOptionsByValue: undefined,
   getLabelByValue: undefined,
+  getOptionTreeByValue: undefined,
 };
 export const ListContext = React.createContext<ListContextProps>(defaultList);
 

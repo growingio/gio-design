@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { isEqual, isNil } from 'lodash';
-import { useLocale , usePrefixCls } from '@gio-design/utils';
+import { useLocale, usePrefixCls } from '@gio-design/utils';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
 import Trigger from './Trigger';
@@ -61,7 +61,8 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
   const [value, setValue] = useState(controlledValue || defaultValue);
-  const { options, setOptions, getOptionByValue, getLabelByValue, getOptionsByValue } = useCacheOptions();
+  const { options, setOptions, getOptionByValue, getLabelByValue, getOptionTreeByValue, getOptionsByValue } =
+    useCacheOptions();
   const triggerRef = useRef<HTMLInputElement | undefined>(undefined);
   useEffect(() => {
     setValue(controlledValue);
@@ -172,6 +173,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
         getOptionByValue,
         getOptionsByValue,
         getLabelByValue,
+        getOptionTreeByValue,
         emptyNode: empty,
         isEmpty: needEmpty,
         recentId: propsRecentId,

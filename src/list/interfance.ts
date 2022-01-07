@@ -76,6 +76,10 @@ export interface ListProps {
   itemStrategy?: 'fixed' | 'absolute';
   empty?: React.ReactNode;
   needEmpty?: boolean;
+  /**
+   * value解析连接符 默认为'.'
+   */
+  valueSeparator?: string;
 }
 
 export interface DragListProps extends Omit<ListProps, 'model' | 'onChange' | 'value' | 'children'> {
