@@ -33,6 +33,11 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     [prefixCls, className, size, disabled]
   );
 
+  const eventRest = useMemo(() => {
+    const { onClick, onFocus, onBlur, onMouseEnter, onMouseLeave } = props;
+    return { onClick, onFocus, onBlur, onMouseEnter, onMouseLeave };
+  }, [props]);
+
   const handleKeyPress = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === 'Enter') {
@@ -61,11 +66,11 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   const prefix = useMemo(
     () =>
       customizePrefix ? (
-        <div className={prefixFcCls} {...rest}>
+        <div className={prefixFcCls} {...eventRest}>
           {customizePrefix}
         </div>
       ) : null,
-    [prefixFcCls, customizePrefix, rest]
+    [prefixFcCls, customizePrefix, eventRest]
   );
 
   const suffixCls = useMemo(
@@ -79,11 +84,11 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   const suffix = useMemo(
     () =>
       customizeSuffix ? (
-        <div className={suffixCls} {...rest}>
+        <div className={suffixCls} {...eventRest}>
           {customizeSuffix}
         </div>
       ) : null,
-    [suffixCls, customizeSuffix, rest]
+    [suffixCls, customizeSuffix, eventRest]
   );
   return (
     <span className={inputClass} style={style} ref={ref}>
