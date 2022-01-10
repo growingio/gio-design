@@ -18,7 +18,6 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     inputRef: propsInputRef,
     ...rest
   } = props;
-
   const prefixCls = usePrefixCls('input', customizePrefixCls);
   const inputClass = useMemo(
     () =>
@@ -60,8 +59,13 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   );
 
   const prefix = useMemo(
-    () => (customizePrefix ? <div className={prefixFcCls}>{customizePrefix}</div> : null),
-    [prefixFcCls, customizePrefix]
+    () =>
+      customizePrefix ? (
+        <div className={prefixFcCls} {...rest}>
+          {customizePrefix}
+        </div>
+      ) : null,
+    [prefixFcCls, customizePrefix, rest]
   );
 
   const suffixCls = useMemo(
@@ -73,8 +77,13 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   );
 
   const suffix = useMemo(
-    () => (customizeSuffix ? <div className={suffixCls}>{customizeSuffix}</div> : null),
-    [suffixCls, customizeSuffix]
+    () =>
+      customizeSuffix ? (
+        <div className={suffixCls} {...rest}>
+          {customizeSuffix}
+        </div>
+      ) : null,
+    [suffixCls, customizeSuffix, rest]
   );
   return (
     <span className={inputClass} style={style} ref={ref}>
