@@ -1,3 +1,15 @@
+## [22.12.5](https://github.com/growingio/gio-design/compare/v22.12.4...v22.12.5) (2022-01-10)
+
+
+### Bug Fixes
+
+* **Popover:** fix popover position issue for bottom auto ([#1782](https://github.com/growingio/gio-design/issues/1782)) ([09d0939](https://github.com/growingio/gio-design/commit/09d0939da5ba625eee430fee447e2c44f214a178))
+
+
+### Reverts
+
+* **table): revert "perf(table:** optimize `Table` ([#1774](https://github.com/growingio/gio-design/issues/1774))" ([#1780](https://github.com/growingio/gio-design/issues/1780)) ([128f2ff](https://github.com/growingio/gio-design/commit/128f2ff4a0515e014e9fe1cc69cd20870be812cd))
+
 ## [22.12.4](https://github.com/growingio/gio-design/compare/v22.12.3...v22.12.4) (2022-01-07)
 
 
