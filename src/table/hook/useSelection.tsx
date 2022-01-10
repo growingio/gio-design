@@ -196,7 +196,6 @@ const useSelection = <RecordType,>(
 
   const transformSelectionPipeline = useCallback(
     (columns: ColumnsType<RecordType>) => (!isUndefined(rowSelection) ? [selectionColumn, ...columns] : columns),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectionColumn, rowSelection]
   );
 
