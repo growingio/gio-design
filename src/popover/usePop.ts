@@ -45,8 +45,11 @@ const getMaxHeight = (element: HTMLElement, maxHeight = 0): number => {
   if (element.parentElement) {
     return getMaxHeight(element.parentElement, newMax);
   }
-  return newMax;
+  return window.innerHeight > maxHeight ? window.innerHeight : maxHeight;
 };
+
+const getBottomOfElement = (element: HTMLElement) => element?.getBoundingClientRect()?.bottom;
+// const getElementHeight = (element: HTMLElement) => element.offsetHeight;
 
 const usePop = ({ referenceElement, popperElement, placement, modifiers, strategy }: UsePopProps) => {
   const { styles, attributes, ...popperProps } = usePopper(referenceElement, popperElement, {
@@ -59,14 +62,24 @@ const usePop = ({ referenceElement, popperElement, placement, modifiers, strateg
     if (Array.isArray(three)) {
       const [x, y, z] = three;
       const divHeight = popperElement.offsetHeight;
-      const winHeight = getMaxHeight(referenceElement);
+      const pageHeight = getMaxHeight(referenceElement);
+      const winHeight = window.innerHeight;
 
       if (styles?.popper?.bottom === 'auto') {
-        let yField = y < 0 ? 0 : y;
-        yField = yField + divHeight > winHeight ? winHeight - divHeight : yField;
+        let yField = y;
+        // if bottom === auto, so the top === 0
+        // that means the pop will display the bottm of trigger.
+        // so if we don't think about the limit of bottom of page.
+        // we should show the pop in window
+        const bottomTrigger = getBottomOfElement(referenceElement);
+        if (bottomTrigger > winHeight) {
+          yField = bottomTrigger - divHeight;
+        } else {
+          yField = yField + divHeight > winHeight ? winHeight - divHeight : yField;
+        }
         styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z || 0}px)`;
       } else if (styles?.popper?.bottom === '0') {
-        const maxYField = winHeight - (window.pageYOffset + window.innerHeight);
+        const maxYField = pageHeight - (window.pageYOffset + window.innerHeight);
         const yField = y + divHeight > maxYField ? maxYField : y;
         styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z || 0}px)`;
       }
