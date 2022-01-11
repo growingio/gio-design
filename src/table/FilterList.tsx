@@ -15,7 +15,7 @@ interface FilterListProps {
 const FilterList = ({ prefixCls, value, onChange, dataSource }: FilterListProps) => (
   <List
     className={`${prefixCls}-filter-list`}
-    value={value?.map((item) => `${item}`)}
+    value={value?.filter(Boolean).map(String)}
     model="multiple"
     onChange={(changedKeys) => {
       if (!changedKeys) {
@@ -23,7 +23,7 @@ const FilterList = ({ prefixCls, value, onChange, dataSource }: FilterListProps)
         return;
       }
       if (Array.isArray(changedKeys)) {
-        onChange(changedKeys);
+        onChange(changedKeys.filter(Boolean));
         return;
       }
       onChange([changedKeys]);

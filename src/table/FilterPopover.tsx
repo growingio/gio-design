@@ -80,6 +80,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
             value={searchValue}
             onChange={(event) => setSearchValue(event.target.value)}
             className={`${prefixCls}-search-bar`}
+            autoFocus
           />
           <FilterList
             prefixCls={prefixCls}

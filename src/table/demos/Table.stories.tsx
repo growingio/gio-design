@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import Table from '../index';
 import { ColumnsType, SortOrder, TableProps } from '../interface';
 import '../style';
-import { Divider, Tooltip } from '../..';
+import { Divider } from '../..';
 import Docs from './TablePage';
 
 type DataSourceType = {
@@ -103,8 +103,40 @@ export const Selectable = () => {
     <Table<DataSourceType>
       title="可选择的"
       columns={columns}
-      pagination={false}
-      dataSource={genDataSource()}
+      dataSource={genDataSource(100).map((item, index) => {
+        if (index === 0) {
+          return {
+            ...item,
+            children: [
+              {
+                id: 'id1',
+                name: 'name1',
+                address: 'address1',
+                age: 19,
+              },
+              {
+                id: 'id2',
+                name: 'name2',
+                address: 'address2',
+                age: 19,
+              },
+              {
+                id: 'id3',
+                name: 'name3',
+                address: 'address3',
+                age: 19,
+              },
+              {
+                id: 'id4',
+                name: 'name4',
+                address: 'address4',
+                age: 19,
+              },
+            ],
+          };
+        }
+        return item;
+      })}
       rowKey="id"
       rowSelection={rowSelection}
     />
@@ -116,43 +148,51 @@ export const Selectable = () => {
 // ----------------------- Filterable -----------------------//
 
 export const Filterable = () => {
-  const columns: ColumnsType<DataSourceType> = [
-    {
-      dataIndex: 'id',
-      title: 'Id',
-    },
-    {
-      dataIndex: 'name',
-      title: 'Name',
-    },
-    {
-      dataIndex: 'age',
-      title: 'Age',
-      filters: [
-        { label: 'Age < 5 years old', value: '<5' },
-        { label: 'Age >= 5 years old', value: '>=5' },
-      ],
-      onFilter: (value: '<5' | '>=5', record) => (value === '<5' ? record.age < 5 : record.age >= 5),
-      filterSearchPlaceHolder: 'Search Text',
-      // Controlled
-      // filteredValue: [''],
-      // defaultFilteredValue: [''],
-    },
-    {
-      dataIndex: 'address',
-      title: 'Address',
-    },
-  ];
-
-  return (
-    <Table<DataSourceType>
-      pagination={false}
-      title="可过滤的"
-      columns={columns}
-      rowKey="id"
-      dataSource={genDataSource(10)}
-    />
+  const dataSource = useMemo(() => genDataSource(1000), []);
+  const columns = useMemo<ColumnsType<DataSourceType>>(
+    () => [
+      {
+        dataIndex: 'id',
+        title: 'Id',
+        filters: [
+          {
+            label: 'ID < 1100',
+            value: '<1100',
+          },
+          {
+            label: 'ID >= 1100',
+            value: '>=1100',
+          },
+        ],
+        onFilter: (value: '<1100' | '>=1100', record) =>
+          value === '<1100' ? Number(record.id) < 1100 : Number(record.id) >= 1100,
+      },
+      {
+        dataIndex: 'name',
+        title: 'Name',
+      },
+      {
+        dataIndex: 'age',
+        title: 'Age',
+        filters: [
+          { label: 'Age < 5 years old', value: '<5' },
+          { label: 'Age >= 5 years old', value: '>=5' },
+        ],
+        onFilter: (value: '<5' | '>=5', record) => (value === '<5' ? record.age < 5 : record.age >= 5),
+        filterSearchPlaceHolder: 'Search Text',
+        // Controlled
+        // filteredValue: [''],
+        // defaultFilteredValue: [''],
+      },
+      {
+        dataIndex: 'address',
+        title: 'Address',
+      },
+    ],
+    []
   );
+
+  return <Table<DataSourceType> title="可过滤的" columns={columns} rowKey="id" dataSource={dataSource} />;
 };
 
 // ----------------------- Filterable -----------------------//
@@ -173,7 +213,7 @@ export const Sortable = () => {
       dataIndex: 'age',
       title: 'Age',
       // sortDirections: ['descend'],
-      sorter: (first, second) => first.age + second.age,
+      sorter: (first, second) => second.age - first.age,
     },
     {
       dataIndex: 'address',
@@ -224,7 +264,7 @@ export const ControlledSortable = () => {
       dataIndex: 'id',
       title: 'Id',
       sortOrder: sortedInfo.columnKey === 'id' ? sortedInfo.sortOrder : undefined,
-      sorter: (first, second) => parseInt(first.id, 10) + parseInt(second.id, 10),
+      sorter: (first, second) => parseInt(first.id, 10) - parseInt(second.id, 10),
     },
     {
       dataIndex: 'name',
@@ -234,10 +274,10 @@ export const ControlledSortable = () => {
       dataIndex: 'age',
       title: 'Age',
       defaultSortOrder: 'descend',
-      info: '你可以通过设置 `sortDirections: ["ascend", "descend", "ascend"]` 来禁止排序恢复到默认状态',
+      info: '您可以通过设置 `sortDirections: ["ascend", "descend", "ascend"]` 来禁止排序恢复到默认状态',
       sortDirections: ['ascend', 'descend', 'ascend'],
       sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.sortOrder : undefined,
-      sorter: (first, second) => first.age + second.age,
+      sorter: (first, second) => second.age - first.age,
     },
     {
       dataIndex: 'address',
@@ -247,9 +287,8 @@ export const ControlledSortable = () => {
 
   return (
     <Table<DataSourceType>
-      pagination={false}
       title="受控的排序，设置 `sorter = true` 开启服务端排序"
-      dataSource={genDataSource()}
+      dataSource={genDataSource(10000)}
       columns={columns}
       rowKey="id"
       onChange={handleTableChange}
@@ -261,7 +300,7 @@ export const ControlledSortable = () => {
 
 // ----------------------- Collapsible -----------------------//
 
-export const collapsible = () => {
+export const Collapsible = () => {
   const columns: ColumnsType<DataSourceType> = [
     {
       dataIndex: 'id',
@@ -530,14 +569,9 @@ export const Ellipsis = (props: any) => {
       title: 'Address',
       width: 100,
       ellipsis: {
-        // 取消浏览器默认 title
-        showTitle: false,
+        // 设置 `false` 可以取消浏览器默认 title
+        showTitle: true,
       },
-      render: (address) => (
-        <Tooltip title={address}>
-          <span>{address}</span>
-        </Tooltip>
-      ),
     },
   ];
 
@@ -623,7 +657,7 @@ export const CustomThead = () => {
   const Cell = ({ children }: { children: React.ReactNode }) => <th style={{ backgroundColor: 'pink' }}>{children}</th>;
 
   return (
-    <Table.ResizableTable<DataSourceType>
+    <Table<DataSourceType>
       title="自定义表格"
       columns={columns}
       dataSource={genDataSource()}
@@ -653,15 +687,18 @@ export const PaginationTable = () => {
     {
       dataIndex: 'id',
       title: 'Id',
+      ellipsis: true,
     },
     {
       dataIndex: 'name',
       title: 'Name',
+      ellipsis: true,
     },
     {
       dataIndex: 'age',
       title: 'Age',
       sorter: (first, second) => first.age + second.age,
+      ellipsis: true,
       filters: [
         { label: 'Age < 5 years old', value: '<5' },
         { label: 'Age >= 5 years old', value: '>=5' },
@@ -671,11 +708,12 @@ export const PaginationTable = () => {
     {
       dataIndex: 'address',
       title: 'Address',
+      ellipsis: true,
     },
   ];
 
   return (
-    <Table.ResizableTable<DataSourceType>
+    <Table<DataSourceType>
       pagination={{
         showQuickJumper: true,
         showSizeChanger: true,
@@ -724,7 +762,7 @@ export const Loading = () => {
   }, []);
 
   return (
-    <Table.ResizableTable<DataSourceType>
+    <Table<DataSourceType>
       title="加载中"
       loading={loading}
       columns={columns}
@@ -760,7 +798,7 @@ export const Empty = () => {
   ];
 
   return (
-    <Table.ResizableTable<DataSourceType>
+    <Table<DataSourceType>
       title="表格无数据时的展示页面，请参考 Page 组件"
       columns={columns}
       rowKey="id"

@@ -1,27 +1,16 @@
-import { clone, has, get, join, set } from 'lodash';
-import { ColumnsType } from './interface';
+import { isNil, isArray } from 'lodash';
+import { ColumnType, Key } from './interface';
 
 export const TABLE_PREFIX_CLS = 'table';
 
-// eslint-disable-next-line import/prefer-default-export
-export const translateInnerColumns = <RecordType>(
-  columns: ColumnsType<RecordType> | undefined
-): ColumnsType<RecordType> =>
-  clone<ColumnsType<RecordType> | undefined>(columns)?.map((cloneColumn) => {
-    if (!has(cloneColumn, 'key')) {
-      if (has(cloneColumn, 'dataIndex')) {
-        if (Array.isArray(get(cloneColumn, 'dataIndex'))) {
-          set(cloneColumn, 'key', join(get(cloneColumn, 'dataIndex'), '-'));
-        } else {
-          set(cloneColumn, 'key', get(cloneColumn, 'dataIndex'));
-        }
-      } else {
-        // eslint-disable-next-line no-console
-        console.warn('gio-design table: column key or dataIndex must have one');
-      }
-    }
-    if (has(cloneColumn, 'children')) {
-      set(cloneColumn, 'children', translateInnerColumns(get(cloneColumn, 'children')));
-    }
-    return cloneColumn;
-  }) || [];
+export const getColumnKey = <RecordType>(column: ColumnType<RecordType>, defaultKey: string): Key => {
+  const { key, dataIndex } = column;
+  if (!isNil(key)) return key;
+  if (!isNil(dataIndex)) {
+    return (isArray(dataIndex) ? dataIndex.join('-') : dataIndex) as Key;
+  }
+
+  return defaultKey;
+};
+
+export const getColumnPos = (index: number, pos?: string) => (pos ? `${pos}-${index}` : `${index}`);

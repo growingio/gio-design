@@ -1,7 +1,7 @@
 import React, { useMemo, forwardRef, createContext, useCallback, useRef } from 'react';
 import GioTable from '@gio-design/table';
 import classNames from 'classnames';
-import { cloneDeep, get, has, set, isFunction, isNil, isEmpty } from 'lodash';
+import { get, has, isFunction, isNil, isEmpty } from 'lodash';
 import { ExpandableConfig } from '@gio-design/table/lib/interface';
 import { compose } from 'lodash/fp';
 import { RightOutlined, DownOutlined } from '@gio-design/icons';
@@ -13,9 +13,16 @@ import useFilter from './hook/useFilter';
 import usePagination from './hook/usePagination';
 import useSelection, { getRowKey } from './hook/useSelection';
 import Title from './Title';
-import { TableProps, ColumnsType, OnTriggerStateUpdateProps, SortState, ForwardRefFn } from './interface';
+import {
+  TableProps,
+  ColumnsType,
+  OnTriggerStateUpdateProps,
+  SortState,
+  ForwardRefFn,
+  PaginationState,
+} from './interface';
 import Page from '../page';
-import { TABLE_PREFIX_CLS, translateInnerColumns } from './utils';
+import { getColumnKey, getColumnPos, TABLE_PREFIX_CLS } from './utils';
 import Loading from '../loading';
 import useHackOnRow from './hook/useHackOnRow';
 
@@ -33,7 +40,7 @@ export const TableContext = createContext<TableContextType>({ tableRef: null });
 function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRef<HTMLDivElement>): React.ReactElement {
   const {
     title,
-    columns,
+    columns = [],
     dataSource = [],
     pagination = {},
     rowSelection,
@@ -56,19 +63,23 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
   const mergedRef = useMergeRef(ref);
   const prefixCls = usePrefixCls(TABLE_PREFIX_CLS);
   const onHackRow = useHackOnRow(onRow, hackRowEvent);
-  const innerColumns = useMemo(() => translateInnerColumns(columns), [columns]);
 
   const changeEventInfo = useRef<OnTriggerStateUpdateProps<RecordType> & { refreshPagination?: () => void }>(
     {}
   ).current;
   const onTriggerStateUpdate = useCallback(
     (info: OnTriggerStateUpdateProps<RecordType>, isRefreshPage?: boolean): void => {
-      const { paginationState, filterStates, sorterState, refreshPagination } = {
+      const {
+        paginationState = {},
+        filterStates: _filterStates = {},
+        sorterState,
+        refreshPagination,
+      } = {
         ...changeEventInfo,
         ...info,
       };
       if (isFunction(onChange)) {
-        onChange(paginationState, filterStates, sorterState);
+        onChange(paginationState as PaginationState, _filterStates, sorterState);
       }
       if (isRefreshPage && isFunction(refreshPagination)) {
         refreshPagination();
@@ -77,19 +88,24 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
     [changeEventInfo, onChange]
   );
 
+  // -------------------------------------------------------------
+  // -------------------- 排序 start ------------------------------
+  // -------------------------------------------------------------
   const onSorterChange = (sorterState: SortState<RecordType>) => {
     onTriggerStateUpdate({
       sorterState,
     });
   };
-  const [activeSorterStates, updateSorterStates, sortedData, sorter] = useSorter(
-    innerColumns,
-    dataSource,
-    onSorterChange,
-    rowKey
-  );
+  const [sortStates, updateSorterStates, sorter, getSortData] = useSorter(columns, onSorterChange);
+  const sortedDataSource = getSortData(dataSource, sortStates);
   changeEventInfo.sorterState = sorter;
+  // -------------------------------------------------------------
+  // -------------------- 排序 end --------------------------------
+  // -------------------------------------------------------------
 
+  // -------------------------------------------------------------
+  // -------------------- 过滤 start ------------------------------
+  // -------------------------------------------------------------
   const onFilterChange = (changedFilters: Record<string, string[]>) => {
     onTriggerStateUpdate(
       {
@@ -98,14 +114,16 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
       true
     );
   };
-  const [activeFilterStates, updateFilterStates, filteredData, filters] = useFilter(
-    innerColumns,
-    sortedData,
-    onFilterChange,
-    rowKey
-  );
+  const [filterStates, updateFilterStates, getFilterData, filters] = useFilter(columns, onFilterChange);
+  const filteredDataSource = getFilterData(sortedDataSource, filterStates);
   changeEventInfo.filterStates = filters;
+  // -------------------------------------------------------------
+  // -------------------- 过滤 end --------------------------------
+  // -------------------------------------------------------------
 
+  // -------------------------------------------------------------
+  // -------------------- 分页 start ------------------------------
+  // -------------------------------------------------------------
   const onPaginationChange = (currentPage: number, currentPageSize: number) => {
     onTriggerStateUpdate({
       paginationState: {
@@ -115,9 +133,12 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
     });
   };
   const [transformShowIndexPipeline, activePaginationState, paginationData, paginationComponent, refreshPage] =
-    usePagination(filteredData, pagination, prefixCls, showIndex, onPaginationChange);
+    usePagination(filteredDataSource, pagination, prefixCls, showIndex, onPaginationChange);
   changeEventInfo.paginationState = activePaginationState;
   changeEventInfo.refreshPagination = refreshPage;
+  // -------------------------------------------------------------
+  // -------------------- 过滤 end --------------------------------
+  // -------------------------------------------------------------
 
   const expandIcon: RenderExpandIcon<RecordType> = (expandProps) => {
     const { expanded, onExpand, record, expandable: expandableProp } = expandProps;
@@ -157,41 +178,38 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
 
   const transformColumnTitle = useMemo(() => {
     function renderTitle(_columns: ColumnsType<RecordType>): ColumnsType<RecordType> {
-      return cloneDeep(_columns).map((column) => {
-        const sortState = activeSorterStates.find(({ key }) => key === column.key);
-        const filterState = activeFilterStates.find(({ key }) => key === column.key);
+      return _columns.map((column, index) => {
+        const columnKey = getColumnKey(column, getColumnPos(index));
+        const sortState = sortStates.find(({ key }) => key === columnKey);
+        const filterState = filterStates.find(({ key }) => key === columnKey);
+        let newColumn = column;
         if (sortState || filterState || !isNil(column.info)) {
-          const oldColumn = cloneDeep(column);
-          set(
-            column,
-            'title',
-            <Title
-              sorterState={sortState}
-              filterState={filterState}
-              prefixCls={prefixCls}
-              column={oldColumn}
-              updateSorterStates={updateSorterStates}
-              updateFilterStates={updateFilterStates}
-              onTriggerStateUpdate={onTriggerStateUpdate}
-            />
-          );
+          newColumn = {
+            ...newColumn,
+            title: (
+              <Title
+                sorterState={sortState}
+                filterState={filterState}
+                prefixCls={prefixCls}
+                column={column}
+                updateSorterStates={updateSorterStates}
+                updateFilterStates={updateFilterStates}
+                onTriggerStateUpdate={onTriggerStateUpdate}
+              />
+            ),
+          };
         }
-        if (has(column, 'children')) {
-          set(column, 'children', renderTitle(get(column, 'children')));
+        if (has(newColumn, 'children')) {
+          newColumn = {
+            ...newColumn,
+            children: renderTitle(get(column, 'children')),
+          };
         }
-        return column;
+        return newColumn;
       });
     }
-    return renderTitle(innerColumns);
-  }, [
-    innerColumns,
-    activeSorterStates,
-    activeFilterStates,
-    prefixCls,
-    updateSorterStates,
-    updateFilterStates,
-    onTriggerStateUpdate,
-  ]);
+    return renderTitle(columns);
+  }, [columns, sortStates, filterStates, prefixCls, updateSorterStates, updateFilterStates, onTriggerStateUpdate]);
 
   const composedColumns = compose(transformSelectionPipeline, transformShowIndexPipeline)(transformColumnTitle);
 

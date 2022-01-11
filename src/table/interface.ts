@@ -41,7 +41,8 @@ interface ColumnType<RecordType> extends GioColumnType<RecordType> {
   sortDirections?: SortOrder[];
 
   /**
-   * 排序优先级
+   * 排序优先级，数值越大越靠前
+   * @default 0
    */
   sortPriorityOrder?: number;
 
@@ -87,12 +88,10 @@ interface ColumnGroupType<RecordType> extends Omit<ColumnType<RecordType>, 'data
   children: ColumnsType<RecordType>;
 }
 
-interface SortState<RecordType> {
+interface SortState<RecordType>
+  extends Required<Pick<ColumnType<RecordType>, 'sortPriorityOrder' | 'sortDirections' | 'sortOrder'>> {
   column: ColumnType<RecordType>;
   key: Key;
-  sortPriorityOrder: number | undefined;
-  sortDirections: SortOrder[];
-  sortOrder: SortOrder;
   isControlled: boolean;
 }
 
