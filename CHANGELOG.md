@@ -1,3 +1,16 @@
+## [22.12.6](https://github.com/growingio/gio-design/compare/v22.12.5...v22.12.6) (2022-01-11)
+
+
+### Bug Fixes
+
+* **collapse:** remove margin-right in the icon ([#1787](https://github.com/growingio/gio-design/issues/1787)) ([105ca40](https://github.com/growingio/gio-design/commit/105ca40382bf2a96395f1b58519296f7c97841f9)), closes [#1785](https://github.com/growingio/gio-design/issues/1785)
+* **toggle:** support default input props ([#1786](https://github.com/growingio/gio-design/issues/1786)) ([ca4922b](https://github.com/growingio/gio-design/commit/ca4922b40ec859fb97f556c5eda0b3bdfad27917))
+
+
+### Performance Improvements
+
+* **table:** reduce the number of unnecessary clone ([#1781](https://github.com/growingio/gio-design/issues/1781)) ([fe08d6b](https://github.com/growingio/gio-design/commit/fe08d6bc62e2908a1240b146d670d934b1f68f2d))
+
 ## [22.12.5](https://github.com/growingio/gio-design/compare/v22.12.4...v22.12.5) (2022-01-10)
 
 
