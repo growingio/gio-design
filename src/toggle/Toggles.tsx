@@ -1,15 +1,25 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
-import { isUndefined } from 'lodash';
+import { isUndefined, omit } from 'lodash';
 import useControlledState from '../utils/hooks/useControlledState';
 import { TogglesProps } from './interface';
 import WithRef from '../utils/withRef';
 
 const InnerToggle: React.ForwardRefRenderFunction<HTMLInputElement, TogglesProps> = (props, ref) => {
-  const { defaultOn = false, on, disabled, className, checkedChildren, uncheckedChildren, onChange, style, dataTestId = "toggle" } = props;
+  const {
+    defaultOn = false,
+    on,
+    disabled,
+    className,
+    checkedChildren,
+    uncheckedChildren,
+    onChange,
+    style,
+    dataTestId: legacyDataTestId = 'toggle',
+    'data-testid': dataTestId = 'toggle',
+    ...otherProps
+  } = props;
   const prefixCls = usePrefixCls('toggle');
 
   const [status, setStatus] = useControlledState<boolean>(on, defaultOn);
@@ -18,7 +28,7 @@ const InnerToggle: React.ForwardRefRenderFunction<HTMLInputElement, TogglesProps
     if (!isUndefined(on)) {
       setStatus(on);
     }
-  }, [on]);
+  }, [on, setStatus]);
 
   const onChangeStatus = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!disabled) {
@@ -30,7 +40,7 @@ const InnerToggle: React.ForwardRefRenderFunction<HTMLInputElement, TogglesProps
   const wrapperCls = classnames({ [`${prefixCls}-disabled`]: disabled }, `${prefixCls}-normal`, className);
 
   return (
-    <label aria-hidden="true" className={wrapperCls} style={style} data-testid={dataTestId}>
+    <label aria-hidden="true" className={wrapperCls} style={style} data-testid={legacyDataTestId ?? dataTestId}>
       <input
         disabled={disabled}
         type="checkbox"
@@ -38,6 +48,7 @@ const InnerToggle: React.ForwardRefRenderFunction<HTMLInputElement, TogglesProps
         onChange={onChangeStatus}
         ref={ref}
         checked={status}
+        {...omit(otherProps, 'size')}
       />
       <span className={classnames(`${prefixCls}-suffixContent`)}>{status ? checkedChildren : uncheckedChildren}</span>
     </label>

@@ -1,4 +1,5 @@
-export interface TogglesProps {
+export interface TogglesProps
+  extends Omit<React.HTMLAttributes<HTMLInputElement>, 'disabled' | 'size' | 'onChange' | 'className' | 'style'> {
   /**
    `toggle` 选中时的后缀节点
    */
@@ -17,6 +18,7 @@ export interface TogglesProps {
   disabled?: boolean;
   /**
    尺寸
+   @deprecated
    */
   size?: string;
   /**
@@ -34,5 +36,11 @@ export interface TogglesProps {
   on?: boolean;
 
   style?: React.CSSProperties;
-  dataTestId: string;
+
+  /**
+   * @deprecated
+   */
+  dataTestId?: string;
+
+  ['data-testid']?: string;
 }
