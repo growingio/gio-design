@@ -213,7 +213,7 @@ export const Sortable = () => {
       dataIndex: 'age',
       title: 'Age',
       // sortDirections: ['descend'],
-      sorter: (first, second) => first.age + second.age,
+      sorter: (first, second) => second.age - first.age,
     },
     {
       dataIndex: 'address',
@@ -264,7 +264,7 @@ export const ControlledSortable = () => {
       dataIndex: 'id',
       title: 'Id',
       sortOrder: sortedInfo.columnKey === 'id' ? sortedInfo.sortOrder : undefined,
-      sorter: (first, second) => parseInt(first.id, 10) + parseInt(second.id, 10),
+      sorter: (first, second) => parseInt(first.id, 10) - parseInt(second.id, 10),
     },
     {
       dataIndex: 'name',
@@ -277,7 +277,7 @@ export const ControlledSortable = () => {
       info: '您可以通过设置 `sortDirections: ["ascend", "descend", "ascend"]` 来禁止排序恢复到默认状态',
       sortDirections: ['ascend', 'descend', 'ascend'],
       sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.sortOrder : undefined,
-      sorter: (first, second) => first.age + second.age,
+      sorter: (first, second) => second.age - first.age,
     },
     {
       dataIndex: 'address',
@@ -300,7 +300,7 @@ export const ControlledSortable = () => {
 
 // ----------------------- Collapsible -----------------------//
 
-export const collapsible = () => {
+export const Collapsible = () => {
   const columns: ColumnsType<DataSourceType> = [
     {
       dataIndex: 'id',
@@ -657,7 +657,7 @@ export const CustomThead = () => {
   const Cell = ({ children }: { children: React.ReactNode }) => <th style={{ backgroundColor: 'pink' }}>{children}</th>;
 
   return (
-    <Table.ResizableTable<DataSourceType>
+    <Table<DataSourceType>
       title="自定义表格"
       columns={columns}
       dataSource={genDataSource()}
@@ -687,15 +687,18 @@ export const PaginationTable = () => {
     {
       dataIndex: 'id',
       title: 'Id',
+      ellipsis: true,
     },
     {
       dataIndex: 'name',
       title: 'Name',
+      ellipsis: true,
     },
     {
       dataIndex: 'age',
       title: 'Age',
       sorter: (first, second) => first.age + second.age,
+      ellipsis: true,
       filters: [
         { label: 'Age < 5 years old', value: '<5' },
         { label: 'Age >= 5 years old', value: '>=5' },
@@ -705,11 +708,12 @@ export const PaginationTable = () => {
     {
       dataIndex: 'address',
       title: 'Address',
+      ellipsis: true,
     },
   ];
 
   return (
-    <Table.ResizableTable<DataSourceType>
+    <Table<DataSourceType>
       pagination={{
         showQuickJumper: true,
         showSizeChanger: true,
@@ -758,7 +762,7 @@ export const Loading = () => {
   }, []);
 
   return (
-    <Table.ResizableTable<DataSourceType>
+    <Table<DataSourceType>
       title="加载中"
       loading={loading}
       columns={columns}
@@ -794,7 +798,7 @@ export const Empty = () => {
   ];
 
   return (
-    <Table.ResizableTable<DataSourceType>
+    <Table<DataSourceType>
       title="表格无数据时的展示页面，请参考 Page 组件"
       columns={columns}
       rowKey="id"

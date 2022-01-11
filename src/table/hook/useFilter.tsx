@@ -1,30 +1,45 @@
 import { useCallback, useState, useEffect } from 'react';
-import { get, isUndefined, has, clone, isFunction } from 'lodash';
+import { get, isUndefined, isFunction } from 'lodash';
 import { ColumnsType, FilterState } from '../interface';
 import { getColumnPos, getColumnKey } from '../utils';
 
 const collectFilterStates = <RecordType,>(
   columns: ColumnsType<RecordType>,
+  init: boolean,
   position?: string
 ): FilterState<RecordType>[] => {
-  const filterStates: FilterState<RecordType>[] = [];
+  let filterStates: FilterState<RecordType>[] = [];
+
   columns.forEach((column, index) => {
     const { filters, onFilter, defaultFilteredValue = [], filteredValue } = column;
+
     const columnPosition = getColumnPos(index, position);
     const columnKey = getColumnKey(column, columnPosition);
-    if (has(column, 'children')) {
-      filterStates.push(...collectFilterStates(get(column, 'children'), columnPosition));
-    } else if (filters) {
-      filterStates.push(
-        clone({
+
+    if (filters && onFilter) {
+      if (filteredValue) {
+        filterStates.push({
           column,
           key: columnKey,
-          filteredKeys: filteredValue ?? defaultFilteredValue,
+          filteredKeys: filteredValue,
           onFilter,
+          isControlled: true,
           filters,
-          isControlled: !isUndefined(filteredValue),
-        })
-      );
+        });
+      } else {
+        filterStates.push({
+          column,
+          key: columnKey,
+          filteredKeys: init ? defaultFilteredValue : [],
+          onFilter,
+          isControlled: false,
+          filters,
+        });
+      }
+    }
+
+    if ('children' in column) {
+      filterStates = [...filterStates, ...collectFilterStates(column.children, init, columnPosition)];
     }
   });
   return filterStates;
@@ -37,7 +52,7 @@ const getFilteredData = <RecordType,>(
   filterStates
     .filter((state) => state.filteredKeys?.length > 0)
     .reduce((accumulatorData, currentState) => {
-      const { key: currentStateKey, filteredKeys, onFilter } = currentState;
+      const { key: currentStateKey, filteredKeys = [], onFilter } = currentState;
       return accumulatorData.filter((record: RecordType) => {
         const filterFunction = (_key: string) =>
           isUndefined(onFilter) ? _key === get(record, currentStateKey) : onFilter(_key, record);
@@ -55,16 +70,34 @@ const useFilter = <RecordType,>(
   Record<string, string[]>
 ] => {
   // record all filter states
-  const [filterStates, setFilterStates] = useState<FilterState<RecordType>[]>(collectFilterStates(columns));
+  const [filterStates, setFilterStates] = useState<FilterState<RecordType>[]>(collectFilterStates(columns, true));
   const [filters, setFilters] = useState<Record<string, string[]>>({});
   useEffect(() => {
-    const collectedFilterStates = collectFilterStates(columns);
+    const collectedFilterStates = collectFilterStates(columns, false);
 
-    const allIsControlled = collectedFilterStates.every(({ isControlled }) => isControlled);
+    setFilterStates((oldStates) => {
+      const active = oldStates.filter((state) => state.filteredKeys?.length > 0);
 
-    if (allIsControlled) {
-      setFilterStates(collectedFilterStates);
-    }
+      if (active.length > 0) {
+        return collectedFilterStates.map((state) => {
+          const { key, isControlled } = state;
+          if (isControlled) return state;
+
+          const found = active.find((item) => item.key === key);
+
+          if (found && found.filteredKeys?.length > 0) {
+            return {
+              ...state,
+              filteredKeys: found.filteredKeys,
+            };
+          }
+
+          return state;
+        });
+      }
+
+      return collectedFilterStates;
+    });
   }, [columns]);
 
   // update filter states action
@@ -77,6 +110,7 @@ const useFilter = <RecordType,>(
         (prev, curr) => Object.assign(prev, { [curr.key]: curr.filteredKeys }),
         {} as Record<string, string[]>
       );
+
       setFilterStates(newFilterStates);
       setFilters(newFilters);
       if (isFunction(onFilterChange)) {
