@@ -1,17 +1,32 @@
 export interface CollapseProps {
-  activeKey?: Array<string | number> | string | number;
-  defaultActiveKey?: Array<string | number> | string | number;
+  activeKey?: React.Key | React.Key[];
+  defaultActiveKey?: React.Key | React.Key[];
   /** 手风琴效果 */
   accordion?: boolean;
+  /**
+   * @deprecated
+   */
   destoryOnHide?: boolean;
-  onChange?: (key: string | string[]) => void;
+
+  destroyOnHide?: boolean;
+  onChange?: (key: React.Key | React.Key[]) => void;
   style?: React.CSSProperties;
   className?: string;
+
+  /**
+   * 是否显示边框
+   * @default true
+   */
   bordered?: boolean;
   prefixCls?: string;
   expandIcon?: (panelProps: PanelProps) => React.ReactNode;
   disabled?: boolean;
+
+  /**
+   * @deprecated
+   */
   dataTestId?: string;
+  'data-testid'?: string;
   children: React.ReactNode;
 }
 export interface PanelProps {

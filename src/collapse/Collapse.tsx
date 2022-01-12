@@ -3,13 +3,24 @@ import RcCollapse from 'rc-collapse';
 import classnames from 'classnames';
 import { RightFilled } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
+import { get } from 'lodash';
 import { cloneElement } from '../utils/reactNode';
 import { CollapseProps, PanelProps } from './interface';
 import WithRef from '../utils/withRef';
 import { WithCommonProps } from '../utils/interfaces';
 
-export const Collapse = WithRef<HTMLDivElement, WithCommonProps<CollapseProps>>((props: CollapseProps) => {
-  const { destoryOnHide, disabled, children, dataTestId = 'collapse' } = props;
+export const Collapse = WithRef<HTMLDivElement, WithCommonProps<CollapseProps>>((props, ref) => {
+  const {
+    destoryOnHide: legacyDestroyOnHide,
+    destroyOnHide,
+    disabled,
+    children,
+    dataTestId: legacyDataTestId,
+    'data-testid': dataTestId = 'collapse',
+    bordered = true,
+    className,
+    ...otherProps
+  } = props;
   const prefixCls = usePrefixCls('collapse');
   const renderExpandIcon = (panelProps: PanelProps = {}) => {
     const { expandIcon } = props;
@@ -17,19 +28,22 @@ export const Collapse = WithRef<HTMLDivElement, WithCommonProps<CollapseProps>>(
     return (
       <div className={classnames('collapse-arrow-bar', panelProps.isActive ? 'arrow-isRotate' : undefined)}>
         {cloneElement(icon, () => ({
-          className: classnames((icon as any).props.className, `${prefixCls}-arrow`),
+          className: classnames(get(icon, 'props.className'), `${prefixCls}-arrow`),
         }))}
       </div>
     );
   };
   return (
-    <div className="gio-collapse-contain" data-testid={dataTestId}>
+    <div className={`${prefixCls}-contain`} data-testid={legacyDataTestId || dataTestId} ref={ref}>
       <RcCollapse
-        {...props}
         prefixCls={prefixCls}
         expandIcon={renderExpandIcon}
-        destroyInactivePanel={destoryOnHide}
+        destroyInactivePanel={legacyDestroyOnHide || destroyOnHide}
         collapsible={disabled ? 'disabled' : undefined}
+        className={classnames(className, {
+          [`${prefixCls}-bordered`]: bordered,
+        })}
+        {...otherProps}
       >
         {children}
       </RcCollapse>
