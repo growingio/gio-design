@@ -1,3 +1,16 @@
+## [22.12.7](https://github.com/growingio/gio-design/compare/v22.12.6...v22.12.7) (2022-01-12)
+
+
+### Bug Fixes
+
+* **collapse:** support `bordered` prop and ref ([#1790](https://github.com/growingio/gio-design/issues/1790)) ([218a54e](https://github.com/growingio/gio-design/commit/218a54e3a226f2f699c9665e47a6871988a0e441))
+* **modal:** modify size of Modal from `normal` to `fixed` ([#1776](https://github.com/growingio/gio-design/issues/1776)) ([3d45fd1](https://github.com/growingio/gio-design/commit/3d45fd1b00338ad8ee0941646055e1ab09e21d40))
+* **page:** add deps style ([#1789](https://github.com/growingio/gio-design/issues/1789)) ([5632662](https://github.com/growingio/gio-design/commit/563266282405feec6be9e067bb602bfe6189cbe6))
+* **pagination:** add `event` param on `onChange` ([#1791](https://github.com/growingio/gio-design/issues/1791)) ([097131c](https://github.com/growingio/gio-design/commit/097131c9ce8000d4204974ba1d96e4c979b8ce4c))
+* **panel:** show divider ([#1788](https://github.com/growingio/gio-design/issues/1788)) ([4fdfab8](https://github.com/growingio/gio-design/commit/4fdfab803942d25027ea91c38e5fedc1007740bc))
+* **popover:** fix react wraning ([#1792](https://github.com/growingio/gio-design/issues/1792)) ([1fc7c1c](https://github.com/growingio/gio-design/commit/1fc7c1cd05e41b22cfc901ee52876cd2b94cdfbc))
+* **search-bar:** fix react wraning and `inputRef` ([#1793](https://github.com/growingio/gio-design/issues/1793)) ([ba1a1a3](https://github.com/growingio/gio-design/commit/ba1a1a3939295f246147ec2adc6307a4f081a6d7))
+
 ## [22.12.6](https://github.com/growingio/gio-design/compare/v22.12.5...v22.12.6) (2022-01-11)
 
 
