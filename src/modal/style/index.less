@@ -1,19 +1,42 @@
-@import '../../stylesheet/index.less';
-@import '../../stylesheet/mixin/animation.less';
-@import '../../stylesheet/mixin/index.less';
-@import '../../stylesheet/variables/index.less';
+@import (reference) '../../stylesheet/variables/index.less';
 
 @modal-prefix-cls: ~'@{component-prefix}-modal';
-@modal-normal: ~'@{modal-prefix-cls}-normal';
-@modal-fixed: ~'@{modal-prefix-cls}-fixed';
-@modal-full: ~'@{modal-prefix-cls}-full';
-@modal-callout: ~'@{modal-prefix-cls}-callout';
-@btn-cls: ~'@{component-prefix}-btn';
 
 .@{modal-prefix-cls} {
   @modal-radius: 8px;
   position: relative;
   margin: 100px auto;
+
+  &-normal {
+    width: fit-content;
+  }
+
+  &-fixed {
+    width: 500px;
+  }
+
+  &-full {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    .@{modal-prefix-cls} {
+      &-content {
+        height: 100%;
+        max-height: none;
+      }
+
+      &-body {
+        flex: 1;
+        max-width: 1320px;
+      }
+
+      &-header,
+      &-footer {
+        flex-shrink: 0;
+      }
+    }
+  }
 
   &-mask {
     position: fixed;
@@ -29,22 +52,6 @@
     &-hidden {
       display: none;
     }
-  }
-
-  .btn-style() {
-    display: inline-block;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    padding: 0;
-    color: @gray-5;
-    background-color: @gray-0;
-    border: 0;
-    border-radius: 50%;
-    outline: 0;
-    cursor: pointer;
   }
 
   &-wrap {
@@ -86,9 +93,7 @@
     position: relative;
     overflow: hidden;
     color: @gray-5;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
+    .text-h3();
     white-space: nowrap;
     text-align: center;
     text-overflow: ellipsis;
@@ -99,7 +104,7 @@
     display: flex;
     flex-direction: column;
     min-height: 140px;
-    max-height: calc(~'@{modal-full-height} - 200px');
+    max-height: calc(100vh - 200px);
     background-color: @gray-0;
     background-clip: padding-box;
     border: 1px solid @gray-2;
@@ -135,43 +140,6 @@
     padding: 8px 36px;
     overflow-y: auto;
     color: @gray-5;
+    .scrollbar();
   }
-}
-
-.@{modal-normal} {
-  width: fit-content;
-}
-.@{modal-fixed} {
-  width: 500px;
-}
-.@{modal-full} {
-  .full-screen-modal();
-}
-
-.full-screen-modal() {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-
-  .@{modal-prefix-cls} {
-    &-content {
-      height: 100%;
-      max-height: none;
-    }
-
-    &-body {
-      flex: 1;
-      max-width: 1320px;
-    }
-
-    &-header,
-    &-footer {
-      flex-shrink: 0;
-    }
-  }
-}
-
-.effect() {
-  animation-duration: 0.2s;
-  animation-fill-mode: both;
 }

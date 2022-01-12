@@ -42,8 +42,14 @@ export interface ModalProps {
   maskClosable?: boolean;
   /** 强制渲染 Modal */
   forceRender?: boolean;
-  /** 大小 */
-  size: TModalSize;
+  /**
+   * 模态框大小
+   * @param `normal` 随内容大小变化而变化
+   * @param `fixed` 固定 500px
+   * @param `full` 全屏
+   * @default `fixed`
+   */
+  size?: TModalSize;
   okButtonProps?: ButtonProps;
   closeButtonProps?: ButtonProps;
   destroyOnClose?: boolean;
@@ -64,41 +70,15 @@ export interface ModalProps {
   focusTriggerAfterClose?: boolean;
 }
 
-export interface ModalFuncProps {
-  prefixCls?: string;
-  className?: string;
-  visible?: boolean;
-  title?: React.ReactNode;
-  closable?: boolean;
+export interface ModalFuncProps extends Omit<ModalProps, 'onOk' | 'onClose'> {
   content?: React.ReactNode;
-  size: TModalSize;
   // TODO: find out exact types
   onOk?: (...args: any[]) => any;
   onClose?: (...args: any[]) => any;
-  afterClose?: () => void;
-  okButtonProps?: ButtonProps;
   cancelButtonProps?: ButtonProps;
-  centered?: boolean;
-  width?: string | number;
-  okText?: React.ReactNode;
-  okType?: ButtonType;
-  cancelText?: React.ReactNode;
   icon?: React.ReactNode;
-  mask?: boolean;
-  maskClosable?: boolean;
-  zIndex?: number;
   okCancel?: boolean;
-  style?: React.CSSProperties;
-  maskStyle?: React.CSSProperties;
-  keyboard?: boolean;
-  getContainer?: string | HTMLElement | getContainerFunc | false;
   autoFocusButton?: null | 'ok' | 'cancel';
-  transitionName?: string;
-  maskTransitionName?: string;
-  bodyStyle?: React.CSSProperties;
-  closeIcon?: React.ReactNode;
-  modalRender?: (node: React.ReactNode) => React.ReactNode;
-  focusTriggerAfterClose?: boolean;
 }
 
 export interface IModalStaticFuncConfig extends Omit<ModalProps, 'visible' | 'onOk' | 'onClose' | 'pending'> {
