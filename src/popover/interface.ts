@@ -38,6 +38,7 @@ export interface PopoverProps {
   /**
    * 箭头是否指向目标元素中心
    * @default false
+   * @deprecated
    */
   arrowPointAtCenter?: boolean;
   /**

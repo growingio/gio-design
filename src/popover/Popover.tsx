@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback, useRef, useLayoutEffect, useEffect } from 'react';
 import classNames from 'classnames';
-import { debounce, isFunction, isNil } from 'lodash';
+import { debounce, isFunction, isNil, omit } from 'lodash';
 import ReactDOM from 'react-dom';
 import ResizeObserver from 'rc-resize-observer';
 import { usePrefixCls } from '@gio-design/utils';
@@ -219,7 +219,7 @@ const Popover = (props: PopoverProps) => {
       onMouseLeave={onContentMouseLeave}
       onClick={onContentClick}
       role="none"
-      {...rest}
+      {...omit(rest, 'arrowPointAtCenter')}
     >
       {allowArrow && <div className={`${prefixCls}__arrow`} ref={arrowElement} style={{ ...styles.arrow }} />}
       <div className={contentInnerCls} style={overlayInnerStyle}>
