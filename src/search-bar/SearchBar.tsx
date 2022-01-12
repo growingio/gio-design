@@ -3,6 +3,7 @@ import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
 import React, { useCallback, useMemo, useState, useEffect, useRef } from 'react';
 import Input from '../input/Input';
+import { composeRef } from '../utils/composeRef';
 import { SearchBarProps } from './interface';
 
 const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref) => {
@@ -14,6 +15,8 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
     placeholder,
     onSearch,
     className,
+    inputRef: inputRefProp,
+    ...otherProps
   } = props;
 
   const prefixCls = usePrefixCls('search', customizePrefixCls);
@@ -74,7 +77,6 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
   return (
     <Input
       data-testid="search-bar"
-      {...props}
       className={classNames(className, prefixCls)}
       type="text"
       placeholder={placeholder}
@@ -82,7 +84,9 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
       onChange={onChange}
       suffix={suffix}
       ref={ref}
-      inputRef={inputRef}
+      inputRef={inputRefProp ? composeRef(inputRef, inputRefProp) : inputRef}
+      disabled={disabled}
+      {...otherProps}
     />
   );
 });
