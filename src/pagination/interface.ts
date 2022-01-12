@@ -41,8 +41,13 @@ interface PaginationProps {
    * 页码改变的回调
    * @param page 改变后的页码
    * @param pageSize 每页条数
+   * @param event 触发改变的原生事件对象，`React.KeyboardEvent<HTMLInputElement>` 为快速跳转触发的事件对象
    */
-  onChange?: (page: number, pageSize: number) => void;
+  onChange?: (
+    page: number,
+    pageSize: number,
+    event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement> | null
+  ) => void;
 
   /**
    * 数据总量的自定义渲染函数
