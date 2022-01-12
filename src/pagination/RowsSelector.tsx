@@ -23,7 +23,7 @@ const RowsSelector: React.FC<{
     }
   }, [pageSize]);
   return (
-    <div aria-label={ariaLabel} className={`${prefixCls}__rows`}>
+    <div aria-label={ariaLabel} className={`${prefixCls}__rows`} data-testid="pagination-item__rows-selector">
       {textObject.rowsPerPage(
         <Select
           defaultValue={defaultPageSize}

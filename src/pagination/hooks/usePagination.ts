@@ -11,7 +11,7 @@ const usePagination = (
   props: Omit<PaginationProps, 'pageSize'> & Required<Pick<PaginationProps, 'pageSize'>>
 ): {
   maxPages: number;
-  goToPage: (value: number) => void;
+  goToPage: (value: number, event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>) => void;
   items: PaginationItemProps[];
 } => {
   const {
@@ -34,12 +34,12 @@ const usePagination = (
     }
   }, [maxPages, currentPage, setCurrentPage]);
 
-  const goToPage = (value: number) => {
+  const goToPage: ReturnType<typeof usePagination>['goToPage'] = (value, event) => {
     if (value) {
       setCurrentPage(value);
     }
     if (isFunction(onChange)) {
-      onChange(value, pageSize);
+      onChange(value, pageSize, event);
     }
   };
 
@@ -99,7 +99,7 @@ const usePagination = (
         type,
         disabled: disabledByStringType,
         page: computePage(type),
-        onClick: () => goToPage(computePage(type)),
+        onClick: (event) => goToPage(computePage(type), event),
       };
     }
 
@@ -108,7 +108,7 @@ const usePagination = (
       page: type,
       'aria-current': type === currentPage,
       active: type === currentPage,
-      onClick: () => goToPage(type),
+      onClick: (event) => goToPage(type, event),
     };
   });
 

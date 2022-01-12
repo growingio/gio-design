@@ -25,6 +25,8 @@ const PaginationItem: React.FC<PaginationItemProps> = (props) => {
     [PaginationItemType.Last]: <RightDoubleOutlined />,
   };
 
+  const isPage = type === PaginationItemType.Page;
+
   return (
     <IconButton
       disabled={disabled}
@@ -34,12 +36,12 @@ const PaginationItem: React.FC<PaginationItemProps> = (props) => {
       onClick={onClick}
       aria-label={ariaLabel}
       aria-current={ariaCurrent}
+      style={{
+        width: isPage ? 'auto' : undefined,
+      }}
+      data-testid={`pagination-item__${isPage ? page : type}`}
     >
-      {type === PaginationItemType.Page ? (
-        <span className={`${prefixCls}__page__button-text`}>{page}</span>
-      ) : (
-        icon[type]
-      )}
+      {isPage ? <span className={`${prefixCls}__page__button-text`}>{page}</span> : icon[type]}
     </IconButton>
   );
 };

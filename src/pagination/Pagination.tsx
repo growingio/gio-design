@@ -110,7 +110,7 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
         {showSizeChanger && (
           <RowsSelector onRowsChange={(rows) => setPageSize(rows)} aria-label={getAriaLabel('rows')} />
         )}
-        <p aria-label={getAriaLabel('total')} className={`${prefixCls}__total`}>
+        <p aria-label={getAriaLabel('total')} className={`${prefixCls}__total`} data-testid="pagination-item__total">
           {totalTextRender?.(total) ?? textObject.total(total)}
         </p>
         <nav aria-label={getAriaLabel('nav')} className={`${prefixCls}__nav`}>
@@ -135,11 +135,11 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
         {showQuickJumper && (
           <QuickJumper
             aria-label={getAriaLabel('jumper')}
-            onQuickGo={(page) => {
+            onQuickGo={(page, event) => {
               let arrivedPage = page;
               if (page < 1) arrivedPage = 1;
               if (page > maxPages) arrivedPage = maxPages;
-              goToPage(arrivedPage);
+              goToPage(arrivedPage, event);
             }}
           />
         )}
