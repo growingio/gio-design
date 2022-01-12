@@ -5,6 +5,7 @@ import { difference } from 'lodash';
 import { TabsProps } from '../tabs';
 import { TabPaneProps } from './interfaces';
 import ToolBar from './ToolBar';
+import Divider from '../divider';
 
 const TabPanel: React.FC<TabPaneProps> = (props) => {
   const { className, style, children } = props;
@@ -19,13 +20,16 @@ const TabPanel: React.FC<TabPaneProps> = (props) => {
 
   const showToolBars = toolBars.length > 0;
 
-  const prefixCls = usePrefixCls('panel__tab-panel');
+  const prefixCls = usePrefixCls('panel');
 
   return (
-    <div className={classNames(prefixCls, className)} style={style}>
-      {showToolBars ? <div className={`${prefixCls}__container`}>{toolBars}</div> : null}
-      {otherChildren}
-    </div>
+    <>
+      {showToolBars ? <Divider className={`${prefixCls}__divider`} /> : null}
+      <div className={classNames(`${prefixCls}__tab-panel`, className)} style={style}>
+        {showToolBars ? <div className={`${prefixCls}__tab-panel__container`}>{toolBars}</div> : null}
+        {otherChildren}
+      </div>
+    </>
   );
 };
 

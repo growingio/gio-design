@@ -142,14 +142,6 @@ const MultiplePanel: Story<PanelProps> = (args) => {
         />
       </TabPanel>
       <TabPanel key="2" name="权限">
-        <ToolBar>
-          <SearchBar style={{ width: 360 }} />
-        </ToolBar>
-        <ToolBar float="right">
-          <Button prefix={<PlusOutlined />}>新建账号</Button>
-          <Button type="secondary">次要按钮</Button>
-          <Button type="secondary">次要按钮</Button>
-        </ToolBar>
         {/** Table高度自适应通过 scroll.y 实现 */}
         <Table dataSource={dataSource2} columns={columns2} scroll={{ y: 'calc(100vh - 359px)' as any }} />
       </TabPanel>

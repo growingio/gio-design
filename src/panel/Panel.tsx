@@ -4,7 +4,6 @@ import { difference } from 'lodash';
 import { useControlledState, usePrefixCls } from '@gio-design/utils';
 import Typography from '../typography';
 import Tabs, { Tab } from '../tabs';
-import Divider from '../divider';
 import { PanelProps, TabPaneProps } from './interfaces';
 import TabPanel from './TabPanel';
 import { Avatar } from '..';
@@ -97,7 +96,6 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
                 );
               })}
             </Tabs>
-            <Divider className={prefix('__tabs__divider')} />
           </div>
           {panelTabs[currentTabIndex]}
         </>
