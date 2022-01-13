@@ -62,7 +62,7 @@ const usePop = ({ referenceElement, popperElement, placement, modifiers, strateg
     if (Array.isArray(three)) {
       const [x, y, z] = three;
       const divHeight = popperElement.offsetHeight;
-      const pageHeight = getMaxHeight(referenceElement);
+      // const pageHeight = getMaxHeight(referenceElement);
       const winHeight = window.innerHeight;
 
       if (styles?.popper?.bottom === 'auto') {
@@ -79,9 +79,9 @@ const usePop = ({ referenceElement, popperElement, placement, modifiers, strateg
         }
         styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z || 0}px)`;
       } else if (styles?.popper?.bottom === '0') {
-        const maxYField = pageHeight - (window.pageYOffset + window.innerHeight);
-        const yField = y + divHeight > maxYField ? maxYField : y;
-        styles.popper.transform = `translate3d(${x}px, ${yField}px, ${z || 0}px)`;
+        // const maxYField = pageHeight - (window.pageYOffset + window.innerHeight);
+        // const yField = y + divHeight > maxYField ? maxYField : y;
+        styles.popper.transform = `translate3d(${x}px, ${y}px, ${z || 0}px)`;
       }
     }
   }
