@@ -1,3 +1,10 @@
+## [22.12.8](https://github.com/growingio/gio-design/compare/v22.12.7...v22.12.8) (2022-01-13)
+
+
+### Bug Fixes
+
+* **popover:** update popover position when bottom is 0 ([#1796](https://github.com/growingio/gio-design/issues/1796)) ([006451c](https://github.com/growingio/gio-design/commit/006451c06aed9c9be3aff2a773c4e53d3115f9d9))
+
 ## [22.12.7](https://github.com/growingio/gio-design/compare/v22.12.6...v22.12.7) (2022-01-12)
 
 
