@@ -36,17 +36,17 @@ const clear3D = (transform: string): string | number[] => {
   return transform;
 };
 
-const getMaxHeight = (element: HTMLElement, maxHeight = 0): number => {
-  if (!element) {
-    return maxHeight;
-  }
-  const elHeight = element.offsetHeight;
-  const newMax = elHeight > maxHeight ? elHeight : maxHeight;
-  if (element.parentElement) {
-    return getMaxHeight(element.parentElement, newMax);
-  }
-  return window.innerHeight > maxHeight ? window.innerHeight : maxHeight;
-};
+// const getMaxHeight = (element: HTMLElement, maxHeight = 0): number => {
+//   if (!element) {
+//     return maxHeight;
+//   }
+//   const elHeight = element.offsetHeight;
+//   const newMax = elHeight > maxHeight ? elHeight : maxHeight;
+//   if (element.parentElement) {
+//     return getMaxHeight(element.parentElement, newMax);
+//   }
+//   return window.innerHeight > maxHeight ? window.innerHeight : maxHeight;
+// };
 
 const getBottomOfElement = (element: HTMLElement) => element?.getBoundingClientRect()?.bottom;
 // const getElementHeight = (element: HTMLElement) => element.offsetHeight;
