@@ -91,12 +91,11 @@ export const Demo = DemoTemplate.bind({});
 
 const Template: Story<BreadcrumbsProps> = (args) => (
   <>
+    <p>如果该面包屑没有跳转功能，不应该传一个 Link 组件，而是使用 span 包裹或者直接传字符串</p>
     <Breadcrumbs {...args}>
       <Link href="/">主页</Link>
       <Link href="https://www.growingio.com">二级导航</Link>
-      <Link aria-current="page" href="/?path=/story/upgraded-breadcrumb--default">
-        当前页面
-      </Link>
+      <span aria-current="page">当前页面</span>
     </Breadcrumbs>
   </>
 );
