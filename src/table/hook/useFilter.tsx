@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useState, useMemo } from 'react';
 import { get, isUndefined, isFunction } from 'lodash';
 import { ColumnsType, FilterState } from '../interface';
 import { getColumnPos, getColumnKey } from '../utils';
@@ -72,56 +72,58 @@ const useFilter = <RecordType,>(
   // record all filter states
   const [filterStates, setFilterStates] = useState<FilterState<RecordType>[]>(collectFilterStates(columns, true));
   const [filters, setFilters] = useState<Record<string, string[]>>({});
-  useEffect(() => {
-    const collectedFilterStates = collectFilterStates(columns, false);
 
-    setFilterStates((oldStates) => {
-      const active = oldStates.filter((state) => state.filteredKeys?.length > 0);
+  const mergedStates = useMemo(() => {
+    const collectedStates = collectFilterStates(columns, false);
 
-      if (active.length > 0) {
-        return collectedFilterStates.map((state) => {
-          const { key, isControlled } = state;
-          if (isControlled) return state;
+    const filteredKeysIsNotControlled = collectedStates.every(({ filteredKeys }) => filteredKeys === undefined);
 
-          const found = active.find((item) => item.key === key);
+    // Return if not controlled
+    if (filteredKeysIsNotControlled) {
+      return filterStates;
+    }
 
-          if (found && found.filteredKeys?.length > 0) {
-            return {
-              ...state,
-              filteredKeys: found.filteredKeys,
-            };
-          }
+    const active = filterStates.filter((state) => state.filteredKeys?.length > 0);
+    if (active.length > 0) {
+      return collectedStates.map((state) => {
+        const { key, isControlled } = state;
+        if (isControlled) return state;
 
-          return state;
-        });
-      }
+        const found = active.find((item) => item.key === key);
+        if (found && found.filteredKeys?.length > 0) {
+          return {
+            ...state,
+            filteredKeys: found.filteredKeys,
+          };
+        }
+        return state;
+      });
+    }
 
-      return collectedFilterStates;
-    });
-  }, [columns]);
+    return collectedStates;
+  }, [columns, filterStates]);
 
   // update filter states action
   const updateFilterStates = useCallback(
     (filterState: FilterState<RecordType>) => {
-      const newFilterStates = filterState.isControlled
-        ? filterStates
-        : [...filterStates.filter(({ key }) => key !== filterState.key), filterState];
-      const newFilters = [...filterStates.filter(({ key }) => key !== filterState.key), filterState].reduce(
+      const newFilters = [...mergedStates.filter(({ key }) => key !== filterState.key), filterState].reduce(
         (prev, curr) => Object.assign(prev, { [curr.key]: curr.filteredKeys }),
         {} as Record<string, string[]>
       );
 
-      setFilterStates(newFilterStates);
+      setFilterStates([...mergedStates.filter(({ key }) => key !== filterState.key), filterState]);
+
       setFilters(newFilters);
       if (isFunction(onFilterChange)) {
         onFilterChange(newFilters);
       }
+
       return newFilters;
     },
-    [filterStates, onFilterChange]
+    [mergedStates, onFilterChange]
   );
 
-  return [filterStates, updateFilterStates, getFilteredData, filters];
+  return [mergedStates, updateFilterStates, getFilteredData, filters];
 };
 
 export default useFilter;
