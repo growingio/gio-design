@@ -1,8 +1,8 @@
 import React from 'react';
-import List from '../list';
+import List, { ListProps } from '../list';
 import { Key } from './interface';
 
-interface FilterListProps {
+interface FilterListProps extends ListProps {
   prefixCls: string;
   value: Key[];
   onChange: (value: Key[]) => void;
@@ -12,11 +12,12 @@ interface FilterListProps {
   }[];
 }
 
-const FilterList = ({ prefixCls, value, onChange, dataSource }: FilterListProps) => (
+const FilterList = ({ prefixCls, value, onChange, dataSource, ...otherProps }: FilterListProps) => (
   <List
     className={`${prefixCls}-filter-list`}
     value={value?.filter(Boolean).map(String)}
     model="multiple"
+    needEmpty
     onChange={(changedKeys) => {
       if (!changedKeys) {
         onChange([]);
@@ -28,6 +29,7 @@ const FilterList = ({ prefixCls, value, onChange, dataSource }: FilterListProps)
       }
       onChange([changedKeys]);
     }}
+    {...otherProps}
   >
     {dataSource.map((item) => (
       <List.Item key={`${item.label}-${item.value}`} value={item.value}>

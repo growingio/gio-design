@@ -8,6 +8,7 @@ import SearchBar from '../search-bar';
 import { TableContext } from './Table';
 import { FilterType, Key } from './interface';
 import defaultLocale from './locales/zh-CN';
+import Page from '../page';
 
 interface FilterPopoverProps {
   prefixCls: string;
@@ -88,6 +89,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
             onChange={(keys) => {
               setSelectFilterKeys(keys);
             }}
+            empty={searchValue ? <Page type="noResult" size="small" /> : undefined}
             dataSource={filters
               .filter((item) => {
                 if (isObject(item)) {
@@ -104,8 +106,7 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
           />
           <div className={`${prefixCls}-filter-popover-footer`}>
             <Button
-              style={{ color: '#c7cbd8' }}
-              type="text"
+              type="secondary"
               size="small"
               onClick={() => {
                 setSearchValue('');
