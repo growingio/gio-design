@@ -46,7 +46,7 @@ interface PaginationProps {
   onChange?: (
     page: number,
     pageSize: number,
-    event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>
+    event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement> | null
   ) => void;
 
   /**

@@ -62,23 +62,23 @@ Default.args = {
   total: 75,
   showQuickJumper: true,
   showSizeChanger: true,
-  onChange: () => action('action'),
+  onChange: action('onChange'),
 } as PaginationProps;
 
-export const notShowQuickJumper = Template.bind({});
+export const NotShowQuickJumper = Template.bind({});
 
-notShowQuickJumper.args = {
+NotShowQuickJumper.args = {
   total: 75,
   showQuickJumper: false,
   showSizeChanger: true,
-  onChange: () => action('action'),
+  onChange: action('onChange'),
 } as PaginationProps;
 
-export const notShowSizeChanger = Template.bind({});
+export const NotShowSizeChanger = Template.bind({});
 
-notShowSizeChanger.args = {
+NotShowSizeChanger.args = {
   total: 75,
   showQuickJumper: true,
   showSizeChanger: false,
-  onChange: () => action('action'),
+  onChange: action('onChange'),
 } as PaginationProps;
