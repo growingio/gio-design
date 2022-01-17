@@ -14986,9 +14986,9 @@ rc-notification@^4.5.4:
     rc-util "^5.0.1"
 
 rc-picker@^2.5.10:
-  version "2.5.19"
-  resolved "https://registry.yarnpkg.com/rc-picker/-/rc-picker-2.5.19.tgz#73d07546fac3992f0bfabf2789654acada39e46f"
-  integrity sha512-u6myoCu/qiQ0vLbNzSzNrzTQhs7mldArCpPHrEI6OUiifs+IPXmbesqSm0zilJjfzrZJLgYeyyOMSznSlh0GKA==
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/rc-picker/-/rc-picker-2.6.0.tgz#b2c0fb8361527d24bc7662f2b626b37d0120fe59"
+  integrity sha512-KJ7/+TUvGdU/hTDZYPoWqNJcQ3rirPYW82djJRFynxaogEwaf7h6xG6pMqJuOmQgPel706pr5PgTCdE7K7vY6g==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "^2.2.1"
