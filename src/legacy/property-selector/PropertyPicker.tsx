@@ -356,9 +356,9 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
                     }
                     return false;
                   })
-                  .map((e) => {
-                    e.groupId = key;
-                    return e;
+                  .map((item) => {
+                    const { groupId, groupName } = [...cur].shift() || {};
+                    return { ...item, groupId, groupName };
                   })
               );
               acc.push(...cur);
