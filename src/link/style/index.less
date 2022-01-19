@@ -3,31 +3,28 @@
 @link-prefix-cls: ~'@{component-prefix}-link';
 
 .@{link-prefix-cls} {
-  .reset() {
-    margin: 0;
-    text-decoration: none;
-    border: 0;
-    border-radius: 0;
-    outline: 0;
-    -webkit-appearance: none;
-  }
   box-sizing: border-box;
+  margin: 0;
   color: @blue-2;
+  text-decoration: none;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
   cursor: pointer;
+  -webkit-appearance: none;
   .text-body1();
-  .reset();
 
   &::-moz-focus-inner {
     border-style: none;
   }
 
-  &:not([aria-disabled='true']):hover,
-  &:not([aria-disabled='true']):active,
-  &:not([aria-disabled='true'], :focus-visible):focus {
+  &:hover,
+  &:active,
+  &:not(:focus-visible):focus {
     color: @blue-3;
-    .reset();
+    outline: 0;
   }
-  &:not([aria-disabled='true']):focus-visible {
+  &:focus-visible {
     color: @blue-3;
     outline: auto;
   }
@@ -35,19 +32,14 @@
   &_loading {
     color: @blue-3;
     cursor: not-allowed;
-    &:active {
-      text-decoration: none;
-      pointer-events: none;
-    }
   }
 
-  &[aria-disabled='true']:not(&_loading) {
+  &_disabled,
+  &_disabled:active,
+  &_disabled:hover,
+  &_disabled:not(:focus-visible):focus {
     color: @gray-3;
-    text-decoration: none;
     cursor: not-allowed;
-    &:active {
-      pointer-events: none;
-    }
   }
 
   &-prefix-icon {
