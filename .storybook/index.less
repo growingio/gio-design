@@ -14,3 +14,39 @@
     border: 1px solid #f7f8fc;
   }
 }
+
+.components-demo-wrapper{
+  margin: 3em;
+  & > [class^="gio-"]+[class^="gio-"]{
+    margin-left: 8px;
+  }
+  > [class^="gio-"]{
+    margin-bottom: 12px;
+  }
+}
+.gio-docs-list{
+  list-style: none;
+  color: #333333;
+  li {
+    list-style: none;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 16px 0;
+    
+  }
+  code {
+    margin: 0;
+    overflow-x: auto;
+    font-weight: 400;
+    line-height: 22px;
+    border-radius: 3px;
+    position: relative;
+    word-break: break-all;
+    white-space: pre-wrap;
+    color: var(--gray-5, #242e59);
+    background-color: var(--gray-1, #f7f8fc);
+    padding: 4px 7px;
+    display: inline;
+  }
+}
+

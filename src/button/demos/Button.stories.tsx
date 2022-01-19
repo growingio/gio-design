@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { PlusOutlined, FilterOutlined, ExplainOutlined } from '@gio-design/icons';
+import { PlusOutlined, FilterOutlined, FolderOutlined } from '@gio-design/icons';
 import Button from '../index';
-import IconButton from '../IconButton';
 import { ButtonProps, IconButtonProps } from '../interface';
 import '../style';
 import Docs from './ButtonPage';
-import { Divider } from '../..';
-
+import Checkbox from '../../checkbox/Checkbox';
+const IconButton = Button.IconButton;
 export default {
   title: 'Upgraded/Button',
   component: Button,
-  subcomponents: { IconButton: Button.IconButton },
+  subcomponents: { 'Button.IconButton': Button.IconButton },
+  decorators: [
+    (_Story) => (
+      <div className="components-demo-wrapper" >
+        <_Story />
+      </div>
+    ),
+  ],
   argTypes: {
     prefix: {
+
       control: { type: 'text' }, // 不约束react_node会传入对象导致报错
     },
     suffix: {
@@ -28,143 +35,118 @@ export default {
     },
     docs: {
       page: Docs,
+      source: { type: 'auto' }
     },
   },
 } as Meta;
-const Context = [
-  { type: 'primary', children: '主要按钮' },
-  { type: 'secondary', children: '次要按钮' },
-  { type: 'text', children: '文字按钮' },
-];
 
-const Template: Story<ButtonProps> = (args) => (
-  <table className="table-demo">
-    <tr>
-      <th>Button Control</th>
-      <th>描述</th>
-      {Context.map((item) => (
-        <th>{item.type}</th>
-      ))}
-    </tr>
-    <tr>
-      <td>Size</td>
-      <td>拥有两种尺寸：大号为高度36px，小号为高度30px</td>
-      {Context.map((item: any) => (
-        <td>
-          <Button {...args} data-testid="normal-button" size="normal" type={item.type} />
-          <Button {...args} size="small" type={item.type} />
-        </td>
-      ))}
-    </tr>
-    <tr>
-      <td>Prefix Only</td>
-      <td>按钮是否只有前缀</td>
-      {Context.map((item: any) => (
-        <td>
-          <Button {...args} prefix={<PlusOutlined />} type={item.type} />
-        </td>
-      ))}
-    </tr>
-    <tr>
-      <td>Suffix Only</td>
-      <td>按钮是否只有后缀</td>
-      {Context.map((item: any) => (
-        <td>
-          <Button {...args} suffix={<FilterOutlined />} type={item.type} />
-        </td>
-      ))}
-    </tr>
 
-    <tr>
-      <td>Loading</td>
-      <td>加载样式</td>
-      {Context.map((item: any) => (
-        <td>
-          <Button {...args} type={item.type} loading />
-          <Button {...args} size="small" type={item.type} loading />
-        </td>
-      ))}
-    </tr>
-    <tr>
-      <td>Icon Only</td>
-      <td>按钮是否只有icon</td>
-      {Context.map((item: any) => (
-        <td>
-          <IconButton {...args} type={item.type}>
-            <FilterOutlined />
-          </IconButton>
-          <IconButton {...args} size="small" type={item.type}>
-            <FilterOutlined />
-          </IconButton>
-        </td>
-      ))}
-    </tr>
-    <tr>
-      <td>Disabled</td>
-      <td>disabled状态的样式</td>
-      {Context.map((item: any) => (
-        <td>
-          <Button {...args} disabled type={item.type} />
-        </td>
-      ))}
-    </tr>
-    <tr>
-      <td>Prefix+Suffix</td>
-      <td>前缀和后缀都存在</td>
-      {Context.map((item: any) => (
-        <td>
-          <Button {...args} suffix={<FilterOutlined />} prefix={<PlusOutlined />} type={item.type} />
-        </td>
-      ))}
-    </tr>
-  </table>
-);
 
-export const Demo = Template.bind({});
-Demo.args = {
-  children: 'Button',
-  style: {
-    margin: '4px 8px',
-  },
-};
-
-const ButtonTemplate: Story<ButtonProps> = (args) => <Button {...args} />;
-export const Default = ButtonTemplate.bind({});
+export const Default: Story<ButtonProps> = (args) => <>
+  <Button prefix={<PlusOutlined />}  {...args} />
+</>;
 
 Default.args = {
-  children: 'Button',
-  prefix: <PlusOutlined />,
+  children: '按钮'
 };
-export const Disable = ButtonTemplate.bind({});
-Disable.args = {
-  children: 'Disable',
-  disabled: true,
-};
+export const Types: Story<ButtonProps> = () => <>
+  <Button prefix={<PlusOutlined />} type="primary" >primary</Button>
+  <Button prefix={<PlusOutlined />} type="secondary" >secondary</Button>
+  <Button prefix={<PlusOutlined />} type="text" >text</Button>
+  <IconButton type="primary"><PlusOutlined /></IconButton>
+  <IconButton type="secondary"><PlusOutlined /></IconButton>
+  <IconButton type="text"><PlusOutlined /></IconButton>
+</>;
+export const Disabled: Story<ButtonProps> = () => <>
+  <Button type="primary" disabled >primary</Button>
+  <Button type="secondary" disabled prefix={<PlusOutlined />} >secondary</Button>
+  <Button type="text" disabled prefix={<PlusOutlined />} >text</Button>
+  <Button loading disabled>loading</Button>
+</>;
 
-const IconButtonTemplate: Story<IconButtonProps> = (args) => (
+
+export const IconOnly: Story<IconButtonProps> = () => (
   <>
-    <div>
-      <p>图标的默认大小为 14px</p>
-      <IconButton {...args}>
-        <FilterOutlined />
-      </IconButton>
-    </div>
-    <Divider style={{ width: '100%' }} />
-    <div>
-      <p>可以设置 IconButton 的 font-size: 20px; 来改变图标大小</p>
-      <IconButton {...args} style={{ fontSize: '20px' }}>
-        <ExplainOutlined />
-      </IconButton>
-    </div>
+    <IconButton >
+      <FilterOutlined />
+    </IconButton>
+    <IconButton type="secondary" >
+      <FilterOutlined />
+    </IconButton>
+    <IconButton type="text">
+      <FilterOutlined />
+    </IconButton>
+    <IconButton type="secondary" style={{ fontSize: '20px' }}>
+      <FilterOutlined />
+    </IconButton>
   </>
 );
-export const IconButtonDemo = IconButtonTemplate.bind({});
-IconButtonDemo.args = {};
 
-export const BlockButton = ButtonTemplate.bind({});
-BlockButton.args = {
-  children: 'Block',
-  style: {
-    width: '100%',
-  },
-};
+
+export const BlockButton: Story<ButtonProps> = () => <Button style={{ width: '100%' }} >Block</Button>;
+
+
+
+export const Sizes: Story<ButtonProps> = () => <>
+  <Button size="normal" >normal</Button>
+  <Button size="normal" type="secondary" >secondary</Button>
+  <Button size="normal" type="secondary" prefix={<PlusOutlined />}>secondary</Button>
+  <Button size="normal" type="text" >text</Button>
+  <IconButton size="normal" type="secondary" ><FilterOutlined /></IconButton>
+  <br />
+  <Button size="small" >small</Button>
+  <Button size="small" type="secondary" >secondary</Button>
+  <Button size="small" type="secondary" prefix={<PlusOutlined />}>secondary</Button>
+  <Button size="small" type="text" >text</Button>
+  <IconButton size="small" type="secondary"  ><FilterOutlined /></IconButton>
+</>;
+
+export const ContainsIcon: Story<ButtonProps> = () => <>
+  <Button size="normal" type="primary" prefix={<PlusOutlined />} >primary</Button>
+  <Button size="normal" type="secondary" prefix={<PlusOutlined />}>secondary</Button>
+  <Button size="normal" type="text" prefix={<PlusOutlined />} >text</Button>
+  <br />
+  <Button size="normal" type="primary" suffix={<FilterOutlined />} >primary</Button>
+  <Button size="normal" type="secondary" suffix={<FilterOutlined />}>secondary</Button>
+  <Button size="normal" type="text" suffix={<FilterOutlined />} >text</Button>
+  <br />
+  <Button size="normal" type="primary" prefix={<PlusOutlined />} suffix={<FolderOutlined />} >primary</Button>
+  <Button size="normal" type="secondary" prefix={<PlusOutlined />} suffix={<FolderOutlined />}>secondary</Button>
+  <Button size="normal" type="text" prefix={<PlusOutlined />} suffix={<FolderOutlined />} >text</Button>
+</>;
+
+export const Loading: Story<ButtonProps> = () => {
+  const [loading1, setLoading1] = useState<boolean>();
+  const [loading2, setLoading2] = useState<boolean>()
+  return <>
+    <Button size="normal" type="primary" loading  >primary</Button>
+    <Button size="normal" type="secondary" loading>secondary</Button>
+    <Button size="normal" type="text" loading  >text</Button>
+    <br />
+    <Button size="normal" type="primary" prefix={<PlusOutlined />} loading={loading1}
+      onClick={() => {
+        setLoading1(true);
+        setTimeout(() => {
+          setLoading1(false);
+        }, 6000)
+      }}>Click Me !</Button>
+    <IconButton size="normal" type="secondary" loading={loading2} onClick={() => {
+      setLoading2(true);
+      setTimeout(() => {
+        setLoading2(false);
+      }, 6000)
+    }}><PlusOutlined /></IconButton>
+  </>;
+}
+export const Active: Story<ButtonProps> = () => {
+  const [active, setActive] = useState(false);
+
+  return <>
+    <Checkbox checked={active} onChange={e => setActive(e.target.checked)}>active</Checkbox>
+    <br />
+    <Button size="normal" type="primary" prefix={<PlusOutlined />} active={active}>primary</Button>
+    <Button size="normal" type="primary" prefix={<PlusOutlined />} active={active} disabled>disabled</Button>
+    <Button size="normal" type="secondary" prefix={<PlusOutlined />} active={active}>secondary</Button>
+    <Button size="normal" type="text" prefix={<PlusOutlined />} active={active}>text</Button>
+  </>;
+}
