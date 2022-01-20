@@ -1,5 +1,5 @@
 import React from 'react';
-import { Canvas, Title, Description, Primary, Heading, Story, Subheading, ArgsTable, Subtitle } from '@storybook/addon-docs';
+import { Canvas, Title, Description, Heading, Story, Subheading, ArgsTable, Subtitle } from '@storybook/addon-docs';
 import { Figma } from 'storybook-addon-designs/blocks'
 
 import { useIntl, FormattedMessage } from 'react-intl';
@@ -18,7 +18,7 @@ export default function ButtonPage() {
         })}
       </Description>
       <Subtitle>
-        <FormattedMessage defaultMessage="使用场景"></FormattedMessage>
+        <FormattedMessage defaultMessage="使用场景" />
       </Subtitle>
       <Description>
         {formatMessage({
@@ -57,13 +57,14 @@ export default function ButtonPage() {
           defaultMessage: '支持所有原生button标签属性',
         })}
       </Description>
+      <Subtitle>
+        <FormattedMessage defaultMessage="设计稿" />
+      </Subtitle>
       <Figma
         height="30%"
         collapsable
-        url="https://www.figma.com/file/J2wZWEocPEb1DbDEj99AgD/Design-System?node-id=21%3A11843"
+        url="https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=4066%3A42614"
       />
-      <Primary name="Types"></Primary>
-
 
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '按钮类型' })}</Subheading>

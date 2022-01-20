@@ -6,15 +6,16 @@ import { ButtonProps, IconButtonProps } from '../interface';
 import '../style';
 import Docs from './ButtonPage';
 import Checkbox from '../../checkbox/Checkbox';
-const IconButton = Button.IconButton;
+
+const { IconButton } = Button;
 export default {
   title: 'Upgraded/Button',
   component: Button,
   subcomponents: { 'Button.IconButton': Button.IconButton },
   decorators: [
-    (_Story) => (
+    (StoryComponent) => (
       <div className="components-demo-wrapper" >
-        <_Story />
+        <StoryComponent />
       </div>
     ),
   ],
@@ -30,7 +31,7 @@ export default {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/J2wZWEocPEb1DbDEj99AgD/Design-System?node-id=373%3A15923',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=4066%3A42614',
       allowFullscreen: true,
     },
     docs: {
