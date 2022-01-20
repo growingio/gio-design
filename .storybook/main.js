@@ -16,12 +16,7 @@ module.exports = {
     // addons on right side
     '@storybook/addon-controls',
     '@storybook/addon-actions',
-    {
-      name:'storybook-addon-designs',
-      options: {
-        renderTarget: 'tab',
-      },
-    },
+    'storybook-addon-designs',
     {
       name: '@storybook/addon-storysource',
       options: {

@@ -1,5 +1,5 @@
-import React from 'react';
-import { MoreOutlined } from '@gio-design/icons';
+import React, { useMemo, useState } from 'react';
+import { CloseOutlined, MoreOutlined, PlusCircleFilled, UserOutlined } from '@gio-design/icons';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import Docs from './CardPage';
 import { CardProps } from '../interfaces';
@@ -11,8 +11,10 @@ import Button, { IconButton } from '../../button';
 import Dropdown from '../../dropdown';
 import { Item, List } from '../../list';
 import { Basic, Empty, TreeData } from '../../table/demos/Table.stories';
-import { Card, Skeleton } from '../..';
+import { Card, Col, Divider, Row, SearchBar, Skeleton } from '../..';
 import Text from '../../typography/text';
+import SkeletonImage from '../../skeleton/Image';
+import Toggle from '../../toggle';
 
 export default {
   title: 'upgraded/Card',
@@ -30,41 +32,236 @@ export default {
   },
 } as Meta;
 
-const tableCardTemplate = () => (
-  <Card fullWidthContent clickable={false} boxShadow>
-    <Card.Meta
-      title={
-        <div
-          style={{
-            fontWeight: 500,
-            fontSize: '18px',
-            lineHeight: '28px',
-            color: '#242e59',
-          }}
-        >
-          全部成员(233)
+export const Default: Story<CardProps> = (args) => <Card {...args} />;
+Default.args = {
+  style: { width: 320 },
+  children: (
+    <>
+      <Card.Meta
+        image={<Avatar>L</Avatar>}
+        title="卡片标题"
+        description="卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题"
+        action={
+          <IconButton size="small" type="text">
+            <MoreOutlined />
+          </IconButton>
+        }
+      />
+      <div style={{ marginTop: '16px' }}>
+        这里是卡片的描述，可以有很多很多字。这里是卡片的描述，可以有很多很多字。这里是卡片的描述，可以有很多很多字。
+      </div>
+      <SkeletonImage style={{
+        width: '100%',
+        height: '200px',
+        marginTop: '16px',
+      }} />
+    </>
+  ),
+}
+export const BoxShadow = () => <Card boxShadow style={{ width: '320px' }}>
+  <Card.Meta
+    title="卡片标题"
+    description="卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题"
+    action={
+      <IconButton size="small" type="text">
+        <MoreOutlined />
+      </IconButton>
+    }
+  />
+  <div style={{ marginTop: '16px' }}>
+    这里是卡片的描述，可以有很多很多字。这里是卡片的描述，可以有很多很多字。这里是卡片的描述，可以有很多很多字。
+  </div>
+  <SkeletonImage style={{
+    width: '100%',
+    height: '200px',
+    marginTop: '16px',
+  }} />
+</Card>
+export const WithoutContent = () => <Card style={{ width: '320px' }}>
+  <Card.Meta
+    image={<Avatar src="https://joeschmoe.io/api/v1/random" size="large" mode="square">L</Avatar>}
+    title="卡片标题"
+    description="卡片副标题"
+    action={
+      <IconButton size="small" type="text">
+        <MoreOutlined />
+      </IconButton>
+    }
+  />
+</Card>
+export const Disabled = () => <Card disabled style={{ width: '320px' }}>
+  <Card.Meta
+    image={<Avatar src="https://joeschmoe.io/api/v1/random" size="large" mode="square">L</Avatar>}
+    title="卡片标题"
+    description="卡片副标题"
+    action={
+      <IconButton size="small" type="text" onClick={() => alert('action click')}>
+        <MoreOutlined />
+      </IconButton>
+    }
+  />
+</Card>
+export const GridCard = () => <div style={{ minWidth: '800px', maxWidth: '1200px' }}>
+  <Row alignContent="stretch"
+    alignItems="stretch"
+    direction="row"
+    gutter={[8, 8]}>
+    <Col span={4}>
+      <Card style={{ height: '280px' }} boxShadow>
+        <Card.Meta
+          image={<Avatar src="https://joeschmoe.io/api/v1/random">z</Avatar>}
+          title="卡片标题"
+          description="卡片副标题"
+          action={
+            <IconButton size="small" type="text">
+              <MoreOutlined />
+            </IconButton>
+          }
+        />
+        <Skeleton active={false} paragraph={{ row: 2 }} />
+        <div style={{ marginTop: 'auto', paddingTop: '16px', color: '#313e75', lineHeight: '20px', borderTop: '1px solid #ebedf5', width: '100%' }}>
+          <UserOutlined /> 张三
         </div>
+      </Card>
+    </Col>
+    <Col span={4}>
+      <Card style={{ height: '280px' }} boxShadow clickable={false}>
+        <Card.Meta
+          title="卡片标题"
+          description="卡片副标题"
+          action={
+            <IconButton size="small" type="text">
+              <MoreOutlined />
+            </IconButton>
+          }
+        />
+        <Table
+          style={{ marginTop: '16px' }}
+          pagination={false}
+          dataSource={[
+            { a: 1, b: 1 },
+            { a: 2, b: 2 },
+          ]}
+          columns={[
+            { dataIndex: 'a', title: 'A' },
+            { dataIndex: 'b', title: 'B' },
+          ]}
+        />
+
+      </Card>
+    </Col>
+    <Col span={4}>
+      <Card style={{ height: '280px' }} boxShadow>
+        <Card.Meta
+          image={<Avatar src="https://joeschmoe.io/api/v1/random">z</Avatar>}
+          title="卡片标题"
+          description="卡片副标题"
+          action={
+            <IconButton size="small" type="text">
+              <MoreOutlined />
+            </IconButton>
+          }
+        />
+        <SkeletonImage style={{ width: '100%', marginTop: '16px' }} />
+      </Card>
+    </Col>
+  </Row>
+</div>
+export const FullWidthContent = () => <Card fullWidthContent style={{ width: '400px' }}>
+  <Card.Meta
+    image={<Avatar src="https://joeschmoe.io/api/v1/random" size="large" mode="square">L</Avatar>}
+    title="卡片标题"
+    description="卡片副标题"
+    action={
+      <IconButton size="small" type="text">
+        <MoreOutlined />
+      </IconButton>
+    }
+  />
+  <SkeletonImage style={{ width: '100%', marginTop: '16px' }} />
+</Card>
+
+
+export const Clickable = () => {
+  const [clickable, setClickable] = useState(true)
+  return <div style={{ width: '400px' }}>
+    <Toggle
+      on={clickable}
+      onChange={e => setClickable(e.target.checked)}
+      checkedChildren={<span>可点击</span>}
+      uncheckedChildren={<span>不可点击</span>}
+    />
+    <Divider />
+    <Card style={{ width: '280px' }} boxShadow clickable={clickable} >
+      <Card.Meta
+        image={<Avatar src="https://joeschmoe.io/api/v1/random">z</Avatar>}
+        title="卡片标题"
+        description="卡片副标题"
+        action={
+          <IconButton size="small" type="text">
+            <MoreOutlined />
+          </IconButton>
+        }
+      />
+      <Skeleton active={false} paragraph={{ row: 2 }} />
+      <div style={{ marginTop: 'auto', paddingTop: '16px', color: '#313e75', lineHeight: '20px', borderTop: '1px solid #ebedf5', width: '100%' }}>
+        <UserOutlined /> 张三
+      </div>
+    </Card>
+  </div>
+}
+
+export const ComplexCard = () => {
+  const memberTotal = 44;
+  const dataSource = useMemo(() => Array.from({ length: memberTotal }).map(
+    (_, index) =>
+    ({
+      id: `${index + 1 * 1000}`,
+      age: index + 1,
+      name: `Name ${index + 1}`,
+      address: `北京市朝阳公园`,
+    })
+  ), []);
+  const members = () => <Table columns={[
+    {
+      dataIndex: 'id',
+      title: 'Id',
+      info: 'description',
+    },
+    {
+      dataIndex: 'name',
+      title: '姓名',
+    },
+    {
+      dataIndex: 'age',
+      title: '年龄',
+    },
+    {
+      dataIndex: 'address',
+      title: '住址',
+    },
+  ]} dataSource={dataSource} rowKey="id" />
+  return <Card fullWidthContent >
+    <Card.Meta
+      image={<Avatar src="https://joeschmoe.io/api/v1/random" size="large" mode="square">L</Avatar>}
+      title={
+        <span style={{
+          fontWeight: 500,
+          fontSize: '18px',
+          lineHeight: '28px',
+          color: '#242e59',
+        }}>
+          企业成员({memberTotal})
+        </span>
       }
-      style={{ alignItems: 'flex-start' }}
-      description={
-        <Text
-          style={{
-            color: '#7b819c',
-            fontSize: '14px',
-            width: '100%',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'normal',
-          }}
-          lines={2}
-        >
-          这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副标题这是一个副
-        </Text>
-      }
-      image={<Avatar mode="square" size="large" />}
+      description="可查看企业管理相关权限，无法访问客户数据平台，推荐给各业务人员，或无需做数据管理的同事设置此角色。"
       action={
         <>
-          <Button style={{ marginRight: '8px' }}>Button</Button>
-          <Button type="secondary">Button</Button>
+          <Button size="small" prefix={<PlusCircleFilled />} style={{ marginRight: '8px' }}>主要按钮</Button>
+          <Button size="small" type="secondary" style={{ marginRight: '8px' }}>次要按钮</Button>
+          <Dropdown placement="bottomRight" content={<List><Item value="edit">编辑</Item><Item value="delete">删除</Item></List>}>
+            <Button.IconButton size="small" type="secondary"><MoreOutlined /></Button.IconButton>
+          </Dropdown>
         </>
       }
     />
@@ -76,181 +273,101 @@ const tableCardTemplate = () => (
       }}
       defaultValue="1"
     >
-      <Tab label="成员" value="1">
-        <Basic />
+      <Tab label="成员" value="1" >
+        {members()}
       </Tab>
       <Tab label="权限" value="2">
-        <Empty />
+        <Table columns={[
+          { dataIndex: 'moduleKey', key: 'moduleKey', title: '功能' },
+          { dataIndex: 'permission', key: 'permission', title: '权限' }
+        ]}
+        />
       </Tab>
     </Tabs>
-  </Card>
-);
+  </Card >
+}
 
-export const tableCard = tableCardTemplate.bind({});
-
-const DemoTemplate = () => (
-  <table className="table-demo">
-    <tr>
-      <th>Card</th>
-      <th>Example</th>
-    </tr>
-    <tr>
-      <td>TableCard</td>
-      <td>{tableCardTemplate()}</td>
-    </tr>
-    <tr>
-      <td>TableCard</td>
-      <td>
-        <Card>
-          <Card.Meta title="变量使用量" description="variable_userd" />
-          <Empty />
-          <TreeData />
-        </Card>
-      </td>
-    </tr>
-    <tr>
-      <td>previewCard</td>
-      <td>
-        <Card style={{ width: '320px' }}>
-          <Card.Meta title="计算指标" description="123" />
-          <p>计算属性如下</p>
-          <Skeleton.Image style={{ width: '100%' }} />
-          <Table
-            title="事件属性"
-            pagination={false}
-            columns={[
-              {
-                dataIndex: 'id',
-                title: 'Id',
-              },
-              {
-                dataIndex: 'name',
-                title: 'Name',
-              },
-            ]}
-            dataSource={Array(2)
-              .fill('')
-              .map((_, index) => ({
-                id: `${index + 1 * 1000}`,
-                name: `Name ${index + 1}`,
-              }))}
-          />
-        </Card>
-      </td>
-    </tr>
-  </table>
-);
-
-export const Demo = DemoTemplate.bind({});
-const Template: Story<CardProps> = (args) => <Card {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  style: { width: 320 },
-  children: (
+export const ComplexCardPanel = () => {
+  const memberTotal = 44;
+  const dataSource = useMemo(() => Array.from({ length: memberTotal }).map(
+    (_, index) =>
+    ({
+      id: `${index + 1 * 1000}`,
+      age: 21 + index,
+      name: `Name ${index + 1}`,
+      address: `北京市朝阳公园`,
+    })
+  ), []);
+  const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
+  const renderToolbar = () => <div style={{ padding: "20px 14px", display: "flex", justifyContent: 'space-between' }}>
+    <div >
+      <SearchBar style={{ width: '320px' }} placeholder="按姓名搜索" />
+    </div>
+    <div>{selectedRowKeys?.length > 0 &&
+      (<div style={{ display: 'inline-block' }}>
+        已经选择 {selectedRowKeys?.length} 项
+        <Button.IconButton type="text"
+          size="small"
+          onClick={() => setSelectedRowKeys([])}>
+          <CloseOutlined />
+        </Button.IconButton>
+        <Divider orientation="vertical" />
+        <Button >全部删除</Button>
+      </div>)}
+      {selectedRowKeys?.length === 0 &&
+        (<><Button style={{ marginRight: '8px' }} prefix={<PlusCircleFilled />}>主要操作</Button>
+          <Button type="secondary">次要操作</Button></>)}
+    </div>
+  </div>
+  return <Card boxShadow fullWidthContent style={{ display: 'block' }}>
     <Card.Meta
-      image={<Avatar>L</Avatar>}
-      title={'卡片标题'.repeat(20)}
-      description={'卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题'.repeat(
-        5
-      )}
-      action={
-        <Dropdown
-          placement="bottomRight"
-          content={
-            <List style={{ padding: '0' }}>
-              <Item value="1">111111</Item>
-              <Item value="2">222222</Item>
-            </List>
-          }
-        >
-          <IconButton size="small" type="text">
-            <MoreOutlined />
-          </IconButton>
-        </Dropdown>
+      style={{ borderBottom: '1px solid #dfe4ee', padding: '20px' }}
+      title={
+        <span style={{
+          fontWeight: 500,
+          fontSize: '18px',
+          lineHeight: '28px',
+          color: '#242e59',
+        }}>
+          全部成员(233)
+        </span>
       }
     />
-  ),
-};
-
-export const Disabled = Template.bind({});
-
-Disabled.args = {
-  style: { width: 320 },
-  disabled: true,
-  children: (
-    <>
-      <Card.Meta image={<Avatar>L</Avatar>} title="卡片标题" description="卡片副标题">
-        这里是卡片的描述，可以有很多很多字。这里是卡片的描述，可以有很多很多字。这里是卡片的描述，可以有很多很多字。
-      </Card.Meta>
-    </>
-  ),
-};
-
-export const Multiple = Template.bind({});
-
-Multiple.args = {
-  disabled: false,
-  onClick: () => ({}),
-  clickable: true,
-  style: { width: 320 },
-  children: (
-    <>
-      <Card.Meta image={<Avatar>L</Avatar>} title="卡片标题" description="卡片副标题" action={<Button>提交</Button>} />
+    {renderToolbar()}
+    <div >
       <Table
-        pagination={false}
-        dataSource={[
-          { a: 1, b: 1 },
-          { a: 2, b: 2 },
-        ]}
         columns={[
-          { dataIndex: 'a', title: 'A' },
-          { dataIndex: 'b', title: 'B' },
+          {
+            dataIndex: 'id',
+            title: 'Id',
+            info: 'description',
+          },
+          {
+            dataIndex: 'name',
+            title: '姓名',
+          },
+          {
+            dataIndex: 'age',
+            title: '年龄',
+          },
+          {
+            dataIndex: 'address',
+            title: '住址',
+          },
         ]}
-      />
-    </>
-  ),
-};
-
-export const onlyDes = Template.bind({});
-
-onlyDes.args = {
-  footer: <Button size="small">按钮</Button>,
-  disabled: false,
-  onClick: () => ({}),
-  clickable: false,
-  style: { width: 320 },
-  children: (
-    <>
-      <Card.Meta
-        description="这里是卡片的描述，可以有很多很多字。这里是卡片的描述，可以有很多很多字。这里是卡片的描述，可以有很多很多字。 "
-        action={
-          <Dropdown
-            placement="bottomRight"
-            content={
-              <List style={{ padding: '0' }}>
-                <Item value="1">111111</Item>
-                <Item value="2">222222</Item>
-              </List>
-            }
-          >
-            <IconButton size="small" type="text">
-              <MoreOutlined />
-            </IconButton>
-          </Dropdown>
+        scroll={{ y: 600 }}
+        rowSelection={
+          {
+            selectedRowKeys,
+            onChange: (selectedKeys) => {
+              setSelectedRowKeys(selectedKeys as string[]);
+            },
+            columnWidth: 60,
+          }
         }
-      />
-      <Table
-        dataSource={[
-          { a: 1, b: 1 },
-          { a: 2, b: 2 },
-        ]}
-        columns={[
-          { dataIndex: 'a', title: 'A' },
-          { dataIndex: 'b', title: 'B' },
-        ]}
-      />
-    </>
-  ),
-};
+        dataSource={dataSource}
+        rowKey="id" />
+    </div>
+  </Card>
+}
+
