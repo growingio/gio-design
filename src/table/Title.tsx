@@ -7,7 +7,7 @@ import Tooltip from '../tooltip';
 import FilterPopover from './FilterPopover';
 import { Key, SortOrder, TitleProps } from './interface';
 
-export const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): SortOrder =>
+const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): SortOrder =>
   current === null ? sortDirections[0] : sortDirections[sortDirections.indexOf(current) + 1];
 
 const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement => {
@@ -24,7 +24,10 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
     const { sortOrder: sorterOrder } = sorterState;
 
     const handleSorterChange = (): void => {
-      const changedSorterState = { ...sorterState, sortOrder: getNextSortDirection(sortDirections, sorterOrder) };
+      const changedSorterState = {
+        ...sorterState,
+        sortOrder: getNextSortDirection(sortDirections, sorterOrder ?? null),
+      };
       onTriggerStateUpdate({ sorterState: updateSorterStates(changedSorterState) });
     };
     return (

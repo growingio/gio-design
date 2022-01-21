@@ -161,26 +161,25 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
    * 属性列表数据源
    */
   const dataSource = useMemo(() => {
-    const _filterFunc = (data = [] as PropertyItem[]) => {
-      const labelKey = 'label';
-
-      if (scope === 'all') {
-        return data.filter((d) => keywordFilter(d[labelKey] as string, keyword));
+    const filteredData = dataList.filter((item) => {
+      const { label, type, groupId, valueType } = item;
+      if (groupId === 'virtual' && valueType !== 'string') {
+        return false;
       }
-
-      return data.filter((d) => d.type === scope && keywordFilter(d[labelKey] as string, keyword));
-    };
-
-    const filterdData = _filterFunc(dataList);
+      if (scope === 'all') {
+        return keywordFilter(label, keyword);
+      }
+      return type === scope && keywordFilter(label, keyword);
+    });
 
     // 按照分组排序
-    const sortedData = orderBy(filterdData, ['typeOrder', 'groupOrder', 'pinyinName']);
+    const sortedData = orderBy(filteredData, ['typeOrder', 'groupOrder', 'pinyinName']);
 
     // mixin 最近使用
     const rids: string[] = recentlyUsedInMemo ? recentlyUsedInMemo[scope] : [];
     const recent: PropertyItem[] = [];
     rids?.forEach((v: string) => {
-      const r = filterdData.find((d) => d.value === v);
+      const r = filteredData.find((d) => d.value === v);
       if (r) {
         recent.push({
           ...r,
@@ -356,9 +355,9 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
                     }
                     return false;
                   })
-                  .map((e) => {
-                    e.groupId = key;
-                    return e;
+                  .map((item) => {
+                    const { groupId, groupName } = [...cur].shift() || {};
+                    return { ...item, groupId, groupName };
                   })
               );
               acc.push(...cur);

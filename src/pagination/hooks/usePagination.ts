@@ -1,5 +1,5 @@
 import { isFunction, range } from 'lodash';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import PaginationProps, { PaginationItemProps, PaginationItemType } from '../interface';
 import useControlledState from '../../utils/hooks/useControlledState';
 import usePage from './usePage';
@@ -11,7 +11,10 @@ const usePagination = (
   props: Omit<PaginationProps, 'pageSize'> & Required<Pick<PaginationProps, 'pageSize'>>
 ): {
   maxPages: number;
-  goToPage: (value: number, event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>) => void;
+  goToPage: (
+    value: number,
+    event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement> | null
+  ) => void;
   items: PaginationItemProps[];
 } => {
   const {
@@ -42,6 +45,21 @@ const usePagination = (
       onChange(value, pageSize, event);
     }
   };
+
+  /**
+   * 原始的总数
+   */
+  const originTotal = useRef(total);
+
+  // 总数改变跳回首页，
+  useEffect(() => {
+    // 保证首次渲染不跳转
+    if (originTotal.current !== total) {
+      goToPage(1, null);
+    }
+    // 没必要监听 goToPage 依赖变化
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [total]);
 
   const computePage = (type: PaginationItemType): number => {
     switch (type) {
@@ -103,12 +121,14 @@ const usePagination = (
       };
     }
 
+    const page = type;
+
     return {
       type: PaginationItemType.Page,
-      page: type,
-      'aria-current': type === currentPage,
-      active: type === currentPage,
-      onClick: (event) => goToPage(type, event),
+      page,
+      'aria-current': page === currentPage,
+      active: page === currentPage,
+      onClick: (event) => goToPage(page, event),
     };
   });
 

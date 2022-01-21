@@ -8,7 +8,8 @@ module.exports = {
   verbose: true,
   // registers babel.config.js with jest
   transform: {
-    '^.+\\.js(x)?$': 'babel-jest',
+    // '^.+\\.js(x)?$': 'babel-jest',
+    "^.+\\.(t|j)sx?$": ["@swc/jest"],
     '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
   },
 

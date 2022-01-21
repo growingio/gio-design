@@ -89,7 +89,7 @@ interface ColumnGroupType<RecordType> extends Omit<ColumnType<RecordType>, 'data
 }
 
 interface SortState<RecordType>
-  extends Required<Pick<ColumnType<RecordType>, 'sortPriorityOrder' | 'sortDirections' | 'sortOrder'>> {
+  extends Pick<ColumnType<RecordType>, 'sortPriorityOrder' | 'sortDirections' | 'sortOrder'> {
   column: ColumnType<RecordType>;
   key: Key;
   isControlled: boolean;

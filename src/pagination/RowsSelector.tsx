@@ -6,15 +6,15 @@ const RowsSelector: React.FC<{
   /**
    * 每页行数改变的回调
    * @param rows 改变后的行数
+   * @param previousRows 改变前的行数
    */
-  onRowsChange?: (rows: number) => void;
+  onRowsChange?: (rows: number, previousRows: number) => void;
 
   'aria-label'?: string;
 }> = (props) => {
   const { 'aria-label': ariaLabel, onRowsChange } = props;
 
-  const { defaultPageSize, onPageSizeChange, pageSize, pageSizeOptions, prefixCls, textObject } =
-    useContext(PaginationContext);
+  const { defaultPageSize, pageSize, pageSizeOptions, prefixCls, textObject } = useContext(PaginationContext);
 
   const [previousPageSize, setPreviousPageSize] = useState<number>(pageSize || defaultPageSize);
   useEffect(() => {
@@ -39,8 +39,7 @@ const RowsSelector: React.FC<{
           })}
           onChange={(value: number) => {
             const currentPageSize = value;
-            onRowsChange?.(currentPageSize);
-            onPageSizeChange?.(currentPageSize, previousPageSize);
+            onRowsChange?.(currentPageSize, previousPageSize);
             setPreviousPageSize(currentPageSize);
           }}
           allowClear={false}

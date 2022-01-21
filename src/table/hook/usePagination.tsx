@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useEffect } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { isUndefined } from 'lodash';
 import Pagination, { PaginationProps } from '../../pagination';
 import { ColumnType, ColumnsType, PaginationState } from '../interface';
@@ -36,12 +36,6 @@ const usePagination = <RecordType,>(
     }
     return total;
   }, [total, data.length]);
-
-  useEffect(() => {
-    if (controlledCurrent * controlledPageSize > totalMemo) {
-      onChange?.(Math.ceil(totalMemo / controlledPageSize) || 1, controlledPageSize, null);
-    }
-  }, [controlledCurrent, controlledPageSize, totalMemo, onChange]);
 
   const paginationData = useMemo(() => {
     if (pagination === false || !controlledPageSize) {

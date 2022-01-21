@@ -31,23 +31,23 @@
     background-color: @blue-2;
     .elevation(1);
 
-    &:enabled:hover,
+    &:hover,
     &.@{button-prefix-cls}_active {
       background-color: @blue-3;
       .elevation(2);
-    }
-
-    &:disabled:not(.@{button-prefix-cls}_loading) {
-      color: @gray-3;
-      background-color: @gray-1;
-      cursor: not-allowed;
-      .elevation(none);
     }
 
     &.@{button-prefix-cls}_loading {
       background-color: @blue-3;
       cursor: not-allowed;
       .elevation(2);
+    }
+
+    &.@{button-prefix-cls}_disabled {
+      color: @gray-3;
+      background-color: @gray-1;
+      cursor: not-allowed;
+      .elevation(none);
     }
   }
 
@@ -56,21 +56,21 @@
     background-color: transparent;
     .border(2, @gray-2);
 
-    &:enabled:hover,
+    &:hover,
     &.@{button-prefix-cls}_active {
       color: @blue-3;
       background-color: @gray-1;
     }
 
-    &:disabled:not(.@{button-prefix-cls}_loading) {
-      color: @gray-3;
-      background-color: transparent;
-      cursor: not-allowed;
-    }
-
     &.@{button-prefix-cls}_loading {
       color: @blue-3;
       background-color: @gray-1;
+      cursor: not-allowed;
+    }
+
+    &.@{button-prefix-cls}_disabled {
+      color: @gray-3;
+      background-color: transparent;
       cursor: not-allowed;
     }
   }
@@ -80,19 +80,22 @@
     color: @gray-5;
     background-color: transparent;
     .border(2, transparent);
-    &:enabled:hover,
+
+    &:hover,
     &.@{button-prefix-cls}_active {
       color: @blue-3;
       background-color: @gray-1;
     }
-    &:disabled:not(.@{button-prefix-cls}_loading) {
-      color: @gray-3;
-      background-color: transparent;
-      cursor: not-allowed;
-    }
+
     &.@{button-prefix-cls}_loading {
       color: @blue-3;
       background-color: @gray-1;
+      cursor: not-allowed;
+    }
+
+    &.@{button-prefix-cls}_disabled {
+      color: @gray-3;
+      background-color: transparent;
       cursor: not-allowed;
     }
   }

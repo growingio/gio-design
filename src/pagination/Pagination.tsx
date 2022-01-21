@@ -10,7 +10,7 @@ import QuickJumper from './QuickJumper';
 import defaultLocaleTextObject from './locales/zh-CN';
 
 type PaginationContextType = Required<Pick<PaginationProps, 'pageSizeOptions' | 'defaultPageSize' | 'total'>> &
-  Partial<Pick<PaginationProps, 'onPageSizeChange' | 'totalTextRender' | 'pageSize'>> & {
+  Partial<Pick<PaginationProps, 'totalTextRender' | 'pageSize'>> & {
     prefixCls: string;
     maxPages: number;
     textObject: typeof defaultLocaleTextObject;
@@ -79,7 +79,6 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
 
   const paginationProviderValue = useMemo<PaginationContextType>(
     () => ({
-      onPageSizeChange,
       pageSize,
       defaultPageSize,
       pageSizeOptions,
@@ -89,27 +88,21 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
       maxPages,
       textObject,
     }),
-    [
-      onPageSizeChange,
-      pageSize,
-      defaultPageSize,
-      pageSizeOptions,
-      totalTextRender,
-      prefixCls,
-      total,
-      maxPages,
-      textObject,
-    ]
+    [pageSize, defaultPageSize, pageSizeOptions, totalTextRender, prefixCls, total, maxPages, textObject]
   );
+
+  const handleRowsChange = (rows: number, previousRows: number) => {
+    setPageSize(rows);
+    onPageSizeChange?.(rows, previousRows);
+    goToPage(1, null);
+  };
 
   if (hideOnSinglePage && maxPages <= 1) return null;
 
   return (
     <div ref={ref} data-testid="pagination" className={classNames([className, prefixCls])} {...otherProps}>
       <PaginationContext.Provider value={paginationProviderValue}>
-        {showSizeChanger && (
-          <RowsSelector onRowsChange={(rows) => setPageSize(rows)} aria-label={getAriaLabel('rows')} />
-        )}
+        {showSizeChanger && <RowsSelector onRowsChange={handleRowsChange} aria-label={getAriaLabel('rows')} />}
         <p aria-label={getAriaLabel('total')} className={`${prefixCls}__total`} data-testid="pagination-item__total">
           {totalTextRender?.(total) ?? textObject.total(total)}
         </p>

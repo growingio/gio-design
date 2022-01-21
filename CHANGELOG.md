@@ -1,3 +1,23 @@
+## [22.12.9](https://github.com/growingio/gio-design/compare/v22.12.8...v22.12.9) (2022-01-18)
+
+
+### Bug Fixes
+
+* **pagination:** trigger onChange and go to first page when pageSize or total were changed ([#1799](https://github.com/growingio/gio-design/issues/1799)) ([329423d](https://github.com/growingio/gio-design/commit/329423da49c2843df24de2ff9a9b668bd736967a))
+* **property-selector:** filter VirtualProperty whose `valueType` isn't a string ([#1810](https://github.com/growingio/gio-design/issues/1810)) ([ad236f2](https://github.com/growingio/gio-design/commit/ad236f229a9586f65eb77f98c4bb41a7526f1e06))
+* **property-selector:** items inherit `groupId` and `groupName` from parent ([#1802](https://github.com/growingio/gio-design/issues/1802)) ([25e64f3](https://github.com/growingio/gio-design/commit/25e64f3be30be30fbb0f57b18f395307d48b40fb))
+* **search-bar, property-selector:** add deps style ([#1797](https://github.com/growingio/gio-design/issues/1797)) ([870a9b0](https://github.com/growingio/gio-design/commit/870a9b0be5717db625c42b9d13087d5ebd495d63))
+* **table:** add filter-popover border-radius ([#1803](https://github.com/growingio/gio-design/issues/1803)) ([86cf78f](https://github.com/growingio/gio-design/commit/86cf78f3e18534a6e03648beaf44cf7637d1d3a1))
+* **table:** filter empty page ([#1798](https://github.com/growingio/gio-design/issues/1798)) ([312ba44](https://github.com/growingio/gio-design/commit/312ba44507ccd1d5e8fb0cf583c6d272ed2bf9f5))
+* **table:** fix infinite loop ([#1794](https://github.com/growingio/gio-design/issues/1794)) ([f568a49](https://github.com/growingio/gio-design/commit/f568a49f36cbec4d7c230cf59e59e16405ca106b))
+
+## [22.12.8](https://github.com/growingio/gio-design/compare/v22.12.7...v22.12.8) (2022-01-13)
+
+
+### Bug Fixes
+
+* **popover:** update popover position when bottom is 0 ([#1796](https://github.com/growingio/gio-design/issues/1796)) ([006451c](https://github.com/growingio/gio-design/commit/006451c06aed9c9be3aff2a773c4e53d3115f9d9))
+
 ## [22.12.7](https://github.com/growingio/gio-design/compare/v22.12.6...v22.12.7) (2022-01-12)
 
 

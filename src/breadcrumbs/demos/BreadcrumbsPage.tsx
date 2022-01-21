@@ -14,6 +14,7 @@ export default function ListPage() {
           defaultMessage: '我们一般要求所有页面都有面包屑，弹窗等非页面不需要面包屑。:',
         })}
       </p>
+      <p>如果该面包屑没有跳转功能，不应该传一个 Link 组件，而是使用 span 包裹或者直接传字符串</p>
       <p>
         <a href="https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4061%3A35944">
           Figma

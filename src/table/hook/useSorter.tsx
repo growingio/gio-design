@@ -1,5 +1,5 @@
-import { useState, useCallback, useEffect } from 'react';
-import { get, isNil, has, isFunction } from 'lodash';
+import { useState, useCallback, useMemo } from 'react';
+import { isNil, isFunction } from 'lodash';
 import { ColumnsType, SortState } from '../interface';
 import { getColumnKey, getColumnPos } from '../utils';
 
@@ -8,29 +8,43 @@ type UpdateSortState<RecordType> = (sortState: SortState<RecordType>) => SortSta
 
 const collectSortStates = <RecordType,>(
   columns: ColumnsType<RecordType>,
+  init: boolean,
   position?: string
 ): SortState<RecordType>[] => {
-  const sortStates: SortState<RecordType>[] = [];
+  let sortStates: SortState<RecordType>[] = [];
+
+  const push = (column: ColumnsType<RecordType>[number], key: React.Key, state?: Partial<SortState<RecordType>>) => {
+    const { sortPriorityOrder = 0, sortDirections = ['ascend', 'descend', null], sortOrder } = column;
+    sortStates.push({
+      column,
+      key,
+      sortPriorityOrder,
+      sortDirections,
+      sortOrder,
+      isControlled: true,
+      ...state,
+    });
+  };
+
   columns.forEach((column, index) => {
     const columnPosition = getColumnPos(index, position);
     const columnKey = getColumnKey(column, columnPosition);
-    if (has(column, 'children')) {
-      sortStates.push(...collectSortStates(get(column, 'children'), columnPosition));
-    } else if (column.sorter) {
-      const {
-        sortPriorityOrder = 0,
-        sortDirections = ['ascend', 'descend', null],
-        sortOrder,
-        defaultSortOrder,
-      } = column;
-      sortStates.push({
-        column,
-        key: columnKey,
-        sortPriorityOrder,
-        sortDirections,
-        sortOrder: sortOrder || defaultSortOrder || null,
-        isControlled: !isNil(sortOrder),
-      });
+    const { defaultSortOrder } = column;
+
+    if ('children' in column) {
+      if ('sortOrder' in column) {
+        push(column, columnKey);
+      }
+      sortStates = [...sortStates, ...collectSortStates(column.children, init, columnPosition)];
+    } else if ('sorter' in column) {
+      if ('sortOrder' in column) {
+        push(column, columnKey);
+      } else if (init && defaultSortOrder) {
+        push(column, columnKey, {
+          sortOrder: defaultSortOrder,
+          isControlled: false,
+        });
+      }
     }
   });
   return sortStates;
@@ -81,18 +95,18 @@ const useSorter = <RecordType,>(
   onChange: OnSortChange<RecordType>
 ): [SortState<RecordType>[], UpdateSortState<RecordType>, SortState<RecordType>, typeof getSortedData] => {
   // record all sorter states
-  const [sortStates, setSortStates] = useState<SortState<RecordType>[]>(collectSortStates(columns));
+  const [sortStates, setSortStates] = useState<SortState<RecordType>[]>(collectSortStates(columns, true));
   const [_sorter, setSorter] = useState<SortState<RecordType>>({} as SortState<RecordType>);
 
-  useEffect(() => {
-    const collectedData = collectSortStates(columns);
+  const mergeStates = useMemo(() => {
+    const collectedData = collectSortStates(columns, false);
 
-    const allIsControlled = collectedData.every(({ isControlled }) => isControlled);
-
-    if (allIsControlled) {
-      setSortStates(collectedData);
+    if (!collectedData.length) {
+      return sortStates;
     }
-  }, [columns]);
+
+    return collectedData;
+  }, [columns, sortStates]);
 
   // update sorter states action
   const updateSorterStates = useCallback(
@@ -126,7 +140,7 @@ const useSorter = <RecordType,>(
     [onChange]
   );
 
-  return [sortStates, updateSorterStates, _sorter, getSortedData];
+  return [mergeStates, updateSorterStates, _sorter, getSortedData];
 };
 
 export default useSorter;
