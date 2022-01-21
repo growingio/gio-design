@@ -255,7 +255,7 @@ export const WithIconAndSwitch = () => {
         items.map((itm, index) =>
           <Item value={itm.value} label={itm.value}
             suffix={<Toggle on={itm.state} onChange={e => { updatePinState(e.target.checked, index) }} size="small" />}
-            prefix={<Avatar backgroundColor="transparent" size="small" mode="circle" icon={<AndroidFilled />} />} />
+            prefix={<Avatar size="medium" backgroundColor="#dedede" mode="circle" icon={<AndroidFilled />} />} />
         )
       }
     </List>
