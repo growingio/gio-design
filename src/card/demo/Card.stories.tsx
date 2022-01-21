@@ -10,9 +10,7 @@ import Tabs, { Tab } from '../../tabs';
 import Button, { IconButton } from '../../button';
 import Dropdown from '../../dropdown';
 import { Item, List } from '../../list';
-import { Basic, Empty, TreeData } from '../../table/demos/Table.stories';
 import { Card, Col, Divider, Row, SearchBar, Skeleton } from '../..';
-import Text from '../../typography/text';
 import SkeletonImage from '../../skeleton/Image';
 import Toggle from '../../toggle';
 
