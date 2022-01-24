@@ -1,52 +1,61 @@
 import React from 'react';
-import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook/addon-docs';
+import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
+import { Figma } from 'storybook-addon-designs/blocks';
 import Breadcrumbs from '../Breadcrumbs';
 
-export default function ListPage() {
+export default function BreadcrumbsPage() {
   const { formatMessage } = useIntl();
 
   return (
     <>
       <Title>{formatMessage({ defaultMessage: 'Breadcrumbs 面包屑' })}</Title>
-      <p>
+      <Description>
         {formatMessage({
-          defaultMessage: '我们一般要求所有页面都有面包屑，弹窗等非页面不需要面包屑。:',
+          defaultMessage:
+            '面包屑包含一个链接列表，帮助用户在网站的层次结构中可视化页面的位置，并允许导航到其任何“祖先页面”。',
         })}
-      </p>
-      <p>如果该面包屑没有跳转功能，不应该传一个 Link 组件，而是使用 span 包裹或者直接传字符串</p>
-      <p>
-        <a href="https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4061%3A35944">
-          Figma
-        </a>
-      </p>
-      <p>Upgrading Guide</p>
-      <ul>
-        <li>内部使用link作为按钮，icon来源于link</li>
-        <li>样式变化：无</li>
-        <li>接口变化：无，</li>
-        <li>使用方法有变：从传对象参数变成了JSX直接传，实现方式(nav-&gt;ol-&gt;li)</li>
-        <li> &lt;Breadcrumbs&gt;&lt;Link /&gt;&lt;/Breadcrumbs&gt;</li>
-      </ul>
+      </Description>
+
+      <Subtitle>{formatMessage({ defaultMessage: '使用场景' })}</Subtitle>
+      <Description>
+        {formatMessage({
+          defaultMessage: '一般要求所有页面都有面包屑，弹窗等非页面不需要面包屑。',
+        })}
+      </Description>
+
+      <Subtitle>{formatMessage({ defaultMessage: '设计稿' })}</Subtitle>
+      <Figma
+        height="50%"
+        collapsable
+        url="https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=4061%3A35944"
+      />
 
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
-      <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
-      <Canvas>
-        <Story id="upgraded-breadcrumbs--demo" />
-      </Canvas>
+      <Description>
+        {formatMessage({
+          defaultMessage: '如果该面包屑没有跳转功能，不应该传一个 `Link` 组件，而是使用 `span` 包裹或者直接传字符串',
+        })}
+      </Description>
+      <Description>
+        {formatMessage({
+          defaultMessage: '支持所有原生 `div` 标签的 `props`',
+        })}
+      </Description>
+
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
         <Story id="upgraded-breadcrumbs--default" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'icon' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '自定义分隔符' })}</Subheading>
+      <Description>
+        {formatMessage({ defaultMessage: '在以下示例中，我们使用了两个字符串分隔符和一个 SVG 图标。' })}
+      </Description>
       <Canvas>
-        <Story id="upgraded-breadcrumbs--icon-breadcrumb" />
+        <Story id="upgraded-breadcrumbs--separator" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '自定义连接符' })}</Subheading>
-      <Canvas>
-        <Story id="upgraded-breadcrumbs--custom-separator" />
-      </Canvas>
+
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Breadcrumbs} />
     </>
