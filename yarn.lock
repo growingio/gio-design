@@ -1612,9 +1612,9 @@
   integrity sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==
 
 "@gio-design/icons@^22.0.0":
-  version "22.0.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-22.0.1.tgz#7e682a3d9f601cdfbdb8a1a7453a7feeb00d25fe"
-  integrity sha512-hzl9mpDDm26XCH9MgCRcVkTSamYyCkngIeRPU16L72kzd+5MnBIa4UkSYL3N89BFVbvdxiUG7QqdrOlyXfeWpA==
+  version "22.1.0"
+  resolved "https://registry.yarnpkg.com/@gio-design/icons/-/icons-22.1.0.tgz#9bbc8e4065559f7ce043ab5d97568516c09185da"
+  integrity sha512-QjmlSsur4+F5+omlsp1SmSK6xt6k5qbuv2sD9D3wpj3r1Uhpci3YcU6Za36jZ7h3MI84zdBR7pyxZ7m+kzcbow==
   dependencies:
     "@babel/runtime" "^7.14.8"
 
