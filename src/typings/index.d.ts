@@ -13,3 +13,4 @@ declare module '*.mdx';
 declare module 'react-lines-ellipsis';
 declare module 'react-lines-ellipsis/lib/responsiveHOC';
 declare module 'react-is';
+declare module 'storybook-addon-designs/blocks';

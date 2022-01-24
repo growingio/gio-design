@@ -1,8 +1,13 @@
-.demo-box {
-  display: inline-block;
+.gio-list-demo-box {
   width: 240px;
+  min-height: 300px;
   margin: 20px;
-  // padding: 8px;
-  border: 0.5px dashed #dcdfed;
+  background-color: #fff;
+  border: 0.5px solid #dcdfed;
   border-radius: 4px;
+  &.overflow {
+    height: 300px;
+    overflow: hidden;
+    overflow-y: auto;
+  }
 }
