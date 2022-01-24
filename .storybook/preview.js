@@ -32,15 +32,24 @@ const withDesignProvider = (Story, context) => {
     </DesignContext.Provider>
   );
 };
-export const decorators = [withDesign, withDesignProvider];
+
+const withWrapper = (Story) => (
+  <div className="components-demo-wrapper">
+    <Story />
+  </div>
+);
+
+export const decorators = [withDesign, withDesignProvider, withWrapper];
 
 export const parameters = {
   options: {
-    storySort: (a, b) =>{//默认story 排在最前面
-      if(a[1].kind === b[1].kind){
-        return (b[1].name.toLowerCase()=='default'||b[1].name.toLowerCase()=='basic')?1:0;
+    storySort: (a, b) => {
+      //默认 story 排在最前面
+      if (a[1].kind === b[1].kind) {
+        return b[1].name.toLowerCase() == 'default' || b[1].name.toLowerCase() == 'basic' ? 1 : 0;
       }
-     return  a[1].id.localeCompare(b[1].id, undefined, { numeric: true });},
+      return a[1].id.localeCompare(b[1].id, undefined, { numeric: true });
+    },
   },
   controls: {
     expanded: true,

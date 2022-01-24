@@ -1,10 +1,9 @@
 import React from 'react';
 import { Canvas, Title, Description, Heading, Story, Subheading, ArgsTable, Subtitle } from '@storybook/addon-docs';
-import { Figma } from 'storybook-addon-designs/blocks'
+import { Figma } from 'storybook-addon-designs/blocks';
 
 import { useIntl, FormattedMessage } from 'react-intl';
 import Button from '../index';
-
 
 export default function ButtonPage() {
   const { formatMessage } = useIntl();
@@ -32,36 +31,39 @@ export default function ButtonPage() {
       </Description>
       <Description>
         {formatMessage({
-          defaultMessage: 'gio-design提供了3种类型的按钮:',
+          defaultMessage: 'gio-design 提供了3种类型的按钮:',
         })}
       </Description>
       <ul className="gio-docs-list">
         <li>
-          <code>Primary</code> {formatMessage({
-            defaultMessage: '最重要的操作不建议在同一页面使用多个Primary Button 通常用于“新建”、“确定”等操作',
+          <code>Primary</code>{' '}
+          {formatMessage({
+            defaultMessage: '最重要的操作不建议在同一页面使用多个 Primary Button 通常用于“新建”、“确定”等操作',
           })}
         </li>
         <li>
-          <code>Secondary</code> {formatMessage({
+          <code>Secondary</code>{' '}
+          {formatMessage({
             defaultMessage: '次重要的操作',
           })}
         </li>
         <li>
-          <code>Text</code> {formatMessage({
+          <code>Text</code>{' '}
+          {formatMessage({
             defaultMessage: '重要性最低，辅助性操作',
           })}
         </li>
       </ul>
       <Description>
         {formatMessage({
-          defaultMessage: '支持所有原生button标签属性',
+          defaultMessage: '支持所有原生 button 标签属性',
         })}
       </Description>
       <Subtitle>
         <FormattedMessage defaultMessage="设计稿" />
       </Subtitle>
       <Figma
-        height="30%"
+        height="50%"
         collapsable
         url="https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=4066%3A42614"
       />
@@ -99,7 +101,8 @@ export default function ButtonPage() {
       <Subheading>{formatMessage({ defaultMessage: '带图标的按钮' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '有些时候你可能希望为某些按钮设置图标，以增强应用程序的用户体验。可以通过设置 prefix, suffix 为Svg图标来实现',
+          defaultMessage:
+            '有些时候你可能希望为某些按钮设置图标，以增强应用程序的用户体验。可以通过设置 prefix, suffix 为Svg图标来实现',
         })}
       </Description>
       <Canvas>
@@ -108,7 +111,8 @@ export default function ButtonPage() {
       <Subheading>{formatMessage({ defaultMessage: 'Button.IconButton 图标按钮' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '图标按钮通常位于应用栏和工具栏中。 通过 Button.IconButton组件，配合Svg图标使用。可以通过设置IconButton 的style.fontSize修改图标的大小',
+          defaultMessage:
+            '图标按钮通常位于应用栏和工具栏中。 通过 Button.IconButton组件，配合Svg图标使用。可以通过设置IconButton 的style.fontSize修改图标的大小',
         })}
       </Description>
       <Canvas>
@@ -137,7 +141,8 @@ export default function ButtonPage() {
       <Subheading>{formatMessage({ defaultMessage: '按钮的active状态' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '按钮在非禁用状态下包含hover/active样式。可以设置active=true 来给按钮添加一个active状态。可以用于按钮与Dropdown组合下拉菜单时，当下拉列表展开时给按钮一个激活状态',
+          defaultMessage:
+            '按钮在非禁用状态下包含hover/active样式。可以设置active=true 来给按钮添加一个active状态。可以用于按钮与Dropdown组合下拉菜单时，当下拉列表展开时给按钮一个激活状态',
         })}
       </Description>
       <Canvas>
@@ -147,7 +152,7 @@ export default function ButtonPage() {
       <ArgsTable of={Button} />
       <Description>
         {formatMessage({
-          defaultMessage: '支持所有原生button标签属性',
+          defaultMessage: '支持所有原生 button 标签属性',
         })}
       </Description>
     </>
