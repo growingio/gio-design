@@ -4,10 +4,15 @@ import React from 'react';
 import { ListProps } from '.';
 import { MaybeArray, ModelType, OptionProps } from './interface';
 
-type OtherProps = ListProps;
+interface OtherProps extends Omit<ListProps, 'prefix' | 'suffix'> {
+  prefix?: ((option?: OptionProps) => string | React.ReactNode) | React.ReactNode;
+  suffix?: ((option?: OptionProps) => string | React.ReactNode) | React.ReactNode;
+}
 
 export const isMultipe = (model: ModelType) => model === 'multiple';
 export const isCascader = (model: ModelType) => model === 'cascader';
+export const isVaildFunctionCallBack = (opt: any, cb?: ((option?: OptionProps) => React.ReactNode) | React.ReactNode) =>
+  React.isValidElement(cb) ? cb : (cb as (option?: OptionProps) => React.ReactNode)?.(opt);
 export const getResultValue = (value?: (string | number)[], val?: string | number) => {
   if (indexOf(value, val) !== -1) {
     return difference(value, [val]);
@@ -22,7 +27,7 @@ export const selectStatus = (value?: string | number, values?: MaybeArray<string
   if (!isNil(value)) {
     return isArray(values) ? (values as (string | number)[])?.indexOf(value) !== -1 : values === value;
   }
-  return undefined;
+  return false;
 };
 const deepChildren = (children?: OptionProps[]): any[] => {
   if (children) {
@@ -31,7 +36,7 @@ const deepChildren = (children?: OptionProps[]): any[] => {
   return [];
 };
 const generateValue = (child?: OptionProps[]) =>
-  child?.reduce((prev, curr) => (curr.value ? [...prev, curr.value] : prev), []).join('.');
+  child?.reduce((prev, curr) => (curr?.value ? [...prev, curr?.value] : prev), []).join('.');
 export const generateString = (value?: string | number, children?: OptionProps[]) => {
   if (!isEmpty(children)) {
     return `${generateValue(deepChildren(children))}.${value}`;
@@ -45,7 +50,9 @@ export function convertNodeToOption(node: React.ReactElement, otherProps?: Other
     props: { value, children, label, ...restProps },
   } = node as React.ReactElement & { props: OptionProps };
   const option = { value, label: label ?? children, ...restProps };
-  return { prefix: otherProps?.prefix?.(option), suffix: otherProps?.suffix?.(option), ...option };
+  const prefix = isVaildFunctionCallBack(option, otherProps?.prefix);
+  const suffix = isVaildFunctionCallBack(option, otherProps?.suffix);
+  return { prefix, suffix, ...option };
 }
 
 export function convertChildrenToData(nodes: React.ReactNode, otherProps: OtherProps): OptionProps[] {
@@ -62,7 +69,9 @@ export function convertChildrenToData(nodes: React.ReactNode, otherProps: OtherP
 export function convertOption(option: OptionProps, otherProps?: OtherProps): OptionProps {
   const { value, children, label, ...restProps } = option;
   const val = { value, label: label ?? children, ...restProps };
-  return { prefix: otherProps?.prefix?.(option), suffix: otherProps?.suffix?.(option), ...val } as OptionProps;
+  const prefix = isVaildFunctionCallBack(option, otherProps?.prefix);
+  const suffix = isVaildFunctionCallBack(option, otherProps?.suffix);
+  return { prefix, suffix, ...val } as OptionProps;
 }
 export function convertOptions(options: OptionProps[], otherProps: OtherProps): OptionProps[] {
   return options.reduce((prev, curr) => [...prev, convertOption(curr, otherProps)], []);
@@ -95,7 +104,10 @@ export const collectOption = (child: React.ReactNode, otherProps?: OtherProps): 
       props: { value, children, label, ...restProps },
     } = child as React.ReactElement & { props: OptionProps };
     const option = { value, label: label ?? children, ...restProps };
-    return { prefix: otherProps?.prefix?.(option), suffix: otherProps?.suffix?.(option), ...option };
+    const prefix = isVaildFunctionCallBack(option, otherProps?.prefix);
+    const suffix = isVaildFunctionCallBack(option, otherProps?.suffix);
+
+    return { prefix, suffix, ...option };
   }
   return undefined;
 };

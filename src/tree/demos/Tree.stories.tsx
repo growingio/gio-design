@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
-import { AppOutlined, CheckOutlined, EventOutlined, CopyOutlined } from '@gio-design/icons';
-import Tree, { TreeProps } from '../Tree';
+import { CheckOutlined, EventOutlined, CopyOutlined } from '@gio-design/icons';
+import { Tree, TreeProps } from '../index';
 import Docs from './TreePage';
-import '../style';
 
 export default {
-  title: 'upgraded/Tree',
+  title: 'Upgraded/Tree',
   component: Tree,
-  decorators: [withDesign],
   parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=1149%3A3854',
-      allowFullscreen: true,
-    },
     docs: {
       page: Docs,
     },
@@ -24,87 +16,109 @@ export default {
 
 const treeData = [
   {
-    title: '产品团队',
-    key: '0-0',
-    icon: <EventOutlined />,
-    children: [
+    label: '产品团队',
+    value: '0-0',
+    prefix: <EventOutlined />,
+    childs: [
       {
-        title: '产品经理团队',
-        key: '0-0-0',
+        label: '产品经理团队',
+        value: '0-0-0',
         disabled: true,
-        children: [
+        childs: [
           {
-            title: '产品一组产品一组产品一组产品一组产品一组产品一组产品一组产品一组产品一组',
-            key: '0-0-0-0',
-            icon: <CheckOutlined />,
-            disableCheckbox: true,
+            label: '产品一组',
+            value: '0-0-0-0',
+            prefix: <CheckOutlined />,
+            disabled: true,
           },
           {
-            title: '产品二组',
-            key: '0-0-0-1',
-            icon: <CheckOutlined />,
+            label: '产品二组',
+            value: '0-0-0-1',
+            prefix: <CheckOutlined />,
           },
         ],
       },
       {
-        title: '设计师团队',
-        key: '0-0-1',
-        children: [
+        label: '设计师团队',
+        value: '0-0-1',
+        childs: [
           {
-            title: <span style={{ color: 'red' }}>UX</span>,
-            key: '0-0-1-0',
-            icon: <CheckOutlined />,
+            label: 'UX',
+            value: '0-0-1-0',
+            prefix: <CheckOutlined />,
           },
         ],
       },
     ],
   },
   {
-    title: '市场团队',
-    key: '0-1',
-    icon: <CopyOutlined />,
-    children: [],
+    label: '市场团队',
+    value: '0-1',
+    prefix: <CopyOutlined />,
   },
 ];
 
 const Template: Story<TreeProps> = (args) => {
   const [keys, setKeys] = useState<string[]>([]);
-
-  const onSelect = (selectedKeys: string[]) => {
-    if (selectedKeys.length === 0) {
+  const [expendKeys, setExpandKeys] = useState<string[]>([]);
+  const onSelect = (selectKeys: string[]) => {
+    if (selectKeys.length === 0) {
       return;
     }
-    setKeys(selectedKeys);
+    setKeys(selectKeys);
   };
 
   return (
-    <div style={{ display: 'flex' }}>
-      <div className="tree-demo" style={{ width: '300px' }}>
-        <Tree onSelect={(selectedKeys: any[]) => onSelect(selectedKeys)} selectedKeys={keys} {...args} />
+    <>
+      <h3>normal</h3>
+      <div style={{ display: 'flex' }}>
+        <div className="tree-demo" style={{ width: '300px' }}>
+          <Tree {...args} />
+        </div>
       </div>
-    </div>
+      <h3>defaultExpandedAll</h3>
+      <div className="tree-demo" style={{ width: '300px' }}>
+        <Tree defaultExpandAll {...args} />
+      </div>
+      <h3>defaultExpandedKeys</h3>
+      <div className="tree-demo" style={{ width: '300px' }}>
+        <Tree defaultExpandedKeys={['0-0-1']} autoExpandParent {...args} />
+      </div>
+      <h3>defaultExpandedKeys and autoExpandParent = false</h3>
+      <div className="tree-demo" style={{ width: '300px' }}>
+        <Tree defaultExpandedKeys={['0-0-1']} autoExpandParent={false} {...args} />
+      </div>
+
+      <h3>expandedKeys</h3>
+      <div className="tree-demo" style={{ width: '300px' }}>
+        <Tree
+          expandedKeys={expendKeys}
+          defaultExpandAll
+          onExpand={(v) => {
+            console.log('v', v);
+            setExpandKeys(v);
+          }}
+          {...args}
+        />
+      </div>
+      <h3>defaultSelectedKeys</h3>
+      <div className="tree-demo" style={{ width: '300px' }}>
+        <Tree defaultSelectedKeys={['0-0']} {...args} />
+      </div>
+      <h3>defaultSelectedKeys and selectedKeys</h3>
+      <div className="tree-demo" style={{ width: '300px' }}>
+        <Tree
+          selectedKeys={keys}
+          onSelect={(selectKeys: any[]) => onSelect(selectKeys)}
+          defaultSelectedKeys={['0-0']}
+          {...args}
+        />
+      </div>
+    </>
+    //
   );
 };
 export const Default = Template.bind({});
 Default.args = {
-  treeData,
-  defaultExpandedKeys: ['0-0-0', '0-0-1'],
-  defaultSelectedKeys: ['0-0-1'],
-};
-
-const IconTemplate: Story<TreeProps> = (args) => (
-  <div style={{ display: 'flex' }}>
-    <div className="tree-demo">
-      <Tree icon={<AppOutlined />} {...args} />
-    </div>
-  </div>
-);
-
-export const IconTree = IconTemplate.bind({});
-IconTree.args = {
-  treeData,
-  defaultExpandedKeys: ['0-0-0', '0-0-1'],
-  defaultSelectedKeys: ['0-0-1'],
-  showIcon: true,
-  style: { width: '300px' },
+  options: treeData,
 };

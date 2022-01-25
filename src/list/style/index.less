@@ -52,7 +52,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
     padding: 7px 12px;
     color: @gray-5;
     .text-body1();
@@ -131,6 +131,12 @@
 
     &--checkbox {
       font-size: 0;
+    }
+
+    & > & {
+      flex-grow: 1;
+      // justify-content: start;
+      padding: 0;
     }
   }
 }

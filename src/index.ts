@@ -43,16 +43,7 @@ export { default as Tag, TagProps } from './tag';
 export { default as Toast, ToastConfigOptions, ToastType } from './toast';
 export { default as Toggle, ToggleProps } from './toggle';
 export { default as Tooltip, TooltipProps } from './tooltip';
-export {
-  default as Tree,
-  TreeProps,
-  TreeNodeNormal,
-  GioTreeNode,
-  GioTreeNodeMouseEvent,
-  GioTreeNodeExpandedEvent,
-  GioTreeNodeSelectedEvent,
-  GioTreeNodeProps,
-} from './tree';
+export { default as Tree, TreeProps } from './tree';
 export { default as Typography } from './typography';
 export { default as Upload, UploadProps, UploadType, UploadStatus } from './upload';
 export { default as Select, SelectProps, OptionProps } from './select';

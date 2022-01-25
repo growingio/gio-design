@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { DownFilled } from '@gio-design/icons';
-import { GioTreeNodeProps } from './Tree';
+import { GioTreeNodeProps } from './interface';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function renderSwitcherIcon(
