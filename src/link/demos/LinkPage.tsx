@@ -1,6 +1,6 @@
 import React from 'react';
-import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook/addon-docs';
-
+import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
+import { Figma } from 'storybook-addon-designs/blocks';
 import { useIntl } from 'react-intl';
 import Link from '../index';
 
@@ -10,49 +10,73 @@ export default function LinkPage() {
   return (
     <>
       <Title>{formatMessage({ defaultMessage: 'Link 链接' })}</Title>
-      <p>
+      <Description>
         {formatMessage({
           defaultMessage:
-            '可以通过它的 href 属性创建通向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 的超链接。',
+            '可以通过 href 属性创建通向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 的超链接。',
         })}
-      </p>
-      <p>
-        <a href="https://www.figma.com/file/J2wZWEocPEb1DbDEj99AgD/Design-System?node-id=21%3A11028">Figma</a>
-      </p>
-      <p>Upgrading Guide</p>
-      <ul>
-        <li>如果 `disabled` 或 `loading` 为 `true`，则根标签会替换成 `span` 标签</li>
-        <li>Api变化: 参数icon 更改为 参数 prefix</li>
-        <li>样式变化:颜色变化</li>
-        <li> 支持原生a标签</li>
-        <li> 原 icon 现在需要在prefix内传入如&lt;PlusOutlined/&gt;</li>
-        <li>支持自定义渲染根组件</li>
-      </ul>
+      </Description>
+
+      <Subtitle>{formatMessage({ defaultMessage: '使用场景' })}</Subtitle>
+      <Description>
+        {formatMessage({ defaultMessage: '向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 跳转。' })}
+      </Description>
+
+      <Subtitle>{formatMessage({ defaultMessage: '设计稿' })}</Subtitle>
+      <Figma
+        height="50%"
+        collapsable
+        url="https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=6749%3A65551"
+      />
+
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
-      <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
-      <Canvas>
-        <Story id="upgraded-link--demo" />
-      </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: 'default' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '支持所有原生 `a` 标签的 `props`; ',
+        })}
+      </Description>
+
+      <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
       <Canvas>
         <Story id="upgraded-link--default" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: 'disable' })}</Subheading>
+
+      <Subheading>{formatMessage({ defaultMessage: '禁用 Link' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '如果设置了 `disabled` 或 `loading`, 根组件会替换成 `span` 标签',
+        })}
+      </Description>
       <Canvas>
-        <Story id="upgraded-link--disable" />
+        <Story id="upgraded-link--disabled" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: 'loading' })}</Subheading>
+
+      <Subheading>{formatMessage({ defaultMessage: '加载中' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '如果设置了 `disabled` 或 `loading`, 根组件会替换成 `span` 标签',
+        })}
+      </Description>
       <Canvas>
         <Story id="upgraded-link--loading" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: 'IconLink' })}</Subheading>
+
+      <Subheading>{formatMessage({ defaultMessage: '带有 Prefix Icon（图标）的 Link' })}</Subheading>
       <Canvas>
-        <Story id="upgraded-link--icon-link" />
+        <Story id="upgraded-link--prefix" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '自定义节点' })}</Subheading>
+
+      <Subheading>{formatMessage({ defaultMessage: '自定义渲染根组件' })}</Subheading>
+      <Description>{formatMessage({ defaultMessage: '可以通过 `component` 属性自定义根组件。' })}</Description>
+      <Description>
+        {formatMessage({
+          defaultMessage: '比如可以传 ReactRoute Link 组件给 `component` 属性，实现第三方路由库集成。',
+        })}
+      </Description>
       <Canvas>
-        <Story id="upgraded-link--custom-root-node" />
+        <Story id="upgraded-link--root" />
       </Canvas>
+
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Link} />
     </>
