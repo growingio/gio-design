@@ -1,3 +1,13 @@
+## [22.12.10](https://github.com/growingio/gio-design/compare/v22.12.9...v22.12.10) (2022-01-25)
+
+
+### Bug Fixes
+
+* **button:** disabled style override loading style ([#1812](https://github.com/growingio/gio-design/issues/1812)) ([f264dba](https://github.com/growingio/gio-design/commit/f264dbaf5ae51b26c9ab6d4b816f8741191dac83))
+* **card:** fix card (remove flex) ([#1814](https://github.com/growingio/gio-design/issues/1814)) ([525d507](https://github.com/growingio/gio-design/commit/525d5077fbbc5fe905a8af65ef22f5961125ed7b))
+* **link:** reduce selector's specificity ([#1811](https://github.com/growingio/gio-design/issues/1811)) ([76c5961](https://github.com/growingio/gio-design/commit/76c5961c3d13637bdc5663accd72a9f0f2af4dd1))
+* **select:** clear missing ([#1825](https://github.com/growingio/gio-design/issues/1825)) ([a353ac6](https://github.com/growingio/gio-design/commit/a353ac61b1a989725c49640a70a9b9cfa460ad42))
+
 ## [22.12.9](https://github.com/growingio/gio-design/compare/v22.12.8...v22.12.9) (2022-01-18)
 
 
