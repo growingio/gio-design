@@ -1,3 +1,10 @@
+## [22.12.11](https://github.com/growingio/gio-design/compare/v22.12.10...v22.12.11) (2022-02-02)
+
+
+### Bug Fixes
+
+* **select:** clear missing ([#1827](https://github.com/growingio/gio-design/issues/1827)) ([0a0817c](https://github.com/growingio/gio-design/commit/0a0817cea4caf8001e00b94e43b0da91c75a8e3b))
+
 ## [22.12.10](https://github.com/growingio/gio-design/compare/v22.12.9...v22.12.10) (2022-01-25)
 
 
