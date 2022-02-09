@@ -55,6 +55,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     maxWidth,
     recentId: propsRecentId,
     autoWidth = false,
+    strategy='fixed',
     max,
     ...rest
   } = props;
@@ -189,7 +190,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
         overlayClassName={classNames(`${defaultPrefix}--content`, overlayClassName)}
         placement={placement}
         overlayStyle={overlayStyle}
-        strategy="fixed"
+        strategy={strategy}
         {...rest}
       >
         {renderTrigger()}

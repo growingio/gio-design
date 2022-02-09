@@ -65,8 +65,19 @@ const createSingleOption = (index: number) => ({
   label: uniqueId(`label-${index.toString()}`),
   value: uniqueId(`value-${index.toString()}`),
 });
+// const createCascaderOption = (index: number) => ({
+//   label: uniqueId(`label-${index.toString()}`),
+//   value: uniqueId(`value-${index.toString()}`),
+//   childrens: [
+//     {
+//       label: uniqueId(`label-${index.toString()}`),
+//       value: uniqueId(`label-${index.toString()}`),
+//     },
+//   ],
+// });
 const largeOptions = new Array(200).fill(0).map((v, i) => createOption(i));
 const simpleLargeOptions = new Array(200).fill(0).map((v, i) => createSingleOption(i));
+// const cascaderLargeOptions = new Array(200).fill(0).map((v, i) => createCascaderOption(i));
 const style = { width: '240px' };
 export const Single = (args: ListPickerProps) => {
   const [value, setValue] = useState<undefined | string>('ziyi');
@@ -594,39 +605,55 @@ export const DimensionPicker = () => {
   const [value, setValue] = useState('');
   const renderSelection = (v: number) => <List.Selection options={searchData3(v)} />;
   return (
-    <ListPicker
-      value={value}
-      style={style}
-      placeholder="请选择属性"
-      autoWidth
-      onChange={(e: string) => {
-        setValue(e);
-        action('onChange');
-      }}
-      getContainer={() => document.body}
-    >
-      <SearchBar
-        style={{ width: '100%' }}
-        onChange={() => {
-          action('onsearch');
+    <>
+      <ListPicker
+        value={value}
+        style={style}
+        placeholder="请选择属性"
+        autoWidth
+        onChange={(e: string) => {
+          setValue(e);
+          action('onChange');
         }}
-        placeholder="搜索属性名称"
-      />
-      <Tabs defaultValue="all">
-        <Tabs.Tab value="all" label="全部">
-          <List.Selection options={searchData2} />
-        </Tabs.Tab>
-        <Tabs.Tab value="event" label="事件属性">
-          {renderSelection(2)}
-        </Tabs.Tab>
-        {/* <Tabs.Tab value="visit" label="访问属性">
+        getContainer={() => document.body}
+      >
+        <SearchBar
+          style={{ width: '100%' }}
+          onChange={() => {
+            action('onsearch');
+          }}
+          placeholder="搜索属性名称"
+        />
+        <Tabs defaultValue="all">
+          <Tabs.Tab value="all" label="全部">
+            <List.Selection options={searchData2} />
+          </Tabs.Tab>
+          <Tabs.Tab value="event" label="事件属性">
+            {renderSelection(2)}
+          </Tabs.Tab>
+          {/* <Tabs.Tab value="visit" label="访问属性">
           <List.Selection options={searchData3(3)} />
         </Tabs.Tab>
         <Tabs.Tab value="segements" label="用户属性">
           <List.Selection options={searchData3(4)} />
         </Tabs.Tab> */}
-      </Tabs>
-    </ListPicker>
+        </Tabs>
+      </ListPicker>
+      {/* <ListPicker
+        value={value}
+        // autoWidth
+        placeholder="请选择"
+        onChange={(e: string) => {
+          setValue(e);
+          action('onChange');
+        }}
+      >
+        <SearchBar placeholder="请输入" />
+        <List.Selection>
+          <List options={cascaderLargeOptions} itemStrategy="absolute" model="cascader" />
+        </List.Selection>
+      </ListPicker> */}
+    </>
   );
 };
 export const SplitPicker = (args: ListPickerProps) => {

@@ -29,7 +29,6 @@ const CascaderItem: React.ForwardRefRenderFunction<
   const childNodeOptions = convertChildrenToData(children, {});
   const mergedOptions = useMemo(() => [...childNodeOptions, ...childrens], [childNodeOptions, childrens]);
   const mergedDisabled = disabled ?? contextDisabled;
-
   useEffect(() => {
     setOptions?.(mergedOptions as OptionProps[]);
   }, [mergedOptions, setOptions]);
@@ -96,13 +95,14 @@ const CascaderItem: React.ForwardRefRenderFunction<
             placement="rightTop"
             overlayClassName={popoverClassName}
             // document click contains node
-            getContainer={(node) => node || document.body}
+            getContainer={() => document.body}
             content={content()}
             strategy={strategy}
-            distoryOnHide={false}
+            distoryOnHide
+            delay={200}
             offset={[0, 12]}
           >
-            <span>{element}</span>
+            {element}
           </Popover>
         </div>
       );

@@ -84,7 +84,7 @@ export interface ListPickerProps extends Pick<ListProps, 'model' | 'empty' | 'ne
    * 是否跟随trigger宽度
    */
   autoWidth?: boolean;
-
+  strategy?: 'fixed' | 'absolute';
   ['data-testid']?: string;
 }
 

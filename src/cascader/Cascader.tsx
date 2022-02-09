@@ -135,7 +135,6 @@ export const Cascader: React.FC<CascaderProps> = ({
       <Popover
         content={renderOverlay()}
         trigger="click"
-        distoryOnHide={false}
         visible={visible}
         onVisibleChange={handVisibleChange}
         getContainer={getContainer}
