@@ -7,7 +7,6 @@ import Popover from '../popover';
 import Trigger from '../list-picker/Trigger';
 import List, { OptionProps } from '../list';
 import useControlledState from '../utils/hooks/useControlledState';
-import './style/index';
 import { ListContext } from '../list/context';
 import { convertChildrenToData, convertOptions } from '../list/util';
 import useCacheOptions from '../list/hooks/useCacheOptions';

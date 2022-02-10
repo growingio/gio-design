@@ -7,7 +7,6 @@ import { PREFIX } from './constants';
 import Item from './Item';
 import { convertChildrenToData, convertOptions, getResultValue } from './util';
 import WithRef from '../utils/withRef';
-import './style';
 import { ListContext } from './context';
 import useValue from './hooks/useValue';
 import useCacheOptions from './hooks/useCacheOptions';
