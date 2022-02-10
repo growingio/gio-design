@@ -56,9 +56,10 @@ export const Tabs = WithRef<
 
     const tabPanels = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>, index) => {
       if (isNil(tab.props.value)) {
-        return React.cloneElement(<Tab />, { ...tab.props, value: index });
+        // eslint-disable-next-line react/no-array-index-key
+        return React.cloneElement(<Tab />, { ...tab.props, value: index, key: index });
       }
-      return React.cloneElement(<Tab />, tab.props);
+      return React.cloneElement(<Tab />, { ...tab.props, key: tab.props.value });
     });
 
     return (
