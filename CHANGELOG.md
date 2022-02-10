@@ -1,3 +1,11 @@
+## [22.12.12](https://github.com/growingio/gio-design/compare/v22.12.11...v22.12.12) (2022-02-10)
+
+
+### Bug Fixes
+
+* **list, list-picker, select, cascader:** add deps style ([#1838](https://github.com/growingio/gio-design/issues/1838)) ([40b5a35](https://github.com/growingio/gio-design/commit/40b5a3500ccaf1fa9c254ac99b50480477fc09df))
+* **list:** fix list cascader item position clip error ([#1749](https://github.com/growingio/gio-design/issues/1749)) ([181c28f](https://github.com/growingio/gio-design/commit/181c28fbcc17a30563069626e8a10fde97678f7e))
+
 ## [22.12.11](https://github.com/growingio/gio-design/compare/v22.12.10...v22.12.11) (2022-02-02)
 
 
