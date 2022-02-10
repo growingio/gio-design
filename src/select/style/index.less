@@ -1,11 +1,8 @@
-@import '../../stylesheet/variables/index.less';
-@import '~@gio-design/utils/lib/less/mixins.less';
+@import (reference) '../../stylesheet/variables/index.less';
+
 @select-prefix-cls: ~'@{component-prefix}-select';
 
 .@{select-prefix-cls} {
-  &--content {
-    z-index: 100;
-  }
   &--list {
     box-sizing: border-box;
     min-width: 120px;
@@ -14,8 +11,7 @@
     padding: 8px;
     .scrollbar();
     background: @gray-0;
-    border: 1px solid #dfe4ee;
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(36, 46, 89, 0.1);
+    .border(4, @gray-2);
+    .elevation(2);
   }
 }
