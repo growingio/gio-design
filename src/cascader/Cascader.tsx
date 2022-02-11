@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import { isEmpty } from 'lodash';
-import React, { useEffect, useState } from 'react';
+import { isArray, isEmpty } from 'lodash';
+import React, { useCallback, useEffect, useState } from 'react';
 import { usePrefixCls } from '@gio-design/utils';
 import { List, OptionProps } from '../list';
 import Popover from '../popover';
@@ -54,7 +54,11 @@ export const Cascader: React.FC<CascaderProps> = ({
   const [title, setTitle] = useState('');
   const cache = useChacheOptions();
 
-  const setOptions = (opts: OptionProps[]) => cache.setOptions(opts);
+  const setOptions = useCallback((opts: OptionProps[]) => isArray(opts)?cache.setOptions(opts):null,[cache]);
+
+  useEffect(() => {
+    setOptions(options);
+  },[options, setOptions])
 
   useEffect(() => {
     setTitle(cache.getLabelByValue(value, separator, valueSeparator, 'cascader'));
