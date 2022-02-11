@@ -38,16 +38,17 @@ const templateIconArr = [
   <FlowOutlined />,
 ];
 const renderItems = () =>
-  templateIconArr.map((item, index) => <Tab label={`Option${index}`} value={index} prefix={item} />);
-const noTabItem = () => templateIconArr.map((item, index) => <Tab value={index} prefix={item} />);
-const noPrefixItems = () => templateIconArr.map((item, index) => <Tab label={`Option${index}`} value={index} />);
+  templateIconArr.map((item, index) => <Tab label={`Option${index}`} value={index} prefix={item} key={index} />);
+const noTabItem = () => templateIconArr.map((item, index) => <Tab value={index} prefix={item} key={index} />);
+const noPrefixItems = () =>
+  templateIconArr.map((item, index) => <Tab label={`Option${index}`} value={index} key={index} />);
 const disabledItems = () =>
   templateIconArr.map((item, index) => (
-    <Tab label={`Option${index}`} value={index} disabled={!Math.round(Math.random())} />
+    <Tab label={`Option${index}`} value={index} disabled={!Math.round(Math.random())} key={index} />
   ));
 const haveChildrenItems = () =>
   templateIconArr.map((item, index) => (
-    <Tab label={`Option${index}`} value={index}>
+    <Tab label={`Option${index}`} value={index} key={index}>
       <div
         style={{
           backgroundColor: '#f7f8fc',
@@ -107,12 +108,12 @@ const DemoTemplate: Story<TabsProps> = (args) => (
         <td>
           <Tabs style={{ marginBottom: 10 }} {...args}>
             {templateIconArr.map((item, index) => (
-              <Tab label={`Option${index}`} value={index} />
+              <Tab label={`Option${index}`} value={index} key={index} />
             ))}
           </Tabs>
           <Tabs size="small" {...args}>
             {templateIconArr.map((item, index) => (
-              <Tab label={`Option${index}`} value={index} />
+              <Tab label={`Option${index}`} value={index} key={index} />
             ))}
           </Tabs>
         </td>
@@ -123,7 +124,7 @@ const DemoTemplate: Story<TabsProps> = (args) => (
         <td style={{ width: 500 }}>
           <Tabs {...args}>
             {[...Array(10)].map((item, index) => (
-              <Tab label={`Option${index}`} value={index} />
+              <Tab label={`Option${index}`} value={index} key={index} />
             ))}
           </Tabs>
         </td>
@@ -141,7 +142,7 @@ const DemoTemplate: Story<TabsProps> = (args) => (
         <td>
           <Tabs {...args}>
             {templateIconArr.map((item, index) => (
-              <Tab label={`Option${index}`} value={index} prefix={item} />
+              <Tab label={`Option${index}`} value={index} key={index} prefix={item} />
             ))}
           </Tabs>
         </td>
@@ -152,7 +153,7 @@ const DemoTemplate: Story<TabsProps> = (args) => (
         <td>
           <Tabs {...args}>
             {templateIconArr.map((item, index) => (
-              <Tab value={index} prefix={item} />
+              <Tab value={index} prefix={item} key={index} />
             ))}
           </Tabs>
         </td>
@@ -163,7 +164,7 @@ const DemoTemplate: Story<TabsProps> = (args) => (
         <td>
           <Tabs {...args}>
             {templateIconArr.map((item, index) => (
-              <Tab label={`Option${index}`} value={index} />
+              <Tab label={`Option${index}`} value={index} key={index} />
             ))}
           </Tabs>
         </td>
@@ -174,7 +175,7 @@ const DemoTemplate: Story<TabsProps> = (args) => (
         <td>
           <Tabs {...args}>
             {templateIconArr.map((item, index) => (
-              <Tab label={`Option${index}`} value={index} disabled={!Math.round(Math.random())} />
+              <Tab label={`Option${index}`} value={index} key={index} disabled={!Math.round(Math.random())} />
             ))}
           </Tabs>
         </td>
@@ -190,7 +191,7 @@ const DemoTemplate: Story<TabsProps> = (args) => (
             }}
           >
             {templateIconArr.map((item, index) => (
-              <Tab label={`Option${index}`} value={index}>
+              <Tab label={`Option${index}`} value={index} key={index}>
                 <div
                   style={{
                     backgroundColor: '#f7f8fc',

@@ -1,11 +1,9 @@
-@import '../../stylesheet/variables/index.less';
+@import (reference) '../../stylesheet/variables/index.less';
 
 @tabs-prefix-cls: ~'@{component-prefix}-tabs';
 
 .@{tabs-prefix-cls} {
   display: block;
-  width: inherit;
-  height: inherit;
   overflow-y: auto;
   .scrollbar(@x: overlay, @y: overlay);
 
