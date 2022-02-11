@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { isEmpty } from 'lodash';
+import { isArray, isEmpty } from 'lodash';
 import React, { useCallback, useEffect, useState } from 'react';
 import { usePrefixCls } from '@gio-design/utils';
 import { List, OptionProps } from '../list';
@@ -54,7 +54,7 @@ export const Cascader: React.FC<CascaderProps> = ({
   const [title, setTitle] = useState('');
   const cache = useChacheOptions();
 
-  const setOptions = useCallback((opts: OptionProps[]) => cache.setOptions(opts),[cache]);
+  const setOptions = useCallback((opts: OptionProps[]) => isArray(opts)?cache.setOptions(opts):null,[cache]);
 
   useEffect(() => {
     setOptions(options);
