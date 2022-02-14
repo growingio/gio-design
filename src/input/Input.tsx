@@ -48,13 +48,6 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     [onPressEnter, onKeyPress]
   );
 
-  // const handleChange = useCallback(
-  //   (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     onChange?.(e);
-  //   },
-  //   [onChange]
-  // );
-
   const prefixFcCls = useMemo(
     () =>
       classNames(`${prefixCls}__prefix`, {
@@ -91,7 +84,7 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
     [suffixCls, customizeSuffix, eventRest]
   );
   return (
-    <span className={inputClass} style={style} ref={ref}>
+    <span className={inputClass} style={style} ref={ref} {...eventRest}>
       {prefix}
       <input
         data-testid="input"
