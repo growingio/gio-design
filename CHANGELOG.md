@@ -1,3 +1,12 @@
+## [22.12.13](https://github.com/growingio/gio-design/compare/v22.12.12...v22.12.13) (2022-02-14)
+
+
+### Bug Fixes
+
+* **cascader:** fix options update useEffect ([#1840](https://github.com/growingio/gio-design/issues/1840)) ([3afd75a](https://github.com/growingio/gio-design/commit/3afd75a0f7a1d3b04b9836056930f0e32d7e861d))
+* **InputButton:** handle events ([#1841](https://github.com/growingio/gio-design/issues/1841)) ([2b14866](https://github.com/growingio/gio-design/commit/2b1486677c2125ee846d66203979be600dc71e92))
+* **tabs:** remove width='inherit' and height='inherit' ([#1839](https://github.com/growingio/gio-design/issues/1839)) ([679be96](https://github.com/growingio/gio-design/commit/679be96050aa69cfb523ff16834210bcf3caca95))
+
 ## [22.12.12](https://github.com/growingio/gio-design/compare/v22.12.11...v22.12.12) (2022-02-10)
 
 
