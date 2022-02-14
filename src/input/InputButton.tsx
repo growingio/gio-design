@@ -72,9 +72,11 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
 
   const suffix = useMemo(() => {
     const hideClear = allowClear === false;
-    const defaultSuffix = value && !hideClear && !disabled ? <CloseCircleFilled onClick={onClear} /> : <DownFilled />;
+    const { onClick } = rest;
+    const defaultSuffix =
+      value && !hideClear && !disabled ? <CloseCircleFilled onClick={onClear} /> : <DownFilled onClick={onClick} />;
     return customizeSuffix || defaultSuffix;
-  }, [customizeSuffix, value, onClear, allowClear, disabled]);
+  }, [customizeSuffix, value, onClear, allowClear, disabled, rest]);
 
   const styles = maxWidth ? { maxWidth } : {};
 
