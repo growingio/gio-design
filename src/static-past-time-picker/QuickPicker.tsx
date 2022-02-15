@@ -7,7 +7,7 @@ import { QuickPickerProps } from './interfaces';
 import { experimentalQuickOptions } from './constant';
 import defaultLocaleText from './locales/zh-CN';
 
-function QuickPicker({ options, optionsFilter, onSelect, timeRange, experimental, ...rest }: QuickPickerProps) {
+function QuickPicker({ options:optionsParams, optionsFilter, onSelect, timeRange, experimental, ...rest }: QuickPickerProps) {
   const [currentValue, setCurrentValue] = useState(timeRange);
   const [toToday, setToToday] = useState(false);
   const prefixCls = usePrefixCls('quick-picker');
@@ -27,11 +27,7 @@ function QuickPicker({ options, optionsFilter, onSelect, timeRange, experimental
     return currentOptions;
   };
 
-  let [left, right] = options;
-  if (experimental) {
-    left = [...left, ...experimentalQuickOptions(localeText)[0]];
-    right = [...right, ...experimentalQuickOptions(localeText)[1]];
-  }
+  const options = experimental? [...optionsParams, ...experimentalQuickOptions(localeText)]:optionsParams;
   const handleOnSelect = (selectedValue: string) => {
     setCurrentValue(selectedValue);
   };
@@ -58,8 +54,7 @@ function QuickPicker({ options, optionsFilter, onSelect, timeRange, experimental
   return (
     <div data-testid="quick-picker" className={prefixCls} {...rest}>
       <div className={`${prefixCls}__list`}>
-        <SelectList value={currentValue} options={filter(left as any)} onChange={handleOnSelect} />
-        <SelectList value={currentValue} options={filter(right as any)} onChange={handleOnSelect} />
+        <SelectList value={currentValue} options={filter(options as any)} onChange={handleOnSelect} collapse={Infinity}/>
       </div>
       <div className={`${prefixCls}__bottom`}>
         {experimental &&

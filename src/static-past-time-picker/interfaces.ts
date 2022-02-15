@@ -25,7 +25,7 @@ export enum TimeMode {
 
 interface ExperimentProps {
   /**
-   * 实验特性
+   * 包含至昨日与至今日区分
    */
   experimental?: boolean;
 }
@@ -71,7 +71,7 @@ export interface QuickPickerProps extends PickerProps {
   /**
    * 快捷选项列表
    */
-  options: Option[][];
+  options: Option[];
   /**
    * 快捷选项过滤
    */
