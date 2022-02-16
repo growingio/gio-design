@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 function NoDataImage() {
+  const random = Math.random() * 100000;
   return (
     <svg role="img" aria-labelledby="title" viewBox="0 0 260 164" fill="none">
       <title id="title">No data image</title>
-      <path d="M0 163.147c102.866-40.07 159.923-39.57 260 0H0z" fill="url(#no_data__prefix__paint0_linear)" />
+      <path d="M0 163.147c102.866-40.07 159.923-39.57 260 0H0z" fill={`url(#no_data__prefix${random}__paint_linear)`} />
       <path
         d="M92.838 107.443l2.17-62.923a4 4 0 013.997-3.862h78.36a4 4 0 013.995 4.184l-2.893 62.923a4 4 0 01-3.995 3.816H96.836a4 4 0 01-3.998-4.138z"
         fill="#88A6FF"
@@ -16,7 +17,7 @@ function NoDataImage() {
       <path d="M105 26a2 2 0 012-2h61.216a2 2 0 012 2v74.26a2 2 0 01-2 2H107a2 2 0 01-2-2V26z" fill="#F0F5FF" />
       <path
         d="M88.263 108.789L82.53 50.758a4 4 0 013.981-4.394h17.57a4 4 0 012.828 1.172l2.548 2.548a4.001 4.001 0 002.829 1.172h58.952a4 4 0 013.994 3.787l2.834 53.14a4 4 0 01-3.994 4.213h-81.83a4 4 0 01-3.98-3.607z"
-        fill="url(#no_data__prefix__paint1_linear)"
+        fill={`url(#no_data__prefix${random + 1}__paint_linear)`}
       />
       <rect x={90.249} y={66.745} width={79.89} height={4.891} rx={2.446} fill="#F7F8FC" />
       <circle cx={92.695} cy={56.148} r={4.076} fill="#F7F8FC" />
@@ -64,7 +65,7 @@ function NoDataImage() {
       />
       <defs>
         <linearGradient
-          id="no_data__prefix__paint0_linear"
+          id={`no_data__prefix${random}__paint_linear`}
           x1={131.048}
           y1={133.286}
           x2={131.048}
@@ -76,7 +77,7 @@ function NoDataImage() {
           <stop offset={1} stopColor="#fff" />
         </linearGradient>
         <linearGradient
-          id="no_data__prefix__paint1_linear"
+          id={`no_data__prefix${random + 1}__paint_linear`}
           x1={130}
           y1={62.5}
           x2={130}
