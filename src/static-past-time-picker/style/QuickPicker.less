@@ -7,11 +7,24 @@
 .@{quick-picker-prefix-cls} {
   &__list {
     display: flex;
+    min-width: 280px;
+    .gio-list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: 8px;
+      .gio-list--item {
+        box-sizing: content-box;
+        width: 104px;
+      }
+    }
   }
 
   &__bottom {
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: content-box;
     height: 30px;
-    padding: 8px 0;
+    padding: 8px 16px 16px 16px;
     &__button-group {
       display: flex;
       gap: 5px;
@@ -21,5 +34,4 @@
 
   width: fit-content;
   max-width: fit-content;
-  padding: 8px 8px 20px;
 }

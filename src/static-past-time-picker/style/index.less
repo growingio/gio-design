@@ -12,14 +12,14 @@
   border-radius: 4px;
 
   &__time-mode {
+    box-sizing: border-box;
     width: 160px;
     padding: 8px;
-    border-right: 1px solid #e7eaf9;
+    border-right: 1px solid @gray-2;
   }
 
   &__panel {
-    flex-grow: 1;
-    width: fit-content;
-    max-width: fit-content;
+    box-sizing: border-box;
+    min-width: 280px;
   }
 }

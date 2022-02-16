@@ -62,26 +62,22 @@ function StaticPastTimePicker({
   ];
 
   const quickOptions = [
-    [
       { value: 'day:1,0', label: todayText },
+      { value: 'day:2,1', label: yesterdayText },
       { value: experimental ? 'week-lt-today:1,0' : 'week:1,0', label: thisWeekText },
+      { value: 'week:2,1', label: lastWeekText },
       { value: experimental ? 'month-lt-today:1,0' : 'month:1,0', label: thisMonthText },
+      { value: 'month:2,1', label: lastMonthText },
       { value: experimental ? 'quarter-lt-today:1,0' : 'quarter:1,0', label: thisQuarterText },
+      { value: 'quarter:2,1', label: lastQuarterText },
       { value: experimental ? 'year-lt-today:1,0' : 'year:1,0', label: thisYearText },
+      { value: 'year:2,1', label: lastYearText },
       { value: 'day:8,1', label: last7DaysText },
       { value: 'day:15,1', label: last14DaysText },
-      { value: 'day:91,1', label: last90daysText },
-    ],
-    [
-      { value: 'day:2,1', label: yesterdayText },
-      { value: 'week:2,1', label: lastWeekText },
-      { value: 'month:2,1', label: lastMonthText },
-      { value: 'quarter:2,1', label: lastQuarterText },
-      { value: 'year:2,1', label: lastYearText },
       { value: 'day:31,1', label: last30daysText },
+      { value: 'day:91,1', label: last90daysText },
       { value: 'day:181,1', label: last180DaysText },
       { value: 'day:366,1', label: last365DaysText },
-    ],
   ];
 
   const handleOnSelect = (value: string) => {

@@ -20,14 +20,19 @@ export default {
   },
 } as Meta;
 
-const Template: Story<PastTimePickerProps> = (args) => (
-  <PastTimePicker onSelect={action('selected value:')} placeholder="时间范围" {...args} />
-);
+const Template: Story<PastTimePickerProps> = (args) => <PastTimePicker onSelect={action('selected value:')} placeholder="时间范围"  {...args} />
 
 export const Quick = Template.bind({});
 Quick.args = {
   value: 'day:8,1',
 };
+export const FilterData = Template.bind({});
+FilterData.args={
+  quickOptionsFilter:(s: { value: string; }) =>
+    ['day:2,1', 'day:8,1', 'day:15,1', 'day:31,1'].includes(
+      s.value,
+    )
+}
 
 export const Since = Template.bind({});
 Since.args = {
