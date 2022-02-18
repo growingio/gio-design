@@ -13,7 +13,7 @@ export const formatDates = (dates: [NullableDate, NullableDate], formatString = 
   return `${strongFormat(dates[0]) || ''} - ${strongFormat(dates[1]) || ''}`;
 };
 
-export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRangePickerProps) => {
+export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
   const {
     onVisibleChange: onPopoverVisibleChange,
     overlayClassName,
@@ -33,6 +33,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
     className,
     style,
     dataTestId = 'dataRangePicker',
+    onClear,
     ...restProps
   } = props;
 
@@ -53,12 +54,18 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
     onPopoverVisibleChange?.(current);
   };
 
-  const handleOnSelect = (currentValue: [Date, Date], index: number) => {
+  const handleOnSelect = (currentValue: [NullableDate, NullableDate], index: number) => {
     setControlledValue(currentValue);
     if (index) {
       setVisible(false);
       onSelect?.(currentValue, formatDates(currentValue, formatString));
     }
+  };
+
+  const handleClear = (e?: React.MouseEvent<Element, MouseEvent>) => {
+    e?.stopPropagation();
+    onClear?.(e);
+    handleOnSelect([undefined, undefined], 1);
   };
 
   const content = (
@@ -87,6 +94,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props: DateRange
         active={visible}
         onClick={() => setVisible(!visible)}
         data-testid={dataTestId}
+        onClear={handleClear}
       />
     );
   }
