@@ -1,3 +1,10 @@
+## [22.12.14](https://github.com/growingio/gio-design/compare/v22.12.13...v22.12.14) (2022-02-21)
+
+
+### Bug Fixes
+
+* **page:** 修复在cascader中有隐藏的svg时,后面的svg图标展示错误 ([#1847](https://github.com/growingio/gio-design/issues/1847)) ([55a942f](https://github.com/growingio/gio-design/commit/55a942fbbfc8b8be7c5e90c36be99cd083f059ec))
+
 ## [22.12.13](https://github.com/growingio/gio-design/compare/v22.12.12...v22.12.13) (2022-02-14)
 
 
