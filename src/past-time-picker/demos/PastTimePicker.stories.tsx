@@ -47,6 +47,7 @@ Relative.args = {
 export const Absolute = Template.bind({});
 Absolute.args = {
   value: `abs:${getTime(subMonths(startOfToday(), 1))},${getTime(startOfToday())}`,
+  onRangeSelect:(date:any,index:number) => console.log(date,index)
 };
 
 export const ToYesterday = Template.bind({});
@@ -110,11 +111,13 @@ StaticSince.args = {
 export const StaticRelative = StaticTemplate.bind({});
 StaticRelative.args = {
   value: 'day:9,1',
+  onRangeSelect:(date:any,index:number) => console.log(date,index)
 };
 
 export const StaticAbsolute = StaticTemplate.bind({});
 StaticAbsolute.args = {
   value: `abs:${getTime(subMonths(startOfToday(), 1))},${getTime(startOfToday())}`,
+  onRangeSelect:(date:any,index:number) => console.log(date,index)
 };
 
 export const StaticExperiment = StaticTemplate.bind({});

@@ -21,6 +21,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     modes,
     value,
     onSelect,
+    onRangeSelect,
     onCancel,
     quickOptionsFilter,
     placeholder,
@@ -156,6 +157,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
       experimental={experimental}
       timeRange={timeRange}
       onSelect={handleOnSelect}
+      onRangeSelect={onRangeSelect}
       onCancel={handleOnCancel}
       quickOptionsFilter={quickOptionsFilter}
     />
