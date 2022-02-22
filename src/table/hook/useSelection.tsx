@@ -185,7 +185,9 @@ const useSelection = <RecordType,>(
         </div>
       );
       return disabled ? (
-        contentNode
+        <Tooltip placement="topLeft" arrowPointAtCenter {...tooltipProps}>
+          <span>{contentNode}</span>
+        </Tooltip>
       ) : (
         <Tooltip placement="topLeft" arrowPointAtCenter {...tooltipProps}>
           {contentNode}
