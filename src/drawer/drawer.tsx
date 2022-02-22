@@ -13,7 +13,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   title,
   onClose,
   closeIcon,
-  size,
+  size = 'fixed',
   width,
   maskClosable = true,
   ...restProps

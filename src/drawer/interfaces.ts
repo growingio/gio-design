@@ -24,7 +24,7 @@ export interface DrawerProps {
   /** 强制渲染  */
   forceRender?: boolean;
   /** 大小 */
-  size: 'normal' | 'fixed';
+  size?: 'normal' | 'fixed';
   destroyOnClose?: boolean;
   style?: React.CSSProperties;
   wrapClassName?: string;
