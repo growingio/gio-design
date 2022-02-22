@@ -18,6 +18,7 @@ function StaticPastTimePicker({
   onCancel,
   experimental = false,
   quickOptionsFilter,
+  onRangeSelect,
   ...rest
 }: StaticPastTimePickerProps) {
   const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange);
@@ -98,10 +99,10 @@ function StaticPastTimePicker({
       case TimeMode.Since:
         return <SinceRangePicker {...valueProps} />;
       case TimeMode.Relative:
-        return <RelativeRangePicker {...valueProps} />;
+        return <RelativeRangePicker {...valueProps}/>;
       case TimeMode.Absolute:
       default:
-        return <AbsoluteRangePicker {...valueProps} />;
+        return <AbsoluteRangePicker {...valueProps} onRangeSelect={onRangeSelect} />;
     }
   };
 

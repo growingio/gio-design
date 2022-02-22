@@ -8,7 +8,7 @@ import { RangePickerProps } from './interfaces';
 import { parseStartAndEndDate } from './utils';
 import defaultLocale from './locales/zh-CN';
 
-function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onCancel }: RangePickerProps) {
+function AbsoluteRangePicker({ disabledDate, timeRange, onSelect,onRangeSelect, onCancel }: RangePickerProps) {
   const [dates, setDates] = React.useState<[Date | undefined, Date | undefined]>(parseStartAndEndDate(timeRange));
   const prefixCls = usePrefixCls('range-panel__header');
 
@@ -30,7 +30,10 @@ function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onCancel }: Ra
   const handleOnOK = () => {
     onSelect(`abs:${getTime(startOfDay(dates[0] as Date))},${getTime(endOfDay(dates[1] as Date))}`);
   };
-
+  const handleOnSelect = (date: [Date, Date], index: number) => {
+    setDates(date);
+    onRangeSelect?.(date,index);
+  }
   return (
     <InnerRangePanel
       disableOK={!isValid(dates[0]) || !isValid(dates[1])}
@@ -39,7 +42,7 @@ function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onCancel }: Ra
         <StaticDateRangePicker
           defaultViewDates={[subMonths(startOfToday(), 1), startOfToday()]}
           disabledDate={handleDisabledDate}
-          onSelect={setDates}
+          onSelect={handleOnSelect}
           value={dates as [Date, Date]}
         />
       }

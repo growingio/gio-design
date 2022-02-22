@@ -39,6 +39,7 @@ interface PickerProps extends ExperimentProps, Pick<StaticDatePickerProps, 'disa
    * 选择完后的回调，参数为选中项的 timeRange 值
    */
   onSelect: (timeRange: string) => void;
+  onRangeSelect?: (dates: [Date, Date], index: number) => void;
 }
 
 export interface StaticPastTimePickerProps extends Omit<PickerProps, 'onSelect'> {
@@ -58,6 +59,7 @@ export interface StaticPastTimePickerProps extends Omit<PickerProps, 'onSelect'>
    * 选择完后的回调，参数为选中项的 timeRange 值
    */
   onSelect?: (timeRange: string) => void;
+  onRangeSelect?: (dates: [Date, Date], index: number) => void;
 }
 
 export interface RangePickerProps extends PickerProps {
