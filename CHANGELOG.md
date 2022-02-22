@@ -1,3 +1,15 @@
+# [22.13.0](https://github.com/growingio/gio-design/compare/v22.12.14...v22.13.0) (2022-02-22)
+
+
+### Bug Fixes
+
+* **Table:** support show tooltip when checkbox is disabled ([#1854](https://github.com/growingio/gio-design/issues/1854)) ([fa6d1db](https://github.com/growingio/gio-design/commit/fa6d1dbeac50fc0b84135fac86a0f37c865f2efe))
+
+
+### Features
+
+* **past-time-picker:** new feature onRangeSelect ([#1853](https://github.com/growingio/gio-design/issues/1853)) ([128d11e](https://github.com/growingio/gio-design/commit/128d11ec9caf44d70be4a108ab6b95db00376fda))
+
 ## [22.12.14](https://github.com/growingio/gio-design/compare/v22.12.13...v22.12.14) (2022-02-21)
 
 
