@@ -24,16 +24,9 @@
     margin-bottom: 12px;
   }
 }
-.gio-docs-list {
-  list-style: none;
-  color: #333333;
-  li {
-    list-style: none;
-    font-size: 14px;
-    line-height: 22px;
-    margin: 16px 0;
-  }
-  code {
+
+.sbdocs-content {
+  code:not([class]) {
     margin: 0;
     overflow-x: auto;
     font-weight: 400;
@@ -46,5 +39,16 @@
     background-color: var(--gray-1, #f7f8fc);
     padding: 4px 7px;
     display: inline;
+  }
+}
+
+.gio-docs-list {
+  list-style: none;
+  color: #333333;
+  li {
+    list-style: none;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 16px 0;
   }
 }
