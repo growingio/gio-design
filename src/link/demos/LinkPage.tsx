@@ -21,6 +21,7 @@ export default function LinkPage() {
       </p>
       <p>Upgrading Guide</p>
       <ul>
+        <li>如果 `disabled` 或 `loading` 为 `true`，则根标签会替换成 `span` 标签</li>
         <li>Api变化: 参数icon 更改为 参数 prefix</li>
         <li>样式变化:颜色变化</li>
         <li> 支持原生a标签</li>

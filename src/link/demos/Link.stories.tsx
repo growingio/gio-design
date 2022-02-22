@@ -47,7 +47,7 @@ const Template: Story<LinkProps> = (args) => (
       </tr>
       <tr>
         <td>Disabled</td>
-        <td>disabled状态的样式</td>
+        <td>disabled 状态的样式，如果 `disabled=true`，根标签会替换成 `span`</td>
         <td>
           <Link disabled prefix={<PlusOutlined />} {...args}>
             GrowingIO
@@ -59,7 +59,7 @@ const Template: Story<LinkProps> = (args) => (
       </tr>
       <tr>
         <td>Loading</td>
-        <td>Loading状态的样式</td>
+        <td>Loading 状态的样式，如果 `loading=true`，根标签会替换成 `span`</td>
         <td>
           <Link loading prefix={<PlusOutlined />} {...args}>
             GrowingIO
@@ -79,7 +79,12 @@ Demo.args = {
     margin: '4px 8px',
   },
 };
-const LinkTemplate: Story<LinkProps> = (args) => <Link {...args}>GrowingIO</Link>;
+const LinkTemplate: Story<LinkProps> = (args) => (
+  <>
+    <h4>如果 `disabled` 或 `loading` 为 `true`，则根标签会替换成 `span` 标签</h4>
+    <Link {...args}>GrowingIO</Link>
+  </>
+);
 
 export const Default = LinkTemplate.bind({});
 Default.args = {

@@ -33,7 +33,7 @@ export const Link = React.forwardRef((props, ref) => {
 
   const disabled = disabledProp || loading;
 
-  const Component: React.ElementType = component;
+  const Component: React.ElementType = component === 'a' && disabled ? 'span' : component;
   return (
     <Component
       className={classes}
