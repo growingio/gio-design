@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import { usePrefixCls } from '@gio-design/utils';
+import { isNil } from 'lodash';
 import WithRef from '../utils/withRef';
 import BreadcrumbsProps from './interface';
 
@@ -9,12 +10,14 @@ const Breadcrumbs = WithRef<HTMLElement, BreadcrumbsProps>(
     const prefixCls = usePrefixCls('breadcrumbs');
     const classes = classNames([className, prefixCls]);
 
-    const breadcrumbsItems = React.Children.toArray(children).map((child, index) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <li className={`${prefixCls}__li`} key={`${prefixCls}-li-${index}`}>
-        {child}
-      </li>
-    ));
+    const breadcrumbsItems = React.Children.toArray(children)
+      .filter((child) => !isNil(child) || child !== '')
+      .map((child, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <li className={`${prefixCls}__li`} key={`${prefixCls}-li-${index}`}>
+          {child}
+        </li>
+      ));
 
     return (
       <nav ref={ref} className={classes} aria-label="breadcrumbs" data-testid="breadcrumbs" {...otherProps}>
