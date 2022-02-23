@@ -1,3 +1,14 @@
+## [22.13.1](https://github.com/growingio/gio-design/compare/v22.13.0...v22.13.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* **breadcrumbs:** filter `null`, `undefined`, and null string ([#1856](https://github.com/growingio/gio-design/issues/1856)) ([147617a](https://github.com/growingio/gio-design/commit/147617a89512e98108689c464b85a2018830c752))
+* **date-range-picker:** fix cleanable bug ([#1848](https://github.com/growingio/gio-design/issues/1848)) ([e367f16](https://github.com/growingio/gio-design/commit/e367f161c619e8bd5c9f39c5ab037f9b070561aa))
+* **drawer:** set default value of size to `fixed` ([#1859](https://github.com/growingio/gio-design/issues/1859)) ([aed40f7](https://github.com/growingio/gio-design/commit/aed40f751bff29c9aa64a30dca6471587b03d2c3))
+* **link:** root tag will be replaced `span` when disabled or loading ([#1855](https://github.com/growingio/gio-design/issues/1855)) ([5b79a8b](https://github.com/growingio/gio-design/commit/5b79a8b0785c4c856e06e6c02ab54d1400b6e874))
+* **tag:** fix tag background-color ([#1858](https://github.com/growingio/gio-design/issues/1858)) ([ea8191c](https://github.com/growingio/gio-design/commit/ea8191cb107f2d455ec917939969d9a48118d2d8))
+
 # [22.13.0](https://github.com/growingio/gio-design/compare/v22.12.14...v22.13.0) (2022-02-22)
 
 
