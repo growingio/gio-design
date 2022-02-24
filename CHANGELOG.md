@@ -1,3 +1,11 @@
+## [22.13.2](https://github.com/growingio/gio-design/compare/v22.13.1...v22.13.2) (2022-02-24)
+
+
+### Bug Fixes
+
+* **cascader:** fix cascader value match error option ([#1861](https://github.com/growingio/gio-design/issues/1861)) ([867f509](https://github.com/growingio/gio-design/commit/867f509470672dbb8fbc67d8a4b75fa526562669))
+* **table:** add scrollBar ([#1860](https://github.com/growingio/gio-design/issues/1860)) ([b39e178](https://github.com/growingio/gio-design/commit/b39e178d466ca94cff24aa5ed881fbedd8a73dab))
+
 ## [22.13.1](https://github.com/growingio/gio-design/compare/v22.13.0...v22.13.1) (2022-02-23)
 
 
