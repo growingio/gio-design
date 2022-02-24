@@ -41,7 +41,12 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
     const mergedDisabled = disabled ?? contextDisabled;
     const selected = useMemo(() => {
       if (model === 'cascader') {
-        return (contextValue as string)?.startsWith(generateString(value, selectParent)?.toString());
+        // 最顶级
+        if(!selectParent){
+         return contextValue?.toString()?.split('.')?.[0] === value?.toString();
+        }
+        // 次级
+        return (contextValue as string).startsWith(generateString(value, selectParent)?.toString());
       }
       if (model === 'multiple') {
         return false;
