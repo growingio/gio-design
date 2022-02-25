@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { RangeValue } from 'rc-picker/lib/interface';
 import generateDateFns from 'rc-picker/lib/generate/dateFns';
 import { getClosingViewDate } from 'rc-picker/lib/utils/dateUtil';
-import { add, startOfToday } from 'date-fns';
+import { add, startOfDay } from 'date-fns';
 
-export const getDefaultViewDates = () => [startOfToday(), add(startOfToday(), { months: 1 })] as [Date, Date];
+export const getDefaultViewDates = (defaultDate: Date = new Date()) =>
+  [startOfDay(defaultDate), add(startOfDay(defaultDate), { months: 1 })] as [Date, Date];
 
 export const calcClosingViewDate = (currentDate: Date, offset?: number) =>
   getClosingViewDate(currentDate, 'date', generateDateFns, offset);
