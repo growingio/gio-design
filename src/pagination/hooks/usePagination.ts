@@ -1,5 +1,5 @@
 import { isFunction, range } from 'lodash';
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect } from 'react';
 import PaginationProps, { PaginationItemProps, PaginationItemType } from '../interface';
 import useControlledState from '../../utils/hooks/useControlledState';
 import usePage from './usePage';
@@ -31,35 +31,23 @@ const usePagination = (
 
   const [startPage, endPage, maxPages] = usePage(currentPage, pageSize, total);
 
+  const goToPage: ReturnType<typeof usePagination>['goToPage'] = useCallback(
+    (page, event) => {
+      if (page) {
+        setCurrentPage(Math.min(page, maxPages));
+      }
+      if (isFunction(onChange)) {
+        onChange(page, pageSize, event);
+      }
+    },
+    [maxPages, onChange, pageSize, setCurrentPage]
+  );
+
   useEffect(() => {
     if (currentPage > maxPages) {
-      setCurrentPage(1);
+      goToPage(maxPages, null);
     }
-  }, [maxPages, currentPage, setCurrentPage]);
-
-  const goToPage: ReturnType<typeof usePagination>['goToPage'] = (value, event) => {
-    if (value) {
-      setCurrentPage(value);
-    }
-    if (isFunction(onChange)) {
-      onChange(value, pageSize, event);
-    }
-  };
-
-  /**
-   * 原始的总数
-   */
-  const originTotal = useRef(total);
-
-  // 总数改变跳回首页，
-  useEffect(() => {
-    // 保证首次渲染不跳转
-    if (originTotal.current !== total) {
-      goToPage(1, null);
-    }
-    // 没必要监听 goToPage 依赖变化
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [total]);
+  }, [maxPages, currentPage, setCurrentPage, goToPage]);
 
   const computePage = (type: PaginationItemType): number => {
     switch (type) {

@@ -94,7 +94,6 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
   const handleRowsChange = (rows: number, previousRows: number) => {
     setPageSize(rows);
     onPageSizeChange?.(rows, previousRows);
-    goToPage(1, null);
   };
 
   if (hideOnSinglePage && maxPages <= 1) return null;
