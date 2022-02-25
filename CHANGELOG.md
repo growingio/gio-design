@@ -1,3 +1,10 @@
+## [22.14.1](https://github.com/growingio/gio-design/compare/v22.14.0...v22.14.1) (2022-02-25)
+
+
+### Bug Fixes
+
+* **date-picker:** date panel is not destroyed when it is hidden ([#1864](https://github.com/growingio/gio-design/issues/1864)) ([9bfcf4f](https://github.com/growingio/gio-design/commit/9bfcf4f8fddde77c65eb4880576b6c74ee80e741))
+
 # [22.14.0](https://github.com/growingio/gio-design/compare/v22.13.2...v22.14.0) (2022-02-25)
 
 
