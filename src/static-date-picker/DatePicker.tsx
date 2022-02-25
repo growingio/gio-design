@@ -25,10 +25,12 @@ const OmittedCell: React.FC = () => {
 const DatePicker: React.FC<StaticDatePickerProps> = ({
   viewDate: viewDateProp,
   disabledDate: disabledDateProp,
+  value,
+  defaultValue,
   ...restProps
 }) => {
   const locale = useLocale<Locale>('DatePicker') || defaultLocale;
-  const [viewDate, setViewDate] = useControlledState(viewDateProp, new Date());
+  const [viewDate, setViewDate] = useControlledState(viewDateProp, value ?? defaultValue ?? new Date());
 
   const prefixCls = usePrefixCls('picker');
 
@@ -60,6 +62,8 @@ const DatePicker: React.FC<StaticDatePickerProps> = ({
       data-testid="static-date-picker"
       dateRender={omitOtherDate}
       disabledDate={disabledDate}
+      value={value}
+      defaultValue={defaultValue}
       {...restProps}
       pickerValue={viewDate}
       onPickerValueChange={(date) => setViewDate(date)}

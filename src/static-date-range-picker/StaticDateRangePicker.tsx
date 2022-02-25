@@ -22,11 +22,14 @@ function StaticDateRangePicker({
   locale,
   ...rest
 }: StaticDateRangePickerProps) {
-  const [viewDates, setViewDates] = React.useState<[Date, Date]>(defaultViewDates ?? getDefaultViewDates());
   const [hoveredDates, setHoveredDates] = React.useState<RangeValue<Date>>();
   const [dateIndex, setDateIndex] = React.useState<number>(0);
   // @ts-ignore
   const [selectedValue, setSelectedValue] = useControlledState<RangeValue<Date>>(value, defaultValue);
+
+  const [viewDates, setViewDates] = React.useState<[Date, Date]>(
+    defaultViewDates ?? getDefaultViewDates(selectedValue?.[0] ?? new Date())
+  );
   const prefixCls = usePrefixCls('date-range-picker');
 
   function renderPicker(position: 'left' | 'right') {
