@@ -126,9 +126,12 @@
   &-cell {
     box-sizing: border-box;
     padding: 4px 0;
-    cursor: pointer;
 
-    &::before {
+    &:not(&-disabled) {
+      cursor: pointer;
+    }
+
+    &:not(&-disabled)::before {
       position: absolute;
       right: 0;
       left: 0;
@@ -184,7 +187,7 @@
       background: @blue-3;
     }
 
-    &-disabled {
+    &-in-view&-disabled {
       color: @gray-3;
       cursor: not-allowed;
 
