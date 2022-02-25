@@ -56,9 +56,9 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
 
   const handleOnSelect = (currentValue: [NullableDate, NullableDate], index: number) => {
     setControlledValue(currentValue);
+    onSelect?.(currentValue, formatDates(currentValue, formatString));
     if (index) {
       setVisible(false);
-      onSelect?.(currentValue, formatDates(currentValue, formatString));
     }
   };
 
