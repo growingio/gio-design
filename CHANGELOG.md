@@ -1,3 +1,10 @@
+# [22.14.0](https://github.com/growingio/gio-design/compare/v22.13.2...v22.14.0) (2022-02-25)
+
+
+### Features
+
+* **static-date-picker:** hide non-current month's dates ([#1863](https://github.com/growingio/gio-design/issues/1863)) ([1fbcf75](https://github.com/growingio/gio-design/commit/1fbcf75695f5a288321eec2751ae8d0800ed0454))
+
 ## [22.13.2](https://github.com/growingio/gio-design/compare/v22.13.1...v22.13.2) (2022-02-24)
 
 
