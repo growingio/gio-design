@@ -1,3 +1,11 @@
+## [22.14.2](https://github.com/growingio/gio-design/compare/v22.14.1...v22.14.2) (2022-02-28)
+
+
+### Bug Fixes
+
+* **AbsoluteRangePicker:** fix AbsoluteRangePicker defaultViewDates error ([#1866](https://github.com/growingio/gio-design/issues/1866)) ([e670180](https://github.com/growingio/gio-design/commit/e670180a92cba0525b6cc2c9952107909a920824))
+* **pagination:** fix bug of pagination ([#1862](https://github.com/growingio/gio-design/issues/1862)) ([dd71336](https://github.com/growingio/gio-design/commit/dd71336e00e7a34d9939abbe21cb7743ccc43f8e))
+
 ## [22.14.1](https://github.com/growingio/gio-design/compare/v22.14.0...v22.14.1) (2022-02-25)
 
 
