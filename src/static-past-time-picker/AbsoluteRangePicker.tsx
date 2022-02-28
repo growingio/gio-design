@@ -34,7 +34,7 @@ function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onRangeSelect,
     setDates(date);
     onRangeSelect?.(date, index);
   }
-  const endDay = isValid(dates[1]) ? dates[1] : new Date();
+  const endDay = dates[1] !== undefined && isValid(dates[1]) ? dates[1] : new Date();
   return (
     <InnerRangePanel
       disableOK={!isValid(dates[0]) || !isValid(dates[1])}
