@@ -33,18 +33,18 @@ const usePagination = (
 
   const goToPage: ReturnType<typeof usePagination>['goToPage'] = useCallback(
     (page, event) => {
-      if (page) {
+      if (page > 0) {
         setCurrentPage(Math.min(page, maxPages));
-      }
-      if (isFunction(onChange)) {
-        onChange(page, pageSize, event);
+        if (isFunction(onChange)) {
+          onChange(page, pageSize, event);
+        }
       }
     },
     [maxPages, onChange, pageSize, setCurrentPage]
   );
 
   useEffect(() => {
-    if (currentPage > maxPages) {
+    if (currentPage > maxPages && maxPages > 0) {
       goToPage(maxPages, null);
     }
   }, [maxPages, currentPage, setCurrentPage, goToPage]);
