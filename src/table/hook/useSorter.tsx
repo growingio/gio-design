@@ -29,7 +29,7 @@ const collectSortStates = <RecordType,>(
   columns.forEach((column, index) => {
     const columnPosition = getColumnPos(index, position);
     const columnKey = getColumnKey(column, columnPosition);
-    const { defaultSortOrder } = column;
+    const { defaultSortOrder = null } = column;
 
     if ('children' in column) {
       if ('sortOrder' in column) {
@@ -39,7 +39,7 @@ const collectSortStates = <RecordType,>(
     } else if ('sorter' in column) {
       if ('sortOrder' in column) {
         push(column, columnKey);
-      } else if (init && defaultSortOrder) {
+      } else if (init) {
         push(column, columnKey, {
           sortOrder: defaultSortOrder,
           isControlled: false,
