@@ -1,3 +1,10 @@
+## [22.14.3](https://github.com/growingio/gio-design/compare/v22.14.2...v22.14.3) (2022-02-28)
+
+
+### Bug Fixes
+
+* **pagination:** fix wrong page ([#1867](https://github.com/growingio/gio-design/issues/1867)) ([37497f8](https://github.com/growingio/gio-design/commit/37497f817bb3b79e45069b7f4aca0b1ed6f5821f))
+
 ## [22.14.2](https://github.com/growingio/gio-design/compare/v22.14.1...v22.14.2) (2022-02-28)
 
 
