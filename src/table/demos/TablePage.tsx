@@ -68,6 +68,14 @@ export default function TablePage() {
       <Canvas>
         <Story id="upgraded-table--sortable" />
       </Canvas>
+      <Subheading>Multiple Sortable</Subheading>
+      <Canvas>
+        <Story id="upgraded-table--multiple-sortable" />
+      </Canvas>
+      <Subheading>Controlled Sortable</Subheading>
+      <Canvas>
+        <Story id="upgraded-table--controlled-sortable" />
+      </Canvas>
       <Subheading>{formatMessage({ defaultMessage: 'spanningtable' })}</Subheading>
       <Canvas>
         <Story id="upgraded-table--spanning-table" />

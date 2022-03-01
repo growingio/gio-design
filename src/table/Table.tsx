@@ -183,7 +183,7 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
         const sortState = sortStates.find(({ key }) => key === columnKey);
         const filterState = filterStates.find(({ key }) => key === columnKey);
         let newColumn = column;
-        if (sortState || filterState || !isNil(column.info)) {
+        if (column.sorter || filterState || !isNil(column.info)) {
           newColumn = {
             ...newColumn,
             title: (
@@ -195,6 +195,7 @@ function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRe
                 updateSorterStates={updateSorterStates}
                 updateFilterStates={updateFilterStates}
                 onTriggerStateUpdate={onTriggerStateUpdate}
+                columnKey={columnKey}
               />
             ),
           };

@@ -42,7 +42,6 @@ interface ColumnType<RecordType> extends GioColumnType<RecordType> {
 
   /**
    * 排序优先级，数值越大越靠前
-   * @default 0
    */
   sortPriorityOrder?: number;
 
@@ -112,6 +111,7 @@ interface TitleProps<RecordType> {
   updateSorterStates: (sortState: SortState<RecordType>) => SortState<RecordType>;
   updateFilterStates: (filterState: FilterState<RecordType>) => Record<string, string[]>;
   onTriggerStateUpdate: (onTriggerStateUpdateProps?: OnTriggerStateUpdateProps<RecordType>) => void;
+  columnKey: Key;
 }
 
 interface RowSelection<RecordType> {

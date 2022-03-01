@@ -213,7 +213,7 @@ export const Sortable = () => {
       dataIndex: 'age',
       title: 'Age',
       // sortDirections: ['descend'],
-      sorter: (first, second) => second.age - first.age,
+      sorter: (first, second) => first.age - second.age,
     },
     {
       dataIndex: 'address',
@@ -232,6 +232,81 @@ export const Sortable = () => {
 };
 
 // ----------------------- Sortable -----------------------//
+
+// ----------------------- Multiple Sortable -----------------------//
+
+export const MultipleSortable = () => {
+  const columns: ColumnsType<DataSourceType> = [
+    {
+      dataIndex: 'id',
+      title: 'Id',
+    },
+    {
+      dataIndex: 'name',
+      title: 'Name',
+      sortPriorityOrder: 1,
+      sorter: (first, second) => {
+        if (first.name < second.name) return -1;
+        if (first.name > second.name) return 1;
+        return 0;
+      },
+    },
+    {
+      dataIndex: 'age',
+      title: 'Age',
+      sortPriorityOrder: 2,
+      sorter: (first, second) => first.age - second.age,
+    },
+    {
+      dataIndex: 'address',
+      title: 'Address',
+    },
+  ];
+
+  const data: DataSourceType[] = [
+    {
+      id: '1',
+      name: 'John Brown',
+      age: 11,
+      address: '北京市朝阳公园',
+    },
+    {
+      id: '2',
+      name: 'Jim Green',
+      age: 22,
+      address: '北京市朝阳公园',
+    },
+    {
+      id: '3',
+      name: 'Joe Black',
+      age: 33,
+      address: '北京市朝阳公园',
+    },
+    {
+      id: '4',
+      name: 'Jim Red',
+      age: 33,
+      address: '北京市朝阳公园',
+    },
+    {
+      id: '5',
+      name: 'Jim Red',
+      age: 55,
+      address: '北京市朝阳公园',
+    },
+  ];
+  return (
+    <>
+      {' '}
+      <h4>多列排序</h4>
+      <p>`column` 支持 `sortPriorityOrder` 字段以配置多列排序优先级</p>
+      <Divider style={{ width: '100%' }} />
+      <Table<DataSourceType> pagination={false} dataSource={data} columns={columns} rowKey="id" />
+    </>
+  );
+};
+
+// ----------------------- Multiple Sortable -----------------------//
 
 // ----------------------- Controlled Sortable -----------------------//
 
@@ -277,7 +352,7 @@ export const ControlledSortable = () => {
       info: '您可以通过设置 `sortDirections: ["ascend", "descend", "ascend"]` 来禁止排序恢复到默认状态',
       sortDirections: ['ascend', 'descend', 'ascend'],
       sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.sortOrder : undefined,
-      sorter: (first, second) => second.age - first.age,
+      sorter: (first, second) => first.age - second.age,
     },
     {
       dataIndex: 'address',
