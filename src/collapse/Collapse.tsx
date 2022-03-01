@@ -19,11 +19,11 @@ export const Collapse = WithRef<HTMLDivElement, WithCommonProps<CollapseProps>>(
     'data-testid': dataTestId = 'collapse',
     bordered = true,
     className,
+    expandIcon,
     ...otherProps
   } = props;
   const prefixCls = usePrefixCls('collapse');
   const renderExpandIcon = (panelProps: PanelProps = {}) => {
-    const { expandIcon } = props;
     const icon = expandIcon ? expandIcon(panelProps) : <RightFilled />;
     return (
       <div className={classnames('collapse-arrow-bar', panelProps.isActive ? 'arrow-isRotate' : undefined)}>

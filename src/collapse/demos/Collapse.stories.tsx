@@ -60,7 +60,7 @@ const Template: Story = () => (
       </Panel>
       <Panel header="折叠面板标题" key="2">
         <p>{text}</p>
-        <Collapse expandIcon={() => <RightOutlined />} onChange={callback}>
+        <Collapse expandIcon={() => <RightOutlined size='14px' />} bordered={false} onChange={callback}>
           <Panel header="折叠面板标题" key="1" extra={genExtra()}>
             <p>{text}</p>
             <p>{text}</p>
