@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useRef, useLayoutEffect, useEffect } from 'react';
+import React, { useState, useMemo, useCallback, useRef, useLayoutEffect, useEffect, useContext } from 'react';
 import classNames from 'classnames';
 import { debounce, isFunction, isNil, omit } from 'lodash';
 import ReactDOM from 'react-dom';
@@ -8,6 +8,7 @@ import { PopoverProps } from './interface';
 import { composeRef, supportRef } from '../utils/composeRef';
 import useControlledState from '../utils/hooks/useControlledState';
 import usePop from './usePop';
+import TriggerContext from './context';
 
 const Popover = (props: PopoverProps) => {
   const {
@@ -43,7 +44,10 @@ const Popover = (props: PopoverProps) => {
   const [referenceElement, setReferenceELement] = useState<null | HTMLElement>(null);
   const [popperElement, setPopperElement] = useState<null | HTMLElement>(null);
   const arrowElement = useRef<HTMLDivElement | null>(null);
-
+  const context = useContext(TriggerContext);
+  const hasPopupMouseDown = useRef<boolean>(false);
+  const mouseDownTimeout = useRef<any>(undefined);
+  // const
   useEffect(() => {
     if (!visible) overContentRef.current = false;
   }, [visible]);
@@ -120,11 +124,32 @@ const Popover = (props: PopoverProps) => {
     },
     [disabled, enterable, setVisible, onVisibleChange, update]
   );
+
+  // ============ nest popover on Document click close ============
+  const onPopupMouseDown = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    hasPopupMouseDown.current = true;
+
+    clearTimeout(mouseDownTimeout.current);
+    mouseDownTimeout.current = window.setTimeout(() => {
+      hasPopupMouseDown.current = false;
+    }, 0);
+
+    if (context) {
+      context?.onPopupMouseDown(event);
+    }
+  };
+
+  const triggerContextValue = { onPopupMouseDown };
+
   const onDocumentClick = useCallback(
     (event: MouseEvent) => {
       const { target } = event;
       if (isFunction(referenceElement?.contains) && isFunction(popperElement?.contains)) {
-        if (!referenceElement?.contains(target as Node) && !popperElement?.contains(target as Node)) {
+        if (
+          !referenceElement?.contains(target as Node) &&
+          !popperElement?.contains(target as Node) &&
+          !hasPopupMouseDown.current
+        ) {
           updateVisible(false);
         }
       }
@@ -138,6 +163,8 @@ const Popover = (props: PopoverProps) => {
       document.removeEventListener('mousedown', onDocumentClick);
     };
   }, [onDocumentClick]);
+
+  // ============ end ============
 
   const isClickToShow = useMemo(() => trigger.indexOf('click') !== -1, [trigger]);
 
@@ -224,6 +251,7 @@ const Popover = (props: PopoverProps) => {
       style={{ ...(overlayStyle || {}), ...styles.popper }}
       onMouseEnter={onContentMouseEnter}
       onMouseLeave={onContentMouseLeave}
+      onMouseDownCapture={(e) => onPopupMouseDown(e)}
       onClick={onContentClick}
       role="none"
       {...omit(rest, 'arrowPointAtCenter')}
@@ -257,6 +285,7 @@ const Popover = (props: PopoverProps) => {
     cloneProps.ref = composeRef(setReferenceELement, (child as any).ref);
     triggerNode = React.cloneElement(child as React.ReactElement, cloneProps);
   }
+
   const container = useMemo(() => {
     if (isFunction(getContainer) && !isNil(referenceElement)) {
       return getContainer(referenceElement);
@@ -277,8 +306,10 @@ const Popover = (props: PopoverProps) => {
   );
   return (
     <>
-      {triggerNode}
-      {distoryOnHide ? visible && renderContent : renderContent}
+      <TriggerContext.Provider value={triggerContextValue}>
+        {triggerNode}
+        {distoryOnHide ? visible && renderContent : renderContent}
+      </TriggerContext.Provider>
     </>
   );
 };

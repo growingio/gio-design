@@ -11,6 +11,7 @@ import List from '../List';
 import { convertChildrenToData, generateSelectParent, generateString } from '../util';
 import { ListContext } from '../context';
 import { BaseItemProps } from '..';
+import TriggerContext from '../../popover/context';
 
 const CascaderItem: React.ForwardRefRenderFunction<
   HTMLLIElement,
@@ -23,6 +24,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
   const popoverClassName = `${prefixCls}--content`;
   /** context */
   const context = useContext(ListContext);
+  const popoverContext = useContext(TriggerContext);
   const { disabled: contextDisabled, selectParent, onClick: contextOnClick, setOptions } = context;
   /** end */
   const childSelectPrent = generateSelectParent(label, value, selectParent);
@@ -91,19 +93,21 @@ const CascaderItem: React.ForwardRefRenderFunction<
     if (!isEmpty(childrens) || React.isValidElement(children)) {
       return (
         <div className={prefixClsItem}>
-          <Popover
-            placement="rightTop"
-            overlayClassName={popoverClassName}
-            // document click contains node
-            getContainer={() => document.body}
-            content={content()}
-            strategy={strategy}
-            distoryOnHide
-            delay={200}
-            offset={[0, 12]}
-          >
-            {element}
-          </Popover>
+          <TriggerContext.Provider value={popoverContext}>
+            <Popover
+                placement="rightTop"
+                overlayClassName={popoverClassName}
+                // document click contains node
+                getContainer={() => document.body}
+                content={content()}
+                strategy={strategy}
+                distoryOnHide
+                delay={200}
+                offset={[0, 12]}
+              >
+                {element}
+              </Popover>
+          </TriggerContext.Provider>
         </div>
       );
     }
