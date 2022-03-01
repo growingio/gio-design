@@ -1,3 +1,11 @@
+## [22.14.4](https://github.com/growingio/gio-design/compare/v22.14.3...v22.14.4) (2022-03-01)
+
+
+### Bug Fixes
+
+* **collapse:** collapse style error and icon render error ([#1871](https://github.com/growingio/gio-design/issues/1871)) ([83744f3](https://github.com/growingio/gio-design/commit/83744f354a190b4c1a14dcab6552d88acbe1d100))
+* **list:** list cascader-item on Document click error ([#1870](https://github.com/growingio/gio-design/issues/1870)) ([2d4bd6f](https://github.com/growingio/gio-design/commit/2d4bd6f6296febff20fb578edaa87f64e4c32557))
+
 ## [22.14.3](https://github.com/growingio/gio-design/compare/v22.14.2...v22.14.3) (2022-02-28)
 
 
