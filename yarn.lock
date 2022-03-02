@@ -15118,16 +15118,16 @@ rc-tree-select@4.1.2:
     rc-tree "^3.8.0"
     rc-util "^5.0.5"
 
-rc-tree@5.3.2:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-5.3.2.tgz#f8b400063a3c58dec32f2cff37286e4768d86c33"
-  integrity sha512-ypPn6BTDupBM3WozPe7bZoaAV/7nomg8Yket/YfvkSiTkAjkUW3APzO6MpYLgMrQaPTGHcIeFXpgU5ZusNFQwg==
+rc-tree@5.4.4:
+  version "5.4.4"
+  resolved "https://registry.yarnpkg.com/rc-tree/-/rc-tree-5.4.4.tgz#2ea3663ad3c566aef79a46ba6a1e050d24323e01"
+  integrity sha512-2qoObRgp31DBXmVzMJmo4qmwP20XEa4hR3imWQtRPcgN3pmljW3WKFmZRrYdOFHz7CyTnRsFZR065bBkIoUpiA==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "2.x"
     rc-motion "^2.0.1"
     rc-util "^5.16.1"
-    rc-virtual-list "^3.4.1"
+    rc-virtual-list "^3.4.2"
 
 rc-tree@^3.8.0:
   version "3.11.0"
@@ -15205,7 +15205,7 @@ rc-util@^5.0.0, rc-util@^5.0.1, rc-util@^5.0.5, rc-util@^5.0.6, rc-util@^5.0.7, 
     react-is "^16.12.0"
     shallowequal "^1.1.0"
 
-rc-virtual-list@^3.0.1, rc-virtual-list@^3.2.0, rc-virtual-list@^3.2.6, rc-virtual-list@^3.4.1:
+rc-virtual-list@^3.0.1, rc-virtual-list@^3.2.0, rc-virtual-list@^3.2.6, rc-virtual-list@^3.4.2:
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/rc-virtual-list/-/rc-virtual-list-3.4.2.tgz#1078327aa7230b5e456d679ed2ce99f3c036ebd1"
   integrity sha512-OyVrrPvvFcHvV0ssz5EDZ+7Rf5qLat/+mmujjchNw5FfbJWNDwkpQ99EcVE6+FtNRmX9wFa1LGNpZLUTvp/4GQ==
