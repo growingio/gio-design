@@ -1619,18 +1619,6 @@
   dependencies:
     "@babel/runtime" "^7.14.8"
 
-"@gio-design/table@7.18.1-patch.1":
-  version "7.18.1-patch.1"
-  resolved "https://registry.yarnpkg.com/@gio-design/table/-/table-7.18.1-patch.1.tgz#58b67e141568f7f82d5d4ec26803985d4e5531c2"
-  integrity sha512-jmGKU7FurWfuUpIruoP/H+ZPGA6TIZ9h8x6S2Jvv09JX6jwjU+yH9sYhhSSizzPVXq5N3pRz8O6RBjrMqS7pfg==
-  dependencies:
-    "@babel/runtime" "^7.10.1"
-    classnames "^2.2.5"
-    lodash "^4.17.21"
-    rc-resize-observer "^1.0.0"
-    rc-util "^5.14.0"
-    shallowequal "^1.1.0"
-
 "@gio-design/tokens@22.0.0-alpha.0":
   version "22.0.0-alpha.0"
   resolved "https://registry.yarnpkg.com/@gio-design/tokens/-/tokens-22.0.0-alpha.0.tgz#3089471e2e52f73914952f9448e3894e599bad97"
@@ -15077,7 +15065,7 @@ rc-picker@^2.5.10:
     rc-util "^5.4.0"
     shallowequal "^1.1.0"
 
-rc-resize-observer@^1.0.0, rc-resize-observer@^1.0.1:
+rc-resize-observer@^1.0.0, rc-resize-observer@^1.0.1, rc-resize-observer@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/rc-resize-observer/-/rc-resize-observer-1.2.0.tgz#9f46052f81cdf03498be35144cb7c53fd282c4c7"
   integrity sha512-6W+UzT3PyDM0wVCEHfoW3qTHPTvbdSgiA43buiy8PzmeMnfgnDeb9NjdimMXMl3/TcrvvWl5RRVdp+NqcR47pQ==
@@ -15099,6 +15087,17 @@ rc-select@^11.1.1:
     rc-util "^5.0.1"
     rc-virtual-list "^3.2.0"
     warning "^4.0.3"
+
+rc-table@^7.23.0:
+  version "7.23.0"
+  resolved "https://registry.yarnpkg.com/rc-table/-/rc-table-7.23.0.tgz#e5f76998ecf3246147d45ed311417c08886e6507"
+  integrity sha512-Q1gneB2+lUa8EzCCfbrq+jO1qNSwQv1RUUXKB84W/Stdp4EvGOt2+QqGyfotMNM4JUw0fgGLwY+WjnhUhnLuQQ==
+  dependencies:
+    "@babel/runtime" "^7.10.1"
+    classnames "^2.2.5"
+    rc-resize-observer "^1.1.0"
+    rc-util "^5.14.0"
+    shallowequal "^1.1.0"
 
 rc-tooltip@^5.0.1:
   version "5.1.1"

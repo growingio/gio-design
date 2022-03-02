@@ -162,12 +162,13 @@
     width: 100%;
     min-height: 22px;
     &-info {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 16px;
-      height: 16px;
-      margin-left: 8px;
+      min-height: inherit;
+      padding: 0 8px;
+      color: @gray-3;
+      cursor: help;
       .gio-icon {
         vertical-align: 0;
       }
@@ -204,10 +205,12 @@
       flex-direction: column;
     }
     &-up {
+      color: @gray-3;
       line-height: 0;
       transform: translateY(3px);
     }
     &-down {
+      color: @gray-3;
       line-height: 0;
       transform: translateY(-3px);
     }

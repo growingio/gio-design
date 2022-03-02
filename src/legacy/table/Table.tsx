@@ -1,8 +1,8 @@
 import React, { useMemo, forwardRef, createContext } from 'react';
-import RcTable from '@gio-design/table';
+import RcTable from 'rc-table';
 import classNames from 'classnames';
 import { cloneDeep, isUndefined, get, has, set, isFunction } from 'lodash';
-import { ExpandableConfig } from '@gio-design/table/lib/interface';
+import { ExpandableConfig } from 'rc-table/lib/interface';
 import { compose } from 'lodash/fp';
 import { RightOutlined, DownOutlined } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';

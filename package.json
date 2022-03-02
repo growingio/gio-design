@@ -38,7 +38,6 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@gio-design/table": "7.18.1-patch.1",
     "@popperjs/core": "^2.10.2",
     "@types/react-resizable": "^1.7.3",
     "classnames": "^2.2.6",
@@ -59,6 +58,7 @@
     "rc-notification": "^4.5.4",
     "rc-picker": "^2.5.10",
     "rc-resize-observer": "^1.0.1",
+    "rc-table": "^7.23.0",
     "rc-tooltip": "^5.0.1",
     "rc-tree": "5.3.2",
     "rc-tree-select": "4.1.2",

@@ -6,10 +6,9 @@ import classNames from 'classnames';
 import { findIndex, omit } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
 import { SortableElement, SortableContainer, SortableHandle } from 'react-sortable-hoc';
-import { TableComponents } from '@gio-design/table/es/interface';
+import { TableComponents } from 'rc-table/es/interface';
 import { ColumnType, TableProps } from './interface';
 import Table from './Table';
-import './style/index';
 
 const DragHandle = SortableHandle(() => <MoveOutlined />);
 
