@@ -14,7 +14,7 @@ const collectSortStates = <RecordType,>(
   let sortStates: SortState<RecordType>[] = [];
 
   const push = (column: ColumnsType<RecordType>[number], key: React.Key, state?: Partial<SortState<RecordType>>) => {
-    const { sortPriorityOrder = 0, sortDirections = ['ascend', 'descend', null], sortOrder } = column;
+    const { sortPriorityOrder, sortDirections = ['ascend', 'descend', null], sortOrder } = column;
     sortStates.push({
       column,
       key,
@@ -39,7 +39,7 @@ const collectSortStates = <RecordType,>(
     } else if ('sorter' in column) {
       if ('sortOrder' in column) {
         push(column, columnKey);
-      } else if (init) {
+      } else if (init && defaultSortOrder) {
         push(column, columnKey, {
           sortOrder: defaultSortOrder,
           isControlled: false,
@@ -112,9 +112,11 @@ const useSorter = <RecordType,>(
   const updateSorterStates = useCallback(
     (incomingSortState: SortState<RecordType>) => {
       setSorter(incomingSortState);
-      setSortStates((oldSortStates) =>
-        oldSortStates.map((_sortState) => {
+      setSortStates((oldSortStates) => {
+        const keys: React.Key[] = [];
+        const states = oldSortStates.map((_sortState) => {
           const innerSortState = _sortState;
+          keys.push(innerSortState.key);
           // if update column haven't sortPriorityOrder, clear all active sortOrder state.
           // if update column haven sortPriorityOrder, only update sortOrder which column haven't sortPriorityOrder.
           if (
@@ -130,8 +132,12 @@ const useSorter = <RecordType,>(
             innerSortState.sortOrder = incomingSortState.sortOrder;
           }
           return innerSortState;
-        })
-      );
+        });
+        if (keys.indexOf(incomingSortState.key) === -1) {
+          return [...states, incomingSortState];
+        }
+        return states;
+      });
       if (isFunction(onChange)) {
         onChange(incomingSortState);
       }

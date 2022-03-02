@@ -5,42 +5,51 @@ import { isEmpty, isString, isUndefined } from 'lodash';
 import Button from '../button';
 import Tooltip from '../tooltip';
 import FilterPopover from './FilterPopover';
-import { Key, SortOrder, TitleProps } from './interface';
+import { Key, SortOrder, SortState, TitleProps } from './interface';
 
 const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): SortOrder =>
   current === null ? sortDirections[0] : sortDirections[sortDirections.indexOf(current) + 1];
 
 const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement => {
-  const { prefixCls, column, onTriggerStateUpdate } = props;
+  const { prefixCls, column, onTriggerStateUpdate, sorterState, updateSorterStates, columnKey } = props;
 
-  const { align } = column;
+  const { align, sorter, sortDirections = ['ascend', 'descend', null], sortPriorityOrder } = column;
 
   const renderSorter = (): React.ReactNode => {
-    const { sorterState, updateSorterStates } = props;
-    if (isUndefined(sorterState)) {
-      return null;
-    }
-    const { sortDirections = ['ascend', 'descend', null] } = column;
-    const { sortOrder: sorterOrder } = sorterState;
+    const { sortOrder } = sorterState ?? {};
+
+    if (!sorter) return null;
 
     const handleSorterChange = (): void => {
-      const changedSorterState = {
-        ...sorterState,
-        sortOrder: getNextSortDirection(sortDirections, sorterOrder ?? null),
-      };
+      const nextSortOrder = getNextSortDirection(sortDirections, sortOrder ?? null);
+      const changedSorterState: SortState<RecordType> = sorterState
+        ? {
+            ...sorterState,
+            sortOrder: nextSortOrder,
+          }
+        : {
+            sortOrder: nextSortOrder,
+            column,
+            isControlled: 'sortOrder' in column,
+            key: columnKey,
+            sortDirections,
+            sortPriorityOrder,
+          };
+
       onTriggerStateUpdate({ sorterState: updateSorterStates(changedSorterState) });
     };
+
     return (
       <Button.IconButton className={`${prefixCls}-sorter-button`} type="text" size="small" onClick={handleSorterChange}>
         <>
           <UpFilled
             className={classNames(`${prefixCls}-sorter-button-up`, {
-              active: sorterOrder === 'ascend',
+              active: sortOrder === 'ascend',
             })}
           />
           <DownFilled
             className={classNames(`${prefixCls}-sorter-button-down`, {
-              active: sorterOrder === 'descend',
+              active: sortOrder === 'descend',
             })}
           />
         </>
