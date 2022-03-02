@@ -1,5 +1,5 @@
-import { ColumnType as GioColumnType, GetComponentProps, AlignType, Key } from '@gio-design/table/es/interface';
-import { TableProps as GioTableProps } from '@gio-design/table/es/Table';
+import { ColumnType as GioColumnType, GetComponentProps, AlignType, Key } from 'rc-table/es/interface';
+import { TableProps as GioTableProps } from 'rc-table/es/Table';
 import { PaginationProps } from '../pagination';
 import { CheckboxProps } from '../checkbox';
 import { TooltipProps } from '../tooltip';

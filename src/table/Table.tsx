@@ -1,12 +1,12 @@
 import React, { useMemo, forwardRef, createContext, useCallback, useRef } from 'react';
-import GioTable from '@gio-design/table';
+import GioTable from 'rc-table';
 import classNames from 'classnames';
 import { get, has, isFunction, isNil, isEmpty } from 'lodash';
-import { ExpandableConfig } from '@gio-design/table/lib/interface';
+import { ExpandableConfig } from 'rc-table/lib/interface';
 import { compose } from 'lodash/fp';
 import { RightOutlined, DownOutlined } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
-import { RenderExpandIcon, RowClassName } from '@gio-design/table/es/interface';
+import { RenderExpandIcon, RowClassName } from 'rc-table/es/interface';
 import useMergeRef from '../utils/hooks/useMergeRef';
 import useSorter from './hook/useSorter';
 import useFilter from './hook/useFilter';

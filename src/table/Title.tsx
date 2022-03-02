@@ -94,11 +94,11 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
       return null;
     }
     return (
-      <span className={`${prefixCls}-column-title-info`}>
-        <Tooltip title={info} overlayClassName={`${prefixCls}-tooltip`}>
-          <QuestionCircleOutlined size="12px" />
-        </Tooltip>
-      </span>
+      <Tooltip title={info} overlayClassName={`${prefixCls}-tooltip`}>
+        <span className={`${prefixCls}-column-title-info`}>
+          <QuestionCircleOutlined size="14px" />
+        </span>
+      </Tooltip>
     );
   };
 
