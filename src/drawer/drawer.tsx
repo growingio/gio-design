@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
 import RcDialog from 'rc-dialog';
 import { CloseOutlined } from '@gio-design/icons';
-import { IconButton } from '../button';
 import { DrawerProps } from './interfaces';
 
 export const Drawer: React.FC<DrawerProps> = ({
@@ -43,13 +42,7 @@ export const Drawer: React.FC<DrawerProps> = ({
       className={drawerCls}
       wrapClassName={wrapperCls}
       closable={title !== false}
-      closeIcon={
-        closeIcon || (
-          <IconButton type="text" size="small">
-            <CloseOutlined className={closeCls} />
-          </IconButton>
-        )
-      }
+      closeIcon={closeIcon || <CloseOutlined className={closeCls} />}
       title={title}
       width={size === 'fixed' ? 500 : width}
       {...restProps}
