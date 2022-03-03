@@ -39,7 +39,7 @@
       font-weight: bold;
       line-height: 36px;
       cursor: pointer;
-      transition: all 0.3s, visibility 0s;
+      transition: all 0.3s, visibility 0s, padding 0s;
 
       .arrow-isRotate {
         & svg {
@@ -70,6 +70,10 @@
       &:focus {
         outline: none;
       }
+    }
+
+    &-active > .@{collapse-prefix-cls}-header {
+      padding-bottom: 8px;
     }
 
     .@{collapse-prefix-cls}-header-collapsible-only {
