@@ -1,3 +1,14 @@
+## [22.14.5](https://github.com/growingio/gio-design/compare/v22.14.4...v22.14.5) (2022-03-03)
+
+
+### Bug Fixes
+
+* **collapse:** fix padding-bottom when active ([#1882](https://github.com/growingio/gio-design/issues/1882)) ([c8cbfc5](https://github.com/growingio/gio-design/commit/c8cbfc5babd5953af8ecaee88982e52d929eeed9))
+* **filter-picker:** fix date-range judge error ([#1880](https://github.com/growingio/gio-design/issues/1880)) ([fc506e1](https://github.com/growingio/gio-design/commit/fc506e1cd555c3d8553217ba7fb28a2615a58108))
+* **modal:** fix buttonProps.style covered ([#1881](https://github.com/growingio/gio-design/issues/1881)) ([aa778ca](https://github.com/growingio/gio-design/commit/aa778cae3e3fdcbad8921480e76adb79c3d7b677))
+* **table:** fix multiple sort error ([#1872](https://github.com/growingio/gio-design/issues/1872)) ([c967085](https://github.com/growingio/gio-design/commit/c9670859f30031a7992b59a15fe17796229e24a4))
+* **table:** use rc-table and modify sort-icon color ([#1877](https://github.com/growingio/gio-design/issues/1877)) ([314de5d](https://github.com/growingio/gio-design/commit/314de5d98f9122119316446d0d3e4036240522fc))
+
 ## [22.14.4](https://github.com/growingio/gio-design/compare/v22.14.3...v22.14.4) (2022-03-01)
 
 
