@@ -1,22 +1,24 @@
 import React from 'react';
 import classNames from 'classnames';
-import { usePrefixCls } from '@gio-design/utils';
-import { IconButtonProps } from './interface';
+import { OverridableComponent, usePrefixCls } from '@gio-design/utils';
+import { IconButtonProps, IconButtonTypeMap } from './interface';
 import Button from './Button';
 
-const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>((props, ref) => {
+export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>((props, ref) => {
   const { children, className, ...restProps } = props;
 
   const prefixCls = usePrefixCls('icon-button');
   const classes = classNames(prefixCls, className);
 
   return <Button ref={ref} className={classes} prefix={children} {...restProps} />;
-});
+}) as OverridableComponent<IconButtonTypeMap>;
 
-export const ICON_BUTTON_DISPLAY_NAME = 'IconButton';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+IconButton.displayName = 'IconButton';
 
-IconButton.displayName = ICON_BUTTON_DISPLAY_NAME;
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 IconButton.defaultProps = {
   type: 'primary',
   size: 'normal',

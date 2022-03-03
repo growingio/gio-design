@@ -31,7 +31,7 @@ export default function ButtonPage() {
       </Description>
       <Description>
         {formatMessage({
-          defaultMessage: 'gio-design 提供了3种类型的按钮:',
+          defaultMessage: 'gio-design 提供了 3 种类型的按钮:',
         })}
       </Description>
       <ul className="gio-docs-list">
@@ -72,7 +72,7 @@ export default function ButtonPage() {
       <Subheading>{formatMessage({ defaultMessage: '按钮类型' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '三种按钮类型:Primary，Secondary，Text.不建议在同一页面使用多个Primary Button',
+          defaultMessage: '三种按钮类型: `Primary`, `Secondary`, `Text`. 不建议在同一页面使用多个 Primary Button',
         })}
       </Description>
       <Canvas>
@@ -82,17 +82,30 @@ export default function ButtonPage() {
       <Subheading>{formatMessage({ defaultMessage: '按钮大小' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '按钮有Normal（36px）、Small（30px）两种尺寸。',
+          defaultMessage: '按钮有 Normal（36px）、Small（30px）两种尺寸。',
         })}
       </Description>
       <Canvas>
         <Story id="upgraded-button--sizes" />
       </Canvas>
 
+      <Subheading>{formatMessage({ defaultMessage: '自定义渲染根组件' })}</Subheading>
+      <Description>{formatMessage({ defaultMessage: '可以通过 `component` 属性自定义根组件。' })}</Description>
+      <Description>
+        {formatMessage({
+          defaultMessage:
+            '比如可以传 ReactRoute Link 组件给 `component` 属性，实现第三方路由库集成，同时拥有 Button 组件的样式和路由功能。',
+        })}
+      </Description>
+      <code>{'<Button component={RouteLink} to="//growingio.com">Go to GrowingIO</Button>'}</code>
+      <Canvas>
+        <Story id="upgraded-button--root" />
+      </Canvas>
+
       <Subheading>{formatMessage({ defaultMessage: '禁用状态' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '添加 disabled 属性即可让按钮处于不可用状态，同时按钮样式也会改变',
+          defaultMessage: '添加 `disabled` 属性即可让按钮处于不可用状态，同时按钮样式也会改变',
         })}
       </Description>
       <Canvas>
@@ -102,17 +115,17 @@ export default function ButtonPage() {
       <Description>
         {formatMessage({
           defaultMessage:
-            '有些时候你可能希望为某些按钮设置图标，以增强应用程序的用户体验。可以通过设置 prefix, suffix 为Svg图标来实现',
+            '有些时候你可能希望为某些按钮设置图标，以增强应用程序的用户体验。可以通过设置 `prefix`, `suffix` 为 Svg 图标来实现',
         })}
       </Description>
       <Canvas>
         <Story id="upgraded-button--contains-icon" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: 'Button.IconButton 图标按钮' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '`Button.IconButton` 图标按钮' })}</Subheading>
       <Description>
         {formatMessage({
           defaultMessage:
-            '图标按钮通常位于应用栏和工具栏中。 通过 Button.IconButton组件，配合Svg图标使用。可以通过设置IconButton 的style.fontSize修改图标的大小',
+            '图标按钮通常位于应用栏和工具栏中。 通过 `Button.IconButton` 组件，配合 Svg 图标使用。可以通过设置 `IconButton` 的 `style.fontSize` 修改图标的大小',
         })}
       </Description>
       <Canvas>
@@ -122,7 +135,7 @@ export default function ButtonPage() {
       <Subheading>{formatMessage({ defaultMessage: '加载状态' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '添加 loading 属性即可让按钮处于加载状态。加载中状态的按钮不可点击',
+          defaultMessage: '添加 `loading` 属性即可让按钮处于加载状态。加载中状态的按钮不可点击',
         })}
       </Description>
       <Canvas>
@@ -132,17 +145,17 @@ export default function ButtonPage() {
       <Subheading>{formatMessage({ defaultMessage: 'Block 按钮' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '可以通过设置Button 的style.width=100% 使按钮适合其父宽度',
+          defaultMessage: '可以通过设置 `Button` 的 `style.width = 100%` 使按钮适合其父宽度',
         })}
       </Description>
       <Canvas>
         <Story id="upgraded-button--block-button" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '按钮的active状态' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '按钮的 active 状态' })}</Subheading>
       <Description>
         {formatMessage({
           defaultMessage:
-            '按钮在非禁用状态下包含hover/active样式。可以设置active=true 来给按钮添加一个active状态。可以用于按钮与Dropdown组合下拉菜单时，当下拉列表展开时给按钮一个激活状态',
+            '按钮在非禁用状态下包含 hover / active 样式。可以设置 active = true 来给按钮添加一个 active 状态。可以用于按钮与 `Dropdown` 组合下拉菜单时，当下拉列表展开时给按钮一个激活状态',
         })}
       </Description>
       <Canvas>
@@ -152,7 +165,7 @@ export default function ButtonPage() {
       <ArgsTable of={Button} />
       <Description>
         {formatMessage({
-          defaultMessage: '支持所有原生 button 标签属性',
+          defaultMessage: '支持所有原生 `button` 标签属性',
         })}
       </Description>
     </>

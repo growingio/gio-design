@@ -235,3 +235,14 @@ export const Active: Story<ButtonProps> = () => {
     </>
   );
 };
+
+export const Root: Story<ButtonProps> = () => (
+  <>
+    <Button component="span" type="secondary">
+      这个按钮渲染成了一个 `span` 标签
+    </Button>
+    <Button component="a" type="primary" href="#">
+      这个按钮渲染成了一个 `a` 标签
+    </Button>
+  </>
+);

@@ -1,12 +1,12 @@
 import React, { cloneElement, Children, forwardRef } from 'react';
 import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
-import { get, isFunction, isUndefined, noop } from 'lodash';
+import { isFunction, isUndefined, noop } from 'lodash';
 import DropdownProps from './interface';
 import useControlledState from '../utils/hooks/useControlledState';
 import Popover from '../popover';
-import { BUTTON_DISPLAY_NAME } from '../button/Button';
-import { ICON_BUTTON_DISPLAY_NAME } from '../button/IconButton';
+import IconButton from '../button/IconButton';
+import Button from '../button';
 
 export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
   (
@@ -47,7 +47,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           child.props.onClick?.(...args);
         },
       };
-      if ([BUTTON_DISPLAY_NAME, ICON_BUTTON_DISPLAY_NAME].includes(get(child.type, 'displayName'))) {
+      if (Object.is(child, Button) || Object.is(child, IconButton)) {
         childProps.active = child.props.active ?? controlledVisible;
       }
       return cloneElement(child, childProps);
