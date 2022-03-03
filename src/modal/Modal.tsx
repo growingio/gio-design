@@ -3,7 +3,8 @@ import classnames from 'classnames';
 import { useLocale, usePrefixCls } from '@gio-design/utils';
 import RcDialog from 'rc-dialog';
 import { CloseOutlined } from '@gio-design/icons';
-import Button, { IconButton } from '../button';
+import { omit } from 'lodash';
+import Button from '../button';
 import { ModalProps } from './interface';
 import defaultLocale from '../locales/zh-CN';
 
@@ -44,21 +45,27 @@ const Modal: React.FC<ModalProps> = ({
         <div>
           <Button
             type="secondary"
-            {...closeButtonProps}
-            style={{ padding: '7px 13px' }}
+            style={{ padding: '7px 13px', ...closeButtonProps?.style }}
             className={closeBtnCls}
-            onClick={onClose}
+            onClick={(e) => {
+              onClose?.(e);
+              closeButtonProps?.onClick?.(e);
+            }}
+            {...omit(closeButtonProps, 'style', 'className', 'onClick')}
           >
             {customizeCloseText ?? closeText ?? '取消'}
           </Button>
           {useOkBtn && (
             <Button
               type="primary"
-              {...okButtonProps}
-              loading={confirmLoading}
+              loading={confirmLoading ?? okButtonProps?.loading}
               className={okBtnCls}
-              style={{ padding: '7px 13px' }}
-              onClick={onOk}
+              style={{ padding: '7px 13px', ...okButtonProps?.style }}
+              onClick={(e) => {
+                onOk?.(e);
+                okButtonProps?.onClick?.(e);
+              }}
+              {...omit(okButtonProps, 'style', 'onClick', 'className', 'loading')}
             >
               {customizeOKText ?? okText ?? '确定'}
             </Button>
@@ -84,13 +91,7 @@ const Modal: React.FC<ModalProps> = ({
       className={modalCls}
       wrapClassName={wrapperCls}
       closable={title !== false}
-      closeIcon={
-        closeIcon || (
-          <IconButton type="text" size="small">
-            <CloseOutlined className={closeCls} />
-          </IconButton>
-        )
-      }
+      closeIcon={closeIcon || <CloseOutlined className={closeCls} />}
       title={title}
       footer={renderDefaultFooter()}
       {...restProps}
