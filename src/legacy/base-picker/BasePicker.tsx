@@ -29,7 +29,10 @@ function BasePicker({
     searchBar?.onSearch(current.slice(0, 200).toLocaleLowerCase());
   }
 
-  const tabs = React.useMemo(() => tabNav?.items?.map((i) => <Tab label={i.children} value={i.key} />), [tabNav]);
+  const tabs = React.useMemo(
+    () => tabNav?.items?.map((i) => <Tab label={i.children} value={i.key} key={i.key} />),
+    [tabNav]
+  );
 
   const cls = classnames(prefixCls, className);
   let content;

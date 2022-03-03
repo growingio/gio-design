@@ -1,7 +1,5 @@
-/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
 import moment, { Moment } from 'moment';
-import { get, isUndefined } from 'lodash';
 import RelativeCurrent from './components/RelativeCurrent';
 import RelativeBetween from './components/RelativeBetween';
 import IncludeToday from './components/IncludeToday';
@@ -97,8 +95,8 @@ function DateAttrSelect(props: DateAttrSelectProps) {
     attrChange([v]);
   };
   const dateRangeChange = (value?: [NullableDate, NullableDate]) => {
-    if (!value || isUndefined(get(value, '[0]') || get(value, '[1]'))) return;
-    const dateRange = [moment(value?.[0]), moment(value?.[1])];
+    if (!value || value.some((item) => !moment(item).isValid())) return;
+    const dateRange = [moment(value[0]), moment(value[1])];
     dateRange && setTimeRange(dateRange);
     dateRange &&
       attrChange([
