@@ -60,8 +60,7 @@ function FilterList(props: FilterListProps) {
   };
   const deleteFilterItem = (index: number) => {
     if (filterList.length > 1) {
-      filterList.splice(index, 1);
-      setFilterList([...filterList]);
+      setFilterList([...filterList.slice(0, index), ...filterList.slice(index + 1)]);
     } else {
       setFilterList([defaultFilterItem]);
     }
