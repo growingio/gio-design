@@ -45,7 +45,7 @@ export const Drawer: React.FC<DrawerProps> = ({
       closable={title !== false}
       closeIcon={
         closeIcon || (
-          <IconButton type="text" size="small">
+          <IconButton component="span" type="text" size="small">
             <CloseOutlined className={closeCls} />
           </IconButton>
         )
