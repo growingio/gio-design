@@ -1,3 +1,10 @@
+## [22.14.6](https://github.com/growingio/gio-design/compare/v22.14.5...v22.14.6) (2022-03-03)
+
+
+### Bug Fixes
+
+* **FilterPicker:** fix delete condition on error ([#1884](https://github.com/growingio/gio-design/issues/1884)) ([f289a35](https://github.com/growingio/gio-design/commit/f289a354bff71006f3ff7abaf1bf0c25a0846e9c))
+
 ## [22.14.5](https://github.com/growingio/gio-design/compare/v22.14.4...v22.14.5) (2022-03-03)
 
 
