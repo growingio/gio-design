@@ -28,7 +28,8 @@
     height: auto;
     max-height: 360px;
     padding: 0;
-    .scrollbar(@x: hidden, @y: initial);
+    .scrollbar();
+    overflow: initial;
   }
   & .@{cascader-prefix-cls}--list {
     padding: 8px;
@@ -37,7 +38,8 @@
     height: auto;
     max-height: 360px;
     padding: 0;
-    .scrollbar(@x: hidden, @y: initial);
+    .scrollbar();
+    overflow: initial;
     & .@{list-prefix-cls} {
       height: auto;
       max-height: none;
