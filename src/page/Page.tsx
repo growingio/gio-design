@@ -2,15 +2,17 @@ import React from 'react';
 import classnames from 'classnames';
 import { useLocale, usePrefixCls } from '@gio-design/utils';
 import { PageProps } from './interfaces';
-import ForbiddenSVG from './svg/ForbiddenSVG';
-import NotFoundSVG from './svg/NotFoundSVG';
-import DeletedSVG from './svg/DeletedSVG';
-import SharedSVG from './svg/SharedSVG';
-import InternalServerErrorSVG from './svg/InternalServerErrorSVG';
-import EmptyImage from './svg/EmptyImageSVG';
-import NoDataImage from './svg/NoDataImageSVG';
-import NoResultImage from './svg/NoResultImageSVG';
-import NoFindImage from './svg/NoFindImageSVG';
+import {
+  ForbiddenSVG,
+  NotFoundSVG,
+  DeletedSVG,
+  SharedSVG,
+  InternalServerErrorSVG,
+  EmptyImageSVG,
+  NoDataImageSVG,
+  NoResultImageSVG,
+  NoFindImageSVG,
+} from './svg';
 import Button from '../button';
 import defaultLocale from './locales/zh-CN';
 
@@ -22,19 +24,19 @@ function Page({ className, style, type = 'noData', image, description, cta, size
   };
   const typeMap = {
     empty: {
-      image: EmptyImage,
+      image: EmptyImageSVG,
       description: localeContent.empty,
     },
     noData: {
-      image: NoDataImage,
+      image: NoDataImageSVG,
       description: localeContent.noData,
     },
     noResult: {
-      image: NoResultImage,
+      image: NoResultImageSVG,
       description: localeContent.noResult,
     },
     noFind: {
-      image: NoFindImage,
+      image: NoFindImageSVG,
       description: localeContent.noFind,
     },
     noAuth: {
