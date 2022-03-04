@@ -47,32 +47,36 @@ const arr: PageProps['type'][] = [
 const demoTemplate: Story<PageProps> = (args) => (
   <>
     <table className="table-demo">
-      <tr>
-        <th>Controls</th>
-        <th>Example</th>
-      </tr>
-      {arr.map((item: PageProps['type']) => (
+      <thead>
         <tr>
-          <td>{item}</td>
-          <td>
-            <Page {...args} type={item} />
-            <Page
-              {...args}
-              size="small"
-              type={item}
-              cta={null}
-              description={
-                <>
-                  {item}
-                  <Button type="text" size="small">
-                    从{item}中移除
-                  </Button>
-                </>
-              }
-            />
-          </td>
+          <th>Controls</th>
+          <th>Example</th>
         </tr>
-      ))}
+      </thead>
+      <tbody>
+        {arr.map((item: PageProps['type']) => (
+          <tr key={item}>
+            <td>{item}</td>
+            <td>
+              <Page {...args} type={item} />
+              <Page
+                {...args}
+                size="small"
+                type={item}
+                cta={null}
+                description={
+                  <>
+                    {item}
+                    <Button type="text" size="small">
+                      从{item}中移除
+                    </Button>
+                  </>
+                }
+              />
+            </td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   </>
 );
