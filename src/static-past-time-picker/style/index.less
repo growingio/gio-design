@@ -1,25 +1,20 @@
-@import '../../stylesheet/index.less';
-@import '../../stylesheet/mixin/index.less';
-@import '../../stylesheet/variables/index.less';
+@import (reference) '../../stylesheet/variables/index.less';
 
 @past-time-static-picker-prefix-cls: ~'@{component-prefix}-static-past-time-picker';
 
 .@{past-time-static-picker-prefix-cls} {
   display: flex;
-  width: fit-content;
-  max-width: fit-content;
   background: #fff;
   border-radius: 4px;
 
   &__time-mode {
     box-sizing: border-box;
-    width: 160px;
+    min-width: 160px;
     padding: 8px;
     border-right: 1px solid @gray-2;
   }
 
   &__panel {
     box-sizing: border-box;
-    min-width: 280px;
   }
 }

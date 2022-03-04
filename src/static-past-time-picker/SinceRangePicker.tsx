@@ -42,7 +42,14 @@ function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experim
               setEndKey(e.target.value);
             }}
           >
-            {endDateKeys.map((o: string) => o && <SwitchGroup.Item value={o}>{END_DATE_MAPPING[o]}</SwitchGroup.Item>)}
+            {endDateKeys.map(
+              (o: string) =>
+                o && (
+                  <SwitchGroup.Item key={o} value={o}>
+                    {END_DATE_MAPPING[o]}
+                  </SwitchGroup.Item>
+                )
+            )}
           </SwitchGroup>
         </span>
       </>
