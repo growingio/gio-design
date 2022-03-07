@@ -1,3 +1,12 @@
+## [22.14.7](https://github.com/growingio/gio-design/compare/v22.14.6...v22.14.7) (2022-03-07)
+
+
+### Bug Fixes
+
+* **list:** list selection scroll error ([#1887](https://github.com/growingio/gio-design/issues/1887)) ([b4d28b3](https://github.com/growingio/gio-design/commit/b4d28b3e22e87b250d31843edd2aadf6c54b87e5))
+* **page:** fix duplicate svg id ([#1885](https://github.com/growingio/gio-design/issues/1885)) ([ccbd545](https://github.com/growingio/gio-design/commit/ccbd545e305f4b34db2e0a2bdf4999c0702f222d))
+* **static-past-time-picker:** fix style ([#1886](https://github.com/growingio/gio-design/issues/1886)) ([694345a](https://github.com/growingio/gio-design/commit/694345a84398f02ccc6b6c4a5750a3820b353bcf))
+
 ## [22.14.6](https://github.com/growingio/gio-design/compare/v22.14.5...v22.14.6) (2022-03-03)
 
 
