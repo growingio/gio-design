@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { isEmpty } from 'lodash';
 import NumberAttrSelect from './components/NumberAttrSelect';
 import DateAttrSelect from './components/DateAttrSelect';
 import StringAttrSelect from './components/StringAttrSelect/index';
@@ -30,6 +31,14 @@ interface FilterAttrOverlayProps {
   exprKey: string;
   operationsOption?: operationsOptionType;
   numType?: 'positivedecimal' | 'decimal';
+}
+
+function usePrevious<T>(value: T): T | undefined {
+  const ref = useRef<T>();
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
 }
 
 function FilterAttrOverlay(props: FilterAttrOverlayProps) {
@@ -71,6 +80,18 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [op, valueType]);
+
+  const previousValueType = usePrevious(valueType);
+  useEffect(() => {
+    if (valueType !== previousValueType) {
+      if (isEmpty(values)) {
+        setAttrValue([]);
+      }
+      if (op) {
+        setOperationValue(op);
+      }
+    }
+  }, [previousValueType, valueType, values, op]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
@@ -163,7 +184,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
             attrSelect={selectValue}
             attrChange={setAttrValue}
             curryDimensionValueRequest={curryDimensionValueRequest}
-            values={attrValue.filter(item => item !== ' ')}
+            values={attrValue.filter((item) => item !== ' ')}
             exprKey={exprKey}
           />
         );
