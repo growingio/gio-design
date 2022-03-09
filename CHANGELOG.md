@@ -1,3 +1,13 @@
+## [22.14.9](https://github.com/growingio/gio-design/compare/v22.14.8...v22.14.9) (2022-03-09)
+
+
+### Bug Fixes
+
+* **checkbox:** fix box-sizing ([#1891](https://github.com/growingio/gio-design/issues/1891)) ([8101e12](https://github.com/growingio/gio-design/commit/8101e12a45b569b7c3e798e2dbdaa5242a439bc5))
+* **filter-picker:** when `valueType` was changed initialize state ([#1894](https://github.com/growingio/gio-design/issues/1894)) ([1be3104](https://github.com/growingio/gio-design/commit/1be31045a41847073ab85dee03e1984f6d9eea1b))
+* **list-picker:** fix list-picker scroll bar style error ([#1896](https://github.com/growingio/gio-design/issues/1896)) ([74e6cfd](https://github.com/growingio/gio-design/commit/74e6cfda4b53cc68c19687220ea3dcfcd4c9795f))
+* **panel:** change panel text ([#1895](https://github.com/growingio/gio-design/issues/1895)) ([e01b8eb](https://github.com/growingio/gio-design/commit/e01b8eba6d984dfaa892ebc7cd72409fab0bc02b))
+
 ## [22.14.8](https://github.com/growingio/gio-design/compare/v22.14.7...v22.14.8) (2022-03-09)
 
 
