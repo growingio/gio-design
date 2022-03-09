@@ -1,3 +1,11 @@
+## [22.14.8](https://github.com/growingio/gio-design/compare/v22.14.7...v22.14.8) (2022-03-09)
+
+
+### Bug Fixes
+
+* **checkbox:** box-sizing property hardcoded ([#1889](https://github.com/growingio/gio-design/issues/1889)) ([9b80ee1](https://github.com/growingio/gio-design/commit/9b80ee13beabb238f82c2de15675b78d831d05a9))
+* **list-picker:** fix selection style error ([#1890](https://github.com/growingio/gio-design/issues/1890)) ([163ebb6](https://github.com/growingio/gio-design/commit/163ebb62247de6dde1ce9e090eaa9c31acd30836))
+
 ## [22.14.7](https://github.com/growingio/gio-design/compare/v22.14.6...v22.14.7) (2022-03-07)
 
 
