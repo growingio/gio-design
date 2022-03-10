@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { isEmpty } from 'lodash';
 import NumberAttrSelect from './components/NumberAttrSelect';
 import DateAttrSelect from './components/DateAttrSelect';
@@ -33,12 +33,12 @@ interface FilterAttrOverlayProps {
   numType?: 'positivedecimal' | 'decimal';
 }
 
-function usePrevious<T>(value: T): T | undefined {
+function usePrevious<T>(value: T): React.MutableRefObject<T | undefined> {
   const ref = useRef<T>();
   useEffect(() => {
     ref.current = value;
   }, [value]);
-  return ref.current;
+  return ref;
 }
 
 function FilterAttrOverlay(props: FilterAttrOverlayProps) {
@@ -58,40 +58,35 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     list: t.list,
   };
 
-  useEffect(() => {
-    if (valueType === 'date') {
-      // 此处是为了处理，日期类型时，包含当天，选项('>=', '<=')不在 selectOptions 里面
-      if (op === '>=') {
-        setOperationValue('>');
-      } else if (op === '<=') {
-        setOperationValue('<');
-      } else if (op === 'relativeTime') {
-        // 相对现在和相对区间，传的参数都为relativeTime，需要转换成relativeCurrent（相对现在），relativeBetween（相对区间）
-        const relativeTime = values?.[0].split(':')[1].split(',');
-        if (relativeTime.length === 1 || relativeTime.includes('0')) {
-          setOperationValue('relativeCurrent');
-        } else {
-          setOperationValue('relativeBetween');
+  const getOperation = useCallback(
+    (type: attributeValue, operation: typeof operationValue, opValues: string[]): typeof operationValue => {
+      if (type === 'date') {
+        if (operation === '>=') return '>';
+        if (operation === '<=') return '<';
+        if (operation === 'relativeTime') {
+          // 相对现在和相对区间，传的参数都为relativeTime，需要转换成relativeCurrent（相对现在），relativeBetween（相对区间）
+          const relativeTime = opValues?.[0].split(':')[1].split(',');
+          if (relativeTime.length === 1 || relativeTime.includes('0')) {
+            return 'relativeCurrent';
+          }
+          return 'relativeBetween';
         }
       }
-    }
-    if (values?.[0] === ' ' && valueType !== 'list') {
-      setOperationValue(op === '!=' ? 'hasValue' : 'noValue');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [op, valueType]);
+      if (opValues?.[0] === ' ' && type !== 'list') {
+        return operation === '!=' ? 'hasValue' : 'noValue';
+      }
+      return operation;
+    },
+    []
+  );
 
   const previousValueType = usePrevious(valueType);
   useEffect(() => {
-    if (valueType !== previousValueType) {
-      if (isEmpty(values)) {
-        setAttrValue([]);
-      }
-      if (op) {
-        setOperationValue(op);
-      }
+    if (valueType !== previousValueType.current && isEmpty(values)) {
+      setAttrValue([]);
     }
-  }, [previousValueType, valueType, values, op]);
+    setOperationValue(getOperation(valueType, op, values));
+  }, [previousValueType, valueType, values, op, getOperation]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);

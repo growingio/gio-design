@@ -99,4 +99,6 @@ const Input = React.forwardRef<HTMLSpanElement, InputProps>((props, ref) => {
   );
 });
 
+Input.displayName = 'Input';
+
 export default Input;

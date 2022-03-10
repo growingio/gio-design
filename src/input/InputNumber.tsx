@@ -6,4 +6,6 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>((props,
   <Input data-testid="input-number" {...props} type="number" ref={ref} />
 ));
 
+InputNumber.displayName = 'InputNumber';
+
 export default InputNumber;

@@ -200,23 +200,23 @@
   &-sorter-button {
     height: 22px;
     padding: 0 8px;
+    color: @gray-3;
+    line-height: 0;
     border: none;
     & > [class*='prefix-icon'] {
       flex-direction: column;
     }
     &-up {
-      color: @gray-3;
-      line-height: 0;
       transform: translateY(3px);
+      &.active {
+        color: @blue-3;
+      }
     }
     &-down {
-      color: @gray-3;
-      line-height: 0;
       transform: translateY(-3px);
-    }
-    &-up.active,
-    &-down.active {
-      color: @blue-3;
+      &.active {
+        color: @blue-3;
+      }
     }
   }
 
