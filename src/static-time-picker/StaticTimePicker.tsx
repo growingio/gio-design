@@ -8,7 +8,7 @@ import defaultLocale from './locales/zh-CN';
 import { StaticTimePickerProps } from './interfaces';
 
 export function StaticTimePicker({ className, showSecond = false, renderFooter, ...restProps }: StaticTimePickerProps) {
-  const prefixCls = usePrefixCls('new-time-picker');
+  const prefixCls = usePrefixCls('time-picker');
   const locale = useLocale<Locale>('StaticTimePicker') || defaultLocale;
 
   return (

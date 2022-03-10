@@ -115,7 +115,7 @@ export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) =>
     <Popover
       data-testid={DEFAULT_DATA_TESTID}
       content={overlay}
-      trigger={['click', 'focus']}
+      trigger="click"
       visible={visible}
       placement="bottomLeft"
       overlayClassName={overlayCls}
