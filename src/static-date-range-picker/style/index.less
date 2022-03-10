@@ -1,9 +1,6 @@
-@import '../../stylesheet/index.less';
-@import '../../stylesheet/mixin/index.less';
-@import '../../stylesheet/variables/index.less';
-
-@date-range-picker-prefix-cls: ~'@{component-prefix}-date-range-picker';
-@static-date-range-picker-prefix-cls: ~'@{component-prefix}-picker';
+@import (reference) '../../stylesheet/variables/index.less';
+@import (reference) '../../static-date-picker/style/index.less';
+@import (reference) '../../date-range-picker/style/index.less';
 
 .@{date-range-picker-prefix-cls} {
   display: flex;
@@ -16,13 +13,13 @@
   }
 
   &__left {
-    .@{static-date-range-picker-prefix-cls}-body {
-      border-right: 1px solid @palette-gray-3;
+    .@{static-date-picker-prefix-cls}-body {
+      border-right: 1px solid @gray-2;
     }
   }
 }
 
-.@{static-date-range-picker-prefix-cls} {
+.@{static-date-picker-prefix-cls} {
   &-cell {
     &-in-view&-range-start,
     &-in-view&-range-end {
@@ -30,12 +27,12 @@
     }
     &-in-view&-range-start &-inner,
     &-in-view&-range-end &-inner {
-      background: @palette-blue-4;
+      background: @blue-3;
     }
     &-in-view&-range-start:not(&-range-start-single)::before,
     &-in-view&-range-end:not(&-range-end-single)::before,
     &-in-view&-in-range::before {
-      background-color: @palette-blue-1;
+      background-color: @blue-1;
     }
     &-in-view&-range-start::before {
       left: 50%;
@@ -57,8 +54,8 @@
         z-index: 0;
         box-sizing: content-box;
         height: 22px;
-        border-top: 1px dashed @palette-blue-4;
-        border-bottom: 1px dashed @palette-blue-4;
+        border-top: 1px dashed @blue-3;
+        border-bottom: 1px dashed @blue-3;
         content: '';
       }
     }
@@ -70,7 +67,7 @@
     &-in-view&-range-hover-edge-start:not(&-range-hover-edge-start-near-range)::after,
     &-in-view&-range-hover-start::after {
       left: 6px;
-      border-left: 1px dashed @palette-blue-4;
+      border-left: 1px dashed @blue-3;
       border-top-left-radius: 4px;
       border-bottom-left-radius: 4px;
     }
@@ -82,7 +79,7 @@
     &-in-view&-range-hover-edge-end:not(&-range-hover-edge-end-near-range)::after,
     &-in-view&-range-hover-end::after {
       right: 6px;
-      border-right: 1px dashed @palette-blue-4;
+      border-right: 1px dashed @blue-3;
       border-top-right-radius: 4px;
       border-bottom-right-radius: 4px;
     }

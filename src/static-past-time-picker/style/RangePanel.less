@@ -1,10 +1,8 @@
-@import '../../stylesheet/index.less';
-@import '../../stylesheet/mixin/index.less';
-@import '../../stylesheet/variables/index.less';
+@import (reference) '../../stylesheet/variables/index.less';
+@import (reference) '../../date-range-picker/style/index.less';
 
 @range-panel-prefix-cls: ~'@{component-prefix}-range-panel';
 @date-picker-prefix-cls: ~'@{component-prefix}-picker-panel';
-@date-range-picker-prefix-cls: ~'@{component-prefix}-date-range-picker';
 @range-input-trigger-prefix-cls: ~'@{component-prefix}-range-input-trigger';
 
 .@{range-panel-prefix-cls} {
@@ -15,11 +13,8 @@
     border: none;
 
     &__text {
-      .font();
-
-      /* $palette/black/6 */
-      color: #313e75;
-
+      .text-body2();
+      color: @gray-5;
       line-height: 30px;
     }
 
@@ -37,9 +32,7 @@
   &__divider {
     height: 0;
     margin: 0;
-
-    /* Border/Border-1 */
-    border-bottom: 1px solid #e7eaf9;
+    border-bottom: 1px solid @gray-2;
   }
 
   &__body {
@@ -47,8 +40,7 @@
 
     & > .@{date-picker-prefix-cls},
     .@{date-range-picker-prefix-cls} {
-      border: 1px solid #ebedf5;
-      border-radius: 4px;
+      .border(2, @gray-2);
       box-shadow: none;
       filter: none;
     }

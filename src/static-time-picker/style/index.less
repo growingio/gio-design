@@ -1,10 +1,8 @@
-@import '../../stylesheet/index.less';
-@import '../../stylesheet/mixin/index.less';
-@import '../../stylesheet/variables/index.less';
+@import (reference) '../../stylesheet/variables/index.less';
 
-@new-time-picker-prefix-cls: ~'@{component-prefix}-new-time-picker';
+@static-time-picker-prefix-cls: ~'@{component-prefix}-time-picker';
 
-.@{new-time-picker-prefix-cls} {
+.@{static-time-picker-prefix-cls} {
   &-panel {
     display: flex;
     flex-direction: column;
@@ -12,12 +10,12 @@
     height: fit-content;
     padding-top: 4px;
     background-color: @gray-0;
-    filter: drop-shadow(0 8px 24px rgba(36, 46, 89, 0.1));
+    .elevation(1);
   }
   &--three-columns {
-    .@{new-time-picker-prefix-cls}-time-panel-column {
-      padding-right: 10px;
-      padding-left: 10px;
+    .@{static-time-picker-prefix-cls}-time-panel-column {
+      padding-right: 8px;
+      padding-left: 8px;
     }
   }
 
@@ -29,14 +27,14 @@
 
   &-time-panel {
     &-column {
-      width: 40px;
+      box-sizing: border-box;
+      width: 80px;
       height: 240px;
       margin: 0;
-      padding: 8px 20px;
+      padding: 8px;
       overflow: hidden scroll;
       list-style-type: none;
-      border-right: 1px solid @palette-gray-3;
-
+      border-right: 1px solid @gray-2;
       .scrollbar();
     }
     &-column:last-child {
@@ -47,22 +45,20 @@
       margin-top: 4px;
       padding: 4px 12px;
       color: @gray-5;
-      .font();
-      line-height: 22px;
+      .text-body1();
       list-style-type: none;
       background-color: @gray-0;
       border-radius: 4px;
       cursor: pointer;
 
       &:hover {
-        background-color: @palette-gray-3;
+        background-color: @gray-1;
       }
 
       &-selected,
       &:active {
         color: @blue-3;
-        font-weight: 500;
-        background-color: @palette-gray-1;
+        background-color: @gray-1;
       }
 
       &-inner {
@@ -72,7 +68,7 @@
   }
 
   &-footer {
-    border-top: 1px solid @palette-gray-3;
+    border-top: 1px solid @gray-2;
 
     &-extra {
       display: flex;
