@@ -41,4 +41,6 @@ const Password = React.forwardRef<HTMLInputElement, PasswordProps>((props, ref) 
   );
 });
 
+Password.displayName = 'Password';
+
 export default Password;

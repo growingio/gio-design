@@ -100,4 +100,6 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
   );
 });
 
+InputButton.displayName = 'InputButton';
+
 export default InputButton;

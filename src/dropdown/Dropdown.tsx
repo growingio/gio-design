@@ -102,4 +102,6 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
   }
 );
 
+Dropdown.displayName = 'Dropdown';
+
 export default Dropdown;
