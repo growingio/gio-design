@@ -1,24 +1,45 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useControlledState, useLocale, usePrefixCls } from '@gio-design/utils';
 import { LeftDoubleOutlined, LeftOutlined, RightOutlined, RightDoubleOutlined } from '@gio-design/icons';
 import PickerPanel from 'rc-picker/lib/PickerPanel';
 import generateDateFns from 'rc-picker/lib/generate/dateFns';
-import { Locale } from 'rc-picker/lib/interface';
+import { Locale, PickerMode } from 'rc-picker/lib/interface';
 import { isEqual } from 'date-fns';
 import defaultLocale from './locales/zh-CN';
 import { StaticDatePickerProps } from './interfaces';
 
 const OmittedCell: React.FC = () => {
   const spanRef = useRef<HTMLSpanElement>(null);
-  useLayoutEffect(() => {
-    // Remove title prop
-    if (spanRef.current) {
-      const parent = spanRef.current.parentElement;
-      if (parent?.hasAttribute('title')) {
-        parent.removeAttribute('title');
-      }
+  useEffect(() => {
+    const parent = spanRef.current?.parentElement;
+
+    const observer = new MutationObserver((mutationList) => {
+      mutationList.forEach((mutation) => {
+        if (
+          // prettier-disabled
+          mutation.type === 'attributes' &&
+          mutation.attributeName &&
+          parent?.hasAttribute(mutation.attributeName)
+        ) {
+          parent?.removeAttribute(mutation.attributeName);
+        }
+      });
+    });
+
+    if (parent) {
+      const attributes = ['title', 'class'];
+      // 移除已经初始化的 `title` 和 `class` 属性
+      attributes.forEach((attribute) => parent.removeAttribute(attribute));
+      // 监听后续的 `title` 和 `class` 属性变化，然后移除
+      observer.observe(parent, {
+        attributeFilter: attributes,
+        attributes: true,
+        childList: true,
+      });
     }
+    return () => observer.disconnect();
   }, []);
+
   return <span ref={spanRef} />;
 };
 
@@ -27,10 +48,13 @@ const DatePicker: React.FC<StaticDatePickerProps> = ({
   disabledDate: disabledDateProp,
   value,
   defaultValue,
+  onPanelChange,
   ...restProps
 }) => {
   const locale = useLocale<Locale>('DatePicker') || defaultLocale;
   const [viewDate, setViewDate] = useControlledState(viewDateProp, value ?? defaultValue ?? new Date());
+
+  const [mode, setMode] = useState<PickerMode>('date');
 
   const prefixCls = usePrefixCls('picker');
 
@@ -46,10 +70,11 @@ const DatePicker: React.FC<StaticDatePickerProps> = ({
     }
     return <OmittedCell />;
   };
-
   const disabledDate = (currentDate: Date) => {
-    if (!isSameYearAndDay(currentDate)) {
-      return true;
+    if (mode === 'date') {
+      if (!isSameYearAndDay(currentDate)) {
+        return true;
+      }
     }
     if (typeof disabledDateProp === 'function') {
       return disabledDateProp(currentDate);
@@ -69,7 +94,11 @@ const DatePicker: React.FC<StaticDatePickerProps> = ({
       onPickerValueChange={(date) => setViewDate(date)}
       locale={locale}
       prefixCls={prefixCls}
-      picker="date"
+      onPanelChange={(changedValue, changedMode: PickerMode) => {
+        setMode(changedMode);
+        onPanelChange?.(changedValue, changedMode);
+      }}
+      picker={mode}
       generateConfig={generateDateFns}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore

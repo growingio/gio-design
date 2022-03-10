@@ -1,4 +1,4 @@
-import { PanelMode, Locale } from 'rc-picker/lib/interface';
+import { Locale, PickerMode } from 'rc-picker/lib/interface';
 import { CommonProps } from '@gio-design/utils';
 
 export type DatePickerLocale = Omit<Locale, 'locale'>;
@@ -23,9 +23,9 @@ export interface StaticDatePickerProps extends CommonProps {
    * 日历面板切换的回调
    *
    * @param value - 当前日期 `Date`
-   * @param mode - 当前模式，目前只会是 `date` 模式
+   * @param mode - 当前模式
    */
-  onPanelChange?: (value: Date, mode: PanelMode) => void;
+  onPanelChange?: (value: Date, mode: PickerMode) => void;
   /**
    * 日期发生变化时的回调
    *

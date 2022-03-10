@@ -1,5 +1,5 @@
 import React from 'react';
-import { startOfDay, startOfToday, startOfYesterday, subMonths } from 'date-fns';
+import { startOfDay, startOfYesterday } from 'date-fns';
 import DatePicker from '../static-date-picker';
 import DateRangePicker from '../static-date-range-picker';
 import { RelativeRangeBodyProps } from './interfaces';
@@ -11,14 +11,7 @@ function RelativeRangeBody({ dateRange, fixedMode, onRangeChange, disabledDate }
     };
     return <DatePicker disabledDate={disabledDate} value={dateRange[0]} onSelect={handleOnSelect} />;
   }
-  return (
-    <DateRangePicker
-      defaultViewDates={[subMonths(startOfToday(), 1), startOfYesterday()]}
-      disabledDate={disabledDate}
-      onSelect={onRangeChange}
-      value={dateRange as [Date, Date]}
-    />
-  );
+  return <DateRangePicker disabledDate={disabledDate} onSelect={onRangeChange} value={dateRange as [Date, Date]} />;
 }
 
 export default RelativeRangeBody;
