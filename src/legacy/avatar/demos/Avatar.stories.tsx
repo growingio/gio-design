@@ -5,7 +5,6 @@ import Docs from './AvatarPage';
 import Avatar, { AvatarGroup, AvatarGroupProps, AvatarProps } from '../index';
 import '../style';
 import '../style/demo.stories.less';
-import image from '../../../assets/images/Avatar.png';
 
 export default {
   title: 'Legacy/Avatar',
@@ -19,7 +18,7 @@ export default {
 
 const Template: Story<AvatarProps> = (args) => (
   <div className="display-avatar">
-    <Avatar src={image} {...args}>
+    <Avatar src="https://joeschmoe.io/api/v1/random" {...args}>
       li
     </Avatar>
     <Avatar {...args}>li</Avatar>
@@ -44,16 +43,16 @@ Default.args = {
 const SizeTemplate: Story<AvatarProps> = (args) => (
   <>
     <div className="size-display">
-      <Avatar size="small" src={image} {...args}>
+      <Avatar size="small" src="https://joeschmoe.io/api/v1/random" {...args}>
         李
       </Avatar>
-      <Avatar size="default" src={image} {...args}>
+      <Avatar size="default" src="https://joeschmoe.io/api/v1/random" {...args}>
         李
       </Avatar>
-      <Avatar size="large" src={image} {...args}>
+      <Avatar size="large" src="https://joeschmoe.io/api/v1/random" {...args}>
         李
       </Avatar>
-      <Avatar size="huge" src={image} {...args}>
+      <Avatar size="huge" src="https://joeschmoe.io/api/v1/random" {...args}>
         李
       </Avatar>
     </div>
@@ -78,7 +77,7 @@ export const Size = SizeTemplate.bind({});
 
 const HoverTemplate: Story<AvatarProps> = (args) => (
   <>
-    <Avatar src={image} {...args} />
+    <Avatar src="https://joeschmoe.io/api/v1/random" {...args} />
     <Avatar {...args} />
     <Avatar {...args}>张</Avatar>
     <Avatar {...args} icon={<HomeFilled />} />
@@ -99,7 +98,7 @@ Group.args = {
   users: [
     {
       name: 'li',
-      src: image,
+      src: 'https://joeschmoe.io/api/v1/random',
       tooltipTitle: '这是li',
     },
     {
@@ -107,18 +106,18 @@ Group.args = {
     },
     {
       name: 'leng',
-      src: image,
+      src: 'https://joeschmoe.io/api/v1/random',
     },
     {
       name: 'liu',
     },
     {
       name: 'wang',
-      src: image,
+      src: 'https://joeschmoe.io/api/v1/random',
     },
     {
       name: 'tong',
-      src: image,
+      src: 'https://joeschmoe.io/api/v1/random',
     },
   ],
 };
