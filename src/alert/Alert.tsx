@@ -21,6 +21,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
     const [alertStatus, setAlertStatus] = useState(true);
 
     const getIcon = () => {
+      if (icon) return icon;
       switch (type) {
         case 'success':
           return <CheckCircleFilled />;
@@ -31,13 +32,13 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         case 'info':
           return <InfoCircleFilled />;
         default:
-          return icon || <InfoCircleFilled />;
+          return <InfoCircleFilled />;
       }
     };
 
-    const closeAlert = () => {
+    const closeAlert = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       setAlertStatus(false);
-      onClose?.();
+      onClose?.(event);
     };
 
     return alertStatus ? (
