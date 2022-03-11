@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useRef, useLayoutEffect, useEffect, useContext } from 'react';
+import React, { useState, useMemo, useCallback, useRef, useLayoutEffect, useContext } from 'react';
 import classNames from 'classnames';
 import { debounce, isFunction, isNil, omit } from 'lodash';
 import ReactDOM from 'react-dom';
@@ -40,18 +40,13 @@ const Popover = (props: PopoverProps) => {
 
   const prefixCls = usePrefixCls('popover', customPrefixCls);
   const [visible, setVisible] = useControlledState(enterVisible, defaultVisible);
-  const overContentRef = useRef<boolean>(false);
   const [referenceElement, setReferenceELement] = useState<null | HTMLElement>(null);
   const [popperElement, setPopperElement] = useState<null | HTMLElement>(null);
   const arrowElement = useRef<HTMLDivElement | null>(null);
   const context = useContext(TriggerContext);
   const hasPopupMouseDown = useRef<boolean>(false);
   const mouseDownTimeout = useRef<any>(undefined);
-  // const
-  useEffect(() => {
-    if (!visible) overContentRef.current = false;
-  }, [visible]);
-
+  const mouseLeaveTimeout = useRef<any>(undefined);
   const contentCls = useMemo(
     () =>
       classNames(
@@ -112,7 +107,7 @@ const Popover = (props: PopoverProps) => {
   const updateVisible = useCallback(
     (resetVisible: boolean) => {
       const realVisible = disabled ? false : resetVisible;
-      if (!(overContentRef.current && enterable)) {
+      if (enterable) {
         setVisible(realVisible);
         onVisibleChange?.(realVisible);
         if (realVisible) {
@@ -181,12 +176,14 @@ const Popover = (props: PopoverProps) => {
     [delay, triggerChildEvent, isHoverToShow, updateVisible]
   );
   const onMouseLeave = useMemo(
-    () =>
-      debounce((e: Event) => {
-        triggerChildEvent('onMouseLeave', e);
+    () => (e: Event) => {
+      triggerChildEvent('onMouseLeave', e);
+      clearTimeout(mouseLeaveTimeout.current);
+      mouseLeaveTimeout.current = setTimeout(()=> {
         isHoverToShow && updateVisible(false);
-      }, delay),
-    [delay, triggerChildEvent, isHoverToShow, updateVisible]
+      },500)
+    },
+    [triggerChildEvent, isHoverToShow, updateVisible]
   );
 
   const onClick = useCallback(
@@ -212,20 +209,16 @@ const Popover = (props: PopoverProps) => {
     },
     [triggerChildEvent, isFocusToShow, updateVisible]
   );
-
-  const onContentMouseEnter = useCallback(() => {
-    overContentRef.current = true;
-  }, []);
+  const onContentMouseEnter = () => clearTimeout(mouseLeaveTimeout.current);
 
   const onContentMouseLeave = useMemo(
     () =>
       debounce(() => {
-        overContentRef.current = false;
         if (trigger === 'hover') {
           updateVisible(false);
         }
-      }, 100),
-    [trigger, updateVisible]
+      }, delay),
+    [delay,trigger, updateVisible]
   );
 
   const divRoles = useMemo(() => {
