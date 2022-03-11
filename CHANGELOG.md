@@ -1,3 +1,12 @@
+## [22.14.10](https://github.com/growingio/gio-design/compare/v22.14.9...v22.14.10) (2022-03-11)
+
+
+### Bug Fixes
+
+* **date-picker, time-picker:** fix color and use less token ([#1897](https://github.com/growingio/gio-design/issues/1897)) ([ae3f606](https://github.com/growingio/gio-design/commit/ae3f606de2d5dc79ecb6485d0c81b58f8a194924))
+* **filter-picker:** when `valueType` was changed initialize state ([#1900](https://github.com/growingio/gio-design/issues/1900)) ([4415f55](https://github.com/growingio/gio-design/commit/4415f55ad89843f40133d4bdb3652c61158c0ca5))
+* **static-date-picker:** fix some bug ([#1898](https://github.com/growingio/gio-design/issues/1898)) ([f053caf](https://github.com/growingio/gio-design/commit/f053caf8febfcbd702872a2fadc310a9d7cc2579)), closes [#1863](https://github.com/growingio/gio-design/issues/1863) [#1888](https://github.com/growingio/gio-design/issues/1888)
+
 ## [22.14.9](https://github.com/growingio/gio-design/compare/v22.14.8...v22.14.9) (2022-03-09)
 
 
