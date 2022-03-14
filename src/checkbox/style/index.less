@@ -1,6 +1,4 @@
-@import '../../stylesheet/index.less';
-@import '../../stylesheet/mixin/index.less';
-@import '../../stylesheet/variables/index.less';
+@import (reference) '../../stylesheet/variables/index.less';
 
 @checkbox-prefix-cls: ~'@{component-prefix}-checkbox';
 @checkbox-checked-prefix-cls: ~'@{checkbox-prefix-cls}-checked';
@@ -11,9 +9,9 @@
 @checkbox-wrapper-cls: ~'@{checkbox-prefix-cls}-wrapper';
 
 .@{checkbox-wrapper-cls} {
-  .reset-component();
   position: relative;
   display: inline-block;
+  box-sizing: border-box;
   max-width: 100%;
   margin: 0;
   font-weight: normal;
@@ -41,7 +39,8 @@
       transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
       -webkit-appearance: none;
       -moz-appearance: none;
-      &:checked {
+      &:checked,
+      &[indeterminate='true'] {
         --b: var(--active);
         --bc: var(--active);
         --d-o: 0.3s;
@@ -52,7 +51,8 @@
         --b: var(--disabled);
         cursor: not-allowed;
         opacity: 0.9;
-        &:checked {
+        &:checked,
+        &[indeterminate='true'] {
           --b: var(--disabled);
           --bc: var(--border);
         }
@@ -82,7 +82,8 @@
       &:not(.switch) {
         width: 16px;
         border-radius: 4px;
-        &:checked {
+        &:checked,
+        &[indeterminate='true'] {
           --r: 43deg;
         }
       }
@@ -115,7 +116,8 @@
           border-left: 0;
           transform: rotate(var(--r, 20deg));
         }
-        &:checked {
+        &:checked,
+        &[indeterminate='true'] {
           --r: 43deg;
         }
       }
@@ -125,8 +127,11 @@
         width: 16px;
         border-radius: 4px;
         &::after {
+          position: absolute;
           top: 0;
           left: 2px;
+          display: block;
+          box-sizing: content-box;
           width: 10px;
           height: 7px;
           border: 1px solid var(--active-inner);
@@ -134,8 +139,11 @@
           border-right: 0;
           border-left: 0;
           transform: none;
+          transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+          content: '';
         }
-        &:checked {
+        &:checked,
+        &[indeterminate='true'] {
           --r: 43deg;
         }
       }

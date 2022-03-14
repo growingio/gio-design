@@ -1,20 +1,19 @@
-import React from 'react';
+/* eslint-disable no-console */
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
 import Checkbox, { CheckboxGroup } from '../index';
-import { CheckboxProps, CheckboxGroupProps, CheckboxValueType } from '../interface';
+import { CheckboxProps } from '../interface';
 import '../style';
 import Docs from './CheckboxPage';
 
 export default {
   title: 'Upgraded/Checkbox',
   component: Checkbox,
-  subcomponents: { CheckboxGroup },
-  decorators: [withDesign],
+  subcomponents: { 'Checkbox.Group': CheckboxGroup },
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4078%3A37260',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=4078%3A37260',
       allowFullscreen: true,
     },
     docs: {
@@ -23,154 +22,66 @@ export default {
   },
 } as Meta;
 
-const DemoTemplate = () => {
-  const [checked, setChecked] = React.useState(false);
-  const handleChange = (e: any) => {
-    setChecked(e.target.checked);
-  };
-  return (
-    <>
-      <table style={{ marginBottom: 50 }} className="table-demo">
-        <tr>
-          <th>Checkbox status</th>
-          <th>Example</th>
-        </tr>
-
-        <tr>
-          <td>Normal</td>
-          <td>
-            <Checkbox checked={checked} onChange={null}>
-              我已阅读以下条款
-            </Checkbox>
-          </td>
-        </tr>
-        <tr>
-          <td>checked</td>
-          <td>
-            <Checkbox checked onChange={handleChange}>
-              我已阅读以下条款
-            </Checkbox>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Partially </td>
-          <td>
-            <Checkbox checked onChange={handleChange} indeterminate>
-              我已阅读以下条款
-            </Checkbox>
-          </td>
-        </tr>
-        <tr>
-          <td>Disable Normal</td>
-          <td>
-            <Checkbox disabled>我已阅读以下条款</Checkbox>
-          </td>
-        </tr>
-        <tr>
-          <td>Disable Checked</td>
-          <td>
-            <Checkbox checked disabled>
-              我已阅读以下条款
-            </Checkbox>
-          </td>
-        </tr>
-        <tr>
-          <td>Disable Partially Selected</td>
-          <td>
-            <Checkbox checked disabled indeterminate>
-              我已阅读以下条款
-            </Checkbox>
-          </td>
-        </tr>
-        <tr>
-          <td>color checked</td>
-          <td>
-            <Checkbox checked color="red">
-              我已阅读以下条款
-            </Checkbox>
-          </td>
-        </tr>
-        <tr>
-          <td>color indeterminate</td>
-          <td>
-            <Checkbox checked indeterminate color="red">
-              我已阅读以下条款
-            </Checkbox>
-          </td>
-        </tr>
-      </table>
-      <table className="table-demo">
-        <tr>
-          <th>Checkbox.Group</th>
-          <th>layout</th>
-        </tr>
-        <tr>
-          <td>vertical</td>
-          <td>
-            <Checkbox.Group
-              layout="vertical"
-              defaultValue={[2]}
-              options={[
-                { label: '我已阅读以下条款一', value: 1 },
-                { label: '我已阅读以下条款二', value: 2 },
-                { label: '我已阅读以下条款三', value: 3, disabled: true },
-              ]}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>horizontal</td>
-          <td>
-            <Checkbox.Group
-              layout="horizontal"
-              defaultValue={[2]}
-              options={[
-                { label: '我已阅读以下条款一', value: 1 },
-                { label: '我已阅读以下条款二', value: 2 },
-                { label: '我已阅读以下条款三', value: 3, disabled: true },
-              ]}
-            />
-          </td>
-        </tr>
-      </table>
-    </>
-  );
+const DefaultTemplate: Story<CheckboxProps> = (args) => <Checkbox {...args} />;
+export const Default = DefaultTemplate.bind({});
+Default.args = {
+  children: 'Apple',
+  'aria-label': 'Apple',
+  defaultChecked: false,
+  indeterminate: false,
+  disabled: false,
 };
 
-export const Demo = DemoTemplate.bind({});
+export const Basic = () => (
+  <>
+    <Checkbox aria-label="Checkbox Demo" />
+    <Checkbox aria-label="Checkbox Demo" defaultChecked />
+    <Checkbox aria-label="Checkbox Demo" indeterminate />
+    <Checkbox aria-label="Checkbox Demo" disabled />
+    <Checkbox aria-label="Checkbox Demo" disabled checked />
+    <Checkbox aria-label="Checkbox Demo" disabled indeterminate />
+  </>
+);
 
-const Template: Story<CheckboxProps> = (args) => {
-  const [checked, setChecked] = React.useState(true);
-  const handleChange = (e: any) => {
-    setChecked(e.target.checked);
+export const Labels = () => (
+  <>
+    <Checkbox defaultChecked>Label</Checkbox>
+    <br />
+    <Checkbox disabled>Disabled</Checkbox>
+  </>
+);
+
+export const Color = () => (
+  <>
+    <Checkbox defaultChecked />
+    <Checkbox defaultChecked indeterminate color="pink" />
+    <Checkbox defaultChecked color="purple" />
+    <Checkbox defaultChecked color="greenyellow" />
+  </>
+);
+
+export const Controlled = () => {
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
   };
+
   return (
-    <Checkbox {...args} checked={checked} onChange={handleChange}>
-      我已阅读以下条款
+    <Checkbox checked={checked} onChange={handleChange}>
+      Controlled Checkbox
     </Checkbox>
   );
 };
 
-const TemplateGroup: Story<CheckboxGroupProps<CheckboxValueType>> = (args) => <Checkbox.Group {...args} />;
-
-export const Default = Template.bind({});
-
-export const Indeterminate = Template.bind({});
-
-Indeterminate.args = {
-  indeterminate: true,
-};
-
-Default.args = {};
-export const Group = TemplateGroup.bind({});
-
-Group.args = {
-  layout: 'horizontal',
-  defaultValue: [2],
-  options: [
-    { label: '我已阅读以下条款一', value: 1 },
-    { label: '我已阅读以下条款二', value: 2 },
-    { label: '我已阅读以下条款三', value: 3, disabled: true },
-  ],
-};
+export const Group = () => (
+  <Checkbox.Group
+    defaultValue={['value2']}
+    options={[
+      { label: 'Checkbox 1', value: 'value1' },
+      { label: 'Checkbox 2', value: 'value2' },
+      { label: 'Checkbox 3', value: 'value3', disabled: true },
+      { label: 'Checkbox 4', value: 'value4', onChange: (event) => console.log(event.target.checked) },
+    ]}
+  />
+);

@@ -37,7 +37,7 @@ export interface CheckboxProps
   /**
      选择框填充后的背景色
      */
-  color?: string;
+  color?: React.CSSProperties['color'];
   /**
      自定义的`CSS`样式
      */

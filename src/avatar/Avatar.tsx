@@ -23,6 +23,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
       mode = 'circle',
       backgroundColor,
       icon,
+      style,
       ...rest
     }: AvatarProps,
     ref: React.Ref<HTMLSpanElement>
@@ -107,7 +108,13 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
     return renderTooltip(
       // For Dropdown trigger will set Event on rest
       // eslint-disable-next-line react/jsx-props-no-spreading
-      <span data-testid="avatar" ref={mergedRef} className={classString} {...rest} style={{ backgroundColor }}>
+      <span
+        data-testid="avatar"
+        ref={mergedRef}
+        className={classString}
+        style={{ backgroundColor, ...style }}
+        {...rest}
+      >
         {renderMore()}
         {renderAvatar()}
       </span>

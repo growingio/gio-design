@@ -2,11 +2,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import classNames from 'classnames';
-import { usePrefixCls } from '@gio-design/utils';
+import { usePrefixCls, useControlledState } from '@gio-design/utils';
 import CheckboxGroupContext from './CheckboxGroupContext';
 import { CheckboxProps, CheckboxValueType } from './interface';
 import WithRef from '../utils/withRef';
-import useControlledState from '../utils/hooks/useControlledState';
 
 const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
   const {
@@ -27,18 +26,18 @@ const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 
   const prefixCls = usePrefixCls('checkbox');
 
+  const [checkedStatus, setChecked] = useControlledState(checked, defaultChecked);
+
   const classes = classNames([className, prefixCls], {
-    [`${prefixCls}-${checked ? 'checked' : ''}`]: checked,
-    [`${prefixCls}-${indeterminate ? 'indeterminate' : ''}`]: indeterminate,
-    [`${prefixCls}-${disabled ? 'disabled' : ''}`]: disabled,
+    [`${prefixCls}-checked`]: checkedStatus,
+    [`${prefixCls}-indeterminate`]: indeterminate,
+    [`${prefixCls}-disabled`]: disabled,
   });
 
   const checkboxCls = classNames(className, {
     [`${prefixCls}-wrapper`]: true,
     [`${prefixCls}-wrapper-disabled`]: disabled,
   });
-
-  const [checkedStatus, setChecked] = useControlledState(checked, defaultChecked);
 
   const checkboxGroup = React.useContext(CheckboxGroupContext);
 
@@ -75,7 +74,10 @@ const Checkbox = WithRef<HTMLInputElement, CheckboxProps>((props, ref) => {
     checkboxProps.disabled = disabled || checkboxGroup.disabled;
   }
 
-  const inputStyle = { background: color, borderColor: color };
+  const inputStyle =
+    (indeterminate || checkedStatus) && !disabled
+      ? { background: color, borderColor: color }
+      : { '--border-hover': color };
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control

@@ -57,7 +57,7 @@ interface PaginationProps {
   totalTextRender?: (total: number) => React.ReactNode;
   /**
    * 是否显示快速跳转
-   * @default true
+   * @default false
    */
   showQuickJumper?: boolean;
   /**
@@ -68,12 +68,13 @@ interface PaginationProps {
 
   /**
    * 是否展示行数切换器
+   * @default false
    */
   showSizeChanger?: boolean;
 
   /**
    * 指定每页可以显示多少条。尝试传入小数，会被自动转换成整数
-   * @default [10, 20, 50]
+   * @default "[10, 20, 50]"
    */
   pageSizeOptions?: Array<string | number>;
 

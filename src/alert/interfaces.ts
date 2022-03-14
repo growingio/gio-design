@@ -1,6 +1,7 @@
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
-   指定警告提示的样式
+   * 指定警告提示的样式
+   * @default `info`
    */
   type?: 'success' | 'info' | 'warning' | 'error';
   /**
@@ -16,7 +17,8 @@ export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
    */
   message?: React.ReactNode;
   /**
-   是否显示辅助图标
+   * 是否显示辅助图标
+   * @default `false`
    */
   showIcon?: boolean;
   /**
@@ -26,5 +28,5 @@ export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    关闭时触发的回调函数
    */
-  onClose?: () => void;
+  onClose?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }

@@ -5,15 +5,20 @@ import { usePrefixCls } from '@gio-design/utils';
 import Avatar from './Avatar';
 import { AvatarGroupProps, UserAvatarType } from './interfaces';
 
-const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
+export const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
   const { number = 5, users = [], className, placement = 'bottom', style, displayTooltip = true, ...restProps } = props;
   const prefixCls = usePrefixCls('avatar');
 
   let children = null;
   const renderAvatarGroup = (sliceUsers: UserAvatarType[]) =>
     sliceUsers.map((user) => (
-      <Avatar key={user.name} displayTooltip={displayTooltip} placement={placement} {...user}>
-        {user.name}
+      <Avatar
+        key={`${user.name}-${_.uniqueId('avatar-key')}`}
+        displayTooltip={displayTooltip}
+        placement={placement}
+        {...user}
+      >
+        {user.name ?? user.children}
       </Avatar>
     ));
   const renderAvatarRest = (restUsers: UserAvatarType[]) => (
@@ -38,7 +43,7 @@ const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps) => {
   }
 
   return (
-    <div className={classString} style={style} test-dataId="avatarGroup" {...restProps} >
+    <div className={classString} style={style} test-dataId="avatarGroup" {...restProps}>
       {children}
     </div>
   );
