@@ -5,6 +5,7 @@
 
 @list-picker-prefix-cls: ~'@{component-prefix}-list-picker';
 @list-picker-selection-prefix-cls: ~'@{component-prefix}-list--selection';
+@tabs-tabpanel-prefix-cls: ~'@{component-prefix}-tabs-tabpanel';
 
 .@{list-picker-prefix-cls} {
   box-sizing: border-box;
@@ -27,7 +28,9 @@
   & .@{list-prefix-cls} {
     height: auto;
     max-height: 360px;
+    margin-right: -6px;
     padding: 0;
+    padding-right: 6px;
     .scrollbar();
   }
   & .@{cascader-prefix-cls}--list {
@@ -36,12 +39,21 @@
   & .@{list-picker-selection-prefix-cls} {
     height: auto;
     max-height: 360px;
+    margin-right: -6px;
     padding: 0;
+    padding-right: 6px;
     .scrollbar();
     & .@{list-prefix-cls} {
       height: auto;
       max-height: none;
-      // padding: 0;
+    }
+  }
+
+  & .@{tabs-tabpanel-prefix-cls} {
+    & .@{list-picker-selection-prefix-cls} {
+      margin: 0;
+      padding: 0;
+      .scrollbar();
     }
   }
 
