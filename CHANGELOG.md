@@ -1,3 +1,10 @@
+## [22.14.12](https://github.com/growingio/gio-design/compare/v22.14.11...v22.14.12) (2022-03-14)
+
+
+### Bug Fixes
+
+* **List:** modify the style of scroll bar ([#1909](https://github.com/growingio/gio-design/issues/1909)) ([debbad3](https://github.com/growingio/gio-design/commit/debbad35ece5609b6b43bcdb41a77060de4d7123))
+
 ## [22.14.11](https://github.com/growingio/gio-design/compare/v22.14.10...v22.14.11) (2022-03-14)
 
 
