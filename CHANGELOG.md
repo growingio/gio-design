@@ -1,3 +1,11 @@
+## [22.14.11](https://github.com/growingio/gio-design/compare/v22.14.10...v22.14.11) (2022-03-14)
+
+
+### Bug Fixes
+
+* **ListPicker:** 更新ScrollBar的样式 ([#1907](https://github.com/growingio/gio-design/issues/1907)) ([53c60b0](https://github.com/growingio/gio-design/commit/53c60b0d6ec27b49e149750dc4d58b0e7416c0ef))
+* **popover:** fix popover content leave error ([#1905](https://github.com/growingio/gio-design/issues/1905)) ([97730ca](https://github.com/growingio/gio-design/commit/97730ca457645571cbd86656f801d335c1f56ea4))
+
 ## [22.14.10](https://github.com/growingio/gio-design/compare/v22.14.9...v22.14.10) (2022-03-11)
 
 
