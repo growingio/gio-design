@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '../input';
 import WithRef from '../utils/withRef';
-import { TriggerProps } from './interfance';
+import { TriggerProps } from './interface';
 
 const Trigger: React.ForwardRefRenderFunction<HTMLInputElement, TriggerProps> = (props, ref) => {
   const { value, placeholder, visible, ...rest } = props;

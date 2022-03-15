@@ -4,15 +4,15 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { MoreOutlined, EditOutlined, RightOutlined } from '@gio-design/icons';
 import Docs from './CollapsePage';
-import Collapse, { Panel } from '../index';
-import { IconButton } from '../../button';
+import Collapse from '../index';
+import Button from '../../button';
 
 import '../style';
 
 export default {
   title: 'Upgraded/Collapse',
   component: Collapse,
-  subcomponents: { Panel },
+  subcomponents: { 'Collapse.Panel': Collapse.Panel },
   parameters: {
     docs: {
       page: Docs,
@@ -27,22 +27,22 @@ export default {
 
 const genExtra = () => (
   <>
-    <IconButton
+    <Button.IconButton
       onClick={(e) => {
         e.stopPropagation();
       }}
       type="text"
     >
       <EditOutlined />
-    </IconButton>
-    <IconButton
+    </Button.IconButton>
+    <Button.IconButton
       onClick={(e) => {
         e.stopPropagation();
       }}
       type="text"
     >
       <MoreOutlined />
-    </IconButton>
+    </Button.IconButton>
   </>
 );
 const text = '哈哈哈嘿嘿嘿嘻嘻嘻';
@@ -53,21 +53,21 @@ const callback = (key: any) => {
 const Template: Story = () => (
   <div>
     <Collapse defaultActiveKey={['2']} onChange={callback}>
-      <Panel header="折叠面板标题" key="1" extra={genExtra()}>
+      <Collapse.Panel header="折叠面板标题" key="1" extra={genExtra()}>
         <p>{text}</p>
         <p>{text}</p>
         <p>{text}</p>
-      </Panel>
-      <Panel header="折叠面板标题" key="2">
+      </Collapse.Panel>
+      <Collapse.Panel header="折叠面板标题" key="2">
         <p>{text}</p>
-        <Collapse expandIcon={() => <RightOutlined size='14px' />} bordered={false} onChange={callback}>
-          <Panel header="折叠面板标题" key="1" extra={genExtra()}>
+        <Collapse expandIcon={() => <RightOutlined size="14px" />} bordered={false} onChange={callback}>
+          <Collapse.Panel header="折叠面板标题" key="1" extra={genExtra()}>
             <p>{text}</p>
             <p>{text}</p>
             <p>{text}</p>
-          </Panel>
+          </Collapse.Panel>
         </Collapse>
-      </Panel>
+      </Collapse.Panel>
     </Collapse>
   </div>
 );

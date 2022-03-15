@@ -7,7 +7,7 @@ import '../style';
 import Avatar from '../../avatar';
 import Table from '../../table';
 import Tabs, { Tab } from '../../tabs';
-import Button, { IconButton } from '../../button';
+import Button from '../../button';
 import Dropdown from '../../dropdown';
 import { Item, List } from '../../list';
 import { Card, Col, Divider, Row, SearchBar, Skeleton } from '../..';
@@ -15,9 +15,9 @@ import SkeletonImage from '../../skeleton/Image';
 import Toggle from '../../toggle';
 
 export default {
-  title: 'upgraded/Card',
+  title: 'Upgraded/Card',
   component: Card,
-  subcomponents: { CardMeta: Card.Meta },
+  subcomponents: { 'Card.Meta': Card.Meta },
   parameters: {
     design: {
       type: 'figma',
@@ -40,9 +40,9 @@ Default.args = {
         title="卡片标题"
         description="卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题"
         action={
-          <IconButton size="small" type="text">
+          <Button.IconButton size="small" type="text">
             <MoreOutlined />
-          </IconButton>
+          </Button.IconButton>
         }
       />
       <div style={{ marginTop: '16px' }}>
@@ -64,9 +64,9 @@ export const BoxShadow = () => (
       title="卡片标题"
       description="卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题"
       action={
-        <IconButton size="small" type="text">
+        <Button.IconButton size="small" type="text">
           <MoreOutlined />
-        </IconButton>
+        </Button.IconButton>
       }
     />
     <div style={{ marginTop: '16px' }}>
@@ -92,9 +92,9 @@ export const WithoutContent = () => (
       title="卡片标题"
       description="卡片副标题"
       action={
-        <IconButton size="small" type="text">
+        <Button.IconButton size="small" type="text">
           <MoreOutlined />
-        </IconButton>
+        </Button.IconButton>
       }
     />
   </Card>
@@ -110,9 +110,9 @@ export const Disabled = () => (
       title="卡片标题"
       description="卡片副标题"
       action={
-        <IconButton size="small" type="text" onClick={() => alert('action click')}>
+        <Button.IconButton size="small" type="text" onClick={() => alert('action click')}>
           <MoreOutlined />
-        </IconButton>
+        </Button.IconButton>
       }
     />
   </Card>
@@ -127,9 +127,9 @@ export const GridCard = () => (
             title="卡片标题"
             description="卡片副标题"
             action={
-              <IconButton size="small" type="text">
+              <Button.IconButton size="small" type="text">
                 <MoreOutlined />
-              </IconButton>
+              </Button.IconButton>
             }
           />
           <Skeleton active={false} paragraph={{ row: 2 }} />
@@ -153,9 +153,9 @@ export const GridCard = () => (
             title="卡片标题"
             description="卡片副标题"
             action={
-              <IconButton size="small" type="text">
+              <Button.IconButton size="small" type="text">
                 <MoreOutlined />
-              </IconButton>
+              </Button.IconButton>
             }
           />
           <Table
@@ -165,6 +165,7 @@ export const GridCard = () => (
               { a: 1, b: 1 },
               { a: 2, b: 2 },
             ]}
+            rowKey="a"
             columns={[
               { dataIndex: 'a', title: 'A' },
               { dataIndex: 'b', title: 'B' },
@@ -179,9 +180,9 @@ export const GridCard = () => (
             title="卡片标题"
             description="卡片副标题"
             action={
-              <IconButton size="small" type="text">
+              <Button.IconButton size="small" type="text">
                 <MoreOutlined />
-              </IconButton>
+              </Button.IconButton>
             }
           />
           <SkeletonImage style={{ width: '100%', marginTop: '16px' }} />
@@ -201,9 +202,9 @@ export const FullWidthContent = () => (
       title="卡片标题"
       description="卡片副标题"
       action={
-        <IconButton size="small" type="text">
+        <Button.IconButton size="small" type="text">
           <MoreOutlined />
-        </IconButton>
+        </Button.IconButton>
       }
     />
     <SkeletonImage style={{ width: '100%', marginTop: '16px' }} />
@@ -227,9 +228,9 @@ export const Clickable = () => {
           title="卡片标题"
           description="卡片副标题"
           action={
-            <IconButton size="small" type="text">
+            <Button.IconButton size="small" type="text">
               <MoreOutlined />
-            </IconButton>
+            </Button.IconButton>
           }
         />
         <Skeleton active={false} paragraph={{ row: 2 }} />

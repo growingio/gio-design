@@ -1,6 +1,6 @@
 import { isArray, isEmpty, isNil, isString } from 'lodash';
 import { useCallback, useRef } from 'react';
-import { MaybeArray, OptionProps } from '../interfance';
+import { MaybeArray, OptionProps } from '../interface';
 
 const useCacheOptions = () => {
   const options = useRef<Map<string | number, OptionProps>>(new Map());
@@ -8,8 +8,8 @@ const useCacheOptions = () => {
   const updateOptions = (opts?: OptionProps[]) => {
     opts?.forEach((o: OptionProps) => {
       optionsMap.set(o.value, o);
-      if (!isEmpty(o?.childrens)) {
-        updateOptions(o?.childrens as OptionProps[]);
+      if (!isEmpty(o?.items)) {
+        updateOptions(o?.items as OptionProps[]);
       }
     });
   };
@@ -64,7 +64,7 @@ const useCacheOptions = () => {
         }
         return {
           ...getOptionByValue?.(curr),
-          childrens: [{ ...prev }],
+          items: [{ ...prev }],
         };
       }, {});
     }

@@ -1,4 +1,4 @@
-export interface TogglesProps
+export interface ToggleProps
   extends Omit<React.HTMLAttributes<HTMLInputElement>, 'disabled' | 'size' | 'onChange' | 'className' | 'style'> {
   /**
    `toggle` 选中时的后缀节点

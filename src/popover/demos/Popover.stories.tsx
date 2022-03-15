@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Popover from '../Popover';
 import { PopoverProps } from '../interface';
 import Input from '../../input';
-import { Button } from '../../button';
+import Button from '../../button';
 import '../style';
 import './demo.stories.less';
 import Docs from './PopoverPage';

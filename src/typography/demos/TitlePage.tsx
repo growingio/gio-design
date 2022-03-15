@@ -1,7 +1,7 @@
 import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
-import title from '../title';
+import title from '../Title';
 
 export default function TextPage() {
   const { formatMessage } = useIntl();

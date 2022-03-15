@@ -6,8 +6,6 @@ import TextPage from './TextPage';
 
 import '../style';
 
-const { Text } = Typography;
-
 interface StoryProps extends TextProps {
   width?: number;
 }
@@ -16,7 +14,7 @@ const Template: Story<StoryProps> = (args) => {
   const { width = 600 } = args;
   return (
     <div style={{ width }}>
-      <Text {...args} />
+      <Typography.Text {...args} />
     </div>
   );
 };
@@ -44,21 +42,19 @@ English.args = {
 
 export const Styles = () => (
   <>
-    <Text>Normal Text Paragraph</Text>
-    <Text color="gray">Gray Text Paragraph</Text>
-    <Text size="small">Small Text Paragraph</Text>
-    <Text size="small" color="#faa937">
-      Small Text Paragraph
-    </Text>
-    <Text size="large" color="#ff688f">
-      Large Red Color Text Paragraph
-    </Text>
+    <Typography.Text>Normal Text Paragraph</Typography.Text>
+    <Typography.Text color="gray">Gray Text Paragraph</Typography.Text>
+    <Typography.Text size="small">Small Text Paragraph</Typography.Text>
+    <Typography.Text size="small" color="gray">
+      Small Gray Text Paragraph
+    </Typography.Text>
+    <Typography.Text />
   </>
 );
 
 export default {
   title: 'Upgraded/Typography/Text',
-  component: Text,
+  component: Typography.Text,
   parameters: {
     docs: {
       page: TextPage,

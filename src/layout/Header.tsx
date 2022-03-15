@@ -17,7 +17,7 @@ const Header = ({ prefixCls: customizePrefixCls, className, style, children, jus
   );
 };
 
-const HeaderSection = ({
+export const HeaderSection = ({
   prefixCls: customizePrefixCls,
   className,
   style,
@@ -36,7 +36,7 @@ const HeaderSection = ({
   );
 };
 
-const HeaderDivider = ({ style, className, prefixCls: customizePrefixCls }: LayoutHeaderDividerProps) => {
+export const HeaderDivider = ({ style, className, prefixCls: customizePrefixCls }: LayoutHeaderDividerProps) => {
   const prefixCls = usePrefixCls('layout-header-divider', customizePrefixCls);
   return <div className={classNames(prefixCls, className)} style={style} />;
 };

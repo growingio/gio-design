@@ -3,9 +3,9 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import { action } from '@storybook/addon-actions';
 import Toggle from '../index';
-import { TogglesProps } from '../interface';
+import { ToggleProps } from '../interface';
 import '../style';
-import Docs from './TogglesPage';
+import Docs from './TogglePage';
 
 export default {
   title: 'Upgraded/Toggle',
@@ -68,7 +68,7 @@ const DemoTemplate = () => (
 
 export const Demo = DemoTemplate.bind({});
 
-const Template: Story<TogglesProps> = (args) => <Toggle {...args} />;
+const Template: Story<ToggleProps> = (args) => <Toggle {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   className: 'gio-toggles-default',
@@ -79,8 +79,8 @@ Disabled.args = {
   disabled: true,
 };
 
-export const suffix = Template.bind({});
-suffix.args = {
+export const Suffix = Template.bind({});
+Suffix.args = {
   checkedChildren: <span>开启</span>,
   uncheckedChildren: <span>关闭</span>,
 };

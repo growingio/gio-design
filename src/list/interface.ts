@@ -111,7 +111,7 @@ export interface CascaderItemProps extends BaseItemProps {
   label: string;
   value: string | number;
   strategy?: 'fixed' | 'absolute';
-  childrens?: CascaderItemProps[];
+  items?: CascaderItemProps[];
 }
 export interface ItemProps
   extends Pick<

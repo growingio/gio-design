@@ -6,6 +6,8 @@ import { usePrefixCls } from '@gio-design/utils';
 import Tooltip from '../tooltip';
 import { AvatarProps } from './interfaces';
 import composeRef from '../utils/composeRef';
+import WithSubComponent from '../utils/withSubComponent';
+import AvatarGroup from './AvatarGroup';
 
 const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
   (
@@ -122,4 +124,6 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
   }
 );
 
-export default Avatar;
+export default WithSubComponent(Avatar, {
+  Group: AvatarGroup,
+});

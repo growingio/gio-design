@@ -1,9 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
 import { ListOutlined, PushMsgFilled } from '@gio-design/icons';
 import Switch from '../index';
-import { ISwitchGroupProps } from '../interface';
+import { SwitchProps } from '../interface';
 import Docs from './SwitchPage';
 import '../style';
 import './index.less';
@@ -11,7 +10,7 @@ import './index.less';
 export default {
   title: 'Upgraded/Switch',
   component: Switch,
-  decorators: [withDesign],
+  subcomponents: { 'Switch.Item': Switch.Item },
   parameters: {
     design: {
       type: 'figma',
@@ -205,7 +204,7 @@ const DemoTemplate = () => (
   </table>
 );
 export const Demo = DemoTemplate.bind({});
-const TemplateIconGroup: Story<ISwitchGroupProps> = (args) => (
+const TemplateIconGroup: Story<SwitchProps> = (args) => (
   <>
     <Switch {...args} />
   </>
@@ -243,7 +242,7 @@ IconGroup.args = {
   ],
 };
 
-const TemplateGroup: Story<ISwitchGroupProps> = (args) => (
+const TemplateGroup: Story<SwitchProps> = (args) => (
   <>
     <Switch {...args} />
   </>
@@ -316,7 +315,7 @@ Disabled.args = {
   ],
 };
 
-const JSXTemplateGroup: Story<ISwitchGroupProps> = (args) => {
+const JSXTemplateGroup: Story<SwitchProps> = (args) => {
   const tabs = [
     { key: 'key1', value: 'value1' },
     { key: 'key2', value: 'value2' },

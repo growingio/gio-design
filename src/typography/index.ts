@@ -1,5 +1,5 @@
-import Text from './text';
-import Title from './title';
+import Text from './Text';
+import Title from './Title';
 
 export type { TextProps, TitleProps } from './interfaces';
 

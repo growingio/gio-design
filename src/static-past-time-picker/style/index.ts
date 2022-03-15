@@ -1,5 +1,10 @@
 import '../../static-date-range-picker/style';
+import '../../static-date-picker/style';
 import '../../button/style';
+import '../../input/style';
+import '../../checkbox/style';
+import '../../list/style';
+import '../../switch/style';
 import './index.less';
 import './QuickPicker.less';
 import './RangePanel.less';

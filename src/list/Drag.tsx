@@ -5,7 +5,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import update from 'immutability-helper';
 import { usePrefixCls } from '@gio-design/utils';
 import { PREFIX } from './constants';
-import { DragItemProps, DragListProps, OptionProps } from './interfance';
+import { DragItemProps, DragListProps, OptionProps } from './interface';
 import DragItem from './DragItem';
 import List from './List';
 

@@ -3,10 +3,10 @@ import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
 import { isUndefined, omit } from 'lodash';
 import useControlledState from '../utils/hooks/useControlledState';
-import { TogglesProps } from './interface';
+import { ToggleProps } from './interface';
 import WithRef from '../utils/withRef';
 
-const InnerToggle: React.ForwardRefRenderFunction<HTMLInputElement, TogglesProps> = (props, ref) => {
+const InnerToggle: React.ForwardRefRenderFunction<HTMLInputElement, ToggleProps> = (props, ref) => {
   const {
     defaultOn = false,
     on,
@@ -18,6 +18,7 @@ const InnerToggle: React.ForwardRefRenderFunction<HTMLInputElement, TogglesProps
     style,
     dataTestId: legacyDataTestId = 'toggle',
     'data-testid': dataTestId = 'toggle',
+    children,
     ...otherProps
   } = props;
   const prefixCls = usePrefixCls('toggle');
@@ -50,12 +51,14 @@ const InnerToggle: React.ForwardRefRenderFunction<HTMLInputElement, TogglesProps
         checked={status}
         {...omit(otherProps, 'size')}
       />
-      <span className={classnames(`${prefixCls}-suffixContent`)}>{status ? checkedChildren : uncheckedChildren}</span>
+      <span className={classnames(`${prefixCls}-suffixContent`)}>
+        {(status ? checkedChildren : uncheckedChildren) ?? children}
+      </span>
     </label>
   );
 };
 
-export const Toggle = WithRef<HTMLInputElement, TogglesProps>(InnerToggle);
+export const Toggle = WithRef<HTMLInputElement, ToggleProps>(InnerToggle);
 
 Toggle.displayName = 'Toggle';
 

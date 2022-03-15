@@ -1,4 +1,4 @@
-import DateRangePicker from './Picker';
+import DateRangePicker from './DateRangePicker';
 import WithSubComponent from '../utils/withSubComponent';
 import StaticDateRangePicker from '../static-date-range-picker';
 
@@ -7,4 +7,4 @@ export type { StaticDateRangePickerProps } from '../static-date-range-picker/int
 export type { DateRangePickerProps } from './interfaces';
 export default WithSubComponent(DateRangePicker, { Static: StaticDateRangePicker });
 
-export { formatDates } from './Picker';
+export { formatDates } from './DateRangePicker';

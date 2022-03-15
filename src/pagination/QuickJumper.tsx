@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { InputNumber } from '..';
+import { Input } from '..';
 import { PaginationContext } from './Pagination';
 
 const QuickJumper: React.FC<{
@@ -16,7 +16,7 @@ const QuickJumper: React.FC<{
   return (
     <div aria-label={ariaLabel} className={`${prefixCls}__jumper`} data-testid="pagination-item__jumper">
       {textObject.jumpTo(
-        <InputNumber
+        <Input.InputNumber
           min={1}
           max={maxPages}
           size="small"

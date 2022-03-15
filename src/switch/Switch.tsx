@@ -5,14 +5,11 @@ import { usePrefixCls } from '@gio-design/utils';
 import usePrevious from '../utils/hooks/usePrevious';
 import filterChildren from '../utils/filterChildren';
 import SwitchItem from './SwitchItem';
-import SwitchGroupContext from './context';
-import { ISwitchGroupProps, SwitchItemValueType } from './interface';
-import WithRef from '../utils/withRef';
+import SwitchContext from './context';
+import { SwitchProps, SwitchItemValueType } from './interface';
+import WithSubComponent from '../utils/withSubComponent';
 
-const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, ISwitchGroupProps> = (
-  props: ISwitchGroupProps,
-  ref
-) => {
+const Switch = React.forwardRef<HTMLDivElement, SwitchProps>((props: SwitchProps, ref) => {
   const {
     className,
     style,
@@ -105,7 +102,7 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, ISwitchGroupPro
 
   return (
     <div style={style} className={wrapperCls} ref={ref} data-testid={dataTestId}>
-      <SwitchGroupContext.Provider
+      <SwitchContext.Provider
         value={{
           disabled,
           value: selectedValue as SwitchItemValueType,
@@ -113,11 +110,13 @@ const InnerGroup: React.ForwardRefRenderFunction<HTMLDivElement, ISwitchGroupPro
         }}
       >
         {renderItems()}
-      </SwitchGroupContext.Provider>
+      </SwitchContext.Provider>
     </div>
   );
-};
+});
 
-export const SwitchGroup = WithRef<HTMLDivElement, ISwitchGroupProps>(InnerGroup);
+// Switch.displayName = 'Switch';
 
-export default SwitchGroup;
+export default WithSubComponent(Switch, {
+  Item: SwitchItem,
+});

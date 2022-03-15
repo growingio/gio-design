@@ -4,17 +4,24 @@ import { HomeFilled, AppsFilled, SettingOutlined, AppOutlined } from '@gio-desig
 import Docs from './LayoutPage';
 import { LayoutProps } from '../interfaces';
 import Layout from '../index';
-import IconButton from '../../button';
+import Button from '../../button';
 import Avatar from '../../avatar';
 import Skeleton from '../../skeleton';
 import Select from '../../select';
-import Menu, { SubMenu, MenuItem, Divider } from '../../menu';
+import Menu from '../../menu';
 import '../style';
 import '../style/demo.stories.less';
 
 export default {
-  title: 'upgraded/Layout',
+  title: 'Upgraded/Layout',
   component: Layout,
+  subcomponents: {
+    'Layout.Header': Layout.Header,
+    'Layout.Content': Layout.Content,
+    'Layout.Sider': Layout.Sider,
+    'Layout.Header.Divider': Layout.Header.HeaderDivider,
+    'Layout.Header.Section': Layout.Header.HeaderSection,
+  },
   parameters: {
     docs: {
       page: Docs,
@@ -25,9 +32,9 @@ export default {
 const Header = () => (
   <Layout.Header justify="space-between" style={{ padding: '0 24px', borderBottom: '1px solid rgb(223 228 238)' }}>
     <Layout.Header.HeaderSection justify="space-between">
-      <IconButton type="text">
+      <Button.IconButton type="text">
         <HomeFilled size="16px" />
-      </IconButton>
+      </Button.IconButton>
       <img
         src="https://www.growingio.com/vassets/images/home_v3/gio-logo-primary.svg"
         style={{ width: 120, height: 26, marginTop: 7, marginLeft: 8 }}
@@ -37,7 +44,9 @@ const Header = () => (
       <Select
         size="normal"
         overlayStyle={{ width: 144 }}
-        triggerProps={{ placeholder: '请选择', style: { width: 144, textAlign: 'left' }, allowClear: false }}
+        placeholder="请选择"
+        style={{ width: 144, textAlign: 'left' }}
+        allowClear
         options={[
           { value: '1', label: '金融行业 Demo' },
           { value: '2', label: '项目名称' },
@@ -50,12 +59,12 @@ const Header = () => (
       />
     </Layout.Header.HeaderSection>
     <Layout.Header.HeaderSection justify="space-between" style={{ width: 136 }}>
-      <IconButton type="text">
+      <Button.IconButton type="text">
         <AppsFilled />
-      </IconButton>
-      <IconButton type="text">
+      </Button.IconButton>
+      <Button.IconButton type="text">
         <SettingOutlined />
-      </IconButton>
+      </Button.IconButton>
       <Avatar />
     </Layout.Header.HeaderSection>
   </Layout.Header>
@@ -108,22 +117,22 @@ const SuspendDemo = ({ suspend, fixed }: { suspend?: 'left' | 'right'; fixed: bo
             mode="vertical"
             title="标题"
           >
-            <MenuItem key="1" icon={<AppOutlined />}>
+            <Menu.MenuItem key="1" icon={<AppOutlined />}>
               功能名称
-            </MenuItem>
-            <MenuItem key="2" icon={<AppOutlined />}>
+            </Menu.MenuItem>
+            <Menu.MenuItem key="2" icon={<AppOutlined />}>
               功能名称
-            </MenuItem>
-            <SubMenu key="3" title="一级功能名称" icon={<AppOutlined />}>
-              <MenuItem key="3-1">二级功能名称</MenuItem>
-              <MenuItem key="3-2">二级功能名称</MenuItem>
-              <MenuItem key="3-3">二级功能名称</MenuItem>
-            </SubMenu>
-            <MenuItem key="4" icon={<AppOutlined />}>
+            </Menu.MenuItem>
+            <Menu.SubMenu key="3" title="一级功能名称" icon={<AppOutlined />}>
+              <Menu.MenuItem key="3-1">二级功能名称</Menu.MenuItem>
+              <Menu.MenuItem key="3-2">二级功能名称</Menu.MenuItem>
+              <Menu.MenuItem key="3-3">二级功能名称</Menu.MenuItem>
+            </Menu.SubMenu>
+            <Menu.MenuItem key="4" icon={<AppOutlined />}>
               功能名称
-            </MenuItem>
+            </Menu.MenuItem>
           </Menu>
-          <Divider />
+          <Menu.Divider />
           <Menu
             selectedKey={selectedKey}
             onClick={handleClick}
@@ -131,21 +140,21 @@ const SuspendDemo = ({ suspend, fixed }: { suspend?: 'left' | 'right'; fixed: bo
             mode="vertical"
             title="标题"
           >
-            <MenuItem key="5" icon={<AppOutlined />}>
+            <Menu.MenuItem key="5" icon={<AppOutlined />}>
               功能名称
-            </MenuItem>
-            <MenuItem key="6" icon={<AppOutlined />}>
+            </Menu.MenuItem>
+            <Menu.MenuItem key="6" icon={<AppOutlined />}>
               功能名称
-            </MenuItem>
-            <MenuItem key="7" icon={<AppOutlined />}>
+            </Menu.MenuItem>
+            <Menu.MenuItem key="7" icon={<AppOutlined />}>
               功能名称
-            </MenuItem>
-            <SubMenu key="8" title="功能名称" icon={<AppOutlined />}>
-              <MenuItem key="8-1">功能名称</MenuItem>
-              <MenuItem key="8-2">功能名称</MenuItem>
-            </SubMenu>
+            </Menu.MenuItem>
+            <Menu.SubMenu key="8" title="功能名称" icon={<AppOutlined />}>
+              <Menu.MenuItem key="8-1">功能名称</Menu.MenuItem>
+              <Menu.MenuItem key="8-2">功能名称</Menu.MenuItem>
+            </Menu.SubMenu>
           </Menu>
-          <Divider />
+          <Menu.Divider />
           <Menu
             selectedKey={selectedKey}
             onClick={handleClick}
@@ -153,15 +162,15 @@ const SuspendDemo = ({ suspend, fixed }: { suspend?: 'left' | 'right'; fixed: bo
             mode="vertical"
             title="标题"
           >
-            <MenuItem key="9" icon={<AppOutlined />}>
+            <Menu.MenuItem key="9" icon={<AppOutlined />}>
               功能名称
-            </MenuItem>
-            <MenuItem key="10" icon={<AppOutlined />}>
+            </Menu.MenuItem>
+            <Menu.MenuItem key="10" icon={<AppOutlined />}>
               功能名称
-            </MenuItem>
-            <MenuItem key="11" icon={<AppOutlined />}>
+            </Menu.MenuItem>
+            <Menu.MenuItem key="11" icon={<AppOutlined />}>
               功能名称
-            </MenuItem>
+            </Menu.MenuItem>
           </Menu>
         </Layout.Sider>
         <Layout.Content>

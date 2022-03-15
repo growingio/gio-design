@@ -1,5 +1,5 @@
 import GIOCheckbox from './Checkbox';
-import CheckboxGroup from './group';
+import CheckboxGroup from './CheckboxGroup';
 import WithSubComponent from '../utils/withSubComponent';
 
 export type TCheckbox = typeof GIOCheckbox & {

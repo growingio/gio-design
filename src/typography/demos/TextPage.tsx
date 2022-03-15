@@ -1,7 +1,7 @@
 import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
 import { FormattedMessage, useIntl } from 'react-intl';
-import Text from '../text';
+import Text from '../Text';
 
 export default function TextPage() {
   const { formatMessage } = useIntl();
@@ -19,7 +19,6 @@ export default function TextPage() {
           defaultMessage: '当需要展示标题、段落、列表内容时使用，当段落内容需要省略时。',
         })}
       </Description>
-
 
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '单行样式' })}</Subheading>

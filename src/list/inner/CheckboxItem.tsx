@@ -2,7 +2,7 @@ import React, { DOMAttributes, useContext, useMemo } from 'react';
 import Checkbox from '../../checkbox/Checkbox';
 import { PREFIX } from '../constants';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
-import { BaseItemProps } from '../interfance';
+import { BaseItemProps } from '../interface';
 import Item from './baseItem';
 import WithRef from '../../utils/withRef';
 import { ListContext } from '../context';

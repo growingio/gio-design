@@ -73,9 +73,7 @@ export interface UserAvatarType extends AvatarProps {
   name: string;
 }
 
-export interface AvatarGroupProps {
-  className?: string;
-  style?: React.CSSProperties;
+export interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * 展示的头像数，如果超过此参数，剩余的头像将会隐藏
    * @default 5

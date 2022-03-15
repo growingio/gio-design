@@ -6,12 +6,11 @@ import Docs from './DateRangePickerPage';
 import DateRangePicker, { DateRangePickerProps, StaticDateRangePickerProps } from '../index';
 
 import '../style';
-import '../../static-date-range-picker/style';
 
 export default {
   title: 'Upgraded/DateRangePicker',
   component: DateRangePicker,
-  subcomponents: { StaticDateRangePicker: DateRangePicker.Static },
+  subcomponents: { 'DateRangePicker.Static': DateRangePicker.Static },
 
   parameters: {
     design: {

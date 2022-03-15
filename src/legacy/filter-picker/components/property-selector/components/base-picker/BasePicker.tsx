@@ -5,7 +5,7 @@ import List from '../list';
 import { BasePickerProps } from './interfaces';
 import SearchBar from '../../../../../../search-bar';
 import Alert from '../../../../../../alert';
-import TabNav, { Tab } from '../../../../../../tabs';
+import TabNav from '../../../../../../tabs';
 import defaultLocaleText from './locales/zh-CN';
 
 function BasePicker({
@@ -30,7 +30,7 @@ function BasePicker({
   }
 
   const tabs = React.useMemo(
-    () => tabNav?.items?.map((i) => <Tab label={i.children} value={i.key} key={i.key} />),
+    () => tabNav?.items?.map((i) => <TabNav.Tab label={i.children} value={i.key} key={i.key} />),
     [tabNav]
   );
 

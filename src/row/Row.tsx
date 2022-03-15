@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { isArray, isUndefined } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
 import { RowProps, RowContextState } from './interface';
-import { dataMap } from './help';
+import { dataMap } from '../grid/help';
 
 export const RowContext: Context<RowContextState> = createContext({ gutters: [0, 0] });
 

@@ -123,5 +123,5 @@ export interface PopoverProps {
    */
   hideDelay?: number;
   triggerClassName?: string;
-  distoryOnHide?: boolean;
+  destroyOnHide?: boolean;
 }

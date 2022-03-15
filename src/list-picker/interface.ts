@@ -1,7 +1,6 @@
 import React from 'react';
 import { InputButtonProps } from '../input';
-// import { OptionProps as CascaderOptionProps } from '../cascader/interfance';
-import { OptionProps } from '../list/interfance';
+import { OptionProps } from '../list/interface';
 import { Placement, TriggerAction } from '../popover/interface';
 import { ListProps } from '../list';
 

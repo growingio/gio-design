@@ -1,7 +1,7 @@
 import React from 'react';
 import { format, getTime, startOfToday, startOfYesterday, startOfDay, isValid, isAfter } from 'date-fns';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
-import SwitchGroup from '../switchGroup';
+import Switch from '../switch';
 import DatePicker from '../static-date-picker';
 import InnerRangePanel from './InnerRangePanel';
 import { RangePickerProps } from './interfaces';
@@ -35,7 +35,7 @@ function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experim
       <>
         <span className={`${prefixCls}__text`}>{`${FromText} ${startDateString}`}</span>
         <span className={`${prefixCls}__options`}>
-          <SwitchGroup
+          <Switch
             size="small"
             defaultValue={endKey}
             onChange={(e) => {
@@ -45,12 +45,12 @@ function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experim
             {endDateKeys.map(
               (o: string) =>
                 o && (
-                  <SwitchGroup.Item key={o} value={o}>
+                  <Switch.Item key={o} value={o}>
                     {END_DATE_MAPPING[o]}
-                  </SwitchGroup.Item>
+                  </Switch.Item>
                 )
             )}
-          </SwitchGroup>
+          </Switch>
         </span>
       </>
     );

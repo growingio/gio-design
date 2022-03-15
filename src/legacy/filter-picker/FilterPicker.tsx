@@ -86,7 +86,7 @@ const FilterPicker = (props: FilterPickerProps) => {
         }
         placement={placement}
         getContainer={getTooltipContainer}
-        distoryOnHide
+        destroyOnHide
         disabled={disabled}
       >
         {children || (

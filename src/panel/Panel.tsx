@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { difference } from 'lodash';
 import { useControlledState, usePrefixCls } from '@gio-design/utils';
 import Typography from '../typography';
-import Tabs, { Tab } from '../tabs';
+import Tabs from '../tabs';
 import { PanelProps, TabPaneProps } from './interfaces';
 import TabPanel from './TabPanel';
 import { Avatar } from '..';
@@ -92,7 +92,12 @@ const InnerPanel: React.ForwardRefRenderFunction<HTMLDivElement, PanelProps> = (
                   props: { name },
                 } = tab;
                 return (
-                  <Tab value={String(tabKey).slice(2)} label={name} key={tabKey} className={prefix('__tabs__tab')} />
+                  <Tabs.Tab
+                    value={String(tabKey).slice(2)}
+                    label={name}
+                    key={tabKey}
+                    className={prefix('__tabs__tab')}
+                  />
                 );
               })}
             </Tabs>

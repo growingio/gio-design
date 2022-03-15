@@ -4,7 +4,6 @@ import { AppOutlined, EditOutlined, SettingOutlined, UserOutlined } from '@gio-d
 import Docs from './AvatarPage';
 import Avatar, { AvatarProps } from '../index';
 import '../style';
-import AvatarGroup from '../AvatarGroup';
 import Dropdown from '../../dropdown';
 import { List } from '../..';
 
@@ -12,7 +11,7 @@ export default {
   title: 'Upgraded/Avatar',
   component: Avatar,
   subcomponents: {
-    AvatarGroup,
+    'Avatar.Group': Avatar.Group,
   },
   parameters: {
     docs: {
@@ -121,7 +120,7 @@ export const Fallbacks = () => (
 
 export const Grouped = () => (
   <>
-    <AvatarGroup
+    <Avatar.Group
       number={4}
       users={[
         { name: 'Jay Chou', backgroundColor: 'purple' },

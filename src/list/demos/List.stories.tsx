@@ -1,6 +1,14 @@
 import React, { useMemo, useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { RightDoubleOutlined, HomeOutlined, UserOutlined, TagOutlined, DeleteOutlined, AndroidFilled, IosFilled } from '@gio-design/icons';
+import {
+  RightDoubleOutlined,
+  HomeOutlined,
+  UserOutlined,
+  TagOutlined,
+  DeleteOutlined,
+  AndroidFilled,
+  IosFilled,
+} from '@gio-design/icons';
 import List from '../List';
 import { ListProps, OptionProps } from '../index';
 import '../style';
@@ -31,47 +39,56 @@ export default {
   },
 } as Meta;
 
-
-
-
-
-
-
-const ListTemplate: Story<ListProps> = (args: ListProps) => <div className="gio-list-demo-box overflow"><List {...args} /></div>
+const ListTemplate: Story<ListProps> = (args: ListProps) => (
+  <div className="gio-list-demo-box overflow">
+    <List {...args} />
+  </div>
+);
 export const Default = ListTemplate.bind({});
 Default.args = {
   children: [
-    <Item value="1">
-      List Item 1
-    </Item>,
+    <Item value="1">List Item 1</Item>,
     <Item disabled value="2">
       List Item 2
     </Item>,
-    <Item value="3">
-      List Item 3,List Item 3,List Item 3,List Item 3,
-    </Item>,
+    <Item value="3">List Item 3,List Item 3,List Item 3,List Item 3,</Item>,
     <Item value="4" prefix={<HomeOutlined />}>
       List Item 4
     </Item>,
     <Item value="5" suffix={<RightDoubleOutlined />}>
       List Item 5
     </Item>,
-    <Item value="6" suffix={<Tag title="标签" size="small" status="success">标签</Tag>}>
+    <Item
+      value="6"
+      suffix={
+        <Tag title="标签" size="small" status="success">
+          标签
+        </Tag>
+      }
+    >
       List Item 6
     </Item>,
-    <Item disabled value="7" suffix={<Tag title="标签" size="small" status="info" >标签</Tag>}>
+    <Item
+      disabled
+      value="7"
+      suffix={
+        <Tag title="标签" size="small" status="info">
+          标签
+        </Tag>
+      }
+    >
       List Item 7
-    </Item>
-  ]
+    </Item>,
+  ],
 };
 
 export const Empty = ListTemplate.bind({
   children: null,
   options: null,
-})
+});
 Empty.args = {
   needEmpty: true,
-}
+};
 const listOptions: OptionProps[] = [...new Array(12)].map((_, index) => ({
   label: `List Item ${index}`,
   value: index,
@@ -83,36 +100,37 @@ export const MultipleSelect = () => {
   const [value, setValue] = useState([]);
   const handleChange = (v?: Array<string | number>) => {
     setValue(v);
-  }
-  return <div className="gio-list-demo-box">
-    <List model="multiple" value={value} onChange={handleChange}>
-      <Item value="1">
-        List Item 1
-      </Item>
-      <Item disabled value="2">
-        List Item 2
-      </Item>
-      <Item value="3">
-        List Item 3
-      </Item>
-      <Item value="4" >
-        List Item 4
-      </Item>
-      <Item value="5" >
-        List Item 5
-      </Item>
-    </List>
-  </div>
-}
+  };
+  return (
+    <div className="gio-list-demo-box">
+      <List model="multiple" value={value} onChange={handleChange}>
+        <Item value="1">List Item 1</Item>
+        <Item disabled value="2">
+          List Item 2
+        </Item>
+        <Item value="3">List Item 3</Item>
+        <Item value="4">List Item 4</Item>
+        <Item value="5">List Item 5</Item>
+      </List>
+    </div>
+  );
+};
 
 export const Drag = () => {
-  const datas = useMemo(() => listOptions.map((option, i) =>
-  ({
-    ...option,
-    prefix: i % 3 === 1 ? <UserOutlined /> : <TagOutlined />
-  })), [])
-  return <div className="gio-list-demo-box"><DragList options={datas} onChange={v => console.log(v)} /></div>
-}
+  const datas = useMemo(
+    () =>
+      listOptions.map((option, i) => ({
+        ...option,
+        prefix: i % 3 === 1 ? <UserOutlined /> : <TagOutlined />,
+      })),
+    []
+  );
+  return (
+    <div className="gio-list-demo-box">
+      <DragList options={datas} onChange={(v) => console.log(v)} />
+    </div>
+  );
+};
 
 export const Cascader = () => {
   const [cascaderValue, setCascadervalue] = useState('1.1-1');
@@ -120,7 +138,7 @@ export const Cascader = () => {
   return (
     <div style={{ display: 'flex' }}>
       <div className="gio-list-demo-box">
-        <p style={{ padding: '8px', color: "#242e59" }}>value:{cascaderValue}</p>
+        <p style={{ padding: '8px', color: '#242e59' }}>value:{cascaderValue}</p>
         <Divider />
         <List
           model="cascader"
@@ -155,7 +173,7 @@ export const Cascader = () => {
         </List>
       </div>
       <div className="gio-list-demo-box">
-        <p style={{ padding: '8px', color: "#242e59" }}>value:{cascaderValue2}</p>
+        <p style={{ padding: '8px', color: '#242e59' }}>value:{cascaderValue2}</p>
         <Divider />
         <List
           model="cascader"
@@ -210,58 +228,99 @@ export const Collapse = () => (
         ))}
       </List>
     </div>
-  </div >
+  </div>
 );
-export const Prefix = () => <div className="gio-list-demo-box overflow">
-  <List>
-    {
-      fruits.map((fruit) => <Item value={fruit} label={fruit}
-        prefix={<TagOutlined />} />)
-    }
-  </List>
-</div>
-export const Suffix = () => <div className="gio-list-demo-box overflow">
-  <List>
-    {
-      fruits.map((fruit) => <Item value={fruit} label={fruit}
-        suffix={<Button.IconButton type="text" size="small" ><DeleteOutlined /></Button.IconButton>} />)
-    }
-  </List>
-</div>
-export const Basic = () => <div className="gio-list-demo-box overflow">
-  <List value="Orange">
-    {
-      fruits.map((fruit) => <Item value={fruit} label={fruit} />)
-    }
-  </List>
-</div>
-export const AvatarWithTextAndIcon = () => <div className="gio-list-demo-box overflow">
-  <List>
-    {
-      fruits.map((fruit) => <Item value={fruit} label={fruit}
-        suffix={<Button.IconButton type="text" size="small" ><DeleteOutlined /></Button.IconButton>}
-        prefix={<Avatar backgroundColor="transparent" size="small" mode="circle" src={`https://joeschmoe.io/api/v1/${fruit}`} />} />)
-    }
-  </List>
-</div>
-export const WithIconAndSwitch = () => {
-  const items = [{ value: 'Android', state: false, icon: <AndroidFilled /> }, { value: 'IOS', state: true, icon: <IosFilled /> }];
-  const updatePinState = (value: boolean, idx: number) => {
-    items[idx] = { ...items[idx], state: value }
-  }
-  return <div className="gio-list-demo-box">
+export const Prefix = () => (
+  <div className="gio-list-demo-box overflow">
     <List>
-      {
-        items.map((itm, index) =>
-          <Item value={itm.value} label={itm.value}
-            suffix={<Toggle on={itm.state} onChange={e => { updatePinState(e.target.checked, index) }} size="small" />}
-            prefix={<Avatar size="medium" backgroundColor="#dedede" mode="circle" icon={<AndroidFilled />} />} />
-        )
-      }
+      {fruits.map((fruit) => (
+        <Item value={fruit} label={fruit} prefix={<TagOutlined />} />
+      ))}
     </List>
   </div>
-}
-
+);
+export const Suffix = () => (
+  <div className="gio-list-demo-box overflow">
+    <List>
+      {fruits.map((fruit) => (
+        <Item
+          value={fruit}
+          label={fruit}
+          suffix={
+            <Button.IconButton type="text" size="small">
+              <DeleteOutlined />
+            </Button.IconButton>
+          }
+        />
+      ))}
+    </List>
+  </div>
+);
+export const Basic = () => (
+  <div className="gio-list-demo-box overflow">
+    <List value="Orange">
+      {fruits.map((fruit) => (
+        <Item value={fruit} label={fruit} />
+      ))}
+    </List>
+  </div>
+);
+export const AvatarWithTextAndIcon = () => (
+  <div className="gio-list-demo-box overflow">
+    <List>
+      {fruits.map((fruit) => (
+        <Item
+          value={fruit}
+          label={fruit}
+          suffix={
+            <Button.IconButton type="text" size="small">
+              <DeleteOutlined />
+            </Button.IconButton>
+          }
+          prefix={
+            <Avatar
+              backgroundColor="transparent"
+              size="small"
+              mode="circle"
+              src={`https://joeschmoe.io/api/v1/${fruit}`}
+            />
+          }
+        />
+      ))}
+    </List>
+  </div>
+);
+export const WithIconAndSwitch = () => {
+  const items = [
+    { value: 'Android', state: false, icon: <AndroidFilled /> },
+    { value: 'IOS', state: true, icon: <IosFilled /> },
+  ];
+  const updatePinState = (value: boolean, idx: number) => {
+    items[idx] = { ...items[idx], state: value };
+  };
+  return (
+    <div className="gio-list-demo-box">
+      <List>
+        {items.map((itm, index) => (
+          <Item
+            value={itm.value}
+            label={itm.value}
+            suffix={
+              <Toggle
+                on={itm.state}
+                onChange={(e) => {
+                  updatePinState(e.target.checked, index);
+                }}
+                size="small"
+              />
+            }
+            prefix={<Avatar size="medium" backgroundColor="#dedede" mode="circle" icon={<AndroidFilled />} />}
+          />
+        ))}
+      </List>
+    </div>
+  );
+};
 
 export const SelectionList = () => {
   const [cascaderValue, setCascadervalue] = useState('1.1-1');
@@ -270,22 +329,34 @@ export const SelectionList = () => {
   return (
     <>
       <div className="gio-list-demo-box">
-        <Selection onChange={val => console.log('Selection onChange', val)}>
+        <Selection onChange={(val) => console.log('Selection onChange', val)}>
           <List id="l1" title="普通列表" onChange={(value) => console.log('普通列表 onChange value', value)}>
-            <Item value="1">
-              List Item 1
-            </Item>
+            <Item value="1">List Item 1</Item>
             <Item disabled value="2">
               List Item 2
             </Item>
-            <Item value="3">
-              List Item 3,List Item 3,List Item 3,List Item 3,
-            </Item>
-            <Item value="4"
-              prefix={<Avatar backgroundColor="transparent" size="small" mode="circle" src="https://joeschmoe.io/api/v1/random" />} >
+            <Item value="3">List Item 3,List Item 3,List Item 3,List Item 3,</Item>
+            <Item
+              value="4"
+              prefix={
+                <Avatar
+                  backgroundColor="transparent"
+                  size="small"
+                  mode="circle"
+                  src="https://joeschmoe.io/api/v1/random"
+                />
+              }
+            >
               List Item 4
             </Item>
-            <Item value="6" suffix={<Tag title="标签" size="small" status="success">标签</Tag>}>
+            <Item
+              value="6"
+              suffix={
+                <Tag title="标签" size="small" status="success">
+                  标签
+                </Tag>
+              }
+            >
               List Item 6
             </Item>
           </List>
@@ -296,7 +367,7 @@ export const SelectionList = () => {
             value={cascaderValue}
             onChange={(val) => {
               setCascadervalue(val as string);
-              console.log('cascader onChange', val)
+              console.log('cascader onChange', val);
             }}
           >
             <CascaderItem label="Nested Item" value="1">
@@ -322,8 +393,8 @@ export const SelectionList = () => {
             id="l4"
             value={multipleValue}
             onChange={(value: string[]) => {
-              console.log('DragList value', value)
-              setMultipleValue(value)
+              console.log('DragList value', value);
+              setMultipleValue(value);
             }}
             model="multiple"
             title="可选列表"
@@ -338,24 +409,24 @@ export const SelectionList = () => {
 export const DropdownList = () => {
   const [visible, setVisible] = useState(false);
   const [search, setSearch] = useState('');
-  const options = fruits.slice(4).map(v => ({ value: v, label: v }));
+  const options = fruits.slice(4).map((v) => ({ value: v, label: v }));
   // const options2 = listOptions;
-  return <Dropdown
-    visible={visible}
-    onVisibleChange={(vis) => setVisible(vis)}
-    content={
-      <>
-        <SearchBar value={search} onChange={e => setSearch(e.target.value)} />
-        <Selection style={{ padding: '8px 0 0 0' }}>
-          <List
-            id="group1"
-            title="group1"
-            options={options}
-          />
-        </Selection>
-      </>
-    }
-  >
-    <Button active={visible} type="secondary">请选择...</Button>
-  </Dropdown>
-}
+  return (
+    <Dropdown
+      visible={visible}
+      onVisibleChange={(vis) => setVisible(vis)}
+      content={
+        <>
+          <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
+          <Selection style={{ padding: '8px 0 0 0' }}>
+            <List id="group1" title="group1" options={options} />
+          </Selection>
+        </>
+      }
+    >
+      <Button active={visible} type="secondary">
+        请选择...
+      </Button>
+    </Dropdown>
+  );
+};

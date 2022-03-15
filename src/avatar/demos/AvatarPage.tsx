@@ -119,7 +119,7 @@ export default function ListPage() {
       <Description>
         {formatMessage({
           defaultMessage:
-            '使用 `<AvatarGroup />` 组件并传入 `users` 参数，可以将头像排列成一组。用 `number` 参数来限制渲染的头像数量',
+            '使用 `<Avatar.Group />` 组件并传入 `users` 参数，可以将头像排列成一组。用 `number` 参数来限制渲染的头像数量',
         })}
       </Description>
       <Description>

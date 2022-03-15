@@ -102,7 +102,7 @@ export default function ButtonPage() {
       <Description>
         {formatMessage({
           defaultMessage:
-            '有些时候你可能希望为某些按钮设置图标，以增强应用程序的用户体验。可以通过设置 prefix, suffix 为Svg图标来实现',
+            '有些时候你可能希望为某些按钮设置图标，以增强应用程序的用户体验。可以通过设置 prefix, suffix 为 Svg 图标来实现',
         })}
       </Description>
       <Canvas>
@@ -112,7 +112,7 @@ export default function ButtonPage() {
       <Description>
         {formatMessage({
           defaultMessage:
-            '图标按钮通常位于应用栏和工具栏中。 通过 Button.IconButton组件，配合Svg图标使用。可以通过设置IconButton 的style.fontSize修改图标的大小',
+            '图标按钮通常位于应用栏和工具栏中。 通过 Button.IconButton 组件，配合 Svg 图标使用。可以通过设置 Button.IconButton 的 style.fontSize 修改图标的大小',
         })}
       </Description>
       <Canvas>
@@ -132,17 +132,17 @@ export default function ButtonPage() {
       <Subheading>{formatMessage({ defaultMessage: 'Block 按钮' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '可以通过设置Button 的style.width=100% 使按钮适合其父宽度',
+          defaultMessage: '可以通过设置 Button 的 style.width=100% 使按钮适合其父宽度',
         })}
       </Description>
       <Canvas>
         <Story id="upgraded-button--block-button" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '按钮的active状态' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '按钮的 active 状态' })}</Subheading>
       <Description>
         {formatMessage({
           defaultMessage:
-            '按钮在非禁用状态下包含hover/active样式。可以设置active=true 来给按钮添加一个active状态。可以用于按钮与Dropdown组合下拉菜单时，当下拉列表展开时给按钮一个激活状态',
+            '按钮在非禁用状态下包含 hover/active 样式。可以设置 active=true 来给按钮添加一个 active 状态。可以用于按钮与 Dropdown 组合下拉菜单时，当下拉列表展开时给按钮一个激活状态',
         })}
       </Description>
       <Canvas>

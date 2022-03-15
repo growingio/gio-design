@@ -1,6 +1,6 @@
 import { isNil, isNumber, isString } from 'lodash';
 import { OptionProps } from '..';
-import { MaybeArray } from '../interfance';
+import { MaybeArray } from '../interface';
 
 const formatValue = (isMultiple: boolean, value?: MaybeArray<string | number>) => {
   if (isMultiple) {

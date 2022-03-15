@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { PlusOutlined, FilterOutlined, FolderOutlined } from '@gio-design/icons';
-import Button from '../index';
-import { ButtonProps, IconButtonProps } from '../interface';
-import '../style';
+import Button, { ButtonProps, IconButtonProps } from '..';
 import Docs from './ButtonPage';
-import Checkbox from '../../checkbox/Checkbox';
+import Checkbox from '../../checkbox';
+import '../style';
+import '../../checkbox/style';
 
-const { IconButton } = Button;
 export default {
   title: 'Upgraded/Button',
   component: Button,
-  subcomponents: { 'Button.IconButton': Button.IconButton },
+  subcomponents: {
+    'Button.IconButton': Button.IconButton,
+  },
   argTypes: {
     prefix: {
       control: { type: 'text' }, // 不约束react_node会传入对象导致报错
@@ -53,15 +54,15 @@ export const Types: Story<ButtonProps> = () => (
     <Button prefix={<PlusOutlined />} type="text">
       text
     </Button>
-    <IconButton type="primary">
+    <Button.IconButton type="primary">
       <PlusOutlined />
-    </IconButton>
-    <IconButton type="secondary">
+    </Button.IconButton>
+    <Button.IconButton type="secondary">
       <PlusOutlined />
-    </IconButton>
-    <IconButton type="text">
+    </Button.IconButton>
+    <Button.IconButton type="text">
       <PlusOutlined />
-    </IconButton>
+    </Button.IconButton>
   </>
 );
 export const Disabled: Story<ButtonProps> = () => (
@@ -83,18 +84,18 @@ export const Disabled: Story<ButtonProps> = () => (
 
 export const IconOnly: Story<IconButtonProps> = () => (
   <>
-    <IconButton>
+    <Button.IconButton>
       <FilterOutlined />
-    </IconButton>
-    <IconButton type="secondary">
+    </Button.IconButton>
+    <Button.IconButton type="secondary">
       <FilterOutlined />
-    </IconButton>
-    <IconButton type="text">
+    </Button.IconButton>
+    <Button.IconButton type="text">
       <FilterOutlined />
-    </IconButton>
-    <IconButton type="secondary" style={{ fontSize: '20px' }}>
+    </Button.IconButton>
+    <Button.IconButton type="secondary" style={{ fontSize: '20px' }}>
       <FilterOutlined />
-    </IconButton>
+    </Button.IconButton>
   </>
 );
 
@@ -112,9 +113,9 @@ export const Sizes: Story<ButtonProps> = () => (
     <Button size="normal" type="text">
       text
     </Button>
-    <IconButton size="normal" type="secondary">
+    <Button.IconButton size="normal" type="secondary">
       <FilterOutlined />
-    </IconButton>
+    </Button.IconButton>
     <br />
     <Button size="small">small</Button>
     <Button size="small" type="secondary">
@@ -126,9 +127,9 @@ export const Sizes: Story<ButtonProps> = () => (
     <Button size="small" type="text">
       text
     </Button>
-    <IconButton size="small" type="secondary">
+    <Button.IconButton size="small" type="secondary">
       <FilterOutlined />
-    </IconButton>
+    </Button.IconButton>
   </>
 );
 
@@ -195,7 +196,7 @@ export const Loading: Story<ButtonProps> = () => {
       >
         Click Me !
       </Button>
-      <IconButton
+      <Button.IconButton
         size="normal"
         type="secondary"
         loading={loading2}
@@ -207,7 +208,7 @@ export const Loading: Story<ButtonProps> = () => {
         }}
       >
         <PlusOutlined />
-      </IconButton>
+      </Button.IconButton>
     </>
   );
 };

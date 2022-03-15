@@ -1,6 +1,10 @@
-import React, { ElementType } from 'react';
+import { ElementType } from 'react';
 
-interface ComponentProps {
+export interface RowContextState {
+  gutters: [number, number];
+}
+
+export interface RowProps {
   /**
    `className`前缀
   */
@@ -8,17 +12,9 @@ interface ComponentProps {
   className?: string;
   style?: React.CSSProperties;
   /**
-   根元素的组件
-   */
+    根元素的组件
+    */
   component?: ElementType;
-}
-
-export interface GridProps extends ComponentProps {
-  /**
-   `className`前缀
-   */
-  prefixCls?: string;
-
   // flexbox types
   /**
    `flex-direction`映射
@@ -43,18 +39,7 @@ export interface GridProps extends ComponentProps {
   /**
    子元素的间距，可能为 `css-grid gap` 的映射
    */
-  gap?: number | string;
-
-  /**
-   所占的栅格数
-   */
-  span?: number;
-  /**
-   是否设置为容器元素，宽度为 100%
-   */
-  container?: boolean;
-  /**
-   合并 gap
-   */
-  collapse?: boolean;
+  gutter?: number | [number, number];
 }
+
+export default RowProps;

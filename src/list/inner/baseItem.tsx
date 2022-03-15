@@ -3,7 +3,7 @@ import React, { DOMAttributes, ReactElement, useContext, useEffect, useMemo, use
 import { isEmpty, isString } from 'lodash';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { PREFIX } from '../constants';
-import { BaseItemProps } from '../interfance';
+import { BaseItemProps } from '../interface';
 import Tooltip from '../../tooltip';
 import WithRef from '../../utils/withRef';
 import { ListContext } from '../context';
@@ -29,7 +29,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       wrapper = defaultContentRender,
       onMouseEnter,
       onMouseLeave,
-      hovered:propsHovered,
+      hovered: propsHovered,
       ...rest
     } = props;
     const prefixCls = `${usePrefixCls(PREFIX)}--item`;
@@ -43,12 +43,12 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       selectParent,
     } = useContext(ListContext);
     const mergedDisabled = disabled ?? contextDisabled;
-    const [hovered,setHovered] = useState(false);
+    const [hovered, setHovered] = useState(false);
     const selected = useMemo(() => {
       if (model === 'cascader') {
         // 最顶级
-        if(!selectParent){
-         return contextValue?.toString()?.split('.')?.[0] === value?.toString();
+        if (!selectParent) {
+          return contextValue?.toString()?.split('.')?.[0] === value?.toString();
         }
         // 次级
         return (contextValue as string).startsWith(generateString(value, selectParent)?.toString());
@@ -58,12 +58,14 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       }
       return selectStatus?.(value, contextValue);
     }, [contextValue, model, selectParent, value]);
-    
-    useEffect(() => () => {
-        setHovered(false)
-      }, [])
-    
-    
+
+    useEffect(
+      () => () => {
+        setHovered(false);
+      },
+      []
+    );
+
     /** ============ prefix suffix  ================  */
     const prefix = useMemo(
       () => propPrefix ?? contextPrefix?.({ label, value, disabled, disabledTooltip }),
@@ -127,7 +129,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
             {
               [`${prefixCls}--disabled`]: mergedDisabled,
               [`${prefixCls}--actived`]: selected,
-              [`${prefixCls}--hovered`]: !mergedDisabled ? (propsHovered || hovered) : false,
+              [`${prefixCls}--hovered`]: !mergedDisabled ? propsHovered || hovered : false,
             },
             className
           )}
@@ -135,7 +137,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
           aria-hidden="true"
           ref={ref}
           onClick={handleOnClick}
-          title={title || !disabled && isString(content) && content || undefined}
+          title={title || (!disabled && isString(content) && content) || undefined}
           {...rest}
         >
           {contentRender?.(contentElement)}

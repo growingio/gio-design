@@ -1,6 +1,6 @@
 export type SwitchItemValueType = string | number;
 
-export interface ISwitchProps
+export interface SwitchItemProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix' | 'type' | 'disabled'> {
   /**
    初始是否选中
@@ -36,13 +36,13 @@ export interface ISwitchProps
   value?: SwitchItemValueType;
 }
 
-export interface TSwitchGroupOption {
+export interface SwitchOption {
   value: SwitchItemValueType;
   label: React.ReactNode;
   disabled?: boolean;
 }
 
-export interface ISwitchGroupProps {
+export interface SwitchProps {
   // 自定义 `className`
   className?: string;
   // 自定义样式
@@ -56,15 +56,15 @@ export interface ISwitchGroupProps {
   // 指定选中的选项
   value?: SwitchItemValueType;
   // 变化时回调函数
-  onChange?: ISwitchProps['onChange'];
+  onChange?: SwitchItemProps['onChange'];
   // 指定可选项
-  options?: Array<TSwitchGroupOption | string>;
+  options?: Array<SwitchOption | string>;
   // 子元素
   children?: React.ReactNode;
   dataTestId?: string;
 }
 
-export interface SwitchGroupContextType extends Pick<TSwitchGroupOption, 'value' | 'disabled'> {
+export interface SwitchContextType extends Pick<SwitchOption, 'value' | 'disabled'> {
   name?: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 }

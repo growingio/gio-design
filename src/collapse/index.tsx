@@ -1,7 +1,7 @@
 import Collapse from './Collapse';
-import Panel from './CollapsePanel';
+import CollapsePanel from './CollapsePanel';
 import withSubComponent from '../utils/withSubComponent';
 
 export { CollapseProps, CollapsePanelProps } from './interface';
-export default withSubComponent(Collapse, { Panel });
-export { Panel };
+export default withSubComponent(Collapse, { Panel: CollapsePanel });
+export { CollapsePanel };

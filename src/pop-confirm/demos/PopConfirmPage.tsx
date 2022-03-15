@@ -5,7 +5,7 @@ import { Figma } from 'storybook-addon-designs/esm/blocks';
 import Popconfirm from '../index';
 import Alert from '../../alert';
 
-export default function ListPage() {
+export default function PopConfirmPage() {
   const { formatMessage } = useIntl();
 
   return (

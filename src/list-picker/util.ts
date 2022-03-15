@@ -1,4 +1,4 @@
-import { OptionProps, SelectionItemProps } from '../list/interfance';
+import { OptionProps, SelectionItemProps } from '../list/interface';
 
 export const getFlattenOptions = (
   data: OptionProps[] | SelectionItemProps[],

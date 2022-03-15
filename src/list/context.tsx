@@ -1,7 +1,7 @@
 import { noop } from 'lodash';
 import React from 'react';
 import List from './List';
-import { OptionProps, ListProps, MaybeArray, ModelType } from './interfance';
+import { OptionProps, ListProps, MaybeArray, ModelType } from './interface';
 
 export interface ListContextProps {
   value?: string | (string | number)[] | number;

@@ -1,9 +1,4 @@
-import './index.less';
-import '../../static-date-picker/style'
-import '../../static-date-range-picker/style'
-import '../../static-past-time-picker/style'
-import '../../button/style';
+import '../../static-past-time-picker/style';
 import '../../input/style';
-import '../../list/style';
 import '../../popover/style';
-import '../../switchGroup/style';
+import './index.less';

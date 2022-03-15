@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ItemProps } from './interfance';
+import { ItemProps } from './interface';
 import BaseItem from './inner/baseItem';
 import CheckboxItem from './inner/CheckboxItem';
 import CalcaderItem from './inner/CascaderItem';
