@@ -1,3 +1,11 @@
+## [22.14.13](https://github.com/growingio/gio-design/compare/v22.14.12...v22.14.13) (2022-03-21)
+
+
+### Bug Fixes
+
+* **form:** fix help message color of form-item ([#1911](https://github.com/growingio/gio-design/issues/1911)) ([134b190](https://github.com/growingio/gio-design/commit/134b19030837dd22f332c9d24d4586864db7912f))
+* **static-date-picker:** fix cell bug ([#1912](https://github.com/growingio/gio-design/issues/1912)) ([de0250e](https://github.com/growingio/gio-design/commit/de0250e083168acd31427e8ab51f7cc9306afcb4))
+
 ## [22.14.12](https://github.com/growingio/gio-design/compare/v22.14.11...v22.14.12) (2022-03-14)
 
 
