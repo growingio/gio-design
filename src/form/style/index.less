@@ -25,6 +25,10 @@
 
   .@{field-prefix-cls}-message {
     color: if(@hasMsg, @@color, '');
+    .@{field-prefix-cls}-feedback,
+    .@{field-prefix-cls}-help {
+      color: if(@hasMsg, @@color, '');
+    }
   }
 
   .@{field-prefix-cls}-children-icon {
@@ -116,7 +120,8 @@
   &-feedback,
   &-help {
     min-height: 20px;
-    color: @error-color;
+    margin-top: 8px;
+    color: @gray-4;
 
     .@{form-prefix-cls}-large & {
       min-height: @field-gap-large;
