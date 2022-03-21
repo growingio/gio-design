@@ -1,3 +1,10 @@
+## [22.14.14](https://github.com/growingio/gio-design/compare/v22.14.13...v22.14.14) (2022-03-21)
+
+
+### Bug Fixes
+
+* **Popover:** fix delay issue ([#1914](https://github.com/growingio/gio-design/issues/1914)) ([7880618](https://github.com/growingio/gio-design/commit/7880618df6b8f19d8d426433bafa40b9d30b473c))
+
 ## [22.14.13](https://github.com/growingio/gio-design/compare/v22.14.12...v22.14.13) (2022-03-21)
 
 
