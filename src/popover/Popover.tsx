@@ -47,6 +47,8 @@ const Popover = (props: PopoverProps) => {
   const hasPopupMouseDown = useRef<boolean>(false);
   const mouseDownTimeout = useRef<any>(undefined);
   const mouseLeaveTimeout = useRef<any>(undefined);
+  const mouseIsNotLeave = useRef<any>(false);
+
   const contentCls = useMemo(
     () =>
       classNames(
@@ -168,20 +170,26 @@ const Popover = (props: PopoverProps) => {
   const isFocusToShow = useMemo(() => trigger.indexOf('focus') !== -1, [trigger]);
 
   const onMouseEnter = useMemo(
-    () =>
-      debounce((e: Event) => {
-        triggerChildEvent('onMouseEnter', e);
-        isHoverToShow && updateVisible(true);
-      }, delay),
+    () => (e: Event) => {
+      mouseIsNotLeave.current = true;
+      clearTimeout(mouseLeaveTimeout.current);
+      debounce(() => {
+        if (mouseIsNotLeave.current) {
+          triggerChildEvent('onMouseEnter', e);
+          isHoverToShow && updateVisible(true);
+        }
+      }, delay)();
+    },
     [delay, triggerChildEvent, isHoverToShow, updateVisible]
   );
   const onMouseLeave = useMemo(
     () => (e: Event) => {
       triggerChildEvent('onMouseLeave', e);
       clearTimeout(mouseLeaveTimeout.current);
-      mouseLeaveTimeout.current = setTimeout(()=> {
+      mouseLeaveTimeout.current = setTimeout(() => {
+        mouseIsNotLeave.current = false;
         isHoverToShow && updateVisible(false);
-      },500)
+      }, 500);
     },
     [triggerChildEvent, isHoverToShow, updateVisible]
   );
@@ -218,7 +226,7 @@ const Popover = (props: PopoverProps) => {
           updateVisible(false);
         }
       }, delay),
-    [delay,trigger, updateVisible]
+    [delay, trigger, updateVisible]
   );
 
   const divRoles = useMemo(() => {
