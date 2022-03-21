@@ -8,39 +8,28 @@ import { isEqual } from 'date-fns';
 import defaultLocale from './locales/zh-CN';
 import { StaticDatePickerProps } from './interfaces';
 
-const OmittedCell: React.FC = () => {
-  const spanRef = useRef<HTMLSpanElement>(null);
+const Cell: React.FC<{ visible: boolean; prefixCls: string; currentDate: Date }> = ({
+  visible,
+  prefixCls,
+  currentDate,
+}) => {
+  const divRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const parent = spanRef.current?.parentElement;
+    const parent = divRef.current?.parentElement;
 
-    const observer = new MutationObserver((mutationList) => {
-      mutationList.forEach((mutation) => {
-        if (
-          // prettier-disabled
-          mutation.type === 'attributes' &&
-          mutation.attributeName &&
-          parent?.hasAttribute(mutation.attributeName)
-        ) {
-          parent?.removeAttribute(mutation.attributeName);
-        }
-      });
-    });
-
-    if (parent) {
+    if (parent && !visible) {
       const attributes = ['title', 'class'];
       // 移除已经初始化的 `title` 和 `class` 属性
-      attributes.forEach((attribute) => parent.removeAttribute(attribute));
-      // 监听后续的 `title` 和 `class` 属性变化，然后移除
-      observer.observe(parent, {
-        attributeFilter: attributes,
-        attributes: true,
-        childList: true,
-      });
+      attributes.forEach((attribute) => parent.hasAttribute(attribute) && parent.removeAttribute(attribute));
     }
-    return () => observer.disconnect();
-  }, []);
+  });
 
-  return <span ref={spanRef} />;
+  return (
+    <div ref={divRef} className={`${prefixCls}-cell-inner`}>
+      {visible && currentDate.getDate()}
+    </div>
+  );
 };
 
 const DatePicker: React.FC<StaticDatePickerProps> = ({
@@ -58,21 +47,21 @@ const DatePicker: React.FC<StaticDatePickerProps> = ({
 
   const prefixCls = usePrefixCls('picker');
 
-  const isSameYearAndDay = (currentDate: Date) =>
+  const isSameYearAndMonth = (currentDate: Date) =>
     isEqual(
       new Date(currentDate.getFullYear(), currentDate.getMonth()),
       new Date(viewDate.getFullYear(), viewDate.getMonth())
     );
 
   const omitOtherDate = (currentDate: Date) => {
-    if (isSameYearAndDay(currentDate)) {
-      return <div className={`${prefixCls}-cell-inner`}>{currentDate.getDate()}</div>;
+    if (isSameYearAndMonth(currentDate)) {
+      return <Cell currentDate={currentDate} prefixCls={prefixCls} visible />;
     }
-    return <OmittedCell />;
+    return <Cell currentDate={currentDate} prefixCls={prefixCls} visible={false} />;
   };
   const disabledDate = (currentDate: Date) => {
     if (mode === 'date') {
-      if (!isSameYearAndDay(currentDate)) {
+      if (!isSameYearAndMonth(currentDate)) {
         return true;
       }
     }
