@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useContext } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
-import PropertySelector from '../../../../property-selector';
+import PropertySelector, { PropertyValue } from '../../../../property-selector';
 import FilterCondition from './FilterCondition';
 import './index.less';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue, ListValue } from '../../../interfaces';
@@ -40,6 +40,7 @@ function Expression(props: ExpressionProps) {
   const [exprKey, setExprKey] = useState<string>(filterItem?.key || '');
   const [exprName, setExprName] = useState<string>(filterItem?.name || '');
   const [groupId, setGroupId] = useState<string>(filterItem?.groupId || '');
+  const [iconId, setIconId] = useState<string>(filterItem?.iconId || '');
   const [op, setOp] = useState<StringValue | NumberValue | DateValue | ListValue>(filterItem?.op);
   const [subFilterItem, setSubFilterItem] = useState<FilterValueType>(filterItem);
   const { fetchDetailData, operationsOption } = React.useContext(FilterPickerContext);
@@ -65,28 +66,32 @@ function Expression(props: ExpressionProps) {
     onChange(subFilterItem, index);
   };
 
-  const changePropertyPicker = (v: any) => {
-    v && setValueType(v?.valueType || 'string');
-    v && setExprName(v.label);
-    v && setExprKey(v.value);
-    v && setValues([]);
-    v && setOp('=');
-    v && setGroupId(v.subGroupId);
+  const changePropertyPicker = (v: PropertyValue) => {
+    if (v) {
+      setValueType((v.valueType || 'string') as attributeValue);
+      setExprName(v.label ?? '');
+      setExprKey(v.value ?? '');
+      setValues([]);
+      setOp('=');
+      setGroupId(v.groupId ?? '');
+      setIconId(v.iconId ?? '');
+    }
     const type = v?.valueType ? v?.valueType.toLowerCase() : 'string';
     const expr: FilterValueType = {
-      key: v.value,
-      name: v.label,
-      valueType: type,
+      key: v?.value,
+      name: v?.label,
+      valueType: type as attributeValue,
       op: type === 'list' ? 'hasAll' : '=',
-      groupId: v.subGroupId,
+      groupId: v?.groupId,
+      iconId: v?.iconId,
       values: [],
     };
     onChange(expr, index);
   };
 
   const propertyValue = useMemo(
-    () => (exprKey ? { value: exprKey, label: exprName, id: exprKey, groupId, subGroupId: groupId } : undefined),
-    [exprKey, exprName, groupId]
+    () => (exprKey ? { value: exprKey, label: exprName, id: exprKey, groupId, iconId } : undefined),
+    [exprKey, exprName, groupId, iconId]
   );
 
   return (
