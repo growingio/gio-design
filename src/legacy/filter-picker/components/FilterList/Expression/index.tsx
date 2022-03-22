@@ -71,21 +71,21 @@ function Expression(props: ExpressionProps) {
     v && setExprKey(v.value);
     v && setValues([]);
     v && setOp('=');
-    v && setGroupId(v.subGroupId);
+    v && setGroupId(v?.subGroupId ?? v?.groupId);
     const type = v?.valueType ? v?.valueType.toLowerCase() : 'string';
     const expr: FilterValueType = {
       key: v.value,
       name: v.label,
       valueType: type,
       op: type === 'list' ? 'hasAll' : '=',
-      groupId: v.subGroupId,
+      groupId: v?.subGroupId ?? v?.groupId,
       values: [],
     };
     onChange(expr, index);
   };
 
   const propertyValue = useMemo(
-    () => (exprKey ? { value: exprKey, label: exprName, id: exprKey, groupId, subGroupId: groupId } : undefined),
+    () => (exprKey ? { value: exprKey, label: exprName, id: exprKey, groupId, subGroupId: groupId, iconId: groupId } : undefined),
     [exprKey, exprName, groupId]
   );
 
