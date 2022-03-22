@@ -160,13 +160,13 @@
     display: flex;
     align-items: center;
     width: 100%;
-    min-height: 22px;
+    min-height: 24px;
     &-info {
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: inherit;
-      padding: 0 8px;
+      padding: 0 5px;
       color: @gray-3;
       cursor: help;
       .gio-icon {
@@ -192,14 +192,17 @@
     justify-content: flex-end;
   }
 
-  &-filter-button {
-    height: 22px;
+  &-thead &-filter-button {
+    width: 24px;
+    height: 24px;
+    padding: 5px;
     border: none;
   }
 
-  &-sorter-button {
-    height: 22px;
-    padding: 0 8px;
+  &-thead &-sorter-button {
+    width: 24px;
+    height: 24px;
+    padding: 0 5px;
     color: @gray-3;
     line-height: 0;
     border: none;
