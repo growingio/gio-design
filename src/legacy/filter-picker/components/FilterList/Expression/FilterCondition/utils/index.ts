@@ -117,10 +117,10 @@ const parseDateValuesRelativeToText = (relativeTime: number[], t: TextObject) =>
     }
     if (relativeTime[1] < 0) {
       // 过去 xxx 天前
-      return t.withinThePast(Math.abs(relativeTime[0]));
+      return t.withinThePast(Math.abs(relativeTime[1]));
     }
     // 未来 xxx 天之内
-    return t.withinTheNext(Math.abs(relativeTime[0]));
+    return t.withinTheNext(Math.abs(relativeTime[1]));
   }
   if (relativeTime[0] < 0) {
     // 过去 xxx 天至 xxx 天之内
@@ -235,14 +235,14 @@ const parseListValuesToText = (operation: string, value: string[], t: TextObject
   }
 };
 
-// 对NumberAttrSelect，StringAttrSelect，DateAttrSelect返回的values值进行转换,生成属性选择框的属性规则展示文本
+// 对 NumberAttrSelect，StringAttrSelect，DateAttrSelect 返回的 values 值进行转换, 生成属性选择框的属性规则展示文本
 export default function parseValuesToText(
   type: attributeValue,
   operation: string,
   value: string[],
   t: TextObject
 ): string {
-  if (value.length && !!value?.[0]) {
+  if (value?.length && !!value?.[0]) {
     if (type === 'string') {
       // 字符串类型
       return parseStringValuesToText(operation, value, t);
