@@ -21,7 +21,7 @@ export default {
     },
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4093%3A45839',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=4093%3A45839',
       allowFullscreen: true,
     },
   },

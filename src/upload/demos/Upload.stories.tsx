@@ -1,65 +1,19 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
 import Docs from './UploadPage';
 import Upload from '../index';
-import { IUploadProps, IProgress, IRcFile, IUploadFile } from '../interface';
+
+import { IUploadProps, IRcFile, IUploadFile } from '../interface';
 import '../style';
+import { Toast } from '../..';
 
-const uploadUrl = 'https://examples.form.io/example';
+const uploadUrl = 'https://run.mocky.io/v3/8db0a35b-8cd5-4fc1-9797-b2cca4b27380'; // 'https://examples.form.io/example';
 
-const props = {
-  // 上传开始前
-  beforeUpload: (file: IRcFile, fileList: IRcFile[]) => {
-    console.log('=== Before Upload ===');
-    console.log('file: ', file);
-    console.log('fileList: ', fileList);
-    console.log('---  Before Upload ---');
-    return true;
-  },
-  // 开始上传
-  onStart: (file: IUploadFile) => {
-    console.log('=== Start Upload ===');
-    console.log('file: ', file);
-    console.log('--- Start Upload ---');
-  },
-  // 上传过程中
-  onProgress: (event: IProgress, file: IRcFile, fileList: IUploadFile[]) => {
-    console.log('=== Upload Progress ===');
-    console.log('event: ', event);
-    console.log('file: ', file);
-    console.log('fileList', fileList);
-    console.log('--- Upload Progress ---');
-  },
-  // 上传成功
-  onSuccess: (response: Record<string, unknown>, file: IUploadFile, fileList: IUploadFile[]) => {
-    console.log('=== Upload Success ===');
-    console.log('response: ', response);
-    console.log('file: ', file);
-    console.log('fileList', fileList);
-    console.log('--- Upload Success ---');
-  },
-  // 上传出错
-  onError: (error: Error, file: IUploadFile, fileList: IUploadFile[]) => {
-    console.log('=== Upload Error ===');
-    console.log('error: ', error);
-    console.log('file: ', file);
-    console.log('fileList', fileList);
-    console.log('--- Upload Error ---');
-  },
-  // 删除已上传图片
-  onRemove: (file: IUploadFile) => {
-    console.log('=== Remove ===');
-    console.log('file: ', file);
-    console.log('--- Remove ---');
-    return true;
-  },
-};
+const errorAction = 'https://run.mocky.io/v3/26a35feb-f7df-4790-8344-e32db0ed0218';
 
 export default {
   title: 'Upgraded/Upload',
   component: Upload,
-  decorators: [withDesign],
   parameters: {
     design: {
       type: 'figma',
@@ -72,56 +26,60 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IUploadProps> = (args) => <Upload style={{ margin: '0 10px' }} {...args} />;
+const Template: Story<IUploadProps> = (args) => <Upload  {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  type: 'button',
   action: uploadUrl,
-  beforeUpload: props.beforeUpload,
-  onStart: props.onStart,
-  onProgress: props.onProgress,
-  onSuccess: props.onSuccess,
-  onError: props.onError,
-  onRemove: props.onRemove,
 };
 
-export const UrlUpload = Template.bind({});
-UrlUpload.args = {
+export const InputUpload = Template.bind({});
+InputUpload.args = {
   type: 'input',
   action: uploadUrl,
   inputUploadType: 'file',
-};
-
-export const CardUpload = Template.bind({});
-CardUpload.args = {
-  type: 'card',
-  action: uploadUrl,
-  successBorder: true,
 };
 
 export const AvatarUpload = Template.bind({});
 AvatarUpload.args = {
   type: 'avatar',
   action: uploadUrl,
+  successBorder: true,
 };
 
-const AreaTemplate: Story<IUploadProps> = (args) => (
-  <div>
-    <Upload style={{ margin: '10px 20px 0 10px' }} {...args} accept="image/*" />
-    <Upload style={{ margin: '10px 20px 0 10px' }} {...args} />
-  </div>
-);
-export const AreaUpload = AreaTemplate.bind({});
-AreaUpload.args = {
-  type: 'drag',
-  action: uploadUrl,
-  beforeUpload: props.beforeUpload,
-  onStart: props.onStart,
-  onProgress: props.onProgress,
-  onSuccess: props.onSuccess,
-  onError: props.onError,
-  onRemove: props.onRemove,
-};
+export const CardUpload: Story<IUploadProps> = () => {
+
+  const beforeUpload = (file: IRcFile) => {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJpgOrPng) {
+      Toast.error('You can only upload JPG/PNG file!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      Toast.error('Image must smaller than 2MB!');
+    }
+    return isJpgOrPng && isLt2M;
+  }
+  return <div><Upload multiple={false} beforeUpload={beforeUpload} type='card' action={uploadUrl} accept="image/*" /></div>
+}
+/**
+ * 拖拽上传
+ * @returns 
+ */
+export const DraggerUpload: Story<IUploadProps> = () => <Upload multiple={false} type='drag' action={uploadUrl} accept="image/*" />
+/**
+ * 批量上传
+ * @returns 
+ */
+export const BatchUpload: Story<IUploadProps> = () => <Upload maxCount={5} multiple type='drag' action={uploadUrl} />
+
+/**
+ * 文件夹上传
+ * @returns 
+ */
+export const UploadDirectory: Story<IUploadProps> = () => <Upload directory multiple maxCount={5} type='drag' action={uploadUrl} />
+
+
+
 
 export const ControlledFile = Template.bind({});
 ControlledFile.args = {
@@ -134,22 +92,23 @@ ControlledFile.args = {
   } as any,
 };
 
-const CustomErrorMessageTemplate: Story<IUploadProps> = (args) => {
+export const CustomErrorMessage: Story<IUploadProps> = () => {
   const [newFile, setFile] = React.useState<IUploadFile>();
 
   const onError = (error: Error, file: IUploadFile) => {
+
     const nextFile = file;
     nextFile.errorMessage = '上传出错啦!';
     setFile(nextFile);
   };
 
-  return <Upload style={{ margin: '10px 20px 0 10px' }} onError={onError} file={newFile} {...args} />;
+  const handleChange = (file: IUploadFile) => {
+
+    setFile(file as any);
+  };
+  return <Upload type='drag' onChange={handleChange} action={errorAction} onError={onError} file={newFile} />;
 };
-export const CustomErrorMessageUpload = CustomErrorMessageTemplate.bind({});
-CustomErrorMessageUpload.args = {
-  type: 'drag',
-  action: uploadUrl,
-};
+
 
 export const DefaultListUpload = Template.bind({});
 DefaultListUpload.args = {
@@ -174,7 +133,7 @@ DefaultListUpload.args = {
   ],
 };
 
-const ControlledFileListTemplate: Story<IUploadProps> = (args) => {
+export const ControlledFileList: Story<IUploadProps> = (args) => {
   const [files, setFileList] = useState([
     {
       uid: '-1',
@@ -198,14 +157,8 @@ const ControlledFileListTemplate: Story<IUploadProps> = (args) => {
 
   return (
     <div>
-      <Upload style={{ margin: '10px 20px 0 10px' }} onChange={onChange} fileList={files as any} {...args} />
+      <Upload type='drag' accept='image/*' action={uploadUrl} maxCount={10} multiple onChange={onChange} fileList={files as any} {...args} />
     </div>
   );
 };
-export const ControlledFileList = ControlledFileListTemplate.bind({});
-ControlledFileList.args = {
-  type: 'drag',
-  action: uploadUrl,
-  maxCount: 10,
-  multiple: true,
-};
+

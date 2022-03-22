@@ -1,6 +1,7 @@
 import React from 'react';
-import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook/addon-docs';
-import { useIntl } from 'react-intl';
+import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { Figma } from 'storybook-addon-designs/blocks';
 import Upload from '../Upload';
 
 export default function UploadPage() {
@@ -8,117 +9,126 @@ export default function UploadPage() {
 
   return (
     <>
-      <Title>
-        {formatMessage({
-          defaultMessage: 'Upload 上传组件',
-        })}
-      </Title>
-      <p>
+      <Title>{formatMessage({ defaultMessage: 'Upload 上传组件' })}</Title>
+      <Description>
         {formatMessage({
           defaultMessage: '文件选择上传和拖拽上传控件。',
         })}
-      </p>
-      <p>
-        <a href="https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4078%3A43562">
-          Figma
-        </a>
-      </p>
-      <p>Upgrading Guide</p>
-      <ul>
-        <li>无新功能</li>
-        <li>修复了drag单文件传输状态无disable样式</li>
-        <li>type=button disable样式修改</li>
-        <li>修复了storybook上传网址跨域问题</li>
-        <li>修复了avatar状态 阴影超出边界问题</li>
-      </ul>
+      </Description>
+      <Subtitle>
+        <FormattedMessage defaultMessage="使用场景" />
+      </Subtitle>
+      <Description>{formatMessage({
+        defaultMessage: '当需要上传一个或一些文件时;当需要展现上传的进度时;当需要使用拖拽交互时',
+      })}</Description>
+      <Subtitle>
+        <FormattedMessage defaultMessage="设计稿" />
+      </Subtitle>
+      <Figma
+        height="30%"
+        collapsable
+        url="https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4078%3A43562"
+      />
 
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
 
       <Subheading>{formatMessage({ defaultMessage: '默认-按钮上传' })}</Subheading>
-      <p>
+      <Description>
         {formatMessage({
           defaultMessage:
             '用户点击按钮弹出文件选择框。若上传的是图片，则在按钮区域显示图片的缩略图，及图片名称，名称显示不全时，hover Tooltip 展示全名。若上传的是文件，则显示文件名。',
         })}
-      </p>
+      </Description>
       <Canvas>
         <Story id="upgraded-upload--default" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'URL 上传' })}</Subheading>
-      <p>
-        {formatMessage({ defaultMessage: '1. 在输入框内输入图片的 URL，回车即可上传图片。' })}
-        <br />
-        {formatMessage({ defaultMessage: '2. 若上传失败，使用 input 的错误提示方式，说明上传失败的原因。' })}
-      </p>
+      <Description>
+        {formatMessage({ defaultMessage: '在输入框内输入图片的 URL，回车即可上传图片。inputUploadType="file" 将远程文件上传到指定的服务器' })}
+      </Description>
       <Canvas>
-        <Story id="upgraded-upload--url-upload" />
+        <Story id="upgraded-upload--input-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'logo 上传' })}</Subheading>
-      <p>
-        {formatMessage({ defaultMessage: '1. 用于上传 logo，点击后弹出文件选择框，上传后图片等比缩放，显示缩略图。' })}
-        <br />
-        {formatMessage({ defaultMessage: '2. 图片上传中套用 Loading 组件。' })}
-      </p>
+      <Description>
+        {formatMessage({ defaultMessage: '点击上传用 logo，上传后图片等比缩放，显示缩略图。并使用 beforeUpload 限制用户上传的图片格式和大小' })}
+      </Description>
       <Canvas>
         <Story id="upgraded-upload--card-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '头像上传' })}</Subheading>
-      <p>
-        {formatMessage({ defaultMessage: '1. 用于上传头像，点击后弹出文件选择框，上传后图片等比缩放，显示缩略图。' })}
-        <br />
-        {formatMessage({ defaultMessage: '2. 图片上传中套用 Loading 组件。' })}
-      </p>
+      <Description>
+        {formatMessage({ defaultMessage: ' 用于上传头像，点击后弹出文件选择框，上传后图片等比缩放，显示缩略图。' })}
+      </Description>
       <Canvas>
         <Story id="upgraded-upload--avatar-upload" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: '上传区域' })}</Subheading>
-      <p>
+
+      <Subheading>{formatMessage({ defaultMessage: '文件夹上传' })}</Subheading>
+      <Description>
         {formatMessage({
-          defaultMessage:
-            '1. 可以将文件或图片等拖拽到制定区域上传，也可以点击上传。若上传的是图片，上传后图片等比缩放填充满父容器。',
+          defaultMessage: '支持上传一个文件夹里的所有文件。',
         })}
-        <br />
-        {formatMessage({ defaultMessage: '2. 图片上传中套用 Loading 组件。' })}
-        <br />
-        {formatMessage({ defaultMessage: '3. 文件上传中套用 Loading 组件。上传成功/上传失败都在界面上显示。' })}
-        <br />
-        {formatMessage({
-          defaultMessage:
-            '4. 可批量上传，通过 directory 和 multiple 两个参数控制，directory 为文件夹上传，multiple 为多选文件上传，两者同时设置时，directory 的优先级更高。',
-        })}
-        <br />
-        {formatMessage({
-          defaultMessage:
-            '5. 批量上传时，已上传的文件列表会展示在上传区域下方，列表项的内容主要有文件名、上传成功或失败原因、移除按钮。',
-        })}
-        <br />
-        {formatMessage({ defaultMessage: '6. 批量上传时可设置是否显示上传文件列表，并可设置最大上传数量限制。' })}
-      </p>
+      </Description>
       <Canvas>
-        <Story id="upgraded-upload--area-upload" />
+        <Story id="upgraded-upload--upload-directory" />
       </Canvas>
 
+      <Subheading>{formatMessage({ defaultMessage: '拖拽上传' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage:
+            '把文件拖入指定区域，完成上传，也可以点击上传。单文件上传时，若上传的是图片，上传后图片等比缩放填充满父容器。',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-upload--dragger-upload" />
+      </Canvas>
+
+      <Subheading>{formatMessage({ defaultMessage: '批量上传' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage:
+            '通过 directory 和 multiple 两个参数控制，directory 为文件夹上传，multiple 为多选文件上传 (仅支持 ie10+)。两者同时设置时，directory 的优先级更高。批量上传时可设置是否显示上传文件列表，并可设置最大上传数量限制',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-upload--batch-upload" />
+      </Canvas>
+
+
       <Subheading>{formatMessage({ defaultMessage: '受控文件' })}</Subheading>
-      <p>{formatMessage({ defaultMessage: '受控的上传文件。' })}</p>
+      <Description>{formatMessage({ defaultMessage: '受控的上传文件。' })}</Description>
       <Canvas>
         <Story id="upgraded-upload--controlled-file" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自定义上传错误信息' })}</Subheading>
-      <p>
+      <Description>
         {formatMessage({
           defaultMessage: '可在回调函数中通过改变file的status以及errorMessage来自定义要显示的错误信息。',
         })}
-      </p>
+      </Description>
       <Canvas>
-        <Story id="upgraded-upload--custom-error-message-upload" />
+        <Story id="upgraded-upload--custom-error-message" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: '默认上传文件列表' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '完全控制的文件列表' })}</Subheading>
+      <Description>
+        {formatMessage({ defaultMessage: '使用 fileList 对列表进行完全控制，可以实现各种自定义功能。以下演示通过fileList控制上传列表数量限制' })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-upload--controlled-file-list" />
+      </Canvas>
+
+      <Subheading>{formatMessage({ defaultMessage: '已上传的文件列表' })}</Subheading>
+      <Description>
+        {formatMessage({ defaultMessage: '使用 defaultFileList 设置已上传的内容。' })}
+      </Description>
       <Canvas>
         <Story id="upgraded-upload--default-list-upload" />
       </Canvas>
