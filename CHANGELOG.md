@@ -1,3 +1,13 @@
+## [22.14.15](https://github.com/growingio/gio-design/compare/v22.14.14...v22.14.15) (2022-03-22)
+
+
+### Bug Fixes
+
+* **filter-picker:** fix icon of Expression ([c4bf358](https://github.com/growingio/gio-design/commit/c4bf35846752de209bf1eb85e383b0c6d76b8435))
+* **filter-picker:** fix parse text ([dd01b03](https://github.com/growingio/gio-design/commit/dd01b03bb6b18c1db137b20dff4cb40c90f1814a))
+* **table:** fix icon width of Table ([5317b2f](https://github.com/growingio/gio-design/commit/5317b2f86fab41bda6820089e53e65a44e85891c))
+* **tooltip:** add word-break ([02b869a](https://github.com/growingio/gio-design/commit/02b869a1a28b5010fd3582dd94032912a5bafa79))
+
 ## [22.14.14](https://github.com/growingio/gio-design/compare/v22.14.13...v22.14.14) (2022-03-21)
 
 
