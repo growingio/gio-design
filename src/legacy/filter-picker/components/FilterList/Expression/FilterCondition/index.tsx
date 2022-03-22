@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useLocale } from '@gio-design/utils';
 import parseValuesToText from './utils';
 import FilterAttrOverlay from './FilterAttrOverlay';
@@ -53,6 +53,11 @@ function FilterCondition(props: FilterConditionProps) {
   const visibleChange = (v: boolean) => {
     setVisible(v);
   };
+
+  useEffect(() => {
+    console.log('mount');
+    return () => console.log('unmount');
+  }, []);
 
   const curryDimensionValueRequest = (
     (timeRangeValue: string, measurementsValue: any[]) => (dimension: string, keyword: string) =>

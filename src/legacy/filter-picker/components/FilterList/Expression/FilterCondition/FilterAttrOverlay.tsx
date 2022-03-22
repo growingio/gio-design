@@ -63,16 +63,16 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
       if (type === 'date') {
         if (operation === '>=') return '>';
         if (operation === '<=') return '<';
-        if (operation === 'relativeTime') {
+        if (operation === 'relativeTime' && !isEmpty(opValues)) {
           // 相对现在和相对区间，传的参数都为relativeTime，需要转换成relativeCurrent（相对现在），relativeBetween（相对区间）
-          const relativeTime = opValues?.[0].split(':')[1].split(',');
+          const relativeTime = opValues[0].split(':')[1].split(',');
           if (relativeTime.length === 1 || relativeTime.includes('0')) {
             return 'relativeCurrent';
           }
           return 'relativeBetween';
         }
       }
-      if (opValues?.[0] === ' ' && type !== 'list') {
+      if (opValues[0] === ' ' && type !== 'list') {
         return operation === '!=' ? 'hasValue' : 'noValue';
       }
       return operation;
@@ -86,7 +86,8 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
       setAttrValue([]);
     }
     setOperationValue(getOperation(valueType, op, values));
-  }, [previousValueType, valueType, values, op, getOperation]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [previousValueType, valueType, op, getOperation]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
