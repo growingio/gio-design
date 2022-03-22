@@ -26,6 +26,7 @@ export type FilterValueType = {
   name?: string;
   valueType?: attributeValue;
   groupId?: string;
+  iconId?: string;
 };
 
 export type FilterValue = {
