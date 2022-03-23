@@ -16,7 +16,7 @@ interface ExpressionProps {
   measurements: any[];
   onChange: (expression: FilterValueType, index: number) => void;
   propertyOptions: any[];
-  exprs: any[];
+  exprs: FilterValueType[];
   recentlyStorePrefix: string;
 }
 function Expression(props: ExpressionProps) {
@@ -50,6 +50,8 @@ function Expression(props: ExpressionProps) {
       key: exprKey,
       name: exprName,
       valueType,
+      groupId,
+      iconId,
       ...v,
     };
     v && setValues(v.values);

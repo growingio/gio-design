@@ -22,6 +22,8 @@ export const FilterPickerContext = React.createContext<
   Pick<FilterPickerProps, 'fetchDetailData' | 'operationsOption'> & {
     textObject: TextObject;
   }
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
 >({ textObject: { ...defaultLocaleTextObject, code: 'zh-CN' } });
 
 const FilterPicker = (props: FilterPickerProps) => {
