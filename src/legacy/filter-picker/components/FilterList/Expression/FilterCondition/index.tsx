@@ -80,8 +80,6 @@ function FilterCondition(props: FilterConditionProps) {
         disabled={conditionText === textObject.selectFilter}
         getContainer={() => document.body}
         placement="topLeft"
-        distoryOnHide={false}
-        trigger="click"
       >
         <span className="filter-condition_select-text">{conditionText}</span>
       </Tooltip>
