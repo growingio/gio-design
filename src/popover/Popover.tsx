@@ -192,7 +192,7 @@ const Popover = (props: PopoverProps) => {
         isHoverToShow && updateVisible(false);
       }, hideDelay);
     },
-    [triggerChildEvent, isHoverToShow, updateVisible]
+    [triggerChildEvent, isHoverToShow, updateVisible, hideDelay]
   );
 
   const onClick = useCallback(
