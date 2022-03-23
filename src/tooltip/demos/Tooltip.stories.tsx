@@ -110,7 +110,7 @@ export const Placement = Template.bind({});
 Placement.args = {
   arrowPointAtCenter: true,
   overlay,
-  trigger: 'click',
+  trigger: 'hover',
 };
 
 const TriggerTemplate: Story<TooltipProps> = (args) => (

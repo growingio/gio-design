@@ -120,9 +120,13 @@ export interface PopoverProps {
    */
   offset?: number[];
   /**
-   * delay mouseEnter mouseLeave 延迟
+   * delay mouseEnter 延迟
    */
   delay?: number;
+  /**
+   * hide popup 延迟
+   */
+  hideDelay?: number;
   triggerClassName?: string;
   distoryOnHide?: boolean;
 }

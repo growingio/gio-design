@@ -35,6 +35,7 @@ const Popover = (props: PopoverProps) => {
     distoryOnHide = true,
     onContentClick,
     delay = 100,
+    hideDelay = 500,
     ...rest
   } = props;
 
@@ -162,7 +163,6 @@ const Popover = (props: PopoverProps) => {
   }, [onDocumentClick]);
 
   // ============ end ============
-
   const isClickToShow = useMemo(() => trigger.indexOf('click') !== -1, [trigger]);
 
   const isHoverToShow = useMemo(() => trigger.indexOf('hover') !== -1, [trigger]);
@@ -189,9 +189,9 @@ const Popover = (props: PopoverProps) => {
       mouseLeaveTimeout.current = setTimeout(() => {
         mouseIsNotLeave.current = false;
         isHoverToShow && updateVisible(false);
-      }, 500);
+      }, hideDelay);
     },
-    [triggerChildEvent, isHoverToShow, updateVisible]
+    [triggerChildEvent, isHoverToShow, updateVisible, hideDelay]
   );
 
   const onClick = useCallback(

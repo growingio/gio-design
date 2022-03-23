@@ -102,6 +102,7 @@ const Tooltip = (props: TooltipProps) => {
   return (
     <Popover
       {...rest}
+      hideDelay={0}
       allowArrow={allowArrow}
       prefixCls={customizePrefixCls}
       overlayClassName={classNames(prefixCls, overlayClassName)}
