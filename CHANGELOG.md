@@ -1,3 +1,13 @@
+## [22.14.16](https://github.com/growingio/gio-design/compare/v22.14.15...v22.14.16) (2022-03-23)
+
+
+### Bug Fixes
+
+* **filter-picker:** fix filter-picker tooltip props ([#1921](https://github.com/growingio/gio-design/issues/1921)) ([48eaa36](https://github.com/growingio/gio-design/commit/48eaa3666b3889833db22e6fe9b6d223ce847a5f))
+* **filter-picker:** fix icon ([#1922](https://github.com/growingio/gio-design/issues/1922)) ([3f9207c](https://github.com/growingio/gio-design/commit/3f9207c5a6fd5708a7563468ded8e12c65e0332f))
+* **filter-picker:** fix style of FilterCondition ([#1920](https://github.com/growingio/gio-design/issues/1920)) ([8c44134](https://github.com/growingio/gio-design/commit/8c441349c9e55d01600af87b9c2bd4cbebceb0c3))
+* **Tooltip:** set hideDelay to 0 ([#1919](https://github.com/growingio/gio-design/issues/1919)) ([924c679](https://github.com/growingio/gio-design/commit/924c6798ae4c44c87f8f07cee16df0558e7cc258))
+
 ## [22.14.15](https://github.com/growingio/gio-design/compare/v22.14.14...v22.14.15) (2022-03-22)
 
 
