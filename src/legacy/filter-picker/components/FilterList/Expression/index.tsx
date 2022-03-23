@@ -39,8 +39,6 @@ function Expression(props: ExpressionProps) {
   const [values, setValues] = useState<string[]>(filterItem?.values);
   const [exprKey, setExprKey] = useState<string>(filterItem?.key || '');
   const [exprName, setExprName] = useState<string>(filterItem?.name || '');
-  const [groupId, setGroupId] = useState<string>(filterItem?.groupId || '');
-  const [iconId, setIconId] = useState<string>(filterItem?.iconId || '');
   const [op, setOp] = useState<StringValue | NumberValue | DateValue | ListValue>(filterItem?.op);
   const [subFilterItem, setSubFilterItem] = useState<FilterValueType>(filterItem);
   const { fetchDetailData, operationsOption } = React.useContext(FilterPickerContext);
@@ -50,9 +48,8 @@ function Expression(props: ExpressionProps) {
       key: exprKey,
       name: exprName,
       valueType,
-      groupId,
-      iconId,
-      ...v,
+      op: v.op,
+      values: v.values,
     };
     v && setValues(v.values);
     v && setOp(v.op);
@@ -75,8 +72,6 @@ function Expression(props: ExpressionProps) {
       setExprKey(v.value ?? '');
       setValues([]);
       setOp('=');
-      setGroupId(v.groupId ?? '');
-      setIconId(v.iconId ?? '');
     }
     const type = v?.valueType ? v?.valueType.toLowerCase() : 'string';
     const expr: FilterValueType = {
@@ -84,16 +79,14 @@ function Expression(props: ExpressionProps) {
       name: v?.label,
       valueType: type as attributeValue,
       op: type === 'list' ? 'hasAll' : '=',
-      groupId: v?.groupId,
-      iconId: v?.iconId,
       values: [],
     };
     onChange(expr, index);
   };
 
   const propertyValue = useMemo(
-    () => (exprKey ? { value: exprKey, label: exprName, id: exprKey, groupId, iconId } : undefined),
-    [exprKey, exprName, groupId, iconId]
+    () => (exprKey ? { value: exprKey, label: exprName, id: exprKey } : undefined),
+    [exprKey, exprName]
   );
 
   return (

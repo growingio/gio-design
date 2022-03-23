@@ -9,4 +9,5 @@ export type Dimension = {
   valueType?: string;
   associatedKey?: string;
   isSystem?: boolean;
+  key?: string;
 };
