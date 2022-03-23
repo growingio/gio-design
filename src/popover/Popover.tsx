@@ -35,6 +35,7 @@ const Popover = (props: PopoverProps) => {
     distoryOnHide = true,
     onContentClick,
     delay = 100,
+    hideDelay = 500,
     ...rest
   } = props;
 
@@ -189,7 +190,7 @@ const Popover = (props: PopoverProps) => {
       mouseLeaveTimeout.current = setTimeout(() => {
         mouseIsNotLeave.current = false;
         isHoverToShow && updateVisible(false);
-      }, 500);
+      }, hideDelay);
     },
     [triggerChildEvent, isHoverToShow, updateVisible]
   );
