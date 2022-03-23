@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useLocale } from '@gio-design/utils';
 import parseValuesToText from './utils';
 import FilterAttrOverlay from './FilterAttrOverlay';
@@ -54,11 +54,6 @@ function FilterCondition(props: FilterConditionProps) {
     setVisible(v);
   };
 
-  useEffect(() => {
-    console.log('mount');
-    return () => console.log('unmount');
-  }, []);
-
   const curryDimensionValueRequest = (
     (timeRangeValue: string, measurementsValue: any[]) => (dimension: string, keyword: string) =>
       dimensionValueRequest?.({
@@ -85,6 +80,8 @@ function FilterCondition(props: FilterConditionProps) {
         disabled={conditionText === textObject.selectFilter}
         getContainer={() => document.body}
         placement="topLeft"
+        distoryOnHide={false}
+        trigger="click"
       >
         <span className="filter-condition_select-text">{conditionText}</span>
       </Tooltip>
