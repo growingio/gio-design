@@ -101,7 +101,7 @@ function FilterCondition(props: FilterConditionProps) {
   );
 
   return exprKey ? (
-    <FilterPickerContext.Provider value={{ textObject }}>
+    <FilterPickerContext.Provider value={{ textObject } as any}>
       <Selector
         valueRender={valueRender}
         dropdownVisible={visible}

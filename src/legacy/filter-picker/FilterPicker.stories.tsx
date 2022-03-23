@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import FilterPicker from '.';
-import { FilterPickerProps } from './interfaces';
+import { FilterPickerProps, FilterValue } from './interfaces';
 import { PropertyValue } from '../property-selector';
 import './style';
 import insightDimensions from '../property-selector/demos/insightDimensions';
@@ -11,7 +11,21 @@ export default {
   component: FilterPicker,
 } as Meta;
 
-const Template: Story<FilterPickerProps> = (args) => <FilterPicker {...args} propertyOptions={insightDimensions} />;
+const Template: Story<FilterPickerProps> = (args) => {
+  const [value, setValue] = useState<FilterValue>({ op: 'and', exprs: [] });
+  return (
+    <FilterPicker
+      {...args}
+      propertyOptions={insightDimensions}
+      filter={value}
+      onConfirm={(v) => {
+        // eslint-disable-next-line no-console
+        console.log(`🚀 onConfirm`, v);
+        setValue(v);
+      }}
+    />
+  );
+};
 
 const dimissionValue = [
   'www.growingio.com',
@@ -57,7 +71,6 @@ const dimissionValue = [
 
 export const Default = Template.bind({});
 Default.args = {
-  filter: { op: 'and', exprs: [], __typename: 'directivesFilterrR2q' },
   recentlyStorePrefix: 'currentUserId',
   timeRange: 'day:31,1',
   measurements: [
@@ -68,7 +81,6 @@ Default.args = {
       __typename: 'Measurement265f',
     },
   ],
-  onConfirm: (value: any) => console.log('onConfirm: ', value),
   dimensionValueRequest: () =>
     new Promise((resolve) => {
       resolve(dimissionValue);
