@@ -8,17 +8,16 @@ import Selector from '../selector-pro';
 import './style';
 import IconRender from './PropertyValueIconRender';
 import PropertyCard from './PropertyCard';
-import { promisify } from './util';
+import { dimensionToPropertyItem, promisify } from './util';
 import defaultLocale from './locales/zh-CN';
 
 const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
-  const locale = useLocale('PropertyPicker-legacy');
-  const { placeholderText } = { ...defaultLocale, ...locale } as any;
+  const localeText = useLocale('PropertyPicker') || defaultLocale;
   const {
     borderless = true,
     size = 'middle',
     disabled,
-    placeholder = placeholderText,
+    placeholder = localeText.placeholderText,
     dropdownVisible,
     onDropdownVisibleChange,
     className,
@@ -49,12 +48,19 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
     onSelect?.(item);
     setDropdownVisibleInner(false);
   }
+  const propertyValue = useMemo(() => {
+    if (!currentValue) return undefined;
+    const foundValue = dataSource.find((item) => (item.key ?? item.id) === currentValue.value);
+    if (!foundValue) return currentValue;
+    return dimensionToPropertyItem(foundValue as any, localeText as any);
+  }, [currentValue, dataSource, localeText]);
+
   const dropdownRender = () => (
     <PropertyPicker
       className={`${clsPrifx}-dropdown`}
       {...pickerRestProps}
       shouldUpdateRecentlyUsed={dropdownVisibleInner}
-      value={currentValue}
+      value={propertyValue}
       dataSource={dataSource}
       onChange={handleValueChange}
       onSelect={handleSelect}
@@ -62,9 +68,9 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   );
   const fetchDetail = pickerRestProps.fetchDetailData ?? ((data: any) => data);
   const inputRender = () => {
-    const content = () => currentValue && <PropertyCard nodeData={currentValue} fetchData={promisify(fetchDetail)} />;
+    const content = () => propertyValue && <PropertyCard nodeData={propertyValue} fetchData={promisify(fetchDetail)} />;
     return (
-      currentValue && (
+      propertyValue && (
         <>
           <Popover
             overlayClassName="property-card-overlay"
@@ -74,7 +80,7 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
           >
             <span className="inner-input-wrap" ref={inputValueRef}>
               <span className="icon">
-                <IconRender group={currentValue?.iconId} />
+                <IconRender group={propertyValue?.iconId} />
               </span>
               <span>{inputText}</span>
             </span>

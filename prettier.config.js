@@ -18,7 +18,7 @@ module.exports = {
   // 大括号内的首尾需要空格
   bracketSpacing: true,
   // jsx 标签的反尖括号需要换行
-  jsxBracketSameLine: false,
+  bracketSameLine: false,
   // 当箭头函数仅有一个参数时加上括号
   arrowParens: 'always',
   // 每个文件格式化的范围是文件的全部内容
