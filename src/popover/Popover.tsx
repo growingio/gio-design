@@ -163,7 +163,6 @@ const Popover = (props: PopoverProps) => {
   }, [onDocumentClick]);
 
   // ============ end ============
-
   const isClickToShow = useMemo(() => trigger.indexOf('click') !== -1, [trigger]);
 
   const isHoverToShow = useMemo(() => trigger.indexOf('hover') !== -1, [trigger]);
