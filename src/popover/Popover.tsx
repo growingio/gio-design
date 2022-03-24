@@ -35,7 +35,7 @@ const Popover = (props: PopoverProps) => {
     distoryOnHide = true,
     onContentClick,
     delay = 100,
-    hideDelay = 500,
+    hideDelay = delay,
     ...rest
   } = props;
 
@@ -225,8 +225,8 @@ const Popover = (props: PopoverProps) => {
         if (trigger === 'hover') {
           updateVisible(false);
         }
-      }, delay),
-    [delay, trigger, updateVisible]
+      }, hideDelay),
+    [hideDelay, trigger, updateVisible]
   );
 
   const divRoles = useMemo(() => {
