@@ -1,3 +1,11 @@
+## [22.14.17](https://github.com/growingio/gio-design/compare/v22.14.16...v22.14.17) (2022-03-24)
+
+
+### Bug Fixes
+
+* **filter-picker:** fix bug ([#1925](https://github.com/growingio/gio-design/issues/1925)) ([0f30563](https://github.com/growingio/gio-design/commit/0f305631af30f73c7aa973a5dc73e460a95f47dd))
+* **popover:** modify default value of `hideDelay` and make it equal to `delay` ([#1926](https://github.com/growingio/gio-design/issues/1926)) ([7c61a1b](https://github.com/growingio/gio-design/commit/7c61a1b99d84f68892947211345571382c2a726d))
+
 ## [22.14.16](https://github.com/growingio/gio-design/compare/v22.14.15...v22.14.16) (2022-03-23)
 
 
