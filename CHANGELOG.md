@@ -1,3 +1,10 @@
+## [22.14.18](https://github.com/growingio/gio-design/compare/v22.14.17...v22.14.18) (2022-03-25)
+
+
+### Bug Fixes
+
+* **page:** fix svg id has colon error ([#1928](https://github.com/growingio/gio-design/issues/1928)) ([#1929](https://github.com/growingio/gio-design/issues/1929)) ([9f4621f](https://github.com/growingio/gio-design/commit/9f4621ff33a6e7bebdc02b45ad0d69a4d5300930))
+
 ## [22.14.17](https://github.com/growingio/gio-design/compare/v22.14.16...v22.14.17) (2022-03-24)
 
 
