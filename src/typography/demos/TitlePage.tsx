@@ -1,5 +1,5 @@
 import React from 'react';
-import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook/addon-docs';
+import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
 import title from '../title';
 
@@ -9,11 +9,11 @@ export default function TextPage() {
   return (
     <>
       <Title>{formatMessage({ defaultMessage: 'Title 标题' })}</Title>
-      <p>{formatMessage({ defaultMessage: '标题的基本格式。' })}</p>
+      <Description>{formatMessage({ defaultMessage: '标题的基本格式。' })}</Description>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: 'Title 标题' })}</Subheading>
       <Canvas>
-        <Story id="upgraded-title--default" />
+        <Story id="upgraded-typography-title--default" />
       </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={title} />

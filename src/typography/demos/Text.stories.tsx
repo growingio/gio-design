@@ -47,15 +47,17 @@ export const Styles = () => (
     <Text>Normal Text Paragraph</Text>
     <Text color="gray">Gray Text Paragraph</Text>
     <Text size="small">Small Text Paragraph</Text>
-    <Text size="small" color="gray">
-      Small Gray Text Paragraph
+    <Text size="small" color="#faa937">
+      Small Text Paragraph
     </Text>
-    <Text />
+    <Text size="large" color="#ff688f">
+      Large Red Color Text Paragraph
+    </Text>
   </>
 );
 
 export default {
-  title: 'Upgraded/Text',
+  title: 'Upgraded/Typography/Text',
   component: Text,
   parameters: {
     docs: {
