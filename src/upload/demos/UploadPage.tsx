@@ -133,6 +133,13 @@ export default function UploadPage() {
         <Story id="upgraded-upload--default-list-upload" />
       </Canvas>
 
+      <Subheading>{formatMessage({ defaultMessage: '自定义上传' })}</Subheading>
+      <Description>
+        {formatMessage({ defaultMessage: '使用 customRequest 盖默认的上传行为，可以自定义自己的上传实现。下面展示一个阿里云 OSS 分片上传示例' })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-upload--aliyun-oss-upload" />
+      </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Upload} />
     </>

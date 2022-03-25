@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Docs from './UploadPage';
 import Upload from '../index';
 
-import { IUploadProps, IRcFile, IUploadFile } from '../interface';
+import { IUploadProps, IRcFile, IUploadFile, IRcCustomRequestOptions, IProgress } from '../interface';
 import '../style';
 import { Toast } from '../..';
 
@@ -161,4 +161,85 @@ export const ControlledFileList: Story<IUploadProps> = (args) => {
     </div>
   );
 };
+
+class Oss {
+
+  private options: any;
+
+  constructor(opts: { region: string, accessKeyId: string, accessKeySecret: string, bucket: string, }) {
+    this.options = opts;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  async multipartUpload(key: string, file: Blob, options: {
+    progress?: (percent: number, checkpoint?: any, response?: any) => void
+  }
+  ) {
+    const { progress } = options;
+    const size = 1024 * 100;
+    let start = 0;
+    let end = 0;
+    let data;
+    while (start < file.size) {
+      end += size;
+      if (end > file.size) end = file.size;
+
+      data = file.slice(start, end);
+      start = end;
+      // eslint-disable-next-line no-await-in-loop
+      const r = await fetch(uploadUrl, {
+        method: "POST",
+        body: data,
+      });
+      // eslint-disable-next-line no-await-in-loop
+      progress?.(end / file.size, null, await r.json());
+
+      data = null;
+    }
+    return { status: 'success', code: 200, name: key, url: 'https://aliyun.cn/xxxx/xxxx' }
+
+  }
+}
+export const AliyunOssUpload = () => {
+  const onBeforeUpload = (file: IRcFile) => {
+    const isVideo = ["video/mp4", "video/ogg", "video/webm"].indexOf(file.type) > -1;
+    if (!isVideo) {
+      Toast.error('不支持该视频文件格式');
+      return false;
+    }
+    if (file.size > 500000000) {
+      Toast.error('文件大小超过限制');
+      return false;
+    }
+    return true;
+  }
+
+  const customRequest = (options: IRcCustomRequestOptions) => {
+    const client = new Oss({
+      region: 'oss-cn-beijing',
+      accessKeyId: 'yourAccessKeyId',
+      accessKeySecret: 'yourAccessKeySecret',
+      bucket: 'examplebucket',
+    });
+    const { file, onError, onSuccess, onProgress } = options;
+    const filename = `vedios/${file.name}`;
+    client.multipartUpload(filename, options.file, {
+      progress: (p: number) => {
+        onProgress?.(
+          {
+            // eslint-disable-next-line no-bitwise
+            percent: ~~(p * 100),
+
+          } as IProgress,
+          file
+        );
+      }
+    }).then(res => {
+      onSuccess?.(res, file)
+    }).catch(err => {
+      onError?.(err, { status: '500' });
+    })
+  }
+  return <Upload type='button' accept='video/*' customRequest={customRequest} multiple={false} beforeUpload={onBeforeUpload} />
+}
 
