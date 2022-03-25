@@ -6,7 +6,6 @@ import {
   FunnelAnalysisOutlined,
   DistributionAnalysisOutlined,
   EventflowOutlined,
-  FlowOutlined,
   NumberChartOutlined,
 } from '@gio-design/icons';
 import { action } from '@storybook/addon-actions';
