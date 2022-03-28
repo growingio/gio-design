@@ -46,24 +46,50 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: '基本' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: 'Tabs 默认选中第一项。 Switch 的区别在于，Tabs 是切换下方内容控制内容联动，多用于导航，Switch 只是切换选项，并不能控制内容联动。 ',
+          defaultMessage: 'Tabs 默认选中第一项。Tab.disabled 禁用某一项。 ',
         })}
       </Description>
       <Canvas>
         <Story id="upgraded-tabs--default" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'no-tab' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '有图标' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: ' 通过Tab.prefix 可以给标签添加图标。',
+        })}
+      </Description>
       <Canvas>
-        <Story id="upgraded-tabs--no-tab" />
+        <Story id="upgraded-tabs--with-icon" />
+        <Story id="upgraded-tabs--icon-only" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: 'no-prefix' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '滑动' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '标签项较多时，不会折行，可以左右滑动。',
+        })}
+      </Description>
       <Canvas>
-        <Story id="upgraded-tabs--no-prefix" />
+        <Story id="upgraded-tabs--scroll-overflow" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: 'have-children' })}</Subheading>
+
+      <Subheading>{formatMessage({ defaultMessage: '大小' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '标签有Normal（36px）、Small（30px）两种尺寸。大号页签用在页头区域，小号用在弹出框等较狭窄的容器内。',
+        })}
+      </Description>
       <Canvas>
-        <Story id="upgraded-tabs--have-children" />
+        <Story id="upgraded-tabs--size" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '完全控制' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '通过value属性控制当前选中的标签。',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-tabs--controlled-value" />
       </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Tabs} />

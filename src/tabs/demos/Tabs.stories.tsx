@@ -34,10 +34,26 @@ export default {
 const Template: Story<TabsProps> = (args) => (
   <div>
     <Tabs {...args} >
-      <Tab label="选项1" value="1" key="1" />
-      <Tab label="选项2" value="2" key="2" />
-      <Tab label="选项3" value="3" key="3" />
-      <Tab label="选项4" value="4" key="4" />
+      <Tab label="选项1" value="1" key="1" >
+        <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }}>
+          选项1
+        </div>
+      </Tab>
+      <Tab label="选项2" value="2" key="2" >
+        <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }} >
+          选项2
+        </div>
+      </Tab>
+      <Tab label="选项3" value="3" key="3" >
+        <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }} >
+          选项3
+        </div>
+      </Tab>
+      <Tab label="选项4" value="4" key="4" >
+        <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }} >
+          选项4
+        </div>
+      </Tab>
       <Tab label="选项5" value="5" key="5" disabled />
     </Tabs>
   </div>
@@ -53,7 +69,7 @@ Default.args = {
 
 export const WithIcon = () => (
   <div>
-    <Tabs>
+    <Tabs defaultValue="1">
       <Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" />
       <Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" />
       <Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
@@ -65,7 +81,7 @@ export const WithIcon = () => (
 
 export const IconOnly = () => (
   <div>
-    <Tabs>
+    <Tabs defaultValue="1">
       <Tab prefix={<EventAnalysisOutlined />} value="1" key="1" />
       <Tab prefix={<NumberChartOutlined />} value="2" key="2" />
       <Tab prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
@@ -74,22 +90,39 @@ export const IconOnly = () => (
     </Tabs>
   </div>
 );
-export const Scroll = () => {
+export const ScrollOverflow = () => {
   const [index, setIndex] = useState('1')
   const handleChange = (k: React.Key) => {
     setIndex(k as string);
   }
   return <Card style={{ width: '320px' }}>
-    <Tabs defaultValue="1" onChange={handleChange}>
-      <Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" />
-      <Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" />
-      <Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
-      <Tab label="选项4" prefix={<DistributionAnalysisOutlined />} value="4" key="4" />
-      <Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled />
+    <Tabs defaultValue="1" size='small' onChange={handleChange} tabListStyle={{ borderBottom: '1px solid #adb2c2' }}>
+      <Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" >
+        <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }} >
+          选项{index}
+        </div>
+      </Tab>
+      <Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" >
+        <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }} >
+          选项{index}
+        </div>
+      </Tab>
+      <Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" >
+        <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }} >
+          选项{index}
+        </div>
+      </Tab>
+      <Tab label="选项4" prefix={<DistributionAnalysisOutlined />} value="4" key="4" >
+        <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }} >
+          选项{index}
+        </div>
+      </Tab>
+      <Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled >
+        <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }} >
+          选项{index}
+        </div>
+      </Tab>
     </Tabs>
-    <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '50px 20px' }} >
-      选项{index}
-    </div>
   </Card>
 }
 export const ControlledValue = () => {
@@ -124,7 +157,7 @@ export const ControlledValue = () => {
 }
 
 export const Size = () => <div>
-  <Tabs size='small' defaultValue="1" style={{ backgroundColor: '#dfe4ee' }}>
+  <Tabs size='small' defaultValue="1" style={{ backgroundColor: '#f7f8fc' }} tabListStyle={{ color: '#f7f8fc' }}>
     <Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" />
     <Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" />
     <Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
@@ -132,7 +165,7 @@ export const Size = () => <div>
     <Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled />
   </Tabs>
   <Divider />
-  <Tabs size="normal" defaultValue="1" style={{ backgroundColor: '#dfe4ee' }}>
+  <Tabs size="normal" defaultValue="1" style={{ backgroundColor: '#f7f8fc' }}>
     <Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" />
     <Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" />
     <Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
