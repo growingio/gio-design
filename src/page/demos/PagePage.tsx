@@ -1,6 +1,7 @@
 import React from 'react';
-import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook/addon-docs';
-import { useIntl } from 'react-intl';
+import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { Figma } from 'storybook-addon-designs/blocks'
 import Page from '../Page';
 
 export default function ListPage() {
@@ -9,27 +10,26 @@ export default function ListPage() {
   return (
     <>
       <Title>{formatMessage({ defaultMessage: 'Page Result 页面结果' })}</Title>
-      <p>
+      <Description>
         {formatMessage({
-          defaultMessage:
-            '用于反馈一系列操作任务的处理结果。当有重要操作需告知用户处理结果，且反馈内容较为复杂时使用。',
+          defaultMessage: '用于反馈一系列操作任务的处理结果',
         })}
-      </p>
-      <p>
-        <a href="https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4093%3A47838">
-          Figma
-        </a>
-      </p>
-      <p>Upgrading Guide</p>
-      <ul>
-        <li>样式变化：无</li>
-        <li>将empty和page合并了，用type控制预制图片和描述</li>
-        <li>新增size属性，控制两种大小，normal宽度为450，small宽度为220，empty图normal宽度为300，small宽度为150</li>
-        <li>
-          兼容了过去的304,404，新的type有 empty | noData | noResult | noFind | noAuth | noResource | noShared | 304 |
-          404 | 500
-        </li>
-      </ul>
+      </Description>
+      <Subtitle>
+        <FormattedMessage defaultMessage="使用场景" />
+      </Subtitle>
+      <Description>{formatMessage({
+        defaultMessage: '当有重要操作需告知用户处理结果，且反馈内容较为复杂时使用。',
+      })}</Description>
+      <Subtitle>
+        <FormattedMessage defaultMessage="设计稿" />
+      </Subtitle>
+      <Figma
+        height="30%"
+        collapsable
+        url="https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=4093%3A45839"
+      />
+
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
 
       <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>

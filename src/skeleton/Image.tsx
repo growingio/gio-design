@@ -4,7 +4,7 @@ import { usePrefixCls } from '@gio-design/utils';
 import useDebounceLoading from '../utils/hooks/useDebounceLoading';
 import { SkeletonImageProps } from './interface';
 
-const SkeletonImage = (props: SkeletonImageProps) => {
+export const SkeletonImage = (props: SkeletonImageProps) => {
   const {
     prefixCls: customizePrefixCls,
     loading = true,
@@ -35,5 +35,4 @@ const SkeletonImage = (props: SkeletonImageProps) => {
     <>{children}</>
   );
 };
-
 export default SkeletonImage;

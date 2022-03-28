@@ -1,18 +1,19 @@
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import {
   EventAnalysisOutlined,
   FunnelAnalysisOutlined,
   DistributionAnalysisOutlined,
   EventflowOutlined,
-  FlowOutlined,
   NumberChartOutlined,
 } from '@gio-design/icons';
 import { action } from '@storybook/addon-actions';
 import Docs from './TabsPage';
 import Tabs, { Tab, TabsProps } from '../index';
 import '../style';
+import { Card } from '../..';
+import Divider from '../../divider';
 
 export default {
   title: 'Upgraded/Tabs',
@@ -29,225 +30,146 @@ export default {
     },
   },
 } as Meta;
-const templateIconArr = [
-  <EventAnalysisOutlined />,
-  <NumberChartOutlined />,
-  <FunnelAnalysisOutlined />,
-  <DistributionAnalysisOutlined />,
-  <EventflowOutlined />,
-  <FlowOutlined />,
-];
-const renderItems = () =>
-  templateIconArr.map((item, index) => <Tab label={`Option${index}`} value={index} prefix={item} key={index} />);
-const noTabItem = () => templateIconArr.map((item, index) => <Tab value={index} prefix={item} key={index} />);
-const noPrefixItems = () =>
-  templateIconArr.map((item, index) => <Tab label={`Option${index}`} value={index} key={index} />);
-const disabledItems = () =>
-  templateIconArr.map((item, index) => (
-    <Tab label={`Option${index}`} value={index} disabled={!Math.round(Math.random())} key={index} />
-  ));
-const haveChildrenItems = () =>
-  templateIconArr.map((item, index) => (
-    <Tab label={`Option${index}`} value={index} key={index}>
-      <div
-        style={{
-          backgroundColor: '#f7f8fc',
-          textAlign: 'center',
-          height: 150,
-          fontSize: 100,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        {`Option${index}`}
-      </div>
-    </Tab>
-  ));
+
 const Template: Story<TabsProps> = (args) => (
   <div>
-    <Tabs {...args}>{renderItems()}</Tabs>
+    <Tabs {...args} >
+      <Tab label="选项1" value="1" key="1" >
+        <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }}>
+          选项1
+        </div>
+      </Tab>
+      <Tab label="选项2" value="2" key="2" >
+        <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }} >
+          选项2
+        </div>
+      </Tab>
+      <Tab label="选项3" value="3" key="3" >
+        <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }} >
+          选项3
+        </div>
+      </Tab>
+      <Tab label="选项4" value="4" key="4" >
+        <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }} >
+          选项4
+        </div>
+      </Tab>
+      <Tab label="选项5" value="5" key="5" disabled />
+    </Tabs>
   </div>
 );
-const noTabTemplate: Story<TabsProps> = (args) => (
-  <div>
-    <Tabs {...args}>{noTabItem()}</Tabs>
-  </div>
-);
-const noPrefixTemplate: Story<TabsProps> = (args) => (
-  <div>
-    <Tabs {...args}>{noPrefixItems()}</Tabs>
-  </div>
-);
-const DisabledTemplate: Story<TabsProps> = (args) => (
-  <div>
-    <Tabs {...args}>{disabledItems()}</Tabs>
-  </div>
-);
-const childrenTemplate: Story<TabsProps> = (args) => (
-  <div>
-    <Tabs {...args}>{haveChildrenItems()}</Tabs>
-  </div>
-);
-const DemoTemplate: Story<TabsProps> = (args) => (
-  <>
-    <table
-      style={{
-        marginBottom: 5,
-      }}
-      className="table-demo"
-    >
-      <tr>
-        <th>Tabs control</th>
-        <th>描述</th>
-        <th>Example</th>
-      </tr>
-      <tr>
-        <td>size</td>
-        <td>组件高度,normal,small</td>
-        <td>
-          <Tabs style={{ marginBottom: 10 }} {...args}>
-            {templateIconArr.map((item, index) => (
-              <Tab label={`Option${index}`} value={index} key={index} />
-            ))}
-          </Tabs>
-          <Tabs size="small" {...args}>
-            {templateIconArr.map((item, index) => (
-              <Tab label={`Option${index}`} value={index} key={index} />
-            ))}
-          </Tabs>
-        </td>
-      </tr>
-      <tr>
-        <td>外层小于内容宽度时</td>
-        <td>横向滚动不换行</td>
-        <td style={{ width: 500 }}>
-          <Tabs {...args}>
-            {[...Array(10)].map((item, index) => (
-              <Tab label={`Option${index}`} value={index} key={index} />
-            ))}
-          </Tabs>
-        </td>
-      </tr>
-    </table>
-    <table className="table-demo">
-      <tr>
-        <th>Tab control</th>
-        <th>描述</th>
-        <th>Example</th>
-      </tr>
-      <tr>
-        <td>prefix</td>
-        <td>文案前是否有prefix</td>
-        <td>
-          <Tabs {...args}>
-            {templateIconArr.map((item, index) => (
-              <Tab label={`Option${index}`} value={index} key={index} prefix={item} />
-            ))}
-          </Tabs>
-        </td>
-      </tr>
-      <tr>
-        <td>prefix</td>
-        <td>仅有icon</td>
-        <td>
-          <Tabs {...args}>
-            {templateIconArr.map((item, index) => (
-              <Tab value={index} prefix={item} key={index} />
-            ))}
-          </Tabs>
-        </td>
-      </tr>
-      <tr>
-        <td>tab</td>
-        <td>标签名称</td>
-        <td>
-          <Tabs {...args}>
-            {templateIconArr.map((item, index) => (
-              <Tab label={`Option${index}`} value={index} key={index} />
-            ))}
-          </Tabs>
-        </td>
-      </tr>
-      <tr>
-        <td>disabled</td>
-        <td>不可选</td>
-        <td>
-          <Tabs {...args}>
-            {templateIconArr.map((item, index) => (
-              <Tab label={`Option${index}`} value={index} key={index} disabled={!Math.round(Math.random())} />
-            ))}
-          </Tabs>
-        </td>
-      </tr>
-      <tr>
-        <td>children</td>
-        <td>有内容联动</td>
-        <td>
-          <Tabs
-            {...args}
-            onChange={() => {
-              action('onchange');
-            }}
-          >
-            {templateIconArr.map((item, index) => (
-              <Tab label={`Option${index}`} value={index} key={index}>
-                <div
-                  style={{
-                    backgroundColor: '#f7f8fc',
-                    textAlign: 'center',
-                    height: 150,
-                    fontSize: 100,
-                  }}
-                >
-                  {`Option${index}`}
-                </div>
-              </Tab>
-            ))}
-          </Tabs>
-        </td>
-      </tr>
-    </table>
-  </>
-);
-// Demo
-export const Demo = DemoTemplate.bind({});
-Demo.args = {
-  defaultValue: 0,
-  onChange: action('onchange'),
-};
+
 // default
 export const Default = Template.bind({});
 Default.args = {
   className: 'cc',
-  defaultValue: 1,
+  defaultValue: '1',
   onChange: action('onchange'),
 };
-// notab
-export const noTab = noTabTemplate.bind({});
-noTab.args = {
-  className: 'cc',
-  defaultValue: 1,
-  onChange: action('onchange'),
-};
-// noprefix
-export const noPrefix = noPrefixTemplate.bind({});
-noPrefix.args = {
-  className: 'cc',
-  defaultValue: 1,
-  onChange: action('onchange'),
-};
-// disable
-export const Disabled = DisabledTemplate.bind({});
-noPrefix.args = {
-  className: 'cc',
-  defaultValue: 1,
-  onChange: action('onchange'),
-};
-// have children
-export const HaveChildren = childrenTemplate.bind({});
-HaveChildren.args = {
-  className: 'cc',
-  defaultValue: 1,
-  onChange: action('onchange'),
-};
+
+export const WithIcon = () => (
+  <div>
+    <Tabs defaultValue="1">
+      <Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" />
+      <Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" />
+      <Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
+      <Tab label="选项4" prefix={<DistributionAnalysisOutlined />} value="4" key="4" />
+      <Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled />
+    </Tabs>
+  </div>
+);
+
+export const IconOnly = () => (
+  <div>
+    <Tabs defaultValue="1">
+      <Tab prefix={<EventAnalysisOutlined />} value="1" key="1" />
+      <Tab prefix={<NumberChartOutlined />} value="2" key="2" />
+      <Tab prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
+      <Tab prefix={<DistributionAnalysisOutlined />} value="4" key="4" />
+      <Tab prefix={<EventflowOutlined />} value="5" key="5" disabled />
+    </Tabs>
+  </div>
+);
+export const ScrollOverflow = () => {
+  const [index, setIndex] = useState('1')
+  const handleChange = (k: React.Key) => {
+    setIndex(k as string);
+  }
+  return <Card style={{ width: '320px' }}>
+    <Tabs defaultValue="1" size='small' onChange={handleChange} tabListStyle={{ borderBottom: '1px solid #adb2c2' }}>
+      <Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" >
+        <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }} >
+          选项{index}
+        </div>
+      </Tab>
+      <Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" >
+        <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }} >
+          选项{index}
+        </div>
+      </Tab>
+      <Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" >
+        <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }} >
+          选项{index}
+        </div>
+      </Tab>
+      <Tab label="选项4" prefix={<DistributionAnalysisOutlined />} value="4" key="4" >
+        <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }} >
+          选项{index}
+        </div>
+      </Tab>
+      <Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled >
+        <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }} >
+          选项{index}
+        </div>
+      </Tab>
+    </Tabs>
+  </Card>
+}
+export const ControlledValue = () => {
+  const [tabValue, setTabValue] = useState<React.Key>('3');
+  return (
+    <div>
+      <Tabs value={tabValue} onChange={setTabValue}>
+        <Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" >
+          <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }}>
+            选项1
+          </div>
+        </Tab>
+        <Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" >
+          <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }} >
+            选项2
+          </div>
+        </Tab>
+        <Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" >
+          <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }} >
+            选项3
+          </div>
+        </Tab>
+        <Tab label="选项4" prefix={<DistributionAnalysisOutlined />} value="4" key="4" >
+          <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }} >
+            选项4
+          </div>
+        </Tab>
+        <Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled >选项5</Tab>
+      </Tabs>
+    </div>
+  );
+}
+
+export const Size = () => <div>
+  <Tabs size='small' defaultValue="1" style={{ backgroundColor: '#f7f8fc' }} tabListStyle={{ color: '#f7f8fc' }}>
+    <Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" />
+    <Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" />
+    <Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
+    <Tab label="选项4" prefix={<DistributionAnalysisOutlined />} value="4" key="4" />
+    <Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled />
+  </Tabs>
+  <Divider />
+  <Tabs size="normal" defaultValue="1" style={{ backgroundColor: '#f7f8fc' }}>
+    <Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" />
+    <Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" />
+    <Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
+    <Tab label="选项4" prefix={<DistributionAnalysisOutlined />} value="4" key="4" />
+    <Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled />
+  </Tabs>
+</div>

@@ -8,7 +8,9 @@ import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
 import Preview from '../Preview';
 import { UploadPrefixClsContext } from '../Upload';
 import defaultLocale from '../locales/zh-CN';
-
+/**
+ * @deprecated
+ */
 const InputTrigger: React.FC<ITriggerProps> = ({
   triggerProps,
   file,

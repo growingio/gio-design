@@ -6,6 +6,7 @@ import '../style';
 
 const { Title } = Typography;
 
+
 export const Default = () => (
   <>
     <Title level={1}>Title 标题</Title>
@@ -15,7 +16,7 @@ export const Default = () => (
   </>
 );
 export default {
-  title: 'Upgraded/Title',
+  title: 'Upgraded/Typography/Title',
   component: Title,
   parameters: {
     docs: {

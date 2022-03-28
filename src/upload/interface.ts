@@ -200,6 +200,7 @@ export interface IUploadProps<T = any> {
   openFileDialogOnClick?: boolean;
   /**
    在上传之前转换文件
+   * @deprecated 使用 beforeUpload
    */
   transformFile?: TTransformFileHandler;
   children?: React.ReactNode;

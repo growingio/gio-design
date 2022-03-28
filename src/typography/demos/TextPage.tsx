@@ -1,6 +1,6 @@
 import React from 'react';
-import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook/addon-docs';
-import { useIntl } from 'react-intl';
+import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
+import { FormattedMessage, useIntl } from 'react-intl';
 import Text from '../text';
 
 export default function TextPage() {
@@ -9,33 +9,38 @@ export default function TextPage() {
   return (
     <>
       <Title>{formatMessage({ defaultMessage: 'Text 文本' })}</Title>
-      <p>{formatMessage({ defaultMessage: '文本的基本格式。' })}</p>
-      <p>Upgrading Guide</p>
-      <ul>
-        <li>去除了外层的tooltip，改为title属性</li>
-        <li>内容只接收string</li>
-        <li>children接受空值，默认为‘‘</li>
-      </ul>
+      <Description>{formatMessage({ defaultMessage: '文本的基本格式。' })}</Description>
+
+      <Subtitle>
+        <FormattedMessage defaultMessage="使用场景" />
+      </Subtitle>
+      <Description>
+        {formatMessage({
+          defaultMessage: '当需要展示标题、段落、列表内容时使用，当段落内容需要省略时。',
+        })}
+      </Description>
+
+
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '单行样式' })}</Subheading>
       <Canvas>
-        <Story id="upgraded-text--single-line" />
+        <Story id="upgraded-typography-text--single-line" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '多行样式' })}</Subheading>
-      <p className="">{formatMessage({ defaultMessage: '通过文案行数省略，并用 Tooltip 显示全文。' })}</p>
+      <Description>{formatMessage({ defaultMessage: '多行文本省略。' })}</Description>
       <Canvas>
-        <Story id="upgraded-text--multi-lines" />
+        <Story id="upgraded-typography-text--multi-lines" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '英文文本' })}</Subheading>
       <Canvas>
-        <Story id="upgraded-text--english" />
+        <Story id="upgraded-typography-text--english" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '文本样式' })}</Subheading>
       <Canvas>
-        <Story id="upgraded-text--styles" />
+        <Story id="upgraded-typography-text--styles" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
