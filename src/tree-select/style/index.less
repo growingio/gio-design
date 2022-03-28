@@ -30,6 +30,7 @@
   width: 12px;
   height: 12px;
   margin-top: -6px;
+  color: #a3adc8;
   font-size: 12px;
   font-style: normal;
   line-height: 0;
@@ -88,6 +89,7 @@
     &:hover {
       border: 1px solid @palette-blue-5;
     }
+
     .@{select-prefix-cls}-selection-search {
       position: absolute;
       .@{select-prefix-cls}-selection-search-input {
@@ -124,19 +126,25 @@
   }
   .@{select-prefix-cls}-arrow {
     position: absolute;
+    top: 0;
     right: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: #a3adc8;
+    color: @color-text-table-empty;
     font-size: 12px;
     font-style: normal;
     text-transform: none;
+    transition: all 0.2s;
     pointer-events: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    &-focused {
+      transform: rotate(-180deg);
+    }
   }
 
   // ======================= Dropdown =======================
@@ -144,8 +152,10 @@
     max-height: 400px;
     padding: 14px 8px;
     background: @gray-0;
-    border-radius: 6px;
+    border: 1px solid #dfe4ee;
+    border-radius: 8px;
     box-shadow: 0 2px 14px 1px rgba(223, 226, 237, 0.8);
+    box-shadow: 0 8px 24px rgb(36 46 89 / 10%);
     // ======================== Tree ========================
     .@{select-tree-prefix-cls} {
       border-radius: 0;
@@ -166,20 +176,23 @@
           border-radius: @radius-border-small;
           outline: none;
 
-          &:hover {
-            background-color: #ebedf5;
+          &:not(&--disabled):hover {
+            background-color: @palette-gray-3;
           }
 
+          &:not(&--disabled):active {
+            color: @blue-3;
+          }
           // Disabled
           &-disabled {
             .@{select-tree-prefix-cls}-node-content-wrapper {
-              color: #ebedf5;
+              color: @gray-3;
               cursor: not-allowed !important;
               .@{select-tree-prefix-cls}-iconEle {
                 svg {
-                  color: #ebedf5;
+                  color: @gray-3;
                   path {
-                    fill: #ebedf5;
+                    fill: @gray-3;
                   }
                 }
               }
@@ -304,10 +317,10 @@
             height: 14px;
             margin: 0;
             margin: 0 8px;
+            color: @gray-3;
             line-height: 40px;
             text-align: center;
             cursor: pointer;
-
             &-noop {
               cursor: default;
             }
