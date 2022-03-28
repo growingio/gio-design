@@ -1,4 +1,4 @@
-import React, { DOMAttributes, useContext, useEffect, useMemo } from 'react';
+import React, { DOMAttributes, useContext, useEffect, useMemo, useState } from 'react';
 import { isEmpty } from 'lodash';
 import classNames from 'classnames';
 import { RightFilled } from '@gio-design/icons';
@@ -22,6 +22,8 @@ const CascaderItem: React.ForwardRefRenderFunction<
 ) => {
   const prefixCls = usePrefixCls('cascader');
   const popoverClassName = `${prefixCls}--content`;
+  const [hovered,setHovered] = useState(false);
+
   /** context */
   const context = useContext(ListContext);
   const popoverContext = useContext(TriggerContext);
@@ -96,6 +98,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
           <TriggerContext.Provider value={popoverContext}>
             <Popover
                 placement="rightTop"
+                onVisibleChange={(v) => setHovered(v)}
                 overlayClassName={popoverClassName}
                 // document click contains node
                 getContainer={() => document.body}
@@ -123,6 +126,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
       value={value}
       disabled={mergedDisabled}
       suffix={React.isValidElement(children) || !isEmpty(childrens) ? <RightFilled size="14px" /> : undefined}
+      hovered={hovered}
       onClick={
         React.isValidElement(children) || !isEmpty(childrens)
           ? (itemValue, event) => propsOnClick?.(itemValue, event)
