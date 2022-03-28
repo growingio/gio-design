@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { DOMAttributes, ReactElement, useContext, useMemo } from 'react';
+import React, { DOMAttributes, ReactElement, useContext, useEffect, useMemo, useState } from 'react';
 import { isEmpty, isString } from 'lodash';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import { PREFIX } from '../constants';
@@ -26,6 +26,9 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       onClick,
       contentRender = defaultContentRender,
       wrapper = defaultContentRender,
+      onMouseEnter,
+      onMouseLeave,
+      hovered:propsHovered,
       ...rest
     } = props;
     const prefixCls = `${usePrefixCls(PREFIX)}--item`;
@@ -39,6 +42,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       selectParent,
     } = useContext(ListContext);
     const mergedDisabled = disabled ?? contextDisabled;
+    const [hovered,setHovered] = useState(false);
     const selected = useMemo(() => {
       if (model === 'cascader') {
         // 最顶级
@@ -53,6 +57,12 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       }
       return selectStatus?.(value, contextValue);
     }, [contextValue, model, selectParent, value]);
+    
+    useEffect(() => () => {
+        setHovered(false)
+      }, [])
+    
+    
     /** ============ prefix suffix  ================  */
     const prefix = useMemo(
       () => propPrefix ?? contextPrefix?.({ label, value, disabled, disabledTooltip }),
@@ -102,12 +112,21 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
         <li
           data-testid="item-base"
           style={style}
+          onMouseEnter={(e) => {
+            setHovered(true);
+            onMouseEnter?.(e);
+          }}
+          onMouseLeave={(e) => {
+            setHovered(false);
+            onMouseLeave?.(e);
+          }}
           className={classNames(
             className,
             prefixCls,
             {
               [`${prefixCls}--disabled`]: mergedDisabled,
               [`${prefixCls}--actived`]: selected,
+              [`${prefixCls}--hovered`]: !mergedDisabled ? (propsHovered || hovered) : false,
             },
             className
           )}
@@ -126,7 +145,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
   }
 );
 const BaseItem: React.ForwardRefExoticComponent<
-  BaseItemProps & Omit<React.RefAttributes<HTMLLIElement>, 'onClick' | 'onChange'>
+  BaseItemProps & Omit<React.RefAttributes<HTMLLIElement>, 'onClick' | 'onChange' | 'onMouseEnter' | 'onMouseLeave'>
 > & {
   isItem?: boolean;
 } = InnerBaseItem;

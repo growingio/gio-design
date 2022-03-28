@@ -129,6 +129,8 @@ export interface ItemProps
     | 'selected'
     | 'disabledTooltip'
     | 'wrapper'
+    | 'onMouseLeave'
+    | 'onMouseEnter'
   > {
   selectValue?: string | string[];
   strategy?: 'fixed' | 'absolute';
@@ -142,7 +144,10 @@ export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled' | 
   children?: React.ReactNode;
   disabledTooltip?: string;
   selected?: boolean;
+  hovered?: boolean;
   onClick?: (value?: string | number, event?: React.MouseEvent<HTMLLIElement | HTMLInputElement>) => void;
+  onMouseEnter?: (event?: React.MouseEvent<HTMLLIElement | HTMLInputElement>) => void;
+  onMouseLeave?: (event?: React.MouseEvent<HTMLLIElement | HTMLInputElement>) => void;
 }
 
 export interface TriggerProps {
