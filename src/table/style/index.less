@@ -211,12 +211,14 @@
     }
     &-up {
       transform: translateY(3px);
+      transition: color 0.2s;
       &.active {
         color: @blue-3;
       }
     }
     &-down {
       transform: translateY(-3px);
+      transition: color 0.2s;
       &.active {
         color: @blue-3;
       }
@@ -380,6 +382,38 @@
 
   &-search-bar {
     width: 100%;
+  }
+
+  &-sticky {
+    &-holder {
+      position: sticky;
+      z-index: 2;
+    }
+    // &-scroll {
+    //   position: sticky;
+    //   bottom: 0;
+    //   z-index: 2;
+    //   display: flex;
+    //   align-items: center;
+    //   border-top: 1px solid #f3f3f3;
+    //   opacity: 0.6;
+    //   transition: transform 0.1s ease-in 0s;
+    //   &:hover {
+    //     transform: scaleY(1.2);
+    //     transform-origin: center bottom;
+    //   }
+    //   &-bar {
+    //     height: 8px;
+    //     background-color: #bbb;
+    //     border-radius: 4px;
+    //     &:hover {
+    //       background-color: #999;
+    //     }
+    //     &-active {
+    //       background-color: #999;
+    //     }
+    //   }
+    // }
   }
 }
 
