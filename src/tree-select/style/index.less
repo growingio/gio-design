@@ -55,6 +55,15 @@
     opacity: 1;
   }
 }
+.@{select-prefix-cls} {
+  &:not(&-disabled):not(&-focused) {
+    .@{select-prefix-cls}-selector{
+      &:hover{
+        border: 1px solid @palette-blue-5;
+      }
+    }
+  }
+}
 
 .@{tree-select-prefix-cls} {
   position: relative;
@@ -72,6 +81,7 @@
   cursor: pointer;
   -webkit-font-feature-settings: 'tnum';
   font-feature-settings: 'tnum';
+  
   .@{select-prefix-cls}-selector {
     position: relative;
     display: flex;
@@ -86,9 +96,8 @@
     cursor: text;
     -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-    &:hover {
-      border: 1px solid @palette-blue-5;
-    }
+   
+ 
 
     .@{select-prefix-cls}-selection-search {
       position: absolute;
@@ -155,7 +164,7 @@
     border: 1px solid #dfe4ee;
     border-radius: 8px;
     box-shadow: 0 2px 14px 1px rgba(223, 226, 237, 0.8);
-    box-shadow: 0 8px 24px rgb(36 46 89 / 10%);
+    z-index:@z-index-popover;    
     // ======================== Tree ========================
     .@{select-tree-prefix-cls} {
       border-radius: 0;

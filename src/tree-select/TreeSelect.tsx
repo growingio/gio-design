@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import RcTreeSelect, { TreeNode, SHOW_ALL, SHOW_PARENT, SHOW_CHILD } from 'rc-tree-select';
 import classNames from 'classnames';
 import { omit } from 'lodash';
@@ -10,7 +10,7 @@ import renderSwitcherIcon from '../tree/iconUtil';
 import SizeContext from '../config-provider/SizeContext';
 import { TreeSelectProps } from './interface';
 
-class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
+export class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
   public static TreeNode = TreeNode;
 
   public static SHOW_ALL: typeof SHOW_ALL = SHOW_ALL;

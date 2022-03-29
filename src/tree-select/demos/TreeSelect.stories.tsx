@@ -1,17 +1,43 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
 import TreeSelect, { TreeNode } from '../index';
 import { TreeSelectProps } from '../interface';
 import Docs from './TreeSelectPage';
 import '../style';
-import '../style/demo.stories.less';
 
 export default {
   title: 'upgraded/TreeSelect',
   component: TreeSelect,
   subcomponents: { TreeNode },
-  decorators: [withDesign],
+  argTypes: {
+    multiple: {
+      description: '是否多选',
+      control: {
+        type: 'boolean',
+      },
+    },
+    value: {
+      description: '选中值',
+      type: 'string',
+      control: {
+        type: 'string',
+      },
+    },
+    disabled: {
+      description: '禁用',
+      type: 'boolean',
+      control: {
+        type: 'boolean',
+      },
+    },
+    loadData: {
+      description: '数据加载回调方法',
+      type: { name: 'function' },
+      // control: {
+      //   type: null,
+      // },
+    }
+  },
   parameters: {
     docs: {
       page: Docs,
