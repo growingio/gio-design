@@ -242,7 +242,7 @@ export const Disable = (args: ListPickerProps) => {
       onClear={() => {
         setMultipleValue(undefined);
       }}
-      onConfim={(val) => setMultipleValue(val as any)}
+      onConfirm={(val) => setMultipleValue(val as any)}
       placeholder="请选择"
     >
       <SearchBar size="small" style={{ width: '100%' }} placeholder="请搜索名称" onSearch={() => action('onSearch')} />
@@ -258,7 +258,7 @@ export const AllChose = (args: ListPickerProps) => {
       {...args}
       style={style}
       value={multipleValue}
-      onConfim={(val) => {
+      onConfirm={(val) => {
         setMultipleValue(val as string[]);
       }}
       overlayStyle={{ width: '240px' }}
@@ -404,71 +404,71 @@ const iconMap = {
   prepared: <EventsPresetOutlined size="14px" />,
 };
 const renderWrapper = (o: Tmesurements) => (element: React.ReactElement) =>
-  (
-    <Popover
-      allowArrow
-      placement="right"
-      strategy="fixed"
-      triggerStyle={{ display: 'block' }}
-      content={
-        <Card style={{ width: '320px' }}>
-          <Card.Meta title={o.name} description={o.id} />
-          <p>{`${o.id}${o.name}${o.type}`}</p>
-          <Skeleton.Image style={{ width: '100%' }} />
-          <Table
-            title="事件属性"
-            pagination={false}
-            columns={[
-              {
-                dataIndex: 'id',
-                title: 'Id',
-              },
-              {
-                dataIndex: 'name',
-                title: 'Name',
-              },
-            ]}
-            dataSource={Array(2)
-              .fill('')
-              .map((_, index) => ({
-                id: `${index + 1 * 1000}`,
-                name: `Name ${index + 1}`,
-              }))}
-          />
-        </Card>
-      }
-    >
-      {element}
-    </Popover>
-  );
+(
+  <Popover
+    allowArrow
+    placement="right"
+    strategy="fixed"
+    triggerStyle={{ display: 'block' }}
+    content={
+      <Card style={{ width: '320px' }}>
+        <Card.Meta title={o.name} description={o.id} />
+        <p>{`${o.id}${o.name}${o.type}`}</p>
+        <Skeleton.Image style={{ width: '100%' }} />
+        <Table
+          title="事件属性"
+          pagination={false}
+          columns={[
+            {
+              dataIndex: 'id',
+              title: 'Id',
+            },
+            {
+              dataIndex: 'name',
+              title: 'Name',
+            },
+          ]}
+          dataSource={Array(2)
+            .fill('')
+            .map((_, index) => ({
+              id: `${index + 1 * 1000}`,
+              name: `Name ${index + 1}`,
+            }))}
+        />
+      </Card>
+    }
+  >
+    {element}
+  </Popover>
+);
 const renderWrapper2 = (o: Tmesurements) => (element: React.ReactElement) =>
-  (
-    <Popover
-      allowArrow
-      strategy="fixed"
-      placement="right"
-      content={
-        <Card style={{ width: 320 }}>
-          <Card.Meta
-            title={
-              <div>
-                {o.name}
-                <Tag status="draft" style={{ marginLeft: 8 }}>
-                  {o.type}
-                </Tag>
-              </div>
-            }
-            description={o.id}
-          />
-          <Divider style={{ width: '100%' }} />
-          <div>{o.type}</div>
-        </Card>
-      }
-      triggerStyle={{ display: 'block' }}
-    >
-      {element}
-    </Popover>
-  );
+(
+  <Popover
+    allowArrow
+    strategy="fixed"
+    placement="right"
+    content={
+      <Card style={{ width: 320 }}>
+        <Card.Meta
+          title={
+            <div>
+              {o.name}
+              <Tag status="draft" style={{ marginLeft: 8 }}>
+                {o.type}
+              </Tag>
+            </div>
+          }
+          description={o.id}
+        />
+        <Divider style={{ width: '100%' }} />
+        <div>{o.type}</div>
+      </Card>
+    }
+    triggerStyle={{ display: 'block' }}
+  >
+    {element}
+  </Popover>
+);
 const dataFactory = (
   arr: Tmesurements[],
   wrapperFC: (o: Tmesurements) => (element: React.ReactElement) => JSX.Element
@@ -528,7 +528,7 @@ export const UserPicker = (args: ListPickerProps) => {
       size="small"
       placeholder="请选择用户"
       // onChange={() => {}}
-      onConfim={(e: string[]) => {
+      onConfirm={(e: string[]) => {
         action('onConfim');
         setValue(e);
       }}
