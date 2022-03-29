@@ -33,8 +33,8 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     getContainer,
     placement = 'bottomLeft',
     children,
-    onConfim,
-    confimText = localeTextObject?.confirm,
+    onConfirm,
+    confirmText: confimText = localeTextObject?.confirm,
     separator = '',
     valueSeparator = '.',
     style,
@@ -44,7 +44,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     overlayClassName,
     contentClassName,
     model = 'single',
-    needConfim = model === 'multiple',
+    needConfirm = model === 'multiple',
     empty,
     needEmpty = true,
     allowClear,
@@ -55,7 +55,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     maxWidth,
     recentId: propsRecentId,
     autoWidth = false,
-    strategy='fixed',
+    strategy = 'fixed',
     max,
     ...rest
   } = props;
@@ -69,7 +69,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     setValue(controlledValue);
   }, [controlledValue, setValue]);
   useEffect(() => {
-    if (needConfim && !visible && !isEqual(controlledValue, value)) {
+    if (needConfirm && !visible && !isEqual(controlledValue, value)) {
       setValue(controlledValue);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -81,7 +81,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
   };
   const handleConfim = () => {
     handVisibleChange(false);
-    onConfim?.(value, getOptionsByValue(value));
+    onConfirm?.(value, getOptionsByValue(value));
   };
 
   const handleChange = (val?: string | string[], opts?: OptionProps | OptionProps[]) => {
@@ -154,7 +154,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     >
       {/* {model === 'multiple' && selectAll && renderSelectAll()} */}
       {children}
-      {model === 'multiple' && needConfim && (
+      {model === 'multiple' && needConfirm && (
         <Button style={{ width: '100%' }} onClick={() => handleConfim()}>
           {confimText}
         </Button>

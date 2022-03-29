@@ -19,9 +19,9 @@ export interface ListPickerProps extends Pick<ListProps, 'model' | 'empty' | 'ne
   visible?: boolean;
   onVisibleChange?: (visible: boolean) => void;
   getContainer?: (node: HTMLElement) => HTMLElement;
-  needConfim?: boolean;
-  confimText?: string;
-  onConfim?: (value: string | string[] | undefined, options?: OptionProps | OptionProps[]) => void;
+  needConfirm?: boolean;
+  confirmText?: string;
+  onConfirm?: (value: string | string[] | undefined, options?: OptionProps | OptionProps[]) => void;
 
   placement?: Placement;
   /**
