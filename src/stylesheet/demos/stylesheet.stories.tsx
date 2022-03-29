@@ -1,6 +1,6 @@
 import React from 'react';
 import { withDesign } from 'storybook-addon-designs';
-import './style.less';
+import './style.stories.less';
 import '../variables/index.less';
 import Docs from './stylesheet.mdx';
 
