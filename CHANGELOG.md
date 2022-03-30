@@ -1,3 +1,13 @@
+## [22.14.19](https://github.com/growingio/gio-design/compare/v22.14.18...v22.14.19) (2022-03-30)
+
+
+### Bug Fixes
+
+* **cascader:** cascader hover state error ([#1931](https://github.com/growingio/gio-design/issues/1931)) ([5cd947e](https://github.com/growingio/gio-design/commit/5cd947ed130faf3aa6e6807196d85cbe865bbc3a))
+* **list-picker:** fix onConfirm spelling error ([#1939](https://github.com/growingio/gio-design/issues/1939)) ([0929d26](https://github.com/growingio/gio-design/commit/0929d2621941e4c00e39e785c819214c59bc2721))
+* **table:** fix sticky style of table ([#1940](https://github.com/growingio/gio-design/issues/1940)) ([a3d88ee](https://github.com/growingio/gio-design/commit/a3d88ee76aa5251606048eea7b6c28e4d3686a09))
+* **tree-select:** fix style error ([#1933](https://github.com/growingio/gio-design/issues/1933)) ([afe394d](https://github.com/growingio/gio-design/commit/afe394da493329d666e884f77b02ab821cf111e2))
+
 ## [22.14.18](https://github.com/growingio/gio-design/compare/v22.14.17...v22.14.18) (2022-03-25)
 
 
