@@ -244,6 +244,14 @@ MultiLine.args = {
   trigger: 'click',
 };
 
+export const Link = MultiLineTemplate.bind({});
+Link.args = {
+  title: '这是一个很长的描述。这是一个很长的描述。这是一个很长的描述。这是一个很长的描述。这是一个很长的描述。',
+  tooltipLink: { name: '点击这里', link: 'www.growingio.com' },
+  placement: 'right',
+  trigger: 'hover',
+};
+
 export const Disabled = () => (
   <div>
     <p>
