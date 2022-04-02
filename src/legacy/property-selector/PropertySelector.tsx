@@ -50,7 +50,7 @@ const PropertySelector: React.FC<PropertySelectorProps> = (props) => {
   }
   const propertyValue = useMemo(() => {
     if (!currentValue) return undefined;
-    const foundValue = dataSource.find((item) => (item.key ?? item.id) === currentValue.value);
+    const foundValue = dataSource.find((item) => [item.key, item.id].includes(currentValue.value));
     if (!foundValue) return currentValue;
     return dimensionToPropertyItem(foundValue as any, localeText as any);
   }, [currentValue, dataSource, localeText]);
