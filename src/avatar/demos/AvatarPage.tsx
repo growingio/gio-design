@@ -57,9 +57,11 @@ export default function ListPage() {
             '如您需要在鼠标 hover 到头像上时，给予用户提示，可以设置 `displayTooltip` 属性开启 Tooltip 提示，`tooltipTitle` 设置提示的内容。',
         })}
       </Description>
-      {formatMessage({
-        defaultMessage: '如果是字母头像，组件会默认提示 `children` 里的内容。',
-      })}
+      <Description>
+        {formatMessage({
+          defaultMessage: '如果是字母头像，组件会默认提示 `children` 里的内容。',
+        })}
+      </Description>
       <Canvas>
         <Story id="upgraded-avatar--tooltip" />
       </Canvas>
