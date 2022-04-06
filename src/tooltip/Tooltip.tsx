@@ -30,6 +30,7 @@ const Tooltip = (props: TooltipProps) => {
     subPrefixCls = 'tooltip',
     overlayClassName,
     overlayInnerClassName,
+    hideDelay,
     ...rest
   } = props;
   const prefixCls = usePrefixCls(subPrefixCls, customizePrefixCls);
@@ -98,11 +99,10 @@ const Tooltip = (props: TooltipProps) => {
     }
     return element;
   }
-
   return (
     <Popover
       {...rest}
-      hideDelay={tooltipLink?.link ? 300 : 0}
+      hideDelay={tooltipLink?.link && !hideDelay ? 300 : hideDelay || 0}
       allowArrow={allowArrow}
       prefixCls={customizePrefixCls}
       overlayClassName={classNames(prefixCls, overlayClassName)}
