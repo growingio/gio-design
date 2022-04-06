@@ -1,3 +1,11 @@
+## [22.14.20](https://github.com/growingio/gio-design/compare/v22.14.19...v22.14.20) (2022-04-06)
+
+
+### Bug Fixes
+
+* **property-selector:** fix icon ([#1943](https://github.com/growingio/gio-design/issues/1943)) ([561b177](https://github.com/growingio/gio-design/commit/561b1777f144a9e747b0be6b4886f96cce7649a2))
+* **Tooltip:** 有link的tooltip添加hideDelay ([#1941](https://github.com/growingio/gio-design/issues/1941)) ([c9d5ddd](https://github.com/growingio/gio-design/commit/c9d5dddc7d983252fd26b8a8813d104d52f7cb44))
+
 ## [22.14.19](https://github.com/growingio/gio-design/compare/v22.14.18...v22.14.19) (2022-03-30)
 
 
