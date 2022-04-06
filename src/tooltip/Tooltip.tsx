@@ -99,11 +99,10 @@ const Tooltip = (props: TooltipProps) => {
     }
     return element;
   }
-
   return (
     <Popover
       {...rest}
-      hideDelay={tooltipLink?.link && !hideDelay ? 300 : hideDelay}
+      hideDelay={tooltipLink?.link && !hideDelay ? 300 : hideDelay || 0}
       allowArrow={allowArrow}
       prefixCls={customizePrefixCls}
       overlayClassName={classNames(prefixCls, overlayClassName)}
