@@ -31,7 +31,7 @@ export default {
     },
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=6432%3A78838',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=6795%3A78355',
       allowFullscreen: true,
     },
   },
