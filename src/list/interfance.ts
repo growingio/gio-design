@@ -140,6 +140,7 @@ export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled' | 
   className?: string;
   style?: React.CSSProperties;
   label?: string | React.ReactNode;
+  title?: string;
   contentRender?: (element: React.ReactNode) => React.ReactElement;
   children?: React.ReactNode;
   disabledTooltip?: string;
