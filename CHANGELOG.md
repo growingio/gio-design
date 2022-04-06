@@ -1,3 +1,11 @@
+## [22.14.21](https://github.com/growingio/gio-design/compare/v22.14.20...v22.14.21) (2022-04-06)
+
+
+### Bug Fixes
+
+* **hideDelay:** update hideDelay ([#1948](https://github.com/growingio/gio-design/issues/1948)) ([5279bf5](https://github.com/growingio/gio-design/commit/5279bf51faf6e3d8b16b16e4c6c5257affa1aa0b))
+* **list:** fix list > li not have title attribute ([#1949](https://github.com/growingio/gio-design/issues/1949)) ([d1a38d0](https://github.com/growingio/gio-design/commit/d1a38d0741088a60834c0fd90024fd8d8d0e802e))
+
 ## [22.14.20](https://github.com/growingio/gio-design/compare/v22.14.19...v22.14.20) (2022-04-06)
 
 
