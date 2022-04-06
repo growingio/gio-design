@@ -15,6 +15,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
   (props, ref?) => {
     const {
       label,
+      title,
       value,
       className,
       style,
@@ -134,6 +135,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
           aria-hidden="true"
           ref={ref}
           onClick={handleOnClick}
+          title={title || !disabled && isString(content) && content || undefined}
           {...rest}
         >
           {contentRender?.(contentElement)}
