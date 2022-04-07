@@ -120,14 +120,20 @@ function ListAttrSelect(props: ListAttrSelectProps) {
         );
       setLoadingStatue(false);
     });
-  }, [valueType, exprKey, attrSelect, curryDimensionValueRequest, defaultList]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [valueType, exprKey, attrSelect]);
 
   switch (attrSelect) {
     case 'hasAll':
     case 'not hasAny':
       return (
         <div style={{ height: '330px' }}>
-          <Input placeholder={textObject.pleaseEnter} value={inputValue} onChange={changInputValue} style={{width: '100%'}}/>
+          <Input
+            placeholder={textObject.pleaseEnter}
+            value={inputValue}
+            onChange={changInputValue}
+            style={{ width: '100%' }}
+          />
           {loadingStatue ? (
             <div
               style={{
