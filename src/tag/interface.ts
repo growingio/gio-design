@@ -1,4 +1,4 @@
-export interface TagProps {
+export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
    * 类型
    * @default 'normal'
@@ -27,9 +27,6 @@ export interface TagProps {
    * 点击关闭图标的回调
    */
   onClose?: (e: React.MouseEvent<HTMLSpanElement>) => void;
-  onClick?: (e: React.MouseEvent<HTMLSpanElement>) => void;
   customizePrefixCls?: string;
   children: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
 }

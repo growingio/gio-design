@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
 import { TagProps } from './interface';
 
-const Tag: React.FC<TagProps & React.HTMLAttributes<HTMLSpanElement>> = ({
+const Tag: React.FC<TagProps> = ({
   children,
   type = 'normal',
   size = 'middle',

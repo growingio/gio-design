@@ -32,7 +32,7 @@ function Text({
     <LinesEllipsis
       data-testid="typography"
       className={cls}
-      style={{ '--color': color, ...style }}
+      style={{ '--color': color, ...style } as React.CSSProperties}
       maxLine={lines}
       text={children}
       trimRight={trimRight}

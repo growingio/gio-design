@@ -37,9 +37,9 @@ function Text({
 
   const linesNode = (
     <LinesEllipsis
-      innerRef={ref}
+      innerRef={ref as unknown as React.LegacyRef<HTMLDivElement>}
       className={cls}
-      style={{ '--color': color, ...style }}
+      style={{ '--color': color, ...style } as React.CSSProperties}
       maxLine={lines}
       text={children}
       trimRight={trimRight}
