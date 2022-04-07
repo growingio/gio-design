@@ -1,7 +1,7 @@
 import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Figma } from 'storybook-addon-designs/blocks'
+import { Figma } from 'storybook-addon-designs/esm/blocks';
 import List from '../List';
 
 export default function ListPage() {
@@ -18,9 +18,11 @@ export default function ListPage() {
       <Subtitle>
         <FormattedMessage defaultMessage="使用场景" />
       </Subtitle>
-      <Description>{formatMessage({
-        defaultMessage: '最基础的列表展示，可以在Dropdown、选择器里使用。',
-      })}</Description>
+      <Description>
+        {formatMessage({
+          defaultMessage: '最基础的列表展示，可以在Dropdown、选择器里使用。',
+        })}
+      </Description>
       <Subtitle>
         <FormattedMessage defaultMessage="设计稿" />
       </Subtitle>
@@ -32,9 +34,12 @@ export default function ListPage() {
 
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基本样式' })}</Subheading>
-      <Description>{formatMessage({
-        defaultMessage: 'List 宽度默认根据外层容器自适应。列表为空时，设置needEmpty=true 显示一个空值状态。也可以设置empty 自定义空值状态显示',
-      })}</Description>
+      <Description>
+        {formatMessage({
+          defaultMessage:
+            'List 宽度默认根据外层容器自适应。列表为空时，设置needEmpty=true 显示一个空值状态。也可以设置empty 自定义空值状态显示',
+        })}
+      </Description>
       <Canvas>
         <Story id="upgraded-list--default" />
         <Story id="upgraded-list--empty" />
@@ -73,7 +78,8 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: 'Cascader 级联列表' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '级联列表，可以通过设置列表的 model="cascader" ，cascader的value值格式为 "value1.value1-2.value1-2-3", 可以通过设置valueSeparator属性改value 的联接符，默认为‘.’',
+          defaultMessage:
+            '级联列表，可以通过设置列表的 model="cascader" ，cascader的value值格式为 "value1.value1-2.value1-2-3", 可以通过设置valueSeparator属性改value 的联接符，默认为‘.’',
         })}
       </Description>
       <Canvas>
@@ -101,7 +107,8 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: 'Selection 分组列表' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '将不同的 List 通过 Selection 作为外层容器包裹， 可以实现列表分组效果。设置List 的title 来显示分组标题',
+          defaultMessage:
+            '将不同的 List 通过 Selection 作为外层容器包裹， 可以实现列表分组效果。设置List 的title 来显示分组标题',
         })}
       </Description>
       <Canvas>

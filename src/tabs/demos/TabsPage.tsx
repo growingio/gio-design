@@ -1,7 +1,7 @@
 import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
-import { Figma } from 'storybook-addon-designs/blocks';
+import { Figma } from 'storybook-addon-designs/esm/blocks';
 import Tabs from '../Tabs';
 
 export default function ListPage() {
@@ -27,7 +27,8 @@ export default function ListPage() {
       </Description>
       <Description>
         {formatMessage({
-          defaultMessage: 'Tabs 和 Switch 的区别在于，Tabs 是切换下方内容控制内容联动，多用于导航，Switch 只是切换选项，并不能控制内容联动。 ',
+          defaultMessage:
+            'Tabs 和 Switch 的区别在于，Tabs 是切换下方内容控制内容联动，多用于导航，Switch 只是切换选项，并不能控制内容联动。 ',
         })}
       </Description>
 
@@ -76,7 +77,8 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: '大小' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '标签有Normal（36px）、Small（30px）两种尺寸。大号页签用在页头区域，小号用在弹出框等较狭窄的容器内。',
+          defaultMessage:
+            '标签有Normal（36px）、Small（30px）两种尺寸。大号页签用在页头区域，小号用在弹出框等较狭窄的容器内。',
         })}
       </Description>
       <Canvas>

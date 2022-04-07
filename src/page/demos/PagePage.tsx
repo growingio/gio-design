@@ -1,7 +1,7 @@
 import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Figma } from 'storybook-addon-designs/blocks'
+import { Figma } from 'storybook-addon-designs/esm/blocks';
 import Page from '../Page';
 
 export default function ListPage() {
@@ -18,9 +18,11 @@ export default function ListPage() {
       <Subtitle>
         <FormattedMessage defaultMessage="使用场景" />
       </Subtitle>
-      <Description>{formatMessage({
-        defaultMessage: '当有重要操作需告知用户处理结果，且反馈内容较为复杂时使用。',
-      })}</Description>
+      <Description>
+        {formatMessage({
+          defaultMessage: '当有重要操作需告知用户处理结果，且反馈内容较为复杂时使用。',
+        })}
+      </Description>
       <Subtitle>
         <FormattedMessage defaultMessage="设计稿" />
       </Subtitle>

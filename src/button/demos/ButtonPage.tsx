@@ -1,6 +1,6 @@
 import React from 'react';
 import { Canvas, Title, Description, Heading, Story, Subheading, ArgsTable, Subtitle } from '@storybook/addon-docs';
-import { Figma } from 'storybook-addon-designs/blocks';
+import { Figma } from 'storybook-addon-designs/esm/blocks';
 
 import { useIntl, FormattedMessage } from 'react-intl';
 import Button from '../index';

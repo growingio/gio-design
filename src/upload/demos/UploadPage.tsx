@@ -1,7 +1,7 @@
 import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Figma } from 'storybook-addon-designs/blocks';
+import { Figma } from 'storybook-addon-designs/esm/blocks';
 import Upload from '../Upload';
 
 export default function UploadPage() {
@@ -18,9 +18,11 @@ export default function UploadPage() {
       <Subtitle>
         <FormattedMessage defaultMessage="使用场景" />
       </Subtitle>
-      <Description>{formatMessage({
-        defaultMessage: '当需要上传一个或一些文件时;当需要展现上传的进度时;当需要使用拖拽交互时',
-      })}</Description>
+      <Description>
+        {formatMessage({
+          defaultMessage: '当需要上传一个或一些文件时;当需要展现上传的进度时;当需要使用拖拽交互时',
+        })}
+      </Description>
       <Subtitle>
         <FormattedMessage defaultMessage="设计稿" />
       </Subtitle>
@@ -45,7 +47,10 @@ export default function UploadPage() {
 
       <Subheading>{formatMessage({ defaultMessage: 'URL 上传' })}</Subheading>
       <Description>
-        {formatMessage({ defaultMessage: '在输入框内输入图片的 URL，回车即可上传图片。inputUploadType="file" 将远程文件上传到指定的服务器' })}
+        {formatMessage({
+          defaultMessage:
+            '在输入框内输入图片的 URL，回车即可上传图片。inputUploadType="file" 将远程文件上传到指定的服务器',
+        })}
       </Description>
       <Canvas>
         <Story id="upgraded-upload--input-upload" />
@@ -53,7 +58,10 @@ export default function UploadPage() {
 
       <Subheading>{formatMessage({ defaultMessage: 'logo 上传' })}</Subheading>
       <Description>
-        {formatMessage({ defaultMessage: '点击上传用 logo，上传后图片等比缩放，显示缩略图。并使用 beforeUpload 限制用户上传的图片格式和大小' })}
+        {formatMessage({
+          defaultMessage:
+            '点击上传用 logo，上传后图片等比缩放，显示缩略图。并使用 beforeUpload 限制用户上传的图片格式和大小',
+        })}
       </Description>
       <Canvas>
         <Story id="upgraded-upload--card-upload" />
@@ -66,7 +74,6 @@ export default function UploadPage() {
       <Canvas>
         <Story id="upgraded-upload--avatar-upload" />
       </Canvas>
-
 
       <Subheading>{formatMessage({ defaultMessage: '文件夹上传' })}</Subheading>
       <Description>
@@ -100,7 +107,6 @@ export default function UploadPage() {
         <Story id="upgraded-upload--batch-upload" />
       </Canvas>
 
-
       <Subheading>{formatMessage({ defaultMessage: '受控文件' })}</Subheading>
       <Description>{formatMessage({ defaultMessage: '受控的上传文件。' })}</Description>
       <Canvas>
@@ -119,23 +125,27 @@ export default function UploadPage() {
 
       <Subheading>{formatMessage({ defaultMessage: '完全控制的文件列表' })}</Subheading>
       <Description>
-        {formatMessage({ defaultMessage: '使用 fileList 对列表进行完全控制，可以实现各种自定义功能。以下演示通过fileList控制上传列表数量限制' })}
+        {formatMessage({
+          defaultMessage:
+            '使用 fileList 对列表进行完全控制，可以实现各种自定义功能。以下演示通过fileList控制上传列表数量限制',
+        })}
       </Description>
       <Canvas>
         <Story id="upgraded-upload--controlled-file-list" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '已上传的文件列表' })}</Subheading>
-      <Description>
-        {formatMessage({ defaultMessage: '使用 defaultFileList 设置已上传的内容。' })}
-      </Description>
+      <Description>{formatMessage({ defaultMessage: '使用 defaultFileList 设置已上传的内容。' })}</Description>
       <Canvas>
         <Story id="upgraded-upload--default-list-upload" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '自定义上传' })}</Subheading>
       <Description>
-        {formatMessage({ defaultMessage: '使用 customRequest 盖默认的上传行为，可以自定义自己的上传实现。下面展示一个阿里云 OSS 分片上传示例' })}
+        {formatMessage({
+          defaultMessage:
+            '使用 customRequest 盖默认的上传行为，可以自定义自己的上传实现。下面展示一个阿里云 OSS 分片上传示例',
+        })}
       </Description>
       <Canvas>
         <Story id="upgraded-upload--aliyun-oss-upload" />
