@@ -120,7 +120,8 @@ function ListAttrSelect(props: ListAttrSelectProps) {
         );
       setLoadingStatue(false);
     });
-  }, [valueType, exprKey, attrSelect, curryDimensionValueRequest, defaultList]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [valueType, exprKey, attrSelect]);
 
   switch (attrSelect) {
     case 'hasAll':
