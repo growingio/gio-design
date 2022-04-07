@@ -127,7 +127,12 @@ function ListAttrSelect(props: ListAttrSelectProps) {
     case 'not hasAny':
       return (
         <div style={{ height: '330px' }}>
-          <Input placeholder={textObject.pleaseEnter} value={inputValue} onChange={changInputValue} style={{width: '100%'}}/>
+          <Input
+            placeholder={textObject.pleaseEnter}
+            value={inputValue}
+            onChange={changInputValue}
+            style={{ width: '100%' }}
+          />
           {loadingStatue ? (
             <div
               style={{
@@ -146,7 +151,7 @@ function ListAttrSelect(props: ListAttrSelectProps) {
               stateless
               value={checkValue}
               dataSource={checkOptions}
-              width={293}
+              width="100%"
               height={270}
               onClick={changeCheckValue}
             />
