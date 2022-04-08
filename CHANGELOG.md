@@ -1,3 +1,10 @@
+# [22.15.0](https://github.com/growingio/gio-design/compare/v22.14.22...v22.15.0) (2022-04-08)
+
+
+### Features
+
+* **filterpicker:** filterPicker numberAttrSelect support positive integer ([#1954](https://github.com/growingio/gio-design/issues/1954)) ([1b5f16f](https://github.com/growingio/gio-design/commit/1b5f16f9163114631bf8d3e2ffdf61810db6edf6))
+
 ## [22.14.22](https://github.com/growingio/gio-design/compare/v22.14.21...v22.14.22) (2022-04-08)
 
 
