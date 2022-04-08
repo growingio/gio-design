@@ -1,3 +1,11 @@
+## [22.14.22](https://github.com/growingio/gio-design/compare/v22.14.21...v22.14.22) (2022-04-08)
+
+
+### Bug Fixes
+
+* **filter-picker:** set width of List to 100% ([#1951](https://github.com/growingio/gio-design/issues/1951)) ([f06803f](https://github.com/growingio/gio-design/commit/f06803fe1da596b9260e057e83a4bd882b5a2f9c))
+* **FilterPicker:** fix multi-selection error ([#1952](https://github.com/growingio/gio-design/issues/1952)) ([1094ad5](https://github.com/growingio/gio-design/commit/1094ad5e0f7059ac5d31ccd26dff4aae124e663d))
+
 ## [22.14.21](https://github.com/growingio/gio-design/compare/v22.14.20...v22.14.21) (2022-04-06)
 
 
