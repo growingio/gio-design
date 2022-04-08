@@ -6,6 +6,7 @@ import Button from '../button';
 import Tooltip from '../tooltip';
 import FilterPopover from './FilterPopover';
 import { Key, SortOrder, SortState, TitleProps } from './interface';
+import { defaultSortDirections } from './hook/useSorter';
 
 const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): SortOrder =>
   current === null ? sortDirections[0] : sortDirections[sortDirections.indexOf(current) + 1];
@@ -13,7 +14,7 @@ const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): 
 const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement => {
   const { prefixCls, column, onTriggerStateUpdate, sorterState, updateSorterStates, columnKey } = props;
 
-  const { align, sorter, sortDirections = ['ascend', 'descend', null], sortPriorityOrder } = column;
+  const { align, sorter, sortDirections = defaultSortDirections, sortPriorityOrder } = column;
 
   const renderSorter = (): React.ReactNode => {
     const { sortOrder } = sorterState ?? {};

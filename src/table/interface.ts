@@ -1,4 +1,16 @@
-import { ColumnType as GioColumnType, GetComponentProps, AlignType, Key } from 'rc-table/es/interface';
+import {
+  ColumnType as GioColumnType,
+  GetComponentProps,
+  AlignType,
+  Key,
+  GetRowKey,
+  TableLayout,
+  ExpandableConfig,
+  RowClassName,
+  PanelRender,
+  TableComponents,
+  TableSticky,
+} from 'rc-table/es/interface';
 import { TableProps as GioTableProps } from 'rc-table/es/Table';
 import { PaginationProps } from '../pagination';
 import { CheckboxProps } from '../checkbox';
@@ -46,12 +58,12 @@ interface ColumnType<RecordType> extends GioColumnType<RecordType> {
   sortPriorityOrder?: number;
 
   /**
-   * 默认排序顺序
+   * 默认的排序类型
    */
   defaultSortOrder?: SortOrder;
 
   /**
-   * 排序的受控属性，外界可用此控制列的排序，可设置为 ascend descend false
+   * 排序的受控属性，外界可用此控制列的排序，可设置为 ascend descend null
    */
   sortOrder?: SortOrder;
   /**
@@ -115,10 +127,32 @@ interface TitleProps<RecordType> {
 }
 
 interface RowSelection<RecordType> {
+  /**
+   * 当前已经选择的行标识符（受控）
+   * @default []
+   */
   selectedRowKeys?: Key[];
+  /**
+   * 列表选择框的宽度
+   * @default 52px
+   */
   columnWidth?: number | string;
+  /**
+   * 是否固定选择框，或设置固定的方向
+   * @default false
+   */
   fixed?: 'left' | 'right' | boolean;
+  /**
+   * 触发行选择后的回调函数
+   * @param selectedRowKeys 已经选择的行标识符
+   * @param selectedRows 已经选择的行数据
+   */
   onChange?: (selectedRowKeys: Key[], selectedRows: RecordType[]) => void;
+  /**
+   * 选择框的默认属性配置（传递给 Checkbox 组件的 Props）
+   * @param record 当前行的数据
+   * @returns {CheckboxProps & { tooltipProps?: Omit<TooltipProps, 'children'> }}
+   */
   getCheckboxProps?: (record: RecordType) => CheckboxProps & { tooltipProps?: Omit<TooltipProps, 'children'> };
 }
 
@@ -132,7 +166,7 @@ interface TableProps<RecordType> extends Omit<GioTableProps<RecordType>, 'title'
    * 表格标题
    * @param currentPageData 当前页的数据列表
    */
-  title?: string | ((currentPageData: ReadonlyArray<RecordType>) => string);
+  title?: string | ((currentPageData: ReadonlyArray<RecordType>) => React.ReactNode);
 
   /**
    * 单元格的 padding 值
@@ -186,6 +220,68 @@ interface TableProps<RecordType> extends Omit<GioTableProps<RecordType>, 'title'
    * 是否加载中
    */
   loading?: boolean;
+
+  className?: string;
+  prefixCls?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+
+  /**
+   * 指定一个字段名，Table Row 会使用 dataSource[index][rowKey] 来当作 key
+   * @default key
+   */
+  rowKey?: string | GetRowKey<RecordType>;
+
+  /**
+   * 表格元素的 [table-layout](https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout) 属性
+   */
+  tableLayout?: TableLayout;
+  /**
+   * 表格是否可滚动，也可以指定滚动区域的宽、高
+   */
+  scroll?: {
+    x?: number | true | string;
+    y?: number | string;
+  };
+  /**
+   * 配置展开属性
+   */
+  expandable?: ExpandableConfig<RecordType>;
+
+  /**
+   * 表格行的类名
+   */
+  rowClassName?: string | RowClassName<RecordType>;
+  /**
+   * 表格尾部
+   */
+  footer?: PanelRender<RecordType>;
+  /**
+   * 总结栏
+   */
+  summary?: (data: readonly RecordType[]) => React.ReactNode;
+  /**
+   * 传递给 Table 的原生 id 属性
+   */
+  id?: string;
+  /**
+   * 是否显示表头
+   * @default true
+   */
+  showHeader?: boolean;
+  /**
+   * 覆盖默认的 table 元素
+   */
+  components?: TableComponents<RecordType>;
+  /**
+   * 设置每一行的 tr 标签的属性
+   */
+  onRow?: GetComponentProps<RecordType>;
+
+  /**
+   * 设置粘性头部和滚动条
+   */
+  sticky?: boolean | TableSticky;
 }
 
 export {
