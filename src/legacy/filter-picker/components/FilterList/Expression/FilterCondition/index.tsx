@@ -20,7 +20,7 @@ interface FilterConditionProps {
   values: string[];
   exprKey: string;
   operationsOption?: operationsOptionType;
-  numType?: 'positivedecimal' | 'decimal';
+  numType?: 'positivedecimal' | 'decimal' | 'positiveInteger';
   disabled?: boolean;
   borderless?: boolean;
   size?: 'large' | 'middle' | 'small';

@@ -30,7 +30,7 @@ interface FilterAttrOverlayProps {
   values: string[];
   exprKey: string;
   operationsOption?: operationsOptionType;
-  numType?: 'positivedecimal' | 'decimal';
+  numType?: 'positivedecimal' | 'decimal' | 'positiveInteger';
 }
 
 function usePrevious<T>(value: T): React.MutableRefObject<T | undefined> {
