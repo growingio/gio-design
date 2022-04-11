@@ -11,7 +11,7 @@ export interface Props {
   title?: string;
   fieldId?: string;
   prefixCls: string;
-  labelWidth?: number;
+  labelWidth?: React.CSSProperties['width'];
   afterLabel?: React.ReactNode;
   required?: boolean;
   requiredMark?: RequiredMark;

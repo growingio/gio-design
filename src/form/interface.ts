@@ -55,6 +55,8 @@ export interface Props<Values = unknown> extends Omit<RcFormProps<Values>, 'form
   style?: React.CSSProperties;
 }
 
+export type FormProps<Values = unknown> = Props<Values>;
+
 type RenderChildren = (form: FormInstance) => React.ReactNode;
 type ChildrenType = RenderChildren | React.ReactNode;
 
@@ -114,11 +116,11 @@ export interface FormItemProps extends Omit<FieldProps, 'children'>, Omit<ItemLa
   /**
    label 标签的宽度（width）
    */
-  labelWidth?: number;
+  labelWidth?: React.CSSProperties['width'];
   /**
    input 控制项标签的宽度（width）
    */
-  inputWidth?: number;
+  inputWidth?: React.CSSProperties['width'];
   /**
    配置 Form.Item 的 colon 的默认值。表示是否显示 label 后面的冒号 (只有在属性 layout 为 horizontal 时有效)
    */
@@ -134,8 +136,8 @@ export interface FormContextProps {
   name?: string;
   layout?: FormLayout;
   labelAlign?: FormLabelAlign;
-  labelWidth?: number;
-  inputWidth?: number;
+  labelWidth?: React.CSSProperties['width'];
+  inputWidth?: React.CSSProperties['width'];
   requiredMark?: RequiredMark;
   colon?: boolean;
 }
@@ -145,7 +147,7 @@ export interface ItemLabelProps {
   title?: string;
   fieldId?: string;
   prefixCls?: string;
-  labelWidth?: number;
+  labelWidth?: React.CSSProperties['width'];
   afterLabel?: React.ReactNode;
   required?: boolean;
   requiredMark?: RequiredMark;
