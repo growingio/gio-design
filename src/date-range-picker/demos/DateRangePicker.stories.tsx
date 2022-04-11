@@ -15,7 +15,7 @@ export default {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=2672%3A30128',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=6979%3A96991',
       allowFullscreen: true,
     },
     docs: {
@@ -37,7 +37,7 @@ const ControlledTemplate: Story<DateRangePickerProps> = (args) => {
     <div style={{ width: 280 }}>
       <DateRangePicker  value={TimeRange} onSelect={onSelect} trigger={
         <Button>
-          Custom Trigger
+          自定义触发器
         </Button>
 
       }
@@ -61,8 +61,9 @@ Default.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  placeholder:'未来日期不可选',
+  placeholder:'选择器Disabled',
   onSelect: action('selected:'),
+  disabled:true,
   disabledDate: (current: Date) => current.getTime() > new Date().getTime(),
 };
 
@@ -78,7 +79,7 @@ StaticDisabledDate.args = {
   disabledDate: (date: Date) => isBefore(date, startOfToday()),
 };
 
-export const StaticDefaultViewDates = StaticTemplate.bind({});
-StaticDefaultViewDates.args = {
+export const StaticViewDates = StaticTemplate.bind({});
+StaticViewDates.args = {
   defaultViewDates: [subMonths(startOfToday(), 1), startOfToday()],
 };

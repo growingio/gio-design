@@ -45,21 +45,21 @@ export default function DataRangePickerPage() {
         })}
       </Description>
       <Canvas>
-        <Story id="upgraded-daterangepicker--trigger" />
+        <Story id="upgraded-daterangepicker--custom-trigger" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'disabled' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '选择器禁用' })}</Subheading>
       <Description>
         {formatMessage({
           defaultMessage:
-            '通过`disabled`属性，让选择器失效',
+            '通过`disabled`，让时间选择器失效',
         })}
       </Description>
       <Canvas>
         <Story id="upgraded-daterangepicker--disabled" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'DataRangePicker.Static' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '无触发器面板' })}</Subheading>
       <Description>
         {formatMessage({
           defaultMessage:
@@ -70,7 +70,7 @@ export default function DataRangePickerPage() {
         <Story id="upgraded-daterangepicker--static-basic" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'disabledDate' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '禁选时间段' })}</Subheading>
       <Description>
         {formatMessage({
           defaultMessage: '可以通过 `disabledDate`参数，屏蔽特定时间段',
@@ -78,6 +78,16 @@ export default function DataRangePickerPage() {
       </Description>
       <Canvas>
         <Story id="upgraded-daterangepicker--static-disabled-date" />
+      </Canvas>
+
+      <Subheading>{formatMessage({ defaultMessage: '默认可见日期' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '可以通过 `defaultViewDates`参数，设置默认可见日历中的日期',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-daterangepicker--static-view-dates" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>

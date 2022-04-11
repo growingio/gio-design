@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import { DownFilled } from '@gio-design/icons';
 import { addMonths, isBefore, startOfToday } from 'date-fns';
+import { action } from '@storybook/addon-actions';
 import Docs from './DatePickerPage';
 import Button from '../../button';
 import Toast from '../../toast';
@@ -29,32 +29,37 @@ export default {
 
 const Template: Story<DatePickerProps> = (args) => <DatePicker {...args} />;
 
-export const NormalPicker = Template.bind({});
-NormalPicker.args = {
+export const Default = Template.bind({});
+Default.args = {
   defaultValue: new Date(),
-  placeholder: 'please select',
+  placeholder: '选择具体某一天',
   onClear: () => {
-    Toast.info('Clear item!');
+    Toast.info('Clear data!');
   },
 };
 
-export const Placeholder = Template.bind({});
-Placeholder.args = {
-  placeholder: 'please select',
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled:true,
+  disabledDate: (current: Date) => current.getTime() > new Date().getTime(),
+  placeholder: '选择器Disabled',
+  onClear: () => {
+    Toast.info('Clear data!');
+  },
 };
 
 const CustomizeTriggerTemplate: Story<DatePickerProps> = (args) => {
-  const [value, setValue] = useState('please select');
 
-  const onSelect = (date: Date, dateString: string) => {
-    setValue(dateString);
+  const onSelect = () => {
+    action('onChange:')
   };
 
   return (
     <DatePicker
       trigger={
-        <Button type="secondary">
-          {value} <DownFilled size="14px" />
+        <Button type="primary">
+          自定义触发器
         </Button>
       }
       onSelect={onSelect}
@@ -63,8 +68,8 @@ const CustomizeTriggerTemplate: Story<DatePickerProps> = (args) => {
   );
 };
 
-export const CustomizeTrigger = CustomizeTriggerTemplate.bind({});
-CustomizeTrigger.args = {};
+export const CustomTrigger = CustomizeTriggerTemplate.bind({});
+CustomTrigger.args = {};
 
 const StaticTemplate: Story = (args) => <DatePicker.Static {...args} />;
 
