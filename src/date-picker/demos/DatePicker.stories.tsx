@@ -34,7 +34,7 @@ Default.args = {
   defaultValue: new Date(),
   placeholder: '选择具体某一天',
   onClear: () => {
-    Toast.info('Clear data!');
+    Toast.info('Clear date!');
   },
 };
 
@@ -45,7 +45,7 @@ Disabled.args = {
   disabledDate: (current: Date) => current.getTime() > new Date().getTime(),
   placeholder: '选择器Disabled',
   onClear: () => {
-    Toast.info('Clear data!');
+    Toast.info('Clear date!');
   },
 };
 

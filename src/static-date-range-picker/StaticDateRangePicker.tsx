@@ -26,7 +26,6 @@ function StaticDateRangePicker({
   const [dateIndex, setDateIndex] = React.useState<number>(0);
   // @ts-ignore
   const [selectedValue, setSelectedValue] = useControlledState<RangeValue<Date>>(value, defaultValue);
-  console.log(selectedValue,'selectedValue')
   const [viewDates, setViewDates] = React.useState<[Date, Date]>(
     defaultViewDates ?? getDefaultViewDates(selectedValue?.[0] ?? new Date())
   );
