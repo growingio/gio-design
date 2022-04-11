@@ -2,54 +2,54 @@ import RcForm, { FormInstance, useForm } from 'rc-field-form';
 import * as React from 'react';
 import classNames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
-import { FormProps, Props } from './interface';
+import { FormProps, ForwardRefFn } from './interface';
 import { FormContext } from './context';
 import { SizeContextProvider, SizeType } from '../config-provider/SizeContext';
 
-export const Form = React.forwardRef<FormInstance, FormProps>(
-  (
-    {
-      name,
-      prefixCls: customizePrefixCls,
-      className,
-      style,
-      layout = 'horizontal',
-      labelWidth,
-      inputWidth,
-      labelAlign,
-      size,
-      form,
-      colon = false,
-      requiredMark = true,
-      ...restProps
-    }: Props,
-    ref
-  ) => {
-    const prefixCls = usePrefixCls('form', customizePrefixCls);
-    const cls = classNames(prefixCls, className, `${prefixCls}-${size || 'middle'}`, `${prefixCls}-${layout}`);
-    // @TODO: wrap form with custom functions
-    const [wrapForm] = useForm(form);
-    const formContextValues = {
-      name,
-      layout,
-      labelWidth,
-      inputWidth,
-      labelAlign,
-      requiredMark,
-      colon,
-    };
+export function Form<Values = unknown>(
+  props: FormProps<Values>,
+  ref: React.ForwardedRef<FormInstance<Values>>
+): React.ReactElement {
+  const {
+    name,
+    prefixCls: customizePrefixCls,
+    className,
+    style,
+    layout = 'horizontal',
+    labelWidth,
+    inputWidth,
+    labelAlign,
+    size,
+    form,
+    colon = false,
+    requiredMark = true,
+    ...restProps
+  } = props;
 
-    React.useImperativeHandle(ref, () => wrapForm);
+  const prefixCls = usePrefixCls('form', customizePrefixCls);
+  const cls = classNames(prefixCls, className, `${prefixCls}-${size || 'middle'}`, `${prefixCls}-${layout}`);
+  // @TODO: wrap form with custom functions
+  const [wrapForm] = useForm(form);
+  const formContextValues = {
+    name,
+    layout,
+    labelWidth,
+    inputWidth,
+    labelAlign,
+    requiredMark,
+    colon,
+  };
 
-    return (
-      <FormContext.Provider value={formContextValues}>
-        <SizeContextProvider size={size as SizeType}>
-          <RcForm {...restProps} id={name} name={name} className={cls} form={wrapForm} style={style} />
-        </SizeContextProvider>
-      </FormContext.Provider>
-    );
-  }
-);
+  React.useImperativeHandle(ref, () => wrapForm);
 
-export default Form;
+  return (
+    <FormContext.Provider value={formContextValues}>
+      <SizeContextProvider size={size as SizeType}>
+        <RcForm {...restProps} id={name} name={name} className={cls} form={wrapForm} style={style} />
+      </SizeContextProvider>
+    </FormContext.Provider>
+  );
+}
+
+export default React.forwardRef(Form) as ForwardRefFn;
 export { FormInstance, List, useForm, FormProvider } from 'rc-field-form';

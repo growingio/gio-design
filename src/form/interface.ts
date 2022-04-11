@@ -156,3 +156,9 @@ export interface ItemLabelProps {
   htmlFor?: string;
   labelAlign?: FormLabelAlign;
 }
+
+// 支持 ForwardRef 传入泛型
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ForwardRefFn = <Values = any>(
+  props: React.PropsWithChildren<Props<Values>> & React.RefAttributes<FormInstance<Values>>
+) => React.ReactElement;

@@ -26,10 +26,10 @@ export default {
   },
 } as Meta<FormProps>;
 
-type DataType = { search: string; username: string; password: string; remember: boolean };
+type DefaultDataType = { search: string; username: string; password: string; remember: boolean };
 
-const DefaultTemplate: Story<FormProps<DataType>> = (props) => (
-  <Form {...props}>
+const DefaultTemplate: Story<FormProps<DefaultDataType>> = (props) => (
+  <Form<DefaultDataType> {...props}>
     <Form.Item label="Search" name="search" trigger="onSearch" getValueFromEvent={(text) => text}>
       <SearchBar style={{ width: 300 }} />
     </Form.Item>
@@ -64,7 +64,7 @@ const DefaultTemplate: Story<FormProps<DataType>> = (props) => (
   </Form>
 );
 
-export const Default: Story<FormProps<DataType>> = DefaultTemplate.bind({});
+export const Default: Story<FormProps<DefaultDataType>> = DefaultTemplate.bind({});
 Default.args = {
   name: 'default',
   labelWidth: 150,
@@ -122,7 +122,7 @@ export const UseFormHooks = () => {
 
   return (
     <>
-      <Form form={form}>
+      <Form<Values> form={form}>
         <Form.Item
           label="Username"
           name="username"
@@ -162,12 +162,14 @@ export const UseFormHooks = () => {
 export const LayoutForm = () => {
   const [layout, setLayout] = useState<FormLayout>('horizontal');
 
-  const handleValuesChange = (changedValues: {
+  type DataType = {
     layout: FormLayout;
     username: string;
     password: string;
     remember: boolean;
-  }) => {
+  };
+
+  const handleValuesChange = (changedValues: DataType) => {
     action('onValuesChange')(changedValues);
     if (changedValues && 'layout' in changedValues) {
       setLayout(changedValues.layout);
@@ -176,7 +178,12 @@ export const LayoutForm = () => {
 
   return (
     <div>
-      <Form layout={layout} requiredMark initialValues={{ layout: 'horizontal' }} onValuesChange={handleValuesChange}>
+      <Form<DataType>
+        layout={layout}
+        requiredMark
+        initialValues={{ layout: 'horizontal' }}
+        onValuesChange={handleValuesChange}
+      >
         <Form.Item name="layout" label="Layout">
           <SwitchGroup
             options={[
@@ -221,8 +228,16 @@ export const LayoutForm = () => {
 
 export const Validate = () => {
   const hasExisted = (value: string) => Promise.resolve(Boolean(value));
+
+  type DataType = {
+    username: string;
+    email: `${string}@${string}.${string}`;
+    password: string;
+    confirmPassword: string;
+  };
+
   return (
-    <Form>
+    <Form<DataType>>
       <Form.Item
         label="用户名"
         name="username"
@@ -332,7 +347,7 @@ export const CustomizedFormControls = () => {
   };
 
   return (
-    <Form
+    <Form<Values>
       name="customized_form_controls"
       onFinish={onFinish}
       initialValues={{
