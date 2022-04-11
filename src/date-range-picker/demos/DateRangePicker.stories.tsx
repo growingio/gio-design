@@ -4,15 +4,14 @@ import { action } from '@storybook/addon-actions';
 import { isBefore, startOfToday, subMonths } from 'date-fns';
 import Docs from './DateRangePickerPage';
 import DateRangePicker, { DateRangePickerProps, StaticDateRangePickerProps } from '../index';
-
 import '../style';
 import '../../static-date-range-picker/style';
+import Button from '../../button';
 
 export default {
   title: 'Upgraded/DateRangePicker',
   component: DateRangePicker,
   subcomponents: { StaticDateRangePicker: DateRangePicker.Static },
-
   parameters: {
     design: {
       type: 'figma',
@@ -25,12 +24,8 @@ export default {
   },
 } as Meta;
 
-const defaultPlaceholder = '选择日期范围';
-
 const Template: Story<DateRangePickerProps> = (args) => (
-  <div style={{ width: 280 }}>
     <DateRangePicker {...args} />
-  </div>
 );
 
 const ControlledTemplate: Story<DateRangePickerProps> = (args) => {
@@ -40,24 +35,33 @@ const ControlledTemplate: Story<DateRangePickerProps> = (args) => {
   };
   return (
     <div style={{ width: 280 }}>
-      <DateRangePicker {...args} value={TimeRange} onSelect={onSelect} />
+      <DateRangePicker  value={TimeRange} onSelect={onSelect} trigger={
+        <Button>
+          Custom Trigger
+        </Button>
+
+      }
+      {...args}
+      />
     </div>
   );
 };
 
-export const ControlledBasic = ControlledTemplate.bind({});
+export const CustomTrigger = ControlledTemplate.bind({});
 
-export const Basic = Template.bind({});
-Basic.args = {
-  placeholder: defaultPlaceholder,
-  onSelect: action('selected:'),
-  onClear: action('onClear:'),
-  allowClear: true,
+export const Default = ControlledTemplate.bind({});
+Default.args = {
+    placeholder:'选择日期范围',
+    onChange: action('onChange:'),
+    trigger:null,
+    format:"yyyy/MM/dd",
+    disabled:false,
+    size:'normal',
 };
 
-export const DisbaledDate = Template.bind({});
-DisbaledDate.args = {
-  placeholder: defaultPlaceholder,
+export const Disabled = Template.bind({});
+Disabled.args = {
+  placeholder:'未来日期不可选',
   onSelect: action('selected:'),
   disabledDate: (current: Date) => current.getTime() > new Date().getTime(),
 };
