@@ -1,37 +1,22 @@
-import React, { useMemo, useState } from 'react';
-import { Meta } from '@storybook/react/types-6-0';
+import React, { useMemo } from 'react';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import Table from '../index';
-import { ColumnsType, SortOrder, TableProps } from '../interface';
+import { Table as TableWithoutRef } from '../Table';
+import { ColumnsType, TableProps } from '../interface';
 import '../style';
-import { Divider } from '../..';
 import Docs from './TablePage';
-
-type DataSourceType = {
-  id: string;
-  name: string;
-  address: string;
-  age: number;
-  children?: DataSourceType[];
-};
-const genDataSource = (length = 5) =>
-  Array.from({ length }).map(
-    (_, index) =>
-      ({
-        id: `${index + 1 * 1000}`,
-        age: index + 1,
-        name: `Name ${index + 1}`,
-        address: `北京市朝阳公园`,
-      } as DataSourceType)
-  );
+import genDataSource, { DataSourceType } from './genDataSource';
+import Toggle from '../../toggle';
+import Divider from '../../divider';
 
 export default {
   title: 'Upgraded/Table',
-  component: Table,
+  component: TableWithoutRef,
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4066%3A42548',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=4066%3A42548',
       allowFullscreen: true,
     },
     docs: {
@@ -42,8 +27,9 @@ export default {
 
 // ----------------------- Basic -----------------------//
 
-export const Basic = () => {
-  const columns: ColumnsType<DataSourceType> = [
+export const Basic: Story<TableProps<DataSourceType>> = (args) => <Table<DataSourceType> {...args} />;
+Basic.args = {
+  columns: [
     {
       dataIndex: 'id',
       title: 'Id',
@@ -61,15 +47,16 @@ export const Basic = () => {
       dataIndex: 'address',
       title: 'Address',
     },
-  ];
-  return <Table<DataSourceType> title="基础表格" columns={columns} dataSource={genDataSource()} rowKey="id" />;
+  ],
+  dataSource: genDataSource(),
+  rowKey: 'id',
 };
 
 // ----------------------- Basic -----------------------//
 
-// ----------------------- Selectable -----------------------//
+// ----------------------- Selection -----------------------//
 
-export const Selectable = () => {
+export const Selection = () => {
   const columns: ColumnsType<DataSourceType> = [
     {
       dataIndex: 'id',
@@ -100,54 +87,15 @@ export const Selectable = () => {
     getCheckboxProps: (record) => ({ disabled: record.age % 2 === 0 }),
   };
   return (
-    <Table<DataSourceType>
-      title="可选择的"
-      columns={columns}
-      dataSource={genDataSource(100).map((item, index) => {
-        if (index === 0) {
-          return {
-            ...item,
-            children: [
-              {
-                id: 'id1',
-                name: 'name1',
-                address: 'address1',
-                age: 19,
-              },
-              {
-                id: 'id2',
-                name: 'name2',
-                address: 'address2',
-                age: 19,
-              },
-              {
-                id: 'id3',
-                name: 'name3',
-                address: 'address3',
-                age: 19,
-              },
-              {
-                id: 'id4',
-                name: 'name4',
-                address: 'address4',
-                age: 19,
-              },
-            ],
-          };
-        }
-        return item;
-      })}
-      rowKey="id"
-      rowSelection={rowSelection}
-    />
+    <Table<DataSourceType> columns={columns} rowKey="id" rowSelection={rowSelection} dataSource={genDataSource(100)} />
   );
 };
 
-// ----------------------- Selectable -----------------------//
+// ----------------------- Selection -----------------------//
 
-// ----------------------- Filterable -----------------------//
+// ----------------------- Filtering -----------------------//
 
-export const Filterable = () => {
+export const Filtering = () => {
   const dataSource = useMemo(() => genDataSource(1000), []);
   const columns = useMemo<ColumnsType<DataSourceType>>(
     () => [
@@ -192,186 +140,10 @@ export const Filterable = () => {
     []
   );
 
-  return <Table<DataSourceType> title="可过滤的" columns={columns} rowKey="id" dataSource={dataSource} />;
+  return <Table<DataSourceType> columns={columns} rowKey="id" dataSource={dataSource} />;
 };
 
-// ----------------------- Filterable -----------------------//
-
-// ----------------------- Sortable -----------------------//
-
-export const Sortable = () => {
-  const columns: ColumnsType<DataSourceType> = [
-    {
-      dataIndex: 'id',
-      title: 'Id',
-    },
-    {
-      dataIndex: 'name',
-      title: 'Name',
-    },
-    {
-      dataIndex: 'age',
-      title: 'Age',
-      // sortDirections: ['descend'],
-      sorter: (first, second) => first.age - second.age,
-    },
-    {
-      dataIndex: 'address',
-      title: 'Address',
-    },
-  ];
-  return (
-    <Table<DataSourceType>
-      pagination={false}
-      title="可排序的"
-      dataSource={genDataSource()}
-      columns={columns}
-      rowKey="id"
-    />
-  );
-};
-
-// ----------------------- Sortable -----------------------//
-
-// ----------------------- Multiple Sortable -----------------------//
-
-export const MultipleSortable = () => {
-  const columns: ColumnsType<DataSourceType> = [
-    {
-      dataIndex: 'id',
-      title: 'Id',
-    },
-    {
-      dataIndex: 'name',
-      title: 'Name',
-      sortPriorityOrder: 1,
-      sorter: (first, second) => {
-        if (first.name < second.name) return -1;
-        if (first.name > second.name) return 1;
-        return 0;
-      },
-    },
-    {
-      dataIndex: 'age',
-      title: 'Age',
-      sortPriorityOrder: 2,
-      sorter: (first, second) => first.age - second.age,
-    },
-    {
-      dataIndex: 'address',
-      title: 'Address',
-    },
-  ];
-
-  const data: DataSourceType[] = [
-    {
-      id: '1',
-      name: 'John Brown',
-      age: 11,
-      address: '北京市朝阳公园',
-    },
-    {
-      id: '2',
-      name: 'Jim Green',
-      age: 22,
-      address: '北京市朝阳公园',
-    },
-    {
-      id: '3',
-      name: 'Joe Black',
-      age: 33,
-      address: '北京市朝阳公园',
-    },
-    {
-      id: '4',
-      name: 'Jim Red',
-      age: 33,
-      address: '北京市朝阳公园',
-    },
-    {
-      id: '5',
-      name: 'Jim Red',
-      age: 55,
-      address: '北京市朝阳公园',
-    },
-  ];
-  return (
-    <>
-      {' '}
-      <h4>多列排序</h4>
-      <p>`column` 支持 `sortPriorityOrder` 字段以配置多列排序优先级</p>
-      <Divider style={{ width: '100%' }} />
-      <Table<DataSourceType> pagination={false} dataSource={data} columns={columns} rowKey="id" />
-    </>
-  );
-};
-
-// ----------------------- Multiple Sortable -----------------------//
-
-// ----------------------- Controlled Sortable -----------------------//
-
-export const ControlledSortable = () => {
-  const [sortedInfo, setSortedInfo] = useState<{
-    sortOrder: SortOrder;
-    columnKey: 'age' | 'id';
-  }>({
-    sortOrder: null,
-    columnKey: 'age',
-  });
-
-  const handleTableChange: Required<TableProps<DataSourceType>>['onChange'] = (
-    changedPaginationState,
-    changedFilterState,
-    changedSortState
-  ) => {
-    action('handleTableChange')(changedPaginationState, changedFilterState, changedSortState);
-
-    const { key, sortOrder } = changedSortState;
-
-    setSortedInfo({
-      columnKey: key as 'age' | 'id',
-      sortOrder,
-    });
-  };
-
-  const columns: ColumnsType<DataSourceType> = [
-    {
-      dataIndex: 'id',
-      title: 'Id',
-      sortOrder: sortedInfo.columnKey === 'id' ? sortedInfo.sortOrder : undefined,
-      sorter: (first, second) => parseInt(first.id, 10) - parseInt(second.id, 10),
-    },
-    {
-      dataIndex: 'name',
-      title: 'Name',
-    },
-    {
-      dataIndex: 'age',
-      title: 'Age',
-      defaultSortOrder: 'descend',
-      info: '您可以通过设置 `sortDirections: ["ascend", "descend", "ascend"]` 来禁止排序恢复到默认状态',
-      sortDirections: ['ascend', 'descend', 'ascend'],
-      sortOrder: sortedInfo.columnKey === 'age' ? sortedInfo.sortOrder : undefined,
-      sorter: (first, second) => first.age - second.age,
-    },
-    {
-      dataIndex: 'address',
-      title: 'Address',
-    },
-  ];
-
-  return (
-    <Table<DataSourceType>
-      title="受控的排序，设置 `sorter = true` 开启服务端排序"
-      dataSource={genDataSource(10000)}
-      columns={columns}
-      rowKey="id"
-      onChange={handleTableChange}
-    />
-  );
-};
-
-// ----------------------- Controlled Sortable -----------------------//
+// ----------------------- Filtering -----------------------//
 
 // ----------------------- Collapsible -----------------------//
 
@@ -403,7 +175,6 @@ export const Collapsible = () => {
   return (
     <Table<DataSourceType>
       pagination={false}
-      title="可展开的"
       dataSource={genDataSource()}
       columns={columns}
       expandable={expandable}
@@ -413,63 +184,6 @@ export const Collapsible = () => {
 };
 
 // ----------------------- Collapsible -----------------------//
-
-// ----------------------- Spanning Table -----------------------//
-
-export const SpanningTable = () => {
-  const columns: ColumnsType<DataSourceType> = [
-    {
-      dataIndex: 'id',
-      title: 'Id',
-      render: (id, _, index) => {
-        if (index === 4) {
-          return {
-            children: id,
-            props: {
-              colSpan: 2,
-            },
-          };
-        }
-        return id;
-      },
-    },
-    {
-      dataIndex: 'name',
-      title: 'Name',
-      render: (name, _, index) => {
-        if (index === 2) {
-          return {
-            children: name,
-            props: {
-              rowSpan: 2,
-            },
-          };
-        }
-        return name;
-      },
-    },
-    {
-      dataIndex: 'age',
-      title: 'Age',
-    },
-    {
-      dataIndex: 'address',
-      title: 'Address',
-    },
-  ];
-
-  return (
-    <Table<DataSourceType>
-      pagination={false}
-      title="跨越表格"
-      dataSource={genDataSource()}
-      columns={columns}
-      rowKey="id"
-    />
-  );
-};
-
-// ----------------------- Spanning Table -----------------------//
 
 // ----------------------- Tree Data -----------------------//
 
@@ -510,15 +224,7 @@ export const TreeData = () => {
     },
     ...genDataSource(),
   ];
-  return (
-    <Table<DataSourceType>
-      pagination={false}
-      title="展示树形数据"
-      columns={columns}
-      dataSource={dataSource}
-      rowKey="id"
-    />
-  );
+  return <Table<DataSourceType> pagination={false} columns={columns} dataSource={dataSource} rowKey="id" />;
 };
 
 // ----------------------- Tree Data -----------------------//
@@ -549,41 +255,28 @@ export const Fixed = () => {
   ];
 
   return (
-    <>
-      <h4>可固定表头和列</h4>
-      <p>对于列数很多的数据，可以固定前后的列，横向滚动查看其它数据，需要和 scroll.x 配合使用。</p>
-      <ol style={{ fontSize: '.9em', color: 'rgb(161, 157, 157)', lineHeight: '2' }}>
-        <li>若列头与内容不对齐或出现列重复，请指定固定列的宽度 width。</li>
-        <li>
-          如果指定 width
-          不生效或出现白色垂直空隙，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有超长连续字段破坏布局。
-        </li>
-        <li>建议指定 scroll.x 为大于表格宽度的固定值或百分比。</li>
-        <li>注意，且非固定列宽度之和不要超过 scroll.x。</li>
-      </ol>
-      <Divider style={{ width: '100%' }} />
-      <div style={{ maxWidth: 1320, minWidth: 1000 }}>
-        <Table<DataSourceType>
-          style={{ width: '100%' }}
-          scroll={{ x: 1600, y: 600 }}
-          columns={columns}
-          pagination={false}
-          dataSource={genDataSource(30)}
-          rowKey="id"
-        />
-      </div>
-    </>
+    <div style={{ maxWidth: 1320, minWidth: 1000 }}>
+      <Table<DataSourceType>
+        style={{ width: '100%' }}
+        scroll={{ x: 1600, y: 600 }}
+        columns={columns}
+        pagination={false}
+        dataSource={genDataSource(30)}
+        rowKey="id"
+      />
+    </div>
   );
 };
 
 // ----------------------- Fixed -----------------------//
 
-// ----------------------- Thead Group -----------------------//
+// ----------------------- Column Grouping -----------------------//
 
-export const TheadGroup = () => {
+export const ColumnGrouping = () => {
   const columns: ColumnsType<DataSourceType> = [
     {
       title: 'Id and Name',
+      align: 'center',
       children: [
         {
           title: 'Id',
@@ -597,10 +290,11 @@ export const TheadGroup = () => {
     },
     {
       title: 'Age and Address',
+      align: 'center',
       children: [
         {
           title: 'Age',
-          dataIndex: 'Age',
+          dataIndex: 'age',
         },
         {
           title: 'Address',
@@ -610,22 +304,14 @@ export const TheadGroup = () => {
     },
   ];
 
-  return (
-    <Table<DataSourceType>
-      pagination={false}
-      title="表头分组"
-      columns={columns}
-      dataSource={genDataSource()}
-      rowKey="id"
-    />
-  );
+  return <Table<DataSourceType> pagination={false} columns={columns} dataSource={genDataSource()} rowKey="id" />;
 };
 
-// ----------------------- Thead Group -----------------------//
+// ----------------------- Column Grouping -----------------------//
 
 // ----------------------- Ellipsis -----------------------//
 
-export const Ellipsis = (props: any) => {
+export const Ellipsis = () => {
   const columns: ColumnsType<DataSourceType> = [
     {
       dataIndex: 'id',
@@ -650,16 +336,7 @@ export const Ellipsis = (props: any) => {
     },
   ];
 
-  return (
-    <Table<DataSourceType>
-      pagination={false}
-      title="内容"
-      columns={columns}
-      dataSource={genDataSource()}
-      rowKey="id"
-      {...props}
-    />
-  );
+  return <Table<DataSourceType> pagination={false} columns={columns} dataSource={genDataSource()} rowKey="id" />;
 };
 
 // ----------------------- Ellipsis -----------------------//
@@ -794,7 +471,6 @@ export const PaginationTable = () => {
         showSizeChanger: true,
         onChange: action('table pagination change'),
       }}
-      title="分页表格，请参考 Pagination 组件"
       columns={columns}
       dataSource={genDataSource(100)}
       rowKey="id"
@@ -827,24 +503,24 @@ export const Loading = () => {
   ];
 
   const [loading, setLoading] = React.useState(true);
-  const [dataSource, setDataSource] = React.useState<DataSourceType[]>([]);
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-      setDataSource(genDataSource());
-    }, 3_000);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
-    <Table<DataSourceType>
-      title="加载中"
-      loading={loading}
-      columns={columns}
-      pagination={false}
-      dataSource={dataSource}
-      rowKey="id"
-    />
+    <>
+      <Toggle
+        on={loading}
+        onChange={(event) => setLoading(event.target.checked)}
+        checkedChildren="Loading"
+        uncheckedChildren="Unloading"
+      />
+      <Divider />
+      <Table<DataSourceType>
+        loading={loading}
+        columns={columns}
+        pagination={false}
+        dataSource={genDataSource()}
+        rowKey="id"
+      />
+    </>
   );
 };
 
@@ -874,7 +550,6 @@ export const Empty = () => {
 
   return (
     <Table<DataSourceType>
-      title="表格无数据时的展示页面，请参考 Page 组件"
       columns={columns}
       rowKey="id"
       pagination={false}

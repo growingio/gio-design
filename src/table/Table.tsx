@@ -37,7 +37,10 @@ interface TableContextType {
 }
 export const TableContext = createContext<TableContextType>({ tableRef: null });
 
-function Table<RecordType>(props: TableProps<RecordType>, ref: React.ForwardedRef<HTMLDivElement>): React.ReactElement {
+export function Table<RecordType>(
+  props: TableProps<RecordType>,
+  ref: React.ForwardedRef<HTMLDivElement>
+): React.ReactElement {
   const {
     title,
     columns = [],

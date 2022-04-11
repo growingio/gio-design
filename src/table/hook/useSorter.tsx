@@ -1,10 +1,12 @@
 import { useState, useCallback, useMemo } from 'react';
 import { isNil, isFunction } from 'lodash';
-import { ColumnsType, SortState } from '../interface';
+import { ColumnsType, SortOrder, SortState } from '../interface';
 import { getColumnKey, getColumnPos } from '../utils';
 
 type OnSortChange<RecordType> = (sortState: SortState<RecordType>) => void;
 type UpdateSortState<RecordType> = (sortState: SortState<RecordType>) => SortState<RecordType>;
+
+export const defaultSortDirections: SortOrder[] = ['ascend', 'descend', null];
 
 const collectSortStates = <RecordType,>(
   columns: ColumnsType<RecordType>,
@@ -14,7 +16,7 @@ const collectSortStates = <RecordType,>(
   let sortStates: SortState<RecordType>[] = [];
 
   const push = (column: ColumnsType<RecordType>[number], key: React.Key, state?: Partial<SortState<RecordType>>) => {
-    const { sortPriorityOrder, sortDirections = ['ascend', 'descend', null], sortOrder } = column;
+    const { sortPriorityOrder, sortDirections = defaultSortDirections, sortOrder } = column;
     sortStates.push({
       column,
       key,
