@@ -21,7 +21,6 @@ const Popover = (props: PopoverProps) => {
     defaultVisible = false,
     allowArrow = false,
     disabled,
-    enterable = true,
     overlayClassName,
     overlayInnerStyle,
     overlayInnerClassName,
@@ -110,17 +109,15 @@ const Popover = (props: PopoverProps) => {
   const updateVisible = useCallback(
     (resetVisible: boolean) => {
       const realVisible = disabled ? false : resetVisible;
-      if (enterable) {
-        setVisible(realVisible);
-        onVisibleChange?.(realVisible);
-        if (realVisible) {
-          setTimeout(() => {
-            update?.();
-          }, 0);
-        }
+      setVisible(realVisible);
+      onVisibleChange?.(realVisible);
+      if (realVisible) {
+        setTimeout(() => {
+          update?.();
+        }, 0);
       }
     },
-    [disabled, enterable, setVisible, onVisibleChange, update]
+    [disabled, setVisible, onVisibleChange, update]
   );
 
   // ============ nest popover on Document click close ============

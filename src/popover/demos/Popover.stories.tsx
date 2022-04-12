@@ -99,7 +99,7 @@ const Template: Story<PopoverProps> = (args) => (
 );
 
 const content = (
-  <div style={{ border: '1px solid black' }}>
+  <div className="popover-default-inner" style={{ border: '1px solid black' }}>
     这是提示文案。
     <br />
     <button type="button">button</button>
@@ -112,7 +112,7 @@ Placement.args = {
 };
 
 const TriggerTemplate: Story<PopoverProps> = (args) => (
-  <div style={{ margin: '150px 200px' }}>
+  <div style={{ margin: '100px 150px' }}>
     <span style={{ marginRight: 20 }}>
       <Popover {...args} trigger="hover" placement="top">
         <Input value="Touch Me!" style={{ width: 100 }} />
@@ -145,10 +145,6 @@ const ControlTemplate: Story<PopoverProps> = (args) => {
   const [visible, setVisible] = useState(false);
   const show = () => setVisible(true);
   const hide = () => setVisible(false);
-  const onVisibleChange = (resetVisible: boolean) => {
-    setVisible(resetVisible);
-    console.log(resetVisible);
-  };
 
   const [visible2, setVisible2] = useState(false);
   const show2 = () => setVisible2(true);
@@ -156,6 +152,27 @@ const ControlTemplate: Story<PopoverProps> = (args) => {
   const onVisibleChange2 = (resetVisible: boolean) => {
     setVisible2(resetVisible);
   };
+
+  const popContent = (
+    <div style={{ border: '1px solid black' }}>
+      这是提示文案。
+      <br />
+      <button type="button" onClick={hide}>
+        隐藏
+      </button>
+    </div>
+  );
+
+  const popContent2 = (
+    <div style={{ border: '1px solid black' }}>
+      这是提示文案。
+      <br />
+      <button type="button" onClick={hide2}>
+        隐藏
+      </button>
+    </div>
+  );
+
   return (
     <>
       <fieldset style={{ border: '1px solid var(--gray-2, #dfe4ee)', marginBottom: 100, padding: '50px 20px' }}>
@@ -167,7 +184,7 @@ const ControlTemplate: Story<PopoverProps> = (args) => {
           <Button onClick={hide} style={{ marginRight: 50 }}>
             Hide Popover
           </Button>
-          <Popover {...args} visible={visible} placement="top" onVisibleChange={onVisibleChange}>
+          <Popover content={popContent} visible={visible} placement="top" trigger="click">
             <Input value="Show Popover Me!" />
           </Popover>
         </div>
@@ -181,7 +198,13 @@ const ControlTemplate: Story<PopoverProps> = (args) => {
           <Button onClick={hide2} style={{ marginRight: 50 }}>
             Hide Popover
           </Button>
-          <Popover {...args} trigger="click" visible={visible2} placement="top" onVisibleChange={onVisibleChange2}>
+          <Popover
+            content={popContent2}
+            trigger="click"
+            visible={visible2}
+            placement="top"
+            onVisibleChange={onVisibleChange2}
+          >
             <Input value="Show Popover Me!" />
           </Popover>
         </div>
@@ -191,16 +214,16 @@ const ControlTemplate: Story<PopoverProps> = (args) => {
 };
 
 export const Controlled = ControlTemplate.bind({});
-Controlled.args = { content };
+Controlled.args = {};
 
 const DefaultTemplate: Story<PopoverProps> = (args) => (
   <>
-    <Popover {...args}>
-      <Input value="Show Popover with allowed Arrow" />
+    <Popover {...args} overlayClassName="popover-default-content">
+      <Input value="Show Popover with allowed Arrow" style={{ width: 250 }} />
     </Popover>
-    <span>|</span>
-    <Popover {...args} allowArrow={false}>
-      <Input value="Show Popover with rejected Arrow" />
+    <span style={{ padding: 10 }}>|</span>
+    <Popover {...args} allowArrow={true} overlayClassName="popover-default-content">
+      <Input value="Show Popover with rejected Arrow" style={{ width: 280 }} />
     </Popover>
   </>
 );
@@ -208,35 +231,18 @@ export const DefaultVisible = DefaultTemplate.bind({});
 DefaultVisible.args = {
   defaultVisible: false,
   content,
-};
-
-const EnterableTemplate: Story<PopoverProps> = (args) => (
-  <>
-    <Popover {...args}>
-      <Input value="Popover supports mouse enter!" />
-    </Popover>
-    <span>|</span>
-    <Popover {...args} enterable={false}>
-      <Input value="Popover does't support mouse enter!" />
-    </Popover>
-  </>
-);
-
-export const Enterable = EnterableTemplate.bind({});
-Enterable.args = {
-  content,
+  trigger: 'click',
 };
 
 const PortalTemplate: Story<PopoverProps> = (args) => (
   <>
     <div style={{ overflow: 'hidden' }}>
       <Popover {...args} strategy="fixed">
-        <Input value="Popover supports mouse enter!" />
+        <Input value="Use default container!" style={{ width: 300 }} />
       </Popover>
     </div>
-    <span>|</span>
     <Popover {...args} getContainer={(node) => node?.parentElement || document.body}>
-      <Input value="Popover does't support mouse enter!" />
+      <Input value="Set a special Container" style={{ width: 300 }} />
     </Popover>
   </>
 );
@@ -246,18 +252,18 @@ Portal.args = {
   content,
 };
 
-const SupportRefTemplate: Story<PopoverProps> = (args) => (
+const NotSupportRefTemplate: Story<PopoverProps> = (args) => (
   <Popover {...args} strategy="absolute">
-    <p style={{ border: '1px solid black' }}>Only string</p>
+    Only String
   </Popover>
 );
 
-export const SupportRef = SupportRefTemplate.bind({});
-SupportRef.args = {
+export const NotSupportRef = NotSupportRefTemplate.bind({});
+NotSupportRef.args = {
   content,
 };
 
-const NotSupportRefTemplate: Story<PopoverProps> = (args) => {
+const SupportRefTemplate: Story<PopoverProps> = (args) => {
   const onClick = () => {
     console.log('Click trigger button!');
   };
@@ -276,8 +282,8 @@ const NotSupportRefTemplate: Story<PopoverProps> = (args) => {
   );
 };
 
-export const NotSupportRef = NotSupportRefTemplate.bind({});
-NotSupportRef.args = {
+export const SupportRef = SupportRefTemplate.bind({});
+SupportRef.args = {
   trigger: 'click',
   content,
 };
