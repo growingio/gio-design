@@ -1,3 +1,11 @@
+## [22.15.1](https://github.com/growingio/gio-design/compare/v22.15.0...v22.15.1) (2022-04-12)
+
+
+### Bug Fixes
+
+* **filter-picker:** 修复 usePrevious 的小问题 ([#1967](https://github.com/growingio/gio-design/issues/1967)) ([506291c](https://github.com/growingio/gio-design/commit/506291cf8882f253b2c165d031964157311f726b))
+* **filter-picker:** 修复列表型国际化的问题 ([#1965](https://github.com/growingio/gio-design/issues/1965)) ([80fc389](https://github.com/growingio/gio-design/commit/80fc389570e23d0461dce08f2cf62c2d76cf548f))
+
 # [22.15.0](https://github.com/growingio/gio-design/compare/v22.14.22...v22.15.0) (2022-04-08)
 
 
