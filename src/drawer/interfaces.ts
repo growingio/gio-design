@@ -20,8 +20,14 @@ export interface DrawerProps {
   maskClosable?: boolean;
   /** 强制渲染  */
   forceRender?: boolean;
-  /** 大小 */
+  /**
+   * @deprecated 未来移除，替换成fixed
+   */
   size?: 'normal' | 'fixed';
+  /**
+   * 是否固定，否则自动撑开
+   */
+  fixed?: boolean;
   /** 关闭时销毁 */
   destroyOnClose?: boolean;
   /** dialog 根元素 style */

@@ -60,15 +60,14 @@ Adaptive.args = {
 export const Fixed = Template.bind({});
 Fixed.args = {
   title: '标题',
-  size: 'fixed',
-  children: '固定宽度'.repeat(10),
+  fixed:true,
+  children: '固定宽度'.repeat(10)
 };
 
 export const CustomWidth = Template.bind({});
 CustomWidth.args = {
   title: '自定义宽度',
   width: 300,
-  size: 'normal',
 };
 
 export const OnCloseAndAfterClose = Template.bind({});
