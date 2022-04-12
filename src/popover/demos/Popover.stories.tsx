@@ -141,7 +141,7 @@ Trigger.args = {
   content,
 };
 
-const ControlTemplate: Story<PopoverProps> = (args) => {
+const ControlTemplate: Story<PopoverProps> = () => {
   const [visible, setVisible] = useState(false);
   const show = () => setVisible(true);
   const hide = () => setVisible(false);
@@ -222,7 +222,7 @@ const DefaultTemplate: Story<PopoverProps> = (args) => (
       <Input value="Show Popover with allowed Arrow" style={{ width: 250 }} />
     </Popover>
     <span style={{ padding: 10 }}>|</span>
-    <Popover {...args} allowArrow={true} overlayClassName="popover-default-content">
+    <Popover {...args} allowArrow overlayClassName="popover-default-content">
       <Input value="Show Popover with rejected Arrow" style={{ width: 280 }} />
     </Popover>
   </>
