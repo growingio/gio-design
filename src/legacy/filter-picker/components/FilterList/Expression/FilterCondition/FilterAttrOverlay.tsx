@@ -33,12 +33,12 @@ interface FilterAttrOverlayProps {
   numType?: 'positivedecimal' | 'decimal' | 'positiveInteger';
 }
 
-function usePrevious<T>(value: T): React.MutableRefObject<T | undefined> {
+function usePrevious<T>(value: T): T | undefined {
   const ref = useRef<T>();
   useEffect(() => {
     ref.current = value;
   }, [value]);
-  return ref;
+  return ref.current;
 }
 
 function FilterAttrOverlay(props: FilterAttrOverlayProps) {
@@ -82,7 +82,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
 
   const previousValueType = usePrevious(valueType);
   useEffect(() => {
-    if (valueType !== previousValueType.current && isEmpty(values)) {
+    if (valueType !== previousValueType && isEmpty(values)) {
       setAttrValue([]);
     }
     setOperationValue(getOperation(valueType, op, values));
