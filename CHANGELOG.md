@@ -1,3 +1,10 @@
+## [22.15.2](https://github.com/growingio/gio-design/compare/v22.15.1...v22.15.2) (2022-04-12)
+
+
+### Bug Fixes
+
+* **filter-picker:** 修复列表型切换操作符的问题 ([#1968](https://github.com/growingio/gio-design/issues/1968)) ([282aeb1](https://github.com/growingio/gio-design/commit/282aeb153d69c2518175f658ee7ae1b60beb798f))
+
 ## [22.15.1](https://github.com/growingio/gio-design/compare/v22.15.0...v22.15.1) (2022-04-12)
 
 
