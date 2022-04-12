@@ -13,6 +13,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   onClose,
   closeIcon,
   size = 'fixed',
+  fixed,
   width,
   maskClosable = true,
   ...restProps
@@ -22,8 +23,8 @@ export const Drawer: React.FC<DrawerProps> = ({
   const closeCls = classnames(`${prefix}__close`);
 
   const drawerCls = classnames(className, {
-    [`${prefix}-normal`]: size === 'normal',
-    [`${prefix}-fixed`]: size === 'fixed',
+    [`${prefix}-normal`]: width || size === 'normal',
+    [`${prefix}-fixed`]: fixed || !width && size === 'fixed',
   });
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -44,7 +45,7 @@ export const Drawer: React.FC<DrawerProps> = ({
       closable={title !== false}
       closeIcon={closeIcon || <CloseOutlined className={closeCls} />}
       title={title}
-      width={size === 'fixed' ? 500 : width}
+      width={width || fixed && 500 || size === 'fixed' && 500 }
       {...restProps}
     />
   );
