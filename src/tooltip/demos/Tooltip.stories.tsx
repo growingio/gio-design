@@ -7,7 +7,6 @@ import { Button } from '../../button';
 import '../style';
 import '../../popover/demos/demo.stories.less';
 import Docs from './TooltipPage';
-import { PopConfirm } from '../..';
 
 export default {
   title: 'Upgraded/Tooltip',
