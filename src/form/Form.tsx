@@ -2,12 +2,15 @@ import RcForm, { FormInstance, useForm } from 'rc-field-form';
 import * as React from 'react';
 import classNames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
-import { Props } from './interface';
+import { FormProps, ForwardRefFn } from './interface';
 import { FormContext } from './context';
 import { SizeContextProvider, SizeType } from '../config-provider/SizeContext';
 
-export const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (
-  {
+export function Form<Values = unknown>(
+  props: FormProps<Values>,
+  ref: React.ForwardedRef<FormInstance<Values>>
+): React.ReactElement {
+  const {
     name,
     prefixCls: customizePrefixCls,
     className,
@@ -21,9 +24,8 @@ export const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (
     colon = false,
     requiredMark = true,
     ...restProps
-  }: Props,
-  ref
-) => {
+  } = props;
+
   const prefixCls = usePrefixCls('form', customizePrefixCls);
   const cls = classNames(prefixCls, className, `${prefixCls}-${size || 'middle'}`, `${prefixCls}-${layout}`);
   // @TODO: wrap form with custom functions
@@ -47,7 +49,7 @@ export const Form: React.ForwardRefRenderFunction<FormInstance, Props> = (
       </SizeContextProvider>
     </FormContext.Provider>
   );
-};
+}
 
-export default Form;
+export default React.forwardRef(Form) as ForwardRefFn;
 export { FormInstance, List, useForm, FormProvider } from 'rc-field-form';
