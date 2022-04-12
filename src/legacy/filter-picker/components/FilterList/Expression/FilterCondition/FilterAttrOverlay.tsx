@@ -80,14 +80,19 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     []
   );
 
+  /**
+   * 切换数据类型的时候需要重置 attrValue
+   */
   const previousValueType = usePrevious(valueType);
   useEffect(() => {
-    if (valueType !== previousValueType && isEmpty(values)) {
+    if (previousValueType !== undefined && valueType !== previousValueType && isEmpty(values)) {
       setAttrValue([]);
     }
-    setOperationValue(getOperation(valueType, op, values));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [previousValueType, valueType, op, getOperation]);
+  }, [previousValueType, valueType]);
+  useEffect(() => {
+    setOperationValue(getOperation(valueType, op, values));
+  }, [getOperation, op, valueType, values]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
