@@ -51,6 +51,6 @@ export default {
   afterTheNext: (text: Key) => `After the next ${text} day(s)`,
   withinThePast: (text: Key) => `Within the past ${text} day(s)`,
   withinTheNext: (text: Key) => `Within the next ${text} day(s)`,
-  empty: 'Empty',
-  notEmpty: 'Not empty',
+  empty: 'No value',
+  notEmpty: 'Has value',
 };

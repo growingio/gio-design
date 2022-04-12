@@ -51,6 +51,6 @@ export default {
   afterTheNext: (text: Key) => `未来 ${text} 天后`,
   withinThePast: (text: Key) => `过去 ${text} 天之内`,
   withinTheNext: (text: Key) => `未来 ${text} 天之内`,
-  empty: '为空',
-  notEmpty: '不为空',
+  empty: '无值',
+  notEmpty: '有值',
 };
