@@ -102,7 +102,7 @@ const content = (
   <div className="popover-default-inner" style={{ border: '1px solid black' }}>
     这是提示文案。
     <br />
-    <button type="button">button</button>
+    这是提示文案。
   </div>
 );
 export const Placement = Template.bind({});
@@ -234,18 +234,34 @@ DefaultVisible.args = {
   trigger: 'click',
 };
 
-const PortalTemplate: Story<PopoverProps> = (args) => (
-  <>
-    <div style={{ overflow: 'hidden' }}>
-      <Popover {...args} strategy="fixed">
-        <Input value="Use default container!" style={{ width: 300 }} />
-      </Popover>
-    </div>
-    <Popover {...args} getContainer={(node) => node?.parentElement || document.body}>
-      <Input value="Set a special Container" style={{ width: 300 }} />
-    </Popover>
-  </>
-);
+const PortalTemplate: Story<PopoverProps> = (args) => {
+  const outside = useRef();
+  const inside = useRef();
+  return (
+    <>
+      <div style={{ width: '100%', height: 300 }} ref={outside}>
+        <div
+          style={{
+            width: '100%',
+            height: 300,
+            backgroundColor: '#cccccc30',
+            display: 'flex',
+            opacity: 0.5,
+            alignItems: 'center',
+          }}
+          ref={inside}
+        >
+          <Popover {...args} strategy="fixed" getContainer={() => outside.current}>
+            <Input value="Set Container on Outside Div!" style={{ width: 300 }} />
+          </Popover>
+          <Popover {...args} getContainer={() => inside.current}>
+            <Input value="Set Container on Inner Div!" style={{ width: 300 }} />
+          </Popover>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export const Portal = PortalTemplate.bind({});
 Portal.args = {
@@ -297,6 +313,25 @@ const DisabledTemplate: Story<PopoverProps> = (args) => (
 export const Disabled = DisabledTemplate.bind({});
 Disabled.args = {
   content,
+};
+
+const DelayTemplate: Story<PopoverProps> = (args) => (
+  <>
+    <Popover {...args} strategy="fixed" delay={600} hideDelay={0}>
+      <Input value="Show With Delay" />
+    </Popover>
+    <br />
+    <br />
+    <Popover {...args} strategy="fixed" delay={0} hideDelay={600}>
+      <Input value="Hide With HideDelay" />
+    </Popover>
+  </>
+);
+
+export const DelayAndHideDelay = DelayTemplate.bind({});
+DelayAndHideDelay.args = {
+  content,
+  placement: 'right',
 };
 
 const ScrollTemplate: Story<PopoverProps> = (args) => {
