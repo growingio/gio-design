@@ -35,7 +35,7 @@ export default function ListPage() {
         url="https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=4093%3A45837"
       />
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
-      <Subheading>{formatMessage({ defaultMessage: 'controlled' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '可控制弹出框' })}</Subheading>
       <Description>
         用户可通过`visible`控制`PopConfirm`弹出和隐藏，并可用`onVisibleChange`
         监听`PopConfirm`的弹出框现实和隐藏的状态。同时通过`onCancel`和`onConfirm`来关闭弹出框。
@@ -43,7 +43,7 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-popconfirm--controlled" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: 'description' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '弹出框描述内容' })}</Subheading>
       <Description>
         通过`title`和`desc`为`PopConfirm`弹出框添加标题和描述，当`desc`为空时，则不现实描述信息。
       </Description>
@@ -51,13 +51,13 @@ export default function ListPage() {
         <Story id="upgraded-popconfirm--description" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'disabled' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: 'Disabled' })}</Subheading>
       <Description>通过`disabled`来控制是否显示`PopConfirm`弹出框。</Description>
       <Canvas>
         <Story id="upgraded-popconfirm--disabled" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'placement' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: 'Placement' })}</Subheading>
       <Description>
         通过`placement`设置弹出框显示的方位，可设置为：`top`、`left`、`right`、
         `bottom`、`topLeft`、`topRight`、`bottomLeft`、`bottomRight`、
@@ -67,7 +67,7 @@ export default function ListPage() {
         <Story id="upgraded-popconfirm--placement" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'trigger' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '触发方式' })}</Subheading>
       <Description>
         通过`trigger`可以设置弹出框的弹出方式，包括：`hover`、`click`、`focus` 三种，默认是`hover`。
         同时多种trigger方式可以并用，如`[&quot;click&quot;, &quot;hover&quot;]`

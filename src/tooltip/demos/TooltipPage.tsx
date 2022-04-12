@@ -32,7 +32,7 @@ export default function ListPage() {
         url="https://www.figma.com/file/lLYusioN7e9ifkQnIXeT4G/GIO-Design-(Running-File)?node-id=4093%3A45835"
       />
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
-      <Subheading>{formatMessage({ defaultMessage: 'controlled' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '可控制弹出框' })}</Subheading>
       <Description>
         用户可通过`visible`控制Tooltip弹出和隐藏，并可用`onVisibleChange` 监听Tooltip的弹出框现实和隐藏的状态。
       </Description>
@@ -46,19 +46,19 @@ export default function ListPage() {
         <Story id="upgraded-tooltip--disabled" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'Multi line' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '多行消息' })}</Subheading>
       <Description>`Tooltip`的消息弹出框，具有最大宽度`500px`，当消息的过长时，会自动折行。</Description>
       <Canvas>
         <Story id="upgraded-tooltip--multi-line" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'Link' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '查看链接功能' })}</Subheading>
       <Description>{`通过\`tooltipLink: { name: '点击这里', link: 'www.growingio.com' }\`设置，可以为\`tooltip\`添加一个link。`}</Description>
       <Canvas>
         <Story id="upgraded-tooltip--link" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'placement' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: 'Placement' })}</Subheading>
       <Description>
         通过`placement`设置弹出框显示的方位，可设置为：`top`、`left`、`right`、
         `bottom`、`topLeft`、`topRight`、`bottomLeft`、`bottomRight`、
@@ -68,7 +68,7 @@ export default function ListPage() {
         <Story id="upgraded-tooltip--placement" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: 'trigger' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '触发方式' })}</Subheading>
       <Description>
         通过`trigger`可以设置弹出框的弹出方式，包括：`hover`、`click`、`focus` 三种，默认是`hover`。
         同时多种trigger方式可以并用，如`[&quot;click&quot;, &quot;hover&quot;]`

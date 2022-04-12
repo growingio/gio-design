@@ -216,7 +216,7 @@ const ControlTemplate: Story<PopoverProps> = () => {
 export const Controlled = ControlTemplate.bind({});
 Controlled.args = {};
 
-const DefaultTemplate: Story<PopoverProps> = (args) => (
+const ArrowTemplate: Story<PopoverProps> = (args) => (
   <>
     <Popover {...args} overlayClassName="popover-default-content">
       <Input value="Show Popover with allowed Arrow" style={{ width: 250 }} />
@@ -227,8 +227,8 @@ const DefaultTemplate: Story<PopoverProps> = (args) => (
     </Popover>
   </>
 );
-export const DefaultVisible = DefaultTemplate.bind({});
-DefaultVisible.args = {
+export const Arrow = ArrowTemplate.bind({});
+Arrow.args = {
   defaultVisible: false,
   content,
   trigger: 'click',
