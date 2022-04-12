@@ -113,7 +113,7 @@ Placement.args = {
 };
 
 const TriggerTemplate: Story<TooltipProps> = (args) => (
-  <div style={{ margin: '150px 200px' }}>
+  <div style={{ margin: '150px 150px' }}>
     <span style={{ marginRight: 20 }}>
       <Tooltip {...args} trigger="hover" placement="top">
         <Input value="Touch Me!" style={{ width: 100 }} />

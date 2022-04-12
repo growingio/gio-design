@@ -108,7 +108,7 @@ Placement.args = {
 };
 
 const TriggerTemplate: Story<PopConfirmProps> = (args) => (
-  <div style={{ margin: '200px 200px' }}>
+  <div style={{ margin: '200px 150px' }}>
     <span style={{ marginRight: 20 }}>
       <PopConfirm {...args} trigger="hover" placement="top">
         <Input value="Touch Me!" style={{ width: 100 }} />
