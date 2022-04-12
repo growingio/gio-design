@@ -2,24 +2,32 @@ import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
 import Popover from '../index';
+import Alert from '../../alert';
 
 export default function ListPage() {
   const { formatMessage } = useIntl();
 
   return (
     <>
-      <Title>{formatMessage({ defaultMessage: 'Popover 气泡确认框' })}</Title>
+      <Title>{formatMessage({ defaultMessage: 'Popover 气泡弹出框' })}</Title>
       <Description>
         {formatMessage({
           defaultMessage:
             '通过点击或鼠标Hover元素，在目标元素附近弹出浮层提示消息，当需要用户进一步确认，可讲鼠标移动到弹出框上进行确认。',
         })}
       </Description>
-      <Description>Upgrading Guide</Description>
-      <ul>
-        <li>样式：Popover的弹出框无样式。</li>
-        <li>API变化：内容由content包裹，去除了footer，组件用到了react-popper</li>
-      </ul>
+      <Alert
+        style={{ margin: '0 0 38px' }}
+        message={
+          <Description>
+            {formatMessage({
+              defaultMessage:
+                'Popover组件底层使用了 [popover.js](https://popper.js.org/)，更多参数您可以参考该库的说明。',
+            })}
+          </Description>
+        }
+      />
+
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: 'controlled' })}</Subheading>
       <Description>
