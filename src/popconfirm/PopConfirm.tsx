@@ -21,13 +21,13 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
     visible: customizaVisible,
     defaultVisible,
     children,
-    disabled,
     trigger = 'click',
     ...rest
   } = props;
   const prefixCls = usePrefixCls('confirm', customizePrefixCls);
   const textObject: typeof defaultLocaleText = useLocale('PopConfirm') || defaultLocaleText;
   const [visible, setVisible] = useControlledState(customizaVisible, defaultVisible);
+  const { disabled } = rest;
 
   const onVisibleChange = useCallback(
     (resetVisible: boolean) => {
@@ -85,14 +85,7 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
     </div>
   );
   return (
-    <Popover
-      {...rest}
-      trigger={trigger}
-      visible={visible}
-      enterable
-      onVisibleChange={onVisibleChange}
-      content={content}
-    >
+    <Popover {...rest} trigger={trigger} visible={visible} onVisibleChange={onVisibleChange} content={content}>
       {children}
     </Popover>
   );

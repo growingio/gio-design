@@ -7,7 +7,6 @@ import { Button } from '../../button';
 import '../style';
 import '../../popover/demos/demo.stories.less';
 import Docs from './TooltipPage';
-import { PopConfirm } from '../..';
 
 export default {
   title: 'Upgraded/Tooltip',
@@ -114,7 +113,7 @@ Placement.args = {
 };
 
 const TriggerTemplate: Story<TooltipProps> = (args) => (
-  <div style={{ margin: '150px 200px' }}>
+  <div style={{ margin: '150px 150px' }}>
     <span style={{ marginRight: 20 }}>
       <Tooltip {...args} trigger="hover" placement="top">
         <Input value="Touch Me!" style={{ width: 100 }} />
@@ -194,57 +193,29 @@ const ControlTemplate: Story<TooltipProps> = (args) => {
 export const Controlled = ControlTemplate.bind({});
 Controlled.args = { overlay };
 
-// const DefaultTemplate: Story<TooltipProps> = (args) => (
-//   <>
-//     <Tooltip {...args}>
-//       <Input value="Show Popover with allowed Arrow" style={{ width: 280 }} />
-//     </Tooltip>
-//     <span>|</span>
-//     <Tooltip {...args} allowArrow={false}>
-//       <Input value="Show Popover with rejected Arrow" style={{ width: 280 }} />
-//     </Tooltip>
-//   </>
-// );
-// export const DefaultVisible = DefaultTemplate.bind({});
-// DefaultVisible.args = {
-//   defaultVisible: true,
-//   overlay,
-//   placement: 'bottom',
-// };
-
-const EnterableTemplate: Story<TooltipProps> = (args) => (
-  <>
-    <Tooltip {...args}>
-      <Input value="Popover supports mouse enter!" style={{ width: 280 }} />
-    </Tooltip>
-    <span>|</span>
-    <Tooltip {...args} enterable={false}>
-      <Input value="Popover does't support mouse enter!" style={{ width: 280 }} />
-    </Tooltip>
-  </>
-);
-
-export const Enterable = EnterableTemplate.bind({});
-Enterable.args = {
-  overlay,
-};
-
 const MultiLineTemplate: Story<TooltipProps> = (args) => (
   <div style={{ margin: '0px 10px' }}>
     <Tooltip {...args} placement="right">
-      <span className="tooltipSpan">多行</span>
+      <span className="tooltipSpan">多行展示</span>
     </Tooltip>
   </div>
 );
 export const MultiLine = MultiLineTemplate.bind({});
 MultiLine.args = {
   title: '这是一个很长的描述。这是一个很长的描述。这是一个很长的描述。这是一个很长的描述。这是一个很长的描述。',
-  tooltipLink: { name: '点击这里', link: 'www.growingio.com' },
   placement: 'right',
-  trigger: 'click',
+  trigger: 'hover',
 };
 
-export const Link = MultiLineTemplate.bind({});
+const LinkTemplate: Story<TooltipProps> = (args) => (
+  <div style={{ margin: '0px 10px' }}>
+    <Tooltip {...args} placement="right">
+      <span className="tooltipSpan">Link</span>
+    </Tooltip>
+  </div>
+);
+
+export const Link = LinkTemplate.bind({});
 Link.args = {
   title: '这是一个很长的描述。这是一个很长的描述。这是一个很长的描述。这是一个很长的描述。这是一个很长的描述。',
   tooltipLink: { name: '点击这里', link: 'www.growingio.com' },
@@ -266,27 +237,12 @@ export const Disabled = () => (
     </p>
 
     <Tooltip title="Button 被禁用了" placement="right">
-      <Button disabled>Disabled Button</Button>
+      <Button disabled>Disabled Button (Tooltip未设置disabled)</Button>
+    </Tooltip>
+    <br />
+    <br />
+    <Tooltip title="Button 被禁用了" placement="right" disabled>
+      <Button disabled>Disabled Button (Tooltip设置disabled)</Button>
     </Tooltip>
   </div>
-);
-
-export const Demo = () => (
-  <>
-    <Tooltip>
-      <PopConfirm
-        title={123 as any}
-        desc={321 as any}
-        trigger="click"
-        placement="top"
-        // onConfirm={this.handleSelect(item)}
-        // onCancel={this.handleConfirmCancel}
-        overlayStyle={{ zIndex: 1060 }}
-        okText="确认"
-        cancelText="取消"
-      >
-        删除
-      </PopConfirm>
-    </Tooltip>
-  </>
 );

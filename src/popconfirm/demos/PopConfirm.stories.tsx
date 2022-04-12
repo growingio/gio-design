@@ -108,7 +108,7 @@ Placement.args = {
 };
 
 const TriggerTemplate: Story<PopConfirmProps> = (args) => (
-  <div style={{ margin: '200px 200px' }}>
+  <div style={{ margin: '200px 150px' }}>
     <span style={{ marginRight: 20 }}>
       <PopConfirm {...args} trigger="hover" placement="top">
         <Input value="Touch Me!" style={{ width: 100 }} />
@@ -162,7 +162,14 @@ const ControlTemplate: Story<PopConfirmProps> = (args) => {
           <Button onClick={hide} style={{ marginRight: 50 }}>
             Hide Confirm
           </Button>
-          <PopConfirm {...args} visible={visible} placement="top" onVisibleChange={onVisibleChange}>
+          <PopConfirm
+            {...args}
+            visible={visible}
+            placement="top"
+            onVisibleChange={onVisibleChange}
+            onCancel={hide}
+            onConfirm={hide}
+          >
             <Input value="Show Confirm Me!" />
           </PopConfirm>
         </div>
@@ -176,7 +183,14 @@ const ControlTemplate: Story<PopConfirmProps> = (args) => {
           <Button onClick={hide2} style={{ marginRight: 50 }}>
             Hide Confirm
           </Button>
-          <PopConfirm {...args} visible={visible2} placement="top" onVisibleChange={onVisibleChange2}>
+          <PopConfirm
+            {...args}
+            visible={visible2}
+            placement="top"
+            onVisibleChange={onVisibleChange2}
+            onCancel={hide2}
+            onConfirm={hide2}
+          >
             <Input value="Show Confirm Me!" />
           </PopConfirm>
         </div>
@@ -205,32 +219,19 @@ Description.args = {
   placement: 'topLeft',
 };
 
-// const DefaultTemplate: Story<PopConfirmProps> = (args) => (
-//   <>
-//     <PopConfirm {...args}>
-//       <Input value="Show Confirm with allowed Arrow" style={{ width: 280 }} />
-//     </PopConfirm>
-//     <span>|</span>
-//     <PopConfirm {...args} allowArrow={false}>
-//       <Input value="Show Confirm with rejected Arrow" style={{ width: 280 }} />
-//     </PopConfirm>
-//   </>
-// );
-// export const DefaultVisible = DefaultTemplate.bind({});
-// DefaultVisible.args = {
-//   defaultVisible: true,
-//   ...content,
-// };
-
 const DisabledTemplate: Story<PopConfirmProps> = (args) => (
   <>
     <PopConfirm {...args}>
-      <Input value="Disabled PopConfirm" style={{ width: 280 }} />
+      <Input value="Disabled PopConfirm (未设置disabled)" style={{ width: 280 }} />
+    </PopConfirm>
+    <br />
+    <br />
+    <PopConfirm {...args} disabled>
+      <Input value="Disabled PopConfirm （设置disabled={true}）" style={{ width: 320 }} />
     </PopConfirm>
   </>
 );
 export const Disabled = DisabledTemplate.bind({});
 Disabled.args = {
-  disabled: true,
   ...content,
 };
