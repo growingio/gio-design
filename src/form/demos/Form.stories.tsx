@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { RuleObject } from 'rc-field-form/lib/interface';
 import { DeleteOutlined } from '@gio-design/icons';
 import Form, { FormInstance } from '../index';
+import { Form as FormWithoutRef } from '../Form';
 import Docs from './FormPage';
 import { FormLayout, FormProps } from '../interface';
 import '../style';
@@ -15,7 +16,7 @@ import PriceInput from './PriceInput';
 
 export default {
   title: 'Upgraded/Form',
-  component: Form,
+  component: FormWithoutRef,
   subcomponents: {
     'Form.Item': Form.Item,
   },
@@ -369,7 +370,7 @@ export const CustomizedFormControls = () => {
   );
 };
 
-// reset form fields when modal is form, closed
+// 模态框关闭时重置表单
 const useResetFormOnCloseModal = ({ form, visible }: { form: FormInstance; visible: boolean }) => {
   const prevVisibleRef = useRef<boolean>();
   useEffect(() => {
@@ -404,9 +405,9 @@ export const MultipleForm = () => {
         }
       }}
     >
-      <Form name="todoForm" colon>
-        <Form.Item name="title" label="Todo Title">
-          <Input style={{ width: 300 }} autoComplete="off" />
+      <Form name="todoForm" colon style={{ width: 400 }}>
+        <Form.Item name="title" label="Todo Title" required rules={[{ required: true, message: '请输入 Todo 标题' }]}>
+          <Input style={{ width: '100%' }} autoComplete="off" />
         </Form.Item>
         <Form.Item label="Steps">
           {(form) => {
@@ -426,8 +427,13 @@ export const MultipleForm = () => {
           }}
         </Form.Item>
         <Form.Item>
-          <Button htmlType="button" type="secondary" onClick={() => setModalVisible(true)}>
+          <Button htmlType="button" type="secondary" style={{ width: '100%' }} onClick={() => setModalVisible(true)}>
             Add Step
+          </Button>
+        </Form.Item>
+        <Form.Item>
+          <Button htmlType="submit" type="primary" style={{ width: '100%' }}>
+            Submit
           </Button>
         </Form.Item>
       </Form>
@@ -440,7 +446,7 @@ export const MultipleForm = () => {
         }}
       >
         <Form name="stepsForm" form={stepsForm}>
-          <Form.Item name="stepName" labelWidth="0px">
+          <Form.Item name="stepName" labelWidth="0px" required rules={[{ required: true, message: '请输入步骤' }]}>
             <Input style={{ width: '100%' }} placeholder="Enter Step" autoComplete="off" />
           </Form.Item>
         </Form>
@@ -451,12 +457,36 @@ export const MultipleForm = () => {
 
 export const DynamicForm = () => (
   <Form name="todoForm" style={{ width: '500px' }}>
-    <Form.List name="todoList">
-      {(fields, { add, remove }) => (
+    <Form.List
+      name="todoList"
+      rules={[
+        {
+          validator: async (_, todoList) => {
+            if (!todoList || todoList.length < 2) {
+              return Promise.reject(new Error('至少有两条数据'));
+            }
+            return Promise.resolve();
+          },
+        },
+      ]}
+    >
+      {(fields, { add, remove }, { errors }) => (
         <>
           {fields.map((field, index) => (
-            <Form.Item {...field}>
-              <Input style={{ width: '100%', marginRight: 8 }} placeholder="Place enter a todo" autoComplete="off" />
+            <div style={{ display: 'flex' }}>
+              <Form.Item
+                validateTrigger={['onChange', 'onBlur']}
+                rules={[
+                  {
+                    required: true,
+                    whitespace: true,
+                    message: '请输入内容',
+                  },
+                ]}
+                {...field}
+              >
+                <Input style={{ width: '324px', marginRight: 8 }} placeholder="Place enter a todo" autoComplete="off" />
+              </Form.Item>
               <Button.IconButton
                 type="text"
                 htmlType="button"
@@ -465,7 +495,7 @@ export const DynamicForm = () => (
               >
                 <DeleteOutlined />
               </Button.IconButton>
-            </Form.Item>
+            </div>
           ))}
           <Form.Item>
             <Button
@@ -477,8 +507,37 @@ export const DynamicForm = () => (
               Add Todo
             </Button>
           </Form.Item>
+          <Form.Item>
+            <div role="alert" style={{ color: 'var(--red-3, #ec134b)', fontSize: '12px' }}>
+              {errors}
+            </div>
+          </Form.Item>
         </>
       )}
     </Form.List>
+  </Form>
+);
+
+export const StaticValidate = () => (
+  <Form>
+    <Form.Item label="User Id" help="帮助信息">
+      <Input style={{ width: 300 }} />
+    </Form.Item>
+
+    <Form.Item label="Name" feedbackType="error" feedback="名称不能为空">
+      <Input style={{ width: 300 }} />
+    </Form.Item>
+
+    <Form.Item label="Password" feedbackType="warning" feedback="密码长度尽量大于 6 位">
+      <Input.Password style={{ width: 300 }} />
+    </Form.Item>
+
+    <Form.Item label="Email" feedbackType="validating" feedback="正在检测您的邮箱是否重复">
+      <Input style={{ width: 300 }} />
+    </Form.Item>
+
+    <Form.Item label="Email" feedbackType="success" feedback="验证成功">
+      <Input style={{ width: 300 }} />
+    </Form.Item>
   </Form>
 );

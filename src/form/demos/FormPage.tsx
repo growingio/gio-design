@@ -1,7 +1,8 @@
 import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
-import Form from '../index';
+import { Form as FormWithoutRef } from '../Form';
+import { Alert } from '../..';
 
 export default function FormPage() {
   const { formatMessage } = useIntl();
@@ -15,12 +16,17 @@ export default function FormPage() {
             'Form 表单用于组合和提供表单组件的结构（例如，输入框、复选框和单选按钮等表单元素）。Form 表单使诸如标签、提示和验证信息等元素被组合在一起，为用户创造一个一致的、干净的用户体验。',
         })}
       </Description>
-      <Description>
-        {formatMessage({
-          defaultMessage:
-            'Form 组件底层使用的是 [rc-field-form](https://github.com/react-component/field-form) 组件，更多详情介绍请查看该库的说明。',
-        })}
-      </Description>
+      <Alert
+        style={{ margin: '0 0 38px' }}
+        message={
+          <Description>
+            {formatMessage({
+              defaultMessage:
+                'Form 组件底层使用的是 [rc-field-form](https://github.com/react-component/field-form) 组件，更多详情介绍请查看该库的说明。',
+            })}
+          </Description>
+        }
+      />
 
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
 
@@ -128,8 +134,13 @@ export default function FormPage() {
         <Story id="upgraded-form--dynamic-form" />
       </Canvas>
 
+      <Subheading>{formatMessage({ defaultMessage: '自定义校验' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-form--static-validate" />
+      </Canvas>
+
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
-      <ArgsTable of={Form} />
+      <ArgsTable of={FormWithoutRef} />
     </>
   );
 }
