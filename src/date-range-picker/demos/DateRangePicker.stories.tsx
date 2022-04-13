@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
+import { DownOutlined, FoldOutlined } from '@gio-design/icons';
 import { format,isBefore, startOfToday, subMonths } from 'date-fns';
 import { DownOutlined, FoldOutlined } from '@gio-design/icons';
 import Docs from './DateRangePickerPage';
