@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useContext } from 'react';
 import { DeleteOutlined } from '@gio-design/icons';
-import PropertySelector, { PropertyValue } from '../../../../property-selector';
+import PropertySelector, { PropertyValue } from '../../property-selector';
 import FilterCondition from './FilterCondition';
 import './index.less';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue, ListValue } from '../../../interfaces';

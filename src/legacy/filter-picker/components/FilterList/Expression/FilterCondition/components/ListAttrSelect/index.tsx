@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Input, Loading } from '../../../../../../../..';
-import List from '../../../../../../../list-pro';
+import List from '../../../../../list-pro';
 import { FilterPickerContext } from '../../../../../../FilterPicker';
 import { attributeValue } from '../../interfaces';
 

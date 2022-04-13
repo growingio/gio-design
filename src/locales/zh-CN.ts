@@ -15,8 +15,8 @@ import filterPickerLocale from '../legacy/filter-picker/locales/zh-CN';
 import formLocale from '../form/locales/zh-CN';
 import listLocale from '../list/locales/zh-CN';
 import panelLocale from '../panel/locales/zh-CN';
-import basePicker from '../legacy/base-picker/locales/zh-CN';
-import propertyPickerLocale from '../legacy/property-selector/locales/zh-CN';
+import basePicker from '../legacy/filter-picker/components/property-selector/components/base-picker/locales/zh-CN';
+import propertyPickerLocale from '../legacy/filter-picker/components/property-selector/locales/zh-CN';
 import popConfirmLocale from '../popconfirm/locales/zh-CN';
 
 export const locale: Locale = {

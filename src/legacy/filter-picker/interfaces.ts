@@ -1,4 +1,4 @@
-import { PropertyPickerProps } from '../property-selector';
+import { PropertyPickerProps } from './components/property-selector';
 
 export interface FilterPickerProps extends Pick<PropertyPickerProps, 'fetchDetailData'> {
   children?: any;
