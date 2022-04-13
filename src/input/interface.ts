@@ -13,6 +13,9 @@ export interface BaseInputProps
    * @default "normal"
    */
   size?: InputSize;
+  /**
+   * Input 的前缀图标
+   */
   prefix?: React.ReactNode;
 
   prefixCls?: string;
@@ -26,7 +29,7 @@ export interface BaseInputProps
    */
   onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   /**
-   * inputRef
+   * input 标签的 [ref](https://reactjs.org/docs/refs-and-the-dom.html#gatsby-focus-wrapper)
    */
   inputRef?: React.Ref<HTMLInputElement>;
 }
@@ -36,33 +39,13 @@ export interface InputProps extends Omit<BaseInputProps, 'onChange'> {
    * 修改值时触发的回调函数
    */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onPressEnter?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-
-  allowClear?: boolean;
-
-  forwardRef?: React.MutableRefObject<HTMLInputElement | null> | ((instance: HTMLInputElement | null) => void) | null;
 }
 
-export interface PasswordProps extends Omit<BaseInputProps, 'type'> {
-  forwardRef?: React.MutableRefObject<HTMLInputElement | null> | ((instance: HTMLInputElement | null) => void) | null;
-}
+export type PasswordProps = Omit<BaseInputProps, 'type'>;
 
-export interface InputNumberProps extends Omit<BaseInputProps, 'type'> {
-  forwardRef?: React.MutableRefObject<HTMLInputElement | null> | ((instance: HTMLInputElement | null) => void) | null;
-}
+export type InputNumberProps = Omit<BaseInputProps, 'type'>;
 
 export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  /**
-   * 是否可拖动大小
-   * @default false
-   */
-  resize?: boolean;
-  /**
-   * 是否根据内容自动调整高度
-   * @default false
-   */
-  autosize?: boolean;
-  allowClear?: boolean;
   /**
    * 外层容器 style，取代 wrapStyle 并忽略 inputStyle
    */
@@ -76,11 +59,6 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
    * input 的 style
    */
   inputStyle?: React.CSSProperties;
-
-  forwardRef?:
-    | React.RefObject<HTMLTextAreaElement>
-    | React.MutableRefObject<HTMLTextAreaElement>
-    | React.LegacyRef<HTMLTextAreaElement>;
 }
 
 export interface InputButtonProps
@@ -122,10 +100,14 @@ export interface InputButtonProps
    */
   value?: string;
 
+  /**
+   * 设置 Input Button 的最大宽度
+   */
   maxWidth?: number;
 
   /**
    * Input Button size
+   * @default normal
    */
   size?: InputSize;
 
@@ -135,7 +117,7 @@ export interface InputButtonProps
   placeholder?: string;
 
   /**
-   * 设置是否active
+   * 设置是否 active
    * @default false
    */
   active?: boolean;
@@ -145,14 +127,13 @@ export interface InputButtonProps
   onChange?: (value?: string) => void;
 
   /**
-   * 当Input Button的值修改后的方法
+   * onChange 的别名，作用跟 onChange 一样
    */
   onInputChange?: (value?: string) => void;
 
   /**
-   * 点击onClear回调
+   * 点击右侧清除按钮的回调函数
    *
    */
   onClear?: (e?: React.MouseEvent<Element, MouseEvent>) => void;
-  forwardRef?: React.MutableRefObject<HTMLInputElement | null> | ((instance: HTMLInputElement | null) => void) | null;
 }
