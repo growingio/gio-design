@@ -4,9 +4,9 @@ import { useLocale } from '@gio-design/utils';
 import FilterOverlay from './components/FilterOverlay/index';
 import { FilterPickerProps, FilterValueType, operationsOptionType } from './interfaces';
 import Button from '../../button'; // new
-import Dropdown from '../dropdown';
 import defaultLocaleTextObject from './locales/zh-CN';
 import './style';
+import { Popover } from '../..';
 
 export const defaultOperationsOption: operationsOptionType = {
   string: ['=', '!=', 'in', 'not in', 'like', 'not like', 'hasValue', 'noValue'],
@@ -42,7 +42,7 @@ const FilterPicker = (props: FilterPickerProps) => {
     hasVisible = false,
     visible,
     onVisibleChange,
-    placement = 'bottomRight',
+    placement = 'bottomLeft',
     disabled,
     ...rest
   } = props;
@@ -68,11 +68,11 @@ const FilterPicker = (props: FilterPickerProps) => {
     <FilterPickerContext.Provider
       value={{ fetchDetailData, textObject, operationsOption: { ...defaultOperationsOption, ...operationsOption } }}
     >
-      <Dropdown
+      <Popover
         visible={hasVisible ? visible : localVisible}
         trigger={['click']}
         onVisibleChange={visibleChange}
-        overlay={
+        content={
           <FilterOverlay
             onCancel={cancel}
             onSubmit={submit}
@@ -85,8 +85,8 @@ const FilterPicker = (props: FilterPickerProps) => {
           />
         }
         placement={placement}
-        getTooltipContainer={getTooltipContainer}
-        destroyTooltipOnHide
+        getContainer={getTooltipContainer}
+        distoryOnHide
         disabled={disabled}
       >
         {children || (
@@ -94,7 +94,7 @@ const FilterPicker = (props: FilterPickerProps) => {
             <FilterOutlined size="14px" />
           </Button.IconButton>
         )}
-      </Dropdown>
+      </Popover>
     </FilterPickerContext.Provider>
   );
 };

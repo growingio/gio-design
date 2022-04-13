@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import FilterPicker from '.';
 import { FilterPickerProps, FilterValue } from './interfaces';
-import { PropertyValue } from '../property-selector';
+import { PropertyValue } from './components/property-selector';
 import './style';
-import insightDimensions from '../property-selector/demos/insightDimensions';
+import insightDimensions from './components/property-selector/demos/insightDimensions';
 
 export default {
   title: 'Pro/FilterPicker',

@@ -1,0 +1,111 @@
+@import (reference) '../../../../../stylesheet/index.less';
+@import (reference) '../components/list/style/index.less';
+@import (reference) '../components/selector-pro/style/index.less';
+@import (reference) '../components/base-picker/style/index.less';
+
+@property-picker-prefix-cls-legacy: ~'@{component-prefix}-property-picker-legacy';
+@property-selector-prefix-cls-legacy: ~'@{component-prefix}-property-selector-legacy';
+
+.@{property-picker-prefix-cls-legacy} {
+  &.@{base-picker-prefix-cls-legacy} {
+    width: 366px;
+  }
+
+  .@{base-picker-prefix-cls-legacy}__content {
+    max-height: 424px;
+  }
+  .@{list-property-selector-prefix-cls-legacy}__item {
+    transition: all 0.3s ease;
+    &.selected,
+    &.active {
+      color: @palette-blue-5;
+      background-color: @palette-gray-1;
+    }
+    .item-icon {
+      margin-right: 12px;
+    }
+    .item-icon.indent {
+      text-indent: 22px;
+    }
+  }
+}
+.@{property-selector-prefix-cls-legacy} {
+  &.@{selector-prefix-cls-legacy} {
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  &-dropdown {
+    width: 366px;
+  }
+  .inner-input-wrap {
+    display: inline-block;
+    width: inherit;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    .icon {
+      margin-right: 12px;
+    }
+  }
+}
+.@{property-picker-prefix-cls-legacy}-card {
+  width: 320px;
+  white-space: normal;
+  &-title {
+    margin-right: 8px;
+    color: @palette-black-6;
+    font-weight: @weight-font-medium;
+    font-size: @size-font-14;
+    line-height: 22px;
+    vertical-align: middle;
+    word-break: break-all;
+  }
+  &-label {
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+  }
+  &-key {
+    margin-top: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  &-description {
+    word-break: break-all;
+  }
+  &__divide {
+    display: block;
+    margin: 16px 0;
+    border-bottom: 1px solid @palette-gray-3;
+  }
+  &__footer {
+    color: @palette-black-6;
+    font-weight: normal;
+    font-size: 12px;
+    font-family: @font-family-primary;
+    font-style: normal;
+    line-height: 22px;
+    &__icon {
+      margin-right: 8px;
+    }
+  }
+  .gio-loading-wrapper-loading {
+    & > .gio-loading {
+      position: absolute;
+      top: 50%;
+      z-index: 1;
+      width: 100%;
+      transform: translateY(-50%);
+    }
+  }
+}
+.property-card-overlay {
+  .gio-popover-inner-content {
+    margin: 0;
+  }
+}

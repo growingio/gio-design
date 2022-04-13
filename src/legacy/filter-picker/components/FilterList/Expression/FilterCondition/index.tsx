@@ -3,7 +3,7 @@ import { useLocale } from '@gio-design/utils';
 import parseValuesToText from './utils';
 import FilterAttrOverlay from './FilterAttrOverlay';
 import { attributeValue, FilterValueType, StringValue, NumberValue, DateValue } from './interfaces';
-import Selector from '../../../../../selector-pro';
+import Selector from '../../../property-selector/components/selector-pro';
 import { ListValue, operationsOptionType } from '../../../../interfaces';
 import Tooltip from '../../../../../../tooltip'; // new
 import { defaultOperationsOption, FilterPickerContext, TextObject } from '../../../../FilterPicker';
