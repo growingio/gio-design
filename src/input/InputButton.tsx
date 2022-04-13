@@ -48,6 +48,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
       handleOnClear?.(event);
       onInputChange?.('');
       setValue('');
+      event.stopPropagation();
     },
     [disabled, handleOnClear, onInputChange, setValue]
   );

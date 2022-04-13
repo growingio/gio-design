@@ -34,6 +34,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
     style,
     dataTestId = 'dataRangePicker',
     onClear,
+    onChange,
     ...restProps
   } = props;
 
@@ -86,7 +87,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
         placeholder={placeholder}
         disabled={disabled}
         allowClear={allowClear}
-        value={validValue(controlledValue) ? formatDates(controlledValue) : undefined}
+        value={validValue(controlledValue) ? formatDates(controlledValue,formatString) : undefined}
         size={size}
         suffix={suffix}
         className={className}
@@ -95,6 +96,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
         onClick={() => setVisible(!visible)}
         data-testid={dataTestId}
         onClear={handleClear}
+        onChange={onChange}
       />
     );
   }
