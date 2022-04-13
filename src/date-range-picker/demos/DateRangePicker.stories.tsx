@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
-import { isBefore, startOfToday, subMonths } from 'date-fns';
+import { format,isBefore, startOfToday, subMonths } from 'date-fns';
+import { DownOutlined, FoldOutlined } from '@gio-design/icons';
 import Docs from './DateRangePickerPage';
 import DateRangePicker, { DateRangePickerProps, StaticDateRangePickerProps } from '../index';
-
 import '../style';
+import '../../static-date-range-picker/style';
+import Button from '../../button';
 
 export default {
   title: 'Upgraded/DateRangePicker',
   component: DateRangePicker,
-  subcomponents: { 'DateRangePicker.Static': DateRangePicker.Static },
-
+  subcomponents: { StaticDateRangePicker: DateRangePicker.Static },
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=2672%3A30128',
+      url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GIO-Design?node-id=6979%3A96991',
       allowFullscreen: true,
     },
     docs: {
@@ -24,12 +25,8 @@ export default {
   },
 } as Meta;
 
-const defaultPlaceholder = '选择日期范围';
-
 const Template: Story<DateRangePickerProps> = (args) => (
-  <div style={{ width: 280 }}>
     <DateRangePicker {...args} />
-  </div>
 );
 
 const ControlledTemplate: Story<DateRangePickerProps> = (args) => {
@@ -39,25 +36,70 @@ const ControlledTemplate: Story<DateRangePickerProps> = (args) => {
   };
   return (
     <div style={{ width: 280 }}>
-      <DateRangePicker {...args} value={TimeRange} onSelect={onSelect} />
+      <DateRangePicker  value={TimeRange} onSelect={onSelect} trigger={
+        <Button type='secondary'>
+          {TimeRange[0] && format(TimeRange[0],'yyyy/MM/dd')}
+          -
+          {TimeRange[1] && format(TimeRange[1],'yyyy/MM/dd')}
+        </Button>
+      }
+      {...args}
+      />
     </div>
   );
 };
 
-export const ControlledBasic = ControlledTemplate.bind({});
+export const CustomTrigger = ControlledTemplate.bind({});
 
-export const Basic = Template.bind({});
-Basic.args = {
-  placeholder: defaultPlaceholder,
-  onSelect: action('selected:'),
-  onClear: action('onClear:'),
-  allowClear: true,
+export const Default = ControlledTemplate.bind({});
+Default.args = {
+    placeholder:'选择日期范围',
+    trigger:null,
+    format:"yyyy/MM/dd",
+    disabled:false,
+    size:'normal',
 };
 
-export const DisbaledDate = Template.bind({});
-DisbaledDate.args = {
-  placeholder: defaultPlaceholder,
+export const Format = Template.bind({})
+Format.args={
+  defaultValue: [new Date(), new Date()],
+  format:'yyyy--MM--dd'
+}
+
+export const PrefixAndSuffix = Template.bind({});
+PrefixAndSuffix.args = {
+  defaultValue: [new Date(), new Date()],
+  prefix: <FoldOutlined />,
+  suffix: <DownOutlined />
+};
+
+export const OnSelectAndOnClose = Template.bind({});
+OnSelectAndOnClose.args = {
+  allowClear:'true',
+  onSelect:action('onSelect'),
+  onChange:action('onChange'),
+  onClear: action('onClear'),
+};
+
+export const AllowClear = Template.bind({});
+AllowClear.args = {
+  allowClear:true,
+  onClear: () => {
+    action('onClear')
+  },
+};
+
+export const Size = Template.bind({});
+Size.args = {
+  defaultValue:[new Date(), new Date()],
+  size:'small'
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  placeholder:'选择器Disabled',
   onSelect: action('selected:'),
+  disabled:true,
   disabledDate: (current: Date) => current.getTime() > new Date().getTime(),
 };
 
@@ -73,7 +115,7 @@ StaticDisabledDate.args = {
   disabledDate: (date: Date) => isBefore(date, startOfToday()),
 };
 
-export const StaticDefaultViewDates = StaticTemplate.bind({});
-StaticDefaultViewDates.args = {
+export const StaticViewDates = StaticTemplate.bind({});
+StaticViewDates.args = {
   defaultViewDates: [subMonths(startOfToday(), 1), startOfToday()],
 };
