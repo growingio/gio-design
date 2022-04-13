@@ -75,6 +75,9 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
       if (opValues[0] === ' ' && type !== 'list') {
         return operation === '!=' ? 'hasValue' : 'noValue';
       }
+      if (type === 'list' && opValues.length <= 0) {
+        return '' as typeof operationValue;
+      }
       return operation;
     },
     []
