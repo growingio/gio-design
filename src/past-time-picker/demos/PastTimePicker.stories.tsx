@@ -29,8 +29,8 @@ export const Quick = Template.bind({});
 Quick.args = {
   value: 'day:8,1',
 };
-export const FilterData = Template.bind({});
-FilterData.args={
+export const QuickOptionsFilter = Template.bind({});
+QuickOptionsFilter.args={
   quickOptionsFilter:(s: { value: string; }) =>
     ['day:2,1', 'day:8,1', 'day:15,1', 'day:31,1'].includes(
       s.value,

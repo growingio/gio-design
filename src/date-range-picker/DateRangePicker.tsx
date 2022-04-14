@@ -34,7 +34,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
     style,
     dataTestId = 'dataRangePicker',
     onClear,
-    onChange,
+    PopoverProps,
     ...restProps
   } = props;
 
@@ -74,6 +74,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
       onSelect={handleOnSelect}
       value={controlledValue as [Date, Date]}
       disabledDate={disabledDate}
+      {...restProps}
     />
   );
 
@@ -96,7 +97,6 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
         onClick={() => setVisible(!visible)}
         data-testid={dataTestId}
         onClear={handleClear}
-        onChange={onChange}
       />
     );
   }
@@ -111,7 +111,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
       overlayClassName={overlayCls}
       onVisibleChange={handleVisibleChange}
       data-testid="dataRangePicker"
-      {...restProps}
+      {...PopoverProps}
     >
       {renderTrigger()}
     </Popover>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
 import { Figma } from 'storybook-addon-designs/esm/blocks';
-import DataPicker from '../Picker';
+import DataPicker from '../DatePicker';
 
 export default function DataPickerPage() {
   const { formatMessage } = useIntl();
@@ -84,19 +84,10 @@ export default function DataPickerPage() {
       <Canvas>
         <Story id="upgraded-datepicker--prefix-and-suffix" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '大小切换' })}</Subheading>
-      <Description>
-        {formatMessage({
-          defaultMessage: '`size`属性设置inputButton大小，`small` 30px `normal` 36px',
-        })}
-      </Description>
-      <Canvas>
-        <Story id="upgraded-datepicker--size" />
-      </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '事件触发方式' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '`onSelect`选中日期后触发，`onClose` 在allowClear为true时，清空选择框触发， `onChange` 在影响inputButton的Value后触发，详情可看Actions执行顺序',
+          defaultMessage: '`onSelect`选中日期后触发，`onClose` 在allowClear为true时，清空选择框触发',
         })}
       </Description>
       <Canvas>

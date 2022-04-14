@@ -86,6 +86,7 @@ OnSelectAndOnClose.args = {
   onSelect:action('onSelect'),
   onChange:action('onChange'),
   onClear: action('onClear'),
+  onPanelChange: action('onPanelChange'),
 };
 
 const CustomizeTriggerTemplate: Story<DatePickerProps> = (args) => {
@@ -105,7 +106,9 @@ const CustomizeTriggerTemplate: Story<DatePickerProps> = (args) => {
         </Button>
       }
       onSelect={onSelect}
-      onChange={onChange}
+      InputButtonProps={
+        {onChange,}
+      }
       {...args}
     />
   );

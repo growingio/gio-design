@@ -41,14 +41,14 @@ export default function DatePickerPage() {
       <Canvas>
         <Story id="upgraded-pasttimepicker--default" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '常用时间' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '过滤常用时间' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '常用时间包含用户常用的时间段快速选择，可以通过`quickOptionsFilter`参数过滤需要的时间段',
+          defaultMessage: '常用时间包含用户常用的时间段快速选择，可以通过`quickOptionsFilter`参数过滤需要的时间段, `(e)=>[item].includes(e)`',
         })}
       </Description>
      <Canvas>
-        <Story id="upgraded-pasttimepicker--quick" />
+        <Story id="upgraded-pasttimepicker--quick-options-filter" />
       </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '从某日至今' })}</Subheading>
       <Description>
