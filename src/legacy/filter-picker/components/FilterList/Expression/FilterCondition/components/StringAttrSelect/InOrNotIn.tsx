@@ -5,29 +5,30 @@ import Loading from '../../../../../../../../loading'; // new
 import { attributeValue } from '../../interfaces';
 import { FilterPickerContext } from '../../../../../../FilterPicker';
 
-interface StringAttrSelectProps {
+interface InOrNotInProps {
   valueType: attributeValue;
   attrChange: (v: any) => void;
   curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any> | undefined;
   values: string[];
   exprKey: string;
   attrSelect: string;
+  visible?: boolean;
 }
 
-type checkOptionsItem = {
+type CheckOptionsItem = {
   value: string;
   label: string;
 };
 
 let timer: any = null;
 
-function StringAttrSelect(props: StringAttrSelectProps) {
+function InOrNotIn(props: InOrNotInProps) {
   const { textObject: t } = useContext(FilterPickerContext);
   const { valueType, curryDimensionValueRequest, attrChange, values = [], exprKey, attrSelect } = props;
   const [inputValue, setInputValue] = useState<string>('');
   const [checkValue, setCheckValue] = useState<string[]>(values);
   // check-options
-  const [checkOptions, setCheckOptions] = useState<checkOptionsItem[]>([]);
+  const [checkOptions, setCheckOptions] = useState<CheckOptionsItem[]>([]);
   // 存放本次自由输入的值
   const [inputCheckList, setInputCheckList] = useState<string[]>([]);
   // 副本，用来保存values的值，因为values里面包含一部分上次自由输入的值
@@ -98,7 +99,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     setInputValue(v.target.value);
   };
 
-  const changeCheckValue = (checkedValue: checkOptionsItem) => {
+  const changeCheckValue = (checkedValue: CheckOptionsItem) => {
     if (!checkValue.includes(checkedValue.value)) {
       setCheckValue([...checkValue, checkedValue.value]);
       attrChange([...checkValue, checkedValue.value]);
@@ -153,4 +154,4 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   );
 }
 
-export default StringAttrSelect;
+export default InOrNotIn;

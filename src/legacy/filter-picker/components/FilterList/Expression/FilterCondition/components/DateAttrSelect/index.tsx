@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import moment, { Moment } from 'moment';
 import RelativeCurrent from './components/RelativeCurrent';
 import RelativeBetween from './components/RelativeBetween';
@@ -6,15 +6,39 @@ import IncludeToday from './components/IncludeToday';
 import DatePicker from '../../../../../../../../date-picker'; // new
 import DateRangePicker from '../../../../../../../../date-range-picker'; // new
 import { NullableDate } from '../../../../../../../../date-range-picker/interfaces'; // new
+import { useCallbackOnShow } from '../../FilterAttrOverlay';
 
 interface DateAttrSelectProps {
   attrSelect: string;
   attrChange: (v: string[]) => void;
   values: string[];
   style?: React.CSSProperties;
+  visible?: boolean;
 }
+
+const checkInitValue = (attr: string, values: string[]) => {
+  if (!values.length) {
+    return true;
+  }
+  if (values[0] === ' ' || typeof values[0] !== 'string') {
+    return false;
+  }
+  const val = values[0];
+  if (attr.includes('relative') && attr !== 'relativeTime') {
+    const valueList = val.split(':')[1].split(',');
+    if (attr.includes('Current')) {
+      return !(valueList.includes('0') || valueList.length === 1);
+    }
+    return valueList.includes('0');
+  }
+  if (!Number.isNaN(Number(val))) {
+    return false;
+  }
+  return !val.includes('abs');
+};
+
 function DateAttrSelect(props: DateAttrSelectProps) {
-  const { attrSelect, attrChange, values, style } = props;
+  const { attrSelect, attrChange, values, style, visible } = props;
   const [time, setTime] = useState<Moment>(
     values?.[0] && parseFloat(values?.[0]).toString() !== 'NaN' ? moment(parseInt(values?.[0], 10)) : moment(Date.now())
   );
@@ -43,25 +67,7 @@ function DateAttrSelect(props: DateAttrSelectProps) {
     );
   }, [values]);
 
-  const checkInitValue = (attr: string, vals: string[]) => {
-    if (!vals.length) {
-      return true;
-    }
-    if (vals[0] === ' ' || typeof vals[0] !== 'string') {
-      return false;
-    }
-    const val = vals[0];
-    if (attr.includes('relative') && attr !== 'relativeTime') {
-      const valsList = val.split(':')[1].split(',');
-      if (attr.includes('Current')) {
-        return !(valsList.includes('0') || valsList.length === 1);
-      }
-      return valsList.includes('0');
-    }
-    return !val.includes('abs');
-  };
-
-  useEffect(() => {
+  const setValue = useCallback(() => {
     // values值的初始化
     if (attrSelect !== 'relativeTime' && (!values.length || checkInitValue(attrSelect, values))) {
       if (attrSelect.includes('relative')) {
@@ -85,6 +91,16 @@ function DateAttrSelect(props: DateAttrSelectProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attrSelect]);
+
+  useEffect(() => {
+    setValue();
+  }, [setValue]);
+
+  useCallbackOnShow(visible, () => {
+    if (checkInitValue(attrSelect, values)) {
+      setValue();
+    }
+  });
 
   const changeDate = (value: Date | null) => {
     const date = moment(value);

@@ -11,9 +11,10 @@ interface ListAttrSelectProps {
   values: string[];
   exprKey: string;
   attrSelect: string;
+  visible?: boolean;
 }
 
-type checkOptionsItem = {
+type CheckOptionsItem = {
   value: string;
   label: string;
 };
@@ -26,7 +27,7 @@ function ListAttrSelect(props: ListAttrSelectProps) {
   const [checkValue, setCheckValue] = useState<string[]>(values);
   const { textObject } = useContext(FilterPickerContext);
   // check-options
-  const [checkOptions, setCheckOptions] = useState<checkOptionsItem[]>([]);
+  const [checkOptions, setCheckOptions] = useState<CheckOptionsItem[]>([]);
   // 存放本次自由输入的值
   const [inputCheckList, setInputCheckList] = useState<string[]>([]);
   // 副本，用来保存values的值，因为values里面包含一部分上次自由输入的值
@@ -98,7 +99,7 @@ function ListAttrSelect(props: ListAttrSelectProps) {
     setInputValue(v.target.value);
   };
 
-  const changeCheckValue = (checkedValue: checkOptionsItem) => {
+  const changeCheckValue = (checkedValue: CheckOptionsItem) => {
     if (!checkValue.includes(checkedValue.value)) {
       setCheckValue([...checkValue, checkedValue.value]);
       attrChange([...checkValue, checkedValue.value]);

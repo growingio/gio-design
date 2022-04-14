@@ -97,6 +97,7 @@ function FilterCondition(props: FilterConditionProps) {
       exprKey={exprKey}
       operationsOption={{ ...defaultOperationsOption, ...operationsOption }}
       numType={numType}
+      visible={visible}
     />
   );
 

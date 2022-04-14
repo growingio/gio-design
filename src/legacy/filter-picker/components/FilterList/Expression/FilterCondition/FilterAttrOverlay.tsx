@@ -31,6 +31,7 @@ interface FilterAttrOverlayProps {
   exprKey: string;
   operationsOption?: operationsOptionType;
   numType?: 'positivedecimal' | 'decimal' | 'positiveInteger';
+  visible?: boolean;
 }
 
 function usePrevious<T>(value: T): T | undefined {
@@ -41,11 +42,34 @@ function usePrevious<T>(value: T): T | undefined {
   return ref.current;
 }
 
+// Popover 显示时调用传入的回调函数
+export const useCallbackOnShow = (visible: boolean | undefined, callback?: () => void) => {
+  const prevVisible = usePrevious(visible);
+  useEffect(() => {
+    if (visible && !prevVisible && typeof callback === 'function') {
+      callback();
+    }
+  }, [visible, prevVisible, callback]);
+};
+
+// Popover 隐藏时调用传入的回调函数
+export const useCallbackOnHide: typeof useCallbackOnShow = (visible, callback) => useCallbackOnShow(!visible, callback);
+
 function FilterAttrOverlay(props: FilterAttrOverlayProps) {
   const { textObject: t } = useContext(FilterPickerContext);
   const selectOptions = useSelectOptions();
-  const { valueType, onSubmit, onCancel, op, curryDimensionValueRequest, values, exprKey, operationsOption, numType } =
-    props;
+  const {
+    valueType,
+    onSubmit,
+    onCancel,
+    op,
+    curryDimensionValueRequest,
+    values,
+    exprKey,
+    operationsOption,
+    numType,
+    visible,
+  } = props;
   const [operationValue, setOperationValue] = useState<StringValue | NumberValue | DateValue | ListValue>(op);
   const [attrValue, setAttrValue] = useState<string[]>(values);
   const [checked, setChecked] = useState<boolean>(valueType === 'date' && (op === '>=' || op === '<='));
@@ -83,16 +107,13 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
     []
   );
 
-  /**
-   * 切换数据类型的时候需要重置 attrValue
-   */
-  const previousValueType = usePrevious(valueType);
-  useEffect(() => {
-    if (previousValueType !== undefined && valueType !== previousValueType && isEmpty(values)) {
-      setAttrValue([]);
+  useCallbackOnHide(visible, () => setAttrValue([]));
+  useCallbackOnShow(visible, () => {
+    if (values && values.length) {
+      setAttrValue(values);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [previousValueType, valueType]);
+  });
+
   useEffect(() => {
     setOperationValue(getOperation(valueType, op, values));
   }, [getOperation, op, valueType, values]);
@@ -167,6 +188,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
             attrSelect={selectValue}
             attrChange={setAttrValue}
             values={attrValue}
+            visible={visible}
           />
         );
       case AttributeMap.string:
@@ -179,6 +201,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
             curryDimensionValueRequest={curryDimensionValueRequest}
             values={attrValue}
             exprKey={exprKey}
+            visible={visible}
           />
         );
       case AttributeMap.list:
@@ -190,6 +213,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
             curryDimensionValueRequest={curryDimensionValueRequest}
             values={attrValue.filter((item) => item !== ' ')}
             exprKey={exprKey}
+            visible={visible}
           />
         );
       default:
@@ -199,6 +223,7 @@ function FilterAttrOverlay(props: FilterAttrOverlayProps) {
             attrChange={setAttrValue}
             values={attrValue}
             type={numType || 'decimal'}
+            visible={visible}
           />
         );
     }

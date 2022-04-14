@@ -16,9 +16,10 @@ interface StringAttrSelectProps {
   curryDimensionValueRequest: (dimension: string, keyword: string) => Promise<any> | undefined;
   values: string[];
   exprKey: string;
+  visible?: boolean;
 }
 
-type listOptionsItem = {
+type ListOptionsItem = {
   value: string;
   label: string;
 };
@@ -29,7 +30,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
   const { textObject: t } = useContext(FilterPickerContext);
   const { attrSelect, valueType, curryDimensionValueRequest, attrChange, values = [], exprKey } = props;
   const [inputValue, setInputValue] = useState<string>(values.join(','));
-  const [listOptions, setListOptions] = useState<listOptionsItem[]>([]);
+  const [listOptions, setListOptions] = useState<ListOptionsItem[]>([]);
   const [listValue, setListValue] = useState<string>(values.join(','));
   const [loadingStatue, setLoadingStatue] = useState<boolean>(true);
   // let timer: number | any = null;
@@ -58,7 +59,7 @@ function StringAttrSelect(props: StringAttrSelectProps) {
     setInputValue(v.target.value);
   };
 
-  const changeListValue = (option: listOptionsItem) => {
+  const changeListValue = (option: ListOptionsItem) => {
     if (inputValue === option.label) {
       setInputValue('');
       setListValue('');
