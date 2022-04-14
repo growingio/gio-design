@@ -1,5 +1,5 @@
 import { DrawerProps } from './interfaces';
-import Drawer from './drawer';
+import Drawer from './Drawer';
 
 export { DrawerProps };
 export default Drawer;

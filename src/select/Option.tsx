@@ -1,5 +1,5 @@
 import React from 'react';
-import { OptionProps } from '../list/interfance';
+import { OptionProps } from '../list/interface';
 
 export interface OptionFC extends React.FC<OptionProps> {
   isSelectOption: boolean;

@@ -43,7 +43,7 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = (props: AvatarGroupProps)
   }
 
   return (
-    <div className={classString} style={style} test-dataId="avatarGroup" {...restProps}>
+    <div className={classString} style={style} data-testid="avatarGroup" {...restProps}>
       {children}
     </div>
   );

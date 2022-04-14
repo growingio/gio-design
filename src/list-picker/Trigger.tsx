@@ -3,7 +3,7 @@ import Input from '../input';
 import { ListContext } from '../list/context';
 import { collectOptions } from '../list/util';
 import WithRef from '../utils/withRef';
-import { TriggerProps } from './interfance';
+import { TriggerProps } from './interface';
 
 const Trigger: React.ForwardRefRenderFunction<HTMLInputElement, TriggerProps> = (props, ref) => {
   const {

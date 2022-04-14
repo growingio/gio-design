@@ -1,4 +1,4 @@
-import DatePicker from './Picker';
+import DatePicker from './DatePicker';
 import WithSubComponent from '../utils/withSubComponent';
 import StaticDatePicker from '../static-date-picker';
 

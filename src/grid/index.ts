@@ -1,8 +1,5 @@
-import Row from './row';
-import Col from './col';
-import Grid from './grid';
+import Grid from './Grid';
 
-export { GridProps, RowProps, ColProps } from './interface';
+export { GridProps } from './interface';
 
-export { Row, Col };
 export default Grid;

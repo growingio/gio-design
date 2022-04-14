@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Row, Col } from '../index';
-import { RowProps, ColProps } from '../interface';
+import Row, { RowProps } from '../../row';
+import Col, { ColProps } from '../../col';
+import Grid from '../Grid';
 import '../style/index.less';
 import '../../row/style';
 import '../../col/style';
@@ -9,7 +10,8 @@ import '../style/demo.stories.less';
 
 export default {
   title: 'upgraded/Grid',
-  component: Row,
+  component: Grid,
+  subcomponents: { Row, Col },
 } as Meta;
 
 const Template: Story<RowProps & ColProps> = (args) => {

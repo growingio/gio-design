@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { AppOutlined, MapChartOutlined, CalendarOutlined } from '@gio-design/icons';
-import Menu, { MenuItem, SubMenu } from '../index';
+import Menu from '../index';
 import { IMenuProps, IMenuItemProps, ISubMenuProps } from '../interface';
 import Docs from './MenuPage';
 import '../style';
@@ -10,7 +10,7 @@ import '../style/demo.stories.less';
 export default {
   title: 'upgraded/Menu',
   component: Menu,
-  subcomponents: { MenuItem, SubMenu },
+  subcomponents: { 'Menu.MenuItem': Menu.MenuItem, 'Menu.SubMenu': Menu.SubMenu, 'Menu.Divider': Menu.Divider },
   parameters: {
     docs: {
       page: Docs,
@@ -36,37 +36,37 @@ export const Vertical: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (arg
         defaultOpenKeys={[]}
         style={{ height: 300 }}
       >
-        <SubMenu
+        <Menu.SubMenu
           disabled={disabled}
           key="sub-1"
           title="功能名称-1"
           icon={<AppOutlined size="1em" />}
           expandIcon={expandIcon}
         >
-          <MenuItem key="sub-menu-1-1">功能名称-1-1</MenuItem>
-          <MenuItem key="sub-menu-1-2">功能名称-1-2</MenuItem>
-        </SubMenu>
-        <SubMenu
+          <Menu.MenuItem key="sub-menu-1-1">功能名称-1-1</Menu.MenuItem>
+          <Menu.MenuItem key="sub-menu-1-2">功能名称-1-2</Menu.MenuItem>
+        </Menu.SubMenu>
+        <Menu.SubMenu
           key="sub-2"
           title="功能名称-2功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1"
           icon={<MapChartOutlined size="1em" />}
         >
-          <MenuItem key="sub-menu-2-1">
+          <Menu.MenuItem key="sub-menu-2-1">
             功能名称-2-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1
-          </MenuItem>
-          <MenuItem key="sub-menu-2-2">功能名称-2-2</MenuItem>
-        </SubMenu>
-        <SubMenu key="sub-3" title="功能名称-3" icon={<AppOutlined size="1em" />}>
-          <MenuItem key="sub-menu-3-1">功能名称-3-1</MenuItem>
-          <MenuItem key="sub-menu-3-2">功能名称-3-2</MenuItem>
-        </SubMenu>
-        <SubMenu key="sub-4" title="功能名称-4" icon={<AppOutlined size="1em" />}>
-          <MenuItem key="sub-menu-4-1">功能名称-4-1</MenuItem>
-          <MenuItem key="sub-menu-4-2">功能名称-4-2</MenuItem>
-        </SubMenu>
-        <MenuItem key="sub-5" icon={<CalendarOutlined size="1em" />}>
+          </Menu.MenuItem>
+          <Menu.MenuItem key="sub-menu-2-2">功能名称-2-2</Menu.MenuItem>
+        </Menu.SubMenu>
+        <Menu.SubMenu key="sub-3" title="功能名称-3" icon={<AppOutlined size="1em" />}>
+          <Menu.MenuItem key="sub-menu-3-1">功能名称-3-1</Menu.MenuItem>
+          <Menu.MenuItem key="sub-menu-3-2">功能名称-3-2</Menu.MenuItem>
+        </Menu.SubMenu>
+        <Menu.SubMenu key="sub-4" title="功能名称-4" icon={<AppOutlined size="1em" />}>
+          <Menu.MenuItem key="sub-menu-4-1">功能名称-4-1</Menu.MenuItem>
+          <Menu.MenuItem key="sub-menu-4-2">功能名称-4-2</Menu.MenuItem>
+        </Menu.SubMenu>
+        <Menu.MenuItem key="sub-5" icon={<CalendarOutlined size="1em" />}>
           fdlksfdlksfdsffdlksfdsffdlksfdsffdlksfdsffdlksfdsffdsf
-        </MenuItem>
+        </Menu.MenuItem>
       </Menu>
     </div>
   );
@@ -88,13 +88,13 @@ export const Horizontal: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (a
 
   return (
     <Menu mode="horizontal" selectedKey={selectedKey} onClick={handleClick}>
-      <MenuItem key="menu-1">看板</MenuItem>
-      <MenuItem disabled={disabled} key="menu-2">
+      <Menu.MenuItem key="menu-1">看板</Menu.MenuItem>
+      <Menu.MenuItem disabled={disabled} key="menu-2">
         分析
-      </MenuItem>
-      <MenuItem key="menu-3">运营</MenuItem>
-      <MenuItem key="menu-4">用户</MenuItem>
-      <MenuItem key="menu-5">标签</MenuItem>
+      </Menu.MenuItem>
+      <Menu.MenuItem key="menu-3">运营</Menu.MenuItem>
+      <Menu.MenuItem key="menu-4">用户</Menu.MenuItem>
+      <Menu.MenuItem key="menu-5">标签</Menu.MenuItem>
     </Menu>
   );
 };

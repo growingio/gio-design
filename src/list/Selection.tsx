@@ -3,7 +3,7 @@ import React, { useContext, useMemo } from 'react';
 import { isEmpty, isFunction } from 'lodash';
 import toArray from 'rc-util/lib/Children/toArray';
 import { usePrefixCls } from '@gio-design/utils';
-import { ListProps, SelectionProps, OptionProps } from './interfance';
+import { ListProps, SelectionProps, OptionProps } from './interface';
 import { PREFIX } from './constants';
 import { getFlattenOptions } from '../list-picker/util';
 import List from './List';

@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { LoadingTwoTone } from '@gio-design/icons';
 import Loading from '../index';
 import Button from '../../button';
-import Tabs, { Tab } from '../../tabs';
+import Tabs from '../../tabs';
 import { LoadingProps } from '../interface';
 import '../style';
 
@@ -21,30 +21,30 @@ export default {
 
 const defaultTabs = (
   <Tabs>
-    <Tab label="我的" key="1">
+    <Tabs.Tab label="我的" value="1">
       <ul>
         <li>Event 1</li>
         <li>Event 1</li>
         <li>Event 1</li>
         <li>Event 1</li>
       </ul>
-    </Tab>
-    <Tab label="全部" key="2">
+    </Tabs.Tab>
+    <Tabs.Tab label="全部" value="2">
       <ul>
         <li>Event 2</li>
         <li>Event 2</li>
         <li>Event 2</li>
         <li>Event 2</li>
       </ul>
-    </Tab>
-    <Tab label="共享" key="3">
+    </Tabs.Tab>
+    <Tabs.Tab label="共享" value="3">
       <ul>
         <li>Event 3</li>
         <li>Event 3</li>
         <li>Event 3</li>
         <li>Event 3</li>
       </ul>
-    </Tab>
+    </Tabs.Tab>
   </Tabs>
 );
 

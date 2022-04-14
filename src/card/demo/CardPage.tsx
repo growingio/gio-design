@@ -49,16 +49,16 @@ export default function CardPage() {
       <Description>
         {formatMessage({
           defaultMessage:
-            '默认情况下卡片只有在鼠标hover时有一个阴影，可以设置boxShadow=true 来给Card添加一个默认阴影效果',
+            '默认情况下卡片只有在鼠标 hover 时有一个阴影，可以设置 boxShadow=true 来给 Card 添加一个默认阴影效果',
         })}
       </Description>
       <Canvas>
         <Story id="upgraded-card--box-shadow" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '不展示hover阴影' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '不展示 hover 阴影' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '默认情况下卡片在鼠标hover时有一个阴影变化，可以设置clickable=true 来去除卡片的阴影效果',
+          defaultMessage: '默认情况下卡片在鼠标hover时有一个阴影变化，可以设置 clickable=true 来去除卡片的阴影效果',
         })}
       </Description>
       <Canvas>

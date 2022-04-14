@@ -1,9 +1,9 @@
 import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
-import InnerToggle from '../Toggles';
+import Toggle from '../Toggle';
 
-export default function ListPage() {
+export default function TogglePage() {
   const { formatMessage } = useIntl();
 
   return (
@@ -45,7 +45,7 @@ export default function ListPage() {
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
-      <ArgsTable of={InnerToggle} />
+      <ArgsTable of={Toggle} />
     </>
   );
 }

@@ -9,12 +9,13 @@ import Toast from '../../toast';
 import DatePicker, { DatePickerProps } from '../index';
 
 import '../style';
-import '../../static-date-picker/style';
+import '../../button/style';
+import '../../toast/style';
 
 export default {
   title: 'Upgraded/DatePicker',
   component: DatePicker,
-  subcomponents: { DatePickerStatic: DatePicker.Static },
+  subcomponents: { 'DatePicker.Static': DatePicker.Static },
   decorators: [withDesign],
   parameters: {
     design: {

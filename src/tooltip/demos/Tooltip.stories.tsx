@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Tooltip from '../Tooltip';
 import { TooltipProps } from '../interface';
 import Input from '../../input';
-import { Button } from '../../button';
+import Button from '../../button';
 import '../style';
 import '../../popover/demos/demo.stories.less';
 import Docs from './TooltipPage';

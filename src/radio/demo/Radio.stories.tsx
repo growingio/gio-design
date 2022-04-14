@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { withDesign } from 'storybook-addon-designs';
-import Radio, { RadioGroup } from '../index';
+import Radio from '../index';
 import { IRadioProps, IRadioGroupProps } from '../interface';
 import Docs from './RadioPage';
 import '../style';
@@ -10,7 +10,7 @@ import '../style';
 export default {
   title: 'Upgraded/Radio',
   component: Radio,
-  subcomponents: { RadioGroup },
+  subcomponents: { 'Radio.Group': Radio.Group },
   decorators: [withDesign],
   parameters: {
     design: {
@@ -151,7 +151,7 @@ Group.args = {
   disabled: false,
   layout: 'horizontal',
   defaultValue: 'inOptionA',
-  onChange: (e) => action(e),
+  onChange: action('onChange'),
   options: [
     {
       label: 'inOptionA',
@@ -167,7 +167,7 @@ Group.args = {
       disabled: true,
     },
   ],
-};
+} as Partial<IRadioGroupProps>;
 
 const JSXTemplateGroup: Story<IRadioGroupProps> = (args) => {
   const tabs = [
@@ -180,11 +180,11 @@ const JSXTemplateGroup: Story<IRadioGroupProps> = (args) => {
   };
   return (
     <>
-      <RadioGroup {...args} value={selectedValue} onChange={onChange}>
+      <Radio.Group {...args} value={selectedValue} onChange={onChange}>
         {tabs.map((t) => (
           <Radio value={t.value}>{t.value}</Radio>
         ))}
-      </RadioGroup>
+      </Radio.Group>
     </>
   );
 };

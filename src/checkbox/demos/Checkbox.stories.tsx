@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Checkbox, { CheckboxGroup } from '../index';
+import Checkbox from '../index';
 import { CheckboxProps } from '../interface';
 import '../style';
 import Docs from './CheckboxPage';
@@ -9,7 +9,7 @@ import Docs from './CheckboxPage';
 export default {
   title: 'Upgraded/Checkbox',
   component: Checkbox,
-  subcomponents: { 'Checkbox.Group': CheckboxGroup },
+  subcomponents: { 'Checkbox.Group': Checkbox.Group },
   parameters: {
     design: {
       type: 'figma',

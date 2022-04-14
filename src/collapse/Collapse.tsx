@@ -11,7 +11,6 @@ import { WithCommonProps } from '../utils/interfaces';
 
 export const Collapse = WithRef<HTMLDivElement, WithCommonProps<CollapseProps>>((props, ref) => {
   const {
-    destoryOnHide: legacyDestroyOnHide,
     destroyOnHide,
     disabled,
     children,
@@ -38,7 +37,7 @@ export const Collapse = WithRef<HTMLDivElement, WithCommonProps<CollapseProps>>(
       <RcCollapse
         prefixCls={prefixCls}
         expandIcon={renderExpandIcon}
-        destroyInactivePanel={legacyDestroyOnHide || destroyOnHide}
+        destroyInactivePanel={destroyOnHide}
         collapsible={disabled ? 'disabled' : undefined}
         className={classnames(className, {
           [`${prefixCls}-bordered`]: bordered,

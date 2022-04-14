@@ -7,7 +7,7 @@ import {
   BaseItemProps,
   CascaderItemProps,
   ModelType,
-} from './interfance';
+} from './interface';
 import List from './List';
 import Item from './Item';
 import Drag from './Drag';

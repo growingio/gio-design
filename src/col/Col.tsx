@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { isNumber } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
 import { ColProps } from './interface';
-import { RowContext } from './row';
+import { RowContext } from '../row';
 
 const Col = ({
   component: Component = 'div',

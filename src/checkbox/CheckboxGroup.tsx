@@ -108,4 +108,6 @@ const InternalCheckboxGroup: React.ForwardRefRenderFunction<HTMLDivElement, Chec
 
 const CheckboxGroup = WithRef<HTMLDivElement, CheckboxGroupProps<CheckboxValueType>>(InternalCheckboxGroup);
 
+CheckboxGroup.displayName = 'CheckboxGroup';
+
 export default React.memo(CheckboxGroup);

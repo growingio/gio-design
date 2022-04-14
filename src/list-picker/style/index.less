@@ -4,8 +4,7 @@
 @import (reference) '../../list/style/index.less';
 
 @list-picker-prefix-cls: ~'@{component-prefix}-list-picker';
-@list-picker-selection-prefix-cls: ~'@{component-prefix}-list--selection';
-@tabs-tabpanel-prefix-cls: ~'@{component-prefix}-tabs-tabpanel';
+@list-picker-selection-prefix-cls: ~'@{list-prefix-cls}--selection';
 
 .@{list-picker-prefix-cls} {
   box-sizing: border-box;
@@ -49,33 +48,28 @@
     }
   }
 
-  & .@{tabs-tabpanel-prefix-cls} {
-    & .@{list-picker-selection-prefix-cls} {
-      margin: 0;
-      padding: 0;
-      .scrollbar();
-    }
-    & .@{list-prefix-cls} {
-      margin: 0;
-      padding: 6px;
-      .scrollbar();
-    }
-  }
-
   & .@{tabs-prefix-cls}-tabpanel {
     & > .@{list-prefix-cls} {
       height: auto;
       max-height: 360px;
       padding-top: 8px;
     }
+
+    & .@{list-prefix-cls} {
+      margin: 0;
+      padding: 6px;
+      .scrollbar();
+    }
+
     .@{list-picker-selection-prefix-cls} {
       height: auto;
       max-height: 360px;
+      margin: 0;
+      padding: 0;
       padding-top: 8px;
       .scrollbar(@x: hidden, @y: initial);
       & .@{list-prefix-cls} {
         max-height: none;
-        // padding: 0;
       }
     }
   }

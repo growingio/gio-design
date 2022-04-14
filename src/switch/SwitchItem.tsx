@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 
 import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
-import SwitchGroupContext from './context';
-import { ISwitchProps } from './interface';
+import SwitchContext from './context';
+import { SwitchItemProps } from './interface';
 import WithRef from '../utils/withRef';
 
-const InnerSwitchItem: React.ForwardRefRenderFunction<HTMLInputElement, ISwitchProps> = (props, ref) => {
+const InnerSwitchItem: React.ForwardRefRenderFunction<HTMLInputElement, SwitchItemProps> = (props, ref) => {
   const { prefixCls: customPrefixCls, className, style, children, defaultChecked, prefix, ...restProps } = props;
 
-  const groupContext = useContext(SwitchGroupContext);
+  const groupContext = useContext(SwitchContext);
   const prefixCls = usePrefixCls('switch', customPrefixCls);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,8 +57,8 @@ const InnerSwitchItem: React.ForwardRefRenderFunction<HTMLInputElement, ISwitchP
   );
 };
 
-const SwitchItem = WithRef<HTMLInputElement, ISwitchProps>(InnerSwitchItem);
+const SwitchItem = WithRef<HTMLInputElement, SwitchItemProps>(InnerSwitchItem);
 
-SwitchItem.displayName = 'Switch';
+SwitchItem.displayName = 'SwitchItem';
 
 export default SwitchItem;

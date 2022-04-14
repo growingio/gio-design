@@ -5,7 +5,7 @@ import { usePrefixCls } from '@gio-design/utils';
 import { List, OptionProps } from '../list';
 import Popover from '../popover';
 import useControlledState from '../utils/hooks/useControlledState';
-import { CascaderProps } from './interfance';
+import { CascaderProps } from './interface';
 import Trigger from './Trigger';
 import { ListContext } from '../list/context';
 import useChacheOptions from '../list/hooks/useCacheOptions';
@@ -54,11 +54,11 @@ export const Cascader: React.FC<CascaderProps> = ({
   const [title, setTitle] = useState('');
   const cache = useChacheOptions();
 
-  const setOptions = useCallback((opts: OptionProps[]) => isArray(opts)?cache.setOptions(opts):null,[cache]);
+  const setOptions = useCallback((opts: OptionProps[]) => (isArray(opts) ? cache.setOptions(opts) : null), [cache]);
 
   useEffect(() => {
     setOptions(options);
-  },[options, setOptions])
+  }, [options, setOptions]);
 
   useEffect(() => {
     setTitle(cache.getLabelByValue(value, separator, valueSeparator, 'cascader'));

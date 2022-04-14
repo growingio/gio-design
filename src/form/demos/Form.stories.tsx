@@ -11,7 +11,7 @@ import '../style';
 import '../../input/style';
 import '../../button/style';
 import { Button, Checkbox, Divider, Input, Modal, SearchBar, Toast } from '../../index';
-import SwitchGroup from '../../switchGroup/Group';
+import Switch from '../../switch';
 import PriceInput from './PriceInput';
 
 export default {
@@ -186,7 +186,7 @@ export const LayoutForm = () => {
         onValuesChange={handleValuesChange}
       >
         <Form.Item name="layout" label="Layout">
-          <SwitchGroup
+          <Switch
             options={[
               { label: 'Horizontal', value: 'horizontal' },
               { label: 'Vertical', value: 'vertical' },

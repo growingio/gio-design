@@ -1,9 +1,9 @@
 import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
-import Switch from '../SwitchItem';
+import Switch from '..';
 
-export default function ListPage() {
+export default function SwitchPage() {
   const { formatMessage } = useIntl();
 
   return (

@@ -3,10 +3,7 @@ export interface CollapseProps {
   defaultActiveKey?: React.Key | React.Key[];
   /** 手风琴效果 */
   accordion?: boolean;
-  /**
-   * @deprecated
-   */
-  destoryOnHide?: boolean;
+
   destroyOnHide?: boolean;
   onChange?: (key: React.Key | React.Key[]) => void;
   style?: React.CSSProperties;

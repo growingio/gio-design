@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash';
 import classNames from 'classnames';
 import { RightFilled } from '@gio-design/icons';
 import Popover from '../../popover';
-import { CascaderItemProps, OptionProps } from '../interfance';
+import { CascaderItemProps, OptionProps } from '../interface';
 import BaseItem from './baseItem';
 import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import WithRef from '../../utils/withRef';
@@ -17,12 +17,12 @@ const CascaderItem: React.ForwardRefRenderFunction<
   HTMLLIElement,
   CascaderItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>
 > & { isItem?: boolean } = (
-  { label, value, children, childrens = [], disabled, onClick: propsOnClick, strategy = 'fixed', ...rest },
+  { label, value, children, items: childrens = [], disabled, onClick: propsOnClick, strategy = 'fixed', ...rest },
   ref?
 ) => {
   const prefixCls = usePrefixCls('cascader');
   const popoverClassName = `${prefixCls}--content`;
-  const [hovered,setHovered] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   /** context */
   const context = useContext(ListContext);
@@ -65,7 +65,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
                 {...child}
                 label={child?.label}
                 value={child?.value}
-                childrens={child?.childrens as CascaderItemProps[]}
+                items={child?.items as CascaderItemProps[]}
               />
             ))}
           </List>
@@ -97,19 +97,19 @@ const CascaderItem: React.ForwardRefRenderFunction<
         <div className={prefixClsItem}>
           <TriggerContext.Provider value={popoverContext}>
             <Popover
-                placement="rightTop"
-                onVisibleChange={(v) => setHovered(v)}
-                overlayClassName={popoverClassName}
-                // document click contains node
-                getContainer={() => document.body}
-                content={content()}
-                strategy={strategy}
-                distoryOnHide
-                delay={200}
-                offset={[0, 12]}
-              >
-                {element}
-              </Popover>
+              placement="rightTop"
+              onVisibleChange={(v) => setHovered(v)}
+              overlayClassName={popoverClassName}
+              // document click contains node
+              getContainer={() => document.body}
+              content={content()}
+              strategy={strategy}
+              destroyOnHide
+              delay={200}
+              offset={[0, 12]}
+            >
+              {element}
+            </Popover>
           </TriggerContext.Provider>
         </div>
       );

@@ -1,5 +1,4 @@
-import './index.less';
-import '../../static-date-picker/style'
-import '../../popover/style'
-import '../../button/style';
+import '../../static-date-picker/style';
+import '../../popover/style';
 import '../../input/style';
+import './index.less';

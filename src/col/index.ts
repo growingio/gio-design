@@ -1,4 +1,4 @@
-import { Col, ColProps } from '../grid';
+import Col from './Col';
 
-export { ColProps };
+export { ColProps } from './interface';
 export default Col;

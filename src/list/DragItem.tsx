@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { DragSourceMonitor, DropTargetMonitor, useDrag, useDrop, XYCoord } from 'react-dnd';
 import { usePrefixCls } from '@gio-design/utils';
 import { PREFIX } from './constants';
-import { DragItemProps } from './interfance';
+import { DragItemProps } from './interface';
 import Item from './Item';
 
 const DragItem: React.FC<DragItemProps> = (props) => {

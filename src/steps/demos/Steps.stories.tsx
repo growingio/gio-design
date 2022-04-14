@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import Docs from './StepsPage';
-import Steps, { Step, StepProps } from '../index';
+import Steps, { StepsProps } from '../index';
 import '../style';
 import Button from '../../button';
 
 export default {
   title: 'Upgraded/Steps',
   component: Steps,
-  subcomponents: { Step },
+  subcomponents: { 'Steps.Step': Steps.Step },
   parameters: {
     docs: {
       page: Docs,
@@ -31,8 +31,8 @@ const templateArr = [
   { lable: '第六步' },
 ];
 const renderItems = () =>
-  templateArr.map((item, index) => <Step label={`Step ${index + 1}`} value={index} prefix={item} />);
-const Template: Story<StepProps> = (args) => {
+  templateArr.map((item, index) => <Steps.Step label={`Step ${index + 1}`} value={index} prefix={item} />);
+const Template: Story<StepsProps> = (args) => {
   const [current, setCurrent] = useState(3);
   const next = () => {
     setCurrent(current + 1);
@@ -79,7 +79,7 @@ const Template: Story<StepProps> = (args) => {
 };
 const haveChildrenItems = () =>
   templateArr.map((item, index) => (
-    <Step label={`Step${index + 1}`} value={index}>
+    <Steps.Step label={`Step${index + 1}`} value={index} key={index}>
       <div
         style={{
           backgroundColor: '#f7f8fc',
@@ -93,16 +93,16 @@ const haveChildrenItems = () =>
       >
         {`Step${index + 1}`}
       </div>
-    </Step>
+    </Steps.Step>
   ));
-const childrenTemplate: Story<StepProps> = (args) => (
+const childrenTemplate: Story<StepsProps> = (args) => (
   <div>
     <Steps {...args} current={4}>
       {haveChildrenItems()}
     </Steps>
   </div>
 );
-const DemoTemplate: Story<StepProps> = (args) => (
+const DemoTemplate: Story<StepsProps> = (args) => (
   <>
     <table
       style={{
@@ -122,12 +122,12 @@ const DemoTemplate: Story<StepProps> = (args) => (
           <td>
             <Steps style={{ marginBottom: 10 }} {...args} current={3}>
               {templateArr.map((item, index) => (
-                <Step label={`Step${index + 1}`} value={index} />
+                <Steps.Step label={`Step${index + 1}`} value={index} key={index} />
               ))}
             </Steps>
             <Steps size="small" {...args} current={3}>
               {templateArr.map((item, index) => (
-                <Step label={`Step${index + 1}`} value={index} />
+                <Steps.Step label={`Step${index + 1}`} value={index} key={index} />
               ))}
             </Steps>
           </td>
@@ -138,7 +138,7 @@ const DemoTemplate: Story<StepProps> = (args) => (
           <td style={{ width: 500 }}>
             <Steps {...args} current={4}>
               {[...Array(10)].map((item, index) => (
-                <Step label={`Step${index + 1}`} value={index} />
+                <Steps.Step label={`Step${index + 1}`} value={index} key={index} />
               ))}
             </Steps>
           </td>
@@ -157,7 +157,7 @@ const DemoTemplate: Story<StepProps> = (args) => (
               }}
             >
               {templateArr.map((item, index) => (
-                <Step label={`Step${index + 1}`} value={index}>
+                <Steps.Step label={`Step${index + 1}`} value={index} key={index}>
                   <div
                     style={{
                       backgroundColor: '#f7f8fc',
@@ -168,7 +168,7 @@ const DemoTemplate: Story<StepProps> = (args) => (
                   >
                     {`Step${index + 1}`}
                   </div>
-                </Step>
+                </Steps.Step>
               ))}
             </Steps>
           </td>

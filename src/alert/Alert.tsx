@@ -9,7 +9,7 @@ import {
   CloseCircleFilled,
   CloseOutlined,
 } from '@gio-design/icons';
-import IconButton from '../button/IconButton';
+import Button from '../button';
 import { AlertProps } from './interfaces';
 
 export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
@@ -55,7 +55,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
           {description && <div className={classnames(`${prefixCls}-content-description`)}>{description}</div>}
         </div>
         {closeable && (
-          <IconButton
+          <Button.IconButton
             className={classnames(`${prefixCls}-closeButton`)}
             onClick={closeAlert}
             tabIndex={0}
@@ -64,7 +64,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
             size="small"
           >
             <CloseOutlined />
-          </IconButton>
+          </Button.IconButton>
         )}
       </div>
     ) : null;

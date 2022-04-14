@@ -1,21 +1,8 @@
-@import '../../stylesheet/variables/index.less';
+@import (reference) '../../stylesheet/variables/index.less';
 @import (reference) '../../input/style/index.less';
 
-@icon-prefix-cls: ~'@{component-prefix}-icon';
 @form-prefix-cls: ~'@{component-prefix}-form';
 @field-prefix-cls: ~'@{component-prefix}-field';
-@input-prefix-cls: ~'@{component-prefix}-input';
-@textarea-prefix-cls: ~'@{component-prefix}-textarea';
-
-// form tokens map
-@info-color: @blue-3;
-@validating-color: @gray-3;
-@warning-color: @yellow-3;
-@error-color: @red-3;
-@success-color: @green-3;
-
-@field-gap: 20px;
-@field-gap-large: 24px;
 
 .message-type(@type, @hasMsg: true, @hasBorder: false, @hasIcon: true) {
   @color: ~'@{type}-color';
@@ -32,7 +19,7 @@
   }
 
   .@{field-prefix-cls}-children-icon {
-    .@{icon-prefix-cls} {
+    .@{component-prefix}-icon {
       color: if(@hasIcon, @@color, '');
     }
   }
@@ -40,6 +27,16 @@
 
 // field style
 .@{field-prefix-cls} {
+  // form tokens map
+  @info-color: @blue-3;
+  @validating-color: @gray-3;
+  @warning-color: @yellow-3;
+  @error-color: @red-3;
+  @success-color: @green-3;
+
+  @field-gap: 20px;
+  @field-gap-large: 24px;
+
   display: flex;
   margin-bottom: @field-gap;
 

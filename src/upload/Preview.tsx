@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { CheckCircleFilled, CloseCircleFilled } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
 import Button from '../button';
-import Text from '../typography/text';
+import Text from '../typography/Text';
 import { STATUS_SUCCESS, STATUS_ERROR, IPreviewProps, IUploadFile } from './interface';
 import { UploadPrefixClsContext } from './Upload';
 import { CsvSVG, DocxSVG, PdfSVG, XlsxSVG, FolderSVG, TxtSVG } from './svg';

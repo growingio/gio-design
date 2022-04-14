@@ -1,6 +1,6 @@
 import { LeftDoubleOutlined, LeftOutlined, RightDoubleOutlined, RightOutlined } from '@gio-design/icons';
 import React, { useContext } from 'react';
-import { IconButton } from '../index';
+import { Button } from '../index';
 import { PaginationItemProps, PaginationItemType } from './interface';
 import { PaginationContext } from './Pagination';
 
@@ -28,7 +28,7 @@ const PaginationItem: React.FC<PaginationItemProps> = (props) => {
   const isPage = type === PaginationItemType.Page;
 
   return (
-    <IconButton
+    <Button.IconButton
       disabled={disabled}
       type="secondary"
       size="small"
@@ -42,7 +42,7 @@ const PaginationItem: React.FC<PaginationItemProps> = (props) => {
       data-testid={`pagination-item__${isPage ? page : type}`}
     >
       {isPage ? <span className={`${prefixCls}__page__button-text`}>{page}</span> : icon[type]}
-    </IconButton>
+    </Button.IconButton>
   );
 };
 

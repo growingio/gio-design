@@ -5,7 +5,7 @@ import { LeftOutlined, RightOutlined } from '@gio-design/icons';
 import { isNil, isString } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
 import { LayoutSiderProps } from './interfaces';
-import { LayoutContext } from './layout';
+import { LayoutContext } from './Layout';
 import useControlledState from '../utils/hooks/useControlledState';
 
 const generateId = (() => {

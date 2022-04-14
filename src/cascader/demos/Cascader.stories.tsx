@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { PlusOutlined, FilterOutlined } from '@gio-design/icons';
 import { uniqueId } from 'lodash';
-import { CascaderProps } from '../interfance';
+import { CascaderProps } from '../interface';
 import Cascader from '../Cascader';
 import '../style';
 import './style.less';
@@ -26,13 +26,13 @@ const defaultOptions = [
     value: 'apple',
     id: uniqueId(),
     description: uniqueId(),
-    childrens: [
+    items: [
       {
         label: '切',
         value: 'cut',
         id: uniqueId(),
         description: uniqueId(),
-        childrens: [
+        items: [
           {
             label: '坏了',
             value: 'bad',
@@ -50,7 +50,7 @@ const defaultOptions = [
         label: '掰开',
         value: 'bye',
         id: uniqueId(),
-        childrens: [
+        items: [
           {
             label: '坏了',
             value: 'bad',
@@ -69,7 +69,7 @@ const defaultOptions = [
 const options = new Array(12).fill('').map((_, index) => ({
   label: `第${index}条咸鱼`,
   value: index.toString(),
-  childrens: [
+  items: [
     { label: '要', value: 'yes' },
     { label: '不要', value: 'no' },
   ],

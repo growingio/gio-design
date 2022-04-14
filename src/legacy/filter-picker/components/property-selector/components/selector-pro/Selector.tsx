@@ -90,7 +90,7 @@ function Selector({
       onVisibleChange={handleVisibleChange}
       overlayClassName={overlayCls}
       getContainer={getContainer}
-      distoryOnHide={Boolean(destroyTooltipOnHide)}
+      destroyOnHide={Boolean(destroyTooltipOnHide)}
     >
       {renderChild()}
     </Popover>

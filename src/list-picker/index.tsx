@@ -1,4 +1,4 @@
-import { ListPickerProps } from './interfance';
+import { ListPickerProps } from './interface';
 
 import ListPicker from './listPicker';
 import Recent from './Recent';

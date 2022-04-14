@@ -32,7 +32,7 @@ const Cell: React.FC<{ visible: boolean; prefixCls: string; currentDate: Date }>
   );
 };
 
-const DatePicker: React.FC<StaticDatePickerProps> = ({
+const StaticDatePicker: React.FC<StaticDatePickerProps> = ({
   viewDate: viewDateProp,
   disabledDate: disabledDateProp,
   value,
@@ -99,6 +99,6 @@ const DatePicker: React.FC<StaticDatePickerProps> = ({
   );
 };
 
-DatePicker.displayName = 'DatePicker';
+StaticDatePicker.displayName = 'StaticDatePicker';
 
-export default DatePicker;
+export default StaticDatePicker;

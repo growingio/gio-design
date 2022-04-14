@@ -1,5 +1,5 @@
-import Toggle from './Toggles';
+import Toggle from './Toggle';
 
-export { TogglesProps } from './interface';
+export { ToggleProps } from './interface';
 
 export default Toggle;

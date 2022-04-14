@@ -3,7 +3,7 @@ import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook
 import { useIntl } from 'react-intl';
 import Radio from '../Radio';
 
-export default function ListPage() {
+export default function RadioPage() {
   const { formatMessage } = useIntl();
 
   return (

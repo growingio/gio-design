@@ -1,4 +1,7 @@
-import { Row, RowProps } from '../grid';
+import Row, { RowContext } from './Row';
 
-export { RowProps };
+export { RowProps } from './interface';
+
+export { RowContext };
+
 export default Row;

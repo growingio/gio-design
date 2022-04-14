@@ -1,7 +1,7 @@
 import GIOMenu from './Menu';
 import MenuItem from './MenuItem';
 import SubMenu from './SubMenu';
-import Divider from './Divider';
+import MenuDivider from './Divider';
 
 export {
   IMenuProps as MenuProps,
@@ -14,13 +14,13 @@ export {
 export type TMenu = typeof GIOMenu & {
   MenuItem: typeof MenuItem;
   SubMenu: typeof SubMenu;
-  Divider: typeof Divider;
+  Divider: typeof MenuDivider;
 };
 
 const Menu = GIOMenu as TMenu;
 Menu.MenuItem = MenuItem;
 Menu.SubMenu = SubMenu;
-Menu.Divider = Divider;
+Menu.Divider = MenuDivider;
 
 export default Menu;
-export { MenuItem, SubMenu, Divider };
+export { MenuItem, SubMenu, MenuDivider };

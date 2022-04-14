@@ -2,7 +2,7 @@ import { concat, difference, indexOf, isArray, isEmpty, isNil, isUndefined } fro
 import toArray from 'rc-util/lib/Children/toArray';
 import React from 'react';
 import { ListProps } from '.';
-import { MaybeArray, ModelType, OptionProps } from './interfance';
+import { MaybeArray, ModelType, OptionProps } from './interface';
 
 type OtherProps = ListProps;
 
@@ -26,7 +26,7 @@ export const selectStatus = (value?: string | number, values?: MaybeArray<string
 };
 const deepChildren = (children?: OptionProps[]): any[] => {
   if (children) {
-    return [...children, ...deepChildren(children?.[0]?.childrens as OptionProps[])];
+    return [...children, ...deepChildren(children?.[0]?.items as OptionProps[])];
   }
   return [];
 };
@@ -74,7 +74,7 @@ export const generateSelectParent = (label: string | React.ReactNode, value: str
         {
           label: parent?.[0]?.label,
           value: parent?.[0]?.value,
-          childrens: [
+          items: [
             {
               label,
               value,

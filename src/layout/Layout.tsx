@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import { useSetState } from 'react-use';
 import { usePrefixCls } from '@gio-design/utils';
 import { LayoutProps, LayoutState, ContentState, LayoutContextType } from './interfaces';
-import Header from './header';
-import Content from './content';
-import Sider from './sider';
+import Header from './Header';
+import Content from './Content';
+import Sider from './Sider';
 import useSiders from './useSiders';
 
 const initLayoutState = { fixed: false };

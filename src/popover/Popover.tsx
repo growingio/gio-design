@@ -31,7 +31,7 @@ const Popover = (props: PopoverProps) => {
     triggerClassName,
     triggerStyle,
     getContainer,
-    distoryOnHide = true,
+    destroyOnHide = true,
     onContentClick,
     delay = 100,
     hideDelay = delay,
@@ -306,7 +306,7 @@ const Popover = (props: PopoverProps) => {
     <>
       <TriggerContext.Provider value={triggerContextValue}>
         {triggerNode}
-        {distoryOnHide ? visible && renderContent : renderContent}
+        {destroyOnHide ? visible && renderContent : renderContent}
       </TriggerContext.Provider>
     </>
   );

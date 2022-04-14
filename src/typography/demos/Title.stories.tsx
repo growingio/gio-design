@@ -4,20 +4,17 @@ import Typography from '../index';
 import TitlePage from './TitlePage';
 import '../style';
 
-const { Title } = Typography;
-
-
 export const Default = () => (
   <>
-    <Title level={1}>Title 标题</Title>
-    <Title level={2}>Title 标题</Title>
-    <Title level={3}>Title 标题</Title>
-    <Title level={4}>Title 标题</Title>
+    <Typography.Title level={1}>Title 标题</Typography.Title>
+    <Typography.Title level={2}>Title 标题</Typography.Title>
+    <Typography.Title level={3}>Title 标题</Typography.Title>
+    <Typography.Title level={4}>Title 标题</Typography.Title>
   </>
 );
 export default {
   title: 'Upgraded/Typography/Title',
-  component: Title,
+  component: Typography.Title,
   parameters: {
     docs: {
       page: TitlePage,
