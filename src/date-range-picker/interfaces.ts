@@ -1,17 +1,56 @@
 import React from 'react';
 import { CommonProps } from '@gio-design/utils';
 import { PopoverProps } from '../popover';
-import { StaticDateRangePickerProps } from '../static-date-range-picker';
-import { InputButtonProps } from '../input';
 
 export type NullableDate = Date | undefined;
 export type NullableString = string | undefined;
 
 export interface DateRangePickerProps
-  extends CommonProps,
-  Omit<InputButtonProps, 'value' | 'onSelect' | 'defaultValue'>,
-  Omit<StaticDateRangePickerProps, 'onSelect' | 'value' | 'defaultValue'>,
-  Omit<PopoverProps, 'trigger' | 'placement' | 'prefixCls' | 'children' | 'content'> {
+  extends CommonProps {
+  /**
+   * onVisibleChange
+   */
+  onVisibleChange?: (visible: boolean) => void;
+  /**
+   * overlayClassName,popoverClassName
+   */
+  overlayClassName?:string;
+  /**
+   * visible 触发器开关值
+   */
+  visible?: boolean;
+  /**
+   * disabled 触发器禁用
+   */
+  disabled?:boolean;
+  /**
+   * disabledDate
+   */
+  disabledDate?:(date:Date)=>boolean;
+  /**
+   * placeholder value为空时展示
+   */
+  placeholder?:string;
+  /**
+   * 允许删除
+   */
+  allowClear?:boolean;
+  /**
+   * prefix inputButton 前缀
+   */
+  prefix?: React.ReactNode;
+  /**
+   * suffix inputButton 后缀
+   */
+  suffix?: React.ReactNode;
+  /**
+   * 触发器大小
+   */
+  size?:'normal' | 'small'
+  /**
+   * 清除时调用的函数，与allowClear 一起使用
+   */
+  onClear?:(e?: React.MouseEvent<Element, MouseEvent>) => void;
   /**
    * 自定义的触发器
    */
@@ -33,6 +72,13 @@ export interface DateRangePickerProps
    * 选择的日期
    */
   value?: [NullableDate, NullableDate];
+  /**
+   * 默认时间
+   */
   defaultValue?: [NullableDate, NullableDate];
+  /**
+   * 测试Id
+   */
   dataTestId?: string;
+  PopoverProps?:Omit<PopoverProps, 'trigger' | 'placement' | 'prefixCls' | 'children' | 'content'>;
 }

@@ -1,14 +1,46 @@
 import React from 'react';
 import { CommonProps } from '@gio-design/utils';
 import { PopoverProps } from '../popover';
-import { StaticDatePickerProps } from '../static-date-picker';
 import { InputButtonProps } from '../input';
 
 export interface DatePickerProps
-  extends CommonProps,
-  Omit<InputButtonProps, 'value' | 'onSelect' | 'defaultValue'>,
-  Omit<StaticDatePickerProps, 'onSelect'>,
-  Omit<PopoverProps, 'trigger' | 'placement' | 'prefixCls' | 'children' | 'content'> {
+  extends CommonProps ,Pick<InputButtonProps, 'suffix'| 'prefix' | 'onClear' | 'size'>{
+  /**
+   * visibleChange 调用
+   */
+  onVisibleChange?: (visible: boolean) => void;
+  /**
+   * visibleChange 调用
+   */
+  overlayClassName?: string;
+  /**
+   * visible 面板设置
+   */
+  visible?: boolean;
+  /**
+   * 禁用触发器
+   */
+  disabled?:boolean;
+  /**
+   * Date 类型的value
+   */
+  value?:Date;
+  /**
+   * defaultValue，value为undefined时，defaultValue生效
+   */
+  defaultValue?:Date;
+  /**
+   * disabledDate
+   */
+  disabledDate?:(date: Date) => boolean;
+  /**
+   * placeholder
+   */
+  placeholder?:string;
+  /**
+   * 允许清除
+   */
+  allowClear?:boolean;
   /**
    * 自定义的触发器
    */
@@ -23,5 +55,12 @@ export interface DatePickerProps
    *选中的回掉
    */
   onSelect?: (date: Date, dateString: string) => void;
+  /**
+   *测试Id
+   */
   dataTestId?: string;
+  /**
+   * Popover参数
+   */
+  PopoverProps?:Omit<PopoverProps, 'trigger' | 'placement' | 'prefixCls' | 'children' | 'content'>;
 }

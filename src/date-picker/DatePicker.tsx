@@ -27,7 +27,9 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
     size,
     className,
     style,
+    onClear,
     dataTestId = 'dataPicker',
+    PopoverProps,
     ...restProps
   } = props;
 
@@ -51,7 +53,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
     onSelect?.(currentValue, formatDate(currentValue));
   };
 
-  const content = <StaticDatePicker onSelect={handleOnSelect} disabledDate={disabledDate} value={controlledValue} />;
+  const content = <StaticDatePicker onSelect={handleOnSelect} disabledDate={disabledDate} value={controlledValue} {...restProps} />;
 
   function renderTrigger() {
     if (trigger) {
@@ -71,6 +73,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
         active={visible}
         onClick={() => setVisible(!visible)}
         data-testid={dataTestId}
+        onClear={onClear}
       />
     );
   }
@@ -84,7 +87,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
       overlayClassName={overlayCls}
       onVisibleChange={handleVisibleChange}
       disabled={disabled}
-      {...restProps}
+      {...PopoverProps}
     >
       {renderTrigger()}
     </Popover>
