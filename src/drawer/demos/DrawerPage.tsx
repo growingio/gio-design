@@ -3,6 +3,7 @@ import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subt
 import { Figma } from 'storybook-addon-designs/esm/blocks';
 import { useIntl } from 'react-intl';
 import Drawer from '../index';
+import Alert from '../../alert';
 
 export default function ListPage() {
   const { formatMessage } = useIntl();
@@ -15,6 +16,17 @@ export default function ListPage() {
           defaultMessage: '屏幕边缘滑出的浮层面板，用于承载更详细的内容或操作。',
         })}
       </Description>
+      <Alert
+        style={{ margin: '0 0 38px' }}
+        message={
+          <Description>
+            {formatMessage({
+              defaultMessage:
+                'Drawer组件底层使用了 [rc-dialog.js](https://www.npmjs.com/package/rc-dialog)，更多参数您可以参考该库的说明。',
+            })}
+          </Description>
+        }
+      />
       <Subtitle>{formatMessage({ defaultMessage: '设计稿' })}</Subtitle>
       <Figma
         height="50%"
