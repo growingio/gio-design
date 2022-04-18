@@ -2,14 +2,14 @@ import React from 'react';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Subtitle, Description } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
 import { Figma } from 'storybook-addon-designs/esm/blocks';
-import Collapse from '../Collapse';
+import CollapsePanel from '../CollapsePanel';
 
 export default function ListPage() {
   const { formatMessage } = useIntl();
 
   return (
     <>
-      <Title>{formatMessage({ defaultMessage: 'Collapse 折叠面板' })}</Title>
+      <Title>{formatMessage({ defaultMessage: 'Collapse Panel' })}</Title>
       <Description>
         {formatMessage({
           defaultMessage: '折叠面板用于整理页面中的信息，便于用户可以选择看到整体还是局部。',
@@ -25,27 +25,18 @@ export default function ListPage() {
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '基础使用' })}</Subheading>
       <Canvas>
-        <Story id="upgraded-collapse--default" />
+        <Story id="upgraded-collapse-panel--default" />
       </Canvas>
-      
+      <Subheading>{formatMessage({ defaultMessage: '折叠箭头展示/隐藏' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-collapse-panel--showarrow" />
+      </Canvas>
       <Subheading>{formatMessage({ defaultMessage: 'Icon替换' })}</Subheading>
       <Canvas>
-        <Story id="upgraded-collapse--extra" />
-      </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '手风琴效果' })}</Subheading>
-      <Canvas>
-        <Story id="upgraded-collapse--accordion" />
-      </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '无边框' })}</Subheading>
-      <Canvas>
-        <Story id="upgraded-collapse--bordered" />
-      </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '二级菜单使用' })}</Subheading>
-      <Canvas>
-        <Story id="upgraded-collapse--secondmenu" />
+        <Story id="upgraded-collapse-panel--extra" />
       </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
-      <ArgsTable of={Collapse} />
+      <ArgsTable of={CollapsePanel} />
     </>
   );
 }

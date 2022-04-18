@@ -31,7 +31,7 @@
     "watch": "gio-rewire lib compile --watch"
   },
   "peerDependencies": {
-    "@gio-design/icons": ">=22.0.0",
+    "@gio-design/icons": ">=23.0.0",
     "@gio-design/tokens": ">=22.0.0-alpha.0",
     "@gio-design/utils": ">=23.0.0",
     "react": ">=16.8.0",
