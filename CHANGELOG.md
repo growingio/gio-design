@@ -1,3 +1,80 @@
+# [23.0.0](https://github.com/growingio/gio-design/compare/v22.15.2...v23.0.0) (2022-04-20)
+
+
+### Bug Fixes
+
+* **filter-picker:** 修复列表型操作符为等于的问题 ([#1970](https://github.com/growingio/gio-design/issues/1970)) ([bff1ca3](https://github.com/growingio/gio-design/commit/bff1ca357fd7c40f0c0bd3be60fc48f55b8055f6))
+
+
+### Code Refactoring
+
+* **legacy:** delete components in the legacy folder ([#1828](https://github.com/growingio/gio-design/issues/1828)) ([44c18c9](https://github.com/growingio/gio-design/commit/44c18c98f4c87c7c433eda6dacf43e4dad1e7617))
+* refactor: modify nonstandard component's name ([#1910](https://github.com/growingio/gio-design/issues/1910)) ([0762d21](https://github.com/growingio/gio-design/commit/0762d21c5603b85825c2c40cc73e109c5bc97e56))
+
+
+### BREAKING CHANGES
+
+*   #### 取消从 `src/index.ts` 文件导出的子组件
+
+  `import { AvatarGroup } from '@gio-design/components';` 的用法需要更换为 `import { Avatar } from '@gio-design/components'; const { Group: AvatarGroup } = Avatar;`
+
+    1. AvatarGroup
+    2. CheckboxGroup
+    3. RadioGroup
+    4. Tab
+    5. Step
+    6. Text
+    7. Title
+    8. InputButton
+    9. InputNumber
+    10. Password
+    11. TextArea
+    12. IconButton
+
+  #### src/popconfig 文件夹更名为 src/pop-confirm
+
+  如果有引入了该文件夹下的模块，请更改为 `import { PopConfirmProps } from '@gio-design/components/es/pop-confirm'`
+
+  #### Toggles 组件更名为 Toggle
+
+  #### SwitchGroupProps 类型更名为 SwitchProps
+
+  #### 一些组件的 props 更名
+    1. Collapse:
+      ```diff
+        interface CollapseProps {
+          ...
+          - destoryOnHide
+          + destroyOnHide
+        }
+      ```
+    2. Popover:
+       ```diff
+        interface PopoverProps {
+          ...
+          - distoryOnHide
+          + destroyOnHide
+        }
+      ```
+    3. CascaderOptions: `childrens` -> `items` (传给 Cascader 的 options 数组中，之前的 `childrens` 字段更换为了 `items`)
+      ```diff
+          interface CascaderItemProps extends BaseItemProps {
+            ...
+          - childrens?: CascaderItemProps[];
+          + items?: CascaderItemProps[];
+          }
+      ```
+
+  #### 一些组件的 interface 文件更名
+    1. Cascader: interfance.ts -> interface.ts
+    1. List: interfance.ts -> interface.ts
+    1. ListPicker: interfance.ts -> interface.ts
+
+Co-authored-by: maxin <maxin@growingio.com>
+* **legacy:** 删除所有 src/legacy 文件夹下的组件(除了 FilterPicker 之外)
+
+Co-authored-by: maxin <maxin@growingio.com>
+
 ## [22.15.2](https://github.com/growingio/gio-design/compare/v22.15.1...v22.15.2) (2022-04-12)
 
 
