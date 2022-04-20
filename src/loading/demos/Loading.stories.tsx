@@ -6,6 +6,7 @@ import Button from '../../button';
 import Tabs from '../../tabs';
 import { LoadingProps } from '../interface';
 import '../style';
+import Docs from './Loading';
 
 export default {
   title: 'Upgraded/Loading',
@@ -15,6 +16,9 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/file/kP3A6S2fLUGVVMBgDuUx0f/GrowingIO-Design-Components?node-id=889%3A1142',
       allowFullscreen: true,
+    },
+    docs: {
+      page: Docs,
     },
   },
 } as Meta;
