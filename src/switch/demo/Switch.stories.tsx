@@ -328,7 +328,7 @@ const JSXTemplateGroup: Story<SwitchProps> = (args) => {
     <>
       <Switch {...args} size="normal" value={selectedValue} onChange={onChange}>
         {tabs.map((t) => (
-          <Switch.Item value={t.value} prefix={<PushMsgFilled />}>
+          <Switch.Item value={t.value} key={t.key} prefix={<PushMsgFilled />}>
             {t.value}
           </Switch.Item>
         ))}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
-import { isUndefined } from 'lodash';
+import { get, isUndefined } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
 import usePrevious from '../utils/hooks/usePrevious';
 import filterChildren from '../utils/filterChildren';
@@ -36,7 +36,7 @@ const Switch = React.forwardRef<HTMLDivElement, SwitchProps>((props: SwitchProps
   const getChildrenItems = () =>
     filterChildren(children, (child) => {
       if (React.isValidElement(child)) {
-        if (typeof child.type !== 'object' || (child.type as typeof SwitchItem).displayName !== 'Switch') {
+        if (typeof child.type !== 'object' || get(child, 'type.displayName') !== SwitchItem.displayName) {
           return false;
         }
         if (!Reflect.has(child.props, 'value')) {
