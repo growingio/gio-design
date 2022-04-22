@@ -34,17 +34,17 @@ const Template: Story = () => (
   <div>
     <Collapse defaultActiveKey={['2']} onChange={callback}>
       <Collapse.Panel header="折叠面板标题" key="1">
-        <p>{text}</p>
-        <p>{text}</p>
-        <p>{text}</p>
+        <div>{text}</div>
+        <div>{text}</div>
+        <div>{text}</div>
       </Collapse.Panel>
       <Collapse.Panel header="折叠面板标题" key="2">
-        <p>{text}</p>
+        <div>{text}</div>
         <Collapse expandIcon={() => <RightOutlined size="14px" />} bordered={false} onChange={callback}>
           <Collapse.Panel header="折叠面板标题" key="1">
-            <p>{text}</p>
-            <p>{text}</p>
-            <p>{text}</p>
+            <div>{text}</div>
+            <div>{text}</div>
+            <div>{text}</div>
           </Collapse.Panel>
         </Collapse>
       </Collapse.Panel>
@@ -63,18 +63,18 @@ export const Secondmenu = () => (
     <Collapse.Panel header="一级菜单标题" key="1">
       <Collapse>
         <Collapse.Panel header="二级菜单标题" key="2">
-          <p>{text}</p>
-          <p>{text}</p>
-          <p>{text}</p>
+          <div>{text}</div>
+          <div>{text}</div>
+          <div>{text}</div>
         </Collapse.Panel>
       </Collapse>
     </Collapse.Panel>
     <Collapse.Panel header="一级菜单标题" key="1">
       <Collapse bordered={false}>
         <Collapse.Panel header="二级菜单标题" key="2">
-          <p>{text}</p>
-          <p>{text}</p>
-          <p>{text}</p>
+          <div>{text}</div>
+          <div>{text}</div>
+          <div>{text}</div>
         </Collapse.Panel>
       </Collapse>
     </Collapse.Panel>
@@ -105,9 +105,9 @@ export const Extra = () => {
   return (
     <Collapse expandIcon={() => <RightOutlined size="14px" />}>
       <Collapse.Panel header="折叠面板标题" key="1" extra={genExtra()}>
-        <p>{text}</p>
-        <p>{text}</p>
-        <p>{text}</p>
+        <div>{text}</div>
+        <div>{text}</div>
+        <div>{text}</div>
       </Collapse.Panel>
     </Collapse>
   );
@@ -116,19 +116,19 @@ export const Extra = () => {
 export const Accordion = () => (
   <Collapse accordion>
     <Collapse.Panel header="手风琴效果标题1" key="1">
-      <p>{text}</p>
-      <p>{text}</p>
-      <p>{text}</p>
+      <div>{text}</div>
+      <div>{text}</div>
+      <div>{text}</div>
     </Collapse.Panel>
     <Collapse.Panel header="手风琴效果标题2" key="2">
-      <p>{text}</p>
-      <p>{text}</p>
-      <p>{text}</p>
+      <div>{text}</div>
+      <div>{text}</div>
+      <div>{text}</div>
     </Collapse.Panel>
     <Collapse.Panel header="手风琴效果标题3" key="3">
-      <p>{text}</p>
-      <p>{text}</p>
-      <p>{text}</p>
+      <div>{text}</div>
+      <div>{text}</div>
+      <div>{text}</div>
     </Collapse.Panel>
   </Collapse>
 );
@@ -136,19 +136,19 @@ export const Accordion = () => (
 export const Bordered = () => (
   <Collapse bordered={false}>
     <Collapse.Panel header="无边框标题1" key="1">
-      <p>{text}</p>
-      <p>{text}</p>
-      <p>{text}</p>
+      <div>{text}</div>
+      <div>{text}</div>
+      <div>{text}</div>
     </Collapse.Panel>
     <Collapse.Panel header="无边框标题2" key="2">
-      <p>{text}</p>
-      <p>{text}</p>
-      <p>{text}</p>
+      <div>{text}</div>
+      <div>{text}</div>
+      <div>{text}</div>
     </Collapse.Panel>
     <Collapse.Panel header="无边框标题3" key="3">
-      <p>{text}</p>
-      <p>{text}</p>
-      <p>{text}</p>
+      <div>{text}</div>
+      <div>{text}</div>
+      <div>{text}</div>
     </Collapse.Panel>
   </Collapse>
 );
