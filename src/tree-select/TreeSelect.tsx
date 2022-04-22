@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { omit } from 'lodash';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import devWarning from '../utils/devWarning';
-import { GioTreeNodeProps } from '../tree';
+import { GioTreeNodeProps } from '../tree/interface';
 import getIcons from './iconUtil';
 import renderSwitcherIcon from '../tree/iconUtil';
 import SizeContext from '../config-provider/SizeContext';

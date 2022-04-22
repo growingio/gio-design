@@ -9,6 +9,7 @@ import {
   ModelType,
 } from './interface';
 import List from './List';
+import VirtualList from './VirtualList'
 import Item from './Item';
 import Drag from './Drag';
 import DragItem from './DragItem';
@@ -29,6 +30,6 @@ export type {
   CascaderItemProps,
   ModelType,
 };
-export { List, Item, Drag, DragItem, Selection, BaseItem };
+export { List, Item, Drag, DragItem, Selection, BaseItem,VirtualList };
 
-export default WithSubComponent(List, { Item, Drag, DragItem, Selection });
+export default WithSubComponent(List, { Item, Drag, DragItem, Selection,VirtualList });

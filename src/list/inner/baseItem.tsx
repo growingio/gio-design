@@ -8,9 +8,10 @@ import Tooltip from '../../tooltip';
 import WithRef from '../../utils/withRef';
 import { ListContext } from '../context';
 import { generateString, selectStatus } from '../util';
+import Content from './Content';
 
 const defaultContentRender = (element: React.ReactNode | Element): React.ReactElement => element as React.ReactElement;
-const renderIcon = (className: string, prefix: React.ReactNode) => <span className={className}>{prefix}</span>;
+export const renderIcon = (className: string, prefix: React.ReactNode) => <span className={className}>{prefix}</span>;
 const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>>(
   (props, ref?) => {
     const {
@@ -29,6 +30,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       wrapper = defaultContentRender,
       onMouseEnter,
       onMouseLeave,
+      selected: propSelected,
       hovered: propsHovered,
       ...rest
     } = props;
@@ -45,6 +47,9 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
     const mergedDisabled = disabled ?? contextDisabled;
     const [hovered, setHovered] = useState(false);
     const selected = useMemo(() => {
+      if (propSelected) {
+        return propSelected;
+      }
       if (model === 'cascader') {
         // 最顶级
         if (!selectParent) {
@@ -57,7 +62,7 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
         return false;
       }
       return selectStatus?.(value, contextValue);
-    }, [contextValue, model, selectParent, value]);
+    }, [contextValue, model, selectParent, value, propSelected]);
 
     useEffect(
       () => () => {
@@ -92,19 +97,15 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
       }
       onClick?.(value, event);
     };
-    const content = children ?? label;
 
-    const contentElement = isString(content) ? (
-      <>
-        {prefixIcon}
-        <span className={classNames(`${prefixCls}--text`, `${prefixCls}--ellipsis`)} title={content?.toString()}>
-          {content}
-        </span>
-        {suffixIcon}
-      </>
-    ) : (
-      <>{content}</>
-    );
+    const titleContent = children ?? label;
+
+    const renderContentEle = () => {
+      if (typeof children !== 'string') {
+        return children || <Content prefix={prefixIcon} suffix={suffixIcon} label={label} />;
+      }
+      return <Content prefix={prefixIcon} suffix={suffixIcon} label={label ?? children} />;
+    };
     const renderElement = (
       <Tooltip
         disabled={!mergedDisabled || isEmpty(disabledTooltip)}
@@ -137,10 +138,10 @@ const InnerBaseItem = WithRef<HTMLLIElement, BaseItemProps & Omit<DOMAttributes<
           aria-hidden="true"
           ref={ref}
           onClick={handleOnClick}
-          title={title || (!disabled && isString(content) && content) || undefined}
+          title={title || (!disabled && isString(titleContent) && titleContent) || undefined}
           {...rest}
         >
-          {contentRender?.(contentElement)}
+          {contentRender?.(renderContentEle())}
         </li>
       </Tooltip>
     );

@@ -1,3 +1,4 @@
+import { RenderFunc } from 'rc-virtual-list/lib/interface';
 import React from 'react';
 import { ListContextProps } from './context';
 
@@ -139,8 +140,12 @@ export interface ItemProps
 export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled' | 'prefix' | 'suffix' | 'wrapper'> {
   className?: string;
   style?: React.CSSProperties;
+
   label?: string | React.ReactNode;
   title?: string;
+  /**
+   * @deprecated 未来版本迭代后会弃用 1.x.x -> 2.x.x 该方法替换为组件<Content />
+   */
   contentRender?: (element: React.ReactNode) => React.ReactElement;
   children?: React.ReactNode;
   disabledTooltip?: string;
@@ -159,4 +164,15 @@ export interface TriggerProps {
   placeholder?: string;
   size?: 'small' | 'normal';
   onClear?: (e?: React.MouseEvent<Element, MouseEvent>) => void;
+}
+
+export interface VirtualListProps {
+  itemHeight?: number;
+  fullHeight?: boolean;
+  height?: number;
+  prefixCls?: string;
+  children: RenderFunc<OptionProps>;
+  data: OptionProps[];
+  virtual?: boolean;
+  itemKey: string | number | ((item: never) => React.ReactText);
 }

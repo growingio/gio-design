@@ -2,15 +2,14 @@ import React, { DOMAttributes, useContext, useEffect, useMemo, useState } from '
 import { isEmpty } from 'lodash';
 import classNames from 'classnames';
 import { RightFilled } from '@gio-design/icons';
+import { usePrefixCls } from '@gio-design/utils';
 import Popover from '../../popover';
-import { CascaderItemProps, OptionProps } from '../interface';
+import { CascaderItemProps, OptionProps, BaseItemProps } from '../interface';
 import BaseItem from './baseItem';
-import usePrefixCls from '../../utils/hooks/use-prefix-cls';
 import WithRef from '../../utils/withRef';
 import List from '../List';
 import { convertChildrenToData, generateSelectParent, generateString } from '../util';
 import { ListContext } from '../context';
-import { BaseItemProps } from '..';
 import TriggerContext from '../../popover/context';
 
 const CascaderItem: React.ForwardRefRenderFunction<
@@ -39,7 +38,6 @@ const CascaderItem: React.ForwardRefRenderFunction<
 
   // list
   const prefixClsItem = `${prefixCls}--item`;
-
   const handleOnClick: BaseItemProps['onClick'] = (_, event) => {
     if (!mergedDisabled) {
       contextOnClick?.(generateString(value, selectParent), event);
@@ -91,50 +89,40 @@ const CascaderItem: React.ForwardRefRenderFunction<
     );
   };
 
-  const PopoverRender = (element: React.ReactNode): React.ReactElement => {
-    if (!isEmpty(childrens) || React.isValidElement(children)) {
-      return (
-        <div className={prefixClsItem}>
-          <TriggerContext.Provider value={popoverContext}>
-            <Popover
-              placement="rightTop"
-              onVisibleChange={(v) => setHovered(v)}
-              overlayClassName={popoverClassName}
-              // document click contains node
-              getContainer={() => document.body}
-              content={content()}
-              strategy={strategy}
-              destroyOnHide
-              delay={200}
-              offset={[0, 12]}
-            >
-              {element}
-            </Popover>
-          </TriggerContext.Provider>
-        </div>
-      );
-    }
-
-    return <>{element}</>;
-  };
   const renderItem = (
-    <BaseItem
-      data-testid="item-base"
-      {...rest}
-      ref={ref}
-      label={label}
-      value={value}
-      disabled={mergedDisabled}
-      suffix={React.isValidElement(children) || !isEmpty(childrens) ? <RightFilled size="14px" /> : undefined}
-      hovered={hovered}
-      onClick={
-        React.isValidElement(children) || !isEmpty(childrens)
-          ? (itemValue, event) => propsOnClick?.(itemValue, event)
-          : handleOnClick
-      }
-    />
+    <TriggerContext.Provider value={popoverContext}>
+      <Popover
+        placement="rightTop"
+        onVisibleChange={(v) => setHovered(v)}
+        overlayClassName={popoverClassName}
+        // document click contains node
+        getContainer={(node) => node || document.body}
+        content={content()}
+        strategy={strategy}
+        // distoryOnHide
+        delay={200}
+        offset={[0, 12]}
+      >
+        <BaseItem
+          data-testid="item-base"
+          {...rest}
+          className={classNames(prefixClsItem, rest?.className)}
+          ref={ref}
+          label={label}
+          value={value}
+          disabled={mergedDisabled}
+          hovered={hovered}
+          suffix={React.isValidElement(children) || !isEmpty(childrens) ? <RightFilled size="14px" /> : undefined}
+          onClick={
+            React.isValidElement(children) || !isEmpty(childrens)
+              ? (itemValue, event) => propsOnClick?.(itemValue, event)
+              : handleOnClick
+          }
+        />
+      </Popover>
+    </TriggerContext.Provider>
   );
-  return PopoverRender(renderItem);
+  return renderItem;
 };
 CascaderItem.isItem = true;
 export default WithRef(CascaderItem);
