@@ -1,5 +1,5 @@
 import React from 'react';
-import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
+import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Subtitle } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
 import { Figma } from 'storybook-addon-designs/esm/blocks';
 import SearchBar from '../index';
