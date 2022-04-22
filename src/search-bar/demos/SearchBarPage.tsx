@@ -18,22 +18,26 @@ export default function ListPage() {
       />
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '样例展示' })}</Subheading>
-      <Canvas>
+      {/* <Canvas>
         <Story id="upgraded-searchbar--demo" />
-      </Canvas>
+      </Canvas> */}
 
-      <Subheading>{formatMessage({ defaultMessage: 'default' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '基础使用' })}</Subheading>
       <Canvas>
         <Story id="upgraded-searchbar--default" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: 'disable' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '禁用状态' })}</Subheading>
 
       <Canvas>
         <Story id="upgraded-searchbar--disabled" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: 'disable with value' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '禁用且有值' })}</Subheading>
       <Canvas>
         <Story id="upgraded-searchbar--disable-value" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'onChange 事件' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-searchbar--on-search" />
       </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={SearchBar} />

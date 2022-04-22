@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import SearchBar from '../SearchBar';
+import List, { Item } from '../../list';
 import { SearchBarProps } from '../interface';
 import Docs from './SearchBarPage';
 
@@ -135,6 +136,33 @@ DisableValue.args = {
   onSearch: () => action('onChange'),
   value: '数据可视化',
   disabled: true,
+};
+
+export const OnSearch = () => {
+  const change = (e: any) => {
+    const val = e.target.value;
+    setSearchValue(val);
+  };
+
+  const [searchValue, setSearchValue] = useState('');
+
+  const [searchResult, setSearchResult] = useState([]);
+
+  useEffect(() => {
+    const fruits = ['Apple', 'Orange', 'Peach', 'Pineapple', 'Watermellon', 'Dragon Fruit', 'Grape'];
+    setSearchResult(fruits.filter((s) => s.includes(searchValue)));
+  }, [searchValue]);
+
+  return (
+    <>
+      <SearchBar onChange={change} value={searchValue} />
+      <List>
+        {searchResult.map((item: string) => (
+          <Item label={item} value={item} />
+        ))}
+      </List>
+    </>
+  );
 };
 
 const ControlInputExample = (args: SearchBarProps) => {
