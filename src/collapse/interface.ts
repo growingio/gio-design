@@ -40,6 +40,10 @@ export interface CollapsePanelProps {
   header: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  /**
+   * 是否显示折叠箭头
+   * @default true
+   */
   showArrow?: boolean;
   prefixCls?: string;
   forceRender?: boolean;
