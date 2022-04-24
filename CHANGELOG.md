@@ -1,3 +1,11 @@
+## [22.15.3](https://github.com/growingio/gio-design/compare/v22.15.2...v22.15.3) (2022-04-24)
+
+
+### Bug Fixes
+
+* **filter-picker:** 修复列表型操作符为等于的问题 ([#1970](https://github.com/growingio/gio-design/issues/1970)) ([bff1ca3](https://github.com/growingio/gio-design/commit/bff1ca357fd7c40f0c0bd3be60fc48f55b8055f6))
+* **list:** when list/list-picker multiple max, trigger onMultipleOverflow ([#1986](https://github.com/growingio/gio-design/issues/1986)) ([f49bc76](https://github.com/growingio/gio-design/commit/f49bc76f2487fddc8a9f9445ec9b2c7bab653139))
+
 ## [22.15.2](https://github.com/growingio/gio-design/compare/v22.15.1...v22.15.2) (2022-04-12)
 
 
