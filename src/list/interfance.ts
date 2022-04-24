@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Key } from 'react';
 import { ListContextProps } from './context';
 
 export type ModelType = 'cascader' | 'multiple' | 'single';
@@ -69,6 +69,10 @@ export interface ListProps {
    *
    */
   onChange?: (value?: MaybeArray<string | number>, options?: OptionProps | OptionProps[]) => void;
+  /**
+   * 当多选达到 max 时，触发该方法 并 抛出内部的 value
+   */
+  onMultipleOverflow?: (value?: Key[]) => void;
   /**
    * 仅支持options 形式。自定义 item render 自定义render时会劫持onClick方法提供给List来使用
    */

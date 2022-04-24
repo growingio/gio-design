@@ -36,6 +36,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     max,
     needEmpty = false,
     valueSeparator,
+    onMultipleOverflow,
     ...listRestProps
   } = props;
 
@@ -69,8 +70,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     contextOnChange,
     mergedModel === 'multiple'
   );
-
-  const cache = useCacheOptions();
+  // init and merged options
   const childNodeOptions = useMemo(
     () => convertChildrenToData(children, { prefix, suffix }),
     [children, prefix, suffix]
@@ -79,8 +79,20 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     () => convertOptions(initOptions, { prefix, suffix }),
     [initOptions, prefix, suffix]
   );
+
   const mergedOptions = useMemo(() => [...childNodeOptions, ...convertedOptions], [childNodeOptions, convertedOptions]);
 
+  // multipleOverflow hook
+  useEffect(() => {
+    if(mergedModel === 'multiple' && isArray(value)){
+      if((value as string[])?.length >= (max ?? Infinity)){
+        onMultipleOverflow?.(value as (string | number)[])
+      }
+    }
+  }, [mergedModel,value, max, onMultipleOverflow])
+  
+  // set options
+  const cache = useCacheOptions();
   const setOptions = useCallback(
     (options: OptionProps[]) => {
       cache.setOptions(options);
@@ -97,6 +109,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const childrens = renderOptions.slice(0, collapse);
   const isNeedCollapse = useMemo(() => renderOptions?.length > collapse, [renderOptions, collapse]);
 
+  // event
   const handleClick = (val?: string, event?: React.MouseEvent<HTMLLIElement | HTMLInputElement>) => {
     if (val === `${prefixCls}-collapse`) {
       return;
@@ -121,6 +134,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     }
   };
 
+  // render
   const renderChildren = (option: OptionProps) => {
     const renderedItem = renderItem?.(option);
     return (
