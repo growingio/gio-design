@@ -4,7 +4,8 @@ import { OptionProps } from '../list/interface';
 import { Placement, TriggerAction } from '../popover/interface';
 import { ListProps } from '../list';
 
-export interface ListPickerProps extends Pick<ListProps, 'model' | 'empty' | 'needEmpty' | 'max' | 'valueSeparator'> {
+export interface ListPickerProps
+  extends Pick<ListProps, 'model' | 'empty' | 'needEmpty' | 'max' | 'valueSeparator' | 'onMultipleOverflow'> {
   size?: 'small' | 'normal';
   /**
    * 触发方式
