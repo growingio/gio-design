@@ -99,11 +99,12 @@ const fruits = ['Apple', 'Orange', 'Peach', 'Pineapple', 'Watermellon', 'Dragon 
 export const MultipleSelect = () => {
   const [value, setValue] = useState([]);
   const handleChange = (v?: Array<string | number>) => {
+    console.log('onChange value',v)
     setValue(v);
   };
   return (
     <div className="gio-list-demo-box">
-      <List model="multiple" value={value} onChange={handleChange}>
+      <List model="multiple" max={3} value={value} onChange={handleChange} onMultipleOverflow={(v) => console.log('onMultipleOverflow value',v)}>
         <Item value="1">List Item 1</Item>
         <Item disabled value="2">
           List Item 2

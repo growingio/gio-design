@@ -40,7 +40,7 @@ const Trigger: React.ForwardRefRenderFunction<HTMLInputElement, TriggerProps> = 
   const suffix = useMemo(
     () => propSuffix ?? getOptionByValue?.(value as string)?.suffix,
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [options?.size, hidePrefix, propPrefix, value]
+    [options?.size, hidePrefix, propSuffix, value]
   );
   return (
     <Input.Button

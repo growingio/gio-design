@@ -17,7 +17,7 @@ const CheckboxItem: React.ForwardRefRenderFunction<
   const prefixCls = `${usePrefixCls(PREFIX)}--item`;
   const prefixIcon = rest?.prefix ? renderIcon(`${prefixCls}-prefix-icon`, rest?.prefix) : undefined;
   const suffixIcon = rest?.suffix ? renderIcon(`${prefixCls}-prefix-icon`, rest?.suffix) : undefined;
-  /** context */
+    /** context */
   const context = useContext(ListContext);
   const { value: contextValue, disabled: contextDisabled, onClick: contextOnClick } = context;
   const mergedDisabled = disabled ?? contextDisabled;
@@ -49,11 +49,7 @@ const CheckboxItem: React.ForwardRefRenderFunction<
           }
         }}
       />
-      {typeof children === 'string' ? (
-        <Content label={label ?? children} prefix={prefixIcon} suffix={suffixIcon} />
-      ) : (
-        children
-      )}
+      <Content label={label ?? children} prefix={prefixIcon} suffix={suffixIcon} />
     </BaseItem>
   );
 };
