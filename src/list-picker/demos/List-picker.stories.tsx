@@ -156,9 +156,10 @@ export const Single = (args: ListPickerProps) => {
   );
 };
 export const Multiple = (args: ListPickerProps) => {
-  const [value, setValue] = useState<undefined | string>('ziyi');
+  const [value, setValue] = useState<undefined | string[]>(['apple']);
   const [activeTab, setActiveTab] = useState('tab1');
-  const onChange = (val: string) => {
+  const onChange = (val: string[]) => {
+    console.log('val',val)
     setValue(val);
   };
   return (
@@ -167,9 +168,14 @@ export const Multiple = (args: ListPickerProps) => {
       style={style}
       value={value}
       onChange={onChange}
+      onConfirm={(v) => setValue(v as string[])}
       overlayStyle={{ width: '240px' }}
       onClear={() => {
-        setValue('');
+        setValue([]);
+      }}
+      max={2}
+      onMultipleOverflow={(v) => {
+        console.log('onMultipleOverflow value',v)
       }}
       allowClear
       placeholder="请选择"
@@ -187,8 +193,9 @@ export const Multiple = (args: ListPickerProps) => {
             <List
               id="group1"
               title="分组1"
+              prefix={()=><CodelessTrackingOutlined />}
               options={[
-                { label: '苹果', value: 'apple' },
+                { label: '苹果', value: 'apple',prefix:<CodelessTrackingOutlined /> },
                 { label: '香蕉', value: 'banana' },
               ]}
             />

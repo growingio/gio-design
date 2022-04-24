@@ -82,28 +82,23 @@ const fruits = ['Apple', 'Orange', 'Peach', 'Pineapple', 'Watermellon', 'Dragon 
 export const MultipleSelect = () => {
   const [value, setValue] = useState([]);
   const handleChange = (v?: Array<string | number>) => {
+    console.log('onChange value',v)
     setValue(v);
-  }
-  return <div className="gio-list-demo-box">
-    <List model="multiple" value={value} onChange={handleChange}>
-      <Item value="1">
-        List Item 1
-      </Item>
-      <Item disabled value="2">
-        List Item 2
-      </Item>
-      <Item value="3">
-        List Item 3
-      </Item>
-      <Item value="4" >
-        List Item 4
-      </Item>
-      <Item value="5" >
-        List Item 5
-      </Item>
-    </List>
-  </div>
-}
+  };
+  return (
+    <div className="gio-list-demo-box">
+      <List model="multiple" max={3} value={value} onChange={handleChange} onMultipleOverflow={(v) => console.log('onMultipleOverflow value',v)}>
+        <Item value="1">List Item 1</Item>
+        <Item disabled value="2">
+          List Item 2
+        </Item>
+        <Item value="3">List Item 3</Item>
+        <Item value="4">List Item 4</Item>
+        <Item value="5">List Item 5</Item>
+      </List>
+    </div>
+  );
+};
 
 export const Drag = () => {
   const datas = useMemo(() => listOptions.map((option, i) =>

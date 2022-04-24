@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { isEqual, isNil } from 'lodash';
+import { isArray, isEqual, isNil } from 'lodash';
 import { useLocale, usePrefixCls } from '@gio-design/utils';
 import { ListPickerProps } from './interfance';
 import Popover from '../popover';
@@ -28,6 +28,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     visible: controlledVisible,
     onVisibleChange,
     onChange,
+    onMultipleOverflow,
     renderTrigger: propsRenderTrigger,
     prefixCls = 'list-picker',
     getContainer,
@@ -74,6 +75,15 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
+
+  useEffect(() => {
+    if(model === 'multiple' && isArray(value)){
+      if((value as string[])?.length >= (max ?? Infinity)){
+        onMultipleOverflow?.(value as (string | number)[])
+      }
+    }
+  }, [model,value, max, onMultipleOverflow])
+  
   // methods
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);

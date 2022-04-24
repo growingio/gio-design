@@ -1,8 +1,7 @@
 import { concat, difference, indexOf, isArray, isEmpty, isNil, isUndefined } from 'lodash';
 import toArray from 'rc-util/lib/Children/toArray';
 import React from 'react';
-import { ListProps } from '.';
-import { MaybeArray, ModelType, OptionProps } from './interfance';
+import { ListProps, MaybeArray, ModelType, OptionProps } from './interfance';
 
 type OtherProps = ListProps;
 
@@ -50,7 +49,7 @@ export function convertNodeToOption(node: React.ReactElement, otherProps?: Other
 
 export function convertChildrenToData(nodes: React.ReactNode, otherProps: OtherProps): OptionProps[] {
   const nodeOptions: OptionProps[] = [];
-  React.Children.forEach(nodes, (node: React.ReactElement) => {
+  toArray(nodes).forEach((node: React.ReactElement) => {
     if (!React.isValidElement(node)) {
       return;
     }
