@@ -5,7 +5,7 @@ import { useLocale, usePrefixCls } from '@gio-design/utils';
 import { OptionProps, ListProps } from './interface';
 import { PREFIX } from './constants';
 import Item from './Item';
-import { convertChildrenToData, convertOptions, getResultValue } from './util';
+import { callbackOnOverflow, convertChildrenToData, convertOptions, getResultValue } from './util';
 import WithRef from '../utils/withRef';
 import { ListContext } from './context';
 import useValue from './hooks/useValue';
@@ -82,15 +82,6 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
 
   const mergedOptions = useMemo(() => [...childNodeOptions, ...convertedOptions], [childNodeOptions, convertedOptions]);
 
-  // multipleOverflow hook
-  useEffect(() => {
-    if(mergedModel === 'multiple' && isArray(value)){
-      if((value as string[])?.length >= (max ?? Infinity)){
-        onMultipleOverflow?.(value as (string | number)[])
-      }
-    }
-  }, [mergedModel,value, max, onMultipleOverflow])
-  
   // set options
   const cache = useCacheOptions();
   const setOptions = useCallback(
@@ -118,6 +109,9 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
     // multiple
     if (isArray(value)) {
       const resultValue = getResultValue(value, val) as string[];
+      if (controlledOnChange) {
+        callbackOnOverflow({ value: resultValue, max, model, onMultipleOverflow });
+      }
       onChange?.(resultValue as string[], cache?.getOptionsByValue(resultValue as string[]));
     }
     // cascader
@@ -138,7 +132,7 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const renderChildren = (option: OptionProps) => {
     const renderedItem = renderItem?.(option);
     return (
-      <Item prefix={prefix?.(option)} suffix={suffix?.(option)} {...option}  strategy={itemStrategy} key={option.value}>
+      <Item prefix={prefix?.(option)} suffix={suffix?.(option)} {...option} strategy={itemStrategy} key={option.value}>
         {renderedItem}
       </Item>
     );

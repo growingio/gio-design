@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { isArray, isEqual, isNil } from 'lodash';
+import { isEqual, isNil } from 'lodash';
 import { useLocale, usePrefixCls } from '@gio-design/utils';
 import { ListPickerProps } from './interface';
 import Popover from '../popover';
@@ -12,6 +12,7 @@ import { ListContext } from '../list/context';
 import useCacheOptions from '../list/hooks/useCacheOptions';
 import { ITEM_KEY } from './Recent';
 import defaultLocaleTextObject from './locales/zh-CN';
+import { callbackOnOverflow } from '../list/util';
 
 const DEFAULT_DATA_TESTID = 'list-picker';
 
@@ -76,14 +77,6 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
 
-  useEffect(() => {
-    if(model === 'multiple' && isArray(value)){
-      if((value as string[])?.length >= (max ?? Infinity)){
-        onMultipleOverflow?.(value as (string | number)[])
-      }
-    }
-  }, [model,value, max, onMultipleOverflow])
-  
   // methods
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);
@@ -105,6 +98,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
       onChange?.(val, opts);
       handVisibleChange(false);
     } else {
+      callbackOnOverflow({ max, model, onMultipleOverflow, value: val });
       setValue(val);
     }
   };
