@@ -3,11 +3,11 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import { DownFilled } from '@gio-design/icons';
 import { addMonths, isBefore, startOfToday } from 'date-fns';
+import { format } from 'date-fns/fp';
 import Docs from './DatePickerPage';
 import Button from '../../button';
 import Toast from '../../toast';
 import DatePicker, { DatePickerProps } from '../index';
-
 import '../style';
 import '../../static-date-picker/style';
 
@@ -79,4 +79,14 @@ StaticDisabledDate.args = {
 export const StaticViewDate = StaticTemplate.bind({});
 StaticViewDate.args = {
   viewDate: addMonths(startOfToday(), 1),
+};
+export const ControlledStatic: Story = () => {
+  const [value, setValue] = useState(new Date(2022, 4, 0));
+  const [pickerMode, setMode] = useState('date');
+  return (<div>
+    <h3>pickerMode:{pickerMode},current value: {format('yyyy/MM/dd HH:MM:SS', value)}</h3>
+    <DatePicker.Static value={value} onSelect={v => setValue(v)} viewDate={value} onPanelChange={(val, mode) => {
+      setMode(mode);
+      // setValue(val);
+    }} /></div>)
 };
