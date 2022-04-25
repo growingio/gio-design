@@ -154,3 +154,20 @@ export const collectOptions = (childs?: React.ReactNode | OptionProps): OptionPr
   });
   return optionsArr;
 };
+
+/**
+ * 多选模式下，如果用户选择超出了定义的最大可选值，将会触发 onMultipleOverflow 回调函数
+ */
+export const callbackOnOverflow = (params: Pick<ListProps, 'model' | 'max' | 'value' | 'onMultipleOverflow'>): void => {
+  const { max, model, value, onMultipleOverflow } = params;
+  // prettier-ignore
+  if (
+    model === 'multiple' &&
+    Array.isArray(value) &&
+    max !== undefined &&
+    value.length >= max &&
+    onMultipleOverflow
+  ) {
+    onMultipleOverflow(value);
+  }
+};
