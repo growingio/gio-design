@@ -110,6 +110,7 @@ export interface RelativeRangeHeaderProps extends ExperimentProps, RangePickerIn
    * 结束日期固定模式改变时的回调
    */
   onModeChange: (fixedMode: boolean) => void;
+  inputDisabled?: boolean;
 }
 
 export interface RelativeRangeBodyProps extends RangePickerInnerProps, Pick<StaticDatePickerProps, 'disabledDate'> {
