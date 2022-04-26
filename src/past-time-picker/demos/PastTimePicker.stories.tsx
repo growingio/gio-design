@@ -30,8 +30,8 @@ Quick.args = {
   value: 'day:8,1',
 };
 export const QuickOptionsFilter = Template.bind({});
-QuickOptionsFilter.args={
-  quickOptionsFilter:(s: { value: string; }) =>
+QuickOptionsFilter.args = {
+  quickOptionsFilter: (s: { value: string; }) =>
     ['day:2,1', 'day:8,1', 'day:15,1', 'day:31,1'].includes(
       s.value,
     )
@@ -50,7 +50,7 @@ Relative.args = {
 export const Absolute = Template.bind({});
 Absolute.args = {
   value: `abs:${getTime(subMonths(startOfToday(), 1))},${getTime(startOfToday())}`,
-  onRangeSelect:(date:any,index:number) => console.log(date,index)
+  onRangeSelect: (date: any, index: number) => console.log(date, index)
 };
 
 export const Experiment = Template.bind({});
@@ -87,10 +87,11 @@ Modes.args = {
   modes: ['since', 'relative'],
 };
 
-export const DisabledDate = Template.bind({});
-DisabledDate.args = {
-  disabledDate: (current: Date) => differenceInDays(startOfToday(), current) > 31,
-};
+export const DisabledDate = () => {
+  const disabledDate = (current: Date) => differenceInDays(startOfToday(), current) > 31
+  return <PastTimePicker onSelect={action('selected value:')} placeholder="时间范围" disabledDate={disabledDate} />;
+}
+
 
 const StaticTemplate: Story<PastTimePickerProps> = (args) => (
   <PastTimePicker.Static onSelect={action('selected value:')} placeholder="时间范围" {...args} />

@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { useControlledState, useLocale, usePrefixCls } from '@gio-design/utils';
 import { LeftDoubleOutlined, LeftOutlined, RightOutlined, RightDoubleOutlined } from '@gio-design/icons';
 import PickerPanel from 'rc-picker/lib/PickerPanel';
 import generateDateFns from 'rc-picker/lib/generate/dateFns';
 import { Locale, PickerMode } from 'rc-picker/lib/interface';
-import { isEqual } from 'date-fns';
 import defaultLocale from './locales/zh-CN';
 import { StaticDatePickerProps } from './interfaces';
 
@@ -15,7 +14,7 @@ const Cell: React.FC<{ visible: boolean; prefixCls: string; currentDate: Date }>
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const parent = divRef.current?.parentElement;
 
     if (parent && !visible) {
@@ -25,9 +24,10 @@ const Cell: React.FC<{ visible: boolean; prefixCls: string; currentDate: Date }>
     }
   });
 
+
   return (
-    <div ref={divRef} className={`${prefixCls}-cell-inner`}>
-      {visible && currentDate.getDate()}
+    <div ref={divRef} style={{ visibility: visible ? "visible" : "hidden" }} className={`${prefixCls}-cell-inner`}>
+      {currentDate.getDate()}
     </div>
   );
 };
@@ -38,32 +38,28 @@ const StaticDatePicker: React.FC<StaticDatePickerProps> = ({
   value,
   defaultValue,
   onPanelChange,
+  onSelect,
   ...restProps
 }) => {
   const locale = useLocale<Locale>('DatePicker') || defaultLocale;
-  const [viewDate, setViewDate] = useControlledState(viewDateProp, value ?? defaultValue ?? new Date());
-
-  const [mode, setMode] = useState<PickerMode>('date');
+  const [viewDate, setViewDate] = useState(() => viewDateProp ?? value ?? defaultValue ?? new Date());
+  const [innerValue] = useControlledState(value, defaultValue);
+  const [mode] = useState<PickerMode>('date');
+  const currentPickerMode = useRef(mode);
 
   const prefixCls = usePrefixCls('picker');
 
-  const isSameYearAndMonth = (currentDate: Date) =>
-    isEqual(
-      new Date(currentDate.getFullYear(), currentDate.getMonth()),
-      new Date(viewDate.getFullYear(), viewDate.getMonth())
-    );
-
-  const omitOtherDate = (currentDate: Date) => {
-    if (isSameYearAndMonth(currentDate)) {
-      return <Cell currentDate={currentDate} prefixCls={prefixCls} visible />;
-    }
-    return <Cell currentDate={currentDate} prefixCls={prefixCls} visible={false} />;
+  const isSameYearMonth = (one: Date, two: Date) => one.getFullYear() === two.getFullYear() && one.getMonth() === two.getMonth()
+  const isOmittedDate = (currentDate: Date, currentMode: PickerMode) => currentMode === 'date' && !isSameYearMonth(currentDate, viewDate)
+  const dateRender = (currentDate: Date) => {
+    const visible = !isOmittedDate(currentDate, 'date');
+    // 移除非当前月份的日期
+    return <Cell currentDate={currentDate} prefixCls={prefixCls} visible={visible} />;
   };
   const disabledDate = (currentDate: Date) => {
-    if (mode === 'date') {
-      if (!isSameYearAndMonth(currentDate)) {
-        return true;
-      }
+    // rc-picker/panel 日期点击事件是绑定在外层元素上，设置不展示的日期为disabled，来禁止点击事件
+    if (isOmittedDate(currentDate, currentPickerMode.current)) {
+      return true;
     }
     if (typeof disabledDateProp === 'function') {
       return disabledDateProp(currentDate);
@@ -74,17 +70,19 @@ const StaticDatePicker: React.FC<StaticDatePickerProps> = ({
   return (
     <PickerPanel<Date>
       data-testid="static-date-picker"
-      dateRender={omitOtherDate}
+      dateRender={dateRender}
       disabledDate={disabledDate}
-      value={value}
+      value={innerValue}
       defaultValue={defaultValue}
       {...restProps}
       pickerValue={viewDate}
-      onPickerValueChange={(date) => setViewDate(date)}
+      onSelect={(date) => { onSelect?.(date); }}
+      onChange={(date) => { setViewDate(date) }}
       locale={locale}
       prefixCls={prefixCls}
       onPanelChange={(changedValue, changedMode: PickerMode) => {
-        setMode(changedMode);
+        currentPickerMode.current = changedMode;
+        setViewDate(changedValue);
         onPanelChange?.(changedValue, changedMode);
       }}
       picker={mode}
