@@ -1,3 +1,13 @@
+## [23.0.1](https://github.com/growingio/gio-design/compare/v23.0.0...v23.0.1) (2022-04-27)
+
+
+### Bug Fixes
+
+* **date-picker:** fix date-picker month/year panel cannt back to datepanel error ([#1993](https://github.com/growingio/gio-design/issues/1993)) ([59638ee](https://github.com/growingio/gio-design/commit/59638ee81f674a1af91a3822c90ca7ae1b17d5f2))
+* **List, ListPicker:** not use `useEffect` to call `onMultipleOverflow` ([#1989](https://github.com/growingio/gio-design/issues/1989)) ([9f09f5f](https://github.com/growingio/gio-design/commit/9f09f5fba3b0ab363eaa81e0ffabfff3135bbe9a))
+* **list:** when list multiple max, trigger onMultipleOverflow ([#1985](https://github.com/growingio/gio-design/issues/1985)) ([883a19c](https://github.com/growingio/gio-design/commit/883a19c3971ff444c3645aa07c4fd2dba9d2f638))
+* **switch:** fix switch of displayName ([#1983](https://github.com/growingio/gio-design/issues/1983)) ([31d03a5](https://github.com/growingio/gio-design/commit/31d03a5c79aa0117b38fb52b4c3e5d93455d22d0))
+
 # [23.0.0](https://github.com/growingio/gio-design/compare/v22.15.2...v23.0.0) (2022-04-20)
 
 
