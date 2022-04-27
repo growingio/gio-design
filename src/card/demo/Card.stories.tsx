@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { CloseOutlined, MoreOutlined, PlusCircleFilled, UserOutlined } from '@gio-design/icons';
+import { CloseOutlined, MoreVerticalOutlined, PlusCircleFilled, UserOutlined } from '@gio-design/icons';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import Docs from './CardPage';
 import { CardProps } from '../interfaces';
@@ -41,7 +41,7 @@ Default.args = {
         description="卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题"
         action={
           <Button.IconButton size="small" type="text">
-            <MoreOutlined />
+            <MoreVerticalOutlined />
           </Button.IconButton>
         }
       />
@@ -65,7 +65,7 @@ export const BoxShadow = () => (
       description="卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题卡片副标题"
       action={
         <Button.IconButton size="small" type="text">
-          <MoreOutlined />
+          <MoreVerticalOutlined />
         </Button.IconButton>
       }
     />
@@ -93,7 +93,7 @@ export const WithoutContent = () => (
       description="卡片副标题"
       action={
         <Button.IconButton size="small" type="text">
-          <MoreOutlined />
+          <MoreVerticalOutlined />
         </Button.IconButton>
       }
     />
@@ -111,7 +111,7 @@ export const Disabled = () => (
       description="卡片副标题"
       action={
         <Button.IconButton size="small" type="text" onClick={() => alert('action click')}>
-          <MoreOutlined />
+          <MoreVerticalOutlined />
         </Button.IconButton>
       }
     />
@@ -128,7 +128,7 @@ export const GridCard = () => (
             description="卡片副标题"
             action={
               <Button.IconButton size="small" type="text">
-                <MoreOutlined />
+                <MoreVerticalOutlined />
               </Button.IconButton>
             }
           />
@@ -154,7 +154,7 @@ export const GridCard = () => (
             description="卡片副标题"
             action={
               <Button.IconButton size="small" type="text">
-                <MoreOutlined />
+                <MoreVerticalOutlined />
               </Button.IconButton>
             }
           />
@@ -181,7 +181,7 @@ export const GridCard = () => (
             description="卡片副标题"
             action={
               <Button.IconButton size="small" type="text">
-                <MoreOutlined />
+                <MoreVerticalOutlined />
               </Button.IconButton>
             }
           />
@@ -203,7 +203,7 @@ export const FullWidthContent = () => (
       description="卡片副标题"
       action={
         <Button.IconButton size="small" type="text">
-          <MoreOutlined />
+          <MoreVerticalOutlined />
         </Button.IconButton>
       }
     />
@@ -229,7 +229,7 @@ export const Clickable = () => {
           description="卡片副标题"
           action={
             <Button.IconButton size="small" type="text">
-              <MoreOutlined />
+              <MoreVerticalOutlined />
             </Button.IconButton>
           }
         />
@@ -325,7 +325,7 @@ export const ComplexCard = () => {
               }
             >
               <Button.IconButton size="small" type="secondary">
-                <MoreOutlined />
+                <MoreVerticalOutlined />
               </Button.IconButton>
             </Dropdown>
           </>

@@ -1,4 +1,4 @@
-import { LeftDoubleOutlined, LeftOutlined, RightDoubleOutlined, RightOutlined } from '@gio-design/icons';
+import { ArrowsLeftOutlined, ArrowLeftOutlined, ArrowsRightOutlined, ArrowRightOutlined } from '@gio-design/icons';
 import React, { useContext } from 'react';
 import { Button } from '../index';
 import { PaginationItemProps, PaginationItemType } from './interface';
@@ -19,10 +19,10 @@ const PaginationItem: React.FC<PaginationItemProps> = (props) => {
   const { prefixCls } = useContext(PaginationContext);
 
   const icon = {
-    [PaginationItemType.First]: <LeftDoubleOutlined />,
-    [PaginationItemType.Previous]: <LeftOutlined />,
-    [PaginationItemType.Next]: <RightOutlined />,
-    [PaginationItemType.Last]: <RightDoubleOutlined />,
+    [PaginationItemType.First]: <ArrowsLeftOutlined />,
+    [PaginationItemType.Previous]: <ArrowLeftOutlined />,
+    [PaginationItemType.Next]: <ArrowRightOutlined />,
+    [PaginationItemType.Last]: <ArrowsRightOutlined />,
   };
 
   const isPage = type === PaginationItemType.Page;

@@ -4,14 +4,14 @@ import { Meta } from '@storybook/react/types-6-0';
 import {
   DownloadOutlined,
   EmailOutlined,
-  FullScreenOutlined,
+  ExpandOutlined,
   PlusOutlined,
   ReloadOutlined,
-  SettingOutlined,
-  MoreHorizonalOutlined,
+  GearOutlined,
+  MoreOutlined,
   DeleteOutlined,
-  GeoPropertyOutlined,
-  ListTypeOutlined,
+  GlobeOutlined,
+  ArrayOutlined,
 } from '@gio-design/icons';
 import Docs from './DropdownPage';
 import Dropdown from '../index';
@@ -47,7 +47,7 @@ export const Default = () => (
         <List.Item prefix={<ReloadOutlined size="14px" />} value="1">
           刷新数据
         </List.Item>
-        <List.Item prefix={<FullScreenOutlined size="14px" />} value="2">
+        <List.Item prefix={<ExpandOutlined size="14px" />} value="2">
           进入全屏
         </List.Item>
         <List.Item prefix={<DownloadOutlined size="14px" />} value="3">
@@ -56,7 +56,7 @@ export const Default = () => (
       </List>
     }
   >
-    <Button type="secondary" prefix={<MoreHorizonalOutlined />}>
+    <Button type="secondary" prefix={<MoreOutlined />}>
       更多
     </Button>
   </Dropdown>
@@ -81,7 +81,7 @@ export const Confirm = () => (
       </List>
     }
   >
-    <Button type="secondary" prefix={<MoreHorizonalOutlined />}>
+    <Button type="secondary" prefix={<MoreOutlined />}>
       更多
     </Button>
   </Dropdown>
@@ -100,13 +100,13 @@ export const Cascader = () => (
         >
           <List>
             <List.Item value="4-1" label="创建邮件推送" prefix={<PlusOutlined size="14px" />} />
-            <List.Item value="4-1" label="邮件推送管理" prefix={<SettingOutlined size="14px" />} />
+            <List.Item value="4-1" label="邮件推送管理" prefix={<GearOutlined size="14px" />} />
           </List>
         </CascaderItem>
       </List>
     }
   >
-    <Button type="secondary" prefix={<MoreHorizonalOutlined />}>
+    <Button type="secondary" prefix={<MoreOutlined />}>
       更多
     </Button>
   </Dropdown>
@@ -125,7 +125,7 @@ export const Disabled = () => (
       </List>
     }
   >
-    <Button type="secondary" prefix={<MoreHorizonalOutlined />}>
+    <Button type="secondary" prefix={<MoreOutlined />}>
       更多
     </Button>
   </Dropdown>
@@ -138,7 +138,7 @@ export const CustomItem = () => (
         <CascaderItem
           label="系统语言"
           value="language"
-          prefix={<GeoPropertyOutlined size="14px" />}
+          prefix={<GlobeOutlined size="14px" />}
           // 阻止 Dropdown 自动关闭
           onClick={(_, event) => event.stopPropagation()}
         >
@@ -154,7 +154,7 @@ export const CustomItem = () => (
         >
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ color: '#242e59' }}>
-              <ListTypeOutlined size="1em" style={{ margin: '0 8px 0 0' }} />
+              <ArrayOutlined size="1em" style={{ margin: '0 8px 0 0' }} />
               版本信息
             </div>
             <div style={{ color: '#a3adc8', fontSize: '12px' }}>当前版本：op-2.6.0</div>
@@ -163,7 +163,7 @@ export const CustomItem = () => (
       </List>
     }
   >
-    <Button type="secondary" prefix={<MoreHorizonalOutlined />}>
+    <Button type="secondary" prefix={<MoreOutlined />}>
       更多
     </Button>
   </Dropdown>

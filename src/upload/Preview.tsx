@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useContext } from 'react';
 import classnames from 'classnames';
-import { CheckCircleFilled, CloseCircleFilled } from '@gio-design/icons';
+import { SuccessFilled, ErrorFilled } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
 import Button from '../button';
 import Text from '../typography/Text';
@@ -63,8 +63,8 @@ export const PreviewForNotImage: React.FC<IPreviewProps> = ({ file, onReSelect, 
       <div className={fileNameCls}>{file?.name}</div>
       <div className="drag-file-preview">
         <div className="drag-file-preview-icon">
-          {file.status === STATUS_SUCCESS && <CheckCircleFilled color="#008a56" size="14px" />}
-          {file.status === STATUS_ERROR && <CloseCircleFilled color="#ec134b" size="14px" />}
+          {file.status === STATUS_SUCCESS && <SuccessFilled color="#008a56" size="14px" />}
+          {file.status === STATUS_ERROR && <ErrorFilled color="#ec134b" size="14px" />}
         </div>
         <div onClick={(e: any) => e.stopPropagation()}>
           <Text style={{ zIndex: 1 }} className="drag-file-preview-text">

@@ -1,13 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import {
-  RightDoubleOutlined,
+  ArrowsRightOutlined,
   HomeOutlined,
   UserOutlined,
   TagOutlined,
   DeleteOutlined,
   AndroidFilled,
-  IosFilled,
+  AppleFilled,
 } from '@gio-design/icons';
 import List from '../List';
 import { ListProps, OptionProps } from '../index';
@@ -55,7 +55,7 @@ Default.args = {
     <Item value="4" prefix={<HomeOutlined />}>
       List Item 4
     </Item>,
-    <Item value="5" suffix={<RightDoubleOutlined />}>
+    <Item value="5" suffix={<ArrowsRightOutlined />}>
       List Item 5
     </Item>,
     <Item
@@ -99,12 +99,12 @@ const fruits = ['Apple', 'Orange', 'Peach', 'Pineapple', 'Watermellon', 'Dragon 
 export const MultipleSelect = () => {
   const [value, setValue] = useState([]);
   const handleChange = (v?: Array<string | number>) => {
-    console.log('onChange value',v)
+    console.log('onChange value', v)
     setValue(v);
   };
   return (
     <div className="gio-list-demo-box">
-      <List model="multiple" max={3} value={value} onChange={handleChange} onMultipleOverflow={(v) => console.log('onMultipleOverflow value',v)}>
+      <List model="multiple" max={3} value={value} onChange={handleChange} onMultipleOverflow={(v) => console.log('onMultipleOverflow value', v)}>
         <Item value="1">List Item 1</Item>
         <Item disabled value="2">
           List Item 2
@@ -294,7 +294,7 @@ export const AvatarWithTextAndIcon = () => (
 export const WithIconAndSwitch = () => {
   const items = [
     { value: 'Android', state: false, icon: <AndroidFilled /> },
-    { value: 'IOS', state: true, icon: <IosFilled /> },
+    { value: 'IOS', state: true, icon: <AppleFilled /> },
   ];
   const updatePinState = (value: boolean, idx: number) => {
     items[idx] = { ...items[idx], state: value };
@@ -315,7 +315,7 @@ export const WithIconAndSwitch = () => {
                 size="small"
               />
             }
-            prefix={<Avatar size="medium" backgroundColor="#dedede" mode="circle" icon={<AndroidFilled />} />}
+            prefix={<Avatar size="medium" backgroundColor="#dedede" mode="circle" icon={itm.icon} />}
           />
         ))}
       </List>

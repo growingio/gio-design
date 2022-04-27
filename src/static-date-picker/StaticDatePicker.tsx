@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { useControlledState, useLocale, usePrefixCls } from '@gio-design/utils';
-import { LeftDoubleOutlined, LeftOutlined, RightOutlined, RightDoubleOutlined } from '@gio-design/icons';
+import { ArrowsLeftOutlined, ArrowLeftOutlined, ArrowRightOutlined, ArrowsRightOutlined } from '@gio-design/icons';
 import PickerPanel from 'rc-picker/lib/PickerPanel';
 import generateDateFns from 'rc-picker/lib/generate/dateFns';
 import { Locale, PickerMode } from 'rc-picker/lib/interface';
@@ -89,10 +89,10 @@ const StaticDatePicker: React.FC<StaticDatePickerProps> = ({
       generateConfig={generateDateFns}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      superPrevIcon={<LeftDoubleOutlined />}
-      prevIcon={<LeftOutlined />}
-      nextIcon={<RightOutlined />}
-      superNextIcon={<RightDoubleOutlined />}
+      superPrevIcon={<ArrowsLeftOutlined />}
+      prevIcon={<ArrowLeftOutlined />}
+      nextIcon={<ArrowRightOutlined />}
+      superNextIcon={<ArrowsRightOutlined />}
     />
   );
 };

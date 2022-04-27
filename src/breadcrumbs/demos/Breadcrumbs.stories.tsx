@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { HomeOutlined, RightOutlined } from '@gio-design/icons';
+import { HomeOutlined, ArrowRightOutlined } from '@gio-design/icons';
 import Breadcrumbs, { BreadcrumbsProps } from '..';
 import Link from '../../link';
 import '../style';
@@ -39,7 +39,7 @@ export const Separator = () => (
       <span>Current</span>
     </Breadcrumbs>
     <br />
-    <Breadcrumbs separator={<RightOutlined size="14px" />}>
+    <Breadcrumbs separator={<ArrowRightOutlined size="14px" />}>
       <Link href="/?path=/story/upgraded-breadcrumbs--default">Home</Link>
       <Link href="/?path=/story/upgraded-breadcrumbs--default">Second</Link>
       <span>Current</span>

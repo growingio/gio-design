@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
-import { DownOutlined, FoldOutlined } from '@gio-design/icons';
+import { ArrowDownOutlined, ClockOutlined } from '@gio-design/icons';
 import { format, isEqual, startOfDay, startOfToday, startOfWeek, subMonths } from 'date-fns';
 import Docs from './DateRangePickerPage';
 import DateRangePicker, { DateRangePickerProps, StaticDateRangePickerProps } from '../index';
@@ -69,8 +69,8 @@ Format.args = {
 export const PrefixAndSuffix = Template.bind({});
 PrefixAndSuffix.args = {
   defaultValue: [new Date(), new Date()],
-  prefix: <FoldOutlined />,
-  suffix: <DownOutlined />
+  prefix: <ClockOutlined />,
+  suffix: <ArrowDownOutlined />
 };
 
 export const OnSelectAndOnClose = Template.bind({});

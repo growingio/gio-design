@@ -14,7 +14,6 @@ import staticPastTimePickerLocale from '../static-past-time-picker/locales/en-US
 import filterPickerLocale from '../legacy/filter-picker/locales/en-US';
 import formLocale from '../form/locales/en-US';
 import listLocale from '../list/locales/en-US';
-import panelLocale from '../panel/locales/en-US';
 import basePickerLocale from '../legacy/filter-picker/components/property-selector/components/base-picker/locales/en-US';
 import propertyPickerLocale from '../legacy/filter-picker/components/property-selector/locales/en-US';
 import popConfirmLocale from '../pop-confirm/locales/en-US';
@@ -65,9 +64,6 @@ export const locale: Locale = {
   },
   List: {
     ...listLocale,
-  },
-  Panel: {
-    ...panelLocale,
   },
   BasePicker: {
     ...basePickerLocale,

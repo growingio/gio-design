@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { noop, pick, get } from 'lodash';
-import { DragMoveFilled, CloseCircleFilled } from '@gio-design/icons';
+import { DragOutlined, ErrorFilled } from '@gio-design/icons';
 
 const bemClsFactor = (blockName: string) => (elemName?: string, modifierName?: string) => {
   const elemName_ = elemName ? `__${elemName}` : '';
@@ -58,7 +58,7 @@ class SiderSelectedItem extends React.PureComponent<SiderSelectedItemProps, any>
       >
         {get(item, 'canDrag') !== false && (
           <IconCircle className={classnames({ selected: item.value === props.selected, collapsed: props.collapsed })}>
-            <DragMoveFilled size="14px" className="icon-drag" />
+            <DragOutlined size="14px" className="icon-drag" />
           </IconCircle>
         )}
 
@@ -77,7 +77,7 @@ class SiderSelectedItem extends React.PureComponent<SiderSelectedItemProps, any>
           })}
           aria-hidden="true"
         >
-          <CloseCircleFilled size="14px" color="#313E75" />
+          <ErrorFilled size="14px" color="#313E75" />
         </span>
       </div>
     );

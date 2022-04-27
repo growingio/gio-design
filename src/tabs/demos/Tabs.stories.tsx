@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import {
-  EventAnalysisOutlined,
-  FunnelAnalysisOutlined,
-  DistributionAnalysisOutlined,
-  EventflowOutlined,
+  ColumnChartOutlined,
+  FunnelOutlined,
+  SitemapOutlined,
+  RouteOutlined,
   NumberChartOutlined,
 } from '@gio-design/icons';
 import { action } from '@storybook/addon-actions';
@@ -60,11 +60,11 @@ Default.args = {
 export const WithIcon = () => (
   <div>
     <Tabs defaultValue="1">
-      <Tabs.Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" />
+      <Tabs.Tab label="选项1" prefix={<ColumnChartOutlined />} value="1" key="1" />
       <Tabs.Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" />
-      <Tabs.Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
-      <Tabs.Tab label="选项4" prefix={<DistributionAnalysisOutlined />} value="4" key="4" />
-      <Tabs.Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled />
+      <Tabs.Tab label="选项3" prefix={<FunnelOutlined />} value="3" key="3" />
+      <Tabs.Tab label="选项4" prefix={<SitemapOutlined />} value="4" key="4" />
+      <Tabs.Tab label="选项5" prefix={<RouteOutlined />} value="5" key="5" disabled />
     </Tabs>
   </div>
 );
@@ -72,11 +72,11 @@ export const WithIcon = () => (
 export const IconOnly = () => (
   <div>
     <Tabs defaultValue="1">
-      <Tabs.Tab prefix={<EventAnalysisOutlined />} value="1" key="1" />
+      <Tabs.Tab prefix={<ColumnChartOutlined />} value="1" key="1" />
       <Tabs.Tab prefix={<NumberChartOutlined />} value="2" key="2" />
-      <Tabs.Tab prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
-      <Tabs.Tab prefix={<DistributionAnalysisOutlined />} value="4" key="4" />
-      <Tabs.Tab prefix={<EventflowOutlined />} value="5" key="5" disabled />
+      <Tabs.Tab prefix={<FunnelOutlined />} value="3" key="3" />
+      <Tabs.Tab prefix={<SitemapOutlined />} value="4" key="4" />
+      <Tabs.Tab prefix={<RouteOutlined />} value="5" key="5" disabled />
     </Tabs>
   </div>
 );
@@ -88,19 +88,19 @@ export const ScrollOverflow = () => {
   return (
     <Card style={{ width: '320px' }}>
       <Tabs defaultValue="1" size="small" onChange={handleChange} tabListStyle={{ borderBottom: '1px solid #adb2c2' }}>
-        <Tabs.Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1">
+        <Tabs.Tab label="选项1" prefix={<ColumnChartOutlined />} value="1" key="1">
           <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }}>选项{index}</div>
         </Tabs.Tab>
         <Tabs.Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2">
           <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }}>选项{index}</div>
         </Tabs.Tab>
-        <Tabs.Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3">
+        <Tabs.Tab label="选项3" prefix={<FunnelOutlined />} value="3" key="3">
           <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }}>选项{index}</div>
         </Tabs.Tab>
-        <Tabs.Tab label="选项4" prefix={<DistributionAnalysisOutlined />} value="4" key="4">
+        <Tabs.Tab label="选项4" prefix={<SitemapOutlined />} value="4" key="4">
           <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }}>选项{index}</div>
         </Tabs.Tab>
-        <Tabs.Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled>
+        <Tabs.Tab label="选项5" prefix={<RouteOutlined />} value="5" key="5" disabled>
           <div style={{ fontSize: '20px', margin: '0 auto', padding: '50px 20px' }}>选项{index}</div>
         </Tabs.Tab>
       </Tabs>
@@ -112,19 +112,19 @@ export const ControlledValue = () => {
   return (
     <div>
       <Tabs value={tabValue} onChange={setTabValue}>
-        <Tabs.Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1">
+        <Tabs.Tab label="选项1" prefix={<ColumnChartOutlined />} value="1" key="1">
           <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }}>选项1</div>
         </Tabs.Tab>
         <Tabs.Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2">
           <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }}>选项2</div>
         </Tabs.Tab>
-        <Tabs.Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3">
+        <Tabs.Tab label="选项3" prefix={<FunnelOutlined />} value="3" key="3">
           <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }}>选项3</div>
         </Tabs.Tab>
-        <Tabs.Tab label="选项4" prefix={<DistributionAnalysisOutlined />} value="4" key="4">
+        <Tabs.Tab label="选项4" prefix={<SitemapOutlined />} value="4" key="4">
           <div style={{ backgroundColor: '#f7f8fc', fontSize: '20px', margin: '0 auto', padding: '20px' }}>选项4</div>
         </Tabs.Tab>
-        <Tabs.Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled>
+        <Tabs.Tab label="选项5" prefix={<RouteOutlined />} value="5" key="5" disabled>
           选项5
         </Tabs.Tab>
       </Tabs>
@@ -135,19 +135,19 @@ export const ControlledValue = () => {
 export const Size = () => (
   <div>
     <Tabs size="small" defaultValue="1" style={{ backgroundColor: '#f7f8fc' }} tabListStyle={{ color: '#f7f8fc' }}>
-      <Tabs.Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" />
+      <Tabs.Tab label="选项1" prefix={<ColumnChartOutlined />} value="1" key="1" />
       <Tabs.Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" />
-      <Tabs.Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
-      <Tabs.Tab label="选项4" prefix={<DistributionAnalysisOutlined />} value="4" key="4" />
-      <Tabs.Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled />
+      <Tabs.Tab label="选项3" prefix={<FunnelOutlined />} value="3" key="3" />
+      <Tabs.Tab label="选项4" prefix={<SitemapOutlined />} value="4" key="4" />
+      <Tabs.Tab label="选项5" prefix={<RouteOutlined />} value="5" key="5" disabled />
     </Tabs>
     <Divider />
     <Tabs size="normal" defaultValue="1" style={{ backgroundColor: '#f7f8fc' }}>
-      <Tabs.Tab label="选项1" prefix={<EventAnalysisOutlined />} value="1" key="1" />
+      <Tabs.Tab label="选项1" prefix={<ColumnChartOutlined />} value="1" key="1" />
       <Tabs.Tab label="选项2" prefix={<NumberChartOutlined />} value="2" key="2" />
-      <Tabs.Tab label="选项3" prefix={<FunnelAnalysisOutlined />} value="3" key="3" />
-      <Tabs.Tab label="选项4" prefix={<DistributionAnalysisOutlined />} value="4" key="4" />
-      <Tabs.Tab label="选项5" prefix={<EventflowOutlined />} value="5" key="5" disabled />
+      <Tabs.Tab label="选项3" prefix={<FunnelOutlined />} value="3" key="3" />
+      <Tabs.Tab label="选项4" prefix={<SitemapOutlined />} value="4" key="4" />
+      <Tabs.Tab label="选项5" prefix={<RouteOutlined />} value="5" key="5" disabled />
     </Tabs>
   </div>
 );

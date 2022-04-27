@@ -1,0 +1,31 @@
+@import './mixin/icon.less';
+
+@icon-prefix: ~'gio-icon';
+
+.@{icon-prefix} {
+  .icon-mixin();
+}
+.@{icon-prefix}-rotating {
+  display: inline-block;
+  -webkit-animation: rotating 1s linear infinite;
+  animation: rotating 1s linear infinite;
+  &::before {
+    display: inline-block;
+    -webkit-animation: rotating 1s linear infinite;
+    animation: rotating 1s linear infinite;
+  }
+}
+
+@-webkit-keyframes rotating {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

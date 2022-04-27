@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import { CheckCircleOutlined, CheckOutlined } from '@gio-design/icons';
+import { SuccessOutlined, CheckOutlined } from '@gio-design/icons';
 import Docs from './AlertPage';
 import Alert from '../index';
 import '../style';
@@ -69,7 +69,7 @@ export const Icons = () => (
       description="This is a success alert"
       type="success"
       showIcon
-      icon={<CheckCircleOutlined />}
+      icon={<SuccessOutlined />}
     />
   </>
 );
