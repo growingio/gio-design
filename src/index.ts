@@ -60,4 +60,3 @@ export { default as PastTimePicker, PastTimePickerProps } from './past-time-pick
 export { default as TreeSelect, TreeNode, LabeledValue, SelectValue, TreeSelectProps } from './tree-select';
 export { default as Steps, StepsProps, StepProps } from './steps';
 export { default as ListPicker, ListPickerProps } from './list-picker';
-export { default as Panel, PanelProps } from './panel';
