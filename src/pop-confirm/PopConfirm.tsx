@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import { WarningCircleFilled } from '@gio-design/icons';
+import { WarningFilled } from '@gio-design/icons';
 import { useControlledState, useLocale, usePrefixCls } from '@gio-design/utils';
 import { isUndefined } from 'lodash';
 import Button from '../button';
@@ -67,7 +67,7 @@ const PopConfirm: React.FC<PopConfirmProps> = (props) => {
     <div className={`${prefixCls}`}>
       <div className={`${prefixCls}__content`}>
         <div className={`${prefixCls}__content-title`}>
-          <span className={`${prefixCls}__content-title-icon`}>{icon || <WarningCircleFilled />}</span>
+          <span className={`${prefixCls}__content-title-icon`}>{icon || <WarningFilled />}</span>
           <span className={`${prefixCls}__content-title-text`}>{title}</span>
         </div>
         {desc && <div className={`${prefixCls}__content-desc`}>{desc}</div>}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { AppOutlined, MapChartOutlined, CalendarOutlined } from '@gio-design/icons';
+import { CardOutlined, RelationOutlined, CalendarOutlined } from '@gio-design/icons';
 import Menu from '../index';
 import { IMenuProps, IMenuItemProps, ISubMenuProps } from '../interface';
 import Docs from './MenuPage';
@@ -40,7 +40,7 @@ export const Vertical: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (arg
           disabled={disabled}
           key="sub-1"
           title="功能名称-1"
-          icon={<AppOutlined size="1em" />}
+          icon={<CardOutlined size="1em" />}
           expandIcon={expandIcon}
         >
           <Menu.MenuItem key="sub-menu-1-1">功能名称-1-1</Menu.MenuItem>
@@ -49,18 +49,18 @@ export const Vertical: Story<IMenuProps & ISubMenuProps & IMenuItemProps> = (arg
         <Menu.SubMenu
           key="sub-2"
           title="功能名称-2功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1"
-          icon={<MapChartOutlined size="1em" />}
+          icon={<RelationOutlined size="1em" />}
         >
           <Menu.MenuItem key="sub-menu-2-1">
             功能名称-2-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1功能名称-1-1
           </Menu.MenuItem>
           <Menu.MenuItem key="sub-menu-2-2">功能名称-2-2</Menu.MenuItem>
         </Menu.SubMenu>
-        <Menu.SubMenu key="sub-3" title="功能名称-3" icon={<AppOutlined size="1em" />}>
+        <Menu.SubMenu key="sub-3" title="功能名称-3" icon={<CardOutlined size="1em" />}>
           <Menu.MenuItem key="sub-menu-3-1">功能名称-3-1</Menu.MenuItem>
           <Menu.MenuItem key="sub-menu-3-2">功能名称-3-2</Menu.MenuItem>
         </Menu.SubMenu>
-        <Menu.SubMenu key="sub-4" title="功能名称-4" icon={<AppOutlined size="1em" />}>
+        <Menu.SubMenu key="sub-4" title="功能名称-4" icon={<CardOutlined size="1em" />}>
           <Menu.MenuItem key="sub-menu-4-1">功能名称-4-1</Menu.MenuItem>
           <Menu.MenuItem key="sub-menu-4-2">功能名称-4-2</Menu.MenuItem>
         </Menu.SubMenu>

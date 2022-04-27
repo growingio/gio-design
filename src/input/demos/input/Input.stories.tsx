@@ -1,4 +1,4 @@
-import { FunnelAnalysisOutlined, UserOutlined } from '@gio-design/icons';
+import { FunnelOutlined, UserOutlined } from '@gio-design/icons';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React, { useRef, useState } from 'react';
@@ -37,7 +37,7 @@ Default.args = {
 };
 
 export const IconsInput = () => (
-  <Input placeholder="Enter or search content" prefix={<UserOutlined />} suffix={<FunnelAnalysisOutlined />} />
+  <Input placeholder="Enter or search content" prefix={<UserOutlined />} suffix={<FunnelOutlined />} />
 );
 
 export const InputRef = () => {

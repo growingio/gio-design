@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { ListOutlined, PushMsgFilled } from '@gio-design/icons';
+import { ListOutlined, GameOutlined } from '@gio-design/icons';
 import Switch from '../index';
 import { SwitchProps } from '../interface';
 import Docs from './SwitchPage';
@@ -328,7 +328,7 @@ const JSXTemplateGroup: Story<SwitchProps> = (args) => {
     <>
       <Switch {...args} size="normal" value={selectedValue} onChange={onChange}>
         {tabs.map((t) => (
-          <Switch.Item value={t.value} key={t.key} prefix={<PushMsgFilled />}>
+          <Switch.Item value={t.value} key={t.key} prefix={<GameOutlined />}>
             {t.value}
           </Switch.Item>
         ))}

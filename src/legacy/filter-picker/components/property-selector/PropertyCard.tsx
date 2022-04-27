@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  NumberTypeOutlined,
-  ListTypeOutlined,
-  StringTypeOutlined,
-  DateTypeOutlined,
-  BooleanTypeOutlined,
+  NumberOutlined,
+  ListOutlined,
+  StringOutlined,
+  DateOutlined,
+  BooleanOutlined,
 } from '@gio-design/icons';
 import { useLocale, usePrefixCls } from '@gio-design/utils';
 import { PropertyCardProps } from './interfaces';
@@ -20,12 +20,12 @@ function PropertyCard(props: PropertyCardProps) {
   const { stringText, intText, doubleText, dateText, booleanText, listText } = { ...defaultLocale, ...locale } as any;
 
   const ValueTypeMap: { [key: string]: [string, React.ReactElement] } = {
-    string: [stringText, <StringTypeOutlined size="14px" />],
-    int: [intText, <NumberTypeOutlined size="14px" />],
-    double: [doubleText, <NumberTypeOutlined size="14px" />],
-    date: [dateText, <DateTypeOutlined size="14px" />],
-    boolean: [booleanText, <BooleanTypeOutlined size="14px" />],
-    list: [listText, <ListTypeOutlined size="14px" />],
+    string: [stringText, <StringOutlined size="14px" />],
+    int: [intText, <NumberOutlined size="14px" />],
+    double: [doubleText, <NumberOutlined size="14px" />],
+    date: [dateText, <DateOutlined size="14px" />],
+    boolean: [booleanText, <BooleanOutlined size="14px" />],
+    list: [listText, <ListOutlined size="14px" />],
   };
 
   const { fetchData, nodeData } = props;

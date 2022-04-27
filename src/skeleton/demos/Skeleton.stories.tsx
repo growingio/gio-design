@@ -4,7 +4,7 @@ import Skeleton, { SkeletonProps, SkeletonImageProps } from '../index';
 import Docs from './SkeletonPage';
 import '../style';
 import SkeletonImage from '../Image'
-import { Toggles } from '../..';
+import { Toggle } from '../..';
 
 export default {
   title: 'upgraded/Skeleton',
@@ -64,7 +64,7 @@ export const ImageAndParagraph = () => {
   const [loading, setLoading] = useState(true);
 
   return (<div>
-    <Toggles defaultOn onChange={(e) => {
+    <Toggle defaultOn onChange={(e) => {
       setLoading(e.target.checked)
     }} />
     <hr />

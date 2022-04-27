@@ -1,54 +1,54 @@
 import React from 'react';
 import {
-  DevicePropertyOutlined,
-  ElementPropertyOutlined,
-  EventPropertyOutlined,
-  GeoPropertyOutlined,
-  ItemPropertyOutlined,
-  PagePropertyOutlined,
-  UserOriginOutlined,
-  UserPropertyOutlined,
+  MobileOutlined,
+  ClickOutlined,
+  EventOutlined,
+  GlobeOutlined,
+  RelationOutlined,
+  BrowserOutlined,
+  CompassOutlined,
+  UserTieOutlined,
   TagOutlined,
-  VirtualPropertyOutlined,
+  CodeOutlined,
 } from '@gio-design/icons';
 
 const IconRender = (props: { group?: string }) => {
   const { group = '' } = props;
   switch (group) {
     case 'cs':
-      return <EventPropertyOutlined />;
+      return <EventOutlined />;
     case 'ads':
-      return <EventPropertyOutlined />;
+      return <EventOutlined />;
     case 'page':
-      return <PagePropertyOutlined />;
+      return <BrowserOutlined />;
     case 'app':
-      return <EventPropertyOutlined />;
+      return <EventOutlined />;
     case 'event':
-      return <EventPropertyOutlined />;
+      return <EventOutlined />;
     case 'item':
-      return <ItemPropertyOutlined />;
+      return <RelationOutlined />;
     case 'people':
-      return <PagePropertyOutlined />;
+      return <BrowserOutlined />;
     case 'visitor':
-      return <EventPropertyOutlined />;
+      return <EventOutlined />;
     case 'element':
-      return <ElementPropertyOutlined />;
+      return <ClickOutlined />;
     case 'conversion':
-      return <PagePropertyOutlined />;
+      return <BrowserOutlined />;
     case 'user':
-      return <UserPropertyOutlined />;
+      return <UserTieOutlined />;
     case 'tag':
       return <TagOutlined />;
     case 'geo':
-      return <GeoPropertyOutlined />;
+      return <GlobeOutlined />;
     case 'device':
-      return <DevicePropertyOutlined />;
+      return <MobileOutlined />;
     case 'origin':
-      return <UserOriginOutlined />;
+      return <CompassOutlined />;
     case 'virtual':
-      return <VirtualPropertyOutlined />;
+      return <CodeOutlined />;
     default:
-      return <EventPropertyOutlined />;
+      return <EventOutlined />;
   }
 };
 export default IconRender;

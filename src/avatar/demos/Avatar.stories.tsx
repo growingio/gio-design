@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { AppOutlined, EditOutlined, SettingOutlined, UserOutlined } from '@gio-design/icons';
+import { CardOutlined, EditOutlined, GearOutlined, UserOutlined } from '@gio-design/icons';
 import Docs from './AvatarPage';
 import Avatar, { AvatarProps } from '../index';
 import '../style';
@@ -91,8 +91,8 @@ export const Sizes = () => (
 
 export const IconAvatars = () => (
   <>
-    <Avatar icon={<SettingOutlined />} />
-    <Avatar icon={<AppOutlined />} backgroundColor="pink" />
+    <Avatar icon={<GearOutlined />} />
+    <Avatar icon={<CardOutlined />} backgroundColor="pink" />
     <Avatar icon={<EditOutlined />} backgroundColor="palegoldenrod" />
   </>
 );
@@ -100,7 +100,7 @@ export const IconAvatars = () => (
 export const Modes = () => (
   <>
     <Avatar icon={<UserOutlined />} size="large" mode="square" />
-    <Avatar icon={<AppOutlined />} size="large" mode="square" />
+    <Avatar icon={<CardOutlined />} size="large" mode="square" />
     <Avatar icon={<EditOutlined />} size="large" mode="square" />
   </>
 );

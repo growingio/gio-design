@@ -1,4 +1,4 @@
-import { MoveOutlined } from '@gio-design/icons';
+import { DragOutlined } from '@gio-design/icons';
 import classNames from 'classnames';
 import React, { useRef } from 'react';
 import { DragSourceMonitor, DropTargetMonitor, useDrag, useDrop, XYCoord } from 'react-dnd';
@@ -62,7 +62,7 @@ const DragItem: React.FC<DragItemProps> = (props) => {
       ref={ref}
       data-handler-id={handlerId}
     >
-      <MoveOutlined
+      <DragOutlined
         className={classNames(`${prefixCls}--item--drag--icon`, {
           [`${prefixCls}--item--drag--icon--disabled`]: disabled,
         })}

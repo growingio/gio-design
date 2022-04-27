@@ -1,0 +1,51 @@
+@import './mixin/icon.less';
+
+@icon-prefix: ~'gio-icon';
+
+.@{icon-prefix} {
+  display: inline-block;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em; 
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  > * {
+    line-height: 1;
+  }
+
+  svg {
+    display: inline-block;
+  }
+
+  &::before {
+    display: none; 
+  }
+}
+.@{icon-prefix}-rotating {
+  display: inline-block;
+  -webkit-animation: rotating 1s linear infinite;
+  animation: rotating 1s linear infinite;
+  &::before {
+    display: inline-block;
+    -webkit-animation: rotating 1s linear infinite;
+    animation: rotating 1s linear infinite;
+  }
+}
+
+@-webkit-keyframes rotating {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

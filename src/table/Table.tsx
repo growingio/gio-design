@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { get, has, isFunction, isNil, isEmpty } from 'lodash';
 import { ExpandableConfig } from 'rc-table/lib/interface';
 import { compose } from 'lodash/fp';
-import { RightOutlined, DownOutlined } from '@gio-design/icons';
+import { ArrowRightOutlined, ArrowDownOutlined } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
 import { RenderExpandIcon, RowClassName } from 'rc-table/es/interface';
 import useMergeRef from '../utils/hooks/useMergeRef';
@@ -147,7 +147,7 @@ export function Table<RecordType>(
     const { expanded, onExpand, record, expandable: expandableProp } = expandProps;
     if (expandableProp) {
       return expanded ? (
-        <DownOutlined
+        <ArrowDownOutlined
           size="12px"
           className={`${prefixCls}-expanded-icon`}
           onClick={(event) => {
@@ -155,7 +155,7 @@ export function Table<RecordType>(
           }}
         />
       ) : (
-        <RightOutlined
+        <ArrowRightOutlined
           size="12px"
           className={`${prefixCls}-to_expand-icon`}
           onClick={(event) => {

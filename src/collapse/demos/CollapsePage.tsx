@@ -27,12 +27,22 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-collapse--default" />
       </Canvas>
-      
-      <Subheading>{formatMessage({ defaultMessage: 'Icon替换' })}</Subheading>
+
+      <Subheading>{formatMessage({ defaultMessage: '额外节点' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '右侧附加额外的节点，可用于额外附加操作',
+        })}
+      </Description>
       <Canvas>
         <Story id="upgraded-collapse--extra" />
       </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '手风琴效果' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '每次只打开一个 tab',
+        })}
+      </Description>
       <Canvas>
         <Story id="upgraded-collapse--accordion" />
       </Canvas>
@@ -40,7 +50,7 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-collapse--bordered" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '二级菜单使用' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '嵌套面板' })}</Subheading>
       <Canvas>
         <Story id="upgraded-collapse--secondmenu" />
       </Canvas>

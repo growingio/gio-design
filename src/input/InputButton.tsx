@@ -1,4 +1,4 @@
-import { CloseCircleFilled, DownFilled } from '@gio-design/icons';
+import { ErrorFilled, DownFilled } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
 import React, { useCallback, useMemo } from 'react';
@@ -75,7 +75,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     const hideClear = allowClear === false;
     const { onClick } = rest;
     const defaultSuffix =
-      value && !hideClear && !disabled ? <CloseCircleFilled onClick={onClear} /> : <DownFilled onClick={onClick} />;
+      value && !hideClear && !disabled ? <ErrorFilled onClick={onClear} /> : <DownFilled onClick={onClick} />;
     return customizeSuffix || defaultSuffix;
   }, [customizeSuffix, value, onClear, allowClear, disabled, rest]);
 

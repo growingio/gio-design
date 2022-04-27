@@ -2,7 +2,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
-import { MoreOutlined, EditOutlined, RightOutlined } from '@gio-design/icons';
+import { MoreVerticalOutlined, EditOutlined, ArrowRightOutlined } from '@gio-design/icons';
 import Docs from './CollapsePage';
 import Collapse from '../index';
 import Button from '../../button';
@@ -40,7 +40,7 @@ const Template: Story = () => (
       </Collapse.Panel>
       <Collapse.Panel header="折叠面板标题" key="2">
         <div>{text}</div>
-        <Collapse expandIcon={() => <RightOutlined size="14px" />} bordered={false} onChange={callback}>
+        <Collapse expandIcon={() => <ArrowRightOutlined size="14px" />} bordered={false} onChange={callback}>
           <Collapse.Panel header="折叠面板标题" key="1">
             <div>{text}</div>
             <div>{text}</div>
@@ -98,12 +98,12 @@ export const Extra = () => {
         }}
         type="text"
       >
-        <MoreOutlined />
+        <MoreVerticalOutlined />
       </Button.IconButton>
     </>
   );
   return (
-    <Collapse expandIcon={() => <RightOutlined size="14px" />}>
+    <Collapse expandIcon={() => <ArrowRightOutlined size="14px" />}>
       <Collapse.Panel header="折叠面板标题" key="1" extra={genExtra()}>
         <div>{text}</div>
         <div>{text}</div>

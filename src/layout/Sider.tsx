@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { LeftOutlined, RightOutlined } from '@gio-design/icons';
+import { ArrowLeftOutlined, ArrowRightOutlined } from '@gio-design/icons';
 import { isNil, isString } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
 import { LayoutSiderProps } from './interfaces';
@@ -73,7 +73,7 @@ const Sider = ({
             }}
             aria-hidden="true"
           >
-            {localCollapsed ? <RightOutlined data-testid="right-icon" /> : <LeftOutlined data-testid="left-icon" />}
+            {localCollapsed ? <ArrowRightOutlined data-testid="right-icon" /> : <ArrowLeftOutlined data-testid="left-icon" />}
           </div>
         );
       }

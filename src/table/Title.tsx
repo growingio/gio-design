@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { UpFilled, DownFilled, FilterOutlined, QuestionCircleOutlined } from '@gio-design/icons';
+import { UpFilled, DownFilled, FilterOutlined, QuestionOutlined } from '@gio-design/icons';
 import { isEmpty, isString, isUndefined } from 'lodash';
 import Button from '../button';
 import Tooltip from '../tooltip';
@@ -25,17 +25,17 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
       const nextSortOrder = getNextSortDirection(sortDirections, sortOrder ?? null);
       const changedSorterState: SortState<RecordType> = sorterState
         ? {
-            ...sorterState,
-            sortOrder: nextSortOrder,
-          }
+          ...sorterState,
+          sortOrder: nextSortOrder,
+        }
         : {
-            sortOrder: nextSortOrder,
-            column,
-            isControlled: 'sortOrder' in column,
-            key: columnKey,
-            sortDirections,
-            sortPriorityOrder,
-          };
+          sortOrder: nextSortOrder,
+          column,
+          isControlled: 'sortOrder' in column,
+          key: columnKey,
+          sortDirections,
+          sortPriorityOrder,
+        };
 
       onTriggerStateUpdate({ sorterState: updateSorterStates(changedSorterState) });
     };
@@ -97,7 +97,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
     return (
       <Tooltip title={info} overlayClassName={`${prefixCls}-tooltip`}>
         <span className={`${prefixCls}-column-title-info`}>
-          <QuestionCircleOutlined size="14px" />
+          <QuestionOutlined size="14px" />
         </span>
       </Tooltip>
     );

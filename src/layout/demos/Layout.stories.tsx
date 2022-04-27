@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { HomeFilled, AppsFilled, SettingOutlined, AppOutlined } from '@gio-design/icons';
+import { HomeFilled, MenuOutlined, GearOutlined, CardOutlined } from '@gio-design/icons';
 import Docs from './LayoutPage';
 import { LayoutProps } from '../interfaces';
 import Layout from '../index';
@@ -60,10 +60,10 @@ const Header = () => (
     </Layout.Header.HeaderSection>
     <Layout.Header.HeaderSection justify="space-between" style={{ width: 136 }}>
       <Button.IconButton type="text">
-        <AppsFilled />
+        <MenuOutlined />
       </Button.IconButton>
       <Button.IconButton type="text">
-        <SettingOutlined />
+        <GearOutlined />
       </Button.IconButton>
       <Avatar />
     </Layout.Header.HeaderSection>
@@ -117,18 +117,18 @@ const SuspendDemo = ({ suspend, fixed }: { suspend?: 'left' | 'right'; fixed: bo
             mode="vertical"
             title="标题"
           >
-            <Menu.MenuItem key="1" icon={<AppOutlined />}>
+            <Menu.MenuItem key="1" icon={<CardOutlined />}>
               功能名称
             </Menu.MenuItem>
-            <Menu.MenuItem key="2" icon={<AppOutlined />}>
+            <Menu.MenuItem key="2" icon={<CardOutlined />}>
               功能名称
             </Menu.MenuItem>
-            <Menu.SubMenu key="3" title="一级功能名称" icon={<AppOutlined />}>
+            <Menu.SubMenu key="3" title="一级功能名称" icon={<CardOutlined />}>
               <Menu.MenuItem key="3-1">二级功能名称</Menu.MenuItem>
               <Menu.MenuItem key="3-2">二级功能名称</Menu.MenuItem>
               <Menu.MenuItem key="3-3">二级功能名称</Menu.MenuItem>
             </Menu.SubMenu>
-            <Menu.MenuItem key="4" icon={<AppOutlined />}>
+            <Menu.MenuItem key="4" icon={<CardOutlined />}>
               功能名称
             </Menu.MenuItem>
           </Menu>
@@ -140,16 +140,16 @@ const SuspendDemo = ({ suspend, fixed }: { suspend?: 'left' | 'right'; fixed: bo
             mode="vertical"
             title="标题"
           >
-            <Menu.MenuItem key="5" icon={<AppOutlined />}>
+            <Menu.MenuItem key="5" icon={<CardOutlined />}>
               功能名称
             </Menu.MenuItem>
-            <Menu.MenuItem key="6" icon={<AppOutlined />}>
+            <Menu.MenuItem key="6" icon={<CardOutlined />}>
               功能名称
             </Menu.MenuItem>
-            <Menu.MenuItem key="7" icon={<AppOutlined />}>
+            <Menu.MenuItem key="7" icon={<CardOutlined />}>
               功能名称
             </Menu.MenuItem>
-            <Menu.SubMenu key="8" title="功能名称" icon={<AppOutlined />}>
+            <Menu.SubMenu key="8" title="功能名称" icon={<CardOutlined />}>
               <Menu.MenuItem key="8-1">功能名称</Menu.MenuItem>
               <Menu.MenuItem key="8-2">功能名称</Menu.MenuItem>
             </Menu.SubMenu>
@@ -162,13 +162,13 @@ const SuspendDemo = ({ suspend, fixed }: { suspend?: 'left' | 'right'; fixed: bo
             mode="vertical"
             title="标题"
           >
-            <Menu.MenuItem key="9" icon={<AppOutlined />}>
+            <Menu.MenuItem key="9" icon={<CardOutlined />}>
               功能名称
             </Menu.MenuItem>
-            <Menu.MenuItem key="10" icon={<AppOutlined />}>
+            <Menu.MenuItem key="10" icon={<CardOutlined />}>
               功能名称
             </Menu.MenuItem>
-            <Menu.MenuItem key="11" icon={<AppOutlined />}>
+            <Menu.MenuItem key="11" icon={<CardOutlined />}>
               功能名称
             </Menu.MenuItem>
           </Menu>
