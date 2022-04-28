@@ -155,7 +155,8 @@ export const Single = (args: ListPickerProps) => {
     </ListPicker>
   );
 };
-export const Multiple = (args: ListPickerProps) => {
+// bug args:ListPickerProps args = {} 第一次渲染无问题，onChange setValue后 直接导致页面卡死 
+export const Multiple = () => {
   const [value, setValue] = useState<undefined | string[]>(['apple']);
   const [activeTab, setActiveTab] = useState('tab1');
   const onChange = (val: string[]) => {
@@ -164,7 +165,6 @@ export const Multiple = (args: ListPickerProps) => {
   };
   return (
     <ListPicker
-      {...args}
       style={style}
       value={value}
       onChange={onChange}
@@ -195,7 +195,7 @@ export const Multiple = (args: ListPickerProps) => {
               title="分组1"
               prefix={() => <WriteOutlined />}
               options={[
-                { label: '苹果', value: 'apple' },
+                { label: '苹果', value: 'apple',prefix:<WriteOutlined /> },
                 { label: '香蕉', value: 'banana' },
               ]}
             />
