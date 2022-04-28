@@ -195,7 +195,7 @@ export const Multiple = (args: ListPickerProps) => {
               title="分组1"
               prefix={() => <WriteOutlined />}
               options={[
-                { label: '苹果', value: 'apple', prefix: <WriteOutlined /> },
+                { label: '苹果', value: 'apple' },
                 { label: '香蕉', value: 'banana' },
               ]}
             />
