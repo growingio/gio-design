@@ -77,7 +77,7 @@ const StaticDatePicker: React.FC<StaticDatePickerProps> = ({
       {...restProps}
       pickerValue={viewDate}
       onSelect={(date) => { onSelect?.(date); }}
-      onChange={(date) => { setViewDate(date); }}
+      onChange={(date) => { setViewDate(date, true); }}
       locale={locale}
       prefixCls={prefixCls}
       onPanelChange={(changedValue, changedMode: PickerMode) => {
