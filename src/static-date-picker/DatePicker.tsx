@@ -42,7 +42,7 @@ const DatePicker: React.FC<StaticDatePickerProps> = ({
 }) => {
   const locale = useLocale<Locale>('DatePicker') || defaultLocale;
 
-  const [viewDate, setViewDate] = useState(() => viewDateProp ?? value ?? defaultValue ?? new Date());
+  const [viewDate, setViewDate] = useControlledState(viewDateProp, value ?? defaultValue ?? new Date());
   const [innerValue] = useControlledState(value, defaultValue);
   const [mode] = useState<PickerMode>('date');
   const currentPickerMode = useRef(mode);
@@ -77,12 +77,12 @@ const DatePicker: React.FC<StaticDatePickerProps> = ({
       {...restProps}
       pickerValue={viewDate}
       onSelect={(date) => { onSelect?.(date); }}
-      onChange={(date) => { setViewDate(date) }}
+      onChange={(date) => { setViewDate(date, true) }}
       locale={locale}
       prefixCls={prefixCls}
       onPanelChange={(changedValue, changedMode: PickerMode) => {
         currentPickerMode.current = changedMode;
-        setViewDate(changedValue);
+        setViewDate(changedValue, true);
         onPanelChange?.(changedValue, changedMode);
       }}
       picker={mode}
