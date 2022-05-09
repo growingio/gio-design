@@ -36,8 +36,8 @@ export interface CommonProps {
  */
 // prettier-ignore
 export type BaseProps<M extends OverridableTypeMap> =
-& M['props']
-& CommonProps;
+  & M['props']
+  & CommonProps;
 
 /**
  * 没有使用 `component={Component}` 时的 Props 定义
@@ -52,12 +52,12 @@ export type DefaultComponentProps<M extends OverridableTypeMap> =
  */
 // prettier-ignore
 export type OverrideProps<
-M extends OverridableTypeMap,
-C extends React.ElementType
-> = (
-  & BaseProps<M>
-  & Omit<React.ComponentPropsWithRef<C>, keyof CommonProps>
-);
+  M extends OverridableTypeMap,
+  C extends React.ElementType
+  > = (
+    & BaseProps<M>
+    & Omit<React.ComponentPropsWithRef<C>, keyof CommonProps>
+  );
 
 /**
  * 定义通过 'component' prop 可进行根组件组件类型控制的组件
@@ -84,3 +84,5 @@ export type PropsWithStyle<P> = P & { style?: CSSProperties };
 export type PropsWithClassName<P> = P & { className?: string };
 
 export type WithCommonProps<P> = PropsWithChildren<PropsWithStyle<PropsWithClassName<P>>>;
+
+export type DefaultSizeType = 'small' | 'normal' | undefined;

@@ -8,24 +8,22 @@
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
-
   //eslint   -----settings start-----
-
   "eslint.packageManager": "yarn",
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   //eslint   -----settings end-----
-
   //prettier   -----settings start-----
-
   "prettier.useEditorConfig": false,
   "prettier.requireConfig": true,
-
+  "prettier.configPath": "prettier.config.js",
   //prettier   -----settings end-----
   //pretier   -----settings end-----
-
   //stylelint   -----settings start-----
-
   // 防止编辑器内置linter与插件冲突设置
   "css.validate": false,
   "less.validate": false,
@@ -46,6 +44,5 @@
     "svelte"
   ],
   "typescript.tsdk": "node_modules/typescript/lib"
-
   //stylelint   -----settings end-----
 }
