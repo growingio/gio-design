@@ -1,3 +1,11 @@
+## [22.15.5](https://github.com/growingio/gio-design/compare/v22.15.4...v22.15.5) (2022-05-10)
+
+
+### Bug Fixes
+
+* **date-range-picker:** fix panel interaction error ([dcfa107](https://github.com/growingio/gio-design/commit/dcfa10705c81ebd0eb79da140353293954b06cda))
+* **popover:** the alternative axis check be enabled ([#2003](https://github.com/growingio/gio-design/issues/2003)) ([1e3f124](https://github.com/growingio/gio-design/commit/1e3f124f69561df98627f2def0ea4eb37637f966))
+
 ## [22.15.4](https://github.com/growingio/gio-design/compare/v22.15.3...v22.15.4) (2022-04-25)
 
 
