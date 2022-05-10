@@ -29,7 +29,7 @@ export default {
 const DefaultTemplate: Story<ResultProps> = (args) => <Result {...args} />;
 export const Default = DefaultTemplate.bind({});
 Default.args = {
-  type: 'empty-content',
+  type: 'empty',
   extra: <Button type="primary" >返回首页</Button>
 }
 

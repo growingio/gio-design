@@ -66,7 +66,7 @@ function Result({ className: customizeClassName, style, children, extra, type = 
   const defaultDesc = Object.keys(EmptyImageMap).includes(type) ? defaultTypeDescription[type] : null
   const desc = !isUndefined(description) ? description : defaultDesc;
 
-  const img = image || React.createElement(TYPE_IMAGE_MAP[type]);
+  const img = image || (TYPE_IMAGE_MAP[type] ? React.createElement(TYPE_IMAGE_MAP[type]) : React.createElement(TYPE_IMAGE_MAP.empty));
   // title
   const defaultTitle = Object.keys(EmptyImageMap).includes(type) ? null : defaultTypeDescription[type];
   const title = !isUndefined(propsTitle) ? propsTitle : defaultTitle;

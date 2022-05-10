@@ -22,7 +22,7 @@ import BasePicker from './components/base-picker';
 import { PropertyPickerProps, PropertyTypes, PropertyItem, PropertyValue, PropertyInfo } from './interfaces';
 import List from './components/list';
 import { ListItemProps } from './components/list/interfaces';
-import Page from '../../../../page'; // new
+import Result from '../../../../result'; // new
 import { renderExpandableItems } from './components/list/utils';
 import PropertyCard from './PropertyCard';
 import './style';
@@ -305,7 +305,7 @@ const PropertyPicker: React.FC<PropertyPickerProps> = (props: PropertyPickerProp
   }
   const renderItems = () => {
     if (propertyItems?.length === 0) {
-      return <Page type="noData" size="small" />;
+      return <Result type="empty-result" size="small" />;
     }
     const recentlyNodes = recentlyPropertyItems?.length > 0 && (
       <React.Fragment key="recentlyNodes">

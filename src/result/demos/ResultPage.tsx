@@ -73,6 +73,25 @@ export default function ResultPage() {
       <Canvas>
         <Story id="upgraded-result--locked" />
       </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '500' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '服务器错误',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-result--server-error" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '自定义' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '自定义错误页',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-result--error" />
+      </Canvas>
+
       <Heading>{formatMessage({ defaultMessage: 'Empty State' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: 'empty-chart' })}</Subheading>
       <Description>

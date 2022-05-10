@@ -21,7 +21,7 @@ import {
   ForwardRefFn,
   PaginationState,
 } from './interface';
-import Page from '../page';
+import Result from '../result';
 import { getColumnKey, getColumnPos, TABLE_PREFIX_CLS } from './utils';
 import Loading from '../loading';
 import useHackOnRow from './hook/useHackOnRow';
@@ -219,7 +219,7 @@ export function Table<RecordType>(
 
   const emptyElement = (
     <div className={`${prefixCls}-empty`}>
-      <Page description={emptyText} size="small" type="noData" {...empty} />
+      <Result description={emptyText} size="small" type="empty" {...(empty || {})} />
     </div>
   );
 
