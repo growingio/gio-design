@@ -7,7 +7,7 @@ import { usePrefixCls } from '@gio-design/utils';
 import { PopoverProps } from './interface';
 import { composeRef, supportRef } from '../utils/composeRef';
 import useControlledState from '../utils/hooks/useControlledState';
-import usePop from './usePop';
+import usePop, { UsePopProps } from './usePop';
 import TriggerContext from './context';
 
 const Popover = (props: PopoverProps) => {
@@ -77,7 +77,7 @@ const Popover = (props: PopoverProps) => {
     [prefixCls, overlayInnerClassName]
   );
 
-  const defaultModifiers = React.useMemo(
+  const defaultModifiers = React.useMemo<UsePopProps['modifiers']>(
     () => [
       { name: 'arrow', options: { element: arrowElement.current } },
       { name: 'offset', options: { offset } },
@@ -92,6 +92,7 @@ const Popover = (props: PopoverProps) => {
         name: 'preventOverflow',
         options: {
           boundary: 'window',
+          altAxis: true,
         },
       },
     ],
