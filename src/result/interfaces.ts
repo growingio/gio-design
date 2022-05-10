@@ -2,7 +2,7 @@ import React from 'react';
 import { DefaultSizeType } from '../utils/interfaces';
 
 export type ExceptionStatusType = '403' | '404' | '500' | '410' | '423';
-export type EmptyStatusType = 'empty' | 'empty-content' | 'empty-data' | 'empty-result';
+export type EmptyStatusType = 'empty' | 'empty-chart' | 'empty-data' | 'empty-result';
 export type ResultStatusType = ExceptionStatusType | EmptyStatusType;
 export interface ResultProps {
   /**

@@ -55,7 +55,72 @@ export default function ResultPage() {
       <Canvas>
         <Story id="upgraded-result--unauthorized" />
       </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '410' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '资源被删除',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-result--deleted" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '423' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '资源被锁定 Locked',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-result--locked" />
+      </Canvas>
+      <Heading>{formatMessage({ defaultMessage: 'Empty State' })}</Heading>
+      <Subheading>{formatMessage({ defaultMessage: 'empty-chart' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '看板空态 - 未添加看板',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-result--empty-chart" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'empty' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '未创建资源空态（通用） - 资源为空',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-result--empty" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'empty-result' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '搜索无结果',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-result--empty-result" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'empty-data' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '无数据',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-result--empty-data" />
+      </Canvas>
 
+      <Subheading>{formatMessage({ defaultMessage: 'Size' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: 'Page 有 `Normal（450px`）、`Small（220px）`两种尺寸；Emtpy State 有` Normal（300px）`、`Small（150px）`两种尺寸',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-result--error-page-small-size" />
+        <Story id="upgraded-result--empty-small-size" />
+      </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Result} />
     </>

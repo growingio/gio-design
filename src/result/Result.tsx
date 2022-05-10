@@ -9,8 +9,8 @@ import {
   Deleted,
   Locked,
   InternalServerError,
+  EmptyChart,
   Empty,
-  EmptyContent,
   EmptyData,
   EmptyResult,
 } from './images';
@@ -34,7 +34,7 @@ const ExceptionImageMap = {
  */
 const EmptyImageMap = {
   'empty': Empty,
-  'empty-content': EmptyContent,
+  'empty-chart': EmptyChart,
   'empty-data': EmptyData,
   'empty-result': EmptyResult,
 }
@@ -50,8 +50,8 @@ function Result({ className: customizeClassName, style, children, extra, type = 
   };
   type TypeMapKey = keyof typeof TYPE_IMAGE_MAP;
   const defaultTypeDescription: Record<TypeMapKey, string> = {
+    'empty-chart': localeContent.emptyChart,
     'empty': localeContent.empty,
-    'empty-content': localeContent.emptyContent,
     'empty-data': localeContent.emptyData,
     "empty-result": localeContent.emptyResult,
     "403": localeContent['403'],
@@ -105,7 +105,7 @@ const ResultImage: {
   ImgDeleted: React.ReactNode;
   ImgLocked: React.ReactNode;
   ImgEmpty: React.ReactNode;
-  ImgEmptyContent: React.ReactNode;
+  ImgEmptyChart: React.ReactNode;
   ImgEmptyData: React.ReactNode;
   ImgEmptyResult: React.ReactNode;
 } = {
@@ -115,7 +115,7 @@ const ResultImage: {
   ImgDeleted: TYPE_IMAGE_MAP['410'],
   ImgLocked: TYPE_IMAGE_MAP['423'],
   ImgEmpty: TYPE_IMAGE_MAP.empty,
-  ImgEmptyContent: TYPE_IMAGE_MAP['empty-content'],
+  ImgEmptyChart: TYPE_IMAGE_MAP['empty-chart'],
   ImgEmptyData: TYPE_IMAGE_MAP['empty-data'],
   ImgEmptyResult: TYPE_IMAGE_MAP['empty-result']
 };

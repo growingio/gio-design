@@ -1,184 +1,74 @@
 import * as React from 'react';
-import { InjectRandomIds } from '.';
+import InjectRandomIds from './InjectRandomIds';
 
-const EmptyImage = React.forwardRef<SVGSVGElement, React.SVGAttributes<SVGElement>>((props, ref) => (
-  <svg role="img" aria-labelledby="title" viewBox="0 0 300 193" fill="none" ref={ref} {...props}>
-    <title id="title">Dashboard image</title>
-    <rect x={59} y={14.118} width={182.432} height={121.622} rx={4} fill="url(#empty_prefix_paint0_linear)" />
-    <g opacity={0.8}>
-      <rect x={71.28} y={29.32} width={62.331} height={41.047} rx={4} fill="#fff" />
-      <rect
-        x={98.644}
-        y={33.881}
-        width={31.926}
-        height={4.561}
-        rx={2.28}
-        transform="rotate(90 98.644 33.88)"
-        fill="url(#empty_prefix_paint1_linear)"
-      />
-      <rect
-        x={86.482}
-        y={41.482}
-        width={24.324}
-        height={4.561}
-        rx={2.28}
-        transform="rotate(90 86.482 41.482)"
-        fill="url(#empty_prefix_paint2_linear)"
-      />
-      <rect
-        x={110.807}
-        y={49.083}
-        width={16.723}
-        height={4.561}
-        rx={2.28}
-        transform="rotate(90 110.807 49.083)"
-        fill="url(#empty_prefix_paint3_linear)"
-      />
-      <rect
-        x={122.969}
-        y={41.482}
-        width={24.324}
-        height={4.561}
-        rx={2.28}
-        transform="rotate(90 122.969 41.482)"
-        fill="url(#empty_prefix_paint4_linear)"
-      />
-    </g>
-    <g opacity={0.8}>
-      <rect x={142.559} y={29.205} width={86.655} height={91.216} rx={4} fill="#fff" />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M212.623 76.606l-32.345.06 16.519-28.735a30.557 30.557 0 00-14.881-3.81c-16.955.03-30.675 13.801-30.644 30.757.032 16.955 13.802 30.675 30.757 30.644 16.338-.03 29.671-12.816 30.594-28.916z"
-        fill="url(#empty_prefix_paint5_linear)"
-      />
-      <path
-        opacity={0.8}
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M220.452 72.752c.035-.61.052-1.225.051-1.843-.021-11.559-6.427-21.614-15.875-26.834l-16.52 28.736 32.344-.06z"
-        fill="#5F87FF"
-        fillOpacity={0.9}
-      />
-    </g>
-    <g opacity={0.8}>
-      <rect x={71.28} y={79.489} width={62.331} height={41.047} rx={4} fill="#fff" />
-      <path
-        d="M86.814 87.743l-9.453 24.446a.5.5 0 00.467.68h48.274c.531 0 .696-.717.218-.949l-22.462-10.917a.507.507 0 00-.309-.042l-10.66 1.966a.5.5 0 01-.569-.344l-4.562-14.807a.5.5 0 00-.944-.033z"
-        fill="url(#empty_prefix_paint6_linear)"
-      />
-    </g>
-    <path d="M0 192.568c118.691-46.234 184.527-45.657 300 0H0z" fill="url(#empty_prefix_paint7_linear)" />
+const EmptySVG = React.forwardRef<SVGSVGElement, React.SVGAttributes<SVGElement>>((props, ref) => (
+  <svg role="img" aria-labelledby="title" viewBox="0 0 260 164" fill="none" ref={ref} {...props}>
+    <title id="title">No data image</title>
+    <path d="M0 163.147c102.866-40.07 159.923-39.57 260 0H0z" fill="url(#no_data__prefix0__paint_linear)" />
     <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M93.055 141.417a13.717 13.717 0 007.356-12.157c0-7.577-6.142-13.719-13.72-13.719-7.576 0-13.718 6.142-13.718 13.719 0 6.712 4.82 12.299 11.19 13.486-1.605 4.88-3.424 9.491-5.036 13.578-2.574 6.525-4.62 11.713-4.426 14.522.41 5.939 20.306 5.008 25.247 0 3.817-3.869-.706-17.07-6.893-29.429z"
-      fill="url(#empty_prefix_paint8_linear)"
+      d="M92.838 107.443l2.17-62.923a4 4 0 013.997-3.862h78.36a4 4 0 013.995 4.184l-2.893 62.923a4 4 0 01-3.995 3.816H96.836a4 4 0 01-3.998-4.138z"
+      fill="#88A6FF"
     />
-    <circle cx={241.216} cy={14.189} r={14.189} fill="#88A6FF" />
-    <rect x={231.756} y={12.612} width={18.919} height={3.153} rx={1.577} fill="#fff" />
-    <rect
-      x={239.64}
-      y={23.648}
-      width={18.919}
-      height={3.153}
-      rx={1.577}
-      transform="rotate(-90 239.64 23.648)"
-      fill="#fff"
-    />
-    <circle cx={42.5} cy={120.5} r={3} stroke="#B8D1FF" />
-    <circle cx={46.276} cy={4.805} r={2.541} fill="#B8D1FF" stroke="#B8D1FF" />
-    <path d="M225.035 157.948l6.782-5.646 1.498 8.696-8.28-3.05z" stroke="#B8D1FF" strokeWidth={2} />
     <path
+      d="M118.04 10.944a2 2 0 012.392-1.51l59.711 13.493a2 2 0 011.51 2.391l-16.368 72.434a2 2 0 01-2.391 1.51l-59.711-13.493a2 2 0 01-1.51-2.391l16.367-72.434z"
+      fill="#DCE6FA"
+    />
+    <path d="M105 26a2 2 0 012-2h61.216a2 2 0 012 2v74.26a2 2 0 01-2 2H107a2 2 0 01-2-2V26z" fill="#F0F5FF" />
+    <path
+      d="M88.263 108.789L82.53 50.758a4 4 0 013.981-4.394h17.57a4 4 0 012.828 1.172l2.548 2.548a4.001 4.001 0 002.829 1.172h58.952a4 4 0 013.994 3.787l2.834 53.14a4 4 0 01-3.994 4.213h-81.83a4 4 0 01-3.98-3.607z"
+      fill="url(#no_data__prefix1__paint_linear)"
+    />
+    <rect x={90.249} y={66.745} width={79.89} height={4.891} rx={2.446} fill="#F7F8FC" />
+    <circle cx={92.695} cy={56.148} r={4.076} fill="#F7F8FC" />
+    <circle cx={192.649} cy={30.253} r={3.752} stroke="#B8D1FF" />
+    <circle cx={78.909} cy={109.978} r={2.689} stroke="#B8D1FF" />
+    <path
+      d="M99.105 18.56c0 8.806-9.994 15.945-22.323 15.945-12.328 0-22.323-7.139-22.323-15.945 0-8.806 9.995-15.945 22.323-15.945 12.33 0 22.323 7.139 22.323 15.945z"
+      fill="#B8D1FF"
+    />
+    <path
+      d="M93.231 26.707a1 1 0 011.18.401l4.766 7.434c.51.796-.268 1.79-1.163 1.486l-13.073-4.44c-.895-.304-.907-1.567-.017-1.888l8.307-2.993z"
+      fill="#B8D1FF"
+    />
+    <circle cx={65.355} cy={18.826} r={2.392} fill="#fff" />
+    <circle cx={76.768} cy={18.826} r={2.392} fill="#fff" />
+    <circle cx={88.741} cy={18.826} r={2.392} fill="#fff" />
+    <path
+      d="M199.163 71.775a.3.3 0 01.512.09l2.176 5.939a.3.3 0 01-.334.398l-6.231-1.085a.3.3 0 01-.179-.488l4.056-4.854z"
+      fill="#B8D1FF"
+    />
+    <path
+      d="M161.814 118.461c26.179 1.496 27.646-6.357 36.15-39.31"
       stroke="#B8D1FF"
+      strokeWidth={0.5}
       strokeLinecap="round"
-      strokeDasharray="2 2"
-      d="M46.202 71.959V14.618M250.971 151.265v-27.236"
+      strokeDasharray="1 1"
+    />
+    <rect
+      x={59.94}
+      y={72.613}
+      width={8.504}
+      height={2.126}
+      rx={1.063}
+      transform="rotate(-22.655 59.94 72.613)"
+      fill="#B8D1FF"
+    />
+    <rect
+      x={64.93}
+      y={76.29}
+      width={8.504}
+      height={2.126}
+      rx={1.063}
+      transform="rotate(-112.655 64.93 76.29)"
+      fill="#B8D1FF"
     />
     <defs>
       <linearGradient
-        id="empty_prefix_paint0_linear"
-        x1={149.882}
-        y1={174.231}
-        x2={149.882}
-        y2={-13.269}
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#94B9FF" />
-        <stop offset={1} stopColor="#F7F8FC" />
-      </linearGradient>
-      <linearGradient
-        id="empty_prefix_paint1_linear"
-        x1={127.023}
-        y1={38.441}
-        x2={98.645}
-        y2={34.387}
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#6083EB" />
-        <stop offset={1} stopColor="#B8D1FF" />
-      </linearGradient>
-      <linearGradient
-        id="empty_prefix_paint2_linear"
-        x1={109.794}
-        y1={46.043}
-        x2={87.496}
-        y2={43.002}
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#5F87FF" />
-        <stop offset={1} stopColor="#B8D1FF" />
-      </linearGradient>
-      <linearGradient
-        id="empty_prefix_paint3_linear"
-        x1={126.01}
-        y1={53.644}
-        x2={111.821}
-        y2={50.604}
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#6083EB" />
-        <stop offset={1} stopColor="#B8D1FF" />
-      </linearGradient>
-      <linearGradient
-        id="empty_prefix_paint4_linear"
-        x1={146.28}
-        y1={46.043}
-        x2={122.969}
-        y2={41.989}
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#6083EB" />
-        <stop offset={1} stopColor="#B8D1FF" />
-      </linearGradient>
-      <linearGradient
-        id="empty_prefix_paint5_linear"
-        x1={140.769}
-        y1={95.77}
-        x2={207.115}
-        y2={75.001}
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#5F87FF" />
-        <stop offset={1} stopColor="#B8D1FF" stopOpacity={0.9} />
-      </linearGradient>
-      <linearGradient
-        id="empty_prefix_paint6_linear"
-        x1={102.687}
-        y1={86.399}
-        x2={102.687}
-        y2={112.869}
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#5F87FF" />
-        <stop offset={1} stopColor="#B8D1FF" />
-      </linearGradient>
-      <linearGradient
-        id="empty_prefix_paint7_linear"
-        x1={151.21}
-        y1={158.113}
-        x2={151.21}
-        y2={192.568}
+        id="no_data__prefix0__paint_linear"
+        x1={131.048}
+        y1={133.286}
+        x2={131.048}
+        y2={163.147}
         gradientUnits="userSpaceOnUse"
       >
         <stop stopColor="#B8D1FF" />
@@ -186,18 +76,19 @@ const EmptyImage = React.forwardRef<SVGSVGElement, React.SVGAttributes<SVGElemen
         <stop offset={1} stopColor="#fff" />
       </linearGradient>
       <linearGradient
-        id="empty_prefix_paint8_linear"
-        x1={107.307}
-        y1={115.385}
-        x2={72.692}
-        y2={181.154}
+        id="no_data__prefix1__paint_linear"
+        x1={130}
+        y1={62.5}
+        x2={130}
+        y2={137.5}
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset={0} stopColor="#DFEAFF" />
-        <stop offset={0.943} stopColor="#7DA1FE" />
+        <stop stopColor="#B8D1FF" />
+        <stop offset={1} stopColor="#698FFF" />
       </linearGradient>
     </defs>
   </svg>
 ));
-const Empty = InjectRandomIds(EmptyImage);
+const Empty = InjectRandomIds(EmptySVG);
+Empty.displayName = 'Empty';
 export default Empty;
