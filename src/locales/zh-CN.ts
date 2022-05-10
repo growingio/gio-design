@@ -17,6 +17,7 @@ import listLocale from '../list/locales/zh-CN';
 import basePicker from '../legacy/filter-picker/components/property-selector/components/base-picker/locales/zh-CN';
 import propertyPickerLocale from '../legacy/filter-picker/components/property-selector/locales/zh-CN';
 import popConfirmLocale from '../pop-confirm/locales/zh-CN';
+import resultLocale from '../result/locales/en-US';
 
 export const locale: Locale = {
   code: 'zh-CN',
@@ -28,6 +29,9 @@ export const locale: Locale = {
   },
   Page: {
     ...pageLocale,
+  },
+  Result: {
+    ...resultLocale,
   },
   ListPicker: {
     ...listPickerLocale,

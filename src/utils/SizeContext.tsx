@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { DefaultSizeType } from './interfaces';
 
-export type SizeType = 'small' | 'normal' | string | undefined;
+export type SizeType = DefaultSizeType | string | undefined;
 
 export const SizeContext = React.createContext<SizeType>(undefined);
 

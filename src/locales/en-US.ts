@@ -17,6 +17,7 @@ import listLocale from '../list/locales/en-US';
 import basePickerLocale from '../legacy/filter-picker/components/property-selector/components/base-picker/locales/en-US';
 import propertyPickerLocale from '../legacy/filter-picker/components/property-selector/locales/en-US';
 import popConfirmLocale from '../pop-confirm/locales/en-US';
+import resultLocale from '../result/locales/en-US';
 
 export const locale: Locale = {
   code: 'en-US',
@@ -28,6 +29,9 @@ export const locale: Locale = {
   },
   Page: {
     ...pageLocale,
+  },
+  Result: {
+    ...resultLocale,
   },
   ListPicker: {
     ...listPickerLocale,

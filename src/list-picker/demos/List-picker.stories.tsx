@@ -19,7 +19,7 @@ import Tabs, { Tab } from '../../tabs';
 import List from '../../list';
 import Recent from '../Recent';
 import Docs from './List-pickerPage';
-import { Card, Divider, Popover, Skeleton, Table, Tag, Page } from '../..';
+import { Card, Divider, Popover, Skeleton, Table, Tag, Result } from '../..';
 
 interface Tmesurements {
   id: string;
@@ -363,7 +363,7 @@ export const Default: Story<ListPickerProps> = (args: ListPickerProps) => {
             <List
               style={{ width: '240px' }}
               options={[]}
-              empty={<Page type="noFind" description="暂无数据" size="small" />}
+              empty={<Result type="empty-data" description="暂无数据" size="small" />}
             />
           </Tab>
         </Tabs>

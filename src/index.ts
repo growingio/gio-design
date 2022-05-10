@@ -22,7 +22,7 @@ export { default as List, ListProps } from './list';
 export { default as Loading, LoadingProps } from './loading';
 export { default as Menu, MenuProps, SubMenuProps, MenuItemProps, MenuMode } from './menu';
 export { default as Modal, ModalProps } from './modal';
-export { default as Page, PageProps } from './page';
+export { default as Result, ResultProps } from './result';
 export { default as Pagination, PaginationProps } from './pagination';
 export { default as PopConfirm, PopConfirmProps } from './pop-confirm';
 export { default as Popover, PopoverProps } from './popover';
