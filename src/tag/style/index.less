@@ -11,6 +11,7 @@
   background-color: @gray-1;
   border-radius: 4px;
   cursor: default;
+
   &-label {
     overflow: hidden;
     white-space: nowrap;
@@ -41,6 +42,7 @@
     &-default.@{tag-prefix-cls}-type-highlight {
       background-color: @gray-5;
     }
+
     &-draft {
       color: @gray-3;
       background-color: @gray-1;
@@ -48,6 +50,7 @@
     &-draft.@{tag-prefix-cls}-type-highlight {
       background-color: @gray-3;
     }
+
     &-info {
       color: @blue-3;
       background-color: @blue-1;
@@ -55,6 +58,7 @@
     &-info.@{tag-prefix-cls}-type-highlight {
       background-color: @blue-3;
     }
+
     &-success {
       color: @green-3;
       background-color: @green-1;
@@ -62,6 +66,7 @@
     &-success.@{tag-prefix-cls}-type-highlight {
       background-color: @green-3;
     }
+
     &-warning {
       color: @yellow-3;
       background-color: @yellow-1;
@@ -69,6 +74,7 @@
     &-warning.@{tag-prefix-cls}-type-highlight {
       background-color: @yellow-3;
     }
+
     &-error {
       color: @red-3;
       background-color: @red-1;
@@ -90,10 +96,12 @@
     color: #313e75;
     background-color: @gray-1;
     transition: color 0.2s, background-color 0.2s;
+
     &:hover {
       color: #313e75;
       background-color: @gray-2;
     }
+
     &:focus {
       color: #313e75;
       background-color: @gray-2;
@@ -102,9 +110,11 @@
     &.@{tag-prefix-cls}-type-highlight {
       color: #313e75;
       background-color: @gray-1;
+
       &:hover {
         background-color: @gray-2;
       }
+
       &:focus {
         background-color: @gray-2;
       }
@@ -115,6 +125,7 @@
       color: @gray-3;
       vertical-align: middle;
       cursor: pointer;
+
       svg {
         width: 12px;
         height: 12px;

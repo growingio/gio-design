@@ -10,14 +10,17 @@
   background-color: @gray-0;
   border: 1px solid @gray-2;
   border-radius: 8px;
+
   &-clickable:not(&-disabled):hover {
     .elevation(2);
     cursor: pointer;
   }
+
   &-disabled {
     color: @gray-3;
     background-color: @gray-1;
   }
+
   &-full-width-content {
     padding: 0;
     .@{card-meta-prefix-cls} {
@@ -29,6 +32,7 @@
   &-disabled .@{card-meta-prefix-cls}-description {
     color: @gray-3;
   }
+
   &-box-shadow {
     .elevation(1);
   }
@@ -47,24 +51,29 @@
     flex: 1 1 100%;
     overflow: hidden;
   }
+
   &-image {
     flex: none;
     margin-right: 16px;
   }
+
   &-title {
     .text-h4();
     color: @gray-5;
   }
+
   &-description {
     margin-top: 4px;
     color: @gray-4;
     .text-body2();
   }
+
   &-action {
     flex: none;
     align-self: flex-start;
     margin-left: 16px;
   }
+
   &-title,
   &-description {
     overflow: hidden;

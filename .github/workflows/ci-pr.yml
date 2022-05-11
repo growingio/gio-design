@@ -49,9 +49,9 @@ jobs:
       - name: commitlint
         run: echo "${{ github.event.pull_request.title }}" | yarn commitlint
       - name: StyleLint
-        run: yarn stylelint
+        run: yarn stylelint -f json > stylelint-report.json
       - name: ESLint
-        run: yarn eslint
+        run: yarn eslint -f json -o eslint-report.json
   unit_test:
     name: Unit test
     needs: install

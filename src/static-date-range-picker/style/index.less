@@ -25,18 +25,22 @@
     &-in-view&-range-end {
       color: @gray-0;
     }
+
     &-in-view&-range-start &-inner,
     &-in-view&-range-end &-inner {
       background: @blue-3;
     }
+
     &-in-view&-range-start:not(&-range-start-single)::before,
     &-in-view&-range-end:not(&-range-end-single)::before,
     &-in-view&-in-range::before {
       background-color: @blue-1;
     }
+
     &-in-view&-range-start::before {
       left: 50%;
     }
+
     &-in-view&-range-end::before {
       right: 50%;
     }

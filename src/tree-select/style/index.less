@@ -68,8 +68,6 @@
 .@{tree-select-prefix-cls} {
   position: relative;
   display: inline-block;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -79,7 +77,6 @@
   line-height: 1.5715;
   list-style: none;
   cursor: pointer;
-  -webkit-font-feature-settings: 'tnum';
   font-feature-settings: 'tnum';
 
   .@{select-prefix-cls}-selector {
@@ -94,7 +91,6 @@
     border: 1px solid @palette-gray-3;
     border-radius: 4px;
     cursor: text;
-    -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     .@{select-prefix-cls}-selection-search {
@@ -117,7 +113,6 @@
       line-height: 38px;
       white-space: nowrap;
       text-overflow: ellipsis;
-      -webkit-transition: all 0.3s;
       transition: all 0.3s;
       -webkit-box-flex: 1;
     }
@@ -145,7 +140,7 @@
     text-transform: none;
     transition: all 0.2s;
     pointer-events: none;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -162,7 +157,7 @@
     background: @gray-0;
     border: 1px solid #dfe4ee;
     border-radius: 8px;
-    box-shadow: 0 2px 14px 1px rgba(223, 226, 237, 0.8);
+    box-shadow: 0 2px 14px 1px rgb(223 226 237 / 80%);
     // ======================== Tree ========================
     .@{select-tree-prefix-cls} {
       border-radius: 0;
@@ -198,6 +193,7 @@
               .@{select-tree-prefix-cls}-iconEle {
                 svg {
                   color: @gray-3;
+
                   path {
                     fill: @gray-3;
                   }
@@ -214,6 +210,7 @@
               .@{select-tree-prefix-cls}-iconEle {
                 svg {
                   color: @blue-3;
+
                   path {
                     fill: @blue-3;
                   }
@@ -244,7 +241,6 @@
               border: 1px solid @palette-gray-2;
               border-radius: 4px;
               border-collapse: separate;
-              -webkit-transition: all 0.3s;
               transition: all 0.3s;
             }
           }
@@ -266,23 +262,24 @@
             .@{select-tree-prefix-cls}-checkbox-inner {
               background-color: @blue-3;
               border: 0.5px solid @blue-3;
+
               &::after {
                 position: absolute;
                 top: 50%;
                 left: 22%;
                 display: table;
-                width: 5.71428571px;
-                height: 9.14285714px;
+                width: 5.7143px;
+                height: 9.1429px;
                 border: 2px solid @gray-0;
                 border-top: 0;
                 border-left: 0;
-                -webkit-transform: rotate(45deg) scale(1) translate(-50%, -50%);
                 transform: rotate(45deg) scale(1) translate(-50%, -50%);
                 opacity: 1;
                 transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
                 content: ' ';
               }
             }
+
             &-input {
               position: absolute;
               top: 0;
@@ -300,6 +297,7 @@
             .@{select-tree-prefix-cls}-checkbox-inner {
               background-color: @blue-3;
               border: 0.5px solid @blue-3;
+
               &::after {
                 position: absolute;
                 top: 46%;
@@ -328,6 +326,7 @@
             line-height: 40px;
             text-align: center;
             cursor: pointer;
+
             &-noop {
               cursor: default;
             }
@@ -361,6 +360,7 @@
               line-height: 16px;
               text-align: center;
               vertical-align: middle;
+
               &:empty {
                 display: none;
               }
@@ -413,6 +413,7 @@
     line-height: 24px !important;
     background-color: @color-background-checkbox-selection-item;
     border-radius: 4px;
+
     &-remove {
       display: inline-block;
       margin-left: 8px;
@@ -425,7 +426,7 @@
       text-transform: none;
       vertical-align: bottom;
       cursor: pointer;
-      text-rendering: optimizeLegibility;
+      text-rendering: optimizelegibility;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
 
@@ -457,6 +458,7 @@
   .@{select-prefix-cls}-selection-search {
     position: relative !important;
     max-width: 100%;
+
     &-input,
     &-mirror {
       line-height: 38px;
@@ -465,16 +467,19 @@
     .@{select-prefix-cls}-selection-search-input {
       min-width: 10px;
     }
+
     &-input {
       ::-ms-clear {
         display: none !important;
       }
+
       :valid {
         display: none !important;
       }
       width: 100%;
       min-width: 13.1px !important;
     }
+
     &-mirror {
       position: absolute;
       top: 0;
@@ -502,8 +507,9 @@
     input[type='search']::-webkit-search-results-decoration {
       display: none !important;
     }
+
     input {
-      -webkit-appearance: none;
+      appearance: none;
     }
   }
 }

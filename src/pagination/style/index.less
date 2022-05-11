@@ -12,12 +12,15 @@
   height: @pagination-height;
   color: @gray-5;
   .text-body1();
+
   & > * {
     margin: 0 16px 0 0;
   }
+
   & > *:last-child {
     margin: 0;
   }
+
   &__ul {
     display: flex;
     flex-wrap: nowrap;
@@ -26,36 +29,44 @@
     padding: 0;
     list-style: none;
   }
+
   &__li {
     margin: 0 8px 0 0;
+
     &:last-child {
       margin: 0;
     }
   }
+
   &__total {
     min-width: max-content;
     padding: 0;
     line-height: @pagination-height;
   }
+
   &__rows,
   &__jumper {
     display: flex;
     align-content: center;
     min-width: max-content;
+
     & > p:nth-of-type(1) {
       margin: 0 8px 0 0;
       line-height: @pagination-height;
     }
+
     & > p:nth-of-type(2) {
       margin: 0 0 0 8px;
       line-height: @pagination-height;
     }
+
     &__input {
       @width: 85px;
       width: @width;
       min-width: @width;
     }
   }
+
   &__page__button-text {
     display: block;
     min-width: 1em;

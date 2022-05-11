@@ -6,6 +6,7 @@
   color: @gray-5;
   text-align: left;
   .text-body1();
+
   &-title {
     margin-bottom: 20px;
     .text-h4();
@@ -14,6 +15,7 @@
   & &-container {
     position: relative;
     border-bottom: 1px solid @gray-2;
+
     table {
       position: relative;
       width: 100%;
@@ -44,6 +46,7 @@
     vertical-align: middle;
     background-color: @gray-1;
     border-bottom: 1px solid @gray-2;
+
     &:last-child {
       .@{table-prefix-cls}-resizable-handle {
         display: none;
@@ -65,6 +68,7 @@
     border-bottom: 1px solid @gray-2;
     border-left: unset;
   }
+
   &-tbody > tr:last-child > &-cell {
     border-bottom: 0;
   }
@@ -97,13 +101,16 @@
 
   &-cell {
     box-sizing: border-box;
+
     &-scrollbar {
       position: relative;
       padding: 0 !important;
     }
+
     &-ellipsis {
       .ellipsis();
     }
+
     &-fix-left,
     &-fix-right {
       z-index: @z-index-table-fixed;
@@ -114,6 +121,7 @@
     &-ellipsis&-fix-right-first {
       overflow: visible;
     }
+
     &-ellipsis&-fix-left-last > &-content,
     &-ellipsis&-fix-right-first > &-content {
       display: block;
@@ -134,6 +142,7 @@
         pointer-events: none;
       }
     }
+
     &-fix-right-first {
       &::after {
         position: absolute;
@@ -150,10 +159,11 @@
   }
 
   &-ping-left &-cell&-cell-fix-left-last::after {
-    box-shadow: inset 10px 0 8px -6px rgba(36, 33, 33, 0.15);
+    box-shadow: inset 10px 0 8px -6px rgb(36 33 33 / 15%);
   }
+
   &-ping-right &-cell&-cell-fix-right-first::after {
-    box-shadow: inset -10px 0 8px -6px rgba(36, 33, 33, 0.15);
+    box-shadow: inset -10px 0 8px -6px rgb(36 33 33 / 15%);
   }
 
   &-column-title {
@@ -161,6 +171,7 @@
     align-items: center;
     width: 100%;
     min-height: 24px;
+
     &-info {
       display: flex;
       align-items: center;
@@ -169,10 +180,12 @@
       padding: 0 5px;
       color: @gray-3;
       cursor: help;
+
       .gio-icon {
         vertical-align: 0;
       }
     }
+
     &-text {
       &-ellipsis {
         .ellipsis();
@@ -206,19 +219,24 @@
     color: @gray-3;
     line-height: 0;
     border: none;
+
     & > [class*='prefix-icon'] {
       flex-direction: column;
     }
+
     &-up {
       transform: translateY(3px);
       transition: color 0.2s;
+
       &.active {
         color: @blue-3;
       }
     }
+
     &-down {
       transform: translateY(-3px);
       transition: color 0.2s;
+
       &.active {
         color: @blue-3;
       }
@@ -250,6 +268,7 @@
       content: '';
     }
   }
+
   &-pagination {
     float: right;
     margin: 20px 20px 20px 0;
@@ -314,6 +333,7 @@
       content: '';
     }
   }
+
   .react-resizable {
     position: relative;
     background-clip: padding-box;
@@ -366,6 +386,7 @@
     background-color: @gray-0;
     border-radius: 8px;
     .elevation(1);
+
     &-footer {
       padding: 8px 16px;
       border-top: 1px solid @gray-2;
@@ -421,6 +442,7 @@
   &::after {
     content: none;
   }
+
   &::before {
     content: none;
   }
