@@ -1,3 +1,17 @@
+# [23.2.0](https://github.com/growingio/gio-design/compare/v23.1.0...v23.2.0) (2022-05-11)
+
+
+### Bug Fixes
+
+* **date-picker:** force set viewDate ([a00b766](https://github.com/growingio/gio-design/commit/a00b766256733cb068f6dfe4b77d2755a0a9ee31))
+* **popover:** the alternative axis check be enabled ([#2002](https://github.com/growingio/gio-design/issues/2002)) ([8582665](https://github.com/growingio/gio-design/commit/858266507fe9679d55766f8729fa6adfaaf510bc))
+* **static-date-range-picker:** fix panel interaction error ([883944b](https://github.com/growingio/gio-design/commit/883944b2fa6bc2baf3be15ebdfa7cb91df501f85))
+
+
+### Features
+
+* **result:** add component result ([#2006](https://github.com/growingio/gio-design/issues/2006)) ([2d81a37](https://github.com/growingio/gio-design/commit/2d81a37d22c138f61afe5a8e7ec286eb56902a0f))
+
 # [23.1.0](https://github.com/growingio/gio-design/compare/v23.0.1...v23.1.0) (2022-05-04)
 
 
