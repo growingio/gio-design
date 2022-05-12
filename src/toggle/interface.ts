@@ -17,11 +17,6 @@ export interface ToggleProps
    */
   disabled?: boolean;
   /**
-   尺寸
-   @deprecated
-   */
-  size?: string;
-  /**
    变化时回调函数
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
@@ -31,16 +26,19 @@ export interface ToggleProps
    */
   className?: string;
   /**
-    Toggles控制字段
+    Toggles开启控制字段
   */
   on?: boolean;
-
-  style?: React.CSSProperties;
-
   /**
-   * @deprecated
+    自定义样式
+  */
+  style?: React.CSSProperties;
+  /**
+   * 传入组件测试id属性，默认为toggle
    */
   dataTestId?: string;
-
+  /**
+   * 兼容老dataTestId写法
+   */
   ['data-testid']?: string;
 }
