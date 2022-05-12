@@ -9,18 +9,30 @@ describe('testing input', () => {
     expect(container.querySelector('input[value="1111"]')).toBeTruthy();
   });
   it('trigger event when press enter key', async () => {
-    const doSomething = jest.fn();
+    const mockEnterPress = jest.fn();
     const ref = React.createRef<HTMLInputElement>();
-    render(<Input inputRef={ref} defaultValue="1111" onPressEnter={doSomething} />);
+    render(<Input inputRef={ref} defaultValue="1111" onPressEnter={mockEnterPress} />);
     const inputElem = screen.getByTestId('input');
     ref.current?.focus();
     fireEvent.keyPress(inputElem, { key: "Enter", keyCode: 13 });
-    expect(doSomething).toHaveBeenCalledTimes(1);
+    expect(mockEnterPress).toHaveBeenCalledTimes(1);
+  });
+  it('trigger event when press key', async () => {
+    const mockKeyPress = jest.fn();
+    const ref = React.createRef<HTMLInputElement>();
+    render(<Input inputRef={ref} defaultValue="1111" onKeyPress={mockKeyPress} />);
+    const inputElem = screen.getByTestId('input');
+    ref.current?.focus();
+    fireEvent.keyPress(inputElem, { key: "Enter", charCode: 13 });
+    fireEvent.keyPress(inputElem, { charCode: 65 });
+    expect(mockKeyPress).toHaveBeenCalledTimes(2);
 
   });
   it('trigger change event', async () => {
     let changedValue = '';
-    const mockChange = jest.fn((e) => { changedValue = e.target.value });
+    const mockChange = jest.fn((e) => {
+      changedValue = e.target.value
+    });
     const ref = React.createRef<HTMLInputElement>();
     render(<Input inputRef={ref} defaultValue="1111" onChange={mockChange} />);
     const inputElem = screen.getByTestId('input');
