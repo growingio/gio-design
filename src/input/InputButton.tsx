@@ -47,7 +47,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
       setValue('');
       event.stopPropagation();
     },
-    [disabled, handleOnClear, onInputChange, setValue]
+    [handleOnClear, onInputChange, setValue]
   );
 
   const wrapperCls = useMemo(
