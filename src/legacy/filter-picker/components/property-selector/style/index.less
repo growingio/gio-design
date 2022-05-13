@@ -16,14 +16,17 @@
   }
   .@{list-property-selector-prefix-cls-legacy}__item {
     transition: all 0.3s ease;
+
     &.selected,
     &.active {
       color: @palette-blue-5;
       background-color: @palette-gray-1;
     }
+
     .item-icon {
       margin-right: 12px;
     }
+
     .item-icon.indent {
       text-indent: 22px;
     }
@@ -38,6 +41,7 @@
   &-dropdown {
     width: 366px;
   }
+
   .inner-input-wrap {
     display: inline-block;
     width: inherit;
@@ -45,6 +49,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+
     .icon {
       margin-right: 12px;
     }
@@ -53,6 +58,7 @@
 .@{property-picker-prefix-cls-legacy}-card {
   width: 320px;
   white-space: normal;
+
   &-title {
     margin-right: 8px;
     color: @palette-black-6;
@@ -62,6 +68,7 @@
     vertical-align: middle;
     word-break: break-all;
   }
+
   &-label {
     max-width: 100%;
     overflow: hidden;
@@ -69,20 +76,24 @@
     text-overflow: ellipsis;
     vertical-align: middle;
   }
+
   &-key {
     margin-top: 4px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+
   &-description {
     word-break: break-all;
   }
+
   &__divide {
     display: block;
     margin: 16px 0;
     border-bottom: 1px solid @palette-gray-3;
   }
+
   &__footer {
     color: @palette-black-6;
     font-weight: normal;
@@ -90,10 +101,12 @@
     font-family: @font-family-primary;
     font-style: normal;
     line-height: 22px;
+
     &__icon {
       margin-right: 8px;
     }
   }
+
   .gio-loading-wrapper-loading {
     & > .gio-loading {
       position: absolute;
@@ -104,6 +117,7 @@
     }
   }
 }
+
 .property-card-overlay {
   .gio-popover-inner-content {
     margin: 0;

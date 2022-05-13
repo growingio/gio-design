@@ -37,8 +37,8 @@
       outline: none;
       cursor: pointer;
       transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
-      -webkit-appearance: none;
-      -moz-appearance: none;
+      appearance: none;
+
       &:checked,
       &[indeterminate='true'] {
         --b: var(--active);
@@ -47,15 +47,18 @@
         --d-t: 0.6s;
         --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
       }
+
       &:disabled {
         --b: var(--disabled);
         cursor: not-allowed;
         opacity: 0.9;
+
         &:checked,
         &[indeterminate='true'] {
           --b: var(--disabled);
           --bc: var(--border);
         }
+
         &::after {
           top: 0;
           left: 4px;
@@ -68,10 +71,12 @@
           border-left: 0;
           transform: rotate(var(--r, 43deg)) !important;
         }
+
         & + label {
           cursor: not-allowed;
         }
       }
+
       &:hover {
         &:not(:checked) {
           &:not(:disabled) {
@@ -79,14 +84,17 @@
           }
         }
       }
+
       &:not(.switch) {
         width: 16px;
         border-radius: 4px;
+
         &:checked,
         &[indeterminate='true'] {
           --r: 43deg;
         }
       }
+
       & + label {
         display: inline-block;
         margin-left: 4px;
@@ -104,6 +112,7 @@
         transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
         content: '';
       }
+
       &:not(.switch) {
         &::after {
           top: 0;
@@ -116,6 +125,7 @@
           border-left: 0;
           transform: rotate(var(--r, 20deg));
         }
+
         &:checked,
         &[indeterminate='true'] {
           --r: 43deg;
@@ -126,6 +136,7 @@
       &:not(.switch) {
         width: 16px;
         border-radius: 4px;
+
         &::after {
           position: absolute;
           top: 0;
@@ -142,11 +153,13 @@
           transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
           content: '';
         }
+
         &:checked,
         &[indeterminate='true'] {
           --r: 43deg;
         }
       }
+
       &:disabled {
         &::after {
           border-color: var(--disabled-inner);
@@ -214,10 +227,12 @@
       }
     }
   }
+
   &-disabled {
     .@{checkbox-inner-prefix-cls} {
       background-color: @gray-1;
       border-color: @gray-1 !important;
+
       &::after {
         background-color: @gray-1;
       }
@@ -229,6 +244,7 @@
   display: inline-flex;
   gap: 16px;
   justify-content: flex-start;
+
   &__vertical {
     flex-direction: column;
     align-items: flex-start;
@@ -241,6 +257,7 @@
       }
     }
   }
+
   &__horizontal {
     flex-direction: row;
     align-items: center;

@@ -1,7 +1,7 @@
 .scrollbar(@x: hidden, @y: overlay) {
   overflow: hidden;
   scrollbar-width: thin;
-  scrollbar-color: rgba(173, 178, 194, 0.6) rgba(255, 255, 255, 0);
+  scrollbar-color: rgb(173 178 194 / 60%) rgb(255 255 255 / 0%);
 
   &:hover {
     overflow-x: scroll;
@@ -14,7 +14,7 @@
     width: 4px;
     height: 4px;
     background: transparent;
-    -webkit-appearance: none;
+    appearance: none;
   }
 
   &::-webkit-scrollbar-track,
@@ -25,11 +25,11 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(173, 178, 194, 0.6);
+    background: rgb(173 178 194 / 60%);
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: rgba(123, 129, 156, 0.6);
+    background: rgb(123 129 156 / 60%);
   }
 }

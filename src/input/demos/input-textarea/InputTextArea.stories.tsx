@@ -22,3 +22,8 @@ export const Default: Story<TextAreaProps> = (args) => <Input.TextArea {...args}
 Default.args = {
   placeholder: 'Enter some text',
 };
+
+export const MaxLength: Story<TextAreaProps> = () => {
+  const [val, setVal] = React.useState('');
+  return <Input.TextArea maxLength={1} value={val} onChange={e => setVal(e.target.value)} />;
+}

@@ -17,6 +17,7 @@ module.exports = {
     '@storybook/addon-controls',
     '@storybook/addon-actions',
     'storybook-addon-designs',
+    '@storybook/addon-essentials',
     {
       name: '@storybook/addon-storysource',
       options: {
@@ -37,5 +38,8 @@ module.exports = {
       use: ['style-loader', 'css-loader', 'less-loader'],
     });
     return config;
+  },
+  core: {
+    builder: 'webpack5',
   },
 };

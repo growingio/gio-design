@@ -22,14 +22,15 @@
       outline: none;
       cursor: pointer;
       transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
-      -webkit-appearance: none;
-      -moz-appearance: none;
+      appearance: none;
       &.@{toggles-prefix-cls} {
         width: 40px;
         border-radius: 11px;
+
         &:hover {
           border-color: @blue-3;
         }
+
         &::after {
           top: 2px;
           left: 4px;
@@ -39,10 +40,12 @@
           border-radius: 50%;
           transform: translateX(var(--x, 0));
         }
+
         &:checked {
           --ab: var(--active-inner);
           --x: 17px;
         }
+
         &:disabled {
           &:not(:checked) {
             &::after {
@@ -51,6 +54,7 @@
           }
         }
       }
+
       &::after {
         position: absolute;
         top: 0;
@@ -59,6 +63,7 @@
         transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
         content: '';
       }
+
       &:checked {
         --b: var(--active);
         --bc: var(--active);
@@ -66,14 +71,17 @@
         --d-t: 0.6s;
         --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
       }
+
       &:disabled {
         --b: var(--disabled);
         cursor: not-allowed;
         opacity: 0.9;
+
         &:checked {
           --b: var(--disabled-inner);
           --bc: var(--border);
         }
+
         & + label {
           cursor: not-allowed;
         }
@@ -119,14 +127,15 @@
       outline: none;
       cursor: pointer;
       transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
-      -webkit-appearance: none;
-      -moz-appearance: none;
+      appearance: none;
       &.@{toggles-prefix-cls} {
         width: 40px;
         border-radius: 11px;
+
         &:hover {
           border-color: @gray-2;
         }
+
         &::after {
           top: 2px;
           left: 4px;
@@ -136,10 +145,12 @@
           border-radius: 50%;
           transform: translateX(var(--x, 0));
         }
+
         &:checked {
           --ab: var(--disabled);
           --x: 17px;
         }
+
         &:disabled {
           &:not(:checked) {
             &::after {
@@ -148,6 +159,7 @@
           }
         }
       }
+
       &::after {
         position: absolute;
         top: 0;
@@ -156,6 +168,7 @@
         transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
         content: '';
       }
+
       &:checked {
         --b: var(--active);
         --bc: var(--active);
@@ -163,14 +176,17 @@
         --d-t: 0.6s;
         --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
       }
+
       &:disabled {
         --b: var(--disabled);
         cursor: not-allowed;
         opacity: 0.9;
+
         &:checked {
           --b: var(--disabled-inner);
           --bc: var(--border);
         }
+
         & + label {
           cursor: not-allowed;
         }

@@ -6,36 +6,44 @@
   display: table;
   box-sizing: border-box;
   width: 100%;
+
   &-header {
     display: table-cell;
     padding-right: 16px;
     vertical-align: top;
   }
+
   & &-avatar {
     margin: 0;
     background-color: @color-background-skeleton-normal;
   }
+
   &-content {
     display: table-cell;
     width: 100%;
     padding-top: 18px;
     vertical-align: top;
   }
+
   &-title {
     width: 38%;
     height: 24px;
     background-color: @color-background-skeleton-normal;
   }
+
   &-paragraph {
     overflow: hidden;
+
     p {
       height: 24px;
       background-color: @color-background-skeleton-normal;
     }
+
     p:not(:last-child) {
       margin: 32px 0;
     }
   }
+
   &-image {
     display: flex;
     align-items: center;
@@ -46,6 +54,7 @@
     background-color: #f7f8fc;
     border-radius: 10px;
   }
+
   &-active {
     .@{skeleton-prefix-cls} {
       &-avatar,
@@ -66,6 +75,7 @@
     0% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0 50%;
     }
