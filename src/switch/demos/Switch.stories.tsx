@@ -24,6 +24,16 @@ export default {
 } as Meta;
 
 export const Default = () => (
+  <Switch>
+    <Switch.Item value="OptionA" key="1">
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2">
+      OptionB
+    </Switch.Item>
+  </Switch>
+);
+export const Options = () => (
   <Switch
     options={[
       {
@@ -37,68 +47,47 @@ export const Default = () => (
     ]}
   />
 );
-
 export const Disabled = () => (
-  <Switch
-    disabled
-    defaultValue="OptionA"
-    options={[
-      {
-        label: 'OptionA',
-        value: 'OptionA',
-      },
-      {
-        label: 'OptionB',
-        value: 'OptionB',
-      },
-    ]}
-  />
+  <Switch disabled defaultValue="OptionA">
+    <Switch.Item value="OptionA" key="1">
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2">
+      OptionB
+    </Switch.Item>
+  </Switch>
 );
 
 export const Size = () => (
   <>
-    <Switch
-      options={[
-        {
-          label: 'OptionA',
-          value: 'OptionA',
-        },
-        {
-          label: 'OptionB',
-          value: 'OptionB',
-        },
-      ]}
-    />
-    <Switch
-      size="small"
-      options={[
-        {
-          label: 'OptionA',
-          value: 'OptionA',
-        },
-        {
-          label: 'OptionB',
-          value: 'OptionB',
-        },
-      ]}
-    />
+    <Switch defaultValue="OptionA">
+      <Switch.Item value="OptionA" key="1">
+        OptionA
+      </Switch.Item>
+      <Switch.Item value="OptionB" key="2">
+        OptionB
+      </Switch.Item>
+    </Switch>
+    <Switch defaultValue="OptionA" size="small">
+      <Switch.Item value="OptionA" key="1">
+        OptionA
+      </Switch.Item>
+      <Switch.Item value="OptionB" key="2">
+        OptionB
+      </Switch.Item>
+    </Switch>
   </>
 );
 
 export const DefaultValue = () => (
-  <Switch
-    defaultValue="OptionA"
-    options={[
-      {
-        label: 'OptionA',
-        value: 'OptionA',
-      },
-      {
-        label: 'OptionB',
-        value: 'OptionB',
-      },
-    ]}
-  />
+  <Switch defaultValue="OptionA">
+    <Switch.Item value="OptionA" key="1">
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2">
+      OptionB
+    </Switch.Item>
+  </Switch>
 );
 export const OnChange = () => (
   <Switch
@@ -107,17 +96,14 @@ export const OnChange = () => (
       action('e');
       console.log(e, 'e');
     }}
-    options={[
-      {
-        label: 'OptionA',
-        value: 'OptionA',
-      },
-      {
-        label: 'OptionB',
-        value: 'OptionB',
-      },
-    ]}
-  />
+  >
+    <Switch.Item value="OptionA" key="1">
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2">
+      OptionB
+    </Switch.Item>
+  </Switch>
 );
 export const SwitchItem: Story<SwitchProps> = () => (
   <Switch>

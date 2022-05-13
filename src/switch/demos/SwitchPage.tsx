@@ -33,6 +33,16 @@ export default function SwitchPage() {
         <Story id="upgraded-switch--default" />
       </Canvas>
 
+      <Subheading>{formatMessage({ defaultMessage: 'Option参数' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: 'Switch也可以通过`options`属性传入数组',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-switch--options" />
+      </Canvas>
+
       <Subheading>{formatMessage({ defaultMessage: '整体禁用' })}</Subheading>
       <Description>
         {formatMessage({
@@ -82,7 +92,7 @@ export default function SwitchPage() {
       <Canvas>
         <Story id="upgraded-switch--switch-value" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '不使用options属性，传入Item写法' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '不使用options属性，传入Item写法(JSX)写法' })}</Subheading>
       <Canvas>
         <Story id="upgraded-switch--switch-item" />
       </Canvas>
