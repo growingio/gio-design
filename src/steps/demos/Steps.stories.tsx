@@ -22,17 +22,88 @@ export default {
     },
   },
 } as Meta;
-const templateArr = [
-  { lable: '第一步' },
-  { lable: '第二步' },
-  { lable: '第三步' },
-  { lable: '第四步' },
-  { lable: '第五步' },
-  { lable: '第六步' },
-];
-const renderItems = () =>
-  templateArr.map((item, index) => <Steps.Step label={`Step ${index + 1}`} value={index} prefix={item} />);
-const Template: Story<StepsProps> = (args) => {
+const templateArr = new Array(6).fill(0);
+
+// default
+export const Default: Story<StepsProps> = (args) => (
+  <Steps {...args}>
+    {new Array(6).fill(0).map((item, index) => (
+      <Steps.Step label={`Step ${index + 1}`} value={index} prefix={item} />
+    ))}
+  </Steps>
+);
+
+// onChange
+export const OnChange: Story<StepsProps> = () => (
+  <Steps
+    onChange={(e) => {
+      console.log(e, 'onChange');
+      action('onchange');
+    }}
+    current={6}
+  >
+    {new Array(6).fill(0).map((item, index) => (
+      <Steps.Step label={`Step ${index + 1}`} value={index} prefix={item} />
+    ))}
+  </Steps>
+);
+
+// size
+export const Size: Story<StepsProps> = () => (
+  <>
+    <Steps size="normal" onChange={() => action('onchange')} current={6}>
+      {new Array(6).fill(0).map((item, index) => (
+        <Steps.Step label={`Step ${index + 1}`} value={index} prefix={item} />
+      ))}
+    </Steps>
+    <Steps size="small" onChange={() => action('onchange')} current={6}>
+      {new Array(6).fill(0).map((item, index) => (
+        <Steps.Step label={`Step ${index + 1}`} value={index} prefix={item} />
+      ))}
+    </Steps>
+  </>
+);
+
+// value
+export const Value: Story<StepsProps> = () => {
+  const [value, setValue] = useState(3);
+  return (
+    <div>
+      <Steps value={value} current={4} onChange={(e) => setValue(e)}>
+        {new Array(6).fill(0).map((item, index) => (
+          <Steps.Step label={`Step ${index + 1}`} value={index} prefix={item} />
+        ))}
+      </Steps>
+    </div>
+  );
+};
+
+// have children
+export const HaveChildren = () => (
+  <div>
+    <Steps className="steps" defaultValue={1} onChange={action('onchange')} current={4}>
+      {new Array(6).fill(0).map((item, index) => (
+        <Steps.Step label={`Step${index + 1}`} value={index} key={index}>
+          <div
+            style={{
+              backgroundColor: '#f7f8fc',
+              textAlign: 'center',
+              height: 150,
+              fontSize: 100,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            {`Step${index + 1}`}
+          </div>
+        </Steps.Step>
+      ))}
+    </Steps>
+  </div>
+);
+// have step button
+export const HaveStepButton: Story<StepsProps> = () => {
   const [current, setCurrent] = useState(3);
   const next = () => {
     setCurrent(current + 1);
@@ -41,7 +112,7 @@ const Template: Story<StepsProps> = (args) => {
   const prev = () => {
     setCurrent(current - 1);
   };
-  const complate = () => {
+  const complete = () => {
     setCurrent(templateArr.length + 1);
   };
   const reset = () => {
@@ -49,8 +120,10 @@ const Template: Story<StepsProps> = (args) => {
   };
   return (
     <div>
-      <Steps {...args} current={current}>
-        {renderItems()}
+      <Steps current={current}>
+        {new Array(6).fill(0).map((item, index) => (
+          <Steps.Step label={`Step ${index + 1}`} value={index} prefix={item} />
+        ))}
       </Steps>
       <div className="steps-action" style={{ padding: '30px 0 0 0' }}>
         {current > 1 && current < templateArr.length && (
@@ -64,7 +137,7 @@ const Template: Story<StepsProps> = (args) => {
           </Button>
         )}
         {current === templateArr.length && (
-          <Button type="primary" onClick={() => complate()}>
+          <Button type="primary" onClick={() => complete()}>
             完成
           </Button>
         )}
@@ -76,124 +149,4 @@ const Template: Story<StepsProps> = (args) => {
       </div>
     </div>
   );
-};
-const haveChildrenItems = () =>
-  templateArr.map((item, index) => (
-    <Steps.Step label={`Step${index + 1}`} value={index} key={index}>
-      <div
-        style={{
-          backgroundColor: '#f7f8fc',
-          textAlign: 'center',
-          height: 150,
-          fontSize: 100,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        {`Step${index + 1}`}
-      </div>
-    </Steps.Step>
-  ));
-const childrenTemplate: Story<StepsProps> = (args) => (
-  <div>
-    <Steps {...args} current={4}>
-      {haveChildrenItems()}
-    </Steps>
-  </div>
-);
-const DemoTemplate: Story<StepsProps> = (args) => (
-  <>
-    <table
-      style={{
-        marginBottom: 5,
-      }}
-      className="table-demo"
-    >
-      <tbody>
-        <tr>
-          <th>Steps control</th>
-          <th>描述</th>
-          <th>Example</th>
-        </tr>
-        <tr>
-          <td>size</td>
-          <td>组件高度,normal,small</td>
-          <td>
-            <Steps style={{ marginBottom: 10 }} {...args} current={3}>
-              {templateArr.map((item, index) => (
-                <Steps.Step label={`Step${index + 1}`} value={index} key={index} />
-              ))}
-            </Steps>
-            <Steps size="small" {...args} current={3}>
-              {templateArr.map((item, index) => (
-                <Steps.Step label={`Step${index + 1}`} value={index} key={index} />
-              ))}
-            </Steps>
-          </td>
-        </tr>
-        <tr>
-          <td>外层小于内容宽度时</td>
-          <td>横向滚动不换行</td>
-          <td style={{ width: 500 }}>
-            <Steps {...args} current={4}>
-              {[...Array(10)].map((item, index) => (
-                <Steps.Step label={`Step${index + 1}`} value={index} key={index} />
-              ))}
-            </Steps>
-          </td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>children</td>
-          <td>有内容联动</td>
-          <td>
-            <Steps
-              {...args}
-              current={4}
-              onChange={() => {
-                action('onchange');
-              }}
-            >
-              {templateArr.map((item, index) => (
-                <Steps.Step label={`Step${index + 1}`} value={index} key={index}>
-                  <div
-                    style={{
-                      backgroundColor: '#f7f8fc',
-                      textAlign: 'center',
-                      height: 150,
-                      fontSize: 100,
-                    }}
-                  >
-                    {`Step${index + 1}`}
-                  </div>
-                </Steps.Step>
-              ))}
-            </Steps>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </>
-);
-// Demo
-export const Demo = DemoTemplate.bind({});
-Demo.args = {
-  defaultValue: 0,
-  onChange: action('onchange'),
-};
-// default
-export const Default = Template.bind({});
-Default.args = {
-  className: 'steps',
-  defaultValue: 3,
-  onChange: action('onchange'),
-};
-// have children
-export const HaveChildren = childrenTemplate.bind({});
-HaveChildren.args = {
-  className: 'steps',
-  defaultValue: 1,
-  onChange: action('onchange'),
 };

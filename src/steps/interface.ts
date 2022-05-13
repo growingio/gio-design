@@ -18,10 +18,6 @@ export interface StepsProps {
    */
   onChange?: (key: React.Key) => void;
   /**
-   切换面板的回调
-   */
-  onChangeCurrent?: (key: React.Key) => void;
-  /**
    * 组件大小
    */
   size?: 'small' | 'normal';
