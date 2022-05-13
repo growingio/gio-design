@@ -1,10 +1,11 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import React, { useState } from 'react';
+import { Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import Docs from './SignPage';
-import { ISignNumberProps } from '../interface';
+import { ISignNumberProps, TPlacement } from '../interface';
 import Sign from '../index';
 import '../style';
+import Toggle from '../../toggle';
 
 export default {
   title: 'Upgraded/Sign',
@@ -22,59 +23,93 @@ export default {
   },
 } as Meta;
 
-const style1 = {
-  display: 'inline-block',
-  width: '50%',
-  marginBottom: '15px',
-};
+const ShadowSpan = () => (
+  <div
+    style={{
+      display: 'inline-block',
+      width: '32px',
+      height: '32px',
+      verticalAlign: 'middle',
+      backgroundColor: '#ebedf5',
+      borderRadius: '4px',
+    }}
+  />
+);
 
-const style2 = {
-  marginRight: '50px',
-};
-
-const style3 = {
-  display: 'inline-block',
-  width: '32px',
-  height: '32px',
-  verticalAlign: 'middle',
-  backgroundColor: '#ebedf5',
-  bordeRadius: '4PX',
-};
-
-const Template: Story<ISignNumberProps> = (args) => (
+export const Default = (args: ISignNumberProps) => (
   <>
-    <div style={style1}>
-      <span style={style2}>
-        <Sign {...args}>
-          <span style={style3} />
-        </Sign>
-      </span>
-      <span style={style2}>
-        <Sign count={10} magnitude={10}>
-          <span style={style3} />
-        </Sign>
-      </span>
-      <br />
-      <br />
-      <span style={style2}>
-        <Sign count={55} magnitude={100}>
-          <span style={style3} />
-        </Sign>
-      </span>
-      <span style={style2}>
-        <Sign count={100} magnitude={100}>
-          <span style={style3} />
-        </Sign>
-      </span>
-    </div>
+    <Sign count={10} magnitude={100} {...args}>
+      <ShadowSpan />
+    </Sign>
+  </>
+);
+Default.args = {};
+export const ShowZero = () => (
+  <>
+    <Sign count={0} magnitude={10} showZero>
+      <ShadowSpan />
+    </Sign>
   </>
 );
 
-export const Default = Template.bind({});
-Default.args = {
-  count: 5,
-  magnitude: 10,
-  showZero: false,
-  offset: [32, 32],
-  placement: 'leftBottom',
+export const Magnitude = () => (
+  <>
+    <Sign count={11} magnitude={10}>
+      <ShadowSpan />
+    </Sign>
+  </>
+);
+
+export const Count = () => (
+  <>
+    <Sign count={99} magnitude={100}>
+      <ShadowSpan />
+    </Sign>
+  </>
+);
+
+export const Offset = () => (
+  <>
+    <Sign count={9} magnitude={10} offset={[10, 10]}>
+      <ShadowSpan />
+    </Sign>
+  </>
+);
+
+export const Visible = () => {
+  const [vis, setVis] = useState(true);
+  return (
+    <>
+      <Toggle
+        onChange={() => setVis(!vis)}
+        on={vis}
+        checkedChildren={<span>on</span>}
+        uncheckedChildren={<span>off</span>}
+      />
+      <Sign count={9} magnitude={10} visible={vis}>
+        <ShadowSpan />
+      </Sign>
+    </>
+  );
 };
+const placementArr = ['top', 'right', 'bottom', 'left', 'rightTop', 'rightBottom', 'leftTop', 'leftBottom'];
+export const Placement = () => (
+  <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+    {placementArr.map((e) => (
+      <Sign count={9} magnitude={10} placement={e as TPlacement}>
+        <div
+          style={{
+            display: 'inline-block',
+            height: '26px',
+            verticalAlign: 'middle',
+            backgroundColor: '#ebedf5',
+            borderRadius: '4px',
+            padding: '5px 10px',
+          }}
+        >
+          {e}
+        </div>
+      </Sign>
+    ))}
+  </div>
+);
