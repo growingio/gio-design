@@ -75,6 +75,7 @@ describe('testing input', () => {
     const { container } = render(<Input maxLength={3} />);
     expect(container.querySelector('input[maxlength="3"]')).toBeTruthy();
   });
+
   describe('prefix and suffix', () => {
     it('set prefix testing', () => {
       const { container } = render(<Input prefix="hello" />);

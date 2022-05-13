@@ -39,7 +39,10 @@ Default.args = {
 export const IconsInput = () => (
   <Input placeholder="Enter or search content" prefix={<UserOutlined />} suffix={<FunnelOutlined />} />
 );
-
+export const ControlledValue = () => {
+  const [val, setVal] = React.useState('world');
+  return <Input maxLength={1} value={val} onChange={e => setVal(e.target.value)} />;
+}
 export const InputRef = () => {
   const inputRef = useRef<HTMLInputElement>();
   return (

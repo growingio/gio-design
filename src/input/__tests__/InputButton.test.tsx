@@ -40,7 +40,6 @@ describe('testing InputButton', () => {
   });
   it('custom style and maxWidth', () => {
     const { container } = render(<InputButton defaultValue='111' style={{ color: 'red' }} allowClear maxWidth={200} />);
-    expect(container).toMatchSnapshot();
     expect(container.querySelector('.gio-input-btn__input')).toHaveStyle({ color: 'red', maxWidth: '200px' });
   })
 })
