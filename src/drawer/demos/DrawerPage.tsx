@@ -54,7 +54,7 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: '宽度撑开' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '宽度由内容决定`size`属性设置为normal',
+          defaultMessage: '宽度由内容决定，`fixed`属性设置为false',
         })}
       </Description>
       <Canvas>
@@ -72,7 +72,7 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: '固定宽度 Drawer' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '宽度由内容决定`size`属性设置为fixed，宽度固定500px',
+          defaultMessage: '设置`fixed` 属性，实现宽度固定500px，原size属性依旧生效，未来将弃用',
         })}
       </Description>
       <Canvas>
@@ -81,7 +81,7 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: '自定义宽度' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '设置`width`属性，将size设置为`normal`',
+          defaultMessage: '设置`width`属性为string或number，实现自定义宽度',
         })}
       </Description>
       <Canvas>
