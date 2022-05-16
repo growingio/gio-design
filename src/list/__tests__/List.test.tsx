@@ -74,7 +74,36 @@ describe('Testing List', () => {
     rerender(<List needEmpty={false} />);
     expect(container.querySelector('.gio-list')).toBeFalsy();
   })
-  it('test controlled value', () => {
+  it('render custom Empty node when no children', () => {
+    const { container } = render(<List needEmpty empty={<span>无数据</span>} />);
+
+    expect(container.querySelector('.gio-list')).toBeTruthy();
+    expect(container.querySelector('.gio-list--empty')).toBeTruthy();
+    expect(screen.getByText('无数据')).toBeTruthy();
+  })
+  it('trigger change event', () => {
+    const mockChange = jest.fn();
+    const Demo = () => {
+      const [value, setValue] = useState('');
+      const handleChange = (v?: string) => {
+        setValue(v);
+        mockChange(v);
+      };
+      return <List value={value} onChange={handleChange}>
+        <Item value="1">List Item 1</Item>
+        <Item disabled value="2">
+          List Item 2
+        </Item>
+        <Item value="3">List Item 3</Item>
+        <Item value="4">List Item 4</Item>
+        <Item value="5">List Item 5</Item>
+      </List>
+    };
+    render(<Demo />);
+    fireEvent.click(screen.queryByTestId('list').children[0]);
+    expect(mockChange).toHaveBeenLastCalledWith('1');
+  })
+  it('test change event when model=multiple', () => {
 
     const mockChange = jest.fn();
     const mockMultipleOverflow = jest.fn();
@@ -95,6 +124,7 @@ describe('Testing List', () => {
       </List>
     };
     render(<Demo />);
+    expect(screen.queryAllByTestId('checkbox')?.length).toBe(5);
     fireEvent.click(screen.queryByTestId('list').children[0]);
     fireEvent.click(screen.queryByTestId('list').children[1]);
     fireEvent.click(screen.queryByTestId('list').children[2]);
@@ -109,7 +139,6 @@ describe('Testing List', () => {
 
 describe('Testing Cascader List', () => {
   beforeEach(() => {
-    // jest.useFakeTimers();
     jest.clearAllTimers()
   });
 
