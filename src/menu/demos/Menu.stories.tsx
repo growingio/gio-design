@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { AppOutlined, MapChartOutlined, CalendarOutlined } from '@gio-design/icons';
+import { AppOutlined, MapChartOutlined, CalendarOutlined, } from '@gio-design/icons';
 import Menu from '../index';
 import { IMenuProps, IMenuItemProps, ISubMenuProps } from '../interface';
 import Docs from './MenuPage';

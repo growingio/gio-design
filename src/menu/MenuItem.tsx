@@ -5,7 +5,7 @@ import MenuTitle from './MenuTitle';
 import { MenuContext, SubMenuContext, getInlineIndent } from './MenuContext';
 import Tooltip from '../tooltip';
 
-const MenuItem = (props: IMenuItemProps) => {
+export const MenuItem = (props: IMenuItemProps) => {
   const { icon, children, ...restProps } = props;
   const { verticalIndent, inlineCollapsed } = useContext(MenuContext);
   const { inSubMenu, inIconSubMenu } = useContext(SubMenuContext);
@@ -31,5 +31,4 @@ const MenuItem = (props: IMenuItemProps) => {
   );
 };
 
-MenuItem.isMenuItem = true;
 export default MenuItem;

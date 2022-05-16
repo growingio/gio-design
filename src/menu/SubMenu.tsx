@@ -41,7 +41,4 @@ export const SubMenu = (props: ISubMenuProps) => {
   );
 };
 
-SubMenu.displayName = 'GIODesignSubMenu';
-SubMenu.isSubMenu = true;
-
 export default SubMenu;
