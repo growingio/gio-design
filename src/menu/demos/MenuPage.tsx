@@ -1,5 +1,5 @@
 import React from 'react';
-import { Canvas, Title, Heading, Story, Subheading, ArgsTable } from '@storybook/addon-docs';
+import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description } from '@storybook/addon-docs';
 import { useIntl } from 'react-intl';
 import Menu from '../Menu';
 
@@ -9,16 +9,11 @@ export default function ListPage() {
   return (
     <>
       <Title>{formatMessage({ defaultMessage: ' Menu 导航菜单' })}</Title>
-      <p>
+      <Description>
         {formatMessage({
           defaultMessage: '提供平级的区域将大块内容进行收纳和展现，保持界面整洁、层级清晰。',
         })}
-      </p>
-      <p>Upgrading Guide</p>
-      <ul>
-        <li>样式变化：内部使用的popover和tooltip发生改变，圆角变化。</li>
-        <li>APi变动：无；</li>
-      </ul>
+      </Description>
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Subheading>{formatMessage({ defaultMessage: '垂直模式' })}</Subheading>
       <Canvas>

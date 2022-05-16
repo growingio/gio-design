@@ -44,7 +44,6 @@ export interface IMenuItemProps extends MenuItemProps {
 
 export interface ISubMenuProps extends SubMenuProps {
   /**
-   *  rc 中 key 为可选，gio-design 中限制为必填
    * 「必填」`MenuItem` 的唯一 `key`
    */
   key: string;
@@ -52,6 +51,7 @@ export interface ISubMenuProps extends SubMenuProps {
    * 放置于 `SubMenu` `title` 前的 `icon`
    */
   icon?: React.ReactNode | ((props: any) => React.ReactNode);
+  title?: string;
 }
 
 export interface IMenuItemGroupProps extends MenuItemGroupProps {
