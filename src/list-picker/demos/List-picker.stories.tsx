@@ -3,10 +3,10 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import '../style';
 import { isEqual, uniqueId } from 'lodash';
 import {
-  CodelessTrackingOutlined,
-  EventsPresetOutlined,
-  EventsTrackingOutlined,
-  MetricsPresetOutlined,
+  WriteOutlined,
+  CursorOutlined,
+  TerminalOutlined,
+  GaugeOutlined,
 } from '@gio-design/icons';
 import classNames from 'classnames';
 import { action } from '@storybook/addon-actions';
@@ -19,7 +19,7 @@ import Tabs, { Tab } from '../../tabs';
 import List from '../../list';
 import Recent from '../Recent';
 import Docs from './List-pickerPage';
-import { Card, Divider, Popover, Skeleton, Table, Tag, Page } from '../..';
+import { Card, Divider, Popover, Skeleton, Table, Tag, Result } from '../..';
 
 interface Tmesurements {
   id: string;
@@ -155,16 +155,16 @@ export const Single = (args: ListPickerProps) => {
     </ListPicker>
   );
 };
-export const Multiple = (args: ListPickerProps) => {
+// bug args:ListPickerProps args = {} 第一次渲染无问题，onChange setValue后 直接导致页面卡死 
+export const Multiple = () => {
   const [value, setValue] = useState<undefined | string[]>(['apple']);
   const [activeTab, setActiveTab] = useState('tab1');
   const onChange = (val: string[]) => {
-    console.log('val',val)
+    console.log('val', val)
     setValue(val);
   };
   return (
     <ListPicker
-      {...args}
       style={style}
       value={value}
       onChange={onChange}
@@ -175,7 +175,7 @@ export const Multiple = (args: ListPickerProps) => {
       }}
       max={2}
       onMultipleOverflow={(v) => {
-        console.log('onMultipleOverflow value',v)
+        console.log('onMultipleOverflow value', v)
       }}
       allowClear
       placeholder="请选择"
@@ -193,9 +193,9 @@ export const Multiple = (args: ListPickerProps) => {
             <List
               id="group1"
               title="分组1"
-              prefix={()=><CodelessTrackingOutlined />}
+              prefix={() => <WriteOutlined />}
               options={[
-                { label: '苹果', value: 'apple',prefix:<CodelessTrackingOutlined /> },
+                { label: '苹果', value: 'apple',prefix:<WriteOutlined /> },
                 { label: '香蕉', value: 'banana' },
               ]}
             />
@@ -363,7 +363,7 @@ export const Default: Story<ListPickerProps> = (args: ListPickerProps) => {
             <List
               style={{ width: '240px' }}
               options={[]}
-              empty={<Page type="noFind" description="暂无数据" size="small" />}
+              empty={<Result type="empty-data" description="暂无数据" size="small" />}
             />
           </Tab>
         </Tabs>
@@ -404,78 +404,78 @@ const measurements: Tmesurements[] = [
   { id: 'zZDbKQ9o', name: 'E_搜索结果点击', type: 'custom', action: '', elementId: '', isSystem: false },
 ];
 const iconMap = {
-  simple: <CodelessTrackingOutlined size="14px" />,
-  virtual: <EventsTrackingOutlined size="14px" />,
-  custom: <EventsTrackingOutlined size="14px" />,
-  complex: <MetricsPresetOutlined size="14px" />,
-  prepared: <EventsPresetOutlined size="14px" />,
+  simple: <WriteOutlined size="14px" />,
+  virtual: <TerminalOutlined size="14px" />,
+  custom: <TerminalOutlined size="14px" />,
+  complex: <GaugeOutlined size="14px" />,
+  prepared: <CursorOutlined size="14px" />,
 };
 const renderWrapper = (o: Tmesurements) => (element: React.ReactElement) =>
-  (
-    <Popover
-      allowArrow
-      placement="right"
-      strategy="fixed"
-      triggerStyle={{ display: 'block' }}
-      content={
-        <Card style={{ width: '320px' }}>
-          <Card.Meta title={o.name} description={o.id} />
-          <p>{`${o.id}${o.name}${o.type}`}</p>
-          <Skeleton.Image style={{ width: '100%' }} />
-          <Table
-            title="事件属性"
-            pagination={false}
-            columns={[
-              {
-                dataIndex: 'id',
-                title: 'Id',
-              },
-              {
-                dataIndex: 'name',
-                title: 'Name',
-              },
-            ]}
-            dataSource={Array(2)
-              .fill('')
-              .map((_, index) => ({
-                id: `${index + 1 * 1000}`,
-                name: `Name ${index + 1}`,
-              }))}
-          />
-        </Card>
-      }
-    >
-      {element}
-    </Popover>
-  );
+(
+  <Popover
+    allowArrow
+    placement="right"
+    strategy="fixed"
+    triggerStyle={{ display: 'block' }}
+    content={
+      <Card style={{ width: '320px' }}>
+        <Card.Meta title={o.name} description={o.id} />
+        <p>{`${o.id}${o.name}${o.type}`}</p>
+        <Skeleton.Image style={{ width: '100%' }} />
+        <Table
+          title="事件属性"
+          pagination={false}
+          columns={[
+            {
+              dataIndex: 'id',
+              title: 'Id',
+            },
+            {
+              dataIndex: 'name',
+              title: 'Name',
+            },
+          ]}
+          dataSource={Array(2)
+            .fill('')
+            .map((_, index) => ({
+              id: `${index + 1 * 1000}`,
+              name: `Name ${index + 1}`,
+            }))}
+        />
+      </Card>
+    }
+  >
+    {element}
+  </Popover>
+);
 const renderWrapper2 = (o: Tmesurements) => (element: React.ReactElement) =>
-  (
-    <Popover
-      allowArrow
-      strategy="fixed"
-      placement="right"
-      content={
-        <Card style={{ width: 320 }}>
-          <Card.Meta
-            title={
-              <div>
-                {o.name}
-                <Tag status="draft" style={{ marginLeft: 8 }}>
-                  {o.type}
-                </Tag>
-              </div>
-            }
-            description={o.id}
-          />
-          <Divider style={{ width: '100%' }} />
-          <div>{o.type}</div>
-        </Card>
-      }
-      triggerStyle={{ display: 'block' }}
-    >
-      {element}
-    </Popover>
-  );
+(
+  <Popover
+    allowArrow
+    strategy="fixed"
+    placement="right"
+    content={
+      <Card style={{ width: 320 }}>
+        <Card.Meta
+          title={
+            <div>
+              {o.name}
+              <Tag status="draft" style={{ marginLeft: 8 }}>
+                {o.type}
+              </Tag>
+            </div>
+          }
+          description={o.id}
+        />
+        <Divider style={{ width: '100%' }} />
+        <div>{o.type}</div>
+      </Card>
+    }
+    triggerStyle={{ display: 'block' }}
+  >
+    {element}
+  </Popover>
+);
 const dataFactory = (
   arr: Tmesurements[],
   wrapperFC: (o: Tmesurements) => (element: React.ReactElement) => JSX.Element

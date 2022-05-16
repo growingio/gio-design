@@ -2,9 +2,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { action } from '@storybook/addon-actions';
+import { PlusOutlined, MinusOutlined } from '@gio-design/icons';
 import Pagination, { PaginationProps } from '../index';
 import '../style';
 import Docs from './PaginationPage';
+import Button from '../../button';
 
 export default {
   title: 'Upgraded/Pagination',
@@ -23,19 +26,53 @@ export default {
 
 const DefaultTemplate: Story<PaginationProps> = (args) => <Pagination {...args} />;
 export const Default = DefaultTemplate.bind({});
-Default.args = {
+
+export const ShowQuickJumper = DefaultTemplate.bind({});
+ShowQuickJumper.args = {
   total: 100,
   showQuickJumper: true,
+} as Partial<PaginationProps>;
+
+export const ShowSizeChanger = DefaultTemplate.bind({});
+
+ShowSizeChanger.args = {
+  total: 100,
   showSizeChanger: true,
 } as Partial<PaginationProps>;
 
+export const HideOnSinglePage = () => {
+  const [currentPage, setCurrentPage] = useState(11);
+
+  const handleChange = (
+    page: number,
+    pageSize: number,
+    event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement> | null
+  ) => {
+    console.log(pageSize, event);
+    setCurrentPage(page);
+  };
+  const decrease = () => setCurrentPage(currentPage - 1 || 0);
+  const increase = () => setCurrentPage(currentPage + 1 || 0);
+
+  return (
+    <>
+      <Button.IconButton onClick={decrease} type="text">
+        <MinusOutlined />
+      </Button.IconButton>
+      <Button.IconButton onClick={increase} type="text">
+        <PlusOutlined />
+      </Button.IconButton>
+      大于1页时显示，小于则隐藏，(defaultPageSize)参数默认为10
+      <Pagination total={currentPage} onChange={handleChange} hideOnSinglePage />
+    </>
+  );
+};
+
 export const Basic = () => <Pagination total={100} />;
 
-export const Buttons = () => (
+export const FirstLastButtons = () => (
   <>
     <Pagination total={100} hideFirstButton hideLastButton />
-    <br />
-    <Pagination total={100} showQuickJumper showSizeChanger />
   </>
 );
 
@@ -44,6 +81,7 @@ export const PageSize = () => {
 
   const handlePageSizeChange = (currentPageSize: number, previousPageSize: number) => {
     setPageSize(currentPageSize);
+    action('onPageSizeChange');
   };
 
   return (
@@ -85,6 +123,23 @@ export const TotalTextRenderer = () => {
       pageSize={pageSize}
       onChange={(page) => setCurrentPage(page)}
       totalTextRender={(total) => `${(currentPage - 1) * pageSize + 1}-${currentPage * pageSize} of ${total}`}
+    />
+  );
+};
+
+export const OnChange = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 10;
+  return (
+    <Pagination
+      total={100}
+      current={currentPage}
+      pageSize={pageSize}
+      onChange={(page) => {
+        setCurrentPage(page);
+        action('onChange');
+        console.log(page);
+      }}
     />
   );
 };

@@ -4,6 +4,7 @@
 
 .@{page-prefix-cls} {
   text-align: center;
+
   &__image {
     display: inline-block;
     width: inherit;
@@ -16,10 +17,12 @@
     font-family: 'PingFang SC', sans-serif;
     text-align: center;
   }
+
   &__footer {
     margin: 16px 0 0;
     text-align: center;
   }
+
   &-normal {
     .@{page-prefix-cls}__description {
       .text-h2();
@@ -28,6 +31,7 @@
       width: 450px;
     }
   }
+
   &-normal&-empty {
     .@{page-prefix-cls}__description {
       color: @gray-4;
@@ -46,6 +50,7 @@
       width: 220px;
     }
   }
+
   &-small&-empty {
     .@{page-prefix-cls}__description {
       color: @gray-4;

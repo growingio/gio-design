@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import { addMonths, isBefore, startOfToday } from 'date-fns';
+import { addMonths, format, isBefore, startOfToday } from 'date-fns';
 import { action } from '@storybook/addon-actions';
-import { FoldOutlined,DownOutlined } from '@gio-design/icons';
+import { ClockOutlined, ArrowDownOutlined } from '@gio-design/icons';
 import Docs from './DatePickerPage';
 import Button from '../../button';
 import Toast from '../../toast';
@@ -39,8 +39,8 @@ Default.args = {
   },
 };
 
-export const Format: Story<DatePickerProps>  = (args)=>{
-  const [value,setValue]= useState(new Date());
+export const Format: Story<DatePickerProps> = (args) => {
+  const [value, setValue] = useState(new Date());
 
   return <DatePicker
     value={value}
@@ -48,31 +48,31 @@ export const Format: Story<DatePickerProps>  = (args)=>{
     {...args}
   />
 }
-Format.args={
-  format:'yyyy/dd-mm'
+Format.args = {
+  format: 'yyyy/dd-mm'
 }
 
 export const PrefixAndSuffix = Template.bind({});
 PrefixAndSuffix.args = {
   defaultValue: new Date(),
-  prefix: <FoldOutlined />,
-  suffix: <DownOutlined />
+  prefix: <ClockOutlined />,
+  suffix: <ArrowDownOutlined />
 };
 
-export const AllowClear =Template;
+export const AllowClear = Template;
 AllowClear.args = {
-  allowClear:true,
+  allowClear: true,
 };
 
 export const Size = Template.bind({});
 Size.args = {
   defaultValue: new Date(),
-  size:'small'
+  size: 'small'
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  disabled:true,
+  disabled: true,
   disabledDate: (current: Date) => current.getTime() > new Date().getTime(),
   placeholder: '选择器Disabled',
   onClear: () => {
@@ -82,33 +82,28 @@ Disabled.args = {
 
 export const OnSelectAndOnClose = Template.bind({});
 OnSelectAndOnClose.args = {
-  allowClear:'true',
-  onSelect:action('onSelect'),
-  onChange:action('onChange'),
+  allowClear: 'true',
+  onSelect: action('onSelect'),
+  onChange: action('onChange'),
   onClear: action('onClear'),
   onPanelChange: action('onPanelChange'),
 };
 
 const CustomizeTriggerTemplate: Story<DatePickerProps> = (args) => {
-  const [value,setValue]= useState(new Date().toString());
-  const onSelect = (e:any) => {
-    setValue(e.toString())
+  const [value, setValue] = useState(new Date());
+  const onSelect = (date: Date) => {
+    setValue(date)
     action('onSelect:')
   };
-  const onChange = (e:any) => {
-    action(e)
-  };
+
   return (
     <DatePicker
       trigger={
-        <Button type="secondary">您的所选时间为
-          {value}
+        <Button type="secondary">
+          {format(value, '您的所选时间为 yyyy-MM-dd HH:mm:ss')}
         </Button>
       }
       onSelect={onSelect}
-      InputButtonProps={
-        {onChange,}
-      }
       {...args}
     />
   );

@@ -1,0 +1,106 @@
+@import (reference) '../../stylesheet/variables/index.less';
+
+@page-prefix-cls: ~'@{component-prefix}-result';
+
+.@{page-prefix-cls} {
+  &__image {
+    width: inherit;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__title {
+    width: 450px;
+    color: @gray-5;
+    text-align: center;
+
+    &:not(:empty) {
+      margin: 8px auto 0;
+    }
+  }
+
+  &__description {
+    width: 450px;
+    color: @gray-4;
+    text-align: center;
+
+    &:not(:empty) {
+      margin: 8px auto 0;
+    }
+  }
+
+  &__extra {
+    color: @gray-5;
+    text-align: center;
+    .text-body1();
+
+    &:not(:empty) {
+      margin: 16px 0 0;
+    }
+
+    > * {
+      margin-right: 8px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__content {
+    margin-top: 16px;
+    padding: 24px 40px;
+    background-color: @gray-1;
+  }
+
+  &-normal {
+    .@{page-prefix-cls}__description {
+      width: 450px;
+    }
+    .@{page-prefix-cls}__image {
+      width: 450px;
+    }
+    .@{page-prefix-cls}__title {
+      width: 450px;
+      .text-h2();
+    }
+  }
+
+  &-normal&-empty {
+    .@{page-prefix-cls}__description {
+      width: 300px;
+    }
+    .@{page-prefix-cls}__title {
+      width: 300px;
+    }
+    .@{page-prefix-cls}__image {
+      width: 300px;
+    }
+  }
+
+  &-small {
+    .@{page-prefix-cls}__description {
+      width: 220px;
+    }
+    .@{page-prefix-cls}__image {
+      width: 220px;
+    }
+    .@{page-prefix-cls}__title {
+      .text-body1();
+      width: 220px;
+    }
+  }
+
+  &-small&-empty {
+    .@{page-prefix-cls}__description {
+      width: 150px;
+    }
+    .@{page-prefix-cls}__image {
+      width: 150px;
+    }
+    .@{page-prefix-cls}__title {
+      .text-body1();
+      width: 150px;
+    }
+  }
+}

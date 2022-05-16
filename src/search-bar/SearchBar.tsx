@@ -1,4 +1,4 @@
-import { CloseCircleFilled, SearchOutlined } from '@gio-design/icons';
+import { ErrorFilled, SearchOutlined } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
 import React, { useCallback, useMemo, useState, useEffect, useRef } from 'react';
@@ -56,7 +56,7 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>((props, ref
   const suffix = useMemo(
     () =>
       canClear && !disabled ? (
-        <CloseCircleFilled className={suffixCls} onClick={onClear} />
+        <ErrorFilled className={suffixCls} onClick={onClear} />
       ) : (
         <SearchOutlined className={suffixCls} />
       ),

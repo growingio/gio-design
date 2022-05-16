@@ -555,7 +555,7 @@ export const Empty = () => {
       pagination={false}
       empty={{
         description: '无数据',
-        type: 'noData',
+        type: 'empty-data',
       }}
     />
   );

@@ -1,3 +1,34 @@
+# [23.2.0](https://github.com/growingio/gio-design/compare/v23.1.0...v23.2.0) (2022-05-11)
+
+
+### Bug Fixes
+
+* **date-picker:** force set viewDate ([a00b766](https://github.com/growingio/gio-design/commit/a00b766256733cb068f6dfe4b77d2755a0a9ee31))
+* **popover:** the alternative axis check be enabled ([#2002](https://github.com/growingio/gio-design/issues/2002)) ([8582665](https://github.com/growingio/gio-design/commit/858266507fe9679d55766f8729fa6adfaaf510bc))
+* **static-date-range-picker:** fix panel interaction error ([883944b](https://github.com/growingio/gio-design/commit/883944b2fa6bc2baf3be15ebdfa7cb91df501f85))
+
+
+### Features
+
+* **result:** add component result ([#2006](https://github.com/growingio/gio-design/issues/2006)) ([2d81a37](https://github.com/growingio/gio-design/commit/2d81a37d22c138f61afe5a8e7ec286eb56902a0f))
+
+# [23.1.0](https://github.com/growingio/gio-design/compare/v23.0.1...v23.1.0) (2022-05-04)
+
+
+### Features
+
+* **icons:** upgrade [@gio-design-icons](https://github.com/gio-design-icons) to v23 ([#1994](https://github.com/growingio/gio-design/issues/1994)) ([98103fd](https://github.com/growingio/gio-design/commit/98103fd1a0f48fce5e9c4102ec1b0f21e24479d0))
+
+## [23.0.1](https://github.com/growingio/gio-design/compare/v23.0.0...v23.0.1) (2022-04-27)
+
+
+### Bug Fixes
+
+* **date-picker:** fix date-picker month/year panel cannt back to datepanel error ([#1993](https://github.com/growingio/gio-design/issues/1993)) ([59638ee](https://github.com/growingio/gio-design/commit/59638ee81f674a1af91a3822c90ca7ae1b17d5f2))
+* **List, ListPicker:** not use `useEffect` to call `onMultipleOverflow` ([#1989](https://github.com/growingio/gio-design/issues/1989)) ([9f09f5f](https://github.com/growingio/gio-design/commit/9f09f5fba3b0ab363eaa81e0ffabfff3135bbe9a))
+* **list:** when list multiple max, trigger onMultipleOverflow ([#1985](https://github.com/growingio/gio-design/issues/1985)) ([883a19c](https://github.com/growingio/gio-design/commit/883a19c3971ff444c3645aa07c4fd2dba9d2f638))
+* **switch:** fix switch of displayName ([#1983](https://github.com/growingio/gio-design/issues/1983)) ([31d03a5](https://github.com/growingio/gio-design/commit/31d03a5c79aa0117b38fb52b4c3e5d93455d22d0))
+
 # [23.0.0](https://github.com/growingio/gio-design/compare/v22.15.2...v23.0.0) (2022-04-20)
 
 

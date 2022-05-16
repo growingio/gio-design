@@ -10,7 +10,7 @@ import defaultLocale from './locales/zh-CN';
 const convertDateToDays = (date: Date | undefined, defaultValue: number) =>
   date ? differenceInDays(startOfToday(), startOfDay(date)) : defaultValue;
 
-function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: RelativeRangeHeaderProps) {
+function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange, inputDisabled = false }: RelativeRangeHeaderProps) {
   const [startDays, setStartDays] = React.useState<number>(convertDateToDays(dateRange[0], 2));
   const [endDays, setEndDays] = React.useState<number>(convertDateToDays(dateRange[1], 1));
   const [endDaysHidden, setEndDaysHidden] = React.useState(endDays === 1);
@@ -36,6 +36,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
         <span className={`${basePrefixCls}__text`}>{lastText}</span>
         <span className={`${basePrefixCls}__input-number`} data-testid="duration">
           <Input.InputNumber
+            disabled={inputDisabled}
             min={1}
             max={9999}
             value={duration}
@@ -69,6 +70,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
       <span className={`${basePrefixCls}__text`}>{lastText}</span>
       <span data-testid="end-days">
         <Input.InputNumber
+          disabled={inputDisabled}
           min={0}
           className={`${basePrefixCls}__input-number`}
           max={startDays - 1}
@@ -85,6 +87,7 @@ function RelativeRangeHeader({ dateRange, onRangeChange, onModeChange }: Relativ
       <span className={`${basePrefixCls}__text`}>{ToText}</span>
       <span data-testid="start-days">
         <Input.InputNumber
+          disabled={inputDisabled}
           min={endDays + 1}
           max={10000}
           className={`${basePrefixCls}__input-number`}

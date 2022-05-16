@@ -15,7 +15,7 @@ import { TableProps as GioTableProps } from 'rc-table/es/Table';
 import { PaginationProps } from '../pagination';
 import { CheckboxProps } from '../checkbox';
 import { TooltipProps } from '../tooltip';
-import { PageProps } from '../page';
+import { ResultProps } from '../result';
 
 type SortOrder = 'descend' | 'ascend' | null;
 type ExpandType = null | 'row' | 'nest';
@@ -207,9 +207,9 @@ interface TableProps<RecordType> extends Omit<GioTableProps<RecordType>, 'title'
   emptyText?: React.ReactNode;
 
   /**
-   * 自定义表格数据为空时的页面，请参考 Page 组件
+   * 自定义表格数据为空时的页面，请参考 Result 组件
    */
-  empty?: PageProps;
+  empty?: ResultProps;
   /**
    * 分页/排序/筛选变化时触发
    */

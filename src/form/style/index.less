@@ -90,6 +90,7 @@
 
   & &-control {
     flex: 1;
+
     &-input {
       position: relative;
       display: inline-flex;
@@ -132,9 +133,11 @@
   &[data-message-type='warning'] {
     .message-type(warning);
   }
+
   &[data-message-type='error'] {
     .message-type(error, true, true);
   }
+
   &[data-message-type='success'] {
     .message-type(success);
   }

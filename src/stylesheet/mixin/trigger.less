@@ -5,6 +5,7 @@
     padding-bottom: @distance;
     .@{prefix-cls}-arrow {
       bottom: -@arrow-width;
+
       &-content {
         border-color: @backgroundColor transparent transparent transparent;
       }
@@ -17,6 +18,7 @@
     padding-left: @distance;
     .@{prefix-cls}-arrow {
       left: -@arrow-width;
+
       &-content {
         border-color: transparent @backgroundColor transparent transparent;
       }
@@ -29,6 +31,7 @@
     padding-top: @distance;
     .@{prefix-cls}-arrow {
       top: -@arrow-width;
+
       &-content {
         border-color: transparent transparent @backgroundColor transparent;
       }
@@ -41,6 +44,7 @@
     padding-right: @distance;
     .@{prefix-cls}-arrow {
       right: -@arrow-width;
+
       &-content {
         border-color: transparent transparent transparent @backgroundColor;
       }
@@ -52,6 +56,7 @@
     left: 50%;
     transform: translateX(-50%);
   }
+
   &-placement-left &-arrow,
   &-placement-right &-arrow {
     top: 50%;
@@ -87,6 +92,7 @@
       animation-duration: @duration;
       animation-play-state: paused;
       animation-fill-mode: both;
+
       &&-active {
         &.@{prefix-cls}-placement-top,
         &.@{prefix-cls}-placement-topLeft,
@@ -111,10 +117,12 @@
         animation-play-state: running;
       }
     }
+
     &-leave {
       animation-duration: @duration;
       animation-play-state: paused;
       animation-fill-mode: both;
+
       &&-active {
         &.@{prefix-cls}-placement-top,
         &.@{prefix-cls}-placement-topLeft,
@@ -148,6 +156,7 @@
     transform: translateY(-10px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -159,6 +168,7 @@
     transform: translateY(0);
     opacity: 1;
   }
+
   100% {
     transform: translateY(-10px);
     opacity: 0;
@@ -170,6 +180,7 @@
     transform: translateY(10px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -181,6 +192,7 @@
     transform: translateY(0);
     opacity: 1;
   }
+
   100% {
     transform: translateY(10px);
     opacity: 0;
@@ -191,6 +203,7 @@
     transform: translateX(-10px);
     opacity: 0;
   }
+
   100% {
     transform: translateX(0);
     opacity: 1;
@@ -202,6 +215,7 @@
     transform: translateX(0);
     opacity: 1;
   }
+
   100% {
     transform: translateX(-10px);
     opacity: 0;
@@ -213,6 +227,7 @@
     transform: translateX(10px);
     opacity: 0;
   }
+
   100% {
     transform: translateX(0);
     opacity: 1;
@@ -224,6 +239,7 @@
     transform: translateX(0);
     opacity: 1;
   }
+
   100% {
     transform: translateX(10px);
     opacity: 0;

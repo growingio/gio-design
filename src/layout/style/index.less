@@ -23,12 +23,14 @@
     justify-content: var(--layout-header-justify);
     box-sizing: border-box;
     height: 60px;
+
     &-section {
       display: flex;
       flex: none;
       align-items: center;
       justify-content: var(--layout-header-section-justify);
     }
+
     &-divider {
       width: 1px;
       height: 100%;
@@ -45,6 +47,7 @@
     flex: auto;
     box-sizing: border-box;
     margin: 0 20px;
+
     &-main {
       height: 100%;
       margin: 0 auto;
@@ -64,26 +67,32 @@
     width: var(--layout-sider-width);
     padding-top: 20px;
     transition: all 0.2s;
+
     &-content {
       flex: auto;
       overflow-x: hidden;
       overflow-y: overlay;
       scrollbar-width: thin;
       scrollbar-color: light;
+
       &::-webkit-scrollbar {
         width: 4px;
       }
+
       &::-webkit-scrollbar-thumb {
         background-color: @gray-3;
         border-radius: 5px;
       }
     }
+
     &:not(&-collapsed) {
-      box-shadow: 4px 0 4px -4px rgba(123, 129, 156, 0.5);
+      box-shadow: 4px 0 4px -4px rgb(123 129 156 / 50%);
     }
+
     &-collapsed {
       width: var(--layout-sider-collapsedWidth);
     }
+
     &-bottom-trigger {
       display: flex;
       flex: none;
@@ -101,14 +110,17 @@
       z-index: 1050;
       width: var(--layout-sider-width);
       height: 100%;
+
       &-left {
         left: 0;
         transform: translateX(var(--layout-sider-collapsedWidth-negative));
       }
+
       &-right {
         right: 0;
         transform: translateX(var(--layout-sider-collapsedWidth));
       }
+
       &-collapsed {
         width: var(--layout-sider-collapsedWidth);
       }

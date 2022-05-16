@@ -14,11 +14,13 @@
     border-radius: 4px;
     cursor: pointer;
   }
+
   &-decade-btn:hover,
   &-year-btn:hover,
   &-month-btn:hover {
     background: @gray-1;
   }
+
   &-decade-btn:active,
   &-year-btn:active,
   &-month-btn:active {
@@ -60,18 +62,22 @@
         color: @gray-5;
       }
     }
+
     &-super-prev-btn {
       margin-left: 0;
     }
+
     &-super-next-btn {
       margin-right: 0;
     }
+
     &-super-prev-btn:hover,
     &-super-next-btn:hover,
     &-prev-btn:hover,
     &-next-btn:hover {
       background: @gray-1;
     }
+
     &-super-prev-btn:active,
     &-super-next-btn:active,
     &-prev-btn:active,
@@ -93,6 +99,7 @@
     background: @gray-0;
     border-radius: 0 0 4px 4px;
   }
+
   &-decade-panel > &-body {
     padding: 20px 8px;
   }
@@ -101,6 +108,7 @@
     width: 100%;
     min-height: 224px;
     border-collapse: collapse;
+
     th,
     td {
       position: relative;
@@ -149,6 +157,7 @@
       text-align: center;
       border-radius: 4px;
     }
+
     &-in-view:not(&-selected):not(&-range-start):not(&-range-end):not(&-range-hover):not(&-range-hover-start):not(&-range-hover-end)
       &-inner:hover {
       background-color: @gray-1;
@@ -166,6 +175,7 @@
       color: @blue-3;
       font-weight: 400;
     }
+
     &-in-view&-today &-inner::before {
       position: absolute;
       top: 0;
@@ -180,6 +190,7 @@
     &-in-view&-selected {
       color: @gray-0;
     }
+
     &-in-view&-selected &-inner {
       background: @blue-3;
     }
@@ -197,6 +208,7 @@
   &-date-panel &-cell::before {
     height: 24px;
   }
+
   &-date-panel &-cell-inner {
     height: 24px;
     line-height: 24px;
@@ -208,6 +220,7 @@
     width: 60px;
     padding: 0 8px;
   }
+
   &-decade-panel &-cell-inner {
     padding: 0 4px;
   }

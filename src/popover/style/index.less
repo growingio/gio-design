@@ -10,6 +10,7 @@
   &__popcorn {
     display: inline-block;
   }
+
   &__content {
     z-index: @z-index-popover;
     visibility: hidden;
@@ -25,6 +26,7 @@
           & > .@{popover-arrow-prefix-cls} {
             bottom: -3px;
             background: @popover-background-color;
+
             &::before {
               border-right: 1px solid @popover-border-color;
               border-bottom: 1px solid @popover-border-color;
@@ -37,6 +39,7 @@
           & > .@{popover-arrow-prefix-cls} {
             top: -4px;
             background: @popover-background-color;
+
             &::before {
               border-top: 1px solid @popover-border-color;
               border-left: 1px solid @popover-border-color;
@@ -49,6 +52,7 @@
           & > .@{popover-arrow-prefix-cls} {
             right: -3px;
             background: @popover-background-color;
+
             &::before {
               border-top: 1px solid @popover-border-color;
               border-right: 1px solid @popover-border-color;
@@ -61,6 +65,7 @@
           & > .@{popover-arrow-prefix-cls} {
             left: -4px;
             background: @popover-background-color;
+
             &::before {
               border-bottom: 1px solid @popover-border-color;
               border-left: 1px solid @popover-border-color;
@@ -75,6 +80,7 @@
       .@{popover-prefix-cls} {
         &__arrow {
           visibility: hidden;
+
           &::before {
             visibility: visible;
           }
@@ -85,6 +91,7 @@
 
   &__arrow {
     visibility: hidden;
+
     &,
     &::before {
       position: absolute;

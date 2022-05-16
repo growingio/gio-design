@@ -15,10 +15,12 @@
   border-radius: 100%;
   opacity: 1;
   user-select: none;
+
   &:hover &-droppable {
-    background-color: rgba(36, 46, 89, 0.5);
+    background-color: rgb(36 46 89 / 50%);
     border: 1px solid @gray-0;
     border-radius: 100%;
+
     > span {
       transform: scale(1);
     }
@@ -55,6 +57,7 @@
     text-align: center;
     background-color: transparent;
     cursor: pointer;
+
     > span {
       vertical-align: middle;
       transform: scale(0);
@@ -98,6 +101,7 @@
       }
       .@{avatar-prefix-cls}-default {
         background-color: @gray-0;
+
         svg {
           color: @blue-2;
         }
@@ -127,6 +131,7 @@
       }
       .@{avatar-prefix-cls}-default {
         background-color: @gray-0;
+
         svg {
           color: @blue-2;
         }
@@ -157,6 +162,7 @@
       }
       .@{avatar-prefix-cls}-default {
         background-color: @gray-0;
+
         svg {
           color: @blue-2;
         }
@@ -186,6 +192,7 @@
       }
       .@{avatar-prefix-cls}-default {
         background-color: @gray-0;
+
         svg {
           color: @blue-2;
         }
@@ -197,9 +204,11 @@
     display: flex;
     .@{avatar-prefix-cls} {
       border: 1.4px solid @gray-0;
+
       > span {
         top: -1.5px;
       }
+
       &:hover {
         position: relative;
         z-index: 1;

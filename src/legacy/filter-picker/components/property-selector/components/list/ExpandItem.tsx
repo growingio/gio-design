@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { DownOutlined } from '@gio-design/icons';
+import { ArrowDownOutlined } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
 import { ExpandItemProps } from './interfaces';
 import { useRootPrefixCls } from './utils';
@@ -13,7 +13,7 @@ function ExpandItem({ className, title, ...restProps }: ExpandItemProps) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <li role="option" aria-selected {...restProps} className={cls}>
-      <DownOutlined className={`${prefixCls}__icon`} size="14px" />
+      <ArrowDownOutlined className={`${prefixCls}__icon`} size="14px" />
       <span className={`${prefixCls}__text`}>{title ?? localeTextObject.expandAll?.()}</span>
     </li>
   );

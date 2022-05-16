@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import classnames from 'classnames';
-import Page from '../../../../../../page';
+import Result from '../../../../../../result';
 import ItemGroup from './ItemGroup';
 import ItemSubgroup from './ItemSubgroup';
 import Item from './Item';
@@ -27,7 +27,7 @@ function InternalList({ className, style, children, items, expandable = false }:
   } else if (children) {
     content = children;
   } else {
-    content = <Page size="small" type="noData" />;
+    content = <Result size="small" type="empty" />;
   }
 
   const cls = classnames(useRootPrefixCls(), className);

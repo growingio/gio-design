@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { StopWatchOutlined } from '@gio-design/icons';
+import { ClockOutlined } from '@gio-design/icons';
 import { useLocale, useControlledState, usePrefixCls } from '@gio-design/utils';
 import { format } from 'date-fns';
 import { Locale } from 'rc-picker/lib/interface';
@@ -97,7 +97,7 @@ export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) =>
         data-testid={
           isNil(restProps['data-testid']) ? `${DEFAULT_DATA_TESTID}-trigger` : `${restProps['data-testid']}-trigger`
         }
-        prefix={prefix || <StopWatchOutlined />}
+        prefix={prefix || <ClockOutlined />}
         disabled={disabled}
         allowClear={allowClear}
         value={time && formatTime(time)}

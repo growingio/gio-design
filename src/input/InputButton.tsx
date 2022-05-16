@@ -1,4 +1,4 @@
-import { CloseCircleFilled, DownFilled } from '@gio-design/icons';
+import { ErrorFilled, DownFilled } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
 import React, { useCallback, useMemo } from 'react';
@@ -42,24 +42,12 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
 
   const onClear = useCallback(
     (event: React.MouseEvent<Element, MouseEvent>) => {
-      if (disabled) {
-        return;
-      }
       handleOnClear?.(event);
-      onInputChange?.('');
+      onInputChange('');
       setValue('');
       event.stopPropagation();
     },
-    [disabled, handleOnClear, onInputChange, setValue]
-  );
-
-  const onChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const inputValue = e.target.value;
-      onInputChange?.(inputValue);
-      setValue(inputValue);
-    },
-    [onInputChange, setValue]
+    [handleOnClear, onInputChange, setValue]
   );
 
   const wrapperCls = useMemo(
@@ -75,7 +63,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     const hideClear = allowClear === false;
     const { onClick } = rest;
     const defaultSuffix =
-      value && !hideClear && !disabled ? <CloseCircleFilled onClick={onClear} /> : <DownFilled onClick={onClick} />;
+      value && !hideClear && !disabled ? <ErrorFilled onClick={onClear} /> : <DownFilled onClick={onClick} />;
     return customizeSuffix || defaultSuffix;
   }, [customizeSuffix, value, onClear, allowClear, disabled, rest]);
 
@@ -91,7 +79,6 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
       // when set Input type=button, the placeholder is invalid
       value={value || placeholder}
       title={value as string}
-      onChange={onChange}
       prefix={customizePrefix}
       suffix={suffix}
       ref={ref}

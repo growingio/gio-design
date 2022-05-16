@@ -3,6 +3,7 @@ import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subt
 import { Figma } from 'storybook-addon-designs/esm/blocks';
 import { useIntl } from 'react-intl';
 import Drawer from '../index';
+import Alert from '../../alert';
 
 export default function ListPage() {
   const { formatMessage } = useIntl();
@@ -15,6 +16,17 @@ export default function ListPage() {
           defaultMessage: '屏幕边缘滑出的浮层面板，用于承载更详细的内容或操作。',
         })}
       </Description>
+      <Alert
+        style={{ margin: '0 0 38px' }}
+        message={
+          <Description>
+            {formatMessage({
+              defaultMessage:
+                'Drawer组件底层使用了 [rc-dialog.js](https://www.npmjs.com/package/rc-dialog)，更多参数您可以参考该库的说明。',
+            })}
+          </Description>
+        }
+      />
       <Subtitle>{formatMessage({ defaultMessage: '设计稿' })}</Subtitle>
       <Figma
         height="50%"
@@ -42,7 +54,7 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: '宽度撑开' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '宽度由内容决定`size`属性设置为normal',
+          defaultMessage: '宽度由内容决定，`fixed`属性设置为false',
         })}
       </Description>
       <Canvas>
@@ -60,7 +72,7 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: '固定宽度 Drawer' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '宽度由内容决定`size`属性设置为fixed，宽度固定500px',
+          defaultMessage: '设置`fixed` 属性，实现宽度固定500px，原size属性依旧生效，未来将弃用',
         })}
       </Description>
       <Canvas>
@@ -69,7 +81,7 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: '自定义宽度' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '设置`width`属性，将size设置为`normal`',
+          defaultMessage: '设置`width`属性为string或number，实现自定义宽度',
         })}
       </Description>
       <Canvas>

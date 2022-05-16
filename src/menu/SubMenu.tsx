@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { SubMenu as RcSubMenu } from 'rc-menu';
-import { DownOutlined } from '@gio-design/icons';
+import { ArrowDownOutlined } from '@gio-design/icons';
 import { isString, isUndefined } from 'lodash';
 import { usePrefixCls } from '@gio-design/utils';
 import { ISubMenuProps } from './interface';
@@ -22,7 +22,7 @@ export const SubMenu = (props: ISubMenuProps) => {
         title={renderTitle()}
         expandIcon={
           isUndefined(expandIcon) ? (
-            <DownOutlined color="#313E75" size="12px" className={`${prefixCls}-submenu-arrow`} />
+            <ArrowDownOutlined color="#313E75" size="12px" className={`${prefixCls}-submenu-arrow`} />
           ) : (
             expandIcon
           )

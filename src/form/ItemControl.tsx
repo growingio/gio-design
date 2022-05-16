@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircleFilled, LoadingTwoTone, WarningCircleFilled, CloseCircleFilled } from '@gio-design/icons';
+import { SuccessFilled, LoadingTwoTone, WarningFilled, ErrorFilled } from '@gio-design/icons';
 
 export type FormItemFeedbackType = 'validating' | 'error' | 'warning' | 'success';
 
@@ -17,9 +17,9 @@ export interface Props {
 }
 
 const iconMap = {
-  warning: WarningCircleFilled,
-  error: CloseCircleFilled,
-  success: CheckCircleFilled,
+  warning: WarningFilled,
+  error: ErrorFilled,
+  success: SuccessFilled,
   validating: LoadingTwoTone,
 };
 

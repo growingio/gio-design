@@ -6,18 +6,22 @@
   &-tablist.steps-container {
     display: flex;
   }
+
   &-tablist {
     &-stepbar {
       flex: 1;
+
       & > button {
         width: 100%;
       }
     }
+
     .stepbar-uncomplete {
       & > button {
         color: @gray-3;
         outline-style: none;
         cursor: not-allowed;
+
         &:hover {
           color: @gray-3;
         }

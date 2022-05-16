@@ -30,6 +30,7 @@
       size: 14px;
       .text-body1();
       transition: color 0.2s;
+
       &::after {
         position: absolute;
         bottom: 0;
@@ -38,8 +39,10 @@
         border-radius: 3px;
         content: '';
       }
+
       &:hover {
         color: @blue-3;
+
         &-prefix-icon {
           color: @blue-3;
           fill: @blue-3;
@@ -48,10 +51,12 @@
 
       &-active {
         color: @blue-3;
+
         &-prefix-icon {
           color: @blue-3;
           fill: @blue-3;
         }
+
         &::after {
           position: absolute;
           bottom: 0;
@@ -66,6 +71,7 @@
       &-disabled {
         color: @gray-3;
         cursor: not-allowed;
+
         &:hover {
           color: @gray-3;
         }
@@ -74,9 +80,11 @@
       &-disabled&-active {
         color: @gray-3;
         cursor: not-allowed;
+
         &:hover {
           color: @gray-3;
         }
+
         &::after {
           display: none;
         }
@@ -84,13 +92,16 @@
 
       &-prefix {
         margin-right: 8px;
+
         & svg {
           width: 1em;
           height: 1em;
         }
+
         &-none {
           display: none;
         }
+
         &-only {
           margin-right: 0;
         }
@@ -99,6 +110,7 @@
       &-small {
         height: 30px;
       }
+
       &-normal {
         height: 36px;
       }
@@ -108,6 +120,7 @@
   &-tabpanel {
     display: none;
     overflow: hidden;
+
     &-active {
       display: block;
     }

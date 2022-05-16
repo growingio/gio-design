@@ -3,10 +3,10 @@ import classnames from 'classnames';
 import { usePrefixCls } from '@gio-design/utils';
 import _ from 'lodash';
 import {
-  CheckCircleFilled,
-  WarningCircleFilled,
-  InfoCircleFilled,
-  CloseCircleFilled,
+  SuccessFilled,
+  WarningFilled,
+  InfoFilled,
+  ErrorFilled,
   CloseOutlined,
 } from '@gio-design/icons';
 import Button from '../button';
@@ -24,15 +24,15 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
       if (icon) return icon;
       switch (type) {
         case 'success':
-          return <CheckCircleFilled />;
+          return <SuccessFilled />;
         case 'warning':
-          return <WarningCircleFilled />;
+          return <WarningFilled />;
         case 'error':
-          return <CloseCircleFilled />;
+          return <ErrorFilled />;
         case 'info':
-          return <InfoCircleFilled />;
+          return <InfoFilled />;
         default:
-          return <InfoCircleFilled />;
+          return <InfoFilled />;
       }
     };
 

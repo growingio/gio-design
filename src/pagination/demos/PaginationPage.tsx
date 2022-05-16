@@ -25,17 +25,36 @@ export default function PaginationPage() {
 
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
 
+      <Subheading>{formatMessage({ defaultMessage: '默认样式' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-pagination--default" />
+      </Canvas>
+
       <Subheading>{formatMessage({ defaultMessage: '基础分页' })}</Subheading>
       <Canvas>
         <Story id="upgraded-pagination--basic" />
       </Canvas>
 
-      <Subheading>{formatMessage({ defaultMessage: '按钮' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '首尾跳转按钮' })}</Subheading>
       <Description>
-        {formatMessage({ defaultMessage: '您可以有选择的启用首尾页的按钮，或者启用页码跳转器。' })}
+        {formatMessage({ defaultMessage: '`hideFirstButton`首页跳转按钮，`hideLastButton`尾页跳转按钮' })}
       </Description>
       <Canvas>
-        <Story id="upgraded-pagination--buttons" />
+        <Story id="upgraded-pagination--first-last-buttons" />
+      </Canvas>
+
+      <Subheading>{formatMessage({ defaultMessage: '当只有一页时隐藏分页器' })}</Subheading>
+      <Description>
+        {formatMessage({ defaultMessage: '`hideOnSinglePage`参数设置为true时，只有一页时会隐藏分页器' })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-pagination--hide-on-single-page" />
+      </Canvas>
+
+      <Subheading>{formatMessage({ defaultMessage: 'onChange事件' })}</Subheading>
+      <Description>{formatMessage({ defaultMessage: '`onChange`当前页改变时，触发' })}</Description>
+      <Canvas>
+        <Story id="upgraded-pagination--on-change" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '每页大小' })}</Subheading>
@@ -44,6 +63,22 @@ export default function PaginationPage() {
       </Description>
       <Canvas>
         <Story id="upgraded-pagination--page-size" />
+      </Canvas>
+
+      <Subheading>{formatMessage({ defaultMessage: '快速跳转参数' })}</Subheading>
+      <Description>{formatMessage({ defaultMessage: '`showQuickJumper`参数可以开启是否启用快速跳转' })}</Description>
+      <Canvas>
+        <Story id="upgraded-pagination--show-quick-jumper" />
+      </Canvas>
+
+      <Subheading>{formatMessage({ defaultMessage: '显示每页展示页数设置' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '`showSizeChanger`参数展示每页展示的页数，一般搭配`pageSizeOptions`参数一起使用',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-pagination--show-size-changer" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: '可控制的分页' })}</Subheading>

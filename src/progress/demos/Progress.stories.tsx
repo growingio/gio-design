@@ -36,83 +36,34 @@ export default {
     },
   },
 } as Meta;
-const arr: any = ['active', 'success', 'exception'];
+const percent: number = Math.floor(Math.random() * 50 + 50);
 
-const demoTemplate: Story<ProgressProps> = (args) => (
-  <table className="table-demo">
-    <tr>
-      <th>Control</th>
-      <th>Example</th>
-    </tr>
-    <tr>
-      <td>size</td>
-      <td>
-        <div>
-          {arr.map((item: ProgressProps['status']) => (
-            <Progress {...args} percent={Math.floor(Math.random() * 101)} status={item} />
-          ))}
-          {arr.map((item: ProgressProps['status']) => (
-            <Progress {...args} percent={[30, 100][Math.round(Math.random())]} status={item} size="small" />
-          ))}
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>animation</td>
-      <td>
-        {arr.map((item: ProgressProps['status']) => (
-          <Progress {...args} percent={Math.floor(Math.random() * 101)} status={item} animation />
-        ))}
-      </td>
-    </tr>
-    <tr>
-      <td>showInfo</td>
-      <td>
-        {arr.map((item: ProgressProps['status']) => (
-          <Progress {...args} percent={Math.floor(Math.random() * 101)} status={item} showInfo={false} />
-        ))}
-      </td>
-    </tr>
-    <tr>
-      <td>format</td>
-      <td>
-        {arr.map((item: ProgressProps['status']) => (
-          <Progress
-            {...args}
-            percent={Math.floor(Math.random() * 101)}
-            status={item}
-            format={(e: number) => `${e}🌟`}
-          />
-        ))}
-      </td>
-    </tr>
-  </table>
+export const Default: Story<ProgressProps> = (args) => <Progress {...args} percent={percent} />;
+
+export const Animation: Story<ProgressProps> = () => <Progress status="active" percent={percent} animation />;
+
+export const Size: Story<ProgressProps> = () => (
+  <>
+    <Progress status="active" percent={percent} />
+    <Progress status="active" percent={percent} size="small" />
+  </>
 );
 
-export const Demo = demoTemplate.bind({});
-Demo.args = {
-  style: { width: '500px', margin: 10 },
-};
-
-const Template: Story<ProgressProps> = (args) => (
-  <div>
-    {arr.map((item: ProgressProps['status']) => (
-      <Progress {...args} status={item} />
-    ))}
-    {arr.map((item: ProgressProps['status']) => (
-      <Progress {...args} status={item} size="small" />
-    ))}
-  </div>
+export const ShowInfo: Story<ProgressProps> = () => (
+  <>
+    <Progress status="active" percent={percent} showInfo={false} />
+    <Progress status="active" percent={percent} />
+  </>
 );
 
-export const Default = Template.bind({});
-Default.args = {
-  percent: 60,
-  status: 'active',
-};
-export const format = Template.bind({});
-format.args = {
-  percent: 60,
-  status: 'active',
-  format: (e: number) => `${e}🌟`,
-};
+export const Status: Story<ProgressProps> = () => (
+  <>
+    {['active', 'success', 'exception'].map((item: ProgressProps['status']) => (
+      <Progress status={item} percent={percent} />
+    ))}
+  </>
+);
+
+export const Format: Story<ProgressProps> = () => (
+  <Progress format={(e: number) => `${e}🌟`} status="active" percent={percent} />
+);
