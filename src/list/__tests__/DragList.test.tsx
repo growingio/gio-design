@@ -135,7 +135,7 @@ describe('tesing drag list', () => {
   });
 
   it('should not trigger onChange when drop target under drag item and clientY< middle of drop item y', async () => {
-    const mockChange = jest.fn(e => console.log('change==>', e));
+    const mockChange = jest.fn();
     render(<DragList options={dragOptions} onChange={mockChange} />);
     const dragElement = screen.getByText('List Item 1');
     const dropZone = screen.getByText('List Item 3');
