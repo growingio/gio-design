@@ -1,3 +1,10 @@
+## [23.2.1](https://github.com/growingio/gio-design/compare/v23.2.0...v23.2.1) (2022-05-18)
+
+
+### Bug Fixes
+
+* **InputButton:** remove unnecessary code ([#2011](https://github.com/growingio/gio-design/issues/2011)) ([b6d7180](https://github.com/growingio/gio-design/commit/b6d7180633fe8bfead324b04c906c88fa4625428))
+
 # [23.2.0](https://github.com/growingio/gio-design/compare/v23.1.0...v23.2.0) (2022-05-11)
 
 
