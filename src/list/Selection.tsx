@@ -94,7 +94,7 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
     const renderFunctionChildren = (
       <div className={classNames(prefixCls, className)} style={style}>
         <ListContext.Consumer>
-          {(context) => toArray(children?.(context))?.map((node: nodeType) => renderContent(node))}
+          {(context) => toArray(children(context))?.map((node: nodeType) => renderContent(node))}
         </ListContext.Consumer>
       </div>
     );

@@ -31,7 +31,7 @@ const fireMouseEvent = function (
   return elem.dispatchEvent(evt);
 };
 
-const dragAndDrop = (elemDrag: HTMLElement, elemDrop: HTMLElement) => {
+const dragAndDrop = (elemDrag: HTMLElement, elemDrop: HTMLElement,upOrDown = true) => {
   act(() => {
     // calculate positions
     let pos = elemDrag.getBoundingClientRect();
@@ -39,8 +39,8 @@ const dragAndDrop = (elemDrag: HTMLElement, elemDrop: HTMLElement) => {
     const center1Y = Math.floor((pos.top + pos.bottom) / 2);
 
     pos = elemDrop.getBoundingClientRect();
-    const center2X = Math.floor((pos.left + pos.right) / 2);
-    const center2Y = Math.floor((pos.top + pos.bottom) / 2);
+    const center2X = upOrDown ? Math.floor((pos.left + pos.right) / 2) :Math.floor((pos.left - pos.right) / 2);
+    const center2Y = upOrDown ? Math.floor((pos.top + pos.bottom) / 2) : Math.floor((pos.top - pos.bottom) / 2);
 
     // mouse over dragged element and mousedown
     fireMouseEvent('mousemove', elemDrag, center1X, center1Y);
@@ -139,33 +139,41 @@ describe('tesing drag list', () => {
     render(<DragList options={dragOptions} onChange={mockChange} />);
     const dragElement = screen.getByText('List Item 1');
     const dropZone = screen.getByText('List Item 3');
-    // const hoverBoundingRect = dragElement.getBoundingClientRect();
-    // const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-    // console.log('hoverBoundingRect', hoverBoundingRect, dropZone.clientTop, dropZone.scrollTop);
-    // await fireEvent.mouseDown(dragElement, { which: 1, button: 0 });
-    // await fireEvent.dragStart(dragElement);
-    // await fireEvent.dragEnter(dropZone);
+    dropZone.parentElement.parentElement.getBoundingClientRect = jest.fn(() => ({
+        bottom: 300,
+        height: 30,
+        left: 20,
+        right: 500,
+        top: 210,
+        width: 500,
+        x: 20,
+        y: 230,
+      } as DOMRect))
+      dragElement.getBoundingClientRect = jest.fn(() => ({
+        bottom: 300,
+        height: 30,
+        left: 20,
+        right: 500,
+        top: 200,
+        width: 500,
+        x: 20,
+        y: 230,
+      } as DOMRect))
 
-    // await fireEvent.mouseMove(dropZone, { which: 1, button: 0 });
-    // await fireEvent.drop(dropZone);
-    // await fireEvent.dragLeave(dropZone);
-    // await fireEvent.dragEnd(dragElement);
-    // expect(mockChange).toHaveBeenCalledTimes(2);
-
-    await userEvent.pointer([
-      { keys: '[MouseLeft>]', target: dragElement },
+      await userEvent.pointer([
+        { keys: '[MouseLeft>]', target: dragElement },
       // move the touch pointer to element2
-      { keys: 'MouseLeft', target: dropZone },
+        { keys: 'MouseLeft', target: dropZone },
       // release the touch pointer at the last position (element2)
-      { keys: '[/MouseLeft]' },
-    ])
+        { keys: '[/MouseLeft]' },
+      ])
     await userEvent.pointer([
       // touch the screen at element1
-      { keys: '[TouchA>]', target: dragElement },
+        { keys: '[TouchA>]', target: dragElement },
       // move the touch pointer to element2
-      { pointerName: 'TouchA', target: dropZone },
+        { pointerName: 'TouchA', target: dropZone },
       // release the touch pointer at the last position (element2)
-      { keys: '[/TouchA]' },
+        { keys: '[/TouchA]' },
     ])
 
     dragAndDrop(dragElement, dropZone);

@@ -32,14 +32,11 @@ const DragItem: React.FC<DragItemProps> = (props) => {
       const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
       const clientOffset = monitor.getClientOffset();
       const hoverClientY = (clientOffset as XYCoord).y - hoverBoundingRect.top;
-      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-        return;
-      }
-
-      // Dragging upwards
-      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-        return;
-      }
+      // Dragging upwards or downwards
+      if ((dragIndex < hoverIndex && hoverClientY < hoverMiddleY) || (dragIndex > hoverIndex && hoverClientY > hoverMiddleY)) {
+        return
+      };
+      
       onMoved?.(dragIndex as number, hoverIndex);
       // eslint-disable-next-line no-param-reassign
       item.index = hoverIndex;
