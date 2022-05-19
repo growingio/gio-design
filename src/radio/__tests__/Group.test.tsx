@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, act } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
 import React from "react"
 import Radio from ".."
 import { IRadioGroupProps } from "../interface";
@@ -58,7 +58,7 @@ describe('RadioGroup', () => {
 });
 
 describe('trigger warning', () => {
-  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => { });
+  const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => { /** nothing */ });
 
   afterEach(() => {
     errorSpy.mockReset();
