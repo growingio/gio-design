@@ -51,3 +51,5 @@ export const Size = () => (
 );
 
 export const Active = () => <Input.Button placeholder="Active" active />;
+
+export const Loading = () => <Input.Button placeholder="Loading" loading />;
