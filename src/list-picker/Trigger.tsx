@@ -30,10 +30,10 @@ const Trigger: React.ForwardRefRenderFunction<HTMLInputElement, TriggerProps> = 
   };
 
   const prefix = useMemo(() => {
-    if (!hidePrefix) {
-      return propPrefix ?? getOptionByValue?.(value as string)?.prefix;
+    if (hidePrefix) {
+      return undefined
     }
-    return undefined;
+    return propPrefix ?? getOptionByValue?.(value as string)?.prefix;;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options?.size, hidePrefix, propPrefix, value]);
 

@@ -29,7 +29,6 @@ const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
       setMayBearray(options);
     }, 0);
   }, [options]);
-
   const matchOptions = useMemo(
     () =>
       matchValue?.reduce((prev: OptionProps[], curr: string) => {
@@ -40,7 +39,7 @@ const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
       }, []),
     [matchValue, mayBeArray]
   );
-
+  
   const listOptions: OptionProps[] = useMemo(
     () => slice(lodashFilter(matchOptions, filterFc), 0, max),
 

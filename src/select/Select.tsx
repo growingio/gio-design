@@ -41,7 +41,7 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
     allowClear,
     title,
     onClear,
-    renderTrigger: propsRenderTrigger,
+    customTrigger: propsRenderTrigger,
     autoWidth = false,
     empty,
     needEmpty = true,

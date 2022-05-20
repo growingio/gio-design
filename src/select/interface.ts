@@ -54,7 +54,7 @@ export interface SelectProps extends Omit<ListProps, 'model' | 'onChange' | 'opt
   /**
    * custom trigger render
    */
-  renderTrigger?: () => React.ReactElement;
+  customTrigger?: () => React.ReactElement;
   /**
    * content 跟随 trigger宽度
    */

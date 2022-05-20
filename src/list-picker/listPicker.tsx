@@ -16,6 +16,8 @@ import { callbackOnOverflow } from '../list/util';
 
 const DEFAULT_DATA_TESTID = 'list-picker';
 
+
+
 export const ListPicker: React.FC<ListPickerProps> = (props) => {
   const localeTextObject: typeof defaultLocaleTextObject = useLocale('ListPicker') || defaultLocaleTextObject;
   const {
@@ -30,13 +32,13 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     onVisibleChange,
     onChange,
     onMultipleOverflow,
-    renderTrigger: propsRenderTrigger,
+    customTrigger: propsRenderTrigger,
     prefixCls = 'list-picker',
     getContainer,
     placement = 'bottomLeft',
     children,
     onConfirm,
-    confirmText: confimText = localeTextObject?.confirm,
+    confirmText: confimText = localeTextObject.confirm,
     separator = '',
     valueSeparator = '.',
     style,
@@ -63,38 +65,67 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
   const [visible, setVisible] = useControlledState(controlledVisible, false);
-  const [value, setValue] = useState(controlledValue || defaultValue);
-  const { options, setOptions, getOptionByValue, getLabelByValue, getOptionTreeByValue, getOptionsByValue } =
-    useCacheOptions();
+  const [value, setValue] = useState(defaultValue);
+  // use multiple and needConfirm, listPicker use prevValue instead of value
+  const [prevValue, setPrevValue] = useState(
+    model === 'multiple' && needConfirm ? defaultValue || [] : undefined
+  );
+  const { options, setOptions, getOptionByValue, getLabelByValue, getOptionTreeByValue, getOptionsByValue } = useCacheOptions();
   const triggerRef = useRef<HTMLInputElement | undefined>(undefined);
+  // ========== control ==========
   useEffect(() => {
     setValue(controlledValue);
   }, [controlledValue, setValue]);
+
+  // when controlledValue, use multiple and needConfirm   
+  // update prevValue, 
+  // prevValue and value are in sync
   useEffect(() => {
+    if (model === 'multiple' && needConfirm && Array.isArray(controlledValue) && !isEqual(controlledValue, prevValue)) {
+      setPrevValue(controlledValue);
+    }
+  }, [controlledValue, model, needConfirm, prevValue]);
+
+  useEffect(() => {
+    // use confirm,when without onconfirm click, return prevValue
     if (needConfirm && !visible && !isEqual(controlledValue, value)) {
-      setValue(controlledValue);
+      setValue(prevValue);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
+
+  // recent
+  const setRecentValue = (val?:string |string[])=>{
+    const localKey = isNil(propsRecentId) ? ITEM_KEY : `${ITEM_KEY}_${propsRecentId}`;
+      const localStorageValue = localStorage?.getItem(localKey);
+      const recentKey: string[] = (JSON.parse(isNil(localStorageValue) ? '[]' : localStorageValue) || []).filter(
+        (v: string) => v !== val
+      );
+      localStorage?.setItem(localKey, JSON.stringify([val, ...recentKey].slice(0, 50)));
+  }
 
   // methods
   const handVisibleChange = (vis: boolean) => {
     setVisible(vis);
     onVisibleChange?.(vis);
   };
+
   const handleConfim = () => {
     handVisibleChange(false);
+    
+    // 非受控模式，将value更新至PrevValue
+    if (model === 'multiple' && needConfirm && typeof controlledValue === 'undefined') {
+      setPrevValue(value);
+    }
     onConfirm?.(value, getOptionsByValue(value));
   };
 
   const handleChange = (val?: string | string[], opts?: OptionProps | OptionProps[]) => {
     if (model !== 'multiple') {
-      const localKey = isNil(propsRecentId) ? ITEM_KEY : `${ITEM_KEY}_${propsRecentId}`;
-      const localStorageValue = localStorage?.getItem(localKey);
-      const recentKey: string[] = (JSON.parse(isNil(localStorageValue) ? '[]' : localStorageValue) || []).filter(
-        (v: string) => v !== val
-      );
-      localStorage?.setItem(localKey, JSON.stringify([val, ...recentKey].slice(0, 50)));
+      setRecentValue(val);
+      if(typeof controlledValue === 'undefined'){
+        setValue(val);
+      }
       onChange?.(val, opts);
       handVisibleChange(false);
     } else {
@@ -102,12 +133,15 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
       setValue(val);
     }
   };
+
   const clearInput = () => {
     setValue(undefined);
     onClear?.();
     onChange?.();
   };
+
   const triggerClick = () => !disabled && setVisible(!visible);
+
   // trigger
   const renderTrigger = (): React.ReactElement => {
     if (typeof propsRenderTrigger === 'function') {
@@ -123,7 +157,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
       <Trigger
         model={model}
         size={size}
-        value={controlledValue}
+        value={prevValue || value}
         style={style}
         className={className}
         maxWidth={maxWidth}
@@ -146,6 +180,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
       </Trigger>
     );
   };
+  
   // render
   const renderOverlay = () => (
     <div
