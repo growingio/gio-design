@@ -61,6 +61,15 @@ export default function InputButtonPage() {
         <Story id="upgraded-input-input-button--active" />
       </Canvas>
 
+      <Subheading>Loading</Subheading>
+      <Description>
+        Input Button 支持 loading 属性。如果 loading 为 true，则其 suffix icon 将显示一个 Loading
+        Icon，并且为不可点击状态
+      </Description>
+      <Canvas>
+        <Story id="upgraded-input-input-button--loading" />
+      </Canvas>
+
       <Heading>参数说明</Heading>
       <ArgsTable of={Input.Button} />
     </>
