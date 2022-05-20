@@ -81,6 +81,11 @@ export interface InputButtonProps
   disabled?: boolean;
 
   /**
+   * 加载状态
+   */
+  loading?: boolean;
+
+  /**
    * 是否可以被清空
    * @default false
    */
