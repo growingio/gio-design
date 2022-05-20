@@ -1,4 +1,4 @@
-import { CloseCircleFilled, DownFilled } from '@gio-design/icons';
+import { CloseCircleFilled, DownFilled, LoadingTwoTone } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
 import classNames from 'classnames';
 import React, { useCallback, useMemo } from 'react';
@@ -24,6 +24,7 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
     maxWidth,
     active = false,
     onClear: handleOnClear,
+    loading,
     ...rest
   } = props;
 
@@ -66,17 +67,21 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
       classNames(className, prefixCls, {
         [`${prefixCls}__disabled`]: disabled,
         [`${prefixCls}__active`]: active,
+        [`${prefixCls}__loading`]: loading,
       }),
-    [className, prefixCls, disabled, active]
+    [className, prefixCls, disabled, active, loading]
   );
 
   const suffix = useMemo(() => {
     const hideClear = allowClear === false;
     const { onClick } = rest;
+    if (loading) {
+      return customizeSuffix || <LoadingTwoTone rotating />;
+    }
     const defaultSuffix =
       value && !hideClear && !disabled ? <CloseCircleFilled onClick={onClear} /> : <DownFilled onClick={onClick} />;
     return customizeSuffix || defaultSuffix;
-  }, [customizeSuffix, value, onClear, allowClear, disabled, rest]);
+  }, [customizeSuffix, value, onClear, allowClear, disabled, rest, loading]);
 
   const styles = maxWidth ? { maxWidth } : {};
 
