@@ -4,16 +4,11 @@ import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event'
 import List from '..';
 import CascaderItem from '../inner/CascaderItem'
+import { sleep } from '../../utils/test';
 
 const { Item, } = List;
 
-function sleep(time: number) {
-  return new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, time);
-  });
-}
+
 describe('Testing List', () => {
 
 
@@ -31,7 +26,35 @@ describe('Testing List', () => {
 
     expect(screen.queryByTestId('list')).toBeTruthy();
     expect(screen.queryByTestId('list').children?.length).toBe(5);
+  });
+  it('render List disabled', () => {
+    const { container } = render(<List disabled>
+      <List.Item value="1">List Item 1</List.Item>
+      <Item disabled value="2">
+        List Item 2
+      </Item>
+      <Item value="3">List Item 3</Item>
+      <Item value="4">List Item 4</Item>
+      <Item value="5">List Item 5</Item>
+    </List>);
+
+    expect(screen.queryByTestId('list')).toBeTruthy();
+    expect(screen.queryByTestId('list').children?.length).toBe(5);
+    expect(container.querySelectorAll('.gio-list--item--disabled')?.length).toBe(5);
   })
+  it('render List items with suffix prefix', () => {
+    const options = [{ label: 'List Item 1', value: '1', prefix: <span>$</span>, suffix: <span>¥</span> }, { label: ' List Item 2', value: '2' }]
+    render(<List options={options} itemStrategy="absolute" />);
+    expect(screen.queryByTestId('list')).toBeTruthy();
+    expect(screen.queryByTestId('list').children?.length).toBe(2);
+    expect(screen.queryByText('$')).toBeTruthy();
+  });
+  it('render List items with context suffix prefix', () => {
+    const options = [{ label: 'List Item 1', value: '1', }, { label: ' List Item 2', value: '2' }]
+    render(<List prefix={() => <span>$</span>} suffix={() => <span>¥</span>} options={options} itemStrategy="absolute" />);
+    expect(screen.queryByTestId('list')).toBeTruthy();
+    expect(screen.queryAllByText('$').length).toBe(2);
+  });
   it('render List by provide options', () => {
     const options = [{ label: 'List Item 1', value: '1' }, { label: ' List Item 2', value: '2' }]
     render(<List options={options} />);
@@ -103,6 +126,19 @@ describe('Testing List', () => {
     fireEvent.click(screen.queryByTestId('list').children[0]);
     expect(mockChange).toHaveBeenLastCalledWith('1');
   })
+  it('render multiple select list', () => {
+    render(<List model="multiple">
+      <Item value="1">List Item 1</Item>
+      <Item disabled value="2">
+        List Item 2
+      </Item>
+      <Item value="3">List Item 3</Item>
+      <Item value="4">List Item 4</Item>
+      <Item value="5">List Item 5</Item>
+    </List>);
+    expect(screen.queryAllByTestId('checkbox')?.length).toBe(5);
+  });
+
   it('test change event when model=multiple', () => {
 
     const mockChange = jest.fn();
@@ -146,9 +182,20 @@ describe('Testing Cascader List', () => {
     jest.useRealTimers();
   });
 
-
-  it('testing cascader', async () => {
-
+  it('render cascader', () => {
+    const { container } = render(<List
+      model="cascader"
+    >
+      <CascaderItem label="1" value="1">
+        <List>
+          <Item label="1-1" value="1-1" />
+          <Item label="1-2" value="1-2" />
+        </List>
+      </CascaderItem>
+    </List>);
+    expect(container.querySelector('.gio-cascader')).toBeTruthy()
+  })
+  it(' cascader should fire  change event when treenode  clicked', async () => {
     const mockChange = jest.fn();
     const Demo = () => {
       const [cascaderValue, setCascadervalue] = useState('1.1-1');
@@ -199,6 +246,5 @@ describe('Testing Cascader List', () => {
     expect(mockChange).toHaveBeenCalledTimes(1);
     expect(mockChange).toHaveBeenCalledWith("2.2-1");
     unmount();
-
   })
 })

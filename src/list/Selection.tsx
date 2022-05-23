@@ -68,10 +68,10 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
       {child}
     </ListContext.Provider>
   );
-  if (options.length) {
+  if (options && options.length) {
     const renderOptionsChildren = (
       <div className={classNames(prefixCls, className)} style={style}>
-        {toArray(children)?.map((node: nodeType) => renderContent(node))}
+        {toArray(children).map((node: nodeType) => renderContent(node))}
         {isSelection &&
           (selectionOptions as { groupId: string; groupName: string; options: OptionProps[] }[])?.map(
             (option) =>
@@ -94,7 +94,7 @@ const Selection: React.FC<SelectionProps> & { isSelection?: boolean } = (props) 
     const renderFunctionChildren = (
       <div className={classNames(prefixCls, className)} style={style}>
         <ListContext.Consumer>
-          {(context) => toArray(children(context))?.map((node: nodeType) => renderContent(node))}
+          {(context) => toArray(children(context)).map((node: nodeType) => renderContent(node))}
         </ListContext.Consumer>
       </div>
     );

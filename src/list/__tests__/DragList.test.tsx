@@ -1,5 +1,4 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import React from 'react';
 import DragList from '../Drag';
 
@@ -31,7 +30,7 @@ const fireMouseEvent = function (
   return elem.dispatchEvent(evt);
 };
 
-const dragAndDrop = (elemDrag: HTMLElement, elemDrop: HTMLElement,upOrDown = true) => {
+const dragAndDrop = (elemDrag: HTMLElement, elemDrop: HTMLElement, upOrDown = true) => {
   act(() => {
     // calculate positions
     let pos = elemDrag.getBoundingClientRect();
@@ -39,8 +38,8 @@ const dragAndDrop = (elemDrag: HTMLElement, elemDrop: HTMLElement,upOrDown = tru
     const center1Y = Math.floor((pos.top + pos.bottom) / 2);
 
     pos = elemDrop.getBoundingClientRect();
-    const center2X = upOrDown ? Math.floor((pos.left + pos.right) / 2) :Math.floor((pos.left - pos.right) / 2);
-    const center2Y = upOrDown ? Math.floor((pos.top + pos.bottom) / 2) : Math.floor((pos.top - pos.bottom) / 2);
+    const center2X = upOrDown ? Math.floor((pos.left + pos.right) / 2) : Math.floor(pos.right);
+    const center2Y = upOrDown ? Math.floor((pos.top + pos.bottom) / 2) : Math.floor(pos.bottom);
 
     // mouse over dragged element and mousedown
     fireMouseEvent('mousemove', elemDrag, center1X, center1Y);
@@ -78,6 +77,11 @@ const dragAndDrop = (elemDrag: HTMLElement, elemDrop: HTMLElement,upOrDown = tru
 };
 
 describe('tesing drag list', () => {
+  it('render empty list', () => {
+    const { container } = render(<DragList options={undefined} />);
+    expect(container.querySelectorAll('[draggable="true"]').length).toBe(0)
+  });
+
   const dragOptions = [
     {
       label: `List Item 1`,
@@ -95,12 +99,19 @@ describe('tesing drag list', () => {
       disabled: true,
     }
   ]
-  it('render drag list', () => {
+  it('render drag list', async () => {
     const { container } = render(<DragList options={dragOptions} />);
     expect(container.querySelector('.gio-list--drag')).toBeTruthy();
     expect(container.querySelectorAll('[draggable="true"]').length).toBe(3)
     expect(screen.queryAllByRole('img', { name: 'drag-outlined' })?.length).toBe(3);
-
+    expect(container.querySelectorAll('.gio-list--item--text')[0]).toHaveTextContent('List Item 1')
+    const draggableNodes = container.querySelectorAll('[draggable="true"]');
+    const dragElement = draggableNodes[0];
+    const dropZone = draggableNodes[1];
+    await fireEvent.dragStart(dragElement);
+    await fireEvent.dragOver(dropZone);
+    await fireEvent.drop(dropZone);
+    expect(container.querySelectorAll('.gio-list--item--text')[0]).toHaveTextContent('List Item 2')
   });
 
   it('trigger onChange when drag drop a list item', async () => {
@@ -134,48 +145,65 @@ describe('tesing drag list', () => {
 
   });
 
-  it('should not trigger onChange when drop target under drag item and clientY< middle of drop item y', async () => {
+  it('should not trigger onChange when drag item_0 and drop into item_1 and mouse pointer coordinate clientOffsetY< drop item clientOffsetY/2', async () => {
     const mockChange = jest.fn();
-    render(<DragList options={dragOptions} onChange={mockChange} />);
-    const dragElement = screen.getByText('List Item 1');
-    const dropZone = screen.getByText('List Item 3');
-    dropZone.parentElement.parentElement.getBoundingClientRect = jest.fn(() => ({
-        bottom: 300,
-        height: 30,
-        left: 20,
-        right: 500,
-        top: 210,
-        width: 500,
-        x: 20,
-        y: 230,
-      } as DOMRect))
-      dragElement.getBoundingClientRect = jest.fn(() => ({
-        bottom: 300,
-        height: 30,
-        left: 20,
-        right: 500,
-        top: 200,
-        width: 500,
-        x: 20,
-        y: 230,
-      } as DOMRect))
+    const { container } = render(<DragList options={dragOptions} onChange={mockChange} />);
+    const listItems = container.querySelectorAll('.gio-list--item--drag');
+    const dragElement = listItems[0] as HTMLElement;// screen.getByText('List Item 1');
+    const dropZone = listItems[1] as HTMLElement;// screen.getByText('List Item 3');
+    dropZone.getBoundingClientRect = jest.fn(() => ({
+      "x": 92.5,
+      "y": 112.5,
+      "width": 224,
+      "height": 36,
+      "top": 112.5,
+      "right": 316.5,
+      "bottom": 148.5,
+      "left": 92.5
+    } as DOMRect))
+    dragElement.getBoundingClientRect = jest.fn(() => ({
+      "x": 92.5,
+      "y": 72.5,
+      "width": 224,
+      "height": 36,
+      "top": 72.5,
+      "right": 316.5,
+      "bottom": 108.5,
+      "left": 92.5
+    } as DOMRect));
 
-      await userEvent.pointer([
-        { keys: '[MouseLeft>]', target: dragElement },
-      // move the touch pointer to element2
-        { keys: 'MouseLeft', target: dropZone },
-      // release the touch pointer at the last position (element2)
-        { keys: '[/MouseLeft]' },
-      ])
-    await userEvent.pointer([
-      // touch the screen at element1
-        { keys: '[TouchA>]', target: dragElement },
-      // move the touch pointer to element2
-        { pointerName: 'TouchA', target: dropZone },
-      // release the touch pointer at the last position (element2)
-        { keys: '[/TouchA]' },
-    ])
 
     dragAndDrop(dragElement, dropZone);
+    expect(mockChange).toHaveBeenCalledTimes(0);
+  });
+  it('should not trigger onChange when drag item_1 and drop into item_0 and mouse pointer coordinate clientOffsetY> drop item clientOffsetY/2', async () => {
+    const mockChange = jest.fn();
+    const { container } = render(<DragList options={dragOptions} onChange={mockChange} />);
+    const listItems = container.querySelectorAll('.gio-list--item--drag');
+    const dragElement = listItems[1] as HTMLElement;
+    const dropZone = listItems[0] as HTMLElement;
+    dropZone.getBoundingClientRect = jest.fn(() => ({
+      "x": 92.5,
+      "y": 72.5,
+      "width": 224,
+      "height": 36,
+      "top": 72.5,
+      "right": 316.5,
+      "bottom": 108.5,
+      "left": 92.5
+    } as DOMRect))
+    dragElement.getBoundingClientRect = jest.fn(() => ({
+      "x": 92.5,
+      "y": 112.5,
+      "width": 224,
+      "height": 36,
+      "top": 112.5,
+      "right": 316.5,
+      "bottom": 148.5,
+      "left": 92.5
+    } as DOMRect));
+
+    dragAndDrop(dragElement, dropZone, false);
+    expect(mockChange).toHaveBeenCalledTimes(0);
   });
 });

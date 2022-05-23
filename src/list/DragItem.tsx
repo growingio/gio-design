@@ -19,9 +19,7 @@ const DragItem: React.FC<DragItemProps> = (props) => {
       };
     },
     hover(item: { index: number; type: string; id: string }, monitor: DropTargetMonitor) {
-      if (!ref.current) {
-        return;
-      }
+
       const dragIndex = item.index;
       const hoverIndex = index;
 
@@ -31,12 +29,14 @@ const DragItem: React.FC<DragItemProps> = (props) => {
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
       const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
       const clientOffset = monitor.getClientOffset();
+
       const hoverClientY = (clientOffset as XYCoord).y - hoverBoundingRect.top;
+
       // Dragging upwards or downwards
       if ((dragIndex < hoverIndex && hoverClientY < hoverMiddleY) || (dragIndex > hoverIndex && hoverClientY > hoverMiddleY)) {
         return
       };
-      
+
       onMoved?.(dragIndex as number, hoverIndex);
       // eslint-disable-next-line no-param-reassign
       item.index = hoverIndex;

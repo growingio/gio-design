@@ -9,6 +9,7 @@ describe('testing useCacheOption hook ', () => {
 
   it('useCacheOptions', () => {
     const { result } = renderHook(() => useCacheOptions())
+    result.current.setOptions();
     result.current.setOptions([{ value: '1', label: '1' }]);
 
     expect(result.current.options.size).toEqual(1);
@@ -33,7 +34,7 @@ describe('testing useCacheOption hook ', () => {
 
 describe('testing useValue hook', () => {
   test('useValue', () => {
-    const { result } = renderHook(() => useValue('1', undefined, '1', undefined, false))
+    const { result } = renderHook(() => useValue('1', undefined, '1', undefined))
     expect(result.current.value).toEqual('1');
 
   });

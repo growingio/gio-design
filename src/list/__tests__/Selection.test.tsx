@@ -7,6 +7,7 @@ import List, { Item } from '..';
 import { SelectionProps } from '../interface';
 import { ListContextProps } from '../context';
 import CheckboxItem from '../inner/CheckboxItem';
+import Empty from '../Empty';
 
 describe('testing Selection', () => {
   const originalError = console.error
@@ -119,74 +120,104 @@ describe('testing Selection', () => {
     expect(screen.queryByText('List Item 1')).toBeTruthy()
   })
 
-  it('render selection with context',()=>{
+  it('render selection with context', () => {
     const Render = () => (
       <List.Selection>
-            {(context) => {
-              const isEqualValue = isEqual(
-                Array.from(context.options.values()).reduce((p, v) => [...p, v.value], []),
-                context.value
-              );
-              return (
-                <>
-                  <CheckboxItem
-                    selected={isEqualValue}
-                    onClick={() => {
-                      if (isEqualValue) {
-                        context.onChange([]);
-                      } else {
-                        context.onChange(Array.from(context.options.keys()));
-                      }
-                    }}
-                    label="全部"
-                    value="all"
-                  />
+        {(context) => {
+          const isEqualValue = isEqual(
+            Array.from(context.options.values()).reduce((p, v) => [...p, v.value], []),
+            context.value
+          );
+          return (
+            <>
+              <CheckboxItem
+                selected={isEqualValue}
+                onClick={() => {
+                  if (isEqualValue) {
+                    context.onChange([]);
+                  } else {
+                    context.onChange(Array.from(context.options.keys()));
+                  }
+                }}
+                label="全部"
+                value="all"
+              />
 
-                  <List
-                    options={[
-                      { label: '1', value: '1',groupId:'1',groupName:'第一' },
-                      { label: '2', value: '2',groupId:'1',groupName:'第一' },
-                    ]}
-                    id="id"
-                    title="有item"
-                  />
-                </>
-              );
-            }}
-          </List.Selection>
+              <List
+                options={[
+                  { label: '1', value: '1', groupId: '1', groupName: '第一' },
+                  { label: '2', value: '2', groupId: '1', groupName: '第一' },
+                ]}
+                id="id"
+                title="有item"
+              />
+            </>
+          );
+        }}
+      </List.Selection>
     )
     render(<Render />);
 
     expect(screen.queryByText('全部')).toBeTruthy()
   })
 
-  it('render selection with context to be undefined',()=>{
+  it('render selection with context to be undefined', () => {
     const Render = () => (
       <List.Selection>
-            {() => undefined}
-          </List.Selection>
+        {() => undefined}
+      </List.Selection>
     )
-    render(<Render />);
-    screen.debug();
-    expect(screen.queryByText('全部')).not.toBeTruthy()
+    const { container } = render(<Render />);
+    expect(container.querySelector('.gio-list--selection').children.length).toBe(0)
   })
-
-  it('render selection with options',()=>{
+  it('render selection with null', () => {
+    const Render = () => (
+      <List.Selection>
+        {null}
+      </List.Selection>
+    )
+    const { container } = render(<Render />);
+    expect(container.querySelector('.gio-list--selection').children.length).toBe(0)
+  })
+  it('render selection with options and children', () => {
     const Render = () => (
       <List.Selection options={[
-        { label: '1', value: '1',groupId:'1',groupName:'第一' },
-        { label: '2', value: '2',groupId:'1',groupName:'第一' },
+        { label: '1', value: '1', groupId: '1', groupName: '第一' },
+        { label: '2', value: '2', groupId: '1', groupName: '第一' },
+      ]} >
+        <List id="l1" model="multiple">
+          <Item value="1">List Item 1</Item>
+          <Item disabled value="2">
+            List Item 2
+          </Item>
+        </List>
+        <Empty />
+        <div><span>div1</span></div>
+      </List.Selection>
+    )
+    render(<Render />);
+    expect(screen.queryByText('div1')).toBeTruthy()
+  })
+  it('options=null', () => {
+    const { container } = render(<List.Selection options={null} />);
+    expect(container.querySelector('.gio-list--selection').children.length).toBe(0)
+  })
+  it('render selection with options', () => {
+    const Render = () => (
+      <List.Selection options={[
+        { label: '1', value: '1', groupId: '1', groupName: '第一' },
+        { label: '2', value: '2', groupId: '1', groupName: '第一' },
       ]} />
     )
     render(<Render />);
-    expect(screen.queryByText('1')).toBeTruthy()
+    expect(screen.queryByText('第一')).toBeTruthy()
   })
 
-  it('render selection with option without group',()=>{
+  it('render selection with option without group', () => {
     const Render = () => (
       <List.Selection options={[
-        { label: '1', value: '1'},
-        { label: '2', value: '2'},
+        { label: '1', value: '1' },
+        { label: '2', value: '2' },
       ]} />
     )
     render(<Render />);
