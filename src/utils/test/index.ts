@@ -10,9 +10,13 @@ export async function waitForComponentToPaint(wrapper: any, amount = 500): Promi
 export function waitAMoment(): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, 3000));
 }
+const globalTimeout = global.setTimeout;
 
-export const sleep = (timer = 0) => new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, timer);
+export const sleep = async (timeout = 0) => {
+  await act(async () => {
+    await new Promise(resolve => {
+      globalTimeout(resolve, timeout);
+    });
   });
+};
+
