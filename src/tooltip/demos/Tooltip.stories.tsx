@@ -314,7 +314,7 @@ export const HideDelay = () => (
 
 export const Offset = () => (
   <>
-    <Tooltip overlay={<span>overlay</span>} offset={[10, 10]} arrowPointAtCenter>
+    <Tooltip overlay={<span>overlay</span>} offset={[10, 10]}>
       <span> Offset </span>
     </Tooltip>
   </>
