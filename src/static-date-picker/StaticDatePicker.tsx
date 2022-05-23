@@ -15,7 +15,10 @@ const Cell: React.FC<{ visible: boolean; prefixCls: string; currentDate: Date }>
   const divRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    const parent = divRef.current.parentElement;
+    let parent: any = null;
+    if (divRef.current) {
+      parent = divRef.current.parentElement;
+    }
 
     if (parent && !visible) {
       const attributes = ['title', 'class'];

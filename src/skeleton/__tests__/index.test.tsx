@@ -10,36 +10,44 @@ describe('Testing Skeleton ', () => {
   });
 
   it('has params', () => {
-    render(
+    const { container } = render(
       <Skeleton loading delay={500} paragraph={{ row: 4, width: '100%' }} active={false} avatar={{ size: 'small' }} />
     );
-    expect(screen.getByTestId('skeleton')).toBeTruthy();
-  });
-
-  it('has only title', () => {
-    render(<Skeleton paragraph={{ row: 4, width: '100%' }} title />);
-    expect(screen.getByTestId('skeleton')).toBeTruthy();
+    expect(container.getElementsByClassName('gio-skeleton-paragraph')[0].getElementsByTagName('p').length).toBe(4);
   });
 
   it('has title paragraph', () => {
-    render(<Skeleton title />);
-    expect(screen.getByTestId('skeleton')).toBeTruthy();
+    const { container } = render(<Skeleton paragraph={{ row: 4, width: '100%' }} title />);
+    expect(container.getElementsByClassName('gio-skeleton-title').length).toBe(1);
+    expect(container.getElementsByClassName('gio-skeleton-paragraph')[0].getElementsByTagName('p').length).toBe(4);
+  });
+
+  it('has only title', () => {
+    const { container } = render(<Skeleton title />);
+    expect(container.getElementsByClassName('gio-skeleton-title').length).toBe(1);
   });
 
   it('rowWidth is array', () => {
-    render(<Skeleton paragraph={{ row: 3, width: ['100%', 200, '100%'] }} />);
-    expect(screen.getByTestId('skeleton')).toBeTruthy();
+    const { container } = render(<Skeleton paragraph={{ row: 3, width: [200, 300, '100%'] }} />);
+    expect(container.getElementsByClassName('gio-skeleton-paragraph')[0].getElementsByTagName('p').length).toBe(3);
+    expect(container.getElementsByClassName('gio-skeleton-paragraph')[0].getElementsByTagName('p')[0].style.width).toBe(
+      '200px'
+    );
   });
 
   it('loading is false', () => {
-    render(<Skeleton loading={false} />);
+    render(<Skeleton loading={false}>内容</Skeleton>);
+    expect(screen.getByText('内容')).toBeTruthy();
   });
 
   it('SkeletonImage', () => {
-    render(<SkeletonImage delay={500} width={200} color="#000000" />);
+    const { container } = render(<SkeletonImage delay={500} width={200} color="#000000" />);
+    expect(container.getElementsByClassName('gio-skeleton-image').length).toBe(1);
   });
 
   it('SkeletonImage loading false', () => {
-    render(<SkeletonImage loading={false} />);
+    const { container } = render(<SkeletonImage loading={false}>内容</SkeletonImage>);
+    expect(container.getElementsByClassName('gio-skeleton-image').length).toBe(0);
+    expect(screen.getByText('内容')).toBeTruthy();
   });
 });
