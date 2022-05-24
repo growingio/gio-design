@@ -26,7 +26,7 @@ const DragItem: React.FC<DragItemProps> = (props) => {
       if (dragIndex === hoverIndex) {
         return;
       }
-      const hoverBoundingRect = ref.current?.getBoundingClientRect();
+      const hoverBoundingRect = ref.current?.getBoundingClientRect() || { bottom: 0, top: 0 };
       const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
       const clientOffset = monitor.getClientOffset();
 
