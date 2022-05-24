@@ -53,7 +53,9 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
     onSelect?.(currentValue, formatDate(currentValue));
   };
 
-  const content = <StaticDatePicker onSelect={handleOnSelect} disabledDate={disabledDate} value={controlledValue} {...restProps} />;
+  const content = (
+    <StaticDatePicker onSelect={handleOnSelect} disabledDate={disabledDate} value={controlledValue} {...restProps} />
+  );
 
   function renderTrigger() {
     if (trigger) {
