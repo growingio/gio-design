@@ -100,7 +100,12 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
 
     const renderTooltip = (child: React.ReactElement) =>
       displayTooltip ? (
-        <Tooltip title={isNil(tooltipTitle) ? userName?.trim() : tooltipTitle} placement={placement}>
+        <Tooltip
+          title={isNil(tooltipTitle) ? userName?.trim() : tooltipTitle}
+          placement={placement}
+          delay={200}
+          hideDelay={200}
+        >
           {child}
         </Tooltip>
       ) : (
