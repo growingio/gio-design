@@ -52,7 +52,7 @@ export default function ListPage() {
         })}
       </Description>
       <Canvas>
-        <Story id="upgraded-toast--function" />
+        <Story id="upgraded-toast--type" />
       </Canvas>
 
       <Subheading>{formatMessage({ defaultMessage: 'content中包含跳转' })}</Subheading>

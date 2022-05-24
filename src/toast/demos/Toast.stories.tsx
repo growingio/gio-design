@@ -42,7 +42,7 @@ Default.args = {
   icon: null,
 };
 
-export const Function: Story<ArgsProps> = () => {
+export const Type: Story<ArgsProps> = () => {
   const handleSuccess = () => {
     Toast.success({
       content: '提示文案！',
