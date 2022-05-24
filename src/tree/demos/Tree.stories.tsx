@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { CheckOutlined, EventOutlined, CopyOutlined } from '@gio-design/icons';
-import { Tree, TreeProps } from '../index';
+import { CheckOutlined, CopyOutlined, EventOutlined } from '@gio-design/icons';
+import { Tree, TreeProps, TreeNode } from '../index';
 import Docs from './TreePage';
 
 export default {
@@ -14,54 +14,92 @@ export default {
   },
 } as Meta;
 
-const treeData = [
-  {
-    label: '产品团队',
-    value: '0-0',
-    prefix: <EventOutlined />,
-    childs: [
-      {
-        label: '产品经理团队',
-        value: '0-0-0',
-        disabled: true,
-        childs: [
-          {
-            label: '产品一组',
-            value: '0-0-0-0',
-            prefix: <CheckOutlined />,
-            disabled: true,
-          },
-          {
-            label: '产品二组',
-            value: '0-0-0-1',
-            prefix: <CheckOutlined />,
-          },
-        ],
-      },
-      {
-        label: '设计师团队',
-        value: '0-0-1',
-        childs: [
-          {
-            label: 'UX',
-            value: '0-0-1-0',
-            prefix: <CheckOutlined />,
-          },
-        ],
-      },
-    ],
-  },
-  {
-    label: '市场团队',
-    value: '0-1',
-    prefix: <CopyOutlined />,
-  },
-];
+export const Default: Story<TreeProps> = (args) => (
+  <Tree {...args}>
+    <TreeNode value="0-0" label="产品团队" prefix={<EventOutlined />}>
+      <TreeNode value="0-0-0" label="产品经理团队" prefix={<EventOutlined />} disabled>
+        <TreeNode value="0-0-0-0" label="产品一组" prefix={<CheckOutlined />} disabled />
+        <TreeNode value="0-0-0-1" label="产品二组" prefix={<CheckOutlined />} />
+      </TreeNode>
+      <TreeNode value="0-0-1" label="设计师团队" prefix={<EventOutlined />} />
+    </TreeNode>
+  </Tree>
+);
 
-const Template: Story<TreeProps> = (args) => {
-  const [keys, setKeys] = useState<string[]>([]);
+export const DefaultExpandedKeys = () => (
+  <Tree defaultExpandedKeys={['0-0-1']} autoExpandParent>
+    <TreeNode value="0-0" label="产品团队" prefix={<EventOutlined />}>
+      <TreeNode value="0-0-0" label="产品经理团队" prefix={<EventOutlined />} disabled>
+        <TreeNode value="0-0-0-0" label="产品一组" prefix={<CheckOutlined />} disabled />
+        <TreeNode value="0-0-0-1" label="产品二组" prefix={<CheckOutlined />} />
+      </TreeNode>
+      <TreeNode value="0-0-1" label="设计师团队" prefix={<EventOutlined />} />
+    </TreeNode>
+  </Tree>
+);
+
+export const DefaultExpandedAll = () => (
+  <Tree defaultExpandAll>
+    <TreeNode value="0-0" label="产品团队" prefix={<EventOutlined />}>
+      <TreeNode value="0-0-0" label="产品经理团队" prefix={<EventOutlined />} disabled>
+        <TreeNode value="0-0-0-0" label="产品一组" prefix={<CheckOutlined />} disabled />
+        <TreeNode value="0-0-0-1" label="产品二组" prefix={<CheckOutlined />} />
+      </TreeNode>
+      <TreeNode value="0-0-1" label="设计师团队" prefix={<EventOutlined />} />
+    </TreeNode>
+  </Tree>
+);
+
+export const Disabled = () => (
+  <Tree>
+    <TreeNode value="0-0" label="产品团队" prefix={<EventOutlined />}>
+      <TreeNode value="0-0-0" label="产品经理团队" prefix={<EventOutlined />} disabled>
+        <TreeNode value="0-0-0-0" label="产品一组" prefix={<CheckOutlined />} disabled />
+        <TreeNode value="0-0-0-1" label="产品二组" prefix={<CheckOutlined />} />
+      </TreeNode>
+      <TreeNode value="0-0-1" label="设计师团队" prefix={<EventOutlined />} />
+    </TreeNode>
+  </Tree>
+);
+
+export const ExpandedKeys = () => {
   const [expendKeys, setExpandKeys] = useState<string[]>([]);
+  return (
+    <Tree
+      expandedKeys={expendKeys}
+      defaultExpandAll
+      onExpand={(v) => {
+        console.log('onExpand', v);
+        setExpandKeys(v);
+      }}
+    >
+      <TreeNode value="0-0" label="产品团队" prefix={<EventOutlined />}>
+        <TreeNode value="0-0-0" label="产品经理团队" prefix={<EventOutlined />} disabled>
+          <TreeNode value="0-0-0-0" label="产品一组" prefix={<CheckOutlined />} disabled />
+          <TreeNode value="0-0-0-1" label="产品二组" prefix={<CheckOutlined />} />
+        </TreeNode>
+        <TreeNode value="0-0-1" label="设计师团队" prefix={<EventOutlined />} />
+      </TreeNode>
+    </Tree>
+  );
+};
+
+export const DefaultSelectedKeys = () => (
+  <Tree defaultSelectedKeys={['0-0']}>
+    <TreeNode value="0-0" label="产品团队" prefix={<EventOutlined />}>
+      <TreeNode value="0-0-0" label="产品经理团队" prefix={<EventOutlined />} disabled>
+        <TreeNode value="0-0-0-0" label="产品一组" prefix={<CheckOutlined />} disabled />
+        <TreeNode value="0-0-0-1" label="产品二组" prefix={<CheckOutlined />} />
+      </TreeNode>
+      <TreeNode value="0-0-1" label="设计师团队" prefix={<EventOutlined />} />
+    </TreeNode>
+  </Tree>
+);
+
+export const SelectedKeys = () => {
+  const [keys, setKeys] = useState<string[]>([]);
   const onSelect = (selectKeys: string[]) => {
+    console.log(selectKeys, 'selectKeys');
     if (selectKeys.length === 0) {
       return;
     }
@@ -69,56 +107,114 @@ const Template: Story<TreeProps> = (args) => {
   };
 
   return (
-    <>
-      <h3>normal</h3>
-      <div style={{ display: 'flex' }}>
-        <div className="tree-demo" style={{ width: '300px' }}>
-          <Tree {...args} />
-        </div>
-      </div>
-      <h3>defaultExpandedAll</h3>
-      <div className="tree-demo" style={{ width: '300px' }}>
-        <Tree defaultExpandAll {...args} />
-      </div>
-      <h3>defaultExpandedKeys</h3>
-      <div className="tree-demo" style={{ width: '300px' }}>
-        <Tree defaultExpandedKeys={['0-0-1']} autoExpandParent {...args} />
-      </div>
-      <h3>defaultExpandedKeys and autoExpandParent = false</h3>
-      <div className="tree-demo" style={{ width: '300px' }}>
-        <Tree defaultExpandedKeys={['0-0-1']} autoExpandParent={false} {...args} />
-      </div>
-
-      <h3>expandedKeys</h3>
-      <div className="tree-demo" style={{ width: '300px' }}>
-        <Tree
-          expandedKeys={expendKeys}
-          defaultExpandAll
-          onExpand={(v) => {
-            console.log('v', v);
-            setExpandKeys(v);
-          }}
-          {...args}
-        />
-      </div>
-      <h3>defaultSelectedKeys</h3>
-      <div className="tree-demo" style={{ width: '300px' }}>
-        <Tree defaultSelectedKeys={['0-0']} {...args} />
-      </div>
-      <h3>defaultSelectedKeys and selectedKeys</h3>
-      <div className="tree-demo" style={{ width: '300px' }}>
-        <Tree
-          selectedKeys={keys}
-          onSelect={(selectKeys: any[]) => onSelect(selectKeys)}
-          defaultSelectedKeys={['0-0']}
-          {...args}
-        />
-      </div>
-    </>
-    //
+    <Tree selectedKeys={keys} onSelect={(selectKeys: any[]) => onSelect(selectKeys)} defaultSelectedKeys={['0-0']}>
+      <TreeNode value="0-0" label="产品团队" prefix={<EventOutlined />}>
+        <TreeNode value="0-0-0" label="产品经理团队" prefix={<EventOutlined />} disabled>
+          <TreeNode value="0-0-0-0" label="产品一组" prefix={<CheckOutlined />} disabled />
+          <TreeNode value="0-0-0-1" label="产品二组" prefix={<CheckOutlined />} />
+        </TreeNode>
+        <TreeNode value="0-0-1" label="设计师团队" prefix={<EventOutlined />} />
+      </TreeNode>
+    </Tree>
   );
 };
-export const Default = Template.bind({});
-Default.args = {
-  options: treeData,
-};
+
+export const OnClick = () => (
+  <Tree
+    defaultSelectedKeys={['0-0']}
+    onSelect={(e) => {
+      console.log(e, 'onSelect');
+    }}
+    onClick={(e) => {
+      console.log(e, 'onClick');
+    }}
+  >
+    <TreeNode value="0-0" label="产品团队" prefix={<EventOutlined />}>
+      <TreeNode value="0-0-0" label="产品经理团队" prefix={<EventOutlined />} disabled>
+        <TreeNode value="0-0-0-0" label="产品一组" prefix={<CheckOutlined />} disabled />
+        <TreeNode value="0-0-0-1" label="产品二组" prefix={<CheckOutlined />} />
+      </TreeNode>
+      <TreeNode value="0-0-1" label="设计师团队" prefix={<EventOutlined />} />
+    </TreeNode>
+  </Tree>
+);
+
+export const Multiple = () => (
+  <Tree
+    onSelect={(e) => {
+      console.log(e, 'onSelect');
+    }}
+    onClick={(e) => {
+      console.log(e, 'onClick');
+    }}
+    multiple
+  >
+    <TreeNode value="0-0" label="产品团队" prefix={<EventOutlined />}>
+      <TreeNode value="0-0-0" label="产品经理团队" prefix={<EventOutlined />} disabled>
+        <TreeNode value="0-0-0-0" label="产品一组" prefix={<CheckOutlined />} disabled />
+        <TreeNode value="0-0-0-1" label="产品二组" prefix={<CheckOutlined />} />
+      </TreeNode>
+      <TreeNode value="0-0-1" label="设计师团队" prefix={<EventOutlined />} />
+    </TreeNode>
+  </Tree>
+);
+
+export const Options = () => (
+  <Tree
+    options={[
+      {
+        label: '产品团队',
+        value: '0-0',
+        prefix: <EventOutlined />,
+        childs: [
+          {
+            label: '产品经理团队',
+            value: '0-0-0',
+            disabled: true,
+            childs: [
+              {
+                label: '产品一组',
+                value: '0-0-0-0',
+                prefix: <CheckOutlined />,
+                disabled: true,
+              },
+              {
+                label: '产品二组',
+                value: '0-0-0-1',
+                prefix: <CheckOutlined />,
+              },
+            ],
+          },
+          {
+            label: '设计师团队',
+            value: '0-0-1',
+            childs: [
+              {
+                label: 'UX',
+                value: '0-0-1-0',
+                prefix: <CheckOutlined />,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        label: '市场团队',
+        value: '0-1',
+        prefix: <CopyOutlined />,
+      },
+    ]}
+  />
+);
+
+export const FilterTreeNode = () => (
+  <Tree filterTreeNode={(e) => e.value === '0-0'}>
+    <TreeNode value="0-0" label="产品团队" prefix={<EventOutlined />}>
+      <TreeNode value="0-0-0" label="产品经理团队" prefix={<EventOutlined />} disabled>
+        <TreeNode value="0-0-0-0" label="产品一组" prefix={<CheckOutlined />} disabled />
+        <TreeNode value="0-0-0-1" label="产品二组" prefix={<CheckOutlined />} />
+      </TreeNode>
+      <TreeNode value="0-0-1" label="设计师团队" prefix={<EventOutlined />} />
+    </TreeNode>
+  </Tree>
+);
