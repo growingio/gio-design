@@ -85,7 +85,7 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
 
   const renderTrigger = () => {
     if (typeof propsRenderTrigger === 'function') {
-      const node = propsRenderTrigger?.();
+      const node = propsRenderTrigger();
       return React.cloneElement(node, {
         onClick: (e: MouseEvent) => {
           node?.props?.onClick?.(e);
