@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
+import { PlusCircleFilled } from '@gio-design/icons';
 import Button from '../../button';
 import Docs from './ToastPage';
 import Toast from '../index';
@@ -27,14 +28,56 @@ export const Default: Story<ArgsProps> = (args) => {
   const handleSuccess = () => {
     Toast.success(args);
   };
+  return (
+    <Button data-testid="toast" style={{ marginRight: 10 }} onClick={handleSuccess}>
+      成功
+    </Button>
+  );
+};
+Default.args = {
+  content: '提示文案！',
+  duration: 5,
+  key: '',
+  onClose: () => console.log('onClose'),
+  icon: null,
+};
+
+export const Type: Story<ArgsProps> = () => {
+  const handleSuccess = () => {
+    Toast.success({
+      content: '提示文案！',
+      duration: 5,
+      key: '',
+      onClose: () => console.log('onClose'),
+      icon: null,
+    });
+  };
   const handleFail = () => {
-    Toast.error(args);
+    Toast.error({
+      content: '提示文案！',
+      duration: 5,
+      key: '',
+      onClose: () => console.log('onClose'),
+      icon: null,
+    });
   };
   const handleWarn = () => {
-    Toast.warning(args);
+    Toast.warning({
+      content: '提示文案！',
+      duration: 5,
+      key: '',
+      onClose: () => console.log('onClose'),
+      icon: null,
+    });
   };
   const handleInfo = () => {
-    Toast.info(args);
+    Toast.info({
+      content: '提示文案！',
+      duration: 5,
+      key: '',
+      onClose: () => console.log('onClose'),
+      icon: null,
+    });
   };
   return (
     <div>
@@ -53,51 +96,80 @@ export const Default: Story<ArgsProps> = (args) => {
     </div>
   );
 };
-Default.args = {
-  content: '提示文案！',
-  duration: 5,
-  key: '',
-};
 
-export const NextStep: Story<ArgsProps> = (args) => {
+export const NextStep: Story<ArgsProps> = () => {
   const handleSuccess = () => {
-    Toast.success(args);
+    Toast.success({
+      content: (
+        <span>
+          文案
+          <Link style={{ color: '#3867f4', marginLeft: '8px' }} href="https://www.growingio.com">
+            去看看
+          </Link>
+        </span>
+      ),
+      duration: 5,
+    });
   };
-  const handleInfo = () => {
-    Toast.info(args);
-  };
-  const handleFail = () => {
-    Toast.error(args);
-  };
-  const handleWarn = () => {
-    Toast.warning(args);
-  };
+
   return (
-    <div>
-      <Button style={{ marginRight: 10 }} onClick={handleSuccess}>
-        成功
-      </Button>
-      <Button style={{ marginRight: 10 }} onClick={handleFail}>
-        失败
-      </Button>
-      <Button style={{ marginRight: 10 }} onClick={handleWarn}>
-        警告
-      </Button>
-      <Button style={{ marginRight: 10 }} onClick={handleInfo}>
-        提示
-      </Button>
-    </div>
+    <Button style={{ marginRight: 10 }} onClick={handleSuccess}>
+      content包含跳转的案例
+    </Button>
   );
 };
-NextStep.args = {
-  content: (
-    <span>
-      文案
-      <Link style={{ color: '#3867f4', marginLeft: '8px' }} href="https://www.growingio.com">
-        去看看
-      </Link>
-    </span>
-  ),
-  duration: 5,
-  key: '',
+
+export const Content = () => {
+  const handleSuccess = () => {
+    Toast.success({
+      content: 'content layout',
+    });
+  };
+  return (
+    <Button style={{ marginRight: 10 }} onClick={handleSuccess}>
+      content
+    </Button>
+  );
+};
+
+export const Duration = () => {
+  const handleSuccess = () => {
+    Toast.success({
+      content: 'content duration 5s',
+      duration: 5,
+    });
+  };
+  return (
+    <Button style={{ marginRight: 10 }} onClick={handleSuccess}>
+      Duration 5s
+    </Button>
+  );
+};
+
+export const OnClose = () => {
+  const handleSuccess = () => {
+    Toast.success({
+      content: 'console print onClose',
+      onClose: () => console.log('onClose'),
+    });
+  };
+  return (
+    <Button style={{ marginRight: 10 }} onClick={handleSuccess}>
+      OnClose
+    </Button>
+  );
+};
+
+export const Icon = () => {
+  const handleSuccess = () => {
+    Toast.success({
+      content: 'custom icon',
+      icon: <PlusCircleFilled />,
+    });
+  };
+  return (
+    <Button style={{ marginRight: 10 }} onClick={handleSuccess}>
+      Icon
+    </Button>
+  );
 };
