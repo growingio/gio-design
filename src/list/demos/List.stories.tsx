@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useMemo, useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import {
@@ -105,11 +106,11 @@ export const MultipleSelect = () => {
   return (
     <div className="gio-list-demo-box">
       <List model="multiple" max={3} value={value} onChange={handleChange} onMultipleOverflow={(v) => console.log('onMultipleOverflow value', v)}>
-        <Item value="1">List Item 1</Item>
+        <Item value="1" prefix={<UserOutlined />} suffix={<TagOutlined />}>List Item 1</Item>
         <Item disabled value="2">
           List Item 2
         </Item>
-        <Item value="3">List Item 3</Item>
+        <Item suffix={<TagOutlined />} value="3">List Item 3</Item>
         <Item value="4">List Item 4</Item>
         <Item value="5">List Item 5</Item>
       </List>

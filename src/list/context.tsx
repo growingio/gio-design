@@ -1,7 +1,6 @@
 import { noop } from 'lodash';
 import React from 'react';
-import List from './List';
-import { OptionProps, ListProps, MaybeArray, ModelType } from './interface';
+import { OptionProps, MaybeArray, ModelType } from './interface';
 
 export interface ListContextProps {
   value?: string | (string | number)[] | number;
@@ -50,21 +49,3 @@ const defaultList: ListContextProps = {
   getOptionTreeByValue: undefined,
 };
 export const ListContext = React.createContext<ListContextProps>(defaultList);
-
-export const ListConsumer: React.FC<ListProps> = (props) => {
-  const { children, ...rest } = props;
-  return (
-    <ListContext.Consumer>
-      {(context) =>
-        React.cloneElement(<List {...rest}>{children}</List>, {
-          value: context.value,
-          onChange: context.onChange,
-        })
-      }
-    </ListContext.Consumer>
-  );
-};
-export default {
-  context: ListContext,
-  consumer: ListConsumer,
-};

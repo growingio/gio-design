@@ -8,8 +8,8 @@ const useCacheOptions = () => {
   const updateOptions = (opts?: OptionProps[]) => {
     opts?.forEach((o: OptionProps) => {
       optionsMap.set(o.value, o);
-      if (!isEmpty(o?.items)) {
-        updateOptions(o?.items as OptionProps[]);
+      if (!isEmpty(o.items)) {
+        updateOptions(o.items as OptionProps[]);
       }
     });
   };
@@ -25,12 +25,12 @@ const useCacheOptions = () => {
   const getOptionsByValue = (optValue?: string | string[]): OptionProps | OptionProps[] | undefined =>
     Array.isArray(optValue)
       ? optValue.reduce((prev: OptionProps[], v) => {
-          const op = getOptionByValue(v);
-          if (op) {
-            prev.push(op);
-          }
-          return prev;
-        }, [] as any)
+        const op = getOptionByValue(v);
+        if (op) {
+          prev.push(op);
+        }
+        return prev;
+      }, [] as any)
       : getOptionByValue(optValue);
 
   const getLabelByValue = (
@@ -42,14 +42,14 @@ const useCacheOptions = () => {
     if (val === '' || typeof val === 'undefined') {
       return '';
     }
-    if (isString(val) && val?.includes(valueSeparator) && model === 'cascader') {
+    if (isString(val) && val.includes(valueSeparator) && model === 'cascader') {
       return (val as any)
-        ?.split(valueSeparator)
-        ?.reduce((prev: string[], curr: string | number) => [...prev, getOptionByValue?.(curr)?.label], [])
-        ?.join(separator);
+        .split(valueSeparator)
+        .reduce((prev: string[], curr: string | number) => [...prev, getOptionByValue(curr)?.label], [])
+        .join(separator);
     }
     if (isArray(val)) {
-      return val?.reduce((prev, curr: string | number) => [...prev, getOptionByValue?.(curr)?.label], [])?.join(',');
+      return val.reduce((prev, curr: string | number) => [...prev, getOptionByValue(curr)?.label], [])?.join(',');
     }
     return getOptionByValue(val)?.label ?? '';
   };
@@ -57,13 +57,13 @@ const useCacheOptions = () => {
     if (val === '' || typeof val === 'undefined') {
       return '';
     }
-    if (isString(val) && val?.includes(valueSeparator) && model === 'cascader') {
-      return (val as any)?.split(valueSeparator)?.reduceRight((prev: { key: string; value: string }, curr: string) => {
+    if (isString(val) && val.includes(valueSeparator) && model === 'cascader') {
+      return (val as any).split(valueSeparator).reduceRight((prev: { key: string; value: string }, curr: string) => {
         if (isEmpty(prev)) {
-          return { ...getOptionByValue?.(curr) };
+          return { ...getOptionByValue(curr) };
         }
         return {
-          ...getOptionByValue?.(curr),
+          ...getOptionByValue(curr),
           items: [{ ...prev }],
         };
       }, {});
