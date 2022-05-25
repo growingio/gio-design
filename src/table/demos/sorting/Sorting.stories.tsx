@@ -39,7 +39,15 @@ export const Sorting = () => {
       title: 'Address',
     },
   ];
-  return <Table<DataSourceType> pagination={false} dataSource={genDataSource()} columns={columns} rowKey="id" />;
+  return (
+    <Table<DataSourceType>
+      pagination={false}
+      onChange={action('handleTableChange')}
+      dataSource={genDataSource()}
+      columns={columns}
+      rowKey="id"
+    />
+  );
 };
 
 // ----------------------- Sorting -----------------------//
