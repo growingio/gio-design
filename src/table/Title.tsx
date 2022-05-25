@@ -25,19 +25,19 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
       const nextSortOrder = getNextSortDirection(sortDirections, sortOrder ?? null);
       const changedSorterState: SortState<RecordType> = sorterState
         ? {
-          ...sorterState,
-          sortOrder: nextSortOrder,
-        }
+            ...sorterState,
+            sortOrder: nextSortOrder,
+          }
         : {
-          sortOrder: nextSortOrder,
-          column,
-          isControlled: 'sortOrder' in column,
-          key: columnKey,
-          sortDirections,
-          sortPriorityOrder,
-        };
+            sortOrder: nextSortOrder,
+            column,
+            isControlled: 'sortOrder' in column,
+            key: columnKey,
+            sortDirections,
+            sortPriorityOrder,
+          };
 
-      onTriggerStateUpdate({ sorterState: updateSorterStates(changedSorterState) });
+      updateSorterStates(changedSorterState);
     };
 
     return (

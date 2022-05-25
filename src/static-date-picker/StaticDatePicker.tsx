@@ -15,7 +15,10 @@ const Cell: React.FC<{ visible: boolean; prefixCls: string; currentDate: Date }>
   const divRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    const parent = divRef.current?.parentElement;
+    let parent: any = null;
+    if (divRef.current) {
+      parent = divRef.current.parentElement;
+    }
 
     if (parent && !visible) {
       const attributes = ['title', 'class'];
@@ -24,9 +27,8 @@ const Cell: React.FC<{ visible: boolean; prefixCls: string; currentDate: Date }>
     }
   });
 
-
   return (
-    <div ref={divRef} style={{ visibility: visible ? "visible" : "hidden" }} className={`${prefixCls}-cell-inner`}>
+    <div ref={divRef} style={{ visibility: visible ? 'visible' : 'hidden' }} className={`${prefixCls}-cell-inner`}>
       {currentDate.getDate()}
     </div>
   );
@@ -49,8 +51,10 @@ const StaticDatePicker: React.FC<StaticDatePickerProps> = ({
 
   const prefixCls = usePrefixCls('picker');
 
-  const isSameYearMonth = (one: Date, two: Date) => one.getFullYear() === two.getFullYear() && one.getMonth() === two.getMonth()
-  const isOmittedDate = (currentDate: Date, currentMode: PickerMode) => currentMode === 'date' && !isSameYearMonth(currentDate, viewDate)
+  const isSameYearMonth = (one: Date, two: Date) =>
+    one.getFullYear() === two.getFullYear() && one.getMonth() === two.getMonth();
+  const isOmittedDate = (currentDate: Date, currentMode: PickerMode) =>
+    currentMode === 'date' && !isSameYearMonth(currentDate, viewDate);
   const dateRender = (currentDate: Date) => {
     const visible = !isOmittedDate(currentDate, 'date');
     // 移除非当前月份的日期
@@ -76,8 +80,12 @@ const StaticDatePicker: React.FC<StaticDatePickerProps> = ({
       defaultValue={defaultValue}
       {...restProps}
       pickerValue={viewDate}
-      onSelect={(date) => { onSelect?.(date); }}
-      onChange={(date) => { setViewDate(date, true); }}
+      onSelect={(date) => {
+        onSelect?.(date);
+      }}
+      onChange={(date) => {
+        setViewDate(date, true);
+      }}
       locale={locale}
       prefixCls={prefixCls}
       onPanelChange={(changedValue, changedMode: PickerMode) => {

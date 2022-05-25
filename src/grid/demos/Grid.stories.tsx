@@ -7,70 +7,158 @@ import '../style/index.less';
 import '../../row/style';
 import '../../col/style';
 import '../style/demo.stories.less';
+import Docs from './GridPage';
 
 export default {
   title: 'upgraded/Grid',
   component: Grid,
   subcomponents: { Row, Col },
+  parameters: {
+    docs: {
+      page: Docs,
+    },
+  },
 } as Meta;
 
-const Template: Story<RowProps & ColProps> = (args) => {
-  const { gutter, direction, justify, alignItems, alignContent, wrap, order, span, offset } = args;
-  const rowProps = { gutter, direction, justify, alignItems, alignContent, wrap };
-  const rolProps = { order, span, offset };
-  return (
-    <div className="grid-demo">
-      <Row {...args}>
-        <Col span={12} className="box">
-          <div>100%</div>
-        </Col>
-      </Row>
-      <Row {...rowProps}>
-        <Col span={4} className="box" {...rolProps}>
-          <div>对参数的修改可在此处看到效果</div>
-        </Col>
-        <Col span={4} className="box">
-          <div>33.33%</div>
-        </Col>
-        <Col span={4} className="box">
-          <div>33.33%</div>
-        </Col>
-      </Row>
-      <Row {...args}>
-        <Col span={3} className="box">
-          <div>25%</div>
-        </Col>
-        <Col span={3} className="box">
-          <div>25%</div>
-        </Col>
-        <Col span={3} className="box">
-          <div>25%</div>
-        </Col>
-        <Col span={3} className="box">
-          <div>25%</div>
-        </Col>
-      </Row>
-      <Row {...args}>
-        <Col span={8} className="box">
-          <div>66.66%</div>
-        </Col>
-        <Col span={4} className="box">
-          <div>33.33%</div>
-        </Col>
-      </Row>
+export const GridDemo: Story<RowProps & ColProps> = () => (
+    <Grid className="grid-demo">
+    <div  className="box">
+      <div>1</div>
     </div>
+    <div  className="box">
+      <div>2</div>
+    </div>
+    <div  className="box">
+      <div>3</div>
+    </div>
+    <div  className="box">
+      <div>4</div>
+    </div>
+    <div  className="box">
+      <div>5</div>
+    </div>
+    </Grid>
   );
-};
 
-export const Default = Template.bind({});
-Default.args = {
-  gutter: [0, 10],
-  direction: 'row',
-  justify: 'flex-start',
-  alignItems: 'stretch',
-  alignContent: 'stretch',
-  wrap: 'wrap',
-  order: 0,
-  span: 4,
-  offset: 0,
-};
+
+
+  export const RowDefault: Story<RowProps & ColProps> = () => (<div  className="grid-demo">
+  <Row>
+    <Col span={2} className="box">
+      <div>1/6</div>
+    </Col>
+    <Col span={2} className="box">
+      <div>1/6</div>
+    </Col>
+    <Col span={2} className="box">
+      <div>1/6</div>
+    </Col>
+    <Col span={2} className="box">
+      <div>1/6</div>
+    </Col>
+    <Col span={2} className="box">
+      <div>1/6</div>
+    </Col>
+    <Col span={2} className="box">
+      <div>1/6</div>
+    </Col>
+  </Row>
+  <Row>
+    <Col span={4} className="box">
+      <div>1/3</div>
+    </Col>
+    <Col span={4} className="box">
+      <div>1/3</div>
+    </Col>
+    <Col span={4} className="box">
+      <div>1/3</div>
+    </Col>
+  </Row>
+  <Row>
+    <Col span={6} className="box">
+      <div>1/2</div>
+    </Col>
+    <Col span={6} className="box">
+      <div>1/2</div>
+    </Col>
+  </Row>
+  <Row>
+    <Col span={12} className="box">
+      <div>12/12</div>
+    </Col>
+  </Row>
+</div>)
+
+export const RowGutter: Story<RowProps & ColProps> = () => (<div  className="grid-demo">
+    <Row gutter={[10,10]}>
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+    </Row>
+  </div>)
+
+
+export const RowDirection: Story<RowProps & ColProps> = () => (<div  className="grid-demo">
+    <Row direction="column">
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+      <Col span={2} className="box">
+        <div>1/6</div>
+      </Col>
+    </Row>
+  </div>)
+
+
+export const ColOrder: Story<RowProps & ColProps> = () => (<div  className="grid-demo">
+    <Row >
+      <Col span={2} className="box" order={2}>
+        <div>1| order:2</div>
+      </Col>
+      <Col span={2} className="box" order={3}>
+        <div>2| order:3</div>
+      </Col>
+      <Col span={2} className="box" order={1}>
+        <div>3| order:1</div>
+      </Col>
+      <Col span={2} className="box" order={6}>
+        <div>4| order:6</div>
+      </Col>
+      <Col span={2} className="box" order={4}>
+        <div>5| order:4</div>
+      </Col>
+      <Col span={2} className="box" order={5}>
+        <div>6| order:5</div>
+      </Col>
+    </Row>
+  </div>)

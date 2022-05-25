@@ -22,10 +22,6 @@ export interface SwitchItemProps
    内容前缀
    */
   prefix?: React.ReactNode;
-  /**
-   变化时回调函数
-   */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   // 自定义 `className`
   className?: string;
   // 自定义样式
