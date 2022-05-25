@@ -24,76 +24,117 @@ export default {
 } as Meta;
 
 const Template: Story<TooltipProps> = (args) => (
-  <div style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ width: '610px', margin: '70px 120px' }}>
-      <div className="tooltip-top">
-        <span className="popover-wrapper">
-          <Tooltip {...args} data-testid="tooltip" placement="topLeft">
-            <span className="popover-span">TopLeft</span>
-          </Tooltip>
-        </span>
-        <span className="popover-wrapper">
-          <Tooltip {...args} placement="top">
-            <span className="popover-span">Top</span>
-          </Tooltip>
-        </span>
-        <span className="popover-wrapper">
-          <Tooltip {...args} placement="topRight">
-            <span className="popover-span">TopRight</span>
-          </Tooltip>
-        </span>
-      </div>
-      <div className="tooltip-left" style={{ marginLeft: '40px' }}>
-        <span className="popover-wrapper">
-          <Tooltip {...args} placement="leftTop">
-            <span className="popover-span">LeftTop</span>
-          </Tooltip>
-        </span>
-        <span className="popover-wrapper">
-          <Tooltip {...args} placement="left">
-            <span className="popover-span">Left</span>
-          </Tooltip>
-        </span>
-        <span className="popover-wrapper">
-          <Tooltip {...args} placement="leftBottom">
-            <span className="popover-span">LeftBottom</span>
-          </Tooltip>
-        </span>
-      </div>
-      <div className="tooltip-right" style={{ marginLeft: '455px' }}>
-        <span className="popover-wrapper">
-          <Tooltip {...args} placement="rightTop">
-            <span className="popover-span">RightTop</span>
-          </Tooltip>
-        </span>
-        <span className="popover-wrapper">
-          <Tooltip {...args} placement="right">
-            <span className="popover-span">Right</span>
-          </Tooltip>
-        </span>
-        <span className="popover-wrapper">
-          <Tooltip {...args} placement="rightBottom">
-            <span className="popover-span">RightBottom</span>
-          </Tooltip>
-        </span>
-      </div>
-      <div className="tooltip-buttom">
-        <span className="popover-wrapper">
-          <Tooltip {...args} placement="bottomLeft">
-            <span className="popover-span">BottomLeft</span>
-          </Tooltip>
-        </span>
-        <span className="popover-wrapper">
-          <Tooltip {...args} placement="bottom">
-            <span className="popover-span">Bottom</span>
-          </Tooltip>
-        </span>
-        <span className="popover-wrapper">
-          <Tooltip {...args} placement="bottomRight">
-            <span className="popover-span">BottomRight</span>
-          </Tooltip>
-        </span>
-      </div>
+  <div
+    style={{
+      position: 'relative',
+      display: 'flex',
+      justifyContent: 'center',
+      height: '400px',
+      minWidth: '600px',
+      maxWidth: '900px',
+    }}
+  >
+    <div
+      className="tooltip-top"
+      style={{
+        position: 'absolute',
+        top: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        height: '400px',
+        width: '100%',
+      }}
+    >
+      <span className="popover-wrapper">
+        <Tooltip {...args} data-testid="tooltip" placement="topLeft">
+          <span className="popover-span">TopLeft</span>
+        </Tooltip>
+      </span>
+      <span className="popover-wrapper">
+        <Tooltip {...args} placement="top">
+          <span className="popover-span">Top</span>
+        </Tooltip>
+      </span>
+      <span className="popover-wrapper">
+        <Tooltip {...args} placement="topRight">
+          <span className="popover-span">TopRight</span>
+        </Tooltip>
+      </span>
+    </div>
+    <div
+      className="tooltip-left"
+      style={{
+        marginTop: 120,
+        position: 'absolute',
+        left: 0,
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <span className="popover-wrapper">
+        <Tooltip {...args} placement="leftTop">
+          <span className="popover-span">LeftTop</span>
+        </Tooltip>
+      </span>
+      <span className="popover-wrapper">
+        <Tooltip {...args} placement="left">
+          <span className="popover-span">Left</span>
+        </Tooltip>
+      </span>
+      <span className="popover-wrapper">
+        <Tooltip {...args} placement="leftBottom">
+          <span className="popover-span">LeftBottom</span>
+        </Tooltip>
+      </span>
+    </div>
+    <div
+      className="tooltip-right"
+      style={{
+        marginTop: 120,
+        position: 'absolute',
+        display: 'flex',
+        right: 0,
+        flexDirection: 'column',
+      }}
+    >
+      <span className="popover-wrapper">
+        <Tooltip {...args} placement="rightTop">
+          <span className="popover-span">RightTop</span>
+        </Tooltip>
+      </span>
+      <span className="popover-wrapper">
+        <Tooltip {...args} placement="right">
+          <span className="popover-span">Right</span>
+        </Tooltip>
+      </span>
+      <span className="popover-wrapper">
+        <Tooltip {...args} placement="rightBottom">
+          <span className="popover-span">RightBottom</span>
+        </Tooltip>
+      </span>
+    </div>
+    <div
+      className="tooltip-buttom"
+      style={{
+        position: 'absolute',
+        bottom: 0,
+      }}
+    >
+      <span className="popover-wrapper">
+        <Tooltip {...args} placement="bottomLeft">
+          <span className="popover-span">BottomLeft</span>
+        </Tooltip>
+      </span>
+      <span className="popover-wrapper">
+        <Tooltip {...args} placement="bottom">
+          <span className="popover-span">Bottom</span>
+        </Tooltip>
+      </span>
+      <span className="popover-wrapper">
+        <Tooltip {...args} placement="bottomRight">
+          <span className="popover-span">BottomRight</span>
+        </Tooltip>
+      </span>
     </div>
   </div>
 );
@@ -113,7 +154,7 @@ Placement.args = {
 };
 
 const TriggerTemplate: Story<TooltipProps> = (args) => (
-  <div style={{ margin: '150px 150px' }}>
+  <div>
     <span style={{ marginRight: 20 }}>
       <Tooltip {...args} trigger="hover" placement="top">
         <Input value="Touch Me!" style={{ width: 100 }} />
@@ -194,7 +235,7 @@ export const Controlled = ControlTemplate.bind({});
 Controlled.args = { overlay };
 
 const MultiLineTemplate: Story<TooltipProps> = (args) => (
-  <div style={{ margin: '0px 10px' }}>
+  <div style={{ margin: '0 10px' }}>
     <Tooltip {...args} placement="right">
       <span className="tooltipSpan">多行展示</span>
     </Tooltip>
@@ -207,42 +248,66 @@ MultiLine.args = {
   trigger: 'hover',
 };
 
-const LinkTemplate: Story<TooltipProps> = (args) => (
-  <div style={{ margin: '0px 10px' }}>
-    <Tooltip {...args} placement="right">
-      <span className="tooltipSpan">Link</span>
+export const Disabled = () => (
+  <div>
+    <Tooltip title="Button 被禁用了" placement="right">
+      <Button disabled>Disabled Button (Tooltip未设置disabled)</Button>
     </Tooltip>
   </div>
 );
 
-export const Link = LinkTemplate.bind({});
-Link.args = {
-  title: '这是一个很长的描述。这是一个很长的描述。这是一个很长的描述。这是一个很长的描述。这是一个很长的描述。',
-  tooltipLink: { name: '点击这里', link: 'www.growingio.com' },
-  placement: 'right',
-  trigger: 'hover',
-};
-
-export const Disabled = () => (
-  <div>
-    <p>
-      默认情况下，被禁用的元素（如 Button）不会触发用户交互行为，因此 hover 等普通的事件不会激活工具提示的显示。
-      若想容纳已禁用的元素激活工具提示，请添加一个简单的包装元素，如 span。
-    </p>
-
-    <p>
-      <b>
-        现在 最新的 <em>gio-desgin</em> 版本已经不需要包装span就可以正常工作
-      </b>
-    </p>
-
-    <Tooltip title="Button 被禁用了" placement="right">
-      <Button disabled>Disabled Button (Tooltip未设置disabled)</Button>
+export const Default = () => (
+  <>
+    <Tooltip overlay={<span>overlay</span>}>
+      <Button> Button </Button>
     </Tooltip>
-    <br />
-    <br />
-    <Tooltip title="Button 被禁用了" placement="right" disabled>
-      <Button disabled>Disabled Button (Tooltip设置disabled)</Button>
+  </>
+);
+
+export const Title = () => (
+  <>
+    <Tooltip title={<span>title</span>}>
+      <span> Title </span>
     </Tooltip>
-  </div>
+  </>
+);
+
+export const TooltipLink = () => (
+  <>
+    <Tooltip title={<span>overlay</span>} tooltipLink={{ name: '点击这里', link: 'www.growingio.com' }}>
+      <span> TooltipLink </span>
+    </Tooltip>
+  </>
+);
+
+export const Delay = () => (
+  <>
+    <Tooltip overlay={<span>overlay</span>} delay={1500}>
+      <span> Delay 1.5s </span>
+    </Tooltip>
+  </>
+);
+
+export const HideDelay = () => (
+  <>
+    <Tooltip overlay={<span>overlay</span>} hideDelay={2000}>
+      <span> hideDelay 2s</span>
+    </Tooltip>
+  </>
+);
+
+export const Offset = () => (
+  <>
+    <Tooltip overlay={<span>overlay</span>} offset={[10, 10]}>
+      <span> Offset </span>
+    </Tooltip>
+  </>
+);
+
+export const DestroyOnHide = () => (
+  <>
+    <Tooltip overlay={<span>overlay</span>} destroyOnHide={false}>
+      <span> destroyOnHide </span>
+    </Tooltip>
+  </>
 );
