@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { PlusOutlined, FilterOutlined } from '@gio-design/icons';
-import { action } from '@storybook/addon-actions';
 import Option from '../Option';
 import { SelectProps } from '../interface';
 import Select from '../Select';
 import '../style';
-import './style.less';
 import Docs from './SelectPage';
+import Button from '../../button';
 
 export default {
   title: 'Upgraded/Select',
@@ -18,111 +17,147 @@ export default {
     },
   },
 } as Meta;
-const defaultLabels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 
-const demoTemplate: Story<SelectProps> = (props) => {
-  const options = defaultLabels.reduce((prev, curr) => [...prev, { label: `第${curr}条咸鱼`, value: curr }], []);
+export const Default: Story<SelectProps> = (args) => (
+  <Select {...args}>
+    <Option label="1" value="1" />
+    <Option label="2" value="2" />
+    <Option label="3" value="3" />
+    <Option label="4" value="4" />
+  </Select>
+);
+Default.args = {};
+export const OnChange = () => (
+  <Select autoWidth defaultValue="1" onChange={(v: string | number) => console.log('value', v)}>
+    <Option label="1" value="1" />
+    <Option label="2" value="2" />
+    <Option label="3" value="3" />
+    <Option label="4" value="4" />
+  </Select>
+);
+
+export const OnVisibleChange = () => (
+  <Select defaultValue="1" onVisibleChange={(e) => console.log(e, 'visibleChange')}>
+    <Option label="1" value="1" />
+    <Option label="2" value="2" />
+    <Option label="3" value="3" />
+    <Option label="4" value="4" />
+  </Select>
+);
+
+export const AutoWidth = () => (
+  <Select autoWidth defaultValue="1" style={{ width: '100%' }}>
+    <Option label="1" value="1" />
+    <Option label="2" value="2" />
+    <Option label="3" value="3" />
+    <Option label="4" value="4" />
+  </Select>
+);
+
+export const PrefixAndSuffix = () => (
+  <Select defaultValue="1" prefix={() => <PlusOutlined size="14px" />} suffix={() => <FilterOutlined size="14px" />}>
+    <Option label="1" value="1" />
+    <Option label="2" value="2" />
+    <Option label="3" value="3" />
+    <Option label="4" value="4" />
+  </Select>
+);
+export const Options = () => (
+  <Select
+    defaultValue={1}
+    options={[
+      {
+        value: 1,
+        label: 1,
+      },
+      {
+        value: 2,
+        label: 2,
+      },
+      {
+        value: 3,
+        label: 3,
+      },
+      {
+        value: 4,
+        label: 4,
+      },
+    ]}
+  />
+);
+
+export const Value = () => {
+  const [val, setVal] = useState(1);
+
+  return (
+    <Select
+      placeholder="placeholder"
+      defaultValue="1"
+      value={val}
+      onChange={(e) => setVal(e)}
+      prefix={() => <PlusOutlined size="14px" />}
+      suffix={() => <FilterOutlined size="14px" />}
+    >
+      <Option label="1" value="1" />
+      <Option label="2" value="2" />
+      <Option label="3" value="3" />
+      <Option label="4" value="4" />
+    </Select>
+  );
+};
+
+export const Visible = () => {
+  const [vis, setVis] = useState(false);
+
   return (
     <>
-      <div className="demo-box">
-        <Select
-          options={options}
-          value="1"
-          placeholder="请选择"
-          size="normal"
-          {...props}
-          onVisibleChange={() => action('visibleChange')}
-        />
-      </div>
-      <div className="demo-box">
-        <Select disabled options={options} placeholder="请选择" size="normal" {...props} />
-      </div>
-      <h3>自定义list,trigger宽度</h3>
-      <div className="demo-box">
-        <Select
-          options={options}
-          contentStyle={{ width: 240 }}
-          placeholder="请选择"
-          allowClear={false}
-          // triggerProps={{ placeholder: '请选择', style: { width: 240, textAlign: 'left' }, allowClear: false }}
-          size="small"
-          {...props}
-        />
-      </div>
-      <h3>hide trigger Prefix</h3>
-      <div className="demo-box">
-        <Select
-          options={options}
-          contentStyle={{ width: 240 }}
-          placeholder="请选择"
-          allowClear={false}
-          size="small"
-          {...props}
-        />
-      </div>
-      <h3>prefix,suffix(如果设置prefix、suffix trigger在有值时会render Select的prefix、suffix)</h3>
-      <div className="demo-box">
-        <Select
-          options={options}
-          prefix={() => <PlusOutlined size="14px" />}
-          suffix={() => <FilterOutlined size="14px" />}
-          contentStyle={{ width: 240 }}
-          placeholder="请选择"
-          allowClear={false}
-          size="small"
-          {...props}
-        />
-      </div>
-      <h3>JSX--prefix</h3>
-      <div className="demo-box">
-        <Select autoWidth style={{ width: '240px' }} placeholder="请选择" allowClear={false}>
-          <Option label="JSX1" value="JSX1" />
-          <Option label="JSX2" value="JSX2" />
-        </Select>
-        <Select autoWidth style={{ width: '240px' }} placeholder="请选择" allowClear={false}>
-          <Option value="JSX1" prefix="123">
-            JSX1
-          </Option>
-          <Option value="JSX2">JSX2</Option>
-        </Select>
-        <Select autoWidth style={{ width: '240px' }} placeholder="empty" />
-      </div>
+      <Button style={{ marginBottom: 0, marginRight: 10 }} onClick={() => setVis(!vis)}>
+        visibleControl
+      </Button>
+      <Select
+        placeholder="placeholder"
+        defaultValue="1"
+        visible={vis}
+        onVisibleChange={(e) => console.log(e, 'onVisibleChange')}
+      >
+        <Option label="1" value="1" />
+        <Option label="2" value="2" />
+        <Option label="3" value="3" />
+        <Option label="4" value="4" />
+      </Select>
     </>
   );
 };
-
-export const Demo = demoTemplate.bind({
-  triggerProps: {
-    placeholder: '请选择',
-  },
-});
-
-export const Default = () => {
-  const options = defaultLabels.reduce((prev, curr) => [...prev, { label: `第${curr}条咸鱼`, value: curr }], []);
-  const numberOptions = defaultLabels.reduce(
-    (prev, curr) => [...prev, { label: `第${curr}条咸鱼`, value: Number(curr) }],
-    []
-  );
+export const Trigger = () => {
+  const [val, setVal] = useState(1);
   return (
-    <div style={{ display: 'flex', columnGap: '40px' }}>
-      <Select
-        options={options}
-        onChange={(v: string | number) => console.log('value', v)}
-        contentStyle={{ width: '120px' }}
-        placeholder="请选择"
-        size="normal"
-        autoWidth
-        onVisibleChange={() => action('visibleChange')}
-      />
-      <Select
-        options={numberOptions}
-        onChange={(v: string | number) => console.log('value', v)}
-        contentStyle={{ width: '120px' }}
-        placeholder="number 类型的value"
-        size="normal"
-        autoWidth
-        onVisibleChange={() => action('visibleChange')}
-      />
-    </div>
+    <Select
+      defaultValue="1"
+      value={val}
+      onChange={(e) => setVal(e)}
+      triggerPrefix={() => <PlusOutlined size="14px" />}
+      triggerSuffix={() => <FilterOutlined size="14px" />}
+      renderTrigger={() => <Button>Trigger value is{val}</Button>}
+    >
+      <Option label="1" value="1" />
+      <Option label="2" value="2" />
+      <Option label="3" value="3" />
+      <Option label="4" value="4" />
+    </Select>
   );
 };
+
+export const Title = () => (
+  <Select
+    title="custom title"
+    prefix={() => <PlusOutlined size="14px" />}
+    suffix={() => <FilterOutlined size="14px" />}
+  >
+    <Option label="1" value="1" />
+    <Option label="2" value="2" />
+    <Option label="3" value="3" />
+    <Option label="4" value="4" />
+  </Select>
+);
+
+export const Empty = () => <Select empty="this is empty" needEmpty />;
