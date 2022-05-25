@@ -10,7 +10,7 @@ import useControlledState from '../../utils/hooks/useControlledState';
 
 // 拿到row及其children 所有的key
 export const getRowAllKeys = (row: any, rowKey: any) => {
-  if (row.children) {
+  if (row?.children) {
     return flattenDeep([get(row, rowKey), ...row.children.map((item: any) => getRowAllKeys(item, rowKey))]);
   }
   return get(row, rowKey);
