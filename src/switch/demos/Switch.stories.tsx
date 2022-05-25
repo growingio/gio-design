@@ -1,11 +1,11 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { ListOutlined, GameOutlined } from '@gio-design/icons';
+import { action } from '@storybook/addon-actions';
+import { GameOutlined } from '@gio-design/icons';
 import Switch from '../index';
 import { SwitchProps } from '../interface';
 import Docs from './SwitchPage';
 import '../style';
-import './index.less';
 
 export default {
   title: 'Upgraded/Switch',
@@ -23,299 +23,99 @@ export default {
   },
 } as Meta;
 
-const options = [
-  {
-    label: 'OptionA',
-    value: 'OptionA',
-  },
-  {
-    label: 'OptionB',
-    value: 'OptionB',
-  },
-  {
-    label: 'OptionC',
-    value: 'OptionC',
-  },
-  {
-    label: 'OptionD',
-    value: 'OptionD',
-  },
-  {
-    label: 'OptionE',
-    value: 'OptionE',
-  },
-  {
-    label: 'OptionF',
-    value: 'OptionF',
-  },
-];
-const DemoTemplate = () => (
-  <table className="table-demo">
-    <tr>
-      <th>Switch</th>
-      <th>Example</th>
-    </tr>
-    <tr>
-      <td>size</td>
-      <td>
-        <Switch size="small" options={options} />
-        <Switch size="normal" options={options} />
-      </td>
-    </tr>
-    <tr>
-      <td>icon</td>
-      <td>
-        <Switch
-          size="small"
-          options={[
-            {
-              label: <ListOutlined size="14" />,
-              value: 'OptionA',
-            },
-            {
-              label: <ListOutlined size="14" />,
-              value: 'OptionB',
-            },
-            {
-              label: <ListOutlined size="14" />,
-              value: 'OptionC',
-            },
-            {
-              label: <ListOutlined size="14" />,
-              value: 'OptionD',
-            },
-            {
-              label: <ListOutlined size="14" />,
-              value: 'OptionE',
-            },
-            {
-              label: <ListOutlined size="14" />,
-              value: 'OptionF',
-            },
-          ]}
-        />
-        <Switch
-          size="normal"
-          options={[
-            {
-              label: <ListOutlined size="14" />,
-              value: 'OptionA',
-            },
-            {
-              label: <ListOutlined size="14" />,
-              value: 'OptionB',
-            },
-            {
-              label: <ListOutlined size="14" />,
-              value: 'OptionCDisabled',
-            },
-            {
-              label: <ListOutlined size="14" />,
-              value: 'OptionD',
-            },
-            {
-              label: <ListOutlined size="14" />,
-              value: 'OptionE',
-            },
-            {
-              label: <ListOutlined size="14" />,
-              value: 'OptionF',
-            },
-          ]}
-        />
-      </td>
-    </tr>
-    <tr>
-      <td>disabled</td>
-      <td>
-        <Switch
-          size="small"
-          options={[
-            {
-              label: 'OptionA',
-              value: 'OptionA',
-            },
-            {
-              label: 'OptionB',
-              value: 'OptionB',
-            },
-            {
-              label: 'OptionC',
-              value: 'OptionC',
-            },
-            {
-              label: 'OptionD',
-              value: 'OptionD',
-              disabled: true,
-            },
-            {
-              label: 'OptionE',
-              value: 'OptionE',
-              disabled: true,
-            },
-            {
-              label: 'OptionF',
-              value: 'OptionF',
-              disabled: true,
-            },
-          ]}
-        />
-        <Switch
-          size="normal"
-          options={[
-            {
-              label: 'OptionA',
-              value: 'OptionA',
-            },
-            {
-              label: 'OptionB',
-              value: 'OptionB',
-            },
-            {
-              label: 'OptionC',
-              value: 'OptionC',
-            },
-            {
-              label: 'OptionD',
-              value: 'OptionD',
-              disabled: true,
-            },
-            {
-              label: 'OptionE',
-              value: 'OptionE',
-              disabled: true,
-            },
-            {
-              label: 'OptionF',
-              value: 'OptionF',
-              disabled: true,
-            },
-          ]}
-        />
-      </td>
-    </tr>
-    <tr>
-      <td>defaultValue</td>
-      <td>
-        <Switch size="small" defaultValue="OptionA" options={options} />
-        <Switch size="normal" defaultValue="OptionA" options={options} />
-      </td>
-    </tr>
-  </table>
+export const Default = () => (
+  <Switch>
+    <Switch.Item value="OptionA" key="1">
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2">
+      OptionB
+    </Switch.Item>
+  </Switch>
 );
-export const Demo = DemoTemplate.bind({});
-const TemplateIconGroup: Story<SwitchProps> = (args) => (
+export const Options = () => (
+  <Switch
+    options={[
+      {
+        label: 'OptionA',
+        value: 'OptionA',
+      },
+      {
+        label: 'OptionB',
+        value: 'OptionB',
+      },
+    ]}
+  />
+);
+export const Disabled = () => (
+  <Switch disabled defaultValue="OptionA">
+    <Switch.Item value="OptionA" key="1">
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2">
+      OptionB
+    </Switch.Item>
+  </Switch>
+);
+
+export const Size = () => (
   <>
-    <Switch {...args} />
+    <Switch defaultValue="OptionA">
+      <Switch.Item value="OptionA" key="1">
+        OptionA
+      </Switch.Item>
+      <Switch.Item value="OptionB" key="2">
+        OptionB
+      </Switch.Item>
+    </Switch>
+    <Switch defaultValue="OptionA" size="small">
+      <Switch.Item value="OptionA" key="1">
+        OptionA
+      </Switch.Item>
+      <Switch.Item value="OptionB" key="2">
+        OptionB
+      </Switch.Item>
+    </Switch>
   </>
 );
-export const IconGroup = TemplateIconGroup.bind({});
-IconGroup.args = {
-  disabled: false,
-  defaultValue: 'OptionA',
-  options: [
-    {
-      label: <ListOutlined />,
-      value: 'OptionA',
-    },
-    {
-      label: <ListOutlined />,
-      value: 'OptionB',
-    },
-    {
-      label: <ListOutlined />,
-      value: 'OptionCDisabled',
-      disabled: true,
-    },
-    {
-      label: <ListOutlined />,
-      value: 'OptionD',
-    },
-    {
-      label: <ListOutlined />,
-      value: 'OptionE',
-    },
-    {
-      label: <ListOutlined />,
-      value: 'OptionF',
-    },
-  ],
-};
 
-const TemplateGroup: Story<SwitchProps> = (args) => (
-  <>
-    <Switch {...args} />
-  </>
+export const DefaultValue = () => (
+  <Switch defaultValue="OptionA">
+    <Switch.Item value="OptionA" key="1">
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2">
+      OptionB
+    </Switch.Item>
+  </Switch>
 );
-export const Default = TemplateGroup.bind({});
-Default.args = {
-  disabled: false,
-  defaultValue: 'OptionA',
-  options: [
-    {
-      label: 'OptionA',
-      value: 'OptionA',
-    },
-    {
-      label: 'OptionB',
-      value: 'OptionB',
-    },
-    {
-      label: 'OptionC',
-      value: 'OptionC',
-    },
-    {
-      label: 'OptionD',
-      value: 'OptionD',
-    },
-    {
-      label: 'OptionE',
-      value: 'OptionE',
-    },
-    {
-      label: 'OptionF',
-      value: 'OptionF',
-    },
-  ],
-};
-
-export const Disabled = TemplateGroup.bind({});
-
-Disabled.args = {
-  size: 'normal',
-  options: [
-    {
-      label: 'OptionA',
-      value: 'OptionA',
-    },
-    {
-      label: 'OptionB',
-      value: 'OptionB',
-    },
-    {
-      label: 'OptionC',
-      value: 'OptionC',
-      disabled: true,
-    },
-    {
-      label: 'OptionD',
-      value: 'OptionD',
-      disabled: true,
-    },
-    {
-      label: 'OptionE',
-      value: 'OptionE',
-      disabled: true,
-    },
-    {
-      label: 'OptionF',
-      value: 'OptionF',
-      disabled: true,
-    },
-  ],
-};
-
-const JSXTemplateGroup: Story<SwitchProps> = (args) => {
+export const OnChange = () => (
+  <Switch
+    defaultValue="OptionA"
+    onChange={(e) => {
+      action('e');
+      console.log(e, 'e');
+    }}
+  >
+    <Switch.Item value="OptionA" key="1">
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2">
+      OptionB
+    </Switch.Item>
+  </Switch>
+);
+export const SwitchItem: Story<SwitchProps> = () => (
+  <Switch>
+    <Switch.Item value="OptionA" key="1">
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2">
+      OptionB
+    </Switch.Item>
+  </Switch>
+);
+export const SwitchValue: Story<SwitchProps> = () => {
   const tabs = [
     { key: 'key1', value: 'value1' },
     { key: 'key2', value: 'value2' },
@@ -326,9 +126,9 @@ const JSXTemplateGroup: Story<SwitchProps> = (args) => {
   };
   return (
     <>
-      <Switch {...args} size="normal" value={selectedValue} onChange={onChange}>
+      <Switch size="normal" value={selectedValue} onChange={onChange}>
         {tabs.map((t) => (
-          <Switch.Item value={t.value} key={t.key} prefix={<GameOutlined />}>
+          <Switch.Item value={t.value} key={t.key}>
             {t.value}
           </Switch.Item>
         ))}
@@ -337,4 +137,46 @@ const JSXTemplateGroup: Story<SwitchProps> = (args) => {
   );
 };
 
-export const JSX = JSXTemplateGroup.bind({});
+export const ItemDefaultChecked: Story<SwitchProps> = () => (
+  <Switch>
+    <Switch.Item value="OptionA" key="1" defaultChecked>
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2">
+      OptionB
+    </Switch.Item>
+  </Switch>
+);
+
+export const ItemPrefix: Story<SwitchProps> = () => (
+  <Switch>
+    <Switch.Item value="OptionA" key="1" prefix={<GameOutlined />}>
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2" prefix={<GameOutlined />}>
+      OptionB
+    </Switch.Item>
+  </Switch>
+);
+
+export const ItemDisabled: Story<SwitchProps> = () => (
+  <Switch>
+    <Switch.Item value="OptionA" key="1" prefix={<GameOutlined />} disabled>
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2" prefix={<GameOutlined />}>
+      OptionB
+    </Switch.Item>
+  </Switch>
+);
+
+export const ItemChecked: Story<SwitchProps> = () => (
+  <Switch>
+    <Switch.Item value="OptionA" key="1" checked>
+      OptionA
+    </Switch.Item>
+    <Switch.Item value="OptionB" key="2">
+      OptionB
+    </Switch.Item>
+  </Switch>
+);
