@@ -140,7 +140,7 @@ export const Filtering = () => {
     []
   );
 
-  return <Table<DataSourceType> columns={columns} rowKey="id" dataSource={dataSource} />;
+  return <Table<DataSourceType> columns={columns} rowKey="id" onChange={action('filter')} dataSource={dataSource} />;
 };
 
 // ----------------------- Filtering -----------------------//

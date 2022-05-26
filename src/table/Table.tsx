@@ -197,7 +197,6 @@ export function Table<RecordType>(
                 column={column}
                 updateSorterStates={updateSorterStates}
                 updateFilterStates={updateFilterStates}
-                onTriggerStateUpdate={onTriggerStateUpdate}
                 columnKey={columnKey}
               />
             ),
@@ -213,7 +212,7 @@ export function Table<RecordType>(
       });
     }
     return renderTitle(columns);
-  }, [columns, sortStates, filterStates, prefixCls, updateSorterStates, updateFilterStates, onTriggerStateUpdate]);
+  }, [columns, sortStates, filterStates, prefixCls, updateSorterStates, updateFilterStates]);
 
   const composedColumns = compose(transformSelectionPipeline, transformShowIndexPipeline)(transformColumnTitle);
 
