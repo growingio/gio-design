@@ -17,12 +17,4 @@ export const ICON_BUTTON_DISPLAY_NAME = 'IconButton';
 
 IconButton.displayName = ICON_BUTTON_DISPLAY_NAME;
 
-IconButton.defaultProps = {
-  type: 'primary',
-  size: 'normal',
-  loading: false,
-  disabled: false,
-  htmlType: 'button',
-};
-
 export default IconButton;
