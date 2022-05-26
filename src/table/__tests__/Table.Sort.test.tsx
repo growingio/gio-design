@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { fireEvent, render, screen } from "@testing-library/react"
+import { fireEvent, render } from "@testing-library/react"
+import { renderHook } from "@testing-library/react-hooks";
 import React from "react"
 import { Table } from ".."
+import useSorter from "../hook/useSorter";
 import { ColumnType, SortOrder, TableProps } from "../interface";
 
 describe('Testing Table Sorter', () => {
@@ -203,4 +205,40 @@ describe('Testing Table Sorter', () => {
 
     expect(handleChange).toHaveBeenCalledTimes(3);
   });
+  it('useSorter', () => {
+    const { result } = renderHook(() => useSorter<DataType>([{
+      title: 'Name',
+      key: 'name',
+      dataIndex: 'name',
+      sorter: true,
+      sortOrder: 'ascend',
+      sortPriorityOrder: 1,
+      children: [
+        {
+          dataIndex: 'key',
+          key: 'key',
+          title: 'Key'
+        },
+        {
+          dataIndex: 'age',
+          key: 'age',
+          title: 'Age',
+          sortOrder: 'ascend',
+          sorter: (a, b) => a.age - b.age,
+          sortPriorityOrder: 2,
+        }
+      ]
+    }], () => {/** */ }));
+
+
+    const getSortedData = result.current[3];
+    const sortedData = getSortedData(data, [{
+      column: { key: 'name', sorter: true, },
+      key: 'name',
+      sortOrder: "ascend",
+      isControlled: false
+    }]);
+    expect(sortedData).toStrictEqual(data);
+  });
+
 })

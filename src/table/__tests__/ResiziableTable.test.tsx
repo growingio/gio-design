@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from 'react';
 import Table from "..";
@@ -42,7 +42,7 @@ describe('ResizableTable', () => {
       pagination={false}
     />
     );
-    screen.debug();
+    // screen.debug();
 
     expect(container.querySelector('.gio-table-thead th')).toHaveClass('react-resizable');
     const handleEle = container.querySelector('.gio-table-thead th:nth-child(2) div.gio-table-resizable-handle');

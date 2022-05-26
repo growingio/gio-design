@@ -50,6 +50,7 @@ Basic.args = {
   ],
   dataSource: genDataSource(),
   rowKey: 'id',
+  onRow: (data) => ({ onClick: () => action('onRowClick')(data) })
 };
 
 // ----------------------- Basic -----------------------//
@@ -215,7 +216,33 @@ export const TreeData = () => {
       address: 'address',
       children: [
         {
-          id: 'child id',
+          id: 'child id 1-1',
+          age: 13,
+          address: 'child address',
+          name: 'child name',
+        },
+        {
+          id: 'child id 1-2',
+          age: 13,
+          address: 'child address',
+          name: 'child name',
+        },
+      ],
+    },
+    {
+      id: 'id2',
+      name: 'name',
+      age: 18,
+      address: 'address',
+      children: [
+        {
+          id: 'child id 2-1',
+          age: 13,
+          address: 'child address',
+          name: 'child name',
+        },
+        {
+          id: 'child id 2-2',
           age: 13,
           address: 'child address',
           name: 'child name',
@@ -224,7 +251,7 @@ export const TreeData = () => {
     },
     ...genDataSource(),
   ];
-  return <Table<DataSourceType> pagination={false} columns={columns} dataSource={dataSource} rowKey="id" />;
+  return <Table<DataSourceType> rowSelection={{}} pagination={false} columns={columns} dataSource={dataSource} rowKey="id" />;
 };
 
 // ----------------------- Tree Data -----------------------//

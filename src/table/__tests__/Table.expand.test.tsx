@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import React from "react";
 import Table from "..";
 
@@ -57,10 +57,13 @@ describe('test Tree Table ', () => {
     expect(container.querySelector('.gio-table-tbody .expand-icon')).toBeTruthy()
   });
   it('click expand button', () => {
-    const { container } = render(<Table rowKey="id" pagination={false} columns={columns} dataSource={data} />);
+    const handleExpand = jest.fn();
+    const { container } = render(<Table rowKey="id" expandable={{ onExpand: handleExpand }} pagination={false} columns={columns} dataSource={data} />);
     expect(container.querySelector('.gio-table-tbody tr+tr')).toHaveAttribute('data-row-key', '2')
     fireEvent.click(container.querySelector('.gio-table-tbody td:nth-child(1) span[aria-label="arrow-right-outlined"]'));
-    expect(container.querySelector('.gio-table-tbody tr+tr')).toHaveAttribute('data-row-key', 'child-id-1')
+    expect(container.querySelector('.gio-table-tbody tr+tr')).toHaveAttribute('data-row-key', 'child-id-1');
+    expect(handleExpand).toHaveBeenCalled();
+    expect(handleExpand.mock.calls[0][0]).toStrictEqual(true)
   })
 
 })

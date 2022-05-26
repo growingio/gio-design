@@ -130,6 +130,7 @@ describe('Testing Table', () => {
           },
         ]}
         pagination={false}
+        rowKey={(_record, idx) => idx}
         dataSource={['1', 2, undefined, {}, null, true, false, 0]}
       />
     );
@@ -146,5 +147,123 @@ describe('Testing Table', () => {
     const data = [{ id: 1, name: 'John', }, { id: 2, name: 'Jim' }]
     const { container } = render(<Table rowKey="id" showIndex columns={columns} dataSource={data} pagination={false} />);
     expect(Array.from(container.querySelectorAll('.gio-table-tbody td:first-child')).map(e => e.textContent)).toStrictEqual(["1", "2"]);
+  })
+
+  it('onRow', () => {
+    const handleRowClick = jest.fn();
+    const columns = [
+      {
+        title: 'Name',
+        key: 'name',
+        dataIndex: 'name',
+      },
+    ];
+    const data = [{ id: 1, name: 'John', }, { id: 2, name: 'Jim' }]
+    const { container } = render(<Table
+      onRow={(r, _index) => ({ onClick: handleRowClick(r, _index) })}
+      rowKey="id"
+      columns={columns}
+      dataSource={data}
+      pagination={false} />);
+    fireEvent.click(container.querySelector('.gio-table-tbody td:first-child'));
+    expect(handleRowClick).toHaveBeenCalled()
+  });
+  it('onHackRow', () => {
+    const columns = [
+      {
+        title: 'Name',
+        key: 'name',
+        dataIndex: 'name',
+      },
+    ];
+    const data = [{ id: 1, name: 'John', }, { id: 2, name: 'Jim' }]
+    const { container } = render(<Table
+      hackRowEvent
+      rowKey="id"
+      columns={columns}
+      dataSource={data}
+      pagination={false} />);
+    fireEvent.click(container.querySelector('.gio-table-tbody td:first-child'));
+  });
+  it('onHackRow merged onRow', () => {
+    const columns = [
+      {
+        title: 'Name',
+        key: 'name',
+        dataIndex: 'name',
+      },
+    ];
+    const data = [{ id: 1, name: 'John', }, { id: 2, name: 'Jim' }]
+    const { container } = render(<Table
+      hackRowEvent
+      onRow={(r) => ({ 'aria-label': r.name })}
+      rowKey="id"
+      columns={columns}
+      dataSource={data}
+      pagination={false} />);
+    expect(container.querySelector('.gio-table-tbody tr:first-child')).toHaveAttribute('aria-label', 'John');
+    fireEvent.click(container.querySelector('.gio-table-tbody td:first-child'));
+    fireEvent.mouseDown(container.querySelector('.gio-table-tbody td:first-child'), { clientX: 1 });
+    fireEvent.mouseUp(container.querySelector('.gio-table-tbody td:first-child'));
+    fireEvent.click(container.querySelector('.gio-table-tbody td:first-child'));
+    // fireEvent.gotPointerCapture()
+  });
+  it('onHackRow and onRow', () => {
+    const handleRowClick = jest.fn();
+    const handleMouseDown = jest.fn();
+    const handleMouseUp = jest.fn();
+    const columns = [
+      {
+        title: 'Name',
+        key: 'name',
+        dataIndex: 'name',
+      },
+    ];
+    const data = [{ id: 1, name: 'John', }, { id: 2, name: 'Jim' }]
+    const { container } = render(<Table
+      hackRowEvent
+      onRow={(r, _index) => ({ onClick: handleRowClick(r, _index), onMouseDown: handleMouseDown, onMouseUp: handleMouseUp })}
+      rowKey="id"
+      columns={columns}
+      dataSource={data}
+      pagination={false} />);
+    fireEvent.mouseDown(container.querySelector('.gio-table-tbody td:first-child'));
+    fireEvent.click(container.querySelector('.gio-table-tbody td:first-child'));
+    fireEvent.mouseUp(container.querySelector('.gio-table-tbody td:first-child'));
+    expect(handleMouseDown).toHaveBeenCalled();
+    expect(handleRowClick).toHaveBeenCalled();
+    expect(handleMouseUp).toHaveBeenCalled();
+
+
+  });
+  it('render grouped columns', () => {
+    const columns = [{
+      dataIndex: 'name',
+      title: 'User',
+      filters: ['male', 'female'],
+      onFilter: () => true,
+      children: [
+        {
+          title: 'Age',
+          dataIndex: 'age',
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          filters: ['<15', '>=15'], onFilter: () => true,
+          defaultFilteredValue: ['<15']
+        },
+        {
+          title: 'Id',
+          dataIndex: 'key',
+        },
+      ],
+
+    }]
+    const data = [{ key: 1, name: 'Jack', age: 10, gender: 'male' },
+    { key: 2, name: 'Tom', age: 15, gender: 'male' },
+    { key: 3, name: 'Jerry', age: 16, gender: 'male' },
+    { key: 4, name: 'Rose', age: 11, gender: 'female' }];
+
+    const { container } = render(<Table columns={columns} dataSource={data} />);
+    expect(screen.queryByText('User')).toBeInTheDocument();
+    expect(container.querySelector('.gio-table-thead tr:first-child th:first-child')).toHaveAttribute('colspan', "2")
   })
 })

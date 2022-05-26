@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { fireEvent, render } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
+import { renderHook } from "@testing-library/react-hooks";
 import React from "react"
 import { Table } from ".."
+import { sleep } from "../../utils/test";
+import usePagination from "../hook/usePagination";
 import { ColumnType, TableProps } from "../interface";
 
 describe('Testing Table Pagination', () => {
@@ -42,14 +45,15 @@ describe('Testing Table Pagination', () => {
 
     // screen.debug();
   });
-  it('controlled page.current', () => {
+  it('controlled page.current', async () => {
+    const handlePageSizeChanged = jest.fn()
     const Demo = () => {
       const [page, setPage] = React.useState(2);
       return (
         <Table<DataType>
           columns={[column]}
           dataSource={data}
-          pagination={{ pageSize: 2, current: page, showQuickJumper: false, onChange: (current) => { setPage(current) } }}
+          pagination={{ pageSize: 2, showSizeChanger: true, pageSizeOptions: [1, 2, 10], onPageSizeChange: handlePageSizeChanged, current: page, showQuickJumper: false, onChange: (current) => { setPage(current) } }}
         />
       );
     }
@@ -57,6 +61,12 @@ describe('Testing Table Pagination', () => {
     expect(getNames(container)).toEqual(['Jerry', 'Rose']);
     fireEvent.click(container.querySelector('[data-testid="pagination-item__1"]'));
     expect(getNames(container)).toEqual(['Jack', 'Tom']);
+
+    fireEvent.click(screen.getByTestId('pagination-item__rows-selector').querySelector('input'));
+    await sleep(10);
+    fireEvent.click(container.querySelector('.gio-select--list li:nth-child(1)'));
+    await sleep(10);
+    expect(handlePageSizeChanged).toHaveBeenCalled();
   })
   it('should fires change event when page changed', async () => {
     const handleChange = jest.fn();
@@ -74,6 +84,14 @@ describe('Testing Table Pagination', () => {
     expect(pageState2).toStrictEqual({ current: 1, pageSize: 2 });
 
     expect(handleChange).toHaveBeenCalledTimes(2);
+  })
+  it('usePagination', () => {
+    const { result, rerender } = renderHook(({ pageSize }) => usePagination(data, { total: 8, pageSize }, 'pages'),
+      { initialProps: { pageSize: 2 }, });
+    expect(result.current[1]).toStrictEqual({ current: 1, pageSize: 2 });
+    expect(result.current[2].length).toBe(2);
+    rerender({ pageSize: 10 });
+    expect(result.current[2].length).toBe(4);
   })
 
 })

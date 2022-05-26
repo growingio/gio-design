@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { fireEvent, render, screen } from "@testing-library/react"
+import { renderHook } from "@testing-library/react-hooks";
 import React from "react"
 import { Table } from ".."
 import { sleep } from "../../utils/test";
+import FilterPopover from "../FilterPopover";
+import useFilter from "../hook/useFilter";
 import { ColumnType, TableProps } from "../interface";
+import { TableContext } from "../Table";
 
 describe('Testing Table Sorter', () => {
   interface DataType extends Record<string, any> {
@@ -80,7 +84,7 @@ describe('Testing Table Sorter', () => {
     const filter1 = handleChange.mock.calls[0][1];
     expect(filter1).toStrictEqual({ name: ['female'] })
 
-    // open filter panel again, 
+    // open filter panel again, clear filters
     fireEvent.click(container.querySelector('.gio-table-filter-button'));
     await sleep(50);
     expect(container.querySelector('.gio-table-filter-list li input[value="female"]')).toHaveAttribute('checked')
@@ -89,13 +93,82 @@ describe('Testing Table Sorter', () => {
     fireEvent.click(screen.getByText('确定'));
     expect(container.querySelector('.gio-table-filter-button')).not.toHaveClass('gio-button_active');
     expect(getNames(container)).toStrictEqual(['Jack', 'Tom', 'Jerry', 'Rose']);
-
-    const filter2 = handleChange.mock.calls[1][2];
-
-    expect(filter2).toStrictEqual({ name: [] });
     expect(handleChange).toHaveBeenCalledTimes(2);
 
+    const filter2 = handleChange.mock.calls[1][1];
+
+    expect(filter2).toStrictEqual({ name: [] });
 
   });
+  it('search filter conditions', async () => {
+    const { container } = render(createTable({}, [{ ...column, filters: ["male", "female", { label: 'girl', value: 'female' }, { label: 'boy', value: 'male' }], filterSearchPlaceHolder: '输入搜索条件' }]));
+    expect(container.querySelector('.gio-table-filter-button')).toBeTruthy();
 
+    fireEvent.click(container.querySelector('.gio-table-filter-button'));
+    await sleep(50);
+    expect(screen.queryByPlaceholderText('输入搜索条件')).toBeTruthy();
+    // search 
+    fireEvent.change(screen.queryByPlaceholderText('输入搜索条件'), { target: { value: 'female' } })
+    expect(container.querySelectorAll('.gio-table-filter-list li input[type="checkbox"]').length).toBe(1);
+
+    fireEvent.click(screen.getByText('清除'));
+    expect(screen.queryByPlaceholderText('输入搜索条件')).toHaveValue('');
+    fireEvent.change(screen.queryByPlaceholderText('输入搜索条件'), { target: { value: 'female111' } });
+    // close filter panel
+    fireEvent.click(container.querySelector('.gio-table-filter-button'));
+    expect(container.querySelector('.gio-table-filter-popover')).toBeFalsy();
+    // open filter again
+    fireEvent.click(container.querySelector('.gio-table-filter-button'));
+    await sleep(50);
+    expect(screen.queryByPlaceholderText('输入搜索条件')).toHaveValue('');
+
+  });
+  it('default filtered', () => {
+    const { container } = render(createTable({}, [{
+      ...column,
+      filters: ["male", "female", { label: 'girl', value: 'female' }, { label: 'boy', value: 'male' }],
+      filteredValue: ['female']
+    }]));
+    expect(container.querySelector('.gio-table-filter-button')).toBeTruthy();
+    expect(getNames(container)).toStrictEqual(['Rose']);
+  })
+
+  it('should not crash when trigger is not a valid ReactElement ', () => {
+
+    render(<FilterPopover values={[]} prefixCls="gio-filter-popover" onClick={(v) => v}>{('aa' as unknown as React.ReactElement)}</FilterPopover>)
+  });
+  it('table ref', async () => {
+    const ref = React.createRef<HTMLDivElement>();
+
+
+    render(<TableContext.Provider value={{ tableRef: ref }}>
+      <FilterPopover values={[]} prefixCls="gio-filter-popover" onClick={(v) => v}><span>filter</span></FilterPopover>)
+    </TableContext.Provider>)
+  });
+
+  it('useFilter', () => {
+    const { result } = renderHook(() => useFilter<DataType>([{
+      dataIndex: 'name', title: 'user', children: [
+        {
+          title: 'Age',
+          dataIndex: 'age',
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          filters: ['<15', '>=15'], onFilter: (_v, _r) => true,
+          defaultFilteredValue: ['<=15']
+        },
+        {
+          title: 'Id',
+          dataIndex: 'key',
+        },
+      ],
+      filters: ['male', 'female'],
+      onFilter: (v, r) => r.gender === v
+    }], () => {/** nothing */ }));
+    expect(result.current[0][1].filteredKeys).toStrictEqual(['<=15']);
+    const getFilteredData = result.current[2];
+    const filteredData = getFilteredData(data, [{ column: { dataIndex: 'name' }, key: 'name', filteredKeys: undefined, isControlled: false }]);
+    expect(filteredData).toHaveLength(4)
+    const filteredData2 = getFilteredData(data, [{ column: { dataIndex: 'age' }, key: 'age', filteredKeys: [15], isControlled: false }]);
+    expect(filteredData2).toHaveLength(1)
+  })
 })
