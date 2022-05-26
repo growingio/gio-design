@@ -122,7 +122,6 @@ interface TitleProps<RecordType> {
   column: ColumnType<RecordType>;
   updateSorterStates: (sortState: SortState<RecordType>) => SortState<RecordType>;
   updateFilterStates: (filterState: FilterState<RecordType>) => Record<string, string[]>;
-  onTriggerStateUpdate: (onTriggerStateUpdateProps?: OnTriggerStateUpdateProps<RecordType>) => void;
   columnKey: Key;
 }
 

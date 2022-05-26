@@ -146,22 +146,24 @@ export function Table<RecordType>(
   const expandIcon: RenderExpandIcon<RecordType> = (expandProps) => {
     const { expanded, onExpand, record, expandable: expandableProp } = expandProps;
     if (expandableProp) {
-      return expanded ? (
-        <ArrowDownOutlined
-          size="12px"
-          className={`${prefixCls}-expanded-icon`}
-          onClick={(event) => {
-            isFunction(onExpand) && onExpand(record, event as React.MouseEvent<HTMLElement, MouseEvent>);
-          }}
-        />
-      ) : (
-        <ArrowRightOutlined
-          size="12px"
-          className={`${prefixCls}-to_expand-icon`}
-          onClick={(event) => {
-            isFunction(onExpand) && onExpand(record, event as React.MouseEvent<HTMLElement, MouseEvent>);
-          }}
-        />
+      return (
+        <span className={expanded ? `${prefixCls}-expanded-icon` : `${prefixCls}-to_expand-icon`}>
+          {expanded ? (
+            <ArrowDownOutlined
+              size="12px"
+              onClick={(event) => {
+                isFunction(onExpand) && onExpand(record, event as React.MouseEvent<HTMLElement, MouseEvent>);
+              }}
+            />
+          ) : (
+            <ArrowRightOutlined
+              size="12px"
+              onClick={(event) => {
+                isFunction(onExpand) && onExpand(record, event as React.MouseEvent<HTMLElement, MouseEvent>);
+              }}
+            />
+          )}
+        </span>
       );
     }
     return <div className={`${prefixCls}-expanded-placeholder`} />;
@@ -197,7 +199,6 @@ export function Table<RecordType>(
                 column={column}
                 updateSorterStates={updateSorterStates}
                 updateFilterStates={updateFilterStates}
-                onTriggerStateUpdate={onTriggerStateUpdate}
                 columnKey={columnKey}
               />
             ),
@@ -213,7 +214,7 @@ export function Table<RecordType>(
       });
     }
     return renderTitle(columns);
-  }, [columns, sortStates, filterStates, prefixCls, updateSorterStates, updateFilterStates, onTriggerStateUpdate]);
+  }, [columns, sortStates, filterStates, prefixCls, updateSorterStates, updateFilterStates]);
 
   const composedColumns = compose(transformSelectionPipeline, transformShowIndexPipeline)(transformColumnTitle);
 
