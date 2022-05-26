@@ -1,3 +1,10 @@
+# [22.16.0](https://github.com/growingio/gio-design/compare/v22.15.5...v22.16.0) (2022-05-26)
+
+
+### Features
+
+* **input-button:** support loading prop ([#2024](https://github.com/growingio/gio-design/issues/2024)) ([30e82b8](https://github.com/growingio/gio-design/commit/30e82b8a1c39c6d20e735bd565e31fddd86efdd2))
+
 ## [22.15.5](https://github.com/growingio/gio-design/compare/v22.15.4...v22.15.5) (2022-05-10)
 
 
