@@ -12,7 +12,7 @@ const getNextSortDirection = (sortDirections: SortOrder[], current: SortOrder): 
   current === null ? sortDirections[0] : sortDirections[sortDirections.indexOf(current) + 1];
 
 const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement => {
-  const { prefixCls, column, onTriggerStateUpdate, sorterState, updateSorterStates, columnKey } = props;
+  const { prefixCls, column, sorterState, updateSorterStates, columnKey } = props;
 
   const { align, sorter, sortDirections = defaultSortDirections, sortPriorityOrder } = column;
 
@@ -66,7 +66,7 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
     }
     const { filteredKeys, filters } = filterState;
     const handleFilterPopoverClick = (newFilteredKeys: Key[]): void => {
-      onTriggerStateUpdate({ filterStates: updateFilterStates({ ...filterState, filteredKeys: newFilteredKeys }) });
+      updateFilterStates({ ...filterState, filteredKeys: newFilteredKeys });
     };
 
     return (
