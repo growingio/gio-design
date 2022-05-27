@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { ISignNumberProps, TPlacement } from './interface';
 
-const getOffsetByPlacement = (placement: TPlacement, offset: [number, number]) => {
+export const getOffsetByPlacement = (placement: TPlacement, offset: [number, number]) => {
   switch (placement) {
     case 'top':
       return {
@@ -57,8 +57,8 @@ const SignNumber: React.FC<ISignNumberProps> = ({
   showZero,
   visible,
   magnitude,
-  offset = [0, 0],
-  placement = 'rightTop',
+  offset,
+  placement,
   ...rest
 }: ISignNumberProps) => {
   const displayCount = count >= magnitude ? `${magnitude - 1}+` : count;
@@ -71,7 +71,8 @@ const SignNumber: React.FC<ISignNumberProps> = ({
 
   const numberStyle: React.CSSProperties = {
     ...style,
-    ...getOffsetByPlacement(placement, offset),
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    ...getOffsetByPlacement(placement!, offset!),
   };
 
   return (
