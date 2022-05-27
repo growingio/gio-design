@@ -15,7 +15,7 @@ export const Card = WithRef<HTMLDivElement, CardProps>(
       prefixCls: customizePrefixCls,
       boxShadow = false,
       ...restProps
-    }: CardProps,
+    },
     ref?
   ) => {
     const prefixCls = usePrefixCls('card', customizePrefixCls);
@@ -33,12 +33,6 @@ export const Card = WithRef<HTMLDivElement, CardProps>(
     );
   }
 );
-
-Card.defaultProps = {
-  fullWidthContent: false,
-  disabled: false,
-  clickable: true,
-};
 
 Card.displayName = 'Card';
 

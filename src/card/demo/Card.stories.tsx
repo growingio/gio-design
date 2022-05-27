@@ -447,3 +447,5 @@ export const ComplexCardPanel = () => {
     </Card>
   );
 };
+
+export const T = () => <Card.Meta title="title" description="description" />;
