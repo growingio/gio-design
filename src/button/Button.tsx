@@ -60,12 +60,4 @@ export const BUTTON_DISPLAY_NAME = 'Button';
 
 Button.displayName = BUTTON_DISPLAY_NAME;
 
-Button.defaultProps = {
-  type: 'primary',
-  size: 'normal',
-  loading: false,
-  disabled: false,
-  htmlType: 'button',
-};
-
 export default Button;
