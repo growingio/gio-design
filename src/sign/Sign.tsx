@@ -4,7 +4,7 @@ import { usePrefixCls } from '@gio-design/utils';
 import { ISignNumberProps } from './interface';
 import SignNumber from './SignNumber';
 
-export { TPlacement } from './interface';
+export type { TPlacement } from './interface';
 
 const toPascal = (hump: string) => hump.replace(/([A-Z])/g, '-$1').toLowerCase();
 
@@ -18,7 +18,7 @@ const Sign: React.FC<ISignNumberProps> = ({
   showZero = false,
   magnitude = 100,
   children,
-  offset,
+  offset = [0, 0],
   ...rest
 }: ISignNumberProps) => {
   const prefix = usePrefixCls('sign', customPrefixCls);
