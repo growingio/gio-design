@@ -1,3 +1,11 @@
+## [23.3.1](https://github.com/growingio/gio-design/compare/v23.3.0...v23.3.1) (2022-06-01)
+
+
+### Bug Fixes
+
+* **table:** fix onChange calls twice ([#2042](https://github.com/growingio/gio-design/issues/2042)) ([ce9995a](https://github.com/growingio/gio-design/commit/ce9995acdc1474de6dcb691041fd7480caede848))
+* **table:** fix onChange calls twice ([#2046](https://github.com/growingio/gio-design/issues/2046)) ([677f0b6](https://github.com/growingio/gio-design/commit/677f0b69adffa7128eb79956282eeba759095527))
+
 # [23.3.0](https://github.com/growingio/gio-design/compare/v23.2.1...v23.3.0) (2022-05-25)
 
 
