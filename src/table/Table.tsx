@@ -63,7 +63,7 @@ export function Table<RecordType>(
     expandable,
     ...rest
   } = props;
-  const tableRef = useRef<HTMLDivElement>()
+  const tableRef = useRef<HTMLDivElement>(null);
   const mergedRef = composeRef(tableRef, ref);
   const prefixCls = usePrefixCls(TABLE_PREFIX_CLS);
   const onHackRow = useHackOnRow(onRow, hackRowEvent);

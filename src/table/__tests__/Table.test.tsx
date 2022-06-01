@@ -272,5 +272,41 @@ describe('Testing Table', () => {
     render(<Table ref={ref} />);
     expect(ref.current).toBeTruthy();
     expect(ref.current).toHaveClass('gio-table-wrapper')
-  })
+  });
+  it('table no padding', () => {
+    const columns = [
+      {
+        title: 'Name',
+        key: 'name',
+        dataIndex: 'name',
+      },
+    ];
+    const data = [{ id: 1, name: 'John', }, { id: 2, name: 'Jim' }]
+    const { container } = render(<Table columns={columns} dataSource={data} padding={null} rowKey="id" />);
+    expect(container.querySelector('.gio-table-wrapper')).not.toHaveStyle('--table-cell-padding: 12px 16px')
+  });
+  it('table <Title> component', () => {
+    const columns = [
+      {
+        info: 'info',
+        dataIndex: ['name'],
+      },
+    ];
+    const data = [{ id: 1, name: 'John', }, { id: 2, name: 'Jim' }]
+    const { container } = render(<Table columns={columns} dataSource={data} padding={0} rowKey="id" />);
+    expect(container.querySelector('.gio-table-thead th:first-child .gio-table-column-title-text')).toBeEmptyDOMElement()
+  });
+  it('table rowClassName', () => {
+    const columns = [
+      {
+        title: 'Name',
+        key: 'name',
+        dataIndex: 'name',
+      },
+    ];
+    const data = [{ id: 1, name: 'John', }, { id: 2, name: 'Jim' }];
+    const { container } = render(<Table columns={columns} rowKey="id" dataSource={data} showHover={false} rowClassName={(record) => record.id === 2 ? 'jim' : ''} />);
+    expect(container.querySelector('.gio-table-wrapper')).not.toHaveClass('.gio-table-showHover');
+    expect(container.querySelector('.gio-table-tbody tr:nth-child(2)')).toHaveClass('jim')
+  });
 })

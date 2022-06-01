@@ -120,10 +120,11 @@ const useSelection = <RecordType,>(
   const updateParentCheck = (selectedKeys: Key[], childKey: Key | Key[]): any => {
     const parentKeys = getParentKeys(data, childKey);
     if (parentKeys.length) {
-      if (parentKeys.slice(1).every((key) => selectedKeys.includes(key))) {
-        // 向上递归更新状态，直至根结点
-        return updateParentCheck(flattenDeep(union(selectedKeys, flattenDeep(parentKeys))), parentKeys[0]);
-      }
+      /** @todo: 无法执行此代码  */
+      // if (parentKeys.slice(1).every((key) => selectedKeys.includes(key))) {
+      //   // 向上递归更新状态，直至根结点
+      //   return updateParentCheck(flattenDeep(union(selectedKeys, flattenDeep(parentKeys))), parentKeys[0]);
+      // }
       return selectedKeys.filter((key) => key !== parentKeys[0]);
     }
     return selectedKeys;

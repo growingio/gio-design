@@ -171,7 +171,6 @@ describe('Testing Table rowSelection', () => {
     />);
     const checkboxes = container.querySelectorAll('.gio-table-tbody td:nth-child(1) input[type="checkbox"]');
     fireEvent.click(checkboxes[1]);
-    // expect(checkboxes[0]).toHaveClass("gio-checkbox-checked");
     expect(checkboxes[1]).toHaveClass("gio-checkbox-checked");
     fireEvent.click(checkboxes[4]);
     expect(checkboxes[3]).toHaveClass("gio-checkbox-indeterminate");
