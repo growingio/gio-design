@@ -266,4 +266,11 @@ describe('Testing Table', () => {
     expect(screen.queryByText('User')).toBeInTheDocument();
     expect(container.querySelector('.gio-table-thead tr:first-child th:first-child')).toHaveAttribute('colspan', "2")
   })
+
+  it('table ref', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    render(<Table ref={ref} />);
+    expect(ref.current).toBeTruthy();
+    expect(ref.current).toHaveClass('gio-table-wrapper')
+  })
 })
