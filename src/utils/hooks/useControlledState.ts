@@ -35,4 +35,6 @@ const useControlledState = <T>(
   return [innerState, setState];
 };
 
+export { format };
+
 export default useControlledState;

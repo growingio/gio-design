@@ -16,9 +16,6 @@ export const composeRef =
   };
 
 export function supportRef(nodeOrComponent: any): boolean {
-  if (typeof nodeOrComponent !== 'object') {
-    return false;
-  }
   const type = isMemo(nodeOrComponent) ? nodeOrComponent.type.type : nodeOrComponent.type;
 
   // Function component node
