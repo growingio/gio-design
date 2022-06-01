@@ -21,7 +21,7 @@ jobs:
           node-version: 14
       - name: Restore Node.js modules
         id: cache-node-modules
-        uses: actions/cache@v3.0.2
+        uses: actions/cache@v3.0.3
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}

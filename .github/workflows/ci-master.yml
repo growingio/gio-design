@@ -16,7 +16,7 @@ jobs:
           node-version: 14
       - name: Cache Node.js modules
         id: cache-node-modules
-        uses: actions/cache@v3.0.2
+        uses: actions/cache@v3.0.3
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -35,13 +35,13 @@ jobs:
         with:
           node-version: 14
       - name: Restore Node.js modules
-        uses: actions/cache@v3.0.2
+        uses: actions/cache@v3.0.3
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Cache test report
         id: cache-test-report
-        uses: actions/cache@v3.0.2
+        uses: actions/cache@v3.0.3
         with:
           path: coverage/lcov.info
           key: test-report-${{ github.sha }}
@@ -58,7 +58,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Restore test report
-        uses: actions/cache@v3.0.2
+        uses: actions/cache@v3.0.3
         with:
           path: coverage/lcov.info
           key: test-report-${{ github.sha }}
@@ -79,7 +79,7 @@ jobs:
         with:
           node-version: 14
       - name: Restore Node.js modules
-        uses: actions/cache@v3.0.2
+        uses: actions/cache@v3.0.3
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
