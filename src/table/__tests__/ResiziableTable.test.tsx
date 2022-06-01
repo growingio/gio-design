@@ -1,5 +1,5 @@
 import { fireEvent, render } from "@testing-library/react";
-import React, { TdHTMLAttributes } from 'react';
+import React from 'react';
 import Table from "..";
 
 describe('ResizableTable', () => {
