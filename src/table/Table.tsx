@@ -7,7 +7,6 @@ import { compose } from 'lodash/fp';
 import { ArrowRightOutlined, ArrowDownOutlined } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
 import { RenderExpandIcon, RowClassName } from 'rc-table/es/interface';
-import useMergeRef from '../utils/hooks/useMergeRef';
 import useSorter from './hook/useSorter';
 import useFilter from './hook/useFilter';
 import usePagination from './hook/usePagination';
@@ -25,6 +24,7 @@ import Result from '../result';
 import { getColumnKey, getColumnPos, TABLE_PREFIX_CLS } from './utils';
 import Loading from '../loading';
 import useHackOnRow from './hook/useHackOnRow';
+import composeRef from '../utils/composeRef';
 
 declare module 'react' {
   interface CSSProperties {
@@ -63,7 +63,8 @@ export function Table<RecordType>(
     expandable,
     ...rest
   } = props;
-  const mergedRef = useMergeRef(ref);
+  const tableRef = useRef<HTMLDivElement>(null);
+  const mergedRef = composeRef(tableRef, ref);
   const prefixCls = usePrefixCls(TABLE_PREFIX_CLS);
   const onHackRow = useHackOnRow(onRow, hackRowEvent);
 

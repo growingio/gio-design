@@ -48,28 +48,28 @@ function ResizableTable<RecordType = Record<string, unknown>>(
   useEffect(() => {
     const handleResize =
       (index: number): ResizableProps['onResize'] =>
-      (_event, { size }) => {
-        const nextColumns = [...previousColumnsRef.current];
+        (_event, { size }) => {
+          const nextColumns = [...previousColumnsRef.current];
 
-        const prevWidth = Number.parseInt(`${nextColumns[index].width}`, 10);
-        const nextPrevWidth = Number.parseInt(`${nextColumns[index + 1].width}`, 10);
+          const prevWidth = Number.parseInt(`${nextColumns[index].width}`, 10);
+          const nextPrevWidth = Number.parseInt(`${nextColumns[index + 1].width}`, 10);
 
-        nextColumns[index] = {
-          ...nextColumns[index],
-          width: size.width < prevWidth + nextPrevWidth - 58 ? size.width : prevWidth + nextPrevWidth - 58,
+          nextColumns[index] = {
+            ...nextColumns[index],
+            width: size.width < prevWidth + nextPrevWidth - 58 ? size.width : prevWidth + nextPrevWidth - 58,
+          };
+
+          nextColumns[index + 1] = {
+            ...nextColumns[index + 1],
+            width: nextPrevWidth + (prevWidth - size.width) <= 58 ? 58 : nextPrevWidth + (prevWidth - size.width),
+          };
+
+          setColumnsState(nextColumns);
         };
 
-        nextColumns[index + 1] = {
-          ...nextColumns[index + 1],
-          width: nextPrevWidth + (prevWidth - size.width) <= 58 ? 58 : nextPrevWidth + (prevWidth - size.width),
-        };
-
-        setColumnsState(nextColumns);
-      };
-
-    const getOnHeaderCell = (column: ColumnType<RecordType> | undefined, index: number) => {
-      if (isFunction(column?.onHeaderCell)) {
-        const headerCell = column?.onHeaderCell(column) || {};
+    const getOnHeaderCell = (column: ColumnType<RecordType>, index: number) => {
+      if (isFunction(column.onHeaderCell)) {
+        const headerCell = column.onHeaderCell(column) || {};
         return (cell: ColumnType<RecordType>) => ({
           ...headerCell,
           width: cell.width,
@@ -83,7 +83,7 @@ function ResizableTable<RecordType = Record<string, unknown>>(
     };
 
     setColumnsState((oldColumnsState) =>
-      oldColumnsState.map<ColumnType<RecordType>>((column, index) => ({
+      oldColumnsState.filter(Boolean).map<ColumnType<RecordType>>((column, index) => ({
         ...column,
         onHeaderCell: getOnHeaderCell(column, index) as unknown as ColumnType<RecordType>['onHeaderCell'],
       }))

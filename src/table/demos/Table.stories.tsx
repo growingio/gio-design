@@ -50,6 +50,7 @@ Basic.args = {
   ],
   dataSource: genDataSource(),
   rowKey: 'id',
+  onRow: (data) => ({ onClick: () => action('onRowClick')(data) })
 };
 
 // ----------------------- Basic -----------------------//
@@ -209,22 +210,84 @@ export const TreeData = () => {
 
   const dataSource: DataSourceType[] = [
     {
-      id: 'id',
-      name: 'name',
-      age: 18,
+      id: 'id-1',
+      name: 'Jerry',
+      age: 30,
       address: 'address',
       children: [
         {
-          id: 'child id',
+          id: '1-1',
+          age: 13,
+          address: 'child address',
+          name: 'child name',
+
+        },
+        {
+          id: '1-2',
+          age: 13,
+          address: 'child address',
+          name: 'child name',
+
+        },
+      ],
+    },
+    {
+      id: 'id-2',
+      name: 'Tom',
+      age: 28,
+      address: 'address',
+      children: [
+        {
+          id: '2-1',
+          age: 13,
+          address: 'child address',
+          name: 'child name',
+        },
+        {
+          id: '2-2',
           age: 13,
           address: 'child address',
           name: 'child name',
         },
       ],
     },
-    ...genDataSource(),
+    {
+      id: 'id-3',
+      name: 'Tom',
+      age: 28,
+      address: 'address',
+      children: [
+        {
+          id: '3-1',
+          age: 13,
+          address: 'child address',
+          name: 'child name',
+          children: [
+            {
+              id: '3-1-1',
+              age: 13,
+              address: 'child address',
+              name: 'child name',
+            }
+          ]
+        },
+      ],
+    },
+    ...genDataSource(50),
   ];
-  return <Table<DataSourceType> pagination={false} columns={columns} dataSource={dataSource} rowKey="id" />;
+  const [selectedKeys, setSelectedKeys] = React.useState([])
+  return <Table<DataSourceType>
+    rowSelection={{
+      selectedRowKeys: selectedKeys,
+      onChange: (keys) => setSelectedKeys(keys),
+      getCheckboxProps: (record) => ({ disabled: record.id === '2-2' || record.age < 5 })
+    }}
+    rowKey={(r) => `#${r.id}`}
+    expandable={{ defaultExpandAllRows: true }}
+    pagination={{ pageSize: 10, showQuickJumper: false, showSizeChanger: false }}
+    columns={columns}
+    dataSource={dataSource}
+  />;
 };
 
 // ----------------------- Tree Data -----------------------//

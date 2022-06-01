@@ -15,19 +15,11 @@ interface FilterListProps extends ListProps {
 const FilterList = ({ prefixCls, value, onChange, dataSource, ...otherProps }: FilterListProps) => (
   <List
     className={`${prefixCls}-filter-list`}
-    value={value?.filter(Boolean).map(String)}
+    value={value}
     model="multiple"
     needEmpty
     onChange={(changedKeys) => {
-      if (!changedKeys) {
-        onChange([]);
-        return;
-      }
-      if (Array.isArray(changedKeys)) {
-        onChange(changedKeys.filter(Boolean));
-        return;
-      }
-      onChange([changedKeys]);
+      onChange((changedKeys as Key[]));
     }}
     {...otherProps}
   >
