@@ -1,8 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable max-classes-per-file */
-// @ts-nocheck
-import React from 'react';
-import { render } from '@testing-library/react';
+import React, { Component, forwardRef, memo } from 'react';
 import { composeRef, supportRef } from '../composeRef';
 
 describe('ref', () => {
@@ -23,8 +19,8 @@ describe('ref', () => {
     });
 
     it('object ref', () => {
-      const ref1 = { current: null };
-      const ref2 = { current: null };
+      const ref1 = { current: null } as any;
+      const ref2 = { current: null } as any;
       const mergedRef = composeRef(ref1, ref2);
       if (typeof mergedRef === 'function') {
         const refObj = {};
@@ -36,105 +32,48 @@ describe('ref', () => {
   });
 
   describe('supportRef', () => {
-    class Holder extends React.Component {
-      render() {
-        // eslint-disable-next-line react/destructuring-assignment
-        return this.props.children;
-      }
-    }
-
-    it('function component', () => {
-      const holderRef = React.createRef();
-
-      function FC() {
-        return <div />;
-      }
-
-      render(
-        <Holder ref={holderRef}>
-          <FC />
-        </Holder>
-      );
-      expect(supportRef(FC)).toBeFalsy();
-      expect(supportRef((holderRef.current as any).props.children)).toBeFalsy();
-    });
-
-    it('arrow function component', () => {
-      const holderRef = React.createRef();
-
-      // Use eval since jest will convert arrow function to function
-      // eslint-disable-next-line no-eval
-      const FC = eval('() => null');
-      render(
-        <Holder ref={holderRef}>
-          <FC />
-        </Holder>
-      );
-      expect(supportRef(FC)).toBeFalsy();
-      expect(supportRef((holderRef.current as any).props.children)).toBeFalsy();
-    });
-
-    it('forwardRef function component', () => {
-      const holderRef = React.createRef();
-
-      const FRC = React.forwardRef(() => <div />);
-      render(
-        <Holder ref={holderRef}>
-          <FRC />
-        </Holder>
-      );
-      expect(supportRef(FRC)).toBeTruthy();
-      expect(supportRef(holderRef.current.props.children)).toBeTruthy();
-    });
-
-    it('class component', () => {
-      const holderRef = React.createRef();
-
-      class CC extends React.Component {
-        constructor() {
-          super();
-          this.state = {};
-        }
-
-        render() {
-          return null;
-        }
-      }
-      render(
-        <Holder ref={holderRef}>
-          <CC />
-        </Holder>
-      );
-      expect(supportRef(CC)).toBeTruthy();
-      expect(supportRef(holderRef.current.props.children)).toBeTruthy();
-    });
-
-    it('memo of function component', () => {
-      const holderRef = React.createRef();
-
+    it('Function Component should not support ref', () => {
       const FC = () => <div />;
-      const MemoFC = React.memo(FC);
-      render(
-        <Holder ref={holderRef}>
-          <MemoFC />
-        </Holder>
-      );
-      expect(supportRef(MemoFC)).toBeFalsy();
-      expect(supportRef(holderRef.current.props.children)).toBeFalsy();
+      expect(supportRef(<FC />)).toBe(false);
     });
 
-    it('memo of forwardRef function component', () => {
-      const holderRef = React.createRef();
+    it('forwardRef(FC) should support ref', () => {
+      const FC = forwardRef(() => <div />);
+      expect(supportRef(<FC />)).toBe(true);
+    });
 
-      const FRC = React.forwardRef(() => <div />);
-      const MemoFC = React.memo(FRC);
-      render(
-        <Holder ref={holderRef}>
-          <MemoFC />
-        </Holder>
-      );
-      expect(supportRef(MemoFC)).toBeTruthy();
-      expect(supportRef(holderRef.current.props.children)).toBeTruthy();
+    it('Native tag should support ref', () => {
+      expect(supportRef(<div />)).toBe(true);
+    });
+
+    it('memo(FC) should not support ref', () => {
+      const FC = memo(() => <div />);
+      expect(supportRef(<FC />)).toBe(false);
+    });
+
+    it('memo(forwardRef(FC)) should support ref', () => {
+      const FC = memo(forwardRef(() => <div />));
+      expect(supportRef(<FC />)).toBe(true);
+    });
+
+    it('Class Component should support ref', () => {
+      // eslint-disable-next-line react/prefer-stateless-function
+      class CC extends Component {
+        render() {
+          return <div />;
+        }
+      }
+      expect(supportRef(<CC />)).toBe(true);
+    });
+
+    it('Only React Element support ref', () => {
+      expect(supportRef('string')).toBe(false);
+      expect(supportRef(123)).toBe(false);
+      expect(supportRef({})).toBe(false);
+      expect(supportRef(true)).toBe(false);
+      expect(supportRef(null)).toBe(false);
+      expect(supportRef(undefined)).toBe(false);
+      expect(supportRef(Symbol('sym'))).toBe(false);
     });
   });
 });

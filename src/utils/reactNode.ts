@@ -1,8 +1,10 @@
-import * as React from 'react';
+import React, { isValidElement } from 'react';
 
-export const { isValidElement } = React;
-
-export function replaceElement(element: React.ReactNode, replacement: React.ReactNode, props: unknown): React.ReactNode {
+export function replaceElement(
+  element: React.ReactNode,
+  replacement: React.ReactNode,
+  props: unknown
+): React.ReactNode {
   if (!isValidElement(element)) return replacement;
 
   return React.cloneElement(element, typeof props === 'function' ? props() : props);
