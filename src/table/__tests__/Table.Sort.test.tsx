@@ -1,28 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { fireEvent, render } from "@testing-library/react"
-import { renderHook } from "@testing-library/react-hooks";
-import React from "react"
-import { Table } from ".."
-import useSorter from "../hook/useSorter";
-import { ColumnType, SortOrder, TableProps } from "../interface";
+import { fireEvent, render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
+import React from 'react';
+import { Table } from '..';
+import useSorter from '../hook/useSorter';
+import { ColumnType, SortOrder, TableProps } from '../interface';
 
 describe('Testing Table Sorter', () => {
   interface DataType extends Record<string, any> {
-    key: number, name: string
+    key: number;
+    name: string;
   }
-  const column: ColumnType<DataType> =
-  {
+  const column: ColumnType<DataType> = {
     title: 'Name',
     key: 'name',
     dataIndex: 'name',
-    sorter: (a, b) => a.name.charCodeAt(0) - b.name.charCodeAt(0)
-  }
+    sorter: (a, b) => a.name.charCodeAt(0) - b.name.charCodeAt(0),
+  };
 
   const data = [
     { key: 1, name: 'John', age: 10 },
     { key: 2, name: 'Tom', age: 15 },
     { key: 3, name: 'Jerry', age: 16 },
-    { key: 4, name: 'Lucy', age: 11 }];
+    { key: 4, name: 'Lucy', age: 11 },
+  ];
 
   function createTable(tableProps: TableProps<DataType> = {}, columnProps = {}) {
     return (
@@ -39,8 +40,10 @@ describe('Testing Table Sorter', () => {
       />
     );
   }
-  const getNames = (container: Element) => Array.from(container.querySelectorAll('tbody.gio-table-tbody td:nth-of-type(1)')).map(node => node.textContent);
-  const getAges = (container: Element) => Array.from(container.querySelectorAll('tbody.gio-table-tbody td:nth-of-type(2)')).map(node => node.textContent);
+  const getNames = (container: Element) =>
+    Array.from(container.querySelectorAll('tbody.gio-table-tbody td:nth-of-type(1)')).map((node) => node.textContent);
+  const getAges = (container: Element) =>
+    Array.from(container.querySelectorAll('tbody.gio-table-tbody td:nth-of-type(2)')).map((node) => node.textContent);
   it('should render sort button', () => {
     const { container } = render(createTable());
     expect(container.querySelector('.gio-table-sorter-button')).toBeTruthy();
@@ -53,8 +56,8 @@ describe('Testing Table Sorter', () => {
         {},
         {
           defaultSortOrder: 'ascend',
-        },
-      ),
+        }
+      )
     );
     expect(getNames(container)).toStrictEqual(['John', 'Jerry', 'Lucy', 'Tom']);
   });
@@ -64,8 +67,8 @@ describe('Testing Table Sorter', () => {
         {},
         {
           defaultSortOrder: 'descend',
-        },
-      ),
+        }
+      )
     );
     expect(getNames(container)).toStrictEqual(['Tom', 'Lucy', 'John', 'Jerry']);
   });
@@ -85,14 +88,14 @@ describe('Testing Table Sorter', () => {
     fireEvent.click(container.querySelector('.gio-table-sorter-button'));
     const sorter2 = handleChange.mock.calls[1][2];
     expect(sorter2.sortOrder).toBe('descend');
-    expect(container.querySelector('.gio-table-sorter-button-down')).toHaveClass('active')
+    expect(container.querySelector('.gio-table-sorter-button-down')).toHaveClass('active');
     expect(sorter2.key).toBe('name');
     expect(getNames(container)).toStrictEqual(['Tom', 'Lucy', 'John', 'Jerry']);
 
     // null
     fireEvent.click(container.querySelector('.gio-table-sorter-button'));
     expect(container.querySelector('.gio-table-sorter-button-down')).not.toHaveClass('active');
-    expect(container.querySelector('.gio-table-sorter-button-up')).not.toHaveClass('active')
+    expect(container.querySelector('.gio-table-sorter-button-up')).not.toHaveClass('active');
     const sorter3 = handleChange.mock.calls[2][2];
 
     expect(sorter3.sortOrder).toBe(null);
@@ -104,24 +107,25 @@ describe('Testing Table Sorter', () => {
     const Demo = () => {
       const [order, setOrder] = React.useState<SortOrder>('descend');
 
-
-      return <Table<DataType>
-        columns={[
-          {
-            ...column,
-            sortOrder: order,
-            sortDirections: ['ascend', 'descend', 'ascend'],
-          },
-        ]}
-        dataSource={data}
-        pagination={false}
-        onChange={(_page, _filter, sortState) => {
-          const { sortOrder } = sortState
-          setOrder(sortOrder);
-          handleChange(_page, _filter, sortState)
-        }}
-      />
-    }
+      return (
+        <Table<DataType>
+          columns={[
+            {
+              ...column,
+              sortOrder: order,
+              sortDirections: ['ascend', 'descend', 'ascend'],
+            },
+          ]}
+          dataSource={data}
+          pagination={false}
+          onChange={(_page, _filter, sortState) => {
+            const { sortOrder } = sortState;
+            setOrder(sortOrder);
+            handleChange(_page, _filter, sortState);
+          }}
+        />
+      );
+    };
     const { container } = render(<Demo />);
     fireEvent.click(container.querySelector('.gio-table-sorter-button'));
     expect(handleChange).toHaveBeenCalledTimes(1);
@@ -131,40 +135,40 @@ describe('Testing Table Sorter', () => {
 
     fireEvent.click(container.querySelector('.gio-table-sorter-button'));
     const sorter2 = handleChange.mock.calls[1][2];
-    expect(sorter2.sortOrder).toBe('descend')
+    expect(sorter2.sortOrder).toBe('descend');
 
     fireEvent.click(container.querySelector('.gio-table-sorter-button'));
     const sorter3 = handleChange.mock.calls[2][2];
-    expect(sorter3.sortOrder).toBe('ascend')
-
-
+    expect(sorter3.sortOrder).toBe('ascend');
   });
 
   it('multiple columns sorter,sortPriorityOrder', () => {
     const handleChange = jest.fn();
-    const { container } = render(<Table<DataType>
-      columns={[
-        {
-          title: 'Name',
-          key: 'name',
-          dataIndex: 'name',
-          sorter: (a, b) => a.name.charCodeAt(0) - b.name.charCodeAt(0),
-          sortPriorityOrder: 1,
-          sortDirections: ['ascend', 'descend', 'ascend'],
-        },
-        {
-          title: 'Age',
-          key: 'age',
-          dataIndex: 'age',
-          sorter: (a, b) => a.age - b.age,
-          sortPriorityOrder: 2,
-          sortDirections: ['ascend', 'descend', 'ascend'],
-        },
-      ]}
-      dataSource={data}
-      pagination={false}
-      onChange={handleChange}
-    />);
+    const { container } = render(
+      <Table<DataType>
+        columns={[
+          {
+            title: 'Name',
+            key: 'name',
+            dataIndex: 'name',
+            sorter: (a, b) => a.name.charCodeAt(0) - b.name.charCodeAt(0),
+            sortPriorityOrder: 1,
+            sortDirections: ['ascend', 'descend', 'ascend'],
+          },
+          {
+            title: 'Age',
+            key: 'age',
+            dataIndex: 'age',
+            sorter: (a, b) => a.age - b.age,
+            sortPriorityOrder: 2,
+            sortDirections: ['ascend', 'descend', 'ascend'],
+          },
+        ]}
+        dataSource={data}
+        pagination={false}
+        onChange={handleChange}
+      />
+    );
 
     const nameSorterButton = container.querySelector('.gio-table-thead th:nth-of-type(1) button');
     const ageSorterButton = container.querySelector('.gio-table-thead th:nth-of-type(2) button');
@@ -206,39 +210,48 @@ describe('Testing Table Sorter', () => {
     expect(handleChange).toHaveBeenCalledTimes(3);
   });
   it('useSorter', () => {
-    const { result } = renderHook(() => useSorter<DataType>([{
-      title: 'Name',
-      key: 'name',
-      dataIndex: 'name',
-      sorter: true,
-      sortOrder: 'ascend',
-      sortPriorityOrder: 1,
-      children: [
-        {
-          dataIndex: 'key',
-          key: 'key',
-          title: 'Key'
-        },
-        {
-          dataIndex: 'age',
-          key: 'age',
-          title: 'Age',
-          sortOrder: 'ascend',
-          sorter: (a, b) => a.age - b.age,
-          sortPriorityOrder: 2,
+    const { result } = renderHook(() =>
+      useSorter<DataType>(
+        [
+          {
+            title: 'Name',
+            key: 'name',
+            dataIndex: 'name',
+            sorter: true,
+            sortOrder: 'ascend',
+            sortPriorityOrder: 1,
+            children: [
+              {
+                dataIndex: 'key',
+                key: 'key',
+                title: 'Key',
+              },
+              {
+                dataIndex: 'age',
+                key: 'age',
+                title: 'Age',
+                sortOrder: 'ascend',
+                sorter: (a, b) => a.age - b.age,
+                sortPriorityOrder: 2,
+              },
+            ],
+          },
+        ],
+        () => {
+          /** */
         }
-      ]
-    }], () => {/** */ }));
-
+      )
+    );
 
     const getSortedData = result.current[3];
-    const sortedData = getSortedData(data, [{
-      column: { key: 'name', sorter: true, },
-      key: 'name',
-      sortOrder: "ascend",
-      isControlled: false
-    }]);
+    const sortedData = getSortedData(data, [
+      {
+        column: { key: 'name', sorter: true },
+        key: 'name',
+        sortOrder: 'ascend',
+        isControlled: false,
+      },
+    ]);
     expect(sortedData).toStrictEqual(data);
   });
-
-})
+});

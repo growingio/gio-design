@@ -32,6 +32,7 @@
     &:not([disabled])::placeholder {
       color: @gray-2;
       .text-body1();
+      line-height: revert;
     }
 
     &:-internal-autofill-previewed,
@@ -43,6 +44,7 @@
   &::placeholder {
     color: @gray-2;
     .text-body1();
+    line-height: revert;
   }
 
   &:not([disabled]):focus {
