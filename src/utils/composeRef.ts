@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { isMemo } from 'react-is';
+import { isMemo, isElement, ForwardRef, isForwardRef } from 'react-is';
 
 export const composeRef =
   <T>(...refs: React.Ref<T>[]): React.Ref<T> =>
@@ -15,19 +15,38 @@ export const composeRef =
     });
   };
 
-export function supportRef(nodeOrComponent: any): boolean {
-  const type = isMemo(nodeOrComponent) ? nodeOrComponent.type.type : nodeOrComponent.type;
-
-  // Function component node
-  if (typeof type === 'function' && !type.prototype?.render) {
+export function supportRef<T = any>(nodeOrComponent: T): boolean {
+  // 只有 ReactElement 支持 ref
+  if (!isElement(nodeOrComponent)) {
     return false;
   }
 
-  // Class component
-  if (typeof nodeOrComponent === 'function' && !nodeOrComponent.prototype?.render) {
-    return false;
+  // 原生标签的 type 是一个 string
+  // 原生标签支持 ref
+  if (typeof nodeOrComponent.type === 'string') {
+    return true;
   }
 
-  return true;
+  // 使用 React.memo 包裹的 ForwardRef Function Component
+  // prettier-ignore
+  if (
+    isMemo(nodeOrComponent) &&
+    nodeOrComponent.type.type.$$typeof === ForwardRef
+  ) {
+    return true;
+  }
+
+  // ForwardRef Function Component
+  if (isForwardRef(nodeOrComponent)) {
+    return true;
+  }
+
+  // Class Component 支持 ref
+  const { prototype } = nodeOrComponent.type;
+  if (prototype && prototype.isReactComponent) {
+    return true;
+  }
+
+  return false;
 }
 export default composeRef;
