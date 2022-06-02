@@ -4,16 +4,16 @@ import { isMemo } from 'react-is';
 
 export const composeRef =
   <T>(...refs: React.Ref<T>[]): React.Ref<T> =>
-  (node: T) => {
-    refs.forEach((ref) => {
-      if (typeof ref === 'function') {
-        ref(node);
-      } else if (typeof ref === 'object' && ref && 'current' in ref) {
-        // eslint-disable-next-line no-param-reassign
-        (ref as any).current = node;
-      }
-    });
-  };
+    (node: T) => {
+      refs.forEach((ref) => {
+        if (typeof ref === 'function') {
+          ref(node);
+        } else if (typeof ref === 'object' && ref && 'current' in ref) {
+          // eslint-disable-next-line no-param-reassign
+          (ref as any).current = node;
+        }
+      });
+    };
 
 export function supportRef(nodeOrComponent: any): boolean {
   if (typeof nodeOrComponent !== 'object') {
@@ -26,7 +26,7 @@ export function supportRef(nodeOrComponent: any): boolean {
     return false;
   }
 
-  // Class component
+  // Class component,
   if (typeof nodeOrComponent === 'function' && !nodeOrComponent.prototype?.render) {
     return false;
   }
