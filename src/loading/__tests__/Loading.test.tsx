@@ -43,11 +43,13 @@ describe('Testing Loading', () => {
     expect(container.querySelector('.gio-loading-container')).toHaveClass('gio-loading-container-blur-black');
   });
   it('set loading prop with delay', async () => {
+    jest.useFakeTimers('modern');
     const { container, rerender } = render(<Loading delay={100} />);
     expect(container.querySelector('.gio-loading-ring')).toBeInTheDocument();
     rerender(<Loading loading={false} delay={100} />);
     expect(container.querySelector('.gio-loading-ring')).toBeInTheDocument();
     await sleep(100);
+    jest.runOnlyPendingTimers();
     expect(container.querySelector('.gio-loading-ring')).not.toBeInTheDocument();
   });
 });
