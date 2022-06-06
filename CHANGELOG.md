@@ -1,3 +1,10 @@
+## [22.16.1](https://github.com/growingio/gio-design/compare/v22.16.0...v22.16.1) (2022-06-06)
+
+
+### Bug Fixes
+
+* **layout:** layout and input incompatable in firefox ([#2055](https://github.com/growingio/gio-design/issues/2055)) ([8f24415](https://github.com/growingio/gio-design/commit/8f24415e75a15a2fc1107822bc77f24e326677d3))
+
 # [22.16.0](https://github.com/growingio/gio-design/compare/v22.15.5...v22.16.0) (2022-05-26)
 
 
