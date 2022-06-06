@@ -19,6 +19,11 @@ describe('Tesing Divider', () => {
     expect(container.querySelector('hr')).toBeInTheDocument();
     expect(container.querySelector('hr')).toHaveClass('gio-divider gio-divider_flex_item');
   });
+  it('render with className orientation flexItem', () => {
+    const { container } = render(<Divider className="test" flexItem orientation="horizontal" />);
+    expect(container.querySelector('hr')).toBeInTheDocument();
+    expect(container.querySelector('hr')).toHaveClass('gio-divider gio-divider_flex_item test');
+  });
   it('render with className', () => {
     const { container } = render(<Divider className="test" />);
     expect(container.querySelector('hr')).toBeInTheDocument();

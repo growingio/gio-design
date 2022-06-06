@@ -18,9 +18,4 @@ const Divider = WithRef<HTMLHRElement, DividerProps>(
 
 Divider.displayName = 'Divider';
 
-Divider.defaultProps = {
-  orientation: 'horizontal',
-  flexItem: false,
-};
-
 export default Divider;

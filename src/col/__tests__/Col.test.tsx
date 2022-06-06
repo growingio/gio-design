@@ -43,6 +43,6 @@ describe('Testing Col', () => {
         </Col>
       </Row>
     );
-    expect(container.querySelector('div.gio-row')).toHaveStyle('--gio-row-gutter: 10px;');
+    expect(container.querySelector('div.gio-col')).toHaveStyle('padding: 5px 5px 5px 5px;');
   });
 });
