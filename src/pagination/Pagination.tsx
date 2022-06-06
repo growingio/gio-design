@@ -142,16 +142,4 @@ const Pagination = WithRef<HTMLDivElement, PaginationProps>((props, ref) => {
 
 Pagination.displayName = 'Pagination';
 
-Pagination.defaultProps = {
-  total: 0,
-  defaultCurrent: 1,
-  pageSizeOptions: [10, 20, 50],
-  defaultPageSize: 10,
-  showQuickJumper: false,
-  showSizeChanger: false,
-  hideOnSinglePage: false,
-  hideFirstButton: false,
-  hideLastButton: false,
-};
-
 export default Pagination;
