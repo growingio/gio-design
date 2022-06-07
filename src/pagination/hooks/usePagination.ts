@@ -51,16 +51,15 @@ const usePagination = (
 
   const computePage = (type: PaginationItemType): number => {
     switch (type) {
-      case PaginationItemType.First:
-        return 1;
       case PaginationItemType.Previous:
         return currentPage - 1;
       case PaginationItemType.Next:
         return currentPage + 1;
       case PaginationItemType.Last:
         return maxPages;
+      case PaginationItemType.First:
       default:
-        return 0;
+        return 1;
     }
   };
 

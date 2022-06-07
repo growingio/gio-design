@@ -5,8 +5,6 @@ import { usePrefixCls } from '@gio-design/utils';
 import { GridProps } from './interface';
 import { clip, dataMap, isNumber } from './help';
 
-export { GridProps } from './interface';
-
 export const Grid: React.FC<GridProps> = ({
   component: Component = 'div',
   prefixCls: customizePrefixCls,

@@ -13,7 +13,7 @@ const getStatusIcon = (status: string, prefix: string) => {
 };
 
 const Progress: React.FC<ProgressProps> = ({
-  percent,
+  percent = 0,
   status = 'active',
   format = defaultFormat,
   customizePrefixCls,
