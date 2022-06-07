@@ -7,7 +7,7 @@ export type TimePickerLocale = Omit<Locale, 'locale'>;
 export interface TimePickerProps
   extends Pick<StaticTimePickerProps, 'showSecond'>,
     Omit<InputButtonProps, 'value' | 'onSelect' | 'defaultValue'>,
-    Omit<PopoverProps, 'placement' | 'prefixCls' | 'children' | 'content'> {
+    Omit<PopoverProps, 'placement' | 'prefixCls' | 'children' | 'content' | 'trigger'> {
   /**
    * 默认时间
    */
@@ -27,5 +27,9 @@ export interface TimePickerProps
    * @param timeString - `string` 类型的时间
    */
   onSelect?: (time: Date, timeString: string) => void;
+  /**
+   * 自定义触发器
+   */
+  trigger?: React.ReactElement;
   ['data-testid']?: string;
 }
