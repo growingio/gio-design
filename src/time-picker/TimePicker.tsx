@@ -15,7 +15,7 @@ import defaultLocale from './locales/zh-CN';
 
 const DEFAULT_DATA_TESTID = 'time-picker';
 
-export const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
+export const TimePicker: React.FC<TimePickerProps> = (props) => {
   const {
     defaultValue,
     onSelect,
