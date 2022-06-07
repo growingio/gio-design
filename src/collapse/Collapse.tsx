@@ -22,10 +22,10 @@ export const Collapse = WithRef<HTMLDivElement, WithCommonProps<CollapseProps>>(
     ...otherProps
   } = props;
   const prefixCls = usePrefixCls('collapse');
-  const renderExpandIcon = (panelProps: PanelProps = {}) => {
+  const renderExpandIcon = (panelProps: PanelProps) => {
     const icon = expandIcon ? expandIcon(panelProps) : <RightFilled />;
     return (
-      <div className={classnames('collapse-arrow-bar', panelProps.isActive ? 'arrow-isRotate' : undefined)}>
+      <div className={classnames('collapse-arrow-bar', panelProps?.isActive ? 'arrow-isRotate' : undefined)}>
         {cloneElement(icon, () => ({
           className: classnames(get(icon, 'props.className'), `${prefixCls}-arrow`),
         }))}
