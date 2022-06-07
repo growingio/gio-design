@@ -75,7 +75,7 @@ export interface ListPickerProps
   /**
    * custom trigger render
    */
-  renderTrigger?: () => React.ReactElement;
+  customTrigger?: () => React.ReactElement;
   /**
    * recentId Recent取值
    */

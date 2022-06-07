@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import '../style';
-import { isEqual, uniqueId } from 'lodash';
+import { uniqueId } from 'lodash';
 import {
   WriteOutlined,
   CursorOutlined,
@@ -258,7 +258,7 @@ export const Disable = (args: ListPickerProps) => {
   );
 };
 export const AllChose = (args: ListPickerProps) => {
-  const [multipleValue, setMultipleValue] = useState<undefined | string[]>(undefined);
+  const [multipleValue, setMultipleValue] = useState<undefined | string[]>([]);
   const [activeTab, setActiveTab] = useState('tab1');
   return (
     <ListPicker
@@ -281,35 +281,30 @@ export const AllChose = (args: ListPickerProps) => {
         <Tab label="tab1" value="tab1">
           <List.Selection>
             {(context) => {
-              const isEqualValue = isEqual(
-                Array.from(context.options.values()).reduce((p, v) => [...p, v.value], []),
-                context.value
-              );
-              return (
-                <>
-                  <CheckboxItem
-                    selected={isEqualValue}
-                    onClick={() => {
-                      if (isEqualValue) {
-                        context.onChange([]);
-                      } else {
-                        context.onChange(Array.from(context.options.keys()));
-                      }
-                    }}
-                    label="全部"
-                    value="all"
-                  />
+              console.log('context',context.value);
+             return <>
+              <CheckboxItem
+                selected={(context.value as string[])?.length === 2}
+                onClick={() => {
+                  if ((context.value as string[])?.length === 2) {
+                    context.onChange([]);
+                  } else {
+                    context.onChange(Array.from(context.options.keys()));
+                  }
+                }}
+                label="全部"
+                value="all"
+              />
 
-                  <List
-                    options={[
-                      { label: '1', value: '1' },
-                      { label: '2', value: '2' },
-                    ]}
-                    id="id"
-                    title="有item"
-                  />
-                </>
-              );
+              <List
+                options={[
+                  { label: '1', value: '1' },
+                  { label: '2', value: '2' },
+                ]}
+                id="id"
+                title="有item"
+              />
+            </>
             }}
           </List.Selection>
         </Tab>
@@ -344,12 +339,105 @@ export const Selection = (args: ListPickerProps) => {
 };
 export const Default: Story<ListPickerProps> = (args: ListPickerProps) => {
   const [activeTab, setActiveTab] = useState('tab1');
+  const [value,setValue] = useState([]);
+  const options = [
+    {
+      label: `List Item 1`,
+      value: '1',
+      disabled: false,
+    },
+    {
+      label: `List Item 2`,
+      value: '2',
+      disabled: false,
+    },
+    {
+      label: `List Item 3`,
+      value: '3',
+      disabled: true,
+    },
+  ];
   return (
     <>
+      <ListPicker placeholder="请选择" value="1" >
+        {/* <Recent /> */}
+        <List options={options} />
+      </ListPicker>
+
+      <h2>uncontrolledState</h2>
+
       <ListPicker
         {...args}
         style={{ width: '240px' }}
+        model='multiple'
         placeholder="请选择"
+        // needConfirm={false}
+        getContainer={(node) => node?.parentElement || document.body}
+      >
+        <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>
+          <Tab label="tab1" value="tab1">
+            <List style={{ width: '240px' }} options={simpleLargeOptions} />
+          </Tab>
+          <Tab label="tab2" value="tab2">
+            <List style={{ width: '240px' }} options={[]} />
+          </Tab>
+          <Tab label="tab3" value="tab3">
+            <List
+              style={{ width: '240px' }}
+              options={[]}
+              empty={<Result type="empty-data" description="暂无数据" size="small" />}
+            />
+          </Tab>
+        </Tabs>
+      </ListPicker>
+
+      <h2>controlledState</h2>
+
+      <ListPicker
+        {...args}
+        style={{ width: '240px' }}
+        model='multiple'
+        placeholder="请选择"
+        
+        value={value}
+        onChange={(v)=>{
+          console.log('onChange触发');
+          setValue(v as string[])
+        }}
+        onConfirm={(v)=>setValue(v as string[])}
+        getContainer={(node) => node?.parentElement || document.body}
+      >
+        <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>
+          <Tab label="tab1" value="tab1">
+            <List style={{ width: '240px' }} options={simpleLargeOptions} />
+          </Tab>
+          <Tab label="tab2" value="tab2">
+            <List style={{ width: '240px' }} options={[]} />
+          </Tab>
+          <Tab label="tab3" value="tab3">
+            <List
+              style={{ width: '240px' }}
+              options={[]}
+              empty={<Result type="empty-data" description="暂无数据" size="small" />}
+            />
+          </Tab>
+        </Tabs>
+      </ListPicker>
+
+      <h2>controlledState without onConfim</h2>
+        <p>the value not change</p>
+      <ListPicker
+        {...args}
+        style={{ width: '240px' }}
+        model='multiple'
+        placeholder="请选择"
+        value={value}
+        
+        onChange={(v)=>{
+          console.log('onChange触发');
+          setValue(v as string[])
+        }}
+        // onConfirm={(v)=>setValue(v as string[])}
         getContainer={(node) => node?.parentElement || document.body}
       >
         <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>

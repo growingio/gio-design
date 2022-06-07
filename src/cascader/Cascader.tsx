@@ -43,7 +43,7 @@ export const Cascader: React.FC<CascaderProps> = ({
   triggerSuffix,
   maxWidth,
   hidePrefix,
-  renderTrigger: propsRenderTrigger,
+  customTrigger: propsRenderTrigger,
   empty,
   needEmpty = true,
   ...rest

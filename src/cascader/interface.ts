@@ -63,7 +63,7 @@ export interface CascaderProps extends Omit<ListProps, 'options' | 'onChange' | 
   /**
    * custom trigger render
    */
-  renderTrigger?: () => React.ReactElement;
+  customTrigger?: () => React.ReactElement;
 }
 export interface OptionProps extends ListOptionProps {
   label: string;
