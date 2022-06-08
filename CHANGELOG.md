@@ -1,3 +1,11 @@
+## [23.3.2](https://github.com/growingio/gio-design/compare/v23.3.1...v23.3.2) (2022-06-08)
+
+
+### Bug Fixes
+
+* **layout:** fix style incompatable in firfox below v74 ([#2052](https://github.com/growingio/gio-design/issues/2052)) ([d494edc](https://github.com/growingio/gio-design/commit/d494edced53fcfb6dc2f7d04cfd49574ae8cc6d9))
+* **supportRef:** fix the supportRef function ([#2056](https://github.com/growingio/gio-design/issues/2056)) ([8092d69](https://github.com/growingio/gio-design/commit/8092d69251bf720ba2e7b7463547b2ce600dd194))
+
 ## [23.3.1](https://github.com/growingio/gio-design/compare/v23.3.0...v23.3.1) (2022-06-01)
 
 
