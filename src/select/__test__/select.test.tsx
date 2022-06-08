@@ -75,7 +75,7 @@ describe('test select', () => {
 
     expect(screen.getByTestId('select')).toBeTruthy();
     fireEvent.click(screen.getByTestId('select'));
-    // screen.debug();
+
     expect(screen.getByText('List Item 1')).toBeTruthy();
     act(() => {
       fireEvent.click(screen.getByText('List Item 1'));
@@ -96,7 +96,7 @@ describe('test select', () => {
 
     expect(screen.getByText('请选择')).toBeTruthy();
     fireEvent.click(screen.getByTestId('select'));
-    // screen.debug();
+
     expect(screen.getByText('List Item 1')).toBeTruthy();
     act(() => {
       fireEvent.click(screen.getByText('List Item 1'));
@@ -138,7 +138,7 @@ describe('test select', () => {
         defaultValue={1}
       />
     );
-    // fireEvent.click(screen.getByText('List Item 1'));
+
     expect(screen.getByText('List Item 1')).toBeTruthy();
   });
 });
