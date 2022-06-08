@@ -68,7 +68,11 @@ const InputButton = React.forwardRef<HTMLInputElement, InputButtonProps>((props,
       return customizeSuffix || <LoadingTwoTone rotating />;
     }
     const defaultSuffix =
-      value && !hideClear && !disabled ? <ErrorFilled onClick={onClear} /> : <DownFilled onClick={onClick} />;
+      value && !hideClear && !disabled ? (
+        <ErrorFilled onClick={onClear} data-testid="clean-button" />
+      ) : (
+        <DownFilled onClick={onClick} />
+      );
     return customizeSuffix || defaultSuffix;
   }, [customizeSuffix, value, onClear, allowClear, disabled, rest, loading]);
 

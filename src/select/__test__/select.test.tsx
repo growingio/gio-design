@@ -24,15 +24,19 @@ describe('test select', () => {
       disabled: true,
     },
   ];
-  it('render normal select with children',()=>{
-    render(<Select>
-            {options.map(v => <Item value={v.value} label={v.label} />)}
-        </Select>);
+  it('render normal select with children', () => {
+    render(
+      <Select>
+        {options.map((v) => (
+          <Item value={v.value} label={v.label} />
+        ))}
+      </Select>
+    );
 
     expect(screen.getByTestId('select')).toBeTruthy();
     fireEvent.click(screen.getByTestId('select'));
     expect(screen.getByText('List Item 1')).toBeTruthy();
-  })
+  });
   it('render normal select with options', () => {
     render(<Select options={options} />);
 
@@ -42,21 +46,29 @@ describe('test select', () => {
   });
 
   it('render normal select with Option', () => {
-    render(<Select>
-        {options.map(v => <Select.Option value={v.value} label={v.label} />)}
-    </Select>);
+    render(
+      <Select>
+        {options.map((v) => (
+          <Select.Option value={v.value} label={v.label} />
+        ))}
+      </Select>
+    );
     expect(screen.getByTestId('select')).toBeTruthy();
     fireEvent.click(screen.getByTestId('select'));
     expect(screen.getByText('List Item 1')).toBeTruthy();
   });
 
   it('select custom trigger', () => {
-    render(<Select options={options} prefixCls="test" renderTrigger={()=> <Button onClick={()=> jest.fn()}>点击</Button>} />);
+    render(
+      <Select
+        options={options}
+        prefixCls="test"
+        customTrigger={() => <Button onClick={() => jest.fn()}>点击</Button>}
+      />
+    );
     fireEvent.click(screen.getByText('点击'));
     expect(screen.getByText('点击')).toBeTruthy();
   });
-
-
 
   it('select onChange', () => {
     render(<Select options={options} />);
@@ -65,59 +77,74 @@ describe('test select', () => {
     fireEvent.click(screen.getByTestId('select'));
     // screen.debug();
     expect(screen.getByText('List Item 1')).toBeTruthy();
-    act(()=>{
-        fireEvent.click(screen.getByText('List Item 1'));
-    
-    })
+    act(() => {
+      fireEvent.click(screen.getByText('List Item 1'));
+    });
   });
 
   it('select onClear and test function callback', () => {
-    render(<Select options={options} onChange={()=>jest.fn()} onClear={()=>jest.fn()} allowClear placeholder='请选择' onVisibleChange={jest.fn()}  />);
+    render(
+      <Select
+        options={options}
+        onChange={() => jest.fn()}
+        onClear={() => jest.fn()}
+        allowClear
+        placeholder="请选择"
+        onVisibleChange={jest.fn()}
+      />
+    );
 
     expect(screen.getByText('请选择')).toBeTruthy();
     fireEvent.click(screen.getByTestId('select'));
     // screen.debug();
     expect(screen.getByText('List Item 1')).toBeTruthy();
-    act(()=>{
-        fireEvent.click(screen.getByText('List Item 1'));
-    })
+    act(() => {
+      fireEvent.click(screen.getByText('List Item 1'));
+    });
     expect(screen.getByText('List Item 1')).toBeTruthy();
     userEvent.hover(screen.getByText('List Item 1'));
     fireEvent.click(screen.getByText('List Item 1'));
     fireEvent.click(screen.getByRole('img'));
     expect(screen.getByText('请选择')).toBeTruthy();
-
   });
 
   it('select onClear undefined', () => {
-    render(<Select options={options} allowClear onClear={undefined} onChange={undefined} placeholder='请选择' />);
+    render(<Select options={options} allowClear onClear={undefined} onChange={undefined} placeholder="请选择" />);
 
     expect(screen.getByText('请选择')).toBeTruthy();
     fireEvent.click(screen.getByTestId('select'));
     // screen.debug();
     expect(screen.getByText('List Item 1')).toBeTruthy();
-    act(()=>{
-        fireEvent.click(screen.getByText('List Item 1'));
-    })
+    act(() => {
+      fireEvent.click(screen.getByText('List Item 1'));
+    });
     expect(screen.getByText('List Item 1')).toBeTruthy();
     userEvent.hover(screen.getByText('List Item 1'));
     fireEvent.click(screen.getByText('List Item 1'));
     fireEvent.click(screen.getByRole('img'));
     expect(screen.getByText('请选择')).toBeTruthy();
-
   });
 
   it('select custom defaultValue', () => {
-    render(<Select options={options} placement='top' disabled hidePrefix autoWidth needEmpty={false} prefixCls="test" defaultValue={1} />);
+    render(
+      <Select
+        options={options}
+        placement="top"
+        disabled
+        hidePrefix
+        autoWidth
+        needEmpty={false}
+        prefixCls="test"
+        defaultValue={1}
+      />
+    );
     // fireEvent.click(screen.getByText('List Item 1'));
     expect(screen.getByText('List Item 1')).toBeTruthy();
   });
 });
 
-
-describe('test base Option',()=>{
-    it('test Options',()=>{
-        render(<Select.Option value="1" label="2" />);
-        
-    })
-})
+describe('test base Option', () => {
+  it('test Options', () => {
+    render(<Select.Option value="1" label="2" />);
+  });
+});
