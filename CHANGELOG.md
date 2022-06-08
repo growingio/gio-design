@@ -1,3 +1,10 @@
+## [22.16.2](https://github.com/growingio/gio-design/compare/v22.16.1...v22.16.2) (2022-06-08)
+
+
+### Bug Fixes
+
+* **legacy/select:** fix less variables was be cover ([#2059](https://github.com/growingio/gio-design/issues/2059)) ([94bbf9a](https://github.com/growingio/gio-design/commit/94bbf9ae15426d8fd39b6122da82ef2c3e433379))
+
 ## [22.16.1](https://github.com/growingio/gio-design/compare/v22.16.0...v22.16.1) (2022-06-06)
 
 
