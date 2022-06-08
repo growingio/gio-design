@@ -40,19 +40,22 @@ export const Tabs = WithRef<
       onChange?.(v);
     };
 
-    const tabs = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>, index) => (
-      <TabButton
-        key={tab.props.value}
-        value={tab.props.value || index}
-        size={size}
-        onClick={onClick}
-        prefix={tab.props.prefix}
-        active={activeValue === tab.props.value}
-        disabled={tab.props.disabled}
-      >
-        {tab.props.label}
-      </TabButton>
-    ));
+    const tabs = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>, index) => {
+      const { label, disabled, prefix, value: tabValue = index } = tab.props;
+      return (
+        <TabButton
+          key={tabValue}
+          value={tabValue || index}
+          size={size}
+          onClick={onClick}
+          prefix={prefix}
+          active={activeValue === tabValue}
+          disabled={disabled}
+        >
+          {label}
+        </TabButton>
+      );
+    });
 
     const tabPanels = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>, index) => {
       if (isNil(tab.props.value)) {
@@ -76,10 +79,6 @@ export const Tabs = WithRef<
     );
   }
 );
-Tabs.defaultProps = {
-  defaultValue: 0,
-  size: 'normal',
-};
 
 Tabs.displayName = 'Tabs';
 
