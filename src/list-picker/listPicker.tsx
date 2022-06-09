@@ -59,6 +59,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     autoWidth = false,
     strategy = 'fixed',
     max,
+    triggerLoading,
     ...rest
   } = props;
   const defaultPrefix = usePrefixCls(prefixCls);
@@ -141,6 +142,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
         visible={visible}
         hidePrefix={hidePrefix}
         data-testid={isNil(rest['data-testid']) ? `${DEFAULT_DATA_TESTID}-trigger` : `${rest['data-testid']}-trigger`}
+        loading={triggerLoading}
       >
         {children}
       </Trigger>
