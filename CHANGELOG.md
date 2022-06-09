@@ -1,3 +1,10 @@
+# [22.17.0](https://github.com/growingio/gio-design/compare/v22.16.2...v22.17.0) (2022-06-09)
+
+
+### Features
+
+* **list-picker, select:** support triggerLoading prop ([#2064](https://github.com/growingio/gio-design/issues/2064)) ([730e066](https://github.com/growingio/gio-design/commit/730e0669f3482788d1d70b7b436450b79378e9e0))
+
 ## [22.16.2](https://github.com/growingio/gio-design/compare/v22.16.1...v22.16.2) (2022-06-08)
 
 
