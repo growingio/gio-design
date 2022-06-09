@@ -45,6 +45,7 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
     autoWidth = false,
     empty,
     needEmpty = true,
+    triggerLoading,
     // list props
     ...rest
   } = props;
@@ -112,6 +113,7 @@ const Select: React.FC<SelectProps> & { isSelect?: boolean } = (props) => {
         title={title}
         onClick={triggerClick}
         data-testid={rest?.['data-testid'] ? rest?.['data-testid'] : 'select'}
+        loading={triggerLoading}
       />
     );
   };
