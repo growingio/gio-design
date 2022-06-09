@@ -28,41 +28,34 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-steps--default" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '有内容时' })}</Subheading>
+
+      <Subheading>{formatMessage({ defaultMessage: '通过按钮控制' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '可以在Steps.step中添加子元素作为内容切换',
+          defaultMessage: '配合内容及按钮使用，表示一个流程的处理进度，用于分步表单填写',
         })}
       </Description>
       <Canvas>
-        <Story id="upgraded-steps--have-children" />
+        <Story id="upgraded-steps--controlled-current" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '有点击按钮交互写法' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '自定义图标步骤条' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '可以结合实际情况添加button完成步骤交互',
+          defaultMessage: '通过设置`Step.prefix` 属性，可以启用自定义图标',
         })}
       </Description>
       <Canvas>
-        <Story id="upgraded-steps--have-step-button" />
+        <Story id="upgraded-steps--icon-step" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '点击事件' })}</Subheading>
+
+      <Subheading>{formatMessage({ defaultMessage: '受控current' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '`onChange`为点击事件，可查看console控制台查看',
+          defaultMessage: '`current`为当前Step的index(从1开始)，，',
         })}
       </Description>
       <Canvas>
         <Story id="upgraded-steps--on-change" />
-      </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '受控模式value' })}</Subheading>
-      <Description>
-        {formatMessage({
-          defaultMessage: '`value`为受控模式的值，`current`为当前步骤，可以在current不改变情况下，切换当前key',
-        })}
-      </Description>
-      <Canvas>
-        <Story id="upgraded-steps--value" />
       </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '大小' })}</Subheading>
       <Description>
@@ -71,8 +64,19 @@ export default function ListPage() {
         })}
       </Description>
       <Canvas>
-        <Story id="upgraded-steps--size" />
+        <Story id="upgraded-steps--small-size" />
       </Canvas>
+
+      <Subheading>{formatMessage({ defaultMessage: '步骤条超出外框范围' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '当内容显示不全时 Item 宽度增加，Steps 在容器内横向滚动不换行',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-steps--scrollable" />
+      </Canvas>
+
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Steps} />
     </>
