@@ -61,6 +61,10 @@ export interface ListPickerProps
    * 自定义后缀的icon
    */
   triggerSuffix?: React.ReactNode;
+  /**
+   * InputButton 触发器的 loading prop
+   */
+  triggerLoading?: InputButtonProps['loading'];
   maxWidth?: number;
   hidePrefix?: boolean;
 
