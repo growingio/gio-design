@@ -1,16 +1,12 @@
-import React, { DOMAttributes, useEffect } from 'react';
+import React, { DOMAttributes } from 'react';
 import classnames from 'classnames';
 import { isNil } from 'lodash';
-import { CheckOutlined } from '@gio-design/icons';
 import { usePrefixCls } from '@gio-design/utils';
-import { StepsProps } from './interface';
-import { TabProps } from '../tabs/interface';
+import { StepProps, StepsProps } from './interface';
 import useControlledState from '../utils/hooks/useControlledState';
-import Tab from '../tabs/Tab';
-import TabButton from '../tabs/TabButton';
+import Step from './Step';
 import { WithCommonProps } from '../utils/interfaces';
 import WithRef from '../utils/withRef';
-import StepsContext from '../tabs/context';
 
 export const Steps = WithRef<
   HTMLDivElement,
@@ -18,95 +14,71 @@ export const Steps = WithRef<
 >(
   (
     {
-      current = 1,
-      value,
+      current,
+      defaultCurrent = 0,
       onChange,
       className: classname,
       children,
       size = 'normal',
+      className: customClassName,
       ...restProps
     }: WithCommonProps<StepsProps> & Omit<DOMAttributes<HTMLDivElement>, 'onChange'>,
     ref?
   ) => {
-    const [activeValue, setActiveValue] = useControlledState<React.Key>(value, current - 1);
-    const prefixCls = usePrefixCls('tabs');
-    const tabClasses = classnames(classname, prefixCls);
-
-    const elementList = React.Children.toArray(children).filter(
-      (node) => React.isValidElement(node) && node.type === Tab
-    );
-
-    useEffect(() => {
-      let currentVal: number;
-      if (current > elementList.length) {
-        currentVal = elementList?.length + 1;
-      } else if (current <= 1) {
-        currentVal = 1;
-      } else {
-        currentVal = current;
-      }
-      setActiveValue(currentVal - 1);
-    }, [current, elementList.length, setActiveValue]);
-
-    const onClick = (v: React.Key) => {
-      if (v <= current - 1) {
-        setActiveValue(v);
-        onChange?.(v);
-      }
-    };
-
-    const tabs = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>, index) => {
-      let prefix = null;
-      let className = '';
-      if (index < current - 1) {
-        prefix = <CheckOutlined />;
-        className = 'complete';
-      } else if (index === current - 1) {
-        className = 'process';
-      } else if (index >= current) {
-        className = 'uncomplete';
-      }
-      return (
-        <span className={`${prefixCls}-tablist-stepbar stepbar-${className}`} key={tab.props.value}>
-          <TabButton
-            value={tab.props.value || index}
-            size={size}
-            onClick={onClick}
-            prefix={prefix}
-            active={activeValue === index}
-            disabled={tab.props.disabled}
-          >
-            {tab.props.label}
-          </TabButton>
-        </span>
-      );
+    const validCurrent = !isNil(current) && current < 0 ? defaultCurrent : current;
+    const [mergedCurrent, setCurrent] = useControlledState<number>(validCurrent, defaultCurrent);
+    const prefixCls = usePrefixCls('steps');
+    const stepCls = classnames(prefixCls, classname, customClassName, {
+      [`${prefixCls}-${size}`]: size,
     });
 
-    const tabPanels = elementList.map((tab: React.ReactElement<WithCommonProps<TabProps>>, index) => {
-      if (isNil(tab.props.value)) {
-        return React.cloneElement(<Tab />, { ...tab.props, value: index, key: tab.props.value });
+    const childrenToArray = () =>
+      React.Children.toArray(children).filter(
+        (node) => React.isValidElement(node) && node.type === Step
+      ) as React.ReactElement<StepProps & { stepIndex?: number }>[];
+
+    const onStepClick = (next: number) => {
+      if (next < mergedCurrent) {
+        setCurrent(next);
+        onChange?.(next);
       }
-      return React.cloneElement(<Tab />, { ...tab.props, key: tab.props.value });
+    };
+    const steps = childrenToArray().map((child: React.ReactElement<StepProps>, index) => {
+      const { status, onClick: propOnClick, ...restStepProps } = child.props;
+      const stepIndex = index + 1;
+      const childProps: StepProps & { stepIndex?: number; active?: boolean } = {
+        stepIndex,
+        status,
+        onClick: () => {
+          onStepClick(stepIndex);
+          propOnClick?.(stepIndex);
+        },
+        ...restStepProps,
+      };
+      if (!child.props.status) {
+        if (stepIndex === mergedCurrent) {
+          childProps.status = 'process';
+        } else if (stepIndex < mergedCurrent) {
+          childProps.status = 'finish';
+        } else {
+          childProps.status = 'pending';
+        }
+      }
+
+      childProps.active = stepIndex === mergedCurrent;
+
+      return React.cloneElement(child, { ...childProps, key: stepIndex });
     });
 
     return (
-      <StepsContext.Provider value={{ activeValue }}>
-        <div className={tabClasses} data-testid="steps" ref={ref} {...restProps}>
-          <div data-testid="tablist" className={`${prefixCls}-tablist steps-container`}>
-            {tabs}
-          </div>
-          <div data-testid="tabpanels" className={`${prefixCls}-tabpanels`}>
-            {tabPanels}
-          </div>
+      <div className={stepCls} data-testid="steps" ref={ref} {...restProps}>
+        <div data-testid="step-bars" className={`${prefixCls}-container`}>
+          {steps}
         </div>
-      </StepsContext.Provider>
+      </div>
     );
   }
 );
-Steps.defaultProps = {
-  current: 1,
-  size: 'normal',
-};
 
 Steps.displayName = 'Steps';
 
