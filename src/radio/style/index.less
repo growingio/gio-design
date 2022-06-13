@@ -112,7 +112,6 @@
 
 .@{radio__group} {
   display: inline-flex;
-  // gap: 16px;
   justify-content: flex-start;
 
   &__horizontal {
@@ -121,12 +120,6 @@
     .@{radio__wrapper} + .@{radio__wrapper} {
       margin-left: 16px;
     }
-    @supports (column-gap: 16px) {
-      column-gap: 16px;
-      .@{radio__wrapper} + .@{radio__wrapper} {
-        margin-left: 0;
-      }
-    }
   }
 
   &__vertical {
@@ -134,12 +127,6 @@
     align-items: flex-start;
     .@{radio__wrapper} + .@{radio__wrapper} {
       margin-top: 16px;
-    }
-    @supports (row-gap: 16px) {
-      row-gap: 16px;
-      .@{radio__wrapper} + .@{radio__wrapper} {
-        margin-top: 0;
-      }
     }
   }
 }
