@@ -32,6 +32,7 @@ Default.args = {
   indeterminate: false,
   disabled: false,
 };
+// Indeterminate
 export const Indeterminate = DefaultTemplate.bind({});
 Indeterminate.args = {
   children: 'Apple',
