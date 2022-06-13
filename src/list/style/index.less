@@ -9,7 +9,11 @@
   margin: 0;
   padding: 8px;
   row-gap: 4px;
-
+  @supports not (row-gap: 4px) {
+    &--item + &--item {
+      margin-top: 4px;
+    }
+  }
   &.@{cascader-prefix-cls}--list {
     .cascader-list-style();
   }

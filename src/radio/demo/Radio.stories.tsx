@@ -180,7 +180,13 @@ const JSXTemplateGroup: Story<IRadioGroupProps> = (args) => {
   };
   return (
     <>
-      <RadioGroup {...args} value={selectedValue} onChange={onChange}>
+      <RadioGroup {...args} value={selectedValue} layout="horizontal" onChange={onChange}>
+        {tabs.map((t) => (
+          <Radio value={t.value}>{t.value}</Radio>
+        ))}
+      </RadioGroup>
+      <hr />
+      <RadioGroup {...args} value={selectedValue} layout="vertical" onChange={onChange}>
         {tabs.map((t) => (
           <Radio value={t.value}>{t.value}</Radio>
         ))}

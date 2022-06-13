@@ -5,6 +5,7 @@ import Checkbox, { CheckboxGroup } from '../index';
 import { CheckboxProps } from '../interface';
 import '../style';
 import Docs from './CheckboxPage';
+import './demos.less';
 
 export default {
   title: 'Upgraded/Checkbox',
@@ -30,6 +31,11 @@ Default.args = {
   defaultChecked: false,
   indeterminate: false,
   disabled: false,
+};
+export const Indeterminate = DefaultTemplate.bind({});
+Indeterminate.args = {
+  children: 'Apple',
+  indeterminate: true,
 };
 
 export const Basic = () => (
@@ -75,13 +81,26 @@ export const Controlled = () => {
 };
 
 export const Group = () => (
-  <Checkbox.Group
-    defaultValue={['value2']}
-    options={[
-      { label: 'Checkbox 1', value: 'value1' },
-      { label: 'Checkbox 2', value: 'value2' },
-      { label: 'Checkbox 3', value: 'value3', disabled: true },
-      { label: 'Checkbox 4', value: 'value4', onChange: (event) => console.log(event.target.checked) },
-    ]}
-  />
+  <>
+    <Checkbox.Group
+      defaultValue={['value2']}
+      options={[
+        { label: 'Checkbox 1', value: 'value1' },
+        { label: 'Checkbox 2', value: 'value2' },
+        { label: 'Checkbox 3', value: 'value3', disabled: true },
+        { label: 'Checkbox 4', value: 'value4', onChange: (event: { target: { checked?: boolean; }; }) => console.log(event.target.checked) },
+      ]}
+    />
+    <hr />
+    <Checkbox.Group
+      layout="vertical"
+      defaultValue={['value2']}
+      options={[
+        { label: 'Checkbox 1', value: 'value1' },
+        { label: 'Checkbox 2', value: 'value2' },
+        { label: 'Checkbox 3', value: 'value3', disabled: true },
+        { label: 'Checkbox 4', value: 'value4', onChange: (event: { target: { checked?: boolean; }; }) => console.log(event.target.checked) },
+      ]}
+    />
+  </>
 );

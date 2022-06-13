@@ -27,4 +27,28 @@
       float: right;
     }
   }
+  @supports not (column-gap: 8px) and not (row-gap: 4px) {
+    .@{list-prefix-cls} {
+      display: grid;
+      .@{list-prefix-cls}--item {
+        margin: 4px 8px 0 0;
+        &:nth-of-type(2n) {
+          margin-right: 0;
+        }
+        &:nth-of-type(1) {
+          margin-top: 0;
+        }
+        &:nth-of-type(2) {
+          margin-top: 0;
+        }
+      }
+    }
+    &__bottom {
+      &__button-group {
+        button + button {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
 }
