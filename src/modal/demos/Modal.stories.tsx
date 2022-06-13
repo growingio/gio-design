@@ -30,14 +30,17 @@ export const Default: Story<ModalProps> = (args) => {
         onClose={() => {
           setVisible(false);
         }}
-        onOk={() => {
-          setVisible(false);
-        }}
-      />
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
     </div>
   );
 };
-
+Default.args = {
+  title: 'Dialog Title',
+};
 export const CustomButton: Story<ModalProps> = () => {
   const [visible, setVisible] = useState(false);
   return (
@@ -57,7 +60,9 @@ export const CustomButton: Story<ModalProps> = () => {
         onOk={() => {
           setVisible(false);
         }}
-      />
+      >
+        <div>本次修改将同时影响该分析所在的其他 20 个看板，是否直接保存修改？或者您可对其进行另存。</div>
+      </Modal>
     </div>
   );
 };
@@ -78,7 +83,9 @@ export const OnCloseAndOnOk: Story<ModalProps> = () => {
           action('Close');
           setVisible(false);
         }}
-      />
+      >
+        <div>本次修改将同时影响该分析所在的其他 20 个看板，是否直接保存修改？或者您可对其进行另存。</div>
+      </Modal>
     </div>
   );
 };
@@ -207,3 +214,17 @@ export const UseModal: Story<IModalStaticFuncConfig> = () => {
     </>
   );
 };
+
+export const Imperative = () => (
+  <Button
+    type="secondary"
+    onClick={() =>
+      Modal.open({
+        title: '弹窗标题',
+        content: 'Confirm content',
+      })
+    }
+  >
+    Open Modal
+  </Button>
+);

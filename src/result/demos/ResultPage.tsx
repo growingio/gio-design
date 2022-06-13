@@ -1,7 +1,7 @@
-import { useIntl } from "react-intl";
+import { useIntl } from 'react-intl';
 import { Canvas, Title, Heading, Story, Subheading, ArgsTable, Description, Subtitle } from '@storybook/addon-docs';
 import { Figma } from 'storybook-addon-designs/esm/blocks';
-import React from "react";
+import React from 'react';
 import Result from '..';
 
 export default function ResultPage() {
@@ -89,7 +89,7 @@ export default function ResultPage() {
         })}
       </Description>
       <Canvas>
-        <Story id="upgraded-result--error" />
+        <Story id="upgraded-result--error-result-page" />
       </Canvas>
 
       <Heading>{formatMessage({ defaultMessage: 'Empty State' })}</Heading>
@@ -133,7 +133,8 @@ export default function ResultPage() {
       <Subheading>{formatMessage({ defaultMessage: 'Size' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: 'Page 有 `Normal（450px`）、`Small（220px）`两种尺寸；Emtpy State 有` Normal（300px）`、`Small（150px）`两种尺寸',
+          defaultMessage:
+            'Page 有 `Normal（450px`）、`Small（220px）`两种尺寸；Emtpy State 有` Normal（300px）`、`Small（150px）`两种尺寸',
         })}
       </Description>
       <Canvas>

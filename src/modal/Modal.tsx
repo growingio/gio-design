@@ -38,7 +38,6 @@ const Modal: React.FC<ModalProps> = ({
     const cls = classnames(`${prefix}__footer`);
     const closeBtnCls = classnames(`${prefix}__btn-close`, closeButtonProps?.className ?? '');
     const okBtnCls = classnames(`${prefix}__btn-ok`, okButtonProps?.className ?? '');
-    const useOkBtn = !!onOk && typeof onOk === 'function';
 
     return (
       <div className={cls}>
@@ -55,30 +54,22 @@ const Modal: React.FC<ModalProps> = ({
           >
             {customizeCloseText ?? closeText ?? '取消'}
           </Button>
-          {useOkBtn && (
-            <Button
-              type="primary"
-              loading={confirmLoading ?? okButtonProps?.loading}
-              className={okBtnCls}
-              style={{ padding: '7px 13px', ...okButtonProps?.style }}
-              onClick={(e) => {
-                onOk?.(e);
-                okButtonProps?.onClick?.(e);
-              }}
-              {...omit(okButtonProps, 'style', 'onClick', 'className', 'loading')}
-            >
-              {customizeOKText ?? okText ?? '确定'}
-            </Button>
-          )}
+          <Button
+            type="primary"
+            loading={confirmLoading ?? okButtonProps?.loading}
+            className={okBtnCls}
+            style={{ padding: '7px 13px', ...okButtonProps?.style }}
+            onClick={(e) => {
+              onOk?.(e);
+              okButtonProps?.onClick?.(e);
+            }}
+            {...omit(okButtonProps, 'style', 'onClick', 'className', 'loading')}
+          >
+            {customizeOKText ?? okText ?? '确定'}
+          </Button>
         </div>
       </div>
     );
-  };
-
-  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (onClose && typeof onClose === 'function') {
-      onClose?.(e);
-    }
   };
 
   return (
@@ -86,7 +77,7 @@ const Modal: React.FC<ModalProps> = ({
       data-testid="modal"
       keyboard
       maskClosable={maskClosable}
-      onClose={handleClose}
+      onClose={onClose}
       prefixCls={prefix}
       className={modalCls}
       wrapClassName={wrapperCls}
