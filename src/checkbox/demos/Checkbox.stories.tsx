@@ -95,13 +95,12 @@ export const Group = () => (
     <hr />
     <Checkbox.Group
       layout="vertical"
-      defaultValue={['value2']}
-      options={[
-        { label: 'Checkbox 1', value: 'value1' },
-        { label: 'Checkbox 2', value: 'value2' },
-        { label: 'Checkbox 3', value: 'value3', disabled: true },
-        { label: 'Checkbox 4', value: 'value4', onChange: (event: { target: { checked?: boolean; }; }) => console.log(event.target.checked) },
-      ]}
-    />
+      defaultValue={['value2', 'value3']}
+    >
+      <Checkbox value="value1">Checkbox 1</Checkbox>
+      <Checkbox value="value2">Checkbox 2</Checkbox>
+      <Checkbox value="value3" disabled>Checkbox 3</Checkbox>
+      <Checkbox value="value4" indeterminate disabled>Checkbox 4</Checkbox>
+    </Checkbox.Group>
   </>
 );

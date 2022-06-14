@@ -100,6 +100,27 @@
       vertical-align: middle;
       cursor: pointer;
     }
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+      content: '';
+    }
+    &:checked {
+      &::after {
+        top: 0;
+        left: 4px;
+        box-sizing: content-box;
+        width: 5px;
+        height: 9px;
+        border: 1px solid var(--active-inner);
+        border-top: 0;
+        border-left: 0;
+        transform: rotate(var(--r, 20deg));
+      }
+    }
   }
   input[type='checkbox'].@{checkbox-checked-prefix-cls} {
     &::after {
