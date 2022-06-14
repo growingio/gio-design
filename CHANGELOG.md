@@ -1,3 +1,10 @@
+## [22.17.2](https://github.com/growingio/gio-design/compare/v22.17.1...v22.17.2) (2022-06-14)
+
+
+### Bug Fixes
+
+* **list:** fix multiple list checkbox style error ([#2071](https://github.com/growingio/gio-design/issues/2071)) ([acc6828](https://github.com/growingio/gio-design/commit/acc68282cd263a6e36c2b7e38ea88adec58be9c7))
+
 ## [22.17.1](https://github.com/growingio/gio-design/compare/v22.17.0...v22.17.1) (2022-06-14)
 
 
