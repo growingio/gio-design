@@ -1,3 +1,11 @@
+## [22.17.1](https://github.com/growingio/gio-design/compare/v22.17.0...v22.17.1) (2022-06-14)
+
+
+### Bug Fixes
+
+* **style:** fix gap uncompatable ([bf83a6b](https://github.com/growingio/gio-design/commit/bf83a6b823ed85329cf4a1b1839e2a6a96f8695d))
+* **style:** fix gap uncompatable ([#2069](https://github.com/growingio/gio-design/issues/2069)) ([79aacca](https://github.com/growingio/gio-design/commit/79aaccabf2174fe284e2ac168d6fcf831e790b47))
+
 # [22.17.0](https://github.com/growingio/gio-design/compare/v22.16.2...v22.17.0) (2022-06-09)
 
 
