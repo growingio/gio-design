@@ -8,7 +8,6 @@
   flex-flow: column;
   margin: 0;
   padding: 8px;
-  row-gap: 4px;
 
   &.@{cascader-prefix-cls}--list {
     .cascader-list-style();
@@ -65,6 +64,10 @@
     vertical-align: middle;
     border-radius: 4px;
     cursor: pointer;
+
+    &:not(:first-child) {
+      margin-top: 4px;
+    }
 
     &--drag {
       justify-content: flex-start;
@@ -153,6 +156,7 @@
     }
 
     &--checkbox {
+      margin-right: 8px;
       font-size: 0;
     }
 

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-console */
 import React, { useEffect, useRef, useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
@@ -10,7 +12,23 @@ import { FormLayout, FormProps } from '../interface';
 import '../style';
 import '../../input/style';
 import '../../button/style';
-import { Button, Checkbox, Divider, Input, Modal, SearchBar, Toast } from '../../index';
+import {
+  Button,
+  Checkbox,
+  DatePicker,
+  Divider,
+  Input,
+  ListPicker,
+  Modal,
+  PastTimePicker,
+  Radio,
+  SearchBar,
+  Select,
+  Toast,
+  Toggle,
+  Upload,
+  List,
+} from '../../index';
 import Switch from '../../switch';
 import PriceInput from './PriceInput';
 
@@ -541,3 +559,141 @@ export const StaticValidate = () => (
     </Form.Item>
   </Form>
 );
+
+export const OtherComponents = () => {
+  const onFinish = (values: any) => {
+    action('Received values of form: ')(values);
+  };
+  const normFile = (e: any) => {
+    console.log('Upload event:', e);
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e?.fileList;
+  };
+  return (
+    <Form
+      name="validate_other"
+      layout="horizontal"
+      onFinish={onFinish}
+      onValuesChange={(changedValues, allValues) => {
+        action('Values changed:')(changedValues, allValues);
+      }}
+      initialValues={{
+        inputNumber: 3,
+        checkboxGroup: ['A', 'B'],
+        pastTimePicker: 'day:8,1',
+        switch: 1,
+      }}
+    >
+      <Form.Item label="Plain Text">
+        <span className="ant-form-text">China</span>
+      </Form.Item>
+      <Form.Item name="select" label="Select" rules={[{ required: true, message: 'Please select your country!' }]}>
+        <Select placeholder="Please select a country">
+          <Select.Option value="china">China</Select.Option>
+          <Select.Option value="usa">U.S.A</Select.Option>
+        </Select>
+      </Form.Item>
+
+      <Form.Item
+        name="listPicker"
+        label="ListPicker[multiple]"
+        rules={[{ required: true, message: 'Please select your favourite colors!', type: 'array' }]}
+      >
+        <ListPicker style={{ width: '100%' }} autoWidth model="multiple" placeholder="Please select favourite colors">
+          <List
+            options={[
+              { value: 'red', label: 'red' },
+              { value: 'green', label: 'green' },
+              { value: 'blue', label: 'blue' },
+            ]}
+          />
+        </ListPicker>
+      </Form.Item>
+
+      <Form.Item label="InputNumber">
+        <Input.InputNumber min={1} max={10} style={{ width: '100%' }} />
+      </Form.Item>
+
+      <Form.Item name="switch" label="Switch" getValueFromEvent={(e) => Number(e.target.value)}>
+        <Switch
+          options={[
+            { value: 0, label: 'Off' },
+            { value: 1, label: 'On' },
+          ]}
+        />
+      </Form.Item>
+      <Form.Item name="toggle" label="Toggle" valuePropName="checked">
+        <Toggle />
+      </Form.Item>
+      <Form.Item name="pastTimePicker" label="PastTimePicker" trigger="onSelect">
+        <PastTimePicker placeholder="Please..." />
+      </Form.Item>
+      <Form.Item name="datePicker" label="DatePicker">
+        <DatePicker placeholder="Please..." />
+      </Form.Item>
+      <Form.Item name="radioGroup" label="Radio.Group">
+        <Radio.Group>
+          <Radio value="a">item 1</Radio>
+          <Radio value="b">item 2</Radio>
+          <Radio value="c">item 3</Radio>
+        </Radio.Group>
+      </Form.Item>
+
+      <Form.Item
+        name="radioGroupVertical"
+        label="Radio.Vertical"
+        rules={[{ required: true, message: 'Please pick an item!' }]}
+      >
+        <Radio.Group layout="vertical">
+          <Radio value="a">item 1</Radio>
+          <Radio value="b">item 2</Radio>
+          <Radio value="c">item 3</Radio>
+        </Radio.Group>
+      </Form.Item>
+
+      <Form.Item name="checkboxGroup" label="Checkbox.Group">
+        <Checkbox.Group>
+          <Checkbox value="A" style={{ lineHeight: '32px' }}>
+            A
+          </Checkbox>
+
+          <Checkbox value="B" style={{ lineHeight: '32px' }} disabled>
+            B
+          </Checkbox>
+
+          <Checkbox value="C" style={{ lineHeight: '32px' }}>
+            C
+          </Checkbox>
+
+          <Checkbox value="D" style={{ lineHeight: '32px' }}>
+            D
+          </Checkbox>
+
+          <Checkbox value="E" style={{ lineHeight: '32px' }}>
+            E
+          </Checkbox>
+
+          <Checkbox value="F" style={{ lineHeight: '32px' }}>
+            F
+          </Checkbox>
+        </Checkbox.Group>
+      </Form.Item>
+
+      <Form.Item name="upload" label="Upload" valuePropName="fileList" getValueFromEvent={normFile}>
+        <Upload name="logo" action="/upload.do" type="avatar" />
+      </Form.Item>
+
+      <Form.Item label="Dragger">
+        <Upload style={{ width: '100%' }} name="files" action="/upload.do" type="drag" />
+      </Form.Item>
+
+      <Form.Item>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
+  );
+};

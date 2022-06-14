@@ -138,7 +138,10 @@ export default function FormPage() {
       <Canvas>
         <Story id="upgraded-form--static-validate" />
       </Canvas>
-
+      <Subheading>{formatMessage({ defaultMessage: '其他表单控件' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-form--other-components" />
+      </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={FormWithoutRef} />
     </>
