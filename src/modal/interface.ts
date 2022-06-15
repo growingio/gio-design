@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactElement, ReactNode } from 'react';
 import { ButtonProps, ButtonType } from '../button';
 
@@ -5,11 +6,10 @@ export type TModalSize = 'normal' | 'fixed' | 'full';
 
 type getContainerFunc = () => HTMLElement;
 
-export interface ConfirmModalProps extends ModalFuncProps {
+export interface ConfirmModalProps extends IModalStaticFuncConfig {
   afterClose?: () => void;
   close: (...args: any[]) => void;
-  autoFocusButton?: null | 'ok' | 'cancel';
-  iconPrefixCls?: string;
+  visible?: boolean;
 }
 
 export interface ModalProps {
@@ -70,30 +70,16 @@ export interface ModalProps {
   focusTriggerAfterClose?: boolean;
 }
 
-export interface ModalFuncProps extends Omit<ModalProps, 'onOk' | 'onClose'> {
-  content?: React.ReactNode;
-  // TODO: find out exact types
-  onOk?: (...args: any[]) => any;
-  onClose?: (...args: any[]) => any;
-  cancelButtonProps?: ButtonProps;
-  icon?: React.ReactNode;
-  okCancel?: boolean;
-  autoFocusButton?: null | 'ok' | 'cancel';
-}
-
-export interface IModalStaticFuncConfig extends Omit<ModalProps, 'visible' | 'onOk' | 'onClose' | 'pending'> {
+export interface IModalStaticFuncConfig extends Omit<ModalProps, 'visible' | 'onOk' | 'onClose'> {
   content?: ReactNode;
-  // 函数式调用时的前缀 icon
-  icon?: ReactNode;
-  // 是否显示取消按钮
-  showClose?: boolean;
-  onOk?: () => void | Promise<unknown>;
-  onClose?: () => void | Promise<unknown>;
+  onOk?: (...args: any[]) => void | Promise<unknown>;
+  onClose?: (...args: any[]) => void | Promise<unknown>;
 }
+export type ConfigUpdate = IModalStaticFuncConfig | ((prevConfig: IModalStaticFuncConfig) => IModalStaticFuncConfig);
 
 export interface IModalStaticFuncReturn {
   destroy: () => void;
-  update: (config: IModalStaticFuncConfig) => void;
+  update: (config: ConfigUpdate) => void;
 }
 
 export interface IModalStaticFunc {
@@ -113,8 +99,4 @@ export interface IHookModalProps {
 
 export interface IUseModal {
   (): [IModalStaticFunctions, ReactElement];
-}
-
-export interface IModalConfigs {
-  prefixCls?: string;
 }

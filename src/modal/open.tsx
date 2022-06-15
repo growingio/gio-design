@@ -1,19 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import type { ModalFuncProps, ConfirmModalProps } from './interface';
+import type { IModalStaticFuncConfig, ConfirmModalProps, ConfigUpdate } from './interface';
 import ConfirmModal from './ConfirmModal';
 
 export const destroyFns: Array<() => void> = [];
 
-type ConfigUpdate = ModalFuncProps | ((prevConfig: ModalFuncProps) => ModalFuncProps);
-
-export type ModalFunc = (props: ModalFuncProps) => {
-  destroy: () => void;
-  update: (configUpdate: ConfigUpdate) => void;
-};
-
-export default function open(config: ModalFuncProps) {
+export default function open(config: IModalStaticFuncConfig) {
   const div = document.createElement('div');
   document.body.appendChild(div);
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
