@@ -1,3 +1,15 @@
+# [23.4.0](https://github.com/growingio/gio-design/compare/v23.3.2...v23.4.0) (2022-06-15)
+
+
+### Bug Fixes
+
+* **steps:** fix some steps bugs and add test cases ([#2066](https://github.com/growingio/gio-design/issues/2066)) ([610eb51](https://github.com/growingio/gio-design/commit/610eb513220969c240d38eff05d1e8b9b2a34bd3))
+
+
+### Features
+
+* **list-picker, select:** support triggerLoading prop ([#2065](https://github.com/growingio/gio-design/issues/2065)) ([1273841](https://github.com/growingio/gio-design/commit/1273841bd1a5eeee695db2688abb5bccfd02bc43))
+
 ## [23.3.2](https://github.com/growingio/gio-design/compare/v23.3.1...v23.3.2) (2022-06-08)
 
 
