@@ -1,6 +1,5 @@
 import { fireEvent, render, screen, within, act } from '@testing-library/react';
 import React from 'react';
-import { renderHook } from '@testing-library/react-hooks';
 import { Button } from '../..';
 import Modal from '..';
 import { sleep } from '../../utils/test';
@@ -49,36 +48,7 @@ describe('Test ConfirmModal', () => {
     });
     expect(screen.queryByText('Modal.open content')).not.toBeInTheDocument();
   });
-  it(' Modal.useModal', () => {
-    const { result } = renderHook(() => Modal.useModal());
-    expect(result.current[0].open).toBeInstanceOf(Function);
-  });
-  it('render by hook Modal.useModal', () => {
-    const Demo = () => {
-      const [modalFuncs, hookModal] = Modal.useModal();
-      const handleConfirm = () => {
-        modalFuncs.open({
-          title: 'useModal',
-          content: 'useModal content',
-        });
-      };
 
-      return (
-        <>
-          <Button type="secondary" onClick={() => handleConfirm()}>
-            Open Modal Hook
-          </Button>
-          {hookModal}
-        </>
-      );
-    };
-    const { container } = render(<Demo />);
-
-    fireEvent.click(container.querySelector('button'));
-    expect(screen.queryByTestId('modal')).toBeInTheDocument();
-    fireEvent.click(screen.getByLabelText('Close'));
-    expect(screen.queryByTestId('modal')).not.toBeInTheDocument();
-  });
   it('should close when click OkButton', () => {
     jest.useFakeTimers('modern');
     const onOk = jest.fn();

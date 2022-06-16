@@ -120,6 +120,7 @@ export const FixedWidthDemo: Story<ModalProps> = () => {
       <Modal
         title="弹窗标题"
         size="fixed"
+        maskClosable
         visible={visible}
         onClose={() => {
           setVisible(false);
