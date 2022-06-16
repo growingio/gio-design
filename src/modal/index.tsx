@@ -2,7 +2,7 @@ import OriginalModal from './Modal';
 import open, { destroyFns } from './open';
 import useModal from './useModal';
 
-import { ModalFuncProps, IUseModal, IModalStaticFunctions } from './interface';
+import { IUseModal, IModalStaticFunctions, IModalStaticFuncConfig } from './interface';
 
 type ModalType = typeof OriginalModal &
   IModalStaticFunctions & {
@@ -12,7 +12,7 @@ type ModalType = typeof OriginalModal &
 
 const Modal = OriginalModal as ModalType;
 
-Modal.open = function confirmFn(props: ModalFuncProps) {
+Modal.open = function confirmFn(props: IModalStaticFuncConfig) {
   return open(props);
 };
 

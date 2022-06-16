@@ -80,12 +80,14 @@
 
   &__footer {
     display: flex;
-    gap: 8px;
     align-items: center;
     justify-content: flex-end;
 
-    .@{modal-prefix-cls}__btn-close {
-      margin-right: 8px;
+    > *:not(:first-child) {
+      margin-left: 8px;
+    }
+    .@{modal-prefix-cls}__btn-close + .@{modal-prefix-cls}__btn-ok {
+      margin-left: 8px;
     }
   }
 

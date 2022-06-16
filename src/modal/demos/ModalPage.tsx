@@ -109,6 +109,29 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-modal--use-modal" />
       </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'Modal.destroyAll' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage:
+            '使用 `Modal.destroyAll()` 可以销毁弹出的确认窗。通常用于路由监听当中，处理路由前进、后退不能销毁确认对话框的问题',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-modal--destroy-all-fn" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: 'Modal.open 调用' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '手动更新和关闭` Modal.open` 方式创建的对话框。',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-modal--manual-close" />
+      </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '嵌套子对话框' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-modal--nested-child" />
+      </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Modal} />
     </>

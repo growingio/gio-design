@@ -10,9 +10,21 @@
       display: grid;
       grid-auto-rows: 36px;
       grid-template-columns: 144px 136px;
-      column-gap: 8px;
       .@{list-prefix-cls}--item {
         box-sizing: content-box;
+        margin-right: 8px;
+
+        &:nth-of-type(2n) {
+          margin-right: 0;
+        }
+
+        &:nth-of-type(1) {
+          margin-top: 0;
+        }
+
+        &:nth-of-type(2) {
+          margin-top: 0;
+        }
       }
     }
   }
@@ -24,8 +36,16 @@
 
     &__button-group {
       display: flex;
-      gap: 5px;
+      // gap: 5px;
       float: right;
+
+      > * {
+        margin-left: 5px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
     }
   }
 }

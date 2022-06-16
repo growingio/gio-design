@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import '../style';
 import { uniqueId } from 'lodash';
-import {
-  WriteOutlined,
-  CursorOutlined,
-  TerminalOutlined,
-  GaugeOutlined,
-} from '@gio-design/icons';
+import { WriteOutlined, CursorOutlined, TerminalOutlined, GaugeOutlined } from '@gio-design/icons';
 import classNames from 'classnames';
 import { action } from '@storybook/addon-actions';
 import CheckboxItem from '../../list/inner/CheckboxItem';
@@ -155,12 +150,12 @@ export const Single = (args: ListPickerProps) => {
     </ListPicker>
   );
 };
-// bug args:ListPickerProps args = {} 第一次渲染无问题，onChange setValue后 直接导致页面卡死 
+// bug args:ListPickerProps args = {} 第一次渲染无问题，onChange setValue后 直接导致页面卡死
 export const Multiple = () => {
   const [value, setValue] = useState<undefined | string[]>(['apple']);
   const [activeTab, setActiveTab] = useState('tab1');
   const onChange = (val: string[]) => {
-    console.log('val', val)
+    console.log('val', val);
     setValue(val);
   };
   return (
@@ -175,7 +170,7 @@ export const Multiple = () => {
       }}
       max={2}
       onMultipleOverflow={(v) => {
-        console.log('onMultipleOverflow value', v)
+        console.log('onMultipleOverflow value', v);
       }}
       allowClear
       placeholder="请选择"
@@ -195,7 +190,7 @@ export const Multiple = () => {
               title="分组1"
               prefix={() => <WriteOutlined />}
               options={[
-                { label: '苹果', value: 'apple',prefix:<WriteOutlined /> },
+                { label: '苹果', value: 'apple', prefix: <WriteOutlined /> },
                 { label: '香蕉', value: 'banana' },
               ]}
             />
@@ -281,30 +276,32 @@ export const AllChose = (args: ListPickerProps) => {
         <Tab label="tab1" value="tab1">
           <List.Selection>
             {(context) => {
-              console.log('context',context.value);
-             return <>
-              <CheckboxItem
-                selected={(context.value as string[])?.length === 2}
-                onClick={() => {
-                  if ((context.value as string[])?.length === 2) {
-                    context.onChange([]);
-                  } else {
-                    context.onChange(Array.from(context.options.keys()));
-                  }
-                }}
-                label="全部"
-                value="all"
-              />
+              console.log('context', context.value);
+              return (
+                <>
+                  <CheckboxItem
+                    selected={(context.value as string[])?.length === 2}
+                    onClick={() => {
+                      if ((context.value as string[])?.length === 2) {
+                        context.onChange([]);
+                      } else {
+                        context.onChange(Array.from(context.options.keys()));
+                      }
+                    }}
+                    label="全部"
+                    value="all"
+                  />
 
-              <List
-                options={[
-                  { label: '1', value: '1' },
-                  { label: '2', value: '2' },
-                ]}
-                id="id"
-                title="有item"
-              />
-            </>
+                  <List
+                    options={[
+                      { label: '1', value: '1' },
+                      { label: '2', value: '2' },
+                    ]}
+                    id="id"
+                    title="有item"
+                  />
+                </>
+              );
             }}
           </List.Selection>
         </Tab>
@@ -339,7 +336,7 @@ export const Selection = (args: ListPickerProps) => {
 };
 export const Default: Story<ListPickerProps> = (args: ListPickerProps) => {
   const [activeTab, setActiveTab] = useState('tab1');
-  const [value,setValue] = useState([]);
+  const [value, setValue] = useState([]);
   const options = [
     {
       label: `List Item 1`,
@@ -359,7 +356,7 @@ export const Default: Story<ListPickerProps> = (args: ListPickerProps) => {
   ];
   return (
     <>
-      <ListPicker placeholder="请选择" value="1" >
+      <ListPicker placeholder="请选择" value="1">
         {/* <Recent /> */}
         <List options={options} />
       </ListPicker>
@@ -369,7 +366,7 @@ export const Default: Story<ListPickerProps> = (args: ListPickerProps) => {
       <ListPicker
         {...args}
         style={{ width: '240px' }}
-        model='multiple'
+        model="multiple"
         placeholder="请选择"
         // needConfirm={false}
         getContainer={(node) => node?.parentElement || document.body}
@@ -396,15 +393,14 @@ export const Default: Story<ListPickerProps> = (args: ListPickerProps) => {
       <ListPicker
         {...args}
         style={{ width: '240px' }}
-        model='multiple'
+        model="multiple"
         placeholder="请选择"
-        
         value={value}
-        onChange={(v)=>{
+        onChange={(v) => {
           console.log('onChange触发');
-          setValue(v as string[])
+          setValue(v as string[]);
         }}
-        onConfirm={(v)=>setValue(v as string[])}
+        onConfirm={(v) => setValue(v as string[])}
         getContainer={(node) => node?.parentElement || document.body}
       >
         <Tabs value={activeTab} defaultValue="tab1" onChange={(key: string) => setActiveTab(key)}>
@@ -425,17 +421,16 @@ export const Default: Story<ListPickerProps> = (args: ListPickerProps) => {
       </ListPicker>
 
       <h2>controlledState without onConfim</h2>
-        <p>the value not change</p>
+      <p>the value not change</p>
       <ListPicker
         {...args}
         style={{ width: '240px' }}
-        model='multiple'
+        model="multiple"
         placeholder="请选择"
         value={value}
-        
-        onChange={(v)=>{
+        onChange={(v) => {
           console.log('onChange触发');
-          setValue(v as string[])
+          setValue(v as string[]);
         }}
         // onConfirm={(v)=>setValue(v as string[])}
         getContainer={(node) => node?.parentElement || document.body}
@@ -499,71 +494,71 @@ const iconMap = {
   prepared: <CursorOutlined size="14px" />,
 };
 const renderWrapper = (o: Tmesurements) => (element: React.ReactElement) =>
-(
-  <Popover
-    allowArrow
-    placement="right"
-    strategy="fixed"
-    triggerStyle={{ display: 'block' }}
-    content={
-      <Card style={{ width: '320px' }}>
-        <Card.Meta title={o.name} description={o.id} />
-        <p>{`${o.id}${o.name}${o.type}`}</p>
-        <Skeleton.Image style={{ width: '100%' }} />
-        <Table
-          title="事件属性"
-          pagination={false}
-          columns={[
-            {
-              dataIndex: 'id',
-              title: 'Id',
-            },
-            {
-              dataIndex: 'name',
-              title: 'Name',
-            },
-          ]}
-          dataSource={Array(2)
-            .fill('')
-            .map((_, index) => ({
-              id: `${index + 1 * 1000}`,
-              name: `Name ${index + 1}`,
-            }))}
-        />
-      </Card>
-    }
-  >
-    {element}
-  </Popover>
-);
+  (
+    <Popover
+      allowArrow
+      placement="right"
+      strategy="fixed"
+      triggerStyle={{ display: 'block' }}
+      content={
+        <Card style={{ width: '320px' }}>
+          <Card.Meta title={o.name} description={o.id} />
+          <p>{`${o.id}${o.name}${o.type}`}</p>
+          <Skeleton.Image style={{ width: '100%' }} />
+          <Table
+            title="事件属性"
+            pagination={false}
+            columns={[
+              {
+                dataIndex: 'id',
+                title: 'Id',
+              },
+              {
+                dataIndex: 'name',
+                title: 'Name',
+              },
+            ]}
+            dataSource={Array(2)
+              .fill('')
+              .map((_, index) => ({
+                id: `${index + 1 * 1000}`,
+                name: `Name ${index + 1}`,
+              }))}
+          />
+        </Card>
+      }
+    >
+      {element}
+    </Popover>
+  );
 const renderWrapper2 = (o: Tmesurements) => (element: React.ReactElement) =>
-(
-  <Popover
-    allowArrow
-    strategy="fixed"
-    placement="right"
-    content={
-      <Card style={{ width: 320 }}>
-        <Card.Meta
-          title={
-            <div>
-              {o.name}
-              <Tag status="draft" style={{ marginLeft: 8 }}>
-                {o.type}
-              </Tag>
-            </div>
-          }
-          description={o.id}
-        />
-        <Divider style={{ width: '100%' }} />
-        <div>{o.type}</div>
-      </Card>
-    }
-    triggerStyle={{ display: 'block' }}
-  >
-    {element}
-  </Popover>
-);
+  (
+    <Popover
+      allowArrow
+      strategy="fixed"
+      placement="right"
+      content={
+        <Card style={{ width: 320 }}>
+          <Card.Meta
+            title={
+              <div>
+                {o.name}
+                <Tag status="draft" style={{ marginLeft: 8 }}>
+                  {o.type}
+                </Tag>
+              </div>
+            }
+            description={o.id}
+          />
+          <Divider style={{ width: '100%' }} />
+          <div>{o.type}</div>
+        </Card>
+      }
+      triggerStyle={{ display: 'block' }}
+    >
+      {element}
+    </Popover>
+  );
 const dataFactory = (
   arr: Tmesurements[],
   wrapperFC: (o: Tmesurements) => (element: React.ReactElement) => JSX.Element

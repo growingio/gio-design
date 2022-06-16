@@ -8,8 +8,14 @@ const HookModal: React.ForwardRefRenderFunction<THookModalRef, IHookModalProps> 
   const [visible, setVisible] = useState(true);
   const [mergedConfig, setMergedConfig] = useState({ ...defaultConfig, ...config });
 
-  const handleClose = () => setVisible(false);
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleClose = (...args: any[]) => {
+    setVisible(false);
+    const triggerCancel = args.some((param) => param && param.triggerCancel);
+    if (mergedConfig.onClose && triggerCancel) {
+      mergedConfig.onClose();
+    }
+  };
   useImperativeHandle(ref, () => ({
     destroy: handleClose,
     update: (newConfig: IModalStaticFuncConfig) => {

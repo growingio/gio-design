@@ -69,11 +69,13 @@
 
   &__footer {
     display: flex;
-    gap: 8px;
     align-items: center;
     justify-content: flex-end;
 
-    .@{drawer-prefix-cls}__btn-close {
+    > *:not(:last-child) {
+      margin-right: 8px;
+    }
+    .@{drawer-prefix-cls}__btn-close + .@{drawer-prefix-cls}__btn-ok {
       margin-right: 8px;
     }
   }
