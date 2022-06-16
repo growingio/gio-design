@@ -1,5 +1,5 @@
 import '../../list/style';
-import '../../page/style';
+import '../../result/style';
 import '../../tooltip/style';
 import '../../button/style';
 import '../../popover/style';
