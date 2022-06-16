@@ -3,7 +3,6 @@ import datePickerLocale from '../static-date-picker/locales/en-US';
 import dateRangePickerLocale from '../static-date-range-picker/locales/en-US';
 import listPickerLocale from '../list-picker/locales/en-US';
 import modalLocale from '../modal/locales/en-US';
-import pageLocale from '../page/locales/en-US';
 import timePickerLocale from '../static-time-picker/locales/en-US';
 import searchBarLocale from '../search-bar/locales/en-US';
 import cascaderLocale from '../cascader/locales/en-US';
@@ -26,9 +25,6 @@ export const locale: Locale = {
   },
   DateRangePicker: {
     ...dateRangePickerLocale,
-  },
-  Page: {
-    ...pageLocale,
   },
   Result: {
     ...resultLocale,

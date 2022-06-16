@@ -5,5 +5,5 @@ import '../components/selector-pro/style';
 import '../components/card/style';
 import '../../../../../loading/style'; // new
 import '../../../../../tag/style'; // new
-import '../../../../../page/style'; // new
+import '../../../../../result/style'; // new
 import './index.less';

@@ -1,2 +1,2 @@
-import '../../../../../../../page/style';
+import '../../../../../../../result/style';
 import './index.less';
