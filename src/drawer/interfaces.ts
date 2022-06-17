@@ -20,10 +20,7 @@ export interface DrawerProps {
   maskClosable?: boolean;
   /** 强制渲染  */
   forceRender?: boolean;
-  /**
-   * @deprecated 未来移除，替换成fixed
-   */
-  size?: 'normal' | 'fixed';
+
   /**
    * 是否固定，否则自动撑开
    */
@@ -36,7 +33,7 @@ export interface DrawerProps {
    * mask 蒙版动画className
    */
   maskTransitionName?: string;
-   /**
+  /**
    * dialog 蒙版动画className
    */
   transitionName?: string;
