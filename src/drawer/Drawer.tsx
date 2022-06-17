@@ -12,25 +12,29 @@ export const Drawer: React.FC<DrawerProps> = ({
   title,
   onClose,
   closeIcon,
-  size = 'fixed',
   fixed = true,
-  width,
+  width = 500,
   maskClosable = true,
+  maskTransitionName,
+  transitionName,
   ...restProps
 }: DrawerProps) => {
   const prefix = usePrefixCls('drawer', customPrefixCls);
-  const wrapperCls = classnames(wrapClassName, `${prefix}__wrapper`);
   const closeCls = classnames(`${prefix}__close`);
-
-  const drawerCls = classnames(className, {
-    [`${prefix}-normal`]: width || size === 'normal',
-    [`${prefix}-fixed`]: fixed || !width && size === 'fixed',
+  const isFixed = fixed === true;
+  const drawerCls = classnames(className, `${prefix}-right`, {
+    [`${prefix}-normal`]: !isFixed,
+    [`${prefix}-fixed`]: isFixed,
   });
+  const getTransitionName = (rootPrefixCls: string, motion: string, _transitionName?: string) => {
+    if (_transitionName !== undefined) {
+      return _transitionName;
+    }
+    return `${rootPrefixCls}-${motion}`;
+  };
 
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (onClose && typeof onClose === 'function') {
-      onClose?.(e);
-    }
+    onClose?.(e);
   };
 
   return (
@@ -41,11 +45,12 @@ export const Drawer: React.FC<DrawerProps> = ({
       onClose={handleClose}
       prefixCls={prefix}
       className={drawerCls}
-      wrapClassName={wrapperCls}
-      closable={title !== false}
+      transitionName={getTransitionName(prefix, 'slide-fade', transitionName)}
+      maskAnimation={maskTransitionName ?? 'fade'}
+      wrapClassName={wrapClassName}
       closeIcon={closeIcon || <CloseOutlined className={closeCls} />}
       title={title}
-      width={width || fixed && 500 || size === 'fixed' && 500 || undefined}
+      width={isFixed ? width : undefined}
       {...restProps}
     />
   );

@@ -35,12 +35,12 @@ export default function ListPage() {
       />
       <Heading>{formatMessage({ defaultMessage: '代码演示' })}</Heading>
       <Description>
-       {formatMessage({
+        {formatMessage({
           defaultMessage: ' `drawer` 封装自`rc-dialog`',
         })}
       </Description>
       <Subheading>
-      <a href='https://github.com/react-component/dialog'>rc-dialog</a>
+        <a href="https://github.com/react-component/dialog">rc-dialog</a>
       </Subheading>
       <Subheading>{formatMessage({ defaultMessage: '默认样式' })}</Subheading>
       <Description>
@@ -60,15 +60,7 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-drawer--adaptive" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '无关闭按钮' })}</Subheading>
-      <Description>
-        {formatMessage({
-          defaultMessage: '设置`closable`属性为false,默认为true',
-        })}
-      </Description>
-      <Canvas>
-        <Story id="upgraded-drawer--closable" />
-      </Canvas>
+
       <Subheading>{formatMessage({ defaultMessage: '固定宽度 Drawer' })}</Subheading>
       <Description>
         {formatMessage({
@@ -87,10 +79,21 @@ export default function ListPage() {
       <Canvas>
         <Story id="upgraded-drawer--custom-width" />
       </Canvas>
+
+      <Subheading>{formatMessage({ defaultMessage: '无关闭按钮' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage: '设置`closable`属性为false,默认为true',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-drawer--closable" />
+      </Canvas>
       <Subheading>{formatMessage({ defaultMessage: 'onClose & afterClose' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '`onClose`属性为点击关闭按钮时触发，`afterClose`为dialog动画结束后执行(无参数)，请打开控制台看执行顺序差异',
+          defaultMessage:
+            '`onClose`属性为点击关闭按钮时触发，`afterClose`为dialog动画结束后执行(无参数)，请打开控制台看执行顺序差异',
         })}
       </Description>
       <Canvas>
@@ -130,7 +133,7 @@ export default function ListPage() {
         })}
       </Description>
       <Canvas>
-        <Story id="upgraded-drawer--demo" />
+        <Story id="upgraded-drawer--footer" />
       </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={Drawer} />

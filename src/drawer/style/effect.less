@@ -1,0 +1,46 @@
+@import (reference) './drawer.less';
+
+.@{drawer-prefix-cls} {
+  &-slide-fade-enter,
+  &-slide-fade-appear {
+    transform: translate(30%, 0);
+  }
+
+  &-slide-fade-enter,
+  &-slide-fade-appear,
+  &-slide-fade-leave {
+    animation-duration: 0.15s;
+    animation-play-state: paused;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+  }
+
+  &-slide-fade-enter&-slide-fade-enter-active,
+  &-slide-fade-appear&-slide-fade-appear-active {
+    animation-name: rcDialogSlideFadeIn;
+    animation-play-state: running;
+  }
+
+  &-slide-fade-leave&-slide-fade-leave-active {
+    animation-name: rcDialogSlideFadeOut;
+    animation-play-state: running;
+  }
+  @keyframes rcDialogSlideFadeIn {
+    0% {
+      transform: translate(30%, 0);
+    }
+
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes rcDialogSlideFadeOut {
+    0% {
+      transform: translate(0, 0);
+    }
+
+    100% {
+      transform: translate(30%, 0);
+    }
+  }
+}
