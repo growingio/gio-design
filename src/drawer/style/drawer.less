@@ -1,0 +1,105 @@
+@import '../../stylesheet/index.less';
+@import '../../stylesheet/mixin/index.less';
+@import '../../stylesheet/variables/index.less';
+
+@drawer-prefix-cls: ~'@{component-prefix}-drawer';
+@drawer-wrap-cls: ~'@{component-prefix}-drawer-wrap';
+@drawer-normal: ~'@{drawer-prefix-cls}-normal';
+@drawer-fixed: ~'@{drawer-prefix-cls}-fixed';
+
+.@{drawer-wrap-cls} {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @z-index-drawer;
+  overflow: hidden;
+  outline: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.@{drawer-prefix-cls} {
+  @drawer-radius: 8px;
+  position: absolute;
+  width: fit-content;
+  background-color: @gray-0;
+
+  &-header {
+    padding: 23px 36px;
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px 36px;
+
+    > *:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+
+  &-title {
+    position: relative;
+    overflow: hidden;
+    color: @gray-5;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    white-space: nowrap;
+    text-align: center;
+    text-overflow: ellipsis;
+  }
+
+  &-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-clip: padding-box;
+    border: 1px solid @gray-2;
+    .elevation(2);
+  }
+
+  &-right {
+    right: 0;
+    &.@{drawer-prefix-cls} {
+      border-radius: @drawer-radius 0 0 @drawer-radius;
+    }
+    .@{drawer-prefix-cls}-content {
+      border-radius: @drawer-radius 0 0 @drawer-radius;
+    }
+    .@{drawer-prefix-cls}-header {
+      border-radius: @drawer-radius 0 0 0;
+    }
+    .@{drawer-prefix-cls}-footer {
+      border-radius: 0 0 0 @drawer-radius;
+    }
+  }
+
+  &-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    color: @gray-5;
+    background-color: @gray-0;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+  }
+
+  &-body {
+    height: 100%;
+    padding: 8px 36px 24px;
+    color: @gray-5;
+    .scrollbar();
+  }
+}

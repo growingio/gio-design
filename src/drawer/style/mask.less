@@ -1,0 +1,67 @@
+@import (reference) './drawer.less';
+
+.@{drawer-prefix-cls} {
+  &-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: @z-index-drawer;
+    height: 100%;
+    background-color: @gray-5;
+    opacity: 0.8;
+
+    &-hidden {
+      display: none;
+    }
+  }
+  .fade-effect() {
+    animation-duration: 0.15s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+  }
+
+  &-fade-enter,
+  &-fade-appear {
+    opacity: 0;
+    .fade-effect();
+    animation-play-state: paused;
+  }
+
+  &-fade-leave {
+    .fade-effect();
+    animation-play-state: paused;
+  }
+
+  &-fade-enter&-fade-enter-active,
+  &-fade-appear&-fade-appear-active {
+    animation-name: rcDialogFadeIn;
+    animation-play-state: running;
+  }
+
+  &-fade-leave&-fade-leave-active {
+    animation-name: rcDialogFadeOut;
+    animation-play-state: running;
+  }
+
+  @keyframes rcDialogFadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes rcDialogFadeOut {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+}
