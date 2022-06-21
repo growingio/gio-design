@@ -6,6 +6,7 @@ import { FormLabelAlign, RequiredMark } from './context';
 import { FormItemFeedbackType } from './ItemControl';
 import { SizeType } from '../utils/SizeContext';
 
+export { Rule, RuleObject, RuleRender } from 'rc-field-form/es/interface';
 export type FormLayout = 'horizontal' | 'vertical' | 'inline';
 
 export interface Props<Values = unknown> extends Omit<RcFormProps<Values>, 'form'> {
