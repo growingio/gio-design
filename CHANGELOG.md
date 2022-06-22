@@ -1,3 +1,10 @@
+# [23.5.0](https://github.com/growingio/gio-design/compare/v23.4.0...v23.5.0) (2022-06-22)
+
+
+### Features
+
+* **page:** remove component page ([#2072](https://github.com/growingio/gio-design/issues/2072)) ([61a7879](https://github.com/growingio/gio-design/commit/61a787908293dbd89203bd1f45e9683765cc9ac2))
+
 # [23.4.0](https://github.com/growingio/gio-design/compare/v23.3.2...v23.4.0) (2022-06-15)
 
 
