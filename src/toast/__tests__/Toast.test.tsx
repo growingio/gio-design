@@ -40,7 +40,7 @@ describe('test toast', () => {
     expect(document.querySelector('.gio-toast')).toBeInTheDocument();
   });
 
-  it('support closeIcon', () => {
+  it('support Icon', () => {
     act(() => {
       Toast.open({
         type: 'info',
