@@ -2,6 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import { PlusCircleFilled } from '@gio-design/icons';
+import { action } from '@storybook/addon-actions';
 import Button from '../../button';
 import Docs from './ToastPage';
 import Toast from '../index';
@@ -38,7 +39,7 @@ Default.args = {
   content: '提示文案！',
   duration: 5,
   key: '',
-  onClose: () => console.log('onClose'),
+  onClose: () => action('onClose'),
   icon: null,
 };
 
@@ -48,7 +49,7 @@ export const Type: Story<ArgsProps> = () => {
       content: '提示文案！',
       duration: 5,
       key: '',
-      onClose: () => console.log('onClose'),
+      onClose: () => action('success')('onClose'),
       icon: null,
     });
   };
@@ -57,7 +58,7 @@ export const Type: Story<ArgsProps> = () => {
       content: '提示文案！',
       duration: 5,
       key: '',
-      onClose: () => console.log('onClose'),
+      onClose: () => action('error')('onClose'),
       icon: null,
     });
   };
@@ -66,7 +67,7 @@ export const Type: Story<ArgsProps> = () => {
       content: '提示文案！',
       duration: 5,
       key: '',
-      onClose: () => console.log('onClose'),
+      onClose: () => action('error')('onClose'),
       icon: null,
     });
   };
@@ -75,7 +76,7 @@ export const Type: Story<ArgsProps> = () => {
       content: '提示文案！',
       duration: 5,
       key: '',
-      onClose: () => console.log('onClose'),
+      onClose: () => action('info')('onClose'),
       icon: null,
     });
   };
