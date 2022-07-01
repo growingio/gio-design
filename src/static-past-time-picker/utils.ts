@@ -34,16 +34,10 @@ export const parseStartAndEndDate = (timeRange: string | undefined): [Date | und
   const today = startOfToday();
   const yesterday = startOfYesterday();
   if (items[0] === 'since') {
-    if (times.length === 1) {
-      return [new Date(times[0]), today];
-    }
-    return [new Date(times[0]), sub(today, { days: times[1] })];
+    return [new Date(times[0]), today];
   }
   if (items[0] === 'since-lt-today') {
-    if (times.length === 1) {
-      return [new Date(times[0]), yesterday];
-    }
-    return [new Date(times[0]), sub(yesterday, { days: times[1] })];
+    return [new Date(times[0]), yesterday];
   }
   if (items[0] === 'abs') {
     return [new Date(times[0]), new Date(times[1])];

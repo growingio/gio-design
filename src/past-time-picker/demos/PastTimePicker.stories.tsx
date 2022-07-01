@@ -20,22 +20,23 @@ export default {
   },
 } as Meta;
 
-const Template: Story<PastTimePickerProps> = (args) => <PastTimePicker onSelect={action('selected value:')} placeholder="时间范围"  {...args} />
+const Template: Story<PastTimePickerProps> = (args) => (
+  <PastTimePicker onSelect={(v) => action('selected value:')(v)} placeholder="时间范围" {...args} />
+);
 
 export const Default = Template.bind({});
-Default.args = {
-};
+Default.args = {};
 export const Quick = Template.bind({});
 Quick.args = {
   value: 'day:8,1',
 };
-export const QuickOptionsFilter = Template.bind({});
-QuickOptionsFilter.args = {
-  quickOptionsFilter: (s: { value: string; }) =>
-    ['day:2,1', 'day:8,1', 'day:15,1', 'day:31,1'].includes(
-      s.value,
-    )
-}
+export const QuickOptionsFilter = () => (
+  <PastTimePicker
+    quickOptionsFilter={(s: { value: string }) => ['day:2,1', 'day:8,1', 'day:15,1', 'day:31,1'].includes(s.value)}
+    onSelect={(v) => action('selected value:')(v)}
+    placeholder="时间范围"
+  />
+);
 
 export const Since = Template.bind({});
 Since.args = {
@@ -50,7 +51,7 @@ Relative.args = {
 export const Absolute = Template.bind({});
 Absolute.args = {
   value: `abs:${getTime(subMonths(startOfToday(), 1))},${getTime(startOfToday())}`,
-  onRangeSelect: (date: any, index: number) => console.log(date, index)
+  onRangeSelect: (dates: [Date, Date], index: number) => action('onRangeSelect')(dates, index),
 };
 
 export const Experiment = Template.bind({});
@@ -73,6 +74,7 @@ Experiment.args = {
       'day:31,1',
       'day:91,1',
       'day:181,1',
+      'week:1,0',
     ].includes(s.value),
 };
 
@@ -88,17 +90,15 @@ Modes.args = {
 };
 
 export const DisabledDate = () => {
-  const disabledDate = (current: Date) => differenceInDays(startOfToday(), current) > 31
+  const disabledDate = (current: Date) => differenceInDays(startOfToday(), current) > 31;
   return <PastTimePicker onSelect={action('selected value:')} placeholder="时间范围" disabledDate={disabledDate} />;
-}
-
+};
 
 const StaticTemplate: Story<PastTimePickerProps> = (args) => (
   <PastTimePicker.Static onSelect={action('selected value:')} placeholder="时间范围" {...args} />
 );
 export const StaticDefault = StaticTemplate.bind({});
-StaticDefault.args = {
-};
+StaticDefault.args = {};
 export const StaticExperiment = StaticTemplate.bind({});
 StaticExperiment.args = {
   experimental: true,

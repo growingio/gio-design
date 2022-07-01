@@ -167,7 +167,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     return (
       <InputButton
         prefix={prefix || <CalendarOutlined />}
-        data-testid={restProps?.['data-testid'] ? restProps?.['data-testid'] : 'past-time-picker'}
+        data-testid={restProps['data-testid'] ? restProps['data-testid'] : 'past-time-picker'}
         placeholder={placeholder}
         disabled={disabled}
         allowClear={allowClear}
