@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import Upload, { IUploadFile } from '..';
 
 describe('Test Upload', () => {
@@ -69,5 +70,34 @@ describe('Test Upload', () => {
     );
     expect(container.querySelector('.gio-upload-file-list')).toBeInTheDocument();
     expect(container.querySelectorAll('.gio-upload-file-list-item')).toHaveLength(2);
+  });
+
+  it('return promise in beforeUpload', (done) => {
+    const data = jest.fn();
+    const props = {
+      action: 'http://upload.example.com',
+      beforeUpload: () =>
+        new Promise<void>((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, 100);
+        }),
+      data,
+      onChange: (file: IUploadFile<any>) => {
+        if (file.status !== 'uploading') {
+          expect(data).toHaveBeenCalled();
+          done();
+        }
+      },
+    };
+    act(() => {
+      const { container } = render(<Upload {...props} />);
+
+      fireEvent.change(container.querySelector('input'), {
+        target: {
+          files: [{ file: 'foo.png' }],
+        },
+      });
+    });
   });
 });
