@@ -1,4 +1,4 @@
-import { getTime, startOfToday, startOfYesterday, sub } from 'date-fns';
+import { startOfToday, startOfYesterday } from 'date-fns';
 import { TimeMode } from '../interfaces';
 import { parseFixedMode, parseStartAndEndDate, parseTimeMode } from '../utils';
 

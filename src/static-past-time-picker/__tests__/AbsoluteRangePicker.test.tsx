@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { addDays, format, getTime, startOfDay } from 'date-fns';
-import { after } from 'lodash';
 import React from 'react';
 import AbsoluteRangePicker from '../AbsoluteRangePicker';
 
