@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { addDays, format, getTime, startOfDay } from 'date-fns';
+import { after } from 'lodash';
 import React from 'react';
 import AbsoluteRangePicker from '../AbsoluteRangePicker';
 
@@ -20,7 +21,7 @@ describe('Test AbsoluteRangePicker', () => {
     fireEvent.click(screen.getByTitle(format(startDay, 'yyyy-MM-dd')));
     fireEvent.click(screen.getByTitle(format(endDay, 'yyyy-MM-dd')));
     fireEvent.click(screen.getByText('确定'));
-    expect(onSelect).toHaveBeenCalledWith('abs:1655568000000,1656086399999');
+    expect(onSelect).toHaveBeenCalledWith('abs:1655596800000,1656115199999');
   });
 
   it('AbsoluteRangePicker onRangeSelect ', () => {
@@ -39,6 +40,6 @@ describe('Test AbsoluteRangePicker', () => {
     fireEvent.click(screen.getByTitle(format(endDay, 'yyyy-MM-dd')));
     fireEvent.click(screen.getByText('确定'));
     expect(onRangeSelect).toHaveBeenCalled();
-    expect(onSelect).toHaveBeenCalledWith('abs:1655568000000,1656086399999');
+    expect(onSelect).toHaveBeenCalledWith('abs:1655596800000,1656115199999');
   });
 });

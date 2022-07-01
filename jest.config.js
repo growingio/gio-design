@@ -1,3 +1,5 @@
+// set default timeZone UTC
+process.env.TZ = 'UTC';
 module.exports = {
   // if you're also using typescript
   preset: 'ts-jest',
@@ -9,7 +11,7 @@ module.exports = {
   // registers babel.config.js with jest
   transform: {
     // '^.+\\.js(x)?$': 'babel-jest',
-    "^.+\\.(t|j)sx?$": ["@swc/jest"],
+    '^.+\\.(t|j)sx?$': ['@swc/jest'],
     '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
   },
 
