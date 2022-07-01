@@ -21,7 +21,7 @@ export default {
 } as Meta;
 
 const Template: Story<PastTimePickerProps> = (args) => (
-  <PastTimePicker onSelect={action('selected value:')} placeholder="时间范围" {...args} />
+  <PastTimePicker onSelect={(v) => action('selected value:')(v)} placeholder="时间范围" {...args} />
 );
 
 export const Default = Template.bind({});
@@ -51,7 +51,7 @@ Relative.args = {
 export const Absolute = Template.bind({});
 Absolute.args = {
   value: `abs:${getTime(subMonths(startOfToday(), 1))},${getTime(startOfToday())}`,
-  onRangeSelect: (date: any, index: number) => console.log(date, index),
+  onRangeSelect: (dates: [Date, Date], index: number) => action('onRangeSelect')(dates, index),
 };
 
 export const Experiment = Template.bind({});
