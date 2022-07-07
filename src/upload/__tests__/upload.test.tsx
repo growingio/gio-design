@@ -3,8 +3,16 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import Upload, { IUploadFile } from '..';
+import { IUploadProps } from '../interface';
+import { setup, teardown } from './mock';
 
 describe('Test Upload', () => {
+  beforeEach(() => {
+    setup();
+  });
+  afterEach(() => {
+    teardown();
+  });
   it('render correctly', () => {
     const { container } = render(<Upload />);
     expect(container.querySelector('.gio-upload')).toBeInTheDocument();
@@ -31,7 +39,7 @@ describe('Test Upload', () => {
     const { container } = render(
       <Upload
         file={{
-          dataUrl: 'https://www.xxx.com/zzz.txt',
+          dataUrl: 'http://upload.com/zzz.txt',
           name: 'zzz.txt',
           status: 'success',
           uid: '3',
@@ -52,13 +60,13 @@ describe('Test Upload', () => {
               name: 'xxx.png',
               status: 'success',
               uid: '-1',
-              url: 'https://www.simple.com/xxx.png',
+              url: 'http://upload.com/xxx.png',
             },
             {
               name: 'yyy.png',
               status: 'success',
               uid: '-11',
-              url: 'https://www.simple.com/yyy.png',
+              url: 'http://upload.com/yyy.png',
             },
           ] as IUploadFile<any>[]
         }
@@ -75,7 +83,7 @@ describe('Test Upload', () => {
   it('return promise in beforeUpload', (done) => {
     const data = jest.fn();
     const props = {
-      action: 'http://upload.example.com',
+      action: 'http://upload.com',
       beforeUpload: () =>
         new Promise<void>((resolve) => {
           setTimeout(() => {
@@ -99,5 +107,66 @@ describe('Test Upload', () => {
         },
       });
     });
+  });
+  it('should not upload when fileList count >= maxCount', () => {
+    const onBeforeUpload = jest.fn();
+    const props: IUploadProps = {
+      action: 'http://upload.com',
+      defaultFileList: [
+        {
+          name: 'xxx.png',
+          status: 'success',
+          uid: '-1',
+          url: 'http://upload.com/xxx.png',
+        },
+      ] as IUploadFile<any>[],
+      maxCount: 2,
+      type: 'drag',
+      multiple: true,
+      beforeUpload: onBeforeUpload,
+    };
+    const { container } = render(<Upload {...props} />);
+    fireEvent.change(container.querySelector('input'), {
+      target: {
+        files: [{ file: 'foo.png' }],
+      },
+    });
+    expect(container.querySelector('.gio-upload')).toHaveClass('gio-upload--disabled');
+    fireEvent.change(container.querySelector('input'), {
+      target: {
+        files: [{ file: 'bar.png' }],
+      },
+    });
+    expect(onBeforeUpload).toHaveBeenCalledTimes(1);
+  });
+  it('should disabled when defaultFileList count >= maxCount', () => {
+    const props: IUploadProps = {
+      action: 'http://upload.com',
+      defaultFileList: [
+        {
+          name: 'xxx.png',
+          status: 'success',
+          uid: '-1',
+          url: 'http://upload.com/xxx.png',
+        },
+        {
+          name: 'yyy.png',
+          status: 'success',
+          uid: '-11',
+          url: 'http://upload.com/yyy.png',
+        },
+        {
+          name: 'zzz.png',
+          status: 'success',
+          uid: '-111',
+          url: 'http://upload.com/zzz.png',
+        },
+      ] as IUploadFile<any>[],
+      maxCount: 2,
+      type: 'drag',
+      multiple: true,
+    };
+    const { container } = render(<Upload {...props} />);
+    expect(container.querySelector('.gio-upload')).toHaveClass('gio-upload--disabled');
   });
 });
