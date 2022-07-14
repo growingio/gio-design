@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { fireEvent, render, screen } from '@testing-library/react';
-import React from 'react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import React, { useState } from 'react';
 import { act } from 'react-dom/test-utils';
 import Upload, { IUploadFile } from '..';
-import { IUploadProps } from '../interface';
+import { CustomRequestOptions, UploadProps } from '../interface';
 import { setup, teardown } from './mock';
 
 describe('Test Upload', () => {
@@ -110,7 +110,7 @@ describe('Test Upload', () => {
   });
   it('should not upload when fileList count >= maxCount', () => {
     const onBeforeUpload = jest.fn();
-    const props: IUploadProps = {
+    const props: UploadProps = {
       action: 'http://upload.com',
       defaultFileList: [
         {
@@ -140,7 +140,7 @@ describe('Test Upload', () => {
     expect(onBeforeUpload).toHaveBeenCalledTimes(1);
   });
   it('should disabled when defaultFileList count >= maxCount', () => {
-    const props: IUploadProps = {
+    const props: UploadProps = {
       action: 'http://upload.com',
       defaultFileList: [
         {
@@ -168,5 +168,95 @@ describe('Test Upload', () => {
     };
     const { container } = render(<Upload {...props} />);
     expect(container.querySelector('.gio-upload')).toHaveClass('gio-upload--disabled');
+  });
+
+  it('should sync file list with controlled fileList', async () => {
+    const customRequest = jest.fn(async (options: CustomRequestOptions) => {
+      const { file, onSuccess, onProgress } = options;
+
+      onProgress?.({ percent: 0, ...new ProgressEvent('progress') }, { ...file, uid: 'nothing' });
+      onProgress?.({ percent: 100, ...new ProgressEvent('progress') }, file);
+      onSuccess?.({ ...options.file, url: 'https://upload.com/bar.png' }, file);
+    });
+    const handleChange = jest.fn();
+    const Demo = () => {
+      const [files, setFiles] = useState<IUploadFile[]>([
+        {
+          name: 'aaa.png',
+          status: 'uploading',
+          uid: '-1',
+          size: 100,
+          type: 'png',
+          url: 'http://upload.com/xxx.png',
+        },
+      ]);
+      const onChange = (file: IUploadFile, fileList: IUploadFile[]) => {
+        const newFileList = [...fileList];
+        setFiles(newFileList);
+        handleChange(file);
+      };
+
+      return (
+        <Upload
+          fileList={files}
+          multiple
+          maxCount={2}
+          type="drag"
+          beforeUpload={() => true}
+          customRequest={customRequest}
+          onChange={onChange}
+        />
+      );
+    };
+    act(() => {
+      render(<Demo />);
+    });
+    fireEvent.change(screen.getByTestId('upload'), {
+      target: {
+        files: [
+          {
+            name: 'xxx.png',
+            uid: '-1',
+          },
+          {
+            name: 'yyy.png',
+            uid: '-11',
+          },
+          {
+            name: 'zzz.png',
+            uid: '-111',
+          },
+        ],
+      },
+    });
+
+    await waitFor(() => {
+      expect(handleChange).toHaveBeenCalledTimes(5);
+
+      expect(handleChange.mock.calls[1][0]).toEqual(
+        expect.objectContaining({
+          status: 'uploading',
+          percent: 0,
+        })
+      );
+      expect(handleChange.mock.calls[2][0]).toEqual(
+        expect.objectContaining({
+          status: 'uploading',
+          percent: 0,
+        })
+      );
+      expect(handleChange.mock.calls[3][0]).toEqual(
+        expect.objectContaining({
+          status: 'uploading',
+          percent: 100,
+        })
+      );
+      expect(handleChange.mock.calls[4][0]).toEqual(
+        expect.objectContaining({
+          status: 'success',
+          percent: 100,
+        })
+      );
+    });
   });
 });

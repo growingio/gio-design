@@ -4,10 +4,10 @@ import { useLocale } from '@gio-design/utils';
 import Text from '../typography/Text';
 import { isOnlyAcceptImg } from './utils';
 import { UploadPrefixClsContext } from './Upload';
-import { IUploadProps, IUploadListProps, IUploadFile, STATUS_SUCCESS, STATUS_ERROR } from './interface';
+import { UploadProps, IUploadListProps, UploadFile, STATUS_SUCCESS, STATUS_ERROR } from './interface';
 import defaultLocale from './locales/zh-CN';
 
-const UploadList = (props: IUploadListProps<IUploadProps>) => {
+const UploadList = (props: IUploadListProps<UploadProps>) => {
   const { items, onRemove, accept } = props;
   const prefixCls = useContext(UploadPrefixClsContext);
 
@@ -19,7 +19,7 @@ const UploadList = (props: IUploadListProps<IUploadProps>) => {
 
   const name = isOnlyAcceptImg(accept) ? picture : folder;
 
-  const handleRemove = (file: IUploadFile) => {
+  const handleRemove = (file: UploadFile) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     onRemove(file);

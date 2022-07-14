@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Docs from './UploadPage';
 import Upload from '../index';
 
-import { IUploadProps, IRcFile, IUploadFile, IRcCustomRequestOptions, IProgress } from '../interface';
+import { UploadProps, RcFile, UploadFile, CustomRequestOptions, IProgress } from '../interface';
 import '../style';
 import { Toast } from '../..';
 
@@ -26,7 +26,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IUploadProps> = (args) => <Upload  {...args} />;
+const Template: Story<UploadProps> = (args) => <Upload {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   action: uploadUrl,
@@ -39,16 +39,12 @@ InputUpload.args = {
   inputUploadType: 'file',
 };
 
-export const AvatarUpload = Template.bind({});
-AvatarUpload.args = {
-  type: 'avatar',
-  action: uploadUrl,
-  successBorder: true,
-};
+export const AvatarUpload: Story<UploadProps> = () => (
+  <Upload multiple={false} type="avatar" successBorder action={uploadUrl} accept="image/*" />
+);
 
-export const CardUpload: Story<IUploadProps> = () => {
-
-  const beforeUpload = (file: IRcFile) => {
+export const CardUpload: Story<UploadProps> = () => {
+  const beforeUpload = (file: RcFile) => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
       Toast.error('You can only upload JPG/PNG file!');
@@ -58,28 +54,33 @@ export const CardUpload: Story<IUploadProps> = () => {
       Toast.error('Image must smaller than 2MB!');
     }
     return isJpgOrPng && isLt2M;
-  }
-  return <div><Upload multiple={false} beforeUpload={beforeUpload} type='card' action={uploadUrl} accept="image/*" /></div>
-}
+  };
+  return (
+    <div>
+      <Upload multiple={false} beforeUpload={beforeUpload} type="card" action={uploadUrl} accept="image/*" />
+    </div>
+  );
+};
 /**
  * 拖拽上传
- * @returns 
+ * @returns
  */
-export const DraggerUpload: Story<IUploadProps> = () => <Upload multiple={false} type='drag' action={uploadUrl} accept="image/*" />
+export const DraggerUpload: Story<UploadProps> = () => (
+  <Upload multiple={false} type="drag" action={uploadUrl} accept="image/*" />
+);
 /**
  * 批量上传
- * @returns 
+ * @returns
  */
-export const BatchUpload: Story<IUploadProps> = () => <Upload maxCount={5} multiple type='drag' action={uploadUrl} />
+export const BatchUpload: Story<UploadProps> = () => <Upload maxCount={5} multiple type="drag" action={uploadUrl} />;
 
 /**
  * 文件夹上传
- * @returns 
+ * @returns
  */
-export const UploadDirectory: Story<IUploadProps> = () => <Upload directory multiple maxCount={5} type='drag' action={uploadUrl} />
-
-
-
+export const UploadDirectory: Story<UploadProps> = () => (
+  <Upload directory multiple maxCount={5} type="drag" action={uploadUrl} />
+);
 
 export const ControlledFile = Template.bind({});
 ControlledFile.args = {
@@ -92,23 +93,20 @@ ControlledFile.args = {
   } as any,
 };
 
-export const CustomErrorMessage: Story<IUploadProps> = () => {
-  const [newFile, setFile] = React.useState<IUploadFile>();
+export const CustomErrorMessage: Story<UploadProps> = () => {
+  const [newFile, setFile] = React.useState<UploadFile>();
 
-  const onError = (error: Error, file: IUploadFile) => {
-
+  const onError = (error: Error, file: UploadFile) => {
     const nextFile = file;
     nextFile.errorMessage = '上传出错啦!';
     setFile(nextFile);
   };
 
-  const handleChange = (file: IUploadFile) => {
-
+  const handleChange = (file: UploadFile) => {
     setFile(file as any);
   };
-  return <Upload type='drag' onChange={handleChange} action={errorAction} onError={onError} file={newFile} />;
+  return <Upload type="drag" onChange={handleChange} action={errorAction} onError={onError} file={newFile} />;
 };
-
 
 export const DefaultListUpload = Template.bind({});
 DefaultListUpload.args = {
@@ -133,7 +131,7 @@ DefaultListUpload.args = {
   ],
 };
 
-export const ControlledFileList: Story<IUploadProps> = (args) => {
+export const ControlledFileList: Story<UploadProps> = (args) => {
   const [files, setFileList] = useState([
     {
       uid: '-1',
@@ -149,7 +147,7 @@ export const ControlledFileList: Story<IUploadProps> = (args) => {
     },
   ]);
 
-  const onChange = (file: IUploadFile, fileList: IUploadFile[]) => {
+  const onChange = (file: UploadFile, fileList: UploadFile[]) => {
     let newList = [...fileList];
     newList = newList.slice(-2);
     setFileList(newList as any);
@@ -157,23 +155,34 @@ export const ControlledFileList: Story<IUploadProps> = (args) => {
 
   return (
     <div>
-      <Upload type='drag' accept='image/*' action={uploadUrl} maxCount={10} multiple onChange={onChange} fileList={files as any} {...args} />
+      <Upload
+        type="drag"
+        accept="image/*"
+        action={uploadUrl}
+        maxCount={10}
+        multiple
+        onChange={onChange}
+        fileList={files as any}
+        {...args}
+      />
     </div>
   );
 };
 
 class Oss {
-
   private options: any;
 
-  constructor(opts: { region: string, accessKeyId: string, accessKeySecret: string, bucket: string, }) {
+  constructor(opts: { region: string; accessKeyId: string; accessKeySecret: string; bucket: string }) {
     this.options = opts;
   }
 
   // eslint-disable-next-line class-methods-use-this
-  async multipartUpload(key: string, file: Blob, options: {
-    progress?: (percent: number, checkpoint?: any, response?: any) => void
-  }
+  async multipartUpload(
+    key: string,
+    file: Blob,
+    options: {
+      progress?: (percent: number, checkpoint?: any, response?: any) => void;
+    }
   ) {
     const { progress } = options;
     const size = 1024 * 100;
@@ -188,7 +197,7 @@ class Oss {
       start = end;
       // eslint-disable-next-line no-await-in-loop
       const r = await fetch(uploadUrl, {
-        method: "POST",
+        method: 'POST',
         body: data,
       });
       // eslint-disable-next-line no-await-in-loop
@@ -196,13 +205,12 @@ class Oss {
 
       data = null;
     }
-    return { status: 'success', code: 200, name: key, url: 'https://aliyun.cn/xxxx/xxxx' }
-
+    return { status: 'success', code: 200, name: key, url: 'https://aliyun.cn/xxxx/xxxx' };
   }
 }
 export const AliyunOssUpload = () => {
-  const onBeforeUpload = (file: IRcFile) => {
-    const isVideo = ["video/mp4", "video/ogg", "video/webm"].indexOf(file.type) > -1;
+  const onBeforeUpload = (file: RcFile) => {
+    const isVideo = ['video/mp4', 'video/ogg', 'video/webm'].indexOf(file.type) > -1;
     if (!isVideo) {
       Toast.error('不支持该视频文件格式');
       return false;
@@ -212,9 +220,9 @@ export const AliyunOssUpload = () => {
       return false;
     }
     return true;
-  }
+  };
 
-  const customRequest = (options: IRcCustomRequestOptions) => {
+  const customRequest = (options: CustomRequestOptions) => {
     const client = new Oss({
       region: 'oss-cn-beijing',
       accessKeyId: 'yourAccessKeyId',
@@ -223,23 +231,29 @@ export const AliyunOssUpload = () => {
     });
     const { file, onError, onSuccess, onProgress } = options;
     const filename = `vedios/${file.name}`;
-    client.multipartUpload(filename, options.file, {
-      progress: (p: number) => {
-        onProgress?.(
-          {
+    client
+      .multipartUpload(filename, options.file, {
+        progress: (p: number) => {
+          onProgress?.({
             // eslint-disable-next-line no-bitwise
             percent: ~~(p * 100),
-
-          } as IProgress,
-          file
-        );
-      }
-    }).then(res => {
-      onSuccess?.(res, file)
-    }).catch(err => {
-      onError?.(err, { status: '500' });
-    })
-  }
-  return <Upload type='button' accept='video/*' customRequest={customRequest} multiple={false} beforeUpload={onBeforeUpload} />
-}
-
+          } as IProgress);
+        },
+      })
+      .then((res) => {
+        onSuccess?.(res, null);
+      })
+      .catch((err) => {
+        onError?.(err, { status: '500' });
+      });
+  };
+  return (
+    <Upload
+      type="button"
+      accept="video/*"
+      customRequest={customRequest}
+      multiple={false}
+      beforeUpload={onBeforeUpload}
+    />
+  );
+};

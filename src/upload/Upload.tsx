@@ -1,45 +1,34 @@
-import React, { useState, useRef, useEffect, createContext } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import RcUpload from 'rc-upload';
-import useControlledState from 'rc-util/es/hooks/useMergedState';
-import { template } from 'lodash';
+import type { UploadProps as RcUploadProps } from 'rc-upload';
+// import useControlledState from 'rc-util/es/hooks/useMergedState';
+// import { template } from 'lodash';
 import classnames from 'classnames';
-import { usePrefixCls, useLocale } from '@gio-design/utils';
-import { defaultRootPrefixCls } from '../config-provider';
+import { usePrefixCls } from '@gio-design/utils';
+import useControlledState from '../utils/hooks/useControlledState';
 import {
-  IUploadProps,
+  UploadProps,
   ITriggerProps,
-  ITriggerMap,
-  IProgress,
-  IRcFile,
-  IUploadFile,
-  STATUS_UPLOADING,
-  STATUS_SUCCESS,
-  STATUS_ERROR,
-  STATUS_NOT_YET,
-  TInputUploadType,
+  RcFile,
+  UploadFile,
+  UploadState,
+  UploadType,
+  BeforeUploadFileType,
 } from './interface';
 import ButtonTrigger from './triggers/ButtonTrigger';
 import CardTrigger from './triggers/CardTrigger';
 import InputTrigger from './triggers/InputTrigger';
 import AvatarTrigger from './triggers/AvatarTrigger';
 import DragTrigger from './triggers/DragTrigger';
-import {
-  imageFile2DataUrl,
-  fileToObject,
-  getEmptyFileObj,
-  fetchImageFileFromUrl,
-  updateFileList,
-  removeFileItem,
-  getFileItem,
-  isOnlyAcceptImg,
-} from './utils';
-import xhrRequest from './xhrRequest';
-import UploadList from './UploadList';
-import Alert from '../alert';
-import defaultLocale from './locales/zh-CN';
+import { imageFile2DataUrl, fileToObject, updateFileList, removeFileItem, getFileItem, isImageFile } from './utils';
+// import xhrRequest from './xhrRequest';
+import UploadList from './upload-list';
+// import defaultLocale from './locales/zh-CN';
 
-export const UploadPrefixClsContext = createContext(`${defaultRootPrefixCls}-upload`);
-
+// export const UploadPrefixClsContext = createContext(`${defaultRootPrefixCls}-upload`);
+export type ITriggerMap = {
+  [key in UploadType]: React.ComponentType;
+};
 const triggerMap: ITriggerMap = {
   button: ButtonTrigger,
   input: InputTrigger,
@@ -48,21 +37,21 @@ const triggerMap: ITriggerMap = {
   drag: DragTrigger,
 };
 
-const Upload: React.FC<IUploadProps> = ({
-  file: uploadedFile,
+const Upload: React.FC<UploadProps> = ({
+  // file: uploadedFile,
   fileList,
   defaultFileList,
-  successBorder = false,
+  // successBorder = false,
   style,
   prefixCls: customPrefixCls,
   className,
   disabled,
   type = 'button',
-  inputUploadType = 'url',
-  triggerProps,
+  // inputUploadType = 'url',
+  // triggerProps,
   action = '.',
   beforeUpload,
-  onStart,
+  // onStart,
   onProgress,
   onError,
   onSuccess,
@@ -70,331 +59,387 @@ const Upload: React.FC<IUploadProps> = ({
   onRemove,
   openFileDialogOnClick = true,
   children,
-  placeholderImg,
-  iconSize,
-  maxCount = 1,
+  // placeholderImg,
+  // iconSize,
+  maxCount,
   directory,
   multiple,
   showUploadList = true,
   ...restProps
-}: IUploadProps) => {
-  const [file, setFile] = useState<IUploadFile>(getEmptyFileObj(uploadedFile));
-  const [showAlert, setAlert] = useState(false);
+}: UploadProps) => {
+  // const [file, setFile] = useState<UploadFile>(getEmptyFileObj(uploadedFile));
+  // const [showAlert, setAlert] = useState(false);
   // 要上传的文件列表
-  const [uploadFileList, setUploadFileList] = useControlledState<IRcFile[]>(
-    (defaultFileList?.slice(0, maxCount) as IRcFile[]) || [],
-    {
-      value: fileList?.slice(0, maxCount) as IRcFile[],
-    }
+  // const [uploadFileList, setUploadFileList] = useControlledState<RcFile[]>(
+  //   (defaultFileList?.slice(0, maxCount) as RcFile[]) || [],
+  //   {
+  //     value: fileList?.slice(0, maxCount) as RcFile[],
+  //   }
+  // );
+  const [dragState, setDragState] = useState('drop');
+  const [uploadFileList, setUploadFileList] = useControlledState<UploadFile[]>(fileList, defaultFileList);
+  const mergedDisabled = useMemo(
+    () => disabled || (maxCount && uploadFileList.length > maxCount),
+    [disabled, uploadFileList.length, maxCount]
   );
+  // const maxFilesCount = directory || multiple ? maxCount : 1;
   // 已经上传了的文件数量
-  const [finish, setFinish] = useState(Math.min(uploadFileList.length, maxCount));
+  // const [finish, setFinish] = useState(Math.min(uploadFileList.length, maxCount));
   // 控制dragTrigger是否disabled
-  const [uploadDisabled, setUploadDisabled] = useState(disabled);
+  // const [uploadDisabled, setUploadDisabled] = useState(disabled);
 
-  const locale = useLocale('Upload');
-  const { defaultErrorMessage, picLimit, fileLimit }: { [key: string]: string } = {
-    ...defaultLocale,
-    ...locale,
-  };
+  // const locale = useLocale('Upload');
+  // const { picLimit, fileLimit }: { [key: string]: string } = {
+  //   ...defaultLocale,
+  //   ...locale,
+  // };
 
-  useEffect(() => {
-    setFile(getEmptyFileObj(uploadedFile));
-  }, [uploadedFile]);
+  // useEffect(() => {
+  //   setFile(getEmptyFileObj(uploadedFile));
+  // }, [uploadedFile]);
 
-  useEffect(() => {
-    if (Number(defaultFileList?.length) >= maxCount || Number(fileList?.length) >= maxCount) {
-      setUploadDisabled(true);
-    }
-  }, [defaultFileList, fileList, maxCount]);
+  // useEffect(() => {
+  //   if (Number(defaultFileList?.length) >= maxCount || Number(fileList?.length) >= maxCount) {
+  //     setUploadDisabled(true);
+  //   }
+  // }, [defaultFileList, fileList, maxCount]);
 
   const rcUploadRef = useRef(null);
   const prefixCls = usePrefixCls('upload', customPrefixCls);
 
-  const rootCls = classnames(className, prefixCls, {
-    [`${prefixCls}--disabled`]: disabled || (type === 'drag' && uploadDisabled),
-    [`${prefixCls}--error`]: file.status === STATUS_ERROR,
-    [`${prefixCls}--success`]: file.status === STATUS_SUCCESS && !successBorder,
-    [`${prefixCls}--success-border`]: file.status === STATUS_SUCCESS && successBorder,
-    [`${prefixCls}-drag-container`]: type === 'drag',
-  });
   const Trigger = triggerMap[type];
 
-  const onFileChange = (_file: IUploadFile, mergedFileList: IUploadFile[]) => {
-    let cloneList = [...mergedFileList];
+  const onFileChange = (file: UploadFile, changedFileList: UploadFile[], event?: { percent: number }) => {
+    let cloneList = [...changedFileList];
 
     // 选择的文件超出最大上传文件数量限制
-    if (cloneList.length >= maxCount && (directory || multiple)) {
-      setUploadDisabled(true);
-      cloneList.length > maxCount && setAlert(true);
+    if (maxCount === 1) {
+      // 始终取最后一个
+      cloneList = cloneList.slice(-1);
+    } else if (maxCount && maxCount > 0) {
+      // if (cloneList.length >= maxCount && (directory || multiple)) {
+      //   cloneList.length > maxCount && setAlert(true);
+      // }
       cloneList = cloneList.slice(0, maxCount);
     }
 
-    const finishCount = cloneList.filter(
-      (item: IUploadFile) => item.status === 'success' || item.status === 'error'
-    ).length;
+    // const finishCount = cloneList.filter(
+    //   (item: UploadFile) => item.status === 'success' || item.status === 'error'
+    // ).length;
 
-    setFinish(Math.min(finishCount, cloneList.length));
-    setUploadFileList(cloneList as IRcFile[]);
+    // setFinish(Math.min(finishCount, cloneList.length));
+    setUploadFileList(cloneList as RcFile[], true);
 
-    onChange?.(_file, cloneList);
+    onChange?.(file, cloneList, event);
   };
 
-  const handleSingleBeforeUpload = (fileBeforeUpload: IRcFile, fileListArgs: IRcFile[]) =>
+  const handleBeforeUpload = (fileBeforeUpload: RcFile, fileListArgs: RcFile[]) =>
     beforeUpload?.(fileBeforeUpload, fileListArgs);
 
-  const handleMultipleBeforeUpload = (fileBeforeUpload: IRcFile, fileListArgs: IRcFile[]) => {
-    const mergeFileList = [...uploadFileList, ...fileListArgs];
-    // 如果选择的文件数量超出最大限制，进行截断
-    const fileIndex = mergeFileList.findIndex((item) => item.uid === fileBeforeUpload.uid);
-    if (fileIndex >= maxCount) {
-      return false;
-    }
+  // const onBeforeUpload = async (fileBeforeUpload: RcFile, fileListArgs: RcFile[]) => {
+  //   let parsedFile: File | Blob | string = fileBeforeUpload;
+  //   if (beforeUpload) {
+  //     const result = await beforeUpload(fileBeforeUpload, fileListArgs);
+  //     if (result === false) {
+  //       return false;
+  //     }
+  //     if (typeof result === 'object' && result) {
+  //       parsedFile = result as File;
+  //     }
+  //   }
+  //   // 如果选择的文件数量超出最大限制，进行截断
+  //   // const fileIndex = mergeFileList.findIndex((item) => item.uid === fileBeforeUpload.uid);
+  //   // if (fileIndex >= maxCount) {
+  //   //   return false;
+  //   // }
+  //   return parsedFile as RcFile;
+  // };
 
-    onFileChange(fileBeforeUpload, mergeFileList);
-
-    return beforeUpload?.(fileBeforeUpload, fileListArgs);
+  /**
+   * 转换状态，逐个触发change事件
+   * @param files
+   */
+  const handleBatchStart = (
+    batchFileList: {
+      file: RcFile;
+      parsedFile: Exclude<BeforeUploadFileType, boolean>;
+    }[]
+  ) => {
+    const objectFileList = batchFileList.map((info) => fileToObject(info.file));
+    let newFileList = [...uploadFileList];
+    objectFileList.forEach((fileObj) => {
+      newFileList = updateFileList(fileObj, newFileList);
+    });
+    // paredFile！=null 更新status=`uploading` ; 触发`onChange`
+    objectFileList.forEach((fileObj, index) => {
+      const currentFileObj: UploadFile = fileObj;
+      // `beforeUpload` 返回false时 `parsedFile==null`,不会上传，status 不变
+      if (batchFileList[index].parsedFile) {
+        currentFileObj.status = 'uploading';
+      }
+      onFileChange(currentFileObj, newFileList);
+    });
   };
 
-  const handleStart = (fileOnStart: IRcFile) => {
-    const uploadFile: IUploadFile = {
-      ...fileToObject(fileOnStart),
-      status: STATUS_UPLOADING,
-    };
+  // const handleStart = (fileOnStart: RcFile) => {
+  //   const uploadFile: UploadFile = {
+  //     ...fileToObject(fileOnStart),
+  //     status: STATUS_UPLOADING,
+  //   };
 
-    const updatedFileList = updateFileList(uploadFile, uploadFileList);
-    onFileChange(uploadFile, updatedFileList);
+  //   const updatedFileList = updateFileList(uploadFile, uploadFileList);
+  //   onFileChange(uploadFile, updatedFileList);
 
-    setFile(uploadFile);
-    onStart?.(uploadFile, updatedFileList);
-  };
-
-  const handleProgress = (step: IProgress, fileOnProgress: IRcFile) => {
-    if (!getFileItem(fileOnProgress, uploadFileList) && (directory || multiple)) {
+  //   // setFile(uploadFile);
+  //   // onStart?.(uploadFile, updatedFileList);
+  // };
+  // onProgress: (event: { percent: number }): void
+  const handleProgress = (e: { percent: number }, parsedFile: RcFile) => {
+    if (!getFileItem(parsedFile, uploadFileList)) {
       return;
     }
 
-    const progressFile: IUploadFile = {
-      ...fileToObject(fileOnProgress),
-      status: STATUS_UPLOADING,
-      percent: step.percent,
+    const progressFile: UploadFile = {
+      ...fileToObject(parsedFile),
+      status: UploadState.STATUS_UPLOADING,
+      percent: e.percent,
     };
 
-    const updatedFileList = updateFileList(progressFile, uploadFileList);
-    onFileChange(progressFile, updatedFileList);
+    const nextFileList = updateFileList(progressFile, uploadFileList);
+    onFileChange(progressFile, nextFileList, e);
 
-    setFile(progressFile);
-    onProgress?.(step, fileOnProgress, updatedFileList as IRcFile[]);
+    onProgress?.(e, parsedFile, nextFileList as RcFile[]);
   };
-
-  const handleSuccess = async (response: Record<string, unknown>, fileOnSuccess: IRcFile) => {
-    if (!getFileItem(fileOnSuccess, uploadFileList) && (directory || multiple)) {
+  const handleSuccess = async (response: Record<string, unknown>, file: RcFile) => {
+    if (!getFileItem(file, uploadFileList) && (directory || multiple)) {
       return;
     }
 
-    let dataUrl = '';
-    const uploadFile: IUploadFile = {
-      ...fileToObject(fileOnSuccess),
+    const uploadFile: UploadFile = {
+      ...fileToObject(file),
       response,
-      status: STATUS_SUCCESS,
+      status: UploadState.STATUS_SUCCESS,
       percent: 100,
     };
-
+    // 图片类型 生成 dataUrl 预览图
     try {
-      if (fileOnSuccess.type?.startsWith('image/')) {
-        dataUrl = await imageFile2DataUrl(fileOnSuccess);
+      if (isImageFile(uploadFile)) {
+        const dataUrl = await imageFile2DataUrl(file);
         uploadFile.dataUrl = dataUrl;
       }
     } catch (error) {
-      console.error(error);
+      /* do nothing */
     }
 
-    const updatedFileList = updateFileList(uploadFile, uploadFileList);
+    const nextFileList = updateFileList(uploadFile, uploadFileList);
 
-    onSuccess?.(response, uploadFile, updatedFileList);
-    setFile(uploadFile);
-    onFileChange(uploadFile, updatedFileList);
+    onSuccess?.(response, uploadFile, nextFileList);
+
+    onFileChange(uploadFile, nextFileList);
   };
 
-  const handleError = (error: Error, response: any, fileOnError: IRcFile) => {
-    if (!getFileItem(fileOnError, uploadFileList) && (directory || multiple)) {
+  const handleError = (error: Error, response: Record<string, unknown>, file: RcFile) => {
+    if (!getFileItem(file, uploadFileList) && (directory || multiple)) {
       return;
     }
 
-    const errorFile: IUploadFile = {
-      ...fileToObject(fileOnError),
+    const errorFile: UploadFile = {
+      ...fileToObject(file),
       error,
       response,
-      status: STATUS_ERROR,
-      errorMessage: defaultErrorMessage,
+      status: UploadState.STATUS_ERROR,
     };
 
-    const updatedFileList = updateFileList(errorFile, uploadFileList);
-    onFileChange(errorFile, updatedFileList);
+    const nextFileList = updateFileList(errorFile, uploadFileList);
+    onFileChange(errorFile, nextFileList);
 
-    onError?.(error, errorFile, updatedFileList);
-
-    setFile(type !== 'drag' ? getEmptyFileObj(uploadedFile) : errorFile);
+    onError?.(error, errorFile, nextFileList);
   };
 
-  const handleRemove = (_file: IUploadFile) => {
-    Promise.resolve(typeof onRemove === 'function' ? onRemove(_file) : onRemove).then((res) => {
+  const handleRemove = (file: UploadFile) => {
+    Promise.resolve(typeof onRemove === 'function' ? onRemove(file) : onRemove).then((res) => {
       // 使用者返回了 false，阻止删除操作
       if (res === false) {
         return;
       }
 
-      const removedFileList = removeFileItem(_file, uploadFileList);
+      const removedFileList = removeFileItem(file, uploadFileList);
 
-      removedFileList.length < maxCount && setAlert(false);
-      removedFileList.length < maxCount && setUploadDisabled(false);
+      // removedFileList.length < maxCount && setAlert(false);
+      // removedFileList.length < maxCount && setUploadDisabled(false);
 
-      onFileChange(_file, removedFileList);
-
-      if (file.dataUrl === uploadedFile?.dataUrl) {
-        setFile({
-          uid: '',
-          size: 0,
-          name: '本地上传',
-          type: '$empty-file',
-          status: STATUS_NOT_YET,
-          dataUrl: '',
-        });
-      } else {
-        setFile(getEmptyFileObj(uploadedFile));
-      }
+      onFileChange({ ...file, status: UploadState.STATUS_REMOVED }, removedFileList);
     });
   };
 
-  const handleInputUpload = async (uploadType: TInputUploadType = 'url', url: string) => {
-    const uploadFile = {
-      ...file,
-      type: 'image',
-      name: 'web-image',
-    };
-    if (uploadType === 'url') {
-      uploadFile.dataUrl = url;
-      uploadFile.status = STATUS_SUCCESS;
-      setFile(uploadFile);
-      onSuccess?.({}, uploadFile, uploadFileList);
-    } else {
-      try {
-        uploadFile.status = STATUS_UPLOADING;
-        setFile(uploadFile);
-        const { originFile } = await fetchImageFileFromUrl(url);
-        const request = restProps.customRequest || xhrRequest;
-        let ac: string;
-        if (typeof action === 'function') {
-          ac = await action(originFile);
-        } else {
-          ac = action as string;
-        }
+  // const handleInputUpload = async (uploadType: TInputUploadType, url: string) => {
+  //   const uploadFile = {
+  //     ...file,
+  //     type: 'image',
+  //     name: 'web-image',
+  //   };
+  //   if (uploadType === 'url') {
+  //     uploadFile.dataUrl = url;
+  //     uploadFile.status = STATUS_SUCCESS;
+  //     setFile(uploadFile);
+  //     onSuccess?.({}, uploadFile, uploadFileList);
+  //   } else {
+  //     try {
+  //       uploadFile.status = STATUS_UPLOADING;
+  //       setFile(uploadFile);
+  //       const { originFile } = await fetchImageFileFromUrl(url);
+  //       const request = restProps.customRequest || xhrRequest;
+  //       let ac: string;
+  //       if (typeof action === 'function') {
+  //         ac = await action(originFile);
+  //       } else {
+  //         ac = action as string;
+  //       }
 
-        let data: Record<string, string | Blob>;
-        if (typeof restProps.data === 'function') {
-          data = restProps.data(uploadFile);
-        } else {
-          data = restProps.data ?? {};
-        }
-        request({
-          action: ac,
-          filename: restProps.name ?? 'file',
-          data,
-          file: originFile,
-          headers: restProps.headers ?? {},
-          withCredentials: restProps.withCredentials ?? false,
-          method: restProps.method || 'post',
-          onProgress: (e: IProgress) => handleProgress(e, originFile),
-          onSuccess: (res: Record<string, unknown>) => handleSuccess(res, originFile),
-          onError: (err: Error, res: Record<string, unknown>) => handleError(err, res, originFile),
-        });
-      } catch (error) {
-        setFile({ ...file, error });
-        onError?.(error, file, uploadFileList);
-      }
-    }
-  };
+  //       let data: Record<string, string | Blob>;
+  //       if (typeof restProps.data === 'function') {
+  //         data = restProps.data(uploadFile);
+  //       } else {
+  //         data = restProps.data ?? {};
+  //       }
+  //       request({
+  //         action: ac,
+  //         filename: restProps.name ?? 'file',
+  //         data,
+  //         file: originFile,
+  //         headers: restProps.headers ?? {},
+  //         withCredentials: restProps.withCredentials ?? false,
+  //         method: restProps.method || 'post',
+  //         onProgress: (e: IProgress) => handleProgress(e, originFile),
+  //         onSuccess: (res: Record<string, unknown>) => handleSuccess(res, originFile),
+  //         onError: (err: Error, res: Record<string, unknown>) => handleError(err, res, originFile),
+  //       });
+  //     } catch (error) {
+  //       setFile({ ...file, error });
+  //       onError?.(error, file, uploadFileList);
+  //     }
+  //   }
+  // };
 
-  const showBeyondAlert = () =>
-    showAlert &&
-    maxCount && (
-      <Alert
-        type="error"
-        message={
-          isOnlyAcceptImg(restProps.accept)
-            ? template(picLimit, { interpolate: /{([\s\S]+?)}/g })({ maxCount })
-            : template(fileLimit, { interpolate: /{([\s\S]+?)}/g })({ maxCount })
-        }
-        showIcon
-        closeable
-        onClose={() => setAlert(false)}
-      />
-    );
+  // const showBeyondAlert = () =>
+  //   showAlert &&
+  //   maxCount && (
+  //     <Alert
+  //       type="error"
+  //       message={
+  //         isOnlyAcceptImg(restProps.accept)
+  //           ? template(picLimit, { interpolate: /{([\s\S]+?)}/g })({ maxCount })
+  //           : template(fileLimit, { interpolate: /{([\s\S]+?)}/g })({ maxCount })
+  //       }
+  //       showIcon
+  //       closeable
+  //       onClose={() => setAlert(false)}
+  //     />
+  //   );
 
   const renderUploadList = () =>
-    showUploadList && (directory || multiple) ? (
-      <UploadList items={uploadFileList} onRemove={handleRemove} accept={restProps.accept} />
-    ) : null;
+    showUploadList ? <UploadList items={uploadFileList} onRemove={handleRemove} prefixCls={customPrefixCls} /> : null;
 
   const rcUploadProps = {
-    ...restProps,
-    disabled: disabled || (type === 'drag' && uploadDisabled),
-    prefixCls: type === 'drag' ? `${prefixCls}-drag-container` : prefixCls,
+    ...(restProps as RcUploadProps),
+    disabled: mergedDisabled,
+    prefixCls,
     action,
     directory,
     multiple,
-    beforeUpload: directory || multiple ? handleMultipleBeforeUpload : handleSingleBeforeUpload,
-    onStart: handleStart,
+    onBeforeUpload: handleBeforeUpload,
+    onBatchStart: handleBatchStart,
     onProgress: handleProgress,
     onSuccess: handleSuccess,
     onError: handleError,
-    openFileDialogOnClick: type === 'input' ? false : openFileDialogOnClick,
-  };
-
-  const triggerComponentProps: ITriggerProps = {
-    triggerProps: {
-      ...triggerProps,
-    },
-    file,
-    items: uploadFileList,
-    finishCount: finish,
-    accept: restProps.accept,
-    inputUploadType,
-    setFile,
-    onRemove: handleRemove,
-    onReSelect: restProps.onReSelect,
-    onInputUpload: handleInputUpload,
-    placeholderImg,
-    iconSize,
-    directory,
-    multiple,
-    maxCount,
-    disabled: disabled || (type === 'drag' && uploadDisabled),
-    dragStyle: restProps.dragStyle,
+    openFileDialogOnClick,
   };
 
   if (type === 'drag') {
+    const dragCls = classnames(
+      prefixCls,
+      {
+        [`${prefixCls}-drag`]: true,
+        [`${prefixCls}-drag-uploading`]: uploadFileList.some((file) => file.status === UploadState.STATUS_UPLOADING),
+        [`${prefixCls}-drag-hover`]: dragState === 'dragover',
+        [`${prefixCls}-disabled`]: mergedDisabled,
+      },
+      className
+    );
+    const onFileDrag = (e: React.DragEvent<HTMLDivElement>): void => {
+      setDragState(e.type);
+    };
     return (
-      <UploadPrefixClsContext.Provider value={prefixCls}>
-        <div className={rootCls} style={style}>
-          {showBeyondAlert()}
-          <RcUpload data-testid="upload" {...rcUploadProps} ref={rcUploadRef}>
-            <Trigger {...triggerComponentProps}>{children}</Trigger>
+      <span>
+        <div
+          data-testid="upload"
+          className={dragCls}
+          onDrop={onFileDrag}
+          onDragOver={onFileDrag}
+          onDragLeave={onFileDrag}
+          style={style}
+        >
+          <RcUpload {...rcUploadProps} ref={rcUploadRef} className={`${prefixCls}-btn`}>
+            <div className={`${prefixCls}-drag-container`}>{children}</div>
           </RcUpload>
-          {renderUploadList()}
         </div>
-      </UploadPrefixClsContext.Provider>
+        {renderUploadList()}
+      </span>
     );
   }
+  const rootCls = classnames(
+    prefixCls,
+    {
+      [`${prefixCls}--disabled`]: mergedDisabled,
+    },
+    className
+  );
+
+  if (type === 'card') {
+    <span className={rootCls} style={style}>
+      <RcUpload data-testid="upload" {...rcUploadProps} ref={rcUploadRef}>
+        {children}
+      </RcUpload>
+    </span>;
+  }
+  const triggerComponentProps: ITriggerProps = {
+    // triggerProps: {
+    //   ...triggerProps,
+    // },
+    // file,
+    items: uploadFileList,
+    // finishCount: finish,
+    accept: restProps.accept,
+    // inputUploadType,
+    // setFile,
+    onRemove: handleRemove,
+    // onReSelect: restProps.onReSelect,
+    // onInputUpload: handleInputUpload,
+    // placeholderImg,
+    // iconSize,
+    directory,
+    multiple,
+    maxCount,
+    disabled: mergedDisabled,
+  };
+
+  // if (type === 'drag') {
+  //   return (
+  //     <div className={rootCls} style={style}>
+  //       <RcUpload data-testid="upload" {...rcUploadProps} ref={rcUploadRef}>
+  //         <Trigger {...triggerComponentProps}>{children}</Trigger>
+  //       </RcUpload>
+  //       {renderUploadList()}
+  //     </div>
+  //   );
+  // }
 
   return (
-    <UploadPrefixClsContext.Provider value={prefixCls}>
-      <div className={rootCls} style={style}>
-        <RcUpload data-testid="upload" {...rcUploadProps} ref={rcUploadRef}>
-          <Trigger {...triggerComponentProps}>{children}</Trigger>
-        </RcUpload>
-      </div>
-    </UploadPrefixClsContext.Provider>
+    <div className={rootCls} style={style}>
+      <RcUpload data-testid="upload" {...rcUploadProps} ref={rcUploadRef}>
+        <Trigger {...triggerComponentProps}>{children}</Trigger>
+      </RcUpload>
+    </div>
   );
 };
 

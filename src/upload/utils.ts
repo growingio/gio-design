@@ -1,16 +1,16 @@
 import { defaultRootPrefixCls } from '../config-provider';
-import { IRcFile, IUploadFile, STATUS_NOT_YET, STATUS_SUCCESS } from './interface';
+import { RcFile, UploadFile, UploadState } from './interface';
 
 export const getUid = (): string => `${defaultRootPrefixCls}-upload-${Date.now()}`;
 
 // 文件是否在fileList中
-export function getFileItem(file: IUploadFile, fileList: IUploadFile[]) {
+export function getFileItem(file: UploadFile, fileList: UploadFile[]) {
   const matchKey = 'uid';
   return fileList.filter((item) => item[matchKey] === file[matchKey])[0];
 }
 
 // 更新上传文件列表
-export const updateFileList = (file: IUploadFile, fileList: IUploadFile[]) => {
+export const updateFileList = (file: UploadFile, fileList: UploadFile[]) => {
   const currentFileList = [...fileList];
   const findIndex = fileList.findIndex((item) => item.uid === file.uid);
   if (findIndex === -1) {
@@ -22,14 +22,14 @@ export const updateFileList = (file: IUploadFile, fileList: IUploadFile[]) => {
 };
 
 // 删除列表中的某个文件
-export function removeFileItem(file: IUploadFile, fileList: IUploadFile[]) {
+export function removeFileItem(file: UploadFile, fileList: UploadFile[]) {
   if (!file) {
     return fileList;
   }
   return fileList.filter((item) => item.uid !== file.uid);
 }
 
-export const fileToObject = (file: IRcFile): IUploadFile => ({
+export const fileToObject = (file: RcFile): UploadFile => ({
   ...file,
   lastModified: file.lastModified,
   lastModifiedDate: file.lastModifiedDate,
@@ -41,12 +41,15 @@ export const fileToObject = (file: IRcFile): IUploadFile => ({
   originFile: file,
 });
 
-export const getEmptyFileObj = (file?: IUploadFile): IUploadFile => ({
+export const getEmptyFileObj = (file?: UploadFile): UploadFile => ({
   uid: getUid(),
   size: file?.size as number,
   name: file?.name as string,
   type: file?.type ?? '$empty-file',
-  status: file?.dataUrl && file?.status === STATUS_SUCCESS ? STATUS_SUCCESS : STATUS_NOT_YET,
+  status:
+    file?.dataUrl && file?.status === UploadState.STATUS_SUCCESS
+      ? UploadState.STATUS_SUCCESS
+      : UploadState.STATUS_NOT_YET,
   dataUrl: file?.dataUrl ?? '',
 });
 
@@ -111,7 +114,7 @@ export const dataUrl2ImageFile = (dataUrl = ''): File => {
 export const fetchImageFileFromUrl = (
   url: string
 ): Promise<{
-  originFile: IRcFile;
+  originFile: RcFile;
   dataUrl: string;
 }> =>
   new Promise((resolve, reject) => {
@@ -132,9 +135,9 @@ export const fetchImageFileFromUrl = (
           reject(error);
         }
         const file = dataUrl2ImageFile(dataUrl);
-        (file as IRcFile).uid = getUid();
+        (file as RcFile).uid = getUid();
         resolve({
-          originFile: file as IRcFile,
+          originFile: file as RcFile,
           dataUrl,
         });
       })
@@ -149,7 +152,7 @@ export const isOnlyAcceptImg = (accept?: string): boolean =>
         .filter((_) => !/((image\/)|\.)(dwg|dxf|gif|jp2|jpeg|jpg|jpe|png|svf|tif|tiff)|image\/\*/.test(_)).length === 0
     : false;
 
-export const isImageFile = (file: IUploadFile): boolean => file.type.startsWith('image/');
+export const isImageFile = (file: UploadFile): boolean => file.type.startsWith('image/');
 
 export const getHexValue = (e: any): string => {
   const view = new DataView(e.target.result);

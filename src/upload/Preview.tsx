@@ -6,12 +6,12 @@ import { SuccessFilled, ErrorFilled } from '@gio-design/icons';
 import { useLocale } from '@gio-design/utils';
 import Button from '../button';
 import Text from '../typography/Text';
-import { STATUS_SUCCESS, STATUS_ERROR, IPreviewProps, IUploadFile } from './interface';
+import { STATUS_SUCCESS, STATUS_ERROR, IPreviewProps, UploadFile } from './interface';
 import { UploadPrefixClsContext } from './Upload';
 import { CsvSVG, DocxSVG, PdfSVG, XlsxSVG, FolderSVG, TxtSVG } from './svg';
 import defaultLocale from './locales/zh-CN';
 
-const getFileLogo = (file: IUploadFile) => {
+const getFileLogo = (file: UploadFile) => {
   const suffix = file.name.match(/.*\.(\w+)/)?.[1].toLowerCase();
   const style = { width: 64, height: 64 };
 
