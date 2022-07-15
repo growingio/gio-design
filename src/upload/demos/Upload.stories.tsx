@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { UploadOutlined } from '@gio-design/icons';
 import Docs from './UploadPage';
 import Upload from '../index';
 
-import { UploadProps, RcFile, UploadFile, CustomRequestOptions, IProgress } from '../interface';
+import { UploadProps, RcFile, UploadFile, CustomRequestOptions, UploadProgressEvent } from '../interface';
 import '../style';
 import { Toast } from '../..';
+import './demo.less';
 
 const uploadUrl = 'https://run.mocky.io/v3/8db0a35b-8cd5-4fc1-9797-b2cca4b27380'; // 'https://examples.form.io/example';
 
@@ -40,7 +42,7 @@ InputUpload.args = {
 };
 
 export const AvatarUpload: Story<UploadProps> = () => (
-  <Upload multiple={false} type="avatar" successBorder action={uploadUrl} accept="image/*" />
+  <Upload multiple={false} type="avatar" action={uploadUrl} accept="image/*" />
 );
 
 export const CardUpload: Story<UploadProps> = () => {
@@ -65,9 +67,35 @@ export const CardUpload: Story<UploadProps> = () => {
  * 拖拽上传
  * @returns
  */
-export const DraggerUpload: Story<UploadProps> = () => (
-  <Upload multiple={false} type="drag" action={uploadUrl} accept="image/*" />
-);
+export const DraggerUpload: Story<UploadProps> = () => {
+  const beforeUpload = (file: RcFile) => {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJpgOrPng) {
+      Toast.error('仅支持 JPG/PNG 格式图片!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      Toast.error('图片大小超过 2MB!');
+    }
+    return isJpgOrPng && isLt2M;
+  };
+  return (
+    <Upload
+      className="upload-demo"
+      multiple={false}
+      type="drag"
+      beforeUpload={beforeUpload}
+      action={uploadUrl}
+      accept="image/png, image/jpeg"
+    >
+      <p className="gio-upload-icon">
+        <UploadOutlined />
+      </p>
+      <p className="gio-upload-text">点击上传或拖拽图片到此区域</p>
+      <p className="gio-upload-hint">支持图片类型jpeg,png。图片大小不超过2M。</p>
+    </Upload>
+  );
+};
 /**
  * 批量上传
  * @returns

@@ -67,7 +67,7 @@ export default function ListPage() {
       <Subheading>{formatMessage({ defaultMessage: 'Size大小' })}</Subheading>
       <Description>
         {formatMessage({
-          defaultMessage: '`size`大小有两种，small和normal，默认为normal',
+          defaultMessage: '`size`大小有两种，small和normal，默认为normal,还可以通过`strokeWidth`设置进度条线的宽度',
         })}
       </Description>
       <Canvas>

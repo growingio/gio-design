@@ -7,7 +7,19 @@ import { UploadListProps } from './interface';
 import ListItem from './ListItem';
 
 const UploadList = (props: UploadListProps) => {
-  const { prefixCls: customizePrefixCls, listType, onRemove, items = [], progress, iconRender, itemRender } = props;
+  const {
+    prefixCls: customizePrefixCls,
+    listType = 'text',
+    onRemove,
+    items = [],
+    progress = {
+      strokeWidth: 4,
+      showInfo: false,
+    },
+    disabled = false,
+    iconRender,
+    itemRender,
+  } = props;
 
   const prefixCls = usePrefixCls('upload', customizePrefixCls);
   const listClassNames = classNames({
@@ -36,6 +48,7 @@ const UploadList = (props: UploadListProps) => {
           items={items}
           progress={progress}
           listType={listType}
+          disabled={disabled}
           iconRender={internalIconRender}
           itemRender={itemRender}
           onRemove={onInternalRemove}

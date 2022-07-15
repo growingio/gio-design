@@ -1,15 +1,15 @@
 // import React, { useContext } from 'react';
 // import classnames from 'classnames';
 // import { DocumentFilled } from '@gio-design/icons';
-// import { useLocale } from '@gio-design/utils';
+// import { useLocale, usePrefixCls } from '@gio-design/utils';
 // import Button from '../../button';
-// import { ITriggerProps, STATUS_SUCCESS, STATUS_UPLOADING } from '../interface';
+// import { ITriggerProps } from '../interface';
 // import Preview from '../Preview';
 // // import { UploadPrefixClsContext } from '../Upload';
 // import defaultLocale from '../locales/zh-CN';
 
 // const ButtonTrigger: React.FC<ITriggerProps> = ({ file, triggerProps, disabled }: ITriggerProps) => {
-//   const prefixCls = useContext(UploadPrefixClsContext);
+//   const prefixCls = usePrefixCls('');
 //   const size = 'normal';
 //   const locale = useLocale('Upload');
 //   const { buttonLabel }: { buttonLabel: string } = {

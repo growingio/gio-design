@@ -19,11 +19,11 @@ export interface ProgressProps {
   format?: (percent?: number) => React.ReactNode;
   /**
    * 进度条尺寸
-   * @default default
+   * @default normal
    */
-  size?: 'small'|'default';
+  size?: 'small' | 'normal';
   customizePrefixCls?: string;
-   /**
+  /**
    * 动画特效开关
    * @default false
    */
@@ -31,4 +31,8 @@ export interface ProgressProps {
   className?: string;
   style?: React.CSSProperties;
   showInfo?: boolean;
+  /**
+   * 进度条线的宽度，单位 px
+   */
+  strokeWidth?: number;
 }

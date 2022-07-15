@@ -46,9 +46,9 @@ export const Size: Story<ProgressProps> = () => (
   <>
     <Progress status="active" percent={percent} />
     <Progress status="active" percent={percent} size="small" />
+    <Progress status="active" percent={percent} strokeWidth={2} />
   </>
 );
-
 export const ShowInfo: Story<ProgressProps> = () => (
   <>
     <Progress status="active" percent={percent} showInfo={false} />

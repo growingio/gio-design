@@ -14,3 +14,16 @@
   line-height: @text-lint-height-base;
   list-style: none;
 }
+
+.clearfix() {
+  &::before {
+    display: table;
+    content: '';
+  }
+
+  &::after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+}

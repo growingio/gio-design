@@ -4,38 +4,32 @@ import type { UploadProps as RcUploadProps } from 'rc-upload';
 // import useControlledState from 'rc-util/es/hooks/useMergedState';
 // import { template } from 'lodash';
 import classnames from 'classnames';
-import { usePrefixCls } from '@gio-design/utils';
+import { useLocale, usePrefixCls } from '@gio-design/utils';
+import { DocumentFilled } from '@gio-design/icons';
 import useControlledState from '../utils/hooks/useControlledState';
-import {
-  UploadProps,
-  ITriggerProps,
-  RcFile,
-  UploadFile,
-  UploadState,
-  UploadType,
-  BeforeUploadFileType,
-} from './interface';
-import ButtonTrigger from './triggers/ButtonTrigger';
-import CardTrigger from './triggers/CardTrigger';
-import InputTrigger from './triggers/InputTrigger';
-import AvatarTrigger from './triggers/AvatarTrigger';
-import DragTrigger from './triggers/DragTrigger';
+import { UploadProps, RcFile, UploadFile, UploadState, UploadType, BeforeUploadFileType } from './interface';
+// import ButtonTrigger from './triggers/ButtonTrigger';
+// import CardTrigger from './triggers/CardTrigger';
+// import InputTrigger from './triggers/InputTrigger';
+// import AvatarTrigger from './triggers/AvatarTrigger';
+// import DragTrigger from './triggers/DragTrigger';
 import { imageFile2DataUrl, fileToObject, updateFileList, removeFileItem, getFileItem, isImageFile } from './utils';
 // import xhrRequest from './xhrRequest';
 import UploadList from './upload-list';
-// import defaultLocale from './locales/zh-CN';
+import Button from '../button';
+import defaultLocale from './locales/zh-CN';
 
 // export const UploadPrefixClsContext = createContext(`${defaultRootPrefixCls}-upload`);
 export type ITriggerMap = {
   [key in UploadType]: React.ComponentType;
 };
-const triggerMap: ITriggerMap = {
-  button: ButtonTrigger,
-  input: InputTrigger,
-  card: CardTrigger,
-  avatar: AvatarTrigger,
-  drag: DragTrigger,
-};
+// const triggerMap: ITriggerMap = {
+//   button: ButtonTrigger,
+//   input: InputTrigger,
+//   card: CardTrigger,
+//   avatar: AvatarTrigger,
+//   drag: DragTrigger,
+// };
 
 const Upload: React.FC<UploadProps> = ({
   // file: uploadedFile,
@@ -77,7 +71,7 @@ const Upload: React.FC<UploadProps> = ({
   //   }
   // );
   const [dragState, setDragState] = useState('drop');
-  const [uploadFileList, setUploadFileList] = useControlledState<UploadFile[]>(fileList, defaultFileList);
+  const [uploadFileList, setUploadFileList] = useControlledState<UploadFile[]>(fileList, defaultFileList || []);
   const mergedDisabled = useMemo(
     () => disabled || (maxCount && uploadFileList.length > maxCount),
     [disabled, uploadFileList.length, maxCount]
@@ -88,11 +82,11 @@ const Upload: React.FC<UploadProps> = ({
   // 控制dragTrigger是否disabled
   // const [uploadDisabled, setUploadDisabled] = useState(disabled);
 
-  // const locale = useLocale('Upload');
-  // const { picLimit, fileLimit }: { [key: string]: string } = {
-  //   ...defaultLocale,
-  //   ...locale,
-  // };
+  const locale = useLocale('Upload');
+  const { buttonLabel }: { [key: string]: string } = {
+    ...defaultLocale,
+    ...locale,
+  };
 
   // useEffect(() => {
   //   setFile(getEmptyFileObj(uploadedFile));
@@ -107,7 +101,7 @@ const Upload: React.FC<UploadProps> = ({
   const rcUploadRef = useRef(null);
   const prefixCls = usePrefixCls('upload', customPrefixCls);
 
-  const Trigger = triggerMap[type];
+  // const Trigger = triggerMap[type];
 
   const onFileChange = (file: UploadFile, changedFileList: UploadFile[], event?: { percent: number }) => {
     let cloneList = [...changedFileList];
@@ -369,6 +363,9 @@ const Upload: React.FC<UploadProps> = ({
     const onFileDrag = (e: React.DragEvent<HTMLDivElement>): void => {
       setDragState(e.type);
     };
+    // const defaultDragTrigger=()=>{
+
+    // }
     return (
       <span>
         <div
@@ -402,26 +399,26 @@ const Upload: React.FC<UploadProps> = ({
       </RcUpload>
     </span>;
   }
-  const triggerComponentProps: ITriggerProps = {
-    // triggerProps: {
-    //   ...triggerProps,
-    // },
-    // file,
-    items: uploadFileList,
-    // finishCount: finish,
-    accept: restProps.accept,
-    // inputUploadType,
-    // setFile,
-    onRemove: handleRemove,
-    // onReSelect: restProps.onReSelect,
-    // onInputUpload: handleInputUpload,
-    // placeholderImg,
-    // iconSize,
-    directory,
-    multiple,
-    maxCount,
-    disabled: mergedDisabled,
-  };
+  // const triggerComponentProps: ITriggerProps = {
+  //   // triggerProps: {
+  //   //   ...triggerProps,
+  //   // },
+  //   // file,
+  //   items: uploadFileList,
+  //   // finishCount: finish,
+  //   accept: restProps.accept,
+  //   // inputUploadType,
+  //   // setFile,
+  //   onRemove: handleRemove,
+  //   // onReSelect: restProps.onReSelect,
+  //   // onInputUpload: handleInputUpload,
+  //   // placeholderImg,
+  //   // iconSize,
+  //   directory,
+  //   multiple,
+  //   maxCount,
+  //   disabled: mergedDisabled,
+  // };
 
   // if (type === 'drag') {
   //   return (
@@ -433,13 +430,33 @@ const Upload: React.FC<UploadProps> = ({
   //     </div>
   //   );
   // }
-
-  return (
-    <div className={rootCls} style={style}>
+  const uploadButtonCls = classnames(prefixCls, {
+    [`${prefixCls}-select`]: true,
+    [`${prefixCls}-select-${type}`]: true,
+    [`${prefixCls}-disabled`]: mergedDisabled,
+  });
+  const defaultButton = (
+    <Button type="secondary" prefix={<DocumentFilled />}>
+      {buttonLabel}
+    </Button>
+  );
+  const uploadButton = (
+    <div className={uploadButtonCls}>
       <RcUpload data-testid="upload" {...rcUploadProps} ref={rcUploadRef}>
-        <Trigger {...triggerComponentProps}>{children}</Trigger>
+        {React.isValidElement(children)
+          ? React.cloneElement(children, {
+              disabled: mergedDisabled,
+              style,
+            })
+          : defaultButton}
       </RcUpload>
     </div>
+  );
+  return (
+    <span className={className}>
+      {uploadButton}
+      {renderUploadList()}
+    </span>
   );
 };
 

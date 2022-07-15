@@ -11,6 +11,7 @@ export interface UploadListProps<T = any> {
   removeIcon?: React.ReactNode | ((file: UploadFile) => React.ReactNode);
   iconRender?: (file: UploadFile<T>, listType?: UploadListType) => React.ReactNode;
   itemRender?: UploadListItemRender<T>;
+  disabled?: boolean;
 }
 export interface ListItemProps {
   prefixCls: string;
@@ -19,6 +20,7 @@ export interface ListItemProps {
   file: UploadFile;
   items: UploadFile[];
   listType?: UploadListType;
+  disabled?: boolean;
   // isImgUrl?: (file: UploadFile) => boolean;
   showRemoveIcon?: boolean;
   // showDownloadIcon?: boolean;

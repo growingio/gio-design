@@ -5,7 +5,6 @@
 .@{progress-prefix-cls} {
   display: flex;
   align-items: center;
-  height: 24px;
   color: @gray-5;
   font-weight: normal;
   .text-h3();
@@ -14,22 +13,14 @@
     flex-basis: 100%;
     overflow: hidden;
     background-color: @gray-2;
-    border-radius: 24px;
-  }
-
-  &-default {
-    height: 16px;
-  }
-
-  &-small {
-    height: 8px;
+    border-radius: 200px;
   }
 
   &-stroke {
     position: relative;
     width: 0;
     height: 100%;
-    border-radius: 24px;
+    border-radius: 200px;
     transition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;
   }
 

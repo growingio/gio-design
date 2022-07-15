@@ -182,6 +182,11 @@ export interface UploadProps<T = any> {
    */
   method?: UploadRequestMethod;
   /**
+   * 如果 accept (en-US) 属性指出了 input 是图片或者视频类型，则它指定了使用哪个摄像头去获取这些数据
+   * @see https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#attr-capture
+   */
+  capture?: string;
+  /**
    是否允许上传文件夹
    */
   directory?: boolean;
