@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { UploadOutlined } from '@gio-design/icons';
+import { action } from '@storybook/addon-actions';
+
+import { PlusOutlined, UploadOutlined } from '@gio-design/icons';
 import Docs from './UploadPage';
 import Upload from '../index';
 
-import { UploadProps, RcFile, UploadFile, CustomRequestOptions, UploadProgressEvent } from '../interface';
+import { UploadProps, RcFile, UploadFile, CustomRequestOptions } from '../interface';
 import '../style';
-import { Toast } from '../..';
+import { Progress, Toast } from '../..';
 import './demo.less';
+import { FolderSVG, PictureSVG } from '../svg';
 
 const uploadUrl = 'https://run.mocky.io/v3/8db0a35b-8cd5-4fc1-9797-b2cca4b27380'; // 'https://examples.form.io/example';
 
-const errorAction = 'https://run.mocky.io/v3/26a35feb-f7df-4790-8344-e32db0ed0218';
+// const errorAction = 'https://run.mocky.io/v3/26a35feb-f7df-4790-8344-e32db0ed0218';
 
 export default {
   title: 'Upgraded/Upload',
@@ -31,21 +34,35 @@ export default {
 const Template: Story<UploadProps> = (args) => <Upload {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+  name: 'file',
   action: uploadUrl,
+  onChange: (file: UploadFile, fileList: UploadFile[], e?: { percent?: number }) => {
+    action('upload onChange')(file, fileList, e);
+  },
 };
 
-export const InputUpload = Template.bind({});
-InputUpload.args = {
-  type: 'input',
-  action: uploadUrl,
-  inputUploadType: 'file',
-};
+// export const InputUpload = Template.bind({});
+// InputUpload.args = {
+//   type: 'input',
+//   action: uploadUrl,
+//   inputUploadType: 'file',
+// };
 
 export const AvatarUpload: Story<UploadProps> = () => (
   <Upload multiple={false} type="avatar" action={uploadUrl} accept="image/*" />
 );
-
-export const CardUpload: Story<UploadProps> = () => {
+export const CardUpload = () => (
+  <Upload
+    multiple={false}
+    className="my-uploader"
+    showUploadList={false}
+    maxCount={1}
+    type="card"
+    action={uploadUrl}
+    accept="image/*"
+  />
+);
+export const PictureCard: Story<UploadProps> = () => {
   const beforeUpload = (file: RcFile) => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
@@ -57,12 +74,29 @@ export const CardUpload: Story<UploadProps> = () => {
     }
     return isJpgOrPng && isLt2M;
   };
+  const onError = (_error: Error, file: UploadFile<any>) => {
+    Toast.error(`${file?.name} 上传出错了～`);
+  };
   return (
     <div>
-      <Upload multiple={false} beforeUpload={beforeUpload} type="card" action={uploadUrl} accept="image/*" />
+      <Upload
+        multiple={false}
+        beforeUpload={beforeUpload}
+        onError={onError}
+        showUploadList={{ listType: 'card' }}
+        maxCount={4}
+        type="card"
+        action={uploadUrl}
+        accept="image/*"
+      >
+        <div>
+          <PlusOutlined />
+        </div>
+      </Upload>
     </div>
   );
 };
+
 /**
  * 拖拽上传
  * @returns
@@ -100,41 +134,77 @@ export const DraggerUpload: Story<UploadProps> = () => {
  * 批量上传
  * @returns
  */
-export const BatchUpload: Story<UploadProps> = () => <Upload maxCount={5} multiple type="drag" action={uploadUrl} />;
-
+export const BatchUpload: Story<UploadProps> = () => (
+  <Upload maxCount={5} multiple type="drag" action={uploadUrl}>
+    <p className="gio-upload-icon">
+      <PictureSVG />
+    </p>
+    <p className="gio-upload-text">点击上传或拖拽图片到此区域</p>
+  </Upload>
+);
 /**
  * 文件夹上传
  * @returns
  */
 export const UploadDirectory: Story<UploadProps> = () => (
-  <Upload directory multiple maxCount={5} type="drag" action={uploadUrl} />
+  <Upload directory multiple maxCount={5} type="button" action={uploadUrl} />
 );
 
-export const ControlledFile = Template.bind({});
-ControlledFile.args = {
-  type: 'drag',
-  file: {
-    uid: '3',
-    name: 'zzz.txt',
-    status: 'success',
-    dataUrl: 'https://www.xxx.com/zzz.txt',
-  } as any,
-};
+export const ControlledFile = () => {
+  const [file, setFile] = useState<UploadFile>();
 
-export const CustomErrorMessage: Story<UploadProps> = () => {
-  const [newFile, setFile] = React.useState<UploadFile>();
-
-  const onError = (error: Error, file: UploadFile) => {
-    const nextFile = file;
-    nextFile.errorMessage = '上传出错啦!';
-    setFile(nextFile);
+  const handleChange = (_file: UploadFile) => {
+    setFile(_file);
   };
-
-  const handleChange = (file: UploadFile) => {
-    setFile(file as any);
-  };
-  return <Upload type="drag" onChange={handleChange} action={errorAction} onError={onError} file={newFile} />;
+  return (
+    <Upload
+      className="upload-demo"
+      multiple={false}
+      type="drag"
+      onChange={handleChange}
+      action={uploadUrl}
+      showUploadList={false}
+    >
+      {file?.status === 'uploading' ? (
+        <div style={{ height: '100px' }}>
+          <Progress percent={file.percent} />
+          <p className="gio-upload-text">正在上传文件....</p>
+        </div>
+      ) : (
+        <div style={{ height: '200px' }}>
+          <p className="gio-upload-icon">
+            <FolderSVG />
+          </p>
+          <p className="gio-upload-text">点击上传或拖拽文件到此区域</p>
+        </div>
+      )}
+    </Upload>
+  );
 };
+// ControlledFile.args = {
+//   type: 'drag',
+//   file: {
+//     uid: '3',
+//     name: 'zzz.txt',
+//     status: 'success',
+//     dataUrl: 'https://www.xxx.com/zzz.txt',
+//   } as any,
+// };
+
+// export const CustomErrorMessage: Story<UploadProps> = () => {
+//   const [newFile, setFile] = React.useState<UploadFile[]>([]);
+
+//   const onError = (error: Error, file: UploadFile) => {
+//     const nextFile = [file];
+//     nextFile.errorMessage = '上传出错啦!';
+//     setFile(nextFile);
+//   };
+
+//   const handleChange = (file: UploadFile) => {
+//     setFile(file as any);
+//   };
+//   return <Upload type="drag" onChange={handleChange} action={errorAction} onError={onError} file={newFile} />;
+// };
 
 export const DefaultListUpload = Template.bind({});
 DefaultListUpload.args = {

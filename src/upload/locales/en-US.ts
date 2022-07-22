@@ -17,4 +17,5 @@ export default {
   uploading: 'Uploading, wait patiently',
   picPending: 'Click or drag image to this area to upload',
   filePending: 'Click or drag file to this area to upload',
+  removeFile: 'Remove',
 };

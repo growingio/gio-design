@@ -6,7 +6,7 @@ export {
   UploadStatus,
   RcFile as IRcFile,
   UploadFile as IUploadFile,
-  IProgress,
+  UploadProgressEvent,
   CustomRequestOptions as IRcCustomRequestOptions,
 } from './interface';
 

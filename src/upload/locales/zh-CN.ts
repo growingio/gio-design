@@ -17,4 +17,5 @@ export default {
   uploading: '正在上传，请耐心等待',
   picPending: '点击上传或拖拽图片到此区域',
   filePending: '点击上传或拖拽文件到此区域',
+  removeFile: '删除',
 };

@@ -15,14 +15,17 @@
 //   children,
 //   prefixCls: customizePrefixCls,
 //   placeholderImg = '',
-// }: ITriggerProps) => {
+// }: Avatar) => {
+//   const { prefixCls: customPrefixCls, file, onRemove, disabled, iconRender, isImage } = props;
+//   const prefixCls = usePrefixCls('upload', customPrefixCls);
+//   const previewCls = `${prefixCls}-preview`;
+//   const cls = classNames(previewCls, `${previewCls}-type-card`);
+//   const actionCls = `${previewCls}-actions-btn`;
 //   const locale = useLocale('Upload');
-//   const { loadingTitle }: { loadingTitle: string } = {
+//   const mergedLocale: { [key: string]: string } = {
 //     ...defaultLocale,
 //     ...locale,
 //   };
-//   const prefixCls = usePrefixCls('upload', customizePrefixCls);
-//   const cls = classnames(triggerProps?.className, `${prefixCls}__avatar`);
 
 //   return (
 //     <Loading loading={file.status === STATUS_UPLOADING} size="small" title={loadingTitle}>

@@ -109,6 +109,7 @@ export interface UploadFile<T = any> {
   response?: T;
   error?: any;
   type: string;
+  crossOrigin?: React.ImgHTMLAttributes<HTMLImageElement>['crossOrigin'];
   // /**
   //  自定义文件上传失败时显示的错误信息
   //  */
@@ -119,6 +120,16 @@ export interface UploadFile<T = any> {
 
 export interface IInnerTriggerProps {
   [key: string]: any;
+}
+export type UploadListType = 'card' | 'text';
+export interface ShowUploadListInterface {
+  showRemoveIcon?: boolean;
+  showPreviewIcon?: boolean;
+  // showDownloadIcon?: boolean;
+  // removeIcon?: React.ReactNode | ((file: UploadFile) => React.ReactNode);
+  // downloadIcon?: React.ReactNode | ((file: UploadFile) => React.ReactNode);
+  // previewIcon?: React.ReactNode | ((file: UploadFile) => React.ReactNode);
+  listType: 'card' | 'text';
 }
 export interface UploadProps<T = any> {
   /**
@@ -271,7 +282,11 @@ export interface UploadProps<T = any> {
   /**
    批量上传时是否显示上传列表
    */
-  showUploadList?: boolean;
+  showUploadList?: boolean | ShowUploadListInterface;
+  /**
+   * 是否为图片
+   */
+  isImage?: (file: UploadFile) => boolean;
 }
 
 export interface ITriggerProps {
@@ -313,30 +328,43 @@ export type UploadListItemRender<T = any> = (
 ) => React.ReactNode;
 
 export type UploadListProgressProps = Omit<ProgressProps, 'percent'>;
-export interface UploadListProps<T> {
-  // 上传文件列表
-  items?: UploadFile[];
-  // 删除已上传图片 回调
-  onRemove?: ((file: UploadFile) => void) | ((file: UploadFile) => boolean) | Promise<void> | Promise<boolean>;
-  /**
-   接受上传的文件类型，具体查看https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#accept
-   */
-  accept?: string;
-  /**
-   * 文件的icon
-   */
-  iconRender?: (file: UploadFile<T>) => React.ReactNode;
-  itemRender?: UploadListItemRender<T>;
-  /**
-   * 进度条属性
-   */
+// export interface UploadListProps<T> {
+//   // 上传文件列表
+//   items?: UploadFile[];
+//   // 删除已上传图片 回调
+//   onRemove?: ((file: UploadFile) => void) | ((file: UploadFile) => boolean) | Promise<void> | Promise<boolean>;
+//   /**
+//    接受上传的文件类型，具体查看https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#accept
+//    */
+//   accept?: string;
+//   /**
+//    * 文件的icon
+//    */
+//   iconRender?: (file: UploadFile<T>) => React.ReactNode;
+//   itemRender?: UploadListItemRender<T>;
+//   /**
+//    * 进度条属性
+//    */
+//   progress?: UploadListProgressProps;
+//   /**
+//    * css自定义前缀
+//    */
+//   prefixCls?: string;
+// }
+export interface UploadListProps<T = any> {
+  listType?: UploadListType;
+  onRemove?: (file: UploadFile<T>) => void | boolean;
+  items?: Array<UploadFile<T>>;
   progress?: UploadListProgressProps;
-  /**
-   * css自定义前缀
-   */
   prefixCls?: string;
+  removeIcon?: React.ReactNode | ((file: UploadFile) => React.ReactNode);
+  iconRender?: (file: UploadFile<T>, listType?: UploadListType) => React.ReactNode;
+  itemRender?: UploadListItemRender<T>;
+  disabled?: boolean;
+  appendAction?: React.ReactNode;
+  appendActionVisible?: boolean;
+  isImage?: (file: UploadFile) => boolean;
 }
-
 export interface IPreviewProps {
   file: UploadFile;
   size?: number | string;

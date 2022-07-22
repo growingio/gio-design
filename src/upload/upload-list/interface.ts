@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { UploadFile, UploadListItemRender, UploadListProgressProps } from '../interface';
+import { UploadFile, UploadListItemRender, UploadListProgressProps, UploadListType } from '../interface';
 
-export type UploadListType = 'card' | 'text';
-export interface UploadListProps<T = any> {
-  listType?: UploadListType;
-  onRemove?: (file: UploadFile<T>) => void | boolean;
-  items?: Array<UploadFile<T>>;
-  progress?: UploadListProgressProps;
-  prefixCls?: string;
-  removeIcon?: React.ReactNode | ((file: UploadFile) => React.ReactNode);
-  iconRender?: (file: UploadFile<T>, listType?: UploadListType) => React.ReactNode;
-  itemRender?: UploadListItemRender<T>;
-  disabled?: boolean;
-}
+// export type UploadListType = 'card' | 'text';
+// export interface UploadListProps<T = any> {
+//   listType?: UploadListType;
+//   onRemove?: (file: UploadFile<T>) => void | boolean;
+//   items?: Array<UploadFile<T>>;
+//   progress?: UploadListProgressProps;
+//   prefixCls?: string;
+//   removeIcon?: React.ReactNode | ((file: UploadFile) => React.ReactNode);
+//   iconRender?: (file: UploadFile<T>, listType?: UploadListType) => React.ReactNode;
+//   itemRender?: UploadListItemRender<T>;
+//   disabled?: boolean;
+// }
 export interface ListItemProps {
   prefixCls: string;
   className?: string;
@@ -40,4 +40,5 @@ export interface ListItemProps {
   onRemove?: (file: UploadFile) => void;
   // onDownload: (file: UploadFile) => void;
   progress?: UploadListProgressProps;
+  isImage?: (file: UploadFile) => boolean;
 }
