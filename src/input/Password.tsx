@@ -24,9 +24,9 @@ const Password = React.forwardRef<HTMLInputElement, PasswordProps>((props, ref) 
   const passwordSuffix = useMemo(
     () =>
       visible ? (
-        <EyeSlashOutlined className={passwordSuffixIconCls} onClick={toggleVisible} />
-      ) : (
         <EyeOutlined className={passwordSuffixIconCls} onClick={toggleVisible} />
+      ) : (
+        <EyeSlashOutlined className={passwordSuffixIconCls} onClick={toggleVisible} />
       ),
     [passwordSuffixIconCls, toggleVisible, visible]
   );
