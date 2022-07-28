@@ -1,3 +1,10 @@
+## [22.17.3](https://github.com/growingio/gio-design/compare/v22.17.2...v22.17.3) (2022-07-28)
+
+
+### Bug Fixes
+
+* **checkbox:** 修复disabled态checkbox的样式 ([#2087](https://github.com/growingio/gio-design/issues/2087)) ([038398d](https://github.com/growingio/gio-design/commit/038398da1d865690f6f7dab8cb7028e068df7810))
+
 ## [22.17.2](https://github.com/growingio/gio-design/compare/v22.17.1...v22.17.2) (2022-06-14)
 
 
