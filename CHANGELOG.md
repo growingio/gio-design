@@ -1,3 +1,10 @@
+## [23.5.1](https://github.com/growingio/gio-design/compare/v23.5.0...v23.5.1) (2022-07-28)
+
+
+### Bug Fixes
+
+* **Password:** 更新隐藏/显示Icons ([#2084](https://github.com/growingio/gio-design/issues/2084)) ([9f22b2b](https://github.com/growingio/gio-design/commit/9f22b2ba767c5e5ffc5ec782af5ad9a6927d9f2b))
+
 # [23.5.0](https://github.com/growingio/gio-design/compare/v23.4.0...v23.5.0) (2022-06-22)
 
 
