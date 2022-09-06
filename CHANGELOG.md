@@ -1,3 +1,10 @@
+## [23.5.2](https://github.com/growingio/gio-design/compare/v23.5.1...v23.5.2) (2022-09-06)
+
+
+### Bug Fixes
+
+* **Table:** 更新table分页文字的描述 ([#2096](https://github.com/growingio/gio-design/issues/2096)) ([57b27df](https://github.com/growingio/gio-design/commit/57b27df82d1499eb04980b7ee4e0c97334ce5a11))
+
 ## [23.5.1](https://github.com/growingio/gio-design/compare/v23.5.0...v23.5.1) (2022-07-28)
 
 
