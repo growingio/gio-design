@@ -12,7 +12,7 @@ export default {
     <>
       <p>每页展示</p>
       {select}
-      <p>页</p>
+      <p>条</p>
     </>
   ),
 };
