@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import moment, { Moment } from 'moment';
+import { Moment } from 'moment';
 import { withDesign } from 'storybook-addon-designs';
+import { parseTimeZone } from '../../utils/timeHelper';
 import DatePicker, { DateRangePicker, DatePickerProps, DateRangePickerProps } from '.';
 import './style';
 import Docs from './DatePicker.mdx';
@@ -24,13 +25,13 @@ export default {
 } as Meta;
 
 const Template: Story<DatePickerProps> = (args) => {
-  const [time, setTime] = useState(moment(new Date()));
+  const [time, setTime] = useState(parseTimeZone(new Date()));
   const onChange = (value: Moment | null) => {
     value && setTime(value);
   };
   const { disabledDate } = args;
   const handleDisabledDate = (value: Moment) => {
-    const date = moment(new Date()).add(-1, 'days');
+    const date = parseTimeZone(new Date()).add(-1, 'days');
     return value.isBefore(date);
   };
   return (
@@ -46,12 +47,12 @@ Default.args = {
 };
 
 function disabledDates(current: Moment) {
-  return current && current < moment().endOf('day');
+  return current && current < parseTimeZone().endOf('day');
 }
 
 const RangeTemplate: Story<DateRangePickerProps> = (args) => {
   const now = new Date();
-  const [time, setTime] = useState([moment(now), moment(now)]);
+  const [time, setTime] = useState([parseTimeZone(now), parseTimeZone(now)]);
   const onChange = (value: Array<Moment> | null) => {
     value && setTime(value);
   };

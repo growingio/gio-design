@@ -1,7 +1,8 @@
 import React, { Component, ReactNode } from 'react';
 import Trigger from 'rc-trigger';
-import moment, { Moment } from 'moment';
+import { Moment } from 'moment';
 import classNames from 'classnames';
+import { parseTimeZone } from '../../utils/timeHelper';
 import Panel from './Panel';
 import placements, { defaultAlign } from './placements';
 import { TimePickerProps } from './interface';
@@ -31,7 +32,7 @@ class Picker extends Component<TimePickerProps, TimePickerState> {
     popupClassName: '',
     popupStyle: {},
     align: defaultAlign,
-    defaultOpenValue: moment(),
+    defaultOpenValue: parseTimeZone() as Moment,
     allowEmpty: true,
     showHour: true,
     showMinute: true,
