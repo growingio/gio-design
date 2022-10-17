@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { addDays, format, getTime, startOfDay } from 'date-fns';
+import { addDays, getTime, startOfDay } from 'date-fns';
 import React from 'react';
+import { parseFnsTimeZone } from '../../utils/timeHelper';
 import RelativeRangePicker from '../RelativeRangePicker';
 
 describe('Test RelativeRangePicker', () => {
@@ -15,7 +16,7 @@ describe('Test RelativeRangePicker', () => {
     const onSelect = jest.fn();
 
     const { unmount } = render(<RelativeRangePicker timeRange="day:3,0" onSelect={onSelect} />);
-    expect(screen.getByTitle(format(new Date(), 'yyyy-MM-dd'))).toHaveClass('gio-picker-cell-range-end');
+    expect(screen.getByTitle(parseFnsTimeZone(new Date(), 'yyyy-MM-dd'))).toHaveClass('gio-picker-cell-range-end');
     unmount();
 
     render(<RelativeRangePicker timeRange="day:2,1" onSelect={onSelect} />);
@@ -32,13 +33,15 @@ describe('Test RelativeRangePicker', () => {
         onSelect={jest.fn()}
       />
     );
-    expect(screen.getByTitle(format(addDays(startDay, -1), 'yyyy-MM-dd'))).toHaveClass('gio-picker-cell-disabled');
+    expect(screen.getByTitle(parseFnsTimeZone(addDays(startDay, -1), 'yyyy-MM-dd'))).toHaveClass(
+      'gio-picker-cell-disabled'
+    );
   });
   it('click time picker', () => {
     const onSelect = jest.fn();
     render(<RelativeRangePicker timeRange="day:2,1" onSelect={onSelect} />);
     const startDay = startOfDay(addDays(new Date(), -5));
-    fireEvent.click(screen.getByTitle(format(startDay, 'yyyy-MM-dd')));
+    fireEvent.click(screen.getByTitle(parseFnsTimeZone(startDay, 'yyyy-MM-dd')));
     fireEvent.click(screen.getByText('确定'));
     expect(onSelect).toHaveBeenCalledWith('day:6,1');
   });

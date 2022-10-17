@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { parseTimeZone } from '../../../../../../../utils/timeHelper';
 import { listFormat } from '../../../../..';
 import { TextObject } from '../../../../../FilterPicker';
 import { attributeValue } from '../interfaces';
@@ -151,26 +151,26 @@ const parseDateValuesToText = (operation: string, value: string[], t: TextObject
       if (value[0] === ' ') {
         return t.hasValue;
       }
-      return `${t['!=']} ${moment(parseInt(value[0], 10)).format('YYYY-MM-DD')}`;
+      return `${t['!=']} ${parseTimeZone(parseInt(value[0], 10)).format('YYYY-MM-DD')}`;
     }
     case '=': {
       if (value[0] === ' ') {
         return t.noValue;
       }
-      return `${t['=']} ${moment(parseInt(value[0], 10)).format('YYYY-MM-DD')}`;
+      return `${t['=']} ${parseTimeZone(parseInt(value[0], 10)).format('YYYY-MM-DD')}`;
     }
     case '>':
       // 在 xxx 天之后
-      return t.somedayAfter(moment(parseInt(value[0], 10)).format('YYYY-MM-DD'));
+      return t.somedayAfter(parseTimeZone(parseInt(value[0], 10)).format('YYYY-MM-DD'));
     case '>=':
       // 在 xxx 天之后包括当天
-      return t.somedayAfterInclude(moment(parseInt(value[0], 10)).format('YYYY-MM-DD'));
+      return t.somedayAfterInclude(parseTimeZone(parseInt(value[0], 10)).format('YYYY-MM-DD'));
     case '<':
       // 在 xxx 天之前
-      return t.somedayAgo(moment(parseInt(value[0], 10)).format('YYYY-MM-DD'));
+      return t.somedayAgo(parseTimeZone(parseInt(value[0], 10)).format('YYYY-MM-DD'));
     // 在 xxx 天之前包括当天
     case '<=':
-      return t.somedayAgoInclude(moment(parseInt(value[0], 10)).format('YYYY-MM-DD'));
+      return t.somedayAgoInclude(parseTimeZone(parseInt(value[0], 10)).format('YYYY-MM-DD'));
     // 判断，在。。。与。。。之间
     // 返回字符串 ---- ‘在（date1）与（data2）之间’
     case 'between':
@@ -178,7 +178,10 @@ const parseDateValuesToText = (operation: string, value: string[], t: TextObject
         const abs = value?.[0].split(':')[1].split(',');
         return t.between(
           listFormat(
-            [moment(parseInt(abs[0], 10)).format('YYYY-MM-DD'), moment(parseInt(abs[1], 10)).format('YYYY-MM-DD')],
+            [
+              parseTimeZone(parseInt(abs[0], 10)).format('YYYY-MM-DD'),
+              parseTimeZone(parseInt(abs[1], 10)).format('YYYY-MM-DD'),
+            ],
             t.code
           )
         );
@@ -189,7 +192,10 @@ const parseDateValuesToText = (operation: string, value: string[], t: TextObject
         const abs = value?.[0].split(':')[1].split(',');
         return t.notBetween(
           listFormat(
-            [moment(parseInt(abs[0], 10)).format('YYYY-MM-DD'), moment(parseInt(abs[1], 10)).format('YYYY-MM-DD')],
+            [
+              parseTimeZone(parseInt(abs[0], 10)).format('YYYY-MM-DD'),
+              parseTimeZone(parseInt(abs[1], 10)).format('YYYY-MM-DD'),
+            ],
             t.code
           )
         );
@@ -204,9 +210,9 @@ const parseDateValuesToText = (operation: string, value: string[], t: TextObject
       return parseDateValuesRelativeToText(relativeTime, t);
     }
     case 'hasValue':
-      return `${t.hasValue} ${moment(value[0]).format('YYYY-MM-DD')}`;
+      return `${t.hasValue} ${parseTimeZone(value[0]).format('YYYY-MM-DD')}`;
     default:
-      return moment(value[0]).format('YYYY-MM-DD');
+      return parseTimeZone(value[0]).format('YYYY-MM-DD');
   }
 };
 

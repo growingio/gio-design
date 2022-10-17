@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import { addDays, format, getTime, startOfDay } from 'date-fns';
+import { addDays, getTime, startOfDay } from 'date-fns';
 import React from 'react';
+import { parseFnsTimeZone } from '../../utils/timeHelper';
 import SinceRangePicker from '../SinceRangePicker';
 
 describe('SinceRangePicker test', () => {
@@ -22,6 +23,8 @@ describe('SinceRangePicker test', () => {
         onSelect={jest.fn()}
       />
     );
-    expect(screen.getByTitle(format(addDays(startDay, -1), 'yyyy-MM-dd'))).toHaveClass('gio-picker-cell-disabled');
+    expect(screen.getByTitle(parseFnsTimeZone(addDays(startDay, -1), 'yyyy-MM-dd'))).toHaveClass(
+      'gio-picker-cell-disabled'
+    );
   });
 });

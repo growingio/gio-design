@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 import { usePrefixCls, useControlledState } from '@gio-design/utils';
-import { format } from 'date-fns/fp';
 import { CalendarOutlined } from '@gio-design/icons';
+import { parseFnsTimeZone } from '../utils/timeHelper';
 import Popover from '../popover';
 import { InputButton } from '../input';
 import StaticDatePicker from '../static-date-picker';
@@ -40,7 +40,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
 
   const [controlledValue, setControlledValue] = useControlledState(value, defaultValue);
 
-  const formatDate = (date: Date) => format(formatString, date);
+  const formatDate = (date: Date) => parseFnsTimeZone(date, formatString);
 
   const handleVisibleChange = (current: boolean) => {
     setVisible(current);

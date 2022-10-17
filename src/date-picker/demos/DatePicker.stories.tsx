@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
-import { addMonths, format, isBefore, startOfToday } from 'date-fns';
+import { addMonths, isBefore, startOfToday } from 'date-fns';
 import { action } from '@storybook/addon-actions';
 import { ClockOutlined, ArrowDownOutlined } from '@gio-design/icons';
+import { parseFnsTimeZone } from '../../utils/timeHelper';
 import Docs from './DatePickerPage';
 import Button from '../../button';
 import Toast from '../../toast';
@@ -35,28 +36,24 @@ Default.args = {
   defaultValue: new Date(),
   placeholder: '选择具体某一天',
   onChange: () => {
-    action('onChange')
+    action('onChange');
   },
 };
 
 export const Format: Story<DatePickerProps> = (args) => {
   const [value, setValue] = useState(new Date());
 
-  return <DatePicker
-    value={value}
-    onSelect={setValue}
-    {...args}
-  />
-}
+  return <DatePicker value={value} onSelect={setValue} {...args} />;
+};
 Format.args = {
-  format: 'yyyy/dd-mm'
-}
+  format: 'yyyy/dd-mm',
+};
 
 export const PrefixAndSuffix = Template.bind({});
 PrefixAndSuffix.args = {
   defaultValue: new Date(),
   prefix: <ClockOutlined />,
-  suffix: <ArrowDownOutlined />
+  suffix: <ArrowDownOutlined />,
 };
 
 export const AllowClear = Template;
@@ -67,7 +64,7 @@ AllowClear.args = {
 export const Size = Template.bind({});
 Size.args = {
   defaultValue: new Date(),
-  size: 'small'
+  size: 'small',
 };
 
 export const Disabled = Template.bind({});
@@ -92,17 +89,13 @@ OnSelectAndOnClose.args = {
 const CustomizeTriggerTemplate: Story<DatePickerProps> = (args) => {
   const [value, setValue] = useState(new Date());
   const onSelect = (date: Date) => {
-    setValue(date)
-    action('onSelect:')
+    setValue(date);
+    action('onSelect:');
   };
 
   return (
     <DatePicker
-      trigger={
-        <Button type="secondary">
-          {format(value, '您的所选时间为 yyyy-MM-dd HH:mm:ss')}
-        </Button>
-      }
+      trigger={<Button type="secondary">{parseFnsTimeZone(value, '您的所选时间为 yyyy-MM-dd HH:mm:ss')}</Button>}
       onSelect={onSelect}
       {...args}
     />

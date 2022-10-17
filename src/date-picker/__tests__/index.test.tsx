@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
-import { format } from 'date-fns';
+import { parseFnsTimeZone } from '../../utils/timeHelper';
 import Button from '../../button';
 import DatePicker from '../DatePicker';
 
@@ -13,7 +13,7 @@ describe('Testing DatePicker ', () => {
   it('render has trigger params', () => {
     const { container } = render(
       <DatePicker
-        trigger={<Button type="secondary">{format(new Date(), '您的所选时间为 yyyy-MM-dd HH:mm:ss')}</Button>}
+        trigger={<Button type="secondary">{parseFnsTimeZone(new Date(), '您的所选时间为 yyyy-MM-dd HH:mm:ss')}</Button>}
       />
     );
     expect(container.querySelectorAll('您的所选时间为')).toBeTruthy();

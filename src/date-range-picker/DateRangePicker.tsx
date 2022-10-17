@@ -1,15 +1,15 @@
 import React from 'react';
 import classnames from 'classnames';
 import { usePrefixCls, useControlledState } from '@gio-design/utils';
-import format from 'date-fns/format';
 import { CalendarOutlined } from '@gio-design/icons';
+import { parseFnsTimeZone } from '../utils/timeHelper';
 import Popover from '../popover';
 import { InputButton } from '../input';
 import StaticDateRangePicker from '../static-date-range-picker';
 import { DateRangePickerProps, NullableDate, NullableString } from './interfaces';
 
 export const formatDates = (dates: [NullableDate, NullableDate], formatString = 'yyyy/MM/dd'): NullableString => {
-  const strongFormat = (date: NullableDate) => (date ? format(date, formatString) : undefined);
+  const strongFormat = (date: NullableDate) => (date ? parseFnsTimeZone(date, formatString) : undefined);
   return `${strongFormat(dates[0]) || ''} - ${strongFormat(dates[1]) || ''}`;
 };
 
@@ -88,7 +88,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
         placeholder={placeholder}
         disabled={disabled}
         allowClear={allowClear}
-        value={validValue(controlledValue) ? formatDates(controlledValue,formatString) : undefined}
+        value={validValue(controlledValue) ? formatDates(controlledValue, formatString) : undefined}
         size={size}
         suffix={suffix}
         className={className}
