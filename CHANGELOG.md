@@ -1,3 +1,10 @@
+# [22.18.0](https://github.com/growingio/gio-design/compare/v22.17.3...v22.18.0) (2022-10-17)
+
+
+### Features
+
+* support timezone setting ([#2102](https://github.com/growingio/gio-design/issues/2102)) ([6f6d503](https://github.com/growingio/gio-design/commit/6f6d503546693c62c653dd56021c6d7270ccdbcd))
+
 ## [22.17.3](https://github.com/growingio/gio-design/compare/v22.17.2...v22.17.3) (2022-07-28)
 
 
