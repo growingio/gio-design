@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import has from 'lodash/has';
 import get from 'lodash/get';
 import omit from 'lodash/omit';
-import { format } from 'date-fns';
+import { parseFnsTimeZone } from '../utils/timeHelper';
 import Popover from '../popover';
 import { InputButton } from '../input';
 import { PastTimePickerProps } from './interfaces';
@@ -115,17 +115,17 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     const items = time.split(':');
     const times = items[1].split(',').map((str) => parseInt(str, 10));
     if (items[0] === 'since') {
-      const start = format(times[0], 'yyyy/MM/dd');
+      const start = parseFnsTimeZone(times[0], 'yyyy/MM/dd');
       return `${FromText} ${start} ${toTodayText}`;
     }
     if (items[0] === 'since-lt-today') {
-      const start = format(times[0], 'yyyy/MM/dd');
+      const start = parseFnsTimeZone(times[0], 'yyyy/MM/dd');
       return `${FromText} ${start} ${toYesterdayText}`;
     }
 
     if (items[0] === 'abs') {
-      const start = format(times[0], 'yyyy/MM/dd');
-      const end = format(times[1], 'yyyy/MM/dd');
+      const start = parseFnsTimeZone(times[0], 'yyyy/MM/dd');
+      const end = parseFnsTimeZone(times[1], 'yyyy/MM/dd');
       return `${FromText} ${start} ${ToText} ${end}`;
     }
     if (items[0] === 'day') {

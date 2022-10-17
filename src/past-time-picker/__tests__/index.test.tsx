@@ -1,7 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { addDays, format, getTime, startOfDay } from 'date-fns';
+import { addDays, getTime, startOfDay } from 'date-fns';
 import React, { useState } from 'react';
 import { act } from 'react-dom/test-utils';
+import { parseFnsTimeZone } from '../../utils/timeHelper';
 import { PastTimePicker } from '../..';
 import { TimeMode } from '../../static-past-time-picker/interfaces';
 
@@ -124,7 +125,7 @@ describe('past-time-picker test', () => {
     });
     const startDay = startOfDay(addDays(new Date(), -5));
     const timeRange = `since:${getTime(startDay)}`;
-    fireEvent.click(screen.getByTitle(format(startDay, 'yyyy-MM-dd')));
+    fireEvent.click(screen.getByTitle(parseFnsTimeZone(startDay, 'yyyy-MM-dd')));
     jest.runAllTimers();
     fireEvent.click(screen.getByText('确定'));
 
@@ -163,7 +164,7 @@ describe('past-time-picker test', () => {
 
     const startDay = startOfDay(addDays(new Date(), -5));
     const timeRange = `since:${getTime(startDay)}`;
-    fireEvent.click(screen.getByTitle(format(startDay, 'yyyy-MM-dd')));
+    fireEvent.click(screen.getByTitle(parseFnsTimeZone(startDay, 'yyyy-MM-dd')));
     jest.runAllTimers();
     fireEvent.click(screen.getByText('确定'));
 

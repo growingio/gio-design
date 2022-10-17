@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { ArrowDownOutlined, ClockOutlined } from '@gio-design/icons';
-import { format, isEqual, startOfDay, startOfToday, startOfWeek, subMonths } from 'date-fns';
+import { isEqual, startOfDay, startOfToday, startOfWeek, subMonths } from 'date-fns';
+import { parseFnsTimeZone } from '../../utils/timeHelper';
 import Docs from './DateRangePickerPage';
 import DateRangePicker, { DateRangePickerProps, StaticDateRangePickerProps } from '../index';
 import '../style';
@@ -25,9 +26,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<DateRangePickerProps> = (args) => (
-  <DateRangePicker {...args} />
-);
+const Template: Story<DateRangePickerProps> = (args) => <DateRangePicker {...args} />;
 
 const ControlledTemplate: Story<DateRangePickerProps> = (args) => {
   const [TimeRange, setTimeRange] = useState([new Date(), new Date()] as [Date, Date]);
@@ -36,13 +35,15 @@ const ControlledTemplate: Story<DateRangePickerProps> = (args) => {
   };
   return (
     <div style={{ width: 280 }}>
-      <DateRangePicker value={TimeRange} onSelect={onSelect} trigger={
-        <Button type='secondary'>
-          {TimeRange[0] && format(TimeRange[0], 'yyyy/MM/dd')}
-          -
-          {TimeRange[1] && format(TimeRange[1], 'yyyy/MM/dd')}
-        </Button>
-      }
+      <DateRangePicker
+        value={TimeRange}
+        onSelect={onSelect}
+        trigger={
+          <Button type="secondary">
+            {TimeRange[0] && parseFnsTimeZone(TimeRange[0], 'yyyy/MM/dd')}-
+            {TimeRange[1] && parseFnsTimeZone(TimeRange[1], 'yyyy/MM/dd')}
+          </Button>
+        }
         {...args}
       />
     </div>
@@ -55,22 +56,22 @@ export const Default = ControlledTemplate.bind({});
 Default.args = {
   placeholder: '选择日期范围',
   trigger: null,
-  format: "yyyy/MM/dd",
+  format: 'yyyy/MM/dd',
   disabled: false,
   size: 'normal',
 };
 
-export const Format = Template.bind({})
+export const Format = Template.bind({});
 Format.args = {
   defaultValue: [new Date(), new Date()],
-  format: 'yyyy--MM--dd'
-}
+  format: 'yyyy--MM--dd',
+};
 
 export const PrefixAndSuffix = Template.bind({});
 PrefixAndSuffix.args = {
   defaultValue: [new Date(), new Date()],
   prefix: <ClockOutlined />,
-  suffix: <ArrowDownOutlined />
+  suffix: <ArrowDownOutlined />,
 };
 
 export const OnSelectAndOnClose = Template.bind({});
@@ -85,14 +86,14 @@ export const AllowClear = Template.bind({});
 AllowClear.args = {
   allowClear: true,
   onClear: () => {
-    action('onClear')
+    action('onClear');
   },
 };
 
 export const Size = Template.bind({});
 Size.args = {
   defaultValue: [new Date(), new Date()],
-  size: 'small'
+  size: 'small',
 };
 
 export const Disabled = Template.bind({});
@@ -111,12 +112,9 @@ export const StaticBasic = StaticTemplate.bind({});
 StaticBasic.args = {};
 
 export const StaticDisabledDate: Story<StaticDateRangePickerProps> = () => {
-  const disabledDate = (date: Date) => isEqual(startOfWeek(date), startOfDay(date))
-  return <DateRangePicker.Static
-    disabledDate={disabledDate}
-  />
+  const disabledDate = (date: Date) => isEqual(startOfWeek(date), startOfDay(date));
+  return <DateRangePicker.Static disabledDate={disabledDate} />;
 };
-
 
 export const StaticViewDates = StaticTemplate.bind({});
 StaticViewDates.args = {

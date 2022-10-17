@@ -2,9 +2,9 @@ import React from 'react';
 import classnames from 'classnames';
 import { ClockOutlined } from '@gio-design/icons';
 import { useLocale, useControlledState, usePrefixCls } from '@gio-design/utils';
-import { format } from 'date-fns';
 import { Locale } from 'rc-picker/lib/interface';
 import { isNil } from 'lodash';
+import { parseFnsTimeZone } from '../utils/timeHelper';
 import Button from '../button';
 import Popover from '../popover';
 import { InputButton } from '../input';
@@ -45,7 +45,7 @@ export const TimePicker: React.FC<TimePickerProps> = (props) => {
   const { now, ok, timeSelect } = coalescedLocale;
   const overlayCls = classnames(`${prefixCls}-overlay`, overlayClassName);
 
-  const formatTime = (date: Date) => format(date, showSecond ? TIME_WITH_SECOND_FORMAT : TIME_FORMAT);
+  const formatTime = (date: Date) => parseFnsTimeZone(date, showSecond ? TIME_WITH_SECOND_FORMAT : TIME_FORMAT);
 
   const handleOnPickerSelect = (currentValue: Date) => {
     setTime(currentValue);

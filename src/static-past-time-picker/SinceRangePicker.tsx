@@ -1,6 +1,7 @@
 import React from 'react';
-import { format, getTime, startOfToday, startOfYesterday, startOfDay, isValid, isAfter } from 'date-fns';
+import { getTime, startOfToday, startOfYesterday, startOfDay, isValid, isAfter } from 'date-fns';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
+import { parseFnsTimeZone } from '../utils/timeHelper';
 import Switch from '../switch';
 import DatePicker from '../static-date-picker';
 import InnerRangePanel from './InnerRangePanel';
@@ -30,7 +31,7 @@ function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experim
   };
 
   const renderHeader = () => {
-    const startDateString = startDate ? format(startDate, DATE_FORMAT) : startDayText;
+    const startDateString = startDate ? parseFnsTimeZone(startDate, DATE_FORMAT) : startDayText;
     return (
       <>
         <span className={`${prefixCls}__text`}>{`${FromText} ${startDateString}`}</span>

@@ -1,7 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-test-renderer';
-import { format, getTime, startOfDay, addDays } from 'date-fns';
+import { getTime, startOfDay, addDays } from 'date-fns';
+import { parseFnsTimeZone } from '../../utils/timeHelper';
 import { TimeMode } from '../interfaces';
 import StaticPastTimePicker from '../StaticPastTimePicker';
 
@@ -64,7 +65,7 @@ describe('Test StaticPastTimePicker', () => {
       'checked'
     );
     const startDay = startOfDay(addDays(new Date(), -5));
-    const clickDay = format(startDay, 'yyyy-MM-dd');
+    const clickDay = parseFnsTimeZone(startDay, 'yyyy-MM-dd');
 
     act(() => {
       fireEvent.click(screen.getByTitle(clickDay));
