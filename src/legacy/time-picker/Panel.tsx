@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import moment, { Moment } from 'moment';
+import { Moment } from 'moment';
 import classNames from 'classnames';
+import { parseTimeZone } from '../../utils/timeHelper';
 // import Header from './Header';
 import Combobox from './Combobox';
 import { PanelProps } from './interface';
@@ -20,7 +21,7 @@ function toNearestValidTime(time: Moment, hourOptions: number[], minuteOptions: 
   const hour = hourOptions.slice().sort((a, b) => Math.abs(time.hour() - a) - Math.abs(time.hour() - b))[0];
   const minute = minuteOptions.slice().sort((a, b) => Math.abs(time.minute() - a) - Math.abs(time.minute() - b))[0];
   const second = secondOptions.slice().sort((a, b) => Math.abs(time.second() - a) - Math.abs(time.second() - b))[0];
-  return moment(`${hour}:${minute}:${second}`, 'HH:mm:ss');
+  return parseTimeZone(`${hour}:${minute}:${second}`, 'HH:mm:ss');
 }
 interface PanelState {
   value: Moment;
@@ -33,7 +34,7 @@ class Panel extends Component<PanelProps, PanelState> {
     disabledHours: noop,
     disabledMinutes: noop,
     disabledSeconds: noop,
-    defaultOpenValue: moment(),
+    defaultOpenValue: parseTimeZone() as Moment,
     use12Hours: false,
     addon: noop,
     onKeyDown: noop,

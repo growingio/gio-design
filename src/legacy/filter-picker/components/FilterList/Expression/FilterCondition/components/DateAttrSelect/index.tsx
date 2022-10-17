@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import moment, { Moment } from 'moment';
+import { Moment } from 'moment';
+import { parseTimeZone } from '../../../../../../../../utils/timeHelper';
 import RelativeCurrent from './components/RelativeCurrent';
 import RelativeBetween from './components/RelativeBetween';
 import IncludeToday from './components/IncludeToday';
@@ -16,30 +17,30 @@ interface DateAttrSelectProps {
 function DateAttrSelect(props: DateAttrSelectProps) {
   const { attrSelect, attrChange, values, style } = props;
   const [time, setTime] = useState<Moment>(
-    values?.[0] && parseFloat(values?.[0]).toString() !== 'NaN' ? moment(parseInt(values?.[0], 10)) : moment(Date.now())
+    values?.[0] && parseFloat(values?.[0]).toString() !== 'NaN' ? parseTimeZone(parseInt(values?.[0], 10)) : parseTimeZone(Date.now())
   );
   const [timeRange, setTimeRange] = useState<Moment[]>(
     values.length && values?.[0]?.includes?.('abs')
       ? [
-          moment(parseInt(values?.[0].split(':')[1].split(',')[0], 10)),
-          moment(parseInt(values?.[0].split(':')[1].split(',')[1], 10)),
+          parseTimeZone(parseInt(values?.[0].split(':')[1].split(',')[0], 10)),
+          parseTimeZone(parseInt(values?.[0].split(':')[1].split(',')[1], 10)),
         ]
-      : [moment(Date.now()), moment(Date.now())]
+      : [parseTimeZone(Date.now()), parseTimeZone(Date.now())]
   );
 
   useEffect(() => {
     setTime(
       values?.[0] && parseFloat(values?.[0]).toString() !== 'NaN'
-        ? moment(parseInt(values?.[0], 10))
-        : moment(Date.now())
+        ? parseTimeZone(parseInt(values?.[0], 10))
+        : parseTimeZone(Date.now())
     );
     setTimeRange(
       values.length && values?.[0]?.includes?.('abs')
         ? [
-            moment(parseInt(values?.[0].split(':')[1].split(',')[0], 10)),
-            moment(parseInt(values?.[0].split(':')[1].split(',')[1], 10)),
+            parseTimeZone(parseInt(values?.[0].split(':')[1].split(',')[0], 10)),
+            parseTimeZone(parseInt(values?.[0].split(':')[1].split(',')[1], 10)),
           ]
-        : [moment(Date.now()), moment(Date.now())]
+        : [parseTimeZone(Date.now()), parseTimeZone(Date.now())]
     );
   }, [values]);
 
@@ -75,32 +76,32 @@ function DateAttrSelect(props: DateAttrSelectProps) {
       } else if (attrSelect === 'between' || attrSelect === 'not between') {
         // 在。。。与。。。之间，值的初始化
         attrChange([
-          `abs:${moment(timeRange?.[0], 'YYYY-MM-DD').startOf('day').valueOf()},${moment(timeRange?.[1], 'YYYY-MM-DD')
+          `abs:${parseTimeZone(timeRange?.[0], 'YYYY-MM-DD').startOf('day').valueOf()},${parseTimeZone(timeRange?.[1], 'YYYY-MM-DD')
             .endOf('day')
             .valueOf()}`,
         ]);
       } else {
-        attrChange([`${moment(Date.now()).valueOf()}`]);
+        attrChange([`${parseTimeZone(Date.now()).valueOf()}`]);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attrSelect]);
 
   const changeDate = (value: Date | null) => {
-    const date = moment(value);
+    const date = parseTimeZone(value);
     date && setTime(date);
-    attrChange([`${moment(date, 'YYYY-MM-DD').startOf('day').valueOf()}`]);
+    attrChange([`${parseTimeZone(date, 'YYYY-MM-DD').startOf('day').valueOf()}`]);
   };
   const relativeDateChange = (v: string) => {
     attrChange([v]);
   };
   const dateRangeChange = (value?: [NullableDate, NullableDate]) => {
-    if (!value || value.some((item) => !moment(item).isValid())) return;
-    const dateRange = [moment(value[0]), moment(value[1])];
+    if (!value || value.some((item) => !parseTimeZone(item).isValid())) return;
+    const dateRange = [parseTimeZone(value[0]), parseTimeZone(value[1])];
     dateRange && setTimeRange(dateRange);
     dateRange &&
       attrChange([
-        `abs:${moment(dateRange?.[0], 'YYYY-MM-DD').startOf('day').valueOf()},${moment(dateRange?.[1], 'YYYY-MM-DD')
+        `abs:${parseTimeZone(dateRange?.[0], 'YYYY-MM-DD').startOf('day').valueOf()},${parseTimeZone(dateRange?.[1], 'YYYY-MM-DD')
           .endOf('day')
           .valueOf()}`,
       ]);

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import moment, { Moment } from 'moment';
+import { Moment } from 'moment';
+import { parseTimeZone } from '../../../utils/timeHelper';
 import { DatePickerProps } from '../interface';
 
 const useDatePicker = (props: DatePickerProps) => {
@@ -39,7 +40,7 @@ const useDatePicker = (props: DatePickerProps) => {
   };
 
   const debounceTimeChange = (e: string): void => {
-    const values = moment(e, props.format);
+    const values = parseTimeZone(e, props.format);
     setLocalValue(values.isValid() ? values : localValue);
   };
 

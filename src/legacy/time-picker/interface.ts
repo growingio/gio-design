@@ -27,7 +27,7 @@ export interface TimePickerProps {
   defaultValue?: Moment;
   /**
    * defaultOpenValue
-   * @default moment()
+   * @default parseTimeZone()
    */
   defaultOpenValue?: Moment;
   defaultOpen: boolean;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import moment, { Moment } from 'moment';
+import { Moment } from 'moment';
+import { parseTimeZone } from '../../../utils/timeHelper';
 import { DateRangePickerProps } from '../interface';
 
 const useDateRangePicker = (props: DateRangePickerProps) => {
@@ -38,13 +39,13 @@ const useDateRangePicker = (props: DateRangePickerProps) => {
 
   const handleLeftInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setLeftInputTimeRange(e.target.value);
-    const values = moment(e.target.value, props.format);
+    const values = parseTimeZone(e.target.value, props.format);
     debounceInputChange(values, 'left');
   };
 
   const handleRightInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setRightInputTimeRange(e.target.value);
-    const values = moment(e.target.value, props.format);
+    const values = parseTimeZone(e.target.value, props.format);
     debounceInputChange(values, 'right');
   };
 
