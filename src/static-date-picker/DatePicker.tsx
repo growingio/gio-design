@@ -6,6 +6,7 @@ import generateDateFns from 'rc-picker/lib/generate/dateFns';
 import { Locale, PickerMode } from 'rc-picker/lib/interface';
 import defaultLocale from './locales/zh-CN';
 import { StaticDatePickerProps } from './interfaces';
+import { exportDateToZonedDate } from '../utils/timeHelper';
 
 const Cell: React.FC<{ visible: boolean; prefixCls: string; currentDate: Date }> = ({
   visible,
@@ -76,7 +77,7 @@ const DatePicker: React.FC<StaticDatePickerProps> = ({
       defaultValue={defaultValue}
       {...restProps}
       pickerValue={viewDate}
-      onSelect={(date) => { onSelect?.(date); }}
+      onSelect={(date) => { onSelect?.(exportDateToZonedDate(date, 'yyyy-MM-DD')); }}
       onChange={(date) => { setViewDate(date, true) }}
       locale={locale}
       prefixCls={prefixCls}
