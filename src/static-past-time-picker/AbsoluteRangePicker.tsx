@@ -1,5 +1,5 @@
 import React from 'react';
-import { getTime, isValid, isAfter, startOfToday, subMonths, endOfDay, startOfDay } from 'date-fns';
+import { getTime, isValid, isAfter, startOfToday, subMonths, startOfDay } from 'date-fns';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
 import { formatDates } from '../date-range-picker/index';
 import StaticDateRangePicker from '../static-date-range-picker/index';
@@ -7,6 +7,7 @@ import InnerRangePanel from './InnerRangePanel';
 import { RangePickerProps } from './interfaces';
 import { parseStartAndEndDate } from './utils';
 import defaultLocale from './locales/zh-CN';
+import { exportDateToZonedDate } from '../utils/timeHelper';
 
 function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onRangeSelect, onCancel }: RangePickerProps) {
   const [dates, setDates] = React.useState<[Date | undefined, Date | undefined]>(parseStartAndEndDate(timeRange));
@@ -28,12 +29,16 @@ function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onRangeSelect,
   };
   const handleDisabledDate = (current: Date) => disabledDate?.(current) || isAfter(current, startOfToday());
   const handleOnOK = () => {
-    onSelect(`abs:${getTime(startOfDay(dates[0] as Date))},${getTime(endOfDay(dates[1] as Date))}`);
+    onSelect(
+      `abs:${getTime(exportDateToZonedDate(dates[0] as Date))},${
+        getTime(exportDateToZonedDate(dates[1] as Date)) + 86399999
+      }`
+    );
   };
   const handleOnSelect = (date: [Date, Date], index: number) => {
     setDates(date);
     onRangeSelect?.(date, index);
-  }
+  };
   const endDay = dates[1] !== undefined && isValid(dates[1]) ? dates[1] : new Date();
   return (
     <InnerRangePanel

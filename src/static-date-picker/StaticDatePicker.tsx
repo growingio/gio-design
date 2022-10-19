@@ -4,6 +4,7 @@ import { ArrowsLeftOutlined, ArrowLeftOutlined, ArrowRightOutlined, ArrowsRightO
 import PickerPanel from 'rc-picker/lib/PickerPanel';
 import generateDateFns from 'rc-picker/lib/generate/dateFns';
 import { Locale, PickerMode } from 'rc-picker/lib/interface';
+import { exportDateToZonedDate } from '../utils/timeHelper';
 import defaultLocale from './locales/zh-CN';
 import { StaticDatePickerProps } from './interfaces';
 
@@ -81,7 +82,7 @@ const StaticDatePicker: React.FC<StaticDatePickerProps> = ({
       {...restProps}
       pickerValue={viewDate}
       onSelect={(date) => {
-        onSelect?.(date);
+        onSelect?.(exportDateToZonedDate(date, 'yyyy-MM-DD'));
       }}
       onChange={(date) => {
         setViewDate(date, true);
