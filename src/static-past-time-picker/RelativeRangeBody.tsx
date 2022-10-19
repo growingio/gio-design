@@ -1,5 +1,5 @@
 import React from 'react';
-import { startOfDay, startOfYesterday } from 'date-fns';
+import { startOfYesterdayInTimezone } from './utils';
 import DatePicker from '../static-date-picker';
 import DateRangePicker from '../static-date-range-picker';
 import { RelativeRangeBodyProps } from './interfaces';
@@ -7,7 +7,7 @@ import { RelativeRangeBodyProps } from './interfaces';
 function RelativeRangeBody({ dateRange, fixedMode, onRangeChange, disabledDate }: RelativeRangeBodyProps) {
   if (fixedMode) {
     const handleOnSelect = (current: Date) => {
-      onRangeChange([startOfDay(current), startOfYesterday()]);
+      onRangeChange([current, startOfYesterdayInTimezone()]);
     };
     return <DatePicker disabledDate={disabledDate} value={dateRange[0]} onSelect={handleOnSelect} />;
   }

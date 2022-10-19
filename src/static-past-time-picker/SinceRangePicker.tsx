@@ -1,7 +1,7 @@
 import React from 'react';
 import { getTime, startOfToday, startOfYesterday, isValid, isAfter } from 'date-fns';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
-import { parseFnsTimeZone, exportDateToZonedDate } from '../utils/timeHelper'
+import { parseFnsTimeZone } from '../utils/timeHelper'
 import SwitchGroup from '../switchGroup';
 import DatePicker from '../static-date-picker';
 import InnerRangePanel from './InnerRangePanel';
@@ -60,7 +60,7 @@ function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experim
     disabledDate?.(current) || isAfter(current, endKey === 'yesterday' ? startOfYesterday() : startOfToday());
 
   const handleOnOK = () => {
-    onSelect(`${endKey === 'yesterday' ? 'since-lt-today' : 'since'}:${getTime(exportDateToZonedDate(startDate as Date))}`);
+    onSelect(`${endKey === 'yesterday' ? 'since-lt-today' : 'since'}:${getTime(startDate as Date)}`);
   };
   return (
     <InnerRangePanel

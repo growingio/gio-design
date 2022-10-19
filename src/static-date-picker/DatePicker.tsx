@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { useControlledState, useLocale, usePrefixCls } from '@gio-design/utils';
 import { LeftDoubleOutlined, LeftOutlined, RightOutlined, RightDoubleOutlined } from '@gio-design/icons';
 import PickerPanel from 'rc-picker/lib/PickerPanel';
@@ -6,7 +6,7 @@ import generateDateFns from 'rc-picker/lib/generate/dateFns';
 import { Locale, PickerMode } from 'rc-picker/lib/interface';
 import defaultLocale from './locales/zh-CN';
 import { StaticDatePickerProps } from './interfaces';
-import { exportDateToZonedDate } from '../utils/timeHelper';
+import { exportDateToZonedDate, exportZonedDateToDate } from '../utils/timeHelper';
 
 const Cell: React.FC<{ visible: boolean; prefixCls: string; currentDate: Date }> = ({
   visible,
@@ -42,9 +42,11 @@ const DatePicker: React.FC<StaticDatePickerProps> = ({
   ...restProps
 }) => {
   const locale = useLocale<Locale>('DatePicker') || defaultLocale;
+  const convertedValue = useMemo(() => exportZonedDateToDate(value), [value]);
+  const covertedDefaultValue = useMemo(() => exportZonedDateToDate(defaultValue), [defaultValue]);
 
-  const [viewDate, setViewDate] = useControlledState(viewDateProp, value ?? defaultValue ?? new Date());
-  const [innerValue] = useControlledState(value, defaultValue);
+  const [viewDate, setViewDate] = useControlledState(viewDateProp, convertedValue ?? covertedDefaultValue ?? new Date());
+  const [innerValue] = useControlledState(convertedValue, covertedDefaultValue);
   const [mode] = useState<PickerMode>('date');
   const currentPickerMode = useRef(mode);
 
