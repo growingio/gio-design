@@ -1,3 +1,10 @@
+## [23.6.1](https://github.com/growingio/gio-design/compare/v23.6.0...v23.6.1) (2022-10-20)
+
+
+### Bug Fixes
+
+* **date-picker:** picker support timezone ([#2104](https://github.com/growingio/gio-design/issues/2104)) ([43d2357](https://github.com/growingio/gio-design/commit/43d23574708bfedddd0b33a572d678f66f4f1258))
+
 # [23.6.0](https://github.com/growingio/gio-design/compare/v23.5.2...v23.6.0) (2022-10-17)
 
 
