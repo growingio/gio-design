@@ -8,6 +8,7 @@ import isBefore from 'date-fns/isBefore';
 import StaticDatePicker, { StaticDatePickerContext } from '../static-date-picker';
 import { StaticDateRangePickerProps } from './interfaces';
 import { getDefaultViewDates, calcClosingViewDate, mergeDates } from './utils';
+import { exportDateToZonedDate } from '../utils/timeHelper';
 
 function StaticDateRangePicker({
   className,
@@ -86,7 +87,7 @@ function StaticDateRangePicker({
         },
         onSelect: (currentValue) => {
           const newValue = mergeDates(selectedValue, currentValue, dateIndex);
-          onSelect?.(newValue as [Date, Date], dateIndex);
+          onSelect?.(newValue?.map((date) => exportDateToZonedDate(date, 'yyyy-MM-DD')) as [Date, Date], dateIndex);
           setSelectedValue(newValue, true);
           setDateIndex(1 - dateIndex);
         },
