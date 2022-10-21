@@ -8,7 +8,7 @@ import isBefore from 'date-fns/isBefore';
 import StaticDatePicker, { StaticDatePickerContext } from '../static-date-picker';
 import { StaticDateRangePickerProps } from './interfaces';
 import { getDefaultViewDates, calcClosingViewDate, mergeDates } from './utils';
-import { exportDateToZonedDate } from '../utils/timeHelper';
+import { exportDateToZonedDate, exportZonedDateToDate } from '../utils/timeHelper';
 
 function StaticDateRangePicker({
   className,
@@ -40,7 +40,7 @@ function StaticDateRangePicker({
         value={{
           inRange: true,
           panelPosition: position,
-          rangedValue: selectedValue,
+          rangedValue: selectedValue?.map((date) => exportZonedDateToDate(date)) as [any, any],
           hoverRangedValue: hoveredDates,
         }}
       >
