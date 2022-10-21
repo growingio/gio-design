@@ -57,7 +57,13 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
 
   const handleOnSelect = (currentValue: [NullableDate, NullableDate], index: number) => {
     setControlledValue(currentValue);
-    onSelect?.(currentValue, formatDates(currentValue, formatString));
+    const newValue = currentValue?.map((date, i) => {
+      if (i === 1 && !!date) {
+        return new Date(new Date(date).valueOf() + 86399999);
+      }
+      return date;
+    });
+    onSelect?.(newValue as [Date, Date], formatDates(newValue as [Date, Date], formatString));
     if (index) {
       setVisible(false);
     }
