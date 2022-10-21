@@ -5,7 +5,7 @@ import RelativeRangeBody from './RelativeRangeBody';
 import RelativeRangeHeader from './RelativeRangeHeader';
 import InnerRangePanel from './InnerRangePanel';
 import { RangePickerProps } from './interfaces';
-import { parseStartAndEndDate } from './utils';
+import { startOfTodayInTimezone, parseStartAndEndDate } from './utils';
 
 function RelativeRangePicker({ disabledDate, timeRange, onSelect, onCancel, ...rest }: RangePickerProps) {
   const defaultDates = parseStartAndEndDate(timeRange ?? 'day:2,1');
@@ -15,13 +15,25 @@ function RelativeRangePicker({ disabledDate, timeRange, onSelect, onCancel, ...r
   const handleDisabledDate = (current: Date) =>
     disabledDate?.(current) || isAfter(startOfDay(current), endDateHidden ? startOfYesterday() : startOfToday());
   const handleOnOK = () => {
-    onSelect(`day:${differenceInDays(startOfToday(), dates[0]) + 1},${differenceInDays(startOfToday(), dates[1])}`);
+    onSelect(
+      `day:${differenceInDays(startOfTodayInTimezone(), dates[0]) + 1},${differenceInDays(
+        startOfTodayInTimezone(),
+        dates[1]
+      )}`
+    );
   };
   return (
     <InnerRangePanel
       data-testid="relative-range-picker"
       disableOK={!isValid(dates[0]) || !isValid(dates[1])}
-      header={<RelativeRangeHeader inputDisabled={inputDisabled} dateRange={dates} onRangeChange={setDates} onModeChange={setEndDateHidden} />}
+      header={
+        <RelativeRangeHeader
+          inputDisabled={inputDisabled}
+          dateRange={dates}
+          onRangeChange={setDates}
+          onModeChange={setEndDateHidden}
+        />
+      }
       body={
         <RelativeRangeBody
           dateRange={dates}

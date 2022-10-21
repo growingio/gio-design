@@ -7,7 +7,6 @@ import InnerRangePanel from './InnerRangePanel';
 import { RangePickerProps } from './interfaces';
 import { parseStartAndEndDate } from './utils';
 import defaultLocale from './locales/zh-CN';
-import { exportDateToZonedDate } from '../utils/timeHelper';
 
 function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onRangeSelect, onCancel }: RangePickerProps) {
   const [dates, setDates] = React.useState<[Date | undefined, Date | undefined]>(parseStartAndEndDate(timeRange));
@@ -29,11 +28,7 @@ function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onRangeSelect,
   };
   const handleDisabledDate = (current: Date) => disabledDate?.(current) || isAfter(current, startOfToday());
   const handleOnOK = () => {
-    onSelect(
-      `abs:${getTime(exportDateToZonedDate(dates[0] as Date))},${
-        getTime(exportDateToZonedDate(dates[1] as Date)) + 86399999
-      }`
-    );
+    onSelect(`abs:${getTime(dates[0] as Date)},${getTime(dates[1] as Date) + 86399999}`);
   };
   const handleOnSelect = (date: [Date, Date], index: number) => {
     setDates(date);

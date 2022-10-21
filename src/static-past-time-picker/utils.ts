@@ -1,5 +1,6 @@
 import has from 'lodash/has';
-import { startOfToday, sub, startOfYesterday } from 'date-fns';
+import { sub } from 'date-fns';
+import momentTZ from 'moment-timezone';
 import { TimeMode } from './interfaces';
 import { QUICK_MAPPING } from './constant';
 
@@ -25,14 +26,28 @@ export const parseTimeMode = (timeRange: string | undefined) => {
   }
 };
 
+export const startOfTodayInTimezone = () =>
+  new Date(
+    momentTZ
+      .tz(
+        `${momentTZ
+          .tz(new Date(), localStorage.getItem('timezone') || 'UTC')
+          .format()
+          .substring(0, 10)} 00:00:00`,
+        localStorage.getItem('timezone') || 'UTC'
+      )
+      .format()
+  );
+export const startOfYesterdayInTimezone = () => sub(startOfTodayInTimezone(), { days: 1 });
+
 export const parseStartAndEndDate = (timeRange: string | undefined): [Date | undefined, Date | undefined] => {
   if (!timeRange || timeRange.split(':').length !== 2) {
     return [undefined, undefined];
   }
   const items = timeRange.split(':');
   const times = items[1].split(',').map((str) => parseInt(str, 10));
-  const today = startOfToday();
-  const yesterday = startOfYesterday();
+  const today = startOfTodayInTimezone();
+  const yesterday = startOfYesterdayInTimezone();
   if (items[0] === 'since') {
     return [new Date(times[0]), today];
   }
