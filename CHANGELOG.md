@@ -1,3 +1,10 @@
+## [23.6.3](https://github.com/growingio/gio-design/compare/v23.6.2...v23.6.3) (2022-11-11)
+
+
+### Bug Fixes
+
+* **date-picker:** 默认时区从utc修复为机器时区 ([#2112](https://github.com/growingio/gio-design/issues/2112)) ([b2d07e8](https://github.com/growingio/gio-design/commit/b2d07e80a767abeb27b6617f3599ff60d1ebf557))
+
 ## [23.6.2](https://github.com/growingio/gio-design/compare/v23.6.1...v23.6.2) (2022-10-21)
 
 
