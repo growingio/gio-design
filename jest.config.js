@@ -1,5 +1,5 @@
 // set default timeZone UTC
-process.env.TZ = 'UTC';
+process.env.TZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
 module.exports = {
   // if you're also using typescript
   preset: 'ts-jest',

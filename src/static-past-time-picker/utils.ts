@@ -31,10 +31,10 @@ export const startOfTodayInTimezone = () =>
     momentTZ
       .tz(
         `${momentTZ
-          .tz(new Date(), localStorage.getItem('timezone') || 'UTC')
+          .tz(new Date(), localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone)
           .format()
           .substring(0, 10)} 00:00:00`,
-        localStorage.getItem('timezone') || 'UTC'
+        localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone
       )
       .format()
   );
