@@ -5,12 +5,12 @@ import StaticDatePicker from '../StaticDatePicker';
 describe('Testing StaticDatePicker ', () => {
   it('without params', () => {
     render(<StaticDatePicker />);
-    expect(screen.getByText('12')).toBeTruthy();
+    expect(screen.getByText('26')).toBeTruthy();
   });
 
   it('disabledDate is function', () => {
     render(<StaticDatePicker disabledDate={(current: Date) => current.getTime() > new Date().getTime()} />);
-    expect(screen.getByText('12')).toBeTruthy();
+    expect(screen.getByText('26')).toBeTruthy();
   });
 
   it('onPanelChange has onPanelChange', () => {
@@ -24,15 +24,15 @@ describe('Testing StaticDatePicker ', () => {
 
     fireEvent.click(container.querySelector('button[class="gio-picker-header-super-prev-btn"]'));
 
-    expect(screen.getByText('12')).toBeTruthy();
+    expect(screen.getByText('26')).toBeTruthy();
 
     fireEvent.click(container.querySelector('button[class="gio-picker-header-prev-btn"]'));
 
-    expect(screen.getByText('12')).toBeTruthy();
+    expect(screen.getByText('26')).toBeTruthy();
 
-    fireEvent.click(screen.getByText('12'));
+    fireEvent.click(screen.getByText('26'));
 
-    expect(screen.getByText('12')).toBeTruthy();
+    expect(screen.getByText('26')).toBeTruthy();
   });
 
   it('onPanelChange not onPanelChange', () => {
@@ -42,6 +42,6 @@ describe('Testing StaticDatePicker ', () => {
 
     fireEvent.click(container.querySelector('button[class="gio-picker-header-super-prev-btn"]'));
 
-    expect(screen.getByText('12')).toBeTruthy();
+    expect(screen.getByText('26')).toBeTruthy();
   });
 });

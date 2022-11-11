@@ -5,7 +5,9 @@ import { format as dateFnsFormat, utcToZonedTime } from 'date-fns-tz';
 
 // 时间日期转换时区 moment
 export const parseTimeZone = (data?: any, format?: string) =>
-  momentTZ(data as string, format).tz(localStorage.getItem('timezone') || 'UTC');
+  momentTZ(data as string, format).tz(
+    localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone
+  );
 
 // 时间日期转换时区 date-fns
 export const parseFnsTimeZone = (date: number | Date | string, format: string) => {
@@ -14,9 +16,13 @@ export const parseFnsTimeZone = (date: number | Date | string, format: string) =
     finalDate = new Date(date);
   }
 
-  return dateFnsFormat(utcToZonedTime(finalDate, localStorage.getItem('timezone') || 'UTC'), format, {
-    timeZone: localStorage.getItem('timezone') || 'UTC',
-  });
+  return dateFnsFormat(
+    utcToZonedTime(finalDate, localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone),
+    format,
+    {
+      timeZone: localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone,
+    }
+  );
 };
 
 // 选择器时间字符串按时区转化
@@ -26,7 +32,10 @@ export const exportDateToZonedDate = (date: any, format?: string) => {
   if (!date) return date;
   return new Date(
     momentTZ
-      .tz(moment(date).format(format || 'yyyy-MM-DD HH:mm:ss'), localStorage.getItem('timezone') || 'UTC')
+      .tz(
+        moment(date).format(format || 'yyyy-MM-DD HH:mm:ss'),
+        localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone
+      )
       .format()
   );
 };
@@ -36,7 +45,7 @@ export const exportDateToZonedDate = (date: any, format?: string) => {
 export const exportZonedDateToDate = (date: any, format?: string) => {
   if (!date) return date;
   const arr = momentTZ
-    .tz(date, localStorage.getItem('timezone') || 'UTC')
+    .tz(date, localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone)
     .format()
     .split('T');
 
