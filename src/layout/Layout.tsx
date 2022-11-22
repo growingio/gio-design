@@ -1,6 +1,5 @@
-import React, { useRef, createContext, useEffect, useContext } from 'react';
+import React, { useRef, createContext, useEffect, useContext, useState } from 'react';
 import classNames from 'classnames';
-import { useSetState } from 'react-use';
 import { usePrefixCls } from '@gio-design/utils';
 import { LayoutProps, LayoutState, ContentState, LayoutContextType } from './interfaces';
 import Header from './Header';
@@ -19,13 +18,13 @@ export const LayoutContext = createContext<LayoutContextType>({
 const Layout = ({ prefixCls: customizePrefixCls, fixed, className, style, children }: LayoutProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const prefixCls = usePrefixCls('layout', customizePrefixCls);
-  const [localLayoutState, setLayoutState] = useSetState<LayoutState>(initLayoutState);
-  const [localContentState, setContentState] = useSetState<ContentState>(initContentState);
+  const [localLayoutState, setLayoutState] = useState<LayoutState>(initLayoutState);
+  const [localContentState, setContentState] = useState<ContentState>(initContentState);
   const [siders, removeSider, updateSiders, margin] = useSiders();
   const { layoutState: parentLayoutState } = useContext(LayoutContext);
 
   useEffect(() => {
-    setLayoutState({ fixed });
+    setLayoutState({ fixed } as any);
   }, [fixed, setLayoutState]);
 
   const mergedStyle = {
@@ -39,8 +38,8 @@ const Layout = ({ prefixCls: customizePrefixCls, fixed, className, style, childr
       value={{
         contentState: localContentState,
         layoutState: localLayoutState,
-        setLayoutState,
-        setContentState,
+        setLayoutState: setLayoutState as any,
+        setContentState: setContentState as any,
         removeSider,
         updateSiders,
       }}
