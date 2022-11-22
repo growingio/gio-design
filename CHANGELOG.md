@@ -1,3 +1,10 @@
+## [23.6.4](https://github.com/growingio/gio-design/compare/v23.6.3...v23.6.4) (2022-11-22)
+
+
+### Bug Fixes
+
+* remove react-use ([#2119](https://github.com/growingio/gio-design/issues/2119)) ([ba7e870](https://github.com/growingio/gio-design/commit/ba7e870c48807a409dbc33b9249c3214e5aeb85d))
+
 ## [23.6.3](https://github.com/growingio/gio-design/compare/v23.6.2...v23.6.3) (2022-11-11)
 
 
