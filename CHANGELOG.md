@@ -1,3 +1,10 @@
+## [22.18.4](https://github.com/growingio/gio-design/compare/v22.18.3...v22.18.4) (2022-12-01)
+
+
+### Bug Fixes
+
+* **daterangepicker:** 过去固定时间不能选择同一天 ([#2122](https://github.com/growingio/gio-design/issues/2122)) ([e5f50f9](https://github.com/growingio/gio-design/commit/e5f50f9cd8f20c9a7d93d9e8ce575b7964ea0ab4))
+
 ## [22.18.3](https://github.com/growingio/gio-design/compare/v22.18.2...v22.18.3) (2022-11-11)
 
 
