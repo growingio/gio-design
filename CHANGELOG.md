@@ -1,3 +1,10 @@
+## [23.6.5](https://github.com/growingio/gio-design/compare/v23.6.4...v23.6.5) (2022-12-01)
+
+
+### Bug Fixes
+
+* **daterangepicker:** 过去固定时间不能选择同一天 ([#2123](https://github.com/growingio/gio-design/issues/2123)) ([8308036](https://github.com/growingio/gio-design/commit/830803650aa6ae4eddee56ddf2f607c578e71074))
+
 ## [23.6.4](https://github.com/growingio/gio-design/compare/v23.6.3...v23.6.4) (2022-11-22)
 
 
