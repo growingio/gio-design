@@ -49,7 +49,7 @@ function StaticDateRangePicker({
           data-testid="static-date-picker"
           disabledDate={(currentDate: Date) => {
             const isBeforeStartDate =
-              selectedValue && selectedValue[0] && !selectedValue[1] ? isBefore(currentDate, selectedValue[0]) : false;
+              selectedValue && selectedValue[0] && !selectedValue[1] ? isBefore(exportDateToZonedDate(currentDate), selectedValue[0]) : false;
             const isDisabledDate = disabledDate ? disabledDate(currentDate) : false;
             return isBeforeStartDate || isDisabledDate;
           }}
