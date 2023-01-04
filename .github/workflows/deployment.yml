@@ -29,14 +29,14 @@ jobs:
       - name: Install
         if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
         run: yarn install
-      - name: Build
-        run: yarn build
+      - name: Build website
+        run: yarn stoyrbook:build
       - name: Copy deno.ts
-        run: cp deno.ts build
+        run: cp deno.ts storybook-static
 
-      - name: Upload to Deno Deploy
+      - name: Upload website to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: "gio-design"
           entrypoint: "./deno.ts"
-          root: build
+          root: storybook-static
