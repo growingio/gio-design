@@ -1,0 +1,42 @@
+name: Continuous Deployment
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy-deno:
+    name: Deploy to deno
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Needed for auth with Deno Deploy
+      contents: read # Needed to clone the repository
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Restore Node.js modules
+        id: cache-node-modules
+        uses: actions/cache@v3.2.2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install
+        if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
+        run: yarn install
+      - name: Build
+        run: yarn build
+      - name: Copy deno.ts
+        run: cp deno.ts build
+
+      - name: Upload to Deno Deploy
+        uses: denoland/deployctl@v1
+        with:
+          project: "gio-design"
+          entrypoint: "./deno.ts"
+          root: build
