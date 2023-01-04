@@ -30,7 +30,7 @@ jobs:
         if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
         run: yarn install
       - name: Build website
-        run: yarn stoyrbook:build
+        run: yarn storybook:build
       - name: Copy deno.ts
         run: cp deno.ts storybook-static
 
