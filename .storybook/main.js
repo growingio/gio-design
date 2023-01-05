@@ -26,6 +26,7 @@ module.exports = {
         },
       },
     },
+    '@storybook/addon-google-analytics',
   ],
   features: {
     postcss: false,

@@ -23,3 +23,6 @@ addons.setConfig({
     fullscreen: { hidden: false },
   },
 });
+
+window.STORYBOOK_GA_ID = "G-ZHR9KCE4NL";
+window.STORYBOOK_REACT_GA_OPTIONS = {};

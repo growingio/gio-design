@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming/create';
-import { getPreferredColorScheme } from '@storybook/theming/dist/esm/utils';
+// import { getPreferredColorScheme } from '@storybook/theming/dist/esm';
 
 const baseTheme = {
   fontBase: '"PingFang SC", sans-serif',
@@ -19,6 +19,6 @@ const lightTheme = create({
   brandImage: '/logo-light.svg',
 });
 
-const theme = getPreferredColorScheme() === 'dark' ? darkTheme : lightTheme;
+// const theme = getPreferredColorScheme() === 'dark' ? darkTheme : lightTheme;
 
-export default theme;
+export default lightTheme;
