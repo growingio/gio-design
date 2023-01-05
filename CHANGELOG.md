@@ -1,3 +1,10 @@
+## [23.6.6](https://github.com/growingio/gio-design/compare/v23.6.5...v23.6.6) (2023-01-05)
+
+
+### Bug Fixes
+
+* **listPicker:** 修复在非受控情况下开启allowClear,点击清除Icon的时候无效 ([#2134](https://github.com/growingio/gio-design/issues/2134)) ([f2b6043](https://github.com/growingio/gio-design/commit/f2b6043dd6e98e8b8cf5dbb035665ae013b97e1c)), closes [#2133](https://github.com/growingio/gio-design/issues/2133)
+
 ## [23.6.5](https://github.com/growingio/gio-design/compare/v23.6.4...v23.6.5) (2022-12-01)
 
 
