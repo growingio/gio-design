@@ -137,6 +137,7 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
 
   const clearInput = () => {
     setValue(undefined);
+    setPrevValue(undefined);
     onClear?.();
     onChange?.();
   };
