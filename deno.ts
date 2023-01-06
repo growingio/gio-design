@@ -9,7 +9,7 @@ app.use(async (ctx: Context) => {
     await fetch(`${GA_URL}${ctx.request.url.search}`, {
       method: ctx.request.method,
       headers: ctx.request.headers,
-      body: ctx.request.hasBody ? await ctx.request.body().value : null,
+      body: ctx.request.headers.has('content-type') ? await ctx.request.body().value : null,
     });
     ctx.response.status = 204;
   } else {
