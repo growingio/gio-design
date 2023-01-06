@@ -6,16 +6,19 @@ const app = new Application();
 app.use(async (ctx: Context) => {
   const pathname = ctx.request.url.pathname;
   if (pathname.endsWith('/g/collect')) {
-    await fetch(`${GA_URL}${ctx.request.url.search}`);
-    ctx.reqsponse.status = 204;
+    await fetch(`${GA_URL}${ctx.request.url.search}`, {
+      method: ctx.request.method,
+      headers: ctx.request.headers,
+      body: await ctx.request.body().value,
+    });
+    ctx.response.status = 204;
   } else if (pathname.endsWith('/mp/collect')) {
     await fetch(GA_URL, {
       method: ctx.request.method,
       headers: ctx.request.headers,
       body: await ctx.request.body().value,
-
     });
-    ctx.reqsponse.status = 204;
+    ctx.response.status = 204;
   }
   else {
     try {
