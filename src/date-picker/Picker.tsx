@@ -48,7 +48,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
   const handleOnSelect = (currentValue: Date) => {
     setControlledValue(currentValue);
     setVisible(false);
-    onSelect?.(currentValue, formatDate(currentValue));
+    onSelect?.(currentValue, formatDate(currentValue) as string);
   };
 
   const content = <StaticDatePicker onSelect={handleOnSelect} disabledDate={disabledDate} value={controlledValue} />;
@@ -63,7 +63,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props: DatePickerProps) =>
         placeholder={placeholder}
         disabled={disabled}
         allowClear={allowClear}
-        value={controlledValue && formatDate(controlledValue)}
+        value={controlledValue && (formatDate(controlledValue) as string)}
         size={size}
         suffix={suffix}
         className={className}
