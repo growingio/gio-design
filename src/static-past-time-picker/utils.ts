@@ -1,8 +1,11 @@
 import has from 'lodash/has';
 import { sub } from 'date-fns';
 import momentTZ from 'moment-timezone';
+import moment from 'moment';
 import { TimeMode } from './interfaces';
 import { QUICK_MAPPING } from './constant';
+
+momentTZ.tz.setDefault(localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone);
 
 export const parseTimeMode = (timeRange: string | undefined) => {
   if (!timeRange) {
@@ -62,6 +65,44 @@ export const parseStartAndEndDate = (timeRange: string | undefined): [Date | und
   }
   return [undefined, undefined];
 };
+
+export const parseQuickDate = (timeRange: string | undefined): [Date | undefined, Date | undefined] => {
+  if (!timeRange || timeRange.split(':').length !== 2) {
+    return [undefined, undefined];
+  }
+  const items = timeRange.split(':');
+  const times = items[1].split(',').map((str) => parseInt(str, 10));
+  const today = startOfTodayInTimezone();
+
+  if (items[0] === 'day') {
+    return [sub(today, { days: times[0] - 1 }), sub(today, { days: times[1] })];
+  }
+  if (items[0] === 'week-lt-today') {
+    return [moment().subtract(times[0] - 1, 'week').startOf('isoWeek').toDate(), String(times[1]) === '0' ? moment().subtract(1, 'day').endOf('day').toDate() : moment().subtract(times[0] - 1, 'week').endOf('isoWeek').toDate()];
+  }
+  if (items[0] === 'month-lt-today') {
+    return [moment().subtract(times[0] - 1, 'month').startOf('month').toDate(), String(times[1]) === '0' ? moment().subtract(1, 'day').endOf('day').toDate() : moment().subtract(times[0] - 1, 'month').endOf('month').toDate()];
+  }
+  if (items[0] === 'quarter-lt-today') {
+    return [moment().subtract(times[0] - 1, 'quarter').startOf('quarter').toDate(), String(times[1]) === '0' ? moment().subtract(1, 'day').endOf('day').toDate() : moment().subtract(times[0] - 1, 'quarter').endOf('quarter').toDate()];
+  }
+  if (items[0] === 'year-lt-today') {
+    return [moment().subtract(times[0] - 1, 'year').startOf('year').toDate(), String(times[1]) === '0' ? moment().subtract(1, 'day').endOf('day').toDate() : moment().subtract(times[0] - 1, 'year').endOf('year').toDate()];
+  }
+  if (items[0] === 'week') {
+    return [moment().subtract(times[0] - 1, 'week').startOf('isoWeek').toDate(), String(times[1]) === '0' ? moment().endOf('day').toDate() : moment().subtract(times[0] - 1, 'week').endOf('isoWeek').toDate()];
+  }
+  if (items[0] === 'month') {
+    return [moment().subtract(times[0] - 1, 'month').startOf('month').toDate(), String(times[1]) === '0' ? moment().endOf('day').toDate() : moment().subtract(times[0] - 1, 'month').endOf('month').toDate()];
+  }
+  if (items[0] === 'quarter') {
+    return [moment().subtract(times[0] - 1, 'quarter').startOf('quarter').toDate(), String(times[1]) === '0' ? moment().endOf('day').toDate() : moment().subtract(times[0] - 1, 'quarter').endOf('quarter').toDate()];
+  }
+  if (items[0] === 'year') {
+    return [moment().subtract(times[0] - 1, 'year').startOf('year').toDate(), String(times[1]) === '0' ? moment().endOf('day').toDate() : moment().subtract(times[0] - 1, 'year').endOf('year').toDate()];
+  }
+  return [undefined, undefined];
+}
 
 export const parseFixedMode = (timeRange: string | undefined) => {
   if (!timeRange || timeRange.split(':').length !== 2) {

@@ -54,7 +54,7 @@ export const TimePicker: React.FC<TimePickerProps> = (props) => {
   const handleOnOk = () => {
     setControlledValue(time);
     setVisible(false);
-    onSelect?.(time as Date, formatTime(time as Date));
+    onSelect?.(time as Date, formatTime(time as Date) as string);
   };
 
   const handleVisibleChange = (current: boolean) => {
@@ -100,7 +100,7 @@ export const TimePicker: React.FC<TimePickerProps> = (props) => {
         prefix={prefix || <ClockOutlined />}
         disabled={disabled}
         allowClear={allowClear}
-        value={time && formatTime(time)}
+        value={time && (formatTime(time) as string)}
         placeholder={placeholder ?? timeSelect}
         size={size}
         suffix={suffix}

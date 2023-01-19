@@ -135,6 +135,10 @@ export default function DatePickerPage() {
       <Canvas>
         <Story id="upgraded-pasttimepicker--disabled-date" />
       </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '显示绝对日期' })}</Subheading>
+      <Canvas>
+        <Story id="upgraded-pasttimepicker--show-abs-date" />
+      </Canvas>
       <Heading>{formatMessage({ defaultMessage: '参数说明' })}</Heading>
       <ArgsTable of={PastTimePicker} />
     </>
