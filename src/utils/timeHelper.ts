@@ -3,6 +3,7 @@ import momentTZ from 'moment-timezone';
 import moment from 'moment';
 import { format as dateFnsFormat, utcToZonedTime } from 'date-fns-tz';
 
+momentTZ.tz.setDefault(localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone);
 // 时间日期转换时区 moment
 export const parseTimeZone = (data?: any, format?: string) =>
 momentTZ(data as string, format).tz(localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone);

@@ -11,6 +11,7 @@ import { InputButton } from '../input';
 import { PastTimePickerProps } from './interfaces';
 import StaticPastTimePicker from '../static-past-time-picker';
 import defaultLocale from '../static-past-time-picker/locales/zh-CN';
+import {parseStartAndEndDate, parseQuickDate} from '../static-past-time-picker/utils'
 
 const PastTimePicker = (props: PastTimePickerProps) => {
   const {
@@ -32,6 +33,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     size,
     className,
     style,
+    showAbsDate = false,
     ...restProps
   } = props;
 
@@ -110,17 +112,20 @@ const PastTimePicker = (props: PastTimePickerProps) => {
       return defaultString;
     }
     if (has(QUICK_MAPPING, time)) {
-      return get(QUICK_MAPPING, time);
+      const [startTime, endTime] = parseQuickDate(time);
+      return showAbsDate ? `${get(QUICK_MAPPING, time)} | ${parseFnsTimeZone(startTime, 'yyyy/MM/dd')}-${parseFnsTimeZone(endTime, 'yyyy/MM/dd')}` : `${get(QUICK_MAPPING, time)}`;
     }
     const items = time.split(':');
     const times = items[1].split(',').map((str) => parseInt(str, 10));
     if (items[0] === 'since') {
       const start = parseFnsTimeZone(times[0], 'yyyy/MM/dd');
-      return `${FromText} ${start} ${toTodayText}`;
+      const [startTime, endTime] = parseStartAndEndDate(time);
+      return showAbsDate ? `${FromText} ${start} ${toTodayText} ｜ ${parseFnsTimeZone(startTime, 'yyyy/MM/dd')}-${parseFnsTimeZone(endTime, 'yyyy/MM/dd')}` : `${FromText} ${start} ${toTodayText}`;
     }
     if (items[0] === 'since-lt-today') {
       const start = parseFnsTimeZone(times[0], 'yyyy/MM/dd');
-      return `${FromText} ${start} ${toYesterdayText}`;
+      const [startTime, endTime] = parseStartAndEndDate(time);
+      return showAbsDate ? `${FromText} ${start} ${toYesterdayText} ｜ ${parseFnsTimeZone(startTime, 'yyyy/MM/dd')}-${parseFnsTimeZone(endTime, 'yyyy/MM/dd')}` : `${FromText} ${start} ${toYesterdayText}`;
     }
 
     if (items[0] === 'abs') {
@@ -129,10 +134,12 @@ const PastTimePicker = (props: PastTimePickerProps) => {
       return `${FromText} ${start} ${ToText} ${end}`;
     }
     if (items[0] === 'day') {
+      const [startTime, endTime] = parseStartAndEndDate(time);
+
       if (times[1] === 1) {
-        return `${lastText} ${times[0] - times[1]} ${dayText}`;
+        return showAbsDate ? `${lastText} ${times[0] - times[1]} ${dayText} ｜ ${parseFnsTimeZone(startTime, 'yyyy/MM/dd')}-${parseFnsTimeZone(endTime, 'yyyy/MM/dd')}` : `${lastText} ${times[0] - times[1]} ${dayText}`;
       }
-      return `${lastText} ${times[1]}-${times[0]} ${dayText}`;
+      return showAbsDate ? `${lastText} ${times[1]}-${times[0]} ${dayText} ｜ ${parseFnsTimeZone(startTime, 'yyyy/MM/dd')}-${parseFnsTimeZone(endTime, 'yyyy/MM/dd')}` : `${lastText} ${times[1]}-${times[0]} ${dayText}`;
     }
     return defaultString;
   };
