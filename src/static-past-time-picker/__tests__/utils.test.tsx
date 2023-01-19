@@ -1,6 +1,6 @@
 import { startOfToday, startOfYesterday } from 'date-fns';
 import { TimeMode } from '../interfaces';
-import { parseFixedMode, parseStartAndEndDate, parseTimeMode } from '../utils';
+import { parseFixedMode, parseStartAndEndDate, parseTimeMode, parseQuickDate } from '../utils';
 
 describe('test utils', () => {
   it('parseTimeMode', () => {
@@ -19,6 +19,11 @@ describe('test utils', () => {
       startOfYesterday(),
     ]);
     expect(parseStartAndEndDate('xxx:1656115199999')).toStrictEqual([undefined, undefined]);
+  });
+  it('parseQuickDate', () => {
+    expect(parseQuickDate('day:1,0')).toStrictEqual([startOfToday(), startOfToday()]);
+    expect(parseQuickDate('day:2,1')).toStrictEqual([startOfYesterday(), startOfYesterday()]);
+    expect(parseQuickDate('xxx:1656115199999')).toStrictEqual([undefined, undefined]);
   });
   it('parseFixedMode', () => {
     expect(parseFixedMode('day:2,1')).toBe('yesterday');

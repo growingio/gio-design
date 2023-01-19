@@ -94,6 +94,11 @@ export const DisabledDate = () => {
   return <PastTimePicker onSelect={action('selected value:')} placeholder="时间范围" disabledDate={disabledDate} />;
 };
 
+export const ShowAbsDate = Template.bind({});
+ShowAbsDate.args = {
+  showAbsDate: true,
+};
+
 const StaticTemplate: Story<PastTimePickerProps> = (args) => (
   <PastTimePicker.Static onSelect={action('selected value:')} placeholder="时间范围" {...args} />
 );
