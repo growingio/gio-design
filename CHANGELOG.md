@@ -1,3 +1,13 @@
+# [22.19.0](https://github.com/growingio/gio-design/compare/v22.18.4...v22.19.0) (2023-01-20)
+
+
+### Features
+
+* **past-time-picker:** 增加“显示绝对事件”特性 ([#2136](https://github.com/growingio/gio-design/issues/2136)) ([49c2732](https://github.com/growingio/gio-design/commit/49c2732c3a8794b112bb689eec7c3471dae91119))
+* **past-time-picker:** 增加“显示绝对时间”特性 ([#2138](https://github.com/growingio/gio-design/issues/2138)) ([dac8d10](https://github.com/growingio/gio-design/commit/dac8d10383f1bbbe8cb2c675317a8af4af339b14))
+* **past-time-picker:** 增加“显示绝对时间”特性 ([#2138](https://github.com/growingio/gio-design/issues/2138)) ([d86917e](https://github.com/growingio/gio-design/commit/d86917e58a4d8ffe43d685c1cc114103f1ad1d6a))
+* **past-time-picker:** 增加“显示绝对时间”特性 ([#2138](https://github.com/growingio/gio-design/issues/2138)) ([#2140](https://github.com/growingio/gio-design/issues/2140)) ([26d93f8](https://github.com/growingio/gio-design/commit/26d93f89e20014bd865955794e215b5af077acc8))
+
 ## [22.18.4](https://github.com/growingio/gio-design/compare/v22.18.3...v22.18.4) (2022-12-01)
 
 
