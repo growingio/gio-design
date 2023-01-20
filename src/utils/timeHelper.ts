@@ -9,7 +9,8 @@ export const parseTimeZone = (data?: any, format?: string) =>
 momentTZ(data as string, format).tz(localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone);
 
 // 时间日期转换时区 date-fns
-export const parseFnsTimeZone = (date: number | Date | string, format: string) => {
+export const parseFnsTimeZone = (date: number | Date | string | undefined, format: string) => {
+  if (!date) return date;
   let finalDate = date;
   if (isNumber(date)) {
     finalDate = new Date(date);
