@@ -1,3 +1,15 @@
+# [23.7.0](https://github.com/growingio/gio-design/compare/v23.6.5...v23.7.0) (2023-01-25)
+
+
+### Bug Fixes
+
+* **listPicker:** 修复在非受控情况下开启allowClear,点击清除Icon的时候无效 ([#2134](https://github.com/growingio/gio-design/issues/2134)) ([7767a11](https://github.com/growingio/gio-design/commit/7767a1168a52083bbbcb32113b04ddf44c1f8ecd)), closes [#2133](https://github.com/growingio/gio-design/issues/2133)
+
+
+### Features
+
+* **past-time-picker:** 增加“显示绝对时间”特性 ([#2137](https://github.com/growingio/gio-design/issues/2137)) ([f5c6870](https://github.com/growingio/gio-design/commit/f5c6870743e8e66fbfff2967e5aef5b885a752dd))
+
 ## [23.6.6](https://github.com/growingio/gio-design/compare/v23.6.5...v23.6.6) (2023-01-18)
 
 
