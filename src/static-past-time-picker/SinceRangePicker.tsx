@@ -1,7 +1,7 @@
 import React from 'react';
 import { getTime, startOfToday, startOfYesterday, isValid, isAfter } from 'date-fns';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
-import { parseFnsTimeZone } from '../utils/timeHelper'
+import { parseFnsTimeZone } from '../utils/timeHelper';
 import SwitchGroup from '../switchGroup';
 import DatePicker from '../static-date-picker';
 import InnerRangePanel from './InnerRangePanel';
@@ -10,8 +10,16 @@ import { DATE_FORMAT } from './constant';
 import { parseStartAndEndDate } from './utils';
 import defaultLocale from './locales/zh-CN';
 
-function SinceRangePicker({ disabledDate, timeRange, onSelect, onCancel, experimental, ...rest }: RangePickerProps) {
-  const endDateKeys = ['today', experimental ? 'yesterday' : undefined];
+function SinceRangePicker({
+  disabledDate,
+  timeRange,
+  onSelect,
+  onCancel,
+  experimental,
+  NotAvailableToday,
+  ...rest
+}: RangePickerProps) {
+  const endDateKeys = [!NotAvailableToday ? 'today' : undefined, experimental ? 'yesterday' : undefined];
   const dates = parseStartAndEndDate(timeRange);
   const prefixCls = usePrefixCls('range-panel__header');
   const [startDate, setStartDate] = React.useState<Date | undefined>(dates[0]);
