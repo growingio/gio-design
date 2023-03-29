@@ -7,7 +7,15 @@ import { QuickPickerProps } from './interfaces';
 import { experimentalQuickOptions } from './constant';
 import defaultLocaleText from './locales/zh-CN';
 
-function QuickPicker({ options:optionsParams, optionsFilter, onSelect, timeRange, experimental, ...rest }: QuickPickerProps) {
+function QuickPicker({
+  options: optionsParams,
+  optionsFilter,
+  onSelect,
+  timeRange,
+  experimental,
+  NotAvailableToday,
+  ...rest
+}: QuickPickerProps) {
   const [currentValue, setCurrentValue] = useState(timeRange);
   const [toToday, setToToday] = useState(false);
   const prefixCls = usePrefixCls('quick-picker');
@@ -27,7 +35,7 @@ function QuickPicker({ options:optionsParams, optionsFilter, onSelect, timeRange
     return currentOptions;
   };
 
-  const options = experimental? [...optionsParams, ...experimentalQuickOptions(localeText)]:optionsParams;
+  const options = experimental ? [...optionsParams, ...experimentalQuickOptions(localeText)] : optionsParams;
   const handleOnSelect = (selectedValue: string) => {
     setCurrentValue(selectedValue);
   };
@@ -54,7 +62,12 @@ function QuickPicker({ options:optionsParams, optionsFilter, onSelect, timeRange
   return (
     <div data-testid="quick-picker" className={prefixCls} {...rest}>
       <div className={`${prefixCls}__list`}>
-        <SelectList value={currentValue} options={filter(options as any)} onChange={handleOnSelect} collapse={Infinity}/>
+        <SelectList
+          value={currentValue}
+          options={filter(options as any)}
+          onChange={handleOnSelect}
+          collapse={Infinity}
+        />
       </div>
       <div className={`${prefixCls}__bottom`}>
         {experimental &&
@@ -68,7 +81,7 @@ function QuickPicker({ options:optionsParams, optionsFilter, onSelect, timeRange
             'month:1,0',
             'week:1,0',
           ].includes(currentValue as string) && (
-            <Checkbox checked={toToday} onChange={handleOnTodayCheck}>
+            <Checkbox checked={toToday} onChange={handleOnTodayCheck} disabled={NotAvailableToday}>
               {includeToday}
             </Checkbox>
           )}

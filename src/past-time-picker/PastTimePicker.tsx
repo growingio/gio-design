@@ -34,6 +34,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     className,
     style,
     showAbsDate = false,
+    NotAvailableToday = false,
     ...restProps
   } = props;
 
@@ -192,6 +193,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
       onRangeSelect={onRangeSelect}
       onCancel={handleOnCancel}
       quickOptionsFilter={quickOptionsFilter}
+      NotAvailableToday={NotAvailableToday}
     />
   );
 
