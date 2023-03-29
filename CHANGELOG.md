@@ -1,3 +1,10 @@
+# [23.8.0](https://github.com/growingio/gio-design/compare/v23.7.0...v23.8.0) (2023-03-29)
+
+
+### Features
+
+* **past-time-picker:** 日期选择器,添加参数,默认不可选今日 ([#2149](https://github.com/growingio/gio-design/issues/2149)) ([16a3cca](https://github.com/growingio/gio-design/commit/16a3ccaea5d61ae77e2e49e6006d5ff875df90de))
+
 # [23.7.0](https://github.com/growingio/gio-design/compare/v23.6.5...v23.7.0) (2023-01-25)
 
 
