@@ -20,6 +20,9 @@ interface FilterPopoverProps {
    * @default '搜索过滤条件'
    */
   placeholder?: string;
+  singleSelect?: boolean;
+  filterSearchEnable?: boolean;
+  singleSelectDefaultValue?: string;
 }
 
 const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
@@ -29,7 +32,17 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
     ...locale,
   };
 
-  const { children, onClick, filters = [], values, prefixCls, placeholder = searchText } = props;
+  const {
+    children,
+    onClick,
+    filters = [],
+    values,
+    prefixCls,
+    singleSelect,
+    filterSearchEnable,
+    placeholder = searchText,
+    singleSelectDefaultValue,
+  } = props;
   const [searchValue, setSearchValue] = useState<string>('');
   const [selectFilterKeys, setSelectFilterKeys] = useState<Key[]>(values);
   const [visible, setVisible] = useState<boolean>(false);
@@ -75,19 +88,29 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
       overlayClassName={`${prefixCls}-filter-popover`}
       content={
         <>
-          <SearchBar
-            placeholder={placeholder}
-            size="small"
-            value={searchValue}
-            onChange={(event) => setSearchValue(event.target.value)}
-            className={`${prefixCls}-search-bar`}
-            autoFocus
-          />
+          {filterSearchEnable && (
+            <SearchBar
+              placeholder={placeholder}
+              size="small"
+              value={searchValue}
+              onChange={(event) => setSearchValue(event.target.value)}
+              className={`${prefixCls}-search-bar`}
+              autoFocus
+            />
+          )}
           <FilterList
+            singleSelect={singleSelect}
             prefixCls={prefixCls}
             value={selectFilterKeys}
+            singleSelectDefaultValue={singleSelectDefaultValue}
             onChange={(keys) => {
-              setSelectFilterKeys(keys);
+              if (singleSelect) {
+                onClick(keys);
+                setVisible(false);
+                setSelectFilterKeys(keys);
+              } else {
+                setSelectFilterKeys(keys);
+              }
             }}
             empty={searchValue ? <Result type="empty-result" title size="small" /> : undefined}
             dataSource={filters
@@ -104,28 +127,30 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
                 return { value: item.toString(), label: item.toString() };
               })}
           />
-          <div className={`${prefixCls}-filter-popover-footer`}>
-            <Button
-              type="secondary"
-              size="small"
-              onClick={() => {
-                setSearchValue('');
-                setSelectFilterKeys([]);
-              }}
-            >
-              {clearText}
-            </Button>
-            <Button
-              style={{ float: 'right' }}
-              size="small"
-              onClick={() => {
-                onClick(selectFilterKeys);
-                setVisible(false);
-              }}
-            >
-              {okText}
-            </Button>
-          </div>
+          {!singleSelect && (
+            <div className={`${prefixCls}-filter-popover-footer`}>
+              <Button
+                type="secondary"
+                size="small"
+                onClick={() => {
+                  setSearchValue('');
+                  setSelectFilterKeys([]);
+                }}
+              >
+                {clearText}
+              </Button>
+              <Button
+                style={{ float: 'right' }}
+                size="small"
+                onClick={() => {
+                  onClick(selectFilterKeys);
+                  setVisible(false);
+                }}
+              >
+                {okText}
+              </Button>
+            </div>
+          )}
         </>
       }
     >
