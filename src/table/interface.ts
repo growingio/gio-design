@@ -89,6 +89,18 @@ interface ColumnType<RecordType> extends GioColumnType<RecordType> {
   onFilter?: (value: string, record: RecordType) => boolean;
 
   /**
+   * 单选开关 默认false
+   */
+  singleSelect?: boolean;
+  /**
+   * 搜索选项开关
+   */
+  filterSearchEnable?: boolean;
+  /**
+   * 单选时传默认值, 不传则为filters首项
+   */
+  singleSelectDefaultValue?: string;
+  /**
    * 过滤器中搜索框的占位符
    * @default `搜索过滤条件`
    */

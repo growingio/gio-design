@@ -60,11 +60,16 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
 
   const renderFilter = (): React.ReactNode => {
     const { filterState, updateFilterStates } = props;
-    const { filterSearchPlaceHolder } = column;
     if (isUndefined(filterState)) {
       return null;
     }
     const { filteredKeys, filters } = filterState;
+    const {
+      filterSearchPlaceHolder,
+      singleSelect = false,
+      filterSearchEnable = true,
+      singleSelectDefaultValue = (filters?.[0] as any)?.value,
+    } = column;
     const handleFilterPopoverClick = (newFilteredKeys: Key[]): void => {
       updateFilterStates({ ...filterState, filteredKeys: newFilteredKeys });
     };
@@ -76,12 +81,15 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
         filters={filters}
         values={filteredKeys}
         placeholder={filterSearchPlaceHolder}
+        singleSelect={singleSelect}
+        filterSearchEnable={filterSearchEnable}
+        singleSelectDefaultValue={singleSelectDefaultValue}
       >
         <Button.IconButton
           size="small"
           type="text"
           className={`${prefixCls}-filter-button`}
-          active={!isEmpty(filteredKeys)}
+          active={!isEmpty(filteredKeys) || singleSelect}
         >
           <FilterOutlined size="12px" />
         </Button.IconButton>

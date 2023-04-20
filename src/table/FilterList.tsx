@@ -10,24 +10,39 @@ interface FilterListProps extends ListProps {
     value: string;
     label: string;
   }[];
+  singleSelect?: boolean;
+  singleSelectDefaultValue?: string;
 }
 
-const FilterList = ({ prefixCls, value, onChange, dataSource, ...otherProps }: FilterListProps) => (
+const FilterList = ({
+  prefixCls,
+  value,
+  onChange,
+  dataSource,
+  singleSelect,
+  singleSelectDefaultValue,
+  ...otherProps
+}: FilterListProps) => (
   <List
     className={`${prefixCls}-filter-list`}
-    value={value}
-    model="multiple"
+    value={value?.length === 0 && singleSelect ? singleSelectDefaultValue : value}
+    model={singleSelect ? 'single' : 'multiple'}
     needEmpty
+    onClick={(changedKeys) => {
+      singleSelect && onChange([changedKeys] as Key[]);
+    }}
     onChange={(changedKeys) => {
-      onChange((changedKeys as Key[]));
+      !singleSelect && onChange(changedKeys as Key[]);
     }}
     {...otherProps}
   >
-    {dataSource.map((item) => (
-      <List.Item key={`${item.label}-${item.value}`} value={item.value}>
-        {item.label}
-      </List.Item>
-    ))}
+    <>
+      {dataSource.map((item) => (
+        <List.Item key={`${item.label}-${item.value}`} value={item.value}>
+          {item.label}
+        </List.Item>
+      ))}
+    </>
   </List>
 );
 
