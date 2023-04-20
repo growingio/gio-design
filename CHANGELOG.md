@@ -1,3 +1,10 @@
+# [23.9.0](https://github.com/growingio/gio-design/compare/v23.8.0...v23.9.0) (2023-04-20)
+
+
+### Features
+
+* **table:** table column add singleSelect boolean params ([#2151](https://github.com/growingio/gio-design/issues/2151)) ([582f670](https://github.com/growingio/gio-design/commit/582f670780f06f44350509676b98bec65b96829d))
+
 # [23.8.0](https://github.com/growingio/gio-design/compare/v23.7.0...v23.8.0) (2023-03-29)
 
 
