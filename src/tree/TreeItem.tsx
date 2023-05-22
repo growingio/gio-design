@@ -45,9 +45,11 @@ const TreeNode: React.FC<TreeItemProps> = (props) => {
   const content = (
     <>
       {generateIndent()}
-      <span aria-hidden="true" onClick={(e) => onNodeExpand(e)} className={`${prefixCls}-depth`}>
-        {!isLeaf ? <DownFilled style={!isOpen ? { transform: 'rotate(-90deg)' } : undefined} /> : undefined}
-      </span>
+      {!isLeaf ? (
+        <span aria-hidden="true" onClick={(e) => onNodeExpand(e)} className={`${prefixCls}-depth`}>
+          {!isLeaf ? <DownFilled style={!isOpen ? { transform: 'rotate(-90deg)' } : undefined} /> : undefined}
+        </span>
+      ) : undefined}
       {multiple && (
         <Checkbox
           checked={selectedKeys?.includes(value)}
