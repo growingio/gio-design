@@ -4,6 +4,8 @@ export enum ProgressStatus {
   exception,
 }
 
+export type ProgressType = 'circle' | 'default';
+
 export interface ProgressProps {
   /**
    * 百分比
@@ -21,9 +23,9 @@ export interface ProgressProps {
    * 进度条尺寸
    * @default default
    */
-  size?: 'small'|'default';
+  size?: 'small' | 'default' | 'large';
   customizePrefixCls?: string;
-   /**
+  /**
    * 动画特效开关
    * @default false
    */
@@ -31,4 +33,6 @@ export interface ProgressProps {
   className?: string;
   style?: React.CSSProperties;
   showInfo?: boolean;
+  type?: ProgressType;
+  strokeLinecap?: React.SVGProps<SVGElement>['strokeLinecap'];
 }

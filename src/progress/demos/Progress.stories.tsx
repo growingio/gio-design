@@ -67,3 +67,23 @@ export const Status: Story<ProgressProps> = () => (
 export const Format: Story<ProgressProps> = () => (
   <Progress format={(e: number) => `${e}🌟`} status="active" percent={percent} />
 );
+
+export const Circle: Story<ProgressProps> = () => (
+  <>
+    <Progress type="circle" format={(e: number) => `${e}%`} status="active" size="large" percent={percent} />
+    <Progress type="circle" format={(e: number) => `${e}%`} status="success" size="default" percent={percent} />
+    <Progress
+      type="circle"
+      format={(e: number) => (
+        <span>
+          <span style={{ fontSize: 24 }}>{e}</span>
+          <span style={{ fontSize: 12 }}>%</span>
+        </span>
+      )}
+      status="exception"
+      strokeLinecap="butt"
+      percent={percent}
+    />
+    <Progress type="circle" format={(e: number) => `${e}%`} status="active" size="small" percent={percent} />
+  </>
+);
