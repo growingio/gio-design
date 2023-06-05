@@ -22,9 +22,8 @@ const ProgressCircle: React.FC<ProgressProps> = ({
 }: ProgressProps) => {
   const prefixCls = usePrefixCls('progress-circle', customizePrefixCls);
 
-  // const fixedSize = size === 'large' ? 'default' : size;
-  const width = sizeMapping[size]?.size || sizeMapping.default.size;
-  const border = sizeMapping[size]?.border || sizeMapping.default.border;
+  const width = sizeMapping[size || 'default']?.size || sizeMapping.default.size;
+  const border = sizeMapping[size || 'default']?.border || sizeMapping.default.border;
 
   const r = width / 2 - 3;
   const perimeter = Math.PI * r * 2;
