@@ -1,3 +1,10 @@
+## [23.9.1](https://github.com/growingio/gio-design/compare/v23.9.0...v23.9.1) (2023-06-06)
+
+
+### Bug Fixes
+
+* **Process:** 支持Circle模式的进度条 ([#2154](https://github.com/growingio/gio-design/issues/2154)) ([c4335bd](https://github.com/growingio/gio-design/commit/c4335bd83ab5cc92566d828a84e6336bcd9e915c))
+
 # [23.9.0](https://github.com/growingio/gio-design/compare/v23.8.0...v23.9.0) (2023-04-20)
 
 
