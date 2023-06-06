@@ -10,6 +10,42 @@
   font-weight: normal;
   .text-h3();
 
+  &-circle {
+    display: inline-flex;
+    align-items: center;
+    // height: 24px;
+    color: @gray-5;
+    font-weight: normal;
+    // transform: rotate(-90deg);
+
+    svg circle {
+      transform: rotate(-90deg);
+    }
+
+    &-text {
+      position: absolute;
+      text-align: center;
+    }
+
+    &-active {
+      .circle {
+        stroke: @blue-3;
+      }
+    }
+
+    &-success {
+      .circle {
+        stroke: @green-3;
+      }
+    }
+
+    &-exception {
+      .circle {
+        stroke: @red-3;
+      }
+    }
+  }
+
   &-trail {
     flex-basis: 100%;
     overflow: hidden;
