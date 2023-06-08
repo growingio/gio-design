@@ -85,5 +85,16 @@ export const Circle: Story<ProgressProps> = () => (
       percent={percent}
     />
     <Progress type="circle" format={(e: number) => `${e}%`} status="active" size="small" percent={percent} />
+    <Progress
+      type="circle"
+      format={(e: number) => `${e}%`}
+      status="active"
+      percent={percent}
+      circleWidth={200}
+      strokeWidth={10}
+      strokeLinecap="butt"
+      strokeColor="#11123f"
+      trailColor="#ddd"
+    />
   </>
 );
