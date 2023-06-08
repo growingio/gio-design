@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePrefixCls } from '@gio-design/utils';
+import classNames from 'classnames';
 import { ProgressProps } from './interface';
 
 const sizeMapping = {
@@ -35,7 +36,12 @@ const ProgressCircle: React.FC<ProgressProps> = ({
   const perimeter = Math.PI * r * 2;
   const strokeDashOffset = perimeter - (perimeter * 75) / 100;
   return (
-    <div data-testid="progress" className={`${prefixCls} ${prefixCls}-${status}`} style={style} {...rest}>
+    <div
+      data-testid="progress"
+      className={classNames(prefixCls, { [`${prefixCls}-${status}`]: !strokeColor })}
+      style={style}
+      {...rest}
+    >
       <svg width={width} height={width} viewBox={`${-width / 2} ${-width / 2} ${width} ${width}`}>
         <circle
           cx="0"
