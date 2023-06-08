@@ -95,6 +95,7 @@ export const Circle: Story<ProgressProps> = () => (
       strokeLinecap="butt"
       strokeColor="#00123f"
       trailColor="#ddd"
+      showText // default
     />
   </>
 );
