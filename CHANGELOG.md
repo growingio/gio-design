@@ -1,3 +1,11 @@
+## [23.9.2](https://github.com/growingio/gio-design/compare/v23.9.1...v23.9.2) (2023-06-08)
+
+
+### Bug Fixes
+
+* **Progress:** 修改CircleProgress的样式问题 ([#2156](https://github.com/growingio/gio-design/issues/2156)) ([4cf3ef0](https://github.com/growingio/gio-design/commit/4cf3ef011abb1fc29288c735c57e5ac6ed652e01))
+* 环形进度条实现自定义模式 ([#2155](https://github.com/growingio/gio-design/issues/2155)) ([7bd8558](https://github.com/growingio/gio-design/commit/7bd85589bcda8647417dd34f723b44ab0db2e200))
+
 ## [23.9.1](https://github.com/growingio/gio-design/compare/v23.9.0...v23.9.1) (2023-06-06)
 
 
