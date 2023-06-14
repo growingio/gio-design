@@ -166,7 +166,9 @@ export const InnerTree = WithRef<HTMLDivElement, TreeProps>((props, ref?) => {
   );
 });
 
-const Tree: React.ForwardRefExoticComponent<TreeProps & React.RefAttributes<HTMLDivElement>> & { isTree?: boolean } =
-  InnerTree;
+const Tree: React.ForwardRefExoticComponent<TreeProps & React.RefAttributes<HTMLDivElement>> & {
+  isTree?: boolean;
+  TreeItem?: React.FC<TreeItemProps>;
+} = InnerTree;
 Tree.isTree = true;
 export default Tree;
