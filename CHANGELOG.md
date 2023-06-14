@@ -1,3 +1,10 @@
+## [23.9.3](https://github.com/growingio/gio-design/compare/v23.9.2...v23.9.3) (2023-06-14)
+
+
+### Bug Fixes
+
+* **tree:** fix tree export treeItem ([#2157](https://github.com/growingio/gio-design/issues/2157)) ([e7284e7](https://github.com/growingio/gio-design/commit/e7284e7edf951eb8d8ef08f5806a01382ab7aae0))
+
 ## [23.9.2](https://github.com/growingio/gio-design/compare/v23.9.1...v23.9.2) (2023-06-08)
 
 
