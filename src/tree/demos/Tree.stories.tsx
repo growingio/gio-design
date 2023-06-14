@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { CheckOutlined, CopyOutlined, EventOutlined } from '@gio-design/icons';
-import { Tree, TreeProps, TreeNode } from '../index';
+import { Tree, TreeProps, TreeItem as TreeNode } from '../index';
 import Docs from './TreePage';
 
 export default {
@@ -209,12 +209,12 @@ export const Options = () => (
 
 export const FilterTreeNode = () => (
   <Tree filterTreeNode={(e) => e.value === '0-0'}>
-    <TreeNode value="0-0" label="产品团队" prefix={<EventOutlined />}>
+    <Tree.TreeItem value="0-0" label="产品团队" prefix={<EventOutlined />}>
       <TreeNode value="0-0-0" label="产品经理团队" prefix={<EventOutlined />} disabled>
         <TreeNode value="0-0-0-0" label="产品一组" prefix={<CheckOutlined />} disabled />
         <TreeNode value="0-0-0-1" label="产品二组" prefix={<CheckOutlined />} />
       </TreeNode>
       <TreeNode value="0-0-1" label="设计师团队" prefix={<EventOutlined />} />
-    </TreeNode>
+    </Tree.TreeItem>
   </Tree>
 );

@@ -1,7 +1,9 @@
-import { TreeProps, TreeItem as TreeNodeProps } from './interface';
+import WithSubComponent from '../utils/withSubComponent';
+import { TreeProps, TreeItemProps } from './interface';
 import Tree from './Tree';
-import TreeNode from './TreeItem';
+import TreeItem from './TreeItem';
 
-export type { TreeProps, TreeNodeProps };
-export { Tree, TreeNode };
-export default Tree;
+export type { TreeProps, TreeItemProps };
+export { Tree, TreeItem };
+
+export default WithSubComponent(Tree, { TreeItem });
