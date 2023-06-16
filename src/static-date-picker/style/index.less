@@ -191,6 +191,9 @@
       &::before {
         background: @gray-1;
       }
+      &:empty::before {
+        background: transparent !important;
+      }
     }
   }
 
@@ -200,6 +203,7 @@
   &-date-panel &-cell-inner {
     height: 24px;
     line-height: 24px;
+    overflow: hidden;
   }
 
   &-month-panel &-cell-inner,
