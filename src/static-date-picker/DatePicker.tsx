@@ -25,7 +25,10 @@ const Cell: React.FC<{ visible: boolean; prefixCls: string; currentDate: Date }>
     }
   });
 
-  return (visible && 
+  if (!visible) {
+    return null;
+  }
+  return (
     <div ref={divRef} className={`${prefixCls}-cell-inner`}>
       {currentDate.getDate()}
     </div>
