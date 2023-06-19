@@ -36,6 +36,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     showAbsDate = false,
     NotAvailableToday = false,
     allowReset = false,
+    defaultTimeRange,
     ...restProps
   } = props;
 
@@ -190,6 +191,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
       modes={modes}
       experimental={experimental}
       timeRange={timeRange}
+      defaultTimeRange={defaultTimeRange}
       onSelect={handleOnSelect}
       onRangeSelect={onRangeSelect}
       onCancel={handleOnCancel}

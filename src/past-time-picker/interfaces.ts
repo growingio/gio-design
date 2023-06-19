@@ -19,4 +19,5 @@ export interface PastTimePickerProps
   showAbsDate?: boolean;
   NotAvailableToday?: boolean;
   allowReset?: boolean;
+  defaultTimeRange?: string;
 }
