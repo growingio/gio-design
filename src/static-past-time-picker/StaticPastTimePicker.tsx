@@ -20,6 +20,7 @@ function StaticPastTimePicker({
   quickOptionsFilter,
   onRangeSelect,
   NotAvailableToday,
+  allowReset,
   ...rest
 }: StaticPastTimePickerProps) {
   const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange);
@@ -93,6 +94,7 @@ function StaticPastTimePicker({
       timeRange: currentMode === originMode ? currentRange : undefined,
       onSelect: handleOnSelect,
       onCancel,
+      allowReset,
     };
     switch (currentMode) {
       case 'quick':
@@ -105,7 +107,7 @@ function StaticPastTimePicker({
           />
         );
       case TimeMode.Since:
-        return <SinceRangePicker {...valueProps}  NotAvailableToday={NotAvailableToday}/>;
+        return <SinceRangePicker {...valueProps} NotAvailableToday={NotAvailableToday} />;
       case TimeMode.Relative:
         return <RelativeRangePicker {...valueProps} />;
       case TimeMode.Absolute:

@@ -17,6 +17,8 @@ function SinceRangePicker({
   onCancel,
   experimental,
   NotAvailableToday,
+  defaultTimeRange,
+  allowReset,
   ...rest
 }: RangePickerProps) {
   const endDateKeys = [!NotAvailableToday ? 'today' : undefined, experimental ? 'yesterday' : undefined];
@@ -70,6 +72,9 @@ function SinceRangePicker({
   const handleOnOK = () => {
     onSelect(`${endKey === 'yesterday' ? 'since-lt-today' : 'since'}:${getTime(startDate as Date)}`);
   };
+  const onReset = () => {
+    onSelect(defaultTimeRange || '');
+  };
   return (
     <InnerRangePanel
       disableOK={!isValid(startDate)}
@@ -77,6 +82,8 @@ function SinceRangePicker({
       body={<DatePicker disabledDate={handleDisabledDate} value={startDate} onSelect={setStartDate} />}
       onCancel={onCancel}
       onOK={handleOnOK}
+      onReset={onReset}
+      allowReset={allowReset}
       {...rest}
     />
   );

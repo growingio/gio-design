@@ -36,10 +36,15 @@ interface PickerProps extends ExperimentProps, Pick<StaticDatePickerProps, 'disa
    */
   timeRange?: string;
   /**
+   * 默认的时间范围，如果重置时，将时间切换为默认时间
+   */
+  defaultTimeRange?: string;
+  /**
    * 选择完后的回调，参数为选中项的 timeRange 值
    */
   onSelect: (timeRange: string) => void;
   onRangeSelect?: (dates: [Date, Date], index: number) => void;
+  allowReset: boolean;
 }
 
 export interface StaticPastTimePickerProps extends Omit<PickerProps, 'onSelect'> {
@@ -95,6 +100,8 @@ export interface InnerRangePanelProps {
    * 点击取消按钮时回调
    */
   onCancel?: () => void;
+  onReset: () => void;
+  allowReset: boolean;
 }
 
 interface RangePickerInnerProps {

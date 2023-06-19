@@ -18,4 +18,5 @@ export interface PastTimePickerProps
   'data-testid'?: string;
   showAbsDate?: boolean;
   NotAvailableToday?: boolean;
+  allowReset?: boolean;
 }

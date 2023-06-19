@@ -3,6 +3,7 @@ import { Key } from 'react';
 export default {
   okText: '确定',
   closeText: '取消',
+  resetText: '重置',
   quickPickerText: '常用时间',
   sinceRangePickerText: '自某天以后',
   relativeRangePickerText: '过去动态时段',

@@ -5,13 +5,22 @@ import Button from '../button';
 import defaultLocale from './locales/zh-CN';
 import { InnerRangePanelProps } from './interfaces';
 
-function InnerRangePanel({ disableOK, header, body, onOK, onCancel, ...rest }: InnerRangePanelProps) {
+function InnerRangePanel({
+  disableOK,
+  header,
+  body,
+  onOK,
+  onCancel,
+  onReset,
+  allowReset,
+  ...rest
+}: InnerRangePanelProps) {
   const prefixCls = usePrefixCls('range-panel');
   const cls = classnames(prefixCls);
 
   const locale = useLocale('StaticPastTimePicker');
 
-  const { okText, closeText } = {
+  const { okText, closeText, resetText } = {
     ...defaultLocale,
     ...locale,
   };
@@ -22,6 +31,11 @@ function InnerRangePanel({ disableOK, header, body, onOK, onCancel, ...rest }: I
       <div className={`${prefixCls}__divider`} />
       <div className={`${prefixCls}__body`}>{body}</div>
       <div className={`${prefixCls}__footer`}>
+        {allowReset && (
+          <Button onClick={onReset} type="secondary" size="small">
+            {resetText}
+          </Button>
+        )}
         <Button onClick={onCancel} type="secondary" size="small">
           {closeText}
         </Button>

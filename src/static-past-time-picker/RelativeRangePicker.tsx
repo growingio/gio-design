@@ -7,7 +7,15 @@ import InnerRangePanel from './InnerRangePanel';
 import { RangePickerProps } from './interfaces';
 import { startOfTodayInTimezone, parseStartAndEndDate } from './utils';
 
-function RelativeRangePicker({ disabledDate, timeRange, onSelect, onCancel, ...rest }: RangePickerProps) {
+function RelativeRangePicker({
+  disabledDate,
+  timeRange,
+  defaultTimeRange,
+  onSelect,
+  onCancel,
+  allowReset,
+  ...rest
+}: RangePickerProps) {
   const defaultDates = parseStartAndEndDate(timeRange ?? 'day:2,1');
   const [dates, setDates] = React.useState<[Date, Date]>(defaultDates as [Date, Date]);
   const [endDateHidden, setEndDateHidden] = React.useState<boolean>(isYesterday(dates[1]));
@@ -21,6 +29,10 @@ function RelativeRangePicker({ disabledDate, timeRange, onSelect, onCancel, ...r
         dates[1]
       )}`
     );
+  };
+
+  const onReset = () => {
+    onSelect(defaultTimeRange || '');
   };
   return (
     <InnerRangePanel
@@ -44,6 +56,8 @@ function RelativeRangePicker({ disabledDate, timeRange, onSelect, onCancel, ...r
       }
       onCancel={onCancel}
       onOK={handleOnOK}
+      onReset={onReset}
+      allowReset={allowReset}
       {...rest}
     />
   );
