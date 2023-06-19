@@ -3,6 +3,7 @@ import { Key } from 'react';
 export default {
   okText: 'OK',
   closeText: 'Cancel',
+  resetText: 'Reset',
   quickPickerText: 'Custom ',
   sinceRangePickerText: 'Since',
   relativeRangePickerText: 'Relative Past Date Range',
