@@ -32,7 +32,7 @@ function RelativeRangePicker({
   };
 
   const onReset = () => {
-    onSelect(defaultTimeRange);
+    onSelect(defaultTimeRange || '');
   };
   return (
     <InnerRangePanel

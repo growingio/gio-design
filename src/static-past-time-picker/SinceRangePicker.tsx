@@ -18,6 +18,7 @@ function SinceRangePicker({
   experimental,
   NotAvailableToday,
   defaultTimeRange,
+  allowReset,
   ...rest
 }: RangePickerProps) {
   const endDateKeys = [!NotAvailableToday ? 'today' : undefined, experimental ? 'yesterday' : undefined];
@@ -82,7 +83,7 @@ function SinceRangePicker({
       onCancel={onCancel}
       onOK={handleOnOK}
       onReset={onReset}
-      allowReset={false}
+      allowReset={allowReset}
       {...rest}
     />
   );
