@@ -1,3 +1,10 @@
+## [23.9.4](https://github.com/growingio/gio-design/compare/v23.9.3...v23.9.4) (2023-06-19)
+
+
+### Bug Fixes
+
+* **TimeRangePicker:** 支持重置 ([#2160](https://github.com/growingio/gio-design/issues/2160)) ([5248e95](https://github.com/growingio/gio-design/commit/5248e958d2b4e7e0a1e644e7627bd248b5d3ba9c))
+
 ## [23.9.3](https://github.com/growingio/gio-design/compare/v23.9.2...v23.9.3) (2023-06-14)
 
 
