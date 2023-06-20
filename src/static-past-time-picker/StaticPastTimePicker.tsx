@@ -21,6 +21,7 @@ function StaticPastTimePicker({
   onRangeSelect,
   NotAvailableToday,
   allowReset,
+  defaultTimeRange,
   ...rest
 }: StaticPastTimePickerProps) {
   const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange);
@@ -95,6 +96,7 @@ function StaticPastTimePicker({
       onSelect: handleOnSelect,
       onCancel,
       allowReset,
+      defaultTimeRange,
     };
     switch (currentMode) {
       case 'quick':
