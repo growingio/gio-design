@@ -1,3 +1,10 @@
+## [23.9.5](https://github.com/growingio/gio-design/compare/v23.9.4...v23.9.5) (2023-06-20)
+
+
+### Bug Fixes
+
+* 支持到处defaultTimeRange ([#2161](https://github.com/growingio/gio-design/issues/2161)) ([90e4f09](https://github.com/growingio/gio-design/commit/90e4f09d4fd50251ce6d99821618aa8be2875bf7))
+
 ## [23.9.4](https://github.com/growingio/gio-design/compare/v23.9.3...v23.9.4) (2023-06-19)
 
 
