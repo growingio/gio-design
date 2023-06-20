@@ -1,3 +1,10 @@
+## [23.9.6](https://github.com/growingio/gio-design/compare/v23.9.5...v23.9.6) (2023-06-20)
+
+
+### Bug Fixes
+
+* 支持更新defualtTimeRange ([#2162](https://github.com/growingio/gio-design/issues/2162)) ([b3251fa](https://github.com/growingio/gio-design/commit/b3251fa274b78a677a5c8787185c7114ffa5a4b3))
+
 ## [23.9.5](https://github.com/growingio/gio-design/compare/v23.9.4...v23.9.5) (2023-06-20)
 
 
