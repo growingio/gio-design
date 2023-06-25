@@ -1,3 +1,10 @@
+## [23.9.7](https://github.com/growingio/gio-design/compare/v23.9.6...v23.9.7) (2023-06-25)
+
+
+### Bug Fixes
+
+* **table:** 修复当table列固定,且添加filter时,过滤选项被列内容挡住' ([#2163](https://github.com/growingio/gio-design/issues/2163)) ([023e6fb](https://github.com/growingio/gio-design/commit/023e6fba061d3859e788060e971d42e4fdcd8e38))
+
 ## [23.9.6](https://github.com/growingio/gio-design/compare/v23.9.5...v23.9.6) (2023-06-20)
 
 
