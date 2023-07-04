@@ -1,3 +1,10 @@
+## [23.9.8](https://github.com/growingio/gio-design/compare/v23.9.7...v23.9.8) (2023-07-04)
+
+
+### Bug Fixes
+
+* 修改Cascade的修复现实children的bug ([#2165](https://github.com/growingio/gio-design/issues/2165)) ([b8df5a8](https://github.com/growingio/gio-design/commit/b8df5a845089f9e41fb7e2df72b040f3cfa0e5e1))
+
 ## [23.9.7](https://github.com/growingio/gio-design/compare/v23.9.6...v23.9.7) (2023-06-25)
 
 
