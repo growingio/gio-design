@@ -19,7 +19,7 @@ import '../style';
 import Button from '../../button';
 import List from '../../list';
 import Divider from '../../divider';
-import CascaderItem from '../../list/inner/CascaderItem';
+import CascaderItem from '../../list/inner/CascadeItem';
 import { PopConfirm } from '../..';
 
 export default {

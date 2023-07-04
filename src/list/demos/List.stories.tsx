@@ -17,7 +17,7 @@ import Item from '../Item';
 import './style.less';
 import DragList from '../Drag';
 import Selection from '../Selection';
-import CascaderItem from '../inner/CascaderItem';
+import CascaderItem from '../inner/CascadeItem';
 import Docs from './ListPage';
 import { Avatar, Divider, Dropdown, SearchBar, Tag } from '../..';
 import Button from '../../button';
@@ -100,17 +100,27 @@ const fruits = ['Apple', 'Orange', 'Peach', 'Pineapple', 'Watermellon', 'Dragon 
 export const MultipleSelect = () => {
   const [value, setValue] = useState([]);
   const handleChange = (v?: Array<string | number>) => {
-    console.log('onChange value', v)
+    console.log('onChange value', v);
     setValue(v);
   };
   return (
     <div className="gio-list-demo-box">
-      <List model="multiple" max={3} value={value} onChange={handleChange} onMultipleOverflow={(v) => console.log('onMultipleOverflow value', v)}>
-        <Item value="1" prefix={<UserOutlined />} suffix={<TagOutlined />}>List Item 1</Item>
+      <List
+        model="multiple"
+        max={3}
+        value={value}
+        onChange={handleChange}
+        onMultipleOverflow={(v) => console.log('onMultipleOverflow value', v)}
+      >
+        <Item value="1" prefix={<UserOutlined />} suffix={<TagOutlined />}>
+          List Item 1
+        </Item>
         <Item disabled value="2">
           List Item 2
         </Item>
-        <Item suffix={<TagOutlined />} value="3">List Item 3</Item>
+        <Item suffix={<TagOutlined />} value="3">
+          List Item 3
+        </Item>
         <Item value="4">List Item 4</Item>
         <Item value="5">List Item 5</Item>
       </List>
@@ -173,6 +183,91 @@ export const Cascader = () => {
             </List>
           </CascaderItem>
         </List>
+      </div>
+      <div className="gio-list-demo-box">
+        <p style={{ padding: '8px', color: '#242e59' }}>value:{cascaderValue2}</p>
+        <Divider />
+        <List
+          model="cascader"
+          value={cascaderValue2}
+          valueSeparator="$"
+          onChange={(val) => {
+            console.log(val);
+            setCascaderValue2(val as string);
+          }}
+        >
+          <CascaderItem label="1" value="1">
+            <List>
+              <Item label="1.1" value="1.1" />
+              <Item label="1.2" value="1.2" />
+            </List>
+          </CascaderItem>
+          <CascaderItem label="2" value="2">
+            <List>
+              <Item label="2.1" value="2.1" />
+              <Item label="2.2" value="2.2" />
+            </List>
+          </CascaderItem>
+          <CascaderItem label="3" value="3" />
+          <CascaderItem label="4" value="4">
+            <List>
+              <CascaderItem label="4.1" value="4.1">
+                <List>
+                  <Item label="4.1.1" value="4.1.1" />
+                  <Item label="4.1.2" value="4.1.2" />
+                </List>
+              </CascaderItem>
+            </List>
+          </CascaderItem>
+        </List>
+      </div>
+    </div>
+  );
+};
+
+export const CascaderOptions = () => {
+  const [cascaderValue, setCascadervalue] = useState('1.1-1');
+  const [cascaderValue2, setCascaderValue2] = useState('1&1.1');
+  const objects = [
+    {
+      label: '次数',
+      value: 'count',
+      groupName: '预置',
+      groupId: 'parpared',
+      children: [
+        {
+          label: '总和',
+          value: 'sum',
+          id: 'sum',
+        },
+        {
+          label: '累计占比',
+          value: 'ratio',
+          id: 'ratio',
+        },
+      ],
+    },
+    {
+      label: '总天数',
+      value: 'days',
+      groupName: '预置',
+      groupId: 'parpared',
+      children: [],
+    },
+  ];
+  return (
+    <div style={{ display: 'flex' }}>
+      <div className="gio-list-demo-box">
+        <p style={{ padding: '8px', color: '#242e59' }}>value:{cascaderValue}</p>
+        <Divider />
+        <List
+          model="cascader"
+          value={cascaderValue}
+          onChange={(val) => {
+            setCascadervalue(val as string);
+          }}
+          options={objects}
+        />
       </div>
       <div className="gio-list-demo-box">
         <p style={{ padding: '8px', color: '#242e59' }}>value:{cascaderValue2}</p>

@@ -6,7 +6,7 @@ import { CascaderProps } from '../interface';
 import Cascader from '../Cascader';
 import '../style';
 import './style.less';
-import CascaderItem from '../../list/inner/CascaderItem';
+import CascaderItem from '../../list/inner/CascadeItem';
 import Docs from './CascaderPage';
 
 export default {

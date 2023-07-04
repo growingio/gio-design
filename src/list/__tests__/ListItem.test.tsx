@@ -2,7 +2,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import List, { Item } from '..';
 import BaseItem from '../inner/baseItem';
-import CascaderItem from '../inner/CascaderItem';
+import CascaderItem from '../inner/CascadeItem';
 import CheckboxItem from '../inner/CheckboxItem';
 
 describe('testing list item', () => {

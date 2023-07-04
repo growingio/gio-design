@@ -132,7 +132,14 @@ export const InnerList = WithRef<HTMLDivElement, ListProps>((props, ref?) => {
   const renderChildren = (option: OptionProps) => {
     const renderedItem = renderItem?.(option);
     return (
-      <Item prefix={prefix?.(option)} suffix={suffix?.(option)} {...option} strategy={itemStrategy} key={option.value}>
+      <Item
+        prefix={prefix?.(option)}
+        suffix={suffix?.(option)}
+        {...option}
+        items={option?.children as OptionProps[]}
+        strategy={itemStrategy}
+        key={option.value}
+      >
         {renderedItem}
       </Item>
     );
