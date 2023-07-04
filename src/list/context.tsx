@@ -4,7 +4,7 @@ import { OptionProps, MaybeArray, ModelType } from './interface';
 
 export interface ListContextProps {
   value?: string | (string | number)[] | number;
-  model?: 'single' | 'cascader' | 'multiple';
+  model?: 'single' | 'cascade' | 'cascader' | 'multiple';
   disabled?: boolean;
   isSelection?: boolean;
   isEmpty?: boolean;

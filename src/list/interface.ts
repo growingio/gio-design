@@ -2,7 +2,7 @@ import { RenderFunc } from 'rc-virtual-list/lib/interface';
 import React, { Key } from 'react';
 import { ListContextProps } from './context';
 
-export type ModelType = 'cascader' | 'multiple' | 'single';
+export type ModelType = 'cascader' | 'cascade' | 'multiple' | 'single';
 export type MaybeArray<T> = T | T[];
 export interface SelectionProps extends ListProps {
   className?: string;
@@ -112,11 +112,11 @@ export interface DragItemProps extends ItemProps {
   index: number;
 }
 
-export interface CascaderItemProps extends BaseItemProps {
+export interface CascadeItemProps extends BaseItemProps {
   label: string;
   value: string | number;
   strategy?: 'fixed' | 'absolute';
-  items?: CascaderItemProps[];
+  items?: CascadeItemProps[];
 }
 export interface ItemProps
   extends Pick<
@@ -139,6 +139,7 @@ export interface ItemProps
   > {
   selectValue?: string | string[];
   strategy?: 'fixed' | 'absolute';
+  items?: OptionProps[];
 }
 
 export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled' | 'prefix' | 'suffix' | 'wrapper'> {

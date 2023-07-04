@@ -1,4 +1,4 @@
-import CascaderItem from '../list/inner/CascaderItem';
+import CascaderItem from '../list/inner/CascadeItem';
 import WithSubComponent from '../utils/withSubComponent';
 import Cascader from './Cascader';
 
