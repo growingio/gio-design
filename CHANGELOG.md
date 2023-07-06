@@ -1,3 +1,10 @@
+## [23.9.9](https://github.com/growingio/gio-design/compare/v23.9.8...v23.9.9) (2023-07-06)
+
+
+### Bug Fixes
+
+* **tree:** " fix margin size " ([#2164](https://github.com/growingio/gio-design/issues/2164)) ([71e089a](https://github.com/growingio/gio-design/commit/71e089aad388957a02e72bc0582671487c893d6b))
+
 ## [23.9.8](https://github.com/growingio/gio-design/compare/v23.9.7...v23.9.8) (2023-07-04)
 
 
