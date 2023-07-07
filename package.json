@@ -170,7 +170,7 @@
     "react-test-renderer": "^17.0.1",
     "semantic-release": "^19.0.3",
     "storybook-addon-designs": "^6.2.0",
-    "stylelint": "^14.6.1",
+    "stylelint": "^15.10.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^25.0.0",
