@@ -1,3 +1,10 @@
+## [23.9.10](https://github.com/growingio/gio-design/compare/v23.9.9...v23.9.10) (2023-07-12)
+
+
+### Bug Fixes
+
+* result zh-CN ([#2173](https://github.com/growingio/gio-design/issues/2173)) ([ee0024a](https://github.com/growingio/gio-design/commit/ee0024af797981ca6da8c66a40651a94446bb822))
+
 ## [23.9.9](https://github.com/growingio/gio-design/compare/v23.9.8...v23.9.9) (2023-07-06)
 
 
