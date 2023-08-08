@@ -1,3 +1,10 @@
+## [23.9.11](https://github.com/growingio/gio-design/compare/v23.9.10...v23.9.11) (2023-08-08)
+
+
+### Bug Fixes
+
+* **TreeSelect:** 修改TreeSelect翻译 ([#2181](https://github.com/growingio/gio-design/issues/2181)) ([c2aa4d8](https://github.com/growingio/gio-design/commit/c2aa4d8f6bd55cdd089d1558ccb7f3b2043c69ec))
+
 ## [23.9.10](https://github.com/growingio/gio-design/compare/v23.9.9...v23.9.10) (2023-07-12)
 
 
