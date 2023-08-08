@@ -17,6 +17,7 @@ import basePickerLocale from '../legacy/filter-picker/components/property-select
 import propertyPickerLocale from '../legacy/filter-picker/components/property-selector/locales/en-US';
 import popConfirmLocale from '../pop-confirm/locales/en-US';
 import resultLocale from '../result/locales/en-US';
+import treeSelectLocale from '../tree-select/locales/en-US';
 
 export const locale: Locale = {
   code: 'en-US',
@@ -74,6 +75,7 @@ export const locale: Locale = {
   PopConfirm: {
     ...popConfirmLocale,
   },
+  TreeSelect: { ...treeSelectLocale },
 };
 
 export default locale;

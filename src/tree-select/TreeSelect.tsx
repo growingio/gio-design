@@ -10,6 +10,9 @@ import renderSwitcherIcon from '../tree/iconUtil';
 import SizeContext from '../config-provider/SizeContext';
 import { TreeSelectProps } from './interface';
 
+import zh from './locales/zh-CN';
+import en from './locales/en-US';
+
 export class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
   public static TreeNode = TreeNode;
 
@@ -87,7 +90,11 @@ export class TreeSelect<T> extends React.Component<TreeSelectProps<T>> {
     if (notFoundContent !== undefined) {
       mergedNotFound = notFoundContent;
     } else {
-      mergedNotFound = <div className={`${treeSelectPrefixCls}-search-empty`}>无搜索结果...</div>;
+      mergedNotFound = (
+        <div className={`${treeSelectPrefixCls}-search-empty`}>
+          {(window.localStorage.getItem('locale') === 'en-US' ? en : zh).noResult}...
+        </div>
+      );
     }
 
     // 'itemIcon',
