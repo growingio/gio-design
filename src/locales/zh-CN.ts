@@ -17,6 +17,7 @@ import basePicker from '../legacy/filter-picker/components/property-selector/com
 import propertyPickerLocale from '../legacy/filter-picker/components/property-selector/locales/zh-CN';
 import popConfirmLocale from '../pop-confirm/locales/zh-CN';
 import resultLocale from '../result/locales/zh-CN';
+import treeSelectLocale from '../tree-select/locales/zh-CN';
 
 export const locale: Locale = {
   code: 'zh-CN',
@@ -73,6 +74,9 @@ export const locale: Locale = {
   },
   PopConfirm: {
     ...popConfirmLocale,
+  },
+  TreeSelect: {
+    ...treeSelectLocale,
   },
 };
 
