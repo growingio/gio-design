@@ -1,3 +1,10 @@
+## [23.9.12](https://github.com/growingio/gio-design/compare/v23.9.11...v23.9.12) (2023-08-09)
+
+
+### Bug Fixes
+
+* **moment:** upgrade moment to v2.29.4 ([#2182](https://github.com/growingio/gio-design/issues/2182)) ([d4fca51](https://github.com/growingio/gio-design/commit/d4fca5171782b1f81964529cddce249265d87635))
+
 ## [23.9.11](https://github.com/growingio/gio-design/compare/v23.9.10...v23.9.11) (2023-08-08)
 
 
