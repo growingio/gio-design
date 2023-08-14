@@ -51,9 +51,11 @@ function StaticDateRangePicker({
             const isBeforeStartDate =
               selectedValue && selectedValue[0] && !selectedValue[1] ? isBefore(exportDateToZonedDate(currentDate), selectedValue[0]) : false;
             const isDisabledDate = disabledDate ? disabledDate(currentDate) : false;
+            console.log(isBeforeStartDate, isDisabledDate, 'isBeforeStartDate, isDisabledDate');
             return isBeforeStartDate || isDisabledDate;
           }}
           onPanelChange={(currentValue: Date) => {
+            console.log(currentValue, 'currentValue');
             if (index) {
               setViewDates([calcClosingViewDate(currentValue, -1), currentValue]);
             } else {

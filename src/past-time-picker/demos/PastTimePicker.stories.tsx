@@ -33,6 +33,14 @@ FilterData.args={
       s.value,
     )
 }
+export const QuickOptionsFilter = () => (
+  <PastTimePicker
+    NotAvailableToday
+    quickOptionsFilter={(s: { value: string }) => ['day:2,1', 'day:8,1', 'day:15,1', 'day:31,1'].includes(s.value)}
+    onSelect={(v) => action('selected value:')(v)}
+    placeholder="时间范围"
+  />
+);
 
 export const Since = Template.bind({});
 Since.args = {

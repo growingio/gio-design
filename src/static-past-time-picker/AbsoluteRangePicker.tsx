@@ -8,7 +8,9 @@ import { RangePickerProps } from './interfaces';
 import { parseStartAndEndDate } from './utils';
 import defaultLocale from './locales/zh-CN';
 
-function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onRangeSelect, onCancel }: RangePickerProps) {
+function AbsoluteRangePicker(
+  { disabledDate, timeRange, onSelect, onRangeSelect, onCancel }: RangePickerProps,
+) {
   const [dates, setDates] = React.useState<[Date | undefined, Date | undefined]>(parseStartAndEndDate(timeRange));
   const prefixCls = usePrefixCls('range-panel__header');
 
@@ -18,7 +20,6 @@ function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onRangeSelect,
     ...defaultLocale,
     ...locale,
   };
-
   const renderHeader = () => {
     const placeholder = [startDayText, endDayText];
     const dateString = formatDates(dates);
@@ -28,16 +29,12 @@ function AbsoluteRangePicker({ disabledDate, timeRange, onSelect, onRangeSelect,
   };
   const handleDisabledDate = (current: Date) => disabledDate?.(current) || isAfter(current, startOfToday());
   const handleOnOK = () => {
-    onSelect(
-      `abs:${getTime(dates[0] as Date)},${
-        getTime(dates[1] as Date) + 86399999
-      }`
-    );
+    onSelect(`abs:${getTime(dates[0] as Date)},${getTime(dates[1] as Date) + 86399999}`);
   };
   const handleOnSelect = (date: [Date, Date], index: number) => {
     setDates(date);
     onRangeSelect?.(date, index);
-  }
+  };
   const endDay = dates[1] !== undefined && isValid(dates[1]) ? dates[1] : new Date();
   return (
     <InnerRangePanel
