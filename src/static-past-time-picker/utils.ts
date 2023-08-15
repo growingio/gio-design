@@ -11,7 +11,7 @@ export const parseTimeMode = (timeRange: string | undefined, quickOptionsFilter?
   if (!timeRange) {
     return undefined;
   }
-  if (has(QUICK_MAPPING, timeRange) && quickOptionsFilter && quickOptionsFilter(timeRange)) {
+  if (has(QUICK_MAPPING, timeRange) || (quickOptionsFilter && quickOptionsFilter(timeRange))) {
     return 'quick';
   }
   const items = timeRange.split(':');
@@ -29,7 +29,18 @@ export const parseTimeMode = (timeRange: string | undefined, quickOptionsFilter?
   }
 };
 
-export const startOfTodayInTimezone = () => new Date(momentTZ.tz(`${(momentTZ.tz(new Date(), localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone).format()).substring(0, 10)} 00:00:00`, localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone).format());
+export const startOfTodayInTimezone = () =>
+  new Date(
+    momentTZ
+      .tz(
+        `${momentTZ
+          .tz(new Date(), localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone)
+          .format()
+          .substring(0, 10)} 00:00:00`,
+        localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone
+      )
+      .format()
+  );
 export const startOfYesterdayInTimezone = () => sub(startOfTodayInTimezone(), { days: 1 });
 
 export const parseStartAndEndDate = (timeRange: string | undefined): [Date | undefined, Date | undefined] => {

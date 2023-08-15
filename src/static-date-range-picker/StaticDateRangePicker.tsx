@@ -54,7 +54,6 @@ function StaticDateRangePicker({
             return isBeforeStartDate || isDisabledDate;
           }}
           onPanelChange={(currentValue: Date) => {
-            console.log(currentValue, 'currentValue');
             if (index) {
               setViewDates([calcClosingViewDate(currentValue, -1), currentValue]);
             } else {
