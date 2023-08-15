@@ -1,5 +1,5 @@
-import React from 'react';
-import { getTime, startOfToday, startOfYesterday, isValid, isAfter } from 'date-fns';
+import React, { useCallback } from 'react';
+import { getTime, startOfToday, startOfYesterday, isValid, isAfter, isEqual } from 'date-fns';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
 import { parseFnsTimeZone } from '../utils/timeHelper';
 import SwitchGroup from '../switchGroup';
@@ -64,8 +64,13 @@ function SinceRangePicker({
       </>
     );
   };
-  const handleDisabledDate = (current: Date) =>
-    disabledDate?.(current) || isAfter(current, endKey === 'yesterday' ? startOfYesterday() : startOfToday());
+  const handleDisabledDate = useCallback(
+    (current: Date) =>
+      disabledDate?.(current) ||
+      isAfter(current, endKey === 'yesterday' ? startOfYesterday() : startOfToday()) ||
+      isEqual(current, endKey === 'yesterday' ? startOfYesterday() : startOfToday()),
+    [endKey, disabledDate]
+  );
 
   const handleOnOK = () => {
     onSelect(`${endKey === 'yesterday' ? 'since-lt-today' : 'since'}:${getTime(startDate as Date)}`);

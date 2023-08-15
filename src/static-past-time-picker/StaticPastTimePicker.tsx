@@ -22,7 +22,7 @@ function StaticPastTimePicker({
   NotAvailableToday,
   ...rest
 }: StaticPastTimePickerProps) {
-  const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange);
+  const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange, quickOptionsFilter);
   const originMode = parseMode(timeRange) ?? 'quick';
   const [mode, setMode] = React.useState<string | undefined>(originMode);
   const [currentRange, setCurrentRange] = React.useState(timeRange);
@@ -105,17 +105,20 @@ function StaticPastTimePicker({
           />
         );
       case TimeMode.Since:
-        return <SinceRangePicker {...valueProps}  NotAvailableToday={NotAvailableToday}/>;
+        return <SinceRangePicker {...valueProps} NotAvailableToday={NotAvailableToday} />;
       case TimeMode.Relative:
-        return <RelativeRangePicker {...valueProps} />;
+        return <RelativeRangePicker {...valueProps} NotAvailableToday={NotAvailableToday} />;
       case TimeMode.Absolute:
       default:
-        return <AbsoluteRangePicker {...valueProps} onRangeSelect={onRangeSelect} />;
+        return (
+          <AbsoluteRangePicker {...valueProps} onRangeSelect={onRangeSelect} NotAvailableToday={NotAvailableToday} />
+        );
     }
   };
 
   React.useEffect(() => {
     setMode(parseMode(timeRange) ?? 'quick');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeRange]);
 
   return (

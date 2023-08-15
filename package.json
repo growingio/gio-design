@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+ssh://github.com/growingio/gio-design.git"
   },
+  "publishConfig": {
+    "registry": "https://nexus.growingio.com/repository/npm-hosted/"
+  },
   "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
   "main": "./es/index.js",
   "module": "./es/index.js",
@@ -132,7 +135,6 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-formatjs": "^10.3.5",
-    "canvas": "^2.8.0",
     "commitizen": "^4.1.2",
     "conventional-changelog-cli": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",

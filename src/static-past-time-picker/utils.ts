@@ -7,11 +7,15 @@ import { QUICK_MAPPING } from './constant';
 
 momentTZ.tz.setDefault(localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone);
 
-export const parseTimeMode = (timeRange: string | undefined) => {
+export const parseTimeMode = (timeRange: string | undefined, quickOptionsFilter?: any) => {
   if (!timeRange) {
     return undefined;
   }
-  if (has(QUICK_MAPPING, timeRange)) {
+
+  if (
+    (quickOptionsFilter && quickOptionsFilter({ value: timeRange })) ||
+    (!quickOptionsFilter && has(QUICK_MAPPING, timeRange))
+  ) {
     return 'quick';
   }
   const items = timeRange.split(':');
@@ -29,7 +33,18 @@ export const parseTimeMode = (timeRange: string | undefined) => {
   }
 };
 
-export const startOfTodayInTimezone = () => new Date(momentTZ.tz(`${(momentTZ.tz(new Date(), localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone).format()).substring(0, 10)} 00:00:00`, localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone).format());
+export const startOfTodayInTimezone = () =>
+  new Date(
+    momentTZ
+      .tz(
+        `${momentTZ
+          .tz(new Date(), localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone)
+          .format()
+          .substring(0, 10)} 00:00:00`,
+        localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone
+      )
+      .format()
+  );
 export const startOfYesterdayInTimezone = () => sub(startOfTodayInTimezone(), { days: 1 });
 
 export const parseStartAndEndDate = (timeRange: string | undefined): [Date | undefined, Date | undefined] => {
@@ -73,31 +88,119 @@ export const parseQuickDate = (timeRange: string | undefined): [Date | undefined
     return [sub(today, { days: times[0] - 1 }), sub(today, { days: times[1] })];
   }
   if (items[0] === 'week-lt-today') {
-    return [moment().subtract(times[0] - 1, 'week').startOf('isoWeek').toDate(), String(times[1]) === '0' ? moment().subtract(1, 'day').endOf('day').toDate() : moment().subtract(times[0] - 1, 'week').endOf('isoWeek').toDate()];
+    return [
+      moment()
+        .subtract(times[0] - 1, 'week')
+        .startOf('isoWeek')
+        .toDate(),
+      String(times[1]) === '0'
+        ? moment().subtract(1, 'day').endOf('day').toDate()
+        : moment()
+            .subtract(times[0] - 1, 'week')
+            .endOf('isoWeek')
+            .toDate(),
+    ];
   }
   if (items[0] === 'month-lt-today') {
-    return [moment().subtract(times[0] - 1, 'month').startOf('month').toDate(), String(times[1]) === '0' ? moment().subtract(1, 'day').endOf('day').toDate() : moment().subtract(times[0] - 1, 'month').endOf('month').toDate()];
+    return [
+      moment()
+        .subtract(times[0] - 1, 'month')
+        .startOf('month')
+        .toDate(),
+      String(times[1]) === '0'
+        ? moment().subtract(1, 'day').endOf('day').toDate()
+        : moment()
+            .subtract(times[0] - 1, 'month')
+            .endOf('month')
+            .toDate(),
+    ];
   }
   if (items[0] === 'quarter-lt-today') {
-    return [moment().subtract(times[0] - 1, 'quarter').startOf('quarter').toDate(), String(times[1]) === '0' ? moment().subtract(1, 'day').endOf('day').toDate() : moment().subtract(times[0] - 1, 'quarter').endOf('quarter').toDate()];
+    return [
+      moment()
+        .subtract(times[0] - 1, 'quarter')
+        .startOf('quarter')
+        .toDate(),
+      String(times[1]) === '0'
+        ? moment().subtract(1, 'day').endOf('day').toDate()
+        : moment()
+            .subtract(times[0] - 1, 'quarter')
+            .endOf('quarter')
+            .toDate(),
+    ];
   }
   if (items[0] === 'year-lt-today') {
-    return [moment().subtract(times[0] - 1, 'year').startOf('year').toDate(), String(times[1]) === '0' ? moment().subtract(1, 'day').endOf('day').toDate() : moment().subtract(times[0] - 1, 'year').endOf('year').toDate()];
+    return [
+      moment()
+        .subtract(times[0] - 1, 'year')
+        .startOf('year')
+        .toDate(),
+      String(times[1]) === '0'
+        ? moment().subtract(1, 'day').endOf('day').toDate()
+        : moment()
+            .subtract(times[0] - 1, 'year')
+            .endOf('year')
+            .toDate(),
+    ];
   }
   if (items[0] === 'week') {
-    return [moment().subtract(times[0] - 1, 'week').startOf('isoWeek').toDate(), String(times[1]) === '0' ? moment().endOf('day').toDate() : moment().subtract(times[0] - 1, 'week').endOf('isoWeek').toDate()];
+    return [
+      moment()
+        .subtract(times[0] - 1, 'week')
+        .startOf('isoWeek')
+        .toDate(),
+      String(times[1]) === '0'
+        ? moment().endOf('day').toDate()
+        : moment()
+            .subtract(times[0] - 1, 'week')
+            .endOf('isoWeek')
+            .toDate(),
+    ];
   }
   if (items[0] === 'month') {
-    return [moment().subtract(times[0] - 1, 'month').startOf('month').toDate(), String(times[1]) === '0' ? moment().endOf('day').toDate() : moment().subtract(times[0] - 1, 'month').endOf('month').toDate()];
+    return [
+      moment()
+        .subtract(times[0] - 1, 'month')
+        .startOf('month')
+        .toDate(),
+      String(times[1]) === '0'
+        ? moment().endOf('day').toDate()
+        : moment()
+            .subtract(times[0] - 1, 'month')
+            .endOf('month')
+            .toDate(),
+    ];
   }
   if (items[0] === 'quarter') {
-    return [moment().subtract(times[0] - 1, 'quarter').startOf('quarter').toDate(), String(times[1]) === '0' ? moment().endOf('day').toDate() : moment().subtract(times[0] - 1, 'quarter').endOf('quarter').toDate()];
+    return [
+      moment()
+        .subtract(times[0] - 1, 'quarter')
+        .startOf('quarter')
+        .toDate(),
+      String(times[1]) === '0'
+        ? moment().endOf('day').toDate()
+        : moment()
+            .subtract(times[0] - 1, 'quarter')
+            .endOf('quarter')
+            .toDate(),
+    ];
   }
   if (items[0] === 'year') {
-    return [moment().subtract(times[0] - 1, 'year').startOf('year').toDate(), String(times[1]) === '0' ? moment().endOf('day').toDate() : moment().subtract(times[0] - 1, 'year').endOf('year').toDate()];
+    return [
+      moment()
+        .subtract(times[0] - 1, 'year')
+        .startOf('year')
+        .toDate(),
+      String(times[1]) === '0'
+        ? moment().endOf('day').toDate()
+        : moment()
+            .subtract(times[0] - 1, 'year')
+            .endOf('year')
+            .toDate(),
+    ];
   }
   return [undefined, undefined];
-}
+};
 
 export const parseFixedMode = (timeRange: string | undefined) => {
   if (!timeRange || timeRange.split(':').length !== 2) {

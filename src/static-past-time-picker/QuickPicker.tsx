@@ -28,11 +28,15 @@ function QuickPicker({
     ...locale,
   };
   const filter = (currentOptions: Option[]) => {
+    let options = currentOptions;
     if (optionsFilter) {
       // # Option  !== OptionProps#
-      return currentOptions.filter((o: any) => optionsFilter(o));
+      options = options.filter((o: any) => optionsFilter(o));
     }
-    return currentOptions;
+    if (NotAvailableToday) {
+      options = options.filter((o: any) => o.value !== 'day:1,0');
+    }
+    return options;
   };
 
   const options = experimental ? [...optionsParams, ...experimentalQuickOptions(localeText)] : optionsParams;
