@@ -60,6 +60,7 @@ export interface StaticPastTimePickerProps extends Omit<PickerProps, 'onSelect'>
    */
   onSelect?: (timeRange: string) => void;
   onRangeSelect?: (dates: [Date, Date], index: number) => void;
+  NotAvailableToday?: boolean;
 }
 
 export interface RangePickerProps extends PickerProps {
@@ -67,6 +68,7 @@ export interface RangePickerProps extends PickerProps {
    * 点击取消按钮时回调
    */
   onCancel?: () => void;
+  NotAvailableToday?: boolean;
 }
 
 export interface QuickPickerProps extends PickerProps {
@@ -78,6 +80,7 @@ export interface QuickPickerProps extends PickerProps {
    * 快捷选项过滤
    */
   optionsFilter?: (o: Option) => boolean;
+  NotAvailableToday?: boolean;
 }
 
 export interface InnerRangePanelProps {

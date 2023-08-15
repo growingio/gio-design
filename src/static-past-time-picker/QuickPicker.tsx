@@ -7,7 +7,15 @@ import { QuickPickerProps } from './interfaces';
 import { experimentalQuickOptions } from './constant';
 import defaultLocaleText from './locales/zh-CN';
 
-function QuickPicker({ options:optionsParams, optionsFilter, onSelect, timeRange, experimental, ...rest }: QuickPickerProps) {
+function QuickPicker({
+  options: optionsParams,
+  optionsFilter,
+  onSelect,
+  timeRange,
+  experimental,
+  NotAvailableToday,
+  ...rest
+}: QuickPickerProps) {
   const [currentValue, setCurrentValue] = useState(timeRange);
   const [toToday, setToToday] = useState(false);
   const prefixCls = usePrefixCls('quick-picker');
@@ -20,14 +28,18 @@ function QuickPicker({ options:optionsParams, optionsFilter, onSelect, timeRange
     ...locale,
   };
   const filter = (currentOptions: Option[]) => {
+    let options = currentOptions;
     if (optionsFilter) {
       // # Option  !== OptionProps#
-      return currentOptions.filter((o: any) => optionsFilter(o));
+      options = options.filter((o: any) => optionsFilter(o));
     }
-    return currentOptions;
+    if (NotAvailableToday) {
+      options = options.filter((o: any) => o.value !== 'day:1,0');
+    }
+    return options;
   };
 
-  const options = experimental? [...optionsParams, ...experimentalQuickOptions(localeText)]:optionsParams;
+  const options = experimental ? [...optionsParams, ...experimentalQuickOptions(localeText)] : optionsParams;
   const handleOnSelect = (selectedValue: string) => {
     setCurrentValue(selectedValue);
   };
@@ -54,7 +66,12 @@ function QuickPicker({ options:optionsParams, optionsFilter, onSelect, timeRange
   return (
     <div data-testid="quick-picker" className={prefixCls} {...rest}>
       <div className={`${prefixCls}__list`}>
-        <SelectList value={currentValue} options={filter(options as any)} onChange={handleOnSelect} collapse={Infinity}/>
+        <SelectList
+          value={currentValue}
+          options={filter(options as any)}
+          onChange={handleOnSelect}
+          collapse={Infinity}
+        />
       </div>
       <div className={`${prefixCls}__bottom`}>
         {experimental &&
@@ -68,7 +85,7 @@ function QuickPicker({ options:optionsParams, optionsFilter, onSelect, timeRange
             'month:1,0',
             'week:1,0',
           ].includes(currentValue as string) && (
-            <Checkbox checked={toToday} onChange={handleOnTodayCheck}>
+            <Checkbox checked={toToday} onChange={handleOnTodayCheck} disabled={NotAvailableToday}>
               {includeToday}
             </Checkbox>
           )}

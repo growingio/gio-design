@@ -19,12 +19,12 @@ function StaticPastTimePicker({
   experimental = false,
   quickOptionsFilter,
   onRangeSelect,
+  NotAvailableToday,
   ...rest
 }: StaticPastTimePickerProps) {
   const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange, quickOptionsFilter);
   const originMode = parseMode(timeRange) ?? 'quick';
   const [mode, setMode] = React.useState<string | undefined>(originMode);
-  console.log(mode, 'mode');
   const [currentRange, setCurrentRange] = React.useState(timeRange);
   const prefixCls = usePrefixCls('static-past-time-picker');
 
@@ -96,14 +96,23 @@ function StaticPastTimePicker({
     };
     switch (currentMode) {
       case 'quick':
-        return <QuickPicker {...valueProps} options={quickOptions} optionsFilter={quickOptionsFilter} />;
+        return (
+          <QuickPicker
+            {...valueProps}
+            options={quickOptions}
+            optionsFilter={quickOptionsFilter}
+            NotAvailableToday={NotAvailableToday}
+          />
+        );
       case TimeMode.Since:
-        return <SinceRangePicker {...valueProps} />;
+        return <SinceRangePicker {...valueProps} NotAvailableToday={NotAvailableToday} />;
       case TimeMode.Relative:
-        return <RelativeRangePicker {...valueProps} />;
+        return <RelativeRangePicker {...valueProps} NotAvailableToday={NotAvailableToday} />;
       case TimeMode.Absolute:
       default:
-        return <AbsoluteRangePicker {...valueProps} onRangeSelect={onRangeSelect} />;
+        return (
+          <AbsoluteRangePicker {...valueProps} onRangeSelect={onRangeSelect} NotAvailableToday={NotAvailableToday} />
+        );
     }
   };
 

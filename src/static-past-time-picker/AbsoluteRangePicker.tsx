@@ -1,5 +1,5 @@
 import React from 'react';
-import { getTime, isValid, isAfter, startOfToday, subMonths, startOfDay } from 'date-fns';
+import { getTime, isValid, isAfter, startOfToday, subMonths, startOfDay, startOfYesterday } from 'date-fns';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
 import { formatDates } from '../date-range-picker/index';
 import StaticDateRangePicker from '../static-date-range-picker/index';
@@ -8,9 +8,14 @@ import { RangePickerProps } from './interfaces';
 import { parseStartAndEndDate } from './utils';
 import defaultLocale from './locales/zh-CN';
 
-function AbsoluteRangePicker(
-  { disabledDate, timeRange, onSelect, onRangeSelect, onCancel }: RangePickerProps,
-) {
+function AbsoluteRangePicker({
+  disabledDate,
+  timeRange,
+  onSelect,
+  onRangeSelect,
+  onCancel,
+  NotAvailableToday,
+}: RangePickerProps) {
   const [dates, setDates] = React.useState<[Date | undefined, Date | undefined]>(parseStartAndEndDate(timeRange));
   const prefixCls = usePrefixCls('range-panel__header');
 
@@ -27,7 +32,9 @@ function AbsoluteRangePicker(
     const text = [dateTexts[0] ?? placeholder[0], dateTexts[1] ?? placeholder[1]];
     return <span className={`${prefixCls}__text`}>{`${FromText} ${text[0]} ${ToText} ${text[1]}`}</span>;
   };
-  const handleDisabledDate = (current: Date) => disabledDate?.(current) || isAfter(current, startOfToday());
+  // const handleDisabledDate = (current: Date) => disabledDate?.(current) || isAfter(current, startOfToday());
+  const handleDisabledDate = (current: Date) =>
+    disabledDate?.(current) || isAfter(current, NotAvailableToday ? startOfYesterday() : startOfToday());
   const handleOnOK = () => {
     onSelect(`abs:${getTime(dates[0] as Date)},${getTime(dates[1] as Date) + 86399999}`);
   };

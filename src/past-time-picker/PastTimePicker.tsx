@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import has from 'lodash/has';
 import get from 'lodash/get';
 import omit from 'lodash/omit';
-import { parseFnsTimeZone } from '../utils/timeHelper'
+import { parseFnsTimeZone } from '../utils/timeHelper';
 import Popover from '../popover';
 import { InputButton } from '../input';
 import { PastTimePickerProps } from './interfaces';
@@ -34,6 +34,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     className,
     style,
     showAbsDate = false,
+    NotAvailableToday,
     ...restProps
   } = props;
 
@@ -192,6 +193,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
       onRangeSelect={onRangeSelect}
       onCancel={handleOnCancel}
       quickOptionsFilter={quickOptionsFilter}
+      NotAvailableToday={NotAvailableToday}
     />
   );
 
