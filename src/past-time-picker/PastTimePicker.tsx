@@ -34,7 +34,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     className,
     style,
     showAbsDate = false,
-    NotAvailableToday,
+    NotAvailableToday = false,
     ...restProps
   } = props;
 

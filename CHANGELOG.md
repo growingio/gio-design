@@ -1,3 +1,18 @@
+## [22.20.1](https://github.com/growingio/gio-design/compare/v22.20.0...v22.20.1) (2023-06-16)
+
+
+### Bug Fixes
+
+* **pastTimePicker:** 固定时间范围选择时panel抖动 ([#2158](https://github.com/growingio/gio-design/issues/2158)) ([da81bc0](https://github.com/growingio/gio-design/commit/da81bc074a884b701174d3b63e70af869842ff9a))
+* **pastTimePicker:** 固定时间范围选择时panel抖动 ([#2159](https://github.com/growingio/gio-design/issues/2159)) ([7379360](https://github.com/growingio/gio-design/commit/7379360723039586428253dd8fad25729ce1c25b))
+
+# [22.20.0](https://github.com/growingio/gio-design/compare/v22.19.0...v22.20.0) (2023-03-29)
+
+
+### Features
+
+* **past-time-picker:** 日期选择器,添加参数,默认不可选今日 ([#2148](https://github.com/growingio/gio-design/issues/2148)) ([a2ca1e5](https://github.com/growingio/gio-design/commit/a2ca1e5d10fe21d959b9e95b21a06f71b0abf0db))
+
 # [22.19.0](https://github.com/growingio/gio-design/compare/v22.18.4...v22.19.0) (2023-01-20)
 
 
