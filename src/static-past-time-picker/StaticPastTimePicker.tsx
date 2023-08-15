@@ -118,6 +118,7 @@ function StaticPastTimePicker({
 
   React.useEffect(() => {
     setMode(parseMode(timeRange) ?? 'quick');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeRange]);
 
   return (
