@@ -11,7 +11,11 @@ export const parseTimeMode = (timeRange: string | undefined, quickOptionsFilter?
   if (!timeRange) {
     return undefined;
   }
-  if (has(QUICK_MAPPING, timeRange) || (quickOptionsFilter && quickOptionsFilter(timeRange))) {
+
+  if (
+    (quickOptionsFilter && quickOptionsFilter({ value: timeRange })) ||
+    (!quickOptionsFilter && has(QUICK_MAPPING, timeRange))
+  ) {
     return 'quick';
   }
   const items = timeRange.split(':');
