@@ -1,3 +1,10 @@
+## [22.20.2](https://github.com/growingio/gio-design/compare/v22.20.1...v22.20.2) (2023-08-15)
+
+
+### Bug Fixes
+
+* **past-time-picker:** add NotAvailableToday ([#2183](https://github.com/growingio/gio-design/issues/2183)) ([95ad10b](https://github.com/growingio/gio-design/commit/95ad10b602da8fed1138669fbee7ee7d23eb3c11))
+
 ## [22.20.1](https://github.com/growingio/gio-design/compare/v22.20.0...v22.20.1) (2023-06-16)
 
 
