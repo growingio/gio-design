@@ -6,9 +6,6 @@
     "type": "git",
     "url": "git+ssh://github.com/growingio/gio-design.git"
   },
-  "publishConfig": {
-    "registry": "https://nexus.growingio.com/repository/npm-hosted/"
-  },
   "author": "GrowingIO Frontend Team <eng-frontend@growingio.com>",
   "main": "./es/index.js",
   "module": "./es/index.js",
