@@ -1,3 +1,10 @@
+# [22.21.0](https://github.com/growingio/gio-design/compare/v22.20.2...v22.21.0) (2023-09-05)
+
+
+### Features
+
+* **tabs:** 添加tabs hover提示 ([#2185](https://github.com/growingio/gio-design/issues/2185)) ([ddcc960](https://github.com/growingio/gio-design/commit/ddcc96033977d8c1c7aad42941c8b65d93414a28))
+
 ## [22.20.2](https://github.com/growingio/gio-design/compare/v22.20.1...v22.20.2) (2023-08-15)
 
 
