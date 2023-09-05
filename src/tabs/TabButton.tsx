@@ -31,10 +31,14 @@ export interface TabButtonProps {
    * 点击事件的回调
    */
   onClick?: (e: React.Key) => void;
+  /**
+   * hover 显示
+   */
+  title?: string;
 }
 
 const TabButton: React.FC<TabButtonProps> = (props) => {
-  const { children, disabled, prefix, size = 'normal', value, active, onClick } = props;
+  const { children, disabled, prefix, size = 'normal', value, active, onClick, title } = props;
 
   const prefixCls = usePrefixCls('tabs-tablist-button');
   const buttonClassnames = classnames(`${prefixCls}`, `${prefixCls}-${size}`, {
@@ -54,6 +58,7 @@ const TabButton: React.FC<TabButtonProps> = (props) => {
       data-testid={`tablist-${value}`}
       onClick={onButtonClick}
       value={value}
+      title={title}
     >
       <span
         className={classnames(`${prefixCls}-prefix`, {
