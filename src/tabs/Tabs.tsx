@@ -49,6 +49,7 @@ export const Tabs = WithRef<
         prefix={tab.props.prefix}
         active={activeValue === tab.props.value}
         disabled={tab.props.disabled}
+        title={tab.props.label as string}
       >
         {tab.props.label}
       </TabButton>
