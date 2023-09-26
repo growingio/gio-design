@@ -32,9 +32,12 @@ Quick.args = {
 };
 export const QuickOptionsFilter = () => (
   <PastTimePicker
-    quickOptionsFilter={(s: { value: string }) => ['day:2,1', 'day:8,1', 'day:15,1', 'day:31,1'].includes(s.value)}
+    quickOptionsFilter={(s: { value: string }) =>
+      ['day:2,1', 'day:8,1', 'day:15,1', 'day:31,1', 'since:0'].includes(s.value)
+    }
     onSelect={(v) => action('selected value:')(v)}
     placeholder="时间范围"
+    earliestApprove
   />
 );
 

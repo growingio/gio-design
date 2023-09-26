@@ -34,6 +34,7 @@ export default {
   thisYearTextToToday: '今年(至今日)',
   thisYearTextToYesterday: '今年(至昨日)',
   lastYearText: '去年',
+  earliestInHistory: '历史最早',
   lastSomeHours: (text: Key) => `过去 ${text} 小时`,
   last7DaysText: '过去7天',
   last14DaysText: '过去14天',

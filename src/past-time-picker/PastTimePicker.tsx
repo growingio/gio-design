@@ -35,6 +35,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     style,
     showAbsDate = false,
     NotAvailableToday = false,
+    earliestApprove = false,
     allowReset = false,
     defaultTimeRange,
     ...restProps
@@ -76,6 +77,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     lastText,
     dayText,
     timeRangeText,
+    earliestInHistory,
   } = {
     ...defaultLocale,
     ...locale,
@@ -108,6 +110,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     'day:15,1': last14DaysText,
     'day:91,1': last90daysText,
     'day:366,1': last365DaysText,
+    'since:0': earliestInHistory,
   };
 
   const humanizeTimeRange = (time: string, defaultString = timeRangeText) => {
@@ -187,6 +190,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
   };
   const content = () => (
     <StaticPastTimePicker
+      earliestApprove={earliestApprove}
       disabledDate={disabledDate}
       modes={modes}
       experimental={experimental}

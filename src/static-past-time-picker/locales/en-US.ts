@@ -34,6 +34,7 @@ export default {
   thisYearTextToToday: 'This year(to today)',
   thisYearTextToYesterday: 'This year(to yesterday)',
   lastYearText: 'Last Year',
+  earliestInHistory: 'Earliest in history',
   lastSomeHours: (text: Key) => `Last ${text} hour(s)`,
   last7DaysText: 'Previous 7 days',
   last14DaysText: 'Previous 14 days',

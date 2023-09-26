@@ -22,6 +22,7 @@ function StaticPastTimePicker({
   NotAvailableToday,
   allowReset,
   defaultTimeRange,
+  earliestApprove,
   ...rest
 }: StaticPastTimePickerProps) {
   const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange);
@@ -53,6 +54,7 @@ function StaticPastTimePicker({
     last90daysText,
     last180DaysText,
     last365DaysText,
+    earliestInHistory,
   } = {
     ...defaultLocale,
     ...locale,
@@ -83,6 +85,8 @@ function StaticPastTimePicker({
     { value: 'day:181,1', label: last180DaysText },
     { value: 'day:366,1', label: last365DaysText },
   ];
+
+  earliestApprove && quickOptions.push({ value: 'since:0', label: earliestInHistory });
 
   const handleOnSelect = (value: string) => {
     setCurrentRange(value);

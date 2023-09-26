@@ -20,4 +20,5 @@ export interface PastTimePickerProps
   NotAvailableToday?: boolean;
   allowReset?: boolean;
   defaultTimeRange?: string;
+  earliestApprove?: boolean;
 }
