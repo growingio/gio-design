@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
       - name: Restore Node.js modules
         id: cache-node-modules
         uses: actions/cache@v3.3.1
