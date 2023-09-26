@@ -1,3 +1,10 @@
+## [23.9.13](https://github.com/growingio/gio-design/compare/v23.9.12...v23.9.13) (2023-09-26)
+
+
+### Bug Fixes
+
+* **sinceRangePicker:** change params ([8b97938](https://github.com/growingio/gio-design/commit/8b97938e732b9ae008b4bc605938256bbd45bb0f))
+
 ## [23.9.12](https://github.com/growingio/gio-design/compare/v23.9.11...v23.9.12) (2023-08-09)
 
 
