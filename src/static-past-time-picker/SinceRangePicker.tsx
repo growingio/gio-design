@@ -26,7 +26,7 @@ function SinceRangePicker({
   const prefixCls = usePrefixCls('range-panel__header');
   const [startDate, setStartDate] = React.useState<Date | undefined>(dates[0]);
   const [endKey, setEndKey] = React.useState(
-    endDateKeys[timeRange && timeRange.split(':')[0] === 'since' ? 0 : 1] || 0
+    endDateKeys[timeRange && timeRange.split(':')[0] === 'since' ? 0 : 1] || 'today'
   );
   const locale = useLocale<typeof defaultLocale>('StaticPastTimePicker') || defaultLocale;
 
