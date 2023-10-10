@@ -1,6 +1,6 @@
 {
   "name": "@gio-design/components",
-  "version": "23.9.12",
+  "version": "23.9.13",
   "description": "GrowingIO Design components",
   "repository": {
     "type": "git",
@@ -155,7 +155,7 @@
     "gio-rewire": "https://github.com/growingio/gio-rewire.git",
     "husky": "7.0.0",
     "jest": "^26.0.1",
-    "jest-junit": "^12.0.0",
+    "jest-junit": "^16.0.0",
     "jsdom": "16.4.0",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
@@ -181,7 +181,7 @@
     "ts-jest": "^26.1.0",
     "tslib": "^2.0.0",
     "typescript": "4.6.4",
-    "webpack": "5.67.0"
+    "webpack": "5.88.2"
   },
   "config": {
     "commitizen": {
