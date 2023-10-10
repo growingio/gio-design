@@ -29,7 +29,7 @@ export const QUICK_MAPPING = {
   'day:15,1': '过去 14 天',
   'day:91,1': '过去 90 天',
   'day:366,1': '过去 365 天',
-  'since:0': '历史最早',
+  earliest: '历史最早',
 };
 
 export const END_DATE_MAPPING: { [key: string]: string } = {

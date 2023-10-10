@@ -111,16 +111,16 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     'day:15,1': last14DaysText,
     'day:91,1': last90daysText,
     'day:366,1': last365DaysText,
-    'since:0': earliestInHistory,
+    earliest: earliestInHistory,
   };
 
   const humanizeTimeRange = (time: string, defaultString = timeRangeText) => {
-    if (!time || time.split(':').length !== 2) {
+    if (!time) {
       return defaultString;
     }
     if (has(QUICK_MAPPING, time)) {
       const [startTime, endTime] = parseQuickDate(time);
-      const showSinceZero = time === 'since:0' ? earliestInHistoryEcho : `${get(QUICK_MAPPING, time)}`;
+      const showSinceZero = time === 'earliest' ? earliestInHistoryEcho : `${get(QUICK_MAPPING, time)}`;
       return showAbsDate
         ? `${get(QUICK_MAPPING, time)} | ${parseFnsTimeZone(startTime, 'yyyy/MM/dd')}-${parseFnsTimeZone(
             endTime,
@@ -128,8 +128,8 @@ const PastTimePicker = (props: PastTimePickerProps) => {
           )}`
         : showSinceZero;
     }
-    const items = time.split(':');
-    const times = items[1].split(',').map((str) => parseInt(str, 10));
+    const items = time?.split(':');
+    const times = items[1]?.split(',').map((str) => parseInt(str, 10));
     if (items[0] === 'since') {
       const start = parseFnsTimeZone(times[0], 'yyyy/MM/dd');
       const [startTime, endTime] = parseStartAndEndDate(time);
