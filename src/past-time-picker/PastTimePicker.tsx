@@ -78,6 +78,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     dayText,
     timeRangeText,
     earliestInHistory,
+    earliestInHistoryEcho,
   } = {
     ...defaultLocale,
     ...locale,
@@ -119,12 +120,13 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     }
     if (has(QUICK_MAPPING, time)) {
       const [startTime, endTime] = parseQuickDate(time);
+      const showSinceZero = time === 'since:0' ? earliestInHistoryEcho : `${get(QUICK_MAPPING, time)}`;
       return showAbsDate
         ? `${get(QUICK_MAPPING, time)} | ${parseFnsTimeZone(startTime, 'yyyy/MM/dd')}-${parseFnsTimeZone(
             endTime,
             'yyyy/MM/dd'
           )}`
-        : `${get(QUICK_MAPPING, time)}`;
+        : showSinceZero;
     }
     const items = time.split(':');
     const times = items[1].split(',').map((str) => parseInt(str, 10));
