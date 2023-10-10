@@ -3,9 +3,9 @@ import defaultLocaleText from './locales/zh-CN';
 export const DATE_FORMAT = 'yyyy/MM/dd';
 
 export const experimentalQuickOptions = (localeText: typeof defaultLocaleText) => [
-    { value: 'hour:25,1', label: localeText.lastSomeHours?.(24) },
-    { value: 'hour:73,1', label: localeText.lastSomeHours?.(72) },
-    { value: 'hour:49,1', label: localeText.lastSomeHours?.(48) },
+  { value: 'hour:25,1', label: localeText.lastSomeHours?.(24) },
+  { value: 'hour:73,1', label: localeText.lastSomeHours?.(72) },
+  { value: 'hour:49,1', label: localeText.lastSomeHours?.(48) },
 ];
 
 export const QUICK_MAPPING = {
@@ -29,6 +29,7 @@ export const QUICK_MAPPING = {
   'day:15,1': '过去 14 天',
   'day:91,1': '过去 90 天',
   'day:366,1': '过去 365 天',
+  'since:0': '历史最早',
 };
 
 export const END_DATE_MAPPING: { [key: string]: string } = {
