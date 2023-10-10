@@ -1,3 +1,11 @@
+## [23.9.14](https://github.com/growingio/gio-design/compare/v23.9.13...v23.9.14) (2023-10-10)
+
+
+### Bug Fixes
+
+* **past-time-picker:** Earliest in history feature ([#2196](https://github.com/growingio/gio-design/issues/2196)) ([f3d8908](https://github.com/growingio/gio-design/commit/f3d89084a89a2e82e50025e6eeb252c0e55b5dc6))
+* **past-time-picker:** fix since:0=> earliest ([#2197](https://github.com/growingio/gio-design/issues/2197)) ([2633020](https://github.com/growingio/gio-design/commit/2633020ed107326f29f598f0b1f7d9c354a26e3a))
+
 ## [23.9.13](https://github.com/growingio/gio-design/compare/v23.9.12...v23.9.13) (2023-09-26)
 
 
