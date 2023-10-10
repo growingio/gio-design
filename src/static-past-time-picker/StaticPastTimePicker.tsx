@@ -86,7 +86,7 @@ function StaticPastTimePicker({
     { value: 'day:366,1', label: last365DaysText },
   ];
 
-  earliestApprove && quickOptions.push({ value: 'since:0', label: earliestInHistory });
+  earliestApprove && quickOptions.push({ value: 'earliest', label: earliestInHistory });
 
   const handleOnSelect = (value: string) => {
     setCurrentRange(value);
