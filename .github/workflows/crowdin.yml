@@ -28,7 +28,7 @@ jobs:
       - name: Extract messages
         run: yarn intl:extract
       - name: Synchronize
-        uses: crowdin/github-action@v1.13.1
+        uses: crowdin/github-action@v1.14.0
         with:
           upload_translations: true
           download_translations: true
