@@ -1,3 +1,10 @@
+# [23.10.0](https://github.com/growingio/gio-design/compare/v23.9.14...v23.10.0) (2023-11-06)
+
+
+### Features
+
+* **table:** table filter add match-pinyin ([#2210](https://github.com/growingio/gio-design/issues/2210)) ([b0ac53f](https://github.com/growingio/gio-design/commit/b0ac53f737ca2ec499fd9775fb679d416a950341))
+
 ## [23.9.14](https://github.com/growingio/gio-design/compare/v23.9.13...v23.9.14) (2023-10-10)
 
 
