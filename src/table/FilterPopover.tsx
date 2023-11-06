@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { invoke, isFunction, isObject } from 'lodash';
 import { useLocale } from '@gio-design/utils';
+import pinyinMatch from 'pinyin-match';
 import Button from '../button';
 import Popover from '../popover';
 import FilterList from './FilterList';
@@ -23,6 +24,13 @@ interface FilterPopoverProps {
   singleSelect?: boolean;
   filterSearchEnable?: boolean;
   singleSelectDefaultValue?: string;
+}
+
+function isContain(target = '', source = ''): boolean {
+  if (source === '') {
+    return true;
+  }
+  return !!pinyinMatch.match(target, source);
 }
 
 const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
@@ -116,9 +124,9 @@ const FilterPopover = (props: FilterPopoverProps): React.ReactElement => {
             dataSource={filters
               .filter((item) => {
                 if (isObject(item)) {
-                  return item.label.includes(searchValue);
+                  return isContain(item.label, searchValue);
                 }
-                return item.toString().includes(searchValue);
+                return isContain(item.toString(), searchValue);
               })
               .map((item) => {
                 if (isObject(item)) {
