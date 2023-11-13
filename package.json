@@ -84,7 +84,7 @@
     "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-typescript": "^7.12.7",
     "@commitlint/cli": "^16.0.0",
-    "@commitlint/config-conventional": "^16.0.0",
+    "@commitlint/config-conventional": "^18.4.0",
     "@formatjs/cli": "^6.2.1",
     "@formatjs/ts-transformer": "^3.4.8",
     "@gio-design/icons": "^23.2.0",
