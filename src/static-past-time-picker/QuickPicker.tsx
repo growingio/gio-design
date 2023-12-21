@@ -55,7 +55,7 @@ function QuickPicker({
 
   const handleCancel = () => {
     // onSelect(timeRange as string);
-    onCancel();
+    onCancel?.();
   };
 
   useEffect(() => {
