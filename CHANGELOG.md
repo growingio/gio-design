@@ -1,3 +1,15 @@
+# [22.22.0](https://github.com/growingio/gio-design/compare/v22.21.0...v22.22.0) (2023-12-21)
+
+
+### Bug Fixes
+
+* **pastTimePicker:** fixempty quickmode confirm&cancel ([#2219](https://github.com/growingio/gio-design/issues/2219)) ([bb83aaa](https://github.com/growingio/gio-design/commit/bb83aaa330743cbaa8715df570b5c9467fd20323))
+
+
+### Features
+
+* **form:** export type Rule ([bc4727a](https://github.com/growingio/gio-design/commit/bc4727a6924cfa6af5d58896ef0ba8ffe5744b81))
+
 # [22.21.0](https://github.com/growingio/gio-design/compare/v22.20.2...v22.21.0) (2023-09-05)
 
 
