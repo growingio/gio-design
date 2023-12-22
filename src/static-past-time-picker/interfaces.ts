@@ -87,6 +87,7 @@ export interface QuickPickerProps extends PickerProps {
    */
   optionsFilter?: (o: Option) => boolean;
   NotAvailableToday: boolean;
+  onCancel?: () => void;
 }
 
 export interface InnerRangePanelProps {
