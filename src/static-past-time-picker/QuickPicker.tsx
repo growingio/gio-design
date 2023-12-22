@@ -11,6 +11,7 @@ function QuickPicker({
   options: optionsParams,
   optionsFilter,
   onSelect,
+  onCancel,
   timeRange,
   experimental,
   NotAvailableToday,
@@ -49,7 +50,8 @@ function QuickPicker({
   };
 
   const handleCancel = () => {
-    onSelect(timeRange as string);
+    // onSelect(timeRange as string);
+    onCancel?.();
   };
 
   useEffect(() => {
@@ -89,7 +91,7 @@ function QuickPicker({
           <Button type="secondary" size="small" onClick={handleCancel}>
             {closeText}
           </Button>
-          <Button type="primary" size="small" onClick={handleOk}>
+          <Button type="primary" size="small" onClick={handleOk} disabled={!currentValue}>
             {okText}
           </Button>
         </div>
