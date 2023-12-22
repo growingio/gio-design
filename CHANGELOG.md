@@ -1,3 +1,10 @@
+## [23.10.1](https://github.com/growingio/gio-design/compare/v23.10.0...v23.10.1) (2023-12-22)
+
+
+### Bug Fixes
+
+* **pastTimePicker:** fixempty quickmode confirm&cancel ([#2220](https://github.com/growingio/gio-design/issues/2220)) ([e56547f](https://github.com/growingio/gio-design/commit/e56547fdd9dbd75375d612256620d9b693a521df))
+
 # [23.10.0](https://github.com/growingio/gio-design/compare/v23.9.14...v23.10.0) (2023-11-06)
 
 
