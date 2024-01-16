@@ -1,3 +1,10 @@
+## [23.10.2](https://github.com/growingio/gio-design/compare/v23.10.1...v23.10.2) (2024-01-16)
+
+
+### Bug Fixes
+
+* 修改timeHelper边界值处理 ([#2225](https://github.com/growingio/gio-design/issues/2225)) ([a053547](https://github.com/growingio/gio-design/commit/a0535472d745431931a52ff1e22fff745709f111))
+
 ## [23.10.1](https://github.com/growingio/gio-design/compare/v23.10.0...v23.10.1) (2023-12-22)
 
 
