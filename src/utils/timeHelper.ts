@@ -51,5 +51,8 @@ export const exportZonedDateToDate = (date: any, format?: string) => {
     .format()
     .split('T');
 
+  if (arr?.[0] === 'Invalid date') {
+    return date;
+  }
   return new Date(moment(`${arr[0]} ${arr[1].substring(0, 8)}`).format(format || 'yyyy-MM-DD HH:mm:ss'));
 };
