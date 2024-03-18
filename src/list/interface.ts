@@ -75,6 +75,10 @@ export interface ListProps {
    */
   onMultipleOverflow?: (value?: Key[]) => void;
   /**
+   * 当多选有值修改时，触发此功能
+   */
+  onMultipleChange?: (value?: Key[]) => void;
+  /**
    * 仅支持options 形式。自定义 item render 自定义render时会劫持onClick方法提供给List来使用
    */
   renderItem?: (option: OptionProps) => React.ReactElement;
