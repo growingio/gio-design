@@ -162,17 +162,6 @@ export const callbackOnOverflow = (
   params: Pick<ListProps, 'model' | 'max' | 'value' | 'onMultipleOverflow' | 'onMultipleChange'>
 ): void => {
   const { max, model, value, onMultipleOverflow, onMultipleChange } = params;
-  // prettier-ignore
-  // if (
-  //   model === 'multiple' &&
-  //   Array.isArray(value) &&
-  //   max !== undefined &&
-  //   value.length >= max &&
-  //   onMultipleOverflow
-  // ) {
-  //   onMultipleOverflow(value);
-  // }
-
   if (model === 'multiple' && Array.isArray(value)) {
     onMultipleChange?.(value);
     if (Array.isArray(value) && max !== undefined && value.length >= max) {
