@@ -90,9 +90,12 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
     // use confirm,when without onconfirm click, return prevValue
     if (needConfirm && !visible && !isEqual(controlledValue, value)) {
       setValue(prevValue);
+      if (model === 'multiple') {
+        onMultipleChange?.(prevValue as any[]);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible, needConfirm, controlledValue, value]);
+  }, [visible, needConfirm, controlledValue, value, model]);
 
   // recent
   const setRecentValue = (val?: string | string[]) => {
