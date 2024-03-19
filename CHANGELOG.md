@@ -1,3 +1,10 @@
+## [23.10.3](https://github.com/growingio/gio-design/compare/v23.10.2...v23.10.3) (2024-03-19)
+
+
+### Bug Fixes
+
+* **ListPicker:** 修改默认值的选择 ([#2227](https://github.com/growingio/gio-design/issues/2227)) ([5854657](https://github.com/growingio/gio-design/commit/5854657e748ded5fc290d938531437a2a1c5c224))
+
 ## [23.10.2](https://github.com/growingio/gio-design/compare/v23.10.1...v23.10.2) (2024-01-16)
 
 
