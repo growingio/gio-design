@@ -1,3 +1,10 @@
+# [22.23.0](https://github.com/growingio/gio-design/compare/v22.22.0...v22.23.0) (2024-03-25)
+
+
+### Features
+
+* list offset ([#2228](https://github.com/growingio/gio-design/issues/2228)) ([121f7ba](https://github.com/growingio/gio-design/commit/121f7ba41cd3ba3ff9967735ce1bcfd788bc1667))
+
 # [22.22.0](https://github.com/growingio/gio-design/compare/v22.21.0...v22.22.0) (2023-12-21)
 
 
