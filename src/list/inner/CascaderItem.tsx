@@ -17,7 +17,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
   HTMLLIElement,
   CascaderItemProps & Omit<DOMAttributes<HTMLLIElement>, 'onClick'>
 > & { isItem?: boolean } = (
-  { label, value, children, childrens = [], disabled, onClick: propsOnClick, strategy = 'fixed', ...rest },
+  { label, value, children, childrens = [], disabled, onClick: propsOnClick, strategy = 'fixed', offset = [0, 12], ...rest },
   ref?
 ) => {
   const prefixCls = usePrefixCls('cascader');
@@ -106,7 +106,7 @@ const CascaderItem: React.ForwardRefRenderFunction<
                 strategy={strategy}
                 distoryOnHide
                 delay={200}
-                offset={[0, 12]}
+                offset={offset}
               >
                 {element}
               </Popover>

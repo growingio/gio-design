@@ -115,6 +115,7 @@ export interface CascaderItemProps extends BaseItemProps {
   label: string;
   value: string | number;
   strategy?: 'fixed' | 'absolute';
+  offset?: number[];
   childrens?: CascaderItemProps[];
 }
 export interface ItemProps
@@ -138,6 +139,7 @@ export interface ItemProps
   > {
   selectValue?: string | string[];
   strategy?: 'fixed' | 'absolute';
+  offset?: number[]
 }
 
 export interface BaseItemProps extends Pick<OptionProps, 'value' | 'disabled' | 'prefix' | 'suffix' | 'wrapper'> {
