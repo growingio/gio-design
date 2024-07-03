@@ -20,7 +20,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<PastTimePickerProps> = (args) => <PastTimePicker onSelect={action('selected value:')} placeholder="时间范围"  {...args} />
+const Template: Story<PastTimePickerProps> = (args) => <PastTimePicker onSelect={action('selected value:')} allowClear placeholder="时间范围"  {...args} />
 
 export const Quick = Template.bind({});
 Quick.args = {

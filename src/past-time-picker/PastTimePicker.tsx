@@ -212,6 +212,11 @@ const PastTimePicker = (props: PastTimePickerProps) => {
         className={className}
         style={style}
         onClick={() => setControlledVisible(!controlledVisible)}
+        onClear={(e) => {
+          e.stopPropagation();
+          handleOnSelect(null);
+          restProps?.onClear?.(e);
+        }}
       />
     );
   }
