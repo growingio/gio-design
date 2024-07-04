@@ -171,7 +171,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
   };
 
   const handleOnSelect = (currentValue: string | null) => {
-    setTimeRange(currentValue ?? undefined, true);
+    setTimeRange((!currentValue ? undefined : currentValue) as string | undefined, true);
     setControlledVisible(false);
     onSelect?.(currentValue);
   };
