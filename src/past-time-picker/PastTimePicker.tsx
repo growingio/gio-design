@@ -83,7 +83,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
 
   const [controlledVisible, setControlledVisible] = useControlledState(popoverVisible, false);
 
-  const [timeRange, setTimeRange] = useControlledState<string | undefined>(value, undefined);
+  const [timeRange, setTimeRange] = useControlledState<string | undefined | null>(value, undefined);
 
   const QUICK_MAPPING = {
     'day:1,0': todayText,
@@ -170,7 +170,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     return defaultString;
   };
 
-  const handleOnSelect = (currentValue: string) => {
+  const handleOnSelect = (currentValue: string | null) => {
     setTimeRange(currentValue, true);
     setControlledVisible(false);
     onSelect?.(currentValue);
@@ -213,7 +213,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
         style={style}
         onClick={() => setControlledVisible(!controlledVisible)}
         onClear={(e) => {
-          e.stopPropagation();
+          e?.stopPropagation();
           handleOnSelect(null);
           restProps?.onClear?.(e);
         }}

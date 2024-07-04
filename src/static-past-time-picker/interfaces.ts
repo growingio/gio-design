@@ -58,7 +58,7 @@ export interface StaticPastTimePickerProps extends Omit<PickerProps, 'onSelect'>
   /**
    * 选择完后的回调，参数为选中项的 timeRange 值
    */
-  onSelect?: (timeRange: string) => void;
+  onSelect?: (timeRange: string | null) => void;
   onRangeSelect?: (dates: [Date, Date], index: number) => void;
   NotAvailableToday?: boolean;
 }
