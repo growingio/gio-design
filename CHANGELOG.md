@@ -1,3 +1,11 @@
+## [22.23.1](https://github.com/growingio/gio-design/compare/v22.23.0...v22.23.1) (2024-07-04)
+
+
+### Bug Fixes
+
+* **pasttimepicker:**  fix onclear ([#2230](https://github.com/growingio/gio-design/issues/2230)) ([072c365](https://github.com/growingio/gio-design/commit/072c3650ba848ee01034eceee3d7128db5b5fcbf))
+* **pasttimepicker:** fix onclear ([#2229](https://github.com/growingio/gio-design/issues/2229)) ([1a11b45](https://github.com/growingio/gio-design/commit/1a11b459030f1a3e365ad16402b19061cb782d0a))
+
 # [22.23.0](https://github.com/growingio/gio-design/compare/v22.22.0...v22.23.0) (2024-03-25)
 
 
