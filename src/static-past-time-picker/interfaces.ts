@@ -67,6 +67,7 @@ export interface StaticPastTimePickerProps extends Omit<PickerProps, 'onSelect'>
   onRangeSelect?: (dates: [Date, Date], index: number) => void;
   NotAvailableToday: boolean;
   earliestApprove: boolean;
+  quickOptions: { value: string; label: string }[];
 }
 
 export interface RangePickerProps extends PickerProps {
