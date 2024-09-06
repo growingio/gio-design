@@ -1,3 +1,10 @@
+# [23.11.0](https://github.com/growingio/gio-design/compare/v23.10.3...v23.11.0) (2024-09-06)
+
+
+### Features
+
+* **time-picker:** 添加自定义quick option ([#2233](https://github.com/growingio/gio-design/issues/2233)) ([b12812d](https://github.com/growingio/gio-design/commit/b12812d0cf35ddc8efbc6c3d51ffae610e4dddeb))
+
 ## [23.10.3](https://github.com/growingio/gio-design/compare/v23.10.2...v23.10.3) (2024-03-19)
 
 
