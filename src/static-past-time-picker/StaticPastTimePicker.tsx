@@ -87,7 +87,7 @@ function StaticPastTimePicker({
 
   earliestApprove && options.push({ value: 'earliest', label: earliestInHistory });
 
-  const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange, options);
+  const parseMode = (current: string | undefined) => parseTimeMode(current, options);
   const originMode = parseMode(timeRange) ?? 'quick';
   const [mode, setMode] = React.useState<string | undefined>(originMode);
 
@@ -128,7 +128,7 @@ function StaticPastTimePicker({
 
   React.useEffect(() => {
     setMode(parseMode(timeRange) ?? 'quick');
-  }, [timeRange]);
+  }, [timeRange, parseMode]);
 
   return (
     <div data-testid="static-past-time-picker" className={prefixCls} {...rest}>
