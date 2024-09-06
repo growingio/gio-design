@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
 import { filter } from 'lodash';
 import SelectList from '../list';
@@ -87,7 +87,7 @@ function StaticPastTimePicker({
 
   earliestApprove && options.push({ value: 'earliest', label: earliestInHistory });
 
-  const parseMode = (current: string | undefined) => parseTimeMode(current, options);
+  const parseMode = useCallback((current: string | undefined) => parseTimeMode(current, options), [options]);
   const originMode = parseMode(timeRange) ?? 'quick';
   const [mode, setMode] = React.useState<string | undefined>(originMode);
 

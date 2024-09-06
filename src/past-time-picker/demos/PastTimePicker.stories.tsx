@@ -93,9 +93,7 @@ Modes.args = {
 };
 
 export const DisabledDate = () => {
-  const disabledDate = (current: Date) => {
-    return differenceInDays(startOfToday(), current) > 7;
-  };
+  const disabledDate = (current: Date) => differenceInDays(startOfToday(), current) > 7;
 
   return (
     <PastTimePicker

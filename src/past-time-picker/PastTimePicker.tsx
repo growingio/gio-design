@@ -119,14 +119,14 @@ const PastTimePicker = (props: PastTimePickerProps) => {
   const humanizeTimeRange = (
     time: string,
     defaultString = timeRangeText,
-    quickOptions: PastTimePickerProps['quickOptions']
+    _quickOptions: PastTimePickerProps['quickOptions']
   ) => {
     if (!time) {
       return defaultString;
     }
 
-    let op;
-    if ((op = quickOptions?.find((option) => option.value === time))) {
+    const op = _quickOptions?.find((option) => option.value === time);
+    if (op) {
       return op.label;
     }
 
