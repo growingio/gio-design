@@ -23,11 +23,9 @@ function StaticPastTimePicker({
   allowReset,
   defaultTimeRange,
   earliestApprove,
+  quickOptions,
   ...rest
 }: StaticPastTimePickerProps) {
-  const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange);
-  const originMode = parseMode(timeRange) ?? 'quick';
-  const [mode, setMode] = React.useState<string | undefined>(originMode);
   const [currentRange, setCurrentRange] = React.useState(timeRange);
   const prefixCls = usePrefixCls('static-past-time-picker');
 
@@ -67,7 +65,7 @@ function StaticPastTimePicker({
     { value: TimeMode.Absolute, label: absoluteRangePickerText },
   ];
 
-  const quickOptions = [
+  const localQuickOptions = [
     { value: 'day:1,0', label: todayText },
     { value: 'day:2,1', label: yesterdayText },
     { value: experimental ? 'week-lt-today:1,0' : 'week:1,0', label: thisWeekText },
@@ -85,8 +83,13 @@ function StaticPastTimePicker({
     { value: 'day:181,1', label: last180DaysText },
     { value: 'day:366,1', label: last365DaysText },
   ];
+  const options = quickOptions || localQuickOptions;
 
-  earliestApprove && quickOptions.push({ value: 'earliest', label: earliestInHistory });
+  earliestApprove && options.push({ value: 'earliest', label: earliestInHistory });
+
+  const parseMode = (currentRange: string | undefined) => parseTimeMode(currentRange, options);
+  const originMode = parseMode(timeRange) ?? 'quick';
+  const [mode, setMode] = React.useState<string | undefined>(originMode);
 
   const handleOnSelect = (value: string) => {
     setCurrentRange(value);
@@ -102,12 +105,13 @@ function StaticPastTimePicker({
       allowReset,
       defaultTimeRange,
     };
+
     switch (currentMode) {
       case 'quick':
         return (
           <QuickPicker
             {...valueProps}
-            options={quickOptions}
+            options={options}
             optionsFilter={quickOptionsFilter}
             NotAvailableToday={NotAvailableToday}
           />

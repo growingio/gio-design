@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { differenceInDays, getTime, startOfToday, subDays, subMonths } from 'date-fns';
 import Docs from './PastTimePickerPage';
-import { Option } from '../../static-past-time-picker/interfaces';
+import { Option, TimeMode } from '../../static-past-time-picker/interfaces';
 import PastTimePicker, { PastTimePickerProps } from '../index';
 
 import '../style';
@@ -93,8 +93,29 @@ Modes.args = {
 };
 
 export const DisabledDate = () => {
-  const disabledDate = (current: Date) => differenceInDays(startOfToday(), current) > 31;
-  return <PastTimePicker onSelect={action('selected value:')} placeholder="时间范围" disabledDate={disabledDate} />;
+  const disabledDate = (current: Date) => {
+    return differenceInDays(startOfToday(), current) > 7;
+  };
+
+  return (
+    <PastTimePicker
+      quickOptions={[
+        { value: 'day:1,0', label: '今天内' },
+        { value: 'day:2,0', label: '1天前至今' },
+        { value: 'day:3,0', label: '2天前至今' },
+        { value: 'day:4,0', label: '3天前至今' },
+        { value: 'day:5,0', label: '4天前至今' },
+        { value: 'day:6,0', label: '5天前至今' },
+        { value: 'day:7,0', label: '6天前至今' },
+        { value: 'day:8,0', label: '7天前至今' },
+        { value: 'earliest', label: '历史至今' },
+      ]}
+      onSelect={console.log}
+      placeholder="时间范围"
+      disabledDate={disabledDate}
+      modes={[TimeMode.Since]}
+    />
+  );
 };
 
 export const ShowAbsDate = Template.bind({});

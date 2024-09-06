@@ -21,4 +21,8 @@ export interface PastTimePickerProps
   allowReset?: boolean;
   defaultTimeRange?: string;
   earliestApprove?: boolean;
+  quickOptions?: {
+    value: string;
+    label: string;
+  }[];
 }

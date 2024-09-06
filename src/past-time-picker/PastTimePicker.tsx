@@ -25,6 +25,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     onRangeSelect,
     onCancel,
     quickOptionsFilter,
+    quickOptions,
     placeholder,
     disabled,
     allowClear = false,
@@ -38,6 +39,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     earliestApprove = false,
     allowReset = false,
     defaultTimeRange,
+    title,
     ...restProps
   } = props;
 
@@ -114,10 +116,20 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     earliest: earliestInHistory,
   };
 
-  const humanizeTimeRange = (time: string, defaultString = timeRangeText) => {
+  const humanizeTimeRange = (
+    time: string,
+    defaultString = timeRangeText,
+    quickOptions: PastTimePickerProps['quickOptions']
+  ) => {
     if (!time) {
       return defaultString;
     }
+
+    let op;
+    if ((op = quickOptions?.find((option) => option.value === time))) {
+      return op.label;
+    }
+
     if (has(QUICK_MAPPING, time)) {
       const [startTime, endTime] = parseQuickDate(time);
       const showSinceZero = time === 'earliest' ? earliestInHistoryEcho : `${get(QUICK_MAPPING, time)}`;
@@ -204,6 +216,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
       quickOptionsFilter={quickOptionsFilter}
       NotAvailableToday={NotAvailableToday}
       allowReset={allowReset}
+      quickOptions={quickOptions}
     />
   );
 
@@ -215,7 +228,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
         placeholder={placeholder}
         disabled={disabled}
         allowClear={allowClear}
-        value={timeRange && humanizeTimeRange(timeRange)}
+        value={title || (timeRange && humanizeTimeRange(timeRange, undefined, quickOptions))}
         size={size}
         active={controlledVisible}
         suffix={suffix}
