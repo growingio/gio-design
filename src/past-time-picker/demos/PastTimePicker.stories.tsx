@@ -109,6 +109,22 @@ export const DisabledDate = () => {
         { value: 'day:7,0', label: '6天前至今' },
         { value: 'day:8,0', label: '7天前至今' },
         { value: 'earliest', label: '历史至今' },
+        { value: 'day:2,0', label: '1天前至今' },
+        { value: 'day:3,0', label: '2天前至今' },
+        { value: 'day:4,0', label: '3天前至今' },
+        { value: 'day:5,0', label: '4天前至今' },
+        { value: 'day:6,0', label: '5天前至今' },
+        { value: 'day:7,0', label: '6天前至今' },
+        { value: 'day:8,0', label: '7天前至今' },
+        { value: 'earliest', label: '历史至今' },
+        { value: 'day:2,0', label: '1天前至今' },
+        { value: 'day:3,0', label: '2天前至今' },
+        { value: 'day:4,0', label: '3天前至今' },
+        { value: 'day:5,0', label: '4天前至今' },
+        { value: 'day:6,0', label: '5天前至今' },
+        { value: 'day:7,0', label: '6天前至今' },
+        { value: 'day:8,0', label: '7天前至今' },
+        { value: 'earliest', label: '历史至今' },
       ]}
       onSelect={console.log}
       placeholder="时间范围"
