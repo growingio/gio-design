@@ -1,8 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-test-renderer';
-import { getTime, startOfDay, addDays } from 'date-fns';
-import { parseFnsTimeZone } from '../../utils/timeHelper';
+import { getTime, addDays } from 'date-fns';
+// import { getTime, startOfDay, addDays } from 'date-fns';
+// import { parseFnsTimeZone } from '../../utils/timeHelper';
 import { TimeMode } from '../interfaces';
 import StaticPastTimePicker from '../StaticPastTimePicker';
 

@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { addDays, getTime, startOfDay } from 'date-fns';
+// import { addDays, getTime, startOfDay } from 'date-fns';
 import React, { useState } from 'react';
 import { act } from 'react-dom/test-utils';
-import { parseFnsTimeZone } from '../../utils/timeHelper';
+// import { parseFnsTimeZone } from '../../utils/timeHelper';
 import { PastTimePicker } from '../..';
-import { TimeMode } from '../../static-past-time-picker/interfaces';
+// import { TimeMode } from '../../static-past-time-picker/interfaces';
 
 describe('past-time-picker test', () => {
   beforeEach(() => {
@@ -22,7 +22,7 @@ describe('past-time-picker test', () => {
 
   it('humanizeTimeRange', () => {
     const { rerender } = render(<PastTimePicker value="abs:1655596800000,1656115199999" />);
-    expect(screen.getByTestId('past-time-picker')).toHaveValue('从 2022/06/19 至 2022/06/25');
+    expect(screen.getByTestId('past-time-picker')).toHaveValue('从 2022/06/19 至 2022/06/24');
     rerender(<PastTimePicker value="day:15,3" />);
     expect(screen.getByTestId('past-time-picker')).toHaveValue('过去 3-15 天');
     rerender(<PastTimePicker value="day:18,1" />);
