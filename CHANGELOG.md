@@ -1,3 +1,10 @@
+## [23.11.2](https://github.com/growingio/gio-design/compare/v23.11.1...v23.11.2) (2024-09-09)
+
+
+### Bug Fixes
+
+* **time-picker:** error ([#2235](https://github.com/growingio/gio-design/issues/2235)) ([07a7aa4](https://github.com/growingio/gio-design/commit/07a7aa43e78b9dc01730c4e61cfa2f379d4c2635))
+
 ## [23.11.1](https://github.com/growingio/gio-design/compare/v23.11.0...v23.11.1) (2024-09-09)
 
 
