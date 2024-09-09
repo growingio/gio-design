@@ -67,9 +67,13 @@ function StaticPastTimePicker({
     ],
     [experimental, localLocale]
   );
-  const options = useMemo(() => quickOptions || localQuickOptions, [quickOptions, localQuickOptions]);
-
-  earliestApprove && options.push({ value: 'earliest', label: localLocale.earliestInHistory });
+  const options = useMemo(
+    () => [
+      ...(quickOptions || localQuickOptions),
+      ...(earliestApprove ? [{ value: 'earliest', label: localLocale.earliestInHistory }] : []),
+    ],
+    [quickOptions, localQuickOptions, earliestApprove, localLocale]
+  );
 
   const parseMode = useCallback((current: string | undefined) => parseTimeMode(current, options), [options]);
   const originMode = (parseMode(timeRange) ?? TimeMode.Quick) as TimeMode;
