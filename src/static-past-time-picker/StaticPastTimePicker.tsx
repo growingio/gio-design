@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { usePrefixCls, useLocale } from '@gio-design/utils';
 import { filter } from 'lodash';
 import SelectList from '../list';
@@ -58,38 +58,41 @@ function StaticPastTimePicker({
     ...locale,
   };
 
-  const PICKER_OPTIONS: { label: string; value: TimeMode | 'quick' }[] = [
-    { value: 'quick', label: quickPickerText },
+  const PICKER_OPTIONS: { label: string; value: TimeMode }[] = [
+    { value: TimeMode.Quick, label: quickPickerText },
     { value: TimeMode.Since, label: sinceRangePickerText },
     { value: TimeMode.Relative, label: relativeRangePickerText },
     { value: TimeMode.Absolute, label: absoluteRangePickerText },
   ];
 
-  const localQuickOptions = [
-    { value: 'day:1,0', label: todayText },
-    { value: 'day:2,1', label: yesterdayText },
-    { value: experimental ? 'week-lt-today:1,0' : 'week:1,0', label: thisWeekText },
-    { value: 'week:2,1', label: lastWeekText },
-    { value: experimental ? 'month-lt-today:1,0' : 'month:1,0', label: thisMonthText },
-    { value: 'month:2,1', label: lastMonthText },
-    { value: experimental ? 'quarter-lt-today:1,0' : 'quarter:1,0', label: thisQuarterText },
-    { value: 'quarter:2,1', label: lastQuarterText },
-    { value: experimental ? 'year-lt-today:1,0' : 'year:1,0', label: thisYearText },
-    { value: 'year:2,1', label: lastYearText },
-    { value: 'day:8,1', label: last7DaysText },
-    { value: 'day:15,1', label: last14DaysText },
-    { value: 'day:31,1', label: last30daysText },
-    { value: 'day:91,1', label: last90daysText },
-    { value: 'day:181,1', label: last180DaysText },
-    { value: 'day:366,1', label: last365DaysText },
-  ];
-  const options = quickOptions || localQuickOptions;
+  const localQuickOptions = useMemo(
+    () => [
+      { value: 'day:1,0', label: todayText },
+      { value: 'day:2,1', label: yesterdayText },
+      { value: experimental ? 'week-lt-today:1,0' : 'week:1,0', label: thisWeekText },
+      { value: 'week:2,1', label: lastWeekText },
+      { value: experimental ? 'month-lt-today:1,0' : 'month:1,0', label: thisMonthText },
+      { value: 'month:2,1', label: lastMonthText },
+      { value: experimental ? 'quarter-lt-today:1,0' : 'quarter:1,0', label: thisQuarterText },
+      { value: 'quarter:2,1', label: lastQuarterText },
+      { value: experimental ? 'year-lt-today:1,0' : 'year:1,0', label: thisYearText },
+      { value: 'year:2,1', label: lastYearText },
+      { value: 'day:8,1', label: last7DaysText },
+      { value: 'day:15,1', label: last14DaysText },
+      { value: 'day:31,1', label: last30daysText },
+      { value: 'day:91,1', label: last90daysText },
+      { value: 'day:181,1', label: last180DaysText },
+      { value: 'day:366,1', label: last365DaysText },
+    ],
+    []
+  );
+  const options = useMemo(() => quickOptions || localQuickOptions, [quickOptions, localQuickOptions]);
 
   earliestApprove && options.push({ value: 'earliest', label: earliestInHistory });
 
   const parseMode = useCallback((current: string | undefined) => parseTimeMode(current, options), [options]);
-  const originMode = parseMode(timeRange) ?? 'quick';
-  const [mode, setMode] = React.useState<string | undefined>(originMode);
+  const originMode = (parseMode(timeRange) ?? TimeMode.Quick) as TimeMode;
+  const [mode, setMode] = React.useState<TimeMode>(modes?.includes(originMode) ? originMode : TimeMode.Quick);
 
   const handleOnSelect = (value: string) => {
     setCurrentRange(value);
@@ -107,7 +110,7 @@ function StaticPastTimePicker({
     };
 
     switch (currentMode) {
-      case 'quick':
+      case TimeMode.Quick:
         return (
           <QuickPicker
             {...valueProps}
@@ -127,7 +130,7 @@ function StaticPastTimePicker({
   };
 
   React.useEffect(() => {
-    setMode(parseMode(timeRange) ?? 'quick');
+    setMode(parseMode(timeRange) ?? TimeMode.Quick);
   }, [timeRange, parseMode]);
 
   return (
@@ -137,7 +140,7 @@ function StaticPastTimePicker({
           options={filter(PICKER_OPTIONS, (o) => o.value === 'quick' || modes.includes(o.value))}
           value={mode}
           onChange={(value) => {
-            setMode(value as string);
+            setMode(value as TimeMode);
           }}
         />
       </div>

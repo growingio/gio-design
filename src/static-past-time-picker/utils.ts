@@ -18,10 +18,10 @@ export const parseTimeMode = (
     return undefined;
   }
   if (options?.find((option) => option.value === timeRange)) {
-    return 'quick';
+    return TimeMode.Quick;
   }
   if (has(QUICK_MAPPING, timeRange)) {
-    return 'quick';
+    return TimeMode.Quick;
   }
   const items = timeRange.split(':');
   switch (items[0]) {
