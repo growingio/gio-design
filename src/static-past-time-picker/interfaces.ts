@@ -21,6 +21,7 @@ export enum TimeMode {
   Absolute = 'absolute',
   Since = 'since',
   Relative = 'relative',
+  Quick = 'quick',
 }
 
 interface ExperimentProps {
