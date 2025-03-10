@@ -166,7 +166,7 @@
     "prettier": "^2.6.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-intl": "^5.20.9",
+    "react-intl": "^7.1.6",
     "react-test-renderer": "^17.0.1",
     "semantic-release": "^19.0.3",
     "storybook-addon-designs": "^6.2.0",
