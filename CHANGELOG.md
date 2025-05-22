@@ -1,3 +1,10 @@
+## [23.11.3](https://github.com/growingio/gio-design/compare/v23.11.2...v23.11.3) (2025-05-22)
+
+
+### Bug Fixes
+
+* 修改本月翻译 ([c6cbf02](https://github.com/growingio/gio-design/commit/c6cbf02b895d656a4e68be53280771c0f9ff9c76))
+
 ## [23.11.2](https://github.com/growingio/gio-design/compare/v23.11.1...v23.11.2) (2024-09-09)
 
 
