@@ -23,7 +23,7 @@ export default {
   lastWeekText: 'Last Week',
   thisMonthText: 'Current Month',
   thisMonthToToday: 'This month(to today)',
-  thisMonthToYesterday: 'This mont(to yesterday)',
+  thisMonthToYesterday: 'This month(to yesterday)',
   lastMonthText: 'Last Month',
   thisQuarterText: 'Current Quarter',
   thisQuarterTextToToday: 'This quarter(to today)',
