@@ -99,12 +99,12 @@ export const ListPicker: React.FC<ListPickerProps> = (props) => {
 
   // recent
   const setRecentValue = (val?: string | string[]) => {
-    const localKey = isNil(propsRecentId) ? ITEM_KEY : `${ITEM_KEY}_${propsRecentId}`;
-    const localStorageValue = localStorage?.getItem(localKey);
-    const recentKey: string[] = (JSON.parse(isNil(localStorageValue) ? '[]' : localStorageValue) || []).filter(
+    const sessionKey = isNil(propsRecentId) ? ITEM_KEY : `${ITEM_KEY}_${propsRecentId}`;
+    const sessionStorageValue = sessionStorage?.getItem(sessionKey);
+    const recentKey: string[] = (JSON.parse(isNil(sessionStorageValue) ? '[]' : sessionStorageValue) || []).filter(
       (v: string) => v !== val
     );
-    localStorage?.setItem(localKey, JSON.stringify([val, ...recentKey].slice(0, 50)));
+    sessionStorage?.setItem(sessionKey, JSON.stringify([val, ...recentKey].slice(0, 50)));
   };
 
   // methods
