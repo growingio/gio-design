@@ -16135,10 +16135,10 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-lines-ellipsis@^0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/react-lines-ellipsis/-/react-lines-ellipsis-0.15.0.tgz#07ecc8095f7d598e676ee662c637bd373f3552f4"
-  integrity sha512-8kWpEmu7ijmB6Gz5t+eSjNux2SpVXZBsmfeFE8LjMS7tU3H8ai475CyNc0dH0RDTwt4Esr7c06Xq4SB7Gpl9yQ==
+react-lines-ellipsis@^0.16.1:
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/react-lines-ellipsis/-/react-lines-ellipsis-0.16.1.tgz#c19f7712999d228cbde71c31954bb3de6212b046"
+  integrity sha512-cQefaTdPlmvOAoQlcBOuv3AG2csThsdzCWSGydUZhv6VrrIsLShJ+WmxnCEHa3jAQeH4lxlsNVBd6i4bE5h2+g==
 
 react-popper-tooltip@^3.1.1:
   version "3.1.1"
