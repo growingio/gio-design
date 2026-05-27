@@ -111,12 +111,11 @@ const Title = <RecordType,>(props: TitleProps<RecordType>): React.ReactElement =
 
   return (
     <div className={cls}>
-      <span
-        className={classNames(`${prefixCls}-column-title-text`, `${prefixCls}-column-title-text-ellipsis`)}
-        title={isString(column.title) ? column.title : undefined}
-      >
-        {column.title}
-      </span>
+      <Tooltip title={isString(column.title) ? column.title : undefined} overlayClassName={`${prefixCls}-tooltip`}>
+        <span className={classNames(`${prefixCls}-column-title-text`, `${prefixCls}-column-title-text-ellipsis`)}>
+          {column.title}
+        </span>
+      </Tooltip>
       {renderInfo()}
       {renderSorter()}
       {renderFilter()}
