@@ -21,9 +21,9 @@ const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
   const selectionPrefixCls = `${usePrefixCls(PREFIX)}--selection`;
   const context = useContext(ListContext);
   const { options, model } = context;
-  const localKey = isNil(context?.recentId) ? ITEM_KEY : `${ITEM_KEY}_${context?.recentId}`;
-  const localStorageValue = window?.localStorage?.getItem(localKey) || '[]';
-  const matchValue = JSON.parse(localStorageValue); // localStorage.getItem('__GIO_SELECTION_KEY')
+  const sessionKey = isNil(context?.recentId) ? ITEM_KEY : `${ITEM_KEY}_${context?.recentId}`;
+  const sessionStorageValue = window?.sessionStorage?.getItem(sessionKey) || '[]';
+  const matchValue = JSON.parse(sessionStorageValue); // sessionStorage.getItem('__GIO_SELECTION_KEY')
   useEffect(() => {
     setTimeout(() => {
       setMayBearray(options);
@@ -39,7 +39,7 @@ const Recent: React.FC<RecentProps> & { isRecent: boolean } = (props) => {
       }, []),
     [matchValue, mayBeArray]
   );
-  
+
   const listOptions: OptionProps[] = useMemo(
     () => slice(lodashFilter(matchOptions, filterFc), 0, max),
 
