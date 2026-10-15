@@ -7,6 +7,52 @@ import { QUICK_MAPPING } from './constant';
 
 momentTZ.tz.setDefault(localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone);
 
+const getTimezone = () => localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+export const isWholeMonth = (startMs: number, endMs: number) => {
+  const tz = getTimezone();
+  const start = momentTZ.tz(startMs, tz);
+  const end = momentTZ.tz(endMs, tz);
+  return start.isSame(start.clone().startOf('month')) && end.isSame(start.clone().endOf('month'));
+};
+
+export const isWholeWeek = (startMs: number, endMs: number) => {
+  const tz = getTimezone();
+  const start = momentTZ.tz(startMs, tz);
+  const end = momentTZ.tz(endMs, tz);
+  return start.isSame(start.clone().startOf('isoWeek')) && end.isSame(start.clone().endOf('isoWeek'));
+};
+
+export const getWeekRangeInTimezone = (date: Date): [Date, Date] => {
+  const dateInTz = momentTZ.tz(date, getTimezone());
+  return [dateInTz.clone().startOf('isoWeek').toDate(), dateInTz.clone().endOf('isoWeek').toDate()];
+};
+
+export const getMonthRangeInTimezone = (date: Date): [Date, Date] => {
+  const dateInTz = momentTZ.tz(date, getTimezone());
+  return [dateInTz.clone().startOf('month').toDate(), dateInTz.clone().endOf('month').toDate()];
+};
+
+export const startOfTodayInTimezone = () =>
+  new Date(
+    momentTZ.tz(`${momentTZ.tz(new Date(), getTimezone()).format().substring(0, 10)} 00:00:00`, getTimezone()).format()
+  );
+export const startOfYesterdayInTimezone = () => sub(startOfTodayInTimezone(), { days: 1 });
+
+export const startOfThisWeekInTimezone = () => getWeekRangeInTimezone(startOfTodayInTimezone())[0];
+
+export const startOfThisMonthInTimezone = () => getMonthRangeInTimezone(startOfTodayInTimezone())[0];
+
+export const getDefaultWeekRange = (): [Date, Date] => {
+  const lastWeek = momentTZ.tz(startOfThisWeekInTimezone(), getTimezone()).subtract(1, 'week');
+  return [lastWeek.clone().startOf('isoWeek').toDate(), lastWeek.clone().endOf('isoWeek').toDate()];
+};
+
+export const getDefaultMonthRange = (): [Date, Date] => {
+  const lastMonth = momentTZ.tz(startOfThisMonthInTimezone(), getTimezone()).subtract(1, 'month');
+  return [lastMonth.clone().startOf('month').toDate(), lastMonth.clone().endOf('month').toDate()];
+};
+
 export const parseTimeMode = (timeRange: string | undefined, quickOptionsFilter?: any) => {
   if (!timeRange) {
     return undefined;
@@ -24,28 +70,26 @@ export const parseTimeMode = (timeRange: string | undefined, quickOptionsFilter?
       return TimeMode.Since;
     case 'since-lt-today':
       return TimeMode.Since;
-    case 'abs':
+    case 'abs': {
+      const range = items[1];
+      if (!range) {
+        return TimeMode.Absolute;
+      }
+      const [startMs, endMs] = range.split(',').map((str) => parseInt(str, 10));
+      if (isWholeMonth(startMs, endMs)) {
+        return TimeMode.Month;
+      }
+      if (isWholeWeek(startMs, endMs)) {
+        return TimeMode.Week;
+      }
       return TimeMode.Absolute;
+    }
     case 'day':
       return TimeMode.Relative;
     default:
       return undefined;
   }
 };
-
-export const startOfTodayInTimezone = () =>
-  new Date(
-    momentTZ
-      .tz(
-        `${momentTZ
-          .tz(new Date(), localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone)
-          .format()
-          .substring(0, 10)} 00:00:00`,
-        localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone
-      )
-      .format()
-  );
-export const startOfYesterdayInTimezone = () => sub(startOfTodayInTimezone(), { days: 1 });
 
 export const parseStartAndEndDate = (timeRange: string | undefined): [Date | undefined, Date | undefined] => {
   if (!timeRange || timeRange.split(':').length !== 2) {

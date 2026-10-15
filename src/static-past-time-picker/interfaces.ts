@@ -19,6 +19,8 @@ export type EndDateFixedMode = false | 'today' | 'yesterday';
 
 export enum TimeMode {
   Absolute = 'absolute',
+  Week = 'week',
+  Month = 'month',
   Since = 'since',
   Relative = 'relative',
 }
