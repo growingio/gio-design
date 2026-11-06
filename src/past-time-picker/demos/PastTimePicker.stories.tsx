@@ -57,6 +57,12 @@ Absolute.args = {
   onRangeSelect: (dates: [Date, Date], index: number) => action('onRangeSelect')(dates, index),
 };
 
+export const WithTime = Template.bind({});
+WithTime.args = {
+  showTime: true,
+  value: `abs:${getTime(subDays(startOfToday(), 2))},${getTime(startOfToday()) - 1}`,
+};
+
 export const Experiment = Template.bind({});
 Experiment.args = {
   value: 'week:1,0',

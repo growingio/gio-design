@@ -2,6 +2,8 @@ import '../../static-date-range-picker/style';
 import '../../static-date-picker/style';
 import '../../button/style';
 import '../../input/style';
+import '../../popover/style';
+import '../../static-time-picker/style';
 import '../../checkbox/style';
 import '../../list/style';
 import '../../switch/style';

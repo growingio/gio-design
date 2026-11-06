@@ -36,6 +36,10 @@ yarn watch
 yarn start
 ```
 
+## 组件文档
+
+- [PastTimePicker 日期时间选择](docs/past-time-picker.md)
+
 ## License
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fgrowingio%2Fgio-design.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fgrowingio%2Fgio-design?ref=badge_large)

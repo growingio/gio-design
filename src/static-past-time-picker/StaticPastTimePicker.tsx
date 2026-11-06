@@ -12,6 +12,7 @@ import defaultLocale from './locales/zh-CN';
 
 function StaticPastTimePicker({
   disabledDate,
+  showTime = false,
   modes = [TimeMode.Since, TimeMode.Relative, TimeMode.Absolute],
   timeRange,
   onSelect,
@@ -110,9 +111,13 @@ function StaticPastTimePicker({
         return <RelativeRangePicker {...valueProps} />;
       case TimeMode.Absolute:
       default:
-        return <AbsoluteRangePicker {...valueProps} onRangeSelect={onRangeSelect} />;
+        return <AbsoluteRangePicker {...valueProps} showTime={showTime} onRangeSelect={onRangeSelect} />;
     }
   };
+
+  React.useEffect(() => {
+    if (showTime) setCurrentRange(timeRange);
+  }, [timeRange, showTime]);
 
   React.useEffect(() => {
     setMode(parseMode(timeRange) ?? TimeMode.Quick);

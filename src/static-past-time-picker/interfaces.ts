@@ -46,6 +46,10 @@ interface PickerProps extends ExperimentProps, Pick<StaticDatePickerProps, 'disa
   onSelect: (timeRange: string) => void;
   onRangeSelect?: (dates: [Date, Date], index: number) => void;
   allowReset: boolean;
+  /**
+   * 固定时段启用秒级时间输入，默认 false。
+   */
+  showTime?: boolean;
 }
 
 export interface StaticPastTimePickerProps extends Omit<PickerProps, 'onSelect'> {
