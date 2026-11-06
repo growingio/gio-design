@@ -1,6 +1,12 @@
 import { Key } from 'react';
 
 export default {
+  clearTimeText: (label: string) => `Clear ${label}`,
+  timePanelText: 'Select hours, minutes and seconds',
+  startTimeText: 'Start time',
+  endTimeText: 'End time',
+  invalidTimeText: 'Enter a valid time (HH:mm:ss)',
+  invalidTimeRangeText: 'The start date and time must not be after the end date and time',
   okText: 'OK',
   closeText: 'Cancel',
   resetText: 'Reset',

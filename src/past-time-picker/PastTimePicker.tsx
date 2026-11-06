@@ -35,6 +35,7 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     className,
     style,
     showAbsDate = false,
+    showTime = false,
     NotAvailableToday = false,
     earliestApprove = false,
     allowReset = false,
@@ -164,8 +165,9 @@ const PastTimePicker = (props: PastTimePickerProps) => {
     }
 
     if (items[0] === 'abs') {
-      const start = parseFnsTimeZone(times[0], 'yyyy/MM/dd');
-      const end = parseFnsTimeZone(times[1], 'yyyy/MM/dd');
+      const pattern = showTime ? 'yyyy/MM/dd HH:mm:ss' : 'yyyy/MM/dd';
+      const start = parseFnsTimeZone(times[0], pattern);
+      const end = parseFnsTimeZone(times[1], pattern);
       return `${FromText} ${start} ${ToText} ${end}`;
     }
     if (items[0] === 'day') {
@@ -204,6 +206,8 @@ const PastTimePicker = (props: PastTimePickerProps) => {
   };
   const content = () => (
     <StaticPastTimePicker
+      key={showTime ? String(controlledVisible) : undefined}
+      showTime={showTime}
       earliestApprove={earliestApprove}
       disabledDate={disabledDate}
       modes={modes}

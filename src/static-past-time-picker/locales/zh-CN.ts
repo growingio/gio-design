@@ -1,6 +1,12 @@
 import { Key } from 'react';
 
 export default {
+  clearTimeText: (label: string) => `清空${label}`,
+  timePanelText: '时分秒选择',
+  startTimeText: '开始时间',
+  endTimeText: '结束时间',
+  invalidTimeText: '请输入有效时间（HH:mm:ss）',
+  invalidTimeRangeText: '开始日期时间不能晚于结束日期时间',
   okText: '确定',
   closeText: '取消',
   resetText: '重置',

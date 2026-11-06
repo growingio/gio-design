@@ -9,7 +9,14 @@ export interface PastTimePickerProps
     Omit<PopoverProps, 'trigger' | 'placement' | 'prefixCls' | 'children' | 'content'>,
     Pick<
       StaticPastTimePickerProps,
-      'disabledDate' | 'experimental' | 'modes' | 'onCancel' | 'onSelect' | 'quickOptionsFilter' | 'onRangeSelect'
+      | 'disabledDate'
+      | 'experimental'
+      | 'modes'
+      | 'onCancel'
+      | 'onSelect'
+      | 'quickOptionsFilter'
+      | 'onRangeSelect'
+      | 'showTime'
     > {
   /**
    *  选择的时间范围

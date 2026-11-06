@@ -77,6 +77,17 @@ export default function DatePickerPage() {
       <Canvas>
         <Story id="upgraded-pasttimepicker--absolute" />
       </Canvas>
+      <Subheading>{formatMessage({ defaultMessage: '固定时段精确到秒' })}</Subheading>
+      <Description>
+        {formatMessage({
+          defaultMessage:
+            '设置 showTime 后，可在双月日历下方输入 HH:mm:ss；开始和结束时间可清空，空端按所选日期全天边界处理。日期与时间统一确认。',
+          description: 'PastTimePicker 秒级时间选择说明',
+        })}
+      </Description>
+      <Canvas>
+        <Story id="upgraded-pasttimepicker--with-time" />
+      </Canvas>
       <Subheading>{formatMessage({ defaultMessage: '常用时间-区分至昨日至今日' })}</Subheading>
       <Description>
         {formatMessage({
