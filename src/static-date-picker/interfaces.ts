@@ -27,6 +27,10 @@ export interface StaticDatePickerProps extends CommonProps {
    */
   onPanelChange?: (value: Date, mode: PickerMode) => void;
   /**
+   * 日历面板类型，默认 `date`
+   */
+  picker?: PickerMode;
+  /**
    * 日期发生变化时的回调
    *
    * @param value - 选择的日期 `Date`

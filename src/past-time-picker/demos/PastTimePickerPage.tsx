@@ -39,9 +39,9 @@ export default function DatePickerPage() {
       <Canvas>
         <Story id="upgraded-pasttimepicker--relative" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '样式 - 「过去固定时段」' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '样式 - 「按天选择时段」' })}</Subheading>
       <p>
-        当用户选择“过去固定时段”时，用户可以借助时间选择器选择日期区间的开始日期和结束日期，该日期区间为固定日期区间。
+        当用户选择“按天选择时段”时，用户可以借助时间选择器选择日期区间的开始日期和结束日期，该日期区间为固定日期区间。
       </p>
       <Canvas>
         <Story id="upgraded-pasttimepicker--absolute" />
@@ -81,7 +81,7 @@ export default function DatePickerPage() {
       <Canvas>
         <Story id="upgraded-pasttimepicker--static-relative" />
       </Canvas>
-      <Subheading>{formatMessage({ defaultMessage: '样式 - 「过去固定时段」' })}</Subheading>
+      <Subheading>{formatMessage({ defaultMessage: '样式 - 「按天选择时段」' })}</Subheading>
 
       <Canvas>
         <Story id="upgraded-pasttimepicker--static-absolute" />

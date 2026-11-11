@@ -8,11 +8,13 @@ import { parseTimeMode } from './utils';
 import AbsoluteRangePicker from './AbsoluteRangePicker';
 import SinceRangePicker from './SinceRangePicker';
 import RelativeRangePicker from './RelativeRangePicker';
+import WeekRangePicker from './WeekRangePicker';
+import MonthRangePicker from './MonthRangePicker';
 import defaultLocale from './locales/zh-CN';
 
 function StaticPastTimePicker({
   disabledDate,
-  modes = [TimeMode.Since, TimeMode.Relative, TimeMode.Absolute],
+  modes = [TimeMode.Since, TimeMode.Relative, TimeMode.Absolute, TimeMode.Week, TimeMode.Month],
   timeRange,
   onSelect,
   onCancel,
@@ -35,6 +37,8 @@ function StaticPastTimePicker({
     sinceRangePickerText,
     relativeRangePickerText,
     absoluteRangePickerText,
+    weekRangePickerText,
+    monthRangePickerText,
     todayText,
     yesterdayText,
     thisWeekText,
@@ -61,6 +65,8 @@ function StaticPastTimePicker({
     { value: TimeMode.Since, label: sinceRangePickerText },
     { value: TimeMode.Relative, label: relativeRangePickerText },
     { value: TimeMode.Absolute, label: absoluteRangePickerText },
+    { value: TimeMode.Week, label: weekRangePickerText },
+    { value: TimeMode.Month, label: monthRangePickerText },
   ];
 
   const quickOptions = [
@@ -108,6 +114,10 @@ function StaticPastTimePicker({
         return <SinceRangePicker {...valueProps} NotAvailableToday={NotAvailableToday} />;
       case TimeMode.Relative:
         return <RelativeRangePicker {...valueProps} NotAvailableToday={NotAvailableToday} />;
+      case TimeMode.Week:
+        return <WeekRangePicker {...valueProps} NotAvailableToday={NotAvailableToday} />;
+      case TimeMode.Month:
+        return <MonthRangePicker {...valueProps} NotAvailableToday={NotAvailableToday} />;
       case TimeMode.Absolute:
       default:
         return (
